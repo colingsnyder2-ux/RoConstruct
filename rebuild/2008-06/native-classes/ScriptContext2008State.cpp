@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-function-pod-vtable
 // 2008-06 native RBX::ScriptContext script bookkeeping rows (inactive): removeScript 005ad030 (with disassociateState
 // inlined, as in the target). Shape after the donor tools/rbxgs ScriptContext.cpp; header script/ScriptContext.h.
 #include "script/Script.h"
@@ -7,6 +7,9 @@
 #include "util/StandardOut.h"
 #include "v8datamodel/DebugSettings.h"
 #include "lobject.h"
+#include "LuaBridge2008/LuaArguments2008.h"
+#include "v8datamodel/Stats.h"
+#include "boost/bind.hpp"
 #include <algorithm>
 
 using namespace RBX;
@@ -74,5 +77,137 @@ void ScriptContext::reportError(lua_State* thread)
 	else
 	{
 		StandardOut::singleton()->print(MESSAGE_ERROR, "%s", lua_tostring(thread, -1));
+	}
+}
+
+// 005afd60 (donor onServiceProvider without the Instance::onServiceProvider call: the original has none between the
+// statsItem release (00456e80 at 005afdf5) and the newProvider test (005afdfa), as in Script::onServiceProvider 00586bf0).
+// Calls: removeListener 005e5a80 (+0x170 RunTransition, +0x130 Heartbeat), closeState 005ae280, setParent 0055a8f0,
+// create<StatsService> 00458610, create<Stats::Item, const char*> 005adb70 ("Lua" 0083498c),
+// createBoundChildItem<bool> 004b60c0 ("disabled" 00834980, scriptsDisabled +0x1ac), createChildItem<int> 005a55a0
+// ("threads" 00834978, getThreadCount 005a9120), create<RunService> 004530f0, shared_from 00618a40, addListener 004218a0.
+void ScriptContext::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
+{
+	Notifier<RunService, RunTransition>::disconnect(runService, this);
+	Notifier<RunService, Heartbeat>::disconnect(runService, this);
+
+	if (oldProvider && !newProvider)
+		closeState();
+
+	if (statsItem)
+	{
+		statsItem->setParent(NULL);
+		statsItem.reset();
+	}
+
+	RunService* newRunService;
+
+	if (newProvider)
+	{
+		Stats::StatsService* statsService = newProvider->create<Stats::StatsService>();
+		if (statsService)
+		{
+			statsItem = Creatable<Instance>::create<Stats::Item>("Lua");
+			statsItem->setParent(statsService);
+			statsItem->createBoundChildItem("disabled", scriptsDisabled);
+			statsItem->createChildItem<int>("threads", boost::bind(&ScriptContext::getThreadCount, this));
+		}
+
+		newRunService = newProvider->create<RunService>();
+	}
+	else
+	{
+		newRunService = NULL;
+	}
+
+	runService = shared_from(newRunService);
+	Notifier<RunService, RunTransition>::connect(runService, this);
+	Notifier<RunService, Heartbeat>::connect(runService, this);
+}
+
+// 005abf90 (static pushArguments of the donor; bound by executeInNewThread 005b0480 through function_obj vtable
+// 008345ac): checked vector iteration calling LuaArguments::push 005aba50 per value, summing the pushed counts.
+static size_t pushArguments(const Reflection::ValueCollection& arguments, lua_State* thread)
+{
+	size_t result = 0;
+	for (Reflection::ValueCollection::const_iterator it = arguments.begin(), end = arguments.end(); it != end; ++it)
+		result += Lua::LuaArguments2008::push(*it, thread);
+
+	return result;
+}
+
+// readResults of the donor is the existing native body 005ad6d0 (Inferred_005ad6d0.cpp, placeholder name
+// sub_005ad6d0, bound through function_obj vtable 008345b4); referenced here rather than duplicated.
+namespace RBX
+{
+	void sub_005ad6d0(std::auto_ptr<std::vector<Reflection::Value> >& values, lua_State* L, unsigned int count);
+}
+
+// 005b0480: auto_ptr result cleared first (005b04a9), readResults bound with boost::ref(result) constructed before the
+// pushArguments bind (right-to-left argument order), then executeInNewThread(..., closures) 005af940.
+std::auto_ptr<Reflection::ValueCollection> ScriptContext::executeInNewThread(Security::Identities identity, const char* script, const char* name, const Reflection::ValueCollection& arguments)
+{
+	std::auto_ptr<Reflection::ValueCollection> result;
+	executeInNewThread(
+		identity,
+		script,
+		name,
+		boost::bind(&pushArguments, boost::cref(arguments), _1),
+		boost::bind(&sub_005ad6d0, boost::ref(result), _1, _2)
+	);
+	return result;
+}
+
+// INFERRED: 005b03b0 binds two trivial free functions, identical-code folded in the client: readResults 0047d410
+// (a bare ret, void(lua_State*, size_t), function_obj vtable 00834564) and pushArguments 00416690 (xor eax,eax; ret:
+// size_t(lua_State*) returning 0, function_obj vtable 0083456c). The names are not in the client.
+static size_t pushNoArguments(lua_State*)
+{
+	return 0;
+}
+
+static void readNoResults(lua_State*, size_t)
+{
+}
+
+// 005b03b0
+void ScriptContext::executeInNewThread(Security::Identities identity, const char* script, const char* name)
+{
+	executeInNewThread(identity, script, name, boost::bind(&pushNoArguments, _1), boost::bind(&readNoResults, _1, _2));
+}
+
+// 005aeb80 (registry placeholder func_005aeb80, 323 B, ret 0x44 = thread + two boost::function closures by
+// value). Identity: the donor tools/openrbx ScriptContext.cpp ScriptContext::resume(thread, pushArguments, readResults)
+// (lua_gettop 00611c10; PushArgumentsClosure operator() 00595b90; resume(thread, narg) 005ae0d0 compared with Error 2;
+// ReadResultsClosure operator() 005aae30 inside try with a catch(...) funclet that pops and rethrows; lua_settop
+// 00611c20 with -1 - returnCount). 2008 difference: the error text comes from Lua::LuaArguments(thread, -1) 0061c790
+// (script/ScriptContext.h) instead of lua_tostring; then lua_settop(thread, 0) and std::runtime_error 00409d50.
+void ScriptContext::resume(lua_State* thread, PushArgumentsClosure pushArguments, ReadResultsClosure readResults)
+{
+	int top = lua_gettop(thread);
+
+	int narg = pushArguments(thread);
+
+	if (resume(thread, narg) != Error)
+	{
+		const int returnCount = lua_gettop(thread) - top + 1;
+
+		try
+		{
+			readResults(thread, returnCount);
+		}
+		catch (...)
+		{
+			lua_pop(thread, returnCount);
+			throw;
+		}
+
+		lua_pop(thread, returnCount);
+	}
+	else
+	{
+		std::string err = Lua::LuaArguments(thread, -1);
+		lua_settop(thread, 0);
+		throw std::runtime_error(err);
 	}
 }

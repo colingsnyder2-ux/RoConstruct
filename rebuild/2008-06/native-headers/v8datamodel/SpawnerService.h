@@ -13,13 +13,25 @@
 //              user-declared (deleting 005d2510).
 //   ctor       005d30c0: setName("SpawnerService") then Instance::propArchivable.setValue(this, false) through
 //              GetSet vtable slot 3 (pending: see native-classes/SpawnLocation.cpp).
-//   Not attempted: the 1084-byte spawn routine 005d2b80 ("SpawnPlayer couldn't get the workspace", ForceField,
-//              DebrisService::addItem); it reads SpawnLocation fields whose offsets need the 2008 PartInstance.
+//   SpawnPlayer 005d2b80 (1084 bytes, thiscall, ret 0xc = shared_ptr<ModelInstance> by value + Player*): string
+//              0083bda0 "SpawnPlayer couldn't get the workspace" (the name is the donor openrbx SpawnLocation.cpp
+//              SpawnerService::SpawnPlayer); the only caller is Player::loadCharacter 004957a0 after
+//              find<SpawnerService> 00491ea0. Reads spawners size (+0x148), SpawnLocation::neutral +0x400, teamColor
+//              +0x3e8 (getTeamColor 005d1ba0 inlined: same original unit 005d1ba0..005d39f0), duration +0x404.
 #include "v8tree/Instance.h"
 #include "v8tree/Service.h"
 #include <list>
 
 struct NativeSpawnLayout;
+
+namespace RBX
+{
+	class ModelInstance;
+	namespace Network
+	{
+		class Player;
+	}
+}
 
 namespace RBX
 {
@@ -38,6 +50,8 @@ namespace RBX
 	public:
 		SpawnerService();                    // 005d30c0
 		virtual ~SpawnerService();           // 005d2410 (deleting 005d2510)
+
+		void SpawnPlayer(boost::shared_ptr<ModelInstance> model, Network::Player* p); // 005d2b80
 
 		void RegisterSpawner(SpawnLocation* spawner)   // inlined into SpawnLocation::onServiceProvider 005d37d0
 		{

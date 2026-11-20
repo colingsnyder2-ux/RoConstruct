@@ -1,0 +1,807 @@
+{
+  "class": "unit map of the application range 004d0000..004d4000 (2008-06): RakNet 3.0 library, inactive",
+  "result": "No RBX translation unit and no Roblox-only template instantiation in the range: every row is RakNet 3.0 library code (ReliabilityLayer.cpp with its DataStructures instances, RPCMap.cpp, SimpleMutex.cpp, Rand.cpp), each reproduced byte-identically from the upstream file. Nothing is recovered or counted here.",
+  "compiler": "VS2008 RTM 21022",
+  "library_recipe": "openrbx-raknet (roc/libs.py), flags /O2 /GS- /EHsc /MD",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit4d0_2008.py": "795ed1f9d2b4c6b1d7002cb3c46701294ccbca044c1621c8529daf73ab7195e8"
+  },
+  "objects": {
+    "ReliabilityLayer_O2_GS-_EHsc_MD.obj": "7fb33bb7d3b9aa8cedbbcd8bbf1afc97b010c724fe8c1d678be3b227b3538bc1",
+    "ReliabilityLayer_O2_GS-_EHsc_MD_fpfast.obj": "a1aa327f8c566848fcbf674a600f92aec1834f3cd5581c525a68c5e9f5f8b2b8",
+    "RPCMap_O2_GS-_EHsc_MD.obj": "fb4127173c112ed8f97d064c1142e39eed6ec79834485d7637edaf625e320c29",
+    "SimpleMutex_O2_GS-_EHsc_MD.obj": "d21947124201e18bdf26d09740429a0ddb6ebcea78ea4b77c228a14b59e3afb7",
+    "Rand_O2_GS-_EHsc_MD.obj": "5c6fe259bbd48d9002b2d7007c4529a70bf93e8079dc1057c5970f88c2c4766b"
+  },
+  "unit_map": {
+    "raknet-reliabilitylayer 004d0000..004d3c8f": {
+      "unit": "RakNet 3.0 ReliabilityLayer.cpp, continued from 004ce9a0 (004cff00 runs into the range to 004d02c4), with its DataStructures BPlusTree / RangeList / OrderedList / List instances",
+      "upstream_file": "ReliabilityLayer.cpp",
+      "library": true,
+      "recovered": false,
+      "rows": 32,
+      "bytes": 14557
+    },
+    "raknet-rpcmap 004d3c90..004d3f7f": {
+      "unit": "RakNet 3.0 RPCMap.cpp (ctor, Clear, lookups, dtor)",
+      "upstream_file": "RPCMap.cpp",
+      "library": true,
+      "recovered": false,
+      "rows": 8,
+      "bytes": 694
+    },
+    "raknet-simplemutex 004d3f80..004d3faf": {
+      "unit": "RakNet 3.0 SimpleMutex.cpp (ctor, Lock, Unlock; the dtor is folded elsewhere)",
+      "upstream_file": "SimpleMutex.cpp",
+      "library": true,
+      "recovered": false,
+      "rows": 3,
+      "bytes": 30
+    },
+    "raknet-rand 004d3fb0..004d3fff": {
+      "unit": "RakNet 3.0 Rand.cpp (Mersenne Twister seedMT / reloadMT; reloadMT ends 004d4113, past the range)",
+      "upstream_file": "Rand.cpp",
+      "library": true,
+      "recovered": false,
+      "rows": 2,
+      "bytes": 341
+    }
+  },
+  "library_rows": [
+    {
+      "row": "row 004d02d0",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?FixUnderflow@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NHPAU?$Page@IPAUInternalPacket@@$0CA@@2@IPAUReturnAction@12@@Z",
+      "size": 631,
+      "icf_equivalents": [],
+      "targets": {
+        "?ShiftNodeRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "out-of-range row 004cf740, body exact from the same object",
+        "?ShiftNodeLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "out-of-range row 004cf6d0, body exact from the same object",
+        "?DeleteFromPageAtIndex@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXHPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "out-of-range row 004cf200, body exact from the same object",
+        "?Release@?$MemoryPool@U?$Page@IPAUInternalPacket@@$0CA@@DataStructures@@@DataStructures@@QAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "out-of-range row 004cfbb0, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d0550",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?Receive@ReliabilityLayer@@QAEHPAPAE@Z",
+      "size": 121,
+      "icf_equivalents": [],
+      "targets": {
+        "?Release@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEXPAUInternalPacket@@@Z": "out-of-range row 004cf9a0, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d05d0",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?IsOutgoingDataWaiting@ReliabilityLayer@@QAE_NXZ",
+      "size": 76,
+      "icf_equivalents": [],
+      "targets": {}
+    },
+    {
+      "row": "row 004d0620",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?AreAcksWaiting@ReliabilityLayer@@QAE_NXZ",
+      "size": 10,
+      "icf_equivalents": [],
+      "targets": {}
+    },
+    {
+      "row": "row 004d0630",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?CreateInternalPacketFromBitStream@ReliabilityLayer@@AAEPAUInternalPacket@@PAVBitStream@RakNet@@_J@Z",
+      "size": 404,
+      "icf_equivalents": [],
+      "targets": {
+        "?Allocate@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEPAUInternalPacket@@XZ": "out-of-range row 004cf900, body exact from the same object",
+        "?ReadBits@BitStream@RakNet@@QAE_NPAEH_N@Z": "extern library target at 004a5210 (one address per symbol)",
+        "??$Read@_N@BitStream@RakNet@@QAE_NAA_N@Z": "out-of-range row 004a5050, body exact from the same object",
+        "?ReadCompressed@BitStream@RakNet@@AAE_NPAEH_N@Z": "extern library target at 004a52c0 (one address per symbol)",
+        "?Release@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEXPAUInternalPacket@@@Z": "out-of-range row 004cf9a0, body exact from the same object",
+        "??2@YAPAXI@Z": "import mfc90.dll!??2@YAPAXI@Z",
+        "?ReadAlignedBytes@BitStream@RakNet@@QAE_NPAEH@Z": "extern library target at 004a55a0 (one address per symbol)",
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z"
+      }
+    },
+    {
+      "row": "row 004d07d0",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?SplitPacket@ReliabilityLayer@@AAEXPAUInternalPacket@@H@Z",
+      "size": 553,
+      "icf_equivalents": [],
+      "targets": {
+        "?IsKeySet@DataBlockEncryptor@@QBE_NXZ": "extern library target at 004d5990 (one address per symbol)",
+        "__alloca_probe_16": "extern library target at 006a1560 (one address per symbol)",
+        "??2@YAPAXI@Z": "import mfc90.dll!??2@YAPAXI@Z",
+        "?Allocate@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEPAUInternalPacket@@XZ": "out-of-range row 004cf900, body exact from the same object",
+        "_memcpy": "import msvcr90.dll!memcpy",
+        "?Push@?$Queue@PAUInternalPacket@@@DataStructures@@QAEXABQAUInternalPacket@@@Z": "out-of-range row 004cede0, body exact from the same object",
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z",
+        "?Release@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEXPAUInternalPacket@@@Z": "out-of-range row 004cf9a0, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d0a00",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?Serialize@?$RangeList@I@DataStructures@@QAEIPAVBitStream@RakNet@@H_N@Z",
+      "size": 400,
+      "icf_equivalents": [],
+      "targets": {
+        "local_eh": [
+          "__ehhandler$?Serialize@?$RangeList@I@DataStructures@@QAEIPAVBitStream@RakNet@@H_N@Z"
+        ],
+        "??0BitStream@RakNet@@QAE@XZ": "extern library target at 004a5090 (one address per symbol)",
+        "?Write1@BitStream@RakNet@@QAEXXZ": "extern library target at 004a5560 (one address per symbol)",
+        "?Write0@BitStream@RakNet@@QAEXXZ": "extern library target at 004a5540 (one address per symbol)",
+        "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z": "extern library target at 004a5600 (one address per symbol)",
+        "?WriteCompressed@BitStream@RakNet@@AAEXPBEH_N@Z": "extern library target at 004a5790 (one address per symbol)",
+        "?Write@BitStream@RakNet@@QAEXPAV12@H@Z": "extern library target at 004a5490 (one address per symbol)",
+        "??1BitStream@RakNet@@QAE@XZ": "extern library target at 004a51a0 (one address per symbol)"
+      }
+    },
+    {
+      "row": "row 004d0b90",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?Insert@?$OrderedList@IU?$RangeNode@I@DataStructures@@$1??$RangeNodeComp@I@2@YAHABIABU12@@Z@DataStructures@@QAEIABIABU?$RangeNode@I@2@_NP6AH01@Z@Z",
+      "size": 92,
+      "icf_equivalents": [],
+      "targets": {
+        "?GetIndexFromKey@?$OrderedList@IU?$RangeNode@I@DataStructures@@$1??$RangeNodeComp@I@2@YAHABIABU12@@Z@DataStructures@@QBEIABIPA_NP6AH0ABU?$RangeNode@I@2@@Z@Z": "out-of-range row 004cfa70, body exact from the same object",
+        "?Insert@?$List@U?$RangeNode@I@DataStructures@@@DataStructures@@QAEXU?$RangeNode@I@2@@Z": "out-of-range row 004cfcc0, body exact from the same object",
+        "?Insert@?$List@U?$RangeNode@I@DataStructures@@@DataStructures@@QAEXU?$RangeNode@I@2@I@Z": "out-of-range row 004cfdd0, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d0bf0",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?RemoveAtIndex@?$List@U?$RangeNode@I@DataStructures@@@DataStructures@@QAEXI@Z",
+      "size": 50,
+      "icf_equivalents": [
+        "?RemoveAtIndex@?$OrderedList@IU?$RangeNode@I@DataStructures@@$1??$RangeNodeComp@I@2@YAHABIABU12@@Z@DataStructures@@QAEXI@Z"
+      ],
+      "targets": {}
+    },
+    {
+      "row": "row 004d0c30",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?FreePages@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXXZ",
+      "size": 297,
+      "icf_equivalents": [],
+      "targets": {
+        "local_eh": [
+          "__ehhandler$?FreePages@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXXZ"
+        ],
+        "??2@YAPAXI@Z": "import mfc90.dll!??2@YAPAXI@Z",
+        "?Push@?$Queue@PAU?$Page@IPAUInternalPacket@@$0CA@@DataStructures@@@DataStructures@@QAEXABQAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "out-of-range row 004cede0, body exact from the same object",
+        "?Release@?$MemoryPool@U?$Page@IPAUInternalPacket@@$0CA@@DataStructures@@@DataStructures@@QAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "out-of-range row 004cfbb0, body exact from the same object",
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z"
+      }
+    },
+    {
+      "row": "row 004d0d60",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?InsertBranchDown@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@PAU32@PAUReturnAction@12@PA_N@Z",
+      "size": 619,
+      "icf_equivalents": [],
+      "targets": {
+        "?GetIndexOf@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IBE_NIPAU?$Page@IPAUInternalPacket@@$0CA@@2@PAH@Z": "out-of-range row 004cf280, body exact from the same object",
+        "?CanRotateLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NPAU?$Page@IPAUInternalPacket@@$0CA@@2@H@Z": "out-of-range row 004cf4f0, body exact from the same object",
+        "?RotateLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@HPAUReturnAction@12@@Z": "out-of-range row 004cf5d0, body exact from the same object",
+        "?InsertIntoNode@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@HPAU32@1PAUReturnAction@12@@Z": "out-of-range row 004cff00, body exact from the same object",
+        "?CanRotateRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NPAU?$Page@IPAUInternalPacket@@$0CA@@2@H@Z": "out-of-range row 004cf520, body exact from the same object",
+        "?RotateRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@HPAUReturnAction@12@@Z": "out-of-range row 004cf550, body exact from the same object",
+        "?InsertBranchDown@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@PAU32@PAUReturnAction@12@PA_N@Z": "in-range row 004d0d60"
+      }
+    },
+    {
+      "row": "row 004d0fd0",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?FindDeleteRebalance@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NIPAU?$Page@IPAUInternalPacket@@$0CA@@2@PA_NIPAUReturnAction@12@AAPAUInternalPacket@@@Z",
+      "size": 364,
+      "icf_equivalents": [],
+      "targets": {
+        "?GetIndexOf@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IBE_NIPAU?$Page@IPAUInternalPacket@@$0CA@@2@PAH@Z": "out-of-range row 004cf280, body exact from the same object",
+        "?FindDeleteRebalance@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NIPAU?$Page@IPAUInternalPacket@@$0CA@@2@PA_NIPAUReturnAction@12@AAPAUInternalPacket@@@Z": "in-range row 004d0fd0",
+        "?FixUnderflow@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NHPAU?$Page@IPAUInternalPacket@@$0CA@@2@IPAUReturnAction@12@@Z": "in-range row 004d02d0",
+        "?DeleteFromPageAtIndex@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXHPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "out-of-range row 004cf200, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d1140",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?Send@ReliabilityLayer@@QAE_NPADHW4PacketPriority@@W4PacketReliability@@E_NH_J@Z",
+      "size": 403,
+      "icf_equivalents": [],
+      "targets": {
+        "?Allocate@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEPAUInternalPacket@@XZ": "out-of-range row 004cf900, body exact from the same object",
+        "??2@YAPAXI@Z": "import mfc90.dll!??2@YAPAXI@Z",
+        "_memcpy": "import msvcr90.dll!memcpy",
+        "?IsKeySet@DataBlockEncryptor@@QBE_NXZ": "extern library target at 004d5990 (one address per symbol)",
+        "?SplitPacket@ReliabilityLayer@@AAEXPAUInternalPacket@@H@Z": "in-range row 004d07d0",
+        "?Push@?$Queue@PAUInternalPacket@@@DataStructures@@QAEXABQAUInternalPacket@@@Z": "out-of-range row 004cede0, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d12e0",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?AddToOrderingList@ReliabilityLayer@@AAEXPAUInternalPacket@@@Z",
+      "size": 158,
+      "icf_equivalents": [],
+      "targets": {
+        "??2@YAPAXI@Z": "import mfc90.dll!??2@YAPAXI@Z",
+        "?Replace@?$List@PAV?$LinkedList@PAUInternalPacket@@@DataStructures@@@DataStructures@@QAEXQAV?$LinkedList@PAUInternalPacket@@@2@0I@Z": "out-of-range row 004ced00, body exact from the same object",
+        "?Add@?$CircularLinkedList@PAUInternalPacket@@@DataStructures@@QAEAAPAUInternalPacket@@ABQAU3@@Z": "out-of-range row 004cded0, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d1380",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD /fp:fast",
+      "symbol": "?GetStatistics@ReliabilityLayer@@QAEQAURakNetStatistics@@XZ",
+      "size": 424,
+      "icf_equivalents": [],
+      "targets": {
+        "__real@41f0000000000000": "extern library target at 00811240 (one address per symbol)",
+        "__real@3eb0c6f7a0b5ed8d": "extern library target at 00826af0 (one address per symbol)"
+      }
+    },
+    {
+      "row": "row 004d1530",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?Insert@?$RangeList@I@DataStructures@@QAEXI@Z",
+      "size": 330,
+      "icf_equivalents": [],
+      "targets": {
+        "??$RangeNodeComp@I@DataStructures@@YAHABIABU?$RangeNode@I@0@@Z": "out-of-range row 004cefa0, body exact from the same object",
+        "?GetIndexFromKey@?$OrderedList@IU?$RangeNode@I@DataStructures@@$1??$RangeNodeComp@I@2@YAHABIABU12@@Z@DataStructures@@QBEIABIPA_NP6AH0ABU?$RangeNode@I@2@@Z@Z": "out-of-range row 004cfa70, body exact from the same object",
+        "?Insert@?$List@U?$RangeNode@I@DataStructures@@@DataStructures@@QAEXU?$RangeNode@I@2@@Z": "out-of-range row 004cfcc0, body exact from the same object",
+        "?Insert@?$List@U?$RangeNode@I@DataStructures@@@DataStructures@@QAEXU?$RangeNode@I@2@I@Z": "out-of-range row 004cfdd0, body exact from the same object",
+        "?Insert@?$OrderedList@IU?$RangeNode@I@DataStructures@@$1??$RangeNodeComp@I@2@YAHABIABU12@@Z@DataStructures@@QAEIABIABU?$RangeNode@I@2@_NP6AH01@Z@Z": "in-range row 004d0b90",
+        "?RemoveAtIndex@?$OrderedList@IU?$RangeNode@I@DataStructures@@$1??$RangeNodeComp@I@2@YAHABIABU12@@Z@DataStructures@@QAEXI@Z": "out-of-range row 004d0bf0, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d1680",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?Deserialize@?$RangeList@I@DataStructures@@QAE_NPAVBitStream@RakNet@@@Z",
+      "size": 254,
+      "icf_equivalents": [],
+      "targets": {
+        "??1?$RangeNode@I@DataStructures@@QAE@XZ": "out-of-range row 0047d410, body exact from the same object",
+        "??_M@YGXPAXIHP6EX0@Z@Z": "extern library target at 006a165b (one address per symbol)",
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z",
+        "?ReadCompressed@BitStream@RakNet@@AAE_NPAEH_N@Z": "extern library target at 004a52c0 (one address per symbol)",
+        "?ReadBits@BitStream@RakNet@@QAE_NPAEH_N@Z": "extern library target at 004a5210 (one address per symbol)",
+        "?Insert@?$List@U?$RangeNode@I@DataStructures@@@DataStructures@@QAEXU?$RangeNode@I@2@@Z": "out-of-range row 004cfcc0, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d1780",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?Delete@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@QAE_NIAAPAUInternalPacket@@@Z",
+      "size": 207,
+      "icf_equivalents": [],
+      "targets": {
+        "?GetIndexOf@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IBE_NIPAU?$Page@IPAUInternalPacket@@$0CA@@2@PAH@Z": "out-of-range row 004cf280, body exact from the same object",
+        "?DeleteFromPageAtIndex@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXHPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "out-of-range row 004cf200, body exact from the same object",
+        "?Release@?$MemoryPool@U?$Page@IPAUInternalPacket@@$0CA@@DataStructures@@@DataStructures@@QAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z": "out-of-range row 004cfbb0, body exact from the same object",
+        "?FindDeleteRebalance@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NIPAU?$Page@IPAUInternalPacket@@$0CA@@2@PA_NIPAUReturnAction@12@AAPAUInternalPacket@@@Z": "in-range row 004d0fd0"
+      }
+    },
+    {
+      "row": "row 004d1850",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?Insert@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@QAE_NIABQAUInternalPacket@@@Z",
+      "size": 230,
+      "icf_equivalents": [],
+      "targets": {
+        "?Allocate@?$MemoryPool@U?$Page@IPAUInternalPacket@@$0CA@@DataStructures@@@DataStructures@@QAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@XZ": "out-of-range row 004cfb10, body exact from the same object",
+        "?InsertBranchDown@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@PAU32@PAUReturnAction@12@PA_N@Z": "in-range row 004d0d60"
+      }
+    },
+    {
+      "row": "row 004d1940",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "??1?$OrderedList@IU?$RangeNode@I@DataStructures@@$1??$RangeNodeComp@I@2@YAHABIABU12@@Z@DataStructures@@QAE@XZ",
+      "size": 173,
+      "icf_equivalents": [],
+      "targets": {
+        "local_eh": [
+          "__ehhandler$??1?$OrderedList@IU?$RangeNode@I@DataStructures@@$1??$RangeNodeComp@I@2@YAHABIABU12@@Z@DataStructures@@QAE@XZ"
+        ],
+        "??1?$RangeNode@I@DataStructures@@QAE@XZ": "out-of-range row 0047d410, body exact from the same object",
+        "??_M@YGXPAXIHP6EX0@Z@Z": "extern library target at 006a165b (one address per symbol)",
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z"
+      }
+    },
+    {
+      "row": "row 004d19f0",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?GenerateDatagram@ReliabilityLayer@@AAE_NPAVBitStream@RakNet@@HPA_N_JUSystemAddress@@AAV?$List@PAVPluginInterface@@@DataStructures@@@Z",
+      "size": 1570,
+      "icf_equivalents": [],
+      "targets": {
+        "?IsKeySet@DataBlockEncryptor@@QBE_NXZ": "extern library target at 004d5990 (one address per symbol)",
+        "?Write1@BitStream@RakNet@@QAEXXZ": "extern library target at 004a5560 (one address per symbol)",
+        "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z": "extern library target at 004a5600 (one address per symbol)",
+        "?Serialize@?$RangeList@I@DataStructures@@QAEIPAVBitStream@RakNet@@H_N@Z": "in-range row 004d0a00",
+        "?Write0@BitStream@RakNet@@QAEXXZ": "extern library target at 004a5540 (one address per symbol)",
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z",
+        "?Release@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEXPAUInternalPacket@@@Z": "out-of-range row 004cf9a0, body exact from the same object",
+        "__alldiv": "extern library target at 006a1c30 (one address per symbol)",
+        "?WriteToBitStreamFromInternalPacket@ReliabilityLayer@@AAEHPAVBitStream@RakNet@@QBUInternalPacket@@_J@Z": "out-of-range row 004cf7f0, body exact from the same object",
+        "__allmul": "extern library target at 006a16d0 (one address per symbol)",
+        "?Push@?$Queue@PAUInternalPacket@@@DataStructures@@QAEXABQAUInternalPacket@@@Z": "out-of-range row 004cede0, body exact from the same object",
+        "?PushAtHead@?$Queue@PAUInternalPacket@@@DataStructures@@QAEXABQAUInternalPacket@@I@Z": "out-of-range row 004ceeb0, body exact from the same object",
+        "?Insert@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@QAE_NIABQAUInternalPacket@@@Z": "in-range row 004d1850"
+      }
+    },
+    {
+      "row": "row 004d2020",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?InsertIntoSplitPacketList@ReliabilityLayer@@AAEXPAUInternalPacket@@_J@Z",
+      "size": 470,
+      "icf_equivalents": [],
+      "targets": {
+        "?SplitPacketChannelComp@@YAHABGABQAUSplitPacketChannel@@@Z": "out-of-range row 004cf7c0, body exact from the same object",
+        "?GetIndexFromKey@?$OrderedList@GPAUSplitPacketChannel@@$1?SplitPacketChannelComp@@YAHABGABQAU1@@Z@DataStructures@@QBEIABGPA_NP6AH0ABQAUSplitPacketChannel@@@Z@Z": "out-of-range row 004cf170, body exact from the same object",
+        "??2@YAPAXI@Z": "import mfc90.dll!??2@YAPAXI@Z",
+        "?Insert@?$List@PAUSplitPacketChannel@@@DataStructures@@QAEXQAUSplitPacketChannel@@@Z": "out-of-range row 004bc120, body exact from the same object",
+        "?Insert@?$List@PAUSplitPacketChannel@@@DataStructures@@QAEXQAUSplitPacketChannel@@I@Z": "out-of-range row 004cf380, body exact from the same object",
+        "?SplitPacketIndexComp@@YAHABIABQAUInternalPacket@@@Z": "out-of-range row 004ce9a0, body exact from the same object",
+        "?GetIndexFromKey@?$OrderedList@IPAUInternalPacket@@$1?SplitPacketIndexComp@@YAHABIABQAU1@@Z@DataStructures@@QBEIABIPA_NP6AH0ABQAUInternalPacket@@@Z@Z": "out-of-range row 004cf170, body exact from the same object",
+        "?Insert@?$List@PAUInternalPacket@@@DataStructures@@QAEXQAUInternalPacket@@@Z": "out-of-range row 004bc120, body exact from the same object",
+        "?Insert@?$List@PAUInternalPacket@@@DataStructures@@QAEXQAUInternalPacket@@I@Z": "out-of-range row 004cf380, body exact from the same object",
+        "?Allocate@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEPAUInternalPacket@@XZ": "out-of-range row 004cf900, body exact from the same object",
+        "_memcpy": "import msvcr90.dll!memcpy",
+        "?Push@?$Queue@PAUInternalPacket@@@DataStructures@@QAEXABQAUInternalPacket@@@Z": "out-of-range row 004cede0, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d2200",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?BuildPacketFromSplitPacketList@ReliabilityLayer@@AAEPAUInternalPacket@@G_J@Z",
+      "size": 445,
+      "icf_equivalents": [],
+      "targets": {
+        "?SplitPacketChannelComp@@YAHABGABQAUSplitPacketChannel@@@Z": "out-of-range row 004cf7c0, body exact from the same object",
+        "?GetIndexFromKey@?$OrderedList@GPAUSplitPacketChannel@@$1?SplitPacketChannelComp@@YAHABGABQAU1@@Z@DataStructures@@QBEIABGPA_NP6AH0ABQAUSplitPacketChannel@@@Z@Z": "out-of-range row 004cf170, body exact from the same object",
+        "?Allocate@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEPAUInternalPacket@@XZ": "out-of-range row 004cf900, body exact from the same object",
+        "??2@YAPAXI@Z": "import mfc90.dll!??2@YAPAXI@Z",
+        "_memcpy": "import msvcr90.dll!memcpy",
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z",
+        "?Release@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEXPAUInternalPacket@@@Z": "out-of-range row 004cf9a0, body exact from the same object",
+        "??1?$OrderedList@IPAUInternalPacket@@$1?SplitPacketIndexComp@@YAHABIABQAU1@@Z@DataStructures@@QAE@XZ": "out-of-range row 004ba400, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d23c0",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?DeleteOldUnreliableSplitPackets@ReliabilityLayer@@AAEX_J@Z",
+      "size": 279,
+      "icf_equivalents": [],
+      "targets": {
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z",
+        "?Release@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEXPAUInternalPacket@@@Z": "out-of-range row 004cf9a0, body exact from the same object",
+        "??1?$OrderedList@IPAUInternalPacket@@$1?SplitPacketIndexComp@@YAHABIABQAU1@@Z@DataStructures@@QAE@XZ": "out-of-range row 004ba400, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d24e0",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "??1?$RangeList@I@DataStructures@@QAE@XZ",
+      "size": 139,
+      "icf_equivalents": [],
+      "targets": {
+        "local_eh": [
+          "__ehhandler$??1?$RangeList@I@DataStructures@@QAE@XZ"
+        ],
+        "??1?$RangeNode@I@DataStructures@@QAE@XZ": "out-of-range row 0047d410, body exact from the same object",
+        "??_M@YGXPAXIHP6EX0@Z@Z": "extern library target at 006a165b (one address per symbol)",
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z",
+        "??1?$OrderedList@IU?$RangeNode@I@DataStructures@@$1??$RangeNodeComp@I@2@YAHABIABU12@@Z@DataStructures@@QAE@XZ": "in-range row 004d1940"
+      }
+    },
+    {
+      "row": "row 004d2570",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "??1?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@QAE@XZ",
+      "size": 92,
+      "icf_equivalents": [],
+      "targets": {
+        "local_eh": [
+          "__ehhandler$??1?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@QAE@XZ"
+        ],
+        "?FreePages@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXXZ": "in-range row 004d0c30",
+        "?Clear@?$MemoryPool@U?$Page@IPAUInternalPacket@@$0CA@@DataStructures@@@DataStructures@@QAEXXZ": "out-of-range row 004cf2e0, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d25d0",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "??0ReliabilityLayer@@QAE@XZ",
+      "size": 419,
+      "icf_equivalents": [],
+      "targets": {
+        "local_eh": [
+          "__ehhandler$??0ReliabilityLayer@@QAE@XZ"
+        ],
+        "??2@YAPAXI@Z": "import mfc90.dll!??2@YAPAXI@Z",
+        "??1?$Queue@PAUInternalPacket@@@DataStructures@@QAE@XZ": "out-of-range row 004cddf0, body exact from the same object",
+        "??0?$Queue@PAUInternalPacket@@@DataStructures@@QAE@XZ": "out-of-range row 004ceda0, body exact from the same object",
+        "??_L@YGXPAXIHP6EX0@Z1@Z": "extern library target at 006a1598 (one address per symbol)",
+        "??0BitStream@RakNet@@QAE@H@Z": "extern library target at 004a50c0 (one address per symbol)",
+        "??0DataBlockEncryptor@@QAE@XZ": "extern library target at 004d5980 (one address per symbol)",
+        "?InitializeVariables@ReliabilityLayer@@AAEXXZ": "out-of-range row 004cea10, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d2780",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?FreeThreadSafeMemory@ReliabilityLayer@@AAEXXZ",
+      "size": 1254,
+      "icf_equivalents": [],
+      "targets": {
+        "local_eh": [
+          "__ehhandler$?FreeThreadSafeMemory@ReliabilityLayer@@AAEXXZ"
+        ],
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z",
+        "??1?$OrderedList@IPAUInternalPacket@@$1?SplitPacketIndexComp@@YAHABIABQAU1@@Z@DataStructures@@QAE@XZ": "out-of-range row 004ba400, body exact from the same object",
+        "??2@YAPAXI@Z": "import mfc90.dll!??2@YAPAXI@Z",
+        "?FreePages@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXXZ": "in-range row 004d0c30",
+        "?Clear@?$MemoryPool@U?$Page@IPAUInternalPacket@@$0CA@@DataStructures@@@DataStructures@@QAEXXZ": "out-of-range row 004cf2e0, body exact from the same object",
+        "?Clear@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEXXZ": "out-of-range row 004cf2e0, body exact from the same object",
+        "??1?$RangeNode@I@DataStructures@@QAE@XZ": "out-of-range row 0047d410, body exact from the same object",
+        "??_M@YGXPAXIHP6EX0@Z@Z": "extern library target at 006a165b (one address per symbol)"
+      }
+    },
+    {
+      "row": "row 004d2c70",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?HandleSocketReceiveFromConnectedPlayer@ReliabilityLayer@@QAE_NPBDHUSystemAddress@@AAV?$List@PAVPluginInterface@@@DataStructures@@H@Z",
+      "size": 2458,
+      "icf_equivalents": [],
+      "targets": {
+        "local_eh": [
+          "__ehhandler$?HandleSocketReceiveFromConnectedPlayer@ReliabilityLayer@@QAE_NPBDHUSystemAddress@@AAV?$List@PAVPluginInterface@@@DataStructures@@H@Z"
+        ],
+        "?IsKeySet@DataBlockEncryptor@@QBE_NXZ": "extern library target at 004d5990 (one address per symbol)",
+        "?Decrypt@DataBlockEncryptor@@QAE_NPAEH0PAH@Z": "extern library target at 004d5b70 (one address per symbol)",
+        "??0BitStream@RakNet@@QAE@PAEI_N@Z": "extern library target at 004a5120 (one address per symbol)",
+        "?GetTimeNS@RakNet@@YA_JXZ": "extern library target at 004c9790 (one address per symbol)",
+        "??$Read@_N@BitStream@RakNet@@QAE_NAA_N@Z": "out-of-range row 004a5050, body exact from the same object",
+        "?ReadBits@BitStream@RakNet@@QAE_NPAEH_N@Z": "extern library target at 004a5210 (one address per symbol)",
+        "?Deserialize@?$RangeList@I@DataStructures@@QAE_NPAVBitStream@RakNet@@@Z": "in-range row 004d1680",
+        "?Delete@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@QAE_NIAAPAUInternalPacket@@@Z": "in-range row 004d1780",
+        "__alldiv": "extern library target at 006a1c30 (one address per symbol)",
+        "??1?$RangeList@I@DataStructures@@QAE@XZ": "in-range row 004d24e0",
+        "??1BitStream@RakNet@@QAE@XZ": "extern library target at 004a51a0 (one address per symbol)",
+        "__allmul": "extern library target at 006a16d0 (one address per symbol)",
+        "__real@3f947ae147ae147b": "extern library target at 00826b00 (one address per symbol)",
+        "?ceil@@YAOO@Z": "out-of-range row 004ce980, body exact from the same object",
+        "__ftol2": "extern library target at 006a1826 (one address per symbol)",
+        "__real@3fa47ae147ae147b": "extern library target at 00826af8 (one address per symbol)",
+        "?CreateInternalPacketFromBitStream@ReliabilityLayer@@AAEPAUInternalPacket@@PAVBitStream@RakNet@@_J@Z": "in-range row 004d0630",
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z",
+        "??2@YAPAXI@Z": "import mfc90.dll!??2@YAPAXI@Z",
+        "?Insert@?$RangeList@I@DataStructures@@QAEXI@Z": "in-range row 004d1530",
+        "?Push@?$Queue@_J@DataStructures@@QAEXAB_J@Z": "out-of-range row 004cefc0, body exact from the same object",
+        "?Compress@?$Queue@_J@DataStructures@@QAEXXZ": "out-of-range row 004cf0c0, body exact from the same object",
+        "?DeleteOldUnreliableSplitPackets@ReliabilityLayer@@AAEX_J@Z": "in-range row 004d23c0",
+        "?InsertIntoSplitPacketList@ReliabilityLayer@@AAEXPAUInternalPacket@@_J@Z": "in-range row 004d2020",
+        "?BuildPacketFromSplitPacketList@ReliabilityLayer@@AAEPAUInternalPacket@@G_J@Z": "in-range row 004d2200",
+        "?Push@?$Queue@PAUInternalPacket@@@DataStructures@@QAEXABQAUInternalPacket@@@Z": "out-of-range row 004cede0, body exact from the same object",
+        "?Del@?$CircularLinkedList@PAUInternalPacket@@@DataStructures@@QAEXXZ": "out-of-range row 004cf490, body exact from the same object",
+        "?AddToOrderingList@ReliabilityLayer@@AAEXPAUInternalPacket@@@Z": "in-range row 004d12e0",
+        "?Release@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEXPAUInternalPacket@@@Z": "out-of-range row 004cf9a0, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d3610",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?Update@ReliabilityLayer@@QAEXIUSystemAddress@@H_JIAAV?$List@PAVPluginInterface@@@DataStructures@@@Z",
+      "size": 1314,
+      "icf_equivalents": [],
+      "targets": {
+        "?AckTimeout@ReliabilityLayer@@QAE_N_J@Z": "out-of-range row 004cec70, body exact from the same object",
+        "__alldiv": "extern library target at 006a1c30 (one address per symbol)",
+        "__allmul": "extern library target at 006a16d0 (one address per symbol)",
+        "?Reset@BitStream@RakNet@@QAEXXZ": "extern library target at 004a51c0 (one address per symbol)",
+        "?GenerateDatagram@ReliabilityLayer@@AAE_NPAVBitStream@RakNet@@HPA_N_JUSystemAddress@@AAV?$List@PAVPluginInterface@@@DataStructures@@@Z": "in-range row 004d19f0",
+        "?SendBitStream@ReliabilityLayer@@AAEXIUSystemAddress@@PAVBitStream@RakNet@@@Z": "out-of-range row 004ceb60, body exact from the same object",
+        "??2@YAPAXI@Z": "import mfc90.dll!??2@YAPAXI@Z",
+        "_memcpy": "import msvcr90.dll!memcpy",
+        "?randomMT@@YAIXZ": "extern library target at 004d4120 (one address per symbol)",
+        "?Insert@?$List@PAUDataAndTime@ReliabilityLayer@@@DataStructures@@QAEXQAUDataAndTime@ReliabilityLayer@@@Z": "out-of-range row 004bc120, body exact from the same object",
+        "__real@412e848000000000": "extern library target at 0081eef0 (one address per symbol)",
+        "__real@41f0000000000000": "extern library target at 00811240 (one address per symbol)",
+        "__ftol2": "extern library target at 006a1826 (one address per symbol)",
+        "?Write1@BitStream@RakNet@@QAEXXZ": "extern library target at 004a5560 (one address per symbol)",
+        "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z": "extern library target at 004a5600 (one address per symbol)",
+        "?Serialize@?$RangeList@I@DataStructures@@QAEIPAVBitStream@RakNet@@H_N@Z": "in-range row 004d0a00",
+        "?Write@BitStream@RakNet@@QAEXPBDH@Z": "extern library target at 004a5700 (one address per symbol)",
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z"
+      }
+    },
+    {
+      "row": "row 004d3b40",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "??1ReliabilityLayer@@QAE@XZ",
+      "size": 295,
+      "icf_equivalents": [],
+      "targets": {
+        "local_eh": [
+          "__ehhandler$??1ReliabilityLayer@@QAE@XZ"
+        ],
+        "?FreeThreadSafeMemory@ReliabilityLayer@@AAEXXZ": "in-range row 004d2780",
+        "?Clear@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEXXZ": "out-of-range row 004cf2e0, body exact from the same object",
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z",
+        "??1DataBlockEncryptor@@QAE@XZ": "extern library target at 0047d410 (one address per symbol)",
+        "??1BitStream@RakNet@@QAE@XZ": "extern library target at 004a51a0 (one address per symbol)",
+        "??1?$OrderedList@GPAUSplitPacketChannel@@$1?SplitPacketChannelComp@@YAHABGABQAU1@@Z@DataStructures@@QAE@XZ": "out-of-range row 004ba400, body exact from the same object",
+        "??1?$Queue@PAUInternalPacket@@@DataStructures@@QAE@XZ": "out-of-range row 004cddf0, body exact from the same object",
+        "??_M@YGXPAXIHP6EX0@Z@Z": "extern library target at 006a165b (one address per symbol)",
+        "??1?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@QAE@XZ": "in-range row 004d2570",
+        "??1?$RangeList@I@DataStructures@@QAE@XZ": "in-range row 004d24e0"
+      }
+    },
+    {
+      "row": "row 004d3c70",
+      "block": "raknet-reliabilitylayer",
+      "file": "ReliabilityLayer.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?Reset@ReliabilityLayer@@QAEX_N@Z",
+      "size": 26,
+      "icf_equivalents": [],
+      "targets": {
+        "?FreeThreadSafeMemory@ReliabilityLayer@@AAEXXZ": "in-range row 004d2780",
+        "?InitializeVariables@ReliabilityLayer@@AAEXXZ": "out-of-range row 004cea10, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d3c90",
+      "block": "raknet-rpcmap",
+      "file": "RPCMap.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "??0RPCMap@@QAE@XZ",
+      "size": 13,
+      "icf_equivalents": [
+        "??0?$List@PAURPCNode@@@DataStructures@@QAE@XZ"
+      ],
+      "targets": {}
+    },
+    {
+      "row": "row 004d3ca0",
+      "block": "raknet-rpcmap",
+      "file": "RPCMap.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?Clear@RPCMap@@QAEXXZ",
+      "size": 97,
+      "icf_equivalents": [],
+      "targets": {
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z"
+      }
+    },
+    {
+      "row": "row 004d3d10",
+      "block": "raknet-rpcmap",
+      "file": "RPCMap.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?GetNodeFromIndex@RPCMap@@QAEPAURPCNode@@E@Z",
+      "size": 23,
+      "icf_equivalents": [],
+      "targets": {}
+    },
+    {
+      "row": "row 004d3d30",
+      "block": "raknet-rpcmap",
+      "file": "RPCMap.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?GetIndexFromFunctionName@RPCMap@@QAEEPBD@Z",
+      "size": 90,
+      "icf_equivalents": [],
+      "targets": {}
+    },
+    {
+      "row": "row 004d3d90",
+      "block": "raknet-rpcmap",
+      "file": "RPCMap.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?AddIdentifierWithFunction@RPCMap@@QAEXPBDPAX_N@Z",
+      "size": 143,
+      "icf_equivalents": [],
+      "targets": {
+        "?GetIndexFromFunctionName@RPCMap@@QAEEPBD@Z": "in-range row 004d3d30",
+        "??2@YAPAXI@Z": "import mfc90.dll!??2@YAPAXI@Z",
+        "?Insert@?$List@PAURPCNode@@@DataStructures@@QAEXQAURPCNode@@@Z": "out-of-range row 004bc120, body exact from the same object",
+        "?Replace@?$List@PAURPCNode@@@DataStructures@@QAEXQAURPCNode@@0I@Z": "out-of-range row 004ced00, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d3e20",
+      "block": "raknet-rpcmap",
+      "file": "RPCMap.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?AddIdentifierAtIndex@RPCMap@@QAEXPBDE@Z",
+      "size": 190,
+      "icf_equivalents": [],
+      "targets": {
+        "?GetIndexFromFunctionName@RPCMap@@QAEEPBD@Z": "in-range row 004d3d30",
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z",
+        "??2@YAPAXI@Z": "import mfc90.dll!??2@YAPAXI@Z",
+        "?Replace@?$List@PAURPCNode@@@DataStructures@@QAEXQAURPCNode@@0I@Z": "out-of-range row 004ced00, body exact from the same object"
+      }
+    },
+    {
+      "row": "row 004d3ee0",
+      "block": "raknet-rpcmap",
+      "file": "RPCMap.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?RemoveNode@RPCMap@@QAEXPBD@Z",
+      "size": 55,
+      "icf_equivalents": [],
+      "targets": {
+        "?GetIndexFromFunctionName@RPCMap@@QAEEPBD@Z": "in-range row 004d3d30",
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z"
+      }
+    },
+    {
+      "row": "row 004d3f20",
+      "block": "raknet-rpcmap",
+      "file": "RPCMap.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "??1RPCMap@@QAE@XZ",
+      "size": 83,
+      "icf_equivalents": [],
+      "targets": {
+        "local_eh": [
+          "__ehhandler$??1RPCMap@@QAE@XZ"
+        ],
+        "?Clear@RPCMap@@QAEXXZ": "in-range row 004d3ca0",
+        "??3@YAXPAX@Z": "import mfc90.dll!??3@YAXPAX@Z"
+      }
+    },
+    {
+      "row": "row 004d3f80",
+      "block": "raknet-simplemutex",
+      "file": "SimpleMutex.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "??0SimpleMutex@@QAE@XZ",
+      "size": 14,
+      "icf_equivalents": [],
+      "targets": {
+        "__imp__InitializeCriticalSection@4": "import kernel32.dll!InitializeCriticalSection"
+      }
+    },
+    {
+      "row": "row 004d3f90",
+      "block": "raknet-simplemutex",
+      "file": "SimpleMutex.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?Lock@SimpleMutex@@QAEXXZ",
+      "size": 8,
+      "icf_equivalents": [
+        "??1SimpleMutex@@QAE@XZ",
+        "?Unlock@SimpleMutex@@QAEXXZ"
+      ],
+      "targets": {
+        "__imp__EnterCriticalSection@4": "import kernel32.dll!EnterCriticalSection"
+      }
+    },
+    {
+      "row": "row 004d3fa0",
+      "block": "raknet-simplemutex",
+      "file": "SimpleMutex.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?Unlock@SimpleMutex@@QAEXXZ",
+      "size": 8,
+      "icf_equivalents": [
+        "??1SimpleMutex@@QAE@XZ",
+        "?Lock@SimpleMutex@@QAEXXZ"
+      ],
+      "targets": {
+        "__imp__LeaveCriticalSection@4": "import kernel32.dll!LeaveCriticalSection"
+      }
+    },
+    {
+      "row": "row 004d3fb0",
+      "block": "raknet-rand",
+      "file": "Rand.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?seedMT@@YAXI@Z",
+      "size": 49,
+      "icf_equivalents": [],
+      "targets": {
+        "_left": "extern library target at 0093d070 (one address per symbol)",
+        "_state": "extern library target at 00971d38 (one address per symbol)"
+      }
+    },
+    {
+      "row": "row 004d3ff0",
+      "block": "raknet-rand",
+      "file": "Rand.cpp",
+      "flags": "/O2 /GS- /EHsc /MD",
+      "symbol": "?reloadMT@@YAIXZ",
+      "size": 292,
+      "icf_equivalents": [],
+      "targets": {
+        "_left": "extern library target at 0093d070 (one address per symbol)",
+        "_state": "extern library target at 00971d38 (one address per symbol)",
+        "?seedMT@@YAXI@Z": "in-range row 004d3fb0",
+        "_next": "extern library target at 009726fc (one address per symbol)"
+      }
+    }
+  ],
+  "notes": {
+    "analog labels": "The analog server labels name several rows from other RakNet files that compile to identical code (ConnectionGraph OrderedList<SystemAddress>::Insert at row 004d0b90, DS_Table BPlusTree<Row*,16> dtor at row 004d2570, FileList dtor at row 004d3f20, G3D GMutex / AtomicInt32 at rows 004d3f80..004d3fa0, PhysicsSender unit names). This map uses the symbol of the block's own file that is byte-identical and whose call / import targets agree.",
+    "icf": "Row 004d0bf0 is List<RangeNode<unsigned>>::RemoveAtIndex and the identical OrderedList::RemoveAtIndex; row 004d3c90 is RPCMap::RPCMap and the identical List<RPCNode*>::List; rows 004d3f90 / 004d3fa0 are SimpleMutex::Lock / Unlock (each shape-identical to the dtor, told apart by the import called).",
+    "callers": "Callers outside the range (checked below from functions.jsonl) are the RakPeer.cpp rows 004bb5d0..004c65c0 (server analog labels: RemoteSystemStruct ctor / dtor, RPC registration, ban list, Shutdown, ~RakPeer, InitializeSecurity, ...) and 0078de50, the XTP 11.2.2 CXTPOffice2007Image ctor, which calls the folded critical-section ctor body of row 004d3f80. No RBX class, RTTI, vtable or static initializer references the range."
+  },
+  "range_functions": 45,
+  "range_bytes": 15622,
+  "range_rows_counted_by_other_receipts": [],
+  "exact_function_rows": [],
+  "scope": "Inactive map receipt. No native source, no counted row, no active build, swap or credit."
+}

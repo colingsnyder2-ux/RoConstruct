@@ -35,6 +35,7 @@ namespace RBX
 	{
 		class RefPropertyDescriptor;
 		class ConstProperty;
+		class Property;
 	}
 
 	namespace Network
@@ -106,8 +107,23 @@ namespace RBX
 			// Donor Streaming.h IdSerializer::serializeRef (thiscall, ret 8; caller Replicator::serializeValue 004b6890
 			// passes the Replicator this unadjusted: IdSerializer at +0). Body in AppUnit49C_2008IdSerializerTemplates.cpp.
 			void serializeRef(const Reflection::ConstProperty& property, RakNet::BitStream& stream); // 004a8b90
-				public:
-			void deserializeId(RakNet::BitStream &,RBX::Guid::Data &);   // INFERRED: ?deserializeId@IdSerializer@Network@RBX@@QAEXAAVBitStream@RakNet@@AAUData@Guid@3@@Z (header gap, header_gap_fill.py)
-};
+			// Donor Streaming.h IdSerializer::deserializeId (thiscall, ret 8): StringReceiver::receive(const Name*&)
+			// 004a6f70 on scopeNames +0x130 + StringReceiver +0xe24 (= +0xf54). Body in AppUnit49C_2008IdSerializerTemplates.cpp.
+			void deserializeId(RakNet::BitStream& stream, Guid::Data& id);           // 004a70b0
+			// Donor Streaming.h IdSerializer::resolvePendingBindings (thiscall, ret 0xc: Guid::Data by value; callers
+			// Replicator::readInstanceDelete 004b0800 / readInstanceNew 004b7250). Body in AppUnit49C_2008IdSerializerTemplates.cpp.
+			void resolvePendingBindings(Instance* instance, Guid::Data id);          // 004a9250
+			// Donor Streaming.h overload (thiscall, ret 0xc): deserializeId 004a70b0 with `this` passed through, then the
+			// GuidItem<Instance> registry lookup 0049ba80; callers Replicator::readChangedProperty 004b7a30 and
+			// readInstanceDelete 004b0800.
+			bool deserializeInstanceRef(RakNet::BitStream& stream, Instance*& instance, Guid::Data& id); // 004a8b60
+			// Donor Streaming.h IdSerializer::deserializeRef (thiscall, ret 8; caller Replicator::deserializeValue 004b6ab0).
+			void deserializeRef(Reflection::Property& property, RakNet::BitStream& stream); // 004a9440
+		protected:
+			// Donor Streaming.h static IdSerializer::setRefValue (cdecl: 004a6de0 reads both arguments from the stack;
+			// RefPropertyDescriptor slot 0x34 setRefValue with NULL-checked +0x14 adjustments). resolvePendingBindings
+			// 004a9250 passes its address to std::for_each 004a7920 through boost::bind.
+			static void setRefValue(WaitItem& wi, Instance* instance);              // 004a6de0
+		};
 	}
 }

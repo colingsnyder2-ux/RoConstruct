@@ -15,6 +15,17 @@
 #include "tool/Dragger.h"
 #include "util/Math.h"
 
+// INFERRED: the shared native util/SurfaceType.h currently stops at GLUE = 4 (proposal sent to its owner: add
+// SPAWN_deprecated 5, ROTATE 6, ROTATE_V 7, ROTATE_P 8, NUM_SURF_TYPES, the donor order). The values are read from
+// computeSurfacesNeedAdorn 00599640 (cmp eax, 6 / 8 / 7 for ROTATE / ROTATE_P / ROTATE_V) and WorldJointRotate 00645e40.
+// Unit-local stand-ins at global scope: once RBX::ROTATE.. exist, lookup inside namespace RBX finds those first.
+namespace
+{
+	const RBX::SurfaceType ROTATE = static_cast<RBX::SurfaceType>(6);
+	const RBX::SurfaceType ROTATE_V = static_cast<RBX::SurfaceType>(7);
+	const RBX::SurfaceType ROTATE_P = static_cast<RBX::SurfaceType>(8);
+}
+
 namespace RBX
 {
 	// 0059b970: the vtable stores, the ContentId (+0x3c8) / Primitive (+0x228) / IRenderable (+0x1cc) / Notifier member

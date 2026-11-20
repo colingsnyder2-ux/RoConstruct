@@ -15,17 +15,15 @@
 // Proof (2026-11-13): onSelectScript 005d1240 is byte-identical (244 bytes, relocations masked; every call target and
 // the desc_Selected data reference agree) to the candidate object, but prove.py lists it as a draft without candidates
 // because the function table has no start at 005d1240 (005d11e0 setTextureId is recorded as 340 bytes and swallows it).
-// getMouse 005cf8d0 is prove.py inactive_exact. onSelectCommand stays behind NATIVE_HOPPERBINSELECT_PENDING: with a
-// scratch overlay that adds Instance::getRootAncestor and the 2008 call_once EnumDesc::singleton (header proposals) it
-// is byte-identical (244 bytes), together with doSingleton 005d0300 (90 bytes) and callDoSingleton 005d0360 (5 bytes).
+// getMouse 005cf8d0 is prove.py inactive_exact. onSelectCommand (2026-11-20): the core headers now carry the inline
+// Instance::getRootAncestor and the call_once EnumDesc::singleton, so the former NATIVE_HOPPERBINSELECT_PENDING guard is
+// gone; prove.py inactive_exact for 005d0ec0 (244 bytes), doSingleton 005d0300 and callDoSingleton 005d0360.
 #include "v8datamodel/Hopper.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/ScriptMouseCommand.h"
 #include "v8datamodel/Mouse.h"
-#ifdef NATIVE_HOPPERBINSELECT_PENDING
 #include "v8datamodel/DataModel.h"
 #include "v8tree/Verb.h"
-#endif
 
 namespace RBX
 {
@@ -100,9 +98,8 @@ namespace RBX
 		}
 	}
 
-#ifdef NATIVE_HOPPERBINSELECT_PENDING
-	// 005d0ec0. Pending: needs the donor's inline `Instance* getRootAncestor() { return parent ? parent->getRootAncestor()
-	// : this; }` in v8tree/Instance.h (core header, proposal); MSVC inlines the first step (parent +0x104) and calls the
+	// 005d0ec0. Uses the donor's inline `Instance* getRootAncestor() { return parent ? parent->getRootAncestor()
+	// : this; }` (now in core v8tree/Instance.h); MSVC inlines the first step (parent +0x104) and calls the
 	// out-of-line copy 0042a5f0 (?getRootAncestor@Instance@RBX@@QAEPAV12@XZ, which only recurses on itself). The
 	// RBXASSERTs of the donor are compiled out in this build (no assert code in 005d0ec0).
 	void HopperBin::onSelectCommand()
@@ -120,5 +117,16 @@ namespace RBX
 				verb->doIt(&workspace->getDataState());
 		}
 	}
-#endif
+
+	// 005d13d0 (setter of desc_legacyTextureName "TextureName", Hopper.cpp; also called by setBinType 005d16d0):
+	// "Textures\\" (0083b4c0) + value + ".png" (0083b4b8) through the two MSVCP90 operator+ imports, ContentId::fromAssets
+	// 0055c500 (std::string overload), the TextureId(const ContentId&) copy (string copy + mimeTypePtr +0x1c), then
+	// BackpackItem::setTextureId 005d11e0.
+	void HopperBin::setLegacyTextureName(const std::string& value)
+	{
+		// Rejected: setTextureId(ContentId::fromAssets(...)) as one expression keeps the temporaries alive across the
+		// call (250 B); the target destroys them first, so the TextureId is a named local.
+		TextureId textureId = ContentId::fromAssets("Textures\\" + value + ".png");
+		setTextureId(textureId);
+	}
 }

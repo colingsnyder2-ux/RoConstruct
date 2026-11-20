@@ -1,0 +1,1024 @@
+{
+  "class": "RBX v8xml/XmlSerializer.cpp rows of the application range 0058c000..00590000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), document-swap flags, native-headers/writer-2008 first",
+  "flags": {
+    "xml": [
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/writer-2008",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit58c/AppUnit58CXmlSerializer.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit58CXmlSerializer.cpp"
+    ],
+    "xml_pending": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/app-unit58c/pending",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/writer-2008",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/DNATIVE_APPUNIT58C_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit58c/AppUnit58CXmlSerializer_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit58CXmlSerializer.cpp"
+    ],
+    "layout": [
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/writer-2008",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit58c/AppUnit58CLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/app-unit58c/NativeAppUnit58CLayout.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit58c.py": "1b2387bba066e14f089f21c70179716ca48e64f1266b1b50192e5a0acc978606",
+    "rebuild/2008-06/native-classes/AppUnit58CXmlSerializer.cpp": "5539fcf9cec96230410ed8958d765c3c83adc22818c81b749d63d771360c973c",
+    "rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h": "0fab3121a84dfc5ae591089ed31f092c3b604d48f7f938573ad6c8b941b4f61c",
+    "rebuild/2008-06/native-headers/v8xml/XmlSerializer.h": "7f3412ef1a73081399dc982dbb4b7b1de9f6331298e9a732fb4209dbc170707f",
+    "rebuild/2008-06/native-headers/v8xml/XmlElement.h": "9fb2186f9cd2a7b71cc2e213244b480d674fa9997d2199e8df5fc3108406e76a",
+    "rebuild/2008-06/native-headers/AppUnit58C/base64.hpp": "78701475c81a87f9bd39e8228ebf24daa20f2d6587149e9c3eea0b85d295604f",
+    "tools/rbxgs/Client/App/include/util/ContentProvider.h": "6f90435409a299807c2b65b6d75e257d6acc31863c690e81e9e5f87b63b5fe3e"
+  },
+  "objects": {
+    "xml": "f0d1fde84157926e0031379bf26f8f2290071f903cddcdcc29799afb4f1a84ff",
+    "xml_pending": "a182d3f20f2ffcbab4c22f6cb1d3c14e067f88d3b4289bfa1ca4b71b65d8c712",
+    "layout": "dc77250da6210b1fd85ae6f7085c5866e0a03555721816ec75b8af9d3698c94e"
+  },
+  "range_functions": 53,
+  "unit_map": {
+    "change-history tail 0058c000..0058c91f": "ChangeHistoryService.cpp (unit starts at 00587eb0; app-unit588-2008 map). Its uncounted rows here: 0x58c540 (string-by-value forwarder into 0x58c2c0), 0x58c5e0 (enabled flag +0x165 / history count +0x150 loop into 0x58bf80), 0x58c620 (ChangeHistoryService::start, bytes exact in app-unit588-2008 but not counted there). The ChangeHistoryService owner holds an active lease on the unit; not built here (no proposal needed).",
+    "xml-serializer 0058c920..0059001f (built here)": "v8xml/XmlSerializer.cpp. Boundary evidence: XmlNameValuePair(const Name&, const char*) 0x58c920 follows the ChangeHistoryService static initializer 0x58c8b0 (\"ChangeHistoryService.enabled\"); evidence names isCloseTag 0x58c990 .. XmlWriter() 0x58fff0; the next row 0x590020 is the RootInstance unit (jmp ~ModelInstance). Strings: \"tag expected\", \"tag expected after Byte-Order-Mark\", \"Expected '<' / '>' but got EOF in Xml stream\", entity names, \"TextXmlParser::parse empty file\", \"<?\", \"binary\", \"url\", the three \"TextXmlParser::parse - ...\" formats, \"&lt;\" .. \"&apos;\", \"<null></null>\", \"<hash>\", \"<url>\", \"<binary xmime:contentType=\\\"\", \"map/set<T> too long\". Vtables TextXmlWriter 0x80ea1c, TextXmlWriterWithEmbeddedContent 0x81c848, TextXmlParser 0x80ea28, XmlParser 0x831b40 (RTTI checked). Built here: 39 counted rows; parse 0x58f6c0 pending-build-only; _Buynode 0x58d860 and its catch funclet row 0x58d8de BOUNDS (not counted).",
+    "library code": "No library unit lies in the range. The STL / base64 template instances of the XmlSerializer unit (map<string, string>, set<ContentId>, istreambuf_iterator, auto_ptr<istream>, base64<char>) are instantiated by it and referenced only from it; they are built and counted here. The std::operator<< instances 0x44a450 / 0x44a640, runtime_error 0x409d50 and the set _Insert 0x691d90 (ICF-shared, counted by adorn) lie elsewhere.",
+    "excluded": "No CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView row lies in the range."
+  },
+  "range_rows_counted_by_other_receipts": [
+    "0058c0f0 counted by app-unit588-2008-working.json",
+    "0058c1c0 counted by app-unit588-2008-working.json",
+    "0058c2c0 counted by app-unit588-2008-working.json",
+    "0058c3c0 counted by app-unit588-2008-working.json",
+    "0058c4f0 counted by app-unit588-2008-working.json",
+    "0058c5c0 counted by camera-history-trial.json",
+    "0058c8b0 counted by app-unit588-2008-working.json"
+  ],
+  "row_descriptions": {
+    "0x58c920": "XmlNameValuePair(const Name&, const char*): the XmlElement.h inline constructor emitted out of line (callers serializeNode 0058f314 and 00591970)",
+    "0x58c990": "isCloseTag (evidence name; \"</\")",
+    "0x58ca20": "endsWithClose (evidence name; \"/>\")",
+    "0x58cab0": "TextXmlParser::skipWhitespace (evidence name; whitespaces 009494e0)",
+    "0x58caf0": "TextXmlParser::readFirstTag (\"tag expected after Byte-Order-Mark\", \"Expected '<' / '>' but got EOF in Xml stream\"; only caller parse 0058f76c)",
+    "0x58cc80": "TextXmlParser::readTag (evidence name; \"tag expected\")",
+    "0x58cd50": "decodeString (entities lt / gt / amp / quot / apos / nbsp, \"bad XML. No character code following #\", \"Unable to parse hexidecimal character code\"; callers readText 0058d1b8 and parseAttributes 0058e6f8)",
+    "0x58d130": "TextXmlParser::readText(bool) (callers parse 0058f982 / 0058fa7b / 0058fc44 / 0058fd47 / 0058fe87)",
+    "0x58d200": "TextXmlParser::removeTag (evidence name)",
+    "0x58d2a0": "TextXmlParser::findNextToken (evidence name)",
+    "0x58d3f0": "pair<const string, string>(const string&, const string&) (caller operator[] 0058f64b)",
+    "0x58d450": "pair<const string, string> copy constructor (caller _Buynode 0058d8ba)",
+    "0x58d4b0": "istreambuf_iterator<char>::equal (evidence name)",
+    "0x58d530": "base64<char>::_getCharType (evidence name)",
+    "0x58d5b0": "auto_ptr<istream>::operator=(auto_ptr_ref) (evidence name)",
+    "0x58d5f0": "istreambuf_iterator<char>::operator* (evidence name)",
+    "0x58d630": "istreambuf_iterator<char>::operator++ (evidence name)",
+    "0x58d660": "set<ContentId> _Tree::_Lbound (evidence name)",
+    "0x58d6a0": "map<string, string> _Tree::_Lbound (callers find 0058ef7d, operator[] 0058f5f3)",
+    "0x58d6f0": "map<string, string> const_iterator::_Dec (callers insert 0058eac3 / 0058f102)",
+    "0x58d780": "TextXmlWriter::writeCloseTag (evidence name)",
+    "0x58d7e0": "TextXmlWriter::serialize(const XmlElement*, int) (evidence name)",
+    "0x58d900": "base64<char>::get<istreambuf_iterator, ostreambuf_iterator, int> (evidence name; caller parse 0058fb1b)",
+    "0x58df70": "base64<char>::put<istreambuf_iterator, ostreambuf_iterator, int, crlf> (caller serializeNode 0058f4ad)",
+    "0x58e4a0": "TextXmlWriter::encodedWrite(ostream&, const char*) (evidence name)",
+    "0x58e590": "TextXmlParser::parseAttributes (Name::lookup 00554180, new XmlElement; caller parse 0058f91f)",
+    "0x58e810": "TextXmlWriter::serialize(const XmlElement*) (evidence name; slot 0 of 0080ea1c and 0081c848)",
+    "0x58e820": "map<string, string> _Tree::_Insert (\"map/set<T> too long\")",
+    "0x58ea20": "map<string, string> _Tree::insert(const value_type&) (caller insert(hint) 0058f203)",
+    "0x58eb10": "TextXmlWriter::writeOpenTag (evidence name)",
+    "0x58ecb0": "TextXmlWriter::serializeNode (evidence name; slot 1 of 0080ea1c)",
+    "0x58ee00": "set<ContentId> _Tree::insert(const value_type&) (evidence name)",
+    "0x58eef0": "set<ContentId> _Tree::find (caller serializeNode 0058f3a7)",
+    "0x58ef70": "map<string, string> _Tree::find (caller parse 0058fc7f)",
+    "0x58eff0": "map<string, string> _Tree::insert(iterator, const value_type&) (caller operator[] 0058f662)",
+    "0x58f230": "XmlParser(std::streambuf*) (evidence name; stores vtable 00831b40)",
+    "0x58f270": "TextXmlWriterWithEmbeddedContent::serializeNode (evidence name; slot 1 of 0081c848)",
+    "0x58f5d0": "map<string, string>::operator[] (callers parse 0058fb8b / 0058fc96)",
+    "0x58fff0": "XmlWriter(std::ostream&) (evidence name)",
+    "0x58f6c0": "TextXmlParser::parse (evidence name; slot 0 of 0080ea28; \"TextXmlParser::parse empty file\")",
+    "0x58d860": "map<string, string> _Tree::_Buynode (caller _Insert path 0058eaxx / insert)"
+  },
+  "layout": {
+    "probe": "sizeof XmlParser 0x28, TextXmlParser 0x48, XmlWriter 0x28, TextXmlWriterWithEmbeddedContent 0x4c (generated probe on the current headers, writer-2008 first)"
+  },
+  "vtables_current_headers": {
+    "??_7TextXmlWriter@@6B@": {
+      "address": "0x80ea1c",
+      "rtti": ".?AVTextXmlWriter@@",
+      "slots": 2,
+      "checked": [
+        "0 ?serialize@TextXmlWriter@@UAEXPBVXmlElement@@@Z = 0x58e810 (own row)",
+        "1 ?serializeNode@TextXmlWriter@@MAEXPBVXmlElement@@H@Z = 0x58ecb0 (own row)"
+      ]
+    },
+    "??_7TextXmlWriterWithEmbeddedContent@@6B@": {
+      "address": "0x81c848",
+      "rtti": ".?AVTextXmlWriterWithEmbeddedContent@@",
+      "slots": 2,
+      "checked": [
+        "0 ?serialize@TextXmlWriter@@UAEXPBVXmlElement@@@Z = 0x58e810 (own row)",
+        "1 ?serializeNode@TextXmlWriterWithEmbeddedContent@@MAEXPBVXmlElement@@H@Z = 0x58f270 (own row)"
+      ]
+    },
+    "??_7TextXmlParser@@6B@": {
+      "address": "0x80ea28",
+      "rtti": ".?AVTextXmlParser@@",
+      "slots": 1,
+      "checked": [
+        "0 ?parse@TextXmlParser@@UAE?AV?$auto_ptr@VXmlElement@@@std@@XZ = 0x58f6c0 (pending-build-only row)"
+      ]
+    }
+  },
+  "rows": [
+    {
+      "address": "0058c920",
+      "symbol": "??0XmlNameValuePair@@QAE@ABVName@RBX@@PBD@Z",
+      "size": 103,
+      "target_size": 103,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??0XmlNameValuePair@@QAE@ABVName@RBX@@PBD@Z"
+      ]
+    },
+    {
+      "address": "0058c990",
+      "symbol": "?isCloseTag@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 130,
+      "target_size": 130,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z": "0x8023e0 (msvcp90.dll!?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z)",
+        "??_C@_02DPNDACHE@?$DM?1?$AA@": "0x8319e0 (string '</')",
+        "__imp_??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z": "0x80236c (msvcp90.dll!??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?isCloseTag@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ]
+    },
+    {
+      "address": "0058ca20",
+      "symbol": "?endsWithClose@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 132,
+      "target_size": 132,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z": "0x8023e0 (msvcp90.dll!?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z)",
+        "??_C@_02HCGKDMEN@?1?$DO?$AA@": "0x8319e4 (string '/>')",
+        "__imp_??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z": "0x80236c (msvcp90.dll!??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?endsWithClose@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ]
+    },
+    {
+      "address": "0058cab0",
+      "symbol": "?skipWhitespace@TextXmlParser@@AAEXXZ",
+      "size": 64,
+      "target_size": 64,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x8024fc (msvcp90.dll!?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)",
+        "_whitespaces": "0x9494e0 (file static, 256 bytes equal)",
+        "__imp_?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x8024f8 (msvcp90.dll!?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058caf0",
+      "symbol": "?readFirstTag@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "size": 388,
+      "target_size": 388,
+      "exact": true,
+      "verified_targets": {
+        "?skipWhitespace@TextXmlParser@@AAEXXZ": "0x58cab0 (own row)",
+        "__imp_?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x8024f8 (msvcp90.dll!?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)",
+        "__imp_?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x8024fc (msvcp90.dll!?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@D@Z": "0x8024b4 (msvcp90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@D@Z)",
+        "??_C@_0CD@JDIGIKMF@tag?5expected?5after?5Byte?9Order?9Ma@": "0x831a38 (string 'tag expected after Byte-Order-Mark')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (external (evidence name))",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (ThrowInfo of .?AVruntime_error@std@@ (2 catchable types))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??_C@_0CH@NBLJFGJN@Expected?5?8?$DM?8?5but?5got?5EOF?5in?5Xml?5@": "0x831a10 (string \"Expected '<' but got EOF in Xml stream\")",
+        "??_C@_0CH@BHLGOENF@Expected?5?8?$DO?8?5but?5got?5EOF?5in?5Xml?5@": "0x8319e8 (string \"Expected '>' but got EOF in Xml stream\")"
+      },
+      "local_eh": [
+        "__ehhandler$?readFirstTag@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+      ]
+    },
+    {
+      "address": "0058cc80",
+      "symbol": "?readTag@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "size": 199,
+      "target_size": 199,
+      "exact": true,
+      "verified_targets": {
+        "?skipWhitespace@TextXmlParser@@AAEXXZ": "0x58cab0 (own row)",
+        "__imp_?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x8024f8 (msvcp90.dll!?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)",
+        "??_C@_0N@KHNBJCFB@tag?5expected?$AA@": "0x831a5c (string 'tag expected')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (external (evidence name))",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (ThrowInfo of .?AVruntime_error@std@@ (2 catchable types))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@D@Z": "0x8024b4 (msvcp90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@D@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$?readTag@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+      ]
+    },
+    {
+      "address": "0058cd50",
+      "symbol": "?decodeString@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@Z",
+      "size": 989,
+      "target_size": 989,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z": "0x80236c (msvcp90.dll!??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "__imp_??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@D@Z": "0x8024b4 (msvcp90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@D@Z)",
+        "??_C@_02KCAKIFL@lt?$AA@": "0x831ae4 (string 'lt')",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_C@_02GHFEHLK@gt?$AA@": "0x831ae0 (string 'gt')",
+        "??_C@_03DCBBJBAA@amp?$AA@": "0x831adc (string 'amp')",
+        "??_C@_04KJFGKBNM@quot?$AA@": "0x831ad4 (string 'quot')",
+        "??_C@_04LBCJFAKL@apos?$AA@": "0x831acc (string 'apos')",
+        "??_C@_04PHHIFBLJ@nbsp?$AA@": "0x831ac4 (string 'nbsp')",
+        "__imp_?npos@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@2IB": "0x8023e8 (msvcp90.dll!?npos@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@2IB)",
+        "__imp_?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z": "0x8023e0 (msvcp90.dll!?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z)",
+        "__imp__atoi": "0x802868 (msvcr90.dll!atoi)",
+        "??_C@_01HNPIGOCE@?$CG?$AA@": "0x831ac0 (string '&')",
+        "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z": "0x802368 (msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z)",
+        "??_C@_01ICJEACDI@?$DL?$AA@": "0x8212ac (string ';')",
+        "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z": "0x8023e4 (msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z)",
+        "__imp_??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x802450 (msvcp90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)",
+        "??_C@_0CH@HCOOKAEM@bad?5XML?4?5No?5character?5code?5follo@": "0x831a98 (string 'bad XML. No character code following #')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (external (evidence name))",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (ThrowInfo of .?AVruntime_error@std@@ (2 catchable types))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??_C@_0CL@PJFPEDAC@Unable?5to?5parse?5hexidecimal?5char@": "0x831a6c (string 'Unable to parse hexidecimal character code')"
+      },
+      "local_eh": [
+        "__ehhandler$?decodeString@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@Z"
+      ]
+    },
+    {
+      "address": "0058d130",
+      "symbol": "?readText@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+      "size": 206,
+      "target_size": 206,
+      "exact": true,
+      "verified_targets": {
+        "?skipWhitespace@TextXmlParser@@AAEXXZ": "0x58cab0 (own row)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x8024fc (msvcp90.dll!?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)",
+        "__imp_?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x8024f8 (msvcp90.dll!?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)",
+        "__imp_??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@D@Z": "0x8024b4 (msvcp90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@D@Z)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "?decodeString@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@Z": "0x58cd50 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?readText@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z"
+      ]
+    },
+    {
+      "address": "0058d200",
+      "symbol": "?removeTag@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@AAH@Z",
+      "size": 148,
+      "target_size": 148,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "_whitespaces": "0x9494e0 (file static, 256 bytes equal)",
+        "__imp_?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z": "0x8023e0 (msvcp90.dll!?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058d2a0",
+      "symbol": "?findNextToken@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@AAH@Z",
+      "size": 330,
+      "target_size": 330,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "_whitespaces": "0x9494e0 (file static, 256 bytes equal)",
+        "__imp_?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z": "0x8023e0 (msvcp90.dll!?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_C@_00CNPNBAHC@?$AA@": "0x80b716 (string '')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$?findNextToken@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@AAH@Z"
+      ]
+    },
+    {
+      "address": "0058d3f0",
+      "symbol": "??0?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@0@Z",
+      "size": 82,
+      "target_size": 82,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@0@Z"
+      ]
+    },
+    {
+      "address": "0058d450",
+      "symbol": "??0?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@QAE@ABU01@@Z",
+      "size": 83,
+      "target_size": 83,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@QAE@ABU01@@Z"
+      ]
+    },
+    {
+      "address": "0058d4b0",
+      "symbol": "?equal@?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@QBE_NABV12@@Z",
+      "size": 116,
+      "target_size": 116,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x8024fc (msvcp90.dll!?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058d530",
+      "symbol": "?_getCharType@?$base64@DU?$char_traits@D@std@@@@IBEHH@Z",
+      "size": 127,
+      "target_size": 127,
+      "exact": true,
+      "verified_targets": {
+        "__base64Chars": "0x9493e0 (file static, 256 bytes equal)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058d5b0",
+      "symbol": "??4?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAEAAV01@U?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@1@@Z",
+      "size": 51,
+      "target_size": 51,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0058d5f0",
+      "symbol": "??D?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@QBEDXZ",
+      "size": 50,
+      "target_size": 50,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x8024fc (msvcp90.dll!?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058d630",
+      "symbol": "??E?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@QAEAAV01@XZ",
+      "size": 42,
+      "target_size": 42,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x8024f8 (msvcp90.dll!?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058d660",
+      "symbol": "?_Lbound@?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@2@ABVContentId@RBX@@@Z",
+      "size": 61,
+      "target_size": 61,
+      "exact": true,
+      "verified_targets": {
+        "??MRBX@@YA_NABVContentId@0@0@Z": "0x55bd50 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058d6a0",
+      "symbol": "?_Lbound@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
+      "size": 70,
+      "target_size": 70,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x80235c (msvcp90.dll!??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058d6f0",
+      "symbol": "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAEXXZ",
+      "size": 132,
+      "target_size": 132,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058d780",
+      "symbol": "?writeCloseTag@TextXmlWriter@@IAEXPBVXmlElement@@H@Z",
+      "size": 89,
+      "target_size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@D@Z": "0x44a640 (external (evidence name))",
+        "??_C@_02DPNDACHE@?$DM?1?$AA@": "0x8319e0 (string '</')",
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (external (evidence name))",
+        "__imp_??$?6DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z": "0x802384 (msvcp90.dll!??$?6DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058d7e0",
+      "symbol": "?serialize@TextXmlWriter@@IAEXPBVXmlElement@@H@Z",
+      "size": 115,
+      "target_size": 115,
+      "exact": true,
+      "verified_targets": {
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@D@Z": "0x44a640 (external (evidence name))",
+        "?serialize@TextXmlWriter@@IAEXPBVXmlElement@@H@Z": "0x58d7e0 (own row)",
+        "?writeCloseTag@TextXmlWriter@@IAEXPBVXmlElement@@H@Z": "0x58d780 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058d900",
+      "symbol": "??$get@V?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@V?$ostreambuf_iterator@DU?$char_traits@D@std@@@2@H@?$base64@DU?$char_traits@D@std@@@@QBE?AV?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@V12@0V?$ostreambuf_iterator@DU?$char_traits@D@std@@@2@AAH@Z",
+      "size": 1646,
+      "target_size": 1646,
+      "exact": true,
+      "verified_targets": {
+        "?equal@?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@QBE_NABV12@@Z": "0x58d4b0 (own row)",
+        "__imp_?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x8024fc (msvcp90.dll!?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)",
+        "?_getCharType@?$base64@DU?$char_traits@D@std@@@@IBEHH@Z": "0x58d530 (own row)",
+        "__imp_?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x8024f8 (msvcp90.dll!?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)",
+        "__imp_?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHD@Z": "0x802394 (msvcp90.dll!?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHD@Z)",
+        "??D?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@QBEDXZ": "0x58d5f0 (own row)",
+        "??E?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@QAEAAV01@XZ": "0x58d630 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058df70",
+      "symbol": "??$put@V?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@V?$ostreambuf_iterator@DU?$char_traits@D@std@@@2@HUcrlf@?$base64@DU?$char_traits@D@std@@@@@?$base64@DU?$char_traits@D@std@@@@QBE?AV?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@V12@0V?$ostreambuf_iterator@DU?$char_traits@D@std@@@2@AAHUcrlf@0@@Z",
+      "size": 1327,
+      "target_size": 1327,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x8024fc (msvcp90.dll!?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)",
+        "__imp_?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x8024f8 (msvcp90.dll!?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)",
+        "__base64Chars": "0x9493e0 (file static, 256 bytes equal)",
+        "__imp_?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHD@Z": "0x802394 (msvcp90.dll!?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHD@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058e4a0",
+      "symbol": "?encodedWrite@TextXmlWriter@@SAXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@PBD@Z",
+      "size": 226,
+      "target_size": 226,
+      "exact": true,
+      "verified_targets": {
+        "__imp__sprintf": "0x802830 (msvcr90.dll!sprintf)",
+        "??_C@_04GJOGLFEJ@?$CGlt?$DL?$AA@": "0x831b10 (string '&lt;')",
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (external (evidence name))",
+        "??_C@_04LOOHDCEI@?$CGgt?$DL?$AA@": "0x831b08 (string '&gt;')",
+        "??_C@_05JKJFEODM@?$CGamp?$DL?$AA@": "0x831b00 (string '&amp;')",
+        "??_C@_06DDLNFFBN@?$CGquot?$DL?$AA@": "0x831af8 (string '&quot;')",
+        "??_C@_06PNMEMOHD@?$CGapos?$DL?$AA@": "0x831af0 (string '&apos;')",
+        "??_C@_05PNCJDOGL@?$CG?$CD?$CFd?$DL?$AA@": "0x831ae8 (string '&#%d;')",
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@D@Z": "0x44a640 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058e590",
+      "symbol": "?parseAttributes@TextXmlParser@@AAEPAVXmlElement@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 631,
+      "target_size": 631,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z": "0x8023e0 (msvcp90.dll!?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z)",
+        "?removeTag@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@AAH@Z": "0x58d200 (own row)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "?lookup@Name@RBX@@SAABV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x554180 (external (evidence name))",
+        "?findNextToken@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@AAH@Z": "0x58d2a0 (own row)",
+        "??_C@_01NEMOKFLO@?$DN?$AA@": "0x81e4e0 (string '=')",
+        "__imp_?find@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDII@Z": "0x802498 (msvcp90.dll!?find@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDII@Z)",
+        "__imp_?npos@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@2IB": "0x8023e8 (msvcp90.dll!?npos@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@2IB)",
+        "__imp_?rfind@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDII@Z": "0x80249c (msvcp90.dll!?rfind@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDII@Z)",
+        "?decodeString@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@Z": "0x58cd50 (own row)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "??$addAttribute@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@XmlElement@@QAEXABVName@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x497120 (body compiled here exact at the bound address (not counted here))",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?parseAttributes@TextXmlParser@@AAEPAVXmlElement@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ]
+    },
+    {
+      "address": "0058e810",
+      "symbol": "?serialize@TextXmlWriter@@UAEXPBVXmlElement@@@Z",
+      "size": 15,
+      "target_size": 15,
+      "exact": true,
+      "verified_targets": {
+        "?serialize@TextXmlWriter@@IAEXPBVXmlElement@@H@Z": "0x58d7e0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058e820",
+      "symbol": "?_Insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@2@@Z",
+      "size": 510,
+      "target_size": 510,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0BE@JONHPENG@map?1set?$DMT?$DO?5too?5long?$AA@": "0x80b28c (string 'map/set<T> too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVlength_error@std@@": "0x8d0cc0 (ThrowInfo of .?AVlength_error@std@@ (3 catchable types))",
+        "??_7length_error@std@@6B@": "0x80b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?_Buynode@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@2@D@Z": "0x58d860 (BOUNDS row: compiled body equal to the image bytes over its whole compiled length (not counted))",
+        "?_Lrotate@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@@Z": "0x413560 (body compiled here exact at the bound address (not counted here))",
+        "?_Rrotate@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@@Z": "0x4135f0 (body compiled here exact at the bound address (not counted here))"
+      },
+      "local_eh": [
+        "__ehhandler$?_Insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@2@@Z"
+      ]
+    },
+    {
+      "address": "0058ea20",
+      "symbol": "?insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@2@@Z",
+      "size": 235,
+      "target_size": 235,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x80235c (msvcp90.dll!??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@2@@Z": "0x58e820 (own row)",
+        "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAEXXZ": "0x58d6f0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058eb10",
+      "symbol": "?writeOpenTag@TextXmlWriter@@IAEXPBVXmlElement@@HPBVXmlAttribute@@@Z",
+      "size": 413,
+      "target_size": 413,
+      "exact": true,
+      "verified_targets": {
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@D@Z": "0x44a640 (external (evidence name))",
+        "__imp_??$?6DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z": "0x802384 (msvcp90.dll!??$?6DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z)",
+        "??_C@_02ILLPBGAO@?$DN?$CC?$AA@": "0x831b18 (string '=\"')",
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (external (evidence name))",
+        "?toString@XmlNameValuePair@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVXmlWriter@@@Z": "0x57d050 (external (evidence name))",
+        "?encodedWrite@TextXmlWriter@@SAXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@PBD@Z": "0x58e4a0 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?writeOpenTag@TextXmlWriter@@IAEXPBVXmlElement@@HPBVXmlAttribute@@@Z"
+      ]
+    },
+    {
+      "address": "0058ecb0",
+      "symbol": "?serializeNode@TextXmlWriter@@MAEXPBVXmlElement@@H@Z",
+      "size": 326,
+      "target_size": 326,
+      "exact": true,
+      "verified_targets": {
+        "??$isValueType@VContentId@RBX@@@XmlNameValuePair@@QBE_NXZ": "0x57c1f0 (external (evidence name))",
+        "?writeOpenTag@TextXmlWriter@@IAEXPBVXmlElement@@HPBVXmlAttribute@@@Z": "0x58eb10 (own row)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "?getNullName@Name@RBX@@SAABV12@XZ": "0x554270 (external (evidence name))",
+        "?getValue@XmlNameValuePair@@QBE_NAAVContentId@RBX@@@Z": "0x57c3d0 (external (evidence name))",
+        "??_C@_0O@JNOOHLK@?$DMnull?$DO?$DM?1null?$DO?$AA@": "0x831b2c (string '<null></null>')",
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (external (evidence name))",
+        "??_C@_06DDCOLCPK@?$DMhash?$DO?$AA@": "0x831b24 (string '<hash>')",
+        "?toString@XmlNameValuePair@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVXmlWriter@@@Z": "0x57d050 (external (evidence name))",
+        "__imp_??$?6DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z": "0x802384 (msvcp90.dll!??$?6DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_C@_07EPDEHCIM@?$DM?1hash?$DO?$AA@": "0x831b1c (string '</hash>')",
+        "?encodedWrite@TextXmlWriter@@SAXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@PBD@Z": "0x58e4a0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?serializeNode@TextXmlWriter@@MAEXPBVXmlElement@@H@Z"
+      ]
+    },
+    {
+      "address": "0058ee00",
+      "symbol": "?insert@?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@_N@2@ABVContentId@RBX@@@Z",
+      "size": 237,
+      "target_size": 237,
+      "exact": true,
+      "verified_targets": {
+        "??MRBX@@YA_NABVContentId@0@0@Z": "0x55bd50 (external (evidence name))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Insert@?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@2@ABVContentId@RBX@@@Z": "0x691d90 (body compiled here exact at the bound address (not counted here; row counted by ogre-scene-manager-working.json))",
+        "?_Dec@const_iterator@?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@QAEXXZ": "0x68d350 (body compiled here exact at the bound address (not counted here; row counted by ogre-scene-manager-working.json))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058eef0",
+      "symbol": "?find@?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@QAE?AViterator@12@ABVContentId@RBX@@@Z",
+      "size": 126,
+      "target_size": 126,
+      "exact": true,
+      "verified_targets": {
+        "?_Lbound@?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@2@ABVContentId@RBX@@@Z": "0x58d660 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??MRBX@@YA_NABVContentId@0@0@Z": "0x55bd50 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058ef70",
+      "symbol": "?find@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
+      "size": 127,
+      "target_size": 127,
+      "exact": true,
+      "verified_targets": {
+        "?_Lbound@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z": "0x58d6a0 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "__imp_??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x80235c (msvcp90.dll!??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058eff0",
+      "symbol": "?insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@2@@Z",
+      "size": 562,
+      "target_size": 562,
+      "exact": true,
+      "verified_targets": {
+        "?_Insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@2@@Z": "0x58e820 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "__imp_??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x80235c (msvcp90.dll!??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)",
+        "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAEXXZ": "0x58d6f0 (own row)",
+        "??R?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@0@Z": "0x55c000 (external (evidence name))",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAEXXZ": "0x4139b0 (body compiled here exact at the bound address (not counted here))",
+        "??8const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QBE_NABV012@@Z": "0x5ecca0 (body compiled here exact at the bound address (not counted here))",
+        "?insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@2@@Z": "0x58ea20 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058f230",
+      "symbol": "??0XmlParser@@IAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z",
+      "size": 63,
+      "target_size": 63,
+      "exact": true,
+      "verified_targets": {
+        "??_7XmlParser@@6B@": "0x831b40 (vtable RTTI .?AVXmlParser@@ offset 0x0)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0058f270",
+      "symbol": "?serializeNode@TextXmlWriterWithEmbeddedContent@@MAEXPBVXmlElement@@H@Z",
+      "size": 861,
+      "target_size": 861,
+      "exact": true,
+      "verified_targets": {
+        "??$isValueType@VContentId@RBX@@@XmlNameValuePair@@QBE_NXZ": "0x57c1f0 (external (evidence name))",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "?getNullName@Name@RBX@@SAABV12@XZ": "0x554270 (external (evidence name))",
+        "?getValue@XmlNameValuePair@@QBE_NAAVContentId@RBX@@@Z": "0x57c3d0 (external (evidence name))",
+        "?writeOpenTag@TextXmlWriter@@IAEXPBVXmlElement@@HPBVXmlAttribute@@@Z": "0x58eb10 (own row)",
+        "?tag_mimeType@@3ABVName@RBX@@B": "0x97537c (external (call-site identification))",
+        "??0XmlNameValuePair@@QAE@ABVName@RBX@@PBD@Z": "0x58c920 (own row)",
+        "?clearValue@XmlNameValuePair@@ABEXXZ": "0x57c2d0 (external (evidence name))",
+        "?name_xsinil@@3ABVName@RBX@@B": "0x975370 (external (call-site identification))",
+        "?findAttribute@XmlElement@@QBEPBVXmlAttribute@@ABVName@RBX@@@Z": "0x57c2b0 (external (evidence name))",
+        "??_C@_0O@JNOOHLK@?$DMnull?$DO?$DM?1null?$DO?$AA@": "0x831b2c (string '<null></null>')",
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (external (evidence name))",
+        "?isAsset@ContentId@RBX@@QBE_NXZ": "0x55bae0 (external (evidence name))",
+        "?isHttp@ContentId@RBX@@QBE_NXZ": "0x55bb50 (external (evidence name))",
+        "?find@?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@QAE?AViterator@12@ABVContentId@RBX@@@Z": "0x58eef0 (own row)",
+        "??8const_iterator@?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@QBE_NABV012@@Z": "0x5ecca0 (body compiled here exact at the bound address (not counted here))",
+        "?insert@?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@_N@2@ABVContentId@RBX@@@Z": "0x58ee00 (own row)",
+        "??0ContentId@RBX@@QAE@ABV01@@Z": "0x415ae0 (body compiled here exact at the bound address (not counted here))",
+        "?getContent@ContentProvider@RBX@@QAE?AV?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@VContentId@2@@Z": "0x561f20 (external (call-site identification))",
+        "??4?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAEAAV01@U?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@1@@Z": "0x58d5b0 (own row)",
+        "??1?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@XZ": "0x55c910 (external (call-site identification))",
+        "??_C@_08BAGMGGAF@?$DMbinary?$DO?$AA@": "0x831b80 (string '<binary>')",
+        "??_C@_02HKLCKPBO@?$CC?$DO?$AA@": "0x831b7c (string '\">')",
+        "??_C@_0BM@IPBPLOKK@?$DMbinary?5xmime?3contentType?$DN?$CC?$AA@": "0x831b60 (string '<binary xmime:contentType=\"')",
+        "??$put@V?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@V?$ostreambuf_iterator@DU?$char_traits@D@std@@@2@HUcrlf@?$base64@DU?$char_traits@D@std@@@@@?$base64@DU?$char_traits@D@std@@@@QBE?AV?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@V12@0V?$ostreambuf_iterator@DU?$char_traits@D@std@@@2@AAHUcrlf@0@@Z": "0x58df70 (own row)",
+        "??_C@_09PCGNAGNP@?$DM?1binary?$DO?$AA@": "0x831b54 (string '</binary>')",
+        "??_C@_06DDCOLCPK@?$DMhash?$DO?$AA@": "0x831b24 (string '<hash>')",
+        "?toString@XmlNameValuePair@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVXmlWriter@@@Z": "0x57d050 (external (evidence name))",
+        "__imp_??$?6DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z": "0x802384 (msvcp90.dll!??$?6DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_C@_07EPDEHCIM@?$DM?1hash?$DO?$AA@": "0x831b1c (string '</hash>')",
+        "??_C@_05MNIJLHBL@?$DMurl?$DO?$AA@": "0x831b4c (string '<url>')",
+        "?encodedWrite@TextXmlWriter@@SAXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@PBD@Z": "0x58e4a0 (own row)",
+        "??_C@_06LKGHGNF@?$DM?1url?$DO?$AA@": "0x831b44 (string '</url>')",
+        "?serializeNode@TextXmlWriter@@MAEXPBVXmlElement@@H@Z": "0x58ecb0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?serializeNode@TextXmlWriterWithEmbeddedContent@@MAEXPBVXmlElement@@H@Z",
+        "$LN28"
+      ]
+    },
+    {
+      "address": "0058f5d0",
+      "symbol": "??A?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@@std@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@ABV21@@Z",
+      "size": 237,
+      "target_size": 237,
+      "exact": true,
+      "verified_targets": {
+        "?_Lbound@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z": "0x58d6a0 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "__imp_??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x80235c (msvcp90.dll!??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??0?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@0@Z": "0x58d3f0 (own row)",
+        "?insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@2@@Z": "0x58eff0 (own row)",
+        "??1?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@QAE@XZ": "0x5df620 (body compiled here exact at the bound address (not counted here; row counted by content-upload-trial.json))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??A?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@@std@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@ABV21@@Z"
+      ]
+    },
+    {
+      "address": "0058fff0",
+      "symbol": "??0XmlWriter@@IAE@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+      "size": 34,
+      "target_size": 34,
+      "exact": true,
+      "verified_targets": {
+        "??0?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE@ABU?$less@VInstanceHandle@RBX@@@1@ABV?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@1@@Z": "0x589190 (external (evidence name))"
+      },
+      "local_eh": []
+    }
+  ],
+  "pending_rows": [
+    {
+      "address": "0058f6c0 (pending-build-only, not counted)",
+      "symbol": "?parse@TextXmlParser@@UAE?AV?$auto_ptr@VXmlElement@@@std@@XZ",
+      "size": 2342,
+      "target_size": 2342,
+      "verified_targets": {
+        "__imp_?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x8024fc (msvcp90.dll!?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)",
+        "??_C@_0CA@LFBGCPME@TextXmlParser?3?3parse?5empty?5file?$AA@": "0x831c34 (string 'TextXmlParser::parse empty file')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (external (evidence name))",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (ThrowInfo of .?AVruntime_error@std@@ (2 catchable types))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "?readFirstTag@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x58caf0 (own row)",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z": "0x8023e0 (msvcp90.dll!?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z)",
+        "??_C@_02HFBBBACF@?$DM?$DP?$AA@": "0x831c30 (string '<?')",
+        "__imp_??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z": "0x80236c (msvcp90.dll!??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z)",
+        "?readTag@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x58cc80 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??D?$_Deque_const_iterator@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@$00@std@@QBEABQAVXmlElement@@XZ": "0x436420 (body compiled here exact at the bound address (not counted here; row counted by output-view-working.json))",
+        "?isCloseTag@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x58c990 (own row)",
+        "?parseAttributes@TextXmlParser@@AAEPAVXmlElement@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x58e590 (own row)",
+        "?push_back@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAEXABQAVXmlElement@@@Z": "0x589330 (body compiled here exact at the bound address (not counted here; row counted by app-unit588-2008-working.json))",
+        "??$singleton@VContentId@RBX@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cd80 (external (call-site identification))",
+        "?name_xsinil@@3ABVName@RBX@@B": "0x975370 (external (call-site identification))",
+        "?findAttribute@XmlElement@@QAEPAVXmlAttribute@@ABVName@RBX@@@Z": "0x57c2b0 (external (call-site identification))",
+        "?getValue@XmlNameValuePair@@QBE_NAA_N@Z": "0x57c5b0 (external (evidence name))",
+        "?readText@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z": "0x58d130 (own row)",
+        "??_C@_00CNPNBAHC@?$AA@": "0x80b716 (string '')",
+        "__imp_??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z": "0x8023cc (msvcp90.dll!??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z)",
+        "?tag_mimeType@@3ABVName@RBX@@B": "0x97537c (external (call-site identification))",
+        "?getValue@XmlNameValuePair@@QBE_NAAPBVName@RBX@@@Z": "0x57c360 (external (evidence name))",
+        "?getNullName@Name@RBX@@SAABV12@XZ": "0x554270 (external (evidence name))",
+        "??_C@_06FNFBAEBE@binary?$AA@": "0x831c28 (string 'binary')",
+        "__imp_??0?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@H@Z": "0x802504 (msvcp90.dll!??0?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@H@Z)",
+        "__imp_??0?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z": "0x802428 (msvcp90.dll!??0?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z)",
+        "??$get@V?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@V?$ostreambuf_iterator@DU?$char_traits@D@std@@@2@H@?$base64@DU?$char_traits@D@std@@@@QBE?AV?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@V12@0V?$ostreambuf_iterator@DU?$char_traits@D@std@@@2@AAH@Z": "0x58d900 (own row)",
+        "__imp_?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@XZ": "0x8023bc (msvcp90.dll!?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@XZ)",
+        "?registerContent@ContentProvider@RBX@@SA?AVContentId@2@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@ABVName@2@@Z": "0x55fbc0 (external (call-site identification))",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "?legacyHash@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@Z": "0x55bf20 (external (call-site identification))",
+        "??A?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@@std@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@ABV21@@Z": "0x58f5d0 (own row)",
+        "?setValue@XmlNameValuePair@@QAEXVContentId@RBX@@@Z": "0x56c9e0 (external (evidence name))",
+        "__imp_??_D?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ": "0x80242c (msvcp90.dll!??_D?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ)",
+        "__imp_??1?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAE@XZ": "0x802500 (msvcp90.dll!??1?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAE@XZ)",
+        "?tag_hash@@3ABVName@RBX@@B": "0x97538c (external (call-site identification))",
+        "__imp_?compare@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEHABV12@@Z": "0x802424 (msvcp90.dll!?compare@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEHABV12@@Z)",
+        "?find@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z": "0x58ef70 (own row)",
+        "??9const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QBE_NABV012@@Z": "0x4969c0 (body compiled here exact at the bound address (not counted here))",
+        "??_C@_03BMGHOINI@url?$AA@": "0x80f08c (string 'url')",
+        "?tag_null@@3ABVName@RBX@@B": "0x975388 (external (call-site identification))",
+        "??0ContentId@RBX@@QAE@XZ": "0x43d050 (body compiled here exact at the bound address (not counted here))",
+        "?setValue@XmlNameValuePair@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x495dd0 (external (evidence name))",
+        "?endsWithClose@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x58ca20 (own row)",
+        "??_C@_0DK@ICCEGAHB@TextXmlParser?3?3parse?5?9?5Got?5close@": "0x831bec (string 'TextXmlParser::parse - Got close tag %s without open tag.')",
+        "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external (call-site identification))",
+        "??_C@_0DE@NFELHMON@TextXmlParser?3?3parse?5?9?5?8?$CFs?8?5shou@": "0x831bb8 (string \"TextXmlParser::parse - '%s' should be a closing tag\")",
+        "??_C@_0CJ@NFAHHJNL@TextXmlParser?3?3parse?5?9?5Unknown?5t@": "0x831b8c (string \"TextXmlParser::parse - Unknown tag '%s'.\")"
+      },
+      "local_eh": [
+        "__ehhandler$?parse@TextXmlParser@@UAE?AV?$auto_ptr@VXmlElement@@@std@@XZ"
+      ],
+      "pending_build_exact": true,
+      "exact": false,
+      "reason": "pending-build-only: needs `static ContentId registerContent(std::istream&, const Name&)` (ContentProvider owner proposal)"
+    }
+  ],
+  "bounds_evidence": {
+    "0x58d860": "map<string, string> _Tree::_Buynode (caller _Insert path 0058eaxx / insert): compiled 147 B, analysis extent 126 B; the first 126 bytes are relocation-masked exact and the remaining 21 bytes equal the image bytes after the extent: the catch funclet row 0x58d8de that frees the node and rethrows. BOUNDS: extent should be 147 B (not counted here; no bounds.json change made)"
+  },
+  "helper_bodies_not_counted": {
+    "??$addAttribute@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@XmlElement@@QAEXABVName@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x497120",
+    "?_Lrotate@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@@Z": "0x413560",
+    "?_Rrotate@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@@Z": "0x4135f0",
+    "?_Insert@?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@2@ABVContentId@RBX@@@Z": "0x691d90",
+    "?_Dec@const_iterator@?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@QAEXXZ": "0x68d350",
+    "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAEXXZ": "0x4139b0",
+    "??8const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QBE_NABV012@@Z": "0x5ecca0",
+    "??8const_iterator@?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@QBE_NABV012@@Z": "0x5ecca0",
+    "??0ContentId@RBX@@QAE@ABV01@@Z": "0x415ae0",
+    "??1?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@QAE@XZ": "0x5df620",
+    "??D?$_Deque_const_iterator@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@$00@std@@QBEABQAVXmlElement@@XZ": "0x436420",
+    "?push_back@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAEXABQAVXmlElement@@@Z": "0x589330",
+    "??9const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QBE_NABV012@@Z": "0x4969c0",
+    "??0ContentId@RBX@@QAE@XZ": "0x43d050"
+  },
+  "rejected": {
+    "donor util/base64.hpp (`*_To = '\\n'` at the 72-character line end)": "put 0x58df70 1281 / 1327 B (frame 0x14 against 0x1c): the original calls the crlf functor (`_To = _Endl(_To)`), as upstream base64.hpp does; AppUnit58C/base64.hpp is used",
+    "encodedWrite(ostream&, const string&) defined after its callers (donor order)": "writeOpenTag 369 / 413 B, serializeNode 312 / 326 B: the original inlines it (toString + c_str + call 0x58e4a0); defined before writeOpenTag it is inlined",
+    "encodedWrite with the donor printable test `c >= ' ' && c <= '~'` and \"&apos\"": "231 / 226 B; the original escapes control characters except tab / LF / CR and writes \"&apos;\" (0x831af0)",
+    "serialize(const XmlElement*, int) with `if (xmlNode->firstChild())` and a for-loop variable (donor)": "115 / 115 B, ebx / ebp swapped; a `const XmlElement* child = xmlNode->firstChild(); if (child)` local is exact. Also tried: early return (115, not exact), do-while (exact, not kept), a childDepth local (not exact)",
+    "readFirstTag throwing runtime_error(\"tag expected after Byte-Order-Mark\") directly": "frame 0x90 against 0x74: the original builds a named std::string message first",
+    "parse with the donor decoder order (stringstream before the istreambuf iterators, ioStatus before out)": "pending build 2349 / 2342 B",
+    "static isCloseTag / endsWithClose / decodeString": "inlined into their callers; the original keeps them as external functions (evidence names ?isCloseTag@@YA_N... / ?endsWithClose@@YA_N...)"
+  },
+  "proposals": {
+    "util/ContentProvider.h (ContentProvider owner; donor header, util/NativeContentProvider.h)": "Declare `static ContentId registerContent(std::istream& content, const Name& mimeType);` (static). Evidence: parse 0x58fb2d..0x58fb42 pushes mimeType, the stream and the hidden result slot and calls 0x55fbc0 with no ecx setup (cdecl; the caller pops 12 bytes at 0x58fb70). With the static declaration parse 0x58f6c0 is exact (2342 B) in the pending build; the recorder generates that copy under rebuild/2008-06/out/app-unit58c/pending/util/ContentProvider.h.",
+    "v8xml/XmlSerializer.h (v8xml owner)": "FYI: the main header lacks the TextXmlWriterWithEmbeddedContent ContentProvider* at +0x48 (read at 0x58f3e6 before getContent 0x561f20); the writer-2008 variant has it and is used here read-only. The TextXmlParser map at +0x28 (declared `entities`) is a legacy-hash map: parse stores legacyHash(contentId) -> contentId (0x58fb8b) and maps <hash> names through it (0x58fc7f / 0x58fc96); `legacyHashes` would describe it."
+  },
+  "exact_function_rows": [
+    "0058c920",
+    "0058c990",
+    "0058ca20",
+    "0058cab0",
+    "0058caf0",
+    "0058cc80",
+    "0058cd50",
+    "0058d130",
+    "0058d200",
+    "0058d2a0",
+    "0058d3f0",
+    "0058d450",
+    "0058d4b0",
+    "0058d530",
+    "0058d5b0",
+    "0058d5f0",
+    "0058d630",
+    "0058d660",
+    "0058d6a0",
+    "0058d6f0",
+    "0058d780",
+    "0058d7e0",
+    "0058d900",
+    "0058df70",
+    "0058e4a0",
+    "0058e590",
+    "0058e810",
+    "0058e820",
+    "0058ea20",
+    "0058eb10",
+    "0058ecb0",
+    "0058ee00",
+    "0058eef0",
+    "0058ef70",
+    "0058eff0",
+    "0058f230",
+    "0058f270",
+    "0058f5d0",
+    "0058fff0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

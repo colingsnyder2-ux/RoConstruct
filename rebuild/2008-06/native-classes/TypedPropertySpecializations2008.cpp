@@ -164,3 +164,22 @@ void TypedPropertyDescriptor<int>::readValue(DescribedBase* instance, const XmlE
 
 }
 }
+
+// 0056e900
+namespace RBX {
+namespace Reflection {
+
+template<>
+void TypedPropertyDescriptor<G3D::Vector3>::writeValue(const DescribedBase* instance, XmlElement* element) const
+{
+	XmlElement* x = element->addChild(tag_X);
+	XmlElement* y = element->addChild(tag_Y);
+	XmlElement* z = element->addChild(tag_Z);
+	G3D::Vector3 value = getValue(instance);
+	x->setValue(value.x);
+	y->setValue(value.y);
+	z->setValue(value.z);
+}
+
+}
+}

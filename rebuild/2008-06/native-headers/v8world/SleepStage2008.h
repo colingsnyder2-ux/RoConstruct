@@ -20,12 +20,13 @@
 //                onEdgeRemoving), steppingContacts +0x1a0 (onEdgeAdded appends, steppingIndex +0x24 of the contact),
 //                touchingContacts +0x1ac (changeContactState 0064bf90), steppingJoints +0x1b8 (changeJointState 0064ae10:
 //                erase 005e9f60 / insert 005e8c40), assembly sets +0xe0 .. +0x180 selected by stateToSet 0064a550:
-//                state 1 -> +0xe0, 2 -> +0x100, 3 -> +0x140, 4 -> +0x160, 5 -> +0x180, everything else -> +0x120.
+//                state 1 -> +0xe0, 2 -> +0x100, 4 -> +0x140, 5 -> +0x160, 6 -> +0x180, 3 and everything else -> +0x120
+//                (jump table 0064a598).
 //   AssemblyState 2008: 0 ANCHORED, 1 RECURSIVE_WAKE_PENDING (0064b6d0 stores 1 and inserts into +0xe0), 2 WAKE_PENDING
 //                (0064b5e0 stores 2 and inserts into +0x100), 3 AWAKE (0064ae90 hands the assembly to SimJobStage
 //                0064d200), 4 SLEEPING_CHECKING, 5 SLEEPING_DEEPLY (0064ae90 removes it again through 0064d2a0), 6 the
 //                state onAssemblyRemoving 0064b0a0 stores last. Names follow the donor SleepStage / Sim enum.
-// Names of the assembly sets follow the donor SleepStage2.h; +0x120 and the vector element types are INFERRED.
+// Names of the assembly sets follow the donor SleepStage2.h; the +0x180 set name and the vector element types are INFERRED.
 #include <set>
 #include <vector>
 #include <G3D/Array.h>
@@ -34,6 +35,7 @@
 #include "AppUnit658/Edge.h"
 #include "v8world/Contact2008.h"
 #include "util/IndexArray.h"
+#include "util/RunningAverage.h"
 #define NATIVE_CLUMP_DECL
 #include "v8world/AssemblyLayout.h"
 
@@ -63,12 +65,19 @@ namespace RBX
 
 	// The 2008 per-assembly sleep record (new 0x24 in onAssemblyAdded 0064aff0, ctor 005e5f30): state +0x0 and sleepCount
 	// +0x4 are the two fields the SleepStage bodies read and write (0064afc8..0064afd7 zero the count, then store the
-	// state); the remaining 0x1c bytes (the donor runningAverageState) are not touched by the recovered bodies.
+	// state); the remaining 0x1c bytes are the donor runningAverageState (Vector3 + Quaternion; okNeighborSleep 0064a660
+	// passes SleepInfo +0x8 to RunningAverageState::withinTolerance 00668af0). Constructor and destructor are out of line
+	// as in the donor openrbx v8world/Assembly2.h: onAssemblyAdded 0064b034 calls ??0SleepInfo 005e5f30 and
+	// onAssemblyRemoving 0064b17e calls the (empty, folded 0047d410) destructor before operator delete.
 	class SleepInfo
 	{
 	public:
+		SleepInfo();                                      // 005e5f30
+		~SleepInfo();                                     // folded 0047d410
+
 		Sim::AssemblyState state;                         // +0x0
 		int sleepCount;                                   // +0x4
+		RunningAverageState runningAverageState;          // +0x8
 	};
 
 	class SleepStage : public IWorldStage
@@ -95,12 +104,15 @@ namespace RBX
 		int numContactsInKernel;                          // +0xd4
 		bool throttling;                                  // +0xd8 INFERRED: donor field after the two counters
 		int uiStepId;                                     // +0xdc (ctor -1, donor shape)
+		// stateToSet 0064a550 jump table (0064a598: 0064a561 / 0064a56a / 0064a58e / 0064a573 / 0064a57c / 0064a585 for
+		// states 1..6): 3 and the default share +0x120 (donor `default: return &awake`), 6 has its own set +0x180, which
+		// onAssemblyRemoving 0064b0a0 inserts into (its inline changeAssemblyState(a, 6)) and erases again.
 		AssemblySet recursiveWakePending;                 // +0xe0
 		AssemblySet wakePending;                          // +0x100
-		AssemblySet sleepingUnknown;                      // +0x120 INFERRED: stateToSet default (state 6 / out of range)
-		AssemblySet awake;                                // +0x140
-		AssemblySet sleepingChecking;                     // +0x160
-		AssemblySet sleepingDeeply;                       // +0x180
+		AssemblySet awake;                                // +0x120
+		AssemblySet sleepingChecking;                     // +0x140
+		AssemblySet sleepingDeeply;                       // +0x160
+		AssemblySet removed;                              // +0x180 INFERRED: name; the set of state 6 (REMOVED)
 		typedef IndexArray<Contact, &Contact::steppingIndexFunc> ContactList;   // donor SleepStage typedef (12 bytes)
 		ContactList steppingContacts;                     // +0x1a0
 		ContactList touchingContacts;                     // +0x1ac
@@ -125,6 +137,10 @@ namespace RBX
 		// 0064b890 (`ret 8`; donor SleepStage::onWakeUpRequest): the target of World::ticklePrimitive 005e9410. 2008 adds
 		// the externalBodyForceAdded +0x1dc store on the recursive path.
 		void onWakeUpRequest(Assembly* a, bool recursive);  // 0064b890
+
+		// Donor openrbx SleepStage2 members; callers AssemblyStage::onAssemblyAdded 0066f530 / onAssemblyRemoving 0066f550.
+		void onAssemblyAdded(Assembly* a);                // 0064aff0 (`ret 4`)
+		void onAssemblyRemoving(Assembly* a);             // 0064b0a0 (`ret 4`)
 
 	private:
 		// Donor SleepStage inlines (no code of their own): 0064ae90 / 0064b5e0 / 0064b6d0 test currentStage and its type.

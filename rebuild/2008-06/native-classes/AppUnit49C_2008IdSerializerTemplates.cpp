@@ -11,6 +11,9 @@
 #include "AppUnit49C_2008/Streaming2008.h"
 #include "reflection/property.h"
 #include <BitStream.h>
+#include <boost/bind.hpp>
+#include <algorithm>
+#include <stdexcept>
 
 // StringReceiver / StringSender members of the same Network/Streaming.cpp unit, in the original's address order.
 // Shape after the donor tools/rbxgs/Client/Network/Streaming.cpp; 2008 keeps std::string strings[] arrays (see
@@ -21,6 +24,13 @@ namespace RBX
 {
 	namespace Network
 	{
+		// Donor Streaming.cpp static IdSerializer::setRefValue (cdecl, 004a6de0): RefPropertyDescriptor slot 0x34 with
+		// both Instance pointers converted to DescribedBase (NULL-checked +0x14). Bound by resolvePendingBindings 004a9250.
+		void IdSerializer::setRefValue(WaitItem& wi, Instance* instance)                      // 004a6de0
+		{
+			wi.desc->setRefValue(wi.instance.get(), instance);
+		}
+
 		void StringReceiver::receive(RakNet::BitStream& stream, std::string& value)          // 004a6e20
 		{
 			unsigned char id;
@@ -47,6 +57,25 @@ namespace RBX
 			receive(stream, s);
 
 			value = &Name::declare(s.c_str(), -1);                                            // 00553f90
+		}
+
+		// 004a70b0 (donor Streaming.cpp IdSerializer::deserializeId; identity: thiscall ret 8, receive(const Name*&)
+		// 004a6f70 on scopeNames' StringReceiver (+0x130 + 0xe24 = +0xf54), Name::getNullName 00554270, then
+		// BitStream::ReadBits 004a5210 (24 bits, right-aligned). 2008 throws on a short read: string 00823e90
+		// "BitStream >> RBX::Guid::Data failed" (std::runtime_error, throw info 008d1bc8).
+		void IdSerializer::deserializeId(RakNet::BitStream& stream, Guid::Data& id)
+		{
+			scopeNames.receive(stream, id.scope);
+			if (id.scope != &Name::getNullName())
+			{
+				id.index = 0;
+				if (!stream.ReadBits((unsigned char*)&id.index, 24))
+					throw std::runtime_error("BitStream >> RBX::Guid::Data failed");
+			}
+			else
+			{
+				id.index = 0;
+			}
 		}
 
 		bool StringSender::trySend(RakNet::BitStream& stream, const std::string& value)      // 004a7ba0
@@ -116,6 +145,63 @@ namespace RBX
 			const Reflection::RefPropertyDescriptor& prop = static_cast<const Reflection::RefPropertyDescriptor&>(property.getDescriptor());
 			serializeId(bitStream, (Instance*)prop.getRefValue(property.getInstance()));
 		}
+
+#ifdef NATIVE_GUID_REGISTRY_LOOKUP
+		// BLOCKED: both bodies call the static GuidItem<Instance> registry lookup 0049ba80 (cdecl, ret 0: returns true
+		// with NULL for the null scope Name 00554270, else locks the registry mutex at singleton 009705e8 +0x20 and finds
+		// the Guid::Data), which core util/GuidItem.h does not declare. Proposal: declare it there as
+		// `static bool sub_0049ba80(const Guid::Data& id, T*& item); // INFERRED: 0049ba80` (placeholder name, the
+		// sub_004b3dd0 pattern); this guard's spelling of the call follows that proposal.
+
+		// 004a8b60 (donor Streaming.h IdSerializer::deserializeInstanceRef(stream, Instance*&, Guid::Data&); identity:
+		// ret 0xc, `this` passed through unchanged to deserializeId 004a70b0, then the registry lookup 0049ba80(id,
+		// instance) whose bool is returned; callers Replicator::readChangedProperty 004b7a30 / readInstanceDelete 004b0800).
+		bool IdSerializer::deserializeInstanceRef(RakNet::BitStream& stream, Instance*& instance, Guid::Data& id)
+		{
+			deserializeId(stream, id);
+			return GuidItem<Instance>::sub_0049ba80(id, instance);
+		}
+#endif
+
+		// 004a9250 (donor Streaming.cpp IdSerializer::resolvePendingBindings; identity: waitItems +0x2b54 find 004a7b20,
+		// std::for_each 004a7920 over the WaitItem vector with boost::bind(&setRefValue 004a6de0, _1, instance), then
+		// erase(iterator) 004a8d50; ret 0xc for the by-value Guid::Data).
+		void IdSerializer::resolvePendingBindings(Instance* instance, Guid::Data id)
+		{
+			std::map<Guid::Data, std::vector<WaitItem> >::iterator iter = waitItems.find(id);
+			if (iter != waitItems.end())
+			{
+				std::for_each(iter->second.begin(), iter->second.end(), boost::bind(&IdSerializer::setRefValue, _1, instance));
+				waitItems.erase(iter);
+			}
+		}
+
+#ifdef NATIVE_GUID_REGISTRY_LOOKUP
+		// 004a9440 (donor Streaming.h IdSerializer::deserializeRef; identity: caller Replicator::deserializeValue 004b6ab0
+		// (Ref branch), deserializeId 004a70b0, registry lookup 0049ba80, RefPropertyDescriptor slot 0x34 setRefValue,
+		// else a WaitItem {desc, shared_from<Instance> 00618a40} appended to waitItems[id] (operator[] 004a9320,
+		// push_back 004a8790)). BLOCKED on the 0049ba80 declaration (see deserializeInstanceRef above).
+		void IdSerializer::deserializeRef(Reflection::Property& property, RakNet::BitStream& stream)
+		{
+			Guid::Data id;
+			deserializeId(stream, id);
+
+			if (Instance* instance = static_cast<Instance*>(property.getInstance()))
+			{
+				const Reflection::RefPropertyDescriptor& desc = static_cast<const Reflection::RefPropertyDescriptor&>(property.getDescriptor());
+				Instance* target;
+				if (GuidItem<Instance>::sub_0049ba80(id, target))
+				{
+					desc.setRefValue(instance, target);
+				}
+				else
+				{
+					WaitItem item = { &desc, shared_from(instance) };
+					waitItems[id].push_back(item);
+				}
+			}
+		}
+#endif
 	}
 }
 

@@ -1,0 +1,526 @@
+{
+  "class": "RBX reflection_object / ServiceProvider units of the application range 00570000..0057c000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), /fp:fast",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit570-2008/NativeAppUnit570Layout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit570-2008/NativeAppUnit570Layout.cpp"
+    ],
+    "refl": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit570-2008/NativeAppUnit570_2008_refl.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit570_2008Reflection.cpp"
+    ],
+    "svc": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit570-2008/NativeAppUnit570_2008_svc.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit570_2008ServiceProvider.cpp"
+    ],
+    "refl_pending": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit570-2008/pending-reflection",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit570-2008/NativeAppUnit570_2008_refl_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit570_2008Reflection.cpp"
+    ],
+    "svc_pending": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit570-2008/pending",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/DNATIVE_APPUNIT570_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit570-2008/NativeAppUnit570_2008_svc_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit570_2008ServiceProvider.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit570_2008.py": "983b7e03b6af99650b8592d3703bd9f97ac4ec10ff78de57c3ec99c4e47f2b7f",
+    "rebuild/2008-06/native-classes/AppUnit570_2008Reflection.cpp": "e6b4ba22749ece04cc0a89e04f5fbc99384b8ead75ad0e4309645fea5813d597",
+    "rebuild/2008-06/native-classes/AppUnit570_2008ServiceProvider.cpp": "f10cbd8a042f781f0b07969b6ec5450332ac90cee58426760dcd3bac515ecce4",
+    "rebuild/2008-06/native-headers/reflection/member.h": "e4ea6206c20c28ef3b5cc4783595ff920b6005e9e616fb71443bbbcbfa1a2a70",
+    "rebuild/2008-06/native-headers/reflection/descriptor.h": "d2516c9b408489f0f94f6e22bd9d5c043511df82af465eeaa5ce9ff68dab713f",
+    "rebuild/2008-06/native-headers/reflection/reflection.h": "40c3aa4516e701059368d929ff88049b0c2ec12aad84ce568690d3bf21037313",
+    "tools/rbxgs/Client/App/include/reflection/object.h": "cadaaebe20af20477cee00414725f7fdab3c31d9fec6410542248cb76c98c1d6",
+    "rebuild/2008-06/native-headers/v8tree/Service.h": "946890300c9996b74bc95ae5473f51f8a11ef09902a0a8a55bd1ffb45a36cd22",
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114"
+  },
+  "objects": {
+    "layout": "af3df165b515b6c9868ba6b60995f7d3d3e947731ce794e43e288ba76f3785e6",
+    "refl": "9e8fc36bae1cacbfa889ffc3136b567536bbafeb981396c7cbe3266bc09e336e",
+    "svc": "3a8e3e621bae72df8ad4b3fd8d995bb767d0e2dca9c23bf8b5dfef841ee8463f",
+    "refl_pending": "b7e3816f077738b823e1d3e02598b5f08fe6a604a8fdc0237324b978f1b25238",
+    "svc_pending": "01539e6f4ff39ec33a05e5645533c50f22ff05c344ca57a6dc8e151f48438a0a"
+  },
+  "layout": {
+    "classDescriptor": "0xc0",
+    "propertyContainer": "0x34",
+    "memberDescriptor": "0x10"
+  },
+  "statics": {
+    "rootDescriptor() static 0096c3a0 .. guard 0096c460": "0xc0"
+  },
+  "rtti_bases": {
+    "ClassDescriptor": {
+      ".?AVClassDescriptor@Reflection@RBX@@": 0,
+      ".?AVDescriptor@Reflection@RBX@@": 0,
+      ".?AVnoncopyable@noncopyable_@boost@@": 4,
+      ".?AV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@": 8,
+      ".?AV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@": 60,
+      ".?AV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@": 112
+    },
+    "Descriptor": {
+      ".?AVDescriptor@Reflection@RBX@@": 0,
+      ".?AVnoncopyable@noncopyable_@boost@@": 4
+    }
+  },
+  "unit_map": {
+    "reflection_object (head) ..0056ffef": "The unit starts below the range: sync() 0056fe30 (recursive_mutex static 00974c88, guard 00974c94, atexit 007fd300), lower_bound<ClassDescriptor*> 0056fe90, the class registry accessor 0056fef0 (vector static 00974c98, guard 00974cb0, atexit 007fd310), its call_once thunk 0056ff50 and allClasses() 0056ff60 (once flag 00974cb4; called by 004a7619 / 004a84ab / 004a9632), MemberDescriptorContainer<Function>::declare 0056fff0. Out of range; sync() is compared exact here as a helper body.",
+    "reflection_object 005703a0..00570c4f": "mergeMembers<Property/Signal/Function> 005703a0 / 00570440 / 005704e0 (declare 0056c170 / 0056b700 / 0056fff0), the container constructors 00570580 / 00570660 / 00570740 (callers ClassDescriptor() 00570820 and ClassDescriptor(base, name) 005708f0), ClassDescriptor() 00570820 (string \"<<<ROOT>>>\", vtables 0080b730 -> 0082f7bc), ??_GClassDescriptor 005708d0 (slot 0 of 0082f7bc, ~ClassDescriptor 0040abc0), ClassDescriptor(ClassDescriptor&, const char*) 005708f0 (callers: every classDescriptor<T>() static, e.g. 0040ad80), MemberDescriptor::isMemberOf 00570ba0 / 00570c40 (evidence names; donor reflection_object.cpp). Built here except 005708f0 (registry declarations missing, proposal).",
+    "reflection signal/boost instantiations 00570c50..0057268f": "std::list / std::map/set (strings \"list<T> too long\", \"map/set<T> too long\") and boost::function / shared_ptr helper instantiations reached only from the reflection signal code below the range (callers 0056a650 / 0056a7f0 / 0056a900 / 0056b230 and 004a8110); 00571380 / 005713b0 are widely called folded helpers, 00572690 (InterlockedIncrement, ServiceProvider::newIndex shape) is only a support row of flag-family-working.json / service-selection-working.json (not counted). Roblox-instantiated STL/boost templates of the signal unit: not recovered here.",
+    "v8tree/Service.cpp 005726a0..00573060": "ServiceProvider::onDescendentAdded 005726a0 / onDescendentRemoving 005726c0 / create 005726f0 / Notifier<ServiceProvider, ServiceRemoving>::raise 005728f0 (with its listener helper 005727d0 and the catch funclets 0057283a / 00572885, \"Exception caught in onEvent. %s\") / findServiceByClassNameString 005729c0 (\"'%s' is not a valid Service name\") / findServiceByClassName 00572a90 (a support row of service-selection-working.json, not counted) / onChildRemoving 00572b40 / onAddListener 00572bc0 / onChildAdded 00572ca0 / the serviceMap find 00572db0 / createChild 00572e40 / BoundFuncDesc<ServiceProvider>::call 00572fa0 and the func_service descriptors 00572f00 / 00573060 (evidence names). create is built here; the overrides need v8tree/Service.h declarations (proposal; 005726a0 / 005726c0 are pending-build-only).",
+    "gui/GUI.cpp 00573130..00574ef0": "Rect::pointInRect 00573130, GuiItem colour statics 00573190..00573290, GuiItem / RelativePanel / TopMenuBar / GuiRoot / TextDisplay members (evidence names; leaves2008-working.json counts GuiTarget::process 005732d0, the widget-family / hopper-family / local-backpack / gui-item receipts list others as support rows). Colin holds the RBX::TopMenuBar / GuiRoot / Widget leases: not built here.",
+    "v8datamodel/DataModel.cpp 00574f10..0057c000": "DataModel::setUiMessage 00574f10 .. DataModel() 0057b9f0 and the rest of the unit past the range: http helpers, close, onChildAdded, evaluate, the Creatable<Instance>::create / shared_count instantiations for DataModel / Workspace / LocalBackpack / Tool / LocalBackpackItem (creatable-shared-count / local-backpack / datamodel-members receipts count several), boost::bind/function instantiations, the ??_E adjustor thunks 0057b0a0..0057b160 and setDirty / isDirty (idatastate.json). The native v8datamodel/DataModel.h (core owner) declares only a subset of the members; not built here."
+  },
+  "range_functions": 311,
+  "range_rows_counted_by_other_receipts": [
+    "005732d0 counted by leaves2008-working.json",
+    "005754e0 counted by local-backpack-working.json",
+    "00575550 counted by local-backpack-working.json",
+    "005755c0 counted by hopper-family-working.json",
+    "00576600 counted by local-backpack-working.json",
+    "00576610 counted by local-backpack-working.json",
+    "00576620 counted by hopper-family-working.json",
+    "00576630 counted by creatable-shared-count-working.json",
+    "005766c0 counted by creatable-shared-count-working.json",
+    "00576750 counted by creatable-shared-count-working.json",
+    "00576810 counted by creatable-shared-count-working.json",
+    "005782c0 counted by creatable-shared-count-working.json"
+  ],
+  "rows": {
+    "refl": [
+      {
+        "address": "00570580",
+        "symbol": "??0?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@IAE@PAV012@@Z",
+        "size": 211,
+        "target_size": 211,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ": "0x56fe30 (helper / COMDAT body, compared exact at the bound address)",
+          "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external)",
+          "?mergeMembers@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@IAEXPBV123@@Z": "0x5703a0 (external)",
+          "?push_back@?$vector@PAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@QAEXABQAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@@Z": "0x4213a0 (external)",
+          "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@IAE@PAV012@@Z"
+        ]
+      },
+      {
+        "address": "00570660",
+        "symbol": "??0?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@IAE@PAV012@@Z",
+        "size": 211,
+        "target_size": 211,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ": "0x56fe30 (helper / COMDAT body, compared exact at the bound address)",
+          "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external)",
+          "?mergeMembers@?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@IAEXPBV123@@Z": "0x570440 (external)",
+          "?push_back@?$vector@PAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@QAEXABQAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@@Z": "0x4213a0 (external)",
+          "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@IAE@PAV012@@Z"
+        ]
+      },
+      {
+        "address": "00570740",
+        "symbol": "??0?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@IAE@PAV012@@Z",
+        "size": 211,
+        "target_size": 211,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ": "0x56fe30 (helper / COMDAT body, compared exact at the bound address)",
+          "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external)",
+          "?mergeMembers@?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@IAEXPBV123@@Z": "0x5704e0 (external)",
+          "?push_back@?$vector@PAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@QAEXABQAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@@Z": "0x4213a0 (external)",
+          "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@IAE@PAV012@@Z"
+        ]
+      },
+      {
+        "address": "00570820",
+        "symbol": "??0ClassDescriptor@Reflection@RBX@@AAE@XZ",
+        "size": 174,
+        "target_size": 174,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0L@OFNLLKFE@?$DM?$DM?$DMROOT?$DO?$DO?$DO?$AA@": "0x82f7c0 (string '<<<ROOT>>>')",
+          "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)",
+          "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+          "??0?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@IAE@PAV012@@Z": "0x570580 (own row)",
+          "??0?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@IAE@PAV012@@Z": "0x570660 (own row)",
+          "??0?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@IAE@PAV012@@Z": "0x570740 (own row)",
+          "??_7ClassDescriptor@Reflection@RBX@@6B@": "0x82f7bc (vtable RTTI .?AVClassDescriptor@Reflection@RBX@@ offset 0x0)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??0ClassDescriptor@Reflection@RBX@@AAE@XZ"
+        ]
+      },
+      {
+        "address": "005708d0",
+        "symbol": "??_GClassDescriptor@Reflection@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (external (evidence name))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00570ba0",
+        "symbol": "?isMemberOf@MemberDescriptor@Reflection@RBX@@QBE_NABVClassDescriptor@23@@Z",
+        "size": 148,
+        "target_size": 148,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@51": "0x96c460 (local static)",
+          "?root@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV234@XZ@4V234@A": "0x96c3a0 (local static)",
+          "??0ClassDescriptor@Reflection@RBX@@AAE@XZ": "0x570820 (own row)",
+          "??__Froot@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@YAXXZ": "0x7fa300 (local static)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?isMemberOf@MemberDescriptor@Reflection@RBX@@QBE_NABVClassDescriptor@23@@Z"
+        ]
+      },
+      {
+        "address": "00570c40",
+        "symbol": "?isMemberOf@MemberDescriptor@Reflection@RBX@@QBE_NPBVDescribedBase@23@@Z",
+        "size": 16,
+        "target_size": 16,
+        "exact": true,
+        "verified_targets": {
+          "?isMemberOf@MemberDescriptor@Reflection@RBX@@QBE_NABVClassDescriptor@23@@Z": "0x570ba0 (own row)"
+        },
+        "local_eh": []
+      }
+    ],
+    "svc": [
+      {
+        "address": "005726f0",
+        "symbol": "?create@ServiceProvider@RBX@@SAPAVInstance@2@PAV32@ABVName@2@@Z",
+        "size": 216,
+        "target_size": 216,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVServiceProvider@RBX@@@8": "0x92e15c (RTTI type descriptor .?AVServiceProvider@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type descriptor .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$?create@ServiceProvider@RBX@@SAPAVInstance@2@PAV32@ABVName@2@@Z"
+        ]
+      }
+    ]
+  },
+  "pending_build_only": [
+    {
+      "address": "005703a0",
+      "symbol": "?mergeMembers@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@IAEXPBV123@@Z",
+      "size": 148,
+      "target_size": 148,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?declare@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QAEXPAVPropertyDescriptor@23@@Z": "0x56c170 (external (evidence name))"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only (the generated reflection/member.h copy with the 2008 mergeMembers loop; proposal); not counted"
+    },
+    {
+      "address": "00570440",
+      "symbol": "?mergeMembers@?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@IAEXPBV123@@Z",
+      "size": 148,
+      "target_size": 148,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?declare@?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAEXPAVSignalDescriptor@23@@Z": "0x56b700 (external (evidence name))"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only (the generated reflection/member.h copy with the 2008 mergeMembers loop; proposal); not counted"
+    },
+    {
+      "address": "005704e0",
+      "symbol": "?mergeMembers@?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@IAEXPBV123@@Z",
+      "size": 148,
+      "target_size": 148,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?declare@?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@QAEXPAVFunctionDescriptor@23@@Z": "0x56fff0 (external (evidence name))"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only (the generated reflection/member.h copy with the 2008 mergeMembers loop; proposal); not counted"
+    },
+    {
+      "address": "005726a0",
+      "symbol": "?onDescendentAdded@ServiceProvider@RBX@@MAEXPAVInstance@2@@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": false,
+      "verified_targets": {
+        "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z": "0x55ae20 (external)"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only (NATIVE_APPUNIT570_PENDING with the generated v8tree/Service.h copy that declares the ServiceProvider overrides; proposal); not counted"
+    },
+    {
+      "address": "005726c0",
+      "symbol": "?onDescendentRemoving@ServiceProvider@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "size": 33,
+      "target_size": 33,
+      "exact": false,
+      "verified_targets": {
+        "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x55ae90 (external)"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only (NATIVE_APPUNIT570_PENDING with the generated v8tree/Service.h copy that declares the ServiceProvider overrides; proposal); not counted"
+    }
+  ],
+  "helper_bodies_not_counted": [
+    {
+      "address": "0056fe30",
+      "symbol": "?sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ",
+      "unit": "refl",
+      "verified_targets": {
+        "?$S1@?1??sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ@4IA": "0x974c94 (local static)",
+        "?s@?1??sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ@4V45@A": "0x974c88 (local static)",
+        "??0recursive_mutex@boost@@QAE@XZ": "0x563070 (external)",
+        "??__Fs@?1??sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ@YAXXZ": "0x7fd300 (local static)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact (targets verified); not counted"
+    }
+  ],
+  "local_statics": {
+    "??_B?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@51": "0096c460",
+    "?root@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV234@XZ@4V234@A": "0096c3a0",
+    "??__Froot@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@YAXXZ": "007fa300",
+    "?$S1@?1??sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ@4IA": "00974c94",
+    "?s@?1??sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ@4V45@A": "00974c88",
+    "??__Fs@?1??sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ@YAXXZ": "007fd300"
+  },
+  "vtables": {
+    "ClassDescriptor 0082f7bc": [
+      {
+        "slot": 0,
+        "symbol": "??_EClassDescriptor@Reflection@RBX@@UAEPAXI@Z",
+        "original": "005708d0",
+        "ok": true,
+        "how": "bound (??_G row)"
+      }
+    ]
+  },
+  "exact_function_rows": [
+    "00570580",
+    "00570660",
+    "00570740",
+    "00570820",
+    "005708d0",
+    "00570ba0",
+    "00570c40",
+    "005726f0"
+  ],
+  "rejected": {
+    "ServiceProvider::createChild 00572e40 as the donor body (findServiceByClassName, then AbstractFactoryProduct<Instance>::create(className)) in the pending build": "224/191 B; not recorded as a row",
+    "ClassDescriptor(ClassDescriptor&, const char*) 005708f0 as the donor body": "not attempted against the committed headers: the 2008 body also does a sorted insert into base.derivedClasses (lower_bound 0056fe90 with the name comparator 0056b500, insert 004c7c60) and into the class registry (00974c98 via 0056ff60, Name compare 0041faa0), none of which the donor object.h declares"
+  },
+  "proposals": {
+    "v8tree/Service.h (owner of the native ServiceProvider declaration)": "Declare the protected overrides `virtual void onDescendentAdded(Instance*);` (005726a0, evidence name ?onDescendentAdded@ServiceProvider@RBX@@MAEXPAVInstance@2@@Z: Instance::onDescendentAdded 0055ae20, then instance->onServiceProvider(NULL, this) through slot 0x30) and `virtual void onDescendentRemoving(const boost::shared_ptr<Instance>&);` (005726c0, ?onDescendentRemoving@ServiceProvider@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z: onServiceProvider(this, NULL), then Instance::onDescendentRemoving 0055ae90); also onChildAdded 00572ca0, onChildRemoving 00572b40, onAddListener 00572bc0 and createChild 00572e40 (evidence names, MAE/MBE = protected virtual). With the first two, those rows are exact (verified in the pending build against out/app-unit570-2008/pending/v8tree/Service.h) and can be counted here.",
+    "reflection/object.h (reflection core owner; the native tree has no object.h yet)": "A 2008 ClassDescriptor needs its class registry: a once-initialised static vector<ClassDescriptor*> (00974c98, guard 00974cb0, accessor 0056fef0, call_once thunk 0056ff50 with flag 00974cb4, public accessor 0056ff60 called by 004a7619 / 004a84ab / 004a9632), sorted by Name compare 0041faa0, and a name comparator for the sorted derivedClasses insert (0056b500). Names of these members are not in the evidence; they are needed before ClassDescriptor(ClassDescriptor&, const char*) 005708f0 can be built."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

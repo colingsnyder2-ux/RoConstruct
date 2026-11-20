@@ -46,14 +46,14 @@
   ],
   "profile": "CString operator PCXSTR and CSimpleStringT::IsEmpty noinline (original imports both)",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
-  "object_sha256": "da7dfe27ebf06cfdf95ec3da5185366313cc09ef80155ae09dc420c275bd6485",
+  "object_sha256": "d233969b110c12482079b95ec8389c79d0b2378391646f98215cfcfc11e320ec",
   "sources": {
-    "rebuild/2008-06/tests/record_native_browser_view.py": "5f0a20f3a648d6e967bcd8a91e56013794aeafaed243cc2c842aecc34ee22e53",
+    "rebuild/2008-06/tests/record_native_browser_view.py": "dad71a91eefc602629b02440483ce822816ce95e3fea6e78faa5d880a430f633",
     "rebuild/2008-06/native-classes/CBrowserView.cpp": "d39eb600191add92b757db2eb1013422d5964b4c82478d0d24d81871911f4dd6",
     "rebuild/2008-06/native-headers/CBrowserView.h": "b4667890505c5527c68e1c47ef5d21c4a9314f329d7283e251a62cf3739264dd",
     "rebuild/2008-06/native-headers/CBrowserDoc.h": "68e31841e5340f7d37e01cfd3d0dedfcc7de2ee2fbb90636ef40634e07462a01",
     "rebuild/2008-06/native-headers/CBrowserViewExternal.h": "d0dbfffca80d50d93d46cd64db57d7945e1b6d218996067eccf3c706a29e5c6e",
-    "rebuild/2008-06/native-headers/CBrowserFrameWnd.h": "1e752fae7d956b3ecfc3cd61f8f44b6abb22bd3994f8dd75515716fd056bd590",
+    "rebuild/2008-06/native-headers/CBrowserFrameWnd.h": "8dff816b682aa945c46f38407706e34abf49f556a33b6bf15a4274e8cafb330b",
     "rebuild/2008-06/tests/NativeBrowserViewLayout.cpp": "c45b146b6b5516d6aaa8eb54ecdfd658f2755c3487543c3c6dc56795593481db"
   },
   "xtp_targets": {
@@ -687,7 +687,7 @@
     }
   ],
   "open": {
-    "0040fff0": "OnGetExternal: 2-instruction scheduling difference (object pointer reloaded after the isIDE store; original converts to IBrowserViewExternal before the store without a null check)",
+    "0040fff0": "OnGetExternal: 2-instruction scheduling difference (object pointer reloaded after the isIDE store; original converts to IBrowserViewExternal before the store without a null check). Rejected 2026-11-06: CBrowserViewExternal& / IBrowserViewExternal& ext = *object before the store (the reference conversion keeps a null test, 181 / 183 B); external = (IDispatch*)object->GetUnknown() after the store (no null test, object reloaded, 173 B) or before it (hoisted above the dynamic_cast, 173 B); dynamic_cast into a local first, then GetUnknown, then the store (169 B vs 171: only object / cast result swap eax / ecx)",
     "0040e470": "CXTPControlComboBox::DeleteItem (XTP inline, emitted here): first 64 bytes exact; the target extent (81) runs into the next function 0040e4b0 (bounds evidence)"
   }
 }

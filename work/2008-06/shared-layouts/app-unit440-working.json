@@ -1,0 +1,2403 @@
+{
+  "family": "app unit 00440000: CPropGrid / CDataModelPropGrid / RBXImage tails and the reflection-metadata unit",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/fp:fast"
+  ],
+  "profile": "document-swap flags, /fp:fast; the owners' MetadataClassesLookup.cpp / MetadataReflectionLookup.cpp included read-only ahead of AppUnit440Metadata.cpp in one generated unit; MetadataClassesLifetime.cpp, MetadataClassesRegister.cpp and MetadataContainersLifetime.cpp compiled unchanged; the property-grid owners' SelectionGroup.cpp / CPropGridInstances.cpp / CSelectionPropGridEvents.cpp / CSelectionPropGridSelection.cpp / CDataModelPropGridUpdate.cpp compiled unchanged with the property-grid-working-probe flags + /fp:fast",
+  "pg_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/fp:fast"
+  ],
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit440.py": "490c7f14294e7f62c32dcfe7bd4c086104dd64605252508d661602dd48c16e1f",
+    "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
+    "rebuild/2008-06/native-classes/AppUnit440Metadata.cpp": "7da82b1c2cc7bec4983da9788981aa6071f368f3d607510ba57b9a5a1397186d",
+    "rebuild/2008-06/native-classes/MetadataClassesLookup.cpp": "a615dbe985f428c7ccd2c7dd5776ad5b5078b454e90cff7ae996e4a47fd2943c",
+    "rebuild/2008-06/native-classes/MetadataReflectionLookup.cpp": "94df10155d3034eb99e42566bcc77573cde524d01c8b8d05b0df6a1bda7b168a",
+    "rebuild/2008-06/native-classes/MetadataClassesLifetime.cpp": "e75e8606442b45ea791d593eb2775aa95b239fb472b21809ada214e33ca96ac4",
+    "rebuild/2008-06/native-classes/MetadataClassesRegister.cpp": "4bfa39266cb07c948600430b58275fd030cb251407b6c446e8cf209cfd5b2d08",
+    "rebuild/2008-06/native-classes/MetadataContainersLifetime.cpp": "8fdc5bc90deec51f64db905538394f93ddc6e1ee069c485fd97fe0d435e93964",
+    "rebuild/2008-06/native-classes/SelectionGroup.cpp": "0952db8c65fa57bf7ad732d3766e0b0d5c549c3e14b0d8563a680c1732a96939",
+    "rebuild/2008-06/native-classes/CPropGridInstances.cpp": "0e4444158b59e770b3c69a22800d3e028c719e0eb1d58ab0bc043b6d43438142",
+    "rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp": "b8fc85e173a3c56d3e706f91cb552d0e2232f625d1467b8ac3988c20e521d204",
+    "rebuild/2008-06/native-classes/CSelectionPropGridSelection.cpp": "9ef0a2322201241357f2a9f24eaf538123b52708756c971122c61e1a750bdd33",
+    "rebuild/2008-06/native-classes/CDataModelPropGridUpdate.cpp": "1254405ea689f1dfe2efb76a4693ff0a9b307f9638a1bf378c1826c7a8e20a78",
+    "rebuild/2008-06/native-classes/CSelectionPropGrid.cpp": "8abcb468d9132b418fd8288a4109f321c3d7d1dce47f568fc96bc655fa4fa8b0",
+    "rebuild/2008-06/native-classes/CDataModelPropGrid.cpp": "fab5559a90bccb34b18f6b792fe30624934804c219ccbc181725b8891b9e1bd9",
+    "rebuild/2008-06/native-headers/reflection/Metadata.h": "3a42e7a6702294c9b3dc2269e76885cd73b392a563007678c23311b515dcb3ab",
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114",
+    "rebuild/2008-06/native-headers/reflection/reflection.h": "40c3aa4516e701059368d929ff88049b0c2ec12aad84ce568690d3bf21037313",
+    "rebuild/2008-06/native-headers/reflection/member.h": "e4ea6206c20c28ef3b5cc4783595ff920b6005e9e616fb71443bbbcbfa1a2a70",
+    "rebuild/2008-06/native-headers/reflection/descriptor.h": "d2516c9b408489f0f94f6e22bd9d5c043511df82af465eeaa5ce9ff68dab713f"
+  },
+  "objects": {
+    "lookup": "5b7514cbf6d2e9c0492be62352cf8d8b437ea06bc5d8f96b7ffe634c2de48de7",
+    "classes": "e055536801af32bf60be801ca22ad41ca0da966ab0c77c9b35304f5ecc05cbcb",
+    "register": "57d19203c74d1b561d66fd3604fa605306c74e799970d252f7121ddba2c4aa2a",
+    "containers": "8a80871a627539c2862905a2753466656cd2234e86fac2e0b65125c6612d8396",
+    "selgroup": "5d15a73e34051999d18071e2ffa0851905d24e12b4c32caba4d214fe17c5041f",
+    "instances": "0c1744f84aaed4c516f1082ce9a8d615e2f4cc5ecc427ab5d115ef3e2a61dbcb",
+    "selevents": "86cbff70ca04357e1385533948cd94468c5b7e3089017d874d30a884ee8f2e0e",
+    "selection": "4c34b4664b3cfac6db762bc256ffffd4ccad07839a6141918e5a8c495d16067b",
+    "dmupdate": "d9210ee6894d3032c3e23f25fc615f3b825fa7ef360e25d6ac1c8866975ae546",
+    "vt_selection": "123e5705de2eabf75ae2acc1d35df30f1e6d5197cf4c07a54e8be46425e3573b",
+    "vt_datamodel": "982d1fc091aa7f05b3ab3e55e579012e5726bafaabaff853d828878302fec13d"
+  },
+  "range": [
+    "0x00440000",
+    "0x00444000"
+  ],
+  "range_rows": 100,
+  "unit_map": {
+    "0x00440000..0x004428ff CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)": {
+      "rows_in_range": 38
+    },
+    "0x00442900..0x00442c4f CDataModelPropGrid unit (update; CPropGrid ctor / dtor / deleting dtor COMDATs)": {
+      "rows_in_range": 5
+    },
+    "0x00442c50..0x00442f8f RBXImage (app-leaves2008)": {
+      "rows_in_range": 9
+    },
+    "0x00442f90..0x00443fff reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)": {
+      "rows_in_range": 48
+    }
+  },
+  "unit_map_evidence": [
+    "CPropGrid vtable 0x81564c (RTTI .?AVCPropGrid@@) slot 90 = 0x440e30 (addProperty); 0x440d20 returns the CPropGrid message map 0x8145dc (WM_CREATE 0x4385f0 in app-unit438).",
+    "0x442a30 / 0x442b20 store the CPropGrid vtable (dtor / ctor COMDATs emitted after CDataModelPropGrid::update 0x442900); 0x442b10 is sub ecx, 0x188; jmp 0x442c30 (deleting destructor).",
+    "0x442c50..0x442f8f RBXImage rows, counted by app-leaves2008.",
+    "0x442f90 / 0x442fc0 / 0x442ff0 / 0x443020 dynamic_cast to .?AVClasses / Class / Members / Member@Metadata@Reflection@RBX@@ (askAddChild); 0x443050 / 0x4430b0 store the FactoryProduct<Reflection> vtable 0x815854; the unit ends with Reflection::singleton 0x445020 after the MergeBinder COMDATs 0x443c60.. (misc-leaves).",
+    "Library: no separately compiled library unit lies in the range; the std / boost / reflection rows are template instances emitted by these RBX units. Excluded classes: none (no CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView row)."
+  ],
+  "layout": {
+    "Metadata::Reflection": "classes child pointer at +0x130 (0x443210 / 0x443ab0 read [ecx+0x130]; constructor 0x444c50 clears it; creator 0x40b320 allocates 0x134), as reflection/Metadata.h",
+    "MemberDescriptor": "name +4 and owner +0xc (0x443ab0 reads [esi+0xc] then [eax+4]+4 for the owner name, [esi+4]+4 for the member name), as reflection/member.h / descriptor.h",
+    "Instance": "children copy-on-write vector at +0x108 (findFirstChildOfType 0x4436e0 reads [edi+0x108]), as v8tree/Instance.h"
+  },
+  "rows": [
+    {
+      "row": "0x004402b4",
+      "size": 26,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "catch funclet of a CPropGrid.cpp editor row (AfxMessageBox(e.what()), returns into 0x4402a1): funclet of 0x43ff70 XItem applyValue (propgrid-items2008 unresolved slot); open",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#1183"
+        ]
+      }
+    },
+    {
+      "row": "0x004402d0",
+      "size": 849,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "XItem<int, Enum>::applyValue (propgrid-items2008 unresolved slot; template body owned by PropertyGridItems.h); not attempted",
+      "evidence": {
+        "imports": [
+          "MSVCP90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@",
+          "MSVCR90.dll!_invalid_parameter_noinfo",
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x00441770"
+        ]
+      }
+    },
+    {
+      "row": "0x00440621",
+      "size": 26,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "catch funclet of 0x4402d0 (AfxMessageBox(e.what())); open with its parent",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#1183"
+        ]
+      }
+    },
+    {
+      "row": "0x00440640",
+      "size": 510,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "counted here",
+      "counted": "00440640 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCR90.dll!??0exception@std@@QAE@XZ",
+          "MSVCR90.dll!_CxxThrowException"
+        ],
+        "callers": [
+          "0x004417f0",
+          "0x00441f20"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 131,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "counted elsewhere",
+      "counted": "00440840 counted by creatable-shared-count-working",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$sp_counted_impl_pd@PAVSoundService@Soundscape@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@detail@boost@@"
+        ],
+        "imports": [
+          "MSVCR90.dll!_CxxThrowException",
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x004408d0"
+        ]
+      }
+    },
+    {
+      "row": "0x004408d0",
+      "size": 171,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "shared_ptr<Soundscape::SoundService>(p, Creatable<Instance>::Deleter) (app-unit580 support row, exact there, not counted); left to the Soundscape owner",
+      "evidence": {
+        "callers": [
+          "0x00440980"
+        ]
+      }
+    },
+    {
+      "row": "0x00440980",
+      "size": 120,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "Creatable<Instance>::create<Soundscape::SoundService>() (app-unit580 support row); left to the Soundscape owner",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!malloc"
+        ],
+        "callers": [
+          "0x00440a00",
+          "0x004531e0"
+        ]
+      }
+    },
+    {
+      "row": "0x00440a00",
+      "size": 175,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "FactoryProduct<SoundService>::Creator::create (Soundscape Creatable instance); left to the Soundscape owner",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 131,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "counted elsewhere",
+      "counted": "00440ab0 counted by creatable-shared-count-working",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$sp_counted_impl_pd@PAVSoundChannel@Soundscape@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@detail@boost@@"
+        ],
+        "imports": [
+          "MSVCR90.dll!_CxxThrowException",
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x00440b40"
+        ]
+      }
+    },
+    {
+      "row": "0x00440b40",
+      "size": 171,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "shared_ptr<Soundscape::SoundChannel>(p, Deleter) (Soundscape Creatable instance); Soundscape owner",
+      "evidence": {
+        "callers": [
+          "0x00440bf0"
+        ]
+      }
+    },
+    {
+      "row": "0x00440bf0",
+      "size": 120,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "create<Soundscape::SoundChannel>() (Soundscape Creatable instance); Soundscape owner",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!malloc"
+        ],
+        "callers": [
+          "0x00440c70"
+        ]
+      }
+    },
+    {
+      "row": "0x00440c70",
+      "size": 175,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "FactoryProduct<SoundChannel>::Creator::create (Soundscape Creatable instance); Soundscape owner",
+      "evidence": {}
+    },
+    {
+      "row": "0x00440d20",
+      "size": 6,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "CPropGrid::GetMessageMap (mov eax, 0x8145dc; ret; identical-code folded with other 6-byte returns); CPropGrid owner (selection-grid probe); not attempted",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 122,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "counted elsewhere",
+      "counted": "00440d30 counted by propgrid-items2008-working",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVSoundItem@@"
+        ],
+        "strings": [
+          "(Sound)",
+          "`\rq"
+        ],
+        "imports": [
+          "mfc90.dll!#310"
+        ],
+        "callers": [
+          "0x00440e30"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 122,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "counted elsewhere",
+      "counted": "00440db0 counted by propgrid-items2008-working",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVTextureItem@@"
+        ],
+        "strings": [
+          "(Texture)",
+          "`\rq"
+        ],
+        "imports": [
+          "mfc90.dll!#310"
+        ],
+        "callers": [
+          "0x00440e30"
+        ]
+      }
+    },
+    {
+      "row": "0x00440e30",
+      "size": 1321,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "CPropGrid::addProperty editor factory (CPropGrid vtable slot 90; propgrid-items2008 layout source); not attempted (CPropGrid owner)",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!__RTDynamicCast",
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x00467000"
+        ]
+      }
+    },
+    {
+      "row": "0x00441360",
+      "size": 116,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "XItem<bool>::OnValueChanged (PropertyGridItems.h template; masked-exact in app-unit438 build); propgrid-items owner",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#300",
+          "mfc90.dll!#601"
+        ]
+      }
+    },
+    {
+      "row": "0x004413e0",
+      "size": 114,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "XItem<float>::OnValueChanged (propgrid-items2008 pending-build-only proposal)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#300",
+          "mfc90.dll!#601"
+        ]
+      }
+    },
+    {
+      "row": "0x00441460",
+      "size": 114,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "XItem<int>::OnValueChanged (propgrid-items2008 pending-build-only proposal)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#300",
+          "mfc90.dll!#601"
+        ]
+      }
+    },
+    {
+      "row": "0x004414e0",
+      "size": 113,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "XItem<Color3>::OnValueChanged (propgrid-items owner)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#300",
+          "mfc90.dll!#601"
+        ]
+      }
+    },
+    {
+      "row": "0x00441560",
+      "size": 111,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "XItem<BrickColor>::OnValueChanged (propgrid-items2008 pending-build-only)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#300",
+          "mfc90.dll!#601"
+        ]
+      }
+    },
+    {
+      "row": "0x004415d0",
+      "size": 133,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "XItem<std::string>::OnValueChanged (propgrid-items owner)",
+      "evidence": {
+        "strings": [
+          "\n*R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "mfc90.dll!#300",
+          "mfc90.dll!#601"
+        ]
+      }
+    },
+    {
+      "row": "0x00441660",
+      "size": 113,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "XItem<Vector3>::OnValueChanged (propgrid-items2008 pending-build-only)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#300",
+          "mfc90.dll!#601"
+        ]
+      }
+    },
+    {
+      "row": "0x004416e0",
+      "size": 133,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "XItem<TextureId / SoundId>::OnValueChanged (propgrid-items2008 pending-build-only)",
+      "evidence": {
+        "strings": [
+          "\n*R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "mfc90.dll!#300",
+          "mfc90.dll!#601"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 114,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "counted elsewhere",
+      "counted": "00441770 counted by propgrid-items2008-working",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#300",
+          "mfc90.dll!#601"
+        ]
+      }
+    },
+    {
+      "row": "0x004417f0",
+      "size": 239,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "counted here",
+      "counted": "004417f0 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x00441f20"
+        ]
+      }
+    },
+    {
+      "row": "0x004418e0",
+      "size": 724,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "CPropGrid.cpp editor row (Espeon analog); not attempted",
+      "evidence": {
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCR90.dll!??0exception@std@@QAE@XZ",
+          "MSVCR90.dll!_CxxThrowException",
+          "mfc90.dll!#800"
+        ],
+        "callers": [
+          "0x00442270"
+        ]
+      }
+    },
+    {
+      "row": "0x00441bc0",
+      "size": 406,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "SoundItem::browse (propgrid-items2008 declared, not attempted)",
+      "evidence": {
+        "strings": [
+          "\n*R",
+          "D2R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z",
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??_D?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAEXXZ"
+        ]
+      }
+    },
+    {
+      "row": "0x00441d60",
+      "size": 445,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "TextureItem::browse (propgrid-items2008 declared, not attempted)",
+      "evidence": {
+        "strings": [
+          "\n*R",
+          "D2R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z",
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??_D?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAEXXZ"
+        ]
+      }
+    },
+    {
+      "row": "0x00441f20",
+      "size": 470,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "counted here",
+      "counted": "00441f20 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x00442140"
+        ]
+      }
+    },
+    {
+      "row": "0x00442100",
+      "size": 61,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "counted here",
+      "counted": "00442100 counted here",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ],
+        "callers": [
+          "0x00442100",
+          "0x00442270",
+          "0x00442650"
+        ]
+      }
+    },
+    {
+      "row": "0x00442140",
+      "size": 295,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "counted here",
+      "counted": "00442140 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo",
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x00442350"
+        ]
+      }
+    },
+    {
+      "row": "0x00442270",
+      "size": 220,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "set<CPropGrid::Item*>::erase (ICF-shared std instance); not attempted",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x004425e0"
+        ]
+      }
+    },
+    {
+      "row": "0x00442350",
+      "size": 158,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "counted here",
+      "counted": "00442350 counted here",
+      "evidence": {
+        "callers": [
+          "0x004423f0"
+        ]
+      }
+    },
+    {
+      "row": "0x004423f0",
+      "size": 158,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "counted here",
+      "counted": "004423f0 counted here",
+      "evidence": {
+        "callers": [
+          "0x00442490"
+        ]
+      }
+    },
+    {
+      "row": "0x00442490",
+      "size": 325,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "counted here",
+      "counted": "00442490 counted here",
+      "evidence": {
+        "imports": [
+          "USER32.dll!PostMessageA"
+        ]
+      }
+    },
+    {
+      "row": "0x004425e0",
+      "size": 112,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "set<CPropGrid::Item*> / _Tree destructor (ICF-shared std instance, also called by ~CPropGrid 0x442a30)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ],
+        "callers": [
+          "0x00442a30"
+        ]
+      }
+    },
+    {
+      "row": "0x00442650",
+      "size": 680,
+      "unit": "CPropGrid.cpp unit (Studio property grid; app-unit438, starts below the range)",
+      "kind": "counted here",
+      "counted": "00442650 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo",
+          "USER32.dll!PostMessageA"
+        ],
+        "callers": [
+          "0x00430700",
+          "0x00442900",
+          "0x00467030"
+        ]
+      }
+    },
+    {
+      "row": "0x00442900",
+      "size": 292,
+      "unit": "CDataModelPropGrid unit (update; CPropGrid ctor / dtor / deleting dtor COMDATs)",
+      "kind": "counted here",
+      "counted": "00442900 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x00442a30",
+      "size": 214,
+      "unit": "CDataModelPropGrid unit (update; CPropGrid ctor / dtor / deleting dtor COMDATs)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "CPropGrid::~CPropGrid COMDAT (stores CPropGrid vtable 0x81564c; property-grid probe)",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVCPropGrid@@"
+        ],
+        "strings": [
+          " xC"
+        ],
+        "imports": [
+          "mfc90.dll!#800"
+        ],
+        "callers": [
+          "0x00430700",
+          "0x00442c30"
+        ]
+      }
+    },
+    {
+      "row": "0x00442b10",
+      "size": 11,
+      "unit": "CDataModelPropGrid unit (update; CPropGrid ctor / dtor / deleting dtor COMDATs)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "CPropGrid deleting-destructor adjustor thunk (sub ecx, 0x188; jmp 0x442c30)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00442b20",
+      "size": 258,
+      "unit": "CDataModelPropGrid unit (update; CPropGrid ctor / dtor / deleting dtor COMDATs)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "CPropGrid::CPropGrid COMDAT (stores CPropGrid vtable 0x81564c; property-grid probe)",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVCPropGrid@@"
+        ],
+        "strings": [
+          " xC"
+        ],
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x00431040",
+          "0x00466e10"
+        ]
+      }
+    },
+    {
+      "row": "0x00442c30",
+      "size": 30,
+      "unit": "CDataModelPropGrid unit (update; CPropGrid ctor / dtor / deleting dtor COMDATs)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "CPropGrid scalar deleting destructor (calls ~CPropGrid 0x442a30)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 33,
+      "unit": "RBXImage (app-leaves2008)",
+      "kind": "counted elsewhere",
+      "counted": "00442c50 counted by app-leaves2008-working",
+      "evidence": {
+        "callers": [
+          "0x0042f0a0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 4,
+      "unit": "RBXImage (app-leaves2008)",
+      "kind": "counted elsewhere",
+      "counted": "00442c80 counted by app-leaves2008-working",
+      "evidence": {
+        "callers": [
+          "0x0042f0a0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 51,
+      "unit": "RBXImage (app-leaves2008)",
+      "kind": "counted elsewhere",
+      "counted": "00442c90 counted by app-leaves2008-working",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVRBXImage@@"
+        ],
+        "strings": [
+          " /D"
+        ],
+        "callers": [
+          "0x0042f0a0"
+        ]
+      }
+    },
+    {
+      "row": "0x00442cd0",
+      "size": 4,
+      "unit": "RBXImage (app-leaves2008)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "iterator _Mynode / _Checked_iterator_base 4-byte ICF-shared std leaf (RBXImage neighbour); shared",
+      "evidence": {
+        "callers": [
+          "0x0042f0a0",
+          "0x00547440",
+          "0x00547610",
+          "0x00548000",
+          "0x00548150",
+          "0x005489b0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 201,
+      "unit": "RBXImage (app-leaves2008)",
+      "kind": "counted elsewhere",
+      "counted": "00442ce0 counted by app-leaves2008-working",
+      "evidence": {
+        "strings": [
+          "H%R"
+        ],
+        "imports": [
+          "GDI32.dll!GetObjectA"
+        ],
+        "callers": [
+          "0x00442df0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 54,
+      "unit": "RBXImage (app-leaves2008)",
+      "kind": "counted elsewhere",
+      "counted": "00442db0 counted by app-leaves2008-working",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVRBXImage@@"
+        ],
+        "strings": [
+          " /D",
+          "V%R"
+        ],
+        "imports": [
+          "GDI32.dll!DeleteObject"
+        ],
+        "callers": [
+          "0x0042f0a0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 295,
+      "unit": "RBXImage (app-leaves2008)",
+      "kind": "counted elsewhere",
+      "counted": "00442df0 counted by app-leaves2008-working",
+      "evidence": {
+        "strings": [
+          "f%R"
+        ],
+        "imports": [
+          "GDI32.dll!CreateDIBSection",
+          "MSVCR90.dll!free",
+          "MSVCR90.dll!malloc",
+          "MSVCR90.dll!memset"
+        ],
+        "callers": [
+          "0x00442f70"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 78,
+      "unit": "RBXImage (app-leaves2008)",
+      "kind": "counted elsewhere",
+      "counted": "00442f20 counted by app-leaves2008-working",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVRBXImage@@"
+        ],
+        "strings": [
+          " /D",
+          "V%R"
+        ],
+        "imports": [
+          "GDI32.dll!DeleteObject",
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 32,
+      "unit": "RBXImage (app-leaves2008)",
+      "kind": "counted elsewhere",
+      "counted": "00442f70 counted by app-leaves2008-working",
+      "evidence": {
+        "callers": [
+          "0x0042f0a0"
+        ]
+      }
+    },
+    {
+      "row": "0x00442f90",
+      "size": 36,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "blocked",
+      "note": "Reflection::askAddChild (dynamic_cast to Classes 0x92a950): bytes exact with the committed MetadataReflectionLifetime.cpp, but blocked: reflection/Metadata.h declares the class as RBX::Metadata::Reflection while the original RTTI names .?AVReflection@Metadata@Reflection@RBX@@ (and FactoryProduct<RBX::Reflection::Metadata::Reflection>), so its vtable slot cannot be proven (proposal)",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!__RTDynamicCast"
+        ]
+      }
+    },
+    {
+      "row": "0x00442fc0",
+      "size": 36,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted here",
+      "counted": "00442fc0 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!__RTDynamicCast"
+        ]
+      }
+    },
+    {
+      "row": "0x00442ff0",
+      "size": 36,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted here",
+      "counted": "00442ff0 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!__RTDynamicCast"
+        ]
+      }
+    },
+    {
+      "row": "0x00443020",
+      "size": 36,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted here",
+      "counted": "00443020 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!__RTDynamicCast"
+        ]
+      }
+    },
+    {
+      "row": "0x00443050",
+      "size": 83,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "blocked",
+      "note": "FactoryProduct<Reflection>::~FactoryProduct (stores the FactoryProduct<Reflection> vtables 0x815854.., jmp ~Instance): blocked by the Reflection namespace (proposal)",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$FactoryProduct@VReflection@Metadata@1RBX@@VInstance@3@$1?sReflection@213@3PADA@RBX@@"
+        ],
+        "strings": [
+          " 1D",
+          "01D"
+        ],
+        "callers": [
+          "0x004449d0"
+        ]
+      }
+    },
+    {
+      "row": "0x004430b0",
+      "size": 90,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "blocked",
+      "note": "FactoryProduct<Reflection>::FactoryProduct (Instance() then the same vtables): blocked by the Reflection namespace (proposal)",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$FactoryProduct@VReflection@Metadata@1RBX@@VInstance@3@$1?sReflection@213@3PADA@RBX@@"
+        ],
+        "strings": [
+          " 1D",
+          "01D"
+        ],
+        "callers": [
+          "0x00444910"
+        ]
+      }
+    },
+    {
+      "row": "0x00443110",
+      "size": 8,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "blocked",
+      "note": "adjustor thunk (sub ecx, 0x24) to the Reflection deleting destructor 0x4449d0: blocked (namespace)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00443120",
+      "size": 8,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "blocked",
+      "note": "adjustor thunk (sub ecx, 0x64) to 0x4449d0: blocked (namespace)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00443130",
+      "size": 11,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "blocked",
+      "note": "adjustor thunk (sub ecx, 0x84) to 0x4449d0: blocked (namespace)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00443140",
+      "size": 80,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted here",
+      "counted": "00443140 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x00443190",
+      "size": 29,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "BoundPropGetSet<C, bool>::getValue (ICF-shared reflection instance; effects / team support row); the metadata property descriptors (static initializer 0x444680..) are not declared; not attempted",
+      "evidence": {}
+    },
+    {
+      "row": "0x004431b0",
+      "size": 49,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "BoundPropGetSet<Item, std::string>::getValue; metadata property descriptors undeclared; not attempted",
+      "evidence": {
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s"
+        ]
+      }
+    },
+    {
+      "row": "0x004431f0",
+      "size": 29,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "BoundPropGetSet<C, int>::getValue (ICF-shared; effects support row); not attempted",
+      "evidence": {}
+    },
+    {
+      "row": "0x00443210",
+      "size": 20,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted here",
+      "counted": "00443210 counted here",
+      "evidence": {
+        "callers": [
+          "0x004202b0",
+          "0x00423050",
+          "0x00424b60",
+          "0x00425050",
+          "0x00426100",
+          "0x00434ff0"
+        ]
+      }
+    },
+    {
+      "row": "0x00443230",
+      "size": 98,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "TypedPropertyDescriptor<std::string> constructor (shared reflection instance, 11 callers in other units; hopper-family support row)",
+      "evidence": {
+        "evidence_name": "??0?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+        "rtti_refs": [
+          ".?AV?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@"
+        ],
+        "callers": [
+          "0x00444750",
+          "0x00447cd0",
+          "0x004918f0",
+          "0x005597d0",
+          "0x00559870",
+          "0x00565090"
+        ]
+      }
+    },
+    {
+      "row": "0x004432a0",
+      "size": 98,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "TypedPropertyDescriptor<int> constructor (shared reflection instance, 17 callers; hopper-family / mouse support row)",
+      "evidence": {
+        "evidence_name": "??0?$TypedPropertyDescriptor@_N@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+        "rtti_refs": [
+          ".?AV?$TypedPropertyDescriptor@H@Reflection@RBX@@"
+        ],
+        "callers": [
+          "0x00444820",
+          "0x004919a0",
+          "0x0049a910",
+          "0x0049a9b0",
+          "0x004a3f80",
+          "0x004aa500"
+        ]
+      }
+    },
+    {
+      "row": "0x00443310",
+      "size": 10,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "TypedPropertyDescriptor GetSet vcall forwarder (shared reflection instance; contact-unit2008 evidence)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00443320",
+      "size": 68,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "auto_ptr<GetSet> assignment (shared reflection instance; app-unit564 helper body)",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$holder@H@any@boost@@"
+        ],
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0056d410"
+        ]
+      }
+    },
+    {
+      "row": "0x00443370",
+      "size": 134,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "boost::any_cast<T> helper (bad_cast throw; shared reflection instance); not attempted",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVbad_any_cast@boost@@"
+        ],
+        "strings": [
+          "bad cast"
+        ],
+        "imports": [
+          "MSVCR90.dll!??0bad_cast@std@@QAE@PBD@Z",
+          "MSVCR90.dll!??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x00443960"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 138,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted elsewhere",
+      "counted": "00443400 counted by misc-leaves-working",
+      "evidence": {
+        "evidence_name": "??$_Copy_opt@PAUIDREFItem@MergeBinder@RBX@@PAU123@Uforward_iterator_tag@std@@@std@@YAPAUIDREFItem@MergeBinder@RBX@@PAU123@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+        "callers": [
+          "0x00443a10"
+        ]
+      }
+    },
+    {
+      "row": "0x00443490",
+      "size": 146,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "TypedPropertyDescriptor<std::string>::equalValues (hopper-family support row)",
+      "evidence": {
+        "strings": [
+          "\n*R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s"
+        ]
+      }
+    },
+    {
+      "row": "0x00443530",
+      "size": 50,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "TypedPropertyDescriptor<int>::equalValues (hopper-family / mouse support row)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00443570",
+      "size": 25,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "std::auto_ptr<XmlElement>::~auto_ptr (Reflection::load local; masked-exact with the committed MetadataReflectionLoad.cpp); not attempted (load owner)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "0x00443590",
+      "size": 63,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "Reflection::Value assignment from std::string (shared reflection instance; app-unit414 support)",
+      "evidence": {
+        "evidence_name": "??$?4V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QAEAAV012@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "callers": [
+          "0x005ad380"
+        ]
+      }
+    },
+    {
+      "row": "0x004435d0",
+      "size": 144,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "TypedPropertyDescriptor<std::string>::getValue into Value (shared; app-unit414 support)",
+      "evidence": {
+        "strings": [
+          "\n*R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s"
+        ]
+      }
+    },
+    {
+      "row": "0x00443660",
+      "size": 23,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "blocked",
+      "note": "FactoryProduct<Reflection>::getClassName (Name::declare<sReflection> call_once 0x557330): blocked by the Reflection namespace (proposal)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00443680",
+      "size": 91,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "TypedPropertyDescriptor<int>::getValue into Value (shared reflection instance); not attempted",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$holder@H@any@boost@@"
+        ],
+        "imports": [
+          "mfc90.dll!#798"
+        ]
+      }
+    },
+    {
+      "row": "0x004436e0",
+      "size": 160,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted here",
+      "counted": "004436e0 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!__RTDynamicCast",
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x00444dd0"
+        ]
+      }
+    },
+    {
+      "row": "0x00443780",
+      "size": 160,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted here",
+      "counted": "00443780 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!__RTDynamicCast",
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x00443ab0"
+        ]
+      }
+    },
+    {
+      "row": "0x00443820",
+      "size": 160,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted here",
+      "counted": "00443820 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!__RTDynamicCast",
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x00443b00"
+        ]
+      }
+    },
+    {
+      "row": "0x004438c0",
+      "size": 160,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted here",
+      "counted": "004438c0 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!__RTDynamicCast",
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x00443b50"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 167,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted elsewhere",
+      "counted": "00443960 counted by sound-value-get-integrated",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x00443c10",
+          "0x00448b10"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 73,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted elsewhere",
+      "counted": "00443a10 counted by misc-leaves-working",
+      "evidence": {
+        "evidence_name": "??$unchecked_copy@PAUIDREFItem@MergeBinder@RBX@@PAU123@@stdext@@YAPAUIDREFItem@MergeBinder@RBX@@PAU123@00@Z",
+        "callers": [
+          "0x00443c60"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 76,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted elsewhere",
+      "counted": "00443a60 counted by misc-leaves-working",
+      "evidence": {
+        "evidence_name": "??$_Destroy_range@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@YAXPAUIDREFItem@MergeBinder@RBX@@0AAV?$allocator@UIDREFItem@MergeBinder@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z",
+        "callers": [
+          "0x00443c40",
+          "0x00443c60",
+          "0x00443cf0",
+          "0x004442c0"
+        ]
+      }
+    },
+    {
+      "row": "0x00443ab0",
+      "size": 73,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted here",
+      "counted": "00443ab0 counted here",
+      "evidence": {
+        "callers": [
+          "0x004352a0",
+          "0x00435860"
+        ]
+      }
+    },
+    {
+      "row": "0x00443b00",
+      "size": 73,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted here",
+      "counted": "00443b00 counted here",
+      "evidence": {
+        "callers": [
+          "0x00435680",
+          "0x00435860"
+        ]
+      }
+    },
+    {
+      "row": "0x00443b50",
+      "size": 73,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted here",
+      "counted": "00443b50 counted here",
+      "evidence": {
+        "callers": [
+          "0x004353e0",
+          "0x00435860"
+        ]
+      }
+    },
+    {
+      "row": "0x00443ba0",
+      "size": 101,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "TypedPropertyDescriptor<std::string>::setStringValue (shared reflection instance); not attempted",
+      "evidence": {
+        "strings": [
+          "\n*R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s"
+        ]
+      }
+    },
+    {
+      "row": "0x00443c10",
+      "size": 40,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "TypedPropertyDescriptor<int>::setStringValue (shared reflection instance); not attempted",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 30,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted elsewhere",
+      "counted": "00443c40 counted by misc-leaves-working",
+      "evidence": {
+        "callers": [
+          "0x004442c0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 141,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted elsewhere",
+      "counted": "00443c60 counted by misc-leaves-working",
+      "evidence": {
+        "evidence_name": "?erase@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@V?$_Vector_const_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@0@Z",
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x00443d60"
+        ]
+      }
+    },
+    {
+      "row": "0x00443cf0",
+      "size": 111,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "open (owner / shared instance / not attempted)",
+      "note": "std::vector<MergeBinder::IDREFItem>::~vector (misc-leaves not_exact: not emitted there); masked-exact with MergeBinder.cpp; MergeBinder owner",
+      "evidence": {
+        "evidence_name": "??1?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE@XZ",
+        "imports": [
+          "mfc90.dll!#800"
+        ],
+        "callers": [
+          "0x00444dd0",
+          "0x00568760",
+          "0x005931e0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 230,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted elsewhere",
+      "counted": "00443d60 counted by misc-leaves-working",
+      "evidence": {
+        "evidence_name": "?resolveRefs@MergeBinder@RBX@@UAE_NXZ",
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x00444dd0",
+          "0x00568760",
+          "0x00592720"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 87,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted elsewhere",
+      "counted": "00443e50 counted by misc-leaves-working",
+      "evidence": {
+        "evidence_name": "??0MergeBinder@RBX@@QAE@XZ",
+        "rtti_refs": [
+          ".?AVMergeBinder@RBX@@"
+        ],
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x00444dd0",
+          "0x00568760",
+          "0x00592940"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 7,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted elsewhere",
+      "counted": "00443eb0 counted by misc-leaves-working",
+      "evidence": {
+        "evidence_name": "?announceIDREF@MergeBinder@RBX@@UAEXPBVXmlNameValuePair@@PAVDescribedBase@Reflection@2@PBVIIDREF@2@@Z"
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 47,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted elsewhere",
+      "counted": "00443ec0 counted by misc-leaves-working",
+      "evidence": {
+        "callers": [
+          "0x004442c0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 139,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted elsewhere",
+      "counted": "00443ef0 counted by misc-leaves-working",
+      "evidence": {
+        "evidence_name": "??$_Copy_backward_opt@PAUIDREFItem@MergeBinder@RBX@@PAU123@Uforward_iterator_tag@std@@@std@@YAPAUIDREFItem@MergeBinder@RBX@@PAU123@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+        "callers": [
+          "0x00444200"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 128,
+      "unit": "reflection-metadata unit (Metadata.cpp; continues past the range to 0x44521f)",
+      "kind": "counted elsewhere",
+      "counted": "00443f80 counted by misc-leaves-working",
+      "evidence": {
+        "evidence_name": "??$_Fill@PAUIDREFItem@MergeBinder@RBX@@U123@@std@@YAXPAUIDREFItem@MergeBinder@RBX@@0ABU123@@Z",
+        "callers": [
+          "0x004442c0"
+        ]
+      }
+    }
+  ],
+  "methods": [
+    {
+      "address": "00443140",
+      "symbol": "?lookup@Classes@Metadata@Reflection@RBX@@QBEPAVClass@234@ABVClassDescriptor@34@_N@Z",
+      "size": 80,
+      "exact": true,
+      "build": "lookup",
+      "verified_targets": {
+        "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x00557950 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00443210",
+      "symbol": "?lookup@Reflection@Metadata@RBX@@QBEPAVClass@213@ABVClassDescriptor@13@_N@Z",
+      "size": 20,
+      "exact": true,
+      "build": "lookup",
+      "verified_targets": {
+        "?lookup@Classes@Metadata@Reflection@RBX@@QBEPAVClass@234@ABVClassDescriptor@34@_N@Z": "0x00443140 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004436e0",
+      "symbol": "??$findFirstChildOfType@VClasses@Metadata@Reflection@RBX@@@Instance@RBX@@QBEPAVClasses@Metadata@Reflection@1@XZ",
+      "size": 160,
+      "exact": true,
+      "build": "lookup",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??_R0?AVClasses@Metadata@Reflection@RBX@@@8": "0x0092a950 (RTTI .?AVClasses@Metadata@Reflection@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x0092907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x006a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00443780",
+      "symbol": "??$findFirstChildOfType@VProperties@Metadata@Reflection@RBX@@@Instance@RBX@@QBEPAVProperties@Metadata@Reflection@1@XZ",
+      "size": 160,
+      "exact": true,
+      "build": "lookup",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??_R0?AVProperties@Metadata@Reflection@RBX@@@8": "0x0092a980 (RTTI .?AVProperties@Metadata@Reflection@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x0092907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x006a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00443820",
+      "symbol": "??$findFirstChildOfType@VFunctions@Metadata@Reflection@RBX@@@Instance@RBX@@QBEPAVFunctions@Metadata@Reflection@1@XZ",
+      "size": 160,
+      "exact": true,
+      "build": "lookup",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??_R0?AVFunctions@Metadata@Reflection@RBX@@@8": "0x0092a9b4 (RTTI .?AVFunctions@Metadata@Reflection@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x0092907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x006a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004438c0",
+      "symbol": "??$findFirstChildOfType@VEvents@Metadata@Reflection@RBX@@@Instance@RBX@@QBEPAVEvents@Metadata@Reflection@1@XZ",
+      "size": 160,
+      "exact": true,
+      "build": "lookup",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??_R0?AVEvents@Metadata@Reflection@RBX@@@8": "0x0092a9e4 (RTTI .?AVEvents@Metadata@Reflection@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x0092907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x006a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00443ab0",
+      "symbol": "?lookup@Reflection@Metadata@RBX@@QBEPAVMember@213@ABVPropertyDescriptor@13@@Z",
+      "size": 73,
+      "exact": true,
+      "build": "lookup",
+      "verified_targets": {
+        "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x00557950 (external (evidence name))",
+        "??$findFirstChildOfType@VProperties@Metadata@Reflection@RBX@@@Instance@RBX@@QBEPAVProperties@Metadata@Reflection@1@XZ": "0x00443780 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00443b00",
+      "symbol": "?lookup@Reflection@Metadata@RBX@@QBEPAVMember@213@ABVFunctionDescriptor@13@@Z",
+      "size": 73,
+      "exact": true,
+      "build": "lookup",
+      "verified_targets": {
+        "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x00557950 (external (evidence name))",
+        "??$findFirstChildOfType@VFunctions@Metadata@Reflection@RBX@@@Instance@RBX@@QBEPAVFunctions@Metadata@Reflection@1@XZ": "0x00443820 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00443b50",
+      "symbol": "?lookup@Reflection@Metadata@RBX@@QBEPAVMember@213@ABVSignalDescriptor@13@@Z",
+      "size": 73,
+      "exact": true,
+      "build": "lookup",
+      "verified_targets": {
+        "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x00557950 (external (evidence name))",
+        "??$findFirstChildOfType@VEvents@Metadata@Reflection@RBX@@@Instance@RBX@@QBEPAVEvents@Metadata@Reflection@1@XZ": "0x004438c0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00442fc0",
+      "symbol": "?askAddChild@Classes@Metadata@Reflection@RBX@@MBE_NPBVInstance@4@@Z",
+      "size": 36,
+      "exact": true,
+      "build": "classes",
+      "verified_targets": {
+        "??_R0?AVClass@Metadata@Reflection@RBX@@@8": "0x0092ac4c (RTTI .?AVClass@Metadata@Reflection@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x0092907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x006a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": [],
+      "vtable_slots": [
+        "0x0080c864 (.?AVClasses@Metadata@Reflection@RBX@@ +0x0) slot 2"
+      ]
+    },
+    {
+      "address": "00442ff0",
+      "symbol": "?askAddChild@Class@Metadata@Reflection@RBX@@MBE_NPBVInstance@4@@Z",
+      "size": 36,
+      "exact": true,
+      "build": "register",
+      "verified_targets": {
+        "??_R0?AVMembers@Metadata@Reflection@RBX@@@8": "0x00929e58 (RTTI .?AVMembers@Metadata@Reflection@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x0092907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x006a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": [],
+      "vtable_slots": [
+        "0x0080cda4 (.?AVClass@Metadata@Reflection@RBX@@ +0x0) slot 2"
+      ]
+    },
+    {
+      "address": "00443020",
+      "symbol": "?askAddChild@Members@Metadata@Reflection@RBX@@MBE_NPBVInstance@4@@Z",
+      "size": 36,
+      "exact": true,
+      "build": "containers",
+      "verified_targets": {
+        "??_R0?AVMember@Metadata@Reflection@RBX@@@8": "0x0092ac78 (RTTI .?AVMember@Metadata@Reflection@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x0092907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x006a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": [],
+      "vtable_slots": [
+        "0x0080bf6c (.?AVMembers@Metadata@Reflection@RBX@@ +0x0) slot 2",
+        "0x0080c044 (.?AV?$FactoryProduct@VProperties@Metadata@Reflection@RBX@@VMembers@234@$1?sProperties@234@3PADA@RBX@@ +0x0) slot 2",
+        "0x0080c124 (.?AV?$FactoryProduct@VFunctions@Metadata@Reflection@RBX@@VMembers@234@$1?sFunctions@234@3PADA@RBX@@ +0x0) slot 2",
+        "0x0080c204 (.?AV?$FactoryProduct@VEvents@Metadata@Reflection@RBX@@VMembers@234@$1?sEvents@234@3PADA@RBX@@ +0x0) slot 2",
+        "0x0080c924 (.?AVProperties@Metadata@Reflection@RBX@@ +0x0) slot 2",
+        "0x0080c9e4 (.?AVFunctions@Metadata@Reflection@RBX@@ +0x0) slot 2",
+        "0x0080caa4 (.?AVEvents@Metadata@Reflection@RBX@@ +0x0) slot 2"
+      ]
+    },
+    {
+      "address": "00442350",
+      "symbol": "?add@SelectionGroup@RBX@@QAEXPAVInstance@2@@Z",
+      "size": 158,
+      "exact": true,
+      "build": "selgroup",
+      "verified_targets": {
+        "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x00618a40 (evidence name)",
+        "??A?$map@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@@std@@QAEAAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@1@ABQBVClassDescriptor@Reflection@RBX@@@Z": "0x00442140 (own row)",
+        "?push_back@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x00420110 (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$?add@SelectionGroup@RBX@@QAEXPAVInstance@2@@Z"
+      ]
+    },
+    {
+      "address": "00440640",
+      "symbol": "?_Insert@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@ABU?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@@Z",
+      "size": 510,
+      "exact": true,
+      "build": "selgroup",
+      "verified_targets": {
+        "??_C@_0BE@JONHPENG@map?1set?$DMT?$DO?5too?5long?$AA@": "0x0080b28c (literal 'map/set<T> too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x00802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x00802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x0080b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x0080245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVlength_error@std@@": "0x008d0cc0 (external)",
+        "??_7length_error@std@@6B@": "0x0080b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x006a158c (msvcr90.dll!_CxxThrowException)",
+        "?_Buynode@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@PAU342@00ABU?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@D@Z": "0x0043d290 (helper body exact at the bound address, targets verified (not counted))",
+        "?_Lrotate@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@@Z": "0x004d75a0 (helper body exact at the bound address, targets verified (not counted))",
+        "?_Rrotate@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@@Z": "0x004a1a90 (helper body exact at the bound address, targets verified (not counted))"
+      },
+      "local_eh": [
+        "__ehhandler$?_Insert@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@ABU?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@@Z"
+      ]
+    },
+    {
+      "address": "004417f0",
+      "symbol": "?insert@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@_N@2@ABU?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@@Z",
+      "size": 239,
+      "exact": true,
+      "build": "selgroup",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Insert@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@ABU?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@@Z": "0x00440640 (own row)",
+        "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x004386e0 (helper body exact at the bound address, targets verified (not counted))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00441f20",
+      "symbol": "?insert@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@@Z",
+      "size": 470,
+      "exact": true,
+      "build": "selgroup",
+      "verified_targets": {
+        "?_Insert@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@ABU?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@@Z": "0x00440640 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x004386e0 (helper body exact at the bound address, targets verified (not counted))",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x00438770 (helper body exact at the bound address, targets verified (not counted))",
+        "??8const_iterator@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QBE_NABV012@@Z": "0x005ecca0 (helper body exact at the bound address, targets verified (not counted))",
+        "?insert@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@_N@2@ABU?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@@Z": "0x004417f0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00442140",
+      "symbol": "??A?$map@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@@std@@QAEAAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@1@ABQBVClassDescriptor@Reflection@RBX@@@Z",
+      "size": 295,
+      "exact": true,
+      "build": "selgroup",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??2@YAPAXI@Z": "0x006a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@ABV01@@Z": "0x005acb00 (evidence name)",
+        "?insert@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@@Z": "0x00441f20 (own row)",
+        "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x005a2fe0 (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$??A?$map@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@@std@@QAEAAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@1@ABQBVClassDescriptor@Reflection@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "004423f0",
+      "symbol": "?addInstance@CPropGrid@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "size": 158,
+      "exact": true,
+      "build": "instances",
+      "verified_targets": {
+        "?add@SelectionGroup@RBX@@QAEXPAVInstance@2@@Z": "0x00442350 (own row)",
+        "?addListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z": "0x004218a0 (helper body exact at the bound address, targets verified (not counted))"
+      },
+      "local_eh": [
+        "__ehhandler$?addInstance@CPropGrid@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+      ]
+    },
+    {
+      "address": "00442490",
+      "symbol": "?onEvent@CSelectionPropGrid@@UAEXPBVSelection@RBX@@VSelectionChanged@3@@Z",
+      "size": 325,
+      "exact": true,
+      "build": "selevents",
+      "verified_targets": {
+        "?addInstance@CPropGrid@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x004423f0 (own row)",
+        "?removeInstance@CPropGrid@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x00439cd0 (external)",
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x00563090 (external)",
+        "?_Erase@?$_Tree@V?$_Tset_traits@PAVItem@CPropGrid@@U?$less@PAVItem@CPropGrid@@@std@@V?$allocator@PAVItem@CPropGrid@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tset_traits@PAVItem@CPropGrid@@U?$less@PAVItem@CPropGrid@@@std@@V?$allocator@PAVItem@CPropGrid@@@4@$0A@@std@@@2@@Z": "0x00669050 (helper body exact at the bound address, targets verified (not counted))",
+        "__imp__PostMessageA@16": "0x00802e0c (user32.dll!PostMessageA)",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x005630e0 (external)",
+        "??1SelectionChanged@RBX@@QAE@XZ": "0x00422c60 (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$?onEvent@CSelectionPropGrid@@UAEXPBVSelection@RBX@@VSelectionChanged@3@@Z"
+      ],
+      "vtable_slots": [
+        "0x00811054 (.?AVCSelectionPropGrid@@ +0x238) slot 0",
+        "0x0081142c (.?AVCDataModelPropGrid@@ +0x238) slot 0"
+      ]
+    },
+    {
+      "address": "00442650",
+      "symbol": "?setSelection@CSelectionPropGrid@@QAEXPAVSelection@RBX@@@Z",
+      "size": 680,
+      "exact": true,
+      "build": "selection",
+      "verified_targets": {
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x00563090 (external)",
+        "?removeListener@?$Notifier@VSelection@RBX@@VSelectionChanged@2@@RBX@@QBEXPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@2@@Z": "0x005e5a80 (helper body exact at the bound address, targets verified (not counted))",
+        "?removeInstance@CPropGrid@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x00439cd0 (external)",
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVCPropGrid@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVCSelectionPropGrid@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVCPropGrid@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVCSelectionPropGrid@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": "0x00438d40 (helper body exact at the bound address, targets verified (not counted))",
+        "?_Erase@?$_Tree@V?$_Tset_traits@PAVItem@CPropGrid@@U?$less@PAVItem@CPropGrid@@@std@@V?$allocator@PAVItem@CPropGrid@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tset_traits@PAVItem@CPropGrid@@U?$less@PAVItem@CPropGrid@@@std@@V?$allocator@PAVItem@CPropGrid@@@4@$0A@@std@@@2@@Z": "0x00669050 (helper body exact at the bound address, targets verified (not counted))",
+        "?_Erase@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@@Z": "0x00442100 (own row)",
+        "??$shared_from@VSelection@RBX@@@RBX@@YA?AV?$shared_ptr@VSelection@RBX@@@boost@@PAVSelection@0@@Z": "0x00618a40 (helper body exact at the bound address, targets verified (not counted))",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x004025b0 (evidence name)",
+        "?addInstance@CPropGrid@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x004423f0 (own row)",
+        "?addListener@?$Notifier@VSelection@RBX@@VSelectionChanged@2@@RBX@@QBEXPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@2@@Z": "0x004218a0 (helper body exact at the bound address, targets verified (not counted))",
+        "__imp__PostMessageA@16": "0x00802e0c (user32.dll!PostMessageA)",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x005630e0 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?setSelection@CSelectionPropGrid@@QAEXPAVSelection@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "00442100",
+      "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@@Z",
+      "size": 61,
+      "exact": true,
+      "build": "selection",
+      "verified_targets": {
+        "?_Erase@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@@Z": "0x00442100 (own row)",
+        "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x005a2fe0 (evidence name)",
+        "??3@YAXPAX@Z": "0x006a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00442900",
+      "symbol": "?update@CDataModelPropGrid@@UAEXV?$shared_ptr@VDataModel@RBX@@@boost@@0@Z",
+      "size": 292,
+      "exact": true,
+      "build": "dmupdate",
+      "verified_targets": {
+        "??0Lock@DataModel@RBX@@QAE@PBV12@@Z": "0x00438940 (evidence name)",
+        "?setSelection@CSelectionPropGrid@@QAEXPAVSelection@RBX@@@Z": "0x00442650 (own row)",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x005773c0 (evidence name)",
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": "0x004153b0 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?update@CDataModelPropGrid@@UAEXV?$shared_ptr@VDataModel@RBX@@@boost@@0@Z"
+      ],
+      "vtable_slots": [
+        "0x008115b8 (.?AVCDataModelPropGrid@@ +0x244) slot 0"
+      ]
+    }
+  ],
+  "helper_bodies_not_counted": {
+    "?_Buynode@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@PAU342@00ABU?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@D@Z": {
+      "address": "0x0043d290",
+      "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@PAU342@00ABU?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@D@Z",
+      "size": 155,
+      "exact": false,
+      "build": "selgroup",
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x006a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@ABV01@@Z": "0x005acb00 (evidence name)",
+        "??3@YAXPAX@Z": "0x006a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "__CxxThrowException@8": "0x006a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$?_Buynode@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@PAU342@00ABU?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@D@Z"
+      ]
+    },
+    "?_Lrotate@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@@Z": {
+      "address": "0x004d75a0",
+      "symbol": "?_Lrotate@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@@Z",
+      "size": 78,
+      "exact": false,
+      "build": "selgroup",
+      "verified_targets": {},
+      "local_eh": []
+    },
+    "?_Rrotate@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@@Z": {
+      "address": "0x004a1a90",
+      "symbol": "?_Rrotate@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@@Z",
+      "size": 82,
+      "exact": false,
+      "build": "selgroup",
+      "verified_targets": {},
+      "local_eh": []
+    },
+    "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAEXXZ": {
+      "address": "0x004386e0",
+      "symbol": "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAEXXZ",
+      "size": 132,
+      "exact": false,
+      "build": "selgroup",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": []
+    },
+    "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAEXXZ": {
+      "address": "0x00438770",
+      "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAEXXZ",
+      "size": 108,
+      "exact": false,
+      "build": "selgroup",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": []
+    },
+    "??8const_iterator@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QBE_NABV012@@Z": {
+      "address": "0x005ecca0",
+      "symbol": "??8const_iterator@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QBE_NABV012@@Z",
+      "size": 42,
+      "exact": false,
+      "build": "selgroup",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": []
+    },
+    "?addListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z": {
+      "address": "0x004218a0",
+      "symbol": "?addListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z",
+      "size": 147,
+      "exact": false,
+      "build": "instances",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?push_back@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@QAEXABQAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@Z": "0x004213a0 (helper body exact at the bound address, targets verified (not counted))"
+      },
+      "local_eh": []
+    },
+    "?push_back@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@QAEXABQAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@Z": {
+      "address": "0x004213a0",
+      "symbol": "?push_back@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@QAEXABQAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@Z",
+      "size": 101,
+      "exact": false,
+      "build": "instances",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?insert@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@2@ABQAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@Z": "0x004c7c60 (helper body exact at the bound address, targets verified (not counted))"
+      },
+      "local_eh": []
+    },
+    "?insert@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@2@ABQAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@Z": {
+      "address": "0x004c7c60",
+      "symbol": "?insert@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@2@ABQAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@Z",
+      "size": 180,
+      "exact": false,
+      "build": "instances",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Insert_n@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@2@IABQAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@Z": "0x004c7890 (helper body exact at the bound address, targets verified (not counted))"
+      },
+      "local_eh": []
+    },
+    "?_Insert_n@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@2@IABQAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@Z": {
+      "address": "0x004c7890",
+      "symbol": "?_Insert_n@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@2@IABQAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@Z",
+      "size": 374,
+      "exact": false,
+      "build": "instances",
+      "verified_targets": {
+        "?_Xlen@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@KAXXZ": "0x004c6d40 (helper body exact at the bound address, targets verified (not counted))",
+        "??$_Allocate@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@YAPAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@IPAPAV12@@Z": "0x00420b50 (helper body exact at the bound address, targets verified (not counted))",
+        "??$_Umove@PAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@IAEPAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@PAPAV23@00@Z": "0x00423c00 (helper body exact at the bound address, targets verified (not counted))",
+        "?_Ufill@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@IAEPAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@PAPAV34@IABQAV34@@Z": "0x0056c050 (helper body exact at the bound address, targets verified (not counted))",
+        "??3@YAXPAX@Z": "0x006a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??$fill@PAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@PAV12@@std@@YAXPAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@0ABQAV12@@Z": "0x00563c40 (helper body exact at the bound address, targets verified (not counted))",
+        "??$_Unchecked_move_backward@PAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@PAPAV12@@stdext@@YAPAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@PAPAV12@00@Z": "0x00459670 (helper body exact at the bound address, targets verified (not counted))"
+      },
+      "local_eh": []
+    },
+    "?_Xlen@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@KAXXZ": {
+      "address": "0x004c6d40",
+      "symbol": "?_Xlen@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@KAXXZ",
+      "size": 112,
+      "exact": false,
+      "build": "instances",
+      "verified_targets": {
+        "??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long?$AA@": "0x0080e190 (literal 'vector<T> too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x00802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x00802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x0080b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x0080245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVlength_error@std@@": "0x008d0cc0 (external)",
+        "??_7length_error@std@@6B@": "0x0080b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x006a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$?_Xlen@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@KAXXZ"
+      ]
+    },
+    "??$_Allocate@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@YAPAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@IPAPAV12@@Z": {
+      "address": "0x00420b50",
+      "symbol": "??$_Allocate@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@YAPAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@IPAPAV12@@Z",
+      "size": 91,
+      "exact": false,
+      "build": "instances",
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x006a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "__imp_??0exception@std@@QAE@ABQBD@Z": "0x008028a4 (msvcr90.dll!??0exception@std@@QAE@ABQBD@Z)",
+        "__TI2?AVbad_alloc@std@@": "0x008d07d8 (external)",
+        "??_7bad_alloc@std@@6B@": "0x0080b104 (vtable RTTI .?AVbad_alloc@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x006a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": []
+    },
+    "??$_Umove@PAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@IAEPAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@PAPAV23@00@Z": {
+      "address": "0x00423c00",
+      "symbol": "??$_Umove@PAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@IAEPAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@PAPAV23@00@Z",
+      "size": 53,
+      "exact": false,
+      "build": "instances",
+      "verified_targets": {
+        "__imp__memmove_s": "0x00802850 (msvcr90.dll!memmove_s)"
+      },
+      "local_eh": []
+    },
+    "?_Ufill@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@IAEPAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@PAPAV34@IABQAV34@@Z": {
+      "address": "0x0056c050",
+      "symbol": "?_Ufill@?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@@std@@IAEPAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@PAPAV34@IABQAV34@@Z",
+      "size": 44,
+      "exact": false,
+      "build": "instances",
+      "verified_targets": {},
+      "local_eh": []
+    },
+    "??$fill@PAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@PAV12@@std@@YAXPAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@0ABQAV12@@Z": {
+      "address": "0x00563c40",
+      "symbol": "??$fill@PAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@PAV12@@std@@YAXPAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@0ABQAV12@@Z",
+      "size": 30,
+      "exact": false,
+      "build": "instances",
+      "verified_targets": {},
+      "local_eh": []
+    },
+    "??$_Unchecked_move_backward@PAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@PAPAV12@@stdext@@YAPAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@PAPAV12@00@Z": {
+      "address": "0x00459670",
+      "symbol": "??$_Unchecked_move_backward@PAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@PAPAV12@@stdext@@YAPAPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@PAPAV12@00@Z",
+      "size": 48,
+      "exact": false,
+      "build": "instances",
+      "verified_targets": {
+        "__imp__memmove_s": "0x00802850 (msvcr90.dll!memmove_s)"
+      },
+      "local_eh": []
+    },
+    "?_Erase@?$_Tree@V?$_Tset_traits@PAVItem@CPropGrid@@U?$less@PAVItem@CPropGrid@@@std@@V?$allocator@PAVItem@CPropGrid@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tset_traits@PAVItem@CPropGrid@@U?$less@PAVItem@CPropGrid@@@std@@V?$allocator@PAVItem@CPropGrid@@@4@$0A@@std@@@2@@Z": {
+      "address": "0x00669050",
+      "symbol": "?_Erase@?$_Tree@V?$_Tset_traits@PAVItem@CPropGrid@@U?$less@PAVItem@CPropGrid@@@std@@V?$allocator@PAVItem@CPropGrid@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tset_traits@PAVItem@CPropGrid@@U?$less@PAVItem@CPropGrid@@@std@@V?$allocator@PAVItem@CPropGrid@@@4@$0A@@std@@@2@@Z",
+      "size": 53,
+      "exact": false,
+      "build": "selevents",
+      "verified_targets": {
+        "?_Erase@?$_Tree@V?$_Tset_traits@PAVItem@CPropGrid@@U?$less@PAVItem@CPropGrid@@@std@@V?$allocator@PAVItem@CPropGrid@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tset_traits@PAVItem@CPropGrid@@U?$less@PAVItem@CPropGrid@@@std@@V?$allocator@PAVItem@CPropGrid@@@4@$0A@@std@@@2@@Z": "0x00669050 (helper body exact at the bound address, targets verified (not counted))",
+        "??3@YAXPAX@Z": "0x006a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    "?removeListener@?$Notifier@VSelection@RBX@@VSelectionChanged@2@@RBX@@QBEXPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@2@@Z": {
+      "address": "0x005e5a80",
+      "symbol": "?removeListener@?$Notifier@VSelection@RBX@@VSelectionChanged@2@@RBX@@QBEXPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@2@@Z",
+      "size": 201,
+      "exact": false,
+      "build": "selection",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?removeIndex@RaiseRange@RBX@@QAEXI@Z": "0x00420740 (evidence name)",
+        "?erase@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@2@@Z": "0x00459830 (helper body exact at the bound address, targets verified (not counted))"
+      },
+      "local_eh": []
+    },
+    "?erase@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@2@@Z": {
+      "address": "0x00459830",
+      "symbol": "?erase@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@2@@Z",
+      "size": 94,
+      "exact": false,
+      "build": "selection",
+      "verified_targets": {
+        "__imp__memmove_s": "0x00802850 (msvcr90.dll!memmove_s)",
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": []
+    },
+    "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVCPropGrid@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVCSelectionPropGrid@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVCPropGrid@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVCSelectionPropGrid@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": {
+      "address": "0x00438d40",
+      "symbol": "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVCPropGrid@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVCSelectionPropGrid@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVCPropGrid@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVCSelectionPropGrid@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z",
+      "size": 108,
+      "exact": false,
+      "build": "selection",
+      "verified_targets": {
+        "??$?RPAVCSelectionPropGrid@@@?$mf1@XVCPropGrid@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@QBEXAAPAVCSelectionPropGrid@@V?$shared_ptr@VInstance@RBX@@@2@@Z": "0x00438a30 (helper body exact at the bound address, targets verified (not counted))"
+      },
+      "local_eh": []
+    },
+    "??$?RPAVCSelectionPropGrid@@@?$mf1@XVCPropGrid@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@QBEXAAPAVCSelectionPropGrid@@V?$shared_ptr@VInstance@RBX@@@2@@Z": {
+      "address": "0x00438a30",
+      "symbol": "??$?RPAVCSelectionPropGrid@@@?$mf1@XVCPropGrid@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@QBEXAAPAVCSelectionPropGrid@@V?$shared_ptr@VInstance@RBX@@@2@@Z",
+      "size": 166,
+      "exact": false,
+      "build": "selection",
+      "verified_targets": {},
+      "local_eh": [
+        "__ehhandler$??$?RPAVCSelectionPropGrid@@@?$mf1@XVCPropGrid@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@QBEXAAPAVCSelectionPropGrid@@V?$shared_ptr@VInstance@RBX@@@2@@Z"
+      ]
+    },
+    "??$shared_from@VSelection@RBX@@@RBX@@YA?AV?$shared_ptr@VSelection@RBX@@@boost@@PAVSelection@0@@Z": {
+      "address": "0x00618a40",
+      "symbol": "??$shared_from@VSelection@RBX@@@RBX@@YA?AV?$shared_ptr@VSelection@RBX@@@boost@@PAVSelection@0@@Z",
+      "size": 364,
+      "exact": false,
+      "build": "selection",
+      "verified_targets": {
+        "?shared_from_this@?$enable_shared_from_this@VInstance@RBX@@@boost@@QAE?AV?$shared_ptr@VInstance@RBX@@@2@XZ": "0x0042af90 (evidence name)",
+        "??$shared_static_cast@VSelection@RBX@@VInstance@2@@boost@@YA?AV?$shared_ptr@VSelection@RBX@@@0@ABV?$shared_ptr@VInstance@RBX@@@0@@Z": "0x004a2070 (helper body exact at the bound address, targets verified (not counted))"
+      },
+      "local_eh": [
+        "__ehhandler$??$shared_from@VSelection@RBX@@@RBX@@YA?AV?$shared_ptr@VSelection@RBX@@@boost@@PAVSelection@0@@Z"
+      ]
+    },
+    "??$shared_static_cast@VSelection@RBX@@VInstance@2@@boost@@YA?AV?$shared_ptr@VSelection@RBX@@@0@ABV?$shared_ptr@VInstance@RBX@@@0@@Z": {
+      "address": "0x004a2070",
+      "symbol": "??$shared_static_cast@VSelection@RBX@@VInstance@2@@boost@@YA?AV?$shared_ptr@VSelection@RBX@@@0@ABV?$shared_ptr@VInstance@RBX@@@0@@Z",
+      "size": 44,
+      "exact": false,
+      "build": "selection",
+      "verified_targets": {},
+      "local_eh": []
+    },
+    "?addListener@?$Notifier@VSelection@RBX@@VSelectionChanged@2@@RBX@@QBEXPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@2@@Z": {
+      "address": "0x004218a0",
+      "symbol": "?addListener@?$Notifier@VSelection@RBX@@VSelectionChanged@2@@RBX@@QBEXPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@2@@Z",
+      "size": 147,
+      "exact": false,
+      "build": "selection",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?push_back@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@QAEXABQAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@Z": "0x004213a0 (helper body exact at the bound address, targets verified (not counted))"
+      },
+      "local_eh": []
+    },
+    "?push_back@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@QAEXABQAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@Z": {
+      "address": "0x004213a0",
+      "symbol": "?push_back@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@QAEXABQAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@Z",
+      "size": 101,
+      "exact": false,
+      "build": "selection",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?insert@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@2@ABQAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@Z": "0x004c7c60 (helper body exact at the bound address, targets verified (not counted))"
+      },
+      "local_eh": []
+    },
+    "?insert@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@2@ABQAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@Z": {
+      "address": "0x004c7c60",
+      "symbol": "?insert@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@2@ABQAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@Z",
+      "size": 180,
+      "exact": false,
+      "build": "selection",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x00802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Insert_n@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@2@IABQAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@Z": "0x004c7890 (helper body exact at the bound address, targets verified (not counted))"
+      },
+      "local_eh": []
+    },
+    "?_Insert_n@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@2@IABQAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@Z": {
+      "address": "0x004c7890",
+      "symbol": "?_Insert_n@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@2@IABQAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@Z",
+      "size": 374,
+      "exact": false,
+      "build": "selection",
+      "verified_targets": {
+        "?_Xlen@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@KAXXZ": "0x004c6d40 (helper body exact at the bound address, targets verified (not counted))",
+        "??$_Allocate@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@YAPAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@IPAPAV12@@Z": "0x00420b50 (helper body exact at the bound address, targets verified (not counted))",
+        "??$_Umove@PAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@IAEPAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@PAPAV23@00@Z": "0x00423c00 (helper body exact at the bound address, targets verified (not counted))",
+        "?_Ufill@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@IAEPAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@PAPAV34@IABQAV34@@Z": "0x0056c050 (helper body exact at the bound address, targets verified (not counted))",
+        "??3@YAXPAX@Z": "0x006a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??$fill@PAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@PAV12@@std@@YAXPAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@0ABQAV12@@Z": "0x00563c40 (helper body exact at the bound address, targets verified (not counted))",
+        "??$_Unchecked_move_backward@PAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@PAPAV12@@stdext@@YAPAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@PAPAV12@00@Z": "0x00459670 (helper body exact at the bound address, targets verified (not counted))"
+      },
+      "local_eh": []
+    },
+    "?_Xlen@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@KAXXZ": {
+      "address": "0x004c6d40",
+      "symbol": "?_Xlen@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@KAXXZ",
+      "size": 112,
+      "exact": false,
+      "build": "selection",
+      "verified_targets": {
+        "??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long?$AA@": "0x0080e190 (literal 'vector<T> too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x00802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x00802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x0080b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x0080245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVlength_error@std@@": "0x008d0cc0 (external)",
+        "??_7length_error@std@@6B@": "0x0080b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x006a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$?_Xlen@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@KAXXZ"
+      ]
+    },
+    "??$_Allocate@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@YAPAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@IPAPAV12@@Z": {
+      "address": "0x00420b50",
+      "symbol": "??$_Allocate@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@YAPAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@IPAPAV12@@Z",
+      "size": 91,
+      "exact": false,
+      "build": "selection",
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x006a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "__imp_??0exception@std@@QAE@ABQBD@Z": "0x008028a4 (msvcr90.dll!??0exception@std@@QAE@ABQBD@Z)",
+        "__TI2?AVbad_alloc@std@@": "0x008d07d8 (external)",
+        "??_7bad_alloc@std@@6B@": "0x0080b104 (vtable RTTI .?AVbad_alloc@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x006a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": []
+    },
+    "??$_Umove@PAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@IAEPAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@PAPAV23@00@Z": {
+      "address": "0x00423c00",
+      "symbol": "??$_Umove@PAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@IAEPAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@PAPAV23@00@Z",
+      "size": 53,
+      "exact": false,
+      "build": "selection",
+      "verified_targets": {
+        "__imp__memmove_s": "0x00802850 (msvcr90.dll!memmove_s)"
+      },
+      "local_eh": []
+    },
+    "?_Ufill@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@IAEPAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@PAPAV34@IABQAV34@@Z": {
+      "address": "0x0056c050",
+      "symbol": "?_Ufill@?$vector@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@V?$allocator@PAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@std@@@std@@IAEPAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@PAPAV34@IABQAV34@@Z",
+      "size": 44,
+      "exact": false,
+      "build": "selection",
+      "verified_targets": {},
+      "local_eh": []
+    },
+    "??$fill@PAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@PAV12@@std@@YAXPAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@0ABQAV12@@Z": {
+      "address": "0x00563c40",
+      "symbol": "??$fill@PAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@PAV12@@std@@YAXPAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@0ABQAV12@@Z",
+      "size": 30,
+      "exact": false,
+      "build": "selection",
+      "verified_targets": {},
+      "local_eh": []
+    },
+    "??$_Unchecked_move_backward@PAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@PAPAV12@@stdext@@YAPAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@PAPAV12@00@Z": {
+      "address": "0x00459670",
+      "symbol": "??$_Unchecked_move_backward@PAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@PAPAV12@@stdext@@YAPAPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@PAPAV12@00@Z",
+      "size": 48,
+      "exact": false,
+      "build": "selection",
+      "verified_targets": {
+        "__imp__memmove_s": "0x00802850 (msvcr90.dll!memmove_s)"
+      },
+      "local_eh": []
+    }
+  },
+  "range_rows_counted_by_other_receipts": [
+    "00440840 counted by creatable-shared-count-working",
+    "00440ab0 counted by creatable-shared-count-working",
+    "00440d30 counted by propgrid-items2008-working",
+    "00440db0 counted by propgrid-items2008-working",
+    "00441770 counted by propgrid-items2008-working",
+    "00442c50 counted by app-leaves2008-working",
+    "00442c80 counted by app-leaves2008-working",
+    "00442c90 counted by app-leaves2008-working",
+    "00442ce0 counted by app-leaves2008-working",
+    "00442db0 counted by app-leaves2008-working",
+    "00442df0 counted by app-leaves2008-working",
+    "00442f20 counted by app-leaves2008-working",
+    "00442f70 counted by app-leaves2008-working",
+    "00443400 counted by misc-leaves-working",
+    "00443960 counted by sound-value-get-integrated",
+    "00443a10 counted by misc-leaves-working",
+    "00443a60 counted by misc-leaves-working",
+    "00443c40 counted by misc-leaves-working",
+    "00443c60 counted by misc-leaves-working",
+    "00443d60 counted by misc-leaves-working",
+    "00443e50 counted by misc-leaves-working",
+    "00443eb0 counted by misc-leaves-working",
+    "00443ec0 counted by misc-leaves-working",
+    "00443ef0 counted by misc-leaves-working",
+    "00443f80 counted by misc-leaves-working"
+  ],
+  "proposals": [
+    "reflection/Metadata.h owner: declare Reflection (and sReflection) in namespace RBX::Reflection::Metadata, not RBX::Metadata. Evidence: the original RTTI is .?AV?$FactoryProduct@VReflection@Metadata@1RBX@@VInstance@3@$1?sReflection@213@3PADA@RBX@@ (vtable 0x815854 stored by 0x443050 / 0x4430b0), i.e. FactoryProduct<RBX::Reflection::Metadata::Reflection, Instance, RBX::Reflection::Metadata::sReflection>. With the current namespace the Reflection vtables cannot be slot-checked, which blocks Reflection::askAddChild 0x442f90, FactoryProduct<Reflection>() / ~FactoryProduct 0x4430b0 / 0x443050, the adjustor thunks 0x443110 / 0x443120 / 0x443130 and getClassName 0x443660 (all byte-exact, relocation-masked, with the committed MetadataReflectionLifetime.cpp). The non-virtual Reflection rows counted here (lookup 0x443210 and the member lookups 0x443ab0 / 0x443b00 / 0x443b50) do not depend on the mangled class name. The committed MetadataReflection*.cpp sources would follow the namespace change.",
+    "reflection/Metadata.h owner, FYI: the member lookups 0x443ab0 / 0x443b00 / 0x443b50 are defined in native-classes/AppUnit440Metadata.cpp as `lookup(descriptor.owner, false)` then findFirstChildOfType<Properties / Functions / Events>() then findFirstChildByName(descriptor.name); this needs Reflection::lookup(ClassDescriptor, bool) / Classes::lookup visible in the same unit (they are inlined)."
+  ],
+  "rejected": [
+    "member lookup 0x443ab0 as `Instance* item = classes ? classes->findFirstChildByName(owner name) : NULL; ...` (69 B vs 73; the original materializes NULL before one shared test, which the inlined lookup(owner, false) gives).",
+    "the same with an early `if (!item) return NULL;` (69 B, different branch layout)."
+  ],
+  "shadowing": "none (no new header; every native header is included read-only)",
+  "counted_from_owner_probes": "SelectionGroup::add 0x442350, CPropGrid::addInstance 0x4423f0, CSelectionPropGrid::onEvent 0x442490 / setSelection 0x442650 (selection-grid probe) and CDataModelPropGrid::update 0x442900 (pane-callbacks probe) were relocation-masked matches there; they are counted once here with every target verified.",
+  "exact_function_rows": [
+    "00440640",
+    "004417f0",
+    "00441f20",
+    "00442100",
+    "00442140",
+    "00442350",
+    "004423f0",
+    "00442490",
+    "00442650",
+    "00442900",
+    "00442fc0",
+    "00442ff0",
+    "00443020",
+    "00443140",
+    "00443210",
+    "004436e0",
+    "00443780",
+    "00443820",
+    "004438c0",
+    "00443ab0",
+    "00443b00",
+    "00443b50"
+  ],
+  "scope": "Inactive. Exact rows with every target verified; no pending build; no active build, swap or credit."
+}

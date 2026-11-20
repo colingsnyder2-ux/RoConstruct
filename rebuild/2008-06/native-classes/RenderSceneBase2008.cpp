@@ -5,7 +5,7 @@
 //   RenderSceneBase: ctor 00504fd0, dtor 005039d0, ??_G 00503a30, presetLighting default 005039e0.
 //   Render::RenderScene: ctor 00505040, dtor 00503a60, ??_G 00503fc0, setThrottle 00502d30, setLighting 00502e70,
 //   presetLighting 00503cc0, the RenderSurface sort procs 005051e0 / 00505220 / 00505240 and sortBy* 00505860 /
-//   00505890 / 005058c0 with their std::sort helpers. render 00504bf0 is not built (declared only).
+//   00505890 / 005058c0 with their std::sort helpers. render 00504bf0 / computeProxyArrays 00504b60: RenderSceneRecovery_00504b60.cpp.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 #include "RenderLib/RenderSceneRender2008.h"
 #include <exception>

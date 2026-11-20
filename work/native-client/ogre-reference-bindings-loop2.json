@@ -349,8 +349,8 @@
   },
   {
    "symbol": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z",
-   "address": "005ef400",
-   "evidence": "original relocation target at an exact owner"
+   "address": "00458e90",
+   "evidence": "corrected 2026-11-14 (was 005ef400, rejected in ogre-reference-bindings-loop8.json rejected_identities): IRenderable vtable slot 4 of the SurfaceTool-family IRenderable vtables 0083922c / 008392b4 and Sparkles 0084a1a0 holds 00458e90 (ret 8), the empty inline default; 005ef400 is a this-adjusted override (IRenderable at -0x2c, __RTDynamicCast)"
   },
   {
    "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",

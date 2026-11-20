@@ -1,0 +1,1187 @@
+{
+  "scope": "Inactive 2008-06 native recovery of the application range 005dc000..005e8000: unit map of every row, and the IRenderable.cpp, Quaternion.cpp and Math.cpp rows against the native util/IRenderable.h and the donor util/Quaternion.h / util/Math.h. No runtime, link or class-swap claim.",
+  "exact_function_rows": [
+    "005dd2c0",
+    "005dd330",
+    "005dd360",
+    "005dd400",
+    "005dd4c0",
+    "005dd4d0",
+    "005dd540",
+    "005dd550",
+    "005dd570",
+    "005dd6d0",
+    "005dd7b0",
+    "005dd7d0",
+    "005dd860",
+    "005dd940",
+    "005dd9b0",
+    "005dda30",
+    "005dda70",
+    "005ddb30",
+    "005ddb70",
+    "005ddbb0",
+    "005ddbd0",
+    "005ddc20",
+    "005ddc90",
+    "005ddce0",
+    "005dddc0",
+    "005dde50",
+    "005de090",
+    "005de0f0",
+    "005de140",
+    "005de190",
+    "005de1d0",
+    "005de230",
+    "005de2a0",
+    "005de2f0",
+    "005de560",
+    "005de630",
+    "005de650",
+    "005de660",
+    "005de6c0",
+    "005de740",
+    "005de800",
+    "005de890",
+    "005de910",
+    "005de990",
+    "005dea60",
+    "005dec60",
+    "005dece0",
+    "005ded60",
+    "005dee10",
+    "005dee90",
+    "005deed0",
+    "005def40",
+    "005defa0",
+    "005df0a0",
+    "005df1b0",
+    "005df220",
+    "005df380"
+  ],
+  "exact_function_row_count": 57,
+  "range_rows": 482,
+  "rows": {
+    "render": [
+      {
+        "address": "005dd2c0",
+        "symbol": "??1IRenderableBucket@RBX@@QAE@XZ",
+        "size": 98,
+        "target_size": 98,
+        "exact": true,
+        "verified_targets": {
+          "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??1IRenderableBucket@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "005dd330",
+        "symbol": "?render2dItems@IRenderableBucket@RBX@@QAEXPAVAdorn@2@@Z",
+        "size": 41,
+        "target_size": 41,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005dd360",
+        "symbol": "?render3dAdornItems@IRenderableBucket@RBX@@QAEXPAVAdorn@2@@Z",
+        "size": 42,
+        "target_size": 42,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005dd400",
+        "symbol": "?recomputeShouldRender@IRenderableBucket@RBX@@IAEXPAVIRenderable@2@@Z",
+        "size": 192,
+        "target_size": 192,
+        "exact": true,
+        "verified_targets": {
+          "?append@?$Array@PAVIRenderable@RBX@@@G3D@@QAEXABQAVIRenderable@RBX@@@Z": "0x5dd390 (support body exact at the bound address)",
+          "?resize@?$Array@PAVIRenderable@RBX@@@G3D@@QAEXH_N@Z": "0x4abe40 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005dd4c0",
+        "symbol": "?onAdded@IRenderableBucket@RBX@@IAEXPAVIRenderable@2@@Z",
+        "size": 16,
+        "target_size": 16,
+        "exact": true,
+        "verified_targets": {
+          "?recomputeShouldRender@IRenderableBucket@RBX@@IAEXPAVIRenderable@2@@Z": "0x5dd400 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005dd4d0",
+        "symbol": "?onRemoving@IRenderableBucket@RBX@@IAEXPAVIRenderable@2@@Z",
+        "size": 110,
+        "target_size": 110,
+        "exact": true,
+        "verified_targets": {
+          "?resize@?$Array@PAVIRenderable@RBX@@@G3D@@QAEXH_N@Z": "0x4abe40 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005dd540",
+        "symbol": "?shouldRenderSetDirty@IRenderable@RBX@@QAEXXZ",
+        "size": 16,
+        "target_size": 16,
+        "exact": true,
+        "verified_targets": {
+          "?recomputeShouldRender@IRenderableBucket@RBX@@IAEXPAVIRenderable@2@@Z": "0x5dd400 (own row)"
+        },
+        "local_eh": []
+      }
+    ],
+    "quat": [
+      {
+        "address": "005dd550",
+        "symbol": "??4Quaternion@RBX@@QAEAAV01@ABV01@@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005dd570",
+        "symbol": "??0Quaternion@RBX@@QAE@ABVMatrix3@G3D@@@Z",
+        "size": 340,
+        "target_size": 340,
+        "exact": true,
+        "verified_targets": {
+          "__real@3f800000": "0x827494 (constant 3f800000)",
+          "__real@3f000000": "0x819bac (constant 3f000000)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005dd6d0",
+        "symbol": "?toRotationMatrix@Quaternion@RBX@@QBEXAAVMatrix3@G3D@@@Z",
+        "size": 173,
+        "target_size": 173,
+        "exact": true,
+        "verified_targets": {
+          "__real@40000000": "0x81c434 (constant 40000000)"
+        },
+        "local_eh": []
+      }
+    ],
+    "math": [
+      {
+        "address": "005dd7b0",
+        "symbol": "?isDenormal@Math@RBX@@SA_NM@Z",
+        "size": 27,
+        "target_size": 27,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005dd7d0",
+        "symbol": "?isNanInfDenorm@Math@RBX@@SA_NM@Z",
+        "size": 80,
+        "target_size": 80,
+        "exact": true,
+        "verified_targets": {
+          "__imp___FInf": "0x80250c (msvcp90.dll!_FInf)",
+          "__imp___FNan": "0x80251c (msvcp90.dll!_FNan)",
+          "__imp___FSnan": "0x802520 (msvcp90.dll!_FSnan)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005dd860",
+        "symbol": "?isNanInfDenormVector3@Math@RBX@@SA_NABVVector3@G3D@@@Z",
+        "size": 69,
+        "target_size": 69,
+        "exact": true,
+        "verified_targets": {
+          "?isNanInfDenorm@Math@RBX@@SA_NM@Z": "0x5dd7d0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005dd940",
+        "symbol": "?fixDenorm@Math@RBX@@SA_NAAVVector3@G3D@@@Z",
+        "size": 106,
+        "target_size": 106,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005dd9b0",
+        "symbol": "?legalCameraCoord@Math@RBX@@SA_NABVCoordinateFrame@G3D@@@Z",
+        "size": 125,
+        "target_size": 125,
+        "exact": true,
+        "verified_targets": {
+          "__real@bf99999a": "0x830b6c (constant bf99999a)",
+          "__real@3f99999a": "0x827278 (constant 3f99999a)",
+          "__real@c9742400": "0x823e08 (constant c9742400)",
+          "__real@49742400": "0x823e04 (constant 49742400)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005dda30",
+        "symbol": "?rotationFromByte@Math@RBX@@SAME@Z",
+        "size": 57,
+        "target_size": 57,
+        "exact": true,
+        "verified_targets": {
+          "?$S1@?1??segSizeRadians@RBX@@YAABMXZ@4IA": "0x97a688 (static data (one address per symbol))",
+          "__real@3cc90fda": "0x83db40 (constant 3cc90fda)",
+          "?ssr@?1??segSizeRadians@RBX@@YAABMXZ@4MA": "0x97a684 (static data (one address per symbol))",
+          "__real@40490fdb": "0x81e378 (constant 40490fdb)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005dda70",
+        "symbol": "?getIWorldAtPoint@Math@RBX@@SA?AVMatrix3@G3D@@ABVVector3@4@0ABV34@M@Z",
+        "size": 177,
+        "target_size": 177,
+        "exact": true,
+        "verified_targets": {
+          "??0Matrix3@G3D@@QAE@MMMMMMMMM@Z": "0x513b70 (external)",
+          "??DG3D@@YA?AVMatrix3@0@MABV10@@Z": "0x5134e0 (external)",
+          "??HMatrix3@G3D@@QBE?AV01@ABV01@@Z": "0x5132f0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ddb30",
+        "symbol": "?momentToObjectSpace@Math@RBX@@SA?AVMatrix3@G3D@@ABV34@0@Z",
+        "size": 55,
+        "target_size": 55,
+        "exact": true,
+        "verified_targets": {
+          "?transpose@Matrix3@G3D@@QBE?AV12@XZ": "0x513510 (external)",
+          "??DMatrix3@G3D@@QBE?AV01@ABV01@@Z": "0x513350 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ddb70",
+        "symbol": "?momentToWorldSpace@Math@RBX@@SA?AVMatrix3@G3D@@ABV34@0@Z",
+        "size": 59,
+        "target_size": 59,
+        "exact": true,
+        "verified_targets": {
+          "?transpose@Matrix3@G3D@@QBE?AV12@XZ": "0x513510 (external)",
+          "??DMatrix3@G3D@@QBE?AV01@ABV01@@Z": "0x513350 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ddbb0",
+        "symbol": "?toDiagonal@Math@RBX@@SA?AVVector3@G3D@@ABVMatrix3@4@@Z",
+        "size": 25,
+        "target_size": 25,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005ddbd0",
+        "symbol": "?fromDiagonal@Math@RBX@@SA?AVMatrix3@G3D@@ABVVector3@4@@Z",
+        "size": 68,
+        "target_size": 68,
+        "exact": true,
+        "verified_targets": {
+          "??0Matrix3@G3D@@QAE@MMMMMMMMM@Z": "0x513b70 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ddc20",
+        "symbol": "?isAxisAligned@Math@RBX@@SA_NABVMatrix3@G3D@@@Z",
+        "size": 99,
+        "target_size": 99,
+        "exact": true,
+        "verified_targets": {
+          "__real@bf800000": "0x81c3b8 (constant bf800000)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ddc90",
+        "symbol": "?getOrientId@Math@RBX@@SAHABVMatrix3@G3D@@@Z",
+        "size": 69,
+        "target_size": 69,
+        "exact": true,
+        "verified_targets": {
+          "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240 (external)",
+          "?Vector3ToNormalId@RBX@@YA?AW4NormalId@1@ABVVector3@G3D@@@Z": "0x5ec290 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ddce0",
+        "symbol": "?idToMatrix3@Math@RBX@@SAXHAAVMatrix3@G3D@@@Z",
+        "size": 211,
+        "target_size": 211,
+        "exact": true,
+        "verified_targets": {
+          "?intToNormalId@RBX@@YA?AW4NormalId@1@H@Z": "0x5ec170 (external)",
+          "?normalIdToVector3@RBX@@YAABVVector3@G3D@@W4NormalId@1@@Z": "0x5ec570 (external (evidence name))",
+          "?setColumn@Matrix3@G3D@@QAEXHABVVector3@2@@Z": "0x513260 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005dddc0",
+        "symbol": "?rotateAboutZ@Math@RBX@@SA?AVMatrix3@G3D@@ABV34@M@Z",
+        "size": 135,
+        "target_size": 135,
+        "exact": true,
+        "verified_targets": {
+          "?identity@Matrix3@G3D@@SAABV12@XZ": "0x513e20 (external)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?setColumn@Matrix3@G3D@@QAEXHABVVector3@2@@Z": "0x513260 (external)",
+          "??DMatrix3@G3D@@QBE?AV01@ABV01@@Z": "0x513350 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005dde50",
+        "symbol": "?snapToAxes@Math@RBX@@SA?AVMatrix3@G3D@@ABV34@@Z",
+        "size": 574,
+        "target_size": 574,
+        "exact": true,
+        "verified_targets": {
+          "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240 (external)",
+          "?identity@Matrix3@G3D@@SAABV12@XZ": "0x513e20 (external)",
+          "__real@bf800000": "0x81c3b8 (constant bf800000)",
+          "?setColumn@Matrix3@G3D@@QAEXHABVVector3@2@@Z": "0x513260 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005de090",
+        "symbol": "?iRoundVector3@Math@RBX@@SA?AVVector3@G3D@@ABV34@@Z",
+        "size": 93,
+        "target_size": 93,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005de0f0",
+        "symbol": "?angleToE0@Math@RBX@@SAMABVVector2@G3D@@@Z",
+        "size": 72,
+        "target_size": 72,
+        "exact": true,
+        "verified_targets": {
+          "__real@358637bd": "0x826e70 (constant 358637bd)",
+          "?unitize@Vector2@G3D@@QAEMM@Z": "0x509c80 (external)",
+          "__CIacos": "0x6a1dc6 (msvcr90.dll!_CIacos)",
+          "__real@40c90fdb": "0x83db44 (constant 40c90fdb)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005de140",
+        "symbol": "?angle@Math@RBX@@SAMABVVector3@G3D@@0@Z",
+        "size": 73,
+        "target_size": 73,
+        "exact": true,
+        "verified_targets": {
+          "__real@bf800000": "0x81c3b8 (constant bf800000)",
+          "__real@40490fdb": "0x81e378 (constant 40490fdb)",
+          "__CIacos": "0x6a1dc6 (msvcr90.dll!_CIacos)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005de190",
+        "symbol": "?elevationAngle@Math@RBX@@SAMABVVector3@G3D@@@Z",
+        "size": 54,
+        "target_size": 54,
+        "exact": true,
+        "verified_targets": {
+          "__real@3fc90fdb": "0x81e374 (constant 3fc90fdb)",
+          "__real@bf800000": "0x81c3b8 (constant bf800000)",
+          "__real@bfc90fdb": "0x81e370 (constant bfc90fdb)",
+          "__CIasin": "0x6a1dc0 (msvcr90.dll!_CIasin)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005de1d0",
+        "symbol": "?fuzzyEq@Math@RBX@@SA_NABVVector3@G3D@@0M@Z",
+        "size": 85,
+        "target_size": 85,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005de230",
+        "symbol": "?fuzzyEq@Math@RBX@@SA_NABVMatrix3@G3D@@0M@Z",
+        "size": 106,
+        "target_size": 106,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005de2a0",
+        "symbol": "?fuzzyEq@Math@RBX@@SA_NABVCoordinateFrame@G3D@@0MM@Z",
+        "size": 67,
+        "target_size": 67,
+        "exact": true,
+        "verified_targets": {
+          "?fuzzyEq@Math@RBX@@SA_NABVVector3@G3D@@0M@Z": "0x5de1d0 (own row)",
+          "?fuzzyEq@Math@RBX@@SA_NABVMatrix3@G3D@@0M@Z": "0x5de230 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005de2f0",
+        "symbol": "?alignAxesClosest@Math@RBX@@SA?AVMatrix3@G3D@@ABV34@0@Z",
+        "size": 610,
+        "target_size": 610,
+        "exact": true,
+        "verified_targets": {
+          "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240 (external)",
+          "__real@bf800000": "0x81c3b8 (constant bf800000)",
+          "?setColumn@Matrix3@G3D@@QAEXHABVVector3@2@@Z": "0x513260 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005de560",
+        "symbol": "?getClosestObjectNormalId@Math@RBX@@SA?AW4NormalId@2@ABVVector3@G3D@@ABVMatrix3@5@@Z",
+        "size": 197,
+        "target_size": 197,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005de630",
+        "symbol": "?vector3Abs@Math@RBX@@SA?AVVector3@G3D@@ABV34@@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005de650",
+        "symbol": "?getHeading@Math@RBX@@SAMABVVector3@G3D@@@Z",
+        "size": 16,
+        "target_size": 16,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005de660",
+        "symbol": "?getHeadingElevation@Math@RBX@@SAXABVCoordinateFrame@G3D@@AAM1@Z",
+        "size": 83,
+        "target_size": 83,
+        "exact": true,
+        "verified_targets": {
+          "?zLookDirection@CoordinateFrame@G3D@@2MB": "0x828b60 (data, bytes verified)",
+          "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240 (external)",
+          "__CIasin": "0x6a1dc0 (msvcr90.dll!_CIasin)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005de6c0",
+        "symbol": "?setHeadingElevation@Math@RBX@@SAXAAVCoordinateFrame@G3D@@MM@Z",
+        "size": 117,
+        "target_size": 117,
+        "exact": true,
+        "verified_targets": {
+          "?lookAt@CoordinateFrame@G3D@@QAEXABVVector3@2@@Z": "0x518e20 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005de740",
+        "symbol": "?rotateMatrixAboutY90@Math@RBX@@SAXAAVMatrix3@G3D@@H@Z",
+        "size": 185,
+        "target_size": 185,
+        "exact": true,
+        "verified_targets": {
+          "?$S2@?1??rotateMatrixAboutY90@Math@RBX@@SAXAAVMatrix3@G3D@@H@Z@4IA": "0x97a6b0 (static data (one address per symbol))",
+          "?y90@?1??rotateMatrixAboutY90@Math@RBX@@SAXAAVMatrix3@G3D@@H@Z@4V45@A": "0x97a68c (static data (one address per symbol))",
+          "__real@bf800000": "0x81c3b8 (constant bf800000)",
+          "??0Matrix3@G3D@@QAE@MMMMMMMMM@Z": "0x513b70 (external)",
+          "??DMatrix3@G3D@@QBE?AV01@ABV01@@Z": "0x513350 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?rotateMatrixAboutY90@Math@RBX@@SAXAAVMatrix3@G3D@@H@Z"
+        ]
+      },
+      {
+        "address": "005de800",
+        "symbol": "?matrixRotateY@Math@RBX@@SAABVMatrix3@G3D@@XZ",
+        "size": 129,
+        "target_size": 129,
+        "exact": true,
+        "verified_targets": {
+          "?$S3@?1??matrixRotateY@Math@RBX@@SAABVMatrix3@G3D@@XZ@4IA": "0x97a6d8 (static data (one address per symbol))",
+          "?rotateY@?1??matrixRotateY@Math@RBX@@SAABVMatrix3@G3D@@XZ@4V45@A": "0x97a6b4 (static data (one address per symbol))",
+          "__real@bf800000": "0x81c3b8 (constant bf800000)",
+          "??0Matrix3@G3D@@QAE@MMMMMMMMM@Z": "0x513b70 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?matrixRotateY@Math@RBX@@SAABVMatrix3@G3D@@XZ"
+        ]
+      },
+      {
+        "address": "005de890",
+        "symbol": "?matrixTiltZ@Math@RBX@@SAABVMatrix3@G3D@@XZ",
+        "size": 127,
+        "target_size": 127,
+        "exact": true,
+        "verified_targets": {
+          "?$S4@?1??matrixTiltZ@Math@RBX@@SAABVMatrix3@G3D@@XZ@4IA": "0x97a700 (static data (one address per symbol))",
+          "?tiltZ@?1??matrixTiltZ@Math@RBX@@SAABVMatrix3@G3D@@XZ@4V45@A": "0x97a6dc (static data (one address per symbol))",
+          "__real@bf800000": "0x81c3b8 (constant bf800000)",
+          "??0Matrix3@G3D@@QAE@MMMMMMMMM@Z": "0x513b70 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?matrixTiltZ@Math@RBX@@SAABVMatrix3@G3D@@XZ"
+        ]
+      },
+      {
+        "address": "005de910",
+        "symbol": "?matrixTiltNegativeZ@Math@RBX@@SAABVMatrix3@G3D@@XZ",
+        "size": 127,
+        "target_size": 127,
+        "exact": true,
+        "verified_targets": {
+          "?$S5@?1??matrixTiltNegativeZ@Math@RBX@@SAABVMatrix3@G3D@@XZ@4IA": "0x97a728 (static data (one address per symbol))",
+          "?tiltNegativeZ@?1??matrixTiltNegativeZ@Math@RBX@@SAABVMatrix3@G3D@@XZ@4V45@A": "0x97a704 (static data (one address per symbol))",
+          "__real@bf800000": "0x81c3b8 (constant bf800000)",
+          "??0Matrix3@G3D@@QAE@MMMMMMMMM@Z": "0x513b70 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?matrixTiltNegativeZ@Math@RBX@@SAABVMatrix3@G3D@@XZ"
+        ]
+      },
+      {
+        "address": "005de990",
+        "symbol": "?matrixTiltQuadrant@Math@RBX@@SA?BVMatrix3@G3D@@H@Z",
+        "size": 200,
+        "target_size": 200,
+        "exact": true,
+        "verified_targets": {
+          "__real@bf800000": "0x81c3b8 (constant bf800000)",
+          "??0Matrix3@G3D@@QAE@MMMMMMMMM@Z": "0x513b70 (external)",
+          "?matrixTiltZ@Math@RBX@@SAABVMatrix3@G3D@@XZ": "0x5de890 (own row)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?matrixTiltNegativeZ@Math@RBX@@SAABVMatrix3@G3D@@XZ": "0x5de910 (own row)",
+          "?identity@Matrix3@G3D@@SAABV12@XZ": "0x513e20 (external)"
+        },
+        "local_eh": [
+          "$LN13",
+          "$LN2",
+          "$LN3",
+          "$LN4",
+          "$LN5"
+        ]
+      },
+      {
+        "address": "005dea60",
+        "symbol": "?toYAxisQuadrant@Math@RBX@@SAHABVCoordinateFrame@G3D@@@Z",
+        "size": 99,
+        "target_size": 99,
+        "exact": true,
+        "verified_targets": {
+          "?zLookDirection@CoordinateFrame@G3D@@2MB": "0x828b60 (data, bytes verified)",
+          "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240 (external)",
+          "__real@40e231d6": "0x83db50 (constant 40e231d6)",
+          "__real@40800000": "0x826e6c (constant 40800000)",
+          "__real@3fc45f307e7f67e7": "0x83db48 (constant 3fc45f307e7f67e7)",
+          "_floor": "0x6a1bb0 (msvcr90.dll!floor)",
+          "__ftol2_sse": "0x6a17f0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005dec60",
+        "symbol": "?getFocusSpace@Math@RBX@@SA?AVCoordinateFrame@G3D@@ABV34@@Z",
+        "size": 121,
+        "target_size": 121,
+        "exact": true,
+        "verified_targets": {
+          "?zLookDirection@CoordinateFrame@G3D@@2MB": "0x828b60 (data, bytes verified)",
+          "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240 (external)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?setHeadingElevation@Math@RBX@@SAXAAVCoordinateFrame@G3D@@MM@Z": "0x5de6c0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005dece0",
+        "symbol": "?rotationToByteBase@RBX@@YAEM@Z",
+        "size": 115,
+        "target_size": 115,
+        "exact": true,
+        "verified_targets": {
+          "?$S1@?1??segSizeRadians@RBX@@YAABMXZ@4IA": "0x97a688 (static data (one address per symbol))",
+          "__real@3cc90fda": "0x83db40 (constant 3cc90fda)",
+          "?ssr@?1??segSizeRadians@RBX@@YAABMXZ@4MA": "0x97a684 (static data (one address per symbol))",
+          "__real@40490fdb": "0x81e378 (constant 40490fdb)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ded60",
+        "symbol": "?rotationToByte@Math@RBX@@SAEM@Z",
+        "size": 25,
+        "target_size": 25,
+        "exact": true,
+        "verified_targets": {
+          "?radWrap@Math@RBX@@SAMM@Z": "0x5cbec0 (external)",
+          "?rotationToByteBase@RBX@@YAEM@Z": "0x5dece0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005dee10",
+        "symbol": "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@0@Z",
+        "size": 127,
+        "target_size": 127,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005dee90",
+        "symbol": "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@M@Z",
+        "size": 50,
+        "target_size": 50,
+        "exact": true,
+        "verified_targets": {
+          "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@0@Z": "0x5dee10 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005deed0",
+        "symbol": "?snapToGrid@Math@RBX@@SA?AVCoordinateFrame@G3D@@ABV34@M@Z",
+        "size": 97,
+        "target_size": 97,
+        "exact": true,
+        "verified_targets": {
+          "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@0@Z": "0x5dee10 (own row)",
+          "?snapToAxes@Math@RBX@@SA?AVMatrix3@G3D@@ABV34@@Z": "0x5dde50 (own row)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005def40",
+        "symbol": "?snapToGrid@Math@RBX@@SA?AVCoordinateFrame@G3D@@ABV34@ABVVector3@4@@Z",
+        "size": 81,
+        "target_size": 81,
+        "exact": true,
+        "verified_targets": {
+          "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@0@Z": "0x5dee10 (own row)",
+          "?snapToAxes@Math@RBX@@SA?AVMatrix3@G3D@@ABV34@@Z": "0x5dde50 (own row)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005defa0",
+        "symbol": "?fuzzyAxisAligned@Math@RBX@@SA_NABVMatrix3@G3D@@0M@Z",
+        "size": 250,
+        "target_size": 250,
+        "exact": true,
+        "verified_targets": {
+          "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005df0a0",
+        "symbol": "?orthonormalizeIfNecessary@Math@RBX@@SA_NAAVMatrix3@G3D@@@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "?isOrthonormal@Matrix3@G3D@@QBE_NXZ": "0x5138e0 (external)",
+          "?orthonormalize@Matrix3@G3D@@QAEXXZ": "0x513550 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005df1b0",
+        "symbol": "?sortVector3@Math@RBX@@SA?AVVector3@G3D@@ABV34@@Z",
+        "size": 100,
+        "target_size": 100,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005df220",
+        "symbol": "?maxAxisLength@Math@RBX@@SAMABVVector3@G3D@@@Z",
+        "size": 73,
+        "target_size": 73,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005df380",
+        "symbol": "?intersectRayPlane@Math@RBX@@SA_NABVRay@G3D@@ABVPlane@4@AAVVector3@4@@Z",
+        "size": 243,
+        "target_size": 243,
+        "exact": true,
+        "verified_targets": {
+          "?halfSpaceContains@Plane@G3D@@QBE_NVVector3@2@@Z": "0x518f20 (external)",
+          "?inf@Vector3@G3D@@SAABV12@XZ": "0x510960 (external (evidence name))",
+          "?fromPointAndDirection@Line@G3D@@SA?AV12@ABVVector3@2@0@Z": "0x5dd780 (support body exact at the bound address)",
+          "?intersection@Line@G3D@@QBE?AVVector3@2@ABVPlane@2@@Z": "0x7bbce0 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?intersectRayPlane@Math@RBX@@SA_NABVRay@G3D@@ABVPlane@4@AAVVector3@4@@Z"
+        ]
+      }
+    ]
+  },
+  "library_rows": [
+    {
+      "row": "005dd780 (library, not counted)",
+      "symbol": "?fromPointAndDirection@Line@G3D@@SA?AV12@ABVVector3@2@0@Z",
+      "what": "G3D Line.h inline",
+      "exact": true,
+      "verified_targets": {
+        "??0Line@G3D@@IAE@ABVVector3@1@0@Z": "0x525f40 (external)"
+      }
+    },
+    {
+      "row": "005dec40 (library, not counted)",
+      "symbol": "??$max@M@std@@YAABMABM0@Z",
+      "what": "STL std::max<float>",
+      "exact": true,
+      "verified_targets": {}
+    },
+    {
+      "row": "005dd390 (library, not counted)",
+      "symbol": "?append@?$Array@PAVIRenderable@RBX@@@G3D@@QAEXABQAVIRenderable@RBX@@@Z",
+      "what": "G3D Array<T*>::append (evidence name Array<const void*>::append, ICF)",
+      "exact": true,
+      "verified_targets": {
+        "?append@?$Array@PAVIRenderable@RBX@@@G3D@@QAEXABQAVIRenderable@RBX@@@Z": "0x5dd390 (support body exact at the bound address)",
+        "?resize@?$Array@PAVIRenderable@RBX@@@G3D@@QAEXH_N@Z": "0x4abe40 (external)"
+      }
+    }
+  ],
+  "local_statics": {
+    "?$S1@?1??segSizeRadians@RBX@@YAABMXZ@4IA": "0x97a688",
+    "?$S2@?1??rotateMatrixAboutY90@Math@RBX@@SAXAAVMatrix3@G3D@@H@Z@4IA": "0x97a6b0",
+    "?$S3@?1??matrixRotateY@Math@RBX@@SAABVMatrix3@G3D@@XZ@4IA": "0x97a6d8",
+    "?$S4@?1??matrixTiltZ@Math@RBX@@SAABVMatrix3@G3D@@XZ@4IA": "0x97a700",
+    "?$S5@?1??matrixTiltNegativeZ@Math@RBX@@SAABVMatrix3@G3D@@XZ@4IA": "0x97a728",
+    "?rotateY@?1??matrixRotateY@Math@RBX@@SAABVMatrix3@G3D@@XZ@4V45@A": "0x97a6b4",
+    "?ssr@?1??segSizeRadians@RBX@@YAABMXZ@4MA": "0x97a684",
+    "?tiltNegativeZ@?1??matrixTiltNegativeZ@Math@RBX@@SAABVMatrix3@G3D@@XZ@4V45@A": "0x97a704",
+    "?tiltZ@?1??matrixTiltZ@Math@RBX@@SAABVMatrix3@G3D@@XZ@4V45@A": "0x97a6dc",
+    "?y90@?1??rotateMatrixAboutY90@Math@RBX@@SAXAAVMatrix3@G3D@@H@Z@4V45@A": "0x97a68c"
+  },
+  "not_recovered": [
+    "005dd820 (float) and 005dd8b0 (Vector3): the NaN / Inf predicates with the inlined isDenormal test. Exact when written as Math::isNanInfDenorm / isNanInfDenormVector3 over a file-level isNanInf (005dd7d0) / isNanInfVector3 (005dd860) pair, but the evidence names (and record_native_app_unit609_2008.py, which binds searchUpFine 0061033e to isNanInfDenormVector3 at 005dd860) put those two names on 005dd7d0 / 005dd860; util/Math.h declares no other names for them, so they are not recovered under invented ones.",
+    "005ded80 computeLaunchAngle(float, float, float, float): float body with min of the two atan roots compiles to 126 / 134 B (not exact; the original keeps the roots in the argument slots +4 / +0x10).",
+    "005df0c0 (pan-like lookAt of translation + look + amount * side, 2 arguments) and 005df140 (Matrix3 rotated by fromAxisAngle(static (0, 1, 0), angle)): util/Math.h declares pan(const Vector3&, CoordinateFrame&, float) and rotateAboutYGlobal(CoordinateFrame&, float) with different arguments; not attempted.",
+    "005dead0 (368 B, called from 00676cca / 006773fa): no evidence name, not identified.",
+    "005df270 counted by resize-tool-methods-trial.json (not built here)."
+  ],
+  "unit_map": [
+    {
+      "unit": "Humanoid.cpp tail ..005dcacf",
+      "rows": 16,
+      "bytes": 2485,
+      "counted_elsewhere": [
+        "005dc090 counted by humanoid2008-working.json",
+        "005dc0c0 counted by humanoid2008-working.json",
+        "005dc150 counted by humanoid2008-working.json",
+        "005dc230 counted by humanoid2008-working.json",
+        "005dc270 counted by humanoid2008-working.json",
+        "005dc2b0 counted by humanoid2008-working.json",
+        "005dc2f0 counted by humanoid2008-working.json",
+        "005dc3d0 counted by humanoid2008-working.json",
+        "005dc480 counted by humanoid2008-working.json",
+        "005dc540 counted by humanoid2008-working.json",
+        "005dc600 counted by humanoid2008-working.json",
+        "005dca00 counted by humanoid2008-working.json"
+      ],
+      "counted_here": 0,
+      "evidence": "v8datamodel/Humanoid.cpp (humanoid owner, native humanoid/Humanoid2008.h): evidence names setWalkToPart 005dc150, setJump 005dc270, setSit 005dc2b0, moveTo 005dc3d0, setLeftLeg / setRightLeg / setTorso 005dc480 / 005dc540 / 005dc600, cameraSetWalkOrientation 005dc7f0, moveTo2 005dca00. Most rows are counted by humanoid2008-working.json; 005dc6c0 / 005dc740 / 005dc7f0 / 005dc920 are not (the humanoid receipt proposes the PartInstance +0x228 Primitive layout they need). Not built here."
+    },
+    {
+      "unit": "Message.cpp 005dcad0..005dd2bf",
+      "rows": 28,
+      "bytes": 1843,
+      "counted_elsewhere": [
+        "005dcad0 counted by effects-working.json",
+        "005dcae0 counted by effects-working.json",
+        "005dcb50 counted by effects-working.json",
+        "005dcc60 counted by effects-working.json",
+        "005dcd90 counted by effects-working.json",
+        "005dcde0 counted by effects-working.json",
+        "005dcef0 counted by effects-working.json",
+        "005dcf40 counted by effects-working.json",
+        "005dcff0 counted by effects-working.json",
+        "005dd090 counted by effects-working.json",
+        "005dd0a0 counted by effects-working.json",
+        "005dd0b0 counted by effects-working.json",
+        "005dd0c0 counted by effects-working.json",
+        "005dd0d0 counted by effects-working.json",
+        "005dd0e0 counted by effects-working.json",
+        "005dd0f0 counted by effects-working.json",
+        "005dd100 counted by effects-working.json",
+        "005dd120 counted by effects-working.json",
+        "005dd1e0 counted by effects-working.json",
+        "005dd1f0 counted by effects-working.json",
+        "005dd200 counted by effects-working.json",
+        "005dd210 counted by effects-working.json",
+        "005dd220 counted by effects-working.json",
+        "005dd230 counted by effects-working.json",
+        "005dd240 counted by effects-working.json",
+        "005dd250 counted by effects-working.json",
+        "005dd260 counted by effects-working.json",
+        "005dd280 counted by effects-working.json"
+      ],
+      "counted_here": 0,
+      "evidence": "v8datamodel/Message.cpp (effects owner, native v8datamodel/Message.h): getText 005dcad0, FactoryProduct / DescribedCreatable<Message> constructors 005dcae0 / 005dcff0, renderFullScreen 005dcb50, renderPersonalMsg 005dcc60, render2d 005dcd90, Hint::render2d 005dcde0, Message() 005dd120 with its ??_E thunks, setText 005dd280. Counted by effects-working.json. Not built here."
+    },
+    {
+      "unit": "IRenderable.cpp 005dd2c0..005dd54f",
+      "rows": 8,
+      "bytes": 616,
+      "counted_elsewhere": [],
+      "counted_here": 7,
+      "evidence": "util/IRenderable.cpp: evidence names recomputeShouldRender 005dd400, onAdded 005dd4c0, onRemoving 005dd4d0, shouldRenderSetDirty 005dd540; ~IRenderableBucket 005dd2c0 (the two IndexArray / G3D::Array destructors; evidence name MeshAlg::Vertex::~Vertex, an ICF-folded identical body; record_native_services_maps.py binds ~IRenderableBucket to it from ~JointsService), render2dItems 005dd330 / render3dAdornItems 005dd360 (slot calls +0x8 / +0xc of IRenderable), and the folded G3D Array<T*>::append 005dd390 (library). Layout from the native util/IRenderable.h: IRenderable index2d +0x4, index3d +0x8, bucket +0xc (onAdded 005dd4c0 stores bucket at +0xc; onRemoving 005dd4d0 tests +0x4 / +0x8); IRenderableBucket renderable2ds +0x0, renderable3ds +0xc. Built here: 7 counted rows."
+    },
+    {
+      "unit": "Quaternion.cpp 005dd550..005dd77f",
+      "rows": 3,
+      "bytes": 544,
+      "counted_elsewhere": [],
+      "counted_here": 3,
+      "evidence": "util/Quaternion.cpp: operator= 005dd550 (copies w +0xc, x +0x0, y +0x4, z +0x8), Quaternion(const Matrix3&) 005dd570 (evidence by its body: trace test then the three largest-diagonal branches), toRotationMatrix 005dd6d0. Built here: 3 counted rows."
+    },
+    {
+      "unit": "Math.cpp 005dd780..005df47f",
+      "rows": 56,
+      "bytes": 6954,
+      "counted_elsewhere": [
+        "005df270 counted by resize-tool-methods-trial.json"
+      ],
+      "counted_here": 47,
+      "evidence": "util/Math.cpp (RBX::Math, static members only): evidence names isDenormal 005dd7b0, isNanInfDenorm 005dd7d0, isNanInfDenormVector3 005dd860, fixDenorm 005dd940, getIWorldAtPoint 005dda70, momentToObjectSpace / momentToWorldSpace 005ddb30 / 005ddb70, toDiagonal / fromDiagonal 005ddbb0 / 005ddbd0, getOrientId 005ddc90, snapToAxes 005dde50, iRoundVector3 005de090, the three fuzzyEq 005de1d0 / 005de230 / 005de2a0, rotateMatrixAboutY90 005de740, matrixRotateY 005de800, matrixTiltZ 005de890, toGrid 005dee10 / 005dee90, snapToGrid 005deed0 / 005def40, fuzzyAxisAligned 005defa0, orthonormalizeIfNecessary 005df0a0; the other members by body (donor util/Math.cpp shape, call / constant evidence in the source comments). The unit starts with the G3D Line::fromPointAndDirection 005dd780 inline (library) and has the std::max<float> instance 005dec40 (library). Built here: 47 counted rows; see not_recovered for the rest."
+    },
+    {
+      "unit": "Lighting.cpp 005df480..005e275f",
+      "rows": 90,
+      "bytes": 12349,
+      "counted_elsewhere": [
+        "005df4d0 counted by lighting2008-working.json",
+        "005df500 counted by lighting2008-working.json",
+        "005df530 counted by lighting2008-working.json",
+        "005df560 counted by lighting2008-working.json",
+        "005df5c0 counted by lighting2008-working.json",
+        "005df620 counted by content-upload-trial.json",
+        "005df6d0 counted by lighting2008-working.json",
+        "005df780 counted by lighting2008-working.json",
+        "005df7e0 counted by lighting2008-working.json",
+        "005df840 counted by lighting2008-working.json",
+        "005df850 counted by lighting2008-working.json",
+        "005df860 counted by lighting2008-working.json",
+        "005df870 counted by lighting2008-working.json",
+        "005df8e0 counted by lighting2008-working.json",
+        "005dfa20 counted by lighting2008-working.json",
+        "005e0020 counted by lighting2008-working.json",
+        "005e0150 counted by lighting2008-working.json",
+        "005e0160 counted by lighting2008-working.json",
+        "005e01b0 counted by lighting2008-working.json",
+        "005e03c0 counted by lighting2008-working.json",
+        "005e04c0 counted by lighting2008-working.json",
+        "005e0560 counted by lighting2008-working.json",
+        "005e0650 counted by lighting2008-working.json",
+        "005e0690 counted by lighting2008-working.json",
+        "005e0a10 counted by lighting2008-working.json",
+        "005e0ae0 counted by lighting2008-working.json",
+        "005e0c20 counted by lighting2008-working.json",
+        "005e1100 counted by lighting2008-working.json",
+        "005e1380 counted by lighting2008-working.json",
+        "005e1420 counted by lighting2008-working.json",
+        "005e1430 counted by lighting2008-working.json",
+        "005e1440 counted by lighting2008-working.json",
+        "005e1450 counted by lighting2008-working.json",
+        "005e1460 counted by lighting2008-working.json",
+        "005e1470 counted by lighting2008-working.json",
+        "005e1490 counted by lighting2008-working.json",
+        "005e1a40 counted by lighting2008-working.json",
+        "005e1ce0 counted by lighting2008-working.json",
+        "005e1cf0 counted by lighting2008-working.json",
+        "005e1d00 counted by lighting2008-working.json",
+        "005e1d10 counted by lighting2008-working.json",
+        "005e1d20 counted by lighting2008-working.json",
+        "005e1d30 counted by lighting2008-working.json",
+        "005e1d40 counted by lighting2008-working.json",
+        "005e1d50 counted by lighting2008-working.json",
+        "005e1d60 counted by lighting2008-working.json",
+        "005e1de0 counted by lighting2008-working.json",
+        "005e1e00 counted by lighting2008-working.json",
+        "005e1f00 counted by lighting2008-working.json",
+        "005e2100 counted by lighting2008-working.json",
+        "005e2160 counted by lighting2008-working.json",
+        "005e2260 counted by lighting2008-working.json"
+      ],
+      "counted_here": 0,
+      "evidence": "v8datamodel/Lighting.cpp (lighting owner, native v8datamodel/Lighting2008.h): the getters 005df480 / 005df490 / 005df4a0, getMoonPosition 005df4d0, getSunPosition 005df500, askAddChild 005df530, ~FactoryProduct<Lighting> 005df560, boost tokenizer / char_separator / date_time / lexical_cast instances 005df620..005e0c20, the property descriptors 005dffa0 / 005e1170..005e1960, Lighting() 005e1a40, ~Lighting 005e1d60, setClearColor 005e2030, onChild* 005e2100..005e2260, setTime / setTimeStr 005e2570 / 005e2730. Most rows are counted by lighting2008-working.json (005df620 by content-upload-trial.json). Not built here."
+    },
+    {
+      "unit": "JointInstance.cpp 005e2760..005e50bf",
+      "rows": 153,
+      "bytes": 9534,
+      "counted_elsewhere": [
+        "005e2760 counted by world-joints-working.json",
+        "005e2790 counted by world-shapes-working.json",
+        "005e28b0 counted by feature-working.json, stats-service-working.json",
+        "005e28c0 counted by world-joints-working.json",
+        "005e28e0 counted by world-joints-working.json"
+      ],
+      "counted_here": 0,
+      "evidence": "v8datamodel/JointInstance.cpp: JointInstance shouldRender3dAdorn 005e27a0, getC0 / getC1 005e27b0 / 005e27c0, NonFactoryProduct<Instance, sJointInstance> 005e27e0, getPart0 / getPart1 005e2a10 / 005e2a70, render3dAdorn 005e2af0, setPart 005e2cd0, ~JointInstance 005e2e10, the Snap / Weld / Glue / Rotate / RotateP / RotateV / Motor ??_E thunks, getClassName, FactoryProduct / DescribedCreatable constructors and default constructors (Snap() 005e4600, Glue() 005e49a0, Rotate() 005e4ad0, Motor() 005e4ee0), askSetParent 005e3790, JointInstance(Joint*) 005e3870, onAncestorChanged 005e3a80, setPart0 / setPart1 / setC0 / setC1 005e4450..005e44c0, Motor::setMaxVelocity 005e4fe0. Not built here: in 2008 these members and part[2] belong to JointInstance itself (RTTI $1?sJointInstance@2@3QBDB; no AutoJoint class), which the native v8datamodel/JointInstance.h does not declare (see proposals). 005e2760 / 005e28c0 / 005e28e0 are counted by world-joints-working.json, 005e2790 by world-shapes-working.json, 005e28b0 by feature-working.json."
+    },
+    {
+      "unit": "Mechanism.cpp 005e50c0..005e54bf",
+      "rows": 10,
+      "bytes": 975,
+      "counted_elsewhere": [
+        "005e50f0 counted by kernel-stages-working.json",
+        "005e5150 counted by kernel-stages-working.json",
+        "005e5190 counted by kernel-stages-working.json",
+        "005e51e0 counted by kernel-stages-working.json"
+      ],
+      "counted_here": 0,
+      "evidence": "v8world/Mechanism.cpp (kernel / SimJob owner): Mechanism::getMechanismFromPrimitive 005e50c0, MechanismTracker::tracking 005e50e0, the rows 005e50f0..005e51e0 counted by kernel-stages-working.json, fastRemoveShort<Assembly*> 005e5200, MechanismTracker::stopTracking 005e5320, 005e5350 / 005e53a0. Not built here."
+    },
+    {
+      "unit": "JointsService.cpp 005e54c0..005e5bef",
+      "rows": 12,
+      "bytes": 1792,
+      "counted_elsewhere": [
+        "005e54c0 counted by services-working.json",
+        "005e5500 counted by services-working.json",
+        "005e5520 counted by services-working.json",
+        "005e5560 counted by services-working.json",
+        "005e55e0 counted by services-working.json",
+        "005e5660 counted by services-working.json",
+        "005e56e0 counted by services-working.json",
+        "005e5760 counted by services-working.json",
+        "005e57e0 counted by services-working.json",
+        "005e5860 counted by services-working.json",
+        "005e5a80 counted by humanoid2008-working.json"
+      ],
+      "counted_here": 0,
+      "evidence": "v8datamodel/JointsService.cpp (services owner, native v8datamodel/JointsService.h): onDescendentAdded 005e54c0, onDescendentRemoving 005e5520 and the rows to 005e5860 (counted by services-working.json), the Notifier<Instance, ChildAdded>::removeListener instance 005e5a80 (counted by humanoid2008-working.json), onServiceProvider 005e5b50 (needs the Workspace getWorld proposal). Not built here."
+    },
+    {
+      "unit": "MotorJoint.cpp 005e5bf0..005e5eff",
+      "rows": 7,
+      "bytes": 726,
+      "counted_elsewhere": [
+        "005e5bf0 counted by world-joints-working.json",
+        "005e5e00 counted by world-joints-working.json",
+        "005e5e70 counted by world-joints-working.json",
+        "005e5ee0 counted by world-joints-working.json"
+      ],
+      "counted_here": 0,
+      "evidence": "v8world/MotorJoint.cpp (engine owner, native v8world/Joints2008.h): MotorJoint() 005e5bf0, isAligned 005e5d00, ~MotorJoint 005e5e00 (world-joints-working.json counts 005e5bf0 / 005e5e00 / 005e5e70 / 005e5ee0). Not built here."
+    },
+    {
+      "unit": "Assembly.cpp 005e5f00..005e729f",
+      "rows": 46,
+      "bytes": 4695,
+      "counted_elsewhere": [],
+      "counted_here": 0,
+      "evidence": "v8world/Assembly.cpp (engine owner): SleepInfo() 005e5f30, assemblyPrimEnd / Begin 005e5fc0 / 005e5fa0, otherAssembly 005e61b0, getMotor 005e6400, G3D Array<Edge*> resize / append 005e6540 / 005e6640, and the std::sort instances over MotorJoint* (005e61e0, 005e66b0..005e6e90; library templates). Not built here."
+    },
+    {
+      "unit": "Primitive.cpp head 005e72a0..",
+      "rows": 53,
+      "bytes": 3007,
+      "counted_elsewhere": [
+        "005e72a0 counted by world-shapes-working.json",
+        "005e72c0 counted by humanoid2008-working.json, world-shapes-working.json",
+        "005e72d0 counted by world-shapes-working.json",
+        "005e72f0 counted by world-shapes-working.json",
+        "005e7390 counted by world-shapes-working.json",
+        "005e73b0 counted by world-shapes-working.json",
+        "005e73d0 counted by world-shapes-working.json",
+        "005e73e0 counted by world-shapes-working.json",
+        "005e7400 counted by world-shapes-working.json",
+        "005e7870 counted by world-shapes-working.json",
+        "005e78c0 counted by world-shapes-working.json"
+      ],
+      "counted_here": 0,
+      "evidence": "v8world/Primitive.cpp (Body/Primitive owner, native v8world/Primitive2008.h): Geometry / Block / Ball inline virtuals 005e72a0..005e7400 (world-shapes-working.json), setUnknown0x14 005e7420, newTouch 005e74c0, onNewTouch 005e7530, setClump 005e7550, getAssembly 005e7560 / 005e7570, computeJointK 005e7580, getFaceCoordInObject 005e7680, getFaceInObject 005e76f0, ~EdgeList 005e7910, computeFuzzyExtents 005e7980, getFirstContact / getNextContact 005e7bd0 / 005e7be0, newGeometry 005e7d80, hitTest 005e7f20; continues into the 005e8000 range. Not built here."
+    }
+  ],
+  "proposals": [
+    "Owner of native-headers/v8datamodel/JointInstance.h (information, same facts as the joint receipts): the 2008 JointInstance.cpp block 005e2760..005e50bf has no AutoJoint. getPart0 / getPart1 005e2a10 / 005e2a70, setPart 005e2cd0, askSetParent 005e3790, onAncestorChanged 005e3a80, setPart0 / setPart1 / setC0 / setC1 005e4450..005e44c0 are JointInstance members, ~JointInstance 005e2e10 is the only joint-instance destructor, sJointInstance is extern const char[] (RTTI $1?sJointInstance@2@3QBDB, NonFactoryProduct ctor 005e27e0), and Snap / Weld / Glue / Rotate / RotateP / RotateV / Motor derive from DescribedCreatable<C, JointInstance, sC>. With that declaration the ~140 rows of the block become candidates.",
+    "Owner of a native RBX::Math declaration (none exists; util/Math.h is donor): 005dd820 (float) and 005dd8b0 (Vector3) are the NaN / Inf predicates with the inlined denormal test, while 005dd7d0 / 005dd860 (evidence names isNanInfDenorm / isNanInfDenormVector3) test NaN / Inf only. A 2008 declaration that names all four would let them be counted (they are exact in a trial with file-level helpers; see not_recovered)."
+  ],
+  "rejected": {
+    "snapToAxes donor body (unkMat[v15][v11], second declared before bestV)": "574/574 B but not exact with only the index fixed to unkMat[v15][calcColmTemp]; the declaration order bestV, second is needed as well.",
+    "segSizeRadians as the donor (pi() - 0.00001f) / 128": "constant 0x3cc90fb1; 0083db40 holds 0x3cc90fda = twoPi() / 256",
+    "angleToE0 with twoPi()": "constant 0x40c90fda; 0083db44 holds 0x40c90fdb = 2 * pi()",
+    "toYAxisQuadrant with twoPi() + pi() / 4": "constant 0x40e231d5; 0083db50 holds 0x40e231d6 = 2 * pi() + pi() / 4",
+    "fuzzyAxisAligned with Vector3::magnitude()": "246/250 B; the original sums z*z + y*y + x*x (explicit sqrtf).",
+    "isNanInfDenorm donor body (with the isDenormal test)": "96/80 B; 005dd7d0 has only the four _FInf / _FNan compares.",
+    "whole unit without /fp:fast": "getIWorldAtPoint 331/177, toGrid 151/127, fuzzyEq(Vector3) 146/85, fuzzyEq(Matrix3) 167/106, snapToAxes 663/574",
+    "elevationAngle as G3D::aSin(v.y) or with the < / > clamp order": "54/54 B not exact, or 58 B"
+  },
+  "flags": {
+    "math": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5dc-2008/NativeAppUnit5DC_2008_math.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5DC_2008Math.cpp"
+    ],
+    "quat": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5dc-2008/NativeAppUnit5DC_2008_quat.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5DC_2008Quaternion.cpp"
+    ],
+    "render": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5dc-2008/NativeAppUnit5DC_2008_render.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5DC_2008IRenderable.cpp"
+    ]
+  },
+  "sources": {
+    "math": "0f97ca8084f6f5615b60197087ba956c85464ff5270e04c8c53a988c56e4221a",
+    "quat": "77697ceb79c8bcd48fe8f7e7084a09874511484c267b0663c8b13259cd9deb1a",
+    "render": "aa70a80ab02f2ec2b6634f24ae9b423a11206ce273cc3434692a41aa5076bc98"
+  },
+  "headers_read_only": [
+    "native-headers/util/IRenderable.h",
+    "tools/rbxgs/Client/App/include/util/Math.h",
+    "tools/rbxgs/Client/App/include/util/Quaternion.h"
+  ],
+  "new_headers": []
+}

@@ -57,6 +57,7 @@
 //     (0x34 bytes; constructor 004b0ae0 news a 0x298-byte header node, destructor 004b58f0).
 #include <boost/noncopyable.hpp>
 #include <G3D/System.h>
+#include <G3D/Vector3.h>
 #include "v8world/Mechanism.h"
 
 struct NativeNetworkPhysicsLayout;
@@ -78,6 +79,12 @@ namespace RBX
 			virtual ~IPhysicsSender() {}
 			virtual void step() = 0;                                              // slot 1
 			virtual int sendPackets(int maxPackets) = 0;                          // slot 2
+			// 004ca5c0 (cdecl; error string 008268e8 "IPhysicsSender::readPosition failed read"); called by
+			// InterpolatingPhysicsReceiver::PartItem::receive 004c8150.
+			static void readPosition(RakNet::BitStream& bitStream, G3D::Vector3& position);
+			// 004ca7b0 (cdecl, ret 0: the writer twin of readPosition with the same bounds and widths). Analog name.
+			// Body in native-classes/NetworkPhysics.cpp.
+			static void writePosition(RakNet::BitStream& bitStream, const G3D::Vector3& position, bool fullPrecision);
 		};
 
 		class __declspec(novtable) IPhysicsReceiver : boost::noncopyable

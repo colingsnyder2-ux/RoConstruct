@@ -8,11 +8,10 @@ FilterCharacterOcclusion compare 00660220 are fp:fast code), all from the curren
                                           constructors that emit Unlocked::filterResult 00615b60, the implicit
                                           ~PartByLocalCharacter 00615b80 (both MouseCommand-unit COMDATs in the
                                           original) and the Unlocked / UnlockedPartByLocalCharacter vtables;
-  * native-classes/Filters.cpp            the unit 006601c0..00660544;
-  * Filters.cpp with NATIVE_HIT_FILTERS_PENDING and the declaration-only Humanoid overlay
-    (tests/NativeHitTestFilterPendingHumanoid.h copied to out/native-layouts/hit-filters-pending/humanoid/Humanoid.h):
-    the PartByLocalCharacter constructor 00660380. Rows of this build are recorded exact=false (pending-build-only)
-    and not counted; their targets are kept out of the one-address-per-symbol table.
+  * native-classes/Filters.cpp            the unit 006601c0..00660544, including the PartByLocalCharacter
+                                          constructor 00660380 against the native humanoid/Humanoid.h
+                                          (getHeadFromCharacter 005d75a0); the former pending build and its
+                                          declaration-only Humanoid overlay are no longer used.
 
 Every exact row is relocation-masked exact against the original, and every REL32/DIR32 target is bound to the address
 the original instruction uses and verified: imports by DLL export name, literals by bytes, RTTI and vtables by
@@ -23,7 +22,6 @@ Set NATIVE_HIT_FILTERS_DISCOVER=1 to list unbound targets and non-exact rows ins
 """
 import json
 import os
-import shutil
 import struct
 import sys
 from pathlib import Path
@@ -40,10 +38,7 @@ OUT.mkdir(parents=True, exist_ok=True)
 LAYOUT = R / 'tests/NativeHitTestFilterLayout.cpp'
 SRC = R / 'native-classes/Filters.cpp'
 HDR = R / 'native-headers/v8datamodel/Filters2008.h'
-PENDING_HUMANOID = R / 'tests/NativeHitTestFilterPendingHumanoid.h'
-PENDING = OUT / 'hit-filters-pending'
-(PENDING / 'humanoid').mkdir(parents=True, exist_ok=True)
-shutil.copyfile(PENDING_HUMANOID, PENDING / 'humanoid/Humanoid.h')
+HUMANOID_H = R / 'native-headers/humanoid/Humanoid.h'   # getHeadFromCharacter 005d75a0 (read-only)
 DISCOVER = bool(os.environ.get('NATIVE_HIT_FILTERS_DISCOVER'))
 
 
@@ -59,8 +54,6 @@ def build(name, src, extra=()):
 
 layout_obj, layout_flags = build('NativeHitTestFilterLayout', LAYOUT, ['/fp:fast'])
 unit_obj, unit_flags = build('NativeHitTestFilters', SRC, ['/fp:fast'])
-pend_obj, pend_flags = build('NativeHitTestFiltersPending', SRC,
-                             ['/fp:fast', '/I' + str(PENDING), '/DNATIVE_HIT_FILTERS_PENDING'])
 
 # ---- layout ---------------------------------------------------------------------------------------
 raw = layout_obj.read_bytes()
@@ -88,9 +81,8 @@ EXTERNAL = {
     '??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z': 0x618a40,  # 006604dd
     '??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z': 0x4025b0,                  # 006604f6
     '__purecall': 0x6a16be,                                                         # HitTestFilter vtable 00843a40 slot 0
-    '??0PartByLocalCharacter@RBX@@QAE@PAVInstance@1@@Z': 0x660380,                  # MouseCommand 00616023 (pending row)
-}
-PENDING_EXTERNAL = {
+    '??0PartByLocalCharacter@RBX@@QAE@PAVInstance@1@@Z': 0x660380,                  # MouseCommand 00616023 (unit row)
+    # PartByLocalCharacter constructor 00660380 (formerly the pending row)
     '?findLocalCharacter@Players@Network@RBX@@SAPAVModelInstance@3@PBVInstance@3@@Z': 0x49aca0,      # 006603c3
     '?getHeadFromCharacter@Humanoid@RBX@@SAPAVPartInstance@2@PBVModelInstance@2@@Z': 0x5d75a0,         # 00660429
     # ICF: shared_from<ModelInstance> / <PartInstance> fold into the shared_from<Instance> body (006603ce, 00660434).
@@ -108,6 +100,7 @@ UNIT_ROWS = [
     (0x660220, '?filterResult@FilterCharacterOcclusion@RBX@@UBE?AW4Result@HitTestFilter@2@PBVPrimitive@2@@Z'),
     (0x660320, '?filterResult@FilterStairs@RBX@@UBE?AW4Result@HitTestFilter@2@PBVPrimitive@2@@Z'),
     (0x6604a0, '??0FilterStairs@RBX@@QAE@PAVInstance@1@@Z'),
+    (0x660380, '??0PartByLocalCharacter@RBX@@QAE@PAVInstance@1@@Z'),   # former pending row (native humanoid/Humanoid.h)
 ]
 NON_EXACT_ROWS = [
     (0x6601c0, '?getIsTransparent@PartInstance@RBX@@QBE_NXZ',
@@ -122,13 +115,6 @@ NON_EXACT_ROWS = [
      'inlines PartByLocalCharacter::filterResult in the original; here the inlined getIsTransparent makes it too large '
      'to inline (same cause as 00660260)'),
 ]
-PENDING_ROWS = [
-    (0x660380, '??0PartByLocalCharacter@RBX@@QAE@PAVInstance@1@@Z'),
-]
-PENDING_REASONS = {
-    '00660380': 'needs a Humanoid::getHeadFromCharacter(const ModelInstance*) declaration (005d75a0): no native '
-                'humanoid/Humanoid.h; built against the declaration-only overlay tests/NativeHitTestFilterPendingHumanoid.h',
-}
 
 LOCAL_EH = nb.LOCAL_EH
 UNBOUND = []
@@ -220,7 +206,6 @@ def verify(obj, rows, own, strict=True, external=EXTERNAL, record=True):
 
 layout_rows = resolve(layout_obj, LAYOUT_ROWS)
 unit_rows = resolve(unit_obj, UNIT_ROWS)
-pend_rows = resolve(pend_obj, PENDING_ROWS)
 non_rows = resolve(unit_obj, [(a, k) for a, k, _ in NON_EXACT_ROWS])
 own = {}
 for address, name in layout_rows + unit_rows:
@@ -228,11 +213,7 @@ for address, name in layout_rows + unit_rows:
 strict = not DISCOVER
 layout_out = verify(layout_obj, layout_rows, own, strict)
 unit_out = verify(unit_obj, unit_rows, own, strict)
-pend_out = verify(pend_obj, pend_rows, own, strict=False, external=dict(EXTERNAL, **PENDING_EXTERNAL), record=False)
-for row in pend_out:
-    row['exact_pending_build_only'] = row['exact']
-    row['exact'] = False
-    row['reason'] = PENDING_REASONS[row['address']]
+pend_out = []   # no pending build
 non_out = verify(unit_obj, non_rows, own, strict=False)
 for row, (_, _, why) in zip(non_out, NON_EXACT_ROWS):
     if row['exact'] and not DISCOVER:
@@ -248,7 +229,6 @@ if DISCOVER:
                 print('NOT EXACT', r['address'], r['symbol'][:110], r['size'], r['target_size'])
     sys.exit(0)
 assert not UNBOUND, '\n'.join(UNBOUND)
-assert all(r['exact_pending_build_only'] for r in pend_out), pend_out
 
 # ---- vtables from the objects built with the current headers, slot by slot ---------------------------------
 slot_names = dict(EXTERNAL)
@@ -304,6 +284,7 @@ VTABLES = [
     (layout_obj, 'UnlockedPartByLocalCharacter', 0x843a50, ['UnlockedPartByLocalCharacter', 'PartByLocalCharacter', 'HitTestFilter']),
     (unit_obj, 'FilterCharacterOcclusion', 0x84c45c, ['FilterCharacterOcclusion', 'HitTestFilter']),
     (unit_obj, 'FilterStairs', 0x84c46c, ['FilterStairs', 'HitTestFilter']),
+    (unit_obj, 'PartByLocalCharacter', 0x84c464, ['PartByLocalCharacter', 'HitTestFilter']),   # stored by 00660380
 ]
 vt, rtti = {}, {}
 for obj, cls, address, chain in VTABLES:
@@ -313,23 +294,15 @@ for obj, cls, address, chain in VTABLES:
     b = bases(address)
     assert b == {'.?AV%s@RBX@@' % c: 0 for c in chain}, (cls, b)
     rtti[cls] = b
-# PartByLocalCharacter's vtable is only emitted by the pending build (its constructor is the pending row); the original
-# table is checked by RTTI and its one slot (the 00660260 row address), the compiled one is not claimed.
-assert original.vtable_class(0x84c464) == ('.?AVPartByLocalCharacter@RBX@@', 0)
+# PartByLocalCharacter's vtable (one slot: the non-exact 00660260 row address) is emitted by the unit build now.
 assert d(0x84c464) == 0x660260 and d(0x84c464 + 4) != 0x660260
-rtti['PartByLocalCharacter'] = bases(0x84c464)
-assert rtti['PartByLocalCharacter'] == {'.?AVPartByLocalCharacter@RBX@@': 0, '.?AVHitTestFilter@RBX@@': 0}
 
 sha = nb.sha
-paths = [Path(__file__).resolve(), LAYOUT, HDR, SRC, PENDING_HUMANOID]
-objects = [layout_obj, unit_obj, pend_obj]
+paths = [Path(__file__).resolve(), LAYOUT, HDR, SRC, HUMANOID_H]
+objects = [layout_obj, unit_obj]
 groups = {'layout': layout_out, 'unit': unit_out, 'not_exact': non_out, 'pending': pend_out}
 exact = sorted({r['address'] for g in (layout_out, unit_out) for r in g if r['exact']})
 PROPOSALS = {
-    'humanoid/Humanoid.h (new native header, Humanoid owner)':
-        'static PartInstance* getHeadFromCharacter(const ModelInstance* character); /*005d75a0*/ in class Humanoid : '
-        'DescribedCreatable<Humanoid, Instance, sHumanoid> (extern char sHumanoid[]; RTTI 3PADA). With it, the '
-        'PartByLocalCharacter constructor 00660380 is exact (pending build)',
     'v8datamodel/PartInstance.h (PartInstance owner)':
         'getTransparencyUi() { return 1.0f - (1.0f - transparency) * alphaModifier; } (getIsTransparent 006601c0: '
         'fld1; fld st0; fsub [+0x1e8]; fmul [+0x328]; fsubp; > 0.1f) with alphaModifier at +0x328, i.e. after the '
@@ -339,7 +312,7 @@ receipt = {
     'class': 'RBX::HitTestFilter family (Unlocked, PartByLocalCharacter, UnlockedPartByLocalCharacter, FilterStairs, '
              'FilterCharacterOcclusion)',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
-    'flags': {'layout': layout_flags, 'unit': unit_flags, 'pending': pend_flags},
+    'flags': {'layout': layout_flags, 'unit': unit_flags},
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
     'objects': {p.name: sha(p) for p in objects},
     'layout': {'PartByLocalCharacter': '0x14: character shared_ptr +0x04, head shared_ptr +0x0c (ctor 00660380)',

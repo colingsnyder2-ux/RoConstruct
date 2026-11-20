@@ -118,9 +118,22 @@ static void appendArgument(int& count, std::string& text, const RBX::Reflection:
 
 // Original 00435860 (1048 B). 2026-11-13 lf02: the target calls the MSVCP90 c_str import (00435a7c, 00435b80), so this
 // unit now takes /I{headers}/std-noinline-string (1079 -> 1064 B; the unit's other exact bodies are unchanged).
-// Remaining gap is only the signal branch: the target reads SignalDescriptor::signature inline ([esi+0x2c] / [esi+0x18],
-// 00435ad5..00435b10), while reflection/signal.h declares getSignature() out of line, so this emits two calls.
-// Needs the header proposal (inline getSignature in signal.h, as FunctionDescriptor has in function.h); not worked around.
+// 2026-11-19 xi06: the signal branch reads SignalDescriptor::signature inline through the SignalSignature accessor
+// below (header proposal: inline getSignature in core reflection/signal.h, as FunctionDescriptor has in function.h),
+// and the enum branch formats EnumDescriptor::Item::value (+0xc); relocation-masked compare is IDENTICAL.
+namespace {
+// INFERRED: the original reads SignalDescriptor::signature inline (00435ad5..00435b10: [esi + 0x2c] / [esi + 0x18]),
+// i.e. an inline getSignature() like FunctionDescriptor's in function.h. Core reflection/signal.h declares it out of
+// line (proposal: "const SignatureDescriptor& getSignature() const { return signature; }"); until then this unit
+// reads the protected member through a derived-class accessor, which compiles to the same inline load.
+struct SignalSignature : RBX::Reflection::SignalDescriptor {
+    static const RBX::Reflection::SignatureDescriptor& of(const RBX::Reflection::SignalDescriptor* signal)
+    {
+        return static_cast<const SignalSignature*>(signal)->signature;
+    }
+};
+}
+
 void CDeclarationView::showDescriptor(const RBX::Reflection::Descriptor* descriptor)
 {
     using namespace RBX::Reflection;
@@ -153,13 +166,14 @@ void CDeclarationView::showDescriptor(const RBX::Reflection::Descriptor* descrip
         text += signal->name.toString();
         text += "(";
         int count = 0;
-        std::for_each(signal->getSignature().arguments.begin(), signal->getSignature().arguments.end(),
+        std::for_each(SignalSignature::of(signal).arguments.begin(), SignalSignature::of(signal).arguments.end(),
                       boost::bind(&appendArgument, boost::ref(count), boost::ref(text), _1));
         text += ")";
         ownerClass = &signal->owner;
         item = RBX::Metadata::Reflection::singleton()->lookup(*signal);
     } else if (const EnumDescriptor::Item* enumItem = dynamic_cast<const EnumDescriptor::Item*>(descriptor)) {
-        text = G3D::format("%d: %s", enumItem->index, enumItem->name.c_str());  // +0xc (donor layout: index)
+        // 00435b86 reads +0xc: EnumDescriptor::Item::value in the native enumconverter.h layout (index is +0x10).
+        text = G3D::format("%d: %s", enumItem->value, enumItem->name.c_str());
     } else if (const ClassDescriptor* classDescriptor = dynamic_cast<const ClassDescriptor*>(descriptor)) {
         text = classDescriptor->name.toString();
         item = RBX::Metadata::Reflection::singleton()->lookup(*classDescriptor, false);

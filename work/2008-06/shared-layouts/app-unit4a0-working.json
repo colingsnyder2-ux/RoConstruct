@@ -1,0 +1,896 @@
+{
+  "class": "RBX Network::Client / Network::Server unit template and descriptor instances of the application range 004a0000..004a4000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), document-swap flags; find unit with the boost-noinline-shared-destructor profile",
+  "flags": {
+    "creators": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit4a0/NativeAppUnit4A0_creators.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4A0Creators.cpp"
+    ],
+    "client": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit4a0/NativeAppUnit4A0_client.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4A0ClientDescriptors.cpp"
+    ],
+    "server": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit4a0/NativeAppUnit4A0_server.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4A0ServerDescriptors.cpp"
+    ],
+    "find": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/boost-noinline-shared-destructor",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit4a0/NativeAppUnit4A0_find.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4A0ServiceFind.cpp"
+    ],
+    "pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit4a0/pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/DNATIVE_APPUNIT4A0_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit4a0/NativeAppUnit4A0_server_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4A0ServerDescriptors.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit4a0.py": "aff587c96b30fdc5392e046567995d054eb8a9ade0b89d2ac69fc95aef6ef461",
+    "rebuild/2008-06/native-classes/AppUnit4A0Creators.cpp": "42354d4a7f1a8152fe43c0f3582730b15d53258a55386123e5ae0ec2dc1836ce",
+    "rebuild/2008-06/native-classes/AppUnit4A0ClientDescriptors.cpp": "cd4cdb6afa98145560271f1109b7a4f0322ddd450dfbc322d203cb22b3d77bf1",
+    "rebuild/2008-06/native-classes/AppUnit4A0ServerDescriptors.cpp": "ceccafbd18b13e7fbd964649e13f1296dd2ece9117dfa4ac7633970a76e16ab0",
+    "rebuild/2008-06/native-classes/AppUnit4A0ServiceFind.cpp": "363c60bcc4006ce70e59656348652d68115db55e50a3458ca0c120d111068073",
+    "rebuild/2008-06/native-headers/v8datamodel/Message.h": "39f15e0eacc36a300e1ce67f1846cf2f053e521138db8a4433e906f977c965c4",
+    "rebuild/2008-06/native-headers/Network/Client2008.h": "d128ef3067faaa616117621c4c558877ee601aa3661e99d8999c5cd2c80d3b8d",
+    "rebuild/2008-06/native-headers/Network/Server2008.h": "5d89f9496963641524306fff2c853e565ec4f5f936dd2728b0af8a8ad8bbae95",
+    "rebuild/2008-06/native-headers/Network/Peer2008.h": "51822d04c699852ad10376527790ded186b1f46717ceca51a2980afc8515702d",
+    "rebuild/2008-06/native-headers/Network/Replicator2008.h": "a2d95b4059c89aebdf4612af9e36cbbc5a5daf55f7013eb629a963e56befc044",
+    "rebuild/2008-06/native-headers/reflection/reflection.h": "40c3aa4516e701059368d929ff88049b0c2ec12aad84ce568690d3bf21037313",
+    "rebuild/2008-06/native-headers/reflection/signal.h": "e8f76a9bf2a75ced4251c425e96766092a4a39783fdbbdb82942a98c8a4c9fb3",
+    "rebuild/2008-06/native-headers/v8tree/Service.h": "946890300c9996b74bc95ae5473f51f8a11ef09902a0a8a55bd1ffb45a36cd22",
+    "rebuild/2008-06/native-headers/util/Object.h": "f90232922bf225642ca990ec8c8484e62f50caa0fe0448228b6bc33af43742b2"
+  },
+  "objects": {
+    "creators": "996e6520b561be382f94a1a67ee907601399383a4b06baed45744985025bcf6d",
+    "client": "5a31c6cdc987e76b2dff5500b527c1adfda67361323d0d8fe1b5f4a630a0fda4",
+    "server": "de85e7a5aede933e2f008e27cbde0be6da7dfe249ffc7a2ed7145e9d5998b614",
+    "find": "8808049bdca69d0291f0a2bc1c84463139cd91c8906c31cf16726ea854a732a7",
+    "pending": "09202080487a5382e93dfbaae1904c805f99a66b726e9ad32ba14a6547a53b6f"
+  },
+  "unit_map": {
+    "client 004a0000..004a155f": "Network/Client.cpp tail (the unit starts at 0049ed30 in the app-unit49c-2008 map). Boundary evidence: the descriptor vtables 008230b0 / 008230c0 / 008230d0 / 008230e0 / 008230ec (RTTI SignalDesc<Client, ...> / BoundFuncDesc<Client, ...>) stored by the constructors 004a0020 / 004a0150 / 004a02e0 / 004a03b0 / 004a06b0 (static initializers 007f1bd0 / 007f1c20 / 007f1c00 / 007f1b60 / 007f1ba0), Client() 004a0990 (string \"NetworkClient\"), Client::connect 004a0a70 (strings \"localhost\", \"192.168\", \"Failed to start network client\"), OnReceive 004a1070 (evidence name; \"Client::OnReceive packet %d: %s\"). The void(std::string, int, std::string) signal (SignalDesc 004a0150, connectGeneric 004a1480 = vtable 008230c0 slot 1, slot / adapter / function3 bodies 004a0860 / 004a0900 / 004a0c90 / 004a0e50 / 004a0f00 / 004a0fb0) needs SignalDescImpl<3, S>, which reflection/signal.h does not have (proposal). Owner of the Client class: native-headers/Network/Client2008.h (network-client-server2008).",
+    "feature-getter 004a1560": "a 7-byte getter identical-code folded with Feature::getTopBottom (feature receipt); the \"Port\" property getter of Server (static initializer 007f1cf0 pushes it).",
+    "server 004a1570..004a3fff": "Network/Server.cpp with Server::ClientProxy (continues past 004a4000 to 004a504f: onServiceProvider 004a4100, Server() 004a4b30, OnReceive 004a4dc0). Boundary evidence: ClientProxy vtables 00823474 / 008233c4 (RTTI .?AVClientProxy@Server@Network@RBX@@; dtor 004a18c0, ctor 004a1ed0, create<ClientProxy> 004a21c0 malloc 0x2d78), Server vtable 0082367c (dtor 004a3540), strings \"Started network server %s\" / \"Failed to start network server\" (Server::start 004a1d80), \"Received remotePlayer %s from %s\" (ClientProxy::OnReceive 004a2c20), the \"Port\" PropDescriptor<Server, int> (vtable 00823898, GetImpl vtable 008234d0, static initializer 007f1cf0), and the Message / Hint creation COMDATs the Server unit emits (the unit creates Hints / Messages for remote players): shared_count / shared_ptr / create<Message> / Creator::create, Message / Hint destructors and thunks, Name::doDeclare<sMessage / sHint>, classDescriptor<Message / Hint> (effects / creatable-shared-count receipts and this one). Owners: Network/Server2008.h / ClientProxy2008.h (network-client-server2008, network-client-proxy) and v8datamodel/Message.h (effects).",
+    "excluded / library code": "no CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView row and no separately linked library object in the range: the std::_Tree / vector / boost.signals / boost.shared_ptr bodies are Roblox-instantiated templates (element types std::string, shared_ptr<Instance>, ClientProxy, Message, Hint, Player; signatures of the Client events), owned by the units above.",
+    "counted here": "the rows listed in exact_function_rows (details in rows)."
+  },
+  "range_functions": 120,
+  "range_rows_counted_by_other_receipts": [
+    "004a0000 counted by network-client-server2008-working.json",
+    "004a0990 counted by network-client-server2008-working.json",
+    "004a1560 counted by feature-working.json",
+    "004a1580 counted by network-client-server2008-working.json",
+    "004a15f0 counted by network-client-server2008-working.json",
+    "004a1660 counted by network-client-server2008-working.json",
+    "004a1680 counted by effects-working.json",
+    "004a16f0 counted by effects-working.json",
+    "004a17c0 counted by network-client-server2008-working.json",
+    "004a17d0 counted by network-client-server2008-working.json",
+    "004a17e0 counted by network-client-server2008-working.json",
+    "004a1a90 counted by viewnew-part-mesh-working.json",
+    "004a1b50 counted by effects-working.json",
+    "004a1b60 counted by effects-working.json",
+    "004a1be0 counted by creatable-shared-count-working.json",
+    "004a2070 counted by humanoid2008-working.json, misc-leaves-working.json",
+    "004a22a0 counted by network-client-server2008-working.json",
+    "004a24c0 counted by network-client-server2008-working.json",
+    "004a27a0 counted by network-client-server2008-working.json",
+    "004a3390 counted by network-client-server2008-working.json",
+    "004a3470 counted by network-client-server2008-working.json",
+    "004a34e0 counted by network-player-working.json",
+    "004a3540 counted by network-client-server2008-working.json",
+    "004a3640 counted by network-replicator2008-working.json",
+    "004a3670 counted by network-client-server2008-working.json",
+    "004a3680 counted by network-client-server2008-working.json",
+    "004a3690 counted by network-client-server2008-working.json",
+    "004a36a0 counted by network-client-server2008-working.json",
+    "004a36b0 counted by network-client-server2008-working.json",
+    "004a36c0 counted by network-client-server2008-working.json",
+    "004a36d0 counted by network-client-server2008-working.json",
+    "004a36e0 counted by network-client-server2008-working.json",
+    "004a36f0 counted by network-client-server2008-working.json",
+    "004a3700 counted by network-client-server2008-working.json",
+    "004a3710 counted by creatable-shared-count-working.json",
+    "004a3980 counted by effects-working.json",
+    "004a3a00 counted by creatable-shared-count-working.json",
+    "004a3a90 counted by effects-working.json",
+    "004a3af0 counted by effects-working.json",
+    "004a3c30 counted by effects-working.json",
+    "004a3c90 counted by effects-working.json",
+    "004a3cb0 counted by effects-working.json",
+    "004a3cd0 counted by effects-working.json",
+    "004a3d40 counted by debris-forcefield-working.json",
+    "004a3db0 counted by network-client-server2008-working.json",
+    "004a3dd0 counted by effects-working.json"
+  ],
+  "range_rows_not_built": [
+    "004a0150 not built",
+    "004a0860 not built",
+    "004a0900 not built",
+    "004a0a70 not built",
+    "004a0c90 not built",
+    "004a0e50 not built",
+    "004a0f00 not built",
+    "004a0fb0 not built",
+    "004a1070 not built",
+    "004a1480 not built",
+    "004a1570 not built",
+    "004a1880 not built",
+    "004a18c0 not built",
+    "004a19a0 not built",
+    "004a19b0 not built",
+    "004a19c0 not built",
+    "004a19d0 not built",
+    "004a19e0 not built",
+    "004a19f0 not built",
+    "004a1a00 not built",
+    "004a1a10 not built",
+    "004a1a20 not built",
+    "004a1a30 not built",
+    "004a1a40 not built",
+    "004a1c70 not built",
+    "004a1d10 not built",
+    "004a1d70 not built",
+    "004a1d80 not built",
+    "004a1ed0 not built",
+    "004a1f70 not built",
+    "004a1f90 not built",
+    "004a200f not built",
+    "004a20a0 not built",
+    "004a2150 not built",
+    "004a2180 not built",
+    "004a21c0 not built",
+    "004a2250 not built",
+    "004a22c0 not built",
+    "004a27e0 not built",
+    "004a2950 not built",
+    "004a2ac0 not built",
+    "004a2c20 not built",
+    "004a2e05 not built",
+    "004a2e5f not built",
+    "004a2eb0 not built",
+    "004a2fa0 not built",
+    "004a3020 not built",
+    "004a3170 not built",
+    "004a31d0 not built",
+    "004a3290 not built",
+    "004a3340 not built"
+  ],
+  "not_built_reasons": [
+    "004a0150 / 004a1480 / 004a0860 / 004a0900 / 004a0c90 / 004a0e50 / 004a0f00 / 004a0fb0: the void(std::string, int, std::string) Client event: SignalDesc constructor (three names, ret 0x10) and SignalDescImpl<3, S>::connectGeneric (vtable 008230c0 slot 1) with the signal3 slot / GenericSlotAdapter / function3 bodies it reaches: reflection/signal.h stops at two arguments (core header; proposal)",
+    "004a0a70: Client::connect(std::string server, int serverPort, int clientPort, int threadSleepTime) (the BoundFuncDesc<Client, void(string, int, int, int), 4> target): not declared in Network/Client2008.h",
+    "004a1070: Client::OnReceive (1026 B, declared): not attempted (packet switch, Players / Replicator calls)",
+    "004a1570 / 004a18c0 / 004a19a0..004a1a30 / 004a1ed0 / 004a1f70 / 004a20a0 / 004a21c0: ClientProxy members, thunks, shared_ptr<ClientProxy> and create<ClientProxy>: blocked on the native 2008 Replicator layout (network-client-proxy receipt)",
+    "004a1880 / 004a2250: Server::stop / getClientCount: exact only in the pending build (pending_build_only)",
+    "004a1a40 / 004a2eb0 / 004a2fa0 / 004a22c0 / 004a1f90 + 004a200f: std::set<std::string> instances (_Lbound 004a1a40, find 004a2fa0, insert 004a2eb0, _Insert 004a22c0, _Buynode with its catch funclet): generic STL instances on std::string that other units also call (find from 00669fa0, insert from 0066a070), i.e. not Roblox-instantiated templates only this unit references; library code, not recovered here",
+    "004a1c70 / 004a2150 / 004a1d10 / 004a2180 / 004a2950 / 004a2ac0 / 004a27e0 / 004a3020 / 004a3170 / 004a31d0 / 004a3290 / 004a3340 / 004a2c20 + 004a2e05 + 004a2e5f / 004a1d80: ClientProxy / Replicator / Player plumbing (shared_ptr<Player> polymorphic cast, visitDescendents with a Replicator bind, findTargetPlayer, OnReceive with its catch funclets, Server::start): need ClientProxy members, Replicator declarations or Server::start (not declared); not attempted",
+    "004a1d70: ~DescribedCreatable<Server> / ~Described<Server> one-jump body (unwind funclets 007c7cb3 / 007c7e03): no unit here emits it (Server destructor counted elsewhere); not built"
+  ],
+  "rows": [
+    {
+      "address": "004a0020",
+      "unit": "client",
+      "symbol": "??0?$SignalDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE@PBD00@Z",
+      "folded_symbols": [],
+      "identity": "root: static initializer 007f1bd0; stores vtable 008230b0 (RTTI SignalDesc<Client, void(string, shared_ptr<Instance>)>)",
+      "exact": true,
+      "size": 296,
+      "target_size": 296,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VClient@Network@RBX@@$1?sClient@23@3PADAV?$FactoryProduct@VClient@Network@RBX@@VPeer@23@$1?sClient@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49eb30 (external)",
+        "??0SignalDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD@Z": "0x56bab0 (external (evidence name))",
+        "??_7?$SignalDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@6B@": "0x8230b0 (vtable RTTI .?AV?$SignalDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@ offset 0x0)",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "??$singleton@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cdf0 (external (evidence name))",
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+        "?_Buynode@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEPAU_Node@?$_List_nod@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@2@PAU342@0ABUItem@SignatureDescriptor@Reflection@RBX@@@Z": "0x417f00 (external (evidence name))",
+        "?_Incsize@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEXI@Z": "0x682cc0 (external (evidence name))",
+        "??$singleton@V?$shared_ptr@VInstance@RBX@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cae0 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$SignalDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE@PBD00@Z"
+      ]
+    },
+    {
+      "address": "004a02e0",
+      "unit": "client",
+      "symbol": "??0?$SignalDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@QAE@PBD0@Z",
+      "folded_symbols": [],
+      "identity": "root: static initializer 007f1c00; stores vtable 008230d0 (RTTI SignalDesc<Client, void(string)>)",
+      "exact": true,
+      "size": 194,
+      "target_size": 194,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VClient@Network@RBX@@$1?sClient@23@3PADAV?$FactoryProduct@VClient@Network@RBX@@VPeer@23@$1?sClient@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49eb30 (external)",
+        "??0SignalDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD@Z": "0x56bab0 (external (evidence name))",
+        "??_7?$SignalDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@6B@": "0x8230d0 (vtable RTTI .?AV?$SignalDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@ offset 0x0)",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "??$singleton@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cdf0 (external (evidence name))",
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+        "?_Buynode@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEPAU_Node@?$_List_nod@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@2@PAU342@0ABUItem@SignatureDescriptor@Reflection@RBX@@@Z": "0x417f00 (external (evidence name))",
+        "?_Incsize@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEXI@Z": "0x682cc0 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$SignalDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@QAE@PBD0@Z"
+      ]
+    },
+    {
+      "address": "004a03b0",
+      "unit": "client",
+      "symbol": "??0?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@Z$03@Reflection@RBX@@QAE@P8Client@Network@2@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@ZPBD222H2HW4Security@FunctionDescriptor@12@@Z",
+      "folded_symbols": [],
+      "identity": "root: static initializer 007f1b60; stores vtable 008230e0 (RTTI BoundFuncDesc<Client, void(string, int, int, int), 4>)",
+      "exact": true,
+      "size": 247,
+      "target_size": 247,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VClient@Network@RBX@@$1?sClient@23@3PADAV?$FactoryProduct@VClient@Network@RBX@@VPeer@23@$1?sClient@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49eb30 (external)",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@Z$03@Reflection@RBX@@6B@": "0x8230e0 (vtable RTTI .?AV?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@Z$03@Reflection@RBX@@ offset 0x0)",
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+        "??$singleton@H@Type@Reflection@RBX@@SAABV012@XZ": "0x56cbc0 (external (evidence name))",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$holder@H@any@boost@@6B@": "0x8106cc (vtable RTTI .?AV?$holder@H@any@boost@@ offset 0x0)",
+        "?declareSignature@?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@Z$03@Reflection@RBX@@AAEXPBD000@Z": "0x49ee50 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@Z$03@Reflection@RBX@@QAE@P8Client@Network@2@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@ZPBD222H2HW4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "004a04b0",
+      "unit": "client",
+      "symbol": "?execute@?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@Z$03@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "folded_symbols": [],
+      "identity": "root: vtable 008230e0 slot 1",
+      "exact": true,
+      "size": 475,
+      "target_size": 475,
+      "verified_targets": {
+        "??_R0?AVClient@Network@RBX@@@8": "0x938ddc (type descriptor .?AVClient@Network@RBX@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (type descriptor .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (string 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (throw info, catchable types .?AVbad_cast@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??$convert@H@Value@Reflection@RBX@@QAEAAHXZ": "0x56ea60 (external (evidence name))",
+        "??$convert@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x56f0b0 (external (evidence name))",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$?execute@?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@Z$03@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+      ]
+    },
+    {
+      "address": "004a0690",
+      "unit": "client",
+      "symbol": "??_G?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@Z$03@Reflection@RBX@@UAEPAXI@Z",
+      "folded_symbols": [],
+      "identity": "root: vtable 008230e0 slot 0",
+      "exact": true,
+      "size": 30,
+      "target_size": 30,
+      "verified_targets": {
+        "??1?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@Z$03@Reflection@RBX@@UAE@XZ": "0x49fbb0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004a06b0",
+      "unit": "client",
+      "symbol": "??0?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXH@Z$00@Reflection@RBX@@QAE@P8Client@Network@2@AEXH@ZPBD1HW4Security@FunctionDescriptor@12@@Z",
+      "folded_symbols": [],
+      "identity": "root: static initializer 007f1ba0; stores vtable 008230ec (RTTI BoundFuncDesc<Client, void(int), 1>)",
+      "exact": true,
+      "size": 193,
+      "target_size": 193,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VClient@Network@RBX@@$1?sClient@23@3PADAV?$FactoryProduct@VClient@Network@RBX@@VPeer@23@$1?sClient@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49eb30 (external)",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXH@Z$00@Reflection@RBX@@6B@": "0x8230ec (vtable RTTI .?AV?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXH@Z$00@Reflection@RBX@@ offset 0x0)",
+        "??$singleton@H@Type@Reflection@RBX@@SAABV012@XZ": "0x56cbc0 (external (evidence name))",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$holder@H@any@boost@@6B@": "0x8106cc (vtable RTTI .?AV?$holder@H@any@boost@@ offset 0x0)",
+        "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (external (evidence name))",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXH@Z$00@Reflection@RBX@@QAE@P8Client@Network@2@AEXH@ZPBD1HW4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "004a0780",
+      "unit": "client",
+      "symbol": "?execute@?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXH@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "folded_symbols": [],
+      "identity": "root: vtable 008230ec slot 1",
+      "exact": true,
+      "size": 211,
+      "target_size": 211,
+      "verified_targets": {
+        "??_R0?AVClient@Network@RBX@@@8": "0x938ddc (type descriptor .?AVClient@Network@RBX@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (type descriptor .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (string 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (throw info, catchable types .?AVbad_cast@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??$convert@H@Value@Reflection@RBX@@QAEAAHXZ": "0x56ea60 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$?execute@?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXH@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+      ]
+    },
+    {
+      "address": "004a1760",
+      "unit": "find",
+      "symbol": "??$doGetClassIndex@VServer@Network@RBX@@@ServiceProvider@RBX@@SAIXZ",
+      "folded_symbols": [],
+      "identity": "called by 004a1d00",
+      "exact": true,
+      "size": 91,
+      "target_size": 91,
+      "verified_targets": {
+        "??_B?1???$doGetClassIndex@VServer@Network@RBX@@@ServiceProvider@RBX@@SAIXZ@51": "0x970d0c (external)",
+        "?newIndex@ServiceProvider@RBX@@SAIXZ": "0x572690 (external)",
+        "?index@?1???$doGetClassIndex@VServer@Network@RBX@@@ServiceProvider@RBX@@SAIXZ@4IA": "0x970d08 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??$doGetClassIndex@VServer@Network@RBX@@@ServiceProvider@RBX@@SAIXZ"
+      ]
+    },
+    {
+      "address": "004a17f0",
+      "unit": "server",
+      "symbol": "?isReplicator@@YA_NV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "folded_symbols": [],
+      "identity": "root: evidence name; pushed by getClientCount 004a227f as the _Count_if predicate",
+      "exact": true,
+      "size": 140,
+      "target_size": 140,
+      "verified_targets": {
+        "??_R0?AVReplicator@Network@RBX@@@8": "0x938db4 (type descriptor .?AVReplicator@Network@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (type descriptor .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": [
+        "__ehhandler$?isReplicator@@YA_NV?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+      ]
+    },
+    {
+      "address": "004a1af0",
+      "unit": "server",
+      "symbol": "??$_Count_if@PBV?$shared_ptr@VInstance@RBX@@@boost@@P6A_NV12@@Z@std@@YAHPBV?$shared_ptr@VInstance@RBX@@@boost@@0P6A_NV12@@Z@Z",
+      "folded_symbols": [],
+      "identity": "root: called by getClientCount 004a2286",
+      "exact": true,
+      "size": 81,
+      "target_size": 81,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004a1b70",
+      "unit": "server",
+      "symbol": "?setValue@?$GetImpl@P8Server@Network@RBX@@BEHXZ@?$PropDescriptor@VServer@Network@RBX@@H@Reflection@RBX@@UBEXPAVDescribedBase@34@ABH@Z",
+      "folded_symbols": [],
+      "identity": "root: GetImpl<int (Server::*)() const> vtable 008234d0 slot 3 (also the Mouse GetImpl vtables, identical code)",
+      "exact": true,
+      "size": 104,
+      "target_size": 104,
+      "verified_targets": {
+        "??_C@_0BA@HONHCAMJ@can?8t?5set?5value?$AA@": "0x8226c8 (string \"can't set value\")",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7runtime_error@std@@6B@": "0x80b7f8 (vtable RTTI .?AVruntime_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info, catchable types .?AVruntime_error@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$?setValue@?$GetImpl@P8Server@Network@RBX@@BEHXZ@?$PropDescriptor@VServer@Network@RBX@@H@Reflection@RBX@@UBEXPAVDescribedBase@34@ABH@Z"
+      ]
+    },
+    {
+      "address": "004a1d00",
+      "unit": "find",
+      "symbol": "??$callDoGetClassIndex@VServer@Network@RBX@@@ServiceProvider@RBX@@SAXXZ",
+      "folded_symbols": [],
+      "identity": "root: pushed by find<Server> 004a3e61 as the call_once function (one jmp to doGetClassIndex<Server> 004a1760)",
+      "exact": true,
+      "size": 5,
+      "target_size": 5,
+      "verified_targets": {
+        "??$doGetClassIndex@VServer@Network@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x4a1760 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004a2030",
+      "unit": "server",
+      "symbol": "??$getset@P8Server@Network@RBX@@BEHXZ@?$PropDescriptor@VServer@Network@RBX@@H@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@P8Server@Network@2@BEHXZH@Z",
+      "folded_symbols": [],
+      "identity": "called by 004a3f80",
+      "exact": true,
+      "size": 63,
+      "target_size": 63,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetImpl@P8Server@Network@RBX@@BEHXZ@?$PropDescriptor@VServer@Network@RBX@@H@Reflection@RBX@@6B@": "0x8234d0 (vtable RTTI .?AV?$GetImpl@P8Server@Network@RBX@@BEHXZ@?$PropDescriptor@VServer@Network@RBX@@H@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004a37a0",
+      "unit": "creators",
+      "symbol": "??$?0VMessage@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VMessage@RBX@@@boost@@QAE@PAVMessage@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+      "folded_symbols": [],
+      "identity": "called by 004a3850",
+      "exact": true,
+      "size": 171,
+      "target_size": 171,
+      "verified_targets": {
+        "??$?0PAVMessage@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVMessage@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x4a3710 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VMessage@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VMessage@RBX@@@boost@@QAE@PAVMessage@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+      ]
+    },
+    {
+      "address": "004a3850",
+      "unit": "creators",
+      "symbol": "??$create@VMessage@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VMessage@RBX@@@boost@@XZ",
+      "folded_symbols": [],
+      "identity": "root: called by Creator::create 004a38f5; malloc 0x15c = sizeof(Message) (v8datamodel/Message.h)",
+      "exact": true,
+      "size": 120,
+      "target_size": 120,
+      "verified_targets": {
+        "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+        "??0Message@RBX@@QAE@XZ": "0x5dd120 (external (evidence name))",
+        "??$?0VMessage@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VMessage@RBX@@@boost@@QAE@PAVMessage@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x4a37a0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@VMessage@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VMessage@RBX@@@boost@@XZ"
+      ]
+    },
+    {
+      "address": "004a38d0",
+      "unit": "creators",
+      "symbol": "?create@Creator@?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+      "folded_symbols": [],
+      "identity": "root: slot 0 of the FactoryProduct<Message> Creator vtable 008236c0",
+      "exact": true,
+      "size": 175,
+      "target_size": 175,
+      "verified_targets": {
+        "??$create@VMessage@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VMessage@RBX@@@boost@@XZ": "0x4a3850 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?create@Creator@?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ"
+      ]
+    },
+    {
+      "address": "004a39e0",
+      "unit": "creators",
+      "symbol": "??_E?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@OBE@AEPAXI@Z",
+      "folded_symbols": [],
+      "identity": "root: FactoryProduct<Message> vtables 0082374c / 0083d9e8 (this -= 0x14)",
+      "exact": true,
+      "size": 8,
+      "target_size": 8,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@MAEPAXI@Z": "0x5dd100 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004a39f0",
+      "unit": "creators",
+      "symbol": "??1?$DescribedCreatable@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@UAE@XZ",
+      "folded_symbols": [],
+      "identity": "root: unwind funclet 007c7d03 (one jmp to ~FactoryProduct<Message> 004a3980)",
+      "exact": true,
+      "size": 5,
+      "target_size": 5,
+      "verified_targets": {
+        "??1?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@MAE@XZ": "0x4a3980 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004a3b60",
+      "unit": "creators",
+      "symbol": "??_EHint@RBX@@WIE@AEPAXI@Z",
+      "folded_symbols": [],
+      "identity": "root: Hint vtables 008237f4 / 00823a34 / 00823b10 (this -= 0x84)",
+      "exact": true,
+      "size": 11,
+      "target_size": 11,
+      "verified_targets": {
+        "??_EHint@RBX@@UAEPAXI@Z": "0x4a4d20 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004a3b70",
+      "unit": "creators",
+      "symbol": "??_EHint@RBX@@WBE@AEPAXI@Z",
+      "folded_symbols": [],
+      "identity": "root: Hint vtables 0082383c / 00823a7c / 00823b58 (this -= 0x14)",
+      "exact": true,
+      "size": 8,
+      "target_size": 8,
+      "verified_targets": {
+        "??_EHint@RBX@@UAEPAXI@Z": "0x4a4d20 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004a3b80",
+      "unit": "creators",
+      "symbol": "??$?0VHint@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VHint@RBX@@@boost@@QAE@PAVHint@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+      "folded_symbols": [],
+      "identity": "root: called by create<Hint> 004a4da1 (shared_ptr<Hint>(Hint*, Deleter), enable_shared_from_this hook-up)",
+      "exact": true,
+      "size": 171,
+      "target_size": 171,
+      "verified_targets": {
+        "??$?0PAVHint@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVHint@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x4a3a00 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VHint@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VHint@RBX@@@boost@@QAE@PAVHint@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+      ]
+    },
+    {
+      "address": "004a3e40",
+      "unit": "find",
+      "symbol": "??$find@VServer@Network@RBX@@@ServiceProvider@RBX@@QBEPAVServer@Network@1@XZ",
+      "folded_symbols": [],
+      "identity": "root: called by Server::serverIsPresent 004a40d0 (bound as an external there by network-client-server2008)",
+      "exact": true,
+      "size": 320,
+      "target_size": 320,
+      "verified_targets": {
+        "?flag@?1???$getClassIndex@VServer@Network@RBX@@@ServiceProvider@RBX@@SAIXZ@4JA": "0x970d18 (external)",
+        "??$callDoGetClassIndex@VServer@Network@RBX@@@ServiceProvider@RBX@@SAXXZ": "0x4a1d00 (own row)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "??$doGetClassIndex@VServer@Network@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x4a1760 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?resize@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXIV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x4124c0 (external)",
+        "?flag@?1???$declare@$1?sServer@Network@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x97028c (external)",
+        "??$callDoDeclare@$1?sServer@Network@RBX@@3PADA@Name@RBX@@CAXXZ": "0x496900 (external)",
+        "??$doDeclare@$1?sServer@Network@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x496240 (external)",
+        "?findServiceByClassName@ServiceProvider@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z": "0x572a90 (external)",
+        "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ": "0x600660 (external (evidence name))",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??$find@VServer@Network@RBX@@@ServiceProvider@RBX@@QBEPAVServer@Network@1@XZ"
+      ]
+    },
+    {
+      "address": "004a3f80",
+      "unit": "server",
+      "symbol": "??$?0P8Server@Network@RBX@@BEHXZH@?$PropDescriptor@VServer@Network@RBX@@H@Reflection@RBX@@QAE@PBD0P8Server@Network@2@BEHXZHW4Functionality@PropertyDescriptor@12@@Z",
+      "folded_symbols": [],
+      "identity": "root: static initializer 007f1cf0 (\"Port\", \"Data\", getter 004a1560, flags 5); stores vtable 00823898",
+      "exact": true,
+      "size": 157,
+      "target_size": 157,
+      "verified_targets": {
+        "??$getset@P8Server@Network@RBX@@BEHXZ@?$PropDescriptor@VServer@Network@RBX@@H@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@P8Server@Network@2@BEHXZH@Z": "0x4a2030 (own row)",
+        "?classDescriptor@?$Described@VServer@Network@RBX@@$1?sServer@23@3PADAV?$FactoryProduct@VServer@Network@RBX@@VPeer@23@$1?sServer@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49eba0 (external)",
+        "??0?$TypedPropertyDescriptor@H@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x4432a0 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VServer@Network@RBX@@H@Reflection@RBX@@6B@": "0x823898 (vtable RTTI .?AV?$PropDescriptor@VServer@Network@RBX@@H@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Server@Network@RBX@@BEHXZH@?$PropDescriptor@VServer@Network@RBX@@H@Reflection@RBX@@QAE@PBD0P8Server@Network@2@BEHXZHW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    }
+  ],
+  "support_rows_not_counted": [
+    {
+      "address": "004187b0 (counted by humanoid2008-working.json)",
+      "unit": "client",
+      "symbol": "?clear@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAEXXZ",
+      "folded_symbols": [],
+      "identity": "called by 004199e0",
+      "size": 69,
+      "target_size": 69,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004199e0 (counted by humanoid2008-working.json)",
+      "unit": "client",
+      "symbol": "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "called by 0049fbb0",
+      "size": 85,
+      "target_size": 85,
+      "verified_targets": {
+        "?clear@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAEXXZ": "0x4187b0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0049ee50 (outside the range 004a0000..004a4000; support, not counted)",
+      "unit": "client",
+      "symbol": "?declareSignature@?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@Z$03@Reflection@RBX@@AAEXPBD000@Z",
+      "folded_symbols": [],
+      "identity": "called by 004a03b0",
+      "size": 151,
+      "target_size": 151,
+      "verified_targets": {
+        "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (external (evidence name))",
+        "??$singleton@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cdf0 (external (evidence name))",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (external (evidence name))",
+        "??$singleton@H@Type@Reflection@RBX@@SAABV012@XZ": "0x56cbc0 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0049fbb0 (outside the range 004a0000..004a4000; support, not counted)",
+      "unit": "client",
+      "symbol": "??1?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@Z$03@Reflection@RBX@@UAE@XZ",
+      "folded_symbols": [],
+      "identity": "called by 004a0690",
+      "size": 150,
+      "target_size": 150,
+      "verified_targets": {
+        "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (own row)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@Z$03@Reflection@RBX@@UAE@XZ"
+      ]
+    }
+  ],
+  "pending_build_only": [
+    {
+      "address": "004a1880 (pending build only; not counted)",
+      "symbol": "?stop@Server@Network@RBX@@QAEXH@Z",
+      "size": 51,
+      "target_size": 51,
+      "exact": false,
+      "pending_build_only": true,
+      "bytes_exact_in_pending_build": true,
+      "evidence": "evidence name; rakPeer +0x140 IsActive (slot 11) then Shutdown(blockDuration, 0) (slot 10), removeAllChildren",
+      "pending_reason": "needs the proposed Server::stop / getClientCount declarations; verified only against the generated out/app-unit4a0/pending/Network/Server2008.h"
+    },
+    {
+      "address": "004a2250 (pending build only; not counted)",
+      "symbol": "?getClientCount@Server@Network@RBX@@QAEHXZ",
+      "size": 70,
+      "target_size": 70,
+      "exact": false,
+      "pending_build_only": true,
+      "bytes_exact_in_pending_build": true,
+      "evidence": "evidence name; count_if(children, isReplicator) through _Count_if 004a1af0",
+      "pending_reason": "needs the proposed Server::stop / getClientCount declarations; verified only against the generated out/app-unit4a0/pending/Network/Server2008.h"
+    }
+  ],
+  "exact_function_rows": [
+    "004a0020",
+    "004a02e0",
+    "004a03b0",
+    "004a04b0",
+    "004a0690",
+    "004a06b0",
+    "004a0780",
+    "004a1760",
+    "004a17f0",
+    "004a1af0",
+    "004a1b70",
+    "004a1d00",
+    "004a2030",
+    "004a37a0",
+    "004a3850",
+    "004a38d0",
+    "004a39e0",
+    "004a39f0",
+    "004a3b60",
+    "004a3b70",
+    "004a3b80",
+    "004a3e40",
+    "004a3f80"
+  ],
+  "rejected": {
+    "BoundFuncDesc<Client, void(int), 1> through `template class` (the no-default constructor)": "159/193 B at 004a06b0: the original stores a Value(int) default (new 8, any::holder<int> vtable 008106cc, ret 0x18), i.e. the constructor with a default argument",
+    "isReplicator with internal linkage (donor `static`)": "not emitted in the main build (its only user getClientCount is pending); the mangling is the same, so it is defined with external linkage"
+  },
+  "proposals": {
+    "native-headers/Network/Server2008.h (network-client-server owner)": "Declare `void stop(int blockDuration);` (004a1880, evidence name ?stop@Server@Network@RBX@@QAEXH@Z: rakPeer +0x140 IsActive slot 11 / Shutdown(blockDuration, 0) slot 10, then removeAllChildren 0055afd0) and `int getClientCount();` (004a2250, evidence name ?getClientCount@Server@Network@RBX@@QAEHXZ: children +0x108, _Count_if 004a1af0 with isReplicator 004a17f0). Both bodies are exact in this receipt's pending build (native-classes/AppUnit4A0ServerDescriptors.cpp under NATIVE_APPUNIT4A0_PENDING); they can then be counted. The \"Port\" property getter (static initializer 007f1cf0 passes 004a1560 with adjustor 0: return outgoingPort) also needs an `int getPort() const` declaration for its PropDescriptor object.",
+    "native-headers/Network/Client2008.h (network-client-server owner)": "Declare `void connect(std::string server, int serverPort, int clientPort, int threadSleepTime);` (004a0a70, the BoundFuncDesc<Client, void(string, int, int, int), 4> target registered by 007f1b60) so it can be built.",
+    "native-headers/reflection/signal.h (core owner)": "Add the SignalDescImpl<3, S> specialization (and the SignalDesc three-name-plus constructor) for the 2008 three-argument Client event void(std::string, int, std::string) (SignalDesc ctor 004a0150, ret 0x10; connectGeneric 004a1480 in vtable 008230c0)."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit. No new header."
+}

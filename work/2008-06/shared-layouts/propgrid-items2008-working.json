@@ -1,0 +1,3531 @@
+{
+  "classes": [
+    "EnumItem",
+    "RefItem",
+    "ScriptItem",
+    "SoundItem",
+    "TextureItem",
+    "Vector3ComponentItem",
+    "Vector3Item",
+    "XBrickColorItem",
+    "ContentItem<RBX::TextureId>",
+    "ContentItem<RBX::Soundscape::SoundId>"
+  ],
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/UNOMINMAX",
+    "/I/home/user/roconstruct/tools/libs/xtp-11.2.2/Source",
+    "/D_XTP_STATICLINK"
+  ],
+  "profile": "preprocessed with c_str / PCXSTR / XTP GetValue / CString::IsEmpty noinline, compiled /nologo /c /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_propgrid_items2008.py": "242f9fd3c4c2ad5d51e16fb0e72a9f3a4e6ee4e3c12ee3c85e59dafa693e6792",
+    "rebuild/2008-06/native-classes/PropertyGridItems2008.cpp": "540796cdde7b29561ee162db496a6323ec3db639277815424d7dec41566ff91c",
+    "rebuild/2008-06/native-headers/PropertyGridItems2008.h": "d6ef56657f61eaf99e17f5024687cb331e46c5fe5eb3d7427f47bd31b3411e33",
+    "rebuild/2008-06/native-headers/PropertyGridItems.h": "55c32e8ce66153142e9f053f4acacd162c15b7657f8f2967525ca750c990b535",
+    "rebuild/2008-06/tests/NativePropertyGridItems2008Layout.cpp": "e97433697a958d8549bb56edde0986ca97aeb3d024ee16048b0a1cc29156e87f",
+    "rebuild/2008-06/tests/NativePropertyGridItems2008Pending.cpp": "4ff0f25558ed1f1d6b7262d328668ef190c4356f10ce9726d568b3852cc7af59",
+    "rebuild/2008-06/native-headers/CPropGrid.h": "0e7580aa5db860057cb5011c35350bf8ab9e7e448ccc33c6403efaf4c6f6ef2b",
+    "rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h": "e827221d0ec0cb223cd9fec889a926dac3693e17b703c668804930dc5db14fb3",
+    "rebuild/2008-06/native-headers/SelectionGroup.h": "422dd290b31d1bf7eba1e107b7453c79b954c8a18e5b046a5232f83d0279bc1b",
+    "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d"
+  },
+  "objects": {
+    "NativePropertyGridItems2008.obj": "f248a2f71c483d0fdeb407ff71038640df5c37dbecbb19029f91c0ba2753ca2e",
+    "NativePropertyGridItems2008Pending.obj": "e8732ef2aa3423ee31f8b090ce6f1b4b37f7692d7f4e8b7746cbc0c3e444b730",
+    "NativePropertyGridItems2008Safety.obj": "9a306ff8691983a38f731d815f9610b88e56398e8bf5571bd75c09ae9a530605",
+    "NativePropertyGridItems2008Layout.obj": "103ebf785ec537560f87c861b40671b14b91a7516462b64349912773e5d038a0",
+    "NativePropertyGridItems2008Plain.obj": "14754b62b6f039d979c38a85dcc307f4f0f163fee96696135e27c2811a810d63"
+  },
+  "layout": {
+    "XBrickColorItem": "0x13c (Item +0x118, descriptor +0x138)",
+    "Vector3Item": "0x13c (components[3] +0x130)",
+    "Vector3ComponentItem": "0x140 (component +0x130, value +0x134)",
+    "EnumItem": "0x138 (Item +0x114, descriptor +0x134)",
+    "RefItem": "0x134 (refDescriptor +0x130)",
+    "ScriptItem": "0x130",
+    "TextureItem": "0x130",
+    "SoundItem": "0x130",
+    "CXTPPropertyGridItemEnum": "0x114"
+  },
+  "allocation_sizes": {
+    "0043d560": "0x13c",
+    "0043d6c0": "0x13c",
+    "0043e3a0": "0x138",
+    "0043db80": "0x134",
+    "0043df50": "0x130",
+    "00440db0": "0x130",
+    "00440d30": "0x130",
+    "0043d7d0 (in 0043dae0)": "0x140"
+  },
+  "rtti": {
+    "XBrickColorItem": [
+      [
+        ".?AVXBrickColorItem@@",
+        0
+      ],
+      [
+        ".?AV?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@",
+        0
+      ],
+      [
+        ".?AVCPropertyGridItemBrickColor@@",
+        0
+      ],
+      [
+        ".?AVCXTPPropertyGridItemColor@@",
+        0
+      ],
+      [
+        ".?AVCXTPPropertyGridItem@@",
+        0
+      ],
+      [
+        ".?AVCCmdTarget@@",
+        0
+      ],
+      [
+        ".?AVCObject@@",
+        0
+      ],
+      [
+        ".?AVCXTPAccessible@@",
+        32
+      ],
+      [
+        ".?AVItem@CPropGrid@@",
+        280
+      ]
+    ],
+    "Vector3Item": [
+      [
+        ".?AVVector3Item@@",
+        0
+      ],
+      [
+        ".?AV?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@",
+        0
+      ],
+      [
+        ".?AVCXTPPropertyGridItem@@",
+        0
+      ],
+      [
+        ".?AVCCmdTarget@@",
+        0
+      ],
+      [
+        ".?AVCObject@@",
+        0
+      ],
+      [
+        ".?AVCXTPAccessible@@",
+        32
+      ],
+      [
+        ".?AVItem@CPropGrid@@",
+        268
+      ]
+    ],
+    "Vector3ComponentItem": [
+      [
+        ".?AVVector3ComponentItem@@",
+        0
+      ],
+      [
+        ".?AV?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@",
+        0
+      ],
+      [
+        ".?AVCXTPPropertyGridItem@@",
+        0
+      ],
+      [
+        ".?AVCCmdTarget@@",
+        0
+      ],
+      [
+        ".?AVCObject@@",
+        0
+      ],
+      [
+        ".?AVCXTPAccessible@@",
+        32
+      ],
+      [
+        ".?AVItem@CPropGrid@@",
+        268
+      ]
+    ],
+    "EnumItem": [
+      [
+        ".?AVEnumItem@@",
+        0
+      ],
+      [
+        ".?AV?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@",
+        0
+      ],
+      [
+        ".?AVCXTPPropertyGridItemEnum@@",
+        0
+      ],
+      [
+        ".?AVCXTPPropertyGridItem@@",
+        0
+      ],
+      [
+        ".?AVCCmdTarget@@",
+        0
+      ],
+      [
+        ".?AVCObject@@",
+        0
+      ],
+      [
+        ".?AVCXTPAccessible@@",
+        32
+      ],
+      [
+        ".?AVItem@CPropGrid@@",
+        276
+      ]
+    ],
+    "RefItem": [
+      [
+        ".?AVRefItem@@",
+        0
+      ],
+      [
+        ".?AV?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@",
+        0
+      ],
+      [
+        ".?AVCXTPPropertyGridItem@@",
+        0
+      ],
+      [
+        ".?AVCCmdTarget@@",
+        0
+      ],
+      [
+        ".?AVCObject@@",
+        0
+      ],
+      [
+        ".?AVCXTPAccessible@@",
+        32
+      ],
+      [
+        ".?AVItem@CPropGrid@@",
+        268
+      ]
+    ],
+    "ScriptItem": [
+      [
+        ".?AVScriptItem@@",
+        0
+      ],
+      [
+        ".?AV?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@",
+        0
+      ],
+      [
+        ".?AVCXTPPropertyGridItem@@",
+        0
+      ],
+      [
+        ".?AVCCmdTarget@@",
+        0
+      ],
+      [
+        ".?AVCObject@@",
+        0
+      ],
+      [
+        ".?AVCXTPAccessible@@",
+        32
+      ],
+      [
+        ".?AVItem@CPropGrid@@",
+        268
+      ]
+    ],
+    "TextureItem": [
+      [
+        ".?AVTextureItem@@",
+        0
+      ],
+      [
+        ".?AV?$ContentItem@VTextureId@RBX@@@@",
+        0
+      ],
+      [
+        ".?AV?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@",
+        0
+      ],
+      [
+        ".?AVCXTPPropertyGridItem@@",
+        0
+      ],
+      [
+        ".?AVCCmdTarget@@",
+        0
+      ],
+      [
+        ".?AVCObject@@",
+        0
+      ],
+      [
+        ".?AVCXTPAccessible@@",
+        32
+      ],
+      [
+        ".?AVItem@CPropGrid@@",
+        268
+      ]
+    ],
+    "SoundItem": [
+      [
+        ".?AVSoundItem@@",
+        0
+      ],
+      [
+        ".?AV?$ContentItem@VSoundId@Soundscape@RBX@@@@",
+        0
+      ],
+      [
+        ".?AV?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@",
+        0
+      ],
+      [
+        ".?AVCXTPPropertyGridItem@@",
+        0
+      ],
+      [
+        ".?AVCCmdTarget@@",
+        0
+      ],
+      [
+        ".?AVCObject@@",
+        0
+      ],
+      [
+        ".?AVCXTPAccessible@@",
+        32
+      ],
+      [
+        ".?AVItem@CPropGrid@@",
+        268
+      ]
+    ]
+  },
+  "exact_counted_addresses": [
+    "00437c20",
+    "00437c90",
+    "00437cd0",
+    "00437d30",
+    "00437e70",
+    "00437e80",
+    "004384b0",
+    "00438580",
+    "0043aff0",
+    "0043b030",
+    "0043b400",
+    "0043c020",
+    "0043c440",
+    "0043c4f0",
+    "0043c5b0",
+    "0043c640",
+    "0043c9b0",
+    "0043ca60",
+    "0043cfa0",
+    "0043d560",
+    "0043d5a0",
+    "0043d5b0",
+    "0043d660",
+    "0043d6c0",
+    "0043d710",
+    "0043d790",
+    "0043d7d0",
+    "0043d890",
+    "0043d8c0",
+    "0043d930",
+    "0043da10",
+    "0043dae0",
+    "0043db80",
+    "0043dbf0",
+    "0043df50",
+    "0043e840",
+    "0043e8f0",
+    "0043e900",
+    "0043e960",
+    "0043ea20",
+    "00440d30",
+    "00440db0",
+    "00441770"
+  ],
+  "methods": [
+    {
+      "address": "0043b400",
+      "symbol": "??0?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@QAE@PBV?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 179,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z",
+        "??0CPropertyGridItemBrickColor@@QAE@V?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@K@Z": "0x437ae0",
+        "??0Item@CPropGrid@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAV1@@Z": "0x43a070",
+        "??_7?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@6BCCmdTarget@@@": "0x813dc4 (RTTI .?AV?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@, offset 0x0)",
+        "??_7?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@6BCXTPAccessible@@@": "0x813d64 (RTTI .?AV?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@, offset 0x20)",
+        "??_7?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@6B@": "0x813d5c (RTTI .?AV?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@, offset 0x118)",
+        "?SetReadOnly@CXTPPropertyGridItem@@QAEXH@Z": "0x7120e0"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@QAE@PBV?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043d560",
+      "symbol": "??0XBrickColorItem@@QAE@PBV?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 49,
+      "exact": true,
+      "verified_targets": {
+        "??0?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@QAE@PBV?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z": "0x43b400",
+        "??_7XBrickColorItem@@6BCCmdTarget@@@": "0x81480c (RTTI .?AVXBrickColorItem@@, offset 0x0)",
+        "??_7XBrickColorItem@@6BCXTPAccessible@@@": "0x8147ac (RTTI .?AVXBrickColorItem@@, offset 0x20)",
+        "??_7XBrickColorItem@@6B@": "0x8147a4 (RTTI .?AVXBrickColorItem@@, offset 0x118)"
+      },
+      "local_eh": [],
+      "kind": "class"
+    },
+    {
+      "address": "0043d5b0",
+      "symbol": "?OnDrawItemValue@XBrickColorItem@@UAEHAAVCDC@@VCRect@@@Z",
+      "size": 168,
+      "exact": true,
+      "verified_targets": {
+        "?GetValue@CXTPPropertyGridItem@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x437ed0",
+        "??_C@_00CNPNBAHC@?$AA@": "0x80b716",
+        "__imp_?Compare@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QBEHPBD@Z": "mfc90.dll!?Compare@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QBEHPBD@Z",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "?OnDrawItemValue@CXTPPropertyGridItemColor@@MAEHAAVCDC@@VCRect@@@Z": "0x713c20"
+      },
+      "local_eh": [
+        "__ehhandler$?OnDrawItemValue@XBrickColorItem@@UAEHAAVCDC@@VCRect@@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043d660",
+      "symbol": "??_GXBrickColorItem@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CXTPPropertyGridItemColor@@UAE@XZ": "0x713760"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "0043d5a0",
+      "symbol": "??_EXBrickColorItem@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EXBrickColorItem@@UAEPAXI@Z": "0x43d660"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "00437c20",
+      "symbol": "?readValue@?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@UAE?AVBrickColor@RBX@@XZ",
+      "size": 98,
+      "exact": true,
+      "verified_targets": {
+        "__real@3b808081": "0x8135d4",
+        "?closest@BrickColor@RBX@@SA?AV12@VColor3@G3D@@@Z": "0x5b62e0"
+      },
+      "local_eh": [],
+      "kind": "class"
+    },
+    {
+      "address": "00437c90",
+      "symbol": "?displayValue@?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@UAEXABVBrickColor@RBX@@@Z",
+      "size": 61,
+      "exact": true,
+      "verified_targets": {
+        "?color4uint8@BrickColor@RBX@@QBE?AVColor4uint8@G3D@@XZ": "0x5b6120"
+      },
+      "local_eh": [],
+      "kind": "class"
+    },
+    {
+      "address": "0043b030",
+      "symbol": "?writeValue@?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@UAEXPAVInstance@RBX@@ABVBrickColor@3@@Z",
+      "size": 149,
+      "exact": true,
+      "verified_targets": {
+        "?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z": "0x576f00",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      },
+      "local_eh": [
+        "__ehhandler$?writeValue@?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@UAEXPAVInstance@RBX@@ABVBrickColor@3@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043b4c0",
+      "symbol": "?equalValues@?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@UAE_NABVBrickColor@RBX@@0@Z",
+      "size": 20,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "kind": "elsewhere"
+    },
+    {
+      "address": "0043b4e0",
+      "symbol": "?emptyValue@?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@UAE_NXZ",
+      "size": 37,
+      "exact": true,
+      "verified_targets": {
+        "?GetValue@CXTPPropertyGridItem@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x437ed0",
+        "__imp_?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ": "mfc90.dll!?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [],
+      "kind": "elsewhere"
+    },
+    {
+      "address": "0043c020",
+      "symbol": "??0?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 168,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+        "??0CXTPPropertyGridItem@@QAE@PBD0PAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "0x713510",
+        "??0Item@CPropGrid@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAV1@@Z": "0x43a070",
+        "??_7?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@6BCCmdTarget@@@": "0x81409c (RTTI .?AV?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@, offset 0x0)",
+        "??_7?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@6BCXTPAccessible@@@": "0x81403c (RTTI .?AV?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@, offset 0x20)",
+        "??_7?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@6B@": "0x814030 (RTTI .?AV?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@, offset 0x10c)",
+        "?SetReadOnly@CXTPPropertyGridItem@@QAEXH@Z": "0x7120e0"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@PAVCPropGrid@@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043d6c0",
+      "symbol": "??0Vector3Item@@QAE@PBV?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 69,
+      "exact": true,
+      "verified_targets": {
+        "??0?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@PAVCPropGrid@@@Z": "0x43c020",
+        "??_7Vector3Item@@6BCCmdTarget@@@": "0x81497c (RTTI .?AVVector3Item@@, offset 0x0)",
+        "??_7Vector3Item@@6BCXTPAccessible@@@": "0x81491c (RTTI .?AVVector3Item@@, offset 0x20)",
+        "??_7Vector3Item@@6B@": "0x814914 (RTTI .?AVVector3Item@@, offset 0x10c)"
+      },
+      "local_eh": [],
+      "kind": "class"
+    },
+    {
+      "address": "0043d790",
+      "symbol": "?update@Vector3Item@@UAEXPAVSelectionGroup@RBX@@@Z",
+      "size": 57,
+      "exact": true,
+      "verified_targets": {
+        "?update@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAEXPAVSelectionGroup@RBX@@@Z": "0x43c170"
+      },
+      "local_eh": [],
+      "kind": "class"
+    },
+    {
+      "address": "0043d710",
+      "symbol": "?OnAfterEdit@Vector3Item@@MAEHAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "size": 126,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "?convertToValue@?$StringConverter@VVector3@G3D@@@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVVector3@G3D@@@Z": "0x5bebb0",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?OnAfterEdit@Vector3Item@@MAEHAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043dae0",
+      "symbol": "?OnAddChildItem@Vector3Item@@MAEXXZ",
+      "size": 148,
+      "exact": true,
+      "verified_targets": {
+        "?OnAddChildItem@CXTPPropertyGridItem@@MAEXXZ": "0x711600",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0Vector3ComponentItem@@QAE@PBV?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@PAVCPropGrid@@H@Z": "0x43d7d0",
+        "?AddChildItem@CXTPPropertyGridItem@@QAEPAV1@PAV1@@Z": "0x7131c0"
+      },
+      "local_eh": [
+        "__ehhandler$?OnAddChildItem@Vector3Item@@MAEXXZ"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043e900",
+      "symbol": "??_GVector3Item@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CXTPPropertyGridItem@@UAE@XZ": "0x713630"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "0043e8f0",
+      "symbol": "??_EVector3Item@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EVector3Item@@UAEPAXI@Z": "0x43e900"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "004384b0",
+      "symbol": "?readValue@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAE?AVVector3@G3D@@XZ",
+      "size": 199,
+      "exact": true,
+      "verified_targets": {
+        "?GetValue@CXTPPropertyGridItem@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x437ed0",
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "?convertToValue@?$StringConverter@VVector3@G3D@@@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVVector3@G3D@@@Z": "0x5bebb0",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?readValue@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAE?AVVector3@G3D@@XZ"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "00437cd0",
+      "symbol": "?displayValue@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAEXABVVector3@G3D@@@Z",
+      "size": 93,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0BB@PPLOFHBI@?$CF?43g?0?5?$CF?43g?0?5?$CF?43g?$AA@": "0x813734",
+        "__imp__sprintf": "msvcr90.dll!sprintf",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z"
+      },
+      "local_eh": [],
+      "kind": "class"
+    },
+    {
+      "address": "0043aff0",
+      "symbol": "?equalValues@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAE_NABVVector3@G3D@@0@Z",
+      "size": 58,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "kind": "class"
+    },
+    {
+      "address": "0043b4e0",
+      "symbol": "?emptyValue@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAE_NXZ",
+      "size": 37,
+      "exact": true,
+      "verified_targets": {
+        "?GetValue@CXTPPropertyGridItem@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x437ed0",
+        "__imp_?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ": "mfc90.dll!?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [],
+      "kind": "elsewhere"
+    },
+    {
+      "address": "0043d7d0",
+      "symbol": "??0Vector3ComponentItem@@QAE@PBV?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@PAVCPropGrid@@H@Z",
+      "size": 173,
+      "exact": true,
+      "verified_targets": {
+        "??0?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@PAVCPropGrid@@@Z": "0x43c020",
+        "??_7Vector3ComponentItem@@6BCCmdTarget@@@": "0x814ae4 (RTTI .?AVVector3ComponentItem@@, offset 0x0)",
+        "??_7Vector3ComponentItem@@6BCXTPAccessible@@@": "0x814a84 (RTTI .?AVVector3ComponentItem@@, offset 0x20)",
+        "??_7Vector3ComponentItem@@6B@": "0x814a7c (RTTI .?AVVector3ComponentItem@@, offset 0x10c)",
+        "??_C@_01GLPGHMHM@z?$AA@": "0x814a74",
+        "??_C@_01EANLCPLP@y?$AA@": "0x80f0d0",
+        "??_C@_01FJMABOPO@x?$AA@": "0x80f0cc",
+        "__imp_??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@PBD@Z": "mfc90.dll!??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@PBD@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??0Vector3ComponentItem@@QAE@PBV?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@PAVCPropGrid@@H@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043d930",
+      "symbol": "?readValue@Vector3ComponentItem@@UAE?AVVector3@G3D@@XZ",
+      "size": 223,
+      "exact": true,
+      "verified_targets": {
+        "?GetValue@CXTPPropertyGridItem@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x437ed0",
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "?convertToValue@?$StringConverter@M@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAM@Z": "0x5be790",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?readValue@Vector3ComponentItem@@UAE?AVVector3@G3D@@XZ"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043d8c0",
+      "symbol": "?displayValue@Vector3ComponentItem@@UAEXABVVector3@G3D@@@Z",
+      "size": 103,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_04HMIANGDC@?$CF?43g?$AA@": "0x8135c8",
+        "__imp__sprintf": "msvcr90.dll!sprintf",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z"
+      },
+      "local_eh": [],
+      "kind": "class"
+    },
+    {
+      "address": "0043d890",
+      "symbol": "?equalValues@Vector3ComponentItem@@UAE_NABVVector3@G3D@@0@Z",
+      "size": 44,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "kind": "class"
+    },
+    {
+      "address": "0043da10",
+      "symbol": "?writeValue@Vector3ComponentItem@@UAEXPAVInstance@RBX@@ABVVector3@G3D@@@Z",
+      "size": 205,
+      "exact": true,
+      "verified_targets": {
+        "?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z": "0x576f00",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      },
+      "local_eh": [
+        "__ehhandler$?writeValue@Vector3ComponentItem@@UAEXPAVInstance@RBX@@ABVVector3@G3D@@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043e900",
+      "symbol": "??_GVector3ComponentItem@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CXTPPropertyGridItem@@UAE@XZ": "0x713630"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "0043e8f0",
+      "symbol": "??_EVector3ComponentItem@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EVector3ComponentItem@@UAEPAXI@Z": "0x43e900"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "0043c440",
+      "symbol": "??0?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@QAE@PBVEnumPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 168,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+        "??0CXTPPropertyGridItemEnum@@QAE@PBDHPAH@Z": "0x717e30",
+        "??0Item@CPropGrid@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAV1@@Z": "0x43a070",
+        "??_7?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@6BCCmdTarget@@@": "0x814204 (RTTI .?AV?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@, offset 0x0)",
+        "??_7?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@6BCXTPAccessible@@@": "0x8141a4 (RTTI .?AV?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@, offset 0x20)",
+        "??_7?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@6B@": "0x814198 (RTTI .?AV?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@, offset 0x114)",
+        "?SetReadOnly@CXTPPropertyGridItem@@QAEXH@Z": "0x7120e0"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@QAE@PBVEnumPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043c640",
+      "symbol": "??_GEnumItem@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CXTPPropertyGridItemEnum@@UAE@XZ": "0x7178b0"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "0043c4f0",
+      "symbol": "??_EEnumItem@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EEnumItem@@UAEPAXI@Z": "0x43c640"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "00437e70",
+      "symbol": "?readValue@?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@UAEHXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "kind": "class"
+    },
+    {
+      "address": "00437e80",
+      "symbol": "?displayValue@?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@UAEXABH@Z",
+      "size": 20,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "kind": "class"
+    },
+    {
+      "address": "0043c5b0",
+      "symbol": "?writeValue@?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@UAEXPAVInstance@RBX@@ABH@Z",
+      "size": 144,
+      "exact": true,
+      "verified_targets": {
+        "?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z": "0x576f00",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      },
+      "local_eh": [
+        "__ehhandler$?writeValue@?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@UAEXPAVInstance@RBX@@ABH@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "00441770",
+      "symbol": "?OnValueChanged@?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "size": 114,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@ABV01@@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@ABV01@@Z",
+        "?OnValueChanged@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "0x711ac0",
+        "?applyValue@?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@QAEXABH@Z": "0x4402d0",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?OnValueChanged@?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043b4c0",
+      "symbol": "?equalValues@?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@UAE_NABH0@Z",
+      "size": 20,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "kind": "elsewhere"
+    },
+    {
+      "address": "0043b4e0",
+      "symbol": "?emptyValue@?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@UAE_NXZ",
+      "size": 37,
+      "exact": true,
+      "verified_targets": {
+        "?GetValue@CXTPPropertyGridItem@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x437ed0",
+        "__imp_?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ": "mfc90.dll!?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [],
+      "kind": "elsewhere"
+    },
+    {
+      "address": "0043db80",
+      "symbol": "??0RefItem@@QAE@PBVRefPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 112,
+      "exact": true,
+      "verified_targets": {
+        "??0?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z": "0x43b860",
+        "??_7RefItem@@6BCCmdTarget@@@": "0x814c4c (RTTI .?AVRefItem@@, offset 0x0)",
+        "??_7RefItem@@6BCXTPAccessible@@@": "0x814bec (RTTI .?AVRefItem@@, offset 0x20)",
+        "??_7RefItem@@6B@": "0x814be0 (RTTI .?AVRefItem@@, offset 0x10c)",
+        "?SetReadOnly@CXTPPropertyGridItem@@QAEXH@Z": "0x7120e0"
+      },
+      "local_eh": [
+        "__ehhandler$??0RefItem@@QAE@PBVRefPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043dbf0",
+      "symbol": "?OnValueChanged@RefItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "size": 13,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [],
+      "kind": "class"
+    },
+    {
+      "address": "0043e900",
+      "symbol": "??_GRefItem@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CXTPPropertyGridItem@@UAE@XZ": "0x713630"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "0043e8f0",
+      "symbol": "??_ERefItem@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ERefItem@@UAEPAXI@Z": "0x43e900"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "0043df50",
+      "symbol": "??0ScriptItem@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 158,
+      "exact": true,
+      "verified_targets": {
+        "??0?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z": "0x43b860",
+        "??_7ScriptItem@@6BCCmdTarget@@@": "0x814dbc (RTTI .?AVScriptItem@@, offset 0x0)",
+        "??_7ScriptItem@@6BCXTPAccessible@@@": "0x814d5c (RTTI .?AVScriptItem@@, offset 0x20)",
+        "??_7ScriptItem@@6B@": "0x814d54 (RTTI .?AVScriptItem@@, offset 0x10c)",
+        "?GetFlags@CXTPPropertyGridItem@@QBEIXZ": "0x710e30",
+        "?SetFlags@CXTPPropertyGridItem@@QAEXI@Z": "0x710dd0",
+        "??_C@_08OPGBCPLK@?$CIScript?$CJ?$AA@": "0x814d44",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z",
+        "?SetValue@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "0x7119f0"
+      },
+      "local_eh": [
+        "__ehhandler$??0ScriptItem@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043dbf0",
+      "symbol": "?OnValueChanged@ScriptItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "size": 13,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "0043e900",
+      "symbol": "??_GScriptItem@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CXTPPropertyGridItem@@UAE@XZ": "0x713630"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "0043cfa0",
+      "symbol": "??0?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@QAE@PBV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 168,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+        "??0CXTPPropertyGridItem@@QAE@PBD0PAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "0x713510",
+        "??0Item@CPropGrid@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAV1@@Z": "0x43a070",
+        "??_7?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@6BCCmdTarget@@@": "0x8144e4 (RTTI .?AV?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@, offset 0x0)",
+        "??_7?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@6BCXTPAccessible@@@": "0x814484 (RTTI .?AV?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@, offset 0x20)",
+        "??_7?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@6B@": "0x814478 (RTTI .?AV?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@, offset 0x10c)",
+        "?SetReadOnly@CXTPPropertyGridItem@@QAEXH@Z": "0x7120e0"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@QAE@PBV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043c9b0",
+      "symbol": "??0?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@QAE@PBV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 168,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+        "??0CXTPPropertyGridItem@@QAE@PBD0PAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "0x713510",
+        "??0Item@CPropGrid@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAV1@@Z": "0x43a070",
+        "??_7?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@6BCCmdTarget@@@": "0x81437c (RTTI .?AV?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@, offset 0x0)",
+        "??_7?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@6BCXTPAccessible@@@": "0x81431c (RTTI .?AV?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@, offset 0x20)",
+        "??_7?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@6B@": "0x814310 (RTTI .?AV?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@, offset 0x10c)",
+        "?SetReadOnly@CXTPPropertyGridItem@@QAEXH@Z": "0x7120e0"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@QAE@PBV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "00438580",
+      "symbol": "?readValue@?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@UAE?AVTextureId@RBX@@XZ",
+      "size": 107,
+      "exact": true,
+      "verified_targets": {
+        "?GetValue@CXTPPropertyGridItem@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x437ed0",
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "?getNullName@Name@RBX@@SAABV12@XZ": "0x554270",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?readValue@?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@UAE?AVTextureId@RBX@@XZ"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "00438580",
+      "symbol": "?readValue@?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@UAE?AVSoundId@Soundscape@RBX@@XZ",
+      "size": 107,
+      "exact": true,
+      "verified_targets": {
+        "?GetValue@CXTPPropertyGridItem@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x437ed0",
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "?getNullName@Name@RBX@@SAABV12@XZ": "0x554270",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?readValue@?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@UAE?AVSoundId@Soundscape@RBX@@XZ"
+      ],
+      "kind": "folded"
+    },
+    {
+      "address": "00437d30",
+      "symbol": "?displayValue@?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@UAEXABVTextureId@RBX@@@Z",
+      "size": 40,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z"
+      },
+      "local_eh": [],
+      "kind": "class"
+    },
+    {
+      "address": "00437d30",
+      "symbol": "?displayValue@?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@UAEXABVSoundId@Soundscape@RBX@@@Z",
+      "size": 40,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "0043ca60",
+      "symbol": "?equalValues@?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@UAE_NABVTextureId@RBX@@0@Z",
+      "size": 21,
+      "exact": true,
+      "verified_targets": {
+        "??8RBX@@YA_NABVContentId@0@0@Z": "0x55bd70"
+      },
+      "local_eh": [],
+      "kind": "class"
+    },
+    {
+      "address": "0043ca60",
+      "symbol": "?equalValues@?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@UAE_NABVSoundId@Soundscape@RBX@@0@Z",
+      "size": 21,
+      "exact": true,
+      "verified_targets": {
+        "??8RBX@@YA_NABVContentId@0@0@Z": "0x55bd70"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "0043b4e0",
+      "symbol": "?emptyValue@?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@UAE_NXZ",
+      "size": 37,
+      "exact": true,
+      "verified_targets": {
+        "?GetValue@CXTPPropertyGridItem@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x437ed0",
+        "__imp_?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ": "mfc90.dll!?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [],
+      "kind": "elsewhere"
+    },
+    {
+      "address": "0043b4e0",
+      "symbol": "?emptyValue@?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@UAE_NXZ",
+      "size": 37,
+      "exact": true,
+      "verified_targets": {
+        "?GetValue@CXTPPropertyGridItem@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x437ed0",
+        "__imp_?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ": "mfc90.dll!?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [],
+      "kind": "elsewhere"
+    },
+    {
+      "address": "0043ea20",
+      "symbol": "??0?$ContentItem@VTextureId@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 165,
+      "exact": true,
+      "verified_targets": {
+        "??0?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@QAE@PBV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z": "0x43cfa0",
+        "??_7?$ContentItem@VTextureId@RBX@@@@6BCCmdTarget@@@": "0x815214 (RTTI .?AV?$ContentItem@VTextureId@RBX@@@@, offset 0x0)",
+        "??_7?$ContentItem@VTextureId@RBX@@@@6BCXTPAccessible@@@": "0x8151b4 (RTTI .?AV?$ContentItem@VTextureId@RBX@@@@, offset 0x20)",
+        "??_7?$ContentItem@VTextureId@RBX@@@@6B@": "0x8151ac (RTTI .?AV?$ContentItem@VTextureId@RBX@@@@, offset 0x10c)",
+        "?GetFlags@CXTPPropertyGridItem@@QBEIXZ": "0x710e30",
+        "?SetFlags@CXTPPropertyGridItem@@QAEXI@Z": "0x710dd0",
+        "??_C@_09NNDGMKGM@Browse?4?4?4?$AA@": "0x815034",
+        "??_C@_05MDNHABIA@Clear?$AA@": "0x81502c"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$ContentItem@VTextureId@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043e840",
+      "symbol": "??0?$ContentItem@VSoundId@Soundscape@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 165,
+      "exact": true,
+      "verified_targets": {
+        "??0?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@QAE@PBV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z": "0x43c9b0",
+        "??_7?$ContentItem@VSoundId@Soundscape@RBX@@@@6BCCmdTarget@@@": "0x8150ac (RTTI .?AV?$ContentItem@VSoundId@Soundscape@RBX@@@@, offset 0x0)",
+        "??_7?$ContentItem@VSoundId@Soundscape@RBX@@@@6BCXTPAccessible@@@": "0x81504c (RTTI .?AV?$ContentItem@VSoundId@Soundscape@RBX@@@@, offset 0x20)",
+        "??_7?$ContentItem@VSoundId@Soundscape@RBX@@@@6B@": "0x815044 (RTTI .?AV?$ContentItem@VSoundId@Soundscape@RBX@@@@, offset 0x10c)",
+        "?GetFlags@CXTPPropertyGridItem@@QBEIXZ": "0x710e30",
+        "?SetFlags@CXTPPropertyGridItem@@QAEXI@Z": "0x710dd0",
+        "??_C@_09NNDGMKGM@Browse?4?4?4?$AA@": "0x815034",
+        "??_C@_05MDNHABIA@Clear?$AA@": "0x81502c"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$ContentItem@VSoundId@Soundscape@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043e960",
+      "symbol": "?OnValueChanged@?$ContentItem@VTextureId@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "size": 183,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "??0TextureId@RBX@@QAE@PBD@Z": "0x4377c0",
+        "?applyValue@?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@QAEXABVTextureId@RBX@@@Z": "0x43e4c0",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "??0TextureId@RBX@@QAE@XZ": "0x43d050",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?OnValueChanged@?$ContentItem@VTextureId@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043e960",
+      "symbol": "?OnValueChanged@?$ContentItem@VSoundId@Soundscape@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "size": 183,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "??0SoundId@Soundscape@RBX@@QAE@PBD@Z": "0x4377c0",
+        "?applyValue@?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@QAEXABVSoundId@Soundscape@RBX@@@Z": "0x43e4c0",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "??0SoundId@Soundscape@RBX@@QAE@XZ": "0x43d050",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?OnValueChanged@?$ContentItem@VSoundId@Soundscape@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z"
+      ],
+      "kind": "folded"
+    },
+    {
+      "address": "0043e900",
+      "symbol": "??_G?$ContentItem@VTextureId@RBX@@@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CXTPPropertyGridItem@@UAE@XZ": "0x713630"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "0043e900",
+      "symbol": "??_G?$ContentItem@VSoundId@Soundscape@RBX@@@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CXTPPropertyGridItem@@UAE@XZ": "0x713630"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "00440db0",
+      "symbol": "??0TextureItem@@QAE@PBV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 122,
+      "exact": true,
+      "verified_targets": {
+        "??0?$ContentItem@VTextureId@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z": "0x43ea20",
+        "??_C@_09ECCACKBL@?$CITexture?$CJ?$AA@": "0x815620",
+        "??_7TextureItem@@6BCCmdTarget@@@": "0x815524 (RTTI .?AVTextureItem@@, offset 0x0)",
+        "??_7TextureItem@@6BCXTPAccessible@@@": "0x8154c4 (RTTI .?AVTextureItem@@, offset 0x20)",
+        "??_7TextureItem@@6B@": "0x8154bc (RTTI .?AVTextureItem@@, offset 0x10c)",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z",
+        "?SetValue@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "0x7119f0"
+      },
+      "local_eh": [
+        "__ehhandler$??0TextureItem@@QAE@PBV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043b860",
+      "symbol": "??0?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 168,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+        "??0CXTPPropertyGridItem@@QAE@PBD0PAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "0x713510",
+        "??0Item@CPropGrid@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAV1@@Z": "0x43a070",
+        "??_7?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@6BCCmdTarget@@@": "0x813f34 (RTTI .?AV?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@, offset 0x0)",
+        "??_7?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@6BCXTPAccessible@@@": "0x813ed4 (RTTI .?AV?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@, offset 0x20)",
+        "??_7?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@6B@": "0x813ecc (RTTI .?AV?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@, offset 0x10c)",
+        "?SetReadOnly@CXTPPropertyGridItem@@QAEXH@Z": "0x7120e0"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z"
+      ],
+      "kind": "elsewhere"
+    },
+    {
+      "address": "0043e900",
+      "symbol": "??_GTextureItem@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CXTPPropertyGridItem@@UAE@XZ": "0x713630"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "00440d30",
+      "symbol": "??0SoundItem@@QAE@PBV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 122,
+      "exact": true,
+      "verified_targets": {
+        "??0?$ContentItem@VSoundId@Soundscape@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z": "0x43e840",
+        "??_C@_07LKICAEEI@?$CISound?$CJ?$AA@": "0x8154b0",
+        "??_7SoundItem@@6BCCmdTarget@@@": "0x8153b4 (RTTI .?AVSoundItem@@, offset 0x0)",
+        "??_7SoundItem@@6BCXTPAccessible@@@": "0x815354 (RTTI .?AVSoundItem@@, offset 0x20)",
+        "??_7SoundItem@@6B@": "0x81534c (RTTI .?AVSoundItem@@, offset 0x10c)",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z",
+        "?SetValue@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "0x7119f0"
+      },
+      "local_eh": [
+        "__ehhandler$??0SoundItem@@QAE@PBV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
+      ],
+      "kind": "class"
+    },
+    {
+      "address": "0043e900",
+      "symbol": "??_GSoundItem@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CXTPPropertyGridItem@@UAE@XZ": "0x713630"
+      },
+      "local_eh": [],
+      "kind": "folded"
+    },
+    {
+      "address": "0043a320",
+      "symbol": "?find@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQBVClassDescriptor@Reflection@RBX@@@Z",
+      "size": 139,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo"
+      },
+      "local_eh": [],
+      "kind": "support"
+    },
+    {
+      "address": "0043d660",
+      "symbol": "??_G?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CXTPPropertyGridItemColor@@UAE@XZ": "0x713760"
+      },
+      "local_eh": [],
+      "kind": "folded",
+      "found_by": "??_7?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@6BCCmdTarget@@@ slot 1 (vector deleting destructor ??_E?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@UAEPAXI@Z folds with it)"
+    },
+    {
+      "address": "0043e900",
+      "symbol": "??_G?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CXTPPropertyGridItem@@UAE@XZ": "0x713630"
+      },
+      "local_eh": [],
+      "kind": "support",
+      "found_by": "??_7?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@6BCCmdTarget@@@ slot 1 (vector deleting destructor ??_E?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@UAEPAXI@Z folds with it)"
+    },
+    {
+      "address": "0043b910",
+      "symbol": "?equalValues@?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@UAE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+      "size": 22,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "msvcp90.dll!??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z"
+      },
+      "local_eh": [],
+      "kind": "support",
+      "found_by": "??_7?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@6BCCmdTarget@@@ slot 59"
+    },
+    {
+      "address": "0043b4e0",
+      "symbol": "?emptyValue@?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@UAE_NXZ",
+      "size": 37,
+      "exact": true,
+      "verified_targets": {
+        "?GetValue@CXTPPropertyGridItem@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x437ed0",
+        "__imp_?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ": "mfc90.dll!?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [],
+      "kind": "elsewhere",
+      "found_by": "??_7?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@6BCCmdTarget@@@ slot 61"
+    },
+    {
+      "address": "0043e900",
+      "symbol": "??_G?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CXTPPropertyGridItem@@UAE@XZ": "0x713630"
+      },
+      "local_eh": [],
+      "kind": "folded",
+      "found_by": "??_7?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@6BCCmdTarget@@@ slot 1 (vector deleting destructor ??_E?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAEPAXI@Z folds with it)"
+    },
+    {
+      "address": "0043c640",
+      "symbol": "??_G?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CXTPPropertyGridItemEnum@@UAE@XZ": "0x7178b0"
+      },
+      "local_eh": [],
+      "kind": "folded",
+      "found_by": "??_7?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@6BCCmdTarget@@@ slot 1 (vector deleting destructor ??_E?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@UAEPAXI@Z folds with it)"
+    },
+    {
+      "address": "0043e900",
+      "symbol": "??_G?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CXTPPropertyGridItem@@UAE@XZ": "0x713630"
+      },
+      "local_eh": [],
+      "kind": "folded",
+      "found_by": "??_7?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@6BCCmdTarget@@@ slot 1 (vector deleting destructor ??_E?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@UAEPAXI@Z folds with it)"
+    },
+    {
+      "address": "0043e900",
+      "symbol": "??_G?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CXTPPropertyGridItem@@UAE@XZ": "0x713630"
+      },
+      "local_eh": [],
+      "kind": "folded",
+      "found_by": "??_7?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@6BCCmdTarget@@@ slot 1 (vector deleting destructor ??_E?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@UAEPAXI@Z folds with it)"
+    },
+    {
+      "address": "0043d5a0",
+      "symbol": "??_E?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@UAEPAXI@Z": "0x43d660"
+      },
+      "local_eh": [],
+      "kind": "folded",
+      "found_by": "??_7?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@6BCXTPAccessible@@@ slot 0"
+    },
+    {
+      "address": "0043e8f0",
+      "symbol": "??_E?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@UAEPAXI@Z": "0x43e900"
+      },
+      "local_eh": [],
+      "kind": "support",
+      "found_by": "??_7?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@6BCXTPAccessible@@@ slot 0"
+    },
+    {
+      "address": "0043e8f0",
+      "symbol": "??_E?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAEPAXI@Z": "0x43e900"
+      },
+      "local_eh": [],
+      "kind": "folded",
+      "found_by": "??_7?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@6BCXTPAccessible@@@ slot 0"
+    },
+    {
+      "address": "0043c4f0",
+      "symbol": "??_E?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@UAEPAXI@Z": "0x43c640"
+      },
+      "local_eh": [],
+      "kind": "folded",
+      "found_by": "??_7?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@6BCXTPAccessible@@@ slot 0"
+    },
+    {
+      "address": "0043e8f0",
+      "symbol": "??_E?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@UAEPAXI@Z": "0x43e900"
+      },
+      "local_eh": [],
+      "kind": "folded",
+      "found_by": "??_7?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@6BCXTPAccessible@@@ slot 0"
+    },
+    {
+      "address": "0043e8f0",
+      "symbol": "??_E?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@UAEPAXI@Z": "0x43e900"
+      },
+      "local_eh": [],
+      "kind": "folded",
+      "found_by": "??_7?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@6BCXTPAccessible@@@ slot 0"
+    },
+    {
+      "address": "0043e8f0",
+      "symbol": "??_EScriptItem@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EScriptItem@@UAEPAXI@Z": "0x43e900"
+      },
+      "local_eh": [],
+      "kind": "folded",
+      "found_by": "??_7ScriptItem@@6BCXTPAccessible@@@ slot 0"
+    },
+    {
+      "address": "0043e8f0",
+      "symbol": "??_E?$ContentItem@VSoundId@Soundscape@RBX@@@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$ContentItem@VSoundId@Soundscape@RBX@@@@UAEPAXI@Z": "0x43e900"
+      },
+      "local_eh": [],
+      "kind": "folded",
+      "found_by": "??_7?$ContentItem@VSoundId@Soundscape@RBX@@@@6BCXTPAccessible@@@ slot 0"
+    },
+    {
+      "address": "0043e8f0",
+      "symbol": "??_E?$ContentItem@VTextureId@RBX@@@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$ContentItem@VTextureId@RBX@@@@UAEPAXI@Z": "0x43e900"
+      },
+      "local_eh": [],
+      "kind": "folded",
+      "found_by": "??_7?$ContentItem@VTextureId@RBX@@@@6BCXTPAccessible@@@ slot 0"
+    },
+    {
+      "address": "0043e8f0",
+      "symbol": "??_ESoundItem@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ESoundItem@@UAEPAXI@Z": "0x43e900"
+      },
+      "local_eh": [],
+      "kind": "folded",
+      "found_by": "??_7SoundItem@@6BCXTPAccessible@@@ slot 0"
+    },
+    {
+      "address": "0043e8f0",
+      "symbol": "??_ETextureItem@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ETextureItem@@UAEPAXI@Z": "0x43e900"
+      },
+      "local_eh": [],
+      "kind": "folded",
+      "found_by": "??_7TextureItem@@6BCXTPAccessible@@@ slot 0"
+    }
+  ],
+  "nonexact": [
+    {
+      "address": "0043e3a0",
+      "symbol": "??0EnumItem@@QAE@PBVEnumPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 282,
+      "target_size": 281,
+      "exact": false,
+      "reason": "one byte longer: same instructions, different register allocation for the cached _invalid_parameter_noinfo pointer and the vector end iterator"
+    },
+    {
+      "address": "0043dff0",
+      "symbol": "?update@ScriptItem@@UAEXPAVSelectionGroup@RBX@@@Z",
+      "size": 296,
+      "target_size": 329,
+      "exact": false,
+      "reason": "original is 329 bytes with a hoisted SelectionGroup* validity check; loop/find shape not yet reproduced"
+    },
+    {
+      "address": "0043dc00",
+      "symbol": "?update@RefItem@@UAEXPAVSelectionGroup@RBX@@@Z",
+      "size": 784,
+      "target_size": 835,
+      "exact": false,
+      "reason": "original is 835 bytes; same algorithm (first referent name, SetValue(\"\") on a mismatch, SetHidden(!found)) but different checked-iterator code"
+    }
+  ],
+  "pending_build_only": [
+    {
+      "address": "00441560",
+      "symbol": "?OnValueChanged@?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "size": 111,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@ABV01@@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@ABV01@@Z",
+        "?OnValueChanged@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "0x711ac0",
+        "?applyValue@?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@QAEXABVBrickColor@RBX@@@Z": "0x43f890",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?OnValueChanged@?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z"
+      ],
+      "pending_build_only": true,
+      "proposal": "PropertyGridItems.h XItem::OnValueChanged: applyValue(readValue())"
+    },
+    {
+      "address": "00441660",
+      "symbol": "?OnValueChanged@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "size": 113,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@ABV01@@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@ABV01@@Z",
+        "?OnValueChanged@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "0x711ac0",
+        "?applyValue@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@QAEXABVVector3@G3D@@@Z": "0x43ff70",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?OnValueChanged@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z"
+      ],
+      "pending_build_only": true,
+      "proposal": "PropertyGridItems.h XItem::OnValueChanged: applyValue(readValue())"
+    },
+    {
+      "address": "004416e0",
+      "symbol": "?OnValueChanged@?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "size": 133,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@ABV01@@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@ABV01@@Z",
+        "?OnValueChanged@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "0x711ac0",
+        "?applyValue@?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@QAEXABVTextureId@RBX@@@Z": "0x43e4c0",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?OnValueChanged@?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z"
+      ],
+      "pending_build_only": true,
+      "proposal": "PropertyGridItems.h XItem::OnValueChanged: applyValue(readValue())"
+    },
+    {
+      "address": "004416e0",
+      "symbol": "?OnValueChanged@?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "size": 133,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@ABV01@@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@ABV01@@Z",
+        "?OnValueChanged@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "0x711ac0",
+        "?applyValue@?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@QAEXABVSoundId@Soundscape@RBX@@@Z": "0x43e4c0",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?OnValueChanged@?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z"
+      ],
+      "pending_build_only": true,
+      "proposal": "PropertyGridItems.h XItem::OnValueChanged: applyValue(readValue())"
+    }
+  ],
+  "pending_proposal_safety": [
+    {
+      "address": "004413e0",
+      "symbol": "?OnValueChanged@?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "exact_with_proposal": true
+    },
+    {
+      "address": "00441460",
+      "symbol": "?OnValueChanged@?$XItem@HVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@H@Reflection@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "exact_with_proposal": true
+    }
+  ],
+  "vtables": {
+    "00813dc4": {
+      "symbol": "??_7?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@6BCCmdTarget@@@",
+      "rtti": ".?AV?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@",
+      "subobject": 0,
+      "slots": 65,
+      "proof": {
+        "0": "inherited CPropertyGridItemBrickColor: 00813644 slot 0",
+        "1": "own exact row ??_G?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@UAEPAXI@Z (vector deleting destructor folded)",
+        "2": "inherited CPropertyGridItemBrickColor: 00813644 slot 2",
+        "3": "inherited CPropertyGridItemBrickColor: 00813644 slot 3",
+        "4": "inherited CPropertyGridItemBrickColor: 00813644 slot 4",
+        "5": "inherited CPropertyGridItemBrickColor: 00813644 slot 5",
+        "6": "inherited CPropertyGridItemBrickColor: 00813644 slot 6",
+        "7": "inherited CPropertyGridItemBrickColor: 00813644 slot 7",
+        "8": "inherited CPropertyGridItemBrickColor: 00813644 slot 8",
+        "9": "inherited CPropertyGridItemBrickColor: 00813644 slot 9",
+        "10": "inherited CPropertyGridItemBrickColor: 00813644 slot 10",
+        "11": "inherited CPropertyGridItemBrickColor: 00813644 slot 11",
+        "12": "inherited CPropertyGridItemBrickColor: 00813644 slot 12",
+        "13": "inherited CPropertyGridItemBrickColor: 00813644 slot 13",
+        "14": "inherited CPropertyGridItemBrickColor: 00813644 slot 14",
+        "15": "inherited CPropertyGridItemBrickColor: 00813644 slot 15",
+        "16": "inherited CPropertyGridItemBrickColor: 00813644 slot 16",
+        "17": "inherited CPropertyGridItemBrickColor: 00813644 slot 17",
+        "18": "inherited CPropertyGridItemBrickColor: 00813644 slot 18",
+        "19": "inherited CPropertyGridItemBrickColor: 00813644 slot 19",
+        "20": "inherited CPropertyGridItemBrickColor: 00813644 slot 20",
+        "21": "inherited CPropertyGridItemBrickColor: 00813644 slot 21",
+        "22": "inherited CPropertyGridItemBrickColor: 00813644 slot 22",
+        "23": "inherited CPropertyGridItemBrickColor: 00813644 slot 23",
+        "24": "inherited CPropertyGridItemBrickColor: 00813644 slot 24",
+        "25": "pending-build-only body; original 00441560, one address per symbol",
+        "26": "inherited CPropertyGridItemBrickColor: 00813644 slot 26",
+        "27": "inherited CPropertyGridItemBrickColor: 00813644 slot 27",
+        "28": "inherited CPropertyGridItemBrickColor: 00813644 slot 28",
+        "29": "inherited CPropertyGridItemBrickColor: 00813644 slot 29",
+        "30": "inherited CPropertyGridItemBrickColor: 00813644 slot 30",
+        "31": "inherited CPropertyGridItemBrickColor: 00813644 slot 31",
+        "32": "inherited CPropertyGridItemBrickColor: 00813644 slot 32",
+        "33": "inherited CPropertyGridItemBrickColor: 00813644 slot 33",
+        "34": "inherited CPropertyGridItemBrickColor: 00813644 slot 34",
+        "35": "inherited CPropertyGridItemBrickColor: 00813644 slot 35",
+        "36": "inherited CPropertyGridItemBrickColor: 00813644 slot 36",
+        "37": "inherited CPropertyGridItemBrickColor: 00813644 slot 37",
+        "38": "inherited CPropertyGridItemBrickColor: 00813644 slot 38",
+        "39": "inherited CPropertyGridItemBrickColor: 00813644 slot 39",
+        "40": "inherited CPropertyGridItemBrickColor: 00813644 slot 40",
+        "41": "inherited CPropertyGridItemBrickColor: 00813644 slot 41",
+        "42": "inherited CPropertyGridItemBrickColor: 00813644 slot 42",
+        "43": "inherited CPropertyGridItemBrickColor: 00813644 slot 43",
+        "44": "inherited CPropertyGridItemBrickColor: 00813644 slot 44",
+        "45": "inherited CPropertyGridItemBrickColor: 00813644 slot 45",
+        "46": "inherited CPropertyGridItemBrickColor: 00813644 slot 46",
+        "47": "inherited CPropertyGridItemBrickColor: 00813644 slot 47",
+        "48": "inherited CPropertyGridItemBrickColor: 00813644 slot 48",
+        "49": "inherited CPropertyGridItemBrickColor: 00813644 slot 49",
+        "50": "inherited CPropertyGridItemBrickColor: 00813644 slot 50",
+        "51": "inherited CPropertyGridItemBrickColor: 00813644 slot 51",
+        "52": "inherited CPropertyGridItemBrickColor: 00813644 slot 52",
+        "53": "inherited CPropertyGridItemBrickColor: 00813644 slot 53",
+        "54": "inherited CPropertyGridItemBrickColor: 00813644 slot 54",
+        "55": "inherited CPropertyGridItemBrickColor: 00813644 slot 55",
+        "56": "inherited CPropertyGridItemBrickColor: 00813644 slot 56",
+        "57": "inherited CPropertyGridItemBrickColor: 00813644 slot 57",
+        "58": "inherited CPropertyGridItemBrickColor: 00813644 slot 58",
+        "59": "inherited CPropertyGridItemBrickColor: 00813644 slot 59",
+        "60": "own exact row",
+        "61": "own exact row",
+        "62": "own exact row",
+        "63": "own exact row",
+        "64": "own exact row"
+      }
+    },
+    "00813f34": {
+      "symbol": "??_7?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@6BCCmdTarget@@@",
+      "rtti": ".?AV?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@",
+      "subobject": 0,
+      "slots": 62,
+      "proof": {
+        "0": "inherited CXTPPropertyGridItem: 0085d5e4 slot 0",
+        "1": "own exact row ??_G?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@UAEPAXI@Z (vector deleting destructor folded)",
+        "2": "inherited CXTPPropertyGridItem: 0085d5e4 slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d5e4 slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d5e4 slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d5e4 slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d5e4 slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d5e4 slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d5e4 slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d5e4 slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d5e4 slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d5e4 slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d5e4 slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d5e4 slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d5e4 slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d5e4 slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d5e4 slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d5e4 slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d5e4 slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d5e4 slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d5e4 slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d5e4 slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d5e4 slot 22",
+        "23": "inherited CXTPPropertyGridItem: 0085d5e4 slot 23",
+        "24": "inherited CXTPPropertyGridItem: 0085d5e4 slot 24",
+        "25": "not proven here (template body elsewhere); original 004415d0, one address per symbol",
+        "26": "inherited CXTPPropertyGridItem: 0085d5e4 slot 26",
+        "27": "inherited CXTPPropertyGridItem: 0085d5e4 slot 27",
+        "28": "inherited CXTPPropertyGridItem: 0085d5e4 slot 28",
+        "29": "inherited CXTPPropertyGridItem: 0085d5e4 slot 29",
+        "30": "inherited CXTPPropertyGridItem: 0085d5e4 slot 30",
+        "31": "inherited CXTPPropertyGridItem: 0085d5e4 slot 31",
+        "32": "inherited CXTPPropertyGridItem: 0085d5e4 slot 32",
+        "33": "inherited CXTPPropertyGridItem: 0085d5e4 slot 33",
+        "34": "inherited CXTPPropertyGridItem: 0085d5e4 slot 34",
+        "35": "inherited CXTPPropertyGridItem: 0085d5e4 slot 35",
+        "36": "inherited CXTPPropertyGridItem: 0085d5e4 slot 36",
+        "37": "inherited CXTPPropertyGridItem: 0085d5e4 slot 37",
+        "38": "inherited CXTPPropertyGridItem: 0085d5e4 slot 38",
+        "39": "inherited CXTPPropertyGridItem: 0085d5e4 slot 39",
+        "40": "inherited CXTPPropertyGridItem: 0085d5e4 slot 40",
+        "41": "inherited CXTPPropertyGridItem: 0085d5e4 slot 41",
+        "42": "inherited CXTPPropertyGridItem: 0085d5e4 slot 42",
+        "43": "inherited CXTPPropertyGridItem: 0085d5e4 slot 43",
+        "44": "inherited CXTPPropertyGridItem: 0085d5e4 slot 44",
+        "45": "inherited CXTPPropertyGridItem: 0085d5e4 slot 45",
+        "46": "inherited CXTPPropertyGridItem: 0085d5e4 slot 46",
+        "47": "inherited CXTPPropertyGridItem: 0085d5e4 slot 47",
+        "48": "inherited CXTPPropertyGridItem: 0085d5e4 slot 48",
+        "49": "inherited CXTPPropertyGridItem: 0085d5e4 slot 49",
+        "50": "inherited CXTPPropertyGridItem: 0085d5e4 slot 50",
+        "51": "inherited CXTPPropertyGridItem: 0085d5e4 slot 51",
+        "52": "inherited CXTPPropertyGridItem: 0085d5e4 slot 52",
+        "53": "inherited CXTPPropertyGridItem: 0085d5e4 slot 53",
+        "54": "inherited CXTPPropertyGridItem: 0085d5e4 slot 54",
+        "55": "inherited CXTPPropertyGridItem: 0085d5e4 slot 55",
+        "56": "inherited CXTPPropertyGridItem: 0085d5e4 slot 56",
+        "57": "not proven here (template body elsewhere); original 00438450, one address per symbol",
+        "58": "not proven here (template body elsewhere); original 00437d30, one address per symbol",
+        "59": "own exact row (XItem template instance reached by this vtable)",
+        "60": "not proven here (template body elsewhere); original 0043b9d0, one address per symbol",
+        "61": "own exact row (XItem template instance reached by this vtable)"
+      }
+    },
+    "0081409c": {
+      "symbol": "??_7?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@6BCCmdTarget@@@",
+      "rtti": ".?AV?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@",
+      "subobject": 0,
+      "slots": 62,
+      "proof": {
+        "0": "inherited CXTPPropertyGridItem: 0085d5e4 slot 0",
+        "1": "own exact row ??_G?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAEPAXI@Z (vector deleting destructor folded)",
+        "2": "inherited CXTPPropertyGridItem: 0085d5e4 slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d5e4 slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d5e4 slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d5e4 slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d5e4 slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d5e4 slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d5e4 slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d5e4 slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d5e4 slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d5e4 slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d5e4 slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d5e4 slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d5e4 slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d5e4 slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d5e4 slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d5e4 slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d5e4 slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d5e4 slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d5e4 slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d5e4 slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d5e4 slot 22",
+        "23": "inherited CXTPPropertyGridItem: 0085d5e4 slot 23",
+        "24": "inherited CXTPPropertyGridItem: 0085d5e4 slot 24",
+        "25": "pending-build-only body; original 00441660, one address per symbol",
+        "26": "inherited CXTPPropertyGridItem: 0085d5e4 slot 26",
+        "27": "inherited CXTPPropertyGridItem: 0085d5e4 slot 27",
+        "28": "inherited CXTPPropertyGridItem: 0085d5e4 slot 28",
+        "29": "inherited CXTPPropertyGridItem: 0085d5e4 slot 29",
+        "30": "inherited CXTPPropertyGridItem: 0085d5e4 slot 30",
+        "31": "inherited CXTPPropertyGridItem: 0085d5e4 slot 31",
+        "32": "inherited CXTPPropertyGridItem: 0085d5e4 slot 32",
+        "33": "inherited CXTPPropertyGridItem: 0085d5e4 slot 33",
+        "34": "inherited CXTPPropertyGridItem: 0085d5e4 slot 34",
+        "35": "inherited CXTPPropertyGridItem: 0085d5e4 slot 35",
+        "36": "inherited CXTPPropertyGridItem: 0085d5e4 slot 36",
+        "37": "inherited CXTPPropertyGridItem: 0085d5e4 slot 37",
+        "38": "inherited CXTPPropertyGridItem: 0085d5e4 slot 38",
+        "39": "inherited CXTPPropertyGridItem: 0085d5e4 slot 39",
+        "40": "inherited CXTPPropertyGridItem: 0085d5e4 slot 40",
+        "41": "inherited CXTPPropertyGridItem: 0085d5e4 slot 41",
+        "42": "inherited CXTPPropertyGridItem: 0085d5e4 slot 42",
+        "43": "inherited CXTPPropertyGridItem: 0085d5e4 slot 43",
+        "44": "inherited CXTPPropertyGridItem: 0085d5e4 slot 44",
+        "45": "inherited CXTPPropertyGridItem: 0085d5e4 slot 45",
+        "46": "inherited CXTPPropertyGridItem: 0085d5e4 slot 46",
+        "47": "inherited CXTPPropertyGridItem: 0085d5e4 slot 47",
+        "48": "inherited CXTPPropertyGridItem: 0085d5e4 slot 48",
+        "49": "inherited CXTPPropertyGridItem: 0085d5e4 slot 49",
+        "50": "inherited CXTPPropertyGridItem: 0085d5e4 slot 50",
+        "51": "inherited CXTPPropertyGridItem: 0085d5e4 slot 51",
+        "52": "inherited CXTPPropertyGridItem: 0085d5e4 slot 52",
+        "53": "inherited CXTPPropertyGridItem: 0085d5e4 slot 53",
+        "54": "inherited CXTPPropertyGridItem: 0085d5e4 slot 54",
+        "55": "inherited CXTPPropertyGridItem: 0085d5e4 slot 55",
+        "56": "inherited CXTPPropertyGridItem: 0085d5e4 slot 56",
+        "57": "own exact row",
+        "58": "own exact row",
+        "59": "own exact row",
+        "60": "not proven here (template body elsewhere); original 0043a7d0, one address per symbol",
+        "61": "own exact row"
+      }
+    },
+    "00814204": {
+      "symbol": "??_7?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@6BCCmdTarget@@@",
+      "rtti": ".?AV?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@",
+      "subobject": 0,
+      "slots": 66,
+      "proof": {
+        "0": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 0",
+        "1": "own exact row ??_G?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@UAEPAXI@Z (vector deleting destructor folded)",
+        "2": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 2",
+        "3": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 3",
+        "4": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 4",
+        "5": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 5",
+        "6": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 6",
+        "7": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 7",
+        "8": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 8",
+        "9": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 9",
+        "10": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 10",
+        "11": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 11",
+        "12": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 12",
+        "13": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 13",
+        "14": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 14",
+        "15": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 15",
+        "16": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 16",
+        "17": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 17",
+        "18": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 18",
+        "19": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 19",
+        "20": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 20",
+        "21": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 21",
+        "22": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 22",
+        "23": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 23",
+        "24": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 24",
+        "25": "own exact row",
+        "26": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 26",
+        "27": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 27",
+        "28": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 28",
+        "29": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 29",
+        "30": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 30",
+        "31": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 31",
+        "32": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 32",
+        "33": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 33",
+        "34": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 34",
+        "35": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 35",
+        "36": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 36",
+        "37": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 37",
+        "38": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 38",
+        "39": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 39",
+        "40": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 40",
+        "41": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 41",
+        "42": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 42",
+        "43": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 43",
+        "44": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 44",
+        "45": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 45",
+        "46": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 46",
+        "47": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 47",
+        "48": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 48",
+        "49": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 49",
+        "50": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 50",
+        "51": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 51",
+        "52": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 52",
+        "53": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 53",
+        "54": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 54",
+        "55": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 55",
+        "56": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 56",
+        "57": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 57",
+        "58": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 58",
+        "59": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 59",
+        "60": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 60",
+        "61": "own exact row",
+        "62": "own exact row",
+        "63": "own exact row",
+        "64": "own exact row",
+        "65": "own exact row"
+      }
+    },
+    "0081437c": {
+      "symbol": "??_7?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@6BCCmdTarget@@@",
+      "rtti": ".?AV?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@",
+      "subobject": 0,
+      "slots": 62,
+      "proof": {
+        "0": "inherited CXTPPropertyGridItem: 0085d5e4 slot 0",
+        "1": "own exact row ??_G?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@UAEPAXI@Z (vector deleting destructor folded)",
+        "2": "inherited CXTPPropertyGridItem: 0085d5e4 slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d5e4 slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d5e4 slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d5e4 slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d5e4 slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d5e4 slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d5e4 slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d5e4 slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d5e4 slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d5e4 slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d5e4 slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d5e4 slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d5e4 slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d5e4 slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d5e4 slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d5e4 slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d5e4 slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d5e4 slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d5e4 slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d5e4 slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d5e4 slot 22",
+        "23": "inherited CXTPPropertyGridItem: 0085d5e4 slot 23",
+        "24": "inherited CXTPPropertyGridItem: 0085d5e4 slot 24",
+        "25": "pending-build-only body; original 004416e0, one address per symbol",
+        "26": "inherited CXTPPropertyGridItem: 0085d5e4 slot 26",
+        "27": "inherited CXTPPropertyGridItem: 0085d5e4 slot 27",
+        "28": "inherited CXTPPropertyGridItem: 0085d5e4 slot 28",
+        "29": "inherited CXTPPropertyGridItem: 0085d5e4 slot 29",
+        "30": "inherited CXTPPropertyGridItem: 0085d5e4 slot 30",
+        "31": "inherited CXTPPropertyGridItem: 0085d5e4 slot 31",
+        "32": "inherited CXTPPropertyGridItem: 0085d5e4 slot 32",
+        "33": "inherited CXTPPropertyGridItem: 0085d5e4 slot 33",
+        "34": "inherited CXTPPropertyGridItem: 0085d5e4 slot 34",
+        "35": "inherited CXTPPropertyGridItem: 0085d5e4 slot 35",
+        "36": "inherited CXTPPropertyGridItem: 0085d5e4 slot 36",
+        "37": "inherited CXTPPropertyGridItem: 0085d5e4 slot 37",
+        "38": "inherited CXTPPropertyGridItem: 0085d5e4 slot 38",
+        "39": "inherited CXTPPropertyGridItem: 0085d5e4 slot 39",
+        "40": "inherited CXTPPropertyGridItem: 0085d5e4 slot 40",
+        "41": "inherited CXTPPropertyGridItem: 0085d5e4 slot 41",
+        "42": "inherited CXTPPropertyGridItem: 0085d5e4 slot 42",
+        "43": "inherited CXTPPropertyGridItem: 0085d5e4 slot 43",
+        "44": "inherited CXTPPropertyGridItem: 0085d5e4 slot 44",
+        "45": "inherited CXTPPropertyGridItem: 0085d5e4 slot 45",
+        "46": "inherited CXTPPropertyGridItem: 0085d5e4 slot 46",
+        "47": "inherited CXTPPropertyGridItem: 0085d5e4 slot 47",
+        "48": "inherited CXTPPropertyGridItem: 0085d5e4 slot 48",
+        "49": "inherited CXTPPropertyGridItem: 0085d5e4 slot 49",
+        "50": "inherited CXTPPropertyGridItem: 0085d5e4 slot 50",
+        "51": "inherited CXTPPropertyGridItem: 0085d5e4 slot 51",
+        "52": "inherited CXTPPropertyGridItem: 0085d5e4 slot 52",
+        "53": "inherited CXTPPropertyGridItem: 0085d5e4 slot 53",
+        "54": "inherited CXTPPropertyGridItem: 0085d5e4 slot 54",
+        "55": "inherited CXTPPropertyGridItem: 0085d5e4 slot 55",
+        "56": "inherited CXTPPropertyGridItem: 0085d5e4 slot 56",
+        "57": "own exact row",
+        "58": "own exact row",
+        "59": "own exact row",
+        "60": "not proven here (template body elsewhere); original 0043a7d0, one address per symbol",
+        "61": "own exact row"
+      }
+    },
+    "008144e4": {
+      "symbol": "??_7?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@6BCCmdTarget@@@",
+      "rtti": ".?AV?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@",
+      "subobject": 0,
+      "slots": 62,
+      "proof": {
+        "0": "inherited CXTPPropertyGridItem: 0085d5e4 slot 0",
+        "1": "own exact row ??_G?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@UAEPAXI@Z (vector deleting destructor folded)",
+        "2": "inherited CXTPPropertyGridItem: 0085d5e4 slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d5e4 slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d5e4 slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d5e4 slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d5e4 slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d5e4 slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d5e4 slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d5e4 slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d5e4 slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d5e4 slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d5e4 slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d5e4 slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d5e4 slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d5e4 slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d5e4 slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d5e4 slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d5e4 slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d5e4 slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d5e4 slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d5e4 slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d5e4 slot 22",
+        "23": "inherited CXTPPropertyGridItem: 0085d5e4 slot 23",
+        "24": "inherited CXTPPropertyGridItem: 0085d5e4 slot 24",
+        "25": "pending-build-only body; original 004416e0, one address per symbol",
+        "26": "inherited CXTPPropertyGridItem: 0085d5e4 slot 26",
+        "27": "inherited CXTPPropertyGridItem: 0085d5e4 slot 27",
+        "28": "inherited CXTPPropertyGridItem: 0085d5e4 slot 28",
+        "29": "inherited CXTPPropertyGridItem: 0085d5e4 slot 29",
+        "30": "inherited CXTPPropertyGridItem: 0085d5e4 slot 30",
+        "31": "inherited CXTPPropertyGridItem: 0085d5e4 slot 31",
+        "32": "inherited CXTPPropertyGridItem: 0085d5e4 slot 32",
+        "33": "inherited CXTPPropertyGridItem: 0085d5e4 slot 33",
+        "34": "inherited CXTPPropertyGridItem: 0085d5e4 slot 34",
+        "35": "inherited CXTPPropertyGridItem: 0085d5e4 slot 35",
+        "36": "inherited CXTPPropertyGridItem: 0085d5e4 slot 36",
+        "37": "inherited CXTPPropertyGridItem: 0085d5e4 slot 37",
+        "38": "inherited CXTPPropertyGridItem: 0085d5e4 slot 38",
+        "39": "inherited CXTPPropertyGridItem: 0085d5e4 slot 39",
+        "40": "inherited CXTPPropertyGridItem: 0085d5e4 slot 40",
+        "41": "inherited CXTPPropertyGridItem: 0085d5e4 slot 41",
+        "42": "inherited CXTPPropertyGridItem: 0085d5e4 slot 42",
+        "43": "inherited CXTPPropertyGridItem: 0085d5e4 slot 43",
+        "44": "inherited CXTPPropertyGridItem: 0085d5e4 slot 44",
+        "45": "inherited CXTPPropertyGridItem: 0085d5e4 slot 45",
+        "46": "inherited CXTPPropertyGridItem: 0085d5e4 slot 46",
+        "47": "inherited CXTPPropertyGridItem: 0085d5e4 slot 47",
+        "48": "inherited CXTPPropertyGridItem: 0085d5e4 slot 48",
+        "49": "inherited CXTPPropertyGridItem: 0085d5e4 slot 49",
+        "50": "inherited CXTPPropertyGridItem: 0085d5e4 slot 50",
+        "51": "inherited CXTPPropertyGridItem: 0085d5e4 slot 51",
+        "52": "inherited CXTPPropertyGridItem: 0085d5e4 slot 52",
+        "53": "inherited CXTPPropertyGridItem: 0085d5e4 slot 53",
+        "54": "inherited CXTPPropertyGridItem: 0085d5e4 slot 54",
+        "55": "inherited CXTPPropertyGridItem: 0085d5e4 slot 55",
+        "56": "inherited CXTPPropertyGridItem: 0085d5e4 slot 56",
+        "57": "own exact row",
+        "58": "own exact row",
+        "59": "own exact row",
+        "60": "not proven here (template body elsewhere); original 0043a7d0, one address per symbol",
+        "61": "own exact row"
+      }
+    },
+    "0081480c": {
+      "symbol": "??_7XBrickColorItem@@6BCCmdTarget@@@",
+      "rtti": ".?AVXBrickColorItem@@",
+      "subobject": 0,
+      "slots": 65,
+      "proof": {
+        "0": "inherited CPropertyGridItemBrickColor: 00813644 slot 0",
+        "1": "own exact row",
+        "2": "inherited CPropertyGridItemBrickColor: 00813644 slot 2",
+        "3": "inherited CPropertyGridItemBrickColor: 00813644 slot 3",
+        "4": "inherited CPropertyGridItemBrickColor: 00813644 slot 4",
+        "5": "inherited CPropertyGridItemBrickColor: 00813644 slot 5",
+        "6": "inherited CPropertyGridItemBrickColor: 00813644 slot 6",
+        "7": "inherited CPropertyGridItemBrickColor: 00813644 slot 7",
+        "8": "inherited CPropertyGridItemBrickColor: 00813644 slot 8",
+        "9": "inherited CPropertyGridItemBrickColor: 00813644 slot 9",
+        "10": "inherited CPropertyGridItemBrickColor: 00813644 slot 10",
+        "11": "inherited CPropertyGridItemBrickColor: 00813644 slot 11",
+        "12": "inherited CPropertyGridItemBrickColor: 00813644 slot 12",
+        "13": "inherited CPropertyGridItemBrickColor: 00813644 slot 13",
+        "14": "inherited CPropertyGridItemBrickColor: 00813644 slot 14",
+        "15": "inherited CPropertyGridItemBrickColor: 00813644 slot 15",
+        "16": "inherited CPropertyGridItemBrickColor: 00813644 slot 16",
+        "17": "inherited CPropertyGridItemBrickColor: 00813644 slot 17",
+        "18": "inherited CPropertyGridItemBrickColor: 00813644 slot 18",
+        "19": "inherited CPropertyGridItemBrickColor: 00813644 slot 19",
+        "20": "inherited CPropertyGridItemBrickColor: 00813644 slot 20",
+        "21": "inherited CPropertyGridItemBrickColor: 00813644 slot 21",
+        "22": "inherited CPropertyGridItemBrickColor: 00813644 slot 22",
+        "23": "inherited CPropertyGridItemBrickColor: 00813644 slot 23",
+        "24": "inherited CPropertyGridItemBrickColor: 00813644 slot 24",
+        "25": "pending-build-only body; original 00441560, one address per symbol",
+        "26": "own exact row",
+        "27": "inherited CPropertyGridItemBrickColor: 00813644 slot 27",
+        "28": "inherited CPropertyGridItemBrickColor: 00813644 slot 28",
+        "29": "inherited CPropertyGridItemBrickColor: 00813644 slot 29",
+        "30": "inherited CPropertyGridItemBrickColor: 00813644 slot 30",
+        "31": "inherited CPropertyGridItemBrickColor: 00813644 slot 31",
+        "32": "inherited CPropertyGridItemBrickColor: 00813644 slot 32",
+        "33": "inherited CPropertyGridItemBrickColor: 00813644 slot 33",
+        "34": "inherited CPropertyGridItemBrickColor: 00813644 slot 34",
+        "35": "inherited CPropertyGridItemBrickColor: 00813644 slot 35",
+        "36": "inherited CPropertyGridItemBrickColor: 00813644 slot 36",
+        "37": "inherited CPropertyGridItemBrickColor: 00813644 slot 37",
+        "38": "inherited CPropertyGridItemBrickColor: 00813644 slot 38",
+        "39": "inherited CPropertyGridItemBrickColor: 00813644 slot 39",
+        "40": "inherited CPropertyGridItemBrickColor: 00813644 slot 40",
+        "41": "inherited CPropertyGridItemBrickColor: 00813644 slot 41",
+        "42": "inherited CPropertyGridItemBrickColor: 00813644 slot 42",
+        "43": "inherited CPropertyGridItemBrickColor: 00813644 slot 43",
+        "44": "inherited CPropertyGridItemBrickColor: 00813644 slot 44",
+        "45": "inherited CPropertyGridItemBrickColor: 00813644 slot 45",
+        "46": "inherited CPropertyGridItemBrickColor: 00813644 slot 46",
+        "47": "inherited CPropertyGridItemBrickColor: 00813644 slot 47",
+        "48": "inherited CPropertyGridItemBrickColor: 00813644 slot 48",
+        "49": "inherited CPropertyGridItemBrickColor: 00813644 slot 49",
+        "50": "inherited CPropertyGridItemBrickColor: 00813644 slot 50",
+        "51": "inherited CPropertyGridItemBrickColor: 00813644 slot 51",
+        "52": "inherited CPropertyGridItemBrickColor: 00813644 slot 52",
+        "53": "inherited CPropertyGridItemBrickColor: 00813644 slot 53",
+        "54": "inherited CPropertyGridItemBrickColor: 00813644 slot 54",
+        "55": "inherited CPropertyGridItemBrickColor: 00813644 slot 55",
+        "56": "inherited CPropertyGridItemBrickColor: 00813644 slot 56",
+        "57": "inherited CPropertyGridItemBrickColor: 00813644 slot 57",
+        "58": "inherited CPropertyGridItemBrickColor: 00813644 slot 58",
+        "59": "inherited CPropertyGridItemBrickColor: 00813644 slot 59",
+        "60": "own exact row",
+        "61": "own exact row",
+        "62": "own exact row",
+        "63": "own exact row",
+        "64": "own exact row"
+      }
+    },
+    "0081497c": {
+      "symbol": "??_7Vector3Item@@6BCCmdTarget@@@",
+      "rtti": ".?AVVector3Item@@",
+      "subobject": 0,
+      "slots": 62,
+      "proof": {
+        "0": "inherited CXTPPropertyGridItem: 0085d5e4 slot 0",
+        "1": "own exact row",
+        "2": "inherited CXTPPropertyGridItem: 0085d5e4 slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d5e4 slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d5e4 slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d5e4 slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d5e4 slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d5e4 slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d5e4 slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d5e4 slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d5e4 slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d5e4 slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d5e4 slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d5e4 slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d5e4 slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d5e4 slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d5e4 slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d5e4 slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d5e4 slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d5e4 slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d5e4 slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d5e4 slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d5e4 slot 22",
+        "23": "inherited CXTPPropertyGridItem: 0085d5e4 slot 23",
+        "24": "inherited CXTPPropertyGridItem: 0085d5e4 slot 24",
+        "25": "pending-build-only body; original 00441660, one address per symbol",
+        "26": "inherited CXTPPropertyGridItem: 0085d5e4 slot 26",
+        "27": "inherited CXTPPropertyGridItem: 0085d5e4 slot 27",
+        "28": "inherited CXTPPropertyGridItem: 0085d5e4 slot 28",
+        "29": "inherited CXTPPropertyGridItem: 0085d5e4 slot 29",
+        "30": "inherited CXTPPropertyGridItem: 0085d5e4 slot 30",
+        "31": "inherited CXTPPropertyGridItem: 0085d5e4 slot 31",
+        "32": "inherited CXTPPropertyGridItem: 0085d5e4 slot 32",
+        "33": "inherited CXTPPropertyGridItem: 0085d5e4 slot 33",
+        "34": "inherited CXTPPropertyGridItem: 0085d5e4 slot 34",
+        "35": "inherited CXTPPropertyGridItem: 0085d5e4 slot 35",
+        "36": "inherited CXTPPropertyGridItem: 0085d5e4 slot 36",
+        "37": "own exact row",
+        "38": "inherited CXTPPropertyGridItem: 0085d5e4 slot 38",
+        "39": "inherited CXTPPropertyGridItem: 0085d5e4 slot 39",
+        "40": "inherited CXTPPropertyGridItem: 0085d5e4 slot 40",
+        "41": "inherited CXTPPropertyGridItem: 0085d5e4 slot 41",
+        "42": "inherited CXTPPropertyGridItem: 0085d5e4 slot 42",
+        "43": "inherited CXTPPropertyGridItem: 0085d5e4 slot 43",
+        "44": "inherited CXTPPropertyGridItem: 0085d5e4 slot 44",
+        "45": "inherited CXTPPropertyGridItem: 0085d5e4 slot 45",
+        "46": "inherited CXTPPropertyGridItem: 0085d5e4 slot 46",
+        "47": "inherited CXTPPropertyGridItem: 0085d5e4 slot 47",
+        "48": "inherited CXTPPropertyGridItem: 0085d5e4 slot 48",
+        "49": "inherited CXTPPropertyGridItem: 0085d5e4 slot 49",
+        "50": "inherited CXTPPropertyGridItem: 0085d5e4 slot 50",
+        "51": "own exact row",
+        "52": "inherited CXTPPropertyGridItem: 0085d5e4 slot 52",
+        "53": "inherited CXTPPropertyGridItem: 0085d5e4 slot 53",
+        "54": "inherited CXTPPropertyGridItem: 0085d5e4 slot 54",
+        "55": "inherited CXTPPropertyGridItem: 0085d5e4 slot 55",
+        "56": "inherited CXTPPropertyGridItem: 0085d5e4 slot 56",
+        "57": "own exact row",
+        "58": "own exact row",
+        "59": "own exact row",
+        "60": "not proven here (template body elsewhere); original 0043a7d0, one address per symbol",
+        "61": "own exact row"
+      }
+    },
+    "00814ae4": {
+      "symbol": "??_7Vector3ComponentItem@@6BCCmdTarget@@@",
+      "rtti": ".?AVVector3ComponentItem@@",
+      "subobject": 0,
+      "slots": 62,
+      "proof": {
+        "0": "inherited CXTPPropertyGridItem: 0085d5e4 slot 0",
+        "1": "own exact row",
+        "2": "inherited CXTPPropertyGridItem: 0085d5e4 slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d5e4 slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d5e4 slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d5e4 slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d5e4 slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d5e4 slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d5e4 slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d5e4 slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d5e4 slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d5e4 slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d5e4 slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d5e4 slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d5e4 slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d5e4 slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d5e4 slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d5e4 slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d5e4 slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d5e4 slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d5e4 slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d5e4 slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d5e4 slot 22",
+        "23": "inherited CXTPPropertyGridItem: 0085d5e4 slot 23",
+        "24": "inherited CXTPPropertyGridItem: 0085d5e4 slot 24",
+        "25": "pending-build-only body; original 00441660, one address per symbol",
+        "26": "inherited CXTPPropertyGridItem: 0085d5e4 slot 26",
+        "27": "inherited CXTPPropertyGridItem: 0085d5e4 slot 27",
+        "28": "inherited CXTPPropertyGridItem: 0085d5e4 slot 28",
+        "29": "inherited CXTPPropertyGridItem: 0085d5e4 slot 29",
+        "30": "inherited CXTPPropertyGridItem: 0085d5e4 slot 30",
+        "31": "inherited CXTPPropertyGridItem: 0085d5e4 slot 31",
+        "32": "inherited CXTPPropertyGridItem: 0085d5e4 slot 32",
+        "33": "inherited CXTPPropertyGridItem: 0085d5e4 slot 33",
+        "34": "inherited CXTPPropertyGridItem: 0085d5e4 slot 34",
+        "35": "inherited CXTPPropertyGridItem: 0085d5e4 slot 35",
+        "36": "inherited CXTPPropertyGridItem: 0085d5e4 slot 36",
+        "37": "inherited CXTPPropertyGridItem: 0085d5e4 slot 37",
+        "38": "inherited CXTPPropertyGridItem: 0085d5e4 slot 38",
+        "39": "inherited CXTPPropertyGridItem: 0085d5e4 slot 39",
+        "40": "inherited CXTPPropertyGridItem: 0085d5e4 slot 40",
+        "41": "inherited CXTPPropertyGridItem: 0085d5e4 slot 41",
+        "42": "inherited CXTPPropertyGridItem: 0085d5e4 slot 42",
+        "43": "inherited CXTPPropertyGridItem: 0085d5e4 slot 43",
+        "44": "inherited CXTPPropertyGridItem: 0085d5e4 slot 44",
+        "45": "inherited CXTPPropertyGridItem: 0085d5e4 slot 45",
+        "46": "inherited CXTPPropertyGridItem: 0085d5e4 slot 46",
+        "47": "inherited CXTPPropertyGridItem: 0085d5e4 slot 47",
+        "48": "inherited CXTPPropertyGridItem: 0085d5e4 slot 48",
+        "49": "inherited CXTPPropertyGridItem: 0085d5e4 slot 49",
+        "50": "inherited CXTPPropertyGridItem: 0085d5e4 slot 50",
+        "51": "inherited CXTPPropertyGridItem: 0085d5e4 slot 51",
+        "52": "inherited CXTPPropertyGridItem: 0085d5e4 slot 52",
+        "53": "inherited CXTPPropertyGridItem: 0085d5e4 slot 53",
+        "54": "inherited CXTPPropertyGridItem: 0085d5e4 slot 54",
+        "55": "inherited CXTPPropertyGridItem: 0085d5e4 slot 55",
+        "56": "inherited CXTPPropertyGridItem: 0085d5e4 slot 56",
+        "57": "own exact row",
+        "58": "own exact row",
+        "59": "own exact row",
+        "60": "own exact row",
+        "61": "own exact row"
+      }
+    },
+    "00814c4c": {
+      "symbol": "??_7RefItem@@6BCCmdTarget@@@",
+      "rtti": ".?AVRefItem@@",
+      "subobject": 0,
+      "slots": 62,
+      "proof": {
+        "0": "inherited CXTPPropertyGridItem: 0085d5e4 slot 0",
+        "1": "own exact row",
+        "2": "inherited CXTPPropertyGridItem: 0085d5e4 slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d5e4 slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d5e4 slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d5e4 slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d5e4 slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d5e4 slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d5e4 slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d5e4 slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d5e4 slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d5e4 slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d5e4 slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d5e4 slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d5e4 slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d5e4 slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d5e4 slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d5e4 slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d5e4 slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d5e4 slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d5e4 slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d5e4 slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d5e4 slot 22",
+        "23": "inherited CXTPPropertyGridItem: 0085d5e4 slot 23",
+        "24": "inherited CXTPPropertyGridItem: 0085d5e4 slot 24",
+        "25": "own exact row",
+        "26": "inherited CXTPPropertyGridItem: 0085d5e4 slot 26",
+        "27": "inherited CXTPPropertyGridItem: 0085d5e4 slot 27",
+        "28": "inherited CXTPPropertyGridItem: 0085d5e4 slot 28",
+        "29": "inherited CXTPPropertyGridItem: 0085d5e4 slot 29",
+        "30": "inherited CXTPPropertyGridItem: 0085d5e4 slot 30",
+        "31": "inherited CXTPPropertyGridItem: 0085d5e4 slot 31",
+        "32": "inherited CXTPPropertyGridItem: 0085d5e4 slot 32",
+        "33": "inherited CXTPPropertyGridItem: 0085d5e4 slot 33",
+        "34": "inherited CXTPPropertyGridItem: 0085d5e4 slot 34",
+        "35": "inherited CXTPPropertyGridItem: 0085d5e4 slot 35",
+        "36": "inherited CXTPPropertyGridItem: 0085d5e4 slot 36",
+        "37": "inherited CXTPPropertyGridItem: 0085d5e4 slot 37",
+        "38": "inherited CXTPPropertyGridItem: 0085d5e4 slot 38",
+        "39": "inherited CXTPPropertyGridItem: 0085d5e4 slot 39",
+        "40": "inherited CXTPPropertyGridItem: 0085d5e4 slot 40",
+        "41": "inherited CXTPPropertyGridItem: 0085d5e4 slot 41",
+        "42": "inherited CXTPPropertyGridItem: 0085d5e4 slot 42",
+        "43": "inherited CXTPPropertyGridItem: 0085d5e4 slot 43",
+        "44": "inherited CXTPPropertyGridItem: 0085d5e4 slot 44",
+        "45": "inherited CXTPPropertyGridItem: 0085d5e4 slot 45",
+        "46": "inherited CXTPPropertyGridItem: 0085d5e4 slot 46",
+        "47": "inherited CXTPPropertyGridItem: 0085d5e4 slot 47",
+        "48": "inherited CXTPPropertyGridItem: 0085d5e4 slot 48",
+        "49": "inherited CXTPPropertyGridItem: 0085d5e4 slot 49",
+        "50": "inherited CXTPPropertyGridItem: 0085d5e4 slot 50",
+        "51": "inherited CXTPPropertyGridItem: 0085d5e4 slot 51",
+        "52": "inherited CXTPPropertyGridItem: 0085d5e4 slot 52",
+        "53": "inherited CXTPPropertyGridItem: 0085d5e4 slot 53",
+        "54": "inherited CXTPPropertyGridItem: 0085d5e4 slot 54",
+        "55": "inherited CXTPPropertyGridItem: 0085d5e4 slot 55",
+        "56": "inherited CXTPPropertyGridItem: 0085d5e4 slot 56",
+        "57": "not proven here (template body elsewhere); original 00438450, one address per symbol",
+        "58": "not proven here (template body elsewhere); original 00437d30, one address per symbol",
+        "59": "own exact row",
+        "60": "not proven here (template body elsewhere); original 0043b9d0, one address per symbol",
+        "61": "own exact row"
+      }
+    },
+    "00814dbc": {
+      "symbol": "??_7ScriptItem@@6BCCmdTarget@@@",
+      "rtti": ".?AVScriptItem@@",
+      "subobject": 0,
+      "slots": 62,
+      "proof": {
+        "0": "inherited CXTPPropertyGridItem: 0085d5e4 slot 0",
+        "1": "own exact row",
+        "2": "inherited CXTPPropertyGridItem: 0085d5e4 slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d5e4 slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d5e4 slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d5e4 slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d5e4 slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d5e4 slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d5e4 slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d5e4 slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d5e4 slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d5e4 slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d5e4 slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d5e4 slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d5e4 slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d5e4 slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d5e4 slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d5e4 slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d5e4 slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d5e4 slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d5e4 slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d5e4 slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d5e4 slot 22",
+        "23": "inherited CXTPPropertyGridItem: 0085d5e4 slot 23",
+        "24": "inherited CXTPPropertyGridItem: 0085d5e4 slot 24",
+        "25": "own exact row",
+        "26": "inherited CXTPPropertyGridItem: 0085d5e4 slot 26",
+        "27": "inherited CXTPPropertyGridItem: 0085d5e4 slot 27",
+        "28": "inherited CXTPPropertyGridItem: 0085d5e4 slot 28",
+        "29": "inherited CXTPPropertyGridItem: 0085d5e4 slot 29",
+        "30": "inherited CXTPPropertyGridItem: 0085d5e4 slot 30",
+        "31": "inherited CXTPPropertyGridItem: 0085d5e4 slot 31",
+        "32": "inherited CXTPPropertyGridItem: 0085d5e4 slot 32",
+        "33": "inherited CXTPPropertyGridItem: 0085d5e4 slot 33",
+        "34": "inherited CXTPPropertyGridItem: 0085d5e4 slot 34",
+        "35": "inherited CXTPPropertyGridItem: 0085d5e4 slot 35",
+        "36": "inherited CXTPPropertyGridItem: 0085d5e4 slot 36",
+        "37": "inherited CXTPPropertyGridItem: 0085d5e4 slot 37",
+        "38": "inherited CXTPPropertyGridItem: 0085d5e4 slot 38",
+        "39": "inherited CXTPPropertyGridItem: 0085d5e4 slot 39",
+        "40": "inherited CXTPPropertyGridItem: 0085d5e4 slot 40",
+        "41": "inherited CXTPPropertyGridItem: 0085d5e4 slot 41",
+        "42": "inherited CXTPPropertyGridItem: 0085d5e4 slot 42",
+        "43": "inherited CXTPPropertyGridItem: 0085d5e4 slot 43",
+        "44": "inherited CXTPPropertyGridItem: 0085d5e4 slot 44",
+        "45": "inherited CXTPPropertyGridItem: 0085d5e4 slot 45",
+        "46": "inherited CXTPPropertyGridItem: 0085d5e4 slot 46",
+        "47": "inherited CXTPPropertyGridItem: 0085d5e4 slot 47",
+        "48": "inherited CXTPPropertyGridItem: 0085d5e4 slot 48",
+        "49": "inherited CXTPPropertyGridItem: 0085d5e4 slot 49",
+        "50": "inherited CXTPPropertyGridItem: 0085d5e4 slot 50",
+        "51": "inherited CXTPPropertyGridItem: 0085d5e4 slot 51",
+        "52": "declared, not attempted; original 0043e140",
+        "53": "inherited CXTPPropertyGridItem: 0085d5e4 slot 53",
+        "54": "inherited CXTPPropertyGridItem: 0085d5e4 slot 54",
+        "55": "inherited CXTPPropertyGridItem: 0085d5e4 slot 55",
+        "56": "inherited CXTPPropertyGridItem: 0085d5e4 slot 56",
+        "57": "not proven here (template body elsewhere); original 00438450, one address per symbol",
+        "58": "not proven here (template body elsewhere); original 00437d30, one address per symbol",
+        "59": "own exact row",
+        "60": "not proven here (template body elsewhere); original 0043b9d0, one address per symbol",
+        "61": "own exact row"
+      }
+    },
+    "00814f24": {
+      "symbol": "??_7EnumItem@@6BCCmdTarget@@@",
+      "rtti": ".?AVEnumItem@@",
+      "subobject": 0,
+      "slots": 66,
+      "proof": {
+        "0": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 0",
+        "1": "own exact row",
+        "2": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 2",
+        "3": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 3",
+        "4": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 4",
+        "5": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 5",
+        "6": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 6",
+        "7": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 7",
+        "8": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 8",
+        "9": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 9",
+        "10": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 10",
+        "11": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 11",
+        "12": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 12",
+        "13": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 13",
+        "14": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 14",
+        "15": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 15",
+        "16": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 16",
+        "17": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 17",
+        "18": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 18",
+        "19": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 19",
+        "20": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 20",
+        "21": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 21",
+        "22": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 22",
+        "23": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 23",
+        "24": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 24",
+        "25": "own exact row",
+        "26": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 26",
+        "27": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 27",
+        "28": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 28",
+        "29": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 29",
+        "30": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 30",
+        "31": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 31",
+        "32": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 32",
+        "33": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 33",
+        "34": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 34",
+        "35": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 35",
+        "36": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 36",
+        "37": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 37",
+        "38": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 38",
+        "39": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 39",
+        "40": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 40",
+        "41": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 41",
+        "42": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 42",
+        "43": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 43",
+        "44": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 44",
+        "45": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 45",
+        "46": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 46",
+        "47": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 47",
+        "48": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 48",
+        "49": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 49",
+        "50": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 50",
+        "51": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 51",
+        "52": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 52",
+        "53": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 53",
+        "54": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 54",
+        "55": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 55",
+        "56": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 56",
+        "57": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 57",
+        "58": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 58",
+        "59": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 59",
+        "60": "inherited CXTPPropertyGridItemEnum: 0085e4e4 slot 60",
+        "61": "own exact row",
+        "62": "own exact row",
+        "63": "own exact row",
+        "64": "own exact row",
+        "65": "own exact row"
+      }
+    },
+    "008150ac": {
+      "symbol": "??_7?$ContentItem@VSoundId@Soundscape@RBX@@@@6BCCmdTarget@@@",
+      "rtti": ".?AV?$ContentItem@VSoundId@Soundscape@RBX@@@@",
+      "subobject": 0,
+      "slots": 63,
+      "proof": {
+        "0": "inherited CXTPPropertyGridItem: 0085d5e4 slot 0",
+        "1": "own exact row",
+        "2": "inherited CXTPPropertyGridItem: 0085d5e4 slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d5e4 slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d5e4 slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d5e4 slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d5e4 slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d5e4 slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d5e4 slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d5e4 slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d5e4 slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d5e4 slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d5e4 slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d5e4 slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d5e4 slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d5e4 slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d5e4 slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d5e4 slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d5e4 slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d5e4 slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d5e4 slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d5e4 slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d5e4 slot 22",
+        "23": "inherited CXTPPropertyGridItem: 0085d5e4 slot 23",
+        "24": "inherited CXTPPropertyGridItem: 0085d5e4 slot 24",
+        "25": "own exact row",
+        "26": "inherited CXTPPropertyGridItem: 0085d5e4 slot 26",
+        "27": "inherited CXTPPropertyGridItem: 0085d5e4 slot 27",
+        "28": "inherited CXTPPropertyGridItem: 0085d5e4 slot 28",
+        "29": "inherited CXTPPropertyGridItem: 0085d5e4 slot 29",
+        "30": "inherited CXTPPropertyGridItem: 0085d5e4 slot 30",
+        "31": "inherited CXTPPropertyGridItem: 0085d5e4 slot 31",
+        "32": "inherited CXTPPropertyGridItem: 0085d5e4 slot 32",
+        "33": "inherited CXTPPropertyGridItem: 0085d5e4 slot 33",
+        "34": "inherited CXTPPropertyGridItem: 0085d5e4 slot 34",
+        "35": "inherited CXTPPropertyGridItem: 0085d5e4 slot 35",
+        "36": "inherited CXTPPropertyGridItem: 0085d5e4 slot 36",
+        "37": "inherited CXTPPropertyGridItem: 0085d5e4 slot 37",
+        "38": "inherited CXTPPropertyGridItem: 0085d5e4 slot 38",
+        "39": "inherited CXTPPropertyGridItem: 0085d5e4 slot 39",
+        "40": "inherited CXTPPropertyGridItem: 0085d5e4 slot 40",
+        "41": "inherited CXTPPropertyGridItem: 0085d5e4 slot 41",
+        "42": "inherited CXTPPropertyGridItem: 0085d5e4 slot 42",
+        "43": "inherited CXTPPropertyGridItem: 0085d5e4 slot 43",
+        "44": "inherited CXTPPropertyGridItem: 0085d5e4 slot 44",
+        "45": "inherited CXTPPropertyGridItem: 0085d5e4 slot 45",
+        "46": "inherited CXTPPropertyGridItem: 0085d5e4 slot 46",
+        "47": "inherited CXTPPropertyGridItem: 0085d5e4 slot 47",
+        "48": "inherited CXTPPropertyGridItem: 0085d5e4 slot 48",
+        "49": "inherited CXTPPropertyGridItem: 0085d5e4 slot 49",
+        "50": "inherited CXTPPropertyGridItem: 0085d5e4 slot 50",
+        "51": "inherited CXTPPropertyGridItem: 0085d5e4 slot 51",
+        "52": "inherited CXTPPropertyGridItem: 0085d5e4 slot 52",
+        "53": "inherited CXTPPropertyGridItem: 0085d5e4 slot 53",
+        "54": "inherited CXTPPropertyGridItem: 0085d5e4 slot 54",
+        "55": "inherited CXTPPropertyGridItem: 0085d5e4 slot 55",
+        "56": "inherited CXTPPropertyGridItem: 0085d5e4 slot 56",
+        "57": "own exact row",
+        "58": "own exact row",
+        "59": "own exact row",
+        "60": "not proven here (template body elsewhere); original 0043a7d0, one address per symbol",
+        "61": "own exact row",
+        "62": "_purecall"
+      }
+    },
+    "00815214": {
+      "symbol": "??_7?$ContentItem@VTextureId@RBX@@@@6BCCmdTarget@@@",
+      "rtti": ".?AV?$ContentItem@VTextureId@RBX@@@@",
+      "subobject": 0,
+      "slots": 63,
+      "proof": {
+        "0": "inherited CXTPPropertyGridItem: 0085d5e4 slot 0",
+        "1": "own exact row",
+        "2": "inherited CXTPPropertyGridItem: 0085d5e4 slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d5e4 slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d5e4 slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d5e4 slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d5e4 slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d5e4 slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d5e4 slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d5e4 slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d5e4 slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d5e4 slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d5e4 slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d5e4 slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d5e4 slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d5e4 slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d5e4 slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d5e4 slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d5e4 slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d5e4 slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d5e4 slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d5e4 slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d5e4 slot 22",
+        "23": "inherited CXTPPropertyGridItem: 0085d5e4 slot 23",
+        "24": "inherited CXTPPropertyGridItem: 0085d5e4 slot 24",
+        "25": "own exact row",
+        "26": "inherited CXTPPropertyGridItem: 0085d5e4 slot 26",
+        "27": "inherited CXTPPropertyGridItem: 0085d5e4 slot 27",
+        "28": "inherited CXTPPropertyGridItem: 0085d5e4 slot 28",
+        "29": "inherited CXTPPropertyGridItem: 0085d5e4 slot 29",
+        "30": "inherited CXTPPropertyGridItem: 0085d5e4 slot 30",
+        "31": "inherited CXTPPropertyGridItem: 0085d5e4 slot 31",
+        "32": "inherited CXTPPropertyGridItem: 0085d5e4 slot 32",
+        "33": "inherited CXTPPropertyGridItem: 0085d5e4 slot 33",
+        "34": "inherited CXTPPropertyGridItem: 0085d5e4 slot 34",
+        "35": "inherited CXTPPropertyGridItem: 0085d5e4 slot 35",
+        "36": "inherited CXTPPropertyGridItem: 0085d5e4 slot 36",
+        "37": "inherited CXTPPropertyGridItem: 0085d5e4 slot 37",
+        "38": "inherited CXTPPropertyGridItem: 0085d5e4 slot 38",
+        "39": "inherited CXTPPropertyGridItem: 0085d5e4 slot 39",
+        "40": "inherited CXTPPropertyGridItem: 0085d5e4 slot 40",
+        "41": "inherited CXTPPropertyGridItem: 0085d5e4 slot 41",
+        "42": "inherited CXTPPropertyGridItem: 0085d5e4 slot 42",
+        "43": "inherited CXTPPropertyGridItem: 0085d5e4 slot 43",
+        "44": "inherited CXTPPropertyGridItem: 0085d5e4 slot 44",
+        "45": "inherited CXTPPropertyGridItem: 0085d5e4 slot 45",
+        "46": "inherited CXTPPropertyGridItem: 0085d5e4 slot 46",
+        "47": "inherited CXTPPropertyGridItem: 0085d5e4 slot 47",
+        "48": "inherited CXTPPropertyGridItem: 0085d5e4 slot 48",
+        "49": "inherited CXTPPropertyGridItem: 0085d5e4 slot 49",
+        "50": "inherited CXTPPropertyGridItem: 0085d5e4 slot 50",
+        "51": "inherited CXTPPropertyGridItem: 0085d5e4 slot 51",
+        "52": "inherited CXTPPropertyGridItem: 0085d5e4 slot 52",
+        "53": "inherited CXTPPropertyGridItem: 0085d5e4 slot 53",
+        "54": "inherited CXTPPropertyGridItem: 0085d5e4 slot 54",
+        "55": "inherited CXTPPropertyGridItem: 0085d5e4 slot 55",
+        "56": "inherited CXTPPropertyGridItem: 0085d5e4 slot 56",
+        "57": "own exact row",
+        "58": "own exact row",
+        "59": "own exact row",
+        "60": "not proven here (template body elsewhere); original 0043a7d0, one address per symbol",
+        "61": "own exact row",
+        "62": "_purecall"
+      }
+    },
+    "008153b4": {
+      "symbol": "??_7SoundItem@@6BCCmdTarget@@@",
+      "rtti": ".?AVSoundItem@@",
+      "subobject": 0,
+      "slots": 63,
+      "proof": {
+        "0": "inherited CXTPPropertyGridItem: 0085d5e4 slot 0",
+        "1": "own exact row",
+        "2": "inherited CXTPPropertyGridItem: 0085d5e4 slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d5e4 slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d5e4 slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d5e4 slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d5e4 slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d5e4 slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d5e4 slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d5e4 slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d5e4 slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d5e4 slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d5e4 slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d5e4 slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d5e4 slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d5e4 slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d5e4 slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d5e4 slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d5e4 slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d5e4 slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d5e4 slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d5e4 slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d5e4 slot 22",
+        "23": "inherited CXTPPropertyGridItem: 0085d5e4 slot 23",
+        "24": "inherited CXTPPropertyGridItem: 0085d5e4 slot 24",
+        "25": "own exact row",
+        "26": "inherited CXTPPropertyGridItem: 0085d5e4 slot 26",
+        "27": "inherited CXTPPropertyGridItem: 0085d5e4 slot 27",
+        "28": "inherited CXTPPropertyGridItem: 0085d5e4 slot 28",
+        "29": "inherited CXTPPropertyGridItem: 0085d5e4 slot 29",
+        "30": "inherited CXTPPropertyGridItem: 0085d5e4 slot 30",
+        "31": "inherited CXTPPropertyGridItem: 0085d5e4 slot 31",
+        "32": "inherited CXTPPropertyGridItem: 0085d5e4 slot 32",
+        "33": "inherited CXTPPropertyGridItem: 0085d5e4 slot 33",
+        "34": "inherited CXTPPropertyGridItem: 0085d5e4 slot 34",
+        "35": "inherited CXTPPropertyGridItem: 0085d5e4 slot 35",
+        "36": "inherited CXTPPropertyGridItem: 0085d5e4 slot 36",
+        "37": "inherited CXTPPropertyGridItem: 0085d5e4 slot 37",
+        "38": "inherited CXTPPropertyGridItem: 0085d5e4 slot 38",
+        "39": "inherited CXTPPropertyGridItem: 0085d5e4 slot 39",
+        "40": "inherited CXTPPropertyGridItem: 0085d5e4 slot 40",
+        "41": "inherited CXTPPropertyGridItem: 0085d5e4 slot 41",
+        "42": "inherited CXTPPropertyGridItem: 0085d5e4 slot 42",
+        "43": "inherited CXTPPropertyGridItem: 0085d5e4 slot 43",
+        "44": "inherited CXTPPropertyGridItem: 0085d5e4 slot 44",
+        "45": "inherited CXTPPropertyGridItem: 0085d5e4 slot 45",
+        "46": "inherited CXTPPropertyGridItem: 0085d5e4 slot 46",
+        "47": "inherited CXTPPropertyGridItem: 0085d5e4 slot 47",
+        "48": "inherited CXTPPropertyGridItem: 0085d5e4 slot 48",
+        "49": "inherited CXTPPropertyGridItem: 0085d5e4 slot 49",
+        "50": "inherited CXTPPropertyGridItem: 0085d5e4 slot 50",
+        "51": "inherited CXTPPropertyGridItem: 0085d5e4 slot 51",
+        "52": "inherited CXTPPropertyGridItem: 0085d5e4 slot 52",
+        "53": "inherited CXTPPropertyGridItem: 0085d5e4 slot 53",
+        "54": "inherited CXTPPropertyGridItem: 0085d5e4 slot 54",
+        "55": "inherited CXTPPropertyGridItem: 0085d5e4 slot 55",
+        "56": "inherited CXTPPropertyGridItem: 0085d5e4 slot 56",
+        "57": "own exact row",
+        "58": "own exact row",
+        "59": "own exact row",
+        "60": "not proven here (template body elsewhere); original 0043a7d0, one address per symbol",
+        "61": "own exact row",
+        "62": "declared, not attempted; original 00441bc0"
+      }
+    },
+    "00815524": {
+      "symbol": "??_7TextureItem@@6BCCmdTarget@@@",
+      "rtti": ".?AVTextureItem@@",
+      "subobject": 0,
+      "slots": 63,
+      "proof": {
+        "0": "inherited CXTPPropertyGridItem: 0085d5e4 slot 0",
+        "1": "own exact row",
+        "2": "inherited CXTPPropertyGridItem: 0085d5e4 slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d5e4 slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d5e4 slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d5e4 slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d5e4 slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d5e4 slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d5e4 slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d5e4 slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d5e4 slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d5e4 slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d5e4 slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d5e4 slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d5e4 slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d5e4 slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d5e4 slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d5e4 slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d5e4 slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d5e4 slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d5e4 slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d5e4 slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d5e4 slot 22",
+        "23": "inherited CXTPPropertyGridItem: 0085d5e4 slot 23",
+        "24": "inherited CXTPPropertyGridItem: 0085d5e4 slot 24",
+        "25": "own exact row",
+        "26": "inherited CXTPPropertyGridItem: 0085d5e4 slot 26",
+        "27": "inherited CXTPPropertyGridItem: 0085d5e4 slot 27",
+        "28": "inherited CXTPPropertyGridItem: 0085d5e4 slot 28",
+        "29": "inherited CXTPPropertyGridItem: 0085d5e4 slot 29",
+        "30": "inherited CXTPPropertyGridItem: 0085d5e4 slot 30",
+        "31": "inherited CXTPPropertyGridItem: 0085d5e4 slot 31",
+        "32": "inherited CXTPPropertyGridItem: 0085d5e4 slot 32",
+        "33": "inherited CXTPPropertyGridItem: 0085d5e4 slot 33",
+        "34": "inherited CXTPPropertyGridItem: 0085d5e4 slot 34",
+        "35": "inherited CXTPPropertyGridItem: 0085d5e4 slot 35",
+        "36": "inherited CXTPPropertyGridItem: 0085d5e4 slot 36",
+        "37": "inherited CXTPPropertyGridItem: 0085d5e4 slot 37",
+        "38": "inherited CXTPPropertyGridItem: 0085d5e4 slot 38",
+        "39": "inherited CXTPPropertyGridItem: 0085d5e4 slot 39",
+        "40": "inherited CXTPPropertyGridItem: 0085d5e4 slot 40",
+        "41": "inherited CXTPPropertyGridItem: 0085d5e4 slot 41",
+        "42": "inherited CXTPPropertyGridItem: 0085d5e4 slot 42",
+        "43": "inherited CXTPPropertyGridItem: 0085d5e4 slot 43",
+        "44": "inherited CXTPPropertyGridItem: 0085d5e4 slot 44",
+        "45": "inherited CXTPPropertyGridItem: 0085d5e4 slot 45",
+        "46": "inherited CXTPPropertyGridItem: 0085d5e4 slot 46",
+        "47": "inherited CXTPPropertyGridItem: 0085d5e4 slot 47",
+        "48": "inherited CXTPPropertyGridItem: 0085d5e4 slot 48",
+        "49": "inherited CXTPPropertyGridItem: 0085d5e4 slot 49",
+        "50": "inherited CXTPPropertyGridItem: 0085d5e4 slot 50",
+        "51": "inherited CXTPPropertyGridItem: 0085d5e4 slot 51",
+        "52": "inherited CXTPPropertyGridItem: 0085d5e4 slot 52",
+        "53": "inherited CXTPPropertyGridItem: 0085d5e4 slot 53",
+        "54": "inherited CXTPPropertyGridItem: 0085d5e4 slot 54",
+        "55": "inherited CXTPPropertyGridItem: 0085d5e4 slot 55",
+        "56": "inherited CXTPPropertyGridItem: 0085d5e4 slot 56",
+        "57": "own exact row",
+        "58": "own exact row",
+        "59": "own exact row",
+        "60": "not proven here (template body elsewhere); original 0043a7d0, one address per symbol",
+        "61": "own exact row",
+        "62": "declared, not attempted; original 00441d60"
+      }
+    },
+    "00813d5c": {
+      "symbol": "??_7?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@6B@",
+      "rtti": ".?AV?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@",
+      "subobject": 280,
+      "slots": 1,
+      "proof": {
+        "0": "not proven here (template body elsewhere); original 0043b5b0, one address per symbol"
+      }
+    },
+    "00813d64": {
+      "symbol": "??_7?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@6BCXTPAccessible@@@",
+      "rtti": ".?AV?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@",
+      "subobject": 32,
+      "slots": 23,
+      "proof": {
+        "0": "own exact row (XItem template instance reached by this vtable)",
+        "1": "inherited CPropertyGridItemBrickColor: 008135e4 slot 1",
+        "2": "inherited CPropertyGridItemBrickColor: 008135e4 slot 2",
+        "3": "inherited CPropertyGridItemBrickColor: 008135e4 slot 3",
+        "4": "inherited CPropertyGridItemBrickColor: 008135e4 slot 4",
+        "5": "inherited CPropertyGridItemBrickColor: 008135e4 slot 5",
+        "6": "inherited CPropertyGridItemBrickColor: 008135e4 slot 6",
+        "7": "inherited CPropertyGridItemBrickColor: 008135e4 slot 7",
+        "8": "inherited CPropertyGridItemBrickColor: 008135e4 slot 8",
+        "9": "inherited CPropertyGridItemBrickColor: 008135e4 slot 9",
+        "10": "inherited CPropertyGridItemBrickColor: 008135e4 slot 10",
+        "11": "inherited CPropertyGridItemBrickColor: 008135e4 slot 11",
+        "12": "inherited CPropertyGridItemBrickColor: 008135e4 slot 12",
+        "13": "inherited CPropertyGridItemBrickColor: 008135e4 slot 13",
+        "14": "inherited CPropertyGridItemBrickColor: 008135e4 slot 14",
+        "15": "inherited CPropertyGridItemBrickColor: 008135e4 slot 15",
+        "16": "inherited CPropertyGridItemBrickColor: 008135e4 slot 16",
+        "17": "inherited CPropertyGridItemBrickColor: 008135e4 slot 17",
+        "18": "inherited CPropertyGridItemBrickColor: 008135e4 slot 18",
+        "19": "inherited CPropertyGridItemBrickColor: 008135e4 slot 19",
+        "20": "inherited CPropertyGridItemBrickColor: 008135e4 slot 20",
+        "21": "inherited CPropertyGridItemBrickColor: 008135e4 slot 21",
+        "22": "inherited CPropertyGridItemBrickColor: 008135e4 slot 22"
+      }
+    },
+    "00813ecc": {
+      "symbol": "??_7?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@6B@",
+      "rtti": ".?AV?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@",
+      "subobject": 268,
+      "slots": 1,
+      "proof": {
+        "0": "not proven here (template body elsewhere); original 0043bc20, one address per symbol"
+      }
+    },
+    "00813ed4": {
+      "symbol": "??_7?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@6BCXTPAccessible@@@",
+      "rtti": ".?AV?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@",
+      "subobject": 32,
+      "slots": 23,
+      "proof": {
+        "0": "own exact row (XItem template instance reached by this vtable)",
+        "1": "inherited CXTPPropertyGridItem: 0085d6cc slot 1",
+        "2": "inherited CXTPPropertyGridItem: 0085d6cc slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d6cc slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d6cc slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d6cc slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d6cc slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d6cc slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d6cc slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d6cc slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d6cc slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d6cc slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d6cc slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d6cc slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d6cc slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d6cc slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d6cc slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d6cc slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d6cc slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d6cc slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d6cc slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d6cc slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d6cc slot 22"
+      }
+    },
+    "00814030": {
+      "symbol": "??_7?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@6B@",
+      "rtti": ".?AV?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@",
+      "subobject": 268,
+      "slots": 1,
+      "proof": {
+        "0": "not proven here (template body elsewhere); original 0043c170, one address per symbol"
+      }
+    },
+    "0081403c": {
+      "symbol": "??_7?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@6BCXTPAccessible@@@",
+      "rtti": ".?AV?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@",
+      "subobject": 32,
+      "slots": 23,
+      "proof": {
+        "0": "own exact row (XItem template instance reached by this vtable)",
+        "1": "inherited CXTPPropertyGridItem: 0085d6cc slot 1",
+        "2": "inherited CXTPPropertyGridItem: 0085d6cc slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d6cc slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d6cc slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d6cc slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d6cc slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d6cc slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d6cc slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d6cc slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d6cc slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d6cc slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d6cc slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d6cc slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d6cc slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d6cc slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d6cc slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d6cc slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d6cc slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d6cc slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d6cc slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d6cc slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d6cc slot 22"
+      }
+    },
+    "00814198": {
+      "symbol": "??_7?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@6B@",
+      "rtti": ".?AV?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@",
+      "subobject": 276,
+      "slots": 1,
+      "proof": {
+        "0": "not proven here (template body elsewhere); original 0043c6a0, one address per symbol"
+      }
+    },
+    "008141a4": {
+      "symbol": "??_7?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@6BCXTPAccessible@@@",
+      "rtti": ".?AV?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@",
+      "subobject": 32,
+      "slots": 23,
+      "proof": {
+        "0": "own exact row (XItem template instance reached by this vtable)",
+        "1": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 1",
+        "2": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 2",
+        "3": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 3",
+        "4": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 4",
+        "5": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 5",
+        "6": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 6",
+        "7": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 7",
+        "8": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 8",
+        "9": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 9",
+        "10": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 10",
+        "11": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 11",
+        "12": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 12",
+        "13": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 13",
+        "14": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 14",
+        "15": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 15",
+        "16": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 16",
+        "17": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 17",
+        "18": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 18",
+        "19": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 19",
+        "20": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 20",
+        "21": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 21",
+        "22": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 22"
+      }
+    },
+    "00814310": {
+      "symbol": "??_7?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@6B@",
+      "rtti": ".?AV?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@",
+      "subobject": 268,
+      "slots": 1,
+      "proof": {
+        "0": "not proven here (template body elsewhere); original 0043cc20, one address per symbol"
+      }
+    },
+    "0081431c": {
+      "symbol": "??_7?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@6BCXTPAccessible@@@",
+      "rtti": ".?AV?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@",
+      "subobject": 32,
+      "slots": 23,
+      "proof": {
+        "0": "own exact row (XItem template instance reached by this vtable)",
+        "1": "inherited CXTPPropertyGridItem: 0085d6cc slot 1",
+        "2": "inherited CXTPPropertyGridItem: 0085d6cc slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d6cc slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d6cc slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d6cc slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d6cc slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d6cc slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d6cc slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d6cc slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d6cc slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d6cc slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d6cc slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d6cc slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d6cc slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d6cc slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d6cc slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d6cc slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d6cc slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d6cc slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d6cc slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d6cc slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d6cc slot 22"
+      }
+    },
+    "00814478": {
+      "symbol": "??_7?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@6B@",
+      "rtti": ".?AV?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@",
+      "subobject": 268,
+      "slots": 1,
+      "proof": {
+        "0": "not proven here (template body elsewhere); original 0043cc20, one address per symbol"
+      }
+    },
+    "00814484": {
+      "symbol": "??_7?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@6BCXTPAccessible@@@",
+      "rtti": ".?AV?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@",
+      "subobject": 32,
+      "slots": 23,
+      "proof": {
+        "0": "own exact row (XItem template instance reached by this vtable)",
+        "1": "inherited CXTPPropertyGridItem: 0085d6cc slot 1",
+        "2": "inherited CXTPPropertyGridItem: 0085d6cc slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d6cc slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d6cc slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d6cc slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d6cc slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d6cc slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d6cc slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d6cc slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d6cc slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d6cc slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d6cc slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d6cc slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d6cc slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d6cc slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d6cc slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d6cc slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d6cc slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d6cc slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d6cc slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d6cc slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d6cc slot 22"
+      }
+    },
+    "008147a4": {
+      "symbol": "??_7XBrickColorItem@@6B@",
+      "rtti": ".?AVXBrickColorItem@@",
+      "subobject": 280,
+      "slots": 1,
+      "proof": {
+        "0": "not proven here (template body elsewhere); original 0043b5b0, one address per symbol"
+      }
+    },
+    "008147ac": {
+      "symbol": "??_7XBrickColorItem@@6BCXTPAccessible@@@",
+      "rtti": ".?AVXBrickColorItem@@",
+      "subobject": 32,
+      "slots": 23,
+      "proof": {
+        "0": "own exact row",
+        "1": "inherited CPropertyGridItemBrickColor: 008135e4 slot 1",
+        "2": "inherited CPropertyGridItemBrickColor: 008135e4 slot 2",
+        "3": "inherited CPropertyGridItemBrickColor: 008135e4 slot 3",
+        "4": "inherited CPropertyGridItemBrickColor: 008135e4 slot 4",
+        "5": "inherited CPropertyGridItemBrickColor: 008135e4 slot 5",
+        "6": "inherited CPropertyGridItemBrickColor: 008135e4 slot 6",
+        "7": "inherited CPropertyGridItemBrickColor: 008135e4 slot 7",
+        "8": "inherited CPropertyGridItemBrickColor: 008135e4 slot 8",
+        "9": "inherited CPropertyGridItemBrickColor: 008135e4 slot 9",
+        "10": "inherited CPropertyGridItemBrickColor: 008135e4 slot 10",
+        "11": "inherited CPropertyGridItemBrickColor: 008135e4 slot 11",
+        "12": "inherited CPropertyGridItemBrickColor: 008135e4 slot 12",
+        "13": "inherited CPropertyGridItemBrickColor: 008135e4 slot 13",
+        "14": "inherited CPropertyGridItemBrickColor: 008135e4 slot 14",
+        "15": "inherited CPropertyGridItemBrickColor: 008135e4 slot 15",
+        "16": "inherited CPropertyGridItemBrickColor: 008135e4 slot 16",
+        "17": "inherited CPropertyGridItemBrickColor: 008135e4 slot 17",
+        "18": "inherited CPropertyGridItemBrickColor: 008135e4 slot 18",
+        "19": "inherited CPropertyGridItemBrickColor: 008135e4 slot 19",
+        "20": "inherited CPropertyGridItemBrickColor: 008135e4 slot 20",
+        "21": "inherited CPropertyGridItemBrickColor: 008135e4 slot 21",
+        "22": "inherited CPropertyGridItemBrickColor: 008135e4 slot 22"
+      }
+    },
+    "00814914": {
+      "symbol": "??_7Vector3Item@@6B@",
+      "rtti": ".?AVVector3Item@@",
+      "subobject": 268,
+      "slots": 1,
+      "proof": {
+        "0": "own exact row"
+      }
+    },
+    "0081491c": {
+      "symbol": "??_7Vector3Item@@6BCXTPAccessible@@@",
+      "rtti": ".?AVVector3Item@@",
+      "subobject": 32,
+      "slots": 23,
+      "proof": {
+        "0": "own exact row",
+        "1": "inherited CXTPPropertyGridItem: 0085d6cc slot 1",
+        "2": "inherited CXTPPropertyGridItem: 0085d6cc slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d6cc slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d6cc slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d6cc slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d6cc slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d6cc slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d6cc slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d6cc slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d6cc slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d6cc slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d6cc slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d6cc slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d6cc slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d6cc slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d6cc slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d6cc slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d6cc slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d6cc slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d6cc slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d6cc slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d6cc slot 22"
+      }
+    },
+    "00814a7c": {
+      "symbol": "??_7Vector3ComponentItem@@6B@",
+      "rtti": ".?AVVector3ComponentItem@@",
+      "subobject": 268,
+      "slots": 1,
+      "proof": {
+        "0": "not proven here (template body elsewhere); original 0043c170, one address per symbol"
+      }
+    },
+    "00814a84": {
+      "symbol": "??_7Vector3ComponentItem@@6BCXTPAccessible@@@",
+      "rtti": ".?AVVector3ComponentItem@@",
+      "subobject": 32,
+      "slots": 23,
+      "proof": {
+        "0": "own exact row",
+        "1": "inherited CXTPPropertyGridItem: 0085d6cc slot 1",
+        "2": "inherited CXTPPropertyGridItem: 0085d6cc slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d6cc slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d6cc slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d6cc slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d6cc slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d6cc slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d6cc slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d6cc slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d6cc slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d6cc slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d6cc slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d6cc slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d6cc slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d6cc slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d6cc slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d6cc slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d6cc slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d6cc slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d6cc slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d6cc slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d6cc slot 22"
+      }
+    },
+    "00814be0": {
+      "symbol": "??_7RefItem@@6B@",
+      "rtti": ".?AVRefItem@@",
+      "subobject": 268,
+      "slots": 1,
+      "proof": {
+        "0": "non-exact row; original 0043dc00"
+      }
+    },
+    "00814bec": {
+      "symbol": "??_7RefItem@@6BCXTPAccessible@@@",
+      "rtti": ".?AVRefItem@@",
+      "subobject": 32,
+      "slots": 23,
+      "proof": {
+        "0": "own exact row",
+        "1": "inherited CXTPPropertyGridItem: 0085d6cc slot 1",
+        "2": "inherited CXTPPropertyGridItem: 0085d6cc slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d6cc slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d6cc slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d6cc slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d6cc slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d6cc slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d6cc slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d6cc slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d6cc slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d6cc slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d6cc slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d6cc slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d6cc slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d6cc slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d6cc slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d6cc slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d6cc slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d6cc slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d6cc slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d6cc slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d6cc slot 22"
+      }
+    },
+    "00814d54": {
+      "symbol": "??_7ScriptItem@@6B@",
+      "rtti": ".?AVScriptItem@@",
+      "subobject": 268,
+      "slots": 1,
+      "proof": {
+        "0": "non-exact row; original 0043dff0"
+      }
+    },
+    "00814d5c": {
+      "symbol": "??_7ScriptItem@@6BCXTPAccessible@@@",
+      "rtti": ".?AVScriptItem@@",
+      "subobject": 32,
+      "slots": 23,
+      "proof": {
+        "0": "own exact row (XItem template instance reached by this vtable)",
+        "1": "inherited CXTPPropertyGridItem: 0085d6cc slot 1",
+        "2": "inherited CXTPPropertyGridItem: 0085d6cc slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d6cc slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d6cc slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d6cc slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d6cc slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d6cc slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d6cc slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d6cc slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d6cc slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d6cc slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d6cc slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d6cc slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d6cc slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d6cc slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d6cc slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d6cc slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d6cc slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d6cc slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d6cc slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d6cc slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d6cc slot 22"
+      }
+    },
+    "00814eb8": {
+      "symbol": "??_7EnumItem@@6B@",
+      "rtti": ".?AVEnumItem@@",
+      "subobject": 276,
+      "slots": 1,
+      "proof": {
+        "0": "not proven here (template body elsewhere); original 0043c6a0, one address per symbol"
+      }
+    },
+    "00814ec4": {
+      "symbol": "??_7EnumItem@@6BCXTPAccessible@@@",
+      "rtti": ".?AVEnumItem@@",
+      "subobject": 32,
+      "slots": 23,
+      "proof": {
+        "0": "own exact row",
+        "1": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 1",
+        "2": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 2",
+        "3": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 3",
+        "4": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 4",
+        "5": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 5",
+        "6": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 6",
+        "7": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 7",
+        "8": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 8",
+        "9": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 9",
+        "10": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 10",
+        "11": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 11",
+        "12": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 12",
+        "13": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 13",
+        "14": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 14",
+        "15": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 15",
+        "16": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 16",
+        "17": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 17",
+        "18": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 18",
+        "19": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 19",
+        "20": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 20",
+        "21": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 21",
+        "22": "inherited CXTPPropertyGridItemEnum: 0085e484 slot 22"
+      }
+    },
+    "00815044": {
+      "symbol": "??_7?$ContentItem@VSoundId@Soundscape@RBX@@@@6B@",
+      "rtti": ".?AV?$ContentItem@VSoundId@Soundscape@RBX@@@@",
+      "subobject": 268,
+      "slots": 1,
+      "proof": {
+        "0": "not proven here (template body elsewhere); original 0043cc20, one address per symbol"
+      }
+    },
+    "0081504c": {
+      "symbol": "??_7?$ContentItem@VSoundId@Soundscape@RBX@@@@6BCXTPAccessible@@@",
+      "rtti": ".?AV?$ContentItem@VSoundId@Soundscape@RBX@@@@",
+      "subobject": 32,
+      "slots": 23,
+      "proof": {
+        "0": "own exact row (XItem template instance reached by this vtable)",
+        "1": "inherited CXTPPropertyGridItem: 0085d6cc slot 1",
+        "2": "inherited CXTPPropertyGridItem: 0085d6cc slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d6cc slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d6cc slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d6cc slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d6cc slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d6cc slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d6cc slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d6cc slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d6cc slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d6cc slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d6cc slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d6cc slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d6cc slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d6cc slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d6cc slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d6cc slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d6cc slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d6cc slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d6cc slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d6cc slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d6cc slot 22"
+      }
+    },
+    "008151ac": {
+      "symbol": "??_7?$ContentItem@VTextureId@RBX@@@@6B@",
+      "rtti": ".?AV?$ContentItem@VTextureId@RBX@@@@",
+      "subobject": 268,
+      "slots": 1,
+      "proof": {
+        "0": "not proven here (template body elsewhere); original 0043cc20, one address per symbol"
+      }
+    },
+    "008151b4": {
+      "symbol": "??_7?$ContentItem@VTextureId@RBX@@@@6BCXTPAccessible@@@",
+      "rtti": ".?AV?$ContentItem@VTextureId@RBX@@@@",
+      "subobject": 32,
+      "slots": 23,
+      "proof": {
+        "0": "own exact row (XItem template instance reached by this vtable)",
+        "1": "inherited CXTPPropertyGridItem: 0085d6cc slot 1",
+        "2": "inherited CXTPPropertyGridItem: 0085d6cc slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d6cc slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d6cc slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d6cc slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d6cc slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d6cc slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d6cc slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d6cc slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d6cc slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d6cc slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d6cc slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d6cc slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d6cc slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d6cc slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d6cc slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d6cc slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d6cc slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d6cc slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d6cc slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d6cc slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d6cc slot 22"
+      }
+    },
+    "0081534c": {
+      "symbol": "??_7SoundItem@@6B@",
+      "rtti": ".?AVSoundItem@@",
+      "subobject": 268,
+      "slots": 1,
+      "proof": {
+        "0": "not proven here (template body elsewhere); original 0043cc20, one address per symbol"
+      }
+    },
+    "00815354": {
+      "symbol": "??_7SoundItem@@6BCXTPAccessible@@@",
+      "rtti": ".?AVSoundItem@@",
+      "subobject": 32,
+      "slots": 23,
+      "proof": {
+        "0": "own exact row (XItem template instance reached by this vtable)",
+        "1": "inherited CXTPPropertyGridItem: 0085d6cc slot 1",
+        "2": "inherited CXTPPropertyGridItem: 0085d6cc slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d6cc slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d6cc slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d6cc slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d6cc slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d6cc slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d6cc slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d6cc slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d6cc slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d6cc slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d6cc slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d6cc slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d6cc slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d6cc slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d6cc slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d6cc slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d6cc slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d6cc slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d6cc slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d6cc slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d6cc slot 22"
+      }
+    },
+    "008154bc": {
+      "symbol": "??_7TextureItem@@6B@",
+      "rtti": ".?AVTextureItem@@",
+      "subobject": 268,
+      "slots": 1,
+      "proof": {
+        "0": "not proven here (template body elsewhere); original 0043cc20, one address per symbol"
+      }
+    },
+    "008154c4": {
+      "symbol": "??_7TextureItem@@6BCXTPAccessible@@@",
+      "rtti": ".?AVTextureItem@@",
+      "subobject": 32,
+      "slots": 23,
+      "proof": {
+        "0": "own exact row (XItem template instance reached by this vtable)",
+        "1": "inherited CXTPPropertyGridItem: 0085d6cc slot 1",
+        "2": "inherited CXTPPropertyGridItem: 0085d6cc slot 2",
+        "3": "inherited CXTPPropertyGridItem: 0085d6cc slot 3",
+        "4": "inherited CXTPPropertyGridItem: 0085d6cc slot 4",
+        "5": "inherited CXTPPropertyGridItem: 0085d6cc slot 5",
+        "6": "inherited CXTPPropertyGridItem: 0085d6cc slot 6",
+        "7": "inherited CXTPPropertyGridItem: 0085d6cc slot 7",
+        "8": "inherited CXTPPropertyGridItem: 0085d6cc slot 8",
+        "9": "inherited CXTPPropertyGridItem: 0085d6cc slot 9",
+        "10": "inherited CXTPPropertyGridItem: 0085d6cc slot 10",
+        "11": "inherited CXTPPropertyGridItem: 0085d6cc slot 11",
+        "12": "inherited CXTPPropertyGridItem: 0085d6cc slot 12",
+        "13": "inherited CXTPPropertyGridItem: 0085d6cc slot 13",
+        "14": "inherited CXTPPropertyGridItem: 0085d6cc slot 14",
+        "15": "inherited CXTPPropertyGridItem: 0085d6cc slot 15",
+        "16": "inherited CXTPPropertyGridItem: 0085d6cc slot 16",
+        "17": "inherited CXTPPropertyGridItem: 0085d6cc slot 17",
+        "18": "inherited CXTPPropertyGridItem: 0085d6cc slot 18",
+        "19": "inherited CXTPPropertyGridItem: 0085d6cc slot 19",
+        "20": "inherited CXTPPropertyGridItem: 0085d6cc slot 20",
+        "21": "inherited CXTPPropertyGridItem: 0085d6cc slot 21",
+        "22": "inherited CXTPPropertyGridItem: 0085d6cc slot 22"
+      }
+    }
+  },
+  "unresolved_vtable_slots": {
+    "?OnValueChanged@?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "00441560",
+    "?OnValueChanged@?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "004415d0",
+    "?readValue@?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "00438450",
+    "?displayValue@?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00437d30",
+    "?writeValue@?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@UAEXPAVInstance@RBX@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0043b9d0",
+    "?OnValueChanged@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "00441660",
+    "?writeValue@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAEXPAVInstance@RBX@@ABVVector3@G3D@@@Z": "0043a7d0",
+    "?OnValueChanged@?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "004416e0",
+    "?writeValue@?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@UAEXPAVInstance@RBX@@ABVSoundId@Soundscape@3@@Z": "0043a7d0",
+    "?OnValueChanged@?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "004416e0",
+    "?writeValue@?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@UAEXPAVInstance@RBX@@ABVTextureId@3@@Z": "0043a7d0",
+    "?OnInplaceButtonDown@ScriptItem@@MAEXPAVCXTPPropertyGridInplaceButton@@@Z": "0043e140",
+    "?browse@SoundItem@@UAEXXZ": "00441bc0",
+    "?browse@TextureItem@@UAEXXZ": "00441d60",
+    "?update@?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@UAEXPAVSelectionGroup@RBX@@@Z": "0043b5b0",
+    "?update@?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@UAEXPAVSelectionGroup@RBX@@@Z": "0043bc20",
+    "?update@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAEXPAVSelectionGroup@RBX@@@Z": "0043c170",
+    "?update@?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@UAEXPAVSelectionGroup@RBX@@@Z": "0043c6a0",
+    "?update@?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@UAEXPAVSelectionGroup@RBX@@@Z": "0043cc20",
+    "?update@?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@UAEXPAVSelectionGroup@RBX@@@Z": "0043cc20",
+    "?update@RefItem@@UAEXPAVSelectionGroup@RBX@@@Z": "0043dc00",
+    "?update@ScriptItem@@UAEXPAVSelectionGroup@RBX@@@Z": "0043dff0"
+  },
+  "internal_bindings": {
+    "??0CXTPPropertyGridItem@@QAE@PBD0PAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "00713510 (XTP ctor; same binding as record_native_property_editors.py)",
+    "??0CXTPPropertyGridItemEnum@@QAE@PBDHPAH@Z": "00717e30 (XTP enum ctor called by 0043c440 (ret 0xc, stores Enum vptrs))",
+    "?SetReadOnly@CXTPPropertyGridItem@@QAEXH@Z": "007120e0 (XTP; same binding as record_native_property_editors.py)",
+    "??0Item@CPropGrid@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAV1@@Z": "0043a070 (exact in record_native_property_editors.py)",
+    "??0CPropertyGridItemBrickColor@@QAE@V?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@K@Z": "00437ae0 (exact in record_native_property_grid_item_brick_color.py)",
+    "?GetValue@CXTPPropertyGridItem@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "00437ed0 (exact XTP inline in record_native_property_grid_item_brick_color.py)",
+    "?OnDrawItemValue@CXTPPropertyGridItemColor@@MAEHAAVCDC@@VCRect@@@Z": "00713c20 (XTP Color slot 26 (CXTPPropertyGridItemColor vtable 0085d7c4))",
+    "?GetFlags@CXTPPropertyGridItem@@QBEIXZ": "00710e30 (XTP out-of-line accessor, ScriptItem ctor 0043df50)",
+    "?SetFlags@CXTPPropertyGridItem@@QAEXI@Z": "00710dd0 (XTP, ScriptItem ctor 0043df50)",
+    "?SetValue@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "007119f0 (XTP slot 24 base body; same binding as the BrickColor recorder)",
+    "?OnValueChanged@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "00711ac0 (XTP slot 25 base body; same binding as record_native_editor_values.py)",
+    "?OnAddChildItem@CXTPPropertyGridItem@@MAEXXZ": "00711600 (XTP slot 51 base body (CXTPPropertyGridItem vtable 0085d5e4))",
+    "?AddChildItem@CXTPPropertyGridItem@@QAEPAV1@PAV1@@Z": "007131c0 (XTP, Vector3Item::OnAddChildItem 0043dae0)",
+    "??1CXTPPropertyGridItem@@UAE@XZ": "00713630 (XTP destructor, deleting destructor 0043e900)",
+    "??1CXTPPropertyGridItemColor@@UAE@XZ": "00713760 (same binding as the BrickColor recorder)",
+    "??1CXTPPropertyGridItemEnum@@UAE@XZ": "007178b0 (XTP destructor, deleting destructor 0043c640)",
+    "??3@YAXPAX@Z": "006a067a (operator delete (deleting destructors))",
+    "??2@YAPAXI@Z": "006a0920 (operator new, same address as the factory 00440e30 calls)",
+    "?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z": "00576f00 (evidence name)",
+    "??1Lock@DataModel@RBX@@QAE@XZ": "005773c0 (evidence name)",
+    "?convertToValue@?$StringConverter@VVector3@G3D@@@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVVector3@G3D@@@Z": "005bebb0 (evidence name)",
+    "?convertToValue@?$StringConverter@M@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAM@Z": "005be790 (evidence name)",
+    "?closest@BrickColor@RBX@@SA?AV12@VColor3@G3D@@@Z": "005b62e0 (evidence name)",
+    "?color4uint8@BrickColor@RBX@@QBE?AVColor4uint8@G3D@@XZ": "005b6120 (BrickMap::singleton()->map find; color3uint8 005b6180 calls it)",
+    "?getNullName@Name@RBX@@SAABV12@XZ": "00554270 (evidence name)",
+    "??8RBX@@YA_NABVContentId@0@0@Z": "0055bd70 (tail jump to msvcp90 std::operator== (ContentId::id at +0))",
+    "__real@3b808081": "008135d4 (float 1/255 (same constant as the BrickColor recorder))",
+    "?GetColor@CXTPPropertyGridItemColor@@UBEKXZ": "0043a1c0 (exact XTP inline in the BrickColor recorder)",
+    "?SetHidden@CXTPPropertyGridItem@@QAEXH@Z": "007110d0 (XTP, ScriptItem/RefItem update tails)",
+    "?applyValue@?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@QAEXABVBrickColor@RBX@@@Z": "0043f890 (call in 00441560)",
+    "?applyValue@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@QAEXABVVector3@G3D@@@Z": "0043ff70 (call in 00441660)",
+    "?applyValue@?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@QAEXABH@Z": "004402d0 (call in 00441770)",
+    "?applyValue@?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@QAEXABVTextureId@RBX@@@Z": "0043e4c0 (calls in 0043e960 / 004416e0 (identical-code fold with SoundId))",
+    "?applyValue@?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@QAEXABVSoundId@Soundscape@RBX@@@Z": "0043e4c0 (calls in 0043e960 / 004416e0 (identical-code fold with TextureId))",
+    "?update@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAEXPAVSelectionGroup@RBX@@@Z": "0043c170 (XItem<Vector3> Item-slot update called by Vector3Item::update 0043d790 and in table 00814030; template body not in this unit)",
+    "??0TextureId@RBX@@QAE@XZ": "0043d050 (ContentId() inline body (string ctor + getNullName), call in 0043e960)",
+    "??0SoundId@Soundscape@RBX@@QAE@XZ": "0043d050 (identical-code fold with TextureId(), call in 0043e960)",
+    "??0TextureId@RBX@@QAE@PBD@Z": "004377c0 (ContentId(const char*) inline body, call in 0043e960)",
+    "??0SoundId@Soundscape@RBX@@QAE@PBD@Z": "004377c0 (identical-code fold with TextureId(const char*), call in 0043e960)"
+  },
+  "not_attempted": {
+    "0043e140": "ScriptItem::OnInplaceButtonDown (603 bytes; opens the script document)",
+    "00441d60": "TextureItem::browse (445 bytes; file dialog + content upload)",
+    "00441bc0": "SoundItem::browse (406 bytes)",
+    "0043b5b0/0043c170/0043c6a0/0043cc20": "XItem<T>::update instantiations (template body owned by PropertyGridItems.h)",
+    "0043f890/0043ff70/004402d0/0043e4c0": "XItem<T>::applyValue instantiations (template body owned by PropertyGridItems.h)"
+  },
+  "proposed_shared_declarations": [
+    "native-headers/PropertyGridItems.h (owner): XItem::OnValueChanged body `GridItem::OnValueChanged(value); applyValue(readValue());` instead of a named `T converted` local: makes 00441560/00441660/004416e0 exact and keeps float/int 004413e0/00441460 exact."
+  ],
+  "scope": "Inactive class recovery; no build-list, swap or runtime integration. Names browse()/component/value/components/refDescriptor are recovery names; layouts and ABIs come from the binary."
+}

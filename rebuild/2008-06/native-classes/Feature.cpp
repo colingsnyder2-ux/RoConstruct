@@ -1,3 +1,4 @@
+// native-flags: /I{headers}/kernel-stages /I{headers}/part-embedded /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /U_RELEASEASSERT
 // 2008-06 native RBX::Feature, RBX::Hole, RBX::MotorFeature and RBX::VelocityMotor (inactive); evidence in
 // native-headers/v8datamodel/Feature.h. Verified by tests/record_native_feature.py.
 // VelocityMotor::setHole 0060c400 uses the 2008 SignalDesc::connect(source, slot, int group) of reflection/signal.h;
@@ -11,7 +12,6 @@
 // (rbx_static_cast without the debug dynamic_cast, so IPipelined::getWorld inlines in 0060a0f0), and
 // /I{headers}/part-embedded (the 2008 PartInstance embeds its Primitive at +0x228: setPart 0060a020 takes
 // `lea edi, [eax + 0x228]` for part->getPrimitive()).
-// native-flags: /I{headers}/kernel-stages /I{headers}/part-embedded /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /U_RELEASEASSERT
 #include "v8datamodel/Feature.h"
 #include "v8datamodel/PartInstance.h"
 // The 2008 MotorJoint (no polarity: currentAngle +0x8c, maxVelocity +0x90, desiredAngle +0x94, read by 0060a240 /
@@ -23,6 +23,8 @@
 #include "AppDraw/DrawAdorn.h"
 #include <boost/bind.hpp>
 #include "v8datamodel/Workspace.h"   // Workspace::getWorldIfInWorkspace 005a3390 (onAncestorChanged 0060a0f0)
+#include "util/NormalId.h"           // objectToUvw / uvwToObject / intToNormalId / normalIdToMatrix3 (00609da0)
+#include "util/Math.h"               // Math::vector3Abs 005de630, Math::sign (00609da0)
 
 namespace RBX
 {
@@ -105,8 +107,6 @@ namespace RBX
 	}
 
 	// 0060a490: not exact (same instructions, the original allocates ecx/edx/eax for the temporaries).
-	// computeLocalCoordinateFrame 00609da0 is not recovered here: it reads PartInstance's embedded Primitive (+0x228)
-	// geometry, which this unit now reaches through /I{headers}/part-embedded (not yet attempted).
 	// Parked (hard-leftover batch 8, 2026-11-13). Rejected variants, each recompiled and diffed against 0060a490:
 	//   1. c = part->getCoordinateFrame() * computeLocalCoordinateFrame(); -- worse: eax reused for the call
 	//      result as the operator* argument (no re-lea of the temporary).
@@ -124,6 +124,75 @@ namespace RBX
 			return true;
 		}
 		return false;
+	}
+
+	// 00609da0: __RTDynamicCast of the parent (+0x104) to PartInstance, else the default CoordinateFrame 004782d0; the
+	// embedded Primitive's geometry (PartInstance +0x2c4 = Primitive +0x228 + geometry +0x9c) grid size * 0.5f (inline
+	// Primitive::getExtentsLocal), objectToUvw 005ec450, Math::vector3Abs 005de630, the leftRight +0x148 / topBottom
+	// +0x144 / inOut +0x14c switches, uvwToObject 005ec330, Extents::faceCenter 0060f7b0, the virtual
+	// getCoordOrientation (slot 16, +0x40), intToNormalId 005ec170 ((faceId + 3) % 6), normalIdToMatrix3 005ec800 and
+	// Matrix3::operator= 00513220 into the return slot. Donor tools/rbxgs v8datamodel/Feature.cpp.
+	// NEAR MISS: 627 B against 625; only the x87 scheduling of the INSET case (00609f11..00609f5e: the sign * max
+	// products and the order of the two std::max temporaries in the uv.y line) differs. Batch 27 rejected: an explicit
+	// native-flags line without /fp:fast (631 B, and loses 004766a0 / 00476700 / 00485360 / 0060a020 / 0060a0f0 /
+	// 0060c600 elsewhere in the unit). FeatureRecovery.cpp holds a 630 B donor-header copy (not this unit's owner).
+	G3D::CoordinateFrame Feature::computeLocalCoordinateFrame() const
+	{
+		PartInstance* part = dynamic_cast<PartInstance*>(getParent());
+
+		if (!part)
+			return G3D::CoordinateFrame();
+
+		Extents extents = part->getPrimitive()->getExtentsLocal();
+
+		G3D::Vector3 corner = extents.max();
+		G3D::Vector3 uv = Math::vector3Abs(RBX::objectToUvw(corner, faceId));
+
+		uv.z = 0.0f;
+
+		switch (leftRight)
+		{
+			case LEFT:
+				uv.x = -uv.x;
+				break;
+
+			case CENTER_LR:
+				uv.x = 0.0f;
+				break;
+		}
+
+		switch (topBottom)
+		{
+			case CENTER_TB:
+				uv.y = 0.0f;
+				break;
+
+			case BOTTOM:
+				uv.y = -uv.y;
+				break;
+		}
+
+		switch (inOut)
+		{
+			case INSET:
+				uv.x = Math::sign(uv.x) * std::max(0.0f, std::abs(uv.x) - 1.0f);
+				uv.y = Math::sign(uv.y) * std::max(0.0f, std::abs(uv.y) - 1.0f);
+				break;
+
+			case CENTER_IO:
+				uv.x = 0.0f;
+				uv.y = 0.0f;
+				break;
+		}
+
+		G3D::Vector3 uvInObject = RBX::uvwToObject(uv, faceId);
+		G3D::Vector3 ptInObject = extents.faceCenter(faceId) + uvInObject;
+
+		NormalId face = getCoordOrientation() == Z_OUT
+			? faceId
+			: intToNormalId((faceId + NORM_X_NEG) % NORM_UNDEFINED);
+
+		return G3D::CoordinateFrame(normalIdToMatrix3(face), ptInObject);
 	}
 
 	void Feature::render3dSelect(Adorn* adorn, SelectState selectState)

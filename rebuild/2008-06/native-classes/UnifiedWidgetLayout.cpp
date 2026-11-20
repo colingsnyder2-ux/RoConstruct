@@ -2,7 +2,7 @@
 // 2008-06 native RBX::UnifiedWidget layout and drawing rows of the original gui/GUI.cpp unit (inactive):
 // childOffset 005735a0, TopMenuBar::render2d 00574050, render2dMe 00574170, render2d 00574300, firstChildPosition 00574330,
 // getChildPosition 00574400 and onLoseFocus 005cf4e0 (COMDAT-folded with Widget::onLoseFocus: one store of NOTHING at
-// +0x144). Class in native-headers/gui/Gui.h (read-only here). render2dChildren 00574280 is called, not compiled here.
+// +0x144) and render2dChildren 00574280. Class in native-headers/gui/Gui.h (read-only here).
 // render2dMe inlines GuiItem::menuSelect (00573250, the same local static 00974e2c guarded by 00974e3c), so that getter
 // is defined in this unit ahead of render2dMe, as in the original GUI.cpp.
 #include "gui/Gui.h"
@@ -56,6 +56,29 @@ namespace RBX
 		adorn->rect2d(getMyRect2D(), menuState != NOTHING ? menuSelect() : G3D::Color4(G3D::Color3::white()));
 		adorn->outlineRect2d(getMyRect2D(), 1.0f, G3D::Color3::black());
 		label2d(adorn, getName(), G3D::Color3::black(), G3D::Color4::clear(), Adorn::XALIGN_CENTER);
+	}
+
+	// INFERRED: the donor openrbx gui/GUI.h defines showChildren in-class (menuState >= SHOWN_APPEARING); the native
+	// Gui.h only declares it, and render2dChildren 00574280 reads +0x144 inline (cmp 2 / jl).
+	inline bool UnifiedWidget::showChildren()
+	{
+		return menuState >= SHOWN_APPEARING;
+	}
+
+	// 00574280 (func_00574280, 119 B, ret 4): identity from the donor openrbx GUI.cpp UnifiedWidget::render2dChildren
+	// (showChildren, then render2d of every GuiItem child) and its only caller render2d 00574300 below; numChildren
+	// 0048ae20, dynamic_cast Instance 0092907c -> GuiItem 0092b8d8, GuiItem::render2d vtable slot 0x60.
+	void UnifiedWidget::render2dChildren(Adorn* adorn)
+	{
+		if (showChildren())
+		{
+			for (size_t i = 0; i < numChildren(); ++i)
+			{
+				GuiItem* item = dynamic_cast<GuiItem*>(getChild(i));
+				if (item)
+					item->render2d(adorn);
+			}
+		}
 	}
 
 	// 00574300: isVisible (slot 21), render2dMe (slot 28), render2dChildren 00574280.

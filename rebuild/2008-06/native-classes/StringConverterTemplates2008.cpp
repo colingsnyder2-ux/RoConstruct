@@ -1,12 +1,13 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /fp:fast
 // 2008-06 native StringConverter<T>::convertToValue instances (inactive). util/Utilities.h declares the member without a body.
-//   int 005be5a0, float 005be790, double 005be680, BrickColor 005bf0a0, Vector2int16 005be950, Color3 005bed50
+//   int 005be5a0, float 005be790, double 005be680, BrickColor 005bf0a0, Vector2int16 005be950, Color3 005bed50, Vector3 005bea10 (toString) / 005bebb0
 #include <limits>
 #include <boost/lexical_cast.hpp>
 #include "util/Utilities.h"
 #include "v8datamodel/BrickColor.h"
 #include "G3D/Vector2int16.h"
 #include "G3D/Color3.h"
+#include "G3D/Vector3.h"
 #include <stdlib.h>
 
 namespace RBX
@@ -154,6 +155,37 @@ namespace RBX
 				return false;
 			value.b = (float)atof(text.substr(next, text.size() - next).c_str());
 		}
+		return true;
+	}
+	// 005bea10: "x, y, z" from the float converter (005be040) joined by ", " (00812e50).
+	template<>
+	std::string StringConverter<G3D::Vector3>::convertToString(const G3D::Vector3& value)
+	{
+		std::string result = StringConverter<float>::convertToString(value.x);
+		result += ", ";
+		result += StringConverter<float>::convertToString(value.y);
+		result += ", ";
+		result += StringConverter<float>::convertToString(value.z);
+		return result;
+	}
+
+	// 005bebb0: "x,y,z" / "x;y;z" floats (separator set 00838460 ",;"), same split as the Color3 float branch.
+	template<>
+	bool StringConverter<G3D::Vector3>::convertToValue(const std::string& text, G3D::Vector3& value)
+	{
+		int first = text.find_first_of(",;", 0, 2);
+		if (first < 0)
+			return false;
+		value.x = (float)atof(text.substr(0, first).c_str());
+		int start = first + 1;
+		int second = text.find_first_of(",;", start, 2);
+		if (second < start)
+			return false;
+		value.y = (float)atof(text.substr(start, second - start).c_str());
+		int next = second + 1;
+		if ((int)text.size() < next)
+			return false;
+		value.z = (float)atof(text.substr(next, text.size() - next).c_str());
 		return true;
 	}
 }

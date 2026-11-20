@@ -12,6 +12,8 @@ Builds (document-swap flags plus /fp:fast /U_RELEASEASSERT, VS2008 RTM 21022):
     connect(source, slot, int group), donor v8world/MotorJoint.h without `polarity`, donor v8kernel/IStage.h with
     KERNEL_STAGE = 7, and native-headers/part-embedded (PartInstance with the embedded Primitive at +0x228).
     Rows exact only in this build are recorded exact=false (pending-build-only) and are not counted.
+    The RefPropDescriptor<VelocityMotor, Hole> constructor 0060b8c0 and the boost::function rows of the setHole slot
+    (0060a300, 0060aac0, 0060abe0; explicit slot instantiation in Feature.cpp) are counted from the main build.
 
 Every row must be relocation-masked exact against the original, and every REL32/DIR32 target is bound to the
 address the original instruction uses and verified: imports by DLL export name, string literals by bytes,
@@ -410,12 +412,24 @@ for family, bases in (('Instance', ((DNC, 'W'), (NFP, 'W'))), ('Hole', ((DCH, 'W
         for adj, address in sorted(THUNKS[family].items(), key=lambda x: x[1]):
             ROWS.append((address, '??_E' + base + kind + adj + '@AEPAXI@Z'))
 # Exact only against the generated 2008 headers (see the module docstring); recorded exact=false.
+# Former pending rows that compile exact against the current headers (Feature.cpp explicitly instantiates the
+# setHole slot so the boost::function rows are emitted without the pending setHole; the RefPropDescriptor
+# constructor needs the adopted IIDREF novtable).
+ROWS += [
+    (0x60b8c0, '??$?0P8VelocityMotor@RBX@@BEPAVHole@1@XZP801@AEXPAV21@@Z@?$RefPropDescriptor@VVelocityMotor@RBX@@VHole@2@@Reflection@RBX@@QAE@'),
+    (0x60a300, '?manager@?$functor_manager@V?$bind_t@XV?$mf0@XVVelocityMotor@RBX@@@_mfi@boost@@V?$list1@V?$value@PAVVelocityMotor@RBX@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@U?$bool_@$00@mpl@4@@Z'),
+    (0x60aac0, '?manage@?$functor_manager@V?$bind_t@XV?$mf0@XVVelocityMotor@'),
+    (0x60abe0, '?invoke@?$void_function_obj_invoker1@V?$bind_t@XV?$mf0@XVVelocityMotor@'),
+]
 PENDING_ROWS = [
-    (0x60bbb0, '??0VelocityMotor@RBX@@QAE@XZ'),
-    (0x60a650, '??1VelocityMotor@RBX@@UAE@XZ'),
-    (0x609af0, '??1' + FPV + 'MAE@XZ'),          # main-build bytes exact; its vtables inherit JointInstance slots 3/4
+    # 00609af0 / 00609cd0 / 0060bab0: bytes and relocation targets exact in the main build too, but the
+    # FactoryProduct/DescribedCreatable<VelocityMotor> vtables they store get Instance slots 3/4 from the current
+    # JointInstance.h (original 005e3790 askSetParent / 005e3a80 onAncestorChanged): not counted until it declares them.
+    (0x609af0, '??1' + FPV + 'MAE@XZ'),
     (0x609cd0, '??$?0PAVMotorJoint@RBX@@@' + FPV + 'IAE@PAVMotorJoint@1@@Z'),
     (0x60bab0, '??$?0PAVMotorJoint@RBX@@@' + DCV + 'IAE@PAVMotorJoint@1@@Z'),
+    (0x60bbb0, '??0VelocityMotor@RBX@@QAE@XZ'),
+    (0x60a650, '??1VelocityMotor@RBX@@UAE@XZ'),
     (0x60a020, '?setPart@VelocityMotor@RBX@@AAEXHPAVFeature@2@@Z'),
     (0x60a0f0, '?onAncestorChanged@VelocityMotor@RBX@@EAEXABUAncestorChanged@2@@Z'),
     (0x60a230, '?onEvent_HoleAncestorChanged@VelocityMotor@RBX@@AAEXXZ'),
@@ -427,10 +441,6 @@ PENDING_ROWS = [
     (0x60c580, '?setMaxVelocity@VelocityMotor@RBX@@QAEXM@Z'),
     (0x60c5c0, '?setDesiredAngle@VelocityMotor@RBX@@QAEXM@Z'),
     (0x60c600, '?setCurrentAngle@VelocityMotor@RBX@@QAEXM@Z'),
-    (0x60b8c0, '??$?0P8VelocityMotor@RBX@@BEPAVHole@1@XZP801@AEXPAV21@@Z@?$RefPropDescriptor@VVelocityMotor@RBX@@VHole@2@@Reflection@RBX@@QAE@'),
-    (0x60a300, '?manager@?$functor_manager@V?$bind_t@XV?$mf0@XVVelocityMotor@RBX@@@_mfi@boost@@V?$list1@V?$value@PAVVelocityMotor@RBX@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@U?$bool_@$00@mpl@4@@Z'),
-    (0x60aac0, '?manage@?$functor_manager@V?$bind_t@XV?$mf0@XVVelocityMotor@'),
-    (0x60abe0, '?invoke@?$void_function_obj_invoker1@V?$bind_t@XV?$mf0@XVVelocityMotor@'),
 ]
 # Original rows of the Feature/Hole/MotorFeature half that are not exact here (reason in the receipt).
 NON_EXACT = {

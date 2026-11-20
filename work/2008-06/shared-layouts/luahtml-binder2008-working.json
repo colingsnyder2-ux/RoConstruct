@@ -1,0 +1,913 @@
+{
+  "family": "LuaHtmlBinder2008 (CLuaHtmlView::Binder, CLuaHtmlView::Binder::PropBinding)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/I/home/user/roconstruct/rebuild/2008-06/native-headers/mfc-noinline-pcxstr",
+    "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string",
+    "/I/home/user/roconstruct/rebuild/2008-06/native-headers/boost-function-pod-vtable",
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "profile": "document-swap flags with native-headers/mfc-noinline-pcxstr, std-noinline-string and boost-function-pod-vtable first",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_luahtml_binder2008.py": "36382c751aa908579a2fb34e029c986437d89b26ab87669c9bb9d4e4e6a18a59",
+    "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
+    "rebuild/2008-06/tests/NativeLuaHtmlBinder2008Layout.cpp": "d98f113c52a93b1787e789f3b61a1e2a3d2c232efd5062d9bee7a90cf4f38e7d",
+    "rebuild/2008-06/native-headers/LuaHtmlBinder2008/LuaHtmlBinder2008.h": "16c75a4f5d2b50b4ecd99e473639bb85cff380efa585e91ea8055ec7dc48518a",
+    "rebuild/2008-06/native-classes/LuaHtmlBinder2008.cpp": "595abd96cec752d201e548c8cf00660c6992214356d03fce66628173d26e3d90",
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114",
+    "rebuild/2008-06/native-headers/AppLeaves2008/EventHandler2008.h": "6396425d56b97b3b88fbe3c9e07578df6b84708e60c8f0e6dbde036eaa7f2e7d",
+    "rebuild/2008-06/native-headers/AppLeaves2008/DHTMLWindowService2008.h": "df4bc9b98ec652f9d71232eea0e826bae5ad452500d41c6b448a9050d27bf8e6",
+    "rebuild/2008-06/native-headers/AppLeaves2008/Marshaller2008.h": "5ce8a439f16df27e817b14ddfe4e0d6c28596867c9442fdfef1a6500e9b20a23",
+    "rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h": "be601ae5510ccaae5209999c9da1c9fa86fe2ec0a72946fe1ace10a93414bc04",
+    "rebuild/2008-06/native-headers/std-noinline-string/xstring": "abed1fd7598c0041a3ee2dfae5095d43464789877c22452215c0015d981e8bee",
+    "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp": "95fb4a51a884f45f6d3148c5a523aaac026919e5dce454e9884f416e57cb3334",
+    "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp": "9e6bb423072221a911c59ec6bee3c0e51433df20a8a585fd80ae1f93515083dc"
+  },
+  "objects": {
+    "layout": "777f3b7e6f3a9895796f4e61f1925efb57828bba41e08c9d08bbeb354732f3fa",
+    "binder": "b73c7d404d3bacd43895f538bb20d1b63e45376beef2778a314af6b8a1117fb7",
+    "pending": "00498b5eef56b96c0860c38f0e17954db97f9e845f0d8a7dfc67f46b627f15a0",
+    "pending_gated": "b73c7d404d3bacd43895f538bb20d1b63e45376beef2778a314af6b8a1117fb7"
+  },
+  "layout": {
+    "CLuaHtmlView::Binder": "0x34 (0042c8c0 news 0x34): vptr 00810654 +0, enable_shared_from_this<Binder> +4 (weak_ptr +4/+8), list<shared_ptr<PropBinding>> +0xc (0x1c), updatePending +0x28, CComPtr<EventHandler> handler +0x2c, CComPtr<IHTMLInputElement> element +0x30",
+    "CLuaHtmlView::Binder::PropBinding": "0x20 (0042c760 news 0x20): shared_ptr<Instance> +0, const PropertyDescriptor* +8, boost::signals::scoped_connection +0xc (0x14)"
+  },
+  "methods": {
+    "binder": [
+      {
+        "address": "0042bd70",
+        "symbol": "?getValue@PropBinding@Binder@CLuaHtmlView@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+        "size": 161,
+        "exact": true,
+        "verified_targets": {
+          "??0Impersonator@Security@RBX@@QAE@W4Identities@12@@Z": "0x42bc10 (evidence name)",
+          "?ptr@Context@Security@RBX@@CAAAV?$thread_specific_ptr@VContext@Security@RBX@@@boost@@XZ": "0x42bbb0 (evidence name)",
+          "?get@tss@detail@boost@@QBEPAXXZ": "0x5a7570 (external)",
+          "?set@tss@detail@boost@@QAEXPAX@Z": "0x5a76b0 (external)",
+          "?cleanup@tss@detail@boost@@QAEXPAX@Z": "0x5a6ff0 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?getValue@PropBinding@Binder@CLuaHtmlView@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        ]
+      },
+      {
+        "address": "0042bcd0",
+        "symbol": "?setValue@PropBinding@Binder@CLuaHtmlView@@QAEXPBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "size": 145,
+        "exact": true,
+        "verified_targets": {
+          "??0Impersonator@Security@RBX@@QAE@W4Identities@12@@Z": "0x42bc10 (evidence name)",
+          "?ptr@Context@Security@RBX@@CAAAV?$thread_specific_ptr@VContext@Security@RBX@@@boost@@XZ": "0x42bbb0 (evidence name)",
+          "?get@tss@detail@boost@@QBEPAXXZ": "0x5a7570 (external)",
+          "?set@tss@detail@boost@@QAEXPAX@Z": "0x5a76b0 (external)",
+          "?cleanup@tss@detail@boost@@QAEXPAX@Z": "0x5a6ff0 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?setValue@PropBinding@Binder@CLuaHtmlView@@QAEXPBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        ]
+      },
+      {
+        "address": "0042a720",
+        "symbol": "??1PropBinding@Binder@CLuaHtmlView@@QAE@XZ",
+        "size": 118,
+        "exact": true,
+        "verified_targets": {
+          "??1scoped_connection@signals@boost@@QAE@XZ": "0x5954b0 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??1PropBinding@Binder@CLuaHtmlView@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "0042c000",
+        "symbol": "?onChange@Binder@CLuaHtmlView@@AAE_NXZ",
+        "size": 202,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PB_W@Z": "0x803ed8 (mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PB_W@Z)",
+          "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "0x803ee0 (mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "0x803f14 (mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ)",
+          "?setValue@PropBinding@Binder@CLuaHtmlView@@QAEXPBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x42bcd0 (own row)",
+          "??$for_each@V?$_Iterator@$00@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVPropBinding@Binder@CLuaHtmlView@@PBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@2@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVPropBinding@Binder@CLuaHtmlView@@PBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@2@@_bi@3@@_bi@boost@@V?$_Iterator@$00@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@0@0V123@@Z": "0x42b7c0 (instance (bytes equal, targets verified))",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "__imp__SysFreeString@4": "0x802944 (oleaut32.dll!SysFreeString)"
+        },
+        "local_eh": [
+          "__ehhandler$?onChange@Binder@CLuaHtmlView@@AAE_NXZ"
+        ]
+      },
+      {
+        "address": "0042be20",
+        "symbol": "?updateElement@Binder@CLuaHtmlView@@AAEXXZ",
+        "size": 465,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?getValue@PropBinding@Binder@CLuaHtmlView@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x42bd70 (own row)",
+          "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "__imp_??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x8023d8 (msvcp90.dll!??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)",
+          "__imp_?clear@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ": "0x8023dc (msvcp90.dll!?clear@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ)",
+          "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "0x802464 (msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ)",
+          "??0CComBSTR@ATL@@QAE@PBD@Z": "0x401180 (instance (bytes equal, targets verified))",
+          "__imp__SysFreeString@4": "0x802944 (oleaut32.dll!SysFreeString)"
+        },
+        "local_eh": [
+          "__ehhandler$?updateElement@Binder@CLuaHtmlView@@AAEXXZ"
+        ]
+      },
+      {
+        "address": "0042c0d0",
+        "symbol": "??0Binder@CLuaHtmlView@@QAE@PAUIHTMLInputElement@@@Z",
+        "size": 474,
+        "exact": true,
+        "verified_targets": {
+          "??_7Binder@CLuaHtmlView@@6B@": "0x810654 (vtable RTTI .?AVBinder@CLuaHtmlView@@ offset 0x0)",
+          "??0?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAE@XZ": "0x4aefe0 (instance (bytes equal, targets verified))",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?onChange@Binder@CLuaHtmlView@@AAE_NXZ": "0x42c000 (own row)",
+          "??$?0V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@1@H@Z": "0x42b6d0 (instance (bytes equal, targets verified))",
+          "??0EventHandler@@QAE@V?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z": "0x42acb0 (external)",
+          "__GUID_3050f434_98b5_11cf_bb82_00aa00bdce0b": "0x81055c (GUID {3050f434-98b5-11cf-bb82-00aa00bdce0b})",
+          "??_C@_08CLANFAGI@onchange?$AA@": "0x810644 (literal 'onchange')",
+          "??0CComBSTR@ATL@@QAE@PBD@Z": "0x401180 (instance (bytes equal, targets verified))",
+          "__imp__SysFreeString@4": "0x802944 (oleaut32.dll!SysFreeString)",
+          "??_C@_0BD@GHNLIDMA@attachEvent?5failed?$AA@": "0x810630 (literal 'attachEvent failed')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$??0Binder@CLuaHtmlView@@QAE@PAUIHTMLInputElement@@@Z"
+        ]
+      },
+      {
+        "address": "0042c500",
+        "symbol": "?requestUpdate@Binder@CLuaHtmlView@@AAEXXZ",
+        "size": 97,
+        "exact": true,
+        "verified_targets": {
+          "?updateElement@Binder@CLuaHtmlView@@AAEXXZ": "0x42be20 (own row)",
+          "?shared_from_this@?$enable_shared_from_this@VBinder@CLuaHtmlView@@@boost@@QAE?AV?$shared_ptr@VBinder@CLuaHtmlView@@@2@XZ": "0x42af90 (instance (bytes equal, targets verified))",
+          "??$bind@XVBinder@CLuaHtmlView@@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@boost@@YA?AV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@0@P8Binder@CLuaHtmlView@@AEXXZV?$shared_ptr@VBinder@CLuaHtmlView@@@0@@Z": "0x48c4d0 (instance (bytes equal, targets verified))",
+          "??$?0V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@1@H@Z": "0x42b950 (instance (bytes equal, targets verified))",
+          "?htmlMarshaller@@3PAVMarshaller@@A": "0x96cc4c (data)",
+          "?post@Marshaller@@QAEXV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z": "0x41a530 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0042c570",
+        "symbol": "?onPropertyChanged@Binder@CLuaHtmlView@@CAXPBVPropertyDescriptor@Reflection@RBX@@ABV345@PAV12@@Z",
+        "size": 20,
+        "exact": true,
+        "verified_targets": {
+          "?requestUpdate@Binder@CLuaHtmlView@@AAEXXZ": "0x42c500 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0042c3c0",
+        "symbol": "??1Binder@CLuaHtmlView@@UAE@XZ",
+        "size": 276,
+        "exact": true,
+        "verified_targets": {
+          "??_7Binder@CLuaHtmlView@@6B@": "0x810654 (vtable RTTI .?AVBinder@CLuaHtmlView@@ offset 0x0)",
+          "?ignoreChange@?A0xe14b5284@@YA_NXZ": "0x565950 (instance (bytes equal, targets verified))",
+          "??$?4P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@P6A_NXZ@Z": "0x42c320 (instance (bytes equal, targets verified))",
+          "__GUID_3050f434_98b5_11cf_bb82_00aa00bdce0b": "0x81055c (GUID {3050f434-98b5-11cf-bb82-00aa00bdce0b})",
+          "??_C@_08CLANFAGI@onchange?$AA@": "0x810644 (literal 'onchange')",
+          "??0CComBSTR@ATL@@QAE@PBD@Z": "0x401180 (instance (bytes equal, targets verified))",
+          "__imp__SysFreeString@4": "0x802944 (oleaut32.dll!SysFreeString)",
+          "??1?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAE@XZ": "0x4b0a80 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": [
+          "__ehhandler$??1Binder@CLuaHtmlView@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "0042c4e0",
+        "symbol": "??_GBinder@CLuaHtmlView@@UAEPAXI@Z",
+        "size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1Binder@CLuaHtmlView@@UAE@XZ": "0x42c3c0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ],
+    "pending": [
+      {
+        "address": "0042c630",
+        "symbol": "??0PropBinding@Binder@CLuaHtmlView@@QAE@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@PAV12@@Z",
+        "size": 295,
+        "exact": false,
+        "verified_targets": {
+          "?onPropertyChanged@Binder@CLuaHtmlView@@CAXPBVPropertyDescriptor@Reflection@RBX@@ABV345@PAV12@@Z": "0x42c570 (own row)",
+          "??$?0V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@1@@Z": "0x42b9a0 (instance (bytes equal, targets verified))",
+          "?event_propertyChanged@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXPBVPropertyDescriptor@Reflection@2@@Z@Reflection@2@A": "0x973f48 (data)",
+          "?connect@?$TSignalDesc@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@QAE?AVconnection@signals@boost@@PAVSignalSource@23@ABV?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@6@H@Z": "0x42b680 (instance (bytes equal, targets verified))",
+          "??4scoped_connection@signals@boost@@QAEAAV012@ABVconnection@12@@Z": "0x595540 (external)",
+          "??1connection@signals@boost@@QAE@XZ": "0x595370 (external)",
+          "??1?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ": "0x49f710 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": [
+          "__ehhandler$??0PropBinding@Binder@CLuaHtmlView@@QAE@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@PAV12@@Z"
+        ],
+        "status": "pending-build-only"
+      }
+    ],
+    "pending_gated": [
+      {
+        "address": "0042c760",
+        "symbol": "?bind@Binder@CLuaHtmlView@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@@Z",
+        "size": 338,
+        "exact": false,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0PropBinding@Binder@CLuaHtmlView@@QAE@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@PAV12@@Z": "0x42c630 (pending-build-only row)",
+          "??$?0VPropBinding@Binder@CLuaHtmlView@@@shared_count@detail@boost@@QAE@PAVPropBinding@Binder@CLuaHtmlView@@@Z": "0x42b280 (instance (bytes equal, targets verified))",
+          "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (instance (bytes equal, targets verified))",
+          "?_Buynode@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@IAEPAU_Node@?$_List_nod@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@2@PAU342@0ABV?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@Z": "0x4ad860 (instance (bytes equal, targets verified))",
+          "?_Incsize@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@IAEXI@Z": "0x4acb50 (instance (bytes equal, targets verified))",
+          "?updateElement@Binder@CLuaHtmlView@@AAEXXZ": "0x42be20 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?bind@Binder@CLuaHtmlView@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@@Z"
+        ],
+        "status": "pending-build-only (bytes exact in the current build; it calls a pending-only row)"
+      }
+    ]
+  },
+  "instances": {
+    "??$for_each@V?$_Iterator@$00@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVPropBinding@Binder@CLuaHtmlView@@PBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@2@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVPropBinding@Binder@CLuaHtmlView@@PBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@2@@_bi@3@@_bi@boost@@V?$_Iterator@$00@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@0@0V123@@Z": {
+      "address": "0042b7c0",
+      "symbol": "??$for_each@V?$_Iterator@$00@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVPropBinding@Binder@CLuaHtmlView@@PBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@2@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVPropBinding@Binder@CLuaHtmlView@@PBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@2@@_bi@3@@_bi@boost@@V?$_Iterator@$00@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@0@0V123@@Z",
+      "size": 56,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??0CComBSTR@ATL@@QAE@PBD@Z": {
+      "address": "00401180",
+      "symbol": "??0CComBSTR@ATL@@QAE@PBD@Z",
+      "size": 151,
+      "exact": false,
+      "verified_targets": {
+        "__imp__MultiByteToWideChar@24": "0x80231c (kernel32.dll!MultiByteToWideChar)",
+        "__imp__SysAllocStringLen@8": "0x802940 (oleaut32.dll!SysAllocStringLen)",
+        "__imp__SysFreeString@4": "0x802944 (oleaut32.dll!SysFreeString)",
+        "??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ": "0x401150 (instance (bytes equal, targets verified))",
+        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000 (evidence name)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ": {
+      "address": "00401150",
+      "symbol": "??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ",
+      "size": 36,
+      "exact": false,
+      "verified_targets": {
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??0?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAE@XZ": {
+      "address": "004aefe0",
+      "symbol": "??0?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAE@XZ",
+      "size": 94,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "?_Buynode@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@IAEPAU_Node@?$_List_nod@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@2@XZ": "0x4acb10 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAE@XZ"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?_Buynode@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@IAEPAU_Node@?$_List_nod@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@2@XZ": {
+      "address": "004acb10",
+      "symbol": "?_Buynode@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@IAEPAU_Node@?$_List_nod@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@2@XZ",
+      "size": 26,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$?0V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@1@H@Z": {
+      "address": "0042b6d0",
+      "symbol": "??$?0V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@1@H@Z",
+      "size": 84,
+      "exact": false,
+      "verified_targets": {
+        "?has_empty_target@function@detail@boost@@YA_NZZ": "0x60a2f0 (instance (bytes equal, targets verified))",
+        "?stored_vtable@?1???$assign_to@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x810610 (data instance (bytes equal, fields verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?has_empty_target@function@detail@boost@@YA_NZZ": {
+      "address": "0060a2f0",
+      "symbol": "?has_empty_target@function@detail@boost@@YA_NZZ",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?stored_vtable@?1???$assign_to@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": {
+      "address": "00810610",
+      "symbol": "?stored_vtable@?1???$assign_to@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B",
+      "size": 8,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x0 ?manage@?$functor_manager@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z": "0x42aba0 (instance (bytes equal, targets verified))",
+        "+0x4 ?invoke@?$function_obj_invoker0@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z": "0x55e310 (instance (bytes equal, targets verified))"
+      }
+    },
+    "?manage@?$functor_manager@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z": {
+      "address": "0042aba0",
+      "symbol": "?manage@?$functor_manager@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+      "size": 50,
+      "exact": false,
+      "verified_targets": {
+        "?manager@?$functor_manager@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@Ufunction_obj_tag@234@@Z": "0x42a6c0 (instance (bytes equal, targets verified))",
+        "??_R0?AV?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@@8": "0x92e6b0 (RTTI .?AV?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?manager@?$functor_manager@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@Ufunction_obj_tag@234@@Z": {
+      "address": "0042a6c0",
+      "symbol": "?manager@?$functor_manager@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@Ufunction_obj_tag@234@@Z",
+      "size": 81,
+      "exact": false,
+      "verified_targets": {
+        "??_R0?AV?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@@8": "0x92e6b0 (RTTI .?AV?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?invoke@?$function_obj_invoker0@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z": {
+      "address": "0055e310",
+      "symbol": "?invoke@?$function_obj_invoker0@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z",
+      "size": 16,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?shared_from_this@?$enable_shared_from_this@VBinder@CLuaHtmlView@@@boost@@QAE?AV?$shared_ptr@VBinder@CLuaHtmlView@@@2@XZ": {
+      "address": "0042af90",
+      "symbol": "?shared_from_this@?$enable_shared_from_this@VBinder@CLuaHtmlView@@@boost@@QAE?AV?$shared_ptr@VBinder@CLuaHtmlView@@@2@XZ",
+      "size": 41,
+      "exact": false,
+      "verified_targets": {
+        "??0shared_count@detail@boost@@QAE@ABVweak_count@12@@Z": "0x411ad0 (evidence name)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$bind@XVBinder@CLuaHtmlView@@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@boost@@YA?AV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@0@P8Binder@CLuaHtmlView@@AEXXZV?$shared_ptr@VBinder@CLuaHtmlView@@@0@@Z": {
+      "address": "0048c4d0",
+      "symbol": "??$bind@XVBinder@CLuaHtmlView@@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@boost@@YA?AV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@0@P8Binder@CLuaHtmlView@@AEXXZV?$shared_ptr@VBinder@CLuaHtmlView@@@0@@Z",
+      "size": 260,
+      "exact": false,
+      "verified_targets": {
+        "??0?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@12@@Z": "0x618830 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??$bind@XVBinder@CLuaHtmlView@@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@boost@@YA?AV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@0@P8Binder@CLuaHtmlView@@AEXXZV?$shared_ptr@VBinder@CLuaHtmlView@@@0@@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??0?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@12@@Z": {
+      "address": "00618830",
+      "symbol": "??0?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@12@@Z",
+      "size": 162,
+      "exact": false,
+      "verified_targets": {
+        "??0?$storage1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@12@@Z": "0x554810 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@12@@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??0?$storage1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@12@@Z": {
+      "address": "00554810",
+      "symbol": "??0?$storage1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@12@@Z",
+      "size": 96,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted; listed extent 0x65 != body 0x60, whole body compared with the image bytes"
+    },
+    "??$?0V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@1@H@Z": {
+      "address": "0042b950",
+      "symbol": "??$?0V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@1@H@Z",
+      "size": 77,
+      "exact": false,
+      "verified_targets": {
+        "??$assign_to@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@1@@Z": "0x42b8b0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$assign_to@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@1@@Z": {
+      "address": "0042b8b0",
+      "symbol": "??$assign_to@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@1@@Z",
+      "size": 88,
+      "exact": false,
+      "verified_targets": {
+        "?has_empty_target@function@detail@boost@@YA_NZZ": "0x60a2f0 (instance (bytes equal, targets verified))",
+        "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x810620 (data instance (bytes equal, fields verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": {
+      "address": "00810620",
+      "symbol": "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B",
+      "size": 8,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x0 ?manage@?$functor_manager@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z": "0x42b870 (instance (bytes equal, targets verified))",
+        "+0x4 ?invoke@?$void_function_obj_invoker0@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@X@function@detail@boost@@SAXAATfunction_buffer@234@@Z": "0x5acaf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "?manage@?$functor_manager@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z": {
+      "address": "0042b870",
+      "symbol": "?manage@?$functor_manager@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+      "size": 50,
+      "exact": false,
+      "verified_targets": {
+        "?manager@?$functor_manager@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@U?$bool_@$00@mpl@4@@Z": "0x42b550 (instance (bytes equal, targets verified))",
+        "??_R0?AV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@8": "0x92e9b8 (RTTI .?AV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?manager@?$functor_manager@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@U?$bool_@$00@mpl@4@@Z": {
+      "address": "0042b550",
+      "symbol": "?manager@?$functor_manager@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@U?$bool_@$00@mpl@4@@Z",
+      "size": 155,
+      "exact": false,
+      "verified_targets": {
+        "??_R0?AV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@8": "0x92e9b8 (RTTI .?AV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?invoke@?$void_function_obj_invoker0@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@X@function@detail@boost@@SAXAATfunction_buffer@234@@Z": {
+      "address": "005acaf0",
+      "symbol": "?invoke@?$void_function_obj_invoker0@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@X@function@detail@boost@@SAXAATfunction_buffer@234@@Z",
+      "size": 14,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?ignoreChange@?A0xe14b5284@@YA_NXZ": {
+      "address": "00565950",
+      "symbol": "?ignoreChange@?A0xe14b5284@@YA_NXZ",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$?4P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@P6A_NXZ@Z": {
+      "address": "0042c320",
+      "symbol": "??$?4P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@P6A_NXZ@Z",
+      "size": 158,
+      "exact": false,
+      "verified_targets": {
+        "?stored_vtable@?1???$assign_to@P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABQ6A_NXZ@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x810658 (instance (bytes equal, targets verified))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?4P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@P6A_NXZ@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted; listed extent 0x71 != body 0x9e, whole body compared with the image bytes"
+    },
+    "?stored_vtable@?1???$assign_to@P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABQ6A_NXZ@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": {
+      "address": "00810658",
+      "symbol": "?stored_vtable@?1???$assign_to@P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABQ6A_NXZ@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B",
+      "size": 8,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x0 ?manage@?$functor_manager@P6A_NXZV?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z": "0x42c2c0 (instance (bytes equal, targets verified))",
+        "+0x4 ?invoke@?$function_invoker0@P6A_NXZ_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z": "0x42c2b0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "?manage@?$functor_manager@P6A_NXZV?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z": {
+      "address": "0042c2c0",
+      "symbol": "?manage@?$functor_manager@P6A_NXZV?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+      "size": 86,
+      "exact": false,
+      "verified_targets": {
+        "??_R0P6A_NXZ@8": "0x92eb08 (RTTI .P6A_NXZ)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?invoke@?$function_invoker0@P6A_NXZ_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z": {
+      "address": "0042c2b0",
+      "symbol": "?invoke@?$function_invoker0@P6A_NXZ_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z",
+      "size": 6,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??1?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAE@XZ": {
+      "address": "004b0a80",
+      "symbol": "??1?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAE@XZ",
+      "size": 85,
+      "exact": false,
+      "verified_targets": {
+        "?clear@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAEXXZ": "0x42b390 (instance (bytes equal, targets verified))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAE@XZ"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?clear@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAEXXZ": {
+      "address": "0042b390",
+      "symbol": "?clear@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAEXXZ",
+      "size": 104,
+      "exact": false,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$?0V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@1@@Z": {
+      "address": "0042b9a0",
+      "symbol": "??$?0V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@1@@Z",
+      "size": 164,
+      "exact": false,
+      "verified_targets": {
+        "??$?0V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@QAE@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@1@H@Z": "0x42b800 (instance (bytes equal, targets verified))",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0data_t@slot_base@detail@signals@boost@@QAE@XZ": "0x41ad40 (evidence name)",
+        "??$reset@Udata_t@slot_base@detail@signals@boost@@@?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@boost@@QAEXPAUdata_t@slot_base@detail@signals@1@@Z": "0x41b0f0 (evidence name)",
+        "?create_connection@slot_base@detail@signals@boost@@IAEXXZ": "0x595840 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@1@@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$?0V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@QAE@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@1@H@Z": {
+      "address": "0042b800",
+      "symbol": "??$?0V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@QAE@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@1@H@Z",
+      "size": 110,
+      "exact": false,
+      "verified_targets": {
+        "?has_empty_target@function@detail@boost@@YA_NZZ": "0x60a2f0 (instance (bytes equal, targets verified))",
+        "?stored_vtable@?1???$assign_to@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$function1@XPBVPropertyDescriptor@Reflection@RBX@@V?$allocator@X@std@@@boost@@AAEXABV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@2@@Z@4U?$basic_vtable1@XPBVPropertyDescriptor@Reflection@RBX@@V?$allocator@X@std@@@function@detail@2@B": "0x810618 (data instance (bytes equal, fields verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?stored_vtable@?1???$assign_to@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$function1@XPBVPropertyDescriptor@Reflection@RBX@@V?$allocator@X@std@@@boost@@AAEXABV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@2@@Z@4U?$basic_vtable1@XPBVPropertyDescriptor@Reflection@RBX@@V?$allocator@X@std@@@function@detail@2@B": {
+      "address": "00810618",
+      "symbol": "?stored_vtable@?1???$assign_to@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$function1@XPBVPropertyDescriptor@Reflection@RBX@@V?$allocator@X@std@@@boost@@AAEXABV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@2@@Z@4U?$basic_vtable1@XPBVPropertyDescriptor@Reflection@RBX@@V?$allocator@X@std@@@function@detail@2@B",
+      "size": 8,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x0 ?manage@?$functor_manager@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z": "0x42abe0 (instance (bytes equal, targets verified))",
+        "+0x4 ?invoke@?$void_function_obj_invoker1@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@XPBVPropertyDescriptor@Reflection@RBX@@@function@detail@boost@@SAXAATfunction_buffer@234@PBVPropertyDescriptor@Reflection@RBX@@@Z": "0x42b330 (instance (bytes equal, targets verified))"
+      }
+    },
+    "?manage@?$functor_manager@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z": {
+      "address": "0042abe0",
+      "symbol": "?manage@?$functor_manager@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+      "size": 50,
+      "exact": false,
+      "verified_targets": {
+        "?manager@?$functor_manager@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@Ufunction_obj_tag@234@@Z": "0x42a8a0 (instance (bytes equal, targets verified))",
+        "??_R0?AV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@8": "0x92e7a0 (RTTI .?AV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?manager@?$functor_manager@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@Ufunction_obj_tag@234@@Z": {
+      "address": "0042a8a0",
+      "symbol": "?manager@?$functor_manager@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@Ufunction_obj_tag@234@@Z",
+      "size": 75,
+      "exact": false,
+      "verified_targets": {
+        "??_R0?AV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@8": "0x92e7a0 (RTTI .?AV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?invoke@?$void_function_obj_invoker1@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@XPBVPropertyDescriptor@Reflection@RBX@@@function@detail@boost@@SAXAATfunction_buffer@234@PBVPropertyDescriptor@Reflection@RBX@@@Z": {
+      "address": "0042b330",
+      "symbol": "?invoke@?$void_function_obj_invoker1@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@XPBVPropertyDescriptor@Reflection@RBX@@@function@detail@boost@@SAXAATfunction_buffer@234@PBVPropertyDescriptor@Reflection@RBX@@@Z",
+      "size": 25,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?connect@?$TSignalDesc@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@QAE?AVconnection@signals@boost@@PAVSignalSource@23@ABV?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@6@H@Z": {
+      "address": "0042b680",
+      "symbol": "?connect@?$TSignalDesc@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@QAE?AVconnection@signals@boost@@PAVSignalSource@23@ABV?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@6@H@Z",
+      "size": 71,
+      "exact": false,
+      "verified_targets": {
+        "?sig@?$TSignalDesc@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@IBEAAVTSignalInstance@123@AAVSignalSource@23@@Z": "0x5875e0 (instance (bytes equal, targets verified))",
+        "?connect@?$signal1@XPBVPropertyDescriptor@Reflection@RBX@@U?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@5@@boost@@QAE?AVconnection@signals@2@ABHABV?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z": "0x42b400 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?sig@?$TSignalDesc@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@IBEAAVTSignalInstance@123@AAVSignalSource@23@@Z": {
+      "address": "005875e0",
+      "symbol": "?sig@?$TSignalDesc@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@IBEAAVTSignalInstance@123@AAVSignalSource@23@@Z",
+      "size": 82,
+      "exact": false,
+      "verified_targets": {
+        "?getSignalInstance@SignalDescriptor@Reflection@RBX@@QBE?AV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@AAVSignalSource@23@@Z": "0x56bb20 (evidence name)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?connect@?$signal1@XPBVPropertyDescriptor@Reflection@RBX@@U?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@5@@boost@@QAE?AVconnection@signals@2@ABHABV?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z": {
+      "address": "0042b400",
+      "symbol": "?connect@?$signal1@XPBVPropertyDescriptor@Reflection@RBX@@U?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@5@@boost@@QAE?AVconnection@signals@2@ABHABV?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z",
+      "size": 325,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??$?0H@shared_count@detail@boost@@QAE@PAH@Z": "0x42a800 (evidence name)",
+        "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (instance (bytes equal, targets verified))",
+        "??$?0V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@1@@Z": "0x42b220 (instance (bytes equal, targets verified))",
+        "?get_data@slot_base@detail@signals@boost@@QBE?AV?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@XZ": "0x4915b0 (instance (bytes equal, targets verified))",
+        "?connect_slot@signal_base_impl@detail@signals@boost@@QAE?AVconnection@34@ABVany@4@ABVstored_group@234@V?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@W4connect_position@34@@Z": "0x56a900 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?connect@?$signal1@XPBVPropertyDescriptor@Reflection@RBX@@U?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@5@@boost@@QAE?AVconnection@signals@2@ABHABV?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": {
+      "address": "0047d410",
+      "symbol": "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ",
+      "size": 1,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$?0V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@1@@Z": {
+      "address": "0042b220",
+      "symbol": "??$?0V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@1@@Z",
+      "size": 89,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$holder@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@2@@Z": "0x42b010 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@1@@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??0?$holder@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@2@@Z": {
+      "address": "0042b010",
+      "symbol": "??0?$holder@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@2@@Z",
+      "size": 95,
+      "exact": false,
+      "verified_targets": {
+        "??_7?$holder@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@6B@": "0x810604 (vtable RTTI .?AV?$holder@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$holder@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@2@@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?get_data@slot_base@detail@signals@boost@@QBE?AV?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@XZ": {
+      "address": "004915b0",
+      "symbol": "?get_data@slot_base@detail@signals@boost@@QBE?AV?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@XZ",
+      "size": 42,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??1?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ": {
+      "address": "0049f710",
+      "symbol": "??1?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ",
+      "size": 142,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [
+        "__ehhandler$??1?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$?0VPropBinding@Binder@CLuaHtmlView@@@shared_count@detail@boost@@QAE@PAVPropBinding@Binder@CLuaHtmlView@@@Z": {
+      "address": "0042b280",
+      "symbol": "??$?0VPropBinding@Binder@CLuaHtmlView@@@shared_count@detail@boost@@QAE@PAVPropBinding@Binder@CLuaHtmlView@@@Z",
+      "size": 131,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@6B@": "0x810524 (vtable RTTI .?AV?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@ offset 0x0)",
+        "??$checked_delete@VPropBinding@Binder@CLuaHtmlView@@@boost@@YAXPAVPropBinding@Binder@CLuaHtmlView@@@Z": "0x42b0e0 (instance (bytes equal, targets verified))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VPropBinding@Binder@CLuaHtmlView@@@shared_count@detail@boost@@QAE@PAVPropBinding@Binder@CLuaHtmlView@@@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted; listed extent 0x6e != body 0x83, whole body compared with the image bytes"
+    },
+    "??$checked_delete@VPropBinding@Binder@CLuaHtmlView@@@boost@@YAXPAVPropBinding@Binder@CLuaHtmlView@@@Z": {
+      "address": "0042b0e0",
+      "symbol": "??$checked_delete@VPropBinding@Binder@CLuaHtmlView@@@boost@@YAXPAVPropBinding@Binder@CLuaHtmlView@@@Z",
+      "size": 27,
+      "exact": false,
+      "verified_targets": {
+        "??1PropBinding@Binder@CLuaHtmlView@@QAE@XZ": "0x42a720 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?_Buynode@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@IAEPAU_Node@?$_List_nod@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@2@PAU342@0ABV?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@Z": {
+      "address": "004ad860",
+      "symbol": "?_Buynode@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@IAEPAU_Node@?$_List_nod@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@2@PAU342@0ABV?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@Z",
+      "size": 75,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?_Incsize@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@IAEXI@Z": {
+      "address": "004acb50",
+      "symbol": "?_Incsize@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@IAEXI@Z",
+      "size": 154,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_0BB@MOGOBHAF@list?$DMT?$DO?5too?5long?$AA@": "0x80d400 (literal 'list<T> too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVlength_error@std@@": "0x8d0cc0 (throw info .?AVlength_error@std@@ (3 catchable types))",
+        "??_7length_error@std@@6B@": "0x80b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$?_Incsize@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@IAEXI@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??_G?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEPAXI@Z": {
+      "address": "00415000",
+      "symbol": "??_G?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEPAXI@Z",
+      "size": 31,
+      "exact": false,
+      "verified_targets": {
+        "??_7sp_counted_base@detail@boost@@6B@": "0x80b2f0 (vtable RTTI .?AVsp_counted_base@detail@boost@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?dispose@?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEXXZ": {
+      "address": "0042b310",
+      "symbol": "?dispose@?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEXXZ",
+      "size": 26,
+      "exact": false,
+      "verified_targets": {
+        "??1PropBinding@Binder@CLuaHtmlView@@QAE@XZ": "0x42a720 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?get_deleter@?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEPAXABVtype_info@@@Z": {
+      "address": "005f2310",
+      "symbol": "?get_deleter@?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEPAXABVtype_info@@@Z",
+      "size": 5,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    }
+  },
+  "exact": [
+    "0042a720",
+    "0042bcd0",
+    "0042bd70",
+    "0042be20",
+    "0042c000",
+    "0042c0d0",
+    "0042c3c0",
+    "0042c4e0",
+    "0042c500",
+    "0042c570"
+  ],
+  "exact_count": 10,
+  "pending_build_only": [
+    "0042c630",
+    "0042c760"
+  ],
+  "not_counted": {
+    "instances": "ATL / boost / STL / SecurityContext bodies proven by bytes and targets (see instances)"
+  },
+  "left": {
+    "0042c8c0": "CLuaHtmlView method that finds an element by id (IHTMLDocument3 0081056c, IHTMLInputElement 0081057c), news the Binder and binds it; CLuaHtmlView itself is not natively declared",
+    "0042c590 / 0042ccd0 / 0042ce50": "string-signal slot-call iterator / signal1 operator() / SignalDescImpl fire instances of the same unit, not Binder code"
+  },
+  "vtables": {
+    "??_7Binder@CLuaHtmlView@@6B@": {
+      "address": "0x810654",
+      "rtti": ".?AVBinder@CLuaHtmlView@@",
+      "slots": {
+        "0": "??_EBinder@CLuaHtmlView@@UAEPAXI@Z = 0x42c4e0 (own row (??_G))"
+      }
+    },
+    "??_7?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@6B@": {
+      "address": "0x810524",
+      "rtti": ".?AV?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@",
+      "slots": {
+        "0": "??_E?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEPAXI@Z = 0x415000 (instance (bytes equal, targets verified) via ??_G)",
+        "1": "?dispose@?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEXXZ = 0x42b310 (instance (bytes equal, targets verified))",
+        "2": "?destroy@sp_counted_base@detail@boost@@UAEXXZ = 0x405e10 (evidence name)",
+        "3": "?get_deleter@?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEPAXABVtype_info@@@Z = 0x5f2310 (instance (bytes equal, targets verified))"
+      }
+    }
+  },
+  "proposals": [
+    "native-headers/v8tree/Instance.h (owner): `static Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> event_propertyChanged;` (00973f48: PropBinding::PropBinding 0042c630 connects through it, group 10, via 0042b680; raisePropertyChanged 0040db00 raises it). Unlocks 0042c630 and, with it, bind 0042c760."
+  ],
+  "applied": [
+    "2026-11-06: native-headers/AppLeaves2008/EventHandler2008.h makes `boost::function0<bool> handler` public (~Binder 0042c3c0 assigns it directly); ~Binder and ??_G 0042c4e0 count."
+  ],
+  "scope": "Inactive. Exact rows with verified targets; pending rows excluded from counts. No active build, swap or credit."
+}

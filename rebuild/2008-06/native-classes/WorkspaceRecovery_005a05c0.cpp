@@ -1,4 +1,7 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /U_RELEASEASSERT /I{headers}/engine-world
 #include "v8datamodel/Workspace.h"
+#include "v8datamodel/Camera.h"
+#include "v8world/World.h"
 
 namespace RBX {
 
@@ -10,49 +13,15 @@ Camera* Workspace::sub_005a05c0() const
 	return currentCamera.get();
 }
 
-// INFERRED: 005a0df0, callgraph-adjacency: neighbours=1
-void Workspace::sub_005a0df0()
+// 005a0df0 ?reset@Workspace@RBX@@QAEXXZ (52 B; registry placeholder func_005a0df0). Identity: the donor
+// v8datamodel/Workspace.cpp reset() { stop(); world->reset(); } -- stop 005a0260 inlined (isSimulating +0x3d0 = false,
+// getCamera through the camera-owner vtable at +0x288 slot 1, Camera::autoMode 005cc450), then World::reset inlined
+// (world +0x2e4, worldStepId +0xa8 = 0 in the engine-world 2008 World.h; no RBXASSERT code, hence /U_RELEASEASSERT). stop() lives out of line in the split unit AppUnit5A0_2008Workspace.cpp, so
+// its two statements are spelled here (one original unit: the compiler inlined it).
+void Workspace::reset()
 {
-	// push esi
-	// mov esi, ecx          ; esi = this
-	// mov eax, dword ptr [esi + 0x288]   ; eax = *(DWORD*)(this + 0x288)
-	// mov edx, dword ptr [eax + 4]       ; edx = *(DWORD*)[eax + 4]
-	// lea ecx, [esi + 0x288]               ; ecx = this + 0x288
-	// mov byte ptr [esi + 0x3d0], 0       ; *(BYTE*)(this + 0x3d0) = 0
-	// call edx                              ; call edx (function pointer)
-	// mov ecx, eax                          ; ecx = return value
-	// call 0x5cc450                           ; call function at 0x5cc450
-	// mov eax, dword ptr [esi + 0x2e4]      ; eax = *(DWORD*)(this + 0x2e4)
-	// mov dword ptr [eax + 0xa8], 0         ; *(DWORD*)[eax + 0xa8] = 0
-	// pop esi
-	// ret
-
-	// ESI is alias for this
-	RBX::Workspace* _this = this;
-
-	// eax = *(DWORD*)(this + 0x288)
-	DWORD* eax = reinterpret_cast<DWORD*>(reinterpret_cast<DWORD_PTR>(_this) + 0x288);
-
-	// edx = *(DWORD*)[eax + 4]
-	DWORD edx = *reinterpret_cast<DWORD*>(*eax + 4);
-
-	// ecx = this + 0x288
-	// (no action needed, just setting up the register)
-
-	// *(BYTE*)(this + 0x3d0) = 0
-	reinterpret_cast<BYTE*>(reinterpret_cast<DWORD_PTR>(_this))[0x3d0] = 0;
-
-	// call edx  - call through function pointer
-	// (implementation-specific call; we match the control flow)
-
-	// mov ecx, eax  ; ecx = return value
-	// call 0x5cc450
-	// (the target 0x5cc450 is an external function; we declare the call)
-
-	// eax = *(DWORD*)(this + 0x2e4)
-	DWORD* eax2 = reinterpret_cast<DWORD*>(reinterpret_cast<DWORD_PTR>(_this) + 0x2e4);
-
-	// *(DWORD*)[eax + 0xa8] = 0
-	*reinterpret_cast<DWORD*>(*eax2 + 0xa8) = 0;
+	isSimulating = false;          // stop() 005a0260, inlined
+	getCamera()->autoMode();
+	world->reset();
 }
 }

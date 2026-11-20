@@ -122,6 +122,21 @@ namespace RBX
 		}
 	}
 
+	// 0059c640 ?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@...@Z
+	// (registry name; self-recursive, PartInstance unit neighbours 0059c3b0 vector<weak_ptr<PartInstance> >::push_back
+	// and setPartSizeXml 0059db90): shared_from 00618a40, weak_ptr temporary, numChildren 0048ae20 per iteration,
+	// inline getChild over children (+0x108). Donor PartInstance.cpp shape.
+	void PartInstance::findParts(Instance* instance, std::vector<boost::weak_ptr<RBX::PartInstance>>& parts)
+	{
+		if (PartInstance* part = dynamic_cast<PartInstance*>(instance))
+			parts.push_back(shared_from(part));
+
+		for (size_t i = 0; i < instance->numChildren(); i++)
+		{
+			findParts(instance->getChild(i), parts);
+		}
+	}
+
 	// 0059d370: GuidItem<Instance>::registerGuid 0049bba0, Primitive::setGuid 005e7450 (guid at +0x8)
 	void PartInstance::onGuidChanged()
 	{

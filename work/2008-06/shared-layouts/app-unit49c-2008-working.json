@@ -1,0 +1,1269 @@
+{
+  "class": "RBX::Network streaming rows (Network/Streaming.cpp) of the application range 0049c000..004a8000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "streaming": [
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit49c-2008/NativeAppUnit49C_2008_streaming.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit49C_2008Streaming.cpp"
+    ],
+    "templates": [
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit49c-2008/NativeAppUnit49C_2008_templates.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit49C_2008IdSerializerTemplates.cpp"
+    ],
+    "library-bitstream": [
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit49c-2008/Library_bitstream.obj",
+      "/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source/BitStream.cpp"
+    ],
+    "library-compressor": [
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit49c-2008/Library_compressor.obj",
+      "/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source/StringCompressor.cpp"
+    ],
+    "library-matrix3": [
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit49c-2008/Library_matrix3.obj",
+      "/home/user/roconstruct/tools/rbxgs/Client/Rendering/g3d/G3Dcpp/Matrix3.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit49c_2008.py": "f129c65694b40b537c39125ee6e2d52f029b16dd9e6e1be7644a9222c3e80ec0",
+    "rebuild/2008-06/native-classes/AppUnit49C_2008Streaming.cpp": "ecc9d9f7c306cbe69ea9d00f128b15527fe7b98b01a3e5b4f5f08802dff69f61",
+    "rebuild/2008-06/native-classes/AppUnit49C_2008IdSerializerTemplates.cpp": "fb9bab817be65b51e3a09538b0f59c8bb82261efc2ffb6e9904d2f111a399156",
+    "rebuild/2008-06/native-headers/AppUnit49C_2008/Streaming2008.h": "6c361d1ce21dfb2a83fcf98dc975f7b19f6be9c09c85f5123935a5f404b577dd",
+    "rebuild/2008-06/native-headers/Network/IdSerializer.h": "b62f39fdb34649935076cab7daa419c50bae759ec3d252e8b5d81f3850f2a3ad",
+    "rebuild/2008-06/native-headers/reflection/property.h": "62aeba1205a57e8f0f0adcba36f8e07b57422e5b3097a3eef248dc45219b1c64",
+    "rebuild/2008-06/native-headers/reflection/enumconverter.h": "06f7b13fb2825b9bde73d7a4f5ba61f860a4f12568abc50b70d49e2550f7eb33"
+  },
+  "library_sources": {
+    "tools/rbxgs/Client/Network/raknet30/Source/BitStream.cpp": "f1cfc07d28cd0d854009710e786b0d33bb067dd95676657aadb5abe01d8eb4c7",
+    "tools/rbxgs/Client/Network/raknet30/Source/StringCompressor.cpp": "36dfb99c00e93713882466ad7d81c08900451baa790a6ad4329850119707d37c",
+    "tools/rbxgs/Client/Rendering/g3d/G3Dcpp/Matrix3.cpp": "b4a32ab9b57fd18c68b0fb293484c048feb254e997260ef6d015ee20b3b0790b"
+  },
+  "objects": {
+    "streaming": "555ac7b86e617792342d692a9dd676f031e94467942f9754416d5e132c612c31",
+    "templates": "d1127ecedb0165d3f0f81440fc14935ea572aad8af0cd63f55ef557504793ba1"
+  },
+  "range_rows": 364,
+  "unit_map": {
+    "players ..0049e28f": "Network/Players.cpp (starts below 0049c000): AbuseReporter (data ctor/dtor 0049d1a0 / 0049d140, shared_count<data> 0049df90, AbuseReporter(std::string) 0049e040, add 0049c710, the worker_thread bind holder 0049c440), Players::reportAbuse 0049c7b0 / 0049ca70, OnReceive 0049d770 and the signal2<void(string, shared_ptr<Instance>)> instance 0049cec0 / fire 0049d2b0. Owner: native Network/Players.h (network-players receipt); not rebuilt here.",
+    "crash-reporter 0049e290..0049e50f": "Network/CrashReporter.cpp: CrashReporter::ProcessException 0049e290, CrashExceptionFilter 0049e490, PreventSetUnhandledExceptionFilter 0049e4a0, Start 0049e500 (evidence names). No native header; not built.",
+    "settings 0049e510..0049ed2f": "Described<GlobalSettings> / NetworkSettings classDescriptor bodies (0049ec10, 0049ec80), shared_count rows (creatable-shared-count) and services rows; other owners.",
+    "client 0049ed30..004a156f": "Network/Client.cpp: FactoryProduct<Client> / Client dtor and thunks, BoundFuncDesc<Client> 0049ee50 / 0049fbb0, Client::onServiceProvider 0049fe50, OnReceive 004a1070, onEvent(Closing) 0049f130 (pending in network-client-server2008). Owner: native Network/Client2008.h.",
+    "server 004a1570..004a504f": "Network/Server.cpp with ClientProxy (isReplicator 004a17f0, Server::stop 004a1880, ClientProxy thunks 004a19a0.., getClientCount 004a2250, visitDescendents 004a27e0, ClientProxy::OnReceive 004a2c20, Server::onServiceProvider 004a4100, OnReceive 004a4dc0), with the Message / Hint COMDATs 004a37a0..004a4d9f (~FactoryProduct<Message> 004a3980, ~Message 004a3a90, Hint thunks, getClassName, classDescriptor, create<Message> 004a3850 / create<Hint> 004a4d40; vtable 00823b6c .?AVHint@RBX@@): owners of Network/Server2008.h / ClientProxy2008.h and v8datamodel/Message.h (effects receipt).",
+    "raknet-bitstream 004a5050..004a593f": "RakNet 3.x BitStream.cpp library code (BitStream ctors/dtor 004a5090 / 004a5120 / 004a51a0, ReadBits 004a5210, ReadCompressed 004a52c0, AddBitsAndReallocate 004a53b0, Write0/Write1 004a5540 / 004a5560, WriteBits 004a5600, WriteCompressed 004a5790 ...) and the inline template Read<bool> 004a5050. Library: never counted; WriteBits / ReadBits / Write0 / Write1 are proven exact here as library evidence.",
+    "g3d-inline 004a5940, 004a59e0, 004a6100": "G3D inline bodies emitted in this unit: isFinite(double), Vector3::isFinite, Vector3::clamp (callers in other units too). Library; exact here as support bodies.",
+    "streaming 004a5a30..004a7fff": "Network/Streaming.cpp (strings \"BitStream >> int failed\", \"BitStream string write: String too long\", \"readBrickVector x failed\", \"BitStream >> CoordinateFrame orientId failed\", \"BitStream >> BrickColor failed\"): serializeEnum / deserializeEnum, the operator<< / operator>> family, brickEq, the static isBrickLocation, write/readBrickVector, rationalize, CoordinateFrame streaming, serialize / deserialize <std::string> and <BrickColor>, ConstProperty::getValue / Property::setValue<BrickColor>; the RakNet header templates WriteNormQuat<float> 004a5dd0 / ReadNormQuat<float> 004a5f20; StringReceiver::receive 004a6e20 / 004a6f70, operator>>(Guid::Data) 004a70b0, deserializeString 004a7150, StringSender::trySend 004a7ba0 / send 004a7e20 (members not declared by Network/IdSerializer.h); the STL instances on IdSerializer::WaitItem, map<Guid::Data, vector<WaitItem> > and map<std::string, unsigned char>. Built here."
+  },
+  "unit_map_checks": [
+    "string 0x823d2c 'BitStream string write: String too long'",
+    "string 0x823d80 'BitStream >> std::string: failed to read length'",
+    "string 0x823e40 'BitStream >> CoordinateFrame orientId failed'",
+    "string 0x823e70 'BitStream >> BrickColor failed'",
+    "vtable 0x823b6c RTTI .?AVHint@RBX@@",
+    "vtable 0x82534c RTTI .?AVIdSerializer@Network@RBX@@",
+    "evidence name 0x49e290 ?ProcessException@CrashReporter@@UAEJPAU_EXCEPTION_POINTERS@@@Z",
+    "evidence name 0x49e040 ??0AbuseReporter@Network@RBX@@QAE@V?$basic_string@DU?$char_traits@D@st",
+    "evidence name 0x4a1070 ?OnReceive@Client@Network@RBX@@UAE?AW4PluginReceiveResult@@PAVRakPeerI",
+    "evidence name 0x4a4dc0 ?OnReceive@Server@Network@RBX@@UAE?AW4PluginReceiveResult@@PAVRakPeerI",
+    "evidence name 0x4a5940 ?isFinite@G3D@@YA_NN@Z"
+  ],
+  "range_rows_counted_by_other_receipts": [
+    "0049c4f0 counted by network-players-working.json",
+    "0049ca70 counted by network-players-working.json",
+    "0049cd00 counted by network-players-working.json",
+    "0049d200 counted by network-players-working.json",
+    "0049d450 counted by network-players-working.json",
+    "0049d480 counted by network-players-working.json",
+    "0049daa0 counted by network-players-working.json",
+    "0049dc70 counted by network-players-working.json",
+    "0049de70 counted by physics-array-lifetime-trial.json",
+    "0049df50 counted by network-players-working.json",
+    "0049e1d0 counted by network-players-working.json",
+    "0049e510 counted by services-working.json",
+    "0049e580 counted by services-working.json",
+    "0049e590 counted by creatable-shared-count-working.json",
+    "0049e620 counted by creatable-shared-count-working.json",
+    "0049e760 counted by services-working.json",
+    "0049e810 counted by services-working.json",
+    "0049ea10 counted by network-client-server2008-working.json",
+    "0049eb30 counted by network-client-server2008-working.json",
+    "0049eba0 counted by network-client-server2008-working.json",
+    "0049ec80 counted by services-working.json",
+    "0049ed90 counted by app-leaves2008-working.json",
+    "0049edb0 counted by network-client-server2008-working.json",
+    "0049ee20 counted by network-replicator2008-working.json",
+    "0049eef0 counted by network-client-server2008-working.json",
+    "0049f090 counted by network-client-server2008-working.json",
+    "0049f0a0 counted by network-client-server2008-working.json",
+    "0049f0b0 counted by network-client-server2008-working.json",
+    "0049f0c0 counted by network-client-server2008-working.json",
+    "0049f0d0 counted by network-client-server2008-working.json",
+    "0049f0e0 counted by network-client-server2008-working.json",
+    "0049f0f0 counted by network-client-server2008-working.json",
+    "0049f180 counted by app-leaves2008-working.json",
+    "0049f2e0 counted by network-client-server2008-working.json",
+    "0049f3b0 counted by network-client-server2008-working.json",
+    "0049f3c0 counted by network-client-server2008-working.json",
+    "0049f3d0 counted by network-client-server2008-working.json",
+    "0049f3e0 counted by network-client-server2008-working.json",
+    "0049f3f0 counted by network-client-server2008-working.json",
+    "0049f400 counted by network-client-server2008-working.json",
+    "0049f410 counted by network-client-server2008-working.json",
+    "0049f420 counted by network-client-server2008-working.json",
+    "0049f430 counted by network-client-server2008-working.json",
+    "0049f440 counted by network-client-server2008-working.json",
+    "0049f450 counted by network-client-server2008-working.json",
+    "0049f4e0 counted by network-client-server2008-working.json",
+    "0049f590 counted by network-client-server2008-working.json",
+    "0049fe20 counted by network-client-server2008-working.json",
+    "0049ff10 counted by network-client-server2008-working.json",
+    "0049ffc0 counted by network-client-server2008-working.json",
+    "0049ffd0 counted by network-client-server2008-working.json",
+    "0049ffe0 counted by network-client-server2008-working.json",
+    "0049fff0 counted by network-client-server2008-working.json",
+    "004a0000 counted by network-client-server2008-working.json",
+    "004a0990 counted by network-client-server2008-working.json",
+    "004a1560 counted by feature-working.json",
+    "004a1580 counted by network-client-server2008-working.json",
+    "004a15f0 counted by network-client-server2008-working.json",
+    "004a1660 counted by network-client-server2008-working.json",
+    "004a1680 counted by effects-working.json",
+    "004a16f0 counted by effects-working.json",
+    "004a17c0 counted by network-client-server2008-working.json",
+    "004a17d0 counted by network-client-server2008-working.json",
+    "004a17e0 counted by network-client-server2008-working.json",
+    "004a1a90 counted by viewnew-part-mesh-working.json",
+    "004a1b50 counted by effects-working.json",
+    "004a1b60 counted by effects-working.json",
+    "004a1be0 counted by creatable-shared-count-working.json",
+    "004a2070 counted by humanoid2008-working.json, misc-leaves-working.json",
+    "004a22a0 counted by network-client-server2008-working.json",
+    "004a24c0 counted by network-client-server2008-working.json",
+    "004a27a0 counted by network-client-server2008-working.json",
+    "004a3390 counted by network-client-server2008-working.json",
+    "004a3470 counted by network-client-server2008-working.json",
+    "004a34e0 counted by network-player-working.json",
+    "004a3540 counted by network-client-server2008-working.json",
+    "004a3640 counted by network-replicator2008-working.json",
+    "004a3670 counted by network-client-server2008-working.json",
+    "004a3680 counted by network-client-server2008-working.json",
+    "004a3690 counted by network-client-server2008-working.json",
+    "004a36a0 counted by network-client-server2008-working.json",
+    "004a36b0 counted by network-client-server2008-working.json",
+    "004a36c0 counted by network-client-server2008-working.json",
+    "004a36d0 counted by network-client-server2008-working.json",
+    "004a36e0 counted by network-client-server2008-working.json",
+    "004a36f0 counted by network-client-server2008-working.json",
+    "004a3700 counted by network-client-server2008-working.json",
+    "004a3710 counted by creatable-shared-count-working.json",
+    "004a3980 counted by effects-working.json",
+    "004a3a00 counted by creatable-shared-count-working.json",
+    "004a3a90 counted by effects-working.json",
+    "004a3af0 counted by effects-working.json",
+    "004a3c30 counted by effects-working.json",
+    "004a3c90 counted by effects-working.json",
+    "004a3cb0 counted by effects-working.json",
+    "004a3cd0 counted by effects-working.json",
+    "004a3d40 counted by debris-forcefield-working.json",
+    "004a3db0 counted by network-client-server2008-working.json",
+    "004a3dd0 counted by effects-working.json",
+    "004a40d0 counted by network-client-server2008-working.json",
+    "004a42c0 counted by network-client-server2008-working.json",
+    "004a4370 counted by network-client-server2008-working.json",
+    "004a4380 counted by network-client-server2008-working.json",
+    "004a4390 counted by network-client-server2008-working.json",
+    "004a43a0 counted by network-client-server2008-working.json",
+    "004a43b0 counted by network-client-server2008-working.json",
+    "004a43c0 counted by network-client-server2008-working.json",
+    "004a43d0 counted by network-client-server2008-working.json",
+    "004a43e0 counted by network-client-server2008-working.json",
+    "004a4a60 counted by effects-working.json",
+    "004a4b30 counted by network-client-server2008-working.json"
+  ],
+  "range_rows_not_counted": "0049c440 0049c590 0049c630 0049c6c0 0049c710 0049c7b0 0049cb30 0049cec0 0049d090 0049d140 0049d1a0 0049d2b0 0049d390 0049d630 0049d770 0049df70 0049df90 0049dffe 0049e020 0049e040 0049e290 0049e490 0049e4a0 0049e500 0049e6b0 0049e890 0049e9a0 0049ea80 0049ec10 0049ecf0 0049ed30 0049ed40 0049ed50 0049ed60 0049ed80 0049ee50 0049ef60 0049efb0 0049f030 0049f130 0049f200 0049f210 0049f2d0 0049f460 0049f500 0049f5b0 0049f610 0049f620 0049f680 0049f710 0049f7a0 0049f800 0049f920 0049f960 0049f9d0 0049fa40 0049fbb0 0049fc50 0049fd90 0049fe50 004a0020 004a0150 004a02e0 004a03b0 004a04b0 004a0690 004a06b0 004a0780 004a0860 004a0900 004a0a70 004a0c90 004a0e50 004a0f00 004a0fb0 004a1070 004a1480 004a1570 004a1760 004a17f0 004a1880 004a18c0 004a19a0 004a19b0 004a19c0 004a19d0 004a19e0 004a19f0 004a1a00 004a1a10 004a1a20 004a1a30 004a1a40 004a1af0 004a1b70 004a1c70 004a1d00 004a1d10 004a1d70 004a1d80 004a1ed0 004a1f70 004a1f90 004a200f 004a2030 004a20a0 004a2150 004a2180 004a21c0 004a2250 004a22c0 004a27e0 004a2950 004a2ac0 004a2c20 004a2e05 004a2e5f 004a2eb0 004a2fa0 004a3020 004a3170 004a31d0 004a3290 004a3340 004a37a0 004a3850 004a38d0 004a39e0 004a39f0 004a3b60 004a3b70 004a3b80 004a3e40 004a3f80 004a4020 004a4100 004a4400 004a4530 004a4610 004a4740 004a4760 004a4830 004a4910 004a4930 004a49a0 004a4a00 004a4b00 004a4b10 004a4b20 004a4c80 004a4cf0 004a4d00 004a4d10 004a4d20 004a4d40 004a4dc0 004a4f3d 004a4f55 004a4fa0 004a5050 004a5090 004a50c0 004a5120 004a51a0 004a51c0 004a51d0 004a51e0 004a5210 004a52c0 004a53b0 004a5430 004a5470 004a5480 004a5490 004a5540 004a5560 004a55a0 004a5600 004a56a0 004a5700 004a5770 004a5790 004a5940 004a59e0 004a5d10 004a5d40 004a5dd0 004a5f20 004a6100 004a6b80 004a6de0 004a6e20 004a6f70 004a70b0 004a7150 004a71e0 004a7267 004a7570 004a75e0 004a7920 004a7ba0 004a7ca0 004a7d00 004a7e20",
+  "rows": [
+    {
+      "address": "004a5a30",
+      "symbol": "?serializeEnum@Network@RBX@@YAXABVConstProperty@Reflection@2@AAVBitStream@RakNet@@@Z",
+      "size": 50,
+      "target_size": 50,
+      "exact": true,
+      "verified_targets": {
+        "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z": "0x4a5600 (library body exact at the bound address (BitStream.cpp))"
+      },
+      "local_eh": [],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a5a70",
+      "symbol": "?deserializeEnum@Network@RBX@@YAXAAVProperty@Reflection@2@AAVBitStream@RakNet@@@Z",
+      "size": 159,
+      "target_size": 159,
+      "exact": true,
+      "verified_targets": {
+        "?ReadBits@BitStream@RakNet@@QAE_NPAEH_N@Z": "0x4a5210 (library body exact at the bound address (BitStream.cpp))",
+        "??_C@_0BH@NNLKHOGP@deserializeEnum?5failed?$AA@": "0x823c34 (string 'deserializeEnum failed')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (support body exact at the bound address)",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info, catchable types .?AVruntime_error@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$?deserializeEnum@Network@RBX@@YAXAAVProperty@Reflection@2@AAVBitStream@RakNet@@@Z"
+      ],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a5b10",
+      "symbol": "??6Network@RBX@@YAAAVBitStream@RakNet@@AAV23@_N@Z",
+      "size": 32,
+      "target_size": 32,
+      "exact": true,
+      "verified_targets": {
+        "?Write1@BitStream@RakNet@@QAEXXZ": "0x4a5560 (library body exact at the bound address (BitStream.cpp))",
+        "?Write0@BitStream@RakNet@@QAEXXZ": "0x4a5540 (library body exact at the bound address (BitStream.cpp))"
+      },
+      "local_eh": [],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a5b30",
+      "symbol": "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AA_N@Z",
+      "size": 142,
+      "target_size": 142,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0BJ@OJKEDBHH@BitStream?5?$DO?$DO?5bool?5failed?$AA@": "0x823c4c (string 'BitStream >> bool failed')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (support body exact at the bound address)",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info, catchable types .?AVruntime_error@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AA_N@Z"
+      ],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a5bc0",
+      "symbol": "?brickEq@Network@RBX@@YA_NMM@Z",
+      "size": 51,
+      "target_size": 51,
+      "exact": true,
+      "verified_targets": {
+        "__real@3a03126f": "0x823c30 (constant 3a03126f)"
+      },
+      "local_eh": [],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a5c00",
+      "symbol": "?isBrickLocation@Network@RBX@@YA_NABVVector3@G3D@@AAFAAG1@Z",
+      "size": 267,
+      "target_size": 267,
+      "exact": true,
+      "verified_targets": {
+        "__real@44000000": "0x823c70 (constant 44000000)",
+        "__real@c4000000": "0x823c6c (constant c4000000)",
+        "__real@434ccccd": "0x823c68 (constant 434ccccd)",
+        "__real@40000000": "0x81c434 (constant 40000000)",
+        "__ftol2_sse": "0x6a17f0 (CRT helper (call site))",
+        "__real@41200000": "0x827490 (constant 41200000)",
+        "?brickEq@Network@RBX@@YA_NMM@Z": "0x4a5bc0 (own row)"
+      },
+      "local_eh": [],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a61a0",
+      "symbol": "??6Network@RBX@@YAAAVBitStream@RakNet@@AAV23@H@Z",
+      "size": 33,
+      "target_size": 33,
+      "exact": true,
+      "verified_targets": {
+        "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z": "0x4a5600 (library body exact at the bound address (BitStream.cpp))"
+      },
+      "local_eh": [],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a61d0",
+      "symbol": "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAJ@Z",
+      "size": 119,
+      "target_size": 119,
+      "exact": true,
+      "verified_targets": {
+        "?ReadBits@BitStream@RakNet@@QAE_NPAEH_N@Z": "0x4a5210 (library body exact at the bound address (BitStream.cpp))",
+        "??_C@_0BJ@GNACBHIK@BitStream?5?$DO?$DO?5long?5failed?$AA@": "0x823c80 (string 'BitStream >> long failed')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (support body exact at the bound address)",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info, catchable types .?AVruntime_error@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAJ@Z"
+      ],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a6250",
+      "symbol": "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAH@Z",
+      "size": 119,
+      "target_size": 119,
+      "exact": true,
+      "verified_targets": {
+        "?ReadBits@BitStream@RakNet@@QAE_NPAEH_N@Z": "0x4a5210 (library body exact at the bound address (BitStream.cpp))",
+        "??_C@_0BI@DKLFMBPF@BitStream?5?$DO?$DO?5int?5failed?$AA@": "0x823c9c (string 'BitStream >> int failed')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (support body exact at the bound address)",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info, catchable types .?AVruntime_error@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAH@Z"
+      ],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a62d0",
+      "symbol": "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAI@Z",
+      "size": 119,
+      "target_size": 119,
+      "exact": true,
+      "verified_targets": {
+        "?ReadBits@BitStream@RakNet@@QAE_NPAEH_N@Z": "0x4a5210 (library body exact at the bound address (BitStream.cpp))",
+        "??_C@_0BL@OAFCNHCB@BitStream?5?$DO?$DO?5size_t?5failed?$AA@": "0x823cb4 (string 'BitStream >> size_t failed')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (support body exact at the bound address)",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info, catchable types .?AVruntime_error@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAI@Z"
+      ],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a6350",
+      "symbol": "??6Network@RBX@@YAAAVBitStream@RakNet@@AAV23@E@Z",
+      "size": 33,
+      "target_size": 33,
+      "exact": true,
+      "verified_targets": {
+        "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z": "0x4a5600 (library body exact at the bound address (BitStream.cpp))"
+      },
+      "local_eh": [],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a6380",
+      "symbol": "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAE@Z",
+      "size": 119,
+      "target_size": 119,
+      "exact": true,
+      "verified_targets": {
+        "?ReadBits@BitStream@RakNet@@QAE_NPAEH_N@Z": "0x4a5210 (library body exact at the bound address (BitStream.cpp))",
+        "??_C@_0CC@GGNJJAIL@BitStream?5?$DO?$DO?5unsigned?5char?5faile@": "0x823cd0 (string 'BitStream >> unsigned char failed')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (support body exact at the bound address)",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info, catchable types .?AVruntime_error@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAE@Z"
+      ],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a6400",
+      "symbol": "??6Network@RBX@@YAAAVBitStream@RakNet@@AAV23@M@Z",
+      "size": 33,
+      "target_size": 33,
+      "exact": true,
+      "verified_targets": {
+        "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z": "0x4a5600 (library body exact at the bound address (BitStream.cpp))"
+      },
+      "local_eh": [],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a6430",
+      "symbol": "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAM@Z",
+      "size": 119,
+      "target_size": 119,
+      "exact": true,
+      "verified_targets": {
+        "?ReadBits@BitStream@RakNet@@QAE_NPAEH_N@Z": "0x4a5210 (library body exact at the bound address (BitStream.cpp))",
+        "??_C@_0BK@NAFCBAOF@BitStream?5?$DO?$DO?5float?5failed?$AA@": "0x823cf4 (string 'BitStream >> float failed')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (support body exact at the bound address)",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info, catchable types .?AVruntime_error@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAM@Z"
+      ],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a64b0",
+      "symbol": "??6Network@RBX@@YAAAVBitStream@RakNet@@AAV23@N@Z",
+      "size": 33,
+      "target_size": 33,
+      "exact": true,
+      "verified_targets": {
+        "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z": "0x4a5600 (library body exact at the bound address (BitStream.cpp))"
+      },
+      "local_eh": [],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a64e0",
+      "symbol": "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAN@Z",
+      "size": 119,
+      "target_size": 119,
+      "exact": true,
+      "verified_targets": {
+        "?ReadBits@BitStream@RakNet@@QAE_NPAEH_N@Z": "0x4a5210 (library body exact at the bound address (BitStream.cpp))",
+        "??_C@_0BL@CABIHLKL@BitStream?5?$DO?$DO?5double?5failed?$AA@": "0x823d10 (string 'BitStream >> double failed')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (support body exact at the bound address)",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info, catchable types .?AVruntime_error@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAN@Z"
+      ],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a6560",
+      "symbol": "??6Network@RBX@@YAAAVBitStream@RakNet@@AAV23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 170,
+      "target_size": 170,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0CI@PLHCHAPF@BitStream?5string?5write?3?5String?5t@": "0x823d2c (string 'BitStream string write: String too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (support body exact at the bound address)",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info, catchable types .?AVruntime_error@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z": "0x4a5600 (library body exact at the bound address (BitStream.cpp))",
+        "?Instance@StringCompressor@@SAPAV1@XZ": "0x4ba230 (library body exact at the bound address (StringCompressor.cpp))",
+        "?EncodeString@StringCompressor@@QAEXPBDHPAVBitStream@RakNet@@H@Z": "0x4ba4f0 (library body exact at the bound address (StringCompressor.cpp))"
+      },
+      "local_eh": [
+        "__ehhandler$??6Network@RBX@@YAAAVBitStream@RakNet@@AAV23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a6610",
+      "symbol": "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 229,
+      "target_size": 229,
+      "exact": true,
+      "verified_targets": {
+        "?ReadBits@BitStream@RakNet@@QAE_NPAEH_N@Z": "0x4a5210 (library body exact at the bound address (BitStream.cpp))",
+        "??_C@_0DA@MCBDDFLJ@BitStream?5?$DO?$DO?5std?3?3string?3?5failed@": "0x823d80 (string 'BitStream >> std::string: failed to read length')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (support body exact at the bound address)",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info, catchable types .?AVruntime_error@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??_C@_0CM@BONOKOON@BitStream?5?$DO?$DO?5std?3?3string?3?5Bad?5st@": "0x823d54 (string 'BitStream >> std::string: Bad string length')",
+        "__alloca_probe_16": "0x6a1560 (CRT helper (call site))",
+        "?Instance@StringCompressor@@SAPAV1@XZ": "0x4ba230 (library body exact at the bound address (StringCompressor.cpp))",
+        "?DecodeString@StringCompressor@@QAE_NPADHPAVBitStream@RakNet@@H@Z": "0x4ba650 (library body exact at the bound address (StringCompressor.cpp))",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "0x80244c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a6700",
+      "symbol": "?writeBrickVector@Network@RBX@@YAXAAVBitStream@RakNet@@ABVVector3@G3D@@@Z",
+      "size": 185,
+      "target_size": 185,
+      "exact": true,
+      "verified_targets": {
+        "?isBrickLocation@Network@RBX@@YA_NABVVector3@G3D@@AAFAAG1@Z": "0x4a5c00 (own row)",
+        "?Write1@BitStream@RakNet@@QAEXXZ": "0x4a5560 (library body exact at the bound address (BitStream.cpp))",
+        "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z": "0x4a5600 (library body exact at the bound address (BitStream.cpp))",
+        "?Write0@BitStream@RakNet@@QAEXXZ": "0x4a5540 (library body exact at the bound address (BitStream.cpp))"
+      },
+      "local_eh": [],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a67c0",
+      "symbol": "?readBrickVector@Network@RBX@@YAXAAVBitStream@RakNet@@AAVVector3@G3D@@@Z",
+      "size": 480,
+      "target_size": 480,
+      "exact": true,
+      "verified_targets": {
+        "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AA_N@Z": "0x4a5b30 (own row)",
+        "?ReadBits@BitStream@RakNet@@QAE_NPAEH_N@Z": "0x4a5210 (library body exact at the bound address (BitStream.cpp))",
+        "??_C@_0BJ@OMEKJGJB@readBrickVector?5x?5failed?$AA@": "0x823de8 (string 'readBrickVector x failed')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (support body exact at the bound address)",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info, catchable types .?AVruntime_error@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??_C@_0BJ@PLDBICNC@readBrickVector?5y?5failed?$AA@": "0x823dcc (string 'readBrickVector y failed')",
+        "??_C@_0BJ@MCLMLOBH@readBrickVector?5z?5failed?$AA@": "0x823db0 (string 'readBrickVector z failed')",
+        "__real@3f000000": "0x819bac (constant 3f000000)",
+        "__real@3dcccccd": "0x81e704 (constant 3dcccccd)",
+        "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAM@Z": "0x4a6430 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?readBrickVector@Network@RBX@@YAXAAVBitStream@RakNet@@AAVVector3@G3D@@@Z"
+      ],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a69a0",
+      "symbol": "??6Network@RBX@@YAAAVBitStream@RakNet@@AAV23@ABVVector3@G3D@@@Z",
+      "size": 83,
+      "target_size": 83,
+      "exact": true,
+      "verified_targets": {
+        "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z": "0x4a5600 (library body exact at the bound address (BitStream.cpp))"
+      },
+      "local_eh": [],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a6a00",
+      "symbol": "?rationalize@Network@RBX@@YAXAAVCoordinateFrame@G3D@@@Z",
+      "size": 176,
+      "target_size": 176,
+      "exact": true,
+      "verified_targets": {
+        "?isFinite@G3D@@YA_NN@Z": "0x4a5940 (support body exact at the bound address)",
+        "__real@c9742400": "0x823e08 (constant c9742400)",
+        "__real@49742400": "0x823e04 (constant 49742400)",
+        "?clamp@Vector3@G3D@@QBE?AV12@ABV12@0@Z": "0x4a6100 (support body exact at the bound address)"
+      },
+      "local_eh": [],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a6ab0",
+      "symbol": "??6Network@RBX@@YAAAVBitStream@RakNet@@AAV23@ABVCoordinateFrame@G3D@@@Z",
+      "size": 195,
+      "target_size": 195,
+      "exact": true,
+      "verified_targets": {
+        "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (library body exact at the bound address (Matrix3.cpp))",
+        "?rationalize@Network@RBX@@YAXAAVCoordinateFrame@G3D@@@Z": "0x4a6a00 (own row)",
+        "?writeBrickVector@Network@RBX@@YAXAAVBitStream@RakNet@@ABVVector3@G3D@@@Z": "0x4a6700 (own row)",
+        "?isAxisAligned@Math@RBX@@SA_NABVMatrix3@G3D@@@Z": "0x5ddc20 (row counted by app-unit5dc-2008-working.json)",
+        "?Write1@BitStream@RakNet@@QAEXXZ": "0x4a5560 (library body exact at the bound address (BitStream.cpp))",
+        "?getOrientId@Math@RBX@@SAHABVMatrix3@G3D@@@Z": "0x5ddc90 (row counted by app-unit5dc-2008-working.json)",
+        "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z": "0x4a5600 (library body exact at the bound address (BitStream.cpp))",
+        "?Write0@BitStream@RakNet@@QAEXXZ": "0x4a5540 (library body exact at the bound address (BitStream.cpp))",
+        "??0Quaternion@RBX@@QAE@ABVMatrix3@G3D@@@Z": "0x5dd570 (row counted by app-unit5dc-2008-working.json)",
+        "??$WriteNormQuat@M@BitStream@RakNet@@QAEXMMMM@Z": "0x4a5dd0 (support body exact at the bound address)"
+      },
+      "local_eh": [],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a6cd0",
+      "symbol": "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAVVector3@G3D@@@Z",
+      "size": 45,
+      "target_size": 45,
+      "exact": true,
+      "verified_targets": {
+        "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAM@Z": "0x4a6430 (own row)"
+      },
+      "local_eh": [],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a6d00",
+      "symbol": "??$serialize@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Network@RBX@@YAXABVConstProperty@Reflection@1@AAVBitStream@RakNet@@@Z",
+      "size": 91,
+      "target_size": 91,
+      "exact": true,
+      "verified_targets": {
+        "?getStringValue@ConstProperty@Reflection@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x449410 (support body exact at the bound address)",
+        "??6Network@RBX@@YAAAVBitStream@RakNet@@AAV23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x4a6560 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??$serialize@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Network@RBX@@YAXABVConstProperty@Reflection@1@AAVBitStream@RakNet@@@Z"
+      ],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a6d60",
+      "symbol": "??$deserialize@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Network@RBX@@YAXAAVProperty@Reflection@1@AAVBitStream@RakNet@@@Z",
+      "size": 118,
+      "target_size": 118,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x4a6610 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??$deserialize@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Network@RBX@@YAXAAVProperty@Reflection@1@AAVBitStream@RakNet@@@Z"
+      ],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a7000",
+      "symbol": "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAVBrickColor@1@@Z",
+      "size": 167,
+      "target_size": 167,
+      "exact": true,
+      "verified_targets": {
+        "?ReadBits@BitStream@RakNet@@QAE_NPAEH_N@Z": "0x4a5210 (library body exact at the bound address (BitStream.cpp))",
+        "??_C@_0BP@IGIKKNNB@BitStream?5?$DO?$DO?5BrickColor?5failed?$AA@": "0x823e70 (string 'BitStream >> BrickColor failed')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (support body exact at the bound address)",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info, catchable types .?AVruntime_error@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?colorPalette@BrickColor@RBX@@SAABV?$vector@VBrickColor@RBX@@V?$allocator@VBrickColor@RBX@@@std@@@std@@XZ": "0x5b5c80 (external (evidence name))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": [
+        "__ehhandler$??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAVBrickColor@1@@Z"
+      ],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a7460",
+      "symbol": "??$getValue@VBrickColor@RBX@@@ConstProperty@Reflection@RBX@@QBE?AVBrickColor@2@XZ",
+      "size": 93,
+      "target_size": 93,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AV?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@@8": "0x92ff20 (RTTI type .?AV?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@)",
+        "??_R0?AVPropertyDescriptor@Reflection@RBX@@@8": "0x9295b4 (RTTI type .?AVPropertyDescriptor@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (string 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (throw info, catchable types .?AVbad_cast@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a74c0",
+      "symbol": "??$setValue@VBrickColor@RBX@@@Property@Reflection@RBX@@QAEXABVBrickColor@2@@Z",
+      "size": 93,
+      "target_size": 93,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AV?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@@8": "0x92ff20 (RTTI type .?AV?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@)",
+        "??_R0?AVPropertyDescriptor@Reflection@RBX@@@8": "0x9295b4 (RTTI type .?AVPropertyDescriptor@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (string 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (throw info, catchable types .?AVbad_cast@std@@ .?AVexception@std@@)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a75b0",
+      "symbol": "??$deserialize@VBrickColor@RBX@@@Network@RBX@@YAXAAVProperty@Reflection@1@AAVBitStream@RakNet@@@Z",
+      "size": 47,
+      "target_size": 47,
+      "exact": true,
+      "verified_targets": {
+        "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAVBrickColor@1@@Z": "0x4a7000 (own row)",
+        "??$setValue@VBrickColor@RBX@@@Property@Reflection@RBX@@QAEXABVBrickColor@2@@Z": "0x4a74c0 (own row)"
+      },
+      "local_eh": [],
+      "unit": "streaming"
+    },
+    {
+      "address": "004a6ea0",
+      "symbol": "?_Lbound@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@2@ABUData@Guid@RBX@@@Z",
+      "size": 57,
+      "target_size": 57,
+      "exact": true,
+      "verified_targets": {
+        "??MData@Guid@RBX@@QBE_NABU012@@Z": "0x5a8210 (external (evidence name))"
+      },
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a6ee0",
+      "symbol": "??$_Copy_backward_opt@PAUWaitItem@IdSerializer@Network@RBX@@PAU1234@Uforward_iterator_tag@std@@@std@@YAPAUWaitItem@IdSerializer@Network@RBX@@PAU1234@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "size": 133,
+      "target_size": 133,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a7280",
+      "symbol": "??$_Distance2@Viterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@I@std@@YAXViterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@0@0AAIUbidirectional_iterator_tag@0@@Z",
+      "size": 58,
+      "target_size": 58,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@QAEXXZ": "0x68d1a0 (support body exact at the bound address)"
+      },
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a72c0",
+      "symbol": "??$_Fill@PAUWaitItem@IdSerializer@Network@RBX@@U1234@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@0ABU1234@@Z",
+      "size": 122,
+      "target_size": 122,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a7340",
+      "symbol": "??$_Copy_backward_opt@PAUWaitItem@IdSerializer@Network@RBX@@PAU1234@@std@@YAPAUWaitItem@IdSerializer@Network@RBX@@PAU1234@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "size": 92,
+      "target_size": 92,
+      "exact": true,
+      "verified_targets": {
+        "??$_Copy_backward_opt@PAUWaitItem@IdSerializer@Network@RBX@@PAU1234@Uforward_iterator_tag@std@@@std@@YAPAUWaitItem@IdSerializer@Network@RBX@@PAU1234@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x4a6ee0 (own row)"
+      },
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a73a0",
+      "symbol": "?_Eqrange@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@IAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@V123@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
+      "size": 183,
+      "target_size": 183,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x80235c (msvcp90.dll!??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)"
+      },
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a7520",
+      "symbol": "??$_Uninit_copy@PBUWaitItem@IdSerializer@Network@RBX@@PAU1234@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@YAPAUWaitItem@IdSerializer@Network@RBX@@PBU1234@0PAU1234@AAV?$allocator@UWaitItem@IdSerializer@Network@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "size": 67,
+      "target_size": 67,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a7720",
+      "symbol": "?_Insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@2@@Z",
+      "size": 510,
+      "target_size": 510,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0BE@JONHPENG@map?1set?$DMT?$DO?5too?5long?$AA@": "0x80b28c (string 'map/set<T> too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable (RTTI .?AVlogic_error@std@@))",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVlength_error@std@@": "0x8d0cc0 (throw info, catchable types .?AVlength_error@std@@ .?AVlogic_error@std@@ .?AVexception@std@@)",
+        "??_7length_error@std@@6B@": "0x80b11c (vtable (RTTI .?AVlength_error@std@@))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?_Buynode@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@2@D@Z": "0x4a71e0 (support body exact split at the original extent (catch block 0x4a7267))",
+        "?_Lrotate@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@2@@Z": "0x68df00 (support body exact at the bound address)",
+        "?_Rrotate@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@2@@Z": "0x68cfd0 (support body exact at the bound address)"
+      },
+      "local_eh": [
+        "__ehhandler$?_Insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@2@@Z"
+      ],
+      "unit": "templates"
+    },
+    {
+      "address": "004a7960",
+      "symbol": "??$_Unchecked_move_backward@PAUWaitItem@IdSerializer@Network@RBX@@PAU1234@@stdext@@YAPAUWaitItem@IdSerializer@Network@RBX@@PAU1234@00@Z",
+      "size": 43,
+      "target_size": 43,
+      "exact": true,
+      "verified_targets": {
+        "??$_Copy_backward_opt@PAUWaitItem@IdSerializer@Network@RBX@@PAU1234@@std@@YAPAUWaitItem@IdSerializer@Network@RBX@@PAU1234@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x4a7340 (own row)"
+      },
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a7990",
+      "symbol": "??$_Uninit_fill_n@PAUWaitItem@IdSerializer@Network@RBX@@IU1234@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@IABU1234@AAV?$allocator@UWaitItem@IdSerializer@Network@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "size": 65,
+      "target_size": 65,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a79e0",
+      "symbol": "??$_Destroy_range@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@0AAV?$allocator@UWaitItem@IdSerializer@Network@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z",
+      "size": 76,
+      "target_size": 76,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a7a30",
+      "symbol": "?insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@2@@Z",
+      "size": 235,
+      "target_size": 235,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x80235c (msvcp90.dll!??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@2@@Z": "0x4a7720 (own row)",
+        "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@QAEXXZ": "0x68d350 (support body exact at the bound address)"
+      },
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a7b20",
+      "symbol": "?find@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABUData@Guid@RBX@@@Z",
+      "size": 124,
+      "target_size": 124,
+      "exact": true,
+      "verified_targets": {
+        "?_Lbound@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@2@ABUData@Guid@RBX@@@Z": "0x4a6ea0 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??MData@Guid@RBX@@QBE_NABU012@@Z": "0x5a8210 (external (evidence name))"
+      },
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a7c60",
+      "symbol": "?_Ufill@?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@IAEPAUWaitItem@IdSerializer@Network@RBX@@PAU3456@IABU3456@@Z",
+      "size": 57,
+      "target_size": 57,
+      "exact": true,
+      "verified_targets": {
+        "??$_Uninit_fill_n@PAUWaitItem@IdSerializer@Network@RBX@@IU1234@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@IABU1234@AAV?$allocator@UWaitItem@IdSerializer@Network@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x4a7990 (own row)"
+      },
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a7d10",
+      "symbol": "?_Destroy@?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@IAEXPAUWaitItem@IdSerializer@Network@RBX@@0@Z",
+      "size": 30,
+      "target_size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??$_Destroy_range@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@0AAV?$allocator@UWaitItem@IdSerializer@Network@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x4a79e0 (own row)"
+      },
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a7d30",
+      "symbol": "?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@QAEIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
+      "size": 106,
+      "target_size": 106,
+      "exact": true,
+      "verified_targets": {
+        "?_Eqrange@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@IAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@V123@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z": "0x4a73a0 (own row)",
+        "??$_Distance2@Viterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@I@std@@YAXViterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@0@0AAIUbidirectional_iterator_tag@0@@Z": "0x4a7280 (own row)",
+        "?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": "0x46af90 (support body exact at the bound address)"
+      },
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a7da0",
+      "symbol": "?_Tidy@?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@IAEXXZ",
+      "size": 66,
+      "target_size": 66,
+      "exact": true,
+      "verified_targets": {
+        "??$_Destroy_range@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@0AAV?$allocator@UWaitItem@IdSerializer@Network@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x4a79e0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a7df0",
+      "symbol": "??$_Ucopy@PAUWaitItem@IdSerializer@Network@RBX@@@?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@IAEPAUWaitItem@IdSerializer@Network@RBX@@PAU2345@00@Z",
+      "size": 44,
+      "target_size": 44,
+      "exact": true,
+      "verified_targets": {
+        "??$_Uninit_copy@PAUWaitItem@IdSerializer@Network@RBX@@PAU1234@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@YAPAUWaitItem@IdSerializer@Network@RBX@@PAU1234@00AAV?$allocator@UWaitItem@IdSerializer@Network@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x4a7520 (support body exact at the bound address)"
+      },
+      "local_eh": [],
+      "unit": "templates"
+    },
+    {
+      "address": "004a7fa0",
+      "symbol": "??1?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@QAE@XZ",
+      "size": 111,
+      "target_size": 111,
+      "exact": true,
+      "verified_targets": {
+        "??$_Destroy_range@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@0AAV?$allocator@UWaitItem@IdSerializer@Network@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x4a79e0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@QAE@XZ"
+      ],
+      "unit": "templates"
+    }
+  ],
+  "uncounted_exact_rows": [
+    "004a6b80 ??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAVCoordinateFrame@G3D@@@Z: 332/332 B, bytes exact True; not counted (see not_exact)"
+  ],
+  "support_rows": {
+    "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": {
+      "address": "0x409d50",
+      "reached_from": "?deserializeEnum@Network@RBX@@YAXAAVProperty@Reflection@2@AAVBitStream@RakNet@@@Z",
+      "note": "COMDAT support body, exact at the bound address; not counted"
+    },
+    "?isFinite@G3D@@YA_NN@Z": {
+      "address": "0x4a5940",
+      "reached_from": "?rationalize@Network@RBX@@YAXAAVCoordinateFrame@G3D@@@Z",
+      "note": "COMDAT support body, exact at the bound address; not counted"
+    },
+    "?clamp@Vector3@G3D@@QBE?AV12@ABV12@0@Z": {
+      "address": "0x4a6100",
+      "reached_from": "?rationalize@Network@RBX@@YAXAAVCoordinateFrame@G3D@@@Z",
+      "note": "COMDAT support body, exact at the bound address; not counted"
+    },
+    "??$WriteNormQuat@M@BitStream@RakNet@@QAEXMMMM@Z": {
+      "address": "0x4a5dd0",
+      "reached_from": "??6Network@RBX@@YAAAVBitStream@RakNet@@AAV23@ABVCoordinateFrame@G3D@@@Z",
+      "note": "COMDAT support body, exact at the bound address; not counted"
+    },
+    "?getStringValue@ConstProperty@Reflection@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": {
+      "address": "0x449410",
+      "reached_from": "??$serialize@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Network@RBX@@YAXABVConstProperty@Reflection@1@AAVBitStream@RakNet@@@Z",
+      "note": "COMDAT support body, exact at the bound address; not counted"
+    },
+    "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@QAEXXZ": {
+      "address": "0x68d1a0",
+      "reached_from": "??$_Distance2@Viterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@I@std@@YAXViterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@0@0AAIUbidirectional_iterator_tag@0@@Z",
+      "note": "COMDAT support body, exact at the bound address; not counted"
+    },
+    "?_Buynode@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@2@D@Z": {
+      "address": "0x4a71e0",
+      "reached_from": "?_Insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@2@@Z",
+      "note": "body exact split at the original extent, catch block at 0x4a7267; not counted"
+    },
+    "?_Lrotate@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@2@@Z": {
+      "address": "0x68df00",
+      "reached_from": "?_Insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@2@@Z",
+      "note": "COMDAT support body, exact at the bound address; not counted"
+    },
+    "?_Rrotate@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@2@@Z": {
+      "address": "0x68cfd0",
+      "reached_from": "?_Insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@2@@Z",
+      "note": "COMDAT support body, exact at the bound address; not counted"
+    },
+    "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@QAEXXZ": {
+      "address": "0x68d350",
+      "reached_from": "?insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@2@@Z",
+      "note": "COMDAT support body, exact at the bound address; not counted"
+    },
+    "?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": {
+      "address": "0x46af90",
+      "reached_from": "?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@QAEIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
+      "note": "COMDAT support body, exact at the bound address; not counted"
+    },
+    "??$_Uninit_copy@PAUWaitItem@IdSerializer@Network@RBX@@PAU1234@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@YAPAUWaitItem@IdSerializer@Network@RBX@@PAU1234@00AAV?$allocator@UWaitItem@IdSerializer@Network@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": {
+      "address": "0x4a7520",
+      "reached_from": "??$_Ucopy@PAUWaitItem@IdSerializer@Network@RBX@@@?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@IAEPAUWaitItem@IdSerializer@Network@RBX@@PAU2345@00@Z",
+      "note": "COMDAT support body, exact at the bound address; not counted"
+    }
+  },
+  "library_evidence": {
+    "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z": "0x4a5600 (library BitStream.cpp, body exact here; not counted)",
+    "?ReadBits@BitStream@RakNet@@QAE_NPAEH_N@Z": "0x4a5210 (library BitStream.cpp, body exact here; not counted)",
+    "?Write1@BitStream@RakNet@@QAEXXZ": "0x4a5560 (library BitStream.cpp, body exact here; not counted)",
+    "?Write0@BitStream@RakNet@@QAEXXZ": "0x4a5540 (library BitStream.cpp, body exact here; not counted)",
+    "?Instance@StringCompressor@@SAPAV1@XZ": "0x4ba230 (library StringCompressor.cpp, body exact here; not counted)",
+    "?EncodeString@StringCompressor@@QAEXPBDHPAVBitStream@RakNet@@H@Z": "0x4ba4f0 (library StringCompressor.cpp, body exact here; not counted)",
+    "?DecodeString@StringCompressor@@QAE_NPADHPAVBitStream@RakNet@@H@Z": "0x4ba650 (library StringCompressor.cpp, body exact here; not counted)",
+    "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (library Matrix3.cpp, body exact here; not counted)"
+  },
+  "pending_rows": [],
+  "not_exact": [
+    {
+      "address": "operator>>(BitStream&, CoordinateFrame&) 004a6b80",
+      "reason": "Bytes exact (recorded in uncounted_exact_rows), but not counted: its call target ReadNormQuat<float> 004a5f20 is a RakNet BitStream.h template body of a later RakNet than the raknet30 header (raknet30 builds 461/466 B: the original multiplies by 1/65535 and branches per sign), so that target is bound by the call site only."
+    },
+    {
+      "address": "serialize<BrickColor> 004a7570",
+      "reason": "50/56 B: the original copies the getValue result into a second local before getClosestPaletteIndex; the variants tried are in rejected."
+    },
+    {
+      "address": "StringReceiver::receive 004a6e20 / 004a6f70, StringSender::trySend 004a7ba0 / send 004a7e20, deserializeString 004a7150, operator>>(Guid::Data) 004a70b0, IdSerializer members",
+      "reason": "Need member declarations Network/IdSerializer.h does not have (read-only here; proposal filed). Not attempted."
+    },
+    {
+      "address": "for_each<vector<WaitItem>::iterator, bind(setRefValue)> 004a7920",
+      "reason": "needs the IdSerializer::setRefValue declaration (proposal); not attempted."
+    },
+    {
+      "address": "map<std::string, unsigned char>::_Buynode 004a71e0 and its catch block 004a7267",
+      "reason": "exact split at the original extent (support row of _Insert 004a7720), not counted: the row extent excludes the catch funclet the compiler emits inside the function."
+    },
+    {
+      "address": "ICF-shared generic bodies",
+      "reason": "5-byte / 9-byte / 6-byte bodies this build also emits (fill / ~map / assign 004a7d00 and the identical rows 0049e580.., 0049ed30, 0049f610) are not attributable to this unit and are not counted."
+    }
+  ],
+  "rejected": {
+    "isBrickLocation with external linkage": "272/267 B: the original passes v in esi (static function convention).",
+    "rationalize with value.translation.clamp(low, high)": "174/176 B: the original calls G3D::clamp(Vector3(-1e6), translation, Vector3(1e6)), i.e. clamps the temporary.",
+    "serialize<BrickColor> with a named copy (BrickColor value = getValue)": "50/56 B (copy elided)",
+    "serialize<BrickColor> with unsigned index": "50/56 B",
+    "serialize<BrickColor> with BrickColor(value).getClosestPaletteIndex()": "58/56 B",
+    "serialize<BrickColor> with default-constructed value then assignment": "64/56 B",
+    "ReadNormQuat<float> from raknet30 BitStream.h, with or without /fp:fast": "430/466 and 461/466 B"
+  },
+  "proposals": [
+    "native-headers/Network/IdSerializer.h (Replicator family owner): declare the 2008 streaming members built in the Streaming.cpp unit: StringReceiver::receive(RakNet::BitStream&, std::string&) (004a6e20; reads the unsigned char id with operator>> 004a6380, a 0x80 id is followed by operator>>(std::string&) 004a6610 and stored in strings[id & 0x7f], else strings[id] is copied) and receive(RakNet::BitStream&, const Name*&) (004a6f70, Name::declare 00553f90); StringSender::trySend(RakNet::BitStream&, const std::string&) (004a7ba0, dictionary find 00696f30, WriteBits 8) and send (004a7e20); IdSerializer::setRefValue(WaitItem&, Instance*) (for_each 004a7920). With them those rows can be built in native-classes/AppUnit49C_2008Streaming.cpp."
+  ],
+  "exact_function_rows": [
+    "004a5a30",
+    "004a5a70",
+    "004a5b10",
+    "004a5b30",
+    "004a5bc0",
+    "004a5c00",
+    "004a61a0",
+    "004a61d0",
+    "004a6250",
+    "004a62d0",
+    "004a6350",
+    "004a6380",
+    "004a6400",
+    "004a6430",
+    "004a64b0",
+    "004a64e0",
+    "004a6560",
+    "004a6610",
+    "004a6700",
+    "004a67c0",
+    "004a69a0",
+    "004a6a00",
+    "004a6ab0",
+    "004a6cd0",
+    "004a6d00",
+    "004a6d60",
+    "004a6ea0",
+    "004a6ee0",
+    "004a7000",
+    "004a7280",
+    "004a72c0",
+    "004a7340",
+    "004a73a0",
+    "004a7460",
+    "004a74c0",
+    "004a7520",
+    "004a75b0",
+    "004a7720",
+    "004a7960",
+    "004a7990",
+    "004a79e0",
+    "004a7a30",
+    "004a7b20",
+    "004a7c60",
+    "004a7d10",
+    "004a7d30",
+    "004a7da0",
+    "004a7df0",
+    "004a7fa0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

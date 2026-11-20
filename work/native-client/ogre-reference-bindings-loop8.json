@@ -5499,8 +5499,8 @@
   },
   {
    "symbol": "?join@PartInstance@RBX@@QAEXXZ",
-   "address": "0059b4f0",
-   "evidence": "original relocation target at an exact owner"
+   "address": "00598c90",
+   "evidence": "Corrected binding: 00598c90 is the BoundFuncDesc MakeJoints body (getWorldIfInWorkspace 005a3390, then World::createJoints 005ea5d0 on primitive +0x228); direct call targets of ResizeTool::capturedDrag 0063ee0c and the Glue/Weld/Studs/Hinge/motor applyToSurface bodies 00619f91, 00619b82. The earlier 0059b4f0 row is ?safeMove@PartInstance@RBX@@AAEXXZ (registry decorated-signature)."
   },
   {
    "symbol": "?launch@@YAXPBD0@Z",
@@ -6106,6 +6106,11 @@
    "symbol": "?render3dSelect@Feature@RBX@@EAEXPAVAdorn@2@W4SelectState@2@@Z",
    "address": "0060a520",
    "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z",
+   "address": "00458e90",
+   "evidence": "IRenderable vtable slot 4 (shouldRender2d, shouldRender3dAdorn, render2d, render3dAdorn, render3dSelect) of the SurfaceTool-family IRenderable vtables 0083922c, 008392b4 and of Sparkles 0084a1a0 holds 00458e90 (ret 8), the empty inline default body in util/IRenderable.h."
   },
   {
    "symbol": "?render3dSelect@ModelInstance@RBX@@EAEXPAVAdorn@2@W4SelectState@2@@Z",
@@ -19637,6 +19642,18 @@
    "006515e0"
   ]
  },
+ "rejected_identities": [
+  {
+   "symbol": "?join@PartInstance@RBX@@QAEXXZ",
+   "address": "0059b4f0",
+   "evidence": "0059b4f0 is ?safeMove@PartInstance@RBX@@AAEXXZ (registry decorated-signature; Dragger::safeMoveNoDrop 00610930 call). Its only exact-owner vote came from PartInstance::resize 0059e150, whose source calls join() where the original calls 0059b4f0 at 0059e33e; the join body is 00598c90."
+  },
+  {
+   "symbol": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z",
+   "address": "005ef400",
+   "evidence": "005ef400 is a this-adjusted override (IRenderable at -0x2c, __RTDynamicCast, ret 8), not the empty IRenderable default; IRenderable vtable slot 4 of 0083922c / 008392b4 / 0084a1a0 holds 00458e90 (ogre-reference-bindings-loop2.json row)."
+  }
+ ],
  "owners_tried": 3068,
  "owners_bound": 3067
 }

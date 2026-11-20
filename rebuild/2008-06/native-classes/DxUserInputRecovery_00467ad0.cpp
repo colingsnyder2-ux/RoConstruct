@@ -18,7 +18,11 @@
 //                             `result = getWindowSize() * 0.5f + offset`, i.e. an *inline member* returning a
 //                             G3D::Vector2; this header only has sub_00467440() returning Vector2int16, and
 //                             every other shape tried here (7 forms) is further off (114/118/146 bytes).
-//   00467d50 isToolboxEnabled     NOT in this unit yet: it needs CMainFrame::state104 (+0x104) from
+//                             Batch 23 retried a unit-local inline `G3D::Vector2 clientSize(CWnd*)` getter:
+//                             `clientSize(window) * 0.5f + lastPosition` and `lastPosition + clientSize(window) * 0.5f`
+//                             are 118 bytes (`fld [esi+0x60]; faddp st(2)` before the fxch), and
+//                             `result = clientSize(window) * 0.5f; result += lastPosition;` is this 116-byte near miss.
+//   00467d50 isToolboxEnabled     body below, guarded by NATIVE_DXUSERINPUT_TOOLBOX_PENDING (batch 23); it needs CMainFrame::state104 (+0x104) from
 //                             CMainFrame.h, and rebuild/2008-06/native-headers/util/MarshaledListener.h
 //                             (reached through CMainFrame.h -> CSelectionCaption.h) currently closes
 //                             `namespace RBX` early with a stray `}` after the acquire/release declarations,
@@ -27,8 +31,19 @@
 //                             headers, this body is 452 bytes vs the target's 443 and differs only in the
 //                             flag read (`mov al,[eax+0x104]; test al,al` in the target = a bool-returning
 //                             inline accessor, `cmp byte ptr [eax+0x104],0` for a direct member test).
+#ifdef NATIVE_DXUSERINPUT_TOOLBOX_PENDING
+// isToolboxEnabled (00467d50) needs CMainFrame.h, which still fails through util/MarshaledListener.h (see below).
+#include <afxwin.h>
+#include "util/Events.h"
+using namespace RBX; // MarshaledListener.h names Listener<> unqualified at global scope
+#include "CMainFrame.h"
+#endif
 #include "util/DxUserInput.h"
 #include "util/standardout.h"
+#ifdef NATIVE_DXUSERINPUT_TOOLBOX_PENDING
+#include "v8datamodel/DataModel.h"
+#include "v8tree/Verb.h"
+#endif
 
 namespace RBX
 {
@@ -125,4 +140,27 @@ namespace RBX
 			return;
 		}
 	}
+
+#ifdef NATIVE_DXUSERINPUT_TOOLBOX_PENDING
+	// PENDING (batch 23): util/MarshaledListener.h (leased to class_RBX_MarshaledListener) still ends with a stray `}`
+	// at line 109 after the template and names Listener<> unqualified at global scope, so every CMainFrame.h unit
+	// stops compiling there (then util/Guid.h / GuidItem.h cascade). Identities of every callee are proven in the
+	// registry: AfxGetApp()->m_pMainWnd (AfxGetModuleState +4 / +0x20), sub_004306c0, DataModel::Lock 00411b40 /
+	// ~Lock 005773c0, VerbContainer::getVerb(std::string) 00583380, Verb::isEnabled slot 3. Remaining codegen risk:
+	// the target reads +0x104 as `mov al,[eax+0x104]; test al,al` (an inline bool accessor in CMainFrame, owner-only).
+	// 00467d50: the toolbox may open unless the main frame's toolbox state (+0x104) is set and the active
+	// DataModel's "ToggleToolbox" verb (VerbContainer::getVerb 00583380 on DataModel+0x1c8) reports disabled
+	// (Verb slot 3, isEnabled). The DataModel is held under DataModel::Lock (ctor 00411b40, dtor 005773c0).
+	bool DxUserInput::isToolboxEnabled()
+	{
+		CMainFrame* mainFrame = static_cast<CMainFrame*>(AfxGetApp()->m_pMainWnd);
+		if (mainFrame->state104 && sub_004306c0())
+		{
+			DataModel::Lock lock(sub_004306c0());
+			if (Verb* verb = sub_004306c0()->getVerb("ToggleToolbox"))
+				return verb->isEnabled();
+		}
+		return true;
+	}
+#endif
 }
