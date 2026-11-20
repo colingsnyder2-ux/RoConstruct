@@ -285,12 +285,18 @@ void RefItem::update(RBX::SelectionGroup* group)
 // loop (0043e15b), groups.find 0043a320, inner shared_ptr<Instance> walk (add ebx, 8 at 0043e321),
 // dynamic_cast to the type descriptor 0092e1c8 (RBX::Script, the row exists only for Script's source),
 // shared_from 00618a40 and the AfxGetApp module-state read (0043e2fb).
+// Measured 2026-11-20 (batch 27) with a scratch-only `struct : CWinApp { void openScript(boost::shared_ptr<RBX::Script>); }`
+// stand-in for the CRobloxApp call (not kept): 603 = 603 bytes, same calls / checked-iterator tests / EH states; two
+// scheduling swaps remain (the map `this` add before the second find argument push at 0043e210, and the two
+// iterator reloads at the outer loop tail). The key copy into a local (`descriptor`, esp+0x10 in the target) is
+// confirmed: find(*it) straight from the iterator is 592 bytes (rejected).
 #ifdef NATIVE_SCRIPTITEM_OPEN_PENDING
 void ScriptItem::OnInplaceButtonDown(CXTPPropertyGridInplaceButton*)
 {
     const RBX::SelectionGroup::iterator groupEnd = grid->groups.end();
     for (std::vector<const RBX::Reflection::ClassDescriptor*>::const_iterator it = classes.begin(), end = classes.end(); it != end; ++it) {
-        RBX::SelectionGroup::iterator instances = grid->groups.find(*it);
+        const RBX::Reflection::ClassDescriptor* descriptor = *it;
+        RBX::SelectionGroup::iterator instances = grid->groups.find(descriptor);
         if (instances == groupEnd)
             continue;
         for (std::vector<boost::shared_ptr<RBX::Instance> >::const_iterator i = instances->second.begin(), iend = instances->second.end(); i != iend; ++i)
