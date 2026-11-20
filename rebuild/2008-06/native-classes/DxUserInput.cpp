@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 RBX::DxUserInput (004675e0..004690f0): DirectInput 8 keyboard/mouse input source. Inactive native unit.
 // Byte-exact against the target (native-asm --obj, relocations masked): 00467530 00467550 004675e0 00467720 004677f0
 // 00467a90 00467bf0 00467c50 00467cb0 00468050 004680c0 00468520 004689c0 00468a60 00468b20 00468e70 00469070 00469080
@@ -18,6 +18,9 @@
 #include "util/DxUserInput.h"
 #include "v8datamodel/DataModel.h"
 #include "util/Object.h"
+#ifdef NATIVE_DXUSERINPUT_MOUSE_PENDING
+#include "v8datamodel/Workspace.h"   // processMouse 004685b0 calls Workspace::onWrapMouse 005a0220 (conflicts here, see below)
+#endif
 
 #ifdef NATIVE_DXUSERINPUT_KEYBOARD_PENDING
 #include "CMainFrame.h"   // processKeyboard 004681b0 reads CMainFrame::state104 (+0x104) of the application main window
@@ -28,6 +31,9 @@
 int sub_00469f50(const unsigned char* keys);
 int sub_00469360(int key);
 int __cdecl sub_00469c60(int index);
+// INFERRED placeholder: 00469340 (cdecl, 30 B, body byte-proved in DonorCtx_00469340.cpp): the X/Y axis record of a
+// buffered mouse read as a delta vector (dwOfs 0 -> x, otherwise y, both from the signed dwData).
+G3D::Vector2 sub_00469340(const DxDeviceObjectData& data);
 
 // 004328c0
 DxCriticalSection::DxCriticalSection()
@@ -128,20 +134,26 @@ namespace RBX
 		return G3D::ReferenceCountedPointer<TextureProxyBase>();
 	}
 
-	// 00467ad0
+	// 00467ad0 (116 = 116 bytes; parked). The unit's /fp:fast (evidence: processMouse 004685b0 multiplies by the dword
+	// reciprocal 1/120 and keeps 0.0f on the x87 stack) now loads 0.5f as a dword like the target; the only remaining
+	// difference is one x87 schedule: the target finishes both multiplies (`fmulp st(1); fxch st(1)`) before the first
+	// add, this build adds x first (`fxch st(2)`, then `fmulp`). Rejected: `Vector2(w, h) * 0.5f + lastPosition` and
+	// `lastPosition + Vector2(w, h) * 0.5f` (118 B, `fld x; faddp st(2)`); the earlier per-component form (114 B, fimul).
 	G3D::Vector2 DxUserInput::getCenteredPosition()
 	{
 		mutex.Lock();
 		CRect rect;
 		window->GetClientRect(&rect);
-		float w = (float)rect.Width();
-		float h = (float)rect.Height();
-		G3D::Vector2 result(w * 0.5f + lastPosition.x, h * 0.5f + lastPosition.y);
+		G3D::Vector2 result = G3D::Vector2((float)rect.Width(), (float)rect.Height()) * 0.5f;
+		result += lastPosition;
 		mutex.Unlock();
 		return result;
 	}
 
-	// 00467b50
+	// 00467b50 (open). Header proposal (util/DxUserInput.h): 004672e0 returns the Vector2 by value through the hidden
+	// pointer (`G3D::Vector2 sub_004672e0(const G3D::Vector2&, int)`; the target adds from the returned eax and never
+	// zero-initializes the temporary). Measured with a trial-only local overload and `half = Vector2(w, h) * 0.5f`:
+	// 148 = 148 bytes, one `lea edx` / `push esi` interleave left.
 	G3D::Vector2 DxUserInput::getBiasedCenterPosition()
 	{
 		mutex.Lock();
@@ -399,6 +411,82 @@ namespace RBX
 			postEvent(event);
 		}
 	}
+#endif
+
+	// 004685b0 (registry placeholder func_004685b0; header name processMouse, called only by the Heartbeat poll
+	// 004689c0): drain up to 0x800 buffered DirectInput mouse records (readDeviceData 00467880 on the mouse at +0x178;
+	// a failed read clears mouseAcquired +0x192) and dispatch on DIDEVICEOBJECTDATA::dwOfs through the jump table at
+	// 00468990: DIMOFS_X / DIMOFS_Y (0 / 4) accumulate the wrapped delta (00469340, applyMouseDelta 00467f10), DIMOFS_Z
+	// (8) posts MOUSE_WHEEL_FORWARD / BACKWARD by the sign of dwData * (1 / 120.0f) (float 0081c3e4), DIMOFS_BUTTON0 /
+	// BUTTON1 (0xc / 0xd) post message 0x4bb to the client window (+0x16c, m_hWnd +0x20) and a left / right button
+	// down (dwData 0x80) or up event (postMouseEvent 004684a0). Afterwards, under the DataModel lock, a non-zero delta
+	// goes to Workspace::onWrapMouse 005a0220 (workspace +0x204) and posts MOUSE_DELTA then MOUSE_MOVE; a move without
+	// delta posts MOUSE_MOVE only.
+#ifdef NATIVE_DXUSERINPUT_MOUSE_PENDING
+	// PENDING (NATIVE_DXUSERINPUT_MOUSE_PENDING): v8datamodel/Workspace.h cannot be included in this unit: it pulls the
+	// donor gui/GuiEvent.h -> util/UIEvent.h, which redefines the RBX::UIEvent of util/UIEvent2008.h (C2011). Measured
+	// with a scratch-only `class Workspace { void onWrapMouse(const G3D::Vector2&); }` stand-in (not kept): 1050 vs 1026
+	// bytes, same control flow, jump table, calls and EH states; the switch-case order (BUTTON0, BUTTON1, X/Y, Z) and the
+	// unit's /fp:fast (dword 1/120 multiply, the 0.0f kept on the x87 stack across the loop) are confirmed. Remaining:
+	// the two inlined postMouseEvent bodies after the loop materialize the Vector2int16(0, 0) delta temporary (the
+	// target stores the zero words straight into the event, the 004684a0 "UIEvent temporaries" difference of the
+	// util/UIEvent2008.h five-argument constructor) and the frame slots shift with it (lock at +0x58 vs +0x48).
+	// Rejected: the source case order X/Y, Z, BUTTON0, BUTTON1 (1022 B, button tails merged, qword constants before
+	// /fp:fast).
+	void DxUserInput::processMouse()
+	{
+		DWORD count = 0x800;
+		DxDeviceObjectData data[0x800];
+		{
+			CComCritSecLock<DxCriticalSection> lock(mutex);
+			if (!readDeviceData(data, &count, mouse))
+			{
+				mouseAcquired = false;
+				return;
+			}
+		}
+		G3D::Vector2 delta(0.0f, 0.0f);
+		bool moved = false;
+		for (DWORD i = 0; i < count; ++i)
+		{
+			switch (data[i].dwOfs)
+			{
+			case 0xc: // DIMOFS_BUTTON0
+				::PostMessage(window->m_hWnd, 0x4bb, 0, 0);
+				postMouseEvent(data[i].dwData == 0x80 ? UIEvent::MOUSE_LEFT_BUTTON_DOWN : UIEvent::MOUSE_LEFT_BUTTON_UP,
+							   getCursorPosition());
+				break;
+			case 0xd: // DIMOFS_BUTTON1
+				::PostMessage(window->m_hWnd, 0x4bb, 0, 0);
+				postMouseEvent(data[i].dwData == 0x80 ? UIEvent::MOUSE_RIGHT_BUTTON_DOWN : UIEvent::MOUSE_RIGHT_BUTTON_UP,
+							   getCursorPosition());
+				break;
+			case 0:   // DIMOFS_X
+			case 4:   // DIMOFS_Y
+				moved = true;
+				applyMouseDelta(sub_00469340(data[i]), delta);
+				break;
+			case 8:   // DIMOFS_Z
+				postMouseEvent((int)data[i].dwData * (1.0f / 120.0f) > 0.0f ? UIEvent::MOUSE_WHEEL_FORWARD
+																		 : UIEvent::MOUSE_WHEEL_BACKWARD,
+							   getCursorPosition());
+				break;
+			}
+		}
+		if (delta != G3D::Vector2::zero())
+		{
+			DataModel::Lock lock(dataModel);
+			dataModel->getWorkspace()->onWrapMouse(delta);
+			postMouseEvent(UIEvent::MOUSE_DELTA, getCursorPosition());
+			postMouseEvent(UIEvent::MOUSE_MOVE, getCursorPosition());
+		}
+		else if (moved)
+		{
+			DataModel::Lock lock(dataModel);
+			postMouseEvent(UIEvent::MOUSE_MOVE, getCursorPosition());
+		}
+	}
+
 #endif
 
 	// 004689c0 (Heartbeat listener at +0x2c): poll both devices
