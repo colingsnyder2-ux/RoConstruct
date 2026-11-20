@@ -4,20 +4,13 @@
 // RBX::Render::TextureProxy / MegaTextureProxy, optimized RenderLib unit (2008-06, inactive native recovery).
 // Image block 007b8180..007b93cf; recovered here: the root constructor 007b8450, shade 007b8500, getIfResolved 007b85e0,
 // alphaOnlyVersion 007b8eb0, getSize 007b8f40, MegaTextureProxy(TextureManager&, name) 007b8fb0 (with the inline shade
-<<<<<<< HEAD
-// slot 007b8fe0 and ??_G 007b9350) and MegaTextureProxy::resolve 007b9000. resolve 007b8610 is not built.
-=======
 // slot 007b8fe0 and ??_G 007b9350), MegaTextureProxy::resolve 007b9000, and resolve 007b8610 with its unit-local
 // helpers 007b80f0 / 007b8180 / 007b82f0 (only resolve calls them; 007b80f0 takes its first argument in edi, so it
 // is a static of this unit).
->>>>>>> mew/claude/optimistic-shannon-0xccuy
 #include "RenderLib/TextureProxy2008.h"
 #include "v8datamodel/BrickColor.h"
 #include <G3D/GImage.h>
 #include <GLG3D/TextureFormat.h>
-<<<<<<< HEAD
-#include <algorithm>
-=======
 #include <G3D/format.h>
 #include <leaves2008/StandardOut2008.h>
 #include <algorithm>
@@ -94,7 +87,6 @@ static void saveScaled(const std::string& source, std::string target, int maxSiz
 		image.save(target, G3D::GImage::PNG);
 	}
 }
->>>>>>> mew/claude/optimistic-shannon-0xccuy
 
 namespace RBX
 {

@@ -14,13 +14,10 @@
 #include "v8datamodel/ModelInstance.h"
 #include "BitStream.h"
 #include "Network/Player.h"
-<<<<<<< HEAD
-=======
 #include <typeinfo>
 #include "v8datamodel/PartInstance.h" // PartInstance::prop_Size (deserializeValue 004b6ab0)
 #include "util/scopedassign.h"
 #include "v8datamodel/Camera.h" // wantReplicate 004aaf90
->>>>>>> mew/claude/optimistic-shannon-0xccuy
 #include <stdexcept>
 
 namespace RBX
@@ -145,8 +142,6 @@ namespace RBX
 			}
 		}
 
-<<<<<<< HEAD
-=======
 		// 004afc70 (donor Replicator::NewInstanceItem constructor; identity: stores vtable 00824b20 whose slot 1 is the
 		// write 004b8620, called from the descendant-added handler 004aff70 after new(0x10)). The 2008 constructor also
 		// records the instance in pendingNewInstances +0x2c90 (set insert 005e8c40, identical-code folded).
@@ -389,15 +384,12 @@ namespace RBX
 		}
 #endif
 
->>>>>>> mew/claude/optimistic-shannon-0xccuy
 		// 004ae860 (donor Replicator.h inline getPlayer; findTargetPlayer slot 17, shared_from<Player> 00618a40)
 		boost::shared_ptr<Instance> Replicator::getPlayer()
 		{
 			return shared_from(findTargetPlayer());
 		}
 
-<<<<<<< HEAD
-=======
 		// 004aaf90 (donor Replicator::wantReplicate, vtable 008254fc slot 18; identity: decorated name
 		// ?wantReplicate@Replicator@Network@RBX@@MBE_NPBVInstance@3@@Z, __RTDynamicCast from Instance 0092907c to
 		// Camera 0093ab54, `sete al`, ret 4).
@@ -406,7 +398,6 @@ namespace RBX
 			return dynamic_cast<const Camera*>(source) == NULL ? true : false;
 		}
 
->>>>>>> mew/claude/optimistic-shannon-0xccuy
 		// 004aafd0 (donor Replicator::closeConnection; the 2008 body tests peer first): CloseConnection slot 0x64.
 		void Replicator::closeConnection()
 		{

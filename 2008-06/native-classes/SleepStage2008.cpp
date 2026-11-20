@@ -57,12 +57,8 @@ namespace RBX
 		}
 	}
 
-<<<<<<< HEAD
-	// 0064a550: jump table over state - 1 (states 1..5 -> +0xe0 / +0x100 / +0x140 / +0x160 / +0x180), default +0x120
-=======
 	// 0064a550: jump table 0064a598 over state - 1 (1 -> +0xe0, 2 -> +0x100, 4 -> +0x140, 5 -> +0x160, 6 -> +0x180;
 	// 3 shares the default block +0x120, the donor SleepStage2.cpp `default: return &awake`).
->>>>>>> mew/claude/optimistic-shannon-0xccuy
 	SleepStage::AssemblySet* SleepStage::stateToSet(Sim::AssemblyState state)
 	{
 		switch (state)

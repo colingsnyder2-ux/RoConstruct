@@ -51,11 +51,7 @@ LRESULT CPropGrid::OnUpdate(WPARAM, LPARAM)
 }
 
 // 00440e30: primary vftable slot 90, reached through the 00438010 thunk.
-<<<<<<< HEAD
-// Parked near-miss (1313 of 1321 B). Every cast, allocation size (0x144, 0x130 x2, 0x13c x3, 0x138, 0x134,
-=======
 // Relocation-masked IDENTICAL (1321 B) since 2026-11-19 xi06 with the inline bIsPublic test below. Earlier note (1313 of 1321 B): every cast, allocation size (0x144, 0x130 x2, 0x13c x3, 0x138, 0x134,
->>>>>>> mew/claude/optimistic-shannon-0xccuy
 // 0x130 x4), constructor order, the 00975770 Script source compare and the addItem<T> calls line up; the only
 // source difference is isPublic(): the original tests the bit inline (test byte ptr [esi + 0x10], bl with ebx = 1
 // at 00440e64, ebx then reused as unwind state 1 at 00440f0c), and no out-of-line PropertyDescriptor::isPublic

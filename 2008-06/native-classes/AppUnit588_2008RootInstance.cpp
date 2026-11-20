@@ -19,11 +19,7 @@
 //     0xb8): not counted, World.h proposal in the receipt.
 //   * insertSpawnLocation 005910a0 reads SpawnLocation::neutral at +0x400, which needs the 2008 PartInstance of
 //     native-headers/part-embedded (pending build only).
-<<<<<<< HEAD
-//   * insertInstances 005911d0 is not built (decoded 2026-11-19, 825 bytes, ret 0x10): if requestedParent is set and
-=======
 //   * insertInstances 005911d0 (decoded 2026-11-19, 825 bytes, ret 0x10): if requestedParent is set and
->>>>>>> mew/claude/optimistic-shannon-0xccuy
 //     !contains(requestedParent) 005574b0, only std::for_each 005903f0 with boost::bind(&Instance::setParent 0055a8f0,
 //     _1, requestedParent) and return. Otherwise a local vector<shared_ptr<Instance>> (push_back 00420110, dtor
 //     005a2fe0) collects instances[i] by index: Sky -> create<Lighting>(this) 00590e20 ->replaceSky 005e0650; Team ->
@@ -35,12 +31,7 @@
 //     anything else is collected. If the collection is not empty (test 0xfffffff8): requestedParent defaults to this;
 //     insertMode 0 -> insertRaw 00590440 with a local vector<weak_ptr<PartInstance>>, 1 -> insertToTree 00590c10,
 //     2 -> insert3dView 00590f90 (promptMode); then recordCameraHistory("Insert" 00831e18, this) 0058c5c0 (local
-<<<<<<< HEAD
-//     declaration pattern of CSelectionTreeCtrl.cpp). Blocker: v8datamodel/Workspace.h (not this unit's) declares
-//     no member for 005a3d40 (placeholder sub_005a3d40 in inferred-identity-bindings.json); proposal there.
-=======
 //     declaration pattern of CSelectionTreeCtrl.cpp). 005a3d40 is Workspace::startDecalDrag (Workspace.h, batch 27).
->>>>>>> mew/claude/optimistic-shannon-0xccuy
 #include "v8datamodel/RootInstance.h"
 #include "v8datamodel/PartInstance.h"
 #include "tool/Dragger.h"

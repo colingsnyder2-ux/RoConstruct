@@ -45,11 +45,7 @@ namespace RBX
 			  peer(peer),
 			  remotePlayerId(remotePlayerId),
 			  counter0(0),
-<<<<<<< HEAD
-			  counter1(0)
-=======
 			  lastReceivedName(NULL)
->>>>>>> mew/claude/optimistic-shannon-0xccuy
 		{
 			switch (NetworkSettings::singleton().physicsSendMethod)
 			{

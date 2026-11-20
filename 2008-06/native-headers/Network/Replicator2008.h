@@ -135,8 +135,6 @@ namespace RBX
 			// 004aeba0 (thiscall (BitStream&, const Descriptor&), ret 8; ChangePropertyItem::write 004b6d10 calls it on
 			// propNames +0x2bf4 with the property descriptor). INFERRED name after the donor SharedStringDictionary::send.
 			void send(RakNet::BitStream& bitStream, const Descriptor& descriptor);
-<<<<<<< HEAD
-=======
 			// INFERRED: inline receive (no standalone body in the client; readChangedProperty 004b7a30 expands it:
 			// ReadBits 004a5210 of receiveBits (+0x3c) into a zeroed index, then the checked descriptors[index]).
 			void receive(RakNet::BitStream& bitStream, const Descriptor*& descriptor)
@@ -145,7 +143,6 @@ namespace RBX
 				bitStream.ReadBits((unsigned char*)&index, receiveBits, true);
 				descriptor = descriptors[index];
 			}
->>>>>>> mew/claude/optimistic-shannon-0xccuy
 		};
 	}
 }
@@ -222,12 +219,6 @@ namespace RBX
 				const boost::shared_ptr<const Instance> instance;                   // +0x0c
 
 			public:
-<<<<<<< HEAD
-				ChangePropertyItem(Replicator& replicator, const boost::shared_ptr<const Instance>& instance, const Reflection::PropertyDescriptor& desc);
-				virtual void write(RakNet::BitStream& bitStream);                   // 004b6d10
-			};
-
-=======
 				// Inline (donor Replicator.cpp body): onParentChanged 004b01e0 expands it after new(0x14) (vtable
 				// 00824828, +0x08 desc, +0x0c instance).
 				ChangePropertyItem(Replicator& replicator, const boost::shared_ptr<const Instance>& instance, const Reflection::PropertyDescriptor& desc)
@@ -264,7 +255,6 @@ namespace RBX
 				virtual void write(RakNet::BitStream& bitStream);                   // 004b47b0
 			};
 
->>>>>>> mew/claude/optimistic-shannon-0xccuy
 			class MarkerItem : public Item
 			{
 			private:

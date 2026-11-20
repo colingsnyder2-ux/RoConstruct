@@ -138,13 +138,10 @@ namespace RBX
 		// the externalBodyForceAdded +0x1dc store on the recursive path.
 		void onWakeUpRequest(Assembly* a, bool recursive);  // 0064b890
 
-<<<<<<< HEAD
-=======
 		// Donor openrbx SleepStage2 members; callers AssemblyStage::onAssemblyAdded 0066f530 / onAssemblyRemoving 0066f550.
 		void onAssemblyAdded(Assembly* a);                // 0064aff0 (`ret 4`)
 		void onAssemblyRemoving(Assembly* a);             // 0064b0a0 (`ret 4`)
 
->>>>>>> mew/claude/optimistic-shannon-0xccuy
 	private:
 		// Donor SleepStage inlines (no code of their own): 0064ae90 / 0064b5e0 / 0064b6d0 test currentStage and its type.
 		Sim::AssemblyState getState(Assembly* a);

@@ -6,13 +6,7 @@
 // (004b58f0) followed by operator delete (006a067a) when the flags byte has bit 0.
 // It is emitted here by deleting an instance of the real class; no stand-in type is defined.
 //
-<<<<<<< HEAD
-// 004c8150 (602 bytes, PartItem::receive) is written below behind NATIVE_PHYSICS_RECEIVER_ITEM_PENDING. With the two
-// header declarations named at the guard it compiles byte-identical to 004c8150 (relocations masked; batch 24 trial
-// with shadow copies of the headers). Remaining blocker: the declarations live in leased headers.
-=======
 // 004c8150 (602 bytes, PartItem::receive) is written below (batch 24 proved it byte-identical with these declarations).
->>>>>>> mew/claude/optimistic-shannon-0xccuy
 //
 // 004c9120 (1641 bytes, receivePacket) is NOT yet recovered. Blocker recorded in the lane receipt:
 // the analog's statement order calls Replicator::deserializeInstanceRef, Player::character (+0x170),
@@ -37,20 +31,8 @@ namespace RBX
 	}
 }
 
-<<<<<<< HEAD
-#ifdef NATIVE_PHYSICS_RECEIVER_ITEM_PENDING
-// Blocked on two header declarations (owner of Network/PhysicsSenders2008.h and Network/PhysicsReplication.h):
-//   PhysicsSenders2008.h, struct InterpolatingPhysicsReceiver::PartItem:
-//     void receive(RakNet::BitStream& bitStream, unsigned int timestamp, ModelInstance* character); // 004c8150
-//   PhysicsReplication.h, class IPhysicsSender (plus #include <G3D/Vector3.h>):
-//     static void readPosition(RakNet::BitStream& bitStream, G3D::Vector3& position);             // 004ca5c0
-//     (004ca5c0's own error string 008268e8 reads "IPhysicsSender::readPosition failed read").
-// Enabling it also needs "/I{headers}/part-embedded /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source"
-// appended to the native-flags line.
-=======
 // PartItem::receive 004c8150 uses the declarations in Network/PhysicsSenders2008.h (PartItem::receive) and
 // Network/PhysicsReplication.h (IPhysicsSender::readPosition 004ca5c0, error string 008268e8).
->>>>>>> mew/claude/optimistic-shannon-0xccuy
 #include "Network/NetworkSettings.h"
 #include "AppUnit49C_2008/Streaming2008.h"
 #include "v8datamodel/PartInstance.h"
@@ -119,7 +101,3 @@ namespace RBX
 		}
 	}
 }
-<<<<<<< HEAD
-#endif
-=======
->>>>>>> mew/claude/optimistic-shannon-0xccuy

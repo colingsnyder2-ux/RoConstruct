@@ -35,16 +35,6 @@ int __cdecl sub_00469c60(int index);
 // buffered mouse read as a delta vector (dwOfs 0 -> x, otherwise y, both from the signed dwData).
 G3D::Vector2 sub_00469340(const DxDeviceObjectData& data);
 
-#ifdef NATIVE_DXUSERINPUT_KEYBOARD_PENDING
-#include "CMainFrame.h"   // processKeyboard 004681b0 reads CMainFrame::state104 (+0x104) of the application main window
-#endif
-
-// Identity-tier placeholder helpers (bodies byte-proved in Inferred_00469f50.cpp / Inferred_00469360.cpp /
-// Inferred_00469c60.cpp), all cdecl: keyboard state -> SDLMod, DIK scan code -> SDLKey, SDLKey -> virtual key.
-int sub_00469f50(const unsigned char* keys);
-int sub_00469360(int key);
-int __cdecl sub_00469c60(int index);
-
 // 004328c0
 DxCriticalSection::DxCriticalSection()
 {
@@ -423,8 +413,6 @@ namespace RBX
 	}
 #endif
 
-<<<<<<< HEAD
-=======
 	// 004685b0 (registry placeholder func_004685b0; header name processMouse, called only by the Heartbeat poll
 	// 004689c0): drain up to 0x800 buffered DirectInput mouse records (readDeviceData 00467880 on the mouse at +0x178;
 	// a failed read clears mouseAcquired +0x192) and dispatch on DIDEVICEOBJECTDATA::dwOfs through the jump table at
@@ -501,7 +489,6 @@ namespace RBX
 
 #endif
 
->>>>>>> mew/claude/optimistic-shannon-0xccuy
 	// 004689c0 (Heartbeat listener at +0x2c): poll both devices
 	void DxUserInput::onEvent(const RunService*, Heartbeat)
 	{
