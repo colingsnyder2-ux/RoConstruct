@@ -136,6 +136,56 @@ bool HumanoidState::onFloorStep()
     return false;
 }
 
+#ifdef NATIVE_HUMANOIDSTATE_PRESTEP_PENDING
+// 006451c0 (472 bytes, thiscall `ret 4`; analog name preStep, declared in humanoid/HumanoidState.h; called by
+// stepState 00645450 and transition 006453a0 in HumanoidStateStep.cpp). Decoded from the target (no donor body):
+// old floorPart pointer kept in esi, floorFound +0x20 = false, floorPart.reset() 00456e80, floorTouchInWorld =
+// Vector3::inf() 00510960, value0c -= dt; setArmsFlag(query3()) 00643c20 (slot 3 +0xc), setLegsFlag(query4())
+// 00643bc0 (slot 4 +0x10), setTorsoHeadFlag(query5()) 00643c80 (slot 5 +0x14); transitionTable 0084a92c columns
+// 10 / 11 (0084a954 / 0084a958) compared with 13 -> findFloor 00644000, World::ticklePrimitive(prim, 0) 005e9410
+// through world +0x21c, then previous (+0x40) / current (+0x70) from Primitive::getCoordinateFrame 005e82c0 of the
+// embedded floor Primitive (+0x228, inline getFloorPrimitive); columns 8 / 9 (0084a94c / 0084a950) ->
+// floorFound = 00644c80(NULL).
+// PENDING (not compiled, unverified draft): humanoid/HumanoidState.h (not this worker's file) lacks declarations of
+// 00644000 (void, analog name findFloor) and 00644c80 (bool (Adorn*), analog name findClimbable), and
+// World::ticklePrimitive(Primitive*, int) is declared only by v8world/World2008.h (owner colin) while this unit reaches
+// engine-world/v8world/World.h (ticklePrimitive(Primitive*) with one argument). Header proposals in the batch 26 report.
+void HumanoidState::preStep(float dt)
+{
+    PartInstance* oldFloor = floorPart.get();
+    floorFound = false;
+    floorPart.reset();
+    floorTouchInWorld = G3D::Vector3::inf();
+    value0c -= dt;
+
+    setArmsFlag(query3());
+    setLegsFlag(query4());
+    setTorsoHeadFlag(query5());
+
+    if (transitionTable[getStateType()][10] != 13 || transitionTable[getStateType()][11] != 13)
+    {
+        findFloor();
+        if (floorPart)
+        {
+            humanoid->getWorld()->ticklePrimitive(floorPart->getPrimitive(), 0);
+            if (oldFloor == floorPart.get())
+            {
+                previous = current;
+                current = getFloorPrimitive()->getCoordinateFrame();
+            }
+            else
+            {
+                previous = getFloorPrimitive()->getCoordinateFrame();
+                current = getFloorPrimitive()->getCoordinateFrame();
+            }
+        }
+    }
+
+    if (transitionTable[getStateType()][8] != 13 || transitionTable[getStateType()][9] != 13)
+        floorFound = findClimbable(NULL);
+}
+#endif
+
 // 00643660 (836 bytes, cdecl; analog name): the state factory. Jump table 00643974 for cases 0..11 in getStateType order
 // (tests/record_native_humanoid_factory.py: allocation sizes 0xa0..0x114 and constructor RTTI per case); every case
 // news its state with EH state = case index, and the default (EH state 0xc) news Running, whose tail case 6 shares.

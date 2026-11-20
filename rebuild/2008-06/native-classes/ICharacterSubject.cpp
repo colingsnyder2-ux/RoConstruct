@@ -34,14 +34,21 @@ namespace RBX
 		return G3D::CoordinateFrame(G3D::Matrix3::identity(), newCameraPt);
 	}
 
+	// 00641390 (415 bytes, `ret 0xc`; vtable ICameraSubject slot, registry ?zoom@ICharacterSubject@RBX@@EAE_NMAAVCoordinateFrame@G3D@@0@Z).
+	// The 2008 body differs from the donor: it works on a copy of the goal that starts from goalFromDistance 00641280
+	// (focus, goal, unoccludedDistance +0x40) while wasOccluded (+0x3d) is set (Matrix3 copy 00513220), and at the end
+	// either stores the new distance in unoccludedDistance (occluded) or writes the copy back to cameraGoal.
+	// Camera::getNewZoomDistance 005cc240, Vector3::unitize 00518470.
 	bool ICharacterSubject::zoom(const float in, G3D::CoordinateFrame& cameraGoal, G3D::CoordinateFrame& cameraFocus)
 	{
-		G3D::Vector3 focusToGoal = cameraGoal.translation - cameraFocus.translation;
+		G3D::CoordinateFrame goal = wasOccluded ? goalFromDistance(cameraFocus, cameraGoal, unoccludedDistance) : cameraGoal;
+
+		G3D::Vector3 focusToGoal = goal.translation - cameraFocus.translation;
 
 		float currentDistance = focusToGoal.magnitude();
-		float newDistance = Camera::getNewZoomDistance(currentDistance, in);
-
-		newDistance = G3D::min(400.0f, newDistance);
+		float zoomDistance = Camera::getNewZoomDistance(currentDistance, in);
+		// The clamped distance lives in the 400.0f temporary's slot (a separate variable from the unclamped one).
+		float newDistance = G3D::min(400.0f, zoomDistance);
 
 		if (newDistance == currentDistance)
 			return false;
@@ -50,7 +57,12 @@ namespace RBX
 		focusToGoal.unitize();
 		focusToGoal.y = newDistance * 0.03f;
 
-		cameraGoal.translation = focusToGoal.direction() * newDistance + cameraFocus.translation;
+		goal.translation = focusToGoal.direction() * newDistance + cameraFocus.translation;
+
+		if (wasOccluded)
+			unoccludedDistance = (goal.translation - cameraFocus.translation).magnitude();
+		else
+			cameraGoal = goal;
 
 		return true;
 	}
