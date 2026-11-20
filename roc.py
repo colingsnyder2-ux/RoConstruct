@@ -2016,11 +2016,11 @@ def cmd_tasks(a):
 
 
 def cmd_host(a):
-    """The canonical group-server host: server with tunnel and publishing, restarted 30 s
+    """The canonical group-server host: server with tunnel, restarted 30 s
     after any exit. Restart = stop the child python process; this loop starts it again."""
     import time
     while True:
-        code = subprocess.call([sys.executable, str(ROOT / "roc.py"), "server", "--tunnel", "--publish"], cwd=ROOT)
+        code = subprocess.call([sys.executable, str(ROOT / "roc.py"), "server", "--tunnel"], cwd=ROOT)
         print("Server stopped (exit %s). Restarting in 30 seconds (Ctrl+C to quit)..." % code, flush=True)
         time.sleep(30)
 

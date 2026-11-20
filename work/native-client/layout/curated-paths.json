@@ -99,5 +99,17 @@
  "OgreGeometryVertexProvider2008": [
   "client/rendering/RbxOgre/RbxGeometryGenerator.cpp",
   "RBX::OgreUtil geometry creation (00679ae0); iOS 2.132 (Dec 2013) debug map lists Client/Rendering/RbxOgre/RbxGeometryGenerator.cpp"
+ ],
+ "LuaHtmlBinder2008": [
+  "client/win/DhtmlWindow.cpp",
+  "CLuaHtmlView::Binder and PropBinding implementations (DHTML window Lua binding)"
+ ],
+ "InstanceBaseCallbacks": [
+  "client/app/v8tree/Instance.cpp",
+  "RBX::Instance member methods (setName, askAddChild, askSetParent, onChild*)"
+ ],
+ "ViewRenderLeftovers": [
+  "client/rendering/renderlib/RenderScene.cpp",
+  "rendering support callbacks"
  ]
 }
