@@ -10,6 +10,25 @@ void setActiveDocument(bool active, CRobloxDoc* document);
 IMPLEMENT_DYNCREATE(CRobloxView, CView)
 
 BEGIN_MESSAGE_MAP(CRobloxView, CView)
+    ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
+    ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
+    ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
+    ON_WM_SIZE()
+    ON_WM_CREATE()
+    ON_WM_ERASEBKGND()
+    ON_WM_DESTROY()
+    ON_MESSAGE(WM_USER + 107, &CRobloxView::updateReflector)
+    ON_MESSAGE(WM_USER + 108, &CRobloxView::closeToolbox)
+    ON_COMMAND(0x8020, &CRobloxView::OnInsertFromFileAt)
+    ON_COMMAND(0x80d6, &CRobloxView::OnInsertFromFile)
+    ON_WM_CONTEXTMENU()
+    ON_WM_SETFOCUS()
+    ON_COMMAND(0x80fc, &CRobloxView::OnWindowCommand)
+    ON_UPDATE_COMMAND_UI(0x80fe, &CRobloxView::OnUpdateToolboxCheck)
+    ON_COMMAND(0x80fe, &CRobloxView::toggleToolbox)
+    ON_COMMAND(0x80fd, &CRobloxView::showHelp)
+    ON_COMMAND(0x800c, &CRobloxView::openToolboxPage)
+    ON_UPDATE_COMMAND_UI(0x800c, &CRobloxView::OnUpdateAlwaysEnable)
 END_MESSAGE_MAP()
 
 // Constructor 00459eb0. Binder 00459890 and CRobloxWnd 0045c730 are external here.
@@ -58,14 +77,7 @@ void CRobloxView::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo) {}
 // slot 99
 void CRobloxView::OnEndPrinting(CDC* pDC, CPrintInfo* pInfo) {}
 
-// slot 95 - STUB (not authentic, not rendering): the 2008 body renders through the scene renderer;
-// this solid GDI fill only marks the viewport until that path is recovered.
 void CRobloxView::OnDraw(CDC* pDC) {
-    if (pDC) {
-        CRect rect;
-        GetClientRect(&rect);
-        pDC->FillSolidRect(&rect, RGB(40, 60, 90)); // viewport clear color
-    }
 }
 
 // 00458ea0
@@ -184,3 +196,42 @@ int CRobloxView::OnCreate(LPCREATESTRUCT lpCreateStruct) {
     return (window.Create(0, "Roblox", 0x50000000, rect, this, 1, 0) != 0) - 1;
 }
 
+void CRobloxView::OnSize(UINT nType, int cx, int cy) {
+    CView::OnSize(nType, cx, cy);
+    layout();
+}
+
+void CRobloxView::OnDestroy() {
+    detachDataModel();
+    CView::OnDestroy();
+}
+
+BOOL CRobloxView::OnEraseBkgnd(CDC*) {
+    return TRUE;
+}
+
+void CRobloxView::OnContextMenu(CWnd*, CPoint) {
+}
+
+void CRobloxView::OnWindowCommand() {
+    window.windowCommand();
+}
+
+void CRobloxView::OnInsertFromFile() {
+    insertFromFile(0);
+}
+
+void CRobloxView::OnInsertFromFileAt() {
+    insertFromFile(1);
+}
+
+LRESULT CRobloxView::updateReflector(WPARAM, LPARAM) {
+    return 0;
+}
+
+void CRobloxView::OnUpdateAlwaysEnable(CCmdUI* pCmdUI) {
+    pCmdUI->Enable(TRUE);
+}
+
+void CRobloxView::insertFromFile(int mode) {
+}

@@ -1,0 +1,169 @@
+{
+  "scope": "Original-body/data checks for ordinary native Axis diagnostic objects; not full ODR/call identity/runtime proof.",
+  "jobs": [
+    {
+      "source": "native-classes/AxisMoveToolCore.cpp",
+      "checks": [
+        {
+          "addr": "00640560",
+          "symbol": "??0AxisMoveTool@"
+        },
+        {
+          "addr": "00640620",
+          "symbol": "??1AxisMoveTool@"
+        },
+        {
+          "addr": "005c6510",
+          "symbol": "?newMouseCommand@?$TToolVerb@VAxisMoveTool"
+        },
+        {
+          "addr": "00640780",
+          "symbol": "?getName@?$Named@VArrowToolBase@RBX@@$1?sAxisMoveTool"
+        },
+        {
+          "addr": "00640760",
+          "symbol": "??_GAxisMoveTool@"
+        },
+        {
+          "addr": "006405f0",
+          "symbol": "?getCursorName@AxisMoveTool@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/AxisMoveToolMethods.cpp",
+      "checks": [
+        {
+          "addr": "00640700",
+          "symbol": "?isSticky@AxisMoveTool"
+        },
+        {
+          "addr": "006406a0",
+          "symbol": "?onMouseUp@AxisMoveTool"
+        },
+        {
+          "addr": "00641160",
+          "symbol": "?onMouseIdle@AxisMoveTool"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/AxisMoveToolDown.cpp",
+      "checks": [
+        {
+          "addr": "00640d50",
+          "symbol": "?hitHandle@AxisMoveTool"
+        },
+        {
+          "addr": "00640e20",
+          "symbol": "?onMouseDown@AxisMoveTool"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/AxisMoveToolMove.cpp",
+      "checks": [
+        {
+          "addr": "00640800",
+          "symbol": "?onMouseMove@AxisMoveTool"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/AxisMoveToolBounds.cpp",
+      "checks": [
+        {
+          "addr": "00640b40",
+          "symbol": "?bounds@AxisMoveTool@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/AxisMoveToolRender.cpp",
+      "checks": [
+        {
+          "addr": "00640f30",
+          "symbol": "?render2d@AxisMoveTool@"
+        },
+        {
+          "addr": "00641040",
+          "symbol": "?render3dAdorn@AxisMoveTool@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/MoveHandleHit.cpp",
+      "checks": [
+        {
+          "addr": "006656b0",
+          "symbol": "?hitMoveHandlesInFrame@RBX@@"
+        },
+        {
+          "addr": "00665880",
+          "symbol": "?hitMoveHandles@RBX@@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/MoveHandleRadius.cpp",
+      "checks": [
+        {
+          "addr": "00677140",
+          "symbol": "?moveHandleRadius@RBX@@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/MegaDraggerMovement.cpp",
+      "checks": [
+        {
+          "addr": "0060dd70",
+          "symbol": "?anyDragPartAlive@MegaDragger@"
+        },
+        {
+          "addr": "0060e200",
+          "symbol": "?safeMoveAlongLine@MegaDragger@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/DragPrimitiveBounds.cpp",
+      "checks": [
+        {
+          "addr": "0060f340",
+          "symbol": "?collectPrimitives@RBX@@"
+        },
+        {
+          "addr": "0060f3d0",
+          "symbol": "?getPrimitives@DragUtilities@"
+        },
+        {
+          "addr": "0060ff80",
+          "symbol": "?computeExtents@Dragger@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/DraggerLineMove.cpp",
+      "checks": [
+        {
+          "addr": "006106c0",
+          "symbol": "?safeMoveAlongLine@Dragger@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/DraggerPlacement.cpp",
+      "checks": [
+        {
+          "addr": "00610180",
+          "symbol": "?movePrimitivesGoal@Dragger@"
+        },
+        {
+          "addr": "00610580",
+          "symbol": "?safePlaceAlongLine@Dragger@"
+        }
+      ]
+    }
+  ]
+}

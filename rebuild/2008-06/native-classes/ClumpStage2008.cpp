@@ -3,6 +3,7 @@
 // Rows: constructor 0064cfd0, destructor 0064cf50, onPrimitiveAddedAnchor 0064cc40, onPrimitiveRemovedAnchor 0064ccf0.
 #include "v8world/ClumpStage2008.h"
 #include "v8world/Joints2008.h"
+#include "v8world/Primitive2008.h"
 
 namespace RBX
 {
@@ -11,6 +12,18 @@ namespace RBX
 
 	// 0064ca60 ?getJoint@RBX@@YAPAVJoint@1@PAVPrimitive@1@W4JointType@21@@Z (body in native-classes/Inferred_0064ca60.cpp).
 	Joint* getJoint(Primitive* p, Joint::JointType jointType);
+
+	// 0064cbf0: remove the primitive's first joint from the downstream TreeStage,
+	// then remove that joint and the primitive from this stage (donor ClumpStage name).
+	void ClumpStage::onPrimitiveRemoving(Primitive* p)
+	{
+		Joint* j = p->getFirstJoint();
+		static_cast<IWorldStage*>(getDownstream())->onEdgeRemoving(j);
+		static_cast<TreeStage*>(getDownstream())->onPrimitiveRemoving(p);
+		j->removeFromPipeline(this);
+		delete j;
+		p->removeFromStage(this);
+	}
 
 	// 0064cc40 (native-world ClumpStage.cpp / openrbx shape): the FREE_JOINT of p (getJoint 0064ca60), new(0x88)
 	// AnchorJoint(p), IPipelined::putInStage 00645830, downstream slot 4 onEdgeAdded, then this slot 5 onEdgeRemoving

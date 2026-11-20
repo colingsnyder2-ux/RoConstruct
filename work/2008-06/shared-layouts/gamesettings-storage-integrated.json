@@ -10,10 +10,10 @@
   "native_header_sha256": {
     "rebuild\\2008-06\\native-headers\\v8datamodel\\GameSettings.h": "bf2ca9e0c87d7fe688623950ce44018e6ad53665af0d15b9515f413ffbc8ae50",
     "rebuild\\2008-06\\native-headers\\v8datamodel\\GlobalSettings.h": "9f5b6df796c9f1bc9c86116c9156b5c756d6fc14f91491dbdd85345f1c64c6bd",
-    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "8171866c14c7dbd6a39b52755786803296a819ab924c8e925b728ac938345ee8",
-    "rebuild\\2008-06\\native-headers\\util\\Sound.h": "29df3b617a2cfdf625134445d283bb66f3103abfb0d65d8783317fed35f7f9c4"
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "2ebd434768c1c79bb02ce66ac5930877763a4b2a77b9ac6aceaab1d26d7b2b4b",
+    "rebuild\\2008-06\\native-headers\\util\\Sound.h": "db638501454c259014d4c7d468625db6b8171caaa7a1f250e79d292cf9c7ff8a"
   },
   "source_sha256": "5426d9c1610956839d09356b76e3685eed18b430078ba2f7a315a910c994ee6f",
-  "object_sha256": "bf1b20b973cc33bb1ef7baab9ade733d5f6420de7dedc8aee4020d495e81590b",
+  "object_sha256": "100d5107c769d743c5736b5e635434ceb51f29040d68bc44a7755531f54c9520",
   "recorder_sha256": "212314837dbae3c280edc672e6fa1311fdaf0fc37d0d5f7d7065028bafb05074"
 }

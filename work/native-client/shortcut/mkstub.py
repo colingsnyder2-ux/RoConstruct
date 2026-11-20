@@ -6,6 +6,11 @@ names=[n for n in names if n not in REAL]
 def is_data(n):
     if n.startswith(('??_7','??_C','??_R','??_B')): return True
     if re.match(r'^\?[^@]+(@[^@]+)*@@[0-9]',n): return True
+    if n.startswith('?'):  # template statics (e.g. GlobalSettingsItem<..>::sing) defeat the regex: undecorate, no '(' = data
+        import ctypes
+        buf = ctypes.create_string_buffer(4096)
+        if ctypes.WinDLL('dbghelp').UnDecorateSymbolName(n.encode(), buf, 4096, 0):
+            return '(' not in buf.value.decode('latin-1')
     return not n.startswith('?') and not n.startswith('_') or n.startswith('_IID') or n.startswith('_LIBID')
 funcs=[n for n in names if not is_data(n)]; data=[n for n in names if is_data(n)]
 code=b'\x31\xc0\xc3'  # xor eax,eax; ret

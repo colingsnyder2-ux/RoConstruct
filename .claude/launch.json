@@ -1,6 +1,31 @@
 {
   "version": "0.0.1",
   "configurations": [
-    {"name": "site", "runtimeExecutable": "python", "runtimeArgs": ["-m", "http.server", "8781", "-d", "docs"], "port": 8781, "autoPort": false}
+    {
+      "name": "site",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8781",
+        "-d",
+        "docs"
+      ],
+      "port": 8781,
+      "autoPort": false
+    },
+    {
+      "name": "site-preview",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8782",
+        "-d",
+        "C:/Users/colin/AppData/Local/Temp/claude/6b519eefa6fcf214/4ba04274-25b6-4d61-bfd4-c3f4c027aea0/scratchpad/site"
+      ],
+      "port": 8782,
+      "autoPort": false
+    }
   ]
 }

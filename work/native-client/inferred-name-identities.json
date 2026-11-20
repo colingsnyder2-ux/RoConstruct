@@ -14958,6 +14958,42 @@
    "address": "006791e0",
    "inferred_name": true,
    "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?deallocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4SurfaceType@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4SurfaceType@2@@std@@@5@$0A@@std@@@std@@@std@@QAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4SurfaceType@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4SurfaceType@2@@std@@@5@$0A@@std@@@2@I@Z",
+   "address": "004dc3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?deallocate@?$allocator@W4SurfaceType@RBX@@@std@@QAEXPAW4SurfaceType@RBX@@I@Z",
+   "address": "004dc3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??__Ename_Parent@@YAXXZ",
+   "address": "007f2bf0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??__Ename_Part@@YAXXZ",
+   "address": "007f42d0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??__Ename_CFrame@@YAXXZ",
+   "address": "007f42f0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?stop@RunService@RBX@@QAEXXZ",
+   "address": "00554460",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
   }
  ]
 }

@@ -1,0 +1,106 @@
+{
+  "name": "RbxApp",
+  "description": "Roblox App engine (reflection, v8tree, v8world, v8datamodel, script, humanoid, tool, v8xml, gui, security). Layer 1: 2008-verified OpenRBX files (partial). Layer 2: complete rbxgs files against the OpenRBX headers, rbxgs headers only where OpenRBX has none.",
+  "depends": [
+    "rbx-util",
+    "lua",
+    "raknet"
+  ],
+  "layers": [
+    {
+      "name": "openrbx",
+      "mode": "recipe",
+      "recipe": "openrbx-client",
+      "direct": true,
+      "files": "App/reflection/*.cpp App/v8tree/*.cpp App/v8world/*.cpp App/v8datamodel/*.cpp App/script/*.cpp App/humanoid/*.cpp App/tool/*.cpp App/v8xml/*.cpp App/gui/*.cpp App/security/*.cpp",
+      "extra_defines": "BOOST_ALL_NO_LIB",
+      "exclude": [
+        "App/humanoid/Humanoid.cpp",
+        "App/v8datamodel/PartInstance.cpp",
+        "App/v8datamodel/Workspace.cpp"
+      ],
+      "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+    },
+    {
+      "name": "upstream",
+      "mode": "direct",
+      "dir": "tools/rbxgs/Client/App",
+      "files": "reflection/*.cpp v8tree/*.cpp v8world/*.cpp v8datamodel/*.cpp script/*.cpp humanoid/*.cpp tool/*.cpp v8xml/*.cpp gui/*.cpp security/*.cpp",
+      "extra_defines": "WIN32 NDEBUG _LIB _VC80_UPGRADE=0x0710 _MBCS BOOST_ALL_NO_LIB",
+      "extra_includes": [
+        "rebuild/2008-06/glue/openrbx",
+        "tools/rbxgs/Client/App/include",
+        "tools/rbxgs/Client/Network/include",
+        "tools/rbxgs/Client/RbxGraphics/include",
+        "tools/rbxgs/Client/Rendering/AppDraw/include",
+        "tools/openrbx/Client/App/include",
+        "tools/openrbx/Client/Network/include",
+        "tools/openrbx/Client/RbxView/include",
+        "tools/openrbx/Client/RbxViewBase",
+        "tools/openrbx/Client/Rendering/RenderLib/include",
+        "tools/openrbx/Client/Rendering/AppDraw/include",
+        "tools/openrbx/Client/RbxGraphics/include",
+        "tools/openrbx/3rdparty/RakNet30/Source",
+        "tools/openrbx/util",
+        "tools/openrbx/3rdparty/boost_1_34_1",
+        "tools/openrbx/3rdparty/g3d/source/include",
+        "tools/openrbx/3rdparty/lua-5.1.1/src",
+        "tools/openrbx/3rdparty/g3d/source/png",
+        "tools/openrbx/3rdparty/g3d/source/zlib",
+        "tools/openrbx/3rdparty/SDL-1.2.6/include",
+        "WINSDK",
+        "tools/rbxgs/Client/Rendering/RenderLib/include"
+      ],
+      "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+    },
+    {
+      "name": "glue",
+      "mode": "direct",
+      "dir": "rebuild/2008-06/glue/openrbx",
+      "files": "*.cpp",
+      "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+      "extra_includes": [
+        "rebuild/2008-06/glue/openrbx",
+        "tools/rbxgs/Client/App/include",
+        "tools/rbxgs/Client/Network/include",
+        "tools/rbxgs/Client/RbxGraphics/include",
+        "tools/rbxgs/Client/Rendering/AppDraw/include",
+        "tools/openrbx/Client/App/include",
+        "tools/openrbx/Client/Network/include",
+        "tools/openrbx/Client/RbxView/include",
+        "tools/openrbx/Client/RbxViewBase",
+        "tools/openrbx/Client/Rendering/RenderLib/include",
+        "tools/openrbx/Client/Rendering/AppDraw/include",
+        "tools/openrbx/Client/RbxGraphics/include",
+        "tools/openrbx/3rdparty/RakNet30/Source",
+        "tools/openrbx/util",
+        "tools/openrbx/3rdparty/boost_1_34_1",
+        "tools/openrbx/3rdparty/g3d/source/include",
+        "tools/openrbx/3rdparty/lua-5.1.1/src",
+        "tools/openrbx/3rdparty/g3d/source/png",
+        "tools/openrbx/3rdparty/g3d/source/zlib",
+        "tools/openrbx/3rdparty/SDL-1.2.6/include",
+        "WINSDK",
+        "tools/rbxgs/Client/Rendering/RenderLib/include"
+      ],
+      "extra_defines": "WIN32 NDEBUG _LIB _VC80_UPGRADE=0x0710 _MBCS BOOST_ALL_NO_LIB"
+    }
+  ],
+  "test": "rbx_app",
+  "test_includes": [
+    "tools/openrbx/Client/App/include",
+    "tools/openrbx/util",
+    "tools/openrbx/3rdparty/boost_1_34_1",
+    "tools/openrbx/3rdparty/g3d/source/include",
+    "tools/openrbx/3rdparty/lua-5.1.1/src",
+    "tools/openrbx/3rdparty/RakNet30/Source",
+    "rebuild/2008-06/out/RbxApp/force"
+  ],
+  "test_defines": "WIN32 NDEBUG _LIB _MBCS BOOST_ALL_NO_LIB",
+  "overlay": {
+    "root": "tools/openrbx/Client",
+    "patches": "rebuild/2008-06/patches/openrbx-client.json"
+  },
+  "verified": true,
+  "force_verified": true
+}

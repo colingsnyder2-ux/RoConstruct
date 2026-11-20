@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\flag_family\\NativeFlagFamilyLayout.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeFlagFamilyLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeFlagFamilyLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeFlagFamilyLayout.cpp"
     ],
     "flagstand": [
       "/nologo",
@@ -61,7 +61,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -75,8 +75,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\flag_family\\NativeFlagStand.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\FlagStand.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeFlagStand.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\FlagStand.cpp"
     ],
     "flag": [
       "/nologo",
@@ -99,7 +99,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -113,22 +113,22 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\flag_family\\NativeFlag.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Flag.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeFlag.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Flag.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_flag_family.py": "1d3cf52db486d4f14495e93a592cbd305c5f535508a175f267f0ec0c320083bc",
-    "rebuild/2008-06/native-headers/v8datamodel/FlagStand.h": "7fb96acfe62d95d2a4a0b014118d12682b08e3d2389c4009d4623edd6268c3e1",
-    "rebuild/2008-06/native-headers/v8datamodel/Flag.h": "daf0cb3e156c04f05135ff5bb440451b3ee29699f99a1d9eb73b98a626930265",
-    "rebuild/2008-06/native-classes/FlagStand.cpp": "7d2ca4f822beba4c501c8640995f3682b6c11d2003427aea5dfd71820e17e3ae",
-    "rebuild/2008-06/native-classes/Flag.cpp": "f4ad378aa03bb90e5f03779c465f9e3abb59013df887bf4ea9a5206fd2e61313",
-    "rebuild/2008-06/tests/NativeFlagFamilyLayout.cpp": "d646d22e760ab8a056cfe1d560dcffda7a3dc9fa37b87d8c721e9afd9b89eb6b"
+    "rebuild/2008-06/tests/record_native_flag_family.py": "731a6a6ff9c27247348fd7c0ad6b77e1a694005e574334f78b18f72aa09c8178",
+    "rebuild/2008-06/native-headers/v8datamodel/FlagStand.h": "0258cb0108a4a60132e6ed330d8f56d2d07a501cca345b2b9d4de8e376cd9c3a",
+    "rebuild/2008-06/native-headers/v8datamodel/Flag.h": "9078b5bffdd2b3b7573180546692f908c280c075b9b0580173bda0543d208fad",
+    "rebuild/2008-06/native-classes/FlagStand.cpp": "0ffef8d102b5212d126cb2b56f8689e5d38e4b40387beec68f4d6394c55ae056",
+    "rebuild/2008-06/native-classes/Flag.cpp": "bda7f2f576b6fc7a5f5fc0ec101581cb548c772c79d8395b1bb8103e7d4c445c",
+    "rebuild/2008-06/tests/NativeFlagFamilyLayout.cpp": "60c4e511112f886e8397353a7f0ce9481f4ff1dd0e11683eb44244abe28e6bbf"
   },
   "objects": {
-    "NativeFlagFamilyLayout.obj": "345cea8b569d6777e55332fef8f5b0709371dd02d3a422083f654d6b46a12c86",
-    "NativeFlagStand.obj": "8f8447368991a94386db72de7edf87679d10d67d06f07939e1ba1952c55502fd",
-    "NativeFlag.obj": "56924ca6284d63f97bf3189d85f5b7e93d29bd29be24749f5d5d60640f886c5b"
+    "NativeFlagFamilyLayout.obj": "34bdc67e3f488c88bdc4248fcadc56aa7211bf8246d9c02c8ac7aba5be876855",
+    "NativeFlagStand.obj": "d4059f39beb248c2b0e9990cb3b40afcf13eef3a1ffb398177dc6a572a248a9f",
+    "NativeFlag.obj": "c941f405abc1e9048c79f995e62175ee633c68604f20b5c5f00744770799090d"
   },
   "layout": {
     "FlagStand": "0x41c (005c1040); PartInstance non-virtual part to +0x3e8, scoped_connection standTouched +0x3e8, teamColor +0x3fc, virtual bases from +0x400",
@@ -1706,7 +1706,7 @@
       "offset": "0x24",
       "slots": {
         "0": "??_EFlagStand@RBX@@WCE@AEPAXI@Z = 0x62cbe0 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Part vtable 0x832d1c slot 1))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Part vtable 0x832d1c slot 1))",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Part vtable 0x832d1c slot 2))"
       }
     },
@@ -1726,7 +1726,7 @@
       "offset": "0x64",
       "slots": {
         "0": "??_EFlagStand@RBX@@WGE@AEPAXI@Z = 0x62cc00 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Part vtable 0x832cfc slot 1))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Part vtable 0x832cfc slot 1))",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Part vtable 0x832cfc slot 2))"
       }
     },
@@ -1883,7 +1883,7 @@
       "offset": "0x24",
       "slots": {
         "0": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WCE@AEPAXI@Z = 0x6197a0 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Tool vtable 0x841a1c slot 1))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Tool vtable 0x841a1c slot 1))",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a1c slot 2))"
       }
     },
@@ -1903,7 +1903,7 @@
       "offset": "0x64",
       "slots": {
         "0": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WGE@AEPAXI@Z = 0x618600 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Tool vtable 0x8419fc slot 1))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Tool vtable 0x8419fc slot 1))",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419fc slot 2))"
       }
     },
@@ -2048,7 +2048,7 @@
       "offset": "0x24",
       "slots": {
         "0": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OCE@AEPAXI@Z = 0x6197a0 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Tool vtable 0x841a1c slot 1))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Tool vtable 0x841a1c slot 1))",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a1c slot 2))"
       }
     },
@@ -2068,7 +2068,7 @@
       "offset": "0x64",
       "slots": {
         "0": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OGE@AEPAXI@Z = 0x618600 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Tool vtable 0x8419fc slot 1))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Tool vtable 0x8419fc slot 1))",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419fc slot 2))"
       }
     },
@@ -2213,7 +2213,7 @@
       "offset": "0x24",
       "slots": {
         "0": "??_EFlag@RBX@@WCE@AEPAXI@Z = 0x6187b0 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Tool vtable 0x841a1c slot 1))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Tool vtable 0x841a1c slot 1))",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a1c slot 2))"
       }
     },
@@ -2233,7 +2233,7 @@
       "offset": "0x64",
       "slots": {
         "0": "??_EFlag@RBX@@WGE@AEPAXI@Z = 0x6187d0 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Tool vtable 0x8419fc slot 1))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Tool vtable 0x8419fc slot 1))",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419fc slot 2))"
       }
     },

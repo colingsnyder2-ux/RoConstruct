@@ -1206,6 +1206,35 @@ def import_startup_matches(store, can_verify, log=print):
 
 def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
           discord_webhook=None, log=print):
+    # Guard: prevent duplicate server processes
+    try:
+        import urllib.request
+        check_url = f"http://127.0.0.1:{port}/v1/leases"
+        req = urllib.request.Request(check_url, headers={"User-Agent": "RoConstruct-Server-Check"})
+        with urllib.request.urlopen(req, timeout=1.5) as resp:
+            if resp.status == 200:
+                log(f"[RoConstruct] Server is already running and healthy on port {port}. Exiting duplicate server instance.")
+                sys.exit(0)
+    except Exception:
+        pass
+
+    pid_file = ROOT / "work" / "server.pid"
+    if pid_file.exists():
+        try:
+            existing_pid = int(pid_file.read_text(encoding="utf-8").strip())
+            if existing_pid != os.getpid() and _publisher_parent_running(existing_pid):
+                log(f"[RoConstruct] Another server process (PID {existing_pid}) is already running. Exiting duplicate instance.")
+                sys.exit(0)
+        except Exception:
+            pass
+    try:
+        pid_file.parent.mkdir(parents=True, exist_ok=True)
+        pid_file.write_text(str(os.getpid()), encoding="utf-8")
+        import atexit
+        atexit.register(lambda: pid_file.unlink(missing_ok=True))
+    except Exception:
+        pass
+
     from roc.reports import MineLog, player_mines_webhook
     discord_webhook = discord_webhook or player_mines_webhook()
     db = db or str(ROOT / "work" / "server.db")
@@ -1234,9 +1263,12 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
     from roc.integration import Promotions
     from roc.integration_verify import loop as integration_loop
     integration = Promotions(store)
-    httpd = ThreadingHTTPServer((host, port), make_handler(store, token, can_verify,
-                                                       mine_log=mine_log, server_mine_log=server_mine_log,
-                                                       integration=integration))
+    class ExclusiveThreadingHTTPServer(ThreadingHTTPServer):
+        allow_reuse_address = False
+
+    httpd = ExclusiveThreadingHTTPServer((host, port), make_handler(store, token, can_verify,
+                                                                   mine_log=mine_log, server_mine_log=server_mine_log,
+                                                                   integration=integration))
     httpd.store = store
     threading.Thread(target=integration_loop, args=(integration, log), daemon=True).start()
     from roc.reports import server_mines_webhook

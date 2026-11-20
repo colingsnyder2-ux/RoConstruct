@@ -13308,6 +13308,882 @@
    "address": "007bf43b",
    "votes": 1,
    "identity_evidence": "original 005e4dd2 push 0x7bf43b is the SEH handler referenced by the byte-exact RotateV::RotateV() body; folded with existing __ehhandler$?initialize@@YAXXZ alias at the same address"
+  },
+  {
+   "symbol": "??0?$BoundFuncDesc@VInstance@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$01@Reflection@RBX@@QAE@P8Instance@2@AE?AV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZPBD331W4Security@FunctionDescriptor@12@@Z",
+   "address": "00559cb0",
+   "votes": 1,
+   "identity_evidence": "BoundFuncDesc N=2 ctor byte-equal body; RTTI/vftable slot identity for RBX::Instance vs RBX::DataModel descriptor"
+  },
+  {
+   "symbol": "??0?$BoundFuncDesc@VDataModel@RBX@@$$A6A?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V34@_N@Z$01@Reflection@RBX@@QAE@P8DataModel@2@AE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V45@_N@ZPBD331W4Security@FunctionDescriptor@12@@Z",
+   "address": "00579360",
+   "votes": 1,
+   "identity_evidence": "BoundFuncDesc N=2 ctor byte-equal body; RTTI/vftable slot identity for RBX::Instance vs RBX::DataModel descriptor"
+  },
+  {
+   "symbol": "?declareSignature@?$BoundFuncDesc@VInstance@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$01@Reflection@RBX@@AAEXPBD0@Z",
+   "address": "005575d0",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$BoundFuncDesc@VInstance@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$ (identified at 00559cb0: BoundFuncDesc N=2 ctor byte-equal body; RTTI/vftable slot identity for RBX::Instance vs RBX::DataModel descriptor): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$??0?$BoundFuncDesc@VInstance@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$01@Reflection@RBX@@QAE@P8Instance@2@AE?AV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZPBD331W4Security@FunctionDescriptor@12@@Z",
+   "address": "007ce39e",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$BoundFuncDesc@VInstance@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$ (identified at 00559cb0: BoundFuncDesc N=2 ctor byte-equal body; RTTI/vftable slot identity for RBX::Instance vs RBX::DataModel descriptor): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?declareSignature@?$BoundFuncDesc@VDataModel@RBX@@$$A6A?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V34@_N@Z$01@Reflection@RBX@@AAEXPBD0@Z",
+   "address": "00575400",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$BoundFuncDesc@VDataModel@RBX@@$$A6A?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V34@_N@Z$01@Refl (identified at 00579360: BoundFuncDesc N=2 ctor byte-equal body; RTTI/vftable slot identity for RBX::Instance vs RBX::DataModel descriptor): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?execute@?$BoundFuncDesc@VDataModel@RBX@@$$A6A?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V34@_N@Z$01@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+   "address": "005794e0",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$BoundFuncDesc@VDataModel@RBX@@$$A6A?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V34@_N@Z$01@Refl (identified at 00579360: BoundFuncDesc N=2 ctor byte-equal body; RTTI/vftable slot identity for RBX::Instance vs RBX::DataModel descriptor): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$??0?$BoundFuncDesc@VDataModel@RBX@@$$A6A?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V34@_N@Z$01@Reflection@RBX@@QAE@P8DataModel@2@AE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V45@_N@ZPBD331W4Security@FunctionDescriptor@12@@Z",
+   "address": "007ce39e",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$BoundFuncDesc@VDataModel@RBX@@$$A6A?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V34@_N@Z$01@Refl (identified at 00579360: BoundFuncDesc N=2 ctor byte-equal body; RTTI/vftable slot identity for RBX::Instance vs RBX::DataModel descriptor): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?processMessage@DxUserInput@RBX@@QAEXIHJ@Z",
+   "address": "00468b90",
+   "votes": 1,
+   "identity_evidence": "INFERRED: byte-equal DxUserInput member 00468b90; thiscall with (UINT,int,long)/ret 0xc matches the header declaration, and the body calls the proved DxUserInput members 00468050 setKeyboardWanted, 00467440 sub_00467440, 004672a0 UIEvent ctor, 00467a00 postEvent, 004684a0 postMouseEvent, 00468a60 updateMouseWanted plus free 00469f00; its WM_* jump tables (0x468d1c/0x468d30, 0x468e2c/0x468e3c) are unique to this address"
+  },
+  {
+   "symbol": "?readDeviceData@DxUserInput@RBX@@QAE_NPAUDxDeviceObjectData@@PAKPAUIDxInputDevice@@@Z",
+   "address": "00467880",
+   "votes": 1,
+   "identity_evidence": "INFERRED: byte-equal DxUserInput member 00467880; signature (DxDeviceObjectData*, DWORD*, IDxInputDevice*) and ret 0xc match the header declaration, the body calls IDxInputDevice slot +0x28 GetDeviceData as declared, compares against the keyboard CComPtr at +0x17c, and logs through StandardOut::print with the 81c3d8/81c3d0/81c3bc literals"
+  },
+  {
+   "symbol": "__ehhandler$?readDeviceData@DxUserInput@RBX@@QAE_NPAUDxDeviceObjectData@@PAKPAUIDxInputDevice@@@Z",
+   "address": "007c3622",
+   "votes": 1,
+   "identity_evidence": "reference of ?readDeviceData@DxUserInput@RBX@@QAE_NPAUDxDeviceObjectData@@PAKPAUIDxInputDevice@@@Z (identified at 00467880: INFERRED: see previous binding; second pass for the emitted EH handler reference): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??0UIEvent@RBX@@QAE@PAVUserInputBase@1@W4EventType@01@VVector2int16@G3D@@@Z",
+   "address": "004672a0",
+   "votes": 1,
+   "identity_evidence": "reference of ?processMessage@DxUserInput@RBX@@QAEXIHJ@Z (identified at 00468b90: INFERRED: see previous binding; second pass for newly listed references): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?postMouseEvent@DxUserInput@RBX@@QAEXHABVVector2@G3D@@@Z",
+   "address": "004684a0",
+   "votes": 1,
+   "identity_evidence": "reference of ?processMessage@DxUserInput@RBX@@QAEXIHJ@Z (identified at 00468b90: INFERRED: see previous binding; second pass for newly listed references): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?sub_00467440@DxUserInput@RBX@@QBE?AVVector2int16@G3D@@XZ",
+   "address": "00467440",
+   "votes": 1,
+   "identity_evidence": "reference of ?processMessage@DxUserInput@RBX@@QAEXIHJ@Z (identified at 00468b90: INFERRED: see previous binding; second pass for newly listed references): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?getCanUndo@ChangeHistoryService@RBX@@QAE?AUTuple@Reflection@2@XZ",
+   "address": "00589d60",
+   "votes": 1,
+   "identity_evidence": "BoundFuncDesc<ChangeHistoryService,Tuple(void),0> initializer 007f40b0 pushes 0x589d60 with name string GetCanUndo at 0x8319a0; ctor 0058b0f0"
+  },
+  {
+   "symbol": "?getCanRedo@ChangeHistoryService@RBX@@QAE?AUTuple@Reflection@2@XZ",
+   "address": "00589ed0",
+   "votes": 1,
+   "identity_evidence": "BoundFuncDesc<ChangeHistoryService,Tuple(void),0> initializer 007f40e0 pushes 0x589ed0 with name string GetCanRedo at 0x8319ac; ctor 0058b0f0"
+  },
+  {
+   "symbol": "??0?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@QAE@ABV01@@Z",
+   "address": "0055fed0",
+   "votes": 1,
+   "identity_evidence": "original relocation target 0055fed0 (std::vector<pod8> copy ctor, src/2008-06/0055fed0.cpp) called from 00589e92 / 00589e92-equivalent in byte-exact getCanUndo/getCanRedo bodies"
+  },
+  {
+   "symbol": "__ehhandler$?getCanUndo@ChangeHistoryService@RBX@@QAE?AUTuple@Reflection@2@XZ",
+   "address": "007d15d2",
+   "votes": 1,
+   "identity_evidence": "original EH-scope handler immediate pushed at 00589d62 in target getCanUndo prologue"
+  },
+  {
+   "symbol": "__ehhandler$?getCanRedo@ChangeHistoryService@RBX@@QAE?AUTuple@Reflection@2@XZ",
+   "address": "007d15d2",
+   "votes": 1,
+   "identity_evidence": "original EH-scope handler immediate pushed at 00589ed2 in target getCanRedo prologue"
+  },
+  {
+   "symbol": "?save@DataModel@RBX@@QAEXVContentId@2@@Z",
+   "address": "00579c10",
+   "votes": 1,
+   "identity_evidence": "descriptor-ptm: ctor 005791d0 initializer 007f3500 constructs BoundFuncDesc<DataModel,void(ContentId),1> fn #0; authentic donor DataModel::save body; byte-exact 00579c10"
+  },
+  {
+   "symbol": "?getContentProvider@DataModel@RBX@@QAEPAVContentProvider@2@XZ",
+   "address": "0041eea0",
+   "votes": 1,
+   "identity_evidence": "reference of ?save@DataModel@RBX@@QAEXVContentId@2@@Z (identified at 00579c10: byte-exact body; unproven refs resolved from original 00579c10 relocations: 0x41eea0 getContentProvider call, 0x7d09a4 S): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$?save@DataModel@RBX@@QAEXVContentId@2@@Z",
+   "address": "007d09a4",
+   "votes": 1,
+   "identity_evidence": "reference of ?save@DataModel@RBX@@QAEXVContentId@2@@Z (identified at 00579c10: byte-exact body; unproven refs resolved from original 00579c10 relocations: 0x41eea0 getContentProvider call, 0x7d09a4 S): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?setDesiredAngle@Motor@RBX@@QAEXM@Z",
+   "address": "005e5020",
+   "votes": 1,
+   "identity_evidence": "INFERRED: owner RBX::Motor from vftable slots/RTTI/link order (task class evidence); descriptor-ptm: ctor 005e36e0 initializer 007f6dc0 builds PropDescriptor<Motor,float> bound to this setter; body compares and stores MotorJoint::desiredAngle +0x94 then tail-jumps to Instance::raisePropertyChanged with descriptor 0097ab58; same field and slot as sibling VelocityMotor::setDesiredAngle 0060c5c0"
+  },
+  {
+   "symbol": "?toleranceBase@@3MB",
+   "address": "00827494",
+   "votes": 1,
+   "identity_evidence": "reference of ?setDesiredAngle@Motor@RBX@@QAEXM@Z (identified at 005e5020: Motor::setDesiredAngle byte-exact; tolerance constants bound from original code relocations at 00827494 / 0083f6d4; desc): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?toleranceScale@@3MB",
+   "address": "0083f6d4",
+   "votes": 1,
+   "identity_evidence": "reference of ?setDesiredAngle@Motor@RBX@@QAEXM@Z (identified at 005e5020: Motor::setDesiredAngle byte-exact; tolerance constants bound from original code relocations at 00827494 / 0083f6d4; desc): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??0PartItem@PhysicsSender@Network@RBX@@QAE@ABU0123@@Z",
+   "address": "004c9d90",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 004cce00 offset 0x100 calls the 149-byte native PartItem copy at 004c9d90; emitted copy bytes are equal."
+  },
+  {
+   "symbol": "?resetPhysicsItem@?A0xcdcf528f@@YAXAAUPartItem@PhysicsSender@Network@RBX@@@Z",
+   "address": "004c9cf0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 004cce00 offset 0x217 binds the 66-byte native reset callback at 004c9cf0; emitted callback bytes are equal."
+  },
+  {
+   "symbol": "?writePhysicsSnapshot@PhysicsSender@Network@RBX@@AAE_NAAVBitStream@RakNet@@ABUPartItem@123@@Z",
+   "address": "004ca980",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 004cce00 offset 0x119 calls 004ca980 with BitStream and PartItem; native declaration and mined statement order identify the snapshot writer."
+  },
+  {
+   "symbol": "__ehhandler$?sendPackets@PhysicsSender@Network@RBX@@UAEHH@Z",
+   "address": "007c9996",
+   "votes": 1,
+   "identity_evidence": "004cce00 SEH prologue references 007c9996; the emitted 10-byte __CxxFrameHandler3 thunk is byte-equal."
+  },
+  {
+   "symbol": "?processAccelerators@DataModel@RBX@@AAE?AVGuiResponse@2@ABVGuiEvent@2@@Z",
+   "address": "00575890",
+   "votes": 1,
+   "identity_evidence": "callgraph-adjacency owner RBX::DataModel; header declares private processAccelerators(const GuiEvent&); byte-exact with original 00575890"
+  },
+  {
+   "symbol": "??$?0V?$bind_t@XV?$mf1@XVPhysicsSender@Network@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVPhysicsSender@Network@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XVPhysicsSender@Network@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVPhysicsSender@Network@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+   "address": "004cd370",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 004cd920 offset 0x12a targets 004cd370; the byte-equal native body and authentic declaration/template instantiation identify this emitted reference."
+  },
+  {
+   "symbol": "??$create@VPhysicsService@RBX@@@ServiceProvider@RBX@@SAPAVPhysicsService@1@PBVInstance@1@@Z",
+   "address": "004cd8d0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 004cd920 offset 0x30 calls 004cd8d0 for ServiceProvider::create<PhysicsService>; target RTTI and creator tail match."
+  },
+  {
+   "symbol": "??$for_each@Viterator@?$_Tree@V?$_Tset_traits@PAVPartInstance@RBX@@U?$less@PAVPartInstance@RBX@@@std@@V?$allocator@PAVPartInstance@RBX@@@4@$0A@@std@@@std@@V?$bind_t@XV?$mf1@XVPhysicsSender@Network@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVPhysicsSender@Network@RBX@@@_bi@boost@@V?$bind_t@V?$shared_ptr@VInstance@RBX@@@boost@@P6A?AV12@PAVInstance@RBX@@@ZV?$list1@V?$arg@$00@boost@@@_bi@2@@23@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVPhysicsSender@Network@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVPhysicsSender@Network@RBX@@@_bi@boost@@V?$bind_t@V?$shared_ptr@VInstance@RBX@@@boost@@P6A?AV12@PAVInstance@RBX@@@ZV?$list1@V?$arg@$00@boost@@@_bi@2@@23@@_bi@3@@_bi@boost@@Viterator@?$_Tree@V?$_Tset_traits@PAVPartInstance@RBX@@U?$less@PAVPartInstance@RBX@@@std@@V?$allocator@PAVPartInstance@RBX@@@4@$0A@@std@@@0@0V123@@Z",
+   "address": "004cc720",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 004cd920 offset 0x106 targets 004cc720; the byte-equal native body and authentic declaration/template instantiation identify this emitted reference."
+  },
+  {
+   "symbol": "?addPhysicsInstance@PhysicsSender@Network@RBX@@AAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+   "address": "004cd170",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 004cd920 offsets 0xa0 and 0x10b bind 004cd170 as the native addPhysicsInstance used by the parts walk and AssemblyAdded connection."
+  },
+  {
+   "symbol": "?replace_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z",
+   "address": "004cc5e0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 004cd920 offset 0x2cb targets 004cc5e0; the byte-equal native body and authentic declaration/template instantiation identify this emitted reference."
+  },
+  {
+   "symbol": "?update@PartItem@PhysicsSender@Network@RBX@@QAE_NABVCoordinateFrame@G3D@@PAVModelInstance@4@H@Z",
+   "address": "004c9e30",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 004cd920 offset 0x2ab calls 004c9e30 with playerFrame, character and stepCount; the native PartItem declaration matches."
+  },
+  {
+   "symbol": "__ehhandler$?step@PhysicsSender@Network@RBX@@UAEXXZ",
+   "address": "007c9a69",
+   "votes": 1,
+   "identity_evidence": "004cd920 SEH prologue references 007c9a69; the emitted 10-byte __CxxFrameHandler3 thunk is byte-equal."
+  },
+  {
+   "symbol": "?cycleDown@LocalBackpack@RBX@@QAEXXZ",
+   "address": "0047d410",
+   "votes": 1,
+   "identity_evidence": "reference of ?processAccelerators@DataModel@RBX@@AAE?AVGuiResponse@2@ABVGuiEvent@2@@Z (identified at 00575890: byte-exact body; unproven refs bound from original 00575890 relocation targets): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?cycleUp@LocalBackpack@RBX@@QAEXXZ",
+   "address": "0047d410",
+   "votes": 1,
+   "identity_evidence": "reference of ?processAccelerators@DataModel@RBX@@AAE?AVGuiResponse@2@ABVGuiEvent@2@@Z (identified at 00575890: byte-exact body; unproven refs bound from original 00575890 relocation targets): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?dropAll@Hat@RBX@@SAXPAVModelInstance@2@@Z",
+   "address": "005b17c0",
+   "votes": 1,
+   "identity_evidence": "reference of ?processAccelerators@DataModel@RBX@@AAE?AVGuiResponse@2@ABVGuiEvent@2@@Z (identified at 00575890: byte-exact body; unproven refs bound from original 00575890 relocation targets): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??__E?eventAdded@PhysicsService@RBX@@0V?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A@@YAXXZ",
+   "address": "007f6e40",
+   "votes": 1,
+   "identity_evidence": "007f6e40 constructs 0097abec with AssemblyAdded/part; the emitted 32-byte dynamic initializer is byte-equal."
+  },
+  {
+   "symbol": "??__E?eventRemoved@PhysicsService@RBX@@0V?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A@@YAXXZ",
+   "address": "007f6e60",
+   "votes": 1,
+   "identity_evidence": "007f6e60 constructs 0097ac20 with AssemblyRemoved/part; the emitted 32-byte dynamic initializer is byte-equal."
+  },
+  {
+   "symbol": "??0?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE@PBD0@Z",
+   "address": "005e8df0",
+   "votes": 1,
+   "identity_evidence": "007f6e40 and 007f6e60 call 005e8df0 with the native event object, signal name and property name; this is the SignalDesc constructor."
+  },
+  {
+   "symbol": "??__F?eventAdded@PhysicsService@RBX@@0V?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A@@YAXXZ",
+   "address": "007ffa30",
+   "votes": 1,
+   "identity_evidence": "007f6e40 registers 007ffa30 with atexit after constructing eventAdded at 0097abec."
+  },
+  {
+   "symbol": "??__F?eventRemoved@PhysicsService@RBX@@0V?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A@@YAXXZ",
+   "address": "007ff9f0",
+   "votes": 1,
+   "identity_evidence": "007f6e60 registers 007ff9f0 with atexit after constructing eventRemoved at 0097ac20."
+  },
+  {
+   "symbol": "??0KernelData@RBX@@QAE@XZ",
+   "address": "005fb5f0",
+   "votes": 1,
+   "identity_evidence": "reference of ??0Kernel@RBX@@QAE@PAVIStage@1@@Z (identified at 005fb650: Kernel ctor byte-equal; KernelData ctor 005fb5f0 and EH handler 007d7d99 proven in binary): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$??0Kernel@RBX@@QAE@PAVIStage@1@@Z",
+   "address": "007d7d99",
+   "votes": 1,
+   "identity_evidence": "reference of ??0Kernel@RBX@@QAE@PAVIStage@1@@Z (identified at 005fb650: Kernel ctor byte-equal; KernelData ctor 005fb5f0 and EH handler 007d7d99 proven in binary): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?getVersion@RBX@@YAHPAUlua_State@@@Z",
+   "address": "005a8720",
+   "votes": 1,
+   "identity_evidence": "evidence: byte-exact at 005a8720 via extern g_ver_count/g_ver_str data refs"
+  },
+  {
+   "symbol": "?g_ver_count@@3IA",
+   "address": "00970ba0",
+   "votes": 1,
+   "identity_evidence": "data symbol g_ver_count referenced by getVersion 005a8720 (cmp [0x970ba0],0x10)"
+  },
+  {
+   "symbol": "?g_ver_str@@3PBDB",
+   "address": "00970b8c",
+   "votes": 1,
+   "identity_evidence": "data symbol g_ver_str referenced by getVersion 005a8720 (mov eax,[0x970b8c] / mov eax,0x970b8c)"
+  },
+  {
+   "symbol": "??R?$function1@IPAUlua_State@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@QBEIPAUlua_State@@@Z",
+   "address": "00595b90",
+   "votes": 1,
+   "identity_evidence": "reference of ?resume@ScriptContext@RBX@@QAEXPAUlua_State@@V?$function1@IPAUlua_State@@V?$allocator@Vfunction_base@boost@@@std@@@boost (identified at 005aeb80: resume 005aeb80 body byte-equal to target; each reference relocated to the address the original image holds at the same ): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??R?$function2@XPAUlua_State@@IV?$allocator@Vfunction_base@boost@@@std@@@boost@@QBEXPAUlua_State@@I@Z",
+   "address": "005aae30",
+   "votes": 1,
+   "identity_evidence": "reference of ?resume@ScriptContext@RBX@@QAEXPAUlua_State@@V?$function1@IPAUlua_State@@V?$allocator@Vfunction_base@boost@@@std@@@boost (identified at 005aeb80: resume 005aeb80 body byte-equal to target; each reference relocated to the address the original image holds at the same ): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?LuaArguments@Lua@RBX@@YAPBDPAUlua_State@@H@Z",
+   "address": "0061c790",
+   "votes": 1,
+   "identity_evidence": "reference of ?resume@ScriptContext@RBX@@QAEXPAUlua_State@@V?$function1@IPAUlua_State@@V?$allocator@Vfunction_base@boost@@@std@@@boost (identified at 005aeb80: resume 005aeb80 body byte-equal to target; each reference relocated to the address the original image holds at the same ): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$?resume@ScriptContext@RBX@@QAEXPAUlua_State@@V?$function1@IPAUlua_State@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$function2@XPAUlua_State@@IV?$allocator@Vfunction_base@boost@@@std@@@5@@Z",
+   "address": "007d3509",
+   "votes": 1,
+   "identity_evidence": "reference of ?resume@ScriptContext@RBX@@QAEXPAUlua_State@@V?$function1@IPAUlua_State@@V?$allocator@Vfunction_base@boost@@@std@@@boost (identified at 005aeb80: resume 005aeb80 body byte-equal to target; each reference relocated to the address the original image holds at the same ): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?sub_0070df10@@YAPAUCRuntimeClass@@XZ",
+   "address": "0070df10",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 5-byte body is byte-identical to target jmp ?GetThisClass@CControlBar@@SGPAUCRuntimeClass@@XZ (original relocation target from roc native-asm); name is a placeholder for the documented MFC base-getter pattern (CChildFrame.h:8, base getter = jmp CXxx::GetThisClass). Wrapper destructor label inconsistent with a jmp to a static getter, not claimed."
+  },
+  {
+   "symbol": "?onEdgeAdded@ClumpStage@RBX@@UAEXPAVEdge@2@@Z",
+   "address": "0064cec0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 2008-06 vtable 0084b14c slot 4 (0064cec0) and slot 5 (0064cf10) of RBX::ClumpStage; RTTI ClumpStage 0084b14c, IWorldStage -> IStage; slot order matches the native ClumpStage2008.h declarations"
+  },
+  {
+   "symbol": "?onEdgeRemoving@ClumpStage@RBX@@UAEXPAVEdge@2@@Z",
+   "address": "0064cf10",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 2008-06 vtable 0084b14c slot 4 (0064cec0) and slot 5 (0064cf10) of RBX::ClumpStage; RTTI ClumpStage 0084b14c, IWorldStage -> IStage; slot order matches the native ClumpStage2008.h declarations"
+  },
+  {
+   "symbol": "?erase@?$_Tree@V?$_Tset_traits@PAVEdge@RBX@@U?$less@PAVEdge@RBX@@@std@@V?$allocator@PAVEdge@RBX@@@4@$0A@@std@@@std@@QAEIABQAVEdge@RBX@@@Z",
+   "address": "005e9f60",
+   "votes": 1,
+   "identity_evidence": "reference of ?onEdgeRemoving@ClumpStage@RBX@@UAEXPAVEdge@2@@Z (identified at 0064cf10: INFERRED: 2008-06 vtable 0084b14c slot 5 of RBX::ClumpStage): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?GetThisClass@CControlBar@@SGPAUCRuntimeClass@@XZ",
+   "address": "007bc814",
+   "votes": 1,
+   "identity_evidence": "Original 0070df10 is a 5-byte relative jmp whose relocation names this exact MFC symbol and resolves to 007bc814 (roc native-asm 2008-06 0070df10). Reference address read from the original relocation, not guessed."
+  },
+  {
+   "symbol": "?sub_007f5c40@@YAPAXXZ",
+   "address": "007f5c40",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 5-byte body byte-identical to target jmp 005c8b00 (roc native-asm); placeholder name sub_007f5c40; wrapper destructor label is inconsistent with the real jump target and is not claimed."
+  },
+  {
+   "symbol": "?sub_005c8b00@@YAPAXXZ",
+   "address": "005c8b00",
+   "votes": 1,
+   "identity_evidence": "Original 007f5c40 is a 5-byte relative jmp whose relocation names fn_005c8b00 and resolves to 005c8b00 (roc native-asm 2008-06 007f5c40). Reference address read from the original relocation, not guessed."
+  },
+  {
+   "symbol": "?getUnknown0x410@Workspace@RBX@@ABENXZ",
+   "address": "005a00f0",
+   "votes": 1,
+   "identity_evidence": "INFERRED name: real owner RBX::Workspace, header rebuild/2008-06/native-headers/v8datamodel/Workspace.h declares double unknown0x410 at +0x410 (ctor AppUnit5A0_2008Workspace.cpp:324); target 005a00f0 is 'fld qword [ecx+0x410]; ret'. Mined unit label RBX::SpecialShape is a mis-attribution (that class is 0x18c bytes)."
+  },
+  {
+   "symbol": "?getUnknown0x418@Workspace@RBX@@ABENXZ",
+   "address": "005a0100",
+   "votes": 1,
+   "identity_evidence": "INFERRED name: real owner RBX::Workspace, header rebuild/2008-06/native-headers/v8datamodel/Workspace.h declares double unknown0x418 at +0x418 (ctor AppUnit5A0_2008Workspace.cpp:324); target 005a0100 is 'fld qword [ecx+0x418]; ret'. Mined unit label RBX::SpecialShape is a mis-attribution (that class is 0x18c bytes)."
+  },
+  {
+   "symbol": "?getUnknown0x420@Workspace@RBX@@ABENXZ",
+   "address": "005a0110",
+   "votes": 1,
+   "identity_evidence": "INFERRED name: real owner RBX::Workspace, header rebuild/2008-06/native-headers/v8datamodel/Workspace.h declares double unknown0x420 at +0x420 (ctor AppUnit5A0_2008Workspace.cpp:324); target 005a0110 is 'fld qword [ecx+0x420]; ret'. Mined unit label RBX::SpecialShape is a mis-attribution (that class is 0x18c bytes)."
+  },
+  {
+   "symbol": "?getUnknownSum@Workspace@RBX@@ABENXZ",
+   "address": "005a0120",
+   "votes": 1,
+   "identity_evidence": "INFERRED name: real owner RBX::Workspace, the three doubles unknown0x410/0x418/0x420 are declared in Workspace.h and target 005a0120 computes '[ecx+0x420] + [ecx+0x418] + [ecx+0x410]' (same order). Adjacent to the three byte-proved getters."
+  },
+  {
+   "symbol": "?getUnknownKernelData0x28@Kernel@RBX@@QBEHXZ",
+   "address": "005fa620",
+   "votes": 1,
+   "identity_evidence": "INFERRED name: real owner RBX::Kernel. Caller 00575d90 obtains `this` from World::getKernel 005e9150 (World2008.h:62, returns Kernel&). 005fa620 is the fourth leaf getter beside numBodies 005faa20 / numPoints 005faa30 / numConnectors 005faa40: 'mov eax,[ecx+0x10] (kernelData); mov eax,[eax+0x28]; ret'. KernelData2008.h places connectors IndexArray at +0x24 (num at +0x28). Mined unit label UString_sink::?$stream_buffer is a mis-attribution."
+  },
+  {
+   "symbol": "??__Eid@@YAXXZ",
+   "address": "007ee940",
+   "votes": 1,
+   "identity_evidence": "INFERRED: init-term slot 00804fbc selects 007ee940; research-owners/initterm.json places global 0096c330 in FactoryProductCreators2008.cpp; byte-equal body constructs it through MSVCP90 std::locale::id::id(0), consistent with file-scope ::id"
+  },
+  {
+   "symbol": "?matrixSize@Kernel@RBX@@QBEHXZ",
+   "address": "005faa90",
+   "votes": 1,
+   "identity_evidence": "INFERRED: HUD key 'matrixSize' (GuiBuilder::buildStatsHud2, GuiHudBuilder2008.cpp:261); DataModel 00575d90 streams this getter (ecx = World::getKernel 005e9150 result) for that key; body byte-exact: connectors.num + 6 * bodies.num; placeholder name, identity tier"
+  },
+  {
+   "symbol": "?getPhysicsCpuPercent@RunService@RBX@@QBENXZ",
+   "address": "005a0090",
+   "votes": 1,
+   "identity_evidence": "INFERRED: RBX::RunService (rebuild/2008-06/native-headers/util/RunStateOwner.h) framePeriod at +0x1c0 and accumulated-time doubles +0x1c8/+0x1d0/+0x1d8; WorkspaceStatsItem ctor 005a5c90 binds these getters as Physics/Render/Ui CPU % callbacks (work/big-mining-2008-20261020/workspace-stats-native-constructor-contract.json); byte-exact 21-byte __thiscall body at its single candidate; SpecialShape disproved (0x18c-byte class cannot read +0x1c0)."
+  },
+  {
+   "symbol": "?getRenderCpuPercent@RunService@RBX@@QBENXZ",
+   "address": "005a00b0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: RBX::RunService (rebuild/2008-06/native-headers/util/RunStateOwner.h) framePeriod at +0x1c0 and accumulated-time doubles +0x1c8/+0x1d0/+0x1d8; WorkspaceStatsItem ctor 005a5c90 binds these getters as Physics/Render/Ui CPU % callbacks (work/big-mining-2008-20261020/workspace-stats-native-constructor-contract.json); byte-exact 21-byte __thiscall body at its single candidate; SpecialShape disproved (0x18c-byte class cannot read +0x1c0)."
+  },
+  {
+   "symbol": "?getUiCpuPercent@RunService@RBX@@QBENXZ",
+   "address": "005a00d0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: RBX::RunService (rebuild/2008-06/native-headers/util/RunStateOwner.h) framePeriod at +0x1c0 and accumulated-time doubles +0x1c8/+0x1d0/+0x1d8; WorkspaceStatsItem ctor 005a5c90 binds these getters as Physics/Render/Ui CPU % callbacks (work/big-mining-2008-20261020/workspace-stats-native-constructor-contract.json); byte-exact 21-byte __thiscall body at its single candidate; SpecialShape disproved (0x18c-byte class cannot read +0x1c0)."
+  },
+  {
+   "symbol": "??__EadornQuadMesh@RBX@@YAXXZ",
+   "address": "007f9010",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 0097dac8 is the Ogre::MeshPtr used by RBX::AdornRbxGfx quad body 00672f50 (raw xrefs 00673402/0067353b); target 007f9010 constructs it and 00801480 destroys it; lane draft bytes are equal."
+  },
+  {
+   "symbol": "??__FadornQuadMesh@RBX@@YAXXZ",
+   "address": "00801480",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 007f9010 constructs the Ogre::MeshPtr at 0097dac8 and registers 00801480 as its static destructor; 0097dac8 is used by RBX::AdornRbxGfx body 00672f50 at raw xrefs 00673402/0067353b; paired initializer bytes are equal."
+  },
+  {
+   "symbol": "?requestStop@RunService@RBX@@QAEXXZ",
+   "address": "00554330",
+   "votes": 1,
+   "identity_evidence": "INFERRED: unconditional stopRequested(+0x248)=true; stateChangedCondition(+0x264).notify_all() via 005f1d30 (boost condition_impl::notify_all); byte-exact. Caller 0057b800 stops the old shared_ptr<RunService> when DataModel swaps it; guarded sibling 00554440 is onAncestorChanged; placeholder name, identity tier"
+  },
+  {
+   "symbol": "??__EexplosionMaterial@@YAXXZ",
+   "address": "007f90b0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 0097da5c is the Ogre::MaterialPtr assigned by RBX::AdornRbxGfx explosion body 00675360 (raw xref 00675e09 and MaterialPtr assignment call 00675e16); target 007f90b0 constructs it and 008014d0 destroys it; lane draft bytes are equal."
+  },
+  {
+   "symbol": "??__FexplosionMaterial@@YAXXZ",
+   "address": "008014d0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 007f90b0 constructs the Ogre::MaterialPtr at 0097da5c and registers 008014d0 as its static destructor; 0097da5c is assigned by RBX::AdornRbxGfx body 00675360; paired initializer bytes are equal."
+  },
+  {
+   "symbol": "?tipped@HumanoidState@HUMAN@RBX@@QBE_NXZ",
+   "address": "00643a30",
+   "votes": 1,
+   "identity_evidence": "INFERRED: HumanoidState.h declares tipped at 00643a30; target 00644670 case 6 calls it at 006446c8 and case 7 calls adjacent upright 00643a50; inactive lane draft bytes are equal."
+  },
+  {
+   "symbol": "?upright@HumanoidState@HUMAN@RBX@@QBE_NXZ",
+   "address": "00643a50",
+   "votes": 1,
+   "identity_evidence": "INFERRED: HumanoidState.h declares upright at 00643a50; target 00644670 case 7 calls it at 006446d0; inactive lane draft bytes are equal."
+  },
+  {
+   "symbol": "?getRatio@HumanoidState@HUMAN@RBX@@QBEMXZ",
+   "address": "006439b0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: helper called by tipped 00643a30 and upright 00643a50 (call 006439b0); returns float dot product; name inferred from usage."
+  },
+  {
+   "symbol": "?signedA_D@MovementKeys@RBX@@QBEMXZ",
+   "address": "005ca3c0",
+   "votes": 1,
+   "identity_evidence": "INFERRED name: byte-exact body at unique candidate; real owner RBX::MovementKeys from caller RBX::PlayerController::onEvent 005cb530 and field order in util/MovementKeys.h (+6/+7 = a/d); method name unproven"
+  },
+  {
+   "symbol": "?signedLeftRight@MovementKeys@RBX@@QBEMXZ",
+   "address": "005ca3e0",
+   "votes": 1,
+   "identity_evidence": "INFERRED name: byte-exact body at unique candidate; real owner RBX::MovementKeys, reads +2/+3 = left/right; method name unproven"
+  },
+  {
+   "symbol": "?signedW_S@MovementKeys@RBX@@QBEMXZ",
+   "address": "005ca400",
+   "votes": 1,
+   "identity_evidence": "INFERRED name: byte-exact body at unique candidate; real owner RBX::MovementKeys, reads +4/+5 = w/s; method name unproven"
+  },
+  {
+   "symbol": "?g_n@RBX@@3MA",
+   "address": "0081c3b8",
+   "votes": 1,
+   "identity_evidence": "INFERRED global name: 2008-06 exe .data float at 0x0081c3b8 is -1.0f (read from original), the shared NEG_ONE math constant referenced by the byte-exact MovementKeys axis readers and many other functions"
+  },
+  {
+   "symbol": "?initPositionName@@YAXXZ",
+   "address": "007f4310",
+   "votes": 1,
+   "identity_evidence": "INFERRED name: byte-exact body at unique candidate; initializes static const RBX::Name& for \"Position\" (0x0083311c) via RBX::Name::declare at 0x00553f90 into global 0x009761b4; original symbol unproven"
+  },
+  {
+   "symbol": "?g_sPositionName@RBX@@3PBVName@1@B",
+   "address": "009761b4",
+   "votes": 1,
+   "identity_evidence": "INFERRED name: 2008-06 exe .bss global at 0x009761b4 initialized by 007f4310 with &RBX::Name::declare(\"Position\",1002); static const Name& reference, original symbol unproven"
+  },
+  {
+   "symbol": "?executeScript@CRobloxApp@@QAEXXZ",
+   "address": "0044a300",
+   "votes": 1,
+   "identity_evidence": "INFERRED: CWinApp::m_pDocManager +0x58 and CIDEDocManager::templates[1] +0x24 match the exact neighboring CRobloxApp::initializeEmptyDocument 0044a2c0 access pattern; original message-map command 0x80f1 is the script-file command and 0044a300 tail-calls CRobloxDoc::handle_455c30; candidate body is byte-equal."
+  },
+  {
+   "symbol": "?setPixel@G3D@@YAXAAVGImage@1@HHVColor4uint8@1@@Z",
+   "address": "0050d3a0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: genuine later GImage rotate source tools/rbxgs/Client/Rendering/g3d/roc_gimage_rotate_old_api_b5e4a881e2d497e4.cpp names the identical helper setPixel(GImage&, int, int, Color4uint8); authentic GImage layout has _byte at +4 and width at +8 after its vptr (constructor 0050eea0), and caller 005ef840 passes value/y/x/image in that order; candidate matches all 27 target bytes. Original local symbol and linkage remain unproven."
+  },
+  {
+   "symbol": "?AggregateChunk@RenderBase@RBX@@YAHPBDH@Z",
+   "address": "00553f90",
+   "votes": 1,
+   "identity_evidence": "INFERRED: free function called by 007f2bd0 with Name/3000; roc native-asm unit RenderBase::AggregateChunk."
+  },
+  {
+   "symbol": "??__Eg_huffman_global@@YAXXZ",
+   "address": "007f2700",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 28-byte MSVC static-init thunk byte-exact at assigned target; ctor 0x481520 (CircularLinkedList<HuffmanEncodingTreeNode*>), global 0x973928, atexit 0x6a17af, dtor 0x7fc670"
+  },
+  {
+   "symbol": "??__Fg_huffman_global@@YAXXZ",
+   "address": "007fc670",
+   "votes": 1,
+   "identity_evidence": "INFERRED: relocation target read from original push 0x7fc670 (atexit arg) at 007f270d; dtor thunk calls 0x6433e0 (CircularLinkedList dtor) on global 0x973928"
+  },
+  {
+   "symbol": "?func_007f2bd0@@YAXXZ",
+   "address": "007f2bd0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: static initializer; bytes match lane draft; calls AggregateChunk 00553f90."
+  },
+  {
+   "symbol": "??__E?tangentVAR@Mesh@RenderBase@RBX@@0VVAR@G3D@@A@@YAXXZ",
+   "address": "007f2780",
+   "votes": 1,
+   "identity_evidence": "Original 00548cb0 assigns tangentArray 00973928 into the G3D::VAR at 00973908 (00548e77); 007f2780 constructs 00973908. Authentic ViewNew/RenderBaseMesh.h declares static G3D::VAR Mesh::tangentVAR. The /Od candidate initializer is byte-equal."
+  },
+  {
+   "symbol": "??__E?vertexRefCounts@Mesh@RenderBase@RBX@@0V?$Array@H@G3D@@A@@YAXXZ",
+   "address": "007f27a0",
+   "votes": 1,
+   "identity_evidence": "Authentic-source-RenderBaseMeshVertices2008-20261113.json binds 009738c4 to ?vertexRefCounts@Mesh@RenderBase@RBX@@0V?$Array@H@G3D@@A in independently exact Mesh bodies; 007f27a0 constructs 009738c4. The authentic static member definition is byte-equal under the RenderBase /Od profile."
+  },
+  {
+   "symbol": "??__E?freeList@Mesh@RenderBase@RBX@@0V?$Array@H@G3D@@A@@YAXXZ",
+   "address": "007f27c0",
+   "votes": 1,
+   "identity_evidence": "Authentic-source-RenderBaseMeshVertices2008-20261113.json binds 009738ac to ?freeList@Mesh@RenderBase@RBX@@0V?$Array@H@G3D@@A in independently exact Mesh bodies; 007f27c0 constructs 009738ac. The authentic static member definition is byte-equal under the RenderBase /Od profile."
+  },
+  {
+   "symbol": "??__F?tangentVAR@Mesh@RenderBase@RBX@@0VVAR@G3D@@A@@YAXXZ",
+   "address": "007fc6b0",
+   "votes": 1,
+   "identity_evidence": "Original 007f2780 registers 007fc6b0 after constructing tangentVAR 00973908; the identified static member and the byte-equal ??__F tangentVAR candidate establish this destruction thunk."
+  },
+  {
+   "symbol": "??__F?vertexRefCounts@Mesh@RenderBase@RBX@@0V?$Array@H@G3D@@A@@YAXXZ",
+   "address": "007fc6c0",
+   "votes": 1,
+   "identity_evidence": "Original 007f27a0 registers 007fc6c0 after constructing vertexRefCounts 009738c4; the identified static member and the byte-equal ??__F vertexRefCounts candidate establish this destruction thunk."
+  },
+  {
+   "symbol": "??__F?freeList@Mesh@RenderBase@RBX@@0V?$Array@H@G3D@@A@@YAXXZ",
+   "address": "007fc6d0",
+   "votes": 1,
+   "identity_evidence": "Original 007f27c0 registers 007fc6d0 after constructing freeList 009738ac; the identified static member and the byte-equal ??__F freeList candidate establish this destruction thunk."
+  },
+  {
+   "symbol": "?RemoveAll@?$CSimpleArray@GV?$CSimpleArrayEqualHelper@G@ATL@@@ATL@@QAEXXZ",
+   "address": "007a5c04",
+   "votes": 1,
+   "identity_evidence": "ownerless:007a5c04 native recovery: ATL::CSimpleArray<unsigned short>::RemoveAll from atls.lib (msvc-atlmfc-rtm), authentic header atlsimpcoll.h. 31 bytes byte-exact with /O1 /Gy /GS- /MT /hotpatch /Oy- (see lane-drafts/ownerless_007a5c04/CSimpleArrayRemoveAll_MT.cpp). Reference _free->006a14ba proven by batch-refbind-test.json (original relocation target at exact owner). agent_prove.py EXACT."
+  },
+  {
+   "symbol": "??__F?ignoreArray@CollisionDetection@G3D@@0V?$Array@VVector3@G3D@@@2@A@@YAXXZ",
+   "address": "007fb0f0",
+   "votes": 1,
+   "identity_evidence": "ownerless:007fb0f0 native recovery: G3D::CollisionDetection::ignoreArray static atexit destructor, emitted byte-exact by existing native source rebuild/2008-06/native-classes/G3DCollisionDetection.cpp (verbatim upstream G3D 6.09 CollisionDetection.cpp, flags /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast). 4 byte-identical COMDAT copies exist; this one uniquely references data at 0x96fad4 (= ignoreArray per target). Other copies rejected by ignoreArray-disambiguation.json; agent_prove.py EXACT."
+  },
+  {
+   "symbol": "??__EG@@YAXXZ",
+   "address": "007f26a0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: compiler-generated CRT dynamic initializer for the namespace-scope global ?G@@3VCoordinateFrame@G3D@@A (G3D::CoordinateFrame G; delink synthetic name ?G@@3UT@@A). Byte-exact emission from authentic RBXGS g3d CoordinateFrame.h; global is never referenced elsewhere in the image (only the atexit dtor thunk at 0x7fc640, ?f@@YAXXZ, refers to it); defining TU not recoverable. lane ownerless:007a5c4f"
+  },
+  {
+   "symbol": "??__FG@@YAXXZ",
+   "address": "007fc640",
+   "votes": 1,
+   "identity_evidence": "INFERRED: compiler-generated CRT static-destructor thunk for the namespace-scope G3D::CoordinateFrame global G (?G@@3VCoordinateFrame@G3D@@A, delink synthetic ?G@@3UT@@A); mov ecx,&G; call ??1CoordinateFrame@G3D (inlined ~CoordinateFrame, folded); relocates to the global; the initializer 007f26a0 passes it to atexit. Byte-identical emission from RBXGS g3d CoordinateFrame.h; target 0x7fc640 is 15 bytes with the same shape. lane ownerless:007a5c4f"
+  },
+  {
+   "symbol": "??0Tuple@Reflection@RBX@@QAE@ABU012@@Z",
+   "address": "0055fed0",
+   "votes": 1,
+   "identity_evidence": "reference of ?getCanUndo@ChangeHistoryService@RBX@@QAE?AUTuple@Reflection@2@XZ (identified at 00589d60: INFERRED: Tuple ctor(size_t)/copy/dtor referenced at same relocations; getCanUndo/Redo registered via BoundFuncDesc<Chan): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??0Tuple@Reflection@RBX@@QAE@I@Z",
+   "address": "00589c40",
+   "votes": 1,
+   "identity_evidence": "reference of ?getCanUndo@ChangeHistoryService@RBX@@QAE?AUTuple@Reflection@2@XZ (identified at 00589d60: INFERRED: Tuple ctor(size_t)/copy/dtor referenced at same relocations; getCanUndo/Redo registered via BoundFuncDesc<Chan): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??1Tuple@Reflection@RBX@@QAE@XZ",
+   "address": "0042d630",
+   "votes": 1,
+   "identity_evidence": "reference of ?getCanUndo@ChangeHistoryService@RBX@@QAE?AUTuple@Reflection@2@XZ (identified at 00589d60: INFERRED: Tuple ctor(size_t)/copy/dtor referenced at same relocations; getCanUndo/Redo registered via BoundFuncDesc<Chan): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?nativeSetRegistrationMode@@YGX_N@Z",
+   "address": "0044d150",
+   "votes": 1,
+   "identity_evidence": "byte-exact native RegistrationMode.cpp; APPID/GUID replacement map and ATL::_pAtlModule UpdateRegistryFromResourceS resource 103 references verified by agent_prove.py"
+  },
+  {
+   "symbol": "___FreeStdCallThunk_cmn",
+   "address": "007a5f2a",
+   "votes": 1,
+   "identity_evidence": "INFERRED: ATL 9 RTM __FreeStdCallThunk_cmn from tools/libs/mfc-9.0-rtm/.../atlthunk.cpp; byte-equal under /O1 /Oy- /GS- /MD /hotpatch"
+  },
+  {
+   "symbol": "__imp__GetProcessHeap@0",
+   "address": "008022b8",
+   "votes": 1,
+   "identity_evidence": "INFERRED: KERNEL32.dll!GetProcessHeap import slot at 008022b8"
+  },
+  {
+   "symbol": "??__F?RG@ToneMap@G3D@@0V?$ReferenceCountedPointer@VTexture@G3D@@@2@A@@YAXXZ",
+   "address": "008019f0",
+   "votes": 1,
+   "identity_evidence": "Original 008019f0 releases static 0097f3ec and is referenced by atexit thunk 007f9fd0. Registry-identified ToneMap::makeGammaCorrectionTextures 007b16c0 assigns 0097f3ec from the RG Gamma texture; applyPS14ATI/applyPS20 use it as RG. Native G3DToneMap.cpp declares TextureRef ToneMap::RG and its compiled RG static destructor is byte-equal to 008019f0."
+  },
+  {
+   "symbol": "??__F?B@ToneMap@G3D@@0V?$ReferenceCountedPointer@VTexture@G3D@@@2@A@@YAXXZ",
+   "address": "00801a30",
+   "votes": 1,
+   "identity_evidence": "Original 00801a30 releases static 0097f3e8 and is referenced by atexit thunk 007f9fe0. Registry-identified ToneMap::makeGammaCorrectionTextures 007b16c0 assigns 0097f3e8 from the B Gamma texture; applyPS14ATI uses it as B. Native G3DToneMap.cpp declares TextureRef ToneMap::B and its compiled B static destructor is byte-equal to 00801a30."
+  },
+  {
+   "symbol": "??__Ffont@Fonts@RBX@@YAXXZ",
+   "address": "00801510",
+   "votes": 1,
+   "identity_evidence": "INFERRED: the file-static name font is from the recovered native draft; ownership is binary-proven. Original 00801510 releases static 0097db40 and is referenced by atexit thunk 007f90d0. Registry-identified RBX::Fonts::getFont 00678310 is the only other code user of 0097db40, testing it before G3D::GFont::fromFile(007b7450), assigning the result and returning it. The native draft's compiled Fonts::font static destructor is byte-equal to 00801510."
+  },
+  {
+   "symbol": "?addLeafBodies@KernelData@RBX@@QAEXPAVBody@2@@Z",
+   "address": "005faed0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: analog name addLeafBodies from Body2008.h leafBodyIndex evidence. KernelData ownership and thiscall ABI are target-proved: 005faed0 passes this+0xc to Array<Body*>::append 005fabc0, reads this+0x10 as its size, and recurses with the same this; caller 005faf90 uses that same KernelData base for bodies/leafBodies maintenance. Body children +0x1c/+0x20, numConnectors +0x8 and leafBodyIndex +0x4 match Body2008.h. Candidate bytes are equal; the method name remains inferred."
+  },
+  {
+   "symbol": "?sub_005a05c0@Workspace@RBX@@QBEPAVCamera@2@XZ",
+   "address": "005a05c0",
+   "votes": 1,
+   "identity_evidence": "INFERRED name: body byte-equal to native WorkspaceRecovery_005a05c0.cpp, returns currentCamera.get() at Workspace+0x3fc (real field); name is a placeholder"
+  },
+  {
+   "symbol": "?onPrimitiveRemoving@TreeStage@RBX@@QAEXPAVPrimitive@2@@Z",
+   "address": "00668d40",
+   "votes": 1,
+   "identity_evidence": "Original 0064cbf0 direct call at 0064cc11 targets 00668d40; native TreeStage.h declares this method and the byte-equal candidate binds the same direct-call symbol."
+  },
+  {
+   "symbol": "?GetWorkArea@CXTPMultiMonitor@@QAE?AVCRect@@PAUHWND__@@@Z",
+   "address": "006e8b50",
+   "votes": 1,
+   "identity_evidence": "library-replay correction (lane ownerless_00491760): body byte-matches the ScreenArea/WorkArea HWND twins at 006e8a50/006e8b50 but calls 006e8980 (?GetWorkArea@CXTPMultiMonitor@@AAE?AVCRect@@PAUXTP_HMONITOR__@1@@Z, SPI_GETWORKAREA fallback, registry library-replay), so this is GetWorkArea(HWND); 006e8a50 calls 006e89e0 (GetSystemMetrics fallback) = GetScreenArea(HWND)"
+  },
+  {
+   "symbol": "?GetWorkArea@CXTPMultiMonitor@@QAE?AVCRect@@PBVCWnd@@@Z",
+   "address": "006e8c20",
+   "votes": 1,
+   "identity_evidence": "lane gate byte-proof of XTPSystemHelpers.cpp vendor TU (ownerless_00491760): candidate CXTPMultiMonitor::GetWorkArea(const CWnd* pWnd) byte-equal at 006e8c20; its relocation targets 006e8b50 (=GetWorkArea(HWND), see 006e8b50 row) unlike byte-identical GetScreenArea(const CWnd*) candidate which would target 006e8a50; donor identity-unlock-align votes 1"
+  },
+  {
+   "symbol": "?writeValue@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBEXPBVDescribedBase@23@PAVXmlElement@@@Z",
+   "address": "00491760",
+   "votes": 1,
+   "identity_evidence": "lane gate byte-proof of RefPropDescriptor_InstanceInstance_writeValue.cpp (ownerless_00491760): RefPropDescriptor<Instance,Instance>::writeValue byte-equal at 00491760; donor PDB symbol identity-unlock-align votes 1 (?writeValue@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBEXPBVDescribedBase@23@PAVXmlElement@@@Z)"
+  },
+  {
+   "symbol": "?getContact@Primitive@RBX@@SAPAVContact@2@PAV12@0@Z",
+   "address": "005e7d30",
+   "votes": 1,
+   "identity_evidence": "Original AssemblyStage::onEdgeAdded 0066f673 and onEdgeRemoving 0066f757 pass Edge primitives to 005e7d30 and consume a Contact; donor Primitive.h declares static getContact, and the byte-equal body searches the parallel contact arrays."
+  },
+  {
+   "symbol": "?manager@?$functor_manager@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@Ufunction_obj_tag@234@@Z",
+   "address": "0042a8a0",
+   "votes": 1,
+   "identity_evidence": "Original functor_manager<PropertyChangedCall>::manage 0042abe0 calls 0042a8a0 with a zero function_obj_tag argument; this is the manager(function_obj_tag) overload, distinct from the byte-identical inlined mpl::true_ overload."
+  },
+  {
+   "symbol": "?findNode@SpatialHash@RBX@@AAEPAUSpatialPrimitiveNode@2@IIABVVector3int32@2@@Z",
+   "address": "00659670",
+   "votes": 1,
+   "identity_evidence": "INFERRED: byte-equal body; original callers 00659920 and 00659f90 pass level/hash/grid and consume returned children/childMask/contents; authentic donor SpatialHash.h establishes findNode ownership, with 2008 signature and node layout derived from the target call sites."
+  },
+  {
+   "symbol": "?sphere@RbxAdornState@Ogre@@QAEPAVManualObject@2@PAVSceneManager@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV32@MHH@Z",
+   "address": "006892d0",
+   "identity_evidence": "INFERRED:OgreRbxAdornState.cpp receipt-exact",
+   "votes": 1
+  },
+  {
+   "symbol": "?partialDisk@RbxAdornState@Ogre@@QAEPAVManualObject@2@PAVSceneManager@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV32@MMHHMM@Z",
+   "address": "00687860",
+   "identity_evidence": "INFERRED:OgreRbxAdornState.cpp receipt-exact",
+   "votes": 1
+  },
+  {
+   "symbol": "?cylinder@RbxAdornState@Ogre@@QAEPAVManualObject@2@PAVSceneManager@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV32@MMMHH@Z",
+   "address": "00685ea0",
+   "identity_evidence": "INFERRED:OgreRbxAdornState.cpp receipt-exact",
+   "votes": 1
+  },
+  {
+   "symbol": "?loadExtensions@GLCaps@G3D@@SAXPAVLog@2@_N@Z",
+   "address": "004716f0",
+   "identity_evidence": "INFERRED:G3D GLCaps::loadExtensions receipt-exact",
+   "votes": 1
+  },
+  {
+   "symbol": "?explosion@AdornRbxGfx@RBX@@UAEXABVSphere@G3D@@ABVColor4@3@1@Z",
+   "address": "00675360",
+   "identity_evidence": "INFERRED:RBX::AdornRbxGfx::explosion slot 18 receipt-exact",
+   "votes": 1
+  },
+  {
+   "symbol": "??$callDoDeclare@$1?sMotor@RBX@@3QBDB@Name@RBX@@CAXXZ",
+   "address": "004ac380",
+   "votes": 1,
+   "identity_evidence": "callDoDeclare<sX> instantiation: 5-byte jump to the proven doDeclare<sX> at 004ab400"
+  },
+  {
+   "symbol": "??$callDoDeclare@$1?sCamera@RBX@@3PADA@Name@RBX@@CAXXZ",
+   "address": "0045b6f0",
+   "votes": 1,
+   "identity_evidence": "callDoDeclare<sX> instantiation: 5-byte jump to the proven doDeclare<sX> at 0045b240"
+  },
+  {
+   "symbol": "??$callDoDeclare@$1?sFlagStandService@RBX@@3QBDB@Name@RBX@@CAXXZ",
+   "address": "005bffa0",
+   "votes": 1,
+   "identity_evidence": "callDoDeclare<sX> instantiation: 5-byte jump to the proven doDeclare<sX> at 005bf950"
+  },
+  {
+   "symbol": "?sub_007a9c40@RbxEntity@Ogre@@QAEXVAxisAlignedBox@2@@Z",
+   "address": "007a9c40",
+   "votes": 1,
+   "identity_evidence": "EH handler __ehhandler$?sub_007a9c40@RbxEntity@Ogre@@QAEXVAxisAlignedBox@2@@Z byte-exact at 007ed339, the address pushed by target 007a9c40; lane-identity-bindings.json records exact-target-coff-reference-alias. Body byte-exact with same mangled symbol (REJECTED identity-only)."
+  },
+  {
+   "symbol": "?sub_00467380@DxUserInput@RBX@@QBE_NXZ",
+   "address": "00467380",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 00467f10 is DxUserInput::applyMouseDelta and calls this helper for its inside-window branch; the body reads the existing DxUserInput window member at +0x16c and CWnd m_hWnd at +0x20. The CSettingsDialog name is only a mined placeholder and its real header has no such declaration."
+  },
+  {
+   "symbol": "??4?$Array@VVector4@G3D@@@G3D@@QAEAAV01@ABV01@@Z",
+   "address": "00576f90",
+   "votes": 1,
+   "identity_evidence": "identity-unlock-bodyhash.json: exact-masked-body length 81 (only compiled symbol with this reloc-masked body) plus decorated-signature ??4?$Array@VVector4@G3D@@@G3D@@QAEAAV01@ABV01@@Z; vendor-identity-bindings.json and identity-session-bindings.json corroborate. Body byte-exact from authentic upstream G3D/Array.h operator= with G3D/Vector4.h."
+  },
+  {
+   "symbol": "?resize@?$Array@VVector4@G3D@@@G3D@@QAEXH_N@Z",
+   "address": "0048a7c0",
+   "votes": 1,
+   "identity_evidence": "INFERRED multi-copy template callee: 0048a7c0 is a 254-byte copy structurally identical instruction-for-instruction to the byte-exact-proven resize at 00510e50 (same num/capacity writes, 0x10 element shift, realloc call; only per-TU static guard addresses differ). It is the direct call target of the byte-exact, decorated-signature-proven G3D::Array<G3D::Vector4>::operator= at 00576f90, whose authentic upstream body calls resize(other.num, true). Names the original relocation target for the multi-copy reference audit."
+  },
+  {
+   "symbol": "?apply@PlayerLighting@@YAXAAVSceneManager@Ogre@@ABV?@VLighting@G3D@@@G3D@@ABUSettings@1@PBVAxisAlignedBox@3@_N@Z",
+   "address": "007a9d30",
+   "identity_evidence": "INFERRED:PlayerLighting.cpp receipt-exact",
+   "votes": 1
+  },
+  {
+   "symbol": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$00W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
+   "address": "005ed6c0",
+   "votes": 1,
+   "identity_evidence": "inactive exact in SurfacePropDescriptor.cpp; RTTI identity RBX::SurfaceGetSet"
+  },
+  {
+   "symbol": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$00W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
+   "address": "005eda40",
+   "votes": 1,
+   "identity_evidence": "inactive exact in SurfacePropDescriptor.cpp; RTTI identity RBX::SurfaceGetSet"
+  },
+  {
+   "symbol": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$03W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
+   "address": "005edde0",
+   "votes": 1,
+   "identity_evidence": "inactive exact in SurfacePropDescriptor.cpp; RTTI identity RBX::SurfaceGetSet"
+  },
+  {
+   "symbol": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$03W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
+   "address": "005edf00",
+   "votes": 1,
+   "identity_evidence": "inactive exact in SurfacePropDescriptor.cpp; RTTI identity RBX::SurfaceGetSet"
+  },
+  {
+   "symbol": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$02W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
+   "address": "005ee120",
+   "votes": 1,
+   "identity_evidence": "inactive exact in SurfacePropDescriptor.cpp; RTTI identity RBX::SurfaceGetSet"
+  },
+  {
+   "symbol": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$02W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
+   "address": "005ee260",
+   "votes": 1,
+   "identity_evidence": "inactive exact in SurfacePropDescriptor.cpp; RTTI identity RBX::SurfaceGetSet"
+  },
+  {
+   "symbol": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$0A@W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
+   "address": "005ee4a0",
+   "votes": 1,
+   "identity_evidence": "inactive exact in SurfacePropDescriptor.cpp; RTTI identity RBX::SurfaceGetSet"
+  },
+  {
+   "symbol": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$0A@W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
+   "address": "005ee650",
+   "votes": 1,
+   "identity_evidence": "inactive exact in SurfacePropDescriptor.cpp; RTTI identity RBX::SurfaceGetSet"
+  },
+  {
+   "symbol": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$04W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
+   "address": "005ee7a0",
+   "votes": 1,
+   "identity_evidence": "inactive exact in SurfacePropDescriptor.cpp; RTTI identity RBX::SurfaceGetSet"
+  },
+  {
+   "symbol": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$04W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
+   "address": "005ee8c0",
+   "votes": 1,
+   "identity_evidence": "inactive exact in SurfacePropDescriptor.cpp; RTTI identity RBX::SurfaceGetSet"
+  },
+  {
+   "symbol": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$01W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
+   "address": "005eea70",
+   "votes": 1,
+   "identity_evidence": "inactive exact in SurfacePropDescriptor.cpp; RTTI identity RBX::SurfaceGetSet"
+  },
+  {
+   "symbol": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$01W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
+   "address": "005eeb20",
+   "votes": 1,
+   "identity_evidence": "inactive exact in SurfacePropDescriptor.cpp; RTTI identity RBX::SurfaceGetSet"
+  },
+  {
+   "symbol": "?getEnumItem@?$SurfaceEnumPropDescriptor@$00W4SurfaceType@RBX@@@RBX@@QBEPBVItem@EnumDescriptor@Reflection@2@PBVDescribedBase@52@@Z",
+   "address": "005ee550",
+   "votes": 1,
+   "identity_evidence": "INFERRED: slot 16 (+0x40) virtual of the real class RBX::SurfaceEnumPropDescriptor<NormalId, RBX::SurfaceType>; vftable .?AV?$SurfaceEnumPropDescriptor@$00W4SurfaceType@RBX@@@RBX@@ in layout/vtables.json has 005ee550 at slot 16. rebuild/2008-06/native-classes/LuaBridge2008Instance.cpp:83-86 identifies slot 16 as returning the const EnumDescriptor::Item* at the getEnumValue() index of the enum item vector. Native body byte-exact at 005ee550: getset (+0x1c)->getValue(instance), EnumDesc<SurfaceType>::singleton() (call_once &005ed620, flag 0097b11c, singleton 005ed5c0), inlined convertToItem bounds checks. Method name getEnumItem is an INFERRED placeholder (no donor name recovered)."
+  },
+  {
+   "symbol": "?getEnumItem@?$SurfaceEnumPropDescriptor@$00W4InputType@Controller@RBX@@@RBX@@QBEPBVItem@EnumDescriptor@Reflection@2@PBVDescribedBase@52@@Z",
+   "address": "005edb80",
+   "votes": 1,
+   "identity_evidence": "INFERRED: slot 16 (+0x40) virtual of the real class RBX::SurfaceEnumPropDescriptor<NormalId, RBX::Controller::InputType>; vftable .?AV?$SurfaceEnumPropDescriptor@$00W4InputType@Controller@RBX@@@ in layout/vtables.json has 005edb80 at slot 16. rebuild/2008-06/native-classes/LuaBridge2008Instance.cpp:83-86 identifies slot 16 as returning the const EnumDescriptor::Item* at the getEnumValue() index of the enum item vector. Native body byte-exact at 005edb80: getset (+0x1c)->getValue(instance), EnumDesc<Controller::InputType>::singleton() (call_once &005ed690, flag 0097b120, singleton 005ed630), inlined convertToItem bounds checks. Method name getEnumItem is an INFERRED placeholder (no donor name recovered)."
+  },
+  {
+   "symbol": "?isRunState@DataModel@RBX@@QBE_NXZ",
+   "address": "00575820",
+   "votes": 1,
+   "identity_evidence": "INFERRED: RBX::DataModel owner from graph unit=RBX::DataModel, abi_evidence.key=RBX::DataModel, link-order neighbours on both sides are DataModel; sole caller 0045e910 (CRobloxWnd::OnPaint) loads ecx=[wnd+0x70] (DataModel) and gates rendering on the returned bool. Method name is an INFERRED placeholder from the sibling RunService query API (util/RunStateOwner.h isEditState/isRunState/isPauseState). Body byte-exact (agent_prove REJECTED = bytes equal, identity unproven): return this->runService->runState == RS_RUNNING (ecx+0x20c shared_ptr px -> RunService*, +0x1b4 RunState, compare to 1)."
   }
  ]
 }

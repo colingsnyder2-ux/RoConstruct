@@ -1,0 +1,730 @@
+{
+"CAboutRobloxDialog": {
+"base": null,
+"baseGetter": "00401030",
+"create": "00401330",
+"size": 304,
+"va": "0080aa78"
+},
+"CBrowserDoc": {
+"base": null,
+"baseGetter": "0040df90",
+"create": "0040e4f0",
+"size": 88,
+"va": "0080cfac"
+},
+"CBrowserFrameWnd": {
+"base": null,
+"baseGetter": "00432fb0",
+"create": "00433280",
+"size": 236,
+"va": "00811e90"
+},
+"CBrowserView": {
+"base": null,
+"baseGetter": "00436060",
+"create": "00410d60",
+"size": 720,
+"va": "0080cf58"
+},
+"CChatPrompt": {
+"base": null,
+"baseGetter": "00411350",
+"create": "00411ef0",
+"size": 168,
+"va": "0080df88"
+},
+"CChildFrame": {
+"base": null,
+"baseGetter": "00412ae0",
+"create": "00412c90",
+"size": 240,
+"va": "0080e468"
+},
+"CClassTreeView": {
+"base": null,
+"baseGetter": "00433650",
+"create": "00433fc0",
+"size": 176,
+"va": "00812504"
+},
+"CDataModelPropGrid": {
+"base": "CSelectionPropGrid",
+"baseGetter": "00437830",
+"create": "00000000",
+"size": 584,
+"va": "008135a8"
+},
+"CDeclarationView": {
+"base": null,
+"baseGetter": "00433370",
+"create": "00434640",
+"size": 276,
+"va": "008124e8"
+},
+"CIDEBrowserView": {
+"base": "CBrowserView",
+"baseGetter": "0040df60",
+"create": "00410dc0",
+"size": 720,
+"va": "0080cf74"
+},
+"CInsertObjectDialog": {
+"base": null,
+"baseGetter": "0041f9b0",
+"create": "00000000",
+"size": 252,
+"va": "0080f2e0"
+},
+"CInstanceExplorer": {
+"base": null,
+"baseGetter": "00420770",
+"create": "004219f0",
+"size": 972,
+"va": "0080f638"
+},
+"CMainFrame": {
+"base": null,
+"baseGetter": "0042e450",
+"create": "00000000",
+"size": 1204,
+"va": "008107a8"
+},
+"CMemberTreeView": {
+"base": null,
+"baseGetter": "00433650",
+"create": "00433db0",
+"size": 180,
+"va": "0081253c"
+},
+"CMultiPlayerPane": {
+"base": null,
+"baseGetter": "00793420",
+"create": "00000000",
+"size": 88,
+"va": "00811cb8"
+},
+"CNullDoc": {
+"base": null,
+"baseGetter": "0044f1f0",
+"create": "00433310",
+"size": 84,
+"va": "00812410"
+},
+"CObjectBrowser": {
+"base": null,
+"baseGetter": "006c4cb0",
+"create": "00433950",
+"size": 648,
+"va": "00812520"
+},
+"COutputView": {
+"base": null,
+"baseGetter": "00436060",
+"create": "00000000",
+"size": 288,
+"va": "00812f60"
+},
+"CPlayBrowserView": {
+"base": "CBrowserView",
+"baseGetter": "0040df60",
+"create": "00410e20",
+"size": 720,
+"va": "0080cf90"
+},
+"CPropGrid": {
+"base": null,
+"baseGetter": "00437810",
+"create": "00000000",
+"size": 568,
+"va": "00813570"
+},
+"CRbxChildFrame": {
+"base": "CChildFrame",
+"baseGetter": "00412af0",
+"create": "00412cf0",
+"size": 240,
+"va": "0080e484"
+},
+"CRobloxDHtmlDialog": {
+"base": null,
+"baseGetter": "0044ee80",
+"create": "00000000",
+"size": 304,
+"va": "00817060"
+},
+"CRobloxDoc": {
+"base": null,
+"baseGetter": "0044f1f0",
+"create": "00452f00",
+"size": 152,
+"va": "008172c0"
+},
+"CRobloxReportDocView": {
+"base": "CRobloxReportView",
+"baseGetter": "00455d50",
+"create": "00458d80",
+"size": 980,
+"va": "00818364"
+},
+"CRobloxReportPaneView": {
+"base": "CRobloxReportView",
+"baseGetter": "00455d50",
+"create": "00458df0",
+"size": 984,
+"va": "00818380"
+},
+"CRobloxReportView": {
+"base": null,
+"baseGetter": "00420770",
+"create": "00000000",
+"size": 980,
+"va": "00818348"
+},
+"CRobloxTreeCtrl": {
+"base": null,
+"baseGetter": "00422620",
+"create": "00000000",
+"size": 208,
+"va": "0080fb20"
+},
+"CRobloxView": {
+"base": null,
+"baseGetter": "006c4cb0",
+"create": "00459fd0",
+"size": 496,
+"va": "00819070"
+},
+"CRobloxWnd": {
+"base": null,
+"baseGetter": "00793420",
+"create": "00000000",
+"size": 192,
+"va": "00819730"
+},
+"CScintillaCtrl": {
+"base": null,
+"baseGetter": "00793420",
+"create": "00000000",
+"size": 92,
+"va": "0081a730"
+},
+"CScintillaView": {
+"base": null,
+"baseGetter": "006c4cb0",
+"create": "00463160",
+"size": 236,
+"va": "0081a8c8"
+},
+"CScriptDoc": {
+"base": null,
+"baseGetter": "0040df90",
+"create": "004647b0",
+"size": 92,
+"va": "0081b1ec"
+},
+"CScriptEditor": {
+"base": null,
+"baseGetter": "004638b0",
+"create": "00465160",
+"size": 352,
+"va": "0081b208"
+},
+"CSecureHtmlView": {
+"base": null,
+"baseGetter": "00433370",
+"create": "00000000",
+"size": 248,
+"va": "0081b840"
+},
+"CSelectionCaption": {
+"base": null,
+"baseGetter": "00718ac0",
+"create": "00000000",
+"size": 456,
+"va": "0081bb00"
+},
+"CSelectionPropGrid": {
+"base": "CPropGrid",
+"baseGetter": "00437820",
+"create": "00000000",
+"size": 580,
+"va": "0081358c"
+},
+"CSelectionTreeCtrl": {
+"base": "CRobloxTreeCtrl",
+"baseGetter": "00422630",
+"create": "00000000",
+"size": 304,
+"va": "0080fb3c"
+},
+"CSettingsDialog": {
+"base": null,
+"baseGetter": "0041f9b0",
+"create": "00466fa0",
+"size": 980,
+"va": "0081bd90"
+},
+"CSettingsExplorer": {
+"base": null,
+"baseGetter": "00466b70",
+"create": "00466b90",
+"size": 972,
+"va": "0081bdac"
+},
+"CStandardOutputView": {
+"base": "COutputView",
+"baseGetter": "00436070",
+"create": "00437740",
+"size": 332,
+"va": "00812f7c"
+},
+"CWebToolbox": {
+"base": null,
+"baseGetter": "00436060",
+"create": "0046a850",
+"size": 256,
+"va": "0081c4a8"
+},
+"CWrapperView": {
+"base": null,
+"baseGetter": "006c4cb0",
+"create": "00430010",
+"size": 392,
+"va": "008107e0"
+},
+"CXTButton": {
+"base": null,
+"baseGetter": "007921d0",
+"create": "00000000",
+"size": 172,
+"va": "0086b150"
+},
+"CXTButtonThemeFactory": {
+"base": null,
+"baseGetter": "0078c270",
+"create": "007a1ec0",
+"size": 20,
+"va": "0086f174"
+},
+"CXTCaption": {
+"base": null,
+"baseGetter": "00718ac0",
+"create": "00000000",
+"size": 400,
+"va": "0085eb40"
+},
+"CXTCaptionButtonThemeFactory": {
+"base": null,
+"baseGetter": "0078c270",
+"create": "00791930",
+"size": 20,
+"va": "0086af14"
+},
+"CXTCaptionPopupWnd": {
+"base": null,
+"baseGetter": "00793420",
+"create": "00000000",
+"size": 688,
+"va": "0086b50c"
+},
+"CXTCaptionThemeFactory": {
+"base": null,
+"baseGetter": "0078c270",
+"create": "007914a0",
+"size": 20,
+"va": "0086aef8"
+},
+"CXTColorDialog": {
+"base": null,
+"baseGetter": "00706490",
+"create": "00000000",
+"size": 300,
+"va": "0085bc80"
+},
+"CXTColorSelectorCtrlThemeFactory": {
+"base": null,
+"baseGetter": "0078c270",
+"create": "007a0cf0",
+"size": 20,
+"va": "0086ef8c"
+},
+"CXTMemDC": {
+"base": null,
+"baseGetter": "007a13d0",
+"create": "00000000",
+"size": 52,
+"va": "0086f0bc"
+},
+"CXTPCommandBars": {
+"base": null,
+"baseGetter": "006ab1a0",
+"create": "006a5740",
+"size": 204,
+"va": "00850260"
+},
+"CXTPControlAction": {
+"base": null,
+"baseGetter": "006ab1a0",
+"create": "00000000",
+"size": 116,
+"va": "00851688"
+},
+"CXTPControls": {
+"base": null,
+"baseGetter": "006ab1a0",
+"create": "006f47f0",
+"size": 68,
+"va": "008590bc"
+},
+"CXTPCustomizeCommandsPage": {
+"base": null,
+"baseGetter": "006ecfd0",
+"create": "006edc90",
+"size": 336,
+"va": "008583a4"
+},
+"CXTPCustomizeSheet": {
+"base": null,
+"baseGetter": "00706490",
+"create": "00000000",
+"size": 196,
+"va": "00857588"
+},
+"CXTPCustomizeToolbarsPage": {
+"base": null,
+"baseGetter": "006ecfd0",
+"create": "00772090",
+"size": 588,
+"va": "00868004"
+},
+"CXTPDockBar": {
+"base": null,
+"baseGetter": "00793420",
+"create": "0071b170",
+"size": 112,
+"va": "0085f12c"
+},
+"CXTPDockingPaneAutoHideWnd": {
+"base": null,
+"baseGetter": "007567c0",
+"create": "00000000",
+"size": 300,
+"va": "00865018"
+},
+"CXTPDockingPaneMiniWnd": {
+"base": null,
+"baseGetter": "007567c0",
+"create": "00000000",
+"size": 344,
+"va": "008659b0"
+},
+"CXTPDockingPaneTabbedContainer": {
+"base": null,
+"baseGetter": "00793420",
+"create": "00000000",
+"size": 456,
+"va": "00865ef4"
+},
+"CXTPDockingPaneWindowSelect": {
+"base": null,
+"baseGetter": "007567c0",
+"create": "0075ab40",
+"size": 340,
+"va": "00865664"
+},
+"CXTPEdit": {
+"base": null,
+"baseGetter": "0074d250",
+"create": "006a93e0",
+"size": 96,
+"va": "00850838"
+},
+"CXTPFrameWnd": {
+"base": null,
+"baseGetter": "006e1920",
+"create": "00000000",
+"size": 236,
+"va": "00855ffc"
+},
+"CXTPImageEditorPicker": {
+"base": null,
+"baseGetter": "00718ac0",
+"create": "00000000",
+"size": 92,
+"va": "00867540"
+},
+"CXTPMDIFrameWnd": {
+"base": null,
+"baseGetter": "006e1940",
+"create": "00000000",
+"size": 240,
+"va": "00856018"
+},
+"CXTPOriginalControls": {
+"base": null,
+"baseGetter": "006f19c0",
+"create": "006f4860",
+"size": 68,
+"va": "008590d8"
+},
+"CXTPPrintOptions": {
+"base": null,
+"baseGetter": "006ab1a0",
+"create": "00000000",
+"size": 64,
+"va": "0085a468"
+},
+"CXTPPrintPageHeaderFooter": {
+"base": null,
+"baseGetter": "006ab1a0",
+"create": "00000000",
+"size": 120,
+"va": "0085a44c"
+},
+"CXTPPropExchange": {
+"base": null,
+"baseGetter": "006ab1a0",
+"create": "00000000",
+"size": 68,
+"va": "0085adec"
+},
+"CXTPPropExchangeArchive": {
+"base": null,
+"baseGetter": "006fcfe0",
+"create": "00000000",
+"size": 72,
+"va": "0085ae08"
+},
+"CXTPPropExchangeXMLNode": {
+"base": null,
+"baseGetter": "006fcfe0",
+"create": "00000000",
+"size": 92,
+"va": "0085ae24"
+},
+"CXTPPropertyGrid": {
+"base": null,
+"baseGetter": "00793420",
+"create": "00000000",
+"size": 392,
+"va": "0085a788"
+},
+"CXTPPropertyGridInplaceEdit": {
+"base": null,
+"baseGetter": "0074d250",
+"create": "00000000",
+"size": 188,
+"va": "00868700"
+},
+"CXTPPropertyGridInplaceList": {
+"base": null,
+"baseGetter": "0077a3f0",
+"create": "00000000",
+"size": 88,
+"va": "00868fa4"
+},
+"CXTPPropertyGridItem": {
+"base": null,
+"baseGetter": "006ab1a0",
+"create": "00000000",
+"size": 268,
+"va": "0085d458"
+},
+"CXTPPropertyGridItemBool": {
+"base": null,
+"baseGetter": "00717890",
+"create": "00000000",
+"size": 288,
+"va": "0085e2f0"
+},
+"CXTPPropertyGridItemColor": {
+"base": null,
+"baseGetter": "00717890",
+"create": "00000000",
+"size": 280,
+"va": "0085d744"
+},
+"CXTPPropertyGridItemEnum": {
+"base": null,
+"baseGetter": "00717890",
+"create": "00000000",
+"size": 276,
+"va": "0085e30c"
+},
+"CXTPPropertyGridView": {
+"base": null,
+"baseGetter": "0077a3f0",
+"create": "00000000",
+"size": 352,
+"va": "0085da50"
+},
+"CXTPReBar": {
+"base": null,
+"baseGetter": "0071d870",
+"create": "00000000",
+"size": 156,
+"va": "0085f4b8"
+},
+"CXTPReportControl": {
+"base": null,
+"baseGetter": "00793420",
+"create": "006d1be0",
+"size": 740,
+"va": "00853684"
+},
+"CXTPReportHyperlink": {
+"base": null,
+"baseGetter": "006ab1a0",
+"create": "00000000",
+"size": 56,
+"va": "008642d4"
+},
+"CXTPReportHyperlinks": {
+"base": null,
+"baseGetter": "006ab1a0",
+"create": "00000000",
+"size": 52,
+"va": "008642f0"
+},
+"CXTPReportInplaceEdit": {
+"base": null,
+"baseGetter": "0074d250",
+"create": "00000000",
+"size": 148,
+"va": "00863e08"
+},
+"CXTPReportRecords": {
+"base": null,
+"baseGetter": "006ab1a0",
+"create": "00000000",
+"size": 72,
+"va": "00854480"
+},
+"CXTPReportRow": {
+"base": null,
+"baseGetter": "006ab1a0",
+"create": "00000000",
+"size": 116,
+"va": "00864778"
+},
+"CXTPReportView": {
+"base": null,
+"baseGetter": "006c4cb0",
+"create": "006c6800",
+"size": 888,
+"va": "00852c1c"
+},
+"CXTPReportViewPrintOptions": {
+"base": null,
+"baseGetter": "006c4f70",
+"create": "00000000",
+"size": 72,
+"va": "00852c38"
+},
+"CXTPRibbonBarMorePopupToolBar": {
+"base": null,
+"baseGetter": "00796850",
+"create": "00000000",
+"size": 608,
+"va": "0086b914"
+},
+"CXTPRibbonControls": {
+"base": null,
+"baseGetter": "006f19c0",
+"create": "00798f00",
+"size": 68,
+"va": "0086c7a4"
+},
+"CXTPRibbonTabPopupToolBar": {
+"base": null,
+"baseGetter": "00796850",
+"create": "00000000",
+"size": 652,
+"va": "0086b930"
+},
+"CXTPStatusBar": {
+"base": null,
+"baseGetter": "0070df10",
+"create": "00000000",
+"size": 212,
+"va": "0085cfcc"
+},
+"CXTPStatusBarPane": {
+"base": null,
+"baseGetter": "006ab1a0",
+"create": "00000000",
+"size": 128,
+"va": "0085cfb0"
+},
+"CXTPTabClientWnd": {
+"base": null,
+"baseGetter": "00793420",
+"create": "00000000",
+"size": 292,
+"va": "0085b1a8"
+},
+"CXTPTabManagerItem": {
+"base": null,
+"baseGetter": "006ab1a0",
+"create": "00000000",
+"size": 132,
+"va": "008691e4"
+},
+"CXTPToolTipContextToolTip": {
+"base": null,
+"baseGetter": "00793420",
+"create": "00000000",
+"size": 304,
+"va": "0085c314"
+},
+"CXTSplitterWnd": {
+"base": null,
+"baseGetter": "00708300",
+"create": "00000000",
+"size": 280,
+"va": "0085c034"
+},
+"CXTSplitterWndThemeFactory": {
+"base": null,
+"baseGetter": "0078c270",
+"create": "0078c360",
+"size": 20,
+"va": "0086a744"
+},
+"CXTThemeManagerStyleFactory": {
+"base": null,
+"baseGetter": "007a1090",
+"create": "0070de10",
+"size": 20,
+"va": "0085cf24"
+},
+"CXTTreeCtrl": {
+"base": null,
+"baseGetter": "006dbae0",
+"create": "00000000",
+"size": 148,
+"va": "00854ed0"
+},
+"CXTTreeView": {
+"base": null,
+"baseGetter": "006dba90",
+"create": "006dbd20",
+"size": 160,
+"va": "00854eb4"
+},
+"CXTWindowMap": {
+"base": null,
+"baseGetter": "007a1140",
+"create": "00000000",
+"size": 28,
+"va": "0086f054"
+},
+"CXTWndHook": {
+"base": null,
+"baseGetter": "007a1090",
+"create": "00000000",
+"size": 16,
+"va": "0086f038"
+}
+}

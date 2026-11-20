@@ -498,6 +498,13 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
     shown = subprocess.run(["git", "show", "refs/remotes/origin/layout/2008-06:rebuild/2008-06/layout/authentic.json"],
                            cwd=root, capture_output=True, text=True, encoding="utf-8")
     layout = json.loads(shown.stdout).get("addresses", {}) if shown.returncode == 0 else {}
+    # The export ran on Windows, where a folder keeps the case it was created with, so the recorded names can differ in
+    # case from the files on the branch (client/app vs client/App). Links need the real names.
+    prefix = "rebuild/2008-06/layout/"
+    on_branch = subprocess.run(["git", "ls-tree", "-r", "--name-only", "refs/remotes/origin/layout/2008-06", "--", prefix],
+                               cwd=root, capture_output=True, text=True, encoding="utf-8").stdout.splitlines()
+    real_case = {p[len(prefix):].casefold(): p[len(prefix):] for p in on_branch if p.startswith(prefix)}
+    layout = {a: real_case.get(f.casefold(), f) for a, f in layout.items()}
     exact_inactive = {a for a, v in data["inactive"].items() if v[1]}
     authentic = sorted(a for a in layout if a in functions and (a in native or a in exact_inactive))
     # addr -> [original-path file on the layout branch, line of the definition (1 when not found)]
@@ -519,6 +526,7 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
     shown = subprocess.run(["git", "show", "refs/remotes/origin/layout/2008-06:rebuild/2008-06/layout/organized.json"],
                            cwd=root, capture_output=True, text=True, encoding="utf-8")
     wider = json.loads(shown.stdout).get("addresses", {}) if shown.returncode == 0 else {}
+    wider = {a: [real_case.get(v[0].casefold(), v[0])] + list(v[1:]) for a, v in wider.items()}
     organized = sorted(a for a in wider if a in functions and a not in data["authentic"]
                        and (a in native or a in exact_inactive))
     data["organized"] = {a: wider[a] for a in organized}

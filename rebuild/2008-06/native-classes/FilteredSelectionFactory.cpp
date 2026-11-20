@@ -4,6 +4,15 @@
 #include "v8datamodel/ModelInstance.h"
 
 namespace RBX {
+template<>
+const Name& NonFactoryProduct<Instance, static_cast<const char*>(0)>::className() {
+    return Name::declare("FilteredSelection", -1);
+}
+template<>
+const Name& NonFactoryProduct<Instance, static_cast<const char*>(0)>::getClassName() const {
+    return className();
+}
+
 template<class Class> size_t ServiceProvider::doGetClassIndex() {
     static size_t index = newIndex();
     return index;

@@ -37,9 +37,17 @@ def hashes(raw):
 
 
 def destination(target, tier=''):
+    """Where an exported file goes: its best-guess original path, one tree for every file.
+
+    `tier` is kept for callers but no longer changes the folder. No path is proven for 2008 (there is no 2008 PDB), so the
+    old split into a main tree and an inferred/ tree meant nothing; how good a path guess is travels in the receipt
+    (per file: 'path': 'original' or 'inferred') and in evidence.json.
+    """
     if not target.startswith(STRIP):
         raise ValueError('target outside rebuild/2008-06: ' + target)
-    return EXPORT / tier / target[len(STRIP):]
+    rel = target[len(STRIP):]
+    folder, _, name = rel.rpartition('/')
+    return EXPORT / folder.lower() / name       # folders lower case: a Windows folder keeps its first case, GitHub does not
 
 
 def rewrite(text, source, dest, headers=None):
@@ -72,7 +80,7 @@ def export(manifest_path):
     manifest = json.loads(Path(manifest_path).read_text(encoding='utf-8'))
     rows = json.loads((HERE / 'source-layout-map.json').read_text(encoding='utf-8'))
     plan, blockers = {}, []
-    inferred = set(manifest.get('inferred', []))   # heuristic paths live apart, under inferred/
+    inferred = set(manifest.get('inferred', []))   # heuristic paths: same tree, marked in the receipt
     for rel in manifest['approved'] + sorted(inferred):
         row = rows.get(rel)
         source = ROOT / rel
