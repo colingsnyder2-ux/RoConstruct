@@ -19,7 +19,7 @@
 //     0xb8): not counted, World.h proposal in the receipt.
 //   * insertSpawnLocation 005910a0 reads SpawnLocation::neutral at +0x400, which needs the 2008 PartInstance of
 //     native-headers/part-embedded (pending build only).
-//   * insertInstances 005911d0 is not built (decoded 2026-11-19, 825 bytes, ret 0x10): if requestedParent is set and
+//   * insertInstances 005911d0 (decoded 2026-11-19, 825 bytes, ret 0x10): if requestedParent is set and
 //     !contains(requestedParent) 005574b0, only std::for_each 005903f0 with boost::bind(&Instance::setParent 0055a8f0,
 //     _1, requestedParent) and return. Otherwise a local vector<shared_ptr<Instance>> (push_back 00420110, dtor
 //     005a2fe0) collects instances[i] by index: Sky -> create<Lighting>(this) 00590e20 ->replaceSky 005e0650; Team ->
@@ -31,8 +31,7 @@
 //     anything else is collected. If the collection is not empty (test 0xfffffff8): requestedParent defaults to this;
 //     insertMode 0 -> insertRaw 00590440 with a local vector<weak_ptr<PartInstance>>, 1 -> insertToTree 00590c10,
 //     2 -> insert3dView 00590f90 (promptMode); then recordCameraHistory("Insert" 00831e18, this) 0058c5c0 (local
-//     declaration pattern of CSelectionTreeCtrl.cpp). Blocker: v8datamodel/Workspace.h (not this unit's) declares
-//     no member for 005a3d40 (placeholder sub_005a3d40 in inferred-identity-bindings.json); proposal there.
+//     declaration pattern of CSelectionTreeCtrl.cpp). 005a3d40 is Workspace::startDecalDrag (Workspace.h, batch 27).
 #include "v8datamodel/RootInstance.h"
 #include "v8datamodel/PartInstance.h"
 #include "tool/Dragger.h"
@@ -63,8 +62,8 @@ namespace RBX
 		}
 		return NULL;
 	}
-	// 00590e20 is called only by insertInstances 005911d0 (not built here: 2008 shape), so it is instantiated
-	// explicitly.
+	// 00590e20 is called only by insertInstances 005911d0 (now built below as well); the explicit instantiation is kept
+	// for the ordering of the batch 26 proof.
 	template Lighting* ServiceProvider::create<Lighting>(const Instance* context);
 
 	RootInstance::~RootInstance()
@@ -285,14 +284,10 @@ namespace RBX
 		}
 	}
 }
-// 005911d0 RootInstance::insertInstances (825 bytes, ret 0x10). PENDING: the Decal branch calls the Workspace member
+// 005911d0 RootInstance::insertInstances (825 bytes, ret 0x10). The Decal branch calls the Workspace member
 // 005a3d40 (thiscall, Decal*; Selection::setSelection 00567770 on the decal, then setMouseCommand 005a1fc0 with a new
-// 0x50-byte command 005a19f0(workspace, decal)), which v8datamodel/Workspace.h (leased to another worker) does not
-// declare. INFERRED name startDecalDrag (later Roblox Workspace::startDecalDrag(Decal*, InsertMode)); proposal in the
-// batch 26 dm05 result. Trial evidence (batch 26): this body with a reloc-masked stand-in for that one call compiles
-// to 825 bytes IDENTICAL to 005911d0. Enable (drop the guard) once Workspace.h declares
-// `void startDecalDrag(Decal* decal); // 005a3d40`.
-#if 0
+// 0x50-byte DecalTool 005a19f0(workspace, decal)), declared in v8datamodel/Workspace.h (batch 27) as
+// startDecalDrag(Decal*) (INFERRED name, later Roblox Workspace::startDecalDrag; body in WorkspaceUpdate.cpp).
 #include "v8datamodel/Decal.h"
 #include "v8datamodel/Workspace.h"
 namespace RBX
@@ -371,7 +366,6 @@ namespace RBX
 		}
 	}
 }
-#endif
 namespace RBX
 {
 	ControllerTypeArray RootInstance::computeControllersUsed() const

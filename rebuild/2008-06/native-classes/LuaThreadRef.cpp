@@ -89,5 +89,21 @@ namespace RBX
 
 			return *this;
 		}
+
+		// 005948f0 ?create@Node@ThreadRef@Lua@RBX@@SA?AV?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@PAUlua_State@@@Z
+		// (338 B). Donor script/ThreadRef.cpp body: lua_pushlightuserdata 00612410 (RBX_LUA_GLOBAL_THREADREFNODE 0x4e),
+		// NodeBridge::pushNewObject inlined (lua_newuserdata 00612c40 of 8 bytes, getmetatable by className 00949730,
+		// lua_setmetatable 006127f0), lua_settable(LUA_GLOBALSINDEX) 00612680, new Node (0xc, sync = syncSingleton
+		// 00975c6c) into a temporary shared_ptr (shared_count 00594740) assigned through 004025b0. Called by
+		// ScriptContext (005aefa0 / 005affa0).
+		ThreadRef::NodePtr ThreadRef::Node::create(lua_State* thread)
+		{
+			lua_pushlightuserdata(thread, RBX_LUA_GLOBAL_THREADREFNODE);
+			ThreadRef::NodePtr* newPtr = NodeBridge::pushNewObject(thread);
+			lua_settable(thread, LUA_GLOBALSINDEX);
+
+			*newPtr = ThreadRef::NodePtr(new Node());
+			return *newPtr;
+		}
 	}
 }

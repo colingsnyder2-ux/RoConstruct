@@ -27,6 +27,7 @@
 #include "v8datamodel/Camera.h"
 #include "v8datamodel/Hopper.h"
 #include "v8datamodel/Selection.h"
+#include "tool/DecalTool.h"
 #include "v8datamodel/UserController.h"
 #include "v8datamodel/Stats.h"
 #include "Network/Players.h"
@@ -205,6 +206,18 @@ namespace RBX
 			adorn->setObjectToWorldMatrix(G3D::CoordinateFrame());
 			adorn->box(G3D::AABox(G3D::Vector3(28, 4, 12), G3D::Vector3(32, 8, 16)), G3D::Color4(1.0f, 0.2f, 0.2f, 0.5f), G3D::Color4::zero());
 		}
+	}
+
+	// @005a3d40 (205 B, registry placeholder func_005a3d40; INFERRED name startDecalDrag, later Roblox
+	// Workspace::startDecalDrag). Identity: called by RootInstance::insertInstances 005911d0 with the inserted Decal;
+	// ServiceClient<Selection> local (createService 00581cc0) then Selection::setSelection 00567770 when decal is set,
+	// new DecalTool (0x50, inline ctor 005a19f0 emitted in this unit) and setMouseCommand 005a1fc0.
+	void Workspace::startDecalDrag(Decal* decal)
+	{
+		ServiceClient<Selection> selection(this);
+		if (decal)
+			selection->setSelection(decal);
+		setMouseCommand(new DecalTool(this, decal));
 	}
 
 #ifdef NATIVE_WORKSPACE_STATSCREATE_PENDING
