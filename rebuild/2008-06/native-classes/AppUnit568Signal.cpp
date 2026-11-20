@@ -12,6 +12,13 @@
 // is pushed by the property / class containers 0056c1cc, 0057004c, 005709fa). The boost::signals named_slot_map /
 // signal_base instances 0056a590..0056b480 are library code and are not recovered.
 // Headers are read-only here (reflection/signal.h, reflection/object.h).
+// BLOCKER (core reflection/member.h, owner proposal): MemberDescriptorContainer<SignalDescriptor>::declare 0056b700 (and
+// the Property 0056c170 / Function 0056fff0 twins) also keeps a global registry sorted by name then owner name: after
+// the derived-container loop it walks allDescriptors() (call_once 00557330 on initAllDescriptors 0056b6f0, function-local
+// static vector 00974ad4 in allDescriptorsUnsafe 0056b690), returns when the descriptor is already present, breaks on
+// Name::compare 0041faa0 < 0 (then on the owners' names when equal) and inserts there. With that body in a scratch copy
+// of member.h all three declare instances are 931 bytes, IDENTICAL apart from the recursive self call, and
+// 0056b690 / 0056b6f0 are IDENTICAL.
 #include "reflection/signal.h"
 #include "reflection/object.h"
 namespace RBX
