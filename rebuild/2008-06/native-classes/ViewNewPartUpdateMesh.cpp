@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/partsurface-profile /I{headers}/part-embedded /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/partsurface-profile /I{headers}/slingshot-load /I{headers}/part-embedded /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // 2008-06 native RBX::ViewNew::Part::updateMesh 004ef930 (inactive; Part vtable 00826f94 slot 10, 2508 bytes, `ret`,
 // EH frame 007cace8). Not in any build list. DRAFT: the body is parked behind NATIVE_PARTMESH_PENDING (pending-guard
 // pattern) until the header gaps listed under BLOCKED land; with the guard defined it still fails on blockers 1, 2

@@ -9,6 +9,11 @@
 #include "v8datamodel/Lighting2008.h"
 #include "v8tree/Service.h"
 #include "RenderLib/RenderScene2008.h"
+#ifdef NATIVE_VIEWG3D_SKY_PENDING
+#include "v8datamodel/Sky.h"
+#include "util/StandardOut.h"
+#include <G3D/GImage.h>
+#endif
 
 namespace RBX
 {
@@ -32,6 +37,53 @@ namespace RBX
 			RenderBase::RenderSceneBase* scene = renderLibScene.get();
 			scene->render(rd, workspace->getGCamera());
 		}
+
+		// 004dc040 (vtable 00826e04 slot 9): DRAFT behind NATIVE_VIEWG3D_SKY_PENDING. Remaining blocker: the native
+		// v8datamodel/Sky.h (read-only here) does not declare the static Sky factory 005ebbb0 (cdecl, hidden RCP result,
+		// one Sky* argument: `push [lighting+0x2d4]; push &tmp; call; add esp, 8`). Donor name and signature:
+		// tools/rbxgs App/include/v8datamodel/Sky.h `static G3D::ReferenceCountedPointer<G3D::Sky> getG3DSky(Sky*);`
+		// (openrbx: ?getG3DSky@Sky@RBX@@SA?AV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@PAV12@@Z). Shape: openrbx
+		// Client/RbxView/View.cpp View::updateLighting; 2008 evidence: lightingValid +0x44, dataModel +0x14 null test
+		// before 004b3870 (as in suppressSkybox 004dbf00), hasSky +0x240 == 0 releases sky +0x48, otherwise a null sky
+		// is reloaded in a try block (RCP setPointer 00598fa0 / zeroPointer 00502a70) with catch (G3D::GImage::Error& e)
+		// -> StandardOut::singleton 00569620 ->print(MESSAGE_ERROR 3, 00826dc4, e.reason.c_str() (+0x28)) and
+		// catch (...) -> print(3, 00826dac); then presetLighting (slot 1) with LightingParameters copy 004d7020, the
+		// clear colour (all four loads before the stores) and lightingValid = true.
+#ifdef NATIVE_VIEWG3D_SKY_PENDING
+		void ViewG3D::updateLighting()
+		{
+			if (!lightingValid)
+			{
+				Lighting* lighting = ServiceProvider::create<Lighting>(static_cast<ServiceProvider*>(dataModel.get()));
+
+				if (!lighting->hasSky)
+				{
+					sky = NULL;
+				}
+				else if (sky.isNull())
+				{
+					try
+					{
+						sky = Sky::getG3DSky(lighting->sky.get());
+					}
+					catch (const G3D::GImage::Error& e)
+					{
+						StandardOut::singleton()->print(MESSAGE_ERROR, "Failed to load sky box. %s", e.reason.c_str());
+					}
+					catch (...)
+					{
+						StandardOut::singleton()->print(MESSAGE_ERROR, "Failed to load sky box");
+					}
+				}
+
+				renderLibScene->presetLighting(sky, lighting->getSkyParameters(), lighting->getAmbientTop(),
+				                               lighting->getAmbientBottom());
+				renderLibScene->colorClearValue = lighting->getClearColor();
+
+				lightingValid = true;
+			}
+		}
+#endif // NATIVE_VIEWG3D_SKY_PENDING
 
 		void ViewG3D::invalidateLighting(bool updateSkybox)
 		{
