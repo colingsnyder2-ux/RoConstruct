@@ -14,6 +14,13 @@
 // and PartItem::receive (004c8150). PartItem::receive is undeclared in the leased header; the remaining
 // APIs live in headers owned by other leases (Replicator.h, Network/Player.h, util/Settings*, util/StandardOut),
 // so they cannot be declared here without cross-lease header edits. Parked pending owner header proposals.
+// Batch 29 note: deserializeInstanceRef 004a8b60 is now declared in Network/IdSerializer.h. Remaining shape read from
+// the binary: character = findTargetPlayer() (slot 17) ? player+0x170 : NULL; loop deserializeInstanceRef; the part
+// shared_ptr from instance+0xe4 (004c7530); "Physics-in" error prints through StandardOut 005693a0 with strings
+// 008266e8 / 008266c0 / 00826694 / 00826708 (NetworkSettings 0049e890 printPhysicsErrors gates, Guid readable
+// strings 004a98b0); PartInstance 005995f0, Primitive::getAssembly 005e7570, Clump::getAnchored 005e60e0, then the
+// items multi_index hashed find 004c72b0 / insert 004c8da0 of PartItem(part) 004c7a10, PartItem::receive 004c8150 and
+// the ordered-index modify 004c8ef0. Not attempted in batch 29 (1641 B; no analog).
 //
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 #include "Network/PhysicsSenders2008.h"
