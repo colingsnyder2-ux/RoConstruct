@@ -45,7 +45,7 @@ namespace RBX
 			  peer(peer),
 			  remotePlayerId(remotePlayerId),
 			  counter0(0),
-			  counter1(0)
+			  lastReceivedName(NULL)
 		{
 			switch (NetworkSettings::singleton().physicsSendMethod)
 			{

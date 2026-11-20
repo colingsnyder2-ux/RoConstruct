@@ -135,6 +135,14 @@ namespace RBX
 			// 004aeba0 (thiscall (BitStream&, const Descriptor&), ret 8; ChangePropertyItem::write 004b6d10 calls it on
 			// propNames +0x2bf4 with the property descriptor). INFERRED name after the donor SharedStringDictionary::send.
 			void send(RakNet::BitStream& bitStream, const Descriptor& descriptor);
+			// INFERRED: inline receive (no standalone body in the client; readChangedProperty 004b7a30 expands it:
+			// ReadBits 004a5210 of receiveBits (+0x3c) into a zeroed index, then the checked descriptors[index]).
+			void receive(RakNet::BitStream& bitStream, const Descriptor*& descriptor)
+			{
+				unsigned int index = 0;
+				bitStream.ReadBits((unsigned char*)&index, receiveBits, true);
+				descriptor = descriptors[index];
+			}
 		};
 	}
 }
@@ -211,8 +219,40 @@ namespace RBX
 				const boost::shared_ptr<const Instance> instance;                   // +0x0c
 
 			public:
-				ChangePropertyItem(Replicator& replicator, const boost::shared_ptr<const Instance>& instance, const Reflection::PropertyDescriptor& desc);
+				// Inline (donor Replicator.cpp body): onParentChanged 004b01e0 expands it after new(0x14) (vtable
+				// 00824828, +0x08 desc, +0x0c instance).
+				ChangePropertyItem(Replicator& replicator, const boost::shared_ptr<const Instance>& instance, const Reflection::PropertyDescriptor& desc)
+					: Item(replicator),
+					  instance(instance),
+					  desc(desc)
+				{
+				}
 				virtual void write(RakNet::BitStream& bitStream);                   // 004b6d10
+			};
+
+			// Donor Replicator::NewInstanceItem. vtable 00824b20: slot 0 deleting destructor 004aff20 (identical-code
+			// folded with DeleteInstanceItem's), slot 1 write 004b8620. Layout from the constructor 004afc70: +0x08
+			// shared_ptr<Instance> (count +0x0c); new(0x10) in the descendant-added handler 004aff70.
+			class NewInstanceItem : public Item
+			{
+			private:
+				boost::shared_ptr<Instance> instance;                               // +0x08
+
+			public:
+				NewInstanceItem(Replicator& replicator, const boost::shared_ptr<Instance>& instance); // 004afc70
+				virtual void write(RakNet::BitStream& bitStream);                   // 004b8620
+			};
+
+			// Donor Replicator::DeleteInstanceItem. vtable 00824b2c: slot 0 004aff20 (folded), slot 1 write 004b47b0.
+			// Layout from the constructor 004afe90: +0x08 shared_ptr<const Instance> (count +0x0c).
+			class DeleteInstanceItem : public Item
+			{
+			private:
+				boost::shared_ptr<const Instance> instance;                         // +0x08
+
+			public:
+				DeleteInstanceItem(Replicator& replicator, const boost::shared_ptr<const Instance>& instance); // 004afe90
+				virtual void write(RakNet::BitStream& bitStream);                   // 004b47b0
 			};
 
 			class MarkerItem : public Item
@@ -290,10 +330,12 @@ namespace RBX
 			RakPeerInterface* peer;                                                 // +0x2d50 (AttachPlugin slot 58 in the constructor)
 			const SystemAddress remotePlayerId;                                     // +0x2d54
 		private:
-			// INFERRED: two 4-byte counters zeroed by the constructor and not destroyed (004b73e5, 004b8a18, 004b7d03);
-			// names not derived. sizeof 0x2d68 (8-aligned: lastSendTime is a double).
+			// INFERRED: two 4-byte fields zeroed by the constructor and not destroyed (004b73e5, 004b8a18, 004b7d03).
+			// +0x2d60 holds the Name* of the last received descriptor (readChangedProperty 004b7a30 stores
+			// &descriptor->name after deserializeValue; readInstanceNew 004b78cb stores a descriptor name too); names
+			// not derived. sizeof 0x2d68 (8-aligned: lastSendTime is a double).
 			int counter0;                                                           // +0x2d5c
-			int counter1;                                                           // +0x2d60
+			const Name* lastReceivedName;                                           // +0x2d60 INFERRED name
 
 		public:
 			Replicator(SystemAddress remotePlayerId, RakPeerInterface* peer);      // 004b9bd0 (open)
@@ -329,6 +371,16 @@ namespace RBX
 			// 004ab850: for_each callback over containerConnections (disconnects both connections of one record).
 			static void closeReplicationItem(const std::pair<const Instance* const, ReplicationData>& item);
 
+			// 004afd00 (donor Replicator::disconnectReplicationData; thiscall, shared_ptr by value, returns bool: callers
+			// onParentChanged 004b01e0 and the delete reader 004b0800). Body not recovered (visits the children through
+			// an Instance::visitChildren instance 004ae570 that the native v8tree/Instance.h does not declare).
+			bool disconnectReplicationData(boost::shared_ptr<Instance> instance);
+			// INFERRED: donor inline helper (pendingNewInstances.erase, set erase 005e9f60); defined in
+			// NetworkReplicator2008Items.cpp, expanded into onParentChanged 004b01e0.
+			inline bool removeFromPendingNewInstances(const Instance* instance);
+			// 004b01e0 (donor Replicator::onParentChanged; Instance::propParent 00973d34 change item or delete item).
+			void onParentChanged(boost::shared_ptr<Instance> instance);
+
 		protected:
 			// 004b4bb0 (donor Replicator::getDefault; thiscall, ret 4: looks the class name up in defaultObjects +0x2cfc).
 			// Body in NetworkReplicator2008StatsItem.cpp.
@@ -346,6 +398,20 @@ namespace RBX
 			SharedStringDictionary& getSharedDictionary(const Reflection::PropertyDescriptor& descriptor);
 			// 004b6890 (donor Replicator::serializeValue; thiscall, ret 0xc). Body in NetworkReplicator2008StatsItem.cpp.
 			void serializeValue(const Reflection::ConstProperty& property, bool, RakNet::BitStream& stream);
+			// 004b6ab0 (donor Replicator::deserializeValue, the mirror of serializeValue 004b6890: same type-singleton
+			// order; ScopedAssign of deserializeProperty +0x2cd4 around the body). Body in NetworkReplicator2008Items.cpp
+			// (compiled only with NATIVE_REPLICATOR_DESERIALIZE_REF: the Ref branch needs IdSerializer::deserializeRef).
+			void deserializeValue(RakNet::BitStream& stream, Reflection::Property& property);
+			// 004b6f00 (donor Replicator::readProperties; thiscall (BitStream&, Instance*), ret 8: the mirror of
+			// writeProperties 004b7f20 with the "   read %s %s, ..." prints 00825070 / 00825050 / 00825038).
+			void readProperties(RakNet::BitStream& stream, Instance* instance);
+			// 004b7a30 (donor Replicator::readChangedProperty; thiscall (BitStream&), ret 4). Body in
+			// NetworkReplicator2008Items.cpp, compiled only with NATIVE_REPLICATOR_DESERIALIZE_REF (it calls
+			// IdSerializer::deserializeInstanceRef 004a8b60, not declared by the native Network/IdSerializer.h).
+			void readChangedProperty(RakNet::BitStream& stream);
+			// 004b0800 (donor Replicator::readInstanceDelete; thiscall (BitStream&), ret 4). Guarded like
+			// readChangedProperty: it also calls IdSerializer::resolvePendingBindings 004a9250.
+			void readInstanceDelete(RakNet::BitStream& stream);
 		};
 
 		class Replicator::ReplicatorStatsItem : public Stats::Item
