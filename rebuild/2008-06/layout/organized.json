@@ -5677,6 +5677,10 @@
 "client/app/util/Sound.cpp",
 "merged unit, partial"
 ],
+"005bcd80": [
+"client/rendering/renderlib/RenderScene.cpp",
+"merged unit, partial"
+],
 "005bceb0": [
 "client/app/util/Sound.cpp",
 "merged unit, partial"
