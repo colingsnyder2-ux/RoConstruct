@@ -1,18 +1,29 @@
-#undef _RELEASEASSERT
-#include "v8world/IWorldStage.h"
-#include "v8world/Edge.h"
+#include "v8world/ClumpStage2008.h"
+#include "v8world/Joints2008.h"
 
 namespace RBX
 {
-	void IWorldStage::onEdgeAdded(Edge* e)
+	void ClumpStage::onEdgeAdded(Edge* e)
 	{
-		e->putInPipeline(this);
-		getDownstreamWS()->onEdgeAdded(e);
+		IWorldStage::onEdgeAdded(e);
+		if (e->getEdgeType() == Edge::JOINT)
+		{
+			Joint* joint = static_cast<Joint*>(e);
+			Edge* entry = e;
+			if (joint->canStepUi())
+				set10.insert(entry);
+		}
 	}
 
-	void IWorldStage::onEdgeRemoving(Edge* e)
+	void ClumpStage::onEdgeRemoving(Edge* e)
 	{
-		getDownstreamWS()->onEdgeRemoving(e);
-		e->removeFromStage(this);
+		if (e->getEdgeType() == Edge::JOINT)
+		{
+			Joint* joint = static_cast<Joint*>(e);
+			Edge* entry = e;
+			if (joint->canStepUi())
+				set10.erase(entry);
+		}
+		IWorldStage::onEdgeRemoving(e);
 	}
 }

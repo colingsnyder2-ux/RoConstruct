@@ -8,6 +8,8 @@
 #include "AppDraw/DrawAdorn.h"
 #include <boost/bind.hpp>
 #include "v8datamodel/Workspace.h"   // Workspace::getWorldIfInWorkspace 005a3390 (onAncestorChanged 0060a0f0)
+#include "util/NormalId.h"           // objectToUvw / uvwToObject / intToNormalId / normalIdToMatrix3 (00609da0)
+#include "util/Math.h"               // Math::vector3Abs 005de630, Math::sign (00609da0)
 
 namespace RBX
 {
@@ -35,11 +37,6 @@ namespace RBX
 	template<class C, class D, const char* N>
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
-
-	template<class C, class D, const char* N>
-	template<typename Arg0Type>
-	DescribedCreatable<C, D, N>::DescribedCreatable(Arg0Type arg0)   // VelocityMotor: 0060bab0
-		: Reflection::Described<C, N, FactoryProduct<C, D, N> >(arg0) {}
 
 	static Reflection::RefPropDescriptor<VelocityMotor, Hole> prop_Hole("Hole", "Data", &VelocityMotor::getHole, &VelocityMotor::setHole, Reflection::PropertyDescriptor::STANDARD);
 	static Reflection::PropDescriptor<VelocityMotor, float> prop_MaxVelocity("MaxVelocity", "Data", &VelocityMotor::getMaxVelocity, &VelocityMotor::setMaxVelocity, Reflection::PropertyDescriptor::STANDARD);
@@ -98,6 +95,65 @@ namespace RBX
 			return true;
 		}
 		return false;
+	}
+
+	G3D::CoordinateFrame Feature::computeLocalCoordinateFrame() const
+	{
+		PartInstance* part = dynamic_cast<PartInstance*>(getParent());
+
+		if (!part)
+			return G3D::CoordinateFrame();
+
+		Extents extents = part->getPrimitive()->getExtentsLocal();
+
+		G3D::Vector3 corner = extents.max();
+		G3D::Vector3 uv = Math::vector3Abs(RBX::objectToUvw(corner, faceId));
+
+		uv.z = 0.0f;
+
+		switch (leftRight)
+		{
+			case LEFT:
+				uv.x = -uv.x;
+				break;
+
+			case CENTER_LR:
+				uv.x = 0.0f;
+				break;
+		}
+
+		switch (topBottom)
+		{
+			case CENTER_TB:
+				uv.y = 0.0f;
+				break;
+
+			case BOTTOM:
+				uv.y = -uv.y;
+				break;
+		}
+
+		switch (inOut)
+		{
+			case INSET:
+				uv.x = Math::sign(uv.x) * std::max(0.0f, std::abs(uv.x) - 1.0f);
+				uv.y = Math::sign(uv.y) * std::max(0.0f, std::abs(uv.y) - 1.0f);
+				break;
+
+			case CENTER_IO:
+				uv.x = 0.0f;
+				uv.y = 0.0f;
+				break;
+		}
+
+		G3D::Vector3 uvInObject = RBX::uvwToObject(uv, faceId);
+		G3D::Vector3 ptInObject = extents.faceCenter(faceId) + uvInObject;
+
+		NormalId face = getCoordOrientation() == Z_OUT
+			? faceId
+			: intToNormalId((faceId + NORM_X_NEG) % NORM_UNDEFINED);
+
+		return G3D::CoordinateFrame(normalIdToMatrix3(face), ptInObject);
 	}
 
 	void Feature::render3dSelect(Adorn* adorn, SelectState selectState)

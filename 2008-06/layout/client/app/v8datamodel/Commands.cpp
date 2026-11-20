@@ -1,36 +1,3 @@
-#include "v8datamodel/Workspace.h"
-#include "v8datamodel/Selection.h"
-#include "StandardVerbs.h"
-#include "util/Sound.h"
-#include "NativeCameraCommands.h"
-
-namespace RBX {
-inline const Name& Verb::getName() const { return name; }
-inline const G3D::Rect2D& RootInstance::getViewPort() { return viewPort; }
-void recordCameraHistory(const char*, const Instance*);
-
-void CameraZoomExtentsCommand::doIt(IDataState* state) {
-    ServiceClient<FilteredSelection<PVInstance> > selection(workspace);
-    Extents extents;
-    if (selection->size() >= 1) {
-        const std::vector<PVInstance*>& items = selection->items();
-        extents = items[0]->getExtentsWorld();
-        for (size_t i = 1; i < items.size(); ++i) extents.unionWith(items[i]->getExtentsWorld());
-        workspace->getCamera()->setCameraType(Camera::FIXED_CAMERA);
-        workspace->getCamera()->zoomExtents(extents, workspace->getViewPort(), Camera::ZOOM_IN_OR_OUT);
-        ServiceProvider::create<Soundscape::SoundService>(static_cast<Instance*>(workspace))->playSound(STEP_SOUND);
-        state->setDirty(true);
-        recordCameraHistory(getName().c_str(), workspace);
-        state->setDirty(true);
-        return;
-    }
-    G3D::Vector3::zero();
-    workspace->getCamera()->zoomExtents(workspace->getViewPort());
-    ServiceProvider::create<Soundscape::SoundService>(static_cast<Instance*>(workspace))->playSound(STEP_SOUND);
-    state->setDirty(true);
-}
-}
-
 #include <afxwin.h>
 #include <boost/scoped_ptr.hpp>
 #include <stdexcept>
@@ -38,9 +5,13 @@ void CameraZoomExtentsCommand::doIt(IDataState* state) {
 #include "CInsertObjectDialog.h"
 #include "CWorkspace.h"
 #include "v8datamodel/DataModel.h"
+#include "StandardVerbs.h"
 #include "Network/Players.h"
 #include "v8datamodel/Decal.h"
 #include "v8datamodel/custommesh.h"
+#include "v8datamodel/Workspace.h"
+#include "v8datamodel/Selection.h"
+#include "util/Sound.h"
 
 using namespace RBX;
 extern HRESULT __stdcall createNativeWorkspace(CWorkspace**) throw();
@@ -67,6 +38,8 @@ inline VerbContainer* Verb::getContainer() const { return container; }
 inline const G3D::Rect2D& RootInstance::getViewPort() { return viewPort; }
 void recordCameraHistory(const char*, const Instance*);
 }
+#include "NativeCameraCommands.h"
+
 namespace RBX {
 CameraVerb::CameraVerb(std::string name, Workspace* ws)
     : Verb(ws, name), workspace(ws), selection(ws) {}
@@ -139,8 +112,6 @@ bool CameraZoomOutCommand::isEnabled() const {
     return camera->canZoom(-1);
 }
 }
-// ClipboardObject is an empty nonvirtual native base: RTTI offset is exactly
-//40(Cut)/36(Copy), without increasing those allocation sizes; Paste base12.
 #include "ClipboardVerbs.h"
 
 namespace RBX { template<> boost::shared_ptr<Workspace> shared_from<Workspace>(Workspace*);
@@ -293,8 +264,14 @@ bool InsertDecal::isEnabled() const {
     return EditSelectionVerb::isEnabled() && getTarget() != NULL;
 }
 
-// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class boost::scoped_ptr<RBX::StandardVerbs>;
+
+namespace RBX {
+template<> boost::shared_ptr<Workspace> shared_from<Workspace>(Workspace*);
+
+EditSelectionVerb::EditSelectionVerb(std::string name, DataModel* model)
+    : Verb(model, name), workspace(shared_from(model->getWorkspace())), selection(model), dataModel(model) {}
+}
 
 namespace RBX {
 
@@ -342,6 +319,39 @@ void JoinCommand::doIt(IDataState*)
 }
 
 namespace RBX {
+EngineStatsCommand::EngineStatsCommand(RBX::DataModel* dm)
+    : Verb(dm ? reinterpret_cast<RBX::VerbContainer*>(reinterpret_cast<char*>(dm) + 0x1c8) : 0,
+           std::string("EngineStats")),
+      dataModel(dm)
+{
+}
+}
+
+#include "gui/Gui.h"
+
+namespace RBX {
+bool StatsCommand::isChecked() const
+{
+    GuiRoot* root = dataModel->getGuiRoot();
+    TopMenuBar* menu = dynamic_cast<TopMenuBar*>(root->findFirstChildByName("StatsHud1"));
+    return (menu && menu->isVisible()) ? 1 : 0;
+}
+}
+
+namespace RBX {
+StatsCommand::StatsCommand(RBX::DataModel* dm)
+    : Verb(static_cast<RBX::VerbContainer*>(dm), std::string("Stats")),
+      dataModel(dm)
+{
+}
+}
+
+namespace RBX {
+RunStateVerb::RunStateVerb(std::string name, DataModel* model)
+    : Verb(model, name), dataModel(model), runService(model) {}
+}
+
+namespace RBX {
 
 BoolPropertyVerb::BoolPropertyVerb(const std::string& name, DataModel* model, const char* property)
     : EditSelectionVerb(name, model), propertyName(Name::declare(property, -1)) {}
@@ -360,4 +370,14 @@ FollowCameraCommand::FollowCameraCommand(DataModel* model) : EditSelectionVerb("
 WatchCameraCommand::WatchCameraCommand(DataModel* model) : EditSelectionVerb("WatchCamera", model) {}
 MoveDownSelectionVerb::MoveDownSelectionVerb(DataModel* model) : EditSelectionVerb("SelectionDown", model) {}
 
+}
+
+#include "util/Math.h"
+#include "v8datamodel/ICameraOwner.h"
+
+namespace RBX {
+G3D::Matrix3 TiltSelectionVerb::getRotationAxis()
+{
+    return Math::matrixTiltQuadrant(Math::toYAxisQuadrant(workspace->getGCamera().getCoordinateFrame()));
+}
 }

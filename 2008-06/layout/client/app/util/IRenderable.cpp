@@ -1,36 +1,58 @@
 #include "v8world/SpatialHash.h"
 
-// Original 0047d410 is a single ret instruction.
 void RBX::SpatialHash::doStats() const {}
 
-// 2008-06 native RBX::IRenderable / IRenderableBucket rows of the util/IRenderable.cpp unit 005dd2c0..005dd54f inside
-// the application range 005dc000..005e8000 (inactive). Declarations: the native util/IRenderable.h (read-only).
-// Verified by tests/record_native_app_unit5dc_2008.py.
 #undef _RELEASEASSERT
 #include "util/IRenderable.h"
-#include "util/Debug.h"
 
 namespace RBX
 {
-	IRenderableBucket::~IRenderableBucket()                                             // 005dd2c0
+	IRenderable::~IRenderable()
+	{
+		RBXASSERT(index2d == -1);
+		RBXASSERT(index3d == -1);
+		RBXASSERT(bucket == NULL);
+	}
+
+	void IRenderable::shouldRenderSetDirty()
+	{
+		if (bucket)
+			bucket->recomputeShouldRender(this);
+	}
+
+	IRenderableBucket::~IRenderableBucket()
 	{
 		RBXASSERT(renderable2ds.size() == 0);
 		RBXASSERT(renderable3ds.size() == 0);
 	}
 
-	void IRenderableBucket::render2dItems(Adorn* adorn)                                 // 005dd330
+	void IRenderableBucket::onAdded(IRenderable* iR)
 	{
-		for (int i = 0; i < renderable2ds.size(); ++i)
-			renderable2ds[i]->render2d(adorn);
+		RBXASSERT(iR->index2d == -1);
+		RBXASSERT(iR->index3d == -1);
+		RBXASSERT(iR->bucket == NULL);
+
+		iR->bucket = this;
+		recomputeShouldRender(iR);
 	}
 
-	void IRenderableBucket::render3dAdornItems(Adorn* adorn)                            // 005dd360
+	void IRenderableBucket::onRemoving(IRenderable* iR)
 	{
-		for (int i = 0; i < renderable3ds.size(); ++i)
-			renderable3ds[i]->render3dAdorn(adorn);
+		RBXASSERT(iR->bucket == this);
+
+		if (iR->index2d >= 0)
+			renderable2ds.fastRemove(iR);
+
+		if (iR->index3d >= 0)
+			renderable3ds.fastRemove(iR);
+
+		iR->bucket = NULL;
+
+		RBXASSERT(iR->index2d == -1);
+		RBXASSERT(iR->index3d == -1);
 	}
 
-	void IRenderableBucket::recomputeShouldRender(IRenderable* iR)                      // 005dd400
+	void IRenderableBucket::recomputeShouldRender(IRenderable* iR)
 	{
 		RBXASSERT(iR->bucket == this);
 
@@ -55,56 +77,15 @@ namespace RBX
 		}
 	}
 
-	void IRenderableBucket::onAdded(IRenderable* iR)                                    // 005dd4c0
+	void IRenderableBucket::render2dItems(Adorn* adorn)
 	{
-		RBXASSERT(iR->index2d == -1);
-		RBXASSERT(iR->index3d == -1);
-		RBXASSERT(iR->bucket == NULL);
-
-		iR->bucket = this;
-		recomputeShouldRender(iR);
+		for (int i = 0; i < renderable2ds.size(); ++i)
+			renderable2ds[i]->render2d(adorn);
 	}
 
-	void IRenderableBucket::onRemoving(IRenderable* iR)                                 // 005dd4d0
+	void IRenderableBucket::render3dAdornItems(Adorn* adorn)
 	{
-		RBXASSERT(iR->bucket == this);
-
-		if (iR->index2d >= 0)
-			renderable2ds.fastRemove(iR);
-
-		if (iR->index3d >= 0)
-			renderable3ds.fastRemove(iR);
-
-		iR->bucket = NULL;
-
-		RBXASSERT(iR->index2d == -1);
-		RBXASSERT(iR->index3d == -1);
+		for (int i = 0; i < renderable3ds.size(); ++i)
+			renderable3ds[i]->render3dAdorn(adorn);
 	}
-
-	void IRenderable::shouldRenderSetDirty()                                            // 005dd540
-	{
-		if (bucket)
-			bucket->recomputeShouldRender(this);
-	}
-}
-
-// 2008-06 native RBX::IRenderable / RBX::IRenderableBucket (inactive): unit 005dd2c0..005dd54f.
-// 2007 PDB: client/app/util/irenderable.cpp.
-#undef _RELEASEASSERT
-
-namespace RBX 
-{
-	IRenderable::~IRenderable()
-	{
-		RBXASSERT(index2d == -1);
-		RBXASSERT(index3d == -1);
-		RBXASSERT(bucket == NULL);
-	}
-
-
-
-
-
-
-
 }

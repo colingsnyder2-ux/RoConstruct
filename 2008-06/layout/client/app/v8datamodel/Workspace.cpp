@@ -1,6 +1,3 @@
-// 2008-06 native RBX::Workspace members (inactive), original unit v8datamodel/Workspace.cpp, 005a01e0..005a66af in
-// the application range 005a0000..005ac000. Built against the committed native v8datamodel/Workspace.h (read-only).
-// Verified by tests/record_native_app_unit5a0_2008.py (receipt app-unit5a0-2008-working.json).
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/Camera.h"
 #include "v8datamodel/MouseCommand.h"
@@ -18,57 +15,48 @@
 
 namespace RBX
 {
-	// @005a01e0 ?askAddChild@Workspace
 	bool Workspace::askAddChild(const Instance* instance) const
 	{
 		return dynamic_cast<const IRenderable*>(instance) != NULL;
 	}
 
-	// @005a0210 ?getGCamera@Workspace
 	const G3D::GCamera& Workspace::getGCamera() const
 	{
 		return getCamera()->getGCamera();
 	}
 
-	// @005a0220 ?onWrapMouse@Workspace
 	void Workspace::onWrapMouse(const G3D::Vector2& wrapMouseDelta)
 	{
 		getCamera()->onWrapMouse(wrapMouseDelta);
 	}
 
-	// @005a0240 ?zoomToExtents@Workspace
 	void Workspace::zoomToExtents()
 	{
 		getCamera()->zoomExtents(viewPort);
 	}
 
-	// @005a0260 ?stop@Workspace
 	void Workspace::stop()
 	{
 		isSimulating = false;
 		getCamera()->autoMode();
 	}
 
-	// @005a0280 ?newNullTool@RBX
 	MouseCommand* newNullTool(Workspace* workspace)
 	{
 		return new NewNullTool(workspace);
 	}
 
-	// @005a05a0 ?getCamera@Workspace
 	Camera* Workspace::getCamera() const
 	{
 		return currentCamera ? currentCamera.get() : cameraTemplate.get();
 	}
 
-	// @005a0610 ?setNullMouseCommand@Workspace
 	void Workspace::setNullMouseCommand()
 	{
 		stickyCommand.reset();
 		currentCommand.reset(newNullTool(this));
 	}
 
-	// @005a0530 ?getMyWorkspaceFast@Workspace
 	Workspace* Workspace::getMyWorkspaceFast(const Instance* context)
 	{
 		Instance* parent = context->getParent();
@@ -81,32 +69,27 @@ namespace RBX
 		return static_cast<Workspace*>(parent);
 	}
 
-	// @005a0560 ?getMyWorldFast@Workspace
 	World* Workspace::getMyWorldFast(const Instance* context)
 	{
 		return getMyWorkspaceFast(context)->getWorld();
 	}
 
-	// @005a2730 ?setDefaultMouseCommand@Workspace
 	void Workspace::setDefaultMouseCommand()
 	{
 		stickyCommand.reset();
 		setMouseCommand(NULL);
 	}
 
-	// @005a27c0 ?releaseScript@Workspace
 	void Workspace::releaseScript(Script* script)
 	{
 		pendingScripts.erase(script);
 	}
 
-	// @005a3380 ?findWorkspace@Workspace
 	Workspace* Workspace::findWorkspace(const Instance* context)
 	{
 		return ServiceProvider::find<Workspace>(context);
 	}
 
-	// @005a3390 ?getWorldIfInWorkspace@Workspace
 	World* Workspace::getWorldIfInWorkspace(const Instance* context)
 	{
 		Workspace* workspace = ServiceProvider::find<Workspace>(context);
@@ -116,13 +99,11 @@ namespace RBX
 			return NULL;
 	}
 
-	// @005a33d0 ?contextInWorkspace@Workspace
 	bool Workspace::contextInWorkspace(const Instance* context)
 	{
 		return getWorkspaceIfInWorkspace(context) != NULL;
 	}
 
-	// @005a3410 ?getWorkspaceIfInWorkspace@Workspace
 	Workspace* Workspace::getWorkspaceIfInWorkspace(const Instance* context)
 	{
 		Workspace* workspace = ServiceProvider::find<Workspace>(context);
@@ -132,7 +113,6 @@ namespace RBX
 			return NULL;
 	}
 
-	// @005a0740 ?scriptShouldRun@Workspace
 	IScriptOwner* Workspace::scriptShouldRun(Script* script)
 	{
 		bool shouldRun;
@@ -148,14 +128,12 @@ namespace RBX
 		return shouldRun ? this : NULL;
 	}
 
-	// @005a1b90 ?onChildChanged@Workspace
 	void Workspace::onChildChanged(Instance* instance, const PropertyChanged& event)
 	{
 		Instance::onChildChanged(instance, event);
 		raiseDrawChanged();
 	}
 
-	// @005a1bc0 ?onDescendentRemoving@Workspace
 	void Workspace::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
 	{
 		IRenderable* renderable = dynamic_cast<IRenderable*>(instance.get());
@@ -166,7 +144,6 @@ namespace RBX
 		raiseDrawChanged();
 	}
 
-	// @005a1c20 ?onDescendentAdded@Workspace
 	void Workspace::onDescendentAdded(Instance* instance)
 	{
 		RootInstance::onDescendentAdded(instance);
@@ -186,7 +163,6 @@ namespace RBX
 		}
 	}
 
-	// @005a1fc0 ?setMouseCommand@Workspace
 	void Workspace::setMouseCommand(MouseCommand* newMouseCommand)
 	{
 		if (!newMouseCommand)
@@ -211,7 +187,6 @@ namespace RBX
 			Notifier<Workspace, ToolChanged>::raise(ToolChanged());
 		}
 	}
-	// @005a1ce0 ?clearEmptiedModels@RBX
 	void clearEmptiedModels(boost::shared_ptr<Instance> test, Instance* parent)
 	{
 		if (test.get() != parent)
@@ -234,7 +209,6 @@ namespace RBX
 		}
 	}
 
-	// @005a1e80 ?handleFallenParts@Workspace
 	void Workspace::handleFallenParts(const G3D::Array<boost::shared_ptr<PartInstance>>& fallenParts)
 	{
 		for (int i = 0; i < fallenParts.size(); i++)
@@ -247,7 +221,6 @@ namespace RBX
 		}
 	}
 
-	// @005a2760 ?runScript@Workspace
 	void Workspace::runScript(Script* script, ScriptContext* context)
 	{
 		if (Network::Players::backendProcessing(this, true) && !isSimulating)
@@ -256,7 +229,6 @@ namespace RBX
 			context->addScript(script);
 	}
 
-	// @005a0d90 ?findTopInstance@Workspace
 	Instance* Workspace::findTopInstance(Instance* instance)
 	{
 		Instance* workspace = instance->getParent();
@@ -271,7 +243,6 @@ namespace RBX
 		return instance;
 	}
 
-	// @005a0de0 ?joinAllHack@Workspace
 	void Workspace::joinAllHack()
 	{
 		world->joinAll();
@@ -300,22 +271,16 @@ namespace RBX
 		wrapper<isJoin>(instance.get());
 	}
 
-	// @005a2420 ?makeJoints@Workspace
 	void Workspace::makeJoints(boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> instances)
 	{
 		std::for_each(instances->begin(), instances->end(), &wrapper2<true>);
 	}
 
-	// @005a24d0 ?breakJoints@Workspace
 	void Workspace::breakJoints(boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> instances)
 	{
 		std::for_each(instances->begin(), instances->end(), &wrapper2<false>);
 	}
 
-	// @005a4d90 ??0Workspace@RBX@@QAE@PAVIDataState@1@@Z: not a row of this unit (counted by
-	// workspace-lifetime-profiler-notifier-variant.json). Defined here so that the unit emits the Workspace vtables,
-	// their inline virtuals and adjustor thunks and the NonFactoryProduct / DescribedNonCreatable constructors, as the
-	// original unit does. Same body as native-classes/WorkspaceLifetime.cpp.
 	Workspace::Workspace(IDataState* dataState)
 		: VerbContainer(NULL),
 		  dataState(dataState),
@@ -344,12 +309,10 @@ namespace RBX
 		profileRunServiceHeartbeat->parent = profileWorkspaceStep.get();
 	}
 
-	// @005a28c0 ??1Workspace@RBX@@UAE@XZ (support row here; counted by workspace-lifetime-profiler-notifier-variant.json)
 	Workspace::~Workspace()
 	{
 	}
 
-	// @005a05d0 ?insertItems@Workspace
 	void Workspace::insertItems(XmlElement* root, std::vector<boost::shared_ptr<Instance>>& instances, InsertMode insertMode, PromptMode promptMode)
 	{
 		SerializerV2 serializer;
@@ -359,44 +322,18 @@ namespace RBX
 			insertInstances(instances, this, insertMode, promptMode);
 	}
 
-	// @005a0660 ?render2d@Workspace
 	void Workspace::render2d(Adorn* adorn)
 	{
 		getCurrentMouseCommand()->render2d(adorn);
 		render2dItems(adorn);
 	}
 }
-// template rows emitted in this unit (address hints for the probe):
-// @005a1530 ?raise@?$Notifier@VWorkspace@RBX@@VToolChanged@2@@RBX@@IBEXVToolChanged@2@@Z
-// @005a16b0 ??$findFirstChildOfType@VPartInstance@RBX@@@Instance@RBX@@QBEPAVPartInstance@1@XZ
-// @005a1750 ??$findFirstChildOfType@VModelInstance@RBX@@@Instance@RBX@@QBEPAVModelInstance@1@XZ
-// @005a1910 ??$wrapper@$00@RBX
-// @005a1950 ??$wrapper@$0A@@RBX
-// @005a2290 ??$wrapper2@$00@RBX
-// @005a2330 ??$wrapper2@$0A@@RBX
-// @005a4280 ??0?$DescribedNonCreatable@VWorkspace@RBX
-// @005a3b70 ?classDescriptor@?$Described@VWorkspace@RBX
-// @005a07b0 ??0?$NonFactoryProduct@VRootInstance@RBX
-// @005a17f0 ?getClassName@?$NonFactoryProduct@VRootInstance@RBX
 
 #include "v8datamodel/DataModel.h"
-#include "StandardVerbs.h"
-
-namespace RBX {
-char sArrowTool[] = "Arrow";
-template<> MouseCommand* TToolVerb<ArrowTool, RunStateVerb>::newMouseCommand()
-{
-    return new ArrowTool(dataModel->getWorkspace());
-}
-template<> const Name& Named<ArrowToolBase, sArrowTool>::getName() const
-{
-    return NativeToolName<ArrowTool>::get();
-}
-}
-
 #include "tool/MegaDragger.h"
 #include "tool/AxisMoveTool.h"
 #include "tool/AxisMoveGrid.h"
+#include "StandardVerbs.h"
 
 namespace RBX {
 char sAxisMoveTool[] = "AxisMove";
@@ -405,6 +342,20 @@ template<> MouseCommand* TToolVerb<AxisMoveTool, RunStateVerb>::newMouseCommand(
     return new AxisMoveTool(dataModel->getWorkspace());
 }
 template<> const Name& Named<ArrowToolBase, sAxisMoveTool>::getName() const { return NativeToolName<AxisMoveTool>::get(); }
+}
+
+#include "tool/ModelTools.h"
+
+namespace RBX {
+template<> MouseCommand* TToolVerb<AnchorTool, RunStateVerb>::newMouseCommand()
+{
+    return new AnchorTool(dataModel->getWorkspace());
+}
+
+template<> MouseCommand* TToolVerb<LockTool, RunStateVerb>::newMouseCommand()
+{
+    return new LockTool(dataModel->getWorkspace());
+}
 }
 
 #include "v8datamodel/ToolsPart.h"

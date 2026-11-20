@@ -1,7 +1,67 @@
-// 2008-06 native RBX::ChatOutput unit (inactive): 0064fb60..00651000.
-// Layout and addresses in native-headers/gui/ChatOutput.h; verified by tests/record_native_hud.py.
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "gui/ChatOutput.h"
+#include "v8datamodel/SafeChat.h"
+#include <boost/tokenizer.hpp>
+#include <boost/algorithm/string/case_conv.hpp>
+#include <algorithm>
+
+namespace RBX
+{
+	void ChatOutput::render2d(Adorn* adorn)
+	{
+		Rect rect = getMyRect();
+		G3D::Vector2 position = rect.low;
+		position.y -= fifo.size() * 12;
+
+		for (size_t i = 0; i < fifo.size(); ++i)
+		{
+			std::string user = fifo[i]->user + "; ";
+			G3D::Vector2 userSize = adorn->get2DStringBounds(user, 12, Adorn::PROPORTIONAL_SPACING);
+			G3D::Vector2 messageSize = adorn->get2DStringBounds(fifo[i]->message, 12, Adorn::PROPORTIONAL_SPACING);
+			float width = std::max(userSize.x + 4.0f, 20.0f);
+			float lineWidth = width + messageSize.x;
+
+			G3D::Vector2 low(position.x - 2.0f, position.y + 1.0f);
+			G3D::Vector2 high(position.x + lineWidth + 2.0f, position.y + userSize.y - 1.0f);
+			Rect backdrop(low, high);
+			adorn->rect2d(backdrop.toRect2D(), GuiItem::translucentBackdrop());
+
+			G3D::Color3 messageColor = G3D::Color3::white();
+			if (fifo[i]->profane)
+				messageColor = G3D::Color3::red();
+
+			adorn->drawFont2D(user, position, 12, G3D::Color4(fifo[i]->userColor, 1.0f), G3D::Color4::clear(),
+							  Adorn::XALIGN_LEFT, Adorn::YALIGN_TOP, Adorn::PROPORTIONAL_SPACING);
+			adorn->drawFont2D(fifo[i]->message, G3D::Vector2(position.x + width, position.y), 12,
+							  G3D::Color4(messageColor, 1.0f), G3D::Color4::clear(), Adorn::XALIGN_LEFT, Adorn::YALIGN_TOP,
+							  Adorn::PROPORTIONAL_SPACING);
+
+			position.y += 14.0f;
+		}
+	}
+
+	bool ChatOutput::ParseCommand(Network::ChatMessage chat)
+	{
+		std::vector<std::string> parts;
+		boost::char_separator<char> separator(" -_/,");
+		boost::tokenizer<boost::char_separator<char> > tokens(chat.message, separator);
+		for (boost::tokenizer<boost::char_separator<char> >::iterator it = tokens.begin(); it != tokens.end(); ++it)
+			parts.push_back(*it);
+
+		if (parts.size() == 0)
+			return false;
+
+		boost::algorithm::to_lower(parts[0]);
+		if (parts[0] == "sc")
+		{
+			std::string message = SafeChat::singleton().getMessage(parts);
+			ChatLine* line = new ChatLine(chat.source.get(), message, time + 60.0f);
+			fifo.push_back(line);
+			return true;
+		}
+
+		return false;
+	}
+}
 
 namespace RBX
 {
@@ -53,7 +113,6 @@ namespace RBX
 	}
 }
 
-// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class std::_Container_base_aux_alloc_real<std::allocator<RBX::ChatLine *> >;
 template class std::_Deque_const_iterator<RBX::ChatLine *,std::allocator<RBX::ChatLine *>,1>;
 template class std::_Deque_iterator<RBX::ChatLine *,std::allocator<RBX::ChatLine *>,1>;
@@ -68,6 +127,7 @@ template class std::vector<RBX::Listener<RBX::Network::Players,RBX::Network::Cha
 #include "v8datamodel/Teams.h"
 #include "v8datamodel/Team.h"
 #include "util/Color.h"
+
 namespace RBX {
 unsigned int stringHash(const std::string&);
 }

@@ -8,6 +8,25 @@
 
 namespace RBX
 {
+	MegaDragger::MegaDragger(PartInstance* mousePartPtr, const std::vector<PVInstance*>& pvInstances, RootInstance* rootInstance)
+		: mousePart(shared_from(mousePartPtr)),
+		  dragParts(),
+		  joined(true),
+		  rootInstance(rootInstance),
+		  contactManager(rootInstance->getWorld()->getContactManager())
+	{
+		DragUtilities::pvsToParts(pvInstances, dragParts);
+	}
+
+	MegaDragger::MegaDragger(PartInstance* mousePartPtr, const std::vector<boost::weak_ptr<PartInstance> >& partArray, RootInstance* rootInstance)
+		: mousePart(shared_from(mousePartPtr)),
+		  dragParts(partArray),
+		  joined(true),
+		  rootInstance(rootInstance),
+		  contactManager(rootInstance->getWorld()->getContactManager())
+	{
+	}
+
 	void MegaDragger::startDragging()
 	{
 		DragUtilities::unJoinAndSetDragging(dragParts);
