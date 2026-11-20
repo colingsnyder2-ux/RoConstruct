@@ -99,14 +99,13 @@ void CRobloxReportView::setDataModel(boost::shared_ptr<RBX::DataModel> dataModel
 
 // Original 00456250 (183 B, registry placeholder; vtable of the ChildRemoved listener base, slot 2). Byte-identical
 // (relocs masked) once util/MarshaledListener.h compiles (measured against a scratch copy without its stray '}').
-// The record's item (+0xa8) is private to CStatsItemRecord, hence the raw read; an inline const accessor
-// `getItem()` in CStatsItemRecord (proposal for the CRobloxReportView.h owner) keeps this byte-identical too.
+// The record's item (+0xa8) is read through the inline const accessor CStatsItemRecord::getItem().
 // (The ChildAdded handler 004582f0 is in CRobloxReportViewChildAdded.cpp.)
 void CRobloxReportView::onMarshaledEvent(const RBX::Instance* source, RBX::ChildRemoved event)
 {
     CXTPReportRecords* records = GetReportCtrl().GetRecords();
     for (int i = records->GetCount() - 1; i >= 0; --i) {
-        RBX::Instance* recordValue = *(RBX::Instance* const*)((char*)records->GetAt(i) + 0xa8);
+        RBX::Instance* recordValue = static_cast<CStatsItemRecord*>(records->GetAt(i))->getItem();
         if (recordValue == event.child.get()) {
             records->RemoveAt(i);
             break;
@@ -114,15 +113,10 @@ void CRobloxReportView::onMarshaledEvent(const RBX::Instance* source, RBX::Child
     }
 }
 
-#ifdef NATIVE_CROBLOXREPORTVIEW_LOGRECORDS_PENDING
-// PENDING: updateStats calls the record dump 00456820, a CRobloxReportView member (thiscall, ret 8) that the
-// read-only native-headers/CRobloxReportView.h does not declare. Proposal for its owner, inside CRobloxReportView:
-//     void logRecords(CXTPReportRecords* records, CString indent); // 00456820, INFERRED name
-// Both bodies below were measured against a scratch header copy with that declaration and the
-// util/MarshaledListener.h stray-brace fix: updateStats byte-identical (relocs masked); logRecords 1038 = 1038 B,
-// identical except the self-recursive call, which the comparison shows as the target's direct call against this
-// object's relocation. The mfc-noinline-pcxstr include (CString conversions through mfc90 #910, as in the target)
-// keeps every other body of this unit identical.
+// updateStats 00456c30 and logRecords 00456820 (declared in CRobloxReportView.h since batch 30). Measured in
+// batch 29 against a scratch header with that declaration and the util/MarshaledListener.h stray-brace fix:
+// updateStats byte-identical (relocs masked); logRecords 1038 = 1038 B. The mfc-noinline-pcxstr include (CString
+// conversions through mfc90 #910, as in the target) keeps every other body of this unit identical.
 
 // File-local helpers of the original unit, defined in other native units for now: the timestamp formatter 00456120
 // (CRobloxReportViewTime.cpp) and the wall-clock seconds 00455d70 (WF_range_00455d70_00455d70_00455d70.cpp).
@@ -192,7 +186,6 @@ void CRobloxReportView::logRecords(CXTPReportRecords* records, CString indent)
         }
     }
 }
-#endif
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class std::_Container_base_aux_alloc_real<std::allocator<RBX::MarshaledListener<RBX::Instance,RBX::ChildAdded,RBX::Instance,RBX::ChildAdded>::EventData *> >;

@@ -47,27 +47,21 @@ void CRobloxReportView::CStatsItemRecord::onMarshaledEvent(const RBX::Instance*,
 // Original 00457f30 (181 B, vtable 00818a48 slot 2, this = the ChildRemoved listener base at +0x78): removes the
 // child record whose item (+0xa8) is the removed instance, scanning GetChilds() (006d8180) from the end
 // (GetCount 006da050, GetAt 006d7920, RemoveAt 006d7cd0).
-// Open (182 vs 181 B): this build reads the item as `add eax,0xa8; mov eax,[eax]`, the target as `mov eax,[eax+0xa8]`.
-// Rejected: `item == event.child` (shared_ptr operator==), a const CStatsItemRecord* cast. Byte-identical with an
-// inline const accessor `RBX::Stats::Item* getItem() const { return item.get(); }` in CStatsItemRecord (measured
-// against a scratch header copy; proposal for the CRobloxReportView.h owner, which also lets 00456250 drop its
-// char* + 0xa8 read).
+// The item is read through the inline const accessor getItem() (CRobloxReportView.h): a direct `item.get()` gave
+// `add eax,0xa8; mov eax,[eax]` (182 B) where the target has `mov eax,[eax+0xa8]` (181 B). Rejected earlier:
+// `item == event.child` (shared_ptr operator==), a const CStatsItemRecord* cast.
 void CRobloxReportView::CStatsItemRecord::onMarshaledEvent(const RBX::Instance*, RBX::ChildRemoved event)
 {
     for (int i = GetChilds()->GetCount() - 1; i >= 0; --i) {
-        if (static_cast<CStatsItemRecord*>(GetChilds()->GetAt(i))->item.get() == event.child.get()) {
+        if (static_cast<CStatsItemRecord*>(GetChilds()->GetAt(i))->getItem() == event.child.get()) {
             GetChilds()->RemoveAt(i);
             break;
         }
     }
 }
 
-#ifdef NATIVE_CROBLOXREPORTVIEW_RECORD_DECLS_PENDING
-// PENDING: these two bodies need declarations the read-only native-headers/CRobloxReportView.h does not have yet
-// (proposal for its owner: `virtual ~CStatsItemRecord();` in CStatsItemRecord and
-// `virtual CString GetCaption(CXTPReportColumn* column);` in CNameItem). Measured byte-identical (relocs masked)
-// against a scratch copy of the header carrying those declarations; the unit also needs the util/MarshaledListener.h
-// stray-brace fix to compile at all.
+// The two bodies below use the declarations added to CRobloxReportView.h in batch 30 (~CStatsItemRecord,
+// CNameItem::GetCaption). This unit compiles only once util/MarshaledListener.h loses its stray '}'.
 
 // Original 00457ff0 (347 B): CStatsItemRecord destructor. Vptr stores 00818a74 / 00818a5c (+0x54) / 00818a48
 // (+0x78), then under a DataModel::Lock of the MutexRef base (+0x9c) disconnects both listener bases from the item
@@ -88,4 +82,3 @@ CString CRobloxReportView::CStatsItemRecord::CNameItem::GetCaption(CXTPReportCol
     RBX::DataModel::Lock lock(dataModel);
     return CString(item->getName().c_str());
 }
-#endif
