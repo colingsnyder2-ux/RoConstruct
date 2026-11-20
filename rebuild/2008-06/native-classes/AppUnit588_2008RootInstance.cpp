@@ -1,4 +1,7 @@
-// native-flags: document-swap profile, VS2008 RTM 21022, /fp:fast /U_RELEASEASSERT (tests/record_native_app_unit588_2008.py)
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /DNOMINMAX /fp:fast /U_RELEASEASSERT
+// Flags: document-swap profile (work/2008-06/shared-layouts/document-swap-current.json), VS2008 RTM 21022, /fp:fast
+// /U_RELEASEASSERT, as tests/record_native_app_unit588_2008.py builds it. The earlier flags line spelled the profile as
+// words, so prove.py compiled this unit with no /O2 (batch 26: 47 -> 131 exact with the explicit flags; 32 /Od-only Wml/STL COMDAT matches lost).
 // 2008-06 RBX::RootInstance unit 00590030..005917bb (inactive), against the committed native
 // v8datamodel/RootInstance.h (read-only). Bodies follow the donor tools/rbxgs RootInstance.cpp; every spelling below
 // that differs from the donor is read from the 2008-06 bytes:
@@ -281,6 +284,96 @@ namespace RBX
 			}
 		}
 	}
+}
+// 005911d0 RootInstance::insertInstances (825 bytes, ret 0x10). PENDING: the Decal branch calls the Workspace member
+// 005a3d40 (thiscall, Decal*; Selection::setSelection 00567770 on the decal, then setMouseCommand 005a1fc0 with a new
+// 0x50-byte command 005a19f0(workspace, decal)), which v8datamodel/Workspace.h (leased to another worker) does not
+// declare. INFERRED name startDecalDrag (later Roblox Workspace::startDecalDrag(Decal*, InsertMode)); proposal in the
+// batch 26 dm05 result. Trial evidence (batch 26): this body with a reloc-masked stand-in for that one call compiles
+// to 825 bytes IDENTICAL to 005911d0. Enable (drop the guard) once Workspace.h declares
+// `void startDecalDrag(Decal* decal); // 005a3d40`.
+#if 0
+#include "v8datamodel/Decal.h"
+#include "v8datamodel/Workspace.h"
+namespace RBX
+{
+	void recordCameraHistory(const char* name, const Instance* context); // 0058c5c0 (CSelectionTreeCtrl.cpp pattern)
+
+	void RootInstance::insertInstances(const std::vector<boost::shared_ptr<Instance> >& instances, Instance* requestedParent, InsertMode insertMode, PromptMode promptMode)
+	{
+		if (requestedParent && !this->contains(requestedParent))
+		{
+			std::for_each(instances.begin(), instances.end(), boost::bind(&Instance::setParent, _1, requestedParent));
+			return;
+		}
+
+		std::vector<boost::shared_ptr<Instance> > remaining;
+		for (size_t i = 0; i < instances.size(); ++i)
+		{
+			Instance* instance = instances[i].get();
+			if (Sky* sky = dynamic_cast<Sky*>(instance))
+			{
+				Lighting* lighting = ServiceProvider::create<Lighting>(this);
+				lighting->replaceSky(sky);
+			}
+			else if (dynamic_cast<Team*>(instance))
+			{
+				instance->setParent(ServiceProvider::create<Teams>(this));
+			}
+			else if (HopperBin* hopperBin = dynamic_cast<HopperBin*>(instance))
+			{
+				if (Network::Player* player = Network::Players::findLocalPlayer(this))
+					hopperBin->setParent(player->getPlayerBackpack());
+				else
+					hopperBin->setParent(ServiceProvider::create<StarterPackService>(this));
+			}
+			else if (SpawnLocation* spawnLocation = dynamic_cast<SpawnLocation*>(instance))
+			{
+				insertSpawnLocation(spawnLocation);
+				remaining.push_back(instances[i]);
+			}
+			else if (Decal* decal = dynamic_cast<Decal*>(instance))
+			{
+				if (insertMode == INSERT_TO_3D_VIEW)
+				{
+					if (Workspace* workspace = ServiceProvider::find<Workspace>(this)) // 00491e50
+						workspace->startDecalDrag(decal);                             // 005a3d40
+					return;
+				}
+			}
+			else
+			{
+				remaining.push_back(instances[i]);
+			}
+		}
+
+		if (!remaining.empty())
+		{
+			if (!requestedParent)
+				requestedParent = this;
+
+			switch (insertMode)
+			{
+			case INSERT_RAW:
+				{
+					std::vector<boost::weak_ptr<PartInstance> > partArray;
+					insertRaw(remaining, requestedParent, partArray);
+				}
+				break;
+			case INSERT_TO_TREE:
+				insertToTree(remaining, requestedParent);
+				break;
+			case INSERT_TO_3D_VIEW:
+				insert3dView(remaining, promptMode);
+				break;
+			}
+			recordCameraHistory("Insert", this);
+		}
+	}
+}
+#endif
+namespace RBX
+{
 	ControllerTypeArray RootInstance::computeControllersUsed() const
 	{
 		ControllerTypeArray array;
