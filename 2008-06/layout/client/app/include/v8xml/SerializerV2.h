@@ -18,8 +18,6 @@ namespace RBX
 
 	class MergeBinder : public IReferenceBinder
 	{
-	public:
-		__declspec(noinline) MergeBinder();
 	private:
 		struct IDREFItem
 		{
@@ -41,13 +39,14 @@ namespace RBX
 			bool success = processIDREF(valueIDREF, propertyOwner, idref);
 			RBXASSERT(success);
 		}
-		__declspec(noinline) virtual bool resolveRefs()
+		virtual bool resolveRefs()
 		{
 			for (std::vector<IDREFItem>::iterator iter = deferredIDREFItems.begin(); iter != deferredIDREFItems.end(); iter++)
 			{
 				const IIDREF*& idref = iter->idref;
-				InstanceHandle& value = iter->value;
 				Reflection::DescribedBase*& propertyOwner = iter->propertyOwner;
+				InstanceHandle& value = iter->value;
+
 				idref->assignIDREF(propertyOwner, value);
 			}
 
@@ -119,7 +118,7 @@ public:
 	virtual bool processID(const XmlNameValuePair* valueID, RBX::Instance* source);
 	virtual bool processIDREF(const XmlNameValuePair* valueIDREF, RBX::Reflection::DescribedBase* propertyOwner, const RBX::IIDREF* idref);
 	bool resolveIDREF(IDREFBinding binding);
-	__declspec(noinline) virtual bool resolveRefs();
+	virtual bool resolveRefs();
 };
 
 class SerializerV2
@@ -130,8 +129,8 @@ public:
 	static const int CURRENT_SCHEMA_VERSION;
   
 public:
-	void loadInstances(XmlElement*, std::vector<boost::shared_ptr<RBX::Instance>>&);
-	void load(std::istream&, RBX::DataModel*);
+	void loadInstances(XmlElement* root, std::vector<boost::shared_ptr<RBX::Instance>>& result);
+	void load(std::istream& stream, RBX::DataModel* dataModel);
 	void loadXML(std::istream& stream, RBX::DataModel* dataModel);
 	void merge(const XmlElement*, RBX::DataModel*);
   

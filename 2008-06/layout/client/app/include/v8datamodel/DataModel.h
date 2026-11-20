@@ -66,6 +66,8 @@ public:
     void clearContents();
     // INFERRED: 00579c10 authentic save(ContentId) declaration and call shape.
     void save(ContentId contentId);
+    // INFERRED: 00579c10 passes this ? getContentProvider() : 0 as the first argument of the
+    ContentProvider* getContentProvider();
     void initializeContents(bool);
     boost::shared_ptr<boost::recursive_mutex> getMutex() const;
     static boost::shared_ptr<boost::recursive_mutex> getMutex(Instance*);

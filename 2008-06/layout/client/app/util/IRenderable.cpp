@@ -1,7 +1,11 @@
 #include "v8world/SpatialHash.h"
 
+// Original 0047d410 is a single ret instruction.
 void RBX::SpatialHash::doStats() const {}
 
+// 2008-06 native RBX::IRenderable / IRenderableBucket rows of the util/IRenderable.cpp unit 005dd2c0..005dd54f inside
+// the application range 005dc000..005e8000 (inactive). Declarations: the native util/IRenderable.h (read-only).
+// Verified by tests/record_native_app_unit5dc_2008.py.
 #undef _RELEASEASSERT
 #include "util/IRenderable.h"
 #include "util/Debug.h"
@@ -82,4 +86,25 @@ namespace RBX
 		if (bucket)
 			bucket->recomputeShouldRender(this);
 	}
+}
+
+// 2008-06 native RBX::IRenderable / RBX::IRenderableBucket (inactive): unit 005dd2c0..005dd54f.
+// 2007 PDB: client/app/util/irenderable.cpp.
+#undef _RELEASEASSERT
+
+namespace RBX 
+{
+	IRenderable::~IRenderable()
+	{
+		RBXASSERT(index2d == -1);
+		RBXASSERT(index3d == -1);
+		RBXASSERT(bucket == NULL);
+	}
+
+
+
+
+
+
+
 }

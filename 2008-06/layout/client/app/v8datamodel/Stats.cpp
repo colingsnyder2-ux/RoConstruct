@@ -1,7 +1,9 @@
 #include "stats/Stats.h"
 #include "util/Log.h"
+#include "util/Profiling.h"
 #include <G3D/format.h>
 #include <stdarg.h>
+#include <stdio.h>
 
 extern const char sProfilingItem[];
 
@@ -15,9 +17,15 @@ public:
 	{
 	}
 
-#ifdef NATIVE_STATS_PENDING
-	RBX::Reflection::Tuple getTimes(double window); // 005c9440 (GetTimes; body not recovered)
-#endif
+	RBX::Reflection::Tuple getTimes(double window)
+	{
+		RBX::Profiling::Bucket data = profiler.getData(window);
+		RBX::Reflection::Tuple result(3);
+		result.values[0] = data.getTotalTime();
+		result.values[1] = data.sampleTimeSpan;
+		result.values[2] = data.frames;
+		return result;
+	}
 
 protected:
 	virtual void update(); // 005c9fe0
@@ -54,9 +62,7 @@ namespace RBX
 	{
 		static Reflection::BoundFuncDesc<Item, std::string(), 0> func_GetValueString(&Item::getStringValue2, "GetValueString", Reflection::FunctionDescriptor::AnyCaller);
 		static Reflection::BoundFuncDesc<Item, double(), 0> func_GetValue(&Item::getValue, "GetValue", Reflection::FunctionDescriptor::AnyCaller);
-#ifdef NATIVE_STATS_PENDING
 		static Reflection::BoundFuncDesc<ProfilingItem, Reflection::Tuple(double), 1> func_GetTimes(&ProfilingItem::getTimes, "GetTimes", "window", 0.0, Reflection::FunctionDescriptor::AnyCaller);
-#endif
 
 		double Item::getValue()
 		{
@@ -135,6 +141,14 @@ namespace RBX
 			return item.get();
 		}
 
+		Item* Item::createBoundChildItem(const Profiling::Profiler& profiler)
+		{
+			boost::shared_ptr<Item> item = Creatable<Instance>::create<ProfilingItem, const Profiling::Profiler&>(profiler);
+			item->setName(profiler.name.c_str());
+			item->setParent(this);
+			return item.get();
+		}
+
 		TypedMemItem::TypedMemItem(const size_t* value)
 			: TypedStatsItem<size_t>(value)
 		{
@@ -159,6 +173,37 @@ namespace RBX
 		{
 			return NULL;
 		}
+	}
+}
+
+namespace RBX
+{
+	// INFERRED: process-wide profiling window, double at 0094f640 (.data, initial 3.0); no header declares it (the same
+	extern double profilerWindow;
+}
+
+void ProfilingItem::update()
+{
+	RBX::Profiling::Bucket data = profiler.getData(RBX::profilerWindow);
+	if (data.sampleTimeSpan > 0)
+	{
+		val = data.wallTimeSpan / data.sampleTimeSpan;
+		__declspec(align(64)) char buffer[256]; // INFERRED: size; the frame keeps it 64-byte aligned
+		if (dynamic_cast<const RBX::Profiling::CountProfiler*>(&profiler))
+			sprintf(buffer, "%.3g/s", val);
+		else if (data.frames > 0)
+		{
+			std::string frameTime = RBX::Log::formatTime(data.getFrameTime());
+			sprintf(buffer, "%s, %.3gfps (%.3g%%)", frameTime.c_str(), data.getNominalFPS(), 100 * val);
+		}
+		else
+			sprintf(buffer, "%.3g%%", 100 * val);
+		sValue = buffer;
+	}
+	else
+	{
+		val = 0;
+		sValue = "?";
 	}
 }
 

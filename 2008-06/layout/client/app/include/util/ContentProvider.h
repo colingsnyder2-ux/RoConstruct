@@ -74,8 +74,7 @@ namespace RBX
 		static ContentId fromUrl(const std::string&);
 		static ContentId fromFile(const std::string&);
 		static ContentId fromAssets(const std::string& filePath);
-        static ContentId fromAssets(const char* filePath);
-		static ContentId fromMD5Hash(const std::string&);
+		static ContentId fromAssets(const char* filePath); // 2008 overload used by RBX::Sky::Sky (0055bd80)		static ContentId fromMD5Hash(const std::string&);
 	};
 
 	class Instance;
@@ -131,7 +130,7 @@ namespace RBX
 		boost::shared_ptr<const std::string> requestContentString(ContentId id);
 		bool requestContentFile(ContentId id, std::string& filename);
 		boost::shared_ptr<const std::string> getContentString(ContentId);
-		std::auto_ptr<std::istream> getContent(ContentId);
+		std::auto_ptr<std::istream> getContent(ContentId ticket);
 		std::string getFile(ContentId ticket);
 		std::string getAssetFile(const std::string& filePath);
 		void setAssetFolder(const char* sPath);

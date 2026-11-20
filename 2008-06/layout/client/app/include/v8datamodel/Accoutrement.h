@@ -108,5 +108,7 @@ namespace RBX
 	{
 	public:
 		Hat();
+		// INFERRED: 00575890 case '=' calls this with the ModelInstance* returned by
+		static void dropAll(ModelInstance*);
 	};
 }

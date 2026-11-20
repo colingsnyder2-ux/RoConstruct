@@ -88,12 +88,14 @@ namespace RBX
 		double unknown0x1c8, unknown0x1d0, unknown0x1d8, unknown0x1e0;
 		G3D::Stopwatch stopwatch;
 		boost::mutex runMutex;
-		bool stopRequested;
-		boost::condition runViewsDoneCondition;
-		boost::condition stateChangedCondition;
+		bool stopRequested;                                      // +0x248
+		boost::condition runViewsDoneCondition;                  // +0x24c
+		boost::condition stateChangedCondition;                  // +0x264
+		// INFERRED: workspace pointer at +0x27c accessed by RunService::stop (00554460)
+		class Workspace* workspace;                              // +0x27c
+		boost::mutex viewMutex;                                  // +0x280
+		std::map<IRunView*, bool> views;                         // +0x288
 		boost::scoped_ptr<boost::thread> runThread;
-		boost::mutex viewMutex;
-		std::map<IRunView*, bool> views;
 		int invalidRunViewCount;
 		boost::mutex unknownMutex0x2ac;
 		// Original enqueue and drain paths store zero-argument callables; return type remains inferred.
@@ -109,6 +111,7 @@ namespace RBX
 		void setRunState(RunState newState);
 		void enqueueTask(boost::function<void()> task); // 00555900; name provisional.
 		void drainTasks(); // 005559a0; name provisional.
+		void stop(); // 00554460
 
 		void run()
 		{
@@ -135,6 +138,10 @@ namespace RBX
 		double gameTime() const { return unknown0x1b8; }
 		double frameRate() const { return stopwatch.smoothFPS(); }
 		double dutyCycle() const { return (unknown0x1d8 + unknown0x1d0 + unknown0x1c8) * (1.0 / framePeriod); }
+		// INFERRED: 005a0090/005a00b0/005a00d0 are the RunService CPU-percent callbacks bound by the
+		double getPhysicsCpuPercent() const; // 005a0090
+		double getRenderCpuPercent() const;  // 005a00b0
+		double getUiCpuPercent() const;      // 005a00d0
 		bool isEditState() const;
 		bool isRunState() const;
 		bool isPauseState() const;
@@ -145,6 +152,8 @@ namespace RBX
 		void invalidateRunViews();
 		void runViewValid(IRunView*);
 		virtual void onAncestorChanged(const AncestorChanged& event);
+		// INFERRED: name is a placeholder (identity tier). Body byte-proved: unconditionally set stopRequested
+		void requestStop();                       // 00554330
 	private:
 		void runProc(boost::shared_ptr<DataModel> dataModel);
 	public:

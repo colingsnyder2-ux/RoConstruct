@@ -33,12 +33,14 @@ namespace RBX
 
 	bool ICharacterSubject::zoom(const float in, G3D::CoordinateFrame& cameraGoal, G3D::CoordinateFrame& cameraFocus)
 	{
-		G3D::Vector3 focusToGoal = cameraGoal.translation - cameraFocus.translation;
+		G3D::CoordinateFrame goal = wasOccluded ? goalFromDistance(cameraFocus, cameraGoal, unoccludedDistance) : cameraGoal;
+
+		G3D::Vector3 focusToGoal = goal.translation - cameraFocus.translation;
 
 		float currentDistance = focusToGoal.magnitude();
-		float newDistance = Camera::getNewZoomDistance(currentDistance, in);
-
-		newDistance = G3D::min(400.0f, newDistance);
+		float zoomDistance = Camera::getNewZoomDistance(currentDistance, in);
+		// The clamped distance lives in the 400.0f temporary's slot (a separate variable from the unclamped one).
+		float newDistance = G3D::min(400.0f, zoomDistance);
 
 		if (newDistance == currentDistance)
 			return false;
@@ -47,7 +49,12 @@ namespace RBX
 		focusToGoal.unitize();
 		focusToGoal.y = newDistance * 0.03f;
 
-		cameraGoal.translation = focusToGoal.direction() * newDistance + cameraFocus.translation;
+		goal.translation = focusToGoal.direction() * newDistance + cameraFocus.translation;
+
+		if (wasOccluded)
+			unoccludedDistance = (goal.translation - cameraFocus.translation).magnitude();
+		else
+			cameraGoal = goal;
 
 		return true;
 	}
@@ -131,8 +138,7 @@ namespace RBX
 		{
 			G3D::Vector3 oldFocus = cameraFocus.translation;
 			cameraFocus = getLocation();
-			G3D::Vector3 focusMoved = cameraFocus.translation - oldFocus;
-			cameraGoal.translation += focusMoved;
+			cameraGoal.translation += cameraFocus.translation - oldFocus;
 		}
 		else
 		{
@@ -143,7 +149,8 @@ namespace RBX
 
 			G3D::Vector3 focusDelta = cameraFocus.translation - focusERA.getAverage() - movement;
 			focusDelta.y = 0.0f;
-			G3D::Vector3 focusOffset = focusOffsetERA.pushAndGetAverage(focusDelta);
+			G3D::Vector3 focusOffset; // assigned, not initialised: the target copies the returned average into its own slot
+			focusOffset = focusOffsetERA.pushAndGetAverage(focusDelta);
 			focusERA.pushAndGetAverage(cameraFocus.translation);
 
 			float rotation = getIntendedRotationAboutYAxis(); // INFERRED: result unused by the target
@@ -157,8 +164,8 @@ namespace RBX
 			cameraGoal.translation += focusOffset;
 
 			distance = offset.xz().length();
-			G3D::Vector2 direction = (cameraFocus.translation.xz() - cameraGoal.translation.xz()).direction();
-			cameraGoal.translation = cameraFocus.translation - G3D::Vector3(direction.x * distance, offset.y, direction.y * distance);
+			G3D::Vector2 direction = (cameraFocus.translation.xz() - cameraGoal.translation.xz()).direction() * distance;
+			cameraGoal.translation = cameraFocus.translation - G3D::Vector3(direction.x, offset.y, direction.y);
 
 			goalInFocus = focusSpace.pointToObjectSpace(cameraGoal.translation);
 			hasGoalInFocus = true;

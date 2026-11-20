@@ -102,7 +102,7 @@ namespace RBX
 			Players();                                                                // 0049bdc0
 			virtual ~Players();                                                       // 00499630
 		public:
-			bool superSafeOn() const;                                                 // donor declaration; 2008 body not located
+			bool superSafeOn() const;                                                 // 00497600 (body: native-classes/PlayersSuperSafe.cpp)
 			boost::shared_ptr<Instance> createLocalPlayer(int userId);                // 0049d480
 			Player* getLocalPlayer() const                                            // 0048a660 (ICF)
 			{

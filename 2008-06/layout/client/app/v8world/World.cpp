@@ -43,7 +43,7 @@ namespace RBX
 	}
 }
 
-#include "v8world/SpatialHash.h"
+#include "v8world/SpatialHash2008.h"
 #include "v8world/Assembly.h"
 namespace RBX
 {
@@ -57,6 +57,7 @@ namespace RBX
 		return contactManager->getSpatialHash().getMaxBucket();
 	}
 
+#if 0
 	void World::onAssemblyExtentsChanged(RBX::Assembly * a)
 	{
 		Assembly::PrimIterator endIt = Assembly::PrimIterator::end(a);
@@ -66,6 +67,7 @@ namespace RBX
 			contactManager->onPrimitiveExtentsChanged(*beginIt);
 		}
 	}
+#endif
 
 	void World::createJoints(Primitive *p)
 	{

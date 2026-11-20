@@ -30,4 +30,21 @@ namespace RBX
 			rayInPartCoords.origin, rayInPartCoords.direction,
 			G3D::Capsule(G3D::Vector3::ZERO3, p0, radius), hitPointInPartCoords) != G3D::inf();
 	}
+
+	bool HitTest::hitTest(const Part& part, G3D::Ray& rayInPartCoords, G3D::Vector3& hitPointInPartCoords, float gridToReal)
+	{
+		switch (part.type)
+		{
+			case Part::BALL_PART:
+				return hitTestBall(part, rayInPartCoords, hitPointInPartCoords, gridToReal);
+
+			case Part::BLOCK_PART:
+				return hitTestBox(part, rayInPartCoords, hitPointInPartCoords, gridToReal);
+
+			case Part::CYLINDER_PART:
+				return hitTestCylinder(part, rayInPartCoords, hitPointInPartCoords, gridToReal);
+		}
+
+		return false;
+	}
 }

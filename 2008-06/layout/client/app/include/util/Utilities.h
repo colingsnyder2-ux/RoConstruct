@@ -34,12 +34,31 @@ namespace RBX
 		{
 			return object.get();
 		}
-		__declspec(noinline) boost::shared_ptr<const T> read() const
+		boost::shared_ptr<const T> read() const
 		{
 			return object;
 		}
-		boost::shared_ptr<T>& write();
-		void reset();
+		boost::shared_ptr<T>& write()
+		{
+			if (!object)
+			{
+				object = boost::shared_ptr<T>(new T());
+				return object;
+			}
+			else if (object.use_count() <= 1)
+			{
+				return object;
+			}
+			else
+			{
+				object = boost::shared_ptr<T>(new T(*object));
+				return object;
+			}
+		}
+		void reset()
+		{
+			object.reset();
+		}
 	};
 
 	template<typename T>

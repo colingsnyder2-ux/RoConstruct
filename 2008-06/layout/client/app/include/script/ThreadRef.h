@@ -151,7 +151,7 @@ namespace RBX
         public:
             FunctionRef(const FunctionRef& other);
             FunctionRef(lua_State* thread, int functionIndex);
-            FunctionRef() : functionId(0) {} // INFERRED: original (openrbx donor) defines this inline
+            FunctionRef();
             ~FunctionRef();
 
         public:

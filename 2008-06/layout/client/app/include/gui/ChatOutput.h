@@ -36,11 +36,11 @@ namespace RBX
 	private:
 		void removeOldest();                                         // 0064fd70
 		bool frontIsOld();                                           // inlined into onEvent 0064fe10 (the loop condition; donor: void)
-		bool ParseCommand(Network::ChatMessage);                     // 00650660 (not attempted)
+		bool ParseCommand(Network::ChatMessage);                     // 00650660 (ChatOutputCommands.cpp)
 		virtual void onServiceProvider(const ServiceProvider*, const ServiceProvider*);  // slot 12, 00650c00
 		virtual void onEvent(const Network::Players*, Network::ChatMessage);            // 00650cc0 (not attempted)
 		virtual void onEvent(const RunService*, Heartbeat);          // 0064fe10
-		virtual void render2d(Adorn*);                               // slot 24, 0064fe90 (not attempted)
+		virtual void render2d(Adorn*);                               // slot 24, 0064fe90 (ChatOutputCommands.cpp)
 	public:
 		ChatOutput();                                                // 0064fb60
 		virtual ~ChatOutput();                                       // 00650440

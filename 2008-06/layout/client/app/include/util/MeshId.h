@@ -1,6 +1,6 @@
 #pragma once
 
-#include "slingshot-load/util/ContentProvider.h"
+#include "util/ContentProvider.h"
 
 namespace RBX
 {
