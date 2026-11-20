@@ -9,12 +9,10 @@
 //
 // Workspace.h now declares verifyCamera() (005a5710, analog name), `int unknown0x3cc` and the three-argument
 // WorkspaceStatsItem ctor (batch 26), so setImageServerView 005a5890, render3dAdorn 005a59e0 and the helpers DrawAdorn
-// 005a0690 / for_each 005a1890 compile here. Still guarded, each on header proposals for files this unit does not own:
-//   NATIVE_WORKSPACE_MOUSECOMMAND_PENDING (process 005a20e0, onEvent 005a3470):
-//     1. v8datamodel/MouseCommand.h: `friend class Workspace;` -- process / onEvent call the protected
-//        onMouseDown/onMouseIdle/onMouseHover/onKeyDown/onPeekKeyDown/onMouseMove/onMouseDelta/onMouseUp slots directly.
-//     2. v8datamodel/Camera.h: `void moveWithKeys(const MovementKeys& keys, int count);` (analog name, 005ce6e0,
-//        ret 8, tests the nine key bytes then moves by the count) plus `#include "util/MovementKeys.h"` (onEvent).
+// 005a0690 / for_each 005a1890 compile here. process 005a20e0 / onEvent 005a3470 (batch 28): v8datamodel/MouseCommand.h
+// declares `friend class Workspace;` (the protected MouseCommand slots are called directly) and v8datamodel/Camera.h
+// declares moveWithKeys 005ce6e0 (analog name) against a forward-declared MovementKeys (defined by util/MovementKeys.h,
+// included here). Still guarded, on a header proposal for a file this unit does not own:
 //   NATIVE_WORKSPACE_STATSCREATE_PENDING (onServiceProvider 005a66b0):
 //     3. util/Object.h (core owner): the three-argument `Creatable<T>::create<Class, P1, P2, P3>` overload
 //        (instance 005a6620 create<WorkspaceStatsItem, Workspace*, World*, RunService*>).
@@ -34,11 +32,11 @@
 #include "script/ScriptContext.h"
 #include "RbxGraphics/Adorn.h"
 #include "util/ILocation.h"
+#include "util/MovementKeys.h"
 #include <G3D/AABox.h>
 
 namespace RBX
 {
-#ifdef NATIVE_WORKSPACE_MOUSECOMMAND_PENDING
 	// @005a20e0 ?process@Workspace@RBX@@UAE?AVGuiResponse@2@ABVGuiEvent@2@@Z
 	// Entered with the GuiTarget subobject (Workspace+0x2e8): currentCommand +0xc8, idleMouseEvent +0xd0,
 	// inMouselookMode +0x110, Notifier<Workspace, DrawChanged> +0x5c. Jump table 005a2250 (event types 1..13).
@@ -136,7 +134,6 @@ namespace RBX
 		}
 	}
 
-#endif // NATIVE_WORKSPACE_MOUSECOMMAND_PENDING
 
 	// INFERRED: render3dAdorn's `if (sel)` is a direct createService(true) 00581cc0 call (no out-of-line conversion);
 	// v8tree/Service.h (core) only declares ServiceClient<T>::operator T*(), so the Selection instance is defined
