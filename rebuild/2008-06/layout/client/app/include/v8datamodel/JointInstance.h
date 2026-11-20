@@ -25,6 +25,12 @@ public:
     Joint::JointType getJointType() const;
     PartInstance* getPart0() const;          // 005e2a10
     PartInstance* getPart1() const;          // 005e2a70
+    void setPart0(PartInstance* value);                  // 005e4450
+    void setPart1(PartInstance* value);                  // 005e4470
+    const G3D::CoordinateFrame& getC0() const;
+    const G3D::CoordinateFrame& getC1() const;
+    void setC0(const G3D::CoordinateFrame& value);       // 005e4490
+    void setC1(const G3D::CoordinateFrame& value);       // 005e44c0
 };
 
 extern const char sAutoJoint[];

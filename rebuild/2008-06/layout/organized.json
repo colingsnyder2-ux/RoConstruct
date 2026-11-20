@@ -37,6 +37,14 @@
 "client/win/AboutRobloxDialog.cpp",
 "merged unit, complete"
 ],
+"00404d20": [
+"client/win/IObjectSafetyRobloxImpl.cpp",
+"merged unit, complete"
+],
+"00404db0": [
+"client/win/IObjectSafetyRobloxImpl.cpp",
+"merged unit, complete"
+],
 "00405d50": [
 "client/win/ActiveDocView.cpp",
 "inferred path"
@@ -7752,6 +7760,14 @@
 "00640f30": [
 "client/app/tool/ToolsSurface.cpp",
 "merged unit, partial"
+],
+"006432e0": [
+"client/app/humanoid/HumanoidState.cpp",
+"inferred path"
+],
+"00643360": [
+"client/app/humanoid/HumanoidState.cpp",
+"inferred path"
 ],
 "00644670": [
 "client/app/humanoid/Humanoid.cpp",

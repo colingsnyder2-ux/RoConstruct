@@ -57,18 +57,6 @@ namespace RBX
 		return contactManager->getSpatialHash().getMaxBucket();
 	}
 
-#if 0
-	void World::onAssemblyExtentsChanged(RBX::Assembly * a)
-	{
-		Assembly::PrimIterator endIt = Assembly::PrimIterator::end(a);
-		Assembly::PrimIterator beginIt = Assembly::PrimIterator::begin(a);
-		for (; beginIt != endIt; ++beginIt)
-		{
-			contactManager->onPrimitiveExtentsChanged(*beginIt);
-		}
-	}
-#endif
-
 	void World::createJoints(Primitive *p)
 	{
 		createJoints(p, NULL);

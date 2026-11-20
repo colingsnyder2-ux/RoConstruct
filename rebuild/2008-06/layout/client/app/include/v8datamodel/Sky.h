@@ -1,6 +1,12 @@
 #pragma once
 #include "v8tree/Instance.h"
 #include "util/TextureId.h"
+#include <G3D/ReferenceCount.h>
+
+namespace G3D
+{
+	class Sky;
+}
 
 namespace RBX
 {
@@ -30,5 +36,7 @@ namespace RBX
 
 	public:
 		Sky();                         // 005eb640 (destructor 005ebae0, deleting 005ebb90)
+
+		static G3D::ReferenceCountedPointer<G3D::Sky> getG3DSky(Sky* sky);
 	};
 }

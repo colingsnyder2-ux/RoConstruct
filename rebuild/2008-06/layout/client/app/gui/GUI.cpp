@@ -14,6 +14,34 @@ namespace RBX
 		return Rect(position, position + getSize());
 	}
 
+	void GuiItem::label2d(Adorn* adorn, const std::string& label, const G3D::Color4& fill, const G3D::Color4& border,
+		Adorn::XAlign align) const
+	{
+		if (label.size() == 0)
+			return;
+
+		Rect myRect = getMyRect();
+
+		G3D::Vector2 size = myRect.size();
+		G3D::Vector2 pos = myRect.center();
+
+		switch (align)
+		{
+		case Adorn::XALIGN_RIGHT:
+			pos.x = myRect.high.x - size.x * 0.1f;
+			break;
+
+		case Adorn::XALIGN_CENTER:
+			break;
+
+		default:
+			pos.x = myRect.low.x + size.x * 0.1f;
+			break;
+		}
+
+		adorn->drawFont2D(label, pos, getFontSize(), fill, border, align, Adorn::YALIGN_CENTER, Adorn::PROPORTIONAL_SPACING);
+	}
+
 	G3D::Vector2 UnifiedWidget::childOffset() const
 	{
 		return G3D::Vector2(0.0f, 28.0f);
@@ -40,12 +68,6 @@ namespace RBX
 		adorn->rect2d(getMyRect2D(), menuState != NOTHING ? menuSelect() : G3D::Color4(G3D::Color3::white()));
 		adorn->outlineRect2d(getMyRect2D(), 1.0f, G3D::Color3::black());
 		label2d(adorn, getName(), G3D::Color3::black(), G3D::Color4::clear(), Adorn::XALIGN_CENTER);
-	}
-
-	// INFERRED: the donor openrbx gui/GUI.h defines showChildren in-class (menuState >= SHOWN_APPEARING); the native
-	inline bool UnifiedWidget::showChildren()
-	{
-		return menuState >= SHOWN_APPEARING;
 	}
 
 	void UnifiedWidget::render2dChildren(Adorn* adorn)

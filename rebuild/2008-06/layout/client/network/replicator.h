@@ -8,7 +8,7 @@
 #include "Network/Players.h"
 #include "Network/IdSerializer.h"
 #include "RakNetTypes.h"
-#include "v8world/Assembly.h"
+namespace RBX { class Assembly; }
 #include "v8world/Mechanism.h"
 #include "util/Profiling.h"
 #include "stats/Stats.h"

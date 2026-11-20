@@ -56,6 +56,9 @@ public:
     bool upright() const;  // 00643a50 (analog name): same float compared with 0x826fc8
     float getRatio() const; // 006439b0 (INFERRED: helper called by tipped/upright)
     void preStep(float dt);
+    void findFloor();                                                 // 00644000: plain ret; rays below the torso
+    bool findClimbable(Adorn* adorn);                                 // 00644c80: ret 4, al; preStep passes NULL
+    bool climbableInFront(Adorn* adorn);                              // 00644a30: ret 4, al; GeometryService
     static void transition(std::auto_ptr<HumanoidState>& state, float dt);
     static const int transitionTable[][18];                           // 0084a92c (INFERRED: stride 0x48 from asm)
     void setLimbFlag(bool value);                                     // 006431b0

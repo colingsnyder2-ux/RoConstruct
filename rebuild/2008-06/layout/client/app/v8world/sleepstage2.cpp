@@ -348,6 +348,133 @@ namespace RBX
 	}
 }
 
+namespace RBX
+{
+	void SleepStage::wakeAssemblyAndNeighbors(Assembly* a, std::deque<Assembly*>& toWake, int recurseDepth)
+	{
+		Sim::AssemblyState state = getState(a);
+		int depth = a->sleepStepCount;
+
+		if (state != Sim::ANCHORED)
+		{
+			if (state != Sim::AWAKE)
+			{
+				changeAssemblyState(a, Sim::AWAKE);
+			}
+
+			const G3D::Array<Edge*>& edges = a->getExternalEdges();
+
+			for (int i = 0; i < edges.size(); i++)
+			{
+				Edge* edge = edges[i];
+
+				if (edgeIsAwake(edge))
+				{
+					wakeEdge(edge);
+
+					if (isAffecting(edge))
+					{
+						Assembly* other = a->otherAssembly(edge);
+
+						if (depth < recurseDepth)
+						{
+							if (externalBodyForceAdded || getState(other) != Sim::AWAKE)
+							{
+								if (other->sleepStepId != field1d8)
+								{
+									other->sleepStepId = field1d8;
+									other->sleepStepCount = depth + 1;
+									toWake.push_back(other);
+								}
+							}
+						}
+						else if (getState(other) == Sim::SLEEPING_DEEPLY)
+						{
+							changeAssemblyState(other, Sim::SLEEPING_CHECKING);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	void SleepStage::wakeAssemblies(const AssemblySet& assemblies, int recurseDepth, Sim::AssemblyState state)
+	{
+		std::deque<Assembly*> toWake;
+
+		field1d8++;
+
+		for (AssemblySet::const_iterator it = assemblies.begin(); it != assemblies.end(); ++it)
+		{
+			Assembly* a = *it;
+			a->sleepStepId = field1d8;
+			a->sleepStepCount = 0;
+			toWake.push_back(a);
+		}
+
+		while (!toWake.empty())
+		{
+			Assembly* a = toWake.front();
+			toWake.pop_front();
+			wakeAssemblyAndNeighbors(a, toWake, recurseDepth);
+			a->sleepStepCount = -1;
+		}
+
+		externalBodyForceAdded = false;
+	}
+}
+
+#ifdef NATIVE_PRIMITIVE_DISABLE_SLEEP
+namespace RBX
+{
+	bool SleepStage::computeCanSleep(Assembly* a)
+	{
+		return !Primitive::disableSleep && a->getCanSleep();
+	}
+
+	Sim::AssemblyState SleepStage::computeAssemblyState(Assembly* a)
+	{
+		if (!computeCanSleep(a))
+		{
+			return Sim::AWAKE;
+		}
+
+		bool allNeighborsSleeping = true;
+		const G3D::Array<Edge*>& edges = a->getExternalEdges();
+
+		for (int i = 0; i < edges.size(); i++)
+		{
+			Edge* edge = edges[i];
+
+			if (edgeIsAwake(edge))
+			{
+				if (isAffecting(edge))
+				{
+					Assembly* other = a->otherAssembly(edge);
+
+					if (getState(other) == Sim::AWAKE)
+					{
+						allNeighborsSleeping = false;
+
+						if (forceNeighborAwake(other))
+						{
+							return Sim::AWAKE;
+						}
+					}
+				}
+			}
+		}
+
+		if (allNeighborsSleeping)
+		{
+			return Sim::SLEEPING_DEEPLY;
+		}
+
+		return Sim::SLEEPING_CHECKING;
+	}
+}
+#endif
+
 // INFERRED: RBX::SleepStage::sub_0064b7f0 (placeholder name for 0064b7f0 from the identity tier; body byte-proved against the native headers by the placeholder lane)
 
 void RBX::SleepStage::sub_0064b7f0(const std::vector<RBX::Joint*>& joints, RBX::Sim::EdgeState state)

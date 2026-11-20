@@ -13,6 +13,8 @@ namespace RakNet
 
 namespace RBX
 {
+	class Assembly;
+
 	namespace Network
 	{
 		class Replicator;
@@ -53,6 +55,11 @@ namespace RBX
 		class RoundRobinPhysicsSender : public IPhysicsSender
 		{
 			friend struct ::NativeNetworkPhysicsLayout; // tests/NativeNetworkPhysicsLayout.cpp offset asserts
+		public:
+			class JobSender;
+		private:
+			// Assembly +0x24 root clump / Clump +0x1c root primitive, then PartInstance 00599f80). INFERRED name after
+			void sendPhysicsData(RakNet::BitStream& bitStream, const Assembly* assembly);
 		private:
 			Replicator* replicator;                                               // +0x4
 			MechanismTracker tracker;                                             // +0x8

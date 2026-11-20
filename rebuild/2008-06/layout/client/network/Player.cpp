@@ -188,7 +188,7 @@ namespace RBX
 			loadCharacterAppearance(!inGame);
 
 			if (SpawnerService* spawnerService = ServiceProvider::find<SpawnerService>(this))
-				spawnerService->spawnPlayer(model, this);   // 005d2b80 (analog name, pending declaration)
+				spawnerService->SpawnPlayer(model, this);   // 005d2b80 (declared in v8datamodel/SpawnerService.h)
 			else
 				workspace->moveToPoint(model.get(), G3D::Vector3(0.0f, 20.0f, 25.0f));
 		}

@@ -147,7 +147,7 @@ namespace RBX
 		virtual int getFontSize() const;
 		void init();
 	protected:
-		bool showChildren();
+		bool showChildren() { return menuState >= SHOWN_APPEARING; }
 		virtual void onMenuStateChanged();
 		virtual G3D::Vector2 firstChildPosition() const;
 		virtual G3D::Vector2 childOffset() const;

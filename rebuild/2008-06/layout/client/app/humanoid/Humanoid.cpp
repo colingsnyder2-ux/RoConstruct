@@ -8,6 +8,7 @@
 #include <stdexcept>
 #include "v8datamodel/ModelInstance.h"
 #include "v8datamodel/JointInstance.h"
+#include "util/NormalId.h"            // normalIdToMatrix3 005ec800 (buildJoints 005d9340)
 #include "v8datamodel/Workspace.h"   // native (read only): findWorkspace 005a3380, contextInWorkspace 005a33d0
 
 namespace RBX
@@ -197,6 +198,89 @@ namespace RBX
 			boost::shared_ptr<Snap> s = Creatable<Instance>::create<Snap>();
 			return s;
 		}
+	}
+
+	// INFERRED: newJoint returns shared_ptr<JointInstance> here (batch 27) while the target calls the AutoJoint setters
+	// on the same pointers; a no-op downcast (AutoJoint base at offset 0) keeps the limb pointers in registers.
+	static inline AutoJoint* asAutoJoint(const boost::shared_ptr<JointInstance>& joint)
+	{
+		return static_cast<AutoJoint*>(joint.get());
+	}
+
+	// ModelInstance) while this header declares it out of line: the inline test below copies that body (INFERRED).
+	void Humanoid::buildJoints()
+	{
+		ModelInstance* character = this ? dynamic_cast<ModelInstance*>(getParent()) : NULL;
+		if (!character)
+			return;
+
+		PartInstance* head = getHead();
+		PartInstance* torso = getTorso();
+		PartInstance* rightArm = getRightArm();
+		PartInstance* leftArm = getLeftArm();
+		PartInstance* rightLeg = getRightLeg();
+		PartInstance* leftLeg = getLeftLeg();
+
+		if (!torso)
+			return;
+
+		boost::shared_ptr<JointInstance> rightShoulder = newJoint(true);
+		boost::shared_ptr<JointInstance> leftShoulder = newJoint(true);
+		boost::shared_ptr<JointInstance> rightHip = newJoint(true);
+		boost::shared_ptr<JointInstance> leftHip = newJoint(true);
+		boost::shared_ptr<JointInstance> neck = newJoint(false);
+
+		rightShoulder->setName("Right Shoulder");
+		leftShoulder->setName("Left Shoulder");
+		rightHip->setName("Right Hip");
+		leftHip->setName("Left Hip");
+		neck->setName("Neck");
+
+		asAutoJoint(rightShoulder)->setPart0(torso);
+		asAutoJoint(leftShoulder)->setPart0(torso);
+		asAutoJoint(rightHip)->setPart0(torso);
+		asAutoJoint(leftHip)->setPart0(torso);
+		asAutoJoint(neck)->setPart0(torso);
+
+		asAutoJoint(rightShoulder)->setPart1(rightArm);
+		asAutoJoint(leftShoulder)->setPart1(leftArm);
+		asAutoJoint(rightHip)->setPart1(rightLeg);
+		asAutoJoint(leftHip)->setPart1(leftLeg);
+		asAutoJoint(neck)->setPart1(head);
+
+		G3D::Matrix3 xPos = normalIdToMatrix3(NORM_X);
+		G3D::Matrix3 xNeg = normalIdToMatrix3(NORM_X_NEG);
+		G3D::Matrix3 yPos = normalIdToMatrix3(NORM_Y);
+
+		G3D::CoordinateFrame rightShoulderP(xPos, G3D::Vector3(1.0f, 0.5f, 0.0f));
+		G3D::CoordinateFrame leftShoulderP(xNeg, G3D::Vector3(-1.0f, 0.5f, 0.0f));
+		G3D::CoordinateFrame rightHipP(xPos, G3D::Vector3(1.0f, -1.0f, 0.0f));
+		G3D::CoordinateFrame leftHipP(xNeg, G3D::Vector3(-1.0f, -1.0f, 0.0f));
+		G3D::CoordinateFrame neckP(yPos, G3D::Vector3(0.0f, 1.0f, 0.0f));
+
+		G3D::CoordinateFrame rightArmP(xPos, G3D::Vector3(-0.5f, 0.5f, 0.0f));
+		G3D::CoordinateFrame leftArmP(xNeg, G3D::Vector3(0.5f, 0.5f, 0.0f));
+		G3D::CoordinateFrame rightLegP(xPos, G3D::Vector3(0.5f, 1.0f, 0.0f));
+		G3D::CoordinateFrame leftLegP(xNeg, G3D::Vector3(-0.5f, 1.0f, 0.0f));
+		G3D::CoordinateFrame headP(yPos, G3D::Vector3(0.0f, -0.5f, 0.0f));
+
+		asAutoJoint(rightShoulder)->setC0(rightShoulderP);
+		asAutoJoint(leftShoulder)->setC0(leftShoulderP);
+		asAutoJoint(rightHip)->setC0(rightHipP);
+		asAutoJoint(leftHip)->setC0(leftHipP);
+		asAutoJoint(neck)->setC0(neckP);
+
+		asAutoJoint(rightShoulder)->setC1(rightArmP);
+		asAutoJoint(leftShoulder)->setC1(leftArmP);
+		asAutoJoint(rightHip)->setC1(rightLegP);
+		asAutoJoint(leftHip)->setC1(leftLegP);
+		asAutoJoint(neck)->setC1(headP);
+
+		rightShoulder->setParent(torso);
+		leftShoulder->setParent(torso);
+		rightHip->setParent(torso);
+		leftHip->setParent(torso);
+		neck->setParent(torso);
 	}
 }
 
