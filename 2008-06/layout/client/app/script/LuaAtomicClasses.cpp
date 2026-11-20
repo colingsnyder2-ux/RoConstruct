@@ -1,3 +1,6 @@
+// Inactive 2008-06 native recovery: RBX::Lua atomic bridges (Vector3, Color3, CoordinateFrame, BrickColor).
+// Body shapes follow the donor reconstruction; counted rows are proven by tests/record_native_lua_bridge2008.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "LuaBridge2008/LuaBridge2008.h"
 #include "G3D/Quat.h"
 #include "lua.h"
@@ -7,8 +10,11 @@
 using namespace RBX;
 using namespace RBX::Lua;
 
+// 0095b1cc: a constant-initialized pointer to "" in this unit's data block (after the className statics), read by
+// tostringOrEmpty 0061c790 (mov eax, [0095b1cc]).
 const char* RBX::Lua::emptyString2008 = "";
 
+// 0061c790: lua_tostring, or "" for a non-string (called by ScriptContext 005aec88 / 005afb7f / 005b02ff).
 const char* RBX::Lua::tostringOrEmpty(lua_State* L, int index)
 {
     const char* s = lua_tostring(L, index);
@@ -17,6 +23,8 @@ const char* RBX::Lua::tostringOrEmpty(lua_State* L, int index)
     return s;
 }
 
+// 0061c7b0: lua_tostring that throws "String expected" (called by ObjectBridge::newInstance 0061bb91, the property
+// assignment 0061b190 and ScriptContext 005ade74).
 const char* RBX::Lua::tostringChecked(lua_State* L, int index)
 {
     const char* s = lua_tostring(L, index);
@@ -25,6 +33,10 @@ const char* RBX::Lua::tostringChecked(lua_State* L, int index)
     return s;
 }
 
+// 0061c830: lapi lua_tonumber (00611f60) clamped into float range: +-inf map to the float infinities (the MSVCP90 _Inf /
+// _FInf imports), NaN passes through, finite values beyond FLT_MAX clamp to +-FLT_MAX (double compare constants, float
+// results). Called by this unit's constructors / operators and by the instance bridge (0061b255, 0061b29c). It
+// returns float without a rounding store, so this unit is compiled with /fp:fast (the recorder's atomic profile).
 float RBX::Lua::tonumberClamped(lua_State* L, int index)
 {
     double value = lua_tonumber(L, index);
@@ -41,7 +53,7 @@ float RBX::Lua::tonumberClamped(lua_State* L, int index)
     return value;
 }
 
-const luaL_Reg Color3Bridge::classLibrary[] =
+const luaL_Reg Color3Bridge::classLibrary[] = 
 {
     {"new", Color3Bridge::newColor3},
     {NULL, NULL}
@@ -82,16 +94,16 @@ int Color3Bridge::on_index(const G3D::Color3& object, const char* name, lua_Stat
         lua_pushnumber(L, object.b);
         return 1;
     }
-
+    
     throw std::runtime_error(G3D::format("%s is not a valid member", name));
 }
 
-const luaL_Reg Vector3Bridge::classLibrary[] =
+const luaL_Reg Vector3Bridge::classLibrary[] = 
 {
     {"new", Vector3Bridge::newVector3},
     {NULL, NULL}
 };
-
+        
 int Vector3Bridge::on_add(lua_State* L)
 {
     G3D::Vector3& a = getObject(L, 1);
@@ -192,7 +204,7 @@ static int lerp(lua_State* L)
     float c = tonumberClamped(L, 3);
 
     G3D::Vector3 result = (b-a)*c + a;
-
+    
     Vector3Bridge::pushNewObject(L, result);
     return 1;
 }
@@ -235,7 +247,7 @@ int Vector3Bridge::on_index(const G3D::Vector3& object, const char* name, lua_St
         lua_pushcfunction(L, lerp);
         return 1;
     }
-
+    
     throw std::runtime_error(G3D::format("%s is not a valid member", name));
 }
 
@@ -287,7 +299,7 @@ static int pushBlue(lua_State* L)
     return 1;
 }
 
-const luaL_Reg BrickColorBridge::classLibrary[] =
+const luaL_Reg BrickColorBridge::classLibrary[] = 
 {
     {"new", BrickColorBridge::newBrickColor},
     {"random", BrickColorBridge::randomBrickColor},
@@ -466,11 +478,11 @@ int CoordinateFrameBridge::newCoordinateFrame(lua_State* L)
 
         break;
     }
-
+        
     default:
         throw std::runtime_error(G3D::format("Invalid number of arguments: %d", nargs));
     }
-
+    
     pushNewObject(L, cf);
     return 1;
 }
@@ -531,7 +543,7 @@ int CoordinateFrameBridge::on_toWorldSpace(lua_State* L)
     {
         G3D::CoordinateFrame& b = getObject(L, 2+i);
         pushCoordinateFrame(L, a*b);
-    }
+    }   
 
     return count;
 }
@@ -551,7 +563,7 @@ int CoordinateFrameBridge::on_toObjectSpace(lua_State* L)
     {
         G3D::CoordinateFrame& b = getObject(L, 2+i);
         pushCoordinateFrame(L, a.toObjectSpace(b));
-    }
+    }   
 
     return count;
 }
@@ -571,7 +583,7 @@ int CoordinateFrameBridge::on_pointToWorldSpace(lua_State* L)
     {
         G3D::Vector3& b = Vector3Bridge::getObject(L, 2+i);
         Vector3Bridge::pushVector3(L, a.pointToWorldSpace(b));
-    }
+    }   
 
     return count;
 }
@@ -591,7 +603,7 @@ int CoordinateFrameBridge::on_pointToObjectSpace(lua_State *L)
     {
         G3D::Vector3& b = Vector3Bridge::getObject(L, 2+i);
 		Vector3Bridge::pushVector3(L, a.pointToObjectSpace(b));
-    }
+    }   
 
     return count;
 }
@@ -611,7 +623,7 @@ int CoordinateFrameBridge::on_vectorToWorldSpace(lua_State* L)
     {
         G3D::Vector3& b = Vector3Bridge::getObject(L, 2+i);
         Vector3Bridge::pushVector3(L, a.vectorToWorldSpace(b));
-    }
+    }   
 
     return count;
 }
@@ -659,7 +671,7 @@ int CoordinateFrameBridge::on_vectorToObjectSpace(lua_State* L)
     {
         G3D::Vector3& b = Vector3Bridge::getObject(L, 2+i);
         Vector3Bridge::pushVector3(L, a.vectorToObjectSpace(b));
-    }
+    }   
 
     return count;
 }
@@ -787,6 +799,11 @@ int CoordinateFrameBridge::on_index(const G3D::CoordinateFrame& object, const ch
     throw std::runtime_error(G3D::format("%s is not a valid member", name));
 }
 
+// 0061ca00: the generic Bridge<T>::on_newindex(T&, name, L) body ('%s cannot be assigned to'), defined inside the
+// class body of lua/LuaBridge.h. It is identical for every T and ICF-folded: the ScriptContext __newindex wrappers of
+// CFrame 005a9543, Vector3 005a9663, RBXScriptConnection 005a9783, ThreadRef::Node 005a9863, Color3 005a9903 and
+// BrickColor 005a9a13 all call 0061ca00, which lies in this unit (after Color3 on_index 0061c8c0). Instantiating the
+// Color3 wrapper emits it here; the symbol is a codegen analog of the folded body, the wrapper is not a row.
 namespace RBX { namespace Lua {
 template int Bridge<G3D::Color3, true>::on_newindex(lua_State*);
 }}

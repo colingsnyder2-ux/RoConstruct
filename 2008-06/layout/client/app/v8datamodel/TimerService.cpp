@@ -1,3 +1,5 @@
+// 2008-06 native RBX::TimerService (inactive); evidence in native-headers/v8datamodel/TimerService.h.
+// Verified by tests/record_native_spawn.py.
 #include "v8datamodel/TimerService.h"
 #include "util/standardout.h"
 #include <G3D/System.h>
@@ -30,6 +32,7 @@ namespace RBX
 		item.time = G3D::System::getLocalTime() + seconds;
 		item.func = func;
 
+		// 005d6e10 walks forward and inserts before the first later item, else appends.
 		for (std::list<Item>::iterator iter = items.begin(); iter != items.end(); ++iter)
 		{
 			if (iter->time > item.time)
@@ -80,8 +83,11 @@ namespace RBX
 	}
 }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class std::_Container_base_aux_alloc_real<std::allocator<RBX::TimerService::Item> >;
 template class std::allocator<RBX::TimerService::Item>;
 template class std::allocator<std::_List_nod<RBX::TimerService::Item,std::allocator<RBX::TimerService::Item> >::_Node *>;
 
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
 template void RBX::Name::callDoDeclare<RBX::sTimerService>();
+

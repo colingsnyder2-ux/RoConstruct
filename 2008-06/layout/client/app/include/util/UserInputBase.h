@@ -9,6 +9,7 @@ namespace RBX
 {
 	class Adorn;
 	// INFERRED: __declspec(novtable) - the ctor 005ceaa0 never stores a vftable pointer (only the string member at +4,
+	// ContentId +0x20 and currentCursor +0x24 are written); MSVC omits that store only for novtable classes.
 	class __declspec(novtable) UserInputBase
 	{
 	public:
@@ -21,7 +22,7 @@ namespace RBX
 	private:
 		ContentId currentCursorId;
 		G3D::ReferenceCountedPointer<TextureProxyBase> currentCursor;
-
+	  
 	protected:
 		virtual G3D::Vector2 getCursorPosition() = 0;
 		virtual G3D::ReferenceCountedPointer<TextureProxyBase> getGameCursor(Adorn*);

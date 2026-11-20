@@ -1,4 +1,22 @@
 #pragma once
+// 2008-06 native RBX::Network::Player (inactive). Shape after the donor tools/rbxgs Network/Player.h;
+// every base, field, virtual and descriptor below is read from the 2008-06 binary:
+//   RTTI       vtable 0082220c .?AVPlayer@Network@RBX@@ (23 bases) -> DescribedCreatable<Player,
+//              Instance, sPlayer> (name mangled $1?sPlayer@23@3PADA, i.e. a non-const char array),
+//              Notifier<Player, CharacterAdded> mdisp 0x130, Notifier<Player, CharacterRemoving> 0x150.
+//   size       0x1d8: Creatable<Instance>::create<Player> 004093b0 allocates 0x1d8, constructor 00493da0.
+//   fields     constructor 00493da0 / destructor 00494c60:
+//              +0x170 shared_ptr<ModelInstance> character (released last by the destructor),
+//              +0x178 BrickColor teamColor (1), +0x17c bool neutral (true),
+//              +0x180 boost::signals::scoped_connection characterDiedConnection (0x14; dtor 005954b0,
+//                     disconnect 00595230 in setCharacter 004944b0),
+//              +0x194 std::string characterAppearance, +0x1b0 bool under13, +0x1b1 bool superSafeChat,
+//              +0x1b4 int userId, +0x1b8..+0x1cc six G3D::Vector2int16 (BoundProp "DPHYS" descriptors
+//              007f1120..007f1210: ServerRequestLow/High, ServerDemandLow/High, ClientSimulateLow/High),
+//              +0x1d0 G3D::RealTime lastActivityTime (fldz).
+//   vtable     slot 1 setName 004937c0, slot 2 askAddChild 00565ff0 (return true, shared with Team),
+//              slot 12 onServiceProvider 00494740; destructor 00494c60, deleting 00494f60.
+//   descriptors (dynamic initializers 007f0f40..007f12f0, atexit 007fb0e0..007fb770).
 #include "v8tree/Instance.h"
 #include "v8datamodel/BrickColor.h"
 #include "util/Events.h"
@@ -120,6 +138,7 @@ namespace RBX
 			{
 				prop_Under13.setValue(this, value);
 			}
+			// Inferred inline body: 00650d65 reads existing field +0x1b1.
 			bool getSuperSafeChat() const { return superSafeChat; }
 			void setSuperSafeChat(bool value)                         // 0048b940
 			{

@@ -1,3 +1,5 @@
+// native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
+// 2008-06 native Jpegjcmarker (inactive): upstream tools/libs/jpeg-6b/jcmarker.c, verbatim.
 /*
  * jcmarker.c
  *
@@ -12,29 +14,30 @@
 #include "jinclude.h"
 #include "jpeglib.h"
 
+
 typedef enum {			/* JPEG marker codes */
   M_SOF0  = 0xc0,
   M_SOF1  = 0xc1,
   M_SOF2  = 0xc2,
   M_SOF3  = 0xc3,
-
+  
   M_SOF5  = 0xc5,
   M_SOF6  = 0xc6,
   M_SOF7  = 0xc7,
-
+  
   M_JPG   = 0xc8,
   M_SOF9  = 0xc9,
   M_SOF10 = 0xca,
   M_SOF11 = 0xcb,
-
+  
   M_SOF13 = 0xcd,
   M_SOF14 = 0xce,
   M_SOF15 = 0xcf,
-
+  
   M_DHT   = 0xc4,
-
+  
   M_DAC   = 0xcc,
-
+  
   M_RST0  = 0xd0,
   M_RST1  = 0xd1,
   M_RST2  = 0xd2,
@@ -43,7 +46,7 @@ typedef enum {			/* JPEG marker codes */
   M_RST5  = 0xd5,
   M_RST6  = 0xd6,
   M_RST7  = 0xd7,
-
+  
   M_SOI   = 0xd8,
   M_EOI   = 0xd9,
   M_SOS   = 0xda,
@@ -52,7 +55,7 @@ typedef enum {			/* JPEG marker codes */
   M_DRI   = 0xdd,
   M_DHP   = 0xde,
   M_EXP   = 0xdf,
-
+  
   M_APP0  = 0xe0,
   M_APP1  = 0xe1,
   M_APP2  = 0xe2,
@@ -69,15 +72,16 @@ typedef enum {			/* JPEG marker codes */
   M_APP13 = 0xed,
   M_APP14 = 0xee,
   M_APP15 = 0xef,
-
+  
   M_JPG0  = 0xf0,
   M_JPG13 = 0xfd,
   M_COM   = 0xfe,
-
+  
   M_TEM   = 0x01,
-
+  
   M_ERROR = 0x100
 } JPEG_MARKER;
+
 
 /* Private state */
 
@@ -88,6 +92,7 @@ typedef struct {
 } my_marker_writer;
 
 typedef my_marker_writer * my_marker_ptr;
+
 
 /*
  * Basic output routines.
@@ -114,6 +119,7 @@ emit_byte (j_compress_ptr cinfo, int val)
   }
 }
 
+
 LOCAL(void)
 emit_marker (j_compress_ptr cinfo, JPEG_MARKER mark)
 /* Emit a marker code */
@@ -122,6 +128,7 @@ emit_marker (j_compress_ptr cinfo, JPEG_MARKER mark)
   emit_byte(cinfo, (int) mark);
 }
 
+
 LOCAL(void)
 emit_2bytes (j_compress_ptr cinfo, int value)
 /* Emit a 2-byte integer; these are always MSB first in JPEG files */
@@ -129,6 +136,7 @@ emit_2bytes (j_compress_ptr cinfo, int value)
   emit_byte(cinfo, (value >> 8) & 0xFF);
   emit_byte(cinfo, value & 0xFF);
 }
+
 
 /*
  * Routines to write specific marker types.
@@ -173,13 +181,14 @@ emit_dqt (j_compress_ptr cinfo, int index)
   return prec;
 }
 
+
 LOCAL(void)
 emit_dht (j_compress_ptr cinfo, int index, boolean is_ac)
 /* Emit a DHT marker */
 {
   JHUFF_TBL * htbl;
   int length, i;
-
+  
   if (is_ac) {
     htbl = cinfo->ac_huff_tbl_ptrs[index];
     index += 0x10;		/* output index has AC bit set */
@@ -189,26 +198,27 @@ emit_dht (j_compress_ptr cinfo, int index, boolean is_ac)
 
   if (htbl == NULL)
     ERREXIT1(cinfo, JERR_NO_HUFF_TABLE, index);
-
+  
   if (! htbl->sent_table) {
     emit_marker(cinfo, M_DHT);
-
+    
     length = 0;
     for (i = 1; i <= 16; i++)
       length += htbl->bits[i];
-
+    
     emit_2bytes(cinfo, length + 2 + 1 + 16);
     emit_byte(cinfo, index);
-
+    
     for (i = 1; i <= 16; i++)
       emit_byte(cinfo, htbl->bits[i]);
-
+    
     for (i = 0; i < length; i++)
       emit_byte(cinfo, htbl->huffval[i]);
-
+    
     htbl->sent_table = TRUE;
   }
 }
+
 
 LOCAL(void)
 emit_dac (j_compress_ptr cinfo)
@@ -221,24 +231,24 @@ emit_dac (j_compress_ptr cinfo)
   char ac_in_use[NUM_ARITH_TBLS];
   int length, i;
   jpeg_component_info *compptr;
-
+  
   for (i = 0; i < NUM_ARITH_TBLS; i++)
     dc_in_use[i] = ac_in_use[i] = 0;
-
+  
   for (i = 0; i < cinfo->comps_in_scan; i++) {
     compptr = cinfo->cur_comp_info[i];
     dc_in_use[compptr->dc_tbl_no] = 1;
     ac_in_use[compptr->ac_tbl_no] = 1;
   }
-
+  
   length = 0;
   for (i = 0; i < NUM_ARITH_TBLS; i++)
     length += dc_in_use[i] + ac_in_use[i];
-
+  
   emit_marker(cinfo, M_DAC);
-
+  
   emit_2bytes(cinfo, length*2 + 2);
-
+  
   for (i = 0; i < NUM_ARITH_TBLS; i++) {
     if (dc_in_use[i]) {
       emit_byte(cinfo, i);
@@ -252,16 +262,18 @@ emit_dac (j_compress_ptr cinfo)
 #endif /* C_ARITH_CODING_SUPPORTED */
 }
 
+
 LOCAL(void)
 emit_dri (j_compress_ptr cinfo)
 /* Emit a DRI marker */
 {
   emit_marker(cinfo, M_DRI);
-
+  
   emit_2bytes(cinfo, 4);	/* fixed length */
 
   emit_2bytes(cinfo, (int) cinfo->restart_interval);
 }
+
 
 LOCAL(void)
 emit_sof (j_compress_ptr cinfo, JPEG_MARKER code)
@@ -269,9 +281,9 @@ emit_sof (j_compress_ptr cinfo, JPEG_MARKER code)
 {
   int ci;
   jpeg_component_info *compptr;
-
+  
   emit_marker(cinfo, code);
-
+  
   emit_2bytes(cinfo, 3 * cinfo->num_components + 2 + 5 + 1); /* length */
 
   /* Make sure image isn't bigger than SOF field can handle */
@@ -293,19 +305,20 @@ emit_sof (j_compress_ptr cinfo, JPEG_MARKER code)
   }
 }
 
+
 LOCAL(void)
 emit_sos (j_compress_ptr cinfo)
 /* Emit a SOS marker */
 {
   int i, td, ta;
   jpeg_component_info *compptr;
-
+  
   emit_marker(cinfo, M_SOS);
-
+  
   emit_2bytes(cinfo, 2 * cinfo->comps_in_scan + 2 + 1 + 3); /* length */
-
+  
   emit_byte(cinfo, cinfo->comps_in_scan);
-
+  
   for (i = 0; i < cinfo->comps_in_scan; i++) {
     compptr = cinfo->cur_comp_info[i];
     emit_byte(cinfo, compptr->component_id);
@@ -333,6 +346,7 @@ emit_sos (j_compress_ptr cinfo)
   emit_byte(cinfo, (cinfo->Ah << 4) + cinfo->Al);
 }
 
+
 LOCAL(void)
 emit_jfif_app0 (j_compress_ptr cinfo)
 /* Emit a JFIF-compliant APP0 marker */
@@ -348,9 +362,9 @@ emit_jfif_app0 (j_compress_ptr cinfo)
    * Thumbnail X size		(1 byte)
    * Thumbnail Y size		(1 byte)
    */
-
+  
   emit_marker(cinfo, M_APP0);
-
+  
   emit_2bytes(cinfo, 2 + 4 + 1 + 2 + 1 + 2 + 2 + 1 + 1); /* length */
 
   emit_byte(cinfo, 0x4A);	/* Identifier: ASCII "JFIF" */
@@ -366,6 +380,7 @@ emit_jfif_app0 (j_compress_ptr cinfo)
   emit_byte(cinfo, 0);		/* No thumbnail image */
   emit_byte(cinfo, 0);
 }
+
 
 LOCAL(void)
 emit_adobe_app14 (j_compress_ptr cinfo)
@@ -386,9 +401,9 @@ emit_adobe_app14 (j_compress_ptr cinfo)
    * YCbCr, 2 if it's YCCK, 0 otherwise.  Adobe's definition has to do with
    * whether the encoder performed a transformation, which is pretty useless.
    */
-
+  
   emit_marker(cinfo, M_APP14);
-
+  
   emit_2bytes(cinfo, 2 + 5 + 2 + 2 + 2 + 1); /* length */
 
   emit_byte(cinfo, 0x41);	/* Identifier: ASCII "Adobe" */
@@ -411,6 +426,7 @@ emit_adobe_app14 (j_compress_ptr cinfo)
     break;
   }
 }
+
 
 /*
  * These routines allow writing an arbitrary marker with parameters.
@@ -439,6 +455,7 @@ write_marker_byte (j_compress_ptr cinfo, int val)
   emit_byte(cinfo, val);
 }
 
+
 /*
  * Write datastream header.
  * This consists of an SOI and optional APPn markers.
@@ -466,6 +483,7 @@ write_file_header (j_compress_ptr cinfo)
     emit_adobe_app14(cinfo);
 }
 
+
 /*
  * Write frame header.
  * This consists of DQT and SOFn markers.
@@ -480,7 +498,7 @@ write_frame_header (j_compress_ptr cinfo)
   int ci, prec;
   boolean is_baseline;
   jpeg_component_info *compptr;
-
+  
   /* Emit DQT for each quantization table.
    * Note that emit_dqt() suppresses any duplicate tables.
    */
@@ -523,6 +541,7 @@ write_frame_header (j_compress_ptr cinfo)
       emit_sof(cinfo, M_SOF1);	/* SOF code for non-baseline Huffman file */
   }
 }
+
 
 /*
  * Write scan header.
@@ -576,6 +595,7 @@ write_scan_header (j_compress_ptr cinfo)
   emit_sos(cinfo);
 }
 
+
 /*
  * Write datastream trailer.
  */
@@ -585,6 +605,7 @@ write_file_trailer (j_compress_ptr cinfo)
 {
   emit_marker(cinfo, M_EOI);
 }
+
 
 /*
  * Write an abbreviated table-specification datastream.
@@ -616,6 +637,7 @@ write_tables_only (j_compress_ptr cinfo)
 
   emit_marker(cinfo, M_EOI);
 }
+
 
 /*
  * Initialize the marker writer module.

@@ -1,3 +1,13 @@
+// Inactive native recovery of the RBX::PartDragTool unit 006659a0..00666238 (2008-06) against the committed native
+// tool/PartDragTool.h (read-only). Layout evidence: DragTool::onMouseDown 006605c0 news 0x44 for the constructor
+// 00665f20; MouseCommand base 0x1c bytes (MouseCommand(Workspace*) 006159f0); runDragger +0x1c and megaDragger +0x20
+// (auto_ptrs destroyed in that reverse order by ~PartDragTool 00665bd0: ~MegaDragger 0060e700, ~RunDragger 0066c400),
+// dragDecal shared_ptr +0x24/+0x28 (released first), downPoint +0x2c, dragging +0x34, hitWorld +0x38; RTTI
+// .?AVPartDragTool@RBX@@ vtable 0084cbb4 with the IRenderable base vtable 0084cb9c at +4.
+// Named<MouseCommand, sPartDragTool>::getName 00665f00 call_once's the thunk 00665af0 of the function-local Name
+// declare 00665a30 (sPartDragTool 0096265c, "PartDragTool"); the helper names come from StandardVerbs.h (codegen
+// analogs). See tests/record_native_app_unit660_2008.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "tool/PartDragTool.h"
 #include "tool/RunDragger.h"
 #include "tool/MegaDragger.h"
@@ -8,6 +18,8 @@
 
 namespace RBX
 {
+	// 0058c5c0: commits a ChangeHistoryService waypoint (not declared in a shared header; same local declaration as
+	// AxisMoveToolMethods.cpp / CSelectionTreeCtrl.cpp).
 	void recordCameraHistory(const char*, const Instance*);
 
 	char sPartDragTool[] = "PartDragTool";
@@ -17,6 +29,8 @@ namespace RBX
 		static const char* get() { return sPartDragTool; }
 	};
 
+	// 00665f20: new(0x70) RunDragger (0066c900), then new(0x2c) MegaDragger(part, items, workspace) (0060e540, the
+	// std::vector<PVInstance*> overload).
 	PartDragTool::PartDragTool(PartInstance* part, const G3D::Vector3& point, Workspace* workspace, boost::shared_ptr<Instance> decal)
 		: Named<MouseCommand, sPartDragTool>(workspace),
 		  dragDecal(decal),
@@ -57,6 +71,9 @@ namespace RBX
 			onMouseIdle(uiEvent);
 	}
 
+	// These three bodies call the inline MegaDragger::getMousePart (tool/MegaDragger.h), which this unit emits out of
+	// line at 00665aa0 (returns the weak_ptr copy: weak count +8 incremented).
+	// 00665b00
 	void PartDragTool::onMouseDelta(const UIEvent& uiEvent)
 	{
 		if (!dragging && megaDragger->mousePartAlive())
@@ -70,6 +87,7 @@ namespace RBX
 		onMouseIdle(uiEvent);
 	}
 
+	// 00665ce0
 	MouseCommand* PartDragTool::onKeyDown(const UIEvent& uiEvent)
 	{
 		if (megaDragger->mousePartAlive())
@@ -91,6 +109,7 @@ namespace RBX
 		return NULL;
 	}
 
+	// 00665e20
 	void PartDragTool::render3dAdorn(Adorn* adorn)
 	{
 		if (megaDragger->mousePartAlive())
@@ -124,6 +143,7 @@ namespace RBX
 	}
 }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class std::_Container_base_aux_alloc_real<std::allocator<RBX::PVInstance *> >;
 template class std::_Vector_const_iterator<RBX::PVInstance *,std::allocator<RBX::PVInstance *> >;
 template class std::_Vector_iterator<RBX::PVInstance *,std::allocator<RBX::PVInstance *> >;

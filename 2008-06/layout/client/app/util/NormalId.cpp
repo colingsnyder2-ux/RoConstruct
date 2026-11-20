@@ -1,3 +1,6 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// 2008-06 util/NormalId.cpp (application range 005ec000..005f0000, rows 005ec180..005ec9ef). Inactive native unit.
+// Declarations: the donor util/NormalId.h (read-only) plus native-headers/AppUnit5EC/NormalIdVector.h.
 #include "AppUnit5EC/NormalIdVector.h"
 
 using G3D::Vector3;
@@ -5,11 +8,14 @@ using G3D::Matrix3;
 
 namespace RBX
 {
+	// 005ec180: (id + 3) % 6
 	NormalId normalIdOpposite(NormalId normalId)
 	{
 		return (NormalId)((normalId + NORM_X_NEG) % NORM_UNDEFINED);
 	}
 
+	// per-face uvw -> object transforms; NORM_X 005ec1a0, NORM_Y 005ec1c0, NORM_X_NEG 005ec1e0, NORM_Y_NEG 005ec200,
+	// NORM_Z_NEG 005ec220 (the NORM_Z copy is folded with another Vector3 copy outside this range)
 	template<> Vector3 uvwToObject<NORM_X>(const Vector3& v)     { return Vector3(v.z, v.y, -v.x); }
 	template<> Vector3 uvwToObject<NORM_Y>(const Vector3& v)     { return Vector3(-v.x, v.z, v.y); }
 	template<> Vector3 uvwToObject<NORM_Z>(const Vector3& v)     { return Vector3(v.x, v.y, v.z); }
@@ -17,6 +23,7 @@ namespace RBX
 	template<> Vector3 uvwToObject<NORM_Y_NEG>(const Vector3& v) { return Vector3(v.x, -v.z, v.y); }
 	template<> Vector3 uvwToObject<NORM_Z_NEG>(const Vector3& v) { return Vector3(-v.x, v.y, -v.z); }
 
+	// 005ec240
 	Vector3 normalIdToVector3Internal(NormalId normalId)
 	{
 		Vector3 answer;
@@ -31,6 +38,7 @@ namespace RBX
 		return answer;
 	}
 
+	// 005ec290
 	NormalId Vector3ToNormalId(const Vector3& v)
 	{
 		if (v.x == 1.0f)
@@ -46,11 +54,13 @@ namespace RBX
 		return v.z == -1.0f ? NORM_Z_NEG : NORM_UNDEFINED;
 	}
 
+	// 005ec310 (Matrix3::getColumn 00513240)
 	NormalId Matrix3ToNormalId(const Matrix3& m)
 	{
 		return Vector3ToNormalId(m.getColumn(2));
 	}
 
+	// 005ec330
 	Vector3 uvwToObject(const Vector3& uvwPt, NormalId faceId)
 	{
 		switch (faceId)
@@ -65,6 +75,7 @@ namespace RBX
 		return Vector3::unitX();
 	}
 
+	// 005ec450
 	Vector3 objectToUvw(const Vector3& objectPt, NormalId faceId)
 	{
 		switch (faceId)
@@ -79,6 +90,7 @@ namespace RBX
 		return Vector3::unitX();
 	}
 
+	// 005ec570 (statics 0097ae3c.., guard 0097ae48)
 	const Vector3& normalIdToVector3(NormalId normalId)
 	{
 		switch (normalId)
@@ -93,6 +105,7 @@ namespace RBX
 		return Vector3::zero();
 	}
 
+	// 005ec6e0 (G3D Vector3::unitX/unitY/unitZ function statics)
 	Matrix3 normalIdToMatrix3Internal(NormalId normalId)
 	{
 		const Vector3 uInObject = uvwToObject(Vector3::unitX(), normalId);
@@ -104,6 +117,7 @@ namespace RBX
 			uInObject.z, vInObject.z, wInObject.z);
 	}
 
+	// 005ec800 (statics 0097af00.., guard 0097af24)
 	const Matrix3& normalIdToMatrix3(NormalId normalId)
 	{
 		switch (normalId)
@@ -118,6 +132,7 @@ namespace RBX
 		return Matrix3::identity();
 	}
 
+	// 005ec9d0
 	Vector3 mapToUvw_Legacy(const Vector3& ptInObject, NormalId faceId)
 	{
 		return uvwToObject(ptInObject, faceId);

@@ -1,3 +1,5 @@
+// native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
+// 2008-06 native Jpegjquant1 (inactive): upstream tools/libs/jpeg-6b/jquant1.c, verbatim.
 /*
  * jquant1.c
  *
@@ -15,6 +17,7 @@
 #include "jpeglib.h"
 
 #ifdef QUANT_1PASS_SUPPORTED
+
 
 /*
  * The main purpose of 1-pass quantization is to provide a fast, if not very
@@ -47,6 +50,7 @@
  * equidistant in linear space.  At this writing, gamma correction is not
  * implemented by jdcolor, so nothing is done here.
  */
+
 
 /* Declarations for ordered dithering.
  *
@@ -97,6 +101,7 @@ static const UINT8 base_dither_matrix[ODITHER_SIZE][ODITHER_SIZE] = {
   { 170,106,154, 90,166,102,150, 86,169,105,153, 89,165,101,149, 85 }
 };
 
+
 /* Declarations for Floyd-Steinberg dithering.
  *
  * Errors are accumulated into the array fserrors[], at a resolution of
@@ -131,6 +136,7 @@ typedef INT32 LOCFSERROR;	/* be sure calculation temps are big enough */
 
 typedef FSERROR FAR *FSERRPTR;	/* pointer to error array (in FAR storage!) */
 
+
 /* Private subobject */
 
 #define MAX_Q_COMPS 4		/* max components I can handle */
@@ -162,6 +168,7 @@ typedef struct {
 
 typedef my_cquantizer * my_cquantize_ptr;
 
+
 /*
  * Policy-making subroutines for create_colormap and create_colorindex.
  * These routines determine the colormap to be used.  The rest of the module
@@ -175,6 +182,7 @@ typedef my_cquantizer * my_cquantize_ptr;
  * Note that the latter two routines may impose different policies for
  * different components, though this is not currently done.
  */
+
 
 LOCAL(int)
 select_ncolors (j_decompress_ptr cinfo, int Ncolors[])
@@ -234,6 +242,7 @@ select_ncolors (j_decompress_ptr cinfo, int Ncolors[])
   return total_colors;
 }
 
+
 LOCAL(int)
 output_value (j_decompress_ptr cinfo, int ci, int j, int maxj)
 /* Return j'th output value, where j will range from 0 to maxj */
@@ -247,6 +256,7 @@ output_value (j_decompress_ptr cinfo, int ci, int j, int maxj)
   return (int) (((INT32) j * MAXJSAMPLE + maxj/2) / maxj);
 }
 
+
 LOCAL(int)
 largest_input_value (j_decompress_ptr cinfo, int ci, int j, int maxj)
 /* Return largest input value that should map to j'th output value */
@@ -255,6 +265,7 @@ largest_input_value (j_decompress_ptr cinfo, int ci, int j, int maxj)
   /* Breakpoints are halfway between values returned by output_value */
   return (int) (((INT32) (2*j + 1) * MAXJSAMPLE + maxj) / (2*maxj));
 }
+
 
 /*
  * Create the colormap.
@@ -314,6 +325,7 @@ create_colormap (j_decompress_ptr cinfo)
   cquantize->sv_colormap = colormap;
   cquantize->sv_actual = total_colors;
 }
+
 
 /*
  * Create the color index table.
@@ -376,6 +388,7 @@ create_colorindex (j_decompress_ptr cinfo)
   }
 }
 
+
 /*
  * Create an ordered-dither array for a component having ncolors
  * distinct output values.
@@ -410,9 +423,10 @@ make_odither_array (j_decompress_ptr cinfo, int ncolors)
   return odither;
 }
 
+
 /*
  * Create the ordered-dither tables.
- * Components having the same number of representative colors may
+ * Components having the same number of representative colors may 
  * share a dither table.
  */
 
@@ -437,6 +451,7 @@ create_odither_tables (j_decompress_ptr cinfo)
     cquantize->odither[i] = odither;
   }
 }
+
 
 /*
  * Map some rows of pixels to the output colormapped representation.
@@ -469,6 +484,7 @@ color_quantize (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
   }
 }
 
+
 METHODDEF(void)
 color_quantize3 (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
 		 JSAMPARRAY output_buf, int num_rows)
@@ -495,6 +511,7 @@ color_quantize3 (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
     }
   }
 }
+
 
 METHODDEF(void)
 quantize_ord_dither (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
@@ -545,6 +562,7 @@ quantize_ord_dither (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
   }
 }
 
+
 METHODDEF(void)
 quantize3_ord_dither (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
 		      JSAMPARRAY output_buf, int num_rows)
@@ -588,6 +606,7 @@ quantize3_ord_dither (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
     cquantize->row_index = row_index;
   }
 }
+
 
 METHODDEF(void)
 quantize_fs_dither (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
@@ -696,6 +715,7 @@ quantize_fs_dither (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
   }
 }
 
+
 /*
  * Allocate workspace for Floyd-Steinberg errors.
  */
@@ -713,6 +733,7 @@ alloc_fs_workspace (j_decompress_ptr cinfo)
       (*cinfo->mem->alloc_large)((j_common_ptr) cinfo, JPOOL_IMAGE, arraysize);
   }
 }
+
 
 /*
  * Initialize for one-pass color quantization.
@@ -770,6 +791,7 @@ start_pass_1_quant (j_decompress_ptr cinfo, boolean is_pre_scan)
   }
 }
 
+
 /*
  * Finish up at the end of the pass.
  */
@@ -779,6 +801,7 @@ finish_pass_1_quant (j_decompress_ptr cinfo)
 {
   /* no work in 1-pass case */
 }
+
 
 /*
  * Switch to a new external colormap between output passes.
@@ -790,6 +813,7 @@ new_color_map_1_quant (j_decompress_ptr cinfo)
 {
   ERREXIT(cinfo, JERR_MODE_CHANGE);
 }
+
 
 /*
  * Module initialization routine for 1-pass color quantization.

@@ -35,7 +35,7 @@ namespace RBX
 
 		public:
 			static bool lockedDown;
-
+		  
 		public:
 			ClassDescriptor(ClassDescriptor& base, const char* name);
 
@@ -61,7 +61,7 @@ namespace RBX
 			}
 			bool operator==(const ClassDescriptor& other) const;
 			bool operator!=(const ClassDescriptor& other) const;
-
+		  
 		public:
 			static ClassDescriptor& rootDescriptor()
 			{
@@ -74,7 +74,7 @@ namespace RBX
 		{
 		protected:
 			const ClassDescriptor* descriptor;
-
+		  
 		public:
 			DescribedBase()
 			{
@@ -151,7 +151,7 @@ namespace RBX
 			{
 				return getDescriptor().SignalContainer::members_end(this);
 			}
-
+		  
 		public:
 			static ClassDescriptor& classDescriptor()
 			{

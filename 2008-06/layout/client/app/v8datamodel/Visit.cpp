@@ -1,3 +1,15 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
+// 2008-06 native RBX::Visit unit rows (v8datamodel/Visit.cpp, 005c4400..005c52ff of the application range
+// 005bc000..005c8000), inactive. Verified by tests/record_native_app_unit5bc_2008.py against the committed read-only
+// native v8datamodel/Visit.h (sizeof 0x150: uploadUrl +0x130, pingThread +0x14c, read from the constructor 005c5220,
+// the destructor 005c4790 and setPing 005c4bb0).
+// Evidence:
+//   * dynamic initializers 007f5ba0 (SetUploadUrl, "url"), 007f5bd0 (GetUploadUrl) and the SetPing descriptor
+//     ("pingUrl", "interval"), BoundFuncDesc vtables 00838ed0 / 00838edc / 00838ee8;
+//   * Visit() 005c5220: DescribedCreatable<Visit>() 005c4d10, uploadUrl("NoVisit") (literal 00817f00), pingThread = 0,
+//     setName("Visit");
+//   * setPing 005c4bb0: url != "" (operator!= import 008023cc), new worker_thread(boost::bind(&Visit::ping, url, interval),
+//     "rbx_visit") (0x14 bytes, ctor 005971d0), else pingThread.reset().
 #include "v8datamodel/Visit.h"
 #include "util/Http.h"
 #include <boost/thread.hpp>
@@ -55,6 +67,7 @@ namespace RBX
 		}
 		catch (...)
 		{
+			// 005c4692: the 2008 handler is an empty catch(...) that resumes at 005c464b (no failure message)
 		}
 
 		boost::xtime xt;
@@ -68,6 +81,7 @@ namespace RBX
 	}
 }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class RBX::Reflection::BoundFuncDesc<RBX::Visit,void __cdecl(std::basic_string<char,std::char_traits<char>,std::allocator<char> >,int),2>;
 template class boost::function0<enum RBX::worker_thread::work_result,std::allocator<boost::function_base> >;
 template class boost::scoped_ptr<RBX::worker_thread>;

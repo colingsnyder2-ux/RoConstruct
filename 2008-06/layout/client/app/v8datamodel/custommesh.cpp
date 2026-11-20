@@ -1,3 +1,10 @@
+// 2008-06 native RBX::SpecialShape (inactive); evidence in native-headers/v8datamodel/SpecialShape.h.
+// Verified by tests/record_native_special_shape.py. Original unit 0059ece0..005a008d, initializers
+// 007f4c20..007f4d20, atexit 007fdfe0..007fe090. Unit profile: document-swap flags + /fp:fast (setScale /
+// setVertColor compare with `fld; fcomp mem`). The EnumPropDescriptor constructor 0059fe00 and the
+// TypedPropertyDescriptor<MeshId> Value/boost::any helpers 0059eec0..0059f400 come from header templates; they are
+// exact only against the generated reflection.h / type.h / property.h copies the recorder writes (proposals).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8datamodel/SpecialShape.h"
 #include "v8datamodel/PartInstance.h"
 #include "reflection/enumconverter.h"
@@ -33,6 +40,7 @@ namespace RBX
 	}
 }
 
+// Dynamic initializers 007f4c20, 007f4c60, 007f4ca0, 007f4ce0, 007f4d20 (in this order; Functionality 5 = STANDARD).
 static RBX::Reflection::EnumPropDescriptor<RBX::SpecialShape, RBX::SpecialShape::MeshType> desc_meshType("MeshType", "Data", &RBX::SpecialShape::getMeshType, &RBX::SpecialShape::setMeshType, RBX::Reflection::PropertyDescriptor::STANDARD);
 static RBX::Reflection::PropDescriptor<RBX::SpecialShape, G3D::Vector3> desc_scale("Scale", "Data", &RBX::SpecialShape::getScale, &RBX::SpecialShape::setScale, RBX::Reflection::PropertyDescriptor::STANDARD);
 static RBX::Reflection::PropDescriptor<RBX::SpecialShape, RBX::MeshId> desc_meshId("MeshId", "Data", &RBX::SpecialShape::getMeshId, &RBX::SpecialShape::setMeshId, RBX::Reflection::PropertyDescriptor::STANDARD);
@@ -102,6 +110,7 @@ namespace RBX
 	}
 }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::SpecialShape::MeshType>;
 template class std::_Container_base_aux_alloc_real<std::allocator<enum RBX::SpecialShape::MeshType> >;
 template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum RBX::SpecialShape::MeshType> > >;
@@ -113,4 +122,6 @@ template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *
 template class std::allocator<std::pair<RBX::Name const * const,enum RBX::SpecialShape::MeshType> >;
 template class std::vector<enum RBX::SpecialShape::MeshType,std::allocator<enum RBX::SpecialShape::MeshType> >;
 
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
 template void RBX::Name::callDoDeclare<RBX::sSpecialShape>();
+

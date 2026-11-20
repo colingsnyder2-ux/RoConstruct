@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8world/GeoPair2008.h"
 #include "util/Math.h"
 
@@ -103,7 +104,7 @@ namespace RBX
 
 		return d;
 	}
-
+	
 	void GeoPair::computeEdgeEdgePlane(RBX::PairParams& _params)
 	{
 		const G3D::CoordinateFrame& body0PV = this->body0->getPVUnsafe().position;
@@ -163,6 +164,7 @@ namespace RBX
 			_params.normal = body0NormalDotCalc - body1NormalDotCalc;
 			_params.length = -_params.normal.unitize();
 
+			
 		}
 		else
 		{

@@ -6,6 +6,8 @@
 namespace RBX {
 class PartInstance;
 namespace HUMAN {
+// Inactive relative layout of HumanoidState +0x20 through +0x9f.
+// PartInstance identity and float semantics need independent native proof.
 struct HumanoidFloorFields {
     bool active;
     boost::shared_ptr<PartInstance> floorPart;

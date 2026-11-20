@@ -1,3 +1,5 @@
+// 2008-06 override of tools/rbxgs/Client/App/include/v8datamodel/Visit.h: class names are .data
+// char arrays passed directly as template arguments (see native-headers/util/Name.h).
 #pragma once
 #include "v8tree/Instance.h"
 #include "v8tree/Service.h"

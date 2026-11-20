@@ -1,3 +1,6 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// Donor-derived TU (rbxgs v8datamodel/ICharacterSubject.cpp) on the native headers with the 2008 compiler; exact functions verified by
+// check_native_class.py (inactive range evidence, not identity/layout gated).
 #include "v8datamodel/ICharacterSubject.h"
 #include "v8datamodel/Camera.h"
 #include "v8datamodel/UserController.h"
@@ -31,6 +34,11 @@ namespace RBX
 		return G3D::CoordinateFrame(G3D::Matrix3::identity(), newCameraPt);
 	}
 
+	// 00641390 (415 bytes, `ret 0xc`; vtable ICameraSubject slot, registry ?zoom@ICharacterSubject@RBX@@EAE_NMAAVCoordinateFrame@G3D@@0@Z).
+	// The 2008 body differs from the donor: it works on a copy of the goal that starts from goalFromDistance 00641280
+	// (focus, goal, unoccludedDistance +0x40) while wasOccluded (+0x3d) is set (Matrix3 copy 00513220), and at the end
+	// either stores the new distance in unoccludedDistance (occluded) or writes the copy back to cameraGoal.
+	// Camera::getNewZoomDistance 005cc240, Vector3::unitize 00518470.
 	bool ICharacterSubject::zoom(const float in, G3D::CoordinateFrame& cameraGoal, G3D::CoordinateFrame& cameraFocus)
 	{
 		G3D::CoordinateFrame goal = wasOccluded ? goalFromDistance(cameraFocus, cameraGoal, unoccludedDistance) : cameraGoal;
@@ -129,6 +137,20 @@ namespace RBX
 		cameraSetWalkOrientation(angle, !cursorLocked);
 	}
 
+	// 00641800 (1085 bytes; vtable 0083d39c, ICameraSubject slot 5). No donor body. Close to the subject (< 2.75, the
+	// constant 0084a5f8 that onHeartBeat also uses) the goal follows the focus; otherwise the focus offset is smoothed
+	// (focusOffsetERA +0x18 pushAndGetAverage 00666290, focusERA +0x8 getAverage 006662d0, movement * 16 /= 30 through
+	// Vector3::operator/= 005183c0), the goal keeps its horizontal distance (Vector3::xz 005185f0, Vector2::direction
+	// 005cbe70) and its height offset, and goalInFocus +0x48 is stored in Math::getFocusSpace 005dec60 space
+	// (pointToObjectSpace 00501ca0). Then occlusion: goalFromDistance 00641280, testOcclusion 00641530, wasOccluded
+	// +0x3d, unoccludedDistance +0x40, tellCameraNear (slot 8). getLocation is ILocation slot 0 through the vbptr +4;
+	// getIntendedMovementVector slot 9, getIntendedRotationAboutYAxis slot 10 (result unused), rotationERA +0x34
+	// getAverage 00666270 / pushAndGetAverage 00666250 (results unused), CoordinateFrame::getHeading (getColumn 00513240).
+	// PARKED (b23, 3 hypotheses): the assigned focusOffset gives the target frame (sub esp, 0x10c; first divergence
+	// moves from insn 0 to insn 43) but 1145 B vs 1085 B (with the Camera::updateGoal forms below; 1155 B without). Remaining: the target calls Vector2::direction out of line
+	// (005cbe70, placeholder COMDAT) where this unit inlines it, and the getLocation return slots (0xbc / 0x8c) are
+	// swapped. Rejected alone: Camera::updateGoal forms (`goal += focus - old`, `.direction() * distance`): frame unchanged;
+	// `.fastDirection()`: still inlined.
 	void ICharacterSubject::stepGoalAndFocus(G3D::CoordinateFrame& cameraGoal, G3D::CoordinateFrame& cameraFocus, bool cameraExternallyAdjusted)
 	{
 		float distance = 0.0f;

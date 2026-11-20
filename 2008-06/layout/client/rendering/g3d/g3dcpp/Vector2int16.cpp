@@ -1,9 +1,11 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// 2008-06 native G3DVector2int16 (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/Vector2int16.cpp, verbatim.
 #line 1 ".\\G3Dcpp\\Vector2int16.cpp"
 /**
  @file Vector2int16.cpp
-
+ 
  @author Morgan McGuire, matrix@graphics3d.com
-
+  
  @created 2003-08-09
  @edited  2006-01-29
  */
@@ -22,18 +24,22 @@ Vector2int16::Vector2int16(const class Vector2& v) {
     y = (int16)iFloor(v.y + 0.5);
 }
 
+
 Vector2int16::Vector2int16(class BinaryInput& bi) {
     deserialize(bi);
 }
+
 
 void Vector2int16::serialize(class BinaryOutput& bo) const {
     bo.writeInt16(x);
     bo.writeInt16(y);
 }
 
+
 void Vector2int16::deserialize(class BinaryInput& bi) {
     x = bi.readInt16();
     y = bi.readInt16();
 }
+
 
 }

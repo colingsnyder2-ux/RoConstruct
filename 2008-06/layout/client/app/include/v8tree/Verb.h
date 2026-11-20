@@ -6,6 +6,7 @@
 #include <string>
 
 namespace RBX {
+// novtable: 005833e0 never stores a vtable; the derived constructor does (View+0x10 sets 00819140 after the call).
 class __declspec(novtable) Verb : public Debugable {
     const Name& name;
     VerbContainer* container;

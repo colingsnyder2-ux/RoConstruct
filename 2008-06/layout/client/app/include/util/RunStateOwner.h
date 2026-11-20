@@ -1,3 +1,4 @@
+// Inactive candidate: fields follow recovered 00556b00 constructor.
 #pragma once
 #include "reflection/reflection.h"
 #include "reflection/signal.h"
@@ -139,6 +140,10 @@ namespace RBX
 		double frameRate() const { return stopwatch.smoothFPS(); }
 		double dutyCycle() const { return (unknown0x1d8 + unknown0x1d0 + unknown0x1c8) * (1.0 / framePeriod); }
 		// INFERRED: 005a0090/005a00b0/005a00d0 are the RunService CPU-percent callbacks bound by the
+		// WorkspaceStatsItem constructor 005a5c90 ("Physics CPU %" / "Render CPU %" / "Ui CPU %"; see
+		// work/big-mining-2008-20261020/workspace-stats-native-constructor-contract.json). Each is a
+		// __thiscall getter reading framePeriod (+0x1c0) and one accumulated-time double (+0x1c8/+0x1d0/
+		// +0x1d8), computing (1.0 / framePeriod) * time * 100.0 -- the same formula as dutyCycle().
 		double getPhysicsCpuPercent() const; // 005a0090
 		double getRenderCpuPercent() const;  // 005a00b0
 		double getUiCpuPercent() const;      // 005a00d0
@@ -153,6 +158,9 @@ namespace RBX
 		void runViewValid(IRunView*);
 		virtual void onAncestorChanged(const AncestorChanged& event);
 		// INFERRED: name is a placeholder (identity tier). Body byte-proved: unconditionally set stopRequested
+		// (+0x248) and stateChangedCondition.notify_all() (+0x264). Same stop word and condition notify as the
+		// guarded 00554440 sibling; caller 0057b800 (DataModel swaps this->runService shared_ptr +0x20c/+0x210)
+		// stops the old RunService with it.
 		void requestStop();                       // 00554330
 	private:
 		void runProc(boost::shared_ptr<DataModel> dataModel);

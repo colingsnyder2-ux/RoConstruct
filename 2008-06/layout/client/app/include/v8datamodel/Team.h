@@ -1,4 +1,17 @@
 #pragma once
+// 2008-06 native RBX::Team (inactive). Shape after the donor tools/rbxgs Team.h; every field,
+// virtual and descriptor below is read from the 2008-06 binary:
+//   RTTI       vtable 0082ea84 .?AVTeam@RBX@@ -> DescribedCreatable<Team, Instance, sTeam>
+//              (21 bases; name mangled $1?sTeam@2@3QBDB, i.e. a const char array).
+//   size       0x13c: Instance is 0x130; constructor 005665e0 stores +0x130 (int 0),
+//              +0x134 (BrickColor 194, then 1 after setName), +0x138/+0x139 (bool 1, 1).
+//   vtable     slot 2 askAddChild 00565ff0 (return true), slot 3 askSetParent 00565e00
+//              (dynamic_cast to the Teams type descriptor 009455e0).
+//   descriptors (dynamic initializers 007f3240..007f3300, "Data" category 00822490):
+//              prop_Score 009748cc (PropDescriptor<Team,int>, getter 00565e30, setter 005666d0),
+//              prop_Color 00974904 ("TeamColor", 00565e40 / 00566700),
+//              prop_AutoAssignable 009748b0 (00565e50 / 00566720),
+//              prop_AutoColorCharacters 009748e8 (BoundProp<bool,1>, member +0x139).
 #include "v8tree/Instance.h"
 #include "v8datamodel/BrickColor.h"
 

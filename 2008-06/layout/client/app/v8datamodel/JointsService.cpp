@@ -1,3 +1,5 @@
+// 2008-06 native RBX::JointsService (inactive); evidence in native-headers/v8datamodel/JointsService.h.
+// Verified by tests/record_native_services.py.
 #include "v8datamodel/JointsService.h"
 #include "v8datamodel/Workspace.h"
 #include "v8tree/Service.h"
@@ -5,6 +7,7 @@
 
 namespace RBX
 {
+	// 005e5500: no assertion code in 2008; the owner is cast back to its JointInstance and unparented.
 	void JointsService::onEvent(const World* source, AutoDestroy event)
 	{
 		IJointOwner* jointOwner = event.joint->getJointOwner();
@@ -13,6 +16,8 @@ namespace RBX
 			static_cast<JointInstance*>(jointOwner)->setParent(NULL);
 	}
 
+	// 005e5860: jump table on getJointType() (vtable +0x14); ANCHOR_JOINT and others fall through. The joint is read
+	// once into a local (esi holds it across all six create calls; this is spilled instead).
 	void JointsService::onEvent(const World* source, AutoJoin event)
 	{
 		Joint* joint = event.joint;
@@ -43,6 +48,11 @@ namespace RBX
 		ji->setParent(this);
 	}
 
+	// 005e5b50: the util/Events.h Notifier<World, E>::disconnect / connect helpers (each tests world +0x150 itself and
+	// takes the null-checked Listener upcast of this), the same shape as the exact sibling PhysicsService::
+	// onServiceProvider 005e8ec0. Rejected: one if (world) block around both calls per phase (156 bytes, world+0x20
+	// null-check arm); a separate if (world) per call with dynamic_cast<Listener*>(this) (140 bytes, no this null
+	// check before the first world test).
 	void JointsService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
 	{
 		Notifier<World, AutoJoin>::disconnect(world, this);
@@ -102,4 +112,5 @@ namespace RBX
 	}
 }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class boost::shared_ptr<RBX::JointInstance>;

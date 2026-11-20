@@ -1,3 +1,5 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// 2008-06 native G3DColor4 (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/Color4.cpp, verbatim.
 #line 1 ".\\G3Dcpp\\Color4.cpp"
 /**
  @file Color4.cpp
@@ -7,6 +9,7 @@
  @author Morgan McGuire, matrix@graphics3d.com
  @cite Portions by Laura Wollstadt, graphics3d.com
  @cite Portions based on Dave Eberly's Magic Software Library at http://www.magic-software.com
+
 
  @created 2002-06-25
  @edited  2006-01-10
@@ -62,15 +65,17 @@ unsigned int Color4::hashCode() const {
 
 Color4 Color4::fromARGB(uint32 x) {
     return Color4(
-        (float)((x >> 16) & 0xFF),
+        (float)((x >> 16) & 0xFF), 
         (float)((x >> 8) & 0xFF),
-        (float)(x & 0xFF),
+        (float)(x & 0xFF), 
         (float)((x >> 24) & 0xFF)) / 255.0;
 }
+
 
 Color4::Color4(BinaryInput& bi) {
     deserialize(bi);
 }
+
 
 void Color4::deserialize(BinaryInput& bi) {
     r = bi.readFloat32();
@@ -79,12 +84,14 @@ void Color4::deserialize(BinaryInput& bi) {
     a = bi.readFloat32();
 }
 
+
 void Color4::serialize(BinaryOutput& bo) const {
     bo.writeFloat32(r);
     bo.writeFloat32(g);
     bo.writeFloat32(b);
     bo.writeFloat32(a);
 }
+
 
 //----------------------------------------------------------------------------
 
@@ -133,3 +140,4 @@ std::string Color4::toString() const {
 //----------------------------------------------------------------------------
 
 }; // namespace
+

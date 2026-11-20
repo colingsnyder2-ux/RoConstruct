@@ -1,3 +1,5 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /D_DLL /I{headers}/../../../tools/openrbx/Client/win /I{headers}/../../../tools/openrbx/3rdparty/scintilla/include
+// 2008-06 native Scintilla::CScintillaCtrl (inactive): upstream tools/openrbx/Client/win/ScintillaCtrl.cpp, verbatim (the PJN Naughter MFC wrapper in namespace Scintilla, as the exe's unit names show).
 /*
 Module : ScintillaCtrl.CPP
 Purpose: Defines the implementation for an MFC wrapper class for the Scintilla edit control (www.scintilla.org)
@@ -10,17 +12,17 @@ History: PJN / 19-03-2004 1. Initial implementation synchronized to the v1.59 re
          PJN / 06-06-2004 1. Updated class to work with Scintilla v1.61
          PJN / 20-12-2004 1. Updated class to work with Scintilla v1.62.
                           2. Sample app now includes a common control 6 manifest
-                          3. Sample app now includes an example of scintilla autocompletion. When you type
-                          "scintilla is " case insensitively a autocompletion list is displayed which allows
-                          "very cool", "easy" or "way cool!!" to be entered.
+                          3. Sample app now includes an example of scintilla autocompletion. When you type 
+                          "scintilla is " case insensitively a autocompletion list is displayed which allows 
+                          "very cool", "easy" or "way cool!!" to be entered. 
                           4. Sample app now includes an example of scintilla calltips. Whenever you hover
-                          over text which is "author " case insensitively, a call tip with the text
+                          over text which is "author " case insensitively, a call tip with the text 
                           "PJ Naughter" is displayed.
          PJN / 10-07-2005 1. Updated class to work with Scintilla v1.64.
-                          2. Fixed a number of warnings when the code is compiled using Visual Studio .NET 2003.
-         PJN / 03-01-2006.1. Updated class to work with Scintilla v1.67. New messages wrapped include:
+                          2. Fixed a number of warnings when the code is compiled using Visual Studio .NET 2003. 
+         PJN / 03-01-2006.1. Updated class to work with Scintilla v1.67. New messages wrapped include: 
                           SCI_MARKERADDSET, SCI_SETPASTECONVERTENDINGS, SCI_GETPASTECONVERTENDINGS,
-                          SCI_SELECTIONDUPLICATE and SCI_GETSTYLEBITSNEEDED.
+                          SCI_SELECTIONDUPLICATE and SCI_GETSTYLEBITSNEEDED. 
                           2. Updated copyright messages
          PJN / 14-03-2006 1. Updated class to work with Scintilla v1.68. New messages wrapped include:
                           SCI_CALLTIPUSESTYLE, SCI_SETCARETLINEBACKALPHA and SCI_GETCARETLINEBACKALPHA.
@@ -31,18 +33,21 @@ All rights reserved.
 
 Copyright / Usage Details:
 
-You are allowed to include the source code in any product (commercial, shareware, freeware or otherwise)
-when your product is released in binary form. You are allowed to modify the source code in any way you want
-except you cannot modify the copyright details at the top of each module. If you want to distribute source
-code with your application, then you are only allowed to distribute versions released by the author. This is
-to maintain a single distribution point for the source code.
+You are allowed to include the source code in any product (commercial, shareware, freeware or otherwise) 
+when your product is released in binary form. You are allowed to modify the source code in any way you want 
+except you cannot modify the copyright details at the top of each module. If you want to distribute source 
+code with your application, then you are only allowed to distribute versions released by the author. This is 
+to maintain a single distribution point for the source code. 
 
 */
+
 
 /////////////////////////////////  Includes  //////////////////////////////////
 
 #include "stdafx.h"
 #include "ScintillaCtrl.h"
+
+
 
 //////////////////////////////// Statics / Macros /////////////////////////////
 
@@ -54,6 +59,8 @@ static char BASED_CODE THIS_FILE[] = __FILE__;
 
 namespace Scintilla
 {
+
+
 
 ////////////////////////////////// Implementation /////////////////////////////
 
@@ -124,6 +131,7 @@ CString CScintillaCtrl::GetSelText()
 
   return sSelText;
 }
+
 
 //Everything else after this point was auto generated using the "ConvertScintillaiface.js" script
 

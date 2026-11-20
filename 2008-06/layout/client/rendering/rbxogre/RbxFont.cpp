@@ -1,5 +1,8 @@
+// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 #undef OGRE_NONCLIENT_BUILD
 #define NOMINMAX
+// 2008-06 native Ogre::RbxFont (inactive): G3D 6.09 GFont ctor/fromFile ported to Ogre textures.
+// Body order follows the original 00684b10 / 00684eb0 and upstream GLG3D/GFont.cpp.
 #include "OgreRbx/VRbxFont2008.h"
 #include "OgreRbx/VisualEngine2008.h"
 #include "OgreRbxNode/TwoDManager2008.h"
@@ -11,6 +14,9 @@
 
 namespace Ogre
 {
+	// Unique texture names "ft0", "ft1", ... (original counter at 0097dbc8, format "ft%d" at 0084e808).
+	// External linkage: the original stores the increment after the _snprintf argument pushes, which an
+	// internal-linkage static does not reproduce. Name unknown (placeholder).
 	// INFERRED: counter spelling; original read/write address0097dbc8.
 	int fontTextureCount = 0;
 
@@ -238,6 +244,7 @@ namespace Ogre
 
 		return bounds;
 	}
+
 
 	SharedPtr<RbxFont> RbxFont::fromFile(const std::string& filename)
 	{

@@ -9,7 +9,7 @@
 #include "util/NormalId.h"
 #include "util/Velocity.h"
 
-namespace RBX
+namespace RBX 
 {
 	class Math { /* Size=0x1 */
 		public:

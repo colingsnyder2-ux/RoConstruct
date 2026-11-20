@@ -1,3 +1,6 @@
+// native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/jpeg-6b /TC
+// IJG JPEG 6b decoder pipeline; inactive pending reference, provider, ABI and runtime checks.
+
 /*
  * jddctmgr.c
  *
@@ -20,6 +23,7 @@
 #include "jpeglib.h"
 #include "jdct.h"		/* Private declarations for DCT subsystem */
 
+
 /*
  * The decompressor input side (jdinput.c) saves away the appropriate
  * quantization table for each component at the start of the first scan
@@ -36,6 +40,7 @@
  * to zeroes; the result of the IDCT will be a neutral gray level.
  */
 
+
 /* Private subobject for this module */
 
 typedef struct {
@@ -51,6 +56,7 @@ typedef struct {
 
 typedef my_idct_controller * my_idct_ptr;
 
+
 /* Allocated multiplier tables: big enough for any supported variant */
 
 typedef union {
@@ -63,6 +69,7 @@ typedef union {
 #endif
 } multiplier_table;
 
+
 /* The current scaled-IDCT routines require ISLOW-style multiplier tables,
  * so be sure to compile that code if either ISLOW or SCALING is requested.
  */
@@ -73,6 +80,7 @@ typedef union {
 #define PROVIDE_ISLOW_TABLES
 #endif
 #endif
+
 
 /*
  * Prepare for an output pass.
@@ -232,6 +240,7 @@ start_pass (j_decompress_ptr cinfo)
     }
   }
 }
+
 
 /*
  * Initialize IDCT manager.

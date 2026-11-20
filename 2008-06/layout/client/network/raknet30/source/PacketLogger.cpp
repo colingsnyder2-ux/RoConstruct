@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /GS- /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 #include "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/PacketLogger.h"
 
 #include "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/BitStream.h"
@@ -117,6 +118,7 @@ char* PacketLogger::BaseIDTOString(unsigned char Id)
 /// Software Foundation; either version 2 of the License, or (at your
 /// option) any later version.
 
+
 #include <stdio.h>
 #include <string.h>
 PacketLogger::PacketLogger()
@@ -233,6 +235,7 @@ void PacketLogger::OnInternalPacket(InternalPacket *internalPacket, unsigned fra
 		{
 			const char *uniqueIdentifier = rakPeer->GetRPCString((const char*) internalPacket->data, internalPacket->dataBitLength, isSend==true ? remoteSystemAddress : UNASSIGNED_SYSTEM_ADDRESS);
 
+			
 			if (internalPacket->data[0]==ID_TIMESTAMP)
 				sprintf(str, "%s%s,RpT,%5i,%5i,%s,%5i,%i,%u:%i,%u:%i%s",prefix,sendType, internalPacket->messageNumber,frameNumber,
 				uniqueIdentifier, internalPacket->dataBitLength,time,
@@ -277,6 +280,9 @@ void PacketLogger::SetPrintAcks(bool print)
 {
 	printAcks=print;
 }
+// 004badc0 ?IDTOString@PacketLogger@@IAEPADE@Z (31 bytes). Laid out right after UserIDTOString 004badb0 in this unit;
+// calls BaseIDTOString 004baab0, then tail-jumps through vtable slot 0x48 (UserIDTOString) when it returns null.
+// Called by Exposer::IDTOString 0049f180. Body follows the RakNet 3.0 PacketLogger.cpp source.
 char* PacketLogger::IDTOString(unsigned char Id)
 {
 	char *out;
@@ -295,3 +301,5 @@ void PacketLogger::SetSuffix(const char *_suffix)
 	strncpy(suffix, _suffix, 255);
 	suffix[255]=0;
 }
+
+

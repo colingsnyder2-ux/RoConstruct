@@ -1,4 +1,6 @@
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #undef _RELEASEASSERT
+// 2008-06 native RBX::TreeStage (inactive), second batch: tree-walk helpers and the assembly-set rows.
 #include <algorithm>
 #include "AppUnit668/TreeStage.h"
 #include "AppUnit66C/AssemblyStage.h"
@@ -10,6 +12,7 @@
 
 namespace RBX
 {
+	// 00669090
 	void TreeStage::reconcile(Primitive* left, Primitive* right, int leftDepth, int rightDepth, Joint*& lightest, int& lightestSide)
 	{
 		for (;;)
@@ -40,6 +43,7 @@ namespace RBX
 		}
 	}
 
+	// 006691e0
 	void TreeStage::dirtyAssemblyAndRemove(Assembly* a)
 	{
 		if (a->inPipeline() && a->downstreamOfStage(this))
@@ -49,6 +53,7 @@ namespace RBX
 		}
 	}
 
+	// 00669290
 	void TreeStage::eraseDirtyAssembly(Assembly* a)
 	{
 		assemblies.erase(a);
@@ -60,12 +65,14 @@ namespace RBX
 		}
 	}
 
+	// 006692e0
 	void TreeStage::eraseDirtyAssemblyAndDelete(Assembly* a)
 	{
 		eraseDirtyAssembly(a);
 		delete a;
 	}
 
+	// 00668f20
 	void TreeStage::cleanAssembly(Assembly* a)
 	{
 		if (!a->inPipeline())
@@ -83,6 +90,7 @@ namespace RBX
 			static_cast<AssemblyStage*>(getDownstream())->wakeAssembly(a);
 	}
 
+	// 00668fa0
 	void TreeStage::cleanEdge(Edge* e)
 	{
 		Assembly* a0 = e->getPrimitive(0)->getAssemblyNoCheck();
@@ -98,6 +106,7 @@ namespace RBX
 		}
 	}
 
+	// 00669150
 	void TreeStage::collectTopJoints(Primitive* p, std::set<Primitive*>* out)
 	{
 		for (Joint* j = p->getFirstJoint(); j; j = p->getNextJoint(j))
@@ -135,6 +144,7 @@ namespace RBX
 		return Joint::NO_JOINT;
 	}
 
+	// 00669b60
 	void TreeStage::addJointEdge(Joint* j)
 	{
 		Primitive* p1 = j->getPrimitive(1);
@@ -158,6 +168,7 @@ namespace RBX
 		}
 	}
 
+	// 00669c00
 	void TreeStage::onEdgeAdded(Edge* e)
 	{
 		jointTypeOf(e);
@@ -169,6 +180,7 @@ namespace RBX
 			addPendingEdge(e);
 	}
 
+	// 00669870
 	TreeStage::TreeStage(IStage* upstream, World* world)
 		: IWorldStage(upstream, new AssemblyStage(this, world), world)
 		, maxTreeDepth(0)
@@ -176,6 +188,7 @@ namespace RBX
 	{
 	}
 
+	// 00669340
 	void TreeStage::addPendingEdge(Edge* e)
 	{
 		if (dirty)
@@ -195,6 +208,7 @@ namespace RBX
 		}
 	}
 
+	// 00669560
 	void TreeStage::processEdge(Edge* e, Primitive* from)
 	{
 		Primitive* other = e->getPrimitive(0);
@@ -254,6 +268,7 @@ namespace RBX
 			dirtyAssembly(a);
 	}
 
+	// 006697a0
 	void TreeStage::walkEdges(Edge* e, Primitive* from, int depth)
 	{
 		maxTreeDepth = std::max(maxTreeDepth, depth);
@@ -285,6 +300,9 @@ namespace RBX
 		}
 	}
 
+	// 006699a0
+	// The iterator is declared before the loop and assigned: 00669a02..00669a12 load begin() (`mov eax, [eax]`) and copy
+	// it into the loop register (`mov ebx, eax`); the for-init declaration form fuses the two (`mov ebx, [eax]`).
 	Joint* TreeStage::findLightestDownstream(Primitive* p, Primitive*& lightestOther)
 	{
 		std::set<Primitive*> reachable;
@@ -314,6 +332,9 @@ namespace RBX
 		return lightest;
 	}
 
+	// 00669410: cleanAssembly 00668f20 over assemblies +0x38 (the iterator declared before the loop, as in
+	// findLightestDownstream), the inline clear (_Erase 00669050), then cleanEdge 00668fa0 / inEdgeList +0x1c = false /
+	// erase 0064aa20 of edges.begin() while edges +0x58 is non-empty (size +0x74), and dirty +0x14 = false.
 	void TreeStage::process()
 	{
 		if (dirty)
@@ -337,6 +358,9 @@ namespace RBX
 		}
 	}
 
+	// 00669c70: getTopPrimitive 005e7490 is called before lightestOther is zeroed (00669c9a..00669caa), so the top
+	// primitive is a named local ahead of it; findLightestDownstream 006699a0, replaceLightest 00669940, dirty +0x14;
+	// other edges go to 00669710; then IPipelined::removeFromStage 00645840 and 005e86a0.
 	void TreeStage::onEdgeRemoving(Edge* e)
 	{
 		if (jointTypeOf(e) >= Joint::ANCHOR_JOINT)
@@ -359,6 +383,9 @@ namespace RBX
 		removeEdgeFromPrimitives(e);
 	}
 
+	// 00669710: edges that are not anchoring joints (onEdgeRemoving 00669c70): the downstream onEdgeRemoving (slot 5)
+	// when the edge is downstream of this stage, then edges +0x58 erase-by-key 005e9f60 and inEdgeList +0x1c = false.
+	// The key copy is stored before the inEdgeList test (00669741), as in walkEdges.
 	void TreeStage::onEdgeRemovingNonJoint(Edge* e)
 	{
 		if (e->downstreamOfStage(this))

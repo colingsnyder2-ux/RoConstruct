@@ -1,4 +1,6 @@
 #pragma once
+// 2008-06: the reflection Type of RBX::Controller::InputType uses the EnumDesc singleton (inactive).
+// Evidence: EnumDesc<Controller::InputType> is used for string<->enum conversion in genericConvert.
 
 #include "reflection/type.h"
 #include "util/Controller.h"

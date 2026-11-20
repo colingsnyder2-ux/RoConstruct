@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
 #include "AppDraw/HitTest.h"
 #include "G3D/CollisionDetection.h"
 #include "G3D/AABox.h"

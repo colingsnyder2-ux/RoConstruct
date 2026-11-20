@@ -1,3 +1,6 @@
+// native-flags: /O2 /GS- /MD /fp:fast /I{headers}/../../../tools/libs/jpeg-6b /TC
+// IJG JPEG 6b encoder pipeline; inactive pending reference, provider, ABI and runtime checks.
+
 /*
  * jcdctmgr.c
  *
@@ -15,6 +18,7 @@
 #include "jinclude.h"
 #include "jpeglib.h"
 #include "jdct.h"		/* Private declarations for DCT subsystem */
+
 
 /* Private subobject for this module */
 
@@ -38,6 +42,7 @@ typedef struct {
 } my_fdct_controller;
 
 typedef my_fdct_controller * my_fdct_ptr;
+
 
 /*
  * Initialize for a processing pass.
@@ -165,6 +170,7 @@ start_pass_fdctmgr (j_compress_ptr cinfo)
   }
 }
 
+
 /*
  * Perform forward DCT on one or more blocks of a component.
  *
@@ -260,6 +266,7 @@ forward_DCT (j_compress_ptr cinfo, jpeg_component_info * compptr,
   }
 }
 
+
 #ifdef DCT_FLOAT_SUPPORTED
 
 METHODDEF(void)
@@ -331,6 +338,7 @@ forward_DCT_float (j_compress_ptr cinfo, jpeg_component_info * compptr,
 }
 
 #endif /* DCT_FLOAT_SUPPORTED */
+
 
 /*
  * Initialize FDCT manager.

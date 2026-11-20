@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr
 #include "CSaveToRobloxDialog.h"
 #include <exdispid.h>
 
@@ -27,6 +28,7 @@ void CSaveToRobloxDialog::WindowClosing(BOOL, VARIANT_BOOL* cancel)
         OnCancel();
 }
 
+// Original 004060d0 returns the application-owned base URL CString.
 CString applicationBaseUrl();
 
 CPublishAsPlaceDialog::CPublishAsPlaceDialog(IDispatch* dispatch, CWnd* parent)

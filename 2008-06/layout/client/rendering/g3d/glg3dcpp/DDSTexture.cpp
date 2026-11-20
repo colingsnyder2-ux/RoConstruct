@@ -1,3 +1,5 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// 2008-06 native G3DDDSTexture (inactive): upstream tools/libs/g3d-6.09/source/GLG3Dcpp/DDSTexture.cpp, verbatim.
 #line 1 ".\\glg3dcpp\\DDSTexture.cpp"
 /**
  @file DDSTexture.cpp
@@ -53,6 +55,7 @@ namespace G3D {
                 ((DWORD)(BYTE)(ch2) << 16) | ((DWORD)(BYTE)(ch3) << 24 ))
 #endif //defined(MAKEFOURCC)
 
+
 //FOURCC codes for DX compressed-texture pixel formats
 
 #define FOURCC_DXT1  (MAKEFOURCC('D','X','T','1'))
@@ -65,6 +68,7 @@ namespace G3D {
 const uint32 DDPF_ALPHAPIXELS   = 0x00000001l;
 const uint32 DDPF_FOURCC        = 0x00000004l;
 const uint32 DDPF_RGB           = 0x00000040l;
+ 
 
 //DDPIXELFORMAT
 
@@ -123,6 +127,7 @@ typedef struct _DDPIXELFORMAT
     } DUMMYUNIONNAMEN(5);
 } DDPIXELFORMAT;
 
+
 /*
  * DDSCAPS2
  */
@@ -138,6 +143,7 @@ typedef struct _DDSCAPS2
     } DUMMYUNIONNAMEN(1);
 } DDSCAPS2;
 
+
 const uint32 DDSCAPS2_VOLUME                        = 0x00200000L;
 const uint32 DDSCAPS2_CUBEMAP                       = 0x00000200L;
 const uint32 DDSCAPS2_CUBEMAP_POSITIVEX             = 0x00000400L;
@@ -146,6 +152,8 @@ const uint32 DDSCAPS2_CUBEMAP_POSITIVEY             = 0x00001000L;
 const uint32 DDSCAPS2_CUBEMAP_NEGATIVEY             = 0x00002000L;
 const uint32 DDSCAPS2_CUBEMAP_POSITIVEZ             = 0x00004000L;
 const uint32 DDSCAPS2_CUBEMAP_NEGATIVEZ             = 0x00008000L;
+
+
 
 /*
  * DDCOLORKEY
@@ -175,7 +183,7 @@ typedef struct _DDSURFACEDESC2
     union
     {
         DWORD           dwBackBufferCount;      // number of back buffers requested
-        DWORD           dwDepth;                // the depth if this is a volume texture
+        DWORD           dwDepth;                // the depth if this is a volume texture 
     } DUMMYUNIONNAMEN(5);
     union
     {
@@ -238,6 +246,7 @@ const uint32  DDSD_ZBUFFERBITDEPTH    = 0x00000040l;
  * dwAlphaBitDepth is valid.
  */
 const uint32  DDSD_ALPHABITDEPTH      = 0x00000080l;
+
 
 /*
  * lpSurface is valid.
@@ -336,7 +345,7 @@ Texture::DDSTexture::DDSTexture(const std::string& filename) :
         debugAssert( ddsSurfaceDesc.dwFlags & DDSD_PIXELFORMAT );
 
         // Check to make sure it isn't a volume texture
-        debugAssert( !(ddsSurfaceDesc.ddsCaps.dwCaps2 & DDSCAPS2_VOLUME) );
+        debugAssert( !(ddsSurfaceDesc.ddsCaps.dwCaps2 & DDSCAPS2_VOLUME) ); 
 
         if ( ddsSurfaceDesc.ddsCaps.dwCaps2 & DDSCAPS2_CUBEMAP ) {
             debugAssert( (ddsSurfaceDesc.ddsCaps.dwCaps2 & DDSCAPS2_CUBEMAP_POSITIVEX) &&
@@ -368,7 +377,7 @@ Texture::DDSTexture::DDSTexture(const std::string& filename) :
                     break;
             }
         } else if (ddsSurfaceDesc.ddpfPixelFormat.dwFlags & DDPF_RGB) {
-
+            
             if ((ddsSurfaceDesc.ddpfPixelFormat.dwRBitMask == 8) &&
                 (ddsSurfaceDesc.ddpfPixelFormat.dwGBitMask == 8) &&
                 (ddsSurfaceDesc.ddpfPixelFormat.dwBBitMask == 8) &&
@@ -384,7 +393,7 @@ Texture::DDSTexture::DDSTexture(const std::string& filename) :
 
         uint8* ddsInputPos = const_cast<uint8*>(ddsInput.getCArray());
         ddsInputPos += sizeof(ddsSurfaceDesc) + 4;
-
+  
         //Setup DDS data
         bytes = new uint8[ddsInput.size() - ddsInput.getPosition()];
         memcpy(bytes, ddsInputPos, ddsInput.size() - ddsInput.getPosition());
@@ -404,6 +413,7 @@ Texture::DDSTexture::DDSTexture(const std::string& filename) :
             e.c_str());
     }
 }
+
 
 Texture::DDSTexture::~DDSTexture() {
     delete[] bytes;

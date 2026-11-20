@@ -1,3 +1,17 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// 2008-06 native rows of the reflection/signal.cpp translation unit 0056a590..0056bd8f of the application range
+// 00568000..0056c000 (inactive). Verified by tests/record_native_app_unit568.py; the unit map is in its receipt.
+//
+// The unit defines the SignalDescriptor / Signal / SignalSource members (evidence names):
+//   SignalDescriptor(ClassDescriptor&, const char*) 0056bab0 (MemberDescriptor 0056b480 with category "Signals"
+//   0082f624, SignatureDescriptor() 00594bf0, MemberDescriptorContainer<SignalDescriptor>::declare 0056b700 on the
+//   container at ClassDescriptor+0x3c), findSignalInstance 0056b620, getSignalInstance 0056bb20,
+//   Signal::getSignalInstance 0056bd10, ~SignalSource 0056bd40 and disconnect_all_slots 0056bd60.
+// It is also the first unit to emit the header-inline MemberDescriptor(ClassDescriptor&, const char*, const char*)
+// 0056b480 and MemberDescriptorContainer<SignalDescriptor>::compare 0056b500 (identical-code folded: the same body
+// is pushed by the property / class containers 0056c1cc, 0057004c, 005709fa). The boost::signals named_slot_map /
+// signal_base instances 0056a590..0056b480 are library code and are not recovered.
+// Headers are read-only here (reflection/signal.h, reflection/object.h).
 #include "reflection/signal.h"
 #include "reflection/object.h"
 namespace RBX

@@ -1,7 +1,8 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /FImalloc.h /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 /**
-* @file
+* @file 
 * @brief CheckSum implementation from http://www.flounder.com/checksum.htm
-*
+* 
 */
 #include "CheckSum.h"
 
@@ -10,8 +11,8 @@
 * Inputs:
 *   unsigned int d: word to add
 * Result: void
-*
-* Effect:
+* 
+* Effect: 
 *   Adds the bytes of the unsigned int to the CheckSum
 ****************************************************************************/
 
@@ -37,8 +38,8 @@ void CheckSum::Add ( unsigned int value )
 * Inputs:
 *   unsigned short value:
 * Result: void
-*
-* Effect:
+* 
+* Effect: 
 *   Adds the bytes of the unsigned short value to the CheckSum
 ****************************************************************************/
 
@@ -64,8 +65,8 @@ void CheckSum::Add ( unsigned short value )
 * Inputs:
 *   unsigned char value:
 * Result: void
-*
-* Effect:
+* 
+* Effect: 
 *   Adds the byte to the CheckSum
 ****************************************************************************/
 
@@ -76,17 +77,20 @@ void CheckSum::Add ( unsigned char value )
 	sum += cipher;
 } // CheckSum::add(unsigned char)
 
+
 /****************************************************************************
 *       CheckSum::add
 * Inputs:
 *   LPunsigned char b: pointer to byte array
 *   unsigned int length: count
 * Result: void
-*
-* Effect:
+* 
+* Effect: 
 *   Adds the bytes to the CheckSum
 ****************************************************************************/
 
+// FUNCTION: WEBSERVICE 0x101c4ef0
+// FUNCTION: ROBLOX 0x004ea550
 void CheckSum::Add ( unsigned char *b, unsigned int length )
 {
 	for ( unsigned int i = 0; i < length; i++ )
@@ -94,3 +98,4 @@ void CheckSum::Add ( unsigned char *b, unsigned int length )
 
 		;
 } // CheckSum::add(LPunsigned char, unsigned int)
+

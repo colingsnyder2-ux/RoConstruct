@@ -1,4 +1,21 @@
 #pragma once
+// 2008-06 native RBX::Network::Players (inactive). Shape after the donor tools/rbxgs Network/Players.h;
+// every base, field, virtual and descriptor below is read from the 2008-06 binary:
+//   RTTI       vtable 008227bc .?AVPlayers@Network@RBX@@ (25 bases) -> DescribedNonCreatable<Players,
+//              Instance, sPlayers> (name mangled $1?sPlayers@23@3PADA, a non-const char array), Service
+//              (empty, mdisp 0x174), Notifier<Players, ChatMessage> 0x130 (ChatMessage mangled V: a class),
+//              Notifier<Players, SuperSafeChanged> 0x150, Listener<Player, CharacterAdded> 0x170.
+//   size       0x1b0: ServiceProvider::create<Players> 00411fd0 allocates 0x1b0, constructor 0049bdc0.
+//   fields     constructor 0049bdc0 / destructor 00499630:
+//              +0x174 scoped_ptr<AbuseReporter> abuseReporter (destroyed through ~AbuseReporter 004971c0),
+//              +0x178 std::list<ChatMessage> chatHistory (list ctor 004987f0, dtor 004993c0),
+//              +0x194 scoped_ptr<Plugin> plugin (new(8), vtable 00822688; deleted through slot 0),
+//              +0x198 CopyOnWrite<vector<shared_ptr<Instance> > > players (ctor 0049ad50),
+//              +0x1a0 shared_ptr<Player> localPlayer, +0x1a8 RakPeerInterface* peer, +0x1ac int maxPlayers (12).
+//   vtable     slot 2 askAddChild 00495f30, slot 7 onChildAdded 0049dc70, slot 8 onChildRemoving 0049daa0,
+//              slot 15 onChildChanged 00497ec0; Listener slot 0 onEvent 00496cf0; destructor 00499630
+//              (deleting 00499fb0, thunks 00499830..004998d0).
+//   descriptors dynamic initializers 007f17c0..007f1a30 (atexit 007fb7c0..007fb9e0).
 #include "Network/Player.h"
 #include "Network/SuperSafeChanged.h"
 #include "v8tree/Service.h"
@@ -19,6 +36,10 @@ namespace RBX
 	{
 		class Player;
 
+		// ChatMessage (RTTI Notifier<Players, ChatMessage> mangles V: a class), size 0x48: constructor 00496c20
+		// default-constructs the string at +0x00 and passes it to 005a80d0 (fills it with the local time text;
+		// field name provisional), builds message +0x1c from the const char*, copies source +0x38 and clears
+		// destination +0x40. Copy constructor 00496480 and destructor 004963c0 are the implicit ones.
 		class ChatMessage
 		{
 		public:

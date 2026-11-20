@@ -1,4 +1,10 @@
 #pragma once
+// 2008-06 RBX::DxUserInput (inactive native header). DirectInput 8 backed UserInputBase used by the Studio/player view.
+// Layout evidence (all offsets from the 2008-06 binary):
+//   ctor/dtor body 00468e90 stores vftable 0081c404 at +0 and the two Listener vftables 0081c3f8 (+0x28) and
+//   0081c3ec (+0x2c); RTTI complete-object locators 00885d9c/00885ed8/00885ec4 give the base offsets 0, 0x28, 0x2c.
+//   +0x28/+0x2c are Listener<RunService, X> bases: the dtor removes them from the RunService notifier lists at
+//   +0x130 (this+0x2c) and +0x170 (this+0x28) (005e5a80 = Notifier::removeListener).
 #include <afxwin.h>
 #include <atlbase.h>
 #include "util/UserInputBase.h"
@@ -52,6 +58,8 @@ struct IDxInput : public IUnknown
 	virtual HRESULT __stdcall CreateDevice(const GUID&, IDxInputDevice**, IUnknown*) = 0;
 };
 
+// dxguid.lib / dinput8.lib statics referenced by the device setup (addresses: GUID_SysKeyboard 0081f038,
+// GUID_SysMouse 0085012c, c_dfDIKeyboard 00850114, c_dfDIMouse2 0084ff0c).
 extern "C" const GUID GUID_SysKeyboard;
 extern "C" const GUID GUID_SysMouse;
 extern "C" const char c_dfDIKeyboard[];
@@ -60,6 +68,8 @@ extern "C" const GUID IID_IDirectInput8A;   // 0081f028
 extern "C" HRESULT __stdcall DirectInput8Create(HINSTANCE, DWORD, const GUID&, void**, IUnknown*);   // dinput8.lib import, 0x800 = DIRECTINPUT_VERSION
 
 // INFERRED: the constructor 004328c0 (shared with other critical-section owners) is out of line, SEH-guarded
+// InitializeCriticalSection and AtlThrow(E_OUTOFMEMORY), with no zeroing before it; the destructor is an inline
+// DeleteCriticalSection (0046903e). It is not CComAutoCriticalSection (inline ctor, memset, Term in the dtor).
 class DxCriticalSection
 {
 public:
@@ -102,6 +112,7 @@ namespace RBX
 		bool mouseAcquired;                                  // +0x192: 00467670 acquire / 004680c0 release
 		bool keyboardAcquired;                               // +0x193: 00467720 acquire / 004677f0 sync
 
+		// vftable 0081c404 slots (UserInputBase order)
 		virtual G3D::Vector2 getCursorPosition();                      // 00467c50
 		virtual G3D::ReferenceCountedPointer<TextureProxyBase> getGameCursor(Adorn*); // 00467a90 (ret 8 override)
 		virtual void setWrapMode(WrapMode mode);                       // 00469070
@@ -133,6 +144,9 @@ namespace RBX
 		void postMouseEvent(int eventType, const G3D::Vector2& position);       // 004684a0
 		void postEvent(const UIEvent& event);                                   // 00467a00
 		// INFERRED: direct-call conduit for the placeholder DataModel member at 00577460. The core DataModel.h
+		// is owner-only, so this declaration lives under this family's lease solely to emit the target
+		// __thiscall shape (ECX = DataModel*, event on the stack); root_ref_bind binds it to 00577460 from the
+		// original relocation of 00467a00. It is not an assertion about DxUserInput's original vtable/layout.
 		void func_00577460(const UIEvent& event);
 		void processKeyboard();                                                // 004681b0 (not recovered)
 		void processMouse();                                                   // 004685b0 (not recovered)
@@ -141,8 +155,10 @@ namespace RBX
 		void processMessage(unsigned int message, int wParam, long lParam);
 
 		// INFERRED: 00467d50 is a static member (decorated ?isToolboxEnabled@DxUserInput@@SA_NXZ),
+		// not the free helper previously listed at the bottom of this header.
 		static bool isToolboxEnabled();
 
+		// Out-of-line helpers outside the 19 recovered bodies (identity-tier placeholder names).
 		G3D::Rect2D sub_004673f0() const;                              // client rect as (0,0)-(width,height)
 		bool sub_00467380() const;                                     // client rect origin equals its screen position
 		G3D::Vector2int16 sub_00467440() const;                        // client size as Vector2int16
@@ -150,11 +166,13 @@ namespace RBX
 
 }
 
+// Free helpers called by DxUserInput (identity-tier placeholder names, bodies recovered elsewhere).
 // INFERRED: 004306c0 returns the active DataModel shared_ptr (body byte-proved in Inferred_004306c0.cpp).
 boost::shared_ptr<RBX::DataModel> sub_004306c0();
 // INFERRED: 00469f00 maps a mouse message to its UIEvent event type (body byte-proved in Inferred_00469f00.cpp).
 int __cdecl sub_00469f00(int code);
 // INFERRED: 00577460 is the DataModel member called by 00467a00 with (const UIEvent&); the
+// core header owner has not yet added the real declaration (proposal in header-fix-proposals.json).
 G3D::Vector2& sub_004672e0(G3D::Vector2& out, const G3D::Vector2& in, int n);  // 004672e0, cdecl
 int sub_004697e0(SDLKey key);                                                   // 004697e0, cdecl
 void sub_00469320(const G3D::Vector2& input, G3D::Vector2& output, G3D::Vector2& last);                          // 00469320, cdecl

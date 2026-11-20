@@ -13,4 +13,5 @@ void init_foo()
 }
 } }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class boost::function1<void,std::basic_string<char,std::char_traits<char>,std::allocator<char> > *,std::allocator<boost::function_base> >;

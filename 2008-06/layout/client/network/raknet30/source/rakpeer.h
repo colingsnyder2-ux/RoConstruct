@@ -69,9 +69,9 @@ public:
 	/// If you accept connections, you must call this or else secure connections will not be enabled for incoming connections.
 	/// If you are connecting to another system, you can call this with values for the (e and p,q) public keys before connecting to prevent MitM
 	/// \pre Must be called before Initialize
-	/// \param[in] pubKeyE A pointer to the public keys from the RSACrypt class.
-	/// \param[in] pubKeyN A pointer to the public keys from the RSACrypt class.
-	/// \param[in] privKeyP Public key generated from the RSACrypt class.
+	/// \param[in] pubKeyE A pointer to the public keys from the RSACrypt class.  
+	/// \param[in] pubKeyN A pointer to the public keys from the RSACrypt class. 
+	/// \param[in] privKeyP Public key generated from the RSACrypt class.  
 	/// \param[in] privKeyQ Public key generated from the RSACrypt class.  If the private keys are 0, then a new key will be generated when this function is called@see the Encryption sample
 	void InitializeSecurity(const char *pubKeyE, const char *pubKeyN, const char *privKeyP, const char *privKeyQ );
 
@@ -130,7 +130,7 @@ public:
 
 	/// Fills the array remoteSystems with the SystemAddress of all the systems we are connected to
 	/// \param[out] remoteSystems An array of SystemAddress structures to be filled with the SystemAddresss of the systems we are connected to. Pass 0 to remoteSystems to only get the number of systems we are connected to
-	/// \param[in, out] numberOfSystems As input, the size of remoteSystems array.  As output, the number of elements put into the array
+	/// \param[in, out] numberOfSystems As input, the size of remoteSystems array.  As output, the number of elements put into the array 
 	bool GetConnectionList( SystemAddress *remoteSystems, unsigned short *numberOfSystems ) const;
 
 	/// Sends a block of data to the specified system that you are connected to.
@@ -163,7 +163,7 @@ public:
 	Packet* Receive( void );
 
 	/// Call this to deallocate a message returned by Receive() when you are done handling it.
-	/// \param[in] packet The message to deallocate.
+	/// \param[in] packet The message to deallocate.	
 	void DeallocatePacket( Packet *packet );
 
 	/// Return the total number of connections we are allowed
@@ -232,7 +232,7 @@ public:
 	/// \param[in] replyFromTarget If 0, this function is non-blocking.  Otherwise it will block while waiting for a reply from the target procedure, which should be remotely written to RPCParameters::replyToSender and copied to replyFromTarget.  The block will return early on disconnect or if the sent packet is unreliable and more than 3X the ping has elapsed.
 	/// \return True on a successful packet send (this does not indicate the recipient performed the call), false on failure
 	bool RPC( const char* uniqueID, const RakNet::BitStream *bitStream, PacketPriority priority, PacketReliability reliability, char orderingChannel, SystemAddress systemAddress, bool broadcast, RakNetTime *includedTimestamp, NetworkID networkID, RakNet::BitStream *replyFromTarget );
-
+	
 	// -------------------------------------------------------------------------------------------- Connection Management Functions--------------------------------------------------------------------------------------------
 	/// Close the connection to another host (if we initiated the connection it will disconnect, if they did it will kick them out).
 	/// \param[in] target Which system to close the connection to.
@@ -262,7 +262,7 @@ public:
 	/// \param[in] milliseconds how many ms for a temporary ban.  Use 0 for a permanent ban
 	void AddToBanList( const char *IP, RakNetTime milliseconds=0 );
 
-	/// Allows a previously banned IP to connect.
+	/// Allows a previously banned IP to connect. 
 	/// param[in] Dotted IP address. Can use * as a wildcard, such as 128.0.0.* will banAll IP addresses starting with 128.0.0
 	void RemoveFromBanList( const char *IP );
 
@@ -273,7 +273,7 @@ public:
 	/// \param[in] IP - Dotted IP address.
 	/// \return true if IP matches any IPs in the ban list, accounting for any wildcards. False otherwise.
 	bool IsBanned( const char *IP );
-
+	
 	// --------------------------------------------------------------------------------------------Pinging Functions - Functions dealing with the automatic ping mechanism--------------------------------------------------------------------------------------------
 	/// Send a ping to the specified connected system.
 	/// \pre The sender and recipient must already be started via a successful call to Startup()
@@ -305,7 +305,7 @@ public:
 	/// Ping the remote systems every so often, or not. This is off by default.  Can be called anytime.
 	/// \param[in] doPing True to start occasional pings.  False to stop them.
 	void SetOccasionalPing( bool doPing );
-
+	
 	// --------------------------------------------------------------------------------------------Static Data Functions - Functions dealing with API defined synchronized memory--------------------------------------------------------------------------------------------
 	/// Sets the data to send along with a LAN server discovery or offline ping reply.
 	/// \a length should be under 400 bytes, as a security measure against flood attacks
@@ -313,7 +313,7 @@ public:
 	/// \param[in] length The length of data in bytes, or 0 for none
 	/// \sa Ping.cpp
 	void SetOfflinePingResponse( const char *data, const unsigned int length );
-
+	
 	//--------------------------------------------------------------------------------------------Network Functions - Functions dealing with the network in general--------------------------------------------------------------------------------------------
 	/// Return the unique address identifier that represents you on the the network and is based on your local IP / port.
 	/// \param[in] systemAddress Specifies which internal IP address to use, per connected system, in case you have multiple systems connected to different local IP addresses.
@@ -390,12 +390,12 @@ public:
 	/// Enables or disables frequency table tracking.  This is required to get a frequency table, which is used in GenerateCompressionLayer()
 	/// This value persists between connect calls and defaults to false (no frequency tracking)
 	/// \pre You can call this at any time - however you SHOULD only call it when disconnected.  Otherwise you will only trackpart of the values sent over the network.
-	/// \param[in] doCompile True to enable tracking
+	/// \param[in] doCompile True to enable tracking 
 	void SetCompileFrequencyTable( bool doCompile );
 
 	/// Returns the frequency of outgoing bytes into output frequency table
 	/// The purpose is to save to file as either a master frequency table from a sample game session for passing to
-	/// GenerateCompressionLayer()
+	/// GenerateCompressionLayer() 
 	/// \pre You should only call this when disconnected. Requires that you first enable data frequency tracking by calling SetCompileFrequencyTable(true)
 	/// \param[out] outputFrequencyTable  The frequency of each corresponding byte
 	/// \return False (failure) if connected or if frequency table tracking is not enabled. Otherwise true (success)
@@ -536,8 +536,8 @@ protected:
 
 	//void RemoveFromRequestedConnectionsList( const SystemAddress systemAddress );
 	bool SendConnectionRequest( const char* host, unsigned short remotePort, const char *passwordData, int passwordDataLength, unsigned connectionSocketIndex );
-	///Get the reliability layer associated with a systemAddress.
-	/// \param[in] systemAddress The player identifier
+	///Get the reliability layer associated with a systemAddress.  
+	/// \param[in] systemAddress The player identifier 
 	/// \return 0 if none
 	RemoteSystemStruct *GetRemoteSystemFromSystemAddress( const SystemAddress systemAddress, bool calledFromNetworkThread, bool onlyActive ) const;
 	///Parse out a connection request packet
@@ -558,20 +558,20 @@ protected:
 	//void PushPortRefused( const SystemAddress target );
 	///Handles an RPC packet.  This is sending an RPC request
 	/// \param[in] data A packet returned from Receive with the ID ID_RPC
-	/// \param[in] length The size of the packet data
-	/// \param[in] systemAddress The sender of the packet
+	/// \param[in] length The size of the packet data 
+	/// \param[in] systemAddress The sender of the packet 
 	/// \return true on success, false on a bad packet or an unregistered function
 	bool HandleRPCPacket( const char *data, int length, SystemAddress systemAddress );
 
 	///Handles an RPC reply packet.  This is data returned from an RPC call
 	/// \param[in] data A packet returned from Receive with the ID ID_RPC
-	/// \param[in] length The size of the packet data
-	/// \param[in] systemAddress The sender of the packet
+	/// \param[in] length The size of the packet data 
+	/// \param[in] systemAddress The sender of the packet 
 	void HandleRPCReplyPacket( const char *data, int length, SystemAddress systemAddress );
 
-	///Set this to true to terminate the Peer thread execution
+	///Set this to true to terminate the Peer thread execution 
 	volatile bool endThreads;
-	///true if the peer thread is active.
+	///true if the peer thread is active. 
 	volatile bool isMainLoopThreadActive;
 	bool occasionalPing;  /// Do we occasionally ping the other systems?*/
 	///Store the maximum number of peers allowed to connect
@@ -579,7 +579,7 @@ protected:
 	//05/02/06 Just using maximumNumberOfPeers instead
 	///Store the maximum number of peers able to connect, including reserved connection slots for pings, etc.
 	//unsigned short remoteSystemListSize;
-	///Store the maximum incoming connection allowed
+	///Store the maximum incoming connection allowed 
 	unsigned short maximumIncomingConnections;
 	RakNet::BitStream offlinePingResponse;
 	///Local Player ID
@@ -607,7 +607,7 @@ protected:
 	// 9.965 * 1000 = 9965
 	// For 1000 players this optimization improves the speed by over 1000 times.
 	DataStructures::OrderedList<SystemAddress, SystemAddressAndIndex, SystemAddressAndIndexComp> remoteSystemLookup;
-
+	
 	enum
 	{
 		// Only put these mutexes in user thread functions!
@@ -741,7 +741,7 @@ protected:
 	// Problem:
 	// Waiting in function A:
 	// Wait function gets RPC B:
-	//
+	// 
 	bool blockOnRPCReply;
 
 	// For redirecting sends through the router plugin.  Unfortunate I have to use this architecture.
@@ -761,7 +761,7 @@ protected:
 	RakNetTime randomNumberExpirationTime;
 	unsigned char newRandomNumber[ 20 ], oldRandomNumber[ 20 ];
 #endif
-
+    
 	///How long it has been since things were updated by a call to receiveUpdate thread uses this to determine how long to sleep for
 	//unsigned int lastUserUpdateCycle;
 	/// True to allow connection accepted packets from anyone.  False to only allow these packets from servers we requested a connection to.

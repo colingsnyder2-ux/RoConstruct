@@ -1,3 +1,12 @@
+// 2008-06 native RBX::StandardOut (inactive): the donor util/standardout.h declaration (see
+// native-headers/leaves2008/StandardOut2008.h). Original bodies: Notifier<StandardOut, StandardOutMessage>::raise
+// (event, listener) 00569780, print(type, format, ...) 005693a0, StandardOut() 00569530, ~StandardOut 00569590,
+// singleton 00569620 (with shared_ptr / shared_count constructors 005692f0 / 00569260), ??_G 005696d0,
+// print_exception 005696f0 and print(type, exception) 00416e10. Verified by tests/record_native_leaves2008.py.
+//
+// NATIVE_STANDARDOUT_PENDING (generated donor util/standardout.h copy under out/, see the recorder): the 2008
+// StandardOut has no user-declared destructor (00569590 stores no StandardOut vtable). print 005693a0 needs
+// Notifier::hasListeners as `size() > 0` (`sar eax, 2; test eax, eax; jbe`), now in native-headers/util/Events.h.
 #include "leaves2008/StandardOut2008.h"
 #include "leaves2008/Log2008.h"
 #include <G3D/format.h>
@@ -60,11 +69,13 @@ namespace RBX
 	}
 
 #ifndef NATIVE_STANDARDOUT_PENDING
+	// Only for the current donor declaration (user-declared virtual ~StandardOut); the 2008 destructor is implicit.
 	StandardOut::~StandardOut()
 	{
 	}
 #endif
 }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class boost::enable_shared_from_this<RBX::StandardOut>;
 template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Listener<RBX::StandardOut,RBX::StandardOutMessage> *> >;

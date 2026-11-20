@@ -1,3 +1,5 @@
+// 2008-06 override of Source/App/include/v8datamodel/Value.h: class-name template parameters take the
+// char array itself (const char*), as the 2008 binary pushes .data name arrays directly.
 #pragma once
 #include "v8tree/Instance.h"
 #include "v8datamodel/BrickColor.h"
@@ -47,7 +49,7 @@ namespace RBX
 	typedef Value<double,		sDoubleValue>		DoubleValue;	// 2008-06: the only Value<double>; no Value<float> RTTI exists
 
 	extern char sObjectValue[];
-
+	
 	class ObjectValue : public DescribedCreatable<ObjectValue, Instance, sObjectValue>
 	{
 	private:

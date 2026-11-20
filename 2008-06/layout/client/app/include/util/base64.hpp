@@ -1,3 +1,16 @@
+// Konstantin Pilipchuk's base64.hpp (upstream form, as in tools/openrbx/Client/App/include/util/base64.hpp), used by the
+// 2008-06 XmlSerializer unit for its Roblox-instantiated base64<char> templates, which only that unit references:
+//   put<istreambuf_iterator, ostreambuf_iterator, int, crlf> 0058df70 (called by TextXmlWriterWithEmbeddedContent::
+//   serializeNode 0058f4ad; ends each 72-character line through `_To = _Endl(_To)`: the crlf functor call keeps the
+//   8-byte iterator copy that makes the original frame 0x1c, where the donor util/base64.hpp writes '\n' inline: 0x14),
+//   get<istreambuf_iterator, ostreambuf_iterator, int> 0058d900 and _getCharType 0058d530 (parse 0058fb1b).
+// A different path from the donor util/base64.hpp, so it shadows nothing.
+//  base64.hpp 
+//  Autor Konstantin Pilipchuk
+//  mailto:lostd@ukr.net
+//
+//
+
 #if !defined(__BASE64_HPP_INCLUDED__)
 #define __BASE64_HPP_INCLUDED__ 1
 
@@ -10,6 +23,7 @@ int _base64Chars[]= {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O'
 				     'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
 			         '0','1','2','3','4','5','6','7','8','9',
 			         '+','/' };
+
 
 #define _0000_0011 0x03
 #define _1111_1100 0xFC
@@ -36,7 +50,7 @@ public:
 
 	typedef unsigned char byte_t;
 	typedef _E            char_type;
-	typedef _Tr           traits_type;
+	typedef _Tr           traits_type; 
 
 	// base64 requires max line length <= 72 characters
 	// you can fill end of line
@@ -52,6 +66,7 @@ public:
 			return (_To);
 		}
 	};
+
 
 	struct crlfsp
 	{
@@ -137,6 +152,9 @@ public:
 
 	};
 
+
+
+
 	template<class _II, class _OI, class _State, class _Endline>
 		_II put(_II _First, _II _Last, _OI _To, _State& _St, _Endline _Endl)  const
 	{
@@ -147,6 +165,7 @@ public:
 		{
 			_3to4.zero();
 
+			
 			_3to4.set_0(*_First);
 			_First++;
 
@@ -179,7 +198,7 @@ public:
 			*_To = _Tr::to_char_type(_base64Chars[_3to4.b64_2()]); ++_To;
 			*_To = _Tr::to_char_type(_base64Chars[_3to4.b64_3()]); ++_To;
 
-			if(line_octets == 17)
+			if(line_octets == 17) 
 			{
 				_To = _Endl(_To);
 
@@ -195,6 +214,7 @@ public:
 
 	}
 
+
 	template<class _II, class _OI, class _State>
 		_II get(_II _First, _II _Last, _OI _To, _State& _St) const
 	{
@@ -208,7 +228,7 @@ public:
 			_3to4.zero();
 
 			// -- 0 --
-			// Search next valid char...
+			// Search next valid char... 
 			while((_Char =  _getCharType(*_First)) < 0 && _Char == _UNKNOWN_CHAR)
 			{
 				if(++_First == _Last)
@@ -219,47 +239,49 @@ public:
 
 			if(_Char == _EQUAL_CHAR){
 				// Error! First character in octet can't be '='
-				_St |= _IOS_FAILBIT;
-				return _First;
+				_St |= _IOS_FAILBIT; 
+				return _First; 
 			}
 			else
 				_3to4.b64_0(_Char);
 
+
 			// -- 1 --
-			// Search next valid char...
+			// Search next valid char... 
 			while(++_First != _Last)
 				if((_Char = _getCharType(*_First)) != _UNKNOWN_CHAR)
 					break;
 
 			if(_First == _Last)	{
-				_St |= _IOS_FAILBIT|_IOS_EOFBIT; // unexpected EOF
+				_St |= _IOS_FAILBIT|_IOS_EOFBIT; // unexpected EOF 
 				return _First;
 			}
 
 			if(_Char == _EQUAL_CHAR){
 				// Error! Second character in octet can't be '='
-				_St |= _IOS_FAILBIT;
-				return _First;
+				_St |= _IOS_FAILBIT; 
+				return _First; 
 			}
 			else
 				_3to4.b64_1(_Char);
 
+
 			// -- 2 --
-			// Search next valid char...
+			// Search next valid char... 
 			while(++_First != _Last)
 				if((_Char = _getCharType(*_First)) != _UNKNOWN_CHAR)
 					break;
 
 			if(_First == _Last)	{
 				// Error! Unexpected EOF. Must be '=' or base64 character
-				_St |= _IOS_FAILBIT|_IOS_EOFBIT;
-				return _First;
+				_St |= _IOS_FAILBIT|_IOS_EOFBIT; 
+				return _First; 
 			}
 
 			if(_Char == _EQUAL_CHAR){
 				// OK!
-				_3to4.b64_2(0);
-				_3to4.b64_3(0);
+				_3to4.b64_2(0); 
+				_3to4.b64_3(0); 
 
 				// chek for EOF
 				if(++_First == _Last)
@@ -268,7 +290,7 @@ public:
 					//_St |= _IOS_BADBIT|_IOS_EOFBIT;
 					_St |= _IOS_EOFBIT;
 				}
-				else
+				else 
 					if(_getCharType(*_First) != _EQUAL_CHAR)
 					{
 						// Error! Must be '='. Ignore it.
@@ -284,24 +306,25 @@ public:
 			else
 				_3to4.b64_2(_Char);
 
+
 			// -- 3 --
-			// Search next valid char...
+			// Search next valid char... 
 			while(++_First != _Last)
 				if((_Char = _getCharType(*_First)) != _UNKNOWN_CHAR)
 					break;
 
 			if(_First == _Last)	{
 				// Unexpected EOF. It's error. But ignore it.
-				//_St |= _IOS_FAILBIT|_IOS_EOFBIT;
-					_St |= _IOS_EOFBIT;
-
-				return _First;
+				//_St |= _IOS_FAILBIT|_IOS_EOFBIT; 
+					_St |= _IOS_EOFBIT; 
+				
+				return _First; 
 			}
 
 			if(_Char == _EQUAL_CHAR)
 			{
 				// OK!
-				_3to4.b64_3(0);
+				_3to4.b64_3(0); 
 
 				// write to output 2 bytes
 				*_To = (byte_t) _3to4.get_0();
@@ -314,12 +337,14 @@ public:
 			else
 				_3to4.b64_3(_Char);
 
+
 			// write to output 3 bytes
 			*_To = (byte_t) _3to4.get_0();
 			*_To = (byte_t) _3to4.get_1();
 			*_To = (byte_t) _3to4.get_2();
 
 			++_First;
+			
 
 		} // while(_First != _Last)
 
@@ -327,7 +352,7 @@ public:
 	}
 
 protected:
-
+	
 	int _getCharType(int _C) const
 	{
 		if(_base64Chars[62] == _C)
@@ -351,6 +376,8 @@ protected:
 		return _UNKNOWN_CHAR;
 	}
 
+
 };
+
 
 #endif

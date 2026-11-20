@@ -1,3 +1,9 @@
+// Inactive native recovery of the RBX exponential running average unit 00666240..006662e5 (2008-06), between the
+// PartDragTool unit and the HUMAN::Running state unit. The classes are declared by util/ExponentialRunningAverage.h
+// (donor header, read-only): floatERA {weight +0, avg +4} and Vector3ERA {weight +0, x/y/z +4/+8/+0xc}, the offsets
+// every body below reads (reset 00666240 / 00666280 store +4 / +4..+0xc, pushAndGetAverage multiplies by [ecx]).
+// See tests/record_native_app_unit660_2008.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "util/ExponentialRunningAverage.h"
 
 namespace RBX

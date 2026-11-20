@@ -138,7 +138,7 @@ namespace RBX
 			std::map<enum Number, G3D::Color4> map2;
 			std::map<enum Number, std::string> map3;
 			std::map<enum Number, int> paletteMap;
-
+		  
 		private:
 			void insert(Number number, unsigned char r, unsigned char g, unsigned char b, std::string name);
 			void insertPaletteItem(Number number);
@@ -156,7 +156,7 @@ namespace RBX
 
 		public:
 			//BrickMap& operator=(const BrickMap&);
-
+		  
 		public:
 			static BrickMap& singleton();
 		};
@@ -167,7 +167,7 @@ namespace RBX
 	public:
 		static const unsigned paletteSize;
 		static const unsigned paletteSizeMSB;
-
+	  
 	public:
 		unsigned getClosestPaletteIndex() const;
 
@@ -189,7 +189,7 @@ namespace RBX
 		G3D::Color3uint8 color3uint8() const;
 		G3D::Color4 color4() const;
 		G3D::Color3 color3() const;
-
+		
 		const std::string& name() const;
 		int asInt() const
 		{
@@ -213,11 +213,11 @@ namespace RBX
 		{
 			return this->number < other.number;
 		}
-
+	  
 	public:
 		static const std::vector<BrickColor>& colorPalette();
 		static const std::vector<BrickColor>& allColors();
-
+	
 	public:
 		static BrickColor closest(G3D::Color4 color);
 		static BrickColor closest(G3D::Color3 color);

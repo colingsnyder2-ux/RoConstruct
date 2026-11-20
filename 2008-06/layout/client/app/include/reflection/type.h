@@ -76,6 +76,7 @@ namespace RBX
 		public:
 			Value();
 
+			// Value constructors 0042d200/0042d240/0042d280 take const references.
 			template<typename ValueType>
 			Value(const ValueType& value)
 				: _type(&Type::singleton<typename ValueType>()),

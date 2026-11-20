@@ -16,7 +16,7 @@ namespace RBX
 
         private:
             static const luaL_Reg classLibrary[4];
-
+  
         public:
             static void registerClassLibrary(lua_State* L)
             {
@@ -27,7 +27,7 @@ namespace RBX
             {
                 pushNewObject(L, CF);
             }
-
+        
         private:
             static int newCoordinateFrame(lua_State* L);
             static int fromEulerAnglesXYZ(lua_State* L);
@@ -63,7 +63,7 @@ namespace RBX
             {
                 pushNewObject(L, color);
             }
-
+  
         private:
             static int newVector3(lua_State* L);
             static int on_add(lua_State* L);
@@ -77,7 +77,7 @@ namespace RBX
         {
         private:
             static const luaL_Reg classLibrary[2];
-
+        
         public:
             static void registerClassLibrary(lua_State* L)
             {
@@ -97,14 +97,14 @@ namespace RBX
         {
         private:
             static const luaL_Reg classLibrary[13];
-
+        
         public:
             static void registerClassLibrary(lua_State* L)
             {
                 luaL_register(L, className, classLibrary);
                 lua_pop(L, 1);
             }
-
+            
         private:
             static int newBrickColor(lua_State* L);
             static int randomBrickColor(lua_State* L);

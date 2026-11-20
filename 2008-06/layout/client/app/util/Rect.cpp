@@ -1,3 +1,4 @@
+// native-flags: /O2 /GS- /EHsc /MD /fp:fast /D_AFXDLL /GS-
 #include "../../../../../../tools/rbxgs/Client/App/include/util/Rect.h"
 
 namespace RBX {

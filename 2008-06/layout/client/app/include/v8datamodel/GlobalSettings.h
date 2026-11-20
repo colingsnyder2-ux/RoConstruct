@@ -1,3 +1,5 @@
+// 2008-06 override of Source/App/include/v8datamodel/GlobalSettings.h: class-name template parameters take the
+// char array itself (const char*), as the 2008 binary pushes .data name arrays directly.
 #pragma once
 #include "reflection/reflection.h"
 #include "v8tree/Instance.h"

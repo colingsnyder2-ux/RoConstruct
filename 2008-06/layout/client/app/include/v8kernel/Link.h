@@ -30,7 +30,7 @@ namespace RBX
 	{
 	private:
 		float jointAngle;
-
+  
 	private:
 		virtual void computeChildInParent(G3D::CoordinateFrame& answer) const;
 	public:

@@ -12,7 +12,7 @@ namespace RBX
 	{
 	private:
 		std::vector<boost::weak_ptr<PartInstance>> cameraIgnoreParts;
-
+	  
 	public:
 		ICameraOwner()
 		{

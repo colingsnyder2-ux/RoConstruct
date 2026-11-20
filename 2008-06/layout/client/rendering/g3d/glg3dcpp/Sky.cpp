@@ -1,4 +1,6 @@
-/**
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// 2008-06 native G3D::Sky: upstream G3D 6.09 source/GLG3Dcpp/Sky.cpp, verbatim (inactive).
+/** 
   @file Sky.cpp
 
   @author Morgan McGuire, matrix@graphics3d.com
@@ -20,6 +22,7 @@ namespace G3D {
 
 #define SHORT_TO_FLOAT(x) ((2.0f*x+1.0f)*(1.0f/65535.0f))
 
+
 SkyRef Sky::fromCubeMap(
     RenderDevice*                       rd,
     TextureRef                          _cubeMap,
@@ -28,9 +31,9 @@ SkyRef Sky::fromCubeMap(
     double                              quality) {
 
     debugAssertM(
-        (directory == "") ||
-        (directory[directory.size() - 1] == '/') ||
-        (directory[directory.size() - 1] == '\\'),
+        (directory == "") || 
+        (directory[directory.size() - 1] == '/') || 
+        (directory[directory.size() - 1] == '\\'), 
         "Directory must end in a slash");
 
     debugAssert( _cubeMap.notNull() );
@@ -40,10 +43,11 @@ SkyRef Sky::fromCubeMap(
     t[0] = _cubeMap;
     for (int i = 1; i < 6; ++i) {
         t[i] = NULL;
-    }
+    }    
 
     return new Sky(rd, t, directory, true, _drawCelestialBodies, quality);
 }
+    
 
 SkyRef Sky::fromFile(
     RenderDevice*                       rd,
@@ -61,6 +65,7 @@ SkyRef Sky::fromFile(
     return Sky::fromFile(rd, directory, f, _drawCelestialBodies, quality, scaleDownFactor);
 }
 
+
 SkyRef Sky::fromFile(
     RenderDevice*                       rd,
     const std::string&                  directory,
@@ -70,9 +75,9 @@ SkyRef Sky::fromFile(
     int                                 scaleDownFactor) {
 
     debugAssertM(
-        (directory == "") ||
-        (directory[directory.size() - 1] == '/') ||
-        (directory[directory.size() - 1] == '\\'),
+        (directory == "") || 
+        (directory[directory.size() - 1] == '/') || 
+        (directory[directory.size() - 1] == '\\'), 
         "Directory must end in a slash");
 
     const TextureFormat* format;
@@ -110,7 +115,7 @@ SkyRef Sky::fromFile(
     bool useCubeMap;
 
     if (GLCaps::supports_GL_ARB_texture_cube_map() && ! GLCaps::hasBug_normalMapTexGen()) {
-
+   
         if (_filename[1] == "") {
             // Specified one cube map
             faceTextures[0] = Texture::fromFile(filenameBase + "*" + filenameExt, format, Texture::CLAMP, Texture::TRILINEAR_MIPMAP, Texture::DIM_CUBE_MAP, 1.0, Texture::DEPTH_NORMAL, 1.0, 1.0f / scaleDownFactor);
@@ -136,14 +141,14 @@ SkyRef Sky::fromFile(
         if (_filename[1] == "") {
             // Specified one cube map
             for (int t = 0; t < 6; ++t) {
-                faceTextures[t] = Texture::fromFile(filenameBase + ext[t] + filenameExt,
+                faceTextures[t] = Texture::fromFile(filenameBase + ext[t] + filenameExt, 
                     format, Texture::CLAMP, Texture::BILINEAR_NO_MIPMAP, Texture::DIM_2D,
                     1.0, Texture::DEPTH_NORMAL, 1.0, 1.0f / scaleDownFactor);
             }
         } else {
             // Specified six textures
             for (int t = 0; t < 6; ++t) {
-                faceTextures[t] = Texture::fromFile(_filename[t],
+                faceTextures[t] = Texture::fromFile(_filename[t], 
                     format, Texture::CLAMP, Texture::BILINEAR_NO_MIPMAP, Texture::DIM_2D,
                     1.0, Texture::DEPTH_NORMAL, 1.0, 1.0f / scaleDownFactor);
             }
@@ -151,9 +156,10 @@ SkyRef Sky::fromFile(
 
         useCubeMap = false;
     }
-
+    
     return new Sky(rd, faceTextures, directory, useCubeMap, _drawCelestialBodies, quality);
 }
+
 
 Sky::Sky(
     RenderDevice*                       rd,
@@ -189,13 +195,13 @@ Sky::Sky(
 
     if (drawCelestialBodies) {
         moon     = Texture::fromTwoFiles(directory + "moon.jpg", directory + "moon-alpha.jpg",
-            alphaFormat, Texture::TRANSPARENT_BORDER, Texture::BILINEAR_NO_MIPMAP, Texture::DIM_2D,
+            alphaFormat, Texture::TRANSPARENT_BORDER, Texture::BILINEAR_NO_MIPMAP, Texture::DIM_2D, 
             Texture::DEPTH_NORMAL, 1.0);
 
         sun      = Texture::fromFile(directory + "sun.jpg", format, Texture::TRANSPARENT_BORDER, Texture::BILINEAR_NO_MIPMAP, Texture::DIM_2D, 1.0, Texture::DEPTH_NORMAL, 1.0);
         disk     = Texture::fromFile(directory + "lensflare.jpg", format, Texture::TRANSPARENT_BORDER, Texture::BILINEAR_NO_MIPMAP, Texture::DIM_2D, 1.0, Texture::DEPTH_NORMAL, 1.0);
         sunRays  = Texture::fromFile(directory + "sun-rays.jpg", format, Texture::TRANSPARENT_BORDER, Texture::BILINEAR_NO_MIPMAP, Texture::DIM_2D, 1.0, Texture::DEPTH_NORMAL, 1.0);
-
+    
         int i = 0;
 
 	    // If file exists, load the real starfield
@@ -233,8 +239,10 @@ Sky::Sky(
     }
 }
 
+
 Sky::~Sky() {
 }
+
 
 /**
  Used to draw the sky, moon, and lens flare
@@ -265,8 +273,9 @@ static void drawCelestialSphere(
 	renderDevice->endPrimitive();
 }
 
-static void hackProjectionMatrix(RenderDevice* renderDevice) {
 
+static void hackProjectionMatrix(RenderDevice* renderDevice) {
+	
     Matrix4 P = renderDevice->getProjectionMatrix();
 
     // Set the 3rd row (2nd index) so the depth always is in the middle of the depth range.
@@ -279,7 +288,8 @@ static void hackProjectionMatrix(RenderDevice* renderDevice) {
     renderDevice->setProjectionMatrix(P);
 }
 
-void Sky::vertex(RenderDevice* renderDevice,
+
+void Sky::vertex(RenderDevice* renderDevice, 
                  float x, float y, float z, float s, float t) const {
     const double w = 0;
     const bool cube = (cubeMap.notNull());
@@ -304,9 +314,10 @@ void Sky::vertex(RenderDevice* renderDevice,
         }
         renderDevice->setTexCoord(0, Vector2(s, t));
     }
-
+    
     renderDevice->sendVertex(Vector4(x,y,z,w));
 }
+
 
 void Sky::renderBox(RenderDevice* renderDevice) const {
     renderDevice->pushState();
@@ -347,7 +358,7 @@ void Sky::renderBox(RenderDevice* renderDevice) const {
         vertex(renderDevice, +s, -s, -s, 1, 1);
         vertex(renderDevice, +s, +s, -s, 1, 0);
 	renderDevice->endPrimitive();
-
+        
     if (! cube) {
         renderDevice->setTexture(0, texture[LT]);
     }
@@ -359,6 +370,7 @@ void Sky::renderBox(RenderDevice* renderDevice) const {
         vertex(renderDevice, -s, +s, -s, 1, 0);
 	renderDevice->endPrimitive();
 
+    
     if (! cube) {
         renderDevice->setTexture(0, texture[FT]);
     }
@@ -412,6 +424,7 @@ void Sky::renderBox(RenderDevice* renderDevice) const {
 
 }
 
+
 void Sky::render(
     RenderDevice* renderDevice,
     const LightingParameters&           lighting) {
@@ -433,13 +446,14 @@ void Sky::render(
         renderDevice->disableDepthWrite();
         renderDevice->setDepthTest(RenderDevice::DEPTH_ALWAYS_PASS);
 
+
 	    // Draw the sky box
         renderDevice->resetTextureUnit(0);
         debugAssertGLOk();
         renderBox(renderDevice);
         debugAssertGLOk();
 
-        if (drawCelestialBodies) {
+        if (drawCelestialBodies) {   
             drawMoonAndStars(renderDevice, lighting);
 
             drawSun(renderDevice, lighting);
@@ -448,8 +462,9 @@ void Sky::render(
     renderDevice->popState();
 }
 
+
 void Sky::drawMoonAndStars(
-    RenderDevice*               renderDevice,
+    RenderDevice*               renderDevice, 
     const LightingParameters&   lighting) {
 
     Vector3 moonPosition = lighting.physicallyCorrect ? lighting.trueMoonPosition : lighting.moonPosition;
@@ -494,18 +509,19 @@ void Sky::drawMoonAndStars(
     drawCelestialSphere(renderDevice, L, X, Y, .06, Color4(lighting.emissiveScale, min(1.0f, max(0.0f, moonPosition.y * 4.0f))));
 }
 
+
 void Sky::drawSun(
-    RenderDevice*               renderDevice,
+    RenderDevice*               renderDevice, 
     const LightingParameters&   lighting) {
 
     Vector3 sunPosition = lighting.physicallyCorrect ? lighting.trueSunPosition : lighting.sunPosition;
-
+	
     // Sun vector
     Vector4 L(sunPosition,0);
     Vector3 LcrossZ = sunPosition.cross(Vector3::unitZ()).direction();
     Vector4 X(LcrossZ, 0);
     Vector4 Y(sunPosition.cross(LcrossZ), 0);
-
+    
     renderDevice->setTexture(0, sun);
     renderDevice->setBlendFunc(RenderDevice::BLEND_ONE, RenderDevice::BLEND_ONE);
     Color3 c(lighting.emissiveScale * .8f);
@@ -518,10 +534,11 @@ void Sky::drawSun(
     drawCelestialSphere(renderDevice, L, X, Y, 0.12f, c);
 }
 
-void Sky::renderLensFlare(
-    RenderDevice* renderDevice,
-    const LightingParameters&           lighting) {
 
+void Sky::renderLensFlare(
+    RenderDevice* renderDevice, 
+    const LightingParameters&           lighting) {
+	
     debugAssert(renderDevice != NULL);
 
     if (! drawCelestialBodies) {
@@ -557,7 +574,7 @@ void Sky::renderLensFlare(
             int visible = 0;
             for (int dx = -1; dx <= 1; ++dx) {
                 for (int dy = -1; dy <= 1; ++dy) {
-                    double distanceToSun =
+                    double distanceToSun = 
                         renderDevice->getDepthBufferValue(
                          iRound(pos.x + dx * 15.0),
                          iRound(pos.y + dy * 15.0));
@@ -588,11 +605,11 @@ void Sky::renderLensFlare(
 				Vector4 Y(sunPosition.cross(LcrossZ), 0);
 
                 // Sun rays at dawn
-                if ((sunPosition.x > 0) &&
+                if ((sunPosition.x > 0) && 
                     (sunPosition.y >= -.1)) {
 
                     renderDevice->setTexture(0, sunRays);
-                    double occlusionAttenuation =
+                    double occlusionAttenuation = 
                         (1 - square(2*fractionOfSunVisible - 1));
 
                     Color4 col =
@@ -608,14 +625,14 @@ void Sky::renderLensFlare(
                 // Lens flare
                 Vector4 C(camera.getLookVector(), 0);
                 static const double position[] = { .5,                    .5,                    -.25,                     -.75,                .45,                      .6,                    -.5,                   -.1,                   .55,                     -1.5,                       -2,                         1};
-                static const double size[]     = { .12,                   .05,                    .02,                      .02,                .02,                      .02,                    .01,                  .01,                   .01,                     .01,                        .01,                        0.05};
+                static const double size[]     = { .12,                   .05,                    .02,                      .02,                .02,                      .02,                    .01,                  .01,                   .01,                     .01,                        .01,                        0.05}; 
                 static const Color3 color[]    = {Color3(6, 4, 0) / 255, Color3(6, 4, 0) / 255, Color3(0, 12, 0) / 255, Color3(0, 12, 0) / 255, Color3(0, 12, 0) / 255, Color3(0, 12, 0) / 255, Color3(10, 0, 0) /255,  Color3(0, 12, 0) / 255, Color3(10,0,0) / 255, Color3::fromARGB(0x192125)/10,   Color3::fromARGB(0x1F2B1D)/10, Color3::fromARGB(0x1F2B1D)/10};
                 int numFlares     = 12;
 
                 renderDevice->setTexture(0, disk);
                 for (int i = 0; i < numFlares; ++i) {
-                    drawCelestialSphere(renderDevice,
-                         C + (C - L) * (float)position[i], X, Y, (float)size[i],
+                    drawCelestialSphere(renderDevice, 
+                         C + (C - L) * (float)position[i], X, Y, (float)size[i], 
                          Color4(color[i] * lighting.emissiveScale * flareBrightness, 1));
                 }
             }
@@ -625,3 +642,4 @@ void Sky::renderLensFlare(
 }
 
 } // namespace
+

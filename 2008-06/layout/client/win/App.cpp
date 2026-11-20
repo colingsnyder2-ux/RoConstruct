@@ -1,3 +1,5 @@
+// native-flags: /O2 /GS- /EHsc /MD /D_AFXDLL /D_ATL_APARTMENT_THREADED /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string /I{headers}/../../../tools/libs/mfc-9.0-rtm/atlmfc/include
+// App COM registration and recovered methods, inactive pending ABI and provider proof.
 #include <afx.h>
 #include "CApp2008.h"
 #include "CRobloxApp.h"

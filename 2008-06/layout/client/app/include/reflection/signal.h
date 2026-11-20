@@ -38,7 +38,7 @@ namespace RBX
 
 		private:
 			T slot;
-
+		
 		private:
 		  	TGenericSlotWrapper(const T& s)
 				: slot(s)
@@ -67,7 +67,7 @@ namespace RBX
 			SignalSource* source;
 		public:
 			const SignalDescriptor& descriptor;
-
+		  
 		protected:
 			SignalInstance(SignalSource* source, const SignalDescriptor& descriptor)
 				: source(source),
@@ -98,7 +98,7 @@ namespace RBX
 
 		private:
 			boost::scoped_ptr<std::map<const SignalDescriptor*, boost::shared_ptr<SignalInstance>>> signals;
-
+		  
 		public:
 			virtual ~SignalSource();
 		public:
@@ -118,7 +118,7 @@ namespace RBX
 
 		protected:
 			SignatureDescriptor signature;
-
+		  
 		protected:
 			SignalDescriptor(ClassDescriptor& classDescriptor, const char* name);
 
@@ -139,7 +139,7 @@ namespace RBX
 		protected:
 			const SignalDescriptor* descriptor;
 			DescribedBase* instance;
-
+		  
 		public:
 			Signal(const Signal&);
 			Signal(const SignalDescriptor& descriptor, DescribedBase* instance)
@@ -196,14 +196,14 @@ namespace RBX
 			{
 				if (source)
 					return sig(*source).connect(slot);
-
+				
 				return boost::signals::connection();
 			}
 			boost::signals::connection connect(SignalSource* source, const boost::slot<boost::function<CallbackSignature>>& slot, int group)
 			{
 				if (source)
 					return sig(*source).connect(group, slot);
-
+				
 				return boost::signals::connection();
 			}
 			bool empty(const SignalSource* source)
@@ -213,11 +213,14 @@ namespace RBX
 			}
 		};
 
+
 		template<int ArgCount, typename CallbackSignature>
 		class SignalDescImpl : public TSignalDesc<CallbackSignature>
 		{
 		public:
 			// INFERRED: the 2008-06 binary's RTTI names SignalDescImpl<3, void(std::string,int,std::string)>::
+			// GenericSlotAdapter (004a0900), so the arity-3 instance fell back to this primary template's adapter.
+			// Declaration only: the functor is a shared_ptr holder, as in the 0/1/2 specialisations below.
 			class GenericSlotAdapter
 			{
 			private:
@@ -239,11 +242,13 @@ namespace RBX
 		{
 		public:
 			// INFERRED: public, like the 1/2 specialisations: the binary emits the boost::function<void(void),
+			// std::allocator<void> > constructor for this adapter as a standalone body (004b45b0), which is only
+			// nameable outside the class with public access. Visibility only; layout and codegen unchanged.
 			class GenericSlotAdapter
 			{
 			private:
 				boost::shared_ptr<GenericSlotWrapper> wrapper;
-
+			  
 			public:
 				GenericSlotAdapter(GenericSlotWrapper*);
 
@@ -277,7 +282,7 @@ namespace RBX
 			{
 			private:
 				boost::shared_ptr<GenericSlotWrapper> wrapper;
-
+			  
 			public:
 				GenericSlotAdapter(GenericSlotWrapper*);
 
@@ -317,7 +322,7 @@ namespace RBX
 			{
 			private:
 				boost::shared_ptr<GenericSlotWrapper> wrapper;
-
+			  
 			public:
 				GenericSlotAdapter(GenericSlotWrapper*);
 

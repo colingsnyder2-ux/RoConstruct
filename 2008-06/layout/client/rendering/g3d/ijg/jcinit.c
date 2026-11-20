@@ -1,3 +1,6 @@
+// native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/jpeg-6b /TC
+// IJG JPEG 6b encoder pipeline; inactive pending reference, provider, ABI and runtime checks.
+
 /*
  * jcinit.c
  *
@@ -18,6 +21,7 @@
 #define JPEG_INTERNALS
 #include "jinclude.h"
 #include "jpeglib.h"
+
 
 /*
  * Master selection of compression modules.

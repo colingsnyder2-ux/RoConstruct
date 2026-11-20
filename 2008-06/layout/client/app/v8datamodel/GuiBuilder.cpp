@@ -1,3 +1,14 @@
+// 2008-06 native RBX::GuiBuilder unit (inactive): 006023d0..00606100 (the player GUI hud builder).
+// Layout and addresses in native-headers/GuiHud2008/GuiBuilder2008.h; verified by tests/record_native_gui_hud_builder.py.
+// Unit profile + /fp:fast (the Layout / Vector2 x87 stores of every build method).
+//
+// NATIVE_GUIHUD_PENDING bodies need a declaration the core header lacks (the generated overlay under
+// out/native-layouts/gui-hud-builder-pending supplies it; see the recorder):
+//   * util/Object.h  Creatable<T>::create with three parameters (create<ArrowPanel> 00602650, create<PercentPanel>
+//                    006021e0, create<ImageButton> 00601f00 take three by-value arguments).
+// native-headers/gui/Gui.h (pass 2) declares TopMenuBar(const std::string&, Layout::Style, bool = false) (00601fd0 pushes
+// 0 at 00602027) and TextDisplay setFontSize / setFontColor / setBorderColor inline (00604dd8, 00604e16, 00604e2e).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "GuiHud2008/GuiBuilder2008.h"
 #include "gui/HealthHud.h"
 #include "gui/ScoreHud.h"
@@ -288,11 +299,16 @@ namespace RBX
 		dataModel->getGuiRoot()->addGuiItem(buildControlHud(adorn, 20));
 	}
 
+	// The two-parameter create<...> instances whose only callers in this unit are the NATIVE_GUIHUD_PENDING bodies
+	// (create<ChatButton> 00602280 from buildChatMenu(Adorn*) 006037c9, create<TopMenuBar> 00601fd0 from
+	// buildRightPaletteItems 00602e66, create<MenuSpacer> 006026e0 from buildControlHud 00603da5): instantiated
+	// explicitly so that the main build compiles them from the current headers.
 	template boost::shared_ptr<ChatButton> Creatable<Instance>::create<ChatButton, Adorn*, const char*>(Adorn*, const char*);
 	template boost::shared_ptr<TopMenuBar> Creatable<Instance>::create<TopMenuBar, const char*, Layout::Style>(const char*, Layout::Style);
 	template boost::shared_ptr<MenuSpacer> Creatable<Instance>::create<MenuSpacer, float, float>(float, float);
 }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class boost::shared_ptr<RBX::ChatButton>;
 template class boost::shared_ptr<RBX::ChatOutput>;
 template class boost::shared_ptr<RBX::ChatWidget>;

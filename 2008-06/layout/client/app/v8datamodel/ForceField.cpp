@@ -1,3 +1,9 @@
+// 2008-06 native RBX::ForceField (inactive); evidence in native-headers/v8datamodel/ForceField.h.
+// Verified by tests/record_native_debris_forcefield.py (built with /fp:fast: renderPart 0062d200 reuses the 0.0f of
+// the transparency compare as the green channel).
+// askSetParent 0062d090 and the ancestor walk 0062d380 dynamic_cast to the native RBX::Workspace; render3dAdorn
+// 0062d570 uses the native Instance::visitDescendents (0062d400). renderPart 0062d200 is compiled but not exact
+// (2008 PartInstance float at +0x328).
 #include "v8datamodel/ForceField.h"
 #include "v8datamodel/PartInstance.h"
 #include "AppDraw/Draw.h"
@@ -25,6 +31,7 @@ namespace RBX
 
 using namespace RBX;
 
+// 0062d200: bound with the adorn and cycle by render3dAdorn and applied to the parent and each descendant.
 static void renderPart(boost::shared_ptr<Instance> instance, Adorn* adorn, int cycle)
 {
 	if (PartInstance* part = dynamic_cast<PartInstance*>(instance.get()))
@@ -40,6 +47,7 @@ static void renderPart(boost::shared_ptr<Instance> instance, Adorn* adorn, int c
 
 namespace RBX
 {
+	// 0062d310: first half of its function-list row (0x70 bytes).
 	bool ForceField::hasForceField(Instance* instance)
 	{
 		for (size_t i = 0; i < instance->numChildren(); ++i)
@@ -51,6 +59,7 @@ namespace RBX
 		return false;
 	}
 
+	// 0062d380: second half of the 0062d310 row; the tail recursion is a loop in the original.
 	bool ForceField::isProtectedRecursive(Instance* instance)
 	{
 		if (hasForceField(instance))
@@ -95,6 +104,9 @@ namespace RBX
 	}
 }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class boost::_bi::value<RBX::Adorn *>;
 
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
 template void RBX::Name::callDoDeclare<RBX::sForceField>();
+

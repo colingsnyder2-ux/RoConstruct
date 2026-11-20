@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /FImalloc.h /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 /**
 *
 * Grabbed by Kevin from http://www.math.keio.ac.jp/~matumoto/cokus.c
@@ -69,6 +70,9 @@ static unsigned int state[ N + 1 ];     // state vector + 1 extra to not violate
 static unsigned int *next;        // next random value is computed from here
 static int left = -1; // can *next++ this many times before reloading
 
+
+// FUNCTION: WEBSERVICE 0x101c1e60
+// FUNCTION: ROBLOX 0x004e7550
 void seedMT( unsigned int seed )   // Defined in cokus_c.c
 {
 	//
@@ -126,6 +130,9 @@ void seedMT( unsigned int seed )   // Defined in cokus_c.c
 		;
 }
 
+
+// FUNCTION: WEBSERVICE 0x101c1ea0
+// FUNCTION: ROBLOX 0x004e7590
 unsigned int reloadMT( void )
 {
 	register unsigned int * p0 = state, *p2 = state + 2, *pM = state + M, s0, s1;
@@ -153,6 +160,9 @@ unsigned int reloadMT( void )
 	return ( s1 ^ ( s1 >> 18 ) );
 }
 
+
+// FUNCTION: WEBSERVICE 0x101c1fc0
+// FUNCTION: ROBLOX 0x004e76b0
 unsigned int randomMT( void )
 {
 	unsigned int y;
@@ -197,3 +207,5 @@ return(EXIT_SUCCESS);
 }
 
 */
+
+

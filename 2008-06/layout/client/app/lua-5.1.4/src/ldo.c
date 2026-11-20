@@ -1,8 +1,11 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /I{headers}/../../../tools/openrbx/Client/App/lua-5.1.1/src /TP
+// Roblox Lua error and call implementation; inactive alternative pending ABI and integration.
 /*
 ** $Id: ldo.c,v 2.38 2006/06/05 19:36:14 roberto Exp $
 ** Stack and Call structure of Lua
 ** See Copyright Notice in lua.h
 */
+
 
 #include <setjmp.h>
 #include <stdlib.h>
@@ -31,11 +34,15 @@
 #include "lvm.h"
 #include "lzio.h"
 
+
+
+
 /*
 ** {======================================================
 ** Error-recovery functions
 ** =======================================================
 */
+
 
 /* chain list of long jump buffers */
 struct lua_longjmp {
@@ -43,6 +50,7 @@ struct lua_longjmp {
   luai_jmpbuf b;
   volatile int status;  /* error code */
 };
+
 
 void luaD_seterrorobj (lua_State *L, int errcode, StkId oldtop) {
   switch (errcode) {
@@ -63,6 +71,7 @@ void luaD_seterrorobj (lua_State *L, int errcode, StkId oldtop) {
   L->top = oldtop + 1;
 }
 
+
 static void restore_stack_limit (lua_State *L) {
   lua_assert(L->stack_last - L->stack == L->stacksize - EXTRA_STACK - 1);
   if (L->size_ci > LUAI_MAXCALLS) {  /* there was an overflow? */
@@ -71,6 +80,7 @@ static void restore_stack_limit (lua_State *L) {
       luaD_reallocCI(L, LUAI_MAXCALLS);
   }
 }
+
 
 static void resetstack (lua_State *L, int status) {
   L->ci = L->base_ci;
@@ -83,6 +93,7 @@ static void resetstack (lua_State *L, int status) {
   L->errfunc = 0;
   L->errorJmp = NULL;
 }
+
 
 class lua_exception : public std::exception
 {
@@ -103,13 +114,19 @@ class lua_exception : public std::exception
 	friend int luaD_rawrunprotected(lua_State* L, Pfunc f, void* ud);
 
 public:
+	// FUNCTION: WEBSERVICE 0x100b6af0
+	// FUNCTION: ROBLOX 0x006032e0
 	lua_exception(const lua_exception& other)
 		: L(other.L), errorJmp(other.errorJmp), committed(other.committed)
 	{ other.committed = true; }
 
+	// FUNCTION: WEBSERVICE 0x100b6270
+	// FUNCTION: ROBLOX 0x00602a60
 	virtual const char* what() const
 	{ return lua_tostring(L, -1); }
 
+	// FUNCTION: WEBSERVICE 0x100b6290
+	// FUNCTION: ROBLOX 0x00602a80
 	virtual ~lua_exception()
 	{
 		if (!committed)
@@ -119,8 +136,13 @@ public:
 		}
 	}
 
+	// SYNTHETIC: WEBSERVICE 0x100b6300
+	// SYNTHETIC: ROBLOX 0x00602af0
+	// lua_exception::`scalar deleting destructor'
 };
 
+// FUNCTION: WEBSERVICE 0x100b6a70
+// FUNCTION: ROBLOX 0x00603260
 void luaD_throw (lua_State *L, int errcode) {
   if (L->errorJmp) {
     L->errorJmp->status = errcode;
@@ -137,6 +159,9 @@ void luaD_throw (lua_State *L, int errcode) {
   }
 }
 
+
+// FUNCTION: WEBSERVICE 0x100b6320
+// FUNCTION: ROBLOX 0x00602b10
 int luaD_rawrunprotected (lua_State *L, Pfunc f, void *ud) {
   struct lua_longjmp lj;
 
@@ -174,6 +199,7 @@ int luaD_rawrunprotected (lua_State *L, Pfunc f, void *ud) {
 
 /* }====================================================== */
 
+
 static void correctstack (lua_State *L, TValue *oldstack) {
   CallInfo *ci;
   GCObject *up;
@@ -188,6 +214,7 @@ static void correctstack (lua_State *L, TValue *oldstack) {
   L->base = (L->base - oldstack) + L->stack;
 }
 
+
 void luaD_reallocstack (lua_State *L, int newsize) {
   TValue *oldstack = L->stack;
   int realsize = newsize + 1 + EXTRA_STACK;
@@ -198,6 +225,7 @@ void luaD_reallocstack (lua_State *L, int newsize) {
   correctstack(L, oldstack);
 }
 
+
 void luaD_reallocCI (lua_State *L, int newsize) {
   CallInfo *oldci = L->base_ci;
   luaM_reallocvector(L, L->base_ci, L->size_ci, newsize, CallInfo);
@@ -206,12 +234,14 @@ void luaD_reallocCI (lua_State *L, int newsize) {
   L->end_ci = L->base_ci + L->size_ci - 1;
 }
 
+
 void luaD_growstack (lua_State *L, int n) {
   if (n <= L->stacksize)  /* double size is enough? */
     luaD_reallocstack(L, 2*L->stacksize);
   else
     luaD_reallocstack(L, L->stacksize + n);
 }
+
 
 static CallInfo *growCI (lua_State *L) {
   if (L->size_ci > LUAI_MAXCALLS)  /* overflow while handling overflow? */
@@ -223,6 +253,7 @@ static CallInfo *growCI (lua_State *L) {
   }
   return ++L->ci;
 }
+
 
 void luaD_callhook (lua_State *L, int event, int line) {
   lua_Hook hook = L->hook;
@@ -249,6 +280,7 @@ void luaD_callhook (lua_State *L, int event, int line) {
     L->top = restorestack(L, top);
   }
 }
+
 
 static StkId adjust_varargs (lua_State *L, Proto *p, int actual) {
   int i;
@@ -284,6 +316,7 @@ static StkId adjust_varargs (lua_State *L, Proto *p, int actual) {
   return base;
 }
 
+
 static StkId tryfuncTM (lua_State *L, StkId func) {
   const TValue *tm = luaT_gettmbyobj(L, func, TM_CALL);
   StkId p;
@@ -298,9 +331,12 @@ static StkId tryfuncTM (lua_State *L, StkId func) {
   return func;
 }
 
+
+
 #define inc_ci(L) \
   ((L->ci == L->end_ci) ? growCI(L) : \
    (condhardstacktests(luaD_reallocCI(L, L->size_ci)), ++L->ci))
+
 
 int luaD_precall (lua_State *L, StkId func, int nresults) {
   LClosure *cl;
@@ -368,6 +404,7 @@ int luaD_precall (lua_State *L, StkId func, int nresults) {
   }
 }
 
+
 static StkId callrethooks (lua_State *L, StkId firstResult) {
   ptrdiff_t fr = savestack(L, firstResult);  /* next call may change stack */
   luaD_callhook(L, LUA_HOOKRET, -1);
@@ -377,6 +414,7 @@ static StkId callrethooks (lua_State *L, StkId firstResult) {
   }
   return restorestack(L, fr);
 }
+
 
 int luaD_poscall (lua_State *L, StkId firstResult) {
   StkId res;
@@ -398,12 +436,13 @@ int luaD_poscall (lua_State *L, StkId firstResult) {
   return (wanted - LUA_MULTRET);  /* 0 iff wanted == LUA_MULTRET */
 }
 
+
 /*
 ** Call a function (C or Lua). The function to be called is at *func.
 ** The arguments are on the stack, right after the function.
 ** When returns, all the results are on the stack, starting at the original
 ** function position.
-*/
+*/ 
 void luaD_call (lua_State *L, StkId func, int nResults) {
   if (++L->nCcalls >= LUAI_MAXCCALLS) {
     if (L->nCcalls == LUAI_MAXCCALLS)
@@ -416,6 +455,7 @@ void luaD_call (lua_State *L, StkId func, int nResults) {
   L->nCcalls--;
   luaC_checkGC(L);
 }
+
 
 static void resume (lua_State *L, void *ud) {
   StkId firstArg = cast(StkId, ud);
@@ -441,6 +481,7 @@ static void resume (lua_State *L, void *ud) {
   luaV_execute(L, cast_int(L->ci - L->base_ci));
 }
 
+
 static int resume_error (lua_State *L, const char *msg) {
   L->top = L->ci->base;
   setsvalue2s(L, L->top, luaS_new(L, msg));
@@ -448,6 +489,7 @@ static int resume_error (lua_State *L, const char *msg) {
   lua_unlock(L);
   return LUA_ERRRUN;
 }
+
 
 LUA_API int lua_resume (lua_State *L, int nargs) {
   int status;
@@ -472,6 +514,7 @@ LUA_API int lua_resume (lua_State *L, int nargs) {
   return status;
 }
 
+
 LUA_API int lua_yield (lua_State *L, int nresults) {
   luai_userstateyield(L, nresults);
   lua_lock(L);
@@ -482,6 +525,7 @@ LUA_API int lua_yield (lua_State *L, int nresults) {
   lua_unlock(L);
   return -1;
 }
+
 
 int luaD_pcall (lua_State *L, Pfunc func, void *u,
                 ptrdiff_t old_top, ptrdiff_t ef) {
@@ -506,6 +550,8 @@ int luaD_pcall (lua_State *L, Pfunc func, void *u,
   L->errfunc = old_errfunc;
   return status;
 }
+
+
 
 /*
 ** Execute a protected parser.
@@ -533,6 +579,7 @@ static void f_parser (lua_State *L, void *ud) {
   incr_top(L);
 }
 
+
 int luaD_protectedparser (lua_State *L, ZIO *z, const char *name) {
   struct SParser p;
   int status;
@@ -542,3 +589,5 @@ int luaD_protectedparser (lua_State *L, ZIO *z, const char *name) {
   luaZ_freebuffer(L, &p.buff);
   return status;
 }
+
+

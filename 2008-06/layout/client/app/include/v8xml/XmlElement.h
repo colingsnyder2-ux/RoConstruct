@@ -1,3 +1,4 @@
+// Recovered header from roc_unit_28e31b0627a2d865.cpp; native value union includes double.
 #pragma once
 #include <map>
 #include "util/Name.h"

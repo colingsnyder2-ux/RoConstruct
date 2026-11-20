@@ -2,6 +2,7 @@
 #include <afxwin.h>
 #include "StandardVerbs.h"
 
+// Empty native base, established by RTTI and the existing verb constructors.
 class ClipboardObject {};
 class CutVerb : public RBX::DeleteSelectionVerb, public ClipboardObject {
 public:

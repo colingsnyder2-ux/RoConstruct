@@ -5,9 +5,9 @@
   private: static const int32_t JOINT_FORCE_DATA;
   private: static const float MAX_LEGO_JOINT_FORCES_THEORY[7];
   private: static const float MAX_LEGO_JOINT_FORCES_MEASURED[7];
-
+  
   private: void Constants();
-
+  
   private: static const float LEGO_GRID_MASS();
   private: static const float LEGO_JOINT_K();
   private: static const float LEGO_DEFAULT_ELASTIC_K();
@@ -40,7 +40,7 @@ namespace RBX {
 		  static const float LEGO_JOINT_K(); //optimized out
 		  static const float LEGO_DEFAULT_ELASTIC_K(); //optimized out
 		  static const float unitJointK(); //optimized out
-		  static const float getJointKMultiplier(const G3D::Vector3& clippedSortedSize, bool ball);
+		  static const float getJointKMultiplier(const G3D::Vector3& clippedSortedSize, bool ball); 
 		public:
 		  static const int uiStepsPerSec(); //optimized out
 		  static const int worldStepsPerUiStep(); //optimized out

@@ -22,7 +22,7 @@ namespace RBX
 			{
 			public:
 				Value returnValue;
-
+		  
 			public:
 				virtual size_t size() const = 0;
 				virtual void get(int, Value&) const = 0;
@@ -36,7 +36,7 @@ namespace RBX
 
 		protected:
 			SignatureDescriptor signature;
-
+		  
 		protected:
 			FunctionDescriptor(ClassDescriptor& classDescriptor, const char* name, Security security);
 
@@ -50,7 +50,7 @@ namespace RBX
 		protected:
 			const FunctionDescriptor* descriptor;
 			const DescribedBase* instance;
-
+		  
 		public:
 			Function(const Function&);
 			Function(const FunctionDescriptor& descriptor, const DescribedBase* instance)

@@ -2819,13 +2819,6 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
-  "rebuild/2008-06/native-classes/PlayerLighting.cpp": {
-   "export": "rebuild/2008-06/layout/client/rendering/renderlib/RenderScene.cpp",
-   "source_sha256": "50a5d84153af3c2a7ef429d543d18f949bff83f6a11eaed740f3d7998ae1a3df",
-   "export_sha256": "50a5d84153af3c2a7ef429d543d18f949bff83f6a11eaed740f3d7998ae1a3df",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
   "rebuild/2008-06/native-classes/Png7pngtrans.cpp": {
    "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngtrans.c",
    "source_sha256": "ef56a00b071e7d085bb341b49841e02bd8192eb56f13052bec105b67008be0ac",

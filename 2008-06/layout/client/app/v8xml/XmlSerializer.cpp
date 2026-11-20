@@ -1,3 +1,17 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /I{headers}/writer-2008
+// 2008-06 native XmlSerializer.cpp rows (inactive) of the application range 0058c000..00590000: the TextXmlParser /
+// TextXmlWriter unit 0058c990..0059001f, against the read-only v8xml owner headers native-headers/v8xml/XmlSerializer.h
+// and XmlElement.h. Verified by tests/record_native_app_unit58c.py (receipt app-unit58c-working.json).
+//   whitespaces  009494e0: initialised 256-byte table (.data; bytes 9, 10, 12, 13 and 32 set, no static initialiser),
+//                read by skipWhitespace 0058cac1, removeTag 0058d22f and findNextToken 0058d2f0.
+// TextXmlParser keeps a std::map<std::string, std::string> at +0x28 (declared `entities` by XmlSerializer.h; parse
+// 0058f6c0 fills it with the legacy hash of each embedded binary content and maps <hash> names through it).
+// Built with native-headers/writer-2008 ahead of native-headers (as WorkspaceXmlWriter.cpp is): that variant of the
+// read-only v8xml owner header declares the TextXmlWriterWithEmbeddedContent ContentProvider at +0x48, read by
+// serializeNode 0058f3e6 before the getContent call 00561f20.
+//   vtables: TextXmlWriter 0080ea1c (slot 0 serialize 0058e810, slot 1 serializeNode 0058ecb0),
+//   TextXmlWriterWithEmbeddedContent 0081c848 (slot 1 serializeNode 0058f270), TextXmlParser 0080ea28 (slot 0 parse),
+//   XmlParser 00831b40 (stored by XmlParser() 0058f230); XmlWriter is novtable.
 #include "v8xml/XmlSerializer.h"
 #include "AppUnit58C/base64.hpp"
 #include "reflection/type.h"
@@ -11,17 +25,20 @@ static bool whitespaces[256] = {
 	1
 };
 
+// 0058f230 (stores the XmlParser vtable 00831b40)
 XmlParser::XmlParser(std::streambuf* buffer)
 	: buffer(buffer)
 {
 }
 
+// 0058cab0
 void TextXmlParser::skipWhitespace()
 {
 	while (whitespaces[(char)buffer->sgetc()])
 		buffer->sbumpc();
 }
 
+// 0058cc80
 std::string TextXmlParser::readTag()
 {
 	skipWhitespace();
@@ -43,6 +60,7 @@ std::string TextXmlParser::readTag()
 	return tag;
 }
 
+// 0058caf0
 std::string TextXmlParser::readFirstTag()
 {
 	skipWhitespace();
@@ -77,6 +95,7 @@ std::string TextXmlParser::readFirstTag()
 	return tag;
 }
 
+// 0058cd50
 std::string decodeString(std::string source)
 {
 	std::string result;
@@ -130,6 +149,7 @@ std::string decodeString(std::string source)
 	return result;
 }
 
+// 0058d130
 std::string TextXmlParser::readText(bool decode)
 {
 	skipWhitespace();
@@ -144,6 +164,7 @@ std::string TextXmlParser::readText(bool decode)
 	return text;
 }
 
+// 0058d200
 std::string TextXmlParser::removeTag(const std::string& contents, int& index)
 {
 	size_t i = 0;
@@ -160,6 +181,7 @@ std::string TextXmlParser::removeTag(const std::string& contents, int& index)
 	return contentsNoTag;
 }
 
+// 0058d2a0
 std::string TextXmlParser::findNextToken(const std::string& contents, int& index)
 {
 	size_t i;
@@ -195,6 +217,7 @@ std::string TextXmlParser::findNextToken(const std::string& contents, int& index
 	return "";
 }
 
+// 0058e590
 XmlElement* TextXmlParser::parseAttributes(const std::string& currentTag)
 {
 	std::string tagGuts = currentTag.substr(1, currentTag.size() - 2);
@@ -222,6 +245,7 @@ XmlElement* TextXmlParser::parseAttributes(const std::string& currentTag)
 	return element;
 }
 
+// 0058c990
 bool isCloseTag(const std::string& test)
 {
 	if (test.size() >= 2)
@@ -230,6 +254,7 @@ bool isCloseTag(const std::string& test)
 	return false;
 }
 
+// 0058ca20
 bool endsWithClose(const std::string& test)
 {
 	if (test.size() >= 2)
@@ -239,14 +264,22 @@ bool endsWithClose(const std::string& test)
 }
 
 #ifndef NATIVE_APPUNIT58C_PENDING
+// Without the static registerContent declaration parse 0058f6c0 is not built; these explicit instantiations emit the
+// templates only parse instantiates in the original (the TextXmlParser +0x28 map: pair constructors 0058d3f0 /
+// 0058d450, _Lbound 0058d6a0, const_iterator::_Dec 0058d6f0, _Buynode 0058d860, _Insert 0058e820, insert 0058ea20,
+// find 0058ef70, insert(iterator, value) 0058eff0, operator[] 0058f5d0; base64<char>::get 0058d900 and _getCharType
+// 0058d530).
 template class std::_Tree<std::_Tmap_traits<std::string, std::string, std::less<std::string>,
 	std::allocator<std::pair<const std::string, std::string> >, false> >;
 template class std::map<std::string, std::string>;
 template std::istreambuf_iterator<char> base64<char>::get(std::istreambuf_iterator<char>, std::istreambuf_iterator<char>,
 	std::ostreambuf_iterator<char>, int&) const;
 #else
+// 0055bf20: called by parse 0058fb6b with the registered ContentId string by value, result in the hidden slot. No
+// evidence name: `legacyHash` is descriptive (the result keys the +0x28 map that <hash> names are looked up in).
 extern std::string legacyHash(std::string);
 
+// 0058f6c0 (needs a static RBX::ContentProvider::registerContent(std::istream&, const Name&), 0055fbc0)
 std::auto_ptr<XmlElement> TextXmlParser::parse()
 {
 	if (buffer->sgetc() == -1)
@@ -363,16 +396,19 @@ std::auto_ptr<XmlElement> TextXmlParser::parse()
 }
 #endif
 
+// 0058fff0
 XmlWriter::XmlWriter(std::ostream& stream)
 	: stream(stream)
 {
 }
 
+// inlined at every call (writeOpenTag 0058ebd4, serializeNode 0058edc8)
 void TextXmlWriter::encodedWrite(std::ostream& stream, const std::string& text)
 {
 	encodedWrite(stream, text.c_str());
 }
 
+// 0058eb10
 void TextXmlWriter::writeOpenTag(const XmlElement* element, int depth, const XmlAttribute* extraAttribute)
 {
 	for (int i = 0; i < depth; i++)
@@ -397,6 +433,7 @@ void TextXmlWriter::writeOpenTag(const XmlElement* element, int depth, const Xml
 	stream << '>';
 }
 
+// 0058d780
 void TextXmlWriter::writeCloseTag(const XmlElement* element, int depth)
 {
 	for (int i = 0; i < depth; i++)
@@ -405,6 +442,7 @@ void TextXmlWriter::writeCloseTag(const XmlElement* element, int depth)
 	stream << "</" << element->getTag().name << '>';
 }
 
+// 0058ecb0
 void TextXmlWriter::serializeNode(const XmlElement* xmlNode, int depth)
 {
 	if (xmlNode->isValueType<RBX::ContentId>())
@@ -431,11 +469,13 @@ void TextXmlWriter::serializeNode(const XmlElement* xmlNode, int depth)
 	}
 }
 
+// 0058e810
 void TextXmlWriter::serialize(const XmlElement* xmlNode)
 {
 	serialize(xmlNode, 0);
 }
 
+// 0058d7e0
 void TextXmlWriter::serialize(const XmlElement* xmlNode, int depth)
 {
 	if (xmlNode)
@@ -459,6 +499,7 @@ void TextXmlWriter::serialize(const XmlElement* xmlNode, int depth)
 	}
 }
 
+// 0058e4a0
 void TextXmlWriter::encodedWrite(std::ostream& stream, const char* text)
 {
 	size_t len = strlen(text);
@@ -498,6 +539,7 @@ void TextXmlWriter::encodedWrite(std::ostream& stream, const char* text)
 	}
 }
 
+// 0058f270
 void TextXmlWriterWithEmbeddedContent::serializeNode(const XmlElement* xmlNode, int depth)
 {
 	if (xmlNode->isValueType<RBX::ContentId>())

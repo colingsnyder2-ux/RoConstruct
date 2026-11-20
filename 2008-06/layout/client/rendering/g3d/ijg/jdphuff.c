@@ -1,3 +1,6 @@
+// native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/jpeg-6b /TC
+// IJG JPEG 6b decoder pipeline; inactive pending reference, provider, ABI and runtime checks.
+
 /*
  * jdphuff.c
  *
@@ -18,6 +21,7 @@
 #include "jinclude.h"
 #include "jpeglib.h"
 #include "jdhuff.h"		/* Declarations shared with jdhuff.c */
+
 
 #ifdef D_PROGRESSIVE_SUPPORTED
 
@@ -51,6 +55,7 @@ typedef struct {
 #endif
 #endif
 
+
 typedef struct {
   struct jpeg_entropy_decoder pub; /* public fields */
 
@@ -80,6 +85,7 @@ METHODDEF(boolean) decode_mcu_DC_refine JPP((j_decompress_ptr cinfo,
 					     JBLOCKROW *MCU_data));
 METHODDEF(boolean) decode_mcu_AC_refine JPP((j_decompress_ptr cinfo,
 					     JBLOCKROW *MCU_data));
+
 
 /*
  * Initialize for a Huffman-compressed scan.
@@ -189,6 +195,7 @@ start_pass_phuff_decoder (j_decompress_ptr cinfo)
   entropy->restarts_to_go = cinfo->restart_interval;
 }
 
+
 /*
  * Figure F.12: extend sign bit.
  * On some machines, a shift and add will be faster than a table lookup.
@@ -213,6 +220,7 @@ static const int extend_offset[16] = /* entry n is (-1 << n) + 1 */
     ((-1)<<13) + 1, ((-1)<<14) + 1, ((-1)<<15) + 1 };
 
 #endif /* AVOID_TABLES */
+
 
 /*
  * Check for a restart marker & resynchronize decoder.
@@ -254,10 +262,11 @@ process_restart (j_decompress_ptr cinfo)
   return TRUE;
 }
 
+
 /*
  * Huffman MCU decoding.
  * Each of these routines decodes and returns one MCU's worth of
- * Huffman-compressed coefficients.
+ * Huffman-compressed coefficients. 
  * The coefficients are reordered from zigzag order into natural array order,
  * but are not dequantized.
  *
@@ -278,7 +287,7 @@ process_restart (j_decompress_ptr cinfo)
 
 METHODDEF(boolean)
 decode_mcu_DC_first (j_decompress_ptr cinfo, JBLOCKROW *MCU_data)
-{
+{   
   phuff_entropy_ptr entropy = (phuff_entropy_ptr) cinfo->entropy;
   int Al = cinfo->Al;
   register int s, r;
@@ -341,6 +350,7 @@ decode_mcu_DC_first (j_decompress_ptr cinfo, JBLOCKROW *MCU_data)
   return TRUE;
 }
 
+
 /*
  * MCU decoding for AC initial scan (either spectral selection,
  * or first pass of successive approximation).
@@ -348,7 +358,7 @@ decode_mcu_DC_first (j_decompress_ptr cinfo, JBLOCKROW *MCU_data)
 
 METHODDEF(boolean)
 decode_mcu_AC_first (j_decompress_ptr cinfo, JBLOCKROW *MCU_data)
-{
+{   
   phuff_entropy_ptr entropy = (phuff_entropy_ptr) cinfo->entropy;
   int Se = cinfo->Se;
   int Al = cinfo->Al;
@@ -424,6 +434,7 @@ decode_mcu_AC_first (j_decompress_ptr cinfo, JBLOCKROW *MCU_data)
   return TRUE;
 }
 
+
 /*
  * MCU decoding for DC successive approximation refinement scan.
  * Note: we assume such scans can be multi-component, although the spec
@@ -432,7 +443,7 @@ decode_mcu_AC_first (j_decompress_ptr cinfo, JBLOCKROW *MCU_data)
 
 METHODDEF(boolean)
 decode_mcu_DC_refine (j_decompress_ptr cinfo, JBLOCKROW *MCU_data)
-{
+{   
   phuff_entropy_ptr entropy = (phuff_entropy_ptr) cinfo->entropy;
   int p1 = 1 << cinfo->Al;	/* 1 in the bit position being coded */
   int blkn;
@@ -474,13 +485,14 @@ decode_mcu_DC_refine (j_decompress_ptr cinfo, JBLOCKROW *MCU_data)
   return TRUE;
 }
 
+
 /*
  * MCU decoding for AC successive approximation refinement scan.
  */
 
 METHODDEF(boolean)
 decode_mcu_AC_refine (j_decompress_ptr cinfo, JBLOCKROW *MCU_data)
-{
+{   
   phuff_entropy_ptr entropy = (phuff_entropy_ptr) cinfo->entropy;
   int Se = cinfo->Se;
   int p1 = 1 << cinfo->Al;	/* 1 in the bit position being coded */
@@ -623,6 +635,7 @@ undoit:
   return FALSE;
 }
 
+
 /*
  * Module initialization routine for progressive Huffman entropy decoding.
  */
@@ -650,7 +663,7 @@ jinit_phuff_decoder (j_decompress_ptr cinfo)
     (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
 				cinfo->num_components*DCTSIZE2*SIZEOF(int));
   coef_bit_ptr = & cinfo->coef_bits[0][0];
-  for (ci = 0; ci < cinfo->num_components; ci++)
+  for (ci = 0; ci < cinfo->num_components; ci++) 
     for (i = 0; i < DCTSIZE2; i++)
       *coef_bit_ptr++ = -1;
 }

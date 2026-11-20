@@ -91,7 +91,7 @@ namespace RBX
 		}
 	public:
 		virtual const Name& getClassName() const = 0;
-
+	  
 	protected:
 		static std::map<const Name*, const ICreator*>& getCreators()
 		{
@@ -127,13 +127,15 @@ namespace RBX
 			Creator();
 			~Creator();
 			// INFERRED: Object.h Creator::wasConstructed() asserts isConstructed == 0x29a (iOS 2013 reference: getClassName /
+			// static getCreator); each 2008 creator initializer stores 0x29a to its own instantiation's copy (0096c864 for
+			// Properties, 0096c5f8, 00978a68, ...), right after the creators-map insert of Creator().
 			static int isConstructed;
 			static bool wasConstructed() { return isConstructed == 666; }
 		};
 
 	private:
 		static const Creator creator;
-
+	  
 	protected:
 		FactoryProduct();
 		template<typename T> FactoryProduct(T value) : DerivedClass(value) {}
@@ -147,7 +149,7 @@ namespace RBX
 			return creator;
 		}
 		virtual const Name& getClassName() const;
-
+	  
 	public:
 		static const Name& className();
 	};

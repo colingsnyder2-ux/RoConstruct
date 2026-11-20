@@ -1,3 +1,5 @@
+// native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
+// 2008-06 native Jpegjdmerge (inactive): upstream tools/libs/jpeg-6b/jdmerge.c, verbatim.
 /*
  * jdmerge.c
  *
@@ -38,6 +40,7 @@
 
 #ifdef UPSAMPLE_MERGING_SUPPORTED
 
+
 /* Private subobject */
 
 typedef struct {
@@ -71,6 +74,7 @@ typedef my_upsampler * my_upsample_ptr;
 #define SCALEBITS	16	/* speediest right-shift on some machines */
 #define ONE_HALF	((INT32) 1 << (SCALEBITS-1))
 #define FIX(x)		((INT32) ((x) * (1L<<SCALEBITS) + 0.5))
+
 
 /*
  * Initialize tables for YCC->RGB colorspace conversion.
@@ -115,6 +119,7 @@ build_ycc_rgb_table (j_decompress_ptr cinfo)
   }
 }
 
+
 /*
  * Initialize for an upsampling pass.
  */
@@ -129,6 +134,7 @@ start_pass_merged_upsample (j_decompress_ptr cinfo)
   /* Initialize total-height counter for detecting bottom of image */
   upsample->rows_to_go = cinfo->output_height;
 }
+
 
 /*
  * Control routine to do upsampling (and color conversion).
@@ -184,6 +190,7 @@ merged_2v_upsample (j_decompress_ptr cinfo,
     (*in_row_group_ctr)++;
 }
 
+
 METHODDEF(void)
 merged_1v_upsample (j_decompress_ptr cinfo,
 		    JSAMPIMAGE input_buf, JDIMENSION *in_row_group_ctr,
@@ -202,6 +209,7 @@ merged_1v_upsample (j_decompress_ptr cinfo,
   (*in_row_group_ctr)++;
 }
 
+
 /*
  * These are the routines invoked by the control routines to do
  * the actual upsampling/conversion.  One row group is processed per call.
@@ -210,6 +218,7 @@ merged_1v_upsample (j_decompress_ptr cinfo,
  * we have to be honest about the output width; we can't assume the buffer
  * has been rounded up to an even width.
  */
+
 
 /*
  * Upsample and color convert for the case of 2:1 horizontal and 1:1 vertical.
@@ -271,6 +280,7 @@ h2v1_merged_upsample (j_decompress_ptr cinfo,
     outptr[RGB_BLUE] =  range_limit[y + cblue];
   }
 }
+
 
 /*
  * Upsample and color convert for the case of 2:1 horizontal and 2:1 vertical.
@@ -348,6 +358,7 @@ h2v2_merged_upsample (j_decompress_ptr cinfo,
     outptr1[RGB_BLUE] =  range_limit[y + cblue];
   }
 }
+
 
 /*
  * Module initialization routine for merged upsampling/color conversion.

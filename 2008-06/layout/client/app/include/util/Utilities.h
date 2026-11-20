@@ -10,7 +10,7 @@ namespace RBX
 	{
 	private:
 		boost::shared_ptr<T> object;
-
+	  
 	public:
 		CopyOnWrite(const T& object)
 			: object(new T(object))
@@ -76,7 +76,7 @@ namespace RBX
 	private:
 		Class* first;
 		Class* last;
-
+	  
 	public:
 		Parent()
 			: first(NULL),
@@ -124,7 +124,7 @@ namespace RBX
 
 	private:
 		Class* next;
-
+	  
 	protected:
 		Sibling(Class*);
 		Sibling()

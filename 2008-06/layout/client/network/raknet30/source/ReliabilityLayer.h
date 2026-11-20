@@ -273,10 +273,10 @@ private:
 	DataStructures::RangeList<MessageNumberType> acknowlegements;
 	int splitMessageProgressInterval;
 	RakNetTimeNS unreliableTimeout;
-
+	
 	DataStructures::BPlusTree<MessageNumberType, InternalPacket*, RESEND_TREE_ORDER> resendList;
 	DataStructures::Queue<InternalPacket*> resendQueue;
-
+	
 	DataStructures::Queue<InternalPacket*> sendPacketSet[ NUMBER_OF_PRIORITIES ];
     DataStructures::OrderedList<SplitPacketIdType, SplitPacketChannel*, SplitPacketChannelComp> splitPacketChannelList;
 	MessageNumberType sendMessageNumberIndex;
@@ -329,6 +329,9 @@ private:
 	/// If 0, we got got that packet.  Otherwise, the time to give up waiting for that packet.
 	/// If we get a packet number where (receivedPacketsBaseIndex-packetNumber) is less than half the range of receivedPacketsBaseIndex then it is a duplicate
 	/// Otherwise, it is a duplicate packet (and ignore it).
+
+
+
 
 	///This variable is so that free memory can be called by only the update thread so we don't have to mutex things so much
 

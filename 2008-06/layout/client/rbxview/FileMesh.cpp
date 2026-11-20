@@ -1,5 +1,7 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/file-mesh-provider
 #define NOMINMAX
 #include <winsock2.h>
+// 2008-06 native RBX::ViewNew::FileMesh (inactive): the unit 00500780..00500c98 (/fp:fast like the other ViewNew units).
 #include "ViewNew/FileMesh.h"
 #include <stdio.h>
 #include <exception>
@@ -10,6 +12,8 @@ namespace RBX
 {
 	namespace ViewNew
 	{
+		// 00500780. Needs ContentProvider::requestContentFile(const ContentId&, Status*, std::string&) (00562670) and its
+		// status enum (1 = succeeded); declarations live in this unit's file-mesh-provider profile.
 		bool FileMesh::loadFromMeshFile(ContentProvider* provider, const G3D::Vector3& scale, MeshId meshFile)
 		{
 			try
@@ -58,6 +62,7 @@ namespace RBX
 			return true;
 		}
 
+		// 00500b90
 		G3D::ReferenceCountedPointer<RenderBase::Mesh> FileMesh::create(ContentProvider* provider, const G3D::Vector3& scale, MeshId meshFile)
 		{
 			FileMesh* newMesh = new FileMesh;
@@ -71,4 +76,5 @@ namespace RBX
 	}
 }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class G3D::ReferenceCountedPointer<RBX::ViewNew::FileMesh>;

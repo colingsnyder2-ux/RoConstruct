@@ -1,3 +1,5 @@
+// Inactive 2008-06 native recovery: RBX::Lua signal bridge and script slots.
+// Body shapes follow the donor reconstruction; counted rows are proven by tests/record_native_lua_bridge2008.py.
 #include "LuaBridge2008/LuaSignalBridge2008.h"
 #include "G3D/format.h"
 #include "util/standardout.h"
@@ -39,6 +41,9 @@ void SignalBridge::on_newindex(boost::shared_ptr<Reflection::SignalInstance>& ob
     throw std::runtime_error(G3D::format("%s cannot be assigned to", name));
 }
 
+// The specialization above is of a member lua/LuaBridge.h defines inside the class body, which MSVC emits only when
+// referenced (it is treated as inline): the __newindex wrapper that calls it (ScriptContext unit) is instantiated here
+// so that 0061f220 is emitted. The wrapper instance itself is not a row.
 namespace RBX { namespace Lua {
 template int Bridge<boost::shared_ptr<Reflection::SignalInstance>, false>::on_newindex(lua_State*);
 }}
@@ -90,6 +95,8 @@ static size_t pushArgs(lua_State* L, const Arguments& arguments)
         }
         else
         {
+            // 2008: the unknown argument type's name is taken (unused) and nil is pushed in its place
+            // (lua_pushnil 006121e0 at 0061fe48).
             argType.name();
             lua_pushnil(L);
         }
@@ -182,7 +189,7 @@ WaitScriptSlot::WaitScriptSlot(lua_State* thread)
 void WaitScriptSlot::operator()(const Arguments& arguments)
 {
 	Slot::cnction->disconnect();
-
+	
 	if (lua_State* state = waitThread.thread())
 	{
 		int top = lua_gettop(state);
@@ -242,6 +249,7 @@ int SignalConnectionBridge::disconnect(lua_State* L)
     return 0;
 }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class RBX::Lua::Bridge<boost::signals::connection,1>;
 template class RBX::Lua::SharedPtrBridge<RBX::Reflection::DescribedBase>;
 template class boost::shared_ptr<boost::mutex>;

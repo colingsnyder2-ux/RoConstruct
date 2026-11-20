@@ -1,3 +1,8 @@
+// 2008-06 native RBX::Block (inactive); evidence in native-headers/v8world/Block2008.h.
+// Verified by tests/record_native_world_shapes.py. Unit 00647700..00649120: Block methods, the file-local
+// RBX::myLess / RBX::BlockTemplate (0x60 bytes: BlockTemplate::getVertices 00648f30 news 0x60) and the
+// std::map<Vector3, BlockTemplate*, myLess> members it instantiates.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8world/Block2008.h"
 #include "util/Math.h"
 #include <G3D/AABox.h>
@@ -14,6 +19,7 @@ namespace RBX
 
 	struct myLess : public std::binary_function<G3D::Vector3, G3D::Vector3, bool>
 	{
+		// 00647760
 		bool operator()(const G3D::Vector3& a, const G3D::Vector3& b) const
 		{
 			if (a.x < b.x)
@@ -51,11 +57,13 @@ namespace RBX
 
 	BlockTemplate::BlockTemplates BlockTemplate::blockTemplates;
 
+	// 005e7390: vtable slot 6, tail of getMomentHollow (was inline in Block2008.h).
 	G3D::Matrix3 Block::getMoment(float mass) const
 	{
 		return getMomentHollow(mass);
 	}
 
+	// 006477b0: thin-shell moment per axis (main axis x, then the two others cyclically).
 	G3D::Matrix3 Block::getMomentHollow(float mass) const
 	{
 		G3D::Vector3 size = gridSize;
@@ -81,11 +89,13 @@ namespace RBX
 		return Math::fromDiagonal(I);
 	}
 
+	// 006478f0
 	float Block::getGridVolume() const
 	{
 		return gridSize.z * gridSize.y * gridSize.x;
 	}
 
+	// 00647900
 	const G3D::Vector3* Block::getEdgePoint(const G3D::Vector3int16& clip, NormalId& normalID) const
 	{
 		if (clip.x == 0)
@@ -102,6 +112,7 @@ namespace RBX
 		return &vertices[2 * (2 * (clip.x <= 0) + (clip.y <= 0)) + 1];
 	}
 
+	// 00647990
 	const G3D::Vector3* Block::getPlanePoint(const G3D::Vector3int16& clip, NormalId& normalID) const
 	{
 		if (clip.x != 0)
@@ -118,6 +129,7 @@ namespace RBX
 		return &vertices[clip.z <= 0];
 	}
 
+	// 00647a20
 	GeoPairType Block::getBallBlockInfo(int onBorder, G3D::Vector3int16 clip, const G3D::Vector3*& offset, NormalId& normalID)
 	{
 		if (onBorder == 1)
@@ -134,6 +146,7 @@ namespace RBX
 		return BALL_POINT_PAIR;
 	}
 
+	// 00647ab0
 	GeoPairType Block::getBallInsideInfo(const G3D::Vector3& ray, const G3D::Vector3*& offset, NormalId& normalID)
 	{
 		float smallest = 1e30f;
@@ -159,6 +172,7 @@ namespace RBX
 		return BALL_PLANE_PAIR;
 	}
 
+	// 00647b90
 	void Block::projectToFace(G3D::Vector3& ray, G3D::Vector3int16& clip, int& onBorder)
 	{
 		onBorder = 0;
@@ -202,6 +216,7 @@ namespace RBX
 		}
 	}
 
+	// 00647c70
 	G3D::Vector2 Block::getProjectedVertex(const G3D::Vector3& vertex, NormalId normalID)
 	{
 		G3D::Vector2 answer(0, 0);
@@ -235,8 +250,11 @@ namespace RBX
 		return answer;
 	}
 
+	// 00647d10
 	int Block::getClosestEdge(const G3D::Matrix3& rotation, NormalId normalID, G3D::Vector3& crossAxis)
 	{
+		// crossAxis * rotation (vector to object space). Codegen analog: the original sums the column terms z, y,
+		// x in this order under /fp:fast (00647d1b..00647d69); the donor G3D operator* (x, y, z) reorders them.
 		G3D::Vector3 axisInBody;
 		for (int r = 0; r < 3; ++r)
 		{
@@ -258,6 +276,7 @@ namespace RBX
 		return normalID * 4 + 2;
 	}
 
+	// 00647e70
 	BlockTemplate::BlockTemplate(const G3D::Vector3& _corner)
 	{
 		float x = -fabsf(_corner.x);
@@ -279,6 +298,7 @@ namespace RBX
 		}
 	}
 
+	// 00647f40
 	bool Block::hitTest(const G3D::Ray& rayInMe, G3D::Vector3& localHitPoint, bool& inside)
 	{
 		G3D::Vector3 halfSize = gridSize * 0.5f;
@@ -305,6 +325,7 @@ namespace RBX
 		return true;
 	}
 
+	// 00648270
 	G3D::Vector3 Block::getCenterToCorner(const G3D::Matrix3& rotation) const
 	{
 		if (cornerRadius < 3.0f)   // 00648270: constant 3.0f at 0081e380
@@ -316,6 +337,7 @@ namespace RBX
 		return maxValue;
 	}
 
+	// 00648f30
 	const G3D::Vector3* BlockTemplate::getVertices(const G3D::Vector3& corner)
 	{
 		BlockTemplates::iterator iter = blockTemplates.find(corner);
@@ -327,12 +349,14 @@ namespace RBX
 		return answer->vertices;
 	}
 
+	// 00648fd0
 	void Block::onSetSize()
 	{
 		vertices = BlockTemplate::getVertices(gridSize * -0.5f);
 		cornerRadius = vertices[0].magnitude();
 	}
 
+	// 006490b0
 	BlockTemplate::BlockTemplates::~BlockTemplates()
 	{
 		iterator iter = begin();
@@ -344,6 +368,7 @@ namespace RBX
 	}
 }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<G3D::Vector3 const ,RBX::BlockTemplate *> > >;
 template class std::_Tree<std::_Tmap_traits<G3D::Vector3,RBX::BlockTemplate *,RBX::myLess,std::allocator<std::pair<G3D::Vector3 const ,RBX::BlockTemplate *> >,0> >;
 template class std::allocator<std::_Tree_nod<std::_Tmap_traits<G3D::Vector3,RBX::BlockTemplate *,RBX::myLess,std::allocator<std::pair<G3D::Vector3 const ,RBX::BlockTemplate *> >,0> >::_Node *>;

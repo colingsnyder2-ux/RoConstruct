@@ -27,7 +27,7 @@ namespace RBX
 	public:
 		static const G3D::Vector3& dragSnap()
 		{
-			static G3D::Vector3 v(1, 0.1, 1);
+			static G3D::Vector3 v(1, 0.1, 1); 
 			return v;
 		}
 		static G3D::Vector3 toGrid(const G3D::Vector3& v);

@@ -1,3 +1,7 @@
+// native-flags: /O2 /GS- /MD /DZLIB_WINAPI /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/libpng-1.2.7 /TC
+// libpng 1.2.7 transforms; inactive pending reference, provider, ABI and runtime checks.
+
+
 /* pngtrans.c - transforms the data in a row (used by both readers and writers)
  *
  * libpng  1.2.7 - September 12, 2004

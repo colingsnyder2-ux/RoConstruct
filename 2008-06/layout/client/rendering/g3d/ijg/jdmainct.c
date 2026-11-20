@@ -1,3 +1,5 @@
+// native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
+// 2008-06 native Jpegjdmainct (inactive): upstream tools/libs/jpeg-6b/jdmainct.c, verbatim.
 /*
  * jdmainct.c
  *
@@ -16,6 +18,7 @@
 #define JPEG_INTERNALS
 #include "jinclude.h"
 #include "jpeglib.h"
+
 
 /*
  * In the current system design, the main buffer need never be a full-image
@@ -107,6 +110,7 @@
  * want it quick and dirty, so a context-free upsampler is sufficient.
  */
 
+
 /* Private buffer controller object */
 
 typedef struct {
@@ -136,6 +140,7 @@ typedef my_main_controller * my_main_ptr;
 #define CTX_PROCESS_IMCU	1	/* feeding iMCU to postprocessor */
 #define CTX_POSTPONED_ROW	2	/* feeding postponed row group */
 
+
 /* Forward declarations */
 METHODDEF(void) process_data_simple_main
 	JPP((j_decompress_ptr cinfo, JSAMPARRAY output_buf,
@@ -148,6 +153,7 @@ METHODDEF(void) process_data_crank_post
 	JPP((j_decompress_ptr cinfo, JSAMPARRAY output_buf,
 	     JDIMENSION *out_row_ctr, JDIMENSION out_rows_avail));
 #endif
+
 
 LOCAL(void)
 alloc_funny_pointers (j_decompress_ptr cinfo)
@@ -185,6 +191,7 @@ alloc_funny_pointers (j_decompress_ptr cinfo)
     main->xbuffer[1][ci] = xbuf;
   }
 }
+
 
 LOCAL(void)
 make_funny_pointers (j_decompress_ptr cinfo)
@@ -228,6 +235,7 @@ make_funny_pointers (j_decompress_ptr cinfo)
   }
 }
 
+
 LOCAL(void)
 set_wraparound_pointers (j_decompress_ptr cinfo)
 /* Set up the "wraparound" pointers at top and bottom of the pointer lists.
@@ -254,6 +262,7 @@ set_wraparound_pointers (j_decompress_ptr cinfo)
     }
   }
 }
+
 
 LOCAL(void)
 set_bottom_pointers (j_decompress_ptr cinfo)
@@ -291,6 +300,7 @@ set_bottom_pointers (j_decompress_ptr cinfo)
   }
 }
 
+
 /*
  * Initialize for a processing pass.
  */
@@ -326,6 +336,7 @@ start_pass_main (j_decompress_ptr cinfo, J_BUF_MODE pass_mode)
     break;
   }
 }
+
 
 /*
  * Process some data.
@@ -365,6 +376,7 @@ process_data_simple_main (j_decompress_ptr cinfo,
     main->rowgroup_ctr = 0;
   }
 }
+
 
 /*
  * Process some data.
@@ -436,6 +448,7 @@ process_data_context_main (j_decompress_ptr cinfo,
   }
 }
 
+
 /*
  * Process some data.
  * Final pass of two-pass quantization: just call the postprocessor.
@@ -455,6 +468,7 @@ process_data_crank_post (j_decompress_ptr cinfo,
 }
 
 #endif /* QUANT_2PASS_SUPPORTED */
+
 
 /*
  * Initialize main buffer controller.

@@ -1,3 +1,28 @@
+// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+// Ogre::RbxSky as compiled into the June 2008 client (inactive native recovery; Roblox's exe-local sky object for its
+// Ogre 1.4.5 fork, the image block 0067f170..00681190 between VisualEngine and RbxSceneNode).
+//
+// Evidence (original Roblox.exe):
+//   * RTTI vtable 0084e56c .?AVRbxSky@Ogre@@, no base classes, one slot: ??_G 0067fd40 (calls the destructor 0067fb50).
+//   * size 0xd4: RbxSceneManager::setSkyBox 00692a10 pushes 0xd4 to operator new and calls the constructor 0067fd60
+//     (ret 0xc: SceneManager*, const String& path, bool enabled).
+//   * constructor 0067fd60 / destructor 0067fb50: TexturePtr at +0x04 / +0x10 / +0x1c / +0x28 (the ctor loads
+//     path + "sun.jpg" into +0x04, "moon.jpg" into +0x10 and "sun-rays.jpg" into +0x28; +0x1c is constructed and
+//     destroyed only), BillboardSet* sun / moon / sun rays at +0x34 / +0x38 / +0x3c, SceneNode* sun / moon / stars /
+//     sky at +0x40 / +0x44 / +0x48 / +0x4c, MaterialPtr at +0x54 / +0x60 / +0x6c / +0x78 (sunMatl, sunRaysMatl,
+//     moonMatl, starsMatl<n>), bool +0x84 = false (sun rays shown), std::vector<Vector3> +0x88 (star positions) and
+//     std::vector<float> +0xa0 (star intensities), bool +0xb8 = enabled; +0x85 (stars shown) is a bool set by
+//     0067f230 and read by update 0067f850; Vector3 sun / moon positions +0xbc / +0xc8 (0067f550 / 0067f230, read by
+//     update).
+//   * +0x50..+0x53 is NOT derived: no instruction in the client reads, writes, constructs or destroys it (the
+//     constructor initialises the pointers +0x34..+0x4c by assignment and never touches +0x50). The class therefore
+//     has no native declaration yet (no placeholder members); its bodies below are pending-build-only.
+//
+// Built from the current headers (counted): the std::vector<Ogre::Vector3> / std::vector<float> COMDATs of this block,
+// from explicit instantiation (resize 0067fc70, erase 0067fa80, the destructor 0067fb10, _Copy_opt 0067f170,
+// _Copy_backward_opt 0067f1d0, _Fill 0067f7c0).
+// Pending-build-only (NATIVE_OGRE_RBX_SKY_PENDING, with the proposal header that tests/record_native_ogre_rbx_sky.py
+// generates under rebuild/2008-06/out/): the RbxSky members.
 #include <vector>
 #include <OgreVector3.h>
 
@@ -262,6 +287,7 @@ void RbxSky::updateSun(VisualEngine*, const G3D::LightingParameters& lighting)
 
 }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class std::_Container_base_aux_alloc_real<std::allocator<Ogre::Vector3> >;
 template class std::_Revranit<std::_Vector_const_iterator<Ogre::Vector3,std::allocator<Ogre::Vector3> >,std::iterator<std::random_access_iterator_tag,Ogre::Vector3,int,Ogre::Vector3 const *,Ogre::Vector3 const &> >;
 template class std::_Revranit<std::_Vector_iterator<Ogre::Vector3,std::allocator<Ogre::Vector3> >,std::iterator<std::random_access_iterator_tag,Ogre::Vector3,int,Ogre::Vector3 *,Ogre::Vector3 &> >;

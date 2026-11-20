@@ -63,6 +63,7 @@ namespace RBX
 		}
 	};
 
+
 	class IRenderableBucket
 	{
 		friend class IRenderable;
