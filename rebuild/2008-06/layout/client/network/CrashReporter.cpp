@@ -1,6 +1,6 @@
 namespace RBX { const char* get_thread_name(); }
 #include <afxwin.h>
-#include "../../../../native-donor-2007/LogManager.h"
+#include "../../../native-donor-2007/LogManager.h"
 #include "PropertyGridItems2008.h"
 #include <afxdlgs.h>
 #include <fstream>
