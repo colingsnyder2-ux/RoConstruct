@@ -1,16 +1,21 @@
 #include "v8tree/Verb.h"
-#include "StandardVerbs.h"
 
-// 005833e0: intern the name, remember the container, register in its verb map.
-RBX::Verb::Verb(VerbContainer* container, std::string name)
-    : name(Name::declare(name.c_str(), -1)), container(container) {
-    container->verbs[&this->name] = this;
+RBX::Verb::~Verb()
+{
+    if (container) container->verbs.erase(&name);
 }
 
-RBX::RunStateVerb::~RunStateVerb() {}
-RBX::EditSelectionVerb::~EditSelectionVerb() {}
+template class std::pair<std::_Tree<std::_Tmap_traits<RBX::Name const *,RBX::Verb *,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,RBX::Verb *> >,0> >::iterator,std::_Tree<std::_Tmap_traits<RBX::Name const *,RBX::Verb *,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,RBX::Verb *> >,0> >::iterator>;
 
-// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
-template class std::_Tmap_traits<RBX::Name const *,RBX::Verb *,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,RBX::Verb *> >,0>;
-template class std::_Tree<std::_Tmap_traits<RBX::Name const *,RBX::Verb *,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,RBX::Verb *> >,0> >;
-template class std::allocator<std::pair<RBX::Name const * const,RBX::Verb *> >;
+#include "v8tree/VerbContainer.h"
+
+RBX::VerbContainer::VerbContainer(VerbContainer* parent) : parent(parent) {}
+
+void RBX::VerbContainer::setVerbParent(VerbContainer* parent)
+{
+    this->parent = parent;
+}
+
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,RBX::Verb *> > >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,RBX::Verb *,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,RBX::Verb *> >,0> >::_Node *>;
+template class std::map<RBX::Name const *,RBX::Verb *,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,RBX::Verb *> > >;
