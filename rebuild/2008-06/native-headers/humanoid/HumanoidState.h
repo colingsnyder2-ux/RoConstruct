@@ -7,6 +7,10 @@
 #include <G3D/CoordinateFrame.h>
 #include <memory>
 
+namespace G3D {
+class Ray;
+}
+
 namespace RBX {
 class Humanoid;
 class PartInstance;
@@ -91,6 +95,8 @@ public:
     void findFloor();                                                 // 00644000: plain ret; rays below the torso
                                                                       //   through 00643f10, result into floorPart +0x24
     bool findClimbable(Adorn* adorn);                                 // 00644c80: ret 4, al; preStep passes NULL
+    // 00643f10 (thiscall, ret 0xc): ContactManager::getHitLegacy with this filter into floorTouchInWorld (analog name).
+    boost::shared_ptr<PartInstance> floorPartFromRay(const G3D::Ray& ray, float maxDistance);
     bool climbableInFront(Adorn* adorn);                              // 00644a30: ret 4, al; GeometryService
                                                                       //   getPartsTouchingExtents 0062db60 into array14
     // 006453a0 (cdecl): scans transitionTable (0084a92c, 18 ints per state) for a pending transition (analog name).

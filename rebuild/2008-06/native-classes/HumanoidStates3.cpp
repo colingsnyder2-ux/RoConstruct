@@ -216,7 +216,7 @@ void MovingNoPhysicsBase::onStep(float dt, Controller* controller)
         velocity.y += G3D::sign(error);
     frame.translation += velocity * dt;
     if (getHumanoid()->getStrafe())
-        Math::rotateAboutYLocal(frame, getHumanoid()->walkRotationalVelocity * 16.0f * dt);
+        Math::rotateAboutYLocal(frame, getHumanoid()->getWalkRotationalVelocity() * 16.0f * dt); // getter 005d7500 (Humanoid2008.h)
     else if (velocity.xz() != G3D::Vector2(0.0f, 0.0f))
     {
         Humanoid* humanoid = getHumanoid();
