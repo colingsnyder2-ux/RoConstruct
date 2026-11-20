@@ -175,3 +175,39 @@ void ScriptContext::executeInNewThread(Security::Identities identity, const char
 {
 	executeInNewThread(identity, script, name, boost::bind(&pushNoArguments, _1), boost::bind(&readNoResults, _1, _2));
 }
+
+// 005aeb80 (registry placeholder func_005aeb80, 323 B, ret 0x44 = thread + two boost::function closures by
+// value). Identity: the donor tools/openrbx ScriptContext.cpp ScriptContext::resume(thread, pushArguments, readResults)
+// (lua_gettop 00611c10; PushArgumentsClosure operator() 00595b90; resume(thread, narg) 005ae0d0 compared with Error 2;
+// ReadResultsClosure operator() 005aae30 inside try with a catch(...) funclet that pops and rethrows; lua_settop
+// 00611c20 with -1 - returnCount). 2008 difference: the error text comes from Lua::LuaArguments(thread, -1) 0061c790
+// (script/ScriptContext.h) instead of lua_tostring; then lua_settop(thread, 0) and std::runtime_error 00409d50.
+void ScriptContext::resume(lua_State* thread, PushArgumentsClosure pushArguments, ReadResultsClosure readResults)
+{
+	int top = lua_gettop(thread);
+
+	int narg = pushArguments(thread);
+
+	if (resume(thread, narg) != Error)
+	{
+		const int returnCount = lua_gettop(thread) - top + 1;
+
+		try
+		{
+			readResults(thread, returnCount);
+		}
+		catch (...)
+		{
+			lua_pop(thread, returnCount);
+			throw;
+		}
+
+		lua_pop(thread, returnCount);
+	}
+	else
+	{
+		std::string err = Lua::LuaArguments(thread, -1);
+		lua_settop(thread, 0);
+		throw std::runtime_error(err);
+	}
+}

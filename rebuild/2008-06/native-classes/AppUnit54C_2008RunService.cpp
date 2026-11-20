@@ -49,6 +49,8 @@ namespace RBX
 	}
 
 	// 005559a0 (catch funclet 00555afb): pop one task under the mutex, run it outside, print std::exception text.
+	// Near miss until util/RunStateOwner.h places runThread at +0x27c (see NATIVE_RUNSERVICE_LAYOUT_PENDING below):
+	// the current header puts unknownMutex0x2ac at +0x2b0 and the deque at +0x2b8.
 	void RunService::drainTasks()
 	{
 		while (true)
@@ -162,6 +164,59 @@ namespace RBX
 		views.erase(view);
 	}
 }
+
+#ifdef NATIVE_RUNSERVICE_LAYOUT_PENDING
+// 00555190 (func_00555190, 437 B, ret 8): RunService::runProc, bound by start() 00556520 as "rbx_runProc". 2008 shape
+// (not the donor timed_wait loop): getRealTime 005f2000; with throttleAt30Fps (bool 00946790, DebugSettings
+// "30FpsThrottle") desiredTime = max(desiredTime, now - framePeriod) + framePeriod, else now; stopRequested +0x248
+// checked after each step; 00554880 (DataModel::Lock 00411b40, DataModel::step(framePeriod) 00578e50, +0x1c8 time),
+// 00554ed0, throttle = (desiredTime - now + throttle) * 0.5 (0081e738) to sub_005550a0 and, when positive, 00554e10;
+// stopwatch +0x1e8 tock 00511df0 / tick 00511cf0; +0x1d8 = +0x1e0, +0x1e0 = 0.
+// Blocked on core util/RunStateOwner.h (proposal): runThread belongs at +0x27c (stop 00554460 joins it through
+// boost::thread::join 005a6850; start 00556520 stores it there) in place of the INFERRED `Workspace* workspace`, and
+// the later scoped_ptr is removed, so unknownMutex0x2ac lands at +0x2ac; plus declarations of the three callees
+// (placeholders sub_00554880(shared_ptr<DataModel>), sub_00554ed0(), sub_00554e10(double)). Batch 27 trial with that
+// header copy: this body is byte-exact (exact, 437 B) and drainTasks 005559a0, enqueueTask 00555900,
+// invalidateRunViews 00555350, runViewValid 005555e0, ~RunService 00555c00, start 00556520, RunService() 00556b00,
+// 00554510, 005545d0 become exact too, with no baseline exact lost.
+#include "AppUnit5F0_2008/RealTime2008.h"
+#include <algorithm>
+namespace RBX
+{
+	extern bool throttleAt30Fps; // 00946790 (defined with the DebugSettings rows)
+
+	void RunService::runProc(boost::shared_ptr<DataModel> dataModel)
+	{
+		double throttle = 0.0;
+		double desiredTime = getRealTime();
+		while (true)
+		{
+			if (throttleAt30Fps)
+				desiredTime = std::max(desiredTime, getRealTime() - framePeriod) + framePeriod;
+			else
+				desiredTime = getRealTime();
+			if (stopRequested)
+				return;
+			sub_00554880(dataModel);
+			if (stopRequested)
+				return;
+			sub_00554ed0();
+			if (stopRequested)
+				return;
+			throttle = (desiredTime - getRealTime() + throttle) * 0.5;
+			sub_005550a0(throttle);
+			if (throttle > 0.0)
+				sub_00554e10(throttle);
+			if (stopRequested)
+				return;
+			stopwatch.tock();
+			stopwatch.tick();
+			unknown0x1d8 = unknown0x1e0;
+			unknown0x1e0 = 0.0;
+		}
+	}
+}
+#endif
 
 // 00554960 / 005549e0: the Heartbeat (+0x130) and Stepped (+0x150) notifier raises of this unit. Their callers
 // 00557150 / 005571b0 take one float (ret 4), unlike the header's raiseHeartbeat/raiseStepped(float, float), so the
