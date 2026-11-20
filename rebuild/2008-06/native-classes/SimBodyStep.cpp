@@ -80,12 +80,9 @@ namespace RBX
 	// 00658c50 (?pvAtLocalOffset@PV@RBX@@QBE?AV12@ABVVector3@G3D@@@Z): emitted inside the SimBody unit between
 	// SimBody(Body*) 00658ae0 and getOwnerPV 00658ca0; Matrix3::identity 00513e20, Matrix3 copy 00513220, inline
 	// translation copy, then pvAtLocalCoord 00658a00 (also in this unit). Its only callers are update 00658d0c and
-	// getOwnerPV 00658d97. Defined here (not in BodyPrimitive2008SimBody.cpp) so it cannot be inlined into those callers.
-	PV PV::pvAtLocalOffset(const G3D::Vector3& localOffset) const
-	{
-		G3D::CoordinateFrame cf(G3D::Matrix3::identity(), localOffset);
-		return pvAtLocalCoord(cf);
-	}
+	// getOwnerPV 00658d97. Batch 30: core util/PV.h now defines pvAtLocalOffset inline in the class, so the former
+	// out-of-line body here failed with C2084 (the whole unit built nothing). The body is not repeated; restoring the
+	// 00658c50 row needs util/PV.h to declare it out of line again (core header proposal).
 
 	// 00658fb0
 	void SimBody::step()
