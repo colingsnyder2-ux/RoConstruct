@@ -7,26 +7,21 @@
 //   render3dSelect 00458e90 (`ret 8`, ICF-shared empty body), computeCameraOwnerExtents 005a2c30,
 //   cameraMoved 005a2d90, onExtentsChanged 005a2db0 -- all defined inline in v8datamodel/Workspace.h.
 //
-// BLOCKED on header proposals (this unit does not compile until they exist; reported in the batch result):
-//   1. v8datamodel/MouseCommand.h: `friend class Workspace;` -- process 005a20e0 / onEvent 005a3470 call the protected
-//      onMouseDown/onMouseIdle/onMouseHover/onKeyDown/onPeekKeyDown/onMouseMove/onMouseDelta/onMouseUp slots directly.
-//   2. v8datamodel/Workspace.h: `void verifyCamera();` (analog name) for the out-of-line member 005a5710 called first
-//      by setImageServerView and render3dAdorn (keeps currentCamera +0x3fc a descendant, else finds/creates a Camera
-//      child and calls setCamera 005a5200; the donor's getCamera body); `int unknown0x3cc;` instead of `void*`
-//      (onEvent post-increments it as the movement-key repeat count and stores 0); WorkspaceStatsItem ctor
-//      `(const Workspace*, const World*, const RunService*)` (005a6620 passes three arguments, matching
-//      stats/WorkspaceStatsItem.h).
-//   3. v8datamodel/Camera.h: `void moveWithKeys(const MovementKeys& keys, int count);` (analog name, 005ce6e0,
-//      ret 8, tests the nine key bytes then moves by the count) plus `#include "util/MovementKeys.h"`.
-//   4. util/Object.h (core owner): the three-argument `Creatable<T>::create<Class, P1, P2, P3>` overload
-//      (instance 005a6620 create<WorkspaceStatsItem, Workspace*, World*, RunService*>).
-//   5. v8tree/Service.h: inline `operator T*() { return createService(true); }` on ServiceClient (render3dAdorn's
-//      `if (sel)` is a direct createService(true) 00581cc0 call, no out-of-line conversion).
-// Trial (private scratch copies of those five headers with exactly these changes, not registered): onEvent 005a3470,
-// setImageServerView 005a5890, render3dAdorn 005a59e0 and the helpers DrawAdorn 005a0690, for_each 005a1890,
-// create<WorkspaceStatsItem> 005a6620 are inactive-exact; onServiceProvider 005a66b0 is byte-identical but held by
-// a reference-identity conflict (find<RunService>() const is bound to 004530f0, which the identity registry names
-// create<RunService>; the original calls 00452c80); process 005a20e0 is parked (see its comment).
+// Workspace.h now declares verifyCamera() (005a5710, analog name), `int unknown0x3cc` and the three-argument
+// WorkspaceStatsItem ctor (batch 26), so setImageServerView 005a5890, render3dAdorn 005a59e0 and the helpers DrawAdorn
+// 005a0690 / for_each 005a1890 compile here. Still guarded, each on header proposals for files this unit does not own:
+//   NATIVE_WORKSPACE_MOUSECOMMAND_PENDING (process 005a20e0, onEvent 005a3470):
+//     1. v8datamodel/MouseCommand.h: `friend class Workspace;` -- process / onEvent call the protected
+//        onMouseDown/onMouseIdle/onMouseHover/onKeyDown/onPeekKeyDown/onMouseMove/onMouseDelta/onMouseUp slots directly.
+//     2. v8datamodel/Camera.h: `void moveWithKeys(const MovementKeys& keys, int count);` (analog name, 005ce6e0,
+//        ret 8, tests the nine key bytes then moves by the count) plus `#include "util/MovementKeys.h"` (onEvent).
+//   NATIVE_WORKSPACE_STATSCREATE_PENDING (onServiceProvider 005a66b0):
+//     3. util/Object.h (core owner): the three-argument `Creatable<T>::create<Class, P1, P2, P3>` overload
+//        (instance 005a6620 create<WorkspaceStatsItem, Workspace*, World*, RunService*>).
+// Batch 25 trial (private scratch copies of those headers): onEvent 005a3470 and create<WorkspaceStatsItem> 005a6620
+// inactive-exact; onServiceProvider 005a66b0 byte-identical but held by a reference-identity conflict (find<RunService>()
+// const is bound to 004530f0, which the identity registry names create<RunService>; the original calls 00452c80);
+// process 005a20e0 parked (see its comment).
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/MouseCommand.h"
 #include "v8datamodel/Camera.h"
@@ -42,6 +37,7 @@
 
 namespace RBX
 {
+#ifdef NATIVE_WORKSPACE_MOUSECOMMAND_PENDING
 	// @005a20e0 ?process@Workspace@RBX@@UAE?AVGuiResponse@2@ABVGuiEvent@2@@Z
 	// Entered with the GuiTarget subobject (Workspace+0x2e8): currentCommand +0xc8, idleMouseEvent +0xd0,
 	// inMouselookMode +0x110, Notifier<Workspace, DrawChanged> +0x5c. Jump table 005a2250 (event types 1..13).
@@ -139,6 +135,13 @@ namespace RBX
 		}
 	}
 
+#endif // NATIVE_WORKSPACE_MOUSECOMMAND_PENDING
+
+	// INFERRED: render3dAdorn's `if (sel)` is a direct createService(true) 00581cc0 call (no out-of-line conversion);
+	// v8tree/Service.h (core) only declares ServiceClient<T>::operator T*(), so the Selection instance is defined
+	// unit-locally with the shape of the header's own inline operator->() (batch 25 proposal: make it inline there).
+	template<> inline ServiceClient<Selection>::operator Selection*() { return createService(true); }
+
 	// @005a5890 ?setImageServerView@Workspace@RBX@@QAEXABVRect2D@G3D@@@Z
 	void Workspace::setImageServerView(const G3D::Rect2D& viewPortRect)
 	{
@@ -204,6 +207,7 @@ namespace RBX
 		}
 	}
 
+#ifdef NATIVE_WORKSPACE_STATSCREATE_PENDING
 	// @005a66b0 ?onServiceProvider@Workspace@RBX@@EAEXPBVServiceProvider@2@0@Z
 	void Workspace::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
 	{
@@ -232,4 +236,5 @@ namespace RBX
 			}
 		}
 	}
+#endif // NATIVE_WORKSPACE_STATSCREATE_PENDING
 }

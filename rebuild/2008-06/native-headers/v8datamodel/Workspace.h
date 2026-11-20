@@ -43,7 +43,7 @@ namespace RBX
 		std::auto_ptr<MouseCommand> currentCommand;
 		std::auto_ptr<MouseCommand> stickyCommand;
 		UIEvent idleMouseEvent;
-		void* unknown0x3cc;
+		int unknown0x3cc;   // INFERRED type: Heartbeat onEvent 005a3470 post-increments it as the movement-key repeat count and stores 0
 		bool isSimulating;
 		std::set<Script*> pendingScripts;
 		ScriptContext* scriptContext;
@@ -57,6 +57,10 @@ namespace RBX
 		double getUnknown0x418() const;                 // 005a0100
 		double getUnknown0x420() const;                 // 005a0110
 		double getUnknownSum() const;                   // 005a0120
+		// INFERRED (analog name; registry placeholder func_005a5710, 369 B): called first by setImageServerView 005a5890
+		// and render3dAdorn 005a59e0; keeps currentCamera (+0x3fc) a descendant, else finds/creates a Camera child
+		// and calls setCamera 005a5200 (the donor getCamera body).
+		void verifyCamera();
 	public:
 		boost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceStep;
 		boost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceStepInner;
@@ -173,6 +177,6 @@ namespace RBX
 	class WorkspaceStatsItem : public Stats::Item
 	{
 	public:
-		WorkspaceStatsItem(const Workspace*, const World*);
+		WorkspaceStatsItem(const Workspace*, const World*, const RunService*);   // 005a5c90; create<WorkspaceStatsItem> 005a6620 passes three arguments
 	};
 }

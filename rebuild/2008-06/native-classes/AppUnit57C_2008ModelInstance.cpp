@@ -172,13 +172,24 @@ namespace RBX
 		}
 	}
 
-	// 00585b30: NOT exact (278 B against 294 B; with the pending inline isDescendentOf 294 B, but the original keeps
-	// `this` in ebp and that build in ebx). Parked: the original inlines one level of an inline (tail-recursive)
-	// Instance::isDescendentOf (set->parent == this, parent NULL test, then the out-of-line 00422ae0); the shared
-	// v8tree/Instance.h declares it out of line (header proposal), so no source-only fix applies here.
+	// 00585b30 ?setPrimaryPart@ModelInstance@RBX@@QAEXPAVPartInstance@2@@Z: the original inlines one level of the donor's
+	// inline (tail-recursive) Instance::isDescendentOf (set->parent compared with this as `cmp ebp, ecx`, parent NULL
+	// test, then the out-of-line 00422ae0), reproduced by the file-local helper below.
+	// INFERRED: file-local copy of the donor's inline Instance::isDescendentOf shape (parent == ancestor, NULL parent,
+	// then the out-of-line recursion 00422ae0); core v8tree/Instance.h declares it out of line only.
+	static inline bool isDescendentOfInline(const Instance* instance, const Instance* ancestor)
+	{
+		const Instance* thisParent = instance->getParent();
+		if (ancestor == thisParent)
+			return true;
+		if (thisParent == NULL)
+			return false;
+		return thisParent->isDescendentOf(ancestor);
+	}
+
 	void ModelInstance::setPrimaryPart(PartInstance* set)
 	{
-		if (!set || set->isDescendentOf(this))
+		if (!set || isDescendentOfInline(set, this))
 		{
 			candidatePrimaryPart.reset();
 			updatePrimaryPart(set);
