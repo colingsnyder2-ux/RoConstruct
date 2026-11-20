@@ -30,6 +30,19 @@ public:
     Joint::JointType getJointType() const;
     PartInstance* getPart0() const;          // 005e2a10
     PartInstance* getPart1() const;          // 005e2a70
+    // 2008: the Part0/Part1 and C0/C1 accessors are JointInstance members. The binary's GetSetImpl RTTI (vtables
+    // 0083e280 / 0083e294) names `PartInstance* (JointInstance::*)() const, void (JointInstance::*)(PartInstance*)` and
+    // `const CoordinateFrame& (JointInstance::*)() const, void (JointInstance::*)(const CoordinateFrame&)` (getset
+    // factories 005e2920 / 005e2970), there is no AutoJoint RTTI, and Tool::setGrip 005ffb70 / IEquipable::buildWeld
+    // 00628fd0 call 005e44c0 (setC1) / 005e4450.. directly on a Weld (FactoryProduct<Weld, JointInstance, sWeld>).
+    // The identity registry still names these bodies ?setX@AutoJoint (identity-closure, from the donor); the AutoJoint
+    // redeclarations below are kept so AutoJoint.cpp / AutoJointFrames.cpp keep their current symbols.
+    void setPart0(PartInstance* value);                  // 005e4450
+    void setPart1(PartInstance* value);                  // 005e4470
+    const G3D::CoordinateFrame& getC0() const;
+    const G3D::CoordinateFrame& getC1() const;
+    void setC0(const G3D::CoordinateFrame& value);       // 005e4490
+    void setC1(const G3D::CoordinateFrame& value);       // 005e44c0
 };
 
 extern const char sAutoJoint[];
