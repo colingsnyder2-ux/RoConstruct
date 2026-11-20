@@ -159,3 +159,15 @@ bool XmlNameValuePair::getValue(RBX::InstanceHandle& value) const
 
 	return false;
 }
+
+// 00591c60 ?replaceHandles@XmlNameValuePair@@QAEXABV?$map@PAVInstance@RBX@@VInstanceHandle@2@...@std@@@Z
+// Only a HANDLE value is remapped: getTarget() (004915b0, temporary shared_ptr) keys map::find (00591bd0); a hit
+// assigns the mapped InstanceHandle (inline operator=, shared_count assign 004025b0).
+void XmlNameValuePair::replaceHandles(const std::map<RBX::Instance*, RBX::InstanceHandle>& handles)
+{
+	if (valueType == HANDLE) {
+		std::map<RBX::Instance*, RBX::InstanceHandle>::const_iterator iter = handles.find(handleValue->getTarget().get());
+		if (iter != handles.end())
+			*handleValue = iter->second;
+	}
+}
