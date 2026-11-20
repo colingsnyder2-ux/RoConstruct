@@ -15,6 +15,12 @@
 //              (BoundProp<bool>, +0x1f0).
 #include "v8tree/Instance.h"
 #include "util/TextureId.h"
+#include <G3D/ReferenceCount.h>
+
+namespace G3D
+{
+	class Sky;
+}
 
 namespace RBX
 {
@@ -44,5 +50,10 @@ namespace RBX
 
 	public:
 		Sky();                         // 005eb640 (destructor 005ebae0, deleting 005ebb90)
+
+		// 005ebbb0 (cdecl, hidden RCP result, one Sky* argument; caller ViewG3D::updateLighting 004dc040:
+		// push [lighting+0x2d4]; push &tmp; call; add esp, 8). Name and signature from the donor tools/rbxgs
+		// App/include/v8datamodel/Sky.h (?getG3DSky@Sky@RBX@@SA?AV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@PAV12@@Z).
+		static G3D::ReferenceCountedPointer<G3D::Sky> getG3DSky(Sky* sky);
 	};
 }

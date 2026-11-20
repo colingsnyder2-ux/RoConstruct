@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/g3d-image-2008 /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // 2008-06 native RBX::ViewNew::ViewG3D (inactive; document-swap flags, /O2, /fp:fast). Rows: invalidateLighting
 // 004db610, render 004db690 and suppressSkybox 004dbf00 (Lighting2008.h getters; the clear colour through getClearColor()
 // by value, all four loads before the stores, needs /fp:fast). The ctor 004dbbe0 / dtor 004dc270 / ??_G 004dc340 and updateLighting 004dc040 need declarations owned elsewhere (ViewNew::MaterialFactory, the Lighting service, the
@@ -9,11 +9,9 @@
 #include "v8datamodel/Lighting2008.h"
 #include "v8tree/Service.h"
 #include "RenderLib/RenderScene2008.h"
-#ifdef NATIVE_VIEWG3D_SKY_PENDING
 #include "v8datamodel/Sky.h"
 #include "util/StandardOut.h"
 #include <G3D/GImage.h>
-#endif
 
 namespace RBX
 {
@@ -38,9 +36,8 @@ namespace RBX
 			scene->render(rd, workspace->getGCamera());
 		}
 
-		// 004dc040 (vtable 00826e04 slot 9): DRAFT behind NATIVE_VIEWG3D_SKY_PENDING. Remaining blocker: the native
-		// v8datamodel/Sky.h (read-only here) does not declare the static Sky factory 005ebbb0 (cdecl, hidden RCP result,
-		// one Sky* argument: `push [lighting+0x2d4]; push &tmp; call; add esp, 8`). Donor name and signature:
+		// 004dc040 (vtable 00826e04 slot 9). The static Sky factory 005ebbb0 (cdecl, hidden RCP result, one Sky*
+		// argument: `push [lighting+0x2d4]; push &tmp; call; add esp, 8`) is declared in v8datamodel/Sky.h. Donor name and signature:
 		// tools/rbxgs App/include/v8datamodel/Sky.h `static G3D::ReferenceCountedPointer<G3D::Sky> getG3DSky(Sky*);`
 		// (openrbx: ?getG3DSky@Sky@RBX@@SA?AV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@PAV12@@Z). Shape: openrbx
 		// Client/RbxView/View.cpp View::updateLighting; 2008 evidence: lightingValid +0x44, dataModel +0x14 null test
@@ -49,7 +46,6 @@ namespace RBX
 		// -> StandardOut::singleton 00569620 ->print(MESSAGE_ERROR 3, 00826dc4, e.reason.c_str() (+0x28)) and
 		// catch (...) -> print(3, 00826dac); then presetLighting (slot 1) with LightingParameters copy 004d7020, the
 		// clear colour (all four loads before the stores) and lightingValid = true.
-#ifdef NATIVE_VIEWG3D_SKY_PENDING
 		void ViewG3D::updateLighting()
 		{
 			if (!lightingValid)
@@ -83,7 +79,6 @@ namespace RBX
 				lightingValid = true;
 			}
 		}
-#endif // NATIVE_VIEWG3D_SKY_PENDING
 
 		void ViewG3D::invalidateLighting(bool updateSkybox)
 		{
