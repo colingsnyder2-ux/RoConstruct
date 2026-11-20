@@ -1,9 +1,9 @@
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native RBX::MotorJoint (inactive); evidence in native-headers/v8world/Joints2008.h.
 // Verified by tests/record_native_world_joints.py. Rows of the MotorJoint unit (005e5bf0..005e5ee0): the constructor
 // 005e5bf0, setCurrentAngle 005e5da0, the destructor 005e5e00, stepUi 005e5e70 and the scalar deleting destructor
 // 005e5ee0 (vtable 0083f764 is emitted here); setCurrentAngle 005e5da0 through the opt-in kernel-stages IStage (KERNEL_STAGE 7). resetLink 005e5c90 and isAligned 005e5d00 read the native Primitive
 // (body, coordinate frame) and are not part of this unit yet.
-// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8world/Joints2008.h"
 
 namespace RBX

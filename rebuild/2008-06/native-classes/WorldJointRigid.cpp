@@ -1,9 +1,9 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native RBX::RigidJoint (inactive); evidence in native-headers/v8world/Joints2008.h.
 // Verified by tests/record_native_world_joints.py. Rows of the RigidJoint unit (00645870..00645980): getChildInParent
 // 00645930 (CoordinateFrame::inverse 00478330, CoordinateFrame::operator* 00476700). isAligned 00645870, align
 // 006458d0 and faceIdToCoords 00645980 read the native Primitive (coordinate frame, face coordinates) and are not part
 // of this unit yet.
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8world/Joints2008.h"
 
 namespace RBX

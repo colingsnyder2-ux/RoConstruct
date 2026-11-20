@@ -235,6 +235,18 @@ namespace RBX
 		G3D::CoordinateFrame getFaceCoordInObject(NormalId objectFace); // 005e7680
 		const Extents& getFastFuzzyExtents() const;      // 005e7a50 (00606ce6 / 00606cee)
 
+		// Inline in the 2008 binary: World::destroyJoints 005ea3f0 reads joints.edges.size() (+0x3c) directly.
+		int getNumJoints() const
+		{
+			return joints.edges.size();
+		}
+		// INFERRED: 005e7ae0 (13 bytes, `ret 4`; registry placeholder func_005e7ae0): joints.edges[i] (+0x38 data); name by
+		// the donor Primitive.h getJoint family, caller World::destroyJoints 005ea3f0 (call at 005ea41e).
+		Joint* getJoint(int i) const;
+		// INFERRED: 005e7ce0 (74 bytes, cdecl; registry placeholder func_005e7ce0): scans the joint list of the primitive
+		// with fewer joints (+0x3c) for the other primitive in joints.otherPrimitives (+0x44) and returns the matching
+		// joints.edges entry (+0x38); donor static Primitive::getJoint(p0, p1) (caller World::createJoints 005ea4d0, 005ea573).
+		static Joint* getJoint(Primitive* p0, Primitive* p1);
 		Joint* getFirstJoint() const;                    // 005e7b90 ?getFirstJoint@Primitive@RBX@@QBEPAVJoint@2@XZ
 		Joint* getNextJoint(Joint* prev) const;          // 005e7ba0
 		Edge* getFirstEdge() const;                      // INFERRED: 005e7b00 (same shape as getFirstJoint 005e7b90 over all edges)

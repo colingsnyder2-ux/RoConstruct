@@ -53,21 +53,30 @@ namespace RBX
 	}
 }
 
-#include "v8world/SpatialHash.h"
+// 2008 SpatialHash layout (nodesOut +0x78, maxBucket +0x7c): 005e9170 / 005e9180; the donor SpatialHash.h is the 2009 one.
+#include "v8world/SpatialHash2008.h"
 #include "v8world/Assembly.h"
 namespace RBX
 {
-	// Not exact (recorded with the reason): the 2008 SpatialHash / Assembly::PrimIterator differ from the donor.
+	// 005e9170: mov eax, [ecx+0x84] (contactManager); mov ecx, [eax] (spatialHash); mov eax, [ecx+0x78]; ret.
+	// Identity: the slot after getMetric 005e9160 and before onPrimitiveContactParametersChanged 005e9190 in donor
+	// World.cpp order; registry placeholder func_005e9170.
 	int World::getNumHashNodes() const
 	{
 		return contactManager->getSpatialHash().getNodesOut();
 	}
 
+	// 005e9180: same shape, [spatialHash+0x7c] (registry placeholder func_005e9180).
 	int World::getMaxBucketSize() const
 	{
 		return contactManager->getSpatialHash().getMaxBucket();
 	}
 
+	// 005e91d0: guarded. Blocker: native-headers/v8world/Assembly.h (another worker's Replicator stub, `class Assembly {}` at
+	// global scope) now shadows the donor v8world/Assembly.h, so Assembly::PrimIterator is undeclared (C2027/C2065) and
+	// the whole unit failed to compile. In 2008 the iterator pair is the Clump-unit 005e5fc0 / 005e5fa0 (++ 00647640),
+	// which has no native declaration yet (v8world/AssemblyLayout.h); header proposal in the batch result.
+#if 0
 	void World::onAssemblyExtentsChanged(RBX::Assembly * a)
 	{
 		Assembly::PrimIterator endIt = Assembly::PrimIterator::end(a);
@@ -77,6 +86,7 @@ namespace RBX
 			contactManager->onPrimitiveExtentsChanged(*beginIt);
 		}
 	}
+#endif
 
 	void World::createJoints(Primitive *p)
 	{

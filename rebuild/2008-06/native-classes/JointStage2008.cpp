@@ -3,8 +3,7 @@
 // Verified by tests/record_native_kernel_stages.py. Rows of the JointStage unit built here: edgeHasPrimitivesDownstream
 // 00667f70, removeFromMap 00668280, insertToListAndMap 00668340, onEdgeAdded 006683b0, onEdgeRemoving 006683f0, the
 // destructor 00668520 and the scalar deleting destructor 00668590 (vtable 0084cf64 is emitted here).
-// Not built: the constructor 00668470 news a ClumpStage (0x30, 0064cfd0) and the donor v8world/ClumpStage.h declares a
-// 0x1cc-byte class (see the recorder's PROPOSALS); onPrimitiveAdded 006685b0 / onPrimitiveRemoving 00668850 walk the
+// Constructor 00668470 (batch 27) against a unit-local copy of the 0x30-byte ClumpStage2008.h declaration; onPrimitiveAdded 006685b0 / onPrimitiveRemoving 00668850 walk the
 // primitive's edge lists through the native Primitive (not available).
 #include "v8world/JointStage2008.h"
 #include "v8world/Primitive.h"
@@ -14,6 +13,31 @@
 
 namespace RBX
 {
+	// Unit-local copy of the ClumpStage declaration of native-headers/v8world/ClumpStage2008.h (that header includes the
+	// native AppUnit658/Edge.h and AppUnit668/TreeStage.h, which collide with the donor v8world/Joint.h / Edge.h this
+	// unit uses). Same members and order; only the constructor is called here.
+	class ClumpStage : public IWorldStage
+	{
+	private:
+		std::set<Edge*> set10;                       // +0x10 INFERRED: see ClumpStage2008.h
+
+	public:
+		ClumpStage(IStage* upstream, World* world); // 0064cfd0
+		~ClumpStage();                              // 0064cf50
+
+		virtual StageType getStageType();           // slot 1 (CLUMP_STAGE, folded constant)
+		virtual void onEdgeAdded(Edge* e);          // slot 4 (0064cec0)
+		virtual void onEdgeRemoving(Edge* e);       // slot 5 (0064cf10)
+	};
+
+	// 00668470 ??0JointStage@RBX@@QAE@PAVIStage@1@PAVWorld@1@@Z (registry, identity closure): new(0x30) ClumpStage(this,
+	// world) 0064cfd0 as the downstream before the IStage fields (upstream +0x4, downstream +0x8, world +0xc), then the
+	// set _Tree ctor 0064b2a0 (+0x10) and the multimap _Tree ctor 00446110 (+0x30). Donor JointStage.cpp shape.
+	JointStage::JointStage(IStage* upstream, World* world)
+		: IWorldStage(upstream, new ClumpStage(this, world), world)
+	{
+	}
+
 	// 007286a0 (folded `mov eax, 1`): JOINT_STAGE of the 2008 StageType (opt-in native-headers/kernel-stages v8kernel/IStage.h
 	// through the native-flags line).
 	IStage::StageType JointStage::getStageType()

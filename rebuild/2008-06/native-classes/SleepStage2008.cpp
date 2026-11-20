@@ -355,14 +355,14 @@ namespace RBX
 		e->removeFromStage(this);
 	}
 
-#ifdef NATIVE_WORLD_ASSEMBLY_PHYSICS_NOTIFY
 }
-// BLOCKED on World (colin's v8world/World2008.h): both bodies end in World 005e9b80 (`ret 8`, (Assembly*, bool):
+// Both bodies end in World 005e9b80 (`ret 8`, (Assembly*, bool):
 // raises the +0x40 / +0x60 notifier with assembly +0x24 -> +0x1c, i.e. the donor AssemblyPhysicsOn / AssemblyPhysicsOff
 // events of engine-world v8world/World.h). With a trial World2008.h declaring
 // `void notifyAssemblyPhysics(Assembly* a, bool on);  // 005e9b80` (INFERRED name) onAssemblyAdded 0064aff0 is
 // IDENTICAL (171 B) and onAssemblyRemoving 0064b0a0 is 263 B with only the getState evaluation-order flip of
-// changeAssemblyState 0064ae90 (target this->getStageType() first, `lea ebp, [edi + 0x180]` hoisted).
+// changeAssemblyState 0064ae90 (target this->getStageType() first, `lea ebp, [edi + 0x180]` hoisted). The declaration
+// is now in native-headers/v8world/World2008.h (batch 27).
 #include "v8world/World2008.h"
 namespace RBX
 {
@@ -390,5 +390,4 @@ namespace RBX
 		a->setSleepInfo(NULL);
 		a->removeFromStage(this);
 	}
-#endif
 }
