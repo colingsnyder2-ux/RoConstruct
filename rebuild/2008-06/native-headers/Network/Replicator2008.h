@@ -399,18 +399,16 @@ namespace RBX
 			// 004b6890 (donor Replicator::serializeValue; thiscall, ret 0xc). Body in NetworkReplicator2008StatsItem.cpp.
 			void serializeValue(const Reflection::ConstProperty& property, bool, RakNet::BitStream& stream);
 			// 004b6ab0 (donor Replicator::deserializeValue, the mirror of serializeValue 004b6890: same type-singleton
-			// order; ScopedAssign of deserializeProperty +0x2cd4 around the body). Body in NetworkReplicator2008Items.cpp
-			// (compiled only with NATIVE_REPLICATOR_DESERIALIZE_REF: the Ref branch needs IdSerializer::deserializeRef).
+			// order; ScopedAssign of deserializeProperty +0x2cd4 around the body). Body in NetworkReplicator2008Items.cpp.
 			void deserializeValue(RakNet::BitStream& stream, Reflection::Property& property);
 			// 004b6f00 (donor Replicator::readProperties; thiscall (BitStream&, Instance*), ret 8: the mirror of
 			// writeProperties 004b7f20 with the "   read %s %s, ..." prints 00825070 / 00825050 / 00825038).
 			void readProperties(RakNet::BitStream& stream, Instance* instance);
 			// 004b7a30 (donor Replicator::readChangedProperty; thiscall (BitStream&), ret 4). Body in
-			// NetworkReplicator2008Items.cpp, compiled only with NATIVE_REPLICATOR_DESERIALIZE_REF (it calls
-			// IdSerializer::deserializeInstanceRef 004a8b60, not declared by the native Network/IdSerializer.h).
+			// NetworkReplicator2008Items.cpp (deserializeInstanceRef 004a8b60 is declared in Network/IdSerializer.h).
 			void readChangedProperty(RakNet::BitStream& stream);
-			// 004b0800 (donor Replicator::readInstanceDelete; thiscall (BitStream&), ret 4). Guarded like
-			// readChangedProperty: it also calls IdSerializer::resolvePendingBindings 004a9250.
+			// 004b0800 (donor Replicator::readInstanceDelete; thiscall (BitStream&), ret 4). Body in
+			// NetworkReplicator2008Items.cpp behind NATIVE_REPLICATOR_DESERIALIZE_REF (a 623/627-byte near miss).
 			void readInstanceDelete(RakNet::BitStream& stream);
 		};
 

@@ -15,10 +15,9 @@
 #include "BitStream.h"
 #include "Network/Player.h"
 #include <typeinfo>
-#ifdef NATIVE_REPLICATOR_DESERIALIZE_REF // deserializeValue 004b6ab0 (guarded below)
-#include "v8datamodel/PartInstance.h"
+#include "v8datamodel/PartInstance.h" // PartInstance::prop_Size (deserializeValue 004b6ab0)
 #include "util/scopedassign.h"
-#endif
+#include "v8datamodel/Camera.h" // wantReplicate 004aaf90
 #include <stdexcept>
 
 namespace RBX
@@ -241,7 +240,6 @@ namespace RBX
 			}
 		}
 
-#ifdef NATIVE_REPLICATOR_DESERIALIZE_REF
 		// 004b6ab0 (donor Replicator::deserializeValue; identity: the mirror of serializeValue 004b6890 with the same
 		// Type::singleton order 0056cdf0 .. 0056cd80, reading through operator>> 004a5b30 / 004a6250 and the
 		// deserialize<T> instances 004adac0 (float), 004ae7d0 (double), 004a75b0 (BrickColor), 004adaf0 (Color3),
@@ -250,11 +248,7 @@ namespace RBX
 		// deserialize<std::string> 004a6d60 for ContentId). ScopedAssign<const Property*> over deserializeProperty
 		// +0x2cd4 (restored at the shared exit). bool / int are expanded in place (setValue<bool> 004ad1e0, <int>
 		// 004ad240 behind the property.getInstance() test), the other types call their deserialize<T>.
-		// BLOCKED: the Ref branch calls IdSerializer::deserializeRef (thiscall 004a9440), which the native
-		// Network/IdSerializer.h (colin) does not declare; header proposal in this batch's result. Scratch proof
-		// (nw01 b26): with that declaration added to a scratch copy of IdSerializer.h, this guarded unit compiles
-		// deserializeValue IDENTICAL to 004b6ab0 (597 B, relocations masked) and readChangedProperty IDENTICAL to
-		// 004b7a30 (758 B; also needs deserializeInstanceRef 004a8b60 declared).
+		// The Ref branch calls IdSerializer::deserializeRef (thiscall 004a9440, declared in Network/IdSerializer.h).
 		void Replicator::deserializeValue(RakNet::BitStream& stream, Reflection::Property& property)
 		{
 			ScopedAssign<const Reflection::Property*> assign(deserializeProperty, &property);
@@ -344,15 +338,19 @@ namespace RBX
 			lastReceivedName = &descriptor->name;
 		}
 
+#ifdef NATIVE_REPLICATOR_DESERIALIZE_REF
 		// 004b0800 (donor Replicator::readInstanceDelete; identity: strings "Replication: ~%s:%d << %s" 00824b4c,
 		// "NULL" 00824858, "Replication ~??? << %s" 00824b34, deserializeInstanceRef 004a8b60, shared_from<Instance>
 		// 00618a40, printInstances +0x131, disconnectReplicationData 004afd00, pendingNewInstances erase 005e9f60,
 		// ScopedAssign of removingInstance +0x2cd8 around Instance::setParent(NULL) 0055a8f0, then
 		// IdSerializer::resolvePendingBindings(NULL, id) 004a9250). The 2008 print guards the class name against a
 		// NULL instance and prints the received id rather than the instance guid.
-		// NEAR MISS in the scratch proof (623 of 627 B; also needs resolvePendingBindings 004a9250 declared): the
-		// target reloads `instance` from its stack slot after the ScopedAssign store and before setParent; this
-		// compile reuses the loaded register (downstream: shared_ptr release block order).
+		// NEAR MISS, parked (nw01 b27; all callees now declared, compiled with the guard defined): 623 of 627 B. The
+		// target reloads `instance` ([esp+0x54]) after the ScopedAssign store `mov [esi],ecx` and before setParent;
+		// this compile reuses ecx (downstream: the hold shared_ptr release blocks are laid out in the other order).
+		// Rejected: (1) pendingNewInstances.erase(instance) instead of the inline helper (608 B); (2) a
+		// `const Instance*` removingInstance with ScopedAssign<const Instance*> (scratch header; still 623 B);
+		// (3) `Instance* instance = NULL` (632 B, prologue differs). Guarded only because it is not exact.
 		void Replicator::readInstanceDelete(RakNet::BitStream& stream)
 		{
 			Instance* instance;
@@ -390,6 +388,14 @@ namespace RBX
 		boost::shared_ptr<Instance> Replicator::getPlayer()
 		{
 			return shared_from(findTargetPlayer());
+		}
+
+		// 004aaf90 (donor Replicator::wantReplicate, vtable 008254fc slot 18; identity: decorated name
+		// ?wantReplicate@Replicator@Network@RBX@@MBE_NPBVInstance@3@@Z, __RTDynamicCast from Instance 0092907c to
+		// Camera 0093ab54, `sete al`, ret 4).
+		bool Replicator::wantReplicate(const Instance* source) const
+		{
+			return dynamic_cast<const Camera*>(source) == NULL ? true : false;
 		}
 
 		// 004aafd0 (donor Replicator::closeConnection; the 2008 body tests peer first): CloseConnection slot 0x64.

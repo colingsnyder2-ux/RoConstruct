@@ -82,6 +82,9 @@ namespace RBX
 			// 004ca5c0 (cdecl; error string 008268e8 "IPhysicsSender::readPosition failed read"); called by
 			// InterpolatingPhysicsReceiver::PartItem::receive 004c8150.
 			static void readPosition(RakNet::BitStream& bitStream, G3D::Vector3& position);
+			// 004ca7b0 (cdecl, ret 0: the writer twin of readPosition with the same bounds and widths). Analog name.
+			// Body in native-classes/NetworkPhysics.cpp.
+			static void writePosition(RakNet::BitStream& bitStream, const G3D::Vector3& position, bool fullPrecision);
 		};
 
 		class __declspec(novtable) IPhysicsReceiver : boost::noncopyable
