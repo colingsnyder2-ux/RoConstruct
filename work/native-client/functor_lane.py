@@ -102,9 +102,19 @@ def includes(functor):
             best = 'G3D/%s.h' % name
         else:
             found = INDEX.get(name, [])
-            best = next((h for h, _ in found if qual and qual + '/' in h), None) or next(
-                (h for h, text in found if qual and re.search(r'\b(?:namespace|class|struct)\s+%s\b' % qual, text)),
-                found[0][0] if found else None)
+            # INFERRED: native ContentProvider binds nested RequestResult identity (0048e470/00492ea0/00493210)
+            if name == 'ContentProvider' and 'ContentProvider::RequestResult' in functor:
+                native = next((h for h, _ in found if h.endswith('NativeContentProvider.h')), None)
+                if native:
+                    best = native
+                else:
+                    best = next((h for h, _ in found if qual and qual + '/' in h), None) or next(
+                        (h for h, text in found if qual and re.search(r'\b(?:namespace|class|struct)\s+%s\b' % qual, text)),
+                        found[0][0] if found else None)
+            else:
+                best = next((h for h, _ in found if qual and qual + '/' in h), None) or next(
+                    (h for h, text in found if qual and re.search(r'\b(?:namespace|class|struct)\s+%s\b' % qual, text)),
+                    found[0][0] if found else None)
         if best and best not in out:
             out.append(best)
     return out

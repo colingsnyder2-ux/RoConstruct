@@ -1,4 +1,6 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
+// Flags: the originals call CSimpleStringT::operator PCXSTR (mfc90 #910: 0043d97e, 0043d710, 004384b0, 00438580)
+// and std::string::c_str (0043e3a0, 00437d30) through their imports, hence the two noinline include paths.
 #include "PropertyGridItems2008.h"
 #include <stdio.h>
 #include "util/Utilities.h"
@@ -80,6 +82,7 @@ void Vector3ComponentItem::displayValue(const G3D::Vector3& v)
     SetValue(CString(text));
 }
 
+// 0043d930: the original calls CSimpleStringT::operator PCXSTR through mfc90 ordinal 910 (mfc-noinline-pcxstr flag).
 G3D::Vector3 Vector3ComponentItem::readValue()
 {
     G3D::Vector3 result = value;
@@ -96,11 +99,16 @@ void Vector3ComponentItem::writeValue(RBX::Instance* instance, const G3D::Vector
     descriptor->setValue(instance, current);
 }
 
+// 0043e3a0. Parked near-miss (305 B vs 281 B): with the imported c_str (std-noinline-string flag) and the end
+// iterator read once, every load, check and call matches in order; the remaining difference is register
+// assignment only: the original spills this ([esp + 0x10], reloaded for m_pConstraints +0xc4 every pass and for
+// the return value) and holds _invalid_parameter_noinfo in ebp; this unit keeps this in ebp.
 EnumItem::EnumItem(const RBX::Reflection::EnumPropertyDescriptor* property, CPropGrid* grid)
     : EnumItemBase(property, grid)
 {
-    for (std::vector<const RBX::Reflection::EnumDescriptor::Item*>::const_iterator it = property->enumDescriptor.begin();
-         it != property->enumDescriptor.end(); ++it)
+    // 0043e3a0: the end iterator is read once before the loop ([esp + 0x30] / [esp + 0x14]).
+    for (std::vector<const RBX::Reflection::EnumDescriptor::Item*>::const_iterator it = property->enumDescriptor.begin(),
+         end = property->enumDescriptor.end(); it != end; ++it)
         GetConstraints()->AddConstraint((*it)->name.c_str(), (*it)->value);
 }
 
@@ -261,9 +269,31 @@ void RefItem::update(RBX::SelectionGroup* group)
     SetHidden(!found);
 }
 
+// 0043e140: ScriptItem::OnInplaceButtonDown (primary slot 52). Guarded draft, never compiled yet.
+// Remaining blocker: the call target 0044ae00 is a CRobloxApp member (thiscall on AfxGetApp(), ret 8: one
+// boost::shared_ptr<RBX::Script> by value; it opens a document through the template at app+0x58 and hands it
+// the script via 0044a9c0) whose identity is a placeholder (func_0044ae00) and which CRobloxApp.h does not
+// declare. The name openScript below is provisional. Target evidence: grid->groups end read once before the
+// loop (0043e15b), groups.find 0043a320, inner shared_ptr<Instance> walk (add ebx, 8 at 0043e321),
+// dynamic_cast to the type descriptor 0092e1c8 (RBX::Script, the row exists only for Script's source),
+// shared_from 00618a40 and the AfxGetApp module-state read (0043e2fb).
+#ifdef NATIVE_SCRIPTITEM_OPEN_PENDING
+void ScriptItem::OnInplaceButtonDown(CXTPPropertyGridInplaceButton*)
+{
+    const RBX::SelectionGroup::iterator groupEnd = grid->groups.end();
+    for (std::vector<const RBX::Reflection::ClassDescriptor*>::const_iterator it = classes.begin(), end = classes.end(); it != end; ++it) {
+        RBX::SelectionGroup::iterator instances = grid->groups.find(*it);
+        if (instances == groupEnd)
+            continue;
+        for (std::vector<boost::shared_ptr<RBX::Instance> >::const_iterator i = instances->second.begin(), iend = instances->second.end(); i != iend; ++i)
+            if (RBX::Script* script = dynamic_cast<RBX::Script*>(i->get()))
+                static_cast<CRobloxApp*>(AfxGetApp())->openScript(RBX::shared_from(script));
+    }
+}
+#endif
+
 // XItem<int, CXTPPropertyGridItemEnum, EnumPropertyDescriptor> specializations
-template<>
-void XItem<int, CXTPPropertyGridItemEnum, RBX::Reflection::EnumPropertyDescriptor>::update(RBX::SelectionGroup*) {}
+// XItem<int,Enum>::update 0043c6a0 is defined in AppUnit438PropGrid.cpp.
 template<>
 void XItem<int, CXTPPropertyGridItemEnum, RBX::Reflection::EnumPropertyDescriptor>::applyValue(int const&) {}
 
@@ -278,16 +308,12 @@ void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescripto
 {
     SetValue(v.c_str());
 }
-template<>
-void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::writeValue(RBX::Instance*, std::string const&) {}
-template<>
-void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::update(RBX::SelectionGroup*) {}
+// XItem<string>::writeValue 0043b9d0 and update 0043bc20 are defined in AppUnit438PropGrid.cpp.
 template<>
 void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::applyValue(std::string const&) {}
 
 // XItem<BrickColor, CPropertyGridItemBrickColor, TypedPropertyDescriptor<BrickColor>> specializations
-template<>
-void XItem<RBX::BrickColor, CPropertyGridItemBrickColor, RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor> >::update(RBX::SelectionGroup*) {}
+// XItem<BrickColor>::update 0043b5b0 is defined in AppUnit438PropGrid.cpp.
 template<>
 void XItem<RBX::BrickColor, CPropertyGridItemBrickColor, RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor> >::applyValue(RBX::BrickColor const&) {}
 
@@ -308,8 +334,7 @@ template<>
 void XItem<RBX::TextureId, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId> >::writeValue(RBX::Instance*, RBX::TextureId const&) {}
 
 // XItem<Vector3, CXTPPropertyGridItem, TypedPropertyDescriptor<Vector3>> specializations
-template<>
-void XItem<G3D::Vector3, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3> >::update(RBX::SelectionGroup*) {}
+// XItem<Vector3>::update 0043c170 is defined in AppUnit438PropGrid.cpp.
 template<>
 void XItem<G3D::Vector3, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3> >::applyValue(G3D::Vector3 const&) {}
 template<>

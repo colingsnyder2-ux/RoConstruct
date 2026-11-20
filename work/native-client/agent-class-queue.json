@@ -1,14 +1,3150 @@
 [
  {
-  "class": "RBX::SleepStage",
-  "brief": "Recover RBX::SleepStage's remaining functions (0064a660, 0064a5f0, 0064a790 and others in work/native-client/remaining-classified.json). The fuller header is rebuild/2008-06/native-world/App/include/v8world/SleepStage.h; it needs Assembly::getMaxRadius / getSleepInfo (a 2008 'Assembly' is really a Clump, no Assembly RTTI)."
+  "class": "Item",
+  "addresses": [
+   "0043c440",
+   "0045ecc0"
+  ],
+  "bytes": 362,
+  "header": "rebuild\\2008-06\\native-headers\\CPropGrid.h"
  },
  {
-  "class": "RBX::Render::RenderScene",
-  "brief": "Recover RBX::Render::RenderScene functions (00504290, 00502b00 and others): the native header is RenderLib/RenderScene2008.h (not the Ogre RenderSceneNew2008.h)."
+  "class": "ATL",
+  "addresses": [
+   "007a5e45",
+   "007a600b",
+   "007a601d",
+   "007a60bd",
+   "007a60c2",
+   "007a6132"
+  ],
+  "bytes": 361,
+  "header": null
  },
  {
-  "class": "RBX::World",
-  "brief": "Recover RBX::World::step (005e9fd0) and 005ea920 using the fuller rebuild/2008-06/native-headers/engine-world/v8world/World.h."
+  "class": "RBX::Reflection::SignalDescImpl::GenericSlotAdapter",
+  "addresses": [
+   "00559a50",
+   "00636370"
+  ],
+  "bytes": 358,
+  "header": null
+ },
+ {
+  "class": "RBX::Reflection::BoundFuncDesc<RBX::Instance,boost::shared_ptr<RBX::Instance> __cdecl(std::basic_string<char,std::char_traits<char>,std::allocator<char> >,bool),2>",
+  "addresses": [
+   "00559cb0",
+   "00579360"
+  ],
+  "bytes": 354,
+  "header": null
+ },
+ {
+  "class": "ContentItem + Vector3Item",
+  "addresses": [
+   "0043e840",
+   "0043ea20",
+   "0043d710",
+   "0043d790"
+  ],
+  "bytes": 513,
+  "header": "rebuild\\2008-06\\native-headers\\PropertyGridItems2008.h"
+ },
+ {
+  "class": "RBX::Notifier",
+  "addresses": [
+   "0040a530",
+   "004305f0"
+  ],
+  "bytes": 319,
+  "header": "rebuild\\2008-06\\native-headers\\util\\Events.h"
+ },
+ {
+  "class": "CComCtlWrapper",
+  "addresses": [
+   "00421ed0",
+   "00422000",
+   "004220d0",
+   "004221f0",
+   "00422310",
+   "00422430",
+   "006ba510"
+  ],
+  "bytes": 303,
+  "header": null
+ },
+ {
+  "class": "RBX::Primitive + Primitive",
+  "addresses": [
+   "005e7b20",
+   "005e7ca0",
+   "005e86a0",
+   "005e89f0",
+   "005e7470",
+   "005e74c0",
+   "005e7c10",
+   "005e7d30"
+  ],
+  "bytes": 603,
+  "header": "rebuild\\2008-06\\native-headers\\v8world\\Primitive2008.h"
+ },
+ {
+  "class": "boost::function0<enum RBX::worker_thread::work_result,std::allocator<boost::function_base> >",
+  "addresses": [
+   "00427720",
+   "005c4b20"
+  ],
+  "bytes": 299,
+  "header": null
+ },
+ {
+  "class": "RBX::Tool",
+  "addresses": [
+   "005fd3d0",
+   "005ff900"
+  ],
+  "bytes": 269,
+  "header": "rebuild\\2008-06\\native-headers\\v8datamodel\\Tool.h"
+ },
+ {
+  "class": "ATL::CAtlStringMgr",
+  "addresses": [
+   "007a5dd3",
+   "007a5e04",
+   "007a5e12",
+   "007a5e6b",
+   "007a5ecf"
+  ],
+  "bytes": 268,
+  "header": null
+ },
+ {
+  "class": "RBX::Reflection::RefPropertyDescriptor",
+  "addresses": [
+   "00565960",
+   "00585420"
+  ],
+  "bytes": 264,
+  "header": "rebuild\\2008-06\\native-headers\\reflection\\property.h"
+ },
+ {
+  "class": "std::list",
+  "addresses": [
+   "004288f0",
+   "00428eb0",
+   "00428ed0"
+  ],
+  "bytes": 244,
+  "header": null
+ },
+ {
+  "class": "boost::iostreams::detail::zlib_base",
+  "addresses": [
+   "0064dac0",
+   "0064db20",
+   "0064db30",
+   "0064db80"
+  ],
+  "bytes": 243,
+  "header": null
+ },
+ {
+  "class": "RBX::NonFactoryProduct",
+  "addresses": [
+   "00568d70",
+   "0057a7b0"
+  ],
+  "bytes": 240,
+  "header": "rebuild\\2008-06\\native-headers\\util\\Object.h"
+ },
+ {
+  "class": "CSettingsDialog",
+  "addresses": [
+   "00466b70",
+   "00467000",
+   "00467380",
+   "00467440"
+  ],
+  "bytes": 238,
+  "header": "rebuild\\2008-06\\native-headers\\CSettingsDialog.h"
+ },
+ {
+  "class": "FilePacketLogger",
+  "addresses": [
+   "004aae00",
+   "004aaea0",
+   "004ab7f0"
+  ],
+  "bytes": 224,
+  "header": "rebuild\\2008-06\\native-headers\\Replicator.h"
+ },
+ {
+  "class": "RBX::CleanStage",
+  "addresses": [
+   "0064a420",
+   "0064a460",
+   "0064a510"
+  ],
+  "bytes": 221,
+  "header": "rebuild\\2008-06\\native-headers\\v8world\\CleanStage2008.h"
+ },
+ {
+  "class": "RBX::Reflection::RefPropDescriptor",
+  "addresses": [
+   "00491760",
+   "00585380"
+  ],
+  "bytes": 198,
+  "header": "rebuild\\2008-06\\native-headers\\reflection\\reflection.h"
+ },
+ {
+  "class": "boost::any::holder<std::vector<RBX::Reflection::Value,std::allocator<RBX::Reflection::Value> > >",
+  "addresses": [
+   "0058b1c0",
+   "005acd10"
+  ],
+  "bytes": 192,
+  "header": null
+ },
+ {
+  "class": "ATL::CAtlBaseModule",
+  "addresses": [
+   "007a5c6b",
+   "007a5c83",
+   "007a5cd2"
+  ],
+  "bytes": 167,
+  "header": null
+ },
+ {
+  "class": "RBX::Profiling::Mark",
+  "addresses": [
+   "005c3f80",
+   "005c42d0"
+  ],
+  "bytes": 165,
+  "header": "rebuild\\2008-06\\native-headers\\util\\Profiling.h"
+ },
+ {
+  "class": "ATL::CWin32Heap",
+  "addresses": [
+   "007a5d12",
+   "007a5d2d",
+   "007a5d44",
+   "007a5d61",
+   "007a5d9b"
+  ],
+  "bytes": 160,
+  "header": null
+ },
+ {
+  "class": "RBX::Metadata::Reflection",
+  "addresses": [
+   "00443b00",
+   "00443b50"
+  ],
+  "bytes": 146,
+  "header": "rebuild\\2008-06\\native-headers\\reflection\\Metadata.h"
+ },
+ {
+  "class": "ATL::CAtlComModule",
+  "addresses": [
+   "007a61d8",
+   "007a621c"
+  ],
+  "bytes": 139,
+  "header": null
+ },
+ {
+  "class": "RBX::Reflection::PropDescriptor<RBX::Instance,std::basic_string<char,std::char_traits<char>,std::allocator<char> > >",
+  "addresses": [
+   "004a2030",
+   "00557f50"
+  ],
+  "bytes": 126,
+  "header": null
+ },
+ {
+  "class": "range 004061e0-00406260",
+  "addresses": [
+   "004061e0",
+   "00406260"
+  ],
+  "bytes": 184,
+  "header": null,
+  "neighbours": [
+   "applicationBaseUrl",
+   "AFX_MAINTAIN_STATE2::~AFX_MAINTAIN_STATE2",
+   "CApp::LaunchIDE",
+   "ATL::AtlGetDefaultUrlPort",
+   "ATL::AtlUnescapeUrl",
+   "ATL::CUrl::SetHostName"
+  ]
+ },
+ {
+  "class": "range 00406f60-004078a0",
+  "addresses": [
+   "00406f60",
+   "00407500",
+   "00407720",
+   "004078a0"
+  ],
+  "bytes": 1644,
+  "header": null,
+  "neighbours": [
+   "RBX::sTeam>",
+   "RBX::Network::sPlayer>",
+   "RBX::sSelection>",
+   ">",
+   "CApp>",
+   "CApp>::Release"
+  ]
+ },
+ {
+  "class": "range 004097c0-004097c0",
+  "addresses": [
+   "004097c0"
+  ],
+  "bytes": 397,
+  "header": null,
+  "neighbours": [
+   "RBX::sScript>::Creator::create",
+   "RBX::Http::Http",
+   "G3D::VertexAndPixelShader::ArgumentError::ArgumentError",
+   "RBX::Instance,0>",
+   "RBX::Metadata::sReflection>",
+   "RBX::sDecal>"
+  ]
+ },
+ {
+  "class": "range 00419fe0-0041a150",
+  "addresses": [
+   "00419fe0",
+   "0041a150"
+  ],
+  "bytes": 210,
+  "header": null,
+  "neighbours": [
+   "__cdecl",
+   "",
+   ">::_Node>",
+   ">::manager",
+   "Marshaller::~Marshaller",
+   ">::WindowProc"
+  ]
+ },
+ {
+  "class": "range 0041c7a0-0041c7a0",
+  "addresses": [
+   "0041c7a0"
+  ],
+  "bytes": 186,
+  "header": null,
+  "neighbours": [
+   "__cdecl",
+   "__cdecl",
+   "__cdecl",
+   "Creator::Creator",
+   "S::S",
+   "DHTMLWindowService::DHTMLWindowService"
+  ]
+ },
+ {
+  "class": "range 0041cf60-0041cf60",
+  "addresses": [
+   "0041cf60"
+  ],
+  "bytes": 134,
+  "header": null,
+  "neighbours": [
+   "RBX::Reflection::Metadata::Functions>",
+   "__cdecl",
+   "RBX::sScript>::Creator::create",
+   "__cdecl",
+   "__cdecl",
+   "__cdecl"
+  ]
+ },
+ {
+  "class": "range 0041dcd0-0041dcd0",
+  "addresses": [
+   "0041dcd0"
+  ],
+  "bytes": 110,
+  "header": null,
+  "neighbours": [
+   "RBX::Http::Http",
+   ">::_Node>",
+   ">::push_back",
+   "InsertDecal::InsertDecal",
+   "registerImageFile",
+   "RBX::sDecal>"
+  ]
+ },
+ {
+  "class": "range 00427310-00427480",
+  "addresses": [
+   "00427310",
+   "00427480"
+  ],
+  "bytes": 547,
+  "header": null,
+  "neighbours": [
+   "destructor'",
+   "CRobloxTreeCtrl::GetMessageMap",
+   "CSelectionTreeCtrl::GetMessageMap",
+   "",
+   "",
+   "LoginRenewer::LoginRenewer"
+  ]
+ },
+ {
+  "class": "range 004282a0-004282a0",
+  "addresses": [
+   "004282a0"
+  ],
+  "bytes": 111,
+  "header": null,
+  "neighbours": [
+   "destructor'",
+   "MainLogManager::getLogPath",
+   "MainLogManager::startCrashReporter",
+   "relocateLog",
+   "LogManager::~LogManager",
+   "reportDocumentException"
+  ]
+ },
+ {
+  "class": "range 00428f40-00428f40",
+  "addresses": [
+   "00428f40"
+  ],
+  "bytes": 106,
+  "header": null,
+  "neighbours": [
+   ">::_Buynode",
+   ">::_Buynode",
+   "*>",
+   ">",
+   ">",
+   "ATL::AtlReportError"
+  ]
+ },
+ {
+  "class": "range 00429b50-0042a930",
+  "addresses": [
+   "00429b50",
+   "00429f30",
+   "0042a3d0",
+   "0042a8a0",
+   "0042a930"
+  ],
+  "bytes": 1392,
+  "header": null,
+  "neighbours": [
+   ">::insert",
+   ">",
+   ">::push_back",
+   ">::operator",
+   "EventHandler::EventHandler",
+   "RBX::Instance>::shared_from_this"
+  ]
+ },
+ {
+  "class": "range 0042b8b0-0042ba50",
+  "addresses": [
+   "0042b8b0",
+   "0042b950",
+   "0042ba50"
+  ],
+  "bytes": 319,
+  "header": null,
+  "neighbours": [
+   ">",
+   ">::manager",
+   "EventHandler::attach",
+   "RBX::Security::Context>",
+   "RBX::Security::Context::ptr",
+   "RBX::Security::Impersonator::Impersonator"
+  ]
+ },
+ {
+  "class": "range 00437d30-004384b0",
+  "addresses": [
+   "00437d30",
+   "004380c0",
+   "00438160",
+   "00438450",
+   "004384b0"
+  ],
+  "bytes": 625,
+  "header": null,
+  "neighbours": [
+   "CPropertyGridItemBrickColor::brickColorName",
+   "CPropertyGridItemBrickColor::SetColor",
+   "CPropertyGridItemBrickColor::brickColorRef",
+   "CPropGrid::OnCreate",
+   "CPropGrid::getCategory",
+   ">::_Lrotate"
+  ]
+ },
+ {
+  "class": "range 0043a1e0-0043b5b0",
+  "addresses": [
+   "0043a1e0",
+   "0043a730",
+   "0043a870",
+   "0043abc0",
+   "0043ac60",
+   "0043b0d0",
+   "0043b510",
+   "0043b5b0"
+  ],
+  "bytes": 3325,
+  "header": null,
+  "neighbours": [
+   ">",
+   ">::equalValues",
+   "CXTPPropertyGridItemBool::GetBool",
+   "RBX::Reflection::PropertyDescriptor>",
+   ">",
+   ">"
+  ]
+ },
+ {
+  "class": "range 0043b930-0043cb00",
+  "addresses": [
+   "0043b930",
+   "0043b9d0",
+   "0043bc20",
+   "0043c0d0",
+   "0043c170",
+   "0043c510",
+   "0043c6a0",
+   "0043cb00"
+  ],
+  "bytes": 2971,
+  "header": null,
+  "neighbours": [
+   ">::equalValues",
+   ">::emptyValue",
+   "RBX::Reflection::PropertyDescriptor>",
+   ">",
+   "RBX::ContentId::ContentId",
+   "RBX::ContentId::operator="
+  ]
+ },
+ {
+  "class": "range 0043cc20-0043cfa0",
+  "addresses": [
+   "0043cc20",
+   "0043cfa0"
+  ],
+  "bytes": 1052,
+  "header": null,
+  "neighbours": [
+   "G3D::Token>::construct",
+   ">",
+   ">",
+   "RBX::ContentId::ContentId",
+   "RBX::ContentId::operator=",
+   "RBX::ContentId>"
+  ]
+ },
+ {
+  "class": "range 0043d930-0043d930",
+  "addresses": [
+   "0043d930"
+  ],
+  "bytes": 223,
+  "header": null,
+  "neighbours": [
+   "Vector3Item::OnAfterEdit",
+   "Vector3Item::update",
+   "G3D::Vector3::operator[]",
+   "Vector3Item::OnAddChildItem",
+   "RefItem::update",
+   "ScriptItem::update"
+  ]
+ },
+ {
+  "class": "range 0043e960-0043e960",
+  "addresses": [
+   "0043e960"
+  ],
+  "bytes": 183,
+  "header": null,
+  "neighbours": [
+   "EnumItem::EnumItem",
+   "RBX::Soundscape::SoundId>",
+   "destructor'",
+   "RBX::TextureId>",
+   ">::applyValue",
+   ">::applyValue"
+  ]
+ },
+ {
+  "class": "range 00440e30-00440e30",
+  "addresses": [
+   "00440e30"
+  ],
+  "bytes": 1321,
+  "header": null,
+  "neighbours": [
+   "CPropGrid::GetMessageMap",
+   "SoundItem::SoundItem",
+   "TextureItem::TextureItem",
+   ">::OnValueChanged",
+   ">::OnValueChanged",
+   ">::OnValueChanged"
+  ]
+ },
+ {
+  "class": "range 00441560-004416e0",
+  "addresses": [
+   "00441560",
+   "00441660",
+   "004416e0"
+  ],
+  "bytes": 357,
+  "header": null,
+  "neighbours": [
+   ">::OnValueChanged",
+   ">::OnValueChanged",
+   ">::OnValueChanged",
+   ">::insert",
+   ">::erase",
+   "SoundItem::browse"
+  ]
+ },
+ {
+  "class": "range 00445e50-00445e50",
+  "addresses": [
+   "00445e50"
+  ],
+  "bytes": 183,
+  "header": null,
+  "neighbours": [
+   "G3D::Vector2int16>::getVariant",
+   "RBX::Reflection::TypedPropertyDescriptor<float>::getVariant",
+   ">::erase",
+   "RBX::Reflection::Value::get<float>",
+   "G3D::Vector2int16>::setVariant",
+   "RBX::Reflection::TypedPropertyDescriptor<float>::setVariant"
+  ]
+ },
+ {
+  "class": "range 004492d0-00449550",
+  "addresses": [
+   "004492d0",
+   "00449550"
+  ],
+  "bytes": 335,
+  "header": null,
+  "neighbours": [
+   "CRenderSettings::setAntialiasingMode",
+   "CRenderSettings::setShadowMode",
+   "CRenderSettings>::setValue",
+   "CBrowserDocManager::CBrowserDocManager",
+   "CRbxPlayDocTemplate::RemoveDocument",
+   "CIDEDocManager::CIDEDocManager"
+  ]
+ },
+ {
+  "class": "range 00449d90-0044ac80",
+  "addresses": [
+   "00449d90",
+   "0044a320",
+   "0044a3d0",
+   "0044a450",
+   "0044a9c0",
+   "0044ac80"
+  ],
+  "bytes": 1326,
+  "header": null,
+  "neighbours": [
+   "CIDEDocManager::CIDEDocManager",
+   "CIDEDocManager::DoPromptFileName",
+   "CRobloxApp::initializeFramework",
+   "CRobloxApp::ExitInstance",
+   "CRobloxApp::apply",
+   "ATL::AtlLoadTypeLib"
+  ]
+ },
+ {
+  "class": "range 0044ce20-0044d150",
+  "addresses": [
+   "0044ce20",
+   "0044ce70",
+   "0044d150"
+  ],
+  "bytes": 445,
+  "header": null,
+  "neighbours": [
+   "CRobloxApp::~CRobloxApp",
+   "process",
+   "CRobloxApp::initializeSettings",
+   "destructor'",
+   "CRobloxApp::openFiles",
+   "CRobloxCommandLineInfo::ParseParam"
+  ]
+ },
+ {
+  "class": "range 0044f220-0044f220",
+  "addresses": [
+   "0044f220"
+  ],
+  "bytes": 136,
+  "header": null,
+  "neighbours": [
+   "RBX::Visit::getUploadUrl",
+   "CRobloxDoc::GetThisClass",
+   "CRobloxDoc::OnCloseDocument",
+   "*>::operator",
+   ">",
+   "RBX::sVisit>"
+  ]
+ },
+ {
+  "class": "range 00451210-00451210",
+  "addresses": [
+   "00451210"
+  ],
+  "bytes": 240,
+  "header": null,
+  "neighbours": [
+   "RBX::CameraVerb::~CameraVerb",
+   "destructor'",
+   ">",
+   ">",
+   "CRobloxDoc::DeleteContents",
+   "CDocument>"
+  ]
+ },
+ {
+  "class": "range 00456570-00456820",
+  "addresses": [
+   "00456570",
+   "00456770",
+   "00456820"
+  ],
+  "bytes": 1375,
+  "header": null,
+  "neighbours": [
+   "RBX::Stats::sStats>",
+   "CRobloxReportView::CStatsItemRecord::~CStatsItemRecord",
+   "CRobloxReportDocView::CRobloxReportDocView",
+   "CRobloxReportView::updateStats",
+   "CRobloxReportView::OnTimer",
+   "RBX::Instance>::reset"
+  ]
+ },
+ {
+  "class": "range 004581a0-004581a0",
+  "addresses": [
+   "004581a0"
+  ],
+  "bytes": 335,
+  "header": null,
+  "neighbours": [
+   "CRobloxReportView::CStatsItemRecord::CStatsItemRecord",
+   "S::~S",
+   "destructor'",
+   "CRobloxReportView::onMarshaledEvent",
+   "*>",
+   "RBX::Stats::StatsService::StatsService"
+  ]
+ },
+ {
+  "class": "range 0045be60-0045bf90",
+  "addresses": [
+   "0045be60",
+   "0045beb0",
+   "0045bf30",
+   "0045bf90"
+  ],
+  "bytes": 572,
+  "header": null,
+  "neighbours": [
+   "CRobloxWnd::AdjustThrottle",
+   "CRobloxWnd::run",
+   "CRobloxWnd::f",
+   "RBX::Instance>::Deleter>",
+   "RBX::Instance>::Deleter>",
+   "RBX::Instance>::Deleter>"
+  ]
+ },
+ {
+  "class": "range 0045c890-0045c890",
+  "addresses": [
+   "0045c890"
+  ],
+  "bytes": 771,
+  "header": null,
+  "neighbours": [
+   "",
+   "CRobloxWnd::CRobloxWnd",
+   "CXTPScrollBar::RedrawScrollBar",
+   "CRobloxWnd::handle",
+   "destructor'",
+   "destructor'"
+  ]
+ },
+ {
+  "class": "range 0045d4c0-0045d850",
+  "addresses": [
+   "0045d4c0",
+   "0045d550",
+   "0045d650",
+   "0045d7c0",
+   "0045d850"
+  ],
+  "bytes": 1033,
+  "header": null,
+  "neighbours": [
+   "CRobloxWnd::CRobloxWnd",
+   "CXTPScrollBar::RedrawScrollBar",
+   "CRobloxWnd::handle",
+   "RBX::sScript>::Creator::create",
+   "RBX::Instance>::Deleter>",
+   "RBX::Instance>::Deleter>"
+  ]
+ },
+ {
+  "class": "range 0045df10-0045df10",
+  "addresses": [
+   "0045df10"
+  ],
+  "bytes": 1244,
+  "header": null,
+  "neighbours": [
+   "RBX::sScript>::Creator::create",
+   ">::classDescriptor",
+   "RBX::Workspace>",
+   "CRobloxWnd::doRender",
+   "CRobloxWnd::draw",
+   "CRobloxWnd::finishAttach"
+  ]
+ },
+ {
+  "class": "range 0045f570-0045f570",
+  "addresses": [
+   "0045f570"
+  ],
+  "bytes": 423,
+  "header": null,
+  "neighbours": [
+   "",
+   "RBX::Stats::TypedStatsItem<int>::update",
+   "StatsItem::StatsItem",
+   "",
+   "CRobloxWnd::setDataModel",
+   "CRobloxWnd::~CRobloxWnd"
+  ]
+ },
+ {
+  "class": "range 004672e0-00468b90",
+  "addresses": [
+   "004672e0",
+   "00467880",
+   "00467a00",
+   "00467d50",
+   "004681b0",
+   "004684a0",
+   "004685b0",
+   "00468b90"
+  ],
+  "bytes": 3710,
+  "header": null,
+  "neighbours": [
+   "G3D::Vector2::Vector2",
+   "CSettingsDialog::CSettingsDialog",
+   "G3D::AtomicInt32::increment",
+   "DxUserInput::centerCursor",
+   "DxUserInput::DxUserInput",
+   "G3D::Vector2::clamp"
+  ]
+ },
+ {
+  "class": "range 00468e90-00468e90",
+  "addresses": [
+   "00468e90"
+  ],
+  "bytes": 472,
+  "header": null,
+  "neighbours": [
+   "DxUserInput::getPosition",
+   "DxUserInput::getCursorPosition",
+   "DxUserInput::keyDown",
+   "DxUserInput::centerCursor",
+   "DxUserInput::DxUserInput",
+   "G3D::Vector2::clamp"
+  ]
+ },
+ {
+  "class": "range 0046a130-0046a130",
+  "addresses": [
+   "0046a130"
+  ],
+  "bytes": 115,
+  "header": null,
+  "neighbours": [
+   "DxUserInput::DxUserInput",
+   "G3D::Vector2::clamp",
+   "f",
+   "CVersionInfo::CVersionInfo",
+   "CVersionInfo::Load",
+   "CVersionInfo::GetValue"
+  ]
+ },
+ {
+  "class": "range 0048ae50-0048ae50",
+  "addresses": [
+   "0048ae50"
+  ],
+  "bytes": 181,
+  "header": null,
+  "neighbours": [
+   ">",
+   ">",
+   "RBX::Instance::numChildren",
+   "RBX::Network::CharacterAdded>::raise",
+   "RBX::Network::CharacterRemoving>::raise",
+   "RBX::Object>"
+  ]
+ },
+ {
+  "class": "range 0048b7b0-0048b8a0",
+  "addresses": [
+   "0048b7b0",
+   "0048b8a0"
+  ],
+  "bytes": 236,
+  "header": null,
+  "neighbours": [
+   "RBX::BrickColor>",
+   "RBX::Instance>::Deleter>",
+   ">",
+   "RBX::Network::Player::setUnder13",
+   "RBX::Network::Player::setSuperSafeChat",
+   ">::front"
+  ]
+ },
+ {
+  "class": "range 0048c5e0-0048c9d0",
+  "addresses": [
+   "0048c5e0",
+   "0048c9d0"
+  ],
+  "bytes": 336,
+  "header": null,
+  "neighbours": [
+   "RBX::Network::Player::getPlayerBackpack",
+   "RBX::Network::sPlayer>::getClassName",
+   "RBX::BrickColor>::getVariant",
+   "RBX::BrickColor>::setVariant",
+   "",
+   ""
+  ]
+ },
+ {
+  "class": "range 0048e3b0-0048e5d0",
+  "addresses": [
+   "0048e3b0",
+   "0048e5d0"
+  ],
+  "bytes": 165,
+  "header": null,
+  "neighbours": [
+   "__cdecl",
+   "__cdecl",
+   "__cdecl",
+   "RBX::Instance>::Deleter>",
+   "RBX::Instance>::Deleter>",
+   "RBX::HopperBin>"
+  ]
+ },
+ {
+  "class": "range 00490a60-00490a60",
+  "addresses": [
+   "00490a60"
+  ],
+  "bytes": 141,
+  "header": null,
+  "neighbours": [
+   "RBX::sScript>::Creator::create",
+   "__cdecl",
+   ">::classDescriptor",
+   "RBX::Workspace>",
+   "RBX::ControllerService>",
+   "RBX::TimerService>"
+  ]
+ },
+ {
+  "class": "range 004917f0-004917f0",
+  "addresses": [
+   "004917f0"
+  ],
+  "bytes": 242,
+  "header": null,
+  "neighbours": [
+   "RBX::Instance>::setRefValue",
+   "RBX::Instance>::writeValue",
+   ">",
+   "",
+   "",
+   "RBX::Network::Player>"
+  ]
+ },
+ {
+  "class": "range 00492ea0-00492ea0",
+  "addresses": [
+   "00492ea0"
+  ],
+  "bytes": 141,
+  "header": null,
+  "neighbours": [
+   "__cdecl",
+   "__cdecl",
+   "__cdecl",
+   "S::S",
+   "RBX::sHole>",
+   "RBX::sHole>"
+  ]
+ },
+ {
+  "class": "range 00493590-00493620",
+  "addresses": [
+   "00493590",
+   "00493620"
+  ],
+  "bytes": 284,
+  "header": null,
+  "neighbours": [
+   "RBX::sHole>",
+   "RBX::sHole>",
+   "boost::last_value<void>::operator",
+   "RBX::Security::Context::current",
+   "RBX::Network::Player::setName",
+   "__cdecl"
+  ]
+ },
+ {
+  "class": "range 004965a0-004965a0",
+  "addresses": [
+   "004965a0"
+  ],
+  "bytes": 215,
+  "header": null,
+  "neighbours": [
+   "RBX::Network::Players::canReportAbuse",
+   "RBX::Network::ChatMessage::~ChatMessage",
+   ">::_Lbound",
+   "RBX::InstanceHandle>",
+   "RBX::Instance>,int>",
+   "*>"
+  ]
+ },
+ {
+  "class": "range 00496d90-00496d90",
+  "addresses": [
+   "00496d90"
+  ],
+  "bytes": 141,
+  "header": null,
+  "neighbours": [
+   "S::S",
+   "RBX::Network::Players::onEvent",
+   "boost::RegEx::~RegEx",
+   "RBX::AutoJoin>::raise",
+   ">::_Buynode",
+   ">::_Buynode"
+  ]
+ },
+ {
+  "class": "range 004974f0-004974f0",
+  "addresses": [
+   "004974f0"
+  ],
+  "bytes": 227,
+  "header": null,
+  "neighbours": [
+   "__cdecl",
+   "__cdecl",
+   "RBX::Network::Players::getPlayers",
+   ">::Entry::~Entry",
+   "RBX::Network::Players::superSafeOn",
+   ">::_Buynode"
+  ]
+ },
+ {
+  "class": "range 004984d0-004984d0",
+  "addresses": [
+   "004984d0"
+  ],
+  "bytes": 314,
+  "header": null,
+  "neighbours": [
+   ">::clear",
+   ">::insert",
+   ">::erase",
+   ">",
+   ">::erase",
+   ">"
+  ]
+ },
+ {
+  "class": "range 004990a0-004995d0",
+  "addresses": [
+   "004990a0",
+   "004995d0"
+  ],
+  "bytes": 286,
+  "header": null,
+  "neighbours": [
+   ">",
+   ">",
+   ">",
+   "RBX::Network::Players::~Players",
+   "",
+   ""
+  ]
+ },
+ {
+  "class": "range 0049bf90-0049bf90",
+  "addresses": [
+   "0049bf90"
+  ],
+  "bytes": 1198,
+  "header": null,
+  "neighbours": [
+   ">::push_back",
+   ">::_Tidy",
+   "RBX::Network::Players::Players",
+   "Creator::Creator",
+   "boost::last_value<void>::operator",
+   "boost::last_value<void>::operator"
+  ]
+ },
+ {
+  "class": "range 0049c630-0049c630",
+  "addresses": [
+   "0049c630"
+  ],
+  "bytes": 142,
+  "header": null,
+  "neighbours": [
+   "Creator::Creator",
+   "boost::last_value<void>::operator",
+   "boost::last_value<void>::operator",
+   "RBX::Network::Players::chat",
+   "__cdecl",
+   "__cdecl"
+  ]
+ },
+ {
+  "class": "range 0049f500-0049f500",
+  "addresses": [
+   "0049f500"
+  ],
+  "bytes": 135,
+  "header": null,
+  "neighbours": [
+   ">::operator",
+   "RBX::Network::StringReceiver::~StringReceiver",
+   "RBX::Network::Client::~Client",
+   "RBX::Name::mutex",
+   "__cdecl",
+   "__cdecl"
+  ]
+ },
+ {
+  "class": "range 0049fd90-0049fd90",
+  "addresses": [
+   "0049fd90"
+  ],
+  "bytes": 142,
+  "header": null,
+  "neighbours": [
+   "__cdecl",
+   "__cdecl",
+   "RBX::RunService>",
+   "RBX::Network::Client::clientIsPresent",
+   "RBX::Network::Client::onServiceProvider",
+   "RBX::Network::sClient>"
+  ]
+ },
+ {
+  "class": "range 004a0900-004a0900",
+  "addresses": [
+   "004a0900"
+  ],
+  "bytes": 142,
+  "header": null,
+  "neighbours": [
+   "__cdecl",
+   "__cdecl",
+   "boost::last_value<void>::operator",
+   "RBX::Network::Client::Client",
+   "RBX::Network::Client::connect",
+   ">::operator"
+  ]
+ },
+ {
+  "class": "range 004a2ac0-004a2ac0",
+  "addresses": [
+   "004a2ac0"
+  ],
+  "bytes": 348,
+  "header": null,
+  "neighbours": [
+   "RBX::Object>",
+   "RBX::Name::mutex",
+   ">",
+   ">::insert",
+   ">::find",
+   "__cdecl"
+  ]
+ },
+ {
+  "class": "range 004a3290-004a3290",
+  "addresses": [
+   "004a3290"
+  ],
+  "bytes": 170,
+  "header": null,
+  "neighbours": [
+   ">::find",
+   "__cdecl",
+   ">",
+   "__cdecl",
+   "__cdecl",
+   "RBX::Network::Server::~Server"
+  ]
+ },
+ {
+  "class": "range 004a4530-004a4530",
+  "addresses": [
+   "004a4530"
+  ],
+  "bytes": 211,
+  "header": null,
+  "neighbours": [
+   "RBX::Network::Server::onServiceProvider",
+   "RBX::Network::sClient>",
+   "__cdecl",
+   "__cdecl",
+   "S::S",
+   "__cdecl"
+  ]
+ },
+ {
+  "class": "range 004a5d10-004a5d10",
+  "addresses": [
+   "004a5d10"
+  ],
+  "bytes": 40,
+  "header": null,
+  "neighbours": [
+   "G3D::Vector3::isFinite",
+   "RBX::Network::operator<<",
+   "RBX::Network::brickEq",
+   "RakNet::BitStream::ReadNormQuat<float>",
+   "G3D::Vector3::clamp",
+   "RBX::Network::operator<<"
+  ]
+ },
+ {
+  "class": "range 004a8580-004a8cc0",
+  "addresses": [
+   "004a8580",
+   "004a8ae0",
+   "004a8cc0"
+  ],
+  "bytes": 541,
+  "header": null,
+  "neighbours": [
+   ">::_Tidy",
+   ">",
+   ">",
+   ">::erase",
+   "RBX::Network::IdSerializer::deserializeRef",
+   "SocketDescriptor::SocketDescriptor"
+  ]
+ },
+ {
+  "class": "range 004ab960-004abc00",
+  "addresses": [
+   "004ab960",
+   "004ab9c0",
+   "004abaf0",
+   "004abc00"
+  ],
+  "bytes": 751,
+  "header": null,
+  "neighbours": [
+   "destructor'",
+   "destructor'",
+   "MarkerItem::~MarkerItem",
+   "S::S",
+   ">::_Lrotate",
+   ">::_Lrotate"
+  ]
+ },
+ {
+  "class": "range 004ac9e0-004ac9e0",
+  "addresses": [
+   "004ac9e0"
+  ],
+  "bytes": 222,
+  "header": null,
+  "neighbours": [
+   "",
+   "",
+   "",
+   "destructor'",
+   "G3D::Vector2int16>::getValue",
+   ">::_Buynode"
+  ]
+ },
+ {
+  "class": "range 004ad7c0-004adec0",
+  "addresses": [
+   "004ad7c0",
+   "004addb0",
+   "004adec0"
+  ],
+  "bytes": 687,
+  "header": null,
+  "neighbours": [
+   "int>",
+   "RBX::Instance>::Deleter>",
+   "RBX::Instance>::Deleter>",
+   ">::find",
+   ">::find",
+   ">::_Insert"
+  ]
+ },
+ {
+  "class": "range 004ae690-004aeba0",
+  "addresses": [
+   "004ae690",
+   "004ae860",
+   "004ae950",
+   "004aeac0",
+   "004aeba0"
+  ],
+  "bytes": 701,
+  "header": null,
+  "neighbours": [
+   ">::pop_front",
+   ">::_Insert",
+   "RBX::Instance::visitChildren",
+   ">::insert",
+   ">::erase",
+   ">::push_front"
+  ]
+ },
+ {
+  "class": "range 004afe90-004b01e0",
+  "addresses": [
+   "004afe90",
+   "004aff70",
+   "004b01e0"
+  ],
+  "bytes": 1601,
+  "header": null,
+  "neighbours": [
+   "",
+   "RBX::JointsService::~JointsService",
+   "S::S",
+   "RBX::Network::Replicator::onPropertyChanged",
+   "RBX::Network::Replicator::readInstanceDelete",
+   ">"
+  ]
+ },
+ {
+  "class": "range 004b1240-004b17f0",
+  "addresses": [
+   "004b1240",
+   "004b1570",
+   "004b1620",
+   "004b1710",
+   "004b17f0"
+  ],
+  "bytes": 1267,
+  "header": null,
+  "neighbours": [
+   ">::_Erase",
+   "RBX::JointsService>",
+   ">::erase",
+   ">::classDescriptor",
+   "__cdecl",
+   "__cdecl"
+  ]
+ },
+ {
+  "class": "range 004b45b0-004b49e0",
+  "addresses": [
+   "004b45b0",
+   "004b49e0"
+  ],
+  "bytes": 593,
+  "header": null,
+  "neighbours": [
+   "__cdecl",
+   "__cdecl",
+   "__cdecl",
+   "RBX::Network::Replicator::getDefault",
+   "RBX::Stats::Item>",
+   "boost::last_value<void>::operator"
+  ]
+ },
+ {
+  "class": "range 004b5220-004b52b0",
+  "addresses": [
+   "004b5220",
+   "004b52b0"
+  ],
+  "bytes": 1240,
+  "header": null,
+  "neighbours": [
+   "boost::last_value<void>::operator",
+   "__cdecl",
+   ">",
+   "RBX::Network::Peer::onServiceProvider",
+   "__cdecl",
+   "__cdecl"
+  ]
+ },
+ {
+  "class": "range 004b6530-004b6530",
+  "addresses": [
+   "004b6530"
+  ],
+  "bytes": 352,
+  "header": null,
+  "neighbours": [
+   "__cdecl",
+   "destructor'",
+   "Receiver::Receiver",
+   "Derived::~Derived",
+   "RBX::Network::Replicator::getSharedDictionary",
+   "RBX::Network::Replicator::serializeValue"
+  ]
+ },
+ {
+  "class": "range 004b6d10-004b6f00",
+  "addresses": [
+   "004b6d10",
+   "004b6f00"
+  ],
+  "bytes": 1336,
+  "header": null,
+  "neighbours": [
+   "RBX::Network::Replicator::getSharedDictionary",
+   "RBX::Network::Replicator::serializeValue",
+   "RBX::Network::Replicator::deserializeValue",
+   "RBX::Network::Replicator::readInstanceNew",
+   "RBX::Network::Replicator::readChangedProperty",
+   "__cdecl"
+  ]
+ },
+ {
+  "class": "range 004b8620-004b8b60",
+  "addresses": [
+   "004b8620",
+   "004b8b60"
+  ],
+  "bytes": 641,
+  "header": null,
+  "neighbours": [
+   "RBX::Network::Replicator::readMarker",
+   "RBX::Network::sMarker>",
+   "destructor'",
+   "RBX::Network::Replicator::OnReceive",
+   "RBX::Network::Marker::Marker",
+   "RBX::Network::Marker::newMarker"
+  ]
+ },
+ {
+  "class": "range 004c8150-004c8150",
+  "addresses": [
+   "004c8150"
+  ],
+  "bytes": 602,
+  "header": null,
+  "neighbours": [
+   ">::_Insert_n",
+   ">::insert",
+   "boost::multi_index::detail::ordered_non_unique_tag>::modify_",
+   "RBX::Network::DirectPhysicsReceiver::receivePacket",
+   ">::insert_",
+   "boost::multi_index::detail::hashed_unique_tag>::modify_"
+  ]
+ },
+ {
+  "class": "range 004c8da0-004c8da0",
+  "addresses": [
+   "004c8da0"
+  ],
+  "bytes": 159,
+  "header": null,
+  "neighbours": [
+   "RBX::Network::DirectPhysicsReceiver::receivePacket",
+   ">::insert_",
+   "boost::multi_index::detail::hashed_unique_tag>::modify_",
+   "RBX::Network::InterpolatingPhysicsReceiver::receivePacket",
+   "RakNet::GetTimeNS",
+   "RakNet::GetTime"
+  ]
+ },
+ {
+  "class": "range 004c9a10-004ca040",
+  "addresses": [
+   "004c9a10",
+   "004c9c80",
+   "004c9cf0",
+   "004c9e30",
+   "004ca040"
+  ],
+  "bytes": 803,
+  "header": null,
+  "neighbours": [
+   "RakNet::GetTimeNS",
+   "RakNet::GetTime",
+   "RBX::Network::RoundRobinPhysicsSender::RoundRobinPhysicsSender",
+   "RakNet::BitStream::ReadVector<float>",
+   "RBX::Instance>",
+   "RBX::sPhysicsService>"
+  ]
+ },
+ {
+  "class": "range 004ca7b0-004cb480",
+  "addresses": [
+   "004ca7b0",
+   "004ca980",
+   "004cac30",
+   "004cb1b0",
+   "004cb3c0",
+   "004cb480"
+  ],
+  "bytes": 1149,
+  "header": null,
+  "neighbours": [
+   "RBX::Instance>::Deleter>",
+   ">::operator",
+   "S::S",
+   "RBX::sPhysicsService>::getClassName",
+   "boost::multi_index::detail::ordered_non_unique_tag>::modify_",
+   "boost::multi_index::detail::hashed_unique_tag>::reserve"
+  ]
+ },
+ {
+  "class": "range 004cbad0-004cbd40",
+  "addresses": [
+   "004cbad0",
+   "004cbd40"
+  ],
+  "bytes": 260,
+  "header": null,
+  "neighbours": [
+   ">",
+   ">::invoke",
+   "RBX::sPhysicsService>::getClassName",
+   "boost::multi_index::detail::hashed_unique_tag>::reserve",
+   ">",
+   "boost::multi_index::detail::ordered_non_unique_tag>::modify_"
+  ]
+ },
+ {
+  "class": "range 004cc720-004cc720",
+  "addresses": [
+   "004cc720"
+  ],
+  "bytes": 192,
+  "header": null,
+  "neighbours": [
+   "boost::multi_index::detail::hashed_unique_tag>::reserve",
+   ">",
+   "boost::multi_index::detail::ordered_non_unique_tag>::modify_",
+   "boost::multi_index::detail::hashed_unique_tag>::modify_",
+   "boost::multi_index::detail::ordered_non_unique_tag>::erase",
+   "RBX::PhysicsService>"
+  ]
+ },
+ {
+  "class": "range 004cce00-004cce00",
+  "addresses": [
+   "004cce00"
+  ],
+  "bytes": 880,
+  "header": null,
+  "neighbours": [
+   "boost::multi_index::detail::hashed_unique_tag>::modify_",
+   "boost::multi_index::detail::ordered_non_unique_tag>::erase",
+   "RBX::PhysicsService>",
+   ">::classDescriptor",
+   "RBX::Network::RoundRobinPhysicsSender::sendPackets",
+   "RBX::sPhysicsService>"
+  ]
+ },
+ {
+  "class": "range 004d8700-004d8760",
+  "addresses": [
+   "004d8700",
+   "004d8760"
+  ],
+  "bytes": 190,
+  "header": null,
+  "neighbours": [
+   ">::_Erase",
+   ">::_Erase",
+   ">",
+   "G3D::TextureManager>",
+   "CXTPShadowsManager::~CXTPShadowsManager",
+   "CXTPShadowsManager::~CXTPShadowsManager"
+  ]
+ },
+ {
+  "class": "range 004db9e0-004dba40",
+  "addresses": [
+   "004db9e0",
+   "004dba40"
+  ],
+  "bytes": 190,
+  "header": null,
+  "neighbours": [
+   "RBX::ViewNew::ViewG3D::render",
+   "RBX::ViewNew::ViewG3D::getRenderStats",
+   "RBX::ViewNew::ViewG3D::onWorkspaceDescendentAdded",
+   "S::S",
+   "Slot::Slot",
+   "RBX::ViewNew::ViewG3D::ViewG3D"
+  ]
+ },
+ {
+  "class": "range 004dcaa0-004dcaa0",
+  "addresses": [
+   "004dcaa0"
+  ],
+  "bytes": 267,
+  "header": null,
+  "neighbours": [
+   ">::resize",
+   ">::_Node::_Node",
+   ">",
+   ">::append",
+   ">::erase",
+   "RBX::RenderBase::Mesh::Level::Level"
+  ]
+ },
+ {
+  "class": "range 004e7ed0-004e7ed0",
+  "addresses": [
+   "004e7ed0"
+  ],
+  "bytes": 286,
+  "header": null,
+  "neighbours": [
+   "*>::invoke",
+   "RBX::Render::Material>",
+   "destructor'",
+   "RBX::Skin>",
+   ">::invoke",
+   "*>::invoke"
+  ]
+ },
+ {
+  "class": "range 004e9e80-004ea720",
+  "addresses": [
+   "004e9e80",
+   "004e9ee0",
+   "004e9f40",
+   "004ea260",
+   "004ea2c0",
+   "004ea320",
+   "004ea380",
+   "004ea720"
+  ],
+  "bytes": 815,
+  "header": null,
+  "neighbours": [
+   "PluginInterface::OnDirectSocketSend",
+   "destructor'",
+   "destructor'",
+   "RBX::ViewNew::Part::getMaterial",
+   "RBX::ViewNew::Decal::getMaterial",
+   "RBX::ViewNew::Part::updateMesh"
+  ]
+ },
+ {
+  "class": "range 004ea7c0-004eaa40",
+  "addresses": [
+   "004ea7c0",
+   "004ea860",
+   "004ea900",
+   "004ea9a0",
+   "004eaa40"
+  ],
+  "bytes": 750,
+  "header": null,
+  "neighbours": [
+   "",
+   "destructor'",
+   "Table::Table",
+   "RBX::ViewNew::Part::getMaterial",
+   "RBX::ViewNew::Decal::getMaterial",
+   "RBX::ViewNew::Part::updateMesh"
+  ]
+ },
+ {
+  "class": "range 00503540-00503540",
+  "addresses": [
+   "00503540"
+  ],
+  "bytes": 146,
+  "header": null,
+  "neighbours": [
+   "RBX::Render::RenderSurface>::realloc",
+   "RBX::Render::RenderScene::computeShadowVolumeGeometry",
+   "RBX::Render::RenderScene::updateShadowVAR",
+   "RBX::Render::RenderSurface>::resize",
+   "G3D::Lighting::Lighting",
+   "G3D::Lighting::~Lighting"
+  ]
+ },
+ {
+  "class": "range 00545770-005458a0",
+  "addresses": [
+   "00545770",
+   "005458a0"
+  ],
+  "bytes": 588,
+  "header": null,
+  "neighbours": [
+   ">::_Make_iter",
+   ">",
+   "Wml::ConvexHull2<float>::SortedVertex::SortedVertex",
+   ">::iterator>",
+   "S::S",
+   ">::_Erase"
+  ]
+ },
+ {
+  "class": "range 00549610-00549610",
+  "addresses": [
+   "00549610"
+  ],
+  "bytes": 1083,
+  "header": null,
+  "neighbours": [
+   "RBX::RenderBase::Mesh::allocVertex",
+   "RBX::RenderBase::Mesh::Mesh",
+   "RBX::RenderBase::Mesh::freeVertex",
+   "Wml::ConvexHull3<float>::Triangle::~Triangle",
+   "destructor'",
+   "Wml::ConvexHull3<float>::Triangle::~Triangle"
+  ]
+ },
+ {
+  "class": "range 0054a920-0054a920",
+  "addresses": [
+   "0054a920"
+  ],
+  "bytes": 148,
+  "header": null,
+  "neighbours": [
+   "RBX::RenderBase::Mesh::allocVertex",
+   "RBX::RenderBase::Mesh::Mesh",
+   "RBX::RenderBase::Mesh::freeVertex",
+   "Wml::ConvexHull3<float>::Triangle::~Triangle",
+   "destructor'",
+   "Wml::ConvexHull3<float>::Triangle::~Triangle"
+  ]
+ },
+ {
+  "class": "range 0054ff70-0054ff70",
+  "addresses": [
+   "0054ff70"
+  ],
+  "bytes": 294,
+  "header": null,
+  "neighbours": [
+   "G3D::MeshAlg::Vertex>::resize",
+   "Wml::ConvexHull2<float>::SortedVertex::SortedVertex",
+   "It::operator++",
+   ">::erase",
+   ">::clear",
+   ">::_Lmost"
+  ]
+ },
+ {
+  "class": "range 00551730-00551a30",
+  "addresses": [
+   "00551730",
+   "00551820",
+   "00551920",
+   "00551a30"
+  ],
+  "bytes": 992,
+  "header": null,
+  "neighbours": [
+   "int>",
+   "int>::init",
+   ">",
+   "RBX::Render::TextureProxy::TextureProxy",
+   "RBX::TextureProxyBase::TextureProxyBase",
+   "RBX::TextureProxyBase::setIntProperty"
+  ]
+ },
+ {
+  "class": "range 00554880-00554880",
+  "addresses": [
+   "00554880"
+  ],
+  "bytes": 224,
+  "header": null,
+  "neighbours": [
+   "RBX::RunState>::raise",
+   "RBX::Instance>,int>",
+   "RBX::sBodyPosition>",
+   "RBX::Heartbeat>::raise",
+   "RBX::Heartbeat>::raise",
+   "RBX::RunTransition>::raise"
+  ]
+ },
+ {
+  "class": "range 00556e20-005571b0",
+  "addresses": [
+   "00556e20",
+   "00557150",
+   "005571b0"
+  ],
+  "bytes": 351,
+  "header": null,
+  "neighbours": [
+   "__cdecl",
+   "__cdecl",
+   "RBX::RunService::RunService",
+   "__cdecl",
+   "std::hex",
+   "boost::call_once"
+  ]
+ },
+ {
+  "class": "range 0055a4b0-0055a4b0",
+  "addresses": [
+   "0055a4b0"
+  ],
+  "bytes": 142,
+  "header": null,
+  "neighbours": [
+   ">",
+   "RBX::Instance::createChild",
+   "RBX::AllCanSelectCommand::~AllCanSelectCommand",
+   "RBX::Instance::~Instance",
+   "__cdecl",
+   "__cdecl"
+  ]
+ },
+ {
+  "class": "range 0055bf20-0055bf20",
+  "addresses": [
+   "0055bf20"
+  ],
+  "bytes": 215,
+  "header": null,
+  "neighbours": [
+   "RBX::ContentId::fromAssets",
+   "ATL::_AtlGetStringResourceImage",
+   "ATL::AtlFindStringResourceInstance",
+   "RBX::ContentId>::operator",
+   "boost::gregorian::bad_day_of_month>::on_error",
+   "boost::gregorian::bad_year>::on_error"
+  ]
+ },
+ {
+  "class": "range 0055db60-0055db60",
+  "addresses": [
+   "0055db60"
+  ],
+  "bytes": 123,
+  "header": null,
+  "neighbours": [
+   ">::LoadStringA",
+   ">",
+   ">::FormatV",
+   ">::operator",
+   "RBX::readContent",
+   "RBX::sContentProvider>::getClassName"
+  ]
+ },
+ {
+  "class": "range 0055edd0-0055f3b0",
+  "addresses": [
+   "0055edd0",
+   "0055f3b0"
+  ],
+  "bytes": 317,
+  "header": null,
+  "neighbours": [
+   ">::destroy",
+   ">",
+   "__cdecl",
+   "__cdecl",
+   "__cdecl",
+   "__cdecl"
+  ]
+ },
+ {
+  "class": "range 005616e0-005618e0",
+  "addresses": [
+   "005616e0",
+   "005618e0"
+  ],
+  "bytes": 308,
+  "header": null,
+  "neighbours": [
+   "__cdecl",
+   "RBX::sContentProvider>",
+   ">::_Buynode",
+   "RBX::ContentProvider::loadContent",
+   "RBX::ContentProvider::getFile",
+   "RBX::ContentProvider::getContent"
+  ]
+ },
+ {
+  "class": "range 00562f70-00562f70",
+  "addresses": [
+   "00562f70"
+  ],
+  "bytes": 220,
+  "header": null,
+  "neighbours": [
+   "",
+   "",
+   "RBX::ContentProvider::~ContentProvider",
+   "RBX::GuidRegistryMutex::GuidRegistryMutex",
+   "RBX::GuidRegistryMutex::lock",
+   "RBX::GuidRegistryMutex::unlock"
+  ]
+ },
+ {
+  "class": "range 005641e0-005641e0",
+  "addresses": [
+   "005641e0"
+  ],
+  "bytes": 173,
+  "header": null,
+  "neighbours": [
+   "",
+   "RBX::sDebugSettings>::getClassName",
+   "RBX::Reflection::TypedPropertyDescriptor<double>::getVariant",
+   "RBX::Reflection::TypedPropertyDescriptor<double>::setVariant",
+   ">::insert",
+   ">::operator[]"
+  ]
+ },
+ {
+  "class": "range 005656b0-00565970",
+  "addresses": [
+   "005656b0",
+   "00565790",
+   "00565870",
+   "00565970"
+  ],
+  "bytes": 964,
+  "header": null,
+  "neighbours": [
+   "",
+   "",
+   "RBX::sDebugSettings>",
+   "RBX::DebugSettings::DebugSettings",
+   "",
+   ""
+  ]
+ },
+ {
+  "class": "range 0056b700-0056b700",
+  "addresses": [
+   "0056b700"
+  ],
+  "bytes": 931,
+  "header": null,
+  "neighbours": [
+   "RBX::Reflection::SignalDescriptor::findSignalInstance",
+   "G3D::Shape::axes",
+   "RBX::Reflection::MemberDescriptor::~MemberDescriptor",
+   "RBX::Reflection::SignalDescriptor::SignalDescriptor",
+   "RBX::Reflection::SignalDescriptor::getSignalInstance",
+   "RBX::Reflection::SignalSource::~SignalSource"
+  ]
+ },
+ {
+  "class": "range 0056c170-0056c170",
+  "addresses": [
+   "0056c170"
+  ],
+  "bytes": 931,
+  "header": null,
+  "neighbours": [
+   "RBX::Reflection::EnumDescriptor::enumsEnd",
+   ">::_Ufill",
+   "RBX::Reflection::EnumDescriptor::~EnumDescriptor",
+   "RBX::Name::dictionary",
+   "RBX::Reflection::EnumDescriptor::EnumDescriptor",
+   "RBX::Reflection::PropertyDescriptor::PropertyDescriptor"
+  ]
+ },
+ {
+  "class": "range 0056fff0-0056fff0",
+  "addresses": [
+   "0056fff0"
+  ],
+  "bytes": 931,
+  "header": null,
+  "neighbours": [
+   "RBX::Name::mutex",
+   "G3D::Shape::axes",
+   "RBX::Network::sClient>",
+   "RBX::Reflection::PropertyDescriptor>::mergeMembers",
+   "RBX::Reflection::SignalDescriptor>::mergeMembers",
+   "RBX::Reflection::FunctionDescriptor>::mergeMembers"
+  ]
+ },
+ {
+  "class": "range 00575d90-00575d90",
+  "addresses": [
+   "00575d90"
+  ],
+  "bytes": 1528,
+  "header": null,
+  "neighbours": [
+   "RBX::DataModel::getFrameRate",
+   "RBX::DataModel::getDutyCycle",
+   "RBX::DataModel::processAccelerators",
+   "Event>::raise",
+   "RBX::DrawChanged>::raise",
+   ">"
+  ]
+ },
+ {
+  "class": "range 00577460-00577690",
+  "addresses": [
+   "00577460",
+   "00577690"
+  ],
+  "bytes": 175,
+  "header": null,
+  "neighbours": [
+   "",
+   ">",
+   "RBX::DataModel::Lock::~Lock",
+   "RBX::TimerService::Item::~Item",
+   "",
+   ""
+  ]
+ },
+ {
+  "class": "range 00578ad0-00578c20",
+  "addresses": [
+   "00578ad0",
+   "00578c20"
+  ],
+  "bytes": 290,
+  "header": null,
+  "neighbours": [
+   "RBX::Reflection::DescribedBase>::classDescriptor",
+   "RBX::LocalBackpack>",
+   "S::S",
+   "RBX::DataModel::clearContents",
+   "__cdecl",
+   "__cdecl"
+  ]
+ },
+ {
+  "class": "range 00579600-00579600",
+  "addresses": [
+   "00579600"
+  ],
+  "bytes": 195,
+  "header": null,
+  "neighbours": [
+   "__cdecl",
+   "__cdecl",
+   "__cdecl",
+   "__cdecl",
+   "__cdecl",
+   "__cdecl"
+  ]
+ },
+ {
+  "class": "range 00579c10-00579c10",
+  "addresses": [
+   "00579c10"
+  ],
+  "bytes": 415,
+  "header": null,
+  "neighbours": [
+   "__cdecl",
+   "__cdecl",
+   "__cdecl",
+   "RBX::DataModel::loadContent",
+   "RBX::DataModel::get",
+   "RBX::DataModel::renderPass2d"
+  ]
+ },
+ {
+  "class": "range 0057a6c0-0057a870",
+  "addresses": [
+   "0057a6c0",
+   "0057a870"
+  ],
+  "bytes": 381,
+  "header": null,
+  "neighbours": [
+   "RBX::DataModel::loadContent",
+   "RBX::DataModel::get",
+   "RBX::DataModel::renderPass2d",
+   "__cdecl",
+   "",
+   "RBX::DataModel::initializeContents"
+  ]
+ },
+ {
+  "class": "range 0057b630-0057b760",
+  "addresses": [
+   "0057b630",
+   "0057b760"
+  ],
+  "bytes": 234,
+  "header": null,
+  "neighbours": [
+   "boost::last_value<void>::operator",
+   "__cdecl",
+   "__cdecl",
+   "RBX::DataModel::closeDataModel",
+   "RBX::DataModel>",
+   "RBX::DataModel::createDataModel"
+  ]
+ },
+ {
+  "class": "range 00584c90-00584c90",
+  "addresses": [
+   "00584c90"
+  ],
+  "bytes": 236,
+  "header": null,
+  "neighbours": [
+   "COleClientItem::GetClientSite",
+   "RBX::sModel>::getClassName",
+   "G3D::CoordinateFrame>::getVariant",
+   "RBX::ModelInstance::computeLocalGridExtents",
+   "G3D::CoordinateFrame>::setVariant",
+   "RBX::Instance>::classDescriptor"
+  ]
+ },
+ {
+  "class": "range 00589d60-00589ed0",
+  "addresses": [
+   "00589d60",
+   "00589ed0"
+  ],
+  "bytes": 728,
+  "header": null,
+  "neighbours": [
+   "RBX::HistoryItem::unplay",
+   ">",
+   "RBX::HistoryItem::HistoryItem",
+   "RBX::HistoryRecord::unplay",
+   "RBX::ChangeHistoryService::unplay",
+   ">::classDescriptor"
+  ]
+ },
+ {
+  "class": "range 00592780-00592780",
+  "addresses": [
+   "00592780"
+  ],
+  "bytes": 307,
+  "header": null,
+  "neighbours": [
+   ">::erase",
+   ">::operator[]",
+   "ArchiveBinder::resolveRefs",
+   ">",
+   "RBX::sContentProvider>",
+   "ArchiveBinder::ArchiveBinder"
+  ]
+ },
+ {
+  "class": "range 00596b30-00597080",
+  "addresses": [
+   "00596b30",
+   "00596bd0",
+   "00597080"
+  ],
+  "bytes": 468,
+  "header": null,
+  "neighbours": [
+   "sDHTMLWindowService>",
+   ">::manage",
+   "",
+   "RBX::worker_thread::worker_thread",
+   "RBX::Soundscape::SoundId>::convertToValue",
+   "RBX::FaceInstance::~FaceInstance"
+  ]
+ },
+ {
+  "class": "range 0059b730-0059b730",
+  "addresses": [
+   "0059b730"
+  ],
+  "bytes": 209,
+  "header": null,
+  "neighbours": [
+   "G3D::Vector3>::getValue",
+   "G3D::Vector3>::getVariant",
+   "G3D::Vector3>",
+   "G3D::Vector3>::setValue",
+   "G3D::Vector3>::setVariant",
+   "RBX::PartInstance::~PartInstance"
+  ]
+ },
+ {
+  "class": "range 005a02e0-005a02e0",
+  "addresses": [
+   "005a02e0"
+  ],
+  "bytes": 40,
+  "header": null,
+  "neighbours": [
+   "RBX::Workspace::zoomToExtents",
+   "RBX::Workspace::stop",
+   "RBX::createDefaultMouseCommand",
+   "RBX::MouseCommand>",
+   "RBX::sFlag>",
+   "RBX::ArrowTool>::doDeclare"
+  ]
+ },
+ {
+  "class": "range 005a1af0-005a1af0",
+  "addresses": [
+   "005a1af0"
+  ],
+  "bytes": 119,
+  "header": null,
+  "neighbours": [
+   ">",
+   "ArrowTool::ArrowTool",
+   "RBX::DecalTool::getCursorName",
+   "RBX::Workspace::onChildChanged",
+   "RBX::Workspace::onDescendentRemoving",
+   "RBX::Workspace::onDescendentAdded"
+  ]
+ },
+ {
+  "class": "range 005a3d40-005a3d40",
+  "addresses": [
+   "005a3d40"
+  ],
+  "bytes": 205,
+  "header": null,
+  "neighbours": [
+   ">::classDescriptor",
+   "RBX::Reflection::DescribedBase>",
+   "RBX::PartInstance>::setRefValue",
+   "RBX::Workspace::selectAll",
+   "RBX::Stats::TypedStatsItem<int>::TypedStatsItem<int>",
+   "RBX::Stats::TypedStatsItem<double>::update"
+  ]
+ },
+ {
+  "class": "range 005a4af0-005a4cb0",
+  "addresses": [
+   "005a4af0",
+   "005a4bd0",
+   "005a4cb0"
+  ],
+  "bytes": 645,
+  "header": null,
+  "neighbours": [
+   "__cdecl",
+   "__cdecl",
+   "__cdecl",
+   "RBX::Stats::Item::createChildItem<int>",
+   "RBX::Workspace::setImageServerView",
+   "RBX::Workspace::render3dAdorn"
+  ]
+ },
+ {
+  "class": "range 005a85b0-005a85b0",
+  "addresses": [
+   "005a85b0"
+  ],
+  "bytes": 167,
+  "header": null,
+  "neighbours": [
+   "RBX::Guid::compare",
+   "RBX::Guid::Data::readableString",
+   "RBX::Lua::ScopedPopper::~ScopedPopper",
+   "RBX::ScriptContext::sandboxThread",
+   "RBX::ScriptContext::gc",
+   "RBX::ScriptContext::getContext"
+  ]
+ },
+ {
+  "class": "range 005aae90-005aae90",
+  "addresses": [
+   "005aae90"
+  ],
+  "bytes": 142,
+  "header": null,
+  "neighbours": [
+   "RBX::Lua::ThreadRef::Node>,1>::on_gc",
+   "RBX::Lua::ThreadRef::Node>,1>::on_gc",
+   ">::operator",
+   ">",
+   "&>",
+   ">::manage"
+  ]
+ },
+ {
+  "class": "range 005ac150-005ac560",
+  "addresses": [
+   "005ac150",
+   "005ac1e0",
+   "005ac560"
+  ],
+  "bytes": 387,
+  "header": null,
+  "neighbours": [
+   "RBX::sScriptContext>::getClassName",
+   ">::_Copy",
+   "RBX::Reflection::Value>",
+   "",
+   "",
+   "RBX::ScriptContext::reportError"
+  ]
+ },
+ {
+  "class": "range 005acee0-005ad140",
+  "addresses": [
+   "005acee0",
+   "005ad140"
+  ],
+  "bytes": 165,
+  "header": null,
+  "neighbours": [
+   ">::clone",
+   ">",
+   ">::_Tidy",
+   ">",
+   "RBX::Reflection::DescribedBase>::classDescriptor",
+   ">"
+  ]
+ },
+ {
+  "class": "range 005adbf0-005add30",
+  "addresses": [
+   "005adbf0",
+   "005add30"
+  ],
+  "bytes": 379,
+  "header": null,
+  "neighbours": [
+   "",
+   "__cdecl",
+   "__cdecl",
+   "RBX::ScriptContext::loadfile",
+   "RBX::ScriptContext::dofile",
+   "RBX::Lua::YieldingThreads>"
+  ]
+ },
+ {
+  "class": "range 005b70c0-005b70c0",
+  "addresses": [
+   "005b70c0"
+  ],
+  "bytes": 193,
+  "header": null,
+  "neighbours": [
+   "",
+   "G3D::Vector3::clamp",
+   "RBX::Soundscape::Sound::Sound",
+   ">",
+   ">::_Lbound",
+   ">::const_iterator::_Inc"
+  ]
+ },
+ {
+  "class": "range 005b87a0-005b87a0",
+  "addresses": [
+   "005b87a0"
+  ],
+  "bytes": 215,
+  "header": null,
+  "neighbours": [
+   "RBX::Soundscape::sSoundChannel>::getClassName",
+   "sStockSound>::getClassName",
+   ">::_Insert",
+   "RBX::Soundscape::SoundService::updateAmbientReverb",
+   "RBX::Soundscape::SoundService::update3DSettings",
+   "RBX::Soundscape::SoundChannel::onServiceProvider"
+  ]
+ },
+ {
+  "class": "range 005bc6f0-005bcb60",
+  "addresses": [
+   "005bc6f0",
+   "005bcb60"
+  ],
+  "bytes": 572,
+  "header": null,
+  "neighbours": [
+   "RBX::Soundscape::SoundChannel::SoundChannel",
+   "RBX::Soundscape::SoundChannel::updateListenState",
+   "RBX::Soundscape::SoundChannel::onChannelEnd",
+   "SoundServiceStatsItem::SoundServiceStatsItem",
+   "",
+   "SoundServiceStatsItem::update"
+  ]
+ },
+ {
+  "class": "range 005bd360-005bd360",
+  "addresses": [
+   "005bd360"
+  ],
+  "bytes": 194,
+  "header": null,
+  "neighbours": [
+   "",
+   "",
+   "RBX::Soundscape::SoundService::setAmbientReverb",
+   "RBX::Soundscape::SoundChannel::setVolume",
+   "RBX::Soundscape::SoundChannel::setLooped",
+   "RBX::Soundscape::SoundChannel::play"
+  ]
+ },
+ {
+  "class": "range 005bdf70-005bdf70",
+  "addresses": [
+   "005bdf70"
+  ],
+  "bytes": 193,
+  "header": null,
+  "neighbours": [
+   "RBX::StringConverter<bool>::convertToValue",
+   "RBX::StringConverter<int>::convertToString",
+   "int>::convertToString",
+   "RBX::StringConverter<float>::convertToString",
+   "RBX::StringConverter<int>::convertToValue",
+   "RBX::StringConverter<double>::convertToValue"
+  ]
+ },
+ {
+  "class": "range 005c9440-005c9440",
+  "addresses": [
+   "005c9440"
+  ],
+  "bytes": 405,
+  "header": null,
+  "neighbours": [
+   "RBX::sFallingDown>",
+   "RBX::Instance>::Deleter>",
+   "RBX::Instance>::Deleter>",
+   "RBX::Reflection::DescribedBase>::classDescriptor",
+   "__cdecl",
+   "__cdecl"
+  ]
+ },
+ {
+  "class": "range 005c9fe0-005ca400",
+  "addresses": [
+   "005c9fe0",
+   "005ca240",
+   "005ca3c0",
+   "005ca3e0",
+   "005ca400"
+  ],
+  "bytes": 757,
+  "header": null,
+  "neighbours": [
+   "RBX::Stats::Item::createBoundMemChildItem",
+   "RBX::sScript>",
+   "ProfilingItem::ProfilingItem",
+   "RBX::AIController::getValue",
+   "RBX::AIController::chaseTarget",
+   "RBX::KeyboardPrimaryController::getValue"
+  ]
+ },
+ {
+  "class": "range 005cdcf0-005cdcf0",
+  "addresses": [
+   "005cdcf0"
+  ],
+  "bytes": 214,
+  "header": null,
+  "neighbours": [
+   "RBX::sFlagStand>",
+   "RBX::sScript>",
+   "RBX::Camera::Camera",
+   "RBX::Camera::setCameraType",
+   "RBX::Camera::setCameraSubject",
+   "RBX::Camera::setCameraFocus"
+  ]
+ },
+ {
+  "class": "range 005d1ec0-005d2320",
+  "addresses": [
+   "005d1ec0",
+   "005d2320"
+  ],
+  "bytes": 294,
+  "header": null,
+  "neighbours": [
+   "RBX::SpawnLocation::getTeamColor",
+   "RBX::sScript>",
+   "RBX::sScript>",
+   "RBX::Name::mutex",
+   "RBX::Name::mutex",
+   "RBX::Reflection::DescribedBase>::classDescriptor"
+  ]
+ },
+ {
+  "class": "range 005e4dd0-005e4dd0",
+  "addresses": [
+   "005e4dd0"
+  ],
+  "bytes": 205,
+  "header": null,
+  "neighbours": [
+   "RBX::RotateP::RotateP",
+   "Factory::Factory",
+   "RBX::RotateV::RotateV",
+   "RBX::Motor::Motor",
+   "RBX::Motor::setMaxVelocity",
+   "RBX::Motor::setCurrentAngle"
+  ]
+ },
+ {
+  "class": "range 005ea320-005ea320",
+  "addresses": [
+   "005ea320"
+  ],
+  "bytes": 113,
+  "header": null,
+  "neighbours": [
+   "RBX::CanAggregateChanged>",
+   ">::erase",
+   "RBX::World::step",
+   "RBX::World::removeJoint",
+   "RBX::World::destroyJoints",
+   "RBX::World::destroyJoints"
+  ]
+ },
+ {
+  "class": "range 005ed830-005edfb0",
+  "addresses": [
+   "005ed830",
+   "005ed890",
+   "005ed900",
+   "005edb80",
+   "005edc00",
+   "005ede90",
+   "005edf00",
+   "005edfb0"
+  ],
+  "bytes": 1273,
+  "header": null,
+  "neighbours": [
+   "Descriptor::Descriptor",
+   "&>",
+   "CRenderSettings::GraphicsMode>::convertToValue",
+   "",
+   "CRenderSettings::GraphicsMode>::equalValues",
+   ""
+  ]
+ },
+ {
+  "class": "range 005ee010-005ee550",
+  "addresses": [
+   "005ee010",
+   "005ee120",
+   "005ee210",
+   "005ee260",
+   "005ee310",
+   "005ee380",
+   "005ee4a0",
+   "005ee550"
+  ],
+  "bytes": 1013,
+  "header": null,
+  "neighbours": [
+   "&>",
+   "",
+   "S::S",
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "class": "range 005ee5d0-005eeb20",
+  "addresses": [
+   "005ee5d0",
+   "005ee650",
+   "005ee7a0",
+   "005ee860",
+   "005ee8c0",
+   "005ee970",
+   "005eea70",
+   "005eeb20"
+  ],
+  "bytes": 1095,
+  "header": null,
+  "neighbours": [
+   "",
+   "CRenderSettings::GraphicsMode>::equalValues",
+   "",
+   "",
+   "G3D::CoordinateFrame>::getStringValue",
+   "RBX::Joint::joinsFace"
+  ]
+ },
+ {
+  "class": "range 005eebd0-005ef020",
+  "addresses": [
+   "005eebd0",
+   "005eed10",
+   "005eedc0",
+   "005eee20",
+   "005eee50",
+   "005eeef0",
+   "005eef20",
+   "005ef020"
+  ],
+  "bytes": 783,
+  "header": null,
+  "neighbours": [
+   "",
+   "",
+   "",
+   "RBX::FaceInstance::render3dSelect",
+   "",
+   "G3D::Shape::axes"
+  ]
+ },
+ {
+  "class": "range 005ef120-005ef7a0",
+  "addresses": [
+   "005ef120",
+   "005ef180",
+   "005ef1e0",
+   "005ef210",
+   "005ef3a0",
+   "005ef3d0",
+   "005ef690",
+   "005ef7a0"
+  ],
+  "bytes": 702,
+  "header": null,
+  "neighbours": [
+   "RBX::Joint::joinsFace",
+   "G3D::CoordinateFrame>::setStringValue",
+   "destructor'",
+   "CSize::CSize",
+   "RBX::Surface::getSurfaceType",
+   "RBX::Surface::isControllable"
+  ]
+ },
+ {
+  "class": "range 0060bd80-0060bd80",
+  "addresses": [
+   "0060bd80"
+  ],
+  "bytes": 214,
+  "header": null,
+  "neighbours": [
+   "",
+   "RBX::VelocityMotor::VelocityMotor",
+   "RBX::sFeature>",
+   "RBX::Feature::Feature",
+   "RBX::sHole>",
+   "RBX::sHole>"
+  ]
+ },
+ {
+  "class": "range 006154e0-006154e0",
+  "addresses": [
+   "006154e0"
+  ],
+  "bytes": 339,
+  "header": null,
+  "neighbours": [
+   "*>",
+   "RBX::ContentId::ContentId",
+   "RBX::AIChaseController::~AIChaseController",
+   "RBX::Soundscape::SoundId>::writeValue",
+   "*>",
+   "RBX::MouseCommand::getTopSelectable3d"
+  ]
+ },
+ {
+  "class": "range 00617a50-00617b30",
+  "addresses": [
+   "00617a50",
+   "00617b30"
+  ],
+  "bytes": 418,
+  "header": null,
+  "neighbours": [
+   "RBX::Glue>",
+   "RBX::Instance>::onAncestorChanged",
+   "RBX::ArrowToolBase::onMouseDown",
+   "RBX::BoxSelectCommand::onKeyDown",
+   "GameTool::~GameTool",
+   "RBX::GrabTool::getCursorName"
+  ]
+ },
+ {
+  "class": "range 00619a80-00619d00",
+  "addresses": [
+   "00619a80",
+   "00619c90",
+   "00619d00"
+  ],
+  "bytes": 225,
+  "header": null,
+  "neighbours": [
+   "RBX::Flag::Flag",
+   "RBX::Flag::onChildAdded",
+   "RBX::Flag::setTeamColor",
+   "RBX::ModelSetFrontTool::applyToSurface",
+   "RBX::SurfaceTool::SurfaceTool",
+   "RBX::SurfaceTool::onMouseHover"
+  ]
+ },
+ {
+  "class": "range 0061abe0-0061b190",
+  "addresses": [
+   "0061abe0",
+   "0061b190"
+  ],
+  "bytes": 3608,
+  "header": null,
+  "neighbours": [
+   ">",
+   ">",
+   ">::getValue",
+   "RBX::Reflection::PropertyDescriptor>::findDescriptor",
+   "RBX::Reflection::DescribedBase::signals_end",
+   "RBX::Reflection::DescribedBase::findSignal"
+  ]
+ },
+ {
+  "class": "range 0061c2c0-0061c2c0",
+  "addresses": [
+   "0061c2c0"
+  ],
+  "bytes": 1064,
+  "header": null,
+  "neighbours": [
+   "RBX::Reflection::DescribedBase::signals_end",
+   "RBX::Reflection::DescribedBase::findSignal",
+   "RBX::Reflection::DescribedBase>,0>::on_newindex",
+   "G3D::CoordinateFrame::operator+",
+   "G3D::CoordinateFrame::operator-",
+   "RBX::Lua::safe_lua_tostring"
+  ]
+ },
+ {
+  "class": "range 0061f0f0-0061f0f0",
+  "addresses": [
+   "0061f0f0"
+  ],
+  "bytes": 135,
+  "header": null,
+  "neighbours": [
+   "*,0>::on_newindex",
+   "*,0>::on_newindex",
+   "*,0>::on_newindex",
+   "boost::signals::connection>",
+   "RBX::Reflection::SignalInstance>,0>::on_newindex",
+   "FunctionScriptSlot::~FunctionScriptSlot"
+  ]
+ },
+ {
+  "class": "range 0062c2e0-0062c2e0",
+  "addresses": [
+   "0062c2e0"
+  ],
+  "bytes": 466,
+  "header": null,
+  "neighbours": [
+   "RBX::Name::mutex",
+   "RBX::Name::mutex",
+   ">::remove",
+   "S::S",
+   "RBX::sScript>",
+   "__cdecl"
+  ]
+ },
+ {
+  "class": "range 00638d40-00639010",
+  "addresses": [
+   "00638d40",
+   "00638dd0",
+   "00638e60",
+   "00638ef0",
+   "00638f80",
+   "00639010"
+  ],
+  "bytes": 852,
+  "header": null,
+  "neighbours": [
+   "boost::last_value<void>::operator",
+   "boost::last_value<void>::operator",
+   "boost::last_value<void>::operator",
+   "__cdecl",
+   "__cdecl",
+   "__cdecl"
+  ]
+ },
+ {
+  "class": "range 006439b0-00644000",
+  "addresses": [
+   "006439b0",
+   "00643a30",
+   "00643a50",
+   "00643d40",
+   "00643f10",
+   "00644000"
+  ],
+  "bytes": 1633,
+  "header": null,
+  "neighbours": [
+   "Landed::Landed",
+   "*>",
+   "RBX::HUMAN::HumanoidState::~HumanoidState",
+   ">",
+   "RBX::HUMAN::HumanoidState::onFloorStep",
+   "RBX::HUMAN::HumanoidState::render3dAdorn"
+  ]
+ },
+ {
+  "class": "range 0064ca00-0064cae0",
+  "addresses": [
+   "0064ca00",
+   "0064cae0"
+  ],
+  "bytes": 353,
+  "header": null,
+  "neighbours": [
+   "RBX::SleepStage::wakeEdge",
+   "RBX::SleepStage::changeJointState",
+   "RBX::SleepStage::stepWorld",
+   "RBX::ClumpStage::onPrimitiveAddedAnchor",
+   "RBX::ClumpStage::onPrimitiveRemovedAnchor",
+   "ClumpStage::~ClumpStage"
+  ]
+ },
+ {
+  "class": "range 006593d0-00659920",
+  "addresses": [
+   "006593d0",
+   "00659510",
+   "006595d0",
+   "00659670",
+   "006597d0",
+   "00659830",
+   "00659890",
+   "00659920"
+  ],
+  "bytes": 1125,
+  "header": null,
+  "neighbours": [
+   "RBX::Edge::Edge",
+   "RBX::Edge::setPrimitive",
+   "RBX::Vector3int32::floor",
+   "RBX::BallBallContact::step",
+   "RBX::SpatialHash::~SpatialHash",
+   "RBX::SpatialHash::SpatialHash"
+  ]
+ },
+ {
+  "class": "range 00659a10-0065a6f0",
+  "addresses": [
+   "00659a10",
+   "00659b60",
+   "00659f90",
+   "0065a080",
+   "0065a220",
+   "0065a4e0",
+   "0065a5d0",
+   "0065a6f0"
+  ],
+  "bytes": 2581,
+  "header": null,
+  "neighbours": [
+   "RBX::Edge::Edge",
+   "RBX::Edge::setPrimitive",
+   "RBX::Vector3int32::floor",
+   "RBX::BallBallContact::step",
+   "RBX::SpatialHash::~SpatialHash",
+   "RBX::SpatialHash::SpatialHash"
+  ]
+ },
+ {
+  "class": "range 0065a7d0-0065abf0",
+  "addresses": [
+   "0065a7d0",
+   "0065a870",
+   "0065a950",
+   "0065abf0"
+  ],
+  "bytes": 720,
+  "header": null,
+  "neighbours": [
+   "RBX::Edge::Edge",
+   "RBX::Edge::setPrimitive",
+   "RBX::Vector3int32::floor",
+   "RBX::SpatialHash::~SpatialHash",
+   "RBX::SpatialHash::SpatialHash",
+   "RBX::Cofm::Cofm"
+  ]
+ },
+ {
+  "class": "range 00668c60-00669f60",
+  "addresses": [
+   "00668c60",
+   "00668cd0",
+   "00668d70",
+   "00668ea0",
+   "00669410",
+   "00669940",
+   "00669c70",
+   "00669f60"
+  ],
+  "bytes": 1071,
+  "header": null,
+  "neighbours": [
+   "RBX::JointStage::onPrimitiveRemoving",
+   "RBX::Quaternion::maxComponent",
+   "RBX::RunningAverageState::withinTolerance",
+   "RBX::ProfanityFilter::~ProfanityFilter",
+   "RBX::WordList::WordList",
+   "RBX::ProfanityFilter::ProfanityFilter"
+  ]
+ },
+ {
+  "class": "range 0066fe30-006700e0",
+  "addresses": [
+   "0066fe30",
+   "006700e0"
+  ],
+  "bytes": 352,
+  "header": null,
+  "neighbours": [
+   "Ogre::MeshPtr>",
+   ">",
+   "RBX::AdornRbxGfx::drawFont2D",
+   "RBX::AdornRbxGfx::createTextureProxy",
+   "Ogre::HardwareVertexBuffer>::operator=",
+   ">::_Buynode"
+  ]
+ },
+ {
+  "class": "range 00670d50-006712e0",
+  "addresses": [
+   "00670d50",
+   "006712e0"
+  ],
+  "bytes": 1098,
+  "header": null,
+  "neighbours": [
+   ">::_Buynode",
+   ">::_Insert",
+   ">::erase",
+   ">::insert",
+   ">::insert",
+   ">::operator[]"
+  ]
+ },
+ {
+  "class": "range 00671b60-00671b60",
+  "addresses": [
+   "00671b60"
+  ],
+  "bytes": 178,
+  "header": null,
+  "neighbours": [
+   ">::operator[]",
+   ">::operator[]",
+   ">",
+   "RBX::sHumanoid>",
+   "RBX::AdornRbxGfx::releaseSubEntities",
+   "RBX::AdornRbxGfx::finishRenderPass"
+  ]
+ },
+ {
+  "class": "range 00676c90-00676c90",
+  "addresses": [
+   "00676c90"
+  ],
+  "bytes": 362,
+  "header": null,
+  "neighbours": [
+   "RBX::AdornG3D::drawFont2D",
+   "RBX::AdornG3D::createTextureProxy",
+   "RBX::DrawAdorn::resizeColor",
+   "RBX::Draw::selectionBox",
+   "RBX::Draw::selectionBox",
+   "RBX::Draw::adornSurfaces"
+  ]
+ },
+ {
+  "class": "range 006a1598-006a1bb6",
+  "addresses": [
+   "006a1598",
+   "006a15fd",
+   "006a165b",
+   "006a170a",
+   "006a17f0",
+   "006a189b",
+   "006a18e6",
+   "006a1bb6"
+  ],
+  "bytes": 1289,
+  "header": null,
+  "neighbours": [
+   "CFormView::OnSetFocus",
+   "COleException::Process",
+   "std::exception::what",
+   "new",
+   "CXTPCommandBar::GetParentCommandBar",
+   "CXTPCommandBar::SetTitle"
+  ]
+ },
+ {
+  "class": "range 006a2052-006a25b0",
+  "addresses": [
+   "006a2052",
+   "006a2250",
+   "006a2348",
+   "006a23de",
+   "006a25b0"
+  ],
+  "bytes": 729,
+  "header": null,
+  "neighbours": [
+   "std::exception::what",
+   "RBX::Network::DirectPhysicsReceiver::receivePacket",
+   "new",
+   "CXTPCommandBar::SetTitle",
+   "G3D::RenderDevice::getCardDescription",
+   "CXTPControl::GetRect"
+  ]
+ },
+ {
+  "class": "range 006a94c0-006a94c0",
+  "addresses": [
+   "006a94c0"
+  ],
+  "bytes": 220,
+  "header": null,
+  "neighbours": [
+   "CXTPControlComboBox::DrawEditText",
+   "CXTPEdit::CreateObject",
+   "CXTPControlComboBoxAutoCompleteWnd::SetAutoCompeteHandle",
+   "CXTPControlComboBox::CreateObject",
+   "CXTPRibbonControlSystemPopupBarListCaption::Clone",
+   "CXTPControlComboBox::GetEditText"
+  ]
+ },
+ {
+  "class": "range 006c26f0-006c26f0",
+  "addresses": [
+   "006c26f0"
+  ],
+  "bytes": 301,
+  "header": null,
+  "neighbours": [
+   "CXTPToolBar::GetAccessibleChildCount",
+   "CXTPToolBar::CreateToolBar",
+   "CXTPCommandBar::SetButtons",
+   "CXTPToolBar::OnSetCursor",
+   "CXTPCommandBar::OnToolHitTest",
+   "CXTPToolBar::OnRButtonDown"
+  ]
+ },
+ {
+  "class": "range 007a5420-007a5420",
+  "addresses": [
+   "007a5420"
+  ],
+  "bytes": 119,
+  "header": null,
+  "neighbours": [
+   "boost::program_options::abstract_variables_map::abstract_variables_map",
+   "_AFX_MAIL_STATE::~_AFX_MAIL_STATE",
+   "CXTIconHandle::operator=",
+   ">::RemoveAll",
+   ">::operator[]",
+   "ATL::_ATL_BASE_MODULE70::_ATL_BASE_MODULE70"
+  ]
+ },
+ {
+  "class": "range 007a5f2a-007a5f56",
+  "addresses": [
+   "007a5f2a",
+   "007a5f56"
+  ],
+  "bytes": 225,
+  "header": null,
+  "neighbours": [
+   "int>",
+   "ATL::CAtlStringMgr::Allocate",
+   "ATL::CAtlStringMgr::Reallocate",
+   "ATL::__FreeStdCallThunk",
+   "ATL::__AllocStdCallThunk",
+   "ATL::AtlWinModuleInit"
+  ]
+ },
+ {
+  "class": "range 007a9c40-007a9d30",
+  "addresses": [
+   "007a9c40",
+   "007a9c90",
+   "007a9ce0",
+   "007a9d30"
+  ],
+  "bytes": 2846,
+  "header": null,
+  "neighbours": [
+   ">::xsputn",
+   ">::setbuf",
+   "std::locale::facet::facet_Register",
+   "RBX::RenderNew::RenderScene::setThrottle",
+   "RBX::RenderNew::RenderScene::setLighting",
+   "RBX::Render::RenderSurface>"
+  ]
+ },
+ {
+  "class": "range 007b8180-007b8180",
+  "addresses": [
+   "007b8180"
+  ],
+  "bytes": 356,
+  "header": null,
+  "neighbours": [
+   "RBX::Render::Material::appendLevel",
+   "RBX::Render::Material::appendLevel",
+   "RBX::Render::Material::Material",
+   "G3D::Texture::fromGImage",
+   "RBX::Render::TextureProxy::TextureProxy",
+   "RBX::Render::TextureProxy::shade"
+  ]
  }
 ]

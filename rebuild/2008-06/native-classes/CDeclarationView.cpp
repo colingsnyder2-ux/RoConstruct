@@ -130,7 +130,7 @@ void CDeclarationView::showDescriptor(const RBX::Reflection::Descriptor* descrip
     }
     std::string text;
     const ClassDescriptor* ownerClass = NULL;
-    Metadata::Item* item = NULL;
+    RBX::Reflection::Metadata::Item* item = NULL;
     if (const FunctionDescriptor* function = dynamic_cast<const FunctionDescriptor*>(descriptor)) {
         text = function->getSignature().resultType->name.toString();
         text += " ";

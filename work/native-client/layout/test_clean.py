@@ -67,6 +67,21 @@ class RepairTest(unittest.TestCase):
         self.assertIsNone(layout_pipeline.REDEFINED.search("y.cpp(12) : error C2065: 'q' : undeclared identifier"))
 
 
+class ExportTreeTest(unittest.TestCase):
+    def test_one_tree_for_every_file(self):
+        import layout_export
+        target = 'rebuild/2008-06/client/app/gui/Foo.cpp'
+        self.assertEqual(layout_export.destination(target, 'inferred'), layout_export.destination(target, ''))
+        self.assertNotIn('inferred', layout_export.destination(target, 'inferred').as_posix())
+
+    def test_path_tier_comes_from_the_receipt(self):
+        import layout_pipeline
+        self.assertEqual(layout_pipeline.path_tier('rebuild/2008-06/layout/client/a.cpp', {'path': 'inferred'}), 'inferred')
+        self.assertEqual(layout_pipeline.path_tier('rebuild/2008-06/layout/client/a.cpp', {}), 'original')
+        # receipts written before the change kept guesses in an inferred/ folder
+        self.assertEqual(layout_pipeline.path_tier('rebuild/2008-06/layout/inferred/client/a.cpp', {}), 'inferred')
+
+
 class MergeLocalsTest(unittest.TestCase):
     def test_identical_local_helpers_are_interchangeable_only_when_folding(self):
         import coff_compare

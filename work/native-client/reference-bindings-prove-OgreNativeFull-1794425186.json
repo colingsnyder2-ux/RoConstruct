@@ -4553,7 +4553,7 @@
    "evidence": "original relocation target at an exact owner"
   },
   {
-   "symbol": "?classDescriptor@?$Described@VSky@RBX@@$1?sSky@2@3QBDBV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+   "symbol": "?classDescriptor@?$Described@VSky@RBX@@$1?sSky@2@3PADAV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
    "address": "005eb290",
    "evidence": "original relocation target at an exact owner"
   },

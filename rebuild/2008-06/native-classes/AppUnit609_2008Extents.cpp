@@ -171,6 +171,8 @@ namespace RBX
 	// r[1][1]*y + r[1][2]*z + r[1][0]*x). Rejected variants (lf11): a named `corner = getCorner(i)` temporary (same
 	// diff); the donor form `v1 = pointToWorldSpace(corner) - translation; inOther = v1 * rotation` (635 bytes, signed
 	// getCorner division); a named `world = pointToWorldSpace(getCorner(i))` temporary (same diff).
+	// Rejected (dm08, batch 23): `myFrame.rotation * getCorner(i) + myFrame.translation` (641 bytes: Matrix3::operator*
+	// 00476580 is then called out of line instead of inlined).
 	Extents Extents::express(const G3D::CoordinateFrame& myFrame, const G3D::CoordinateFrame& expressInFrame)
 	{
 		G3D::Vector3 minC(Math::inf(), Math::inf(), Math::inf());

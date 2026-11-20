@@ -55,6 +55,11 @@ public:
     }
 };
 
+template<>
+const Name& NonFactoryProduct<Instance, static_cast<const char*>(0)>::className();
+template<>
+const Name& NonFactoryProduct<Instance, static_cast<const char*>(0)>::getClassName() const;
+
 template<class T>
 class FilteredSelection : public NonFactoryProduct<Instance, static_cast<const char*>(0)>,
                           public Service, public ISelectionBase {

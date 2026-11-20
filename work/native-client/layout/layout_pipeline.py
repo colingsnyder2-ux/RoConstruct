@@ -103,6 +103,11 @@ def select(rows):
     return sorted(picked), sorted(inferred), dict(held)
 
 
+def path_tier(export, entry):
+    """'original' or 'inferred' for an exported file: the receipt says so; older receipts used an inferred/ folder."""
+    return entry.get('path') or ('inferred' if '/layout/inferred/' in export else 'original')
+
+
 def scrub(value):
     """Machine-specific absolute paths never leave this checkout."""
     text = json.dumps(value)
@@ -236,7 +241,7 @@ def authentic(per_file):
     owners = Counter(c['addr'].lower() for job in jobs for c in job['checks'])
     proven = {Path(ROOT / v['source']).resolve().as_posix().casefold(): export
               for export, v in per_file.items()
-              if v['status'].endswith('-identical') and '/layout/inferred/' not in export}
+              if v['status'].endswith('-identical') and path_tier(export, v) == 'original'}
     result = {}
     for job in jobs:
         export = proven.get(Path(job['source']).resolve().as_posix().casefold())
@@ -427,7 +432,7 @@ def coverage(per_file, merged):
     for export, v in per_file.items():
         if v['status'] in ('dropped', 'unverified') or not export.endswith(('.cpp', '.c')):
             continue
-        tier = 'inferred path' if '/layout/inferred/' in export else 'original path'
+        tier = 'inferred path' if path_tier(export, v) == 'inferred' else 'original path'
         units.setdefault(tier, []).append({Path(ROOT / v['source']).resolve().as_posix().casefold()})
         names[len(names)] = (tier, export)
     for export, v in merged.items():
@@ -530,7 +535,7 @@ def merge_groups(rows, evidence):
             variants.insert(0, {'flags': flags, 'text': hand['text'], 'members': list(hand['members']), 'hand': True})
         if not variants:
             continue
-        plans[key] = {'dest': dest, 'members': members, 'variants': variants, 'left_out': left_out, 'texts': texts,
+        plans[key] = {'tier': tier, 'dest': dest, 'members': members, 'variants': variants, 'left_out': left_out, 'texts': texts,
                       'ck': layout_export.sha(json.dumps([[v['flags'], v['text']] for v in variants]).encode('latin-1', 'replace'))}
     cache_path = GATE / 'merge-cache.json'
     cache = json.loads(cache_path.read_text()) if cache_path.exists() else {}
@@ -671,6 +676,7 @@ def merge_groups(rows, evidence):
         result[export] = {'sources': variant['members'], 'flags': variant['flags'],
                           'status': ('merged and tidied' if key in tidied else 'merged')
                           + ' (per-symbol identical; link order unproven)'}
+        result[export]['path'] = 'inferred' if plan['tier'] else 'original'
         if variant.get('hand'):
             result[export]['hand_consolidated'] = True
         left = plan['left_out'] + [m for m in plan['members'] if m not in variant['members']]
@@ -888,7 +894,8 @@ def run(refresh=False):
                'status': dict(Counter(status.values())), 'held_back': held,
                'standard': 'object identity by tu_signature (code, data, relocations, symbols; discardable .debug$S excluded)',
                'cache_note': 'the runner may reuse validated cached objects for unchanged live sources',
-               'per_file': {files[r]['export']: {'source': r, 'status': s} for r, s in sorted(status.items())}}
+               'per_file': {files[r]['export']: {'source': r, 'status': s, 'path': 'inferred' if r in inferred else 'original'}
+                            for r, s in sorted(status.items())}}
     (EXPORT / 'authentic.json').write_text(json.dumps(authentic(summary['per_file']), indent=0) + '\n')
     summary['coverage'], organized = coverage(summary['per_file'], merged)
     (EXPORT / 'organized.json').write_text(json.dumps({

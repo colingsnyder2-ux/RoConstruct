@@ -2,6 +2,11 @@
 // 2008-06 native RBX::Lighting setters (inactive); evidence in native-headers/v8datamodel/Lighting2008.h.
 // 005e22c0 and 005e2370 write the ColorShift_Top (+0x270) and ColorShift_Bottom (+0x27c) groups; 005e2490 writes
 // Ambient (+0x28c). The descriptor objects are namespace-scope statics, as in Lighting2008.cpp (prop_Time).
+// The comparison is G3D::Color3::operator!= with the argument on the left, as in setShadowColor 005e2030 (the
+// per-component || form compiled to 158 of 172 bytes).
+// 005e2420 (103 B, float by value, ret 4) is the Brightness setter: compares/stores brightness +0x288, raises desc
+// 0097a980, fires event_LightingChanged(false) without the this-null test, then RunService::invalidateRunViews. It
+// needs a 'void setBrightness(float)' declaration in Lighting2008.h (not owned by this unit), so it is not written here.
 #include "v8datamodel/Lighting2008.h"
 #include "v8datamodel/Sky.h"
 #include "util/RunStateOwner.h"
@@ -18,7 +23,7 @@ namespace RBX
 	// event_LightingChanged(false), then ServiceProvider::find<RunService> and invalidateRunViews 00555350.
 	void Lighting::setColorShiftTop(G3D::Color3 value)
 	{
-		if (colorShiftTop.r != value.r || colorShiftTop.g != value.g || colorShiftTop.b != value.b)
+		if (value != colorShiftTop)
 		{
 			colorShiftTop = value;
 
@@ -33,7 +38,7 @@ namespace RBX
 	// 005e2370: same shape as 005e22c0 for colorShiftBottom (+0x27c), raises desc 0097a99c.
 	void Lighting::setColorShiftBottom(G3D::Color3 value)
 	{
-		if (colorShiftBottom.r != value.r || colorShiftBottom.g != value.g || colorShiftBottom.b != value.b)
+		if (value != colorShiftBottom)
 		{
 			colorShiftBottom = value;
 
@@ -49,7 +54,7 @@ namespace RBX
 	// fires event_LightingChanged(false), then RunService::invalidateRunViews.
 	void Lighting::setAmbient(G3D::Color3 value)
 	{
-		if (ambient.r != value.r || ambient.g != value.g || ambient.b != value.b)
+		if (value != ambient)
 		{
 			ambient = value;
 

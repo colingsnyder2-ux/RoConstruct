@@ -351,7 +351,10 @@ namespace RBX
 		return snapInfo.snap == NULL;
 	}
 
-	// 0066e3d0
+	// 0066e3d0. Not exact (batch 24): 639 B against 642. The only difference is the inline colliding(): the target reads
+	// the ContactManager at World +0x84 (`mov eax, [eax + 0x84]`, disp32), the engine-world v8world/World.h declares
+	// contactManager at +0x40 (disp8, the 3 missing bytes); every other instruction is identical. Blocked on the World
+	// header owner (v8world/World2008.h already records +0x84 at 005e91c0 / 005e9230); no source change here can fix it.
 	bool RunDragger::snap(const G3D::Ray& ray)
 	{
 		smartPtrHackPre();

@@ -21,11 +21,32 @@
 //   slot 19 004a1570 onSentMarker(long id) -> sendPhysicsEnabled = true;
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 #include "Network/ClientProxy2008.h"
+#include "script/Script.h"
+#include "v8datamodel/Message.h"
 
 namespace RBX
 {
 	namespace Network
 	{
+		// slot 16 004a3290 (170 B): dynamic_cast<const Script*> (type descriptors 0092907c Instance -> 0092e1c8 Script);
+		// a script replicates when its name is in the Server's script-name set (server +0x2d70, names +0x164, find
+		// 004a2fa0). The name is the one Server::registerScript 004a31d0 inserted: the embedded source (*Script +0x130)
+		// when the script id (+0x138, size +0x14c) is empty, else the id. Any other instance replicates unless it is a
+		// Message (dynamic_cast to 00939b1c, sete). ClientProxy is nested in Server, so it reads the private name set.
+		bool Server::ClientProxy::replicates(const Instance* instance) const
+		{
+			if (const Script* script = dynamic_cast<const Script*>(instance))
+			{
+				if (script->getScriptId().isNull())
+					return server->names.find(script->getEmbeddedCode()) != server->names.end();
+				else
+					return server->names.find(script->getScriptId().toString()) != server->names.end();
+			}
+			if (dynamic_cast<const Message*>(instance))
+				return false;
+			return true;
+		}
+
 		// slot 17 004a1a30: returns the cached remote player (+0x2d68).
 		// INFERRED: name from the slot; the body returns remotePlayer's stored pointer.
 		Player* Server::ClientProxy::findTargetPlayer()

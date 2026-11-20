@@ -18,18 +18,14 @@
 
 namespace RBX
 {
-	// 0064fe90 (PARKED). Pass 1 closest 1451 of 1452 bytes with corners (-2,-2)/(+1,+1); tried corner constants
-	// (-2,+1)/(+2,-1) read off the target stack and reassociated width + messageSize.x + position.x.
-	// Pass 2 (workflow 53): decoding the target x87 at 006500b8..00650121 (after the three pushes, position at +0x3c,
-	// userSize at +0x9c, messageSize at +0xec) gives low = (position.x - 2, position.y + 1) and high =
-	// ((width + messageSize.x) + position.x + 2, (position.y + userSize.y) - 1): one 2.0f (0081c434) is subtracted and
-	// added, one fld1 is added and subtracted. The pass-1 corners computed different values (y0 = position.y - 2), so
-	// the semantically decoded corners are ADOPTED (1453 B, 199 diff lines vs 202). The remaining byte gap is not the x87
-	// order: the frame-slot coloring differs from the first deque operator[] temporary on (target iterator temps at
-	// +0x64/+0xa4, the two corner Vector2s adjacent at +0xac/+0xb4 and stored low first; candidate +0xa4/+0xb4 and
-	// non-adjacent corners), which changes disp8/disp32 encodings. Rejected in pass 2: position.x + width +
-	// messageSize.x + 2 (1455 B), named locals low/high in either association (1455 B, low stored first but slots still
-	// non-adjacent), VS2005 50727 and /Ob1, /Oy profiles (see the result notes; no effect on slot coloring).
+	// 0064fe90 (exact, batch 24). The backdrop is an RBX::Rect built from two named corner Vector2s (evaluated low
+	// first: the target x87 computes position.x - 2 and position.y + 1 before the high corner) and passed through the
+	// inline Rect::toRect2D -> Rect2D::xyxy(low, high) 004f35d0, which is why the corners sit adjacent at +0xac/+0xb4
+	// (the Rect members). lineWidth = width + messageSize.x is its own statement (target: fld width; fst; fadd
+	// messageSize.x before position.x is loaded). Same shape as the Aug 2007 analog (rbxgs
+	// roc_espeon_aug2007_chat_output_render_low_high_order). Rejected earlier: direct xyxy(Vector2, Vector2) temporaries
+	// (1453 B), named low/high passed straight to xyxy (1455 B), Rect(Vector2(..), Vector2(..)) temporaries (1450 B;
+	// right-to-left argument evaluation computes the high corner first).
 	void ChatOutput::render2d(Adorn* adorn)
 	{
 		Rect rect = getMyRect();
@@ -42,10 +38,12 @@ namespace RBX
 			G3D::Vector2 userSize = adorn->get2DStringBounds(user, 12, Adorn::PROPORTIONAL_SPACING);
 			G3D::Vector2 messageSize = adorn->get2DStringBounds(fifo[i]->message, 12, Adorn::PROPORTIONAL_SPACING);
 			float width = std::max(userSize.x + 4.0f, 20.0f);
+			float lineWidth = width + messageSize.x;
 
-			G3D::Rect2D backdrop = G3D::Rect2D::xyxy(G3D::Vector2(position.x - 2.0f, position.y + 1.0f),
-													  G3D::Vector2(width + messageSize.x + position.x + 2.0f, position.y + userSize.y - 1.0f));
-			adorn->rect2d(backdrop, GuiItem::translucentBackdrop());
+			G3D::Vector2 low(position.x - 2.0f, position.y + 1.0f);
+			G3D::Vector2 high(position.x + lineWidth + 2.0f, position.y + userSize.y - 1.0f);
+			Rect backdrop(low, high);
+			adorn->rect2d(backdrop.toRect2D(), GuiItem::translucentBackdrop());
 
 			G3D::Color3 messageColor = G3D::Color3::white();
 			if (fifo[i]->profane)

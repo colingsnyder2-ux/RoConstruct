@@ -14178,6 +14178,12 @@
    "address": "005edb80",
    "votes": 1,
    "identity_evidence": "INFERRED: slot 16 (+0x40) virtual of the real class RBX::SurfaceEnumPropDescriptor<NormalId, RBX::Controller::InputType>; vftable .?AV?$SurfaceEnumPropDescriptor@$00W4InputType@Controller@RBX@@@ in layout/vtables.json has 005edb80 at slot 16. rebuild/2008-06/native-classes/LuaBridge2008Instance.cpp:83-86 identifies slot 16 as returning the const EnumDescriptor::Item* at the getEnumValue() index of the enum item vector. Native body byte-exact at 005edb80: getset (+0x1c)->getValue(instance), EnumDesc<Controller::InputType>::singleton() (call_once &005ed690, flag 0097b120, singleton 005ed630), inlined convertToItem bounds checks. Method name getEnumItem is an INFERRED placeholder (no donor name recovered)."
+  },
+  {
+   "symbol": "?isRunState@DataModel@RBX@@QBE_NXZ",
+   "address": "00575820",
+   "votes": 1,
+   "identity_evidence": "INFERRED: RBX::DataModel owner from graph unit=RBX::DataModel, abi_evidence.key=RBX::DataModel, link-order neighbours on both sides are DataModel; sole caller 0045e910 (CRobloxWnd::OnPaint) loads ecx=[wnd+0x70] (DataModel) and gates rendering on the returned bool. Method name is an INFERRED placeholder from the sibling RunService query API (util/RunStateOwner.h isEditState/isRunState/isPauseState). Body byte-exact (agent_prove REJECTED = bytes equal, identity unproven): return this->runService->runState == RS_RUNNING (ecx+0x20c shared_ptr px -> RunService*, +0x1b4 RunState, compare to 1)."
   }
  ]
 }

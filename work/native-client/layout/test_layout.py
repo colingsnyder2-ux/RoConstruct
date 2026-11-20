@@ -748,6 +748,7 @@ from test_clean import CleanTest, JoinTest, MergeLocalsTest, RepairTest, Wrapper
 from test_overrides import OverrideSelectTest, WorkersTest  # noqa: E402,F401
 from test_stage import StageFilesTest  # noqa: E402,F401
 from test_ios import IosNameTest  # noqa: E402,F401
+from test_clean import ExportTreeTest  # noqa: E402,F401
 
 
 if __name__ == '__main__':

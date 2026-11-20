@@ -8,6 +8,7 @@
 #include "v8world/Contact2008.h"
 #include "v8world/Joints2008.h"
 #include "v8world/Primitive2008.h"
+#include "util/Profiling.h"
 
 namespace RBX
 {
@@ -15,6 +16,45 @@ namespace RBX
 	Sim::AssemblyState SleepStage::getState(Assembly* a)
 	{
 		return a->inPipeline() && a->inOrDownstreamOfStage(this) ? a->getSleepInfo()->state : Sim::ANCHORED;
+	}
+
+	// 0064b330: member destructors only (donor ~SleepStage is empty): the three scoped_ptr profilers (+0x1e8 / +0x1e4 /
+	// +0x1e0, virtual delete through slot 0), steppingJoints +0x1b8 (~_Tree 0064b230), the two IndexArrays +0x1ac /
+	// +0x1a0 (G3D alignedFree 00507d20), the six assembly sets, the eight vectors, then the donor ~IStage (delete
+	// downstream +0x8 through slot 0).
+	SleepStage::~SleepStage()
+	{
+	}
+
+	// 0064a740 (donor SleepStage::preventNeighborSleep; getState inline, okNeighborSleep 0064a660 out of line)
+	bool SleepStage::preventNeighborSleep(Assembly* a)
+	{
+		if (getState(a) == Sim::AWAKE)
+		{
+			if (!okNeighborSleep(a))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	// 0064b890 (donor SleepStage::onWakeUpRequest; 2008 sets externalBodyForceAdded +0x1dc before a recursive wake)
+	void SleepStage::onWakeUpRequest(Assembly* a, bool recursive)
+	{
+		if (a->inPipeline() && a->inOrDownstreamOfStage(this))
+		{
+			if (recursive)
+			{
+				externalBodyForceAdded = true;
+				recursiveWakeEvent(a);
+			}
+			else
+			{
+				wakeEvent(a);
+			}
+		}
 	}
 
 	// 0064a550: jump table over state - 1 (states 1..5 -> +0xe0 / +0x100 / +0x140 / +0x160 / +0x180), default +0x120

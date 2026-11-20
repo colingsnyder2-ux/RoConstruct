@@ -783,7 +783,9 @@
 "004305f0": [
 "?raise@?$Notifier@VFillToolColor@RBX@@VBrickColor@2@@RBX@@IBEXVBrickColor@2@PAV?$Listener@VFillToolColor@RBX@@VBrickColor@2@@2@@Z"
 ],
-"004306c0": [],
+"004306c0": [
+"?sub_004306c0@@YA?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+],
 "004307b0": [],
 "00432520": [
 "??$create@VAccoutrement@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VAccoutrement@RBX@@@boost@@XZ",
@@ -1456,7 +1458,8 @@
 ],
 "0045be60": [],
 "0045beb0": [
-"?f@CRobloxWnd@@QAEXXZ"
+"?f@CRobloxWnd@@QAEXXZ",
+"?sub_0045beb0@RBX@@YIXPAUWndLayout@1@@Z"
 ],
 "0045bf30": [
 "?f@CRobloxWnd@@QAEXH@Z"
@@ -1594,7 +1597,9 @@
 "004690f0": [
 "??0DxUserInput@@QAE@PAUNativeFrameView@@PAVDataModel@RBX@@@Z"
 ],
-"004692f0": [],
+"004692f0": [
+"?sub_004692f0@@YAXABVVector2@G3D@@AAV12@1@Z"
+],
 "00469320": [
 "?Add@@YAXPAUDxUserInput@@0@Z"
 ],
@@ -1604,12 +1609,16 @@
 "00469360": [],
 "004697e0": [],
 "00469c60": [],
-"00469f00": [],
+"00469f00": [
+"?sub_00469f00@@YAHH@Z"
+],
 "00469f50": [],
 "0046a010": [
 "?f@@YAXPBVVector2@G3D@@PAV12@10HM@Z"
 ],
-"0046a100": [],
+"0046a100": [
+"?sub_0046a100@@YAXPBVVector2@G3D@@PAV12@10@Z"
+],
 "0046a130": [],
 "0046a1b0": [
 "?update@@YAXPAUVec2@@00PAX@Z"
@@ -2720,7 +2729,9 @@
 "?getAmbient@Lighting@RBX@@QBE?AVColor3@G3D@@XZ",
 "?getVector@CSHA1@@QBE?AUVector3@@XZ"
 ],
-"004d71a0": [],
+"004d71a0": [
+"?setDebug@ViewRbxGfx@ViewNew@RBX@@SAX_N@Z"
+],
 "004d71f0": [
 "??$?5U?$char_traits@D@std@@@std@@YAAAV?$basic_istream@DU?$char_traits@D@std@@@0@AAV10@AAC@Z",
 "??$?5U?$char_traits@D@std@@@std@@YAAAV?$basic_istream@DU?$char_traits@D@std@@@0@AAV10@AAE@Z",
@@ -6399,7 +6410,8 @@
 "?onPrimitiveAdded@CleanStage@RBX@@QAEXPAVPrimitive@2@@Z"
 ],
 "0064a400": [
-"?onPrimitiveRemoving@CleanStage@RBX@@QAEXPAVPrimitive@2@@Z"
+"?onPrimitiveRemoving@CleanStage@RBX@@QAEXPAVPrimitive@2@@Z",
+"?sub_0064a400@CleanStage@RBX@@QAEXPAVPrimitive@2@@Z"
 ],
 "0064a420": [
 "?onJointPrimitiveNulling@CleanStage@RBX@@QAEXPAVJoint@2@PAVPrimitive@2@@Z"
@@ -6407,7 +6419,9 @@
 "0064a460": [
 "?onJointPrimitiveSet@CleanStage@RBX@@QAEXPAVJoint@2@PAVPrimitive@2@@Z"
 ],
-"0064a550": [],
+"0064a550": [
+"?stateToSet@SleepStage@RBX@@QAEPAV?$set@PAVAssembly@RBX@@U?$less@PAVAssembly@RBX@@@std@@V?$allocator@PAVAssembly@RBX@@@4@@std@@W4AssemblyState@Sim@2@@Z"
+],
 "0064a5b0": [
 "?getState@SleepStage@RBX@@AAE?AW4AssemblyState@Sim@2@PAVAssembly@2@@Z",
 "?getState@SleepStage@RBX@@QAE?AW4AssemblyState@Sim@2@PAVAssembly@2@@Z"
@@ -6427,21 +6441,33 @@
 "0064a950": [
 "?shouldSleep@SleepStage@RBX@@AAE_NPAVAssembly@2@@Z"
 ],
-"0064ae10": [],
+"0064ae10": [
+"?changeJointState@SleepStage@RBX@@QAEXPAVJoint@2@W4EdgeState@Sim@2@@Z"
+],
 "0064ae90": [],
 "0064aff0": [],
 "0064b0a0": [],
 "0064b330": [
 "??1SleepStage@@UAE@XZ"
 ],
-"0064b5e0": [],
-"0064b6d0": [],
+"0064b5e0": [
+"?wakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z"
+],
+"0064b6d0": [
+"?recursiveWakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z"
+],
 "0064b890": [],
-"0064bc60": [],
+"0064bc60": [
+"?stepJoints@SleepStage@RBX@@AAEXXZ"
+],
 "0064bd80": [],
 "0064be80": [],
-"0064bf90": [],
-"0064c280": [],
+"0064bf90": [
+"?changeContactState@SleepStage@RBX@@QAEXPAVContact@2@W4EdgeState@Sim@2@@Z"
+],
+"0064c280": [
+"?stepContacts@SleepStage@RBX@@AAEXAAV?$IndexArray@VContact@RBX@@$1?steppingIndexFunc@12@QAEAAHXZ@2@@Z"
+],
 "0064c470": [],
 "0064c6b0": [],
 "0064c850": [],
@@ -6634,7 +6660,9 @@
 "?create@@YGPAUS@@PAX@Z"
 ],
 "00668ea0": [],
-"00669090": [],
+"00669090": [
+"?sub_00669090@TreeStage@RBX@@QAEXPAVPrimitive@2@0HHPAX1@Z"
+],
 "006691e0": [],
 "00669240": [
 "?dirtyAssemblies@TreeStage@RBX@@AAEXPAVJoint@2@@Z"
@@ -6692,7 +6720,8 @@
 "?onPrimitiveAdded@CleanStage@RBX@@QAEXPAVPrimitive@2@@Z"
 ],
 "0066f550": [
-"?onPrimitiveRemoving@CleanStage@RBX@@QAEXPAVPrimitive@2@@Z"
+"?onPrimitiveRemoving@CleanStage@RBX@@QAEXPAVPrimitive@2@@Z",
+"?sub_0064a400@CleanStage@RBX@@QAEXPAVPrimitive@2@@Z"
 ],
 "0066f800": [],
 "0066f900": [

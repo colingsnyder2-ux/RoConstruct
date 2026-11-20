@@ -8,37 +8,7 @@
 #include "v8tree/Instance.h"
 #include "v8tree/PropertyChanged.h"
 
-// 004649f0 - member function, vftable-slot (own-vft tier)
-// Evidence: assembly at 004649f0 implements own-vft tier dispatch with
-// EnterCriticalSection/LeaveCriticalSection around the virtual invoke.
-// Precision: owner 91.8%, name/decl 97.8%
-void __cdecl RBX::MarshaledListener<RBX::Instance, RBX::PropertyChanged>::onEvent(const RBX::Instance* source, RBX::PropertyChanged event) throw()
-{
-    ATL::CCriticalSection& criticalSection = window->criticalSection;
-    criticalSection.Enter();
-    marshal(source, event);
-    criticalSection.Leave();
-}
-
-// 00464af0 - EventData rtti-ctor-dtor
-// Evidence: assembly at 00464af0 sets RTTI vptr to 0x81b390 (MarshaledListener EventData),
-// initializes all Slot structure fields [esi+0x0..0x14], and calls native init.
-// The constructor stores the owner listener pointer and event value.
-RBX::MarshaledListener<RBX::Instance, RBX::PropertyChanged>::EventData::EventData(const RBX::Instance* from, RBX::PropertyChanged value)
-    : listener(NULL), event(value)
-{
-    // Set RTTI vptr (owned by binary's type system)
-    // vptr at offset 0x0: points to MarshaledListener::EventData RTTI descriptor at 0x81b390
-    setSource(from);
-    // Field at offset 0x4: initialized to NULL (owner pointer)
-    // Field at offset 0x8: initialized to NULL (reserved)
-    // Field at offset 0xc: initialized from constructor parameter (event value)
-    // Field at offset 0x10: initialized from constructor parameter (source pointer)
-    // Field at offset 0x14: set to 1 (presence flag)
-}
-
-// Explicitly instantiate the template for the binary's concrete specialisation.
-// These must appear after the class members they instantiate.
+// 004649f0 - MarshaledListener<Instance,PropertyChanged>::onEvent (vftable slot 3): the inline template body in
+// util/MarshaledListener.h (CCritSecLock around marshal()); this explicit instantiation emits it.
+// (EventData ctor 00464af0 of the earlier draft did not match the header's EventData ctor; not attempted here.)
 template class RBX::MarshaledListener<RBX::Instance, RBX::PropertyChanged>;
-
-} // namespace RBX

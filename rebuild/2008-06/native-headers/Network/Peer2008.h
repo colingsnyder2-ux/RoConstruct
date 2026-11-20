@@ -15,7 +15,7 @@
 //              +0xe8, PluginInterface subobject +0x130). The destructor calls rakPeer->DetachPlugin(this) (slot 59,
 //              +0xec), deletes the three members in reverse order, then ~PluginInterface 0049ed40 and ~Instance 0055a540.
 //   vtable     slot 2 askAddChild 0049ee20 (dynamic_cast<const Replicator*>: declared only, needs a native 2008
-//              Replicator), slot 12 onServiceProvider 004b5700 (declared only); PluginInterface slots keep the RakNet
+//              Replicator), slot 12 onServiceProvider 004b5700 (PeerRecovery_004b5700.cpp); PluginInterface slots keep the RakNet
 //              defaults (OnReceive 0049ed50); Listener slot 0 onEvent 004add50 (declared only). Deleting destructor
 //              004ad7a0 (free: Creatable<Instance> operator delete), adjustor thunks 004ac940..004ac9d0.
 // RakNet first: RakPeer.h pulls winsock2 before the windows.h that Instance.h reaches (as ProfiledRakPeer.cpp).
@@ -60,6 +60,12 @@ namespace RBX
 			RakPeerInterface* peerInterface();
 			virtual void onEvent(const RunService* source, Heartbeat event);       // 004add50
 			virtual void onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider); // 004b5700
+
+		public:
+			// 004ae950 (donor Replicator.cpp Peer::updateNetworkSimulator: rakPeer slot 0x100 ApplyNetworkSimulator with
+			// NetworkSettings maxSendBPS +0x154, minExtraPing +0x158, extraPingVariance +0x15c; caller Client::connect
+			// 004a0c54). Body in PeerRecovery_004b5700.cpp.
+			void updateNetworkSimulator();
 		};
 	}
 }

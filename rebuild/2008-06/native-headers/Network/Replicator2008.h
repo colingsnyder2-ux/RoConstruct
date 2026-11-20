@@ -5,10 +5,11 @@
 // binary (verified by tests/record_native_network_replicator2008.py).
 //
 // Replicator: members declared through sizeof 0x2d68 (the +0x2b90..+0x2d68 block below follows the donor member order;
-// element types and names that the binary does not prove are marked INFERRED). Virtual slots 16-21 are still NOT
-// declared (slot 16 has no name evidence), so a unit that emits the Replicator / ClientProxy vtables names them
-// differently from the original (see Server::ClientProxy in ClientProxy2008.h); the constructor 004b9bd0 and destructor
-// 004b96b0 stay open.
+// element types and names that the binary does not prove are marked INFERRED). Virtual slots 16-21 are declared (slot
+// 16 with an INFERRED name). The constructor 004b9bd0 and destructor 004b96b0 (ReplicatorRecovery_004b96b0.cpp) compile
+// byte-identical; both stay non-exact only because MSVC gives the undecorated ??_7Replicator@Network@RBX@@6B@ to the
+// PluginInterface vtable 00825450 while the registry's rtti-primary-vtable row binds it to 008254fc (the same blocker
+// as the Server::ClientProxy constructor / destructor).
 //   RTTI       vtable 008254fc .?AVReplicator@Network@RBX@@ (23 bases): DescribedNonCreatable<Replicator,
 //              IdSerializer, sReplicator> (name mangled $1?sReplicator@23@3QBDB, a const char array in .rdata at
 //              008244e4 "NetworkReplicator", defined in native-classes/ReplicatorBases.cpp) and PluginInterface at
@@ -56,7 +57,7 @@
 //
 // ReplicatorStatsItem: complete.
 //   RTTI       vtable 00824fbc .?AVReplicatorStatsItem@Replicator@Network@RBX@@ (22 bases) -> Stats::Item (no other
-//              base). Slot 16 update 004b6530 (declared only: it reads Replicator +0x2d50 / +0x2d54).
+//              base). Slot 16 update 004b6530 (body in NetworkReplicator2008StatsItem.cpp).
 //   size       0x180: Creatable<Instance>::create<ReplicatorStatsItem, shared_ptr<Replicator>, RakNetStatistics*>
 //              004b7e50 mallocs 0x180 (8-aligned: Stats::Item holds a double).
 //   ctor       004b62c0 (const shared_ptr<Replicator>&, const RakNetStatistics*; ret 8; declared only: it reads the
@@ -88,6 +89,7 @@
 
 class RakPeerInterface;
 struct RakNetStatistics;
+class XmlElement;
 
 struct NativeNetworkReplicator2008Layout;
 
@@ -126,6 +128,13 @@ namespace RBX
 			std::vector<const Descriptor*> descriptors;                             // +0x24
 			int receiveBits;                                                        // +0x3c INFERRED name
 			int reserved;                                                           // +0x40 INFERRED: required by the 0x44 stride
+		public:
+			// 004b1570 (classNames) / 004b1620 (propNames): fill the dictionary from every registered descriptor (body not
+			// recovered; the Replicator constructor 004b9bd0 calls them).
+			DescriptorDictionary();
+			// 004aeba0 (thiscall (BitStream&, const Descriptor&), ret 8; ChangePropertyItem::write 004b6d10 calls it on
+			// propNames +0x2bf4 with the property descriptor). INFERRED name after the donor SharedStringDictionary::send.
+			void send(RakNet::BitStream& bitStream, const Descriptor& descriptor);
 		};
 	}
 }
@@ -191,6 +200,19 @@ namespace RBX
 				RakNet::BitStream bitStream;                                        // +0x08
 			public:
 				~ItemSender();                                                      // 004aba60
+			};
+
+			// Donor Replicator::ChangePropertyItem. Layout from write 004b6d10: +0x08 descriptor reference (pushed to
+			// propNames.send and ConstProperty), +0x0c shared_ptr<const Instance> (count +0x10).
+			class ChangePropertyItem : public Item
+			{
+			private:
+				const Reflection::PropertyDescriptor& desc;                         // +0x08
+				const boost::shared_ptr<const Instance> instance;                   // +0x0c
+
+			public:
+				ChangePropertyItem(Replicator& replicator, const boost::shared_ptr<const Instance>& instance, const Reflection::PropertyDescriptor& desc);
+				virtual void write(RakNet::BitStream& bitStream);                   // 004b6d10
 			};
 
 			class MarkerItem : public Item
@@ -277,6 +299,19 @@ namespace RBX
 			Replicator(SystemAddress remotePlayerId, RakPeerInterface* peer);      // 004b9bd0 (open)
 			virtual ~Replicator();                                                  // 004b96b0 (open)
 
+			// Reflected functions (static initializers 007f21d0 "RequestCharacter", 007f2200 "CloseConnection" and 007f2230
+			// "GetPlayer" pass these addresses to BoundFuncDesc constructors 004b40a0 / 004b4170; donor Replicator.h).
+			boost::shared_ptr<Instance> getPlayer();                                // 004ae860 (donor: inline in the class)
+			void requestCharacter();                                                // 004b49e0
+			void closeConnection();                                                 // 004aafd0
+
+		protected:
+			// Instance slot 12 override (vtable 008254fc; ClientProxy 00823474 inherits it). Body not recovered.
+			virtual void onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider); // 004b87f0 (open)
+		public:
+			// Instance slot 14 override: identical-code-folded `return NULL` (as Client / Server write).
+			virtual XmlElement* write();                                            // 00416690 (ICF)
+
 		protected:
 			// Virtual slots 16..21 (see the vtable notes above). Slot 16 has no donor counterpart: INFERRED name from its
 			// signature (bool (const Instance*), ICF-shared `mov al,1; ret 4`; ClientProxy overrides it with 004a3290).
@@ -329,7 +364,7 @@ namespace RBX
 
 		public:
 			ReplicatorStatsItem(const boost::shared_ptr<Replicator>& replicator, const RakNetStatistics* statistics); // 004b62c0 (open)
-			virtual void update();                                                  // 004b6530 (open)
+			virtual void update();                                                  // 004b6530 (NetworkReplicator2008StatsItem.cpp)
 		};
 	}
 }

@@ -1,6 +1,7 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // 2008-06 native RBX::ViewNew::ViewG3D (inactive; document-swap flags, /O2, /fp:fast). Rows: invalidateLighting
-// 004db610 and render 004db690. The ctor 004dbbe0 / dtor 004dc270 / ??_G 004dc340, suppressSkybox 004dbf00 and
-// updateLighting 004dc040 need declarations owned elsewhere (ViewNew::MaterialFactory, the Lighting service, the
+// 004db610, render 004db690 and suppressSkybox 004dbf00 (Lighting2008.h getters; the clear colour through getClearColor()
+// by value, all four loads before the stores, needs /fp:fast). The ctor 004dbbe0 / dtor 004dc270 / ??_G 004dc340 and updateLighting 004dc040 need declarations owned elsewhere (ViewNew::MaterialFactory, the Lighting service, the
 // ViewNew mesh-cache flushes, the Lighting / descendant-added signal descriptors) and are not built here.
 #include "ViewG3D2008/ViewG3D2008.h"
 #include "v8datamodel/DataModel.h"
@@ -20,7 +21,7 @@ namespace RBX
 			renderLibScene->presetLighting(NULL, lighting->getSkyParameters(),
 			                               lighting->getAmbientTop(), lighting->getAmbientBottom());
 			sky = NULL;
-			renderLibScene->colorClearValue = lighting->clearColor;
+			renderLibScene->colorClearValue = lighting->getClearColor();
 		}
 
 		void ViewG3D::render(G3D::RenderDevice* rd)

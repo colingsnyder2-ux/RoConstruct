@@ -1,4 +1,4 @@
-// native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/jpeg-6b /TC
+// native-flags: /O2 /GS- /MD /fp:fast /I{headers}/../../../tools/libs/jpeg-6b /TC
 // IJG JPEG 6b encoder pipeline; inactive pending reference, provider, ABI and runtime checks.
 
 /*

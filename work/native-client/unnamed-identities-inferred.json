@@ -3515,27 +3515,22 @@
  },
  "004306c0": {
   "alternatives": [],
-  "confidence": "placeholder",
+  "confidence": "sole-authentic-candidate",
   "evidence": [
    {
-    "kind": "link-order-neighbours",
-    "library": "Roblox (RBX) / other app classes (no namespace)",
-    "next": [
-     "00430700",
-     "CSelectionPropGrid::~CSelectionPropGrid"
-    ],
-    "prev": [
-     "004306b0",
-     "RBX::Name::callDoDeclare"
-    ],
-    "reach": "called only by unnamed functions"
+    "authentic_candidates": 1,
+    "caller_votes": {},
+    "candidates": 4,
+    "kind": "exact-masked-body-candidates",
+    "length": 49,
+    "neighbour_owners": []
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "sub_004306c0",
+  "name": "?sub_004306c0@@YA?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ",
   "name_source": "identity-unlock-inferred",
-  "signature": null
+  "signature": "class boost::shared_ptr<class RBX::DataModel> __cdecl sub_004306c0(void)"
  },
  "004307b0": {
   "alternatives": [],
@@ -7291,22 +7286,28 @@
   "signature": null
  },
  "0045beb0": {
-  "alternatives": [],
-  "confidence": "placeholder",
+  "alternatives": [
+   "?f@CRobloxWnd@@QAEXXZ"
+  ],
+  "confidence": "one-of-2-authentic",
   "evidence": [
    {
-    "kind": "link-order-neighbours",
-    "library": null,
-    "next": null,
-    "prev": null,
-    "reach": null
+    "authentic_candidates": 2,
+    "caller_votes": {},
+    "candidates": 4,
+    "kind": "exact-masked-body-candidates",
+    "length": 124,
+    "neighbour_owners": [
+     "CRobloxWnd",
+     "CXTPSyntaxEditColorSampleText"
+    ]
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "sub_0045beb0",
+  "name": "?sub_0045beb0@RBX@@YIXPAUWndLayout@1@@Z",
   "name_source": "identity-unlock-inferred",
-  "signature": null
+  "signature": "void __fastcall RBX::sub_0045beb0(struct RBX::WndLayout *)"
  },
  "0045bf30": {
   "alternatives": [],
@@ -8786,27 +8787,25 @@
  },
  "004692f0": {
   "alternatives": [],
-  "confidence": "placeholder",
+  "confidence": "sole-authentic-candidate",
   "evidence": [
    {
-    "kind": "link-order-neighbours",
-    "library": "Roblox (RBX) / other app classes (no namespace)",
-    "next": [
-     "0046a200",
-     "CVersionInfo::CVersionInfo"
-    ],
-    "prev": [
-     "00467770",
-     "RBX::UserInputBase::~UserInputBase"
-    ],
-    "reach": "called only by unnamed functions"
+    "authentic_candidates": 1,
+    "caller_votes": {},
+    "candidates": 4,
+    "kind": "exact-masked-body-candidates",
+    "length": 43,
+    "neighbour_owners": [
+     "DxUserInput",
+     "Vector2@G3D"
+    ]
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "sub_004692f0",
+  "name": "?sub_004692f0@@YAXABVVector2@G3D@@AAV12@1@Z",
   "name_source": "identity-unlock-inferred",
-  "signature": null
+  "signature": "void __cdecl sub_004692f0(class G3D::Vector2 const &,class G3D::Vector2 &,class G3D::Vector2 &)"
  },
  "00469320": {
   "alternatives": [],
@@ -8926,27 +8925,25 @@
  },
  "00469f00": {
   "alternatives": [],
-  "confidence": "placeholder",
+  "confidence": "sole-authentic-candidate",
   "evidence": [
    {
-    "kind": "link-order-neighbours",
-    "library": "Roblox (RBX) / other app classes (no namespace)",
-    "next": [
-     "0046a200",
-     "CVersionInfo::CVersionInfo"
-    ],
-    "prev": [
-     "00467770",
-     "RBX::UserInputBase::~UserInputBase"
-    ],
-    "reach": "called only by unnamed functions"
+    "authentic_candidates": 1,
+    "caller_votes": {},
+    "candidates": 5,
+    "kind": "exact-masked-body-candidates",
+    "length": 80,
+    "neighbour_owners": [
+     "DxUserInput",
+     "Vector2@G3D"
+    ]
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "sub_00469f00",
+  "name": "?sub_00469f00@@YAHH@Z",
   "name_source": "identity-unlock-inferred",
-  "signature": null
+  "signature": "int __cdecl sub_00469f00(int)"
  },
  "00469f50": {
   "alternatives": [],
@@ -8995,27 +8992,24 @@
  },
  "0046a100": {
   "alternatives": [],
-  "confidence": "placeholder",
+  "confidence": "sole-authentic-candidate",
   "evidence": [
    {
-    "kind": "link-order-neighbours",
-    "library": "Roblox (RBX) / other app classes (no namespace)",
-    "next": [
-     "0046a200",
-     "CVersionInfo::CVersionInfo"
-    ],
-    "prev": [
-     "00467770",
-     "RBX::UserInputBase::~UserInputBase"
-    ],
-    "reach": "called only by unnamed functions"
+    "authentic_candidates": 1,
+    "caller_votes": {},
+    "candidates": 4,
+    "kind": "exact-masked-body-candidates",
+    "length": 37,
+    "neighbour_owners": [
+     "Vector2@G3D"
+    ]
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "sub_0046a100",
+  "name": "?sub_0046a100@@YAXPBVVector2@G3D@@PAV12@10@Z",
   "name_source": "identity-unlock-inferred",
-  "signature": null
+  "signature": "void __cdecl sub_0046a100(class G3D::Vector2 const *,class G3D::Vector2 *,class G3D::Vector2 *,class G3D::Vector2 const *)"
  },
  "0046a130": {
   "alternatives": [],
@@ -15058,27 +15052,25 @@
  },
  "004d71a0": {
   "alternatives": [],
-  "confidence": "placeholder",
+  "confidence": "sole-authentic-candidate",
   "evidence": [
    {
-    "kind": "link-order-neighbours",
-    "library": "Roblox (RBX) / G3D",
-    "next": [
-     "004d71b0",
-     "G3D::GLCaps::supports_GL_ARB_texture_non_power_of_two"
-    ],
-    "prev": [
-     "004d7180",
-     "RBX::ViewNew::ViewRbxGfx::invalidateLighting"
-    ],
-    "reach": "called only by unnamed functions"
+    "authentic_candidates": 1,
+    "caller_votes": {},
+    "candidates": 3,
+    "kind": "exact-masked-body-candidates",
+    "length": 15,
+    "neighbour_owners": [
+     "GLCaps@G3D",
+     "ViewRbxGfx@ViewNew@RBX"
+    ]
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "sub_004d71a0",
+  "name": "?setDebug@ViewRbxGfx@ViewNew@RBX@@SAX_N@Z",
   "name_source": "identity-unlock-inferred",
-  "signature": null
+  "signature": "public: static void __cdecl RBX::ViewNew::ViewRbxGfx::setDebug(bool)"
  },
  "004d71f0": {
   "alternatives": [
@@ -32478,27 +32470,25 @@
  },
  "0064a550": {
   "alternatives": [],
-  "confidence": "placeholder",
+  "confidence": "sole-authentic-candidate",
   "evidence": [
    {
-    "kind": "link-order-neighbours",
-    "library": "Roblox (RBX) / STL (MSVC 9)",
-    "next": [
-     "0064a900",
-     "std::_Vector_iterator::operator+"
-    ],
-    "prev": [
-     "0064a510",
-     "RBX::CleanStage::onEdgeRemoving"
-    ],
-    "reach": "called only by unnamed functions"
+    "authentic_candidates": 1,
+    "caller_votes": {},
+    "candidates": 4,
+    "kind": "exact-masked-body-candidates",
+    "length": 96,
+    "neighbour_owners": [
+     "CleanStage@RBX",
+     "SleepStage@RBX"
+    ]
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "sub_0064a550",
+  "name": "?stateToSet@SleepStage@RBX@@QAEPAV?$set@PAVAssembly@RBX@@U?$less@PAVAssembly@RBX@@@std@@V?$allocator@PAVAssembly@RBX@@@4@@std@@W4AssemblyState@Sim@2@@Z",
   "name_source": "identity-unlock-inferred",
-  "signature": null
+  "signature": "public: class std::set<class RBX::Assembly *,struct std::less<class RBX::Assembly *>,class std::allocator<class RBX::Assembly *> > * __thiscall RBX::SleepStage::stateToSet(enum RBX::Sim::AssemblyState)"
  },
  "0064a5b0": {
   "alternatives": [
@@ -32621,24 +32611,24 @@
  },
  "0064ae10": {
   "alternatives": [],
-  "confidence": "webservice-pdb-alignment",
+  "confidence": "sole-authentic-candidate",
   "evidence": [
    {
-    "caller_names": [
-     "?onEdgeRemoving@SleepStage@RBX@@UAEXPAVEdge@2@@Z"
-    ],
-    "callers": [
-     "0064c130"
-    ],
-    "kind": "webservice-pdb-caller-alignment",
-    "pdb": "WebService.pdb (RBXGS 0.3.676)"
+    "authentic_candidates": 1,
+    "caller_votes": {},
+    "candidates": 4,
+    "kind": "exact-masked-body-candidates",
+    "length": 120,
+    "neighbour_owners": [
+     "SleepStage@RBX"
+    ]
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "?changeJointState@SleepStage@RBX@@AAEXPAVJoint@2@W4EdgeState@Sim@2@@Z",
-  "name_source": "identity-unlock-ws",
-  "signature": null
+  "name": "?changeJointState@SleepStage@RBX@@QAEXPAVJoint@2@W4EdgeState@Sim@2@@Z",
+  "name_source": "identity-unlock-inferred",
+  "signature": "public: void __thiscall RBX::SleepStage::changeJointState(class RBX::Joint *,enum RBX::Sim::EdgeState)"
  },
  "0064ae90": {
   "alternatives": [],
@@ -32735,51 +32725,47 @@
  },
  "0064b5e0": {
   "alternatives": [],
-  "confidence": "placeholder",
+  "confidence": "sole-authentic-candidate",
   "evidence": [
    {
-    "kind": "link-order-neighbours",
-    "library": "STL (MSVC 9) / Roblox (RBX)",
-    "next": [
-     "0064b7c0",
-     "RBX::SleepStage::touchEvent"
-    ],
-    "prev": [
-     "0064b2a0",
-     "std::_Tree::_Tree"
-    ],
-    "reach": "called by a named function"
+    "authentic_candidates": 1,
+    "caller_votes": {
+     "?wakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z": 2
+    },
+    "candidates": 1,
+    "kind": "exact-masked-body-candidates",
+    "length": 234,
+    "neighbour_owners": [
+     "SleepStage@RBX"
+    ]
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "sub_0064b5e0",
+  "name": "?wakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z",
   "name_source": "identity-unlock-inferred",
-  "signature": null
+  "signature": "private: void __thiscall RBX::SleepStage::wakeEvent(class RBX::Assembly *)"
  },
  "0064b6d0": {
   "alternatives": [],
-  "confidence": "placeholder",
+  "confidence": "sole-authentic-candidate",
   "evidence": [
    {
-    "kind": "link-order-neighbours",
-    "library": "STL (MSVC 9) / Roblox (RBX)",
-    "next": [
-     "0064b7c0",
-     "RBX::SleepStage::touchEvent"
-    ],
-    "prev": [
-     "0064b2a0",
-     "std::_Tree::_Tree"
-    ],
-    "reach": "called by a named function"
+    "authentic_candidates": 1,
+    "caller_votes": {},
+    "candidates": 1,
+    "kind": "exact-masked-body-candidates",
+    "length": 225,
+    "neighbour_owners": [
+     "SleepStage@RBX"
+    ]
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "sub_0064b6d0",
+  "name": "?recursiveWakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z",
   "name_source": "identity-unlock-inferred",
-  "signature": null
+  "signature": "private: void __thiscall RBX::SleepStage::recursiveWakeEvent(class RBX::Assembly *)"
  },
  "0064b890": {
   "alternatives": [],
@@ -32807,27 +32793,25 @@
  },
  "0064bc60": {
   "alternatives": [],
-  "confidence": "placeholder",
+  "confidence": "sole-authentic-candidate",
   "evidence": [
    {
-    "kind": "link-order-neighbours",
-    "library": "Roblox (RBX)",
-    "next": [
-     "0064bf60",
-     "RBX::SleepStage::wakeEvent"
-    ],
-    "prev": [
-     "0064b840",
-     "RBX::SleepStage::changeJointState"
-    ],
-    "reach": "called only by unnamed functions"
+    "authentic_candidates": 1,
+    "caller_votes": {},
+    "candidates": 1,
+    "kind": "exact-masked-body-candidates",
+    "length": 282,
+    "neighbour_owners": [
+     "RBX",
+     "SleepStage@RBX"
+    ]
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "RBX::SleepStage::sub_0064bc60",
+  "name": "?stepJoints@SleepStage@RBX@@AAEXXZ",
   "name_source": "identity-unlock-inferred",
-  "signature": null
+  "signature": "private: void __thiscall RBX::SleepStage::stepJoints(void)"
  },
  "0064bd80": {
   "alternatives": [],
@@ -32879,48 +32863,45 @@
  },
  "0064bf90": {
   "alternatives": [],
-  "confidence": "webservice-pdb-alignment",
+  "confidence": "sole-authentic-candidate",
   "evidence": [
    {
-    "caller_names": [
-     "?onEdgeRemoving@SleepStage@RBX@@UAEXPAVEdge@2@@Z"
-    ],
-    "callers": [
-     "0064c130"
-    ],
-    "kind": "webservice-pdb-caller-alignment",
-    "pdb": "WebService.pdb (RBXGS 0.3.676)"
+    "authentic_candidates": 1,
+    "caller_votes": {},
+    "candidates": 2,
+    "kind": "exact-masked-body-candidates",
+    "length": 413,
+    "neighbour_owners": [
+     "SleepStage@RBX"
+    ]
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "?changeContactState@SleepStage@RBX@@AAEXPAVContact@2@W4EdgeState@Sim@2@@Z",
-  "name_source": "identity-unlock-ws",
-  "signature": null
+  "name": "?changeContactState@SleepStage@RBX@@QAEXPAVContact@2@W4EdgeState@Sim@2@@Z",
+  "name_source": "identity-unlock-inferred",
+  "signature": "public: void __thiscall RBX::SleepStage::changeContactState(class RBX::Contact *,enum RBX::Sim::EdgeState)"
  },
  "0064c280": {
   "alternatives": [],
-  "confidence": "placeholder",
+  "confidence": "sole-authentic-candidate",
   "evidence": [
    {
-    "kind": "link-order-neighbours",
-    "library": "Roblox (RBX)",
-    "next": [
-     "0064ca60",
-     "RBX::getJoint"
-    ],
-    "prev": [
-     "0064c230",
-     "RBX::SleepStage::changeJointState"
-    ],
-    "reach": "called only by unnamed functions"
+    "authentic_candidates": 1,
+    "caller_votes": {},
+    "candidates": 1,
+    "kind": "exact-masked-body-candidates",
+    "length": 492,
+    "neighbour_owners": [
+     "SleepStage@RBX"
+    ]
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "sub_0064c280",
+  "name": "?stepContacts@SleepStage@RBX@@AAEXAAV?$IndexArray@VContact@RBX@@$1?steppingIndexFunc@12@QAEAAHXZ@2@@Z",
   "name_source": "identity-unlock-inferred",
-  "signature": null
+  "signature": "private: void __thiscall RBX::SleepStage::stepContacts(class RBX::IndexArray<class RBX::Contact,&public: int & __thiscall RBX::Contact::steppingIndexFunc(void)> &)"
  },
  "0064c470": {
   "alternatives": [],
@@ -34485,27 +34466,24 @@
  },
  "00669090": {
   "alternatives": [],
-  "confidence": "placeholder",
+  "confidence": "sole-authentic-candidate",
   "evidence": [
    {
-    "kind": "link-order-neighbours",
-    "library": "STL (MSVC 9) / Roblox (RBX)",
-    "next": [
-     "00669780",
-     "RBX::TreeStage::stepWorld"
-    ],
-    "prev": [
-     "00669050",
-     "std::_Tree::_Erase"
-    ],
-    "reach": "called only by unnamed functions"
+    "authentic_candidates": 1,
+    "caller_votes": {},
+    "candidates": 3,
+    "kind": "exact-masked-body-candidates",
+    "length": 183,
+    "neighbour_owners": [
+     "TreeStage@RBX"
+    ]
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "sub_00669090",
+  "name": "?sub_00669090@TreeStage@RBX@@QAEXPAVPrimitive@2@0HHPAX1@Z",
   "name_source": "identity-unlock-inferred",
-  "signature": null
+  "signature": "public: void __thiscall RBX::TreeStage::sub_00669090(class RBX::Primitive *,class RBX::Primitive *,int,int,void *,void *)"
  },
  "00669150": {
   "alternatives": [],
@@ -35046,11 +35024,13 @@
   "signature": "public: void __thiscall RBX::CleanStage::onPrimitiveAdded(class RBX::Primitive *)"
  },
  "0066f550": {
-  "alternatives": [],
-  "confidence": "sole-authentic-candidate",
+  "alternatives": [
+   "?sub_0064a400@CleanStage@RBX@@QAEXPAVPrimitive@2@@Z"
+  ],
+  "confidence": "one-of-2-authentic",
   "evidence": [
    {
-    "authentic_candidates": 1,
+    "authentic_candidates": 2,
     "caller_votes": {
      "func_0066f550": 1
     },

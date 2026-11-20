@@ -158,6 +158,10 @@ def build():
         if not path or not path.lower().endswith(('.cpp', '.c', '.cc')):
             continue
         tier = {'pdb': 'P', 'openrbx': 'O', 'class-rule': 'C'}.get(entry.get('evidence'))
+        if '/unclassified/' in path:                     # placeholder folder: template machinery goes to one bucket, the rest is inferred
+            if entry.get('name', '').startswith('?') and '?$' in entry['name']:
+                claims[addr.lower()]['C'] = 'client/templates/machinery.cpp'
+            continue
         if tier:
             claims[addr.lower()][tier] = low(path)
 
@@ -220,6 +224,11 @@ def build():
     for addr, c in claims.items():
         for tier in 'ELPIMN':
             if tier in c and addr in funcs:
+                if '/unclassified/' in c[tier]:                  # placeholder folder: only template machinery keeps a tile
+                    if c[tier].rsplit('/',1)[-1].startswith('_') or '<' in str(names.get(addr, '')):
+                        chosen[addr] = ('client/templates/machinery.cpp', tier)
+                        break
+                    continue
                 chosen[addr] = (c[tier], tier)
                 break
 

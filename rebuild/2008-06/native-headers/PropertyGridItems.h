@@ -20,10 +20,14 @@ public:
     virtual void OnValueChanged(CString value)
     {
         GridItem::OnValueChanged(value);
-        T converted = readValue();
-        applyValue(converted);
+        // The temporary goes straight to applyValue: 004414e0/00441660 push readValue's returned address.
+        applyValue(readValue());
     }
     void applyValue(const T&);
+    // INFERRED: name. Non-virtual reader of one selected instance, called only from update
+    // (0043a1e0 bool, 0043a730 float, 0043abc0 int, 0043c510 enum, 0043c0d0 Vector3): DataModel lock, then the
+    // descriptor's getter on the instance.
+    T getValue(RBX::Instance* instance);
     virtual T readValue();
     virtual void displayValue(const T&);
     virtual bool equalValues(const T& left, const T& right) { return left == right; }

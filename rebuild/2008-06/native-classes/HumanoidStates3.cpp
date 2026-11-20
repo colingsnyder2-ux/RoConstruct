@@ -148,6 +148,11 @@ void MovingNoPhysicsBase::onTorsoAncestryChanged()
 
 #ifdef NATIVE_MOVING_NO_PHYSICS_ONSTEP_PENDING
 // Not compiled: three declarations outside this unit's files are missing (see below). No trials yet.
+// Re-checked batch 23: Body2008.h now declares SimBody::accumulateImpulse 00629bb0 and the inline Body wrapper, but this
+// unit reaches the donor v8kernel/Body.h (NATIVE_HUMANOID2008_DONOR_CONNECTOR), so it would also need the unit-local
+// Connector pattern of RunningBaseForce.cpp before including Body2008.h. 0066eb30 (dumped again: copies the linear
+// Vector3, then the guarded static zero 0096f044..0096f04c into +0xc..+0x14) still needs a one-argument
+// `Velocity(const G3D::Vector3& linear)` in core util/Velocity.h (owner proposal), so onStep stays guarded.
 // 0066eb90 (259 bytes, `ret 4`; analog name applyFloorImpulse). getHumanoid 00793d50 -> getRootBody 005d9180 (early out
 // on NULL), getFloorPrimitive 00643d30 (early out on NULL); masses: root body first (Cofm::getMass 0065ff10 or +0x8c),
 // then the floor primitive's body (+0xa0) branch mass, std::min(root, floor) (`fcomp; test ah, 5; jnp` keeps the floor
