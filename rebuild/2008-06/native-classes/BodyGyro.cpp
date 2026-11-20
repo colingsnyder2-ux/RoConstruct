@@ -76,7 +76,9 @@ namespace RBX
 		// Parked: 1136 bytes, first divergence at 0062ef27 (x87 scheduling only). The target loads kD first
 		// ((kD * I.x) * angVelBody.x) and orders the angVelBody row as m01*y + m02*z + m00*x; every form tried compiles
 		// to (I.x * angVelBody.x) * kD with m02*z first: `(I * a) * kD` (donor), `x = x - kD * I * a`,
-		// `-= kD * (I * a)`, `-= kD * I * a`.
+		// `-= kD * (I * a)`, `-= kD * I * a`. Batch 27 (rejected): defining computeBalance before computeOrientation
+		// (unit order) leaves the diff unchanged (insn 238). Every remaining diff is a mirrored commutative x87 operand
+		// (row sums, the kD product, the inline SimBody::accumulateTorque fadd), the same mirror as Rocket::turn 0062e530.
 		torqueBody.x -= (root->getBranchIBodyV3().x * angVelBody.x) * kD;
 		torqueBody.z -= (root->getBranchIBodyV3().z * angVelBody.z) * kD;
 

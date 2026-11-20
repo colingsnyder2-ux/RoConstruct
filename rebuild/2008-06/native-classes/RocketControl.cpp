@@ -226,6 +226,9 @@ namespace RBX
 	}
 
 	// 00630570: force +0x148 added at the branch cofm of the root (no updatePV).
+	// Batch 27 (rejected): Body2008.h SimBody::accumulateForceCofm as `force = _force + force` loads all three
+	// operands before the stores (fxch) here and breaks the exact COMDAT 0062e140; header kept as `force += _force`.
+	// Only the x component's fadd operand order differs (target `fld [edi+0x18]; fadd [esi+0x84]`).
 	void BodyForce::computeForce(const float dt, bool throttling)
 	{
 		Body* root = part.lock()->getPrimitive()->getBody()->getRoot();

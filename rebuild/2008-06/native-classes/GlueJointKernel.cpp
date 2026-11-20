@@ -101,7 +101,9 @@ namespace RBX
 	// inline pointToWorldSpace blocks loads its operands in the opposite order (target `fld [esi + 0x98]; fmul [eax + 4]`,
 	// candidate `fld [eax + 4]; fmul [esi + 0x98]`, and so on through both blocks). Rejected: the donor-Body path (wrong
 	// displacements +0x8c/+0xac), without /fp:fast (632 bytes, worse), getCoordinateFrame() for getPV().position (same
-	// diff).
+	// diff). Batch 27 (rejected): the whole original GlueJoint unit in one file (default constructor 00646b60 and
+	// getMaxForce 00646c10 defined ahead of these bodies, as in the original object order) leaves the diff unchanged
+	// (580 B, insn 32), so the commutative x87 operand order is not driven by the unit's function order.
 	void GlueJoint::putInKernel(Kernel* _kernel)
 	{
 		MultiJoint::putInKernel(_kernel);
