@@ -4,29 +4,55 @@ void RBX::SpatialHash::doStats() const {}
 
 #undef _RELEASEASSERT
 #include "util/IRenderable.h"
-#include "util/Debug.h"
 
 namespace RBX
 {
-	IRenderableBucket::~IRenderableBucket()                                             // 005dd2c0
+	IRenderable::~IRenderable()
+	{
+		RBXASSERT(index2d == -1);
+		RBXASSERT(index3d == -1);
+		RBXASSERT(bucket == NULL);
+	}
+
+	void IRenderable::shouldRenderSetDirty()
+	{
+		if (bucket)
+			bucket->recomputeShouldRender(this);
+	}
+
+	IRenderableBucket::~IRenderableBucket()
 	{
 		RBXASSERT(renderable2ds.size() == 0);
 		RBXASSERT(renderable3ds.size() == 0);
 	}
 
-	void IRenderableBucket::render2dItems(Adorn* adorn)                                 // 005dd330
+	void IRenderableBucket::onAdded(IRenderable* iR)
 	{
-		for (int i = 0; i < renderable2ds.size(); ++i)
-			renderable2ds[i]->render2d(adorn);
+		RBXASSERT(iR->index2d == -1);
+		RBXASSERT(iR->index3d == -1);
+		RBXASSERT(iR->bucket == NULL);
+
+		iR->bucket = this;
+		recomputeShouldRender(iR);
 	}
 
-	void IRenderableBucket::render3dAdornItems(Adorn* adorn)                            // 005dd360
+	void IRenderableBucket::onRemoving(IRenderable* iR)
 	{
-		for (int i = 0; i < renderable3ds.size(); ++i)
-			renderable3ds[i]->render3dAdorn(adorn);
+		RBXASSERT(iR->bucket == this);
+
+		if (iR->index2d >= 0)
+			renderable2ds.fastRemove(iR);
+
+		if (iR->index3d >= 0)
+			renderable3ds.fastRemove(iR);
+
+		iR->bucket = NULL;
+
+		RBXASSERT(iR->index2d == -1);
+		RBXASSERT(iR->index3d == -1);
 	}
 
-	void IRenderableBucket::recomputeShouldRender(IRenderable* iR)                      // 005dd400
+	void IRenderableBucket::recomputeShouldRender(IRenderable* iR)
 	{
 		RBXASSERT(iR->bucket == this);
 
@@ -51,35 +77,15 @@ namespace RBX
 		}
 	}
 
-	void IRenderableBucket::onAdded(IRenderable* iR)                                    // 005dd4c0
+	void IRenderableBucket::render2dItems(Adorn* adorn)
 	{
-		RBXASSERT(iR->index2d == -1);
-		RBXASSERT(iR->index3d == -1);
-		RBXASSERT(iR->bucket == NULL);
-
-		iR->bucket = this;
-		recomputeShouldRender(iR);
+		for (int i = 0; i < renderable2ds.size(); ++i)
+			renderable2ds[i]->render2d(adorn);
 	}
 
-	void IRenderableBucket::onRemoving(IRenderable* iR)                                 // 005dd4d0
+	void IRenderableBucket::render3dAdornItems(Adorn* adorn)
 	{
-		RBXASSERT(iR->bucket == this);
-
-		if (iR->index2d >= 0)
-			renderable2ds.fastRemove(iR);
-
-		if (iR->index3d >= 0)
-			renderable3ds.fastRemove(iR);
-
-		iR->bucket = NULL;
-
-		RBXASSERT(iR->index2d == -1);
-		RBXASSERT(iR->index3d == -1);
-	}
-
-	void IRenderable::shouldRenderSetDirty()                                            // 005dd540
-	{
-		if (bucket)
-			bucket->recomputeShouldRender(this);
+		for (int i = 0; i < renderable3ds.size(); ++i)
+			renderable3ds[i]->render3dAdorn(adorn);
 	}
 }
