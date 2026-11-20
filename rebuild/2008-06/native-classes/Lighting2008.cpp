@@ -91,6 +91,31 @@ namespace RBX
 		}
 	}
 
+#ifdef NATIVE_LIGHTING_BRIGHTNESS_PENDING
+	// 005e2420 (103 B, float by value, ret 4): compares with brightness +0x288 (fucom, test ah 0x44), stores, raises the
+	// Brightness descriptor 0097a980, fires event_LightingChanged(false), then RunService::invalidateRunViews 00555350.
+	// Measured IDENTICAL (relocs masked) with a scratch Lighting2008.h that declares
+	//   float getBrightness() const { return brightness; }  void setBrightness(float value);
+	// BLOCKED: v8datamodel/Lighting2008.h (not owned by this batch) declares neither; header proposal in the batch
+	// result. INFERRED: descriptor object name and "Appearance" category follow desc_ShadowColor above.
+	static Reflection::PropDescriptor<Lighting, float> desc_Brightness("Brightness", "Appearance", &Lighting::getBrightness, &Lighting::setBrightness, Reflection::PropertyDescriptor::STANDARD);
+
+	// 005e2420
+	void Lighting::setBrightness(float value)
+	{
+		if (value != brightness)
+		{
+			brightness = value;
+
+			raisePropertyChanged(desc_Brightness);
+			fireLightingChanged(false);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
+		}
+	}
+#endif // NATIVE_LIGHTING_BRIGHTNESS_PENDING
+
 	// 005e2570: total_seconds() (__alldiv by 1000000), modulo 86400, compared with timeOfDay.total_seconds(); stores
 	// seconds(totalSeconds) as ticks (__allmul 006a16d0) at +0x268, skyParameters.setTime 007b59b0, raises prop_Time
 	// 0097a91c, fires event_LightingChanged(false) and RunService::invalidateRunViews (donor body).
