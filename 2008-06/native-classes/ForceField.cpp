@@ -27,6 +27,15 @@ namespace RBX
 	template<class C, class D, const char* N>
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
+
+	// 005c0400: the Described<ForceField, sForceField, FactoryProduct<...> >::classDescriptor row called by the
+	// 005c3ca0 class-registration constructor (same static-local ClassDescriptor(parent, name) shape as the other
+	// rows in the class-registration block).  sForceField is the 2008 char[] (.data at 0095c3a8), not a QBDB array.
+	template<> Reflection::ClassDescriptor& Reflection::Described<ForceField, sForceField,
+		FactoryProduct<ForceField, Instance, sForceField> >::classDescriptor() {
+		static Reflection::ClassDescriptor descriptor(Instance::classDescriptor(), sForceField);
+		return descriptor;
+	}
 }
 
 using namespace RBX;

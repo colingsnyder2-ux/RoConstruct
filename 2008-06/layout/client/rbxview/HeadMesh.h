@@ -1,16 +1,4 @@
 #pragma once
-// 2008-06 native RBX::ViewNew::HeadBuilder / HeadMesh (inactive).
-//   HeadBuilder  vtable 00827194 .?AVHeadBuilder@ViewNew@RBX@@ -> LevelBuilder (mdisp 0); slots 0 build 00500d30
-//                (inherited), 1 buildTop 00500020, 2 buildBottom 00500050 (EndcapTransform), 3 buildLeft 00500080,
-//                4 buildRight 005000c0, 5 buildFront 00500100, 6 buildBack 00500140 (CylinderTransform).
-//                ctor 004fdaf0 out of line (ret 0x1c; level by value): LevelBuilder(level, Vector3(min(x, z), y,
-//                min(x, z)), surfaceTypes), bevel +0x20 (float), elements +0x24; sizeof 0x28.
-//   EndcapTransform  { const float bevel; } operator() 004fdcc0 (thiscall, ret 0x14).
-//   CylinderTransform { const float bevel; const int halfVertexCount; } operator() 004fdbd0; the face slots pass
-//                (elements + 1) / 2.
-//   HeadMesh     vtable 008271b8 -> RenderBase::Mesh, MeshFactory<HeadMesh, 1>; one slot (??_G 004e54c0). ctors 00500180
-//                (size, surfaceTypes), 00500350 (decal face), 005004d0 (texture face, studsPerTile): bevel =
-//                min(size.x, size.z) * 0.25f (0083a3e4), 9 elements.
 #include "ViewNew/QuadVolume.h"
 #include "ViewNew/MeshFactory.h"
 

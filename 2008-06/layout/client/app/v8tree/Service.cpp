@@ -79,6 +79,19 @@ namespace RBX
 #ifdef NATIVE_SERVICE_ASKADDCHILD_PENDING
 #endif
 
+#ifdef NATIVE_SERVICE_FINDBYSTRING_PENDING
+namespace RBX
+{
+	boost::shared_ptr<Instance> ServiceProvider::findServiceByClassNameString(std::string className)
+	{
+		const Name& name = Name::lookup(className);
+		if (&name == &Name::getNullName())
+			throw std::runtime_error(G3D::format("'%s' is not a valid Service name", className.c_str()));
+		return shared_from(create(this, name));
+	}
+}
+#endif
+
 size_t RBX::ServiceProvider::newIndex()
 {
     static size_t index = 0xffffffff;

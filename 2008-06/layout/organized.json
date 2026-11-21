@@ -37,6 +37,14 @@
 "client/win/AboutRobloxDialog.cpp",
 "merged unit, complete"
 ],
+"00404d20": [
+"client/win/IObjectSafetyRobloxImpl.cpp",
+"merged unit, complete"
+],
+"00404db0": [
+"client/win/IObjectSafetyRobloxImpl.cpp",
+"merged unit, complete"
+],
 "00405d50": [
 "client/win/ActiveDocView.cpp",
 "inferred path"
@@ -515,15 +523,15 @@
 ],
 "00427950": [
 "client/win/LogManager.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "00427a20": [
 "client/win/LogManager.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "00427b00": [
 "client/win/LogManager.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "00428180": [
 "client/network/CrashReporter.cpp",
@@ -531,7 +539,7 @@
 ],
 "004285e0": [
 "client/win/LogManager.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "0042acb0": [
 "client/win/LuaHtmlView.cpp",
@@ -720,6 +728,14 @@
 "00436040": [
 "client/win/ObjectBrowser.cpp",
 "merged unit, partial"
+],
+"00437880": [
+"client/app/util/utilities.cpp",
+"inferred path"
+],
+"004378d0": [
+"client/app/util/utilities.cpp",
+"inferred path"
 ],
 "00437c20": [
 "client/win/PropGrid.cpp",
@@ -5677,6 +5693,10 @@
 "client/app/util/Sound.cpp",
 "merged unit, partial"
 ],
+"005bcd80": [
+"client/rendering/renderlib/RenderScene.cpp",
+"merged unit, partial"
+],
 "005bceb0": [
 "client/app/util/Sound.cpp",
 "merged unit, partial"
@@ -7748,6 +7768,14 @@
 "00640f30": [
 "client/app/tool/ToolsSurface.cpp",
 "merged unit, partial"
+],
+"006432e0": [
+"client/app/humanoid/HumanoidState.cpp",
+"inferred path"
+],
+"00643360": [
+"client/app/humanoid/HumanoidState.cpp",
+"inferred path"
 ],
 "00644670": [
 "client/app/humanoid/Humanoid.cpp",

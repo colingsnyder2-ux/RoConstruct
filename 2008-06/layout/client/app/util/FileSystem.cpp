@@ -59,7 +59,6 @@ namespace RBX
 	}
 }
 
-
 namespace RBX {
 VistaAPIs::VistaAPIs() : getKnownFolderPath(NULL) {
  gShell32DLLInst = LoadLibraryA("Shell32.dll");
@@ -132,7 +131,6 @@ std::string FileSystem::getUserAppDataDirectory(bool create, const char* subDire
 }
 }
 
-// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class ATL::CPathT<ATL::CStringT<char,ATL::StrTraitATL<char,ATL::ChTraitsCRT<char> > > >;
 template class ATL::CSimpleStringT<char,0>;
 template class ATL::CStringT<char,ATL::StrTraitATL<char,ATL::ChTraitsCRT<char> > >;

@@ -1,8 +1,5 @@
 #pragma once
 // INFERRED: Bridge<T>::getValue casts lua_touserdata to const T* (not const Object*), as in the authentic
-// 2008-06 App/include/lua/LuaBridge.h.  The donor tools/rbxgs copy uses const Object*, which makes
-// value = *object call boost::any::operator=(const any&) instead of inlining
-// RBX::Reflection::Value::operator=<T>; the binary at 005ac150/005ac1e0/005ac560 proves const T*.
 #include "lua.h"
 #include "lauxlib.h"
 #include "boost/shared_ptr.hpp"
@@ -17,9 +14,9 @@ namespace RBX
         template <typename T, bool isComparable>
         class Bridge
         {
-        protected: 
+        protected:
             static const char* className;
-  
+
         public:
             static T* pushNewObject(lua_State* L)
             {
@@ -185,7 +182,7 @@ namespace RBX
             {
                 // TODO: check match for T=boost::shared_ptr<Reflection::DescribedBase>
                 // when security is implemented
-                
+
                 if (lua_type(L, static_cast<int>(index)) == LUA_TNIL)
                 {
                     return boost::shared_ptr<T>();
@@ -211,4 +208,3 @@ namespace RBX
         };
     }
 }
-

@@ -24,7 +24,6 @@ public:
 class TextXmlParser : public XmlParser
 {
 private:
-	// 00415350/004147c0 construct and destroy this map at +0x28.
 	std::map<std::string, std::string> entities;
 public:
 	__declspec(noinline) TextXmlParser(std::streambuf* buffer)

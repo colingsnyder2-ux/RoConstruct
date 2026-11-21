@@ -1,116 +1,67 @@
-// from server: 51% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 100% by Intel_Inside
+// roc-flags: /O2 /GS- /EHsc /MD
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+#include <vector>
+#include <intrin.h>
+#pragma intrinsic(_InterlockedDecrement)
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;   // vtable +4
+    virtual void destroy();       // vtable +8
+    long use_count_;
+    long weak_count_;
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
+    void weak_release() {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
+};
 
-boost::mutex& moo2()
+template<class T> struct shared_ptr {
+    T* px;
+    sp_counted_base* pn;
+    ~shared_ptr() { if (pn) pn->release(); }
+    operator bool() const { return px != 0; }
+    T* operator->() const { return px; }
+};
+
+struct Listener {           // subobject at +0xe8 (vptr only)
+    virtual void onEvent();
+};
+
+struct Owner {
+    void removeListener(Listener* l);   // 0x532550, thiscall
+};
+
+struct B0 { virtual ~B0(); };
+struct B1 { virtual ~B1(); int pad[2]; };
+struct B2 { virtual ~B2(); };
+struct B3 { virtual ~B3(); int pad[5]; };
+struct B4 { virtual ~B4(); int pad[5]; };
+struct B5 { virtual ~B5(); int pad[5]; };
+struct B6 { virtual ~B6(); int pad[5]; };
+struct B7 { virtual ~B7(); int pad[5]; };
+struct B8 { virtual ~B8(); int pad[0x16]; };
+
+struct Base : B0, B1, B2, B3, B4, B5, B6, B7, B8 {
+    ~Base();   // 0x5402b0
+};
+
+struct FilteredSelection : Base, Listener {
+    shared_ptr<Owner> owner;   // +0xec
+    std::vector<int> items;    // +0xf4
+    ~FilteredSelection();
+};
+
+FilteredSelection::~FilteredSelection()
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	Name::NamMap::~NamMap()
-	{
-		for (std::map<std::string, Name*>::iterator iter = this->begin(); iter != this->end(); iter++)
-		{
-			delete iter->second;
-		}
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    if (owner)
+        owner->removeListener(this);
 }

@@ -5,11 +5,11 @@
 #include "util/NormalId.h"
 #include "util/IRenderable.h"
 
-namespace RBX 
+namespace RBX
 {
 	extern char sFaceInstance[];
 
-	class FaceInstance : public Reflection::Described<FaceInstance, sFaceInstance, Instance>, public IRenderable 
+	class FaceInstance : public Reflection::Described<FaceInstance, sFaceInstance, Instance>, public IRenderable
 	{
 	private:
 		NormalId face;

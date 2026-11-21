@@ -1,5 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// 2008-06 native G3DDXCaps (inactive): upstream tools/libs/g3d-6.09/source/GLG3Dcpp/DXCaps.cpp, verbatim.
 #line 1 ".\\glg3dcpp\\DXCaps.cpp"
 /**
  @file DXCaps.cpp
@@ -24,7 +22,6 @@
 #include <initguid.h>
 
 namespace G3D {
-
 
 uint32 DXCaps::version() {
     static uint32 dxVersion = 0;
@@ -117,7 +114,6 @@ DECLARE_INTERFACE_( IDirectDraw2, IUnknown )
  */
 #define DDSCAPS_LOCALVIDMEM                     0x10000000l
 
-
 uint64 DXCaps::videoMemorySize() {
     static DWORD totalVidSize = 0;
     static bool init = false;
@@ -153,7 +149,6 @@ uint64 DXCaps::videoMemorySize() {
 
     return totalVidSize;
 }
-
 
 } // namespace G3D
 

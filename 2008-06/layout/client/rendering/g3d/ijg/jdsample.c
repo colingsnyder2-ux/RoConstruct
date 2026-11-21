@@ -1,5 +1,3 @@
-// native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
-// 2008-06 native Jpegjdsample (inactive): upstream tools/libs/jpeg-6b/jdsample.c, verbatim.
 /*
  * jdsample.c
  *
@@ -23,7 +21,6 @@
 #define JPEG_INTERNALS
 #include "jinclude.h"
 #include "jpeglib.h"
-
 
 /* Pointer to routine to upsample a single component */
 typedef JMETHOD(void, upsample1_ptr,
@@ -62,7 +59,6 @@ typedef struct {
 
 typedef my_upsampler * my_upsample_ptr;
 
-
 /*
  * Initialize for an upsampling pass.
  */
@@ -77,7 +73,6 @@ start_pass_upsample (j_decompress_ptr cinfo)
   /* Initialize total-height counter for detecting bottom of image */
   upsample->rows_to_go = cinfo->output_height;
 }
-
 
 /*
  * Control routine to do upsampling (and color conversion).
@@ -120,7 +115,7 @@ sep_upsample (j_decompress_ptr cinfo,
   /* Not more than the distance to the end of the image.  Need this test
    * in case the image height is not a multiple of max_v_samp_factor:
    */
-  if (num_rows > upsample->rows_to_go) 
+  if (num_rows > upsample->rows_to_go)
     num_rows = upsample->rows_to_go;
   /* And not more than what the client can accept: */
   out_rows_avail -= *out_row_ctr;
@@ -141,12 +136,10 @@ sep_upsample (j_decompress_ptr cinfo,
     (*in_row_group_ctr)++;
 }
 
-
 /*
  * These are the routines invoked by sep_upsample to upsample pixel values
  * of a single component.  One row group is processed per call.
  */
-
 
 /*
  * For full-size components, we just make color_buf[ci] point at the
@@ -162,7 +155,6 @@ fullsize_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
   *output_data_ptr = input_data;
 }
 
-
 /*
  * This is a no-op version used for "uninteresting" components.
  * These components will not be referenced by color conversion.
@@ -174,7 +166,6 @@ noop_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
 {
   *output_data_ptr = NULL;	/* safety check */
 }
-
 
 /*
  * This version handles any integral sampling ratios.
@@ -225,7 +216,6 @@ int_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
   }
 }
 
-
 /*
  * Fast processing for the common case of 2:1 horizontal and 1:1 vertical.
  * It's still a box filter.
@@ -252,7 +242,6 @@ h2v1_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
     }
   }
 }
-
 
 /*
  * Fast processing for the common case of 2:1 horizontal and 2:1 vertical.
@@ -285,7 +274,6 @@ h2v2_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
     outrow += 2;
   }
 }
-
 
 /*
  * Fancy processing for the common case of 2:1 horizontal and 1:1 vertical.
@@ -333,7 +321,6 @@ h2v1_fancy_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
     *outptr++ = (JSAMPLE) invalue;
   }
 }
-
 
 /*
  * Fancy processing for the common case of 2:1 horizontal and 2:1 vertical.
@@ -391,7 +378,6 @@ h2v2_fancy_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
     inrow++;
   }
 }
-
 
 /*
  * Module initialization routine for upsampling.

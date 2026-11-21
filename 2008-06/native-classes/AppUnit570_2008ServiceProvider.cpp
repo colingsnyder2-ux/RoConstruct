@@ -101,3 +101,23 @@ namespace RBX
 //     virtual bool askAddChild(const Instance* instance) const { return dynamic_cast<const Service*>(instance) != NULL; }
 // (__RTDynamicCast(instance, 0, Instance, Service); neg/sbb/neg).
 #endif
+
+#ifdef NATIVE_SERVICE_FINDBYSTRING_PENDING
+// 005729c0 (197 B, ret 0x20): ?findServiceByClassNameString@ServiceProvider@RBX@@AAE?AV?$shared_ptr@VInstance@RBX@@@
+// boost@@V?$basic_string@...@@Z (registry; private, by-value std::string). Name::lookup(const std::string&) 00554180
+// compared by address with getNullName 00554270; on a miss G3D::format 00509b10 of "'%s' is not a valid Service name"
+// (0082f7e8) into std::runtime_error 00409d50, thrown (_CxxThrowException, 008d1bc8); else create(this, name) 005726f0
+// and shared_from 00618a40 (folded) into the return slot; the argument string is destroyed (MSVCP90 import).
+// Blocked: v8tree/Service.h (core) does not declare it. Proposal for that header, in the private section:
+//     boost::shared_ptr<Instance> findServiceByClassNameString(std::string className);
+namespace RBX
+{
+	boost::shared_ptr<Instance> ServiceProvider::findServiceByClassNameString(std::string className)
+	{
+		const Name& name = Name::lookup(className);
+		if (&name == &Name::getNullName())
+			throw std::runtime_error(G3D::format("'%s' is not a valid Service name", className.c_str()));
+		return shared_from(create(this, name));
+	}
+}
+#endif

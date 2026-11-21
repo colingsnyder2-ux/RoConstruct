@@ -11,8 +11,8 @@ namespace RBX
         class FunctionRef;
         FunctionRef lua_tofunction(lua_State* L, int index);
         void lua_pushfunction(lua_State* L, const FunctionRef& function);
-        
-        class ThreadRef 
+
+        class ThreadRef
         {
         public:
             class Node;
@@ -20,25 +20,25 @@ namespace RBX
             typedef Bridge<NodePtr, true> NodeBridge;
 
         public:
-            class Node 
+            class Node
             {
                 friend class ThreadRef;
 
             private:
                 ThreadRef* first;
                 const boost::shared_ptr<boost::mutex> sync;
-            
-            private: 
+
+            private:
                 Node()
                     : first(NULL),
                       sync(syncSingleton)
                 {
                 }
 
-            public: 
+            public:
                 ~Node();
                 void eraseAllRefs();
-            
+
             public:
                 static NodePtr create(lua_State* thread);
                 static NodePtr get(lua_State* thread);
@@ -51,10 +51,10 @@ namespace RBX
             ThreadRef* next;
             lua_State* L;
             int threadId;
-            
+
         private:
             static boost::shared_ptr<boost::mutex> syncSingleton;
-        
+
         private:
             void addRef()
             {
@@ -102,7 +102,7 @@ namespace RBX
                 }
             }
 
-        protected: 
+        protected:
             virtual void removeRef();
 
         public:

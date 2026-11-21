@@ -1,89 +1,84 @@
-// from server: 29% by colin
+// from server: 100% by Intel_Inside
+
+
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedDecrement)
 
-extern "C" void __stdcall invalid_parameter_noinfo();
+struct S;
 
-struct RefCounted {
-    void* vptr;
-    volatile long refCount;
-    volatile long weakCount;
+struct Ref {
+    virtual void reserved();
+    virtual void dispose();
+    virtual void destroy();
+
+    volatile long strong;
+    volatile long weak;
+
+    void attach(S*);
+    void release();
 };
 
-struct SignalDesc {
-    int f();
-};
-
-struct Replicator {
-    char pad[0x134];
-    void* vecBegin;
-    void* vecEnd;
-};
-
-struct Item {
-    void* vptr;
-    volatile long refCount;
-    volatile long weakCount;
-};
-
-extern "C" int __cdecl sub_4AFAC0();
-extern "C" void __cdecl sub_4A8ED0(void*);
-extern "C" void __cdecl sub_4A74D0();
-extern "C" void* __cdecl sub_4A5C40();
-extern "C" void __cdecl sub_402A60(void*, void*);
-extern "C" void __cdecl sub_541630(void*, void*);
-extern "C" void* __cdecl sub_725520(void*, void*, void*);
-extern "C" void __cdecl sub_77E6D8();
-
-int SignalDesc::f()
-{
-    Replicator* self = (Replicator*)this;
-    int result;
-    void* local10;
-    void* local14;
-    void* local18;
-    Item* item;
-    unsigned int idx;
-    unsigned int count;
-
-    result = sub_4AFAC0();
-    if (result != 0)
-        return result;
-
-    sub_4A8ED0(&local10);
-    item = (Item*)local10;
-
-    sub_725520((void*)0x8be97c, (void*)0x4a74d0, 0);
-    sub_4A74D0();
-    idx = (unsigned int)sub_4A5C40();
-
-    if (self->vecBegin != 0) {
-        count = ((char*)self->vecEnd - (char*)self->vecBegin) >> 3;
-        if (idx < count)
-            goto have_slot;
+inline void Ref::release() {
+    if (_InterlockedDecrement(&strong) == 0) {
+        dispose();
+        if (_InterlockedDecrement(&weak) == 0)
+            destroy();
     }
-    sub_77E6D8();
+}
 
-have_slot:
-    {
-        char* slot = (char*)self->vecBegin + idx * 8;
-        *(void**)slot = local10;
-        sub_402A60(slot + 4, &local14);
+struct RefSlot {
+    Ref* value;
+    RefSlot& operator=(const RefSlot&);
+};
+
+struct Pair {
+    Ref* value;
+    RefSlot owner;
+    ~Pair();
+};
+
+inline Pair::~Pair() {
+    if (owner.value)
+        owner.value->release();
+}
+
+struct Entry {
+    Ref* value;
+    RefSlot owner;
+};
+
+struct S {
+    char padding[0x134];
+    Entry* first;
+    Entry* last;
+
+    Ref* existing();
+    Ref* create();
+};
+
+Pair __cdecl make_pair();
+void __cdecl register_value(void (__cdecl*)(), void*);
+void __cdecl cleanup_value();
+extern char registration_data;
+void* __cdecl func_0057d800();
+extern "C" void (__cdecl* invalid_parameter_noinfo)();
+
+Ref* S::create() {
+    Ref* result = existing();
+    if (!result) {
+        Pair p = make_pair();
+        result = p.value;
+        register_value(cleanup_value, &registration_data);
+        unsigned index = (unsigned)func_0057d800();
+        unsigned size = first ? (unsigned)(last - first) : 0;
+        if (index >= size)
+            invalid_parameter_noinfo();
+        Entry& entry = first[index];
+        entry.value = p.value;
+        entry.owner = p.owner;
+        result->attach(this);
     }
-
-    sub_541630(item, self);
-
-    if (local14 != 0) {
-        RefCounted* rc = (RefCounted*)local14;
-        if (_InterlockedExchangeAdd(&rc->refCount, -1) == 1) {
-            void (__stdcall *dtor)(void*) = *(void (__stdcall**)(void*))((char*)rc->vptr + 4);
-            dtor(rc);
-            if (_InterlockedExchangeAdd(&rc->weakCount, -1) == 1) {
-                void (__stdcall *dtor2)(void*) = *(void (__stdcall**)(void*))((char*)rc->vptr + 8);
-                dtor2(rc);
-            }
-        }
-    }
-
-    return (int)item;
+    return result;
 }

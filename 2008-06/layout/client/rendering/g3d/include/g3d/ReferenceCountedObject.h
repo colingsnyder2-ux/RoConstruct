@@ -1,5 +1,4 @@
 #pragma once
-// 2008-06 native G3D::ReferenceCountedObject minimal definition for Controller
 
 #include "G3D/AtomicInt32.h"
 

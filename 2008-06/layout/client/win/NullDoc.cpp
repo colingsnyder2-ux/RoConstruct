@@ -8,7 +8,6 @@ BEGIN_MESSAGE_MAP(CBrowserFrameWnd, CFrameWnd)
     ON_WM_NCDESTROY()
 END_MESSAGE_MAP()
 
-// 00433130: drop the frame's menu and give the pane a clean (borderless, no client edge) look.
 int CBrowserFrameWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
     if (CFrameWnd::OnCreate(lpCreateStruct) == -1)
@@ -24,5 +23,4 @@ int CBrowserFrameWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
     return 0;
 }
 
-// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class CXTPFrameWndBase<CFrameWnd>;

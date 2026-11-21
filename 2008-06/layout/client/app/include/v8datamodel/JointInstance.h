@@ -9,11 +9,6 @@
 
 namespace RBX {
 extern const char sJointInstance[];
-// 2008 layout (bases: IRenderable +0x130, empty IJointOwner +0x140): the parts live on JointInstance, not AutoJoint.
-// JointInstance(Joint*) 005e3870 constructs the weak_ptr pair at +0x140 (eh vector ctor, 2 x 8 bytes) and stores
-// joint at +0x150; ~JointInstance 005e2e10 calls setPart(0/1, NULL) 005e2cd0, deletes joint +0x150 and destroys the
-// pair (eh vector dtor, element dtor 005576e0); the getters 005e2a10 / 005e2a70 lock +0x140 / +0x148 (005cab00).
-// VelocityMotor (Feature.h) derives from JointInstance and starts its fields at +0x154.
 class JointInstance : public DescribedNonCreatable<JointInstance, Instance, sJointInstance>, public IRenderable, public IJointOwner {
 private:
     boost::weak_ptr<PartInstance> part[2];   // +0x140 / +0x148
@@ -30,6 +25,12 @@ public:
     Joint::JointType getJointType() const;
     PartInstance* getPart0() const;          // 005e2a10
     PartInstance* getPart1() const;          // 005e2a70
+    void setPart0(PartInstance* value);                  // 005e4450
+    void setPart1(PartInstance* value);                  // 005e4470
+    const G3D::CoordinateFrame& getC0() const;
+    const G3D::CoordinateFrame& getC1() const;
+    void setC0(const G3D::CoordinateFrame& value);       // 005e4490
+    void setC1(const G3D::CoordinateFrame& value);       // 005e44c0
 };
 
 extern const char sAutoJoint[];
@@ -51,12 +52,9 @@ public:
 
 extern const char sSnap[];
 // INFERRED: binary RTTI/bindings bind DescribedCreatable<Snap, JointInstance, sSnap> (all 7 joint classes use
-// JointInstance as the 2nd template arg; AutoJoint declarations here do not match the 2008 binary).
 class Snap : public DescribedCreatable<Snap, JointInstance, sSnap> { public: Snap(Joint* joint); Snap(); };
 extern const char sWeld[];
 // INFERRED: 2008 binary RTTI binds the vftable/deleting-dtor thunks stored by Weld's ctors at 005e4710/005e4810 to
-// FactoryProduct<Weld, JointInstance, sWeld> and DescribedCreatable<Weld, JointInstance, sWeld> (class-identity-bindings.json),
-// so the template argument is JointInstance, not AutoJoint; the ctor bytes are unchanged.
 class Weld : public DescribedCreatable<Weld, JointInstance, sWeld> { public: Weld(Joint* joint); Weld(); };
 extern const char sGlue[];
 class Glue : public DescribedCreatable<Glue, JointInstance, sGlue> { public: Glue(Joint* joint); Glue(); };

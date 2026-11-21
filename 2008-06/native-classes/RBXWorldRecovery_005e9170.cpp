@@ -8,8 +8,9 @@
 // These two bodies cannot be built against engine-world v8world/World.h: there numLinkCalls / tempPrimitives sit 0xc
 // lower (World() 005ea920 zeroes a second G3D::Array at +0xb8 that the header lacks) and the donor Primitive.h keeps
 // joints in a linked list. This unit uses the NATIVE_WORLD_LAYOUT view of native-headers/v8world/World2008.h, the 2008
-// Primitive of v8world/Primitive2008.h and the native Joint of v8world/Joints2008.h; ContactManager comes from the
-// engine-world v8world/ContactManager.h (getPrimitivesTouchingExtents 0060d140 is not declared in ContactManager2008.h).
+// Primitive of v8world/Primitive2008.h and the native Joint of v8world/Joints2008.h; ContactManager is the native
+// v8world/ContactManager2008.h (batch 28: getPrimitivesTouchingExtents 0060d140 / onPrimitiveExtentsChanged 0060cc50 declared
+// there) and the assembly is the 2008 Clump-based Assembly of v8world/AssemblyLayout.h (NATIVE_CLUMP_DECL).
 #undef _RELEASEASSERT
 #define NATIVE_WORLD_LAYOUT
 #include <set>
@@ -22,7 +23,9 @@
 #include "v8world/Joints2008.h"
 #include "v8world/Primitive2008.h"
 #include "v8world/World2008.h"
-#include "v8world/ContactManager.h"
+#include "v8world/ContactManager2008.h"
+#define NATIVE_CLUMP_DECL // the native 2008 RBX::Clump / RBX::Assembly (assemblyPrimBegin 005e5fa0 / End 005e5fc0)
+#include "v8world/AssemblyLayout.h"
 
 namespace RBX
 {
@@ -34,17 +37,24 @@ namespace RBX
 		static Joint* canJoin(Primitive* p0, Primitive* p1);
 	};
 
+	// File-static helper of the donor World.cpp (tools/openrbx v8world/World.cpp inIgnoreGroup, external-linkage free
+	// function there; inline at every site, no code of its own in the 2008 binary). Batch 28 hypothesis for the register
+	// residuals of 005ea4d0 / 005ea3f0: the ignore-group test as a helper holding its own null check.
+	static bool inIgnoreGroup(std::set<Primitive*>* ignoreGroup, Primitive* p)
+	{
+		return ignoreGroup != NULL && ignoreGroup->find(p) != ignoreGroup->end();
+	}
+
 	// 005ea4d0 ?createJoints@World@RBX@@AAEXPAVPrimitive@2@PAV?$set@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@@std@@@Z
 	// (registry, reference vote; callers createJoints(Primitive*) 005ea5d0 and createJointsToWorld). Donor World.cpp body:
 	// ++numLinkCalls (+0xec), tempPrimitives (+0xf0) resize(0, false) 00599a70, Primitive::getFastFuzzyExtents 005e7a50,
 	// ContactManager::getPrimitivesTouchingExtents 0060d140, then per found primitive: set find 004ae060 against end(),
 	// Primitive::getJoint(p0, p1) 005e7ce0, JointBuilder::canJoin 0064d410, insertJoint 005ea320 and the AutoJoin raise
 	// 005e9940 under inJointNotification (+0xa5).
-	// NEAR MISS (batch 27): 256 B against 252. Same calls, constants and control flow; register allocation differs: the
-	// target keeps p on the stack (reloaded at 005ea56d) and currentPrim in ebx, pushing ebx / ebp only after the size
-	// test, and spills both words of end() before the find call; this build keeps p in ebx from the prologue.
-	// Rejected: const find (static_cast to const set*, the registry spells 004ae060 as the const find: unchanged) and
-	// `end() == find(x)` operand order (254 B, worse).
+	// Batch 28: IDENTICAL to 005ea4d0 (252 B, relocations masked) with the inIgnoreGroup helper (batch 27 near miss 256 B:
+	// p kept in ebx). Remaining blocker is registry only: the tempPrimitives resize call binds
+	// ?resize@?$Array@PAVPrimitive@RBX@@@G3D@@QAEXH_N@Z to 005025c0 while the original calls 00599a70 (COMDAT twin; alias
+	// proposal).
 	void World::createJoints(Primitive* p, std::set<Primitive*>* ignoreGroup)
 	{
 		this->numLinkCalls++;
@@ -55,7 +65,7 @@ namespace RBX
 		{
 			Primitive* currentPrim = this->tempPrimitives[i];
 
-			if (ignoreGroup == NULL || ignoreGroup->find(currentPrim) == ignoreGroup->end())
+			if (!inIgnoreGroup(ignoreGroup, currentPrim))
 			{
 				if (!Primitive::getJoint(p, currentPrim))
 				{
@@ -77,9 +87,7 @@ namespace RBX
 	// index) where the donor follows getFirstJoint / getNextJoint; skips FREE_JOINT (9) and ANCHOR_JOINT (5) through the
 	// virtual getJointType (slot 5), otherPrimitive inline (+0xc / +0x10), set find 004ae060, then the AutoDestroy raise
 	// 005e99d0 on the +0x20 base under inJointNotification (+0xa5).
-	// NEAR MISS (batch 27): 198 B, size equal; only the find / end() block differs (005ea44a..005ea47b): the target loads
-	// the end() head into eax and stores it after both pushes, this build uses ecx and stores it between the pushes.
-	// Rejected: const find (unchanged) and `end() == find(x)` (186 B, frame shrinks to 0x14).
+	// Batch 28: exact with the inIgnoreGroup helper (batch 27 near miss: end() register choice in the find block).
 	void World::destroyJoints(Primitive* p, std::set<Primitive*>* ignoreGroup)
 	{
 		for (int i = p->getNumJoints() - 1; i >= 0; i--)
@@ -89,13 +97,27 @@ namespace RBX
 			if (jointType != Joint::FREE_JOINT && jointType != Joint::ANCHOR_JOINT)
 			{
 				Primitive* otherPrim = j->otherPrimitive(p);
-				if (ignoreGroup == NULL || ignoreGroup->find(otherPrim) == ignoreGroup->end())
+				if (!inIgnoreGroup(ignoreGroup, otherPrim))
 				{
 					this->inJointNotification = true;
 					Notifier<World, AutoDestroy>::raise(AutoDestroy(j));
 					this->inJointNotification = false;
 				}
 			}
+		}
+	}
+
+	// 005e91d0 (registry func_005e91d0; donor World::onAssemblyExtentsChanged, only caller Primitive::setCoordinateFrame
+	// 005e8287): Assembly::assemblyPrimEnd 005e5fc0, then assemblyPrimBegin 005e5fa0, each primitive (++ 00647640) passed to
+	// ContactManager::onPrimitiveExtentsChanged 0060cc50 through contactManager (+0x84). Moved here from
+	// AppUnit5E8_2008World.cpp (batch 28), whose donor engine-world headers cannot see the 2008 Assembly.
+	void World::onAssemblyExtentsChanged(Assembly* a)
+	{
+		PrimIterator end = a->assemblyPrimEnd();
+
+		for (PrimIterator it = a->assemblyPrimBegin(); it != end; ++it)
+		{
+			contactManager->onPrimitiveExtentsChanged(*it);
 		}
 	}
 }

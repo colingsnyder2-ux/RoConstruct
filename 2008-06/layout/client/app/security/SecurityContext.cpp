@@ -1,4 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 #include "security/SecurityContext.h"
 
 namespace RBX

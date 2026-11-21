@@ -1,11 +1,9 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// 2008-06 native G3DColor3uint8 (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/Color3uint8.cpp, verbatim.
 #line 1 ".\\G3Dcpp\\Color3uint8.cpp"
 /**
  @file Color3uint8.cpp
- 
+
  @author Morgan McGuire, matrix@graphics3d.com
-  
+
  @created 2003-04-07
  @edited  2006-01-07
  */
@@ -25,11 +23,9 @@ Color3uint8::Color3uint8(const class Color3& c) {
     b = iMin(255, iRound(c.b * 256));
 }
 
-
 Color3uint8::Color3uint8(class BinaryInput& bi) {
     deserialize(bi);
 }
-
 
 void Color3uint8::serialize(class BinaryOutput& bo) const {
     bo.writeUInt8(r);
@@ -37,12 +33,10 @@ void Color3uint8::serialize(class BinaryOutput& bo) const {
     bo.writeUInt8(b);
 }
 
-
 void Color3uint8::deserialize(class BinaryInput& bi) {
     r = bi.readUInt8();
     g = bi.readUInt8();
     b = bi.readUInt8();
 }
-
 
 }

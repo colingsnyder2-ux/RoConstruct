@@ -1,13 +1,8 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
-// RBX::Constants::getJointKMultiplier, 2008-06 v8kernel Constants unit (getElasticMultiplier 00649320,
-// getJointKMultiplier 00649390, getKmsMaxJointForce 00649670). The size is truncated to G3D::Vector3int16
-// (Vector3int16(const Vector3&) 007bbdc0); ball sizes use a jump table on x, blocks switch on x, y and z.
 #include "v8kernel/Constants.h"
 #include <G3D/Vector3int16.h>
 
 namespace RBX
 {
-	// 00649390
 	const float Constants::getJointKMultiplier(const G3D::Vector3& clippedSortedSize, bool ball)
 	{
 		G3D::Vector3int16 size(clippedSortedSize);

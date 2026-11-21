@@ -22,7 +22,7 @@ namespace RBX
 		const MessageType type;
 		const std::string message;
 		__time64_t time;
-	  
+
 	public:
 		//StandardOutMessage(const StandardOutMessage&);
 		StandardOutMessage(MessageType type, const char* message)
@@ -40,7 +40,7 @@ namespace RBX
 	{
 	public:
 		boost::mutex sync;
-	  
+
 	public:
 		void print(MessageType, const std::exception&);
 		void print(MessageType type, const char* format, ...);
@@ -50,7 +50,7 @@ namespace RBX
 		virtual ~StandardOut();
 	public:
 		//StandardOut& operator=(const StandardOut&);
-	  
+
 	public:
 		static boost::shared_ptr<StandardOut> singleton();
 		static void print_exception(const boost::function0<void>&, MessageType, bool);

@@ -1,4 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 #include "v8world/IMoving.h"
 
 #include "../../../../../../tools/rbxgs/Client/App/include/v8world/IMoving.h"
@@ -18,7 +17,6 @@ namespace RBX
 			iMovingManager->moved(this);
 	}
 
-	// 00614be0
 void IMoving::notifyMoved(void)
 {
 	if (stepsToSleep == 0) {
@@ -30,7 +28,6 @@ void IMoving::notifyMoved(void)
 	}
 }
 
-	// 00614c20
 	void IMovingManager::remove(IMoving* iMoving)
 	{
 		if (current != moving.end() && *current == iMoving)
@@ -39,7 +36,6 @@ void IMoving::notifyMoved(void)
 			moving.erase(iMoving);
 	}
 
-	// 00614cc0
 	void IMovingManager::onMovingHeartbeat()
 	{
 		current = moving.begin();
@@ -60,7 +56,6 @@ void IMoving::notifyMoved(void)
 		}
 	}
 
-	// 00614d50
 void IMoving::setMovingManager(IMovingManager* _iMovingManager)
 {
 	if (iMovingManager != 0) {

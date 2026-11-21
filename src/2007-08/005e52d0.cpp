@@ -1,181 +1,89 @@
-// from server: 58% by colin
+// from server: 100% by Intel_Inside
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs tool/ToolsArrow.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <vector>
+#include <intrin.h>
+#pragma intrinsic(_InterlockedDecrement)
 
-// Candidate translation unit (score above; library headers required).
-#include "tool/ToolsArrow.h"
-#include "tool/DragTool.h"
-#include "v8datamodel/Camera.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8datamodel/Selection.h"
-#include "v8datamodel/Workspace.h"
-#include <G3D/Rect2D.h>
+namespace boost {
 
-namespace RBX
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy();
+    long use_count_;            // +4
+    long weak_count_;           // +8
+    void weak_release()
+    {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
+    void release()
+    {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
+};
+
+class shared_count {
+    sp_counted_base* pi_;
+public:
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+    shared_count& operator=(const shared_count& r);     // 0x402a60
+};
+}
+
+template<class T> class shared_ptr {
+public:
+    T* get() const { return px; }
+    T* operator->() const { return px; }
+    T* px;
+    detail::shared_count pn;
+};
+
+struct once_flag { long epoch; };
+void call_once(void (*func)(), once_flag& flag);        // 0x725520
+
+}
+
+namespace RBX {
+
+class Instance;
+
+class Tool {
+public:
+    void setOwner(Instance* owner);                      // 0x541630
+};
+
+boost::shared_ptr<Tool> createTool();                    // 0x43de50
+void initToolIndex();                                     // 0x5588d0
+extern boost::once_flag toolIndexFlag;                    // 0x8c1f1c
+unsigned int toolIndex();                                 // 0x5578c0
+
+class Instance {
+    int pad[0x130 / 4];
+    std::vector< boost::shared_ptr<Tool> > products;      // _Myfirst at +0x134 (VS2005 vector keeps its allocator first)
+public:
+    Tool* findTool();                                     // 0x55a490
+    Tool* create();
+};
+
+Tool* Instance::create()
 {
-	char* sArrowTool = "Arrow";
+    Tool* result = findTool();
+    if (result == 0) {
+        boost::shared_ptr<Tool> tool = createTool();
+        result = tool.get();
+        boost::call_once(&initToolIndex, toolIndexFlag);
+        products[toolIndex()] = tool;
+        result->setOwner(this);
+    }
+    return result;
+}
 
-	const std::string ArrowToolBase::getCursorName() const
-	{
-		return overInstance ? "DragCursor" : "ArrowCursor";
-	}
-
-	void ArrowToolBase::onMouseIdle(const UIEvent& uiEvent)
-	{
-		overInstance = getUnlockedPart(uiEvent) != NULL;
-	}
-
-	void ArrowToolBase::onMouseHover(const UIEvent& uiEvent)
-	{
-		onMouseIdle(uiEvent);
-	}
-
-	MouseCommand* ArrowToolBase::onMouseDown(const UIEvent& uiEvent)
-	{
-		RBXASSERT(uiEvent.eventType == UIEvent::MOUSE_LEFT_BUTTON_DOWN);
-
-		G3D::Vector3 hitWorld;
-
-		PartInstance* part = getUnlockedPart(uiEvent, hitWorld);
-		if (part)
-		{
-			Instance* top = getTopSelectable3d(part);
-			UserInputBase* input = uiEvent.userInput;
-
-			ServiceClient<Selection> selection(workspace);
-
-			if (!input->keyDown(SDLK_RSHIFT) && !input->keyDown(SDLK_LSHIFT) &&
-				!input->keyDown(SDLK_RCTRL) && !input->keyDown(SDLK_LCTRL))
-			{
-				if (!selection->isSelected(top))
-				{
-					selection->setSelection(top);
-				}
-
-				if (uiEvent.eventType == UIEvent::MOUSE_LEFT_BUTTON_DOWN)
-				{
-					ServiceClient<FilteredSelection<Instance>> instanceSelection(workspace);
-					return DragTool::onMouseDown(part, hitWorld, instanceSelection->items(), uiEvent, workspace);
-				}
-			}
-			else
-			{
-				if (selection->isSelected(top))
-					selection->removeFromSelection(top);
-				else
-					selection->addToSelection(top);
-			}
-
-			return NULL;
-		}
-		else
-		{
-			MouseCommand* newCommand = new BoxSelectCommand(workspace);
-			return newCommand->onMouseDown(uiEvent);
-		}
-	}
-
-	char* sBoxSelectCommand = "BoxSelect";
-
-	BoxSelectCommand::BoxSelectCommand(Workspace* workspace)
-		: Base(workspace),
-		  selection((Instance*)workspace)
-	{
-	}
-
-	MouseCommand* BoxSelectCommand::onMouseDown(const UIEvent& uiEvent)
-	{
-		previousItemsInBox.clear();
-		capture();
-
-		UserInputBase* input = uiEvent.userInput;
-		reverseSelecting = input->keyDown(SDLK_RSHIFT) || input->keyDown(SDLK_LSHIFT);
-
-		if (!reverseSelecting)
-			selection->clearSelection();
-
-		mouseDownView = uiEvent.mousePosition;
-		mouseCurrentView = uiEvent.mousePosition;
-		return this;
-	}
-
-	void BoxSelectCommand::onMouseMove(const UIEvent& uiEvent)
-	{
-		mouseCurrentView = uiEvent.mousePosition;
-
-		std::set<Instance*> instances;
-		getMouseInstances(instances, uiEvent, G3D::Rect2D::xyxy(mouseDownView.x, mouseDownView.y, mouseCurrentView.x, mouseCurrentView.y));
-
-		if (reverseSelecting)
-			selectReverse(instances);
-		else
-			selectAnd(instances);
-	}
-
-	void BoxSelectCommand::render2d(Adorn* adorn)
-	{
-		G3D::Rect2D temp = G3D::Rect2D::xyxy(mouseDownView.x, mouseDownView.y, mouseCurrentView.x, mouseCurrentView.y);
-		adorn->outlineRect2d(temp, 0.5f, G3D::Color3::gray());
-	}
-
-	void BoxSelectCommand::getMouseInstances(std::set<Instance*>& instances, const UIEvent& uiEvent, G3D::Rect2D& selectBox)
-	{
-		Camera* camera = workspace->getCamera();
-		G3D::Rect2D viewport = G3D::Rect2D::xyxy(0.0f, 0.0f, uiEvent.windowSize.x, uiEvent.windowSize.y);
-
-		for (size_t i = 0; i < workspace->numChildren(); i++)
-		{
-			ILocation* location = workspace->queryTypedChild<ILocation>((int)i);
-			ISelectable3d* selectable3d = workspace->queryTypedChild<ISelectable3d>((int)i);
-
-			if (location && selectable3d)
-			{
-				Instance* instance = workspace->getChild(i);
-				if (!PartInstance::getLocked(instance))
-				{
-					G3D::Vector3 gridPos = location->getLocation().translation;
-					G3D::Vector3 projection = camera->getGCamera().project(gridPos, viewport);
-
-					if (selectBox.contains(projection.xy()))
-						instances.insert(instance);
-				}
-			}
-		}
-	}
-
-	void BoxSelectCommand::selectAnd(const std::set<Instance*>& newItemsInBox)
-	{
-		std::set_difference(
-			newItemsInBox.begin(), newItemsInBox.end(), 
-			previousItemsInBox.begin(), previousItemsInBox.end(), 
-			Selection::AddIterator(selection)
-		);
-
-		std::set_difference(
-			previousItemsInBox.begin(), previousItemsInBox.end(), 
-			newItemsInBox.begin(), newItemsInBox.end(), 
-			Selection::RemoveIterator(selection)
-		);
-
-		previousItemsInBox = newItemsInBox;
-	}
-
-	void BoxSelectCommand::selectReverse(const std::set<Instance*>& newItemsInBox)
-	{
-		std::set_difference(
-			newItemsInBox.begin(), newItemsInBox.end(), 
-			previousItemsInBox.begin(), previousItemsInBox.end(), 
-			Selection::ToggleIterator(selection)
-		);
-
-		std::set_difference(
-			previousItemsInBox.begin(), previousItemsInBox.end(), 
-			newItemsInBox.begin(), newItemsInBox.end(), 
-			Selection::ToggleIterator(selection)
-		);
-
-		previousItemsInBox = newItemsInBox;
-	}
 }

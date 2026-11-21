@@ -1,5 +1,3 @@
-// native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
-// 2008-06 native Jpegjdcoefct (inactive): upstream tools/libs/jpeg-6b/jdcoefct.c, verbatim.
 /*
  * jdcoefct.c
  *
@@ -76,7 +74,6 @@ METHODDEF(int) decompress_smooth_data
 	JPP((j_decompress_ptr cinfo, JSAMPIMAGE output_buf));
 #endif
 
-
 LOCAL(void)
 start_iMCU_row (j_decompress_ptr cinfo)
 /* Reset within-iMCU-row counters for a new row (input side) */
@@ -100,7 +97,6 @@ start_iMCU_row (j_decompress_ptr cinfo)
   coef->MCU_vert_offset = 0;
 }
 
-
 /*
  * Initialize for an input processing pass.
  */
@@ -111,7 +107,6 @@ start_input_pass (j_decompress_ptr cinfo)
   cinfo->input_iMCU_row = 0;
   start_iMCU_row(cinfo);
 }
-
 
 /*
  * Initialize for an output processing pass.
@@ -133,7 +128,6 @@ start_output_pass (j_decompress_ptr cinfo)
 #endif
   cinfo->output_iMCU_row = 0;
 }
-
 
 /*
  * Decompress and return some data in the single-pass case.
@@ -221,7 +215,6 @@ decompress_onepass (j_decompress_ptr cinfo, JSAMPIMAGE output_buf)
   return JPEG_SCAN_COMPLETED;
 }
 
-
 /*
  * Dummy consume-input routine for single-pass operation.
  */
@@ -231,7 +224,6 @@ dummy_consume_data (j_decompress_ptr cinfo)
 {
   return JPEG_SUSPENDED;	/* Always indicate nothing was done */
 }
-
 
 #ifdef D_MULTISCAN_FILES_SUPPORTED
 
@@ -304,7 +296,6 @@ consume_data (j_decompress_ptr cinfo)
   return JPEG_SCAN_COMPLETED;
 }
 
-
 /*
  * Decompress and return some data in the multi-pass case.
  * Always attempts to emit one fully interleaved MCU row ("iMCU" row).
@@ -376,7 +367,6 @@ decompress_data (j_decompress_ptr cinfo, JSAMPIMAGE output_buf)
 }
 
 #endif /* D_MULTISCAN_FILES_SUPPORTED */
-
 
 #ifdef BLOCK_SMOOTHING_SUPPORTED
 
@@ -453,7 +443,6 @@ smoothing_ok (j_decompress_ptr cinfo)
 
   return smoothing_useful;
 }
-
 
 /*
  * Variant of decompress_data for use when doing block smoothing.
@@ -668,7 +657,6 @@ decompress_smooth_data (j_decompress_ptr cinfo, JSAMPIMAGE output_buf)
 }
 
 #endif /* BLOCK_SMOOTHING_SUPPORTED */
-
 
 /*
  * Initialize coefficient buffer controller.

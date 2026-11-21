@@ -2,19 +2,14 @@
 #include "v8datamodel/Rocket.h"
 #include "v8datamodel/PartInstance.h"
 #include "util/Math.h"
-#ifdef NATIVE_BODYMOVER_ONEVENT_PENDING
-#include "v8world/World2008.h"
-#endif
 
 namespace RBX
 {
-#ifdef NATIVE_BODYMOVER_ONEVENT_PENDING
 	void BodyMover::onEvent(const RunService* source, Stepped event)
 	{
 		if (world && part.lock() && preventBodySleep())
 			world->ticklePrimitive(part.lock()->getPrimitive(), true);
 	}
-#endif
 
 	void Rocket::onEvent(const RunService* source, Stepped event)
 	{

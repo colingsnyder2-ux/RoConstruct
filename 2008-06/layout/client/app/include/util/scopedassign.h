@@ -1,7 +1,6 @@
 #ifndef UTIL_SCOPEDASSIGN_H
 #define UTIL_SCOPEDASSIGN_H
 
-
 namespace RBX {
 
 // SIZE 0x8

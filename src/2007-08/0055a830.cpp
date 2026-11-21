@@ -1,72 +1,89 @@
-// from server: 33% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Intel_Inside
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <vector>
+#include <intrin.h>
+#pragma intrinsic(_InterlockedDecrement)
 
-extern "C" void __stdcall _invalid_parameter_noinfo();
+namespace boost {
 
-struct CreatorImpl {
-    void* vptr;
-    int refcount1;
-    int refcount2;
-};
-
-struct FactoryProduct {
-    char pad[0x134];
-    CreatorImpl** creatorsBegin;
-    CreatorImpl** creatorsEnd;
-
-    int sub_55a2e0();
-    void sub_559470(void** out);
-    void sub_557860();
-    void sub_541630(void* arg);
-    void sub_402a60(void* arg);
-};
-
-extern "C" void* __cdecl sub_725520(void* a, void* b, void* c);
-
-void* FactoryProduct_ctor(FactoryProduct* self) {
-    if (self->sub_55a2e0() != 0) {
-        return self;
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy();
+    long use_count_;            // +4
+    long weak_count_;           // +8
+    void weak_release()
+    {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
     }
-
-    void* local8 = 0;
-    self->sub_559470(&local8);
-
-    void* ebx = local8;
-
-    sub_725520((void*)0x8c1f18, (void*)0x5588c0, (void*)0);
-    self->sub_557860();
-
-    int edi = 0;
-    CreatorImpl** begin = self->creatorsBegin;
-    if (begin != 0) {
-        CreatorImpl** end = self->creatorsEnd;
-        int count = (int)((char*)end - (char*)begin) >> 3;
-        if (edi < count) {
-            goto ok;
+    void release()
+    {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
         }
     }
-    _invalid_parameter_noinfo();
-ok:
-    CreatorImpl** slot = self->creatorsBegin + edi;
-    *slot = (CreatorImpl*)ebx;
-    self->sub_402a60(&local8);
+};
 
-    self->sub_541630(ebx);
+class shared_count {
+    sp_counted_base* pi_;
+public:
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+    shared_count& operator=(const shared_count& r);     // 0x402a60
+};
+}
 
-    CreatorImpl* obj = (CreatorImpl*)local8;
-    if (obj != 0) {
-        if (_InterlockedExchangeAdd((volatile long*)&obj->refcount1, -1) == 1) {
-            void** vt = (void**)obj->vptr;
-            void (*fn)(void*) = (void (*)(void*))vt[1];
-            fn(obj);
-            if (_InterlockedExchangeAdd((volatile long*)&obj->refcount2, -1) == 1) {
-                void** vt2 = (void**)obj->vptr;
-                void (*fn2)(void*) = (void (*)(void*))vt2[2];
-                fn2(obj);
-            }
-        }
+template<class T> class shared_ptr {
+public:
+    T* get() const { return px; }
+    T* operator->() const { return px; }
+    T* px;
+    detail::shared_count pn;
+};
+
+struct once_flag { long epoch; };
+void call_once(void (*func)(), once_flag& flag);        // 0x725520
+
+}
+
+namespace RBX {
+
+class Instance;
+
+class Tool {
+public:
+    void setOwner(Instance* owner);                      // 0x541630
+};
+
+boost::shared_ptr<Tool> createTool();                    // 0x43de50
+void initToolIndex();                                     // 0x5588d0
+extern boost::once_flag toolIndexFlag;                    // 0x8c1f1c
+unsigned int toolIndex();                                 // 0x5578c0
+
+class Instance {
+    int pad[0x130 / 4];
+    std::vector< boost::shared_ptr<Tool> > products;      // _Myfirst at +0x134 (VS2005 vector keeps its allocator first)
+public:
+    Tool* findTool();                                     // 0x55a490
+    Tool* create();
+};
+
+Tool* Instance::create()
+{
+    Tool* result = findTool();
+    if (result == 0) {
+        boost::shared_ptr<Tool> tool = createTool();
+        result = tool.get();
+        boost::call_once(&initToolIndex, toolIndexFlag);
+        products[toolIndex()] = tool;
+        result->setOwner(this);
     }
+    return result;
+}
 
-    return ebx;
 }

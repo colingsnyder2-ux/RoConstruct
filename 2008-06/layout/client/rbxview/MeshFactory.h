@@ -1,12 +1,4 @@
 #pragma once
-// 2008-06 native RBX::ViewNew::MeshFactory<Mesh, numMeshes> (inactive): the empty second base of the cached meshes.
-//   RTTI     .?AV?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@ (and WedgeMesh / TorsoMesh / HeadMesh /
-//            CylinderAlongXMesh with $00 = 1, PBBMesh with $03 = 4) is the last base class descriptor of each mesh,
-//            mdisp 0x89, no fields (the meshes are 0x8c: the factories push 0x8c before their constructors).
-//   Static caches: only declared here (no instance fields). The nested types are proven by the RTTI of the cache
-//   tables, e.g. 00826b84 .?AV?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@
-//   VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@@G3D@@. Their definitions and the create / flush bodies are in
-//   native-headers/ViewNewPartMesh2008/MeshFactoryCache2008.h (included by native-classes/ViewNewPartMesh2008.cpp).
 #include <cstddef>
 #include <boost/thread/once.hpp>
 #include "util/NormalId.h"

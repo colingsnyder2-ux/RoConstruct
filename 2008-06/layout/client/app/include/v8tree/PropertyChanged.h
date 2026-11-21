@@ -3,7 +3,6 @@
 
 namespace RBX {
 class Instance;
-// Existing donor event declaration; original grid callback observes its descriptor.
 class PropertyChanged {
     friend class Instance;
     Reflection::Property property;

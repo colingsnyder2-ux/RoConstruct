@@ -1,5 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
-// Inactive native 2008-06 RBXImage (native-headers/AppLeaves2008/RBXImage2008.h).
 #include "AppLeaves2008/RBXImage2008.h"
 #include <atlbase.h>
 #include <atlalloc.h>

@@ -8,7 +8,7 @@
 #include "Network/Players.h"
 #include "Network/IdSerializer.h"
 #include "RakNetTypes.h"
-#include "v8world/Assembly.h"
+namespace RBX { class Assembly; }
 #include "v8world/Mechanism.h"
 #include "util/Profiling.h"
 #include "stats/Stats.h"
@@ -95,7 +95,7 @@ namespace RBX
 			public:
 				virtual ~Item();
 				virtual void write(RakNet::BitStream& bitStream) = 0;
-				
+
 			public:
 				static void writeItemType(RakNet::BitStream& stream, ItemType value);
 				static void readItemType(RakNet::BitStream& stream, ItemType& value);
@@ -342,7 +342,7 @@ class FilePacketLogger : public PacketLogger
 {
 private:
 	FILE* packetLogFile;
-	
+
 public:
 	FilePacketLogger(RBX::Network::Peer*);
 	virtual ~FilePacketLogger();

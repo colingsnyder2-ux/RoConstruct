@@ -1,93 +1,89 @@
-// from server: 20% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Intel_Inside
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <vector>
+#include <intrin.h>
+#pragma intrinsic(_InterlockedDecrement)
 
-extern "C" void __stdcall _invalid_parameter_noinfo();
+namespace boost {
 
-struct RBXName {
-    void* rep;
-};
-
-struct NameRef {
-    void* ptr;
-};
-
-struct CreatorEntry {
-    void* key;
-    void* value;
-};
-
-struct CreatorList {
-    CreatorEntry* begin;
-    CreatorEntry* end;
-};
-
-struct ICreator {
-    virtual void unknown0();
-    virtual void unknown1();
-    virtual void unknown2();
-};
-
-struct Creator : public ICreator {
-    void* field4;
-    void* field8;
-};
-
-struct FactoryProduct {
-    char pad[0x134];
-    CreatorEntry* creatorsBegin;
-    CreatorEntry* creatorsEnd;
-
-    void* getCreators();
-    void* getClassNameUnconstructed();
-    void* getClassName();
-    void registerCreator(Creator* c);
-};
-
-extern "C" void* __cdecl sub_560510(void*);
-extern "C" void* __cdecl sub_560FE0(void*);
-extern "C" void* __cdecl sub_55E820();
-extern "C" void* __cdecl sub_725520(void*, void*, void*);
-extern "C" void* __cdecl sub_402A60(void*, void*);
-extern "C" void* __cdecl sub_541630(void*, void*);
-extern "C" void* __cdecl sub_77E6D8();
-
-void* FactoryProduct::getCreators() {
-    return 0;
-}
-
-void* FactoryProduct::getClassNameUnconstructed() {
-    return 0;
-}
-
-void* FactoryProduct::getClassName() {
-    return 0;
-}
-
-void FactoryProduct::registerCreator(Creator* c) {
-    void* name = getClassNameUnconstructed();
-    CreatorEntry* begin = creatorsBegin;
-    CreatorEntry* end = creatorsEnd;
-    unsigned int count = 0;
-    if (begin != 0) {
-        count = (unsigned int)((char*)end - (char*)begin) >> 3;
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy();
+    long use_count_;            // +4
+    long weak_count_;           // +8
+    void weak_release()
+    {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
     }
-    unsigned int idx = (unsigned int)sub_55E820();
-    if (begin == 0 || idx >= count) {
-        sub_77E6D8();
-    }
-    CreatorEntry* slot = &creatorsBegin[idx];
-    slot->key = name;
-    sub_402A60(&slot->value, &c);
-    sub_541630(c, this);
-    if (c != 0) {
-        if (_InterlockedExchangeAdd((volatile long*)((char*)c + 4), -1) == 1) {
-            void** vt = *(void***)c;
-            ((void (__thiscall*)(void*))vt[1])(c);
-            if (_InterlockedExchangeAdd((volatile long*)((char*)c + 8), -1) == 1) {
-                void** vt2 = *(void***)c;
-                ((void (__thiscall*)(void*))vt2[2])(c);
-            }
+    void release()
+    {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
         }
     }
+};
+
+class shared_count {
+    sp_counted_base* pi_;
+public:
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+    shared_count& operator=(const shared_count& r);     // 0x402a60
+};
+}
+
+template<class T> class shared_ptr {
+public:
+    T* get() const { return px; }
+    T* operator->() const { return px; }
+    T* px;
+    detail::shared_count pn;
+};
+
+struct once_flag { long epoch; };
+void call_once(void (*func)(), once_flag& flag);        // 0x725520
+
+}
+
+namespace RBX {
+
+class Instance;
+
+class Tool {
+public:
+    void setOwner(Instance* owner);                      // 0x541630
+};
+
+boost::shared_ptr<Tool> createTool();                    // 0x43de50
+void initToolIndex();                                     // 0x5588d0
+extern boost::once_flag toolIndexFlag;                    // 0x8c1f1c
+unsigned int toolIndex();                                 // 0x5578c0
+
+class Instance {
+    int pad[0x130 / 4];
+    std::vector< boost::shared_ptr<Tool> > products;      // _Myfirst at +0x134 (VS2005 vector keeps its allocator first)
+public:
+    Tool* findTool();                                     // 0x55a490
+    Tool* create();
+};
+
+Tool* Instance::create()
+{
+    Tool* result = findTool();
+    if (result == 0) {
+        boost::shared_ptr<Tool> tool = createTool();
+        result = tool.get();
+        boost::call_once(&initToolIndex, toolIndexFlag);
+        products[toolIndex()] = tool;
+        result->setOwner(this);
+    }
+    return result;
+}
+
 }

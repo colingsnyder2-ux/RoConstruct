@@ -69,11 +69,11 @@ namespace RBX
 			ROTATE_P_JOINT,    // RotatePJoint slot 5 0077d810 `mov eax, 2`
 			ROTATE_V_JOINT,    // RotateVJoint slot 5 005e2790 `mov eax, 3`
 			GLUE_JOINT,        // GlueJoint slot 5 006fa3f0 `mov eax, 4`
-			ANCHOR_JOINT,
+			ANCHOR_JOINT,      // AnchorJoint slot 5 (ClumpStage 0064cc40 news it; getJoint 0064ca60 searches for 5)
 			WELD_JOINT,        // WeldJoint slot 5 005cb9d0 `mov eax, 6`
 			SNAP_JOINT,        // SnapJoint slot 5 0077d800 `mov eax, 7`
 			MOTOR_JOINT,       // MotorJoint slot 5 0063e420 `mov eax, 8`
-			FREE_JOINT
+			FREE_JOINT         // FreeJoint slot 5 (ClumpStage 0064ccf0 news it; World::destroyJoints 005ea3f0 skips 9)
 		};
 
 	private:
@@ -157,6 +157,34 @@ namespace RBX
 	protected:
 		static bool canBuildJointLoose(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1);   // 00645590
 		static bool canBuildJointTight(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1);   // 00645560
+	};
+
+	// Declared as native-world/App/include/v8world/Joint.h declares them. 2008 evidence: ClumpStage::onPrimitiveAddedAnchor
+	// 0064cc40 / onPrimitiveRemovingAnchor 0064ccf0 `push 0x88; call new`, then the inline ctor Joint(p, NULL,
+	// CoordinateFrame(), CoordinateFrame()) 006455c0 and the vtable store (AnchorJoint ??_7 0084b0cc, FreeJoint ??_7
+	// 0084b10c); slot 5 getJointType returns ANCHOR_JOINT 5 / FREE_JOINT 9. Size 0x88 = sizeof(Joint): no own members.
+	class AnchorJoint : public Joint
+	{
+	public:
+		AnchorJoint(Primitive* p) : Joint(p, NULL, G3D::CoordinateFrame(), G3D::CoordinateFrame()) {}
+
+	private:
+		virtual JointType getJointType() const             // slot 5
+		{
+			return ANCHOR_JOINT;
+		}
+	};
+
+	class FreeJoint : public Joint
+	{
+	public:
+		FreeJoint(Primitive* p) : Joint(p, NULL, G3D::CoordinateFrame(), G3D::CoordinateFrame()) {}
+
+	private:
+		virtual JointType getJointType() const             // slot 5
+		{
+			return FREE_JOINT;
+		}
 	};
 
 	class RigidJoint : public Joint

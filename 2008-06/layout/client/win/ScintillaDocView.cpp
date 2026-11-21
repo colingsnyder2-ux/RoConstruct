@@ -1,55 +1,53 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /D_DLL /I{headers}/../../../tools/openrbx/Client/win /I{headers}/../../../tools/openrbx/3rdparty/scintilla/include
-// 2008-06 native Scintilla::CScintillaDocView (inactive): upstream tools/openrbx/Client/win/ScintillaDocView.cpp, verbatim (the PJN Naughter MFC wrapper in namespace Scintilla, as the exe's unit names show).
 /*
 Module : ScintillaDocView.CPP
-Purpose: Defines the implementation for MFC CView and CDocument derived wrapper classes for the Scintilla 
+Purpose: Defines the implementation for MFC CView and CDocument derived wrapper classes for the Scintilla
          edit control (www.scintilla.org).
 Created: PJN / 19-03-2004
 History: PJN / 12-08-2004 1. Made all the remaining non virtual functions related to Find and Replace virtual.
-                          2. TextNotFound function is now passed the parameters used for the search. Thanks 
+                          2. TextNotFound function is now passed the parameters used for the search. Thanks
                           to Dmitry Naumov for this update.
                           3. Removed the OnTextNotFound function as all the work for it is achieved using the
                           TextNotFound function.
                           4. Creation of the find / replace dialog now takes place in a new virtual function
-                          "CreateFindReplaceDialog". Again thanks to Dmitry Naumov for this update. 
+                          "CreateFindReplaceDialog". Again thanks to Dmitry Naumov for this update.
          PJN / 04-03-2005 1. Fix in CScintillaView::PrintPage which now sorts out the issue of print preview
                           not working in the MFC doc / view wrappers for scintilla. Thanks to Frank Kiesel
                           for reporting this fix.
          PJN / 10-07-2005 1. Addition of a virtual function namely OnAutoCSelection which handles the
                           SCN_AUTOCSELECTION notification message which was introduced in Scintilla v1.63.
                           Thanks to Dan Petitt for suggesting this update.
-                          2. A new boolean variable called "m_bUseROFileAttributeDuringLoading" has been added 
+                          2. A new boolean variable called "m_bUseROFileAttributeDuringLoading" has been added
                           to CScintillaView. If this value is set then the code will check the read only file
-                          attribute of the file being loaded and if it is set, then the document is marked as 
-                          read only by Scintilla. By doing this any attempts to modify the document will cause 
-                          the OnModifyAttemptRO virtual function to be called. This allows you to prompt to 
-                          make the file read write or to check out the file from a version control system. 
+                          attribute of the file being loaded and if it is set, then the document is marked as
+                          read only by Scintilla. By doing this any attempts to modify the document will cause
+                          the OnModifyAttemptRO virtual function to be called. This allows you to prompt to
+                          make the file read write or to check out the file from a version control system.
                           Thanks to Dan Petitt for suggesting this update.
                           3. Demo app now demonstrates how to use the SCN_MODIFYATTEMPTRO notification.
                           4. Fixed a number of warnings when the code is compiled using Visual Studio .NET 2003.
                           5. SetSavePoint and SetReadOnly calls are now made in CScintillaDoc::OnSaveDocument
                           instead of CScintillaView::Serialize. This ensures that the control is only reset
                           upon a successful save.
-         PJN / 03-01-2006 1. Fixed a bug where the separator line in the header was not being drawn due to 
-                          issues in the code which calculates the coordinates. 
+         PJN / 03-01-2006 1. Fixed a bug where the separator line in the header was not being drawn due to
+                          issues in the code which calculates the coordinates.
                           2. Added two member variables which decide whether printer headers and footers should
                           be printed (CScintillaView::m_bPrintHeader and CScintillaView::m_bPrintFooter). You
-                          could of course achieve the same result by deriving a class from CScintillaView and 
+                          could of course achieve the same result by deriving a class from CScintillaView and
                           implementing empty PrintHeader and PrinterFooter methods!!!. Thanks to Jason Elliott
                           for suggesting this update.
                           3. Optimized the construction of member variables in CScintillaView::CScintillaView
                           and in CScintillaFindReplaceDlg::CScintillaFindReplaceDlg
-                          4. CScintillaView::OnReplaceAll sets the selection to 0,0 before doing text replacement. 
-                          This ensures that all text in a document is replaced. Also this function now does not 
-                          bother calling TextNotFound at the end of the function if replacements took place. 
-                          Thanks to Jason Elliott for this nice update. 
+                          4. CScintillaView::OnReplaceAll sets the selection to 0,0 before doing text replacement.
+                          This ensures that all text in a document is replaced. Also this function now does not
+                          bother calling TextNotFound at the end of the function if replacements took place.
+                          Thanks to Jason Elliott for this nice update.
                           5. A parameter which indicates whether text is being replaced or found is now sent to
                           CScintillaView::TextNotFound.
-         PJN / 06-01-2006 1. Removed some unnecessary code from CScintillaView::OnEndPrinting. Thanks to 
+         PJN / 06-01-2006 1. Removed some unnecessary code from CScintillaView::OnEndPrinting. Thanks to
                           Greg Smith for spotting this issue.
          PJN / 08-01-2006 1. Find / Replace dialog and associated state is now maintained outside of CScintillaView.
                           This means that if you have multiple CScintillaView's in your app, that they share the
-                          one find / replace dialog which is the standard type of UI you would normally expect for 
+                          one find / replace dialog which is the standard type of UI you would normally expect for
                           this. Thanks to Greg Smith for reporting this issue.
                           2. Find / replace dialog is now closed when the last CScintillaView is destroyed. Thanks
                           to Greg Smith for reporting this issue.
@@ -66,9 +64,9 @@ History: PJN / 12-08-2004 1. Made all the remaining non virtual functions relate
                           using the CProcessLocal template which it was using previously. This is no longer required
                           since it was used to provide Win32s support for MFC on older versions of MFC. Since Win32s
                           is no longer supported by MFC, there is no need to use this mechanism any more.
-         PJN / 02-02-2006 1. Minor update to CScintillaView to allow deletion of text when there is nothing selected. 
-                          Thanks to Alexander Kirillov for reporting this bug. 
-         PJN / 14-03-2006 1. Updated the internal function CScintillaView::SameAsSelected to support regular 
+         PJN / 02-02-2006 1. Minor update to CScintillaView to allow deletion of text when there is nothing selected.
+                          Thanks to Alexander Kirillov for reporting this bug.
+         PJN / 14-03-2006 1. Updated the internal function CScintillaView::SameAsSelected to support regular
                           expressions. Thanks to Greg Smith for this update.
 
 Copyright (c) 2004 - 2006 by PJ Naughter (Web: www.naughter.com, Email: pjna@naughter.com)
@@ -77,22 +75,19 @@ All rights reserved.
 
 Copyright / Usage Details:
 
-You are allowed to include the source code in any product (commercial, shareware, freeware or otherwise) 
-when your product is released in binary form. You are allowed to modify the source code in any way you want 
-except you cannot modify the copyright details at the top of each module. If you want to distribute source 
-code with your application, then you are only allowed to distribute versions released by the author. This is 
-to maintain a single distribution point for the source code. 
+You are allowed to include the source code in any product (commercial, shareware, freeware or otherwise)
+when your product is released in binary form. You are allowed to modify the source code in any way you want
+except you cannot modify the copyright details at the top of each module. If you want to distribute source
+code with your application, then you are only allowed to distribute versions released by the author. This is
+to maintain a single distribution point for the source code.
 
 */
-
 
 /////////////////////////////////  Includes  //////////////////////////////////
 
 #include "stdafx.h"
 #include "ScintillaDocView.h"
 #include "resource.h"
-
-
 
 //////////////////////////////// Statics / Macros /////////////////////////////
 
@@ -104,8 +99,6 @@ static char BASED_CODE THIS_FILE[] = __FILE__;
 
 namespace Scintilla
 {
-
-
 
 ////////////////////////////////// Implementation /////////////////////////////
 
@@ -137,8 +130,6 @@ _SCINTILLA_EDIT_STATE::_SCINTILLA_EDIT_STATE() : bRegularExpression(FALSE),
 
 _SCINTILLA_EDIT_STATE _scintillaEditState;
 
-
-
 BEGIN_MESSAGE_MAP(CScintillaFindReplaceDlg, CFindReplaceDialog)
 	//{{AFX_MSG_MAP(CScintillaFindReplaceDlg)
 	//}}AFX_MSG_MAP
@@ -163,7 +154,7 @@ BOOL CScintillaFindReplaceDlg::Create(BOOL bFindDialogOnly,	LPCTSTR lpszFindWhat
   return CFindReplaceDialog::Create(bFindDialogOnly,	lpszFindWhat, lpszReplaceWith, dwFlags, pParentWnd);
 }
 
-BOOL CScintillaFindReplaceDlg::OnInitDialog() 
+BOOL CScintillaFindReplaceDlg::OnInitDialog()
 {
   //let the base class do its thing
 	BOOL bReturn = CFindReplaceDialog::OnInitDialog();
@@ -172,19 +163,17 @@ BOOL CScintillaFindReplaceDlg::OnInitDialog()
   CButton* pCtrl = (CButton*) GetDlgItem(IDC_REGULAR_EXPRESSION);
   ASSERT(pCtrl);
   pCtrl->SetCheck(m_bRegularExpression);
-	
+
 	return bReturn;
 }
 
-void CScintillaFindReplaceDlg::OnRegularExpression() 
+void CScintillaFindReplaceDlg::OnRegularExpression()
 {
   //Save the state of the Regular expression checkbox into a member variable
   CButton* pCtrl = (CButton*) GetDlgItem(IDC_REGULAR_EXPRESSION);
   ASSERT(pCtrl);
 	m_bRegularExpression = (pCtrl->GetCheck() == 1);
 }
-
-
 
 IMPLEMENT_DYNCREATE(CScintillaView, CView)
 
@@ -225,20 +214,20 @@ BEGIN_MESSAGE_MAP(CScintillaView, CView)
 	ON_REGISTERED_MESSAGE(_ScintillaMsgFindReplace, OnFindReplaceCmd)
 END_MESSAGE_MAP()
 
-CScintillaView::CScintillaView() : m_rMargin(0, 0, 0, 0), 
+CScintillaView::CScintillaView() : m_rMargin(0, 0, 0, 0),
                                    m_bFirstSearch(TRUE),
                                    m_bUseROFileAttributeDuringLoading(TRUE),
-                                   m_bPrintHeader(TRUE), 
+                                   m_bPrintHeader(TRUE),
                                    m_bPrintFooter(TRUE)
 {
   m_bUsingMetric = UserWantsMetric();
 }
 
 CScintillaCtrl& CScintillaView::GetCtrl()
-{ 
+{
   CScintillaCtrl& ctrl = m_Edit;
 
-  return ctrl; 
+  return ctrl;
 }
 
 void CScintillaView::OnDestroy()
@@ -449,7 +438,7 @@ void CScintillaView::PrintFooter(CDC* pDC, CPrintInfo* pInfo, RangeToFormat& frP
   //Setup the DC
   pDC->SetTextColor(RGB(0, 0, 0));
   UINT nAlign = pDC->SetTextAlign(TA_LEFT | TA_TOP);
-  
+
   //Draw the header
   CSize sizeText = pDC->GetTextExtent(sFooter);
   int nFooterDepth = 2*sizeText.cy;
@@ -486,7 +475,7 @@ long CScintillaView::PrintPage(CDC* pDC, CPrintInfo* pInfo, long nIndexStart, lo
 
 	//Take into account the specified margins
   CRect rMargins;
-	if ((m_rMargin.left) != 0 || (m_rMargin.right) != 0 || (m_rMargin.top) != 0 || (m_rMargin.bottom != 0)) 
+	if ((m_rMargin.left) != 0 || (m_rMargin.right) != 0 || (m_rMargin.top) != 0 || (m_rMargin.bottom != 0))
   {
     //Get printer resolution
     CPoint pDpi;
@@ -500,8 +489,8 @@ long CScintillaView::PrintPage(CDC* pDC, CPrintInfo* pInfo, long nIndexStart, lo
 		rMargins.top    = MulDiv(m_rMargin.top, pDpi.y, iScale);
 		rMargins.right	= MulDiv(m_rMargin.right, pDpi.x, iScale);
 		rMargins.bottom	= MulDiv(m_rMargin.bottom, pDpi.y, iScale);
-	} 
-  else 
+	}
+  else
 		rMargins = m_rMargin;
 
   //We take the page size from the pInfo member variable (decrement the right and
@@ -623,7 +612,7 @@ void CScintillaView::OnUpdateEditRedo(CCmdUI* pCmdUI)
 void CScintillaView::OnUpdateNeedSel(CCmdUI* pCmdUI)
 {
   CScintillaCtrl& rCtrl = GetCtrl();
-  
+
 	ASSERT_VALID(this);
   long nStartChar = rCtrl.GetSelectionStart();
   long nEndChar = rCtrl.GetSelectionEnd();
@@ -884,7 +873,7 @@ BOOL CScintillaView::SameAsSelected(LPCTSTR lpszCompare, BOOL bCase, BOOL bWord,
   CScintillaCtrl& rCtrl = GetCtrl();
 
   //check length first
-	int nStartChar = rCtrl.GetSelectionStart();                           //get the selection size    
+	int nStartChar = rCtrl.GetSelectionStart();                           //get the selection size
   int nEndChar = rCtrl.GetSelectionEnd();
   size_t nLen = lstrlen(lpszCompare);                                   //get the #chars to search for
   if (!bRegularExpression && (nLen != (size_t)(nEndChar - nStartChar))) //if not a regular expression...
@@ -946,7 +935,7 @@ BOOL CScintillaView::FindTextSimple(LPCTSTR lpszFind, BOOL bNext, BOOL bCase, BO
 		}
 #endif
 
-    if (bNext)  
+    if (bNext)
 		  ft.chrg.cpMin++;
     else
       ft.chrg.cpMax = ft.chrg.cpMin - 1;
@@ -990,13 +979,13 @@ void CScintillaView::TextNotFound(LPCTSTR /*lpszFind*/, BOOL /*bNext*/, BOOL /*b
   MessageBeep(MB_ICONHAND);
 }
 
-void CScintillaView::OnSetFocus(CWnd* /*pOldWnd*/) 
+void CScintillaView::OnSetFocus(CWnd* /*pOldWnd*/)
 {
   //Give the focus to the child control
 	m_Edit.SetFocus();
 }
 
-void CScintillaView::OnSize(UINT nType, int cx, int cy) 
+void CScintillaView::OnSize(UINT nType, int cx, int cy)
 {
   //Let the base class do its thing
 	CView::OnSize(nType, cx, cy);
@@ -1004,7 +993,7 @@ void CScintillaView::OnSize(UINT nType, int cx, int cy)
   //Resize the edit control to be the size of the client area
   CRect r;
   GetClientRect(&r);
-  m_Edit.MoveWindow(&r);	
+  m_Edit.MoveWindow(&r);
 }
 
 void CScintillaView::OnActivateView(BOOL bActivate, CView* pActivateView, CView* pDeactiveView)
@@ -1017,17 +1006,17 @@ void CScintillaView::OnActivateView(BOOL bActivate, CView* pActivateView, CView*
 	CView::OnActivateView(bActivate, pActivateView, pDeactiveView);
 }
 
-int CScintillaView::OnCreate(LPCREATESTRUCT lpCreateStruct) 
+int CScintillaView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
   //let the base class do its thing
 	if (CView::OnCreate(lpCreateStruct) == -1)
 		return -1;
-	
-  //Create the scintilla edit control  
+
+  //Create the scintilla edit control
   CRect r;
   if (!m_Edit.Create(WS_CHILD|WS_VISIBLE|WS_TABSTOP, r, this, 0))
     return -1;
-	
+
 	return 0;
 }
 
@@ -1069,12 +1058,12 @@ void CScintillaView::Dump(CDumpContext& dc) const
 void CScintillaView::Serialize(CArchive& ar)
 {
 	ASSERT_VALID(this);
-	
+
   CScintillaCtrl& rCtrl = GetCtrl();
 
   if (ar.IsLoading())
   {
-    //Tell the control not to maintain any undo info while we stream the data 
+    //Tell the control not to maintain any undo info while we stream the data
     rCtrl.Cancel();
     rCtrl.SetUndoCollection(FALSE);
 
@@ -1129,7 +1118,7 @@ void CScintillaView::Serialize(CArchive& ar)
   }
 }
 
-void CScintillaView::OnFilePageSetup() 
+void CScintillaView::OnFilePageSetup()
 {
   //Display a standard page setup dialog
 	CPageSetupDialog dlg;
@@ -1137,13 +1126,13 @@ void CScintillaView::OnFilePageSetup()
   //Allow the margin settings to be tweaked
   dlg.m_psd.Flags |= PSD_MARGINS;
 
-  //Are we using the metric or imperial system	
+  //Are we using the metric or imperial system
   if (m_bUsingMetric)
     dlg.m_psd.Flags |= PSD_INHUNDREDTHSOFMILLIMETERS;
   else
     dlg.m_psd.Flags |= PSD_INTHOUSANDTHSOFINCHES;
 
-  //Set the current margin settings to the current value from m_rectMargin 
+  //Set the current margin settings to the current value from m_rectMargin
   dlg.m_psd.rtMargin = m_rMargin;
 
 	//get the current device from the app
@@ -1286,7 +1275,7 @@ void CScintillaView::OnKillFocus()
 BOOL CScintillaView::OnCommand(WPARAM wParam, LPARAM lParam)
 {
   HWND hWndControl = (HWND) lParam;
-  
+
   if (hWndControl == GetCtrl().GetSafeHwnd())
   {
     WORD wNotification = HIWORD(wParam);
@@ -1446,10 +1435,6 @@ BOOL CScintillaView::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
   }
 }
 
-
-
-
-
 IMPLEMENT_DYNAMIC(CScintillaDoc, CDocument)
 
 CScintillaDoc::CScintillaDoc()
@@ -1524,7 +1509,7 @@ BOOL CScintillaDoc::OnSaveDocument(LPCTSTR lpszPathName)
   {
 		CScintillaView *pView = GetView();
 		ASSERT(pView);
-		
+
 		CScintillaCtrl &rCtrl = pView->GetCtrl();
 
 		//Tell the control that the document has now been saved
@@ -1533,8 +1518,7 @@ BOOL CScintillaDoc::OnSaveDocument(LPCTSTR lpszPathName)
 	}
 
 	return bSuccess;
-} 
-
+}
 
 #ifdef _DEBUG
 void CScintillaDoc::AssertValid() const

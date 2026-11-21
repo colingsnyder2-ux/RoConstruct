@@ -1,20 +1,12 @@
 #pragma once
-// 2008-06 native RBX::Sky (inactive). Shape after the donor tools/rbxgs Sky.h; every field, virtual and
-// descriptor below is read from the 2008-06 binary:
-//   RTTI       vtable 0083fc0c .?AVSky@RBX@@ -> DescribedCreatable<Sky, Instance, sSky> (21 bases, no other
-//              base; name mangled $1?sSky@2@3PADA, a char array in .data at 00955bd4).
-//   size       0x1f8: Creatable<Instance>::create<Sky> 004d8c90 allocates 0x1f8. Constructor 005eb640 builds six
-//              TextureIds (std::string + mime Name*, 0x20 each) at +0x130/+0x150/+0x170/+0x190/+0x1b0/+0x1d0,
-//              stores +0x1f0 (bool 1) and +0x1f4 (int 3000), then setName("Sky") and assigns the six
-//              ContentId::fromAssets defaults; destructor 005ebae0 destroys the six strings in reverse.
-//   vtable     no Instance virtual is overridden (askAddChild/askSetParent stay 0068e880).
-//   descriptors (dynamic initializers 007f6e80..007f6fd0, all "Appearance" 008329ac, STANDARD):
-//              prop_SkyUp 0097adac (+0x130), prop_SkyLf 0097ad3c (+0x150), prop_SkyRt 0097adc8 (+0x170),
-//              prop_SkyBk 0097ad58 (+0x190), prop_SkyFt 0097ade4 (+0x1b0), prop_SkyDn 0097ad90 (+0x1d0),
-//              prop_StarCount 0097ad74 (BoundProp<int>, +0x1f4), prop_CelestialBodiesShown 0097ad20
-//              (BoundProp<bool>, +0x1f0).
 #include "v8tree/Instance.h"
 #include "util/TextureId.h"
+#include <G3D/ReferenceCount.h>
+
+namespace G3D
+{
+	class Sky;
+}
 
 namespace RBX
 {
@@ -44,5 +36,7 @@ namespace RBX
 
 	public:
 		Sky();                         // 005eb640 (destructor 005ebae0, deleting 005ebb90)
+
+		static G3D::ReferenceCountedPointer<G3D::Sky> getG3DSky(Sky* sky);
 	};
 }

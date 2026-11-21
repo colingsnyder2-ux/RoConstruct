@@ -72,21 +72,9 @@ namespace RBX
 		return contactManager->getSpatialHash().getMaxBucket();
 	}
 
-	// 005e91d0: guarded. Blocker: native-headers/v8world/Assembly.h (another worker's Replicator stub, `class Assembly {}` at
-	// global scope) now shadows the donor v8world/Assembly.h, so Assembly::PrimIterator is undeclared (C2027/C2065) and
-	// the whole unit failed to compile. In 2008 the iterator pair is the Clump-unit 005e5fc0 / 005e5fa0 (++ 00647640),
-	// which has no native declaration yet (v8world/AssemblyLayout.h); header proposal in the batch result.
-#if 0
-	void World::onAssemblyExtentsChanged(RBX::Assembly * a)
-	{
-		Assembly::PrimIterator endIt = Assembly::PrimIterator::end(a);
-		Assembly::PrimIterator beginIt = Assembly::PrimIterator::begin(a);
-		for (; beginIt != endIt; ++beginIt)
-		{
-			contactManager->onPrimitiveExtentsChanged(*beginIt);
-		}
-	}
-#endif
+	// 005e91d0 World::onAssemblyExtentsChanged: built in native-classes/RBXWorldRecovery_005e9170.cpp (batch 28) against
+	// the 2008 Assembly of v8world/AssemblyLayout.h (assemblyPrimBegin 005e5fa0 / assemblyPrimEnd 005e5fc0), which this
+	// unit's donor engine-world headers cannot reach.
 
 	void World::createJoints(Primitive *p)
 	{

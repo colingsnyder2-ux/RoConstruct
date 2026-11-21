@@ -1,20 +1,4 @@
 #pragma once
-// 2008-06 native RBX::ChatLine and RBX::ChatOutput (inactive). Shape after the donor tools/rbxgs gui/ChatOutput.h.
-// Read from the binary (tests/record_native_hud.py checks it):
-//   ChatLine    non-polymorphic, 0x4c bytes (ChatOutput::onEvent 00650cc0 allocates 0x4c). Constructor 00650560
-//               (Player*, const std::string&, float; ret 0xc): userColor +0x00 (three floats stored last), user
-//               +0x0c (default-constructed, then assigned the player's name), message +0x28 (copy), dieTime +0x44,
-//               profane +0x48 (= false). Implicit destructor 0064f8c0 (called by removeOldest 0064fded).
-//   ChatOutput  vtable 0084bb84 .?AVChatOutput@RBX@@ -> GuiItem -> Instance (+ GuiTarget +0x130),
-//               Listener<Players, ChatMessage> +0x144 (vtable 0084baf4), Listener<RunService, Heartbeat> +0x148
-//               (vtable 0084bae8). Constructor 0064fb60: GuiItem() 005739d0, the 13 vtables, runService (+0x14c)
-//               and players (+0x150) = 0, filter +0x154 (ProfanityFilter() 0066a340), fifo +0x174
-//               (std::deque<ChatLine*>), time +0x194 = 0.0f. Size 0x198 (006020a0 allocates 0x198).
-//               Destructor 00650440 (removeOldest 0064fd70 until fifo is empty, ~deque, ~ProfanityFilter 0066a060,
-//               ~GuiItem 00411540), deleting destructor 00650540.
-//               onServiceProvider 00650c00 (slot 12), onEvent(Heartbeat) 0064fe10 (Listener<RunService, Heartbeat>
-//               slot 0; the unit needs /fp:fast for its x87 compare order), onEvent(ChatMessage) 00650cc0 (Listener<Players, ChatMessage> slot 0; not attempted),
-//               ParseCommand 00650660 and render2d 0064fe90 (slot 24): native-classes/ChatOutputCommands.cpp.
 #include "gui/Gui.h"
 #include "gui/ProfanityFilter.h"
 #include "Network/Players.h"

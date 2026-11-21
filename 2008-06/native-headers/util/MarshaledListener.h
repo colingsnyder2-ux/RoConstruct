@@ -17,7 +17,6 @@ void __cdecl releaseMarshalWindow(CMarshalWindow*);
 // [esi+0x4]=listener(NULL), [esi+0x8]=reserved(0), [esi+0xC]=event,
 // [esi+0x10]=source, [esi+0x14]=flag(1). These offsets are inferred from
 // the assembly and match the C++ class layout.
-}
 
 // Inactive recovery. Original RTTI proves four template parameters and the
 // Listener base; selected Selection dispatch/filter bodies match. Global lifetime

@@ -1,7 +1,7 @@
 #pragma once
 #include <G3D/Vector3.h>
 
-namespace RBX 
+namespace RBX
 {
 	class Units
 	{

@@ -44,6 +44,7 @@ namespace RBX
 	class SimJob;
 	class Edge;
 	class World;
+	class MechanismTracker; // v8world/MechanismTracker.h (reportMechanisms)
 
 	class SimJobStage : public IWorldStage
 	{
@@ -66,6 +67,40 @@ namespace RBX
 		void addAssembly(Assembly* a);                    // 0064d200 (analog name; SleepStage 0064ae90 calls it)
 		void removeAssembly(Assembly* a);                 // 0064d2a0 (analog name; SleepStage 0064ae90 / 0064b0a0 / 0064c470)
 		void notifyMovingPrimitives();                    // 0064d3d0 (openrbx name; caller 005e9fd0)
+
+		// 004cbad0 (instantiation Class = Network::RoundRobinPhysicsSender::JobSender; thiscall on the stage, ret 0xc;
+		// registry placeholder func_004cbad0). Donor name and signature: SimJobStage::reportMechanisms(Class& callback,
+		// MechanismTracker& tracker, const Mechanism* ignore) (tools/rbxgs v8world/SimJobStage.h; the donor body is not
+		// in the tree). Body from the binary: return at once when simJobs.size() (+0x28) is 0; when the tracker is not
+		// tracking (005e50e0) it starts at *simJobs.begin() (head +0x24, checked deref) through setSimJob 005e5350; then
+		// visits at most simJobs.size() jobs from the tracked one (getter 0071f210), stepping with getNextSimJob 004cb480
+		// before reporting, skips `ignore`, stops when callback.report (JobSender::report 004cac30) returns false, and
+		// finally points the tracker at the next unvisited job. Caller: RoundRobinPhysicsSender::sendPackets 004cd420.
+		template<typename Class>
+		void reportMechanisms(Class& callback, MechanismTracker& tracker, const SimJob* ignore)
+		{
+			if (simJobs.empty())
+			{
+				return;
+			}
+			if (!tracker.tracking())
+			{
+				tracker.setSimJob(*simJobs.begin());
+			}
+			size_t i = 0;
+			SimJob* next = tracker.getSimJob();
+			while (i < simJobs.size())
+			{
+				SimJob* job = next;
+				++i;
+				next = getNextSimJob(job);
+				if (job != ignore && !callback.report(job))
+				{
+					break;
+				}
+			}
+			tracker.setSimJob(next);
+		}
 
 	private:
 		void insertSimJob(SimJob* job);                   // 0064d0f0 (analog name)

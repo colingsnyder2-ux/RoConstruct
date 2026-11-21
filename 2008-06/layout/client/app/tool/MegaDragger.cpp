@@ -27,6 +27,14 @@ namespace RBX
 	{
 	}
 
+	MegaDragger::~MegaDragger()
+	{
+		if (!joined)
+		{
+			DragUtilities::joinAndStopDragging(dragParts);
+		}
+	}
+
 	void MegaDragger::startDragging()
 	{
 		DragUtilities::unJoinAndSetDragging(dragParts);

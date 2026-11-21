@@ -1,6 +1,3 @@
-// native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/jpeg-6b /TC
-// IJG JPEG 6b encoder pipeline; inactive pending reference, provider, ABI and runtime checks.
-
 /*
  * jcmainct.c
  *
@@ -17,14 +14,12 @@
 #include "jinclude.h"
 #include "jpeglib.h"
 
-
 /* Note: currently, there is no operating mode in which a full-image buffer
  * is needed at this step.  If there were, that mode could not be used with
  * "raw data" input, since this module is bypassed in that case.  However,
  * we've left the code here for possible use in special applications.
  */
 #undef FULL_MAIN_BUFFER_SUPPORTED
-
 
 /* Private buffer controller object */
 
@@ -52,7 +47,6 @@ typedef struct {
 
 typedef my_main_controller * my_main_ptr;
 
-
 /* Forward declarations */
 METHODDEF(void) process_data_simple_main
 	JPP((j_compress_ptr cinfo, JSAMPARRAY input_buf,
@@ -62,7 +56,6 @@ METHODDEF(void) process_data_buffer_main
 	JPP((j_compress_ptr cinfo, JSAMPARRAY input_buf,
 	     JDIMENSION *in_row_ctr, JDIMENSION in_rows_avail));
 #endif
-
 
 /*
  * Initialize for a processing pass.
@@ -104,7 +97,6 @@ start_pass_main (j_compress_ptr cinfo, J_BUF_MODE pass_mode)
     break;
   }
 }
-
 
 /*
  * Process some data.
@@ -159,7 +151,6 @@ process_data_simple_main (j_compress_ptr cinfo,
     main->cur_iMCU_row++;
   }
 }
-
 
 #ifdef FULL_MAIN_BUFFER_SUPPORTED
 
@@ -238,7 +229,6 @@ process_data_buffer_main (j_compress_ptr cinfo,
 }
 
 #endif /* FULL_MAIN_BUFFER_SUPPORTED */
-
 
 /*
  * Initialize main buffer controller.

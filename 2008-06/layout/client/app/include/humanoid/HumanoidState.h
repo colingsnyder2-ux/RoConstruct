@@ -7,6 +7,10 @@
 #include <G3D/CoordinateFrame.h>
 #include <memory>
 
+namespace G3D {
+class Ray;
+}
+
 namespace RBX {
 class Humanoid;
 class PartInstance;
@@ -15,27 +19,6 @@ class Controller;
 class Velocity;
 class Adorn;
 namespace HUMAN {
-// Inactive native layout of the 2008-06 HumanoidState base. Do not instantiate
-// or use in the running player.
-//
-// Evidence (2008-06 Roblox.exe):
-// - RTTI .?AVHumanoidState@HUMAN@RBX@@: INamed at +0, HitTestFilter at +4.
-// - primary vtable 0084ad00 (9 slots), HitTestFilter vtable 0084acf8 (1 slot).
-// - constructor 00643e00: stores +0x08 (Humanoid* argument), +0x0c (0.0f),
-//   +0x10/+0x11 (false), +0x14/+0x18/+0x1c (G3D::Array data/num/numAllocated),
-//   +0x24/+0x28 (shared_ptr px/pn), five zero floats +0x2c..+0x3c, and
-//   CoordinateFrame constructor calls at +0x40 and +0x70.
-// - destructor 006435c0: shared_ptr release at +0x24/+0x28, then
-//   System::alignedFree(+0x14) and +0x14/+0x18/+0x1c = 0 (G3D::Array of a
-//   trivially destructible element).
-// - 00644a30 passes &array14 to the geometry query 0062db60 and reads each
-//   element's +0x104 (Instance::parent), so the elements are PartInstance*.
-// - 006451c0 clears +0x20, resets the +0x24 shared_ptr, stores Vector3::inf()
-//   at +0x2c and copies 0x30-byte CoordinateFrames +0x70 -> +0x40.
-// - 00643b60 moves +0x38 to +0x3c and stores a vector length in +0x38.
-// - Subclass storage starts at +0xa0 (MovingNoPhysicsBase SimJob base at
-//   +0xa0; Seated/Dead/FallingDown factory allocations are exactly 0xa0).
-// Member names after flag11 are analog names, not original declarations.
 class HumanoidState : public INamed, public HitTestFilter {
 public:
     Humanoid* humanoid;
@@ -52,9 +35,6 @@ public:
     G3D::CoordinateFrame current;
 
     HumanoidState(Humanoid* humanoid);
-    // vtable 0084ad00 slot order: 0 getName (pure, INamed), 1 onStep,
-    // 2 getStateType (pure), 3..5 bool queries, 6 scalar deleting destructor,
-    // 7 getIntendedRotationAboutYAxis, 8 onComputeForce.
     virtual void onStep(float dt, Controller* controller) {}          // slot 1, 00458e90 ret 8
     virtual int getStateType() const = 0;                             // slot 2 (Seated returns 10)
     virtual bool query3() const { return true; }                      // slot 3, 00565950
@@ -65,38 +45,31 @@ public:
     virtual void onComputeForce(float dt) {}                          // slot 8, 0070bdf0 ret 4
     virtual HitTestFilter::Result filterResult(const Primitive* testMe) const; // 006432e0
 
-    // Out of line: callers call the identical-code-folded getter 00793d50 (mov eax,[ecx+8]; ret).
     Humanoid* getHumanoid() const;                                    // 00793d50
     Primitive* getFloorPrimitive() const;                             // 00643d30: floorPart +0x24 ? part + 0x228 (embedded
                                                                       //   Primitive) : NULL (analog name)
     bool sub_00643eb0() const;   // INFERRED: 00643eb0, placeholder name (identity tier), body byte-proved (Inferred_00643eb0.cpp)
     void render3dAdorn(Adorn* adorn);                                 // 00645060 (thiscall; called by Humanoid::render3dAdorn
-                                                                      //   005d9c30 through currentState +0x220; analog name)
-    // 00645450 (cdecl, `ret`): (*state)->006451c0(dt), 006453a0(state, dt), then (*state)->onStep(dt, controller)
-    // (slot 1). Called by Humanoid::onEvent 005dc740 with &currentState (+0x220) (analog name).
     static void stepState(std::auto_ptr<HumanoidState>& state, float dt, Controller* controller);
     // State factories of the HumanoidState unit (cdecl statics; analog names: the registry has placeholders only).
     static HumanoidState* create(int stateType, Humanoid* humanoid);  // 00643660: switch on the getStateType values 0..11
                                                                       //   (FallingDown .. Dead), default Running
     static HumanoidState* createDefault(Humanoid* humanoid);          // 00643280: new Running (Humanoid::onAncestorChanged
-                                                                      //   005db560)
-    // 00644670 (thiscall, ret 4): switch over the 17 transition event ids (analog name).
     bool canTransition(int event);
     bool tipped() const;   // 00643a30 (analog name): sub-call 006439b0 float compared with 0x82f83c
     bool upright() const;  // 00643a50 (analog name): same float compared with 0x826fc8
     float getRatio() const; // 006439b0 (INFERRED: helper called by tipped/upright)
-    // 006451c0 (thiscall, ret 4): per-step update (analog name).
     void preStep(float dt);
-    // 006453a0 (cdecl): scans transitionTable (0084a92c, 18 ints per state) for a pending transition (analog name).
+    void findFloor();                                                 // 00644000: plain ret; rays below the torso
+    bool findClimbable(Adorn* adorn);                                 // 00644c80: ret 4, al; preStep passes NULL
+    boost::shared_ptr<PartInstance> floorPartFromRay(const G3D::Ray& ray, float maxDistance);
+    bool climbableInFront(Adorn* adorn);                              // 00644a30: ret 4, al; GeometryService
     static void transition(std::auto_ptr<HumanoidState>& state, float dt);
     static const int transitionTable[][18];                           // 0084a92c (INFERRED: stride 0x48 from asm)
     void setLimbFlag(bool value);                                     // 006431b0
     bool speedSettled() const;                                        // 00643330 (callers 00666b20/00666bc0 test al)
-    // Base helpers called by RunningBase::onStep 00666410 / Running::onStep 00666b20 (bodies pending;
-    // analog names):
     float getDesiredAltitude();                                       // 00643360: plain ret, float on st(0)
     Velocity getFloorVelocity(float dt);                              // 00643a70: hidden return pointer + float, ret 8;
-                                                                      //   writes 6 floats (static Velocity::zero() 0097d568 fallback)
     bool onFloorStep();                                               // 006444f0: plain ret, al
     G3D::Vector3 computeWalkVelocity();                               // 00643b60
     void setLegsFlag(bool value);                                     // 00643bc0

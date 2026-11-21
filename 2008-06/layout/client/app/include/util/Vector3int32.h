@@ -9,7 +9,7 @@ namespace RBX
 		int x;
 		int y;
 		int z;
- 
+
 	public:
 		Vector3int32() : x(0), y(0), z(0) {}
 		Vector3int32(int x, int y, int z) : x(x), y(y), z(z) {}
@@ -29,7 +29,7 @@ namespace RBX
 
 		bool operator==(const Vector3int32& other) const
 		{
-			return 
+			return
 				this->x == other.x &&
 				this->y == other.y &&
 				this->z == other.z;
@@ -37,7 +37,7 @@ namespace RBX
 
 		bool operator!=(const Vector3int32& other) const
 		{
-			return 
+			return
 				this->x != other.x ||
 				this->y != other.y ||
 				this->z != other.z;

@@ -1,11 +1,9 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// 2008-06 native G3Dg3dmath (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/g3dmath.cpp, verbatim.
 #line 1 ".\\G3Dcpp\\g3dmath.cpp"
 /**
  @file g3dmath.cpp
- 
+
  @author Morgan McGuire, graphics3d.com
-  
+
  @created 2001-06-02
  @edited  2004-02-24
  */
@@ -31,9 +29,8 @@ float gaussRandom(float mean, float stdev) {
 
     // Transform to gassian distribution
     // Multiply by sigma (stdev ^ 2) and add mean.
-    return x2 * (float)square(stdev) * sqrtf((-2.0f * logf(w) ) / w) + mean; 
+    return x2 * (float)square(stdev) * sqrtf((-2.0f * logf(w) ) / w) + mean;
 }
-
 
 int highestBit(uint32 x) {
     // Binary search.
@@ -56,7 +53,6 @@ int highestBit(uint32 x) {
 	return base + lut[x];
 }
 
-
 int iRandom(int low, int high) {
 	int r = iFloor(low + (high - low + 1) * (double)rand() / RAND_MAX);
 
@@ -68,7 +64,6 @@ int iRandom(int low, int high) {
 		return r;
 	}
 }
-
 
 double G3D_DEPRECATED random(double low, double high) {
 	return low + (high - low) * rand() / (double)RAND_MAX;

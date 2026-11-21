@@ -1,8 +1,3 @@
-// 2008-06 native RBX::ControllerService and controllers (inactive); evidence in
-// native-headers/v8datamodel/UserController.h. Verified by tests/record_native_user_controller.py.
-// Unit profile: document-swap flags plus /fp:fast (x87 constant folding in chaseTarget/updateTarget and the keyboard
-// getValue bodies).
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8datamodel/UserController.h"
 #include "v8datamodel/PVInstance.h"
 #include "util/Math.h"
@@ -70,10 +65,6 @@ namespace RBX
 	}
 
 #ifdef NATIVE_USER_CONTROLLER_PENDING
-	// Both bodies inline UserInputBase::altKeyDown (keyDown RALT/LALT through the cached device) and call an
-	// out-of-line ctrlKeyDown (0045aec0) on a re-fetched device; the out-of-line altKeyDown copy 005ca390 of this
-	// unit shows alt/ctrl were inline header members in 2008 (the donor util/UserInputBase.h declares them out of
-	// line): pending on that header.
 	float KeyboardPrimaryController::getValue(Controller::InputType inputType) const
 	{
 		if (!getHardwareDevice())
@@ -273,7 +264,6 @@ namespace RBX
 
 		for (size_t i = 0; i < pvRoot->numChildren(); i++)
 		{
-			// The donor's Instance::queryTypedChild<PVInstance>((int)i), which the native Instance.h does not declare.
 			const PVInstance* current = dynamic_cast<const PVInstance*>((*pvRoot->children)[(int)i].get());
 
 			if (current && current != pvLock.get() && current->isChaseable() &&
@@ -305,7 +295,6 @@ namespace RBX
 		}
 	}
 
-	// 005cb0e0 (exact under the unit profile /fp:fast; /fp:precise breaks chaseTarget 005ca430).
 	void AIFleeController::updateBuffer(float time)
 	{
 		updateTarget(Controller::AI_FLEE_CONTROLLER, time);
@@ -335,25 +324,10 @@ namespace RBX
 	{
 	}
 
-	// 005cb530 PlayerController::onEvent(const RunService*, Heartbeat) (748 bytes, Listener slot, this adjusted by
-	// -0xc, `ret 0xc`): NOT BUILT (parked, header gaps; no donor body). Decoded flow: hardware = getHardwareDevice()
-	// 005caba0; controlledInstance weak_ptr lock 005cab00 (released at once); character test
-	// Players::findLocalCharacter 0049aca0 == locked instance -> Humanoid::modelIsCharacter 005d9a20; Workspace
-	// find 00491e50; camera = workspace +0x288 vtable slot 1; MovementKeys keys; hardware->getMovementKeys 005ce960.
-	// Rotation keys (keys +0/+1 vs +2/+3) -> camera 005cc810(float: 005ca3e0 * heartbeat step * 008378c0) and
-	// ++stepsRotating (+0x1c from the Listener this), else stepsRotating = 0; walk keys -> Humanoid::setWalkDirection
-	// 005dbf80 from the camera lookVector 005187f0 / unitize 00518470 scaled by the MovementKeys float getters
-	// 005ca400 / 005ca3c0, Camera::isFirstPersonCamera 005ccb00 -> Humanoid::setStrafe 005dc230; keys.space ->
-	// setSit(false) 005dc2b0 + setJump(true) 005dc270; finally hardware 005ca390. Blockers (proposals):
-	// util/MovementKeys.h lacks the three float getters 005ca3c0 / 005ca3e0 / 005ca400 (any() is 005a0160);
-	// UserInputBase.h lacks 005ca390; the Camera member 005cc810 is unnamed in the registry.
 }
 
-// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class RBX::ComputeProp<G3D::ReferenceCountedPointer<RBX::Controller>,RBX::PVInstance>;
 template class boost::shared_ptr<RBX::PVInstance const >;
 template class boost::weak_ptr<RBX::ControllerService>;
 
-// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
 template void RBX::Name::callDoDeclare<RBX::sControllerService>();
-

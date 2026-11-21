@@ -1,5 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// 2008-06 native G3DColor3 (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/Color3.cpp, verbatim.
 #line 1 ".\\G3Dcpp\\Color3.cpp"
 /**
  @file Color3.cpp
@@ -8,7 +6,6 @@
 
  @author Morgan McGuire, matrix@graphics3d.com
  @cite Portions based on Dave Eberly's Magic Software Library at http://www.magic-software.com
-
 
  @created 2001-06-02
  @edited  2006-01-13
@@ -97,13 +94,11 @@ const Color3 Color3::BLACK(0, 0, 0);
 const Color3 Color3::GRAY(.7f, .7f, .7f);
 const Color3 Color3::WHITE(1, 1, 1);
 
-
 void Color3::deserialize(BinaryInput& bi) {
     r = bi.readFloat32();
     g = bi.readFloat32();
     b = bi.readFloat32();
 }
-
 
 void Color3::serialize(BinaryOutput& bo) const {
     bo.writeFloat32(r);
@@ -111,16 +106,14 @@ void Color3::serialize(BinaryOutput& bo) const {
     bo.writeFloat32(b);
 }
 
-
 const Color3& Color3::wheelRandom() {
     static const Color3 colorArray[8] =
     {Color3::BLUE,   Color3::RED,    Color3::GREEN,
-     Color3::ORANGE, Color3::YELLOW, 
+     Color3::ORANGE, Color3::YELLOW,
      Color3::CYAN,   Color3::PURPLE, Color3::BROWN};
 
     return colorArray[iRandom(0, 7)];
 }
-
 
 unsigned int Color3::hashCode() const {
     unsigned int rhash = (*(int*)(void*)(&r));
@@ -130,13 +123,11 @@ unsigned int Color3::hashCode() const {
     return rhash + (ghash * 37) + (bhash * 101);
 }
 
-
 Color3::Color3(const Vector3& v) {
     r = v.x;
     g = v.y;
     b = v.z;
 }
-
 
 Color3::Color3(const class Color3uint8& other) {
     r = other.r / 255.0f;
@@ -144,16 +135,14 @@ Color3::Color3(const class Color3uint8& other) {
     b = other.b / 255.0f;
 }
 
-
 Color3 Color3::fromARGB(uint32 x) {
     return Color3((float)((x >> 16) & 0xFF), (float)((x >> 8) & 0xFF), (float)(x & 0xFF)) / 255.0f;
 }
 
 //----------------------------------------------------------------------------
 
-
 Color3 Color3::random() {
-    return Color3(uniformRandom(), 
+    return Color3(uniformRandom(),
                   uniformRandom(),
                   uniformRandom()).direction();
 }
@@ -210,7 +199,7 @@ float Color3::unitize (float fTolerance) {
 //----------------------------------------------------------------------------
 Color3 Color3::fromHSV(const Vector3& _hsv) {
 	debugAssertM((_hsv.x <= 1.0f && _hsv.x >= 0.0f)
-			&& (_hsv.y <= 1.0f && _hsv.y >= 0.0f) 
+			&& (_hsv.y <= 1.0f && _hsv.y >= 0.0f)
 			&& ( _hsv.z <= 1.0f && _hsv.z >= 0.0f), "H,S,V must be between [0,1]");
 	const int i = G3D::iFloor(6.0*_hsv.x);
 	const float f = 6.0f * _hsv.x - i;
@@ -243,7 +232,7 @@ Color3 Color3::fromHSV(const Vector3& _hsv) {
 }
 
 Vector3 Color3::toHSV(const Color3& _rgb) {
-	debugAssertM((_rgb.r <= 1.0f && _rgb.r >= 0.0f) 
+	debugAssertM((_rgb.r <= 1.0f && _rgb.r >= 0.0f)
 			&& (_rgb.g <= 1.0f && _rgb.g >= 0.0f)
 			&& (_rgb.b <= 1.0f && _rgb.b >= 0.0f), "R,G,B must be between [0,1]");
 	Vector3 hsv = Vector3::zero();
@@ -251,9 +240,9 @@ Vector3 Color3::toHSV(const Color3& _rgb) {
 	if (G3D::fuzzyEq(hsv.z, 0.0f)) {
 		return hsv;
 	}
-	
+
     const float x =  G3D::min(G3D::min(_rgb.r, _rgb.g), _rgb.b);
-	hsv.y = (hsv.z - x) / hsv.z; 
+	hsv.y = (hsv.z - x) / hsv.z;
 
     if (G3D::fuzzyEq(hsv.y, 0.0f)) {
 		return hsv;
@@ -271,7 +260,7 @@ Vector3 Color3::toHSV(const Color3& _rgb) {
 	} else {
 		hsv.x = (_rgb.r == x)? 3.0f + rgbN.y : 5.0f - rgbN.x;
 	}
-	
+
     hsv.x /= 6.0f;
 
 	return hsv;
@@ -287,17 +276,12 @@ Color3 Color3::jetColorMap(const float& val) {
 	jet.g = G3D::min(4.0f * val - 0.5f,-4.0f * val + 3.5f) ;
 	jet.b = G3D::min(4.0f * val + 0.5f,-4.0f * val + 2.5f) ;
 
-
 	jet.r = G3D::clamp(jet.r, 0.0f, 1.0f);
 	jet.g = G3D::clamp(jet.g, 0.0f, 1.0f);
 	jet.b = G3D::clamp(jet.b, 0.0f, 1.0f);
 
 	return jet;
 }
-
-
-
-
 
 std::string Color3::toString() const {
     return G3D::format("(%g, %g, %g)", r, g, b);
@@ -306,4 +290,3 @@ std::string Color3::toString() const {
 //----------------------------------------------------------------------------
 
 }; // namespace
-

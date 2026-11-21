@@ -24,6 +24,41 @@ namespace RBX
 		return Rect(position, position + getSize());
 	}
 
+	// 00573360 (203 B, ret 0x14): ?label2d@GuiItem@RBX@@IBEXPAVAdorn@2@ABV?$basic_string@...@ABVColor4@G3D@@2W4XAlign@32@@Z
+	// (registry). Body of the donor openrbx gui/GUI.cpp GuiItem::label2d: empty label returns; getMyRect 00573310;
+	// size/center (0.5f 00819bac); XALIGN_RIGHT high.x - 0.1f (0081e704) * size.x, XALIGN_LEFT low.x + ...;
+	// getFontSize (slot 0x50), then Adorn::drawFont2D (slot 0x34) with YALIGN_CENTER (2), PROPORTIONAL_SPACING (0).
+	// PARKED after 3 hypotheses (203 B, same size): only the x87 commutative mirror of center().x remains (target
+	// fld st(2); fadd st(1) = high.x + low.x, candidate fld st(0); fadd st(3)). Rejected: (high + low) * 0.5f inline
+	// (also mirrors y and swaps esi/edi, 201 B); center() before size() (fstp/fxch reshuffle in the switch).
+	void GuiItem::label2d(Adorn* adorn, const std::string& label, const G3D::Color4& fill, const G3D::Color4& border,
+		Adorn::XAlign align) const
+	{
+		if (label.size() == 0)
+			return;
+
+		Rect myRect = getMyRect();
+
+		G3D::Vector2 size = myRect.size();
+		G3D::Vector2 pos = myRect.center();
+
+		switch (align)
+		{
+		case Adorn::XALIGN_RIGHT:
+			pos.x = myRect.high.x - size.x * 0.1f;
+			break;
+
+		case Adorn::XALIGN_CENTER:
+			break;
+
+		default:
+			pos.x = myRect.low.x + size.x * 0.1f;
+			break;
+		}
+
+		adorn->drawFont2D(label, pos, getFontSize(), fill, border, align, Adorn::YALIGN_CENTER, Adorn::PROPORTIONAL_SPACING);
+	}
+
 	// 005735a0: (0, 28.0f 0082f864).
 	G3D::Vector2 UnifiedWidget::childOffset() const
 	{
@@ -56,13 +91,6 @@ namespace RBX
 		adorn->rect2d(getMyRect2D(), menuState != NOTHING ? menuSelect() : G3D::Color4(G3D::Color3::white()));
 		adorn->outlineRect2d(getMyRect2D(), 1.0f, G3D::Color3::black());
 		label2d(adorn, getName(), G3D::Color3::black(), G3D::Color4::clear(), Adorn::XALIGN_CENTER);
-	}
-
-	// INFERRED: the donor openrbx gui/GUI.h defines showChildren in-class (menuState >= SHOWN_APPEARING); the native
-	// Gui.h only declares it, and render2dChildren 00574280 reads +0x144 inline (cmp 2 / jl).
-	inline bool UnifiedWidget::showChildren()
-	{
-		return menuState >= SHOWN_APPEARING;
 	}
 
 	// 00574280 (func_00574280, 119 B, ret 4): identity from the donor openrbx GUI.cpp UnifiedWidget::render2dChildren

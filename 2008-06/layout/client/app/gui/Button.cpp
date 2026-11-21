@@ -1,11 +1,7 @@
-// 2008-06 native gui Button unit (inactive): KeyButton, ImageWidget, ImageButton, ImageKeyButton, 0064ef90..0064f6a0.
-// Layout and addresses in native-headers/gui/WidgetButtons.h; verified by tests/record_native_widget.py.
 #include "gui/WidgetButtons.h"
 
 namespace RBX
 {
-	// The unit-local inline accessor of the other Verb users (RunStateCommands.cpp, ControllerActions.cpp): ImageButton
-	// reads the verb's name inline (mov edi, [edi+4]; add edi, 4 at 0064f3c4).
 	inline const Name& Verb::getName() const { return name; }
 
 	GuiResponse KeyButton::process(const GuiEvent& event)
@@ -63,7 +59,6 @@ namespace RBX
 		return guiImageDraw.getImageSize();
 	}
 
-	// 0064f340
 	ImageButton::ImageButton(Adorn* adorn, Verb* verb, const std::string& title)
 		: VerbWidget(verb),
 		  guiImageDraw(adorn, verb->getName().toString())

@@ -1,4 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 #if defined(_CONSOLE_1)
 #include "Console1Includes.h"
 #elif defined(_WIN32)

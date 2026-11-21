@@ -1,5 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /FImalloc.h /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
-// RakNet StringTable source; inactive pending reference, ABI and runtime checks.
 #include "StringTable.h"
 #include <string.h>
 #include <assert.h>
@@ -17,7 +15,7 @@ int StrAndBoolComp( char *const &key, const StrAndBool &data )
 
 StringTable::StringTable()
 {
-	
+
 }
 
 StringTable::~StringTable()
@@ -78,8 +76,8 @@ void StringTable::AddString(const char *str, bool copyString)
 	}
 
 	// If this assert hits you need to increase the range of StringTableType
-	assert(orderedStringList.Size() < (StringTableType)-1);	
-	
+	assert(orderedStringList.Size() < (StringTableType)-1);
+
 }
 void StringTable::EncodeString( const char *input, int maxCharsToWrite, RakNet::BitStream *output )
 {
@@ -127,7 +125,7 @@ bool StringTable::DecodeString( char *output, int maxCharsToWrite, RakNet::BitSt
 #endif
 			return false;
 		}
-		
+
 		strncpy(output, orderedStringList[index].str, maxCharsToWrite);
 		output[maxCharsToWrite-1]=0;
 	}

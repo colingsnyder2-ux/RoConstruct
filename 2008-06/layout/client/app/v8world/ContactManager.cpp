@@ -7,11 +7,18 @@
 
 #include "v8world/World2008.h"
 
+#include "v8world/SpatialHash2008.h"
+
 template void G3D::Array<RBX::Contact*>::resize(int, bool);
 template void G3D::Array<RBX::Contact*>::append(RBX::Contact* const&);
 
 namespace RBX
 {
+	void ContactManager::onPrimitiveExtentsChanged(Primitive* p)
+	{
+		spatialHash->onPrimitiveExtentsChanged(p);
+	}
+
 	bool ContactManager::intersectingOthers(Primitive* check, const std::set<Primitive*>& checkSet, float overlapIgnored)
 	{
 		for (Contact* cur = check->getFirstContact(); cur != NULL; cur = check->getNextContact(cur))

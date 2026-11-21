@@ -1,5 +1,3 @@
-// native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
-// 2008-06 native Jpegjdinput (inactive): upstream tools/libs/jpeg-6b/jdinput.c, verbatim.
 /*
  * jdinput.c
  *
@@ -17,7 +15,6 @@
 #include "jinclude.h"
 #include "jpeglib.h"
 
-
 /* Private state */
 
 typedef struct {
@@ -28,10 +25,8 @@ typedef struct {
 
 typedef my_input_controller * my_inputctl_ptr;
 
-
 /* Forward declarations */
 METHODDEF(int) consume_markers JPP((j_decompress_ptr cinfo));
-
 
 /*
  * Routines to calculate various quantities related to the size of the image.
@@ -118,7 +113,6 @@ initial_setup (j_decompress_ptr cinfo)
     cinfo->inputctl->has_multiple_scans = FALSE;
 }
 
-
 LOCAL(void)
 per_scan_setup (j_decompress_ptr cinfo)
 /* Do computations that are needed before processing a JPEG scan */
@@ -126,16 +120,16 @@ per_scan_setup (j_decompress_ptr cinfo)
 {
   int ci, mcublks, tmp;
   jpeg_component_info *compptr;
-  
+
   if (cinfo->comps_in_scan == 1) {
-    
+
     /* Noninterleaved (single-component) scan */
     compptr = cinfo->cur_comp_info[0];
-    
+
     /* Overall image size in MCUs */
     cinfo->MCUs_per_row = compptr->width_in_blocks;
     cinfo->MCU_rows_in_scan = compptr->height_in_blocks;
-    
+
     /* For noninterleaved scan, always one block per MCU */
     compptr->MCU_width = 1;
     compptr->MCU_height = 1;
@@ -148,18 +142,18 @@ per_scan_setup (j_decompress_ptr cinfo)
     tmp = (int) (compptr->height_in_blocks % compptr->v_samp_factor);
     if (tmp == 0) tmp = compptr->v_samp_factor;
     compptr->last_row_height = tmp;
-    
+
     /* Prepare array describing MCU composition */
     cinfo->blocks_in_MCU = 1;
     cinfo->MCU_membership[0] = 0;
-    
+
   } else {
-    
+
     /* Interleaved (multi-component) scan */
     if (cinfo->comps_in_scan <= 0 || cinfo->comps_in_scan > MAX_COMPS_IN_SCAN)
       ERREXIT2(cinfo, JERR_COMPONENT_COUNT, cinfo->comps_in_scan,
 	       MAX_COMPS_IN_SCAN);
-    
+
     /* Overall image size in MCUs */
     cinfo->MCUs_per_row = (JDIMENSION)
       jdiv_round_up((long) cinfo->image_width,
@@ -167,9 +161,9 @@ per_scan_setup (j_decompress_ptr cinfo)
     cinfo->MCU_rows_in_scan = (JDIMENSION)
       jdiv_round_up((long) cinfo->image_height,
 		    (long) (cinfo->max_v_samp_factor*DCTSIZE));
-    
+
     cinfo->blocks_in_MCU = 0;
-    
+
     for (ci = 0; ci < cinfo->comps_in_scan; ci++) {
       compptr = cinfo->cur_comp_info[ci];
       /* Sampling factors give # of blocks of component in each MCU */
@@ -192,10 +186,9 @@ per_scan_setup (j_decompress_ptr cinfo)
 	cinfo->MCU_membership[cinfo->blocks_in_MCU++] = ci;
       }
     }
-    
+
   }
 }
-
 
 /*
  * Save away a copy of the Q-table referenced by each component present
@@ -244,7 +237,6 @@ latch_quant_tables (j_decompress_ptr cinfo)
   }
 }
 
-
 /*
  * Initialize the input modules to read a scan of compressed data.
  * The first call to this is done by jdmaster.c after initializing
@@ -262,7 +254,6 @@ start_input_pass (j_decompress_ptr cinfo)
   cinfo->inputctl->consume_input = cinfo->coef->consume_data;
 }
 
-
 /*
  * Finish up after inputting a compressed-data scan.
  * This is called by the coefficient controller after it's read all
@@ -274,7 +265,6 @@ finish_input_pass (j_decompress_ptr cinfo)
 {
   cinfo->inputctl->consume_input = consume_markers;
 }
-
 
 /*
  * Read JPEG markers before, between, or after compressed-data scans.
@@ -332,7 +322,6 @@ consume_markers (j_decompress_ptr cinfo)
   return val;
 }
 
-
 /*
  * Reset state to begin a fresh datastream.
  */
@@ -352,7 +341,6 @@ reset_input_controller (j_decompress_ptr cinfo)
   /* Reset progression state -- would be cleaner if entropy decoder did this */
   cinfo->coef_bits = NULL;
 }
-
 
 /*
  * Initialize the input controller module.

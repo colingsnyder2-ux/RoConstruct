@@ -1,5 +1,5 @@
+// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/mfc-noinline-pcxstr /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // CRobloxWnd window-message handlers (2008-06 native, inactive). Layout: native-headers/CRobloxView.h.
-// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 #include <algorithm>
 #include "CRobloxView.h"
 #include "util/DxUserInput.h"
@@ -219,5 +219,122 @@ std::string CRobloxWnd::getMetric(const std::string& name) const
         return Ogre::StringConverter::toString(adorn->particleCount);
     }
     return "";
+}
+#endif
+
+#ifdef NATIVE_CROBLOXWND_MEMBER_DECLS_PENDING
+#include "RbxGraphics/Adorn.h"   // complete RBX::Adorn for the virtual delete in releaseRenderer
+// PENDING (batch 29): CRobloxWnd members the maintainer-owned native-headers/CRobloxView.h does not declare yet.
+// Proposal for its owner, inside CRobloxWnd (names INFERRED from the bodies; measured against a scratch header copy
+// with exactly these lines added):
+//     afx_msg int OnCreate(LPCREATESTRUCT);   // 0045d550
+//     void createRenderer(int width, int height);  // 0045d4c0 (mode 2: 0045d280, otherwise 0045cbf0)
+//     void releaseRenderer();                 // 0045be60
+//     virtual BOOL OnWndMsg(UINT, WPARAM, LPARAM, LRESULT*);   // 0045b4a0 (CWnd virtual override)
+// Also for that owner: the real WM_SIZE handler is 0045d7c0 (bounds 1..0x2000, CWnd::OnSize = Default, then 0045d650
+// in mode 2 or 0045b010 otherwise), so the header's OnSize name for 0045b010 is a resize helper, not the afx_msg.
+
+// 0045d550 (registry placeholder; WM_CREATE handler): CWnd::OnCreate (Default), then in a try block records the
+// creating thread (+0xa0), creates the renderer for the client size and starts timers 0 (200 ms) and 1 (100 ms).
+// A std::exception shows "Unable to run Roblox.\n\n%s" (00819cec) and fails the creation. Byte-identical (relocs
+// masked) in the scratch build; AfxMessageBox's CString conversion goes through mfc90 #910 as in the target, hence
+// the mfc-noinline-pcxstr include on line 1 (the unit's other bodies are unchanged by it). The try starts after the
+// thread id / client rect (EH state 0 is stored just before createRenderer in the target).
+int CRobloxWnd::OnCreate(LPCREATESTRUCT cs)
+{
+    if (CWnd::OnCreate(cs) == -1)
+        return -1;
+    // INFERRED: +0xa0 holds the window thread id (CRobloxView.h: void* slot_a0).
+    slot_a0 = reinterpret_cast<void*>(::GetCurrentThreadId());
+    CRect rect;
+    GetClientRect(&rect);
+    try {
+        createRenderer(rect.Width(), rect.Height());
+        SetTimer(0, 200, NULL);
+        SetTimer(1, 100, NULL);
+    } catch (std::exception& e) {
+        CString message;
+        message.Format("Unable to run Roblox.\n\n%s", e.what());
+        AfxMessageBox(message);
+        return -1;
+    }
+    return 0;
+}
+
+// 0045be60 (registry placeholder): in G3D mode (2) tail-calls shutdownGraphics 0045bde0; otherwise, when a visual
+// engine exists, deletes the adorn at +0xb4 (cleared) and the visual engine at +0xb8 (left as is) through their
+// virtual destructors. Open (72 = 72 B): this form loads +0xb8 before clearing +0xb4. Byte-identical when +0xb4 is a
+// std::auto_ptr<RBX::Adorn> and the body reads `adorn.reset(); delete visualEngine;` (measured through a scratch
+// cast). Layout evidence for that type (proposal for the CRobloxView.h owner): setDataModel 0045f7b0 assigns +0xb0
+// and +0xb4 with the auto_ptr::reset shape (`if (p != old) delete old; member = p`) and the destructor 0045fbe0
+// destroys them as members (EH states 8 / 7) while +0xb8 is never destroyed there.
+void CRobloxWnd::releaseRenderer()
+{
+    if (mode_5c == 2) {
+        shutdownGraphics();
+        return;
+    }
+    if (visualEngine) {
+        // INFERRED: +0xb4 holds the RBX::Adorn (CRobloxView.h types it void*; getMetric casts it the same way).
+        delete static_cast<RBX::Adorn*>(slot_b4);
+        slot_b4 = NULL;
+        delete visualEngine;
+    }
+}
+// 0045b4a0 (registry placeholder; CWnd::OnWndMsg override in vtable 008199f4): focus, keyboard and mouse messages are
+// forwarded to the DxUserInput (processMessage 00468b90) with the window's GWindow made current and the view
+// invalidated; mouse moves, the wheel and button-downs (which also take the focus) are consumed (*pResult = 0,
+// TRUE), the rest continue to CWnd::OnWndMsg. Jump table 0045b5b0 / index bytes 0045b5c4 for 0x201..0x20a:
+// down -> SetFocus + consumed, up / double-click -> *pResult = 0 but not consumed, middle button -> default.
+// PARKED (302 = 302 B, measured in the scratch header build): same control flow, calls and jump table; the target
+// keeps the message in edi and this in esi (this build swaps them) and gives the keyboard cases their own
+// `xor bl,bl` block. Rejected: `handled = true` before `*pResult = 0`, `bool handled = false` initialised at the top
+// (334 B, flag spilled to the frame), the unit flags without /Oi /Ot (no change).
+BOOL CRobloxWnd::OnWndMsg(UINT message, WPARAM wParam, LPARAM lParam, LRESULT* pResult)
+{
+    bool handled;
+    switch (message) {
+    case WM_SETFOCUS:
+    case WM_KILLFOCUS:
+    case WM_MOUSEACTIVATE:
+    case WM_KEYDOWN:
+    case WM_KEYUP:
+    case WM_CHAR:
+    case WM_SYSKEYDOWN:
+    case WM_SYSKEYUP:
+    case WM_SYSCHAR:
+        handled = false;
+        break;
+    case WM_LBUTTONDOWN:
+    case WM_RBUTTONDOWN:
+        SetFocus();
+        // fall through
+    case WM_MOUSEMOVE:
+    case WM_MOUSEWHEEL:
+        *pResult = 0;
+        handled = true;
+        break;
+    case WM_LBUTTONUP:
+    case WM_RBUTTONUP:
+        *pResult = 0;
+        handled = false;
+        break;
+    case WM_LBUTTONDBLCLK:
+    case WM_RBUTTONDBLCLK:
+        *pResult = 0;
+        handled = false;
+        break;
+    default:
+        return CWnd::OnWndMsg(message, wParam, lParam, pResult);
+    }
+    if (dataModelPtr) {
+        adorn->makeCurrent();
+        if (userInput)
+            userInput->processMessage(message, wParam, lParam);
+        Invalidate();
+    }
+    if (handled)
+        return TRUE;
+    return CWnd::OnWndMsg(message, wParam, lParam, pResult);
 }
 #endif

@@ -1,9 +1,7 @@
 #include "CSecureHtmlView.h"
 #include <mshtmdid.h>
 
-// Original 0041dcb0 (defined with CRobloxDHtmlDialog): S_OK when Http::trustCheck accepts the URL.
 HRESULT __cdecl checkDialogUrl(const char* url);
-// Original 00465b50: queries whether the URL host is an ad syndicator.
 bool __cdecl isAdSyndicator(const char* url);
 
 IMPLEMENT_DYNAMIC(CSecureHtmlView, CHtmlView)

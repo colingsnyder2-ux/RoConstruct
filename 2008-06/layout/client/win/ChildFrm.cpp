@@ -6,12 +6,10 @@ BEGIN_MESSAGE_MAP(CChildFrame, CMDIChildWnd)
     ON_WM_CREATE()
 END_MESSAGE_MAP()
 
-// Inlined into the deleting destructor 00412c60 (vptr store, then CFrameWnd::~CFrameWnd).
 CChildFrame::~CChildFrame()
 {
 }
 
-// 00412b00: open at the client origin with the largest size, keep the view from painting over children.
 BOOL CChildFrame::PreCreateWindow(CREATESTRUCT& cs)
 {
     cs.x = cs.y = 0;
@@ -22,13 +20,11 @@ BOOL CChildFrame::PreCreateWindow(CREATESTRUCT& cs)
     return TRUE;
 }
 
-// 00412b40: the first MDI child (the top of the MDI client's z-order) always opens maximized.
 void CChildFrame::ActivateFrame(int nCmdShow)
 {
     CMDIChildWnd::ActivateFrame(GetParent()->GetWindow(GW_CHILD) == this ? SW_SHOWMAXIMIZED : nCmdShow);
 }
 
-// 00412b90: strip the system menu, drop the pane's border and give it a client edge instead.
 int CChildFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
     if (CMDIChildWnd::OnCreate(lpCreateStruct) == -1)
@@ -55,8 +51,6 @@ END_MESSAGE_MAP()
 #include "CMainFrame.h"
 #include "CRenderSettings.h"
 
-// 00412e60: grow the maximized size by 40 pixels in full-screen mode without toolbars; while not zoomed,
-// limit the tracking size to the frame rectangle around the render settings' full-screen size.
 void CRbxChildFrame::OnGetMinMaxInfo(MINMAXINFO* lpMMI)
 {
     Default();

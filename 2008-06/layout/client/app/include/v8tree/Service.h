@@ -20,8 +20,6 @@ private:
 };
 extern char sServiceProvider[];
 
-// Original RTTI and 00568bf0 establish the three notifier bases. Existing
-// source supplies the service vector/map types; behavioral ABI remains open.
 class __declspec(novtable) ServiceProvider :
     public DescribedNonCreatable<ServiceProvider, Instance, sServiceProvider>,
     public Notifier<ServiceProvider, Closing>,
@@ -52,8 +50,6 @@ protected:
 	void clearServices(void);   // INFERRED: ?clearServices@ServiceProvider@RBX@@IAEXXZ (header gap, header_gap_fill.py)
 };
 
-// Layout recovered from the existing ServiceClient declaration. Method bodies
-// require the native service-creation path and are intentionally unresolved.
 template<class T>
 class ServiceClient {
     Instance* context;

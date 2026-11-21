@@ -29,6 +29,7 @@
 // Names of the assembly sets follow the donor SleepStage2.h; the +0x180 set name and the vector element types are INFERRED.
 #include <set>
 #include <vector>
+#include <deque>
 #include <G3D/Array.h>
 #include <boost/scoped_ptr.hpp>
 #include "v8world/IWorldStage.h"
@@ -117,7 +118,8 @@ namespace RBX
 		ContactList steppingContacts;                     // +0x1a0
 		ContactList touchingContacts;                     // +0x1ac
 		JointSet steppingJoints;                          // +0x1b8
-		int field1d8;                                     // +0x1d8 INFERRED: ctor zero, unread by the recovered bodies
+		int field1d8;                                     // +0x1d8 INFERRED: ctor zero; the wake pass id (0064c6b0 increments it,
+		                                                  // 0064c470 compares / stores it at Clump +0x44)
 		bool externalBodyForceAdded;                      // +0x1dc INFERRED: ctor false, donor field
 		// boost::scoped_ptr as in the donor: ~SleepStage 0064b330 deletes +0x1e8 / +0x1e4 / +0x1e0 through slot 0
 		// (`push 1; call [vtbl]`), each under its own EH state (0x13 / 0x12 / 0x11), i.e. three member destructors.
@@ -165,6 +167,32 @@ namespace RBX
 		void touchEvent(Contact* c);                                            // 0064b7c0
 		void wakeEvent(Edge* e);                                                // 0064bf60
 		void wakeEdge(Edge* e);                                                 // 0064c1d0
+		// Donor SleepStage inlines (no code of their own in 2008): currentStage +0x4 slot 1 against this slot 1, and the
+		// edge type (slot 3) / state (+0x8) test, both inlined in 0064a790 and 0064c470.
+		bool edgeIsAwake(Edge* e)
+		{
+			return e->inOrDownstreamOfStage(this);
+		}
+		bool isAffecting(Edge* e)
+		{
+			Sim::EdgeState state = e->getEdgeState();
+			return e->getEdgeType() != Edge::CONTACT || state == Sim::TOUCHING || state == Sim::TOUCHING_SLEEPING;
+		}
+		// Donor SleepStage::computeCanSleep (`!Primitive::disableSleep && assembly->getCanSleep()`), inline in 0064a790 and
+		// 0064a950 (the two readers of 0097abc1); no code of its own.
+		bool computeCanSleep(Assembly* a);
+		bool forceNeighborAwake(Assembly* a);                                   // 0064a5f0 (donor name; only callee of 0064a790)
+		// 0064a790 (registry func_0064a790; donor SleepStage::computeAssemblyState, only caller 0064bedd): AWAKE 3 /
+		// SLEEPING_CHECKING 4 / SLEEPING_DEEPLY 5.
+		Sim::AssemblyState computeAssemblyState(Assembly* a);
+		// 0064c470 (registry func_0064c470, `ret 0xc`; only caller 0064c804): the 2008 breadth-first form of the donor
+		// wakeAssemblyAndNeighbors(assembly, recurseDepth); neighbours go to the queue (deque push_back 00589330, folded with
+		// deque<HistoryItem*>) with their depth at Clump +0x48 and the pass id +0x1d8 at Clump +0x44. INFERRED: name.
+		void wakeAssemblyAndNeighbors(Assembly* a, std::deque<Assembly*>& toWake, int recurseDepth);
+		// 0064c6b0 (registry func_0064c6b0, `ret 0xc`): callers 0064c850 / 0064c8a0 pass (set, depth, state) for the sets
+		// +0x100 / 2, +0xe0 / 1 (depth 8 for recursiveWakePending, as the donor stepAssembliesRecursiveWakePending), +0x140 / 4
+		// and +0x160 / 5; the state argument is never read. INFERRED: name.
+		void wakeAssemblies(const AssemblySet& assemblies, int recurseDepth, Sim::AssemblyState state);
 	public:
 		void sub_0064b840(const std::vector<Joint*>& joints, Sim::EdgeState state);   // INFERRED: 0064b840, placeholder name (identity tier), body byte-proved (Inferred_0064b840.cpp)
 	public:

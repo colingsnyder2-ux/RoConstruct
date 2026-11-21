@@ -1,6 +1,3 @@
-// native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/jpeg-6b /TC
-// IJG JPEG 6b transform; inactive pending reference, provider, ABI and runtime checks.
-
 /*
  * jidctfst.c
  *
@@ -42,7 +39,6 @@
 
 #ifdef DCT_IFAST_SUPPORTED
 
-
 /*
  * This module is specialized to the case DCTSIZE = 8.
  */
@@ -50,7 +46,6 @@
 #if DCTSIZE != 8
   Sorry, this code only copes with 8x8 DCTs. /* deliberate syntax err */
 #endif
-
 
 /* Scaling decisions are generally the same as in the LL&M algorithm;
  * see jidctint.c for more details.  However, we choose to descale
@@ -103,7 +98,6 @@
 #define FIX_2_613125930  FIX(2.613125930)
 #endif
 
-
 /* We can gain a little more speed, with a further compromise in accuracy,
  * by omitting the addition in a descaling shift.  This yields an incorrectly
  * rounded result half the time...
@@ -114,13 +108,11 @@
 #define DESCALE(x,n)  RIGHT_SHIFT(x, n)
 #endif
 
-
 /* Multiply a DCTELEM variable by an INT32 constant, and immediately
  * descale to yield a DCTELEM result.
  */
 
 #define MULTIPLY(var,const)  ((DCTELEM) DESCALE((var) * (const), CONST_BITS))
-
 
 /* Dequantize a coefficient by multiplying it by the multiplier-table
  * entry; produce a DCTELEM result.  For 8-bit data a 16x16->16
@@ -134,7 +126,6 @@
 #define DEQUANTIZE(coef,quantval)  \
 	DESCALE((coef)*(quantval), IFAST_SCALE_BITS-PASS1_BITS)
 #endif
-
 
 /* Like DESCALE, but applies to a DCTELEM and produces an int.
  * We assume that int right shift is unsigned if INT32 right shift is.
@@ -161,7 +152,6 @@
 #else
 #define IDESCALE(x,n)  ((int) IRIGHT_SHIFT(x, n))
 #endif
-
 
 /*
  * Perform dequantization and inverse DCT on one block of coefficients.
@@ -199,7 +189,7 @@ jpeg_idct_ifast (j_decompress_ptr cinfo, jpeg_component_info * compptr,
      * With typical images and quantization tables, half or more of the
      * column DCT calculations can be simplified this way.
      */
-    
+
     if (inptr[DCTSIZE*1] == 0 && inptr[DCTSIZE*2] == 0 &&
 	inptr[DCTSIZE*3] == 0 && inptr[DCTSIZE*4] == 0 &&
 	inptr[DCTSIZE*5] == 0 && inptr[DCTSIZE*6] == 0 &&
@@ -215,13 +205,13 @@ jpeg_idct_ifast (j_decompress_ptr cinfo, jpeg_component_info * compptr,
       wsptr[DCTSIZE*5] = dcval;
       wsptr[DCTSIZE*6] = dcval;
       wsptr[DCTSIZE*7] = dcval;
-      
+
       inptr++;			/* advance pointers to next column */
       quantptr++;
       wsptr++;
       continue;
     }
-    
+
     /* Even part */
 
     tmp0 = DEQUANTIZE(inptr[DCTSIZE*0], quantptr[DCTSIZE*0]);
@@ -239,7 +229,7 @@ jpeg_idct_ifast (j_decompress_ptr cinfo, jpeg_component_info * compptr,
     tmp3 = tmp10 - tmp13;
     tmp1 = tmp11 + tmp12;
     tmp2 = tmp11 - tmp12;
-    
+
     /* Odd part */
 
     tmp4 = DEQUANTIZE(inptr[DCTSIZE*1], quantptr[DCTSIZE*1]);
@@ -276,7 +266,7 @@ jpeg_idct_ifast (j_decompress_ptr cinfo, jpeg_component_info * compptr,
     quantptr++;
     wsptr++;
   }
-  
+
   /* Pass 2: process rows from work array, store into output array. */
   /* Note that we must descale the results by a factor of 8 == 2**3, */
   /* and also undo the PASS1_BITS scaling. */
@@ -291,14 +281,14 @@ jpeg_idct_ifast (j_decompress_ptr cinfo, jpeg_component_info * compptr,
      * test takes more time than it's worth.  In that case this section
      * may be commented out.
      */
-    
+
 #ifndef NO_ZERO_ROW_TEST
     if (wsptr[1] == 0 && wsptr[2] == 0 && wsptr[3] == 0 && wsptr[4] == 0 &&
 	wsptr[5] == 0 && wsptr[6] == 0 && wsptr[7] == 0) {
       /* AC terms all zero */
       JSAMPLE dcval = range_limit[IDESCALE(wsptr[0], PASS1_BITS+3)
 				  & RANGE_MASK];
-      
+
       outptr[0] = dcval;
       outptr[1] = dcval;
       outptr[2] = dcval;
@@ -312,7 +302,7 @@ jpeg_idct_ifast (j_decompress_ptr cinfo, jpeg_component_info * compptr,
       continue;
     }
 #endif
-    
+
     /* Even part */
 
     tmp10 = ((DCTELEM) wsptr[0] + (DCTELEM) wsptr[4]);

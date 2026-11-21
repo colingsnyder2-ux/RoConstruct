@@ -1,4 +1,4 @@
-// native-flags: /O2 /GS- /EHsc /MD /D_AFXDLL /GS-
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
 #include "CRobloxReportView.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Stats.h"
@@ -64,6 +64,9 @@ void CRobloxReportView::OnInitialUpdate()
 
 // Original 00458700 (open, 669 vs 700 bytes): every statement aligns; the original emits a separate release of
 // the argument for the early return and tail-merges it into the final release, this build jumps to the common one.
+// PARKED (batch 29, measured with the MarshaledListener.h fix in a scratch copy): rejected the whole body inside
+// `if (dataModel != this->dataModel)` and the /Oi /Ot flag set (both still 669 B, same first divergence 0045872f).
+// The duplicate definition formerly in CRobloxReportViewDataModel.cpp was removed (same body, same result).
 void CRobloxReportView::setDataModel(boost::shared_ptr<RBX::DataModel> dataModel)
 {
     if (dataModel == this->dataModel)
@@ -94,16 +97,92 @@ void CRobloxReportView::setDataModel(boost::shared_ptr<RBX::DataModel> dataModel
     }
 }
 
-// Original 004582f0 (open, 388 vs 391 bytes): identical except operator new(0xb0) - sizeof(CStatsItemRecord) needs
-// the record layout (see the header).
+// Original 00456250 (183 B, registry placeholder; vtable of the ChildRemoved listener base, slot 2). Byte-identical
+// (relocs masked) once util/MarshaledListener.h compiles (measured against a scratch copy without its stray '}').
+// The record's item (+0xa8) is read through the inline const accessor CStatsItemRecord::getItem().
+// (The ChildAdded handler 004582f0 is in CRobloxReportViewChildAdded.cpp.)
 void CRobloxReportView::onMarshaledEvent(const RBX::Instance* source, RBX::ChildRemoved event)
 {
     CXTPReportRecords* records = GetReportCtrl().GetRecords();
     for (int i = records->GetCount() - 1; i >= 0; --i) {
-        RBX::Instance* recordValue = *(RBX::Instance* const*)((char*)records->GetAt(i) + 0xa8);
+        RBX::Instance* recordValue = static_cast<CStatsItemRecord*>(records->GetAt(i))->getItem();
         if (recordValue == event.child.get()) {
             records->RemoveAt(i);
             break;
+        }
+    }
+}
+
+// updateStats 00456c30 and logRecords 00456820 (declared in CRobloxReportView.h since batch 30). Measured in
+// batch 29 against a scratch header with that declaration and the util/MarshaledListener.h stray-brace fix:
+// updateStats byte-identical (relocs masked); logRecords 1038 = 1038 B. The mfc-noinline-pcxstr include (CString
+// conversions through mfc90 #910, as in the target) keeps every other body of this unit identical.
+
+// File-local helpers of the original unit, defined in other native units for now: the timestamp formatter 00456120
+// (CRobloxReportViewTime.cpp) and the wall-clock seconds 00455d70 (WF_range_00455d70_00455d70_00455d70.cpp).
+CString f(bool includeDate);
+double sub_00455d70();
+
+// INFERRED: the benchmark log statics of this unit. Only 00456c30 / 00456820 reference them: 0096dbb1 is a bss bool
+// that no code writes (the log is compiled in but off), 00932028 a .data double initialised to -1.0 (first sample
+// time), 00931800 a .data float 60.0 (seconds between samples, compared as `* 1.01`), 0096dd84 the FILE*.
+static bool benchmarkEnabled = false;      // 0096dbb1
+static double benchmarkStart = -1.0;       // 00932028
+static float benchmarkInterval = 60.0f;    // 00931800
+static FILE* benchmarkFile = NULL;         // 0096dd84
+
+// Original 00456c30 (559 B, registry name updateStats): under the DataModel lock repopulates and redraws the report;
+// when the (disabled) benchmark log is on, the first call records the start time and every later call past
+// 1.01 * interval opens "c:\roblox_bench_<time>.txt" once (std::exception on failure) and appends the wall time and
+// the record tree. The exception message stays a CString temporary converted in the throw expression (EH state 6
+// covers it; a named const char* local was rejected: extra frame slot and early destruction).
+void CRobloxReportView::updateStats()
+{
+    RBX::DataModel::Lock lock(dataModel);
+    GetReportCtrl().Populate();
+    GetReportCtrl().RedrawControl();
+    if (benchmarkEnabled) {
+        if (benchmarkStart < 0)
+            benchmarkStart = sub_00455d70();
+        else if (sub_00455d70() - benchmarkStart > benchmarkInterval * 1.01) {
+            if (!benchmarkFile) {
+                CString name = "c:\\roblox_bench_" + f(false) + ".txt";
+                benchmarkFile = fopen(name, "wt");
+                if (!benchmarkFile)
+                    throw std::exception("Cannot open benchmark file " + name);
+            }
+            CXTPReportRecords* records = GetReportCtrl().GetRecords();
+            fprintf(benchmarkFile, "WallTime = %s\n", f(false));
+            logRecords(records, "");
+            fflush(benchmarkFile);
+        }
+    }
+}
+
+// Original 00456820 (1038 B, registry placeholder; INFERRED name logRecords): writes "<indent><name> = <value>\n" for
+// every record whose value caption is not empty, skipping the "Render" and "Sound" subtrees, and recurses into child
+// records with the indent extended by "<name>::". The name / value items are found by dynamic_cast over the
+// record's items (TypeDescriptors 00932114 CNameItem, 00932168 CValueItem; the last match wins).
+void CRobloxReportView::logRecords(CXTPReportRecords* records, CString indent)
+{
+    for (int i = 0; i < records->GetCount(); ++i) {
+        CXTPReportRecord* record = records->GetAt(i);
+        CStatsItemRecord::CNameItem* name;
+        CStatsItemRecord::CValueItem* value;
+        for (int j = 0; j < record->GetItemCount(); ++j) {
+            CXTPReportRecordItem* item = record->GetItem(j);
+            if (dynamic_cast<CStatsItemRecord::CNameItem*>(item))
+                name = dynamic_cast<CStatsItemRecord::CNameItem*>(item);
+            if (dynamic_cast<CStatsItemRecord::CValueItem*>(item))
+                value = dynamic_cast<CStatsItemRecord::CValueItem*>(item);
+        }
+        if (value->GetCaption(NULL) != "" && name->GetCaption(NULL) != "Render" && name->GetCaption(NULL) != "Sound") {
+            CString line = indent + name->GetCaption(NULL) + " = " + value->GetCaption(NULL) + "\n";
+            fprintf(benchmarkFile, "%s", (LPCSTR)line);
+        }
+        if (name->GetCaption(NULL) != "Render" && name->GetCaption(NULL) != "Sound") {
+            if (CXTPReportRecords* children = record->GetChilds())
+                logRecords(children, indent + name->GetCaption(NULL) + "::");
         }
     }
 }

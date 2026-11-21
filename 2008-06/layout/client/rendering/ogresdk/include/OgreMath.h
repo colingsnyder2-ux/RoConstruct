@@ -121,7 +121,7 @@ namespace Ogre
 		bool operator >  ( const Degree& d ) const { return mDeg >  d.mDeg; }
 	};
 
-    /** Wrapper class which identifies a value as the currently default angle 
+    /** Wrapper class which identifies a value as the currently default angle
         type, as defined by Math::setAngleUnit.
     @remarks
         Angle values will be automatically converted between radians and degrees,
@@ -168,7 +168,7 @@ namespace Ogre
             <br>This is based on MgcMath.h from
             <a href="http://www.geometrictools.com/">Wild Magic</a>.
     */
-    class _OgreExport Math 
+    class _OgreExport Math
     {
    public:
        /** The angular units used by the API. This functionality is now deprecated in favor
@@ -327,7 +327,7 @@ namespace Ogre
 		static inline Real DegreesToRadians(Real degrees) { return degrees * fDeg2Rad; }
         static inline Real RadiansToDegrees(Real radians) { return radians * fRad2Deg; }
 
-       /** These functions used to set the assumed angle units (radians or degrees) 
+       /** These functions used to set the assumed angle units (radians or degrees)
             expected when using the Angle type.
        @par
             You can set this directly after creating a new Root, and also before/after resource creation,
@@ -367,7 +367,7 @@ namespace Ogre
                 If the point is outside the triangle, <b>false</b> is
                 returned.
         */
-        static bool pointInTri2D(const Vector2& p, const Vector2& a, 
+        static bool pointInTri2D(const Vector2& p, const Vector2& a,
 			const Vector2& b, const Vector2& c);
 
        /** Checks whether a given 3D point is inside a triangle.
@@ -384,7 +384,7 @@ namespace Ogre
             b The triangle's second vertex.
         @param
             c The triangle's third vertex.
-		@param 
+		@param
 			normal The triangle plane's normal (passed in rather than calculated
 				on demand since the callermay already have it)
         @returns
@@ -394,15 +394,15 @@ namespace Ogre
             If the point is outside the triangle, <b>false</b> is
             returned.
         */
-        static bool pointInTri3D(const Vector3& p, const Vector3& a, 
+        static bool pointInTri3D(const Vector3& p, const Vector3& a,
 			const Vector3& b, const Vector3& c, const Vector3& normal);
         /** Ray / plane intersection, returns boolean result and distance. */
         static std::pair<bool, Real> intersects(const Ray& ray, const Plane& plane);
 
         /** Ray / sphere intersection, returns boolean result and distance. */
-        static std::pair<bool, Real> intersects(const Ray& ray, const Sphere& sphere, 
+        static std::pair<bool, Real> intersects(const Ray& ray, const Sphere& sphere,
             bool discardInside = true);
-        
+
         /** Ray / box intersection, returns boolean result and distance. */
         static std::pair<bool, Real> intersects(const Ray& ray, const AxisAlignedBox& box);
 
@@ -440,7 +440,7 @@ namespace Ogre
             b The triangle's second vertex.
         @param
             c The triangle's third vertex.
-		@param 
+		@param
 			normal The triangle plane's normal (passed in rather than calculated
 				on demand since the callermay already have it), doesn't need
                 normalised since we don't care.
@@ -489,24 +489,24 @@ namespace Ogre
         /** Plane / box intersection test. */
         static bool intersects(const Plane& plane, const AxisAlignedBox& box);
 
-        /** Ray / convex plane list intersection test. 
+        /** Ray / convex plane list intersection test.
         @param ray The ray to test with
         @param plaeList List of planes which form a convex volume
         @param normalIsOutside Does the normal point outside the volume
         */
         static std::pair<bool, Real> intersects(
-            const Ray& ray, const std::vector<Plane>& planeList, 
+            const Ray& ray, const std::vector<Plane>& planeList,
             bool normalIsOutside);
-        /** Ray / convex plane list intersection test. 
+        /** Ray / convex plane list intersection test.
         @param ray The ray to test with
         @param plaeList List of planes which form a convex volume
         @param normalIsOutside Does the normal point outside the volume
         */
         static std::pair<bool, Real> intersects(
-            const Ray& ray, const std::list<Plane>& planeList, 
+            const Ray& ray, const std::list<Plane>& planeList,
             bool normalIsOutside);
 
-        /** Sphere / plane intersection test. 
+        /** Sphere / plane intersection test.
         @remarks NB just do a plane.getDistance(sphere.getCenter()) for more detail!
         */
         static bool intersects(const Sphere& sphere, const Plane& plane);

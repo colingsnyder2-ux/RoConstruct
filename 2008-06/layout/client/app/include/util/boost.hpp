@@ -24,7 +24,7 @@ namespace RBX
 			boost::mutex sync;
 			boost::condition wakeCondition;
 			bool endRequest;
-		  
+
 		public:
 			//data(const data&);
 			data()
@@ -42,7 +42,7 @@ namespace RBX
 	private:
 		boost::shared_ptr<data> _data;
 		boost::thread thread;
-	
+
 	public:
 		//worker_thread(const worker_thread&);
 		worker_thread(const boost::function0<enum work_result>&, const char*);
@@ -54,7 +54,7 @@ namespace RBX
 		void join();
 	public:
 		//worker_thread& operator=(const worker_thread&);
-	  
+
 	private:
 		static void threadProc(boost::shared_ptr<data>, const boost::function0<enum work_result>&);
 	};

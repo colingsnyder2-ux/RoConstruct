@@ -1,12 +1,3 @@
-// Inactive native recovery of the RBX::GroupDragTool unit 0066a570..0066aa76 (2008-06) against the committed native
-// tool/GroupDragTool.h (read-only). Layout evidence: DragTool::onMouseDown 0066061b news 0x38 for the constructor
-// 0066a630; MouseCommand base 0x1c bytes (MouseCommand(Workspace*) 006159f0), megaDragger +0x1c (new 0x2c,
-// MegaDragger ctor 0060e630), downPoint +0x20/+0x24, dragging +0x28, lastHit +0x2c..+0x34 (ctor stores); RTTI
-// .?AVGroupDragTool@RBX@@ vtable 0084d02c with the IRenderable base vtable 0084d014 at +4.
-// Named<MouseCommand, sGroupDragTool>::getName 0066aa60 call_once's a thunk 0066a620 of the function-local Name
-// declare 0066a5b0 (sGroupDragTool 00962c54, "GroupDragTool"); the helper names come from StandardVerbs.h
-// (codegen analogs). See tests/record_native_app_unit660_2008.py.
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "tool/GroupDragTool.h"
 #include "v8datamodel/Workspace.h"
 #include "util/Math.h"
@@ -15,8 +6,6 @@
 
 namespace RBX
 {
-	// 0058c5c0: commits a ChangeHistoryService waypoint (not declared in a shared header; same local declaration as
-	// AxisMoveToolMethods.cpp / CSelectionTreeCtrl.cpp).
 	void recordCameraHistory(const char*, const Instance*);
 
 	char sGroupDragTool[] = "GroupDragTool";

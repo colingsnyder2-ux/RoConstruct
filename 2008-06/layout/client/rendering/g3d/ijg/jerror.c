@@ -1,5 +1,3 @@
-// native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
-// 2008-06 native Jpegjerror (inactive): upstream tools/libs/jpeg-6b/jerror.c, verbatim.
 /*
  * jerror.c
  *
@@ -34,7 +32,6 @@
 #define EXIT_FAILURE  1
 #endif
 
-
 /*
  * Create the message string table.
  * We do this from the master message list in jerror.h by re-reading
@@ -53,7 +50,6 @@ const char * const jpeg_std_message_table[] = {
 #include "jerror.h"
   NULL
 };
-
 
 /*
  * Error exit handler: must not return to caller.
@@ -79,7 +75,6 @@ error_exit (j_common_ptr cinfo)
 
   exit(EXIT_FAILURE);
 }
-
 
 /*
  * Actual output of an error or trace message.
@@ -114,7 +109,6 @@ output_message (j_common_ptr cinfo)
 #endif
 }
 
-
 /*
  * Decide whether to emit a trace or warning message.
  * msg_level is one of:
@@ -146,7 +140,6 @@ emit_message (j_common_ptr cinfo, int msg_level)
       (*err->output_message) (cinfo);
   }
 }
-
 
 /*
  * Format a message string for the most recent JPEG error or message.
@@ -201,7 +194,6 @@ format_message (j_common_ptr cinfo, char * buffer)
 	    err->msg_parm.i[6], err->msg_parm.i[7]);
 }
 
-
 /*
  * Reset error state variables at start of a new image.
  * This is called during compression startup to reset trace/error
@@ -217,7 +209,6 @@ reset_error_mgr (j_common_ptr cinfo)
   /* trace_level is not reset since it is an application-supplied parameter */
   cinfo->err->msg_code = 0;	/* may be useful as a flag for "no error" */
 }
-
 
 /*
  * Fill in the standard error-handling methods in a jpeg_error_mgr object.

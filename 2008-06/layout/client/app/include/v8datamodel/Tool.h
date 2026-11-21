@@ -1,26 +1,4 @@
 #pragma once
-// 2008-06 native RBX::Tool (inactive). Shape after the donor tools/rbxgs v8datamodel/Tool.h; the one change is the
-// class-name template argument (a const char array, RTTI $1?sTool@2@3QBDB). Every base, field and size below is read
-// from the 2008-06 binary (tests/record_native_hopper.py checks them):
-//   RTTI       vtable 00841a4c .?AVTool@RBX@@ (32 bases) -> DescribedCreatable<Tool, BackpackItem, sTool> ->
-//              BackpackItem (non-virtual part 0x1a0) + IEquipable +0x1a0 + IRenderable +0x1b0, virtual ILocation and
-//              ISelectable3d through the vbptr at +0x1c0 (vbtable offsets 4 and 8).
-//   size       0x270: Creatable<Instance>::create<Tool> 00578400 allocates 0x270 and calls 00600240 with the
-//              most-derived flag; the non-virtual part ends at +0x268 (Flag's fields start there), the virtual bases
-//              are at +0x268 / +0x26c (vtable 0084199c, vtordisp thunk 005fe6a0 for getLocation).
-//   fields     constructor 00600240 / destructor 005fe4b0: backendToolState +0x1c4 = NOTHING, frontendActivationState
-//              +0x1c8 = 0, grip +0x1cc (CoordinateFrame() 004782d0), enabled +0x1fc = true, toolMouseCommand +0x200
-//              = NULL, scoped_connections handleTouched +0x204, characterChildAdded +0x218, characterChildRemoved
-//              +0x22c, torsoChildAdded +0x240, torsoChildRemoved +0x254 (~scoped_connection 005954b0 in reverse
-//              order); setName(sTool) with the class-name array 008416d0. No asserts in the 2008 destructor.
-//   accessors  getBackendToolState 005fd3b0 (+0x1c4), getFrontendActivationState 005fd3a0 (+0x1c8), getGrip 005fd3c0
-//              (+0x1cc), getGripPos 005fd500 (+0x1f0), drawSelected 005fe600 (backendToolState >= EQUIPPED).
-//   descriptors (dynamic initializers 007f7640..007f7990, category "Appearance" 008329ac): prop_Grip (STREAMING),
-//              prop_GripPos, prop_GripForward, prop_GripUp, prop_GripRight (UI), prop_BackendToolState and
-//              prop_FrontendActivationState ("ActivationState", STREAMING), Tool::prop_Enabled (BoundProp<bool,1> 0097b84c,
-//              "Enabled"/"State", member +0x1fc, STANDARD), event_Equipped ("Equipped"/"mouse"), event_Unequipped,
-//              event_Activated, event_Deactivated.
-// The unit needs /fp:fast (getGripForward 005fd530 keeps the -1.0f product in x87 registers).
 #include "v8datamodel/Hopper.h"
 #include "v8datamodel/IEquipable.h"
 #include "util/IRenderable.h"
@@ -93,7 +71,6 @@ namespace RBX
 		void upTo_InWorkspace();
 		void upTo_HasHandle();
 		// INFERRED: 005fd3d0 is a Tool member whose 5-byte body tail-calls 00642fc0; the original
-		// name is not in the identity registry, kept as sub_005fd3d0 per the assignment.
 		void sub_005fd3d0();
 		void downFrom_Activated();
 		void downFrom_Equipped();

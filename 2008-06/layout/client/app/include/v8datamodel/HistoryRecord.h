@@ -25,8 +25,6 @@ struct HistoryItem {
     void captureProperty(const Reflection::PropertyDescriptor*);
     void capture(const Reflection::Property&);
     HistoryItem();
-    // The bound property members take pair<const PropertyDescriptor*, Value> (non-const key): the original
-    // std::for_each 00588240 converts each map element into that temporary through 00587710 before the call.
     void mergeProperty(const std::pair<const Reflection::PropertyDescriptor*, Reflection::Value>&);
     void update(const Reflection::PropertyDescriptor*);
     void applyProperty(const std::pair<const Reflection::PropertyDescriptor*, Reflection::Value>&);

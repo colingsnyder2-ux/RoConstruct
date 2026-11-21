@@ -1,4 +1,3 @@
-// native-flags: /O2 /GS- /EHsc /MD /GS- /IC:\Users\colin\RoConstruct\tools\rbxgs\Client\Network\raknet30\Source
 #include "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/SimpleMutex.h"
 
 void SimpleMutex::Lock(void)
@@ -10,16 +9,16 @@ void SimpleMutex::Lock(void)
 	if (d==WAIT_FAILED)
 	{
 	LPVOID messageBuffer;
-	FormatMessage( 
-	FORMAT_MESSAGE_ALLOCATE_BUFFER | 
-	FORMAT_MESSAGE_FROM_SYSTEM | 
+	FormatMessage(
+	FORMAT_MESSAGE_ALLOCATE_BUFFER |
+	FORMAT_MESSAGE_FROM_SYSTEM |
 	FORMAT_MESSAGE_IGNORE_INSERTS,
 	NULL,
 	GetLastError(),
 	MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), // Default language
 	(LPTSTR) &messageBuffer,
 	0,
-	NULL 
+	NULL
 	);
 	// Process any inserts in messageBuffer.
 	// ...
@@ -73,4 +72,3 @@ SimpleMutex::~SimpleMutex()
 	pthread_mutex_destroy(&hMutex);
 #endif
 }
-

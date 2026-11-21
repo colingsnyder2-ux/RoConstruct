@@ -1,16 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #undef _RELEASEASSERT
-// 2008-06 native RBX::RunDragger unit 0066c330..0066e650 (inactive), against the donor tool/RunDragger.h (read-only; no
-// native header declares RunDragger, and its donor layout is the 2008 one: PartDragTool() 00665fc1 news 0x70 before
-// RunDragger() 0066c900, whose stores cover dragPart +0x0 / snapPart +0x8 (weak_ptrs released in reverse by ~RunDragger
-// 0066c400), workspace +0x10, drag +0x14, dragPointLocal +0x18, snapInfo +0x24 (snap +0x24, surface +0x28 = 6, hitWorld
-// +0x2c, lastDragSnap +0x38 = Vector3::inf()), mouseRay +0x44 (G3D::Ray vtable 008282c4, origin +0x48, direction
-// +0x54), dragSurface +0x60 and dragHitLocal +0x64; checked by tests/record_native_app_unit66c.py).
-// Built with native-headers/part-embedded and native-headers/engine-world first on the include path (the 2008
-// Primitive / PartInstance / World / ContactManager declarations), as AppUnit5E4PrimitiveParts.cpp.
-// The donor tool/RunDragger.cpp bodies compile exact as they are; the 2008-only members (findSnap, smartPtrHackPre /
-// Post, init, fallOffPart, snap, snapDragPart, moveDragPart) are written from the target bytes. RBXASSERT is compiled
-// out (/U_RELEASEASSERT): no row of the unit contains assertion code. Codegen analog; names follow the donor header.
 #include "tool/RunDragger.h"
 #include "tool/Dragger.h"
 #include "v8datamodel/PartInstance.h"
@@ -24,7 +12,6 @@
 
 namespace RBX
 {
-	// 0066c330
 	void RunDragger::SnapInfo::updateSurfaceFromHit()
 	{
 		G3D::Vector3 hitInSnap = snap->getCoordinateFrame().pointToObjectSpace(hitWorld);
@@ -33,7 +20,6 @@ namespace RBX
 		surface = snapExtents.closestFace(hitInSnap);
 	}
 
-	// 0066c640 (2008: plus the two function-local debug copies 0097da0c / 0097da20)
 	void RunDragger::SnapInfo::updateHitFromSurface(const G3D::Ray& mouseRay)
 	{
 		Extents snapExtents = snap->getExtentsLocal();
@@ -57,7 +43,6 @@ namespace RBX
 		static G3D::Plane debugPlane = plane;
 	}
 
-	// 0066c810
 	float RunDragger::SnapInfo::hitOutsideExtents()
 	{
 		Extents snapExtents = snap->getExtentsLocal();
@@ -67,17 +52,14 @@ namespace RBX
 		return (hitInSnap - clipInSnap).magnitude();
 	}
 
-	// 0066c900 (SnapInfo() 0066c600 inlined; the out-of-line copy is emitted for findSnap)
 	RunDragger::RunDragger()
 		: workspace(NULL),
 		  drag(NULL)
 	{
 	}
 
-	// 0066c400
 	RunDragger::~RunDragger() {}
 
-	// 0066c4c0
 	bool RunDragger::adjacent(Primitive* p0, Primitive* p1)
 	{
 		for (Contact* current = p0->getFirstContact(); current != NULL; current = p0->getNextContact(current))
@@ -89,13 +71,11 @@ namespace RBX
 		return false;
 	}
 
-	// 0066c510
 	bool RunDragger::tooCloseToCamera()
 	{
 		return (drag->getCoordinateFrame().pointToWorldSpace(dragPointLocal) - mouseRay.origin).magnitude() < 6.0f;
 	}
 
-	// 0066c5a0
 	void RunDragger::rotatePart(PartInstance* part)
 	{
 		RBXASSERT(part);
@@ -106,7 +86,6 @@ namespace RBX
 		part->setCoordinateFrame(rotated);
 	}
 
-	// 0066c970
 	RunDragger::SnapInfo RunDragger::createSnapSurface(Primitive* snap, G3D::Array<NormalId>* ignore)
 	{
 		RBXASSERT(snap);
@@ -146,18 +125,16 @@ namespace RBX
 				}
 			}
 		}
-		
+
 		return found ? answer : SnapInfo();
 	}
 
-	// 0066cc70 (also inlined into snap)
 	bool RunDragger::notTried(Primitive* check, const G3D::Array<Primitive*>& tried)
 	{
 		RBXASSERT(check != drag);
 		return check && tried.find(check) == tried.end();
 	}
 
-	// 0066ccc0
 	RunDragger::SnapInfo RunDragger::bestProximatePart(const G3D::Array<Primitive*>& triedSnap, bool (Contact::* proximityTest)(float))
 	{
 		SnapInfo answer;
@@ -179,7 +156,6 @@ namespace RBX
 		return answer;
 	}
 
-	// 0066ce20
 	void RunDragger::turnUpright(PartInstance* part)
 	{
 		RBXASSERT(part);
@@ -195,7 +171,6 @@ namespace RBX
 		}
 	}
 
-	// 0066ced0
 	void RunDragger::tiltPart(PartInstance* part, const G3D::CoordinateFrame& camera)
 	{
 		RBXASSERT(part);
@@ -208,7 +183,6 @@ namespace RBX
 		part->setCoordinateFrame(dragCoord);
 	}
 
-	// 0066d0d0
 	RunDragger::SnapInfo RunDragger::rayHitsPart(const G3D::Array<Primitive*>& triedSnap, bool forceAdjacent)
 	{
 		SnapInfo answer;
@@ -227,7 +201,6 @@ namespace RBX
 		return SnapInfo();
 	}
 
-	// 0066d9f0
 	bool RunDragger::rayHitsCloserPart()
 	{
 		G3D::Array<Primitive*> ignoreNone;
@@ -242,7 +215,6 @@ namespace RBX
 		return false;
 	}
 
-	// 0066daf0
 	void RunDragger::findSafeY()
 	{
 		if (workspace->getWorld()->getContactManager().intersectingOthers(drag, 0.01f))
@@ -262,7 +234,6 @@ namespace RBX
 		}
 	}
 
-	// 0066e330
 	void RunDragger::findNoSnapPosition(const G3D::CoordinateFrame& original)
 	{
 		dragPart.lock()->setCoordinateFrame(original);
@@ -271,13 +242,11 @@ namespace RBX
 		RBXASSERT(!workspace->getWorld()->getContactManager().intersectingOthers(drag, 0.01f));
 	}
 
-	// no row: inlined into snap 0066e550 (World +0x84 ContactManager, intersectingOthers 0060dcd0)
 	inline bool RunDragger::colliding()
 	{
 		return workspace->getWorld()->getContactManager().intersectingOthers(drag, 0.01f);
 	}
 
-	// 0066d260
 	RunDragger::SnapInfo RunDragger::findSnap(const G3D::Array<Primitive*>& triedSnap)
 	{
 		SnapInfo answer;
@@ -301,7 +270,6 @@ namespace RBX
 		return SnapInfo();
 	}
 
-	// 0066d430
 	void RunDragger::smartPtrHackPre()
 	{
 		boost::shared_ptr<PartInstance> part = snapPart.lock();
@@ -311,7 +279,6 @@ namespace RBX
 			snapInfo.snap = NULL;
 	}
 
-	// 0066dc80
 	void RunDragger::smartPtrHackPost()
 	{
 		if (snapInfo.snap)
@@ -320,7 +287,6 @@ namespace RBX
 			snapPart.reset();
 	}
 
-	// 0066d4f0
 	void RunDragger::init(Workspace* workspace, boost::weak_ptr<PartInstance> part, const G3D::Vector3& hitPoint)
 	{
 		this->workspace = workspace;
@@ -332,7 +298,6 @@ namespace RBX
 		turnUpright(dragPart.lock().get());
 	}
 
-	// 0066e1a0 (G3D::Array<NormalId>::append 0066d3c0 / resize 0066cfd0 instantiated here)
 	bool RunDragger::fallOffPart(bool& changed)
 	{
 		G3D::Array<NormalId> tried;
@@ -351,10 +316,6 @@ namespace RBX
 		return snapInfo.snap == NULL;
 	}
 
-	// 0066e3d0. Not exact (batch 24): 639 B against 642. The only difference is the inline colliding(): the target reads
-	// the ContactManager at World +0x84 (`mov eax, [eax + 0x84]`, disp32), the engine-world v8world/World.h declares
-	// contactManager at +0x40 (disp8, the 3 missing bytes); every other instruction is identical. Blocked on the World
-	// header owner (v8world/World2008.h already records +0x84 at 005e91c0 / 005e9230); no source change here can fix it.
 	bool RunDragger::snap(const G3D::Ray& ray)
 	{
 		smartPtrHackPre();
@@ -389,7 +350,6 @@ namespace RBX
 		return false;
 	}
 
-	// 0066d710
 	bool RunDragger::snapDragPart()
 	{
 		Face snapFace = snapInfo.snap->getFaceInWorld(snapInfo.surface);
@@ -411,7 +371,6 @@ namespace RBX
 		return false;
 	}
 
-	// 0066dd90 (not exact: same size, x87 scheduling of the snap normal differs; see the recorder)
 	bool RunDragger::moveDragPart()
 	{
 		const G3D::CoordinateFrame& snapCoord = snapInfo.snap->getCoordinateFrame();

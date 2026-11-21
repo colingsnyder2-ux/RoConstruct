@@ -1,116 +1,89 @@
-// from server: 51% by colin
+// from server: 100% by Intel_Inside
 // roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <vector>
+#include <intrin.h>
+#pragma intrinsic(_InterlockedDecrement)
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+namespace boost {
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy();
+    long use_count_;            // +4
+    long weak_count_;           // +8
+    void weak_release()
+    {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
+    void release()
+    {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
+};
 
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+class shared_count {
+    sp_counted_base* pi_;
+public:
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+    shared_count& operator=(const shared_count& r);     // 0x402a60
+};
 }
 
-void initMoo()
-{
-	moo2();
+template<class T> class shared_ptr {
+public:
+    T* get() const { return px; }
+    T* operator->() const { return px; }
+    T* px;
+    detail::shared_count pn;
+};
+
+struct once_flag { long epoch; };
+void call_once(void (*func)(), once_flag& flag);        // 0x725520
+
 }
 
-namespace RBX
+namespace RBX {
+
+class Instance;
+
+class Tool {
+public:
+    void setOwner(Instance* owner);                      // 0x541630
+};
+
+boost::shared_ptr<Tool> createTool();                    // 0x43de50
+void initToolIndex();                                     // 0x5588d0
+extern boost::once_flag toolIndexFlag;                    // 0x8c1f1c
+unsigned int toolIndex();                                 // 0x5578c0
+
+class Instance {
+    int pad[0x130 / 4];
+    std::vector< boost::shared_ptr<Tool> > products;      // _Myfirst at +0x134 (VS2005 vector keeps its allocator first)
+public:
+    Tool* findTool();                                     // 0x55a490
+    Tool* create();
+};
+
+Tool* Instance::create()
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
+    Tool* result = findTool();
+    if (result == 0) {
+        boost::shared_ptr<Tool> tool = createTool();
+        result = tool.get();
+        boost::call_once(&initToolIndex, toolIndexFlag);
+        products[toolIndex()] = tool;
+        result->setOwner(this);
+    }
+    return result;
+}
 
-	Name::NamMap::~NamMap()
-	{
-		for (std::map<std::string, Name*>::iterator iter = this->begin(); iter != this->end(); iter++)
-		{
-			delete iter->second;
-		}
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
 }

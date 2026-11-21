@@ -8,17 +8,14 @@ BEGIN_MESSAGE_MAP(CSettingsDialog, CDialog)
     ON_BN_CLICKED(1002, &CSettingsDialog::OnResetSettings)
 END_MESSAGE_MAP()
 
-// Original 00466e10.
 CSettingsDialog::CSettingsDialog(CWnd* parent)
     : CDialog(122, parent),
       explorer(NULL)
 {
 }
 
-// Original 00466ca0.
 CSettingsDialog::~CSettingsDialog() {}
 
-// Original 00466c00.
 void CSettingsDialog::OnResetSettings()
 {
     AfxMessageBox(143, MB_ICONINFORMATION);
@@ -26,7 +23,6 @@ void CSettingsDialog::OnResetSettings()
     EndDialog(IDCANCEL);
 }
 
-// Original 00467030.
 BOOL CSettingsDialog::OnInitDialog()
 {
     if (!CDialog::OnInitDialog())

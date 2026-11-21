@@ -33,7 +33,7 @@ namespace RBX
 	  	static Reflection::BoundProp<bool, true> prop_Disabled;
 	  	static const Reflection::PropDescriptor<Script, std::string> prop_EmbeddedSourceCode;
 	  	static const Reflection::PropDescriptor<Script, ContentId> prop_SourceCodeId;
-	
+
 	public:
 	  	Script(const Script&);
 	  	Script();
@@ -59,7 +59,7 @@ namespace RBX
 			return scriptId;
 		}
 		void setScriptId(const ContentId& value);
-	
+
 	protected:
 		virtual void onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider);
 		virtual void onAncestorChanged(const AncestorChanged& event);

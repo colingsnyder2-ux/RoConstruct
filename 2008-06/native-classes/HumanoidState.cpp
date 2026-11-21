@@ -113,6 +113,23 @@ void HumanoidState::setTorsoHeadFlag(bool value)
     }
 }
 
+// 00643f10 (237 bytes, thiscall `ret 0xc`: hidden shared_ptr return, const Ray&, float; registry placeholder
+// func_00643f10, analog name; callers findFloor 00644000 only, same HumanoidState unit). Placed here, not beside
+// findFloor in HumanoidStateFloor.cpp, because that unit's donor-shaped humanoid/Humanoid.h has world at +0x218 (the
+// only diff there); humanoid/Humanoid2008.h has the binary's +0x21c. ContactManager (humanoid
+// world +0x21c, contactManager +0x84) getHitLegacy 0060da00 with this HitTestFilter (+4), hit point into
+// floorTouchInWorld +0x2c, then PartInstance::fromPrimitive 00599f80 and shared_from 00618a40. The distance local
+// shares the dead ray argument slot.
+boost::shared_ptr<PartInstance> HumanoidState::floorPartFromRay(const G3D::Ray& ray, float maxDistance)
+{
+	float distance;
+	Primitive* hit = humanoid->getWorld()->getContactManager().getHitLegacy(ray, NULL, this, floorTouchInWorld, distance, maxDistance);
+	boost::shared_ptr<PartInstance> result;
+	if (hit)
+		result = shared_from(PartInstance::fromPrimitive(hit));
+	return result;
+}
+
 // 006444f0 (374 bytes, plain `ret`): moved here from HumanoidStateFloor.cpp in batch 25, because this unit reaches
 // humanoid/Humanoid2008.h (world +0x21c, HumanoidState a friend) where humanoid/Humanoid.h has world at +0x218.
 // world (Humanoid +0x21c) tested first (shared epilogue); Humanoid::getPrimitives 005d9db0 into a local vector,
@@ -136,7 +153,6 @@ bool HumanoidState::onFloorStep()
     return false;
 }
 
-#ifdef NATIVE_HUMANOIDSTATE_PRESTEP_PENDING
 // 006451c0 (472 bytes, thiscall `ret 4`; analog name preStep, declared in humanoid/HumanoidState.h; called by
 // stepState 00645450 and transition 006453a0 in HumanoidStateStep.cpp). Decoded from the target (no donor body):
 // old floorPart pointer kept in esi, floorFound +0x20 = false, floorPart.reset() 00456e80, floorTouchInWorld =
@@ -146,10 +162,11 @@ bool HumanoidState::onFloorStep()
 // through world +0x21c, then previous (+0x40) / current (+0x70) from Primitive::getCoordinateFrame 005e82c0 of the
 // embedded floor Primitive (+0x228, inline getFloorPrimitive); columns 8 / 9 (0084a94c / 0084a950) ->
 // floorFound = 00644c80(NULL).
-// PENDING (not compiled, unverified draft): humanoid/HumanoidState.h (not this worker's file) lacks declarations of
-// 00644000 (void, analog name findFloor) and 00644c80 (bool (Adorn*), analog name findClimbable), and
-// World::ticklePrimitive(Primitive*, int) is declared only by v8world/World2008.h (owner colin) while this unit reaches
-// engine-world/v8world/World.h (ticklePrimitive(Primitive*) with one argument). Header proposals in the batch 26 report.
+// Batch 28: humanoid/HumanoidState.h declares findFloor / findClimbable and engine-world v8world/World.h declares
+// ticklePrimitive(Primitive*, int).
+// PARKED (batch 28, 472/472 bytes, first divergence insn 66 00645281): the only diff is the scheduling of the
+// ticklePrimitive arguments (target `mov ecx, [edx+0x21c]; add eax, 0x228; push 0; push eax`, candidate pushes 0 before
+// the add). Rejected: getFloorPrimitive() as the argument, a bool second parameter (false), a named Primitive* local.
 void HumanoidState::preStep(float dt)
 {
     PartInstance* oldFloor = floorPart.get();
@@ -184,7 +201,6 @@ void HumanoidState::preStep(float dt)
     if (transitionTable[getStateType()][8] != 13 || transitionTable[getStateType()][9] != 13)
         floorFound = findClimbable(NULL);
 }
-#endif
 
 // 00643660 (836 bytes, cdecl; analog name): the state factory. Jump table 00643974 for cases 0..11 in getStateType order
 // (tests/record_native_humanoid_factory.py: allocation sizes 0xa0..0x114 and constructor RTTI per case); every case

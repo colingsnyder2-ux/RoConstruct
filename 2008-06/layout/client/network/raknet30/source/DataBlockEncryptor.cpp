@@ -1,20 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /FImalloc.h /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
-/// \file
-///
-/// This file is part of RakNet Copyright 2003 Kevin Jenkins.
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-/// Creative Commons Licensees are subject to the
-/// license found at
-/// http://creativecommons.org/licenses/by-nc/2.5/
-/// Single application licensees are subject to the license found at
-/// http://www.rakkarsoft.com/SingleApplicationLicense.html
-/// Custom license users are subject to the terms therein.
-/// GPL license users are subject to the GNU General Public
-/// License as published by the Free
-/// Software Foundation; either version 2 of the License, or (at your
-/// option) any later version.
-
 #include "DataBlockEncryptor.h"
 #include "CheckSum.h"
 #include "GetTime.h"
@@ -24,28 +7,20 @@
 #include "Rijndael.h"
 #include "Types.h"
 
-// FUNCTION: WEBSERVICE 0x101c38c0
-// FUNCTION: ROBLOX 0x004e8f20
 DataBlockEncryptor::DataBlockEncryptor()
 {
 	keySet = false;
 }
 
-// FUNCTION: WEBSERVICE 0x1015b610 FOLDED
-// FUNCTION: ROBLOX 0x00751160 FOLDED
 DataBlockEncryptor::~DataBlockEncryptor()
 {
 }
 
-// FUNCTION: WEBSERVICE 0x101c38d0
-// FUNCTION: ROBLOX 0x004e8f30
 bool DataBlockEncryptor::IsKeySet( void ) const
 {
 	return keySet;
 }
 
-// FUNCTION: WEBSERVICE 0x101c38e0
-// FUNCTION: ROBLOX 0x004e8f40
 void DataBlockEncryptor::SetKey( const unsigned char key[ 16 ] )
 {
 	keySet = true;
@@ -55,15 +30,11 @@ void DataBlockEncryptor::SetKey( const unsigned char key[ 16 ] )
 	cipherInit(&cipherInst, MODE_ECB, 0); // ECB is not secure except that I chain manually farther down.
 }
 
-// FUNCTION: WEBSERVICE 0x101c3930
-// FUNCTION: ROBLOX 0x004e8f90
 void DataBlockEncryptor::UnsetKey( void )
 {
 	keySet = false;
 }
 
-// FUNCTION: WEBSERVICE 0x101c3940
-// FUNCTION: ROBLOX 0x004e8fa0
 void DataBlockEncryptor::Encrypt( unsigned char *input, int inputLength, unsigned char *output, int *outputLength )
 {
 	unsigned index, byteIndex, lastBlock;
@@ -79,7 +50,6 @@ void DataBlockEncryptor::Encrypt( unsigned char *input, int inputLength, unsigne
 #endif
 
 	assert( input && inputLength );
-
 
 	// randomChar will randomize the data so the same data sent twice will not look the same
 	randomChar = (unsigned char) randomMT();
@@ -147,8 +117,6 @@ void DataBlockEncryptor::Encrypt( unsigned char *input, int inputLength, unsigne
 	}
 }
 
-// FUNCTION: WEBSERVICE 0x101c3aa0
-// FUNCTION: ROBLOX 0x004e9100
 bool DataBlockEncryptor::Decrypt( unsigned char *input, int inputLength, unsigned char *output, int *outputLength )
 {
 	unsigned index, byteIndex, lastBlock;
@@ -202,7 +170,6 @@ bool DataBlockEncryptor::Decrypt( unsigned char *input, int inputLength, unsigne
 	// Ignore the high 4 bytes
 	paddingBytes = encodedPad & 0x0F;
 
-
 	// Get the data length
 	*outputLength = inputLength - sizeof( randomChar ) - sizeof( checkSum ) - sizeof( encodedPad ) - paddingBytes;
 
@@ -218,7 +185,5 @@ bool DataBlockEncryptor::Decrypt( unsigned char *input, int inputLength, unsigne
 	else
 		memcpy( output, input + sizeof( randomChar ) + sizeof( checkSum ) + sizeof( encodedPad ) + paddingBytes, *outputLength );
 
-
 	return true;
 }
-

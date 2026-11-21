@@ -94,7 +94,7 @@ namespace RBX
 		static Reflection::SignalDesc<Humanoid, void(bool)> event_GettingUp;
 		static Reflection::SignalDesc<Humanoid, void(bool)> event_FallingDown;
 		static Reflection::SignalDesc<Humanoid, void(bool)> event_Seated;
-	  
+
 	private:
 		void resetTimer();
 		void getPrimitives(std::vector<Primitive*>&);
@@ -225,7 +225,7 @@ namespace RBX
 		void onLocalHumanoidEnteringWorkspace();
 	public:
 		virtual void getIgnorePrims(std::vector<const Primitive*>& ignore);
-	  
+
 	public:
 		static Humanoid* modelIsCharacter(const Instance* testModel);
 		static Humanoid* getLocalHumanoidFromContext(const Instance* context);

@@ -1,7 +1,3 @@
-// native-flags: /O2 /GS- /EHsc /MD /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/boost_1_34_1/libs/signals/src
-// 2008-06 native Boosttrackable (inactive): upstream tools/libs/boost_1_34_1/libs/signals/src/trackable.cpp, verbatim.
-// Boost.Signals library
-
 // Copyright Douglas Gregor 2001-2004. Use, modification and
 // distribution is subject to the Boost Software License, Version
 // 1.0. (See accompanying file LICENSE_1_0.txt or copy at

@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native CRobloxWnd::RenderStatsItem unit (inactive): the render statistics item that CRobloxWnd
 // (0045f7b0) parents under the Stats service, and the Stats::TypedStatsItem<G3D::Stopwatch> / <int> template
 // instances its constructor binds (original COMDATs 0045c250..0045f730 in the CRobloxWnd unit). Evidence in
@@ -57,6 +58,10 @@ CRobloxWnd::RenderStatsItem::RenderStatsItem(RenderStats* renderStats)
 	minorChanges = changes->createChildItem("Minor");
 }
 
+// 0045f570 (slot 16). Measured (batch 29) against a scratch CRobloxView.h copy carrying `class RenderStatsItem;` in
+// CRobloxWnd: byte-identical (relocs masked) with /fp:fast (line 1; without it the float ratio is spilled to memory
+// and 1.0f / 100.0f become double constants, 452 vs 423 B); the constructor 0045f340 and create<> 0045f730 are
+// identical in the same build.
 void CRobloxWnd::RenderStatsItem::update()
 {
 	int chunks = RenderStats::chunkCount;

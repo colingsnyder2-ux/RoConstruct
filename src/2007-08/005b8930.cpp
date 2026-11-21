@@ -1,58 +1,66 @@
-// from server: 36% by colin
-struct EnumItem;
+// from server: 100% by Intel_Inside
+// roc-flags: /O2 /GS- /EHsc /MD
 
-struct EnumDescriptor {
-    EnumItem* convertToItem(int value) const;
+#include <string>
+
+class DescribedBase;
+class IReferenceBinder;
+
+class XmlValue {
+public:
+    bool isString() const;
+    bool get(std::string& value) const;
+    bool get(int& value) const;
 };
 
-struct Variant {
-    Variant();
-    ~Variant();
-    Variant& operator=(int value);
-    int get() const;
+class XmlElement {
+public:
+    bool isXsiNil() const;
+    char pad[0xc];
+    XmlValue value;
 };
 
-struct DescribedBase;
-
-struct GetSet {
-    virtual bool isReadOnly() const;
-    virtual bool isWriteOnly() const;
-    virtual int getValue(const DescribedBase* object) const;
-    virtual void setValue(DescribedBase* object, int value) const;
+template<class T> class EnumDesc {
+public:
+    static EnumDesc& singleton();
+    bool convertToValue(const std::string& text, T& value) const;
 };
 
-struct PropertyDescriptor {
-    void* vtable;
-    void* field4;
-    void* field8;
-    void* fieldC;
-    void* field10;
-    void* field14;
-    void* field18;
-    void* field1C;
+template<class T> class GetSet {
+public:
+    virtual T get(const DescribedBase* instance) const = 0;
+    virtual bool isReadOnly() const = 0;
+    virtual void set(DescribedBase* instance, const T& value) const = 0;
 };
 
-struct EnumPropertyDescriptor : PropertyDescriptor {
-    bool isReadOnly() const;
-    bool isWriteOnly() const;
-    void get(const DescribedBase* instance, Variant& value) const;
-    void set(DescribedBase* instance, const Variant& value) const;
-    int getValue(const DescribedBase* object) const;
-    void getVariant(const DescribedBase* instance, Variant& value) const;
-    void setVariant(DescribedBase* instance, const Variant& value) const;
-    void setValue(DescribedBase* object, int value) const;
-    void copyValue(const DescribedBase* source, DescribedBase* destination) const;
-    const EnumItem* getEnumItem(const DescribedBase* instance) const;
-    bool equalValues(const DescribedBase* a, const DescribedBase* b) const;
+enum InputType { NO_INPUT = 0 };
+
+class SurfaceEnumPropDescriptor {
+public:
+    virtual ~SurfaceEnumPropDescriptor();
+    char pad[0x18];
+    GetSet<InputType>* getset;
+    void readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const;
 };
 
-struct SurfaceEnumPropDescriptor : EnumPropertyDescriptor {
-    GetSet* getset;
-    void copyValue(const DescribedBase* source, DescribedBase* destination) const;
-};
-
-void SurfaceEnumPropDescriptor::copyValue(const DescribedBase* source, DescribedBase* destination) const {
-    Variant v;
-    v = getset->getValue(source);
-    getset->setValue(destination, v.get());
+void SurfaceEnumPropDescriptor::readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
+{
+    if (element->isXsiNil())
+        return;
+    const XmlValue& v = element->value;
+    if (v.isString()) {
+        std::string s;
+        if (v.get(s)) {
+            InputType value;
+            if (EnumDesc<InputType>::singleton().convertToValue(s, value)) {
+                getset->set(instance, value);
+                return;
+            }
+        }
+    }
+    int i;
+    if (v.get(i)) {
+        InputType value = (InputType)i;
+        getset->set(instance, value);
+    }
 }

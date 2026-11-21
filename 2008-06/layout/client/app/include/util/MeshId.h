@@ -1,5 +1,4 @@
 #pragma once
-// 2008-06 native RBX::MeshId class. Inherits from ContentId.
 
 #include "util/ContentProvider.h"
 

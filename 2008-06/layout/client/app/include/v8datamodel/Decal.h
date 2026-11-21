@@ -3,11 +3,11 @@
 #include "v8datamodel/FaceInstance.h"
 #include "util/TextureId.h"
 
-namespace RBX 
+namespace RBX
 {
 	extern char sDecal[];
 
-	class Decal : public DescribedCreatable<Decal, FaceInstance, sDecal> 
+	class Decal : public DescribedCreatable<Decal, FaceInstance, sDecal>
 	{
 	private:
 		TextureId texture;

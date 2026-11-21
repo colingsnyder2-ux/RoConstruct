@@ -1,9 +1,3 @@
-// 2008-06 native Reflection::EnumDesc<RBX::SoundType> constructor 00629120 (inactive): defined out of line right
-// after the IEquipable unit (00628f80..00629113) and before the ClickDetector unit (00629340); its only caller is
-// the function-local singleton 005bb2c0 (guard 009772c8, object 009771e0, atexit 007fe4b0) in the Sound unit.
-// Name "SoundType" 00845858, type descriptor 0095b3a4, EnumDesc<SoundType> vtable 00837a40, fifteen addPair calls
-// (ICF-shared addPair 0064d530). Enum values from the native util/Sound.h (read-only).
-// Verified by tests/record_native_script_app2008.py.
 #include "util/Sound.h"
 #include "reflection/enumconverter.h"
 
@@ -30,7 +24,6 @@ namespace RBX
 	}
 }
 
-// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class RBX::Reflection::EnumDesc<enum RBX::SoundType>;
 template class std::_Container_base_aux_alloc_real<std::allocator<enum RBX::SoundType> >;
 template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum RBX::SoundType> > >;

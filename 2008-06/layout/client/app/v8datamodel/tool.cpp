@@ -130,7 +130,6 @@ namespace RBX
 		}
 	}
 
-#if 0 // BLOCKED (batch 25): v8datamodel/JointInstance.h declares Weld : DescribedCreatable<Weld, JointInstance, sWeld>
 	void Tool::setGrip(const G3D::CoordinateFrame& value)
 	{
 		if (value != grip)
@@ -146,7 +145,6 @@ namespace RBX
 				weld->setC1(grip);
 		}
 	}
-#endif
 }
 
 namespace RBX

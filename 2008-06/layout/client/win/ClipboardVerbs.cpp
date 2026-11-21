@@ -1,4 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string
 #include <afxwin.h>
 #include <sstream>
 #include <algorithm>
@@ -66,7 +65,6 @@ void PasteVerb::doIt(IDataState* state)
     state->setDirty(true);
 }
 
-// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class boost::_bi::value<XmlElement *>;
 template class std::_Container_base_aux_alloc_real<std::allocator<XmlElement *> >;
 template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::InstanceHandle const ,int> > >;

@@ -46,6 +46,25 @@ namespace RBX
             // returning the pushed count (type_info tests of the Value type, then e.g. 1 after a push); called only
             // through pushReturnValue from 0061c234.
             static int push(const Reflection::Value& value, lua_State* const L);
+
+            // Donor script/LuaArguments.h pushTable (lua_createtable 00612570 with the element count, push 005aba50 per
+            // element, lua_rawseti(L, -2, ++i) 00612780, return 1). Instances: vector<Value>::const_iterator 005aa000
+            // (the ValueCollection case of push) and vector<shared_ptr<Instance> >::const_iterator 005ac2f0 (each
+            // element converted to a temporary Value: Type singleton 0056cae0, holder vtable 00821718).
+            template<typename T>
+            static int pushTable(T first, T last, lua_State* const L)
+            {
+                lua_createtable(L, last - first, 0);
+
+                int i = 0;
+                for (; first != last; first++)
+                {
+                    push(*first, L);
+                    lua_rawseti(L, -2, ++i);
+                }
+
+                return 1;
+            }
         };
     }
 }

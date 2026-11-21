@@ -1,6 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
-// 2008-06 native RBX::NetworkSettings (inactive); evidence in native-headers/Network/NetworkSettings.h.
-// Verified by tests/record_native_services.py (unit profile: document-swap flags).
 #include "Network/NetworkSettings.h"
 #include "reflection/enumconverter.h"
 #include <G3D/format.h>
@@ -27,7 +24,6 @@ namespace RBX
 	template<typename Class, const char* ClassName>
 	GlobalSettingsItem<Class, ClassName>* GlobalSettingsItem<Class, ClassName>::sing = NULL; // 009706d0
 
-	// 004aa8a0: the 2008 item names itself after its class and refuses a second instance.
 	template<typename Class, const char* ClassName>
 	GlobalSettingsItem<Class, ClassName>::GlobalSettingsItem()
 	{
@@ -37,7 +33,6 @@ namespace RBX
 		sing = this;
 	}
 
-	// 004a9d00 (deleting 004aa880).
 	template<typename Class, const char* ClassName>
 	GlobalSettingsItem<Class, ClassName>::~GlobalSettingsItem()
 	{
@@ -58,7 +53,6 @@ namespace RBX
 		addPair(NetworkSettings::Interpolation, "Interpolation");
 	}
 
-	// Dynamic initializers 007f1df0..007f2140, in this order (Functionality 5 = STANDARD).
 	static Reflection::BoundProp<bool, 1> prop_PrintInstances("PrintInstances", "Diagnostics", &NetworkSettings::printInstances, Reflection::PropertyDescriptor::STANDARD);
 	static Reflection::BoundProp<bool, 1> prop_PrintProperties("PrintProperties", "Diagnostics", &NetworkSettings::printProperties, Reflection::PropertyDescriptor::STANDARD);
 	static Reflection::BoundProp<bool, 1> prop_PrintPacketBuffer("PrintPacketBuffer", "Diagnostics", &NetworkSettings::printPacketBuffer, Reflection::PropertyDescriptor::STANDARD);
@@ -120,7 +114,6 @@ namespace RBX
 	}
 }
 
-// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class RBX::AbstractFactoryProduct<RBX::Instance>;
 template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::NetworkSettings::PhysicsReceiveMethod>;
 template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::NetworkSettings::PhysicsSendMethod>;
@@ -198,7 +191,6 @@ template class std::vector<enum RBX::NetworkSettings::PhysicsSendMethod,std::all
 template class std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >;
 template class std::vector<unsigned int,std::allocator<unsigned int> >;
 
-// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class std::_Container_base_aux_alloc_real<std::allocator<char> >;
 template class std::_Deque_const_iterator<char,std::allocator<char>,0>;
 template class std::_Deque_iterator<char,std::allocator<char>,0>;
@@ -264,6 +256,4 @@ template class std::reverse_iterator<std::_Vector_iterator<enum RBX::NetworkSett
 template class std::reverse_iterator<std::_Vector_iterator<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > > >;
 template class std::reverse_iterator<std::_Vector_iterator<unsigned int,std::allocator<unsigned int> > >;
 
-// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
 template void RBX::Name::callDoDeclare<RBX::sNetworkSettings>();
-

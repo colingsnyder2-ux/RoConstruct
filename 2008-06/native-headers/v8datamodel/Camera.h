@@ -12,6 +12,7 @@ namespace RBX
 	class ContactManager;
 	class ICameraSubject;
 	class ICameraOwner;
+	struct MovementKeys;   // util/MovementKeys.h (core); forward-declared, only a reference parameter here
 
 	extern char sCamera[];   // INFERRED: ??__E?creator@?$FactoryProduct@...$1?sCamera@...@3PADA (2008 binary) = char array
 	class Camera : public DescribedCreatable<Camera, Instance, sCamera>
@@ -117,6 +118,9 @@ namespace RBX
 		bool tiltUnits(int);
 		void lookAt(const G3D::Vector3& point);
 		void setImageServerViewNoLerp(const G3D::CoordinateFrame& modelCoord, const G3D::Rect2D& viewPort);
+		// 005ce6e0 (analog name, placeholder func_005ce6e0; ret 8): tests the nine MovementKeys bytes, then moves the
+		// camera by a speed chosen from the held-key count (> 0x78 / > 0x3c); called by Workspace::onEvent 005a351f.
+		void moveWithKeys(const MovementKeys& keys, int count);
 
 	public:
 		static float distanceDefault();

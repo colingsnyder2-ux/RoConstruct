@@ -1,76 +1,67 @@
-// from server: 39% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Intel_Inside
+// roc-flags: /O2 /GS- /EHsc /MD
 
-struct FilteredSelection {
-    void* vtable0;
-    void* vtable4;
-    char pad8[8];
-    void* vtable10;
-    void* vtable14;
-    char pad18[0x18];
-    void* vtable2c;
-    char pad30[0x18];
-    void* vtable44;
-    char pad48[0x18];
-    void* vtable5c;
-    char pad60[0x18];
-    void* vtable74;
-    char pad78[0x14];
-    void* vtable8c;
-    void* vtablee8;
-    void* fieldec;
-    void* fieldf0;
-    char padf4[4];
-    void* fieldf8;
-    void* fieldfc;
-    void* field100;
+#include <vector>
+#include <intrin.h>
+#pragma intrinsic(_InterlockedDecrement)
 
-    void destructor();
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;   // vtable +4
+    virtual void destroy();       // vtable +8
+    long use_count_;
+    long weak_count_;
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
+    void weak_release() {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
 };
 
-extern "C" void __cdecl sub_532550(void*);
-extern "C" void __cdecl sub_62fc62(void*);
-extern "C" void __cdecl sub_5402b0(void*);
+template<class T> struct shared_ptr {
+    T* px;
+    sp_counted_base* pn;
+    ~shared_ptr() { if (pn) pn->release(); }
+    operator bool() const { return px != 0; }
+    T* operator->() const { return px; }
+};
 
-void FilteredSelection::destructor()
+struct Listener {           // subobject at +0xe8 (vptr only)
+    virtual void onEvent();
+};
+
+struct Owner {
+    void removeListener(Listener* l);   // 0x532550, thiscall
+};
+
+struct B0 { virtual ~B0(); };
+struct B1 { virtual ~B1(); int pad[2]; };
+struct B2 { virtual ~B2(); };
+struct B3 { virtual ~B3(); int pad[5]; };
+struct B4 { virtual ~B4(); int pad[5]; };
+struct B5 { virtual ~B5(); int pad[5]; };
+struct B6 { virtual ~B6(); int pad[5]; };
+struct B7 { virtual ~B7(); int pad[5]; };
+struct B8 { virtual ~B8(); int pad[0x16]; };
+
+struct Base : B0, B1, B2, B3, B4, B5, B6, B7, B8 {
+    ~Base();   // 0x5402b0
+};
+
+struct FilteredSelection : Base, Listener {
+    shared_ptr<Owner> owner;   // +0xec
+    std::vector<int> items;    // +0xf4
+    ~FilteredSelection();
+};
+
+FilteredSelection::~FilteredSelection()
 {
-    this->vtable0 = (void*)0x7a9364;
-    this->vtable4 = (void*)0x7a935c;
-    this->vtable10 = (void*)0x7a9354;
-    this->vtable14 = (void*)0x7a9344;
-    this->vtable2c = (void*)0x7a9334;
-    this->vtable44 = (void*)0x7a9324;
-    this->vtable5c = (void*)0x7a9314;
-    this->vtable74 = (void*)0x7a9304;
-    this->vtable8c = (void*)0x7a92f4;
-    this->vtablee8 = (void*)0x7a92ec;
-
-    if (this->fieldec != 0) {
-        sub_532550(&this->vtablee8);
-    }
-
-    if (this->fieldf8 != 0) {
-        sub_62fc62(this->fieldf8);
-    }
-
-    this->fieldf8 = 0;
-    this->fieldfc = 0;
-    this->field100 = 0;
-
-    void* p = this->fieldf0;
-    if (p != 0) {
-        if (_InterlockedExchangeAdd((volatile long*)((char*)p + 4), -1) == 1) {
-            void** vt = *(void***)p;
-            void (*fn)(void*) = (void (*)(void*))vt[1];
-            fn(p);
-        }
-        if (_InterlockedExchangeAdd((volatile long*)((char*)p + 8), -1) == 1) {
-            void** vt = *(void***)p;
-            void (*fn)(void*) = (void (*)(void*))vt[2];
-            fn(p);
-        }
-    }
-
-    sub_5402b0(this);
+    if (owner)
+        owner->removeListener(this);
 }

@@ -1,96 +1,89 @@
-// from server: 11% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Intel_Inside
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <vector>
+#include <intrin.h>
+#pragma intrinsic(_InterlockedDecrement)
 
-extern "C" void __stdcall _invalid_parameter_noinfo();
+namespace boost {
 
-struct RBXName;
-
-struct CreatorBase {
-    virtual void v0();
-    virtual void v1();
-    virtual void v2();
-};
-
-struct Creator : CreatorBase {
-    int field_04;
-    int field_08;
-};
-
-struct CreatorsMap {
-    Creator** begin;
-    Creator** end;
-};
-
-struct FactoryProduct {
-    char pad_000[0x134];
-    Creator** creators_begin;
-    Creator** creators_end;
-
-    int sub_560e30();
-    void sub_560490(void** out);
-    void sub_541630(Creator* c);
-};
-
-extern "C" void* __cdecl sub_725520(void* a, void* b, void* c);
-extern "C" int __cdecl sub_55e7c0();
-extern "C" void __cdecl sub_402a60(void* a, void* b);
-extern "C" void* __stdcall sub_77e6d8();
-
-int FactoryProduct::sub_560e30()
-{
-    return 0;
-}
-
-void FactoryProduct::sub_560490(void** out)
-{
-    *out = 0;
-}
-
-void FactoryProduct::sub_541630(Creator* c)
-{
-}
-
-Creator* FactoryProduct_ctor(FactoryProduct* self)
-{
-    if (self->sub_560e30() != 0)
-        return 0;
-
-    void* local = 0;
-    self->sub_560490(&local);
-
-    Creator* c = (Creator*)local;
-
-    sub_725520((void*)0x8c2328, (void*)0x55ed70, 0);
-    int idx = sub_55e7c0();
-
-    Creator** begin = self->creators_begin;
-    if (begin != 0) {
-        Creator** end = self->creators_end;
-        int count = (int)((char*)end - (char*)begin) >> 3;
-        if ((unsigned)idx >= (unsigned)count) {
-            sub_77e6d8();
-        }
-    } else {
-        sub_77e6d8();
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy();
+    long use_count_;            // +4
+    long weak_count_;           // +8
+    void weak_release()
+    {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
     }
-
-    Creator** slot = self->creators_begin + idx;
-    *slot = c;
-    sub_402a60(slot + 1, &local);
-
-    self->sub_541630(c);
-
-    if (c != 0) {
-        if (_InterlockedExchangeAdd((volatile long*)((char*)c + 4), -1) == 1) {
-            void** vt = *(void***)c;
-            ((void (__thiscall*)(Creator*))vt[1])(c);
-            if (_InterlockedExchangeAdd((volatile long*)((char*)c + 8), -1) == 1) {
-                void** vt2 = *(void***)c;
-                ((void (__thiscall*)(Creator*))vt2[2])(c);
-            }
+    void release()
+    {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
         }
     }
+};
 
-    return c;
+class shared_count {
+    sp_counted_base* pi_;
+public:
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+    shared_count& operator=(const shared_count& r);     // 0x402a60
+};
+}
+
+template<class T> class shared_ptr {
+public:
+    T* get() const { return px; }
+    T* operator->() const { return px; }
+    T* px;
+    detail::shared_count pn;
+};
+
+struct once_flag { long epoch; };
+void call_once(void (*func)(), once_flag& flag);        // 0x725520
+
+}
+
+namespace RBX {
+
+class Instance;
+
+class Tool {
+public:
+    void setOwner(Instance* owner);                      // 0x541630
+};
+
+boost::shared_ptr<Tool> createTool();                    // 0x43de50
+void initToolIndex();                                     // 0x5588d0
+extern boost::once_flag toolIndexFlag;                    // 0x8c1f1c
+unsigned int toolIndex();                                 // 0x5578c0
+
+class Instance {
+    int pad[0x130 / 4];
+    std::vector< boost::shared_ptr<Tool> > products;      // _Myfirst at +0x134 (VS2005 vector keeps its allocator first)
+public:
+    Tool* findTool();                                     // 0x55a490
+    Tool* create();
+};
+
+Tool* Instance::create()
+{
+    Tool* result = findTool();
+    if (result == 0) {
+        boost::shared_ptr<Tool> tool = createTool();
+        result = tool.get();
+        boost::call_once(&initToolIndex, toolIndexFlag);
+        products[toolIndex()] = tool;
+        result->setOwner(this);
+    }
+    return result;
+}
+
 }

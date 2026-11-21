@@ -1,6 +1,3 @@
-// native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/jpeg-6b /TC
-// IJG JPEG 6b encoder pipeline; inactive pending reference, provider, ABI and runtime checks.
-
 /*
  * jcphuff.c
  *
@@ -100,14 +97,13 @@ METHODDEF(boolean) encode_mcu_AC_refine JPP((j_compress_ptr cinfo,
 METHODDEF(void) finish_pass_phuff JPP((j_compress_ptr cinfo));
 METHODDEF(void) finish_pass_gather_phuff JPP((j_compress_ptr cinfo));
 
-
 /*
  * Initialize for a Huffman-compressed scan using progressive JPEG.
  */
 
 METHODDEF(void)
 start_pass_phuff (j_compress_ptr cinfo, boolean gather_statistics)
-{  
+{
   phuff_entropy_ptr entropy = (phuff_entropy_ptr) cinfo->entropy;
   boolean is_DC_band;
   int ci, tbl;
@@ -191,7 +187,6 @@ start_pass_phuff (j_compress_ptr cinfo, boolean gather_statistics)
   entropy->next_restart_num = 0;
 }
 
-
 /* Outputting bytes to the file.
  * NB: these must be called only when actually outputting,
  * that is, entropy->gather_statistics == FALSE.
@@ -202,7 +197,6 @@ start_pass_phuff (j_compress_ptr cinfo, boolean gather_statistics)
 	{ *(entropy)->next_output_byte++ = (JOCTET) (val);  \
 	  if (--(entropy)->free_in_buffer == 0)  \
 	    dump_buffer(entropy); }
-
 
 LOCAL(void)
 dump_buffer (phuff_entropy_ptr entropy)
@@ -216,7 +210,6 @@ dump_buffer (phuff_entropy_ptr entropy)
   entropy->next_output_byte = dest->next_output_byte;
   entropy->free_in_buffer = dest->free_in_buffer;
 }
-
 
 /* Outputting bits to the file */
 
@@ -243,16 +236,16 @@ emit_bits (phuff_entropy_ptr entropy, unsigned int code, int size)
     return;			/* do nothing if we're only getting stats */
 
   put_buffer &= (((INT32) 1)<<size) - 1; /* mask off any extra bits in code */
-  
+
   put_bits += size;		/* new number of bits in buffer */
-  
+
   put_buffer <<= 24 - put_bits; /* align incoming bits */
 
   put_buffer |= entropy->put_buffer; /* and merge with old buffer contents */
 
   while (put_bits >= 8) {
     int c = (int) ((put_buffer >> 16) & 0xFF);
-    
+
     emit_byte(entropy, c);
     if (c == 0xFF) {		/* need to stuff a zero byte? */
       emit_byte(entropy, 0);
@@ -265,7 +258,6 @@ emit_bits (phuff_entropy_ptr entropy, unsigned int code, int size)
   entropy->put_bits = put_bits;
 }
 
-
 LOCAL(void)
 flush_bits (phuff_entropy_ptr entropy)
 {
@@ -273,7 +265,6 @@ flush_bits (phuff_entropy_ptr entropy)
   entropy->put_buffer = 0;     /* and reset bit-buffer to empty */
   entropy->put_bits = 0;
 }
-
 
 /*
  * Emit (or just count) a Huffman symbol.
@@ -290,7 +281,6 @@ emit_symbol (phuff_entropy_ptr entropy, int tbl_no, int symbol)
     emit_bits(entropy, tbl->ehufco[symbol], tbl->ehufsi[symbol]);
   }
 }
-
 
 /*
  * Emit bits from a correction bit buffer.
@@ -309,7 +299,6 @@ emit_buffered_bits (phuff_entropy_ptr entropy, char * bufstart,
     nbits--;
   }
 }
-
 
 /*
  * Emit any pending EOBRUN symbol.
@@ -341,7 +330,6 @@ emit_eobrun (phuff_entropy_ptr entropy)
   }
 }
 
-
 /*
  * Emit a restart marker & resynchronize predictions.
  */
@@ -369,7 +357,6 @@ emit_restart (phuff_entropy_ptr entropy, int restart_num)
     entropy->BE = 0;
   }
 }
-
 
 /*
  * MCU encoding for DC initial scan (either spectral selection,
@@ -419,7 +406,7 @@ encode_mcu_DC_first (j_compress_ptr cinfo, JBLOCKROW *MCU_data)
       /* This code assumes we are on a two's complement machine */
       temp2--;
     }
-    
+
     /* Find the number of bits needed for the magnitude of the coefficient */
     nbits = 0;
     while (temp) {
@@ -431,10 +418,10 @@ encode_mcu_DC_first (j_compress_ptr cinfo, JBLOCKROW *MCU_data)
      */
     if (nbits > MAX_COEF_BITS+1)
       ERREXIT(cinfo, JERR_BAD_DCT_COEF);
-    
+
     /* Count/emit the Huffman-coded symbol for the number of bits */
     emit_symbol(entropy, compptr->dc_tbl_no, nbits);
-    
+
     /* Emit that number of bits of the value, if positive, */
     /* or the complement of its magnitude, if negative. */
     if (nbits)			/* emit_bits rejects calls with size 0 */
@@ -456,7 +443,6 @@ encode_mcu_DC_first (j_compress_ptr cinfo, JBLOCKROW *MCU_data)
 
   return TRUE;
 }
-
 
 /*
  * MCU encoding for AC initial scan (either spectral selection,
@@ -486,9 +472,9 @@ encode_mcu_AC_first (j_compress_ptr cinfo, JBLOCKROW *MCU_data)
   block = MCU_data[0];
 
   /* Encode the AC coefficients per section G.1.2.2, fig. G.3 */
-  
+
   r = 0;			/* r = run length of zeros */
-   
+
   for (k = cinfo->Ss; k <= Se; k++) {
     if ((temp = (*block)[jpeg_natural_order[k]]) == 0) {
       r++;
@@ -563,7 +549,6 @@ encode_mcu_AC_first (j_compress_ptr cinfo, JBLOCKROW *MCU_data)
   return TRUE;
 }
 
-
 /*
  * MCU encoding for DC successive approximation refinement scan.
  * Note: we assume such scans can be multi-component, although the spec
@@ -611,7 +596,6 @@ encode_mcu_DC_refine (j_compress_ptr cinfo, JBLOCKROW *MCU_data)
 
   return TRUE;
 }
-
 
 /*
  * MCU encoding for AC successive approximation refinement scan.
@@ -661,7 +645,7 @@ encode_mcu_AC_refine (j_compress_ptr cinfo, JBLOCKROW *MCU_data)
   }
 
   /* Encode the AC coefficients per section G.1.2.3, fig. G.7 */
-  
+
   r = 0;			/* r = run length of zeros */
   BR = 0;			/* BR = count of buffered bits added now */
   BR_buffer = entropy->bit_buffer + entropy->BE; /* Append bits to buffer */
@@ -740,14 +724,13 @@ encode_mcu_AC_refine (j_compress_ptr cinfo, JBLOCKROW *MCU_data)
   return TRUE;
 }
 
-
 /*
  * Finish up at the end of a Huffman-compressed progressive scan.
  */
 
 METHODDEF(void)
 finish_pass_phuff (j_compress_ptr cinfo)
-{   
+{
   phuff_entropy_ptr entropy = (phuff_entropy_ptr) cinfo->entropy;
 
   entropy->next_output_byte = cinfo->dest->next_output_byte;
@@ -760,7 +743,6 @@ finish_pass_phuff (j_compress_ptr cinfo)
   cinfo->dest->next_output_byte = entropy->next_output_byte;
   cinfo->dest->free_in_buffer = entropy->free_in_buffer;
 }
-
 
 /*
  * Finish up a statistics-gathering pass and create the new Huffman tables.
@@ -807,7 +789,6 @@ finish_pass_gather_phuff (j_compress_ptr cinfo)
     }
   }
 }
-
 
 /*
  * Module initialization routine for progressive Huffman entropy encoding.

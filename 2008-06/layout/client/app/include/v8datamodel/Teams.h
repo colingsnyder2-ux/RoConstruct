@@ -1,13 +1,4 @@
 #pragma once
-// 2008-06 native RBX::Teams (inactive). Shape after the donor tools/rbxgs Teams.h; evidence:
-//   RTTI       vtable 0083ce54 .?AVTeams@RBX@@ -> DescribedCreatable<Teams, Instance, sTeams>,
-//              Service (empty base, mdisp 0x130).
-//   size       0x138: Creatable<Instance>::create<Teams> 00490450 allocates 0x138; constructor
-//              005d6850 builds CopyOnWrite<vector<shared_ptr<Instance> > > at +0x130
-//              (CopyOnWrite ctor call 0049ad50), destructor 005d5c90 releases its count at +0x134.
-//   vtable     slot 2 askAddChild 005d5d60 (dynamic_cast to Team 009457ec), slot 7
-//              onChildAdded 005d6340, slot 8 onChildRemoving 005d6400.
-//   functions  RebalanceTeams / GetTeams (BoundFuncDesc dynamic initializers in this unit).
 #include "v8tree/Instance.h"
 #include "v8tree/Service.h"
 #include "v8datamodel/BrickColor.h"

@@ -1,5 +1,3 @@
-// native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
-// 2008-06 native Jpegjdcolor (inactive): upstream tools/libs/jpeg-6b/jdcolor.c, verbatim.
 /*
  * jdcolor.c
  *
@@ -14,7 +12,6 @@
 #include "jinclude.h"
 #include "jpeglib.h"
 
-
 /* Private subobject */
 
 typedef struct {
@@ -28,7 +25,6 @@ typedef struct {
 } my_color_deconverter;
 
 typedef my_color_deconverter * my_cconvert_ptr;
-
 
 /**************** YCbCr -> RGB conversion: most common case **************/
 
@@ -62,7 +58,6 @@ typedef my_color_deconverter * my_cconvert_ptr;
 #define SCALEBITS	16	/* speediest right-shift on some machines */
 #define ONE_HALF	((INT32) 1 << (SCALEBITS-1))
 #define FIX(x)		((INT32) ((x) * (1L<<SCALEBITS) + 0.5))
-
 
 /*
  * Initialize tables for YCC->RGB colorspace conversion.
@@ -105,7 +100,6 @@ build_ycc_rgb_table (j_decompress_ptr cinfo)
     cconvert->Cb_g_tab[i] = (- FIX(0.34414)) * x + ONE_HALF;
   }
 }
-
 
 /*
  * Convert some rows of samples to the output colorspace.
@@ -158,9 +152,7 @@ ycc_rgb_convert (j_decompress_ptr cinfo,
   }
 }
 
-
 /**************** Cases other than YCbCr -> RGB **************/
-
 
 /*
  * Color conversion for no colorspace change: just copy the data,
@@ -192,7 +184,6 @@ null_convert (j_decompress_ptr cinfo,
   }
 }
 
-
 /*
  * Color conversion for grayscale: just copy the data.
  * This also works for YCbCr -> grayscale conversion, in which
@@ -207,7 +198,6 @@ grayscale_convert (j_decompress_ptr cinfo,
   jcopy_sample_rows(input_buf[0], (int) input_row, output_buf, 0,
 		    num_rows, cinfo->output_width);
 }
-
 
 /*
  * Convert grayscale to RGB: just duplicate the graylevel three times.
@@ -234,7 +224,6 @@ gray_rgb_convert (j_decompress_ptr cinfo,
     }
   }
 }
-
 
 /*
  * Adobe-style YCCK->CMYK conversion.
@@ -286,7 +275,6 @@ ycck_cmyk_convert (j_decompress_ptr cinfo,
   }
 }
 
-
 /*
  * Empty method for start_pass.
  */
@@ -296,7 +284,6 @@ start_pass_dcolor (j_decompress_ptr cinfo)
 {
   /* no work needed */
 }
-
 
 /*
  * Module initialization routine for output colorspace conversion.

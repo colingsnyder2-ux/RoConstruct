@@ -1,67 +1,86 @@
-// from server: 42% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/regex/src/usinstances.cpp
+// from server: 100% by Intel_Inside
 
-// Candidate translation unit (score above; library headers required).
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
- */
+#include <vector>
 
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE:        winstances.cpp
-  *   VERSION:     see <boost/version.hpp>
-  *   DESCRIPTION: regex unsigned short template instances (MSVC only).
-  */
+namespace boost {
+typedef long once_flag;
+void call_once(void (*func)(), once_flag& flag);
 
-#define BOOST_REGEX_SOURCE
-
-#include <boost/regex/config.hpp>
-
-#if !defined(BOOST_NO_WREGEX) && defined(BOOST_REGEX_HAS_OTHER_WCHAR_T) && !defined(BOOST_REGEX_NO_EXTERNAL_TEMPLATES)
-#define BOOST_REGEX_US_INSTANTIATE
-
-#ifdef _DLL_CPPLIB
-#include <boost/detail/workaround.hpp>
-//
-// This is a horrible workaround, without declaring these symbols extern we get
-// duplicate symbol errors when linking if the application is built without
-// /Zc:wchar_t
-//
-namespace std{
-template _CRTIMP2 bool __cdecl operator==(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-template _CRTIMP2 bool __cdecl operator==(
-   const unsigned short *,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-template _CRTIMP2 bool __cdecl operator==(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const unsigned short *);
-template _CRTIMP2 bool __cdecl operator<(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-template _CRTIMP2 bool __cdecl operator>(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-#if BOOST_WORKAROUND(BOOST_MSVC, > 1300) && BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1400))
-template<> _CRTIMP2 std::size_t __cdecl char_traits<unsigned short>::length(unsigned short const*);
-#endif
+namespace detail {
+class shared_count {
+public:
+    void* pi_;
+    shared_count() : pi_(0) {}
+    shared_count(const shared_count& r);
+    ~shared_count();
+    shared_count& operator=(const shared_count& r);
+};
 }
-#endif
+}
 
+namespace RBX {
 
-#include <boost/regex.hpp>
+class Motor;
+class Context;
 
-#endif
+class MotorPtr {
+public:
+    Motor* px;
+    boost::detail::shared_count pn;
+    MotorPtr() : px(0), pn() {}
+    MotorPtr(const MotorPtr& r) : px(r.px), pn(r.pn) {}
+    ~MotorPtr();
+    Motor* get() const { return px; }
+};
 
+extern boost::once_flag indexFlag;
+void initIndex();
+unsigned int currentIndex();
 
+extern boost::once_flag contextFlag;
+void initContext();
+Context* contextImpl();
+Context* defaultContext();
+
+inline unsigned int getIndex()
+{
+    boost::call_once(&initIndex, indexFlag);
+    return currentIndex();
+}
+
+inline Context* getContext()
+{
+    boost::call_once(&initContext, contextFlag);
+    return contextImpl();
+}
+
+class MotorCreator {
+public:
+    char pad[0x130];
+    std::vector<MotorPtr> cache;
+    MotorPtr create(Context* context) const;
+    Motor* get();
+};
+
+Motor* MotorCreator::get()
+{
+    unsigned int index = getIndex();
+    if (index + 1 > cache.size()) {
+        cache.resize(index + 1);
+    } else {
+        Motor* existing = cache[index].get();
+        if (existing)
+            return existing;
+    }
+    static bool isDefault = (getContext() == defaultContext());
+    if (isDefault)
+        return 0;
+    MotorPtr result = create(getContext());
+    if (!result.get())
+        return 0;
+    Motor* motor = result.get();
+    cache[index] = result;
+    return motor;
+}
+
+}

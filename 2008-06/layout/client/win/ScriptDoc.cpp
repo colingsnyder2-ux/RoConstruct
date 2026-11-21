@@ -1,5 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/libs/scintilla-mfc-1.20 /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
-// Include path for <Platform.h>/<Scintilla.h> (CScriptEditor.h): same Scintilla MFC 1.20 tree as CIDEDocManager.cpp.
 #include "CScriptEditor.h"
 #include "script/Script.h"
 #include "v8datamodel/DataModel.h"
@@ -12,12 +10,10 @@
 namespace RBX {
 }
 
-// Posted by setScript 00465260 and dispatched by the message map entry at 0081b648+0x1b0.
 #define WM_SCRIPT_RELOAD (WM_USER + 0x65)
 
 IMPLEMENT_DYNCREATE(CScriptEditor, Scintilla::CScintillaView)
 
-// Entry order and command ids from the AFX_MSGMAP_ENTRY table at 0081b648.
 BEGIN_MESSAGE_MAP(CScriptEditor, Scintilla::CScintillaView)
     ON_WM_CREATE()
     ON_COMMAND(0x80e5, &CScriptEditor::OnAddBookmark)
@@ -43,7 +39,6 @@ END_MESSAGE_MAP()
 int CScriptEditor::instanceCount;
 HMODULE CScriptEditor::sciLexer;
 
-// Original 00465010.
 CScriptEditor::CScriptEditor()
     : frame(NULL),
       loading(false),
@@ -52,19 +47,16 @@ CScriptEditor::CScriptEditor()
 {
 }
 
-// Original 00465830.
 CScriptEditor::~CScriptEditor()
 {
     setScript(boost::shared_ptr<RBX::Script>());
 }
 
-// Original 00463910.
 BOOL CScriptEditor::PreCreateWindow(CREATESTRUCT& cs)
 {
     return CScintillaView::PreCreateWindow(cs) != FALSE;
 }
 
-// Original 00463980.
 void CScriptEditor::PostNcDestroy()
 {
     if (--instanceCount == 0)
@@ -72,7 +64,6 @@ void CScriptEditor::PostNcDestroy()
     CScintillaView::PostNcDestroy();
 }
 
-// Original 00463930.
 int CScriptEditor::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
     if (instanceCount == 0) {
@@ -86,7 +77,6 @@ int CScriptEditor::OnCreate(LPCREATESTRUCT lpCreateStruct)
     return 0;
 }
 
-// Original 00463ed0.
 void CScriptEditor::OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized)
 {
     CScintillaView::OnActivate(nState, pWndOther, bMinimized);
@@ -95,7 +85,6 @@ void CScriptEditor::OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized)
         ctrl.CallTipCancel();
 }
 
-// Original 004644e0.
 void CScriptEditor::OnDwellEnd(SCNotification*)
 {
     Scintilla::CScintillaCtrl& ctrl = GetCtrl();
@@ -103,20 +92,17 @@ void CScriptEditor::OnDwellEnd(SCNotification*)
         ctrl.CallTipCancel();
 }
 
-// Original 00464960 (tail jump to 00464830).
 void CScriptEditor::OnKillFocus()
 {
     saveScript();
 }
 
-// Original 004657f0.
 void CScriptEditor::OnUpdate(CView*, LPARAM lHint, CObject*)
 {
     if (lHint == 1)
         setScript(static_cast<CScriptDoc*>(GetDocument())->script);
 }
 
-// Original 00465500.
 void CScriptEditor::onEvent(const RBX::Instance*, RBX::AncestorChanged event)
 {
     if (event.newParent == NULL) {
@@ -125,14 +111,12 @@ void CScriptEditor::onEvent(const RBX::Instance*, RBX::AncestorChanged event)
     }
 }
 
-// Original 004638d0.
 void CScriptEditor::onMarshaledEvent(const RBX::RunService*, RBX::RunState state)
 {
     running = state != RBX::RS_NORMAL;
     GetCtrl().SetReadOnly(running || !embedded);
 }
 
-// Original 00465260.
 void CScriptEditor::setScript(boost::shared_ptr<RBX::Script> value)
 {
     if (script) {
@@ -157,11 +141,6 @@ void CScriptEditor::setScript(boost::shared_ptr<RBX::Script> value)
         ::PostMessage(m_hWnd, WM_SCRIPT_RELOAD, 0, 0);
 }
 
-// Draft for 00465110 (83 vs 77 bytes): target keeps two separate base-marshal call paths;
-// only EmbeddedSourceCode and Name changes are marshaled to the UI thread.
-// Parked (header): the original copies the 8-byte PropertyChanged argument inline (two dword stores,
-// 00465126 and 00465128); v8tree/PropertyChanged.h declares an out-of-line copy constructor, so this unit
-// calls it. No original address exists for ??0PropertyChanged@RBX@@QAE@ABV01@@Z.
 void CScriptEditor::marshal(const RBX::Instance* source, RBX::PropertyChanged event) throw()
 {
     if (&event.getDescriptor() == &RBX::Script::prop_EmbeddedSourceCode)
@@ -170,7 +149,6 @@ void CScriptEditor::marshal(const RBX::Instance* source, RBX::PropertyChanged ev
         RBX::MarshaledListener<RBX::Instance, RBX::PropertyChanged>::marshal(source, event);
 }
 
-// Original 004659f0.
 void CScriptEditor::onMarshaledEvent(const RBX::Instance*, RBX::PropertyChanged event)
 {
     if (&event.getDescriptor() == &RBX::Script::prop_EmbeddedSourceCode)
@@ -179,7 +157,6 @@ void CScriptEditor::onMarshaledEvent(const RBX::Instance*, RBX::PropertyChanged 
         updateTitle();
 }
 
-// Original 00463f10.
 void CScriptEditor::OnAddBookmark()
 {
     Scintilla::CScintillaCtrl& ctrl = GetCtrl();
@@ -188,7 +165,6 @@ void CScriptEditor::OnAddBookmark()
     ctrl.MarkerAdd(line, 0);
 }
 
-// Original 00463f40.
 void CScriptEditor::OnUpdateAddBookmark(CCmdUI* pCmdUI)
 {
     Scintilla::CScintillaCtrl& ctrl = GetCtrl();
@@ -198,7 +174,6 @@ void CScriptEditor::OnUpdateAddBookmark(CCmdUI* pCmdUI)
     pCmdUI->Enable((markers & 1) == 0);
 }
 
-// Original 00463f80.
 void CScriptEditor::OnRemoveBookmark()
 {
     Scintilla::CScintillaCtrl& ctrl = GetCtrl();
@@ -207,7 +182,6 @@ void CScriptEditor::OnRemoveBookmark()
     ctrl.MarkerDelete(line, 0);
 }
 
-// Original 00463fb0.
 void CScriptEditor::OnUpdateRemoveBookmark(CCmdUI* pCmdUI)
 {
     Scintilla::CScintillaCtrl& ctrl = GetCtrl();
@@ -217,7 +191,6 @@ void CScriptEditor::OnUpdateRemoveBookmark(CCmdUI* pCmdUI)
     pCmdUI->Enable(markers & 1);
 }
 
-// Original 00463ff0.
 void CScriptEditor::OnNextBookmark()
 {
     Scintilla::CScintillaCtrl& ctrl = GetCtrl();
@@ -230,7 +203,6 @@ void CScriptEditor::OnNextBookmark()
         MessageBeep(MB_ICONHAND);
 }
 
-// Original 00464040.
 void CScriptEditor::OnPreviousBookmark()
 {
     Scintilla::CScintillaCtrl& ctrl = GetCtrl();
@@ -243,7 +215,6 @@ void CScriptEditor::OnPreviousBookmark()
         MessageBeep(MB_ICONHAND);
 }
 
-// Original 00464090.
 void CScriptEditor::OnToggleFoldMargin()
 {
     Scintilla::CScintillaCtrl& ctrl = GetCtrl();
@@ -253,13 +224,11 @@ void CScriptEditor::OnToggleFoldMargin()
         ctrl.SetMarginWidthN(2, 16);
 }
 
-// Original 004640d0.
 void CScriptEditor::OnUpdateToggleFoldMargin(CCmdUI* pCmdUI)
 {
     pCmdUI->SetCheck(GetCtrl().GetMarginWidthN(2) != 0);
 }
 
-// Original 00464100.
 void CScriptEditor::OnToggleSelectionMargin()
 {
     Scintilla::CScintillaCtrl& ctrl = GetCtrl();
@@ -269,13 +238,11 @@ void CScriptEditor::OnToggleSelectionMargin()
         ctrl.SetMarginWidthN(1, 16);
 }
 
-// Original 00464140.
 void CScriptEditor::OnUpdateToggleSelectionMargin(CCmdUI* pCmdUI)
 {
     pCmdUI->SetCheck(GetCtrl().GetMarginWidthN(1) != 0);
 }
 
-// Original 00464170.
 void CScriptEditor::OnToggleLineNumbers()
 {
     Scintilla::CScintillaCtrl& ctrl = GetCtrl();
@@ -285,13 +252,11 @@ void CScriptEditor::OnToggleLineNumbers()
         ctrl.SetMarginWidthN(0, 32);
 }
 
-// Original 004641b0.
 void CScriptEditor::OnUpdateToggleLineNumbers(CCmdUI* pCmdUI)
 {
     pCmdUI->SetCheck(GetCtrl().GetMarginWidthN(0) != 0);
 }
 
-// Original 004641e0.
 void CScriptEditor::OnUpdateInsert(CCmdUI* pCmdUI)
 {
     CString text;
@@ -300,7 +265,6 @@ void CScriptEditor::OnUpdateInsert(CCmdUI* pCmdUI)
     pCmdUI->SetText(text);
 }
 
-// Original 004643b0.
 void CScriptEditor::OnUpdateLine(CCmdUI* pCmdUI)
 {
     Scintilla::CScintillaCtrl& ctrl = GetCtrl();
@@ -312,7 +276,6 @@ void CScriptEditor::OnUpdateLine(CCmdUI* pCmdUI)
     pCmdUI->SetText(text);
 }
 
-// Original 00464270.
 void CScriptEditor::OnUpdateStyle(CCmdUI* pCmdUI)
 {
     Scintilla::CScintillaCtrl& ctrl = GetCtrl();
@@ -323,7 +286,6 @@ void CScriptEditor::OnUpdateStyle(CCmdUI* pCmdUI)
     pCmdUI->SetText(text);
 }
 
-// Original 00464300.
 void CScriptEditor::OnUpdateFold(CCmdUI* pCmdUI)
 {
     Scintilla::CScintillaCtrl& ctrl = GetCtrl();
@@ -335,7 +297,6 @@ void CScriptEditor::OnUpdateFold(CCmdUI* pCmdUI)
     pCmdUI->SetText(text);
 }
 
-// Original 00464540.
 void CScriptEditor::updateTitle()
 {
     if (GetParentFrame()) {
@@ -346,7 +307,6 @@ void CScriptEditor::updateTitle()
     }
 }
 
-// Original 004659a0.
 LRESULT CScriptEditor::OnReload(WPARAM, LPARAM)
 {
     updateTitle();
@@ -373,7 +333,6 @@ void CScriptEditor::DefineMarker(int marker, int markerType, COLORREF fore, COLO
     ctrl.MarkerSetBack(marker, back);
 }
 
-// Original 004639a0.
 void CScriptEditor::OnInitialUpdate()
 {
     CScintillaView::OnInitialUpdate();
@@ -425,7 +384,6 @@ void CScriptEditor::OnInitialUpdate()
     ctrl.SetMarginWidthN(0, 32);
 }
 
-// Original 00464460 (the wrapper's demo auto-completion).
 void CScriptEditor::OnCharAdded(SCNotification*)
 {
     Scintilla::CScintillaCtrl& ctrl = GetCtrl();
@@ -443,7 +401,6 @@ void CScriptEditor::OnCharAdded(SCNotification*)
     }
 }
 
-// Original 00464590 (the wrapper's demo call tip).
 void CScriptEditor::OnDwellStart(SCNotification* pSCNotification)
 {
     Scintilla::CScintillaCtrl& ctrl = GetCtrl();
@@ -461,7 +418,6 @@ void CScriptEditor::OnDwellStart(SCNotification* pSCNotification)
     }
 }
 
-// Original 00464830.
 void CScriptEditor::saveScript()
 {
     if (GetCtrl().GetModify() && !loading) {
@@ -478,10 +434,6 @@ void CScriptEditor::saveScript()
     }
 }
 
-// Original 00465550 (inventory extent 0x1ed is truncated: the catch funclet sits at 0046573d
-// and the function returns at 004657eb). With the mfc-noinline-pcxstr / std-noinline-string flags this
-// body is byte-equal (relocations masked) over the whole 0x29c bytes 00465550..004657ec; it stays
-// unproved only because of that boundary (proposal: extend the 00465550 extent to 0x29c).
 void CScriptEditor::reload()
 {
     if (!m_hWnd)
@@ -513,7 +465,6 @@ void CScriptEditor::reload()
     loading = false;
 }
 
-// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class CArray<int,int>;
 template class RBX::Listener<RBX::Instance,RBX::AncestorChanged>;
 template class RBX::Listener<RBX::RunService,enum RBX::RunState>;

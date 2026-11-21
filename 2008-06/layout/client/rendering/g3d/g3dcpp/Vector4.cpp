@@ -1,11 +1,9 @@
-// native-flags: /O2 /GS- /EHsc /MD
-// 2008-06 native G3DVector4 (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/Vector4.cpp, verbatim.
 #line 1 ".\\G3Dcpp\\Vector4.cpp"
 /**
  @file Vector4.cpp
- 
+
  @maintainer Morgan McGuire, matrix@graphics3d.com
-  
+
  @created 2001-07-09
  @edited  2003-09-29
  */
@@ -30,7 +28,6 @@ unsigned int Vector4::hashCode() const {
     return xhash + (yhash * 37) + (zhash * 101) + (whash * 241);
 }
 
-
 Vector4::Vector4(const class Color4& c) {
     x = c.r;
     y = c.g;
@@ -38,14 +35,12 @@ Vector4::Vector4(const class Color4& c) {
     w = c.a;
 }
 
-
 Vector4::Vector4(const Vector2& v1, const Vector2& v2) {
     x = v1.x;
     y = v1.y;
     z = v2.x;
     w = v2.y;
 }
-
 
 Vector4::Vector4(const Vector2& v1, float fz, float fw) {
     x = v1.x;
@@ -58,14 +53,12 @@ Vector4::Vector4(BinaryInput& b) {
     deserialize(b);
 }
 
-
 void Vector4::deserialize(BinaryInput& b) {
     x = b.readFloat32();
     y = b.readFloat32();
     z = b.readFloat32();
     w = b.readFloat32();
 }
-
 
 void Vector4::serialize(BinaryOutput& b) const {
     b.writeFloat32(x);
@@ -105,7 +98,6 @@ Vector4& Vector4::operator/= (float fScalar) {
 
     return *this;
 }
-
 
 //----------------------------------------------------------------------------
 
@@ -456,6 +448,5 @@ Vector4 Vector4::xwww() const  { return Vector4       (x, w, w, w); }
 Vector4 Vector4::ywww() const  { return Vector4       (y, w, w, w); }
 Vector4 Vector4::zwww() const  { return Vector4       (z, w, w, w); }
 Vector4 Vector4::wwww() const  { return Vector4       (w, w, w, w); }
-
 
 }; // namespace

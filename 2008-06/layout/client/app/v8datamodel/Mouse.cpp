@@ -1,13 +1,3 @@
-// 2008-06 native RBX::Mouse (inactive); evidence in native-headers/v8datamodel/Mouse.h. Verified by
-// tests/record_native_mouse.py. Original Mouse bodies 0064df60..0064e80f with their descriptor template instances
-// 0064e1e0..0064e5f0, dynamic initializers 007f8c40..007f8f30 and atexit rows 008010c0..008013c0. The class-template
-// instances the original emits in the Tool unit (constructor chain 005fd5c0 / 005ff240 / 005ff3b0, classDescriptor
-// 005fe7f0, ~Mouse 005ff520, create<Mouse> 005ff600) come out of this unit as COMDATs: this file is a codegen
-// analog for them, not their original translation unit.
-// Unit profile: document-swap flags plus /fp:fast (getOrigin 0064e050 keeps ray.origin + ray.direction in x87
-// registers). cacheUIEvent is the inline donor member: defined out of line in this file it is compiled before update,
-// whose register allocation then relies on it preserving ecx, unlike the original 0064e660.
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8datamodel/Mouse.h"
 #include "v8datamodel/MouseCommand.h"
 #include "v8datamodel/PartInstance.h"
@@ -24,7 +14,6 @@ namespace RBX
 	template<class D, const char* N>
 	const Name& NonFactoryProduct<D, N>::getClassName() const { return className(); }
 
-	// Dynamic initializers 007f8c40..007f8f30 (in this order).
 	static Reflection::SignalDesc<Mouse, void(void)> event_Move("Move");
 	static Reflection::SignalDesc<Mouse, void(void)> event_Idle("Idle");
 	static Reflection::SignalDesc<Mouse, void(void)> event_Button1Down("Button1Down");
@@ -120,11 +109,7 @@ namespace RBX
 		}
 	}
 
-	// The factory Tool::getMouse 005ff680 and ScriptMouseCommand's constructor call (005ff600); explicitly
-	// instantiated here so the constructor chain, ~Mouse and the shared_ptr instances come out of this unit.
 	template boost::shared_ptr<Mouse> Creatable<Instance>::create<Mouse>();
 }
 
-// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
 template void RBX::Name::callDoDeclare<RBX::sMouse>();
-

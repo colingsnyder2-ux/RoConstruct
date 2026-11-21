@@ -1,27 +1,4 @@
 #pragma once
-// 2008-06 native layout of RBX::Accoutrement and RBX::Hat. Inactive: no build list or swap uses it.
-//
-// Evidence (2008-06 Roblox.exe):
-//  * RTTI (vtable 00834bf4 Accoutrement, 00835094 Hat):
-//      Accoutrement -> DescribedCreatable<Accoutrement, Instance, sAccoutrement> -> Described -> FactoryProduct
-//      -> Instance; IEquipable mdisp 0x130; IRenderable mdisp 0x140; virtual ICameraSubject (vbtable at +0x150,
-//      vdisp 8), virtual ILocation (vdisp 4), virtual ISelectable3d (vdisp 12).
-//      Hat -> DescribedCreatable<Hat, Accoutrement, sHat> -> ... -> Accoutrement (Hat adds no fields).
-//    sAccoutrement 008349f8 "Accoutrement" and sHat 00834a08 "Hat" are .rdata `const char[]` (3QBDB).
-//  * Allocation sizes: Creator<Accoutrement>::create 00432520 new(0x1d8) (0043253f) and
-//    Creator<Hat>::create 00432790 new(0x1d8) (004327af); both pass 1 (most-derived flag for virtual bases).
-//  * Constructor 005b2230: IEquipable ctor 00628fc0 at +0x130 (vtable 00834b70); IRenderable at +0x140
-//    (vtable 00834b58; index2d/index3d = -1 at +0x144/+0x148, bucket 0 at +0x14c); vbptr +0x150 (vbtable
-//    00834eb4); backendAccoutrementState 0 at +0x154; G3D::CoordinateFrame at +0x158 (ctor 004782d0, 0x34);
-//    three boost::signals::scoped_connection at +0x188/+0x19c/+0x1b0 (each 0x14: shared_ptr at +4, two bools);
-//    vtordisp +0x1c4, ILocation +0x1c8 (vtable 00834b50), vtordisp +0x1cc, ICameraSubject +0x1d0 (vtable
-//    00834b34, its own vbptr +0x1d4 -> vbtable 00846144); setName("Accoutrement"). Hat ctor 005b2d10 only
-//    stores vtables and calls setName("Hat").
-//  * Property descriptors (static initializers 007f4fb0..007f5190, category "Appearance"):
-//      "AttachmentPoint" CoordinateFrame STREAMING (get 005b0830, set 005b2670), "AttachmentPos" Vector3 UI
-//      (005b0940/005b2700), "AttachmentForward"/"AttachmentUp"/"AttachmentRight" Vector3 UI, and
-//      "BackendAccoutrementState" int STREAMING (get 005b0820, set 005b24e0).
-// Method and field names are analog names (donor shape); class and property strings are original.
 #include "v8tree/Instance.h"
 #include "v8datamodel/IEquipable.h"
 #include "util/IRenderable.h"
@@ -75,9 +52,6 @@ namespace RBX
 		virtual const G3D::CoordinateFrame getLocation() const;          // 005b0b70
 		virtual void render3dSelect(Adorn* adorn, SelectState selectState);                      // 005b1020
 		void downFrom_InCharacter();                                     // 005b0920
-		// State-machine steps called by setDesiredState 005b2510 (jump tables 005b25c8 up / 005b25d8 down; analog
-		// donor names; the target's slot order is NOTHING -> 005b1d70, IN_WORKSPACE -> 005b1e50, IN_CHARACTER ->
-		// 005b1830, EQUIPPED down -> 005b1fc0). Bodies are not recovered yet (placeholders func_005b1xxx).
 		void onEvent_HandleTouched(boost::shared_ptr<Instance> other);   // 005b1620 bind target (donor name; body not recovered)
 		PartInstance* getHandle()   // donor inline (getHandleConst const_cast)
 		{
@@ -135,7 +109,6 @@ namespace RBX
 	public:
 		Hat();
 		// INFERRED: 00575890 case '=' calls this with the ModelInstance* returned by
-		// Network::Players::findLocalCharacter; selected-image call target 0x5b17c0.
 		static void dropAll(ModelInstance*);
 	};
 }

@@ -1,6 +1,3 @@
-// native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/jpeg-6b /TC
-// IJG JPEG 6b encoder pipeline; inactive pending reference, provider, ABI and runtime checks.
-
 /*
  * jccolor.c
  *
@@ -15,7 +12,6 @@
 #include "jinclude.h"
 #include "jpeglib.h"
 
-
 /* Private subobject */
 
 typedef struct {
@@ -26,7 +22,6 @@ typedef struct {
 } my_color_converter;
 
 typedef my_color_converter * my_cconvert_ptr;
-
 
 /**************** RGB -> YCbCr conversion: most common case **************/
 
@@ -80,7 +75,6 @@ typedef my_color_converter * my_cconvert_ptr;
 #define B_CR_OFF	(7*(MAXJSAMPLE+1))
 #define TABLE_SIZE	(8*(MAXJSAMPLE+1))
 
-
 /*
  * Initialize for RGB->YCC colorspace conversion.
  */
@@ -115,7 +109,6 @@ rgb_ycc_start (j_compress_ptr cinfo)
     rgb_ycc_tab[i+B_CR_OFF] = (-FIX(0.08131)) * i;
   }
 }
-
 
 /*
  * Convert some rows of samples to the JPEG colorspace.
@@ -174,9 +167,7 @@ rgb_ycc_convert (j_compress_ptr cinfo,
   }
 }
 
-
 /**************** Cases other than RGB -> YCbCr **************/
-
 
 /*
  * Convert some rows of samples to the JPEG colorspace.
@@ -214,7 +205,6 @@ rgb_gray_convert (j_compress_ptr cinfo,
     }
   }
 }
-
 
 /*
  * Convert some rows of samples to the JPEG colorspace.
@@ -272,7 +262,6 @@ cmyk_ycck_convert (j_compress_ptr cinfo,
   }
 }
 
-
 /*
  * Convert some rows of samples to the JPEG colorspace.
  * This version handles grayscale output with no conversion.
@@ -300,7 +289,6 @@ grayscale_convert (j_compress_ptr cinfo,
     }
   }
 }
-
 
 /*
  * Convert some rows of samples to the JPEG colorspace.
@@ -335,7 +323,6 @@ null_convert (j_compress_ptr cinfo,
   }
 }
 
-
 /*
  * Empty method for start_pass.
  */
@@ -345,7 +332,6 @@ null_method (j_compress_ptr cinfo)
 {
   /* no work needed */
 }
-
 
 /*
  * Module initialization routine for input colorspace conversion.

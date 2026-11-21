@@ -38,7 +38,8 @@ public:
     virtual void OnInitialUpdate();                                 // 004589c0
 
     void setDataModel(boost::shared_ptr<RBX::DataModel> dataModel); // 00458700; name provisional
-    void updateStats();                                             // 00456c30; name provisional, not recovered
+    void updateStats();                                             // 00456c30; name provisional
+    void logRecords(CXTPReportRecords* records, CString indent);    // 00456820 (thiscall, ret 8); INFERRED name
 
     int OnCreate(LPCREATESTRUCT cs);                                // 00455fd0
     void OnTimer(UINT_PTR id);                                      // 00456e60
@@ -51,7 +52,7 @@ public:
     boost::shared_ptr<RBX::Instance> stats;          // +0x3cc, shared_from(create<StatsService>) in 00458700
 };
 
-// onMarshaledEvent(ChildRemoved) 00456250 reads the record's item pointer at +0xa8 and is not written here.
+// onMarshaledEvent(ChildRemoved) 00456250 reads the record's item pointer at +0xa8 through getItem().
 // Declarations only for the stats records (RTTI 00818a74: CXTPReportRecord +0, MarshaledListener<Instance,
 // ChildAdded> +0x54, MarshaledListener<Instance,ChildRemoved> +0x78, private non-polymorphic MutexRef +0x9c;
 // allocation 0xb0 in 004582f0; constructor 00457ca0 stores the item shared_ptr at +0xa8). Only what this
@@ -79,8 +80,12 @@ public:
     class CValueItem;                                          // vtable 008185f4, constructor 00456620
 
     CStatsItemRecord(boost::shared_ptr<RBX::Stats::Item> item, boost::shared_ptr<RBX::DataModel> dataModel); // 00457ca0
-    virtual void onMarshaledEvent(const RBX::Instance* source, RBX::ChildAdded event);   // 004581a0, vtable 00818a5c slot 2 (not recovered)
-    virtual void onMarshaledEvent(const RBX::Instance* source, RBX::ChildRemoved event); // 00457f30, vtable 00818a48 slot 2 (not recovered)
+    virtual ~CStatsItemRecord();                               // 00457ff0
+    // INFERRED: inline const accessor; 00457f30 and 00456250 read the item as `mov eax,[eax+0xa8]` through it
+    // (a direct member read gives `add eax,0xa8; mov eax,[eax]`).
+    RBX::Stats::Item* getItem() const { return item.get(); }
+    virtual void onMarshaledEvent(const RBX::Instance* source, RBX::ChildAdded event);   // 004581a0, vtable 00818a5c slot 2
+    virtual void onMarshaledEvent(const RBX::Instance* source, RBX::ChildRemoved event); // 00457f30, vtable 00818a48 slot 2
 
 private:
     int unused;                                                // INFERRED: +0xa4, size 0xb0 requires 4 bytes the record never touches
@@ -92,6 +97,7 @@ private:
 class CRobloxReportView::CStatsItemRecord::CNameItem : private MutexRef, public CXTPReportRecordItem {
 public:
     CNameItem(RBX::Stats::Item* item, boost::shared_ptr<RBX::DataModel> dataModel);      // 004564a0
+    virtual CString GetCaption(CXTPReportColumn* column);     // 00456570, vtable 008184a4 slot 27
 private:
     RBX::Stats::Item* item;                                    // +0x84
 };

@@ -148,7 +148,8 @@ namespace RBX
 		virtual int getFontSize() const;
 		void init();
 	protected:
-		bool showChildren();
+		// In-class as in the donor openrbx gui/GUI.h; render2dChildren 00574280 reads +0x144 inline (cmp 2 / jl).
+		bool showChildren() { return menuState >= SHOWN_APPEARING; }
 		virtual void onMenuStateChanged();
 		virtual G3D::Vector2 firstChildPosition() const;
 		virtual G3D::Vector2 childOffset() const;

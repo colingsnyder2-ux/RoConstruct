@@ -1,7 +1,3 @@
-// 2008-06 native RBX::Ball (inactive); evidence in native-headers/v8world/Ball2008.h.
-// Verified by tests/record_native_world_shapes.py. Unit 00649130..006492bc (getMomentSolid, getGridVolume,
-// onSetSize, hitTest).
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8world/Ball2008.h"
 #include "util/Math.h"
 #include <G3D/Sphere.h>
@@ -9,13 +5,11 @@
 
 namespace RBX
 {
-	// 005e7400: vtable slot 6, tail of getMomentSolid (was inline in Ball2008.h).
 	G3D::Matrix3 Ball::getMoment(float mass) const
 	{
 		return getMomentSolid(mass);
 	}
 
-	// 00649130: the diagonal is written x, y, z from one product; Math::fromDiagonal 005ddbd0.
 	G3D::Matrix3 Ball::getMomentSolid(float mass) const
 	{
 		G3D::Vector3 diagonal;
@@ -23,20 +17,17 @@ namespace RBX
 		return Math::fromDiagonal(diagonal);
 	}
 
-	// 00649170: radius = gridSize.x * 0.5f; radius^3 times 4/3 pi (one folded constant).
 	float Ball::getGridVolume() const
 	{
 		float radius = gridSize.x * 0.5f;
 		return radius * radius * radius * ((4.0f / 3.0f) * Math::pi());
 	}
 
-	// 00649190
 	void Ball::onSetSize()
 	{
 		realRadius = gridSize.x * 0.5f;
 	}
 
-	// 006491a0
 	bool Ball::hitTest(const G3D::Ray& rayInMe, G3D::Vector3& localHitPoint, bool& inside)
 	{
 		float distanceSquared = rayInMe.origin.squaredMagnitude();

@@ -1,22 +1,8 @@
 #pragma once
-// 2008-06 native RBX::Rocket (inactive): a BodyMover subclass (RTTI .?AVRocket@RBX@@ lists BodyMover as its base,
-// DescribedCreatable<Rocket, BodyMover, sRocket>). The original compiles it in the BodyMover unit (0062e090..
-// 00633101); evidence for the shared base is in v8datamodel/BodyMovers.h. Verified by
-// tests/record_native_body_movers.py.
-//   size       0x190: Creatable<Instance>::create<Rocket> 005c28a0 allocates 0x190; constructor 00632b50 stores every
-//              field below (defaults in the comments).
-//   descriptors dynamic initializers 007f7f10..007f8190: prop_Target 0097cae8 (RefPropDescriptor, getter 00609a50,
-//              setter 00632fd0), prop_targetOffset 0097c774 / prop_targetRadius 0097c758 (BoundProp with the
-//              onGoalChanged 0062e0f0 callback), MaxSpeed 0097c8cc, MaxThrust 0097c73c, ThrustP 0097c944, ThrustD
-//              0097c928, TurnP 0097ca50, TurnD 0097c7ac, MaxTorque 0097c850, CartoonFactor 0097c694 (functionality 5),
-//              func_Fire 0097c870 / func_Abort 0097ca70 (security 0), event_ReachedTarget 0097c81c.
 #include "v8datamodel/BodyMovers.h"
 
 namespace RBX
 {
-	// RTTI vtable 0084816c .?AVRocket@RBX@@: DescribedCreatable<Rocket, BodyMover, sRocket>; class name
-	// "RocketPropulsion". No user-declared destructor: 00632d10 releases target and calls ~FactoryProduct without
-	// re-storing the vtables.
 	extern char sRocket[];
 
 	class Rocket : public DescribedCreatable<Rocket, BodyMover, sRocket>

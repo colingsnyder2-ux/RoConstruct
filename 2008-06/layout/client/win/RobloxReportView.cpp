@@ -88,10 +88,67 @@ void CRobloxReportView::onMarshaledEvent(const RBX::Instance* source, RBX::Child
 {
     CXTPReportRecords* records = GetReportCtrl().GetRecords();
     for (int i = records->GetCount() - 1; i >= 0; --i) {
-        RBX::Instance* recordValue = *(RBX::Instance* const*)((char*)records->GetAt(i) + 0xa8);
+        RBX::Instance* recordValue = static_cast<CStatsItemRecord*>(records->GetAt(i))->getItem();
         if (recordValue == event.child.get()) {
             records->RemoveAt(i);
             break;
+        }
+    }
+}
+
+CString f(bool includeDate);
+double sub_00455d70();
+
+// INFERRED: the benchmark log statics of this unit. Only 00456c30 / 00456820 reference them: 0096dbb1 is a bss bool
+static bool benchmarkEnabled = false;      // 0096dbb1
+static double benchmarkStart = -1.0;       // 00932028
+static float benchmarkInterval = 60.0f;    // 00931800
+static FILE* benchmarkFile = NULL;         // 0096dd84
+
+void CRobloxReportView::updateStats()
+{
+    RBX::DataModel::Lock lock(dataModel);
+    GetReportCtrl().Populate();
+    GetReportCtrl().RedrawControl();
+    if (benchmarkEnabled) {
+        if (benchmarkStart < 0)
+            benchmarkStart = sub_00455d70();
+        else if (sub_00455d70() - benchmarkStart > benchmarkInterval * 1.01) {
+            if (!benchmarkFile) {
+                CString name = "c:\\roblox_bench_" + f(false) + ".txt";
+                benchmarkFile = fopen(name, "wt");
+                if (!benchmarkFile)
+                    throw std::exception("Cannot open benchmark file " + name);
+            }
+            CXTPReportRecords* records = GetReportCtrl().GetRecords();
+            fprintf(benchmarkFile, "WallTime = %s\n", f(false));
+            logRecords(records, "");
+            fflush(benchmarkFile);
+        }
+    }
+}
+
+// Original 00456820 (1038 B, registry placeholder; INFERRED name logRecords): writes "<indent><name> = <value>\n" for
+void CRobloxReportView::logRecords(CXTPReportRecords* records, CString indent)
+{
+    for (int i = 0; i < records->GetCount(); ++i) {
+        CXTPReportRecord* record = records->GetAt(i);
+        CStatsItemRecord::CNameItem* name;
+        CStatsItemRecord::CValueItem* value;
+        for (int j = 0; j < record->GetItemCount(); ++j) {
+            CXTPReportRecordItem* item = record->GetItem(j);
+            if (dynamic_cast<CStatsItemRecord::CNameItem*>(item))
+                name = dynamic_cast<CStatsItemRecord::CNameItem*>(item);
+            if (dynamic_cast<CStatsItemRecord::CValueItem*>(item))
+                value = dynamic_cast<CStatsItemRecord::CValueItem*>(item);
+        }
+        if (value->GetCaption(NULL) != "" && name->GetCaption(NULL) != "Render" && name->GetCaption(NULL) != "Sound") {
+            CString line = indent + name->GetCaption(NULL) + " = " + value->GetCaption(NULL) + "\n";
+            fprintf(benchmarkFile, "%s", (LPCSTR)line);
+        }
+        if (name->GetCaption(NULL) != "Render" && name->GetCaption(NULL) != "Sound") {
+            if (CXTPReportRecords* children = record->GetChilds())
+                logRecords(children, indent + name->GetCaption(NULL) + "::");
         }
     }
 }

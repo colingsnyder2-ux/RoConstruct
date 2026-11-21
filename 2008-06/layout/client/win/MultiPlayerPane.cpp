@@ -20,7 +20,6 @@ void CMultiPlayerPane::OnDestroy() {
     CWnd::OnDestroy();
 }
 
-// 00432e60: create the pane and its chat view.
 BOOL CMultiPlayerPane::initialize(CWnd* parent, RBX::DataModel* model) {
     if (!CWnd::Create(0, 0, WS_CHILD | WS_VISIBLE, CRect(0, 0, 0, 0), parent, 1002, 0)) return FALSE;
     chatPrompt = static_cast<CChatPrompt*>(RUNTIME_CLASS(CChatPrompt)->CreateObject());

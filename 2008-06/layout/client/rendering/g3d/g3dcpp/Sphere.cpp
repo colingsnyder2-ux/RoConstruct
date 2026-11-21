@@ -1,13 +1,11 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// 2008-06 native G3DSphere (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/Sphere.cpp, verbatim.
 #line 1 ".\\G3Dcpp\\Sphere.cpp"
 /**
  @file Sphere.cpp
- 
+
  Sphere class
- 
+
  @maintainer Morgan McGuire, matrix@graphics3d.com
- 
+
  @created 2001-04-17
  @edited  2006-02-05
  */
@@ -28,30 +26,25 @@ Sphere::Sphere(class BinaryInput& b) {
 	deserialize(b);
 }
 
-
 void Sphere::serialize(class BinaryOutput& b) const {
 	center.serialize(b);
 	b.writeFloat64(radius);
 }
-
 
 void Sphere::deserialize(class BinaryInput& b) {
 	center.deserialize(b);
 	radius = (float)b.readFloat64();
 }
 
-
 std::string Sphere::toString() const {
-    return format("Sphere(<%g, %g, %g>, %g)", 
+    return format("Sphere(<%g, %g, %g>, %g)",
         center.x, center.y, center.z, radius);
 }
-
 
 bool Sphere::contains(const Vector3& point) const {
     double distance = (center - point).squaredMagnitude();
     return distance <= (radius * radius);
 }
-
 
 bool Sphere::culledBy(
     const Array<Plane>&		plane,
@@ -62,7 +55,6 @@ bool Sphere::culledBy(
 	return culledBy(plane.getCArray(), plane.size(), cullingPlaneIndex, inMask, outMask);
 }
 
-
 bool Sphere::culledBy(
     const Array<Plane>&		plane,
 	int&				    cullingPlaneIndex,
@@ -70,7 +62,6 @@ bool Sphere::culledBy(
 
 	return culledBy(plane.getCArray(), plane.size(), cullingPlaneIndex, inMask);
 }
-
 
 bool Sphere::culledBy(
     const class Plane*  plane,
@@ -95,7 +86,7 @@ bool Sphere::culledBy(
 
 		// Only test planes that are not masked
 		if ((inMask & 1) != 0) {
-		
+
             bool culledLow = ! plane[p].halfSpaceContainsFinite(center + plane[p].normal() * radius);
             bool culledHigh = ! plane[p].halfSpaceContainsFinite(center - plane[p].normal() * radius);
 
@@ -125,7 +116,6 @@ bool Sphere::culledBy(
 	cullingPlane = -1;
     return false;
 }
-
 
 bool Sphere::culledBy(
     const class Plane*  plane,
@@ -159,16 +149,14 @@ bool Sphere::culledBy(
     return false;
 }
 
-
 Vector3 Sphere::randomSurfacePoint() const {
     return Vector3::random() * radius + center;
 }
 
-
 Vector3 Sphere::randomInteriorPoint() const {
     Vector3 result;
     do {
-        result = Vector3((float)symmetricRandom(), 
+        result = Vector3((float)symmetricRandom(),
                          (float)symmetricRandom(),
                          (float)symmetricRandom());
     } while (result.squaredMagnitude() >= 1.0f);
@@ -176,16 +164,13 @@ Vector3 Sphere::randomInteriorPoint() const {
     return result * radius + center;
 }
 
-
 float Sphere::volume() const {
     return (float)G3D_PI * (4.0f / 3.0f) * powf((float)radius, 3.0f);
 }
 
-
 float Sphere::surfaceArea() const {
     return (float)G3D_PI * 4.0f * powf((float)radius, 2.0f);
 }
-
 
 void Sphere::getBounds(AABox& out) const {
     Vector3 extent(radius, radius, radius);

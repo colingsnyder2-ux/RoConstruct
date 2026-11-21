@@ -9,19 +9,7 @@ CMarshalWindow* __cdecl acquireMarshalWindow();
 void __cdecl releaseMarshalWindow(CMarshalWindow*);
 
 // INFERRED: from binary evidence at 00464af0 - EventData layout observation.
-// The binary's EventData constructor initializes [esi+0x0]=vptr(0x81b390),
-// [esi+0x4]=listener(NULL), [esi+0x8]=reserved(0), [esi+0xC]=event,
-// [esi+0x10]=source, [esi+0x14]=flag(1). These offsets are inferred from
-// the assembly and match the C++ class layout.
-// The binary's EventData constructor initializes [esi+0x0]=vptr(0x81b390),
-// [esi+0x4]=listener(NULL), [esi+0x8]=reserved(0), [esi+0xC]=event,
-// [esi+0x10]=source, [esi+0x14]=flag(1). These offsets are inferred from
-// the assembly and match the C++ class layout.
-}
 
-// Inactive recovery. Original RTTI proves four template parameters and the
-// Listener base; selected Selection dispatch/filter bodies match. Global lifetime
-// and game integration remain open.
 template<class Source, class Event, class Target = Source, class TargetEvent = Event>
 class MarshaledListener : public Listener<Source, Event> {
 public:

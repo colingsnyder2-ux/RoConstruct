@@ -1,4 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /GS- /IC:\Users\colin\RoConstruct\tools\rbxgs\Client\Network\raknet30\Source
 #include "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/SocketLayer.h"
 #include "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/MTUSize.h"
 #include "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/ExtendedOverlappedPool.h"
@@ -51,7 +50,7 @@ SOCKET SocketLayer::CreateBoundSocket( unsigned short port, bool blockingSocket,
 	// This doubles the max throughput rate
 	sock_opt=1024*256;
 	setsockopt(listenSocket, SOL_SOCKET, SO_RCVBUF, ( char * ) & sock_opt, sizeof ( sock_opt ) );
-	
+
 #ifndef _CONSOLE_2
 	// This doesn't make much difference: 10% maybe
 	// Not supported on console 2
@@ -143,7 +142,7 @@ SOCKET SocketLayer::CreateBoundSocket( unsigned short port, bool blockingSocket,
 	else
 	{
 		listenerSocketAddress.sin_addr.s_addr = INADDR_ANY;
-	}	
+	}
 
 	// bind our name to the socket
 	ret = bind( listenSocket, ( struct sockaddr * ) & listenerSocketAddress, sizeof( struct sockaddr ) );
@@ -247,7 +246,6 @@ int SocketLayer::RecvFrom( const SOCKET s, RakPeer *rakPeer, int *errorCode, uns
 	{
 		*errorCode = 0;
 
-
 #if defined(_WIN32) && !defined(_CONSOLE_1) && defined(_DEBUG)
 
 		DWORD dwIOError = WSAGetLastError();
@@ -261,7 +259,6 @@ int SocketLayer::RecvFrom( const SOCKET s, RakPeer *rakPeer, int *errorCode, uns
 #if defined(_DEBUG)
 //			printf( "A previous send operation resulted in an ICMP Port Unreachable message.\n" );
 #endif
-
 
 			unsigned short portnum=0;
 			ProcessPortUnreachable(sa.sin_addr.s_addr, portnum, rakPeer);
@@ -427,7 +424,6 @@ void SocketLayer::GetMyIP( char ipList[ 10 ][ 16 ] )
 	}
 
 	struct hostent *phe = gethostbyname( ac );
-
 
 	if ( phe == 0 )
 	{
