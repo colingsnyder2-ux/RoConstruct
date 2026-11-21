@@ -424,7 +424,6 @@ namespace RBX
 	}
 }
 
-#ifdef NATIVE_PRIMITIVE_DISABLE_SLEEP
 namespace RBX
 {
 	bool SleepStage::computeCanSleep(Assembly* a)
@@ -473,7 +472,6 @@ namespace RBX
 		return Sim::SLEEPING_CHECKING;
 	}
 }
-#endif
 
 // INFERRED: RBX::SleepStage::sub_0064b7f0 (placeholder name for 0064b7f0 from the identity tier; body byte-proved against the native headers by the placeholder lane)
 

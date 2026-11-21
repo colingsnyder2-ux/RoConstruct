@@ -41,6 +41,64 @@ HRESULT __stdcall IObjectSafetyRobloxImpl<CApp, 1>::SetInterfaceSafetyOptions(
     return S_OK;
 }
 
+#ifdef NATIVE_CAPP_CREATEGAME_PENDING
+#include "CRobloxApp.h"
+#include "CRobloxDoc.h"
+#include "CRobloxView.h"
+#include <exception>
+
+extern const CLSID browserAppClass;                                                  // 00816508
+extern HRESULT __cdecl reportWorkspaceSiteError(REFCLSID, const char*, HRESULT);     // 00429330
+extern HRESULT __cdecl reportWorkspaceSiteError(REFCLSID, const std::exception&);    // 00429360
+// INFERRED: 00406da0, name provisional (placeholder func_00406da0).
+HRESULT __cdecl createWorkspaceObject(ATL::CComObject<CWorkspace>** result, IUnknown* outer);
+
+STDMETHODIMP CApp::CreateGame(WINDOW_TYPE type, IWorkspace** result)
+{
+    AFX_MANAGE_STATE(AfxGetAppModuleState());
+    CRobloxDoc* doc = NULL;
+    try {
+        HRESULT hr = checkSite();
+        if (hr) return hr;
+        CWorkspace* workspace;
+        CRobloxApp* app = static_cast<CRobloxApp*>(AfxGetApp());
+        switch (type) {
+        case NoWindowType: {
+            ATL::CComObject<CWorkspace>* object;
+            hr = createWorkspaceObject(&object, 0);
+            if (hr) return reportWorkspaceSiteError(browserAppClass, "Couldn't create workspace", hr);
+            workspace = object;
+            break;
+        }
+        case PlayWindowType: {
+            doc = app->getPlayDocument();   // 0044bbf0: needs a CRobloxApp.h declaration (proposal)
+            workspace = doc->workspace;
+            POSITION pos = doc->GetFirstViewPosition();
+            if (pos) {
+                CView* view = doc->GetNextView(pos);
+                if (view) {
+                    if (CRobloxView* robloxView = dynamic_cast<CRobloxView*>(view))
+                        robloxView->showToolbox(false, true);
+                    view->GetParentFrame()->ShowWindow(SW_SHOW);
+                    ::SetForegroundWindow(view->m_hWnd);
+                }
+            }
+            break;
+        }
+        default:
+            return reportWorkspaceSiteError(browserAppClass, "requested WindowType is invalid", ERROR_INVALID_PARAMETER);
+        }
+        ATL::CComPtr<IWorkspace> iworkspace(workspace);
+        hr = iworkspace.CopyTo(result);
+        if (FAILED(hr)) return reportWorkspaceSiteError(browserAppClass, "iworkspace.CopyTo failed", hr);
+        return S_OK;
+    } catch (std::exception& e) {
+        if (doc) doc->OnCloseDocument();
+        return reportWorkspaceSiteError(browserAppClass, e);
+    }
+}
+#endif
+
 #include "CWorkspace.h"
 
 template<class T, DWORD Supported>

@@ -2,7 +2,7 @@
 #include <boost/noncopyable.hpp>
 #include <G3D/System.h>
 #include <G3D/Vector3.h>
-#include "v8world/Mechanism.h"
+#include "v8world/MechanismTracker.h" // RBX::MechanismTracker (2008 shape; was the global v8world/Mechanism.h stub)
 
 struct NativeNetworkPhysicsLayout;
 
@@ -14,6 +14,7 @@ namespace RakNet
 namespace RBX
 {
 	class Assembly;
+	class SimJob;
 
 	namespace Network
 	{
@@ -60,6 +61,7 @@ namespace RBX
 		private:
 			// Assembly +0x24 root clump / Clump +0x1c root primitive, then PartInstance 00599f80). INFERRED name after
 			void sendPhysicsData(RakNet::BitStream& bitStream, const Assembly* assembly);
+			SimJob* findTargetPlayerCharacterMechanism();
 		private:
 			Replicator* replicator;                                               // +0x4
 			MechanismTracker tracker;                                             // +0x8

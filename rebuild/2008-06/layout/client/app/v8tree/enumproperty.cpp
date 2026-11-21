@@ -117,6 +117,35 @@ namespace RBX
 }
 
 #include "reflection/property.h"
+
+namespace RBX {
+namespace Reflection {
+
+template<>
+const Type& Type::singleton<DescribedBase*>()
+{
+    static Type type("Object", typeid(DescribedBase*));
+    return type;
+}
+
+bool RefPropertyDescriptor::isWriteOnly() const
+{
+    return false;
+}
+
+void RefPropertyDescriptor::getVariant(const DescribedBase* instance, Value& value) const
+{
+    value = getRefValue(instance);
+}
+
+void RefPropertyDescriptor::setVariant(DescribedBase* instance, const Value& value) const
+{
+    setRefValue(instance, value.cast<DescribedBase*>());
+}
+
+}
+}
+
 #include "v8xml/XmlElement.h"
 #include "util/Sound.h"
 

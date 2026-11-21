@@ -523,15 +523,15 @@
 ],
 "00427950": [
 "client/win/LogManager.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "00427a20": [
 "client/win/LogManager.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "00427b00": [
 "client/win/LogManager.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "00428180": [
 "client/network/CrashReporter.cpp",
@@ -539,7 +539,7 @@
 ],
 "004285e0": [
 "client/win/LogManager.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "0042acb0": [
 "client/win/LuaHtmlView.cpp",
@@ -728,6 +728,14 @@
 "00436040": [
 "client/win/ObjectBrowser.cpp",
 "merged unit, partial"
+],
+"00437880": [
+"client/app/util/utilities.cpp",
+"inferred path"
+],
+"004378d0": [
+"client/app/util/utilities.cpp",
+"inferred path"
 ],
 "00437c20": [
 "client/win/PropGrid.cpp",

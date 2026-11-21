@@ -7,6 +7,10 @@
 #include <G3D/CoordinateFrame.h>
 #include <memory>
 
+namespace G3D {
+class Ray;
+}
+
 namespace RBX {
 class Humanoid;
 class PartInstance;
@@ -58,6 +62,7 @@ public:
     void preStep(float dt);
     void findFloor();                                                 // 00644000: plain ret; rays below the torso
     bool findClimbable(Adorn* adorn);                                 // 00644c80: ret 4, al; preStep passes NULL
+    boost::shared_ptr<PartInstance> floorPartFromRay(const G3D::Ray& ray, float maxDistance);
     bool climbableInFront(Adorn* adorn);                              // 00644a30: ret 4, al; GeometryService
     static void transition(std::auto_ptr<HumanoidState>& state, float dt);
     static const int transitionTable[][18];                           // 0084a92c (INFERRED: stride 0x48 from asm)

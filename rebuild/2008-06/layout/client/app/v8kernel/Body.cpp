@@ -34,7 +34,8 @@ namespace RBX
 
 	int Body::getNextStateIndex()
 	{
-		static int p;                            // 0095a898
+		// INFERRED: initializer 1 from the client image, whose .data word at 0095a898 is 01 00 00 00 (the donor has no
+		static int p = 1;                        // 0095a898
 		if (++p == INT_MAX)
 			p = 1;
 		return p;

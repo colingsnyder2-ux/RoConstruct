@@ -82,3 +82,27 @@ namespace RBX
 		}
 	}
 }
+
+// INFERRED: the original most likely had these as header-inline members, emitted out of line where render calls
+#include "ViewNew/RenderBaseMesh.h"
+#include <exception>
+
+namespace RBX
+{
+	namespace RenderBase
+	{
+		const G3D::Vector3& Mesh::getVertex(int index) const
+		{
+			if (index < 0 || index >= visibleGeometry.vertexArray.size())
+				throw std::exception("RBX Mesh::getVertex() index out of range");
+			return visibleGeometry.vertexArray[index];
+		}
+
+		const G3D::Vector3& Mesh::getNormal(int index) const
+		{
+			if (index < 0 || index >= visibleGeometry.normalArray.size())
+				throw std::exception("RBX Mesh::getNormal() index out of range");
+			return visibleGeometry.normalArray[index];
+		}
+	}
+}
