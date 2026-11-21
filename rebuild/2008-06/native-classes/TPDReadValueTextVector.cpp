@@ -31,6 +31,25 @@ void TypedPropertyDescriptor<std::string>::readValue(DescribedBase* instance, co
 	}
 }
 
+// 0056e630 ?writeValue@?$TypedPropertyDescriptor@V?$basic_string@...@std@@@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z
+// (registry identity-closure, 9 vtable references). Right after the string readValue 0056e5a0: the value comes from the
+// out-of-line getValue 0061a7b0 built straight into the by-value argument of XmlNameValuePair::setValue(std::string)
+// 00495dd0 on the element's XmlNameValuePair base (+0x10).
+template<>
+void TypedPropertyDescriptor<std::string>::writeValue(const DescribedBase* instance, XmlElement* element) const
+{
+	element->setValue(getValue(instance));
+}
+
+// 0056e0e0 ?setStringValue@?$TypedPropertyDescriptor@V?$basic_string@...@std@@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV...@@Z
+// (registry identity-closure, 9 vtable references): getset slot 3 (+0xc) setValue, then true.
+template<>
+bool TypedPropertyDescriptor<std::string>::setStringValue(DescribedBase* instance, const std::string& text) const
+{
+	setValue(instance, text);
+	return true;
+}
+
 // 0056e850
 template<>
 void TypedPropertyDescriptor<G3D::Vector3>::readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const

@@ -15,6 +15,20 @@
 #include "metadata-load/v8xml/SerializerV2.h"
 #include "v8xml/XmlSerializer.h"
 #include <G3D/Log.h>
+#ifndef NATIVE_CONTENTPROVIDER_READCONTENT_DECLARED
+#include "v8datamodel/DataModel.h" // SerializerV2::load(XmlElement*, DataModel*) converts DataModel* to Instance*
+#endif
+
+// 00593500 ?load@SerializerV2@@SAXPAVXmlElement@@PAVDataModel@RBX@@@Z (static, registry identity-closure; callers
+// 00455744 and loadXML 00593570 at 00593690). Same ArchiveBinder object: ArchiveBinder() 00592940, the data model's
+// Instance::readChildren 0055b6a0 (public in v8tree/Instance.h), resolveRefs 00592720 called directly,
+// ~ArchiveBinder 005931e0 (EH state 0, handler 007d1df8). Body follows openrbx v8xml/SerializerV2.cpp.
+void SerializerV2::load(XmlElement* root, RBX::DataModel* dataModel)
+{
+	ArchiveBinder binder;
+	dataModel->readChildren(root, binder);
+	binder.resolveRefs();
+}
 
 #ifdef NATIVE_INSTANCE_READ_DECLARED
 // 00593250 (`ret 8`). Callees: findAttribute 0057c2b0, getValue(int&) 0057c4f0, ArchiveBinder() 00592940,
