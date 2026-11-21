@@ -28,6 +28,12 @@ namespace RBX
 }
 
 #ifdef NATIVE_APPUNIT570_PENDING
+// Batch 32 measurement against a scratch v8tree/Service.h that declares the five protected overrides below and
+// gives ServiceAdded / ServiceRemoving an `X(Instance* service) : service(shared_from(service)) {}` constructor:
+// onChildRemoving 00572b40, onChildAdded 00572ca0, onDescendentAdded 005726a0, onDescendentRemoving 005726c0 and
+// clearServices 00572db0 IDENTICAL (relocs masked). createChild 00572e40 stays a near miss (224 B vs 191 B: the
+// target shares one release of `instance` between both returns; the ternary `instance ? instance : create(...)`
+// was worse, 263 B).
 // Needs the ServiceProvider overrides declared in v8tree/Service.h (proposal; the recorder builds these only against a
 // generated copy of that header under out/app-unit570-2008/pending/ and records them exact=false).
 namespace RBX
@@ -103,6 +109,8 @@ namespace RBX
 #endif
 
 #ifdef NATIVE_SERVICE_FINDBYSTRING_PENDING
+// Batch 32 measurement (scratch copy of v8tree/Service.h with the proposal below plus the NATIVE_APPUNIT570_PENDING
+// declarations, compiled with this unit's default flags): 005729c0 IDENTICAL (relocs masked, 197 B).
 // 005729c0 (197 B, ret 0x20): ?findServiceByClassNameString@ServiceProvider@RBX@@AAE?AV?$shared_ptr@VInstance@RBX@@@
 // boost@@V?$basic_string@...@@Z (registry; private, by-value std::string). Name::lookup(const std::string&) 00554180
 // compared by address with getNullName 00554270; on a miss G3D::format 00509b10 of "'%s' is not a valid Service name"
@@ -114,8 +122,9 @@ namespace RBX
 {
 	boost::shared_ptr<Instance> ServiceProvider::findServiceByClassNameString(std::string className)
 	{
+		// Batch 32: getNullName on the left gives the target `cmp eax, esi` (the reverse order compared esi, eax).
 		const Name& name = Name::lookup(className);
-		if (&name == &Name::getNullName())
+		if (&Name::getNullName() == &name)
 			throw std::runtime_error(G3D::format("'%s' is not a valid Service name", className.c_str()));
 		return shared_from(create(this, name));
 	}
