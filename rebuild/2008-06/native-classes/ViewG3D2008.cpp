@@ -12,11 +12,36 @@
 #include "v8datamodel/Sky.h"
 #include "util/StandardOut.h"
 #include <G3D/GImage.h>
+#include "ViewNew/CylinderMesh.h"
+#include "ViewNew/SphereMesh.h"
+#include "ViewNew/PBBMesh.h"
+#include "ViewNew/BrickMesh.h"
+#include "ViewNew/WedgeMesh.h"
+#include "ViewNew/HeadMesh.h"
+#include "ViewNew/TorsoMesh.h"
 
 namespace RBX
 {
 	namespace ViewNew
 	{
+		// 004dc270 (??_G 004dc340, vtable 00826e04 slot 0). Same shape as ~ViewRbxGfx 004db4f0 (ViewRbxGfxLifecycle2008.cpp):
+		// sceneManager->clear() (slot 3), the Lighting lookup 004b3380 behind the dataModel +0x14 null test, the seven
+		// mesh-cache flushes 004db130 / 004db040 / 004daf50 / 004e5670 / 004db310 / 004db220 / 004db400, then the
+		// implicit ~map (_Tree dtor 00553d80), ~sky (+0x48 release) and ~ViewBase 004d8920. Unlike ~ViewRbxGfx it does
+		// not reset the ViewBase auto_ptrs itself.
+		ViewG3D::~ViewG3D()
+		{
+			sceneManager->clear();
+			ServiceProvider::find<Lighting>(dataModel.get());
+			CylinderAlongXMesh::flushCache();
+			SphereMesh::flushCache();
+			PBBMesh::flushCache();
+			BrickMesh::flushCache();
+			WedgeMesh::flushCache();
+			HeadMesh::flushCache();
+			TorsoMesh::flushCache();
+		}
+
 		// 004dbf00: presetLighting slot 1 with a NULL sky (004dbfbe), sky = NULL after it, then the clear colour copy.
 		void ViewG3D::suppressSkybox()
 		{
