@@ -43,8 +43,8 @@
 //            the pointer: the donor v8world/Mechanism.h MechanismTracker shape (Mechanism* mechanism; inline
 //            ~MechanismTracker() { stopTracking(); }). 004c99b0 `jmp 005e5320` is that inline destructor's
 //            out-of-line copy (the constructor's unwind target).
-//   slots    0 ??_G 004ca010; 1 0047d410 empty; 2 004cd420 (225 bytes: World::getSimJobStage 005e93b0 and an
-//            unidentified 0x13c-byte local type 004cbd40/004c9a70; open).
+//   slots    0 ??_G 004ca010; 1 0047d410 empty; 2 004cd420 sendPackets (225 bytes, NetworkPhysics.cpp: World::getSimJobStage
+//            005e93b0, the JobSender local 004cbd40/004c9a70 and SimJobStage::reportMechanisms 004cbad0).
 //
 // Not declared here (layouts known, member types not yet derived):
 //   PhysicsSender 0x74 (ctor 004ccb10, dtor 004ccb90, ??_G 004ccde0): +4 a boost::multi_index_container (0x34 bytes;
@@ -58,7 +58,7 @@
 #include <boost/noncopyable.hpp>
 #include <G3D/System.h>
 #include <G3D/Vector3.h>
-#include "v8world/Mechanism.h"
+#include "v8world/MechanismTracker.h" // RBX::MechanismTracker (2008 shape; was the global v8world/Mechanism.h stub)
 
 struct NativeNetworkPhysicsLayout;
 
@@ -70,6 +70,7 @@ namespace RakNet
 namespace RBX
 {
 	class Assembly;
+	class SimJob;
 
 	namespace Network
 	{
@@ -123,8 +124,26 @@ namespace RBX
 		private:
 			// 004caaf0 (thiscall (BitStream&, Assembly*), the assembly a SimJob's slot 1 returns; null-checked; reads
 			// Assembly +0x24 root clump / Clump +0x1c root primitive, then PartInstance 00599f80). INFERRED name after
-			// the donor Replicator::sendPhysicsData(BitStream&, const Assembly&). Body not recovered.
+			// the donor Replicator::sendPhysicsData(BitStream&, const Assembly&). Body not recovered. Shape (312 B, ret 8):
+			//   part = PartInstance::fromPrimitive(root primitive); if (part && !replicator->isSerializePending(part)
+			//   004aeac0 && replicator->trySerializeId(bitStream, part) 004a8cc0) { cf = part->getCoordinateFrame()
+			//   00598cb0; full = findTargetPlayer() (slot 17) && its character +0x170 && character->isAncestorOf(part)
+			//   004c9c50; writePosition(bitStream, cf.translation, full); Quaternion q(cf.rotation) 005dd570;
+			//   q.normalize() 004c9d40; bitStream.WriteNormQuat(q.w, q.x, q.y, q.z) 004a5dd0; n = numMotors() 005e62d0;
+			//   bitStream << (unsigned char)n 004a6350; per motor getMotor(i) 005e6400 -> currentAngle +0x8c (0.0f
+			//   when NULL) -> Math::rotationToByte 005ded60 -> << }.
+			// Blocker: IdSerializer::trySerializeId 004a8cc0 (donor Streaming.h) is not declared in
+			// Network/IdSerializer.h (not this lease); the unit would also need v8world/AssemblyLayout.h with
+			// NATIVE_CLUMP_DECL and v8world/Joints2008.h (MotorJoint::getCurrentAngle).
 			void sendPhysicsData(RakNet::BitStream& bitStream, const Assembly* assembly);
+			// 004ca040 (thiscall, no arguments; registry placeholder): Replicator slot 17 findTargetPlayer, the player's
+			// character (+0x170), its primary part (slot 0 of the PrimaryPart holder at +0x134), then
+			// Mechanism::getMechanismFromPrimitive 005e50c0 of that part's Primitive (+0x228); NULL at any missing step.
+			// The donor Replicator::findTargetPlayerCharacterMechanism; analog name. Body not recovered: it needs
+			// friend access to the protected Replicator::findTargetPlayer and a declaration of the registry row
+			// 005e50c0 ?getMechanismFromPrimitive@Mechanism@RBX@@SAPAV12@PBVPrimitive@2@@Z on the 2008 RBX::Mechanism
+			// (v8world/SimJob2008.h, not this lease), whose result this returns as the job (Assembly +0x40).
+			SimJob* findTargetPlayerCharacterMechanism();
 		private:
 			Replicator* replicator;                                               // +0x4
 			MechanismTracker tracker;                                             // +0x8

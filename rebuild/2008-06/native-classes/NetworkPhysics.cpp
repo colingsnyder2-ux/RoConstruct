@@ -7,11 +7,16 @@
 // IPhysicsSender::writePosition 004ca7b0 (with its BitStream::WriteVector<float> instance 004ca210).
 // RoundRobinPhysicsSender::JobSender (batch 28): constructor 004cbd40, destructor 004c9a70, closePacket 004c9a10 and
 // report 004cac30 (body byte-identical; the registry size 129 B also covers the separate 17-byte function 004caca0).
-// sendPackets 004cd420 (shape below) and receivePacket 004c83b0 are declared only (open).
+// sendPackets 004cd420 (batch 29, with SimJobStage::reportMechanisms 004cbad0 from v8world/SimJobStage2008.h);
+// receivePacket 004c83b0 is declared only (open).
+#define NATIVE_REPLICATOR_NO_STATS_ITEM // Network/Replicator2008.h: v8datamodel/Workspace.h brings its own Stats::Item
 #include "Network/PhysicsReplication.h"
 #include "Network/Replicator2008.h"
 #include "Network/NetworkSettings.h"
 #include "v8world/SimJob2008.h"
+#include "v8world/SimJobStage2008.h" // SimJobStage::reportMechanisms 004cbad0 (sendPackets)
+#include "v8world/World2008.h"       // World::getSimJobStage 005e93b0
+#include "v8datamodel/Workspace.h"   // Workspace::getWorld (+0x2e4)
 #include "AppUnit49C_2008/Streaming2008.h"
 #include "BitStream.h"
 #include <RakPeerInterface.h>
@@ -144,22 +149,37 @@ namespace RBX
 			return bitStream.GetNumberOfBytesUsed() < maxStreamSize;
 		}
 
-		// 004cd420 sendPackets: PENDING (not compiled). Shape (donor Replicator::sendPhysicsPacket):
-		//   JobSender jobSender(*this, replicator->peer);
-		//   if (Workspace* workspace = ServiceProvider::find<Workspace>(replicator))        // 00491e50
-		//   {
-		//       SimJobStage& stage = workspace->getWorld()->getSimJobStage();             // [+0x2e4], 005e93b0
-		//       SimJob* job = <character job> (004ca040: findTargetPlayer slot 17 -> character +0x170 ->
-		//                     getPrimaryPart -> Mechanism::getMechanismFromPrimitive 005e50c0 of its Primitive +0x228);
-		//       if (job) { RealTime t = System::getLocalTime(); if (t > lastSendTime + 0.1f /*00826938*/)
-		//                  { jobSender.report(job); lastSendTime = t; } else job = NULL; }
-		//       stage.<reportJobs>(jobSender, tracker, job);                               // 004cbad0 (ret 0xc)
-		//   }
-		//   return jobSender.packetCount;
-		// Blockers: 004cbad0 is a SimJobStage member template (thiscall on the stage; walks simJobs +0x10 with
-		// getNextSimJob 004cb480 and MechanismTracker::tracking 005e50e0 / setSimJob 005e5350, calling report 004cac30
-		// per job except `job`) that v8world/SimJobStage2008.h does not declare; 004ca040 needs
-		// Mechanism::getMechanismFromPrimitive, which v8world/SimJob2008.h's 2008 RBX::Mechanism does not declare.
+		// 004cd420 (slot 2; ?sendPackets@RoundRobinPhysicsSender@Network@RBX@@UAEHH@Z, registry). The 2008 form of the donor
+		// Replicator::sendPhysicsPacket: the JobSender local (0x134 bytes at esp+0x10, constructor 004cbd40 with
+		// replicator->peer +0x2d50), ServiceProvider::find<Workspace> 00491e50 of the replicator, its World (+0x2e4) and
+		// World::getSimJobStage 005e93b0; the local player's character job (004ca040) goes first at most every 0.1f s
+		// (00826938; G3D::System::time inline: getLocalTime 00508410), then SimJobStage::reportMechanisms 004cbad0 walks
+		// the other jobs from the tracker (+0x8). Returns the number of packets opened (JobSender +0x130); the
+		// argument is unused. ~JobSender 004c9a70 closes the last packet.
+		int RoundRobinPhysicsSender::sendPackets(int maxPackets)
+		{
+			JobSender jobSender(*this, replicator->peer);
+			if (Workspace* workspace = ServiceProvider::find<Workspace>(replicator))
+			{
+				SimJobStage& stage = workspace->getWorld()->getSimJobStage();
+				SimJob* characterJob = findTargetPlayerCharacterMechanism();
+				if (characterJob)
+				{
+					G3D::RealTime now = G3D::System::time();
+					if (now > lastSendTime + 0.1f) // 00826938 holds (double)0.1f
+					{
+						jobSender.report(characterJob);
+						lastSendTime = now;
+					}
+					else
+					{
+						characterJob = NULL;
+					}
+				}
+				stage.reportMechanisms(jobSender, tracker, characterJob);
+			}
+			return jobSender.packetCount;
+		}
 
 		void DirectPhysicsReceiver::step(unsigned int)
 		{

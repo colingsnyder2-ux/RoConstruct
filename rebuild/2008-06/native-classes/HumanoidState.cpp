@@ -113,6 +113,23 @@ void HumanoidState::setTorsoHeadFlag(bool value)
     }
 }
 
+// 00643f10 (237 bytes, thiscall `ret 0xc`: hidden shared_ptr return, const Ray&, float; registry placeholder
+// func_00643f10, analog name; callers findFloor 00644000 only, same HumanoidState unit). Placed here, not beside
+// findFloor in HumanoidStateFloor.cpp, because that unit's donor-shaped humanoid/Humanoid.h has world at +0x218 (the
+// only diff there); humanoid/Humanoid2008.h has the binary's +0x21c. ContactManager (humanoid
+// world +0x21c, contactManager +0x84) getHitLegacy 0060da00 with this HitTestFilter (+4), hit point into
+// floorTouchInWorld +0x2c, then PartInstance::fromPrimitive 00599f80 and shared_from 00618a40. The distance local
+// shares the dead ray argument slot.
+boost::shared_ptr<PartInstance> HumanoidState::floorPartFromRay(const G3D::Ray& ray, float maxDistance)
+{
+	float distance;
+	Primitive* hit = humanoid->getWorld()->getContactManager().getHitLegacy(ray, NULL, this, floorTouchInWorld, distance, maxDistance);
+	boost::shared_ptr<PartInstance> result;
+	if (hit)
+		result = shared_from(PartInstance::fromPrimitive(hit));
+	return result;
+}
+
 // 006444f0 (374 bytes, plain `ret`): moved here from HumanoidStateFloor.cpp in batch 25, because this unit reaches
 // humanoid/Humanoid2008.h (world +0x21c, HumanoidState a friend) where humanoid/Humanoid.h has world at +0x218.
 // world (Humanoid +0x21c) tested first (shared epilogue); Humanoid::getPrimitives 005d9db0 into a local vector,

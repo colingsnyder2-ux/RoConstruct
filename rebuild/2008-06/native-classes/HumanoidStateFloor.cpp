@@ -6,8 +6,10 @@
 #include "humanoid/Humanoid.h"
 #include "v8datamodel/GeometryService.h"   // getPartsTouchingExtents 0062db60 (00644a30)
 #include "AppDraw/Draw.h"                   // Draw::selectionBox(const Part&, Adorn*, const Color4&) 00676e00
+#include "AppDraw/DrawAdorn.h"              // DrawAdorn::cylinder 006773f0 (findClimbable 00644c80)
 #include "RbxGraphics/Adorn.h"
 #include <G3D/AABox.h>
+#include <G3D/Ray.h>
 
 namespace RBX {
 namespace HUMAN {
@@ -112,15 +114,123 @@ bool HumanoidState::climbableInFront(Adorn* adorn)
 	return false;
 }
 
-// Not yet written (batch 28, decoded only; declared in humanoid/HumanoidState.h, belong in this native-Body unit):
-//   findFloor 00644000 (1045 B): torso Primitive frame 005e82c0 and grid size * 0.5, max distance 1.0 or leg grid y *
-//     (floorPart ? 1.5 : 1.1) + 1.0 (right leg, else left leg), Ray::fromOriginAndDirection 00518830 down (-unitY
-//     static 0097289x) from pointToWorldSpace 004766a0, helper 00643f10 (ray cast: ContactManager 0060da00 with this
-//     HitTestFilter (+4), floorTouchInWorld +0x2c, PartInstance::fromPrimitive 00599f80, shared_from 00618a40) into
-//     floorPart; then a 2x2 loop (x, z in {-1, 1}) of offset rays until a floor is found.
-//   findClimbable 00644c80 (985 B): getTorsoBody, climbableInFront(adorn), lookVector 005187f0, 17 rays (i = 1..17,
-//     height i / 7 - 2.7) through GeometryService::getHitLocationFilterStairs 0062dc10 (hit distance vs 0.7), adorn
-//     drawing (Color3 orange / green / purple, DrawAdorn::cylinder 006773f0), climb height window 2.45.
+// 00644000 (1045 bytes, plain `ret`; registry placeholder func_00644000, analog name; caller preStep 006451c0).
+// Torso Body 005d9160 test, torso Primitive frame 005e82c0, torso grid size * 0.5 (0x819bac); search depth 1.0, or a
+// leg's grid y * (floorPart ? 0x81e37c : 0x83a6e4) + 0x827494 (getLeftLegPrimitive 005d90c0, else getRightLegPrimitive
+// 005d90e0). First ray from pointToWorldSpace 004766a0 (0, -half.y, 0) down (-Vector3::unitY() static 0x972898), then a
+// 2x2 loop x, z in {-1, 1} of corner rays (pointToWorldSpace inlined) until floorPart is found. The helper 00643f10
+// (floorPartFromRay) is in HumanoidState.cpp (Humanoid2008.h world +0x21c), byte-identical there.
+// PARKED (batch 29, 1029/1045 bytes, first divergence insn 17 only through the shorter branch targets; first real
+// difference insn 27 00644050): the target keeps the torso grid-size pointer (`add eax, 4` then [eax], [eax+4], [eax+8])
+// and tests floorPart after it, and does not tail-merge the two leg loads (left `mov eax, [eax+0x9c]; fld [eax+8]`,
+// right `mov ecx, [eax+0x9c]; fld [ecx+8]`), where the candidate merges them (16 bytes shorter); the corner loop with
+// the reused bottom/ray locals and the shared_ptr assignments match apart from edx/eax/ecx rotation. Rejected:
+// separate corner/cornerRay locals in the loop (no ray reuse: Ray copied by value into a new slot), a ternary leg
+// pointer (right getter called once, 8 bytes shorter), Primitive::getGridSize() inline for the right leg (unchanged).
+void HumanoidState::findFloor()
+{
+	if (!humanoid->getTorsoBody())
+		return;
+	const G3D::CoordinateFrame& torsoFrame = humanoid->getTorsoPrimitive()->getCoordinateFrame();
+	G3D::Vector3 halfSize = humanoid->getTorsoPrimitive()->getGeometry()->getGridSize() * 0.5f;
+	float maxDistance = 1.0f;
+	float legFactor = floorPart ? 1.5f : 1.1f;
+	if (humanoid->getLeftLegPrimitive())
+		maxDistance = humanoid->getLeftLegPrimitive()->getGeometry()->getGridSize().y * legFactor + 1.0f;
+	else if (humanoid->getRightLegPrimitive())
+		maxDistance = humanoid->getRightLegPrimitive()->getGeometry()->getGridSize().y * legFactor + 1.0f;
+
+	G3D::Vector3 bottom = torsoFrame.pointToWorldSpace(G3D::Vector3(0.0f, -halfSize.y, 0.0f));
+	G3D::Ray ray = G3D::Ray::fromOriginAndDirection(bottom, -G3D::Vector3::unitY());
+	if (floorPart = floorPartFromRay(ray, maxDistance))
+		return;
+
+	for (int x = -1; x <= 1; x += 2)
+	{
+		for (int z = -1; z <= 1; z += 2)
+		{
+			bottom = torsoFrame.pointToWorldSpace(G3D::Vector3(x * halfSize.x, -halfSize.y, z * halfSize.z));
+			ray = G3D::Ray::fromOriginAndDirection(bottom, -G3D::Vector3::unitY());
+			if (floorPart = floorPartFromRay(ray, maxDistance))
+				return;
+		}
+	}
+}
+
+// 00644c80 (985 bytes, thiscall `ret 4`, al; registry placeholder func_00644c80, analog name; caller preStep 006451c0
+// with NULL). Decoded from the target (no donor body): getTorsoBody 005d9160 (NULL -> false), climbableInFront 00644a30
+// (false -> false), Body frame (updatePV 00599360, pv +0x94), lookVector 005187f0 * 2.0f [0081c434],
+// ServiceProvider::find<GeometryService> 006449e0, Color3::orange 005149b0; 17 rays i = 1..17 at height i / 7
+// [0084ac8c = 1/7] - 2.7f [008378b8] (Ray() 00510a30, origin/direction stored), GeometryService::
+// getHitLocationFilterStairs 0062dc10 (humanoid parent +0x104, Ray by value with vptr 008282c4); hit distance < 0.7f
+// [008288b8]: first hit records the bottom height (Color3::green 005148e0), the first clear ray after it records the
+// span (Color3::red, folded with Vector3::unitX 005148b0). With an adorn each ray is drawn (setObjectToWorldMatrix slot
+// 14 with CoordinateFrame(Matrix3::identity() 00513e20 [copy 00513220], translation), Adorn::ray slot 21 with
+// Ray::fromOriginAndDirection 00518830, Color4(color, 1), 1.0f). Climbable when bottom < 2.45f [0084ac88] and
+// 0 < span < 2.45f; then DrawAdorn::cylinder 006773f0 (CoordinateFrame(translation + (0, 5 [0081ccbc], 0)) 0057d210,
+// axis 1, 0.2f [008249f8], 1.0f, Color3::purple 00514940).
+// PARKED (batch 29, 983/985 bytes, first divergence insn 9 00644c9e): the only difference is register assignment: the
+// target keeps this in edi and adorn in ebp (`mov edx, [ebp]` needs a disp8, the 2 bytes), the candidate the mirror.
+// Accepted steps: offset Vector3 before Ray() and origin after it (h - 2.7 spilled before the Ray ctor call), a named
+// CoordinateFrame and a named drawRay in the adorn block (frame size 0xe8, EH state 1). Rejected for the register
+// mirror: the body nested in `if (torsoBody && climbableInFront(adorn))`, separate early returns for the two tests.
+bool HumanoidState::findClimbable(Adorn* adorn)
+{
+	Body* torsoBody = humanoid->getTorsoBody();
+	if (!torsoBody || !climbableInFront(adorn))
+		return false;
+
+	const G3D::CoordinateFrame& torsoFrame = torsoBody->getCoordinateFrame();
+	G3D::Vector3 look = torsoFrame.lookVector();
+	GeometryService* geometryService = ServiceProvider::find<GeometryService>(humanoid);
+	float bottom = 0.0f;
+	float span = 0.0f;
+	bool first = true;
+	bool inSpan = false;
+	G3D::Color3 color = G3D::Color3::orange();
+	G3D::Vector3 direction = look * 2.0f;
+	for (int i = 1; i < 18; ++i)
+	{
+		float height = i / 7.0f;
+		G3D::Vector3 offset(0.0f, height - 2.7f, 0.0f);
+		G3D::Ray ray;
+		G3D::Vector3 origin = torsoFrame.translation + offset;
+		ray.origin = origin;
+		ray.direction = direction;
+		G3D::Vector3 hit = geometryService->getHitLocationFilterStairs(humanoid->getParent(), ray);
+		if ((hit - origin).length() < 0.7f)
+		{
+			if (first)
+			{
+				first = false;
+				bottom = height;
+				inSpan = true;
+				color = G3D::Color3::green();
+			}
+		}
+		else if (inSpan)
+		{
+			inSpan = false;
+			span = height - bottom;
+			color = G3D::Color3::red();
+		}
+		if (adorn)
+		{
+			G3D::CoordinateFrame frame(G3D::Matrix3::identity(), torsoFrame.translation);
+			adorn->setObjectToWorldMatrix(frame);
+			G3D::Ray drawRay = G3D::Ray::fromOriginAndDirection(origin - torsoFrame.translation, hit - origin);
+			adorn->ray(drawRay, G3D::Color4(color, 1.0f), 1.0f);
+		}
+	}
+
+	if (bottom < 2.45f && span > 0.0f && span < 2.45f)
+	{
+		if (adorn)
+			DrawAdorn::cylinder(adorn, G3D::CoordinateFrame(torsoFrame.translation + G3D::Vector3(0.0f, 5.0f, 0.0f)), 1, 0.2f, 1.0f, G3D::Color3::purple());
+		return true;
+	}
+	return false;
+}
 
 // 006444f0 onFloorStep: byte-exact in native-classes/HumanoidState.cpp since batch 25 (that unit reaches
 // humanoid/Humanoid2008.h, world +0x21c, and Humanoid2008.h now declares getPrimitives 005d9db0). Not duplicated here.

@@ -76,7 +76,13 @@
 #include "RakNetTypes.h"
 #include "Network/IdSerializer.h"
 #include "Network/PhysicsReplication.h"
+// NATIVE_REPLICATOR_NO_STATS_ITEM (opt-in, defined by a unit before including this header): leaves out stats/Stats.h
+// and the ReplicatorStatsItem definition (the Replicator itself only holds a shared_ptr to the nested class), for
+// units that also need v8datamodel/Workspace.h, whose v8datamodel/Stats.h redefines RBX::Stats::Item
+// (NetworkPhysics.cpp: RoundRobinPhysicsSender::sendPackets 004cd420 reads Workspace::getWorld).
+#ifndef NATIVE_REPLICATOR_NO_STATS_ITEM
 #include "stats/Stats.h"
+#endif
 #include <G3D/System.h>
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/connection.hpp>
@@ -158,6 +164,9 @@ namespace RBX
 			friend struct ::NativeNetworkReplicator2008Layout; // layout probe of tests/record_native_network_replicator2008.py
 			// INFERRED: PhysicsSender::step 004cd920 calls the protected findTargetPlayer 004ab9a0.
 			friend class PhysicsSender;
+			// INFERRED: InterpolatingPhysicsReceiver::receivePacket 004c9120 calls the protected findTargetPlayer (slot 17,
+			// `call [eax+0x44]` on its replicator +0x4).
+			friend class InterpolatingPhysicsReceiver;
 
 		public:
 			class ReplicatorStatsItem;
@@ -346,6 +355,10 @@ namespace RBX
 			boost::shared_ptr<Instance> getPlayer();                                // 004ae860 (donor: inline in the class)
 			void requestCharacter();                                                // 004b49e0
 			void closeConnection();                                                 // 004aafd0
+			// 004aeac0 (donor Replicator::isSerializePending, public: RoundRobinPhysicsSender::sendPhysicsData 004caaf0
+			// and PhysicsSender rows 004ca980 call it; thiscall, ret 4, reads pendingNewInstances +0x2c90 / head +0x2ca8
+			// through the set find 004ae060). Body in ReplicatorIsSerializePending_004aeac0.cpp.
+			bool isSerializePending(const Instance* instance) const;
 
 		protected:
 			// Instance slot 12 override (vtable 008254fc; ClientProxy 00823474 inherits it). Body not recovered.
@@ -412,6 +425,7 @@ namespace RBX
 			void readInstanceDelete(RakNet::BitStream& stream);
 		};
 
+#ifndef NATIVE_REPLICATOR_NO_STATS_ITEM
 		class Replicator::ReplicatorStatsItem : public Stats::Item
 		{
 			friend struct ::NativeNetworkReplicator2008Layout;
@@ -430,5 +444,6 @@ namespace RBX
 			ReplicatorStatsItem(const boost::shared_ptr<Replicator>& replicator, const RakNetStatistics* statistics); // 004b62c0 (open)
 			virtual void update();                                                  // 004b6530 (NetworkReplicator2008StatsItem.cpp)
 		};
+#endif
 	}
 }

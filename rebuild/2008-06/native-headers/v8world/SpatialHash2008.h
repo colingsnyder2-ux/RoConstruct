@@ -18,29 +18,54 @@ namespace RBX
 }
 #include <vector>
 #include <G3D/Array.h>
+#include "util/Vector3int32.h"
 
 namespace RBX
 {
-	// INFERRED: next-link at +4 (dtor 0065b1b0 loads [node+4]); the other fields follow the donor SpatialNode.
+	struct SpatialTreeNode;
+
+	// Hash node, 0x24 bytes at level 0 (00659f90: `push 0x24` / free list +0x6c) and 0x28 above it (SpatialLevelNode,
+	// `push 0x28` / free list +0x70). Offsets from the node insert 0065a220: primitive +0, bucket chain +4 (dtor 0065b1b0
+	// loads [node+4]), the primitive's node list +8 / +0xc (doubly linked through Primitive +0x64), hash +0x10, grid
+	// +0x14..+0x1c (compared field by field), level as a word at +0x20 (00659f90 `mov word ptr [esi+0x20], bp`).
+	// Field names follow the donor SpatialNode (tools/rbxgs v8world/SpatialHash.h).
 	struct SpatialNode
 	{
-		Primitive* primitive;
-		SpatialNode* nextHashLink;
+		Primitive* primitive;                           // +0x00
+		SpatialNode* nextHashLink;                      // +0x04
+		SpatialNode* nextPrimitiveLink;                 // +0x08
+		SpatialNode* prevPrimitiveLink;                 // +0x0c
+		int hashId;                                     // +0x10
+		Vector3int32 gridId;                            // +0x14
+		unsigned short level;                           // +0x20
 	};
 
-	// INFERRED: next-link at +0x28 (dtor 0065b1b0 loads [node+0x28]); the preceding fields are unread by the recovered bodies.
-	struct SpatialPrimitiveNode
+	// Level > 0 node (0x28): +0x24 the tree node of its cell (00659f90 stores the result of 00659670 / 006596d0 there and
+	// increments its +0x14; 0065a220 passes it to 00659a10 when the word +0x20 is non-zero).
+	struct SpatialLevelNode : public SpatialNode
 	{
-		Primitive* primitive;
-		float extents[6];                               // INFERRED: 0x18 bytes of float data between +4 and +0x1c
-		int gridMin[3];                                 // INFERRED
-		SpatialPrimitiveNode* nextPrimitiveLink;        // +0x28
+		SpatialTreeNode* treeNode;                      // +0x24
+	};
+
+	// Tree node, 0x2c bytes (006596d0 `push 0x2c`, free list +0x74, chain +0x28 per bucket second head; dtor 0065b1b0
+	// loads [node+0x28]): eight child hash ids as words (initialised to 0xffff), level word +0x10, child bit mask +0x12
+	// (0065a220 `test bl, [eax+0x12]` then `mov word ptr [eax+ecx*2]`), reference count +0x14 (00659f90 `inc [eax+0x14]`),
+	// hash +0x18, grid +0x1c..+0x24 (00659670 compares them), next +0x28. INFERRED: names.
+	struct SpatialTreeNode
+	{
+		unsigned short children[8];                     // +0x00
+		unsigned short level;                           // +0x10
+		unsigned char childMask;                        // +0x12
+		int refCount;                                   // +0x14
+		int hashId;                                     // +0x18
+		Vector3int32 gridId;                            // +0x1c
+		SpatialTreeNode* next;                          // +0x28
 	};
 
 	struct SpatialBucket
 	{
 		SpatialNode* nodes;                             // +0
-		SpatialPrimitiveNode* primitives;               // +4
+		SpatialTreeNode* treeNodes;                     // +4
 	};
 
 	extern int spatialHashLevels;                       // 009625a8 INFERRED name
@@ -54,7 +79,7 @@ namespace RBX
 		std::vector<SpatialBucket> levels[4];           // +0x0c
 		SpatialNode* freeNodes;                         // +0x6c
 		SpatialNode* freeNodes2;                        // +0x70 INFERRED: second SpatialNode-shaped free list (next at +4)
-		SpatialPrimitiveNode* freePrimitiveNodes;       // +0x74
+		SpatialTreeNode* freeTreeNodes;                 // +0x74
 		int nodesOut;                                   // +0x78
 		int maxBucket;                                  // +0x7c
 		G3D::Array<SpatialNode*> extraNodes;            // +0x80 INFERRED: G3D::Array shape (data +0x80, num +0x84, numAllocated +0x88; its destructor is alignedFree 00507d20 then zeroing, ctor stores num, numAllocated, data)
@@ -75,6 +100,19 @@ namespace RBX
 		{
 			return maxBucket;
 		}
+		// Donor SpatialHash::getHash with the 2008 per-level bucket count (0x10000 >> level): inline in 0065a220.
+		static int getHash(int level, const Vector3int32& grid)
+		{
+			return (grid.x * 73856093 ^ grid.y * 19349663 ^ grid.z * 83492791) & (0xffff >> level);
+		}
+		// INFERRED names; signatures from the `ret 0xc` / `ret 8` and the pushes at the 0065a220 call sites.
+		SpatialNode* newNode(int level, int hash, const Vector3int32& grid);              // 00659f90
+		SpatialTreeNode* findTreeNode(int level, int hash, const Vector3int32& grid);     // 00659670
+		SpatialTreeNode* newTreeNode(int level, int hash, const Vector3int32& grid);      // 006596d0
+		void addTreePairs(SpatialTreeNode* tree, Primitive* p);                          // 00659a10
+		// 0065a220 (registry func_0065a220; donor SpatialHash::addNode extended to the 2008 grid levels).
+		void addNode(int level, Primitive* p, const Vector3int32& grid);
+
 	public:
 		static int gridSize;   // INFERRED (header-add): evidence: asm dword ptr [0x9625ac] loaded and shifted left by cl - byte-proved by 00659460
 	};

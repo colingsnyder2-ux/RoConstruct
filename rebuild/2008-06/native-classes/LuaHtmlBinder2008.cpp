@@ -164,7 +164,8 @@ bool CLuaHtmlView::isSameObject(IUnknown* first, IUnknown* second)
 // 0042c8c0 (open, 1180 vs 1026 bytes; was 1205). Taking the binder inside the loop with it->get() makes the
 // not-found path go straight to the creation as in the target. Remaining: the target no longer inlines the list
 // iterator's operator* (0042a8f0, called on the stored iterator) nor the shared_ptr copy for DataModel::Lock (004116f0),
-// and caches _invalid_parameter_noinfo in ebx; this build inlines both. Rejected: (*it).get() (same bytes).
+// and caches _invalid_parameter_noinfo in ebx; this build inlines both. Rejected: (*it).get() (same bytes); batch 29:
+// break out of the loop and take `it != end ? it->get() : NULL` afterwards (1202 B, still inlines both).
 void CLuaHtmlView::bindElement(boost::shared_ptr<RBX::Instance> object,
                                const RBX::Reflection::PropertyDescriptor& property, const char* htmlElementId)
 {

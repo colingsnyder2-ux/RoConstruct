@@ -10,6 +10,7 @@
 #include "LuaBridge2008/LuaArguments2008.h"
 #include "v8datamodel/Stats.h"
 #include "boost/bind.hpp"
+#include "script/LuaMemory.h"
 #include <algorithm>
 
 using namespace RBX;
@@ -23,6 +24,53 @@ void ScriptContext::disassociateState(Script* script)
 	{
 		assoc.get<Lua::ThreadRef::NodePtr>()->eraseAllRefs();
 		assoc.remove<Lua::ThreadRef::NodePtr>();
+	}
+}
+
+// INFERRED: the file-static context counter of the original ScriptContext unit (dword 00976b74; decremented by
+// closeState 005ae280, incremented by openState 005aefa0, which keeps its own copy in ScriptContextRecovery_005aefa0.cpp).
+static int contextCount = 0;
+
+// 005ae280 (registry placeholder func_005ae280, 524 B; catch funclet prints the std::exception text): identity from
+// the donor tools/rbxgs ScriptContext::closeState and the target references: globalState +0x138 test, ThreadRef::reset
+// 00594060 on commandLineSandbox +0x13c, ThreadRef::Node::get 00593cb0 + eraseAllRefs 00594210, std::set<Script*> copy
+// 005aca50 of scripts +0x15c, for_each 005ac450 with bind(&disassociateState 005ad000, this, _1), scoped_ptr reset of
+// yieldEvent +0x1a8 (~vector<WaitingThread> 005ad190), "Exception thrown while cleaning up Lua: %s" 00834728,
+// lua_close 00623e30, contextCount 00976b74, LuaAllocator::getHeapStats 005c8960 / clearHeapMax 005c8930 on
+// allocator +0x1f0 and "Script memory leaks..." 008346fc. 2008 difference: no "Script Heap Stats" info line.
+void ScriptContext::closeState()
+{
+	if (globalState)
+	{
+		commandLineSandbox.reset();
+
+		try
+		{
+			Lua::ThreadRef::Node::get(globalState)->eraseAllRefs();
+
+			std::set<Script*> copy = scripts;
+			std::for_each(copy.begin(), copy.end(), boost::bind(&ScriptContext::disassociateState, this, _1));
+
+			yieldEvent.reset(NULL);
+		}
+		catch (std::exception& e)
+		{
+			StandardOut::singleton()->print(MESSAGE_ERROR, "Exception thrown while cleaning up Lua: %s", e.what());
+		}
+
+		lua_close(globalState);
+		contextCount--;
+
+		{
+			size_t heapSize, heapCount, maxHeapSize, maxHeapCount;
+			allocator->getHeapStats(heapSize, heapCount, maxHeapSize, maxHeapCount);
+			allocator->clearHeapMax();
+
+			if (contextCount == 0 && (heapSize > 0 || heapCount > 0))
+				StandardOut::singleton()->print(MESSAGE_ERROR, "Script memory leaks: %d bytes, %d blocks", heapSize, heapCount);
+		}
+
+		globalState = NULL;
 	}
 }
 

@@ -31,6 +31,7 @@ namespace G3D { class VAR; }
 
 namespace Ogre
 {
+	class AxisAlignedBox;
 	class GeometryBuilder;
 	class MeshPtr;
 	class RbxSubMesh; // incomplete: only owned through a pointer (deleted via 0054ac70)
@@ -75,6 +76,10 @@ namespace RBX
 				{
 				}
 				void invalidate();                       // inferred name; 005486e0
+				// 00549610 (/Od, thiscall ret 8; name from its log string 0082cf70 "RBX makeHWSubMesh: should not be here"):
+				// builds the Level's hardware index sub-mesh on sharedMesh through engine 0067c020 and the index bounds.
+				// Body: native-classes/RenderBaseMeshLevelSubMesh.cpp (pending GeometryBuilder::createIndices).
+				void makeHWSubMesh(Ogre::GeometryBuilder* engine, Ogre::AxisAlignedBox& bounds);
 				virtual ~Level();                        // 005489b0
 			};
 			typedef G3D::ReferenceCountedPointer<Level> LevelRef;
@@ -135,6 +140,13 @@ namespace RBX
 			// cdecl statics the LevelBuilder grid template calls (004fac10..: push 4 arguments, add esp 0x10 / 4)
 			static unsigned int allocVertex(const G3D::Vector3& vertex, const G3D::Vector3& normal, const G3D::Vector2& tex, bool share); // 00548000
 			static void freeVertex(unsigned int index);                               // 00548640
+
+			// Bounds-checked visibleGeometry accessors (thiscall, `this` unused; throw std::exception "RBX Mesh::getVertex()
+			// index out of range" / "RBX Mesh::getNormal() index out of range"). Original out-of-line copies 007a9c90 /
+			// 007a9ce0 in the RenderScene image block (caller RenderScene::render 007ab0a0); bodies in
+			// native-classes/RenderBaseMeshAccessors.cpp.
+			const G3D::Vector3& getVertex(int index) const;                           // 007a9c90
+			const G3D::Vector3& getNormal(int index) const;                           // 007a9ce0
 		};
 	}
 }

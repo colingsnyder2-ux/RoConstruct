@@ -373,6 +373,8 @@ template class std::_Vector_val<RBX::Reflection::ClassDescriptor const *,std::al
 // only in scheduling: the target loads grid ([this + 0x13c]) before pushing find's two arguments (0043ebb3) and uses
 // ecx/edx for the push_back argument (0043ec70); this unit pushes first and uses edx/eax. Accepted: end read before
 // begin. Rejected: grid->groups.find(*it) without the key copy (859 B, frame 0x70); inner const_iterator (no change).
+// Batch 29 (xi01): rejected find(static_cast<const ClassDescriptor*>(*it)) (the cast temporary is elided: same
+// 859 B / frame 0x70 as the no-copy form). Three hypotheses rejected: parked.
 template<class T, class GridItem, class Descriptor>
 void XItem<T, GridItem, Descriptor>::applyValue(const T& value)
 {

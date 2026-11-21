@@ -486,11 +486,9 @@ namespace RBX
 // 0064a790 (registry func_0064a790; donor SleepStage::computeAssemblyState with computeCanSleep inline): the byte
 // 0097abc1 (only readers 0064a795 and 0064a95a; .bss between the Clump-unit statics 0097abb8 / 0097abbc and the
 // Primitive-unit statics from 0097abc4) is the donor trialDisableSleep, then the canSleep ComputeProp (+0x68).
-// GUARDED: native-headers/v8world/Primitive2008.h (not this batch's file) does not declare `static bool disableSleep;`
-// (proposal). Batch 28 trial: with a stand-in `extern bool` for that byte this exact body is IDENTICAL to 0064a790 (291 B,
-// relocations masked); the donor computeCanSleep spelling is required (written out as `disableSleep || !getCanSleep()`
-// the AWAKE return merges into the tail, 304 B; the ternary return gives setne / add, 293 B).
-#ifdef NATIVE_PRIMITIVE_DISABLE_SLEEP
+// Primitive::disableSleep is declared in native-headers/v8world/Primitive2008.h (batch 29). Batch 28 trial: the donor
+// computeCanSleep spelling is required (written out as `disableSleep || !getCanSleep()` the AWAKE return merges into the
+// tail, 304 B; the ternary return gives setne / add, 293 B).
 namespace RBX
 {
 	bool SleepStage::computeCanSleep(Assembly* a)
@@ -539,4 +537,3 @@ namespace RBX
 		return Sim::SLEEPING_CHECKING;
 	}
 }
-#endif

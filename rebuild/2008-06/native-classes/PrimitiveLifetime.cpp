@@ -14,6 +14,10 @@
 namespace RBX {
 void newTouch(Primitive* touch, Primitive* touchOther);
 
+// 0097abc1 (.bss byte, zero-initialised): donor Primitive::disableSleep; readers SleepStage::computeAssemblyState 0064a795
+// and 0064a95a. It sits right before the Primitive-unit statics from 0097abc4.
+bool Primitive::disableSleep = false;
+
 // 005e8770 (new Body: 0xdc and Body() 006149c0 with the 2008 Body of Body2008.h).
 Primitive::Primitive(Geometry::GeometryType geometryType)
     : guidSetExternally(false), edgeVersion(1), contacts(this), joints(this),

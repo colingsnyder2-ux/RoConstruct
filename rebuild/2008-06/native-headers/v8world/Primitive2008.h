@@ -93,6 +93,9 @@ namespace RBX
 	{
 		friend struct ::NativeBodyPrimitive2008Layout;   // tests/NativeBodyPrimitive2008Layout.cpp offset asserts
 		friend struct ::NativeContactUnit2008Layout;
+		// Donor Primitive.h: SpatialHash links its nodes through spatialNodes (+0x64): the SpatialHash node insert 0065a220
+		// reads and writes [prim + 0x64] directly.
+		friend class SpatialHash;
 
 	private:
 		Guid guid;                                       // +0x8
@@ -255,6 +258,12 @@ namespace RBX
 		Contact* getNextContact(Contact* prev);          // 005e7be0
 
 		static void onNewTouch(Primitive* p0, Primitive* p1);   // 005e7530 (Contact::step 00606c6f)
+		// 005e7d30 (registry func_005e7d30, cdecl `add esp, 8` at the callers; donor static Primitive::getContact): scans the
+		// smaller contacts list (+0x18); callers SpatialHash 0065a3cf (node insert) and 00659b0d. Body in AppUnit5E4Primitive.cpp.
+		static Contact* getContact(Primitive* p0, Primitive* p1);
+		// Donor Primitive::disableSleep (data 0097abc1, .bss right before the Primitive-unit statics from 0097abc4); its
+		// only readers are SleepStage::computeAssemblyState 0064a795 and 0064a95a (the inline computeCanSleep).
+		static bool disableSleep;
 		// Inline in the 2008 binary: BlockBlockContact::computeIsColliding 00607c20 and stepContact 00608830 read
 		// fuzzyExtents (+0x80) of both primitives directly (`sub reg, -0x80`) and call Extents::overlapsOrTouches
 		// 00606b60, with no state check and no call of their own. Name and parameters: the donor Primitive.h.

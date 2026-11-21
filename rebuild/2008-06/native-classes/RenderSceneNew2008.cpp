@@ -16,6 +16,7 @@
 #include <G3D/Vector4.h>
 #include <GLG3D/ToneMap.h>
 #include <memory>
+#include <algorithm>
 #include "OgreRbx/VisualEngine2008.h"
 #include "util/Utilities.h"
 #include <OgreLight.h>
@@ -200,11 +201,19 @@ namespace RBX
 		// 00874980 fill light (0.4f 00832a18, 2000.0f 00874988, converter 006784f0); the trailing ambient average
 		// (Color3::operator/ 00514c40) and the first light's position.xyz() (00514890) results are unused.
 		// The second argument (EffectSettings::_useAllLightsInUnshadowedPass) is not read.
+		// NEAR MISS (batch 30: 2446 B -> 2633 B against 2616 B). Kept: the address-compare specular block, the
+		// create-first hasLight branch, the named specularScale copy. Rejected: r+g+b sum spelling (no change, /fp:fast
+		// reorders), a named diffuseScale copy before the diffuse product (2585 B), `specular = specular * (0.5f/peak)`
+		// (no change). Remaining: frame 0x118 vs 0x130 (the target has 0x18 more bytes of locals), the destroy loop is
+		// rotated/duplicated in ours, setCastShadows is `cmp [+0x2f4],0; setne` (a non-bool source) and the colour-shift
+		// sums load b, g, r.
 		void RenderScene::updateLights(Ogre::VisualEngine* engine, bool useAllLights)
 		{
 			Ogre::SceneManager* sceneManager = engine->sceneManager;
 			float radius = 1000.0f;
 			Ogre::Vector3 center(0.0f, 0.0f, 0.0f);
+			// INFERRED: declared at function scope; its address is compared in the specular block (see below).
+			G3D::Color3 ambientAverage;
 
 			sceneManager->setAmbientLight(Ogre::ColourValue(ambient.r, ambient.g, ambient.b));
 
@@ -227,17 +236,17 @@ namespace RBX
 				std::string name = std::string("rbxlight") + StringConverter<int>::convertToString(i);
 
 				Ogre::Light* light;
-				if (sceneManager->hasLight(name))
-				{
-					light = sceneManager->getLight(name);
-				}
-				else
+				if (!sceneManager->hasLight(name))
 				{
 					light = sceneManager->createLight(name);
 					if (light)
 						Ogre::LogManager::getSingleton().logMessage(std::string("RbxGfx: created light") + name);
 					else
 						Ogre::LogManager::getSingleton().logMessage(std::string("RbxGfx : FAILED to create light") + name);
+				}
+				else
+				{
+					light = sceneManager->getLight(name);
 				}
 				light->setCastShadows(effectSettings.stencilShadows());
 
@@ -268,7 +277,21 @@ namespace RBX
 				light->setDiffuseColour(diffuse.r, diffuse.g, diffuse.b);
 				light->setPosition(source.position.x * radius + center.x, source.position.y * radius + center.y,
 				                   source.position.z * radius + center.z);
-				G3D::Color3 specular = source.color * G3D::Color3(lightingTerm1);
+				// 007aa19b..007aa22d: the target compares &lightingTerm1 (+0x36c) with the address of the function-scope
+				// ambientAverage local (esp+0x118, written only after the loops); equal -> normalise the colour so its
+				// largest component (std::max by reference) is at least 0.5, else scale by Color3(lightingTerm1).
+				G3D::Color3 specular = source.color;
+				if (static_cast<const void*>(&lightingTerm1) == static_cast<const void*>(&ambientAverage))
+				{
+					float peak = std::max(specular.r, std::max(specular.g, specular.b));
+					if (peak < 0.5f)
+						specular *= 0.5f / peak;
+				}
+				else
+				{
+					G3D::Color3 specularScale(lightingTerm1);
+					specular = specular * specularScale;
+				}
 				light->setSpecularColour(specular.r, specular.g, specular.b);
 			}
 
@@ -315,7 +338,7 @@ namespace RBX
 				fill->setSpecularColour(fillSpecular.r, fillSpecular.g, fillSpecular.b);
 			}
 
-			G3D::Color3 ambientAverage = (lighting->ambientBottom + lighting->ambientTop) / 2.0f;
+			ambientAverage = (lighting->ambientBottom + lighting->ambientTop) / 2.0f;
 			if (lighting->shadowedLightArray.size() > 0)
 			{
 				G3D::Vector3 direction = lighting->shadowedLightArray[0].position.xyz();
