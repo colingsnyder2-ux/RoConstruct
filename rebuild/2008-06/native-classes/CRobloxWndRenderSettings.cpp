@@ -3,6 +3,7 @@
 // from CRobloxWndWindow.cpp because v8datamodel/Workspace.h (donor util/UIEvent.h through gui/GuiEvent.h) cannot be
 // included beside util/DxUserInput.h (util/UIEvent2008.h), which that unit needs.
 #include <algorithm>
+#include <memory>
 #include "CRobloxView.h"
 #include <atlsync.h>
 #include "RenderLib/ViewBase2008.h"
@@ -28,12 +29,10 @@ namespace RBX { extern bool shadowsEnabled; } // 0096de64 (INFERRED name, pbb-su
 // and hand them to ViewBase::updateSettings (slot 4) with the shadow flag 0096de64 and the camera-to-focus distance.
 // Shadows are switched off for the OpenGL / Direct3D9 modes (3 / 4) when the Ogre render system lacks vertex programs
 // (RSC_VERTEX_PROGRAM 0x200 of the capabilities at RenderSystem +0x64).
-// Open (774 vs 771 bytes, parked after three shape trials): same calls, constants, EH states and x87 code. Remaining:
-// (1) the target loads the view (+0xb0) into eax and tests it (`mov eax,[esi+0xb0]; test eax,eax`), this build compares
-// memory (`cmp [esi+0xb0],0`); (2) the target evaluates getCameraCoordinateFrame() (temporary at esp+0x2c) before the
-// focus operand of the out-of-line Vector3::operator- 0045ac40, this build evaluates the focus first; (3) an eax / edx
-// swap at the updateSettings call. Rejected: a `RBX::ViewBase* view` local (776 B, kept in ebx), a named
-// CoordinateFrame local (786 B, operator- inlined), a scoped_ptr bool test of +0xb0 (trial cast, no change).
+// Batch 36: exact (771 B) with the openrbx Client/win/RobloxWnd.cpp FUN_00460d30 shape: the camera frame bound to a
+// `const G3D::CoordinateFrame&` local before the focus operand, and the view tested through its smart pointer's
+// get() == NULL (the target's `mov eax,[esi+0xb0]; test eax,eax`). Rejected earlier: a `RBX::ViewBase* view` local
+// (776 B), a named CoordinateFrame value local (786 B, operator- inlined), a scoped_ptr bool test of +0xb0 (no change).
 void CRobloxWnd::sub_0045c890()
 {
     throttleCriticalSection.Enter();
@@ -45,9 +44,11 @@ void CRobloxWnd::sub_0045c890()
     pendingThrottle = 666.0;
     throttleCriticalSection.Leave();
 
-    // INFERRED: 0xb0 holds the RBX::ViewBase (CRobloxView.h types it void*; proposal for its owner). The target
-    // reloads the member before every use, so no local copy is kept.
-    if (!slot_b0 || !dataModelPtr)
+    // INFERRED: 0xb0 holds the RBX::ViewBase in a std::auto_ptr (CRobloxView.h types it void*; proposal for its owner:
+    // `std::auto_ptr<RBX::ViewBase>`, the same reset shape setDataModel 0045f7b0 uses for +0xb0 / +0xb4, and openrbx
+    // RobloxWnd.cpp tests `m_unk0xa8.get() == NULL`). The cast stands in for that member type until the header has it.
+    // The target reloads the member before every use, so no local copy is kept.
+    if (reinterpret_cast<std::auto_ptr<RBX::ViewBase>&>(slot_b0).get() == NULL || dataModelPtr == NULL)
         return;
 
     RBX::DataModel::Lock lock(dataModelPtr);
@@ -66,8 +67,9 @@ void CRobloxWnd::sub_0045c890()
     meshDetail = std::max(meshDetail, CRenderSettings::singleton().getMinMeshDetail());
 
     if (dataModelPtr->getWorkspace() && dataModelPtr->getWorkspace()->getCamera()) {
-        float distance = (dataModelPtr->getWorkspace()->getCamera()->getCameraCoordinateFrame().translation
-                          - dataModelPtr->getWorkspace()->getCamera()->getCameraFocus().translation).length();
+        const G3D::CoordinateFrame& cameraFrame = dataModelPtr->getWorkspace()->getCamera()->getCameraCoordinateFrame();
+        float distance =
+            (cameraFrame.translation - dataModelPtr->getWorkspace()->getCamera()->getCameraFocus().translation).length();
         if ((mode_5c == 4 || mode_5c == 3) && Ogre::sRoot && Ogre::sRoot->getRenderSystem()
             && !Ogre::sRoot->getRenderSystem()->getCapabilities()->hasCapability(Ogre::RSC_VERTEX_PROGRAM))
             RBX::shadowsEnabled = false;

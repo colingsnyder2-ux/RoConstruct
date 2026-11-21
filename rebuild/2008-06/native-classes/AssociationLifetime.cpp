@@ -10,16 +10,19 @@
 
 namespace RBX
 {
-	// 00558eb0. PARKED near miss (3 hypotheses, batch 32): this plain loop is 219 B vs 230 B; the target keeps the
-	// end iterator's container pointer in a stack slot and calls _invalid_parameter_noinfo through the import slot
-	// every time, where this build caches the import pointer in a register. Rejected: std::for_each with
-	// boost::checked_deleter (148 B, unchecked iterators); a hoisted `end` local (212 B, end() built before begin()).
+	// 00558eb0. Batch 36: exact with the openrbx util/Association.h statement form (separate iter / end locals, iter
+	// first, while loop): the end iterator's container stays in a stack slot as in the target. Rejected in batch 32:
+	// the plain for loop re-reading items.end() (219 B), std::for_each with boost::checked_deleter (148 B), a hoisted
+	// `end` local built before begin() (212 B).
 	template<typename Associated>
 	Association<Associated>::~Association()
 	{
-		for (std::vector<Item*>::iterator iter = items.begin(); iter != items.end(); ++iter)
+		typename std::vector<Item*>::iterator iter = items.begin();
+		typename std::vector<Item*>::iterator end = items.end();
+		while (iter != end)
 		{
 			delete *iter;
+			++iter;
 		}
 	}
 }

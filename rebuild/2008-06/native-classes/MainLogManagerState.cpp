@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr-len /I{headers}/std-noinline-string /I{headers}/../../../tools/rbxgs/Client/App/include /I{headers}/../../../tools/rbxgs/Client/Rendering/g3d/include /I{headers}/../../../tools/rbxgs/Client/boost_1_34_1/src /I{headers}
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr-strlen /I{headers}/std-noinline-string /I{headers}/../../../tools/rbxgs/Client/App/include /I{headers}/../../../tools/rbxgs/Client/Rendering/g3d/include /I{headers}/../../../tools/rbxgs/Client/boost_1_34_1/src /I{headers}
 // MainLogManager state and construction (2008-06 MainLogManager / ThreadLogManager unit, 00427a20..0042a330).
 // Uses the Dec 2007 OpenRBX class (native-donor-2007/LogManager.h, the same header MainLogManagerRecovery.cpp
 // uses): native-headers/LogManager.h does not declare MainLogManager::CullLogs (header proposal).
@@ -32,8 +32,9 @@ struct DateCompare
 void MainLogManager::CullLogs(const char* folder, int maxLogs)
 {
     // 00429f30 inlines CPathT::Append here (StringLength / GetLength / GetBuffer / PathAppendA / ReleaseBuffer
-    // imports); this build calls the out-of-line Append COMDAT instead (543 vs 591 B, the only remaining
-    // difference besides the branch offsets). Rejected: `path += folder` (same 543 B).
+    // imports). Batch 36: exact with /I{headers}/mfc-noinline-pcxstr-strlen (StringLength called through the mfc90
+    // import, so Append is small enough to inline; GetLength stays a noinline import call). Rejected: `path += folder`
+    // (543 B); mfc-import-length (591 B, but the GetLength import pointer cached in edi).
     ATL::CPath path = GetLogPath();
     path.Append(folder);
     path.AddBackslash();
