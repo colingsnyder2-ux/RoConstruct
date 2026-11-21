@@ -350,7 +350,12 @@ namespace RBX
 		// this compile reuses ecx (downstream: the hold shared_ptr release blocks are laid out in the other order).
 		// Rejected: (1) pendingNewInstances.erase(instance) instead of the inline helper (608 B); (2) a
 		// `const Instance*` removingInstance with ScopedAssign<const Instance*> (scratch header; still 623 B);
-		// (3) `Instance* instance = NULL` (632 B, prologue differs). Guarded only because it is not exact.
+		// (3) `Instance* instance = NULL` (632 B, prologue differs); (4, nw03 b36) a by-value ScopedAssign newValue
+		// (scratch copy, still 623 B). SOLVED in a scratch measurement (nw03 b36): with the donor ScopedAssign
+		// constructor body `*this->value = newValue;` (tools/openrbx util/scopedassign.h; the native core
+		// util/scopedassign.h writes `value = newValue` through the parameter reference) this body is 627 B IDENTICAL and
+		// the unit gains 004b0800 plus its EH handler 007c8659 with no loss. Remaining blocker: that one-line change to
+		// core util/scopedassign.h (proposal). Guarded until it lands.
 		void Replicator::readInstanceDelete(RakNet::BitStream& stream)
 		{
 			Instance* instance;
