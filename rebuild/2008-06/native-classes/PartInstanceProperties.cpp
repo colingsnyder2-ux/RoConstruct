@@ -51,18 +51,30 @@ namespace RBX
 	// strings 0082f710 / 008329ac, flags 5 = the default STANDARD; donor v8datamodel/PartInstance.cpp prop_BrickColor).
 	const Reflection::PropDescriptor<PartInstance, BrickColor> PartInstance::prop_BrickColor(
 		"BrickColor", "Appearance", &PartInstance::getColor, &PartInstance::setColor, Reflection::PropertyDescriptor::STANDARD);
-	// 00976250: file-local UI "Size" descriptor raised by setPartSizeXml (donor prop_SizeUi).
+	// 0094a248: donor `const char* category_Part = "Part";` (a writable pointer in .data, value 008329ec "Part"): the
+	// initializers 007f45d0 / 007f4930 / 007f49f0 / 007f4a50 / 007f4ab0 load the category from it instead of pushing a
+	// literal.
+	const char* category_Part = "Part";
+	// 0097603c: file-local UI "Shape" descriptor (initializer 007f45d0: getter getPartType 005cc410, setter
+	// setPartTypeUi 0059ebe0, EnumPropDescriptor ctor 0059d130, "Shape" 00833148, UI; donor prop_shapeUi).
+	static Reflection::EnumPropDescriptor<PartInstance, Part::PartType> prop_shapeUi(
+		"Shape", category_Part, &PartInstance::getPartType, &PartInstance::setPartTypeUi, Reflection::PropertyDescriptor::UI);
+	// 00976250: file-local UI "Size" descriptor raised by setPartSizeXml (initializer 007f4930; donor prop_SizeUi).
 	static Reflection::PropDescriptor<PartInstance, G3D::Vector3> prop_SizeUi(
-		"Size", "Part", &PartInstance::getPartSizeUi, &PartInstance::setPartSizeUi, Reflection::PropertyDescriptor::UI);
+		"Size", category_Part, &PartInstance::getPartSizeUi, &PartInstance::setPartSizeUi, Reflection::PropertyDescriptor::UI);
 	// 009761b8: file-local "Friction" descriptor raised by setFriction (donor prop_Friction).
 	static Reflection::PropDescriptor<PartInstance, float> prop_Friction(
-		"Friction", "Part", &PartInstance::getFriction, &PartInstance::setFriction, Reflection::PropertyDescriptor::STANDARD);
+		"Friction", category_Part, &PartInstance::getFriction, &PartInstance::setFriction, Reflection::PropertyDescriptor::STANDARD);
+	// 009760e8: file-local UI "formFactor" descriptor (initializer 007f49f0: getter 00598bd0, setter setFormFactorUi
+	// 0059dfa0, "formFactor" 008331b0, UI; donor prop_formFactorUi).
+	static Reflection::PropDescriptor<PartInstance, PartInstance::FormFactor> prop_formFactorUi(
+		"formFactor", category_Part, &PartInstance::getFormFactor, &PartInstance::setFormFactorUi, Reflection::PropertyDescriptor::UI);
 	// 009762ec: file-local "FormFactor" descriptor (initializer 007f4a50, setter 0059df70, getter 00598bd0, STREAMING).
 	static Reflection::PropDescriptor<PartInstance, PartInstance::FormFactor> prop_formFactor(
-		"FormFactor", "Part", &PartInstance::getFormFactor, &PartInstance::setFormFactorXml, Reflection::PropertyDescriptor::STREAMING);
+		"FormFactor", category_Part, &PartInstance::getFormFactor, &PartInstance::setFormFactorXml, Reflection::PropertyDescriptor::STREAMING);
 	// 00975f90: file-local "Elasticity" descriptor (initializer 007f4ab0, setter 0059e0f0).
 	static Reflection::PropDescriptor<PartInstance, float> prop_Elasticity(
-		"Elasticity", "Part", &PartInstance::getElasticity, &PartInstance::setElasticity, Reflection::PropertyDescriptor::STANDARD);
+		"Elasticity", category_Part, &PartInstance::getElasticity, &PartInstance::setElasticity, Reflection::PropertyDescriptor::STANDARD);
 	// 00975fc8: file-local "DraggingV1" descriptor (initializer 007f4bc0, setter 0059dd20).
 	static Reflection::PropDescriptor<PartInstance, bool> prop_Dragging(
 		"DraggingV1", "Behavior", &PartInstance::getDragging, &PartInstance::setDragging, Reflection::PropertyDescriptor::STREAMING);

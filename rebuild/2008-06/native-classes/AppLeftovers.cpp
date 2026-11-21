@@ -88,3 +88,11 @@ void TextureItem::browse()
         applyValue(id);
     }
 }
+
+// ---------------------------------------------------------------------------------------------------------------
+// 004161b0 ??$any_cast@VContentId@RBX@@@boost@@YA?AVContentId@RBX@@AAVany@0@@Z (registry): boost::any_cast<ContentId>
+// (any&) emitted next to the other any_cast<T> instances of the Value / variant unit (00415ed0..00416260; caller
+// Value::cast<ContentId> 00416340). typeid compare against ContentId's type_info 0092bf44, bad_any_cast thrown through
+// throw_exception 0040a3f0, then the ContentId copy (std::string copy + the word at +0x1c).
+#include <boost/any.hpp>
+template RBX::ContentId boost::any_cast<RBX::ContentId>(boost::any&);

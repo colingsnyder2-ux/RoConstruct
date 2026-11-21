@@ -4,7 +4,7 @@
 // analog: in 2008 the tracked object is the SimJob whose +0x4 vector the tracker removes itself from (stopTracking
 // 005e5320 -> 005e5200); see the receipt's proposals. Inactive native unit; verified by tests/record_native_app_unit5e4.py.
 #undef _RELEASEASSERT
-#include "v8world/Mechanism.h"
+#include "../../../tools/rbxgs/Client/App/include/v8world/Mechanism.h" // donor header: native-headers/v8world/Mechanism.h is a global-class stub that shadows it
 #include "v8world/Primitive.h"
 #include "v8world/Assembly.h"
 
