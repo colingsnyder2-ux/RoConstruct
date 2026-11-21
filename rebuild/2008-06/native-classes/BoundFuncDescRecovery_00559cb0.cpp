@@ -4,10 +4,14 @@
 // Owner class + declarations recovered from the binary (vftable slots, RTTI, link order); ctor bodies are the
 // // INFERRED: out-of-line definitions declared in reflection/reflection.h (never defined here).
 // Explicit class instantiation emits the constructor; no hand-written bodies here.
+#include "Network/Peer2008.h"
 #include "reflection/reflection.h"
 #include "v8tree/Instance.h"
 #include "v8datamodel/DataModel.h"
 #include "v8tree/Service.h"
+#include "v8datamodel/ChangeHistoryService.h"
+#include "v8datamodel/Selection.h"
+#include "util/ContentProvider.h"
 #include <boost/shared_ptr.hpp>
 #include <string>
 
@@ -34,5 +38,28 @@ namespace RBX
 		// identity, registry proposal only.
 		template class BoundFuncDesc<RBX::Instance, boost::shared_ptr<RBX::Instance>(), 0>;
 		template class BoundFuncDesc<RBX::Instance, void(), 0>;
+
+		// N=1 descriptors whose 159-byte constructors the registry misnames as BoundFuncDesc<Lighting, void(double), 1>
+		// (18 addresses share that one decorated name). Each constructor's vtable store names the real class through
+		// its RTTI complete-object locator (vtable-4 -> type descriptor):
+		//   004b4240 vtable 00824ccc .?AV?$BoundFuncDesc@VPeer@Network@RBX@@$$A6AX_N@Z$00@...
+		//   0055a260 vtable 0082d7f4 BoundFuncDesc<Instance, bool(shared_ptr<Instance>), 1> (instantiated in
+		//            BoundFuncDescCallTemplates2008.cpp / BoundFuncDescTemplates2008.cpp, not repeated here)
+		//   00567fe0 vtable 0082eed4 BoundFuncDesc<Selection, void(shared_ptr<const Instances>), 1>
+		//   00572f00 vtable 0082f810 BoundFuncDesc<ServiceProvider, shared_ptr<Instance>(std::string), 1> (above)
+		//   00578fa0 vtable 0083005c BoundFuncDesc<DataModel, shared_ptr<const Instances>(ContentId), 1>
+		//   005791d0 vtable 00830068 BoundFuncDesc<DataModel, void(ContentId), 1>
+		//   005799f0 vtable 00830098 BoundFuncDesc<DataModel, void(std::string), 1>
+		//   0058ad20 vtable 0083190c BoundFuncDesc<ChangeHistoryService, void(bool), 1>
+		//   0058aea0 vtable 00831918 BoundFuncDesc<ChangeHistoryService, void(std::string), 1>
+		// Each constructor calls its class's classDescriptor (Peer 0049ea10, Selection 005671a0, DataModel 005788c0,
+		// ChangeHistoryService 0058a2a0) before FunctionDescriptor's constructor 00595790.
+		template class BoundFuncDesc<RBX::Network::Peer, void(bool), 1>;
+		template class BoundFuncDesc<RBX::Selection, void(boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance> > >), 1>;
+		template class BoundFuncDesc<RBX::DataModel, boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance> > >(RBX::ContentId), 1>;
+		template class BoundFuncDesc<RBX::DataModel, void(RBX::ContentId), 1>;
+		template class BoundFuncDesc<RBX::DataModel, void(std::string), 1>;
+		template class BoundFuncDesc<RBX::ChangeHistoryService, void(bool), 1>;
+		template class BoundFuncDesc<RBX::ChangeHistoryService, void(std::string), 1>;
 	}
 }
