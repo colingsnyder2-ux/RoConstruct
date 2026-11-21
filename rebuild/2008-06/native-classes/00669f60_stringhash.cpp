@@ -1,41 +1,25 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// RBX::stringHash 00669f60 (?stringHash@RBX@@YAIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z,
+// registry name; declared in native gui/ScoreHud.h). Callers: renderFFALeaderboard 0065556e and the ChatLine
+// constructor 0065061e (colour index of a player name). It lies next to its only callee 00669f10 (placeholder
+// sub_00669f10, body in Inferred_00669f10.cpp: seed 0xf8c9, multiplier 0x5c6b7, i.e. the RS string hash).
 #include <string>
 
-// Function at 00669f60: ?stringHash@RBX@@YAIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
-// Template instantiation with conditional pointer logic from the binary.
-// The binary checks [ptr + 0x18] >= 0x10 and conditionally selects data pointer.
-// Calls sub_669f10 with (out, data, len) and returns the result.
-
-// Evidence: from context pack 00669f60, assembly shows:
-//   mov eax, dword ptr [esp + 4]       ; load parameter
-//   cmp dword ptr [eax + 0x18], 0x10   ; check [ptr+0x18] >= 0x10
-//   mov ecx, dword ptr [eax + 0x14]   ; load [ptr+0x14]
-//   jb 0x669f72                        ; if [ptr+0x18] < 0x10, jump
-//   mov eax, dword ptr [eax + 4]      ; else [ptr+4]
-//   add eax, 4
-//   jmp 0x669f75
-// 0x669f72: add eax, 4
-// 0x669f75: push ecx; push eax; call sub_669f10; ret
-
-// RBX::stringHash - template instantiation with binary-observed control flow
-extern "C" int __cdecl sub_669f10(int* out, const char* data, int len);
-
-int __cdecl stringHash(const char* p)
+namespace RBX
 {
-    // Evidence: binary at 00669f60 checks [p + 0x18] >= 0x10
-    if (*(unsigned int*)(p + 0x18) >= 0x10) {
-        // Take dereferenced pointer at [p + 4]
-        int len = *(int*)(p + 0x14);
-        const char* data = *(const char**)(p + 4);
-        int result = 0;
-        sub_669f10(&result, data, len);
-        return result;
-    } else {
-        // Use p + 4 as data pointer
-        int len = *(int*)(p + 0x14);
-        const char* data = p + 4;
-        int result = 0;
-        sub_669f10(&result, data, len);
-        return result;
-    }
+	// 00669f10: declared exactly as Inferred_00669f10.cpp defines it (placeholder name from the identity tier).
+	void sub_00669f10(unsigned int* hash, const unsigned char* data, unsigned int length);
+
+	unsigned int stringHash(const std::string&);
+
+	// 00669f60. Target: hash local zeroed, then (&hash, c_str() [_Myres >= 0x10 selects _Ptr], size()) pushed
+	// to the cdecl 00669f10; returns the local.
+	unsigned int stringHash(const std::string& s)
+	{
+		unsigned int length = s.size();
+		const unsigned char* data = reinterpret_cast<const unsigned char*>(s.c_str());
+		unsigned int hash = 0;
+		sub_00669f10(&hash, data, length);
+		return hash;
+	}
 }
