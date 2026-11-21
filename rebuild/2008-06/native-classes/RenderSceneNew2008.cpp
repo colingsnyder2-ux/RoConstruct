@@ -207,13 +207,18 @@ namespace RBX
 		// (no change). Remaining: frame 0x118 vs 0x130 (the target has 0x18 more bytes of locals), the destroy loop is
 		// rotated/duplicated in ours, setCastShadows is `cmp [+0x2f4],0; setne` (a non-bool source) and the colour-shift
 		// sums load b, g, r.
+		// Batch 36: 2620 B against 2616 B (frame 0x124 vs 0x130). Kept: the compared Color3 is a block-scope local in the
+		// light loop and the ambient average a separate end-of-function local (2633 -> 2620 B, frame 0x118 -> 0x124); the
+		// ambient average sums ambientTop + ambientBottom (the target adds bottom.g+top.g, bottom.b+top.b, top.r+bottom.r,
+		// which the 2007 bottom + top spelling mirrors; that block now matches). Rejected: dropping /fp:fast from the unit
+		// (motivated by the target's two separate fmul 0.8585f / 1.3f, ours folds them into one constant): 3143 B and nine
+		// exact siblings lost. Remaining: the radius constant product is folded in ours, setCastShadows `cmp/setne`, the
+		// colour-shift sums' operand order, and the stack-slot assignment (0xc bytes of locals still missing).
 		void RenderScene::updateLights(Ogre::VisualEngine* engine, bool useAllLights)
 		{
 			Ogre::SceneManager* sceneManager = engine->sceneManager;
 			float radius = 1000.0f;
 			Ogre::Vector3 center(0.0f, 0.0f, 0.0f);
-			// INFERRED: declared at function scope; its address is compared in the specular block (see below).
-			G3D::Color3 ambientAverage;
 
 			sceneManager->setAmbientLight(Ogre::ColourValue(ambient.r, ambient.g, ambient.b));
 
@@ -277,11 +282,15 @@ namespace RBX
 				light->setDiffuseColour(diffuse.r, diffuse.g, diffuse.b);
 				light->setPosition(source.position.x * radius + center.x, source.position.y * radius + center.y,
 				                   source.position.z * radius + center.z);
-				// 007aa19b..007aa22d: the target compares &lightingTerm1 (+0x36c) with the address of the function-scope
-				// ambientAverage local (esp+0x118, written only after the loops); equal -> normalise the colour so its
+				// 007aa19b..007aa22d: the target compares &lightingTerm1 (+0x36c) with the address of a stack Color3
+				// (esp+0x118, the slot the trailing ambient average is written to after the loops); equal -> normalise the colour so its
 				// largest component (std::max by reference) is at least 0.5, else scale by Color3(lightingTerm1).
 				G3D::Color3 specular = source.color;
-				if (static_cast<const void*>(&lightingTerm1) == static_cast<const void*>(&ambientAverage))
+				// INFERRED (batch 36): a never-written loop-scope Color3 whose address is compared below; the target's
+				// compared slot (esp+0x118) is only written after the loops (by the trailing ambient average), which fits
+				// a block-scope object sharing its slot with that later local. Function-scope spelling: 2633 B, this: 2620 B.
+				G3D::Color3 specularTag;
+				if (static_cast<const void*>(&lightingTerm1) == static_cast<const void*>(&specularTag))
 				{
 					float peak = std::max(specular.r, std::max(specular.g, specular.b));
 					if (peak < 0.5f)
@@ -338,7 +347,7 @@ namespace RBX
 				fill->setSpecularColour(fillSpecular.r, fillSpecular.g, fillSpecular.b);
 			}
 
-			ambientAverage = (lighting->ambientBottom + lighting->ambientTop) / 2.0f;
+			G3D::Color3 ambientAverage = (lighting->ambientTop + lighting->ambientBottom) / 2.0f;
 			if (lighting->shadowedLightArray.size() > 0)
 			{
 				G3D::Vector3 direction = lighting->shadowedLightArray[0].position.xyz();
