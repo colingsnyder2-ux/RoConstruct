@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // Inactive 2008-06 recovery: the MarshaledListener<..>::EventData rows CScriptEditor.cpp instantiates
 // (application range 00460000..0046c000, between ~CScriptEditor's MarshaledListener members 00464970..00464a40
 // and its ctor 00465010).
@@ -13,6 +14,12 @@
 // MarshaledListener template (C2143 at its line 26). Proposal to the util/ header owner: delete those added lines.
 // Batch 26 trial with that one fix in a scratch copy: EventData ctor 00464af0 IDENTICAL (with the inline copy
 // constructors below); onEvent 004649f0 parked (see the instantiation comment).
+// Batch 32: line 1 now carries the CScriptEditor.cpp flags (the unit had prose there, which builds without /O2).
+// Scratch build with the MarshaledListener.h fix and these flags: RunService EventData execute 00464d70 and ctor
+// 00464b60 IDENTICAL; Instance/PropertyChanged marshal 00464ea0 (92 B, same size) differs only in the PropertyChanged
+// copy order (target loads both event dwords before `sub esp, 8` and stores +4 before +0), the same copy question
+// as the parked onEvent 004649f0. TmplInst_00464d70.cpp, which repeated the RunService EventData instantiation, now
+// only points here.
 #include "util/MarshaledListener.h"
 #include "v8tree/Instance.h"
 #include "v8tree/PropertyChanged.h"

@@ -1,4 +1,4 @@
-// native-flags: /I{headers}/kernel-stages /I{headers}/part-embedded /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /U_RELEASEASSERT
+// native-flags: /I{headers}/kernel-stages /I{headers}/part-embedded /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /U_RELEASEASSERT /I{headers}/boost-function-pod-vtable
 // 2008-06 native RBX::Feature, RBX::Hole, RBX::MotorFeature and RBX::VelocityMotor (inactive); evidence in
 // native-headers/v8datamodel/Feature.h. Verified by tests/record_native_feature.py.
 // VelocityMotor::setHole 0060c400 uses the 2008 SignalDesc::connect(source, slot, int group) of reflection/signal.h;
@@ -429,6 +429,8 @@ namespace RBX
 // The slot VelocityMotor::setHole 0060c400 builds from boost::bind(&VelocityMotor::onEvent_HoleAncestorChanged, this)
 // (0060b650) is also instantiated here explicitly, so this unit emits its boost::function manager / invoker rows
 // (0060a300, 0060aac0, 0060abe0).
+// 0060b650 slot ctor and its out-of-line function<void(shared_ptr<Instance>)>(F, int) 0060ac60 (functor stored at +8,
+// `ret 0x14`) match only with the boost-function-pod-vtable profile on the flags line (batch 32; no other row changes).
 typedef boost::_bi::bind_t<void, boost::_mfi::mf0<void, RBX::VelocityMotor>, boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*> > > VelocityMotorHoleBinder;
 template boost::slot<boost::function<void(boost::shared_ptr<RBX::Instance>)> >::slot(const VelocityMotorHoleBinder&);
 
