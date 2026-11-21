@@ -1,0 +1,1577 @@
+{
+  "class": "RBX Workspace unit of the application range 005a0000..005ac000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "workspace": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5a0-2008/NativeAppUnit5A0_2008_workspace.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5A0_2008Workspace.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/native-classes/AppUnit5A0_2008Workspace.cpp": "2ad20ab391c07f2bd4f5cf5676ca81b98ad82e38d1c94ed4b5eaa4b81ff89c70",
+    "rebuild/2008-06/tests/record_native_app_unit5a0_2008.py": "48c6b53d1c1ecc3f63f25e5afd7c57ae75908e65fce953b3fb161b6591721e13",
+    "rebuild/2008-06/native-headers/v8datamodel/Workspace.h": "5afc998f6d79228204df3165543daa9f840fd1b52932608164f74adb4513527a",
+    "rebuild/2008-06/native-headers/v8datamodel/RootInstance.h": "c11395d8b365e9b05e12e3e8da34e9633c5a73e3cb08eeb52848285819ac4693"
+  },
+  "objects": {
+    "workspace": "11abe192a81f9930cf754834f9679e9f49ac479ef5da2910763a5d2816354eca"
+  },
+  "unit_map": {
+    "special-shape tail ..005a008f": "SpecialShape.cpp (native-classes/SpecialShape.cpp header: unit 0059ece0..005a008d). 005a0030 setTextureId is counted by special-shape-working.json. Not built here.",
+    "workspace 005a0090..005a6baf": "v8datamodel/Workspace.cpp. Evidence: askAddChild 005a01e0 .. onServiceProvider 005a66b0, RTTI .?AVWorkspace@RBX@@ vtables 008338.. / 008339d4 (the ??_E thunks 005a2c50..005a2d80 jump to ??_G 005a3050, which calls ~Workspace 005a28c0), NonFactoryProduct<RootInstance, sWorkspace>() 005a07b0 and DescribedNonCreatable<Workspace, ...>() 005a4280 (called by Workspace() 005a4d90), classDescriptor 005a3b70 (\"Workspace\" 0094b680), the BoundFuncDesc / RefPropDescriptor instantiations 005a3cb0..005a5890 (\"bad cast\"), render3dAdorn 005a59e0, WorkspaceStatsItem() 005a5c90 (\"Workspace\", \"Environment Speed %%\", stats owner) and its boost::function / bind_t<double, cmf0<double, Workspace>> helpers (005a0400 manager, RTTI 0094ba88; 005a67f0..005a6b40). 005a0090..005a0132 are the double getters the stats binds read: +0x410 / +0x418 / +0x420 (the unknown0x410..0x420 fields of the native header, zeroed by Workspace()) and three float ratios over +0x1c0. Rows 005a0140..005a0190 and 005a04a0..005a04b0 are MouseCommand / ArrowTool header inlines and 005a0160 / 005a0190 are ControllerTypeArray-style byte scans (header inlines) emitted in this unit. 005a2250 is the jump table of process() 005a20e0 (data, not code). The thunks 005a08d0..005a0900 / 005a43e0..005a4410 and ??_G 005a0910 are shared by the RootInstance, NonFactoryProduct and DescribedNonCreatable vtables (00831c.., 008337.., 00833c..): ICF folded one body per offset; counted here once under the DescribedNonCreatable symbol (app-unit588 only uses 005a0910 as a support row). Built here: 76 counted rows. Counted by other receipts: ~Workspace 005a28c0 / Workspace() 005a4d90 (workspace-lifetime-profiler-notifier-variant.json), shared_count<Camera / Flag, Creatable Deleter> 005a0b50 / 005a0be0 / 005a0c70 / 005a3070 (creatable-shared-count), 005a0320 (flag-family), sp_counted_impl_pd<RunService*> 005a0460 and the thunks 005a4140 / 005a4150 / 005a6610 (stats-service), 005a3410 / 005a4680 (humanoid2008).",
+    "log 005a6bb0..005a6fcf": "Log.cpp (native leaves2008/Log2008.h: setLogProvider 005a6bb0 .. writeEntry 005a6ef0, ??_G 005a6fb0); counted by leaves2008-working.json. Not built here.",
+    "boost-thread-tss 005a6fd0..005a776f (library)": "boost.thread thread_specific_ptr / tss support: TlsAlloc 005a739b, TlsGetValue 005a742d / 005a758e, TlsSetValue 005a7290 / 005a74ab, TlsFree 005a71c6, boost::lock_error throws (00568430, type 008d4f30), the call_once at 005a75fd. Library code (boost thread), never recovered here.",
+    "filesystem 005a7770..005a80cf": "FileSystem.cpp: ~VistaAPIs 005a7770 (FreeLibrary), VistaAPIs::GetIntegrity 005a7780 (GetVersionExA / OpenProcessToken / GetSidSubAuthority), ATL CSimpleStringT<char>::Append 005a7920 (atlsimpstr template), the SHGetKnownFolderPath loader 005a7ac0 (\"Shell32.dll\" 00834224), getCacheDirectory 005a7ea0. Owner: native-classes/FileSystem.cpp / util/FileSystem.h (filesystem-trial.json). Not built here.",
+    "guid 005a80d0..005a858f": "Guid.cpp: generateGUID 005a8140, Data::operator< 005a8210, initLocalScope 005a8260, Guid() 005a8300, readableString 005a8440 (\"%%s_%%d\"). Owner: native-classes/Guid.cpp / util/Guid.h. Not built here.",
+    "script-context 005a8590..005abfff": "ScriptContext.cpp and the Lua bridge templates it instantiates: Lua::ScopedPopper 005a8590, sandboxThread 005a8660 (\"__index\"), gc 005a86c0, getContext 005a86e0, tick 005a8750, onEvent 005a8770, Bridge<CoordinateFrame / Vector3 / Color3 / BrickColor / SignalInstance / connection> push / on_tostring / on_eq / registerClass (\"__index\" / \"__newindex\"), delay 005a9140 (\"delay function requires 2 arguments\"), print 005a9320 (\"tostring\"), the ScriptContext factory thunks 005a8e40..005a8eb0, ThreadRef::Node helpers 005ab070.., LuaArguments::push 005aba50 and pushArguments 005abf90 (continues past 005ac000). Owners: script/ScriptContext.h (ScriptContextLifetime.cpp) and the LuaBridge2008 lease. Not built here."
+  },
+  "unit_rows": {
+    "special-shape tail": {
+      "rows": 1,
+      "first": "005a0030",
+      "last": "005a0030"
+    },
+    "workspace": {
+      "rows": 217,
+      "first": "005a0090",
+      "last": "005a6b40"
+    },
+    "log": {
+      "rows": 8,
+      "first": "005a6bb0",
+      "last": "005a6fb0"
+    },
+    "boost-thread-tss (library)": {
+      "rows": 14,
+      "first": "005a6fd0",
+      "last": "005a774b"
+    },
+    "filesystem": {
+      "rows": 8,
+      "first": "005a7770",
+      "last": "005a7ea0"
+    },
+    "guid": {
+      "rows": 10,
+      "first": "005a80d0",
+      "last": "005a8440"
+    },
+    "script-context + lua bridge templates": {
+      "rows": 143,
+      "first": "005a8590",
+      "last": "005abf90"
+    }
+  },
+  "range_rows_total": 401,
+  "range_rows_counted_by_other_receipts": {
+    "005a0030": [
+      "special-shape-working.json"
+    ],
+    "005a0320": [
+      "flag-family-working.json"
+    ],
+    "005a0460": [
+      "stats-service-working.json"
+    ],
+    "005a0b50": [
+      "creatable-shared-count-working.json"
+    ],
+    "005a0be0": [
+      "creatable-shared-count-working.json"
+    ],
+    "005a0c70": [
+      "creatable-shared-count-working.json"
+    ],
+    "005a28c0": [
+      "workspace-lifetime-profiler-notifier-variant.json"
+    ],
+    "005a3070": [
+      "creatable-shared-count-working.json"
+    ],
+    "005a3410": [
+      "humanoid2008-working.json"
+    ],
+    "005a4140": [
+      "stats-service-working.json"
+    ],
+    "005a4150": [
+      "stats-service-working.json"
+    ],
+    "005a4680": [
+      "humanoid2008-working.json"
+    ],
+    "005a4d90": [
+      "workspace-lifetime-profiler-notifier-variant.json",
+      "workspace-lifetime-profiler-variant.json",
+      "workspace-shared-lifetime-trial.json"
+    ],
+    "005a6610": [
+      "stats-service-working.json"
+    ],
+    "005a6bb0": [
+      "leaves2008-working.json"
+    ],
+    "005a6bc0": [
+      "leaves2008-working.json"
+    ],
+    "005a6c60": [
+      "leaves2008-working.json"
+    ],
+    "005a6d10": [
+      "leaves2008-working.json"
+    ],
+    "005a6da0": [
+      "leaves2008-working.json"
+    ],
+    "005a6e60": [
+      "leaves2008-working.json"
+    ],
+    "005a6ef0": [
+      "leaves2008-working.json"
+    ],
+    "005a6fb0": [
+      "leaves2008-working.json"
+    ]
+  },
+  "rows": {
+    "workspace": [
+      {
+        "address": "005a0140",
+        "symbol": "?onMouseUp@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z",
+        "size": 12,
+        "target_size": 12,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005a0150",
+        "symbol": "?releaseCapture@MouseCommand@RBX@@MAEXXZ",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005a01e0",
+        "symbol": "?askAddChild@Workspace@RBX@@EBE_NPBVInstance@2@@Z",
+        "size": 36,
+        "target_size": 36,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVIRenderable@RBX@@@8": "0x939f70 (RTTI type .?AVIRenderable@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a0210",
+        "symbol": "?getGCamera@Workspace@RBX@@UBEABVGCamera@G3D@@XZ",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005a0220",
+        "symbol": "?onWrapMouse@Workspace@RBX@@QAEXABVVector2@G3D@@@Z",
+        "size": 32,
+        "target_size": 32,
+        "exact": true,
+        "verified_targets": {
+          "?onWrapMouse@Camera@RBX@@QAEXABVVector2@G3D@@@Z": "0x5cce40 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a0240",
+        "symbol": "?zoomToExtents@Workspace@RBX@@QAEXXZ",
+        "size": 29,
+        "target_size": 29,
+        "exact": true,
+        "verified_targets": {
+          "?zoomExtents@Camera@RBX@@QAE_NABVRect2D@G3D@@@Z": "0x5ce400 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a0260",
+        "symbol": "?stop@Workspace@RBX@@QAEXXZ",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "?autoMode@Camera@RBX@@QAEXXZ": "0x5cc450 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a0280",
+        "symbol": "?newNullTool@RBX@@YAPAVMouseCommand@1@PAVWorkspace@1@@Z",
+        "size": 91,
+        "target_size": 91,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0NewNullTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x618160 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$?newNullTool@RBX@@YAPAVMouseCommand@1@PAVWorkspace@1@@Z"
+        ]
+      },
+      {
+        "address": "005a0310",
+        "symbol": "??1?$auto_ptr@VMouseCommand@RBX@@@std@@QAE@XZ",
+        "size": 16,
+        "target_size": 16,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005a04a0",
+        "symbol": "?cancel@MouseCommand@RBX@@MAEXXZ",
+        "size": 14,
+        "target_size": 14,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005a04b0",
+        "symbol": "?isSticky@ArrowTool@RBX@@UBEPAVMouseCommand@2@XZ",
+        "size": 120,
+        "target_size": 120,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z": "0x6159f0 (external (evidence name))",
+          "??_7ArrowTool@RBX@@6BINamed@1@@": "0x8336a4 (vtable (RTTI .?AVArrowTool@RBX@@, offset 0x0))",
+          "??_7ArrowTool@RBX@@6BIRenderable@1@@": "0x833688 (vtable (RTTI .?AVArrowTool@RBX@@, offset 0x4))"
+        },
+        "local_eh": [
+          "__ehhandler$?isSticky@ArrowTool@RBX@@UBEPAVMouseCommand@2@XZ"
+        ]
+      },
+      {
+        "address": "005a0530",
+        "symbol": "?getMyWorkspaceFast@Workspace@RBX@@SAPAV12@PBVInstance@2@@Z",
+        "size": 47,
+        "target_size": 47,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005a0560",
+        "symbol": "?getMyWorldFast@Workspace@RBX@@SAPAVWorld@2@PBVInstance@2@@Z",
+        "size": 53,
+        "target_size": 53,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005a05a0",
+        "symbol": "?getCamera@Workspace@RBX@@UBEPAVCamera@2@XZ",
+        "size": 17,
+        "target_size": 17,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005a05d0",
+        "symbol": "?insertItems@Workspace@RBX@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@W4InsertMode@2@W4PromptMode@2@@Z",
+        "size": 60,
+        "target_size": 60,
+        "exact": true,
+        "verified_targets": {
+          "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z": "0x593250 (external)",
+          "?insertInstances@RootInstance@RBX@@QAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@W4InsertMode@2@W4PromptMode@2@@Z": "0x5911d0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a0610",
+        "symbol": "?setNullMouseCommand@Workspace@RBX@@QAEXXZ",
+        "size": 76,
+        "target_size": 76,
+        "exact": true,
+        "verified_targets": {
+          "?newNullTool@RBX@@YAPAVMouseCommand@1@PAVWorkspace@1@@Z": "0x5a0280 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a0660",
+        "symbol": "?render2d@Workspace@RBX@@UAEXPAVAdorn@2@@Z",
+        "size": 42,
+        "target_size": 42,
+        "exact": true,
+        "verified_targets": {
+          "?render2dItems@IRenderableBucket@RBX@@QAEXPAVAdorn@2@@Z": "0x5dd330 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a0740",
+        "symbol": "?scriptShouldRun@Workspace@RBX@@EAEPAVIScriptOwner@2@PAVScript@2@@Z",
+        "size": 103,
+        "target_size": 103,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVLocalScript@RBX@@@8": "0x948dd4 (RTTI type .?AVLocalScript@RBX@@)",
+          "??_R0?AVScript@RBX@@@8": "0x92e1c8 (RTTI type .?AVScript@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "?backendProcessing@Players@Network@RBX@@SA_NPBVInstance@3@_N@Z": "0x495eb0 (external (evidence name))",
+          "?findLocalCharacter@Players@Network@RBX@@SAPAVModelInstance@3@PBVInstance@3@@Z": "0x49aca0 (external (evidence name))",
+          "?isDescendentOf@Instance@RBX@@QBE_NPBV12@@Z": "0x422ae0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a07b0",
+        "symbol": "??0?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@QAE@XZ",
+        "size": 287,
+        "target_size": 287,
+        "exact": true,
+        "verified_targets": {
+          "??_8?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@7B?$DescribedCreatable@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PADA@1@@": "0x831e28 (vbtable bytes ccfeffffb8010000)",
+          "??_8?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@7BICameraSubject@1@@": "0x846144 (vbtable bytes fcfffffff4ffffff)",
+          "??0RootInstance@RBX@@IAE@XZ": "0x591580 (external (evidence name))",
+          "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8337d4 (vtable (RTTI .?AV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@, offset 0x0))",
+          "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8337c4 (vtable (RTTI .?AV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@, offset 0x10))",
+          "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8337bc (vtable (RTTI .?AV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@, offset 0x14))",
+          "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6BDebugable@1@@": "0x8337b4 (vtable (RTTI .?AV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@, offset 0x20))",
+          "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8337a4 (vtable (RTTI .?AV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@, offset 0x24))",
+          "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x833794 (vtable (RTTI .?AV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@, offset 0x44))",
+          "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x833784 (vtable (RTTI .?AV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@, offset 0x64))",
+          "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x833774 (vtable (RTTI .?AV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@, offset 0x84))",
+          "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x833764 (vtable (RTTI .?AV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@, offset 0xa4))",
+          "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x833754 (vtable (RTTI .?AV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@, offset 0xc4))",
+          "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6BIControllable@1@@": "0x833748 (vtable (RTTI .?AV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@, offset 0x130))",
+          "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@1@@": "0x833730 (vtable (RTTI .?AV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@, offset 0x1a0))",
+          "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6BICameraOwner@1@@": "0x833718 (vtable (RTTI .?AV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@, offset 0x288))",
+          "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6BIPrimaryPart@1@@": "0x83370c (vtable (RTTI .?AV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@, offset 0x2ec))",
+          "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6BILocation@1@@": "0x833704 (vtable (RTTI .?AV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@, offset 0x2f4))",
+          "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6BICameraSubject@1@@": "0x8336e8 (vtable (RTTI .?AV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@, offset 0x2fc))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a08d0",
+        "symbol": "??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@WCII@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@UAEPAXI@Z": "0x5a0910 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a08e0",
+        "symbol": "??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@WIE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@UAEPAXI@Z": "0x5a0910 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a08f0",
+        "symbol": "??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@WBA@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@UAEPAXI@Z": "0x5a0910 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a0900",
+        "symbol": "??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@$4PPPPPPPM@CPM@AEPAXI@Z",
+        "size": 14,
+        "target_size": 14,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@UAEPAXI@Z": "0x5a0910 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a0910",
+        "symbol": "??_G?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??1RootInstance@RBX@@MAE@XZ": "0x590630 (external (evidence name))",
+          "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a0d90",
+        "symbol": "?findTopInstance@Workspace@RBX@@SAPAVInstance@2@PAV32@@Z",
+        "size": 65,
+        "target_size": 65,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005a0de0",
+        "symbol": "?joinAllHack@Workspace@RBX@@QAEXXZ",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?joinAll@World@RBX@@QAEXXZ": "0x5ea880 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a1530",
+        "symbol": "?raise@?$Notifier@VWorkspace@RBX@@VToolChanged@2@@RBX@@IBEXVToolChanged@2@@Z",
+        "size": 129,
+        "target_size": 129,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?raise@?$Notifier@VWorkspace@RBX@@VToolChanged@2@@RBX@@IBEXVToolChanged@2@PAV?$Listener@VWorkspace@RBX@@VToolChanged@2@@2@@Z": "0x5a0ec0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a16b0",
+        "symbol": "??$findFirstChildOfType@VPartInstance@RBX@@@Instance@RBX@@QBEPAVPartInstance@1@XZ",
+        "size": 160,
+        "target_size": 160,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??_R0?AVPartInstance@RBX@@@8": "0x92dd50 (RTTI type .?AVPartInstance@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a1750",
+        "symbol": "??$findFirstChildOfType@VModelInstance@RBX@@@Instance@RBX@@QBEPAVModelInstance@1@XZ",
+        "size": 160,
+        "target_size": 160,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??_R0?AVModelInstance@RBX@@@8": "0x932a40 (RTTI type .?AVModelInstance@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a1910",
+        "symbol": "??$wrapper@$00@RBX@@YAXPAVInstance@0@@Z",
+        "size": 54,
+        "target_size": 54,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVPartInstance@RBX@@@8": "0x92dd50 (RTTI type .?AVPartInstance@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "?join@PartInstance@RBX@@QAEXXZ": "0x598c90 (external)",
+          "??$wrapper@$00@RBX@@YAXPAVInstance@0@@Z": "0x5a1910 (own row)",
+          "??$for_eachChild@P6AXPAVInstance@RBX@@@Z@Instance@RBX@@QBEXP6AXPAV01@@Z@Z": "0x45c470 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a1950",
+        "symbol": "??$wrapper@$0A@@RBX@@YAXPAVInstance@0@@Z",
+        "size": 54,
+        "target_size": 54,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVPartInstance@RBX@@@8": "0x92dd50 (RTTI type .?AVPartInstance@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "?destroyJoints@PartInstance@RBX@@QAEXXZ": "0x598c70 (external)",
+          "??$wrapper@$0A@@RBX@@YAXPAVInstance@0@@Z": "0x5a1950 (own row)",
+          "??$for_eachChild@P6AXPAVInstance@RBX@@@Z@Instance@RBX@@QBEXP6AXPAV01@@Z@Z": "0x45c470 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a1b90",
+        "symbol": "?onChildChanged@Workspace@RBX@@EAEXPAVInstance@2@ABVPropertyChanged@2@@Z",
+        "size": 45,
+        "target_size": 45,
+        "exact": true,
+        "verified_targets": {
+          "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z": "0x557490 (external)",
+          "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z": "0x576940 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a1bc0",
+        "symbol": "?onDescendentRemoving@Workspace@RBX@@EAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "size": 83,
+        "target_size": 83,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVIRenderable@RBX@@@8": "0x939f70 (RTTI type .?AVIRenderable@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "?onRemoving@IRenderableBucket@RBX@@IAEXPAVIRenderable@2@@Z": "0x5dd4d0 (external (evidence name))",
+          "?onDescendentRemoving@RootInstance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x590180 (external (evidence name))",
+          "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z": "0x576940 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a1c20",
+        "symbol": "?onDescendentAdded@Workspace@RBX@@EAEXPAVInstance@2@@Z",
+        "size": 189,
+        "target_size": 189,
+        "exact": true,
+        "verified_targets": {
+          "?onDescendentAdded@RootInstance@RBX@@MAEXPAVInstance@2@@Z": "0x590160 (external (evidence name))",
+          "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z": "0x576940 (support body exact at the bound address)",
+          "??_R0?AVIRenderable@RBX@@@8": "0x939f70 (RTTI type .?AVIRenderable@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "?onAdded@IRenderableBucket@RBX@@IAEXPAVIRenderable@2@@Z": "0x5dd4c0 (external (evidence name))",
+          "??_R0?AVPVInstance@RBX@@@8": "0x947f1c (RTTI type .?AVPVInstance@RBX@@)",
+          "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0 (external (evidence name))",
+          "?clearLegacyOffset@PVInstance@RBX@@QAEXXZ": "0x608fa0 (external (evidence name))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a1ce0",
+        "symbol": "?clearEmptiedModels@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@1@@Z",
+        "size": 408,
+        "target_size": 408,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVModelInstance@RBX@@@8": "0x932a40 (RTTI type .?AVModelInstance@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "?modelIsCharacter@Humanoid@RBX@@SAPAV12@PBVInstance@2@@Z": "0x5d9a20 (external (evidence name))",
+          "??$findFirstChildOfType@VPartInstance@RBX@@@Instance@RBX@@QBEPAVPartInstance@1@XZ": "0x5a16b0 (own row)",
+          "??$findFirstChildOfType@VModelInstance@RBX@@@Instance@RBX@@QBEPAVModelInstance@1@XZ": "0x5a1750 (own row)",
+          "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (external (evidence name))",
+          "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
+          "??0?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV01@@Z": "0x4116f0 (support body exact at the bound address)",
+          "?clearEmptiedModels@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@1@@Z": "0x5a1ce0 (own row)",
+          "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ": "0x600660 (support body exact at the bound address)",
+          "??_R0?AVFlag@RBX@@@8": "0x94be40 (RTTI type .?AVFlag@RBX@@)"
+        },
+        "local_eh": [
+          "__ehhandler$?clearEmptiedModels@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@1@@Z"
+        ]
+      },
+      {
+        "address": "005a1e80",
+        "symbol": "?handleFallenParts@Workspace@RBX@@AAEXABV?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@G3D@@@Z",
+        "size": 320,
+        "target_size": 320,
+        "exact": true,
+        "verified_targets": {
+          "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (external (evidence name))",
+          "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
+          "?clearEmptiedModels@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@1@@Z": "0x5a1ce0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?handleFallenParts@Workspace@RBX@@AAEXABV?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@G3D@@@Z"
+        ]
+      },
+      {
+        "address": "005a1fc0",
+        "symbol": "?setMouseCommand@Workspace@RBX@@QAEXPAVMouseCommand@2@@Z",
+        "size": 276,
+        "target_size": 276,
+        "exact": true,
+        "verified_targets": {
+          "?findLocalPlayer@Players@Network@RBX@@SAPAVPlayer@23@PBVInstance@3@@Z": "0x49ac80 (external)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z": "0x6159f0 (external (evidence name))",
+          "??_7ArrowTool@RBX@@6BINamed@1@@": "0x8336a4 (vtable (RTTI .?AVArrowTool@RBX@@, offset 0x0))",
+          "??_7ArrowTool@RBX@@6BIRenderable@1@@": "0x833688 (vtable (RTTI .?AVArrowTool@RBX@@, offset 0x4))",
+          "?newNullTool@RBX@@YAPAVMouseCommand@1@PAVWorkspace@1@@Z": "0x5a0280 (own row)",
+          "?raise@?$Notifier@VWorkspace@RBX@@VToolChanged@2@@RBX@@IBEXVToolChanged@2@@Z": "0x5a1530 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?setMouseCommand@Workspace@RBX@@QAEXPAVMouseCommand@2@@Z"
+        ]
+      },
+      {
+        "address": "005a2290",
+        "symbol": "??$wrapper2@$00@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "size": 158,
+        "target_size": 158,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVPartInstance@RBX@@@8": "0x92dd50 (RTTI type .?AVPartInstance@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "?join@PartInstance@RBX@@QAEXXZ": "0x598c90 (external)",
+          "??$wrapper@$00@RBX@@YAXPAVInstance@0@@Z": "0x5a1910 (own row)",
+          "??$for_eachChild@P6AXPAVInstance@RBX@@@Z@Instance@RBX@@QBEXP6AXPAV01@@Z@Z": "0x45c470 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$??$wrapper2@$00@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+        ]
+      },
+      {
+        "address": "005a2330",
+        "symbol": "??$wrapper2@$0A@@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "size": 158,
+        "target_size": 158,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVPartInstance@RBX@@@8": "0x92dd50 (RTTI type .?AVPartInstance@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "?destroyJoints@PartInstance@RBX@@QAEXXZ": "0x598c70 (external)",
+          "??$wrapper@$0A@@RBX@@YAXPAVInstance@0@@Z": "0x5a1950 (own row)",
+          "??$for_eachChild@P6AXPAVInstance@RBX@@@Z@Instance@RBX@@QBEXP6AXPAV01@@Z@Z": "0x45c470 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$??$wrapper2@$0A@@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+        ]
+      },
+      {
+        "address": "005a2420",
+        "symbol": "?makeJoints@Workspace@RBX@@QAEXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z",
+        "size": 176,
+        "target_size": 176,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??$wrapper2@$00@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x5a2290 (own row)",
+          "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@P6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@std@@YAP6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@1P6AX0@Z@Z": "0x57e470 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?makeJoints@Workspace@RBX@@QAEXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z"
+        ]
+      },
+      {
+        "address": "005a24d0",
+        "symbol": "?breakJoints@Workspace@RBX@@QAEXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z",
+        "size": 176,
+        "target_size": 176,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??$wrapper2@$0A@@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x5a2330 (own row)",
+          "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@P6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@std@@YAP6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@1P6AX0@Z@Z": "0x57e470 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?breakJoints@Workspace@RBX@@QAEXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z"
+        ]
+      },
+      {
+        "address": "005a2730",
+        "symbol": "?setDefaultMouseCommand@Workspace@RBX@@QAEXXZ",
+        "size": 43,
+        "target_size": 43,
+        "exact": true,
+        "verified_targets": {
+          "?setMouseCommand@Workspace@RBX@@QAEXPAVMouseCommand@2@@Z": "0x5a1fc0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2760",
+        "symbol": "?runScript@Workspace@RBX@@EAEXPAVScript@2@PAVScriptContext@2@@Z",
+        "size": 85,
+        "target_size": 85,
+        "exact": true,
+        "verified_targets": {
+          "?backendProcessing@Players@Network@RBX@@SA_NPBVInstance@3@_N@Z": "0x495eb0 (external (evidence name))",
+          "?insert@?$_Tree@V?$_Tset_traits@PAVScript@RBX@@U?$less@PAVScript@RBX@@@std@@V?$allocator@PAVScript@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVScript@RBX@@U?$less@PAVScript@RBX@@@std@@V?$allocator@PAVScript@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVScript@RBX@@@Z": "0x5e8c40 (support body exact at the bound address)",
+          "?addScript@ScriptContext@RBX@@QAEXPAVScript@2@@Z": "0x5b06c0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a27c0",
+        "symbol": "?releaseScript@Workspace@RBX@@EAEXPAVScript@2@@Z",
+        "size": 19,
+        "target_size": 19,
+        "exact": true,
+        "verified_targets": {
+          "?erase@?$_Tree@V?$_Tset_traits@PAVScript@RBX@@U?$less@PAVScript@RBX@@@std@@V?$allocator@PAVScript@RBX@@@4@$0A@@std@@@std@@QAEIABQAVScript@RBX@@@Z": "0x5e9f60 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2c30",
+        "symbol": "?computeCameraOwnerExtents@Workspace@RBX@@EAE?AVExtents@2@XZ",
+        "size": 29,
+        "target_size": 29,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005a2c50",
+        "symbol": "??_EWorkspace@RBX@@WME@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EWorkspace@RBX@@UAEPAXI@Z": "0x5a3050 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2c70",
+        "symbol": "??_EWorkspace@RBX@@WDBE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EWorkspace@RBX@@UAEPAXI@Z": "0x5a3050 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2c80",
+        "symbol": "??_EWorkspace@RBX@@WBA@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EWorkspace@RBX@@UAEPAXI@Z": "0x5a3050 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2c90",
+        "symbol": "?getCameraIgnorePrimitives@ModelInstance@RBX@@$4PPPPPPPM@BLI@AEXAAV?$vector@PBVPrimitive@RBX@@V?$allocator@PBVPrimitive@RBX@@@std@@@std@@@Z",
+        "size": 14,
+        "target_size": 14,
+        "exact": true,
+        "verified_targets": {
+          "?getCameraIgnorePrimitives@ModelInstance@RBX@@UAEXAAV?$vector@PBVPrimitive@RBX@@V?$allocator@PBVPrimitive@RBX@@@std@@@std@@@Z": "0x583570 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2ca0",
+        "symbol": "??_EWorkspace@RBX@@WBE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EWorkspace@RBX@@UAEPAXI@Z": "0x5a3050 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2cb0",
+        "symbol": "??_EWorkspace@RBX@@$4PPPPPPPM@EFE@AEPAXI@Z",
+        "size": 14,
+        "target_size": 14,
+        "exact": true,
+        "verified_targets": {
+          "??_EWorkspace@RBX@@UAEPAXI@Z": "0x5a3050 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2cc0",
+        "symbol": "??_EWorkspace@RBX@@WBDA@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EWorkspace@RBX@@UAEPAXI@Z": "0x5a3050 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2cd0",
+        "symbol": "??_EWorkspace@RBX@@WCII@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EWorkspace@RBX@@UAEPAXI@Z": "0x5a3050 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2ce0",
+        "symbol": "??_EWorkspace@RBX@@WDEE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EWorkspace@RBX@@UAEPAXI@Z": "0x5a3050 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2cf0",
+        "symbol": "??_EWorkspace@RBX@@WDGE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EWorkspace@RBX@@UAEPAXI@Z": "0x5a3050 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2d00",
+        "symbol": "??_EWorkspace@RBX@@WDIE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EWorkspace@RBX@@UAEPAXI@Z": "0x5a3050 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2d10",
+        "symbol": "?onCameraNear@ModelInstance@RBX@@$4PPPPPPPM@BLI@AEXM@Z",
+        "size": 14,
+        "target_size": 14,
+        "exact": true,
+        "verified_targets": {
+          "?onCameraNear@ModelInstance@RBX@@UAEXM@Z": "0x5843c0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2d20",
+        "symbol": "??_EWorkspace@RBX@@WCOM@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EWorkspace@RBX@@UAEPAXI@Z": "0x5a3050 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2d30",
+        "symbol": "??_EWorkspace@RBX@@WCE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EWorkspace@RBX@@UAEPAXI@Z": "0x5a3050 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2d40",
+        "symbol": "??_EWorkspace@RBX@@WEE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EWorkspace@RBX@@UAEPAXI@Z": "0x5a3050 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2d50",
+        "symbol": "?getLocation@ModelInstance@RBX@@$4PPPPPPPM@BLI@BE?BVCoordinateFrame@G3D@@XZ",
+        "size": 14,
+        "target_size": 14,
+        "exact": true,
+        "verified_targets": {
+          "?getLocation@ModelInstance@RBX@@UBE?BVCoordinateFrame@G3D@@XZ": "0x583cf0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2d60",
+        "symbol": "??_EWorkspace@RBX@@WGE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EWorkspace@RBX@@UAEPAXI@Z": "0x5a3050 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2d70",
+        "symbol": "??_EWorkspace@RBX@@WIE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EWorkspace@RBX@@UAEPAXI@Z": "0x5a3050 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2d80",
+        "symbol": "??_EWorkspace@RBX@@WKE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EWorkspace@RBX@@UAEPAXI@Z": "0x5a3050 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2d90",
+        "symbol": "?cameraMoved@Workspace@RBX@@EAEXXZ",
+        "size": 22,
+        "target_size": 22,
+        "exact": true,
+        "verified_targets": {
+          "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z": "0x576940 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a2db0",
+        "symbol": "?onExtentsChanged@Workspace@RBX@@EBEXXZ",
+        "size": 33,
+        "target_size": 33,
+        "exact": true,
+        "verified_targets": {
+          "?onExtentsChanged@ModelInstance@RBX@@UBEXXZ": "0x583a20 (external (evidence name))",
+          "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z": "0x576940 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a3050",
+        "symbol": "??_GWorkspace@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??1Workspace@RBX@@UAE@XZ": "0x5a28c0 (support body exact at the bound address)",
+          "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a3380",
+        "symbol": "?findWorkspace@Workspace@RBX@@SAPAV12@PBVInstance@2@@Z",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "verified_targets": {
+          "??$find@VWorkspace@RBX@@@ServiceProvider@RBX@@SAPAVWorkspace@1@PBVInstance@1@@Z": "0x491e50 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a3390",
+        "symbol": "?getWorldIfInWorkspace@Workspace@RBX@@SAPAVWorld@2@PBVInstance@2@@Z",
+        "size": 51,
+        "target_size": 51,
+        "exact": true,
+        "verified_targets": {
+          "??$find@VWorkspace@RBX@@@ServiceProvider@RBX@@SAPAVWorkspace@1@PBVInstance@1@@Z": "0x491e50 (external)",
+          "?isDescendentOf@Instance@RBX@@QBE_NPBV12@@Z": "0x422ae0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a33d0",
+        "symbol": "?contextInWorkspace@Workspace@RBX@@SA_NPBVInstance@2@@Z",
+        "size": 49,
+        "target_size": 49,
+        "exact": true,
+        "verified_targets": {
+          "??$find@VWorkspace@RBX@@@ServiceProvider@RBX@@SAPAVWorkspace@1@PBVInstance@1@@Z": "0x491e50 (external)",
+          "?isDescendentOf@Instance@RBX@@QBE_NPBV12@@Z": "0x422ae0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a3b70",
+        "symbol": "?classDescriptor@?$Described@VWorkspace@RBX@@$1?sWorkspace@2@3PADAV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??classDescriptor@?$Described@VWorkspace@RBX@@$1?sWorkspace@2@3PADAV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x976b48 (static data (one address per symbol))",
+          "?sWorkspace@RBX@@3PADA": "0x94b680 (data bytes 576f726b737061636500)",
+          "?classDescriptor@?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x591510 (external)",
+          "?foo@?1??classDescriptor@?$Described@VWorkspace@RBX@@$1?sWorkspace@2@3PADAV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x976a88 (static data (one address per symbol))",
+          "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+          "??__Ffoo@?1??classDescriptor@?$Described@VWorkspace@RBX@@$1?sWorkspace@2@3PADAV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe0d0 (support body exact at the bound address)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?classDescriptor@?$Described@VWorkspace@RBX@@$1?sWorkspace@2@3PADAV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+        ]
+      },
+      {
+        "address": "005a4280",
+        "symbol": "??0?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@IAE@XZ",
+        "size": 343,
+        "target_size": 343,
+        "exact": true,
+        "verified_targets": {
+          "??_8?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@7B?$DescribedCreatable@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PADA@1@@": "0x831e28 (vbtable bytes ccfeffffb8010000)",
+          "??_8?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@7BICameraSubject@1@@": "0x846144 (vbtable bytes fcfffffff4ffffff)",
+          "??0?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@QAE@XZ": "0x5a07b0 (own row)",
+          "?classDescriptor@?$Described@VWorkspace@RBX@@$1?sWorkspace@2@3PADAV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5a3b70 (own row)",
+          "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x833d94 (vtable (RTTI .?AV?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@, offset 0x0))",
+          "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x833d88 (vtable (RTTI .?AV?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@, offset 0x10))",
+          "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x833d80 (vtable (RTTI .?AV?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@, offset 0x14))",
+          "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6BDebugable@1@@": "0x833d78 (vtable (RTTI .?AV?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@, offset 0x20))",
+          "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x833d68 (vtable (RTTI .?AV?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@, offset 0x24))",
+          "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x833d58 (vtable (RTTI .?AV?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@, offset 0x44))",
+          "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x833d48 (vtable (RTTI .?AV?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@, offset 0x64))",
+          "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x833d38 (vtable (RTTI .?AV?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@, offset 0x84))",
+          "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x833d28 (vtable (RTTI .?AV?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@, offset 0xa4))",
+          "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x833d18 (vtable (RTTI .?AV?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@, offset 0xc4))",
+          "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6BIControllable@1@@": "0x833d0c (vtable (RTTI .?AV?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@, offset 0x130))",
+          "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@1@@": "0x833cf4 (vtable (RTTI .?AV?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@, offset 0x1a0))",
+          "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6BICameraOwner@1@@": "0x833cdc (vtable (RTTI .?AV?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@, offset 0x288))",
+          "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6BIPrimaryPart@1@@": "0x833cd0 (vtable (RTTI .?AV?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@, offset 0x2ec))",
+          "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6BILocation@1@@": "0x833cc8 (vtable (RTTI .?AV?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@, offset 0x2f4))",
+          "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6BICameraSubject@1@@": "0x833cac (vtable (RTTI .?AV?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@, offset 0x2fc))"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@IAE@XZ"
+        ]
+      },
+      {
+        "address": "005a43e0",
+        "symbol": "??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@WBDA@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@UAEPAXI@Z": "0x5a0910 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a43f0",
+        "symbol": "??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@WGE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@UAEPAXI@Z": "0x5a0910 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a4400",
+        "symbol": "??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@WKE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@UAEPAXI@Z": "0x5a0910 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a4410",
+        "symbol": "??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@WME@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@UAEPAXI@Z": "0x5a0910 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "support_rows": {
+    "??$for_eachChild@P6AXPAVInstance@RBX@@@Z@Instance@RBX@@QBEXP6AXPAV01@@Z@Z": "0045c470",
+    "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z": "00576940",
+    "??0?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV01@@Z": "004116f0",
+    "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ": "00600660",
+    "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@P6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@std@@YAP6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@1P6AX0@Z@Z": "0057e470",
+    "?insert@?$_Tree@V?$_Tset_traits@PAVScript@RBX@@U?$less@PAVScript@RBX@@@std@@V?$allocator@PAVScript@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVScript@RBX@@U?$less@PAVScript@RBX@@@std@@V?$allocator@PAVScript@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVScript@RBX@@@Z": "005e8c40",
+    "?erase@?$_Tree@V?$_Tset_traits@PAVScript@RBX@@U?$less@PAVScript@RBX@@@std@@V?$allocator@PAVScript@RBX@@@4@$0A@@std@@@std@@QAEIABQAVScript@RBX@@@Z": "005e9f60",
+    "??1Workspace@RBX@@UAE@XZ": "005a28c0",
+    "??__Ffoo@?1??classDescriptor@?$Described@VWorkspace@RBX@@$1?sWorkspace@2@3PADAV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "007fe0d0"
+  },
+  "vtables_current_headers": {
+    "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "00833d88",
+      "slots": 2,
+      "checked": [
+        "0 ??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PAD = 0x5a08f0"
+      ],
+      "not_bound_here": 1
+    },
+    "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "00833d80",
+      "slots": 1,
+      "checked": [],
+      "not_bound_here": 1
+    },
+    "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@1@@": {
+      "address": "00833cf4",
+      "slots": 5,
+      "checked": [
+        "1 ?shouldRender3dAdorn@ModelInstance@RBX@@EBE_NXZ = 0x584310 (evidence name)",
+        "3 ?render3dAdorn@ModelInstance@RBX@@EAEXPAVAdorn@2@@Z = 0x584360 (evidence name)",
+        "4 ?render3dSelect@ModelInstance@RBX@@EAEXPAVAdorn@2@W4SelectState@2@@Z = 0x583da0 (evidence name)"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "00833d94",
+      "slots": 26,
+      "checked": [
+        "1 ?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator = 0x55af90 (evidence name)",
+        "5 ?onDescendentAdded@RootInstance@RBX@@MAEXPAVInstance@2@@Z = 0x590160",
+        "6 ?onDescendentRemoving@RootInstance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boos = 0x590180",
+        "7 ?onChildAdded@PVInstance@RBX@@MAEXPAVInstance@2@@Z = 0x585050 (evidence name)",
+        "8 ?onChildRemoving@PVInstance@RBX@@MAEXPAVInstance@2@@Z = 0x584fc0 (evidence name)",
+        "11 ?readProperty@PVInstance@RBX@@MAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x6089a0 (evidence name)",
+        "13 ?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@ = 0x55a470 (evidence name)",
+        "14 ?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (evidence name)",
+        "15 ?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490",
+        "18 ?onChildControllerChanged@RootInstance@RBX@@MAEXXZ = 0x5907f0 (evidence name)",
+        "19 ?onParentControllerChanged@PVInstance@RBX@@MAEXXZ = 0x608d10 (evidence name)",
+        "20 ?onExtentsChanged@ModelInstance@RBX@@UBEXXZ = 0x583a20",
+        "21 ?getExtentsWorld@ModelInstance@RBX@@UBE?AVExtents@2@XZ = 0x584a50 (evidence name)",
+        "22 ?getExtentsLocal@ModelInstance@RBX@@UBE?AVExtents@2@XZ = 0x584aa0 (evidence name)",
+        "23 ?getBiggestPrimitive@ModelInstance@RBX@@UBEPBVPrimitive@2@XZ = 0x5834f0 (evidence name)",
+        "24 ?hitTest@ModelInstance@RBX@@UAE_NABVRay@G3D@@AAVVector3@4@@Z = 0x584280 (evidence name)",
+        "25 ?legacyTraverseState@ModelInstance@RBX@@MAEXABVCoordinateFrame@G3D@@@Z = 0x5841e0 (evidence name)"
+      ],
+      "not_bound_here": 9
+    },
+    "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "00833d28",
+      "slots": 3,
+      "checked": [
+        "0 ??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PAD = 0x5a4400"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "00833d68",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "00833d58",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "00833d48",
+      "slots": 3,
+      "checked": [
+        "0 ??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PAD = 0x5a43f0"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "00833d38",
+      "slots": 3,
+      "checked": [
+        "0 ??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PAD = 0x5a08e0"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "00833d18",
+      "slots": 3,
+      "checked": [
+        "0 ??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PAD = 0x5a4410"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "00833d78",
+      "slots": 1,
+      "checked": [
+        "0 ?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (evidence name)"
+      ],
+      "not_bound_here": 0
+    },
+    "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6BICameraOwner@1@@": {
+      "address": "00833cdc",
+      "slots": 5,
+      "checked": [
+        "0 ??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PAD = 0x5a08d0"
+      ],
+      "not_bound_here": 4
+    },
+    "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6BICameraSubject@1@@": {
+      "address": "00833cac",
+      "slots": 6,
+      "checked": [
+        "0 ??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PAD = 0x5a0900",
+        "1 ?onCameraNear@ModelInstance@RBX@@$4PPPPPPPM@GA@AEXM@Z = 0x5907c0 (evidence name)",
+        "2 ?getCameraIgnorePrimitives@ModelInstance@RBX@@$4PPPPPPPM@GA@AEXAAV?$vector@PBVPr = 0x590790 (evidence name)",
+        "3 ?getLerp@ICameraSubject@RBX@@UBEMXZ = 0x584940 (evidence name)",
+        "5 ?stepGoalAndFocus@ICameraSubject@RBX@@UAEXAAVCoordinateFrame@G3D@@0_N@Z = 0x584950 (evidence name)"
+      ],
+      "not_bound_here": 1
+    },
+    "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6BIControllable@1@@": {
+      "address": "00833d0c",
+      "slots": 2,
+      "checked": [
+        "0 ??_E?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PAD = 0x5a43e0",
+        "1 ?isControllable@PVInstance@RBX@@UBE_NXZ = 0x584060 (evidence name)"
+      ],
+      "not_bound_here": 0
+    },
+    "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6BILocation@1@@": {
+      "address": "00833cc8",
+      "slots": 1,
+      "checked": [
+        "0 ?getLocation@ModelInstance@RBX@@$4PPPPPPPM@GA@BE?BVCoordinateFrame@G3D@@XZ = 0x5907d0 (evidence name)"
+      ],
+      "not_bound_here": 0
+    },
+    "??_7?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@6BIPrimaryPart@1@@": {
+      "address": "00833cd0",
+      "slots": 2,
+      "checked": [],
+      "not_bound_here": 2
+    },
+    "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "008337c4",
+      "slots": 2,
+      "checked": [],
+      "not_bound_here": 2
+    },
+    "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "008337bc",
+      "slots": 1,
+      "checked": [],
+      "not_bound_here": 1
+    },
+    "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@1@@": {
+      "address": "00833730",
+      "slots": 5,
+      "checked": [
+        "1 ?shouldRender3dAdorn@ModelInstance@RBX@@EBE_NXZ = 0x584310 (evidence name)",
+        "3 ?render3dAdorn@ModelInstance@RBX@@EAEXPAVAdorn@2@@Z = 0x584360 (evidence name)",
+        "4 ?render3dSelect@ModelInstance@RBX@@EAEXPAVAdorn@2@W4SelectState@2@@Z = 0x583da0 (evidence name)"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "008337d4",
+      "slots": 26,
+      "checked": [
+        "1 ?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator = 0x55af90 (evidence name)",
+        "5 ?onDescendentAdded@RootInstance@RBX@@MAEXPAVInstance@2@@Z = 0x590160",
+        "6 ?onDescendentRemoving@RootInstance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boos = 0x590180",
+        "7 ?onChildAdded@PVInstance@RBX@@MAEXPAVInstance@2@@Z = 0x585050 (evidence name)",
+        "8 ?onChildRemoving@PVInstance@RBX@@MAEXPAVInstance@2@@Z = 0x584fc0 (evidence name)",
+        "11 ?readProperty@PVInstance@RBX@@MAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x6089a0 (evidence name)",
+        "13 ?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@ = 0x55a470 (evidence name)",
+        "14 ?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (evidence name)",
+        "15 ?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490",
+        "18 ?onChildControllerChanged@RootInstance@RBX@@MAEXXZ = 0x5907f0 (evidence name)",
+        "19 ?onParentControllerChanged@PVInstance@RBX@@MAEXXZ = 0x608d10 (evidence name)",
+        "20 ?onExtentsChanged@ModelInstance@RBX@@UBEXXZ = 0x583a20",
+        "21 ?getExtentsWorld@ModelInstance@RBX@@UBE?AVExtents@2@XZ = 0x584a50 (evidence name)",
+        "22 ?getExtentsLocal@ModelInstance@RBX@@UBE?AVExtents@2@XZ = 0x584aa0 (evidence name)",
+        "23 ?getBiggestPrimitive@ModelInstance@RBX@@UBEPBVPrimitive@2@XZ = 0x5834f0 (evidence name)",
+        "24 ?hitTest@ModelInstance@RBX@@UAE_NABVRay@G3D@@AAVVector3@4@@Z = 0x584280 (evidence name)",
+        "25 ?legacyTraverseState@ModelInstance@RBX@@MAEXABVCoordinateFrame@G3D@@@Z = 0x5841e0 (evidence name)"
+      ],
+      "not_bound_here": 9
+    },
+    "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "00833764",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "008337a4",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "00833794",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "00833784",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "00833774",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "00833754",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "008337b4",
+      "slots": 1,
+      "checked": [
+        "0 ?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (evidence name)"
+      ],
+      "not_bound_here": 0
+    },
+    "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6BICameraOwner@1@@": {
+      "address": "00833718",
+      "slots": 5,
+      "checked": [],
+      "not_bound_here": 5
+    },
+    "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6BICameraSubject@1@@": {
+      "address": "008336e8",
+      "slots": 6,
+      "checked": [
+        "1 ?onCameraNear@ModelInstance@RBX@@$4PPPPPPPM@GA@AEXM@Z = 0x5907c0 (evidence name)",
+        "2 ?getCameraIgnorePrimitives@ModelInstance@RBX@@$4PPPPPPPM@GA@AEXAAV?$vector@PBVPr = 0x590790 (evidence name)",
+        "3 ?getLerp@ICameraSubject@RBX@@UBEMXZ = 0x584940 (evidence name)",
+        "5 ?stepGoalAndFocus@ICameraSubject@RBX@@UAEXAAVCoordinateFrame@G3D@@0_N@Z = 0x584950 (evidence name)"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6BIControllable@1@@": {
+      "address": "00833748",
+      "slots": 2,
+      "checked": [
+        "1 ?isControllable@PVInstance@RBX@@UBE_NXZ = 0x584060 (evidence name)"
+      ],
+      "not_bound_here": 1
+    },
+    "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6BILocation@1@@": {
+      "address": "00833704",
+      "slots": 1,
+      "checked": [
+        "0 ?getLocation@ModelInstance@RBX@@$4PPPPPPPM@GA@BE?BVCoordinateFrame@G3D@@XZ = 0x5907d0 (evidence name)"
+      ],
+      "not_bound_here": 0
+    },
+    "??_7?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@6BIPrimaryPart@1@@": {
+      "address": "0083370c",
+      "slots": 2,
+      "checked": [],
+      "not_bound_here": 2
+    },
+    "??_7ArrowTool@RBX@@6BINamed@1@@": {
+      "address": "008336a4",
+      "slots": 16,
+      "checked": [
+        "1 ?onMouseDown@ArrowToolBase@RBX@@MAEPAVMouseCommand@2@ABVUIEvent@2@@Z = 0x617780 (evidence name)",
+        "2 ?onMouseIdle@ArrowToolBase@RBX@@MAEXABVUIEvent@2@@Z = 0x616180 (evidence name)",
+        "3 ?onMouseHover@ArrowToolBase@RBX@@MAEXABVUIEvent@2@@Z = 0x6404b0 (evidence name)",
+        "8 ?onMouseUp@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z = 0x5a0140",
+        "9 ?capture@MouseCommand@RBX@@MAEXXZ = 0x615820 (evidence name)",
+        "10 ?releaseCapture@MouseCommand@RBX@@MAEXXZ = 0x5a0150",
+        "11 ?cancel@MouseCommand@RBX@@MAEXXZ = 0x5a04a0",
+        "13 ?isSticky@ArrowTool@RBX@@UBEPAVMouseCommand@2@XZ = 0x5a04b0",
+        "14 ?getCursorId@MouseCommand@RBX@@UBE?AVTextureId@2@XZ = 0x615a50 (evidence name)",
+        "15 ?getCursorName@ArrowToolBase@RBX@@MBE?BV?$basic_string@DU?$char_traits@D@std@@V? = 0x6161a0 (evidence name)"
+      ],
+      "not_bound_here": 6
+    },
+    "??_7ArrowTool@RBX@@6BIRenderable@1@@": {
+      "address": "00833688",
+      "slots": 5,
+      "checked": [],
+      "not_bound_here": 5
+    }
+  },
+  "bounds_evidence": [
+    {
+      "rows": [
+        "005a0ec0",
+        "005a0efe",
+        "005a0f11"
+      ],
+      "symbol": "?raise@?$Notifier@VWorkspace@RBX@@VToolChanged@2@@RBX@@IBEXVToolChanged@2@PAV?$Listener@VWorkspace@RBX@@VToolChanged@2@@2@@Z",
+      "compiled_size": 185,
+      "joined_size": 185,
+      "exact_when_joined": true,
+      "reason": "Notifier<Workspace, ToolChanged>::raise(ToolChanged, Listener*): the analysed rows 005a0ec0 (62 B), 005a0efe (19 B) and 005a0f11 (104 B, \"Exception caught in onEvent. %s\") are one function: the try body and its catch funclet. The compiled body (185 B) is relocation-masked exact against 005a0ec0..005a0f78. Not counted (extent fix needed)."
+    }
+  ],
+  "not_exact": [
+    {
+      "address": "005a0ec0",
+      "symbol": "?raise@?$Notifier@VWorkspace@RBX@@VToolChanged@2@@RBX@@IBEXVToolChanged@2@PAV?$Listener...",
+      "exact": false,
+      "reason": "extent: see bounds_evidence (exact when 005a0ec0 / 005a0efe / 005a0f11 are joined)"
+    },
+    {
+      "address": "005a4d90",
+      "symbol": "??0Workspace@RBX@@QAE@PAVIDataState@1@@Z",
+      "exact": false,
+      "reason": "compiled here only to emit the vtables, inline virtuals, thunks and base constructors (same body as native-classes/WorkspaceLifetime.cpp); not exact under this unit's build, not checked here; counted by workspace-lifetime-profiler-notifier-variant.json, not here"
+    }
+  ],
+  "not_attempted": {
+    "005a0090..005a0132": "stats double getters: no declared accessor in the native Workspace.h (proposal)",
+    "005a0d00 / 005a0e40 / 005a0f80..005a1260 / 005a1810 / 005a1830 / 005a19f0..005a1b70": "DecalTool / ArrowTool Name and getName / cursor helpers, G3D Array<shared_ptr<PartInstance>> dtor 005a0e40, ContentId descriptor helper 005a0d00 (tool owners / descriptor templates)",
+    "005a0df0 reset": "inlines World::reset (World +0xa8 = 0); needs the 2008 World (World2008 lease)",
+    "005a0e30 setThrottleEnabled": "tail-calls 005e9520, not the donor inline World::setCanThrottle (World2008 lease)",
+    "005a20e0 process": "2008 GuiTarget process: switch on UIEvent type 1..13 (jump table 005a2250) with idleMouseEvent at +0x3b8",
+    "005a2580 step": "needs the 2008 World touch / fallen accessors (World2008 lease)",
+    "005a3470 onEvent / 005a3540 / 005a39d0 insertContent / 005a36e0 start": "not attempted this pass",
+    "005a59e0 render3dAdorn": "2008 shape differs from the donor: reads the Selection CopyOnWrite vector at +0x154 inline and binds DrawAdorn 005a0690 with three bound values; rejected donor body",
+    "005a5c90 WorkspaceStatsItem() / 005a66b0 onServiceProvider": "stats owner (WorkspaceStatsItem.h) / not attempted"
+  },
+  "rejected": {
+    "AppUnit5A0_2008Workspace.cpp without /U_RELEASEASSERT": "render2d 65/42 (RBXASSERT in getCurrentMouseCommand kept)",
+    "insertItems with `instances.size() != 0`": "61/60 B: test ecx,0xfffffff8 / je instead of sar ecx,3 / test / jbe",
+    "scriptShouldRun with a return in each branch": "128/103 B (the IScriptOwner conversion is duplicated)",
+    "render3dAdorn with the donor body (sel->getSelection()->begin())": "does not compile against the native Selection.h; the original reads the CopyOnWrite vector at +0x154 inline",
+    "clearEmptiedModels / onDescendentAdded with humanoid/Humanoid2008.h": "C2011 Connector redefinition against v8kernel/Connector2008.h through v8datamodel/PartInstance.h; humanoid/Humanoid.h is used for the modelIsCharacter declaration"
+  },
+  "proposals": {
+    "v8datamodel/Workspace.h (Workspace owner)": "The three doubles unknown0x410 / unknown0x418 / unknown0x420 are read by out-of-line getters 005a00f0 / 005a0100 / 005a0110 (fld qword [ecx+0x410/0x418/0x420]; ret) and their sum 005a0120, which the WorkspaceStatsItem binds use (bind_t<double, cmf0<double, Workspace>, value<const Workspace*>>, RTTI 0094ba88). Declaring `double getX() const` accessors for them (names from the stats item strings) would let these rows be recovered; the field names stay with the owner.",
+    "BOUNDS / unit map for the server host (no bounds.json change)": "005a0ec0 (62 B), 005a0efe (19 B) and 005a0f11 (104 B) are one function, Notifier<Workspace, ToolChanged>::raise(ToolChanged, Listener*) with its catch funclet (\"Exception caught in onEvent. %s\"): the compiled 185-byte body is relocation-masked exact against 005a0ec0..005a0f78. 005a2250 (52 B) is the jump table of process() 005a20e0, not code. 005a6fd0..005a776f is boost.thread tss library code."
+  },
+  "exact_function_rows": [
+    "005a0140",
+    "005a0150",
+    "005a01e0",
+    "005a0210",
+    "005a0220",
+    "005a0240",
+    "005a0260",
+    "005a0280",
+    "005a0310",
+    "005a04a0",
+    "005a04b0",
+    "005a0530",
+    "005a0560",
+    "005a05a0",
+    "005a05d0",
+    "005a0610",
+    "005a0660",
+    "005a0740",
+    "005a07b0",
+    "005a08d0",
+    "005a08e0",
+    "005a08f0",
+    "005a0900",
+    "005a0910",
+    "005a0d90",
+    "005a0de0",
+    "005a1530",
+    "005a16b0",
+    "005a1750",
+    "005a1910",
+    "005a1950",
+    "005a1b90",
+    "005a1bc0",
+    "005a1c20",
+    "005a1ce0",
+    "005a1e80",
+    "005a1fc0",
+    "005a2290",
+    "005a2330",
+    "005a2420",
+    "005a24d0",
+    "005a2730",
+    "005a2760",
+    "005a27c0",
+    "005a2c30",
+    "005a2c50",
+    "005a2c70",
+    "005a2c80",
+    "005a2c90",
+    "005a2ca0",
+    "005a2cb0",
+    "005a2cc0",
+    "005a2cd0",
+    "005a2ce0",
+    "005a2cf0",
+    "005a2d00",
+    "005a2d10",
+    "005a2d20",
+    "005a2d30",
+    "005a2d40",
+    "005a2d50",
+    "005a2d60",
+    "005a2d70",
+    "005a2d80",
+    "005a2d90",
+    "005a2db0",
+    "005a3050",
+    "005a3380",
+    "005a3390",
+    "005a33d0",
+    "005a3b70",
+    "005a4280",
+    "005a43e0",
+    "005a43f0",
+    "005a4400",
+    "005a4410"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

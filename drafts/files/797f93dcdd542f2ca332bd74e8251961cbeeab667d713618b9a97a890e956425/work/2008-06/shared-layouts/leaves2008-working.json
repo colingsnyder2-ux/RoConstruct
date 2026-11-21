@@ -1,0 +1,1167 @@
+{
+  "classes": [
+    "RBX::Log",
+    "RBX::IndexBox",
+    "RBX::StandardOut",
+    "RBX::Point",
+    "RBX::Link / RBX::RevoluteLink",
+    "RBX::NullController",
+    "RBX::GuiTarget",
+    "RBX::BlockBlockContact"
+  ],
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeLeaves2008Layout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeLeaves2008Layout.cpp"
+    ],
+    "units": {
+      "Log": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/fp:fast",
+        "/U_RELEASEASSERT",
+        "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeLeaves2008Log.obj",
+        "/home/user/roconstruct/rebuild/2008-06/native-classes/Leaves2008Log.cpp"
+      ],
+      "IndexBox": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/fp:fast",
+        "/U_RELEASEASSERT",
+        "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeLeaves2008IndexBox.obj",
+        "/home/user/roconstruct/rebuild/2008-06/native-classes/Leaves2008IndexBox.cpp"
+      ],
+      "StandardOut": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/fp:fast",
+        "/U_RELEASEASSERT",
+        "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeLeaves2008StandardOut.obj",
+        "/home/user/roconstruct/rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp"
+      ],
+      "Point": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/fp:fast",
+        "/U_RELEASEASSERT",
+        "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeLeaves2008Point.obj",
+        "/home/user/roconstruct/rebuild/2008-06/native-classes/Leaves2008Point.cpp"
+      ],
+      "RevoluteLink": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/fp:fast",
+        "/U_RELEASEASSERT",
+        "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeLeaves2008RevoluteLink.obj",
+        "/home/user/roconstruct/rebuild/2008-06/native-classes/Leaves2008RevoluteLink.cpp"
+      ],
+      "BlockBlockContact": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/fp:fast",
+        "/U_RELEASEASSERT",
+        "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeLeaves2008BlockBlockContact.obj",
+        "/home/user/roconstruct/rebuild/2008-06/native-classes/Leaves2008BlockBlockContact.cpp"
+      ]
+    },
+    "pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/leaves2008-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/DNATIVE_STANDARDOUT_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeLeaves2008StandardOutPending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp"
+    ],
+    "pending_stages": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/leaves2008-pending-stages",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/DNATIVE_BLOCKBLOCKCONTACT_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeLeaves2008BlockBlockContactPending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/Leaves2008BlockBlockContact.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_leaves2008.py": "872a8f6d822d4826a0243a54381a0194af4571da4f1b84117c3c1b8b9301dcd8",
+    "rebuild/2008-06/tests/NativeLeaves2008Layout.cpp": "5551b7789ef7c146f22a11b518d1f75bd9b6625b3335a9945264464bfb3711eb",
+    "rebuild/2008-06/native-headers/leaves2008/BlockBlockContact2008.h": "2129500e60923c6d37d6171a225c921657bca089f4ffec91fb351c4b9554eaaa",
+    "rebuild/2008-06/native-headers/leaves2008/GuiTarget2008.h": "d7c6a6ac6076f235100f248e3359b2f283a1dd0f5acd3209545176df58e72979",
+    "rebuild/2008-06/native-headers/leaves2008/IndexBox2008.h": "ef5cee2b58a120b368cdea7ef76a8fb48288d4c78aec7525451334e3b8800f22",
+    "rebuild/2008-06/native-headers/leaves2008/Log2008.h": "6a8308cd8c0cffa8383b5a7f540752110670434d916e2b713b580ad00dab9d65",
+    "rebuild/2008-06/native-headers/leaves2008/NullController2008.h": "bd3987e4d7e21815e3386973c0634870f9e7ac2e0024df2befd9b2dcbf002337",
+    "rebuild/2008-06/native-headers/leaves2008/Point2008.h": "aa07e8a9ef15d0338bb69e5762e43b9619d0872cb3af58d65970e7a2d2b1b4e5",
+    "rebuild/2008-06/native-headers/leaves2008/RevoluteLink2008.h": "b0487f3ec06f08a8b3fb9ff91ccc82c0dd2e3812c80aa54773a59c620aa1d1ad",
+    "rebuild/2008-06/native-headers/leaves2008/StandardOut2008.h": "9a17692d0d0f7ad43fc8666bdcb49d7428db9b3b08be76fa8a53ad9dcda2cc4e",
+    "rebuild/2008-06/native-classes/Leaves2008Log.cpp": "18e410977778f6bde54a733bb4fe37e1aa10ebc2fe172691b9884629d6afb56c",
+    "rebuild/2008-06/native-classes/Leaves2008IndexBox.cpp": "1320b9af74c8e70173ca57b2b34ebcc121afc62db97dfa4d0bb22351de29a158",
+    "rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp": "630775de15677ed5f1b13818a9c5dbcdff9a3faa8f7acf176d40fd7c8e119546",
+    "rebuild/2008-06/native-classes/Leaves2008Point.cpp": "2ace8eae7a36b2a33d3ada741710a6fa7a770feb0e08ee60714da306a027fb52",
+    "rebuild/2008-06/native-classes/Leaves2008RevoluteLink.cpp": "2dab0315e82f5adc991c0a93695a8245182ff4fc7ba609d57b5fd3972b291766",
+    "rebuild/2008-06/native-classes/Leaves2008BlockBlockContact.cpp": "8e8639c6f45f83e32fa3e321e9cfd2a14fad52a082bd9d339b737f710e9b5275"
+  },
+  "objects": {
+    "NativeLeaves2008Layout.obj": "011bc1a4fda9ea0fdb62c0f858555ac74fb22aa461ed66b32e8bbdb5bef8b2d2",
+    "NativeLeaves2008StandardOutPending.obj": "55a70511f9f1c60cd2da25570c4bfc4e2b9a3f932451d3f797f7f273036d8c30",
+    "NativeLeaves2008BlockBlockContactPending.obj": "6c7360fb18b8a553a92fb37c4a7019aaaf8c545993f531967e2baeb949e934c2",
+    "NativeLeaves2008Log.obj": "1b5dfdf0958df6f2b8a9c57d7fa6104aaf4f8c657d648135cae69b81a4a7e7bc",
+    "NativeLeaves2008IndexBox.obj": "2ec746a3aa28fd78f761b7e607912d990673aa404a7f0021a7aff4c35f1c20be",
+    "NativeLeaves2008StandardOut.obj": "7a662b8327eb619600ea3d19ab2bdeceeab7e05bf3254d255cf09edf7e4986df",
+    "NativeLeaves2008Point.obj": "cdd915e895308cee580066cc6322bd3dc95afeab0b20aef2421d6538b0041ba9",
+    "NativeLeaves2008RevoluteLink.obj": "c11316e9ebfc3cdc834e93f3d77df8b297e16c7059182daaad0110bfefe02501",
+    "NativeLeaves2008BlockBlockContact.obj": "0b29526dd95bf06473bf8dd23b0002be60af0898c2acc131ee5813c510b859fd"
+  },
+  "layout": {
+    "Log": "vtable; std::string name +0x04; worstSeverity +0x20; const std::string logFile +0x24; std::ofstream +0x40 (ctor 005a6da0)",
+    "IndexBox": "0x64: vtable; Vector3 corner[8] +0x04 (ctor 007bbed0)",
+    "StandardOut": "0x30 (singleton 00569620 news 0x30): Notifier +0, enable_shared_from_this +0x20, mutex +0x28",
+    "Point": "0x34: vtable; KernelIndex +0x04; numOwners +0x08; body +0x0c; localPos/worldPos/force +0x10/+0x1c/+0x28",
+    "RevoluteLink": "0xd0 (MotorJoint() news 0xd0): Link (novtable) body +0x04, four CoordinateFrames +0x08..+0xc7, stateIndex +0xc8; jointAngle +0xcc",
+    "NullController": "0x0c (ReferenceCountedObject only)",
+    "GuiTarget": "vtable only; GuiResponse 8 bytes",
+    "BlockBlockContact": "0x7c (createContact news 0x7c): Contact 0x34; Array<ContactConnector*> connectors +0x34; Array<bool> matched +0x40; int +0x4c / +0x50 (zeroed, no reader); float separation +0x54; int +0x58; bool planeContact +0x5c; int +0x60; int feature[2] +0x64; int bPlane +0x6c / bOther +0x70; NormalId planeID +0x74 / otherPlaneID +0x78 (ctor 0060d500, implicit dtor 0060d5a0)"
+  },
+  "methods": {
+    "Log": [
+      {
+        "address": "005a6bb0",
+        "symbol": "?setLogProvider@Log@RBX@@SAXPAVILogProvider@2@@Z",
+        "size": 10,
+        "exact": true,
+        "verified_targets": {
+          "?provider@Log@RBX@@0PAVILogProvider@2@A": "0x976b4c (data)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a6bc0",
+        "symbol": "?formatMem@Log@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z",
+        "size": 153,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_03MEMGDBJE@?$CFdB?$AA@": "0x834168 (literal '%dB')",
+          "??_C@_04DKDIIHGE@?$CFdKB?$AA@": "0x834160 (literal '%dKB')",
+          "??_C@_04DOLFPLNG@?$CFdMB?$AA@": "0x834158 (literal '%dMB')",
+          "??_C@_04DDCCHOAA@?$CFdGB?$AA@": "0x834150 (literal '%dGB')",
+          "__imp__sprintf": "0x802830 (msvcr90.dll!sprintf)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a6c60",
+        "symbol": "?formatTime@Log@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@N@Z",
+        "size": 163,
+        "exact": true,
+        "verified_targets": {
+          "__imp__sprintf": "0x802830 (msvcr90.dll!sprintf)",
+          "??_C@_02CAMHOJEI@0s?$AA@": "0x83417c (literal '0s')",
+          "??_C@_05MMLJPLGD@?$CF?43gs?$AA@": "0x834174 (literal '%.3gs')",
+          "__real@3fb999999999999a": "0x811230 (double constant 0.1)",
+          "__real@408f400000000000": "0x827980 (double constant 1000.0)",
+          "??_C@_06MGNNCNFG@?$CF?43gms?$AA@": "0x83416c (literal '%.3gms')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a6d10",
+        "symbol": "?timeStamp@@YAXAAV?$basic_ofstream@DU?$char_traits@D@std@@@std@@_N@Z",
+        "size": 144,
+        "exact": true,
+        "verified_targets": {
+          "__imp__GetLocalTime@4": "0x80221c (kernel32.dll!GetLocalTime)",
+          "__imp__sprintf": "0x802830 (msvcr90.dll!sprintf)",
+          "??_C@_0O@EBBCOEAD@?$CF02u?4?$CF02u?4?$CFu?5?$AA@": "0x834198 (literal '%02u.%02u.%u ')",
+          "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (external (evidence name))",
+          "??_C@_0BF@LMAFFOPB@?$CF02u?3?$CF02u?3?$CF02u?4?$CF03u?5?$AA@": "0x834180 (literal '%02u:%02u:%02u.%03u ')",
+          "__imp_?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@XZ": "0x8023bc (msvcp90.dll!?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@XZ)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a6da0",
+        "symbol": "??0Log@RBX@@QAE@PBD0@Z",
+        "size": 182,
+        "exact": true,
+        "verified_targets": {
+          "??_7Log@RBX@@6B@": "0x8341b8 (vtable RTTI .?AVLog@RBX@@ offset 0x0)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_??0?$basic_ofstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z": "0x8023d0 (msvcp90.dll!??0?$basic_ofstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z)",
+          "?timeStamp@@YAXAAV?$basic_ofstream@DU?$char_traits@D@std@@@std@@_N@Z": "0x5a6d10 (own row)",
+          "??_C@_02MBJIFMOJ@?$CC?6?$AA@": "0x8341b0 (literal '\"\\n')",
+          "??_C@_05BEMLLLKN@Log?5?$CC?$AA@": "0x8341a8 (literal 'Log \"')",
+          "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (external (evidence name))",
+          "__imp_?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@XZ": "0x8023bc (msvcp90.dll!?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$??0Log@RBX@@QAE@PBD0@Z"
+        ]
+      },
+      {
+        "address": "005a6e60",
+        "symbol": "??1Log@RBX@@UAE@XZ",
+        "size": 129,
+        "exact": true,
+        "verified_targets": {
+          "??_7Log@RBX@@6B@": "0x8341b8 (vtable RTTI .?AVLog@RBX@@ offset 0x0)",
+          "?timeStamp@@YAXAAV?$basic_ofstream@DU?$char_traits@D@std@@@std@@_N@Z": "0x5a6d10 (own row)",
+          "??_C@_08HJPGBFGC@End?5Log?6?$AA@": "0x8341bc (literal 'End Log\\n')",
+          "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (external (evidence name))",
+          "__imp_??_D?$basic_ofstream@DU?$char_traits@D@std@@@std@@QAEXXZ": "0x8023d4 (msvcp90.dll!??_D?$basic_ofstream@DU?$char_traits@D@std@@@std@@QAEXXZ)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$??1Log@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "005a6ef0",
+        "symbol": "?writeEntry@Log@RBX@@QAEXW4Severity@12@PBD@Z",
+        "size": 181,
+        "exact": true,
+        "verified_targets": {
+          "__imp__GetLocalTime@4": "0x80221c (kernel32.dll!GetLocalTime)",
+          "??_C@_0BF@LMAFFOPB@?$CF02u?3?$CF02u?3?$CF02u?4?$CF03u?5?$AA@": "0x834180 (literal '%02u:%02u:%02u.%03u ')",
+          "__imp__sprintf": "0x802830 (msvcr90.dll!sprintf)",
+          "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (external (evidence name))",
+          "__imp_?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@XZ": "0x8023bc (msvcp90.dll!?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@XZ)",
+          "_error": "0x94c428 (data)",
+          "_warning": "0x94c424 (data)",
+          "_information": "0x94c420 (data)",
+          "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@D@Z": "0x44a640 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a6fb0",
+        "symbol": "??_GLog@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1Log@RBX@@UAE@XZ": "0x5a6e60 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ],
+    "IndexBox": [
+      {
+        "address": "007bbe30",
+        "symbol": "?getFaceCorners@IndexBox@RBX@@QBEXHAAVVector3@G3D@@000@Z",
+        "size": 152,
+        "exact": true,
+        "verified_targets": {
+          "?INDEXBOX_FACE_TO_VERTEX@IndexBox@RBX@@2QAY03$$CBHA": "0x875de8 (data)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007bbed0[00:b5]",
+        "symbol": "??0IndexBox@RBX@@QAE@ABVVector3@G3D@@0@Z",
+        "size": 181,
+        "exact": true,
+        "verified_targets": {
+          "??_7IndexBox@RBX@@6B@": "0x84d1cc (vtable RTTI .?AVIndexBox@RBX@@ offset 0x0)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066f8d0",
+        "symbol": "??1IndexBox@RBX@@UAE@XZ",
+        "size": 7,
+        "exact": true,
+        "verified_targets": {
+          "??_7IndexBox@RBX@@6B@": "0x84d1cc (vtable RTTI .?AVIndexBox@RBX@@ offset 0x0)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066f8e0",
+        "symbol": "??_GIndexBox@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??_7IndexBox@RBX@@6B@": "0x84d1cc (vtable RTTI .?AVIndexBox@RBX@@ offset 0x0)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ],
+    "StandardOut": [
+      {
+        "address": "00569260+005692ce",
+        "symbol": "??$?0VStandardOut@RBX@@@shared_count@detail@boost@@QAE@PAVStandardOut@RBX@@@Z",
+        "size": 131,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$sp_counted_impl_p@VStandardOut@RBX@@@detail@boost@@6B@": "0x82f4fc (vtable RTTI .?AV?$sp_counted_impl_p@VStandardOut@RBX@@@detail@boost@@ offset 0x0)",
+          "??$checked_delete@VStandardOut@RBX@@@boost@@YAXPAVStandardOut@RBX@@@Z": "0x427b70 (own row)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VStandardOut@RBX@@@shared_count@detail@boost@@QAE@PAVStandardOut@RBX@@@Z"
+        ]
+      },
+      {
+        "address": "005692f0",
+        "symbol": "??$?0VStandardOut@RBX@@@?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@PAVStandardOut@RBX@@@Z",
+        "size": 163,
+        "exact": true,
+        "verified_targets": {
+          "??$?0VStandardOut@RBX@@@shared_count@detail@boost@@QAE@PAVStandardOut@RBX@@@Z": "0x569260 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VStandardOut@RBX@@@?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@PAVStandardOut@RBX@@@Z"
+        ]
+      },
+      {
+        "address": "00569530",
+        "symbol": "??0StandardOut@RBX@@QAE@XZ",
+        "size": 83,
+        "exact": true,
+        "verified_targets": {
+          "??0?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IAE@XZ": "0x5e9ec0 (own row)",
+          "??_7StandardOut@RBX@@6B@": "0x82f510 (vtable RTTI .?AVStandardOut@RBX@@ offset 0x0)",
+          "??0mutex@boost@@QAE@XZ": "0x594c90 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??0StandardOut@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "00569620",
+        "symbol": "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+        "size": 173,
+        "exact": true,
+        "verified_targets": {
+          "?$S1@?1??singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ@4IA": "0x974ab4 (local static)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0StandardOut@RBX@@QAE@XZ": "0x569530 (own row)",
+          "?standardOut@?1??singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ@4V45@A": "0x974aac (local static)",
+          "??$?0VStandardOut@RBX@@@?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@PAVStandardOut@RBX@@@Z": "0x5692f0 (own row)",
+          "??__FstandardOut@?1??singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ@YAXXZ": "0x7fd110 (own row)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ"
+        ]
+      },
+      {
+        "address": "005696d0",
+        "symbol": "??_GStandardOut@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1StandardOut@RBX@@UAE@XZ": "0x569590 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005696f0+00569720+00569731",
+        "symbol": "?print_exception@StandardOut@RBX@@SAXABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@W4MessageType@2@_N@Z",
+        "size": 131,
+        "exact": true,
+        "verified_targets": {
+          "??R?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QBEXXZ": "0x42afc0 (external)",
+          "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620 (own row)",
+          "?print@StandardOut@RBX@@QAEXW4MessageType@2@ABVexception@std@@@Z": "0x416e10 (own row)",
+          "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ": "0x600660 (external)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "$LN9",
+          "__ehhandler$?print_exception@StandardOut@RBX@@SAXABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@W4MessageType@2@_N@Z"
+        ]
+      },
+      {
+        "address": "00569780+005697de+00569801",
+        "symbol": "?raise@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IBEXUStandardOutMessage@2@PAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z",
+        "size": 231,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620 (own row)",
+          "??_C@_0CA@IECMHPBD@Exception?5caught?5in?5onEvent?4?5?$CFs?$AA@": "0x80b9c4 (literal 'Exception caught in onEvent. %s')",
+          "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0 (own row)",
+          "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ": "0x600660 (external)"
+        },
+        "local_eh": [
+          "$LN11",
+          "__ehhandler$?raise@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IBEXUStandardOutMessage@2@PAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z"
+        ]
+      },
+      {
+        "address": "005691b0",
+        "symbol": "?raise@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IBEXUStandardOutMessage@2@@Z",
+        "size": 166,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "?raise@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IBEXUStandardOutMessage@2@PAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z": "0x569780 (own row)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00416e10",
+        "symbol": "?print@StandardOut@RBX@@QAEXW4MessageType@2@ABVexception@std@@@Z",
+        "size": 33,
+        "exact": true,
+        "verified_targets": {
+          "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005693a0",
+        "symbol": "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ",
+        "size": 398,
+        "exact": true,
+        "verified_targets": {
+          "?vformat@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDPAD@Z": "0x5099f0 (external)",
+          "?provider@Log@RBX@@0PAVILogProvider@2@A": "0x976b4c (data)",
+          "?writeEntry@Log@RBX@@QAEXW4Severity@12@PBD@Z": "0x5a6ef0 (own row)",
+          "?do_lock@mutex@boost@@AAEXXZ": "0x594ce0 (external)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp___time64": "0x802808 (msvcr90.dll!_time64)",
+          "?raise@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IBEXUStandardOutMessage@2@@Z": "0x5691b0 (own row)",
+          "?do_unlock@mutex@boost@@AAEXXZ": "0x594d00 (external)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ"
+        ]
+      },
+      {
+        "address": "005e9ec0",
+        "symbol": "??0?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IAE@XZ",
+        "size": 84,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IAE@XZ"
+        ]
+      },
+      {
+        "address": "007fd110",
+        "symbol": "??__FstandardOut@?1??singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ@YAXXZ",
+        "size": 56,
+        "exact": true,
+        "verified_targets": {
+          "?standardOut@?1??singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ@4V45@A": "0x974aac (local static)"
+        },
+        "local_eh": []
+      }
+    ],
+    "Point": [
+      {
+        "address": "0064dc00",
+        "symbol": "??0Point@RBX@@QAE@PAVBody@1@@Z",
+        "size": 74,
+        "exact": true,
+        "verified_targets": {
+          "??_7Point@RBX@@6B@": "0x84b24c (vtable RTTI .?AVPoint@RBX@@ offset 0x0)",
+          "?getWorldBody@Body@RBX@@SAPAV12@XZ": "0x614bb0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0064dc50",
+        "symbol": "??_GPoint@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??_7Point@RBX@@6B@": "0x84b24c (vtable RTTI .?AVPoint@RBX@@ offset 0x0)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ],
+    "RevoluteLink": [
+      {
+        "address": "00613d20",
+        "symbol": "??0Link@RBX@@QAE@XZ",
+        "size": 60,
+        "exact": true,
+        "verified_targets": {
+          "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0 (external (evidence name))",
+          "?getNextStateIndex@Body@RBX@@SAHXZ": "0x613f20 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00613da0",
+        "symbol": "?reset@Link@RBX@@QAEXABVCoordinateFrame@G3D@@0@Z",
+        "size": 133,
+        "exact": true,
+        "verified_targets": {
+          "?inverse@CoordinateFrame@G3D@@QBE?AV12@XZ": "0x478330 (external (evidence name))"
+        },
+        "local_eh": []
+      }
+    ],
+    "BlockBlockContact": [
+      {
+        "address": "0060d500",
+        "symbol": "??0BlockBlockContact@RBX@@QAE@PAVPrimitive@1@0@Z",
+        "size": 118,
+        "exact": true,
+        "verified_targets": {
+          "??0Contact@RBX@@QAE@PAVPrimitive@1@0@Z": "0x606c20 (external (evidence name))",
+          "??_7BlockBlockContact@RBX@@6B@": "0x843714 (vtable RTTI .?AVBlockBlockContact@RBX@@ offset 0x0)",
+          "__real@4e6e6b28": "0x82d030 (float constant 1000000000.0)"
+        },
+        "local_eh": [
+          "__ehhandler$??0BlockBlockContact@RBX@@QAE@PAVPrimitive@1@0@Z"
+        ]
+      },
+      {
+        "address": "0060d5a0",
+        "symbol": "??1BlockBlockContact@RBX@@UAE@XZ",
+        "size": 100,
+        "exact": true,
+        "verified_targets": {
+          "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??1BlockBlockContact@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "0060d610",
+        "symbol": "??_GBlockBlockContact@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1BlockBlockContact@RBX@@UAE@XZ": "0x60d5a0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00607c60",
+        "symbol": "?deleteAllConnectors@BlockBlockContact@RBX@@EAEXXZ",
+        "size": 94,
+        "exact": true,
+        "verified_targets": {
+          "?getKernel@IPipelined@RBX@@QBEPAVKernel@2@XZ": "0x645850 (external)",
+          "?removeConnector@Kernel@RBX@@QAEXPAVConnector@2@@Z": "0x5fb1f0 (external)",
+          "?resize@?$Array@PAVContactConnector@RBX@@@G3D@@QAEXH_N@Z": "0x6078f0 (own row)",
+          "?resize@?$Array@_N@G3D@@QAEXH_N@Z": "0x47ff20 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0060d580",
+        "symbol": "?numConnectors@BlockBlockContact@RBX@@EBEHXZ",
+        "size": 4,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0060d590",
+        "symbol": "?getConnector@BlockBlockContact@RBX@@EAEPAVContactConnector@2@H@Z",
+        "size": 13,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "006078f0",
+        "symbol": "?resize@?$Array@PAVContactConnector@RBX@@@G3D@@QAEXH_N@Z",
+        "size": 256,
+        "exact": true,
+        "verified_targets": {
+          "??_B?3??resize@?$Array@PAVContactConnector@RBX@@@G3D@@QAEXH_N@Z@53": "0x97b89c (data)",
+          "?minSize@?3??resize@?$Array@PAVContactConnector@RBX@@@G3D@@QAEXH_N@Z@4HB": "0x97b898 (data)",
+          "?realloc@?$Array@PAVContactConnector@RBX@@@G3D@@AAEXH@Z": "0x502080 (folded)",
+          "__real@40400000": "0x81e380 (float constant 3.0)",
+          "__real@3fc00000": "0x81e37c (float constant 1.5)",
+          "__real@40000000": "0x81c434 (float constant 2.0)",
+          "__ftol2_sse": "0x6a17f0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0047ff20",
+        "symbol": "?resize@?$Array@_N@G3D@@QAEXH_N@Z",
+        "size": 252,
+        "exact": true,
+        "verified_targets": {
+          "??_B?3??resize@?$Array@_N@G3D@@QAEXH_N@Z@53": "0x96f7a0 (data)",
+          "?minSize@?3??resize@?$Array@_N@G3D@@QAEXH_N@Z@4HB": "0x96f79c (data)",
+          "?realloc@?$Array@_N@G3D@@AAEXH@Z": "0x473740 (folded)",
+          "__real@40400000": "0x81e380 (float constant 3.0)",
+          "__real@3fc00000": "0x81e37c (float constant 1.5)",
+          "__real@40000000": "0x81c434 (float constant 2.0)",
+          "__ftol2_sse": "0x6a17f0 (external)"
+        },
+        "local_eh": []
+      }
+    ],
+    "NullController/GuiTarget (layout emitters)": [
+      {
+        "address": "00599e50",
+        "symbol": "?getStaticNullController@NullController@RBX@@SAPAV12@XZ",
+        "size": 70,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??getStaticNullController@NullController@RBX@@SAPAV12@XZ@51": "0x976390 (local static)",
+          "?n@?1??getStaticNullController@NullController@RBX@@SAPAV23@XZ@4V23@A": "0x976384 (local static)",
+          "??_7ReferenceCountedObject@G3D@@6B@": "0x81e1e0 (vtable RTTI .?AVReferenceCountedObject@G3D@@ offset 0x0)",
+          "??__Fn@?1??getStaticNullController@NullController@RBX@@SAPAV12@XZ@YAXXZ": "0x7fdbc0 (own row)",
+          "??_7NullController@RBX@@6B@": "0x832a04 (vtable RTTI .?AVNullController@RBX@@ offset 0x0)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007fdbc0",
+        "symbol": "??__Fn@?1??getStaticNullController@NullController@RBX@@SAPAV12@XZ@YAXXZ",
+        "size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?n@?1??getStaticNullController@NullController@RBX@@SAPAV23@XZ@4V23@A": "0x976384 (local static)",
+          "??_7ReferenceCountedObject@G3D@@6B@": "0x81e1e0 (vtable RTTI .?AVReferenceCountedObject@G3D@@ offset 0x0)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005732d0",
+        "symbol": "?process@GuiTarget@RBX@@UAE?AVGuiResponse@2@ABVGuiEvent@2@@Z",
+        "size": 20,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ]
+  },
+  "folded_rows": [
+    {
+      "address": "004729b0",
+      "symbol": "??_GNullController@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??_7ReferenceCountedObject@G3D@@6B@": "0x81e1e0 (vtable RTTI .?AVReferenceCountedObject@G3D@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "folded": true
+    },
+    {
+      "address": "00598a50",
+      "symbol": "?getValue@Controller@RBX@@UBEMW4InputType@12@@Z",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "folded": true
+    },
+    {
+      "address": "00416690",
+      "symbol": "?getControllerType@NullController@RBX@@UBE?AW4ControllerType@Controller@2@XZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "folded": true
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?hasIntelligence@NullController@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "folded": true
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isUserController@NullController@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "folded": true
+    },
+    {
+      "address": "00427b70",
+      "symbol": "??$checked_delete@VStandardOut@RBX@@@boost@@YAXPAVStandardOut@RBX@@@Z",
+      "size": 17,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "folded": true
+    }
+  ],
+  "folded_bodies": {
+    "?onAddListener@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@MBEXPAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z": "0x70bdf0",
+    "?onRemoveListener@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@MBEXPAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z": "0x70bdf0",
+    "?realloc@?$Array@PAVContactConnector@RBX@@@G3D@@AAEXH@Z": "0x502080",
+    "?realloc@?$Array@_N@G3D@@AAEXH@Z": "0x473740"
+  },
+  "exact_count": 39,
+  "exact_unique_addresses": 39,
+  "exact_addresses": [
+    "00416e10",
+    "0047ff20",
+    "005691b0",
+    "00569260+005692ce",
+    "005692f0",
+    "005693a0",
+    "00569530",
+    "00569620",
+    "005696d0",
+    "005696f0+00569720+00569731",
+    "00569780+005697de+00569801",
+    "005732d0",
+    "00599e50",
+    "005a6bb0",
+    "005a6bc0",
+    "005a6c60",
+    "005a6d10",
+    "005a6da0",
+    "005a6e60",
+    "005a6ef0",
+    "005a6fb0",
+    "005e9ec0",
+    "006078f0",
+    "00607c60",
+    "0060d500",
+    "0060d580",
+    "0060d590",
+    "0060d5a0",
+    "0060d610",
+    "00613d20",
+    "00613da0",
+    "0064dc00",
+    "0064dc50",
+    "0066f8d0",
+    "0066f8e0",
+    "007bbe30",
+    "007bbed0[00:b5]",
+    "007fd110",
+    "007fdbc0"
+  ],
+  "pending_methods": [
+    {
+      "address": "00569590",
+      "symbol": "??1StandardOut@RBX@@UAE@XZ",
+      "size": 144,
+      "exact": false,
+      "verified_targets": {
+        "??1mutex@boost@@QAE@XZ": "0x594cb0 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1StandardOut@RBX@@UAE@XZ"
+      ],
+      "exact_pending_build_only": true,
+      "what": "~StandardOut: implicit in 2008 (no StandardOut vtable store); the donor declares virtual ~StandardOut()"
+    },
+    {
+      "address": "006087a0",
+      "symbol": "?updateConnectors@BlockBlockContact@RBX@@AAEXXZ",
+      "size": 137,
+      "exact": false,
+      "verified_targets": {
+        "?resize@?$Array@_N@G3D@@QAEXH_N@Z": "0x47ff20 (own row)",
+        "?computePlaneContact@BlockBlockContact@RBX@@AAEHXZ": "0x608580 (external)",
+        "?deleteUnmatchedConnectors@BlockBlockContact@RBX@@AAEXXZ": "0x607e00 (external)",
+        "?loadGeoPairEdgeEdge@BlockBlockContact@RBX@@AAEXHHHH@Z": "0x607ea0 (external)"
+      },
+      "local_eh": [],
+      "exact_pending_build_only": true,
+      "what": "BlockBlockContact::updateConnectors (analog name): inKernel() compares getStageType() with 7, the 2008 KERNEL_STAGE; the donor v8kernel/IStage.h has KERNEL_STAGE = 8 (generated copy with the 2008 values)"
+    }
+  ],
+  "pending_note": "Pending rows are exact only against generated header copies and are not counted as exact: 00569590 with NATIVE_STANDARDOUT_PENDING (out/native-layouts/leaves2008-pending/util/standardout.h without the user-declared destructor), 006087a0 with NATIVE_BLOCKBLOCKCONTACT_PENDING (out/native-layouts/leaves2008-pending-stages/v8kernel/IStage.h with the 2008 StageType values).",
+  "non_exact": {},
+  "blocked": {
+    "RBX::BlockBlockContact::stepContact/computeIsColliding": "00608830 / 00607c20 need Primitive +0x80 fuzzy extents (2008 Primitive layout, see proposals) and 00607280",
+    "RBX::BlockBlockContact geometry helpers": "00607280 (separating axis test, 1634 bytes), 00607cc0, 00607e00, 00607ea0, 00607f90, 00608030, 00608160, 00608580 need the 2008 Primitive / Body / Block geometry and ContactConnector layouts",
+    "RBX::Point::step/forceToBody/setWorldPos": "2008 Body layout (see proposals)",
+    "RBX::Link::getChildInParent": "2008 Body layout (see proposals)",
+    "RBX::RevoluteLink::computeChildInParent": "undeclared helper 005989d0 (see proposals)"
+  },
+  "proposals": [
+    "util/standardout.h (donor path, reached through native-headers/util/Events.h by nearly every unit; no native header is created at that path): the 2008 StandardOut has no user-declared destructor (~StandardOut 00569590 never stores the StandardOut vtable 0082f510). The owner of util/* should take this into a native override when one exists; with the line removed in a generated copy 00569590 is exact and ??_G 005696d0 stays exact.",
+    "v8kernel/Body.h (donor; no native header; world/kernel owner): Point::step 0064dc90 / setWorldPos 0064dd40 read the PV position at Body +0x94..+0xc0 after updatePV 00599360, forceToBody 0064dc70 reads root +0x10 -> +0x2c, and Link::getChildInParent 00613d60 reads parent +0x14 and stateIndex +0x90; the donor Body has pv +0x88, parent +0x08, stateIndex +0x84. A native 2008 Body layout would unlock these four rows.",
+    "cdecl helper 005989d0 (const CoordinateFrame& a, const CoordinateFrame& b, CoordinateFrame& out), called by RevoluteLink::computeChildInParent 00613cc0 and 005991c0: no declaration in any native or donor header; its owner (PV / Math) should declare it, then 00613cc0 can be attempted.",
+    "v8kernel/IStage.h (donor; the kernel-stages owner already proposes it in tests/record_native_kernel_stages.py): the 2008 StageType values are CLEAN 0 .. SIMJOB 6, KERNEL 7. With that enum BlockBlockContact::updateConnectors 006087a0 (`cmp eax, 7` after currentStage->getStageType()) is exact (generated copy out/native-layouts/leaves2008-pending-stages/v8kernel/IStage.h).",
+    "v8world/Primitive.h 2008 (world owner): BlockBlockContact::stepContact 00608830 and computeIsColliding 00607c20 call Extents::overlapsOrTouches 00606b60 on Primitive +0x80 of both edge primitives (`sub ecx, -0x80`); the only native Primitive declaration (native-headers/part-embedded/v8world/Primitive.h) includes the donor v8world/Contact.h and cannot share a unit with v8world/Contact2008.h. A 2008 Primitive header without the donor Contact.h (fuzzy extents at +0x80, readable inline) would unlock both rows; 00607280 (the separating-axis test they call) is also needed."
+  ],
+  "vtables": {
+    "??_7Log@RBX@@6B@": {
+      "address": "0x8341b8",
+      "rtti": ".?AVLog@RBX@@",
+      "slots": {
+        "0": "??_ELog@RBX@@UAEPAXI@Z = 0x5a6fb0 (own row (??_G))"
+      }
+    },
+    "??_7IndexBox@RBX@@6B@": {
+      "address": "0x84d1cc",
+      "rtti": ".?AVIndexBox@RBX@@",
+      "slots": {
+        "0": "??_EIndexBox@RBX@@UAEPAXI@Z = 0x66f8e0 (own row (??_G))"
+      }
+    },
+    "??_7StandardOut@RBX@@6B@": {
+      "address": "0x82f510",
+      "rtti": ".?AVStandardOut@RBX@@",
+      "slots": {
+        "0": "??_EStandardOut@RBX@@UAEPAXI@Z = 0x5696d0 (own row (??_G))",
+        "1": "?onAddListener@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@MBEXPAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z = 0x70bdf0 (folded)",
+        "2": "?onRemoveListener@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@MBEXPAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z = 0x70bdf0 (folded)"
+      }
+    },
+    "??_7Point@RBX@@6B@": {
+      "address": "0x84b24c",
+      "rtti": ".?AVPoint@RBX@@",
+      "slots": {
+        "0": "??_EPoint@RBX@@UAEPAXI@Z = 0x64dc50 (own row (??_G))"
+      }
+    },
+    "??_7NullController@RBX@@6B@": {
+      "address": "0x832a04",
+      "rtti": ".?AVNullController@RBX@@",
+      "slots": {
+        "0": "??_ENullController@RBX@@UAEPAXI@Z = 0x4729b0 (own row (??_G))",
+        "1": "?getValue@Controller@RBX@@UBEMW4InputType@12@@Z = 0x598a50 (own row)",
+        "2": "?getControllerType@NullController@RBX@@UBE?AW4ControllerType@Controller@2@XZ = 0x416690 (own row)",
+        "3": "?hasIntelligence@NullController@RBX@@UBE_NXZ = 0x60a2f0 (own row)",
+        "4": "?isUserController@NullController@RBX@@UBE_NXZ = 0x60a2f0 (own row)"
+      }
+    },
+    "??_7GuiTarget@RBX@@6B@": {
+      "address": "0x82f848",
+      "rtti": ".?AVGuiTarget@RBX@@",
+      "slots": {
+        "0": "?process@GuiTarget@RBX@@UAE?AVGuiResponse@2@ABVGuiEvent@2@@Z = 0x5732d0 (own row)"
+      }
+    },
+    "??_7BlockBlockContact@RBX@@6B@": {
+      "address": "0x843714",
+      "rtti": ".?AVBlockBlockContact@RBX@@",
+      "slots": {
+        "0": "??_EBlockBlockContact@RBX@@UAEPAXI@Z = 0x60d610 (own row (??_G))",
+        "1": "?putInKernel@Contact@RBX@@EAEXPAVKernel@2@@Z = 0x60cb10 (external)",
+        "2": "?removeFromKernel@Contact@RBX@@EAEXXZ = 0x60cb30 (external)",
+        "3": "?getEdgeType@Contact@RBX@@EBE?AW4EdgeType@Edge@2@XZ = 0x7286a0 (external)",
+        "4": "?setPrimitive@Edge@RBX@@UAEXHPAVPrimitive@2@@Z = 0x659290 (external)",
+        "5": "?deleteAllConnectors@BlockBlockContact@RBX@@EAEXXZ = 0x607c60 (own row)",
+        "6": "?stepContact@BlockBlockContact@RBX@@EAE_NXZ = 0x608830 (external)",
+        "7": "?computeIsColliding@BlockBlockContact@RBX@@EAE_NM@Z = 0x607c20 (external)",
+        "8": "?numConnectors@BlockBlockContact@RBX@@EBEHXZ = 0x60d580 (own row)",
+        "9": "?getConnector@BlockBlockContact@RBX@@EAEPAVContactConnector@2@H@Z = 0x60d590 (own row)"
+      }
+    }
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

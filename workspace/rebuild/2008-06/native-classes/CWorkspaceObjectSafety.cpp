@@ -1,5 +1,6 @@
 #include "CWorkspace.h"
 
+// 00404d20 (133 B): IObjectSafetyRobloxImpl<CWorkspace, 1>::GetInterfaceSafetyOptions (instantiated below).
 template<class T, DWORD Supported>
 HRESULT __stdcall IObjectSafetyRobloxImpl<T, Supported>::GetInterfaceSafetyOptions(
     REFIID iid, DWORD* supported, DWORD* enabled)
@@ -24,6 +25,7 @@ HRESULT __stdcall IObjectSafetyRobloxImpl<T, Supported>::GetInterfaceSafetyOptio
     return result;
 }
 
+// 00404db0 (115 B): IObjectSafetyRobloxImpl<CWorkspace, 1>::SetInterfaceSafetyOptions (instantiated below).
 template<class T, DWORD Supported>
 HRESULT __stdcall IObjectSafetyRobloxImpl<T, Supported>::SetInterfaceSafetyOptions(
     REFIID iid, DWORD mask, DWORD enabled)

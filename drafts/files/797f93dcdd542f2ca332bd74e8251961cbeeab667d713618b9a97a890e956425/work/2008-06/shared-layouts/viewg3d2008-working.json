@@ -1,0 +1,213 @@
+{
+  "class": "RBX::ViewNew::ViewG3D",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewG3D2008Layout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeViewG3D2008Layout.cpp"
+    ],
+    "unit": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewG3D2008.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ViewG3D2008.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_viewg3d2008.py": "a74b68f12306845f809b93f1742f256a5c4138eb0f9bee334dd9a32d2240b5b8",
+    "rebuild/2008-06/tests/NativeViewG3D2008Layout.cpp": "22f25f256dbeaa9cb7bc1c3ff9ba266b45d86e5ba2a5c653ac0ade0f1b0f4a64",
+    "rebuild/2008-06/native-classes/ViewG3D2008.cpp": "6dc6576673d1142882ea8058242ff2979631e08173687fa7c3124d5958606970",
+    "rebuild/2008-06/native-headers/ViewG3D2008/ViewG3D2008.h": "525479a301f5ee333f51b4e54a409ed93a823045152cb333c986bcb9c03a6513"
+  },
+  "objects": {
+    "NativeViewG3D2008Layout.obj": "1dd00b35f9c664cfde39aa5693cf068dd791ce0df8318f374113b786b399732d",
+    "NativeViewG3D2008.obj": "501f2b3d89e00b4b49b08be76a98b83e2df167c7230d8405277ce67965814e21"
+  },
+  "layout": {
+    "viewG3DSky": "0x48",
+    "viewBaseLightingValid": "0x44",
+    "viewBaseDataModel": "0x14",
+    "dataModelWorkspace": "0x204"
+  },
+  "rows": [
+    {
+      "address": "004db610",
+      "symbol": "?invalidateLighting@ViewG3D@ViewNew@RBX@@EAEX_N@Z",
+      "size": 69,
+      "target_size": 69,
+      "exact": true,
+      "verified_targets": {
+        "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+        "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+      },
+      "local": []
+    },
+    {
+      "address": "004db690",
+      "symbol": "?render@ViewG3D@ViewNew@RBX@@UAEXPAVRenderDevice@G3D@@@Z",
+      "size": 82,
+      "target_size": 82,
+      "exact": true,
+      "verified_targets": {
+        "__real@3fb99999a0000000": "0x826938 (constant 3fb99999a0000000)"
+      },
+      "local": []
+    }
+  ],
+  "exact_function_rows": [
+    "004db610",
+    "004db690"
+  ],
+  "vtable": [
+    {
+      "slot": 0,
+      "original": "004dc340",
+      "row": false,
+      "shared_with_ViewRbxGfx": false
+    },
+    {
+      "slot": 1,
+      "original": "004db690",
+      "row": true,
+      "shared_with_ViewRbxGfx": false
+    },
+    {
+      "slot": 2,
+      "original": "0064a390",
+      "row": false,
+      "shared_with_ViewRbxGfx": true
+    },
+    {
+      "slot": 3,
+      "original": "004d76d0",
+      "row": false,
+      "shared_with_ViewRbxGfx": true
+    },
+    {
+      "slot": 4,
+      "original": "004db660",
+      "row": false,
+      "shared_with_ViewRbxGfx": true
+    },
+    {
+      "slot": 5,
+      "original": "004dbf00",
+      "row": false,
+      "shared_with_ViewRbxGfx": false
+    },
+    {
+      "slot": 6,
+      "original": "004d7370",
+      "row": false,
+      "shared_with_ViewRbxGfx": true
+    },
+    {
+      "slot": 7,
+      "original": "004db6f0",
+      "row": false,
+      "shared_with_ViewRbxGfx": true
+    },
+    {
+      "slot": 8,
+      "original": "004db7c0",
+      "row": false,
+      "shared_with_ViewRbxGfx": true
+    },
+    {
+      "slot": 9,
+      "original": "004dc040",
+      "row": false,
+      "shared_with_ViewRbxGfx": false
+    },
+    {
+      "slot": 10,
+      "original": "004db610",
+      "row": true,
+      "shared_with_ViewRbxGfx": false
+    }
+  ],
+  "notes": [
+    "+0x4c map: only the ctor (00446110) and dtor (00553d80 -> erase 00553ca0) touch it in 2008-06, so its key / mapped types are not derived and it is NOT declared (no invented types); the native class is declared through +0x4b only (sizeof 0x4c vs the original new 0x6c). Its size evidence (new 0x6c, lea [esi+0x4c], 0x18-byte _Buynode) is asserted on the original bytes only. The rows do not touch it."
+  ],
+  "blocked": {
+    "004dbbe0": "ViewG3D ctor: new 0x10 ViewNew::MaterialFactory (ctor 004f0920; the class is not declared, see the render-scene receipt proposal), the Lighting service accessor 004b3870 and the Lighting-changed / descendant-added signal descriptors 0097a88c / 00973e40 with their slot ctors 004dbaa0 / 004dbb40 and connect calls 004d8390 / 004a3340, plus the workspace descendant visit 004d7c00 (Lighting / Instance / reflection owners)",
+    "004dc270": "ViewG3D dtor: the ServiceProvider call 004b3380 on dataModel and the seven ViewNew mesh-cache flushes 004db130 / 004db040 / 004daf50 / 004e5670 / 004db310 / 004db220 / 004db400 (shared with ~ViewRbxGfx 004db4f0; not declared in any native header, names not derived)",
+    "004dc340": "ViewG3D ??_G: emitted only with the vtable, i.e. with the ctor or dtor (both blocked)",
+    "004dbf00": "ViewG3D::suppressSkybox: Lighting service fields (+0x130 sky parameters, +0x228 / +0x234 Color3, +0x244 Color4) and the LightingParameters builder 004d7020 (Lighting owner)",
+    "004dc040": "ViewG3D::updateLighting: as suppressSkybox, plus +0x240 sky-enabled bool, +0x2d4 sky parameters, the Sky factory 005ebbb0 and the GImage::Error / ... handlers printing 00826dc4 / 00826dac (Lighting owner)"
+  },
+  "proposals": {
+    "ViewNew mesh owners (ViewNew/*.h), FYI": "the ViewG3D and ViewRbxGfx dtors call seven static cache flushes 004db130 / 004db040 / 004daf50 / 004e5670 / 004db310 / 004db220 / 004db400 (each locks a static cache object, e.g. 0097272c via call_once 00557330 / init 004d9810, and empties its two maps); declaring them (names and classes are not derived here) unblocks both dtors and their ??_G rows.",
+    "Lighting owner, FYI": "ViewG3D::suppressSkybox 004dbf00 / updateLighting 004dc040 read the Lighting service (004b3870 on the DataModel): +0x130 passed to 004d7020 to build the LightingParameters by value, +0x228 / +0x234 Color3 (presetLighting arguments), +0x240 bool (sky enabled), +0x244 Color4 (copied to the scene clear colour +0x14), +0x2d4 the sky parameters passed to the Sky factory 005ebbb0.",
+    "ViewNew::MaterialFactory (carried over from render-scene)": "the ViewG3D ctor also needs it (new 0x10, ctor 004f0920, dtor 004d7460)."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

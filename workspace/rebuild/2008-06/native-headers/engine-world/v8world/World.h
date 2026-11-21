@@ -61,7 +61,8 @@ namespace RBX
 		bool inJointNotification;
 		int worldStepId;
 		IndexArray<Primitive, &Primitive::worldIndexFunc> primitives;
-		std::set<Joint*> breakableJoints;
+		G3D::Array<Primitive*> unknownB8; // INFERRED: World() 005ea920 zeroes an Array at +0xb8 (element type and name)
+		std::set<Joint*> breakableJoints; // +0xc4
 		int numJoints;
 		int numContacts;
 		int numLinkCalls;
@@ -136,6 +137,7 @@ namespace RBX
 		void insertPrimitive(Primitive* p);
 		void removePrimitive(Primitive* p);
 		void ticklePrimitive(Primitive* p);
+		void ticklePrimitive(Primitive* p, int value); // 005e9410 (`ret 8`; v8world/World2008.h declares the same)
 		void joinAll();
 		void createJointsToWorld(const G3D::Array<Primitive*>&);
 		void destroyJointsToWorld(const G3D::Array<Primitive*>&);
@@ -184,5 +186,9 @@ namespace RBX
 		void onJointPrimitiveSet(Joint* j, Primitive* p);
 		void insertContact(Contact* c);
 		void destroyContact(Contact* c);
+		int get_78();
+		int get_7c();
+		void stepPhysics(class Assembly* assembly);
+		void processGeometry(class Geometry* geometry, class Filter* filter);
 	};
 }

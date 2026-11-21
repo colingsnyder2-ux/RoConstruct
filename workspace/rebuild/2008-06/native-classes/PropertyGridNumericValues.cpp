@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
 #include "PropertyGridItems.h"
 #include <stdio.h>
 #include "util/Utilities.h"
@@ -18,31 +19,23 @@ void XItem<int, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<i
     SetValue(CString(text));
 }
 
+// 004380c0: CXTPPropertyGridItem::GetValue temporary -> std::string -> StringConverter<float> (005be790).
 template<>
 float XItem<float, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<float> >::readValue()
 {
     float value;
-    bool valid;
-    {
-        const CString& text = GetValue();
-        std::string narrow(text);
-        valid = RBX::StringConverter<float>::convertToValue(narrow, value);
-    }
-    if (valid) return value;
+    if (RBX::StringConverter<float>::convertToValue((LPCTSTR)GetValue(), value))
+        return value;
     return 0.0f;
 }
 
+// 00438160: same shape through StringConverter<int> (005be5a0).
 template<>
 int XItem<int, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<int> >::readValue()
 {
     int value;
-    bool valid;
-    {
-        const CString& text = GetValue();
-        std::string narrow(text);
-        valid = RBX::StringConverter<int>::convertToValue(narrow, value);
-    }
-    if (valid) return value;
+    if (RBX::StringConverter<int>::convertToValue((LPCTSTR)GetValue(), value))
+        return value;
     return 0;
 }
 

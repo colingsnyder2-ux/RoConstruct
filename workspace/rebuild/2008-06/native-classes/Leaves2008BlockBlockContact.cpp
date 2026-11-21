@@ -71,29 +71,29 @@ namespace RBX
 // Earlier trial (lf11): the donor IPipelined::inKernel emitted its assertion (163 bytes vs 137).
 namespace RBX
 {
-	void BlockBlockContact::updateConnectors()
+void BlockBlockContact::updateConnectors()
+{
+	if (separation <= 0.0f)
 	{
-		if (separation <= 0.0f)
+		if (inStage((IStage::StageType)7))
 		{
-			if (inKernel())
-			{
-				matched.resize(connectors.size(), false);
-				for (int i = 0; i < connectors.size(); ++i)
-					matched[i] = false;
+			matched.resize(connectors.size(), false);
+			for (int i = 0; i < connectors.size(); ++i)
+				matched[i] = false;
 
-				if (planeContact)
-					computePlaneContact();
-				else
-					loadGeoPairEdgeEdge(0, 1, feature[0] - 6, feature[1] - 6);
+			if (planeContact)
+				computePlaneContact();
+			else
+				loadGeoPairEdgeEdge(0, 1, feature[0] - 6, feature[1] - 6);
 
-				deleteUnmatchedConnectors();
-			}
-		}
-		else
-		{
-			deleteAllConnectors();
-			feature[0] = -1;
-			feature[1] = -1;
+			deleteUnmatchedConnectors();
 		}
 	}
+	else
+	{
+		deleteAllConnectors();
+		feature[0] = -1;
+		feature[1] = -1;
+	}
+}
 }

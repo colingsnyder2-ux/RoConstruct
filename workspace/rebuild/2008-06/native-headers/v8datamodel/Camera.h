@@ -12,8 +12,9 @@ namespace RBX
 	class ContactManager;
 	class ICameraSubject;
 	class ICameraOwner;
+	struct MovementKeys;   // util/MovementKeys.h (core); forward-declared, only a reference parameter here
 
-	extern const char sCamera[];
+	extern char sCamera[];   // INFERRED: ??__E?creator@?$FactoryProduct@...$1?sCamera@...@3PADA (2008 binary) = char array
 	class Camera : public DescribedCreatable<Camera, Instance, sCamera>
 	{
 	private:
@@ -51,6 +52,9 @@ namespace RBX
 
 	private:
 		ICameraOwner* getCameraOwner();
+	public:
+		G3D::Vector3 sub_004d6fb0() const;   // INFERRED: 004d6fb0, placeholder name (identity tier), body byte-proved (Inferred_004d6fb0.cpp)
+	private:
 		void updateFocus();
 		void updateGoal();
 		bool characterZoom(float in);
@@ -63,8 +67,9 @@ namespace RBX
 		}
 		void setGCameraCoordinateFrame(const G3D::CoordinateFrame& coord);
 		G3D::CoordinateFrame computeLineOfSiteGoal();
-		void getHeadingElevationDistance(float& heading, float& elevation, float& distance);
-		void setHeadingElevationDistance(float, float, float);
+		// Out of line in the original (005cc0c0 / 005cc690 are called, not inlined, from panRadians/tiltRadians).
+		__declspec(noinline) void getHeadingElevationDistance(float& heading, float& elevation, float& distance);
+		__declspec(noinline) void setHeadingElevationDistance(float, float, float);
 		void tellCameraMoved();
 		void getIgnorePrims(G3D::Array<const Primitive*>&);
 		virtual bool askSetParent(const Instance* instance) const;
@@ -113,6 +118,9 @@ namespace RBX
 		bool tiltUnits(int);
 		void lookAt(const G3D::Vector3& point);
 		void setImageServerViewNoLerp(const G3D::CoordinateFrame& modelCoord, const G3D::Rect2D& viewPort);
+		// 005ce6e0 (analog name, placeholder func_005ce6e0; ret 8): tests the nine MovementKeys bytes, then moves the
+		// camera by a speed chosen from the held-key count (> 0x78 / > 0x3c); called by Workspace::onEvent 005a351f.
+		void moveWithKeys(const MovementKeys& keys, int count);
 
 	public:
 		static float distanceDefault();

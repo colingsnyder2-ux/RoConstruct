@@ -24,10 +24,7 @@ namespace RBX
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
 
-	template<class C, class D, const char* N>
-	template<class A>
-	DescribedCreatable<C, D, N>::DescribedCreatable(A arg0)
-		: Reflection::Described<C, N, FactoryProduct<C, D, N> >(arg0) {}
+	// DescribedCreatable(Arg0Type) is defined inline in reflection/reflection.h.
 
 	// Hint's factory/reflection members: the original emits them as COMDATs in the Network::Server unit
 	// (004a3af0, 004a3cb0, 004a3dd0, 004a4a60), which creates Hints; instantiated here to verify them.
@@ -107,3 +104,4 @@ namespace RBX
 
 // Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
 template void RBX::Name::callDoDeclare<RBX::sMessage>();
+

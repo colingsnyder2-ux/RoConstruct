@@ -1,0 +1,1208 @@
+{
+  "class": "RBX GlobalSettings and reflection signal rows of the application range 00568000..0056c000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022, document-swap flags, /fp:fast",
+  "flags": {
+    "globalsettings": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit568/NativeAppUnit568_globalsettings.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit568GlobalSettings.cpp"
+    ],
+    "signal": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit568/NativeAppUnit568_signal.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit568Signal.cpp"
+    ],
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit568/NativeAppUnit568_layout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit568/NativeAppUnit568Layout.cpp"
+    ],
+    "globalsettings_pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit568/pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit568/NativeAppUnit568_globalsettings_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit568GlobalSettings.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/native-classes/AppUnit568GlobalSettings.cpp": "996ac5ac18c3fbc29a24ccd9658a00f7a18310e408059d15b71c5e726097a7af",
+    "rebuild/2008-06/native-classes/AppUnit568Signal.cpp": "78503aeefffa3ca35115ae4bb6b7086de2687be9f07e7231e575ee9a2e1fea11",
+    "rebuild/2008-06/tests/record_native_app_unit568.py": "a7623596172ccb66d4f435f6668a13b245455174c00d1be8ad088558df313b28",
+    "rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h": "a51f9ca2338f74fdc354488e7e436cfe75941045415eb3d3a5e3a5f0c9bf6d16",
+    "rebuild/2008-06/native-headers/v8tree/Service.h": "946890300c9996b74bc95ae5473f51f8a11ef09902a0a8a55bd1ffb45a36cd22",
+    "rebuild/2008-06/native-headers/util/Object.h": "f90232922bf225642ca990ec8c8484e62f50caa0fe0448228b6bc33af43742b2",
+    "rebuild/2008-06/native-headers/util/Name.h": "83aa4cc4d49368359c20855d119ec20f3fb2fb066ca14fbd823ed905d95f4d4f",
+    "rebuild/2008-06/native-headers/util/FileSystem.h": "da515e6de396dd2edbdc46ba5b681a1bb8bbce2d0ed867a9dbfb18618dcb901b",
+    "rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h": "9f44b778d6e32a26a510a9ec37bc8762338db04460625bccc7322e6ce266600f",
+    "rebuild/2008-06/native-headers/v8xml/XmlSerializer.h": "7f3412ef1a73081399dc982dbb4b7b1de9f6331298e9a732fb4209dbc170707f",
+    "rebuild/2008-06/native-headers/reflection/signal.h": "e8f76a9bf2a75ced4251c425e96766092a4a39783fdbbdb82942a98c8a4c9fb3"
+  },
+  "objects": {
+    "globalsettings": "31b9398317b8a4e94af08dd8703e28bdd441692a846a1c4580c7e7084d64c00a",
+    "signal": "9e1f41660c71672cea54c58f5e19ad5c541fe256d39d2ee187b6338e0ccf30c2",
+    "layout": "662de37be1ed6ee94e25e6bb78cbed5c85a76e9172cda976216d965fcea76012",
+    "globalsettings_pending": "d3cd050eb1386d0a964326c1c83986d8549b25c7d9885a0bcca94b68c444914e"
+  },
+  "range_total_rows": 123,
+  "unit_map": {
+    "selection-tail ..0056841f": "Selection.cpp tail (app-unit564 map): func_getSelection / func_setSelection execute 00568080 / 00568330, Selection() 00568180, onEvent 005682e0 (pending on the Selection.h / Instance.h owners; not built here), then the boost::lock_error / thread_resource_error header instances 005683f0..00568450 (library; the 6-byte max_size bodies 00568420 / 00568450 are folded allocator / vector instances).",
+    "globalsettings 00568460..005691af": "GlobalSettings.cpp (\"\\GlobalSettings7.xml\" 0082ef48, \"Global Settings\" 0082f4dc, \"GlobalSettings\" 0082ef38, \"Exception thrown in loadState %s\" 0082f038). Built here (AppUnit568GlobalSettings.cpp): the settings file name helper, eraseSettingsStore, loadState (three rows, compared joined), saveState, the ServiceProvider / GlobalSettings constructor chain, ~ServiceProvider, the folded ??_G / base destructor and eight adjustor thunks (checked against the GlobalSettings vtables stored by 00568f80), the doDeclare / callDoDeclare / getClassName rows for sServiceProvider and sGlobalSettings, create<GlobalSettings> (malloc 0x1c8), shared_ptr<GlobalSettings>(p, Deleter) and singleton. 00568600 counted by creatable-shared-count-working.json (shared_count<GlobalSettings*>). ServiceProvider() 00568bf0 is pending-build-only (Service.h novtable).",
+    "standardout 005691b0..00569869": "util/standardout.cpp (leaves2008 owner): ctor 00569530, singleton 00569620, print 005693a0, Notifier raise 00569780, ??_G 005696d0 (counted by leaves2008-working.json), ~StandardOut 00569590 (its pending row), the shared_ptr / sp_counted helpers 005691b0..005692f0 and the onEvent catch funclet 00569801 (\"Exception caught in onEvent. %s\"). Not built here.",
+    "http 00569870..0056a55f": "util/Http.cpp: ATL::AtlCrtErrorCheck 00569870, the CSimpleStringT / CStringT instances 00569cb0..00569fe0 (ATL library templates), the WinINet helpers 00569920 / 00569bf0 / 0056a160 / 0056a2e0 and Http post / get / isScript 00569a40 / 00569ae0 / 0056a040 (post, isScript and 0056a2e0 are counted by the content-upload / http-trust trial receipts, see range_rows_counted_by_other_receipts). No native Http declaration exists; not attempted in this pass.",
+    "debugable 0056a560": "Debugable::dump (slot 0 of the GlobalSettings +0x20 vtable 0082f480; support row elsewhere).",
+    "signal 0056a590..0056bd8f": "reflection/signal.cpp (\"Signals\" 0082f624). Library part: boost::signals named_slot_map / signal_base and std::list / map instances 0056a590..0056b470 and 0056b530..0056b6f0 (not recovered). Built here (AppUnit568Signal.cpp): MemberDescriptor(ClassDescriptor&, const char*, const char*) 0056b480, MemberDescriptorContainer<SignalDescriptor>::compare 0056b500 (folded; pushed by the property / class containers too), findSignalInstance 0056b620, SignalDescriptor(ClassDescriptor&, const char*) 0056bab0, getSignalInstance 0056bb20, Signal::getSignalInstance 0056bd10, ~SignalSource 0056bd40 and disconnect_all_slots 0056bd60. Not exact: MemberDescriptorContainer<SignalDescriptor>::declare 0056b700.",
+    "type 0056bd90..": "reflection/type.cpp head (app-unit564 owner): Type(const char*, const type_info&) 0056bd90 counted by app-unit564-2008-working.json; TypedPropertyDescriptor support bodies 0056be00..; continues past 0056c000."
+  },
+  "range_rows_counted_by_other_receipts": [
+    "00568600 counted by creatable-shared-count-working.json",
+    "005691b0 counted by leaves2008-working.json",
+    "00569260 counted by leaves2008-working.json",
+    "005692f0 counted by leaves2008-working.json",
+    "005693a0 counted by leaves2008-working.json, workspace-status-trial.json",
+    "00569530 counted by leaves2008-working.json",
+    "00569620 counted by leaves2008-working.json, workspace-status-trial.json",
+    "005696d0 counted by leaves2008-working.json",
+    "005696f0 counted by leaves2008-working.json",
+    "00569780 counted by leaves2008-working.json",
+    "00569a40 counted by content-upload-trial.json",
+    "0056a040 counted by http-trust-trial.json",
+    "0056a2e0 counted by http-trust-trial.json",
+    "0056bd90 counted by app-unit564-2008-working.json",
+    "0056bff0 counted by class-tree-view-working.json"
+  ],
+  "layout": "sizeof(GlobalSettings) == sizeof(ServiceProvider) == 0x1c8 (generated probe on the current headers; malloc 0x1c8 in create<GlobalSettings> 00569070)",
+  "vtables": {
+    "??_7GlobalSettings@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x82f490",
+      "subobject_offset": "0x10",
+      "slots": 2,
+      "checked_own_slots": [
+        "0 ??_EGlobalSettings@RBX@@WBA@AEPAXI@Z = 0x568d20",
+        "1 ?getClassName@?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSett = 0x568eb0"
+      ]
+    },
+    "??_7GlobalSettings@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x82f488",
+      "subobject_offset": "0x14",
+      "slots": 1,
+      "checked_own_slots": [
+        "0 ??_EGlobalSettings@RBX@@WBE@AEPAXI@Z = 0x568d30"
+      ]
+    },
+    "??_7GlobalSettings@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x82f49c",
+      "subobject_offset": "0x0",
+      "slots": 16,
+      "checked_own_slots": []
+    },
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x82f430",
+      "subobject_offset": "0xa4",
+      "slots": 3,
+      "checked_own_slots": [
+        "0 ??_EGlobalSettings@RBX@@WKE@AEPAXI@Z = 0x568e70"
+      ]
+    },
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x82f470",
+      "subobject_offset": "0x24",
+      "slots": 3,
+      "checked_own_slots": [
+        "0 ??_EGlobalSettings@RBX@@WCE@AEPAXI@Z = 0x569060"
+      ]
+    },
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x82f460",
+      "subobject_offset": "0x44",
+      "slots": 3,
+      "checked_own_slots": [
+        "0 ??_EGlobalSettings@RBX@@WEE@AEPAXI@Z = 0x568e90"
+      ]
+    },
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x82f450",
+      "subobject_offset": "0x64",
+      "slots": 3,
+      "checked_own_slots": [
+        "0 ??_EGlobalSettings@RBX@@WGE@AEPAXI@Z = 0x568d10"
+      ]
+    },
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x82f440",
+      "subobject_offset": "0x84",
+      "slots": 3,
+      "checked_own_slots": [
+        "0 ??_EGlobalSettings@RBX@@WIE@AEPAXI@Z = 0x568e60"
+      ]
+    },
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x82f420",
+      "subobject_offset": "0xc4",
+      "slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@@1@@": {
+      "address": "0x82f400",
+      "subobject_offset": "0x150",
+      "slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@@1@@": {
+      "address": "0x82f3f0",
+      "subobject_offset": "0x170",
+      "slots": 3,
+      "checked_own_slots": [
+        "0 ??_EGlobalSettings@RBX@@WBHA@AEPAXI@Z = 0x568e80"
+      ]
+    },
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VServiceProvider@RBX@@VClosing@2@@1@@": {
+      "address": "0x82f410",
+      "subobject_offset": "0x130",
+      "slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7GlobalSettings@RBX@@6BDebugable@1@@": {
+      "address": "0x82f480",
+      "subobject_offset": "0x20",
+      "slots": 1,
+      "checked_own_slots": []
+    },
+    "NonFactoryProduct<Instance, sServiceProvider> +0x10 vtable 0x82efd4": "slot 1 = 0x568740 (getClassName row); RTTI offset 0x10; stored by 0x568520",
+    "folded destructors": "0x568d40 (??_G, calls ~ServiceProvider 0x568af0) is the jump target of all eight thunk rows; 0x568d60 (jmp ~ServiceProvider) is the base destructor the unwind funclet 0x7cf7e3 of 0x568ed0 jumps to"
+  },
+  "rows": {
+    "globalsettings": [
+      {
+        "address": "00568460",
+        "symbol": "?getSettingsFileName@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+        "size": 109,
+        "target_size": 109,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z": "0x5a7ac0 (external (identity: 0x5a7ac0: record_native_cache_directory.py binds getUserAppDataDirectory to this address (the SHGetKnownFolderPath loader; app-unit5a0 map)))",
+          "??_C@_0BF@JADNOHCI@?2GlobalSettings7?4xml?$AA@": "0x82ef48 (string literal '\\\\GlobalSettings7.xml')",
+          "__imp_??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "0x802448 (msvcp90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$?getSettingsFileName@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        ]
+      },
+      {
+        "address": "005684d0",
+        "symbol": "?eraseSettingsStore@GlobalSettings@RBX@@QAEXXZ",
+        "size": 68,
+        "target_size": 68,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "?getSettingsFileName@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x568460 (own row)",
+          "__imp__DeleteFileA@4": "0x8021fc (kernel32.dll!DeleteFileA)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00568520",
+        "symbol": "??0?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@QAE@XZ",
+        "size": 90,
+        "target_size": 90,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external (evidence name ??0Instance@RBX@@IAE@XZ; access letter differs))",
+          "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82efe4 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0x0)",
+          "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82efd4 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0x10)",
+          "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82efcc (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0x14)",
+          "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6BDebugable@1@@": "0x82efc4 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0x20)",
+          "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82efb4 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0x24)",
+          "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82efa4 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0x44)",
+          "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82ef94 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0x64)",
+          "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82ef84 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0x84)",
+          "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82ef74 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0xa4)",
+          "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82ef64 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0xc4)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00568580",
+        "symbol": "??$doDeclare@$1?sServiceProvider@RBX@@3PADA@Name@RBX@@CAABV01@XZ",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??_B?1???$doDeclare@$1?sServiceProvider@RBX@@3PADA@Name@RBX@@CAABV01@XZ@51": "0x974a7c (unit / function static (one address per symbol))",
+          "?sServiceProvider@RBX@@3PADA": "0x82f7d8 (class-name array 'ServiceProvider')",
+          "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+          "?n@?1???$doDeclare@$1?sServiceProvider@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x974a78 (unit / function static (one address per symbol))"
+        },
+        "local_eh": [
+          "__ehhandler$??$doDeclare@$1?sServiceProvider@RBX@@3PADA@Name@RBX@@CAABV01@XZ"
+        ]
+      },
+      {
+        "address": "005685f0",
+        "symbol": "??$callDoDeclare@$1?sServiceProvider@RBX@@3PADA@Name@RBX@@CAXXZ",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??$doDeclare@$1?sServiceProvider@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x568580 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00568690",
+        "symbol": "??$?0VGlobalSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VGlobalSettings@RBX@@@boost@@QAE@PAVGlobalSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+        "size": 171,
+        "target_size": 171,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??$?0PAVGlobalSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGlobalSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x568600 (row counted by creatable-shared-count-working.json (compiled body exact at the bound address))"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VGlobalSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VGlobalSettings@RBX@@@boost@@QAE@PAVGlobalSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+        ]
+      },
+      {
+        "address": "00568740",
+        "symbol": "?getClassName@?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@UBEABVName@2@XZ",
+        "size": 23,
+        "target_size": 23,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "?flag@?1???$declare@$1?sServiceProvider@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x974a80 (unit / function static (one address per symbol))",
+          "??$callDoDeclare@$1?sServiceProvider@RBX@@3PADA@Name@RBX@@CAXXZ": "0x5685f0 (own row)",
+          "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external (identity: 0x557330: boost::call_once, bound the same way by app-unit424 / app-unit40c / app-unit658))",
+          "??$doDeclare@$1?sServiceProvider@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x568580 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00568760",
+        "symbol": "?loadState@GlobalSettings@RBX@@QAEXXZ",
+        "size": 420,
+        "target_size": 420,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "?getSettingsFileName@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x568460 (own row)",
+          "__imp_??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z": "0x802404 (msvcp90.dll!??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z)",
+          "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z": "0x415350 (external (identity: 0x415350: noinline TextXmlParser(std::streambuf*) of v8xml/XmlSerializer.h (identical-code folded with TextXmlWriterWithEmbeddedContent, its evidence name); it is called with the ifstream filebuf))",
+          "?parse@TextXmlParser@@UAE?AV?$auto_ptr@VXmlElement@@@std@@XZ": "0x58f6c0 (external (evidence name))",
+          "??1XmlElement@@QAE@XZ": "0x413a70 (external (identity: 0x413a70: ~XmlElement, bound the same way by record_native_duplicate_action_trial.py))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?mutex@GlobalSettings@RBX@@2Vrecursive_mutex@boost@@A": "0x974aa0 (external (identity: 0x974aa0: GlobalSettings::mutex, the recursive_mutex locked by singleton (evidence name) at singleton 00569112, loadState 00568815))",
+          "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external (identity: 0x563090: boost 1.34.1 recursive_mutex::do_lock (EnterCriticalSection / WaitForSingleObject through the IAT)))",
+          "??0MergeBinder@RBX@@QAE@XZ": "0x443e50 (external (evidence name))",
+          "?readChildren@Instance@RBX@@QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z": "0x55b6a0 (external (evidence name))",
+          "?resolveRefs@MergeBinder@RBX@@UAE_NXZ": "0x443d60 (external (evidence name))",
+          "??1?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE@XZ": "0x443cf0 (external (evidence name))",
+          "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external (identity: 0x5630e0: boost 1.34.1 recursive_mutex::do_unlock; record_native_app_unit574.py binds the same address))",
+          "??1TextXmlParser@@QAE@XZ": "0x4147c0 (external (identity: 0x4147c0: v8xml/XmlSerializer.h notes that 00415350 / 004147c0 construct and destroy the TextXmlParser entities map at +0x28))",
+          "__imp_??_D?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAEXXZ": "0x802408 (msvcp90.dll!??_D?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAEXXZ)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620 (external (evidence name))",
+          "??_C@_0CB@BFGBILGE@Exception?5thrown?5in?5loadState?5?$CFs@": "0x82f038 (string literal 'Exception thrown in loadState %s')",
+          "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0 (external (evidence name))",
+          "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ": "0x600660 (external (identity: 0x600660: the folded shared_ptr destructor (evidence name ~shared_ptr<Instance>; identical code for every T)))"
+        },
+        "local_eh": [
+          "__ehhandler$?loadState@GlobalSettings@RBX@@QAEXXZ",
+          "$LN16"
+        ]
+      },
+      {
+        "address": "00568910",
+        "symbol": "?saveState@GlobalSettings@RBX@@QAEXXZ",
+        "size": 319,
+        "target_size": 319,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "?getSettingsFileName@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x568460 (own row)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "?newRootElement@SerializerV2@@SAPAVXmlElement@@XZ": "0x591a30 (external (identity: 0x591a30: SerializerV2::newRootElement (\"xmlns:xmime\"; app-unit588 map), bound the same way by record_native_document.py and record_native_serializer_root.py))",
+          "?writeChildren@Instance@RBX@@QAEXPAVXmlElement@@@Z": "0x558110 (external (evidence name))",
+          "__imp_??0?$basic_ofstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z": "0x8023d0 (msvcp90.dll!??0?$basic_ofstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z)",
+          "??0XmlWriter@@IAE@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": "0x58fff0 (external (evidence name))",
+          "??_7TextXmlWriter@@6B@": "0x80ea1c (vtable RTTI .?AVTextXmlWriter@@ offset 0x0)",
+          "?serialize@TextXmlWriter@@UAEXPBVXmlElement@@@Z": "0x58e810 (external (evidence name))",
+          "??1?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE@XZ": "0x4146d0 (helper body exact at the bound address (not counted here))",
+          "__imp_??_D?$basic_ofstream@DU?$char_traits@D@std@@@std@@QAEXXZ": "0x8023d4 (msvcp90.dll!??_D?$basic_ofstream@DU?$char_traits@D@std@@@std@@QAEXXZ)",
+          "??1XmlElement@@QAE@XZ": "0x413a70 (external (identity: 0x413a70: ~XmlElement, bound the same way by record_native_duplicate_action_trial.py))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$?saveState@GlobalSettings@RBX@@QAEXXZ"
+        ]
+      },
+      {
+        "address": "00568a50",
+        "symbol": "??0?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@IAE@XZ",
+        "size": 146,
+        "target_size": 146,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??0?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@QAE@XZ": "0x568520 (own row)",
+          "?classDescriptor@?$Described@VServiceProvider@RBX@@$1?sServiceProvider@2@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49e9a0 (external (identity: 0x49e9a0: called by DescribedNonCreatable<ServiceProvider>() 00568a50, whose vptr store names .?AV?$DescribedNonCreatable@VServiceProvider@RBX@@...; its function-local ClassDescriptor static is named \"ServiceProvider\"))",
+          "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82f0dc (vtable RTTI .?AV?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0x0)",
+          "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82f0d0 (vtable RTTI .?AV?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0x10)",
+          "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82f0c8 (vtable RTTI .?AV?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0x14)",
+          "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6BDebugable@1@@": "0x82f0c0 (vtable RTTI .?AV?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0x20)",
+          "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82f0b0 (vtable RTTI .?AV?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0x24)",
+          "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82f0a0 (vtable RTTI .?AV?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0x44)",
+          "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82f090 (vtable RTTI .?AV?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0x64)",
+          "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82f080 (vtable RTTI .?AV?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0x84)",
+          "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82f070 (vtable RTTI .?AV?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0xa4)",
+          "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82f060 (vtable RTTI .?AV?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3QBDB@RBX@@ offset 0xc4)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@IAE@XZ"
+        ]
+      },
+      {
+        "address": "00568af0",
+        "symbol": "??1ServiceProvider@RBX@@UAE@XZ",
+        "size": 255,
+        "target_size": 255,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@QAE@XZ": "0x4b16a0 (helper body exact at the bound address (not counted here))",
+          "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x5a2fe0 (external (evidence name))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??1Instance@RBX@@UAE@XZ": "0x55a540 (external (evidence name ??1Instance@RBX@@MAE@XZ; access letter differs))"
+        },
+        "local_eh": [
+          "__ehhandler$??1ServiceProvider@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00568d10",
+        "symbol": "??_EGlobalSettings@RBX@@WGE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??_EGlobalSettings@RBX@@UAEPAXI@Z": "0x568d40 (own row ??_GGlobalSettings@RBX@@UAEPAXI@Z (alias: no vector deleting destructor is emitted))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00568d20",
+        "symbol": "??_EGlobalSettings@RBX@@WBA@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??_EGlobalSettings@RBX@@UAEPAXI@Z": "0x568d40 (own row ??_GGlobalSettings@RBX@@UAEPAXI@Z (alias: no vector deleting destructor is emitted))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00568d30",
+        "symbol": "??_EGlobalSettings@RBX@@WBE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??_EGlobalSettings@RBX@@UAEPAXI@Z": "0x568d40 (own row ??_GGlobalSettings@RBX@@UAEPAXI@Z (alias: no vector deleting destructor is emitted))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00568d40",
+        "symbol": "??_GGlobalSettings@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??1ServiceProvider@RBX@@UAE@XZ": "0x568af0 (own row)",
+          "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00568d60",
+        "symbol": "??1?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@UAE@XZ",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??1ServiceProvider@RBX@@UAE@XZ": "0x568af0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00568d70",
+        "symbol": "??0?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@QAE@XZ",
+        "size": 120,
+        "target_size": 120,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??0ServiceProvider@RBX@@QAE@XZ": "0x568bf0 (external (evidence name))",
+          "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82f2bc (vtable RTTI .?AV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x0)",
+          "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82f2b0 (vtable RTTI .?AV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x10)",
+          "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82f2a8 (vtable RTTI .?AV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x14)",
+          "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6BDebugable@1@@": "0x82f2a0 (vtable RTTI .?AV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x20)",
+          "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82f290 (vtable RTTI .?AV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x24)",
+          "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82f280 (vtable RTTI .?AV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x44)",
+          "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82f270 (vtable RTTI .?AV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x64)",
+          "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82f260 (vtable RTTI .?AV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x84)",
+          "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82f250 (vtable RTTI .?AV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0xa4)",
+          "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82f240 (vtable RTTI .?AV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0xc4)",
+          "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VServiceProvider@RBX@@VClosing@2@@1@@": "0x82f230 (vtable RTTI .?AV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x130)",
+          "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@@1@@": "0x82f220 (vtable RTTI .?AV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x150)",
+          "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@@1@@": "0x82f210 (vtable RTTI .?AV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x170)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00568df0",
+        "symbol": "??$doDeclare@$1?sGlobalSettings@RBX@@3PADA@Name@RBX@@CAABV01@XZ",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??_B?1???$doDeclare@$1?sGlobalSettings@RBX@@3PADA@Name@RBX@@CAABV01@XZ@51": "0x974a88 (unit / function static (one address per symbol))",
+          "?sGlobalSettings@RBX@@3PADA": "0x82ef38 (class-name array 'GlobalSettings')",
+          "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+          "?n@?1???$doDeclare@$1?sGlobalSettings@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x974a84 (unit / function static (one address per symbol))"
+        },
+        "local_eh": [
+          "__ehhandler$??$doDeclare@$1?sGlobalSettings@RBX@@3PADA@Name@RBX@@CAABV01@XZ"
+        ]
+      },
+      {
+        "address": "00568e60",
+        "symbol": "??_EGlobalSettings@RBX@@WIE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??_EGlobalSettings@RBX@@UAEPAXI@Z": "0x568d40 (own row ??_GGlobalSettings@RBX@@UAEPAXI@Z (alias: no vector deleting destructor is emitted))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00568e70",
+        "symbol": "??_EGlobalSettings@RBX@@WKE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??_EGlobalSettings@RBX@@UAEPAXI@Z": "0x568d40 (own row ??_GGlobalSettings@RBX@@UAEPAXI@Z (alias: no vector deleting destructor is emitted))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00568e80",
+        "symbol": "??_EGlobalSettings@RBX@@WBHA@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??_EGlobalSettings@RBX@@UAEPAXI@Z": "0x568d40 (own row ??_GGlobalSettings@RBX@@UAEPAXI@Z (alias: no vector deleting destructor is emitted))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00568e90",
+        "symbol": "??_EGlobalSettings@RBX@@WEE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??_EGlobalSettings@RBX@@UAEPAXI@Z": "0x568d40 (own row ??_GGlobalSettings@RBX@@UAEPAXI@Z (alias: no vector deleting destructor is emitted))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00568ea0",
+        "symbol": "??$callDoDeclare@$1?sGlobalSettings@RBX@@3PADA@Name@RBX@@CAXXZ",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??$doDeclare@$1?sGlobalSettings@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x568df0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00568eb0",
+        "symbol": "?getClassName@?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@UBEABVName@2@XZ",
+        "size": 23,
+        "target_size": 23,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "?flag@?1???$declare@$1?sGlobalSettings@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x974a8c (unit / function static (one address per symbol))",
+          "??$callDoDeclare@$1?sGlobalSettings@RBX@@3PADA@Name@RBX@@CAXXZ": "0x568ea0 (own row)",
+          "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external (identity: 0x557330: boost::call_once, bound the same way by app-unit424 / app-unit40c / app-unit658))",
+          "??$doDeclare@$1?sGlobalSettings@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x568df0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00568ed0",
+        "symbol": "??0?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@IAE@XZ",
+        "size": 176,
+        "target_size": 176,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??0?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@QAE@XZ": "0x568d70 (own row)",
+          "?classDescriptor@?$Described@VGlobalSettings@RBX@@$1?sGlobalSettings@2@3PADAV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49ec10 (external (evidence name))",
+          "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82f3ac (vtable RTTI .?AV?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x0)",
+          "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82f3a0 (vtable RTTI .?AV?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x10)",
+          "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82f398 (vtable RTTI .?AV?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x14)",
+          "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6BDebugable@1@@": "0x82f390 (vtable RTTI .?AV?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x20)",
+          "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82f380 (vtable RTTI .?AV?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x24)",
+          "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82f370 (vtable RTTI .?AV?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x44)",
+          "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82f360 (vtable RTTI .?AV?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x64)",
+          "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82f350 (vtable RTTI .?AV?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x84)",
+          "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82f340 (vtable RTTI .?AV?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0xa4)",
+          "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82f330 (vtable RTTI .?AV?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0xc4)",
+          "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VServiceProvider@RBX@@VClosing@2@@1@@": "0x82f320 (vtable RTTI .?AV?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x130)",
+          "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@@1@@": "0x82f310 (vtable RTTI .?AV?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x150)",
+          "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@@1@@": "0x82f300 (vtable RTTI .?AV?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3QBDB@RBX@@ offset 0x170)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@IAE@XZ"
+        ]
+      },
+      {
+        "address": "00568f80",
+        "symbol": "??0GlobalSettings@RBX@@QAE@XZ",
+        "size": 217,
+        "target_size": 217,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??0?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@IAE@XZ": "0x568ed0 (own row)",
+          "??_C@_0BA@IIJLCPLP@Global?5Settings?$AA@": "0x82f4dc (string literal 'Global Settings')",
+          "??_7GlobalSettings@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82f49c (vtable RTTI .?AVGlobalSettings@RBX@@ offset 0x0)",
+          "??_7GlobalSettings@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82f490 (vtable RTTI .?AVGlobalSettings@RBX@@ offset 0x10)",
+          "??_7GlobalSettings@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82f488 (vtable RTTI .?AVGlobalSettings@RBX@@ offset 0x14)",
+          "??_7GlobalSettings@RBX@@6BDebugable@1@@": "0x82f480 (vtable RTTI .?AVGlobalSettings@RBX@@ offset 0x20)",
+          "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82f470 (vtable RTTI .?AVGlobalSettings@RBX@@ offset 0x24)",
+          "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82f460 (vtable RTTI .?AVGlobalSettings@RBX@@ offset 0x44)",
+          "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82f450 (vtable RTTI .?AVGlobalSettings@RBX@@ offset 0x64)",
+          "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82f440 (vtable RTTI .?AVGlobalSettings@RBX@@ offset 0x84)",
+          "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82f430 (vtable RTTI .?AVGlobalSettings@RBX@@ offset 0xa4)",
+          "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82f420 (vtable RTTI .?AVGlobalSettings@RBX@@ offset 0xc4)",
+          "??_7GlobalSettings@RBX@@6B?$Notifier@VServiceProvider@RBX@@VClosing@2@@1@@": "0x82f410 (vtable RTTI .?AVGlobalSettings@RBX@@ offset 0x130)",
+          "??_7GlobalSettings@RBX@@6B?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@@1@@": "0x82f400 (vtable RTTI .?AVGlobalSettings@RBX@@ offset 0x150)",
+          "??_7GlobalSettings@RBX@@6B?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@@1@@": "0x82f3f0 (vtable RTTI .?AVGlobalSettings@RBX@@ offset 0x170)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90 (external (evidence name))",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$??0GlobalSettings@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "00569060",
+        "symbol": "??_EGlobalSettings@RBX@@WCE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "??_EGlobalSettings@RBX@@UAEPAXI@Z": "0x568d40 (own row ??_GGlobalSettings@RBX@@UAEPAXI@Z (alias: no vector deleting destructor is emitted))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00569070",
+        "symbol": "??$create@VGlobalSettings@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ",
+        "size": 120,
+        "target_size": 120,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+          "??0GlobalSettings@RBX@@QAE@XZ": "0x568f80 (own row)",
+          "??$?0VGlobalSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VGlobalSettings@RBX@@@boost@@QAE@PAVGlobalSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x568690 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$create@VGlobalSettings@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ"
+        ]
+      },
+      {
+        "address": "005690f0",
+        "symbol": "?singleton@GlobalSettings@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ",
+        "size": 183,
+        "target_size": 183,
+        "exact": true,
+        "build": "globalsettings",
+        "verified_targets": {
+          "?mutex@GlobalSettings@RBX@@2Vrecursive_mutex@boost@@A": "0x974aa0 (external (identity: 0x974aa0: GlobalSettings::mutex, the recursive_mutex locked by singleton (evidence name) at singleton 00569112, loadState 00568815))",
+          "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external (identity: 0x563090: boost 1.34.1 recursive_mutex::do_lock (EnterCriticalSection / WaitForSingleObject through the IAT)))",
+          "?$S2@?1??singleton@GlobalSettings@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ@4IA": "0x974a98 (unit / function static (one address per symbol))",
+          "?sing@?1??singleton@GlobalSettings@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ@4V45@A": "0x974a90 (unit / function static (one address per symbol))",
+          "??$create@VGlobalSettings@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ": "0x569070 (own row)",
+          "??__Fsing@?1??singleton@GlobalSettings@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ@YAXXZ": "0x7fd0d0 (helper body exact at the bound address (not counted here))",
+          "_atexit": "0x6a17af (external (identity: 0x6a17af: CRT atexit, bound the same way by app-unit564 / app-unit570 / app-unit588))",
+          "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external (identity: 0x5630e0: boost 1.34.1 recursive_mutex::do_unlock; record_native_app_unit574.py binds the same address))"
+        },
+        "local_eh": [
+          "__ehhandler$?singleton@GlobalSettings@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ"
+        ]
+      }
+    ],
+    "signal": [
+      {
+        "address": "0056b480",
+        "symbol": "??0MemberDescriptor@Reflection@RBX@@IAE@ABVClassDescriptor@12@PBD1@Z",
+        "size": 103,
+        "target_size": 103,
+        "exact": true,
+        "build": "signal",
+        "verified_targets": {
+          "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)",
+          "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$??0MemberDescriptor@Reflection@RBX@@IAE@ABVClassDescriptor@12@PBD1@Z"
+        ]
+      },
+      {
+        "address": "0056b500",
+        "symbol": "?compare@?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@SA_NPBVSignalDescriptor@23@0@Z",
+        "size": 48,
+        "target_size": 48,
+        "exact": true,
+        "build": "signal",
+        "verified_targets": {
+          "__imp_??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x80235c (msvcp90.dll!??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0056b620",
+        "symbol": "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z",
+        "size": 111,
+        "target_size": 111,
+        "exact": true,
+        "build": "signal",
+        "verified_targets": {
+          "?find@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE?AViterator@12@ABQBVSignalDescriptor@Reflection@RBX@@@Z": "0x591bd0 (helper body exact at the bound address (not counted here))",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??Cconst_iterator@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBEPBU?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@2@XZ": "0x6787f0 (helper body exact at the bound address (not counted here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0056bab0",
+        "symbol": "??0SignalDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD@Z",
+        "size": 102,
+        "target_size": 102,
+        "exact": true,
+        "build": "signal",
+        "verified_targets": {
+          "??_C@_07KKOMKDFM@Signals?$AA@": "0x82f624 (string literal 'Signals')",
+          "??0MemberDescriptor@Reflection@RBX@@IAE@ABVClassDescriptor@12@PBD1@Z": "0x56b480 (own row)",
+          "??0SignatureDescriptor@Reflection@RBX@@QAE@XZ": "0x594bf0 (external (evidence name))",
+          "?declare@?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAEXPAVSignalDescriptor@23@@Z": "0x56b700 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$??0SignalDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD@Z"
+        ]
+      },
+      {
+        "address": "0056bb20",
+        "symbol": "?getSignalInstance@SignalDescriptor@Reflection@RBX@@QBE?AV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@AAVSignalSource@23@@Z",
+        "size": 485,
+        "target_size": 485,
+        "exact": true,
+        "build": "signal",
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE@ABU?$less@PBVSignalDescriptor@Reflection@RBX@@@1@ABV?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@1@@Z": "0x589190 (row counted by app-unit588-2008-working.json (compiled body exact at the bound address))",
+          "??1?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE@XZ": "0x4b16a0 (helper body exact at the bound address (not counted here))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??$?0VSignalInstance@Reflection@RBX@@@shared_count@detail@boost@@QAE@PAVSignalInstance@Reflection@RBX@@@Z": "0x56b590 (external (evidence name))",
+          "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (row counted by humanoid2008-working.json, network-physics-working.json, stats-service-working.json, wrapper-view-working.json (compiled body exact at the bound address))",
+          "??A?$map@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@@std@@QAEAAV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@ABQBVSignalDescriptor@Reflection@RBX@@@Z": "0x592610 (helper body exact at the bound address (not counted here))",
+          "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (row counted by humanoid2008-working.json, roblox-report-view-working.json (compiled body exact at the bound address))",
+          "?find@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE?AViterator@12@ABQBVSignalDescriptor@Reflection@RBX@@@Z": "0x591bd0 (helper body exact at the bound address (not counted here))",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local_eh": [
+          "__ehhandler$?getSignalInstance@SignalDescriptor@Reflection@RBX@@QBE?AV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@AAVSignalSource@23@@Z"
+        ]
+      },
+      {
+        "address": "0056bd10",
+        "symbol": "?getSignalInstance@Signal@Reflection@RBX@@QBE?AV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@XZ",
+        "size": 33,
+        "target_size": 33,
+        "exact": true,
+        "build": "signal",
+        "verified_targets": {
+          "?getSignalInstance@SignalDescriptor@Reflection@RBX@@QBE?AV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@AAVSignalSource@23@@Z": "0x56bb20 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0056bd40",
+        "symbol": "??1SignalSource@Reflection@RBX@@UAE@XZ",
+        "size": 26,
+        "target_size": 26,
+        "exact": true,
+        "build": "signal",
+        "verified_targets": {
+          "??1?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE@XZ": "0x4b16a0 (helper body exact at the bound address (not counted here))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0056bd60",
+        "symbol": "?disconnect_all_slots@SignalSource@Reflection@RBX@@QAEXXZ",
+        "size": 33,
+        "target_size": 33,
+        "exact": true,
+        "build": "signal",
+        "verified_targets": {
+          "??1?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE@XZ": "0x4b16a0 (helper body exact at the bound address (not counted here))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "span_rows": {
+    "005688a1": "part of loadState 00568760 (compared joined; BOUNDS)",
+    "005688c5": "part of loadState 00568760 (compared joined; BOUNDS)"
+  },
+  "not_exact": [
+    {
+      "address": "0056b700 (not counted)",
+      "symbol": "?declare@?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAEXPAVSignalDescriptor@23@@Z",
+      "size": 366,
+      "target_size": 931,
+      "exact": false,
+      "build": "signal",
+      "reason": "reflection/signal.h / reflection/object.h declare the donor MemberDescriptorContainer::declare (366 B); the 2008 body (931 B) keeps the descriptors sorted (compare 0056b500 pushed at 0056b75c) and is not derivable from the current headers"
+    }
+  ],
+  "pending_rows": [
+    {
+      "address": "00568bf0 (pending-build-only, not counted)",
+      "symbol": "??0ServiceProvider@RBX@@QAE@XZ",
+      "size": 284,
+      "target_size": 284,
+      "build": "globalsettings_pending",
+      "verified_targets": {
+        "??0?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@IAE@XZ": "0x568a50 (own row)",
+        "??0?$Notifier@VServiceProvider@RBX@@VClosing@2@@RBX@@IAE@XZ": "0x5e9ec0 (row counted by leaves2008-working.json (compiled body exact at the bound address))",
+        "??0?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@IAE@XZ": "0x5e9ec0 (row counted by leaves2008-working.json (compiled body exact at the bound address))",
+        "??0?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@@RBX@@IAE@XZ": "0x5e9ec0 (row counted by leaves2008-working.json (compiled body exact at the bound address))",
+        "??_7ServiceProvider@RBX@@6B?$Notifier@VServiceProvider@RBX@@VClosing@2@@1@@": "0x82f200 (vtable RTTI .?AVServiceProvider@RBX@@ offset 0x130)",
+        "??_7ServiceProvider@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82f1bc (vtable RTTI .?AVServiceProvider@RBX@@ offset 0x0)",
+        "??_7ServiceProvider@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82f1b0 (vtable RTTI .?AVServiceProvider@RBX@@ offset 0x10)",
+        "??_7ServiceProvider@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82f1a8 (vtable RTTI .?AVServiceProvider@RBX@@ offset 0x14)",
+        "??_7ServiceProvider@RBX@@6BDebugable@1@@": "0x82f1a0 (vtable RTTI .?AVServiceProvider@RBX@@ offset 0x20)",
+        "??_7ServiceProvider@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82f190 (vtable RTTI .?AVServiceProvider@RBX@@ offset 0x24)",
+        "??_7ServiceProvider@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82f180 (vtable RTTI .?AVServiceProvider@RBX@@ offset 0x44)",
+        "??_7ServiceProvider@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82f170 (vtable RTTI .?AVServiceProvider@RBX@@ offset 0x64)",
+        "??_7ServiceProvider@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82f160 (vtable RTTI .?AVServiceProvider@RBX@@ offset 0x84)",
+        "??_7ServiceProvider@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82f150 (vtable RTTI .?AVServiceProvider@RBX@@ offset 0xa4)",
+        "??_7ServiceProvider@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82f140 (vtable RTTI .?AVServiceProvider@RBX@@ offset 0xc4)",
+        "??_7ServiceProvider@RBX@@6B?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@@1@@": "0x82f130 (vtable RTTI .?AVServiceProvider@RBX@@ offset 0x150)",
+        "??_7ServiceProvider@RBX@@6B?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@@1@@": "0x82f120 (vtable RTTI .?AVServiceProvider@RBX@@ offset 0x170)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@1@@Z": "0x589190 (row counted by app-unit588-2008-working.json (compiled body exact at the bound address))"
+      },
+      "local_eh": [
+        "__ehhandler$??0ServiceProvider@RBX@@QAE@XZ"
+      ],
+      "pending_build_exact": true,
+      "exact": false,
+      "reason": "pending-build-only: needs ServiceProvider without __declspec(novtable) in v8tree/Service.h (proposal); the generated copy is under out/native-layouts/app-unit568/pending/"
+    }
+  ],
+  "helper_bodies_not_counted": {
+    "??1?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE@XZ": "0x4146d0",
+    "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@QAE@XZ": "0x4b16a0",
+    "??__Fsing@?1??singleton@GlobalSettings@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ@YAXXZ": "0x7fd0d0",
+    "?find@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE?AViterator@12@ABQBVSignalDescriptor@Reflection@RBX@@@Z": "0x591bd0",
+    "??Cconst_iterator@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBEPBU?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@2@XZ": "0x6787f0",
+    "??1?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE@XZ": "0x4b16a0",
+    "??A?$map@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@@std@@QAEAAV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@ABQBVSignalDescriptor@Reflection@RBX@@@Z": "0x592610"
+  },
+  "bindings": {
+    "?$S2@?1??singleton@GlobalSettings@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ@4IA": "0x974a98",
+    "??$?0PAVGlobalSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGlobalSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x568600",
+    "??$?0VGlobalSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VGlobalSettings@RBX@@@boost@@QAE@PAVGlobalSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x568690",
+    "??$?0VSignalInstance@Reflection@RBX@@@shared_count@detail@boost@@QAE@PAVSignalInstance@Reflection@RBX@@@Z": "0x56b590",
+    "??$callDoDeclare@$1?sGlobalSettings@RBX@@3PADA@Name@RBX@@CAXXZ": "0x568ea0",
+    "??$callDoDeclare@$1?sServiceProvider@RBX@@3PADA@Name@RBX@@CAXXZ": "0x5685f0",
+    "??$create@VGlobalSettings@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ": "0x569070",
+    "??$doDeclare@$1?sGlobalSettings@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x568df0",
+    "??$doDeclare@$1?sServiceProvider@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x568580",
+    "??0?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@IAE@XZ": "0x568ed0",
+    "??0?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@QAE@XZ": "0x568520",
+    "??0?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@QAE@XZ": "0x568d70",
+    "??0?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE@ABU?$less@PBVSignalDescriptor@Reflection@RBX@@@1@ABV?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@1@@Z": "0x589190",
+    "??0GlobalSettings@RBX@@QAE@XZ": "0x568f80",
+    "??0Instance@RBX@@QAE@XZ": "0x55b7e0",
+    "??0MemberDescriptor@Reflection@RBX@@IAE@ABVClassDescriptor@12@PBD1@Z": "0x56b480",
+    "??0MergeBinder@RBX@@QAE@XZ": "0x443e50",
+    "??0ServiceProvider@RBX@@QAE@XZ": "0x568bf0",
+    "??0SignatureDescriptor@Reflection@RBX@@QAE@XZ": "0x594bf0",
+    "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z": "0x415350",
+    "??0XmlWriter@@IAE@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": "0x58fff0",
+    "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@QAE@XZ": "0x4b16a0",
+    "??1?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE@XZ": "0x4b16a0",
+    "??1?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE@XZ": "0x4146d0",
+    "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ": "0x600660",
+    "??1?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE@XZ": "0x443cf0",
+    "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x5a2fe0",
+    "??1Instance@RBX@@UAE@XZ": "0x55a540",
+    "??1ServiceProvider@RBX@@UAE@XZ": "0x568af0",
+    "??1TextXmlParser@@QAE@XZ": "0x4147c0",
+    "??1XmlElement@@QAE@XZ": "0x413a70",
+    "??2@YAPAXI@Z": "0x6a0920",
+    "??3@YAXPAX@Z": "0x6a067a",
+    "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0",
+    "??A?$map@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@@std@@QAEAAV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@ABQBVSignalDescriptor@Reflection@RBX@@@Z": "0x592610",
+    "??Cconst_iterator@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBEPBU?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@2@XZ": "0x6787f0",
+    "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82f3a0",
+    "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82f398",
+    "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82f3ac",
+    "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82f340",
+    "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82f380",
+    "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82f370",
+    "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82f360",
+    "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82f350",
+    "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82f330",
+    "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@@1@@": "0x82f310",
+    "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@@1@@": "0x82f300",
+    "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VServiceProvider@RBX@@VClosing@2@@1@@": "0x82f320",
+    "??_7?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@6BDebugable@1@@": "0x82f390",
+    "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82f0d0",
+    "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82f0c8",
+    "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82f0dc",
+    "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82f070",
+    "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82f0b0",
+    "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82f0a0",
+    "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82f090",
+    "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82f080",
+    "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82f060",
+    "??_7?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PADA@RBX@@6BDebugable@1@@": "0x82f0c0",
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82efd4",
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82efcc",
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82efe4",
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82ef74",
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82efb4",
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82efa4",
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82ef94",
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82ef84",
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82ef64",
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@RBX@@6BDebugable@1@@": "0x82efc4",
+    "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82f2b0",
+    "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82f2a8",
+    "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82f2bc",
+    "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82f250",
+    "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82f290",
+    "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82f280",
+    "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82f270",
+    "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82f260",
+    "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82f240",
+    "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@@1@@": "0x82f220",
+    "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@@1@@": "0x82f210",
+    "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6B?$Notifier@VServiceProvider@RBX@@VClosing@2@@1@@": "0x82f230",
+    "??_7?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@6BDebugable@1@@": "0x82f2a0",
+    "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730",
+    "??_7GlobalSettings@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82f490",
+    "??_7GlobalSettings@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82f488",
+    "??_7GlobalSettings@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82f49c",
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82f430",
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82f470",
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82f460",
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82f450",
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82f440",
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82f420",
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@@1@@": "0x82f400",
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@@1@@": "0x82f3f0",
+    "??_7GlobalSettings@RBX@@6B?$Notifier@VServiceProvider@RBX@@VClosing@2@@1@@": "0x82f410",
+    "??_7GlobalSettings@RBX@@6BDebugable@1@@": "0x82f480",
+    "??_7TextXmlWriter@@6B@": "0x80ea1c",
+    "??_B?1???$doDeclare@$1?sGlobalSettings@RBX@@3PADA@Name@RBX@@CAABV01@XZ@51": "0x974a88",
+    "??_B?1???$doDeclare@$1?sServiceProvider@RBX@@3PADA@Name@RBX@@CAABV01@XZ@51": "0x974a7c",
+    "??_C@_07KKOMKDFM@Signals?$AA@": "0x82f624",
+    "??_C@_0BA@IIJLCPLP@Global?5Settings?$AA@": "0x82f4dc",
+    "??_C@_0BF@JADNOHCI@?2GlobalSettings7?4xml?$AA@": "0x82ef48",
+    "??_C@_0CB@BFGBILGE@Exception?5thrown?5in?5loadState?5?$CFs@": "0x82f038",
+    "??_EGlobalSettings@RBX@@UAEPAXI@Z": "0x568d40",
+    "??__Fsing@?1??singleton@GlobalSettings@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ@YAXXZ": "0x7fd0d0",
+    "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+    "?classDescriptor@?$Described@VGlobalSettings@RBX@@$1?sGlobalSettings@2@3PADAV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49ec10",
+    "?classDescriptor@?$Described@VServiceProvider@RBX@@$1?sServiceProvider@2@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49e9a0",
+    "?declare@?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAEXPAVSignalDescriptor@23@@Z": "0x56b700",
+    "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90",
+    "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090",
+    "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0",
+    "?find@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE?AViterator@12@ABQBVSignalDescriptor@Reflection@RBX@@@Z": "0x591bd0",
+    "?flag@?1???$declare@$1?sGlobalSettings@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x974a8c",
+    "?flag@?1???$declare@$1?sServiceProvider@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x974a80",
+    "?getSettingsFileName@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x568460",
+    "?getSignalInstance@SignalDescriptor@Reflection@RBX@@QBE?AV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@AAVSignalSource@23@@Z": "0x56bb20",
+    "?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z": "0x5a7ac0",
+    "?mutex@GlobalSettings@RBX@@2Vrecursive_mutex@boost@@A": "0x974aa0",
+    "?n@?1???$doDeclare@$1?sGlobalSettings@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x974a84",
+    "?n@?1???$doDeclare@$1?sServiceProvider@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x974a78",
+    "?newRootElement@SerializerV2@@SAPAVXmlElement@@XZ": "0x591a30",
+    "?parse@TextXmlParser@@UAE?AV?$auto_ptr@VXmlElement@@@std@@XZ": "0x58f6c0",
+    "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0",
+    "?readChildren@Instance@RBX@@QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z": "0x55b6a0",
+    "?resolveRefs@MergeBinder@RBX@@UAE_NXZ": "0x443d60",
+    "?sGlobalSettings@RBX@@3PADA": "0x82ef38",
+    "?sServiceProvider@RBX@@3PADA": "0x82f7d8",
+    "?serialize@TextXmlWriter@@UAEXPBVXmlElement@@@Z": "0x58e810",
+    "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90",
+    "?sing@?1??singleton@GlobalSettings@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ@4V45@A": "0x974a90",
+    "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620",
+    "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410",
+    "?writeChildren@Instance@RBX@@QAEXPAVXmlElement@@@Z": "0x558110",
+    "__imp_??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x80235c",
+    "__imp_??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z": "0x802404",
+    "__imp_??0?$basic_ofstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z": "0x8023d0",
+    "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458",
+    "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468",
+    "__imp_??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "0x802448",
+    "__imp_??_D?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAEXXZ": "0x802408",
+    "__imp_??_D?$basic_ofstream@DU?$char_traits@D@std@@@std@@QAEXXZ": "0x8023d4",
+    "__imp__DeleteFileA@4": "0x8021fc",
+    "__imp___invalid_parameter_noinfo": "0x802890",
+    "__imp__free": "0x8028c0",
+    "__imp__malloc": "0x8028b0",
+    "_atexit": "0x6a17af"
+  },
+  "identities": {
+    "?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z": "0x5a7ac0: record_native_cache_directory.py binds getUserAppDataDirectory to this address (the SHGetKnownFolderPath loader; app-unit5a0 map)",
+    "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330: boost::call_once, bound the same way by app-unit424 / app-unit40c / app-unit658",
+    "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090: boost 1.34.1 recursive_mutex::do_lock (EnterCriticalSection / WaitForSingleObject through the IAT)",
+    "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0: boost 1.34.1 recursive_mutex::do_unlock; record_native_app_unit574.py binds the same address",
+    "??1TextXmlParser@@QAE@XZ": "0x4147c0: v8xml/XmlSerializer.h notes that 00415350 / 004147c0 construct and destroy the TextXmlParser entities map at +0x28",
+    "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z": "0x415350: noinline TextXmlParser(std::streambuf*) of v8xml/XmlSerializer.h (identical-code folded with TextXmlWriterWithEmbeddedContent, its evidence name); it is called with the ifstream filebuf",
+    "??1XmlElement@@QAE@XZ": "0x413a70: ~XmlElement, bound the same way by record_native_duplicate_action_trial.py",
+    "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ": "0x600660: the folded shared_ptr destructor (evidence name ~shared_ptr<Instance>; identical code for every T)",
+    "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x5a2fe0: evidence name ~vector<shared_ptr<Instance>> (serviceArray +0x190)",
+    "?classDescriptor@?$Described@VServiceProvider@RBX@@$1?sServiceProvider@2@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49e9a0: called by DescribedNonCreatable<ServiceProvider>() 00568a50, whose vptr store names .?AV?$DescribedNonCreatable@VServiceProvider@RBX@@...; its function-local ClassDescriptor static is named \"ServiceProvider\"",
+    "??3@YAXPAX@Z": "0x6a067a: operator delete (CRT, bound the same way by app-unit658)",
+    "??2@YAPAXI@Z": "0x6a0920: operator new (CRT, bound the same way by app-unit658)",
+    "_atexit": "0x6a17af: CRT atexit, bound the same way by app-unit564 / app-unit570 / app-unit588",
+    "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0: evidence name (leaves2008 row)",
+    "?newRootElement@SerializerV2@@SAPAVXmlElement@@XZ": "0x591a30: SerializerV2::newRootElement (\"xmlns:xmime\"; app-unit588 map), bound the same way by record_native_document.py and record_native_serializer_root.py",
+    "?mutex@GlobalSettings@RBX@@2Vrecursive_mutex@boost@@A": "0x974aa0: GlobalSettings::mutex, the recursive_mutex locked by singleton (evidence name) at singleton 00569112, loadState 00568815"
+  },
+  "rejected": {
+    "loadState with `if (!fileName.empty()) { try { ... } catch ... }`": "same instructions, but the locals are laid out differently (fileName at ebp+0x1c, root at +0x38, the catch object at +0x3c; the original has root +0x1c, catch object +0x20, fileName +0x24): the early `if (fileName.empty()) return;` form is exact"
+  },
+  "bounds": "loadState 00568760 is one function of 420 bytes (00568760..00568903): the function list cuts it at the shared epilogue 005688a1 (36 B) and the catch funclet 005688c5 (63 B, returns 005688a1). The compiled body equals the three rows joined. No bounds.json change made.",
+  "proposals": {
+    "native-headers/v8tree/Service.h (core owner)": "drop __declspec(novtable) from ServiceProvider: ServiceProvider() 00568bf0 stores the ServiceProvider vtables 0082f1bc.. (RTTI .?AVServiceProvider@RBX@@) after the three Notifier constructors. With the generated copy (only that change) under rebuild/2008-06/out/native-layouts/app-unit568/pending/v8tree/Service.h the row is byte-exact with every target bound (pending_rows). The app-unit564 receipt makes the same proposal.",
+    "native-headers/v8datamodel/GlobalSettings.h (owner)": "the 2008 class-name array is const: RTTI .?AV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3QBDB@RBX@@ (and DescribedNonCreatable / Described<GlobalSettings>), so `extern const char sGlobalSettings[];` (the header has `extern char sGlobalSettings[];`, 3PADA). The same holds for sServiceProvider in v8tree/Service.h (.?AV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3QBDB@RBX@@). No byte difference here; the recorder normalizes the spelling."
+  },
+  "exact_function_rows": [
+    "00568460",
+    "005684d0",
+    "00568520",
+    "00568580",
+    "005685f0",
+    "00568690",
+    "00568740",
+    "00568760",
+    "005688a1",
+    "005688c5",
+    "00568910",
+    "00568a50",
+    "00568af0",
+    "00568d10",
+    "00568d20",
+    "00568d30",
+    "00568d40",
+    "00568d60",
+    "00568d70",
+    "00568df0",
+    "00568e60",
+    "00568e70",
+    "00568e80",
+    "00568e90",
+    "00568ea0",
+    "00568eb0",
+    "00568ed0",
+    "00568f80",
+    "00569060",
+    "00569070",
+    "005690f0",
+    "0056b480",
+    "0056b500",
+    "0056b620",
+    "0056bab0",
+    "0056bb20",
+    "0056bd10",
+    "0056bd40",
+    "0056bd60"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

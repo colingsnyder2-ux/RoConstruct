@@ -376,3 +376,49 @@ namespace RBX
 		std::sort(children.begin(), children.end(), lessAssembly);
 	}
 }
+
+namespace RBX {
+// 005e5fa0 (analog name: openrbx Assembly::assemblyPrimBegin; registry func_005e5fa0, the neighbour of assemblyPrimEnd
+// 005e5fc0): {rootPrimitive +0x1c, IN_ASSEMBLY 1} in the hidden return slot.
+RBX::PrimIterator Assembly::assemblyPrimBegin(void) const
+{
+	return PrimIterator::begin(getRootPrimitive(), PrimIterator::IN_ASSEMBLY);
+}
+
+RBX::PrimIterator Assembly::assemblyPrimEnd(void) const
+{
+	return PrimIterator::end(PrimIterator::IN_ASSEMBLY);
+}
+
+// 005e61b0 ?otherAssembly@Assembly@RBX@@QBEPAV12@PAVEdge@2@@Z (registry; openrbx Assembly::otherAssembly): the assembly
+// of each edge primitive through getAssemblyNoCheck 005e7560 (the 2008 body has no NULL check), the one that is not this.
+Assembly* Assembly::otherAssembly(Edge* e) const
+{
+	Assembly* assembly0 = e->getPrimitive(0)->getAssemblyNoCheck();
+	Assembly* assembly1 = e->getPrimitive(1)->getAssemblyNoCheck();
+
+	return assembly0 != this ? assembly0 : assembly1;
+}
+}
+
+namespace RBX {
+RBX::Primitive* PrimIterator::findNextSibling(Primitive* parent, Primitive* child, SearchType searchType)
+{
+	Joint* found = NULL;
+	Joint* joint = parent->getFirstJoint();
+	while (joint)
+	{
+		Primitive* other = joint->otherPrimitive(parent);
+		if (isParent(parent, other, joint, searchType))
+		{
+			if (other == child)
+				found = joint;
+			else if (found)
+				return other;
+		}
+		joint = parent->getNextJoint(joint);
+	}
+	return NULL;
+}
+}
+

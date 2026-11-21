@@ -148,6 +148,11 @@ void MovingNoPhysicsBase::onTorsoAncestryChanged()
 
 #ifdef NATIVE_MOVING_NO_PHYSICS_ONSTEP_PENDING
 // Not compiled: three declarations outside this unit's files are missing (see below). No trials yet.
+// Re-checked batch 23: Body2008.h now declares SimBody::accumulateImpulse 00629bb0 and the inline Body wrapper, but this
+// unit reaches the donor v8kernel/Body.h (NATIVE_HUMANOID2008_DONOR_CONNECTOR), so it would also need the unit-local
+// Connector pattern of RunningBaseForce.cpp before including Body2008.h. 0066eb30 (dumped again: copies the linear
+// Vector3, then the guarded static zero 0096f044..0096f04c into +0xc..+0x14) still needs a one-argument
+// `Velocity(const G3D::Vector3& linear)` in core util/Velocity.h (owner proposal), so onStep stays guarded.
 // 0066eb90 (259 bytes, `ret 4`; analog name applyFloorImpulse). getHumanoid 00793d50 -> getRootBody 005d9180 (early out
 // on NULL), getFloorPrimitive 00643d30 (early out on NULL); masses: root body first (Cofm::getMass 0065ff10 or +0x8c),
 // then the floor primitive's body (+0xa0) branch mass, std::min(root, floor) (`fcomp; test ah, 5; jnp` keeps the floor
@@ -190,6 +195,13 @@ void MovingNoPhysicsBase::applyFloorImpulse(float dt)
 // BLOCKERS: 0066eb30 (91 bytes, thiscall, `ret 4`) is a one-argument Velocity(const G3D::Vector3& linear) constructor
 // (rotational from the function-local static Vector3::zero() 0096f044, guard 0096f050) that the donor util/Velocity.h
 // (core) does not declare; applyFloorImpulse 0066eb90 above; the registry names 005df0c0 func_005df0c0.
+// Measured batch 28 (scratch copies only): with `Velocity(const G3D::Vector3& _linear) : linear(_linear),
+// rotational(G3D::Vector3::zero()) {}` added to a copy of util/Velocity.h, this onStep (compiled with applyFloorImpulse
+// still guarded) emits ??0Velocity@RBX@@QAE@ABVVector3@G3D@@@Z out of line, IDENTICAL to 0066eb30 (91 B, relocations
+// masked). onStep itself also needs Humanoid::walkRotationalVelocity (+0x1b0) readable here (private in
+// humanoid/Humanoid2008.h) and then reaches 581 B with first divergence at 0066f2f1: the floorVelocity / walk locals
+// trade stack slots (target sums `fld [esp+0x2c]; fadd [esp+0x14]` into +0x20, candidate the mirror) and the target
+// loads the G3D::sign fldz before `test ah, 0x41`. Not tried further (blocked on the two headers above).
 void MovingNoPhysicsBase::onStep(float dt, Controller* controller)
 {
     Primitive* primitive = getHumanoid()->getTorsoPrimitive();
@@ -204,7 +216,7 @@ void MovingNoPhysicsBase::onStep(float dt, Controller* controller)
         velocity.y += G3D::sign(error);
     frame.translation += velocity * dt;
     if (getHumanoid()->getStrafe())
-        Math::rotateAboutYLocal(frame, getHumanoid()->walkRotationalVelocity * 16.0f * dt);
+        Math::rotateAboutYLocal(frame, getHumanoid()->getWalkRotationalVelocity() * 16.0f * dt); // getter 005d7500 (Humanoid2008.h)
     else if (velocity.xz() != G3D::Vector2(0.0f, 0.0f))
     {
         Humanoid* humanoid = getHumanoid();
@@ -274,3 +286,11 @@ template<> const Name& Named<HUMAN::MovingNoPhysicsBase, HUMAN::sRunningNoPhysic
 template<> const Name& Named<HUMAN::MovingNoPhysicsBase, HUMAN::sStrafingNoPhysics>::getName() const { return Name::declare<HUMAN::sStrafingNoPhysics>(); }
 #endif
 }
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sFallingDown>();
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sSeated>();
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sStrafingNoPhysics>();
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sRunningNoPhysics>();
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sMovingNoPhysicsBase>();
+

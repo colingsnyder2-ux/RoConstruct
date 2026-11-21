@@ -81,6 +81,12 @@ namespace RBX
 		                      const Ogre::Quaternion& rotation);                                  // 0066faf0
 		void getObjectToWorld(Ogre::Matrix4& transform);                                          // 0066fba0
 		std::string uniqueName();                                                                 // 0066fc00
+		// 00671d60: pops +0x48 (back / pop_back) or news a RbxSubEntity(entity +0x98), pushes it on +0x60, returns it.
+		Ogre::RbxSubEntity* allocateSubEntity();                                                  // 00671d60
+		// 00671f00 (ret 0xc, called by the 3D primitives): one sub-entity per Mesh::getSubMesh, transform copied to
+		// the sub-entity's Matrix4 +0xf0, RbxSubEntity::setMaterial 006850a0, RbxEntity 0067da50.
+		void addMesh(const Ogre::MeshPtr& mesh, const Ogre::Matrix4& transform,
+		             const Ogre::MaterialPtr& material);                                          // 00671f00
 		void releaseSubEntities();                                                                // 00671e20
 
 	public:

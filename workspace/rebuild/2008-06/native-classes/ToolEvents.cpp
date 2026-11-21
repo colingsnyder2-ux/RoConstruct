@@ -148,7 +148,8 @@ namespace RBX
 	}
 
 	// 005ffb70: CoordinateFrame != 004765e0, find<Workspace> 00491e50, raiseDrawChanged (Notifier raise 00576940 at
-	// Workspace +0x344), raisePropertyChanged 0040db00 (prop_Grip 0097b7a8), weld (+0x1a4) setC1 005e44c0
+	// Workspace +0x344), raisePropertyChanged 0040db00 (prop_Grip 0097b7a8), IEquipable::weld (Tool +0x1a4) setC1 005e44c0
+	// (a JointInstance member in 2008: see v8datamodel/JointInstance.h).
 	void Tool::setGrip(const G3D::CoordinateFrame& value)
 	{
 		if (value != grip)

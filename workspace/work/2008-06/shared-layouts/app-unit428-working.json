@@ -1,0 +1,2300 @@
+{
+  "family": "app unit 00428000 (LogManager unit tail, CLuaHtmlView unit head): CLuaHtmlView::Binder template rows",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/I/home/user/roconstruct/rebuild/2008-06/native-headers/mfc-noinline-pcxstr",
+    "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string",
+    "/I/home/user/roconstruct/rebuild/2008-06/native-headers/boost-function-pod-vtable",
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "profile": "document-swap flags with native-headers/mfc-noinline-pcxstr, std-noinline-string and boost-function-pod-vtable first (as record_native_luahtml_binder2008.py)",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit428.py": "82b7f83f639bf5953d48f471b2453ba46c3b088b2ac887f8132de70535ef59bc",
+    "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
+    "rebuild/2008-06/native-classes/AppUnit428BinderTemplates.cpp": "5888e53e6c7e676ce73bc2f89edf92d1c8c3af89aaa58224b6f8252036018f46",
+    "rebuild/2008-06/native-headers/LuaHtmlBinder2008/LuaHtmlBinder2008.h": "16c75a4f5d2b50b4ecd99e473639bb85cff380efa585e91ea8055ec7dc48518a",
+    "rebuild/2008-06/native-headers/AppLeaves2008/EventHandler2008.h": "6396425d56b97b3b88fbe3c9e07578df6b84708e60c8f0e6dbde036eaa7f2e7d",
+    "rebuild/2008-06/native-headers/AppLeaves2008/Marshaller2008.h": "5ce8a439f16df27e817b14ddfe4e0d6c28596867c9442fdfef1a6500e9b20a23",
+    "rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h": "be601ae5510ccaae5209999c9da1c9fa86fe2ec0a72946fe1ace10a93414bc04",
+    "rebuild/2008-06/native-headers/std-noinline-string/xstring": "abed1fd7598c0041a3ee2dfae5095d43464789877c22452215c0015d981e8bee",
+    "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp": "95fb4a51a884f45f6d3148c5a523aaac026919e5dce454e9884f416e57cb3334",
+    "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp": "9e6bb423072221a911c59ec6bee3c0e51433df20a8a585fd80ae1f93515083dc"
+  },
+  "objects": {
+    "binder_templates": "6ee6bc9a57a68e8188b5592767724f9386ad940e23780b5cd418b90e5b464417"
+  },
+  "range": [
+    "0x00428000",
+    "0x0042c000"
+  ],
+  "range_rows": 120,
+  "unit_map": {
+    "LogManager unit 0x427890..0x42a62f": {
+      "rows_in_range": 59,
+      "kind": "rbx-blocked",
+      "why": "native-headers/CRobloxApp.h (maintainer exclusion) declares ThreadLogManager without a base and MainLogManager : LogManagerSink, ThreadLogManager; RTTI says LogManager (no bases), ThreadLogManager : LogManager, MainLogManager : RBX::ILogProvider, LogManager. Not redeclared here; the app-unit424-2008 proposal stands. Its std::string vector / list rows are library instances (evidence names) and are not recovered."
+    },
+    "CLuaHtmlView unit 0x42a630..0x42ced0": {
+      "rows_in_range": 61,
+      "kind": "rbx",
+      "why": "EventHandler rows counted by app-leaves2008, Binder methods by luahtml-binder2008; the Binder-only template rows are counted here; the rest are SecurityContext / signals / any / ATL instances other units also reach, or CLuaHtmlView methods (not natively declared)."
+    }
+  },
+  "rows": [
+    {
+      "row": "0x00428050",
+      "size": 302,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "log file name (\"log_\", \".txt\")",
+      "evidence": {
+        "strings": [
+          "\n*R",
+          ">+R",
+          "F4R",
+          "L,R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@"
+        ],
+        "callers": [
+          "0x0045cbf0"
+        ]
+      }
+    },
+    {
+      "row": "0x00428180",
+      "size": 276,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "MainLogManager crash-reporter start (new(0x7d0) RobloxCrashReporter)",
+      "evidence": {
+        "strings": [
+          "\n*R",
+          ">+R",
+          "F4R",
+          "T*R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@"
+        ],
+        "callers": [
+          "0x0044d810"
+        ]
+      }
+    },
+    {
+      "row": "0x004282a0",
+      "size": 111,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "pure-call hook (MessageBox \"Pure Call Error\")",
+      "evidence": {
+        "strings": [
+          "Pure Call Error"
+        ],
+        "imports": [
+          "mfc90.dll!#2539",
+          "mfc90.dll!#316",
+          "mfc90.dll!#601",
+          "mfc90.dll!#910"
+        ]
+      }
+    },
+    {
+      "row": "0x00428310",
+      "size": 453,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "log-file rotation (DeleteFileA / MoveFileA)",
+      "evidence": {
+        "strings": [
+          "\n*R",
+          ">+R",
+          "R(R",
+          "T*R"
+        ],
+        "imports": [
+          "KERNEL32.dll!DeleteFileA",
+          "KERNEL32.dll!MoveFileA",
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s"
+        ],
+        "callers": [
+          "0x004285e0",
+          "0x00428d10",
+          "0x00429bc0"
+        ]
+      }
+    },
+    {
+      "row": "0x004284e0",
+      "size": 249,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "crash-dump file scan (\"*.dmp\", FindFirstFileA)",
+      "evidence": {
+        "strings": [
+          "*.dmp",
+          ">(R"
+        ],
+        "imports": [
+          "KERNEL32.dll!FindFirstFileA",
+          "KERNEL32.dll!FindNextFileA",
+          "SHLWAPI.dll!PathAddBackslashA",
+          "mfc90.dll!#2691"
+        ],
+        "callers": [
+          "0x00406180",
+          "0x004061e0"
+        ]
+      }
+    },
+    {
+      "row": "0x004285e0",
+      "size": 253,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager log paths (\"error\\\\\", \"archive\\\\\"; vtable 0x81030c)",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVLogManager@@"
+        ],
+        "strings": [
+          "\n*R",
+          ">+R",
+          "T*R",
+          "archive\\"
+        ],
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@"
+        ],
+        "callers": [
+          "0x00428cf0",
+          "0x00428d10",
+          "0x00429300"
+        ]
+      }
+    },
+    {
+      "row": "0x004286e0",
+      "size": 172,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "assert hook (\"Assertion failed\")",
+      "evidence": {
+        "strings": [
+          "Assertion failed: %s\n\nMessage: %s\n\n%s(%d)",
+          "Assertion failed: %s\n%s(%d)",
+          "T*R"
+        ],
+        "imports": [
+          "MSVCP90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@",
+          "mfc90.dll!#2539",
+          "mfc90.dll!#316",
+          "mfc90.dll!#601"
+        ]
+      }
+    },
+    {
+      "row": "0x00428790",
+      "size": 182,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "G3D failure hook (\"G3D Error\")",
+      "evidence": {
+        "strings": [
+          "G3D Error: %s\n\nMessage: %s\n\n%s(%d)",
+          "G3D Error: %s\n%s(%d)",
+          "T*R"
+        ],
+        "imports": [
+          "MSVCP90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@",
+          "mfc90.dll!#2539",
+          "mfc90.dll!#316",
+          "mfc90.dll!#601"
+        ]
+      }
+    },
+    {
+      "row": "0x00428850",
+      "size": 146,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "callers": [
+          "0x0044ac40",
+          "0x0044d810",
+          "0x00452fc2",
+          "0x00453638"
+        ]
+      }
+    },
+    {
+      "row": "0x004288f0",
+      "size": 154,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVlength_error@std@@",
+          ".?AVlogic_error@std@@"
+        ],
+        "strings": [
+          ">+R",
+          "list<T> too long"
+        ],
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCR90.dll!??0exception@std@@QAE@XZ",
+          "MSVCR90.dll!_CxxThrowException"
+        ],
+        "callers": [
+          "0x004297e0"
+        ]
+      }
+    },
+    {
+      "row": "0x00428990",
+      "size": 39,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "imports": [
+          "MSVCP90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s"
+        ],
+        "callers": [
+          "0x00429607",
+          "0x004296d5"
+        ]
+      }
+    },
+    {
+      "row": "0x004289c0",
+      "size": 88,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "std library instance for std::string (evidence name)",
+      "evidence": {
+        "evidence_name": "??$_Move_backward_opt@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV12@@std@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PAV10@00Urandom_access_iterator_tag@0@U_Swap_move_tag@0@U_Range_checked_iterator_tag@0@@Z",
+        "imports": [
+          "MSVCP90.dll!?swap@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2"
+        ],
+        "callers": [
+          "0x00428f10"
+        ]
+      }
+    },
+    {
+      "row": "0x00428a20",
+      "size": 118,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "std library instance for std::string (evidence name)",
+      "evidence": {
+        "evidence_name": "??$_Uninit_move@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV12@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PAV10@00AAV?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@0@U_Swap_move_tag@0@U_Range_checked_iterator_tag@0@@Z",
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!?swap@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2"
+        ],
+        "callers": [
+          "0x004293a0",
+          "0x00429480"
+        ]
+      }
+    },
+    {
+      "row": "0x00428a96",
+      "size": 69,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "strings": [
+          "\n*R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCR90.dll!_CxxThrowException"
+        ]
+      }
+    },
+    {
+      "row": "0x00428ae0",
+      "size": 518,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "error-message formatter (\"Unknown Error\", lstrlenA / strcpy_s)",
+      "evidence": {
+        "imports": [
+          "KERNEL32.dll!lstrlenA",
+          "MSVCR90.dll!free",
+          "MSVCR90.dll!strcpy_s",
+          "OLEAUT32.dll!CreateErrorInfo"
+        ],
+        "callers": [
+          "0x004290b0"
+        ]
+      }
+    },
+    {
+      "row": "0x00428cf0",
+      "size": 30,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager destructor (vtable 0x81030c slot 0)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "0x00428d10",
+      "size": 295,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "MainLogManager path / archive method (vtable 0x8104c0)",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVMainLogManager@@"
+        ],
+        "strings": [
+          "\n*R",
+          ">+R",
+          "T*R",
+          "archive\\"
+        ],
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@",
+          "mfc90.dll!#800"
+        ],
+        "callers": [
+          "0x004292e0",
+          "0x0044c440"
+        ]
+      }
+    },
+    {
+      "row": "0x00428e40",
+      "size": 8,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00428e50",
+      "size": 81,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "std library instance for std::string (evidence name)",
+      "evidence": {
+        "evidence_name": "?_Buy@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAE_NI@Z",
+        "callers": [
+          "0x004299c0",
+          "0x0048d850",
+          "0x005eb180"
+        ]
+      }
+    },
+    {
+      "row": "0x00428eb0",
+      "size": 29,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x00429780"
+        ]
+      }
+    },
+    {
+      "row": "0x00428ed0",
+      "size": 61,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x004297e0"
+        ]
+      }
+    },
+    {
+      "row": "0x00428f10",
+      "size": 43,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "callers": [
+          "0x004296d5"
+        ]
+      }
+    },
+    {
+      "row": "0x00428f40",
+      "size": 106,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "callers": [
+          "0x00429b50"
+        ]
+      }
+    },
+    {
+      "row": "0x00428fb0",
+      "size": 241,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "std library instance for std::string (evidence name)",
+      "evidence": {
+        "evidence_name": "??$_Uninit_fill_n@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@IV12@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@YAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@IABV10@AAV?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+        "strings": [
+          "\n*R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCR90.dll!_CxxThrowException"
+        ],
+        "callers": [
+          "0x00429440",
+          "0x00429aa0",
+          "0x005eb180"
+        ]
+      }
+    },
+    {
+      "row": "0x004290b0",
+      "size": 332,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "string formatter (lstrlenA), shared by other units",
+      "evidence": {
+        "imports": [
+          "KERNEL32.dll!lstrlenA"
+        ],
+        "callers": [
+          "0x00429330",
+          "0x00429360",
+          "0x0046ad70"
+        ]
+      }
+    },
+    {
+      "row": "0x00429200",
+      "size": 100,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "boost::detail::tss constructor (evidence name)",
+      "evidence": {
+        "evidence_name": "??0tss@detail@boost@@QAE@PAV?$function1@XPAXV?$allocator@Vfunction_base@boost@@@std@@@2@@Z",
+        "imports": [
+          "MSVCR90.dll!_CxxThrowException"
+        ],
+        "callers": [
+          "0x0042a3d0",
+          "0x0042baf0",
+          "0x00596bd0"
+        ]
+      }
+    },
+    {
+      "row": "0x00429264",
+      "size": 64,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_CxxThrowException",
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "0x004292b0",
+      "size": 40,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "boost::thread_resource_error copy",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVthread_exception@boost@@",
+          ".?AVthread_resource_error@boost@@"
+        ],
+        "imports": [
+          "MSVCR90.dll!??0exception@std@@QAE@ABV01@@Z"
+        ]
+      }
+    },
+    {
+      "row": "0x004292e0",
+      "size": 30,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "0x00429300",
+      "size": 36,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "ThreadLogManager deleting destructor (vtable 0x8104b4 slot 0)",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVThreadLogManager@@"
+        ],
+        "imports": [
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "0x00429330",
+      "size": 43,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "callers": [
+          "0x00403b60",
+          "0x00407500",
+          "0x004078a0",
+          "0x00410fe0",
+          "0x004166a0",
+          "0x0046b230"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 49,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "counted": "00429360 counted by content-upload-trial",
+      "evidence": {
+        "callers": [
+          "0x004078a0",
+          "0x00408c7f",
+          "0x0041682a",
+          "0x0042e350"
+        ]
+      }
+    },
+    {
+      "row": "0x004293a0",
+      "size": 44,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "callers": [
+          "0x00429607",
+          "0x004296d5"
+        ]
+      }
+    },
+    {
+      "row": "0x004293d0",
+      "size": 76,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "std::vector<shared_ptr<Instance>> constructor (evidence name), shared",
+      "evidence": {
+        "evidence_name": "??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x00415510",
+          "0x00426db0",
+          "0x00454c90",
+          "0x0046b230",
+          "0x0046b9d0",
+          "0x00495380"
+        ]
+      }
+    },
+    {
+      "row": "0x00429420",
+      "size": 21,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "0x00429440",
+      "size": 63,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "std library instance for std::string (evidence name)",
+      "evidence": {
+        "evidence_name": "?_Ufill@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@PAV32@IABV32@@Z",
+        "callers": [
+          "0x00429480",
+          "0x00429607"
+        ]
+      }
+    },
+    {
+      "row": "0x00429480",
+      "size": 391,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "std library instance for std::string (evidence name)",
+      "evidence": {
+        "evidence_name": "?_Insert_n@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXV?$_Vector_const_iterator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@IABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
+        "imports": [
+          "mfc90.dll!#800"
+        ],
+        "callers": [
+          "0x00429870",
+          "0x00446190",
+          "0x00493bf0"
+        ]
+      }
+    },
+    {
+      "row": "0x00429607",
+      "size": 206,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCR90.dll!_CxxThrowException",
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "0x004296d5",
+      "size": 169,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "strings": [
+          "\n*R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCR90.dll!_CxxThrowException"
+        ]
+      }
+    },
+    {
+      "row": "0x00429780",
+      "size": 94,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x00429f30"
+        ]
+      }
+    },
+    {
+      "row": "0x004297e0",
+      "size": 130,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x00429f30"
+        ]
+      }
+    },
+    {
+      "row": "0x00429870",
+      "size": 178,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x00429aa0"
+        ]
+      }
+    },
+    {
+      "row": "0x00429930",
+      "size": 144,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!??8type_info@@QBE_NABV0@@Z",
+          "mfc90.dll!#798",
+          "mfc90.dll!#800"
+        ],
+        "callers": [
+          "0x0042a180"
+        ]
+      }
+    },
+    {
+      "row": "0x004299c0",
+      "size": 199,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "std library instance for std::string (evidence name)",
+      "evidence": {
+        "evidence_name": "??0?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@ABV01@@Z",
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo",
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x00650660",
+          "0x00651730",
+          "0x006518b0",
+          "0x00651dd0",
+          "0x00652c80",
+          "0x00652e90"
+        ]
+      }
+    },
+    {
+      "row": "0x00429a87",
+      "size": 17,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_CxxThrowException"
+        ]
+      }
+    },
+    {
+      "row": "0x00429aa0",
+      "size": 166,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x00429bc0",
+          "0x0044d200",
+          "0x00650660",
+          "0x006546d0",
+          "0x00654860",
+          "0x006792b0"
+        ]
+      }
+    },
+    {
+      "row": "0x00429b50",
+      "size": 108,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x00429f30"
+        ]
+      }
+    },
+    {
+      "row": "0x00429bc0",
+      "size": 872,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "log archive scan (\"*.dmp\", \"archive\\\\\")",
+      "evidence": {
+        "imports": [
+          "KERNEL32.dll!FindFirstFileA",
+          "KERNEL32.dll!FindNextFileA",
+          "MSVCP90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$ba",
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s"
+        ],
+        "callers": [
+          "0x00408090",
+          "0x0041db00"
+        ]
+      }
+    },
+    {
+      "row": "0x00429f30",
+      "size": 591,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "log archive cleanup (DeleteFileA)",
+      "evidence": {
+        "imports": [
+          "KERNEL32.dll!DeleteFileA",
+          "KERNEL32.dll!FindFirstFileA",
+          "KERNEL32.dll!FindNextFileA",
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x0042a1c0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a180",
+      "size": 50,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042a1c0",
+      "size": 361,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "MainLogManager constructor (\"_G3D.txt\", GetCurrentThreadId)",
+      "evidence": {
+        "strings": [
+          "F4R"
+        ],
+        "imports": [
+          "KERNEL32.dll!GetCurrentThreadId",
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s"
+        ],
+        "callers": [
+          "0x0044c3d0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a330",
+      "size": 154,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042a3d0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a3d0",
+      "size": 180,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042a490"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a490",
+      "size": 95,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "LogManager unit body (vtables 0x81030c / 0x8104b4 / 0x8104c0, app-unit424-2008 map)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042a4f0",
+      "size": 206,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "ThreadLogManager lookup / creation (vtables 0x81030c / 0x8104b4)",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVLogManager@@",
+          ".?AVThreadLogManager@@"
+        ],
+        "strings": [
+          ">+R"
+        ],
+        "imports": [
+          "KERNEL32.dll!GetCurrentThreadId",
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042a5c0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a5c0",
+      "size": 36,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "current-thread log manager (GetCurrentThreadId)",
+      "evidence": {
+        "imports": [
+          "KERNEL32.dll!GetCurrentThreadId"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a5f0",
+      "size": 18,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "ICF body (evidence name Instance::getRootAncestor)",
+      "evidence": {
+        "evidence_name": "?getRootAncestor@Instance@RBX@@QAEPAV12@XZ",
+        "callers": [
+          "0x00464750",
+          "0x005682e0",
+          "0x005aefa0",
+          "0x005d0ec0",
+          "0x0061bcd0",
+          "0x00656940"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a610",
+      "size": 5,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "jmp operator delete (ICF stub)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a620",
+      "size": 15,
+      "unit": "LogManager",
+      "kind": "rbx-blocked (CRobloxApp.h log-manager declarations; std::string / boost instances are library)",
+      "note": "boost::function invoker for void(*)(Security::Context*) (tss cleanup)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042a630",
+      "size": 110,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042a630 counted here",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$sp_counted_impl_p@VBinder@CLuaHtmlView@@@detail@boost@@"
+        ],
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042aaf0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a69e",
+      "size": 21,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042a69e counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_CxxThrowException"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a6c0",
+      "size": 81,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042a6c0 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x0042aba0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 118,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042a720 counted by luahtml-binder2008-working",
+      "evidence": {
+        "callers": [
+          "0x0042b0e0",
+          "0x0042b310"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a7a0",
+      "size": 86,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "functor_manager<void(*)(Security::Context*)>::manage (RTTI type .P6AXPAVContext@Security@RBX@@@Z): SecurityContext header instance, also reached from other units",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!??8type_info@@QBE_NABV0@@Z"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a800",
+      "size": 110,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "shared_count<int> constructor (evidence name), also called by 0x4a3020 / 0x4d81c0",
+      "evidence": {
+        "evidence_name": "??$?0H@shared_count@detail@boost@@QAE@PAH@Z",
+        "rtti_refs": [
+          ".?AV?$sp_counted_impl_p@H@detail@boost@@"
+        ],
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042b400",
+          "0x004a3020",
+          "0x004d81c0",
+          "0x004e8e70",
+          "0x00588db0",
+          "0x00612de0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a86e",
+      "size": 21,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "catch funclet of 0x42a800",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_CxxThrowException",
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a890",
+      "size": 11,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "sp_counted_impl_p<int>::dispose (evidence name)",
+      "evidence": {
+        "evidence_name": "?dispose@?$sp_counted_impl_p@H@detail@boost@@UAEXXZ",
+        "imports": [
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a8a0",
+      "size": 75,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042a8a0 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x0042abe0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a8f0",
+      "size": 49,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "std iterator helper (_invalid_parameter_noinfo), called by six units",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x0042c8c0",
+          "0x00561980",
+          "0x00588780",
+          "0x0058a130",
+          "0x005d2b80",
+          "0x006832b0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042a930",
+      "size": 438,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "ATL CComPtrBase::IsEqualObject-shaped QueryInterface compare (ATL library instance)",
+      "evidence": {
+        "callers": [
+          "0x0042c8c0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042aaf0",
+      "size": 163,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042aaf0 counted here",
+      "evidence": {
+        "callers": [
+          "0x0042c8c0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042aba0",
+      "size": 50,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042aba0 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042abe0",
+      "size": 50,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042abe0 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042ac20",
+      "size": 130,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "boost::function1<void, std::string>::operator() (evidence name), string-signal instance",
+      "evidence": {
+        "evidence_name": "??R?$function1@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@X@2@@boost@@QBEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "strings": [
+          "\n*R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s"
+        ],
+        "callers": [
+          "0x0042b100"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 138,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042acb0 counted by app-leaves2008-working",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVEventHandler@@"
+        ],
+        "callers": [
+          "0x0042c0d0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042ad40",
+      "size": 110,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "InlineIsEqualGUID (ATL / Windows SDK library instance), called by other units",
+      "evidence": {
+        "callers": [
+          "0x0042adb0",
+          "0x0044b6b0",
+          "0x0044b740"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 84,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042adb0 counted by app-leaves2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 13,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042ae10 counted by app-leaves2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 15,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042ae20 counted by app-leaves2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 8,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042ae30 counted by app-leaves2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 8,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042ae40 counted by app-leaves2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042ae50",
+      "size": 312,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "CLuaHtmlView::setBody (CLuaHtmlView not natively declared; proposal of app-leaves2008)",
+      "evidence": {
+        "strings": [
+          ">+R",
+          "The HtmlDocument does not contain a body",
+          "The HtmlDocument is not loaded"
+        ],
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCR90.dll!_CxxThrowException",
+          "OLEAUT32.dll!SysFreeString",
+          "mfc90.dll!#3065"
+        ],
+        "callers": [
+          "0x00417c70"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 41,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042af90 counted by humanoid2008-working, misc-leaves-working",
+      "evidence": {
+        "evidence_name": "?shared_from_this@?$enable_shared_from_this@VInstance@RBX@@@boost@@QAE?AV?$shared_ptr@VInstance@RBX@@@2@XZ",
+        "callers": [
+          "0x0042c500",
+          "0x004a2950",
+          "0x004c7530",
+          "0x00558ac0",
+          "0x0055a8f0",
+          "0x00580d10"
+        ]
+      }
+    },
+    {
+      "row": "0x0042afc0",
+      "size": 79,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "boost::function0<bool>::operator() (evidence name), shared",
+      "evidence": {
+        "evidence_name": "??R?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QBE_NXZ",
+        "callers": [
+          "0x0042b130",
+          "0x0045eff0",
+          "0x004b51d0",
+          "0x005696f0",
+          "0x00596ea0",
+          "0x005a4020"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b010",
+      "size": 95,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "any::holder<function<void(const PropertyDescriptor*)>> constructor, shared signal instance",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$holder@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@"
+        ],
+        "callers": [
+          "0x0042b080",
+          "0x0042b220"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b070",
+      "size": 6,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "any::holder<function<void(const PropertyDescriptor*)>>::type, shared signal instance",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042b080",
+      "size": 96,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "any::holder<function<void(const PropertyDescriptor*)>>::clone, shared signal instance",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#798"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b0e0",
+      "size": 27,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042b0e0 counted here",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ],
+        "callers": [
+          "0x0042b2ee"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b100",
+      "size": 46,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "signals caller<std::string, ...> (evidence name), string-signal instance",
+      "evidence": {
+        "evidence_name": "??$?RUconnection_slot_pair@detail@signals@boost@@@?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$allocator@X@2@@boost@@@?$call_bound1@X@detail@signals@boost@@QBE?AUunusable@234@ABUconnection_slot_pair@234@@Z",
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s"
+        ],
+        "callers": [
+          "0x0042c590"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 97,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042b130 counted by app-leaves2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 73,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042b191 counted by app-leaves2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 53,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042b1e0 counted by misc-leaves-working",
+      "evidence": {
+        "callers": [
+          "0x004442c0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b220",
+      "size": 89,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "any::any<function<void(const PropertyDescriptor*)>>, shared (also called by 0x5594c0)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042b400",
+          "0x005594c0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b280",
+      "size": 110,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042b280 counted here",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@"
+        ],
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042c760"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b2ee",
+      "size": 21,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042b2ee counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_CxxThrowException"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b310",
+      "size": 26,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042b310 counted here",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b330",
+      "size": 25,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042b330 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 61,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042b350 counted by app-leaves2008-working",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b390",
+      "size": 104,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "ICF body: evidence name list<shared_ptr<Replicator::Item>>::clear (also Binder list clear)",
+      "evidence": {
+        "evidence_name": "?clear@?$list@V?$shared_ptr@VItem@Replicator@Network@RBX@@@boost@@V?$allocator@V?$shared_ptr@VItem@Replicator@Network@RBX@@@boost@@@std@@@std@@QAEXXZ",
+        "imports": [
+          "mfc90.dll!#800"
+        ],
+        "callers": [
+          "0x0042b5f0",
+          "0x004b0a80",
+          "0x004b87f0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b400",
+      "size": 325,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "signal1<void, const PropertyDescriptor*>::connect, reached through TSignalDesc::connect 0x42b680 (shared with other units)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042b680"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b550",
+      "size": 155,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042b550 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x0042b870"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b5f0",
+      "size": 130,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "CLuaHtmlView::unbindAll (CLuaHtmlView not natively declared)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042b680",
+      "size": 71,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "TSignalDesc<void(const PropertyDescriptor*)>::connect, Reflection instance shared with 0x4b52b0 / 0x4b7250",
+      "evidence": {
+        "callers": [
+          "0x0042c630",
+          "0x004b52b0",
+          "0x004b7250",
+          "0x004ea5e0",
+          "0x004eaae0",
+          "0x004eae10"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b6d0",
+      "size": 84,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042b6d0 counted here",
+      "evidence": {
+        "callers": [
+          "0x0042c0d0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b730",
+      "size": 144,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "functor_manager<tss_adapter<Security::Context>>::manager (RTTI .?AU?$tss_adapter@VContext@...)",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!??8type_info@@QBE_NABV0@@Z",
+          "mfc90.dll!#798",
+          "mfc90.dll!#800"
+        ],
+        "callers": [
+          "0x0042b910"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b7c0",
+      "size": 56,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042b7c0 counted here",
+      "evidence": {
+        "callers": [
+          "0x0042c000"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b800",
+      "size": 110,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042b800 counted here",
+      "evidence": {
+        "callers": [
+          "0x0042b9a0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b870",
+      "size": 50,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042b870 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042b8b0",
+      "size": 88,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042b8b0 counted here",
+      "evidence": {
+        "callers": [
+          "0x0042b950"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b910",
+      "size": 50,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "functor_manager<tss_adapter<Security::Context>>::manage",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042b950",
+      "size": 77,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042b950 counted here",
+      "evidence": {
+        "callers": [
+          "0x0042c500"
+        ]
+      }
+    },
+    {
+      "row": "0x0042b9a0",
+      "size": 164,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042b9a0 counted here",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042c630"
+        ]
+      }
+    },
+    {
+      "row": "0x0042ba50",
+      "size": 154,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "boost::function1 constructor from tss_adapter<Security::Context>",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042baf0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042baf0",
+      "size": 180,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "thread_specific_ptr<Security::Context> constructor (evidence name)",
+      "evidence": {
+        "evidence_name": "??0?$thread_specific_ptr@VContext@Security@RBX@@@boost@@QAE@XZ",
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042bbb0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042bbb0",
+      "size": 90,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "Security::Context::ptr (evidence name), SecurityContext header instance",
+      "evidence": {
+        "evidence_name": "?ptr@Context@Security@RBX@@CAAAV?$thread_specific_ptr@VContext@Security@RBX@@@boost@@XZ",
+        "callers": [
+          "0x0042bc10",
+          "0x0042bc90",
+          "0x0042bcd0",
+          "0x0042bd70",
+          "0x0042e0c0",
+          "0x0044d790"
+        ]
+      }
+    },
+    {
+      "row": "0x0042bc10",
+      "size": 113,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "Security::Impersonator constructor (evidence name), also called by the CMainFrame unit 0x42e0c0",
+      "evidence": {
+        "evidence_name": "??0Impersonator@Security@RBX@@QAE@W4Identities@12@@Z",
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042bcd0",
+          "0x0042bd70",
+          "0x0042e0c0",
+          "0x0044d790",
+          "0x0044d810",
+          "0x0049d480"
+        ]
+      }
+    },
+    {
+      "row": "0x0042bc90",
+      "size": 49,
+      "unit": "CLuaHtmlView",
+      "kind": "open (shared / library / CLuaHtmlView)",
+      "note": "Security::Impersonator destructor shape (Context::ptr, tss get / set / cleanup)",
+      "evidence": {
+        "callers": [
+          "0x0044d810"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 145,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042bcd0 counted by luahtml-binder2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 161,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042bd70 counted by luahtml-binder2008-working",
+      "evidence": {
+        "callers": [
+          "0x0042be20"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 465,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042be20 counted by luahtml-binder2008-working",
+      "evidence": {
+        "imports": [
+          "MSVCP90.dll!??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$",
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s"
+        ],
+        "callers": [
+          "0x0042c760"
+        ]
+      }
+    }
+  ],
+  "methods": [
+    {
+      "address": "0042b6d0",
+      "symbol": "??$?0V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@1@H@Z",
+      "size": 84,
+      "exact": true,
+      "verified_targets": {
+        "?has_empty_target@function@detail@boost@@YA_NZZ": "0x60a2f0 (instance (bytes equal, targets verified))",
+        "?stored_vtable@?1???$assign_to@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x810610 (data instance (bytes equal, fields verified))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042aba0",
+      "symbol": "?manage@?$functor_manager@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+      "size": 50,
+      "exact": true,
+      "verified_targets": {
+        "?manager@?$functor_manager@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@Ufunction_obj_tag@234@@Z": "0x42a6c0 (own row)",
+        "??_R0?AV?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@@8": "0x92e6b0 (RTTI .?AV?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042a6c0",
+      "symbol": "?manager@?$functor_manager@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@Ufunction_obj_tag@234@@Z",
+      "size": 81,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AV?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@@8": "0x92e6b0 (RTTI .?AV?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042b950",
+      "symbol": "??$?0V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@1@H@Z",
+      "size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??$assign_to@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@1@@Z": "0x42b8b0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042b8b0",
+      "symbol": "??$assign_to@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@1@@Z",
+      "size": 88,
+      "exact": true,
+      "verified_targets": {
+        "?has_empty_target@function@detail@boost@@YA_NZZ": "0x60a2f0 (instance (bytes equal, targets verified))",
+        "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x810620 (data instance (bytes equal, fields verified))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042b870",
+      "symbol": "?manage@?$functor_manager@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+      "size": 50,
+      "exact": true,
+      "verified_targets": {
+        "?manager@?$functor_manager@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@U?$bool_@$00@mpl@4@@Z": "0x42b550 (own row)",
+        "??_R0?AV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@8": "0x92e9b8 (RTTI .?AV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042b550",
+      "symbol": "?manager@?$functor_manager@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@U?$bool_@$00@mpl@4@@Z",
+      "size": 155,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@8": "0x92e9b8 (RTTI .?AV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042b9a0",
+      "symbol": "??$?0V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@1@@Z",
+      "size": 164,
+      "exact": true,
+      "verified_targets": {
+        "??$?0V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@QAE@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@1@H@Z": "0x42b800 (own row)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0data_t@slot_base@detail@signals@boost@@QAE@XZ": "0x41ad40 (evidence name)",
+        "??$reset@Udata_t@slot_base@detail@signals@boost@@@?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@boost@@QAEXPAUdata_t@slot_base@detail@signals@1@@Z": "0x41b0f0 (evidence name)",
+        "?create_connection@slot_base@detail@signals@boost@@IAEXXZ": "0x595840 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@1@@Z"
+      ]
+    },
+    {
+      "address": "0042b800",
+      "symbol": "??$?0V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@QAE@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@1@H@Z",
+      "size": 110,
+      "exact": true,
+      "verified_targets": {
+        "?has_empty_target@function@detail@boost@@YA_NZZ": "0x60a2f0 (instance (bytes equal, targets verified))",
+        "?stored_vtable@?1???$assign_to@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$function1@XPBVPropertyDescriptor@Reflection@RBX@@V?$allocator@X@std@@@boost@@AAEXABV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@2@@Z@4U?$basic_vtable1@XPBVPropertyDescriptor@Reflection@RBX@@V?$allocator@X@std@@@function@detail@2@B": "0x810618 (data instance (bytes equal, fields verified))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042abe0",
+      "symbol": "?manage@?$functor_manager@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+      "size": 50,
+      "exact": true,
+      "verified_targets": {
+        "?manager@?$functor_manager@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@Ufunction_obj_tag@234@@Z": "0x42a8a0 (own row)",
+        "??_R0?AV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@8": "0x92e7a0 (RTTI .?AV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042a8a0",
+      "symbol": "?manager@?$functor_manager@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@Ufunction_obj_tag@234@@Z",
+      "size": 75,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@8": "0x92e7a0 (RTTI .?AV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042b330",
+      "symbol": "?invoke@?$void_function_obj_invoker1@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@XPBVPropertyDescriptor@Reflection@RBX@@@function@detail@boost@@SAXAATfunction_buffer@234@PBVPropertyDescriptor@Reflection@RBX@@@Z",
+      "size": 25,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0042b7c0",
+      "symbol": "??$for_each@V?$_Iterator@$00@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVPropBinding@Binder@CLuaHtmlView@@PBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@2@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVPropBinding@Binder@CLuaHtmlView@@PBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@2@@_bi@3@@_bi@boost@@V?$_Iterator@$00@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@0@0V123@@Z",
+      "size": 56,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0042b280",
+      "symbol": "??$?0VPropBinding@Binder@CLuaHtmlView@@@shared_count@detail@boost@@QAE@PAVPropBinding@Binder@CLuaHtmlView@@@Z [0x0:0x6e]",
+      "size": 110,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@6B@": "0x810524 (vtable RTTI .?AV?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VPropBinding@Binder@CLuaHtmlView@@@shared_count@detail@boost@@QAE@PAVPropBinding@Binder@CLuaHtmlView@@@Z"
+      ]
+    },
+    {
+      "address": "0042b2ee",
+      "symbol": "??$?0VPropBinding@Binder@CLuaHtmlView@@@shared_count@detail@boost@@QAE@PAVPropBinding@Binder@CLuaHtmlView@@@Z [0x6e:0x83]",
+      "size": 21,
+      "exact": true,
+      "verified_targets": {
+        "??$checked_delete@VPropBinding@Binder@CLuaHtmlView@@@boost@@YAXPAVPropBinding@Binder@CLuaHtmlView@@@Z": "0x42b0e0 (own row)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042b0e0",
+      "symbol": "??$checked_delete@VPropBinding@Binder@CLuaHtmlView@@@boost@@YAXPAVPropBinding@Binder@CLuaHtmlView@@@Z",
+      "size": 27,
+      "exact": true,
+      "verified_targets": {
+        "??1PropBinding@Binder@CLuaHtmlView@@QAE@XZ": "0x42a720 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042b310",
+      "symbol": "?dispose@?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEXXZ",
+      "size": 26,
+      "exact": true,
+      "verified_targets": {
+        "??1PropBinding@Binder@CLuaHtmlView@@QAE@XZ": "0x42a720 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042a630",
+      "symbol": "??$?0VBinder@CLuaHtmlView@@@shared_count@detail@boost@@QAE@PAVBinder@CLuaHtmlView@@@Z [0x0:0x6e]",
+      "size": 110,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$sp_counted_impl_p@VBinder@CLuaHtmlView@@@detail@boost@@6B@": "0x810538 (vtable RTTI .?AV?$sp_counted_impl_p@VBinder@CLuaHtmlView@@@detail@boost@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VBinder@CLuaHtmlView@@@shared_count@detail@boost@@QAE@PAVBinder@CLuaHtmlView@@@Z"
+      ]
+    },
+    {
+      "address": "0042a69e",
+      "symbol": "??$?0VBinder@CLuaHtmlView@@@shared_count@detail@boost@@QAE@PAVBinder@CLuaHtmlView@@@Z [0x6e:0x83]",
+      "size": 21,
+      "exact": true,
+      "verified_targets": {
+        "??$checked_delete@VBinder@CLuaHtmlView@@@boost@@YAXPAVBinder@CLuaHtmlView@@@Z": "0x427b70 (instance (bytes equal, targets verified))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042aaf0",
+      "symbol": "??$?0VBinder@CLuaHtmlView@@@?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@QAE@PAVBinder@CLuaHtmlView@@@Z",
+      "size": 163,
+      "exact": true,
+      "verified_targets": {
+        "??$?0VBinder@CLuaHtmlView@@@shared_count@detail@boost@@QAE@PAVBinder@CLuaHtmlView@@@Z": "0x42a630 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VBinder@CLuaHtmlView@@@?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@QAE@PAVBinder@CLuaHtmlView@@@Z"
+      ]
+    }
+  ],
+  "instances": {
+    "?has_empty_target@function@detail@boost@@YA_NZZ": {
+      "address": "0x0060a2f0",
+      "symbol": "?has_empty_target@function@detail@boost@@YA_NZZ",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?stored_vtable@?1???$assign_to@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": {
+      "address": "0x00810610",
+      "symbol": "?stored_vtable@?1???$assign_to@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B",
+      "size": 8,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x0 ?manage@?$functor_manager@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z": "0x42aba0 (own row)",
+        "+0x4 ?invoke@?$function_obj_invoker0@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z": "0x55e310 (instance (bytes equal, targets verified))"
+      }
+    },
+    "?invoke@?$function_obj_invoker0@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z": {
+      "address": "0x0055e310",
+      "symbol": "?invoke@?$function_obj_invoker0@V?$bind_t@_NV?$mf0@_NVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@PAVBinder@CLuaHtmlView@@@_bi@boost@@@_bi@3@@_bi@boost@@_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z",
+      "size": 16,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": {
+      "address": "0x00810620",
+      "symbol": "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B",
+      "size": 8,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x0 ?manage@?$functor_manager@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z": "0x42b870 (own row)",
+        "+0x4 ?invoke@?$void_function_obj_invoker0@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@X@function@detail@boost@@SAXAATfunction_buffer@234@@Z": "0x5acaf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "?invoke@?$void_function_obj_invoker0@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@X@function@detail@boost@@SAXAATfunction_buffer@234@@Z": {
+      "address": "0x005acaf0",
+      "symbol": "?invoke@?$void_function_obj_invoker0@V?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@X@function@detail@boost@@SAXAATfunction_buffer@234@@Z",
+      "size": 14,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?stored_vtable@?1???$assign_to@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$function1@XPBVPropertyDescriptor@Reflection@RBX@@V?$allocator@X@std@@@boost@@AAEXABV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@2@@Z@4U?$basic_vtable1@XPBVPropertyDescriptor@Reflection@RBX@@V?$allocator@X@std@@@function@detail@2@B": {
+      "address": "0x00810618",
+      "symbol": "?stored_vtable@?1???$assign_to@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$function1@XPBVPropertyDescriptor@Reflection@RBX@@V?$allocator@X@std@@@boost@@AAEXABV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@2@@Z@4U?$basic_vtable1@XPBVPropertyDescriptor@Reflection@RBX@@V?$allocator@X@std@@@function@detail@2@B",
+      "size": 8,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x0 ?manage@?$functor_manager@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z": "0x42abe0 (own row)",
+        "+0x4 ?invoke@?$void_function_obj_invoker1@V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@XPBVPropertyDescriptor@Reflection@RBX@@@function@detail@boost@@SAXAATfunction_buffer@234@PBVPropertyDescriptor@Reflection@RBX@@@Z": "0x42b330 (own row)"
+      }
+    },
+    "??$checked_delete@VBinder@CLuaHtmlView@@@boost@@YAXPAVBinder@CLuaHtmlView@@@Z": {
+      "address": "0x00427b70",
+      "symbol": "??$checked_delete@VBinder@CLuaHtmlView@@@boost@@YAXPAVBinder@CLuaHtmlView@@@Z",
+      "size": 17,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??_G?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEPAXI@Z": {
+      "address": "0x00415000",
+      "symbol": "??_G?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEPAXI@Z",
+      "size": 31,
+      "exact": false,
+      "verified_targets": {
+        "??_7sp_counted_base@detail@boost@@6B@": "0x80b2f0 (vtable RTTI .?AVsp_counted_base@detail@boost@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?get_deleter@?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEPAXABVtype_info@@@Z": {
+      "address": "0x005f2310",
+      "symbol": "?get_deleter@?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEPAXABVtype_info@@@Z",
+      "size": 5,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??_G?$sp_counted_impl_p@VBinder@CLuaHtmlView@@@detail@boost@@UAEPAXI@Z": {
+      "address": "0x00415000",
+      "symbol": "??_G?$sp_counted_impl_p@VBinder@CLuaHtmlView@@@detail@boost@@UAEPAXI@Z",
+      "size": 31,
+      "exact": false,
+      "verified_targets": {
+        "??_7sp_counted_base@detail@boost@@6B@": "0x80b2f0 (vtable RTTI .?AVsp_counted_base@detail@boost@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?dispose@?$sp_counted_impl_p@VBinder@CLuaHtmlView@@@detail@boost@@UAEXXZ": {
+      "address": "0x004ac390",
+      "symbol": "?dispose@?$sp_counted_impl_p@VBinder@CLuaHtmlView@@@detail@boost@@UAEXXZ",
+      "size": 16,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?get_deleter@?$sp_counted_impl_p@VBinder@CLuaHtmlView@@@detail@boost@@UAEPAXABVtype_info@@@Z": {
+      "address": "0x005f2310",
+      "symbol": "?get_deleter@?$sp_counted_impl_p@VBinder@CLuaHtmlView@@@detail@boost@@UAEPAXABVtype_info@@@Z",
+      "size": 5,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    }
+  },
+  "vtables": {
+    "??_7?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@6B@": {
+      "address": "0x810524",
+      "rtti": ".?AV?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@",
+      "slots": {
+        "0": "??_E?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEPAXI@Z = 0x415000 (instance (bytes equal, targets verified) via ??_G)",
+        "1": "?dispose@?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEXXZ = 0x42b310 (own row)",
+        "2": "?destroy@sp_counted_base@detail@boost@@UAEXXZ = 0x405e10 (evidence name)",
+        "3": "?get_deleter@?$sp_counted_impl_p@VPropBinding@Binder@CLuaHtmlView@@@detail@boost@@UAEPAXABVtype_info@@@Z = 0x5f2310 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7?$sp_counted_impl_p@VBinder@CLuaHtmlView@@@detail@boost@@6B@": {
+      "address": "0x810538",
+      "rtti": ".?AV?$sp_counted_impl_p@VBinder@CLuaHtmlView@@@detail@boost@@",
+      "slots": {
+        "0": "??_E?$sp_counted_impl_p@VBinder@CLuaHtmlView@@@detail@boost@@UAEPAXI@Z = 0x415000 (instance (bytes equal, targets verified) via ??_G)",
+        "1": "?dispose@?$sp_counted_impl_p@VBinder@CLuaHtmlView@@@detail@boost@@UAEXXZ = 0x4ac390 (instance (bytes equal, targets verified))",
+        "2": "?destroy@sp_counted_base@detail@boost@@UAEXXZ = 0x405e10 (evidence name)",
+        "3": "?get_deleter@?$sp_counted_impl_p@VBinder@CLuaHtmlView@@@detail@boost@@UAEPAXABVtype_info@@@Z = 0x5f2310 (instance (bytes equal, targets verified))"
+      }
+    }
+  },
+  "counted_elsewhere": [
+    "00429360 counted by content-upload-trial",
+    "0042a720 counted by luahtml-binder2008-working",
+    "0042acb0 counted by app-leaves2008-working",
+    "0042adb0 counted by app-leaves2008-working",
+    "0042ae10 counted by app-leaves2008-working",
+    "0042ae20 counted by app-leaves2008-working",
+    "0042ae30 counted by app-leaves2008-working",
+    "0042ae40 counted by app-leaves2008-working",
+    "0042af90 counted by humanoid2008-working, misc-leaves-working",
+    "0042b130 counted by app-leaves2008-working",
+    "0042b191 counted by app-leaves2008-working",
+    "0042b1e0 counted by misc-leaves-working",
+    "0042b350 counted by app-leaves2008-working",
+    "0042bcd0 counted by luahtml-binder2008-working",
+    "0042bd70 counted by luahtml-binder2008-working",
+    "0042be20 counted by luahtml-binder2008-working"
+  ],
+  "proposals": [
+    "native-headers/CRobloxApp.h (maintainer exclusion; proposal only, as app-unit424-2008): declare LogManager, ThreadLogManager : LogManager and MainLogManager : RBX::ILogProvider, LogManager per the RTTI of vtables 0x81030c / 0x8104b4 / 0x8104cc / 0x8104c0 in a separate LogManager header; unlocks the LogManager unit."
+  ],
+  "rejected": [],
+  "shadowing": "none (no new header; LuaHtmlBinder2008.h and the profile headers are included read-only)",
+  "exact_function_rows": [
+    "0042a630",
+    "0042a69e",
+    "0042a6c0",
+    "0042a8a0",
+    "0042aaf0",
+    "0042aba0",
+    "0042abe0",
+    "0042b0e0",
+    "0042b280",
+    "0042b2ee",
+    "0042b310",
+    "0042b330",
+    "0042b550",
+    "0042b6d0",
+    "0042b7c0",
+    "0042b800",
+    "0042b870",
+    "0042b8b0",
+    "0042b950",
+    "0042b9a0"
+  ],
+  "scope": "Inactive. Exact rows with every target verified; no pending build; no active build, swap or credit."
+}

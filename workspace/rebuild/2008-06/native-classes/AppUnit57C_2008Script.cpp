@@ -30,10 +30,7 @@ namespace RBX
 	template<class C, class D, const char* N>
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
-	template<class C, class D, const char* N>
-	template<typename Arg0Type>
-	DescribedCreatable<C, D, N>::DescribedCreatable(Arg0Type arg0)
-		: Reflection::Described<C, N, FactoryProduct<C, D, N> >(arg0) {}
+	// DescribedCreatable(Arg0Type) is defined inline in reflection/reflection.h.
 }
 
 using namespace RBX;
@@ -155,3 +152,4 @@ template class boost::shared_ptr<std::basic_string<char,std::char_traits<char>,s
 
 // Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
 template void RBX::Name::callDoDeclare<RBX::sScript>();
+

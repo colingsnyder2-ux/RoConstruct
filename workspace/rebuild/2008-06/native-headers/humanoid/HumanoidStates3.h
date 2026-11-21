@@ -44,6 +44,8 @@ public:
     Dead(Humanoid* humanoid);                            // 00666d30
     virtual ~Dead() {}                                   // inlined into deleting 00666da0
     virtual int getStateType() const { return 11; }      // slot 2, 00666c40
+	public:
+		void* sub_00666da0(unsigned int flags);   // INFERRED: 00666da0, placeholder name (identity tier), body byte-proved (Inferred_00666da0.cpp)
 };
 
 // FallingDown : Named<HumanoidState, sFallingDown> (RTTI .?AVFallingDown@HUMAN@RBX@@).

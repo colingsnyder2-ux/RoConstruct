@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\debris_forcefield\\NativeDebrisForceFieldLayout.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeDebrisForceFieldLayout.cpp"
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeDebrisForceFieldLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeDebrisForceFieldLayout.cpp"
     ],
     "debris": [
       "/nologo",
@@ -61,7 +61,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -75,8 +75,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\debris_forcefield\\NativeDebrisService.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\DebrisService.cpp"
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeDebrisService.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/DebrisService.cpp"
     ],
     "forcefield": [
       "/nologo",
@@ -100,7 +100,7 @@
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
       "/fp:fast",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -114,66 +114,23 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\debris_forcefield\\NativeForceField.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\ForceField.cpp"
-    ],
-    "forcefield_pending": [
-      "/nologo",
-      "/c",
-      "/O2",
-      "/Ob2",
-      "/Oy",
-      "/GF",
-      "/GS-",
-      "/EHsc",
-      "/MD",
-      "/D_AFXDLL",
-      "/DNDEBUG",
-      "/D_MBCS",
-      "/DNOMINMAX",
-      "/DBOOST_ALL_NO_LIB",
-      "/DWIN32",
-      "/DNDEBUG",
-      "/D_LIB",
-      "/D_RELEASE",
-      "/D_RELEASEASSERT",
-      "/D_VC80_UPGRADE=0x0710",
-      "/fp:fast",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\debris_forcefield\\debris-forcefield-pending",
-      "/DNATIVE_FORCEFIELD_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\debris_forcefield\\NativeForceFieldPending.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\ForceField.cpp"
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeForceField.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ForceField.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_debris_forcefield.py": "77c1f5e11b223e10790d3de15e604e9f2946238aa18739905b30863da9595e16",
+    "rebuild/2008-06/tests/record_native_debris_forcefield.py": "9ffc766cf742c77ed8c98db17c8755e9dffa439ac8a27b087890328d2e0ecf6c",
     "rebuild/2008-06/tests/NativeDebrisForceFieldLayout.cpp": "0789a36c27aa00c682418d2bbf8ef1bb5c398a2dc7946238fb82054a520da0f7",
     "rebuild/2008-06/native-headers/v8datamodel/DebrisService.h": "e0585a12bf51f8c3e059ae17bc40d0a4e39a26c805aefa4486f45bd1a8c1b2e8",
     "rebuild/2008-06/native-classes/DebrisService.cpp": "a7f2b116478f8a1e67831f2a45f483f62956001ebfc24179265a371b9ad9ded6",
-    "rebuild/2008-06/tests/record_native_debris_forcefield_rows.py": "310d2d28a9647a4fa07cd425eedb3acad043a736cfd3b337fa2efbe0ba0b7adb",
+    "rebuild/2008-06/tests/record_native_debris_forcefield_rows.py": "74e4221efe699d7fb4b2863ec0ec23176fe84e024ad2a6b76d3ea775327fb257",
     "rebuild/2008-06/native-headers/v8datamodel/ForceField.h": "99bd9dd2cea96ab313e71617522943c0773b098c6427d46fc343d41db396d5e0",
-    "rebuild/2008-06/native-classes/ForceField.cpp": "2968fa491391dc188ae19d3937e282f4c50fe15f6a5b9ea8323db86b5a950102",
-    "rebuild/2008-06/tests/NativeDebrisForceFieldPendingWorkspace.h": "24b05a565f546ba2b85afa53d8ac3c3d6d245d55b6240c42b19feb2e6bdf18d0"
+    "rebuild/2008-06/native-classes/ForceField.cpp": "53504572a7ea9b4d12cf70be477a464db49afe0e56d7c6e86f894e41df937c44"
   },
   "objects": {
-    "NativeDebrisForceFieldLayout.obj": "70abcc8e37363c97fd2e6f9d9566cf393643965a4af1e33a1fc891aa6a3af725",
-    "NativeDebrisService.obj": "bb5880049519b26b58a54270b09158bc5350907c2dc81347d2a43a209b6fcd75",
-    "NativeForceField.obj": "e6afb339078ca89fcefe788f24e597fdd755848a7c2bf0a3ab4847bf0c9fb7fc",
-    "NativeForceFieldPending.obj": "c6b70f1123e54227614d50733ee4ea88c66eb2967d23095938d1e52deb995476"
+    "NativeDebrisForceFieldLayout.obj": "ed2f0e4d8ed8b758cde33471df64d008461f7b6672a2441eaad0cfdb2a09e5a0",
+    "NativeDebrisService.obj": "028b20ef94812072690b4390db0e84d17c6774676888b3dbbcc6b26434b70256",
+    "NativeForceField.obj": "df4ef16504b95e5826b2a27b04795a8541c478c8a138c7fbb95f3ec08451a486"
   },
   "layout": {
     "DebrisService": "0x158 (005c2e10); Service empty base and std::queue<weak_ptr<Instance>> queue +0x130, maxItems +0x150, timer +0x154; class name \"Debris\" (char[] 009611f0)",
@@ -1425,6 +1382,61 @@
           "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
         },
         "local_eh": []
+      },
+      {
+        "address": "0062d090",
+        "symbol": "?askSetParent@ForceField@RBX@@MBE_NPBVInstance@2@@Z",
+        "size": 35,
+        "target_size": 35,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVWorkspace@RBX@@@8": "0x9481b8 (RTTI .?AVWorkspace@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062d3d0",
+        "symbol": "?isProtected@ForceField@RBX@@SA_NPAVInstance@2@@Z",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "verified_targets": {
+          "?isProtectedRecursive@ForceField@RBX@@CA_NPAVInstance@2@@Z": "0x62d380 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062d400",
+        "symbol": "??$visitDescendents@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@ZV?$list3@V?$arg@$00@boost@@V?$value@PAVAdorn@RBX@@@_bi@2@V?$value@H@42@@_bi@2@@_bi@boost@@@Instance@RBX@@QBEXV?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@ZV?$list3@V?$arg@$00@boost@@V?$value@PAVAdorn@RBX@@@_bi@2@V?$value@H@42@@_bi@2@@_bi@boost@@@Z",
+        "size": 354,
+        "target_size": 354,
+        "exact": true,
+        "verified_targets": {
+          "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x4915b0 (external (evidence name))",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??$visitDescendents@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@ZV?$list3@V?$arg@$00@boost@@V?$value@PAVAdorn@RBX@@@_bi@2@V?$value@H@42@@_bi@2@@_bi@boost@@@Instance@RBX@@QBEXV?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@ZV?$list3@V?$arg@$00@boost@@V?$value@PAVAdorn@RBX@@@_bi@2@V?$value@H@42@@_bi@2@@_bi@boost@@@Z": "0x62d400 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$visitDescendents@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@ZV?$list3@V?$arg@$00@boost@@V?$value@PAVAdorn@RBX@@@_bi@2@V?$value@H@42@@_bi@2@@_bi@boost@@@Instance@RBX@@QBEXV?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@ZV?$list3@V?$arg@$00@boost@@V?$value@PAVAdorn@RBX@@@_bi@2@V?$value@H@42@@_bi@2@@_bi@boost@@@Z"
+        ]
+      },
+      {
+        "address": "0062d570",
+        "symbol": "?render3dAdorn@ForceField@RBX@@MAEXPAVAdorn@2@@Z",
+        "size": 127,
+        "target_size": 127,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVWorkspace@RBX@@@8": "0x9481b8 (RTTI .?AVWorkspace@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "?renderPart@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@Z": "0x62d200 (call target of a non-exact row)",
+          "??$visitDescendents@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@ZV?$list3@V?$arg@$00@boost@@V?$value@PAVAdorn@RBX@@@_bi@2@V?$value@H@42@@_bi@2@@_bi@boost@@@Instance@RBX@@QBEXV?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@ZV?$list3@V?$arg@$00@boost@@V?$value@PAVAdorn@RBX@@@_bi@2@V?$value@H@42@@_bi@2@@_bi@boost@@@Z": "0x62d400 (own row)",
+          "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (external (evidence name))"
+        },
+        "local_eh": []
       }
     ],
     "not_exact": [
@@ -1447,28 +1459,16 @@
     ],
     "pending": [
       {
-        "address": "0062d090",
-        "symbol": "?askSetParent@ForceField@RBX@@MBE_NPBVInstance@2@@Z",
-        "size": 35,
-        "target_size": 35,
-        "exact": false,
-        "verified_targets": {
-          "??_R0?AVWorkspace@RBX@@@8": "0x9481b8 (RTTI .?AVWorkspace@RBX@@)",
-          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
-          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
-        },
-        "local_eh": [],
-        "exact_pending_build_only": true
-      },
-      {
         "address": "0062d200",
         "symbol": "?renderPart@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@Z",
         "size": 250,
         "target_size": 250,
         "exact": false,
         "exact_pending_build_only": false,
-        "reason": "not exact even in the pending build: reads the 2008 PartInstance float at +0x328 (the native PartInstance.h has its provisional transparency at +0x1e8; sizes match, field identity unproven)"
-      },
+        "reason": "not exact: reads the 2008 PartInstance float at +0x328 (the native PartInstance.h has its provisional transparency at +0x1e8; sizes match, field identity unproven)"
+      }
+    ],
+    "ancestor_walk_not_counted": [
       {
         "address": "0062d380",
         "symbol": "?isProtectedRecursive@ForceField@RBX@@CA_NPAVInstance@2@@Z",
@@ -1482,52 +1482,8 @@
           "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
         },
         "local_eh": [],
-        "exact_pending_build_only": true
-      },
-      {
-        "address": "0062d3d0",
-        "symbol": "?isProtected@ForceField@RBX@@SA_NPAVInstance@2@@Z",
-        "size": 5,
-        "target_size": 5,
-        "exact": false,
-        "verified_targets": {
-          "?isProtectedRecursive@ForceField@RBX@@CA_NPAVInstance@2@@Z": "0x62d380 (own row)"
-        },
-        "local_eh": [],
-        "exact_pending_build_only": true
-      },
-      {
-        "address": "0062d400",
-        "symbol": "??$visitDescendents@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@ZV?$list3@V?$arg@$00@boost@@V?$value@PAVAdorn@RBX@@@_bi@2@V?$value@H@42@@_bi@2@@_bi@boost@@@Instance@RBX@@QBEXV?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@ZV?$list3@V?$arg@$00@boost@@V?$value@PAVAdorn@RBX@@@_bi@2@V?$value@H@42@@_bi@2@@_bi@boost@@@Z",
-        "size": 354,
-        "target_size": 354,
-        "exact": false,
-        "verified_targets": {
-          "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x4915b0 (external (evidence name))",
-          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
-          "??$visitDescendents@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@ZV?$list3@V?$arg@$00@boost@@V?$value@PAVAdorn@RBX@@@_bi@2@V?$value@H@42@@_bi@2@@_bi@boost@@@Instance@RBX@@QBEXV?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@ZV?$list3@V?$arg@$00@boost@@V?$value@PAVAdorn@RBX@@@_bi@2@V?$value@H@42@@_bi@2@@_bi@boost@@@Z": "0x62d400 (own row)"
-        },
-        "local_eh": [
-          "__ehhandler$??$visitDescendents@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@ZV?$list3@V?$arg@$00@boost@@V?$value@PAVAdorn@RBX@@@_bi@2@V?$value@H@42@@_bi@2@@_bi@boost@@@Instance@RBX@@QBEXV?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@ZV?$list3@V?$arg@$00@boost@@V?$value@PAVAdorn@RBX@@@_bi@2@V?$value@H@42@@_bi@2@@_bi@boost@@@Z"
-        ],
-        "exact_pending_build_only": true
-      },
-      {
-        "address": "0062d570",
-        "symbol": "?render3dAdorn@ForceField@RBX@@MAEXPAVAdorn@2@@Z",
-        "size": 127,
-        "target_size": 127,
-        "exact": false,
-        "verified_targets": {
-          "??_R0?AVWorkspace@RBX@@@8": "0x9481b8 (RTTI .?AVWorkspace@RBX@@)",
-          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
-          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
-          "?renderPart@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@Z": "0x62d200 (own row)",
-          "??$visitDescendents@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@ZV?$list3@V?$arg@$00@boost@@V?$value@PAVAdorn@RBX@@@_bi@2@V?$value@H@42@@_bi@2@@_bi@boost@@@Instance@RBX@@QBEXV?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@ZV?$list3@V?$arg@$00@boost@@V?$value@PAVAdorn@RBX@@@_bi@2@V?$value@H@42@@_bi@2@@_bi@boost@@@Z": "0x62d400 (own row)",
-          "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (external (evidence name))"
-        },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "bytes_exact": true,
+        "reason": "isProtected 0062d3d0 jmp target; no analyzed function starts at 0062d380 locally, not counted"
       }
     ],
     "folded_trivial_not_counted": [
@@ -1584,6 +1540,7 @@
     "005c2cd0",
     "005c2d60",
     "005c2e10",
+    "0062d090",
     "0062d0c0",
     "0062d120",
     "0062d180",
@@ -1595,7 +1552,10 @@
     "0062d1f0",
     "0062d300",
     "0062d310",
+    "0062d3d0",
     "0062d3e0",
+    "0062d400",
+    "0062d570",
     "0062d5f0",
     "0062d690",
     "0062d6a0",
@@ -2388,6 +2348,6 @@
   "not_attempted": {
     "0062d950/0062d8f0": "GeometryService FactoryProduct ctor/dtor that follow the ForceField unit (not ForceField)"
   },
-  "proposal_instance_h": "    template<typename Function>\n    void visitDescendents(Function func) const   // 0062d400 (bind_t instance used by ForceField::render3dAdorn)\n    {\n        if (children)\n        {\n            boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > c = children.read();\n            std::vector<boost::shared_ptr<Instance> >::const_iterator end = c->end();\n            std::vector<boost::shared_ptr<Instance> >::const_iterator iter = c->begin();\n            for (; iter != end; iter++)\n            {\n                func(*iter);\n                (*iter)->visitDescendents(func);\n            }\n        }\n    }\n",
-  "pending_note": "pending rows are exact only with a generated copy of native v8tree/Instance.h plus Instance::visitDescendents (PROPOSAL_INSTANCE) and a declaration-only RBX::Workspace (tests/NativeDebrisForceFieldPendingWorkspace.h) under out/native-layouts/debris-forcefield-pending."
+  "proposal_instance_h": "adopted in native v8tree/Instance.h:     template<typename Function>\n    void visitDescendents(Function func) const   // 0062d400 (bind_t instance used by ForceField::render3dAdorn)\n    {\n        if (children)\n        {\n            boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > c = children.read();\n            std::vector<boost::shared_ptr<Instance> >::const_iterator end = c->end();\n            std::vector<boost::shared_ptr<Instance> >::const_iterator iter = c->begin();\n            for (; iter != end; iter++)\n            {\n                func(*iter);\n                (*iter)->visitDescendents(func);\n            }\n        }\n    }\n",
+  "pending_note": "no pending build: the former pending rows compile against the committed native Instance.h (visitDescendents) and Workspace.h. renderPart 0062d200 (group pending) is not exact (PartInstance +0x328); isProtectedRecursive 0062d380 is bound, not counted."
 }

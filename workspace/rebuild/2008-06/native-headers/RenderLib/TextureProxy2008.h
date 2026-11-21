@@ -81,6 +81,7 @@ namespace RBX
 			float scalar;                                                         // +0x54 (ctor: 0; size 0x58; name is a choice)
 
 		public:
+			static const size_t numStrips = 32;                                   // resolve 007b9000: std::min against the const 0080b350
 			MegaTextureProxy(G3D::TextureManager& textureManager, const std::string& filename);          // 007b8fb0
 			virtual G3D::ReferenceCountedPointer<G3D::Texture> resolve(G3D::RenderDevice* rd);           // slot 6 007b9000
 			virtual TextureProxyBaseRef shade(const G3D::Color3& color, const TextureProxyBaseRef& base) // slot 7 007b8fe0

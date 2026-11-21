@@ -5,6 +5,8 @@
 #include "v8datamodel/PartInstance.h"
 #include "humanoid/Humanoid.h"
 #include "Network/Players.h"
+#include "../native-headers/v8datamodel/ChangeHistoryService.h"
+
 #include "v8datamodel/ModelInstance.h"   // complete type for the askSetParent dynamic_cast (005d7640)
 #include "v8datamodel/Decal.h"   // native Decal (ShirtGraphic::apply 005d4240, findFirstChildOfType<Decal> 005d41a0)
 
@@ -220,3 +222,4 @@ namespace RBX
 template void RBX::Name::callDoDeclare<RBX::sShirtGraphic>();
 template void RBX::Name::callDoDeclare<RBX::sClothing>();
 template void RBX::Name::callDoDeclare<RBX::sSkin>();
+

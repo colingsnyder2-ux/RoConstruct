@@ -1,0 +1,1594 @@
+{
+  "class": "RBX RunDragger / AssemblyStage rows and the unit map of the application range 0066c000..00670000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), /fp:fast /U_RELEASEASSERT",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/part-embedded",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/engine-world",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit66c/NativeAppUnit66CLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit66c/NativeAppUnit66CLayout.cpp"
+    ],
+    "drag": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/part-embedded",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/engine-world",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit66c/NativeAppUnit66C_drag.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit66CRunDragger.cpp"
+    ],
+    "stage": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit66c/NativeAppUnit66C_stage.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit66CAssemblyStage.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit66c.py": "6c227e197e0ad8200db242f79b9eb672d0fe6bca93d64485aaf4274dc5263ffb",
+    "rebuild/2008-06/native-classes/AppUnit66CRunDragger.cpp": "f2886dcdf7f94ba151112a1ab8eda8849bd85777c7902f18868c9d0520ed309b",
+    "rebuild/2008-06/native-classes/AppUnit66CAssemblyStage.cpp": "860df639bfcb2e0a3af285dca4ed3fc8ac63b44d361f013def964dda32db8e59",
+    "rebuild/2008-06/native-headers/AppUnit66C/AssemblyStage.h": "8cdb5829c420da17b2b6f7af5e6d0686ea73a2a37619fb2916761f460370da45",
+    "rebuild/2008-06/native-headers/v8world/Joints2008.h": "b941dedb99f64b2af2980efa2141d07c781d40b5fdd711ad6763c813f473fd06",
+    "rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h": "e587636e3e014667d883c41351dc934f476cbb47262f1075d407090891ce8776",
+    "rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h": "8f09901d8ba53b9b434bb200d7fb6defbec01a1a7724c02497b2a16736433200",
+    "rebuild/2008-06/native-headers/engine-world/v8world/World.h": "fefd356fb97f8b5a17474a44b866c6332387cd22ea90d4b84e70361eafe6bf08",
+    "rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h": "83977498f3b17b801ee932716d86b0b1a0ffc34a533b76a6ac254c77377723fe",
+    "tools/rbxgs/Client/App/include/tool/RunDragger.h": "9a0cfa791041aa54e95a8b33155c6e2f83794bd6bd3d9a27a2e2cef33cf511b6",
+    "tools/rbxgs/Client/App/include/v8world/IWorldStage.h": "c5bd6a525b5e1cc00bb9f6ddacfc36e2bd80729c2ba13b600d85113b79227682",
+    "tools/rbxgs/Client/App/include/v8kernel/IStage.h": "af562073699d7db13115a01f88bb8efb9c6258e40d00ff3357cf1938f63aaa67"
+  },
+  "objects": {
+    "layout": "5fe8c3c6a5634d7f7c95425c9bd623e074ec367fd47c94f44918aa2a2a7fc8e3",
+    "drag": "42e687dacfc2fcb486a89f85a8c7e59e6acf274ef4c9684cdf8ee3b217753a8a",
+    "stage": "91ad7b6d1ccdbd9d28ed1e954ad412b9d30685f5e245b1c098ca1c8ecd7a3593"
+  },
+  "layout": {
+    "runDraggerSize": "0x70",
+    "snapInfoSize": "0x20",
+    "snapInfoSnap": "0x0",
+    "snapInfoSurface": "0x4",
+    "snapInfoHitWorld": "0x8",
+    "snapInfoLastDragSnap": "0x14",
+    "assemblyStageSize": "0x50",
+    "assemblies": "0x10",
+    "joints": "0x30",
+    "setSize": "0x20"
+  },
+  "allocations": [
+    "00665fc1: new(0x70) before 0066c900",
+    "006698b2: new(0x50) before 0066f800",
+    "0066f845: new(0x1ec) before 0064b8e0"
+  ],
+  "rtti_bases": {
+    "AssemblyStage 0084d1a4": {
+      ".?AVAssemblyStage@RBX@@": 0,
+      ".?AVIWorldStage@RBX@@": 0,
+      ".?AVIStage@RBX@@": 0
+    }
+  },
+  "unit_map": {
+    "lua-lcode 0x0066c000..0x0066c32f": {
+      "rows": 3,
+      "unit": "Lua 5.1.1 lcode.c tail (luaK_infix 0x0066c040, luaK_posfix 0x0066c0b0, luaK_patchlist 0x0066c2f0; Lua evidence names): library code, not recovered.",
+      "library": true,
+      "counted_here": [],
+      "counted_elsewhere": []
+    },
+    "run-dragger 0x0066c330..0x0066e64f": {
+      "rows": 29,
+      "unit": "RBX::RunDragger (no vtable; 0x70 bytes, PartDragTool() 0x00665fc1 news 0x70 before RunDragger() 0x0066c900; tool/RunDragger.cpp): SnapInfo members, ctor / dtor, the SnapInfo copy ctor and default ctor (out of line for findSnap), the G3D::Array<NormalId> append / resize instantiation used only by fallOffPart (callers 0x0066e270 / 0x0066e27e only), findSnap, smartPtrHackPre / Post, init (PartDragTool 0x00665b3f), snapDragPart, rayHitsCloserPart, findSafeY, moveDragPart, fallOffPart, findNoSnapPosition, snap (PartDragTool 0x00665bb9 / 0x00666148). Built here; moveDragPart 0x0066dd90 is the only non-exact row.",
+      "library": false,
+      "counted_here": [
+        "0066c330",
+        "0066c400",
+        "0066c480",
+        "0066c4c0",
+        "0066c510",
+        "0066c5a0",
+        "0066c600",
+        "0066c640",
+        "0066c810",
+        "0066c900",
+        "0066c970",
+        "0066cc70",
+        "0066ccc0",
+        "0066ce20",
+        "0066ced0",
+        "0066cfd0",
+        "0066d0d0",
+        "0066d260",
+        "0066d3c0",
+        "0066d430",
+        "0066d4f0",
+        "0066d710",
+        "0066d9f0",
+        "0066daf0",
+        "0066dc80",
+        "0066e1a0",
+        "0066e330",
+        "0066e3d0"
+      ],
+      "counted_elsewhere": []
+    },
+    "balancing 0x0066e650..0x0066ea9f": {
+      "rows": 3,
+      "unit": "HUMAN::Balancing (vtable 0x0084d0dc / 0x0084d0d4): constructor 0x0066e660 (built by humanoid-states1, methods list without an exact marker) and onComputeForce 0x0066e6a0 (pending there: Body / Cofm / SimBody layouts), thunk 0x0066ea90. Owner: humanoid states; not rebuilt here.",
+      "library": false,
+      "counted_here": [],
+      "counted_elsewhere": []
+    },
+    "moving-no-physics 0x0066eaa0..0x0066f50f": {
+      "rows": 16,
+      "unit": "HUMAN::MovingNoPhysicsBase (RTTI 7 bases, SimJob at +0xa0, vtable 0x0084d150): getTorsoAssembly 0x0066eaa0, Name doDeclare / callDoDeclare / getName 0x0066eac0 / 0x0066eca0 / 0x0066edf0 and ~MovingNoPhysicsBase 0x0066ee10 (built by humanoid-states3, methods list without exact markers), the Vector3 + inline-static helper 0x0066eb30, 0x0066eb90 (Humanoid::getRootBody 0x005d9180, Cofm::getMass), the boost::function manager / invoker 0x0066ecb0 / 0x0066ed10 (type_info 0x00962ce0), release 0x0066ed50, the bound step thunk 0x0066edc0, boost::function / slot construction 0x0066ef10 / 0x0066ef70, the dynamic_cast walk 0x0066f020, constructor 0x0066f070 and onStep 0x0066f2c0 (pending there). Owner: humanoid states (lease family); not rebuilt here.",
+      "library": false,
+      "counted_here": [],
+      "counted_elsewhere": []
+    },
+    "assembly-stage 0x0066f510..0x0066f8cf": {
+      "rows": 9,
+      "unit": "RBX::AssemblyStage (RTTI .?AVAssemblyStage@RBX@@, vtable 0x0084d1a4, 0x50 bytes): wakeAssembly 0x0066f510, onAssemblyAdded 0x0066f530, onAssemblyRemoving 0x0066f550 (SleepStage members 0x0064b890 / 0x0064aff0 / 0x0064b0a0), stepWorld 0x0066f570, onEdgeAdded 0x0066f5f0, onEdgeRemoving 0x0066f6e0, ~AssemblyStage 0x0066f790, AssemblyStage() 0x0066f800, ??_G 0x0066f8b0. Built here: stepWorld, the destructor and ??_G; the others need a 2008 SleepStage, Assembly and Edge accessors (see proposals).",
+      "library": false,
+      "counted_here": [
+        "0066f570",
+        "0066f790",
+        "0066f8b0"
+      ],
+      "counted_elsewhere": []
+    },
+    "index-box 0x0066f8d0..0x0066f8ff": {
+      "rows": 2,
+      "unit": "RBX::IndexBox ~IndexBox 0x0066f8d0 / ??_G 0x0066f8e0 (vtable 0x0084d1cc): counted by leaves2008-working.json.",
+      "library": false,
+      "counted_here": [],
+      "counted_elsewhere": [
+        "0066f8d0 counted by leaves2008-working.json",
+        "0066f8e0 counted by leaves2008-working.json"
+      ]
+    },
+    "adorn-rbxgfx 0x0066f900..0x0066ffff": {
+      "rows": 20,
+      "unit": "RBX::AdornRbxGfx tail (vtable 0x0084d2a4: getWidth / getHeight 0x0066f900 / 0x0066f910, quad / line draws 0x0066f920 / 0x0066f9c0 / 0x0066fa50, setObjectToWorldMatrix .. uniqueName and the map<string, MeshPtr> pair / _Tree helpers, the weak_ptr<PartInstance> _Allocate 0x0066fd40, measure 0x0066fda0 / 0x0066fe30, SharedPtr<RbxFont> dtor / ??_G 0x0066fe70 / 0x0066fe90, the RenderMaterial row 0x0066ffb0): adorn / render-material owners; not rebuilt here.",
+      "library": false,
+      "counted_here": [],
+      "counted_elsewhere": [
+        "0066fac0 counted by adorn-working.json",
+        "0066faf0 counted by adorn-working.json",
+        "0066fba0 counted by adorn-working.json",
+        "0066fc00 counted by adorn-working.json",
+        "0066fc30 counted by adorn-working.json",
+        "0066fc80 counted by adorn-working.json",
+        "0066fce0 counted by adorn-working.json",
+        "0066fed0 counted by adorn-working.json",
+        "0066ff20 counted by adorn-working.json",
+        "0066ffb0 counted by render-material-working.json"
+      ]
+    }
+  },
+  "row_map": [
+    {
+      "row": "0x0066c040",
+      "size": 103,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_infix@@YAXPAUFuncState@@W4BinOpr@@PAUexpdesc@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066c0b0",
+      "size": 576,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_posfix@@YAXPAUFuncState@@W4BinOpr@@PAUexpdesc@@2@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066c2f0",
+      "size": 63,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_patchlist@@YAXPAUFuncState@@HH@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066c330",
+      "size": 201,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066c400",
+      "size": 120,
+      "block": "run-dragger",
+      "evidence_name": "??1RunDragger@RBX@@QAE@XZ",
+      "counted": "here"
+    },
+    {
+      "row": "0x0066c480",
+      "size": 55,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066c4c0",
+      "size": 76,
+      "block": "run-dragger",
+      "evidence_name": "?adjacent@RunDragger@RBX@@AAE_NPAVPrimitive@2@0@Z",
+      "counted": "here"
+    },
+    {
+      "row": "0x0066c510",
+      "size": 137,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066c5a0",
+      "size": 82,
+      "block": "run-dragger",
+      "evidence_name": "?rotatePart@RunDragger@RBX@@SAXPAVPartInstance@2@@Z",
+      "counted": "here"
+    },
+    {
+      "row": "0x0066c600",
+      "size": 64,
+      "block": "run-dragger",
+      "evidence_name": "??0SnapInfo@RunDragger@RBX@@QAE@XZ",
+      "counted": "here"
+    },
+    {
+      "row": "0x0066c640",
+      "size": 457,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066c810",
+      "size": 238,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066c900",
+      "size": 110,
+      "block": "run-dragger",
+      "evidence_name": "??0RunDragger@RBX@@QAE@XZ",
+      "counted": "here"
+    },
+    {
+      "row": "0x0066c970",
+      "size": 765,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066cc70",
+      "size": 78,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066ccc0",
+      "size": 346,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066ce20",
+      "size": 170,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066ced0",
+      "size": 253,
+      "block": "run-dragger",
+      "evidence_name": "?tiltPart@RunDragger@RBX@@SAXPAVPartInstance@2@ABVCoordinateFrame@G3D@@@Z",
+      "counted": "here"
+    },
+    {
+      "row": "0x0066cfd0",
+      "size": 256,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066d0d0",
+      "size": 387,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066d260",
+      "size": 349,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066d3c0",
+      "size": 101,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066d430",
+      "size": 190,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066d4f0",
+      "size": 540,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066d710",
+      "size": 723,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066d9f0",
+      "size": 241,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066daf0",
+      "size": 392,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066dc80",
+      "size": 261,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066dd90",
+      "size": 1027,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066e1a0",
+      "size": 397,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066e330",
+      "size": 146,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066e3d0",
+      "size": 642,
+      "block": "run-dragger",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066e660",
+      "size": 52,
+      "block": "balancing",
+      "evidence_name": null,
+      "counted": "no (methods list of humanoid-states1-working.json)"
+    },
+    {
+      "row": "0x0066e6a0",
+      "size": 1003,
+      "block": "balancing",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066ea90",
+      "size": 5,
+      "block": "balancing",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066eaa0",
+      "size": 26,
+      "block": "moving-no-physics",
+      "evidence_name": null,
+      "counted": "no (methods list of humanoid-states3-working.json)"
+    },
+    {
+      "row": "0x0066eac0",
+      "size": 101,
+      "block": "moving-no-physics",
+      "evidence_name": null,
+      "counted": "no (methods list of humanoid-states3-working.json)"
+    },
+    {
+      "row": "0x0066eb30",
+      "size": 91,
+      "block": "moving-no-physics",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066eb90",
+      "size": 259,
+      "block": "moving-no-physics",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066eca0",
+      "size": 5,
+      "block": "moving-no-physics",
+      "evidence_name": null,
+      "counted": "no (methods list of humanoid-states3-working.json)"
+    },
+    {
+      "row": "0x0066ecb0",
+      "size": 81,
+      "block": "moving-no-physics",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066ed10",
+      "size": 50,
+      "block": "moving-no-physics",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066ed50",
+      "size": 103,
+      "block": "moving-no-physics",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066edc0",
+      "size": 33,
+      "block": "moving-no-physics",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066edf0",
+      "size": 23,
+      "block": "moving-no-physics",
+      "evidence_name": null,
+      "counted": "no (methods list of humanoid-states3-working.json)"
+    },
+    {
+      "row": "0x0066ee10",
+      "size": 255,
+      "block": "moving-no-physics",
+      "evidence_name": null,
+      "counted": "no (methods list of humanoid-states3-working.json)"
+    },
+    {
+      "row": "0x0066ef10",
+      "size": 84,
+      "block": "moving-no-physics",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066ef70",
+      "size": 172,
+      "block": "moving-no-physics",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066f020",
+      "size": 65,
+      "block": "moving-no-physics",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066f070",
+      "size": 589,
+      "block": "moving-no-physics",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066f2c0",
+      "size": 581,
+      "block": "moving-no-physics",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066f510",
+      "size": 18,
+      "block": "assembly-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066f530",
+      "size": 30,
+      "block": "assembly-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066f550",
+      "size": 30,
+      "block": "assembly-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066f570",
+      "size": 127,
+      "block": "assembly-stage",
+      "evidence_name": "?stepWorld@IStage@RBX@@UAEXHH_N@Z",
+      "counted": "here"
+    },
+    {
+      "row": "0x0066f5f0",
+      "size": 237,
+      "block": "assembly-stage",
+      "evidence_name": "?onEdgeAdded@AssemblyStage@RBX@@UAEXPAVEdge@2@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066f6e0",
+      "size": 161,
+      "block": "assembly-stage",
+      "evidence_name": "?onEdgeRemoving@AssemblyStage@RBX@@UAEXPAVEdge@2@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066f790",
+      "size": 103,
+      "block": "assembly-stage",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066f800",
+      "size": 167,
+      "block": "assembly-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066f8b0",
+      "size": 30,
+      "block": "assembly-stage",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x0066f8d0",
+      "size": 7,
+      "block": "index-box",
+      "evidence_name": null,
+      "counted": "elsewhere: leaves2008-working.json"
+    },
+    {
+      "row": "0x0066f8e0",
+      "size": 31,
+      "block": "index-box",
+      "evidence_name": null,
+      "counted": "elsewhere: leaves2008-working.json"
+    },
+    {
+      "row": "0x0066f900",
+      "size": 12,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066f910",
+      "size": 12,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066f920",
+      "size": 153,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066f9c0",
+      "size": 138,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066fa50",
+      "size": 101,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066fac0",
+      "size": 46,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "elsewhere: adorn-working.json"
+    },
+    {
+      "row": "0x0066faf0",
+      "size": 164,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "elsewhere: adorn-working.json"
+    },
+    {
+      "row": "0x0066fba0",
+      "size": 91,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "elsewhere: adorn-working.json"
+    },
+    {
+      "row": "0x0066fc00",
+      "size": 48,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "elsewhere: adorn-working.json"
+    },
+    {
+      "row": "0x0066fc30",
+      "size": 78,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "elsewhere: adorn-working.json"
+    },
+    {
+      "row": "0x0066fc80",
+      "size": 82,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "elsewhere: adorn-working.json"
+    },
+    {
+      "row": "0x0066fce0",
+      "size": 83,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "elsewhere: adorn-working.json"
+    },
+    {
+      "row": "0x0066fd40",
+      "size": 91,
+      "block": "adorn-rbxgfx",
+      "evidence_name": "??$_Allocate@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@YAPAV?$weak_ptr@VPartInstance@RBX@@@boost@@IPAV12@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066fda0",
+      "size": 138,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066fe30",
+      "size": 56,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066fe70",
+      "size": 31,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066fe90",
+      "size": 55,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066fed0",
+      "size": 70,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "elsewhere: adorn-working.json"
+    },
+    {
+      "row": "0x0066ff20",
+      "size": 132,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "elsewhere: adorn-working.json"
+    },
+    {
+      "row": "0x0066ffb0",
+      "size": 111,
+      "block": "adorn-rbxgfx",
+      "evidence_name": null,
+      "counted": "elsewhere: render-material-working.json"
+    }
+  ],
+  "range_functions": 82,
+  "range_rows_counted_by_other_receipts": [
+    "0066f8d0 counted by leaves2008-working.json",
+    "0066f8e0 counted by leaves2008-working.json",
+    "0066fac0 counted by adorn-working.json",
+    "0066faf0 counted by adorn-working.json",
+    "0066fba0 counted by adorn-working.json",
+    "0066fc00 counted by adorn-working.json",
+    "0066fc30 counted by adorn-working.json",
+    "0066fc80 counted by adorn-working.json",
+    "0066fce0 counted by adorn-working.json",
+    "0066fed0 counted by adorn-working.json",
+    "0066ff20 counted by adorn-working.json",
+    "0066ffb0 counted by render-material-working.json"
+  ],
+  "rows": {
+    "drag": [
+      {
+        "address": "0066c330",
+        "symbol": "?updateSurfaceFromHit@SnapInfo@RunDragger@RBX@@QAEXXZ",
+        "size": 201,
+        "target_size": 201,
+        "exact": true,
+        "verified_targets": {
+          "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x5e82c0 (external (evidence name))",
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "?closestFace@Extents@RBX@@QAE?AW4NormalId@2@ABVVector3@G3D@@@Z": "0x60f3e0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066c400",
+        "symbol": "??1RunDragger@RBX@@QAE@XZ",
+        "size": 120,
+        "target_size": 120,
+        "exact": true,
+        "verified_targets": {
+          "??_7Ray@G3D@@6B@": "0x8282c4 (vtable RTTI .?AVRay@G3D@@ offset 0x0)"
+        },
+        "local_eh": [
+          "__ehhandler$??1RunDragger@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "0066c480",
+        "symbol": "??0SnapInfo@RunDragger@RBX@@QAE@ABV012@@Z",
+        "size": 55,
+        "target_size": 55,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0066c4c0",
+        "symbol": "?adjacent@RunDragger@RBX@@AAE_NPAVPrimitive@2@0@Z",
+        "size": 76,
+        "target_size": 76,
+        "exact": true,
+        "verified_targets": {
+          "?getFirstContact@Primitive@RBX@@QAEPAVContact@2@XZ": "0x5e7bd0 (external (evidence name))",
+          "?getNextContact@Primitive@RBX@@QAEPAVContact@2@PAV32@@Z": "0x5e7be0 (external (evidence name))",
+          "__real@3c23d70a": "0x82748c (constant 3c23d70a)",
+          "?computeIsAdjacent@Contact@RBX@@QAE_NM@Z": "0x606ca0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066c510",
+        "symbol": "?tooCloseToCamera@RunDragger@RBX@@AAE_NXZ",
+        "size": 137,
+        "target_size": 137,
+        "exact": true,
+        "verified_targets": {
+          "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x5e82c0 (external (evidence name))",
+          "__real@40c00000": "0x826e74 (constant 40c00000)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066c5a0",
+        "symbol": "?rotatePart@RunDragger@RBX@@SAXPAVPartInstance@2@@Z",
+        "size": 82,
+        "target_size": 82,
+        "exact": true,
+        "verified_targets": {
+          "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x598cb0 (external (evidence name))",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?rotateMatrixAboutY90@Math@RBX@@SAXAAVMatrix3@G3D@@H@Z": "0x5de740 (external (evidence name))",
+          "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z": "0x59d8a0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066c600",
+        "symbol": "??0SnapInfo@RunDragger@RBX@@QAE@XZ",
+        "size": 64,
+        "target_size": 64,
+        "exact": true,
+        "verified_targets": {
+          "?inf@Vector3@G3D@@SAABV12@XZ": "0x510960 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066c640",
+        "symbol": "?updateHitFromSurface@SnapInfo@RunDragger@RBX@@QAEXABVRay@G3D@@@Z",
+        "size": 457,
+        "target_size": 457,
+        "exact": true,
+        "verified_targets": {
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x5e82c0 (external (evidence name))",
+          "?toObjectSpace@CoordinateFrame@G3D@@QBE?AVRay@2@ABV32@@Z": "0x518970 (external)",
+          "?getPlane@Extents@RBX@@QBE?AVPlane@G3D@@W4NormalId@2@@Z": "0x60fe40 (external (evidence name))",
+          "?intersectRayPlane@Math@RBX@@SA_NABVRay@G3D@@ABVPlane@4@AAVVector3@4@@Z": "0x5df380 (external)",
+          "?pointToWorldSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z": "0x4766a0 (helper / COMDAT body, compared exact at the bound address)",
+          "?$S2@?6??updateHitFromSurface@SnapInfo@RunDragger@RBX@@QAEXABVRay@G3D@@@Z@4IA": "0x97da3c (function-local static)",
+          "?debugRay@?6??updateHitFromSurface@SnapInfo@RunDragger@RBX@@QAEXABVRay@G3D@@@Z@4V56@A": "0x97da20 (function-local static)",
+          "??__FdebugRay@?6??updateHitFromSurface@SnapInfo@RunDragger@RBX@@QAEXABVRay@G3D@@@Z@YAXXZ": "0x801440 (own row)",
+          "??_7Ray@G3D@@6B@": "0x8282c4 (vtable RTTI .?AVRay@G3D@@ offset 0x0)",
+          "_atexit": "0x6a17af (external)",
+          "?debugPlane@?6??updateHitFromSurface@SnapInfo@RunDragger@RBX@@QAEXABVRay@G3D@@@Z@4VPlane@6@A": "0x97da0c (function-local static)",
+          "??__FdebugPlane@?6??updateHitFromSurface@SnapInfo@RunDragger@RBX@@QAEXABVRay@G3D@@@Z@YAXXZ": "0x801430 (own row)",
+          "??_7Plane@G3D@@6B@": "0x8282bc (vtable RTTI .?AVPlane@G3D@@ offset 0x0)"
+        },
+        "local_eh": [
+          "__ehhandler$?updateHitFromSurface@SnapInfo@RunDragger@RBX@@QAEXABVRay@G3D@@@Z"
+        ]
+      },
+      {
+        "address": "0066c810",
+        "symbol": "?hitOutsideExtents@SnapInfo@RunDragger@RBX@@QAEMXZ",
+        "size": 238,
+        "target_size": 238,
+        "exact": true,
+        "verified_targets": {
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x5e82c0 (external (evidence name))",
+          "?clamp@Vector3@G3D@@QBE?AV12@ABV12@0@Z": "0x4a6100 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066c900",
+        "symbol": "??0RunDragger@RBX@@QAE@XZ",
+        "size": 110,
+        "target_size": 110,
+        "exact": true,
+        "verified_targets": {
+          "?inf@Vector3@G3D@@SAABV12@XZ": "0x510960 (helper / COMDAT body, compared exact at the bound address)",
+          "??0Ray@G3D@@QAE@XZ": "0x510a30 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066c970",
+        "symbol": "?createSnapSurface@RunDragger@RBX@@AAE?AVSnapInfo@12@PAVPrimitive@2@PAV?$Array@W4NormalId@RBX@@@G3D@@@Z",
+        "size": 765,
+        "target_size": 765,
+        "exact": true,
+        "verified_targets": {
+          "?inf@Vector3@G3D@@SAABV12@XZ": "0x510960 (helper / COMDAT body, compared exact at the bound address)",
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x5e82c0 (external (evidence name))",
+          "?toObjectSpace@CoordinateFrame@G3D@@QBE?AVRay@2@ABV32@@Z": "0x518970 (external)",
+          "?getPlane@Extents@RBX@@QBE?AVPlane@G3D@@W4NormalId@2@@Z": "0x60fe40 (external (evidence name))",
+          "?intersectRayPlane@Math@RBX@@SA_NABVRay@G3D@@ABVPlane@4@AAVVector3@4@@Z": "0x5df380 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?createSnapSurface@RunDragger@RBX@@AAE?AVSnapInfo@12@PAVPrimitive@2@PAV?$Array@W4NormalId@RBX@@@G3D@@@Z"
+        ]
+      },
+      {
+        "address": "0066cc70",
+        "symbol": "?notTried@RunDragger@RBX@@AAE_NPAVPrimitive@2@ABV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+        "size": 78,
+        "target_size": 78,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0066ccc0",
+        "symbol": "?bestProximatePart@RunDragger@RBX@@AAE?AVSnapInfo@12@ABV?$Array@PAVPrimitive@RBX@@@G3D@@P8Contact@2@AE_NM@Z@Z",
+        "size": 346,
+        "target_size": 346,
+        "exact": true,
+        "verified_targets": {
+          "?inf@Vector3@G3D@@SAABV12@XZ": "0x510960 (helper / COMDAT body, compared exact at the bound address)",
+          "?getFirstContact@Primitive@RBX@@QAEPAVContact@2@XZ": "0x5e7bd0 (external (evidence name))",
+          "__real@3c23d70a": "0x82748c (constant 3c23d70a)",
+          "?createSnapSurface@RunDragger@RBX@@AAE?AVSnapInfo@12@PAVPrimitive@2@PAV?$Array@W4NormalId@RBX@@@G3D@@@Z": "0x66c970 (own row)",
+          "?hitOutsideExtents@SnapInfo@RunDragger@RBX@@QAEMXZ": "0x66c810 (own row)",
+          "__real@501502f9": "0x84b04c (constant 501502f9)",
+          "?getNextContact@Primitive@RBX@@QAEPAVContact@2@PAV32@@Z": "0x5e7be0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066ce20",
+        "symbol": "?turnUpright@RunDragger@RBX@@SAXPAVPartInstance@2@@Z",
+        "size": 170,
+        "target_size": 170,
+        "exact": true,
+        "verified_targets": {
+          "?getSurfaces@PartInstance@RBX@@QAEAAVSurfaces@2@XZ": "0x598de0 (external)",
+          "?isStandardPart@Surfaces@RBX@@QBE?B_NXZ": "0x5ecc50 (external)",
+          "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x598cb0 (external (evidence name))",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "??_B?1??unitY@Vector3@G3D@@SAABV12@XZ@51": "0x9728a4 (function-local static)",
+          "?v@?1??unitY@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x972898 (function-local static)",
+          "?getClosestObjectNormalId@Math@RBX@@SA?AW4NormalId@2@ABVVector3@G3D@@ABVMatrix3@5@@Z": "0x5de560 (external)",
+          "?identity@Matrix3@G3D@@SAABV12@XZ": "0x513e20 (external)",
+          "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z": "0x59d8a0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066ced0",
+        "symbol": "?tiltPart@RunDragger@RBX@@SAXPAVPartInstance@2@ABVCoordinateFrame@G3D@@@Z",
+        "size": 253,
+        "target_size": 253,
+        "exact": true,
+        "verified_targets": {
+          "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x598cb0 (external (evidence name))",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240 (external)",
+          "?getClosestObjectNormalId@Math@RBX@@SA?AW4NormalId@2@ABVVector3@G3D@@ABVMatrix3@5@@Z": "0x5de560 (external)",
+          "__real@3fc90fdb": "0x81e374 (constant 3fc90fdb)",
+          "?fromAxisAngle@Matrix3@G3D@@SA?AV12@ABVVector3@2@M@Z": "0x513680 (external)",
+          "??DMatrix3@G3D@@QBE?AV01@ABV01@@Z": "0x513350 (external)",
+          "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z": "0x59d8a0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066cfd0",
+        "symbol": "?resize@?$Array@W4NormalId@RBX@@@G3D@@QAEXH_N@Z",
+        "size": 256,
+        "target_size": 256,
+        "exact": true,
+        "verified_targets": {
+          "??_B?3??resize@?$Array@W4NormalId@RBX@@@G3D@@QAEXH_N@Z@53": "0x97da44 (function-local static)",
+          "?minSize@?3??resize@?$Array@W4NormalId@RBX@@@G3D@@QAEXH_N@Z@4HB": "0x97da40 (function-local static)",
+          "?realloc@?$Array@W4NormalId@RBX@@@G3D@@AAEXH@Z": "0x502080 (helper / COMDAT body, compared exact at the bound address)",
+          "__real@40400000": "0x81e380 (constant 40400000)",
+          "__real@3fc00000": "0x81e37c (constant 3fc00000)",
+          "__real@40000000": "0x81c434 (constant 40000000)",
+          "__ftol2_sse": "0x6a17f0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066d0d0",
+        "symbol": "?rayHitsPart@RunDragger@RBX@@AAE?AVSnapInfo@12@ABV?$Array@PAVPrimitive@RBX@@@G3D@@_N@Z",
+        "size": 387,
+        "target_size": 387,
+        "exact": true,
+        "verified_targets": {
+          "?inf@Vector3@G3D@@SAABV12@XZ": "0x510960 (helper / COMDAT body, compared exact at the bound address)",
+          "??0PartByLocalCharacter@RBX@@QAE@PAVInstance@1@@Z": "0x660380 (external (evidence name))",
+          "__real@45000000": "0x8439d8 (constant 45000000)",
+          "?getMousePart@MouseCommand@RBX@@SAPAVPartInstance@2@ABVRay@G3D@@ABVContactManager@2@PBVPrimitive@2@PBVHitTestFilter@2@AAVVector3@5@M@Z": "0x6160b0 (external (evidence name))",
+          "?notTried@RunDragger@RBX@@AAE_NPAVPrimitive@2@ABV?$Array@PAVPrimitive@RBX@@@G3D@@@Z": "0x66cc70 (own row)",
+          "?adjacent@RunDragger@RBX@@AAE_NPAVPrimitive@2@0@Z": "0x66c4c0 (own row)",
+          "?updateSurfaceFromHit@SnapInfo@RunDragger@RBX@@QAEXXZ": "0x66c330 (own row)",
+          "??1PartByLocalCharacter@RBX@@QAE@XZ": "0x615b80 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?rayHitsPart@RunDragger@RBX@@AAE?AVSnapInfo@12@ABV?$Array@PAVPrimitive@RBX@@@G3D@@_N@Z"
+        ]
+      },
+      {
+        "address": "0066d260",
+        "symbol": "?findSnap@RunDragger@RBX@@AAE?AVSnapInfo@12@ABV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+        "size": 349,
+        "target_size": 349,
+        "exact": true,
+        "verified_targets": {
+          "?inf@Vector3@G3D@@SAABV12@XZ": "0x510960 (helper / COMDAT body, compared exact at the bound address)",
+          "?rayHitsPart@RunDragger@RBX@@AAE?AVSnapInfo@12@ABV?$Array@PAVPrimitive@RBX@@@G3D@@_N@Z": "0x66d0d0 (own row)",
+          "?computeIsAdjacent@Contact@RBX@@QAE_NM@Z": "0x606ca0 (external (evidence name))",
+          "?bestProximatePart@RunDragger@RBX@@AAE?AVSnapInfo@12@ABV?$Array@PAVPrimitive@RBX@@@G3D@@P8Contact@2@AE_NM@Z@Z": "0x66ccc0 (own row)",
+          "??_9Contact@RBX@@$BBM@AE": "0x606ce0 (external)",
+          "??0SnapInfo@RunDragger@RBX@@QAE@ABV012@@Z": "0x66c480 (own row)",
+          "??4SnapInfo@RunDragger@RBX@@QAEAAV012@ABV012@@Z": "0x66c480 (helper / COMDAT body, compared exact at the bound address)",
+          "??0SnapInfo@RunDragger@RBX@@QAE@XZ": "0x66c600 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066d3c0",
+        "symbol": "?append@?$Array@W4NormalId@RBX@@@G3D@@QAEXABW4NormalId@RBX@@@Z",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "?append@?$Array@W4NormalId@RBX@@@G3D@@QAEXABW4NormalId@RBX@@@Z": "0x66d3c0 (own row)",
+          "?resize@?$Array@W4NormalId@RBX@@@G3D@@QAEXH_N@Z": "0x66cfd0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066d430",
+        "symbol": "?smartPtrHackPre@RunDragger@RBX@@AAEXXZ",
+        "size": 190,
+        "target_size": 190,
+        "exact": true,
+        "verified_targets": {
+          "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ": "0x5cab00 (external (evidence name))",
+          "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z": "0x5995f0 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$?smartPtrHackPre@RunDragger@RBX@@AAEXXZ"
+        ]
+      },
+      {
+        "address": "0066d4f0",
+        "symbol": "?init@RunDragger@RBX@@QAEXPAVWorkspace@2@V?$weak_ptr@VPartInstance@RBX@@@boost@@ABVVector3@G3D@@@Z",
+        "size": 540,
+        "target_size": 540,
+        "exact": true,
+        "verified_targets": {
+          "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ": "0x5cab00 (external (evidence name))",
+          "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x5e82c0 (external (evidence name))",
+          "??_B?1??zero@Velocity@RBX@@SAABV12@XZ@51": "0x97d580 (function-local static)",
+          "?v@?1??zero@Velocity@RBX@@SAABV23@XZ@4V23@A": "0x97d568 (function-local static)",
+          "??0Velocity@RBX@@QAE@XZ": "0x614170 (helper / COMDAT body, compared exact at the bound address)",
+          "?setVelocity@Primitive@RBX@@QAEXABVVelocity@2@@Z": "0x5e7760 (external (evidence name))",
+          "?inf@Vector3@G3D@@SAABV12@XZ": "0x510960 (helper / COMDAT body, compared exact at the bound address)",
+          "?turnUpright@RunDragger@RBX@@SAXPAVPartInstance@2@@Z": "0x66ce20 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?init@RunDragger@RBX@@QAEXPAVWorkspace@2@V?$weak_ptr@VPartInstance@RBX@@@boost@@ABVVector3@G3D@@@Z"
+        ]
+      },
+      {
+        "address": "0066d710",
+        "symbol": "?snapDragPart@RunDragger@RBX@@AAE_NXZ",
+        "size": 723,
+        "target_size": 723,
+        "exact": true,
+        "verified_targets": {
+          "?getFaceInWorld@Primitive@RBX@@QAE?AVFace@2@W4NormalId@2@@Z": "0x5e81b0 (external (evidence name))",
+          "??AFace@RBX@@QAEAAVVector3@G3D@@H@Z": "0x476570 (external)",
+          "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x5e82c0 (external (evidence name))",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?iRoundVector3@Math@RBX@@SA?AVVector3@G3D@@ABV34@@Z": "0x5de090 (external (evidence name))",
+          "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ": "0x5cab00 (external (evidence name))",
+          "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z": "0x59d8a0 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$?snapDragPart@RunDragger@RBX@@AAE_NXZ"
+        ]
+      },
+      {
+        "address": "0066d9f0",
+        "symbol": "?rayHitsCloserPart@RunDragger@RBX@@AAE_NXZ",
+        "size": 241,
+        "target_size": 241,
+        "exact": true,
+        "verified_targets": {
+          "?rayHitsPart@RunDragger@RBX@@AAE?AVSnapInfo@12@ABV?$Array@PAVPrimitive@RBX@@@G3D@@_N@Z": "0x66d0d0 (own row)",
+          "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?rayHitsCloserPart@RunDragger@RBX@@AAE_NXZ"
+        ]
+      },
+      {
+        "address": "0066daf0",
+        "symbol": "?findSafeY@RunDragger@RBX@@AAEXXZ",
+        "size": 392,
+        "target_size": 392,
+        "exact": true,
+        "verified_targets": {
+          "__real@3c23d70a": "0x82748c (constant 3c23d70a)",
+          "?intersectingOthers@ContactManager@RBX@@QAE_NPAVPrimitive@2@M@Z": "0x60dcd0 (external (evidence name))",
+          "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z": "0x599f80 (external)",
+          "?append@?$Array@PAVPrimitive@RBX@@@G3D@@QAEXABQAVPrimitive@RBX@@@Z": "0x59a190 (helper / COMDAT body, compared exact at the bound address)",
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (function-local static)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (function-local static)",
+          "?safeMoveNoDrop@Dragger@RBX@@SA?AVVector3@G3D@@ABV?$Array@PAVPrimitive@RBX@@@4@ABV34@AAVContactManager@2@@Z": "0x610930 (external)",
+          "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x5e82c0 (external (evidence name))",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ": "0x5cab00 (external (evidence name))",
+          "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z": "0x59d8a0 (external (evidence name))",
+          "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?findSafeY@RunDragger@RBX@@AAEXXZ"
+        ]
+      },
+      {
+        "address": "0066dc80",
+        "symbol": "?smartPtrHackPost@RunDragger@RBX@@AAEXXZ",
+        "size": 261,
+        "target_size": 261,
+        "exact": true,
+        "verified_targets": {
+          "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z": "0x599f80 (external)",
+          "??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z": "0x618a40 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?smartPtrHackPost@RunDragger@RBX@@AAEXXZ"
+        ]
+      },
+      {
+        "address": "0066e1a0",
+        "symbol": "?fallOffPart@RunDragger@RBX@@AAE_NAA_N@Z",
+        "size": 397,
+        "target_size": 397,
+        "exact": true,
+        "verified_targets": {
+          "?getFaceInWorld@Primitive@RBX@@QAE?AVFace@2@W4NormalId@2@@Z": "0x5e81b0 (external (evidence name))",
+          "__real@bc23d70a": "0x843760 (constant bc23d70a)",
+          "?hasOverlap@Face@RBX@@SA_NABV12@0M@Z": "0x649e90 (external (evidence name))",
+          "?append@?$Array@W4NormalId@RBX@@@G3D@@QAEXABW4NormalId@RBX@@@Z": "0x66d3c0 (own row)",
+          "?resize@?$Array@W4NormalId@RBX@@@G3D@@QAEXH_N@Z": "0x66cfd0 (own row)",
+          "?createSnapSurface@RunDragger@RBX@@AAE?AVSnapInfo@12@PAVPrimitive@2@PAV?$Array@W4NormalId@RBX@@@G3D@@@Z": "0x66c970 (own row)",
+          "?moveDragPart@RunDragger@RBX@@AAE_NXZ": "0x66dd90 (own row)",
+          "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?fallOffPart@RunDragger@RBX@@AAE_NAA_N@Z"
+        ]
+      },
+      {
+        "address": "0066e330",
+        "symbol": "?findNoSnapPosition@RunDragger@RBX@@AAEXABVCoordinateFrame@G3D@@@Z",
+        "size": 146,
+        "target_size": 146,
+        "exact": true,
+        "verified_targets": {
+          "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ": "0x5cab00 (external (evidence name))",
+          "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z": "0x59d8a0 (external (evidence name))",
+          "?findSafeY@RunDragger@RBX@@AAEXXZ": "0x66daf0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?findNoSnapPosition@RunDragger@RBX@@AAEXABVCoordinateFrame@G3D@@@Z"
+        ]
+      },
+      {
+        "address": "0066e3d0",
+        "symbol": "?snap@RunDragger@RBX@@QAE_NABVRay@G3D@@@Z",
+        "size": 642,
+        "target_size": 642,
+        "exact": true,
+        "verified_targets": {
+          "?smartPtrHackPre@RunDragger@RBX@@AAEXXZ": "0x66d430 (own row)",
+          "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x5e82c0 (external (evidence name))",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?updateHitFromSurface@SnapInfo@RunDragger@RBX@@QAEXABVRay@G3D@@@Z": "0x66c640 (own row)",
+          "?findSnap@RunDragger@RBX@@AAE?AVSnapInfo@12@ABV?$Array@PAVPrimitive@RBX@@@G3D@@@Z": "0x66d260 (own row)",
+          "?append@?$Array@PAVPrimitive@RBX@@@G3D@@QAEXABQAVPrimitive@RBX@@@Z": "0x59a190 (helper / COMDAT body, compared exact at the bound address)",
+          "?resize@?$Array@PAVPrimitive@RBX@@@G3D@@QAEXH_N@Z": "0x599a70 (helper / COMDAT body, compared exact at the bound address)",
+          "?moveDragPart@RunDragger@RBX@@AAE_NXZ": "0x66dd90 (own row)",
+          "?fallOffPart@RunDragger@RBX@@AAE_NAA_N@Z": "0x66e1a0 (own row)",
+          "__real@3c23d70a": "0x82748c (constant 3c23d70a)",
+          "?intersectingOthers@ContactManager@RBX@@QAE_NPAVPrimitive@2@M@Z": "0x60dcd0 (external (evidence name))",
+          "?rayHitsCloserPart@RunDragger@RBX@@AAE_NXZ": "0x66d9f0 (own row)",
+          "?tooCloseToCamera@RunDragger@RBX@@AAE_NXZ": "0x66c510 (own row)",
+          "?findNoSnapPosition@RunDragger@RBX@@AAEXABVCoordinateFrame@G3D@@@Z": "0x66e330 (own row)",
+          "?smartPtrHackPost@RunDragger@RBX@@AAEXXZ": "0x66dc80 (own row)",
+          "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?snap@RunDragger@RBX@@QAE_NABVRay@G3D@@@Z"
+        ]
+      },
+      {
+        "address": "00801430",
+        "symbol": "??__FdebugPlane@?6??updateHitFromSurface@SnapInfo@RunDragger@RBX@@QAEXABVRay@G3D@@@Z@YAXXZ",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?debugPlane@?6??updateHitFromSurface@SnapInfo@RunDragger@RBX@@QAEXABVRay@G3D@@@Z@4VPlane@6@A": "0x97da0c (function-local static)",
+          "??_7Plane@G3D@@6B@": "0x8282bc (vtable RTTI .?AVPlane@G3D@@ offset 0x0)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00801440",
+        "symbol": "??__FdebugRay@?6??updateHitFromSurface@SnapInfo@RunDragger@RBX@@QAEXABVRay@G3D@@@Z@YAXXZ",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?debugRay@?6??updateHitFromSurface@SnapInfo@RunDragger@RBX@@QAEXABVRay@G3D@@@Z@4V56@A": "0x97da20 (function-local static)",
+          "??_7Ray@G3D@@6B@": "0x8282c4 (vtable RTTI .?AVRay@G3D@@ offset 0x0)"
+        },
+        "local_eh": []
+      }
+    ],
+    "stage": [
+      {
+        "address": "0066f570",
+        "symbol": "?stepWorld@AssemblyStage@RBX@@UAEXHH_N@Z",
+        "size": 127,
+        "target_size": 127,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?_Inc@const_iterator@?$_Tree@V?$_Tset_traits@PAVJoint@RBX@@U?$less@PAVJoint@RBX@@@std@@V?$allocator@PAVJoint@RBX@@@4@$0A@@std@@@std@@QAEXXZ": "0x5e9340 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066f790",
+        "symbol": "??1AssemblyStage@RBX@@UAE@XZ",
+        "size": 103,
+        "target_size": 103,
+        "exact": true,
+        "verified_targets": {
+          "??_7AssemblyStage@RBX@@6B@": "0x84d1a4 (vtable RTTI .?AVAssemblyStage@RBX@@ offset 0x0)",
+          "??1?$_Tree@V?$_Tset_traits@PAVJoint@RBX@@U?$less@PAVJoint@RBX@@@std@@V?$allocator@PAVJoint@RBX@@@4@$0A@@std@@@std@@QAE@XZ": "0x64b230 (helper / COMDAT body, compared exact at the bound address)",
+          "??1?$_Tree@V?$_Tset_traits@PAVAssembly@RBX@@U?$less@PAVAssembly@RBX@@@std@@V?$allocator@PAVAssembly@RBX@@@4@$0A@@std@@@std@@QAE@XZ": "0x64b230 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$??1AssemblyStage@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "0066f8b0",
+        "symbol": "??_GAssemblyStage@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1AssemblyStage@RBX@@UAE@XZ": "0x66f790 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "near_misses": {
+    "drag": [
+      {
+        "address": "0x0066dd90",
+        "symbol": "?moveDragPart@RunDragger@RBX@@AAE_NXZ",
+        "size": 1027,
+        "target_size": 1027,
+        "exact": false
+      }
+    ]
+  },
+  "helper_bodies_not_counted": [
+    {
+      "address": "0x00618a40",
+      "symbol": "??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z",
+      "unit": "drag",
+      "reason": "COMDAT / library helper body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x00510a30",
+      "symbol": "??0Ray@G3D@@QAE@XZ",
+      "unit": "drag",
+      "reason": "COMDAT / library helper body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x00614170",
+      "symbol": "??0Velocity@RBX@@QAE@XZ",
+      "unit": "drag",
+      "reason": "COMDAT / library helper body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x0064b230",
+      "symbol": "??1?$_Tree@V?$_Tset_traits@PAVAssembly@RBX@@U?$less@PAVAssembly@RBX@@@std@@V?$allocator@PAVAssembly@RBX@@@4@$0A@@std@@@std@@QAE@XZ",
+      "unit": "stage",
+      "reason": "COMDAT / library helper body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x0064b230",
+      "symbol": "??1?$_Tree@V?$_Tset_traits@PAVJoint@RBX@@U?$less@PAVJoint@RBX@@@std@@V?$allocator@PAVJoint@RBX@@@4@$0A@@std@@@std@@QAE@XZ",
+      "unit": "stage",
+      "reason": "COMDAT / library helper body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x00615b80",
+      "symbol": "??1PartByLocalCharacter@RBX@@QAE@XZ",
+      "unit": "drag",
+      "reason": "COMDAT / library helper body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x0066c480",
+      "symbol": "??4SnapInfo@RunDragger@RBX@@QAEAAV012@ABV012@@Z",
+      "unit": "drag",
+      "reason": "COMDAT / library helper body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x005e9340",
+      "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tset_traits@PAVJoint@RBX@@U?$less@PAVJoint@RBX@@@std@@V?$allocator@PAVJoint@RBX@@@4@$0A@@std@@@std@@QAEXXZ",
+      "unit": "stage",
+      "reason": "COMDAT / library helper body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x0059a190",
+      "symbol": "?append@?$Array@PAVPrimitive@RBX@@@G3D@@QAEXABQAVPrimitive@RBX@@@Z",
+      "unit": "drag",
+      "reason": "COMDAT / library helper body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x004a6100",
+      "symbol": "?clamp@Vector3@G3D@@QBE?AV12@ABV12@0@Z",
+      "unit": "drag",
+      "reason": "COMDAT / library helper body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x00510960",
+      "symbol": "?inf@Vector3@G3D@@SAABV12@XZ",
+      "unit": "drag",
+      "reason": "COMDAT / library helper body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x004766a0",
+      "symbol": "?pointToWorldSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z",
+      "unit": "drag",
+      "reason": "COMDAT / library helper body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x00502080",
+      "symbol": "?realloc@?$Array@W4NormalId@RBX@@@G3D@@AAEXH@Z",
+      "unit": "drag",
+      "reason": "COMDAT / library helper body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x00599a70",
+      "symbol": "?resize@?$Array@PAVPrimitive@RBX@@@G3D@@QAEXH_N@Z",
+      "unit": "drag",
+      "reason": "COMDAT / library helper body bound at this address and compared exact; not counted"
+    }
+  ],
+  "vtables": {
+    "AssemblyStage 0084d1a4": [
+      {
+        "slot": 0,
+        "symbol": "??_EAssemblyStage@RBX@@UAEPAXI@Z",
+        "original": "0x0066f8b0",
+        "ok": true,
+        "how": "bound (??_G row)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?getStageType@AssemblyStage@RBX@@UAE?AW4StageType@IStage@2@XZ",
+        "original": "0x006fa3f0",
+        "ok": true,
+        "how": "not built here; slot value checked"
+      },
+      {
+        "slot": 2,
+        "symbol": "?stepWorld@AssemblyStage@RBX@@UAEXHH_N@Z",
+        "original": "0x0066f570",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getKernel@IStage@RBX@@UAEPAVKernel@2@XZ",
+        "original": "0x0064a390",
+        "ok": true,
+        "how": "inline body compared exact"
+      },
+      {
+        "slot": 4,
+        "symbol": "?onEdgeAdded@AssemblyStage@RBX@@UAEXPAVEdge@2@@Z",
+        "original": "0x0066f5f0",
+        "ok": true,
+        "how": "not built here; slot value checked"
+      },
+      {
+        "slot": 5,
+        "symbol": "?onEdgeRemoving@AssemblyStage@RBX@@UAEXPAVEdge@2@@Z",
+        "original": "0x0066f6e0",
+        "ok": true,
+        "how": "not built here; slot value checked"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getMetric@IWorldStage@RBX@@UAEHW4MetricType@12@@Z",
+        "original": "0x0064a3d0",
+        "ok": true,
+        "how": "not built here; slot value checked"
+      }
+    ]
+  },
+  "not_built": {
+    "RunDragger::moveDragPart 0x0066dd90": "built, 1027 / 1027 B, not exact: the snap normal Math::getWorldNormal(surface, snapCoord) is scheduled with all three column loads before the sign (target: two loads, sign, then `fmul [edi+ecx*4+0x18]`), which shifts the register choice of the following lea / push sequence.",
+    "AssemblyStage() 0x0066f800": "news a 0x1ec-byte SleepStage (0x0064b8e0); no native header declares a 2008 SleepStage (native-world SleepStage.h is the source-derived port).",
+    "AssemblyStage::wakeAssembly / onAssemblyAdded / onAssemblyRemoving 0x0066f510 / 0x0066f530 / 0x0066f550": "call SleepStage::onWakeUpRequest(a, false) 0x0064b890, onAssemblyAdded 0x0064aff0, onAssemblyRemoving 0x0064b0a0 and Assembly::putInPipeline / removeFromStage (IPipelined 0x00645830 / 0x00645840): need 2008 SleepStage and Assembly declarations.",
+    "AssemblyStage::onEdgeAdded / onEdgeRemoving 0x0066f5f0 / 0x0066f6e0": "write the 2008 Assembly +0x14 byte of both primitives' assemblies (Primitive::getAssembly 0x005e7560), read Edge prim0 / prim1 (+0xc / +0x10) and call Primitive::getContact / getJoint 0x005e7ce0 / 0x005e7d30 (declared by part-embedded Primitive.h, whose donor Edge / Joint headers do not mix with Joints2008.h in one unit).",
+    "AssemblyStage::getStageType 0x006fa3f0": "folded `mov eax, 4`: ASSEMBLY_STAGE is 4 in 2008, 3 in the donor IStage.h (kernel-stages IStage.h proposal); slot value checked only."
+  },
+  "exact_function_rows": [
+    "0066c330",
+    "0066c400",
+    "0066c480",
+    "0066c4c0",
+    "0066c510",
+    "0066c5a0",
+    "0066c600",
+    "0066c640",
+    "0066c810",
+    "0066c900",
+    "0066c970",
+    "0066cc70",
+    "0066ccc0",
+    "0066ce20",
+    "0066ced0",
+    "0066cfd0",
+    "0066d0d0",
+    "0066d260",
+    "0066d3c0",
+    "0066d430",
+    "0066d4f0",
+    "0066d710",
+    "0066d9f0",
+    "0066daf0",
+    "0066dc80",
+    "0066e1a0",
+    "0066e330",
+    "0066e3d0",
+    "0066f570",
+    "0066f790",
+    "0066f8b0",
+    "00801430",
+    "00801440"
+  ],
+  "rejected": {
+    "smartPtrHackPre with `snapInfo.snap = nonNullInWorkspace(part) ? part->getPrimitive() : NULL`": "one shared store (lea / xor then mov); the target stores in each branch (add ebp, 0x228 / mov [edi+0x24], 0): if / else",
+    "init with the parameter named dragPart (shadowing the member)": "the second lock (turnUpright argument) then reads the parameter; the target locks the parameter first and the member second",
+    "snapDragPart with snapCoord built from drag->getCoordinateFrame().rotation": "target reads snapInfo.snap (+0x24) for the rotation",
+    "snapDragPart with Math::iRoundVector3(snapCoord.pointToObjectSpace(dragCorner)) in one expression": "720 / 723 B: one Vector3 temporary fewer; the named dragInSnap local is exact",
+    "snapDragPart with const Vector3& corners, a named snappedWorld, or translation = translation + offset": "not exact",
+    "moveDragPart with (dragRotation.transpose() * aligned).transpose() in one expression": "1015 B and a 0x24-byte larger frame; the named `relative` Matrix3 gives the target size and frame",
+    "moveDragPart snap normal from getWorldNormal(surface, snapCoord.rotation), a NormalId local, a const reference, or getColumn(...) * (float)sign": "same x87 schedule (or 1013 B for the float form)",
+    "AssemblyStage::stepWorld with a const_iterator and it++": "not exact (loop head register moves); iterator with ++it (or it++) is exact"
+  },
+  "proposals": {
+    "engine owner (SleepStage)": "a 2008 SleepStage declaration: 0x1ec bytes (AssemblyStage() 0x0066f81c pushes 0x1ec before SleepStage(this, world) 0x0064b8e0) with onWakeUpRequest(Assembly*, bool) 0x0064b890, onAssemblyAdded(Assembly*) 0x0064aff0 and onAssemblyRemoving(Assembly*) 0x0064b0a0. With it AssemblyStage() and the three assembly rows can be built here.",
+    "engine owner (Assembly)": "a 2008 Assembly declaration with the byte at +0x14 that AssemblyStage::onEdgeAdded 0x0066f614 / 0x0066f61a and onEdgeRemoving 0x0066f6fb / 0x0066f6ff set to true on both primitives' assemblies.",
+    "humanoid states owner (humanoid-states1 / humanoid-states3 receipts)": "their methods lists carry no exact marker and the receipts have no exact_function_rows, so by the counting rule the rows 0x0066e660, 0x0066eaa0, 0x0066eac0, 0x0066eca0, 0x0066edf0 and 0x0066ee10 count nowhere; adding exact_function_rows (or exact: true) there would count them without a second recovery here.",
+    "open question (AssemblyStage +0x10)": "the first std::set<T*> of AssemblyStage (+0x10) is constructed and destroyed only in this unit; it is declared std::set<Assembly*> after the donor member order. A reader elsewhere would settle the element type.",
+    "tool/RunDragger.h (donor, FYI)": "the 2008 RunDragger keeps the donor layout and member set; colliding() is inline in 2008 (no row; snap 0x0066e550 inlines it), so this unit defines it `inline` in the .cpp."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

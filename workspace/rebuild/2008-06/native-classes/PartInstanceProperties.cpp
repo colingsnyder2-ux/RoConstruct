@@ -41,6 +41,16 @@ namespace RBX
 		};
 	}
 
+	// 0097610c: "Color" descriptor (initializer 007f4630, getter getColor3, setter setColor3 0059e3d0, LEGACY). Moved
+	// here from InitStatics_PartInstance.cpp (batch 28): taking &setColor3 emits the inline setColor3 COMDAT 0059e3d0 in
+	// the unit that defines setColor 0059df40, which the original inlines into it (BrickColor::closest 005b62e0, then the
+	// color +0x1e4 compare and both raisePropertyChanged calls).
+	const Reflection::PropDescriptor<PartInstance, G3D::Color3> PartInstance::prop_Color(
+		"Color", "Appearance", &PartInstance::getColor3, &PartInstance::setColor3, Reflection::PropertyDescriptor::LEGACY);
+	// 009762d0: "BrickColor" descriptor (initializer 007f4690: getter 004e5b90 getColor, setter setColor 0059df40,
+	// strings 0082f710 / 008329ac, flags 5 = the default STANDARD; donor v8datamodel/PartInstance.cpp prop_BrickColor).
+	const Reflection::PropDescriptor<PartInstance, BrickColor> PartInstance::prop_BrickColor(
+		"BrickColor", "Appearance", &PartInstance::getColor, &PartInstance::setColor, Reflection::PropertyDescriptor::STANDARD);
 	// 00976250: file-local UI "Size" descriptor raised by setPartSizeXml (donor prop_SizeUi).
 	static Reflection::PropDescriptor<PartInstance, G3D::Vector3> prop_SizeUi(
 		"Size", "Part", &PartInstance::getPartSizeUi, &PartInstance::setPartSizeUi, Reflection::PropertyDescriptor::UI);
@@ -119,6 +129,21 @@ namespace RBX
 			G3D::Array<Primitive*> temp;
 			temp.append(&primitive);
 			Dragger::safeMoveNoDrop(temp, G3D::Vector3::zero(), world->getContactManager());
+		}
+	}
+
+	// 0059c640 ?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@...@Z
+	// (registry name; self-recursive, PartInstance unit neighbours 0059c3b0 vector<weak_ptr<PartInstance> >::push_back
+	// and setPartSizeXml 0059db90): shared_from 00618a40, weak_ptr temporary, numChildren 0048ae20 per iteration,
+	// inline getChild over children (+0x108). Donor PartInstance.cpp shape.
+	void PartInstance::findParts(Instance* instance, std::vector<boost::weak_ptr<RBX::PartInstance>>& parts)
+	{
+		if (PartInstance* part = dynamic_cast<PartInstance*>(instance))
+			parts.push_back(shared_from(part));
+
+		for (size_t i = 0; i < instance->numChildren(); i++)
+		{
+			findParts(instance->getChild(i), parts);
 		}
 	}
 
@@ -416,3 +441,6 @@ namespace RBX
 		}
 	}
 }
+
+// Template member emitted by this unit (0059bc70 deleting-dtor thunk 0059c0f0, body byte-identical to the 2008-06 client).
+template class RBX::Reflection::EnumDesc<enum RBX::PartInstance::FormFactor>;

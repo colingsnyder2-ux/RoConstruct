@@ -1,0 +1,44 @@
+{
+ "0070e090": {
+  "evidence": [
+   {
+    "class": "CXTPStatusBar",
+    "handler": "OnNcPaint",
+    "kind": "message-map-entry",
+    "source": "tools/libs/xtp-11.2.2/Source/CommandBars/XTPStatusBar.cpp",
+    "table": "0085d248"
+   },
+   {
+    "from": "compiled-object index",
+    "kind": "decorated-signature",
+    "symbol": "?OnNcPaint@CXTPStatusBar@@IAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?OnNcPaint@CXTPStatusBar@@IAEXXZ",
+  "name_source": "identity-unlock-msgmap",
+  "owner_class": "CXTPStatusBar",
+  "signature": "protected: void __thiscall CXTPStatusBar::OnNcPaint(void)"
+ },
+ "0075d8b0": {
+  "evidence": [
+   {
+    "class": "CXTPDockingPaneTabbedContainer",
+    "handler": "OnDestroy",
+    "kind": "message-map-entry",
+    "source": "tools/libs/xtp-11.2.2/Source/DockingPane/XTPDockingPaneTabbedContainer.cpp",
+    "table": "00866288"
+   },
+   {
+    "from": "compiled-object index",
+    "kind": "decorated-signature",
+    "symbol": "?OnDestroy@CXTPDockingPaneTabbedContainer@@IAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?OnDestroy@CXTPDockingPaneTabbedContainer@@IAEXXZ",
+  "name_source": "identity-unlock-msgmap",
+  "owner_class": "CXTPDockingPaneTabbedContainer",
+  "signature": "protected: void __thiscall CXTPDockingPaneTabbedContainer::OnDestroy(void)"
+ }
+}

@@ -49,6 +49,135 @@ namespace RBX
 		return static_cast<Block*>(getPrimitive(i)->getGeometry());
 	}
 
+	// 00607280 (`ret 4`; header leaves2008/BlockBlockContact2008.h): donor v8world/Contact.cpp
+	// BlockBlockContact::getBestPlaneEdge(bool& planeContact, float). The 2008 one keeps planeContact in the member
+	// +0x5c, reads the body pv +0x94 without updatePV (Body::getPVUnsafe), the Block vertices +0x10 (getExtent), and
+	// counts the cached separating axis: contactFeatureMatches 0097b888 when the cached body / axis still separates
+	// (00607588), contactFeatureMisses 0097b88c after the plane loop (00607548). 10.0f is the float 00827490.
+	// Not exact yet (batch 24): 1646 B against 1634, same control flow, calls, stores and constants. The divergences
+	// are x87 operand order and stack slots only: in the plane loop the target forms column * rotation as
+	// c.x*m00 + c.z*m20 + c.y*m10 and takes fabs before each product with *eTest (this build: m20*c.z first, all three
+	// products, then fabs); in the edge loop the target keeps crossAxis * rotation in memory locals and its cross
+	// product loads this-side operands first. Rejected: the native-flags without /fp:fast (1925 B, every float spilled,
+	// and the unit loses exacts) and `*eTest * (column * rotation)` (1646 B, unchanged diff).
+	bool BlockBlockContact::getBestPlaneEdge(float overlapIgnored)
+	{
+		float bestPlaneLength = Math::inf();
+		float bestEdgeLength = Math::inf();
+		float lastPlaneLength = Math::inf();
+		int lastFeature[2] = {feature[0], feature[1]};
+		bool checkLastFeature = (lastFeature[0] >= 0 && lastFeature[0] < 6) || (lastFeature[1] >= 0 && lastFeature[1] < 6);
+
+		for (int i = cachedBody; i < cachedBody + 2; i++)
+		{
+			int baseId = i % 2;
+			int testId = (i + 1) % 2;
+
+			const G3D::CoordinateFrame& primPV0 = getPrimitive(baseId)->getBody()->getPVUnsafe().position;
+			const G3D::CoordinateFrame& primPV1 = getPrimitive(testId)->getBody()->getPVUnsafe().position;
+			const G3D::Vector3* eBase = &block(baseId)->getExtent();
+			const G3D::Vector3* eTest = &block(testId)->getExtent();
+
+			G3D::Vector3 delta = primPV1.translation - primPV0.translation;
+			G3D::Vector3 rotTransMul = delta * primPV0.rotation;
+
+			for (int j = cachedAxis; j < cachedAxis + 3; j++)
+			{
+				int axisId = j % 3;
+
+				float what = Math::taxiCabMagnitude(primPV0.rotation.getColumn(axisId) * primPV1.rotation * *eTest) + (*eBase)[axisId] - fabs(rotTransMul[axisId]);
+
+				if (what > overlapIgnored)
+				{
+					if (checkLastFeature && lastFeature[baseId] % 3 == axisId)
+						lastPlaneLength = what;
+
+					if (what < bestPlaneLength)
+					{
+						bestPlaneLength = what;
+						feature[baseId] = rotTransMul[axisId] > 0.0f ? axisId : axisId + 3;
+						feature[testId] = -1;
+						cachedBody = baseId;
+						cachedAxis = axisId;
+						planeContact = true;
+					}
+				}
+				else
+				{
+					cachedBody = baseId;
+					cachedAxis = axisId;
+					Contact::contactFeatureMatches++;
+					return false;
+				}
+			}
+		}
+		Contact::contactFeatureMisses++;
+
+		if (checkLastFeature)
+		{
+			if (feature[0] != lastFeature[0] || feature[1] != lastFeature[1])
+			{
+				if (!(bestPlaneLength * 1.01f < lastPlaneLength))
+				{
+					bestPlaneLength = lastPlaneLength;
+					feature[0] = lastFeature[0];
+					feature[1] = lastFeature[1];
+				}
+			}
+		}
+
+		const G3D::CoordinateFrame& primPV0 = getPrimitive(0)->getBody()->getPVUnsafe().position;
+		const G3D::CoordinateFrame& primPV1 = getPrimitive(1)->getBody()->getPVUnsafe().position;
+		const G3D::Vector3* e0 = &block(0)->getExtent();
+		const G3D::Vector3* e1 = &block(1)->getExtent();
+
+		G3D::Vector3 p0p1 = primPV1.translation - primPV0.translation;
+
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				G3D::Vector3 crossAxis = primPV0.rotation.getColumn(i).cross(primPV1.rotation.getColumn(j));
+				if (crossAxis.unitize() <= 0.001f)
+					return planeContact;
+
+				float p0p1inCrossAxis = crossAxis.dot(p0p1);
+
+				G3D::Vector3 crossAxisMulPV0rot = crossAxis * primPV0.rotation;
+				G3D::Vector3 crossAxisMulPV1rot = crossAxis * primPV1.rotation;
+
+				float what = Math::taxiCabMagnitude(crossAxisMulPV0rot * *e0) + Math::taxiCabMagnitude(crossAxisMulPV1rot * *e1) - fabs(p0p1inCrossAxis);
+				if (what > overlapIgnored)
+				{
+					if (what < bestEdgeLength)
+					{
+						bestEdgeLength = what;
+
+						if (what * 10.0f < bestPlaneLength)
+						{
+							if (p0p1inCrossAxis > 0.0f)
+							{
+								feature[0] = block(0)->getClosestEdge(primPV0.rotation, (NormalId)i, crossAxis) + 6;
+								feature[1] = block(1)->getClosestEdge(primPV1.rotation, (NormalId)j, -crossAxis) + 6;
+							}
+							else
+							{
+								feature[0] = block(0)->getClosestEdge(primPV0.rotation, (NormalId)i, -crossAxis) + 6;
+								feature[1] = block(1)->getClosestEdge(primPV1.rotation, (NormalId)j, crossAxis) + 6;
+							}
+							planeContact = false;
+						}
+					}
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 	// 00607c20
 	bool BlockBlockContact::computeIsColliding(float overlapIgnored)
 	{
@@ -120,6 +249,36 @@ namespace RBX
 			block(b1)->getEdgeVertex(edge1),
 			edgeNormal0,
 			edgeNormal1);
+	}
+
+	// 00608030: donor v8world/Contact.cpp body; the 2008 setEdgeEdgePlane leaves the bodies to matchContactConnector.
+	// Not exact yet: 296 B, same size; edgeLength / planeID are spilled as in the original ([esp+0x14] / [esp+0x10]
+	// slots swapped) but the second getEdgeVertex argument load and the +0xc / +0x10 store order are scheduled
+	// differently. Rejected: no locals (292 B, no spill), only the block pointer in a local (same diff), offset1 in
+	// a named local (308 B), local declaration order swapped (296 B, planeID load moves before the block load).
+	void BlockBlockContact::loadGeoPairEdgeEdgePlane(int edgeBody, int planeBody, int edge0, int edge1)
+	{
+		NormalId edgeNormal0 = block(edgeBody)->getEdgeNormal(edge0);
+		NormalId edgeNormal1 = block(planeBody)->getEdgeNormal(edge1);
+
+		ContactConnector* matched = matchContactConnector(
+			getPrimitive(edgeBody)->getBody(),
+			getPrimitive(planeBody)->getBody(),
+			EDGE_EDGE_PLANE_PAIR,
+			edgeNormal0,
+			edgeNormal1);
+
+		const G3D::Vector3& gridSize = getPrimitive(edgeBody)->getGeometry()->getGridSize();
+		float edgeLength = gridSize[edgeNormal0 % 3];
+		NormalId plane = planeID;
+
+		matched->setEdgeEdgePlane(
+			block(edgeBody)->getEdgeVertex(edge0),
+			block(planeBody)->getEdgeVertex(edge1),
+			edgeNormal0,
+			edgeNormal1,
+			plane,
+			edgeLength);
 	}
 
 	// 00608830: separation -1.0f (0081c3b8) when colliding, else 1e9 (0082d030); then updateConnectors 006087a0.

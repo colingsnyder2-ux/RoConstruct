@@ -84,6 +84,7 @@ namespace RBX
 					 public Listener<RunService, Stepped>
 	{
 		friend struct ::NativeHumanoid2008Layout; // tests/NativeHumanoid2008Layout.cpp offset asserts
+		friend class HUMAN::HumanoidState; // INFERRED: 00644670 reads the private flag byte +0x1e8 (imDead bit 1)
 
 	private:
 		enum WalkMode
@@ -125,6 +126,9 @@ namespace RBX
 	public:
 		float getHealth() const { return health; }           // 005d74b0
 		float getMaxHealth() const { return maxHealth; }     // 005d74c0
+		// INFERRED: donor humanoid/Humanoid.h declares this inline helper; renderMultiplayer 005db878..005db884
+		// divides +0x1a8 by +0x1ac directly, which is exactly this inline's codegen.
+		float relativeHealth() const { return health / maxHealth; }
 		G3D::Vector3 getWalkDirection() const { return walkDirection; }        // 005d74d0
 		float getWalkRotationalVelocity() const { return walkRotationalVelocity; } // 005d7500
 		const G3D::Vector3& getWalkToPoint() const { return walkToPoint; }     // 005d7510
@@ -181,6 +185,8 @@ namespace RBX
 		G3D::CoordinateFrame getRightArmGrip() const;                         // 005d7a30
 		JointInstance* findRightShoulder() const;                             // 005d9010
 		void checkForJointDeath();                                            // 005dc6c0 (called by onEvent 005dc740)
+		void buildJoints();                                                   // 005d9340 (donor humanoid/Humanoid.h; caller
+		                                                                      //   Player::loadCharacter, PlayerCharacter.cpp)
 
 	private:
 		// 005db4c0 (151 bytes, thiscall, no arguments; only caller onAncestorChanged 005db560 after the kernel insert):
@@ -192,6 +198,10 @@ namespace RBX
 		// 005db680 (734 bytes, thiscall, `ret 8`; only caller render2d 005db960 with Workspace::getGCamera through
 		// ICameraOwner slot 2). Donor name (declared in tools/rbxgs humanoid/Humanoid.h; the donor has no body).
 		void renderMultiplayer(Adorn* adorn, const G3D::GCamera& camera);
+		// 005d9db0 (thiscall, one vector reference, `ret 4`): fills the vector with the character's primitives; only
+		// caller HumanoidState::onFloorStep 006444f0 (native-classes/HumanoidState.cpp, HumanoidState is a friend).
+		// Donor name, signature and access (tools/rbxgs humanoid/Humanoid.h: private). Declaration only.
+		void getPrimitives(std::vector<Primitive*>& primitives);
 
 	public:
 		// Dynamic initializers 007f6840 and 007f6870..007f6950 (in this order); names after the donor.

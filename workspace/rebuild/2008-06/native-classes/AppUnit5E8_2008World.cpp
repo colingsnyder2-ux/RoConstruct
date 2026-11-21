@@ -53,30 +53,28 @@ namespace RBX
 	}
 }
 
-#include "v8world/SpatialHash.h"
+// 2008 SpatialHash layout (nodesOut +0x78, maxBucket +0x7c): 005e9170 / 005e9180; the donor SpatialHash.h is the 2009 one.
+#include "v8world/SpatialHash2008.h"
 #include "v8world/Assembly.h"
 namespace RBX
 {
-	// Not exact (recorded with the reason): the 2008 SpatialHash / Assembly::PrimIterator differ from the donor.
+	// 005e9170: mov eax, [ecx+0x84] (contactManager); mov ecx, [eax] (spatialHash); mov eax, [ecx+0x78]; ret.
+	// Identity: the slot after getMetric 005e9160 and before onPrimitiveContactParametersChanged 005e9190 in donor
+	// World.cpp order; registry placeholder func_005e9170.
 	int World::getNumHashNodes() const
 	{
 		return contactManager->getSpatialHash().getNodesOut();
 	}
 
+	// 005e9180: same shape, [spatialHash+0x7c] (registry placeholder func_005e9180).
 	int World::getMaxBucketSize() const
 	{
 		return contactManager->getSpatialHash().getMaxBucket();
 	}
 
-	void World::onAssemblyExtentsChanged(RBX::Assembly * a)
-	{
-		Assembly::PrimIterator endIt = Assembly::PrimIterator::end(a);
-		Assembly::PrimIterator beginIt = Assembly::PrimIterator::begin(a);
-		for (; beginIt != endIt; ++beginIt)
-		{
-			contactManager->onPrimitiveExtentsChanged(*beginIt);
-		}
-	}
+	// 005e91d0 World::onAssemblyExtentsChanged: built in native-classes/RBXWorldRecovery_005e9170.cpp (batch 28) against
+	// the 2008 Assembly of v8world/AssemblyLayout.h (assemblyPrimBegin 005e5fa0 / assemblyPrimEnd 005e5fc0), which this
+	// unit's donor engine-world headers cannot reach.
 
 	void World::createJoints(Primitive *p)
 	{

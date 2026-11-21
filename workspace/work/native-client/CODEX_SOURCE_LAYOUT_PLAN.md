@@ -1,0 +1,273 @@
+# Codex plan: native source layout cleanup (2008-06)
+
+Goal: turn `rebuild/2008-06/native-classes` + `native-headers` (1,653 + 434 files today) into a
+source tree that looks like Roblox's own 2007/08 tree — original file names and folders, one
+.cpp per original translation unit, no recovery artifacts — **without changing a single byte of
+generated code** and without disturbing the naming / LLM lanes running in parallel.
+
+## Ground truth for the layout (already in the repo, nothing to download)
+
+- `work/native-client/webservice-pdb-source-paths.txt` — 1,788 original source paths recorded in
+  `WebService.pdb` (RBXGS 0.3.676, built 2007-12-20 from the same engine tree; PDB extracted from
+  `tools/rbxgs_msi/rbxgs676.msi`). Lower-cased. Shape:
+  `client\app\v8datamodel\*.cpp`, `client\app\include\v8datamodel\*.h`, `client\app\v8world`,
+  `client\app\v8tree`, `client\app\util`, `client\app\gui`, `client\app\humanoid`,
+  `client\app\lua-5.1.1\src`, `client\rbxview`, `client\network`, `client\rendering\appdraw`,
+  `client\rendering\renderlib`, `client\rendering\g3d\...`.
+- `tools/openrbx/Client/**` — public OpenRBX decompilation of the same era: original-case file
+  names (PDB paths are lower-case), file-level style, `#pragma once` / include conventions.
+- `work/native-client/identity_unlock_pdb.py` — reads WebService.pdb publics + module procs.
+  Read-only for Codex: import its `streams()` / `procs()` from a new
+  `work/native-client/layout/pdb_lines.py` instead of editing it.
+- Do not use the 2016 leak for layout; the 2007 PDB paths are authentic and closer in time.
+
+## Hard rules
+
+1. Codegen must not change. Two verification standards:
+   - **Move / rename / comment or style cleanup (TU unchanged):** the compiled `.obj` code+data
+     sections and symbol tables are identical before and after (relocation targets compared by
+     symbol name).
+   - **Merge or split of TUs:** object-level symbol tables may legitimately change (section and
+     COMDAT order, symbol order, anonymous-namespace `?A0x...` names, file-static names). Prove
+     instead, per function and per data symbol: the union of defined symbols is unchanged
+     (externally visible names identical; statics matched by body); every function's code bytes
+     are identical with relocations compared by target symbol; every data symbol's bytes and
+     relocations are identical; dynamic initializers keep their original relative order
+     (`.CRT$XCU` order, checked against the exe); and a link of the full object set places every
+     function/data symbol at the same address as before.
+   Any diff → revert that file or merge.
+2. Lease before touching: `roc.cmd lease take <family> <globs> --hours 4`. One family per batch.
+   Core headers (`v8tree/Instance.h`, `v8datamodel/DataModel.h`, `util/Events.h`,
+   `reflection/*.h`) only through their lease owner.
+3. Do not edit: `work/native-client/native_llm.py`, `native_transplant_*.py`,
+   `native_identity_evidence.py`, `native_template_gate.py`, `roc/server.py`,
+   `work/2008-06/identity-registry.json`, any `identity_unlock_*.py` / `unnamed-identities*.json`
+   (owned by the identity-unlock session), `clients/`, `tools/`.
+4. `git mv` only (keep history). Never delete a file you did not create; a file made redundant by
+   a merge is moved to `rebuild/2008-06/native-classes/_merged/` with a pointer comment, and the
+   owner deletes later.
+5. Keep every `// INFERRED: <evidence>` comment and every authentic inline-asm evidence comment.
+6. No `__emit`, byte blobs, or patched bytes. Commit per family; never push.
+
+## Phase 0 — start now (read-only, zero interference)
+
+1. **Path-consumer inventory** → `work/native-client/layout/consumers.json`. Grep every place
+   that names native source paths: `rebuild/2008-06/p6/build_client.py`, `patches/*.json`,
+   `rebuild/2008-06/tests/*.py`, `verify_document_swap.py`, census / identity binding JSONs,
+   `docs/source-links.json`, `work/native-client/prove-out` (feeds the website — read only),
+   lease globs, the Integration Digest scanner (`roc native-files scan`). For each: file, how the
+   path is used (literal, glob, derived), and how it must be rewritten.
+2. **Function → original file map** → `work/native-client/layout/function-files.json`.
+   - Write `work/native-client/layout/pdb_lines.py` (imports `streams()` from
+     `identity_unlock_pdb.py`, which stays unedited) to read C13 line info (DEBUG_S_LINES +
+     DEBUG_S_FILECHKSMS in each module stream): every WebService function → source file + first line.
+   - Exe functions with the same decorated name (registry + `unnamed-identities.json`) inherit
+     that file and line. Order within a file = PDB line order (cross-check with link order in the
+     exe; they should agree).
+   - Functions not in WebService (client-only: MFC app, IDE, XTP glue): owner class → header
+     from the PDB path list, else OpenRBX path, else `client\app\<area>\<Class>.cpp` by the
+     class's namespace/area, flagged `inferred_path`.
+3. **Rename map (dry run)** → `work/native-client/layout/source-layout-map.json`:
+   `{current_path: {target_path, evidence: pdb|openrbx|class-rule, merge_group, case_source}}`.
+   Original-case names from OpenRBX / header `class` spelling; folders from PDB paths.
+   Flag conflicts (two current files → same target with overlapping definitions).
+4. **Artifact lint** → `work/native-client/layout/native_lint.py` + report JSON. Detect, never fix
+   yet:
+   - recovery-unit names: `AppUnit*`, `AppLeaves2008*`, `*2008.cpp` suffixes, `roc_*`, hashes in
+     file names, `vendor_i*`;
+   - LLM / tool residue: `FUN_`, `sub_`, `func_`, `LAB_`, `recovered*`, `Native*` invented names,
+     `// TODO(llm)`, generated banners, Ghidra casts (`(int)(char)`), `undefined4`, `CONCAT`,
+     `unaff_`, `in_stack_`;
+   - duplicate definitions of one symbol in several files; stub bodies; `#if 0` blocks;
+     unused local helper copies of real headers; include of `roc_*` scratch headers;
+   - style drift from OpenRBX: header guards vs `#pragma once`, include order
+     (own header first), namespace block style, tabs vs spaces, brace style.
+5. **Plan report** → `work/native-client/layout/PLAN_REPORT.md`: counts per category, the merge
+   groups, expected file count after cleanup, risky items.
+
+## Artifact taxonomy (survey 2026-11-16, native-classes + native-headers)
+
+| Artifact | Files | What it is | Removal rule |
+|---|---|---|---|
+| Explicit class instantiations `template class X<...>;` under "Template members emitted by this unit" | 248 | Scaffolding: forces this TU to emit template members the original emitted implicitly from code not recovered yet | Remove a line only when a build without it still defines every member it emitted (per-symbol check against the final link map / object set). Mostly Phase 4. `template class` also emits members the original never used; harmless under /OPT:REF but not authentic. |
+| Explicit function instantiations `template R T<...>::f<...>();` | 158 | Same, for single members (e.g. `Creatable<Instance>::create<RunService>`) | Same rule |
+| `#pragma auto_inline/optimize/intrinsic` | 72 | Codegen steering to reach byte match | Keep only with donor/OpenRBX evidence (e.g. rbxgs). Otherwise flag: usually a wrong per-TU flag set or wrong TU grouping; retry without after Phase 3 merges |
+| `__declspec(noinline)` | 82 | Same; some already marked `INFERRED` with donor evidence | Same |
+| Placeholder identifiers in code (`entity->func_0067d3d0()`) | 6 | Calls to functions with no real name yet | Replace with identity-tier names (`unnamed-identities.json`, then inferred tier, flagged) |
+| Placeholder names in comments (`func_`, `sub_`, `FUN_`) | ~127 | Recovery notes | Move to sidecar evidence |
+| Address / evidence comments (`// Original 00405aa0 ...`, batch notes, "Batch 17 rejected") | 715 | Proof notes | Move into a per-function sidecar (`<file>.evidence.json`: address, size, proof receipt, notes); keep short `// INFERRED:` lines in source |
+| Provenance banners ("mined exact source ... verbatim", `roc_*` source ids) | ~66 | Tool provenance | Sidecar / build table |
+| `#if 0` blocks | 18 | Dead experiments | Remove (codegen-neutral, still verify) |
+| File names `AppUnit*`, `AppLeaves2008*`, `*2008*.cpp`, `Mined*`, `vendor_i*`, `accepted/` subtree | ~140+ | Recovery-unit names | Phase 2 rename map |
+| Ghidra residue (`undefined4`, `CONCAT`, `unaff_`) | ~0 | none found in code (matches were prose) | lint keeps watching |
+
+Explicit instantiations and codegen pragmas are load-bearing today: removing them can break the
+link or change bytes. They are the last artifacts to go, and only per-symbol / per-function proof
+removes them.
+
+## Phase 1 — tooling (now; still no moves)
+
+1. `layout_apply.py --dry-run|--apply --family X`: applies one family from the map (git mv,
+   rewrite includes, rewrite every consumer from consumers.json, update lease globs in its own
+   lease only).
+2. `layout_verify.py --family X`: compile each touched TU before/after with the recorded flags,
+   apply the matching standard from hard rule 1 (TU-unchanged or merge/split); run `python rebuild/2008-06/tests/verify_native_checkpoint.py`
+   (never two instances at once); report P5/P6 status unchanged.
+3. Make the native LLM lane / transplant tools **write new files at the mapped target path**
+   (send the proposal to the owner of `native_llm.py`; do not edit it).
+
+## Phase 2 — moves (owner-scheduled freeze window per family)
+
+Order: leaf families first (gui, tool, humanoid, util), then v8world, v8datamodel, rbxview / app
+(MFC), network, rendering; core-header families last.
+Per family: lease → `layout_apply --apply` → `layout_verify` → commit
+"layout: <family> to original paths (codegen identical)".
+
+## Phase 3 — combine and clean (after each family is moved)
+
+1. **Merge split units** into their original TU (e.g. `AppLeaves2008DHTMLWindow*.cpp` →
+   `client/app/.../DHTMLWindow.cpp`), functions ordered by PDB line order. Watch for things a merge
+   can change: static-init order, anonymous-namespace collisions, COMDAT selection, `#pragma`
+   state, `/Ob` inlining across now-shared statics. Prove identical codegen per function; if a
+   merge changes bytes, keep the split and record why.
+2. **Remove artifacts** found by the lint (Phase 0.4) where removal leaves codegen identical:
+   tool comments, invented helper names (rename to the real name when the identity tiers have
+   one), dead `#if 0`, duplicate helper copies → include the real header.
+3. **Style pass** to OpenRBX conventions (formatting only, verified identical objects).
+4. Headers: one header per class at `client/app/include/<area>/<class>.h` (PDB path), declarations
+   ordered like the vtable / PDB, `// INFERRED:` kept.
+
+## Phase 4 — when naming/integration finishes ("add the rest")
+
+1. Re-run Phase 0.2/0.3 on the final registry + `unnamed-identities.json`; every new native file
+   lands directly at its mapped path (no new `AppUnit*` files).
+2. Inferred-tier names (`unnamed-identities-inferred.json`, flagged) stay in a clearly marked
+   `// INFERRED NAME:` comment block per function; a later pass swaps them for real names as the
+   identity tiers promote them (script: re-apply names from the tiers, rebuild, verify identical).
+3. Produce an export tree `out/source-tree-2008-06/` laid out exactly like the PDB paths
+   (`client/app/...`, plus a VS2008 `.vcproj`/solution listing files in original folders) for
+   reading/browsing; the repo tree stays the build authority.
+4. Write `docs/SOURCE_LAYOUT.md`: mapping rules, evidence types, how new files get their path.
+5. Repeat for 2009-12 with its own PDB/OpenRBX evidence (separate map; never mix clients).
+
+## Additional rules and checks (added 2026-11-16)
+
+Survey numbers: 23 header file names exist twice under `native-headers`; 19 files have
+`pad_/field_/unk_` style members; 222 files include `stdafx.h`; sources are CRLF/ASCII.
+
+1. **Move and edit in separate commits.** A pure `git mv` commit per family, then content commits,
+   so `git log --follow` and rename detection keep history. Case-only renames on Windows need two
+   steps (`a.cpp -> a.tmp -> A.cpp`).
+2. **Reversible.** Write `layout/reverse-map.json` with every move; one command undoes a family.
+3. **Permalinks.** The Integration Digest and website link to current paths: add old→new entries
+   to `docs/source-links.json` (or a redirect map) in the same family commit.
+4. **Leases follow files.** After a family moves, release the old-path lease and take one on the
+   new globs; tell lease holders of overlapping families before the freeze.
+5. **Duplicate headers (23 names).** Pick one canonical header per class (the PDB path), turn the
+   others into one-line forwarding includes, then remove them after all includers switch.
+   Copies of vendor headers (e.g. `native-headers/part-resize/G3D/*.h`) should point at
+   `tools/libs` / the recipe include paths instead of living as edited copies; a needed Roblox
+   edit to a vendor header goes in a documented patch, not a silent copy.
+6. **Vendor vs app split.** Ogre, XTP, boost, G3D, Lua, RakNet, zlib sources go under their PDB
+   vendor folders (`client/rendering/g3d`, `client/boost_1_34_1`, `client/network/raknet30`,
+   ...) or the XTP/Ogre library roots, not under `client/app`.
+7. **Inline placement.** Members the original defined inline in the header (vtable/COMDAT
+   evidence, PDB line info pointing at a `.h`) move to the header; out-of-line ones to the
+   `.cpp`. Moving a body between header and .cpp can change inlining: verify per function.
+8. **Precompiled header.** The original app units used `stdafx.h`; keep one authentic
+   `stdafx.h` per project area (check PDB include lists) instead of per-unit variants.
+9. **Layout artifacts in classes.** Replace `pad_/field_/unk_` members with named members when
+   evidence exists (PDB types, OpenRBX, rbxgs headers); otherwise keep with `// INFERRED:`
+   size/alignment note. Replace raw offset casts and magic constants with members / enum names
+   where headers have them. Verify layout with `sizeof`/`offsetof` static asserts in a test TU,
+   not in the shipped source.
+10. **File-local helpers.** Name `static` helpers with the 1,897 WebService.pdb static names
+    (`identity-unlock-wspublics-procs.json`) where the body matches; keep them `static` in the
+    file the PDB places them in.
+11. **Resources.** MFC app units need `resource.h` / `.rc` IDs at original paths
+    (`client/rbxview` / app `res/`); replace numeric command IDs in message maps with `ID_*`
+    names from the recovered `resource.h`.
+12. **Encoding.** Keep CRLF + Windows-1252/ASCII (original); add `.gitattributes` for the native
+    tree so tools do not flip line endings (current commits warn LF->CRLF).
+13. **No invented banners.** Do not add Roblox copyright headers or fake history comments.
+14. **Golden objects.** Store per-TU object hashes before Phase 2 (`layout/golden-objects.json`);
+    every later batch compares against them, and a warn-only pre-commit check runs
+    `layout_verify` on touched native files.
+
+## Phase 5 — build it and make it run (functional client)
+
+1. One build entry point over the cleaned tree (`.sln`/`.vcproj` per original project + a script
+   wrapper calling the pinned toolchains), producing `Roblox.exe` from source only: no donor
+   objects, no extracted original bytes, no stub shells.
+2. Track what is still not source: per-section list of functions/data still supplied by
+   donor/replay/stub objects; it must reach zero.
+3. Runtime gates beyond P5/P6: launch, open/save a place, physics steps, render a frame, run Lua,
+   join a local server (rbxgs/RCC era), IDE/MFC windows, crash-free soak. Compare behaviour with the
+   original exe on the same inputs (log/trace diffs).
+
+## Phase 6 — byte-exact executable (SHA-256 of the rebuilt Roblox.exe == original)
+
+Matching functions is necessary, not sufficient. Everything the linker writes must match too.
+Each item gets its own proof report; no post-link patching (owner rule: never patch target bytes).
+
+| Area | What must match | How |
+|---|---|---|
+| Code layout | every function at its exact address, CC/NOP padding between them | object order on the link line + COMDAT order; reconstruct from address order (per-TU groups from PDB line info); `/ORDER` only if evidence shows it was used |
+| ICF / OPT:REF | which symbol survives each fold, which unreferenced COMDATs are dropped | same `/OPT:REF,ICF` settings, same object set; check folded addresses |
+| .rdata | strings (`/GF` pooling order), floats, vtables, RTTI (`??_R0..R4`), switch tables, EH tables (FuncInfo, unwind/try maps), `__real@`/`__xmm@` constants | data comes from source, not blobs; verify per-symbol placement + bytes |
+| .data / .bss | initial values, order, alignment, virtual size | globals defined in the right TU with exact initializers |
+| Imports | DLL order, function order, hint/name table, bound/unbound IAT, delay imports | same import libs (VC9 RTM SDK libs), same link order |
+| Exports / TLS / load config | `/SAFESEH` handler table, security cookie, TLS callbacks | same CRT + linker version |
+| .reloc | base relocation blocks | follows from identical layout |
+| .rsrc | dialogs, menus, accelerators, string tables, icons, bitmaps, version info, manifest, resource directory timestamps | recover `.rc` + assets from the original resources (authored source, compiled with the original `rc.exe`) |
+| PE header | linker version, subsystem/OS versions, stack/heap reserve, section alignment, DllCharacteristics, checksum | same linker + flags (`/STACK`, `/HEAP`, `/RELEASE`) |
+| Rich header | `@comp.id` + count for every object/lib (compiler build per TU: VS2008 RTM, VS2005 50727 for the zlib copy, MASM, CVTRES, linker) | exact toolchain per TU and exact object/lib set; it is a hash-sensitive census of the build |
+| Debug directory | CodeView RSDS: PDB path, GUID, age; timestamps | build at the original path (`subst` a drive to match); GUID/timestamps come from build time: reproduce with a clock shim at link time, never by patching |
+| Timestamps | COFF header, debug dir, resource dir, export dir | same clock shim |
+| Signature | Authenticode certificate table (if the original is signed) | cannot be reproduced; compare the hash with the certificate table excluded and document it |
+
+Facts from the original `clients/2008-06/Roblox.exe` (checked 2026-11-16):
+- Not Authenticode-signed (certificate table size 0): a full-file SHA-256 match is possible.
+- Linker 9.0; TimeDateStamp 0x485b465d; PDB path `d:\Roblox\Releases\2008.06.17\bin\Release\Roblox.pdb`.
+- Rich header (prodid, build, count): (132 C++, 21022, 627), (131 C, 21022, 89), (123, 50727, 40),
+  (109, 50727, 17), (150, 20413, 7), (149, 21022, 13), (147, 21022, 8), (148, 21022, 1),
+  (145, 21022, 1), (93/95/96, 4035, 3/2/1), (4, 8447, 2), (1 imports, 0, 3146).
+  So the original app link had exactly **627 VS2008 C++ objects and 89 C objects** plus VS2005
+  (50727) objects: the cleaned tree must end with exactly that many translation units per
+  compiler. This is a hard target for the Phase 3 merges (today: 1,653 .cpp files).
+- The RSDS GUID is random per link (not clock-derived): reproducing it needs a build-environment
+  hook on the linker's GUID source; that is an owner decision, since post-link patching is
+  forbidden.
+
+Tooling for Phase 6: `exe_diff.py` (section-by-section, symbol-aware first-difference report,
+Rich header decode, import table diff, resource tree diff) and a CI job that rebuilds and reports
+the distance to the original hash.
+
+Not done yet (as of 2026-11-16), roughly in order of size: remaining unnamed / inferred functions
+and their source; data recovery (globals, .rdata objects, EH tables as source-side products);
+link-order reconstruction; resources (.rc); Rich-header-exact toolchain mix; import order; build
+path / timestamp reproduction; rgmain.dll (Ogre 1.4.5 DLL) and the other shipped DLLs if the goal
+is the whole client package.
+
+## More ideas worth doing
+
+- **PDB line info → exact TU membership** also gives link order per object; use it to split
+  `AppUnit*` files that hold several original TUs.
+- **Per-TU compiler flags**: functions grouped by original TU should share flags; outliers in a
+  merged group flag a wrong merge or a wrong grouping.
+- **Static/global data placement**: PDB module streams (S_LDATA32/S_GDATA32) name each TU's
+  statics → move globals into the right file.
+- **Header include graph** from PDB checksum lists per module (which headers each original .obj
+  included) → reproduce original include lists.
+- **Lint as pre-commit hook** for native paths (warn-only) so new LLM drafts stop reintroducing
+  artifacts.
+- **Website**: show original path per function (from function-files.json) next to proof status.
+
+## Paste-ready Codex prompt
+
+> Read `work/native-client/CODEX_SOURCE_LAYOUT_PLAN.md` and do Phase 0 and Phase 1 only. Outputs
+> go under `work/native-client/layout/`. Read-only on every native source file; no moves, no
+> edits outside `work/native-client/layout/`. Respect the hard rules and the do-not-edit list.
+> Commit locally in one batch when Phase 0 reports and Phase 1 tools are done; do not push.
+> Report: consumer count, mapped files by evidence type, artifact counts, merge groups, and the
+> proposed family order for Phase 2.

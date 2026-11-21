@@ -46,4 +46,6 @@ public:
     MainLogManager logManager;                     // +0xa4
     std::string version;                           // +0xf0
     boost::scoped_ptr<ErrorUploader> errorUploader; // +0x10c
+public:
+	void apply(boost::shared_ptr<void>);   // INFERRED: ?apply@CRobloxApp@@QAEXV?$shared_ptr@X@boost@@@Z (header gap, header_gap_fill.py)
 };

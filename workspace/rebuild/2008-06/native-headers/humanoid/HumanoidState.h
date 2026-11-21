@@ -7,6 +7,10 @@
 #include <G3D/CoordinateFrame.h>
 #include <memory>
 
+namespace G3D {
+class Ray;
+}
+
 namespace RBX {
 class Humanoid;
 class PartInstance;
@@ -69,6 +73,7 @@ public:
     Humanoid* getHumanoid() const;                                    // 00793d50
     Primitive* getFloorPrimitive() const;                             // 00643d30: floorPart +0x24 ? part + 0x228 (embedded
                                                                       //   Primitive) : NULL (analog name)
+    bool sub_00643eb0() const;   // INFERRED: 00643eb0, placeholder name (identity tier), body byte-proved (Inferred_00643eb0.cpp)
     void render3dAdorn(Adorn* adorn);                                 // 00645060 (thiscall; called by Humanoid::render3dAdorn
                                                                       //   005d9c30 through currentState +0x220; analog name)
     // 00645450 (cdecl, `ret`): (*state)->006451c0(dt), 006453a0(state, dt), then (*state)->onStep(dt, controller)
@@ -79,6 +84,24 @@ public:
                                                                       //   (FallingDown .. Dead), default Running
     static HumanoidState* createDefault(Humanoid* humanoid);          // 00643280: new Running (Humanoid::onAncestorChanged
                                                                       //   005db560)
+    // 00644670 (thiscall, ret 4): switch over the 17 transition event ids (analog name).
+    bool canTransition(int event);
+    bool tipped() const;   // 00643a30 (analog name): sub-call 006439b0 float compared with 0x82f83c
+    bool upright() const;  // 00643a50 (analog name): same float compared with 0x826fc8
+    float getRatio() const; // 006439b0 (INFERRED: helper called by tipped/upright)
+    // 006451c0 (thiscall, ret 4): per-step update (analog name).
+    void preStep(float dt);
+    // Floor / climb probes called by preStep 006451c0 (thiscall; analog names, the registry has placeholders only):
+    void findFloor();                                                 // 00644000: plain ret; rays below the torso
+                                                                      //   through 00643f10, result into floorPart +0x24
+    bool findClimbable(Adorn* adorn);                                 // 00644c80: ret 4, al; preStep passes NULL
+    // 00643f10 (thiscall, ret 0xc): ContactManager::getHitLegacy with this filter into floorTouchInWorld (analog name).
+    boost::shared_ptr<PartInstance> floorPartFromRay(const G3D::Ray& ray, float maxDistance);
+    bool climbableInFront(Adorn* adorn);                              // 00644a30: ret 4, al; GeometryService
+                                                                      //   getPartsTouchingExtents 0062db60 into array14
+    // 006453a0 (cdecl): scans transitionTable (0084a92c, 18 ints per state) for a pending transition (analog name).
+    static void transition(std::auto_ptr<HumanoidState>& state, float dt);
+    static const int transitionTable[][18];                           // 0084a92c (INFERRED: stride 0x48 from asm)
     void setLimbFlag(bool value);                                     // 006431b0
     bool speedSettled() const;                                        // 00643330 (callers 00666b20/00666bc0 test al)
     // Base helpers called by RunningBase::onStep 00666410 / Running::onStep 00666b20 (bodies pending;

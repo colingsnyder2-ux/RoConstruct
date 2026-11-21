@@ -46,6 +46,7 @@ namespace Ogre
 {
 	class RbxSceneNode;
 	class RbxEntity;
+	class VisualEngine;    // OgreRbx/VisualEngine2008.h (scene manager at +0x4)
 }
 
 namespace RBX
@@ -67,6 +68,12 @@ namespace RBX
 			float _groundLOD;                                                         // +0xc
 			float _LODShift;                                                          // +0x10
 		public:
+			// Donor Render::EffectSettings getter shape (tools/rbxgs RenderLib/EffectSettings.h); the light helper
+			// 007a9d30 reads +0x0 for Light::setCastShadows.
+			bool stencilShadows() const
+			{
+				return _stencilShadows;
+			}
 			// Direct calls in update 007afce0 target local static initializer 007afc60.
 			static G3D::ToneMap* getToneMap();
 			G3D::ReferenceCountedPointer<G3D::Lighting> update(float, float, bool, float,
@@ -122,6 +129,10 @@ namespace RBX
 			void setLighting(const G3D::ReferenceCountedPointer<G3D::Lighting>& L);    // 007aa8b0
 			virtual void setThrottle(float t, float m, bool s, float c);              // 007aa770
 			virtual void render(G3D::RenderDevice* rd, const G3D::GCamera& camera);    // 007ab0a0 (not built)
+		private:
+			// 007a9d30 (thiscall, ret 8; render 007ab2de passes the VisualEngine and EffectSettings +0x2 by value).
+			// INFERRED name (registry placeholder func_007a9d30; the 2007 openrbx stub calls it FUN_0052c9b0).
+			void updateLights(Ogre::VisualEngine* engine, bool useAllLights);
 		};
 	}
 }

@@ -6,6 +6,10 @@
 // sound +0x134/+0x138, fmod_channel +0x13c, soundId +0x140, volume +0x160, playOnRemove +0x164, the bit fields at
 // +0x165 (is3D bit 0, looped bit 1, soundDisabled bit 2), playCount +0x168, part +0x16c.
 // Property descriptors referenced by address: playCountProperty 00977010, loopedProperty 00977118.
+// NativeContentProvider.h first: it declares the 2008 ContentProvider (ContentProvider::sub_00562730) and consumes
+// the donor util/ContentProvider.h include (ContentId) that SoundChannel.h repeats.
+#include "util/NativeContentProvider.h"
+#include "v8datamodel/GameSettings.h"
 #include "SoundChannel/SoundChannel.h"
 #include "v8datamodel/Workspace.h"
 #include "util/standardout.h"
@@ -39,6 +43,34 @@ namespace RBX
 			{
 				sound->refCount--;
 				sound.reset();
+			}
+		}
+
+		extern Reflection::PropDescriptor<SoundChannel, SoundId> soundIdProperty; // 00977064
+
+		// 005bc610 (INFERRED name, see SoundChannel.h): sound enabled (SoundService::soundDisabled 00976fc9, the channel
+		// bit, GameSettings::singleton() 0044bee0 soundEnabled +0x138) -> ask the context's ContentProvider (create
+		// 00465210) for soundId (00562730); the returned shared_ptr temporary is released at once (00600660).
+		void SoundChannel::preloadSound() // 005bc610
+		{
+			if (SoundService::soundDisabled || soundDisabled)
+				return;
+			if (!GameSettings::singleton().soundEnabled)
+				return;
+			if (ContentProvider* provider = ServiceProvider::create<ContentProvider>(this))
+				provider->sub_00562730(soundId);
+		}
+
+		// 005bd360: ContentId operator!= 0055bd60, the inline ContentId assignment (string operator= + mimeTypePtr at
+		// +0x1c), preloadSound 005bc610, releaseChannel expanded inline, raisePropertyChanged(SoundId 00977064).
+		void SoundChannel::setSoundId(SoundId value) // 005bd360
+		{
+			if (soundId != value)
+			{
+				soundId = value;
+				preloadSound();
+				releaseChannel();
+				raisePropertyChanged(soundIdProperty);
 			}
 		}
 
@@ -235,3 +267,26 @@ namespace RBX
 		}
 	}
 }
+
+namespace RBX {
+namespace Soundscape {
+void SoundChannel::updateListenState()
+{
+	if (part != 0 && is3D && fmod_channel != 0)
+	{
+		Listener<RunService, Heartbeat>* self = this;
+		RunService* runService = ServiceProvider::create<RunService>(this);
+		if (runService)
+			runService->Notifier<RunService, Heartbeat>::addListener(self);
+	}
+	else
+	{
+		Listener<RunService, Heartbeat>* self = this;
+		RunService* runService = ServiceProvider::create<RunService>(this);
+		if (runService)
+			runService->Notifier<RunService, Heartbeat>::removeListener(self);
+	}
+}
+}
+}
+

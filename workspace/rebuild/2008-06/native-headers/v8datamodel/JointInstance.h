@@ -30,6 +30,19 @@ public:
     Joint::JointType getJointType() const;
     PartInstance* getPart0() const;          // 005e2a10
     PartInstance* getPart1() const;          // 005e2a70
+    // 2008: the Part0/Part1 and C0/C1 accessors are JointInstance members. The binary's GetSetImpl RTTI (vtables
+    // 0083e280 / 0083e294) names `PartInstance* (JointInstance::*)() const, void (JointInstance::*)(PartInstance*)` and
+    // `const CoordinateFrame& (JointInstance::*)() const, void (JointInstance::*)(const CoordinateFrame&)` (getset
+    // factories 005e2920 / 005e2970), there is no AutoJoint RTTI, and Tool::setGrip 005ffb70 / IEquipable::buildWeld
+    // 00628fd0 call 005e44c0 (setC1) / 005e4450.. directly on a Weld (FactoryProduct<Weld, JointInstance, sWeld>).
+    // The identity registry still names these bodies ?setX@AutoJoint (identity-closure, from the donor); the AutoJoint
+    // redeclarations below are kept so AutoJoint.cpp / AutoJointFrames.cpp keep their current symbols.
+    void setPart0(PartInstance* value);                  // 005e4450
+    void setPart1(PartInstance* value);                  // 005e4470
+    const G3D::CoordinateFrame& getC0() const;
+    const G3D::CoordinateFrame& getC1() const;
+    void setC0(const G3D::CoordinateFrame& value);       // 005e4490
+    void setC1(const G3D::CoordinateFrame& value);       // 005e44c0
 };
 
 extern const char sAutoJoint[];
@@ -50,19 +63,26 @@ public:
 };
 
 extern const char sSnap[];
-class Snap : public DescribedCreatable<Snap, AutoJoint, sSnap> { public: Snap(Joint* joint); Snap(); };
+// INFERRED: binary RTTI/bindings bind DescribedCreatable<Snap, JointInstance, sSnap> (all 7 joint classes use
+// JointInstance as the 2nd template arg; AutoJoint declarations here do not match the 2008 binary).
+class Snap : public DescribedCreatable<Snap, JointInstance, sSnap> { public: Snap(Joint* joint); Snap(); };
 extern const char sWeld[];
-class Weld : public DescribedCreatable<Weld, AutoJoint, sWeld> { public: Weld(Joint* joint); Weld(); };
+// INFERRED: 2008 binary RTTI binds the vftable/deleting-dtor thunks stored by Weld's ctors at 005e4710/005e4810 to
+// FactoryProduct<Weld, JointInstance, sWeld> and DescribedCreatable<Weld, JointInstance, sWeld> (class-identity-bindings.json),
+// so the template argument is JointInstance, not AutoJoint; the ctor bytes are unchanged.
+class Weld : public DescribedCreatable<Weld, JointInstance, sWeld> { public: Weld(Joint* joint); Weld(); };
 extern const char sGlue[];
-class Glue : public DescribedCreatable<Glue, AutoJoint, sGlue> { public: Glue(Joint* joint); Glue(); };
+class Glue : public DescribedCreatable<Glue, JointInstance, sGlue> { public: Glue(Joint* joint); Glue(); };
 extern const char sRotate[];
-class Rotate : public DescribedCreatable<Rotate, AutoJoint, sRotate> { public: Rotate(Joint* joint); Rotate(); };
+class Rotate : public DescribedCreatable<Rotate, JointInstance, sRotate> { public: Rotate(Joint* joint); Rotate(); };
 extern const char sRotateP[];
-class RotateP : public DescribedCreatable<RotateP, AutoJoint, sRotateP> { public: RotateP(Joint* joint); RotateP(); };
+class RotateP : public DescribedCreatable<RotateP, JointInstance, sRotateP> { public: RotateP(Joint* joint); RotateP(); };
 extern const char sRotateV[];
-class RotateV : public DescribedCreatable<RotateV, AutoJoint, sRotateV> { public: RotateV(Joint* joint); RotateV(); };
+class RotateV : public DescribedCreatable<RotateV, JointInstance, sRotateV> { public: RotateV(Joint* joint); RotateV(); };
 extern const char sMotor[];
-class Motor : public DescribedCreatable<Motor, AutoJoint, sMotor> {
+// INFERRED: binary layout requires maxVelocity at offset +0x154, desiredAngle at +0x158, currentAngle at +0x15c
+// within the Motor class sub-object (following JointInstance base at +0x140/class size 0x144).
+class Motor : public DescribedCreatable<Motor, JointInstance, sMotor> {
 private:
     const MotorJoint* getMotorJoint() const;
     MotorJoint* getMotorJoint();

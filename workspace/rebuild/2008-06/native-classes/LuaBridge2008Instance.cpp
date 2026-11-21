@@ -74,98 +74,106 @@ int ObjectBridge::newInstance(lua_State* thread)
     return 1;
 }
 
-// TODO: 98.80% (functional match)
+// 0061abe0: file-local pushLuaValue (called from on_index 0061c2c0 and the LuaArguments push paths). The 2008 body
+// tests p.getDescriptor().type against Type::singleton<T>() in this order: int, bool, float, double (0056cd10 /
+// getValue 004adc90), std::string, shared_ptr<Instance>, shared_ptr<DescribedBase>, Vector3, CoordinateFrame, Color3,
+// BrickColor, ContentId, FunctionRef, shared_ptr<const vector<shared_ptr<Instance> > > (0056cb50 / 0061a930, a table
+// built with lua_createtable(L, end - begin, 0)), then the enum and ref descriptors and the throw. The target receives
+// L in esi (custom convention of a file-local function) and keeps a 64-byte aligned frame.
+// Remaining blocker: the enum branch calls EnumPropertyDescriptor vtable slot 16 (+0x40; e.g. 00448740, returns the
+// const EnumDescriptor::Item* at index getEnumValue() of the enum's item vector) and pushes it with
+// Bridge<EnumItem>::pushNewObject 005a9bd0. The core reflection/property.h declares only 16 slots (no such virtual),
+// so the enum branch below keeps the donor lua_pushinteger shape.
 static void pushLuaValue(ConstProperty p, lua_State* L)
 {
-    // (0024BC)  S_BPREL32: [FFFFFF40], Type:             0x3639, objects
-    // (0024D0)  S_BPREL32: [FFFFFF50], Type:             0x36A2, end
-    // (0024E0)  S_BPREL32: [FFFFFF48], Type:             0x36A2, iter
-
-    PropertyDescriptor& descriptor = const_cast<PropertyDescriptor&>(p.getDescriptor());
-
-    if (descriptor.type == Type::singleton<int>())
+    if (p.getDescriptor().type == Type::singleton<int>())
     {
         lua_pushinteger(L, p.getValue<int>());
         return;
     }
 
-    if (descriptor.type == Type::singleton<bool>())
+    if (p.getDescriptor().type == Type::singleton<bool>())
     {
         lua_pushboolean(L, p.getValue<bool>());
         return;
     }
 
-    if (descriptor.type == Type::singleton<float>())
+    if (p.getDescriptor().type == Type::singleton<float>())
     {
         lua_pushnumber(L, p.getValue<float>());
         return;
     }
 
-    if (descriptor.type == Type::singleton<std::string>())
+    if (p.getDescriptor().type == Type::singleton<double>())
+    {
+        lua_pushnumber(L, p.getValue<double>());
+        return;
+    }
+
+    if (p.getDescriptor().type == Type::singleton<std::string>())
     {
         lua_pushstring(L, p.getStringValue().c_str());
         return;
     }
 
-    if (descriptor.type == Type::singleton<boost::shared_ptr<Instance>>())
+    if (p.getDescriptor().type == Type::singleton<boost::shared_ptr<Instance> >())
     {
-        ObjectBridge::push(L, p.getValue<boost::shared_ptr<Instance>>());
+        ObjectBridge::push(L, p.getValue<boost::shared_ptr<Instance> >());
         return;
     }
 
-    if (descriptor.type == Type::singleton<boost::shared_ptr<DescribedBase>>())
+    if (p.getDescriptor().type == Type::singleton<boost::shared_ptr<DescribedBase> >())
     {
-        ObjectBridge::push(L, p.getValue<boost::shared_ptr<DescribedBase>>());
+        ObjectBridge::push(L, p.getValue<boost::shared_ptr<DescribedBase> >());
         return;
     }
 
-    if (descriptor.type == Type::singleton<G3D::Vector3>())
+    if (p.getDescriptor().type == Type::singleton<G3D::Vector3>())
     {
         Vector3Bridge::pushVector3(L, p.getValue<G3D::Vector3>());
         return;
     }
 
-    if (descriptor.type == Type::singleton<G3D::CoordinateFrame>())
+    if (p.getDescriptor().type == Type::singleton<G3D::CoordinateFrame>())
     {
         CoordinateFrameBridge::pushCoordinateFrame(L, p.getValue<G3D::CoordinateFrame>());
         return;
     }
 
-    if (descriptor.type == Type::singleton<G3D::Color3>())
+    if (p.getDescriptor().type == Type::singleton<G3D::Color3>())
     {
         Color3Bridge::pushColor3(L, p.getValue<G3D::Color3>());
         return;
     }
 
-    if (descriptor.type == Type::singleton<BrickColor>())
+    if (p.getDescriptor().type == Type::singleton<BrickColor>())
     {
         BrickColorBridge::pushNewObject(L, p.getValue<BrickColor>());
         return;
     }
 
-    if (descriptor.type == Type::singleton<ContentId>())
+    if (p.getDescriptor().type == Type::singleton<ContentId>())
     {
         lua_pushstring(L, p.getStringValue().c_str());
         return;
     }
 
-    if (descriptor.type == Type::singleton<FunctionRef>())
+    if (p.getDescriptor().type == Type::singleton<FunctionRef>())
     {
         lua_pushfunction(L, p.getValue<FunctionRef>());
         return;
     }
 
-#ifdef NATIVE_LUABRIDGE_PENDING
-    if (descriptor.type == Type::singleton<boost::shared_ptr<Instances>>())
+    if (p.getDescriptor().type == Type::singleton<boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > >())
     {
-        boost::shared_ptr<Instances> objects = p.getValue<boost::shared_ptr<Instances>>();
+        boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > objects =
+            p.getValue<boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > >();
         if (objects)
         {
-            Instances::const_iterator iter = objects->begin();
-            Instances::const_iterator end = objects->end();
+            std::vector<boost::shared_ptr<Instance> >::const_iterator iter = objects->begin();
+            std::vector<boost::shared_ptr<Instance> >::const_iterator end = objects->end();
 
-            // objects->size() doesn't match
-            lua_createtable(L, end-iter, 0);
+            lua_createtable(L, end - iter, 0);
 
             for (int i = 1; iter != end; i++)
             {
@@ -181,7 +189,7 @@ static void pushLuaValue(ConstProperty p, lua_State* L)
         return;
     }
 
-#endif
+    PropertyDescriptor& descriptor = const_cast<PropertyDescriptor&>(p.getDescriptor());
     EnumPropertyDescriptor* enumDesc = dynamic_cast<EnumPropertyDescriptor*>(&descriptor);
     if (enumDesc)
     {
@@ -194,7 +202,6 @@ static void pushLuaValue(ConstProperty p, lua_State* L)
     {
         DescribedBase* ref = refDesc->getRefValue(p.getInstance());
 
-        // this just seems strange /shrug
         if (ref)
             ObjectBridge::push(L, static_cast<Instance*>(ref)->shared_from_this());
         else
@@ -209,6 +216,8 @@ static void pushLuaValue(ConstProperty p, lua_State* L)
         descriptor.type.name.c_str()));
 }
 
+// 0061c2c0: ObjectBridge::on_index (Bridge<shared_ptr<DescribedBase>>::on_index(const shared_ptr&, const char*,
+// lua_State*)); pushes 0061c0e0 (callMemberFunction) at 0061c476.
 template<>
 int ObjectBridge::on_index(const boost::shared_ptr<DescribedBase>& object, const char* name, lua_State* L)
 {
@@ -247,7 +256,8 @@ int ObjectBridge::on_index(const boost::shared_ptr<DescribedBase>& object, const
                 lua_settable(L, LUA_ENVIRONINDEX);
             }
 
-            RBXASSERT(lua_type(L, -1) == LUA_TFUNCTION);
+            // 0061c2c0 has no lua_type(L, -1) check here: the donor's RBXASSERT(lua_type(L, -1) == LUA_TFUNCTION)
+            // (a global-flag test, lua_type and a failure call) is absent from the 2008-06 body.
 
             return 1;
         }
@@ -286,110 +296,143 @@ int ObjectBridge::on_index(const boost::shared_ptr<DescribedBase>& object, const
     throw std::runtime_error(G3D::format("%s is not a valid member of %s", name, instance->getClassName().c_str()));
 }
 
-// TODO: 94.38% (functional match)
+// 0061b190: file-local assignLuaValue (called from on_newindex 0061bda0). Test order (p.getDescriptor().type against
+// Type::singleton<T>()): int, bool, float, double (both through tonumberClamped 0061c830), std::string
+// (tostringChecked 0061c7b0), FunctionRef, shared_ptr<Instance>, shared_ptr<DescribedBase>, Vector3, CoordinateFrame,
+// Color3, BrickColor; then SoundId / TextureId typed descriptors (dynamic_cast), the enum descriptor (EnumItem userdata
+// through setEnumItem 0061a400, a number through setEnumValue (vtable +0x3c), a string through setStringValue
+// (+0x20), each failing with its own "Invalid ... for enum %s" message 00844240 / 00844220 / 00844200 / 008441e4),
+// the ref descriptor and the throw 008441c0. The target receives index in ecx and L in edi (custom convention of a
+// file-local function; this /c compile reproduces it).
+// Closest (2026-11-19): 2171 B against 2168 B, identical through 0061b9b0; only the final throw differs: the target
+// reads the descriptor name string through the Name* with folded displacements (mov ecx,[ecx+4]; [ecx+0x1c] / [ecx+8])
+// while this compile materializes Name+4 (add eax,4) and keeps the type string in esi. Rejected for that tail:
+// p.getDescriptor() in the arguments, a local descriptor reference (kept), descriptor.name.name.c_str().
+// pushLuaValue 0061abe0 shows the same tail difference after its enum branch.
 static void assignLuaValue(Property p, lua_State* L, int index)
 {
-    // (002DA8)  S_BPREL32: [FFFFFF60], Type:             0x238B, value
-
-    PropertyDescriptor& descriptor = const_cast<PropertyDescriptor&>(p.getDescriptor());
-
-    if (descriptor.type == Type::singleton<int>())
+    if (p.getDescriptor().type == Type::singleton<int>())
     {
         p.setValue<int>(lua_tointeger(L, index));
         return;
     }
 
-    if (descriptor.type == Type::singleton<bool>())
+    if (p.getDescriptor().type == Type::singleton<bool>())
     {
         p.setValue<bool>(lua_toboolean(L, index) != 0);
         return;
     }
 
-    if (descriptor.type == Type::singleton<float>())
+    if (p.getDescriptor().type == Type::singleton<float>())
     {
-        p.setValue<float>(lua_tonumber(L, index));
+        p.setValue<float>(tonumberClamped(L, index));
         return;
     }
 
-    if (descriptor.type == Type::singleton<std::string>())
+    if (p.getDescriptor().type == Type::singleton<double>())
     {
-        p.setValue<std::string>(lua_tostring(L, index));
+        p.setValue<double>(tonumberClamped(L, index));
         return;
     }
 
-    if (descriptor.type == Type::singleton<FunctionRef>())
+    if (p.getDescriptor().type == Type::singleton<std::string>())
+    {
+        p.setValue<std::string>(tostringChecked(L, index));
+        return;
+    }
+
+    if (p.getDescriptor().type == Type::singleton<FunctionRef>())
     {
         p.setValue(FunctionRef(L, index));
         return;
     }
 
-    if (descriptor.type == Type::singleton<boost::shared_ptr<Instance>>())
+    if (p.getDescriptor().type == Type::singleton<boost::shared_ptr<Instance> >())
     {
         p.setValue(ObjectBridge::getInstance(L, index));
         return;
     }
 
-    if (descriptor.type == Type::singleton<boost::shared_ptr<DescribedBase>>())
+    if (p.getDescriptor().type == Type::singleton<boost::shared_ptr<DescribedBase> >())
     {
         p.setValue(ObjectBridge::getPtr(L, index));
         return;
     }
 
-    if (descriptor.type == Type::singleton<G3D::Vector3>())
+    if (p.getDescriptor().type == Type::singleton<G3D::Vector3>())
     {
         p.setValue(Vector3Bridge::getObject(L, index));
         return;
     }
 
-    if (descriptor.type == Type::singleton<G3D::CoordinateFrame>())
+    if (p.getDescriptor().type == Type::singleton<G3D::CoordinateFrame>())
     {
         p.setValue(CoordinateFrameBridge::getObject(L, index));
         return;
     }
 
-    if (descriptor.type == Type::singleton<G3D::Color3>())
+    if (p.getDescriptor().type == Type::singleton<G3D::Color3>())
     {
         p.setValue(Color3Bridge::getObject(L, index));
         return;
     }
 
-    if (descriptor.type == Type::singleton<BrickColor>())
+    if (p.getDescriptor().type == Type::singleton<BrickColor>())
     {
         p.setValue(BrickColorBridge::getObject(L, index));
         return;
     }
 
-    // the contentid dtors for these two checks should be merged
-    // seems like an inline, but i can't get it to work
-    if (dynamic_cast<TypedPropertyDescriptor<SoundId>*>(&descriptor))
+    if (dynamic_cast<const TypedPropertyDescriptor<SoundId>*>(&p.getDescriptor()))
     {
-        p.setValue<SoundId>(ContentId(lua_tostring(L, index)));
+        p.setValue<SoundId>(ContentId(tostringChecked(L, index)));
         return;
     }
 
-    if (dynamic_cast<TypedPropertyDescriptor<TextureId>*>(&descriptor))
+    if (dynamic_cast<const TypedPropertyDescriptor<TextureId>*>(&p.getDescriptor()))
     {
-        p.setValue<TextureId>(ContentId(lua_tostring(L, index)));
+        p.setValue<TextureId>(ContentId(tostringChecked(L, index)));
         return;
     }
 
-    EnumPropertyDescriptor* enumDesc = dynamic_cast<EnumPropertyDescriptor*>(&descriptor);
-    if (enumDesc)
+    if (const EnumPropertyDescriptor* enumDesc = dynamic_cast<const EnumPropertyDescriptor*>(&p.getDescriptor()))
     {
-        int value = lua_tointeger(L, index);
-        enumDesc->setEnumValue(p.getInstance(), value);
+        const EnumDescriptor::Item* item;
+        if (Bridge<EnumDescriptorItemPtr, false>::getValue(L, index, item))
+        {
+            if (!enumDesc->setEnumItem(p.getInstance(), *item))
+                throw std::runtime_error(G3D::format("Invalid type %s for enum %s", item->owner.name.c_str(),
+                    enumDesc->name.c_str()));
+        }
+        else if (lua_isnumber(L, index))
+        {
+            if (!enumDesc->setEnumValue(p.getInstance(), lua_tointeger(L, index)))
+                throw std::runtime_error(G3D::format("Invalid value %d for enum %s", lua_tointeger(L, index),
+                    enumDesc->name.c_str()));
+        }
+        else if (lua_isstring(L, index))
+        {
+            if (!enumDesc->setStringValue(p.getInstance(), lua_tostring(L, index)))
+                throw std::runtime_error(G3D::format("Invalid value \"%s\" for enum %s", lua_tostring(L, index),
+                    enumDesc->name.c_str()));
+        }
+        else
+        {
+            throw std::runtime_error(G3D::format("Invalid value for enum %s", enumDesc->name.c_str()));
+        }
         return;
     }
 
-    RefPropertyDescriptor* refDesc = dynamic_cast<RefPropertyDescriptor*>(&descriptor);
-    if (refDesc)
+    if (const RefPropertyDescriptor* refDesc = dynamic_cast<const RefPropertyDescriptor*>(&p.getDescriptor()))
     {
         boost::shared_ptr<Instance> value = ObjectBridge::getInstance(L, index);
         refDesc->setRefValue(p.getInstance(), value.get());
         return;
     }
 
-    throw std::runtime_error(G3D::format("Unable to set property %s, type %s", descriptor.name.c_str(), descriptor.type.name.c_str()));
+    const PropertyDescriptor& descriptor = p.getDescriptor();
+    throw std::runtime_error(G3D::format("Unable to set property %s, type %s", descriptor.name.c_str(),
+        descriptor.type.name.c_str()));
 }
 
 // TODO: 91.56%
@@ -442,15 +485,16 @@ void ObjectBridge::on_newindex(boost::shared_ptr<DescribedBase>& object, const c
 // (owner: v8tree/Instance.h). callMemberFunction 0061c0e0 calls 0061bcd0 at 0061c185, so it stays guarded with it.
 // Diagnostic compile with the check removed (2026-11-15): 451 B against 478 B; every difference is the missing
 // dynamic_cast + 0061bcd0 call and the register allocation that follows; the LuaArguments2008 construction, execute
-// and pushReturnValue -> push 005aba50 sequence (0061c1f6..0061c264) is identical. Even with the declarations, the
-// esi-argument convention of 0061bcd0 (whole-program code generation) keeps both bodies from being byte-exact.
+// and pushReturnValue -> push 005aba50 sequence (0061c1f6..0061c264) is identical. The esi-argument convention of
+// 0061bcd0 is not a whole-program artifact: this /c compile gives the file-local pushLuaValue / assignLuaValue the same
+// register-argument conventions as the target (2026-11-19), so the declarations are the remaining blocker.
 #ifdef NATIVE_LUABRIDGE_PENDING
 // 0061bcd0: write-access check called from 0061be19 (on_newindex) and 0061c185 (callMemberFunction) right after the
 // dynamic_cast<Instance*> of the object. Name not established (file-local; no registry name). Without Administrator
 // permission (Context::isInRole 005cf070 with identity and 1): StatsService (RTTI 0093244c) needs "modify a StatsService";
 // the root DataModel (getRootAncestor 0042a5f0 of the parent, the object itself when it has none; RTTI 0092e8a0) guards
 // guiRoot (+0x21c) "GuiRoot" and guiHooks (+0x224) "GuiHooks" and their descendants (isAncestorOf 004c9c50).
-// The target passes the Instance* in esi (whole-program code generation); a /c compile pushes it.
+// The target passes the Instance* in esi (custom convention of a file-local function, reproducible by a /c compile).
 static void checkWriteAccess(Instance* instance)
 {
     if (Security::Context::current().hasPermission(Security::Administrator))

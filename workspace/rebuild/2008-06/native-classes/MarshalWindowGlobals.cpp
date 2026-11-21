@@ -1,4 +1,5 @@
-#include "util/MarshaledListener.h"
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
+#include "util/MarshalWindow.h"
 #include <map>
 
 namespace RBX {

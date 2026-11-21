@@ -1,0 +1,1016 @@
+{
+  "class": "RBX::RenderBase Mesh.cpp unit of the application range 00548000..0054c000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), /Od /Ob0 /GS (RenderBase library profile) + Ogre 1.4.5 client headers",
+  "flags": {
+    "main": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/Od",
+      "/Ob0",
+      "/GS",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit548/NativeAppUnit548_main.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit548Mesh.cpp"
+    ],
+    "pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit548/pending",
+      "/Od",
+      "/Ob0",
+      "/GS",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/DNATIVE_APPUNIT548_PENDING",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit548/NativeAppUnit548_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit548Mesh.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit548.py": "9bb65d7159ed39603bfbbcdcb1dac811d06d1cdd3556b08c573b90b959f870de",
+    "rebuild/2008-06/native-classes/AppUnit548Mesh.cpp": "722bb574172b56d9e5c7444a1b7b8ff923edc8160c157a860f0f6bf8512fd937",
+    "rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h": "9fe56c002fcea64fa33f1409e586079588ef0e9b7d9c0ff885d10e0b706885b3"
+  },
+  "pending_header": {
+    "rebuild/2008-06/out/native-layouts/app-unit548/pending/ViewNew/RenderBaseMesh.h": "4f21e15768a028dedc884808d1f5c91704f08f4c9364b91bc71f78da121edecf"
+  },
+  "objects": {
+    "main": "e358bda35b5263d5e29bfe34fecb26f22a4afd605cd2f685ba44e0d81ee5afeb",
+    "pending": "0f858138f00b0f1610d5af1a70eca304e21e5e99740dac62e5c4e0f07863f9fe"
+  },
+  "unit_map": {
+    "RenderBase Mesh.cpp 00547440..(past 0054c000), the whole range": "One /Od /Ob0 /GS RenderBase unit (head below the range in the app-unit540 map): initStatics 00547f60 (once flag 00973980), allocVertex(unsigned, unsigned) 00547fc0, allocVertex(Vector3, Vector3, Vector2, bool) 00548000, a 1046-byte static 00548150, Mesh() 00548570 (vtable 0082d028), freeVertex 00548640, Level release 005486e0 / ~Level 005489b0 (vtable 00826e4c), ~Mesh 00548a90 (strings \" shd\", \"RBX rm \"), the VAR statics 00548c60 / 00548cb0 / 00548ec0, detailLevel 00548f80 / detailIndex 0054aca0, sendGeometry 00548fe0, endRender 00549030, a 900-byte member 00549050, the Ogre sub-mesh builders 005493e0 / 00549610 / 00549a50 / 0054a920 (RenderScene 007ab0a0), Mesh ??_G 0054a9c0, ShadowSurface ctor 0054a9f0 / dtor 0054aa80, the sub-mesh name map holder 0054ab10..0054ac70 (boost::call_once initialiser 0054ab60), then the COMDAT template instantiations of this unit (G3D::Array<int> / <Vector2> / <Edge> / <Face> / <RCP<Level> >, std::vector<unsigned short> / <Vector3>, the sub-mesh name std::map) from 0054acf0 to past 0054c000. The static vertex pool lives at 009738a1..00973934.",
+    "excluded / library code": "none in the range: no CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView row, and the STL / G3D / boost bodies are Roblox-instantiated templates of this unit (element types RBX::RenderBase::* or the Mesh statics), not separately linked library objects. 0054acf0 is a header-inline Ogre::VisualEngine (exe-local) accessor.",
+    "counted here (main build)": "ShadowSurface ctor / dtor and the template members listed in exact_function_rows.",
+    "pending-build-only (not counted)": "Mesh() 00548570, allocVertex 00548000, freeVertex 00548640, detailLevel 00548f80, sendGeometry 00548fe0, endRender 00549030, ??_G 0054a9c0, detailIndex 0054aca0 (and below the range initStatics 00547f60, allocVertex 00547fc0): exact only against the generated pending RenderBaseMesh.h (proposal below)."
+  },
+  "range_functions": 55,
+  "range_rows_counted_by_other_receipts": [
+    "0054bf70 counted by app-unit540-2008-working.json"
+  ],
+  "range_rows_not_built": [
+    "00548150: Mesh.cpp static (1046 B, no direct caller in the analysis; G3D Array / RCP<Chunk> helpers): not attempted",
+    "005486e0: Level sub-mesh release (713 B): needs the exe-local Ogre sub-mesh class (deleting dtor 0054ac70 -> 006824e0), the sub-mesh name map holder 0054ab40 (boost::call_once 00557330, mutex +0x24, map operator[] 0054b3a0 / find 0054bd00 / erase 0054b520, log \"RBX rm \"), the static Ogre::MeshPtr 009738b8 and 00682150; none is declared",
+    "005489b0: ~Level (223 B): freeVertex loop (pending-exact callee) + Level release 005486e0 + static counter 009738a8 + the static Ogre::MeshPtr 009738b8; not declared",
+    "00548a90: ~Mesh (451 B): the same sub-mesh release as 005486e0 on +0x80 (\" shd\" log), not declared; its ??_G 0054a9c0 is pending-exact",
+    "00548c60: setShadowVertex-shaped static (66 B): needs the static VAR / Array at 009738d0 (0x20-byte gap 009738d0..009738ef, type not derived)",
+    "00548cb0: makeVAR-shaped static (517 B): needs the VAR statics (009738d0 ..) and VARArea; not derived",
+    "00548ec0: beginRender-shaped static (178 B): needs the VAR statics; not derived",
+    "00549050: Mesh.cpp member (900 B, callers 005032a0 / 00552300; Array<Edge> / G3D MeshAlg calls): not attempted",
+    "005493e0: Ogre sub-mesh builder (\"General\", \"rbxvb\", \"create mesh=\"; RenderScene 007ab0a0): Ogre sub-mesh classes undeclared",
+    "00549610: Ogre sub-mesh builder (\"RBX makeHWSubMesh: should not be here\"): Ogre sub-mesh classes undeclared",
+    "00549a50: Ogre sub-mesh builder (3779 B): Ogre sub-mesh classes undeclared",
+    "0054a920: Ogre sub-mesh helper (148 B, RenderScene 007ab0a0): Ogre sub-mesh classes undeclared",
+    "0054ab10: scalar deleting dtor of an undeclared Ogre helper (delete via 006a067a; 005488b2)",
+    "0054ab40: sub-mesh name map holder accessor (boost::call_once 00557330 with 0054ab60 / once flag 00973984)",
+    "0054ab60: sub-mesh name map initialiser (ogre-visual-engine receipt names it; map type undeclared)",
+    "0054abe0: sub-mesh name map holder ctor (map ctor 0054b370, mutex 00563070)",
+    "0054ac50: sub-mesh name map holder dtor (map dtor 0054b4c0)",
+    "0054ac70: deleting dtor of the exe-local Ogre sub-mesh (006824e0); class undeclared",
+    "0054acf0: header-inline Ogre::VisualEngine bool accessor (+0x7f4 useLargeVertexBuffer, ogre-visual-engine receipt; called by 00549a50); VisualEngine2008.h does not exist yet",
+    "0054ad10: one-call wrapper used by the 00549a50 builder (0054c390); type not derived",
+    "0054aed0: recursive template member (410 B) called by 00549050: not built with it",
+    "0054b070: recursive template member (553 B) called by 00549050: not built with it",
+    "0054b370: std::map ctor of the sub-mesh name map (key / value types not declared)",
+    "0054b3a0: std::map operator[] of the sub-mesh name map (005487a3 / 00548b3d / 0067c130)",
+    "0054b4c0: std::map dtor of the sub-mesh name map",
+    "0054b520: std::map erase of the sub-mesh name map (2004 B)",
+    "0054bd00: std::map find of the sub-mesh name map",
+    "0054bf90: Array<16-byte element> push helper called by the 00547610 aggregate static (not built)",
+    "0054bfc0: Array<16-byte element> operator[] called by 00547610 / 00549050 (not built)"
+  ],
+  "rows": [
+    {
+      "address": "0054a9f0",
+      "symbol": "??0ShadowSurface@Mesh@RenderBase@RBX@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "root: Mesh() 005485c3 on +0x18 (four Array ctors + RCP<Level> ctor)",
+      "exact": true,
+      "size": 134,
+      "target_size": 134,
+      "verified_targets": {
+        "___security_cookie": "0x965cc0 (external)",
+        "??0?$Array@VEdge@MeshAlg@G3D@@@G3D@@QAE@XZ": "0x54bf50 (own row)",
+        "??0?$Array@VVector3@G3D@@@G3D@@QAE@XZ": "0x481520 (external)",
+        "??0?$Array@VFace@MeshAlg@G3D@@@G3D@@QAE@XZ": "0x54bfe0 (own row)",
+        "??0?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@QAE@XZ": "0x4f0810 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??0ShadowSurface@Mesh@RenderBase@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0054aa80",
+      "symbol": "??1ShadowSurface@Mesh@RenderBase@RBX@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "root: ~Mesh 00548c21 on +0x18",
+      "exact": true,
+      "size": 131,
+      "target_size": 131,
+      "verified_targets": {
+        "___security_cookie": "0x965cc0 (external)",
+        "??1?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@QAE@XZ": "0x502a70 (external)",
+        "??1?$Array@VVector3@G3D@@@G3D@@QAE@XZ": "0x6433e0 (external)",
+        "??1?$Array@VFace@MeshAlg@G3D@@@G3D@@QAE@XZ": "0x5516d0 (external)",
+        "??1?$Array@VEdge@MeshAlg@G3D@@@G3D@@QAE@XZ": "0x5516d0 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??1ShadowSurface@Mesh@RenderBase@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0054ad30",
+      "symbol": "?clear@?$Array@H@G3D@@QAEXXZ",
+      "folded_symbols": [],
+      "identity": "root: initStatics 00547fb6 on freeList (resize(0) 004806b0)",
+      "exact": true,
+      "size": 21,
+      "target_size": 21,
+      "verified_targets": {
+        "?resize@?$Array@H@G3D@@QAEXH@Z": "0x4806b0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054ad50",
+      "symbol": "?length@?$Array@H@G3D@@QBEHXZ",
+      "folded_symbols": [],
+      "identity": "root: allocVertex 00548024 on freeList (calls size 0054bf70)",
+      "exact": true,
+      "size": 19,
+      "target_size": 19,
+      "verified_targets": {
+        "?size@?$Array@H@G3D@@QBEHXZ": "0x54bf70 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054ad70",
+      "symbol": "?append@?$Array@H@G3D@@QAEXABH@Z",
+      "folded_symbols": [],
+      "identity": "root: allocVertex 00548098 on vertexRefCounts 009738c4 (temporary 1)",
+      "exact": true,
+      "size": 186,
+      "target_size": 186,
+      "verified_targets": {
+        "??2@YAPAXIPAX@Z": "0x401670 (external (evidence name))",
+        "?inArray@?$Array@H@G3D@@AAE_NPBH@Z": "0x47f610 (external)",
+        "?append@?$Array@H@G3D@@QAEXABH@Z": "0x54ad70 (own row)",
+        "?resize@?$Array@H@G3D@@QAEXH_N@Z": "0x480020 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054ae30",
+      "symbol": "?push@?$Array@H@G3D@@QAEXABH@Z",
+      "folded_symbols": [],
+      "identity": "root: freeVertex 005486bd on freeList 009738ac (int temporary of index)",
+      "exact": true,
+      "size": 25,
+      "target_size": 25,
+      "verified_targets": {
+        "?append@?$Array@H@G3D@@QAEXABH@Z": "0x54ad70 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054ae50",
+      "symbol": "?pop@?$Array@H@G3D@@QAEH_N@Z",
+      "folded_symbols": [],
+      "identity": "root: allocVertex 005480a9 on freeList (push 0: default flag)",
+      "exact": true,
+      "size": 63,
+      "target_size": 63,
+      "verified_targets": {
+        "?resize@?$Array@H@G3D@@QAEXH_N@Z": "0x480020 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054ae90",
+      "symbol": "??A?$Array@H@G3D@@QAEAAHH@Z",
+      "folded_symbols": [],
+      "identity": "root: initStatics 00547fa6 on vertexRefCounts (push 0, two asserts)",
+      "exact": true,
+      "size": 32,
+      "target_size": 32,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0054aeb0",
+      "symbol": "??A?$Array@H@G3D@@QAEAAHI@Z",
+      "folded_symbols": [],
+      "identity": "root: allocVertex 00547fd1 / freeVertex 00548686 (one assert: unsigned)",
+      "exact": true,
+      "size": 28,
+      "target_size": 28,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0054b2a0",
+      "symbol": "??0?$vector@GV?$allocator@G@std@@@std@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "root: Mesh() 005485d2 on +0x50 (_Buy 0054c500: 2-byte elements)",
+      "exact": true,
+      "size": 101,
+      "target_size": 101,
+      "verified_targets": {
+        "___security_cookie": "0x965cc0 (external)",
+        "??0?$allocator@G@std@@QAE@XZ": "0x54e310 (own row)",
+        "??0?$_Vector_val@GV?$allocator@G@std@@@std@@IAE@V?$allocator@G@1@@Z": "0x54da40 (own row)",
+        "?_Buy@?$vector@GV?$allocator@G@std@@@std@@IAE_NI@Z": "0x54c500 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$vector@GV?$allocator@G@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0054b310",
+      "symbol": "??1?$vector@GV?$allocator@G@std@@@std@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "root: ~Mesh 00548c12 on +0x50",
+      "exact": true,
+      "size": 83,
+      "target_size": 83,
+      "verified_targets": {
+        "___security_cookie": "0x965cc0 (external)",
+        "?_Tidy@?$vector@GV?$allocator@G@std@@@std@@IAEXXZ": "0x54c580 (own row)",
+        "??1?$_Vector_val@GV?$allocator@G@std@@@std@@QAE@XZ": "0x5411c0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$vector@GV?$allocator@G@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0054bda0",
+      "symbol": "?resize@?$Array@VVector2@G3D@@@G3D@@QAEXH@Z",
+      "folded_symbols": [],
+      "identity": "root: initStatics 00547f82 on texCoordArray 00973934 (push 1)",
+      "exact": true,
+      "size": 27,
+      "target_size": 27,
+      "verified_targets": {
+        "?resize@?$Array@VVector2@G3D@@@G3D@@QAEXH_N@Z": "0x54d160 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054bdc0",
+      "symbol": "?append@?$Array@VVector2@G3D@@@G3D@@QAEXABVVector2@2@@Z",
+      "folded_symbols": [],
+      "identity": "root: allocVertex 0054806b on texCoordArray (recursive aliasing path 0054bdc0)",
+      "exact": true,
+      "size": 255,
+      "target_size": 255,
+      "verified_targets": {
+        "___security_cookie": "0x965cc0 (external)",
+        "??2@YAPAXIPAX@Z": "0x401670 (external (evidence name))",
+        "??0Vector2@G3D@@QAE@ABV01@@Z": "0x411790 (external)",
+        "?inArray@?$Array@VVector2@G3D@@@G3D@@AAE_NPBVVector2@2@@Z": "0x54d120 (own row)",
+        "?append@?$Array@VVector2@G3D@@@G3D@@QAEXABVVector2@2@@Z": "0x54bdc0 (own row)",
+        "?resize@?$Array@VVector2@G3D@@@G3D@@QAEXH_N@Z": "0x54d160 (own row)",
+        "??4Vector2@G3D@@QAEAAV01@ABV01@@Z": "0x411790 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?append@?$Array@VVector2@G3D@@@G3D@@QAEXABVVector2@2@@Z"
+      ]
+    },
+    {
+      "address": "0054bec0",
+      "symbol": "??0?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "root: Mesh() 005485b4 on levels +0xc",
+      "exact": true,
+      "size": 26,
+      "target_size": 26,
+      "verified_targets": {
+        "?init@?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@AAEXHH@Z": "0x54d390 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054bee0",
+      "symbol": "??1?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "root: ~Mesh 00548c30 on levels +0xc",
+      "exact": true,
+      "size": 105,
+      "target_size": 105,
+      "verified_targets": {
+        "??_G?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@QAEPAXI@Z": "0x4d76e0 (external)",
+        "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054bf50",
+      "symbol": "??0?$Array@VEdge@MeshAlg@G3D@@@G3D@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "called by 0054a9f0",
+      "exact": true,
+      "size": 26,
+      "target_size": 26,
+      "verified_targets": {
+        "?init@?$Array@VEdge@MeshAlg@G3D@@@G3D@@AAEXHH@Z": "0x54d3e0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054bfe0",
+      "symbol": "??0?$Array@VFace@MeshAlg@G3D@@@G3D@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "called by 0054a9f0",
+      "exact": true,
+      "size": 26,
+      "target_size": 26,
+      "verified_targets": {
+        "?init@?$Array@VFace@MeshAlg@G3D@@@G3D@@AAEXHH@Z": "0x54d690 (own row)"
+      },
+      "local_eh": []
+    }
+  ],
+  "support_rows_not_counted": [
+    {
+      "address": "005411c0 (counted by render-scene-working.json)",
+      "symbol": "??1?$_Vector_val@GV?$allocator@G@std@@@std@@QAE@XZ",
+      "folded_symbols": [
+        "??1?$_Vector_val@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QAE@XZ"
+      ],
+      "identity": "called by 0054b310",
+      "size": 19,
+      "target_size": 19,
+      "verified_targets": {
+        "??1?$_Container_base_aux_alloc_real@V?$allocator@G@std@@@std@@IAE@XZ": "0x541580 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00541580 (counted by render-scene-working.json)",
+      "symbol": "??1?$_Container_base_aux_alloc_real@V?$allocator@G@std@@@std@@IAE@XZ",
+      "folded_symbols": [],
+      "identity": "called by 005411c0",
+      "size": 94,
+      "target_size": 94,
+      "verified_targets": {
+        "___security_cookie": "0x965cc0 (external)",
+        "?deallocate@?$allocator@V_Aux_cont@std@@@std@@QAEXPAV_Aux_cont@2@I@Z": "0x4dc3e0 (external)",
+        "??1_Container_base_aux@std@@QAE@XZ": "0x47d410 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$_Container_base_aux_alloc_real@V?$allocator@G@std@@@std@@IAE@XZ"
+      ]
+    },
+    {
+      "address": "0054bf70 (counted by app-unit540-2008-working.json)",
+      "symbol": "?size@?$Array@H@G3D@@QBEHXZ",
+      "folded_symbols": [],
+      "identity": "called by 0054ad50",
+      "size": 17,
+      "target_size": 17,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0054c050 (outside the range 00548000..0054c000)",
+      "symbol": "??0?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "root: Mesh() 005485e1 on +0x68 (_Buy 0054d940: 0xc-byte elements)",
+      "size": 101,
+      "target_size": 101,
+      "verified_targets": {
+        "___security_cookie": "0x965cc0 (external)",
+        "??0?$allocator@VVector3@G3D@@@std@@QAE@XZ": "0x54e310 (own row)",
+        "??0?$_Vector_val@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@IAE@V?$allocator@VVector3@G3D@@@1@@Z": "0x54da40 (own row)",
+        "?_Buy@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@IAE_NI@Z": "0x54d940 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0054c0c0 (outside the range 00548000..0054c000)",
+      "symbol": "??1?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "root: ~Mesh 00548c03 on +0x68",
+      "size": 83,
+      "target_size": 83,
+      "verified_targets": {
+        "___security_cookie": "0x965cc0 (external)",
+        "?_Tidy@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@IAEXXZ": "0x54d9c0 (own row)",
+        "??1?$_Vector_val@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QAE@XZ": "0x5411c0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0054c500 (outside the range 00548000..0054c000)",
+      "symbol": "?_Buy@?$vector@GV?$allocator@G@std@@@std@@IAE_NI@Z",
+      "folded_symbols": [],
+      "identity": "called by 0054b2a0",
+      "size": 128,
+      "target_size": 128,
+      "verified_targets": {
+        "?max_size@?$vector@GV?$allocator@G@std@@@std@@QBEIXZ": "0x4dc400 (external)",
+        "?_Xlen@?$vector@GV?$allocator@G@std@@@std@@KAXXZ": "0x4c6d40 (external)",
+        "?allocate@?$allocator@G@std@@QAEPAGI@Z": "0x4dc540 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054c580 (outside the range 00548000..0054c000)",
+      "symbol": "?_Tidy@?$vector@GV?$allocator@G@std@@@std@@IAEXXZ",
+      "folded_symbols": [],
+      "identity": "called by 0054b310",
+      "size": 105,
+      "target_size": 105,
+      "verified_targets": {
+        "?_Destroy@?$vector@GV?$allocator@G@std@@@std@@IAEXPAG0@Z": "0x458e90 (external)",
+        "?deallocate@?$allocator@G@std@@QAEXPAGI@Z": "0x4dc3e0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054d120 (outside the range 00548000..0054c000)",
+      "symbol": "?inArray@?$Array@VVector2@G3D@@@G3D@@AAE_NPBVVector2@2@@Z",
+      "folded_symbols": [],
+      "identity": "called by 0054bdc0",
+      "size": 63,
+      "target_size": 63,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0054d160 (outside the range 00548000..0054c000)",
+      "symbol": "?resize@?$Array@VVector2@G3D@@@G3D@@QAEXH_N@Z",
+      "folded_symbols": [],
+      "identity": "called by 0054bda0",
+      "size": 552,
+      "target_size": 552,
+      "verified_targets": {
+        "___security_cookie": "0x965cc0 (external)",
+        "??_B?3??resize@?$Array@VVector2@G3D@@@G3D@@QAEXH_N@Z@53": "0x9739a0 (external)",
+        "?iMax@G3D@@YAHHH@Z": "0x46fc40 (external (evidence name))",
+        "?minSize@?3??resize@?$Array@VVector2@G3D@@@G3D@@QAEXH_N@Z@4HB": "0x97399c (external)",
+        "?realloc@?$Array@VVector2@G3D@@@G3D@@AAEXH@Z": "0x54ebc0 (own row)",
+        "__real@40400000": "0x81e380 (constant 40400000)",
+        "__real@3fc00000": "0x81e37c (constant 3fc00000)",
+        "__real@40000000": "0x81c434 (constant 40000000)",
+        "__ftol2_sse": "0x6a17f0 (external)",
+        "?iMin@G3D@@YAHHH@Z": "0x46fc30 (external (evidence name))",
+        "??2@YAPAXIPAX@Z": "0x401670 (external (evidence name))",
+        "??0Vector2@G3D@@QAE@XZ": "0x467260 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$?resize@?$Array@VVector2@G3D@@@G3D@@QAEXH_N@Z"
+      ]
+    },
+    {
+      "address": "0054d390 (outside the range 00548000..0054c000)",
+      "symbol": "?init@?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@AAEXHH@Z",
+      "folded_symbols": [],
+      "identity": "called by 0054bec0",
+      "size": 79,
+      "target_size": 79,
+      "verified_targets": {
+        "?resize@?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QAEXH@Z": "0x54ecf0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054d3e0 (outside the range 00548000..0054c000)",
+      "symbol": "?init@?$Array@VEdge@MeshAlg@G3D@@@G3D@@AAEXHH@Z",
+      "folded_symbols": [],
+      "identity": "called by 0054bf50",
+      "size": 79,
+      "target_size": 79,
+      "verified_targets": {
+        "?resize@?$Array@VEdge@MeshAlg@G3D@@@G3D@@QAEXH@Z": "0x54ee10 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054d430 (outside the range 00548000..0054c000)",
+      "symbol": "?resize@?$Array@VEdge@MeshAlg@G3D@@@G3D@@QAEXH_N@Z",
+      "folded_symbols": [],
+      "identity": "called by 0054ee10",
+      "size": 552,
+      "target_size": 552,
+      "verified_targets": {
+        "___security_cookie": "0x965cc0 (external)",
+        "??_B?3??resize@?$Array@VEdge@MeshAlg@G3D@@@G3D@@QAEXH_N@Z@53": "0x9739a8 (external)",
+        "?iMax@G3D@@YAHHH@Z": "0x46fc40 (external (evidence name))",
+        "?minSize@?3??resize@?$Array@VEdge@MeshAlg@G3D@@@G3D@@QAEXH_N@Z@4HB": "0x9739a4 (external)",
+        "?realloc@?$Array@VEdge@MeshAlg@G3D@@@G3D@@AAEXH@Z": "0x54ed10 (own row)",
+        "__real@40400000": "0x81e380 (constant 40400000)",
+        "__real@3fc00000": "0x81e37c (constant 3fc00000)",
+        "__real@40000000": "0x81c434 (constant 40000000)",
+        "__ftol2_sse": "0x6a17f0 (external)",
+        "?iMin@G3D@@YAHHH@Z": "0x46fc30 (external (evidence name))",
+        "??2@YAPAXIPAX@Z": "0x401670 (external (evidence name))",
+        "??0Edge@MeshAlg@G3D@@QAE@XZ": "0x7bae80 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?resize@?$Array@VEdge@MeshAlg@G3D@@@G3D@@QAEXH_N@Z"
+      ]
+    },
+    {
+      "address": "0054d690 (outside the range 00548000..0054c000)",
+      "symbol": "?init@?$Array@VFace@MeshAlg@G3D@@@G3D@@AAEXHH@Z",
+      "folded_symbols": [],
+      "identity": "called by 0054bfe0",
+      "size": 79,
+      "target_size": 79,
+      "verified_targets": {
+        "?resize@?$Array@VFace@MeshAlg@G3D@@@G3D@@QAEXH@Z": "0x54ef40 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054d6e0 (outside the range 00548000..0054c000)",
+      "symbol": "?resize@?$Array@VFace@MeshAlg@G3D@@@G3D@@QAEXH_N@Z",
+      "folded_symbols": [],
+      "identity": "called by 0054ef40",
+      "size": 552,
+      "target_size": 552,
+      "verified_targets": {
+        "___security_cookie": "0x965cc0 (external)",
+        "??_B?3??resize@?$Array@VFace@MeshAlg@G3D@@@G3D@@QAEXH_N@Z@53": "0x9739b0 (external)",
+        "?iMax@G3D@@YAHHH@Z": "0x46fc40 (external (evidence name))",
+        "?minSize@?3??resize@?$Array@VFace@MeshAlg@G3D@@@G3D@@QAEXH_N@Z@4HB": "0x9739ac (external)",
+        "?realloc@?$Array@VFace@MeshAlg@G3D@@@G3D@@AAEXH@Z": "0x54ee30 (own row)",
+        "__real@40400000": "0x81e380 (constant 40400000)",
+        "__real@3fc00000": "0x81e37c (constant 3fc00000)",
+        "__real@40000000": "0x81c434 (constant 40000000)",
+        "__ftol2_sse": "0x6a17f0 (external)",
+        "?iMin@G3D@@YAHHH@Z": "0x46fc30 (external (evidence name))",
+        "??2@YAPAXIPAX@Z": "0x401670 (external (evidence name))",
+        "??0Face@MeshAlg@G3D@@QAE@XZ": "0x7bae60 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?resize@?$Array@VFace@MeshAlg@G3D@@@G3D@@QAEXH_N@Z"
+      ]
+    },
+    {
+      "address": "0054d940 (outside the range 00548000..0054c000)",
+      "symbol": "?_Buy@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@IAE_NI@Z",
+      "folded_symbols": [],
+      "identity": "called by 0054c050",
+      "size": 128,
+      "target_size": 128,
+      "verified_targets": {
+        "?max_size@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QBEIXZ": "0x4dc560 (external)",
+        "?_Xlen@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@KAXXZ": "0x4c6d40 (external)",
+        "?allocate@?$allocator@VVector3@G3D@@@std@@QAEPAVVector3@G3D@@I@Z": "0x4dc570 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054d9c0 (outside the range 00548000..0054c000)",
+      "symbol": "?_Tidy@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@IAEXXZ",
+      "folded_symbols": [],
+      "identity": "called by 0054c0c0",
+      "size": 113,
+      "target_size": 113,
+      "verified_targets": {
+        "?_Destroy@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@IAEXPAVVector3@G3D@@0@Z": "0x458e90 (external)",
+        "?deallocate@?$allocator@VVector3@G3D@@@std@@QAEXPAVVector3@G3D@@I@Z": "0x4dc3e0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054da40 (counted by render-scene-working.json)",
+      "symbol": "??0?$_Vector_val@GV?$allocator@G@std@@@std@@IAE@V?$allocator@G@1@@Z",
+      "folded_symbols": [
+        "??0?$_Vector_val@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@IAE@V?$allocator@VVector3@G3D@@@1@@Z"
+      ],
+      "identity": "called by 0054b2a0",
+      "size": 56,
+      "target_size": 56,
+      "verified_targets": {
+        "??0?$allocator@G@std@@QAE@ABV01@@Z": "0x553220 (own row)",
+        "??0?$_Container_base_aux_alloc_real@V?$allocator@G@std@@@std@@IAE@V?$allocator@G@1@@Z": "0x54ef60 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054e310 (counted by render-scene-working.json)",
+      "symbol": "??0?$allocator@G@std@@QAE@XZ",
+      "folded_symbols": [
+        "??0?$allocator@VVector3@G3D@@@std@@QAE@XZ"
+      ],
+      "identity": "called by 0054b2a0",
+      "size": 14,
+      "target_size": 14,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0054ebc0 (outside the range 00548000..0054c000)",
+      "symbol": "?realloc@?$Array@VVector2@G3D@@@G3D@@AAEXH@Z",
+      "folded_symbols": [],
+      "identity": "called by 0054d160",
+      "size": 298,
+      "target_size": 298,
+      "verified_targets": {
+        "___security_cookie": "0x965cc0 (external)",
+        "?alignedMalloc@System@G3D@@SAPAXII@Z": "0x508580 (external)",
+        "?iMin@G3D@@YAHHH@Z": "0x46fc30 (external (evidence name))",
+        "??2@YAPAXIPAX@Z": "0x401670 (external (evidence name))",
+        "??0Vector2@G3D@@QAE@ABV01@@Z": "0x411790 (external)",
+        "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?realloc@?$Array@VVector2@G3D@@@G3D@@AAEXH@Z"
+      ]
+    },
+    {
+      "address": "0054ecf0 (outside the range 00548000..0054c000)",
+      "symbol": "?resize@?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QAEXH@Z",
+      "folded_symbols": [],
+      "identity": "called by 0054d390",
+      "size": 27,
+      "target_size": 27,
+      "verified_targets": {
+        "?resize@?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QAEXH_N@Z": "0x4dc7e0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054ed10 (outside the range 00548000..0054c000)",
+      "symbol": "?realloc@?$Array@VEdge@MeshAlg@G3D@@@G3D@@AAEXH@Z",
+      "folded_symbols": [],
+      "identity": "called by 0054d430",
+      "size": 255,
+      "target_size": 255,
+      "verified_targets": {
+        "?alignedMalloc@System@G3D@@SAPAXII@Z": "0x508580 (external)",
+        "?iMin@G3D@@YAHHH@Z": "0x46fc30 (external (evidence name))",
+        "??2@YAPAXIPAX@Z": "0x401670 (external (evidence name))",
+        "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054ee10 (outside the range 00548000..0054c000)",
+      "symbol": "?resize@?$Array@VEdge@MeshAlg@G3D@@@G3D@@QAEXH@Z",
+      "folded_symbols": [],
+      "identity": "called by 0054d3e0",
+      "size": 27,
+      "target_size": 27,
+      "verified_targets": {
+        "?resize@?$Array@VEdge@MeshAlg@G3D@@@G3D@@QAEXH_N@Z": "0x54d430 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054ee30 (outside the range 00548000..0054c000)",
+      "symbol": "?realloc@?$Array@VFace@MeshAlg@G3D@@@G3D@@AAEXH@Z",
+      "folded_symbols": [],
+      "identity": "called by 0054d6e0",
+      "size": 267,
+      "target_size": 267,
+      "verified_targets": {
+        "?alignedMalloc@System@G3D@@SAPAXII@Z": "0x508580 (external)",
+        "?iMin@G3D@@YAHHH@Z": "0x46fc30 (external (evidence name))",
+        "??2@YAPAXIPAX@Z": "0x401670 (external (evidence name))",
+        "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054ef40 (outside the range 00548000..0054c000)",
+      "symbol": "?resize@?$Array@VFace@MeshAlg@G3D@@@G3D@@QAEXH@Z",
+      "folded_symbols": [],
+      "identity": "called by 0054d690",
+      "size": 27,
+      "target_size": 27,
+      "verified_targets": {
+        "?resize@?$Array@VFace@MeshAlg@G3D@@@G3D@@QAEXH_N@Z": "0x54d6e0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0054ef60 (counted by render-scene-working.json)",
+      "symbol": "??0?$_Container_base_aux_alloc_real@V?$allocator@G@std@@@std@@IAE@V?$allocator@G@1@@Z",
+      "folded_symbols": [],
+      "identity": "called by 0054da40",
+      "size": 182,
+      "target_size": 182,
+      "verified_targets": {
+        "___security_cookie": "0x965cc0 (external)",
+        "??0_Container_base_aux@std@@QAE@XZ": "0x7188c0 (external)",
+        "??$?0G@?$allocator@V_Aux_cont@std@@@std@@QAE@ABV?$allocator@G@1@@Z": "0x553220 (own row)",
+        "?allocate@?$allocator@V_Aux_cont@std@@@std@@QAEPAV_Aux_cont@2@I@Z": "0x4034a0 (external)",
+        "??2@YAPAXIPAX@Z": "0x401670 (external (evidence name))",
+        "??0_Aux_cont@std@@QAE@QBV_Container_base_aux@1@@Z": "0x6f6a20 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$_Container_base_aux_alloc_real@V?$allocator@G@std@@@std@@IAE@V?$allocator@G@1@@Z"
+      ]
+    },
+    {
+      "address": "00553220 (counted by render-scene-working.json)",
+      "symbol": "??0?$allocator@G@std@@QAE@ABV01@@Z",
+      "folded_symbols": [
+        "??$?0G@?$allocator@V_Aux_cont@std@@@std@@QAE@ABV?$allocator@G@1@@Z"
+      ],
+      "identity": "called by 0054da40",
+      "size": 16,
+      "target_size": 16,
+      "verified_targets": {},
+      "local_eh": []
+    }
+  ],
+  "pending_build_only": [
+    {
+      "address": "00540e80 (pending-build-only, not counted)",
+      "symbol": "?getPointer@?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@QBEPAVLevel@Mesh@RenderBase@RBX@@XZ",
+      "folded_symbols": [],
+      "identity": "called by 00548f80",
+      "size": 16,
+      "target_size": 16,
+      "verified_targets": {},
+      "local_eh": [],
+      "exact": false
+    },
+    {
+      "address": "00547f60 (pending-build-only, not counted)",
+      "symbol": "?initStatics@Mesh@RenderBase@RBX@@KAXXZ",
+      "folded_symbols": [],
+      "identity": "root: Mesh() 005485f5 under the once flag 00973980",
+      "size": 93,
+      "target_size": 93,
+      "verified_targets": {
+        "?visibleGeometry@Mesh@RenderBase@RBX@@2VGeometry@MeshAlg@G3D@@A": "0x9738f0 (external)",
+        "?resize@?$Array@VVector3@G3D@@@G3D@@QAEXH@Z": "0x503100 (external)",
+        "?texCoordArray@Mesh@RenderBase@RBX@@2V?$Array@VVector2@G3D@@@G3D@@A": "0x973934 (external)",
+        "?resize@?$Array@VVector2@G3D@@@G3D@@QAEXH@Z": "0x54bda0 (own row)",
+        "?tangentArray@Mesh@RenderBase@RBX@@2V?$Array@VVector3@G3D@@@G3D@@A": "0x973928 (external)",
+        "?vertexRefCounts@Mesh@RenderBase@RBX@@2V?$Array@H@G3D@@A": "0x9738c4 (external)",
+        "?resize@?$Array@H@G3D@@QAEXH@Z": "0x4806b0 (external)",
+        "??A?$Array@H@G3D@@QAEAAHH@Z": "0x54ae90 (own row)",
+        "?freeList@Mesh@RenderBase@RBX@@2V?$Array@H@G3D@@A": "0x9738ac (external)",
+        "?clear@?$Array@H@G3D@@QAEXXZ": "0x54ad30 (own row)"
+      },
+      "local_eh": [],
+      "exact": false
+    },
+    {
+      "address": "00547fc0 (pending-build-only, not counted)",
+      "symbol": "?allocVertex@Mesh@RenderBase@RBX@@SAIII@Z",
+      "folded_symbols": [],
+      "identity": "root: ViewNew header evidence (static allocVertex(unsigned, unsigned))",
+      "size": 60,
+      "target_size": 60,
+      "verified_targets": {
+        "?vertexRefCounts@Mesh@RenderBase@RBX@@2V?$Array@H@G3D@@A": "0x9738c4 (external)",
+        "??A?$Array@H@G3D@@QAEAAHI@Z": "0x54aeb0 (own row)",
+        "_vertexRefCount": "0x9738a4 (external)"
+      },
+      "local_eh": [],
+      "exact": false
+    },
+    {
+      "address": "00548000 (pending-build-only, not counted)",
+      "symbol": "?allocVertex@Mesh@RenderBase@RBX@@SAIABVVector3@G3D@@0ABVVector2@5@_N@Z",
+      "folded_symbols": [],
+      "identity": "root: LevelBuilder strips 004dcaa0 / 004de360 (4 pushes, add esp 0x10)",
+      "size": 325,
+      "target_size": 325,
+      "verified_targets": {
+        "?varDirty@Mesh@RenderBase@RBX@@2_NA": "0x9738a1 (external)",
+        "?vertexPoolChanged@Mesh@RenderBase@RBX@@2_NA": "0x942ebc (external)",
+        "?freeList@Mesh@RenderBase@RBX@@2V?$Array@H@G3D@@A": "0x9738ac (external)",
+        "?length@?$Array@H@G3D@@QBEHXZ": "0x54ad50 (own row)",
+        "?visibleGeometry@Mesh@RenderBase@RBX@@2VGeometry@MeshAlg@G3D@@A": "0x9738f0 (external)",
+        "?size@?$Array@VVector3@G3D@@@G3D@@QBEHXZ": "0x442cd0 (external)",
+        "?append@?$Array@VVector3@G3D@@@G3D@@QAEXABVVector3@2@@Z": "0x502f50 (external (evidence name))",
+        "?texCoordArray@Mesh@RenderBase@RBX@@2V?$Array@VVector2@G3D@@@G3D@@A": "0x973934 (external)",
+        "?append@?$Array@VVector2@G3D@@@G3D@@QAEXABVVector2@2@@Z": "0x54bdc0 (own row)",
+        "?zero@Vector3@G3D@@SAABV12@XZ": "0x4782a0 (external)",
+        "?tangentArray@Mesh@RenderBase@RBX@@2V?$Array@VVector3@G3D@@@G3D@@A": "0x973928 (external)",
+        "?vertexRefCounts@Mesh@RenderBase@RBX@@2V?$Array@H@G3D@@A": "0x9738c4 (external)",
+        "?append@?$Array@H@G3D@@QAEXABH@Z": "0x54ad70 (own row)",
+        "?pop@?$Array@H@G3D@@QAEH_N@Z": "0x54ae50 (own row)",
+        "??A?$Array@VVector3@G3D@@@G3D@@QAEAAVVector3@1@I@Z": "0x518b80 (external)",
+        "??4Vector3@G3D@@QAEAAV01@ABV01@@Z": "0x514be0 (external)",
+        "??A?$Array@VVector2@G3D@@@G3D@@QAEAAVVector2@1@I@Z": "0x4dc3c0 (external)",
+        "??4Vector2@G3D@@QAEAAV01@ABV01@@Z": "0x411790 (external)",
+        "??A?$Array@H@G3D@@QAEAAHI@Z": "0x54aeb0 (own row)",
+        "_vertexRefCount": "0x9738a4 (external)"
+      },
+      "local_eh": [],
+      "exact": false
+    },
+    {
+      "address": "00548570 (pending-build-only, not counted)",
+      "symbol": "??0Mesh@RenderBase@RBX@@IAE@XZ",
+      "folded_symbols": [],
+      "identity": "root: BrickMesh ctor 004e53c0 / SphereMesh 004fcfb0 (vtable 0082d028)",
+      "size": 204,
+      "target_size": 204,
+      "verified_targets": {
+        "___security_cookie": "0x965cc0 (external)",
+        "??0ReferenceCountedObject@G3D@@IAE@XZ": "0x472990 (external)",
+        "??_7Mesh@RenderBase@RBX@@6B@": "0x82d028 (vtable RTTI .?AVMesh@RenderBase@RBX@@ offset 0x0)",
+        "??0?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QAE@XZ": "0x54bec0 (own row)",
+        "??0ShadowSurface@Mesh@RenderBase@RBX@@QAE@XZ": "0x54a9f0 (own row)",
+        "??0?$vector@GV?$allocator@G@std@@@std@@QAE@XZ": "0x54b2a0 (own row)",
+        "??0?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QAE@XZ": "0x54c050 (own row)",
+        "_init": "0x973980 (external)",
+        "?initStatics@Mesh@RenderBase@RBX@@KAXXZ": "0x547f60 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??0Mesh@RenderBase@RBX@@IAE@XZ"
+      ],
+      "exact": false
+    },
+    {
+      "address": "00548640 (pending-build-only, not counted)",
+      "symbol": "?freeVertex@Mesh@RenderBase@RBX@@SAXI@Z",
+      "folded_symbols": [],
+      "identity": "root: ~Level 00548a1c / strips (1 push, add esp 4)",
+      "size": 159,
+      "target_size": 159,
+      "verified_targets": {
+        "?vertexRefCounts@Mesh@RenderBase@RBX@@2V?$Array@H@G3D@@A": "0x9738c4 (external)",
+        "?getCArray@?$Array@H@G3D@@QAEPAHXZ": "0x71f210 (external)",
+        "?size@?$Array@H@G3D@@QBEHXZ": "0x54bf70 (own row)",
+        "_vertexRefCount": "0x9738a4 (external)",
+        "??A?$Array@H@G3D@@QAEAAHI@Z": "0x54aeb0 (own row)",
+        "?freeList@Mesh@RenderBase@RBX@@2V?$Array@H@G3D@@A": "0x9738ac (external)",
+        "?push@?$Array@H@G3D@@QAEXABH@Z": "0x54ae30 (own row)"
+      },
+      "local_eh": [],
+      "exact": false
+    },
+    {
+      "address": "00548f80 (pending-build-only, not counted)",
+      "symbol": "?detailLevel@Mesh@RenderBase@RBX@@QAE?BV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@M@Z",
+      "folded_symbols": [],
+      "identity": "root: callers 00504290 / 0053f720 / 00547440 (hidden return RCP, float pushed)",
+      "size": 85,
+      "target_size": 85,
+      "verified_targets": {
+        "?detailIndex@Mesh@RenderBase@RBX@@IBEHN@Z": "0x54aca0 (own row)",
+        "??A?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QAEAAV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@1@H@Z": "0x54ae90 (own row)",
+        "?getPointer@?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@QBEPAVLevel@Mesh@RenderBase@RBX@@XZ": "0x540e80 (own row)",
+        "??0?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@QAE@PAVLevel@Mesh@RenderBase@RBX@@@Z": "0x4e6030 (external)"
+      },
+      "local_eh": [],
+      "exact": false
+    },
+    {
+      "address": "00548fe0 (pending-build-only, not counted)",
+      "symbol": "?sendGeometry@Mesh@RenderBase@RBX@@SAXPBVLevel@123@PAVRenderDevice@G3D@@@Z",
+      "folded_symbols": [],
+      "identity": "root: callers 00502370 / 005023e0",
+      "size": 75,
+      "target_size": 75,
+      "verified_targets": {
+        "?varDirty@Mesh@RenderBase@RBX@@2_NA": "0x9738a1 (external)",
+        "?size@?$Array@I@G3D@@QBEHXZ": "0x442cd0 (external)",
+        "??$sendIndices@I@RenderDevice@G3D@@QAEXW4Primitive@01@ABV?$Array@I@1@@Z": "0x5029c0 (external)"
+      },
+      "local_eh": [],
+      "exact": false
+    },
+    {
+      "address": "00549030 (pending-build-only, not counted)",
+      "symbol": "?endRender@Mesh@RenderBase@RBX@@SAXPAVRenderDevice@G3D@@@Z",
+      "folded_symbols": [],
+      "identity": "root: caller 00504bf0",
+      "size": 30,
+      "target_size": 30,
+      "verified_targets": {
+        "?varDirty@Mesh@RenderBase@RBX@@2_NA": "0x9738a1 (external)",
+        "?endIndexedPrimitives@RenderDevice@G3D@@QAEXXZ": "0x4796a0 (external)"
+      },
+      "local_eh": [],
+      "exact": false
+    },
+    {
+      "address": "0054a9c0 (pending-build-only, not counted)",
+      "symbol": "??_GMesh@RenderBase@RBX@@UAEPAXI@Z",
+      "folded_symbols": [],
+      "identity": "root: Mesh vtable 0082d028 slot 0 (emitted with the vtable Mesh() references)",
+      "size": 44,
+      "target_size": 44,
+      "verified_targets": {
+        "??1Mesh@RenderBase@RBX@@UAE@XZ": "0x548a90 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "exact": false
+    },
+    {
+      "address": "0054aca0 (pending-build-only, not counted)",
+      "symbol": "?detailIndex@Mesh@RenderBase@RBX@@IBEHN@Z",
+      "folded_symbols": [],
+      "identity": "called by 00548f80",
+      "size": 66,
+      "target_size": 66,
+      "verified_targets": {
+        "?size@?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QBEHXZ": "0x54bf70 (own row)",
+        "__ftol2_sse": "0x6a17f0 (external)",
+        "?iClamp@G3D@@YAHHHH@Z": "0x46fc10 (external)"
+      },
+      "local_eh": [],
+      "exact": false
+    }
+  ],
+  "exact_function_rows": [
+    "0054a9f0",
+    "0054aa80",
+    "0054ad30",
+    "0054ad50",
+    "0054ad70",
+    "0054ae30",
+    "0054ae50",
+    "0054ae90",
+    "0054aeb0",
+    "0054b2a0",
+    "0054b310",
+    "0054bda0",
+    "0054bdc0",
+    "0054bec0",
+    "0054bee0",
+    "0054bf50",
+    "0054bfe0"
+  ],
+  "rejected": {
+    "detailLevel as `return levels[detailIndex(detail)].getPointer();`": "79 B vs 85 B: the original stores the index in a named local before operator[] (exact with `int index = detailIndex(detail);`)"
+  },
+  "proposals": {
+    "ViewNew/RenderBaseMesh.h (ViewNew / RenderBase owner)": "Add to RBX::RenderBase::Mesh (exact text in out/native-layouts/app-unit548/pending/ViewNew/RenderBaseMesh.h, generated by this recorder): public statics `G3D::MeshAlg::Geometry visibleGeometry` (009738f0: vertexArray resize/append 00503100 / 00502f50, normalArray 009738fc), `G3D::Array<G3D::Vector2> texCoordArray` (00973934; 8-byte elements, resize 0054bda0 / append 0054bdc0), `G3D::Array<G3D::Vector3> tangentArray` (00973928), `G3D::Array<int> vertexRefCounts` (009738c4) and `G3D::Array<int> freeList` (009738ac; 4-byte elements, append 0054ad70 / push 0054ae30 / pop 0054ae50), `bool varDirty` (009738a1; also read by 0045ea5c), `bool vertexPoolChanged` (00942ebc, .data initial 1, set by allocVertex 00548018, tested by RenderScene 007ab54d / 007acb50; the name is descriptive), `static void sendGeometry(const Level*, G3D::RenderDevice*)` 00548fe0 and `static void endRender(G3D::RenderDevice*)` 00549030 (cdecl, 2 / 1 pushes), `const G3D::ReferenceCountedPointer<Level> detailLevel(float)` 00548f80 (non-const: it calls the non-const Array operator[] 0054ae90; hidden return pointer), and protected `static void initStatics()` 00547f60 and `int detailIndex(double) const` 0054aca0 (thiscall, ret 8). The array element types follow the donor RenderLib Mesh.h and match the element sizes; the public statics are read directly by the ViewNew builders (004dcaa6 / 004dcab6 / 004e2edf). With them, 10 rows (8 in this range) are exact in the pending build; the bodies are in native-classes/AppUnit548Mesh.cpp under NATIVE_APPUNIT548_PENDING.",
+    "Ogre owner, FYI": "~Mesh 00548a90, Level release 005486e0 and ~Level 005489b0 also need the exe-local Ogre sub-mesh class (deleting dtor 0054ac70 -> 006824e0, see the ogre-visual-engine / rbx-entity proposals), the sub-mesh name map holder (accessor 0054ab40 via boost::call_once 00557330, initialiser 0054ab60, mutex at +0x24, std::map with operator[] 0054b3a0 / find 0054bd00 / erase 0054b520) and a static Ogre::MeshPtr 009738b8 plus a static counter 009738a8.",
+    "BOUNDS": "none new."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit. Pending-build rows are exact=false and not counted."
+}

@@ -1005,8 +1005,8 @@ def _fetch(name):
     if r.get("generate"):  # deterministic generated sources: same files on every machine
         folder.mkdir(parents=True, exist_ok=True)
         for fname, text in r["generate"]().items():
-            if not (folder / fname).exists() or (folder / fname).read_text() != text:
-                (folder / fname).write_text(text)
+            if not (folder / fname).exists() or (folder / fname).read_text(encoding="utf-8", errors="replace") != text:
+                (folder / fname).write_text(text, encoding="utf-8")
         return folder
     if not folder.exists() and "url" not in r and bundle_has(r["src"]):
         bundle_fetch([r["src"].split("/")[0]])
@@ -1048,10 +1048,10 @@ def _fetch(name):
             shutil.copyfile(folder / src, folder / dst)
     for rel, text in [*r.get("write", {}).items(),       # small generated files (e.g. XTP's StdAfx.h)
                       *generated_units().get(r["src"], {}).items()]:  # agent-written units stored sources use
-        if (folder / rel).exists() and (folder / rel).read_text() == text:
+        if (folder / rel).exists() and (folder / rel).read_text(encoding="utf-8", errors="replace") == text:
             continue
         (folder / rel).parent.mkdir(parents=True, exist_ok=True)
-        (folder / rel).write_text(text)
+        (folder / rel).write_text(text, encoding="utf-8")
     return folder
 
 # Translation units written by matching work (roc_fork_*, roc_client_*, ...) live inside a

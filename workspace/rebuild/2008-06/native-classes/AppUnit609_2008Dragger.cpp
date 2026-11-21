@@ -11,16 +11,35 @@
 // the moved vector is finite and the intersection test keeps the same answer; a Gross search hands over to the
 // Fine search in the opposite direction).
 // Codegen analog: the recorder proves each body against the bytes; names follow the donor declarations.
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded
 #include "tool/Dragger.h"
 #include "v8world/ContactManager.h"
 #include "util/Math.h"
+#include "v8world/Primitive.h"
 
 namespace RBX
 {
 	G3D::Vector3 Dragger::toGrid(const G3D::Vector3& v)
 	{
 		return Math::toGrid(v, dragSnap());
+	}
+
+	// 00610070 (?computeExtents@Dragger@RBX@@SA?AVExtents@2@ABV?$Array@PAVPrimitive@RBX@@@G3D@@@Z, inside this unit's
+	// range between toGrid 0060fea0 and intersectingWorldOrOthers 00610130). Extents::negativeInfiniteExtents 00583920
+	// copied into the result, then per primitive: Primitive geometry (+0x9c) gridSize (+4) times 0.5f (00819bac), the
+	// Extents(-half, half) local, Primitive::getCoordinateFrame 005e82c0, Extents::toWorldSpace 0060fc20 and
+	// Extents::unionWith 0057dee0. Same shape as the std::vector overload in DragPrimitiveBounds.cpp.
+	Extents Dragger::computeExtents(const G3D::Array<Primitive*>& primitives)
+	{
+		Extents result = Extents::negativeInfiniteExtents();
+		for (int i = 0; i < primitives.size(); ++i)
+		{
+			Primitive* primitive = primitives[i];
+			G3D::Vector3 half = primitive->getGeometry()->getGridSize() * 0.5f;
+			Extents world = Extents(-half, half).toWorldSpace(primitive->getCoordinateFrame());
+			result.unionWith(world);
+		}
+		return result;
 	}
 
 	__declspec(noinline) bool Dragger::intersectingWorldOrOthers(const G3D::Array<Primitive*>& primitives, ContactManager& contactManager)

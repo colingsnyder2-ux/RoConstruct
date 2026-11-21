@@ -14,6 +14,8 @@
 // World::update 005e9520, insertContact 005e9260 and destroyContact 005e9280 (called by getHit 0060d6e0, onNewPair
 // 0060d8b0 and onPrimitiveGeometryTypeChanged 0060d8e0) are declared by the native World2008.h.
 #include "v8world/World2008.h"
+// SpatialHash::onPrimitiveExtentsChanged 0065abd0 for the 0060cc50 forwarder.
+#include "v8world/SpatialHash2008.h"
 
 // G3D vendor template members the original emits in this unit (evidence names 0060cfd0 / 0060d0d0).
 template void G3D::Array<RBX::Contact*>::resize(int, bool);
@@ -21,6 +23,13 @@ template void G3D::Array<RBX::Contact*>::append(RBX::Contact* const&);
 
 namespace RBX
 {
+	// 0060cc50 (registry func_0060cc50; donor ContactManager::onPrimitiveExtentsChanged): `mov ecx, [ecx]` (spatialHash
+	// +0x0) and a tail jump to SpatialHash::onPrimitiveExtentsChanged 0065abd0; callers World 005e91c0 / 005e91d0.
+	void ContactManager::onPrimitiveExtentsChanged(Primitive* p)
+	{
+		spatialHash->onPrimitiveExtentsChanged(p);
+	}
+
 	// 0060d630
 	bool ContactManager::intersectingOthers(Primitive* check, const std::set<Primitive*>& checkSet, float overlapIgnored)
 	{

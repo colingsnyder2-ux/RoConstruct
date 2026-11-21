@@ -1,0 +1,596 @@
+{
+  "class": "RBX Workspace.cpp descriptors / stats items and FileSystem.cpp rows of the application range 005a4000..005a8000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "workspace": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/U_RELEASEASSERT"
+    ],
+    "stats": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/U_RELEASEASSERT"
+    ],
+    "filesystem": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/native-classes/AppUnit5A4WorkspaceReflection.cpp": "82f74eb0eb29025011b192c3b0b692a3f72f7c643f314b5b426f71281de1a4ff",
+    "rebuild/2008-06/native-classes/AppUnit5A4StatsItems.cpp": "f472510852269a284fe5c000fbd0e788b1a74485adc2ba6de021655a88e91dc7",
+    "rebuild/2008-06/native-classes/FileSystem.cpp": "51b0f57f815205374dcb9820b2ac940e3ab5703cf91ed1645c46c98688a0e6c1",
+    "rebuild/2008-06/tests/record_native_app_unit5a4.py": "4bb2d3ae93218bc547dcb11e61b85ac5829b57ba24693c067db7111582b6a76b",
+    "rebuild/2008-06/native-headers/v8datamodel/Workspace.h": "5afc998f6d79228204df3165543daa9f840fd1b52932608164f74adb4513527a",
+    "rebuild/2008-06/native-headers/v8datamodel/Camera.h": "7a5af8721ced8ad91985c566ace4c548ddee5b752d4102ab66ceca431fb786b2",
+    "rebuild/2008-06/native-headers/reflection/reflection.h": "40c3aa4516e701059368d929ff88049b0c2ec12aad84ce568690d3bf21037313",
+    "rebuild/2008-06/native-headers/stats/Stats.h": "902bb2c6304dd935af5de9e1dc151a2d84337e103d49e860b57ca26f37b8152c",
+    "rebuild/2008-06/native-headers/util/FileSystem.h": "da515e6de396dd2edbdc46ba5b681a1bb8bbce2d0ed867a9dbfb18618dcb901b"
+  },
+  "objects": {
+    "workspace": "3b9f30b27a7494cc264709511814fae67ccb6ae82bf146d4431efa1e2456fdad",
+    "stats": "2e0d3af872434c6790646acd26bd982b59710820661f9b64492697930e262eba",
+    "filesystem": "faeacc82147cb96596fc77dc599d439a6256ab6ca9c020addc8738b87d1d3568"
+  },
+  "unit_map": {
+    "workspace tail 005a4000..005a67ef": "v8datamodel/Workspace.cpp, continued from app-unit5a0 (unit 005a0090..). Evidence: the static initializers 007f4d60..007f4ea0 (\"InsertContent\", \"MakeJoints\" / \"BreakJoints\" with \"objects\", \"SetPhysicsThrottleEnabled\" with \"value\", \"ZoomToExtents\", \"CurrentCamera\" / \"Data\") call the BoundFuncDesc<Workspace, ...> constructors 005a4420 / 005a46a0 / 005a4860 / 005a4a00 (vtables of RTTI .?AV?$BoundFuncDesc@VWorkspace@RBX@@..., e.g. 00833e00) and the RefPropDescriptor<Workspace, Camera> constructor 005a3be0; the execute / call bodies 005a44d0..005a4a80 (\"bad cast\"); TypedStatsItem<double / float> update 005a4020 / 005a4160 (vtables 00833b9c / 00833c64 slot 16) and their function0 constructors 005a4190 / 005a4050; the shared_ptr / create helpers 005a4af0 / 005a4bd0 / 005a4cb0 and the createChildItem-style templates 005a52c0 / 005a5430 / 005a55a0 called only by WorkspaceStatsItem() 005a5c90 (\"Workspace\", \"Environment Speed %\", \"Physics CPU %\", \"Render CPU %\"); Creatable<Instance>::create<WorkspaceStatsItem> 005a6620 (malloc 0x158) and onServiceProvider 005a66b0 (its only caller is the vtable); setCamera 005a5200 (+0x3fc currentCamera, raisePropertyChanged of the CurrentCamera descriptor), the camera helper 005a5710 (findFirstChildOfType<Camera> 005a15c0, clone of cameraTemplate +0x404, setCamera), 005a5890 (camera-walk over the children, caller 00581bc0), render3dAdorn 005a59e0. The DescribedNonCreatable thunks 005a43e0..005a4410 / DescribedNonCreatable() 005a4280 are counted by app-unit5a0-2008, Workspace() 005a4d90 by the workspace-lifetime receipts, 005a4140 / 005a4150 / 005a6610 by stats-service, 005a4680 by humanoid2008.",
+    "boost-thread (library) 005a67f0..005a6baf": "boost 1.34.1 thread library code compiled into the exe: barrier destructor 005a67f0 (condition 005f1c70, mutex 00594cb0), thread handle close / join 005a6840 / 005a6850 (CloseHandle, WaitForSingleObject), sleep 005a6870 (xtime_get 005a6b40, GetSystemTimeAsFileTime), barrier::wait 005a6900, thread_proxy / thread start helpers 005a6990 / 005a69f0, the lock_error throw 005a6a80 (00568430, called from several units). Library code, never recovered.",
+    "log 005a6bb0..005a6fcf": "Log.cpp (native leaves2008/Log2008.h), counted by leaves2008-working.json.",
+    "boost-thread-tss (library) 005a6fd0..005a776f": "boost.thread thread_specific_ptr / tss support (TlsAlloc / TlsGetValue / TlsSetValue / TlsFree, lock_error); library code, never recovered (same map as app-unit5a0).",
+    "filesystem 005a7770..005a80cf": "util/FileSystem.cpp: ~VistaAPIs 005a7770 (FreeLibrary), VistaAPIs::GetIntegrity 005a7780, FileSystem::getUserAppDataDirectory 005a7ac0, FileSystem::getCacheDirectory 005a7ea0 (built here from the committed native-classes/FileSystem.cpp, read-only, and counted). The ATL CStringT<char> template instances 005a7890 (operator=(const wchar_t*)), 005a7920 (CSimpleStringT::Append(const char*, int)), 005a79e0 (CStringT(const wchar_t*)) and 005a7a80 (operator+=(const char*)) are ATL library code (005a79e0 / 005a7a80 are also called from 005f8b60 / 005f9c30); they are compiled here, exact at their addresses, and used only as support bodies. The committed inactive trial receipts filesystem-trial.json / content-cache-directory-trial.json carry no counted rows; their bodies match the ones built here."
+  },
+  "unit_rows": {
+    "workspace tail": {
+      "rows": 36,
+      "span": "0x5a4020..0x5a66b0"
+    },
+    "boost-thread (library)": {
+      "rows": 9,
+      "span": "0x5a67f0..0x5a6b40"
+    },
+    "log": {
+      "rows": 8,
+      "span": "0x5a6bb0..0x5a6fb0"
+    },
+    "boost-thread-tss (library)": {
+      "rows": 14,
+      "span": "0x5a6fd0..0x5a774b"
+    },
+    "filesystem": {
+      "rows": 8,
+      "span": "0x5a7770..0x5a7ea0"
+    }
+  },
+  "range_rows_total": 75,
+  "range_rows_counted_by_other_receipts": [
+    "005a4140 counted by stats-service-working.json",
+    "005a4150 counted by stats-service-working.json",
+    "005a4280 counted by app-unit5a0-2008-working.json",
+    "005a43e0 counted by app-unit5a0-2008-working.json",
+    "005a43f0 counted by app-unit5a0-2008-working.json",
+    "005a4400 counted by app-unit5a0-2008-working.json",
+    "005a4410 counted by app-unit5a0-2008-working.json",
+    "005a4680 counted by humanoid2008-working.json",
+    "005a4d90 counted by workspace-lifetime-profiler-notifier-variant.json, workspace-lifetime-profiler-variant.json, workspace-shared-lifetime-trial.json",
+    "005a6610 counted by stats-service-working.json",
+    "005a6bb0 counted by leaves2008-working.json",
+    "005a6bc0 counted by leaves2008-working.json",
+    "005a6c60 counted by leaves2008-working.json",
+    "005a6d10 counted by leaves2008-working.json",
+    "005a6da0 counted by leaves2008-working.json",
+    "005a6e60 counted by leaves2008-working.json",
+    "005a6ef0 counted by leaves2008-working.json",
+    "005a6fb0 counted by leaves2008-working.json"
+  ],
+  "rows": [
+    {
+      "address": "005a4020",
+      "unit": "stats",
+      "symbol": "?update@?$TypedStatsItem@N@Stats@RBX@@MAEXXZ",
+      "size": 38,
+      "target_size": 38,
+      "exact": true,
+      "verified_targets": {
+        "??R?$function0@NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QBENXZ": "0x42afc0 (support body exact at the bound address (not counted here))",
+        "??$formatValue@N@Item@Stats@RBX@@QAEXABN@Z": "0x5c90b0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005a4160",
+      "unit": "stats",
+      "symbol": "?update@?$TypedStatsItem@M@Stats@RBX@@MAEXXZ",
+      "size": 34,
+      "target_size": 34,
+      "exact": true,
+      "verified_targets": {
+        "??R?$function0@MV?$allocator@Vfunction_base@boost@@@std@@@boost@@QBEMXZ": "0x42afc0 (support body exact at the bound address (not counted here))",
+        "??$formatValue@M@Item@Stats@RBX@@QAEXABM@Z": "0x5c90e0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005a4420",
+      "unit": "workspace",
+      "symbol": "??0?$BoundFuncDesc@VWorkspace@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@VContentId@2@@Z$00@Reflection@RBX@@QAE@P8Workspace@2@AE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@VContentId@2@@ZPBD2W4Security@FunctionDescriptor@12@@Z",
+      "size": 166,
+      "target_size": 166,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VWorkspace@RBX@@$1?sWorkspace@2@3PADAV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5a3b70 (support body exact at the bound address (not counted here))",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VWorkspace@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@VContentId@2@@Z$00@Reflection@RBX@@6B@": "0x833e00 (vtable RTTI .?AV?$BoundFuncDesc@VWorkspace@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@VContentId@2@@Z$00@Reflection@RBX@@ offset 0x0)",
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+        "??$singleton@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cb50 (external (evidence name))",
+        "??$singleton@VContentId@RBX@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cd80 (external)",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VWorkspace@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@VContentId@2@@Z$00@Reflection@RBX@@QAE@P8Workspace@2@AE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@VContentId@2@@ZPBD2W4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005a44d0",
+      "unit": "workspace",
+      "symbol": "??$call@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@?$BoundFuncDesc@VWorkspace@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@VContentId@2@@Z$00@Reflection@RBX@@ABEXPAVWorkspace@2@AAVValue@12@1@Z",
+      "size": 210,
+      "target_size": 210,
+      "exact": true,
+      "verified_targets": {
+        "??$convert@VContentId@RBX@@@Value@Reflection@RBX@@QAEAAVContentId@2@XZ": "0x56eff0 (external (evidence name))",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "??$singleton@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cb50 (external (evidence name))",
+        "??$?4V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@any@boost@@QAEAAV01@ABV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@1@@Z": "0x49b6b0 (support body exact at the bound address (not counted here))"
+      },
+      "local_eh": [
+        "__ehhandler$??$call@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@?$BoundFuncDesc@VWorkspace@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@VContentId@2@@Z$00@Reflection@RBX@@ABEXPAVWorkspace@2@AAVValue@12@1@Z"
+      ]
+    },
+    {
+      "address": "005a45b0",
+      "unit": "workspace",
+      "symbol": "?execute@?$BoundFuncDesc@VWorkspace@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@VContentId@2@@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 206,
+      "target_size": 206,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVWorkspace@RBX@@@8": "0x9481b8 (RTTI .?AVWorkspace@RBX@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (static data (one address per symbol))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??$call@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@?$BoundFuncDesc@VWorkspace@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@VContentId@2@@Z$00@Reflection@RBX@@ABEXPAVWorkspace@2@AAVValue@12@1@Z": "0x5a44d0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?execute@?$BoundFuncDesc@VWorkspace@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@VContentId@2@@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+      ]
+    },
+    {
+      "address": "005a46a0",
+      "unit": "workspace",
+      "symbol": "??0?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z$00@Reflection@RBX@@QAE@P8Workspace@2@AEXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@ZPBD2W4Security@FunctionDescriptor@12@@Z",
+      "size": 166,
+      "target_size": 166,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VWorkspace@RBX@@$1?sWorkspace@2@3PADAV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5a3b70 (support body exact at the bound address (not counted here))",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z$00@Reflection@RBX@@6B@": "0x833e0c (vtable RTTI .?AV?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z$00@Reflection@RBX@@ offset 0x0)",
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+        "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (external (evidence name))",
+        "??$singleton@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cb50 (external (evidence name))",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z$00@Reflection@RBX@@QAE@P8Workspace@2@AEXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@ZPBD2W4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005a4860",
+      "unit": "workspace",
+      "symbol": "??0?$BoundFuncDesc@VWorkspace@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@QAE@P8Workspace@2@AEX_N@ZPBD2W4Security@FunctionDescriptor@12@@Z",
+      "size": 166,
+      "target_size": 166,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VWorkspace@RBX@@$1?sWorkspace@2@3PADAV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5a3b70 (support body exact at the bound address (not counted here))",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VWorkspace@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@6B@": "0x833e18 (vtable RTTI .?AV?$BoundFuncDesc@VWorkspace@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@ offset 0x0)",
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+        "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (external (evidence name))",
+        "??$singleton@_N@Type@Reflection@RBX@@SAABV012@XZ": "0x56cc30 (external (evidence name))",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VWorkspace@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@QAE@P8Workspace@2@AEX_N@ZPBD2W4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005a4910",
+      "unit": "workspace",
+      "symbol": "?execute@?$BoundFuncDesc@VWorkspace@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 229,
+      "target_size": 229,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVWorkspace@RBX@@@8": "0x9481b8 (RTTI .?AVWorkspace@RBX@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (static data (one address per symbol))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??$convert@_N@Value@Reflection@RBX@@QAEAA_NXZ": "0x56ebb0 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$?execute@?$BoundFuncDesc@VWorkspace@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+      ]
+    },
+    {
+      "address": "005a4a00",
+      "unit": "workspace",
+      "symbol": "??0?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8Workspace@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+      "size": 115,
+      "target_size": 115,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VWorkspace@RBX@@$1?sWorkspace@2@3PADAV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5a3b70 (support body exact at the bound address (not counted here))",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@6B@": "0x833e24 (vtable RTTI .?AV?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@ offset 0x0)",
+        "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8Workspace@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005a4a80",
+      "unit": "workspace",
+      "symbol": "?execute@?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 101,
+      "target_size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVWorkspace@RBX@@@8": "0x9481b8 (RTTI .?AVWorkspace@RBX@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (static data (one address per symbol))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005a5200",
+      "unit": "workspace",
+      "symbol": "?setCamera@Workspace@RBX@@QAEXPAVCamera@2@@Z",
+      "size": 178,
+      "target_size": 178,
+      "exact": true,
+      "verified_targets": {
+        "??$shared_from@VCamera@RBX@@@RBX@@YA?AV?$shared_ptr@VCamera@RBX@@@boost@@PAVCamera@0@@Z": "0x618a40 (support body exact at the bound address (not counted here))",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (support body exact at the bound address (not counted here))",
+        "_currentCameraProxyProp": "0x9769d8 (static data (one address per symbol))",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$?setCamera@Workspace@RBX@@QAEXPAVCamera@2@@Z"
+      ]
+    },
+    {
+      "address": "005a7770",
+      "unit": "filesystem",
+      "symbol": "??1VistaAPIs@RBX@@QAE@XZ",
+      "size": 15,
+      "target_size": 15,
+      "exact": true,
+      "verified_targets": {
+        "__imp__FreeLibrary@4": "0x8021a0 (kernel32.dll!FreeLibrary)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005a7780",
+      "unit": "filesystem",
+      "symbol": "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+      "size": 263,
+      "target_size": 263,
+      "exact": true,
+      "verified_targets": {
+        "_memset": "0x6a1704 (msvcr90.dll!memset)",
+        "__imp__GetVersionExA@4": "0x80219c (kernel32.dll!GetVersionExA)",
+        "__imp__GetCurrentProcess@0": "0x8021e4 (kernel32.dll!GetCurrentProcess)",
+        "__imp__OpenProcessToken@12": "0x802030 (advapi32.dll!OpenProcessToken)",
+        "__imp__GetTokenInformation@20": "0x802000 (advapi32.dll!GetTokenInformation)",
+        "__imp__GetLastError@0": "0x8022d8 (kernel32.dll!GetLastError)",
+        "__imp__LocalAlloc@8": "0x8022b0 (kernel32.dll!LocalAlloc)",
+        "__imp__GetSidSubAuthorityCount@4": "0x802038 (advapi32.dll!GetSidSubAuthorityCount)",
+        "__imp__GetSidSubAuthority@8": "0x80203c (advapi32.dll!GetSidSubAuthority)",
+        "__imp__LocalFree@4": "0x802274 (kernel32.dll!LocalFree)",
+        "__imp__CloseHandle@4": "0x802234 (kernel32.dll!CloseHandle)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005a7ac0",
+      "unit": "filesystem",
+      "symbol": "?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z",
+      "size": 992,
+      "target_size": 992,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0M@LNAMDANG@Shell32?4dll?$AA@": "0x834224 (literal 'Shell32.dll')",
+        "__imp__LoadLibraryA@4": "0x8021cc (kernel32.dll!LoadLibraryA)",
+        "??_C@_0BF@OMOLCJCE@SHGetKnownFolderPath?$AA@": "0x83420c (literal 'SHGetKnownFolderPath')",
+        "__imp__GetProcAddress@8": "0x8021c0 (kernel32.dll!GetProcAddress)",
+        "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z": "0x5a7780 (own row)",
+        "??_C@_1EO@LHHCNAEB@?$AA?$HL?$AAA?$AA5?$AA2?$AA0?$AAA?$AA1?$AAA?$AA4?$AA?9?$AA1?$AA7?$AA8?$AA0?$AA?9?$AA4?$AAF?$AAF?$AA6?$AA?9?$AAB?$AAD?$AA1?$AA8?$AA?9?$AA1?$AA6?$AA7?$AA3?$AA4?$AA3?$AAC@": "0x834298 (wide literal '{A520A1A4-1780-4FF6-BD18-167343C5AF16}')",
+        "??_C@_1EO@FDMDPONF@?$AA?$HL?$AAF?$AA1?$AAB?$AA3?$AA2?$AA7?$AA8?$AA5?$AA?9?$AA6?$AAF?$AAB?$AAA?$AA?9?$AA4?$AAF?$AAC?$AAF?$AA?9?$AA9?$AAD?$AA5?$AA5?$AA?9?$AA7?$AAB?$AA8?$AAE?$AA7?$AAF?$AA1@": "0x834248 (wide literal '{F1B32785-6FBA-4FCF-9D55-7B8E7F157091}')",
+        "__imp__CLSIDFromString@8": "0x804134 (ole32.dll!CLSIDFromString)",
+        "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PB_W@Z": "0x5a79e0 (support body exact at the bound address (not counted here))",
+        "__imp__CoTaskMemFree@4": "0x804114 (ole32.dll!CoTaskMemFree)",
+        "??_C@_08NBDKGJHM@?2Roblox?2?$AA@": "0x834238 (literal '\\\\Roblox\\\\')",
+        "?Append@?$CSimpleStringT@D$0A@@ATL@@QAEXPBDH@Z": "0x5a7920 (support body exact at the bound address (not counted here))",
+        "__imp__GetLastError@0": "0x8022d8 (kernel32.dll!GetLastError)",
+        "__imp__CreateDirectoryA@8": "0x8022b4 (kernel32.dll!CreateDirectoryA)",
+        "??_C@_00CNPNBAHC@?$AA@": "0x80b716 (literal '')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??1?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@XZ": "0x55d760 (support body exact at the bound address (not counted here))",
+        "__imp__FreeLibrary@4": "0x8021a0 (kernel32.dll!FreeLibrary)",
+        "??Y?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAEAAV01@PBD@Z": "0x5a7a80 (support body exact at the bound address (not counted here))",
+        "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PBD@Z": "0x55ee20 (support body exact at the bound address (not counted here))",
+        "?AddBackslash@?$CPathT@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@ATL@@QAEXXZ": "0x55dee0 (support body exact at the bound address (not counted here))",
+        "??_C@_07MGHHBANJ@Roblox?2?$AA@": "0x834230 (literal 'Roblox\\\\')",
+        "__imp_??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "0x802448 (msvcp90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z)",
+        "?g_strmgr@ATL@@3VCAtlStringMgr@1@A": "0x97f2ec (static data (one address per symbol))",
+        "?PrepareWrite2@?$CSimpleStringT@D$0A@@ATL@@AAEXH@Z": "0x407400 (support body exact at the bound address (not counted here))",
+        "__imp__SHGetFolderPathAndSubDirA@24": "0x802af4 (shell32.dll!SHGetFolderPathAndSubDirA)",
+        "__imp__strnlen": "0x802870 (msvcr90.dll!strnlen)",
+        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000 (external (evidence name))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z"
+      ]
+    },
+    {
+      "address": "005a7ea0",
+      "unit": "filesystem",
+      "symbol": "?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+      "size": 548,
+      "target_size": 548,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0M@LNAMDANG@Shell32?4dll?$AA@": "0x834224 (literal 'Shell32.dll')",
+        "__imp__LoadLibraryA@4": "0x8021cc (kernel32.dll!LoadLibraryA)",
+        "??_C@_0BF@OMOLCJCE@SHGetKnownFolderPath?$AA@": "0x83420c (literal 'SHGetKnownFolderPath')",
+        "__imp__GetProcAddress@8": "0x8021c0 (kernel32.dll!GetProcAddress)",
+        "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z": "0x5a7780 (own row)",
+        "??_C@_1EM@EBDJCMBA@?$AA?$HL?$AA3?$AA5?$AA2?$AA4?$AA8?$AA1?$AAE?$AA8?$AA?9?$AA3?$AA3?$AAB?$AAE?$AA?9?$AA4?$AA2?$AA5?$AA1?$AA?9?$AAB?$AAA?$AA8?$AA5?$AA?9?$AA6?$AA0?$AA0?$AA7?$AAC?$AAA?$AAE@": "0x8342f8 (wide literal '{352481E8-33BE-4251-BA85-6007CAEDCF9D')",
+        "__imp__CLSIDFromString@8": "0x804134 (ole32.dll!CLSIDFromString)",
+        "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PB_W@Z": "0x5a79e0 (support body exact at the bound address (not counted here))",
+        "__imp__CoTaskMemFree@4": "0x804114 (ole32.dll!CoTaskMemFree)",
+        "??_C@_08NBDKGJHM@?2Roblox?2?$AA@": "0x834238 (literal '\\\\Roblox\\\\')",
+        "?Append@?$CSimpleStringT@D$0A@@ATL@@QAEXPBDH@Z": "0x5a7920 (support body exact at the bound address (not counted here))",
+        "__imp__CreateDirectoryA@8": "0x8022b4 (kernel32.dll!CreateDirectoryA)",
+        "__imp__GetLastError@0": "0x8022d8 (kernel32.dll!GetLastError)",
+        "??_C@_00CNPNBAHC@?$AA@": "0x80b716 (literal '')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??1?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@XZ": "0x55d760 (support body exact at the bound address (not counted here))",
+        "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PBD@Z": "0x55ee20 (support body exact at the bound address (not counted here))",
+        "?AddBackslash@?$CPathT@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@ATL@@QAEXXZ": "0x55dee0 (support body exact at the bound address (not counted here))",
+        "??_C@_0N@ECKBDPAC@Roblox?2Cache?$AA@": "0x8342e8 (literal 'Roblox\\\\Cache')",
+        "__imp__SHGetFolderPathAndSubDirA@24": "0x802af4 (shell32.dll!SHGetFolderPathAndSubDirA)",
+        "__imp__FreeLibrary@4": "0x8021a0 (kernel32.dll!FreeLibrary)"
+      },
+      "local_eh": [
+        "__ehhandler$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z"
+      ]
+    }
+  ],
+  "row_identity": {
+    "005a4420": [
+      "static initializer 0x7f4d60 (InsertContent) calls this constructor"
+    ],
+    "005a46a0": [
+      "static initializer 0x7f4da0 (objects / MakeJoints) calls this constructor",
+      "static initializer 0x7f4de0 (objects / BreakJoints) calls this constructor"
+    ],
+    "005a4860": [
+      "static initializer 0x7f4e20 (value / SetPhysicsThrottleEnabled) calls this constructor"
+    ],
+    "005a4a00": [
+      "static initializer 0x7f4e60 (ZoomToExtents) calls this constructor"
+    ],
+    "005a4020": "slot 16 (update) of the vtable 0x833b9c (RTTI .?AV?$TypedStatsItem@N@Stats@RBX@@)",
+    "005a4160": "slot 16 (update) of the vtable 0x833c64 (RTTI .?AV?$TypedStatsItem@M@Stats@RBX@@)",
+    "005a5200": "pushes the CurrentCamera RefPropDescriptor object built by the static initializer 0x7f4ea0 (\"Data\", \"CurrentCamera\") before Instance::raisePropertyChanged; the initializer also passes 005a5200 itself as the setter (mov ecx, 0x5a5200 at 007f4eab) and constructs the descriptor at 0x9769d8 through 005a3be0"
+  },
+  "support_bodies": {
+    "??R?$function0@NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QBENXZ": "0x42afc0 (support body exact at the bound address, not counted here)",
+    "??R?$function0@MV?$allocator@Vfunction_base@boost@@@std@@@boost@@QBEMXZ": "0x42afc0 (support body exact at the bound address, not counted here)",
+    "?classDescriptor@?$Described@VWorkspace@RBX@@$1?sWorkspace@2@3PADAV?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5a3b70 (support body exact at the bound address, not counted here)",
+    "??$?4V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@any@boost@@QAEAAV01@ABV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@1@@Z": "0x49b6b0 (support body exact at the bound address, not counted here)",
+    "??$shared_from@VCamera@RBX@@@RBX@@YA?AV?$shared_ptr@VCamera@RBX@@@boost@@PAVCamera@0@@Z": "0x618a40 (support body exact at the bound address, not counted here)",
+    "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (support body exact at the bound address, not counted here)",
+    "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PB_W@Z": "0x5a79e0 (support body exact at the bound address, not counted here)",
+    "?Append@?$CSimpleStringT@D$0A@@ATL@@QAEXPBDH@Z": "0x5a7920 (support body exact at the bound address, not counted here)",
+    "??1?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@XZ": "0x55d760 (support body exact at the bound address, not counted here)",
+    "??Y?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAEAAV01@PBD@Z": "0x5a7a80 (support body exact at the bound address, not counted here)",
+    "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PBD@Z": "0x55ee20 (support body exact at the bound address, not counted here)",
+    "?AddBackslash@?$CPathT@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@ATL@@QAEXXZ": "0x55dee0 (support body exact at the bound address, not counted here)",
+    "?PrepareWrite2@?$CSimpleStringT@D$0A@@ATL@@AAEXH@Z": "0x407400 (support body exact at the bound address, not counted here)"
+  },
+  "local_statics": {
+    "?g_strmgr@ATL@@3VCAtlStringMgr@1@A": "0x97f2ec",
+    "__TI2?AVbad_cast@std@@": "0x8d362c",
+    "_currentCameraProxyProp": "0x9769d8"
+  },
+  "vtables_current_headers": {
+    "??_7?$BoundFuncDesc@VWorkspace@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@VContentId@2@@Z$00@Reflection@RBX@@6B@": {
+      "address": "0x833e00",
+      "compiled_slots": 2,
+      "checked_own_slots": [
+        "1 ?execute@?$BoundFuncDesc@VWorkspace@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$v = 0x5a45b0 (own row)"
+      ]
+    },
+    "??_7?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z$00@Reflection@RBX@@6B@": {
+      "address": "0x833e0c",
+      "compiled_slots": 2,
+      "checked_own_slots": [
+        "1 ?execute@?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXV?$shared_ptr@$$CBV?$ve = 0x5a4750 (near-miss row)"
+      ]
+    },
+    "??_7?$BoundFuncDesc@VWorkspace@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@6B@": {
+      "address": "0x833e18",
+      "compiled_slots": 2,
+      "checked_own_slots": [
+        "1 ?execute@?$BoundFuncDesc@VWorkspace@RBX@@$$A6AX_N@Z$00@Reflection@RBX@ = 0x5a4910 (own row)"
+      ]
+    },
+    "??_7?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@6B@": {
+      "address": "0x833e24",
+      "compiled_slots": 2,
+      "checked_own_slots": [
+        "1 ?execute@?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@ = 0x5a4a80 (own row)"
+      ]
+    }
+  },
+  "not_exact": [
+    "005a4750 ?execute@?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXV?$shared_ptr: 206/260 B, not counted"
+  ],
+  "pending_build_only": [],
+  "not_attempted": {
+    "stats item chain 005a4050 / 005a4190 / 005a4af0 / 005a4bd0 / 005a4cb0 / 005a52c0 / 005a5430 / 005a55a0 / 005a5c90 / 005a6620 / 005a66b0": "TypedStatsItem<T>(boost::function0<T>) constructors (declared only in v8datamodel/Stats.h, without a body; stats/Stats.h has only the const T* constructor), an unidentified 0x178-byte item class built by 005a3f30, the createChildItem-style member templates, WorkspaceStatsItem() (2431 B) and its creator: v8datamodel/Workspace.h declares WorkspaceStatsItem(const Workspace*, const World*) but the creator 005a6620 forwards three arguments (workspace, world +0x2e4, RunService), as stats/WorkspaceStatsItem.h declares; the two headers define the class differently and cannot be included together (proposal)",
+    "005a5710 / 005a5890 (camera helpers)": "005a5710 returns no value (no eax load before ret) although Workspace.h declares getCamera() const as returning Camera*; it inlines isDescendentOf (parent == this || isAncestorOf), which the native Instance.h declares out of line (00422ae0). 005a5890 has no name evidence. Not built.",
+    "005a59e0 render3dAdorn": "rejected donor body (app-unit5a0)"
+  },
+  "rejected": {
+    "005a4750 BoundFuncDesc<Workspace, void(shared_ptr<const Instances>), 1>::execute": "near miss 206/260 B: the original inlines call<void> (the 12-byte virtual-inheritance member-pointer call), the committed reflection.h compiles it out of line (82 B). Variants tried, all 206 B: /U_RELEASEASSERT on and off, /fp:fast, VS2005 50727, only the MakeJoints descriptor in the unit. The same instantiation shape inlines for Selection (app-unit564 00568080, single inheritance). Not counted."
+  },
+  "proposals": {
+    "v8datamodel/Workspace.h owner": "WorkspaceStatsItem: Workspace.h declares WorkspaceStatsItem(const Workspace*, const World*), but Creatable<Instance>::create<WorkspaceStatsItem> 005a6620 pushes three arguments into the 2431-byte constructor 005a5c90 (onServiceProvider 005a66b0 passes this, [this+0x2e4] world and the RunService found by 00452c80), as stats/WorkspaceStatsItem.h declares it. Drop the Workspace.h declaration in favour of stats/WorkspaceStatsItem.h (or give it the third const RunService* parameter) so the Workspace unit can include one consistent declaration.",
+    "stats/Stats.h owner (stats-service)": "Add TypedStatsItem<T>(boost::function0<T> func) : func(func) {} (body evidence: 005a4050 for float, vtable 00833c64, and 005a4190 for double: Item() 0045ebe0, the ten vtable stores, inline function0 copy into +0x158 through the manager clone call, then the by-value argument destroyed; ret 0x20). v8datamodel/Stats.h already declares this constructor without a body."
+  },
+  "exact_function_rows": [
+    "005a4020",
+    "005a4160",
+    "005a4420",
+    "005a44d0",
+    "005a45b0",
+    "005a46a0",
+    "005a4860",
+    "005a4910",
+    "005a4a00",
+    "005a4a80",
+    "005a5200",
+    "005a7770",
+    "005a7780",
+    "005a7ac0",
+    "005a7ea0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

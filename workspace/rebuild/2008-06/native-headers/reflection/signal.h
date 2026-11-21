@@ -217,13 +217,33 @@ namespace RBX
 		template<int ArgCount, typename CallbackSignature>
 		class SignalDescImpl : public TSignalDesc<CallbackSignature>
 		{
+		public:
+			// INFERRED: the 2008-06 binary's RTTI names SignalDescImpl<3, void(std::string,int,std::string)>::
+			// GenericSlotAdapter (004a0900), so the arity-3 instance fell back to this primary template's adapter.
+			// Declaration only: the functor is a shared_ptr holder, as in the 0/1/2 specialisations below.
+			class GenericSlotAdapter
+			{
+			private:
+				boost::shared_ptr<GenericSlotWrapper> wrapper;
+
+			public:
+				GenericSlotAdapter(GenericSlotWrapper*);
+
+			public:
+				void operator()(typename boost::function_traits<CallbackSignature>::arg1_type arg1,
+								typename boost::function_traits<CallbackSignature>::arg2_type arg2,
+								typename boost::function_traits<CallbackSignature>::arg3_type arg3);
+			};
 		};
 
 		// Specialised implementations for different argument counts. Keeping it up to two since Roblox signals ever only had up to two arguments in 2007.
 		template<typename CallbackSignature>
 		class SignalDescImpl<0, CallbackSignature> : public TSignalDesc<CallbackSignature>
 		{
-		protected:
+		public:
+			// INFERRED: public, like the 1/2 specialisations: the binary emits the boost::function<void(void),
+			// std::allocator<void> > constructor for this adapter as a standalone body (004b45b0), which is only
+			// nameable outside the class with public access. Visibility only; layout and codegen unchanged.
 			class GenericSlotAdapter
 			{
 			private:
@@ -270,7 +290,7 @@ namespace RBX
 				void operator()(typename boost::function_traits<CallbackSignature>::arg1_type arg1)
 				{
 					std::vector<boost::any> args(1);
-					args[0] = boost::any(arg1);
+					args[0] = arg1; // any::operator=(const T&): 00636370 (int), 00559a50 (const PropertyDescriptor*) build the holder after the checked operator[]
 
 					wrapper->execute(args);
 				}

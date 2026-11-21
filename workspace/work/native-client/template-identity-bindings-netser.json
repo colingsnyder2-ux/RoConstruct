@@ -1,0 +1,101 @@
+{
+ "scope": "template-instantiation identity evidence (callee addresses read from the original calls of exact-by-bytes owners)",
+ "identity_bindings": [
+  {
+   "symbol": "??$getValue@N@ConstProperty@Reflection@RBX@@QBENXZ",
+   "address": "004adc90",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??$getValue@VColor3@G3D@@@ConstProperty@Reflection@RBX@@QBE?AVColor3@G3D@@XZ",
+   "address": "004ad120",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??$getValue@VVector3@G3D@@@ConstProperty@Reflection@RBX@@QBE?AVVector3@G3D@@XZ",
+   "address": "004accd0",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??$getValue@VCoordinateFrame@G3D@@@ConstProperty@Reflection@RBX@@QBE?AVCoordinateFrame@G3D@@XZ",
+   "address": "004ad180",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??$setValue@M@Property@Reflection@RBX@@QAEXABM@Z",
+   "address": "004ad2a0",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??$setValue@N@Property@Reflection@RBX@@QAEXABN@Z",
+   "address": "004adcf0",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??$setValue@VColor3@G3D@@@Property@Reflection@RBX@@QAEXABVColor3@G3D@@@Z",
+   "address": "004ad300",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??$setValue@VCoordinateFrame@G3D@@@Property@Reflection@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
+   "address": "004ad360",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??$setValue@VVector3@G3D@@@Property@Reflection@RBX@@QAEXABVVector3@G3D@@@Z",
+   "address": "004acd50",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAN@Z",
+   "address": "004a64e0",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAVColor3@G3D@@@Z",
+   "address": "004a6cd0",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAVCoordinateFrame@G3D@@@Z",
+   "address": "004a6b80",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??5Network@RBX@@YAAAVBitStream@RakNet@@AAV23@AAVVector3@G3D@@@Z",
+   "address": "004a6cd0",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??6Network@RBX@@YAAAVBitStream@RakNet@@AAV23@ABVColor3@G3D@@@Z",
+   "address": "004a69a0",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??6Network@RBX@@YAAAVBitStream@RakNet@@AAV23@ABVCoordinateFrame@G3D@@@Z",
+   "address": "004a6ab0",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??6Network@RBX@@YAAAVBitStream@RakNet@@AAV23@N@Z",
+   "address": "004a64b0",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  }
+ ]
+}

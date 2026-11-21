@@ -126,6 +126,9 @@ namespace RBX
 		void onHeartbeat();                                          // 005fbd80 (called by DataModel 00578e50)
 		void onClick(LocalBackpackItem* clickedItem);                // 005fbff0
 		bool onKey(int key);                                         // 005fc0a0 (DataModel key handler 00575890)
+		// INFERRED: 00575890 ']' and '[' cases both emit mov ecx,[this+0x1fc]; call 0x47d410.
+		void cycleUp();
+		void cycleDown();
 
 		virtual XmlElement* write()                                  // slot 14, 00416690
 		{

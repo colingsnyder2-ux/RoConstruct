@@ -1,0 +1,93 @@
+[
+  {
+    "header": "util/IRenderable.h or v8datamodel/FaceInstance.h",
+    "note": "FaceInstance::render3dSelect (005ef400) override declaration dropped Decal/FaceInstance TUs 148->140 exact; needs owner review (not core, reverted)"
+  },
+  {
+    "header": "lane include selection",
+    "note": "placeholder lane probes include minimal v8world/World2008.h, donor SleepStage.h (lacks okNeighborSleep/forceNeighborAwake, read-only), and RenderSceneNew2008.h (Ogre RenderNew::RenderScene) for Render::RenderScene targets 00504290/00502b00; lane should use engine-world/v8world/World.h and RenderLib/RenderScene2008.h. Instance::getRootAncestor 0x42a5f0 is core (Instance.h)."
+  },
+  {
+    "header": "rebuild/2008-06/native-headers/Network/IdSerializer.h",
+    "class": "RBX::Network::StringReceiver",
+    "proposal": "add `void deserializeString(Reflection::Property& property, RakNet::BitStream& bitStream); // 004a7150` (needs forward decl Reflection::Property). INFERRED: asm 004a7150 builds a std::string, calls StringReceiver::receive 004a6e20 (this, stream=arg2, &str), then vcalls slot 0x20 on property descriptor (arg1+4 -> instance). Probe placeholder-lane/004a7150 fails only on this missing member. Not applied: lease server offline.",
+    "addr": "004a7150"
+  },
+  {
+    "header": "identity-registry",
+    "note": "00732a20, 00732a40, 007356f0 are registry-labelled World::onPrimitiveCanCollideChanged but native-asm shows XTP bodies (CXTPControlGallery / CXTPDefaultTheme thunks, 20 bytes). The earlier 'unblocked' World claims for these addrs are wrong identity, not header gaps; route them to the XTP lane."
+  },
+  {
+    "header": "lane include selection",
+    "note": "Of 44 named-donor probes recompiled against current headers (cl /Zs, no lane run), 6 now compile. Remaining header-side blockers: SleepStage 0064a660/0064a5f0/0064a790 need native-world SleepStage.h plus Assembly::getMaxRadius/getSleepInfo (native-world Assembly.h; 2008 Assembly is Clump, no RTTI), World 005e9fd0/005ea920 need engine-world World.h, Ball/Block/Face getMoment/getAxis C2084 because Ball2008.h/Block2008.h define the bodies inline (005e7400/005e7390 need out-of-line decl + cpp body), DataModel 007f3470/007f34a0/00579db0 (core DataModel.h; also NativeContentProvider.h redefines ContentProvider), Lighting 005e22c0/005e2370 need prop_AmbientTop/Bottom descriptors + RunService decl, SoundChannel.h redefines SoundId/Sound/SoundChannel (005ba060), Stats.h redefines Stats::Item (005a5c90)."
+  },
+  {
+    "header": "v8datamodel/DataModel.h",
+    "note": "PDB 2007 DataModel members absent in header: isInitialized bool +493, timeState scoped_ptr<TimeState> +504 (pdb-layout-gaps.json). Unverified against 2008 asm; 2008 DataModel layout differs. Owner review only."
+  },
+  {
+    "header": "v8tree/Instance.h",
+    "note": "PDB 2007 Instance methods absent in header (non-virtual helpers): findChildIndex, findFirstChildByNameRecursive, isAncestorOf2, isDescendentOf2, promoteChildren, signalDescendentAdded/Removing, setParent2, raiseChanged, getChildren2. Add only on demand by a blocked function with 2008 symbol evidence."
+  },
+  {
+    "header": "v8tree/Instance.h (core; GuidItem<Instance> primary base, util/GuidItem.h)",
+    "note": "Replicator::NewInstanceItem::write 004b8620, DeleteInstanceItem::write 004b47b0, ChangePropertyItem::write 004b6d10 print instance->getGuid().readableString(4): the target does `lea ecx,[instance+8]; call Guid::readableString 004aadd0` inline (GuidItem<Instance>::guid at +8, protected). Needs a public inline `const Guid& getGuid() const { return guid; }` on GuidItem<T> (or Instance). Owner: Instance.h/GuidItem.h. Also util/Guid.h readableString(int) is declared by the donor header only.",
+    "by": "cls3:Replicator"
+  },
+  {
+    "header": "v8tree/Instance.h + util/Object.h",
+    "note": "tmpl4:Deleter. Creatable<Instance>::Deleter::operator()(Instance*) 00405e30 (41 B, no definition anywhere): calls the 9-byte cdecl thunk 0055b770 (mov ecx,[esp+4]; jmp 0055b060 = private Instance::predelete()) then the deleting dtor of the Creatable<Instance> sub-object at +0x10 (delete (Creatable<Instance>*)obj). Needs Instance.h to declare a static Instance::predelete(Instance*) wrapper reachable from Deleter (or friend Creatable<Instance>::Deleter) and the Deleter body in a new native .cpp; definition is `template<typename T> void Creatable<T>::Deleter::operator()(T* object) { T::predelete(object); delete object; }` with explicit instantiation for T=Instance. Not written: core headers not editable by tmpl4."
+  },
+  {
+    "header": "v8tree/Instance.h (core)",
+    "note": "Replicator::remoteDeleteOnDisconnect 004ab960 inlines isDescendentOf one level (`ancestor == parent || (parent && parent->isDescendentOf(ancestor))`, then call 00422ae0 on the parent): the donor header defines isDescendentOf inline and the recursion keeps the out-of-line copy 00422ae0, as for getRootAncestor. Propose an inline definition in Instance.h instead of the bare declaration.",
+    "by": "cls3:Replicator"
+  },
+  {
+    "header": "stats/Stats.h (TypedStatsItem)",
+    "note": "tmpl4:TypedStatsItem. Remaining ctors 005a3f30 (<int>), 005a4050 (<unsigned int>), 005a4190 (<G3D::Stopwatch>), 227 B each, take a boost::function0<T> by value (mangled ??0?$TypedStatsItem@H@Stats@RBX@@QAE@V?$function0@H...@Z), plus Creatable<Instance>::create<TypedStatsItem<T>, function0<T>> 005a4af0/005a4bd0 (215 B). Stats.h only declares TypedStatsItem(const T*) (bind(&deref,value)); needs an added `TypedStatsItem(boost::function0<T> func) : func(func) {}` overload. Not written: also the known boost::function0 assign_to inlining gap (original 194-227 B vs this build 120 B, see AppUnit4B4Templates.cpp), so byte exactness is not expected."
+  },
+  {
+    "header": "reflection/member.h (MemberDescriptorContainer::mergeMembers)",
+    "note": "tmpl4:mergeMembers 005703a0/00570440/005704e0 (148 B) are 144 B with the current header: the do { ... } while (source = source->base) tail compiles to mov ebp,[ebp+0x30]; test; jne, the original is mov eax,[ebp+0x30]; test eax,eax; je exit; mov ebp,eax; jmp top. An overlay probe (while(true){...; source=source->base; if(!source) break;}) gave the identical 144 B, so the loop form alone is not the cause (overlay may not have taken precedence); unresolved."
+  },
+  {
+    "header": "v8tree/Instance.h (core)",
+    "class": "RBX::Instance",
+    "note": "upTo_InCharacter 005b1e50 (Accoutrement) needs static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_childAdded (global 00973e90, connected first into characterChildAdded +0x19c) and event_childRemoved (00973c6c, characterChildRemoved +0x1b0), both connect(parent, bind(&Accoutrement::onEvent_AddedBackend/RemovedBackend, this, _1), 10); Instance.h only declares event_descendentAdded/Removing/ancestryChanged/itemChanged. Target connect passes parent+0x14 object, group 10 (same shape as connectTouchEvent 005b1d70 which is byte-identical)."
+  },
+  {
+    "header": "v8world World (no 2008 native header)",
+    "class": "RBX::World",
+    "note": "Workspace::reset 005a0df0 (52 B) is isolated-compile near-miss: body `isSimulating=false; getCamera()->autoMode(); world->reset();` but the donor/include-path World::reset stores worldStepId at +0x64 (and the donor build emits a debug-assert load), the target stores 0 at World+0xa8. Needs a 2008 World layout header (+0xa8 member, inline reset())."
+  },
+  {
+    "header": "util/Object.h (core, owner)",
+    "class": "RBX::Creatable<T>",
+    "note": "Add 3-parameter static create<Class,P1,P2,P3>(p1,p2,p3) (same shape as the 2-param overload; variant already in rebuild/2008-06/native-headers/creatable-n-params/util/Object.h:76). Blocks GuiHudBuilder2008.cpp NATIVE_GUIHUD_PENDING bodies: buildControlHud 00603c60 (create<ArrowPanel> 00602650), buildChatMenu(Adorn*) 00603730 (create<PercentPanel> 006021e0), buildRightPalette 00604070 and buildRightPaletteItems 00602cb0 (create<ImageButton> 00601f00). Agent-side compile fails C2780 without it."
+  },
+  {
+    "header": "reflection/enumconverter.h (core)",
+    "class": "RBX::Reflection::EnumDesc<Enum>",
+    "note": "2008 EnumDesc::singleton is call_once based: boost::call_once(&doSingleton, flag) then return the local static (doSingleton 005bb2c0 holds the guarded static 0x9771e0, callDoSingleton thunk 005bb320, once flag 0x977524, call_once 00557330). Blocks SoundService::loadStockSounds(SoundType,string) 005bd6d0 (body otherwise identical: only the call_once call before singleton differs)."
+  },
+  {
+    "header": "util/Sound.h (core)",
+    "class": "RBX::Soundscape::SoundService",
+    "note": "soundDisabled must be `static bool` (global 00976fc9, tested by openFmod 005ba060 `cmp byte ptr [0x976fc9], 0`), not a member at +0x1c1. SoundChannel/SoundChannel.h already has it static."
+  },
+  {
+    "header": "rebuild/2008-06/native-headers/v8datamodel/PartInstance.h",
+    "class": "RBX::PartInstance",
+    "note": "RunDragger 0066d430 smartPtrHackPre and 0066d4f0 init convert PartInstance* to Primitive* with a plain add 0x228 (no getPrimitive call). Native header declares boost::scoped_ptr<Primitive> primitive (line 58), so the header cannot express the binary conversion. Owner: confirm the 2008 Primitive subobject (base or embedded at +0x228) and state it in the header; affects RunDragger rows 0066d430/0066d4f0."
+  },
+  {
+    "header": "rebuild/2008-06/native-headers/engine-world/v8world/World.h",
+    "class": "RBX::World",
+    "note": "RunDragger 0066e3d0 snap loads World::contactManager from [World+0x84] (via Workspace+0x2e4); native World.h places ContactManager* contactManager at +0x40 (line 49). Owner: reconcile the World layout offset; affects snap and colliding callers."
+  },
+  {
+    "header": "v8datamodel/DataModel.h",
+    "note": "DxUserInput 00467a00: need `// INFERRED: DataModel method taking const UIEvent&` declaration for the direct call 00577460 (registry unit RBX::DataModel, decorated name unknown/placeholder func_00577460). Target body copies boost::shared_ptr<DataModel> at +0x180 into RBX::DataModel::Lock (ctor 00411b40, dtor 005773c0 - both already declared), then calls dataModel->?(const UIEvent&) at 00577460 and returns. Without this declaration the member cannot be drafted as a real class member. Do NOT invent a UIEvent::type field."
+  }
+]

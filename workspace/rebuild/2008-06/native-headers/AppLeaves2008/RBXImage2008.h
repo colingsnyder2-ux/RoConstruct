@@ -78,4 +78,6 @@ private:
     mutable HBITMAP m_hOldBitmap; // +0x2c
 
     friend struct RBXImageLayout;
+public:
+	void * destroy(unsigned int);   // INFERRED: ?destroy@RBXImage@@QAEPAXI@Z (header gap, header_gap_fill.py)
 };

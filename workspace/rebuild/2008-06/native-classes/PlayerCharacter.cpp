@@ -59,8 +59,10 @@ namespace RBX
 		// loadCharacterAppearance(!inGame) 00495380, then find<SpawnerService>(this) 00491ea0: when found it calls the
 		// SpawnerService spawn routine 005d2b80 (thiscall: shared_ptr<ModelInstance> copy, Player*) and skips the drop;
 		// otherwise RootInstance::moveToPoint 005909e0 (model, Vector3(0, 20 [008222f0], 25 [008222ec])).
-		// Blocked: v8datamodel/SpawnerService.h does not declare 005d2b80, and humanoid/Humanoid2008.h does not
-		// declare buildJoints 005d9340 (the donor humanoid/Humanoid.h does).
+		// SpawnerService::SpawnPlayer 005d2b80 is now declared (v8datamodel/SpawnerService.h) and called by that name.
+		// Remaining blockers: ContentId::fromAssets(const char*) 0055bd80 is not declared by core util/ContentId.h
+		// (only slingshot-load/util/ContentProvider.h declares it, as a conflicting ContentId), and
+		// humanoid/Humanoid2008.h does not declare buildJoints 005d9340 (the donor humanoid/Humanoid.h does).
 #if 0
 		void Player::loadCharacter(bool inGame)
 		{
@@ -110,7 +112,7 @@ namespace RBX
 			loadCharacterAppearance(!inGame);
 
 			if (SpawnerService* spawnerService = ServiceProvider::find<SpawnerService>(this))
-				spawnerService->spawnPlayer(model, this);   // 005d2b80 (analog name, pending declaration)
+				spawnerService->SpawnPlayer(model, this);   // 005d2b80 (declared in v8datamodel/SpawnerService.h)
 			else
 				workspace->moveToPoint(model.get(), G3D::Vector3(0.0f, 20.0f, 25.0f));
 		}

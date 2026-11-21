@@ -24,9 +24,66 @@ def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True).encode()).hexdigest()
 
 
+_SHA = {}
+_DISK = ROOT / 'work' / 'native-client' / 'prove-cache' / 'filehash.json'
+_DISK_ROWS = None
+_DISK_NEW = {}
+
+
+def _disk_rows():
+    global _DISK_ROWS
+    if _DISK_ROWS is None:
+        try:
+            _DISK_ROWS = json.loads(_DISK.read_text(encoding='utf-8'))
+        except (OSError, ValueError):
+            _DISK_ROWS = {}
+        if not isinstance(_DISK_ROWS, dict):
+            _DISK_ROWS = {}
+        import atexit
+        atexit.register(_disk_save)
+    return _DISK_ROWS
+
+
+def _disk_save():
+    # Merge with whatever other workers saved meanwhile; a lost write only costs a rehash.
+    if not _DISK_NEW:
+        return
+    try:
+        try:
+            rows = json.loads(_DISK.read_text(encoding='utf-8'))
+            if not isinstance(rows, dict):
+                rows = {}
+        except (OSError, ValueError):
+            rows = {}
+        rows.update(_DISK_NEW)
+        _DISK.parent.mkdir(parents=True, exist_ok=True)
+        tmp = _DISK.with_name('filehash.%d.tmp' % os.getpid())
+        tmp.write_text(json.dumps(rows), encoding='utf-8')
+        os.replace(tmp, _DISK)
+    except OSError:
+        pass
+
+
 def sha(path):
+    # Memoized on (size, mtime), in memory and in prove-cache/filehash.json (path -> [mtime_ns, size, sha256]).
     path = Path(path)
-    return hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
+    try:
+        st = path.stat()
+    except OSError:
+        return None
+    if not path.is_file():
+        return None
+    key = (str(path), st.st_size, st.st_mtime_ns)
+    hit = _SHA.get(key)
+    if hit is None:
+        row = _disk_rows().get(key[0])
+        if isinstance(row, list) and row[:2] == [st.st_mtime_ns, st.st_size]:
+            hit = row[2]
+        else:
+            hit = hashlib.sha256(path.read_bytes()).hexdigest()
+            _DISK_NEW[key[0]] = _DISK_ROWS[key[0]] = [st.st_mtime_ns, st.st_size, hit]
+        _SHA[key] = hit
+    return hit
 
 
 # Only files an #include can resolve to may shadow a fallback include. New .cpp/.obj/.log files cannot, and counting them
@@ -34,15 +91,48 @@ def sha(path):
 INCLUDABLE = ('.h', '.hpp', '.hxx', '.inl', '.inc', '.tlh', '.tli', '.rc', '.idl')
 
 
+_TREE = {}
+
+
+def _tree_digest(path):
+    # One walk per include directory per short window (re-walked after 60 s, so files created during a long run are
+    # still seen); the census walked boost/G3D/MFC trees again for every source.
+    hit = _TREE.get(str(path))
+    if hit and time.monotonic() - hit[1] < 60:
+        return hit[0]
+    files = []
+
+    def walk(folder):
+        # Per-directory listing cached on the directory mtime (adding/removing an entry changes it).
+        key = 'dir:' + folder
+        try:
+            mt = os.stat(folder).st_mtime_ns
+        except OSError:
+            return
+        row = _disk_rows().get(key)
+        if not (isinstance(row, list) and row[0] == mt):
+            names, subs = [], []
+            with os.scandir(folder) as it:
+                for e in it:
+                    (subs if e.is_dir() else names).append(e.name)
+            row = [mt, [n for n in names if n.lower().endswith(INCLUDABLE) or '.' not in n], subs]
+            _DISK_NEW[key] = _DISK_ROWS[key] = row
+        files.extend(os.path.relpath(os.path.join(folder, n), path) for n in row[1])
+        for sub in row[2]:
+            walk(os.path.join(folder, sub))
+
+    walk(str(path))
+    value = digest(sorted(files))
+    _TREE[str(path)] = (value, time.monotonic())
+    return value
+
+
 def search_inventory(directories):
     # File creation can shadow an unchanged fallback include without changing it.
     result = {}
     for path in sorted(set(Path(d).resolve() for d in directories)):
         if path.is_dir():
-            files = [os.path.relpath(os.path.join(folder, name), path)
-                     for folder, _, names in os.walk(path) for name in names
-                     if name.lower().endswith(INCLUDABLE) or '.' not in name]
-            result[str(path)] = digest(sorted(files))
+            result[str(path)] = _tree_digest(path)
     return result
 
 
@@ -75,6 +165,20 @@ def records(value):
             yield from records(child)
 
 
+EVIDENCE_ROWS = {}      # identity-binding file -> (symbol, address) rows it held when this process read it
+
+
+def _binding_rows(path):
+    try:
+        data = json.loads(Path(path).read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        return None
+    rows = data.get('identity_bindings') if isinstance(data, dict) else None
+    if not isinstance(rows, list):
+        return None
+    return {(r.get('symbol'), r.get('address')) for r in rows if isinstance(r, dict)}
+
+
 def seed_evidence(root, paths, strict_conflicts=True):
     symbols, bindings, blockers, inputs = {}, {}, [], {}
     receipts, rejected = [], set()
@@ -90,6 +194,8 @@ def seed_evidence(root, paths, strict_conflicts=True):
     for name in paths:
         path = project_path(root, name)
         inputs[str(path)] = sha(path)
+        if path.name.startswith('class-identity-bindings') and str(path) not in EVIDENCE_ROWS:
+            EVIDENCE_ROWS[str(path)] = _binding_rows(path)
         if not path.is_file():
             blockers.append('missing reference receipt: ' + name)
             continue
@@ -121,7 +227,10 @@ def seed_evidence(root, paths, strict_conflicts=True):
                     symbols.setdefault(reference, set()).add(address(hit[1]))
     for symbol, target in bindings.items():
         if target is None:
-            symbols.pop(symbol, None)
+            # Non-strict (census) runs keep the evidence's address list: harvest() accepts a byte/reference-exact body
+            # only at an address the evidence names for that symbol (identical instances in several static libraries).
+            if strict_conflicts:
+                symbols.pop(symbol, None)
             if strict_conflicts:
                 blockers.append('conflicting reference identity: ' + symbol)
     return symbols, bindings, blockers, inputs
@@ -177,6 +286,9 @@ def import_slots():
     return _IMPORT_SLOTS
 
 
+REF_NAMES = {}       # symbol -> addresses the evidence names (set per harvest() call)
+
+
 def audit_references(raw, symbol, body, target, target_relocs, va, targets, bindings):
     """Check every relocation and initialized-data edge; unknown is a blocker."""
     sections, symbols, definitions, _ = match._coff_data_index(raw)
@@ -186,7 +298,17 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
     def reference(index, stored, original, depth=0):
         name, value, number, _ = symbols[index]
         base = (original - stored) & 0xffffffff
+        # Compiler-local switch labels ($LN<n>) share names across objects, so evidence receipts merge them into a
+        # conflicted binding; checked before the conflict tests, as an offset into the audited function's own section
+        # (the same rule as below), a label placed at the same offset in object and original is the body's own.
+        if number - 1 == section and re.fullmatch(r'\$LN\d+', name) and base == (va + value - start) & 0xffffffff:
+            return
         known = bindings.get(name)
+        # One symbol at several addresses (the same template instance in several static libraries, each copy calling
+        # its own callee copy): the reference is proven when the evidence names the referenced address for that symbol.
+        named_here = '%08x' % base in REF_NAMES.get(name, ())
+        if named_here:
+            known = '%08x' % base
         if name in bindings and known is None:
             errors.append('conflicting reference identity: ' + name)
             return
@@ -277,7 +399,74 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
     return references, sorted(set(errors))
 
 
+def object_symbols(raw):
+    """Every symbol name in a COFF object's symbol table (functions, data, externals): what harvest() can consult."""
+    _, _, _, symptr, nsym, _, _ = struct.unpack_from("<HHIIIHH", raw, 0)
+    strtab = symptr + nsym * 18
+    out, i = set(), 0
+    while i < nsym:
+        name, _, _, _, _, naux = struct.unpack_from("<8sIhHBB", raw, symptr + 18 * i)
+        if name[:4] == b"\0\0\0\0":
+            off = strtab + struct.unpack_from("<I", name, 4)[0]
+            name = raw[off:raw.index(b"\0", off)]
+        out.add(name.rstrip(b"\0").decode("latin-1"))
+        i += 1 + naux
+    return out
+
+
+def harvest_signature(raw, object_sha, targets, names, bindings, tools):
+    """Per-object cache key: only the evidence for symbols this object contains or references.  (The key covered the
+    whole family's names/bindings, so one new name re-matched all ~1,100 census objects.)"""
+    syms = object_symbols(raw)
+    return digest([object_sha, targets.identity, {k: sorted(names[k]) for k in sorted(syms) if k in names},
+                   {k: bindings[k] for k in sorted(syms) if k in bindings}, tools])
+
+
+def rows_path(output, object_sha, signature):
+    return Path(output) / 'rows' / (digest([object_sha, signature])[:32] + '.json.gz')
+
+
+def save_rows(path, rows):
+    import gzip
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix('.tmp')
+    with gzip.open(tmp, 'wt', encoding='utf-8') as out:
+        json.dump(rows, out, separators=(',', ':'))
+    os.replace(tmp, path)
+
+
+def load_rows(path):
+    import gzip
+    with gzip.open(path, 'rt', encoding='utf-8') as stream:
+        return json.load(stream)
+
+
+def ledger_rows(entry, ledger_path):
+    """Harvest rows of one ledger entry: inline (older ledgers) or the compressed rows file next to the ledger."""
+    if 'harvest_rows' in entry:
+        return entry['harvest_rows']
+    ref = entry.get('harvest_ref')
+    path = Path(ledger_path).parent / 'rows' / ref if ref else None
+    return load_rows(path) if path and path.is_file() else []
+
+
+_WORKER = {}
+
+
+def _harvest_init(client, selected, names, bindings):
+    _WORKER.update(targets=Targets(client, selected), names=names, bindings=bindings)
+
+
+def _harvest_job(item):
+    object_path, out_path = item
+    rows = harvest(Path(object_path).read_bytes(), _WORKER['targets'], _WORKER['names'], _WORKER['bindings'])
+    save_rows(Path(out_path), rows)
+    return out_path
+
+
 def harvest(raw, targets, names, bindings):
+    REF_NAMES.clear()
+    REF_NAMES.update(names)
     rows = []
     for symbol, body, relocs in match.coff_functions(raw):
         started = time.monotonic()
@@ -294,7 +483,10 @@ def harvest(raw, targets, names, bindings):
                 continue
             analogs.append(addr)
             # Exact bytes alone cannot assign a constructor, tiny alias or library helper an identity.
-            if symbol in bindings and bindings[symbol] is None:
+            # One symbol at several addresses is a conflict - unless the evidence names this very address for it: the
+            # same template instance compiled into several static libraries (std::swap<std::string> at 4 addresses).
+            # Bytes, relocations and every reference identity are still checked per address below.
+            if symbol in bindings and bindings[symbol] is None and addr not in names.get(symbol, ()):
                 rejections.append({'addr': addr, 'errors': ['conflicting symbol identity: ' + symbol]})
                 continue
             if addr not in names.get(symbol, ()):
@@ -373,6 +565,62 @@ def _run(config, output, root=ROOT):
         providers, requires, jobs = [], set(spec.get('requires', [])), []
         family_rows, family_inputs, family_exact = [], dict(evidence_inputs), set()
         per_source_inputs = {}
+        # Stale sources compile in parallel first (the loop below compiled one cl.exe at a time: a 700-source census
+        # took hours on a 20-core machine).  Each job has its own folder (/Fo, /Fd), so the compiles are independent;
+        # the loop then consumes the results in source order, exactly as before.  ROC_JOBS overrides the pool size.
+        pending = []
+        for source_name in spec['sources']:
+            source = project_path(root, source_name)
+            if source.suffix != '.cpp' or not source.is_file():
+                continue
+            key = name + ':' + source_name
+            flags = runner.compiler_flags(source)
+            search = search_inventory([source.parent] + [Path(f[2:]) for f in flags if f.startswith('/I')])
+            prior = ledger.get(key, {})
+            control = digest([VERSION, source_name, flags, tools, search])
+            fresh = prior.get('control') == control and prior.get('inputs') and all(
+                sha(Path(p)) == expected for p, expected in prior['inputs'].items())
+            if fresh and (prior.get('status') == 'failed' or sha(prior.get('object', '')) == prior.get('object_sha256')):
+                continue
+            pending.append((key, source))
+        precompiled = {}
+        if len(pending) > 1:
+            import concurrent.futures
+            pool_size = int(os.environ.get('ROC_JOBS') or min(16, max(4, (os.cpu_count() or 4) - 2)))
+
+            def precompile(item):
+                key, source = item
+                folder = output / 'objects' / (digest([key, time.time_ns(), os.getpid()])[:16])
+                folder.parent.mkdir(parents=True, exist_ok=True)
+                return key, (folder, runner.compile_job({'source': str(source), 'checks': [], 'ranges': [], 'layouts': []},
+                                                        folder, tc))
+            with concurrent.futures.ThreadPoolExecutor(max_workers=pool_size) as pool:
+                precompiled = dict(pool.map(precompile, pending))
+        # Parallel matching: harvest() is pure per object (bytes vs the original image + evidence), so objects whose
+        # rows are not cached for their per-object signature are matched in worker processes first; the source loop
+        # below then only loads row files.  ROC_HARVEST_JOBS overrides (0/1 = serial in the loop, as before).
+        to_match = {}
+        for source_name in spec['sources']:
+            key = name + ':' + source_name
+            entry = precompiled[key][1] if key in precompiled else ledger.get(key, {})
+            obj = entry.get('object')
+            if entry.get('status') != 'complete' or not obj or not Path(obj).is_file():
+                continue
+            obj_sha = entry.get('object_sha256')
+            raw_obj = Path(obj).read_bytes()
+            sig = harvest_signature(raw_obj, obj_sha, targets, names, bindings, tools)
+            out_rows = rows_path(output, obj_sha, sig)
+            if not out_rows.is_file() and not (entry.get('harvest_signature') == sig and 'harvest_rows' in entry):
+                to_match[str(out_rows)] = obj
+        harvest_jobs = int(os.environ.get('ROC_HARVEST_JOBS') or min(16, max(1, (os.cpu_count() or 4) - 4)))
+        if len(to_match) > 4 and harvest_jobs > 1:
+            import concurrent.futures
+            proof_started = time.monotonic()
+            with concurrent.futures.ProcessPoolExecutor(
+                    max_workers=min(harvest_jobs, len(to_match)), initializer=_harvest_init,
+                    initargs=('2008-06', config.get('targets'), names, bindings)) as pool:
+                list(pool.map(_harvest_job, [(obj, out) for out, obj in to_match.items()]))
+            proof_seconds += time.monotonic() - proof_started
         for source_name in spec['sources']:
             source = project_path(root, source_name)
             if source.suffix != '.cpp' or not source.is_file():
@@ -403,16 +651,20 @@ def _run(config, output, root=ROOT):
             if fresh and sha(prior.get('object', '')) == prior.get('object_sha256'):
                 reused += 1
             else:
-                folder = output / 'objects' / (digest([key, time.time_ns()])[:16])
-                folder.parent.mkdir(parents=True, exist_ok=True)
-                result = runner.compile_job({'source': str(source), 'checks': [], 'ranges': [], 'layouts': []}, folder, tc)
+                if key in precompiled:
+                    folder, result = precompiled.pop(key)
+                else:
+                    folder = output / 'objects' / (digest([key, time.time_ns()])[:16])
+                    folder.parent.mkdir(parents=True, exist_ok=True)
+                    result = runner.compile_job({'source': str(source), 'checks': [], 'ranges': [], 'layouts': []}, folder, tc)
                 compiles += 1
                 compile_seconds += result.get('compile_seconds', 0)
                 inputs = dict(result.get('dependencies', {}))
                 inputs[str(source)] = result.get('source_sha256', draft_hash)
                 log = (folder / 'compile.log').read_text(encoding='utf-8') if (folder / 'compile.log').exists() else ''
                 for included in re.findall(r'^\s*Note: including file:\s*(.*?)\s*$', log, re.M):
-                    path = Path(included).resolve()
+                    from roc.rebuild import _host_include  # Wine prints Z:\host\path includes
+                    path = Path(_host_include(included)).resolve()
                     inputs[str(path)] = sha(path)
                 for missing in re.findall(r"Cannot open include file:\s*'([^']+)'", log):
                     # Missing declarations wake on creation; no endless identical compiler failures.
@@ -430,14 +682,22 @@ def _run(config, output, root=ROOT):
                 blockers.append('source changed between draft copy and compile: ' + source_name)
                 continue
             raw = Path(result['object']).read_bytes()
-            signature = digest([result['object_sha256'], targets.identity,
-                                {k: sorted(v) for k, v in names.items()}, bindings, tools])
-            rows = result.get('harvest_rows') if result.get('harvest_signature') == signature else None
+            signature = harvest_signature(raw, result['object_sha256'], targets, names, bindings, tools)
+            out_rows = rows_path(output, result['object_sha256'], signature)
+            rows = None
+            if out_rows.is_file():
+                rows = load_rows(out_rows)
+            elif result.get('harvest_signature') == signature and 'harvest_rows' in result:
+                rows = result['harvest_rows']
             if rows is None:
                 proof_started = time.monotonic()
                 rows = harvest(raw, targets, names, bindings)
                 proof_seconds += time.monotonic() - proof_started
-                result.update(harvest_rows=rows, harvest_signature=signature)
+            if not out_rows.is_file():
+                save_rows(out_rows, rows)
+            # Rows live in output/rows/*.json.gz (the inline copies made ledger.json 1.2 GB, rewritten every run).
+            result.pop('harvest_rows', None)
+            result.update(harvest_ref=out_rows.name, harvest_signature=signature)
             total_symbols += len(rows)
             family_rows.extend(rows)
             checks = []
@@ -469,6 +729,10 @@ def _run(config, output, root=ROOT):
         # append-only evidence (inferred names, new reference bindings) never invalidates a byte-exact body.
         used = {p for inputs in per_source_inputs.values() for p in inputs}
         append_only = [p for p in changed if p not in used and Path(p).name.startswith(('inferred-name-identities', 'reference-bindings-'))]
+        # Parallel workers append identity rows to class-identity-bindings.json all day.  This process read the rows once
+        # at the start, so a proof is consistent with that snapshot as long as no row it read was removed or changed.
+        append_only += [p for p in changed if p not in used and p not in append_only and EVIDENCE_ROWS.get(p) is not None
+                        and _binding_rows(p) is not None and EVIDENCE_ROWS[p] <= _binding_rows(p)]
         hard = [p for p in changed if p not in used and p not in append_only]
         if changed and (hard or not per_source_inputs):
             blockers.append('inputs changed during batch: ' + ', '.join(changed))

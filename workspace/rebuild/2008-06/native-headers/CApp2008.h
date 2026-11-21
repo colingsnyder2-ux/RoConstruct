@@ -54,3 +54,9 @@ public:
     STDMETHOD(get_ID)(BSTR*);
     STDMETHOD(RobloxAuthenticate)(BSTR, BSTR);
 };
+
+// INFERRED: Explicit specializations for IObjectSafetyRobloxImpl<CApp,1> vftable slots at 00407720, 00407690
+template<>
+HRESULT __stdcall IObjectSafetyRobloxImpl<CApp, 1>::GetInterfaceSafetyOptions(REFIID, DWORD*, DWORD*);
+template<>
+HRESULT __stdcall IObjectSafetyRobloxImpl<CApp, 1>::SetInterfaceSafetyOptions(REFIID, DWORD, DWORD);

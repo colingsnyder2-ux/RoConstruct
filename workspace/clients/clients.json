@@ -20,7 +20,6 @@
     "compiler": "VS2008 RTM (cl 15.00.21022)",
     "compiler_build": 21022,
     "exe": "Roblox.exe",
-    "flags": "/O2 /GS- /EHsc /MD",
     "sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764"
   },
   "2009-06": {

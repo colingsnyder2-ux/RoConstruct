@@ -80,6 +80,19 @@ namespace RBX
 			bool shadows;                                                             // +0x2f0
 			float cameraDistance;                                                     // +0x2f4
 			G3D::Array<unsigned int> shadowIndexArray;                                // +0x2f8
+
+			void turnOnLights(G3D::RenderDevice* rd, bool allLights) const;            // 00502100 (private in the donor RenderScene.h)
+
+			// Donor RenderLib/RenderScene.h private helpers (names and signatures from the donor; 2008-06 call sites in
+			// computeProxyArrays 00504b60 and render 00504bf0: thiscall, rd / camera / light arguments as pushed there).
+			void clearProxyArrays();                                                  // 00504b00
+			void allocateProxies(G3D::RenderDevice* rd, const G3D::GCamera& camera);  // 00504290 (00504b85: push camera, rd)
+			void classifyProxies();                                                   // 00503540
+			void computeProxyArrays(G3D::RenderDevice* rd, const G3D::GCamera& camera); // 00504b60 (ret 8)
+			void sendDiffuseProxyMeshGeometry(G3D::RenderDevice* rd) const;           // 00502370
+			void markStencilShadows(G3D::RenderDevice* rd, const G3D::GCamera& camera, const G3D::GLight& light); // 00503fe0
+			void reflectionPass(G3D::RenderDevice* rd);                               // 00502b90
+			void transparentPass(G3D::RenderDevice* rd);                              // 005023e0
 		public:
 			bool debugShadowVolumes;                                                  // +0x304
 			G3D::ReferenceCountedPointer<G3D::Sky> sky;                               // +0x308
@@ -94,7 +107,7 @@ namespace RBX
 			                            G3D::Color3 ambientTop, G3D::Color3 ambientBottom);   // 00503cc0
 			void setLighting(const G3D::ReferenceCountedPointer<G3D::Lighting>& L);    // 00502e70
 			virtual void setThrottle(float t, float m, bool s, float c);              // 00502d30
-			virtual void render(G3D::RenderDevice* rd, const G3D::GCamera& camera);    // 00504bf0 (not built)
+			virtual void render(G3D::RenderDevice* rd, const G3D::GCamera& camera);    // 00504bf0 (RenderSceneRecovery_00504b60.cpp)
 		};
 	}
 }

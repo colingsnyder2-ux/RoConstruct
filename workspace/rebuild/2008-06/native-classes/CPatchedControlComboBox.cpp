@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include "CPatchedControlComboBox.h"
 
 IMPLEMENT_XTP_CONTROL(CPatchedControlComboBox, CXTPControlComboBox)
@@ -9,3 +10,8 @@ BOOL CPatchedControlComboBox::Compare(CXTPControl* pOther)
         return FALSE;
     return GetCount() == ((CPatchedControlComboBox*)pOther)->GetCount();
 }
+
+CPatchedControlComboBox::CPatchedControlComboBox(void) : CXTPControlComboBox(NULL)
+{
+}
+

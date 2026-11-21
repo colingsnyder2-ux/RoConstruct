@@ -1,7 +1,6 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include "v8datamodel/BrickColor.h"
 
-#include "../../../tools/rbxgs/Client/App/include/v8datamodel/BrickColor.h"
 
 G3D::Color3uint8 RBX::BrickColor::color3uint8() const
 {

@@ -1,0 +1,444 @@
+{
+  "class": "RBX physics-replication receiver rows of the application range 004bc000..004c8000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "cur": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit4bc-2008/NativeAppUnit4BC_2008_cur.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4BC_2008Receiver.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit4bc_2008.py": "2224ca6a0479def74f60174f8788139867a1799f2f0eced22ccbc9052cdb8064",
+    "rebuild/2008-06/native-classes/AppUnit4BC_2008Receiver.cpp": "7cff7def5dee99f64d292ce8e92e46e75f60b80f626cf143d1036a508b2714f5",
+    "rebuild/2008-06/native-headers/AppUnit4BC_2008/AssociationTimeStamp.h": "2082a0ae654a4241c8c605bd0e9b8ea00e69319c0d8e6ca10d2535a276367877",
+    "rebuild/2008-06/native-headers/Network/PhysicsSenders2008.h": "f3e22a64b34eab55652e5ac2172f265abac7806701b691451629882b5ed33917",
+    "rebuild/2008-06/native-headers/Network/PhysicsReplication.h": "c8318741e9b6e6b42e3686681809c3c1a19afbcbb2fc3383c2bb2afb02183e63"
+  },
+  "objects": {
+    "cur": "0897aaf5a6b6a2e5cf84057db489b0c2f87b312ef62af4bef1deafe0035545aa"
+  },
+  "unit_map": {
+    "raknet ..004c66bf": "RakNet 3.x RakPeer.cpp and the DataStructures templates it instantiates (List, Queue, OrderedList, BPlusTree, MemoryPool; BitStream calls 004a5050 ?Read<bool>@BitStream@RakNet, 004a50c0..004a5790), from before 004bc000 (RakPeerInterface/RakPeer members 004bb550..004bbf90) to 004c65c0 (243 B, the network simulator / ReliabilityLayer at RakPeer +0x744, vtable refs 008245d4/008264b4). Strings: \"[UNKNOWN]\" 004c1db0, \"127.0.0.1\" / \"0.0.0.0\" 004c3c80. Library code: never recovered here (recipes rbxgs-raknet, raknet-4.081 in roc/libs.py).",
+    "multi-index-node-impl 004c66c0..004c6cdf": "boost 1.34.1 multi_index ordered_index_node_impl helpers (non-template on RBX types): 004c66c0 / 004c6710 (rotate), 004c6770 / 004c67f0, 004c6870, 004c6980 (link), 004c69e0 (rebalance_for_erase, 762 B); called by both the sender (004cae60, 004caf40, 004cb8e0, 004cbfb0, 004ccc30) and the receiver (004c71d0, 004c7e80, 004c8010, 004c8fa0) containers. Library code, not recovered.",
+    "shared 004c6ce0..004c6d2f": "004c6ce0 (38 B) checked vector<T*> subscript at +0xc, ICF-shared by other units (callers 004b8c20, 00549610, 00549a50): not attributed. 004c6d10 (17 B, `if (+4) delete(+8)`) has no code or data reference: not attributed.",
+    "physics-receiver 004c6d30..(004c9790)": "Association<Instance>::Item::~Item 004c6d30 (vtable 008265e4), the PartItem helpers 004c6dc0 (interpolate two History entries: CoordinateFrame lerp 00518a50, then motor angles), 004c6ed0 (apply one History), 004c6f70 (per-item step; only caller the receiver step 004c8fa0), Item ??_G 004c7090 (slot 0 of 008265e4 and of TItem<TimeStamp> 008265ec), the receiver multi_index instances 004c70b0..004c7330 / 004c7730 / 004c7e80, shared_from_polymorphic_downcast<Stats::Item, Instance> 004c7530 (COMDAT shared with 0049d770 / 004b5700 / 004b82d0: not counted here), History() 004c76a0 / History(const&) 004c7c10, std::vector<float> instances 004c7700 (_Ufill), 004c71b0 (fill), 004c77b0 (copy ctor), 004c7a90 (_Insert_n, ICF-shared with 00679120), 004c7d20 / 004c7e60 (resize, shared with 0067fd60 / 00549a50), PartItem(const shared_ptr&) 004c7a10, PartItem(const&) 004c7dd0, vector<Item*> 004c7890 / 004c7c60 (ICF with vector<const Primitive*>, counted by humanoid2008), Association<Instance>::get<TimeStamp> 004c7ef0 (282 B, ends 004c800a). The unit continues past 004c8000: 004c8010..004c8e40 receiver index internals, DirectPhysicsReceiver::receivePacket 004c83b0, InterpolatingPhysicsReceiver::step 004c8fa0 / receivePacket 004c9120 (outside this range)."
+  },
+  "range_rows_counted_by_other_receipts": {
+    "004c6d40": [
+      "humanoid2008-working.json",
+      "misc-leaves-working.json"
+    ],
+    "004c7890": [
+      "humanoid2008-working.json"
+    ],
+    "004c7c60": [
+      "humanoid2008-working.json"
+    ]
+  },
+  "rows": [
+    {
+      "address": "004c6d30",
+      "symbol": "??1Item@?$Association@VInstance@RBX@@@RBX@@UAE@XZ",
+      "size": 7,
+      "target_size": 7,
+      "exact": true,
+      "verified_targets": {
+        "??_7Item@?$Association@VInstance@RBX@@@RBX@@6B@": "0x8265e4 (vtable by RTTI .?AVItem@?$Association@VInstance@RBX@@@RBX@@)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004c7090",
+      "symbol": "??_GItem@?$Association@VInstance@RBX@@@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??_7Item@?$Association@VInstance@RBX@@@RBX@@6B@": "0x8265e4 (vtable by RTTI .?AVItem@?$Association@VInstance@RBX@@@RBX@@)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004c70b0",
+      "symbol": "?link_point@?$hashed_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAE_NABUPartItem@InterpolatingPhysicsReceiver@Network@RBX@@AAPAUhashed_index_node_impl@234@Uhashed_unique_tag@234@@Z",
+      "size": 57,
+      "target_size": 57,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004c70f0",
+      "symbol": "?first_nonempty@?$bucket_array@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@multi_index@boost@@QBEII@Z",
+      "size": 27,
+      "target_size": 27,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004c7110",
+      "symbol": "?link_point@?$ordered_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@U?$less@I@std@@U?$nth_layer@$01UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NIAAUlink_info@1234@Uordered_non_unique_tag@234@@Z",
+      "size": 145,
+      "target_size": 145,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004c71d0",
+      "symbol": "?in_place@?$ordered_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@U?$less@I@std@@U?$nth_layer@$01UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NABUPartItem@InterpolatingPhysicsReceiver@Network@RBX@@PAU?$ordered_index_node@U?$index_node_base@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@detail@multi_index@boost@@@234@Uordered_non_unique_tag@234@@Z",
+      "size": 218,
+      "target_size": 218,
+      "exact": true,
+      "verified_targets": {
+        "?decrement@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": "0x4c6710 (support body exact at the bound address)",
+        "?increment@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": "0x4c66c0 (support body exact at the bound address)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004c77b0",
+      "symbol": "??0?$vector@MV?$allocator@M@std@@@std@@QAE@ABV01@@Z",
+      "size": 210,
+      "target_size": 210,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "?_Xlen@?$vector@MV?$allocator@M@std@@@std@@KAXXZ": "0x4c6d40 (body exact at the bound address; row counted by humanoid2008 / misc-leaves)",
+        "??$_Allocate@M@std@@YAPAMIPAM@Z": "0x420b50 (body exact at the bound address; row counted by network-physics-senders2008)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "__imp__memmove_s": "0x802850 (msvcr90.dll!memmove_s)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$vector@MV?$allocator@M@std@@@std@@QAE@ABV01@@Z"
+      ]
+    },
+    {
+      "address": "004c7c10",
+      "symbol": "??0History@InterpolatingPhysicsReceiver@Network@RBX@@QAE@ABU0123@@Z",
+      "size": 68,
+      "target_size": 68,
+      "exact": true,
+      "verified_targets": {
+        "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+        "??0?$vector@MV?$allocator@M@std@@@std@@QAE@ABV01@@Z": "0x4c77b0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004c7dd0",
+      "symbol": "??0PartItem@InterpolatingPhysicsReceiver@Network@RBX@@QAE@ABU0123@@Z",
+      "size": 138,
+      "target_size": 138,
+      "exact": true,
+      "verified_targets": {
+        "??1History@InterpolatingPhysicsReceiver@Network@RBX@@QAE@XZ": "0x4ae910 (external)",
+        "??0History@InterpolatingPhysicsReceiver@Network@RBX@@QAE@ABU0123@@Z": "0x4c7c10 (own row)",
+        "??__C@YGXPAX0IHP6EX00@ZP6EX0@Z@Z": "0x6a1bb6 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??0PartItem@InterpolatingPhysicsReceiver@Network@RBX@@QAE@ABU0123@@Z"
+      ]
+    },
+    {
+      "address": "004c7e80",
+      "symbol": "?erase_@?$ordered_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@U?$less@I@std@@U?$nth_layer@$01UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEXPAU?$ordered_index_node@U?$index_node_base@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@detail@multi_index@boost@@@234@@Z",
+      "size": 103,
+      "target_size": 103,
+      "exact": true,
+      "verified_targets": {
+        "?rebalance_for_erase@ordered_index_node_impl@detail@multi_index@boost@@SAPAU1234@PAU1234@Uparent_ref@ordered_index_node_compressed_base@234@AAPAU1234@2@Z": "0x4c69e0 (support body exact at the bound address)",
+        "??1PartItem@InterpolatingPhysicsReceiver@Network@RBX@@QAE@XZ": "0x4af950 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004c7ef0",
+      "symbol": "??$get@UTimeStamp@@@?$Association@VInstance@RBX@@@RBX@@QAEAAUTimeStamp@@XZ",
+      "size": 282,
+      "target_size": 282,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?$S2@?3??get@Index@?1???$get@UTimeStamp@@@?$Association@VInstance@RBX@@@RBX@@QAEAAUTimeStamp@@XZ@SAABIXZ@4IA": "0x971a88 (local static (get<TimeStamp> index))",
+        "?c@?1??count@?$Association@VInstance@RBX@@@RBX@@CAAAIXZ@4IA": "0x971a80 (local static)",
+        "?index@?3??get@Index@?1???$get@UTimeStamp@@@?$Association@VInstance@RBX@@@RBX@@QAEAAUTimeStamp@@XZ@SAABIXZ@4IA": "0x971a84 (local static (get<TimeStamp> index))",
+        "?insert@?$vector@PAVItem@?$Association@VInstance@RBX@@@RBX@@V?$allocator@PAVItem@?$Association@VInstance@RBX@@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVItem@?$Association@VInstance@RBX@@@RBX@@V?$allocator@PAVItem@?$Association@VInstance@RBX@@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVItem@?$Association@VInstance@RBX@@@RBX@@V?$allocator@PAVItem@?$Association@VInstance@RBX@@@RBX@@@std@@@2@ABQAVItem@?$Association@VInstance@RBX@@@RBX@@@Z": "0x4c7c60 (body exact at the bound address; row counted by humanoid2008)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$TItem@UTimeStamp@@@?$Association@VInstance@RBX@@@RBX@@6B@": "0x8265ec (vtable by RTTI .?AV?$TItem@UTimeStamp@@@?$Association@VInstance@RBX@@@RBX@@)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004c72b0",
+      "symbol": "??$find@V?$shared_ptr@VPartInstance@RBX@@@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@2@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@@?$hashed_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@QBE?AV?$hashed_index_iterator@U?$hashed_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@V?$bucket_array@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@234@Una@mpl@4@@123@ABV?$shared_ptr@VPartInstance@RBX@@@3@ABU?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@ABU?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@@Z",
+      "size": 124,
+      "target_size": 124,
+      "exact": true,
+      "verified_targets": {
+        "?hash_value@RBX@@YAIABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z": "0x4ca5b0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004c7330",
+      "symbol": "?unchecked_rehash@?$hashed_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXI@Z",
+      "size": 497,
+      "target_size": 497,
+      "exact": true,
+      "verified_targets": {
+        "??0?$bucket_array@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@multi_index@boost@@QAE@ABV?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@PAUhashed_index_node_impl@123@I@Z": "0x4cb540 (body exact at the bound address; row counted by network-physics-senders2008)",
+        "??$_Allocate@I@std@@YAPAIIPAI@Z": "0x420b50 (body exact at the bound address; row counted by network-physics-senders2008)",
+        "?hash_value@RBX@@YAIABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z": "0x4ca5b0 (external)",
+        "__real@4f800000": "0x819778 (constant 4f800000)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$?unchecked_rehash@?$hashed_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXI@Z"
+      ]
+    },
+    {
+      "address": "004c7730",
+      "symbol": "?reserve@?$hashed_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXI@Z",
+      "size": 117,
+      "target_size": 117,
+      "exact": true,
+      "verified_targets": {
+        "__real@4f800000": "0x819778 (constant 4f800000)",
+        "__real@3f800000": "0x827494 (constant 3f800000)",
+        "?unchecked_rehash@?$hashed_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXI@Z": "0x4c7330 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004c76a0",
+      "symbol": "??0History@InterpolatingPhysicsReceiver@Network@RBX@@QAE@XZ",
+      "size": 89,
+      "target_size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0 (external (evidence name))",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??0History@InterpolatingPhysicsReceiver@Network@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004c7a10",
+      "symbol": "??0PartItem@InterpolatingPhysicsReceiver@Network@RBX@@QAE@ABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+      "size": 119,
+      "target_size": 119,
+      "exact": true,
+      "verified_targets": {
+        "??1History@InterpolatingPhysicsReceiver@Network@RBX@@QAE@XZ": "0x4ae910 (external)",
+        "??0History@InterpolatingPhysicsReceiver@Network@RBX@@QAE@XZ": "0x4c76a0 (own row)",
+        "??_L@YGXPAXIHP6EX0@Z1@Z": "0x6a1598 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??0PartItem@InterpolatingPhysicsReceiver@Network@RBX@@QAE@ABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z"
+      ]
+    },
+    {
+      "address": "004c8b20",
+      "symbol": "?insert_@?$index_base@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@multi_index@boost@@IAEPAU?$index_node_base@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@234@ABUPartItem@InterpolatingPhysicsReceiver@Network@RBX@@PAU5234@@Z",
+      "size": 75,
+      "target_size": 75,
+      "exact": true,
+      "verified_targets": {
+        "??0PartItem@InterpolatingPhysicsReceiver@Network@RBX@@QAE@ABU0123@@Z": "0x4c7dd0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?insert_@?$index_base@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@multi_index@boost@@IAEPAU?$index_node_base@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@234@ABUPartItem@InterpolatingPhysicsReceiver@Network@RBX@@PAU5234@@Z"
+      ]
+    },
+    {
+      "address": "004c8cf0",
+      "symbol": "?insert_@?$ordered_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@U?$less@I@std@@U?$nth_layer@$01UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEPAU?$ordered_index_node@U?$index_node_base@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@detail@multi_index@boost@@@234@ABUPartItem@InterpolatingPhysicsReceiver@Network@RBX@@PAU5234@@Z",
+      "size": 165,
+      "target_size": 165,
+      "exact": true,
+      "verified_targets": {
+        "?link_point@?$ordered_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@U?$less@I@std@@U?$nth_layer@$01UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NIAAUlink_info@1234@Uordered_non_unique_tag@234@@Z": "0x4c7110 (own row)",
+        "?insert_@?$index_base@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@multi_index@boost@@IAEPAU?$index_node_base@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@234@ABUPartItem@InterpolatingPhysicsReceiver@Network@RBX@@PAU5234@@Z": "0x4c8b20 (own row)",
+        "?link@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@W4ordered_index_side@234@00@Z": "0x4c6980 (support body exact at the bound address)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004c8e40",
+      "symbol": "?insert_@?$hashed_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAEPAU?$hashed_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@ABUPartItem@InterpolatingPhysicsReceiver@Network@RBX@@PAU5234@@Z",
+      "size": 171,
+      "target_size": 171,
+      "exact": true,
+      "verified_targets": {
+        "?reserve@?$hashed_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXI@Z": "0x4c7730 (own row)",
+        "?hash_value@RBX@@YAIABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z": "0x4ca5b0 (external)",
+        "?link_point@?$hashed_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAE_NABUPartItem@InterpolatingPhysicsReceiver@Network@RBX@@AAPAUhashed_index_node_impl@234@Uhashed_unique_tag@234@@Z": "0x4c70b0 (own row)",
+        "?insert_@?$ordered_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@U?$less@I@std@@U?$nth_layer@$01UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEPAU?$ordered_index_node@U?$index_node_base@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@detail@multi_index@boost@@@234@ABUPartItem@InterpolatingPhysicsReceiver@Network@RBX@@PAU5234@@Z": "0x4c8cf0 (own row)"
+      },
+      "local_eh": []
+    }
+  ],
+  "folded_rows": [
+    {
+      "address": "004c7090",
+      "symbol": "??_G?$TItem@UTimeStamp@@@?$Association@VInstance@RBX@@@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??_7Item@?$Association@VInstance@RBX@@@RBX@@6B@": "0x8265e4 (vtable by RTTI .?AVItem@?$Association@VInstance@RBX@@@RBX@@)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    }
+  ],
+  "pending_rows": [],
+  "support_rows": {
+    "?decrement@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": {
+      "address": "004c6710",
+      "verified_targets": {}
+    },
+    "?increment@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": {
+      "address": "004c66c0",
+      "verified_targets": {}
+    },
+    "?rotate_left@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": {
+      "address": "004c6770",
+      "verified_targets": {}
+    },
+    "?rotate_right@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": {
+      "address": "004c67f0",
+      "verified_targets": {}
+    },
+    "?rebalance_for_erase@ordered_index_node_impl@detail@multi_index@boost@@SAPAU1234@PAU1234@Uparent_ref@ordered_index_node_compressed_base@234@AAPAU1234@2@Z": {
+      "address": "004c69e0",
+      "verified_targets": {
+        "?rotate_left@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c6770 (support body exact at the bound address)",
+        "?rotate_right@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c67f0 (support body exact at the bound address)"
+      }
+    },
+    "?rebalance@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": {
+      "address": "004c6870",
+      "verified_targets": {
+        "?rotate_left@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c6770 (support body exact at the bound address)",
+        "?rotate_right@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c67f0 (support body exact at the bound address)"
+      }
+    },
+    "?link@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@W4ordered_index_side@234@00@Z": {
+      "address": "004c6980",
+      "verified_targets": {
+        "?rebalance@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c6870 (support body exact at the bound address)"
+      }
+    }
+  },
+  "vtables": [
+    {
+      "vtable": "0x8265e4",
+      "symbol": "??_7Item@?$Association@VInstance@RBX@@@RBX@@6B@",
+      "rtti": ".?AVItem@?$Association@VInstance@RBX@@@RBX@@",
+      "original_slots": 1,
+      "slots": {
+        "0": "??_EItem@?$Association@VInstance@RBX@@@RBX@@UAEPAXI@Z -> 0x4c7090 (own row ??_G)"
+      }
+    },
+    {
+      "vtable": "0x8265ec",
+      "symbol": "??_7?$TItem@UTimeStamp@@@?$Association@VInstance@RBX@@@RBX@@6B@",
+      "rtti": ".?AV?$TItem@UTimeStamp@@@?$Association@VInstance@RBX@@@RBX@@",
+      "original_slots": 1,
+      "slots": {
+        "0": "??_E?$TItem@UTimeStamp@@@?$Association@VInstance@RBX@@@RBX@@UAEPAXI@Z -> 0x4c7090 (own row ??_G)"
+      }
+    }
+  ],
+  "not_exact": [
+    {
+      "address": "004c6dc0",
+      "reason": "PartItem helper (interpolate two History entries, ret 0xc). Not built: the body reaches the part's embedded Primitive at PartInstance +0x228 (`lea ecx, [edi + 0x228]` before getAssembly 005e7570); the native v8datamodel/PartInstance.h getPrimitive() returns primitive.get(), a load, and PhysicsSenders2008.h declares no PartItem members. Needs the 2008 PartInstance layout (embedded Primitive, same blocker as contact-unit2008 / app-unit609) and a PartItem member declaration."
+    },
+    {
+      "address": "004c6ed0",
+      "reason": "PartItem helper (apply one History: setCoordinateFrame 005997f0, then Assembly motors 005e62d0 / 005e6400 / MotorJoint::setCurrentAngle 005e5da0). Not built: same blocker as 004c6dc0."
+    },
+    {
+      "address": "004c6f70",
+      "reason": "PartItem per-item step (getDragging 00598d10, history search over the ring `(head + 8) % 8`, unsigned timestamps with the 2^32 correction 00811240 / 00819778). Not built: same blocker."
+    },
+    {
+      "address": "004c7530",
+      "reason": "shared_from_polymorphic_downcast<Stats::Item, Instance>: COMDAT referenced by other units (0049d770, 004b5700, 004b82d0); not a row of this unit."
+    }
+  ],
+  "rejected": {
+    "get<TimeStamp> with one function-local static in get() (`static size_t index = count()++;`)": "256 vs 282 bytes: the original tests the guard again for every loop compare and for the subscript",
+    "get<TimeStamp> with the index helper returning size_t by value": "280 vs 282 bytes (register allocation)",
+    "get<TimeStamp> with `while (Index::get() >= items.size())`": "not exact (operand order)",
+    "unit without /fp:fast": "hashed reserve 004c7730 121 vs 117 B; unchecked_rehash 504 vs 497 B",
+    "explicit instantiation of the three-argument hashed_index::find<Key, Hash, Pred>": "C3190 under 21022; the one-argument find<Key> instantiation emits the three-argument body 004c72b0"
+  },
+  "proposals": [
+    "Applied in batch 21 (Network/PhysicsSenders2008.h is in this lease now): the receiver and sender containers hash through boost::hash<shared_ptr<PartInstance> > with the out-of-line RBX::hash_value 004ca5b0 (defined and counted by NetworkPhysicsSenders2008.cpp), and PartItem(const shared_ptr<PartInstance>&) 004c7a10 is declared.",
+    "Open: the PartItem helpers 004c6dc0 / 004c6ed0 / 004c6f70 need PartItem member declarations and the 2008 PartInstance with the Primitive embedded at +0x228 (owner of v8datamodel/PartInstance.h; same evidence as the contact-unit2008 / app-unit609 receipts)."
+  ],
+  "exact_function_rows": [
+    "004c6d30",
+    "004c7090",
+    "004c70b0",
+    "004c70f0",
+    "004c7110",
+    "004c71d0",
+    "004c72b0",
+    "004c7330",
+    "004c76a0",
+    "004c7730",
+    "004c77b0",
+    "004c7a10",
+    "004c7c10",
+    "004c7dd0",
+    "004c7e80",
+    "004c7ef0",
+    "004c8b20",
+    "004c8cf0",
+    "004c8e40"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

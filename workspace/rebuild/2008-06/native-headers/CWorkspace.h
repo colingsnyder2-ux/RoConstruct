@@ -57,6 +57,7 @@ public:
     END_COM_MAP()
     DECLARE_PROTECT_FINAL_CONSTRUCT()
     HRESULT FinalConstruct();
+    void FinalRelease(); // INFERRED: 0046b740 tail-jumps to cleanup 0046b0e0
     STDMETHOD(SaveToFile)(BSTR);
     STDMETHOD(SaveSelectionToFile)(BSTR);
     STDMETHOD(Insert)(BSTR);

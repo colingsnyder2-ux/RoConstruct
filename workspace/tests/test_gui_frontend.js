@@ -190,8 +190,9 @@ assert.match(formContext.workerForm({...automaticForm,...formContext.rendered,le
 const feedNodes={};
 for(const id of ["worker-chat","worker-tabs","worker-status","chat-compact","chat-follow","jump-live","worker-chat-rows"])
   feedNodes["#"+id]={dataset:{},innerHTML:"",children:[],classList:{toggle() {}}};
-const feedContext={jobs:[],logs:[],workerRun:"",workerLoop:"",chatCompact:false,chatFollow:true,chatSignature:"",
+const feedContext={jobs:[],logs:[],workerRun:"",workerLoop:"",chatMode:"auto",familyPool:{slots:[]},familyCompletions:[],chatFollow:true,chatSignature:"",
   isWorker:job=>["worker","agent_worker"].includes(job.kind),
+  visibleWorker:job=>["worker","agent_worker"].includes(job.kind),
   $:selector=>feedNodes[selector],active:job=>job.status==="running",esc:String,workerCards:()=>"",empty:()=>"empty",
   setChatFollow:()=>{},updateFeed:(_node,items)=>feedContext.items=items};
 vm.createContext(feedContext);
@@ -258,17 +259,17 @@ for(const loops of [3,4,100]) {
     {job:"run",seq:2,time:2,event:"job_finished",slot:0,client:"C",addr:"00401000",unit:"LongUnit",size:30,previous:50,score:60,seconds:3},
     {job:"run",seq:3,time:3,event:"benchmark",workers:loops,completed:1,per_minute:2,matched:0,improved:1,errors:0}];
   feedContext.chatSignature="";feedContext.renderWorkerChat();
-  assert.equal(feedContext.items.length,loops>3 ? 4 : 5);
-  assert.ok(feedContext.items.some(([,html])=>html.includes("Worker started")));
-  assert.ok(feedContext.items.some(([,html])=>html.includes("Privacy: bounded prompts")));
+  assert.equal(feedContext.items.length,loops>3 ? 1 : 4);
+  assert.equal(feedContext.items.some(([,html])=>html.includes("Worker started")),loops===3);
+  assert.equal(feedContext.items.some(([,html])=>html.includes("Privacy: bounded prompts")),loops===3);
   assert.match(feedNodes["#worker-tabs"].innerHTML,/dot running/);
   assert.doesNotMatch(feedNodes["#worker-tabs"].innerHTML,/data-remove-run/);
   const result=feedContext.items.find(([key])=>key.startsWith("run:2"))[1];
   assert.match(result,/C 00401000/);assert.match(result,/50% → 60%/);
   assert.equal(result.includes("LongUnit"),loops===3);
-  assert.match(feedContext.items.at(-1)[1],/0 exact · 1 improved/);
+  if(loops===3) assert.match(feedContext.items.at(-1)[1],/0 exact · 1 improved/);
 }
-feedContext.jobs[0].slots={0:{}};feedContext.chatCompact=true;feedContext.chatSignature="";
+feedContext.jobs[0].slots={0:{}};feedContext.chatMode="compact";feedContext.chatSignature="";
 feedContext.renderWorkerChat();assert.equal(feedContext.items.length,4);
 feedContext.jobs[0].status="completed";feedContext.renderWorkerChat();
 assert.match(feedNodes["#worker-tabs"].innerHTML,/dot completed/);
@@ -291,6 +292,18 @@ feedContext.logs.push({job:"run",seq:102,time:6,event:"stage",message:"Next disc
 feedContext.chatSignature="";feedContext.renderWorkerChat();
 assert.ok(feedContext.items.some(([,html])=>html.includes("Linked preflight baseline: building")));
 assert.ok(feedContext.items.some(([,html])=>html.includes("Next discovery cycle")));
+feedContext.familyPool={slots:[{id:"nim-4",running:true,family:"class XItem",events:[
+  {time:10000,kind:"chat",message:"thinking aloud"},{time:11000,kind:"result",message:"00500000 EXACT"}]}]};
+feedContext.workerRun="family:nim-4";feedContext.chatMode="supercompact";feedContext.chatSignature="";
+feedContext.renderWorkerChat();
+assert.match(feedNodes["#worker-tabs"].innerHTML,/family:nim-4/);
+assert.ok(!feedContext.items.some(([,html])=>html.includes("00500000 EXACT")));
+assert.ok(!feedContext.items.some(([,html])=>html.includes("thinking aloud")));
+feedContext.familyCompletions=[{job:"family:nim-4",seq:"ended",time:12,event:"family",message:"nim-4 · Run ended: class XItem"}];
+feedContext.chatSignature="";feedContext.renderWorkerChat();
+assert.ok(feedContext.items.some(([,html])=>html.includes("Run ended: class XItem")));
+feedContext.chatMode="regular";feedContext.chatSignature="";feedContext.renderWorkerChat();
+assert.ok(feedContext.items.some(([,html])=>html.includes("thinking aloud")));
 (async()=>{
   context.fetch=async()=>{throw new TypeError("Failed to fetch");};
   await context.selectWorker("saved");

@@ -184,7 +184,15 @@ def inactive_code(root):
             continue
     # native_bulk proofs (work/native-client/prove.py: full census + per-file runs). Byte-exact rows are inactive
     # (exact); a byte-matched body at one candidate still waiting for identity/reference proof is draft.
-    manifests = sorted((root / "work/native-client/prove-out").glob("*/manifest.json"), key=lambda p: p.stat().st_mtime)
+    # Another lane deletes and rewrites prove-out folders while this runs: read each time once and
+    # skip what vanished, instead of failing the whole site build.
+    times = {}
+    for found_path in (root / "work/native-client/prove-out").glob("*/manifest.json"):
+        try:
+            times[found_path] = found_path.stat().st_mtime
+        except OSError:
+            continue
+    manifests = sorted(times, key=times.get)
     # Collect the latest single-source mapping while processing each manifest once.
     single, bulk = {}, set()
     for path in manifests:
@@ -192,7 +200,7 @@ def inactive_code(root):
             families = bulk_manifest(path, root / "work/integration/inactive-bulk-cache")
         except (ValueError, OSError):
             continue
-        stamp = path.stat().st_mtime
+        stamp = times[path]
         for family in families:
             if len(family.get("jobs", [])) == 1:
                 try:
@@ -485,6 +493,48 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
         data["sources"][addr] = link
     follow_wrappers(root, {a: s for a, s in data["sources"].items() if "url" not in s},
                     {a: v[0] for a, v in data["names"].items()})
+    # Authentic: integrated or inactive-exact bodies whose source is published at its original path on
+    # the layout branch with an identical object. A subset of those two groups; the site draws it first.
+    shown = subprocess.run(["git", "show", "refs/remotes/origin/layout/2008-06:rebuild/2008-06/layout/authentic.json"],
+                           cwd=root, capture_output=True, text=True, encoding="utf-8")
+    layout = json.loads(shown.stdout).get("addresses", {}) if shown.returncode == 0 else {}
+    # The export ran on Windows, where a folder keeps the case it was created with, so the recorded names can differ in
+    # case from the files on the branch (client/app vs client/App). Links need the real names.
+    prefix = "rebuild/2008-06/layout/"
+    on_branch = subprocess.run(["git", "ls-tree", "-r", "--name-only", "refs/remotes/origin/layout/2008-06", "--", prefix],
+                               cwd=root, capture_output=True, text=True, encoding="utf-8").stdout.splitlines()
+    real_case = {p[len(prefix):].casefold(): p[len(prefix):] for p in on_branch if p.startswith(prefix)}
+    layout = {a: real_case.get(f.casefold(), f) for a, f in layout.items()}
+    exact_inactive = {a for a, v in data["inactive"].items() if v[1]}
+    authentic = sorted(a for a in layout if a in functions and (a in native or a in exact_inactive))
+    # addr -> [original-path file on the layout branch, line of the definition (1 when not found)]
+    texts = {}
+    for path in {layout[a] for a in authentic}:
+        blob = subprocess.run(["git", "show", "refs/remotes/origin/layout/2008-06:rebuild/2008-06/layout/" + path],
+                              cwd=root, capture_output=True, text=True, encoding="utf-8", errors="replace")
+        texts[path] = blob.stdout if blob.returncode == 0 else ""
+    data["authentic"] = {a: [layout[a], function_line(texts[layout[a]], readable(inactive[a][0]) if a in inactive
+                                                      else data["names"].get(a, ["", ""])[0] or "")]
+                         for a in authentic}
+    data.setdefault("native_code", {})["authentic"] = {
+        "functions": len(authentic), "bytes": sum(functions[a]["size"] for a in authentic),
+        "integrated_functions": sum(a in native for a in authentic),
+        "integrated_bytes": sum(functions[a]["size"] for a in authentic if a in native),
+        "inactive_bytes": sum(functions[a]["size"] for a in authentic if a not in native)}
+    # Organized: the wider tier next to Authentic. Source is on the layout branch too, but its path is
+    # inferred or it is a merged unit (per-symbol proof only). addr -> [file on the branch, tier].
+    shown = subprocess.run(["git", "show", "refs/remotes/origin/layout/2008-06:rebuild/2008-06/layout/organized.json"],
+                           cwd=root, capture_output=True, text=True, encoding="utf-8")
+    wider = json.loads(shown.stdout).get("addresses", {}) if shown.returncode == 0 else {}
+    wider = {a: [real_case.get(v[0].casefold(), v[0])] + list(v[1:]) for a, v in wider.items()}
+    organized = sorted(a for a in wider if a in functions and a not in data["authentic"]
+                       and (a in native or a in exact_inactive))
+    data["organized"] = {a: wider[a] for a in organized}
+    data["native_code"]["organized"] = {
+        "functions": len(organized), "bytes": sum(functions[a]["size"] for a in organized),
+        "integrated_functions": sum(a in native for a in organized),
+        "integrated_bytes": sum(functions[a]["size"] for a in organized if a in native),
+        "inactive_bytes": sum(functions[a]["size"] for a in organized if a not in native)}
     for key, exact in (("native_inactive", True), ("native_draft", False)):
         hits = [functions[a] for a, v in data["inactive"].items() if v[1] == exact and a in functions]
         # separate from "groups": groups partition the code and are summed by the site

@@ -55,6 +55,11 @@ public:
     }
 };
 
+template<>
+const Name& NonFactoryProduct<Instance, static_cast<const char*>(0)>::className();
+template<>
+const Name& NonFactoryProduct<Instance, static_cast<const char*>(0)>::getClassName() const;
+
 template<class T>
 class FilteredSelection : public NonFactoryProduct<Instance, static_cast<const char*>(0)>,
                           public Service, public ISelectionBase {
@@ -66,6 +71,21 @@ public:
     FilteredSelection() { Instance::setName("FilteredSelection"); }
     virtual ~FilteredSelection() {
         if (rootSelection) rootSelection->removeFilteredSelection(this);
+    }
+    // 00581fe0 (ModelInstance; vftable slot of Instance::onAncestorChanged in every FilteredSelection<T> vftable)
+    virtual void onAncestorChanged(const AncestorChanged& event) {
+        Instance::onAncestorChanged(event);
+        if (!rootSelection) {
+            rootSelection = shared_from<Selection>(ServiceProvider::create<Selection>(event.newParent));
+            if (rootSelection) {
+                for (std::vector<boost::shared_ptr<Instance> >::const_iterator it = rootSelection->selection->begin();
+                     it != rootSelection->selection->end(); ++it) {
+                    T* item = dynamic_cast<T*>(it->get());
+                    if (item) filteredSelection.push_back(item);
+                }
+                rootSelection->addFilteredSelection(this);
+            }
+        }
     }
     T* findFirst(bool (*predicate)(T*));
     T* findDifferent(Controller::ControllerType);

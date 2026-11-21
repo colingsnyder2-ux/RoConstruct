@@ -5,8 +5,7 @@
 
 namespace RBX { class RunService; }
 
-// Original 004582f0 (open, 388 vs 391 bytes): identical except operator new(0xb0) - sizeof(CStatsItemRecord) needs
-// the record layout (see the header).
+// Original 004582f0: byte-identical with the record layout from the header (operator new(0xb0)).
 void CRobloxReportView::onMarshaledEvent(const RBX::Instance*, RBX::ChildAdded event)
 {
     CXTPReportControl& control = GetReportCtrl();

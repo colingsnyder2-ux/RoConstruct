@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded /I{headers}/engine-world
 // 2008-06 native RBX::Rocket control path (inactive): onEvent 00632e10 (Listener<RunService, Stepped> slot 0, `this`
 // is the Listener subobject at +0x138), computeForce 0062fc00 and turn 0062e530, plus the BodyMover computeForce slots
 // that read the 2008 Body (BodyPosition 00630140, BodyVelocity 006302d0, BodyAngularVelocity 00630420, BodyForce
@@ -24,8 +24,20 @@
 //     pointToWorldSpace first, a named worldForce with an inline worldPos temporary still zero-stores.
 //   Rocket::turn 0062e530: equal size (992 B); differs only in the angVelBody row sums (target e02*vz + e01*vy first)
 //     and the inline accumulateTorque fadd operand order.
+//     Verified again (2008-11-17): the standalone donor Gyro.cpp stubs (own G3D Matrix3 operator* double row sum
+//     (p2+p1)+p0 and Vector3 operator+= with a read barrier) are byte-IDENTICAL (992 B) but their stub Body/SimBody
+//     references are 'unproven reference identity' (updatePV 00599360, SimBody::update 00658d20) so prove.py rejects
+//     them; with the real headers the only diffs are exactly those two inline shapes (Matrix3 * Vector3 row order at
+//     0062e783 and SimBody::accumulateTorque `fld torque; fadd added` at 0062e8c0). Fix needs additive header edits
+//     (G3D Matrix3::operator*, Body2008.h SimBody::accumulateTorque), not done: shared by exact BodyGyro rows.
 //   Rocket::computeForce 0062fc00: same calls and shape; the frame is 0xc bytes smaller than the target (one Vector3
 //     temporary fewer) and the maxSpeed block's fsub operand order differs.
+//     Batch 23 (rejected, no change at all: 1223 B, same diff): a separate `maxVelocity = dir * maxSpeed` local instead of
+//     reassigning pAccel; a named `lowForce = low * mass` before `/ dt`. Target slots: force +0x14, pAccel +0x20, low
+//     +0x2c, targetDir +0x38; the low*mass temporary +0x44 and its quotient +0x50 sit above them, where the candidate
+//     packs the product into pAccel's dead slot. Other diffs: `fld st(0); fmulp st(4)` (kThrustP) and the dot sum order.
+//   BodyPosition 00630140, batch 23 (rejected): `Vector3 accel = vel * -kD + pAccel` (396 B) loses the -kD product
+//     order again (insn 53, `fld st(0); fmul vel.x`) as well as the mass products.
 #define NATIVE_PRIMITIVE_NATIVE_BODY
 #include "v8datamodel/Rocket.h"
 #include "v8datamodel/PartInstance.h"
@@ -33,6 +45,18 @@
 
 namespace RBX
 {
+	// 0062fae0 (Listener<RunService, Stepped> slot 0; `this` is the Listener subobject at +0x138): world +0x13c,
+	// weak_ptr<PartInstance>::lock 005cab00 on part +0x140 (twice), preventBodySleep (Instance slot 16), then
+	// World::ticklePrimitive 005e9410 (native v8world/World2008.h) with the embedded Primitive (PartInstance +0x228) and 1.
+	// Donor tools/rbxgs v8datamodel/Gyro.cpp with the 2008 weak_ptr part (mined analog roc_unit_e3d64f543a38d6a9).
+	// Batch 28: this unit now puts native-headers/engine-world first, so part-embedded v8datamodel/PartInstance.h reaches
+	// the 2008 engine-world v8world/World.h, which declares ticklePrimitive(Primitive*, int) 005e9410 (`ret 8`).
+	void BodyMover::onEvent(const RunService* source, Stepped event)
+	{
+		if (world && part.lock() && preventBodySleep())
+			world->ticklePrimitive(part.lock()->getPrimitive(), true);
+	}
+
 	// 00632e10: BodyMover::onEvent 0062fae0, then weak_ptr<PartInstance>::lock 005cab00 on part +0x140 (twice),
 	// PartInstance::getCoordinateFrame 00598cb0, CoordinateFrame::pointToWorldSpace 004766a0 for the target,
 	// SignalDescriptor::findSignalInstance 0056b620 and signal0::operator() 004b5950 (event_ReachedTarget 0097c81c).
@@ -195,6 +219,9 @@ namespace RBX
 	}
 
 	// 00630570: force +0x148 added at the branch cofm of the root (no updatePV).
+	// Batch 27 (rejected): Body2008.h SimBody::accumulateForceCofm as `force = _force + force` loads all three
+	// operands before the stores (fxch) here and breaks the exact COMDAT 0062e140; header kept as `force += _force`.
+	// Only the x component's fadd operand order differs (target `fld [edi+0x18]; fadd [esi+0x84]`).
 	void BodyForce::computeForce(const float dt, bool throttling)
 	{
 		Body* root = part.lock()->getPrimitive()->getBody()->getRoot();

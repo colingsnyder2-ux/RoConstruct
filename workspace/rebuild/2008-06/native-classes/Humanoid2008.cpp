@@ -169,59 +169,8 @@ namespace RBX
 		}
 	}
 
-	// 005db680 (734 bytes): name tag and health bar of another player's character. Read from the target: getHead 005d8a10,
-	// PartInstance::getCoordinateFrame 00598cb0 + 1.5f (0081e37c) up, Adorn::getViewport (slot 4), GCamera::project
-	// 00510d00, GCamera::getCoordinateFrame 005107b0; drawn only under 100.0f (008163a4) and head transparency (+0x1e8)
-	// under 0.99f (0083d7e0). Font size 12 / 10 / 8 below 20.0f (008222f0) / 50.0f (00819ba4). ServiceProvider::find<Teams>
-	// 0049ab50 + Teams::getTeamColorForHumanoid 005d6180, else Color3::white 00514a60; outline Color3::black 005149f0.
-	// The parent's name (+0x104 -> +0x110) through Adorn::drawFont2D (slot 13), Vector3::xy (ICF 005185d0). The bar is
-	// fontSize * 4 wide and fontSize / 2 high, split at health (+0x1a8) / maxHealth (+0x1ac): Rect2D::xyxy 004f35d0 and
-	// Adorn::rect2d (slot 11) with RBX::Color::lightGreen 005d7560 then Color3::red 005148b0 (ICF with Vector3::unitX).
-	// PARKED (near miss, 721 of 734 bytes): the target frame is 0x94 (this body 0x90) and the target builds each bar's
-	// Color4 temporary and Rect2D::xyxy result before pushing either rect2d argument; this body pushes the Color4 address
-	// before the xyxy call. Rejected: int width/height with separate Vector2 corners (723 B, bar math order differs);
-	// float width/height/left/right/bottom/split locals (bottom before right); named Color4 locals per bar (745 B, the
-	// Color4 push still precedes xyxy). This Vector2 size / topLeft + size form matches the bar math through `fmulp st(5)`.
-	void Humanoid::renderMultiplayer(Adorn* adorn, const G3D::GCamera& camera)
-	{
-		PartInstance* head = getHead();
-		if (head)
-		{
-			G3D::Vector3 headPosition = head->getCoordinateFrame().translation;
-			headPosition.y += 1.5f;
-			G3D::Vector3 screen = camera.project(headPosition, adorn->getViewport());
-			float distance = (camera.getCoordinateFrame().translation - headPosition).magnitude();
-
-			if (distance < 100.0f && head->getTransparencyXml() < 0.99f)
-			{
-				int fontSize = 8;
-				if (distance < 20.0f)
-					fontSize = 12;
-				else if (distance < 50.0f)
-					fontSize = 10;
-
-				Teams* teams = ServiceProvider::find<Teams>(this);
-				G3D::Color3 color = teams ? teams->getTeamColorForHumanoid(this) : G3D::Color3::white();
-
-				adorn->drawFont2D(getParent()->getName(), screen.xy(), fontSize, G3D::Color4(color, 1.0f),
-								  G3D::Color4(G3D::Color3::black(), 1.0f), Adorn::XALIGN_CENTER, Adorn::YALIGN_BOTTOM,
-								  Adorn::PROPORTIONAL_SPACING);
-
-				G3D::Vector2 size((float)(fontSize * 4), (float)(fontSize / 2));
-				G3D::Vector2 topLeft(screen.x - size.x * 0.5f, screen.y);
-				G3D::Vector2 bottomRight = topLeft + size;
-				float split = topLeft.x + size.x * (health / maxHealth);
-
-				G3D::Vector2 healthyMin(topLeft.x, topLeft.y);
-				G3D::Vector2 healthyMax(split, bottomRight.y);
-				G3D::Vector2 unhealthyMin(split, topLeft.y);
-				G3D::Vector2 unhealthyMax(bottomRight.x, bottomRight.y);
-
-				adorn->rect2d(G3D::Rect2D::xyxy(healthyMin, healthyMax), G3D::Color4(Color::lightGreen(), 1.0f));
-				adorn->rect2d(G3D::Rect2D::xyxy(unhealthyMin, unhealthyMax), G3D::Color4(G3D::Color3::red(), 1.0f));
-			}
-		}
-	}
+	// 005db680 renderMultiplayer is recovered byte-exact in HumanoidRecovery_005db680.cpp (same unit family);
+	// it lives there so the two recovered bodies of this class have one definition each.
 
 	// 005db960 (115 bytes, IRenderable slot; `this` is the IRenderable subobject +0x13c): donor body. findLocalCharacter
 	// 0049aca0, modelIsCharacter inlined (findModifierOfType<Humanoid> 005d8690), Workspace::findWorkspace 005a3380,
@@ -288,14 +237,17 @@ namespace RBX
 				// Target: the distance test adds 3.0f (0081e380) to the y difference and the flattened delta
 				// (y = 0) is stored before the 2.0f (0081c434) comparison; the delta lives in worldPosition's slot.
 				// Rejected: donor body (delta.y = 0 before magnitude; separate delta, 308 bytes); separate
-				// G3D::Vector3 delta = worldPosition - torsoPosition with y += 3 (335 bytes, extra 12-byte local).
-				// PARKED (3 hypotheses): this in-place form is 339 bytes with the target's frame (0x18); it still
-				// stores x'/y'/z' as they are computed, while the target keeps y' + 3 in st only and sums
-				// z'*z' + x'*x' before (y' + 3)^2. Next lead: a magnitude over a temporary such as
-				// (worldPosition + G3D::Vector3(0, 3, 0)).magnitude() after flattening x/z in place.
-				worldPosition -= torso->getCoordinateFrame().translation;
-				worldPosition.y += 3.0f;
-				float distance = worldPosition.magnitude();
+				// G3D::Vector3 delta = worldPosition - torsoPosition with y += 3 (335 bytes, extra 12-byte local);
+				// in-place `worldPosition -= translation; worldPosition.y += 3.0f` (339 bytes, stores x'/y'/z' as
+				// computed). Batch 25: (1) `-=` with `(worldPosition + G3D::Vector3(0, 3, 0)).magnitude()` -> 337
+				// bytes, y' no longer stored but x'/z' stored before the subtractions finish; (2) this form
+				// (assignment from operator- plus the temporary magnitude) -> 337 bytes, first divergence insn 63
+				// (0x5d9b2f): z' is stored before `fadd 3.0f` and the flattened y = 0 store is scheduled before the
+				// squares (target: z' stored after the fadd, y = 0 after the sum, sum order z'^2 + x'^2 + Y^2);
+				// (3) assignment from operator- with `worldPosition.y += 3.0f; magnitude()` -> 339 bytes (y = 0
+				// placed as the target, but sum order Y^2 last via fld st(2)). PARKED after three hypotheses.
+				worldPosition = worldPosition - torso->getCoordinateFrame().translation;
+				float distance = (worldPosition + G3D::Vector3(0.0f, 3.0f, 0.0f)).magnitude();
 				worldPosition.y = 0.0f;
 
 				if (distance < 2.0f)
@@ -449,3 +401,4 @@ template class std::auto_ptr<RBX::HUMAN::HumanoidState>;
 
 // Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
 template void RBX::Name::callDoDeclare<RBX::sHumanoid>();
+

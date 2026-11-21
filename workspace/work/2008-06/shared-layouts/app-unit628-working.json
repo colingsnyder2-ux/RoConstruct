@@ -1,0 +1,1561 @@
+{
+  "class": "RBX Explosion / FlagStandService rows of the application range 00628000..0062c000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit628/NativeAppUnit628Layout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit628/NativeAppUnit628Layout.cpp"
+    ],
+    "expl": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit628/NativeAppUnit628_expl.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/Explosion.cpp"
+    ],
+    "fss": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit628/NativeAppUnit628_fss.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/FlagStandService.cpp"
+    ],
+    "unit": [
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/boost-function-pod-vtable",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/engine-world",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/part-embedded",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit628/NativeAppUnit628_unit.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit628Explosion.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit628.py": "298877e583feffcab5260341c066e65380e43ad6f190162527d042624bfcc834",
+    "rebuild/2008-06/native-classes/Explosion.cpp": "14a2e0f71de20ca57a14e5ca3722dee3a5d183cfd835b0b09157afd815e7aaed",
+    "rebuild/2008-06/native-classes/FlagStandService.cpp": "47af4ac9d45576003b42d0ee142bbce6e4e691f7454a9955e01e721ebca4ca14",
+    "rebuild/2008-06/native-classes/AppUnit628Explosion.cpp": "caea776ac4567cf8af6817fe12fdcf042854b11ee3e8ce539a709597fc6672df",
+    "rebuild/2008-06/native-headers/v8datamodel/Explosion.h": "b08d85b511e2aca9d0e819ffba3d0e80a3165dfaae9fcda2261a6c6c6d85258f",
+    "rebuild/2008-06/native-headers/v8datamodel/FlagStandService.h": "c04f93d82607615da057ba2d1ab0164237be86b4d400e64f7785396ced80ce9c",
+    "rebuild/2008-06/native-headers/reflection/signal.h": "e8f76a9bf2a75ced4251c425e96766092a4a39783fdbbdb82942a98c8a4c9fb3",
+    "rebuild/2008-06/native-headers/reflection/property.h": "62aeba1205a57e8f0f0adcba36f8e07b57422e5b3097a3eef248dc45219b1c64",
+    "rebuild/2008-06/native-headers/util/RunStateOwner.h": "f6c39ef2034fcfd20b2edcae75355c71e5539a2be0db3ac80673911e67ad95e5",
+    "rebuild/2008-06/native-headers/v8datamodel/PartInstance.h": "a1c618a62c304d7701f4d2be95d13bc6ab581c320fc612ce0edc3f284ab243fb",
+    "rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h": "e587636e3e014667d883c41351dc934f476cbb47262f1075d407090891ce8776",
+    "rebuild/2008-06/native-headers/engine-world/v8world/World.h": "fefd356fb97f8b5a17474a44b866c6332387cd22ea90d4b84e70361eafe6bf08",
+    "rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h": "83977498f3b17b801ee932716d86b0b1a0ffc34a533b76a6ac254c77377723fe",
+    "rebuild/2008-06/native-headers/v8datamodel/Workspace.h": "5afc998f6d79228204df3165543daa9f840fd1b52932608164f74adb4513527a",
+    "rebuild/2008-06/native-headers/RbxGraphics/Adorn.h": "f2b0d550193fcc820bd17eb42276099594e591626a6d41288ed6298301c5c1b2",
+    "rebuild/2008-06/native-headers/util/Extents.h": "47349ce5409c13e02f8e1c1f2daaf620f35479f355d6cde5e1d59e0b66b70244",
+    "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp": "9e6bb423072221a911c59ec6bee3c0e51433df20a8a585fd80ae1f93515083dc"
+  },
+  "objects": {
+    "layout": "0b36b6641786cdbb2d88946a468039ce9ad5f2a163e3e518b5b23df8f22bcb7a",
+    "expl": "b94abc41e7092c93b4a179de58282e72d2847c36b0da32fd8aa8ce0ecc703591",
+    "fss": "210523c9e3365eaf670fb0bfd3eab3ba54ad8227bec33f64135f3fb0cb5bf037",
+    "unit": "1d392e9f3ee41c0b05a632c1b5dc66102a2f51e46d211d349bb4cbb18db644c5"
+  },
+  "layout": {
+    "explosion": "0x15c"
+  },
+  "allocations": [
+    "005c0def: malloc(0x15c) before the Explosion constructor 0062adb0 (Creatable<Instance>::create<Explosion>)"
+  ],
+  "rtti_bases": {
+    "Explosion 00845ea4": {
+      ".?AVExplosion@RBX@@": 0,
+      ".?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@": 0,
+      ".?AV?$Described@VExplosion@RBX@@$1?sExplosion@2@3PADAV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@2@@Reflection@RBX@@": 0,
+      ".?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@": 0,
+      ".?AVInstance@RBX@@": 0,
+      ".?AV?$enable_shared_from_this@VInstance@RBX@@@boost@@": 228,
+      ".?AV?$GuidItem@VInstance@RBX@@@RBX@@": 0,
+      ".?AV?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@": 16,
+      ".?AV?$Creatable@VInstance@RBX@@@RBX@@": 16,
+      ".?AVObject@RBX@@": 16,
+      ".?AV?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@": 20,
+      ".?AVDescribedBase@Reflection@RBX@@": 20,
+      ".?AVSignalSource@Reflection@RBX@@": 20,
+      ".?AVDebugable@RBX@@": 32,
+      ".?AV?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@": 36,
+      ".?AV?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@": 68,
+      ".?AV?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@": 100,
+      ".?AV?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@": 132,
+      ".?AV?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@": 164,
+      ".?AV?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@": 196,
+      ".?AVnoncopyable@noncopyable_@boost@@": 236,
+      ".?AV?$Listener@VRunService@RBX@@VStepped@2@@RBX@@": 304,
+      ".?AVIRenderable@RBX@@": 308
+    }
+  },
+  "initializers": {
+    "_propBlastRadius": "007f7dc0: mov ecx, 0x97bfd4; call 0062a880",
+    "?signal_Hit@RBX@@3V?$SignalDesc@VExplosion@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@1@A": "007f7e60: mov ecx, 0x97c028; call 0062ac80",
+    "Explosion::propBlastPressure": "007f7e00: push 5; push 0x158 (member); mov ecx, 0x97c00c; call 0062a930",
+    "Explosion::propPosition": "007f7e30: push 5; push 0x148 (member); mov ecx, 0x97bff0; call 0062aa00"
+  },
+  "pod_stored_vtable": "00845de4 = {manage 0062a640, invoke 0062aad0} (boost-function-pod-vtable stored_vtable)",
+  "thunk_vtables": {
+    "00629d20": [
+      "vtable 00845bfc slot 0 .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x14",
+      "vtable 00845d80 slot 0 .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x14"
+    ],
+    "00629d30": [
+      "vtable 00845be4 slot 0 .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x24",
+      "vtable 00845d68 slot 0 .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x24"
+    ],
+    "00629d40": [
+      "vtable 00845bd4 slot 0 .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x44",
+      "vtable 00845d58 slot 0 .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x44"
+    ],
+    "00629d50": [
+      "vtable 00845bc4 slot 0 .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x64",
+      "vtable 00845d48 slot 0 .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x64"
+    ],
+    "0062ac20": [
+      "vtable 00845bb4 slot 0 .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x84",
+      "vtable 00845d38 slot 0 .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x84"
+    ],
+    "0062ac30": [
+      "vtable 00845ba4 slot 0 .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0xa4",
+      "vtable 00845d28 slot 0 .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0xa4"
+    ],
+    "0062ac40": [
+      "vtable 00845b94 slot 0 .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0xc4",
+      "vtable 00845d18 slot 0 .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0xc4"
+    ],
+    "0062ac50": [
+      "vtable 00845c04 slot 0 .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x10",
+      "vtable 00845d88 slot 0 .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x10"
+    ],
+    "0062aed0": [
+      "vtable 00845e94 slot 0 .?AVExplosion@RBX@@ offset 0x10"
+    ],
+    "0062aee0": [
+      "vtable 00845e8c slot 0 .?AVExplosion@RBX@@ offset 0x14"
+    ],
+    "0062aef0": [
+      "vtable 00845e18 slot 1 .?AVExplosion@RBX@@ offset 0x130"
+    ],
+    "0062af00": [
+      "vtable 00845e74 slot 0 .?AVExplosion@RBX@@ offset 0x24"
+    ],
+    "0062af10": [
+      "vtable 00845e64 slot 0 .?AVExplosion@RBX@@ offset 0x44"
+    ],
+    "0062af20": [
+      "vtable 00845e54 slot 0 .?AVExplosion@RBX@@ offset 0x64"
+    ],
+    "0062af30": [
+      "vtable 00845e44 slot 0 .?AVExplosion@RBX@@ offset 0x84"
+    ],
+    "0062af40": [
+      "vtable 00845e34 slot 0 .?AVExplosion@RBX@@ offset 0xa4"
+    ],
+    "0062af50": [
+      "vtable 00845e24 slot 0 .?AVExplosion@RBX@@ offset 0xc4"
+    ],
+    "0062bba0": [
+      "vtable 008460f8 slot 0 .?AV?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@ offset 0x10",
+      "vtable 00846430 slot 0 .?AV?$DescribedCreatable@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@ offset 0x10"
+    ],
+    "0062bbf0": [
+      "vtable 008460d8 slot 0 .?AV?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@ offset 0x24",
+      "vtable 00846410 slot 0 .?AV?$DescribedCreatable@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@ offset 0x24"
+    ],
+    "0062bc10": [
+      "vtable 008460c8 slot 0 .?AV?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@ offset 0x44",
+      "vtable 00846400 slot 0 .?AV?$DescribedCreatable@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@ offset 0x44"
+    ],
+    "0062bc30": [
+      "vtable 008460b8 slot 0 .?AV?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@ offset 0x64",
+      "vtable 008463f0 slot 0 .?AV?$DescribedCreatable@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@ offset 0x64"
+    ],
+    "0062bc60": [
+      "vtable 00846088 slot 0 .?AV?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@ offset 0xc4",
+      "vtable 008463c0 slot 0 .?AV?$DescribedCreatable@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@ offset 0xc4"
+    ]
+  },
+  "unit_map": {
+    "lua-lbaselib 00628000..00628f7f": "Lua 5.1 lbaselib.c tail (library; Roblox App/lua-5.1.1 tree compiled as C++), continuing the block app-unit624 maps from 00627e30: luaB_getmetatable 00628080 (\"__metatable\"), luaB_setmetatable 006280d0 (\"nil or table expected\"), getfunc 00628150, setfenv 00628230, collectgarbage 006283a0 (\"collect\"), load / dofile, assert 00628750, unpack 006287a0, select 00628820, tostring 00628940, newproxy 00628a40, the coroutine library 00628b20..00628e30 (\"coroutine expected\", \"Lua function expected\"), base_open 00628e50 (\"_VERSION\", \"newproxy\") and luaopen_base 00628f50 (\"coroutine\"; called from 005aefa0). Library code: mapped, never recovered; 38 rows, none counted.",
+    "script-app-iequipable-sound 00628f80..0062933f": "IEquipable dtor / ctor / buildWeld 00628f80 / 00628fc0 / 00628fd0 and EnumDesc<SoundType> 00629120 (\"SoundType\", \"NoSound\", \"Boing\", ...): all counted by script-app2008-working.json.",
+    "click-detector 00629340..00629b9f": "RBX::ClickDetector unit (RTTI vtable 00845afc, initializers 007f7d20..007f7d90): every row counted by click-detector-working.json.",
+    "explosion 00629ba0..0062b8ef": "RBX::Explosion unit (v8datamodel/Explosion.cpp): RTTI vtable 00845ea4 .?AVExplosion@RBX@@ (Listener<RunService, Stepped> at +0x130, IRenderable at +0x134), malloc(0x15c) at 005c0def before the ctor 0062adb0, dynamic initializers 007f7dc0 / 007f7e00 / 007f7e30 / 007f7e60 (propBlastRadius, propBlastPressure, propPosition, signal_Hit). The ctor 0062adb0 / dtor 0062af60 are counted by explosion-working.json; 0062a130 (BoundPropGetSet<float>::getValue, identical-code folded across classes) by click-detector / body-movers. Built here: getBlastRadius, the FactoryProduct / DescribedCreatable<Explosion> members and thunks (committed Explosion.cpp, read-only), the reflection statics and their templates, the boost.signals / boost.function instances of signal_Hit, setBlastRadius, onServiceProvider, signalBlast, render3dAdorn, the Explosion thunks and deleting destructor. Not built: Body::accumulateForce 00629bb0 (inline COMDAT of the Body owner; callers doBlast 00629d60 and 0066eb90), doBlast 00629d60 (needs World::update 005e9520 / ticklePrimitive 005e9410, the ForceField check 0062d3d0, PartInstance::destroyJoints 00598c70 and the Body +0x10/+0x2c root chain, none declared by the committed native headers), onEvent 0062b700 (near miss, see near_misses_not_counted).",
+    "flagstand-flagstandservice 0062b8f0..0062bfff": "Head of the FlagStand / FlagStandService unit (continues to 0062cf40; initializers 007f7e90 / 007f7ef0). FlagStand rows (getTeamColor 0062b8f0, GetFlag 0062b900, ~FactoryProduct<FlagStand> 0062b970, the thunks 0062bb90..0062bc70 counted by flag-family, 0062bbe0 (a vtordisp thunk of FactoryProduct<FlagStand> at +0x3fc), FactoryProduct<FlagStand>() 0062bc80, 0062bdc0, the PropDescriptor GetSetImpl slot 4 0062bee0, 0062bf20) belong to the flag-family owner (native-classes/FlagStand.cpp). FlagStandService rows: ~FactoryProduct<FlagStandService> 0062ba70 and FindStandWithFlag 0062bfc0 counted by flagstandservice-working.json; built here from the committed FlagStandService.cpp (read-only): the FactoryProduct<FlagStandService> thunks 0062bba0 / 0062bbf0 / 0062bc10 / 0062bc30 / 0062bc60, ??_G 0062bbb0 and ~DescribedCreatable<FlagStandService> 0062be70. Not built: FactoryProduct<FlagStandService>() 0062bad0 and 0062bb30 (emitted only by the parked FlagStandService ctor 0062ccd0)."
+  },
+  "excluded_classes": "No CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView rows lie in this range.",
+  "range_functions": 164,
+  "range_rows_counted_by_other_receipts": [
+    "00628f80 counted by script-app2008-working.json",
+    "00628fc0 counted by script-app2008-working.json",
+    "00628fd0 counted by script-app2008-working.json",
+    "00629120 counted by script-app2008-working.json",
+    "00629340 counted by click-detector-working.json",
+    "006293a0 counted by click-detector-working.json",
+    "00629400 counted by click-detector-working.json",
+    "00629410 counted by click-detector-working.json",
+    "00629430 counted by click-detector-working.json",
+    "00629440 counted by click-detector-working.json",
+    "00629450 counted by click-detector-working.json",
+    "006294a0 counted by click-detector-working.json",
+    "00629540 counted by click-detector-working.json",
+    "00629560 counted by click-detector-working.json",
+    "00629610 counted by click-detector-working.json",
+    "006296e0 counted by click-detector-working.json",
+    "00629780 counted by click-detector-working.json",
+    "00629790 counted by click-detector-working.json",
+    "006297a0 counted by click-detector-working.json",
+    "006297b0 counted by click-detector-working.json",
+    "006297c0 counted by click-detector-working.json",
+    "006297d0 counted by click-detector-working.json",
+    "006297e0 counted by click-detector-working.json",
+    "006298d0 counted by click-detector-working.json",
+    "00629920 counted by click-detector-working.json",
+    "00629930 counted by click-detector-working.json",
+    "00629940 counted by click-detector-working.json",
+    "00629950 counted by click-detector-working.json",
+    "00629960 counted by click-detector-working.json",
+    "00629970 counted by click-detector-working.json",
+    "00629980 counted by click-detector-working.json",
+    "00629990 counted by click-detector-working.json",
+    "006299a0 counted by click-detector-working.json",
+    "00629a50 counted by click-detector-working.json",
+    "00629a70 counted by click-detector-working.json",
+    "00629ac0 counted by click-detector-working.json",
+    "00629b20 counted by click-detector-working.json",
+    "0062a130 counted by body-movers-working.json, click-detector-working.json",
+    "0062adb0 counted by explosion-working.json",
+    "0062af60 counted by explosion-working.json",
+    "0062ba70 counted by flagstandservice-working.json",
+    "0062bb90 counted by flag-family-working.json",
+    "0062bbd0 counted by flag-family-working.json",
+    "0062bc00 counted by flag-family-working.json",
+    "0062bc20 counted by flag-family-working.json",
+    "0062bc40 counted by flag-family-working.json",
+    "0062bc50 counted by flag-family-working.json",
+    "0062bc70 counted by flag-family-working.json",
+    "0062bdb0 counted by flag-family-working.json",
+    "0062be80 counted by flag-family-working.json",
+    "0062bfc0 counted by flagstandservice-working.json"
+  ],
+  "rows": {
+    "expl": [
+      {
+        "address": "00629c60",
+        "symbol": "??1?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@MAE@XZ",
+        "size": 83,
+        "target_size": 83,
+        "exact": true,
+        "verified_targets": {
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x845c14 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x0)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x845c04 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x10)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x845bfc (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6BDebugable@1@@": "0x845bf4 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x20)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x845be4 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x24)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x845bd4 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x44)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x845bc4 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x64)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x845bb4 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x84)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x845ba4 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0xa4)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x845b94 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0xc4)",
+          "??1Instance@RBX@@UAE@XZ": "0x55a540 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00629cc0",
+        "symbol": "??0?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@IAE@XZ",
+        "size": 90,
+        "target_size": 90,
+        "exact": true,
+        "verified_targets": {
+          "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x845c14 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x0)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x845c04 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x10)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x845bfc (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6BDebugable@1@@": "0x845bf4 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x20)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x845be4 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x24)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x845bd4 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x44)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x845bc4 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x64)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x845bb4 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x84)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x845ba4 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0xa4)",
+          "??_7?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x845b94 (vtable RTTI .?AV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0xc4)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00629d20",
+        "symbol": "??_E?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@OBE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@MAEPAXI@Z": "0x62ac60 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00629d30",
+        "symbol": "??_E?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@OCE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@MAEPAXI@Z": "0x62ac60 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00629d40",
+        "symbol": "??_E?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@OEE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@MAEPAXI@Z": "0x62ac60 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00629d50",
+        "symbol": "??_E?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@OGE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@MAEPAXI@Z": "0x62ac60 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062a290",
+        "symbol": "??1?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@UAE@XZ",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "verified_targets": {
+          "??1?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@MAE@XZ": "0x629c60 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062a340",
+        "symbol": "?getClassName@?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@UBEABVName@2@XZ",
+        "size": 23,
+        "target_size": 23,
+        "exact": true,
+        "verified_targets": {
+          "?flag@?1???$declare@$1?sExplosion@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x9777f8 (local static)",
+          "??$callDoDeclare@$1?sExplosion@RBX@@3PADA@Name@RBX@@CAXXZ": "0x5bff80 (helper / COMDAT body, compared exact at the bound address)",
+          "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+          "??$doDeclare@$1?sExplosion@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x5bf870 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062ab80",
+        "symbol": "??0?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@IAE@XZ",
+        "size": 146,
+        "target_size": 146,
+        "exact": true,
+        "verified_targets": {
+          "??0?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@IAE@XZ": "0x629cc0 (own row)",
+          "?classDescriptor@?$Described@VExplosion@RBX@@$1?sExplosion@2@3PADAV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5c0320 (helper / COMDAT body, compared exact at the bound address)",
+          "??_7?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x845d94 (vtable RTTI .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x0)",
+          "??_7?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x845d88 (vtable RTTI .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x10)",
+          "??_7?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x845d80 (vtable RTTI .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6BDebugable@1@@": "0x845d78 (vtable RTTI .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x20)",
+          "??_7?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x845d68 (vtable RTTI .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x24)",
+          "??_7?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x845d58 (vtable RTTI .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x44)",
+          "??_7?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x845d48 (vtable RTTI .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x64)",
+          "??_7?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x845d38 (vtable RTTI .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0x84)",
+          "??_7?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x845d28 (vtable RTTI .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0xa4)",
+          "??_7?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x845d18 (vtable RTTI .?AV?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@ offset 0xc4)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@IAE@XZ"
+        ]
+      },
+      {
+        "address": "0062ac20",
+        "symbol": "??_E?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@OIE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@MAEPAXI@Z": "0x62ac60 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062ac30",
+        "symbol": "??_E?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@OKE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@MAEPAXI@Z": "0x62ac60 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062ac40",
+        "symbol": "??_E?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@OME@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@MAEPAXI@Z": "0x62ac60 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062ac50",
+        "symbol": "??_E?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@OBA@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@MAEPAXI@Z": "0x62ac60 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062ac60",
+        "symbol": "??_G?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@MAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??1?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@MAE@XZ": "0x629c60 (own row)",
+          "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062aed0",
+        "symbol": "??_EExplosion@RBX@@WBA@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EExplosion@RBX@@UAEPAXI@Z": "0x62b010 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062aee0",
+        "symbol": "??_EExplosion@RBX@@WBE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EExplosion@RBX@@UAEPAXI@Z": "0x62b010 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062aef0",
+        "symbol": "??_EExplosion@RBX@@WBDA@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EExplosion@RBX@@UAEPAXI@Z": "0x62b010 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062af00",
+        "symbol": "??_EExplosion@RBX@@WCE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EExplosion@RBX@@UAEPAXI@Z": "0x62b010 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062af10",
+        "symbol": "??_EExplosion@RBX@@WEE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EExplosion@RBX@@UAEPAXI@Z": "0x62b010 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062af20",
+        "symbol": "??_EExplosion@RBX@@WGE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EExplosion@RBX@@UAEPAXI@Z": "0x62b010 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062af30",
+        "symbol": "??_EExplosion@RBX@@WIE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EExplosion@RBX@@UAEPAXI@Z": "0x62b010 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062af40",
+        "symbol": "??_EExplosion@RBX@@WKE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EExplosion@RBX@@UAEPAXI@Z": "0x62b010 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062af50",
+        "symbol": "??_EExplosion@RBX@@WME@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EExplosion@RBX@@UAEPAXI@Z": "0x62b010 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062b010",
+        "symbol": "??_GExplosion@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??1Explosion@RBX@@UAE@XZ": "0x62af60 (helper / COMDAT body, compared exact at the bound address)",
+          "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+        },
+        "local_eh": []
+      }
+    ],
+    "fss": [
+      {
+        "address": "0062bba0",
+        "symbol": "??_E?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@OBA@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAEPAXI@Z": "0x62bbb0 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062bbb0",
+        "symbol": "??_G?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??1?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAE@XZ": "0x62ba70 (helper / COMDAT body, compared exact at the bound address)",
+          "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062bbf0",
+        "symbol": "??_E?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@OCE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAEPAXI@Z": "0x62bbb0 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062bc10",
+        "symbol": "??_E?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@OEE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAEPAXI@Z": "0x62bbb0 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062bc30",
+        "symbol": "??_E?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@OGE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAEPAXI@Z": "0x62bbb0 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062bc60",
+        "symbol": "??_E?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@OME@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAEPAXI@Z": "0x62bbb0 (own row (??_E folded with ??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062be70",
+        "symbol": "??1?$DescribedCreatable@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@UAE@XZ",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "verified_targets": {
+          "??1?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAE@XZ": "0x62ba70 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": []
+      }
+    ],
+    "unit": [
+      {
+        "address": "00629ba0",
+        "symbol": "?getBlastRadius@Explosion@RBX@@QBEMXZ",
+        "size": 7,
+        "target_size": 7,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0062a030",
+        "symbol": "?render3dAdorn@Explosion@RBX@@EAEXPAVAdorn@2@@Z",
+        "size": 249,
+        "target_size": 249,
+        "exact": true,
+        "verified_targets": {
+          "?identity@Matrix3@G3D@@SAABV12@XZ": "0x513e20 (external)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (local static)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (local static)",
+          "??_7Sphere@G3D@@6B@": "0x827404 (vtable RTTI .?AVSphere@G3D@@ offset 0x0)",
+          "?red@Color3@G3D@@SAABV12@XZ": "0x5148b0 (external)",
+          "?clear@Color4@G3D@@SAABV12@XZ": "0x7baf10 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?render3dAdorn@Explosion@RBX@@EAEXPAVAdorn@2@@Z"
+        ]
+      },
+      {
+        "address": "0062a150",
+        "symbol": "??0?$args2@V?$shared_ptr@VInstance@RBX@@@boost@@MH@detail@signals@boost@@QAE@V?$shared_ptr@VInstance@RBX@@@3@M@Z",
+        "size": 105,
+        "target_size": 105,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0062a1c0",
+        "symbol": "??R?$function2@XV?$shared_ptr@VInstance@RBX@@@boost@@MV?$allocator@X@std@@@boost@@QBEXV?$shared_ptr@VInstance@RBX@@@1@M@Z",
+        "size": 198,
+        "target_size": 198,
+        "exact": true,
+        "verified_targets": {
+          "??0bad_function_call@boost@@QAE@XZ": "0x409ef0 (helper / COMDAT body, compared exact at the bound address)",
+          "??$throw_exception@Vbad_function_call@boost@@@boost@@YAXABVbad_function_call@0@@Z": "0x40a500 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$??R?$function2@XV?$shared_ptr@VInstance@RBX@@@boost@@MV?$allocator@X@std@@@boost@@QBEXV?$shared_ptr@VInstance@RBX@@@1@M@Z"
+        ]
+      },
+      {
+        "address": "0062a2a0",
+        "symbol": "??$getset@P8Explosion@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VExplosion@RBX@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8Explosion@2@BEMXZP852@AEXM@Z@Z",
+        "size": 77,
+        "target_size": 77,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$GetSetImpl@P8Explosion@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VExplosion@RBX@@M@Reflection@RBX@@6B@": "0x845c58 (vtable RTTI .?AV?$GetSetImpl@P8Explosion@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VExplosion@RBX@@M@Reflection@RBX@@ offset 0x0)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062a2f0",
+        "symbol": "??$?RUconnection_slot_pair@detail@signals@boost@@@?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@MV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@?$call_bound2@X@detail@signals@boost@@QBE?AUunusable@234@ABUconnection_slot_pair@234@@Z",
+        "size": 70,
+        "target_size": 70,
+        "exact": true,
+        "verified_targets": {
+          "??R?$function2@XV?$shared_ptr@VInstance@RBX@@@boost@@MV?$allocator@X@std@@@boost@@QBEXV?$shared_ptr@VInstance@RBX@@@1@M@Z": "0x62a1c0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062a360",
+        "symbol": "??0?$holder@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@Z",
+        "size": 95,
+        "target_size": 95,
+        "exact": true,
+        "verified_targets": {
+          "??_7?$holder@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@any@boost@@6B@": "0x845c98 (vtable RTTI .?AV?$holder@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@any@boost@@ offset 0x0)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$holder@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@Z"
+        ]
+      },
+      {
+        "address": "0062a3c0",
+        "symbol": "?type@?$holder@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@any@boost@@UBEABVtype_info@@XZ",
+        "size": 6,
+        "target_size": 6,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@8": "0x95b998 (RTTI type descriptor .?AV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062a3d0",
+        "symbol": "?clone@?$holder@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@any@boost@@UBEPAVplaceholder@23@XZ",
+        "size": 96,
+        "target_size": 96,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0?$holder@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@Z": "0x62a360 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?clone@?$holder@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@any@boost@@UBEPAVplaceholder@23@XZ"
+        ]
+      },
+      {
+        "address": "0062a430",
+        "symbol": "?manager@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@U?$bool_@$00@mpl@4@@Z",
+        "size": 139,
+        "target_size": 139,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@8": "0x95ba00 (RTTI type descriptor .?AVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@)",
+          "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062a4c0",
+        "symbol": "??$?0V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@1@@Z",
+        "size": 89,
+        "target_size": 89,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0?$holder@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@Z": "0x62a360 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@1@@Z"
+        ]
+      },
+      {
+        "address": "0062a520",
+        "symbol": "?connect@?$signal2@XV?$shared_ptr@VInstance@RBX@@@boost@@MU?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@boost@@QAE?AVconnection@signals@2@ABV?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z",
+        "size": 275,
+        "target_size": 275,
+        "exact": true,
+        "verified_targets": {
+          "??$?0V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@1@@Z": "0x62a4c0 (own row)",
+          "?get_data@slot_base@detail@signals@boost@@QBE?AV?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@XZ": "0x4915b0 (helper / COMDAT body, compared exact at the bound address)",
+          "?connect_slot@signal_base_impl@detail@signals@boost@@QAE?AVconnection@34@ABVany@4@ABVstored_group@234@V?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@W4connect_position@34@@Z": "0x56a900 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?connect@?$signal2@XV?$shared_ptr@VInstance@RBX@@@boost@@MU?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@boost@@QAE?AVconnection@signals@2@ABV?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z"
+        ]
+      },
+      {
+        "address": "0062a640",
+        "symbol": "?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+        "size": 50,
+        "target_size": 50,
+        "exact": true,
+        "verified_targets": {
+          "?manager@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@U?$bool_@$00@mpl@4@@Z": "0x62a430 (own row)",
+          "??_R0?AVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@8": "0x95ba00 (RTTI type descriptor .?AVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062a680",
+        "symbol": "??0TSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "??_7SignalInstance@Reflection@RBX@@6B@": "0x80ece0 (vtable RTTI .?AVSignalInstance@Reflection@RBX@@ offset 0x0)",
+          "??0?$signal2@XV?$shared_ptr@VInstance@RBX@@@boost@@MU?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z": "0x499c00 (helper / COMDAT body, compared exact at the bound address)",
+          "??_7TSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@6B@": "0x845ca8 (vtable RTTI .?AVTSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@ offset 0x0)"
+        },
+        "local_eh": [
+          "__ehhandler$??0TSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z"
+        ]
+      },
+      {
+        "address": "0062a6f0",
+        "symbol": "?newSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z",
+        "size": 102,
+        "target_size": 102,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0TSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z": "0x62a680 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?newSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z"
+        ]
+      },
+      {
+        "address": "0062a760",
+        "symbol": "??RGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z",
+        "size": 276,
+        "target_size": 276,
+        "exact": true,
+        "verified_targets": {
+          "??0?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@QAE@I@Z": "0x41b170 (helper / COMDAT body, compared exact at the bound address)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??$?4V?$shared_ptr@VInstance@RBX@@@boost@@@any@boost@@QAEAAV01@ABV?$shared_ptr@VInstance@RBX@@@1@@Z": "0x48dd00 (helper / COMDAT body, compared exact at the bound address)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$holder@M@any@boost@@6B@": "0x8106bc (vtable RTTI .?AV?$holder@M@any@boost@@ offset 0x0)",
+          "??1?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@QAE@XZ": "0x41af20 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$??RGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z"
+        ]
+      },
+      {
+        "address": "0062a880",
+        "symbol": "??$?0P8Explosion@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VExplosion@RBX@@M@Reflection@RBX@@QAE@PBD0P8Explosion@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z",
+        "size": 163,
+        "target_size": 163,
+        "exact": true,
+        "verified_targets": {
+          "??$getset@P8Explosion@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VExplosion@RBX@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8Explosion@2@BEMXZP852@AEXM@Z@Z": "0x62a2a0 (own row)",
+          "?classDescriptor@?$Described@VExplosion@RBX@@$1?sExplosion@2@3PADAV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5c0320 (helper / COMDAT body, compared exact at the bound address)",
+          "??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x445610 (helper / COMDAT body, compared exact at the bound address)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??_7?$PropDescriptor@VExplosion@RBX@@M@Reflection@RBX@@6B@": "0x845cb0 (vtable RTTI .?AV?$PropDescriptor@VExplosion@RBX@@M@Reflection@RBX@@ offset 0x0)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0P8Explosion@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VExplosion@RBX@@M@Reflection@RBX@@QAE@PBD0P8Explosion@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z"
+        ]
+      },
+      {
+        "address": "0062a930",
+        "symbol": "??$?0VExplosion@RBX@@@?$BoundProp@M$00@Reflection@RBX@@QAE@PBD0PQExplosion@2@MW4Functionality@PropertyDescriptor@12@@Z",
+        "size": 200,
+        "target_size": 200,
+        "exact": true,
+        "verified_targets": {
+          "?classDescriptor@?$Described@VExplosion@RBX@@$1?sExplosion@2@3PADAV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5c0320 (helper / COMDAT body, compared exact at the bound address)",
+          "??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x445610 (helper / COMDAT body, compared exact at the bound address)",
+          "??_7?$BoundProp@M$00@Reflection@RBX@@6B@": "0x824134 (vtable RTTI .?AV?$BoundProp@M$00@Reflection@RBX@@ offset 0x0)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$BoundPropGetSet@VExplosion@RBX@@@?$BoundProp@M$00@Reflection@RBX@@6B@": "0x845c70 (vtable RTTI .?AV?$BoundPropGetSet@VExplosion@RBX@@@?$BoundProp@M$00@Reflection@RBX@@ offset 0x0)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VExplosion@RBX@@@?$BoundProp@M$00@Reflection@RBX@@QAE@PBD0PQExplosion@2@MW4Functionality@PropertyDescriptor@12@@Z"
+        ]
+      },
+      {
+        "address": "0062aa00",
+        "symbol": "??$?0VExplosion@RBX@@@?$BoundProp@VVector3@G3D@@$00@Reflection@RBX@@QAE@PBD0PQExplosion@2@VVector3@G3D@@W4Functionality@PropertyDescriptor@12@@Z",
+        "size": 200,
+        "target_size": 200,
+        "exact": true,
+        "verified_targets": {
+          "?classDescriptor@?$Described@VExplosion@RBX@@$1?sExplosion@2@3PADAV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5c0320 (helper / COMDAT body, compared exact at the bound address)",
+          "??0?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x59a4b0 (helper / COMDAT body, compared exact at the bound address)",
+          "??_7?$BoundProp@VVector3@G3D@@$00@Reflection@RBX@@6B@": "0x845ce4 (vtable RTTI .?AV?$BoundProp@VVector3@G3D@@$00@Reflection@RBX@@ offset 0x0)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$BoundPropGetSet@VExplosion@RBX@@@?$BoundProp@VVector3@G3D@@$00@Reflection@RBX@@6B@": "0x845c84 (vtable RTTI .?AV?$BoundPropGetSet@VExplosion@RBX@@@?$BoundProp@VVector3@G3D@@$00@Reflection@RBX@@ offset 0x0)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VExplosion@RBX@@@?$BoundProp@VVector3@G3D@@$00@Reflection@RBX@@QAE@PBD0PQExplosion@2@VVector3@G3D@@W4Functionality@PropertyDescriptor@12@@Z"
+        ]
+      },
+      {
+        "address": "0062aad0",
+        "symbol": "?invoke@?$void_function_obj_invoker2@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@XV?$shared_ptr@VInstance@RBX@@@boost@@M@function@detail@boost@@SAXAATfunction_buffer@234@V?$shared_ptr@VInstance@RBX@@@4@M@Z",
+        "size": 163,
+        "target_size": 163,
+        "exact": true,
+        "verified_targets": {
+          "??RGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z": "0x62a760 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?invoke@?$void_function_obj_invoker2@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@XV?$shared_ptr@VInstance@RBX@@@boost@@M@function@detail@boost@@SAXAATfunction_buffer@234@V?$shared_ptr@VInstance@RBX@@@4@M@Z"
+        ]
+      },
+      {
+        "address": "0062ac80",
+        "symbol": "??0?$SignalDesc@VExplosion@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@QAE@PBD00@Z",
+        "size": 296,
+        "target_size": 296,
+        "exact": true,
+        "verified_targets": {
+          "?classDescriptor@?$Described@VExplosion@RBX@@$1?sExplosion@2@3PADAV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5c0320 (helper / COMDAT body, compared exact at the bound address)",
+          "??0SignalDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD@Z": "0x56bab0 (external (evidence name))",
+          "??_7?$SignalDesc@VExplosion@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@6B@": "0x845dd8 (vtable RTTI .?AV?$SignalDesc@VExplosion@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@ offset 0x0)",
+          "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+          "??$singleton@V?$shared_ptr@VInstance@RBX@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cae0 (external (evidence name))",
+          "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+          "?_Buynode@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEPAU_Node@?$_List_nod@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@2@PAU342@0ABUItem@SignatureDescriptor@Reflection@RBX@@@Z": "0x417f00 (external (evidence name))",
+          "?_Incsize@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEXI@Z": "0x682cc0 (helper / COMDAT body, compared exact at the bound address)",
+          "??$singleton@M@Type@Reflection@RBX@@SAABV012@XZ": "0x56cca0 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$SignalDesc@VExplosion@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@QAE@PBD00@Z"
+        ]
+      },
+      {
+        "address": "0062b030",
+        "symbol": "?onServiceProvider@Explosion@RBX@@EAEXPBVServiceProvider@2@0@Z",
+        "size": 95,
+        "target_size": 95,
+        "exact": true,
+        "verified_targets": {
+          "??$find@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ": "0x452c80 (external)",
+          "?removeListener@?$Notifier@VRunService@RBX@@VStepped@2@@RBX@@QBEXPAV?$Listener@VRunService@RBX@@VStepped@2@@2@@Z": "0x5e5a80 (helper / COMDAT body, compared exact at the bound address)",
+          "?addListener@?$Notifier@VRunService@RBX@@VStepped@2@@RBX@@QBEXPAV?$Listener@VRunService@RBX@@VStepped@2@@2@@Z": "0x4218a0 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062b090",
+        "symbol": "??$?RV?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@MV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@@?$last_value@X@boost@@QBE?AUunusable@01@V?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@MV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@1@0@Z",
+        "size": 146,
+        "target_size": 146,
+        "exact": true,
+        "verified_targets": {
+          "?equal@?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@MV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QBE_NABV1234@@Z": "0x40b050 (helper / COMDAT body, compared exact at the bound address)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??$?RUconnection_slot_pair@detail@signals@boost@@@?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@MV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@?$call_bound2@X@detail@signals@boost@@QBE?AUunusable@234@ABUconnection_slot_pair@234@@Z": "0x62a2f0 (own row)",
+          "?increment@?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@MV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAEXXZ": "0x499ed0 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062b130",
+        "symbol": "??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@?$function2@XV?$shared_ptr@VInstance@RBX@@@boost@@MV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@H@Z",
+        "size": 142,
+        "target_size": 142,
+        "exact": true,
+        "verified_targets": {
+          "?has_empty_target@function@detail@boost@@YA_NZZ": "0x60a2f0 (helper / COMDAT body, compared exact at the bound address)",
+          "?stored_vtable@?1???$assign_to@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@?$function2@XV?$shared_ptr@VInstance@RBX@@@boost@@MV?$allocator@X@std@@@boost@@AAEXABVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@Z@4U?$basic_vtable2@XV?$shared_ptr@VInstance@RBX@@@boost@@MV?$allocator@X@std@@@function@detail@2@B": "0x845de4 (local static)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062b1c0",
+        "symbol": "??R?$signal2@XV?$shared_ptr@VInstance@RBX@@@boost@@MU?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@V?$shared_ptr@VInstance@RBX@@@1@M@Z",
+        "size": 456,
+        "target_size": 456,
+        "exact": true,
+        "verified_targets": {
+          "??0call_notification@detail@signals@boost@@QAE@ABV?$shared_ptr@Vsignal_base_impl@detail@signals@boost@@@3@@Z": "0x56a760 (external)",
+          "??0?$args2@V?$shared_ptr@VInstance@RBX@@@boost@@MH@detail@signals@boost@@QAE@V?$shared_ptr@VInstance@RBX@@@3@M@Z": "0x62a150 (own row)",
+          "?end@named_slot_map@detail@signals@boost@@QAE?AVnamed_slot_map_iterator@234@XZ": "0x5713b0 (external)",
+          "??0?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@MV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAE@Vnamed_slot_map_iterator@123@0U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@MV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@?$call_bound2@X@123@AAV?$optional@Uunusable@detail@signals@boost@@@3@@Z": "0x4908a0 (helper / COMDAT body, compared exact at the bound address)",
+          "?begin@named_slot_map@detail@signals@boost@@QAE?AVnamed_slot_map_iterator@234@XZ": "0x571380 (external)",
+          "??$?RV?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@MV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@@?$last_value@X@boost@@QBE?AUunusable@01@V?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@MV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@1@0@Z": "0x62b090 (own row)",
+          "??1call_notification@detail@signals@boost@@QAE@XZ": "0x56a650 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??R?$signal2@XV?$shared_ptr@VInstance@RBX@@@boost@@MU?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@V?$shared_ptr@VInstance@RBX@@@1@M@Z"
+        ]
+      },
+      {
+        "address": "0062b390",
+        "symbol": "??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@H@Z",
+        "size": 164,
+        "target_size": 164,
+        "exact": true,
+        "verified_targets": {
+          "??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@?$function2@XV?$shared_ptr@VInstance@RBX@@@boost@@MV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@H@Z": "0x62b130 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@H@Z"
+        ]
+      },
+      {
+        "address": "0062b440",
+        "symbol": "?fire@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$shared_ptr@VInstance@RBX@@@boost@@M@Z",
+        "size": 183,
+        "target_size": 183,
+        "exact": true,
+        "verified_targets": {
+          "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620 (external (evidence name))",
+          "??R?$signal2@XV?$shared_ptr@VInstance@RBX@@@boost@@MU?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@V?$shared_ptr@VInstance@RBX@@@1@M@Z": "0x62b1c0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?fire@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$shared_ptr@VInstance@RBX@@@boost@@M@Z"
+        ]
+      },
+      {
+        "address": "0062b500",
+        "symbol": "??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@Z",
+        "size": 180,
+        "target_size": 180,
+        "exact": true,
+        "verified_targets": {
+          "??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@H@Z": "0x62b390 (own row)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0data_t@slot_base@detail@signals@boost@@QAE@XZ": "0x41ad40 (helper / COMDAT body, compared exact at the bound address)",
+          "??$reset@Udata_t@slot_base@detail@signals@boost@@@?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@boost@@QAEXPAUdata_t@slot_base@detail@signals@1@@Z": "0x41b0f0 (helper / COMDAT body, compared exact at the bound address)",
+          "?create_connection@slot_base@detail@signals@boost@@IAEXXZ": "0x595840 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@Z"
+        ]
+      },
+      {
+        "address": "0062b5c0",
+        "symbol": "?setBlastRadius@Explosion@RBX@@QAEXM@Z",
+        "size": 75,
+        "target_size": 75,
+        "exact": true,
+        "verified_targets": {
+          "__real@42c80000": "0x8163a4 (constant 42c80000)",
+          "_propBlastRadius": "0x97bfd4 (own static (dynamic initializer 007f7dc0))",
+          "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062b610",
+        "symbol": "?signalBlast@Explosion@RBX@@AAEXABV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+        "size": 236,
+        "target_size": 236,
+        "exact": true,
+        "verified_targets": {
+          "?signal_Hit@RBX@@3V?$SignalDesc@VExplosion@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@1@A": "0x97c028 (own static (dynamic initializer 007f7e60))",
+          "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620 (external (evidence name))",
+          "?empty@signal_base_impl@detail@signals@boost@@QBE_NXZ": "0x56ab90 (external)",
+          "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z": "0x599f80 (external)",
+          "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x5e82c0 (external (evidence name))",
+          "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (helper / COMDAT body, compared exact at the bound address)",
+          "?fire@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$shared_ptr@VInstance@RBX@@@boost@@M@Z": "0x62b440 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062b810",
+        "symbol": "?connectGeneric@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@MBE?AVconnection@signals@boost@@PAVSignalInstance@23@PAVGenericSlotWrapper@23@W4connect_position@56@@Z",
+        "size": 219,
+        "target_size": 219,
+        "exact": true,
+        "verified_targets": {
+          "??$?0VGenericSlotWrapper@Reflection@RBX@@@shared_count@detail@boost@@QAE@PAVGenericSlotWrapper@Reflection@RBX@@@Z": "0x41a620 (external)",
+          "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (helper / COMDAT body, compared exact at the bound address)",
+          "??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@Z": "0x62b500 (own row)",
+          "?connect@?$signal2@XV?$shared_ptr@VInstance@RBX@@@boost@@MU?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@boost@@QAE?AVconnection@signals@2@ABV?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z": "0x62a520 (own row)",
+          "??1?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ": "0x49f710 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?connectGeneric@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@MBE?AVconnection@signals@boost@@PAVSignalInstance@23@PAVGenericSlotWrapper@23@W4connect_position@56@@Z"
+        ]
+      }
+    ]
+  },
+  "near_misses_not_counted": {
+    "unit": [
+      {
+        "address": "0x62b700",
+        "symbol": "?onEvent@Explosion@RBX@@EAEXPBVRunService@2@VStepped@2@@Z",
+        "size": 281,
+        "target_size": 269,
+        "exact": false,
+        "reason": "same body through the call sequence (extents, getPrimitivesTouchingExtents, signalBlast, doBlast, free), 12 bytes longer: the inlined ~G3D::Array<Primitive*> of the committed G3D header stores data / num / numAllocated = 0 after alignedFree, the original drops those dead stores (ret 0xc at +0x10a vs +0x116). Rejected: Vector3(blastRadius x3) argument (reloads blastRadius), explicit Extents(position - corner, position + corner); the kept form (radius local, Extents::fromCenterCorner into a local) matches every instruction before the destructor."
+      }
+    ]
+  },
+  "helper_bodies_not_counted": [
+    {
+      "address": "0x48dd00",
+      "symbol": "??$?4V?$shared_ptr@VInstance@RBX@@@boost@@@any@boost@@QAEAAV01@ABV?$shared_ptr@VInstance@RBX@@@1@@Z",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x5bff80",
+      "symbol": "??$callDoDeclare@$1?sExplosion@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "unit": "expl",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x5bf870",
+      "symbol": "??$doDeclare@$1?sExplosion@RBX@@3PADA@Name@RBX@@CAABV01@XZ",
+      "unit": "expl",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x41b0f0",
+      "symbol": "??$reset@Udata_t@slot_base@detail@signals@boost@@@?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@boost@@QAEXPAUdata_t@slot_base@detail@signals@1@@Z",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x618a40",
+      "symbol": "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x40a500",
+      "symbol": "??$throw_exception@Vbad_function_call@boost@@@boost@@YAXABVbad_function_call@0@@Z",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x445610",
+      "symbol": "??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x59a4b0",
+      "symbol": "??0?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x499c00",
+      "symbol": "??0?$signal2@XV?$shared_ptr@VInstance@RBX@@@boost@@MU?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x4908a0",
+      "symbol": "??0?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@MV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAE@Vnamed_slot_map_iterator@123@0U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@MV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@?$call_bound2@X@123@AAV?$optional@Uunusable@detail@signals@boost@@@3@@Z",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x41b170",
+      "symbol": "??0?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@QAE@I@Z",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x409ef0",
+      "symbol": "??0bad_function_call@boost@@QAE@XZ",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x41ad40",
+      "symbol": "??0data_t@slot_base@detail@signals@boost@@QAE@XZ",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x62ba70",
+      "symbol": "??1?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAE@XZ",
+      "unit": "fss",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x49f710",
+      "symbol": "??1?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x41af20",
+      "symbol": "??1?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@QAE@XZ",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x62af60",
+      "symbol": "??1Explosion@RBX@@UAE@XZ",
+      "unit": "expl",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x682cc0",
+      "symbol": "?_Incsize@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEXI@Z",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x4218a0",
+      "symbol": "?addListener@?$Notifier@VRunService@RBX@@VStepped@2@@RBX@@QBEXPAV?$Listener@VRunService@RBX@@VStepped@2@@2@@Z",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x5c0320",
+      "symbol": "?classDescriptor@?$Described@VExplosion@RBX@@$1?sExplosion@2@3PADAV?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "unit": "expl",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x40b050",
+      "symbol": "?equal@?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@MV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QBE_NABV1234@@Z",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x4915b0",
+      "symbol": "?get_data@slot_base@detail@signals@boost@@QBE?AV?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@XZ",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x60a2f0",
+      "symbol": "?has_empty_target@function@detail@boost@@YA_NZZ",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x499ed0",
+      "symbol": "?increment@?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@MV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@2@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAEXXZ",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x5e5a80",
+      "symbol": "?removeListener@?$Notifier@VRunService@RBX@@VStepped@2@@RBX@@QBEXPAV?$Listener@VRunService@RBX@@VStepped@2@@2@@Z",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x47d410",
+      "symbol": "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ",
+      "unit": "unit",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    }
+  ],
+  "local_statics": {
+    "?flag@?1???$declare@$1?sExplosion@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x9777f8",
+    "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050",
+    "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044",
+    "?stored_vtable@?1???$assign_to@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@?$function2@XV?$shared_ptr@VInstance@RBX@@@boost@@MV?$allocator@X@std@@@boost@@AAEXABVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@Z@4U?$basic_vtable2@XV?$shared_ptr@VInstance@RBX@@@boost@@MV?$allocator@X@std@@@function@detail@2@B": "0x845de4"
+  },
+  "vtables": {
+    "SignalDesc<Explosion, void(shared_ptr<Instance>, float)> 00845dd8": [
+      {
+        "slot": 0,
+        "symbol": "??_E?$SignalDesc@VExplosion@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@UAEPAXI@Z",
+        "original": "0x41bdf0",
+        "ok": true,
+        "how": "compiled ??_G body exact at the slot target (identical-code folded deleting destructor)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?connectGeneric@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@MBE?AVconnection@signals@boost@@PAVSignalInstance@23@PAVGenericSlotWrapper@23@W4connect_position@56@@Z",
+        "original": "0x62b810",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?newSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z",
+        "original": "0x62a6f0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "any::holder<function<void(shared_ptr<Instance>, float)>> 00845c98": [
+      {
+        "slot": 0,
+        "symbol": "??_E?$holder@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@any@boost@@UAEPAXI@Z",
+        "original": "0x41aba0",
+        "ok": true,
+        "how": "compiled ??_G body exact at the slot target (identical-code folded deleting destructor)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?type@?$holder@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@any@boost@@UBEABVtype_info@@XZ",
+        "original": "0x62a3c0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?clone@?$holder@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@ZV?$allocator@X@std@@@boost@@@any@boost@@UBEPAVplaceholder@23@XZ",
+        "original": "0x62a3d0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "Explosion (Listener<RunService, Stepped>) 00845e18": [
+      {
+        "slot": 0,
+        "symbol": "?onEvent@Explosion@RBX@@EAEXPBVRunService@2@VStepped@2@@Z",
+        "original": "0x62b700",
+        "ok": true,
+        "how": "bound (near miss, not counted)"
+      },
+      {
+        "slot": 1,
+        "symbol": "??_EExplosion@RBX@@WBDA@AEPAXI@Z",
+        "original": "0x62aef0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "Explosion (IRenderable) 00845e00": [
+      {
+        "slot": 0,
+        "symbol": "?shouldRender2d@IRenderable@RBX@@MBE_NXZ",
+        "original": "0x60a2f0",
+        "ok": true,
+        "how": "compiled body exact at the slot target (identical-code folded)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?shouldRender3dAdorn@Explosion@RBX@@EBE_NXZ",
+        "original": "0x565950",
+        "ok": true,
+        "how": "compiled body exact at the slot target (identical-code folded)"
+      },
+      {
+        "slot": 2,
+        "symbol": "?render2d@IRenderable@RBX@@UAEXPAVAdorn@2@@Z",
+        "original": "0x70bdf0",
+        "ok": true,
+        "how": "compiled body exact at the slot target (identical-code folded)"
+      },
+      {
+        "slot": 3,
+        "symbol": "?render3dAdorn@Explosion@RBX@@EAEXPAVAdorn@2@@Z",
+        "original": "0x62a030",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z",
+        "original": "0x458e90",
+        "ok": true,
+        "how": "compiled body exact at the slot target (identical-code folded)"
+      }
+    ]
+  },
+  "exact_function_rows": [
+    "00629ba0",
+    "00629c60",
+    "00629cc0",
+    "00629d20",
+    "00629d30",
+    "00629d40",
+    "00629d50",
+    "0062a030",
+    "0062a150",
+    "0062a1c0",
+    "0062a290",
+    "0062a2a0",
+    "0062a2f0",
+    "0062a340",
+    "0062a360",
+    "0062a3c0",
+    "0062a3d0",
+    "0062a430",
+    "0062a4c0",
+    "0062a520",
+    "0062a640",
+    "0062a680",
+    "0062a6f0",
+    "0062a760",
+    "0062a880",
+    "0062a930",
+    "0062aa00",
+    "0062aad0",
+    "0062ab80",
+    "0062ac20",
+    "0062ac30",
+    "0062ac40",
+    "0062ac50",
+    "0062ac60",
+    "0062ac80",
+    "0062aed0",
+    "0062aee0",
+    "0062aef0",
+    "0062af00",
+    "0062af10",
+    "0062af20",
+    "0062af30",
+    "0062af40",
+    "0062af50",
+    "0062b010",
+    "0062b030",
+    "0062b090",
+    "0062b130",
+    "0062b1c0",
+    "0062b390",
+    "0062b440",
+    "0062b500",
+    "0062b5c0",
+    "0062b610",
+    "0062b810",
+    "0062bba0",
+    "0062bbb0",
+    "0062bbf0",
+    "0062bc10",
+    "0062bc30",
+    "0062bc60",
+    "0062be70"
+  ],
+  "rejected": {
+    "Explosion::onServiceProvider 0062b030 with the donor Instance::onServiceProvider call": "rejected (110 vs 95 B): the 2008 body only disconnects the old RunService notifier and connects the new one.",
+    "setBlastRadius 0062b5c0 without /fp:fast": "rejected (93 vs 75 B): G3D::clamp compares against a double 100.0; the original compares against the float 100.0f at 008163a4.",
+    "boost::function assign_to without native-headers/boost-function-pod-vtable": "rejected: 0062b130 then has an EH frame and a guarded static stored_vtable (175..273 B vs 142 B).",
+    "render3dAdorn 0062a030 with blastRadius passed directly to Sphere(...)": "rejected: blastRadius is loaded after the Vector3::zero() guard; the original loads it first (a local).",
+    "onEvent 0062b700: Vector3(blastRadius, blastRadius, blastRadius) / Extents(position - c, position + c)": "rejected (3 loads of blastRadius / different store order); the kept form differs only by the ~Array dead stores."
+  },
+  "proposals": {
+    "flag-family owner (native-classes/FlagStand.cpp, tests/record_native_flag_family.py)": "FlagStand rows of this range counted by no receipt: 0062b8f0, 0062b900, 0062b970, 0062bbe0, 0062bc80, 0062bdc0, 0062bee0, 0062bf20 (see unit_map).",
+    "flagstandservice owner (native-classes/FlagStandService.cpp)": "This receipt counts the FactoryProduct<FlagStandService> thunks / ??_G / ~DescribedCreatable rows its committed source already emits exactly (0062bba0, 0062bbb0, 0062bbf0, 0062bc10, 0062bc30, 0062bc60, 0062be70); FactoryProduct<FlagStandService>() 0062bad0 waits for the parked ctor 0062ccd0.",
+    "explosion owner (native-classes/Explosion.cpp)": "The FactoryProduct / DescribedCreatable<Explosion> rows the committed Explosion.cpp emits are counted here (compiled read-only); doBlast 00629d60 needs World::update / ticklePrimitive, ForceField and PartInstance::destroyJoints declarations (World / Body owners).",
+    "G3D Array owner, FYI": "onEvent 0062b700 shows the original ~Array<Primitive*> without the data / num / numAllocated = 0 stores after alignedFree for a local array."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

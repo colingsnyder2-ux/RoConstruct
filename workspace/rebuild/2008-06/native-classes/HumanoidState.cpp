@@ -15,6 +15,7 @@
 #include "humanoid/HumanoidStates2.h"
 #define NATIVE_SIMJOB_PENDING  // RunningNoPhysics / StrafingNoPhysics (humanoid/HumanoidStates3.h, v8world/SimJob.h)
 #include "humanoid/HumanoidStates3.h"
+#include "v8world/ContactManager.h"   // onFloorStep 006444f0: intersectingOthers 0060d630 (engine-world header)
 
 namespace RBX {
 namespace HUMAN {
@@ -110,6 +111,95 @@ void HumanoidState::setTorsoHeadFlag(bool value)
         bool disabled = !value;
         owner->getHeadPrimitive()->setCanSleep(disabled);
     }
+}
+
+// 00643f10 (237 bytes, thiscall `ret 0xc`: hidden shared_ptr return, const Ray&, float; registry placeholder
+// func_00643f10, analog name; callers findFloor 00644000 only, same HumanoidState unit). Placed here, not beside
+// findFloor in HumanoidStateFloor.cpp, because that unit's donor-shaped humanoid/Humanoid.h has world at +0x218 (the
+// only diff there); humanoid/Humanoid2008.h has the binary's +0x21c. ContactManager (humanoid
+// world +0x21c, contactManager +0x84) getHitLegacy 0060da00 with this HitTestFilter (+4), hit point into
+// floorTouchInWorld +0x2c, then PartInstance::fromPrimitive 00599f80 and shared_from 00618a40. The distance local
+// shares the dead ray argument slot.
+boost::shared_ptr<PartInstance> HumanoidState::floorPartFromRay(const G3D::Ray& ray, float maxDistance)
+{
+	float distance;
+	Primitive* hit = humanoid->getWorld()->getContactManager().getHitLegacy(ray, NULL, this, floorTouchInWorld, distance, maxDistance);
+	boost::shared_ptr<PartInstance> result;
+	if (hit)
+		result = shared_from(PartInstance::fromPrimitive(hit));
+	return result;
+}
+
+// 006444f0 (374 bytes, plain `ret`): moved here from HumanoidStateFloor.cpp in batch 25, because this unit reaches
+// humanoid/Humanoid2008.h (world +0x21c, HumanoidState a friend) where humanoid/Humanoid.h has world at +0x218.
+// world (Humanoid +0x21c) tested first (shared epilogue); Humanoid::getPrimitives 005d9db0 into a local vector,
+// std::set range constructor 00644420, getTorsoPrimitive 005d90a0 / getHeadPrimitive 005d9100 (each called twice),
+// World contactManager +0x84, ContactManager::intersectingOthers(Primitive*, const set&, float) 0060d630 with 0.0f;
+// set destructor 0064b230 and vector destructor 0067fb10. Donor tools/rbxgs humanoid/HumanoidState.cpp.
+bool HumanoidState::onFloorStep()
+{
+    if (World* world = humanoid->getWorld())
+    {
+        std::vector<Primitive*> primitives;
+        humanoid->getPrimitives(primitives);
+        std::set<Primitive*> ignore(primitives.begin(), primitives.end());
+        if (humanoid->getTorsoPrimitive()
+            && world->getContactManager().intersectingOthers(humanoid->getTorsoPrimitive(), ignore, 0.0f))
+            return true;
+        if (humanoid->getHeadPrimitive()
+            && world->getContactManager().intersectingOthers(humanoid->getHeadPrimitive(), ignore, 0.0f))
+            return true;
+    }
+    return false;
+}
+
+// 006451c0 (472 bytes, thiscall `ret 4`; analog name preStep, declared in humanoid/HumanoidState.h; called by
+// stepState 00645450 and transition 006453a0 in HumanoidStateStep.cpp). Decoded from the target (no donor body):
+// old floorPart pointer kept in esi, floorFound +0x20 = false, floorPart.reset() 00456e80, floorTouchInWorld =
+// Vector3::inf() 00510960, value0c -= dt; setArmsFlag(query3()) 00643c20 (slot 3 +0xc), setLegsFlag(query4())
+// 00643bc0 (slot 4 +0x10), setTorsoHeadFlag(query5()) 00643c80 (slot 5 +0x14); transitionTable 0084a92c columns
+// 10 / 11 (0084a954 / 0084a958) compared with 13 -> findFloor 00644000, World::ticklePrimitive(prim, 0) 005e9410
+// through world +0x21c, then previous (+0x40) / current (+0x70) from Primitive::getCoordinateFrame 005e82c0 of the
+// embedded floor Primitive (+0x228, inline getFloorPrimitive); columns 8 / 9 (0084a94c / 0084a950) ->
+// floorFound = 00644c80(NULL).
+// Batch 28: humanoid/HumanoidState.h declares findFloor / findClimbable and engine-world v8world/World.h declares
+// ticklePrimitive(Primitive*, int).
+// PARKED (batch 28, 472/472 bytes, first divergence insn 66 00645281): the only diff is the scheduling of the
+// ticklePrimitive arguments (target `mov ecx, [edx+0x21c]; add eax, 0x228; push 0; push eax`, candidate pushes 0 before
+// the add). Rejected: getFloorPrimitive() as the argument, a bool second parameter (false), a named Primitive* local.
+void HumanoidState::preStep(float dt)
+{
+    PartInstance* oldFloor = floorPart.get();
+    floorFound = false;
+    floorPart.reset();
+    floorTouchInWorld = G3D::Vector3::inf();
+    value0c -= dt;
+
+    setArmsFlag(query3());
+    setLegsFlag(query4());
+    setTorsoHeadFlag(query5());
+
+    if (transitionTable[getStateType()][10] != 13 || transitionTable[getStateType()][11] != 13)
+    {
+        findFloor();
+        if (floorPart)
+        {
+            humanoid->getWorld()->ticklePrimitive(floorPart->getPrimitive(), 0);
+            if (oldFloor == floorPart.get())
+            {
+                previous = current;
+                current = getFloorPrimitive()->getCoordinateFrame();
+            }
+            else
+            {
+                previous = getFloorPrimitive()->getCoordinateFrame();
+                current = getFloorPrimitive()->getCoordinateFrame();
+            }
+        }
+    }
+
+    if (transitionTable[getStateType()][8] != 13 || transitionTable[getStateType()][9] != 13)
+        floorFound = findClimbable(NULL);
 }
 
 // 00643660 (836 bytes, cdecl; analog name): the state factory. Jump table 00643974 for cases 0..11 in getStateType order

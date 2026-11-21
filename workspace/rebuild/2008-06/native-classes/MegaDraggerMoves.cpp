@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/engine-world
 // MegaDragger drag/move methods (2008-06). Identities from work/2008-06/identity-registry.json
 // (decorated-signature + identity-closure votes); callees: DragUtilities 0060eb30/0060ead0/0060f2d0,
 // Dragger::safeMoveYDrop 00610830, Dragger::safeMoveNoDrop 00610930, MouseCommand::getUnitMouseRay 00615c30,
@@ -13,6 +13,42 @@
 
 namespace RBX
 {
+	// 0060e540 ??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@PAVPVInstance@RBX@@...@PAVRootInstance@1@@Z
+	// (shared_from<PartInstance> 00618a40; new(4) vector proxy; joined +0x20, rootInstance +0x24, contactManager
+	// +0x28 = world (+0x2e4) ->contactManager (+0x84); then pvsToParts 0060e920, which the registry names
+	// collectDragParts after an identical folded body).
+	MegaDragger::MegaDragger(PartInstance* mousePartPtr, const std::vector<PVInstance*>& pvInstances, RootInstance* rootInstance)
+		: mousePart(shared_from(mousePartPtr)),
+		  dragParts(),
+		  joined(true),
+		  rootInstance(rootInstance),
+		  contactManager(rootInstance->getWorld()->getContactManager())
+	{
+		DragUtilities::pvsToParts(pvInstances, dragParts);
+	}
+
+	// 0060e630 ??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@...@PAVRootInstance@1@@Z
+	// (vector copy constructor 0060e450).
+	MegaDragger::MegaDragger(PartInstance* mousePartPtr, const std::vector<boost::weak_ptr<PartInstance> >& partArray, RootInstance* rootInstance)
+		: mousePart(shared_from(mousePartPtr)),
+		  dragParts(partArray),
+		  joined(true),
+		  rootInstance(rootInstance),
+		  contactManager(rootInstance->getWorld()->getContactManager())
+	{
+	}
+
+	// 0060e700 ??1MegaDragger@RBX@@QAE@XZ (called by ~PartDragTool 00665bd0): when not joined, joinAndStopDragging
+	// 0060ef30 on dragParts (+8); then the vector destructor 00590550 and the mousePart weak_ptr (+0/+4) release.
+	// Donor tools/rbxgs tool/MegaDragger.cpp (RBXASSERT compiled out).
+	MegaDragger::~MegaDragger()
+	{
+		if (!joined)
+		{
+			DragUtilities::joinAndStopDragging(dragParts);
+		}
+	}
+
 	// 0060de00
 	void MegaDragger::startDragging()
 	{

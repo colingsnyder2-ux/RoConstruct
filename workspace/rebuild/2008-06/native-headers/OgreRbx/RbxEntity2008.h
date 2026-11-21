@@ -40,6 +40,8 @@ namespace Ogre
 		// Direct call 00696269 -> 0067e2f0 proves this exact non-virtual ABI.
 		// Its body remains unrecovered; declaration enables its proven SceneManager caller.
 		void collect(Camera* camera, Light* light, std::vector<ShadowCaster*>& output);             // 0067e2f0 (registry mangled name: non-const)
+	public:
+		void sub_007a9c40(Ogre::AxisAlignedBox box);   // INFERRED: 007a9c40, placeholder name (identity tier), body byte-proved (Inferred_007a9c40.cpp)
 	};
 
 	typedef char RbxEntity2008Size[(sizeof(RbxEntity) == 0x2bc) ? 1 : -1];

@@ -1,0 +1,2465 @@
+{
+  "class": "unit map of the application range 00624000..00628000 (2008-06): Lua 5.1 standard library, inactive",
+  "result": "No RBX translation unit and no Roblox-only template instantiation in the range: every row is Lua 5.1 library code (liolib.c, ltablib.c, lmathlib.c, lstrlib.c, the lbaselib.c head), each reproduced byte-identically (relocation-masked, every target bound) from the upstream file or, for the two luaopen rows, from the stored generated unit with Roblox's luaconf choices. Nothing is recovered or counted here.",
+  "compiler": "VS2008 RTM 21022",
+  "library_recipes": [
+    "lua-5.1-dll liolib.c (/O2 /GS- /MD)",
+    "lua-5.1-dll lstrlib.c (/O2 /GS- /MD)",
+    "lua-5.1.2 liolib.c (/O2 /GS- /MD)",
+    "lua-5.1.2 lstrlib.c (/O2 /GS- /MD)",
+    "lua-5.1.2 ltablib.c (/O2 /GS- /MD)",
+    "lua-5.1.3 lstrlib.c (/O2 /GS- /MD)",
+    "lua-5.1.3 ltablib.c (/O2 /GS- /MD)",
+    "lua-5.1.4-dll lbaselib.c (/O2 /GS- /MD)",
+    "lua-5.1.4-dll liolib.c (/O2 /GS- /MD)",
+    "lua-5.1.4-dll lmathlib.c (/O2 /GS- /MD /fp:fast)",
+    "lua-5.1.4-dll lmathlib.c (/O2 /GS- /MD)",
+    "lua-5.1.4-dll lstrlib.c (/O2 /GS- /MD)",
+    "lua-5.1.4-dll ltablib.c (/O2 /GS- /MD)",
+    "lua-5.1.4-dll roc_espeon_luastringnogfind_92071a0221e9258a.cpp (/O2 /GS- /MD)",
+    "lua-5.1.4-dll roc_unit_9835aad68266b897.cpp (/O2 /GS- /MD)"
+  ],
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit624.py": "6bcd7702b73ea2931506d556b44faf08785e4387a7aebaef16654fe02005c6f0"
+  },
+  "objects": {
+    "lua-5_1_4-dll_liolib_O2_GS-_MD.obj": "b4f3b37ee1240fd4998bcbdf506867d9ffe8bffdb3298c76f9cd5b2f3f1972f6",
+    "lua-5_1-dll_liolib_O2_GS-_MD.obj": "5b8bf77f2822e99a8316f5596efe4999a145fe71239f0a0b0b1902120a1af828",
+    "lua-5_1_2_liolib_O2_GS-_MD.obj": "6476f026b0b5d19944d2e6296a4ef3bd7de9c2981aeb5d8ca459f7581a4159df",
+    "lua-5_1_4-dll_ltablib_O2_GS-_MD.obj": "c12196f7a22a30eb63abf12f35cede67d12c1c551e029e88c923013bd424758d",
+    "lua-5_1_2_ltablib_O2_GS-_MD.obj": "79a64e9b05addf5faf3f964380a9a63672f8b2ee79202a6821a1617d8f3f7ec0",
+    "lua-5_1_3_ltablib_O2_GS-_MD.obj": "46eebe1977d6af97722c1bc87acf6cb8417f6d56dc535595d1e2e46f82f91ef9",
+    "lua-5_1_4-dll_lmathlib_O2_GS-_MD.obj": "b5142bddd3efc1b4732d32742a8f2ab8529a208f2df39d41517feb52077e8c36",
+    "lua-5_1_4-dll_lmathlib_O2_GS-_MD_fpfast.obj": "9179d651e7093cc4d76eaedff06a9cef4c8b5824bdb60bcadeaac08d551604dc",
+    "lua-5_1_4-dll_roc_unit_9835aad68266b897_O2_GS-_MD.obj": "01095e7c2f5f8fbeedb2b665f3f6c90124e1caaa9366a69ef8c061e5377180d5",
+    "lua-5_1_4-dll_lstrlib_O2_GS-_MD.obj": "418cc81c165c5f3bfcff4a2695bbccbdfb24de20970f15b637e27095e7a9fdef",
+    "lua-5_1_3_lstrlib_O2_GS-_MD.obj": "1e7af694b6cc36e3af659a9aae948a4b11637ef4e03a7ce7cdf25db2fd45d992",
+    "lua-5_1-dll_lstrlib_O2_GS-_MD.obj": "a8f1887fa93ee9cd4562bce9fa525e42dab36955f74c486a100d9ffc4c92a0e5",
+    "lua-5_1_2_lstrlib_O2_GS-_MD.obj": "bc32b288235a3588a226f676698ff3e08b455822b381fec2cda1aa203425a4de",
+    "lua-5_1_4-dll_roc_espeon_luastringnogfind_92071a0221e9258a_O2_GS-_MD.obj": "6c11c22928a340ac7e99c64fc5716d56e155caa8afac8849e17306f8e7be0b08",
+    "lua-5_1_4-dll_lbaselib_O2_GS-_MD.obj": "08bba9b3b7405249363df6790909e77268c8803ee4aa8129bc063551a9afb10a"
+  },
+  "unit_map": {
+    "lua-liolib 00624000..0062526f": {
+      "unit": "Lua 5.1 liolib.c (the lstate.c row 00623f40 runs to 0062407f; no row starts before 00624080)",
+      "upstream_file": "liolib.c",
+      "library": true,
+      "recovered": false,
+      "rows": 31,
+      "bytes": 4384
+    },
+    "lua-ltablib 00625270..00625b2f": {
+      "unit": "Lua 5.1 ltablib.c (foreachi .. sort, luaopen_table)",
+      "upstream_file": "ltablib.c",
+      "library": true,
+      "recovered": false,
+      "rows": 11,
+      "bytes": 2142
+    },
+    "lua-lmathlib 00625b30..006262df": {
+      "unit": "Lua 5.1 lmathlib.c (math_abs .. luaopen_math)",
+      "upstream_file": "lmathlib.c",
+      "library": true,
+      "recovered": false,
+      "rows": 29,
+      "bytes": 1720
+    },
+    "lua-lstrlib 006262e0..00627e2f": {
+      "unit": "Lua 5.1 lstrlib.c (str_len .. luaopen_string)",
+      "upstream_file": "lstrlib.c",
+      "library": true,
+      "recovered": false,
+      "rows": 37,
+      "bytes": 6645
+    },
+    "lua-lbaselib 00627e30..00627fff": {
+      "unit": "Lua 5.1 lbaselib.c head (luaB_print, luaB_tonumber; continues past 00628000 to luaopen_base 00628f50)",
+      "upstream_file": "lbaselib.c",
+      "library": true,
+      "recovered": false,
+      "rows": 2,
+      "bytes": 476
+    }
+  },
+  "library_rows": [
+    {
+      "row": "row 00624080",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_fileerror",
+      "evidence_name": "?fileerror@@YAXPAUlua_State@@HPBD@Z",
+      "size": 58,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__imp___errno": "import msvcr90.dll!_errno",
+        "__imp__strerror": "import msvcr90.dll!strerror",
+        "??_C@_06DJHOIPC@?$CFs?3?5?$CFs?$AA@": "string '%s: %s' at 00844bc8",
+        "_lua_pushfstring": "Lua row 00612320 (evidence name ?lua_pushfstring@@YAPBDPAUlua_State@@PBDZZ)",
+        "_lua_tolstring": "Lua row 00612010 (evidence name ?lua_tolstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_argerror": "Lua row 006114d0 (evidence name ?luaL_argerror@@YAHPAUlua_State@@HPBD@Z)"
+      }
+    },
+    {
+      "row": "row 006240c0",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_io_type",
+      "evidence_name": "?io_type@@YAHPAUlua_State@@@Z",
+      "size": 149,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "??_C@_0M@IBKPHHKH@closed?5file?$AA@": "string 'closed file' at 00844bd0",
+        "??_C@_04DAMGJPCA@file?$AA@": "string 'file' at 0080b3d4",
+        "_luaL_checkany": "Lua row 00611690 (evidence name ?luaL_checkany@@YAXPAUlua_State@@H@Z)",
+        "_lua_touserdata": "Lua row 00612120 (evidence name ?lua_touserdata@@YAPAXPAUlua_State@@H@Z)",
+        "_lua_getfield": "Lua row 00612490 (evidence name ?lua_getfield@@YAXPAUlua_State@@HPBD@Z)",
+        "_lua_getmetatable": "Lua row 006125b0 (evidence name ?lua_getmetatable@@YAHPAUlua_State@@H@Z)",
+        "_lua_rawequal": "Lua row 00611ee0 (evidence name ?lua_rawequal@@YAHPAUlua_State@@HH@Z)",
+        "_lua_pushlstring": "Lua row 00612240 (evidence name ?lua_pushlstring@@YAXPAUlua_State@@PBDI@Z)",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)"
+      }
+    },
+    {
+      "row": "row 00624160",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_io_pclose",
+      "evidence_name": "?io_pclose@@YAHPAUlua_State@@@Z",
+      "size": 124,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "__imp___pclose": "import msvcr90.dll!_pclose",
+        "__imp___errno": "import msvcr90.dll!_errno",
+        "__imp__strerror": "import msvcr90.dll!strerror",
+        "??_C@_02DKCKIIND@?$CFs?$AA@": "string '%s' at 008103ac",
+        "_luaL_checkudata": "Lua row 006115b0 (evidence name ?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z)",
+        "_lua_pushboolean": "Lua row 006123f0 (evidence name ?lua_pushboolean@@YAXPAUlua_State@@H@Z)",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)",
+        "_lua_pushfstring": "Lua row 00612320 (evidence name ?lua_pushfstring@@YAPBDPAUlua_State@@PBDZZ)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 006241e0",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_io_fclose",
+      "evidence_name": "?io_fclose@@YAHPAUlua_State@@@Z",
+      "size": 123,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "__imp__fclose": "import msvcr90.dll!fclose",
+        "__imp___errno": "import msvcr90.dll!_errno",
+        "__imp__strerror": "import msvcr90.dll!strerror",
+        "??_C@_02DKCKIIND@?$CFs?$AA@": "string '%s' at 008103ac",
+        "_luaL_checkudata": "Lua row 006115b0 (evidence name ?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z)",
+        "_lua_pushboolean": "Lua row 006123f0 (evidence name ?lua_pushboolean@@YAXPAUlua_State@@H@Z)",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)",
+        "_lua_pushfstring": "Lua row 00612320 (evidence name ?lua_pushfstring@@YAPBDPAUlua_State@@PBDZZ)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00624260",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_aux_close",
+      "evidence_name": "?aux_close@@YAHPAUlua_State@@@Z",
+      "size": 42,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_07DMJMBBKE@__close?$AA@": "string '__close' at 00844c04",
+        "_lua_getfenv": "Lua row 00612610 (evidence name ?lua_getfenv@@YAXPAUlua_State@@H@Z)",
+        "_lua_getfield": "Lua row 00612490 (evidence name ?lua_getfield@@YAXPAUlua_State@@HPBD@Z)",
+        "_lua_tocfunction": "Lua row 006120f0 (evidence name ?lua_tocfunction@@YAP6AHPAUlua_State@@@Z0H@Z)"
+      }
+    },
+    {
+      "row": "row 00624290",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_io_close",
+      "evidence_name": "?io_close@@YAHPAUlua_State@@@Z",
+      "size": 115,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "??_C@_0BN@LPOOHAOM@attempt?5to?5use?5a?5closed?5file?$AA@": "string 'attempt to use a closed file' at 00844be4",
+        "??_C@_07DMJMBBKE@__close?$AA@": "string '__close' at 00844c04",
+        "_lua_type": "Lua row 00611e00 (evidence name ?lua_type@@YAHPAUlua_State@@H@Z)",
+        "_lua_rawgeti": "Lua row 00612530 (evidence name ?lua_rawgeti@@YAXPAUlua_State@@HH@Z)",
+        "_luaL_checkudata": "Lua row 006115b0 (evidence name ?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_lua_getfenv": "Lua row 00612610 (evidence name ?lua_getfenv@@YAXPAUlua_State@@H@Z)",
+        "_lua_getfield": "Lua row 00612490 (evidence name ?lua_getfield@@YAXPAUlua_State@@HPBD@Z)",
+        "_lua_tocfunction": "Lua row 006120f0 (evidence name ?lua_tocfunction@@YAP6AHPAUlua_State@@@Z0H@Z)"
+      }
+    },
+    {
+      "row": "row 00624310",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_io_gc",
+      "evidence_name": "?io_gc@@YAHPAUlua_State@@@Z",
+      "size": 70,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "__imp____iob_func": "import msvcr90.dll!__iob_func",
+        "_luaL_checkudata": "Lua row 006115b0 (evidence name ?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z)",
+        "_aux_close": "in-range row 00624260"
+      }
+    },
+    {
+      "row": "row 00624360",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.2",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_io_tostring",
+      "evidence_name": "?io_tostring@@YAHPAUlua_State@@@Z",
+      "size": 70,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "??_C@_0O@PLFAPHPG@file?5?$CIclosed?$CJ?$AA@": "string 'file (closed)' at 00844c18",
+        "??_C@_09BPMAMLLD@file?5?$CI?$CFp?$CJ?$AA@": "string 'file (%p)' at 00844c0c",
+        "_luaL_checkudata": "Lua row 006115b0 (evidence name ?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z)",
+        "_lua_pushstring": "Lua row 00612280 (evidence name ?lua_pushstring@@YAXPAUlua_State@@PBD@Z)",
+        "_lua_pushfstring": "Lua row 00612320 (evidence name ?lua_pushfstring@@YAPBDPAUlua_State@@PBDZZ)"
+      }
+    },
+    {
+      "row": "row 006243b0",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_io_open",
+      "evidence_name": "",
+      "size": 202,
+      "masked_equivalents_rejected_by_targets": [
+        "_io_popen"
+      ],
+      "targets": {
+        "??_C@_01KDCPPGHE@r?$AA@": "string 'r' at 00827204",
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "__imp__fopen": "import msvcr90.dll!fopen",
+        "__imp___errno": "import msvcr90.dll!_errno",
+        "__imp__strerror": "import msvcr90.dll!strerror",
+        "??_C@_06DJHOIPC@?$CFs?3?5?$CFs?$AA@": "string '%s: %s' at 00844bc8",
+        "??_C@_02DKCKIIND@?$CFs?$AA@": "string '%s' at 008103ac",
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_optlstring": "Lua row 00611720 (evidence name ?luaL_optlstring@@YAPBDPAUlua_State@@HPBDPAI@Z)",
+        "_lua_newuserdata": "Lua row 00612c40 (evidence name ?lua_newuserdata@@YAPAXPAUlua_State@@I@Z)",
+        "_lua_getfield": "Lua row 00612490 (evidence name ?lua_getfield@@YAXPAUlua_State@@HPBD@Z)",
+        "_lua_setmetatable": "Lua row 006127f0 (evidence name ?lua_setmetatable@@YAHPAUlua_State@@H@Z)",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)",
+        "_lua_pushfstring": "Lua row 00612320 (evidence name ?lua_pushfstring@@YAPBDPAUlua_State@@PBDZZ)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00624480",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_io_popen",
+      "evidence_name": "",
+      "size": 202,
+      "masked_equivalents_rejected_by_targets": [
+        "_io_open"
+      ],
+      "targets": {
+        "??_C@_01KDCPPGHE@r?$AA@": "string 'r' at 00827204",
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "__imp___popen": "import msvcr90.dll!_popen",
+        "__imp___errno": "import msvcr90.dll!_errno",
+        "__imp__strerror": "import msvcr90.dll!strerror",
+        "??_C@_06DJHOIPC@?$CFs?3?5?$CFs?$AA@": "string '%s: %s' at 00844bc8",
+        "??_C@_02DKCKIIND@?$CFs?$AA@": "string '%s' at 008103ac",
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_optlstring": "Lua row 00611720 (evidence name ?luaL_optlstring@@YAPBDPAUlua_State@@HPBDPAI@Z)",
+        "_lua_newuserdata": "Lua row 00612c40 (evidence name ?lua_newuserdata@@YAPAXPAUlua_State@@I@Z)",
+        "_lua_getfield": "Lua row 00612490 (evidence name ?lua_getfield@@YAXPAUlua_State@@HPBD@Z)",
+        "_lua_setmetatable": "Lua row 006127f0 (evidence name ?lua_setmetatable@@YAHPAUlua_State@@H@Z)",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)",
+        "_lua_pushfstring": "Lua row 00612320 (evidence name ?lua_pushfstring@@YAPBDPAUlua_State@@PBDZZ)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00624550",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_io_tmpfile",
+      "evidence_name": "?io_tmpfile@@YAHPAUlua_State@@@Z",
+      "size": 120,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "__imp__tmpfile": "import msvcr90.dll!tmpfile",
+        "__imp___errno": "import msvcr90.dll!_errno",
+        "__imp__strerror": "import msvcr90.dll!strerror",
+        "??_C@_02DKCKIIND@?$CFs?$AA@": "string '%s' at 008103ac",
+        "_lua_newuserdata": "Lua row 00612c40 (evidence name ?lua_newuserdata@@YAPAXPAUlua_State@@I@Z)",
+        "_lua_getfield": "Lua row 00612490 (evidence name ?lua_getfield@@YAXPAUlua_State@@HPBD@Z)",
+        "_lua_setmetatable": "Lua row 006127f0 (evidence name ?lua_setmetatable@@YAHPAUlua_State@@H@Z)",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)",
+        "_lua_pushfstring": "Lua row 00612320 (evidence name ?lua_pushfstring@@YAPBDPAUlua_State@@PBDZZ)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 006245d0",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_g_iofile",
+      "evidence_name": "?g_iofile@@YAHPAUlua_State@@HPBD@Z",
+      "size": 205,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "__imp__fopen": "import msvcr90.dll!fopen",
+        "??_C@_0BN@LPOOHAOM@attempt?5to?5use?5a?5closed?5file?$AA@": "string 'attempt to use a closed file' at 00844be4",
+        "_lua_type": "Lua row 00611e00 (evidence name ?lua_type@@YAHPAUlua_State@@H@Z)",
+        "_lua_tolstring": "Lua row 00612010 (evidence name ?lua_tolstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_lua_newuserdata": "Lua row 00612c40 (evidence name ?lua_newuserdata@@YAPAXPAUlua_State@@I@Z)",
+        "_lua_getfield": "Lua row 00612490 (evidence name ?lua_getfield@@YAXPAUlua_State@@HPBD@Z)",
+        "_lua_setmetatable": "Lua row 006127f0 (evidence name ?lua_setmetatable@@YAHPAUlua_State@@H@Z)",
+        "_fileerror": "in-range row 00624080",
+        "_luaL_checkudata": "Lua row 006115b0 (evidence name ?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_lua_pushvalue": "Lua row 00611dd0 (evidence name ?lua_pushvalue@@YAXPAUlua_State@@H@Z)",
+        "_lua_rawseti": "Lua row 00612780 (evidence name ?lua_rawseti@@YAXPAUlua_State@@HH@Z)",
+        "_lua_rawgeti": "Lua row 00612530 (evidence name ?lua_rawgeti@@YAXPAUlua_State@@HH@Z)"
+      }
+    },
+    {
+      "row": "row 006246a0",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_io_input",
+      "evidence_name": "?io_input@@YAHPAUlua_State@@@Z",
+      "size": 20,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_01KDCPPGHE@r?$AA@": "string 'r' at 00827204",
+        "_g_iofile": "in-range row 006245d0"
+      }
+    },
+    {
+      "row": "row 006246c0",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_io_output",
+      "evidence_name": "?io_output@@YAHPAUlua_State@@@Z",
+      "size": 20,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_01NOFIACDB@w?$AA@": "string 'w' at 00827a50",
+        "_g_iofile": "in-range row 006245d0"
+      }
+    },
+    {
+      "row": "row 006246e0",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_read_number",
+      "evidence_name": "?read_number@@YAHPAUlua_State@@PAU_iobuf@@@Z",
+      "size": 64,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_03DLDNIBIK@?$CFlf?$AA@": "string '%lf' at 00844c44",
+        "__imp__fscanf": "import msvcr90.dll!fscanf",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00624720",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_read_line",
+      "evidence_name": "?read_line@@YAHPAUlua_State@@PAU_iobuf@@@Z",
+      "size": 203,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__imp__fgets": "import msvcr90.dll!fgets",
+        "_luaL_buffinit": "Lua row 006110a0 (evidence name ?luaL_buffinit@@YAXPAUlua_State@@PAUluaL_Buffer@@@Z)",
+        "_luaL_prepbuffer": "Lua row 00610f40 (evidence name ?luaL_prepbuffer@@YAPADPAUluaL_Buffer@@@Z)",
+        "_luaL_pushresult": "Lua row 00610fe0 (evidence name ?luaL_pushresult@@YAXPAUluaL_Buffer@@@Z)",
+        "_lua_objlen": "Lua row 00612080 (evidence name ?lua_objlen@@YAIPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 006247f0",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_read_chars",
+      "evidence_name": "?read_chars@@YAHPAUlua_State@@PAU_iobuf@@I@Z",
+      "size": 153,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__imp__fread": "import msvcr90.dll!fread",
+        "_luaL_buffinit": "Lua row 006110a0 (evidence name ?luaL_buffinit@@YAXPAUlua_State@@PAUluaL_Buffer@@@Z)",
+        "_luaL_prepbuffer": "Lua row 00610f40 (evidence name ?luaL_prepbuffer@@YAPADPAUluaL_Buffer@@@Z)",
+        "_luaL_pushresult": "Lua row 00610fe0 (evidence name ?luaL_pushresult@@YAXPAUluaL_Buffer@@@Z)",
+        "_lua_objlen": "Lua row 00612080 (evidence name ?lua_objlen@@YAIPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00624890",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_g_read",
+      "evidence_name": "?g_read@@YAHPAUlua_State@@PAU_iobuf@@H@Z",
+      "size": 408,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__imp__clearerr": "import msvcr90.dll!clearerr",
+        "__imp__ferror": "import msvcr90.dll!ferror",
+        "__imp___errno": "import msvcr90.dll!_errno",
+        "__imp__strerror": "import msvcr90.dll!strerror",
+        "??_C@_02DKCKIIND@?$CFs?$AA@": "string '%s' at 008103ac",
+        "??_C@_0BD@IOJAAODF@too?5many?5arguments?$AA@": "string 'too many arguments' at 00844c58",
+        "__imp__getc": "import msvcr90.dll!getc",
+        "__imp__ungetc": "import msvcr90.dll!ungetc",
+        "??_C@_0P@PJFAGLMH@invalid?5option?$AA@": "string 'invalid option' at 00844c48",
+        "??_C@_0P@CENJCLHM@invalid?5format?$AA@": "string 'invalid format' at 00828284",
+        "_lua_gettop": "Lua row 00611c10 (evidence name ?lua_gettop@@YAHPAUlua_State@@@Z)",
+        "_read_line": "in-range row 00624720",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)",
+        "_lua_pushfstring": "Lua row 00612320 (evidence name ?lua_pushfstring@@YAPBDPAUlua_State@@PBDZZ)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)",
+        "_luaL_checkstack": "Lua row 00610cf0 (evidence name ?luaL_checkstack@@YAXPAUlua_State@@HPBD@Z)",
+        "_lua_type": "Lua row 00611e00 (evidence name ?lua_type@@YAHPAUlua_State@@H@Z)",
+        "_lua_tointeger": "Lua row 00611fa0 (evidence name ?lua_tointeger@@YAHPAUlua_State@@H@Z)",
+        "_lua_pushlstring": "Lua row 00612240 (evidence name ?lua_pushlstring@@YAXPAUlua_State@@PBDI@Z)",
+        "_read_chars": "in-range row 006247f0",
+        "_lua_tolstring": "Lua row 00612010 (evidence name ?lua_tolstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_argerror": "Lua row 006114d0 (evidence name ?luaL_argerror@@YAHPAUlua_State@@HPBD@Z)",
+        "_read_number": "in-range row 006246e0",
+        "_lua_settop": "Lua row 00611c20 (evidence name ?lua_settop@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00624a30",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_io_read",
+      "evidence_name": "?io_read@@YAHPAUlua_State@@@Z",
+      "size": 71,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0BL@JMNLNGCA@standard?5?$CFs?5file?5is?5closed?$AA@": "string 'standard %s file is closed' at 00844c28",
+        "_lua_rawgeti": "Lua row 00612530 (evidence name ?lua_rawgeti@@YAXPAUlua_State@@HH@Z)",
+        "_lua_touserdata": "Lua row 00612120 (evidence name ?lua_touserdata@@YAPAXPAUlua_State@@H@Z)",
+        "_fnames": "data at 00844b10 (one address per symbol)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_g_read": "in-range row 00624890"
+      }
+    },
+    {
+      "row": "row 00624a80",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_f_read",
+      "evidence_name": "?f_read@@YAHPAUlua_State@@@Z",
+      "size": 58,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "??_C@_0BN@LPOOHAOM@attempt?5to?5use?5a?5closed?5file?$AA@": "string 'attempt to use a closed file' at 00844be4",
+        "_luaL_checkudata": "Lua row 006115b0 (evidence name ?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_g_read": "in-range row 00624890"
+      }
+    },
+    {
+      "row": "row 00624ac0",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_io_readline",
+      "evidence_name": "?io_readline@@YAHPAUlua_State@@@Z",
+      "size": 161,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0BH@PBGIDLEF@file?5is?5already?5closed?$AA@": "string 'file is already closed' at 00844c6c",
+        "__imp__ferror": "import msvcr90.dll!ferror",
+        "__imp___errno": "import msvcr90.dll!_errno",
+        "__imp__strerror": "import msvcr90.dll!strerror",
+        "??_C@_02DKCKIIND@?$CFs?$AA@": "string '%s' at 008103ac",
+        "_lua_touserdata": "Lua row 00612120 (evidence name ?lua_touserdata@@YAPAXPAUlua_State@@H@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_read_line": "in-range row 00624720",
+        "_lua_toboolean": "Lua row 00611fe0 (evidence name ?lua_toboolean@@YAHPAUlua_State@@H@Z)",
+        "_lua_settop": "Lua row 00611c20 (evidence name ?lua_settop@@YAXPAUlua_State@@H@Z)",
+        "_lua_pushvalue": "Lua row 00611dd0 (evidence name ?lua_pushvalue@@YAXPAUlua_State@@H@Z)",
+        "_aux_close": "in-range row 00624260"
+      }
+    },
+    {
+      "row": "row 00624b70",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_g_write",
+      "evidence_name": "?g_write@@YAHPAUlua_State@@PAU_iobuf@@H@Z",
+      "size": 237,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05CGOEHEFE@?$CF?414g?$AA@": "string '%.14g' at 00844c84",
+        "__imp__fprintf": "import msvcr90.dll!fprintf",
+        "__imp___errno": "import msvcr90.dll!_errno",
+        "__imp__fwrite": "import msvcr90.dll!fwrite",
+        "__imp__strerror": "import msvcr90.dll!strerror",
+        "??_C@_02DKCKIIND@?$CFs?$AA@": "string '%s' at 008103ac",
+        "_lua_gettop": "Lua row 00611c10 (evidence name ?lua_gettop@@YAHPAUlua_State@@@Z)",
+        "_lua_type": "Lua row 00611e00 (evidence name ?lua_type@@YAHPAUlua_State@@H@Z)",
+        "_lua_tonumber": "Lua row 00611f60 (evidence name ?lua_tonumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushboolean": "Lua row 006123f0 (evidence name ?lua_pushboolean@@YAXPAUlua_State@@H@Z)",
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)",
+        "_lua_pushfstring": "Lua row 00612320 (evidence name ?lua_pushfstring@@YAPBDPAUlua_State@@PBDZZ)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00624c60",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_io_write",
+      "evidence_name": "?io_write@@YAHPAUlua_State@@@Z",
+      "size": 73,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0BL@JMNLNGCA@standard?5?$CFs?5file?5is?5closed?$AA@": "string 'standard %s file is closed' at 00844c28",
+        "_lua_rawgeti": "Lua row 00612530 (evidence name ?lua_rawgeti@@YAXPAUlua_State@@HH@Z)",
+        "_lua_touserdata": "Lua row 00612120 (evidence name ?lua_touserdata@@YAPAXPAUlua_State@@H@Z)",
+        "_fnames": "data at 00844b10 (one address per symbol)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_g_write": "in-range row 00624b70"
+      }
+    },
+    {
+      "row": "row 00624cb0",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_f_write",
+      "evidence_name": "?f_write@@YAHPAUlua_State@@@Z",
+      "size": 62,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "??_C@_0BN@LPOOHAOM@attempt?5to?5use?5a?5closed?5file?$AA@": "string 'attempt to use a closed file' at 00844be4",
+        "_luaL_checkudata": "Lua row 006115b0 (evidence name ?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_g_write": "in-range row 00624b70"
+      }
+    },
+    {
+      "row": "row 00624cf0",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_f_seek",
+      "evidence_name": "?f_seek@@YAHPAUlua_State@@@Z",
+      "size": 176,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "??_C@_0BN@LPOOHAOM@attempt?5to?5use?5a?5closed?5file?$AA@": "string 'attempt to use a closed file' at 00844be4",
+        "??_C@_03LIBLMJMB@cur?$AA@": "string 'cur' at 00844c98",
+        "__imp__fseek": "import msvcr90.dll!fseek",
+        "__imp___errno": "import msvcr90.dll!_errno",
+        "__imp__strerror": "import msvcr90.dll!strerror",
+        "??_C@_02DKCKIIND@?$CFs?$AA@": "string '%s' at 008103ac",
+        "__imp__ftell": "import msvcr90.dll!ftell",
+        "_luaL_checkudata": "Lua row 006115b0 (evidence name ?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "?modenames@?1??f_seek@@9@9": "data at 00844c9c (one address per symbol)",
+        "_luaL_checkoption": "Lua row 006119c0 (evidence name ?luaL_checkoption@@YAHPAUlua_State@@HPBDQBQBD@Z)",
+        "_luaL_optinteger": "Lua row 00611870 (evidence name ?luaL_optinteger@@YAHPAUlua_State@@HH@Z)",
+        "?mode@?1??f_seek@@9@9": "data at 00844c8c (one address per symbol)",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)",
+        "_lua_pushfstring": "Lua row 00612320 (evidence name ?lua_pushfstring@@YAPBDPAUlua_State@@PBDZZ)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00624da0",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_f_setvbuf",
+      "evidence_name": "?f_setvbuf@@YAHPAUlua_State@@@Z",
+      "size": 173,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "??_C@_0BN@LPOOHAOM@attempt?5to?5use?5a?5closed?5file?$AA@": "string 'attempt to use a closed file' at 00844be4",
+        "__imp__setvbuf": "import msvcr90.dll!setvbuf",
+        "__imp___errno": "import msvcr90.dll!_errno",
+        "__imp__strerror": "import msvcr90.dll!strerror",
+        "??_C@_02DKCKIIND@?$CFs?$AA@": "string '%s' at 008103ac",
+        "_luaL_checkudata": "Lua row 006115b0 (evidence name ?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "?modenames@?1??f_setvbuf@@9@9": "data at 00844cc0 (one address per symbol)",
+        "_luaL_checkoption": "Lua row 006119c0 (evidence name ?luaL_checkoption@@YAHPAUlua_State@@HPBDQBQBD@Z)",
+        "_luaL_optinteger": "Lua row 00611870 (evidence name ?luaL_optinteger@@YAHPAUlua_State@@HH@Z)",
+        "?mode@?1??f_setvbuf@@9@9": "data at 00844cb4 (one address per symbol)",
+        "_lua_pushboolean": "Lua row 006123f0 (evidence name ?lua_pushboolean@@YAXPAUlua_State@@H@Z)",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)",
+        "_lua_pushfstring": "Lua row 00612320 (evidence name ?lua_pushfstring@@YAPBDPAUlua_State@@PBDZZ)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00624e50",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_io_flush",
+      "evidence_name": "?io_flush@@YAHPAUlua_State@@@Z",
+      "size": 150,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0BL@JMNLNGCA@standard?5?$CFs?5file?5is?5closed?$AA@": "string 'standard %s file is closed' at 00844c28",
+        "__imp__fflush": "import msvcr90.dll!fflush",
+        "__imp___errno": "import msvcr90.dll!_errno",
+        "__imp__strerror": "import msvcr90.dll!strerror",
+        "??_C@_02DKCKIIND@?$CFs?$AA@": "string '%s' at 008103ac",
+        "_lua_rawgeti": "Lua row 00612530 (evidence name ?lua_rawgeti@@YAXPAUlua_State@@HH@Z)",
+        "_lua_touserdata": "Lua row 00612120 (evidence name ?lua_touserdata@@YAPAXPAUlua_State@@H@Z)",
+        "_fnames": "data at 00844b10 (one address per symbol)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_lua_pushboolean": "Lua row 006123f0 (evidence name ?lua_pushboolean@@YAXPAUlua_State@@H@Z)",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)",
+        "_lua_pushfstring": "Lua row 00612320 (evidence name ?lua_pushfstring@@YAPBDPAUlua_State@@PBDZZ)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00624ef0",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_f_flush",
+      "evidence_name": "?f_flush@@YAHPAUlua_State@@@Z",
+      "size": 139,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "??_C@_0BN@LPOOHAOM@attempt?5to?5use?5a?5closed?5file?$AA@": "string 'attempt to use a closed file' at 00844be4",
+        "__imp__fflush": "import msvcr90.dll!fflush",
+        "__imp___errno": "import msvcr90.dll!_errno",
+        "__imp__strerror": "import msvcr90.dll!strerror",
+        "??_C@_02DKCKIIND@?$CFs?$AA@": "string '%s' at 008103ac",
+        "_luaL_checkudata": "Lua row 006115b0 (evidence name ?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_lua_pushboolean": "Lua row 006123f0 (evidence name ?lua_pushboolean@@YAXPAUlua_State@@H@Z)",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)",
+        "_lua_pushfstring": "Lua row 00612320 (evidence name ?lua_pushfstring@@YAPBDPAUlua_State@@PBDZZ)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00624f80",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaopen_io",
+      "evidence_name": "?luaopen_io@@YAHPAUlua_State@@@Z",
+      "size": 442,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "??_C@_07NHABFFHN@__index?$AA@": "string '__index' at 00834384",
+        "??_C@_02KFNNKBCK@io?$AA@": "string 'io' at 00834860",
+        "__imp____iob_func": "import msvcr90.dll!__iob_func",
+        "??_C@_05MHOFLBOO@stdin?$AA@": "string 'stdin' at 00844cf4",
+        "??_C@_06DJDOIFHB@stdout?$AA@": "string 'stdout' at 00844cec",
+        "??_C@_06FJGNEBG@stderr?$AA@": "string 'stderr' at 00844ce4",
+        "??_C@_05IACAFMHP@popen?$AA@": "string 'popen' at 00844aec",
+        "??_C@_07DMJMBBKE@__close?$AA@": "string '__close' at 00844c04",
+        "_luaL_newmetatable": "Lua row 00610c90 (evidence name ?luaL_newmetatable@@YAHPAUlua_State@@PBD@Z)",
+        "_lua_pushvalue": "Lua row 00611dd0 (evidence name ?lua_pushvalue@@YAXPAUlua_State@@H@Z)",
+        "_lua_setfield": "Lua row 006126b0 (evidence name ?lua_setfield@@YAXPAUlua_State@@HPBD@Z)",
+        "_flib": "data at 00844b78 (one address per symbol)",
+        "_luaL_register": "Lua row 00611a70 (evidence name ?luaL_register@@YAXPAUlua_State@@PBDPBUluaL_Reg@@@Z)",
+        "_lua_createtable": "Lua row 00612570 (evidence name ?lua_createtable@@YAXPAUlua_State@@HH@Z)",
+        "_lua_replace": "Lua row 00611d10 (evidence name ?lua_replace@@YAXPAUlua_State@@H@Z)",
+        "_iolib": "data at 00844b18 (one address per symbol)",
+        "_lua_newuserdata": "Lua row 00612c40 (evidence name ?lua_newuserdata@@YAPAXPAUlua_State@@I@Z)",
+        "_lua_getfield": "Lua row 00612490 (evidence name ?lua_getfield@@YAXPAUlua_State@@HPBD@Z)",
+        "_lua_setmetatable": "Lua row 006127f0 (evidence name ?lua_setmetatable@@YAHPAUlua_State@@H@Z)",
+        "_lua_rawseti": "Lua row 00612780 (evidence name ?lua_rawseti@@YAXPAUlua_State@@HH@Z)",
+        "_io_pclose": "in-range row 00624160",
+        "_lua_pushcclosure": "Lua row 00612350 (evidence name ?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z)",
+        "_lua_setfenv": "Lua row 006128a0 (evidence name ?lua_setfenv@@YAHPAUlua_State@@H@Z)",
+        "_lua_settop": "Lua row 00611c20 (evidence name ?lua_settop@@YAXPAUlua_State@@H@Z)",
+        "_io_fclose": "in-range row 006241e0"
+      }
+    },
+    {
+      "row": "row 00625140",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_f_lines",
+      "evidence_name": "?f_lines@@YAHPAUlua_State@@@Z",
+      "size": 79,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "??_C@_0BN@LPOOHAOM@attempt?5to?5use?5a?5closed?5file?$AA@": "string 'attempt to use a closed file' at 00844be4",
+        "_luaL_checkudata": "Lua row 006115b0 (evidence name ?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_lua_pushvalue": "Lua row 00611dd0 (evidence name ?lua_pushvalue@@YAXPAUlua_State@@H@Z)",
+        "_lua_pushboolean": "Lua row 006123f0 (evidence name ?lua_pushboolean@@YAXPAUlua_State@@H@Z)",
+        "_io_readline": "in-range row 00624ac0",
+        "_lua_pushcclosure": "Lua row 00612350 (evidence name ?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z)"
+      }
+    },
+    {
+      "row": "row 00625190",
+      "block": "lua-liolib",
+      "file": "liolib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_io_lines",
+      "evidence_name": "?io_lines@@YAHPAUlua_State@@@Z",
+      "size": 215,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05KCHOJJD@FILE?$CK?$AA@": "string 'FILE*' at 00844bdc",
+        "??_C@_01KDCPPGHE@r?$AA@": "string 'r' at 00827204",
+        "__imp__fopen": "import msvcr90.dll!fopen",
+        "__imp___errno": "import msvcr90.dll!_errno",
+        "__imp__strerror": "import msvcr90.dll!strerror",
+        "??_C@_06DJHOIPC@?$CFs?3?5?$CFs?$AA@": "string '%s: %s' at 00844bc8",
+        "_lua_type": "Lua row 00611e00 (evidence name ?lua_type@@YAHPAUlua_State@@H@Z)",
+        "_lua_rawgeti": "Lua row 00612530 (evidence name ?lua_rawgeti@@YAXPAUlua_State@@HH@Z)",
+        "_f_lines": "in-range row 00625140",
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_lua_newuserdata": "Lua row 00612c40 (evidence name ?lua_newuserdata@@YAPAXPAUlua_State@@I@Z)",
+        "_lua_getfield": "Lua row 00612490 (evidence name ?lua_getfield@@YAXPAUlua_State@@HPBD@Z)",
+        "_lua_setmetatable": "Lua row 006127f0 (evidence name ?lua_setmetatable@@YAHPAUlua_State@@H@Z)",
+        "_lua_pushfstring": "Lua row 00612320 (evidence name ?lua_pushfstring@@YAPBDPAUlua_State@@PBDZZ)",
+        "_lua_tolstring": "Lua row 00612010 (evidence name ?lua_tolstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_argerror": "Lua row 006114d0 (evidence name ?luaL_argerror@@YAHPAUlua_State@@HPBD@Z)",
+        "_lua_gettop": "Lua row 00611c10 (evidence name ?lua_gettop@@YAHPAUlua_State@@@Z)",
+        "_lua_pushvalue": "Lua row 00611dd0 (evidence name ?lua_pushvalue@@YAXPAUlua_State@@H@Z)",
+        "_lua_pushboolean": "Lua row 006123f0 (evidence name ?lua_pushboolean@@YAXPAUlua_State@@H@Z)",
+        "_io_readline": "in-range row 00624ac0",
+        "_lua_pushcclosure": "Lua row 00612350 (evidence name ?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z)"
+      }
+    },
+    {
+      "row": "row 00625270",
+      "block": "lua-ltablib",
+      "file": "ltablib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_foreachi",
+      "evidence_name": "?foreachi@@YAHPAUlua_State@@@Z",
+      "size": 129,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checktype": "Lua row 00611640 (evidence name ?luaL_checktype@@YAXPAUlua_State@@HH@Z)",
+        "_lua_objlen": "Lua row 00612080 (evidence name ?lua_objlen@@YAIPAUlua_State@@H@Z)",
+        "_lua_pushvalue": "Lua row 00611dd0 (evidence name ?lua_pushvalue@@YAXPAUlua_State@@H@Z)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)",
+        "_lua_rawgeti": "Lua row 00612530 (evidence name ?lua_rawgeti@@YAXPAUlua_State@@HH@Z)",
+        "_lua_call": "Lua row 00612920 (evidence name ?lua_call@@YAXPAUlua_State@@HH@Z)",
+        "_lua_type": "Lua row 00611e00 (evidence name ?lua_type@@YAHPAUlua_State@@H@Z)",
+        "_lua_settop": "Lua row 00611c20 (evidence name ?lua_settop@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00625300",
+      "block": "lua-ltablib",
+      "file": "ltablib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_foreach",
+      "evidence_name": "?foreach@@YAHPAUlua_State@@@Z",
+      "size": 131,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checktype": "Lua row 00611640 (evidence name ?luaL_checktype@@YAXPAUlua_State@@HH@Z)",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)",
+        "_lua_next": "Lua row 00612b80 (evidence name ?lua_next@@YAHPAUlua_State@@H@Z)",
+        "_lua_pushvalue": "Lua row 00611dd0 (evidence name ?lua_pushvalue@@YAXPAUlua_State@@H@Z)",
+        "_lua_call": "Lua row 00612920 (evidence name ?lua_call@@YAXPAUlua_State@@HH@Z)",
+        "_lua_type": "Lua row 00611e00 (evidence name ?lua_type@@YAHPAUlua_State@@H@Z)",
+        "_lua_settop": "Lua row 00611c20 (evidence name ?lua_settop@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00625390",
+      "block": "lua-ltablib",
+      "file": "ltablib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_maxn",
+      "evidence_name": "?maxn@@YAHPAUlua_State@@@Z",
+      "size": 150,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checktype": "Lua row 00611640 (evidence name ?luaL_checktype@@YAXPAUlua_State@@HH@Z)",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)",
+        "_lua_next": "Lua row 00612b80 (evidence name ?lua_next@@YAHPAUlua_State@@H@Z)",
+        "_lua_settop": "Lua row 00611c20 (evidence name ?lua_settop@@YAXPAUlua_State@@H@Z)",
+        "_lua_type": "Lua row 00611e00 (evidence name ?lua_type@@YAHPAUlua_State@@H@Z)",
+        "_lua_tonumber": "Lua row 00611f60 (evidence name ?lua_tonumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625430",
+      "block": "lua-ltablib",
+      "file": "ltablib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_getn",
+      "evidence_name": "?getn@@YAHPAUlua_State@@@Z",
+      "size": 40,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checktype": "Lua row 00611640 (evidence name ?luaL_checktype@@YAXPAUlua_State@@HH@Z)",
+        "_lua_objlen": "Lua row 00612080 (evidence name ?lua_objlen@@YAIPAUlua_State@@H@Z)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00625460",
+      "block": "lua-ltablib",
+      "file": "ltablib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_setn",
+      "evidence_name": "?setn@@YAHPAUlua_State@@@Z",
+      "size": 44,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0BD@OBDNDPKA@?8setn?8?5is?5obsolete?$AA@": "string \"'setn' is obsolete\" at 00844d98",
+        "_luaL_checktype": "Lua row 00611640 (evidence name ?luaL_checktype@@YAXPAUlua_State@@HH@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_lua_pushvalue": "Lua row 00611dd0 (evidence name ?lua_pushvalue@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00625490",
+      "block": "lua-ltablib",
+      "file": "ltablib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_tinsert",
+      "evidence_name": "?tinsert@@YAHPAUlua_State@@@Z",
+      "size": 165,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0CG@LPGHMHCC@wrong?5number?5of?5arguments?5to?5?8in@": "string \"wrong number of arguments to 'insert'\" at 00844dac",
+        "_luaL_checktype": "Lua row 00611640 (evidence name ?luaL_checktype@@YAXPAUlua_State@@HH@Z)",
+        "_lua_objlen": "Lua row 00612080 (evidence name ?lua_objlen@@YAIPAUlua_State@@H@Z)",
+        "_lua_gettop": "Lua row 00611c10 (evidence name ?lua_gettop@@YAHPAUlua_State@@@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_luaL_checkinteger": "Lua row 00611800 (evidence name ?luaL_checkinteger@@YAHPAUlua_State@@H@Z)",
+        "_lua_rawgeti": "Lua row 00612530 (evidence name ?lua_rawgeti@@YAXPAUlua_State@@HH@Z)",
+        "_lua_rawseti": "Lua row 00612780 (evidence name ?lua_rawseti@@YAXPAUlua_State@@HH@Z)"
+      }
+    },
+    {
+      "row": "row 00625540",
+      "block": "lua-ltablib",
+      "file": "ltablib.c",
+      "recipe": "lua-5.1.2",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_tremove",
+      "evidence_name": "?tremove@@YAHPAUlua_State@@@Z",
+      "size": 126,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checktype": "Lua row 00611640 (evidence name ?luaL_checktype@@YAXPAUlua_State@@HH@Z)",
+        "_lua_objlen": "Lua row 00612080 (evidence name ?lua_objlen@@YAIPAUlua_State@@H@Z)",
+        "_luaL_optinteger": "Lua row 00611870 (evidence name ?luaL_optinteger@@YAHPAUlua_State@@HH@Z)",
+        "_lua_rawgeti": "Lua row 00612530 (evidence name ?lua_rawgeti@@YAXPAUlua_State@@HH@Z)",
+        "_lua_rawseti": "Lua row 00612780 (evidence name ?lua_rawseti@@YAXPAUlua_State@@HH@Z)",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)"
+      }
+    },
+    {
+      "row": "row 006255c0",
+      "block": "lua-ltablib",
+      "file": "ltablib.c",
+      "recipe": "lua-5.1.3",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_tconcat",
+      "evidence_name": "?tconcat@@YAHPAUlua_State@@@Z",
+      "size": 225,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_00CNPNBAHC@?$AA@": "string '' at 0080b716",
+        "??_C@_0BL@KMFGGCKF@table?5contains?5non?9strings?$AA@": "string 'table contains non-strings' at 00844dd4",
+        "_luaL_optlstring": "Lua row 00611720 (evidence name ?luaL_optlstring@@YAPBDPAUlua_State@@HPBDPAI@Z)",
+        "_luaL_checktype": "Lua row 00611640 (evidence name ?luaL_checktype@@YAXPAUlua_State@@HH@Z)",
+        "_luaL_optinteger": "Lua row 00611870 (evidence name ?luaL_optinteger@@YAHPAUlua_State@@HH@Z)",
+        "_lua_type": "Lua row 00611e00 (evidence name ?lua_type@@YAHPAUlua_State@@H@Z)",
+        "_lua_objlen": "Lua row 00612080 (evidence name ?lua_objlen@@YAIPAUlua_State@@H@Z)",
+        "_luaL_checkinteger": "Lua row 00611800 (evidence name ?luaL_checkinteger@@YAHPAUlua_State@@H@Z)",
+        "_luaL_buffinit": "Lua row 006110a0 (evidence name ?luaL_buffinit@@YAXPAUlua_State@@PAUluaL_Buffer@@@Z)",
+        "_lua_rawgeti": "Lua row 00612530 (evidence name ?lua_rawgeti@@YAXPAUlua_State@@HH@Z)",
+        "_lua_isstring": "Lua row 00611eb0 (evidence name ?lua_isstring@@YAHPAUlua_State@@H@Z)",
+        "_luaL_argerror": "Lua row 006114d0 (evidence name ?luaL_argerror@@YAHPAUlua_State@@HPBD@Z)",
+        "_luaL_addvalue": "Lua row 00611020 (evidence name ?luaL_addvalue@@YAXPAUluaL_Buffer@@@Z)",
+        "_luaL_addlstring": "Lua row 00610f80 (evidence name ?luaL_addlstring@@YAXPAUluaL_Buffer@@PBDI@Z)",
+        "_luaL_pushresult": "Lua row 00610fe0 (evidence name ?luaL_pushresult@@YAXPAUluaL_Buffer@@@Z)"
+      }
+    },
+    {
+      "row": "row 006256b0",
+      "block": "lua-ltablib",
+      "file": "ltablib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_auxsort",
+      "evidence_name": "?auxsort@@YAXPAUlua_State@@HH@Z",
+      "size": 1011,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0CD@OFHMGIPD@invalid?5order?5function?5for?5sorti@": "string 'invalid order function for sorting' at 00844df0",
+        "_lua_rawgeti": "Lua row 00612530 (evidence name ?lua_rawgeti@@YAXPAUlua_State@@HH@Z)",
+        "_lua_type": "Lua row 00611e00 (evidence name ?lua_type@@YAHPAUlua_State@@H@Z)",
+        "_lua_pushvalue": "Lua row 00611dd0 (evidence name ?lua_pushvalue@@YAXPAUlua_State@@H@Z)",
+        "_lua_call": "Lua row 00612920 (evidence name ?lua_call@@YAXPAUlua_State@@HH@Z)",
+        "_lua_toboolean": "Lua row 00611fe0 (evidence name ?lua_toboolean@@YAHPAUlua_State@@H@Z)",
+        "_lua_settop": "Lua row 00611c20 (evidence name ?lua_settop@@YAXPAUlua_State@@H@Z)",
+        "_lua_lessthan": "Lua row 00611f20 (evidence name ?lua_lessthan@@YAHPAUlua_State@@HH@Z)",
+        "_lua_rawseti": "Lua row 00612780 (evidence name ?lua_rawseti@@YAXPAUlua_State@@HH@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_auxsort": "in-range row 006256b0"
+      }
+    },
+    {
+      "row": "row 00625ab0",
+      "block": "lua-ltablib",
+      "file": "ltablib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_sort",
+      "evidence_name": "?sort@@YAHPAUlua_State@@@Z",
+      "size": 92,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_00CNPNBAHC@?$AA@": "string '' at 0080b716",
+        "_luaL_checktype": "Lua row 00611640 (evidence name ?luaL_checktype@@YAXPAUlua_State@@HH@Z)",
+        "_lua_objlen": "Lua row 00612080 (evidence name ?lua_objlen@@YAIPAUlua_State@@H@Z)",
+        "_luaL_checkstack": "Lua row 00610cf0 (evidence name ?luaL_checkstack@@YAXPAUlua_State@@HPBD@Z)",
+        "_lua_type": "Lua row 00611e00 (evidence name ?lua_type@@YAHPAUlua_State@@H@Z)",
+        "_lua_settop": "Lua row 00611c20 (evidence name ?lua_settop@@YAXPAUlua_State@@H@Z)",
+        "_auxsort": "in-range row 006256b0"
+      }
+    },
+    {
+      "row": "row 00625b10",
+      "block": "lua-ltablib",
+      "file": "ltablib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaopen_table",
+      "evidence_name": "",
+      "size": 29,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_05LCLENNFI@table?$AA@": "string 'table' at 00810ce8",
+        "_tab_funcs": "data at 00844d48 (one address per symbol)",
+        "_luaL_register": "Lua row 00611a70 (evidence name ?luaL_register@@YAXPAUlua_State@@PBDPBUluaL_Reg@@@Z)"
+      }
+    },
+    {
+      "row": "row 00625b30",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_abs",
+      "evidence_name": "?math_abs@@YAHPAUlua_State@@@Z",
+      "size": 34,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625b60",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD /fp:fast",
+      "symbol": "_math_sin",
+      "evidence_name": "",
+      "size": 34,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625b90",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_sinh",
+      "evidence_name": "",
+      "size": 43,
+      "masked_equivalents_rejected_by_targets": [
+        "_math_acos",
+        "_math_asin",
+        "_math_atan",
+        "_math_cos",
+        "_math_cosh",
+        "_math_exp",
+        "_math_log",
+        "_math_log10",
+        "_math_sin",
+        "_math_sqrt",
+        "_math_tan",
+        "_math_tanh"
+      ],
+      "targets": {
+        "__CIsinh": "import msvcr90.dll!_CIsinh",
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625bc0",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD /fp:fast",
+      "symbol": "_math_cos",
+      "evidence_name": "",
+      "size": 34,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625bf0",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_cosh",
+      "evidence_name": "",
+      "size": 43,
+      "masked_equivalents_rejected_by_targets": [
+        "_math_acos",
+        "_math_asin",
+        "_math_atan",
+        "_math_cos",
+        "_math_exp",
+        "_math_log",
+        "_math_log10",
+        "_math_sin",
+        "_math_sinh",
+        "_math_sqrt",
+        "_math_tan",
+        "_math_tanh"
+      ],
+      "targets": {
+        "__CIcosh": "import msvcr90.dll!_CIcosh",
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625c20",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD /fp:fast",
+      "symbol": "_math_tan",
+      "evidence_name": "",
+      "size": 36,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625c50",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_tanh",
+      "evidence_name": "",
+      "size": 43,
+      "masked_equivalents_rejected_by_targets": [
+        "_math_acos",
+        "_math_asin",
+        "_math_atan",
+        "_math_cos",
+        "_math_cosh",
+        "_math_exp",
+        "_math_log",
+        "_math_log10",
+        "_math_sin",
+        "_math_sinh",
+        "_math_sqrt",
+        "_math_tan"
+      ],
+      "targets": {
+        "__CItanh": "import msvcr90.dll!_CItanh",
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625c80",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_asin",
+      "evidence_name": "",
+      "size": 43,
+      "masked_equivalents_rejected_by_targets": [
+        "_math_acos",
+        "_math_atan",
+        "_math_cos",
+        "_math_cosh",
+        "_math_exp",
+        "_math_log",
+        "_math_log10",
+        "_math_sin",
+        "_math_sinh",
+        "_math_sqrt",
+        "_math_tan",
+        "_math_tanh"
+      ],
+      "targets": {
+        "__CIasin": "import msvcr90.dll!_CIasin",
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625cb0",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_acos",
+      "evidence_name": "",
+      "size": 43,
+      "masked_equivalents_rejected_by_targets": [
+        "_math_asin",
+        "_math_atan",
+        "_math_cos",
+        "_math_cosh",
+        "_math_exp",
+        "_math_log",
+        "_math_log10",
+        "_math_sin",
+        "_math_sinh",
+        "_math_sqrt",
+        "_math_tan",
+        "_math_tanh"
+      ],
+      "targets": {
+        "__CIacos": "import msvcr90.dll!_CIacos",
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625ce0",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD /fp:fast",
+      "symbol": "_math_atan",
+      "evidence_name": "",
+      "size": 36,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625d10",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD /fp:fast",
+      "symbol": "_math_atan2",
+      "evidence_name": "",
+      "size": 61,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625d50",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_ceil",
+      "evidence_name": "?math_ceil@@YAHPAUlua_State@@@Z",
+      "size": 41,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__imp__ceil": "import msvcr90.dll!ceil",
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625d80",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_floor",
+      "evidence_name": "?math_floor@@YAHPAUlua_State@@@Z",
+      "size": 40,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_floor": "import msvcr90.dll!floor",
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625db0",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_fmod",
+      "evidence_name": "",
+      "size": 67,
+      "masked_equivalents_rejected_by_targets": [
+        "_math_atan2",
+        "_math_pow"
+      ],
+      "targets": {
+        "__CIfmod": "import msvcr90.dll!_CIfmod",
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625e00",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_modf",
+      "evidence_name": "?math_modf@@YAHPAUlua_State@@@Z",
+      "size": 79,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__imp__modf": "import msvcr90.dll!modf",
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625e50",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD /fp:fast",
+      "symbol": "_math_sqrt",
+      "evidence_name": "",
+      "size": 34,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625e80",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_pow",
+      "evidence_name": "",
+      "size": 67,
+      "masked_equivalents_rejected_by_targets": [
+        "_math_atan2",
+        "_math_fmod"
+      ],
+      "targets": {
+        "__CIpow": "import msvcr90.dll!_CIpow",
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625ed0",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD /fp:fast",
+      "symbol": "_math_log",
+      "evidence_name": "",
+      "size": 38,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625f00",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD /fp:fast",
+      "symbol": "_math_log10",
+      "evidence_name": "",
+      "size": 38,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625f30",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD /fp:fast",
+      "symbol": "_math_exp",
+      "evidence_name": "",
+      "size": 54,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625f70",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD /fp:fast",
+      "symbol": "_math_deg",
+      "evidence_name": "",
+      "size": 38,
+      "masked_equivalents_rejected_by_targets": [
+        "_math_rad"
+      ],
+      "targets": {
+        "__real@404ca5dc1a63c1f8": "constant 404ca5dc1a63c1f8 at 00844fb0",
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625fa0",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_rad",
+      "evidence_name": "",
+      "size": 38,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__real@3f91df46a2529d39": "constant 3f91df46a2529d39 at 00844fb8",
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00625fd0",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_frexp",
+      "evidence_name": "?math_frexp@@YAHPAUlua_State@@@Z",
+      "size": 63,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__imp__frexp": "import msvcr90.dll!frexp",
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00626010",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_ldexp",
+      "evidence_name": "?math_ldexp@@YAHPAUlua_State@@@Z",
+      "size": 57,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__imp__ldexp": "import msvcr90.dll!ldexp",
+        "_luaL_checkinteger": "Lua row 00611800 (evidence name ?luaL_checkinteger@@YAHPAUlua_State@@H@Z)",
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00626050",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_min",
+      "evidence_name": "?math_min@@YAHPAUlua_State@@@Z",
+      "size": 114,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_lua_gettop": "Lua row 00611c10 (evidence name ?lua_gettop@@YAHPAUlua_State@@@Z)",
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 006260d0",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_max",
+      "evidence_name": "?math_max@@YAHPAUlua_State@@@Z",
+      "size": 114,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_lua_gettop": "Lua row 00611c10 (evidence name ?lua_gettop@@YAHPAUlua_State@@@Z)",
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00626150",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD /fp:fast",
+      "symbol": "_math_random",
+      "evidence_name": "",
+      "size": 269,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__imp__rand": "import msvcr90.dll!rand",
+        "__real@3f00002000400080": "constant 3f00002000400080 at 008288e8",
+        "??_C@_0BK@KNAOOCNO@wrong?5number?5of?5arguments?$AA@": "string 'wrong number of arguments' at 00844fd4",
+        "??_C@_0BC@JKHEKPDC@interval?5is?5empty?$AA@": "string 'interval is empty' at 00844fc0",
+        "_floor": "import msvcr90.dll!floor",
+        "__real@3ff0000000000000": "constant 3ff0000000000000 at 00811238",
+        "_lua_gettop": "Lua row 00611c10 (evidence name ?lua_gettop@@YAHPAUlua_State@@@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_luaL_checkinteger": "Lua row 00611800 (evidence name ?luaL_checkinteger@@YAHPAUlua_State@@H@Z)",
+        "_luaL_argerror": "Lua row 006114d0 (evidence name ?luaL_argerror@@YAHPAUlua_State@@HPBD@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)"
+      }
+    },
+    {
+      "row": "row 00626260",
+      "block": "lua-lmathlib",
+      "file": "lmathlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_math_randomseed",
+      "evidence_name": "?math_randomseed@@YAHPAUlua_State@@@Z",
+      "size": 25,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__imp__srand": "import msvcr90.dll!srand",
+        "_luaL_checkinteger": "Lua row 00611800 (evidence name ?luaL_checkinteger@@YAHPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00626280",
+      "block": "lua-lmathlib",
+      "file": "roc_unit_9835aad68266b897.cpp",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "?luaopen_math@@YAHPAUlua_State@@@Z",
+      "evidence_name": "",
+      "size": 94,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_04CFDJAKFL@math?$AA@": "string 'math' at 008348d4",
+        "__real@400921fb54442d18": "constant 400921fb54442d18 at 00845000",
+        "??_C@_02OAHAJOFD@pi?$AA@": "string 'pi' at 00844ff8",
+        "__imp___HUGE": "import msvcr90.dll!_HUGE",
+        "??_C@_04JJGMCGIH@huge?$AA@": "string 'huge' at 00844ff0",
+        "_mathlib": "data at 00844ec8 (one address per symbol)",
+        "?luaL_register@@YAXPAUlua_State@@PBDPBUluaL_Reg@@@Z": "Lua row 00611a70 (evidence name ?luaL_register@@YAXPAUlua_State@@PBDPBUluaL_Reg@@@Z)",
+        "?lua_pushnumber@@YAXPAUlua_State@@N@Z": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)",
+        "?lua_setfield@@YAXPAUlua_State@@HPBD@Z": "Lua row 006126b0 (evidence name ?lua_setfield@@YAXPAUlua_State@@HPBD@Z)"
+      }
+    },
+    {
+      "row": "row 006262e0",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_str_len",
+      "evidence_name": "?str_len@@YAHPAUlua_State@@@Z",
+      "size": 41,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00626310",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.3",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_str_sub",
+      "evidence_name": "?str_sub@@YAHPAUlua_State@@@Z",
+      "size": 155,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_00CNPNBAHC@?$AA@": "string '' at 0080b716",
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_checkinteger": "Lua row 00611800 (evidence name ?luaL_checkinteger@@YAHPAUlua_State@@H@Z)",
+        "_luaL_optinteger": "Lua row 00611870 (evidence name ?luaL_optinteger@@YAHPAUlua_State@@HH@Z)",
+        "_lua_pushlstring": "Lua row 00612240 (evidence name ?lua_pushlstring@@YAXPAUlua_State@@PBDI@Z)"
+      }
+    },
+    {
+      "row": "row 006263b0",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_str_reverse",
+      "evidence_name": "?str_reverse@@YAHPAUlua_State@@@Z",
+      "size": 147,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_buffinit": "Lua row 006110a0 (evidence name ?luaL_buffinit@@YAXPAUlua_State@@PAUluaL_Buffer@@@Z)",
+        "_luaL_prepbuffer": "Lua row 00610f40 (evidence name ?luaL_prepbuffer@@YAPADPAUluaL_Buffer@@@Z)",
+        "_luaL_pushresult": "Lua row 00610fe0 (evidence name ?luaL_pushresult@@YAXPAUluaL_Buffer@@@Z)"
+      }
+    },
+    {
+      "row": "row 00626450",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_str_lower",
+      "evidence_name": "",
+      "size": 145,
+      "masked_equivalents_rejected_by_targets": [
+        "_str_upper"
+      ],
+      "targets": {
+        "__imp__tolower": "import msvcr90.dll!tolower",
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_buffinit": "Lua row 006110a0 (evidence name ?luaL_buffinit@@YAXPAUlua_State@@PAUluaL_Buffer@@@Z)",
+        "_luaL_prepbuffer": "Lua row 00610f40 (evidence name ?luaL_prepbuffer@@YAPADPAUluaL_Buffer@@@Z)",
+        "_luaL_pushresult": "Lua row 00610fe0 (evidence name ?luaL_pushresult@@YAXPAUluaL_Buffer@@@Z)"
+      }
+    },
+    {
+      "row": "row 006264f0",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_str_upper",
+      "evidence_name": "",
+      "size": 145,
+      "masked_equivalents_rejected_by_targets": [
+        "_str_lower"
+      ],
+      "targets": {
+        "__imp__toupper": "import msvcr90.dll!toupper",
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_buffinit": "Lua row 006110a0 (evidence name ?luaL_buffinit@@YAXPAUlua_State@@PAUluaL_Buffer@@@Z)",
+        "_luaL_prepbuffer": "Lua row 00610f40 (evidence name ?luaL_prepbuffer@@YAPADPAUluaL_Buffer@@@Z)",
+        "_luaL_pushresult": "Lua row 00610fe0 (evidence name ?luaL_pushresult@@YAXPAUluaL_Buffer@@@Z)"
+      }
+    },
+    {
+      "row": "row 00626590",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_str_rep",
+      "evidence_name": "?str_rep@@YAHPAUlua_State@@@Z",
+      "size": 116,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_checkinteger": "Lua row 00611800 (evidence name ?luaL_checkinteger@@YAHPAUlua_State@@H@Z)",
+        "_luaL_buffinit": "Lua row 006110a0 (evidence name ?luaL_buffinit@@YAXPAUlua_State@@PAUluaL_Buffer@@@Z)",
+        "_luaL_addlstring": "Lua row 00610f80 (evidence name ?luaL_addlstring@@YAXPAUluaL_Buffer@@PBDI@Z)",
+        "_luaL_pushresult": "Lua row 00610fe0 (evidence name ?luaL_pushresult@@YAXPAUluaL_Buffer@@@Z)"
+      }
+    },
+    {
+      "row": "row 00626610",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.3",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_str_byte",
+      "evidence_name": "?str_byte@@YAHPAUlua_State@@@Z",
+      "size": 195,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0BG@DFAIEAEC@string?5slice?5too?5long?$AA@": "string 'string slice too long' at 008450f8",
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_optinteger": "Lua row 00611870 (evidence name ?luaL_optinteger@@YAHPAUlua_State@@HH@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_luaL_checkstack": "Lua row 00610cf0 (evidence name ?luaL_checkstack@@YAXPAUlua_State@@HPBD@Z)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 006266e0",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_str_char",
+      "evidence_name": "?str_char@@YAHPAUlua_State@@@Z",
+      "size": 152,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0O@EAJJMEEM@invalid?5value?$AA@": "string 'invalid value' at 00845110",
+        "_lua_gettop": "Lua row 00611c10 (evidence name ?lua_gettop@@YAHPAUlua_State@@@Z)",
+        "_luaL_buffinit": "Lua row 006110a0 (evidence name ?luaL_buffinit@@YAXPAUlua_State@@PAUluaL_Buffer@@@Z)",
+        "_luaL_checkinteger": "Lua row 00611800 (evidence name ?luaL_checkinteger@@YAHPAUlua_State@@H@Z)",
+        "_luaL_argerror": "Lua row 006114d0 (evidence name ?luaL_argerror@@YAHPAUlua_State@@HPBD@Z)",
+        "_luaL_prepbuffer": "Lua row 00610f40 (evidence name ?luaL_prepbuffer@@YAPADPAUluaL_Buffer@@@Z)",
+        "_luaL_pushresult": "Lua row 00610fe0 (evidence name ?luaL_pushresult@@YAXPAUluaL_Buffer@@@Z)"
+      }
+    },
+    {
+      "row": "row 00626780",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_writer",
+      "evidence_name": "?writer@@YAHPAUlua_State@@PBXIPAX@Z",
+      "size": 26,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_addlstring": "Lua row 00610f80 (evidence name ?luaL_addlstring@@YAXPAUluaL_Buffer@@PBDI@Z)"
+      }
+    },
+    {
+      "row": "row 006267a0",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_str_dump",
+      "evidence_name": "?str_dump@@YAHPAUlua_State@@@Z",
+      "size": 106,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0BO@BNLBHKJN@unable?5to?5dump?5given?5function?$AA@": "string 'unable to dump given function' at 00845120",
+        "_luaL_checktype": "Lua row 00611640 (evidence name ?luaL_checktype@@YAXPAUlua_State@@HH@Z)",
+        "_lua_settop": "Lua row 00611c20 (evidence name ?lua_settop@@YAXPAUlua_State@@H@Z)",
+        "_luaL_buffinit": "Lua row 006110a0 (evidence name ?luaL_buffinit@@YAXPAUlua_State@@PAUluaL_Buffer@@@Z)",
+        "_writer": "in-range row 00626780",
+        "_lua_dump": "Lua row 00612a30 (evidence name ?lua_dump@@YAHPAUlua_State@@P6AH0PBXIPAX@Z2@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_luaL_pushresult": "Lua row 00610fe0 (evidence name ?luaL_pushresult@@YAXPAUluaL_Buffer@@@Z)"
+      }
+    },
+    {
+      "row": "row 00626810",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_classend",
+      "evidence_name": "?classend@@YAPBDPAUMatchState@@PBD@Z",
+      "size": 105,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0CA@CFGACOGB@malformed?5pattern?5?$CImissing?5?8?$FN?8?$CJ?$AA@": "string \"malformed pattern (missing ']')\" at 00845194",
+        "??_C@_0CD@PLJBIEHA@malformed?5pattern?5?$CIends?5with?5?8?$CF?$CF@": "string \"malformed pattern (ends with '%%')\" at 00845170",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)"
+      }
+    },
+    {
+      "row": "row 00626880",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_match_class",
+      "evidence_name": "?match_class@@YAHHH@Z",
+      "size": 282,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__imp__tolower": "import msvcr90.dll!tolower",
+        "__imp__islower": "import msvcr90.dll!islower",
+        "__imp__isalpha": "import msvcr90.dll!isalpha",
+        "__imp__iscntrl": "import msvcr90.dll!iscntrl",
+        "__imp__isdigit": "import msvcr90.dll!isdigit",
+        "__imp__ispunct": "import msvcr90.dll!ispunct",
+        "__imp__isspace": "import msvcr90.dll!isspace",
+        "__imp__isupper": "import msvcr90.dll!isupper",
+        "__imp__isalnum": "import msvcr90.dll!isalnum",
+        "__imp__isxdigit": "import msvcr90.dll!isxdigit",
+        "local_eh": [
+          "$LN18",
+          "$LN20",
+          "$LN11",
+          "$LN10",
+          "$LN9",
+          "$LN8",
+          "$LN7",
+          "$LN6",
+          "$LN5",
+          "$LN4",
+          "$LN3",
+          "$LN2",
+          "$LN1"
+        ]
+      }
+    },
+    {
+      "row": "row 006269a0",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_matchbracketclass",
+      "evidence_name": "?matchbracketclass@@YAHHPBD0@Z",
+      "size": 145,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_match_class": "in-range row 00626880"
+      }
+    },
+    {
+      "row": "row 00626a40",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_matchbalance",
+      "evidence_name": "?matchbalance@@YAPBDPAUMatchState@@PBD1@Z",
+      "size": 101,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0BD@NGJIMPLI@unbalanced?5pattern?$AA@": "string 'unbalanced pattern' at 008451b4",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)"
+      }
+    },
+    {
+      "row": "row 00626ab0",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_max_expand",
+      "evidence_name": "?max_expand@@YAPBDPAUMatchState@@PBD11@Z",
+      "size": 146,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_matchbracketclass": "in-range row 006269a0",
+        "_match_class": "in-range row 00626880",
+        "_match": "in-range row 00626d20"
+      }
+    },
+    {
+      "row": "row 00626b50",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_min_expand",
+      "evidence_name": "?min_expand@@YAPBDPAUMatchState@@PBD11@Z",
+      "size": 133,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_match": "in-range row 00626d20",
+        "_matchbracketclass": "in-range row 006269a0",
+        "_match_class": "in-range row 00626880"
+      }
+    },
+    {
+      "row": "row 00626be0",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_start_capture",
+      "evidence_name": "?start_capture@@YAPBDPAUMatchState@@PBD1H@Z",
+      "size": 66,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0BC@IMEAEJPD@too?5many?5captures?$AA@": "string 'too many captures' at 008451c8",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_match": "in-range row 00626d20"
+      }
+    },
+    {
+      "row": "row 00626c30",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_end_capture",
+      "evidence_name": "?end_capture@@YAPBDPAUMatchState@@PBD1@Z",
+      "size": 87,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0BI@ECNPHIBF@invalid?5pattern?5capture?$AA@": "string 'invalid pattern capture' at 00845158",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_match": "in-range row 00626d20"
+      }
+    },
+    {
+      "row": "row 00626c90",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_match_capture",
+      "evidence_name": "?match_capture@@YAPBDPAUMatchState@@PBDH@Z",
+      "size": 138,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0BG@LEHNKOGD@invalid?5capture?5index?$AA@": "string 'invalid capture index' at 00845140",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)"
+      }
+    },
+    {
+      "row": "row 00626d20",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_match",
+      "evidence_name": "?match@@YAPBDPAUMatchState@@PBD1@Z",
+      "size": 710,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__imp__isdigit": "import msvcr90.dll!isdigit",
+        "??_C@_0CD@LOJJMDBH@missing?5?8?$FL?8?5after?5?8?$CF?$CFf?8?5in?5patte@": "string \"missing '[' after '%%f' in pattern\" at 008451dc",
+        "local_eh": [
+          "$LN62",
+          "$LN69",
+          "$LN63",
+          "$LN70",
+          "$LN24",
+          "$LN13",
+          "$LN26",
+          "$LN30",
+          "$LN28",
+          "$LN5",
+          "$LN4",
+          "$LN3",
+          "$LN7",
+          "$LN2"
+        ],
+        "_match_capture": "in-range row 00626c90",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_classend": "in-range row 00626810",
+        "_matchbracketclass": "in-range row 006269a0",
+        "_matchbalance": "in-range row 00626a40",
+        "_match_class": "in-range row 00626880",
+        "_match": "in-range row 00626d20",
+        "_start_capture": "in-range row 00626be0",
+        "_end_capture": "in-range row 00626c30",
+        "_max_expand": "in-range row 00626ab0",
+        "_min_expand": "in-range row 00626b50",
+        "$dflt$5970": "data at 00626e23 (one address per symbol)"
+      }
+    },
+    {
+      "row": "row 00626ff0",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_lmemfind",
+      "evidence_name": "?lmemfind@@YAPBDPBDI0I@Z",
+      "size": 165,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__imp__memchr": "import msvcr90.dll!memchr"
+      }
+    },
+    {
+      "row": "row 006270a0",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_push_onecapture",
+      "evidence_name": "?push_onecapture@@YAXPAUMatchState@@HPBD1@Z",
+      "size": 118,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0BG@LEHNKOGD@invalid?5capture?5index?$AA@": "string 'invalid capture index' at 00845140",
+        "??_C@_0BD@BFKNEALP@unfinished?5capture?$AA@": "string 'unfinished capture' at 00845200",
+        "_lua_pushlstring": "Lua row 00612240 (evidence name ?lua_pushlstring@@YAXPAUlua_State@@PBDI@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00627120",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_push_captures",
+      "evidence_name": "?push_captures@@YAHPAUMatchState@@PBD1@Z",
+      "size": 73,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0BC@IMEAEJPD@too?5many?5captures?$AA@": "string 'too many captures' at 008451c8",
+        "_luaL_checkstack": "Lua row 00610cf0 (evidence name ?luaL_checkstack@@YAXPAUlua_State@@HPBD@Z)",
+        "_push_onecapture": "in-range row 006270a0"
+      }
+    },
+    {
+      "row": "row 00627170",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_str_find_aux",
+      "evidence_name": "?str_find_aux@@YAHPAUlua_State@@H@Z",
+      "size": 419,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0L@NLFJOONJ@?$FO$?$CK?$CL?$DP?4?$CI?$FL?$CF?9?$AA@": "string '^$*+?.([%-' at 00845214",
+        "__imp__strpbrk": "import msvcr90.dll!strpbrk",
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_optinteger": "Lua row 00611870 (evidence name ?luaL_optinteger@@YAHPAUlua_State@@HH@Z)",
+        "_lua_toboolean": "Lua row 00611fe0 (evidence name ?lua_toboolean@@YAHPAUlua_State@@H@Z)",
+        "_lmemfind": "in-range row 00626ff0",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)",
+        "_match": "in-range row 00626d20",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)",
+        "_push_captures": "in-range row 00627120"
+      }
+    },
+    {
+      "row": "row 00627320",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_str_find",
+      "evidence_name": "?str_find@@YAHPAUlua_State@@@Z",
+      "size": 16,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_str_find_aux": "in-range row 00627170"
+      }
+    },
+    {
+      "row": "row 00627330",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_str_match",
+      "evidence_name": "",
+      "size": 16,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_str_find_aux": "in-range row 00627170"
+      }
+    },
+    {
+      "row": "row 00627340",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_gmatch_aux",
+      "evidence_name": "?gmatch_aux@@YAHPAUlua_State@@@Z",
+      "size": 358,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0BC@IMEAEJPD@too?5many?5captures?$AA@": "string 'too many captures' at 008451c8",
+        "??_C@_0BG@LEHNKOGD@invalid?5capture?5index?$AA@": "string 'invalid capture index' at 00845140",
+        "??_C@_0BD@BFKNEALP@unfinished?5capture?$AA@": "string 'unfinished capture' at 00845200",
+        "_lua_tolstring": "Lua row 00612010 (evidence name ?lua_tolstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_lua_tointeger": "Lua row 00611fa0 (evidence name ?lua_tointeger@@YAHPAUlua_State@@H@Z)",
+        "_match": "in-range row 00626d20",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)",
+        "_lua_replace": "Lua row 00611d10 (evidence name ?lua_replace@@YAXPAUlua_State@@H@Z)",
+        "_luaL_checkstack": "Lua row 00610cf0 (evidence name ?luaL_checkstack@@YAXPAUlua_State@@HPBD@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_lua_pushlstring": "Lua row 00612240 (evidence name ?lua_pushlstring@@YAXPAUlua_State@@PBDI@Z)"
+      }
+    },
+    {
+      "row": "row 006274b0",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_gmatch",
+      "evidence_name": "?gmatch@@YAHPAUlua_State@@@Z",
+      "size": 64,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_lua_settop": "Lua row 00611c20 (evidence name ?lua_settop@@YAXPAUlua_State@@H@Z)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)",
+        "_gmatch_aux": "in-range row 00627340",
+        "_lua_pushcclosure": "Lua row 00612350 (evidence name ?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z)"
+      }
+    },
+    {
+      "row": "row 006274f0",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_gfind_nodef",
+      "evidence_name": "",
+      "size": 19,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0CO@MAGJPEI@?8string?4gfind?8?5was?5renamed?5to?5?8s@": "string \"'string.gfind' was renamed to 'string.gmatch'\" at 00845220",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)"
+      }
+    },
+    {
+      "row": "row 00627510",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_add_s",
+      "evidence_name": "?add_s@@YAXPAUMatchState@@PAUluaL_Buffer@@PBD2@Z",
+      "size": 214,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__imp__isdigit": "import msvcr90.dll!isdigit",
+        "_lua_tolstring": "Lua row 00612010 (evidence name ?lua_tolstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_prepbuffer": "Lua row 00610f40 (evidence name ?luaL_prepbuffer@@YAPADPAUluaL_Buffer@@@Z)",
+        "_luaL_addlstring": "Lua row 00610f80 (evidence name ?luaL_addlstring@@YAXPAUluaL_Buffer@@PBDI@Z)",
+        "_push_onecapture": "in-range row 006270a0",
+        "_luaL_addvalue": "Lua row 00611020 (evidence name ?luaL_addvalue@@YAXPAUluaL_Buffer@@@Z)"
+      }
+    },
+    {
+      "row": "row 006275f0",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.2",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_add_value",
+      "evidence_name": "?add_value@@YAXPAUMatchState@@PAUluaL_Buffer@@PBD2@Z",
+      "size": 284,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0CB@LPDIHGGA@invalid?5replacement?5value?5?$CIa?5?$CFs?$CJ@": "string 'invalid replacement value (a %s)' at 00845270",
+        "??_C@_0BP@PPPOBACA@string?1function?1table?5expected?$AA@": "string 'string/function/table expected' at 00845250",
+        "_lua_type": "Lua row 00611e00 (evidence name ?lua_type@@YAHPAUlua_State@@H@Z)",
+        "local_eh": [
+          "$LN12",
+          "$LN7",
+          "$LN7",
+          "$LN5",
+          "$LN6"
+        ],
+        "_add_s": "in-range row 00627510",
+        "_lua_pushvalue": "Lua row 00611dd0 (evidence name ?lua_pushvalue@@YAXPAUlua_State@@H@Z)",
+        "_push_captures": "in-range row 00627120",
+        "_lua_call": "Lua row 00612920 (evidence name ?lua_call@@YAXPAUlua_State@@HH@Z)",
+        "_push_onecapture": "in-range row 006270a0",
+        "_lua_gettable": "Lua row 00612460 (evidence name ?lua_gettable@@YAXPAUlua_State@@H@Z)",
+        "_lua_toboolean": "Lua row 00611fe0 (evidence name ?lua_toboolean@@YAHPAUlua_State@@H@Z)",
+        "_lua_settop": "Lua row 00611c20 (evidence name ?lua_settop@@YAXPAUlua_State@@H@Z)",
+        "_lua_pushlstring": "Lua row 00612240 (evidence name ?lua_pushlstring@@YAXPAUlua_State@@PBDI@Z)",
+        "_luaL_addvalue": "Lua row 00611020 (evidence name ?luaL_addvalue@@YAXPAUluaL_Buffer@@@Z)",
+        "_lua_isstring": "Lua row 00611eb0 (evidence name ?lua_isstring@@YAHPAUlua_State@@H@Z)",
+        "_lua_typename": "Lua row 00611e20 (evidence name ?lua_typename@@YAPBDPAUlua_State@@H@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)",
+        "_luaL_argerror": "Lua row 006114d0 (evidence name ?luaL_argerror@@YAHPAUlua_State@@HPBD@Z)"
+      }
+    },
+    {
+      "row": "row 00627710",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.2",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_str_gsub",
+      "evidence_name": "?str_gsub@@YAHPAUlua_State@@@Z",
+      "size": 343,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_optinteger": "Lua row 00611870 (evidence name ?luaL_optinteger@@YAHPAUlua_State@@HH@Z)",
+        "_luaL_buffinit": "Lua row 006110a0 (evidence name ?luaL_buffinit@@YAXPAUlua_State@@PAUluaL_Buffer@@@Z)",
+        "_match": "in-range row 00626d20",
+        "_add_value": "in-range row 006275f0",
+        "_luaL_prepbuffer": "Lua row 00610f40 (evidence name ?luaL_prepbuffer@@YAPADPAUluaL_Buffer@@@Z)",
+        "_luaL_addlstring": "Lua row 00610f80 (evidence name ?luaL_addlstring@@YAXPAUluaL_Buffer@@PBDI@Z)",
+        "_luaL_pushresult": "Lua row 00610fe0 (evidence name ?luaL_pushresult@@YAXPAUluaL_Buffer@@@Z)",
+        "_lua_pushinteger": "Lua row 00612220 (evidence name ?lua_pushinteger@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00627870",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_addquoted",
+      "evidence_name": "?addquoted@@YAXPAUlua_State@@PAUluaL_Buffer@@H@Z",
+      "size": 337,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_02HIBBOKEN@?2r?$AA@": "string '\\\\r' at 008287f4",
+        "??_C@_04MPDIABOK@?2000?$AA@": "string '\\\\000' at 00845294",
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_prepbuffer": "Lua row 00610f40 (evidence name ?luaL_prepbuffer@@YAPADPAUluaL_Buffer@@@Z)",
+        "local_eh": [
+          "$LN19",
+          "$LN21",
+          "$LN2",
+          "$LN4",
+          "$LN3",
+          "$LN1"
+        ],
+        "_luaL_addlstring": "Lua row 00610f80 (evidence name ?luaL_addlstring@@YAXPAUluaL_Buffer@@PBDI@Z)"
+      }
+    },
+    {
+      "row": "row 006279d0",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_scanformat",
+      "evidence_name": "?scanformat@@YAPBDPAUlua_State@@PBDPAD@Z",
+      "size": 215,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__imp__strchr": "import msvcr90.dll!strchr",
+        "??_C@_05GGBDHNF@?9?$CL?5?$CD0?$AA@": "string '-+ #0' at 008452ec",
+        "??_C@_0CA@COOMGCAO@invalid?5format?5?$CIrepeated?5flags?$CJ?$AA@": "string 'invalid format (repeated flags)' at 008452cc",
+        "__imp__isdigit": "import msvcr90.dll!isdigit",
+        "??_C@_0CN@KALFEKPN@invalid?5format?5?$CIwidth?5or?5precisi@": "string 'invalid format (width or precision too long)' at 0084529c",
+        "__imp__strncpy": "import msvcr90.dll!strncpy",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)"
+      }
+    },
+    {
+      "row": "row 00627ab0",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_str_format",
+      "evidence_name": "?str_format@@YAHPAUlua_State@@@Z",
+      "size": 744,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "__imp__sprintf": "import msvcr90.dll!sprintf",
+        "__imp__strchr": "import msvcr90.dll!strchr",
+        "??_C@_0CC@KIPBEOBI@invalid?5option?5?8?$CF?$CF?$CFc?8?5to?5?8format@": "string \"invalid option '%%%c' to 'format'\" at 008452f4",
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_buffinit": "Lua row 006110a0 (evidence name ?luaL_buffinit@@YAXPAUlua_State@@PAUluaL_Buffer@@@Z)",
+        "_luaL_prepbuffer": "Lua row 00610f40 (evidence name ?luaL_prepbuffer@@YAPADPAUluaL_Buffer@@@Z)",
+        "_scanformat": "in-range row 006279d0",
+        "local_eh": [
+          "$LN29",
+          "$LN35",
+          "$LN6",
+          "$LN7",
+          "$LN9",
+          "$LN8",
+          "$LN5",
+          "$LN4",
+          "$LN2"
+        ],
+        "_luaL_checknumber": "Lua row 00611780 (evidence name ?luaL_checknumber@@YANPAUlua_State@@H@Z)",
+        "__ftol2_sse": "function row 006a17f0 (one address per symbol)",
+        "_addquoted": "in-range row 00627870",
+        "_lua_pushvalue": "Lua row 00611dd0 (evidence name ?lua_pushvalue@@YAXPAUlua_State@@H@Z)",
+        "_luaL_addvalue": "Lua row 00611020 (evidence name ?luaL_addvalue@@YAXPAUluaL_Buffer@@@Z)",
+        "_luaL_addlstring": "Lua row 00610f80 (evidence name ?luaL_addlstring@@YAXPAUluaL_Buffer@@PBDI@Z)",
+        "_luaL_pushresult": "Lua row 00610fe0 (evidence name ?luaL_pushresult@@YAXPAUluaL_Buffer@@@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)"
+      }
+    },
+    {
+      "row": "row 00627da0",
+      "block": "lua-lstrlib",
+      "file": "lstrlib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_createmetatable",
+      "evidence_name": "?createmetatable@@YAXPAUlua_State@@@Z",
+      "size": 83,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_00CNPNBAHC@?$AA@": "string '' at 0080b716",
+        "??_C@_07NHABFFHN@__index?$AA@": "string '__index' at 00834384",
+        "_lua_createtable": "Lua row 00612570 (evidence name ?lua_createtable@@YAXPAUlua_State@@HH@Z)",
+        "_lua_pushlstring": "Lua row 00612240 (evidence name ?lua_pushlstring@@YAXPAUlua_State@@PBDI@Z)",
+        "_lua_pushvalue": "Lua row 00611dd0 (evidence name ?lua_pushvalue@@YAXPAUlua_State@@H@Z)",
+        "_lua_setmetatable": "Lua row 006127f0 (evidence name ?lua_setmetatable@@YAHPAUlua_State@@H@Z)",
+        "_lua_settop": "Lua row 00611c20 (evidence name ?lua_settop@@YAXPAUlua_State@@H@Z)",
+        "_lua_setfield": "Lua row 006126b0 (evidence name ?lua_setfield@@YAXPAUlua_State@@HPBD@Z)"
+      }
+    },
+    {
+      "row": "row 00627e00",
+      "block": "lua-lstrlib",
+      "file": "roc_espeon_luastringnogfind_92071a0221e9258a.cpp",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "?luaopen_string@@YAHPAUlua_State@@@Z",
+      "evidence_name": "",
+      "size": 36,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_06ICGJLFIM@string?$AA@": "string 'string' at 0082f6b8",
+        "_strlib": "data at 00845078 (one address per symbol)",
+        "?luaL_register@@YAXPAUlua_State@@PBDPBUluaL_Reg@@@Z": "Lua row 00611a70 (evidence name ?luaL_register@@YAXPAUlua_State@@PBDPBUluaL_Reg@@@Z)",
+        "?createmetatable@@YAXPAUlua_State@@@Z": "in-range row 00627da0"
+      }
+    },
+    {
+      "row": "row 00627e30",
+      "block": "lua-lbaselib",
+      "file": "lbaselib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaB_print",
+      "evidence_name": "?luaB_print@@YAHPAUlua_State@@@Z",
+      "size": 203,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_08FNIIFOJC@tostring?$AA@": "string 'tostring' at 008344a8",
+        "__imp__fputs": "import msvcr90.dll!fputs",
+        "__imp____iob_func": "import msvcr90.dll!__iob_func",
+        "??_C@_01GPOEFGEJ@?7?$AA@": "string '\\t' at 008344a4",
+        "??_C@_01EEMJAFIK@?6?$AA@": "string '\\n' at 00818744",
+        "??_C@_0CL@KMHHCBJA@?8tostring?8?5must?5return?5a?5string?5@": "string \"'tostring' must return a string to 'print'\" at 00834478",
+        "_lua_gettop": "Lua row 00611c10 (evidence name ?lua_gettop@@YAHPAUlua_State@@@Z)",
+        "_lua_getfield": "Lua row 00612490 (evidence name ?lua_getfield@@YAXPAUlua_State@@HPBD@Z)",
+        "_lua_pushvalue": "Lua row 00611dd0 (evidence name ?lua_pushvalue@@YAXPAUlua_State@@H@Z)",
+        "_lua_call": "Lua row 00612920 (evidence name ?lua_call@@YAXPAUlua_State@@HH@Z)",
+        "_lua_tolstring": "Lua row 00612010 (evidence name ?lua_tolstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_lua_settop": "Lua row 00611c20 (evidence name ?lua_settop@@YAXPAUlua_State@@H@Z)",
+        "_luaL_error": "Lua row 00610c60 (evidence name ?luaL_error@@YAHPAUlua_State@@PBDZZ)"
+      }
+    },
+    {
+      "row": "row 00627f00",
+      "block": "lua-lbaselib",
+      "file": "lbaselib.c",
+      "recipe": "lua-5.1.4-dll",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaB_tonumber",
+      "evidence_name": "?luaB_tonumber@@YAHPAUlua_State@@@Z",
+      "size": 273,
+      "masked_equivalents_rejected_by_targets": [],
+      "targets": {
+        "??_C@_0BC@GGLHLOMM@base?5out?5of?5range?$AA@": "string 'base out of range' at 00845508",
+        "__imp__strtoul": "import msvcr90.dll!strtoul",
+        "__imp__isspace": "import msvcr90.dll!isspace",
+        "__real@41f0000000000000": "constant 41f0000000000000 at 00811240",
+        "_luaL_optinteger": "Lua row 00611870 (evidence name ?luaL_optinteger@@YAHPAUlua_State@@HH@Z)",
+        "_luaL_checkany": "Lua row 00611690 (evidence name ?luaL_checkany@@YAXPAUlua_State@@H@Z)",
+        "_lua_isnumber": "Lua row 00611e70 (evidence name ?lua_isnumber@@YAHPAUlua_State@@H@Z)",
+        "_lua_tonumber": "Lua row 00611f60 (evidence name ?lua_tonumber@@YANPAUlua_State@@H@Z)",
+        "_lua_pushnumber": "Lua row 00612200 (evidence name ?lua_pushnumber@@YAXPAUlua_State@@N@Z)",
+        "_luaL_checklstring": "Lua row 006116c0 (evidence name ?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z)",
+        "_luaL_argerror": "Lua row 006114d0 (evidence name ?luaL_argerror@@YAHPAUlua_State@@HPBD@Z)",
+        "_lua_pushnil": "Lua row 006121e0 (evidence name ?lua_pushnil@@YAXPAUlua_State@@@Z)"
+      }
+    }
+  ],
+  "lual_reg_tables": {
+    "_flib at 00844b78": [
+      "close -> _io_close (row 00624290)",
+      "flush -> _f_flush (row 00624ef0)",
+      "lines -> _f_lines (row 00625140)",
+      "read -> _f_read (row 00624a80)",
+      "seek -> _f_seek (row 00624cf0)",
+      "setvbuf -> _f_setvbuf (row 00624da0)",
+      "write -> _f_write (row 00624cb0)",
+      "__gc -> _io_gc (row 00624310)",
+      "__tostring -> _io_tostring (row 00624360)"
+    ],
+    "_iolib at 00844b18": [
+      "close -> _io_close (row 00624290)",
+      "flush -> _io_flush (row 00624e50)",
+      "input -> _io_input (row 006246a0)",
+      "lines -> _io_lines (row 00625190)",
+      "open -> _io_open (row 006243b0)",
+      "output -> _io_output (row 006246c0)",
+      "popen -> _io_popen (row 00624480)",
+      "read -> _io_read (row 00624a30)",
+      "tmpfile -> _io_tmpfile (row 00624550)",
+      "type -> _io_type (row 006240c0)",
+      "write -> _io_write (row 00624c60)"
+    ],
+    "_mathlib at 00844ec8": [
+      "abs -> _math_abs (row 00625b30)",
+      "acos -> _math_acos (row 00625cb0)",
+      "asin -> _math_asin (row 00625c80)",
+      "atan2 -> _math_atan2 (row 00625d10)",
+      "atan -> _math_atan (row 00625ce0)",
+      "ceil -> _math_ceil (row 00625d50)",
+      "cosh -> _math_cosh (row 00625bf0)",
+      "cos -> _math_cos (row 00625bc0)",
+      "deg -> _math_deg (row 00625f70)",
+      "exp -> _math_exp (row 00625f30)",
+      "floor -> _math_floor (row 00625d80)",
+      "fmod -> _math_fmod (row 00625db0)",
+      "frexp -> _math_frexp (row 00625fd0)",
+      "ldexp -> _math_ldexp (row 00626010)",
+      "log10 -> _math_log10 (row 00625f00)",
+      "log -> _math_log (row 00625ed0)",
+      "max -> _math_max (row 006260d0)",
+      "min -> _math_min (row 00626050)",
+      "modf -> _math_modf (row 00625e00)",
+      "pow -> _math_pow (row 00625e80)",
+      "rad -> _math_rad (row 00625fa0)",
+      "random -> _math_random (row 00626150)",
+      "randomseed -> _math_randomseed (row 00626260)",
+      "sinh -> _math_sinh (row 00625b90)",
+      "sin -> _math_sin (row 00625b60)",
+      "sqrt -> _math_sqrt (row 00625e50)",
+      "tanh -> _math_tanh (row 00625c50)",
+      "tan -> _math_tan (row 00625c20)"
+    ],
+    "_strlib at 00845078": [
+      "byte -> _str_byte (row 00626610)",
+      "char -> _str_char (row 006266e0)",
+      "dump -> _str_dump (row 006267a0)",
+      "find -> _str_find (row 00627320)",
+      "format -> _str_format (row 00627ab0)",
+      "gfind -> _gfind_nodef (row 006274f0)",
+      "gmatch -> _gmatch (row 006274b0)",
+      "gsub -> _str_gsub (row 00627710)",
+      "len -> _str_len (row 006262e0)",
+      "lower -> _str_lower (row 00626450)",
+      "match -> _str_match (row 00627330)",
+      "rep -> _str_rep (row 00626590)",
+      "reverse -> _str_reverse (row 006263b0)",
+      "sub -> _str_sub (row 00626310)",
+      "upper -> _str_upper (row 006264f0)"
+    ],
+    "_tab_funcs at 00844d48": [
+      "concat -> _tconcat (row 006255c0)",
+      "foreach -> _foreach (row 00625300)",
+      "foreachi -> _foreachi (row 00625270)",
+      "getn -> _getn (row 00625430)",
+      "maxn -> _maxn (row 00625390)",
+      "insert -> _tinsert (row 00625490)",
+      "remove -> _tremove (row 00625540)",
+      "setn -> _setn (row 00625460)",
+      "sort -> _sort (row 00625ab0)"
+    ]
+  },
+  "notes": {
+    "language": "The evidence names are C++-mangled (Roblox built its Lua tree as C++, so lua_error throws; see the ldo.c luaD_throw row mapped by script-app2008). The upstream .c files compiled as C reproduce every row here relocation-masked; only the two luaopen rows are matched from C++ generated units.",
+    "version mix": "No single upstream 5.1.x release reproduces every row: lua-5.1.4(-dll) covers most, io_gc / luaopen_io / str_find_aux / scanformat need the 5.1 bodies, io_tostring / tremove / add_value / str_gsub the 5.1.2 bodies and tconcat / str_sub / str_byte the 5.1.3 bodies. This is Roblox's own 5.1.x library tree (App/lua-5.1.1 in later sources), not Roblox application code.",
+    "luaconf": "luaopen_math 00626280 has no math.mod alias and luaopen_string 00627e00 no string.gfind alias, while gfind_nodef 006274f0 is linked: Roblox's luaconf.h leaves LUA_COMPAT_MOD and LUA_COMPAT_GFIND undefined. Both rows match the stored generated units roc_unit_9835aad68266b897.cpp / roc_espeon_luastringnogfind_92071a0221e9258a.cpp.",
+    "callers": "No row of the range is called from outside it (checked below from functions.jsonl); the luaopen_* rows are reached only through the linit.c luaL_Reg table. No RBX class, RTTI, vtable or static initializer references the range."
+  },
+  "range_functions": 110,
+  "range_bytes": 15367,
+  "range_rows_counted_by_other_receipts": [],
+  "bounds_evidence": "none: every row start and size is reproduced by one compiled function",
+  "exact_function_rows": [],
+  "scope": "Inactive map receipt. No native source, no counted row, no active build, swap or credit."
+}

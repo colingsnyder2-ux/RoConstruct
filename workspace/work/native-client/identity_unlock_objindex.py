@@ -23,11 +23,12 @@ sys.path.insert(0, str(Path(__file__).parent))
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'work/native-client/identity-unlock-objindex.pkl.gz'
 VTABLES = None
+BODIES = False
 
 
-def init(vts):
-    global VTABLES
-    VTABLES = vts
+def init(vts, bodies=False):
+    global VTABLES, BODIES
+    VTABLES, BODIES = vts, bodies
 
 
 def scan(job):
@@ -42,6 +43,8 @@ def scan(job):
         # delinked slices of the original exe carry only registry names and parse very slowly
         if p.replace(chr(92), '/').endswith('/orig.obj') and '/delink-' in p.replace(chr(92), '/'):
             continue
+        if '/CMakeFiles/' in p.replace(chr(92), '/'):  # compiler toolchain builds (clang/LLVM), not client code
+            continue
         try:
             raw = open(p, 'rb').read()
         except OSError:
@@ -50,11 +53,17 @@ def scan(job):
         hashes.add(h)
         try:
             for symbol, body, relocs, refs in functions(raw):
+                if BODIES:  # reloc-masked body hash (Function-ID style exact match)
+                    b = bytearray(body)
+                    for at in relocs:
+                        b[at:at + 4] = b'\0\0\0\0'
+                    funcs.add((len(body), hashlib.sha1(b).digest()[:12], symbol))
+                    continue
                 calls = tuple(n for at, n, k, _ in refs if k == 20 and at >= 1 and body[at - 1] == 0xE8)
                 data = tuple(sorted({n for at, n, k, _ in refs if k == 6}))
                 if calls or data:
                     funcs.add((symbol, len(body), calls, data))
-            if b'??_7' in raw:
+            if b'??_7' in raw and not BODIES:
                 for name, slots in vtables(raw):
                     if name in VTABLES:
                         tabs.add((name, slots))
@@ -81,6 +90,8 @@ def main():
     ap.add_argument('--exclude', action='append', default=[], help='path substring to skip')
     ap.add_argument('--only', action='append', default=[], help='keep only paths with this substring')
     ap.add_argument('--output', type=Path, default=OUT)
+    ap.add_argument('--bodies', action='store_true', help='store (length, masked-body hash, symbol) rows instead')
+    ap.add_argument('--newer-than', type=Path, help='only objects modified after this file (incremental delta index)')
     args = ap.parse_args()
     import json
     reg = json.load(open(ROOT / 'work/2008-06/identity-registry.json'))
@@ -90,6 +101,10 @@ def main():
     norm = [f.replace(chr(92), '/') for f in files]
     files = [f for f, n in zip(files, norm) if not any(x in n for x in args.exclude)
              and (not args.only or any(x in n for x in args.only))]
+    if args.newer_than:
+        cut = args.newer_than.stat().st_mtime
+        files = [f for f in files if os.path.exists(f) and os.path.getmtime(f) > cut]
+        print('newer objects', len(files), flush=True)
     files.sort()
     shards = args.output.with_name(args.output.name.replace('.pkl.gz', '-shards'))
     shards.mkdir(exist_ok=True)
@@ -100,7 +115,7 @@ def main():
     chunks = [(i, files[max(0, i - 600):i + 200] if i and (shards / ('%07d.pkl.gz' % (i - 200))).exists()
                and not p.exists() else ps, p) for i, ps, p in chunks]
     funcs, tabs, done = set(), set(), 0
-    with Pool(args.workers, initializer=init, initargs=(vts,)) as pool:
+    with Pool(args.workers, initializer=init, initargs=(vts, args.bodies)) as pool:
         # unfinished chunks: byte-identical objects are parsed once (first occurrence wins)
         todo = [c for c in chunks if not c[2].exists()]
         seen, keep = set(), set()

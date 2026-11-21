@@ -326,6 +326,23 @@ class Dashboard:
                               retry_failed=bool(data.get("retry_failed", False)), new_source=bool(data.get("new_source")),
                               pick=data.get("pick") if data.get("pick") in ("claude", "auto", "top", "explore") else "claude")
                 title = "Native LLM · 2008-06"
+            elif kind == "native_lane":
+                # Automatic native lanes (work/native-client/lane_runner.py): header-add failures, regate, vendor,
+                # class layout, promotion, census + publish, classify.
+                lane = data.get("lane")
+                if lane not in ("failures", "regate", "vendor", "layout", "promote", "census", "classify", "flags", "auto", "agent", "donor", "pattern", "polish", "gateserver", "inferred", "names", "templates", "untried", "agents", "clones", "donorunits", "thunks", "workflow", "mechanical", "families", "twins"):
+                    raise ValueError("Unknown native lane")
+                jobs = int(data.get("jobs", 8))
+                if not 1 <= jobs <= 16:
+                    raise ValueError("Native lane jobs out of range")
+                args = [lane, "--jobs", str(jobs)]
+                model = str(data.get("model") or "opencode:opencode/big-pickle")
+                if lane == "families":
+                    if model not in ("opencode:opencode/big-pickle", "opencode:opencode/beam-free", "opencode:roc-nim/nemotron", "codex", "fable", "sonnet"):
+                        raise ValueError("Choose a supported family model")
+                    args += ["--model", model]
+                config = dict(lane=lane, jobs=jobs, client="2008-06", model=model if lane == "families" else "")
+                title = "Native lane · " + lane
             elif kind == "command":
                 args, config = command_args(data), None
                 title = COMMANDS[args[0]][0] + (" · " + data["client"] if data.get("client") else "")
@@ -382,7 +399,9 @@ class Dashboard:
             self.next_agent_start = time.monotonic() + max(0, float(self.settings.get("agent_start_interval", 15)))
         argv = [sys.executable, "-u"] + (["-m", "roc.gui_worker"] if job["kind"] == "worker"
                                          else [str(ROOT / "work/native-client/native_llm.py"), *job["args"]]
-                                         if job["kind"] == "native_llm" else [str(ROOT / "roc.py"), *job["args"]])
+                                         if job["kind"] == "native_llm"
+                                         else [str(ROOT / "work/native-client/lane_runner.py"), *job["args"]]
+                                         if job["kind"] == "native_lane" else [str(ROOT / "roc.py"), *job["args"]])
         env = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUNBUFFERED="1", ROC_GUI_EVENTS="1")
         env.update(ROC_TASK_ID=job_id, ROC_TASK_OWNER=job["owner"])
         if job["kind"] == "agent_worker" and self.worker_token:
@@ -690,6 +709,67 @@ class Handler(BaseHTTPRequestHandler):
                     return self.send(200, agent_auto.public_plan(agent_auto.portfolio(names, max_size, profile)))
                 if parsed.path == "/api/native-llm":
                     return self.send(200, native_llm_state())
+                if parsed.path == "/api/family-pool":
+                    import psutil
+                    path = ROOT / "work/native-client/family-pool-status.json"
+                    try:
+                        state = json.loads(path.read_text(encoding="utf-8"))
+                    except (OSError, ValueError):
+                        return self.send(200, {"available": False, "slots": []})
+                    fresh = time.time() - state.get("updated", 0) < 40
+                    include_chat = parse_qs(parsed.query).get("chat", [""])[0] == "1"
+                    slots = []
+                    try:    # workers the supervisor does not own (hand-started family workers, text workflow, Claude/Codex sessions)
+                        extra = json.loads((ROOT / "work/native-client/workers-extra.json").read_text(encoding="utf-8"))
+                        if time.time() - extra.get("updated", 0) < 40:
+                            state["slots"] = list(state.get("slots", [])) + [
+                                dict(w, running=True) for w in extra.get("workers", [])]
+                    except (OSError, ValueError):
+                        pass
+                    for slot in state.get("slots", []):
+                        pid = slot.get("pid") or slot.get("external")
+                        item = {key: slot.get(key) for key in ("id", "kind", "family", "queue", "model")} | {
+                            "running": bool(slot.get("running") or (fresh and pid and psutil.pid_exists(pid)))}
+                        if include_chat and slot.get("family"):
+                            label = slot["family"]
+                            if not slot.get("queue") and not label.startswith(("ownerless:", "boost")):
+                                label = "class " + label
+                            slug = re.sub(r"\W+", "_", label)[:60]
+                            log = ROOT / "work/native-client/agent-logs" / ("family-opencode-%s.log" % slug)
+                            events = []
+                            try:
+                                with log.open("rb") as stream:
+                                    stream.seek(max(0, log.stat().st_size - 2_000_000))
+                                    lines = stream.read().decode("utf-8", "replace").splitlines()
+                                for line in lines:
+                                    try:
+                                        event = json.loads(line)
+                                    except ValueError:
+                                        continue
+                                    part = event.get("part") or {}
+                                    if event.get("type") == "text":
+                                        message = part.get("text", "")
+                                        kind = "chat"
+                                    elif event.get("type") == "tool_use":
+                                        tool = part.get("tool", "")
+                                        data = part.get("state") or {}
+                                        if tool not in ("bash", "powershell", "shell"):
+                                            continue
+                                        command = str((data.get("input") or {}).get("command", ""))
+                                        output = str(data.get("output") or "")
+                                        result = [line for line in output.splitlines() if re.search(r"\b(EXACT|DIFF|REJECTED|COMPILE FAILED)\b", line, re.I)]
+                                        message = ("$ " + command[:500] + ("\n" + "\n".join(result[-8:]) if result else ""))
+                                        kind = "result" if result else "tool"
+                                    else:
+                                        continue
+                                    if message.strip():
+                                        events.append({"time": event.get("timestamp", 0), "kind": kind,
+                                                       "message": app.redact(message[:4000])})
+                            except OSError:
+                                pass
+                            item["events"] = events[-80:]
+                        slots.append(item)
+                    return self.send(200, {"available": True, "fresh": fresh, "updated": state.get("updated"), "slots": slots})
                 if parsed.path == "/api/models":
                     return self.send(200, {"models": worker.draft.ollama_models()})
                 if parsed.path == "/api/daily-stats":

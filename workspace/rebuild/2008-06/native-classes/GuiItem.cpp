@@ -78,3 +78,19 @@ const G3D::Color4& GuiItem::menuSelect()
 }
 }
 
+namespace RBX {
+const G3D::Color4& GuiItem::menuEnabledFill()
+{
+    static G3D::Color4 c(0.3f, 0.3f, 0.3f, 1.0f);
+    return c;
+}
+}
+
+namespace RBX {
+const G3D::Color4& GuiItem::menuDisabledFill()
+{
+    static G3D::Color4 c(0.6f, 0.6f, 0.6f, 1.0f);
+    return c;
+}
+}
+

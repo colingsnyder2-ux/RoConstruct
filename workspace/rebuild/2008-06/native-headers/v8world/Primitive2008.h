@@ -93,6 +93,9 @@ namespace RBX
 	{
 		friend struct ::NativeBodyPrimitive2008Layout;   // tests/NativeBodyPrimitive2008Layout.cpp offset asserts
 		friend struct ::NativeContactUnit2008Layout;
+		// Donor Primitive.h: SpatialHash links its nodes through spatialNodes (+0x64): the SpatialHash node insert 0065a220
+		// reads and writes [prim + 0x64] directly.
+		friend class SpatialHash;
 
 	private:
 		Guid guid;                                       // +0x8
@@ -152,6 +155,10 @@ namespace RBX
 		void setClump(Clump* set);                       // 005e7550 (body in native-classes/AppUnit5E4PrimitiveParts.cpp;
 		                                                 // callers Clump(Primitive*) 005e6cf0 / 005e5ff0, out of line)
 		Assembly* getAssembly() const;                   // 005e7570 ?getAssembly@Primitive@RBX@@QBEPAVAssembly@2@XZ
+		// 005e7560 (placeholder func_005e7560): `[[prim+0x5c]+0x24]` without the NULL check; SleepStage::onEdgeAdded 0064b1b0 and
+		// touchEvent 0064b7c0 call it while wakeEvent(Edge*) 0064bf60 calls the checked getAssembly 005e7570. INFERRED name.
+		Assembly* getAssemblyNoCheck() const;
+		int getBodyDepth() const;                        // INFERRED: 005e7470 (body->parent ? 1 + depth(parent) : 1; callers TreeStage 00669b60)
 		int getClumpDepth() const
 		{
 			return clumpDepth;
@@ -231,12 +238,32 @@ namespace RBX
 		G3D::CoordinateFrame getFaceCoordInObject(NormalId objectFace); // 005e7680
 		const Extents& getFastFuzzyExtents() const;      // 005e7a50 (00606ce6 / 00606cee)
 
+		// Inline in the 2008 binary: World::destroyJoints 005ea3f0 reads joints.edges.size() (+0x3c) directly.
+		int getNumJoints() const
+		{
+			return joints.edges.size();
+		}
+		// INFERRED: 005e7ae0 (13 bytes, `ret 4`; registry placeholder func_005e7ae0): joints.edges[i] (+0x38 data); name by
+		// the donor Primitive.h getJoint family, caller World::destroyJoints 005ea3f0 (call at 005ea41e).
+		Joint* getJoint(int i) const;
+		// INFERRED: 005e7ce0 (74 bytes, cdecl; registry placeholder func_005e7ce0): scans the joint list of the primitive
+		// with fewer joints (+0x3c) for the other primitive in joints.otherPrimitives (+0x44) and returns the matching
+		// joints.edges entry (+0x38); donor static Primitive::getJoint(p0, p1) (caller World::createJoints 005ea4d0, 005ea573).
+		static Joint* getJoint(Primitive* p0, Primitive* p1);
 		Joint* getFirstJoint() const;                    // 005e7b90 ?getFirstJoint@Primitive@RBX@@QBEPAVJoint@2@XZ
 		Joint* getNextJoint(Joint* prev) const;          // 005e7ba0
+		Edge* getFirstEdge() const;                      // INFERRED: 005e7b00 (same shape as getFirstJoint 005e7b90 over all edges)
+		Edge* getNextEdge(Edge* prev) const;             // INFERRED: 005e7b20
 		Contact* getFirstContact();                      // 005e7bd0
 		Contact* getNextContact(Contact* prev);          // 005e7be0
 
 		static void onNewTouch(Primitive* p0, Primitive* p1);   // 005e7530 (Contact::step 00606c6f)
+		// 005e7d30 (registry func_005e7d30, cdecl `add esp, 8` at the callers; donor static Primitive::getContact): scans the
+		// smaller contacts list (+0x18); callers SpatialHash 0065a3cf (node insert) and 00659b0d. Body in AppUnit5E4Primitive.cpp.
+		static Contact* getContact(Primitive* p0, Primitive* p1);
+		// Donor Primitive::disableSleep (data 0097abc1, .bss right before the Primitive-unit statics from 0097abc4); its
+		// only readers are SleepStage::computeAssemblyState 0064a795 and 0064a95a (the inline computeCanSleep).
+		static bool disableSleep;
 		// Inline in the 2008 binary: BlockBlockContact::computeIsColliding 00607c20 and stepContact 00608830 read
 		// fuzzyExtents (+0x80) of both primitives directly (`sub reg, -0x80`) and call Extents::overlapsOrTouches
 		// 00606b60, with no state check and no call of their own. Name and parameters: the donor Primitive.h.

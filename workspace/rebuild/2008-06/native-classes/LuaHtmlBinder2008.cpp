@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /D_XTP_STATICLINK /D_XTPLIB_NOAUTOLINK /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string /I{headers}/boost-function-pod-vtable
 // Inactive native 2008-06 CLuaHtmlView::Binder / PropBinding (native-headers/LuaHtmlBinder2008/LuaHtmlBinder2008.h).
 // Profile (tests/record_native_luahtml_binder2008.py): document-swap flags with native-headers/mfc-noinline-pcxstr,
 // std-noinline-string and boost-function-pod-vtable put first. The NATIVE_LUAHTMLBINDER2008_PENDING connect in the
@@ -133,7 +134,10 @@ void CLuaHtmlView::unbindAll()
     binders.clear();
 }
 
-// 0042a930
+// 0042a930 (open, 465 vs 438 bytes; parked batch 26). The target zeroes the three CComPtr locals from separate
+// registers and keeps both arguments in esi / edi; the true path (equal IUnknowns) falls through and all false returns
+// share one destructor tail. Rejected: early-return chain (540 B), `!= S_OK` return false / return true (547 B), one
+// combined && condition (467 B).
 bool CLuaHtmlView::isSameObject(IUnknown* first, IUnknown* second)
 {
     CComPtr<IUnknown> firstUnknown;
@@ -157,7 +161,11 @@ bool CLuaHtmlView::isSameObject(IUnknown* first, IUnknown* second)
     return true;
 }
 
-// 0042c8c0
+// 0042c8c0 (open, 1180 vs 1026 bytes; was 1205). Taking the binder inside the loop with it->get() makes the
+// not-found path go straight to the creation as in the target. Remaining: the target no longer inlines the list
+// iterator's operator* (0042a8f0, called on the stored iterator) nor the shared_ptr copy for DataModel::Lock (004116f0),
+// and caches _invalid_parameter_noinfo in ebx; this build inlines both. Rejected: (*it).get() (same bytes); batch 29:
+// break out of the loop and take `it != end ? it->get() : NULL` afterwards (1202 B, still inlines both).
 void CLuaHtmlView::bindElement(boost::shared_ptr<RBX::Instance> object,
                                const RBX::Reflection::PropertyDescriptor& property, const char* htmlElementId)
 {
@@ -177,10 +185,13 @@ void CLuaHtmlView::bindElement(boost::shared_ptr<RBX::Instance> object,
     Binder* binder = NULL;
     std::list<boost::shared_ptr<Binder> >::iterator it = binders.begin(), end = binders.end();
     for (; it != end; ++it)
+    {
         if (isSameObject((*it)->element, input))
+        {
+            binder = it->get();
             break;
-    if (it != end)
-        binder = it->get();
+        }
+    }
     if (!binder)
     {
         RBX::DataModel::Lock lock(dataModel);

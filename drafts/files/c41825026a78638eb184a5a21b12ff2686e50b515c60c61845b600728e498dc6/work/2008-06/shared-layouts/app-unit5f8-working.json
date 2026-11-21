@@ -1,0 +1,2042 @@
+{
+  "scope": "Inactive 2008-06 native recovery of the application range 005f8000..005fc000: unit map of every row, and the two util/Http.cpp transport units (WinHttp, WinINet) built from new native sources against the new native-headers/AppUnit5F8/HttpTransport.h, plus four G3D::Array<T*> instances of the Kernel.cpp unit. No runtime, link or class-swap claim.",
+  "exact_function_rows": [
+    "005f20e0",
+    "005f2c40",
+    "005f802f",
+    "005f8060",
+    "005f809d",
+    "005f80b0",
+    "005f80c0",
+    "005f8170",
+    "005f81c0",
+    "005f81e0",
+    "005f8200",
+    "005f82d3",
+    "005f82f0",
+    "005f8348",
+    "005f8350",
+    "005f83a0",
+    "005f83b3",
+    "005f83c0",
+    "005f83e0",
+    "005f8400",
+    "005f84f0",
+    "005f855e",
+    "005f8580",
+    "005f85ee",
+    "005f8610",
+    "005f8630",
+    "005f8650",
+    "005f86e0",
+    "005f8770",
+    "005f8860",
+    "005f8910",
+    "005f8920",
+    "005f8960",
+    "005f8a10",
+    "005f8a20",
+    "005f8a60",
+    "005f8ae0",
+    "005f8b60",
+    "005f9440",
+    "005f9450",
+    "005f9510",
+    "005f9520",
+    "005f9530",
+    "005f95a0",
+    "005f95c0",
+    "005f95f0",
+    "005f9620",
+    "005f9690",
+    "005f9750",
+    "005f9770",
+    "005f9800",
+    "005f9880",
+    "005f98d0",
+    "005f9900",
+    "005f9920",
+    "005f99f0",
+    "005f9a57",
+    "005f9a80",
+    "005f9aa0",
+    "005f9ae0",
+    "005f9c30",
+    "005fa670",
+    "005fa870",
+    "005fab50",
+    "005fac30"
+  ],
+  "exact_function_row_count": 65,
+  "exact_rows_in_range": 63,
+  "range_rows": 121,
+  "rows": {
+    "winhttp": [
+      {
+        "row": "005f20e0",
+        "symbol": "??1WinHttpHandle@RBX@@QAE@XZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          10
+        ],
+        "size": 10,
+        "exact": true,
+        "verified_targets": {
+          "__imp__WinHttpCloseHandle@4": "0x802e6c (winhttp.dll!WinHttpCloseHandle)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f2c40",
+        "symbol": "?read@WinHttpRequest_source@@QAEHPADH@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          175
+        ],
+        "size": 175,
+        "exact": true,
+        "verified_targets": {
+          "__imp__WinHttpQueryDataAvailable@8": "0x802e5c (winhttp.dll!WinHttpQueryDataAvailable)",
+          "__imp__WinHttpReadData@16": "0x802e60 (winhttp.dll!WinHttpReadData)",
+          "??_C@_0BI@MELMLLIC@InternetReadFile?5failed?$AA@": "0x840924 (string literal bytes)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (compiled body equal at that address; not counted)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (static data, one address per symbol)"
+        },
+        "local_eh": [
+          "__ehhandler$?read@WinHttpRequest_source@@QAEHPADH@Z"
+        ]
+      },
+      {
+        "row": "005f802f",
+        "symbol": "??1chain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@QAE@XZ",
+        "piece": 1,
+        "piece_range": [
+          63,
+          107
+        ],
+        "size": 44,
+        "exact": true,
+        "verified_targets": {
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?_Tidy@?$list@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@V?$allocator@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@std@@@std@@IAEXXZ": "0x682b40 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": [
+          "$LN24"
+        ]
+      },
+      {
+        "row": "005f8060",
+        "symbol": "?strict_sync@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@UAE_NXZ",
+        "piece": 0,
+        "piece_range": [
+          0,
+          80
+        ],
+        "size": 80,
+        "exact": true,
+        "verified_targets": {
+          "__imp_?pubsync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x802370 (msvcp90.dll!?pubsync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)",
+          "?sync_impl@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@AAEXXZ": "0x5f7d80 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": [
+          "__ehhandler$?strict_sync@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@UAE_NXZ"
+        ],
+        "joined_rows": [
+          "005f8060",
+          "005f809d"
+        ]
+      },
+      {
+        "row": "005f80b0",
+        "symbol": "?strict_sync@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@UAE_NXZ",
+        "piece": 1,
+        "piece_range": [
+          80,
+          86
+        ],
+        "size": 6,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": [
+          "$LN7"
+        ]
+      },
+      {
+        "row": "005f80c0",
+        "symbol": "?overflow@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEHH@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          173
+        ],
+        "size": 173,
+        "exact": true,
+        "verified_targets": {
+          "?sync_impl@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@AAEXXZ": "0x5f7d80 (compiled body equal at that address; not counted)",
+          "??$write@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@QAEHAAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@12@PBDH@Z": "0x5f5650 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f8170",
+        "symbol": "?sync@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEHXZ",
+        "piece": 0,
+        "piece_range": [
+          0,
+          80
+        ],
+        "size": 80,
+        "exact": true,
+        "verified_targets": {
+          "__imp_?pubsync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x802370 (msvcp90.dll!?pubsync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)",
+          "?sync_impl@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@AAEXXZ": "0x5f7d80 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": [
+          "__ehhandler$?sync@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEHXZ"
+        ]
+      },
+      {
+        "row": "005f81c0",
+        "symbol": "?sync@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEHXZ",
+        "piece": 1,
+        "piece_range": [
+          80,
+          106
+        ],
+        "size": 26,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": [
+          "$LN7"
+        ]
+      },
+      {
+        "row": "005f81e0",
+        "symbol": "?init_get_area@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@EAEXXZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          26
+        ],
+        "size": 26,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "row": "005f8200",
+        "symbol": "??$read@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@QAEHAAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@12@PADH@Z",
+        "piece": 0,
+        "piece_range": [
+          0,
+          211
+        ],
+        "size": 211,
+        "exact": true,
+        "verified_targets": {
+          "??$read_header@V?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@iostreams@boost@@@?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@AAEXAAV?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@12@@Z": "0x5f7670 (compiled body equal at that address; not counted)",
+          "??$read@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@?$symmetric_filter@V?$zlib_decompressor_impl@V?$allocator@D@std@@@detail@iostreams@boost@@V?$allocator@D@std@@@iostreams@boost@@QAEHAAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@12@PADH@Z": "0x5f65e0 (compiled body equal at that address; not counted)",
+          "??$read_footer@V?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@iostreams@boost@@@?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@AAEXAAV?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@12@@Z": "0x5f7e10 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": [
+          "__ehhandler$??$read@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@QAEHAAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@12@PADH@Z"
+        ]
+      },
+      {
+        "row": "005f82d3",
+        "symbol": "??$read@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@QAEHAAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@12@PADH@Z",
+        "piece": 1,
+        "piece_range": [
+          211,
+          237
+        ],
+        "size": 26,
+        "exact": true,
+        "verified_targets": {
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??0gzip_error@iostreams@boost@@QAE@ABVzlib_error@12@@Z": "0x5f5a00 (compiled body equal at that address; not counted)",
+          "__TI4?AVgzip_error@iostreams@boost@@": "0x8f6a34 (static data, one address per symbol)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f82f0",
+        "symbol": "?close@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEXH@Z",
+        "piece": 0,
+        "piece_range": [
+          0,
+          88
+        ],
+        "size": 88,
+        "exact": true,
+        "verified_targets": {
+          "?close_impl@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@AAEXH@Z": "0x5f51b0 (compiled body equal at that address; not counted)",
+          "??$close@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@23@@?$close_impl@Utwo_sequence@detail@iostreams@boost@@@detail@iostreams@boost@@SAXAAV?$basic_gzip_compressor@V?$allocator@D@std@@@23@AAV?$linked_streambuf@DU?$char_traits@D@std@@@123@H@Z": "0x5f6f00 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": [
+          "__ehhandler$?close@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEXH@Z"
+        ]
+      },
+      {
+        "row": "005f8348",
+        "symbol": "?close@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEXH@Z",
+        "piece": 1,
+        "piece_range": [
+          88,
+          94
+        ],
+        "size": 6,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": [
+          "$LN7"
+        ]
+      },
+      {
+        "row": "005f8350",
+        "symbol": "?close@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXH@Z",
+        "piece": 0,
+        "piece_range": [
+          0,
+          99
+        ],
+        "size": 99,
+        "exact": true,
+        "verified_targets": {
+          "?close_impl@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@AAEXH@Z": "0x5f5af0 (compiled body equal at that address; not counted)",
+          "??$close@V?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@iostreams@boost@@@?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@QAEXAAV?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@12@@Z": "0x5f63b0 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": [
+          "__ehhandler$?close@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXH@Z"
+        ],
+        "joined_rows": [
+          "005f8350",
+          "005f83a0"
+        ]
+      },
+      {
+        "row": "005f83b3",
+        "symbol": "?close@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXH@Z",
+        "piece": 1,
+        "piece_range": [
+          99,
+          105
+        ],
+        "size": 6,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": [
+          "$LN7"
+        ]
+      },
+      {
+        "row": "005f83c0",
+        "symbol": "??$checked_delete@Uchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@@boost@@YAXPAUchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@0@@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          27
+        ],
+        "size": 27,
+        "exact": true,
+        "verified_targets": {
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??1chain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@QAE@XZ": "0x5f7f80 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f83e0",
+        "symbol": "??$checked_delete@Uchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@@boost@@YAXPAUchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@0@@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          27
+        ],
+        "size": 27,
+        "exact": true,
+        "verified_targets": {
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??1chain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@QAE@XZ": "0x5f7ff0 (row proven here)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f8400",
+        "symbol": "?underflow@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEHXZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          230
+        ],
+        "size": 230,
+        "exact": true,
+        "verified_targets": {
+          "__imp__memmove_s": "0x802850 (msvcr90.dll!memmove_s)",
+          "??$read@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@QAEHAAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@12@PADH@Z": "0x5f6fd0 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f84f0",
+        "symbol": "??$?0Uchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@@shared_count@detail@boost@@QAE@PAUchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@1iostreams@2@@Z",
+        "piece": 0,
+        "piece_range": [
+          0,
+          110
+        ],
+        "size": 110,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$sp_counted_impl_p@Uchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@@detail@boost@@6B@": "0x840878 (original vtable slot, by RTTI)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0Uchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@@shared_count@detail@boost@@QAE@PAUchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@1iostreams@2@@Z"
+        ]
+      },
+      {
+        "row": "005f855e",
+        "symbol": "??$?0Uchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@@shared_count@detail@boost@@QAE@PAUchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@1iostreams@2@@Z",
+        "piece": 1,
+        "piece_range": [
+          110,
+          131
+        ],
+        "size": 21,
+        "exact": true,
+        "verified_targets": {
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??$checked_delete@Uchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@@boost@@YAXPAUchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@0@@Z": "0x5f83c0 (row proven here)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f8580",
+        "symbol": "??$?0Uchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@@shared_count@detail@boost@@QAE@PAUchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@1iostreams@2@@Z",
+        "piece": 0,
+        "piece_range": [
+          0,
+          110
+        ],
+        "size": 110,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$sp_counted_impl_p@Uchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@@detail@boost@@6B@": "0x84088c (original vtable slot, by RTTI)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0Uchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@@shared_count@detail@boost@@QAE@PAUchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@1iostreams@2@@Z"
+        ]
+      },
+      {
+        "row": "005f85ee",
+        "symbol": "??$?0Uchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@@shared_count@detail@boost@@QAE@PAUchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@1iostreams@2@@Z",
+        "piece": 1,
+        "piece_range": [
+          110,
+          131
+        ],
+        "size": 21,
+        "exact": true,
+        "verified_targets": {
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??$checked_delete@Uchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@@boost@@YAXPAUchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@0@@Z": "0x5f83e0 (row proven here)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f8610",
+        "symbol": "?dispose@?$sp_counted_impl_p@Uchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@@detail@boost@@UAEXXZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          26
+        ],
+        "size": 26,
+        "exact": true,
+        "verified_targets": {
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??1chain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@QAE@XZ": "0x5f7f80 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f8630",
+        "symbol": "?dispose@?$sp_counted_impl_p@Uchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@@detail@boost@@UAEXXZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          26
+        ],
+        "size": 26,
+        "exact": true,
+        "verified_targets": {
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??1chain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@QAE@XZ": "0x5f7ff0 (row proven here)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f8650",
+        "symbol": "??0?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@IAE@XZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          144
+        ],
+        "size": 144,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0?$list@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@V?$allocator@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@std@@@std@@QAE@XZ": "0x61a200 (compiled body equal at that address; not counted)",
+          "??$?0Uchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@@shared_count@detail@boost@@QAE@PAUchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@1iostreams@2@@Z": "0x5f84f0 (row proven here)",
+          "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@IAE@XZ"
+        ]
+      },
+      {
+        "row": "005f86e0",
+        "symbol": "??0?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@IAE@XZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          144
+        ],
+        "size": 144,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0?$list@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@V?$allocator@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@std@@@std@@QAE@XZ": "0x61a200 (compiled body equal at that address; not counted)",
+          "??$?0Uchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@@shared_count@detail@boost@@QAE@PAUchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@1iostreams@2@@Z": "0x5f8580 (row proven here)",
+          "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@IAE@XZ"
+        ]
+      },
+      {
+        "row": "005f8770",
+        "symbol": "?underflow@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEHXZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          230
+        ],
+        "size": 230,
+        "exact": true,
+        "verified_targets": {
+          "__imp__memmove_s": "0x802850 (msvcr90.dll!memmove_s)",
+          "??$read@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@QAEHAAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@12@PADH@Z": "0x5f8200 (row proven here)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f8860",
+        "symbol": "??0?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@IAE@XZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          166
+        ],
+        "size": 166,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??_7ios_base@std@@6B@": "0x802580 (msvcp90.dll!??_7ios_base@std@@6B@)",
+          "__imp_??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@": "0x802584 (msvcp90.dll!??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@)",
+          "__imp_??0?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N@Z": "0x802594 (msvcp90.dll!??0?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N@Z)",
+          "??_8?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@7B@": "0x840bf4 (static data, one address per symbol)",
+          "??_7?$access_control@V?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@Upublic_@34@U?$pub_@V?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@@234@@iostreams@boost@@6B@": "0x8408c8 (original vtable slot, by RTTI)",
+          "??_7?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@6B?$access_control@V?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@Upublic_@34@U?$pub_@V?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@@234@@23@@": "0x840bec (original vtable slot, by RTTI)",
+          "??_7?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@6B?$basic_ostream@DU?$char_traits@D@std@@@std@@@": "0x840be4 (original vtable slot, by RTTI)",
+          "??0?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@IAE@XZ": "0x5f8650 (row proven here)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@IAE@XZ"
+        ]
+      },
+      {
+        "row": "005f8910",
+        "symbol": "??_E?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@WBE@AEPAXI@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          8
+        ],
+        "size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@UAEPAXI@Z": "0x5f8920 (original vtable slot, by RTTI)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f8920",
+        "symbol": "??_G?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@UAEPAXI@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          59
+        ],
+        "size": 59,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@": "0x802584 (msvcp90.dll!??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@)",
+          "__imp_??_7ios_base@std@@6B@": "0x802580 (msvcp90.dll!??_7ios_base@std@@6B@)",
+          "__imp_?_Ios_base_dtor@ios_base@std@@CAXPAV12@@Z": "0x80257c (msvcp90.dll!?_Ios_base_dtor@ios_base@std@@CAXPAV12@@Z)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??1?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@UAE@XZ": "0x5f37d0 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f8960",
+        "symbol": "??0?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@IAE@XZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          166
+        ],
+        "size": 166,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??_7ios_base@std@@6B@": "0x802580 (msvcp90.dll!??_7ios_base@std@@6B@)",
+          "__imp_??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@": "0x802584 (msvcp90.dll!??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@)",
+          "__imp_??0?$basic_istream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N@Z": "0x802598 (msvcp90.dll!??0?$basic_istream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N@Z)",
+          "??_8?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@7B@": "0x840c10 (static data, one address per symbol)",
+          "??_7?$access_control@V?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@Upublic_@34@U?$pub_@V?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@@234@@iostreams@boost@@6B@": "0x8408d4 (original vtable slot, by RTTI)",
+          "??_7?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@6B?$access_control@V?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@Upublic_@34@U?$pub_@V?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@@234@@23@@": "0x840c08 (original vtable slot, by RTTI)",
+          "??_7?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@6B?$basic_istream@DU?$char_traits@D@std@@@std@@@": "0x840c00 (original vtable slot, by RTTI)",
+          "??0?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@IAE@XZ": "0x5f86e0 (row proven here)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@IAE@XZ"
+        ]
+      },
+      {
+        "row": "005f8a10",
+        "symbol": "??_E?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@WBI@AEPAXI@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          8
+        ],
+        "size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@UAEPAXI@Z": "0x5f8a20 (original vtable slot, by RTTI)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f8a20",
+        "symbol": "??_G?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@UAEPAXI@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          59
+        ],
+        "size": 59,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@": "0x802584 (msvcp90.dll!??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@)",
+          "__imp_??_7ios_base@std@@6B@": "0x802580 (msvcp90.dll!??_7ios_base@std@@6B@)",
+          "__imp_?_Ios_base_dtor@ios_base@std@@CAXPAV12@@Z": "0x80257c (msvcp90.dll!?_Ios_base_dtor@ios_base@std@@CAXPAV12@@Z)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??1?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@UAE@XZ": "0x5f3850 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f8a60",
+        "symbol": "??0?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@QAE@XZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          128
+        ],
+        "size": 128,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??_7ios_base@std@@6B@": "0x802580 (msvcp90.dll!??_7ios_base@std@@6B@)",
+          "__imp_??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@": "0x802584 (msvcp90.dll!??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@)",
+          "??_8?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@7B@": "0x840bf4 (static data, one address per symbol)",
+          "??0?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@IAE@XZ": "0x5f8860 (row proven here)",
+          "??_7?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@6B?$access_control@V?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@Upublic_@34@U?$pub_@V?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@@234@@12@@": "0x840adc (original vtable slot, by RTTI)",
+          "??_7?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@6B?$basic_ostream@DU?$char_traits@D@std@@@std@@@": "0x840ad4 (original vtable slot, by RTTI)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@QAE@XZ"
+        ]
+      },
+      {
+        "row": "005f8ae0",
+        "symbol": "??0?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@QAE@XZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          128
+        ],
+        "size": 128,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??_7ios_base@std@@6B@": "0x802580 (msvcp90.dll!??_7ios_base@std@@6B@)",
+          "__imp_??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@": "0x802584 (msvcp90.dll!??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@)",
+          "??_8?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@7B@": "0x840c10 (static data, one address per symbol)",
+          "??0?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@IAE@XZ": "0x5f8960 (row proven here)",
+          "??_7?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@6B?$access_control@V?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@Upublic_@34@U?$pub_@V?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@@234@@12@@": "0x840af0 (original vtable slot, by RTTI)",
+          "??_7?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@6B?$basic_istream@DU?$char_traits@D@std@@@std@@@": "0x840ae8 (original vtable slot, by RTTI)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@QAE@XZ"
+        ]
+      },
+      {
+        "row": "005f8b60",
+        "symbol": "?httpGetPostWinHttp@Http@RBX@@AAEX_NAAV?$basic_istream@DU?$char_traits@D@std@@@std@@0PBDAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@4@@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          2261
+        ],
+        "size": 2261,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_09BNNAOANA@empty?5url?$AA@": "0x840e70 (string literal bytes)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??_C@_0BK@OCIEHBMB@trust?5check?5failed?5for?5?$CFs?$AA@": "0x840e54 (string literal bytes)",
+          "??_C@_0BL@BMGOMPLI@?8?$CFs?8?5is?5missing?5a?5hostName?$AA@": "0x840e38 (string literal bytes)",
+          "??_C@_1BO@GPONPIBE@?$AAR?$AAo?$AAb?$AAl?$AAo?$AAx?$AA?1?$AAW?$AAi?$AAn?$AAH?$AAt?$AAt?$AAp?$AA?$AA@": "0x840e18 (string literal bytes)",
+          "__imp__WinHttpOpen@20": "0x802e70 (winhttp.dll!WinHttpOpen)",
+          "??_C@_0M@HCNFPBAH@WinHttpOpen?$AA@": "0x840e0c (string literal bytes)",
+          "__imp__WinHttpConnect@16": "0x802e58 (winhttp.dll!WinHttpConnect)",
+          "__imp__SysFreeString@4": "0x802944 (oleaut32.dll!SysFreeString)",
+          "??_C@_0P@FPJFCHEB@WinHttpConnect?$AA@": "0x840dfc (string literal bytes)",
+          "__imp_??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "0x802448 (msvcp90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z)",
+          "??_C@_19JLKJCDCM@?$AAP?$AAO?$AAS?$AAT?$AA?$AA@": "0x840df0 (string literal bytes)",
+          "??_C@_17KCHPOIEI@?$AAG?$AAE?$AAT?$AA?$AA@": "0x840de8 (string literal bytes)",
+          "__imp__WinHttpOpenRequest@28": "0x802e54 (winhttp.dll!WinHttpOpenRequest)",
+          "??_C@_0BD@LFJHCHOE@WinHttpOpenRequest?$AA@": "0x840dd4 (string literal bytes)",
+          "__imp__WinHttpAddRequestHeaders@16": "0x802e64 (winhttp.dll!WinHttpAddRequestHeaders)",
+          "??_C@_0BJ@OFJFICCL@WinHttpAddRequestHeaders?$AA@": "0x840db8 (string literal bytes)",
+          "??_C@_0CA@BOGCPMEG@WinHttpAddRequestHeaders?5failed?$AA@": "0x840d98 (string literal bytes)",
+          "??_C@_1DA@JIHDCINP@?$AAA?$AAc?$AAc?$AAe?$AAp?$AAt?$AA?9?$AAE?$AAn?$AAc?$AAo?$AAd?$AAi?$AAn?$AAg?$AA?3?$AA?5?$AAg?$AAz?$AAi?$AAp?$AA?$AN?$AA?6?$AA?$AA@": "0x840d68 (string literal bytes)",
+          "??_C@_00CNPNBAHC@?$AA@": "0x80b716 (string literal bytes)",
+          "??_C@_0BK@KEMAHHBP@WinHttpSendRequest?5failed?$AA@": "0x840d4c (string literal bytes)",
+          "__imp__WinHttpSendRequest@28": "0x802e4c (winhttp.dll!WinHttpSendRequest)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "??_C@_0BN@OFPEPLJD@HttpAddRequestHeaders?5failed?$AA@": "0x840d2c (string literal bytes)",
+          "??_C@_1DC@CLFKGPMH@?$AAC?$AAo?$AAn?$AAt?$AAe?$AAn?$AAt?$AA?9?$AAE?$AAn?$AAc?$AAo?$AAd?$AAi?$AAn?$AAg?$AA?3?$AA?5?$AAg?$AAz?$AAi?$AAp?$AA?$AN?$AA?6?$AA?$AA@": "0x840cf8 (string literal bytes)",
+          "??_C@_0BK@ICDOLDON@Roblox?9Content?9Size?3?5?$CFd?$AN?6?$AA@": "0x840cdc (string literal bytes)",
+          "??_C@_0BK@OGFGHMDK@Roblox?9Content?9Hash?3?5?$CFs?$AN?6?$AA@": "0x840cc0 (string literal bytes)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??_C@_0BH@OJNKOBKL@WinHttpReceiveResponse?$AA@": "0x840ca8 (string literal bytes)",
+          "__imp__WinHttpReceiveResponse@8": "0x802e68 (winhttp.dll!WinHttpReceiveResponse)",
+          "__imp__WinHttpQueryHeaders@24": "0x802e50 (winhttp.dll!WinHttpQueryHeaders)",
+          "??_C@_04HOHEGKBO@gzip?$AA@": "0x840ca0 (string literal bytes)",
+          "__imp_??_7ios_base@std@@6B@": "0x802580 (msvcp90.dll!??_7ios_base@std@@6B@)",
+          "__imp_?_Ios_base_dtor@ios_base@std@@CAXPAV12@@Z": "0x80257c (msvcp90.dll!?_Ios_base_dtor@ios_base@std@@CAXPAV12@@Z)",
+          "??_C@_0BE@GNIOOJIH@WinHttpQueryHeaders?$AA@": "0x840c8c (string literal bytes)",
+          "??_C@_0BA@GDDMHFJH@statusCode?5?$DN?5?$CFd?$AA@": "0x840c7c (string literal bytes)",
+          "__imp__WinHttpCloseHandle@4": "0x802e6c (winhttp.dll!WinHttpCloseHandle)",
+          "??_C@_0CD@EJPDALMM@GZip?5error?5?$CFd?0?5ZLib?5error?5?$CFd?0?5?$CC?$CF@": "0x840c58 (string literal bytes)",
+          "??_C@_0BE@CNLFINNP@ZLib?5error?5?$CFd?0?5?$CC?$CFs?$CC?$AA@": "0x840c44 (string literal bytes)",
+          "??_C@_0CK@PFGMEJML@Upload?5GZip?5error?5?$CFd?0?5ZLib?5error@": "0x840c18 (string literal bytes)",
+          "__chkstk": "0x6a1520 (call-site identification)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (compiled body equal at that address; not counted)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (static data, one address per symbol)",
+          "?trustCheck@Http@RBX@@SA_NPBD@Z": "0x56a2e0 (call-site identification)",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (call-site identification)",
+          "??0CUrl@ATL@@QAE@XZ": "0x407380 (compiled body equal at that address; not counted)",
+          "?CrackUrl@CUrl@ATL@@QAEHPBDK@Z": "0x408960 (compiled body equal at that address; not counted)",
+          "?throwIfFailure@Http@RBX@@AAEX_NPBD@Z": "0x569920 (call-site identification)",
+          "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PBD@Z": "0x55ee20 (compiled body equal at that address; not counted)",
+          "??0CComBSTR@ATL@@QAE@PBD@Z": "0x401180 (compiled body equal at that address; not counted)",
+          "?default_strategy@zlib@iostreams@boost@@3HB": "0x84b200 (library constant, value 0)",
+          "?deflated@zlib@iostreams@boost@@3HB": "0x84b1fc (library constant, value 8)",
+          "?default_compression@zlib@iostreams@boost@@3HB": "0x84b1f8 (library constant, value -1)",
+          "??0gzip_params@iostreams@boost@@QAE@HHHHHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0_J@Z": "0x5f2030 (compiled body equal at that address; not counted)",
+          "??0?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@QAE@XZ": "0x5f8a60 (row proven here)",
+          "??0?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@QAE@ABUgzip_params@12@H@Z": "0x5f6990 (compiled body equal at that address; not counted)",
+          "??$push_impl@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@AAEXABV?$basic_gzip_compressor@V?$allocator@D@std@@@23@HH@Z": "0x5f7ae0 (compiled body equal at that address; not counted)",
+          "??1?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@QAE@XZ": "0x5f3740 (compiled body equal at that address; not counted)",
+          "??$push_impl@UString_sink@@@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@AAEXABUString_sink@@HH@Z": "0x5f4840 (compiled body equal at that address; not counted)",
+          "??$copy_impl@V?$reference_wrapper@V?$basic_istream@DU?$char_traits@D@std@@@std@@@boost@@V?$reference_wrapper@V?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@@2@@detail@iostreams@boost@@YAHV?$reference_wrapper@V?$basic_istream@DU?$char_traits@D@std@@@std@@@2@V?$reference_wrapper@V?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@@2@H@Z": "0x5f4d70 (compiled body equal at that address; not counted)",
+          "??_D?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@QAEXXZ": "0x5f4c90 (compiled body equal at that address; not counted)",
+          "?create@MD5Hasher@RBX@@SAPAV12@XZ": "0x55c8b0 (evidence name)",
+          "??0?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@QAE@XZ": "0x5f8ae0 (row proven here)",
+          "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PB_W@Z": "0x5a79e0 (compiled body equal at that address; not counted)",
+          "??8ATL@@YA_NABV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@0@PBD@Z": "0x569d30 (compiled body equal at that address; not counted)",
+          "??1?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@XZ": "0x55d760 (compiled body equal at that address; not counted)",
+          "??0?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@QAE@HH@Z": "0x5f6bc0 (compiled body equal at that address; not counted)",
+          "??$push_impl@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@AAEXABV?$basic_gzip_decompressor@V?$allocator@D@std@@@23@HH@Z": "0x5f7c30 (compiled body equal at that address; not counted)",
+          "??1?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@QAE@XZ": "0x5f3740 (compiled body equal at that address; not counted)",
+          "??$push_impl@VWinHttpRequest_source@@@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@AAEXABVWinHttpRequest_source@@HH@Z": "0x5f4990 (compiled body equal at that address; not counted)",
+          "??$copy_impl@V?$reference_wrapper@V?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@@boost@@UString_sink@@@detail@iostreams@boost@@YAHV?$reference_wrapper@V?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@@2@UString_sink@@H@Z": "0x5f4e30 (compiled body equal at that address; not counted)",
+          "??1?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@UAE@XZ": "0x5f4500 (compiled body equal at that address; not counted)",
+          "??1gzip_params@iostreams@boost@@QAE@XZ": "0x5f20f0 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": [
+          "__ehhandler$?httpGetPostWinHttp@Http@RBX@@AAEX_NAAV?$basic_istream@DU?$char_traits@D@std@@@std@@0PBDAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@4@@Z"
+        ]
+      }
+    ],
+    "wininet": [
+      {
+        "row": "005f9440",
+        "symbol": "??1WinInetHandle@RBX@@QAE@XZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          10
+        ],
+        "size": 10,
+        "exact": true,
+        "verified_targets": {
+          "__imp__InternetCloseHandle@4": "0x802e78 (wininet.dll!InternetCloseHandle)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f9450",
+        "symbol": "?read@WiniInetRequest_source@@QAEHPADH@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          179
+        ],
+        "size": 179,
+        "exact": true,
+        "verified_targets": {
+          "__imp__InternetQueryDataAvailable@16": "0x802e80 (wininet.dll!InternetQueryDataAvailable)",
+          "__imp__InternetReadFile@16": "0x802e7c (wininet.dll!InternetReadFile)",
+          "??_C@_0BI@MELMLLIC@InternetReadFile?5failed?$AA@": "0x840924 (string literal bytes)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (compiled body equal at that address; not counted)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (static data, one address per symbol)"
+        },
+        "local_eh": [
+          "__ehhandler$?read@WiniInetRequest_source@@QAEHPADH@Z"
+        ]
+      },
+      {
+        "row": "005f9510",
+        "symbol": "?component_type@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@MBEABVtype_info@@XZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          6
+        ],
+        "size": 6,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVWiniInetRequest_source@@@8": "0x95838c (RTTI .?AVWiniInetRequest_source@@)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f9520",
+        "symbol": "?auto_close@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@UBE_NXZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          10
+        ],
+        "size": 10,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": [],
+        "icf_folded_symbols": [
+          "?auto_close@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@UBE_NXZ"
+        ]
+      },
+      {
+        "row": "005f9530",
+        "symbol": "?close_impl@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@AAEXH@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          109
+        ],
+        "size": 109,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "row": "005f95a0",
+        "symbol": "??$seek@VWiniInetRequest_source@@@?$device_wrapper_impl@Uany_tag@iostreams@boost@@@detail@iostreams@boost@@SA?AV?$fpos@H@std@@AAVWiniInetRequest_source@@_JHHUany_tag@23@@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          31
+        ],
+        "size": 31,
+        "exact": true,
+        "verified_targets": {
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "?cant_seek@detail@iostreams@boost@@YA?AVfailure@ios_base@std@@XZ": "0x5f2840 (compiled body equal at that address; not counted)",
+          "__TI3?AVfailure@ios_base@std@@": "0x8f5fa0 (static data, one address per symbol)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f95c0",
+        "symbol": "??$seek@VWiniInetRequest_source@@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@?$device_wrapper_impl@Uany_tag@iostreams@boost@@@detail@iostreams@boost@@SA?AV?$fpos@H@std@@AAVWiniInetRequest_source@@PAV?$linked_streambuf@DU?$char_traits@D@std@@@123@_JHH@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          40
+        ],
+        "size": 40,
+        "exact": true,
+        "verified_targets": {
+          "??$seek@VWiniInetRequest_source@@@?$device_wrapper_impl@Uany_tag@iostreams@boost@@@detail@iostreams@boost@@SA?AV?$fpos@H@std@@AAVWiniInetRequest_source@@_JHHUany_tag@23@@Z": "0x5f95a0 (row proven here)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f95f0",
+        "symbol": "??$seek@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@?$concept_adapter@VWiniInetRequest_source@@@detail@iostreams@boost@@QAE?AV?$fpos@H@std@@_JHHPAV?$linked_streambuf@DU?$char_traits@D@std@@@123@@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          36
+        ],
+        "size": 36,
+        "exact": true,
+        "verified_targets": {
+          "??$seek@VWiniInetRequest_source@@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@?$device_wrapper_impl@Uany_tag@iostreams@boost@@@detail@iostreams@boost@@SA?AV?$fpos@H@std@@AAVWiniInetRequest_source@@PAV?$linked_streambuf@DU?$char_traits@D@std@@@123@_JHH@Z": "0x5f95c0 (row proven here)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f9620",
+        "symbol": "??1?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@UAE@XZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          103
+        ],
+        "size": 103,
+        "exact": true,
+        "verified_targets": {
+          "__imp_?deallocate@?$allocator@D@std@@QAEXPADI@Z": "0x802378 (msvcp90.dll!?deallocate@?$allocator@D@std@@QAEXPADI@Z)",
+          "__imp_??1?$basic_streambuf@DU?$char_traits@D@std@@@std@@UAE@XZ": "0x802544 (msvcp90.dll!??1?$basic_streambuf@DU?$char_traits@D@std@@@std@@UAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$??1?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@UAE@XZ"
+        ]
+      },
+      {
+        "row": "005f9690",
+        "symbol": "?open_impl@?$stream_buffer@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@AAEXABVWiniInetRequest_source@@HH@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          185
+        ],
+        "size": 185,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0N@DLOMBLKD@already?5open?$AA@": "0x84093c (string literal bytes)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "__imp_??1exception@std@@UAE@XZ": "0x80289c (msvcr90.dll!??1exception@std@@UAE@XZ)",
+          "??_7runtime_error@std@@6B@": "0x80b7f8 (original vtable slot, by RTTI)",
+          "?open@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@QAEXABVWiniInetRequest_source@@HH@Z": "0x5f2d20 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": [
+          "__ehhandler$?open_impl@?$stream_buffer@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@AAEXABVWiniInetRequest_source@@HH@Z"
+        ]
+      },
+      {
+        "row": "005f9750",
+        "symbol": "?init_get_area@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@EAEXXZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          23
+        ],
+        "size": 23,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": [],
+        "icf_folded_symbols": [
+          "?init_get_area@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@EAEXXZ"
+        ]
+      },
+      {
+        "row": "005f9770",
+        "symbol": "?seek_impl@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@AAE?AV?$fpos@H@std@@_JHH@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          136
+        ],
+        "size": 136,
+        "exact": true,
+        "verified_targets": {
+          "__imp_?pubsync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x802370 (msvcp90.dll!?pubsync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)",
+          "??$seek@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@?$concept_adapter@VWiniInetRequest_source@@@detail@iostreams@boost@@QAE?AV?$fpos@H@std@@_JHHPAV?$linked_streambuf@DU?$char_traits@D@std@@@123@@Z": "0x5f95f0 (row proven here)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f9800",
+        "symbol": "??0?$stream_buffer@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@QAE@ABVWiniInetRequest_source@@HH@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          124
+        ],
+        "size": 124,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??0?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAE@XZ": "0x802548 (msvcp90.dll!??0?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAE@XZ)",
+          "??_7?$stream_buffer@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@6B@": "0x840eac (original vtable slot, by RTTI)",
+          "?open_impl@?$stream_buffer@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@AAEXABVWiniInetRequest_source@@HH@Z": "0x5f9690 (row proven here)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$stream_buffer@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@QAE@ABVWiniInetRequest_source@@HH@Z"
+        ]
+      },
+      {
+        "row": "005f9880",
+        "symbol": "??1?$stream_buffer@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@UAE@XZ",
+        "piece": 0,
+        "piece_range": [
+          0,
+          80
+        ],
+        "size": 80,
+        "exact": true,
+        "verified_targets": {
+          "??_7?$stream_buffer@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@6B@": "0x840eac (original vtable slot, by RTTI)",
+          "?close@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@QAEXXZ": "0x5f3d80 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": [
+          "__ehhandler$??1?$stream_buffer@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@UAE@XZ"
+        ]
+      },
+      {
+        "row": "005f98d0",
+        "symbol": "??1?$stream_buffer@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@UAE@XZ",
+        "piece": 1,
+        "piece_range": [
+          80,
+          120
+        ],
+        "size": 40,
+        "exact": true,
+        "verified_targets": {
+          "??1?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@UAE@XZ": "0x5f9620 (row proven here)"
+        },
+        "local_eh": [
+          "$LN15"
+        ]
+      },
+      {
+        "row": "005f9900",
+        "symbol": "??_G?$stream_buffer@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@UAEPAXI@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          30
+        ],
+        "size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??1?$stream_buffer@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@UAE@XZ": "0x5f9880 (row proven here)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f9920",
+        "symbol": "?underflow@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@MAEHXZ",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          202
+        ],
+        "size": 202,
+        "exact": true,
+        "verified_targets": {
+          "__imp__memmove_s": "0x802850 (msvcr90.dll!memmove_s)",
+          "?read@WiniInetRequest_source@@QAEHPADH@Z": "0x5f9450 (row proven here)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005f99f0",
+        "symbol": "?sync@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@MAEHXZ",
+        "piece": 0,
+        "piece_range": [
+          0,
+          103
+        ],
+        "size": 103,
+        "exact": true,
+        "verified_targets": {
+          "__imp_?pubsync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ": "0x802370 (msvcp90.dll!?pubsync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)",
+          "??$write@VWiniInetRequest_source@@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@?$device_wrapper_impl@Uinput@iostreams@boost@@@detail@iostreams@boost@@SAHAAVWiniInetRequest_source@@PAV?$linked_streambuf@DU?$char_traits@D@std@@@123@PBDH@Z": "0x5f5b70 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": [
+          "__ehhandler$?sync@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@MAEHXZ"
+        ]
+      },
+      {
+        "row": "005f9a57",
+        "symbol": "?sync@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@MAEHXZ",
+        "piece": 1,
+        "piece_range": [
+          103,
+          129
+        ],
+        "size": 26,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": [
+          "$LN7"
+        ]
+      },
+      {
+        "row": "005f9a80",
+        "symbol": "?seekoff@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@MAE?AV?$fpos@H@std@@JHH@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          27
+        ],
+        "size": 27,
+        "exact": true,
+        "verified_targets": {
+          "?seek_impl@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@AAE?AV?$fpos@H@std@@_JHH@Z": "0x5f9770 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": [],
+        "icf_folded_symbols": [
+          "?seekoff@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@MAE?AV?$fpos@H@std@@JHH@Z"
+        ]
+      },
+      {
+        "row": "005f9aa0",
+        "symbol": "?seekpos@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@MAE?AV?$fpos@H@std@@V56@H@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          50
+        ],
+        "size": 50,
+        "exact": true,
+        "verified_targets": {
+          "?seek_impl@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@AAE?AV?$fpos@H@std@@_JHH@Z": "0x5f9770 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": [],
+        "icf_folded_symbols": [
+          "?seekpos@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@MAE?AV?$fpos@H@std@@V56@H@Z"
+        ]
+      },
+      {
+        "row": "005f9ae0",
+        "symbol": "??$push_impl@VWiniInetRequest_source@@@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@AAEXABVWiniInetRequest_source@@HH@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          326
+        ],
+        "size": 326,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0P@HJKEEELA@chain?5complete?$AA@": "0x840af8 (string literal bytes)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x402420 (compiled body equal at that address; not counted)",
+          "__TI2?AVlogic_error@std@@": "0x8f6630 (static data, one address per symbol)",
+          "?back@?$list@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@V?$allocator@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@std@@@std@@QAEAAPAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@XZ": "0x55ddd0 (compiled body equal at that address; not counted)",
+          "??0?$stream_buffer@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@QAE@ABVWiniInetRequest_source@@HH@Z": "0x5f9800 (row proven here)",
+          "?_Buynode@?$list@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@V?$allocator@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@std@@@std@@IAEPAU_Node@?$_List_nod@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@V?$allocator@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@std@@@2@PAU342@0ABQAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@Z": "0x64d0b0 (compiled body equal at that address; not counted)",
+          "?_Incsize@?$list@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@V?$allocator@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@std@@@std@@IAEXI@Z": "0x5f26c0 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": [
+          "__ehhandler$??$push_impl@VWiniInetRequest_source@@@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@AAEXABVWiniInetRequest_source@@HH@Z"
+        ]
+      },
+      {
+        "row": "005f9c30",
+        "symbol": "?httpGetPostWinInet@Http@RBX@@AAEX_NAAV?$basic_istream@DU?$char_traits@D@std@@@std@@0PBDAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@4@@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          2515
+        ],
+        "size": 2515,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_09BNNAOANA@empty?5url?$AA@": "0x840e70 (string literal bytes)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??_C@_0BK@OCIEHBMB@trust?5check?5failed?5for?5?$CFs?$AA@": "0x840e54 (string literal bytes)",
+          "??_C@_0BL@BMGOMPLI@?8?$CFs?8?5is?5missing?5a?5hostName?$AA@": "0x840e38 (string literal bytes)",
+          "??_C@_0P@BEBBKEOK@Roblox?1WinInet?$AA@": "0x84103c (string literal bytes)",
+          "__imp__InternetOpenA@20": "0x802ea4 (wininet.dll!InternetOpenA)",
+          "__imp__InternetConnectA@32": "0x802ea0 (wininet.dll!InternetConnectA)",
+          "??_C@_04HCJEIHPL@POST?$AA@": "0x841034 (string literal bytes)",
+          "??_C@_03HAPOJHBM@GET?$AA@": "0x841030 (string literal bytes)",
+          "__imp__HttpOpenRequestA@32": "0x802e9c (wininet.dll!HttpOpenRequestA)",
+          "??_C@_0BO@BPBLALPK@HttpOpenRequest?5failed?5for?5?$CFs?$AA@": "0x841010 (string literal bytes)",
+          "??_C@_0BN@OFPEPLJD@HttpAddRequestHeaders?5failed?$AA@": "0x840d2c (string literal bytes)",
+          "__imp__HttpAddRequestHeadersA@16": "0x802e98 (wininet.dll!HttpAddRequestHeadersA)",
+          "??_C@_0BI@DHMFONHP@Accept?9Encoding?3?5gzip?$AN?6?$AA@": "0x840ff8 (string literal bytes)",
+          "??_C@_00CNPNBAHC@?$AA@": "0x80b716 (string literal bytes)",
+          "??_C@_0BH@PHHOBGKJ@HttpSendRequest?5failed?$AA@": "0x840fe0 (string literal bytes)",
+          "__imp__HttpSendRequestA@20": "0x802e94 (wininet.dll!HttpSendRequestA)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "??_C@_0BJ@MBGLAIMM@Content?9Encoding?3?5gzip?$AN?6?$AA@": "0x840fc4 (string literal bytes)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "??_C@_0BK@ICDOLDON@Roblox?9Content?9Size?3?5?$CFd?$AN?6?$AA@": "0x840cdc (string literal bytes)",
+          "??_C@_0BL@PFOGPEAG@Roblox?9Content?9First?3?5?$CFd?$AN?6?$AA@": "0x840fa8 (string literal bytes)",
+          "??_C@_0BK@LAFFEEPK@Roblox?9Content?9Last?3?5?$CFd?$AN?6?$AA@": "0x840f8c (string literal bytes)",
+          "??_C@_0BK@OGFGHMDK@Roblox?9Content?9Hash?3?5?$CFs?$AN?6?$AA@": "0x840cc0 (string literal bytes)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "__imp__HttpSendRequestExA@20": "0x802e90 (wininet.dll!HttpSendRequestExA)",
+          "??_C@_0BJ@DIPFNAJK@HttpSendRequestEx?5failed?$AA@": "0x840f70 (string literal bytes)",
+          "??_C@_0BJ@ELNCFFKO@InternetWriteFile?5failed?$AA@": "0x840f54 (string literal bytes)",
+          "__imp__InternetWriteFile@16": "0x802e8c (wininet.dll!InternetWriteFile)",
+          "??_C@_0BJ@KPIIMHFK@Failed?5to?5upload?5content?$AA@": "0x840f38 (string literal bytes)",
+          "??_C@_0BG@HKHHBHEN@HttpEndRequest?5failed?$AA@": "0x840f20 (string literal bytes)",
+          "__imp__HttpEndRequestA@16": "0x802e88 (wininet.dll!HttpEndRequestA)",
+          "__imp__HttpQueryInfoA@20": "0x802e84 (wininet.dll!HttpQueryInfoA)",
+          "??_C@_0BF@BBPCGCKD@HttpQueryInfo?5failed?$AA@": "0x840f08 (string literal bytes)",
+          "??_C@_04HOHEGKBO@gzip?$AA@": "0x840ca0 (string literal bytes)",
+          "__imp_??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z": "0x80236c (msvcp90.dll!??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z)",
+          "??_C@_0BA@GDDMHFJH@statusCode?5?$DN?5?$CFd?$AA@": "0x840c7c (string literal bytes)",
+          "__imp__InternetCloseHandle@4": "0x802e78 (wininet.dll!InternetCloseHandle)",
+          "??_C@_0CD@EJPDALMM@GZip?5error?5?$CFd?0?5ZLib?5error?5?$CFd?0?5?$CC?$CF@": "0x840c58 (string literal bytes)",
+          "??_C@_0BE@CNLFINNP@ZLib?5error?5?$CFd?0?5?$CC?$CFs?$CC?$AA@": "0x840c44 (string literal bytes)",
+          "??_C@_0CK@PFGMEJML@Upload?5GZip?5error?5?$CFd?0?5ZLib?5error@": "0x840c18 (string literal bytes)",
+          "__chkstk": "0x6a1520 (call-site identification)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (compiled body equal at that address; not counted)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (static data, one address per symbol)",
+          "?trustCheck@Http@RBX@@SA_NPBD@Z": "0x56a2e0 (call-site identification)",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (call-site identification)",
+          "??0CUrl@ATL@@QAE@XZ": "0x407380 (compiled body equal at that address; not counted)",
+          "?CrackUrl@CUrl@ATL@@QAEHPBDK@Z": "0x408960 (compiled body equal at that address; not counted)",
+          "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PBD@Z": "0x55ee20 (compiled body equal at that address; not counted)",
+          "??Y?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAEAAV01@PBD@Z": "0x5a7a80 (compiled body equal at that address; not counted)",
+          "?throwIfFailure@Http@RBX@@AAEX_NPBD@Z": "0x569920 (call-site identification)",
+          "?default_strategy@zlib@iostreams@boost@@3HB": "0x84b200 (library constant, value 0)",
+          "?deflated@zlib@iostreams@boost@@3HB": "0x84b1fc (library constant, value 8)",
+          "?default_compression@zlib@iostreams@boost@@3HB": "0x84b1f8 (library constant, value -1)",
+          "??0gzip_params@iostreams@boost@@QAE@HHHHHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0_J@Z": "0x5f2030 (compiled body equal at that address; not counted)",
+          "??0?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@QAE@XZ": "0x5f8a60 (row proven here)",
+          "??0?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@QAE@ABUgzip_params@12@H@Z": "0x5f6990 (compiled body equal at that address; not counted)",
+          "??$push_impl@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@AAEXABV?$basic_gzip_compressor@V?$allocator@D@std@@@23@HH@Z": "0x5f7ae0 (compiled body equal at that address; not counted)",
+          "??1?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@QAE@XZ": "0x5f3740 (compiled body equal at that address; not counted)",
+          "??$push_impl@UString_sink@@@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@AAEXABUString_sink@@HH@Z": "0x5f4840 (compiled body equal at that address; not counted)",
+          "??$copy_impl@V?$reference_wrapper@V?$basic_istream@DU?$char_traits@D@std@@@std@@@boost@@V?$reference_wrapper@V?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@@2@@detail@iostreams@boost@@YAHV?$reference_wrapper@V?$basic_istream@DU?$char_traits@D@std@@@std@@@2@V?$reference_wrapper@V?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@@2@H@Z": "0x5f4d70 (compiled body equal at that address; not counted)",
+          "??_D?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@QAEXXZ": "0x5f4c90 (compiled body equal at that address; not counted)",
+          "?create@MD5Hasher@RBX@@SAPAV12@XZ": "0x55c8b0 (evidence name)",
+          "??0?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@QAE@XZ": "0x5f8ae0 (row proven here)",
+          "??0?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@QAE@HH@Z": "0x5f6bc0 (compiled body equal at that address; not counted)",
+          "??$push_impl@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@AAEXABV?$basic_gzip_decompressor@V?$allocator@D@std@@@23@HH@Z": "0x5f7c30 (compiled body equal at that address; not counted)",
+          "??1?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@QAE@XZ": "0x5f3740 (compiled body equal at that address; not counted)",
+          "??$push_impl@VWiniInetRequest_source@@@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@AAEXABVWiniInetRequest_source@@HH@Z": "0x5f9ae0 (row proven here)",
+          "??$copy_impl@V?$reference_wrapper@V?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@@boost@@UString_sink@@@detail@iostreams@boost@@YAHV?$reference_wrapper@V?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@@2@UString_sink@@H@Z": "0x5f4e30 (compiled body equal at that address; not counted)",
+          "??_D?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@QAEXXZ": "0x5f4cc0 (compiled body equal at that address; not counted)",
+          "??1gzip_params@iostreams@boost@@QAE@XZ": "0x5f20f0 (compiled body equal at that address; not counted)",
+          "??1?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@XZ": "0x55d760 (compiled body equal at that address; not counted)"
+        },
+        "local_eh": [
+          "__ehhandler$?httpGetPostWinInet@Http@RBX@@AAEX_NAAV?$basic_istream@DU?$char_traits@D@std@@@std@@0PBDAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@4@@Z"
+        ]
+      }
+    ],
+    "kernelarrays": [
+      {
+        "row": "005fa670",
+        "symbol": "?resize@?$Array@PAVConnector@RBX@@@G3D@@QAEXH_N@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          256
+        ],
+        "size": 256,
+        "exact": true,
+        "verified_targets": {
+          "__real@40400000": "0x81e380 (constant bytes)",
+          "__real@3fc00000": "0x81e37c (constant bytes)",
+          "__real@40000000": "0x81c434 (constant bytes)",
+          "??_B?3??resize@?$Array@PAVConnector@RBX@@@G3D@@QAEXH_N@Z@53": "0x97b5c0 (static data, one address per symbol)",
+          "?minSize@?3??resize@?$Array@PAVConnector@RBX@@@G3D@@QAEXH_N@Z@4HB": "0x97b5bc (static data, one address per symbol)",
+          "?realloc@?$Array@PAVConnector@RBX@@@G3D@@AAEXH@Z": "0x502080 (compiled body equal at that address; not counted)",
+          "__ftol2_sse": "0x6a17f0 (call-site identification)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005fa870",
+        "symbol": "?resize@?$Array@PAVPoint@RBX@@@G3D@@QAEXH_N@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          256
+        ],
+        "size": 256,
+        "exact": true,
+        "verified_targets": {
+          "__real@40400000": "0x81e380 (constant bytes)",
+          "__real@3fc00000": "0x81e37c (constant bytes)",
+          "__real@40000000": "0x81c434 (constant bytes)",
+          "??_B?3??resize@?$Array@PAVPoint@RBX@@@G3D@@QAEXH_N@Z@53": "0x97b5d0 (static data, one address per symbol)",
+          "?minSize@?3??resize@?$Array@PAVPoint@RBX@@@G3D@@QAEXH_N@Z@4HB": "0x97b5cc (static data, one address per symbol)",
+          "?realloc@?$Array@PAVPoint@RBX@@@G3D@@AAEXH@Z": "0x502080 (compiled body equal at that address; not counted)",
+          "__ftol2_sse": "0x6a17f0 (call-site identification)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005fab50",
+        "symbol": "?append@?$Array@PAVConnector@RBX@@@G3D@@QAEXABQAVConnector@RBX@@@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          101
+        ],
+        "size": 101,
+        "exact": true,
+        "verified_targets": {
+          "?append@?$Array@PAVConnector@RBX@@@G3D@@QAEXABQAVConnector@RBX@@@Z": "0x5fab50 (row proven here)",
+          "?resize@?$Array@PAVConnector@RBX@@@G3D@@QAEXH_N@Z": "0x5fa670 (row proven here)"
+        },
+        "local_eh": []
+      },
+      {
+        "row": "005fac30",
+        "symbol": "?append@?$Array@PAVPoint@RBX@@@G3D@@QAEXABQAVPoint@RBX@@@Z",
+        "piece": "whole",
+        "piece_range": [
+          0,
+          101
+        ],
+        "size": 101,
+        "exact": true,
+        "verified_targets": {
+          "?append@?$Array@PAVPoint@RBX@@@G3D@@QAEXABQAVPoint@RBX@@@Z": "0x5fac30 (row proven here)",
+          "?resize@?$Array@PAVPoint@RBX@@@G3D@@QAEXH_N@Z": "0x5fa870 (row proven here)"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "unit_map": [
+    {
+      "unit": "util/Http.cpp WinHttp transport unit (tail) 005f8000..005f943f",
+      "rows": 36,
+      "bytes": 4970,
+      "counted_elsewhere": [],
+      "counted_here": 36,
+      "evidence": "The WinHttp half of util/Http.cpp, compiled as its own unit (it includes <winhttp.h>, which cannot share a unit with <wininet.h>: C2371 on HTTP_VERSION_INFO / INTERNET_SCHEME / URL_COMPONENTS). It starts below the range at 005f2030 (app-unit5f0 maps 005f2030.. as boost.iostreams instantiations; the Roblox rows there are the WinHttp handle destructor 005f20e0 and WinHttpRequest_source::read 005f2c40, both counted here). In the range: the catch funclet of ~chain_impl<input> (005f802f), indirect_streambuf<basic_gzip_compressor> strict_sync (rows 005f8060 + 005f809d are one body, BOUNDS) with its catch 005f80b0, overflow, sync (+catch 005f81c0), init_get_area, symmetric_filter read (+catch), close (+catch) of the gzip compressor / decompressor buffers, checked_delete / shared_count / sp_counted_impl_p dispose of chain_impl<output|input>, chain_base ctors, filtering_stream_base / filtering_stream ctors and their ??_E / ??_G, and Http::httpGetPostWinHttp 005f8b60 (2261 B: WinHttpOpen \"Roblox/WinHttp\", WinHttpConnect, OpenRequest, Roblox-Content-Size / Roblox-Content-Hash headers via MD5Hasher::create, ReceiveResponse, gzip / zlib error handlers, status text). Class names from RTTI: .?AV?$indirect_streambuf@VWinHttpRequest_source@@ / .?AV?$stream_buffer@UString_sink@@. Callers: Http::post 00569a40 / Http::get 00569ae0 choose this transport when the static at 00946274 is 1. Built here: native-classes/AppUnit5F8WinHttp.cpp."
+    },
+    {
+      "unit": "util/Http.cpp WinINet transport unit 005f9440..005fa60f",
+      "rows": 23,
+      "bytes": 4391,
+      "counted_elsewhere": [],
+      "counted_here": 23,
+      "evidence": "The WinINet half of util/Http.cpp (<wininet.h>): WinInetHandle destructor 005f9440 (InternetCloseHandle), WiniInetRequest_source::read 005f9450 (InternetQueryDataAvailable / InternetReadFile, \"InternetReadFile failed\"), the indirect_streambuf / stream_buffer / chain push_impl / device_wrapper / concept_adapter instantiations for WiniInetRequest_source (RTTI .?AV?$indirect_streambuf@VWiniInetRequest_source@@ and .?AV?$stream_buffer@VWiniInetRequest_source@@, vtable 00840eac; some bodies are ICF-folded with the String_sink instances, whose vtable slots point here) and Http::httpGetPostWinInet 005f9c30 (2515 B: InternetOpenA \"Roblox/WinInet\", HttpOpenRequestA, Roblox-Content-Size / -First / -Last / -Hash headers, HttpSendRequestExA / InternetWriteFile / HttpEndRequestA, status code / text). Callers: Http::post / Http::get when the static at 00946274 is 0. Built here: native-classes/AppUnit5F8WinInet.cpp."
+    },
+    {
+      "unit": "v8kernel/Kernel.cpp 005fa610..005fb70f",
+      "rows": 37,
+      "bytes": 4054,
+      "counted_elsewhere": [
+        "005faa20 counted by kernel-stages-working.json",
+        "005faa30 counted by kernel-stages-working.json",
+        "005faa40 counted by kernel-stages-working.json",
+        "005faca0 counted by kernel-stages-working.json",
+        "005fb0c0 counted by kernel-stages-working.json"
+      ],
+      "counted_here": 4,
+      "evidence": "Kernel.cpp of the kernel-stages owner (native-headers/v8kernel/Kernel2008.h, native-classes/Kernel2008.cpp): the leaf-body index accessor (lea eax, [ecx + 4]; used by the IndexArray<Body> helpers) and numLeafBodies (kernelData +0x28), connectorSpringEnergy-like sum over kernelData +0x24 (virtual slot 5), three G3D::Array<T*>::resize instances (256 B each, function-local minSize static 0097b5bc / guard 0097b5c0) and three Array<T*>::append instances (101 B), ~KernelData (out of line, five arrays at +0x0 / +0xc / +0x18 / +0x24 / +0x30), numBodies / numPoints / numConnectors and ~Kernel (counted by kernel-stages), bodyKineticEnergy (Body 00614670), numContacts-like readers, the PV integrator over leaf bodies (updatePV 00599360, orthonormalizeIfNecessary 005df0a0, setCoordinateFrame 00614400), the threshold sqrt(sqrt(..)) + 1 iteration count, insert / remove Body, Point and Connector helpers, newPoint / deletePoint, stepWorld (slot 2, 502 B), the KernelData constructor (0x3c) and Kernel(IStage*) (0x24). Not built here: the Kernel members are not declared in Kernel2008.h and KernelData has no native declaration (owner proposals in the kernel-stages receipt and below). Built here: G3D::Array<T*> resize / append instances (library templates instantiated only by this unit), from native-classes/AppUnit5F8KernelArrays.cpp (explicit member instantiations, /fp:fast); the element type of each byte-identical pair is the one its callers prove: Connector* (stepWorld on Kernel +0x14 realTimeConnectors) and Point* (newPoint appends the new 0x34 Point to KernelData +0x18). Only four of them: the Array<Body*> pair (resize at 005fa770, append at 005fabc0) is also called by Body.cpp (onChildAdded / onChildRemoved; body-primitive2008 binds both by name), so it is not a template only this unit references and is not counted."
+    },
+    {
+      "unit": "LocalBackpack.cpp 005fb710..005fbfff",
+      "rows": 25,
+      "bytes": 2250,
+      "counted_elsewhere": [
+        "005fb710 counted by local-backpack-working.json",
+        "005fb770 counted by local-backpack-working.json",
+        "005fb780 counted by local-backpack-working.json",
+        "005fb790 counted by local-backpack-working.json",
+        "005fb7a0 counted by local-backpack-working.json",
+        "005fb7b0 counted by local-backpack-working.json",
+        "005fb810 counted by local-backpack-working.json",
+        "005fb820 counted by local-backpack-working.json",
+        "005fb830 counted by local-backpack-working.json",
+        "005fb840 counted by local-backpack-working.json",
+        "005fb850 counted by local-backpack-working.json",
+        "005fb860 counted by local-backpack-working.json",
+        "005fb870 counted by local-backpack-working.json",
+        "005fb890 counted by local-backpack-working.json",
+        "005fbbf0 counted by local-backpack-working.json",
+        "005fbc60 counted by local-backpack-working.json",
+        "005fbc70 counted by local-backpack-working.json",
+        "005fbd10 counted by local-backpack-working.json",
+        "005fbd80 counted by local-backpack-working.json",
+        "005fbf10 counted by local-backpack-working.json",
+        "005fbf30 counted by local-backpack-working.json",
+        "005fbf50 counted by local-backpack-working.json",
+        "005fbff0 counted by local-backpack-working.json"
+      ],
+      "counted_here": 0,
+      "evidence": "LocalBackpack rows of the local-backpack owner (LocalBackpack2008.h): mapped and counted there; render2d (external slot) and the remaining uncounted rows are that owner's."
+    }
+  ],
+  "vtables_by_rtti": {
+    "??_7?$access_control@V?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@Upublic_@34@U?$pub_@V?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@@234@@iostreams@boost@@6B@": {
+      "rtti": ".?AU?$access_control@V?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@Upublic_@34@U?$pub_@V?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@@234@@iostreams@boost@@",
+      "address": "0x8408d4",
+      "subobject_offset": "0x0",
+      "slots": 2,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$access_control@V?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@st = 0x5f25a0",
+        "1": "?notify@?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocato = 0x47d410"
+      }
+    },
+    "??_7?$access_control@V?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@Upublic_@34@U?$pub_@V?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@@234@@iostreams@boost@@6B@": {
+      "rtti": ".?AU?$access_control@V?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@Upublic_@34@U?$pub_@V?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@@234@@iostreams@boost@@",
+      "address": "0x8408c8",
+      "subobject_offset": "0x0",
+      "slots": 2,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$access_control@V?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@s = 0x5f2140",
+        "1": "?notify@?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocat = 0x47d410"
+      }
+    },
+    "??_7?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@6B@": {
+      "rtti": ".?AV?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@",
+      "address": "0x84086c",
+      "subobject_offset": "0x0",
+      "slots": 2,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@ = 0x5f25a0",
+        "1": "?notify@?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocato = 0x47d410"
+      }
+    },
+    "??_7?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@6B@": {
+      "rtti": ".?AV?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@",
+      "address": "0x840860",
+      "subobject_offset": "0x0",
+      "slots": 2,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D = 0x5f2140",
+        "1": "?notify@?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocat = 0x47d410"
+      }
+    },
+    "??_7?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@6B?$access_control@V?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@Upublic_@34@U?$pub_@V?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@@234@@12@@": {
+      "rtti": ".?AV?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@",
+      "address": "0x840af0",
+      "subobject_offset": "0x0",
+      "slots": 2,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upu = 0x5f4d30",
+        "1": "?notify@?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V? = 0x5f6930"
+      }
+    },
+    "??_7?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@6B?$basic_istream@DU?$char_traits@D@std@@@std@@@": {
+      "rtti": ".?AV?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@",
+      "address": "0x840ae8",
+      "subobject_offset": "0x18",
+      "slots": 1,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upu = 0x5f4580"
+      }
+    },
+    "??_7?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@6B?$access_control@V?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@Upublic_@34@U?$pub_@V?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@@234@@12@@": {
+      "rtti": ".?AV?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@",
+      "address": "0x840adc",
+      "subobject_offset": "0x0",
+      "slots": 2,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Up = 0x5f4cf0",
+        "1": "?notify@?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V = 0x5f68d0"
+      }
+    },
+    "??_7?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@6B?$basic_ostream@DU?$char_traits@D@std@@@std@@@": {
+      "rtti": ".?AV?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@",
+      "address": "0x840ad4",
+      "subobject_offset": "0x14",
+      "slots": 1,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Up = 0x5f44f0"
+      }
+    },
+    "??_7?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@6B?$access_control@V?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@Upublic_@34@U?$pub_@V?$chain_client@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@@234@@23@@": {
+      "rtti": ".?AV?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@",
+      "address": "0x840c08",
+      "subobject_offset": "0x0",
+      "slots": 2,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$all = 0x5f8a20",
+        "1": "?notify@?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V? = 0x5f6930"
+      }
+    },
+    "??_7?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@6B?$basic_istream@DU?$char_traits@D@std@@@std@@@": {
+      "rtti": ".?AV?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@",
+      "address": "0x840c00",
+      "subobject_offset": "0x18",
+      "slots": 1,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$all = 0x5f8a10"
+      }
+    },
+    "??_7?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@6B?$access_control@V?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@Upublic_@34@U?$pub_@V?$chain_client@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@@detail@iostreams@boost@@@234@@23@@": {
+      "rtti": ".?AV?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@",
+      "address": "0x840bec",
+      "subobject_offset": "0x0",
+      "slots": 2,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$al = 0x5f8920",
+        "1": "?notify@?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V = 0x5f68d0"
+      }
+    },
+    "??_7?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@6B?$basic_ostream@DU?$char_traits@D@std@@@std@@@": {
+      "rtti": ".?AV?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@",
+      "address": "0x840be4",
+      "subobject_offset": "0x14",
+      "slots": 1,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$al = 0x5f8910"
+      }
+    },
+    "??_7?$sp_counted_impl_p@Uchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@@detail@boost@@6B@": {
+      "rtti": ".?AV?$sp_counted_impl_p@Uchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@@detail@boost@@",
+      "address": "0x84088c",
+      "subobject_offset": "0x0",
+      "slots": 4,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$sp_counted_impl_p@Uchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char = 0x415000",
+        "1": "?dispose@?$sp_counted_impl_p@Uchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU? = 0x5f8630",
+        "2": "?destroy@sp_counted_base@detail@boost@@UAEXXZ = 0x405e10",
+        "3": "?get_deleter@?$sp_counted_impl_p@Uchain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@ = 0x5f2310"
+      }
+    },
+    "??_7?$sp_counted_impl_p@Uchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@@detail@boost@@6B@": {
+      "rtti": ".?AV?$sp_counted_impl_p@Uchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@@detail@boost@@",
+      "address": "0x840878",
+      "subobject_offset": "0x0",
+      "slots": 4,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$sp_counted_impl_p@Uchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$cha = 0x415000",
+        "1": "?dispose@?$sp_counted_impl_p@Uchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU = 0x5f8610",
+        "2": "?destroy@sp_counted_base@detail@boost@@UAEXXZ = 0x405e10",
+        "3": "?get_deleter@?$sp_counted_impl_p@Uchain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost = 0x5f2310"
+      }
+    },
+    "??_7?$sp_counted_impl_p@Uimpl@?$symmetric_filter@V?$zlib_compressor_impl@V?$allocator@D@std@@@detail@iostreams@boost@@V?$allocator@D@std@@@iostreams@boost@@@detail@boost@@6B@": {
+      "rtti": ".?AV?$sp_counted_impl_p@Uimpl@?$symmetric_filter@V?$zlib_compressor_impl@V?$allocator@D@std@@@detail@iostreams@boost@@V?$allocator@D@std@@@iostreams@boost@@@detail@boost@@",
+      "address": "0x8408a0",
+      "subobject_offset": "0x0",
+      "slots": 4,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$sp_counted_impl_p@Uimpl@?$symmetric_filter@V?$zlib_compressor_impl@V?$allocator@D@st = 0x415000",
+        "1": "?dispose@?$sp_counted_impl_p@Uimpl@?$symmetric_filter@V?$zlib_compressor_impl@V?$allocator = 0x5f36c0",
+        "2": "?destroy@sp_counted_base@detail@boost@@UAEXXZ = 0x405e10",
+        "3": "?get_deleter@?$sp_counted_impl_p@Uimpl@?$symmetric_filter@V?$zlib_compressor_impl@V?$alloc = 0x5f2310"
+      }
+    },
+    "??_7?$sp_counted_impl_p@Uimpl@?$symmetric_filter@V?$zlib_decompressor_impl@V?$allocator@D@std@@@detail@iostreams@boost@@V?$allocator@D@std@@@iostreams@boost@@@detail@boost@@6B@": {
+      "rtti": ".?AV?$sp_counted_impl_p@Uimpl@?$symmetric_filter@V?$zlib_decompressor_impl@V?$allocator@D@std@@@detail@iostreams@boost@@V?$allocator@D@std@@@iostreams@boost@@@detail@boost@@",
+      "address": "0x8408b4",
+      "subobject_offset": "0x0",
+      "slots": 4,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$sp_counted_impl_p@Uimpl@?$symmetric_filter@V?$zlib_decompressor_impl@V?$allocator@D@ = 0x415000",
+        "1": "?dispose@?$sp_counted_impl_p@Uimpl@?$symmetric_filter@V?$zlib_decompressor_impl@V?$allocat = 0x5f36e0",
+        "2": "?destroy@sp_counted_base@detail@boost@@UAEXXZ = 0x405e10",
+        "3": "?get_deleter@?$sp_counted_impl_p@Uimpl@?$symmetric_filter@V?$zlib_decompressor_impl@V?$all = 0x5f2310"
+      }
+    },
+    "??_7?$stream_buffer@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@iostreams@boost@@6B@": {
+      "rtti": ".?AV?$stream_buffer@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@iostreams@boost@@",
+      "address": "0x840a14",
+      "subobject_offset": "0x0",
+      "slots": 23,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$stream_buffer@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams = 0x5f3f80",
+        "1": "?overflow@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutpu = 0x5f4080",
+        "2": "?pbackfail@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutp = 0x5f2950",
+        "3": "?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ = 0x7a627c",
+        "4": "?underflow@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutp = 0x5f2ab0",
+        "5": "?uflow@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ = 0x7a6282",
+        "6": "?xsgetn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPADH@Z = 0x7a6288",
+        "7": "?_Xsgetn_s@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPADIH@Z = 0x7a628e",
+        "8": "?xsputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPBDH@Z = 0x7a6294",
+        "9": "?seekoff@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput = 0x5f9a80",
+        "10": "?seekpos@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput = 0x5f9aa0",
+        "11": "?setbuf@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEPAV12@PADH@Z = 0x7a629a",
+        "12": "?sync@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@io = 0x5f4120",
+        "13": "?imbue@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@i = 0x5f41c0",
+        "14": "?set_next@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutpu = 0x5f29d0",
+        "15": "?close@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@i = 0x5f3fd0",
+        "16": "?auto_close@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uout = 0x5f9520",
+        "17": "?set_auto_close@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@ = 0x5f2d00",
+        "18": "?strict_sync@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uou = 0x5f3fe0",
+        "19": "?component_type@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@ = 0x5f2940",
+        "20": "?component_impl@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@ = 0x5f5ea0",
+        "21": "?init_get_area@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@U = 0x5f9750",
+        "22": "?init_put_area@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@U = 0x5f2a00"
+      }
+    },
+    "??_7?$stream_buffer@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@iostreams@boost@@6B@": {
+      "rtti": ".?AV?$stream_buffer@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@iostreams@boost@@",
+      "address": "0x840b24",
+      "subobject_offset": "0x0",
+      "slots": 23,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$stream_buffer@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char = 0x5f7630",
+        "1": "?overflow@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boo = 0x5f80c0",
+        "2": "?pbackfail@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@bo = 0x5f2950",
+        "3": "?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ = 0x7a627c",
+        "4": "?underflow@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@bo = 0x5f8400",
+        "5": "?uflow@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ = 0x7a6282",
+        "6": "?xsgetn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPADH@Z = 0x7a6288",
+        "7": "?_Xsgetn_s@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPADIH@Z = 0x7a628e",
+        "8": "?xsputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPBDH@Z = 0x7a6294",
+        "9": "?seekoff@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boos = 0x5f56f0",
+        "10": "?seekpos@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boos = 0x5f5710",
+        "11": "?setbuf@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEPAV12@PADH@Z = 0x7a629a",
+        "12": "?sync@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@ = 0x5f8170",
+        "13": "?imbue@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@ = 0x5f5320",
+        "14": "?set_next@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boo = 0x5f51a0",
+        "15": "?close@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@ = 0x5f82f0",
+        "16": "?auto_close@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@b = 0x5f5170",
+        "17": "?set_auto_close@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostrea = 0x5f5180",
+        "18": "?strict_sync@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@ = 0x5f8060",
+        "19": "?component_type@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostrea = 0x5f5160",
+        "20": "?component_impl@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostrea = 0x5f5ea0",
+        "21": "?init_get_area@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostream = 0x5f81e0",
+        "22": "?init_put_area@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostream = 0x5f5230"
+      }
+    },
+    "??_7?$stream_buffer@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@iostreams@boost@@6B@": {
+      "rtti": ".?AV?$stream_buffer@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@iostreams@boost@@",
+      "address": "0x840b84",
+      "subobject_offset": "0x0",
+      "slots": 23,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$stream_buffer@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$ch = 0x5f7650",
+        "1": "?overflow@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@b = 0x5f5cc0",
+        "2": "?pbackfail@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@ = 0x5f2950",
+        "3": "?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ = 0x7a627c",
+        "4": "?underflow@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@ = 0x5f8770",
+        "5": "?uflow@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ = 0x7a6282",
+        "6": "?xsgetn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPADH@Z = 0x7a6288",
+        "7": "?_Xsgetn_s@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPADIH@Z = 0x7a628e",
+        "8": "?xsputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPBDH@Z = 0x7a6294",
+        "9": "?seekoff@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@bo = 0x5f6350",
+        "10": "?seekpos@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@bo = 0x5f6370",
+        "11": "?setbuf@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEPAV12@PADH@Z = 0x7a629a",
+        "12": "?sync@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost = 0x5f5f30",
+        "13": "?imbue@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boos = 0x5f5d80",
+        "14": "?set_next@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@b = 0x7a1ca0",
+        "15": "?close@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boos = 0x5f8350",
+        "16": "?auto_close@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams = 0x5f5ac0",
+        "17": "?set_auto_close@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostr = 0x5f5ad0",
+        "18": "?strict_sync@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostream = 0x5f5eb0",
+        "19": "?component_type@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostr = 0x5f5ab0",
+        "20": "?component_impl@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostr = 0x5f5ea0",
+        "21": "?init_get_area@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostre = 0x5f5db0",
+        "22": "?init_put_area@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostre = 0x5f5b90"
+      }
+    },
+    "??_7?$stream_buffer@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@iostreams@boost@@6B@": {
+      "rtti": ".?AV?$stream_buffer@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@iostreams@boost@@",
+      "address": "0x8409b4",
+      "subobject_offset": "0x0",
+      "slots": 23,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$stream_buffer@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$cha = 0x5f3b60",
+        "1": "?overflow@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@bo = 0x5f32f0",
+        "2": "?pbackfail@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@b = 0x5f2950",
+        "3": "?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ = 0x7a627c",
+        "4": "?underflow@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@b = 0x5f4af0",
+        "5": "?uflow@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ = 0x7a6282",
+        "6": "?xsgetn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPADH@Z = 0x7a6288",
+        "7": "?_Xsgetn_s@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPADIH@Z = 0x7a628e",
+        "8": "?xsputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPBDH@Z = 0x7a6294",
+        "9": "?seekoff@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boo = 0x5f3ce0",
+        "10": "?seekpos@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boo = 0x5f3b80",
+        "11": "?setbuf@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEPAV12@PADH@Z = 0x7a629a",
+        "12": "?sync@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@ = 0x5f3c50",
+        "13": "?imbue@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost = 0x5f3210",
+        "14": "?set_next@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@bo = 0x5f3270",
+        "15": "?close@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost = 0x5f4ae0",
+        "16": "?auto_close@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@ = 0x5f2330",
+        "17": "?set_auto_close@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostre = 0x5f3250",
+        "18": "?strict_sync@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams = 0x5f3bc0",
+        "19": "?component_type@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostre = 0x5f3240",
+        "20": "?component_impl@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostre = 0x5f5ea0",
+        "21": "?init_get_area@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostrea = 0x5f50b0",
+        "22": "?init_put_area@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostrea = 0x5f31c0"
+      }
+    },
+    "??_7?$stream_buffer@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@iostreams@boost@@6B@": {
+      "rtti": ".?AV?$stream_buffer@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@iostreams@boost@@",
+      "address": "0x840954",
+      "subobject_offset": "0x0",
+      "slots": 23,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$stream_buffer@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@boost@@U?$ch = 0x5f3b40",
+        "1": "?overflow@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@b = 0x5f4f80",
+        "2": "?pbackfail@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@ = 0x5f2950",
+        "3": "?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ = 0x7a627c",
+        "4": "?underflow@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@ = 0x5f3110",
+        "5": "?uflow@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ = 0x7a6282",
+        "6": "?xsgetn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPADH@Z = 0x7a6288",
+        "7": "?_Xsgetn_s@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPADIH@Z = 0x7a628e",
+        "8": "?xsputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPBDH@Z = 0x7a6294",
+        "9": "?seekoff@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@bo = 0x5f3ce0",
+        "10": "?seekpos@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@bo = 0x5f3b80",
+        "11": "?setbuf@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEPAV12@PADH@Z = 0x7a629a",
+        "12": "?sync@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@boost = 0x5f5020",
+        "13": "?imbue@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@boos = 0x5f3210",
+        "14": "?set_next@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@b = 0x5f3270",
+        "15": "?close@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@boos = 0x5f4ae0",
+        "16": "?auto_close@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams = 0x5f2330",
+        "17": "?set_auto_close@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostr = 0x5f3250",
+        "18": "?strict_sync@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostream = 0x5f4ef0",
+        "19": "?component_type@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostr = 0x5f3100",
+        "20": "?component_impl@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostr = 0x5f5ea0",
+        "21": "?init_get_area@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostre = 0x5f50b0",
+        "22": "?init_put_area@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostre = 0x5f31c0"
+      }
+    },
+    "??_7?$stream_buffer@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@6B@": {
+      "rtti": ".?AV?$stream_buffer@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@",
+      "address": "0x840a74",
+      "subobject_offset": "0x0",
+      "slots": 23,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$stream_buffer@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@ = 0x5f3fa0",
+        "1": "?overflow@?$indirect_streambuf@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allocator@ = 0x5f3580",
+        "2": "?pbackfail@?$indirect_streambuf@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allocator = 0x5f2950",
+        "3": "?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ = 0x7a627c",
+        "4": "?underflow@?$indirect_streambuf@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allocator = 0x5f4280",
+        "5": "?uflow@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ = 0x7a6282",
+        "6": "?xsgetn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPADH@Z = 0x7a6288",
+        "7": "?_Xsgetn_s@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPADIH@Z = 0x7a628e",
+        "8": "?xsputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPBDH@Z = 0x7a6294",
+        "9": "?seekoff@?$indirect_streambuf@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allocator@D = 0x5f9a80",
+        "10": "?seekpos@?$indirect_streambuf@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allocator@D = 0x5f9aa0",
+        "11": "?setbuf@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEPAV12@PADH@Z = 0x7a629a",
+        "12": "?sync@?$indirect_streambuf@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@ = 0x5f99f0",
+        "13": "?imbue@?$indirect_streambuf@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3 = 0x5f41c0",
+        "14": "?set_next@?$indirect_streambuf@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allocator@ = 0x5f29d0",
+        "15": "?close@?$indirect_streambuf@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3 = 0x5f3fd0",
+        "16": "?auto_close@?$indirect_streambuf@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allocato = 0x5f9520",
+        "17": "?set_auto_close@?$indirect_streambuf@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allo = 0x5f2d00",
+        "18": "?strict_sync@?$indirect_streambuf@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allocat = 0x5f41f0",
+        "19": "?component_type@?$indirect_streambuf@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allo = 0x5f2cf0",
+        "20": "?component_impl@?$indirect_streambuf@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$allo = 0x5f5ea0",
+        "21": "?init_get_area@?$indirect_streambuf@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$alloc = 0x5f9750",
+        "22": "?init_put_area@?$indirect_streambuf@VWinHttpRequest_source@@U?$char_traits@D@std@@V?$alloc = 0x5f2a00"
+      }
+    },
+    "??_7bad_alloc@std@@6B@": {
+      "rtti": ".?AVbad_alloc@std@@",
+      "address": "0x80b104",
+      "subobject_offset": "0x0",
+      "slots": 2,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_Ebad_alloc@std@@UAEPAXI@Z = 0x4023c0",
+        "1": "?what@exception@std@@UBEPBDXZ = 0x6a154c"
+      }
+    },
+    "??_7failure@ios_base@std@@6B@": {
+      "rtti": ".?AVfailure@ios_base@std@@",
+      "address": "0x840854",
+      "subobject_offset": "0x0",
+      "slots": 2,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_Efailure@ios_base@std@@UAEPAXI@Z = 0x409dc0",
+        "1": "?what@runtime_error@std@@UBEPBDXZ = 0x409db0"
+      }
+    },
+    "??_7gzip_error@iostreams@boost@@6B@": {
+      "rtti": ".?AVgzip_error@iostreams@boost@@",
+      "address": "0x840b0c",
+      "subobject_offset": "0x0",
+      "slots": 2,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_Egzip_error@iostreams@boost@@UAEPAXI@Z = 0x409dc0",
+        "1": "?what@runtime_error@std@@UBEPBDXZ = 0x409db0"
+      }
+    },
+    "??_7length_error@std@@6B@": {
+      "rtti": ".?AVlength_error@std@@",
+      "address": "0x80b11c",
+      "subobject_offset": "0x0",
+      "slots": 2,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_Elength_error@std@@UAEPAXI@Z = 0x55c390",
+        "1": "?what@logic_error@std@@UBEPBDXZ = 0x409db0"
+      }
+    },
+    "??_7logic_error@std@@6B@": {
+      "rtti": ".?AVlogic_error@std@@",
+      "address": "0x80b110",
+      "subobject_offset": "0x0",
+      "slots": 2,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_Elogic_error@std@@UAEPAXI@Z = 0x55c390",
+        "1": "?what@logic_error@std@@UBEPBDXZ = 0x409db0"
+      }
+    },
+    "??_7runtime_error@std@@6B@": {
+      "rtti": ".?AVruntime_error@std@@",
+      "address": "0x80b7f8",
+      "subobject_offset": "0x0",
+      "slots": 2,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_Eruntime_error@std@@UAEPAXI@Z = 0x409dc0",
+        "1": "?what@runtime_error@std@@UBEPBDXZ = 0x409db0"
+      }
+    },
+    "??_7sp_counted_base@detail@boost@@6B@": {
+      "rtti": ".?AVsp_counted_base@detail@boost@@",
+      "address": "0x80b2f0",
+      "subobject_offset": "0x0",
+      "slots": 4,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_Esp_counted_base@detail@boost@@UAEPAXI@Z = 0x415000",
+        "1": "__purecall = 0x6a16be",
+        "2": "?destroy@sp_counted_base@detail@boost@@UAEXXZ = 0x405e10",
+        "3": "__purecall = 0x6a16be"
+      }
+    },
+    "??_7?$stream_buffer@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@6B@": {
+      "rtti": ".?AV?$stream_buffer@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@iostreams@boost@@",
+      "address": "0x840eac",
+      "subobject_offset": "0x0",
+      "slots": 23,
+      "bound": true,
+      "slot_bindings": {
+        "0": "??_E?$stream_buffer@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput = 0x5f9900",
+        "1": "?overflow@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator = 0x5f3580",
+        "2": "?pbackfail@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocato = 0x5f2950",
+        "3": "?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ = 0x7a627c",
+        "4": "?underflow@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocato = 0x5f9920",
+        "5": "?uflow@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ = 0x7a6282",
+        "6": "?xsgetn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPADH@Z = 0x7a6288",
+        "7": "?_Xsgetn_s@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPADIH@Z = 0x7a628e",
+        "8": "?xsputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPBDH@Z = 0x7a6294",
+        "9": "?seekoff@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@ = 0x5f9a80",
+        "10": "?seekpos@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@ = 0x5f9aa0",
+        "11": "?setbuf@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEPAV12@PADH@Z = 0x7a629a",
+        "12": "?sync@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3 = 0x5f99f0",
+        "13": "?imbue@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@ = 0x5f41c0",
+        "14": "?set_next@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator = 0x5f29d0",
+        "15": "?close@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@ = 0x5f3fd0",
+        "16": "?auto_close@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocat = 0x5f9520",
+        "17": "?set_auto_close@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$all = 0x5f2d00",
+        "18": "?strict_sync@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$alloca = 0x5f41f0",
+        "19": "?component_type@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$all = 0x5f9510",
+        "20": "?component_impl@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$all = 0x5f5ea0",
+        "21": "?init_get_area@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allo = 0x5f9750",
+        "22": "?init_put_area@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allo = 0x5f2a00"
+      }
+    }
+  },
+  "bounds_evidence": [
+    "Rows 005f8060 and 005f809d are one body: indirect_streambuf<basic_gzip_compressor>::strict_sync (80 B; the analysis cut it at the branch target 005f809d). Its catch funclet is the next row 005f80b0.",
+    "Rows 005f8350 and 005f83a0 are one body: indirect_streambuf<basic_gzip_decompressor>::close (99 B; cut at the branch target 005f83a0). Its catch funclet is the next row 005f83b3.",
+    "Owner bodies whose embedded catch block is a separate analysis row (compared piecewise at the compiler's __catch$ label, not truncated): sync<gzip_compressor> 005f8170 / 005f81c0, symmetric_filter read 005f8200 / 005f82d3, close<gzip_compressor> 005f82f0 / 005f8348, shared_count<chain_impl> ctors 005f84f0 / 005f855e and 005f8580 / 005f85ee, ~stream_buffer<WiniInetRequest_source> 005f9880 / 005f98d0, sync<WiniInetRequest_source> 005f99f0 / 005f9a57, and ~chain_impl<input> (owner below the range) with its catch 005f802f."
+  ],
+  "proposals": [
+    "util/Http.h (donor path; no native owner yet): the 2008 RBX::Http declared in native-headers/AppUnit5F8/HttpTransport.h: url +0x0 and additionalHeaders +0x1c (post 00569a40 reads +0x30 / +0x34 / +0x20), private thiscall transports (bool isPost, std::istream&, bool compress, const char* headers, std::string& response) at 005f8b60 (WinHttp) and 005f9c30 (WinINet), the failure helper (bool, const char*) 00569920 and static trustCheck 0056a2e0. Http::post / Http::get select the transport with a static int at 00946274 (0 WinINet, 1 WinHttp); a future native util/Http.h should carry these members (names are analog names).",
+    "FYI app-unit5f0 owner: its boost.iostreams block from 005f2030 is the WinHttp transport unit of util/Http.cpp; the Roblox rows WinHttpRequest_source::read 005f2c40 and the WinHttp handle destructor 005f20e0 are now counted by app-unit5f8-working.json (built from native-classes/AppUnit5F8WinHttp.cpp); please do not count them again.",
+    "v8kernel/Kernel2008.h (kernel-stages owner): the Kernel.cpp rows 005fa610..005fb70f stay unbuilt until Kernel2008.h declares the 2008 members (insert / remove Body, Point, Connector, newPoint, deletePoint, the energy sums, the leaf-body integrator) and a native KernelData (0x3c, five G3D arrays at +0x0 / +0xc / +0x18 / +0x24 / +0x30, from ~KernelData 005fa970) exists; see that receipt's proposals."
+  ],
+  "rejected": {
+    "one unit with both transports": "<winhttp.h> and <wininet.h> in one unit: C2371 (HTTP_VERSION_INFO, INTERNET_SCHEME, URL_COMPONENTS); the image has two copies of the handle destructor and of the request source, one per unit",
+    "request source read: two early `return -1`": "179/179 B (175/175 B for WinHttp) but separate epilogues; the original shares one failure block",
+    "request source read: `if (!query || numBytes == 0) return -1;`": "failure block placed after the success path",
+    "request source read: `if (query && numBytes != 0) { ... } return -1;`": "not exact (block order)",
+    "request source read: `numBytes <= 0` form": "not exact (block order)",
+    "request source read: `throw std::runtime_error(\"InternetReadFile failed\")`": "temporary string: different EH state layout; a named local string is exact",
+    "WinINet accept header as `static const char[]`": "2499/2515 B: strlen of the array is folded; the original runs the strlen loop on 00840ff8 (local const char* is exact)",
+    "G3D::Array<T*>::resize without /fp:fast": "264/256 B (x87 growth-factor code); /fp:fast is exact"
+  },
+  "flags": {
+    "winhttp": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5f8/NativeAppUnit5F8_winhttp.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5F8WinHttp.cpp"
+    ],
+    "wininet": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5f8/NativeAppUnit5F8_wininet.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5F8WinInet.cpp"
+    ],
+    "kernelarrays": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5f8/NativeAppUnit5F8_kernelarrays.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5F8KernelArrays.cpp"
+    ]
+  },
+  "sources": {
+    "winhttp": "933f0f0ede18c2b892d8457bf493c86e67eaa597074d3adbbf21e33e61acea16",
+    "wininet": "5b3fd3deb8c36951f035309ba0d1a295ae656fb38ec11976e97b11fa28beeca9",
+    "kernelarrays": "7c8cbd1f1ad1473edbdf68761b4062281df9120fe690e5d9203a7e190e71831d",
+    "header": "389e86f99829290f03369938615efaf125cba22194fab47cc79b207e73d3ef9c"
+  },
+  "headers_read_only": [
+    "donor util/ContentProvider.h (RBX::MD5Hasher, unchanged in 2008-06)"
+  ],
+  "new_headers": [
+    "native-headers/AppUnit5F8/HttpTransport.h (new path; shadows no donor header)"
+  ]
+}

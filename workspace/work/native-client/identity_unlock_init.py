@@ -21,7 +21,7 @@ from collections import defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from identity_unlock_common import ROOT, REG, insns, named, refs, unnamed, IMG, BASE  # noqa: E402
+from identity_unlock_common import ROOT, REG, insns, named, refs, unnamed, IMG, BASE, dump_json  # noqa: E402
 
 ATEXIT = 0x6a17af
 OUT = ROOT / 'work/native-client/identity-unlock-init.json'
@@ -52,7 +52,7 @@ def facts(va):
             f['atexit'] = refs(ii[j - 1])[0]
         if i.mnemonic == 'call' and r:
             n = named(r[0])
-            if n and n['name'].startswith('??0'):
+            if n and n['name'].startswith(('??0', '??$?0')):
                 f['ctors'].append(n['name'])
         if i.mnemonic == 'mov' and i.op_str.startswith('dword ptr [0x'):
             row = REG.get('%08x' % r[-1]) if r else None
@@ -72,6 +72,10 @@ def facts(va):
             row = REG.get('%08x' % r[0])
             if row and row['kind'] == 'string':
                 f['strings'].append(cstr(r[0]))
+            elif not row and 0x800000 <= r[0] < 0x900000:  # unregistered literal in .rdata
+                txt = cstr(r[0])
+                if 2 <= len(txt) <= 64 and txt.isprintable():
+                    f['strings'].append(txt)
     return f
 
 
@@ -102,6 +106,8 @@ def scan_decls():
     for pat, tier in (('rebuild/2008-06/native-classes/*.cpp', 'native-classes'),
                       ('tools/rbxgs/Client/**/*.cpp', 'rbxgs')):
         for path in glob.glob(str(ROOT / pat), recursive=True):
+            if Path(path).name.startswith('roc_'):  # generated scratch, not authentic source
+                continue
             ns, depth, stack = [], 0, []
             try:
                 lines = open(path, errors='ignore').read().splitlines()
@@ -196,7 +202,9 @@ def main():
             owner = re.match(r'\?\?0\?\$\w+@V(\w+)@', f['ctors'][0])
             for lit in f['strings']:
                 for tier in ('native-classes', 'rbxgs'):
-                    same = [d for d in by_lit.get(lit, []) if d['tier'] == tier and d['tmpl'] in tms]
+                    # every literal of the declaration must be pushed by the initializer
+                    same = [d for d in by_lit.get(lit, []) if d['tier'] == tier and d['tmpl'] in tms
+                            and set(d['lits']) <= set(f['strings'])]
                     hit = [d for d in same if owner and re.match(r'\s*' + owner.group(1) + r'\b', d['args'])]
                     # the constructor's owner can be an ICF alias; a literal unique within the
                     # descriptor template is enough on its own
@@ -241,7 +249,7 @@ def main():
         t = '%08x' % f['atexit'] if f['atexit'] is not None else None
         if t in glob_of and glob_of[t][0] == 'F' and pushers[f['atexit']] == 1:
             emit(a, 'E', glob_of[t][1], [glob_of[t][2], {'kind': 'registers-atexit', 'destructor': t}])
-    json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+    dump_json(out, OUT)
     from collections import Counter
     print(len(out), Counter(r['evidence'][0]['kind'] for r in out.values()))
 

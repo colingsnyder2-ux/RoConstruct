@@ -32,6 +32,11 @@ typedef int (RBX::Network::Server::*ServerIntGetter)() const;
 template RBX::Reflection::PropDescriptor<RBX::Network::Server, int>::PropDescriptor(
 	const char*, const char*, ServerIntGetter, int, RBX::Reflection::PropertyDescriptor::Functionality);
 
+// 007f1cf0: the dynamic initializer of the "Port" descriptor (object 00970f78): PropDescriptor<Server, int>
+// constructor 004a3f80 with "Port" 00823c0c, category "Data" 00822490, the getter 004a1560 (Server::getPort, member
+// pointer adjustor 0), no setter and flags 5; atexit of its destructor 007fbbb0.
+static RBX::Reflection::PropDescriptor<RBX::Network::Server, int> prop_Port("Port", "Data", &RBX::Network::Server::getPort, NULL, RBX::Reflection::PropertyDescriptor::STANDARD);
+
 namespace RBX
 {
 	namespace Network

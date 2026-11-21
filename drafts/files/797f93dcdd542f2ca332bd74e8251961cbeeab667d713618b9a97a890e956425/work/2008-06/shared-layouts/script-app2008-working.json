@@ -1,0 +1,239 @@
+{
+  "class": "First RBX application units after the Lua 5.1.1 library (IEquipable, EnumDesc<SoundType>), 2008-06, inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "equip": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/script-app2008/NativeScriptApp2008_equip.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ScriptApp2008Equipable.cpp"
+    ],
+    "sound": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/script-app2008/NativeScriptApp2008_sound.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ScriptApp2008SoundType.cpp"
+    ]
+  },
+  "layout_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/script-app2008/NativeScriptApp2008Layout.obj",
+    "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/script-app2008/NativeScriptApp2008Layout.cpp"
+  ],
+  "sources": {
+    "rebuild/2008-06/native-classes/ScriptApp2008Equipable.cpp": "9f0d9eff27a523b66be19496eff2fb006352efc7a1e7527dac996005dd5b613a",
+    "rebuild/2008-06/native-classes/ScriptApp2008SoundType.cpp": "b32d5cf5bfa8fcdbeaf5a385802b37645d5c504fcdb78c70d32239d8bf53f6af",
+    "rebuild/2008-06/tests/record_native_script_app2008.py": "653a2d2a59b7fc90a60f928b1a4f3099b7deaaf4cb0894f070b60022048173d6"
+  },
+  "objects": {
+    "equip": "1995b185ff033fbbd336d4b24671493ac57946bc7e6cb68c0439724e54b27c53",
+    "sound": "5d61a80bb2d50a74f9be0c02afa9a0b9e4d84b426fd1afc467b4b4dcc0e56124"
+  },
+  "layout": {
+    "sizeof(IEquipable)": "0x10",
+    "IEquipable::weld": "0x4",
+    "IEquipable::workspace": "0xc"
+  },
+  "range_map": {
+    "lua-bridge 0061a420..006217e2": "RBX::Lua object bridge (lua-bridge2008-working.json); last row YieldingThreads::queueWaiter(lua_State*) 006217d0.",
+    "lua-5.1.1 006217f0..00628f73": "Lua 5.1.1 library compiled as C++ (library, never recovered): ldo.c luaD_seterrorobj 006217f0 .. luaD_throw 00622050 (throws a C++ exception: std::exception ctor import, _CxxThrowException; its class pieces 00621870..00621900 use the std::exception dtor and the mfc90 operator delete), lobject, ldebug (getobjname 006234b0, luaG_runerror 006237d0), lstate (f_luaopen 00623bd0, luaE_freethread 00623d90), liolib (fileerror 00624080 .. luaopen_io 00624f80), ltablib (foreach 00625300 .. sort 00625ab0), lmathlib (00625b60 .. 00626280 \"math\"/\"huge\"), lstrlib (str_sub 00626310 .. 00627e00 \"string\"), lbaselib (luaB_print 00627e30 .. base_open 00628e50 \"Lua 5.1\", luaopen_base 00628f50, ends 00628f73). 224 listed functions (28902 B); their call targets outside the range are only Lua internals (lmem/lstring/lfunc/lgc/lvm/ltable/ltm/llex/lzio at 0065b6b0..006640c0), lapi/lauxlib (00610bf0..00612e00) and the CRT.",
+    "iequipable 00628f80..00629113": "RBX::IEquipable: ~IEquipable 00628f80 (ICF-shared shared_ptr-at-+4 release; called from ~Accoutrement 005b0ec1 and ~Tool 005fe5d7 among others), IEquipable() 00628fc0 (from Accoutrement() 005b2282 and Tool() 00600284), buildWeld 00628fd0 (from Accoutrement 005b190b and Tool 005fe7ab; ret 0x14). No strings or data of its own. Built here.",
+    "enumdesc-soundtype 00629120..0062933d": "Reflection::EnumDesc<SoundType>::EnumDesc (542 B; the only caller is the function-local singleton 005bb2c0 in the Sound unit; strings 00845800..00845858 \"Victory\" .. \"SoundType\"). Built here.",
+    "click-detector 00629340..": "ClickDetector unit (click-detector-working.json)."
+  },
+  "not_here": {
+    "ScriptContext / script services": "The ScriptContext unit (SingletonBridge<T>::push instances 005a9a90..005a9bd0, gc 005a86c0) lies before the bridge (ScriptContext::gc 005a86c0 .. SingletonBridge::push 005a9bd0), under native-headers/script/ScriptContext.h (another owner); nothing of it follows the Lua library, so it is not rebuilt here."
+  },
+  "external_proofs": {
+    "004b2620": "004b2620 pushes the allocation size 0x154, calls 005e4810 and shared_ptr<Weld>(Weld*) 004b2570; 005e4810 stores the vtable 0083f24c at +0 (RTTI .?AVWeld@RBX@@, offset 0): Creatable<Instance>::create<Weld>"
+  },
+  "rows": {
+    "equip": [
+      {
+        "address": "00628f80",
+        "symbol": "??1IEquipable@RBX@@MAE@XZ",
+        "size": 53,
+        "target_size": 53,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00628fc0",
+        "symbol": "??0IEquipable@RBX@@IAE@XZ",
+        "size": 14,
+        "target_size": 14,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00628fd0",
+        "symbol": "?buildWeld@IEquipable@RBX@@IAEXPAVPartInstance@2@0ABVCoordinateFrame@G3D@@1ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "size": 323,
+        "target_size": 323,
+        "exact": true,
+        "verified_targets": {
+          "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x598cb0 (external (evidence name))",
+          "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z": "0x476700 (external (evidence name))",
+          "?inverse@CoordinateFrame@G3D@@QBE?AV12@XZ": "0x478330 (external (evidence name))",
+          "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z": "0x59d8a0 (external (evidence name))",
+          "??$create@VWeld@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VWeld@RBX@@@boost@@XZ": "0x4b2620 (external)",
+          "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (external (evidence name))",
+          "?setPart0@AutoJoint@RBX@@QAEXPAVPartInstance@2@@Z": "0x5e4450 (external)",
+          "?setPart1@AutoJoint@RBX@@QAEXPAVPartInstance@2@@Z": "0x5e4470 (external)",
+          "?setC0@AutoJoint@RBX@@QAEXABVCoordinateFrame@G3D@@@Z": "0x5e4490 (external)",
+          "?setC1@AutoJoint@RBX@@QAEXABVCoordinateFrame@G3D@@@Z": "0x5e44c0 (external)",
+          "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$?buildWeld@IEquipable@RBX@@IAEXPAVPartInstance@2@0ABVCoordinateFrame@G3D@@1ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        ]
+      }
+    ],
+    "sound": [
+      {
+        "address": "00629120",
+        "symbol": "??0?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAE@XZ",
+        "size": 542,
+        "target_size": 542,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AW4SoundType@RBX@@@8": "0x95b3a4 (type descriptor .?AW4SoundType@RBX@@)",
+          "??_C@_09PGAPHABI@SoundType?$AA@": "0x845858 (string 'SoundType')",
+          "??0EnumDescriptor@Reflection@RBX@@IAE@PBDABVtype_info@@@Z": "0x56c590 (external (evidence name))",
+          "??_7?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@6B@": "0x837a40 (vtable RTTI .?AV?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@ offset 0x0)",
+          "??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4SoundType@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4SoundType@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@W4SoundType@2@@std@@@1@@Z": "0x446110 (support body exact at the bound address)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_C@_07FFHFEOKH@NoSound?$AA@": "0x845850 (string 'NoSound')",
+          "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z": "0x64d530 (external)",
+          "??_C@_05DJBELGGE@Boing?$AA@": "0x845848 (string 'Boing')",
+          "??_C@_04GPGPLFMI@Bomb?$AA@": "0x845840 (string 'Bomb')",
+          "??_C@_05EMFLFCNO@Break?$AA@": "0x845838 (string 'Break')",
+          "??_C@_05BBIFMDEO@Click?$AA@": "0x845830 (string 'Click')",
+          "??_C@_05DEOOJMJC@Clock?$AA@": "0x845828 (string 'Clock')",
+          "??_C@_09LNOFBOKE@Slingshot?$AA@": "0x83aecc (string 'Slingshot')",
+          "??_C@_04NHEGBFAI@Page?$AA@": "0x845820 (string 'Page')",
+          "??_C@_04CPBFGEOK@Ping?$AA@": "0x824f34 (string 'Ping')",
+          "??_C@_04PLLNOFCI@Snap?$AA@": "0x83f1ac (string 'Snap')",
+          "??_C@_05EOEDJBJE@Splat?$AA@": "0x845818 (string 'Splat')",
+          "??_C@_04MDBAPKAP@Step?$AA@": "0x825664 (string 'Step')",
+          "??_C@_06FKEIEIAJ@StepOn?$AA@": "0x845810 (string 'StepOn')",
+          "??_C@_06OFDNNOLN@Swoosh?$AA@": "0x845808 (string 'Swoosh')",
+          "??_C@_07FPEFHBMO@Victory?$AA@": "0x845800 (string 'Victory')"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAE@XZ"
+        ]
+      }
+    ]
+  },
+  "support_rows": {
+    "??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4SoundType@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4SoundType@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@W4SoundType@2@@std@@@1@@Z": "00446110"
+  },
+  "rejected": {},
+  "exact_function_rows": [
+    "00628f80",
+    "00628fc0",
+    "00628fd0",
+    "00629120"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

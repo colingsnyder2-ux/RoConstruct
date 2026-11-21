@@ -1,0 +1,27 @@
+[
+ {
+  "addr": "005a0160",
+  "file": "rebuild/2008-06/native-classes/Inferred_005a0160.cpp",
+  "class_or_free": "RBX::MovementKeys"
+ },
+ {
+  "addr": "0045b0d0",
+  "file": "rebuild/2008-06/native-classes/Inferred_0045b0d0.cpp",
+  "class_or_free": "free"
+ },
+ {
+  "addr": "00408870",
+  "file": "rebuild/2008-06/native-classes/Inferred_00408870.cpp",
+  "class_or_free": "free"
+ },
+ {
+  "addr": "0046a100",
+  "file": "rebuild/2008-06/native-classes/Inferred_0046a100.cpp",
+  "class_or_free": "free"
+ },
+ {
+  "addr": "00643eb0",
+  "file": "rebuild/2008-06/native-classes/Inferred_00643eb0.cpp",
+  "class_or_free": "RBX::HUMAN::HumanoidState"
+ }
+]

@@ -17,6 +17,7 @@ current-header objects; the RTTI base lists and the allocation size new(0x28) ar
 Writes work/2008-06/shared-layouts/misc-leaves-working.json.
 """
 import json
+import os
 import re
 import struct
 import sys
@@ -40,6 +41,17 @@ dependencies = {}
 started_ns = time.time_ns()
 
 
+def _icase(path):
+    """Resolve a lowercased /showIncludes path (MSVC under wine) on a case-sensitive host."""
+    cur = Path(path.anchor)
+    for part in path.parts[1:]:
+        hit = cur / part
+        if not hit.exists() and cur.is_dir():
+            hit = next((c for c in cur.iterdir() if c.name.lower() == part.lower()), hit)
+        cur = hit
+    return cur
+
+
 def build(name, src):
     obj = OUT / (name + '.obj')
     # Reuse the existing metadata provider; never introduce a second MergeBinder
@@ -51,7 +63,12 @@ def build(name, src):
     for line in log.splitlines():
         hit = re.match(r'\s*Note: including file:\s*(.*?)\s*$', line)
         if hit:
-            path = Path(hit[1]).resolve()
+            text = hit[1]
+            if os.name != 'nt':  # wine reports z:\... host paths and backslash separators
+                text = re.sub(r'^[A-Za-z]:(?=\\)', '', text).replace('\\', '/')
+            path = Path(text).resolve()
+            if os.name != 'nt' and not path.exists():
+                path = _icase(path)
             dependencies[str(path)] = nb.sha(path)
     return obj, flags
 

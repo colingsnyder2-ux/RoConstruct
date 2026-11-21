@@ -55,6 +55,19 @@ namespace RBX
 		return contacts.edges.size() > 0 ? static_cast<Contact*>(contacts.edges[0]) : NULL;
 	}
 
+	// 005e7d30: search the smaller contact list's parallel primitive/edge arrays (donor Primitive::getContact).
+	Contact* Primitive::getContact(Primitive* p0, Primitive* p1)
+	{
+		Primitive* least = p0->contacts.edges.size() < p1->contacts.edges.size() ? p0 : p1;
+		Primitive* other = least == p0 ? p1 : p0;
+		for (int i = 0; i < least->contacts.edges.size(); ++i)
+		{
+			if (least->contacts.otherPrimitives[i] == other)
+				return static_cast<Contact*>(least->contacts.edges[i]);
+		}
+		return NULL;
+	}
+
 	// 005e7f10: vtable slot 3, geometry->getRadius() (Geometry slot 4) as a tail jump.
 	float Primitive::getRadius() const
 	{

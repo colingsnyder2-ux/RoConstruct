@@ -1,0 +1,429 @@
+{
+  "scope": "Inactive 2008-06 native recovery of the application range 005ec000..005f0000: unit map of every row, util/NormalId.cpp against the donor util/NormalId.h plus a new AppUnit5EC header, and the Surfaces constructor / isStandardPart against the native v8datamodel/Surfaces.h. No runtime, link or class-swap claim.",
+  "exact_function_rows": [
+    "005ec180",
+    "005ec1a0",
+    "005ec1c0",
+    "005ec1e0",
+    "005ec200",
+    "005ec220",
+    "005ec240",
+    "005ec290",
+    "005ec310",
+    "005ec330",
+    "005ec450",
+    "005ec570",
+    "005ec6e0",
+    "005ec800",
+    "005ec9d0",
+    "005ecbb0",
+    "005ecc50"
+  ],
+  "exact_function_row_count": 17,
+  "range_rows": 137,
+  "rows": {
+    "normalid": [
+      {
+        "address": "005ec180",
+        "symbol": "?normalIdOpposite@RBX@@YA?AW4NormalId@1@W421@@Z",
+        "size": 18,
+        "target_size": 18,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005ec1a0",
+        "symbol": "??$uvwToObject@$0A@@RBX@@YA?AVVector3@G3D@@ABV12@@Z",
+        "size": 27,
+        "target_size": 27,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005ec1c0",
+        "symbol": "??$uvwToObject@$00@RBX@@YA?AVVector3@G3D@@ABV12@@Z",
+        "size": 27,
+        "target_size": 27,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005ec1e0",
+        "symbol": "??$uvwToObject@$02@RBX@@YA?AVVector3@G3D@@ABV12@@Z",
+        "size": 27,
+        "target_size": 27,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005ec200",
+        "symbol": "??$uvwToObject@$03@RBX@@YA?AVVector3@G3D@@ABV12@@Z",
+        "size": 27,
+        "target_size": 27,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005ec220",
+        "symbol": "??$uvwToObject@$04@RBX@@YA?AVVector3@G3D@@ABV12@@Z",
+        "size": 29,
+        "target_size": 29,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005ec240",
+        "symbol": "?normalIdToVector3Internal@RBX@@YA?AVVector3@G3D@@W4NormalId@1@@Z",
+        "size": 68,
+        "target_size": 68,
+        "exact": true,
+        "verified_targets": {
+          "__real@bf800000": "0x81c3b8 (constant bf800000)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ec290",
+        "symbol": "?Vector3ToNormalId@RBX@@YA?AW4NormalId@1@ABVVector3@G3D@@@Z",
+        "size": 118,
+        "target_size": 118,
+        "exact": true,
+        "verified_targets": {
+          "__real@bf800000": "0x81c3b8 (constant bf800000)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ec310",
+        "symbol": "?Matrix3ToNormalId@RBX@@YA?AW4NormalId@1@ABVMatrix3@G3D@@@Z",
+        "size": 29,
+        "target_size": 29,
+        "exact": true,
+        "verified_targets": {
+          "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240 (external (call-site identification))",
+          "?Vector3ToNormalId@RBX@@YA?AW4NormalId@1@ABVVector3@G3D@@@Z": "0x5ec290 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ec330",
+        "symbol": "?uvwToObject@RBX@@YA?AVVector3@G3D@@ABV23@W4NormalId@1@@Z",
+        "size": 280,
+        "target_size": 280,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??unitX@Vector3@G3D@@SAABV12@XZ@51": "0x973800 (static data (one address per symbol))",
+          "?v@?1??unitX@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x9737f4 (static data (one address per symbol))"
+        },
+        "local_eh": [
+          "$LN1",
+          "$LN2",
+          "$LN3",
+          "$LN4",
+          "$LN43",
+          "$LN5",
+          "$LN6"
+        ]
+      },
+      {
+        "address": "005ec450",
+        "symbol": "?objectToUvw@RBX@@YA?AVVector3@G3D@@ABV23@W4NormalId@1@@Z",
+        "size": 280,
+        "target_size": 280,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??unitX@Vector3@G3D@@SAABV12@XZ@51": "0x973800 (static data (one address per symbol))",
+          "?v@?1??unitX@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x9737f4 (static data (one address per symbol))"
+        },
+        "local_eh": [
+          "$LN1",
+          "$LN2",
+          "$LN3",
+          "$LN31",
+          "$LN4",
+          "$LN5",
+          "$LN6"
+        ]
+      },
+      {
+        "address": "005ec570",
+        "symbol": "?normalIdToVector3@RBX@@YAABVVector3@G3D@@W4NormalId@1@@Z",
+        "size": 364,
+        "target_size": 364,
+        "exact": true,
+        "verified_targets": {
+          "?$S1@?4??normalIdToVector3@RBX@@YAABVVector3@G3D@@W4NormalId@2@@Z@4IA": "0x97ae48 (static data (one address per symbol))",
+          "?x@?4??normalIdToVector3@RBX@@YAABVVector3@G3D@@W4NormalId@2@@Z@4V34@B": "0x97ae3c (static data (one address per symbol))",
+          "?normalIdToVector3Internal@RBX@@YA?AVVector3@G3D@@W4NormalId@1@@Z": "0x5ec240 (own row)",
+          "?y@?5??normalIdToVector3@RBX@@YAABVVector3@G3D@@W4NormalId@2@@Z@4V34@B": "0x97ae30 (static data (one address per symbol))",
+          "?z@?6??normalIdToVector3@RBX@@YAABVVector3@G3D@@W4NormalId@2@@Z@4V34@B": "0x97ae24 (static data (one address per symbol))",
+          "?xn@?7??normalIdToVector3@RBX@@YAABVVector3@G3D@@W4NormalId@2@@Z@4V34@B": "0x97ae18 (static data (one address per symbol))",
+          "__real@bf800000": "0x81c3b8 (constant bf800000)",
+          "?yn@?8??normalIdToVector3@RBX@@YAABVVector3@G3D@@W4NormalId@2@@Z@4V34@B": "0x97ae0c (static data (one address per symbol))",
+          "?zn@?9??normalIdToVector3@RBX@@YAABVVector3@G3D@@W4NormalId@2@@Z@4V34@B": "0x97ae00 (static data (one address per symbol))",
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (static data (one address per symbol))",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (static data (one address per symbol))"
+        },
+        "local_eh": [
+          "$LN10",
+          "$LN12",
+          "$LN2",
+          "$LN4",
+          "$LN58",
+          "$LN6",
+          "$LN8"
+        ]
+      },
+      {
+        "address": "005ec6e0",
+        "symbol": "?normalIdToMatrix3Internal@RBX@@YA?AVMatrix3@G3D@@W4NormalId@1@@Z",
+        "size": 273,
+        "target_size": 273,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??unitX@Vector3@G3D@@SAABV12@XZ@51": "0x973800 (static data (one address per symbol))",
+          "?v@?1??unitX@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x9737f4 (static data (one address per symbol))",
+          "?uvwToObject@RBX@@YA?AVVector3@G3D@@ABV23@W4NormalId@1@@Z": "0x5ec330 (own row)",
+          "??_B?1??unitY@Vector3@G3D@@SAABV12@XZ@51": "0x9728a4 (static data (one address per symbol))",
+          "?v@?1??unitY@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x972898 (static data (one address per symbol))",
+          "??_B?1??unitZ@Vector3@G3D@@SAABV12@XZ@51": "0x96efa8 (static data (one address per symbol))",
+          "?v@?1??unitZ@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96ef9c (static data (one address per symbol))",
+          "??0Matrix3@G3D@@QAE@MMMMMMMMM@Z": "0x513b70 (external (call-site identification))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ec800",
+        "symbol": "?normalIdToMatrix3@RBX@@YAABVMatrix3@G3D@@W4NormalId@1@@Z",
+        "size": 452,
+        "target_size": 452,
+        "exact": true,
+        "verified_targets": {
+          "?$S2@?4??normalIdToMatrix3@RBX@@YAABVMatrix3@G3D@@W4NormalId@2@@Z@4IA": "0x97af24 (static data (one address per symbol))",
+          "?x@?4??normalIdToMatrix3@RBX@@YAABVMatrix3@G3D@@W4NormalId@2@@Z@4V34@B": "0x97af00 (static data (one address per symbol))",
+          "?normalIdToMatrix3Internal@RBX@@YA?AVMatrix3@G3D@@W4NormalId@1@@Z": "0x5ec6e0 (own row)",
+          "?y@?5??normalIdToMatrix3@RBX@@YAABVMatrix3@G3D@@W4NormalId@2@@Z@4V34@B": "0x97aedc (static data (one address per symbol))",
+          "?z@?6??normalIdToMatrix3@RBX@@YAABVMatrix3@G3D@@W4NormalId@2@@Z@4V34@B": "0x97aeb8 (static data (one address per symbol))",
+          "?xn@?7??normalIdToMatrix3@RBX@@YAABVMatrix3@G3D@@W4NormalId@2@@Z@4V34@B": "0x97ae94 (static data (one address per symbol))",
+          "?yn@?8??normalIdToMatrix3@RBX@@YAABVMatrix3@G3D@@W4NormalId@2@@Z@4V34@B": "0x97ae70 (static data (one address per symbol))",
+          "?zn@?9??normalIdToMatrix3@RBX@@YAABVMatrix3@G3D@@W4NormalId@2@@Z@4V34@B": "0x97ae4c (static data (one address per symbol))",
+          "?identity@Matrix3@G3D@@SAABV12@XZ": "0x513e20 (external (call-site identification))"
+        },
+        "local_eh": [
+          "$LN10",
+          "$LN12",
+          "$LN2",
+          "$LN24",
+          "$LN4",
+          "$LN6",
+          "$LN8",
+          "__ehhandler$?normalIdToMatrix3@RBX@@YAABVMatrix3@G3D@@W4NormalId@1@@Z"
+        ]
+      },
+      {
+        "address": "005ec9d0",
+        "symbol": "?mapToUvw_Legacy@RBX@@YA?AVVector3@G3D@@ABV23@W4NormalId@1@@Z",
+        "size": 26,
+        "target_size": 26,
+        "exact": true,
+        "verified_targets": {
+          "?uvwToObject@RBX@@YA?AVVector3@G3D@@ABV23@W4NormalId@1@@Z": "0x5ec330 (own row)"
+        },
+        "local_eh": []
+      }
+    ],
+    "surfaces": [
+      {
+        "address": "005ecbb0",
+        "symbol": "??0Surfaces@RBX@@QAE@PAVPartInstance@1@@Z",
+        "size": 78,
+        "target_size": 78,
+        "exact": true,
+        "verified_targets": {
+          "??0Surface@RBX@@QAE@PAVPartInstance@1@W4NormalId@1@@Z": "0x5f1270 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ecc50",
+        "symbol": "?isStandardPart@Surfaces@RBX@@QBE?B_NXZ",
+        "size": 72,
+        "target_size": 72,
+        "exact": true,
+        "verified_targets": {
+          "?getSurfaceType@Surface@RBX@@QBE?AW4SurfaceType@2@XZ": "0x5f1290 (external (evidence name))"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "unit_map": [
+    {
+      "unit": "Sky.cpp tail ..005ec17f",
+      "rows": 1,
+      "bytes": 5,
+      "counted_elsewhere": [
+        "005ec170 counted by stats-service-working.json"
+      ],
+      "counted_here": 0,
+      "library": false,
+      "evidence": "The range starts inside v8datamodel/Sky.cpp (effects owner, native v8datamodel/Sky.h; the unit starts at 005eaef0, see app-unit5e8-2008). Its only row in this range is the 5-byte ICF-folded `mov eax,[esp+4]; ret` body at 005ec170, counted by stats-service-working.json. Not built here."
+    },
+    {
+      "unit": "util/NormalId.cpp 005ec180..005ec9ef",
+      "rows": 15,
+      "bytes": 2045,
+      "counted_elsewhere": [],
+      "counted_here": 15,
+      "library": false,
+      "evidence": "util/NormalId.cpp: normalIdOpposite 005ec180 ((id + 3) % 6), the uvwToObject<id> specializations NORM_X 005ec1a0, NORM_Y 005ec1c0, NORM_X_NEG 005ec1e0, NORM_Y_NEG 005ec200, NORM_Z_NEG 005ec220 (the NORM_Z copy is ICF-folded at 006784d0, outside the range; ViewNew binds all six as externals), normalIdToVector3Internal 005ec240 (zero, then +-1.0f at component id % 3; -1.0f constant 0081c3b8), Vector3ToNormalId 005ec290, Matrix3ToNormalId 005ec310 (G3D Matrix3::getColumn(2) 00513240), uvwToObject(v, id) 005ec330 (six-way jump table 005ec430, default Vector3::unitX() static 009737f4 / guard 00973800), objectToUvw 005ec450, normalIdToVector3 005ec570 (six function statics 0097ae00..0097ae3c, guard 0097ae48, default Vector3::zero() 0096f044), normalIdToMatrix3Internal 005ec6e0 (unitX/unitY/unitZ statics, Matrix3(9 floats) 00513b70), normalIdToMatrix3 005ec800 (six Matrix3 statics 0097ae4c..0097af00, guard 0097af24, EH frame, default Matrix3::identity() 00513e20) and mapToUvw_Legacy 005ec9d0. The body shapes follow the later openrbx-client NormalId.cpp; declarations are the donor util/NormalId.h (read-only) plus native-headers/AppUnit5EC/NormalIdVector.h for normalIdToVector3Internal. Built here: all 15 rows counted."
+    },
+    {
+      "unit": "v8datamodel/Surfaces.cpp 005ec9f0..005ef3ff",
+      "rows": 103,
+      "bytes": 9885,
+      "counted_elsewhere": [
+        "005ecc00 counted by surfaces-lookup-trial.json"
+      ],
+      "counted_here": 2,
+      "library": false,
+      "evidence": "v8datamodel/Surfaces.cpp (native v8datamodel/Surfaces.h, read-only). The app-unit5e8-2008 map ended NormalId.cpp at 005ecbaf; the rows 005ec9f0..005ecbaf belong here: Surfaces::isSurfaceDescriptor 005ec9f0 (compares against the six SurfaceType descriptor statics 0097b348 / 0097b1f0 / 0097b260 / 0097b3f4 / 0097b1d0 / 0097b128), getSurfaceType 005eca30, getSurfaceInput 005eca90, getParamA 005ecaf0, getParamB 005ecb50 (six-way switches returning the per-face descriptor statics; app-unit5f0-2008 binds the four as externals of the Surface setters). Surfaces(PartInstance*) 005ecbb0 (layout: Top +0 NORM_Y, Bottom +8, Left +0x10, Right +0x18, Front +0x20, Back +0x28; Surface ctor 005f1270), operator[] 005ecc00 (counted by surfaces-lookup-trial.json), isStandardPart 005ecc50 (Bottom INLET, the other four sides except Top NO_SURFACE), the ICF-folded std::map iterator operator== 005ecca0 (Roblox-instantiated STL shared with other units; not built). Then the surface reflection instantiations: the EnumDesc call_once holders for SurfaceType and Controller::InputType (005eccd0 / 005ecce0 / 005eccf0 / 005ed110 / 005ed140 / 005ed580 / 005ed5a0, EnumDesc getters 005ed5c0 / 005ed630, call_once thunks 005ed620 / 005ed690, singleton 005ed6a0, convertToValue 005ed170 / 005ed300 / 005ed3f0 / 005ed770 / 005ed800), the SurfaceGetSet<face> get/set pairs 005ecd60..005ed0e0 (PartInstance::getSurfaces 00598de0), SurfaceEnumPropDescriptor<face, SurfaceType / InputType> members 005ed830..005ef3d0 (incl. the \"Unable to cast %s to %s\" setStringValue bodies 005eef20 / 005ef020) and SurfaceDescriptor<face> 005eecc0..005ef180 (\"SurfaceDescriptor::set/get not implemented\" 005eed50 / 005eee80). Built here: Surfaces(PartInstance*) and isStandardPart (2 counted rows). Not built: isSurfaceDescriptor and the four descriptor getters need the 2008 per-face descriptor statics (SurfaceEnumPropDescriptor / SurfacePropDescriptor templates on the 2008 reflection core), and the descriptor templates need the reflection-core EnumDesc call_once proposal (see proposals)."
+    },
+    {
+      "unit": "v8datamodel/FaceInstance.cpp 005ef400..005ef79f",
+      "rows": 16,
+      "bytes": 823,
+      "counted_elsewhere": [
+        "005ef530 counted by face-instance-lifetime.json",
+        "005ef5f0 counted by app-unit5e8-2008-working.json",
+        "005ef600 counted by app-unit5e8-2008-working.json",
+        "005ef610 counted by app-unit5e8-2008-working.json",
+        "005ef620 counted by app-unit5e8-2008-working.json",
+        "005ef630 counted by app-unit5e8-2008-working.json",
+        "005ef640 counted by app-unit5e8-2008-working.json",
+        "005ef650 counted by app-unit5e8-2008-working.json",
+        "005ef660 counted by app-unit5e8-2008-working.json",
+        "005ef670 counted by app-unit5e8-2008-working.json",
+        "005ef770 counted by app-unit5e8-2008-working.json"
+      ],
+      "counted_here": 0,
+      "library": false,
+      "evidence": "v8datamodel/FaceInstance.cpp (native v8datamodel/FaceInstance.h, read-only): render3dSelect 005ef400 (IRenderable override; this is the IRenderable base at FaceInstance +0x130: dynamic_cast<PartInstance*> of the parent read at this-0x2c via __RTDynamicCast, then 005149b0 / PartInstance 0059aa90 / Adorn 00677630 with the face at this+0x10, i.e. FaceInstance +0x140), the boost::function functor allocation 005ef470, EnumDesc<NormalId> getter 005ef4c0 and call_once thunk 005ef520, FaceInstance() 005ef530, the ??_E thunks 005ef5f0..005ef660, ??_G 005ef670, EnumPropDescriptor<FaceInstance, NormalId>() 005ef690 and setFace 005ef770. Counted elsewhere (see counted_elsewhere). Not built here: render3dSelect is not declared by the native FaceInstance.h (proposal), and 005ef470 / 005ef4c0 / 005ef520 / 005ef690 need the EnumDesc call_once proposal."
+    },
+    {
+      "unit": "unattributed G3D TextInput user 005ef7a0..",
+      "rows": 2,
+      "bytes": 6844,
+      "counted_elsewhere": [],
+      "counted_here": 0,
+      "library": false,
+      "evidence": "005ef7a0 compares two files with _stat64i32 and _unlink()s the stale one; 005ef840 (6698 B, ends at 005f126a) is its only caller and is called from 004eb56c / 004eb71e; it drives G3D TextInput token reads. No RTTI, string or evidence name ties it to an RBX class (as mapped by app-unit5e8-2008). Not recovered."
+    }
+  ],
+  "proposals": [
+    "Owner of native-headers/reflection/enumconverter.h (reflection core; not edited): repeats the app-unit5f0-2008 proposal. The 2008 EnumDesc<Enum>::singleton() is boost::call_once(&<thunk>, <static once_flag>) followed by an out-of-line function-static instance getter: SurfaceType call_once thunk 005ed620 / getter 005ed5c0, Controller::InputType 005ed690 / 005ed630, NormalId 005ef520 / 005ef4c0; convertToValue(const char*) is out of line (005ed800). With it the SurfaceEnumPropDescriptor / SurfaceDescriptor instantiations 005eccd0..005ef3d0 and the FaceInstance prop_Face descriptor rows become candidates.",
+    "Owner of native-headers/v8datamodel/FaceInstance.h: declare the IRenderable override `virtual void render3dSelect(Adorn* adorn, SelectState selectState);` (005ef400: ret 8, two stack arguments; this is the IRenderable base at FaceInstance +0x130, the parent read at this-0x2c, the face at this+0x10, i.e. FaceInstance +0x140), so that row can be built. The exact IRenderable signature must come from the native util/IRenderable.h owner.",
+    "Owner of native-headers/v8datamodel/Surfaces.h (FYI): its layout and member order are proven by Surfaces() 005ecbb0 (Top +0 NORM_Y, Bottom +8 NORM_Y_NEG, Left +0x10 NORM_X_NEG, Right +0x18 NORM_X, Front +0x20 NORM_Z_NEG, Back +0x28 NORM_Z); Surfaces(PartInstance*) and isStandardPart are now counted by app-unit5ec-working.json. isSurfaceDescriptor / getSurfaceType / getSurfaceInput / getParamA / getParamB need the 2008 per-face descriptor statics (24 objects 0097b128..0097b468), which need the descriptor templates.",
+    "BOUNDS / map correction (no bounds.json change): app-unit5e8-2008 lists 005ec9f0..005ecbaf under NormalId.cpp; by their bodies (descriptor statics, Surfaces analog names) they are Surfaces.cpp rows."
+  ],
+  "rejected": {},
+  "flags": {
+    "normalid": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5ec/NativeAppUnit5EC_normalid.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5ECNormalId.cpp"
+    ],
+    "surfaces": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/part-embedded",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5ec/NativeAppUnit5EC_surfaces.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5ECSurfaces.cpp"
+    ]
+  },
+  "sources": {
+    "normalid": "4181043b08889438af9ba4a711f767db476527af860df2aa4d7d263944754c5d",
+    "surfaces": "fef48c4de04f19f0ce287fff911dcd91ab6ac6923adb20b096fb8d96f8e6b7a6",
+    "normalid_header": "079caa8547da8c9f7872ae7d93ae188851950b74f723a2bbdd989ff0a5065d7b"
+  },
+  "headers_read_only": [
+    "tools/rbxgs/Client/App/include/util/NormalId.h (donor)",
+    "native-headers/v8datamodel/Surfaces.h",
+    "native-headers/v8datamodel/Surface.h",
+    "native-headers/part-embedded/v8datamodel/PartInstance.h"
+  ],
+  "new_headers": [
+    "native-headers/AppUnit5EC/NormalIdVector.h (new path; shadows no donor header)"
+  ]
+}

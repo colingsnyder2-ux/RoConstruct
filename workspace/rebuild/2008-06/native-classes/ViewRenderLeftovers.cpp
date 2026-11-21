@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/openrbx/3rdparty/fmod/api/inc
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/openrbx/Client/fmod/api/inc
 // 2008-06 native leftovers of the view / sound units (inactive):
 //   InstanceHandle::empty 004dc3d0 (util/Handle.h declaration; `target.px == NULL`).
 //   SoundServiceStatsItem::update 005bcd80 (util/Sound.h declaration; service +0x158, currentalloced +0x15c,
@@ -6,7 +6,7 @@
 //   loadedSounds +0x180, loaded3DSounds +0x1a0; strings "fmod %08x" 008380a4 and "-disabled-" 00838098).
 // Not built here (declarations owned elsewhere; see the header proposals of this batch):
 //   ViewRbxGfx::suppressSkybox 004d9c90 is defined (exact) in RenderSceneViewRbxGfx2008.cpp with the Lighting2008.h getters.
-//   Render::RenderScene::render 00504bf0 needs the private RenderScene helpers in RenderLib/RenderSceneRender2008.h.
+//   Render::RenderScene::render 00504bf0 is defined in RenderSceneRecovery_00504b60.cpp.
 // Already defined elsewhere (not duplicated): ViewNew EndcapTransform 004fd4a0 / CylinderTransform 004fd530
 // (ViewNewCylinderMesh.cpp), LevelBuilder::offset 004f1ff0 (ViewNew/QuadVolume.h inline), CameraVerb::isEnabled
 // 00565950 (NativeCameraCommands.h inline, ICF `return true`), ArrowTool::isSticky 005a04b0 (tool/ToolsArrow.h inline).
@@ -58,10 +58,13 @@ void SoundServiceStatsItem::update()
 			maxalloced = max;
 		}
 
-		numSounds = numUnusedSounds = 0;
+		size_t* unused = &numUnusedSounds;
+		size_t* sounds = &numSounds;
 		const RBX::Soundscape::SoundService* soundService = service;
-		countSounds(soundService->loadedSounds, numSounds, numUnusedSounds);
-		countSounds(soundService->loaded3DSounds, numSounds, numUnusedSounds);
+		*unused = 0;
+		*sounds = 0;
+		countSounds(soundService->loadedSounds, *sounds, *unused);
+		countSounds(soundService->loaded3DSounds, *sounds, *unused);
 	}
 	else
 	{

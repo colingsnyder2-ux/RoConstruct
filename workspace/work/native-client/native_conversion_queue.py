@@ -20,6 +20,19 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
+
+def _ledger_rows(entry, ledger_path):
+    """Harvest rows of a native_bulk ledger entry: inline (older ledgers) or its compressed rows file (rows/<ref>)."""
+    if 'harvest_rows' in entry:
+        return entry['harvest_rows']
+    ref = entry.get('harvest_ref')
+    path = Path(ledger_path).parent / 'rows' / ref if ref else None
+    if not path or not path.is_file():
+        return []
+    import gzip
+    with gzip.open(path, 'rt', encoding='utf-8') as stream:
+        return json.load(stream)
+
 ROOT = Path(__file__).resolve().parents[2]
 MINED = ROOT / 'src' / '2008-06'
 HEADERS = ROOT / 'rebuild' / '2008-06' / 'native-headers'
@@ -125,7 +138,7 @@ def exact_symbols_from_ledgers(paths):
     for path in paths:
         ledger = json.loads(path.read_text())
         for receipt in ledger.values():
-            for row in receipt.get('harvest_rows', []):
+            for row in _ledger_rows(receipt, path):
                 if row.get('status') == 'inactive_exact':
                     exact.add(row['symbol'])
     return exact
@@ -143,7 +156,7 @@ def exact_addresses_from_ledgers(paths):
     for path in paths:
         ledger = json.loads(path.read_text())
         for receipt in ledger.values():
-            for row in receipt.get('harvest_rows', []):
+            for row in _ledger_rows(receipt, path):
                 if row.get('status') == 'inactive_exact' and row.get('addr'):
                     exact.add(row['addr'].lower())
     return exact

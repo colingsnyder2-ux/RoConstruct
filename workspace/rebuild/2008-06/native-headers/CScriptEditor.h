@@ -97,6 +97,18 @@ protected:
 
     DECLARE_MESSAGE_MAP()
     DECLARE_DYNCREATE(CScintillaView)
+protected:
+	void OnUpdateNeedPaste(CCmdUI *);   // INFERRED: ?OnUpdateNeedPaste@CScintillaView@@IAEXPAVCCmdUI@@@Z (header gap, header_gap_fill.py)
+protected:
+	void OnUpdateNeedFind(CCmdUI *);   // INFERRED: ?OnUpdateNeedFind@CScintillaView@@IAEXPAVCCmdUI@@@Z (header gap, header_gap_fill.py)
+protected:
+	void OnEditCut(void);   // INFERRED: ?OnEditCut@CScintillaView@@IAEXXZ (header gap, header_gap_fill.py)
+protected:
+	void OnEditRepeat(void);   // INFERRED: ?OnEditRepeat@CScintillaView@@IAEXXZ (header gap, header_gap_fill.py)
+protected:
+	void OnDestroy(void);   // INFERRED: ?OnDestroy@CScintillaView@@IAEXXZ (header gap, header_gap_fill.py)
+protected:
+	void OnFilePageSetup(void);   // INFERRED: ?OnFilePageSetup@CScintillaView@@IAEXXZ (header gap, header_gap_fill.py)
 };
 }
 

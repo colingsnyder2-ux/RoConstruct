@@ -1,0 +1,306 @@
+{
+  "class": "RBX rows of the application range 004c8000..004d4000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit4c8-2008/NativeAppUnit4C8_2008PhysicsServiceCreate.obj",
+    "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4C8_2008PhysicsServiceCreate.cpp"
+  ],
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit4c8_2008.py": "3e4062ab83c0f86f2b04df3d604897a93ddd04bee11d6b6a78ab73336c636c2f",
+    "rebuild/2008-06/native-classes/AppUnit4C8_2008PhysicsServiceCreate.cpp": "26336bc4b9b2ee9f6273a7ba7f125dd2d81b1537aae66d1a096500a156a45903"
+  },
+  "objects": {
+    "NativeAppUnit4C8_2008PhysicsServiceCreate.obj": "c971c25bf1ef4f959d4a021b8f5621ad9e3a19d9249843e7bcc58f74a641f35e"
+  },
+  "unit_map": {
+    "physics-receiver (continued) 004c8010..004c978f": "Continues the receiver unit of 004bc000..004c8000. Receiver index internals: ordered modify_ 004c8010 (in_place 004c71d0, rebalance_for_erase 004c69e0, link_point 004c7110, ~PartItem 004af950, rethrow; only caller the hashed modify_ 004c8b70 at 004c8c30), index_base / ordered / hashed insert_(value, node) 004c8b20 / 004c8cf0 / 004c8e40 (counted by app-unit4bc-2008), hashed modify_ 004c8b70 (only caller 004c8da0), 004c8da0 (ret 0x14, calls a modifier through [ebp+8], then modify_; called from receivePacket 004c966e), container insert_(value) 004c8ef0 (new, hashed insert_ 004c8e40, delete on failure; called from 004c96ce), the BitStream item reader 004c8150 (called from 004c964c), DirectPhysicsReceiver::receivePacket 004c83b0 (vtable 008247d0 slot 2), InterpolatingPhysicsReceiver::step 004c8fa0 and receivePacket 004c9120 (vtable 00824ee4 slots 1/2; receivePacket ends 004c9789).",
+    "raknet-gettime 004c9790..004c992f": "RakNet GetTime.cpp: GetTimeNS 004c9790 (QueryPerformanceFrequency / GetProcessAffinityMask / QueryPerformanceCounter, evidence name ?GetTimeNS@RakNet@@YA_JXZ) and GetTime 004c9910 (?GetTime@RakNet@@YAIXZ). Library code, not recovered.",
+    "physics-sender 004c9930..004cdcbf": "boost ordered_index_node_impl::restore 004c9930 (library; called by the sender ordered replace_ 004cb8e0 / 004cbfb0), RoundRobinPhysicsSender 004c99b0 / 004c99c0 / ??_G 004ca010 (network-physics-working.json), the PhysicsSender PartItems members 004c9b20..004cc5e0 (network-physics-senders2008-working.json: link, link_point, in_place, insert_, erase_, unchecked_rehash, reserve, PartItem copy / operator=), hash_value 004ca5b0, PhysicsSender ctor / dtor 004ccb10 / 004ccb90, sendPackets 004cce00, PhysicsService members 004cd5b0..004cd7e0 (physics-array / world-service trials), ServiceProvider::create<PhysicsService>(const Instance*) 004cd8d0 (this receipt), PhysicsSender::step 004cd920 (ends 004cdcb8).",
+    "raknet 004cdcc0..004d4000": "RakNet 3.x library: HuffmanEncodingTree.cpp 004cdcc0..004ce2df (DecodeArray, FreeMemory, EncodeArray, GenerateFromFrequencyTable, CircularLinkedList / Queue instances), SocketLayer.cpp 004ce570..004ce97f (CreateBoundSocket ... GetLocalPort), ReliabilityLayer.cpp from 004ce9a0 (SplitPacketIndexComp, InitializeVariables, SendBitStream, BPlusTree / MemoryPool / RangeList / OrderedList instances, GenerateDatagram 004d19f0, InsertIntoSplitPacketList 004d2020 ...) running past 004d4000. Evidence names cover nearly every row. Library code: never recovered here (recipes rbxgs-raknet, raknet-4.081)."
+  },
+  "range_rows_counted_by_other_receipts": {
+    "004c8b20": [
+      "app-unit4bc-2008-working.json"
+    ],
+    "004c8cf0": [
+      "app-unit4bc-2008-working.json"
+    ],
+    "004c8e40": [
+      "app-unit4bc-2008-working.json"
+    ],
+    "004c99b0": [
+      "network-physics-working.json"
+    ],
+    "004c99c0": [
+      "network-physics-working.json"
+    ],
+    "004c9ac0": [
+      "services-working.json"
+    ],
+    "004c9b20": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004c9b70": [
+      "physics-array-find-trial.json",
+      "services-working.json"
+    ],
+    "004c9c40": [
+      "feature-working.json",
+      "stats-service-working.json"
+    ],
+    "004c9d90": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004ca010": [
+      "network-physics-working.json"
+    ],
+    "004ca090": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004ca2b0": [
+      "humanoid2008-working.json"
+    ],
+    "004ca340": [
+      "services-working.json"
+    ],
+    "004ca5b0": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cacc0": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cad90": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cadd0": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cae60": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004caf40": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cb010": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cb060": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cb0c0": [
+      "services-working.json"
+    ],
+    "004cb200": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cb280": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cb300": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cb520": [
+      "services-working.json"
+    ],
+    "004cb540": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cb5c0": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cb7b0": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cb850": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cbdc0": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cbe20": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cbea0": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cbf40": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cc400": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cc460": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cc580": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004ccab0": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004ccb10": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004ccb90": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004ccca0": [
+      "physics-array-find-trial.json"
+    ],
+    "004ccde0": [
+      "network-physics-senders2008-working.json"
+    ],
+    "004cd300": [
+      "services-working.json"
+    ],
+    "004cd510": [
+      "services-working.json"
+    ],
+    "004cd5b0": [
+      "physics-array-lifetime-trial.json",
+      "services-working.json"
+    ],
+    "004cd6a0": [
+      "services-working.json"
+    ],
+    "004cd6b0": [
+      "services-working.json"
+    ],
+    "004cd6c0": [
+      "services-working.json"
+    ],
+    "004cd6d0": [
+      "services-working.json"
+    ],
+    "004cd6e0": [
+      "services-working.json"
+    ],
+    "004cd6f0": [
+      "services-working.json"
+    ],
+    "004cd700": [
+      "services-working.json"
+    ],
+    "004cd710": [
+      "services-working.json"
+    ],
+    "004cd720": [
+      "services-working.json"
+    ],
+    "004cd730": [
+      "services-working.json"
+    ],
+    "004cd740": [
+      "services-working.json"
+    ],
+    "004cd760": [
+      "physics-array-lifetime-trial.json",
+      "services-working.json"
+    ],
+    "004cd7e0": [
+      "world-service-actions-secure-trial.json",
+      "world-service-actions-trial.json",
+      "world-service-all-trial.json",
+      "world-service-allocation-trial.json",
+      "world-service-complete-trial.json",
+      "world-service-factories-trial.json",
+      "world-service-find-mismatch.json",
+      "world-service-full-trial.json",
+      "world-service-joints-find-trial.json",
+      "world-service-lifetime-trial.json"
+    ]
+  },
+  "rows": [
+    {
+      "address": "004cd8d0",
+      "symbol": "??$create@VPhysicsService@RBX@@@ServiceProvider@RBX@@SAPAVPhysicsService@1@PBVInstance@1@@Z",
+      "size": 65,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVServiceProvider@RBX@@@8": "0x92e15c (.?AVServiceProvider@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
+        "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast",
+        "??$create@VPhysicsService@RBX@@@ServiceProvider@RBX@@QBEPAVPhysicsService@1@XZ": "0x4cd7e0 (row counted by world-service-actions-secure-trial.json)"
+      },
+      "local_eh": []
+    }
+  ],
+  "not_exact": [
+    {
+      "address": "004c8010",
+      "reason": "receiver ordered_index::modify_: not emitted by the explicit container instantiation (only modify<Modifier> instantiates it, and the modifier type is not derived; see 004c8da0)."
+    },
+    {
+      "address": "004c8b70",
+      "reason": "receiver hashed_index::modify_: same blocker as 004c8010."
+    },
+    {
+      "address": "004c8da0",
+      "reason": "modify(iterator, Modifier) helper (ret 0x14, the modifier is called through its first argument): the modifier type used by receivePacket 004c9120 is not derived."
+    },
+    {
+      "address": "004c8ef0",
+      "reason": "receiver multi_index_container::insert_(const value_type&): 151 B original, 172 B from the explicit instantiation; not derived."
+    },
+    {
+      "address": "004c8150",
+      "reason": "receivePacket item reader (BitStream ReadNormQuat / Vector3 reads): needs the native Replicator / BitStream API; open."
+    },
+    {
+      "address": "004c83b0",
+      "reason": "DirectPhysicsReceiver::receivePacket (1890 B): needs the native Replicator / IdSerializer API; open (network-physics receipt)."
+    },
+    {
+      "address": "004c8fa0",
+      "reason": "InterpolatingPhysicsReceiver::step: calls the PartItem step helper 004c6f70, which needs the 2008 PartInstance with the Primitive embedded at +0x228 (app-unit4bc-2008 not_exact)."
+    },
+    {
+      "address": "004c9120",
+      "reason": "InterpolatingPhysicsReceiver::receivePacket (1641 B): needs the native Replicator / IdSerializer deserialize 004a8b60 and the modifier of 004c8da0; open."
+    },
+    {
+      "address": "004cd920",
+      "reason": "PhysicsSender::step (921 B): needs the native Replicator and the item update 004c9e30 (PartInstance getCoordinateFrame 00598cb0); open (network-physics-senders2008 not_exact)."
+    }
+  ],
+  "rejected": {},
+  "proposals": [],
+  "exact_function_rows": [
+    "004cd8d0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

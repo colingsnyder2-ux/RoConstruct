@@ -1,0 +1,1725 @@
+{
+  "class": "RBX connector / contact / PVInstance units after GuiBuilder (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/U_RELEASEASSERT",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeContactUnit2008Layout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeContactUnit2008Layout.cpp"
+    ],
+    "conn": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeContactUnit2008_conn.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ContactUnit2008Connector.cpp"
+    ],
+    "pv": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/U_RELEASEASSERT",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeContactUnit2008_pv.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ContactUnit2008PVInstance.cpp"
+    ],
+    "contact": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeContactUnit2008_contact.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ContactUnit2008Contact.cpp"
+    ],
+    "connbody": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeContactUnit2008_connbody.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ContactUnit2008ConnectorBody.cpp"
+    ],
+    "manager": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeContactUnit2008_manager.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ContactUnit2008Manager.cpp"
+    ],
+    "pv_pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/contact-unit2008-pending",
+      "/DNATIVE_CONTACTUNIT_PENDING",
+      "/U_RELEASEASSERT",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeContactUnit2008_pv_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ContactUnit2008PVInstance.cpp"
+    ],
+    "contact_pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/contact-unit2008-bodyprim-pending",
+      "/DNATIVE_BODYPRIM_PENDING",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeContactUnit2008_contact_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ContactUnit2008Contact.cpp"
+    ],
+    "manager_pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/contact-unit2008-world-pending",
+      "/DNATIVE_CONTACTMANAGER_PENDING",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeContactUnit2008_manager_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ContactUnit2008Manager.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/native-classes/ContactUnit2008Connector.cpp": "9343d1f3b9700127d968d5be9cffc5dd8f751ae6b6bb79d26ed95ef628c5fe79",
+    "rebuild/2008-06/native-classes/ContactUnit2008PVInstance.cpp": "7428b3b91917b36374828b4ad2793559c6e6b8e427c88117659c3c63f428cce5",
+    "rebuild/2008-06/native-classes/ContactUnit2008Contact.cpp": "d6d494907ea4b14fc341a80b85197b98a6013c2a0516472aac207c5d6922bda9",
+    "rebuild/2008-06/native-classes/ContactUnit2008ConnectorBody.cpp": "c22caf83def45cdd8ead812525922936d5a702df4d4e49afd2ef42160a9a1eff",
+    "rebuild/2008-06/native-classes/ContactUnit2008Manager.cpp": "2d278b86fea69d616654f577a5e67cfec5423092ec6afa664931ba33fc6b91ef",
+    "rebuild/2008-06/tests/record_native_contact_unit2008.py": "7b990e6424ce171d4fe9b2d810c7ab7f608f130b9864b80d6040fe7c1ad860e8",
+    "rebuild/2008-06/native-headers/v8kernel/Connector2008.h": "cda769f5fc288bf0ade8d1380292236bbf3a43808d3aa6f82981f3091a01040e",
+    "rebuild/2008-06/native-headers/v8datamodel/PVInstance.h": "4bfc2162f0d85027866399c0b0c0bf4403889edfe1197df34c3e03d9c6ef3e3b",
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114",
+    "rebuild/2008-06/native-headers/v8world/Contact2008.h": "e83b7eceafa9fb8e296008e497c1eca30dc66ecb612788d57aa72581f1939c07",
+    "rebuild/2008-06/native-headers/v8world/Primitive2008.h": "4083759dfa7e7fdb9160a2477743ec925c5385451309feeb81ccebcdcb9f31cc",
+    "rebuild/2008-06/native-headers/v8kernel/Body2008.h": "d8674bd72bf53a63576d37cb20fb94d5cfc0d78b04fde56bf4cfd91821f98555",
+    "rebuild/2008-06/native-headers/v8kernel/Point2008.h": "217c158ef6dad5e3fddb936646cc3788586a3b0615d89564884fb171925d98fe",
+    "rebuild/2008-06/native-headers/v8world/GeoPair2008.h": "d66b2bca49ccc1057aeb5c7c3542d085e8f0c81d16f9a0eafa7cc426c937bca1",
+    "rebuild/2008-06/native-headers/v8world/ContactManager2008.h": "2bfd55aaecebe11510c1519e950cb92efe93e02ae10fbd7bdd643a933dc5bc43",
+    "rebuild/2008-06/native-headers/v8kernel/IPipelined2008.h": "37ec8f6e6f4dd3990410b7b9e33502656be78bda581cc804312924042396e125",
+    "rebuild/2008-06/native-headers/v8kernel/KernelInput2008.h": "77719ad29702bb68145064f3dee415e523654f3bd7f943a910c44bbeb8838ae0",
+    "rebuild/2008-06/native-headers/v8world/Geometry2008.h": "8cce7fd5dca0aa4d30ae7b487b61fadcd4e4bb266c66727a407f7c433faae1b5",
+    "rebuild/2008-06/native-headers/leaves2008/BlockBlockContact2008.h": "2129500e60923c6d37d6171a225c921657bca089f4ffec91fb351c4b9554eaaa"
+  },
+  "generated_layout_unit": {
+    "rebuild/2008-06/out/native-layouts/NativeContactUnit2008Layout.cpp": "b0e282570d4be26a9a9ed06ce0165422a46faaa3c292307849cc416afeb4030b"
+  },
+  "layout": {
+    "Primitive (NATIVE_IPIPELINED2008_DONOR)": {
+      "size": "0xfc",
+      "fields": {
+        "guid": "0x8",
+        "guidSetExternally": "0x10",
+        "unknown0x14": "0x14",
+        "contacts": "0x18",
+        "joints": "0x34",
+        "worldIndex": "0x50",
+        "traverseId": "0x54",
+        "world": "0x58",
+        "clump": "0x5c",
+        "clumpDepth": "0x60",
+        "spatialNodes": "0x64",
+        "oldSpatialMin": "0x68",
+        "oldSpatialMax": "0x74",
+        "fuzzyExtents": "0x80",
+        "fuzzyExtentsStateId": "0x98",
+        "geometry": "0x9c",
+        "body": "0xa0",
+        "myOwner": "0xa4",
+        "dragging": "0xa8",
+        "anchored": "0xa9",
+        "jointAnchored": "0xaa",
+        "canSleep": "0xab",
+        "canCollide": "0xac",
+        "friction": "0xb0",
+        "elasticity": "0xb4",
+        "surfaceType": "0xb8",
+        "surfaceData": "0xd0",
+        "controller": "0xe8",
+        "JointK": "0xec"
+      }
+    },
+    "EdgeList": {
+      "size": "0x1c",
+      "fields": {
+        "edges": "0x4",
+        "otherPrimitives": "0x10"
+      }
+    },
+    "IPipelined (donor)": {
+      "size": "0x8"
+    }
+  },
+  "generated_pending_headers": {
+    "rebuild/2008-06/out/native-layouts/contact-unit2008-pending/v8tree/Instance.h": "4e936c1462aa9e1f6992ba08c6c84c0793a87a9057347acc7210cd1476beabba",
+    "rebuild/2008-06/out/native-layouts/contact-unit2008-bodyprim-pending/v8world/Contact2008.h": "fd73bb0317ee068917bbc9d383e9300342a05e37e45a4021585148a75a8d8bb6",
+    "rebuild/2008-06/out/native-layouts/contact-unit2008-world-pending/v8world/World2008.h": "8d74266eadd636f8edcf83d9253f459772190b8db24bd8a58a8b4c37de83d2ec"
+  },
+  "objects": {
+    "layout": "bed5d8b5faf952c49fff2646b8cae49e1436d31dbc54cf67f3d22877d64b1f47",
+    "conn": "fe5b693ab252a54323d952a35d362da8bb6f48b88740b95ead2ad386fa94b56c",
+    "pv": "a916e6bf2518de65d8840fc27161a708d8ec39099e06a1304a8e6926c4dfa29d",
+    "contact": "56829ddadb5fa93a36da944f94d52320c5161f3955ca0686f4e998d8708f694d",
+    "connbody": "8aa2304e824d0c9da3c271a4887445077f9104fb29523e9562a7e3f02a321fba",
+    "manager": "5ed07fdce0a5cba602085e144d313271c46fb93f11dba0c5c5d7fe490f904554",
+    "pv_pending": "52ca31a0c82f8b79f9367a26278160c693e3dbcd6fb5bdb3491fa40c051404a3",
+    "contact_pending": "46bc15d6dd3c58e9ae487469e2d47b0f3198eb4b9df0c101f3f56184981a30d8",
+    "manager_pending": "22813f174e26d74c36e65742a379a79b3eab0f66e7189dfc4ff2ce9d5fcb0b0d"
+  },
+  "unit_map": {
+    "connector 006060b0..00606a50": "006060b0 (Body force helper on the root SimBody: [this+0x10]+0x2c, dirty -> 00658d20, += +0x90..+0x98; callers 0062ec1a / 00666634 / 006676f2), 00606100 percentConnectorsActive (0097b878/0097b87c), connector getBody / potentialEnergy / RotateConnector() / ??_G 00606150..006062c0 (world-joints), GeoPair helper 00606270 + thunk 00606770 (`add ecx, 8; jmp 00606270`, called from deleteUnmatchedConnectors 00607e2f), 006062e0 (called by RotateConnector::computeForce 006064c5; RotateConnector::computeParams, analog name), computeForce 006064a0 / 006065d0 / 00606670 / 00606780, GeoPair::match 00606a50. The counters 0097b878/0097b87c are written only by 00606780 (00606834 / 00606a1d).",
+    "contact 00606b00..00608945": "Block edge helper 00606b00 (table 0084aec8), Extents::overlapsOrTouches 00606b60, contactPairHitRatio 00606bc0 (0097b880/0097b884, incremented by 00607d09 / 00607d3d), contactFeatureHitRatio 00606bf0 (0097b888/0097b88c, 0060754a / 0060758a), Contact::step 00606c50, Contact() 00606c20 (world-shapes), computeIsAdjacent 00606ca0, 00606ce0 (getFastFuzzyExtents of both primitives, then computeIsColliding), deleteConnector 00606d10, ContactConnector() 00606d40 (world-joints), createConnector 00606e00, BallBall / BallBlock / BlockBlock bodies 00606e90..00608945 (world-shapes / leaves2008 count 00607c60, 006078f0).",
+    "pvinstance 00608950..00609a1f": "starts after BlockBlockContact::stepContact helpers (00608890 ends 00608945); getShowControllerFlag 00608950 .. setShowControllerFlag 00609a00; ~PVInstance 00609020 (not a function-list start, BOUNDS); flag-family / spawn count 00608cd0 (GetSetImpl<ControllerType>::setValue, ICF), hopper-family lists 00608c20 only as support.",
+    "feature 00609a30..": "getFaceId 00609a30 .. (feature-working.json)."
+  },
+  "rows": {
+    "conn": [
+      {
+        "address": "006065d0",
+        "symbol": "?computeForce@PointToPointBreakConnector@RBX@@UAEXM_N@Z",
+        "size": 150,
+        "target_size": 150,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      }
+    ],
+    "connbody": [
+      {
+        "address": "00606100",
+        "symbol": "?percentConnectorsActive@ContactConnector@RBX@@SAMXZ",
+        "size": 66,
+        "target_size": 66,
+        "exact": true,
+        "verified_targets": {
+          "?numInactiveConnectors@ContactConnector@RBX@@2HA": "0x97b87c (data)",
+          "?numActiveConnectors@ContactConnector@RBX@@2HA": "0x97b878 (data)",
+          "__real@bf800000": "0x81c3b8 (constant bf800000)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00606250",
+        "symbol": "?canThrottle@ContactConnector@RBX@@UBE_NXZ",
+        "size": 27,
+        "target_size": 27,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "006062e0",
+        "symbol": "?computeParams@RotateConnector@RBX@@AAEXAAVVector3@G3D@@AAM1@Z",
+        "size": 440,
+        "target_size": 440,
+        "exact": true,
+        "verified_targets": {
+          "__real@358637bd": "0x826e70 (constant 358637bd)",
+          "?unitize@Vector3@G3D@@QAEMM@Z": "0x518470 (external)",
+          "?p@?1??halfPi@G3D@@YAABNXZ@4NB": "0x828830 (data)",
+          "__real@bff921fb54442d28": "0x828838 (constant bff921fb54442d28)",
+          "__real@40c90fda": "0x82b3b4 (constant 40c90fda)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00606670",
+        "symbol": "?computeForce@NormalBreakConnector@RBX@@UAEXM_N@Z",
+        "size": 248,
+        "target_size": 248,
+        "exact": true,
+        "verified_targets": {
+          "?updatePV@Body@RBX@@ABEXXZ": "0x599360 (external (evidence name))"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00606a50",
+        "symbol": "?match@GeoPair@RBX@@QAE_NPAVBody@2@0W4GeoPairType@2@HH@Z",
+        "size": 169,
+        "target_size": 169,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      }
+    ],
+    "manager": [
+      {
+        "address": "0060cfd0",
+        "symbol": "?resize@?$Array@PAVContact@RBX@@@G3D@@QAEXH_N@Z",
+        "size": 256,
+        "target_size": 256,
+        "exact": true,
+        "verified_targets": {
+          "??_B?3??resize@?$Array@PAVContact@RBX@@@G3D@@QAEXH_N@Z@53": "0x97bec0 (data)",
+          "?minSize@?3??resize@?$Array@PAVContact@RBX@@@G3D@@QAEXH_N@Z@4HB": "0x97bebc (data)",
+          "?realloc@?$Array@PAVContact@RBX@@@G3D@@AAEXH@Z": "0x502080 (external)",
+          "__real@40400000": "0x81e380 (constant 40400000)",
+          "__real@3fc00000": "0x81e37c (constant 3fc00000)",
+          "__real@40000000": "0x81c434 (constant 40000000)",
+          "__ftol2_sse": "0x6a17f0 (external)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "0060d630",
+        "symbol": "?intersectingOthers@ContactManager@RBX@@QAE_NPAVPrimitive@2@ABV?$set@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@@std@@M@Z",
+        "size": 162,
+        "target_size": 162,
+        "exact": true,
+        "verified_targets": {
+          "?getFirstContact@Primitive@RBX@@QAEPAVContact@2@XZ": "0x5e7bd0 (external (evidence name))",
+          "?find@?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QBE?AVconst_iterator@12@ABQAVPrimitive@RBX@@@Z": "0x4ae060 (external (evidence name))",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?getNextContact@Primitive@RBX@@QAEPAVContact@2@PAV32@@Z": "0x5e7be0 (external (evidence name))"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "0060d770",
+        "symbol": "?createContact@ContactManager@RBX@@AAEPAVContact@2@PAVPrimitive@2@0@Z",
+        "size": 311,
+        "target_size": 311,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0BlockBlockContact@RBX@@QAE@PAVPrimitive@1@0@Z": "0x60d500 (external (evidence name))",
+          "??0BallBlockContact@RBX@@QAE@PAVPrimitive@1@0@Z": "0x60cb90 (external)",
+          "??0BallBallContact@RBX@@QAE@PAVPrimitive@1@0@Z": "0x60cae0 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?createContact@ContactManager@RBX@@AAEPAVContact@2@PAVPrimitive@2@0@Z"
+        ],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "0060d0d0",
+        "symbol": "?append@?$Array@PAVContact@RBX@@@G3D@@QAEXABQAVContact@RBX@@@Z",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "?append@?$Array@PAVContact@RBX@@@G3D@@QAEXABQAVContact@RBX@@@Z": "0x60d0d0 (own row)",
+          "?resize@?$Array@PAVContact@RBX@@@G3D@@QAEXH_N@Z": "0x60cfd0 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "0060d200",
+        "symbol": "??4?$Array@PBVPrimitive@RBX@@@G3D@@QAEAAV01@ABV?$vector@PBVPrimitive@RBX@@V?$allocator@PBVPrimitive@RBX@@@std@@@std@@@Z",
+        "size": 89,
+        "target_size": 89,
+        "exact": true,
+        "verified_targets": {
+          "?resize@?$Array@PBVPrimitive@RBX@@@G3D@@QAEXH_N@Z": "0x5cc9a0 (external (evidence name))",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "0060db10",
+        "symbol": "?getHit@ContactManager@RBX@@QBEPAVPrimitive@2@ABVRay@G3D@@PBV?$vector@PBVPrimitive@RBX@@V?$allocator@PBVPrimitive@RBX@@@std@@@std@@PBVHitTestFilter@2@AAVVector3@5@AA_N@Z",
+        "size": 134,
+        "target_size": 134,
+        "exact": true,
+        "verified_targets": {
+          "??4?$Array@PBVPrimitive@RBX@@@G3D@@QAEAAV01@ABV?$vector@PBVPrimitive@RBX@@V?$allocator@PBVPrimitive@RBX@@@std@@@std@@@Z": "0x60d200 (own row)",
+          "?getHit@ContactManager@RBX@@QBEPAVPrimitive@2@ABVRay@G3D@@PBV?$Array@PBVPrimitive@RBX@@@5@PBVHitTestFilter@2@AAVVector3@5@AA_N@Z": "0x60d6e0 (external (evidence name))",
+          "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?getHit@ContactManager@RBX@@QBEPAVPrimitive@2@ABVRay@G3D@@PBV?$vector@PBVPrimitive@RBX@@V?$allocator@PBVPrimitive@RBX@@@std@@@std@@PBVHitTestFilter@2@AAVVector3@5@AA_N@Z"
+        ],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "0060dba0",
+        "symbol": "??$?0PBQAVPrimitive@RBX@@@?$set@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@@std@@QAE@PBQAVPrimitive@RBX@@0@Z",
+        "size": 112,
+        "target_size": 112,
+        "exact": true,
+        "verified_targets": {
+          "??0?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVPrimitive@RBX@@@1@ABV?$allocator@PAVPrimitive@RBX@@@1@@Z": "0x64b2a0 (external (evidence name))",
+          "?insert@?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVPrimitive@RBX@@@Z": "0x5e8c40 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0PBQAVPrimitive@RBX@@@?$set@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@@std@@QAE@PBQAVPrimitive@RBX@@0@Z"
+        ],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "0060dc10",
+        "symbol": "?intersectingOthers@ContactManager@RBX@@QAE_NABV?$Array@PAVPrimitive@RBX@@@G3D@@M@Z",
+        "size": 180,
+        "target_size": 180,
+        "exact": true,
+        "verified_targets": {
+          "??$?0PBQAVPrimitive@RBX@@@?$set@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@@std@@QAE@PBQAVPrimitive@RBX@@0@Z": "0x60dba0 (own row)",
+          "?intersectingOthers@ContactManager@RBX@@QAE_NPAVPrimitive@2@ABV?$set@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@@std@@M@Z": "0x60d630 (own row)",
+          "??1?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE@XZ": "0x64b230 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$?intersectingOthers@ContactManager@RBX@@QAE_NABV?$Array@PAVPrimitive@RBX@@@G3D@@M@Z"
+        ],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "0060dcd0",
+        "symbol": "?intersectingOthers@ContactManager@RBX@@QAE_NPAVPrimitive@2@M@Z",
+        "size": 139,
+        "target_size": 139,
+        "exact": true,
+        "verified_targets": {
+          "??0?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVPrimitive@RBX@@@1@ABV?$allocator@PAVPrimitive@RBX@@@1@@Z": "0x64b2a0 (external (evidence name))",
+          "?insert@?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVPrimitive@RBX@@@Z": "0x5e8c40 (external (evidence name))",
+          "?intersectingOthers@ContactManager@RBX@@QAE_NPAVPrimitive@2@ABV?$set@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@@std@@M@Z": "0x60d630 (own row)",
+          "??1?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE@XZ": "0x64b230 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$?intersectingOthers@ContactManager@RBX@@QAE_NPAVPrimitive@2@M@Z"
+        ],
+        "vtables": [],
+        "counted": true
+      }
+    ],
+    "contact": [
+      {
+        "address": "00607ad0",
+        "symbol": "?onPrimitiveContactParametersChanged@Contact@RBX@@QAEXXZ",
+        "size": 244,
+        "target_size": 244,
+        "exact": true,
+        "verified_targets": {
+          "?getElasticMultiplier@Constants@RBX@@SA?BMM@Z": "0x649320 (external)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      }
+    ],
+    "pv": [
+      {
+        "address": "00608950",
+        "symbol": "?getShowControllerFlag@PVInstance@RBX@@QBE_NXZ",
+        "size": 7,
+        "target_size": 7,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00608960",
+        "symbol": "?moveToPoint@PVInstance@RBX@@QAEXVVector3@G3D@@@Z",
+        "size": 53,
+        "target_size": 53,
+        "exact": true,
+        "verified_targets": {
+          "?findWorkspace@Workspace@RBX@@SAPAV12@PBVInstance@2@@Z": "0x5a3380 (external (evidence name))",
+          "?moveToPoint@RootInstance@RBX@@QAEXPAVPVInstance@2@VVector3@G3D@@@Z": "0x5909e0 (external (evidence name))"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00608a60",
+        "symbol": "?onChildAdded@PVInstance@RBX@@MAEXPAVInstance@2@@Z",
+        "size": 56,
+        "target_size": 56,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVPVInstance@RBX@@@8": "0x947f1c (RTTI .?AVPVInstance@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00608aa0",
+        "symbol": "?renderCoordinateFrame@PVInstance@RBX@@IAEXPAVAdorn@2@@Z",
+        "size": 186,
+        "target_size": 186,
+        "exact": true,
+        "verified_targets": {
+          "?blue@Color3@G3D@@SAABV12@XZ": "0x514910 (external)",
+          "?green@Color3@G3D@@SAABV12@XZ": "0x5148e0 (external)",
+          "?red@Color3@G3D@@SAABV12@XZ": "0x5148b0 (external)",
+          "__real@41200000": "0x827490 (constant 41200000)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00608b60",
+        "symbol": "?onChildControllerChanged@PVInstance@RBX@@MAEXXZ",
+        "size": 63,
+        "target_size": 63,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVPVInstance@RBX@@@8": "0x947f1c (RTTI .?AVPVInstance@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00608ba0",
+        "symbol": "?onDescendentAdded@PVInstance@RBX@@MAEXPAVInstance@2@@Z",
+        "size": 37,
+        "target_size": 37,
+        "exact": true,
+        "verified_targets": {
+          "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z": "0x55ae20 (external)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00608bd0",
+        "symbol": "?onDescendentRemoving@PVInstance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "size": 25,
+        "target_size": 25,
+        "exact": true,
+        "verified_targets": {
+          "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x55ae90 (external)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00608bf0",
+        "symbol": "?onExtentsChanged@PVInstance@RBX@@MBEXXZ",
+        "size": 43,
+        "target_size": 43,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVPVInstance@RBX@@@8": "0x947f1c (RTTI .?AVPVInstance@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00608c20",
+        "symbol": "?getValue@?$SetImpl@P8PVInstance@RBX@@AEXABVCoordinateFrame@G3D@@@Z@?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE?AVCoordinateFrame@G3D@@PBVDescribedBase@34@@Z",
+        "size": 104,
+        "target_size": 104,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BA@FAJCABFL@can?8t?5get?5value?$AA@": "0x83aa84 (literal \"can't get value\")",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+          "??_7runtime_error@std@@6B@": "0x80b7f8 (vtable RTTI .?AVruntime_error@std@@ offset 0x0)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info, first catchable type .?AVruntime_error@std@@)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$?getValue@?$SetImpl@P8PVInstance@RBX@@AEXABVCoordinateFrame@G3D@@@Z@?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE?AVCoordinateFrame@G3D@@PBVDescribedBase@34@@Z"
+        ],
+        "vtables": [
+          "??_7runtime_error@std@@6B@"
+        ],
+        "counted": false,
+        "not_counted_reason": "references vtables whose slots are not all proven: ??_7runtime_error@std@@6B@"
+      },
+      {
+        "address": "00608c90",
+        "symbol": "?setValue@?$SetImpl@P8PVInstance@RBX@@AEXABVCoordinateFrame@G3D@@@Z@?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABVCoordinateFrame@G3D@@@Z",
+        "size": 54,
+        "target_size": 54,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00608d10",
+        "symbol": "?onParentControllerChanged@PVInstance@RBX@@MAEXXZ",
+        "size": 131,
+        "target_size": 131,
+        "exact": true,
+        "verified_targets": {
+          "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (external (evidence name))",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??_R0?AVPVInstance@RBX@@@8": "0x947f1c (RTTI .?AVPVInstance@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00608da0",
+        "symbol": "?computeIsControllable@PVInstance@RBX@@ABE_NXZ",
+        "size": 125,
+        "target_size": 125,
+        "exact": true,
+        "verified_targets": {
+          "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (external (evidence name))",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??_R0?AVIControllable@RBX@@@8": "0x9482a8 (RTTI .?AVIControllable@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00608e70",
+        "symbol": "??B?$ComputeProp@V?$ReferenceCountedPointer@VController@RBX@@@G3D@@VPVInstance@RBX@@@RBX@@QBE?AV?$ReferenceCountedPointer@VController@RBX@@@G3D@@XZ",
+        "size": 27,
+        "target_size": 27,
+        "exact": true,
+        "verified_targets": {
+          "?getValue@?$ComputeProp@V?$ReferenceCountedPointer@VController@RBX@@@G3D@@VPVInstance@RBX@@@RBX@@QBE?AV?$ReferenceCountedPointer@VController@RBX@@@G3D@@XZ": "0x59a0d0 (external (evidence name))"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00608e90",
+        "symbol": "??$getset@P8PVInstance@RBX@@AEXABVCoordinateFrame@G3D@@@Z@?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@@std@@HP8PVInstance@2@AEXABVCoordinateFrame@G3D@@@Z@Z",
+        "size": 70,
+        "target_size": 70,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$SetImpl@P8PVInstance@RBX@@AEXABVCoordinateFrame@G3D@@@Z@?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@": "0x842870 (vtable RTTI .?AV?$SetImpl@P8PVInstance@RBX@@AEXABVCoordinateFrame@G3D@@@Z@?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@ offset 0x0)"
+        },
+        "local_eh": [],
+        "vtables": [
+          "??_7?$SetImpl@P8PVInstance@RBX@@AEXABVCoordinateFrame@G3D@@@Z@?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@"
+        ],
+        "counted": true
+      },
+      {
+        "address": "00608ee0",
+        "symbol": "??$getset@P8PVInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@P8PVInstance@2@BE_NXZP852@AEX_N@Z@Z",
+        "size": 91,
+        "target_size": 91,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$GetSetImpl@P8PVInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@6B@": "0x842884 (vtable RTTI .?AV?$GetSetImpl@P8PVInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@ offset 0x0)"
+        },
+        "local_eh": [],
+        "vtables": [
+          "??_7?$GetSetImpl@P8PVInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@6B@"
+        ],
+        "counted": true
+      },
+      {
+        "address": "00608f40",
+        "symbol": "??$getset@P8PVInstance@RBX@@BE?AW4ControllerType@Controller@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4ControllerType@Controller@RBX@@@Reflection@RBX@@@std@@P8PVInstance@2@BE?AW4ControllerType@Controller@2@XZP852@AEXW4672@@Z@Z",
+        "size": 91,
+        "target_size": 91,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$GetSetImpl@P8PVInstance@RBX@@BE?AW4ControllerType@Controller@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@6B@": "0x842898 (vtable RTTI .?AV?$GetSetImpl@P8PVInstance@RBX@@BE?AW4ControllerType@Controller@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@ offset 0x0)"
+        },
+        "local_eh": [],
+        "vtables": [
+          "??_7?$GetSetImpl@P8PVInstance@RBX@@BE?AW4ControllerType@Controller@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@6B@"
+        ],
+        "counted": true
+      },
+      {
+        "address": "006090c0",
+        "symbol": "?computeIsTopFlag@PVInstance@RBX@@ABE_NXZ",
+        "size": 131,
+        "target_size": 131,
+        "exact": true,
+        "verified_targets": {
+          "?isTopLevelPVInstance@PVInstance@RBX@@QBE_NXZ": "0x5840a0 (external)",
+          "?getTopPVController@PVInstance@RBX@@QBEPAVController@2@XZ": "0x59a9e0 (external (evidence name))"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00609150",
+        "symbol": "?setPVGridOffsetLegacy@PVInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
+        "size": 155,
+        "target_size": 155,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0 (external (evidence name))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$?setPVGridOffsetLegacy@PVInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
+        ],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "006091f0",
+        "symbol": "??1?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@EAE@XZ",
+        "size": 392,
+        "target_size": 392,
+        "exact": true,
+        "verified_targets": {
+          "??_7?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@6B@": "0x8428ac (vtable RTTI .?AV?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@ offset 0x0)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?_Tidy@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXXZ": "0x4077d0 (external (evidence name))",
+          "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4ControllerType@Controller@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4ControllerType@Controller@2@@std@@@6@$0A@@std@@@std@@QAE@XZ": "0x553d80 (external)",
+          "??1EnumDescriptor@Reflection@RBX@@MAE@XZ": "0x56c080 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??1?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@EAE@XZ"
+        ],
+        "vtables": [
+          "??_7?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@6B@"
+        ],
+        "counted": true
+      },
+      {
+        "address": "00609380",
+        "symbol": "??_G?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@EAE@XZ": "0x6091f0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "006093a0",
+        "symbol": "?singleton@?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@SAABV123@XZ",
+        "size": 90,
+        "target_size": 90,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??singleton@?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@SAABV123@XZ@51": "0x97b988 (local static)",
+          "?s@?1??singleton@?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@SAABV234@XZ@4V234@A": "0x97b8a0 (local static)",
+          "??0?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@AAE@XZ": "0x615280 (external)",
+          "??__Fs@?1??singleton@?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@SAABV123@XZ@YAXXZ": "0x8001b0 (external)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?singleton@?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@SAABV123@XZ"
+        ],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00609410",
+        "symbol": "??$?0HP8PVInstance@RBX@@AEXABVCoordinateFrame@G3D@@@Z@?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@QAE@PBD0HP8PVInstance@2@AEXABVCoordinateFrame@G3D@@@ZW4Functionality@PropertyDescriptor@12@@Z",
+        "size": 172,
+        "target_size": 172,
+        "exact": true,
+        "verified_targets": {
+          "??$getset@P8PVInstance@RBX@@AEXABVCoordinateFrame@G3D@@@Z@?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@@std@@HP8PVInstance@2@AEXABVCoordinateFrame@G3D@@@Z@Z": "0x608e90 (own row)",
+          "?classDescriptor@?$Described@VPVInstance@RBX@@$1?sPVInstance@2@3PADAVInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x585090 (external (evidence name))",
+          "??0?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x584440 (external (evidence name))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??_7?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@": "0x8428b8 (vtable RTTI .?AV?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@ offset 0x0)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0HP8PVInstance@RBX@@AEXABVCoordinateFrame@G3D@@@Z@?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@QAE@PBD0HP8PVInstance@2@AEXABVCoordinateFrame@G3D@@@ZW4Functionality@PropertyDescriptor@12@@Z"
+        ],
+        "vtables": [
+          "??_7?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@"
+        ],
+        "counted": false,
+        "not_counted_reason": "references vtables whose slots are not all proven: ??_7?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@"
+      },
+      {
+        "address": "006094c0",
+        "symbol": "??$?0P8PVInstance@RBX@@BE_NXZP801@AEX_N@Z@?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@QAE@PBD0P8PVInstance@2@BE_NXZP832@AEX_N@ZW4Functionality@PropertyDescriptor@12@@Z",
+        "size": 193,
+        "target_size": 193,
+        "exact": true,
+        "verified_targets": {
+          "??$getset@P8PVInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@P8PVInstance@2@BE_NXZP852@AEX_N@Z@Z": "0x608ee0 (own row)",
+          "?classDescriptor@?$Described@VPVInstance@RBX@@$1?sPVInstance@2@3PADAVInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x585090 (external (evidence name))",
+          "??0?$TypedPropertyDescriptor@_N@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x40a290 (external (evidence name))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??_7?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@6B@": "0x8428ec (vtable RTTI .?AV?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@ offset 0x0)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0P8PVInstance@RBX@@BE_NXZP801@AEX_N@Z@?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@QAE@PBD0P8PVInstance@2@BE_NXZP832@AEX_N@ZW4Functionality@PropertyDescriptor@12@@Z"
+        ],
+        "vtables": [
+          "??_7?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@6B@"
+        ],
+        "counted": false,
+        "not_counted_reason": "references vtables whose slots are not all proven: ??_7?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@6B@"
+      },
+      {
+        "address": "006098d0",
+        "symbol": "??0PVInstance@RBX@@IAE@PBD@Z",
+        "size": 228,
+        "target_size": 228,
+        "exact": true,
+        "verified_targets": {
+          "??_8PVInstance@RBX@@7B@": "0x830fac (vbtable bytes ccfeffff6c000000)",
+          "??0Instance@RBX@@QAE@PBD@Z": "0x55b960 (external)",
+          "?classDescriptor@?$Described@VPVInstance@RBX@@$1?sPVInstance@2@3PADAVInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x585090 (external (evidence name))",
+          "?computeIsControllable@PVInstance@RBX@@ABE_NXZ": "0x608da0 (own row)",
+          "?computeIsTopFlag@PVInstance@RBX@@ABE_NXZ": "0x6090c0 (own row)",
+          "?computeTopPVController@PVInstance@RBX@@ABE?AV?$ReferenceCountedPointer@VController@RBX@@@G3D@@XZ": "0x609690 (call target of a built, non-counted row)"
+        },
+        "local_eh": [
+          "__ehhandler$??0PVInstance@RBX@@IAE@PBD@Z"
+        ],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "006099c0",
+        "symbol": "?setControllerType@PVInstance@RBX@@QAEXW4ControllerType@Controller@2@@Z",
+        "size": 53,
+        "target_size": 53,
+        "exact": true,
+        "verified_targets": {
+          "?prop_ControllerType@PVInstance@RBX@@2V?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@2@B": "0x97b994 (data)",
+          "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00609a00",
+        "symbol": "?setShowControllerFlag@PVInstance@RBX@@QAEX_N@Z",
+        "size": 34,
+        "target_size": 34,
+        "exact": true,
+        "verified_targets": {
+          "_prop_ControllerFlagShown": "0x97b9d4 (data)",
+          "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      }
+    ]
+  },
+  "aliases": [
+    {
+      "address": "00608a60",
+      "symbol": "?onChildRemoving@PVInstance@RBX@@MAEXPAVInstance@2@@Z",
+      "size": 56,
+      "target_size": 56,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVPVInstance@RBX@@@8": "0x947f1c (RTTI .?AVPVInstance@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": [],
+      "vtables": [],
+      "counted": false,
+      "note": "ICF alias of the counted row"
+    }
+  ],
+  "not_exact": [
+    {
+      "address": "00606780",
+      "symbol": "?computeForce@ContactConnector@RBX@@UAEXM_N@Z",
+      "size": 720,
+      "target_size": 720,
+      "exact": false,
+      "reason": "720 / 720 B: two x87 scheduling spots differ (the original folds `frictionOffset.x +=` into `fadd [esi+0x44]` and pops the friction-clamp branch stack in the other order). Rejected: `frictionOffset += dt * perpVel` / `perpVel * dt` (same bytes), `frictionOffset = frictionOffset + perpVel * dt` / `= perpVel * dt + frictionOffset` (724 B), a named `delta` local (same bytes)."
+    },
+    {
+      "address": "006064a0",
+      "symbol": "?computeForce@RotateConnector@RBX@@UAEXM_N@Z",
+      "size": 304,
+      "target_size": 304,
+      "exact": false,
+      "reason": "304 / 304 B with native-headers/v8kernel/KernelInput2008.h (the goal is read before the increment is added, 006064e6..006064f9, now exact); what remains is register / x87 scheduling of the two inline Body::accumulateTorque copies: the original walks connector->ref0->body->root->simBody through eax / ecx / edx where this build reuses eax, and the second copy adds `v2 + torque` for x and `torque + v2` for y / z (this build the reverse). Rejected: a named `negV2` local (same diff), `(currentGoal - rotation) * k * normal` (302 B); the donor KernelInput setGoal + get (302 B, batch 20)."
+    },
+    {
+      "address": "00609690",
+      "symbol": "?computeTopPVController@PVInstance@RBX@@ABE?AV?$ReferenceCountedPointer@VController@RBX@@@G3D@@XZ",
+      "size": 511,
+      "target_size": 573,
+      "exact": false,
+      "reason": "the original inlines the top-level test (dynamic_cast of the parent, then an out-of-line getTypedRoot<PVInstance> 005836d0) and keeps one more RCP copy; the native header form calls isTopLevelPVInstance out of line (511 / 573 B). Rejected: an explicit `queryTypedParent() && getTypedRoot() != getTypedParent()` (602 B, getTypedRoot inlined)."
+    },
+    {
+      "address": "00609590",
+      "symbol": "??$?0P8PVInstance@RBX@@BE?AW4ControllerType@Controller@1@XZP801@AEXW4231@@Z@?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@QAE@PBD0P8PVInstance@2@BE?AW4ControllerType@Controller@2@XZP832@AEXW4452@@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 195,
+      "target_size": 244,
+      "exact": false,
+      "reason": "the 2008 EnumPropDescriptor constructor runs boost::call_once(00609400, 0097b98c) before EnumDesc::singleton; the shared native reflection.h constructor does not (195 / 244 B, see PROPOSALS)."
+    },
+    {
+      "address": "0060d6e0",
+      "symbol": "?getHit@ContactManager@RBX@@QBEPAVPrimitive@2@ABVRay@G3D@@PBV?$Array@PBVPrimitive@RBX@@@5@PBVHitTestFilter@2@AAVVector3@5@AA_N@Z",
+      "size": 141,
+      "target_size": 139,
+      "exact": false,
+      "status": "pending-build-near-miss",
+      "reason": "141 / 139 B in the pending build: the original keeps `stopped` in the dead stack slot of the `inside` parameter (lea eax, [esp + 0x20]) where this build opens a local (push ecx). Rejected: declaring `stopped` before world->update() (same 141 B)."
+    }
+  ],
+  "bounds": [
+    {
+      "address": "00608fa0",
+      "symbol": "?clearLegacyOffset@PVInstance@RBX@@QAEXXZ",
+      "size": 128,
+      "target_size": 278,
+      "exact": false,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (external (evidence name))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??_R0?AVPVInstance@RBX@@@8": "0x947f1c (RTTI .?AVPVInstance@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "?clearLegacyOffset@PVInstance@RBX@@QAEXXZ": "0x608fa0 (call target of a built, non-counted row)"
+      },
+      "local_eh": [],
+      "vtables": [],
+      "prefix_exact": true,
+      "counted": false,
+      "status": "bounds",
+      "reason": "function-list extent is 278 bytes; the body ends at 128 bytes (BOUNDS evidence)"
+    }
+  ],
+  "pending_rows": [
+    {
+      "address": "006089a0",
+      "symbol": "?readProperty@PVInstance@RBX@@MAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z",
+      "size": 190,
+      "target_size": 190,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_07HAEFGBDM@Feature?$AA@": "0x830598 (literal 'Feature')",
+        "__imp_?compare@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEHIIPBDI@Z": "0x8024f4 (msvcp90.dll!?compare@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEHIIPBDI@Z)",
+        "?name_name@@3ABVName@RBX@@B": "0x975338 (data)",
+        "?findAttribute@XmlElement@@QBEPBVXmlAttribute@@ABVName@RBX@@@Z": "0x57c2b0 (pending-build external)",
+        "?getValue@XmlNameValuePair@@QBE_NAAPBVName@RBX@@@Z": "0x57c360 (pending-build external)",
+        "??_C@_04JOHCFHID@Part?$AA@": "0x8329ec (literal 'Part')",
+        "?readProperties@Instance@RBX@@QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z": "0x557920 (pending-build external)",
+        "??_C@_04BGCMBJDA@Item?$AA@": "0x830584 (literal 'Item')",
+        "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z": "0x559170 (pending-build external)"
+      },
+      "local_eh": [],
+      "vtables": [],
+      "pending_build_exact": true,
+      "status": "pending-build-only",
+      "reason": "exact only with the generated Instance.h that declares Instance::readProperties 00557920 (see PROPOSALS)"
+    },
+    {
+      "address": "00606bc0",
+      "symbol": "?contactPairHitRatio@Contact@RBX@@SAMXZ",
+      "size": 38,
+      "target_size": 38,
+      "exact": false,
+      "verified_targets": {
+        "?contactPairMatches@Contact@RBX@@2HA": "0x97b880 (pending-build external)",
+        "?contactPairMisses@Contact@RBX@@2HA": "0x97b884 (pending-build external)",
+        "__real@bf800000": "0x81c3b8 (constant bf800000)"
+      },
+      "local_eh": [],
+      "vtables": [],
+      "pending_build_exact": true,
+      "status": "pending-build-only",
+      "reason": "exact only with the generated Contact2008.h that declares the Contact hit counters and ratios (see PROPOSALS)"
+    },
+    {
+      "address": "00606bf0",
+      "symbol": "?contactFeatureHitRatio@Contact@RBX@@SAMXZ",
+      "size": 38,
+      "target_size": 38,
+      "exact": false,
+      "verified_targets": {
+        "?contactFeatureMatches@Contact@RBX@@2HA": "0x97b888 (pending-build external)",
+        "?contactFeatureMisses@Contact@RBX@@2HA": "0x97b88c (pending-build external)",
+        "__real@bf800000": "0x81c3b8 (constant bf800000)"
+      },
+      "local_eh": [],
+      "vtables": [],
+      "pending_build_exact": true,
+      "status": "pending-build-only",
+      "reason": "exact only with the generated Contact2008.h that declares the Contact hit counters and ratios (see PROPOSALS)"
+    },
+    {
+      "address": "00606c50",
+      "symbol": "?step@Contact@RBX@@QAE_NH@Z",
+      "size": 76,
+      "target_size": 76,
+      "exact": false,
+      "verified_targets": {
+        "?onNewTouch@Primitive@RBX@@SAXPAV12@0@Z": "0x5e7530 (pending-build external)"
+      },
+      "local_eh": [],
+      "vtables": [],
+      "pending_build_exact": true,
+      "status": "pending-build-only",
+      "reason": "exact only with the generated Contact2008.h that declares Contact::step(int) (see PROPOSALS); calls Primitive::onNewTouch 005e7530 through native-headers/v8world/Primitive2008.h"
+    },
+    {
+      "address": "0060d8b0",
+      "symbol": "?onNewPair@ContactManager@RBX@@QAEXPAVPrimitive@2@0@Z",
+      "size": 33,
+      "target_size": 33,
+      "exact": false,
+      "verified_targets": {
+        "?createContact@ContactManager@RBX@@AAEPAVContact@2@PAVPrimitive@2@0@Z": "0x60d770 (own row)",
+        "?insertContact@World@RBX@@QAEXPAVContact@2@@Z": "0x5e9260 (pending-build external)"
+      },
+      "local_eh": [],
+      "vtables": [],
+      "pending_build_exact": true,
+      "status": "pending-build-only",
+      "reason": "exact only with the generated World declaration (World::insertContact 005e9260; see PROPOSALS)"
+    },
+    {
+      "address": "0060d8e0",
+      "symbol": "?onPrimitiveGeometryTypeChanged@ContactManager@RBX@@QAEXPAVPrimitive@2@@Z",
+      "size": 278,
+      "target_size": 278,
+      "exact": false,
+      "verified_targets": {
+        "?getFirstContact@Primitive@RBX@@QAEPAVContact@2@XZ": "0x5e7bd0 (external (evidence name))",
+        "?createContact@ContactManager@RBX@@AAEPAVContact@2@PAVPrimitive@2@0@Z": "0x60d770 (own row)",
+        "?append@?$Array@PAVContact@RBX@@@G3D@@QAEXABQAVContact@RBX@@@Z": "0x60d0d0 (own row)",
+        "?resize@?$Array@PAVContact@RBX@@@G3D@@QAEXH_N@Z": "0x60cfd0 (own row)",
+        "?destroyContact@World@RBX@@QAEXPAVContact@2@@Z": "0x5e9280 (pending-build external)",
+        "?insertContact@World@RBX@@QAEXPAVContact@2@@Z": "0x5e9260 (pending-build external)",
+        "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?onPrimitiveGeometryTypeChanged@ContactManager@RBX@@QAEXPAVPrimitive@2@@Z"
+      ],
+      "vtables": [],
+      "pending_build_exact": true,
+      "status": "pending-build-only",
+      "reason": "exact only with the generated World declaration (World::insertContact 005e9260 / destroyContact 005e9280)"
+    },
+    {
+      "address": "00606ca0",
+      "symbol": "?computeIsAdjacent@Contact@RBX@@QAE_NM@Z",
+      "size": 51,
+      "target_size": 51,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "vtables": [],
+      "pending_build_exact": true,
+      "status": "pending-build-only",
+      "reason": "exact only with the generated Contact2008.h that declares Contact::computeIsAdjacent(float) (see PROPOSALS)"
+    }
+  ],
+  "vtables": {
+    "??_7?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@6B@": {
+      "address": "008428ac",
+      "ok": true,
+      "slots": [
+        {
+          "slot": 0,
+          "symbol": "??_E?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+          "original": "00609380",
+          "ok": true,
+          "how": "own row (??_G)"
+        },
+        {
+          "slot": 1,
+          "symbol": "?lookup@?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@UBEPBVItem@EnumDescriptor@23@PBD@Z",
+          "original": "004aa0d0",
+          "ok": true,
+          "how": "body exact at the original slot target"
+        }
+      ]
+    },
+    "??_7?$GetSetImpl@P8PVInstance@RBX@@BE?AW4ControllerType@Controller@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@6B@": {
+      "address": "00842898",
+      "ok": true,
+      "slots": [
+        {
+          "slot": 0,
+          "symbol": "?isReadOnly@?$GetSetImpl@P8PVInstance@RBX@@BE?AW4ControllerType@Controller@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@UBE_NXZ",
+          "original": "0060a2f0",
+          "ok": true,
+          "how": "body exact at the original slot target"
+        },
+        {
+          "slot": 1,
+          "symbol": "?isWriteOnly@?$GetSetImpl@P8PVInstance@RBX@@BE?AW4ControllerType@Controller@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@UBE_NXZ",
+          "original": "0060a2f0",
+          "ok": true,
+          "how": "body exact at the original slot target"
+        },
+        {
+          "slot": 2,
+          "symbol": "?getValue@?$GetSetImpl@P8PVInstance@RBX@@BE?AW4ControllerType@Controller@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@UBE?AW4ControllerType@Controller@4@PBVDescribedBase@34@@Z",
+          "original": "00584020",
+          "ok": true,
+          "how": "body exact at the original slot target"
+        },
+        {
+          "slot": 3,
+          "symbol": "?setValue@?$GetSetImpl@P8PVInstance@RBX@@BE?AW4ControllerType@Controller@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABW4ControllerType@Controller@4@@Z",
+          "original": "00608cd0",
+          "ok": true,
+          "how": "body exact at the original slot target"
+        }
+      ]
+    },
+    "??_7?$GetSetImpl@P8PVInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@6B@": {
+      "address": "00842884",
+      "ok": true,
+      "slots": [
+        {
+          "slot": 0,
+          "symbol": "?isReadOnly@?$GetSetImpl@P8PVInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@UBE_NXZ",
+          "original": "0060a2f0",
+          "ok": true,
+          "how": "body exact at the original slot target"
+        },
+        {
+          "slot": 1,
+          "symbol": "?isWriteOnly@?$GetSetImpl@P8PVInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@UBE_NXZ",
+          "original": "0060a2f0",
+          "ok": true,
+          "how": "body exact at the original slot target"
+        },
+        {
+          "slot": 2,
+          "symbol": "?getValue@?$GetSetImpl@P8PVInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@UBE_NPBVDescribedBase@34@@Z",
+          "original": "00584020",
+          "ok": true,
+          "how": "body exact at the original slot target"
+        },
+        {
+          "slot": 3,
+          "symbol": "?setValue@?$GetSetImpl@P8PVInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@UBEXPAVDescribedBase@34@AB_N@Z",
+          "original": "00599db0",
+          "ok": true,
+          "how": "body exact at the original slot target"
+        }
+      ]
+    },
+    "??_7?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@": {
+      "address": "008428b8",
+      "ok": false,
+      "slots": [
+        {
+          "slot": 0,
+          "symbol": "??_E?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@UAEPAXI@Z",
+          "original": "00598310",
+          "ok": true,
+          "how": "??_G body exact at the original slot target"
+        },
+        {
+          "slot": 1,
+          "symbol": "?isReadOnly@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ",
+          "original": "0059a4a0",
+          "ok": true,
+          "how": "body exact at the original slot target"
+        },
+        {
+          "slot": 2,
+          "symbol": "?isWriteOnly@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ",
+          "original": "00443310",
+          "ok": false,
+          "how": "unbound"
+        },
+        {
+          "slot": 3,
+          "symbol": "?equalValues@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z",
+          "original": "005846d0",
+          "ok": false,
+          "how": "body exact at the original slot target"
+        },
+        {
+          "slot": 4,
+          "symbol": "?getVariant@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z",
+          "original": "00584c30",
+          "ok": false,
+          "how": "unbound"
+        },
+        {
+          "slot": 5,
+          "symbol": "?setVariant@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z",
+          "original": "00584f70",
+          "ok": false,
+          "how": "unbound"
+        },
+        {
+          "slot": 6,
+          "symbol": "?hasStringValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ",
+          "original": "0060a2f0",
+          "ok": false,
+          "how": "body exact at the original slot target"
+        },
+        {
+          "slot": 7,
+          "symbol": "?getStringValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z",
+          "original": "005eecf0",
+          "ok": false,
+          "how": "unbound"
+        },
+        {
+          "slot": 8,
+          "symbol": "?setStringValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "005eedf0",
+          "ok": false,
+          "how": "unbound"
+        },
+        {
+          "slot": 9,
+          "symbol": "?read@PropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+          "original": "0056be00",
+          "ok": false,
+          "how": "unbound"
+        },
+        {
+          "slot": 10,
+          "symbol": "?writeValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z",
+          "original": "0059aeb0",
+          "ok": false,
+          "how": "unbound"
+        },
+        {
+          "slot": 11,
+          "symbol": "?readValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+          "original": "0059acb0",
+          "ok": false,
+          "how": "unbound"
+        }
+      ]
+    },
+    "??_7?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@6B@": {
+      "address": "008428ec",
+      "ok": false,
+      "slots": [
+        {
+          "slot": 0,
+          "symbol": "??_E?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@RBX@@UAEPAXI@Z",
+          "original": "00598310",
+          "ok": true,
+          "how": "??_G body exact at the original slot target"
+        },
+        {
+          "slot": 1,
+          "symbol": "?isReadOnly@?$TypedPropertyDescriptor@_N@Reflection@RBX@@UBE_NXZ",
+          "original": "0059a4a0",
+          "ok": true,
+          "how": "body exact at the original slot target"
+        },
+        {
+          "slot": 2,
+          "symbol": "?isWriteOnly@?$TypedPropertyDescriptor@_N@Reflection@RBX@@UBE_NXZ",
+          "original": "00443310",
+          "ok": false,
+          "how": "unbound"
+        },
+        {
+          "slot": 3,
+          "symbol": "?equalValues@?$TypedPropertyDescriptor@_N@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z",
+          "original": "0040a5c0",
+          "ok": false,
+          "how": "body exact at the original slot target"
+        },
+        {
+          "slot": 4,
+          "symbol": "?getVariant@?$TypedPropertyDescriptor@_N@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z",
+          "original": "0040a660",
+          "ok": false,
+          "how": "unbound"
+        },
+        {
+          "slot": 5,
+          "symbol": "?setVariant@?$TypedPropertyDescriptor@_N@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z",
+          "original": "0040aa70",
+          "ok": false,
+          "how": "unbound"
+        },
+        {
+          "slot": 6,
+          "symbol": "?hasStringValue@?$TypedPropertyDescriptor@_N@Reflection@RBX@@UBE_NXZ",
+          "original": "00565950",
+          "ok": true,
+          "how": "body exact at the original slot target"
+        },
+        {
+          "slot": 7,
+          "symbol": "?getStringValue@?$TypedPropertyDescriptor@_N@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z",
+          "original": "0056e100",
+          "ok": true,
+          "how": "evidence name"
+        },
+        {
+          "slot": 8,
+          "symbol": "?setStringValue@?$TypedPropertyDescriptor@_N@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "0056e140",
+          "ok": false,
+          "how": "unbound"
+        },
+        {
+          "slot": 9,
+          "symbol": "?read@PropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+          "original": "0056be00",
+          "ok": false,
+          "how": "unbound"
+        },
+        {
+          "slot": 10,
+          "symbol": "?writeValue@?$TypedPropertyDescriptor@_N@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z",
+          "original": "0056e7b0",
+          "ok": false,
+          "how": "unbound"
+        },
+        {
+          "slot": 11,
+          "symbol": "?readValue@?$TypedPropertyDescriptor@_N@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+          "original": "0056e6e0",
+          "ok": false,
+          "how": "unbound"
+        }
+      ]
+    },
+    "??_7?$SetImpl@P8PVInstance@RBX@@AEXABVCoordinateFrame@G3D@@@Z@?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@": {
+      "address": "00842870",
+      "ok": true,
+      "slots": [
+        {
+          "slot": 0,
+          "symbol": "?isReadOnly@?$SetImpl@P8PVInstance@RBX@@AEXABVCoordinateFrame@G3D@@@Z@?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ",
+          "original": "0060a2f0",
+          "ok": true,
+          "how": "body exact at the original slot target"
+        },
+        {
+          "slot": 1,
+          "symbol": "?isWriteOnly@?$SetImpl@P8PVInstance@RBX@@AEXABVCoordinateFrame@G3D@@@Z@?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ",
+          "original": "00565950",
+          "ok": true,
+          "how": "body exact at the original slot target"
+        },
+        {
+          "slot": 2,
+          "symbol": "?getValue@?$SetImpl@P8PVInstance@RBX@@AEXABVCoordinateFrame@G3D@@@Z@?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE?AVCoordinateFrame@G3D@@PBVDescribedBase@34@@Z",
+          "original": "00608c20",
+          "ok": true,
+          "how": "own row"
+        },
+        {
+          "slot": 3,
+          "symbol": "?setValue@?$SetImpl@P8PVInstance@RBX@@AEXABVCoordinateFrame@G3D@@@Z@?$PropDescriptor@VPVInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABVCoordinateFrame@G3D@@@Z",
+          "original": "00608c90",
+          "ok": true,
+          "how": "own row"
+        }
+      ]
+    },
+    "??_7runtime_error@std@@6B@": {
+      "address": "0080b7f8",
+      "ok": false,
+      "slots": [
+        {
+          "slot": 0,
+          "symbol": "??_Eruntime_error@std@@UAEPAXI@Z",
+          "original": "00409dc0",
+          "ok": true,
+          "how": "??_G body exact at the original slot target"
+        },
+        {
+          "slot": 1,
+          "symbol": "?what@runtime_error@std@@UBEPBDXZ",
+          "original": "00409db0",
+          "ok": false,
+          "how": "body exact at the original slot target"
+        }
+      ]
+    }
+  },
+  "exact_function_rows": [
+    "00606100",
+    "00606250",
+    "006062e0",
+    "006065d0",
+    "00606670",
+    "00606a50",
+    "00607ad0",
+    "00608950",
+    "00608960",
+    "00608a60",
+    "00608aa0",
+    "00608b60",
+    "00608ba0",
+    "00608bd0",
+    "00608bf0",
+    "00608c90",
+    "00608d10",
+    "00608da0",
+    "00608e70",
+    "00608e90",
+    "00608ee0",
+    "00608f40",
+    "006090c0",
+    "00609150",
+    "006091f0",
+    "00609380",
+    "006093a0",
+    "006098d0",
+    "006099c0",
+    "00609a00",
+    "0060cfd0",
+    "0060d0d0",
+    "0060d200",
+    "0060d630",
+    "0060d770",
+    "0060db10",
+    "0060dba0",
+    "0060dc10",
+    "0060dcd0"
+  ],
+  "exact_but_vtable_unproven_rows": [
+    "00608c20",
+    "00609410",
+    "006094c0"
+  ],
+  "proposals": {
+    "native-headers/v8tree/Instance.h (core owner)": "declare `void readProperties(const ::XmlElement*, IReferenceBinder&);` public (evidence name ?readProperties@Instance@RBX@@QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z at 00557920, called by PVInstance::readProperty 006089a0 at 00608a12 / 00608a42). With it PVInstance::readProperty is exact (pending build, generated copy out/native-layouts/contact-unit2008-pending/v8tree/Instance.h).",
+    "native-headers/v8datamodel/PVInstance.h (owner of the shared PVInstance header), FYI": "the header layout is the 2008 one: the constructor 006098d0 and 26 unit rows are exact against it (IsControllable +0x140, IsTopFlag +0x158, TopPVController +0x170 with the member-function pointer at +0x180, controllerType +0x194, showControllerFlag +0x198, legacyOffset +0x19c, vbptr +0x134). No change needed.",
+    "native-headers/reflection/reflection.h (reflection owner)": "the 2008 EnumPropDescriptor<PVInstance, ControllerType> constructor 00609590 (244 B) first runs boost::call_once(00609400, flag 0097b98c), where 00609400 is `jmp EnumDesc<ControllerType>::singleton` 006093a0, then calls singleton() and PropertyDescriptor(classDescriptor, type, ...) 0056c650; the native reflection.h constructor (195 B) calls the singleton once without call_once. Not changed here.",
+    "native-headers/v8world/Contact2008.h (world-shapes owner)": "declare in Contact (public): `bool step(int uiStepId);` (00606c50: stepContact slot 6, Primitive::onNewTouch 005e7530 when lastContactStep +0x20 is -1, then lastContactStep = uiStepId, else reset to -1 when it is older), `bool computeIsAdjacent(float spaceAllowed);` (00606ca0, evidence name ?computeIsAdjacent@Contact@RBX@@QAE_NM@Z: computeIsColliding slot 7 with +space then -space), the static counters `int contactPairMatches` 0097b880 / `contactPairMisses` 0097b884 (++ by BlockBlockContact 00607d3b / 00607d07) and `contactFeatureMatches` 0097b888 / `contactFeatureMisses` 0097b88c (++ by 00607588 / 00607548), and `static float contactPairHitRatio();` 00606bc0 / `contactFeatureHitRatio();` 00606bf0 (DataModel::evaluate 005760a1 / 005760d5). With them the four rows are exact (/fp:fast, pending build against out/native-layouts/contact-unit2008-bodyprim-pending/v8world/Contact2008.h; bodies in native-classes/ContactUnit2008Contact.cpp under NATIVE_BODYPRIM_PENDING). The class of the ratio functions is an analog (the binary has no name for them).",
+    "native-headers/v8kernel/Connector2008.h (kernel / world-joints owner)": "the header includes the donor v8kernel/Body.h, Point.h and Pair.h, whose Body layout is not the 2008 one (root +0x4 there, +0x10 in 2008; canThrottle +0x24 vs +0x30; pv +0x88 vs +0x94). Proposal: include native-headers/v8kernel/Body2008.h, v8kernel/Point2008.h and v8world/GeoPair2008.h (the 2008 Body / Point / GeoPair, layouts checked by body-primitive2008-working.json) instead, and declare in ContactConnector `static int numActiveConnectors;` 0097b878 (++ by computeForce 00606832 when the pair length is negative), `static int numInactiveConnectors;` 0097b87c (++ at 00606a1b) and `static float percentConnectorsActive();` 00606100 (DataModel::evaluate 005762f3; -1 when the sum is 0, then resets both). Until then native-classes/ContactUnit2008ConnectorBody.cpp redeclares Connector / ContactConnector / PointToPointBreakConnector / NormalBreakConnector / RotateConnector unit-locally on those 2008 headers (same bases, slots, fields; no ctor or vtable emitted) and counts percentConnectorsActive 00606100, ContactConnector::canThrottle 00606250, RotateConnector::computeParams 006062e0 (private member, analog name), NormalBreakConnector::computeForce 00606670 and GeoPair::match 00606a50. Switching would need the world-joints units that include the donor Edge / Joint headers (donor Body.h) to be checked first, which is why it is a proposal.",
+    "World owner (no native 2008 World header; donor v8world/World.h reaches the donor Primitive.h)": "declare in a non-colliding native World header (e.g. v8world/World2008.h): `void insertContact(Contact* c);` 005e9260 and `void destroyContact(Contact* c);` 005e9280 (evidence names; onNewPair 0060d8c8, onPrimitiveGeometryTypeChanged 0060d995 / 0060d9c1) and the out-of-line member at 005e9520 that getHit 0060d6e8 calls before getFastHit (walks the stage list from World +0x88 to the stage whose getStageType() is 2, then jumps to 0064cad0; donor name World::update). With the generated declaration out/native-layouts/contact-unit2008-world-pending/v8world/World2008.h, ContactManager::onNewPair 0060d8b0 and onPrimitiveGeometryTypeChanged 0060d8e0 are byte-exact with every target verified (pending-build-only rows); getHit 0060d6e0 is a 141 / 139 B near miss there.",
+    "native-headers/v8kernel/Connector2008.h / world-joints owner, FYI (KernelInput)": "native-headers/v8kernel/KernelInput2008.h now declares the 2008 KernelInput (fields from RotateConnector() 00606170: lastGoal +0x24, currentGoal +0x28, increment +0x2c, latchToZero +0x30 of the connector; setGoal returns the goal read before the increment is added, 006064e6..006064f9). Connector2008.h still includes the donor v8kernel/Connector.h chain with the donor KernelInput (it adds the increment first); RotateConnector::computeForce 006064a0 is 304 / 304 B against KernelInput2008.h here (scheduling of the inline accumulateTorque copies remains).",
+    "native-headers/part-embedded/v8world/Primitive.h owner, FYI": "the 2008 Primitive is now declared at native-headers/v8world/Primitive2008.h (0xfc, checked by both recorders); its EdgeList second array is G3D::Array<Primitive*> (EdgeList::insertEdge 005e8990 appends the other primitive with Array<Primitive*>::append 0059a190; removeEdge 005e8610 resizes it with Array<Primitive*>::resize 00599a70), not the Array<Edge*> `pending` of the part-embedded header. No change is required."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

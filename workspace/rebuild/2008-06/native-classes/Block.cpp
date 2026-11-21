@@ -57,6 +57,12 @@ namespace RBX
 
 	BlockTemplate::BlockTemplates BlockTemplate::blockTemplates;
 
+	// 005e7390: vtable slot 6, tail of getMomentHollow (was inline in Block2008.h).
+	G3D::Matrix3 Block::getMoment(float mass) const
+	{
+		return getMomentHollow(mass);
+	}
+
 	// 006477b0: thin-shell moment per axis (main axis x, then the two others cyclically).
 	G3D::Matrix3 Block::getMomentHollow(float mass) const
 	{

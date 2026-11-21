@@ -2,7 +2,7 @@
 // 2008-06 native RBX::UnifiedWidget layout and drawing rows of the original gui/GUI.cpp unit (inactive):
 // childOffset 005735a0, TopMenuBar::render2d 00574050, render2dMe 00574170, render2d 00574300, firstChildPosition 00574330,
 // getChildPosition 00574400 and onLoseFocus 005cf4e0 (COMDAT-folded with Widget::onLoseFocus: one store of NOTHING at
-// +0x144). Class in native-headers/gui/Gui.h (read-only here). render2dChildren 00574280 is called, not compiled here.
+// +0x144) and render2dChildren 00574280. Class in native-headers/gui/Gui.h (read-only here).
 // render2dMe inlines GuiItem::menuSelect (00573250, the same local static 00974e2c guarded by 00974e3c), so that getter
 // is defined in this unit ahead of render2dMe, as in the original GUI.cpp.
 #include "gui/Gui.h"
@@ -22,6 +22,41 @@ namespace RBX
 	{
 		G3D::Vector2 position = getPosition();
 		return Rect(position, position + getSize());
+	}
+
+	// 00573360 (203 B, ret 0x14): ?label2d@GuiItem@RBX@@IBEXPAVAdorn@2@ABV?$basic_string@...@ABVColor4@G3D@@2W4XAlign@32@@Z
+	// (registry). Body of the donor openrbx gui/GUI.cpp GuiItem::label2d: empty label returns; getMyRect 00573310;
+	// size/center (0.5f 00819bac); XALIGN_RIGHT high.x - 0.1f (0081e704) * size.x, XALIGN_LEFT low.x + ...;
+	// getFontSize (slot 0x50), then Adorn::drawFont2D (slot 0x34) with YALIGN_CENTER (2), PROPORTIONAL_SPACING (0).
+	// PARKED after 3 hypotheses (203 B, same size): only the x87 commutative mirror of center().x remains (target
+	// fld st(2); fadd st(1) = high.x + low.x, candidate fld st(0); fadd st(3)). Rejected: (high + low) * 0.5f inline
+	// (also mirrors y and swaps esi/edi, 201 B); center() before size() (fstp/fxch reshuffle in the switch).
+	void GuiItem::label2d(Adorn* adorn, const std::string& label, const G3D::Color4& fill, const G3D::Color4& border,
+		Adorn::XAlign align) const
+	{
+		if (label.size() == 0)
+			return;
+
+		Rect myRect = getMyRect();
+
+		G3D::Vector2 size = myRect.size();
+		G3D::Vector2 pos = myRect.center();
+
+		switch (align)
+		{
+		case Adorn::XALIGN_RIGHT:
+			pos.x = myRect.high.x - size.x * 0.1f;
+			break;
+
+		case Adorn::XALIGN_CENTER:
+			break;
+
+		default:
+			pos.x = myRect.low.x + size.x * 0.1f;
+			break;
+		}
+
+		adorn->drawFont2D(label, pos, getFontSize(), fill, border, align, Adorn::YALIGN_CENTER, Adorn::PROPORTIONAL_SPACING);
 	}
 
 	// 005735a0: (0, 28.0f 0082f864).
@@ -56,6 +91,22 @@ namespace RBX
 		adorn->rect2d(getMyRect2D(), menuState != NOTHING ? menuSelect() : G3D::Color4(G3D::Color3::white()));
 		adorn->outlineRect2d(getMyRect2D(), 1.0f, G3D::Color3::black());
 		label2d(adorn, getName(), G3D::Color3::black(), G3D::Color4::clear(), Adorn::XALIGN_CENTER);
+	}
+
+	// 00574280 (func_00574280, 119 B, ret 4): identity from the donor openrbx GUI.cpp UnifiedWidget::render2dChildren
+	// (showChildren, then render2d of every GuiItem child) and its only caller render2d 00574300 below; numChildren
+	// 0048ae20, dynamic_cast Instance 0092907c -> GuiItem 0092b8d8, GuiItem::render2d vtable slot 0x60.
+	void UnifiedWidget::render2dChildren(Adorn* adorn)
+	{
+		if (showChildren())
+		{
+			for (size_t i = 0; i < numChildren(); ++i)
+			{
+				GuiItem* item = dynamic_cast<GuiItem*>(getChild(i));
+				if (item)
+					item->render2d(adorn);
+			}
+		}
 	}
 
 	// 00574300: isVisible (slot 21), render2dMe (slot 28), render2dChildren 00574280.

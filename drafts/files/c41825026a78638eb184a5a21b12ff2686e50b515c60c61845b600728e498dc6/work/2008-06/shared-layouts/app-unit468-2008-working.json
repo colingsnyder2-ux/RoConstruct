@@ -1,0 +1,728 @@
+{
+  "class": "CFileVersionInfo unit and unit map of the application range 00468000..00474000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), /fp:fast",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit468-2008/NativeAppUnit468Layout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit468-2008/NativeAppUnit468Layout.cpp"
+    ],
+    "fvi": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit468-2008/NativeAppUnit468_2008_fvi.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit468_2008FileVersionInfo.cpp"
+    ],
+    "fvi_pending": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit468-2008/pending",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/DNATIVE_APPUNIT468_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit468-2008/NativeAppUnit468_2008_fvi_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit468_2008FileVersionInfo.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit468_2008.py": "6e83d542a115be5ad00fe6e81df8bc5217664ec0281ba530392e330ffcf767e1",
+    "rebuild/2008-06/native-classes/AppUnit468_2008FileVersionInfo.cpp": "280785adcb580dcd6033c079db6c1308ef153c5940dd968c9e2c802b23221d72",
+    "rebuild/2008-06/native-headers/CFileVersionInfo.h": "50e4b987ed1f98531c1f4d0db0dedb13e2270241215762ee754843e74da95309",
+    "rebuild/2008-06/native-headers/util/UserInputBase.h": "e01d460513fb8d7e99e89980c1da33e10c161d3e067f92ac7c2218d30bf638e8"
+  },
+  "objects": {
+    "layout": "3cd9639250f851b7f74692f24328a14ea6fb922c7cc853d510f703bdde05e7f3",
+    "fvi": "8f659e8a35070cef290526300e7261b2a6533a63339abaf32e67c4f26cebf818",
+    "fvi_pending": "438c9b3ed7a43102ca75a9120bdb4d14bc09001dc800e974ac8fd0c2105ae803"
+  },
+  "layout": {
+    "fileVersionInfo": "0x14",
+    "userInputBase": "0x28"
+  },
+  "unit_map": {
+    "dxuserinput 00468000..0046a1ff": {
+      "rows": 32,
+      "bytes": 8333,
+      "first": "row 00468050",
+      "counted_elsewhere": [],
+      "counted_here": 0,
+      "last": "row 0046a1b0",
+      "unit": "DxUserInput.cpp (global-namespace DxUserInput : RBX::UserInputBase, Listener<RunService, RunTransition>, Listener<RunService, Heartbeat>; DirectInput 8 mouse / keyboard input). Starts below 00468000 (vtable 0081c404 slots 0 / 1 / 5 / 6 are 00467c50 / 00467a90 / 00467cb0 / 00467530; the out-of-line ~UserInputBase 00467770 is called by ~DxUserInput 00469052). In range: ctor 004690f0 (new 0x194 at 0045f9af, call 0045f9d0), dtor 00468e90, the deleting dtor 004690d0 and its two this-adjusting thunks 004690b0 / 004690c0, the listener onEvent bodies 00468e70 (RunTransition, +0x28) and 004689c0 (Heartbeat, +0x2c), wrap mode 00469070 / 00469080, centerCursor 00469090, the CCritSecLock-guarded state updates and the DIK / VK key tables 00469360..0046a1b0. Not recovered: blocked by an unexplained DxUserInput member at +0x30 (see blocked).",
+      "library": false,
+      "recovered": false
+    },
+    "fileversioninfo 0046a200..0046a57f": {
+      "rows": 6,
+      "bytes": 837,
+      "first": "row 0046a200",
+      "counted_elsewhere": [],
+      "counted_here": 5,
+      "last": "row 0046a4f0",
+      "unit": "CFileVersionInfo (version-resource reader; native CFileVersionInfo.h): ctor 0046a200, Create(const CString&) 0046a220, GetVersionInfo 0046a370, GetFileVersion 0046a440, Reset 0046a4b0, Create(HMODULE) 0046a4f0. Built here (Create(HMODULE) pending-build-only).",
+      "library": false,
+      "recovered": true
+    },
+    "webtoolbox 0046a580..0046a93f": {
+      "rows": 15,
+      "bytes": 862,
+      "first": "row 0046a580",
+      "counted_elsewhere": [
+        "0046a580 counted by web-toolbox-working.json",
+        "0046a640 counted by web-toolbox-working.json",
+        "0046a660 counted by web-toolbox-working.json",
+        "0046a680 counted by web-toolbox-working.json",
+        "0046a6a0 counted by web-toolbox-working.json",
+        "0046a6d0 counted by web-toolbox-working.json",
+        "0046a6f0 counted by web-toolbox-working.json",
+        "0046a710 counted by web-toolbox-working.json",
+        "0046a7a0 counted by web-toolbox-working.json",
+        "0046a7c0 counted by web-toolbox-working.json",
+        "0046a7e0 counted by web-toolbox-working.json",
+        "0046a850 counted by web-toolbox-working.json",
+        "0046a8d0 counted by web-toolbox-working.json",
+        "0046a8e0 counted by web-toolbox-working.json"
+      ],
+      "counted_here": 0,
+      "last": "row 0046a8e0",
+      "unit": "CWebToolbox (native CWebToolbox.h / CWebToolbox.cpp; counted by web-toolbox-working.json): runtime class accessor 0046a580, setCategory 0046a590, open 0046a710, ??_G 0046a7e0 and create 0046a850 (vtable 0081c4f4). Not rebuilt here.",
+      "library": false,
+      "recovered": false
+    },
+    "workspace 0046a940..0046cabf": {
+      "rows": 35,
+      "bytes": 8332,
+      "first": "row 0046a940",
+      "counted_elsewhere": [
+        "0046a990 counted by workspace-events-trial.json",
+        "0046ab10 counted by workspace-events-trial.json",
+        "0046ac90 counted by content-factory-trial.json",
+        "0046b550 counted by workspace-xml-writer-mismatch.json",
+        "0046b750 counted by workspace-selection-serializer-trial.json",
+        "0046b8d0 counted by workspace-save-trial.json",
+        "0046bc90 counted by workspace-insert-url-trial.json",
+        "0046bd70 counted by workspace-write-trial.json",
+        "0046bfd0 counted by workspace-write-trial.json",
+        "0046c780 counted by workspace-save-trial.json",
+        "0046c920 counted by workspace-insert-url-trial.json"
+      ],
+      "counted_here": 0,
+      "last": "row 0046c920",
+      "unit": "Workspace.cpp, the ATL COM CWorkspace scripting object (CRobloxDoc.h owner; dozens of workspace-*-trial receipts): 0046a940 a shared_ptr getter called from the Doc rows 0044f8d0..00450a70, getWorkspace 0046a970 (Doc initializer 00451b60), the CComObject<CWorkspace> members, IObjectSafetyRobloxImpl<CWorkspace> 0046ab60, find 0046ae30, the ContentId set helpers 0046af90 / 0046b070 (evidence names), TextXmlWriterWithEmbeddedContent 0046b1e0 / 0046b550, ExecScript 0046b230, insert 0046b9d0, write 0046bd70 / 0046bfd0 (__FILE__ Workspace.cpp), execUrl 0046c430 and the site-trust check 0046c920. Other owners' area: not rebuilt here.",
+      "library": false,
+      "recovered": false
+    },
+    "ldraw 0046cac0..0046fc0f": {
+      "rows": 70,
+      "bytes": 12145,
+      "first": "row 0046cac0",
+      "counted_elsewhere": [],
+      "counted_here": 0,
+      "last": "row 0046f9f0",
+      "unit": "RBX::LDraw2Lua (native util/LDrawParser.h, LDrawMapRoot.h, LDrawEntities.h with the LDraw*.cpp sources and ldraw-*-trial receipts): LDraw2RobloxColorMap 0046cac0.., the BrickColor map / string-compare helpers, LDraw2RobloxMapRoot 0046d590 / 0046d710, LDraw2RobloxPartMap 0046e6b0, LuaObjectWriter / LDrawCommand 0046ea30..0046f000, LDrawParser 0046f110 / 0046f200 / 0046f6b0, LuaWriter 0046f630 / 0046f820 and stringCompareNoCase 0046f9f0. Other owners' area: not rebuilt here.",
+      "library": false,
+      "recovered": false
+    },
+    "g3d-glcaps 0046fc10..004729cf": {
+      "rows": 37,
+      "bytes": 11447,
+      "first": "row 0046fc10",
+      "counted_elsewhere": [
+        "004729b0 counted by user-controller-working.json"
+      ],
+      "counted_here": 0,
+      "last": "row 004729b0",
+      "unit": "G3D 6.09 GLG3Dcpp/GLCaps.cpp (library): the G3D header inlines iClamp 0046fc10 / iMin 0046fc30 / iMax 0046fc40 (evidence names), the supports_* inlines 0046fc50.., init / loadExtensions 004716f0, the Table<const TextureFormat*, bool> and Table<std::string, bool> / Set<std::string> instantiations 004713b0.. / 00472820.. and ReferenceCountedObject 00472990 / 004729b0 (counted by user-controller-working.json).",
+      "library": true,
+      "recovered": false
+    },
+    "g3d-texture 004729d0..00473fff": {
+      "rows": 26,
+      "bytes": 6308,
+      "first": "row 004729d0",
+      "counted_elsewhere": [],
+      "counted_here": 0,
+      "last": "row 00473fc0",
+      "unit": "G3D 6.09 GLG3Dcpp/Texture.cpp (library; continues past 00474000, see app-unit474-2008-working.json): its GL_SGIS_generate_mipmap helper 004729d0 (callers 00472f10 / 00473fc0 only), Texture vtable 0081e36c stores 004737b0 / 00473980, \"Illegal interpolate mode\" 00473250.",
+      "library": true,
+      "recovered": false
+    }
+  },
+  "evidence_checks": [
+    {
+      "row": "row 0046a220",
+      "block": "fileversioninfo",
+      "kind": "string",
+      "at": "data 0081c440",
+      "text": "\\VarFileInfo\\Translation"
+    },
+    {
+      "row": "row 0046a370",
+      "block": "fileversioninfo",
+      "kind": "string",
+      "at": "data 0081c45c",
+      "text": "\\StringFileInfo\\%04x%04x\\%s"
+    },
+    {
+      "row": "row 0046a440",
+      "block": "fileversioninfo",
+      "kind": "string",
+      "at": "data 0081c478",
+      "text": "FileVersion"
+    },
+    {
+      "row": "row 0046a590",
+      "block": "webtoolbox",
+      "kind": "string",
+      "at": "data 0081c4c4",
+      "text": "%s/IDE/ClientToolbox.aspx?Category=%d"
+    },
+    {
+      "row": "row 0046a710",
+      "block": "webtoolbox",
+      "kind": "string",
+      "at": "data 0081c724",
+      "text": "/IDE/ClientToolbox.aspx"
+    },
+    {
+      "row": "row 0046b230",
+      "block": "workspace",
+      "kind": "string",
+      "at": "data 0081c820",
+      "text": "DoExecScript failed because %s.  %s"
+    },
+    {
+      "row": "row 0046bd70",
+      "block": "workspace",
+      "kind": "string",
+      "at": "data 0081c850",
+      "text": ".\\Workspace.cpp"
+    },
+    {
+      "row": "row 0046c920",
+      "block": "workspace",
+      "kind": "string",
+      "at": "data 0080ea80",
+      "text": "Untrusted Url: %s"
+    },
+    {
+      "row": "row 0046f110",
+      "block": "ldraw",
+      "kind": "string",
+      "at": "data 0081cb78",
+      "text": "fonts\\LDraw2RobloxMap.xml"
+    },
+    {
+      "row": "row 0046f200",
+      "block": "ldraw",
+      "kind": "string",
+      "at": "data 0081cbac",
+      "text": "Roblox LDraw2Lua Conversion"
+    },
+    {
+      "row": "row 0046f6b0",
+      "block": "ldraw",
+      "kind": "string",
+      "at": "data 0081cc28",
+      "text": "local w = game:service(\"Workspace\")"
+    },
+    {
+      "row": "row 0046fc50",
+      "block": "g3d-glcaps",
+      "kind": "string",
+      "at": "data 0081cc80",
+      "text": ".\\glg3dcpp\\GLCaps.cpp"
+    },
+    {
+      "row": "row 004716f0",
+      "block": "g3d-glcaps",
+      "kind": "string",
+      "at": "data 0081cc80",
+      "text": ".\\glg3dcpp\\GLCaps.cpp"
+    },
+    {
+      "row": "row 004729d0",
+      "block": "g3d-texture",
+      "kind": "string",
+      "at": "data 0081ce00",
+      "text": "GL_SGIS_generate_mipmap"
+    },
+    {
+      "row": "row 00473250",
+      "block": "g3d-texture",
+      "kind": "string",
+      "at": "data 0081e224",
+      "text": ".\\glg3dcpp\\Texture.cpp"
+    },
+    {
+      "row": "row 004690f0",
+      "block": "dxuserinput",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081c404",
+      "rtti": ".?AVDxUserInput@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 004690f0",
+      "block": "dxuserinput",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081c3f8",
+      "rtti": ".?AVDxUserInput@@",
+      "offset": "0x28"
+    },
+    {
+      "row": "row 004690f0",
+      "block": "dxuserinput",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081c3ec",
+      "rtti": ".?AVDxUserInput@@",
+      "offset": "0x2c"
+    },
+    {
+      "row": "row 00468e90",
+      "block": "dxuserinput",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081c404",
+      "rtti": ".?AVDxUserInput@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 0046a7e0",
+      "block": "webtoolbox",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081c4f4",
+      "rtti": ".?AVCWebToolbox@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 0046a850",
+      "block": "webtoolbox",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081c4f4",
+      "rtti": ".?AVCWebToolbox@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 0046ab60",
+      "block": "workspace",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081c80c",
+      "rtti": ".?AV?$IObjectSafetyRobloxImpl@VCWorkspace@@$00@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 0046b550",
+      "block": "workspace",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081c848",
+      "rtti": ".?AVTextXmlWriterWithEmbeddedContent@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 0046cac0",
+      "block": "ldraw",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081c8b8",
+      "rtti": ".?AVLDraw2RobloxColorMap@LDraw2Lua@RBX@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 0046d590",
+      "block": "ldraw",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081c904",
+      "rtti": ".?AVLDraw2RobloxMapRoot@LDraw2Lua@RBX@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 0046e6b0",
+      "block": "ldraw",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081c9f8",
+      "rtti": ".?AVLDraw2RobloxPartMap@LDraw2Lua@RBX@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 0046ea30",
+      "block": "ldraw",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081ca0c",
+      "rtti": ".?AVLDrawCommand@LDraw2Lua@RBX@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 0046f110",
+      "block": "ldraw",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081cb74",
+      "rtti": ".?AVLDrawParser@LDraw2Lua@RBX@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 0046f630",
+      "block": "ldraw",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081cbd4",
+      "rtti": ".?AVLuaWriter@LDraw2Lua@RBX@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 004713b0",
+      "block": "g3d-glcaps",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081ce24",
+      "rtti": ".?AV?$Table@PBVTextureFormat@G3D@@_N@G3D@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00472860",
+      "block": "g3d-glcaps",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081e194",
+      "rtti": ".?AV?$Set@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 004729b0",
+      "block": "g3d-glcaps",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081e1e0",
+      "rtti": ".?AVReferenceCountedObject@G3D@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 004737b0",
+      "block": "g3d-texture",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081e36c",
+      "rtti": ".?AVTexture@G3D@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00469070",
+      "block": "dxuserinput",
+      "kind": "vtable-slot",
+      "vtable": "vtable 0081c404",
+      "rtti": ".?AVDxUserInput@@",
+      "slot": 2
+    },
+    {
+      "row": "row 00469080",
+      "block": "dxuserinput",
+      "kind": "vtable-slot",
+      "vtable": "vtable 0081c404",
+      "rtti": ".?AVDxUserInput@@",
+      "slot": 3
+    },
+    {
+      "row": "row 00469090",
+      "block": "dxuserinput",
+      "kind": "vtable-slot",
+      "vtable": "vtable 0081c404",
+      "rtti": ".?AVDxUserInput@@",
+      "slot": 4
+    },
+    {
+      "row": "row 00468e70",
+      "block": "dxuserinput",
+      "kind": "vtable-slot",
+      "vtable": "vtable 0081c3f8",
+      "rtti": ".?AVDxUserInput@@",
+      "slot": 0
+    },
+    {
+      "row": "row 004690b0",
+      "block": "dxuserinput",
+      "kind": "vtable-slot",
+      "vtable": "vtable 0081c3f8",
+      "rtti": ".?AVDxUserInput@@",
+      "slot": 1
+    },
+    {
+      "row": "row 004689c0",
+      "block": "dxuserinput",
+      "kind": "vtable-slot",
+      "vtable": "vtable 0081c3ec",
+      "rtti": ".?AVDxUserInput@@",
+      "slot": 0
+    },
+    {
+      "row": "row 004690c0",
+      "block": "dxuserinput",
+      "kind": "vtable-slot",
+      "vtable": "vtable 0081c3ec",
+      "rtti": ".?AVDxUserInput@@",
+      "slot": 1
+    },
+    {
+      "row": "row 0046fc30",
+      "block": "g3d-glcaps",
+      "kind": "evidence-name",
+      "symbol": "?iMin@G3D@@YAHHH@Z"
+    },
+    {
+      "row": "row 0046fc40",
+      "block": "g3d-glcaps",
+      "kind": "evidence-name",
+      "symbol": "?iMax@G3D@@YAHHH@Z"
+    },
+    {
+      "row": "row 00473740",
+      "block": "g3d-texture",
+      "kind": "evidence-name",
+      "symbol": "?realloc@?$Array@_N@G3D@@AAEXH@Z"
+    }
+  ],
+  "range_functions": 221,
+  "range_bytes": 48264,
+  "range_rows_counted_by_other_receipts": [
+    "0046a580 counted by web-toolbox-working.json",
+    "0046a640 counted by web-toolbox-working.json",
+    "0046a660 counted by web-toolbox-working.json",
+    "0046a680 counted by web-toolbox-working.json",
+    "0046a6a0 counted by web-toolbox-working.json",
+    "0046a6d0 counted by web-toolbox-working.json",
+    "0046a6f0 counted by web-toolbox-working.json",
+    "0046a710 counted by web-toolbox-working.json",
+    "0046a7a0 counted by web-toolbox-working.json",
+    "0046a7c0 counted by web-toolbox-working.json",
+    "0046a7e0 counted by web-toolbox-working.json",
+    "0046a850 counted by web-toolbox-working.json",
+    "0046a8d0 counted by web-toolbox-working.json",
+    "0046a8e0 counted by web-toolbox-working.json",
+    "0046a990 counted by workspace-events-trial.json",
+    "0046ab10 counted by workspace-events-trial.json",
+    "0046ac90 counted by content-factory-trial.json",
+    "0046b550 counted by workspace-xml-writer-mismatch.json",
+    "0046b750 counted by workspace-selection-serializer-trial.json",
+    "0046b8d0 counted by workspace-save-trial.json",
+    "0046bc90 counted by workspace-insert-url-trial.json",
+    "0046bd70 counted by workspace-write-trial.json",
+    "0046bfd0 counted by workspace-write-trial.json",
+    "0046c780 counted by workspace-save-trial.json",
+    "0046c920 counted by workspace-insert-url-trial.json",
+    "004729b0 counted by user-controller-working.json"
+  ],
+  "rows": {
+    "fvi": [
+      {
+        "address": "0046a200",
+        "symbol": "??0CFileVersionInfo@@QAE@XZ",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0046a220",
+        "symbol": "?Create@CFileVersionInfo@@QAEHABV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+        "size": 323,
+        "target_size": 323,
+        "exact": true,
+        "verified_targets": {
+          "??_V@YAXPAX@Z": "0x6a094a (mfc90.dll!??_V@YAXPAX@Z)",
+          "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@ABV01@@Z": "0x803ed4 (mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@ABV01@@Z)",
+          "__imp_?GetBuffer@?$CSimpleStringT@D$00@ATL@@QAEPADXZ": "0x8032cc (mfc90.dll!?GetBuffer@?$CSimpleStringT@D$00@ATL@@QAEPADXZ)",
+          "_GetFileVersionInfoSizeA@8": "0x7a6374 (version.dll!GetFileVersionInfoSizeA)",
+          "??_U@YAPAXI@Z": "0x6a0956 (mfc90.dll!??_U@YAPAXI@Z)",
+          "_GetFileVersionInfoA@16": "0x7a636e (version.dll!GetFileVersionInfoA)",
+          "??_C@_01KICIPPFI@?2?$AA@": "0x8104ec (string '\\\\')",
+          "_VerQueryValueA@16": "0x7a6368 (version.dll!VerQueryValueA)",
+          "??_C@_0BJ@KPNNKBCP@?2VarFileInfo?2Translation?$AA@": "0x81c440 (string '\\\\VarFileInfo\\\\Translation')",
+          "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "0x803f14 (mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?Create@CFileVersionInfo@@QAEHABV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z"
+        ]
+      },
+      {
+        "address": "0046a370",
+        "symbol": "?GetVersionInfo@CFileVersionInfo@@QAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@ABV23@@Z",
+        "size": 203,
+        "target_size": 203,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "0x803f04 (mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ)",
+          "??_C@_0BM@CEKPECKE@?2StringFileInfo?2?$CF04x?$CF04x?2?$CFs?$AA@": "0x81c45c (string '\\\\StringFileInfo\\\\%04x%04x\\\\%s')",
+          "__imp_?Format@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAAXPBDZZ": "0x803edc (mfc90.dll!?Format@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAAXPBDZZ)",
+          "__imp_?GetBuffer@?$CSimpleStringT@D$00@ATL@@QAEPADXZ": "0x8032cc (mfc90.dll!?GetBuffer@?$CSimpleStringT@D$00@ATL@@QAEPADXZ)",
+          "_VerQueryValueA@16": "0x7a6368 (version.dll!VerQueryValueA)",
+          "__imp_??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@PBD@Z": "0x803eb8 (mfc90.dll!??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@PBD@Z)",
+          "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "0x803f14 (mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?GetVersionInfo@CFileVersionInfo@@QAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@ABV23@@Z"
+        ]
+      },
+      {
+        "address": "0046a440",
+        "symbol": "?GetFileVersion@CFileVersionInfo@@QAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ",
+        "size": 99,
+        "target_size": 99,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0M@OBEGHOED@FileVersion?$AA@": "0x81c478 (string 'FileVersion')",
+          "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z": "0x803f10 (mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z)",
+          "?GetVersionInfo@CFileVersionInfo@@QAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@ABV23@@Z": "0x46a370 (own row)",
+          "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "0x803f14 (mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?GetFileVersion@CFileVersionInfo@@QAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ"
+        ]
+      },
+      {
+        "address": "0046a4b0",
+        "symbol": "?Reset@CFileVersionInfo@@QAEXXZ",
+        "size": 51,
+        "target_size": 51,
+        "exact": true,
+        "verified_targets": {
+          "??_V@YAXPAX@Z": "0x6a094a (mfc90.dll!??_V@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "pending_build_only": [
+    {
+      "address": "0046a4f0 (pending-build-only, not counted)",
+      "symbol": "?Create@CFileVersionInfo@@QAEHPAUHINSTANCE__@@@Z",
+      "size": 130,
+      "target_size": 130,
+      "exact": false,
+      "verified_targets": {
+        "__imp__GetModuleFileNameA@12": "0x8021a4 (kernel32.dll!GetModuleFileNameA)",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z": "0x803f10 (mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z)",
+        "?Create@CFileVersionInfo@@QAEHABV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "0x46a220 (own row)",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "0x803f14 (mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?Create@CFileVersionInfo@@QAEHPAUHINSTANCE__@@@Z"
+      ],
+      "pending_exact": true,
+      "reason": "pending-build-only (NATIVE_APPUNIT468_PENDING with the generated CFileVersionInfo.h copy that declares Create(HMODULE); proposal); not counted"
+    }
+  ],
+  "exact_function_rows": [
+    "0046a200",
+    "0046a220",
+    "0046a370",
+    "0046a440",
+    "0046a4b0"
+  ],
+  "blocked": {
+    "DxUserInput (0x194, RTTI 0081c404)": "Layout from the bytes: UserInputBase at +0 (0x28, probe), Listener<RunService, RunTransition> vptr +0x28, Listener<RunService, Heartbeat> vptr +0x2c, ATL::CCriticalSection +0x34 (ctor 004328c0, inline DeleteCriticalSection in ~DxUserInput 00469042; CCritSecLock in 00468050 / 00468520 / 00468b20 / 004689c0), CFrameWnd* +0x4c (GetParentFrame loop in the ctor), ACCEL* +0x50 (new 6 * n, CopyAcceleratorTable) and its count +0x54, bools +0x58 / +0x59, wrap mode +0x5c (00469070 / 00469080), Vector2 +0x60 (centerCursor 00469090 copies Vector2::zero() 00509ba0), BYTE[0x100] key state +0x68 (memset 0x100; GetDeviceState(0x100) in 004689c0), +0x168, CWnd* +0x16c (ctor arg 1) and its HWND +0x170, CComPtr<IDirectInput8> +0x174 (DirectInput8Create 0x800), CComPtr<IDirectInputDevice8> mouse +0x178 / keyboard +0x17c (Unacquire slot 0x20 then Release in the dtor), shared_ptr<DataModel> +0x180 (DataModel::Lock 00411b40 in 004681b0), shared_ptr<RunService> +0x188 (addListener at RunService +0x130 / +0x170), bools +0x190..+0x193. The 4 bytes at +0x30 are never written or read by any row of the unit (00467440..0046a1f2, every register base checked, including the this-adjusted listener bodies) nor by the ctor, so their type cannot be derived; a native DxUserInput header would need an invented member there. Not recovered (no header written)."
+  },
+  "rejected": {
+    "GetVersionInfo 0046a370 with (LPCTSTR)name or name.GetString() as the Format argument": "same size, but the return slot is kept in ebx instead of edi (register allocation differs); passing the CString object itself through the ellipsis (bitwise copy) is exact",
+    "Reset 0046a4b0 storing m_lpTranslation / m_nTranslations before m_wLang / m_wCodePage": "Reset itself stays exact, but the inlined copies in the ctor 0046a200 (29 vs 31 B) and Create 0046a220 schedule the stores differently; the native-header member order of the assignments is exact everywhere"
+  },
+  "proposals": {
+    "CFileVersionInfo.h (owner of the native CFileVersionInfo declaration)": "Declare `BOOL Create(HMODULE);` (0046a4f0: GetModuleFileNameA(hModule, buffer, 500) through the IAT, CString(buffer), then Create(const CString&) 0046a220, ret 4). With it the row is exact (verified in the pending build against out/app-unit468-2008/pending/CFileVersionInfo.h) and can be counted here.",
+    "native-classes/CFileVersionInfo.cpp (about-dialog owner, built by p6/build_native_about.py)": "GetVersionInfo can pass `name` itself to CString::Format (exact here) instead of the `*(const char* const*)&name` pointer pun."
+  },
+  "library_recipes": [
+    "g3d-6.09",
+    "g3d-6.09-rbx2008",
+    "rbxgs-g3d (roc/libs.py) for the GLCaps / Texture blocks"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

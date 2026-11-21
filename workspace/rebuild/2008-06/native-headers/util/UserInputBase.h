@@ -44,5 +44,7 @@ namespace RBX
 		virtual void setKeyState(SDLKey, bool) = 0;
 		virtual void setCursorId(Adorn*, const TextureId&);
 		void renderGameCursor(Adorn*);
+	public:
+		bool sub_004674a0();   // INFERRED: 004674a0, placeholder name (identity tier), body byte-proved (Inferred_004674a0.cpp)
 	};
 }
