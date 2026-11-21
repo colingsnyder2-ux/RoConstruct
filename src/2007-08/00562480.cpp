@@ -1,94 +1,99 @@
-// from server: 28% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Intel_Inside
+// roc-flags: /O2 /GS- /EHsc /MD
 
-extern "C" void __stdcall _invalid_parameter_noinfo();
+#include <vector>
+#include <intrin.h>
+#pragma intrinsic(_InterlockedDecrement)
 
-struct RefCounted {
-    void* vptr;
-    long refCount;
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;   // vtable +4
+    virtual void destroy();       // vtable +8
+    long use_count_;
+    long weak_count_;
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
+    void weak_release() {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
 };
 
-struct Selection;
-
-struct FilteredSelection {
-    char pad[0xE8];
-    void* fieldE8;
-    Selection* rootSelection;
-    void* filteredSelection;
-    void addFilteredSelection(Selection*);
-    void removeFilteredSelection(Selection*);
-    void setName(const char*);
+struct shared_count {
+    sp_counted_base* pi_;
+    ~shared_count() { if (pi_) pi_->release(); }
+    shared_count& operator=(const shared_count& r);   // 0x402a60
 };
 
-struct Selection {
-    char pad[0x104];
-    void* vecBegin;
-    void* vecEnd;
-    void* vecCap;
-    void removeFilteredSelection(FilteredSelection*);
+template<class T> struct shared_ptr {
+    T* px;
+    shared_count pn;
+    T* operator->() const { return px; }
+    T* get() const { return px; }
+    operator bool() const { return px != 0; }
 };
 
-extern "C" void __stdcall sub_541960(FilteredSelection*);
-extern "C" void* __stdcall sub_41EB40(void*);
-extern "C" void* __stdcall sub_49D670(void*, void*, void*);
-extern "C" void __stdcall sub_402A60(void*, void*);
-extern "C" void __stdcall sub_532BA0(Selection*, void*);
-extern "C" void __stdcall sub_5B4070(void*, void*);
-extern "C" void* __stdcall sub_630D36(void*, void*, void*, void*, void*);
+namespace RBX {
+class Instance {                 // RTTI .?AVInstance@RBX@@ (0x881f4c)
+public:
+    virtual ~Instance();
+};
 
-void FilteredSelection::addFilteredSelection(Selection* sel) {
-    sub_541960(this);
+class PVInstance : public Instance {   // RTTI .?AVPVInstance@RBX@@ (0x88c6b8)
+};
+}
+using RBX::Instance;
+using RBX::PVInstance;
 
-    if (rootSelection != 0)
-        return;
+struct Listener {           // subobject at +0xe8
+    virtual void onEvent();
+};
 
-    void* a = sub_41EB40(*(void**)((char*)sel + 8));
-    void* local;
-    sub_49D670(&local, a, 0);
+struct Owner {
+    int pad[0x104 / 4];
+    std::vector< shared_ptr<Instance> >* children;   // +0x104
+    void addListener(Listener* l);                   // 0x532ba0
+};
 
-    void* v = *(void**)local;
-    rootSelection = (Selection*)v;
-    sub_402A60(&fieldE8, (char*)local + 4);
+struct ServiceProvider;
+ServiceProvider* findServiceProvider(Instance* inst);              // 0x41eb40
+shared_ptr<Owner> findOwner(ServiceProvider* provider);            // 0x49d670
 
-    if (local != 0) {
-        RefCounted* rc = (RefCounted*)local;
-        if (_InterlockedExchangeAdd(&rc->refCount, -1) == 1) {
-            void** vt = (void**)rc->vptr;
-            ((void (__stdcall*)(RefCounted*))vt[1])(rc);
-            if (_InterlockedExchangeAdd((volatile long*)((char*)rc + 8), -1) == 1) {
-                void** vt2 = (void**)rc->vptr;
-                ((void (__stdcall*)(RefCounted*))vt2[2])(rc);
+struct AncestorChanged {
+    int pad[2];
+    Instance* newParent;   // +8
+};
+
+struct Base {               // polymorphic: vptr at +0 (see dtor 0055ff50)
+    virtual ~Base();
+    int pad[(0xe8 - 4) / 4];
+    void onAncestorChanged(const AncestorChanged& event);   // 0x541960
+};
+
+struct FilteredSelection : Base, Listener {
+    shared_ptr<Owner> owner;            // +0xec
+    std::vector<PVInstance*> items;   // +0xf4
+    void onAncestorChanged(const AncestorChanged& event);
+};
+
+void FilteredSelection::onAncestorChanged(const AncestorChanged& event)
+{
+    Base::onAncestorChanged(event);
+    if (!owner) {
+        owner = findOwner(findServiceProvider(event.newParent));
+        if (owner) {
+            const std::vector< shared_ptr<Instance> >& c = *owner->children;
+            for (std::vector< shared_ptr<Instance> >::const_iterator it = c.begin();
+                 it != owner->children->end(); ++it) {
+                if (PVInstance* p = dynamic_cast<PVInstance*>(it->get()))
+                    items.push_back(p);
             }
+            owner->addListener(this);
         }
     }
-
-    if (rootSelection == 0)
-        return;
-
-    void* vec = *(void**)((char*)rootSelection + 0x104);
-    void* begin = *(void**)vec;
-    void* end = *(void**)((char*)vec + 4);
-    void* cap = *(void**)((char*)vec + 8);
-
-    if (begin > end)
-        _invalid_parameter_noinfo();
-
-    while (begin != end) {
-        if (begin >= cap)
-            _invalid_parameter_noinfo();
-
-        void* item = *(void**)begin;
-        void* result = sub_630D36(item, (void*)0x898FC0, (void*)0x881F4C, 0, 0);
-        if (result != 0) {
-            void* tmp = result;
-            sub_5B4070(&filteredSelection, &tmp);
-        }
-
-        if (begin >= cap)
-            _invalid_parameter_noinfo();
-        begin = (char*)begin + 8;
-    }
-
-    sub_532BA0(rootSelection, &fieldE8);
 }

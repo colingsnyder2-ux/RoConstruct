@@ -1,79 +1,69 @@
-// from server: 26% by colin
-struct FilteredSelection {
-    char pad[0x130];
-    void* begin;
-    void* end;
-    void* cap;
-    void* method();
+// from server: 100% by Intel_Inside
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <vector>
+
+namespace boost {
+typedef long once_flag;
+void call_once(void (*func)(), once_flag& flag);
+namespace detail {
+class shared_count {
+public:
+    void* pi_;
+    shared_count() : pi_(0) {}
+    shared_count(const shared_count& r);
+    ~shared_count();
+    shared_count& operator=(const shared_count& r);
+};
+}
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+    shared_ptr() : px(0), pn() {}
+    ~shared_ptr();
+    shared_ptr& operator=(const shared_ptr& r) { px = r.px; pn = r.pn; return *this; }
+    T* get() const { return px; }
+};
+}
+
+class Name;
+class Item;
+
+void initIndexFlag();
+extern boost::once_flag indexFlag;
+int itemIndex();
+
+void initNameFlag();
+extern boost::once_flag nameFlag;
+const Name* nameA();
+const Name* nameB();
+
+class Owner {
+public:
+    char pad0[0x130];
+    std::vector<boost::shared_ptr<Item> > items;
+
+    boost::shared_ptr<Item> create(const Name* name);
+    Item* getItem();
 };
 
-extern "C" void __stdcall sub_725520(void*, void*);
-extern "C" void __cdecl sub_55e7c0();
-extern "C" void __cdecl sub_40e470();
-extern "C" void __cdecl sub_444e70();
-extern "C" void __cdecl sub_52cb30();
-extern "C" void __cdecl sub_554de0();
-extern "C" void __cdecl sub_492360();
-extern "C" void __cdecl sub_402a60();
-extern "C" void __cdecl sub_77e6d8();
-
-void* FilteredSelection::method()
+Item* Owner::getItem()
 {
-    void* result;
-    void* local;
-    int idx;
-    int count;
-    void* elem;
-    void* tmp;
+    boost::call_once(&initIndexFlag, indexFlag);
+    int index = itemIndex();
+    if ((size_t)(index + 1) > items.size())
+        items.resize(index + 1, boost::shared_ptr<Item>());
+    else if (Item* existing = items[index].get())
+        return existing;
 
-    sub_725520((void*)0x8c2328, (void*)0x55ed70);
-    sub_55e7c0();
-    idx = (int)result;
-
-    if (this->end != 0) {
-        count = ((char*)this->cap - (char*)this->end) >> 3;
-    } else {
-        count = 0;
-    }
-
-    if (idx + 1 > count) {
-        local = 0;
-        tmp = 0;
-        sub_40e470();
-    } else {
-        if (this->end != 0 || idx >= ((char*)this->cap - (char*)this->end) >> 3) {
-            sub_77e6d8();
-        }
-        elem = (void*)((char*)this->end + idx * 8);
-        if (elem != 0) {
-            return elem;
-        }
-    }
-
-    if ((*(unsigned char*)0x8c2334 & 1) == 0) {
-        *(unsigned int*)0x8c2334 |= 1;
-        sub_725520((void*)0x8bbae0, (void*)0x444fb0);
-        sub_444e70();
-        sub_52cb30();
-        *(unsigned char*)0x8c2330 = (result == local) ? 1 : 0;
-    }
-
-    if (*(unsigned char*)0x8c2330 == 0) {
-        sub_725520((void*)0x8bbae0, (void*)0x444fb0);
-        sub_444e70();
-        sub_554de0();
-        if (local != 0) {
-            if (this->end == 0 || idx >= ((char*)this->cap - (char*)this->end) >> 3) {
-                sub_77e6d8();
-            }
-            elem = (void*)((char*)this->end + idx * 8);
-            *(void**)elem = local;
-            sub_402a60();
-            sub_492360();
-            return (void*)idx;
-        }
-        sub_492360();
-    }
-
-    return 0;
+    static bool same = (boost::call_once(&initNameFlag, nameFlag), nameA() == nameB());
+    if (same)
+        return 0;
+    boost::call_once(&initNameFlag, nameFlag);
+    boost::shared_ptr<Item> item = create(nameA());
+    if (!item.get())
+        return 0;
+    Item* result = item.get();
+    items[index] = item;
+    return result;
 }

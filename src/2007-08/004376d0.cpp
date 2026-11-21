@@ -1,92 +1,86 @@
-// from server: 35% by colin
+// from server: 98% by Intel_Inside
+namespace ns_ROCX004376d0 {
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedDecrement)
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement)
 
-struct Inner {
-    void* vptr;
-    volatile long refcount;
-    volatile long weakrefcount;
-};
-
-struct Holder {
-    Inner* ptr;
-};
-
-struct Src {
-    char pad[0x18];
-    Holder holder;
-};
-
-struct Out {
-    Inner* ptr;
-};
-
-extern "C" void* __cdecl sub_41E0F0(void*);
-extern "C" void __cdecl sub_4621E0(Out*, void*);
-
-void __cdecl target(Src* src, Out* out)
+struct Control
 {
-    Inner* esi = 0;
-    int ebx;
+    virtual void unused() = 0;
+    virtual void dispose() = 0;
+    virtual void destroy() = 0;
+    volatile long strong;
+    volatile long weak;
+};
 
-    if (src != 0) {
-        void* tmp;
-        sub_41E0F0(&src->holder);
-        sub_4621E0(out, &tmp);
-        esi = out->ptr;
-        ebx = 3;
-    } else {
-        esi = 0;
-        out->ptr = 0;
-        ebx = 4;
-    }
+struct SourcePtr
+{
+    void* object;
+    Control* control;
+    ~SourcePtr();
+};
 
-    if (out->ptr != 0) {
-        _InterlockedExchangeAdd(&out->ptr->refcount, 1);
-    }
+struct Ptr
+{
+    void* object;
+    Control* control;
 
-    ebx |= 8;
-    if (ebx & 4) {
-        ebx &= ~4;
-        if (esi != 0) {
-            if (_InterlockedExchangeAdd(&esi->refcount, -1) == 1) {
-                void (*f)(Inner*) = *(void (**)(Inner*))((char*)esi->vptr + 4);
-                f(esi);
-                if (_InterlockedExchangeAdd(&esi->weakrefcount, -1) == 1) {
-                    void (*g)(Inner*) = *(void (**)(Inner*))((char*)esi->vptr + 8);
-                    g(esi);
-                }
-            }
-        }
-    }
+    Ptr();
+    Ptr(const Ptr&);
+    ~Ptr();
+};
 
-    if (ebx & 2) {
-        Inner* esi2 = out->ptr;
-        ebx &= ~2;
-        if (esi2 != 0) {
-            if (_InterlockedExchangeAdd(&esi2->refcount, -1) == 1) {
-                void (*f)(Inner*) = *(void (**)(Inner*))((char*)esi2->vptr + 4);
-                f(esi2);
-                if (_InterlockedExchangeAdd(&esi2->weakrefcount, -1) == 1) {
-                    void (*g)(Inner*) = *(void (**)(Inner*))((char*)esi2->vptr + 8);
-                    g(esi2);
-                }
-            }
-        }
+__forceinline SourcePtr::~SourcePtr()
+{
+    Control* p = control;
+    if (p && _InterlockedDecrement(&p->strong) == 0)
+    {
+        p->dispose();
+        if (_InterlockedDecrement(&p->weak) == 0)
+            p->destroy();
     }
+}
 
-    if (ebx & 1) {
-        Inner* esi3 = out->ptr;
-        ebx &= ~1;
-        if (esi3 != 0) {
-            if (_InterlockedExchangeAdd(&esi3->refcount, -1) == 1) {
-                void (*f)(Inner*) = *(void (**)(Inner*))((char*)esi3->vptr + 4);
-                f(esi3);
-                if (_InterlockedExchangeAdd(&esi3->weakrefcount, -1) == 1) {
-                    void (*g)(Inner*) = *(void (**)(Inner*))((char*)esi3->vptr + 8);
-                    g(esi3);
-                }
-            }
-        }
+__forceinline Ptr::Ptr() : object(0), control(0)
+{
+}
+
+__forceinline Ptr::Ptr(const Ptr& other)
+    : object(other.object), control(other.control)
+{
+    if (control)
+        _InterlockedIncrement(&control->strong);
+}
+
+__forceinline Ptr::~Ptr()
+{
+    Control* p = control;
+    if (p && _InterlockedDecrement(&p->strong) == 0)
+    {
+        p->dispose();
+        if (_InterlockedDecrement(&p->weak) == 0)
+            p->destroy();
     }
+}
+
+struct Member
+{
+    SourcePtr get() throw();
+};
+
+struct Source
+{
+    char pad[0x18];
+    Member member;
+};
+
+Ptr __cdecl convert(const SourcePtr&) throw();
+
+Ptr __cdecl f(Source* source)
+{
+    return source ? convert(source->member.get()) : Ptr();
+}
 }
