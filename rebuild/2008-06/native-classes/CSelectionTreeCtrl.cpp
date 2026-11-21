@@ -420,7 +420,7 @@ void dropInstance(RBX::Instance* parent, boost::shared_ptr<RBX::Instance> child)
     child->setParent(parent);
 }
 
-// Needs Selection::begin/end (00413d10/00413d40) and Instance 00423700 (pending declarations).
+// 00423c40: node instance accepts the selection range (Selection::begin/end 00413d10/00413d40, Instance 00423700).
 HTREEITEM CSelectionTreeCtrl::dropTarget(HTREEITEM item)
 {
     if (!item)
