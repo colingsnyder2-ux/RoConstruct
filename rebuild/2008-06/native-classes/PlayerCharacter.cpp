@@ -11,12 +11,23 @@
 //   find<StarterPackService>(const Instance*) 00491ef0 (tail jump to find<StarterPackService>() const 00490d70;
 //   create<StarterPackService>() const 004b3960 calls 00490d70 first); Instance::numChildren 0048ae20 (out of line) and the
 //   children vector (+0x108, checked operator[]); Instance::clone 00559350; setParent(backpack).
+#include "util/NativeContentProvider.h"   // first: renames the donor util/ContentProvider.h class (RocketToolProjectile.cpp pattern)
 #include "Network/Player.h"
 #include "Network/Players.h"
 #include "v8tree/Service.h"
 #include "v8datamodel/Backpack.h"
 #include "v8datamodel/Hopper.h"
+#include "v8datamodel/Workspace.h"
+#include "v8datamodel/ModelInstance.h"
+#include "v8datamodel/SpawnerService.h"
+#include "humanoid/Humanoid2008.h"
+#include <boost/bind.hpp>
+#include <algorithm>
 #include <stdexcept>
+
+// 0048a670 ?addChild@@YAXABV?$shared_ptr@VModelInstance@RBX@@@boost@@ABV?$shared_ptr@VInstance@RBX@@@2@@Z: defined in
+// AppUnit480_2008Player.cpp (same Network/Player.cpp unit); declared here for loadCharacter's boost::bind.
+void addChild(const boost::shared_ptr<RBX::ModelInstance>& parent, const boost::shared_ptr<RBX::Instance>& child);
 
 namespace RBX
 {
@@ -46,7 +57,7 @@ namespace RBX
 			}
 		}
 
-		// 004957a0 loadCharacter(bool inGame): PARKED (header proposals; not compiled).
+		// 004957a0 ?loadCharacter@Player@Network@RBX@@QAEX_N@Z (registry, 1365 B).
 		// Evidence: ServiceProvider::find<Workspace>(this) 00491e50, else runtime_error 008223f4; backendProcessing
 		// (this, true), else 008223bc; ContentId::fromAssets(const char*) 0055bd80 "fonts\\character.rbxm" 008223a4,
 		// ServiceProvider::create<ContentProvider>(this) 00465210, ContentProvider::load 005628e0; size != 1 and a
@@ -60,10 +71,8 @@ namespace RBX
 		// SpawnerService spawn routine 005d2b80 (thiscall: shared_ptr<ModelInstance> copy, Player*) and skips the drop;
 		// otherwise RootInstance::moveToPoint 005909e0 (model, Vector3(0, 20 [008222f0], 25 [008222ec])).
 		// SpawnerService::SpawnPlayer 005d2b80 is now declared (v8datamodel/SpawnerService.h) and called by that name.
-		// Remaining blockers: ContentId::fromAssets(const char*) 0055bd80 is not declared by core util/ContentId.h
-		// (only slingshot-load/util/ContentProvider.h declares it, as a conflicting ContentId), and
-		// humanoid/Humanoid2008.h does not declare buildJoints 005d9340 (the donor humanoid/Humanoid.h does).
-#if 0
+		// ContentId::fromAssets(const char*) 0055bd80 is now declared in util/ContentProvider.h and buildJoints 005d9340
+		// in humanoid/Humanoid2008.h, which unblocked this body.
 		void Player::loadCharacter(bool inGame)
 		{
 			Workspace* workspace = ServiceProvider::find<Workspace>(this);
@@ -116,7 +125,6 @@ namespace RBX
 			else
 				workspace->moveToPoint(model.get(), G3D::Vector3(0.0f, 20.0f, 25.0f));
 		}
-#endif
 
 		// 00495380 loadCharacterAppearance(bool blocking): PARKED (not compiled; 1041 bytes).
 		// Evidence: backendProcessing(this, true) else runtime_error 008222a8; removeCharacterAppearance 0048c3e0 (not
