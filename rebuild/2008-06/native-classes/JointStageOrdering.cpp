@@ -58,4 +58,56 @@ namespace RBX
 
 		return 0;
 	}
+
+	// Unit-local declaration, exactly as in AppUnit668TreeStage2.cpp (no native header declares JointSort).
+	class JointSort
+	{
+	public:
+		static bool lighterJoint(const Joint* a, const Joint* b);   // 00668e20
+	};
+
+	// 00668e20 (registry ?lighterJoint@JointSort@RBX@@SA_NPBVJoint@2@0@Z, caller TreeStage 00669xxx): equal joints are
+	// not lighter; getJointType (Joint vtable slot 5, +0x14) decides first (setl), then biggerJointSize 00668d70, then
+	// biggerJointGuid 00668c60, then the pointer order (cmp/sbb/neg). Donor shape: native-world ClumpStage.cpp.
+	bool JointSort::lighterJoint(const Joint* j0, const Joint* j1)
+	{
+		if (j0 == j1)
+		{
+			return false;
+		}
+
+		Joint::JointType type0 = j0->getJointType();
+		Joint::JointType type1 = j1->getJointType();
+
+		if (type0 != type1)
+		{
+			return type0 < type1;
+		}
+
+		int bigger = biggerJointSize(j0, j1);
+
+		if (bigger == 1)
+		{
+			return true;
+		}
+
+		if (bigger == -1)
+		{
+			return false;
+		}
+
+		bigger = biggerJointGuid(j0, j1);
+
+		if (bigger == 1)
+		{
+			return true;
+		}
+
+		if (bigger == -1)
+		{
+			return false;
+		}
+
+		return j0 < j1;
+	}
 }
