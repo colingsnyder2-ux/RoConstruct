@@ -127,6 +127,8 @@ bool HumanoidState::climbableInFront(Adorn* adorn)
 // the reused bottom/ray locals and the shared_ptr assignments match apart from edx/eax/ecx rotation. Rejected:
 // separate corner/cornerRay locals in the loop (no ray reuse: Ray copied by value into a new slot), a ternary leg
 // pointer (right getter called once, 8 bytes shorter), Primitive::getGridSize() inline for the right leg (unchanged).
+// Batch 36 rejected: `0.5f * gridSize` (free operator*) for the torso half size: identical output (1029 B, the
+// `add eax, 4` pointer form and the leg tail-merge remain).
 void HumanoidState::findFloor()
 {
 	if (!humanoid->getTorsoBody())

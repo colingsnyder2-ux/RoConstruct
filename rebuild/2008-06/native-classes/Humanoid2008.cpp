@@ -246,6 +246,8 @@ namespace RBX
 				// squares (target: z' stored after the fadd, y = 0 after the sum, sum order z'^2 + x'^2 + Y^2);
 				// (3) assignment from operator- with `worldPosition.y += 3.0f; magnitude()` -> 339 bytes (y = 0
 				// placed as the target, but sum order Y^2 last via fld st(2)). PARKED after three hypotheses.
+				// Batch 36 rejected: `(Vector3(0, 3, 0) + worldPosition).magnitude()` and a named `raised` temporary with
+				// y = 0 before the test (both identical, insn 63); y = 0 moved into the else branch (341 bytes).
 				worldPosition = worldPosition - torso->getCoordinateFrame().translation;
 				float distance = (worldPosition + G3D::Vector3(0.0f, 3.0f, 0.0f)).magnitude();
 				worldPosition.y = 0.0f;
