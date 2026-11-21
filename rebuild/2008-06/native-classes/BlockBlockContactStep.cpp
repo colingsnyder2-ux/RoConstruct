@@ -281,6 +281,62 @@ namespace RBX
 			edgeLength);
 	}
 
+#ifdef BLOCKBLOCKCONTACT_DECLARES_INTERSECTRECTQUAD
+	// 00608580 (?computePlaneContact@BlockBlockContact@RBX@@AAEHXZ, `ret`): donor v8world/Contact.cpp body. Called by
+	// updateConnectors 006087a0 when planeContact +0x5c is set. The 2008 one reads the body pv +0x94 without updatePV
+	// (00608585..006085cb: Primitive +0xa0 -> Body, `add reg, 0x94`), calls CoordinateFrame::inverse 00478330 and
+	// operator* 00476700, inlines Math::getWorldNormal (`imul 0x55555556` = id / 3, id % 3 column, 1 - 2 * (id / 3)),
+	// calls getClosestObjectNormalId 005de560 on the negated normal, Block::getProjectedVertex 00647c70 on the plane
+	// block (geometry +0x9c) and then on the other block for each of the four zero-initialised quad corners
+	// (face-vertex table 0084aec8), and returns intersectRectQuad 00608160.
+	// Guarded: intersectRectQuad 00608160 (thiscall, two pointer arguments) is not declared in
+	// leaves2008/BlockBlockContact2008.h (not this unit's header; proposal to its owner). Measured against a scratch
+	// copy of that header with the donor declaration added: 513 B against 531, first divergence at insn 0 (frame
+	// 0xa0 against 0x80: the target reuses the dead inverse() temporary's slots for otherQuad and the getWorldNormal
+	// temporary for the loop's world point; this build keeps them apart), plus x87 row-sum order in the inlined
+	// pointToWorldSpace (target y*m01 + z*m02 + x*m00, the batch 27 exhausted category). Rejected (batch 31):
+	// the normal as an unnamed temporary (unchanged), `G3D::Vector2 otherQuad[4];` without `= {}` (unchanged),
+	// planeFrame.toObjectSpace(otherFrame) (503 B, emits an out-of-line toObjectSpace call instead of
+	// inverse 00478330 + operator* 00476700).
+	int BlockBlockContact::computePlaneContact()
+	{
+		if (feature[0] >= 0)
+		{
+			planeID = (NormalId)feature[0];
+			bPlane = 0;
+			bOther = 1;
+		}
+		else
+		{
+			planeID = (NormalId)feature[1];
+			bPlane = 1;
+			bOther = 0;
+		}
+
+		const G3D::CoordinateFrame& otherFrame = getPrimitive(bOther)->getBody()->getPVUnsafe().position;
+		const G3D::CoordinateFrame& planeFrame = getPrimitive(bPlane)->getBody()->getPVUnsafe().position;
+
+		G3D::CoordinateFrame otherToPlane = planeFrame.inverse() * otherFrame;
+
+		Block* otherBlock = block(bOther);
+		Block* planeBlock = block(bPlane);
+
+		G3D::Vector3 otherVertexPlaneCoords = Math::getWorldNormal(planeID, planeFrame);
+		otherPlaneID = Math::getClosestObjectNormalId(-otherVertexPlaneCoords, otherFrame.rotation);
+
+		G3D::Vector2 planeRect = planeBlock->getProjectedVertex(*(planeBlock->getFaceVertex(planeID, 0)), planeID);
+
+		G3D::Vector2 otherQuad[4] = {};
+
+		for (int i = 0; i < 4; i++)
+		{
+			G3D::Vector3 world = otherToPlane.pointToWorldSpace(*(otherBlock->getFaceVertex(otherPlaneID, i)));
+			otherQuad[i] = otherBlock->getProjectedVertex(world, planeID);
+		}
+		return intersectRectQuad(planeRect, otherQuad);
+	}
+#endif
+
 	// 00608830: separation -1.0f (0081c3b8) when colliding, else 1e9 (0082d030); then updateConnectors 006087a0.
 	bool BlockBlockContact::stepContact()
 	{
