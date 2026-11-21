@@ -15,12 +15,8 @@
 //   this, _1) (bind 0063c870 with the 12-byte virtual-base member pointer, slot constructor 0063cd90) assigned to
 //   humanoidSeated (scoped_connection::operator= 00595540), ~connection 00595370, ~slot 0049f710 (folded).
 //
-// BLOCKED (header): native-headers/humanoid/Humanoid2008.h keeps imDead private with no accessor. With a scratch copy
-// that adds, next to getSit 005d7530,
-//     bool getDead() const { return imDead; }   // INFERRED: read by Seat::onEvent_seatTouched 0063cfb0 (+0x1e8 & 0xa)
-// this unit is byte-exact for 0063cf30 (415 B), its __ehhandler 007da718, the SignalDesc<Humanoid, void(bool)>
-// group connect 004d8390 and 0063cc00 (batch 32). Until the Humanoid2008.h owner adds the accessor (and defines
-// HUMANOID_HEADER_DECLARES_GETDEAD, or this guard is removed) the body is kept out of the build.
+// Batch 36: Humanoid::getDead (the imDead accessor) is now declared in native-headers/humanoid/Humanoid2008.h
+// (batch 32 measured this unit byte-exact for 0063cf30, its __ehhandler 007da718, 004d8390 and 0063cc00 with it).
 #include "v8datamodel/Seat.h"
 #include "v8datamodel/JointInstance.h"
 #include "v8datamodel/Workspace.h"
@@ -28,7 +24,6 @@
 #include <G3D/System.h>
 #include <boost/bind.hpp>
 
-#ifdef HUMANOID_HEADER_DECLARES_GETDEAD
 namespace RBX
 {
 	// 0063cf30 ?onEvent_seatTouched@Seat@RBX@@AAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z
@@ -51,4 +46,3 @@ namespace RBX
 		}
 	}
 }
-#endif

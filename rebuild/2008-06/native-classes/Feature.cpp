@@ -114,6 +114,9 @@ namespace RBX
 	//      (lea eax / lea ecx / lea edx; the original uses lea ecx / lea edx / lea eax).
 	//   3. if (PartInstance* part = dynamic_cast<PartInstance*>(getParent())) -- identical to this body.
 	//   Remaining difference is register naming only; no further source-shape evidence.
+	// Batch 36 rejected: 4. const PartInstance* part = dynamic_cast<const PartInstance*>(getParent()) -- identical to
+	//   this body (lea eax first). 5. early `if (!part) return false;` -- worse (the je becomes jne, first divergence
+	//   moves up to 0060a4b8).
 	bool Feature::getRenderCoord(G3D::CoordinateFrame& c) const
 	{
 		PartInstance* part = dynamic_cast<PartInstance*>(getParent());
@@ -136,7 +139,8 @@ namespace RBX
 	// products and the order of the two std::max temporaries in the uv.y line) differs. Batch 27 rejected: an explicit
 	// native-flags line without /fp:fast (631 B, and loses 004766a0 / 00476700 / 00485360 / 0060a020 / 0060a0f0 /
 	// 0060c600 elsewhere in the unit). Batch 28 rejected: the openrbx spelling std::max(fabs(uv.x) - 1.0f, 0.0f) (633 B,
-	// worse: the max operands swap and the uv.x spills move). PARKED. FeatureRecovery.cpp holds a 630 B donor-header copy (not this unit's owner).
+	// worse: the max operands swap and the uv.x spills move). Batch 36 rejected: the products written
+	// std::max(...) * Math::sign(uv) (641 B, worse). PARKED. FeatureRecovery.cpp holds a 630 B donor-header copy (not this unit's owner).
 	G3D::CoordinateFrame Feature::computeLocalCoordinateFrame() const
 	{
 		PartInstance* part = dynamic_cast<PartInstance*>(getParent());

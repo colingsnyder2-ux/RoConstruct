@@ -150,6 +150,12 @@ namespace RBX
 		{
 			return i == 0 ? jointCoord0 : jointCoord1;
 		}
+		// Donor v8world/Joint.h inline (no code of its own): the slot 3 getEdgeType call (`call [eax + 0xc]`,
+		// JOINT == 0) at the head of RigidJoint::isRigidJoint 00599300 and MotorJoint::isMotorJoint 00599330.
+		static bool isJoint(Edge* e)
+		{
+			return e->getEdgeType() == Edge::JOINT;
+		}
 
 	private:
 		static bool canBuildJoint(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1, float angleMax,
@@ -211,6 +217,23 @@ namespace RBX
 	protected:
 		static void faceIdToCoords(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1,
 		                           G3D::CoordinateFrame& c0, G3D::CoordinateFrame& c1);   // 00645980
+
+	private:
+		// Donor v8world/RigidJoint.h private inline (no code of its own): slot 5 getJointType compared with
+		// WELD_JOINT 6 / SNAP_JOINT 7 inside isRigidJoint 00599300.
+		static bool jointIsRigid(Joint* j)
+		{
+			JointType type = j->getJointType();
+			return type == WELD_JOINT || type == SNAP_JOINT;
+		}
+	public:
+		// 00599300 ?isRigidJoint@RigidJoint@RBX@@SA_NPAVEdge@2@@Z: donor v8world/RigidJoint.h inline, emitted out of
+		// line (COMDAT next to the PartInstance unit) and called by PrimIterator::isParent 00647430 /
+		// ClumpStage. static_cast: no rbx_static_cast assertion in the 2008 body.
+		static bool isRigidJoint(Edge* e)
+		{
+			return Joint::isJoint(e) && jointIsRigid(static_cast<Joint*>(e));
+		}
 	};
 
 	class WeldJoint : public RigidJoint
@@ -232,6 +255,10 @@ namespace RBX
 		{
 		}
 		virtual ~WeldJoint() {}                            // ??_G folds with RigidJoint's 005e2760
+
+	public:
+		// Donor v8world/WeldJoint.h; called by JointBuilder::canJoin 0064d410 (surface WELD test, `push 0x88; call new`).
+		static WeldJoint* canBuildJoint(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1);   // 00669e20
 	};
 
 	class SnapJoint : public RigidJoint
@@ -253,6 +280,10 @@ namespace RBX
 		{
 		}
 		virtual ~SnapJoint() {}                            // ??_G folds with RigidJoint's 005e2760
+
+	public:
+		// Donor v8world/SnapJoint.h; called by JointBuilder::canJoin 0064d410 (STUDS 3 / INLET 4 test at 00669d73).
+		static SnapJoint* canBuildJoint(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1);   // 00669d30
 	};
 
 	// MultiJoint::init 006468a0 writes numBreakingConnectors +0xbc, numConnector +0x88, then point[2i] +0x8c,
@@ -495,5 +526,13 @@ namespace RBX
 
 	public:
 		RevoluteLink* resetLink();                                      // 005e5c90
+
+	public:
+		// 00599330 ?isMotorJoint@MotorJoint@RBX@@SA_NPAVEdge@2@@Z: donor v8world/MotorJoint.h inline, emitted out of
+		// line next to isRigidJoint 00599300 (slot 3 getEdgeType == JOINT, then slot 5 getJointType == MOTOR_JOINT 8).
+		static bool isMotorJoint(Edge* e)
+		{
+			return Joint::isJoint(e) && static_cast<Joint*>(e)->getJointType() == MOTOR_JOINT;
+		}
 	};
 }

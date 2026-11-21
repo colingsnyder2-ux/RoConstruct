@@ -29,6 +29,10 @@ namespace RBX
 		std::vector<Joint*> moveJoints;
 
 		typedef std::multimap<Primitive*, Joint*>::iterator Iterator;
+		// Batch 36 rejected (target computes both bounds once before the loop, 006685ff..0066866c, `cmp [esp + 0x1c], ebx`
+		// per pass): jointMap.equal_range(p) (619 B, equal_range called out of line) and lower_bound / upper_bound into
+		// two locals before the loop (659 B, upper_bound inline but lower_bound 00667fd0 still called out of line).
+		// The body below currently builds to 635 B (lower_bound out of line); the target expands both bounds inline.
 		for (Iterator it = jointMap.lower_bound(p); it != jointMap.upper_bound(p); ++it)
 		{
 			// The iterator is checked and dereferenced twice (00668694 and 0066870c): once for the test (the

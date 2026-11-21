@@ -134,6 +134,9 @@ namespace RBX
 		const G3D::Vector3& getWalkToPoint() const { return walkToPoint; }     // 005d7510
 		bool getJump() const { return jump; }                // 005d7520
 		bool getSit() const { return sit; }                  // 005d7530
+		// INFERRED: inline accessor of the imDead bit (no out-of-line copy); Seat::onEvent_seatTouched 0063cfb0 tests
+		// the +0x1e8 flag byte with 0xa (imDead bit 1 | sit bit 3) next to getSit, i.e. !getDead() && !getSit().
+		bool getDead() const { return imDead; }
 		bool getStrafe() const { return strafe; }            // 005d7540 (analog name)
 		const G3D::Vector3& getTargetPoint() const { return targetPoint; }     // 005d7550
 

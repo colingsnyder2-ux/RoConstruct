@@ -13,18 +13,12 @@
 // the donor v8world/RigidJoint.h, which cannot be declared next to v8world/Joints2008.h). Only the two out-of-line
 // members called here are declared, with the declarations of part-embedded/v8world/Primitive.h.
 //
-// BLOCKED (header): native-headers/v8world/Joints2008.h does not declare WeldJoint::canBuildJoint 00669e20 or
-// SnapJoint::canBuildJoint 00669d30. With a scratch copy of Joints2008.h that adds
-//     static WeldJoint* canBuildJoint(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1);   // 00669e20
-//     static SnapJoint* canBuildJoint(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1);   // 00669d30
-// (public, in WeldJoint / SnapJoint) this body is byte-exact (batch 32: 0064d410, 280 B). Until the Joints2008.h
-// owner adds them (and defines JOINTS_HEADER_DECLARES_RIGID_CANBUILDJOINT, or this guard is removed) the body is kept
-// out of the build.
+// Batch 36: WeldJoint::canBuildJoint 00669e20 / SnapJoint::canBuildJoint 00669d30 are now declared in
+// native-headers/v8world/Joints2008.h (batch 32 measured this body byte-exact against that declaration).
 #include "v8world/Joints2008.h"
 #include "util/Extents.h"
 #include "util/Math.h"
 
-#ifdef JOINTS_HEADER_DECLARES_RIGID_CANBUILDJOINT
 namespace RBX
 {
 	class Primitive
@@ -87,4 +81,3 @@ namespace RBX
 		return NULL;
 	}
 }
-#endif

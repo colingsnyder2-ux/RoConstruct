@@ -36,13 +36,12 @@ namespace RBX
 		return NULL;
 	}
 
-	// 00647430 PrimIterator::isParent (func_00647430): guarded. It calls RigidJoint::isRigidJoint 00599300
+	// 00647430 PrimIterator::isParent (func_00647430). It calls RigidJoint::isRigidJoint 00599300
 	// (?isRigidJoint@RigidJoint@RBX@@SA_NPAVEdge@2@@Z) and MotorJoint::isMotorJoint 00599330
-	// (?isMotorJoint@MotorJoint@RBX@@SA_NPAVEdge@2@@Z), static members that native-headers/v8world/Joints2008.h does not
-	// declare yet (header proposal). Target shape: NULL checks of both primitives, joint->active (+0x24), isRigidJoint
+	// (?isMotorJoint@MotorJoint@RBX@@SA_NPAVEdge@2@@Z), declared inline in native-headers/v8world/Joints2008.h
+	// (batch 36). Target shape: NULL checks of both primitives, joint->active (+0x24), isRigidJoint
 	// then (IN_ASSEMBLY only) isMotorJoint, child body (+0xa0) parent (+0x14) == parentCandidate body, clump (+0x5c)
 	// compare, then (IN_ASSEMBLY) the unchecked getAssembly 005e7560 of parentCandidate before child's.
-#ifdef NATIVE_JOINTS_ISRIGID_DECLARED
 	bool PrimIterator::isParent(Primitive* parentCandidate, Primitive* child, Joint* joint, SearchType searchType)
 	{
 		if (parentCandidate == NULL || child == NULL || !joint->getActive())
@@ -63,7 +62,6 @@ namespace RBX
 		}
 		return false;
 	}
-#endif
 
 	// 006474e0 ?findParent@PrimIterator@RBX@@SAPAVPrimitive@2@PAV32@W4SearchType@12@@Z
 	Primitive* PrimIterator::findParent(Primitive* p, SearchType searchType)
