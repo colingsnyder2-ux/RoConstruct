@@ -28,6 +28,9 @@
 // 0048a670 ?addChild@@YAXABV?$shared_ptr@VModelInstance@RBX@@@boost@@ABV?$shared_ptr@VInstance@RBX@@@2@@Z: defined in
 // AppUnit480_2008Player.cpp (same Network/Player.cpp unit); declared here for loadCharacter's boost::bind.
 void addChild(const boost::shared_ptr<RBX::ModelInstance>& parent, const boost::shared_ptr<RBX::Instance>& child);
+// 004899b0 ?setAppearanceParentNull@@YAXPAVInstance@RBX@@@Z: defined in AppUnit480_2008Player.cpp (same Network/Player.cpp
+// unit); declared here for removeCharacterAppearance's for_eachChild.
+void setAppearanceParentNull(RBX::Instance* instance);
 
 namespace RBX
 {
@@ -126,17 +129,27 @@ namespace RBX
 				workspace->moveToPoint(model.get(), G3D::Vector3(0.0f, 20.0f, 25.0f));
 		}
 
+		// 0048c3e0 (registry placeholder func_0048c3e0; donor Network/Player.cpp body): Players::backendProcessing
+		// 00495eb0 (this, true), else std::runtime_error 00409d50 with the literal 008216d0; then, when the character
+		// (+0x170) is set, Instance::for_eachChild<void (*)(Instance*)> 0045c470 with setAppearanceParentNull 004899b0.
+		void Player::removeCharacterAppearance()
+		{
+			if (!Players::backendProcessing(this, true))
+				throw std::runtime_error("RemoveCharacterAppearance can only be called by the backend server");
+
+			if (character)
+				character->for_eachChild(&setAppearanceParentNull);
+		}
+
 		// 00495380 loadCharacterAppearance(bool blocking): PARKED (not compiled; 1041 bytes).
-		// Evidence: backendProcessing(this, true) else runtime_error 008222a8; removeCharacterAppearance 0048c3e0 (not
-		// declared in Network/Player.h; backendProcessing else 008216d0, then character->for_eachChild(
-		// &setAppearanceParentNull 004899b0) 0045c470); `character (+0x170) && !characterAppearance.empty() (+0x1a8)`;
+		// Evidence: backendProcessing(this, true) else runtime_error 008222a8; removeCharacterAppearance 0048c3e0 (above); `character (+0x170) && !characterAppearance.empty() (+0x1a8)`;
 		// an outer vector<string> split on ";" 008212ac (is_any_of 0048e620, split 004952f0). With the argument set:
 		// the donor block (its own vector<shared_ptr<Instance>> and an inner re-split vector<string>, per string
 		// ContentId(const std::string&) 00615440 + create<ContentProvider>(this) 00465210 ->load 005628e0), then
 		// std::for_each 0048d0f0 with boost::bind(&setAppearanceParent 0048a690, character, _1) 0048cc00 and
 		// ~vector 005a2fe0. Without it: per outer string an asynchronous ContentProvider request 00562f70 whose
 		// boost::function 00493210 binds the file-local callback 00492360 (bind 0048d200) to the character and a
-		// shared_from<> 00618a40 of an object built by 004651c0 (this, _1, _2). Needs the
-		// removeCharacterAppearance declaration and identities for 00492360 / 004651c0 / 00562f70 first.
+		// shared_from<> 00618a40 of an object built by 004651c0 (this, _1, _2). Remaining
+		// blocker: registry identities for 00492360 / 004651c0 / 00562f70 / 00493210 / 0048d200 (all placeholders).
 	}
 }

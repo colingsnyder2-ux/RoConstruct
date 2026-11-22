@@ -104,6 +104,11 @@ namespace RBX
 			// argument's Guid after GuidItem<Instance>::registerGuid 0049bba0 (Guid::Data at +0x8/+0xc), and the
 			// GuidItem<Instance> accessor for that guid is not declared in util/GuidItem.h.
 			void serializeId(RakNet::BitStream& stream, const Instance* instance);
+			// 004a8cc0 (registry placeholder func_004a8cc0; donor Streaming.h IdSerializer::trySerializeId): thiscall, ret 8,
+			// returns bool in al; registerGuid 0049bba0, scopeNames +0x130 StringSender::trySend 004a7ba0 / send 004a7e20
+			// (Name::getNullName 00554270), WriteBits 004a5600 (24 bits). Caller RoundRobinPhysicsSender::sendPhysicsData
+			// 004caaf0 (this = [sender+0x4] = Replicator*, IdSerializer at +0). Body in native-classes/IdSerializerTrySerializeId.cpp.
+			bool trySerializeId(RakNet::BitStream& stream, const Instance* instance);
 			// Donor Streaming.h IdSerializer::serializeRef (thiscall, ret 8; caller Replicator::serializeValue 004b6890
 			// passes the Replicator this unadjusted: IdSerializer at +0). Body in AppUnit49C_2008IdSerializerTemplates.cpp.
 			void serializeRef(const Reflection::ConstProperty& property, RakNet::BitStream& stream); // 004a8b90
