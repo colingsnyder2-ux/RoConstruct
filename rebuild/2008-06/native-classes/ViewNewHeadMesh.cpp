@@ -15,9 +15,10 @@ namespace RBX
 			const float bevel;
 			const int halfVertexCount;
 		public:
-			CylinderTransform(float bevel, int halfVertexCount)
+			// The face slots pass `elements`; the ctor halves it (2007 RenderLibNew/HeadMesh.cpp shape).
+			CylinderTransform(float bevel, int vertexCount)
 				: bevel(bevel),
-				  halfVertexCount(halfVertexCount)
+				  halfVertexCount((vertexCount + 1) / 2)
 			{
 			}
 			void operator()(G3D::Vector3& vertex, G3D::Vector3& normal, G3D::Vector2& tex, const G3D::Vector3& radius, const G3D::Vector2int16& ivertex); // 004fdbd0
@@ -87,35 +88,30 @@ namespace RBX
 			buildFace<NORM_Y_NEG>(EndcapTransform(bevel), G3D::Vector2int16(e, e), purpose);
 		}
 
-		// 00500080 (PARKED, closest variant). Target: (elements + 1) / 2 and bevel first, then elements reloaded with
-		// a dword load (mov edx, [ecx+0x24]) and stored as two words; calls buildFace<NORM_X_NEG, CylinderTransform>.
-		// This variant differs only at that reload (movzx edx, word ptr [ecx+0x24]; 59 vs 58 bytes).
-		// Rejected: (1) 'int e = elements' before an unnamed CylinderTransform argument (55 bytes, one load, size
-		// stored before bevel); (2) named transform then 'int e = elements' (60 bytes, load CSE'd into esi);
-		// (3) unnamed CylinderTransform with Vector2int16(elements, elements) (59 bytes, size built first via movzx);
-		// (4) int half = (elements + 1) / 2; int e = elements; (55 bytes).
+		// 00500080 / 005000c0 / 00500100 / 00500140 (with the grid instances 004ff4b0 / 004ff790 / 004ffa60 / 004ffd40):
+		// the 2007 RenderLibNew/HeadMesh.cpp shape, CylinderTransform(bevel, elements) halving in its ctor and the
+		// two counts passed through the inline (Builder, x, y, purpose) buildFace overload (dword reloads of elements).
 		void HeadBuilder::buildLeft(Purpose purpose)
 		{
-			CylinderTransform transform(bevel, (elements + 1) / 2);
-			buildFace<NORM_X_NEG>(transform, G3D::Vector2int16(elements, elements), purpose);
+			buildFace<NORM_X_NEG>(CylinderTransform(bevel, elements), elements, elements, purpose);
 		}
 
+		// 005000c0
 		void HeadBuilder::buildRight(Purpose purpose)
 		{
-			CylinderTransform transform(bevel, (elements + 1) / 2);
-			buildFace<NORM_X>(transform, G3D::Vector2int16(elements, elements), purpose);
+			buildFace<NORM_X>(CylinderTransform(bevel, elements), elements, elements, purpose);
 		}
 
+		// 00500100
 		void HeadBuilder::buildFront(Purpose purpose)
 		{
-			CylinderTransform transform(bevel, (elements + 1) / 2);
-			buildFace<NORM_Z_NEG>(transform, G3D::Vector2int16(elements, elements), purpose);
+			buildFace<NORM_Z_NEG>(CylinderTransform(bevel, elements), elements, elements, purpose);
 		}
 
+		// 00500140
 		void HeadBuilder::buildBack(Purpose purpose)
 		{
-			CylinderTransform transform(bevel, (elements + 1) / 2);
-			buildFace<NORM_Z>(transform, G3D::Vector2int16(elements, elements), purpose);
+			buildFace<NORM_Z>(CylinderTransform(bevel, elements), elements, elements, purpose);
 		}
 
 		HeadMesh::HeadMesh(const G3D::Vector3& size, RenderSurfaceTypes surfaceTypes)
