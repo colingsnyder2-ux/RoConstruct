@@ -6,8 +6,9 @@
 #include "v8world/WeldJoint.h"
 
 namespace RBX {
-Snap::Snap(Joint* joint) : DescribedCreatable<Snap, AutoJoint, sSnap>(joint) { setName(sSnap); }
-Snap::Snap() : DescribedCreatable<Snap, AutoJoint, sSnap>(new SnapJoint()) { setName(sSnap); }
-Weld::Weld(Joint* joint) : DescribedCreatable<Weld, JointInstance, sWeld>(joint) { setName(sWeld); }
-Weld::Weld() : DescribedCreatable<Weld, JointInstance, sWeld>(new WeldJoint()) { setName(sWeld); }
+// Template base follows the JointInstance.h declaration (binary RTTI binds DescribedCreatable<Snap, JointInstance, sSnap>).
+Snap::Snap(Joint* joint) : DescribedCreatable<Snap, JointInstance, sSnap>(joint) { setName(sSnap); }  // 005e44f0
+Snap::Snap() : DescribedCreatable<Snap, JointInstance, sSnap>(new SnapJoint()) { setName(sSnap); }    // 005e4600
+Weld::Weld(Joint* joint) : DescribedCreatable<Weld, JointInstance, sWeld>(joint) { setName(sWeld); }  // 005e4710
+Weld::Weld() : DescribedCreatable<Weld, JointInstance, sWeld>(new WeldJoint()) { setName(sWeld); }    // 005e4810
 }

@@ -15,6 +15,10 @@ namespace RBX
 
 	// 0064cbf0: remove the primitive's first joint from the downstream TreeStage,
 	// then remove that joint and the primitive from this stage (donor ClumpStage name).
+	// GUARDED: v8world/ClumpStage2008.h (not this unit's header) does not declare onPrimitiveRemoving (C2039); the
+	// one-line header addition `void onPrimitiveRemoving(Primitive* p); // 0064cbf0` (caller JointStage 00668850)
+	// is a proposal to that header's owner. Registry row is the placeholder func_0064cbf0.
+#if defined(CLUMPSTAGE_HEADER_DECLARES_ONPRIMITIVEREMOVING)
 	void ClumpStage::onPrimitiveRemoving(Primitive* p)
 	{
 		Joint* j = p->getFirstJoint();
@@ -24,6 +28,7 @@ namespace RBX
 		delete j;
 		p->removeFromStage(this);
 	}
+#endif
 
 	// 0064cc40 (native-world ClumpStage.cpp / openrbx shape): the FREE_JOINT of p (getJoint 0064ca60), new(0x88)
 	// AnchorJoint(p), IPipelined::putInStage 00645830, downstream slot 4 onEdgeAdded, then this slot 5 onEdgeRemoving
