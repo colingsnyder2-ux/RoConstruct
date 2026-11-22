@@ -69,11 +69,17 @@ namespace RBX
 		return controllerService ? controllerService->getHardwareDevice() : NULL;
 	}
 
-#ifdef NATIVE_USER_CONTROLLER_PENDING
-	// Both bodies inline UserInputBase::altKeyDown (keyDown RALT/LALT through the cached device) and call an
-	// out-of-line ctrlKeyDown (0045aec0) on a re-fetched device; the out-of-line altKeyDown copy 005ca390 of this
-	// unit shows alt/ctrl were inline header members in 2008 (the donor util/UserInputBase.h declares them out of
-	// line): pending on that header.
+	// Both keyboard getValue bodies inline UserInputBase::altKeyDown (keyDown RALT 0x133 / LALT 0x134 through the
+	// cached device) and call the out-of-line ctrlKeyDown (0045aec0) on a re-fetched device. The out-of-line
+	// altKeyDown copy 005ca390 of this unit shows altKeyDown was an inline header member in 2008, while the core
+	// util/UserInputBase.h declares it out of line (proposal); this file-local helper copies that inline body.
+	// INFERRED: 005ca390 body (keyDown(0x133) || keyDown(0x134)) and the inlined copies in 005ca500 / 005ca760.
+	static inline bool inlineAltKeyDown(const UserInputBase* device)
+	{
+		return device->keyDown(SDLK_RALT) || device->keyDown(SDLK_LALT);
+	}
+
+	// 005ca500
 	float KeyboardPrimaryController::getValue(Controller::InputType inputType) const
 	{
 		if (!getHardwareDevice())
@@ -98,7 +104,7 @@ namespace RBX
 			break;
 		}
 
-		if (hardware->altKeyDown())
+		if (inlineAltKeyDown(hardware))
 			return 0.0f;
 		if (getHardwareDevice()->ctrlKeyDown())
 			return 0.0f;
@@ -131,6 +137,7 @@ namespace RBX
 		}
 	}
 
+	// 005ca760
 	float KeyboardSecondaryController::getValue(Controller::InputType inputType) const
 	{
 		if (!getHardwareDevice())
@@ -145,7 +152,7 @@ namespace RBX
 			break;
 		}
 
-		if (hardware->altKeyDown())
+		if (inlineAltKeyDown(hardware))
 			return 0.0f;
 		if (getHardwareDevice()->ctrlKeyDown())
 			return 0.0f;
@@ -177,7 +184,6 @@ namespace RBX
 			return 0.0f;
 		}
 	}
-#endif
 
 	AIController::AIController(const PVInstance* controlledInstance)
 		: SteppingController(controlledInstance),
