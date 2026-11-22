@@ -86,14 +86,23 @@ void (RBX::Network::Player::*const setSuperSafeChatOutOfLine)(bool) = &RBX::Netw
 //     0056d120, PropertyDescriptor 0056c650, vtable store, getset at +0x18), equalValues slot 3 0048bb40;
 //   * boost::shared_dynamic_cast<ModelInstance, Instance> 0048b150 and the shared_ptr<ModelInstance>
 //     dynamic_cast_tag constructor 0048a9e0 it calls (ModelInstance 00932a40).
+// 0048bb40 TypedPropertyDescriptor<BrickColor>::equalValues: the target reads b first and compares the colour
+// numbers as getValue(a) == getValue(b) (BrickColor::operator== evaluates its argument first), the reverse of the
+// in-class property.h body, so the unit specializes it (inline, like the header body) before the constructor
+// instantiation emits the vtable.
+template<>
+inline bool RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor>::equalValues(
+	const RBX::Reflection::DescribedBase* a, const RBX::Reflection::DescribedBase* b) const
+{
+	return getValue(a) == getValue(b);
+}
+
 template class boost::any::holder<RBX::BrickColor>;
 template bool RBX::Reflection::Value::isType<RBX::BrickColor>() const;
 template RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor>::TypedPropertyDescriptor(
 	RBX::Reflection::ClassDescriptor&, const char*, const char*,
 	std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor>::GetSet>,
 	RBX::Reflection::PropertyDescriptor::Functionality);
-template bool RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor>::equalValues(
-	const RBX::Reflection::DescribedBase*, const RBX::Reflection::DescribedBase*) const;
 template boost::shared_ptr<RBX::ModelInstance> boost::shared_dynamic_cast<RBX::ModelInstance, RBX::Instance>(
 	const boost::shared_ptr<RBX::Instance>&);
 

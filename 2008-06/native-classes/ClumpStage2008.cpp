@@ -15,6 +15,8 @@ namespace RBX
 
 	// 0064cbf0: remove the primitive's first joint from the downstream TreeStage,
 	// then remove that joint and the primitive from this stage (donor ClumpStage name).
+	// Declared in v8world/ClumpStage2008.h (batch 39; caller JointStage 00668850). Registry row is the placeholder
+	// func_0064cbf0.
 	void ClumpStage::onPrimitiveRemoving(Primitive* p)
 	{
 		Joint* j = p->getFirstJoint();

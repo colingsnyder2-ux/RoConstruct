@@ -101,6 +101,9 @@ namespace RBX
 			void onCharacterChangedFrontend();                        // 004924e0
 			void doPeriodicIdleCheck();                               // 00494650
 			void loadCharacterAppearance(bool);                       // 00495380 (argument meaning not derived)
+			// 0048c3e0 (registry placeholder func_0048c3e0; donor Player.h name): thiscall, no stack arguments (plain `ret`),
+			// `this` in ecx -> esi; only caller loadCharacterAppearance 00495380. Private like its caller (registry AAE).
+			void removeCharacterAppearance();
 
 		public:
 			Player();                                                 // 00493da0

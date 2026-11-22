@@ -1,3 +1,22 @@
+#include "v8xml/XmlElement.h"
+
+void isolate(XmlElement* element, const std::map<RBX::Instance*, RBX::InstanceHandle>& isolationMap);
+
+void isolate(XmlElement* element, const std::map<RBX::Instance*, RBX::InstanceHandle>& isolationMap)
+{
+	element->replaceHandles(isolationMap);
+
+	for (XmlAttribute* attribute = element->getFirstAttribute(); attribute != NULL; attribute = element->getNextAttribute(attribute))
+	{
+		attribute->replaceHandles(isolationMap);
+	}
+
+	for (XmlElement* child = element->firstChild(); child != NULL; child = element->nextChild(child))
+	{
+		isolate(child, isolationMap);
+	}
+}
+
 #include "metadata-load/v8xml/SerializerV2.h"
 
 bool ArchiveBinder::resolveIDREF(IDREFBinding binding)

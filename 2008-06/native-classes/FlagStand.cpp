@@ -34,6 +34,8 @@ namespace RBX
 		return teamColor;
 	}
 
+	// 0062c9c0 (425 bytes, ret 4): byte-identical (relocs masked); credited only once PartInstance.h declares setName
+	// 00598c20 and PVInstance::onChildRemoving binds to 00608a60 (see Seat.cpp).
 	FlagStand::FlagStand()
 	{
 		setName(sFlagStand);

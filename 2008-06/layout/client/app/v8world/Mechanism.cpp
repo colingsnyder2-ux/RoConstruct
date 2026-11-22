@@ -1,5 +1,5 @@
 #undef _RELEASEASSERT
-#include "v8world/Mechanism.h"
+#include "../../../../../../tools/rbxgs/Client/App/include/v8world/Mechanism.h" // donor header: native-headers/v8world/Mechanism.h is a global-class stub that shadows it
 #include "v8world/Primitive.h"
 #include "v8world/Assembly.h"
 

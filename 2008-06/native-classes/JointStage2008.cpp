@@ -72,25 +72,27 @@ namespace RBX
 	}
 
 	// 00668280
-	// Parked (hard-leftover lf14): 188 bytes, same calls (lower_bound 00667fd0, iterator ++ 0068dfa0, erase 005539d0) and
-	// inline upper_bound; the only difference is that the original pushes esi in the prologue (ebx, ebp, esi, edi) while
-	// this build sinks it after the lower_bound call. Rejected: the iterator declared in the for-init (adds an esi early
-	// test, prologue changes), break instead of return (unchanged), postfix it++ (unchanged).
+	// Byte-identical (batch 41) with the 2007 openrbx statement shape (tools/openrbx JointStage.cpp: do { if (p == NULL)
+	// break; ...; } while (0) with a JointMap::iterator declared before the for); this keeps esi pushed in the prologue.
+	// Earlier rejected (lf14): `if (p) { Iterator it; for (...) }` (esi push sunk after the lower_bound call), the
+	// iterator in the for-init, break instead of return, postfix it++. Batch 41 rejected: calling the base tree's
+	// lower_bound directly (inlined, 199 B). The call 006682a1 reaches the JointStage2008.h noinline JointMap wrapper,
+	// whose 54-byte body is identical to the COMDAT-folded _Tree::lower_bound 00667fd0.
 	void JointStage::removeFromMap(Joint* j, Primitive* p)
 	{
-		if (p)
-		{
-			typedef std::multimap<Primitive*, Joint*>::iterator Iterator;
-			Iterator it;
-			for (it = jointMap.lower_bound(p); it != jointMap.upper_bound(p); ++it)
+		do {
+			if (p == NULL)
+				break;
+			JointMap::iterator pos;
+			for (pos = jointMap.lower_bound(p); pos != jointMap.upper_bound(p); ++pos)
 			{
-				if (it->second == j)
+				if (pos->second == j)
 				{
-					jointMap.erase(it);
+					jointMap.erase(pos);
 					return;
 				}
 			}
-		}
+		} while (0);
 	}
 
 	// 006683b0

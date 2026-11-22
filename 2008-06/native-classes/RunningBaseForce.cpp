@@ -199,6 +199,10 @@ void RunningBase::onComputeForce(float dt)
 // (the same x87/load scheduling residual as RunningBase above). Accepted steps: early returns setting flag11 (draft:
 // nested ifs -> 343 bytes, `test ah, 5; jp` and the flag11 block moved to the end), and holding getBranchForce().y as a
 // const float& (draft: Vector3 reference -> `fsub [ecx + 4]` without `add ecx, 4`).
+// Batch 36 rejected: `-G3D::Vector3(0, delta, 0)` for the floor force (identical); a scratch Body2008.h whose
+// accumulateForce tests and calls `root->simBody` without the local (identical, simBody load still after the stores).
+// RunningBase 00666550 batch 36: file-local inline maxMoveForce/minMoveForce with their static locals (not inlined,
+// clamp argument pushes unchanged).
 void Jumping::onComputeForce(float dt)
 {
     Flying::onComputeForce(dt);

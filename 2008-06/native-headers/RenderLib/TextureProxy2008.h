@@ -45,6 +45,14 @@ struct NativeRenderMaterialLayout;
 
 namespace RBX
 {
+	namespace RenderNew
+	{
+		class RenderScene;   // RenderLib/RenderSceneNew2008.h
+	}
+}
+
+namespace RBX
+{
 	namespace Render
 	{
 		class TextureProxy : public TextureProxyBase
@@ -107,6 +115,9 @@ namespace RBX
 		class TextureProxy : public TextureProxyBase
 		{
 			friend struct ::NativeRenderMaterialLayout;
+			// RenderScene::render 007ab0a0 copies ogreTexture (+0x54: dynamic_cast to RTTI 00942f14, add eax 0x54,
+			// TexturePtr copy ctor at 007ac040).
+			friend class RenderScene;
 
 		protected:
 			G3D::ReferenceCountedPointer<G3D::Texture> texture;                  // +0x30

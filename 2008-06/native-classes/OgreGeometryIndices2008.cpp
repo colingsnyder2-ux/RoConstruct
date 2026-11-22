@@ -4,8 +4,10 @@
 #include <OgreSubMesh.h>
 #include <OgreHardwareBufferManager.h>
 namespace Ogre {
+// 0067c020 (thiscall, ret 0x10; ecx is not read): GeometryBuilder member, called by Mesh::Level::makeHWSubMesh
+// 00549610 with ecx = engine. Declaration: OgreRbx/GeometryCreate2008.h.
 // INFERRED: helper name and pointer types from original 0067c020 and indexed geometry donor.
-SubMesh* __stdcall createIndices(const MeshPtr& mesh, const unsigned short* indices16, const unsigned* indices32, unsigned triangles) {
+SubMesh* GeometryBuilder::createIndices(const MeshPtr& mesh, const unsigned short* indices16, const unsigned* indices32, unsigned triangles) {
  boost::call_once(initializeGeometryContext, geometryOnce);
  boost::recursive_mutex::scoped_lock lock(geometryContext->mutex);
  SubMesh* submesh = mesh->createSubMesh();

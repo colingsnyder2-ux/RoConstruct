@@ -35,6 +35,8 @@ namespace RBX
 	// Rejected: qOrientation = qOrientation * s (Quaternion::operator* plus out-of-line operator=, 660 bytes);
 	// component-wise q.x *= s ... (same component-first pattern). Both depend on the donor util/Quaternion.h and G3D
 	// Matrix3.h inline bodies, not on this body (header question).
+	// Batch 41: re-measured, unchanged (643 B, first divergence 00658e1a). Diff 2 is the batch-27 exhausted x87
+	// row-sum order (Vector3 * Matrix3, like SimBody::step 00658fb0): parked, no further trials.
 	void SimBody::update()
 	{
 		{

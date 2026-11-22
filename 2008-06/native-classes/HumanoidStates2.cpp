@@ -131,6 +131,9 @@ Jumping::~Jumping()
 // and with Flying's empty body visible in this unit the compiler drops that call (batch 15 trial: 322 bytes, no call).
 extern float freefallYawLimitGain;                       // 00962aa8 (analog name)
 
+// Batch 36: `const G3D::Vector3& high = maxMoveForce(); const G3D::Vector3& low = minMoveForce(); accel.clamp(low, high)`
+// reproduces the target's deferred `add esp, 8` before both pushes but pushes `lea` slot addresses instead of the kept
+// return register (520 B, rejected); `force = accel.clamp(...) * mass; force.y = 0` (522 B, rejected).
 // 006675d0
 void Freefall::onComputeForce(float dt)
 {

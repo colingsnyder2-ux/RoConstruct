@@ -95,7 +95,7 @@ void Instance::onAncestorChanged(const AncestorChanged& event)
 void Instance::onDescendentAdded(Instance* instance)
 {
     if (Notifier<Instance, DescendantAdded>::hasListeners())
-        Notifier<Instance, DescendantAdded>::raise(DescendantAdded(instance, instance->parent));
+        Notifier<Instance, DescendantAdded>::raise(DescendantAdded(instance, instance->getParent()));
     event_descendentAdded.fire(this, shared_from(instance));
 }
 
@@ -152,10 +152,13 @@ Reflection::MemberDescriptorContainer<Reflection::PropertyDescriptor>::ConstIter
 
 void Instance::writeProperties(XmlElement* container) const
 {
-    for (Reflection::ConstPropertyIterator iter = properties_begin(); iter != properties_end(); ++iter) {
-        XmlElement* child = iter.getDescriptor().write(this, false);
+    Reflection::ConstPropertyIterator iter = properties_begin();
+    while (iter != properties_end()) {
+        const Reflection::PropertyDescriptor& descriptor = iter.getDescriptor();
+        XmlElement* child = descriptor.write(this, false);
         if (child)
             container->addChild(child);
+        ++iter;
     }
 }
 
@@ -334,6 +337,10 @@ void Instance::applyAnchoredToChildren(AnchorAction value)
 
 #include "v8tree/Instance.h"
 
+namespace RBX {
+Reflection::BoundProp<bool, 1> Instance::propArchivable("archivable", "Behavior", &Instance::archivable, Reflection::PropertyDescriptor::STANDARD);
+}
+
 RBX::Instance* RBX::Instance::findFirstChildByClassName(std::string className) const
 {
     if (children) {
@@ -393,3 +400,20 @@ template class std::_Tmap_traits<RBX::Reflection::SignalDescriptor const *,boost
 template class std::_Tree<std::_Tmap_traits<RBX::Reflection::SignalDescriptor const *,boost::shared_ptr<RBX::Reflection::SignalInstance>,std::less<RBX::Reflection::SignalDescriptor const *>,std::allocator<std::pair<RBX::Reflection::SignalDescriptor const * const,boost::shared_ptr<RBX::Reflection::SignalInstance> > >,0> >;
 template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Reflection::SignalDescriptor const *,boost::shared_ptr<RBX::Reflection::SignalInstance>,std::less<RBX::Reflection::SignalDescriptor const *>,std::allocator<std::pair<RBX::Reflection::SignalDescriptor const * const,boost::shared_ptr<RBX::Reflection::SignalInstance> > >,0> >::_Node *>;
 template class std::map<RBX::Reflection::SignalDescriptor const *,boost::shared_ptr<RBX::Reflection::SignalInstance>,std::less<RBX::Reflection::SignalDescriptor const *>,std::allocator<std::pair<RBX::Reflection::SignalDescriptor const * const,boost::shared_ptr<RBX::Reflection::SignalInstance> > > >;
+
+namespace RBX {
+const Reflection::PropDescriptor<Instance, std::string> Instance::desc_Name("Name", "Data", &Instance::getName, &Instance::setName, Reflection::PropertyDescriptor::STANDARD);
+}
+
+namespace RBX {
+const Reflection::RefPropDescriptor<Instance, Instance> Instance::propParent("Parent", "Data", &Instance::getParent, &Instance::setParent, Reflection::PropertyDescriptor::UI);
+}
+
+namespace RBX {
+Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)>
+    Instance::event_descendentAdded("DescendantAdded", "descendant");
+Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)>
+    Instance::event_descendentRemoving("DescendantRemoving", "descendant");
+Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)>
+    Instance::event_ancestryChanged("AncestryChanged", "child");
+}

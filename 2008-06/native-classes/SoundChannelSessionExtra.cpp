@@ -1,16 +1,12 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /U_RELEASEASSERT /I{headers}/../../../tools/rbxgs/Client/fmod/api/inc
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /U_RELEASEASSERT /I{headers}/../../../tools/openrbx/Client/fmod/api/inc
 #include "fmod.hpp"
 #include "SoundChannel/SoundChannel.h"
 bool convert(const G3D::Vector3&, FMOD_VECTOR&);
 namespace RBX { namespace Soundscape {
 void logFmodResult(FMOD_RESULT);
-SoundChannel::~SoundChannel() {}
-SoundChannel::SoundChannel() : fmod_channel(0), volume(0.5f), playOnRemove(false), is3D(false), looped(false), soundDisabled(false), playCount(-1), part(0) { setName("Sound"); }
-void SoundChannel::onChannelEnd() {
-    if (fmod_channel) { logFmodResult(fmod_channel->setUserData(0)); fmod_channel = 0; }
-    if (sound) { --sound->refCount; sound.reset(); }
-    updateListenState();
-}
+// SoundChannel ctor 005bc480, dtor 005b7680 and onChannelEnd 005bc670 are exact in SoundChannelRecovery.cpp;
+// they are not repeated here.
+// 005b9920
 void SoundChannel::update3D(FMOD::Channel* channel) {
     if (is3D && part) {
         FMOD_VECTOR pos;

@@ -1,11 +1,3 @@
-#include "CRobloxView.h"
-
-void CRobloxWnd::finishAttach() {
-    (void)this->dataModel;
-    (void)this->dataModelPtr;
-    (void)this->adorn;
-}
-
 #include "v8datamodel/DataModel.h"
 #include "util/Name.h"
 
@@ -36,6 +28,16 @@ namespace RBX {
 	{
 		return dynamic_cast<const Service*>(instance) != NULL;
 	}
+}
+
+#include "GuiHud2008/GuiBuilder2008.h"
+
+namespace RBX {
+void DataModel::buildGui(Adorn* adorn)
+{
+    GuiBuilder builder;
+    builder.buildGui(adorn, this, workspace.get());
+}
 }
 
 #include <limits>
@@ -239,40 +241,6 @@ boost::shared_ptr<DataModel> DataModel::createDataModel(bool start) {
 #include "util/RunStateOwner.h"
 
 double RBX::DataModel::getDutyCycle() const { return runService->dutyCycle(); }
-
-#include "v8datamodel/Workspace.h"
-
-namespace RBX { typedef DescendantAdded DescendentAdded; typedef DescendantRemoving DescendentRemoving; }
-#include "v8datamodel/LocalBackpack.h"
-#include "v8datamodel/Hopper.h"
-#include "v8datamodel/JointsService.h"
-#include "gui/Gui.h"
-#include "util/Sound.h"
-
-namespace RBX {
-class PhysicsService;
-template<> PhysicsService* ServiceProvider::create<PhysicsService>() const;
-
-void DataModel::initializeContents(bool start) {
-    workspace->setParent(this);
-    guiRoot->setParent(this);
-    guiHooks->setParent(this);
-    localBackpack = shared_from(ServiceProvider::create<LocalBackpack>());
-    starterPackService = shared_from(ServiceProvider::create<StarterPackService>());
-    runService = shared_from(ServiceProvider::create<RunService>());
-    ServiceProvider::create<Soundscape::SoundService>();
-    workspace->setNullMouseCommand();
-    workspace->setVerbParent(this);
-    if (start) runService->start();
-    Notifier<RunService, RunTransition>::connect(runService, this);
-    ServiceProvider::create<JointsService>();
-    ServiceProvider::create<PhysicsService>();
-}
-}
-
-template class boost::shared_ptr<RBX::LocalBackpack>;
-template class std::_Vector_const_iterator<RBX::Listener<RBX::RunService,RBX::RunTransition> *,std::allocator<RBX::Listener<RBX::RunService,RBX::RunTransition> *> >;
-template class std::_Vector_iterator<RBX::Listener<RBX::RunService,RBX::RunTransition> *,std::allocator<RBX::Listener<RBX::RunService,RBX::RunTransition> *> >;
 
 double RBX::DataModel::getGameTime() const { return runService->gameTime(); }
 double RBX::DataModel::getFrameRate() const { return runService->frameRate(); }

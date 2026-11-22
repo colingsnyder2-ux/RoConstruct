@@ -130,6 +130,41 @@ namespace RBX
 	}
 }
 
+namespace RBX
+{
+	void RelativePanel::init(const Layout& layout)
+	{
+		setName("RelativePanel");
+		layoutStyle = layout.layoutStyle;
+		backdropColor = layout.backdropColor;
+		xLocation = layout.xLocation;
+		yLocation = layout.yLocation;
+		offset = layout.offset;
+	}
+
+	G3D::Vector2 RelativePanel::getPosition() const
+	{
+		Rect canvas(GuiRoot::getCanvasSize());
+		Rect me(getSize());
+		canvas = canvas.inset(offset);
+		return canvas.positionChild(me, xLocation, yLocation).low;
+	}
+
+	G3D::Vector2 PercentPanel::getPosition() const
+	{
+		Rect canvas(GuiRoot::getCanvasSize());
+		G3D::Vector2 pixelPosition = GuiRoot::toPixelSize(position);
+		return canvas.positionPoint(pixelPosition, xLocation, yLocation);
+	}
+}
+
+namespace RBX {
+PercentPanel::PercentPanel(Rect::Location xLoc, Rect::Location yLoc, const G3D::Vector2 pos)
+	: TopMenuBar(), xLocation(xLoc), yLocation(yLoc), position(pos)
+{
+}
+}
+
 #include "util/Name.h"
 
 namespace RBX {

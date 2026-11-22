@@ -140,3 +140,11 @@ namespace RBX
 		maxBucket = std::max(maxBucket, numNodes);
 	}
 }
+
+namespace RBX
+{
+	void SpatialHash::onPrimitiveExtentsChanged(Primitive* p)
+	{
+		onPrimitiveExtentsChanged(p, p->getFastFuzzyExtents());
+	}
+}

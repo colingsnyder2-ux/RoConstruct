@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/http-native /I{headers}
 // 2008-06 DataModel "HttpGet" function descriptor of the v8datamodel/DataModel.cpp object (inactive).
 //
 // 007f3530 ??__EhttpGetFunction@RBX@@YAXXZ (49 B): dynamic initializer of the static descriptor object 00974e68.
@@ -26,5 +26,41 @@ namespace RBX
 {
 	// 007f3530 (initializer) / 007fd4e0 (atexit destructor): object 00974e68
 	static Reflection::BoundFuncDesc<DataModel, std::string(std::string, bool), 2> httpGetFunction(&DataModel::httpGet, "HttpGet", "url", "synchronous", false, static_cast<Reflection::FunctionDescriptor::Security>(4));
+}
+#endif
+
+// 00575060 ?doHttpGet@DataModel@RBX@@CA?AV?$basic_string@...@std@@V34@@Z and 00575120 ?doHttpPost@DataModel@RBX@@CA...V34@0@Z
+// (registry; private statics, the httpGet / httpPost workers of the same DataModel.cpp object). Donor
+// tools/rbxgs/Client/App/v8datamodel/DataModel.cpp doHttpGet / doHttpPost. 2008 shape: the result string, a
+// temporary Http(url.c_str()) (url +0, additionalHeaders +0x1c, both destroyed inline: /I{headers}/http-native has
+// the implicit inline ctor/dtor) and Http::get 00569ae0; doHttpPost builds Http(url), an istringstream of data and
+// Http::post(istream&, true, result).
+// BLOCKED: the core v8datamodel/DataModel.h does not declare them. Proposal, in its private section:
+//     static std::string doHttpGet(std::string url);                     // 00575060
+//     static std::string doHttpPost(std::string url, std::string data);  // 00575120
+// Measured batch 32 against a scratch DataModel.h with those two lines: 00575060 (180 B) and 00575120 (281 B)
+// IDENTICAL (relocs masked). Define RBX_NATIVE_DATAMODEL_DOHTTP once the header declares them.
+#ifdef RBX_NATIVE_DATAMODEL_DOHTTP
+#include "util/Http.h"
+#include "v8datamodel/DataModel.h"
+#include <sstream>
+
+namespace RBX
+{
+	// 00575060
+	std::string DataModel::doHttpGet(std::string url)
+	{
+		std::string result;
+		Http(url.c_str()).get(result);
+		return result;
+	}
+
+	// 00575120
+	std::string DataModel::doHttpPost(std::string url, std::string data)
+	{
+		std::string result;
+		Http(url).post(std::istringstream(data), true, result);
+		return result;
+	}
 }
 #endif

@@ -4,7 +4,8 @@
 #include "v8datamodel/Surfaces.h"
 #include "v8datamodel/Surface.h"
 #include "util/SurfaceType.h"
-#include "util/Controller.h"
+// util/Controller.h is not included: v8datamodel/PartInstance.h already brings v8world/Controller.h (C2011 otherwise),
+// the same include set as SurfacePropDescriptor.cpp.
 #include "util/NormalId.h"
 #include "reflection/reflection.h"
 #include "v8xml/XmlElement.h"

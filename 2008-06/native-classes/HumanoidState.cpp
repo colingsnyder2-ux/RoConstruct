@@ -167,6 +167,11 @@ bool HumanoidState::onFloorStep()
 // PARKED (batch 28, 472/472 bytes, first divergence insn 66 00645281): the only diff is the scheduling of the
 // ticklePrimitive arguments (target `mov ecx, [edx+0x21c]; add eax, 0x228; push 0; push eax`, candidate pushes 0 before
 // the add). Rejected: getFloorPrimitive() as the argument, a bool second parameter (false), a named Primitive* local.
+// Batch 31 rejected (measured with a scratch engine-world v8world/World.h): an inline one-argument
+// `ticklePrimitive(Primitive* p) { ticklePrimitive(p, 0); }` called as ticklePrimitive(floorPart->getPrimitive())
+// (472 B, the same insn-66 diff).
+// Batch 36 rejected: `if (PartInstance* floor = floorPart.get())` with floor->getPrimitive() as the argument: identical
+// (472 B, the same insn-66 `push 0` / `add eax, 0x228` order).
 void HumanoidState::preStep(float dt)
 {
     PartInstance* oldFloor = floorPart.get();

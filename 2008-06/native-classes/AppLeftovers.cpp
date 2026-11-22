@@ -88,3 +88,21 @@ void TextureItem::browse()
         applyValue(id);
     }
 }
+
+// ---------------------------------------------------------------------------------------------------------------
+// 004161b0 ??$any_cast@VContentId@RBX@@@boost@@YA?AVContentId@RBX@@AAVany@0@@Z (registry): boost::any_cast<ContentId>
+// (any&) emitted next to the other any_cast<T> instances of the Value / variant unit (00415ed0..00416260; caller
+// Value::cast<ContentId> 00416340). typeid compare against ContentId's type_info 0092bf44, bad_any_cast thrown through
+// throw_exception 0040a3f0, then the ContentId copy (std::string copy + the word at +0x1c).
+#include <boost/any.hpp>
+template RBX::ContentId boost::any_cast<RBX::ContentId>(boost::any&);
+
+// ---------------------------------------------------------------------------------------------------------------
+// Value::cast<T>() (non-const, reflection/type.h member template: return boost::any_cast<T>(value) on the any at +4).
+// 00416310 ??$cast@V?$basic_string@...@std@@@Value@Reflection@RBX@@QAE?AV?$basic_string@...@std@@XZ (caller 00416506)
+//   calls any_cast<std::string>(any&) 00416110.
+// 00416340 ??$cast@VContentId@RBX@@@Value@Reflection@RBX@@QAE?AVContentId@2@XZ (caller 00416546) calls the
+//   any_cast<ContentId>(any&) 004161b0 above.
+// Both sit in the same Value / variant run (00415ed0..00416360) as the any_cast<T> instances.
+template std::string RBX::Reflection::Value::cast<std::string>();
+template RBX::ContentId RBX::Reflection::Value::cast<RBX::ContentId>();

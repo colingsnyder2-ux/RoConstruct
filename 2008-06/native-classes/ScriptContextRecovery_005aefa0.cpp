@@ -11,6 +11,7 @@
 #include "v8datamodel/Workspace.h"
 #include "util/standardout.h"
 #include "lualib.h"
+#include "util/Debug.h"
 
 using namespace RBX;
 
@@ -24,10 +25,14 @@ static inline void _openLibInline(lua_State* L, lua_CFunction f, const char* nam
 	lua_call(L, 1, 0);
 }
 
+// 005aa5b0 (registry placeholder func_005aa5b0; the lua_atpanic handler openState pushes at 005af0d3). 2008 shape:
+// lua_tostring(L, -1) 00612010 passed straight to StandardOut::print 005693a0 (no std::string copy, unlike the
+// donor), "Unprotected error in call to Lua API (%s)\n" 00834520, then the donor RBXCRASH() (mov ecx,[4];
+// mov [0],ecx) and return 0.
 static int panic(lua_State* L)
 {
-	std::string message = lua_tostring(L, -1);
-	StandardOut::singleton()->print(MESSAGE_ERROR, "Unprotected error in call to Lua API (%s)\n", message.c_str());
+	StandardOut::singleton()->print(MESSAGE_ERROR, "Unprotected error in call to Lua API (%s)\n", lua_tostring(L, -1));
+	RBXCRASH();
 	return 0;
 }
 

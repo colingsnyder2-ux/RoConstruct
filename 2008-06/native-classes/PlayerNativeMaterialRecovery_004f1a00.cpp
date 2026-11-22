@@ -18,6 +18,11 @@ struct Cache
 	Cache();
 };
 
+// 004f1990: the two map ctors (_Tree ctor 004f0fc0, ICF-shared) at +0 / +0x20, then GuidRegistryMutex 00563070 at +0x40.
+Cache::Cache()
+{
+}
+
 Cache* cache;
 
 }

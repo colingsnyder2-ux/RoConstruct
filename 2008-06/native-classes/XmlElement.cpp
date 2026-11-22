@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 #include "v8xml/XmlElement.h"
 
 bool XmlNameValuePair::isValueEqual(const RBX::Name* value) const

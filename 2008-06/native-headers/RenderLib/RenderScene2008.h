@@ -45,7 +45,9 @@ namespace RBX
 			friend class SceneManager;
 			friend struct ::NativeRenderSceneLayout;
 
-		private:
+		protected:
+			// Read directly by the derived RenderNew::RenderScene::render 007ab0a0 ([ebp+8] / [ebp+0xc] at 007ab4dc /
+			// 007ab645 / 007acb3c); the 2007 analog (openrbx RenderLibNew/RenderScene.cpp) uses it as a direct member.
 			G3D::Array<G3D::ReferenceCountedPointer<Chunk> > chunkArray;   // +0x08
 		public:
 			G3D::Color4 colorClearValue;                                     // +0x14

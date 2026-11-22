@@ -24,10 +24,8 @@ namespace RBX
 	template<class C, class D, const char* N>
 	const Name& FactoryProduct<C, D, N>::getClassName() const { return className(); }
 
-	template<class C, class D, const char* N>
-	template<typename Arg0Type>
-	DescribedCreatable<C, D, N>::DescribedCreatable(Arg0Type arg0)   // 0062ddc0
-		: Reflection::Described<C, N, FactoryProduct<C, D, N> >(arg0) {}
+	// DescribedCreatable<..>::DescribedCreatable(Arg0Type) 0062ddc0 is defined inline by reflection/reflection.h
+	// (an out-of-line copy here is C2995).
 
 	// 0062dee0: the class-name array itself is the Instance name (push 0095c530), passed as const char*
 	// (DescribedCreatable<..>::DescribedCreatable<const char*> 0062ddc0).

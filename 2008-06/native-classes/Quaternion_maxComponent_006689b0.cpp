@@ -6,19 +6,15 @@
 #include "util/Quaternion.h"
 
 #include <math.h>
+#include <algorithm>
 
 namespace RBX
 {
+	// 006689b0: the four absolute values are stored w, z, y, x ([esp] .. [esp + 0xc]) and compared through pointers
+	// (`lea edx, [esp]` / `lea ecx, [esp + 8]` selections), i.e. nested std::max over const references to the fabs
+	// temporaries, the right-hand inner max evaluated first; the final `test ah, 0x41` returns the left max on ties.
 	float Quaternion::maxComponent() const
 	{
-		// INFERRED: balanced tournament max of the absolute components, derived from the
-		// target disassembly (stores |w|,|z|,|y|,|x|, compares pairs, then the winners).
-		float aw = fabsf(w);
-		float az = fabsf(z);
-		float ay = fabsf(y);
-		float ax = fabsf(x);
-		float m = az > aw ? az : aw;
-		float n = ay > ax ? ay : ax;
-		return m > n ? m : n;
+		return std::max(std::max(fabs(x), fabs(y)), std::max(fabs(z), fabs(w)));
 	}
 }

@@ -5,10 +5,16 @@ namespace RBX
 {
     enum SurfaceType
     {
-        NO_SURFACE = 0,
-        STUDS = 1,
-        INLET = 2,
-        WELD = 3,
-        GLUE = 4
+        // Donor order; ROTATE_V == 7 (RightMotorTool::applyToSurface pushes 7).
+        NO_SURFACE,
+        GLUE,
+        WELD,
+        STUDS,
+        INLET,
+        SPAWN_deprecated,
+        ROTATE,
+        ROTATE_V,
+        ROTATE_P,
+        NUM_SURF_TYPES
     };
 }

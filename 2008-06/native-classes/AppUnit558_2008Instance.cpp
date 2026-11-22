@@ -108,11 +108,12 @@ void Instance::onAncestorChanged(const AncestorChanged& event)
     Notifier<Instance, AncestorChanged>::raise(event);
 }
 
-// 0055ae20 (not exact: register choice for the parent load, eax vs edx); DescendantAdded ctor 00558910, raise 00557e80
+// 0055ae20; DescendantAdded ctor 00558910, raise 00557e80. Batch 32: getParent() (the openrbx donor spelling) in
+// place of the direct parent field read gives the target register choice (eax / ecx); the field read loaded edx / eax.
 void Instance::onDescendentAdded(Instance* instance)
 {
     if (Notifier<Instance, DescendantAdded>::hasListeners())
-        Notifier<Instance, DescendantAdded>::raise(DescendantAdded(instance, instance->parent));
+        Notifier<Instance, DescendantAdded>::raise(DescendantAdded(instance, instance->getParent()));
     event_descendentAdded.fire(this, shared_from(instance));
 }
 
@@ -171,13 +172,17 @@ Reflection::MemberDescriptorContainer<Reflection::PropertyDescriptor>::ConstIter
     return *this;
 }
 
-// 00558b80
+// 00558b80. Batch 32: the donor while loop with a named descriptor keeps the DescribedBase conversion of this
+// inside the loop as the target does (the for loop hoisted it, 192 B).
 void Instance::writeProperties(XmlElement* container) const
 {
-    for (Reflection::ConstPropertyIterator iter = properties_begin(); iter != properties_end(); ++iter) {
-        XmlElement* child = iter.getDescriptor().write(this, false);
+    Reflection::ConstPropertyIterator iter = properties_begin();
+    while (iter != properties_end()) {
+        const Reflection::PropertyDescriptor& descriptor = iter.getDescriptor();
+        XmlElement* child = descriptor.write(this, false);
         if (child)
             container->addChild(child);
+        ++iter;
     }
 }
 
@@ -193,6 +198,10 @@ void Instance::remove()
 #ifdef NATIVE_APPUNIT558_PENDING
 // Bodies that need declarations v8tree/Instance.h does not have yet (proposal; the recorder builds them against a
 // generated copy of the header that adds them). Not counted.
+// Batch 32 measurement (scratch v8tree/Instance.h declaring readProperties, read, findFirstChildByNameRecursive,
+// getChildren2, findFirstChildByName2 public, this unit's default flags): readProperties 00557920 (43 B), readChild
+// 0055b5a0 (255 B), read 0055b6f0 (113 B) and getChildren2 005580e0 (33 B) IDENTICAL (relocs masked);
+// findFirstChildByNameRecursive 005581b0 and findFirstChildByName2 00558970 still differ (insn 29 / insn 5).
 // 00557920
 void Instance::readProperties(const XmlElement* container, IReferenceBinder& binder)
 {

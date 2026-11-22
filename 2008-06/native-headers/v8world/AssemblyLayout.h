@@ -260,6 +260,10 @@ namespace RBX
 		{                                                // tests canSleep +0x69 dirty, calls [+0x70] on [+0x6c]+[+0x74],
 			return canSleep;                             // stores +0x68 and clears the flag, then tests +0x68
 		}
+		float getMaxRadius()                             // inline (openrbx Assembly2.h getMaxRadius): PhysicsSender::PartItem::
+		{                                                // update 004c9e30 tests maxRadius +0x54 dirty, calls [+0x60] on
+			return maxRadius;                            // [+0x58]+[+0x64], stores +0x50, clears the flag, loads +0x50
+		}
 		SleepInfo* getSleepInfo() const                  // inline (donor Assembly::getSleepInfo): SleepStage 0064ae90 reads
 		{                                                // [clump+0x18] directly
 			return sleepInfo;

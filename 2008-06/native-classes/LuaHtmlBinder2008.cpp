@@ -134,10 +134,9 @@ void CLuaHtmlView::unbindAll()
     binders.clear();
 }
 
-// 0042a930 (open, 465 vs 438 bytes; parked batch 26). The target zeroes the three CComPtr locals from separate
-// registers and keeps both arguments in esi / edi; the true path (equal IUnknowns) falls through and all false returns
-// share one destructor tail. Rejected: early-return chain (540 B), `!= S_OK` return false / return true (547 B), one
-// combined && condition (467 B).
+// 0042a930. Batch 36: exact with the nested form of the openrbx Client/win/LuaHtmlView.cpp FUN_0042dd20 body (one
+// shared `return false` tail, HRESULT hr locals). Rejected earlier (batch 26): early-return chain (540 B), `!= S_OK`
+// return false / return true (547 B), one combined && condition (467 B).
 bool CLuaHtmlView::isSameObject(IUnknown* first, IUnknown* second)
 {
     CComPtr<IUnknown> firstUnknown;
@@ -145,58 +144,69 @@ bool CLuaHtmlView::isSameObject(IUnknown* first, IUnknown* second)
     CComPtr<IObjectIdentity> identity;
     if (first == second)
         return true;
-    if (first == NULL || second == NULL)
-        return false;
-    first->QueryInterface(IID_IUnknown, (void**)&firstUnknown);
-    second->QueryInterface(IID_IUnknown, (void**)&secondUnknown);
-    if (firstUnknown != secondUnknown)
+    if (first != NULL && second != NULL)
     {
-        if (firstUnknown == NULL || secondUnknown == NULL)
-            return false;
-        if (FAILED(firstUnknown->QueryInterface(IID_IObjectIdentity, (void**)&identity)) || identity == NULL)
-            return false;
-        if (identity->IsEqualObject(secondUnknown) != S_OK)
-            return false;
+        first->QueryInterface(IID_IUnknown, (void**)&firstUnknown);
+        second->QueryInterface(IID_IUnknown, (void**)&secondUnknown);
+        if (firstUnknown == secondUnknown)
+            return true;
+        if (firstUnknown != NULL && secondUnknown != NULL)
+        {
+            HRESULT hr = firstUnknown->QueryInterface(IID_IObjectIdentity, (void**)&identity);
+            if (SUCCEEDED(hr) && identity != NULL)
+            {
+                hr = identity->IsEqualObject(secondUnknown);
+                if (hr == S_OK)
+                    return true;
+            }
+        }
     }
-    return true;
+    return false;
 }
 
-// 0042c8c0 (open, 1180 vs 1026 bytes; was 1205). Taking the binder inside the loop with it->get() makes the
-// not-found path go straight to the creation as in the target. Remaining: the target no longer inlines the list
-// iterator's operator* (0042a8f0, called on the stored iterator) nor the shared_ptr copy for DataModel::Lock (004116f0),
-// and caches _invalid_parameter_noinfo in ebx; this build inlines both. Rejected: (*it).get() (same bytes); batch 29:
-// break out of the loop and take `it != end ? it->get() : NULL` afterwards (1202 B, still inlines both).
+// 0042c8c0. Batch 36: exact (1026 B) with the statement form of the openrbx Client/win/LuaHtmlView.cpp
+// FUN_00430c90 body: copy-initialized document, separate iter/end locals and a while loop, raw `.p` interface
+// pointers passed to isSameObject 0042a930 and `(*iter).get()`; the list iterator's operator* 0042a8f0 and the
+// shared_ptr copy for DataModel::Lock 004116f0 are then called out of line as in the target. Rejected earlier:
+// for loop with it->get() (1180 B), (*it).get() (same), break + ternary after the loop (1202 B).
 void CLuaHtmlView::bindElement(boost::shared_ptr<RBX::Instance> object,
                                const RBX::Reflection::PropertyDescriptor& property, const char* htmlElementId)
 {
-    CComQIPtr<IHTMLDocument2> document(GetHtmlDocument());
+    CComQIPtr<IHTMLDocument2> document = GetHtmlDocument();
     if (!document)
         throw std::runtime_error("The HtmlDocument is not loaded");
+
     CComPtr<IHTMLElementCollection> all;
     document->get_all(&all);
+
     CComPtr<IDispatch> dispatch;
     all->item(CComVariant(htmlElementId), CComVariant(), &dispatch);
     if (!dispatch)
         throw std::runtime_error(G3D::format("%s not found", htmlElementId));
+
     CComQIPtr<IHTMLInputElement> input(dispatch);
     if (!input)
         throw std::runtime_error(G3D::format("%s is not an input element", htmlElementId));
 
     Binder* binder = NULL;
-    std::list<boost::shared_ptr<Binder> >::iterator it = binders.begin(), end = binders.end();
-    for (; it != end; ++it)
+    std::list<boost::shared_ptr<Binder> >::iterator iter = binders.begin();
+    std::list<boost::shared_ptr<Binder> >::iterator end = binders.end();
+    while (iter != end)
     {
-        if (isSameObject((*it)->element, input))
+        if (isSameObject((*iter)->element.p, input.p))
         {
-            binder = it->get();
+            binder = (*iter).get();
             break;
         }
+        ++iter;
     }
-    if (!binder)
+
+    if (binder == NULL)
     {
         RBX::DataModel::Lock lock(dataModel);
         binder = new Binder(input);
         binders.push_back(boost::shared_ptr<Binder>(binder));
     }
+
     binder->bind(object, property);
 }

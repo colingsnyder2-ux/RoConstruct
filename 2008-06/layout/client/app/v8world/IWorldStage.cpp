@@ -1,3 +1,13 @@
+#include "v8world/IWorldStage.h"
+
+namespace RBX
+{
+	int IWorldStage::getMetric(MetricType metricType)
+	{
+		return getDownstreamWS()->getMetric(metricType);
+	}
+}
+
 #include "v8world/ClumpStage2008.h"
 #include "v8world/Joints2008.h"
 

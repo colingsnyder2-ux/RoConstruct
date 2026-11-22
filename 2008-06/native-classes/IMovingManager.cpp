@@ -1,8 +1,6 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 #include "v8world/IMoving.h"
 
-#include "../../../tools/rbxgs/Client/App/include/v8world/IMoving.h"
-
 namespace RBX
 {
 	// makeMoving and moved have no out-of-line copy in the image; inlined into notifyMoved / setMovingManager.
@@ -29,6 +27,13 @@ void IMoving::notifyMoved(void)
 		}
 	}
 }
+
+	// 00614dc0 ??0IMovingManager@RBX@@QAE@XZ: std::set ctor 0064b2a0, the iterator default-constructed (zeroed
+	// +0x24/+0x28) and then assigned moving.end(); no vtable store (__declspec(novtable)).
+	IMovingManager::IMovingManager()
+	{
+		current = moving.end();
+	}
 
 	// 00614c20
 	void IMovingManager::remove(IMoving* iMoving)

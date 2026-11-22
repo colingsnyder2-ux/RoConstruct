@@ -3,6 +3,20 @@
 
 namespace RBX
 {
+	const float Constants::getElasticMultiplier(float elasticity)
+	{
+		if (elasticity < 0.05f)
+			return 0.28f;
+		else if (elasticity < 0.26f)
+			return 0.42f;
+		else if (elasticity < 0.51f)
+			return 0.57f;
+		else if (elasticity < 0.76f)
+			return 0.8f;
+		else
+			return 1.0f;
+	}
+
 	const float Constants::getJointKMultiplier(const G3D::Vector3& clippedSortedSize, bool ball)
 	{
 		G3D::Vector3int16 size(clippedSortedSize);

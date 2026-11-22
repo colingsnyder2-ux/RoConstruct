@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/creatable-n-params
 // 2008-06 native RBX::ArrowPanel / RBX::ArrowButton unit, second part (inactive): 00656c30..00657c00 (the rows that
 // native-classes/ArrowPanel.cpp, verified by tests/record_native_widget.py, does not compile). Classes and layout in
 // native-headers/gui/ArrowPanel.h (read-only here); verified by tests/record_native_gui_widgets2008.py.
@@ -35,7 +36,10 @@ namespace RBX
 		return dataModel->getWorkspace()->getControllersUsed().hasController(controller);
 	}
 
-#ifdef NATIVE_GUIWIDGETS_PENDING
+	// 00657240: ArrowPanel::init (ret 0x28). Panel names "LeftPanel" 0084c08c / "ForwardBackPanel" 0084c078, the
+	// right panel is named after `right` (create<TopMenuBar, std::string, Layout::Style> 00657000), MenuSpacer(32, 32)
+	// from 00833eac. The five-parameter create<ArrowButton> 00657190 comes from the creatable-n-params overlay of
+	// util/Object.h (flags line), the same overlay CreatableGuiTemplates2008.cpp uses.
 	void ArrowPanel::init(Adorn* adorn, const std::string& title, const std::string& up, const std::string& down,
 						  const std::string& left, const std::string& right, SDLKey upKey, SDLKey downKey, SDLKey leftKey,
 						  SDLKey rightKey)
@@ -58,6 +62,8 @@ namespace RBX
 		addGuiItem(rightPanel);
 	}
 
+#ifdef NATIVE_GUIWIDGETS_PENDING
+	// 00657780: already defined (and exact) in native-classes/ArrowPanel.cpp; this copy stays guarded off.
 	ArrowPanel::ArrowPanel(Adorn* adorn, DataModel* dataModel, Controller::ControllerType controller)
 		: TopMenuBar("ArrowPanel", Layout::HORIZONTAL)
 	{

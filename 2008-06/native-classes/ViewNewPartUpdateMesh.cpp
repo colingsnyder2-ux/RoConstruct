@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/partsurface-profile /I{headers}/slingshot-load /I{headers}/part-embedded /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/partsurface-profile /I{headers}/file-mesh-provider /I{headers}/part-embedded /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // 2008-06 native RBX::ViewNew::Part::updateMesh 004ef930 (inactive; Part vtable 00826f94 slot 10, 2508 bytes, `ret`,
 // EH frame 007cace8). Not in any build list. DRAFT: the body is parked behind NATIVE_PARTMESH_PENDING (pending-guard
 // pattern) until the header gaps listed under BLOCKED land; with the guard defined it still fails on blockers 1, 2
@@ -61,6 +61,9 @@
 #define NATIVE_HUMANOID2008_DONOR_CONNECTOR
 #include <winsock2.h>
 #include "util/NativeContentProvider.h"   // first: renames the donor ContentProvider (ViewNewSurfaceMaterial2008.cpp pattern)
+// Include path: /I{headers}/file-mesh-provider (as ViewNewFileMesh.cpp / ViewNewPartMaterial.cpp), not slingshot-load: with
+// slingshot-load the donor util/ContentProvider.h comes first and util/MeshId.h (via SpecialShape.h) then pulls the
+// native util/ContentProvider.h by its relative path, a second ContentId / ContentProvider / MD5Hasher (C2011).
 #include "ViewNew/PartChunk.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/SpecialShape.h"

@@ -11,7 +11,11 @@ namespace RBX {
 
 		Reflection::BoundProp<bool, 1> SoundChannel::sound_desc_playOnRemove("PlayOnRemove", "Behavior", &SoundChannel::playOnRemove, Reflection::PropertyDescriptor::STANDARD);
 		static Reflection::BoundFuncDesc<SoundChannel, void(void), 0> sound_playFunction(&SoundChannel::play, "Play", Reflection::FunctionDescriptor::NeedTrustedCaller);
-		static Reflection::BoundFuncDesc<SoundChannel, void(void), 0> sound_pauseFunction(&SoundChannel::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
+	}
+	// 007f54b0: registry decorated name ??__EpauseFunction@RBX@@YAXXZ puts the 2008 Pause descriptor in namespace RBX
+	// (the 2007 donor's Soundscape-scope sound_pauseFunction name does not occur in the 2008 image).
+	static Reflection::BoundFuncDesc<Soundscape::SoundChannel, void(void), 0> pauseFunction(&Soundscape::SoundChannel::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
+	namespace Soundscape {
 		static Reflection::BoundFuncDesc<SoundChannel, void(void), 0> sound_stopFunction(&SoundChannel::stop, "Stop", Reflection::FunctionDescriptor::NeedTrustedCaller);
 	}
 }

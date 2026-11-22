@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /DNOMINMAX /fp:fast /U_RELEASEASSERT
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /DNOMINMAX /fp:fast /U_RELEASEASSERT /I{headers}/engine-world
 // Flags: document-swap profile (work/2008-06/shared-layouts/document-swap-current.json), VS2008 RTM 21022, /fp:fast
 // /U_RELEASEASSERT, as tests/record_native_app_unit588_2008.py builds it. The earlier flags line spelled the profile as
 // words, so prove.py compiled this unit with no /O2 (batch 26: 47 -> 131 exact with the explicit flags; 32 /Od-only Wml/STL COMDAT matches lost).
@@ -15,8 +15,8 @@
 //     GCamera::getCoordinateFrame 005107b0), zeroes look.y and halfSize.y and multiplies componentwise; the reads of
 //     the zeroed components into named locals fix the x87 schedule of the bytes (without them: 478 B, lookVector
 //     product order differs).
-//   * RootInstance() 00591580: everything matches except `new World` (0x114 in the original, sizeof donor World
-//     0xb8): not counted, World.h proposal in the receipt.
+//   * RootInstance() 00591580: `new World` allocates 0x114, the size of the 2008 World of
+//     native-headers/engine-world (the donor World is 0xb8), hence /I{headers}/engine-world on the flags line (batch 40).
 //   * insertSpawnLocation 005910a0 reads SpawnLocation::neutral at +0x400, which needs the 2008 PartInstance of
 //     native-headers/part-embedded (pending build only).
 //   * insertInstances 005911d0 (decoded 2026-11-19, 825 bytes, ret 0x10): if requestedParent is set and
@@ -387,6 +387,7 @@ namespace RBX
 namespace RBX {
 #pragma warning (push)
 #pragma warning (disable : 4355)
+	// 00591580 (572 bytes): operator new(0x114) for the engine-world World.
 	RootInstance::RootInstance()
 		: ControllersUsed(this, &RootInstance::computeControllersUsed),
 		  insertPoint(G3D::Vector3::zero()),

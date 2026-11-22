@@ -7,6 +7,24 @@
 
 namespace RBX
 {
+	// 00649320: identity from the decorated name ?getElasticMultiplier@Constants@RBX@@SA?BMM@Z (registry) and its
+	// only caller Contact::onPrimitiveContactParametersChanged 00607ad0 (call 00607baf, matching the
+	// ContactUnit2008Contact.cpp use). Thresholds/results read from .rdata: 0.05 0081c430, 0.26 0084afe8,
+	// 0.51 00843768, 0.76 0084afdc -> 0.28 0084afec, 0.42 0084afe4, 0.57 0084afe0, 0.8 00819b48, else 1.0 (fld1).
+	const float Constants::getElasticMultiplier(float elasticity)
+	{
+		if (elasticity < 0.05f)
+			return 0.28f;
+		else if (elasticity < 0.26f)
+			return 0.42f;
+		else if (elasticity < 0.51f)
+			return 0.57f;
+		else if (elasticity < 0.76f)
+			return 0.8f;
+		else
+			return 1.0f;
+	}
+
 	// 00649390
 	const float Constants::getJointKMultiplier(const G3D::Vector3& clippedSortedSize, bool ball)
 	{

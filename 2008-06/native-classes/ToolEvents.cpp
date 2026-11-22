@@ -12,6 +12,7 @@
 #include "Network/Players.h"
 #include "Network/Player.h"
 #include "v8datamodel/Backpack.h"
+#include "tool/DragUtilities.h"
 
 namespace RBX
 {
@@ -21,6 +22,23 @@ namespace RBX
 	extern Reflection::SignalDesc<Tool, void(void)> event_Unequipped;                    // 0097b708
 	extern Reflection::SignalDesc<Tool, void(void)> event_Activated;                     // 0097b818
 	extern Reflection::SignalDesc<Tool, void(void)> event_Deactivated;                   // 0097b6d4
+
+	// 005fd460 (placeholder func_005fd460; openrbx Tool::computeDesiredState(Instance*)): modelIsCharacter 005d9a20,
+	// getTorso 005d8b10, findRightArm 005d7a90, findRightShoulder 005d9010; returns 2/3/4/5 (IN_WORKSPACE .. EQUIPPED).
+	Tool::ToolState Tool::computeDesiredState(Instance* testParent)
+	{
+		Humanoid* humanoid = Humanoid::modelIsCharacter(testParent);
+		if (!humanoid)
+			return IN_WORKSPACE;
+
+		if (!humanoid->getTorso())
+			return IN_CHARACTER;
+
+		if (!humanoid->findRightArm() || !humanoid->findRightShoulder())
+			return HAS_TORSO;
+
+		return EQUIPPED;
+	}
 
 	// Inlined into onLocalClicked 005fe140 / onLocalOtherClicked 005fe1d0: Humanoid::modelIsCharacter 005d9a20,
 	// findFirstChildOfType<Tool> 005fdf00, canUnequip (vtable slot 0x8c).
@@ -76,6 +94,29 @@ namespace RBX
 				setParent(localPlayer->getPlayerBackpack());
 			}
 		}
+	}
+
+	// 005fe6d0 (placeholder func_005fe6d0; openrbx Tool::upTo_Equipped, same shape as Accoutrement::upTo_Equipped
+	// 005b1830): handleTouched +0x204 disconnect 00595230, PartInstance::findParts 0059c640,
+	// DragUtilities::unJoinFromOutsiders 0060ec60, modelIsCharacter 005d9a20, getRightArm 005d8f10, getHandle 005b08a0,
+	// setCanCollide(false) 0059dd80 (2008 addition), "RightGrip" 0083d5c4, getRightArmGrip 005d7a30, buildWeld 00628fd0.
+	void Tool::upTo_Equipped()
+	{
+		handleTouched.disconnect();
+
+		std::vector<boost::weak_ptr<PartInstance> > parts;
+		PartInstance::findParts(this, parts);
+		DragUtilities::unJoinFromOutsiders(parts);
+
+		Humanoid* humanoid = Humanoid::modelIsCharacter(getParent());
+		PartInstance* arm = humanoid->getRightArm();
+		// getHandle 005fd760 is inlined here in the original unit (Tool.cpp defines it out of line in this build):
+		// the call goes straight to getHandleConst (folded onto 005b08a0).
+		PartInstance* handle = const_cast<PartInstance*>(getHandleConst());
+		if (handle)
+			handle->setCanCollide(false);
+
+		buildWeld(arm, handle, humanoid->getRightArmGrip(), grip, "RightGrip");
 	}
 
 	// 005ff750: onEquipping 005ff1a0, getMouse 005ff680, SignalDesc fire 0049d200 / 0056b620 + 004b5950,

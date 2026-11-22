@@ -13,13 +13,10 @@ extern CRobloxDoc* activeRobloxDoc;   // 0096c238 (ActiveDocumentData.cpp)
 typedef RBX::Notifier<RBX::Selection, RBX::SelectionChanged> SelectionNotifier;
 
 namespace RBX {
-// 0058c5c0 (CameraHistory.cpp): commits a ChangeHistoryService waypoint; not declared in a shared header.
 void recordCameraHistory(const char* name, const Instance* context);
 }
 
 namespace {
-// Saves a value, assigns a new one and restores it on scope exit (004230f0, 00426a80 keep the reference and the old
-// byte on the stack under an EH state). Same helper as CRobloxTreeCtrl.cpp; name provisional.
 template<class T>
 class ScopedAssign {
     T& value;
@@ -30,8 +27,6 @@ public:
 };
 }
 
-// RTTI .?AVCEnabledCmdUI@@, vtable 0080fbfc: Enable 00422700, SetCheck/SetRadio/SetText empty (folded 0070bdf0).
-// 00422720 constructs it on the stack (CCmdUI::CCmdUI, vptr, +0x28 = FALSE) and reads +0x28 after the update route.
 class CEnabledCmdUI : public CCmdUI {
 public:
     CEnabledCmdUI() : enabled(FALSE) {}
@@ -335,11 +330,6 @@ CRobloxTreeCtrlNode* CSelectionTreeCtrl::findNode(const boost::shared_ptr<RBX::I
     return parent->addChild(instance);
 }
 
-// Original 00426900 (371 B). Draft, not exact (503 B, 2026-11-13 lf02): the target copies *it into `instance` as
-// shared_count::operator= with pi_ known null (pn tracked in ebp from the loop-top xor; pn stored only when *it's count
-// is non-null; no compare/release), frame 0x2c. This source re-reads instance.pn after do_lock and keeps the full
-// compare/add_ref/release (frame 0x34). Same gap as CRobloxTreeCtrlNode::addChildren 00426450 (see CRobloxTreeCtrl.cpp,
-// variants 1-5 there, incl. a swap-based copy); parked without a new variant.
 void CSelectionTreeCtrl::processSelectionQueue()
 {
     for (int i = 0; i < 10; ++i) {
@@ -356,8 +346,6 @@ void CSelectionTreeCtrl::processSelectionQueue()
     }
 }
 
-// Needs CRobloxTreeCtrlNode::refreshText 00422650 and CRobloxTreeCtrlNode::removeChildren 00425520 (pending
-// declarations in CRobloxTreeCtrl.h).
 void CSelectionTreeCtrl::OnTimer(UINT_PTR id)
 {
     CRobloxTreeCtrlNode* node = NULL;
@@ -405,8 +393,6 @@ void CSelectionTreeCtrl::SelectAllIgnore(BOOL select, HTREEITEM ignore)
     }
 }
 
-// 00426db0: drop handler applied to every selected instance (name provisional; external linkage is not observable).
-// Needs Instance::isDescendentOf 00422ae0 (pending declaration in v8tree/Instance.h).
 void dropInstance(RBX::Instance* parent, boost::shared_ptr<RBX::Instance> child)
 {
     if (child->getParent() == parent)
@@ -420,7 +406,6 @@ void dropInstance(RBX::Instance* parent, boost::shared_ptr<RBX::Instance> child)
     child->setParent(parent);
 }
 
-// Needs Selection::begin/end (00413d10/00413d40) and Instance 00423700 (pending declarations).
 HTREEITEM CSelectionTreeCtrl::dropTarget(HTREEITEM item)
 {
     if (!item)

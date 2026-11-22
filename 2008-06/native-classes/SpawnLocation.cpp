@@ -112,12 +112,15 @@ namespace RBX
 		Instance::propArchivable.setValue(this, false);
 	}
 
+	// 005d3490 (448 bytes, ret 4): teamColor +0x3e8 = 0xc2 (BrickColor default), scoped_connection +0x3ec, neutral
+	// +0x400, allowTeamChangeOnTouch +0x401, duration +0x404, then PartInstance::setName 00598c20 with a std::string
+	// built from the class-name array sSpawnLocation itself (push 0x9525cc), not a separate literal.
 	SpawnLocation::SpawnLocation()
 		: neutral(true),
 		  allowTeamChangeOnTouch(false),
 		  duration(10)
 	{
-		setName("SpawnLocation");
+		setName(sSpawnLocation);
 	}
 
 	void SpawnLocation::setTeamColor(BrickColor color)

@@ -1,146 +1,85 @@
 #undef _RELEASEASSERT
-#include "v8world/World.h"
-#include "v8world/ContactManager.h"
-#include "v8world/Contact.h"
-#include "v8world/IWorldStage.h"
-#include "v8world/JointStage2008.h"
-#include "v8world/CleanStage2008.h"
+#define NATIVE_WORLD_LAYOUT
+#include <set>
+#include <G3D/Array.h>
+#include "v8kernel/IPipelined2008.h"
+#include "v8kernel/Body2008.h"
+#include "v8world/Geometry2008.h"
+#include "util/Extents.h"
+#include "AppUnit658/Edge.h"
+#include "v8world/Joints2008.h"
+#include "v8world/Primitive2008.h"
+#include "v8world/World2008.h"
+#include "v8world/ContactManager2008.h"
+#define NATIVE_CLUMP_DECL // the native 2008 RBX::Clump / RBX::Assembly (assemblyPrimBegin 005e5fa0 / End 005e5fc0)
+#include "v8world/AssemblyLayout.h"
 
 namespace RBX
 {
-	Kernel& World::getKernel()
+	class JointBuilder
 	{
-		return *jointStage->getKernel();
+	public:
+		static Joint* canJoin(Primitive* p0, Primitive* p1);
+	};
+
+	static bool inIgnoreGroup(std::set<Primitive*>* ignoreGroup, Primitive* p)
+	{
+		return ignoreGroup != NULL && ignoreGroup->find(p) != ignoreGroup->end();
 	}
 
-	int World::getMetric(IWorldStage::MetricType metricType) const
+	void World::createJoints(Primitive* p, std::set<Primitive*>* ignoreGroup)
 	{
-		return jointStage->getMetric(metricType);
-	}
+		this->numLinkCalls++;
+		this->tempPrimitives.fastClear();
+		this->contactManager->getPrimitivesTouchingExtents(p->getFastFuzzyExtents(), p, this->tempPrimitives);
 
-	void World::onPrimitiveContactParametersChanged(Primitive* p)
-	{
-		for (Contact* curContact = p->getFirstContact(); curContact != NULL; curContact = p->getNextContact(curContact))
+		for (int i = 0; i < this->tempPrimitives.length(); i++)
 		{
-			curContact->onPrimitiveContactParametersChanged();
+			Primitive* currentPrim = this->tempPrimitives[i];
+
+			if (!inIgnoreGroup(ignoreGroup, currentPrim))
+			{
+				if (!Primitive::getJoint(p, currentPrim))
+				{
+					Joint* canJoin = JointBuilder::canJoin(p, currentPrim);
+					if (canJoin)
+					{
+						this->insertJoint(canJoin);
+						this->inJointNotification = true;
+						Notifier<World, AutoJoin>::raise(AutoJoin(canJoin));
+						this->inJointNotification = false;
+					}
+				}
+			}
 		}
 	}
 
-	void World::onPrimitiveExtentsChanged(Primitive* p)
+	void World::destroyJoints(Primitive* p, std::set<Primitive*>* ignoreGroup)
 	{
-		contactManager->onPrimitiveExtentsChanged(p);
+		for (int i = p->getNumJoints() - 1; i >= 0; i--)
+		{
+			Joint* j = p->getJoint(i);
+			Joint::JointType jointType = j->getJointType();
+			if (jointType != Joint::FREE_JOINT && jointType != Joint::ANCHOR_JOINT)
+			{
+				Primitive* otherPrim = j->otherPrimitive(p);
+				if (!inIgnoreGroup(ignoreGroup, otherPrim))
+				{
+					this->inJointNotification = true;
+					Notifier<World, AutoDestroy>::raise(AutoDestroy(j));
+					this->inJointNotification = false;
+				}
+			}
+		}
 	}
 
-	void World::onPrimitiveGeometryTypeChanged(Primitive* p)
+	void World::onAssemblyExtentsChanged(Assembly* a)
 	{
-		contactManager->onPrimitiveGeometryTypeChanged(p);
-	}
+		PrimIterator end = a->assemblyPrimEnd();
 
-	void World::onPrimitiveTouched(Primitive* touchP, Primitive* touchOtherP)
-	{
-		touch.append(touchP);
-		touchOther.append(touchOtherP);
-	}
-}
-
-#include "v8world/SpatialHash2008.h"
-#include "v8world/Assembly.h"
-namespace RBX
-{
-	int World::getNumHashNodes() const
-	{
-		return contactManager->getSpatialHash().getNodesOut();
-	}
-
-	int World::getMaxBucketSize() const
-	{
-		return contactManager->getSpatialHash().getMaxBucket();
-	}
-
-	void World::createJoints(Primitive *p)
-	{
-		createJoints(p, NULL);
-	}
-
-	void World::destroyJoints(Primitive *p)
-	{
-		destroyJoints(p, NULL);
-	}
-
-	void World::createJointsToWorld(const G3D::Array<Primitive*>& primitives)
-	{
-		std::set<Primitive*> ignore;
-		for (int i = 0; i < primitives.size(); i++)
-			ignore.insert(primitives[i]);
-
-		for (int i = 0; i < primitives.size(); i++)
-			createJoints(primitives[i], &ignore);
-	}
-
-	void World::destroyJointsToWorld(const G3D::Array<Primitive*>& primitives)
-	{
-		std::set<Primitive*> ignore;
-		for (int i = 0; i < primitives.size(); i++)
-			ignore.insert(primitives[i]);
-
-		for (int i = 0; i < primitives.size(); i++)
-			destroyJoints(primitives[i], &ignore);
-	}
-
-	void World::joinAll()
-	{
-		for (int i = 0; i < primitives.size(); i++)
-			createJoints(primitives[i]);
-	}
-
-	template void Notifier<World, AutoJoin>::raise(AutoJoin) const;
-	template void Notifier<World, AutoDestroy>::raise(AutoDestroy) const;
-	template void Notifier<World, AssemblyPhysicsOn>::raise(AssemblyPhysicsOn) const;
-	template void Notifier<World, AssemblyPhysicsOff>::raise(AssemblyPhysicsOff) const;
-}
-
-#include "v8world/SimJobStage2008.h"
-#include "v8world/SleepStage.h"
-#include "v8world/ClumpStage.h"
-namespace RBX
-{
-	void World::onJointPrimitiveNulling(Joint* j, Primitive* p)
-	{
-		jointStage->onJointPrimitiveNulling(j, p);
-	}
-
-	void World::onJointPrimitiveSet(Joint* j, Primitive* p)
-	{
-		jointStage->onJointPrimitiveSet(j, p);
-	}
-
-	SimJobStage& World::getSimJobStage()
-	{
-		return *rbx_static_cast<SimJobStage*>(jointStage->findStage(IStage::SIMJOB_STAGE));
-	}
-
-	SleepStage* World::getSleepStage()
-	{
-		return rbx_static_cast<SleepStage*>(jointStage->findStage(IStage::SLEEP_STAGE));
-	}
-
-	void World::onPrimitiveCanSleepChanged(Primitive* p)
-	{
-		rbx_static_cast<ClumpStage*>(jointStage->findStage(IStage::CLUMP_STAGE))->onPrimitiveCanSleepChanged(p);
-	}
-
-	void World::onPrimitiveAddedAnchor(Primitive* p)
-	{
-		rbx_static_cast<ClumpStage*>(jointStage->findStage(IStage::CLUMP_STAGE))->onPrimitiveAddedAnchor(p);
-	}
-
-	void World::onPrimitiveRemovingAnchor(Primitive* p)
-	{
-		rbx_static_cast<ClumpStage*>(jointStage->findStage(IStage::CLUMP_STAGE))->onPrimitiveRemovingAnchor(p);
-	}
-
-	void World::update()
-	{
-		rbx_static_cast<ClumpStage*>(jointStage->findStage(IStage::CLUMP_STAGE))->process();
+		for (PrimIterator it = a->assemblyPrimBegin(); it != end; ++it)
+		{
+			contactManager->onPrimitiveExtentsChanged(*it);
+		}
 	}
 }

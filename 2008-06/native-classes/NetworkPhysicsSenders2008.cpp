@@ -56,3 +56,10 @@ template class std::_Vector_val<float,std::allocator<float> >;
 template class std::allocator<RBX::Network::PhysicsSender::PartItem>;
 template class std::pair<boost::multi_index::detail::copy_map_entry<boost::multi_index::detail::hashed_index_node<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::PhysicsSender::PartItem> > > > > *,boost::multi_index::detail::copy_map_entry<boost::multi_index::detail::hashed_index_node<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::PhysicsSender::PartItem> > > > > *>;
 template class std::vector<float,std::allocator<float> >;
+
+// 004cc7e0: the hashed index-0 modify_(node*) that the container's modify_<Modifier> 004cca10
+// (AppUnit4CCPhysicsSenderIndex.cpp) reaches. hashed_index is a base of the container, so the container's explicit
+// instantiation above does not emit its members; it must be emitted here because it inlines RBX::hash_value 004ca5b0
+// (`mov eax,ecx; shr eax,3; add eax,ecx` at 004cc82a), whose definition is in this unit.
+template bool RBX::Network::PhysicsSender::PartItems::nth_index<0>::type::modify_(
+	RBX::Network::PhysicsSender::PartItems::nth_index<0>::type::node_type* x);

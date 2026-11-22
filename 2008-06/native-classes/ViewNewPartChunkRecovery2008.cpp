@@ -8,9 +8,48 @@
 #include "RenderLib/SceneManager2008.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Decal.h"
+#include "v8datamodel/SpecialShape.h"
+#include "v8datamodel/Workspace.h"
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
+namespace RBX {
+// 004e7ed0 (instance for boost::bind(&PartChunk::onChildAdded, this, _1), called by the PartChunk ctor 004eaae0).
+// INFERRED: body of the template the profile v8tree/Instance.h only declares; the shape follows that header's
+// visitDescendents (read the copy-on-write children, end before begin) without the recursion.
+template<class Function> void Instance::visitChildren(Function function) const
+{
+    if (children) {
+        boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > c = children.read();
+        std::vector<boost::shared_ptr<Instance> >::const_iterator end = c->end();
+        std::vector<boost::shared_ptr<Instance> >::const_iterator iter = c->begin();
+        for (; iter != end; iter++)
+            function(*iter);
+    }
+}
+}
 namespace RBX { namespace ViewNew {
+// 004e6520: 2007 openrbx RbxView/Part.cpp PartChunk::onAncestorChanged shape.
+void PartChunk::onAncestorChanged(boost::shared_ptr<Instance> ancestor)
+{
+    Workspace* workspace = Workspace::findWorkspace(partInstance.get());
+    Instance* parent;
+
+    if (workspace == NULL ||
+        (workspace != (parent = partInstance->getParent()) && (parent == NULL || !parent->isDescendentOf(workspace)))) {
+        view->sceneManager->removeModel(this);
+    }
+}
+// 004e6630: the same shape on the Texture's own instance (+0xd8).
+void Texture::onTextureAncestorChanged(boost::shared_ptr<Instance> ancestor)
+{
+    Workspace* workspace = Workspace::findWorkspace(decal.get());
+    Instance* parent;
+
+    if (workspace == NULL ||
+        (workspace != (parent = decal->getParent()) && (parent == NULL || !parent->isDescendentOf(workspace)))) {
+        view->sceneManager->removeModel(this);
+    }
+}
 void PartChunk::invalidateMesh() {
     if (partInstance) {
         mesh = NULL;
@@ -68,4 +107,42 @@ Texture::Texture(RBX::Texture* decal, PartInstance* partInstance, ViewBase* view
 }
 
 void PartChunk::onSpecialShapeChanged() { invalidateMesh(); invalidateMaterial(); }
+
+// 004e83b0: the 2008 Decal version re-parents the chunk (shared_from of the decal's PartInstance parent) and refreshes
+// it while the decal stays in the Workspace (calls 005a3380, __RTDynamicCast to PartInstance, 00618a40, 00422ae0 twice).
+void Decal::onDecalAncestorChanged(boost::shared_ptr<Instance> ancestor)
+{
+    if (decal) {
+        Workspace* workspace = Workspace::findWorkspace(decal.get());
+        partInstance = shared_from(dynamic_cast<PartInstance*>(decal->getParent()));
+        if (workspace && decal->isDescendentOf(workspace)) {
+            invalidateMaterial();
+            invalidateMesh();
+        }
+        if (!workspace || !decal->isDescendentOf(workspace))
+            view->sceneManager->removeModel(this);
+    }
+}
+
+// 004ea5e0: 2007 openrbx PartChunk::onChildAdded plus the 2008 Decal child test (dynamic_cast to RBX::Decal 00940dbc,
+// then invalidateMesh 004e6740 / invalidateMaterial 004e68b0).
+void PartChunk::onChildAdded(boost::shared_ptr<Instance> child)
+{
+    SpecialShape* specialShape = dynamic_cast<SpecialShape*>(child.get());
+
+    if (specialShape != NULL) {
+        this->specialShape = specialShape;
+
+        shapePropertyChangedConnection = Instance::event_propertyChanged.connect(
+            specialShape, boost::bind(&PartChunk::onSpecialShapeChanged, this), 10
+        );
+
+        invalidateMesh();
+    }
+
+    if (dynamic_cast<RBX::Decal*>(child.get())) {
+        invalidateMesh();
+        invalidateMaterial();
+    }
+}
 } }

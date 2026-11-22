@@ -29,7 +29,20 @@ namespace RBX
 		std::vector<Joint*> moveJoints;
 
 		typedef std::multimap<Primitive*, Joint*>::iterator Iterator;
-		for (Iterator it = jointMap.lower_bound(p); it != jointMap.upper_bound(p); ++it)
+		// Batch 36 rejected (target computes both bounds once before the loop, 006685ff..0066866c, `cmp [esp + 0x1c], ebx`
+		// per pass): jointMap.equal_range(p) (619 B, equal_range called out of line) and lower_bound / upper_bound into
+		// two locals before the loop (659 B, upper_bound inline but lower_bound 00667fd0 still called out of line).
+		// Batch 37: the tree lower_bound is now called through Base:: (the noinline JointMap::lower_bound wrapper had kept it
+		// out of line), so both bounds expand inline and the body builds to 667 B against 671. Remaining diff: `this` in ebx
+		// (target edi) and the first downstreamOfStage test still evaluated p0's stage first (target this first with the
+		// [esp + 0xc] spill, 006686c2..006686df), hence the 4-byte frame-slot shift. Batch 37 rejected: the body moved into
+		// JointStage2008.cpp with an inline edgeHasPrimitivesDownstream(it->second) condition (735 B, frame 0x50, EH state
+		// push order differs), and a file-local inline copy of the edgeHasPrimitivesDownstream body here (unchanged, 667 B).
+		// Batch 38: the signed-enum / cast-free compare form was byte-neutral in SleepStage2008.cpp; this unit uses the
+		// donor tools/rbxgs v8world/IPipelined.h compares (read-only), so it was not re-tried here.
+		// The tree's lower_bound is expanded inline here (006685ff..00668637), so the call bypasses the noinline
+		// JointMap::lower_bound wrapper of JointStage2008.h (that wrapper is removeFromMap's call 006682a1).
+		for (Iterator it = jointMap.JointMap::Base::lower_bound(p); it != jointMap.upper_bound(p); ++it)
 		{
 			// The iterator is checked and dereferenced twice (00668694 and 0066870c): once for the test (the
 			// edgeHasPrimitivesDownstream 00667f70 condition, inline here) and again for push_back(it->second).

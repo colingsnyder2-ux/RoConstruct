@@ -1,6 +1,5 @@
 #include "reflection/reflection.h"
-
-#include "../../../../../../tools/rbxgs/Client/App/include/reflection/object.h"
+#include "reflection/object.h"
 
 namespace RBX
 {

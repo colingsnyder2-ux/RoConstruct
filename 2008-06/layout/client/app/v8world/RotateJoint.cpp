@@ -54,11 +54,13 @@ namespace RBX
 		}
 	}
 
+	static const SurfaceType kRotateSurface = static_cast<SurfaceType>(6); // INFERRED: 00645f84 cmp eax, 6
+
 	RotateJoint* RotateJoint::canBuildJoint(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1)
 	{
 		SurfaceType s0 = p0->getSurfaceType(nId0);
 		SurfaceType s1 = p1->getSurfaceType(nId1);
-		if (!(s0 >= ROTATE || s1 >= ROTATE))
+		if (!(s0 >= kRotateSurface || s1 >= kRotateSurface))
 			return NULL;
 
 		const G3D::CoordinateFrame& c0 = p0->getCoordinateFrame();
@@ -80,8 +82,8 @@ namespace RBX
 
 			bool inExtrusion0 = f1.fuzzyContainsInExtrusion(center0, 0.05f);
 			bool inExtrusion1 = f0.fuzzyContainsInExtrusion(center1, 0.05f);
-			bool cond0 = s0 >= ROTATE && inExtrusion0;
-			bool cond1 = s1 >= ROTATE && inExtrusion1;
+			bool cond0 = s0 >= kRotateSurface && inExtrusion0;
+			bool cond1 = s1 >= kRotateSurface && inExtrusion1;
 
 			if (!cond0 && !cond1)
 				return NULL;

@@ -17,11 +17,6 @@ namespace RBX
 	template<class C, class D, const char* N>
 	const Name& FactoryProduct<C, D, N>::getClassName() const { return className(); }
 
-	template<class C, class D, const char* N>
-	template<typename Arg0Type>
-	DescribedCreatable<C, D, N>::DescribedCreatable(Arg0Type arg0)   // 0062ddc0
-		: Reflection::Described<C, N, FactoryProduct<C, D, N> >(arg0) {}
-
 	GeometryService::GeometryService()
 		: Base(static_cast<const char*>(sGeometryService)),
 		  workspace(NULL)

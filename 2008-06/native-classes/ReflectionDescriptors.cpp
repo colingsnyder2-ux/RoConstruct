@@ -52,6 +52,7 @@ namespace RBX
 #include <boost/thread/once.hpp>
 #include <boost/thread/tss.hpp>
 #include "util/boost.hpp"
+#include <boost/bind.hpp>
 
 namespace RBX
 {
@@ -63,6 +64,30 @@ namespace RBX
 	}
 
 	void SetThreadName(DWORD dwThreadID, LPCSTR szThreadName); // 00595a80 (same unit, out of line)
+
+	// INFERRED: the 2008 background_function 00597110 takes a thread priority (it binds run_in_background 00596ea0 with
+	// std::string(name) and the int; worker_thread passes -1), absent from the donor util/boost.hpp declaration.
+	// AppUnit54C_2008RunService.cpp declares the same overload.
+	boost::function0<void> background_function(const boost::function0<void>& threadfunc, const char* name, int priority);
+
+	// 005971d0 ??0worker_thread@RBX@@QAE@ABV?$function0@W4work_result@worker_thread@RBX@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@PBD@Z
+	// new data (0x24, data() 00595a30), shared_ptr init (00596110, sp_enable_shared_from_this 0047d410),
+	// bind(&threadProc 00595e40, _data, work_function) 005965d0 -> function0<void> 00596f90,
+	// background_function(.., name, -1) 00597110, boost::thread(const function0<void>&) 005a6a80 at +8.
+	worker_thread::worker_thread(const boost::function0<enum work_result>& work_function, const char* name)
+		: _data(new data()),
+		  thread(background_function(boost::bind(&threadProc, _data, work_function), name, -1))
+	{
+	}
+
+	// 00595cb0 ??1worker_thread@RBX@@QAE@XZ: lock 00594ce0, endRequest (+0x20) = true, notify_all 005f1d30,
+	// unlock 00594d00, ~thread 005a6840 (+8), _data release.
+	worker_thread::~worker_thread()
+	{
+		boost::mutex::scoped_lock scoped_lock(_data->sync);
+		_data->endRequest = true;
+		_data->wakeCondition.notify_all();
+	}
 
 	// 00595d70 ?join@worker_thread@RBX@@QAEXXZ
 	void worker_thread::join()

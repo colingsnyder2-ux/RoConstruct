@@ -81,6 +81,7 @@ namespace RBX
 			IdSerializer() {}                                                         // 004b94a0
 
 			void serializeId(RakNet::BitStream& stream, const Instance* instance);
+			bool trySerializeId(RakNet::BitStream& stream, const Instance* instance);
 			void serializeRef(const Reflection::ConstProperty& property, RakNet::BitStream& stream); // 004a8b90
 			void deserializeId(RakNet::BitStream& stream, Guid::Data& id);           // 004a70b0
 			void resolvePendingBindings(Instance* instance, Guid::Data id);          // 004a9250

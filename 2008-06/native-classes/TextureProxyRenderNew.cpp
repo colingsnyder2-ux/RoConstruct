@@ -6,7 +6,8 @@
 // BadConversion copy constructor 007adcf0, the root constructor 007ade10, shade 007aded0, ~TextureProxy 007ae3b0,
 // MegaTextureProxy(TextureManager&, name) 007ae4b0 and its ??_G 007aea40; also TextureProxy(const std::string&) 0066ffb0
 // (emitted in the AdornRbxGfx image block, whose createTextureProxy 00670380 is its only caller). resolve 007aec70 /
-// MegaTextureProxy::resolve 007ae4e0 and the shading helpers 007ad9d0 / 007ada80 / 007add10 are not built.
+// MegaTextureProxy::resolve 007ae4e0 are exact in TextureProxyResolve2008.cpp / MegaTextureProxyResolve2008.cpp (batch 42
+// check); the shading helpers 007ad9d0 / 007ada80 / 007add10 are not built here.
 #include <sstream>
 #include "RenderLib/TextureProxy2008.h"
 

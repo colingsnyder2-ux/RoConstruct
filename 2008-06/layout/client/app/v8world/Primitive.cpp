@@ -287,3 +287,26 @@ namespace RBX
 		return clump->getAssembly();
 	}
 }
+
+// Identity: declared INFERRED at 005e7b20 in native-headers/v8world/Primitive2008.h; the body walks prev's slot
+#define NATIVE_CLUMP_DECL // the native 2008 RBX::Clump / RBX::Assembly of v8world/AssemblyLayout.h
+
+namespace RBX
+{
+	Edge* Primitive::getNextEdge(Edge* prev) const
+	{
+		if (prev->getEdgeType() == Edge::JOINT)
+		{
+			int i = prev->getIndex(this) + 1;
+			Edge* next = i < joints.edges.size() ? joints.edges[i] : NULL;
+			if (next)
+				return next;
+			return contacts.edges.size() > 0 ? contacts.edges[0] : NULL;
+		}
+		else
+		{
+			int i = prev->getIndex(this) + 1;
+			return i < contacts.edges.size() ? contacts.edges[i] : NULL;
+		}
+	}
+}

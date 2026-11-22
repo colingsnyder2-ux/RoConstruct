@@ -11,12 +11,26 @@
 //   find<StarterPackService>(const Instance*) 00491ef0 (tail jump to find<StarterPackService>() const 00490d70;
 //   create<StarterPackService>() const 004b3960 calls 00490d70 first); Instance::numChildren 0048ae20 (out of line) and the
 //   children vector (+0x108, checked operator[]); Instance::clone 00559350; setParent(backpack).
+#include "util/NativeContentProvider.h"   // first: renames the donor util/ContentProvider.h class (RocketToolProjectile.cpp pattern)
 #include "Network/Player.h"
 #include "Network/Players.h"
 #include "v8tree/Service.h"
 #include "v8datamodel/Backpack.h"
 #include "v8datamodel/Hopper.h"
+#include "v8datamodel/Workspace.h"
+#include "v8datamodel/ModelInstance.h"
+#include "v8datamodel/SpawnerService.h"
+#include "humanoid/Humanoid2008.h"
+#include <boost/bind.hpp>
+#include <algorithm>
 #include <stdexcept>
+
+// 0048a670 ?addChild@@YAXABV?$shared_ptr@VModelInstance@RBX@@@boost@@ABV?$shared_ptr@VInstance@RBX@@@2@@Z: defined in
+// AppUnit480_2008Player.cpp (same Network/Player.cpp unit); declared here for loadCharacter's boost::bind.
+void addChild(const boost::shared_ptr<RBX::ModelInstance>& parent, const boost::shared_ptr<RBX::Instance>& child);
+// 004899b0 ?setAppearanceParentNull@@YAXPAVInstance@RBX@@@Z: defined in AppUnit480_2008Player.cpp (same Network/Player.cpp
+// unit); declared here for removeCharacterAppearance's for_eachChild.
+void setAppearanceParentNull(RBX::Instance* instance);
 
 namespace RBX
 {
@@ -46,7 +60,7 @@ namespace RBX
 			}
 		}
 
-		// 004957a0 loadCharacter(bool inGame): PARKED (header proposals; not compiled).
+		// 004957a0 ?loadCharacter@Player@Network@RBX@@QAEX_N@Z (registry, 1365 B).
 		// Evidence: ServiceProvider::find<Workspace>(this) 00491e50, else runtime_error 008223f4; backendProcessing
 		// (this, true), else 008223bc; ContentId::fromAssets(const char*) 0055bd80 "fonts\\character.rbxm" 008223a4,
 		// ServiceProvider::create<ContentProvider>(this) 00465210, ContentProvider::load 005628e0; size != 1 and a
@@ -60,10 +74,8 @@ namespace RBX
 		// SpawnerService spawn routine 005d2b80 (thiscall: shared_ptr<ModelInstance> copy, Player*) and skips the drop;
 		// otherwise RootInstance::moveToPoint 005909e0 (model, Vector3(0, 20 [008222f0], 25 [008222ec])).
 		// SpawnerService::SpawnPlayer 005d2b80 is now declared (v8datamodel/SpawnerService.h) and called by that name.
-		// Remaining blockers: ContentId::fromAssets(const char*) 0055bd80 is not declared by core util/ContentId.h
-		// (only slingshot-load/util/ContentProvider.h declares it, as a conflicting ContentId), and
-		// humanoid/Humanoid2008.h does not declare buildJoints 005d9340 (the donor humanoid/Humanoid.h does).
-#if 0
+		// ContentId::fromAssets(const char*) 0055bd80 is now declared in util/ContentProvider.h and buildJoints 005d9340
+		// in humanoid/Humanoid2008.h, which unblocked this body.
 		void Player::loadCharacter(bool inGame)
 		{
 			Workspace* workspace = ServiceProvider::find<Workspace>(this);
@@ -116,19 +128,28 @@ namespace RBX
 			else
 				workspace->moveToPoint(model.get(), G3D::Vector3(0.0f, 20.0f, 25.0f));
 		}
-#endif
+
+		// 0048c3e0 (registry placeholder func_0048c3e0; donor Network/Player.cpp body): Players::backendProcessing
+		// 00495eb0 (this, true), else std::runtime_error 00409d50 with the literal 008216d0; then, when the character
+		// (+0x170) is set, Instance::for_eachChild<void (*)(Instance*)> 0045c470 with setAppearanceParentNull 004899b0.
+		void Player::removeCharacterAppearance()
+		{
+			if (!Players::backendProcessing(this, true))
+				throw std::runtime_error("RemoveCharacterAppearance can only be called by the backend server");
+
+			if (character)
+				character->for_eachChild(&setAppearanceParentNull);
+		}
 
 		// 00495380 loadCharacterAppearance(bool blocking): PARKED (not compiled; 1041 bytes).
-		// Evidence: backendProcessing(this, true) else runtime_error 008222a8; removeCharacterAppearance 0048c3e0 (not
-		// declared in Network/Player.h; backendProcessing else 008216d0, then character->for_eachChild(
-		// &setAppearanceParentNull 004899b0) 0045c470); `character (+0x170) && !characterAppearance.empty() (+0x1a8)`;
+		// Evidence: backendProcessing(this, true) else runtime_error 008222a8; removeCharacterAppearance 0048c3e0 (above); `character (+0x170) && !characterAppearance.empty() (+0x1a8)`;
 		// an outer vector<string> split on ";" 008212ac (is_any_of 0048e620, split 004952f0). With the argument set:
 		// the donor block (its own vector<shared_ptr<Instance>> and an inner re-split vector<string>, per string
 		// ContentId(const std::string&) 00615440 + create<ContentProvider>(this) 00465210 ->load 005628e0), then
 		// std::for_each 0048d0f0 with boost::bind(&setAppearanceParent 0048a690, character, _1) 0048cc00 and
 		// ~vector 005a2fe0. Without it: per outer string an asynchronous ContentProvider request 00562f70 whose
 		// boost::function 00493210 binds the file-local callback 00492360 (bind 0048d200) to the character and a
-		// shared_from<> 00618a40 of an object built by 004651c0 (this, _1, _2). Needs the
-		// removeCharacterAppearance declaration and identities for 00492360 / 004651c0 / 00562f70 first.
+		// shared_from<> 00618a40 of an object built by 004651c0 (this, _1, _2). Remaining
+		// blocker: registry identities for 00492360 / 004651c0 / 00562f70 / 00493210 / 0048d200 (all placeholders).
 	}
 }

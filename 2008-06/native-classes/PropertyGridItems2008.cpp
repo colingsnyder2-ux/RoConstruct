@@ -111,6 +111,8 @@ void Vector3ComponentItem::writeValue(RBX::Instance* instance, const G3D::Vector
 // iterator read once, every load, check and call matches in order; the remaining difference is register
 // assignment only: the original spills this ([esp + 0x10], reloaded for m_pConstraints +0xc4 every pass and for
 // the return value) and holds _invalid_parameter_noinfo in ebp; this unit keeps this in ebp.
+// Batch 39 rejected (all 305 B, same register assignment): postfix it++; the loop in a file-local helper
+// (static inline: not inlined, 107 B; __forceinline: 305 B); separate iter/end locals with a while loop.
 EnumItem::EnumItem(const RBX::Reflection::EnumPropertyDescriptor* property, CPropGrid* grid)
     : EnumItemBase(property, grid)
 {
@@ -375,6 +377,11 @@ template class std::_Vector_val<RBX::Reflection::ClassDescriptor const *,std::al
 // begin. Rejected: grid->groups.find(*it) without the key copy (859 B, frame 0x70); inner const_iterator (no change).
 // Batch 29 (xi01): rejected find(static_cast<const ClassDescriptor*>(*it)) (the cast temporary is elided: same
 // 859 B / frame 0x70 as the no-copy form). Three hypotheses rejected: parked.
+// Batch 36: the openrbx Client/win/PropGrid.cpp XItem::FUN_00443670 shape (a `SelectionGroup& groups = grid->groups`
+// reference taken after the key copy, then `if (found != groupEnd) { ... }`) makes bool 0043ead0 exact (grid loaded
+// before find's arguments). float 0043ee40 / int 0043f1c0 stay near misses (881 / 875 B, same size): only the inner
+// loop latch orders `mov eax, [ebp - 0x24]` before the `mov ebx, [_invalid_parameter_noinfo]` reload (target after,
+// 0043f00f / 0043f38f); the source is the same template, so that is not a statement-order difference.
 template<class T, class GridItem, class Descriptor>
 void XItem<T, GridItem, Descriptor>::applyValue(const T& value)
 {
@@ -386,11 +393,12 @@ void XItem<T, GridItem, Descriptor>::applyValue(const T& value)
         const std::vector<const RBX::Reflection::ClassDescriptor*>::const_iterator end = classes.end();
         for (std::vector<const RBX::Reflection::ClassDescriptor*>::const_iterator it = classes.begin(); it != end; ++it) {
             const RBX::Reflection::ClassDescriptor* descriptor = *it;
-            RBX::SelectionGroup::iterator found = grid->groups.find(descriptor);
-            if (found == groupEnd)
-                continue;
-            for (std::vector<boost::shared_ptr<RBX::Instance> >::iterator i = found->second.begin(), iend = found->second.end(); i != iend; ++i)
-                instances.push_back(*i);
+            RBX::SelectionGroup& groups = grid->groups;
+            RBX::SelectionGroup::iterator found = groups.find(descriptor);
+            if (found != groupEnd) {
+                for (std::vector<boost::shared_ptr<RBX::Instance> >::iterator i = found->second.begin(), iend = found->second.end(); i != iend; ++i)
+                    instances.push_back(*i);
+            }
         }
         std::for_each(instances.begin(), instances.end(),
                       boost::bind(&XItem::writeValue, this, boost::bind(&boost::shared_ptr<RBX::Instance>::get, _1), value));

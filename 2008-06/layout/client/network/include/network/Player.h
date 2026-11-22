@@ -83,6 +83,7 @@ namespace RBX
 			void onCharacterChangedFrontend();                        // 004924e0
 			void doPeriodicIdleCheck();                               // 00494650
 			void loadCharacterAppearance(bool);                       // 00495380 (argument meaning not derived)
+			void removeCharacterAppearance();
 
 		public:
 			Player();                                                 // 00493da0

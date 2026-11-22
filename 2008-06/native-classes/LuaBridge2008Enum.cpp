@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // Inactive 2008-06 native recovery: RBX::Lua enum bridges (Enums / Enum / EnumItem), unit 0061edb0..0061f0f0.
 // Body shapes are codegen analogs; counted rows are proven by tests/record_native_lua_bridge2008.py.
 #include "LuaBridge2008/LuaEnumBridge2008.h"

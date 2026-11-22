@@ -42,6 +42,15 @@ template class std::_Vector_const_iterator<RBX::ISelectionBase *,std::allocator<
 template class std::_Vector_iterator<RBX::ISelectionBase *,std::allocator<RBX::ISelectionBase *> >;
 template class std::vector<RBX::ISelectionBase *,std::allocator<RBX::ISelectionBase *> >;
 
+#include <algorithm>
+
+namespace RBX {
+	bool Selection::isSelected(const Instance* instance) const
+	{
+		return std::find(selection->begin(), selection->end(), shared_from(instance)) != selection->end();
+	}
+}
+
 namespace RBX {
 
 boost::shared_ptr<Instance> Selection::back() const

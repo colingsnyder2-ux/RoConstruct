@@ -11,6 +11,10 @@ class GeometryBuilder {
 public:
     VertexData* createVertexData(const float*, unsigned, const float*, const float*, const float*);
     RbxSubMesh* createIndexed(const float*, unsigned, const float*, const float*, const float*, const unsigned short*, const unsigned*, unsigned, Vector3*, Vector3*);
+    // 0067c020 (thiscall, ret 0x10; this is not read): a new SubMesh on the mesh with a static 16- or 32-bit index
+    // buffer (useSharedVertices). Caller Mesh::Level::makeHWSubMesh 00549610 (ecx = engine, call through
+    // (&sharedMesh, NULL, indices, count / 3)). Body: native-classes/OgreGeometryIndices2008.cpp.
+    SubMesh* createIndices(const MeshPtr&, const unsigned short*, const unsigned*, unsigned);
     void update(MeshPtr&, const float*, unsigned, const float*, const float*, const float*, const Vector3*, const Vector3*);
     MeshPtr create(const char*, const char*, const float*, unsigned, const float*, const float*, const float*, const Vector3*, const Vector3*);
 };

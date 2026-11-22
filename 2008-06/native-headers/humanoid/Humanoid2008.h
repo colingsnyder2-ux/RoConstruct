@@ -134,6 +134,9 @@ namespace RBX
 		const G3D::Vector3& getWalkToPoint() const { return walkToPoint; }     // 005d7510
 		bool getJump() const { return jump; }                // 005d7520
 		bool getSit() const { return sit; }                  // 005d7530
+		// INFERRED: inline accessor of the imDead bit (no out-of-line copy); Seat::onEvent_seatTouched 0063cfb0 tests
+		// the +0x1e8 flag byte with 0xa (imDead bit 1 | sit bit 3) next to getSit, i.e. !getDead() && !getSit().
+		bool getDead() const { return imDead; }
 		bool getStrafe() const { return strafe; }            // 005d7540 (analog name)
 		const G3D::Vector3& getTargetPoint() const { return targetPoint; }     // 005d7550
 
@@ -220,6 +223,9 @@ namespace RBX
 		static PartInstance* getHeadFromCharacter(const ModelInstance* character); // 005d75a0
 		static Humanoid* modelIsCharacter(const Instance* testModel);         // 005d9a20
 		static Humanoid* getLocalHumanoidFromContext(const Instance* context); // 005d9bb0
+		// 005d7990: cdecl static (arg at [esp+4], plain ret via tail jmp to getHeadFromCharacter 005d75a0 after
+		// Network::Players::findLocalCharacter 0049aca0); body in HumanoidLocalHead.cpp.
+		static PartInstance* getLocalHeadFromContext(const Instance* context);
 		static void renderWaypoint(Adorn* adorn, const G3D::Vector3& waypoint); // 005d7750
 
 	private:

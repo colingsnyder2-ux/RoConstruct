@@ -167,6 +167,9 @@ namespace RBX
 			// INFERRED: InterpolatingPhysicsReceiver::receivePacket 004c9120 calls the protected findTargetPlayer (slot 17,
 			// `call [eax+0x44]` on its replicator +0x4).
 			friend class InterpolatingPhysicsReceiver;
+			// INFERRED: RoundRobinPhysicsSender::sendPhysicsData 004caaf0 calls the protected findTargetPlayer (slot 17,
+			// `call [edx+0x44]` on its replicator +0x4); measured byte-identical with this friendship (batch 37 nw01).
+			friend class RoundRobinPhysicsSender;
 
 		public:
 			class ReplicatorStatsItem;

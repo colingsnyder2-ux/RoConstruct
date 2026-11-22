@@ -99,6 +99,10 @@ namespace RBX
 	public:
 		PartInstance();
 		virtual ~PartInstance();
+		// 00598c20 (vtable slot 1 of ??_7Seat 00849f74 / SpawnLocation / FlagStand / PartInstance 00832d4c, `ret 4`):
+		// Instance::setName 0055af90, then primitive (+0x228) setUnknown0x14 005e7420 with 5 when the name is "Torso"
+		// (00832a1c), else 1. Body pending in the PartInstance unit (AppUnit598PartInstance.cpp, another owner).
+		virtual void setName(const std::string& name);
 	public:
 		const Primitive* getPrimitive() const
 		{

@@ -1,7 +1,5 @@
 #include "util/Quaternion.h"
 
-#include "../../../../../../tools/rbxgs/Client/App/include/util/Quaternion.h"
-
 extern "C" double __cdecl sqrt(double);
 namespace RBX
 {

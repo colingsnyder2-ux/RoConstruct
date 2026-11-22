@@ -245,6 +245,11 @@ namespace RBX
 		{                                                 // Cofm::getCofmInBody 00660160 or the Vector3::zero() static)
 			return cofm ? cofm->getCofmInBody() : G3D::Vector3::zero();
 		}
+		int getStateIndex() const                         // donor v8kernel/Body.h inline (openrbx Body.h shape): inlined by
+		{                                                 // Link::getChildInParent 00613d60 (call updatePV 00599360 on
+			updatePV();                                   // the parent, then `mov edi, [edi + 0x90]`)
+			return stateIndex;
+		}
 		const PV& getPVUnsafe() const                     // no updatePV: Point::step 0064dc93 reads pv +0x94 directly
 		{                                                 // (analog name)
 			return pv;

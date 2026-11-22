@@ -99,7 +99,7 @@ namespace RBX
 		  allowTeamChangeOnTouch(false),
 		  duration(10)
 	{
-		setName("SpawnLocation");
+		setName(sSpawnLocation);
 	}
 
 	void SpawnLocation::setTeamColor(BrickColor color)

@@ -1,7 +1,5 @@
 #include "v8world/IMoving.h"
 
-#include "../../../../../../tools/rbxgs/Client/App/include/v8world/IMoving.h"
-
 namespace RBX
 {
 	// makeMoving and moved have no out-of-line copy in the image; inlined into notifyMoved / setMovingManager.
@@ -27,6 +25,11 @@ void IMoving::notifyMoved(void)
 		}
 	}
 }
+
+	IMovingManager::IMovingManager()
+	{
+		current = moving.end();
+	}
 
 	void IMovingManager::remove(IMoving* iMoving)
 	{

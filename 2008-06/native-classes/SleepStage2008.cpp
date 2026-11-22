@@ -1,4 +1,4 @@
-// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native RBX::SleepStage rows (inactive); layout evidence in native-headers/v8world/SleepStage2008.h.
 // Bodies follow the donor v8world/SleepStage2.cpp shape; 2008 differences are listed per function.
 #undef _RELEASEASSERT   // the 2008 bodies carry no release asserts (IndexArray fastAppend / fastRemove)
@@ -87,6 +87,12 @@ namespace RBX
 	// onAssemblyRemoving 0064b0a0 from matching. Rejected: getState as if / return instead of the ternary (unchanged),
 	// inOrDownstreamOfStage spelled `stage->getStageType() <= currentStage->getStageType()` in a shadow
 	// v8kernel/IPipelined2008.h trial (unchanged: still this first, only the jump sense flips).
+	// Batch 37 (header owner) rejected, all three bodies 325 / 263 / 543 B unchanged: inOrDownstreamOfStage /
+	// downstreamOfStage defined out of class as `inline` after IPipelined (openrbx v8world/IPipelined.h shape), and the
+	// three inlines non-const. The target order is context-dependent (cs first here and in the exact 0064a740 / 0064b890,
+	// this first in 0064b0a0 / 0064c470 and this body's REMOVED test), so a fixed order inside the inline cannot fit all.
+	// Batch 38 rejected (header owner): a plain signed `enum StageType` in kernel-stages v8kernel/IStage.h with the
+	// cast-free openrbx compares in IPipelined2008.h: the object was unchanged (325 / 263 / 543 B, same diffs).
 	void SleepStage::changeAssemblyState(Assembly* a, Sim::AssemblyState newState)
 	{
 		Sim::AssemblyState oldState = getState(a);
@@ -537,3 +543,216 @@ namespace RBX
 		return Sim::SLEEPING_CHECKING;
 	}
 }
+
+// Batch 42: the donor openrbx SleepStage2.cpp tolerance tests (identity: SleepStage unit 0064a550..0064ca5f in source
+// order forceNeighborAwake 0064a5f0, okNeighborSleep 0064a660, computeShouldSleep 0064a6c0, preventNeighborSleep
+// 0064a740, computeAssemblyState 0064a790, shouldSleep 0064a950). Each loads the root body's
+// getBranchCofmCoordinateFrame 006144e0 (Assembly +0x24 -> Clump +0x1c -> Primitive +0xa0), the maxRadius ComputeProp
+// (+0x50 inline), then SleepInfo +0x8 RunningAverageState update 00668a20 / withinTolerance 00668af0.
+namespace
+{
+	// INFERRED: donor SleepStage.h `static float sleepTolerance() { return 0.02f; }`; .rdata 00827488 holds 0.02f and
+	// 0084b080 holds the folded 2.0f * 0.02f (0.04f) read by 0064a5f0.
+	inline float sleepTolerance()
+	{
+		return 0.02f;
+	}
+}
+
+namespace RBX
+{
+	// 0064a5f0 (donor SleepStage::forceNeighborAwake; only caller computeAssemblyState 0064a790)
+	bool SleepStage::forceNeighborAwake(Assembly* a)
+	{
+		G3D::CoordinateFrame cofm = a->getRootClump()->getRootPrimitive()->getBody()->getBranchCofmCoordinateFrame();
+		float radius = a->getMaxRadius();
+		bool withinTolerance = a->getSleepInfo()->runningAverageState.withinTolerance(cofm, radius, 2.0f * sleepTolerance());
+
+		return !withinTolerance;
+	}
+
+	// 0064a660 (registry func_0064a660; donor SleepStage::okNeighborSleep; only caller preventNeighborSleep 0064a740)
+	bool SleepStage::okNeighborSleep(Assembly* a)
+	{
+		G3D::CoordinateFrame cofm = a->getRootClump()->getRootPrimitive()->getBody()->getBranchCofmCoordinateFrame();
+		float radius = a->getMaxRadius();
+
+		return a->getSleepInfo()->runningAverageState.withinTolerance(cofm, radius, sleepTolerance());
+	}
+}
+
+// 0064a6c0 (registry func_0064a6c0; donor SleepStage::computeShouldSleep, RunningAverageState::update 00668a20 then
+// withinTolerance 00668af0) and 0064a950 (registry func_0064a950; donor SleepStage::shouldSleep with computeCanSleep
+// inline (0097abc1, canSleep ComputeProp +0x68), computeShouldSleep 0064a6c0 and preventNeighborSleep 0064a740 out of
+// line, getExternalEdges 005e6c70, otherAssembly 005e61b0). Blocked only by the declarations: native-headers/v8world/
+// SleepStage2008.h (not assigned) does not declare computeShouldSleep / shouldSleep; proposal filed with batch 42.
+// Measured against a scratch header with the two declarations and this macro: both bodies byte-exact (0064a6c0 122 B,
+// 0064a950 194 B). shouldSleep needs the named `other` local (inline call argument 220 B; one combined && test 230 B).
+#ifdef SLEEPSTAGE_HEADER_DECLARES_SHOULDSLEEP
+namespace RBX
+{
+	bool SleepStage::computeShouldSleep(Assembly* a)
+	{
+		G3D::CoordinateFrame cofm = a->getRootClump()->getRootPrimitive()->getBody()->getBranchCofmCoordinateFrame();
+		float maxRadius = a->getMaxRadius();
+		RunningAverageState& runningAverageState = a->getSleepInfo()->runningAverageState;
+
+		runningAverageState.update(cofm, maxRadius);
+
+		return runningAverageState.withinTolerance(cofm, maxRadius, sleepTolerance());
+	}
+
+	bool SleepStage::shouldSleep(Assembly* a)
+	{
+		if (!computeCanSleep(a))
+		{
+			return false;
+		}
+
+		if (!computeShouldSleep(a))
+		{
+			return false;
+		}
+
+		const G3D::Array<Edge*>& edges = a->getExternalEdges();
+
+		for (int i = 0; i < edges.size(); i++)
+		{
+			Edge* edge = edges[i];
+
+			if (edgeIsAwake(edge))
+			{
+				if (isAffecting(edge))
+				{
+					Assembly* other = a->otherAssembly(edge);
+
+					if (preventNeighborSleep(other))
+					{
+						return false;
+					}
+				}
+			}
+		}
+
+		return true;
+	}
+}
+#endif
+
+// 0064bc60 (registry func_0064bc60; donor SleepStage::stepJoints), 0064bd80 (func_0064bd80; donor stepAssembliesAwake)
+// and 0064be80 (func_0064be80; donor stepAssembliesSleepingChecking). 2008 keeps the donor function-local static
+// vectors as members and clears them after the change call (resize(0, T()) 005e6de0 last, push_back 004213a0):
+// stepJoints uses the vector at +0xb8 for changeJointState(vector) 0064b7f0 (SLEEPING 2), stepAssembliesAwake +0x40
+// for changeAssemblyState(vector) 0064b840 (SLEEPING_CHECKING 4), stepAssembliesSleepingChecking +0x28 (WAKE_PENDING
+// 2) and +0x10 (SLEEPING_DEEPLY 5). isMoving reads SleepInfo +0x18 behind a NULL test (states 3 / 1 / 2 in that
+// order) and atLeastOneAssemblyMoving takes getAssemblyNoCheck 005e7560 of both primitives. Blocked by
+// native-headers/v8world/SleepStage2008.h (not assigned): its INFERRED vector element types are wrong for +0x10 /
+// +0x28 / +0x40 (Assembly*), +0x70 / +0x88 / +0xa0 (Contact*) and +0xb8 (Joint*), and the step passes are not
+// declared; proposal filed with batch 42 (the header defines SLEEPSTAGE_HEADER_DECLARES_STEP_PASSES with them).
+// Measured against the scratch header: all three byte-exact (0064bc60 282 B needs the donor `JointSet::iterator it;`
+// declared before the loop: the for-init form swaps ebx / ebp, 281 B), and changeJointState(vector) 0064b7f0 /
+// changeAssemblyState(vector) 0064b840 become credited with the corrected element types. stepContacts 0064c280 is
+// parked: its canCollide test reads Primitive +0xa8 and +0xab (`!dragging && !flag_ab` per primitive, not the donor
+// getCanCollide +0xac), and Primitive2008.h has no accessor for +0xab whose meaning is evidenced (setter 005e75e0).
+#ifdef SLEEPSTAGE_HEADER_DECLARES_STEP_PASSES
+namespace RBX
+{
+	bool SleepStage::isMoving(Assembly* a)
+	{
+		SleepInfo* info = a->getSleepInfo();
+		if (!info)
+			return false;
+
+		Sim::AssemblyState state = info->state;
+		return state == Sim::AWAKE || state == Sim::RECURSIVE_WAKE_PENDING || state == Sim::WAKE_PENDING;
+	}
+
+	bool SleepStage::atLeastOneAssemblyMoving(Assembly* a0, Assembly* a1)
+	{
+		return isMoving(a0) || isMoving(a1);
+	}
+
+	bool SleepStage::canThrottle(Assembly* a)
+	{
+		return a->getRootClump()->getRootPrimitive()->getBody()->getCanThrottle();
+	}
+
+	void SleepStage::stepJoints()
+	{
+		JointSet::iterator it;
+
+		for (it = steppingJoints.begin(); it != steppingJoints.end(); ++it)
+		{
+			Joint* j = *it;
+
+			Primitive* prim0 = j->getPrimitive(0);
+			Primitive* prim1 = j->getPrimitive(1);
+
+			if (!throttling || !prim0->getBody()->getCanThrottle() || !prim1->getBody()->getCanThrottle())
+			{
+				if (!atLeastOneAssemblyMoving(prim0->getAssemblyNoCheck(), prim1->getAssemblyNoCheck()))
+				{
+					toSleepingJoints.push_back(j);
+				}
+			}
+		}
+
+		changeJointState(toSleepingJoints, Sim::SLEEPING);
+		toSleepingJoints.resize(0);
+	}
+
+	void SleepStage::stepAssembliesAwake()
+	{
+		for (AssemblySet::iterator it = awake.begin(); it != awake.end(); ++it)
+		{
+			Assembly* a = *it;
+
+			if (!throttling || !canThrottle(a))
+			{
+				if (shouldSleep(a))
+				{
+					a->getSleepInfo()->sleepCount++;
+
+					if (a->getSleepInfo()->sleepCount > 20)
+					{
+						toSleepingChecking.push_back(a);
+					}
+				}
+				else
+				{
+					resetSleepCount(a);
+				}
+			}
+		}
+
+		changeAssemblyState(toSleepingChecking, Sim::SLEEPING_CHECKING);
+		toSleepingChecking.resize(0);
+	}
+
+	void SleepStage::stepAssembliesSleepingChecking()
+	{
+		for (AssemblySet::iterator it = sleepingChecking.begin(); it != sleepingChecking.end(); ++it)
+		{
+			Assembly* a = *it;
+
+			Sim::AssemblyState state = computeAssemblyState(a);
+
+			switch (state)
+			{
+			case Sim::AWAKE:
+				toWake.push_back(a);
+				break;
+
+			case Sim::SLEEPING_DEEPLY:
+				toDeep.push_back(a);
+				break;
+			}
+		}
+
+		changeAssemblyState(toWake, Sim::WAKE_PENDING);
+		changeAssemblyState(toDeep, Sim::SLEEPING_DEEPLY);
+		toWake.resize(0);
+		toDeep.resize(0);
+	}
+}
+#endif

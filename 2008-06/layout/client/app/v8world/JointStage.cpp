@@ -15,7 +15,7 @@ namespace RBX
 		std::vector<Joint*> moveJoints;
 
 		typedef std::multimap<Primitive*, Joint*>::iterator Iterator;
-		for (Iterator it = jointMap.lower_bound(p); it != jointMap.upper_bound(p); ++it)
+		for (Iterator it = jointMap.JointMap::Base::lower_bound(p); it != jointMap.upper_bound(p); ++it)
 		{
 			Joint* j = it->second;
 			Primitive* p0 = j->getPrimitive(0);

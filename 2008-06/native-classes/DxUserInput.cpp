@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/uievent-native
 // 2008-06 RBX::DxUserInput (004675e0..004690f0): DirectInput 8 keyboard/mouse input source. Inactive native unit.
 // Byte-exact against the target (native-asm --obj, relocations masked): 00467530 00467550 004675e0 00467720 004677f0
 // 00467a90 00467bf0 00467c50 00467cb0 00468050 004680c0 00468520 004689c0 00468a60 00468b20 00468e70 00469070 00469080
@@ -10,21 +10,22 @@
 // helper; the only remaining difference is the Stepped removeListener offset, 0x170 in the target vs 0x150 here,
 // because the core util/RunStateOwner.h RunService places that Notifier at 0x150).
 // 00467a00 postEvent: exact since batch 25 (through the header's func_00577460 conduit).
-// Not recovered: 004681b0 processKeyboard, 004685b0 processMouse, 00467d50, 00468b90 window message handler,
+// Not recovered: 004681b0 processKeyboard (guarded), 004685b0 processMouse (near miss, batch 39), 00467d50, 00468b90 window message handler,
 // 004690f0 constructor: recovered below, byte-identical to the target except the Stepped addListener offset (0x150 here
 // vs 0x170, the native RunService header places that Notifier differently); also built here: DxCriticalSection 004328c0
 // (exact). postEvent / processKeyboard (needs CMainFrame member +0x104) / processMouse / 00468b90 / 00467d50 stay open.
 // (the last two lines of the old list: 004690f0 is no longer open)
+#ifdef NATIVE_DXUSERINPUT_KEYBOARD_PENDING
+// processKeyboard 004681b0 reads CMainFrame::state104 (+0x104) of the application main window. Included first, as
+// the CMainFrame units do: the XTP headers need the windows.h min / max macros, which G3D/g3dmath.h (48, `#undef min`)
+// and G3D/platform.h (NOMINMAX around windows.h) remove (batch 39: XTPVC50Helpers.h 542 C3861 'min' / 'max' gone).
+#include "CMainFrame.h"
+#endif
 #include "util/DxUserInput.h"
 #include "v8datamodel/DataModel.h"
 #include "util/Object.h"
-#ifdef NATIVE_DXUSERINPUT_MOUSE_PENDING
-#include "v8datamodel/Workspace.h"   // processMouse 004685b0 calls Workspace::onWrapMouse 005a0220 (conflicts here, see below)
-#endif
+#include "v8datamodel/Workspace.h"   // processMouse 004685b0 calls Workspace::onWrapMouse 005a0220 (through /I{headers}/uievent-native)
 
-#ifdef NATIVE_DXUSERINPUT_KEYBOARD_PENDING
-#include "CMainFrame.h"   // processKeyboard 004681b0 reads CMainFrame::state104 (+0x104) of the application main window
-#endif
 
 // Identity-tier placeholder helpers (bodies byte-proved in Inferred_00469f50.cpp / Inferred_00469360.cpp /
 // Inferred_00469c60.cpp), all cdecl: keyboard state -> SDLMod, DIK scan code -> SDLKey, SDLKey -> virtual key.
@@ -333,7 +334,15 @@ namespace RBX
 		reinterpret_cast<DxUserInput*>(dataModel.get())->func_00577460(event);
 	}
 
-	// 004684a0: mouse button 3 / 4 toggle the drag flag, then the event goes to the DataModel
+	// 004684a0: mouse button 3 / 4 toggle the drag flag, then the event goes to the DataModel.
+	// The target stores the zero mouseDelta words straight into the event (no Vector2int16 temporary) after the
+	// sub_00467440 window-size call: the shape of the openrbx util/UIEvent.h constructor
+	// UIEvent(userInput, eventType, Vector2int16 position, Vector2int16 size) : ..., mouseDelta(0, 0), windowSize(size).
+	// The core util/UIEvent2008.h does not declare that constructor (proposal to its owner). Measured in batch 39 with
+	// a scratch copy of util/UIEvent2008.h holding it (not kept): 004684a0 postMouseEvent and its two inlined copies in
+	// 004685b0 processMouse are then byte-identical (both exact, with CWnd::PostMessage 004112a0 and the processMouse
+	// EH handler 007c36e1). Until the header has it, the five-argument constructor with a Vector2int16(0, 0)
+	// temporary is used (121 B against 113: the temporary is materialized before the window-size call).
 	void DxUserInput::postMouseEvent(int eventType, const G3D::Vector2& position)
 	{
 		if (eventType == 3)
@@ -341,7 +350,11 @@ namespace RBX
 		else if (eventType == 4)
 			dragging = false;
 		G3D::Vector2int16 mousePosition(position);
+#ifdef UIEVENT_HEADER_DECLARES_POSITION_SIZE_CTOR
+		UIEvent event(this, (UIEvent::EventType)eventType, mousePosition, sub_00467440());
+#else
 		UIEvent event(this, (UIEvent::EventType)eventType, mousePosition, G3D::Vector2int16(0, 0), sub_00467440());
+#endif
 		postEvent(event);
 	}
 
@@ -350,9 +363,11 @@ namespace RBX
 	// press whose virtual key (MapVirtualKeyEx type 1, else sub_00469c60) is PrintScreen posts WM_COMMAND 0x80fc; for
 	// F1, F4, or any key while CMainFrame::state104 is clear, a matching ACCEL entry (type 2 character for non-FVIRTKEY
 	// entries, FSHIFT/FCONTROL/FALT from the SDLMod bits) is posted to the frame as WM_COMMAND instead of a key event.
-	// PENDING (NATIVE_DXUSERINPUT_KEYBOARD_PENDING): CMainFrame.h does not compile in this unit: XTP needs min/max
-	// (XTPVC50Helpers.h 542) and util/MarshaledListener.h closes namespace RBX before the MarshaledListener template
-	// (line 19 `}`), see the header proposals. Measured with a cast stand-in for the state104 read (trial only, not
+	// PENDING (NATIVE_DXUSERINPUT_KEYBOARD_PENDING): the XTP min / max failure is fixed by including CMainFrame.h first
+	// (top of this unit, batch 39). The only remaining blocker is the core util/MarshaledListener.h, which closes
+	// namespace RBX before the MarshaledListener template (the stray `}` at line 19; proposal to its owner). Batch 39
+	// measured once against a scratch copy of the header tree with that line removed: the unit compiles (101 rows,
+	// no baseline exact lost) and this body is 723 B against 738, the same as the earlier stand-in measurement. Measured with a cast stand-in for the state104 read (trial only, not
 	// kept): 723 vs 738 bytes, same frame (0xa040). Remaining diff: the target walks the DIDEVICEOBJECTDATA array
 	// through &data[i].dwData (`mov ebx,[eax]; mov ebp,[eax-4]`, this build uses the element base), keeps the virtual
 	// key in a stack slot for the accelerator compare (`cmp eax,[esp+0x14]`), and places the PrintScreen post out of
@@ -422,17 +437,16 @@ namespace RBX
 	// down (dwData 0x80) or up event (postMouseEvent 004684a0). Afterwards, under the DataModel lock, a non-zero delta
 	// goes to Workspace::onWrapMouse 005a0220 (workspace +0x204) and posts MOUSE_DELTA then MOUSE_MOVE; a move without
 	// delta posts MOUSE_MOVE only.
-#ifdef NATIVE_DXUSERINPUT_MOUSE_PENDING
-	// PENDING (NATIVE_DXUSERINPUT_MOUSE_PENDING): v8datamodel/Workspace.h cannot be included in this unit: it pulls the
-	// donor gui/GuiEvent.h -> util/UIEvent.h, which redefines the RBX::UIEvent of util/UIEvent2008.h (C2011). Measured
-	// with a scratch-only `class Workspace { void onWrapMouse(const G3D::Vector2&); }` stand-in (not kept): 1050 vs 1026
-	// bytes, same control flow, jump table, calls and EH states; the switch-case order (BUTTON0, BUTTON1, X/Y, Z) and the
-	// unit's /fp:fast (dword 1/120 multiply, the 0.0f kept on the x87 stack across the loop) are confirmed. Remaining:
-	// the two inlined postMouseEvent bodies after the loop materialize the Vector2int16(0, 0) delta temporary (the
-	// target stores the zero words straight into the event, the 004684a0 "UIEvent temporaries" difference of the
-	// util/UIEvent2008.h five-argument constructor) and the frame slots shift with it (lock at +0x58 vs +0x48).
-	// Rejected: the source case order X/Y, Z, BUTTON0, BUTTON1 (1022 B, button tails merged, qword constants before
-	// /fp:fast).
+	// Batch 39: no longer guarded. v8datamodel/Workspace.h (onWrapMouse 005a0220) now compiles here through the
+	// include-path profile /I{headers}/uievent-native, whose util/UIEvent.h forwards to util/UIEvent2008.h, so the
+	// donor gui/GuiEvent.h -> util/UIEvent.h chain no longer redefines RBX::UIEvent (the former C2011). The button
+	// cases use the inline CWnd::PostMessage (openrbx Client/win/DxUserInput.cpp `PostMessage(WM_USER + 0xbb)`; the
+	// target reloads the window pointer into eax as the inline afxwin.inl body does). Remaining difference
+	// (1050 B against 1026): only the two inlined postMouseEvent copies after the loop, which materialize the
+	// Vector2int16(0, 0) delta temporary (see 004684a0 above: the core util/UIEvent2008.h lacks the
+	// position / size constructor); with that constructor in a scratch header copy this body is byte-identical.
+	// Rejected earlier: the source case order X/Y, Z, BUTTON0, BUTTON1 (1022 B, button tails merged, qword constants
+	// before /fp:fast).
 	void DxUserInput::processMouse()
 	{
 		DWORD count = 0x800;
@@ -452,12 +466,12 @@ namespace RBX
 			switch (data[i].dwOfs)
 			{
 			case 0xc: // DIMOFS_BUTTON0
-				::PostMessage(window->m_hWnd, 0x4bb, 0, 0);
+				window->PostMessage(0x4bb);
 				postMouseEvent(data[i].dwData == 0x80 ? UIEvent::MOUSE_LEFT_BUTTON_DOWN : UIEvent::MOUSE_LEFT_BUTTON_UP,
 							   getCursorPosition());
 				break;
 			case 0xd: // DIMOFS_BUTTON1
-				::PostMessage(window->m_hWnd, 0x4bb, 0, 0);
+				window->PostMessage(0x4bb);
 				postMouseEvent(data[i].dwData == 0x80 ? UIEvent::MOUSE_RIGHT_BUTTON_DOWN : UIEvent::MOUSE_RIGHT_BUTTON_UP,
 							   getCursorPosition());
 				break;
@@ -486,8 +500,6 @@ namespace RBX
 			postMouseEvent(UIEvent::MOUSE_MOVE, getCursorPosition());
 		}
 	}
-
-#endif
 
 	// 004689c0 (Heartbeat listener at +0x2c): poll both devices
 	void DxUserInput::onEvent(const RunService*, Heartbeat)

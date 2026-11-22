@@ -88,6 +88,10 @@ namespace RBX
 		void addMesh(const Ogre::MeshPtr& mesh, const Ogre::Matrix4& transform,
 		             const Ogre::MaterialPtr& material);                                          // 00671f00
 		void releaseSubEntities();                                                                // 00671e20
+		// 006712e0 (thiscall, ret 0x20 = hidden MeshPtr result + std::string by value; callers box 00671fd0, sphere
+		// 00672ba0, ray 006735a0): meshes (+0x78) lookup by name, a MeshPtr copy of the hit or a null MeshPtr.
+		// INFERRED: the name (registry placeholder func_006712e0). Body: native-classes/AdornRbxGfxMeshLookup.cpp.
+		Ogre::MeshPtr getMesh(std::string name);                                                  // 006712e0
 
 	public:
 		AdornRbxGfx(Ogre::VisualEngine* visualEngine);                      // 00674210
