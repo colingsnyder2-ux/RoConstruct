@@ -223,6 +223,9 @@ namespace RBX
 		static PartInstance* getHeadFromCharacter(const ModelInstance* character); // 005d75a0
 		static Humanoid* modelIsCharacter(const Instance* testModel);         // 005d9a20
 		static Humanoid* getLocalHumanoidFromContext(const Instance* context); // 005d9bb0
+		// 005d7990: cdecl static (arg at [esp+4], plain ret via tail jmp to getHeadFromCharacter 005d75a0 after
+		// Network::Players::findLocalCharacter 0049aca0); body in HumanoidLocalHead.cpp.
+		static PartInstance* getLocalHeadFromContext(const Instance* context);
 		static void renderWaypoint(Adorn* adorn, const G3D::Vector3& waypoint); // 005d7750
 
 	private:

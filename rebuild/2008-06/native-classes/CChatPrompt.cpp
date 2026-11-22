@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
 #include "../native-headers/CChatPrompt.h"
 #include "../native-headers/ChatEnter.h"
 #include "../native-headers/v8datamodel/DataModel.h"
@@ -27,8 +28,6 @@ void CChatPrompt::bind(RBX::DataModel* model, CWnd* host) {
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class boost::shared_ptr<RBX::GuiRoot>;
-
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
 
 CChatPrompt::~CChatPrompt()
 {

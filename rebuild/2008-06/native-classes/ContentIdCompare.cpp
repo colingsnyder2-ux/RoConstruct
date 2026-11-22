@@ -9,6 +9,14 @@
 #include "util/ContentProvider.h"
 
 namespace RBX {
+// 0055bd50: ??MRBX@@YA_NABVContentId@0@0@Z (identity-registry decorated signature, 10 reference votes).
+// Body is one 'jmp [0x80235c]', the MSVCP90 import std::operator<(const string&, const string&): same tail-jump
+// shape as operator!= below (ContentId::id is the first member).
+bool operator<(const ContentId& a, const ContentId& b)
+{
+	return a.toString() < b.toString();
+}
+
 // 0055bd60: ??9RBX@@YA_NABVContentId@0@0@Z (identity-registry decorated signature, 8 reference votes).
 // Body is one 'jmp [0x8023d8]', the MSVCP90 import std::operator!=(const string&, const string&): ContentId::id is
 // the first member, so toString() passes both references through unchanged and /O2 turns the call into a tail jump.
