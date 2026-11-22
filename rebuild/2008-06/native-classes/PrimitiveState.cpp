@@ -123,6 +123,15 @@ namespace RBX
 		return answer;
 	}
 
+	// 005e8000 (registry func_005e8000; only caller setGridSize 005e8470): Body::setMass 006140b0, geometry (+0x9c)
+	// slot 6 getMoment(mass) into a Matrix3 temporary, Body::setMoment 00614110, JointK dirty (+0xf0) = true.
+	void Primitive::setMassInertia(float mass)
+	{
+		body->setMass(mass);
+		body->setMoment(geometry->getMoment(mass));
+		JointK.setDirty();
+	}
+
 	// 005e8470: on a changed clipped size: fuzzyExtentsStateId (+0x98) = -2, geometry (+0x9c) slot 3 setGridSize,
 	// setMassInertia 005e8000 of slot 7 getGridVolume, world 005e91c0, JointK dirty (+0xf0).
 	void Primitive::setGridSize(const G3D::Vector3& gridSize)
@@ -206,3 +215,95 @@ namespace RBX
 		}
 	}
 }
+
+// Batch 42: further Primitive.cpp rows of the same unit (donor tools/rbxgs / openrbx v8world/Primitive.cpp bodies).
+// Blocked only by declarations: native-headers/v8world/Primitive2008.h (not assigned) does not declare
+// getFaceInObject 005e76f0, getGridCorner, setGridCorner, getFirstRigidAt or the static insertEdge / removeEdge(Edge*);
+// proposal filed with batch 42 (the header defines PRIMITIVE_HEADER_DECLARES_GRID_CORNER_EDGES with them).
+// Measured against a scratch Primitive2008.h with the declarations: getFaceInWorld 005e81b0, getGridCorner 005e82e0
+// and setGridCorner 005e8500 byte-exact; insertEdge / removeEdge byte-exact but each matches both 005e89f0 and
+// 005e86a0 (placeholders; registry name proposal); getFirstRigidAt 93 B vs 97 B (target keeps the getNextJoint NULL
+// arm `xor esi, esi` before the loop test, the build jump-threads it to the exit).
+#ifdef PRIMITIVE_HEADER_DECLARES_GRID_CORNER_EDGES
+namespace RBX
+{
+	// 005e7c10 (registry func_005e7c10; donor Primitive::getFirstRigidAt): RigidJoint::isRigidJoint inline (slot 3
+	// getEdgeType == JOINT, slot 5 getJointType WELD 6 / SNAP 7), then the inline getNextJoint 005e7ba0 index walk.
+	RigidJoint* Primitive::getFirstRigidAt(Edge* start)
+	{
+		while (start != NULL)
+		{
+			if (RigidJoint::isRigidJoint(start))
+				return static_cast<RigidJoint*>(start);
+
+			start = getNextJoint(static_cast<Joint*>(start));
+		}
+
+		return NULL;
+	}
+
+	// 005e81b0 (registry func_005e81b0): getFaceInObject 005e76f0, Face::toWorldSpace 00649970 of the body's
+	// pv.position (Body::getPV: updatePV 00599360, pv +0x94).
+	Face Primitive::getFaceInWorld(NormalId objectFace)
+	{
+		return getFaceInObject(objectFace).toWorldSpace(body->getPV().position);
+	}
+
+	// 005e82e0 (registry func_005e82e0): -(gridSize * 0.5f) ([00819bac]) to world space of pv.position, then the
+	// CoordinateFrame(rotation, translation) ctor 00513220.
+	G3D::CoordinateFrame Primitive::getGridCorner() const
+	{
+		const G3D::CoordinateFrame& pos = body->getPV().position;
+		G3D::Vector3 hVec = -(geometry->getGridSize() * 0.5f);
+
+		return G3D::CoordinateFrame(pos.rotation, pos.pointToWorldSpace(hVec));
+	}
+
+	// 005e8500 (registry func_005e8500; caller PartInstance 00599730): gridSize * 0.5 to world space of gridCorner,
+	// CoordinateFrame ctor 00513220, setCoordinateFrame 005e8200.
+	void Primitive::setGridCorner(const G3D::CoordinateFrame& gridCorner)
+	{
+		G3D::Vector3 hVec = geometry->getGridSize() * 0.5f;
+		setCoordinateFrame(G3D::CoordinateFrame(gridCorner.rotation, gridCorner.pointToWorldSpace(hVec)));
+	}
+
+	// 005e86a0 (registry func_005e86a0; callers TreeStage::onEdgeRemoving 00669c70): EdgeList::removeEdge 005e8610
+	// on the joints list (+0x34) of both primitives (prim1 may be NULL) or on the contacts lists (+0x18).
+	void Primitive::removeEdge(Edge* e)
+	{
+		Primitive* p0 = e->getPrimitive(0);
+		Primitive* p1 = e->getPrimitive(1);
+
+		if (e->getEdgeType() == Edge::JOINT)
+		{
+			p0->joints.removeEdge(e);
+			if (p1)
+				p1->joints.removeEdge(e);
+		}
+		else
+		{
+			p0->contacts.removeEdge(e);
+			p1->contacts.removeEdge(e);
+		}
+	}
+
+	// 005e89f0 (registry func_005e89f0; TreeStage onEdgeAdded caller): as removeEdge with EdgeList::insertEdge 005e8990.
+	void Primitive::insertEdge(Edge* e)
+	{
+		Primitive* p0 = e->getPrimitive(0);
+		Primitive* p1 = e->getPrimitive(1);
+
+		if (e->getEdgeType() == Edge::JOINT)
+		{
+			p0->joints.insertEdge(e);
+			if (p1)
+				p1->joints.insertEdge(e);
+		}
+		else
+		{
+			p0->contacts.insertEdge(e);
+			p1->contacts.insertEdge(e);
+		}
+	}
+}
+#endif

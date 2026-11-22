@@ -12,6 +12,15 @@
 
 namespace RBX
 {
+	// 00668cd0 (registry func_00668cd0; TreeStage::createAssembly, declared INFERRED in AppUnit668/TreeStage.h; only
+	// caller processEdge 00669560): `push 0x78; call new`, Clump(Primitive*) 005e6cf0 under the new-expression EH state.
+	// The donor openrbx ClumpStage2.cpp spells this `new Clump(child)` into an Assembly*; in the native layout
+	// Assembly is the never-constructed Clump view (AssemblyLayout.h), hence the static_cast (no code).
+	Assembly* TreeStage::createAssembly(Primitive* p)
+	{
+		return static_cast<Assembly*>(new Clump(p));
+	}
+
 	// 00669090
 	void TreeStage::reconcile(Primitive* left, Primitive* right, int leftDepth, int rightDepth, Joint*& lightest, int& lightestSide)
 	{
