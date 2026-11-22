@@ -4,7 +4,8 @@
 
 #include "util/MeshId.h"
 #include "util/Utilities.h"
-#include "slingshot-load/util/ContentProvider.h"
+// Batch 41: the slingshot-load/util/ContentProvider.h include (donor ContentId) clashed with the native
+// util/ContentProvider.h that util/MeshId.h includes (C2011); the native header declares ContentId::toString.
 
 namespace RBX
 {

@@ -280,17 +280,6 @@ namespace RBX
 			edgeLength);
 	}
 
-	// INFERRED: donor v8world/Block.h declares the static member Block::BLOCK_FACE_VERTEX_TO_EDGE[6][4] and the inline
-	// Block::faceVertexToEdge(normId, edge) that reads it; intersectRectQuad 00608160 indexes the same 6x4 int table
-	// (binary address 0084af28, 00608521 / 0060852f: `[(face * 4 + vertex) * 4 + 0x84af28]`). v8world/Block2008.h
-	// (not this unit's header) declares neither, so the unit names the table at namespace scope and keeps a file-local
-	// copy of the donor inline (proposal: move both into Block2008.h beside BLOCK_FACE_TO_VERTEX).
-	extern const int BLOCK_FACE_VERTEX_TO_EDGE[6][4];   // INFERRED: donor Block.h, binary 0084af28
-	static inline int faceVertexToEdge(Block*, NormalId normId, int edge)   // INFERRED: donor Block.h inline
-	{
-		return BLOCK_FACE_VERTEX_TO_EDGE[normId][edge];
-	}
-
 	// 00608160 (`ret 8`; header leaves2008/BlockBlockContact2008.h): donor v8world/Contact.cpp
 	// BlockBlockContact::intersectRectQuad. The rect/quad classification loop is unrolled (quadIn [esp+0x10],
 	// quadCrossRect [esp+0x18], rectCrossQuad [esp+0x28], rect [esp+0x38], rectIn in the dead planeRect argument
@@ -410,7 +399,7 @@ namespace RBX
 					{
 						if (quadCrossRect[i][j] != quadCrossRect[i][(j + 3) % 4] && rectCrossQuad[j][i] != rectCrossQuad[j][(i + 1) % 4])
 						{
-							loadGeoPairEdgeEdgePlane(bOther, bPlane, faceVertexToEdge(block(bOther), otherPlaneID, (j + 3) % 4), faceVertexToEdge(block(bPlane), planeID, i));
+							loadGeoPairEdgeEdgePlane(bOther, bPlane, block(bOther)->faceVertexToEdge(otherPlaneID, (j + 3) % 4), block(bPlane)->faceVertexToEdge(planeID, i));
 							foundCounter++;
 						}
 					}

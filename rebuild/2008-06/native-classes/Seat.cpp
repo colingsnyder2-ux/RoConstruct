@@ -28,9 +28,9 @@ namespace RBX
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
 
-	// 0063d390 (459 bytes, ret 4): byte-identical (relocs masked). Not credited: PartInstance's vtable binds
-	// Instance::setName (part-embedded PartInstance.h lacks the setName override 00598c20) and PVInstance::onChildRemoving
-	// to 00584fc0 (ModelInstance; the original slot holds the ICF body 00608a60). Proposals in batch 40 ct03.
+	// 0063d390 (459 bytes, ret 4): byte-identical (relocs masked). Not credited: part-embedded PartInstance.h now
+	// declares the setName override 00598c20 (batch 41), but its body is still unproven, and the shared reference
+	// bindings map PVInstance::onChildRemoving to 00584fc0 (ModelInstance; the original slot holds the ICF body 00608a60).
 	Seat::Seat()
 		: sleepTime(0.0)
 	{

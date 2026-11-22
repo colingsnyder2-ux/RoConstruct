@@ -103,9 +103,15 @@ namespace RBX
 		void writeVelocityData(XmlState*);
 		const PVInstance* getTopLevelPVParent() const;
 		PVInstance* getTopLevelPVParent();
+		// 005840a0 (out of line in the ModelInstance unit; called by computeIsTopFlag 006090c0): a dynamic_cast of
+		// the raw parent (+0x104), then getTypedRoot<PVInstance> 005836d0 compared with the raw parent reloaded (the
+		// 2007 openrbx shape). The right-hand side is a plain static_cast: getTypedParent's rbx_static_cast check
+		// (units built with _RELEASEASSERT) is not in 005840a0 / 00609690; this spelling keeps ModelInstance
+		// render3dAdorn 00584360 / shouldRender3dAdorn 00584310 exact (batch 41: the `== getParent()` Instance*
+		// compare flipped the 00584360 argument register ecx -> eax).
 		bool isTopLevelPVInstance() const
 		{
-			return !queryTypedParent<PVInstance>() || getTypedRoot<PVInstance>() == getTypedParent<PVInstance>();
+			return !queryTypedParent<PVInstance>() || getTypedRoot<PVInstance>() == static_cast<const PVInstance*>(getParent());
 		}
 		void setPVGridOffsetLegacy(const G3D::CoordinateFrame& _offset);
 		G3D::CoordinateFrame* getLegacyOffset()

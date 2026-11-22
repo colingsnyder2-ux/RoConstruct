@@ -95,5 +95,14 @@ namespace RBX
 		{
 			return &vertices[BLOCK_FACE_TO_VERTEX[normId][edge]];
 		}
+
+		// INFERRED: donor v8world/Block.h declares BLOCK_FACE_VERTEX_TO_EDGE[6][4] and the inline faceVertexToEdge;
+		// BlockBlockContact::intersectRectQuad 00608160 indexes the same 6x4 int table (binary address 0084af28,
+		// 00608521 / 0060852f: `[(face * 4 + vertex) * 4 + 0x84af28]`) with (face, vertex).
+		static const int BLOCK_FACE_VERTEX_TO_EDGE[6][4];   // INFERRED: donor Block.h, binary 0084af28
+		int faceVertexToEdge(NormalId normId, int edge)   // donor Block.h inline
+		{
+			return BLOCK_FACE_VERTEX_TO_EDGE[normId][edge];
+		}
 	};
 }
