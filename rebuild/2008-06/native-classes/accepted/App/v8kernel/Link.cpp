@@ -98,9 +98,10 @@ void Link::dirty()
 }
 #endif
 
-// 00613d60: draft against the donor v8kernel/Body.h. The 2008 body calls Body::updatePV 00599360 on the parent
-// (+0x14) and then reads parent stateIndex +0x90 (native-headers/v8kernel/Body2008.h layout); childInParent +0x98,
-// stateIndex +0xc8. Not exact here (no candidate under the donor Body layout).
+// 00613d60: DUPLICATE (batch 39). The 2008 body calls Body::updatePV 00599360 on the parent (+0x14) and then reads
+// parent stateIndex +0x90 (native-headers/v8kernel/Body2008.h layout); it is now exact in
+// native-classes/Leaves2008RevoluteLink.cpp against Body2008.h getStateIndex. This donor-Body copy had no candidate.
+#if defined(LINK_DUPLICATE_BODIES_ENABLED)
 const G3D::CoordinateFrame& Link::getChildInParent() const
 {
 	int bodyStateIndex = body->getParent()->getStateIndex();
@@ -112,6 +113,7 @@ const G3D::CoordinateFrame& Link::getChildInParent() const
 	}
 	return childInParent;
 }
+#endif
 
 #if defined(LINK_DUPLICATE_BODIES_ENABLED)
 // 00613cc0

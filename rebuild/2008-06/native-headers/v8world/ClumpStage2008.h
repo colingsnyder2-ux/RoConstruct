@@ -42,5 +42,8 @@ namespace RBX
 		// 0064cae0 (registry placeholder func_0064cae0; thiscall, `ret 4`, ebx = this): JointStage::onPrimitiveAdded
 		// 006685e2 calls it with ecx = downstream (+0x8) and the primitive pushed. Body not recovered here.
 		void onPrimitiveAdded(Primitive* p);         // 0064cae0
+		// 0064cbf0 (registry placeholder func_0064cbf0; thiscall, `ret 4`, edi = this, ebx = the pushed primitive):
+		// JointStage::onPrimitiveRemoving 00668850 calls it with ecx = downstream (+0x8). Body in ClumpStage2008.cpp.
+		void onPrimitiveRemoving(Primitive* p);      // 0064cbf0
 	};
 }

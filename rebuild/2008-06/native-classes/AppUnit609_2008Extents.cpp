@@ -173,6 +173,9 @@ namespace RBX
 	// getCorner division); a named `world = pointToWorldSpace(getCorner(i))` temporary (same diff).
 	// Rejected (dm08, batch 23): `myFrame.rotation * getCorner(i) + myFrame.translation` (641 bytes: Matrix3::operator*
 	// 00476580 is then called out of line instead of inlined).
+	// Rejected (batch 39): the openrbx statement shape `for (...; ++i)` with `const G3D::Vector3 inOther` (same diff);
+	// the exact sibling toWorldSpace 0060fc20 shape with named `corner`, `world` and `inOther` temporaries together
+	// (same diff). Parked: x87 scheduling plateau (research/log.jsonl 2026-10-28), not a source-order difference.
 	Extents Extents::express(const G3D::CoordinateFrame& myFrame, const G3D::CoordinateFrame& expressInFrame)
 	{
 		G3D::Vector3 minC(Math::inf(), Math::inf(), Math::inf());
