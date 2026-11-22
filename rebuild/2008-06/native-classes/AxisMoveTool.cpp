@@ -97,13 +97,20 @@ void AxisMoveTool::render2d(Adorn* adorn) {
 		DrawAdorn::handles2d(size, frame, workspace->getGCamera(), adorn, G3D::Color3::orange());
 	}
 }
+// 00641040 ?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z (283 B), near miss (287 B). The target frame is 0x90 with
+// the GCamera::getCoordinateFrame 005107b0 result at esp+0x64, not packed over the Extents (esp+4); the inline
+// temporary form (openrbx 2007 STUB shape) packs it over the Extents (277 B, frame 0x78). This named-local form
+// gives the target frame and instruction stream except the last argument: the target pushes the returned pointer
+// plus 0x24 ('add eax, 0x24'), this pushes the local's address. Rejected (batch 40): const CoordinateFrame& binding
+// (same 287 B), const Vector3& bound to .translation (314 B, frame 0x84). The inactive lifetime trial
+// (tests/NativeAxisRenderTrial.cpp) is exact only with a non-Extents box struct (float high[3]) reinterpreted.
 void AxisMoveTool::render3dAdorn(Adorn* adorn) {
 	Extents box;
 	if (bounds(box)) {
 		G3D::CoordinateFrame frame(box.center());
 		G3D::Vector3 size = box.size();
-		DrawAdorn::handles3d(size, frame, adorn, HANDLE_MOVE,
-			workspace->getGCamera().getCoordinateFrame().translation);
+		G3D::CoordinateFrame cameraFrame = workspace->getGCamera().getCoordinateFrame();
+		DrawAdorn::handles3d(size, frame, adorn, HANDLE_MOVE, cameraFrame.translation);
 	}
 }
 

@@ -4,7 +4,7 @@
 //   toGrid 0060fea0, intersectingWorldOrOthers 00610130, movePrimitivesDelta 00610270, searchUpFine 00610310,
 //   searchDownFine 006103a0, searchUpGross 00610440, searchDownGross 006104e0, safeMoveYDrop 00610830,
 //   safeMoveNoDrop 00610930.
-// Out-of-unit-recovered rows called here: movePrimitives 0060fef0 and computeExtents(Array) 00610070 (bound by the
+// movePrimitives 0060fef0 (calls DragUtilities::moveAndClean 0060e840, DragUtilitiesMoveAndClean.cpp) and computeExtents(Array) 00610070 (bound by the
 // recorder at the original call sites). Step constants from .rdata: 0.1f 0081e704, -0.1f 00843764, 1.2f 00827278,
 // -1.2f 00830b6c; the world floor -0.01f 00843760 and the overlap 0.01f 0082748c (intersectingWorldOrOthers).
 // The 2008 search functions are not in the donor: their shapes are read from the bytes (one step, then repeat while
@@ -16,12 +16,30 @@
 #include "v8world/ContactManager.h"
 #include "util/Math.h"
 #include "v8world/Primitive.h"
+#include "v8datamodel/PartInstance.h"
+#include "tool/DragUtilities.h"
 
 namespace RBX
 {
 	G3D::Vector3 Dragger::toGrid(const G3D::Vector3& v)
 	{
 		return Math::toGrid(v, dragSnap());
+	}
+
+	// 0060fef0 (?movePrimitives@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@@Z): skip a zero
+	// delta (Vector3::zero 0096f044 inline, three fcomp), then per primitive PartInstance::fromPrimitive 00599f80 and
+	// DragUtilities::moveAndClean 0060e840. The inactive lifetime trial recorded the same body exact as applyMove.
+	void Dragger::movePrimitives(const G3D::Array<Primitive*>& primitives, const G3D::Vector3& delta)
+	{
+		if (delta != G3D::Vector3::zero())
+		{
+			for (int i = 0; i < primitives.size(); ++i)
+			{
+				Primitive* primitive = primitives[i];
+				PartInstance* part = PartInstance::fromPrimitive(primitive);
+				DragUtilities::moveAndClean(part, delta);
+			}
+		}
 	}
 
 	// 00610070 (?computeExtents@Dragger@RBX@@SA?AVExtents@2@ABV?$Array@PAVPrimitive@RBX@@@G3D@@@Z, inside this unit's
