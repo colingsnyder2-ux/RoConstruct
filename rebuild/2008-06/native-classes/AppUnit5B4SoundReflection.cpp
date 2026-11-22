@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/openrbx/Client/fmod/api/inc
 // 2008-06 native rows of the util/Sound.cpp unit inside the application range 005b4000..005bc000 (inactive).
 // Verified by tests/record_native_app_unit5b4.py. All headers are read-only here: util/Sound.h (SoundChannel,
 // SoundService, StockSound, SoundServiceStatsItem, the SoundType / ReverbType enums), reflection/*.h, v8datamodel/Stats.h.
