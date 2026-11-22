@@ -87,6 +87,10 @@ namespace RBX
 	// onAssemblyRemoving 0064b0a0 from matching. Rejected: getState as if / return instead of the ternary (unchanged),
 	// inOrDownstreamOfStage spelled `stage->getStageType() <= currentStage->getStageType()` in a shadow
 	// v8kernel/IPipelined2008.h trial (unchanged: still this first, only the jump sense flips).
+	// Batch 37 (header owner) rejected, all three bodies 325 / 263 / 543 B unchanged: inOrDownstreamOfStage /
+	// downstreamOfStage defined out of class as `inline` after IPipelined (openrbx v8world/IPipelined.h shape), and the
+	// three inlines non-const. The target order is context-dependent (cs first here and in the exact 0064a740 / 0064b890,
+	// this first in 0064b0a0 / 0064c470 and this body's REMOVED test), so a fixed order inside the inline cannot fit all.
 	void SleepStage::changeAssemblyState(Assembly* a, Sim::AssemblyState newState)
 	{
 		Sim::AssemblyState oldState = getState(a);

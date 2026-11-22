@@ -76,6 +76,10 @@ namespace RBX
 	// here grid is ebp and the bit goes through dl/cl). Rejected: `childMask & (1 << child)` inline (731 B), the
 	// coarser grid as `Vector3int32(x >> 1, y >> 1, z >> 1)` (699 B, worse shift order), reading childMask into a local
 	// first (no change). Kept: getHash written x, y, z (donor order) halves the diff against the z, y, x spelling.
+	// Batch 37 rejected: getHash as the rbxgs donor two-statement form (`int result = ...; result &= mask;`, unchanged
+	// 698 B), `childMask & (unsigned char)(1 << child)` inline in both uses (732 B), the openrbx insertNodeToPrimitive
+	// helper inlined for the node stores (unchanged 698 B). The hash itself already matches (z, y, x products, same
+	// xor association); the residue is the this / grid / node register permutation (target ebx / edi / ebp).
 	void SpatialHash::addNode(int level, Primitive* p, const Vector3int32& grid)
 	{
 		int hash = getHash(level, grid);
