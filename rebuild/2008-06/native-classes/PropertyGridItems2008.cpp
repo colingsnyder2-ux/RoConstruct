@@ -111,6 +111,8 @@ void Vector3ComponentItem::writeValue(RBX::Instance* instance, const G3D::Vector
 // iterator read once, every load, check and call matches in order; the remaining difference is register
 // assignment only: the original spills this ([esp + 0x10], reloaded for m_pConstraints +0xc4 every pass and for
 // the return value) and holds _invalid_parameter_noinfo in ebp; this unit keeps this in ebp.
+// Batch 39 rejected (all 305 B, same register assignment): postfix it++; the loop in a file-local helper
+// (static inline: not inlined, 107 B; __forceinline: 305 B); separate iter/end locals with a while loop.
 EnumItem::EnumItem(const RBX::Reflection::EnumPropertyDescriptor* property, CPropGrid* grid)
     : EnumItemBase(property, grid)
 {

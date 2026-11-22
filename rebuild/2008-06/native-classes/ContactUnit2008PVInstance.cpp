@@ -63,31 +63,36 @@ namespace RBX
 		}
 	}
 
-	// 00609690: NOT exact (571 B against 573 B, batch 24). The original inlines the top-level test as a dynamic_cast of
-	// the parent plus an out-of-line getTypedRoot<PVInstance> 005836d0 compared with the raw parent +0x104, and reads
-	// TopPVController +0x170 of the raw parent (no rbx_static_cast check), so the test is written out here (the
-	// out-of-line isTopLevelPVInstance() of computeIsTopFlag 006090c0 gave 511 B). Remaining diff: the RCP copy is in
-	// ebx / edi swapped, and the original inlines the return copy constructor (`mov [ret], 0; push edi; call
-	// 00598fa0`) where this build passes &controller. Rejected: getTypedParent<PVInstance>() in the test and the
-	// TopPVController read (653 B: rbx_static_cast emits its dynamic_cast check twice), `return controller.pointer()`
-	// (567 B, esi / edi swapped from insn 11). Parked after three hypotheses. Kept because it emits the exact
-	// ComputeProp<RCP<Controller>>::operator RCP 00608e70 (TopPVController read). ControllerService::getController
-	// 005cbd10, ServiceProvider::create<ControllerService> 005a3330.
+	// 00609690 (573 B, exact batch 39): the 2007 openrbx statement shape (FUNCTION ROBLOX 0x005f8170): an inline
+	// top-level test (dynamic_cast parent 006a17c6, out-of-line getTypedRoot<PVInstance> 005836d0 compared with the raw
+	// parent +0x104), copy of the ComputeProp<RCP<Controller>>::operator RCP 00608e70 temporary, and the return built
+	// from getPointer() (inline RCP(T*) ctor around setPointer 00598fa0). ControllerService::getController 005cbd10,
+	// ServiceProvider::create<ControllerService> 005a3330. Earlier near misses (571 B / 567 B / 653 B, batch 24) wrote
+	// the test out in the function body or through getTypedParent.
+	// INFERRED: file-local copy of the 2007 openrbx inline PVInstance::isTopLevelPVInstance shape
+	// (dynamic_cast of the raw parent == NULL || getTypedRoot<PVInstance>() == raw parent); the shared native
+	// PVInstance.h spells it through getTypedParent (rbx_static_cast check), which 00609690 does not emit.
+	static inline bool isTopLevelPVInstanceRaw(const PVInstance* pv)
+	{
+		return dynamic_cast<const PVInstance*>(pv->getParent()) == NULL || pv->getTypedRoot<PVInstance>() == pv->getParent();
+	}
+
 	G3D::ReferenceCountedPointer<Controller> PVInstance::computeTopPVController() const
 	{
-		if (queryTypedParent<PVInstance>() && getTypedRoot<PVInstance>() != getParent())
+		if (!isTopLevelPVInstanceRaw(this))
 		{
-			G3D::ReferenceCountedPointer<RBX::Controller> controller = static_cast<const PVInstance*>(getParent())->TopPVController;
+			G3D::ReferenceCountedPointer<Controller> parentController =
+				static_cast<const PVInstance*>(getParent())->TopPVController;
 
-			if (controller.notNull())
+			if (parentController.notNull() && parentController->getControllerType() != Controller::NO_CONTROLLER)
 			{
-				if (controller->getControllerType() != Controller::NO_CONTROLLER && !controller->isUserController())
-					return controller;
+				if (!parentController->isUserController())
+					return parentController.getPointer();
 			}
 		}
 
-		ControllerService* controllerService = ServiceProvider::create<ControllerService>(this);
-		return controllerService ? controllerService->getController(controllerType, this) : NULL;
+		ControllerService* service = ServiceProvider::create<ControllerService>(this);
+		return service ? service->getController(getControllerType(), this) : G3D::ReferenceCountedPointer<Controller>();
 	}
 
 	// 00609a00
