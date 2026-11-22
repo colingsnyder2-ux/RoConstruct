@@ -52,6 +52,14 @@
 
 struct NativeAppUnit67CLayout;
 
+namespace RBX
+{
+	namespace RenderNew
+	{
+		class RenderScene;   // RenderLib/RenderSceneNew2008.h
+	}
+}
+
 namespace Ogre
 {
 	class RbxSubEntity : public SubEntity, public ShadowCaster
@@ -59,6 +67,9 @@ namespace Ogre
 		friend struct ::NativeAppUnit67CLayout;
 		friend class RbxEntity;   // func_0067daf0 reads mTransform (+0xf0)
 		friend class RbxSceneManager;   // renderSingleObject 0069bc50 copies mTransform (+0xf0)
+		// RenderScene::render 007ab0a0 writes mCastShadows (+0x13c, 007ac5b1 / 007ac61c / 007ac630), mShadowSubMesh
+		// (+0x140 = Mesh +0x80, 007ac600) and mTransform (+0xf0, rep movsd of a Matrix4 at 007aca5f).
+		friend class RBX::RenderNew::RenderScene;
 
 	public:
 		class RbxSubEntityShadowRenderable : public ShadowRenderable

@@ -43,6 +43,14 @@ struct NativeRenderMaterialLayout;
 
 namespace RBX
 {
+	namespace RenderNew
+	{
+		class RenderScene;   // RenderLib/RenderSceneNew2008.h
+	}
+}
+
+namespace RBX
+{
 	namespace RenderBase
 	{
 		class __declspec(novtable) MaterialBase : public G3D::ReferenceCountedObject
@@ -189,6 +197,9 @@ namespace RBX
 			{
 				friend class Material;
 				friend struct ::NativeRenderMaterialLayout;
+				// RenderScene::render 007ab0a0 reads and assigns ogreMaterial (+0x2c, MaterialPtr pRep +0x30 at 007abbad /
+				// 007abc3c / 007abe45 / 007ac483 / 007ac9ab) after dynamic_cast of getLevel(i) to this class (RTTI 0096be2c).
+				friend class RenderScene;
 
 			private:
 				bool emptyLevel;                                                         // +0x04

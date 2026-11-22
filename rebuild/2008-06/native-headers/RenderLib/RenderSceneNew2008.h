@@ -74,6 +74,11 @@ namespace RBX
 			{
 				return _stencilShadows;
 			}
+			// Donor Render::EffectSettings getter; render 007ab2cc passes +0x2 to updateLights 007a9d30.
+			bool useAllLightsInUnshadowedPass() const
+			{
+				return _useAllLightsInUnshadowedPass;
+			}
 			// Direct calls in update 007afce0 target local static initializer 007afc60.
 			static G3D::ToneMap* getToneMap();
 			G3D::ReferenceCountedPointer<G3D::Lighting> update(float, float, bool, float,
@@ -128,16 +133,12 @@ namespace RBX
 			                            G3D::Color3 ambientTop, G3D::Color3 ambientBottom);   // 007aacc0
 			void setLighting(const G3D::ReferenceCountedPointer<G3D::Lighting>& L);    // 007aa8b0
 			virtual void setThrottle(float t, float m, bool s, float c);              // 007aa770
-			// 007ab0a0 (not built). Declarations it uses that now exist: ViewNew/RenderBaseMesh.h Mesh::Level::makeHWSubMesh
-			// 00549610 / makeSWSubMesh 00549a50 (007aba67 / 007ab9c7), Mesh::makeShadowSubMesh 0054a920 (007ab7fd),
-			// detailLevel 00548f80, updateGeometry 005493e0, getVertex / getNormal 007a9c90 / 007a9ce0 and friend access to
-			// levels / +0x80 / +0x84 / sharedMesh; RenderLib/Material2008.h MaterialBase::Level slots 2 / 6..10 and the
-			// dynamic_cast targets RenderNew::Material::Level (RTTI 0096be2c) / RenderNew::TextureProxy (00942f14).
-			// Still missing (owners: RenderLib/Material2008.h, RenderLib/TextureProxy2008.h, AppUnit67C_2008/
-			// RbxSubEntity2008.h, OgreRbx/VisualEngine2008.h): access to RenderNew::Material::Level::ogreMaterial +0x2c and
-			// RenderNew::TextureProxy::ogreTexture +0x54 (private / protected, no friend), RbxSubEntity +0x13c / +0x140 /
-			// +0xf0 writes (007ac5b1 / 007ac600 / 007aca5f; friends are RbxEntity / RbxSceneManager only), and the body of
-			// 00549a50 (engine accessor 0054acf0 on VisualEngine +0x7f4, while the parameter is GeometryBuilder*).
+			// 007ab0a0 (body: RenderSceneNew2008.cpp, near miss). Friend access it needs: RenderLib/Material2008.h
+			// RenderNew::Material::Level::ogreMaterial +0x2c, RenderLib/TextureProxy2008.h RenderNew::TextureProxy::ogreTexture
+			// +0x54, AppUnit67C_2008/RbxSubEntity2008.h RbxSubEntity +0xf0 / +0x13c / +0x140, ViewNew/RenderBaseMesh.h Mesh
+			// levels / +0x80 / +0x84 / sharedMesh / varDirty. Still reached by fixed offsets in the unit (headers not owned
+			// here, proposals filed): RbxEntity +0x279 / +0x27c / +0x29c / +0x2a0, RbxSubMesh::bounds +0xcc and
+			// RenderSceneBase::chunkArray +0x8.
 			virtual void render(G3D::RenderDevice* rd, const G3D::GCamera& camera);
 		private:
 			// 007a9d30 (thiscall, ret 8; render 007ab2de passes the VisualEngine and EffectSettings +0x2 by value).
