@@ -1,0 +1,32 @@
+#pragma once
+#include <OgreMesh.h>
+#include <OgreVector3.h>
+#include <boost/thread/recursive_mutex.hpp>
+#include <boost/thread/once.hpp>
+#include <map>
+namespace Ogre {
+// INFERRED: receiver/method names and pointer signatures from 0067bcc0 analog; target preserves this for update call.
+class RbxSubMesh;
+class GeometryBuilder {
+public:
+    VertexData* createVertexData(const float*, unsigned, const float*, const float*, const float*);
+    RbxSubMesh* createIndexed(const float*, unsigned, const float*, const float*, const float*, const unsigned short*, const unsigned*, unsigned, Vector3*, Vector3*);
+    // 0067c020 (thiscall, ret 0x10; this is not read): a new SubMesh on the mesh with a static 16- or 32-bit index
+    // buffer (useSharedVertices). Caller Mesh::Level::makeHWSubMesh 00549610 (ecx = engine, call through
+    // (&sharedMesh, NULL, indices, count / 3)). Body: native-classes/OgreGeometryIndices2008.cpp.
+    SubMesh* createIndices(const MeshPtr&, const unsigned short*, const unsigned*, unsigned);
+    void update(MeshPtr&, const float*, unsigned, const float*, const float*, const float*, const Vector3*, const Vector3*);
+    MeshPtr create(const char*, const char*, const float*, unsigned, const float*, const float*, const float*, const Vector3*, const Vector3*);
+};
+// INFERRED: context member names; 0067c130 accesses SubMesh->String map at +0, counter +0x20; 0067bcc0 locks +0x24.
+struct GeometryContext {
+    GeometryContext() { counter = 0; } // original 0054abe0
+    std::map<RbxSubMesh*, String> names;
+    int counter;
+    boost::recursive_mutex mutex;
+};
+// INFERRED: context/once/initializer names; original 0097db44, 00973984, 0054ab60 respectively.
+extern GeometryContext* geometryContext;
+extern boost::once_flag geometryOnce;
+void initializeGeometryContext();
+}
