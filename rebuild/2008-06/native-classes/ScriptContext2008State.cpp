@@ -12,8 +12,49 @@
 #include "boost/bind.hpp"
 #include "script/LuaMemory.h"
 #include <algorithm>
+#include "AppUnit4BC_2008/AssociationTimeStamp.h"
 
 using namespace RBX;
+
+namespace RBX
+{
+	// INFERRED: the per-type item index of Association<Associated>. openrbx util/Association.h has a private member
+	// template `index<U>()` holding `static const unsigned int i = count()++;`, shared by contains/remove/get of one U
+	// (005aae90, 005aaf20 and get 005acd70 all use guard 00976be4 / value 00976be0 and bump count() 00971a80). The
+	// read-only donor util/Association.h declares no index(), so this file-local helper keeps one static per U and
+	// returns it by const reference (the guard is re-tested at every use, as in the target).
+	template<typename Associated, typename U>
+	struct AssociationItemIndex
+	{
+		static const size_t& get(size_t& counter)
+		{
+			static const size_t index = counter++;
+			return index;
+		}
+	};
+
+	// 005aae90 (registry placeholder func_005aae90): Association<Instance>::contains<Lua::ThreadRef::NodePtr>, called by
+	// disassociateState 005ad000 on Script::assoc (+0xec). openrbx statement shape.
+	template<typename Associated>
+	template<typename U>
+	bool Association<Associated>::contains() const
+	{
+		return items.size() > AssociationItemIndex<Associated, U>::get(count()) && items[AssociationItemIndex<Associated, U>::get(count())] != NULL;
+	}
+
+	// 005aaf20 (registry placeholder func_005aaf20): Association<Instance>::remove<Lua::ThreadRef::NodePtr> (virtual
+	// scalar deleting destructor slot 0 with push 1, then the slot is cleared). openrbx statement shape.
+	template<typename Associated>
+	template<typename U>
+	void Association<Associated>::remove()
+	{
+		if (items.size() > AssociationItemIndex<Associated, U>::get(count()))
+		{
+			delete items[AssociationItemIndex<Associated, U>::get(count())];
+			items[AssociationItemIndex<Associated, U>::get(count())] = NULL;
+		}
+	}
+}
 
 // disassociateState (inlined into removeScript 005ad030: ThreadRef node association at Script +0xec)
 void ScriptContext::disassociateState(Script* script)

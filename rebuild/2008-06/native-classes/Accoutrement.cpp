@@ -239,6 +239,24 @@ namespace RBX
 			handleTouched.disconnect();
 	}
 
+	// 005b1620 (registry placeholder func_005b1620; the handleTouched bind target of connectTouchEvent 005b1d70, vtable
+	// slot reference at 005b1da2). openrbx Accoutrement::onEvent_HandleTouched: IN_WORKSPACE (+0x154 == 2), the touching
+	// part's parent (+0x104) through Humanoid::modelIsCharacter 005d9a20 and getTorso 005d8b10, no Accoutrement child
+	// yet (findFirstChildOfType<Accoutrement> 005b1520) -> setParent 0055a8f0.
+	void Accoutrement::onEvent_HandleTouched(boost::shared_ptr<Instance> other)
+	{
+		if (backendAccoutrementState == IN_WORKSPACE)
+		{
+			Instance* character = other->getParent();
+
+			if (Humanoid* humanoid = Humanoid::modelIsCharacter(character))
+			{
+				if (humanoid->getTorso() && !character->findFirstChildOfType<Accoutrement>())
+					setParent(character);
+			}
+		}
+	}
+
 	// 005b1110 (openrbx 0x005baec0): updateDesiredState 005b10a0 unless the child is this; the by-value child
 	// shared_ptr is released on return.
 	void Accoutrement::onEvent_AddedBackend(boost::shared_ptr<Instance> child)
