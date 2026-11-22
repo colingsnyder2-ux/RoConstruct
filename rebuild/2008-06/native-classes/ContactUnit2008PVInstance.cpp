@@ -41,7 +41,8 @@ namespace RBX
 	}
 #pragma warning (pop)
 
-	// 006090c0: isTopLevelPVInstance 005840a0 out of line, the parent's getTopPVController 0059a9e0.
+	// 006090c0: isTopLevelPVInstance 005840a0 out of line, the raw parent (+0x104, no getTypedParent assert call) passed
+	// to getTopPVController 0059a9e0.
 	bool PVInstance::computeIsTopFlag() const
 	{
 		if (!IsControllable.getValue() || controllerType == Controller::NO_CONTROLLER)
@@ -50,7 +51,7 @@ namespace RBX
 		if (isTopLevelPVInstance())
 			return true;
 
-		return getTypedParent<PVInstance>()->getTopPVController()->getControllerType() == Controller::NO_CONTROLLER;
+		return static_cast<const PVInstance*>(getParent())->getTopPVController()->getControllerType() == Controller::NO_CONTROLLER;
 	}
 
 	// 00609150: new CoordinateFrame (0x30, ctor 004782d0) only while no legacy offset is stored; no RBXASSERT.
@@ -69,17 +70,9 @@ namespace RBX
 	// from getPointer() (inline RCP(T*) ctor around setPointer 00598fa0). ControllerService::getController 005cbd10,
 	// ServiceProvider::create<ControllerService> 005a3330. Earlier near misses (571 B / 567 B / 653 B, batch 24) wrote
 	// the test out in the function body or through getTypedParent.
-	// INFERRED: file-local copy of the 2007 openrbx inline PVInstance::isTopLevelPVInstance shape
-	// (dynamic_cast of the raw parent == NULL || getTypedRoot<PVInstance>() == raw parent); the shared native
-	// PVInstance.h spells it through getTypedParent (rbx_static_cast check), which 00609690 does not emit.
-	static inline bool isTopLevelPVInstanceRaw(const PVInstance* pv)
-	{
-		return dynamic_cast<const PVInstance*>(pv->getParent()) == NULL || pv->getTypedRoot<PVInstance>() == pv->getParent();
-	}
-
 	G3D::ReferenceCountedPointer<Controller> PVInstance::computeTopPVController() const
 	{
-		if (!isTopLevelPVInstanceRaw(this))
+		if (!isTopLevelPVInstance())
 		{
 			G3D::ReferenceCountedPointer<Controller> parentController =
 				static_cast<const PVInstance*>(getParent())->TopPVController;
