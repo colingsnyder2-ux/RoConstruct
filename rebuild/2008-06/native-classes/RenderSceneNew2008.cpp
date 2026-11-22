@@ -1,13 +1,13 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // 2008-06 native RBX::RenderNew::RenderScene (the Ogre render scene; inactive). Its own optimized unit (document-swap
 // flags, /O2, /fp:fast, Ogre 1.4.5 client headers), 007aa770 .. 007ab0a0: setThrottle 007aa770, setLighting 007aa8b0,
 // presetLighting 007aacc0, ??_G 007aae20 and the ctor 007aae40 (all exact). The dtor 007aaa30 (deletes the Ogre::RbxSceneNode /
 // RbxEntity forks) and render 007ab0a0 are not built. Declarations: RenderLib/RenderSceneNew2008.h.
 // render 007ab0a0 (7199 B, ?render@RenderScene@RenderNew@RBX@@UAEXPAVRenderDevice@G3D@@ABVGCamera@5@@Z) is parked: its only
 // shape source is the openrbx STUB tools/openrbx/Client/Rendering/RenderLibNew/RenderScene.cpp RenderScene::render (2007
-// client 0052df80, unnamed m_unk fields) plus the light helper it calls; it needs native declarations for Ogre::VisualEngine,
-// RbxEntity / RbxSubEntity / RbxSceneNode helper methods (0067c520, 0067d9b0), the RenderNew Mesh / Material level fields
-// and the hardware-mesh statics (00548f80, 005493e0, 007a9c40), none of which exist in native-headers yet.
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+// client 0052df80, unnamed m_unk fields) plus the light helper it calls (007a9d30, parked). Its remaining blockers (batch 37)
+// are listed at the render declaration in RenderLib/RenderSceneNew2008.h: the Mesh / GeometryBuilder declarations now exist,
+// the RenderNew Material level / TextureProxy Ogre members and the RbxSubEntity fields it writes are not accessible yet.
 #define NOMINMAX
 #include "RenderLib/RenderSceneNew2008.h"
 #include "OgreRbxNode/RbxSceneNode2008.h"

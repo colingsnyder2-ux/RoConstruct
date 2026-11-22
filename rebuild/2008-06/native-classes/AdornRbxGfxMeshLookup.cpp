@@ -3,12 +3,9 @@
 // Same original unit as AdornRbxGfx.cpp (image block 0066f900..006743eb). Declarations: RbxGraphics/AdornRbxGfx2008.h.
 #include "RbxGraphics/AdornRbxGfx2008.h"
 
-// Pending header declaration (proposal for the RbxGraphics/AdornRbxGfx2008.h owner): the private section needs
-//     Ogre::MeshPtr getMesh(std::string name);                                                  // 006712e0
-// Measured against a scratch copy of the header carrying that one line: 006712e0 (195 B) and its
-// __ehhandler 007dc8e3 compile byte-identical and prove exact (find 006710e0 binds through it). Define
-// ADORNRBXGFX_HEADER_DECLARES_GETMESH once the header declares it.
-#ifdef ADORNRBXGFX_HEADER_DECLARES_GETMESH
+// Declaration: RbxGraphics/AdornRbxGfx2008.h (private, after releaseSubEntities; added in batch 37, so the former
+// ADORNRBXGFX_HEADER_DECLARES_GETMESH guard is gone). Measured in batch 35 against a scratch header: 006712e0 and its
+// __ehhandler 007dc8e3 compile byte-identical.
 namespace RBX
 {
     // 006712e0 (thiscall, ret 0x20 = hidden MeshPtr return + std::string by value): called by box 00671fd0,
@@ -28,4 +25,3 @@ namespace RBX
         return Ogre::MeshPtr();
     }
 }
-#endif

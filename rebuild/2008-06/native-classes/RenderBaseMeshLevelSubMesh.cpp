@@ -12,18 +12,17 @@
 //   * on success vertexStart = sharedMesh->getNumSubMeshes() - 1 and dirty = false.
 //   * bounds: two float[3] (1e9f 0082d030 / -1e9f 0082d02c) over visibleGeometry.vertexArray (009738f0) through
 //     indexArray, then AxisAlignedBox::setExtents.
-// Measured IDENTICAL (1083 B, relocs masked) with the body below when Ogre::GeometryBuilder declares
+// Measured IDENTICAL (1083 B, relocs masked) in batch 36 against a scratch header; batch 37 adds the member
 //   SubMesh* createIndices(const MeshPtr&, const unsigned short*, const unsigned*, unsigned); // 0067c020
-// BLOCKED (pending guard): OgreRbx/GeometryCreate2008.h (not owned by this batch) has no such member; the existing
-// 0067c020 body is a free __stdcall Ogre::createIndices (OgreGeometryIndices2008.cpp), whose callee bytes are the
-// same (ecx unused) but whose symbol is not the one this caller references. Header proposal in the batch result.
+// to Ogre::GeometryBuilder (OgreRbx/GeometryCreate2008.h) and turns the 0067c020 body into that member, so the
+// former NATIVE_GEOMETRY_CREATEINDICES_MEMBER_PENDING guard is gone.
+// RBX::RenderBase::Mesh shadow sub-mesh 0054a920 (148 B, /Od, thiscall ret 4): see the comment at its body.
 #include "ViewNew/RenderBaseMesh.h"
 #include "OgreRbx/GeometryCreate2008.h"
 #include <OgreAxisAlignedBox.h>
 #include <OgreLogManager.h>
 #include <vector>
 
-#ifdef NATIVE_GEOMETRY_CREATEINDICES_MEMBER_PENDING
 namespace RBX
 {
 	namespace RenderBase
@@ -77,6 +76,29 @@ namespace RBX
 			else
 				Ogre::LogManager::getSingleton().logMessage("RBX makeHWSubMesh: should not be here");
 		}
+
+		// 0054a920 (/Od, thiscall ret 4). Only caller RenderScene::render 007ab0a0 (call 007ab7fd, taken when the stencil
+		// shadow setting is on and Mesh +0x80 is NULL). When both shadow vectors are non-empty (size() tests 004dc410 on
+		// +0x68 and 004dc3f0 on +0x50) it builds the owned sub-mesh +0x80 through engine 0067c130
+		// (GeometryBuilder::createIndexed, ret 0x28): vertices &shadowVertices[0][0] (0054c120, 0043d880), count
+		// shadowVertices.size(), no normals / colours / texture coordinates, 16-bit indices &shadowIndices[0]
+		// (00515ea0), no 32-bit indices, shadowIndices.size() / 3 triangles, and two local bounds (minimum ebp-0xc,
+		// maximum ebp-0x18) that are not used afterwards. The 2007 analog is openrbx RenderLibNew Mesh::FUN_005324e0.
+		// INFERRED: the method name (registry placeholder func_0054a920). INFERRED: the bounds are float[3] like
+		// makeHWSubMesh's: the /Od target constructs nothing for them and the exe imports no Ogre::Vector3 default
+		// constructor (an Ogre::Vector3 local calls the import twice; forceinline on OgreVector3.h does not remove it
+		// at /Ob0); the casts only adapt them to the INFERRED Vector3* parameters of createIndexed.
+		// Batch 37: byte-identical to 0054a920 (148 B, relocs masked); uncredited while the registry name is a placeholder.
+		void Mesh::makeShadowSubMesh(Ogre::GeometryBuilder* engine)
+		{
+			if (shadowVertices.size() && shadowIndices.size())
+			{
+				float maximum[3];
+				float minimum[3];
+				subMesh = engine->createIndexed(&shadowVertices[0][0], shadowVertices.size(), NULL, NULL, NULL,
+				                                &shadowIndices[0], NULL, shadowIndices.size() / 3,
+				                                reinterpret_cast<Ogre::Vector3*>(minimum), reinterpret_cast<Ogre::Vector3*>(maximum));
+			}
+		}
 	}
 }
-#endif // NATIVE_GEOMETRY_CREATEINDICES_MEMBER_PENDING

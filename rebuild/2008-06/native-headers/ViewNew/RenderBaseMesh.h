@@ -39,12 +39,20 @@ namespace Ogre
 
 namespace RBX
 {
+	namespace RenderNew
+	{
+		class RenderScene;
+	}
 	namespace RenderBase
 	{
 		class Chunk;
 		class Mesh : public G3D::ReferenceCountedObject
 		{
 			friend struct ::NativeViewNewLayout;
+			// INFERRED (the 2007 analog, openrbx RenderLibNew Mesh.h, declares friend class RenderScene): RenderNew::
+			// RenderScene::render 007ab0a0 reads levels (+0xc size), subMesh +0x80 (007ab7ed / 007ac5fa), meshKind +0x84
+			// (007ab889 / 007abf45 / 007ac613) and the sharedMesh static 009738b8 directly.
+			friend class RenderNew::RenderScene;
 			typedef G3D::Array<int> VertexList;
 			static VertexList vertexRefCounts;
 			static VertexList freeList;
@@ -78,8 +86,16 @@ namespace RBX
 				void invalidate();                       // inferred name; 005486e0
 				// 00549610 (/Od, thiscall ret 8; name from its log string 0082cf70 "RBX makeHWSubMesh: should not be here"):
 				// builds the Level's hardware index sub-mesh on sharedMesh through engine 0067c020 and the index bounds.
-				// Body: native-classes/RenderBaseMeshLevelSubMesh.cpp (pending GeometryBuilder::createIndices).
+				// Body: native-classes/RenderBaseMeshLevelSubMesh.cpp (GeometryBuilder::createIndices: OgreRbx/GeometryCreate2008.h).
 				void makeHWSubMesh(Ogre::GeometryBuilder* engine, Ogre::AxisAlignedBox& bounds);
+				// 00549a50 (/Od, thiscall ret 8; only caller RenderScene::render 007ab9c7 with ecx = the detail Level and
+				// (engine, &AxisAlignedBox local), taken when VisualEngine +0x7f5 is false (007ab2ea)): the software
+				// counterpart of makeHWSubMesh. It names the sub-mesh with sprintf "m%d" from the counter 00973998, maps
+				// the Level's indices to a compact vertex list, packs positions / normals / texture coordinates, picks 16-
+				// or 32-bit indices from the engine accessor 0054acf0 (VisualEngine +0x7f4) and stores the result of
+				// engine 0067c130 (createIndexed, ret 0x28) in subMesh +0x24, then sets the bounds and clears dirty.
+				// 2007 analog: openrbx RenderLibNew Mesh::Level::FUN_00533160. INFERRED: the name. Body not built.
+				void makeSWSubMesh(Ogre::GeometryBuilder* engine, Ogre::AxisAlignedBox& bounds);
 				virtual ~Level();                        // 005489b0
 			};
 			typedef G3D::ReferenceCountedPointer<Level> LevelRef;
@@ -119,6 +135,10 @@ namespace RBX
 			}
 
 			static void updateGeometry(Ogre::GeometryBuilder*); // inferred name and receiver; 005493e0
+			// 0054a920 (/Od, thiscall ret 4; caller RenderScene::render 007ab7fd when Mesh +0x80 is NULL): builds the
+			// owned shadow sub-mesh +0x80 from shadowVertices / shadowIndices through engine 0067c130. 2007 analog:
+			// openrbx RenderLibNew Mesh::FUN_005324e0. INFERRED: the name. Body: RenderBaseMeshLevelSubMesh.cpp.
+			void makeShadowSubMesh(Ogre::GeometryBuilder* engine);
 			static void initStatics(); // 00547f60; donor declaration, original call 005485f5.
 
 			Mesh();                                                   // 00548570
