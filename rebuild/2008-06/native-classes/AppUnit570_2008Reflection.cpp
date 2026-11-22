@@ -6,11 +6,11 @@
 //   ClassDescriptor() 00570820 ("<<<ROOT>>>", base +0xbc = NULL), ClassDescriptor::`scalar deleting destructor'
 //   005708d0 (~ClassDescriptor 0040abc0), MemberDescriptor::isMemberOf(const ClassDescriptor&) 00570ba0 (owner +0xc,
 //   base +0xbc, inline rootDescriptor() static 0096c3a0) and isMemberOf(const DescribedBase*) 00570c40 (descriptor +8).
-// ClassDescriptor and DescribedBase are the donor reflection/object.h declarations (read-only); MemberDescriptor and
-// MemberDescriptorContainer are the native reflection/member.h ones (read-only).
+// ClassDescriptor and DescribedBase are the native reflection/object.h declarations (read-only; batch 41: the former
+// donor object.h include clashed with it, C2011); MemberDescriptor and MemberDescriptorContainer are the native
+// reflection/member.h ones (read-only).
 #include "reflection/reflection.h"
-
-#include "../../../tools/rbxgs/Client/App/include/reflection/object.h"
+#include "reflection/object.h"
 
 namespace RBX
 {
