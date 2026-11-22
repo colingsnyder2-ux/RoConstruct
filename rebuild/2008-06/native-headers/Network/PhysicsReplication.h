@@ -132,9 +132,11 @@ namespace RBX
 			//   q.normalize() 004c9d40; bitStream.WriteNormQuat(q.w, q.x, q.y, q.z) 004a5dd0; n = numMotors() 005e62d0;
 			//   bitStream << (unsigned char)n 004a6350; per motor getMotor(i) 005e6400 -> currentAngle +0x8c (0.0f
 			//   when NULL) -> Math::rotationToByte 005ded60 -> << }.
-			// Blocker: IdSerializer::trySerializeId 004a8cc0 (donor Streaming.h) is not declared in
-			// Network/IdSerializer.h (not this lease); the unit would also need v8world/AssemblyLayout.h with
-			// NATIVE_CLUMP_DECL and v8world/Joints2008.h (MotorJoint::getCurrentAngle).
+			// Body: native-classes/RoundRobinSendPhysicsData.cpp (own unit: it needs v8world/AssemblyLayout.h with
+			// NATIVE_CLUMP_DECL, v8world/Joints2008.h and IdSerializer::trySerializeId 004a8cc0, now declared). It stays
+			// behind ROUNDROBIN_SENDER_HEADERS_DECLARE_ISANCESTOROF until core v8tree/Instance.h declares
+			// Instance::isAncestorOf 004c9c50; Network/Replicator2008.h now has `friend class RoundRobinPhysicsSender;`
+			// for findTargetPlayer (slot 17). Measured byte-identical with both lines (batch 37 nw01).
 			void sendPhysicsData(RakNet::BitStream& bitStream, const Assembly* assembly);
 			// 004ca040 (thiscall, no arguments; registry placeholder): Replicator slot 17 findTargetPlayer, the player's
 			// character (+0x170), its primary part (slot 0 of the PrimaryPart holder at +0x134), then

@@ -91,6 +91,8 @@ namespace RBX
 	// downstreamOfStage defined out of class as `inline` after IPipelined (openrbx v8world/IPipelined.h shape), and the
 	// three inlines non-const. The target order is context-dependent (cs first here and in the exact 0064a740 / 0064b890,
 	// this first in 0064b0a0 / 0064c470 and this body's REMOVED test), so a fixed order inside the inline cannot fit all.
+	// Batch 38 rejected (header owner): a plain signed `enum StageType` in kernel-stages v8kernel/IStage.h with the
+	// cast-free openrbx compares in IPipelined2008.h: the object was unchanged (325 / 263 / 543 B, same diffs).
 	void SleepStage::changeAssemblyState(Assembly* a, Sim::AssemblyState newState)
 	{
 		Sim::AssemblyState oldState = getState(a);

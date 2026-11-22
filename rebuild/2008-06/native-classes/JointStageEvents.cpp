@@ -38,6 +38,8 @@ namespace RBX
 		// [esp + 0xc] spill, 006686c2..006686df), hence the 4-byte frame-slot shift. Batch 37 rejected: the body moved into
 		// JointStage2008.cpp with an inline edgeHasPrimitivesDownstream(it->second) condition (735 B, frame 0x50, EH state
 		// push order differs), and a file-local inline copy of the edgeHasPrimitivesDownstream body here (unchanged, 667 B).
+		// Batch 38: the signed-enum / cast-free compare form was byte-neutral in SleepStage2008.cpp; this unit uses the
+		// donor tools/rbxgs v8world/IPipelined.h compares (read-only), so it was not re-tried here.
 		// The tree's lower_bound is expanded inline here (006685ff..00668637), so the call bypasses the noinline
 		// JointMap::lower_bound wrapper of JointStage2008.h (that wrapper is removeFromMap's call 006682a1).
 		for (Iterator it = jointMap.JointMap::Base::lower_bound(p); it != jointMap.upper_bound(p); ++it)
