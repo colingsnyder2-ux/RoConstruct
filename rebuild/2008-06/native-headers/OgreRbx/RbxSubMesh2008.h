@@ -6,6 +6,14 @@
 #include <OgreSubMesh.h>
 #include <OgreAxisAlignedBox.h>
 
+namespace RBX
+{
+	namespace RenderNew
+	{
+		class RenderScene;   // RenderLib/RenderSceneNew2008.h
+	}
+}
+
 namespace Ogre
 {
 	class EdgeData;
@@ -15,6 +23,7 @@ namespace Ogre
 		friend class RbxSubEntity;
 		friend class GeometryBuilder; // createIndexed 0067c130 writes bounds/radius.
 		friend class RbxEntity;       // collect 0067e2f0 reads radius
+		friend class RBX::RenderNew::RenderScene; // render 007ab0a0 reads bounds +0xcc / +0xd8 (007ac7f6..007ac84f)
 
 		bool rbxFlag;                 // +0xc4
 		EdgeData* edgeData;           // +0xc8

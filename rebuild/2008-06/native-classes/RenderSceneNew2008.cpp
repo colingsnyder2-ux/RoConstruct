@@ -270,11 +270,9 @@ namespace RBX
 
 				if (entity)
 				{
-					// INFERRED access: RbxEntity::mBounds (+0x27c) is private in OgreRbx/RbxEntity2008.h (read-only
-					// here); the target reads it directly (lea ecx, [entity+0x27c]). Header proposal: a public
-					// const AxisAlignedBox& getBounds() const accessor.
-					const Ogre::AxisAlignedBox& box =
-						*reinterpret_cast<const Ogre::AxisAlignedBox*>(reinterpret_cast<const char*>(entity) + 0x27c);
+					// RbxEntity::mBounds (+0x27c), read directly (lea ecx, [entity+0x27c]); RenderScene is a friend of
+					// Ogre::RbxEntity (OgreRbx/RbxEntity2008.h).
+					const Ogre::AxisAlignedBox& box = entity->mBounds;
 					if (!box.isNull())
 					{
 						Ogre::Vector3 size = box.getSize();
@@ -381,37 +379,6 @@ namespace RBX
 
 namespace
 {
-	// INFERRED access (header proposals for OgreRbx/RbxEntity2008.h, OgreRbx/RbxSubMesh2008.h and RenderLib/
-	// RenderScene2008.h, not owned by this unit): render 007ab0a0 reads RbxEntity::mBounds +0x27c (007ab594 /
-	// 007ac658 / 007ac6f0), writes RbxEntity +0x279 / +0x29c / +0x2a0 (007acbfb / 007acc29 / 007acc35), reads
-	// RbxSubMesh::bounds +0xcc (007ac7f9) and RenderSceneBase::chunkArray +0x8 (007ab4dc), all private there.
-	// These helpers inline to the same direct member accesses.
-	inline Ogre::AxisAlignedBox& entityBounds(Ogre::RbxEntity* entity)
-	{
-		return *reinterpret_cast<Ogre::AxisAlignedBox*>(reinterpret_cast<char*>(entity) + 0x27c);
-	}
-	inline bool& entityCameraNotified(Ogre::RbxEntity* entity)
-	{
-		return *reinterpret_cast<bool*>(reinterpret_cast<char*>(entity) + 0x279);
-	}
-	inline Ogre::Real& entityLodBudget(Ogre::RbxEntity* entity)
-	{
-		return *reinterpret_cast<Ogre::Real*>(reinterpret_cast<char*>(entity) + 0x29c);
-	}
-	inline int& entityMinimumLod(Ogre::RbxEntity* entity)
-	{
-		return *reinterpret_cast<int*>(reinterpret_cast<char*>(entity) + 0x2a0);
-	}
-	inline const Ogre::AxisAlignedBox& subMeshBounds(const Ogre::RbxSubMesh* subMesh)
-	{
-		return *reinterpret_cast<const Ogre::AxisAlignedBox*>(reinterpret_cast<const char*>(subMesh) + 0xcc);
-	}
-	inline G3D::Array<G3D::ReferenceCountedPointer<RBX::RenderBase::Chunk> >& sceneChunks(RBX::RenderBase::RenderSceneBase* scene)
-	{
-		return *reinterpret_cast<G3D::Array<G3D::ReferenceCountedPointer<RBX::RenderBase::Chunk> >*>(
-			reinterpret_cast<char*>(scene) + 0x8);
-	}
-
 	// 0097f36c: the "m%d" (00874a68) Ogre material name counter (zero-initialised .bss). INFERRED name; the 2007
 	// analog is openrbx RenderLibNew/RenderScene.cpp g_unk0x00958700.
 	int materialCounter;
@@ -433,6 +400,14 @@ namespace RBX
 		// expression (7378 B). Remaining: register allocation (the target keeps engine in edi and this in ebp, the
 		// camera reference in no register), 0x14 bytes of locals, the software-path guard materialises a bool (sete),
 		// and the Sphere centre copies call the rgmain Vector3 copy constructor import (00804498) in the target.
+		// Batch 39: direct member access through the new friend / protected declarations (RbxEntity mBounds,
+		// mCameraNotified, mLodBudget, mMinimumLod; RbxSubMesh bounds; RenderSceneBase chunkArray) replaced the
+		// fixed-offset helpers (same object). Kept: the throw guard as a pointer-valued ternary (the software arm is a
+		// plain test/je, no sete): 7345 -> 7337 B. Rejected: two throw statements as in the 2007 analog (two throw
+		// sites, 7397 B; the target has one); the 2007 `getMinimum() + offset` operator+ mesh box (7351 B; the box
+		// constructor stays inlined). Remaining: the target calls the imported inline Vector3 copy constructor (Sphere
+		// centres) and AxisAlignedBox(min, max) (mesh box) where ours inlines them, `this` in ebp / InterlockedDecrement
+		// through memory in the target, and 0x14 bytes of locals.
 		void RenderScene::render(G3D::RenderDevice* rd, const G3D::GCamera& camera)
 		{
 			Ogre::VisualEngine* engine = reinterpret_cast<Ogre::VisualEngine*>(rd);
@@ -476,8 +451,6 @@ namespace RBX
 			if (mesh.isNull())
 				mesh = Ogre::MeshManager::getSingleton().createOrRetrieve("rbxdummymesh", "General").first;
 
-			G3D::Array<G3D::ReferenceCountedPointer<RenderBase::Chunk> >& chunkArray = sceneChunks(this);
-
 			if (entity == NULL && chunkArray.size() != 0)
 			{
 				entity = new Ogre::RbxEntity();
@@ -496,7 +469,7 @@ namespace RBX
 			{
 				RenderBase::Mesh::updateGeometry(builder);
 				entity->setMesh(RenderBase::Mesh::sharedMesh);
-				if (entityBounds(entity).isNull())
+				if (entity->mBounds.isNull())
 					entity->sub_007a9c40(RenderBase::Mesh::sharedMesh->getBounds());
 			}
 
@@ -680,9 +653,10 @@ namespace RBX
 					Ogre::SubMesh* subMesh;
 					Ogre::RbxSubEntity* subEntity;
 					// One shared throw site (007acb93) for both the hardware and the software checks.
-					if (hardwareMeshes ? (meshLevel->dirty || meshLevel->vertexStart < 0 ||
-					                      !RenderBase::Mesh::sharedMesh->getSubMesh(meshLevel->vertexStart))
-					                   : meshLevel->subMesh == NULL)
+					if (!(hardwareMeshes ? (!meshLevel->dirty && meshLevel->vertexStart >= 0
+					                            ? RenderBase::Mesh::sharedMesh->getSubMesh(meshLevel->vertexStart)
+					                            : NULL)
+					                     : meshLevel->subMesh))
 						throw std::exception("Please restart ROBLOX, if you changed your settings but have not restarted");
 					if (hardwareMeshes)
 					{
@@ -709,7 +683,7 @@ namespace RBX
 					chunk->entity = entity;
 
 					const G3D::Vector3& translation = chunk->cframe().translation;
-					Ogre::AxisAlignedBox bounds(entityBounds(entity));
+					Ogre::AxisAlignedBox bounds(entity->mBounds);
 					if (fabs(translation.x) < 10000.0f && fabs(translation.y) < 10000.0f && fabs(translation.z) < 10000.0f)
 					{
 						// 007ac6b7: the sphere branch is laid out first (je to the mesh-bounds branch 007ac7f6).
@@ -718,7 +692,7 @@ namespace RBX
 							const Ogre::Sphere& sphere = rootNode->getSphere(subMesh);
 							float radius = sphere.getRadius();
 							const G3D::Vector3& position = chunk->cframe().translation;
-							Ogre::AxisAlignedBox merged(entityBounds(entity));
+							Ogre::AxisAlignedBox merged(entity->mBounds);
 							// The sphere box (007ac788, esp+0x188) is destroyed after the 007a9c40 call: a named local.
 							// The minimum corner is computed and stored first (007ac703..007ac74f), then the maximum.
 							Ogre::Vector3 minimum(sphere.getCenter().x + position.x - radius, sphere.getCenter().y + position.y - radius,
@@ -731,7 +705,7 @@ namespace RBX
 						}
 						else
 						{
-							const Ogre::AxisAlignedBox& meshBounds = subMeshBounds(meshLevel->subMesh);
+							const Ogre::AxisAlignedBox& meshBounds = meshLevel->subMesh->bounds;
 							// The offset box (007ac872, esp+0x78) is destroyed after the 007a9c40 call: a named local.
 							Ogre::AxisAlignedBox meshBox(
 								Ogre::Vector3(meshBounds.getMinimum().x + translation.x, meshBounds.getMinimum().y + translation.y,
@@ -793,18 +767,18 @@ namespace RBX
 			if (entity)
 			{
 				entity->func_0067c510(&engine->frameHistory);
-				entityCameraNotified(entity) = false;
+				entity->mCameraNotified = false;
 				// vtable +0xd8 (007acc0a): RbxEntity slot 54 0067c6a0, not MovableObject::setVisible (+0x74).
 				entity->func_0067c6a0(true);
 				if (effectSettings.stencilShadows())
 				{
-					entityLodBudget(entity) = 15.0f;
-					entityMinimumLod(entity) = 600;
+					entity->mLodBudget = 15.0f;
+					entity->mMinimumLod = 600;
 				}
 				else
 				{
-					entityLodBudget(entity) = 20.0f;
-					entityMinimumLod(entity) = 650;
+					entity->mLodBudget = 20.0f;
+					entity->mMinimumLod = 650;
 				}
 			}
 

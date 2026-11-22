@@ -8,6 +8,14 @@
 #include <OgreAxisAlignedBox.h>
 #include <vector>
 
+namespace RBX
+{
+	namespace RenderNew
+	{
+		class RenderScene;   // RenderLib/RenderSceneNew2008.h
+	}
+}
+
 namespace Ogre
 {
 	class RbxSubEntity;
@@ -15,6 +23,10 @@ namespace Ogre
 
 	class RbxEntity : public Entity
 	{
+		// RenderScene::render 007ab0a0 reads mBounds (007ab594 / 007ac658 / 007ac6f0) and writes mCameraNotified,
+		// mLodBudget and mMinimumLod (007acbfb / 007acc29 / 007acc35); updateLights 007a9d30 reads mBounds.
+		friend class RBX::RenderNew::RenderScene;
+
 		FrameHistory* mHistory;                 // +0x274, non-owning; INFERRED type: collect 0067e2f0 calls FrameHistory::get 00678630 on it
 		bool mVisibilityCulling;                // +0x278
 		bool mCameraNotified;                   // +0x279
