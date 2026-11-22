@@ -36,6 +36,11 @@
 #include "util/NormalId.h"
 #include <G3D/Array.h>
 
+namespace G3D
+{
+	class Vector2;   // intersectRectQuad 00608160 takes it by reference only
+}
+
 struct NativeLeaves2008Layout;
 
 namespace RBX
@@ -80,6 +85,13 @@ namespace RBX
 		// aaBoxCollide), so the unit that uses it defines it inline (BlockBlockContactStep.cpp).
 		Block* block(int i);
 		int computePlaneContact();                               // 00608580 (`ret`; donor name, result unused)
+		// 00608160 (`ret 8`, thiscall: ecx = this kept in edi, planeRect [esp+4] read as x / y, otherQuad [esp+8] read as
+		// eight floats; called only by computePlaneContact 00608580 at 00608783 with its planeRect and otherQuad[4]
+		// locals): donor v8world/Contact.h signature (the donor's own comment 'might not be correct?' dropped: the
+		// two-pointer thiscall and the int result in eax, read by nobody, agree with it). Calls loadGeoPairPointPlane
+		// 00607f90 and loadGeoPairEdgeEdgePlane 00608030 with bPlane +0x6c / bOther +0x70 / planeID +0x74 /
+		// otherPlaneID +0x78.
+		int intersectRectQuad(G3D::Vector2& planeRect, G3D::Vector2 (&otherQuad)[4]);   // 00608160 (donor name)
 		void updateConnectors();                                 // 006087a0 (analog name; called by stepContact)
 
 		virtual bool computeIsColliding(float overlapIgnored);   // slot 7 (00607c20)

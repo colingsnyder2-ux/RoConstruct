@@ -10,8 +10,7 @@
 // unit-local redeclaration is left. The bases IPipelined / Edge are the native 2008 ones (AppUnit658/Edge.h ->
 // v8kernel/IPipelined2008.h).
 // deleteUnmatchedConnectors 00607e00 is in Leaves2008BlockBlockContact.cpp (beside deleteAllConnectors 00607c60).
-// Parked: computePlaneContact 00608580 needs Body pv +0x94 without updatePV, the Block face-vertex table 0084aec8 and
-// intersectRectQuad 00608160.
+// intersectRectQuad 00608160 and computePlaneContact 00608580 (near miss) are here too (batch 39).
 #define NATIVE_PRIMITIVE_NATIVE_BODY
 #include <G3D/Array.h>
 #include <G3D/CoordinateFrame.h>
@@ -281,7 +280,146 @@ namespace RBX
 			edgeLength);
 	}
 
-#ifdef BLOCKBLOCKCONTACT_DECLARES_INTERSECTRECTQUAD
+	// INFERRED: donor v8world/Block.h declares the static member Block::BLOCK_FACE_VERTEX_TO_EDGE[6][4] and the inline
+	// Block::faceVertexToEdge(normId, edge) that reads it; intersectRectQuad 00608160 indexes the same 6x4 int table
+	// (binary address 0084af28, 00608521 / 0060852f: `[(face * 4 + vertex) * 4 + 0x84af28]`). v8world/Block2008.h
+	// (not this unit's header) declares neither, so the unit names the table at namespace scope and keeps a file-local
+	// copy of the donor inline (proposal: move both into Block2008.h beside BLOCK_FACE_TO_VERTEX).
+	extern const int BLOCK_FACE_VERTEX_TO_EDGE[6][4];   // INFERRED: donor Block.h, binary 0084af28
+	static inline int faceVertexToEdge(Block*, NormalId normId, int edge)   // INFERRED: donor Block.h inline
+	{
+		return BLOCK_FACE_VERTEX_TO_EDGE[normId][edge];
+	}
+
+	// 00608160 (`ret 8`; header leaves2008/BlockBlockContact2008.h): donor v8world/Contact.cpp
+	// BlockBlockContact::intersectRectQuad. The rect/quad classification loop is unrolled (quadIn [esp+0x10],
+	// quadCrossRect [esp+0x18], rectCrossQuad [esp+0x28], rect [esp+0x38], rectIn in the dead planeRect argument
+	// slot); no RBXASSERT survives in the release body.
+	int BlockBlockContact::intersectRectQuad(G3D::Vector2& planeRect, G3D::Vector2 (&otherQuad)[4])
+	{
+		bool quadCrossRect[4][4];
+
+		bool quadIn[4] = {true, true, true, true};
+
+		int foundCounter = 0;
+
+		for (int i = 3; i >= 0; i--)
+		{
+			if (otherQuad[i].y <= planeRect.y)
+			{
+				quadCrossRect[0][i] = true;
+			}
+			else
+			{
+				quadCrossRect[0][i] = false;
+				quadIn[i] = false;
+			}
+
+			if (otherQuad[i].x >= -planeRect.x)
+			{
+				quadCrossRect[1][i] = true;
+			}
+			else
+			{
+				quadCrossRect[1][i] = false;
+				quadIn[i] = false;
+			}
+
+			if (otherQuad[i].y >= -planeRect.y)
+			{
+				quadCrossRect[2][i] = true;
+			}
+			else
+			{
+				quadCrossRect[2][i] = false;
+				quadIn[i] = false;
+			}
+
+			if (otherQuad[i].x <= planeRect.x)
+			{
+				quadCrossRect[3][i] = true;
+			}
+			else
+			{
+				quadCrossRect[3][i] = false;
+				quadIn[i] = false;
+			}
+		}
+
+		for (int i = 3; i >= 0; i--)
+		{
+			if (quadIn[i])
+			{
+				loadGeoPairPointPlane(bOther, bPlane, i, otherPlaneID, planeID);
+				foundCounter++;
+			}
+		}
+
+		if (foundCounter == 4)
+			return foundCounter;
+		else
+		{
+			bool rectCrossQuad[4][4];
+			G3D::Vector2 rect[4];
+			rect[0] = G3D::Vector2(planeRect.x, planeRect.y);
+			rect[1] = G3D::Vector2(-planeRect.x, planeRect.y);
+			rect[2] = G3D::Vector2(-planeRect.x, -planeRect.y);
+			rect[3] = G3D::Vector2(planeRect.x, -planeRect.y);
+
+			bool rectIn[4] = {true, true, true, true};
+
+			for (int i = 3; i >= 0; i--)
+			{
+				G3D::Vector2& current = otherQuad[i];
+				G3D::Vector2& currentO = otherQuad[(i + 3) % 4];
+				for (int j = 0; j < 4; j++)
+				{
+					G3D::Vector2 math1 = rect[j] - current;
+					G3D::Vector2 math2 = currentO - current;
+
+					if ((math2.x * math1.y) - (math2.y * math1.x) >= 0.0f)
+					{
+						rectCrossQuad[i][j] = true;
+					}
+					else
+					{
+						rectCrossQuad[i][j] = false;
+						rectIn[j] = false;
+					}
+				}
+			}
+
+			int wasZero = foundCounter == 0;
+
+			for (int i = 0; i < 4; i++)
+			{
+				if (rectIn[i])
+				{
+					loadGeoPairPointPlane(bPlane, bOther, i, planeID, otherPlaneID);
+					foundCounter++;
+				}
+			}
+
+			if (wasZero && foundCounter == 4)
+				return foundCounter;
+			else
+			{
+				for (int i = 0; i < 4; i++)
+				{
+					for (int j = 3; j >= 0; j--)
+					{
+						if (quadCrossRect[i][j] != quadCrossRect[i][(j + 3) % 4] && rectCrossQuad[j][i] != rectCrossQuad[j][(i + 1) % 4])
+						{
+							loadGeoPairEdgeEdgePlane(bOther, bPlane, faceVertexToEdge(block(bOther), otherPlaneID, (j + 3) % 4), faceVertexToEdge(block(bPlane), planeID, i));
+							foundCounter++;
+						}
+					}
+				}
+				return foundCounter;
+			}
+		}
+	}
+
 	// 00608580 (?computePlaneContact@BlockBlockContact@RBX@@AAEHXZ, `ret`): donor v8world/Contact.cpp body. Called by
 	// updateConnectors 006087a0 when planeContact +0x5c is set. The 2008 one reads the body pv +0x94 without updatePV
 	// (00608585..006085cb: Primitive +0xa0 -> Body, `add reg, 0x94`), calls CoordinateFrame::inverse 00478330 and
@@ -289,12 +427,13 @@ namespace RBX
 	// calls getClosestObjectNormalId 005de560 on the negated normal, Block::getProjectedVertex 00647c70 on the plane
 	// block (geometry +0x9c) and then on the other block for each of the four zero-initialised quad corners
 	// (face-vertex table 0084aec8), and returns intersectRectQuad 00608160.
-	// Guarded: intersectRectQuad 00608160 (thiscall, two pointer arguments) is not declared in
-	// leaves2008/BlockBlockContact2008.h (not this unit's header; proposal to its owner). Measured against a scratch
-	// copy of that header with the donor declaration added: 513 B against 531, first divergence at insn 0 (frame
-	// 0xa0 against 0x80: the target reuses the dead inverse() temporary's slots for otherQuad and the getWorldNormal
-	// temporary for the loop's world point; this build keeps them apart), plus x87 row-sum order in the inlined
-	// pointToWorldSpace (target y*m01 + z*m02 + x*m00, the batch 27 exhausted category). Rejected (batch 31):
+	// Near miss (batch 39: the guard is gone, intersectRectQuad 00608160 is declared in
+	// leaves2008/BlockBlockContact2008.h and defined above). Batch 31 measured 513 B against 531 with a scratch
+	// header (frame 0xa0 against 0x80). In this unit, with the real declaration and the intersectRectQuad body
+	// beside it, it is 531 B against 531 with the same frame; the first divergence is insn 62 (0060864a): the
+	// scalar * Vector3 of the inlined getWorldNormal (target `fld st0; fmulp st3`, here `fmul st2, st0`), then the
+	// x87 row-sum order in the inlined pointToWorldSpace (target y*m01 + z*m02 + x*m00). Both are the batch 27
+	// exhausted x87 commutative-operand category; no trials spent on them. Rejected (batch 31):
 	// the normal as an unnamed temporary (unchanged), `G3D::Vector2 otherQuad[4];` without `= {}` (unchanged),
 	// planeFrame.toObjectSpace(otherFrame) (503 B, emits an out-of-line toObjectSpace call instead of
 	// inverse 00478330 + operator* 00476700).
@@ -335,7 +474,6 @@ namespace RBX
 		}
 		return intersectRectQuad(planeRect, otherQuad);
 	}
-#endif
 
 	// 00608830: separation -1.0f (0081c3b8) when colliding, else 1e9 (0082d030); then updateConnectors 006087a0.
 	bool BlockBlockContact::stepContact()
