@@ -88,4 +88,19 @@ namespace RBX
 		_snprintf(buffer, 64, "%.20g", value);
 		return buffer;
 	}
+
+	// 005be040 (func_005be040): the float convertToString, the double body above with MSVCP90 _FInf, "%.9g" (00838450)
+	// and a 0x20 buffer. Callers: the Vector3 / Color3 converters (005bea10..005beb63) and the float property
+	// getStringValue rows (0056e1a7, 0056f1f1, 005760b3..). Supersedes StringConverterRecovery_005be040.cpp (a near
+	// miss of the same name: volatile local and swapped compare operands).
+	template<>
+	std::string StringConverter<float>::convertToString(const float& value)
+	{
+		char buffer[32];
+		if (value == std::numeric_limits<float>::infinity()) return "INF";
+		if (-std::numeric_limits<float>::infinity() == value) return "-INF";
+		if (!(value < 0.0f || value >= 0.0f)) return "NAN";
+		_snprintf(buffer, 32, "%.9g", value);
+		return buffer;
+	}
 }

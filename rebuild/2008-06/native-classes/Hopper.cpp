@@ -43,6 +43,22 @@ namespace RBX
 	static Reflection::PropDescriptor<HopperBin, std::string> desc_legacyCommand("Command", "Data", NULL, &HopperBin::setLegacyCommand, Reflection::PropertyDescriptor::LEGACY);
 	static Reflection::PropDescriptor<HopperBin, std::string> desc_legacyTextureName("TextureName", "Data", NULL, &HopperBin::setLegacyTextureName, Reflection::PropertyDescriptor::LEGACY);
 
+	// 005d0140 (placeholder func_005d0140, 444 B): EnumDescriptor ctor 0056c590 ("BinType" 0083aef4, typeid 0095203c),
+	// then addPair 0064d530 for 0..7 with "Script" 00816d90, "GameTool" 0083aee8, "Grab" 0083aee0, "Clone" 0082d96c,
+	// "Hammer" 0083aed8, "Slingshot" 0083aecc, "Rocket" 0083aec4, "Laser" 0083aebc (openrbx Hopper.cpp, same order).
+	Reflection::EnumDesc<HopperBin::BinType>::EnumDesc()
+		: EnumDescriptor("BinType", typeid(HopperBin::BinType))
+	{
+		addPair(HopperBin::SCRIPT_BIN, "Script");
+		addPair(HopperBin::GAME_TOOL, "GameTool");
+		addPair(HopperBin::GRAB_TOOL, "Grab");
+		addPair(HopperBin::CLONE_TOOL, "Clone");
+		addPair(HopperBin::HAMMER_TOOL, "Hammer");
+		addPair(HopperBin::SLINGSHOT_TOOL, "Slingshot");
+		addPair(HopperBin::ROCKET_TOOL, "Rocket");
+		addPair(HopperBin::LASER_TOOL, "Laser");
+	}
+
 	const TextureId BackpackItem::getTextureId() const
 	{
 		return textureId;

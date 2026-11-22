@@ -1,5 +1,6 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // Authentic rbxgs Face implementation; inactive native recovery.
+#undef _RELEASEASSERT   // the 2008 Face bodies carry no release asserts (fuzzyContainsInExtrusion 00649830, cornersAligned 006498b0, getAxis)
 #include "util/Face.h"
 #include "util/Math.h"
 
@@ -33,15 +34,17 @@ namespace RBX
 
 			G3D::Plane p0(face.c0, face.c1, face.c3);
 			
+			// 0064a200: the float getEquation overload (Plane 00525ad0, frame 0x54) and the signed plane distance
+			// `fabs(dot + distance) > tolerance` (fadd st(2); fabs; `test ah, 0x41; je` return false).
 			G3D::Vector3 normal;
-			double distance;
+			float distance;
 			p0.getEquation(normal, distance);
 
 			Face overlapOn1 = otherFace.projectOverlapOnMe(face);
 
 			for (int j = 0; j < 4; ++j)
 			{
-				if (overlapOn1[j].dot(normal) > tolerance)
+				if (fabs(overlapOn1[j].dot(normal) + distance) > tolerance)
 					return false;
 			}
 		}

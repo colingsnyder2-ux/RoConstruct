@@ -190,6 +190,35 @@ namespace RBX
 		}
 	}
 
+	// 0059dc70 (registry placeholder func_0059dc70): setter of the UI "Size" descriptor prop_SizeUi (initializer 007f4930).
+	// Donor PartInstance::setPartSizeUi; BRICK y * 5/6 (00826e60), PLATE y * 2.5 (008288c0), uiToXmlSize 00599eb0,
+	// setPartSizeXml 0059db90, safeMove 0059b4f0. INFERRED: destroyJoints 00598c70 / join 00598c90 (AppUnit598PartInstance.cpp)
+	// are expanded inline (getWorldIfInWorkspace 005a3390, World::destroyJoints 005ea4c0 / createJoints 005ea5d0 on the
+	// embedded primitive +0x228), as the original unit inlines its own definitions.
+	void PartInstance::setPartSizeUi(const G3D::Vector3& uiSize)
+	{
+		if (World* world = Workspace::getWorldIfInWorkspace(this))
+			world->destroyJoints(&primitive);
+
+		G3D::Vector3 adjustedUiSize = uiSize;
+
+		switch (formFactor)
+		{
+		case BRICK:
+			adjustedUiSize.y = uiSize.y * 5.0f/6.0f;
+			break;
+		case PLATE:
+			adjustedUiSize.y = uiSize.y * 2.5f;
+			break;
+		}
+
+		setPartSizeXml(uiToXmlSize(adjustedUiSize));
+		safeMove();
+
+		if (World* world = Workspace::getWorldIfInWorkspace(this))
+			world->createJoints(&primitive);
+	}
+
 	// 0059dd20: setter of prop_Dragging (00975fc8); Primitive::setDragging 005e8050, dragging at Primitive +0xa8 (+0x2d0).
 	void PartInstance::setDragging(bool value)
 	{
@@ -295,6 +324,34 @@ namespace RBX
 		{
 			formFactor = value;
 			raisePropertyChanged(prop_formFactor);
+		}
+	}
+
+	// 0059dfa0 (registry placeholder func_0059dfa0): setter of the UI "formFactor" descriptor prop_formFactorUi
+	// (initializer 007f49f0). Donor PartInstance::setFormFactorUi: setFormFactorXml 0059df70 inlined, the grid size
+	// (+0x2c4 geometry +4: getPartSizeUi 00598ce0 inlined), G3D::max(1.0, iRound(y)) through fistp/fild, uiToXmlSize
+	// 00599eb0, setPartSizeXml 0059db90, safeMove 0059b4f0. INFERRED: destroyJoints / join expanded inline (see above).
+	void PartInstance::setFormFactorUi(FormFactor value)
+	{
+		if (partType != Part::BLOCK_PART)
+			value = SYMETRIC;
+
+		if (value != getFormFactor())
+		{
+			if (World* world = Workspace::getWorldIfInWorkspace(this))
+				world->destroyJoints(&primitive);
+
+			setFormFactorXml(value);
+
+			G3D::Vector3 uiSize = primitive.getGeometry()->getGridSize();
+			uiSize.y = G3D::max<float>(1.0, G3D::iRound(uiSize.y));
+
+			G3D::Vector3 xmlSize = uiToXmlSize(uiSize);
+			setPartSizeXml(xmlSize);
+			safeMove();
+
+			if (World* world = Workspace::getWorldIfInWorkspace(this))
+				world->createJoints(&primitive);
 		}
 	}
 
@@ -451,6 +508,72 @@ namespace RBX
 				}
 			}
 		}
+	}
+
+	// 0059eb50 (registry placeholder func_0059eb50): setter of prop_shapeXml (009760a8, "shape", initializer 007f4570,
+	// STREAMING); also called by setPartTypeUi 0059ebe0. Donor PartInstance::setPartTypeXml: partType +0x1dc,
+	// Primitive::setPrimitiveType 005e86f0 (BLOCK_PART -> GEOMETRY_BLOCK 2, else GEOMETRY_BALL 1), the inlined
+	// setFormFactorXml(SYMETRIC) (formFactor +0x1e0, prop_formFactor 009762ec), prop_shapeXml then prop_shapeUi
+	// (0097603c), PersistentPart (+0x398) dirty, IRenderable::shouldRenderSetDirty 005dd540 (+0x1cc), onExtentsChanged
+	// (vtable +0x50).
+	void PartInstance::setPartTypeXml(Part::PartType _type)
+	{
+		if (getPartType() != _type)
+		{
+			partType = _type;
+			primitive.setPrimitiveType(_type == Part::BLOCK_PART ? Geometry::GEOMETRY_BLOCK : Geometry::GEOMETRY_BALL);
+
+			if (partType != Part::BLOCK_PART)
+				setFormFactorXml(SYMETRIC);
+
+			raisePropertyChanged(prop_shapeXml);
+			raisePropertyChanged(prop_shapeUi);
+
+			PersistentPart.setDirty();
+			shouldRenderSetDirty();
+			onExtentsChanged();
+		}
+	}
+
+	// 0059ebe0 (registry placeholder func_0059ebe0): setter of the UI "Shape" descriptor prop_shapeUi (initializer
+	// 007f45d0). Donor PartInstance::setPartTypeUi: setPartTypeXml 0059eb50, then for a non-block part the grid size
+	// (getPartSizeUi 00598ce0 inlined) through uiToXmlSize 00599eb0 into setPartSizeXml 0059db90 and safeMove 0059b4f0;
+	// safeMove again. INFERRED: destroyJoints / join expanded inline (see setPartSizeUi).
+	void PartInstance::setPartTypeUi(Part::PartType _type)
+	{
+		if (getPartType() != _type)
+		{
+			if (World* world = Workspace::getWorldIfInWorkspace(this))
+				world->destroyJoints(&primitive);
+
+			setPartTypeXml(_type);
+
+			if (_type != Part::BLOCK_PART)
+			{
+				G3D::Vector3 uiSize = primitive.getGeometry()->getGridSize();
+				G3D::Vector3 xmlSize = uiToXmlSize(uiSize);
+				setPartSizeXml(xmlSize);
+				safeMove();
+			}
+
+			safeMove();
+
+			if (World* world = Workspace::getWorldIfInWorkspace(this))
+				world->createJoints(&primitive);
+		}
+	}
+
+	// 0059c4a0 (registry placeholder func_0059c4a0): EnumDesc<PartInstance::FormFactor> constructor, called by its
+	// doSingleton 0059c780 (local static 00976490, guard 00976578). EnumDescriptor("FormFactor" 00832df0, typeid
+	// 0094ab60) 0056c590, vtable 00832db8, addPair 0064d530 "Symmetric" 00832de4 / "Brick" 00832ddc / "Plate"
+	// 00832dd4, then the inline addLegacyName("Block" 00832dcc, BRICK): Name::declare 00553f90, map operator[] 005644a0.
+	Reflection::EnumDesc<PartInstance::FormFactor>::EnumDesc()
+		: EnumDescriptor("FormFactor", typeid(PartInstance::FormFactor))
+	{
+		addPair(PartInstance::SYMETRIC, "Symmetric");
+		addPair(PartInstance::BRICK, "Brick");
+		addPair(PartInstance::PLATE, "Plate");
+		addLegacyName("Block", PartInstance::BRICK);
 	}
 }
 

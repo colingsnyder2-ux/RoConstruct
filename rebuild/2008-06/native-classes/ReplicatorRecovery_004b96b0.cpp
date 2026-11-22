@@ -11,11 +11,19 @@
 #include "Network/NetworkSettings.h"
 #include "Network/PhysicsSenders2008.h"
 #include <G3D/System.h>
+#include "reflection/signal.h"
 
 namespace RBX
 {
 	namespace Network
 	{
+		// Dynamic initializer 007f2170 (registry placeholder func_007f2170; atexit 007fc320): SignalDesc<Replicator,
+		// void(std::string, bool)> constructor 004b3e00 (vtable 00824c98, RTTI .?AV?$SignalDesc@VReplicator@...) on
+		// 009717d0 with "Disconnection" 008256a8, "peer" 00823258, "lostConnection" 008256b8 (donor Replicator.h
+		// event_Disconnection). INFERRED: file-local here because Network/Replicator2008.h (not this lease) does not
+		// declare the static member; the descriptor object and its constructor are the same.
+		static Reflection::SignalDesc<Replicator, void(std::string, bool)> event_Disconnection("Disconnection", "peer", "lostConnection");
+
 		// 004b9bd0 (ret 0xc): DescribedNonCreatable 004b9ad0, PluginInterface 0049ed30, G3D::System::time 00508410,
 		// DescriptorDictionary constructors 004b1570 / 004b1620, CodeProfiler(const char*) 005c43a0 ("Replication" ..
 		// "Write"), CountProfiler(const char*) 005c43d0 ("Bits Received" .. "Split Messages Sent"), NetworkSettings
