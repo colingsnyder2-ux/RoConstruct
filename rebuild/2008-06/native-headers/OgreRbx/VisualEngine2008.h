@@ -41,6 +41,11 @@ namespace Ogre
 		VisualEngine();                         // 006786c0 (new(0x808) at 0045cc9c)
 		virtual ~VisualEngine();                // 0067a130, vtable 0084df2c, ??_G 0067c4b0
 		void initialize(int api, HWND hwnd, int width, int height, int antialiasMode, std::string logFile);   // 0067a7e0 (INFERRED name)
+		// 0054acf0 (/Od COMDAT, 20 bytes, thiscall: mov al, [ecx+0x7f4]; emitted in the RenderBase /Od block). Callers:
+		// RenderBase::Mesh::Level::makeSWSubMesh 00549a50 at 00549c3e / 0054a747 / 0054a789 / 0054a7b4 with ecx = its
+		// engine argument. INFERRED: the name (registry placeholder func_0054acf0; the 2007 analog FUN_00533160 reads
+		// VisualEngine +0x7f4 directly) and const.
+		bool getUseLargeVertexBuffer() const { return useLargeVertexBuffer; }
 		SceneManager* sceneManager;             // +0x04 dynamic_cast<RbxSceneManager*> 0067ba33, Root::destroySceneManager
 		Camera* camera;                         // +0x08 sceneManager->createCamera("Camera") 0067ba68
 		RenderTarget* renderTarget;             // +0x0c Root::createRenderWindow 0067b279, Root::detachRenderTarget 0067a17e

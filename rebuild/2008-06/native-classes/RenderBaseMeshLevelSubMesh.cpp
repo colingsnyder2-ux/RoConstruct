@@ -17,11 +17,15 @@
 // to Ogre::GeometryBuilder (OgreRbx/GeometryCreate2008.h) and turns the 0067c020 body into that member, so the
 // former NATIVE_GEOMETRY_CREATEINDICES_MEMBER_PENDING guard is gone.
 // RBX::RenderBase::Mesh shadow sub-mesh 0054a920 (148 B, /Od, thiscall ret 4): see the comment at its body.
+// RBX::RenderBase::Mesh::Level::makeSWSubMesh 00549a50 (3779 B, /Od, thiscall ret 8): see the comment at its body.
 #include "ViewNew/RenderBaseMesh.h"
 #include "OgreRbx/GeometryCreate2008.h"
+#include "OgreRbx/VisualEngine2008.h"
 #include <OgreAxisAlignedBox.h>
 #include <OgreLogManager.h>
 #include <vector>
+#include <map>
+#include <stdio.h>
 
 namespace RBX
 {
@@ -99,6 +103,172 @@ namespace RBX
 				                                &shadowIndices[0], NULL, shadowIndices.size() / 3,
 				                                reinterpret_cast<Ogre::Vector3*>(minimum), reinterpret_cast<Ogre::Vector3*>(maximum));
 			}
+		}
+
+		// INFERRED name (the 2007 analog g_unk0x00958798): the sub-mesh name counter 00973998 read by makeSWSubMesh.
+		static int subMeshNameCounter = 0;
+
+		// 00549a50 (/Od, thiscall ret 8). Only caller RenderNew::RenderScene::render 007ab0a0 (call 007ab9c7, ecx = the
+		// detail Level, arguments (engine, &AxisAlignedBox local)), taken when VisualEngine +0x7f5 is false (007ab2ea).
+		// The software counterpart of makeHWSubMesh; 2007 analog openrbx RenderLibNew Mesh::Level::FUN_00533160, whose
+		// receiver is Ogre::VisualEngine. Evidence for the 2008 receiver: the same pointer ([ebp+8]) is the ecx of the
+		// /Od accessor 0054acf0 (mov al, [ecx+0x7f4]: VisualEngine::useLargeVertexBuffer, OgreRbx/VisualEngine2008.h)
+		// at 00549c3e / 0054a747 / 0054a789 / 0054a7b4 and of 0067c130 (createIndexed, ret 0x28) at 0054a837.
+		//   * sprintf(char[8], "m%d" 0082cf98, counter 00973998++); the name is not used afterwards.
+		//   * map<unsigned, unsigned> (ctor 00540a80, find 0054c3f0, end 005409b0, [] 0054c2d0, size 0054e3a0, dtor
+		//     0054ad10) numbers the distinct indices in order of first use; vector<unsigned> unique(size) (0054c150).
+		//   * 32-bit (vector<unsigned> 004293d0 / resize 005163e0) or 16-bit (vector<unsigned short> 0054b2a0 / resize
+		//     005163f0 / [] 00515ea0 / dtor 0054b310) indices, QUADS (5) as (a, b, d, d, b, c) or TRIANGLES (2).
+		//   * positions (verts) / normals (vector<float>, size * 3) from visibleGeometry 009738f0 / 009738fc, texture
+		//     coordinates (size * 2) from texCoordArray 00973934.
+		//   * the result of createIndexed goes to subMesh +0x24; bounds through AxisAlignedBox::setMinimum / setMaximum;
+		//     dirty = false.
+		// INFERRED: the method name (registry placeholder func_00549a50); the bounds are float[3] (no Vector3 ctor call,
+		// as in makeShadowSubMesh). INFERRED local names: VC9 /Od orders function-scope locals by a hash of their names
+		// (later declaration first within a bucket; measured with int-only probe units), so the names and declaration
+		// order were chosen to reproduce the original frame (ref -0x10, min -0x1c, map -0x3c, verts -0x54, cookie -0x58,
+		// name -0x60, inds32 -0x78, k -0x7c, texCoords -0x94, unique -0xac, ind16 -0xc4, c -0xc8, max -0xd4, normals
+		// -0xec); vmap / verts / c / ind16 / min / max follow the earlier archived draft of this body. The createIndexed call goes through Ogre::GeometryBuilder, the receiver name the
+		// committed 0067c130 body (OgreGeometryIndexed2008.cpp) and its inferred identity use; the object really is the
+		// VisualEngine (see the proposal to merge GeometryBuilder into VisualEngine), so the cast changes no code.
+		void Mesh::Level::makeSWSubMesh(Ogre::VisualEngine* engine, Ogre::AxisAlignedBox& bounds)
+		{
+			float min[3];
+			char name[8];
+			sprintf(name, "m%d", subMeshNameCounter++);
+			G3D::Array<unsigned int>& vertexIndices = indexArray;
+			std::vector<unsigned int> inds32;
+			std::vector<unsigned short> ind16;
+			std::vector<float> verts;
+			std::vector<float> normals;
+			float max[3];
+			std::vector<float> texCoords;
+			int k;
+			std::map<unsigned int, unsigned int> vmap;
+			unsigned int c = 0;
+			for (int i = 0; i < vertexIndices.size(); ++i)
+			{
+				if (vmap.find(vertexIndices[i]) == vmap.end())
+				{
+					vmap[vertexIndices[i]] = c;
+					++c;
+				}
+			}
+			std::vector<unsigned int> unique(vmap.size());
+			for (int i = 0; i < vertexIndices.size(); ++i)
+				unique[vmap[vertexIndices[i]]] = vertexIndices[i];
+
+			if (engine->getUseLargeVertexBuffer())
+			{
+				if (primitive == G3D::RenderDevice::QUADS)
+				{
+					inds32.resize(vertexIndices.size() / 4 * 6);
+					for (k = 0; k < vertexIndices.size(); k += 4)
+					{
+						int quad = k / 4;
+						inds32[quad * 6] = vmap[vertexIndices[quad * 4]];
+						inds32[quad * 6 + 1] = vmap[vertexIndices[quad * 4 + 1]];
+						inds32[quad * 6 + 2] = vmap[vertexIndices[quad * 4 + 3]];
+						inds32[quad * 6 + 3] = vmap[vertexIndices[quad * 4 + 3]];
+						inds32[quad * 6 + 4] = vmap[vertexIndices[quad * 4 + 1]];
+						inds32[quad * 6 + 5] = vmap[vertexIndices[quad * 4 + 2]];
+					}
+					verts.resize(unique.size() * 3);
+					normals.resize(unique.size() * 3);
+					texCoords.resize(unique.size() * 2);
+					for (k = 0; k < (int)unique.size(); ++k)
+					{
+						int j;
+						for (j = 0; j < 3; ++j)
+						{
+							verts[k * 3 + j] = visibleGeometry.vertexArray[unique[k]][j];
+							normals[k * 3 + j] = visibleGeometry.normalArray[unique[k]][j];
+						}
+						for (j = 0; j < 2; ++j)
+							texCoords[k * 2 + j] = texCoordArray[unique[k]][j];
+					}
+				}
+				else if (primitive == G3D::RenderDevice::TRIANGLES)
+				{
+					inds32.resize(vertexIndices.size());
+					for (k = 0; k < vertexIndices.size(); ++k)
+						inds32[k] = vmap[vertexIndices[k]];
+					verts.resize(unique.size() * 3);
+					normals.resize(unique.size() * 3);
+					texCoords.resize(unique.size() * 2);
+					for (k = 0; k < (int)unique.size(); ++k)
+					{
+						int j;
+						for (j = 0; j < 3; ++j)
+						{
+							verts[k * 3 + j] = visibleGeometry.vertexArray[unique[k]][j];
+							normals[k * 3 + j] = visibleGeometry.normalArray[unique[k]][j];
+						}
+						for (j = 0; j < 2; ++j)
+							texCoords[k * 2 + j] = texCoordArray[unique[k]][j];
+					}
+				}
+			}
+			else
+			{
+				if (primitive == G3D::RenderDevice::QUADS)
+				{
+					ind16.resize(vertexIndices.size() / 4 * 6);
+					for (k = 0; k < vertexIndices.size(); k += 4)
+					{
+						int quad = k / 4;
+						ind16[quad * 6] = vmap[vertexIndices[quad * 4]];
+						ind16[quad * 6 + 1] = vmap[vertexIndices[quad * 4 + 1]];
+						ind16[quad * 6 + 2] = vmap[vertexIndices[quad * 4 + 3]];
+						ind16[quad * 6 + 3] = vmap[vertexIndices[quad * 4 + 3]];
+						ind16[quad * 6 + 4] = vmap[vertexIndices[quad * 4 + 1]];
+						ind16[quad * 6 + 5] = vmap[vertexIndices[quad * 4 + 2]];
+					}
+					verts.resize(unique.size() * 3);
+					normals.resize(unique.size() * 3);
+					texCoords.resize(unique.size() * 2);
+					for (k = 0; k < (int)unique.size(); ++k)
+					{
+						int j;
+						for (j = 0; j < 3; ++j)
+						{
+							verts[k * 3 + j] = visibleGeometry.vertexArray[unique[k]][j];
+							normals[k * 3 + j] = visibleGeometry.normalArray[unique[k]][j];
+						}
+						for (j = 0; j < 2; ++j)
+							texCoords[k * 2 + j] = texCoordArray[unique[k]][j];
+					}
+				}
+				else if (primitive == G3D::RenderDevice::TRIANGLES)
+				{
+					ind16.resize(vertexIndices.size());
+					for (k = 0; k < vertexIndices.size(); ++k)
+						ind16[k] = vmap[vertexIndices[k]];
+					verts.resize(unique.size() * 3);
+					normals.resize(unique.size() * 3);
+					texCoords.resize(unique.size() * 2);
+					for (k = 0; k < (int)unique.size(); ++k)
+					{
+						int j;
+						for (j = 0; j < 3; ++j)
+						{
+							verts[k * 3 + j] = visibleGeometry.vertexArray[unique[k]][j];
+							normals[k * 3 + j] = visibleGeometry.normalArray[unique[k]][j];
+						}
+						for (j = 0; j < 2; ++j)
+							texCoords[k * 2 + j] = texCoordArray[unique[k]][j];
+					}
+				}
+			}
+			subMesh = reinterpret_cast<Ogre::GeometryBuilder*>(engine)->createIndexed(
+				&verts[0], unique.size(), &normals[0], NULL, &texCoords[0],
+				engine->getUseLargeVertexBuffer() ? NULL : &ind16[0],
+				engine->getUseLargeVertexBuffer() ? &inds32[0] : NULL,
+				engine->getUseLargeVertexBuffer() ? inds32.size() / 3 : ind16.size() / 3,
+				reinterpret_cast<Ogre::Vector3*>(min), reinterpret_cast<Ogre::Vector3*>(max));
+			bounds.setMinimum(min[0], min[1], min[2]);
+			bounds.setMaximum(max[0], max[1], max[2]);
+			dirty = false;
 		}
 	}
 }

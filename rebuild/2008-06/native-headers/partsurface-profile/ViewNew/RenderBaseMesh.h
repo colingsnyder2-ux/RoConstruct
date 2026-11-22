@@ -32,6 +32,7 @@ namespace Ogre
 {
 	class AxisAlignedBox;
 	class GeometryBuilder;
+	class VisualEngine; // OgreRbx/VisualEngine2008.h (makeSWSubMesh 00549a50 receiver)
 	class RbxSubMesh; // incomplete: only owned through a pointer (deleted via 0054ac70)
 }
 
@@ -75,8 +76,10 @@ namespace RBX
 				// the Level's indices to a compact vertex list, packs positions / normals / texture coordinates, picks 16-
 				// or 32-bit indices from the engine accessor 0054acf0 (VisualEngine +0x7f4) and stores the result of
 				// engine 0067c130 (createIndexed, ret 0x28) in subMesh +0x24, then sets the bounds and clears dirty.
-				// 2007 analog: openrbx RenderLibNew Mesh::Level::FUN_00533160. INFERRED: the name. Body not built.
-				void makeSWSubMesh(Ogre::GeometryBuilder* engine, Ogre::AxisAlignedBox& bounds);
+				// 2007 analog: openrbx RenderLibNew Mesh::Level::FUN_00533160 (Ogre::VisualEngine* engine). The receiver is
+				// VisualEngine: the same pointer is ecx of the VisualEngine +0x7f4 accessor. INFERRED: the name.
+				// Body: native-classes/RenderBaseMeshLevelSubMesh.cpp.
+				void makeSWSubMesh(Ogre::VisualEngine* engine, Ogre::AxisAlignedBox& bounds);
 				virtual ~Level();                        // 005489b0
 			};
 
