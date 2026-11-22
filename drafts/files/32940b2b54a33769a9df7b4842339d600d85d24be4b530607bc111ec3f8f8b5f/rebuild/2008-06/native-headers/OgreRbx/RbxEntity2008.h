@@ -1,0 +1,60 @@
+#pragma once
+// Ogre::RbxEntity, June 2008 executable-local Entity extension.
+// Target proof: 0067d1f0 constructs Entity then writes derived state through
+// +0x274..+0x2b8; allocation is 0x2bc. 0067d420 destroys AxisAlignedBox at
+// +0x27c and the debug std::vector ABI at +0x2a4. 0067daf0 writes byte
+// elements through +0x2b0; 007acbfb writes the +0x279 byte flag.
+#include <OgreEntity.h>
+#include <OgreAxisAlignedBox.h>
+#include <vector>
+
+namespace RBX
+{
+	namespace RenderNew
+	{
+		class RenderScene;   // RenderLib/RenderSceneNew2008.h
+	}
+}
+
+namespace Ogre
+{
+	class RbxSubEntity;
+	class FrameHistory;    // OgreRbx/VisualEngine2008.h
+
+	class RbxEntity : public Entity
+	{
+		// RenderScene::render 007ab0a0 reads mBounds (007ab594 / 007ac658 / 007ac6f0) and writes mCameraNotified,
+		// mLodBudget and mMinimumLod (007acbfb / 007acc29 / 007acc35); updateLights 007a9d30 reads mBounds.
+		friend class RBX::RenderNew::RenderScene;
+
+		FrameHistory* mHistory;                 // +0x274, non-owning; INFERRED type: collect 0067e2f0 calls FrameHistory::get 00678630 on it
+		bool mVisibilityCulling;                // +0x278
+		bool mCameraNotified;                   // +0x279
+		bool mRecordHistory;                    // +0x27a
+		AxisAlignedBox mBounds;                 // +0x27c
+		Real mLodBudget;                        // +0x29c
+		int mMinimumLod;                        // +0x2a0
+		std::vector<unsigned char> mVisibility; // +0x2a4, byte element accesses proven
+
+	public:
+		void func_0067c510(FrameHistory* history); // INFERRED name; original stores argument at +0x274.
+		void removeSubEntity(RbxSubEntity* subEntity); // 0067d2d0; existing Chunk destructor call proves declaration.
+		void func_0067da50(RbxSubEntity* subEntity); // INFERRED: appends to the inherited subentity list.
+		void func_0067d3d0(); // INFERRED: clears inherited subentities; called at 00671fc0.
+		void setMesh(MeshPtr mesh); // INFERRED: 0067c520 assigns inherited Entity::mMesh.
+		RbxEntity();                            // 0067d1f0
+		virtual ~RbxEntity();                   // 0067d420
+		virtual void _notifyCurrentCamera(Camera* camera); // slot 24, 0067c570
+		virtual void _updateRenderQueue(RenderQueue* queue); // slot 28, 0067d010
+		virtual void func_0067daf0(Camera* camera); // slot 53; name not recovered
+		virtual void func_0067c6a0(bool visible);  // slot 54; name not recovered
+		SubEntity* createSubEntity(SubMesh* subMesh, unsigned int lod); // 0067d9b0
+		// Direct call 00696269 -> 0067e2f0 proves this exact non-virtual ABI.
+		// Its body remains unrecovered; declaration enables its proven SceneManager caller.
+		void collect(Camera* camera, Light* light, std::vector<ShadowCaster*>& output);             // 0067e2f0 (registry mangled name: non-const)
+	public:
+		void sub_007a9c40(Ogre::AxisAlignedBox box);   // INFERRED: 007a9c40, placeholder name (identity tier), body byte-proved (Inferred_007a9c40.cpp)
+	};
+
+	typedef char RbxEntity2008Size[(sizeof(RbxEntity) == 0x2bc) ? 1 : -1];
+}
