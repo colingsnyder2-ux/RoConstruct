@@ -6,6 +6,14 @@ void nativeProfilerEnable(bool enabled)
         RBX::Profiling::Mark::markTlsIndex = TlsAlloc();
 }
 
+#include "ProfiledRakPeer.h"
+
+bool ProfiledRakPeer::RunUpdateCycle()
+{
+    RBX::Profiling::Mark mark(*profiler, false);
+    return RakPeer::RunUpdateCycle();
+}
+
 namespace RBX
 {
 	namespace Profiling

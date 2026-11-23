@@ -1,146 +1,5 @@
-// Unsplit: combined from AxisMoveToolCore/Bounds/Down/Move/Render/Methods (mew 5fe2214 layout unsplit for native-doc).
-#include "v8datamodel/DataModel.h"
-#include "v8datamodel/Workspace.h"
-#include "tool/MegaDragger.h"
-#include "tool/AxisMoveTool.h"
-#include "tool/AxisMoveGrid.h"
-#include "StandardVerbs.h"
-#include "v8datamodel/Selection.h"
-#include "tool/Dragger.h"
-#include "tool/DragUtilities.h"
-#include "v8datamodel/ICameraOwner.h"
-#include "util/Extents.h"
-#include "util/Math.h"
-#include "AppDraw/DrawAdorn.h"
-#include <algorithm>
-
-namespace RBX {
-
-char sAxisMoveTool[] = "AxisMove";
-
-bool hitMoveHandles(const Extents&, const G3D::Ray&, G3D::Vector3&, NormalId&);
-void recordCameraHistory(const char*, const Instance*);
-
-AxisMoveTool::AxisMoveTool(Workspace* w)
-	: Named<ArrowToolBase, sAxisMoveTool>(w), cursor("ArrowCursor"), dragging(false) {}
-
-template<> MouseCommand* TToolVerb<AxisMoveTool, RunStateVerb>::newMouseCommand() {
-	return new AxisMoveTool(dataModel->getWorkspace());
-}
-template<> const Name& Named<ArrowToolBase, sAxisMoveTool>::getName() const {
-	return NativeToolName<AxisMoveTool>::get();
-}
-
-void __cdecl collectPart(boost::shared_ptr<Instance> value, std::vector<Primitive*>* parts) {
-	DragUtilities::getPrimitives(value.get(), *parts);
-}
-struct AxisBoundsCallback {
-	void (__cdecl* function)(boost::shared_ptr<Instance>, std::vector<Primitive*>*);
-	std::vector<Primitive*>* parts;
-	AxisBoundsCallback(void (__cdecl* f)(boost::shared_ptr<Instance>, std::vector<Primitive*>*), std::vector<Primitive*>* p)
-		: function(f), parts(p) {}
-	void operator()(const boost::shared_ptr<Instance>& p) { function(p, parts); }
-};
-bool AxisMoveTool::bounds(Extents& out) {
-	ServiceClient<Selection> selection(workspace);
-	std::vector<Primitive*> parts;
-	std::for_each(selection->selection->begin(), selection->selection->end(), AxisBoundsCallback(collectPart, &parts));
-	if (parts.size() > 0) { out = Dragger::computeExtents(parts); return true; }
-	return false;
-}
-
-bool AxisMoveTool::hitHandle(const UIEvent& event, G3D::Vector3& point, NormalId& face) {
-	Extents box;
-	if (bounds(box)) {
-		if (hitMoveHandles(box, getUnitMouseRay(event), point, face)) return true;
-	}
-	return false;
-}
-MouseCommand* AxisMoveTool::onMouseDown(const UIEvent& event) {
-	G3D::Vector3 point;
-	NormalId face;
-	if (hitHandle(event, point, face)) {
-		mouseDownView = event.mousePosition;
-		axis = face % 3;
-		dragPoint = Math::toGrid(point, axisMoveGrid());
-		dragRay = G3D::Ray::fromOriginAndDirection(dragPoint, normalIdToVector3(face));
-		capture();
-		return this;
-	}
-	return ArrowToolBase::onMouseDown(event);
-}
-
-void AxisMoveTool::onMouseMove(const UIEvent& event) {
-	if (!dragging && (G3D::Vector2(event.mousePosition) - G3D::Vector2(mouseDownView)).length() > 4.0f) {
-		ServiceClient<FilteredSelection<PVInstance> > selection(workspace);
-		megaDragger.reset(new MegaDragger(0, selection->items(), workspace));
-		megaDragger->startDragging(); megaDragger->alignAndCleanParts(); dragging = true;
-	}
-	if (dragging && megaDragger->anyDragPartAlive()) {
-		G3D::Vector3 hit = Math::closestPointOnRay(dragRay, getUnitMouseRay(event));
-		hit = Math::toGrid(hit, axisMoveGrid());
-		G3D::Vector3 delta = Math::toGrid(hit - dragPoint, axisMoveGrid());
-		if (delta != G3D::Vector3::zero()) {
-			megaDragger->continueDragging();
-			G3D::Vector3 moved = megaDragger->safeMoveAlongLine(delta);
-			if (moved != G3D::Vector3::zero()) dragPoint = Math::toGrid(dragPoint + moved, axisMoveGrid());
-		}
-	}
-}
-
-void AxisMoveTool::render2d(Adorn* adorn) {
-	Extents box;
-	if (bounds(box)) {
-		G3D::CoordinateFrame frame(box.center());
-		G3D::Vector3 size = box.size();
-		DrawAdorn::handles2d(size, frame, workspace->getGCamera(), adorn, G3D::Color3::orange());
-	}
-}
-void AxisMoveTool::render3dAdorn(Adorn* adorn) {
-	Extents box;
-	if (bounds(box)) {
-		G3D::CoordinateFrame frame(box.center());
-		G3D::Vector3 size = box.size();
-		G3D::CoordinateFrame cameraFrame = workspace->getGCamera().getCoordinateFrame();
-		DrawAdorn::handles3d(size, frame, adorn, HANDLE_MOVE, cameraFrame.translation);
-	}
-}
-
-MouseCommand* AxisMoveTool::isSticky() const { return new AxisMoveTool(workspace); }
-MouseCommand* AxisMoveTool::onMouseUp(const UIEvent&) {
-	if (dragging) {
-		megaDragger->finishDragging();
-		megaDragger.release();
-		dragging = false;
-		recordCameraHistory(getName().c_str(), workspace);
-	}
-	releaseCapture();
-	return NULL;
-}
-void AxisMoveTool::onMouseIdle(const UIEvent& event) {
-	ArrowToolBase::onMouseIdle(event);
-	if (captured()) cursor = "DragCursor";
-	else {
-		G3D::Vector3 point;
-		NormalId face;
-		if (hitHandle(event, point, face)) cursor = "ResizeCursor";
-		else cursor = ArrowToolBase::getCursorName();
-	}
-}
-
-}
-
-template class RBX::ServiceClient<RBX::FilteredSelection<RBX::PVInstance> >;
-template class RBX::ServiceClient<RBX::Selection>;
-template class boost::function0<unsigned int,std::allocator<boost::function_base> >;
-template class boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance> >;
-template class boost::shared_ptr<RBX::Selection>;
-template class boost::shared_ptr<RBX::Workspace>;
-template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Primitive *> >;
-template class std::auto_ptr<RBX::MegaDragger>;
-template class std::vector<RBX::Primitive *,std::allocator<RBX::Primitive *> >;
-
 #include "tool/ModelTool.h"
+#include "v8datamodel/Workspace.h"
 #include "v8datamodel/PartInstance.h"
 
 namespace RBX {
@@ -163,55 +22,140 @@ void ModelTool::render3dAdorn(Adorn* adorn)
 }
 }
 
-#include "tool/ModelTools.h"
+#include "v8datamodel/DataModel.h"
+#include "tool/MegaDragger.h"
+#include "tool/AxisMoveTool.h"
+#include "tool/AxisMoveGrid.h"
+#include "tool/Dragger.h"
+#include "util/Math.h"
+#include "util/Extents.h"
+
+namespace RBX {
+bool hitMoveHandles(const Extents&, const G3D::Ray&, G3D::Vector3&, NormalId&);
+bool AxisMoveTool::hitHandle(const UIEvent& event, G3D::Vector3& point, NormalId& face) {
+    Extents box;
+    if (bounds(box)) {
+        if (hitMoveHandles(box, getUnitMouseRay(event), point, face)) return true;
+    }
+    return false;
+}
+MouseCommand* AxisMoveTool::onMouseDown(const UIEvent& event) {
+    G3D::Vector3 point;
+    NormalId face;
+    if (hitHandle(event, point, face)) {
+        mouseDownView = event.mousePosition;
+        axis = face % 3;
+        dragPoint = Math::toGrid(point, axisMoveGrid());
+        dragRay = G3D::Ray::fromOriginAndDirection(dragPoint, normalIdToVector3(face));
+        capture();
+        return this;
+    }
+    return ArrowToolBase::onMouseDown(event);
+}
+}
+
+#include "StandardVerbs.h"
+
+namespace RBX {
+void recordCameraHistory(const char*, const Instance*);
+MouseCommand* AxisMoveTool::isSticky() const { return new AxisMoveTool(workspace); }
+MouseCommand* AxisMoveTool::onMouseUp(const UIEvent&) {
+    if (dragging) {
+        megaDragger->finishDragging();
+        megaDragger.release();
+        dragging = false;
+        recordCameraHistory(getName().c_str(), workspace);
+    }
+    releaseCapture();
+    return NULL;
+}
+void AxisMoveTool::onMouseIdle(const UIEvent& event) {
+    ArrowToolBase::onMouseIdle(event);
+    if (captured()) cursor = "DragCursor";
+    else {
+        G3D::Vector3 point;
+        NormalId face;
+        if (hitHandle(event, point, face)) cursor = "ResizeCursor";
+        else cursor = ArrowToolBase::getCursorName();
+    }
+}
+}
+
+#include "v8datamodel/Selection.h"
+
+namespace RBX {
+void AxisMoveTool::onMouseMove(const UIEvent& event) {
+    if (!dragging && (G3D::Vector2(event.mousePosition) - G3D::Vector2(mouseDownView)).length() > 4.0f) {
+        ServiceClient<FilteredSelection<PVInstance> > selection(workspace);
+        megaDragger.reset(new MegaDragger(0, selection->items(), workspace));
+        megaDragger->startDragging(); megaDragger->alignAndCleanParts(); dragging = true;
+    }
+    if (dragging && megaDragger->anyDragPartAlive()) {
+        G3D::Vector3 hit = Math::closestPointOnRay(dragRay, getUnitMouseRay(event));
+        hit = Math::toGrid(hit, axisMoveGrid());
+        G3D::Vector3 delta = Math::toGrid(hit - dragPoint, axisMoveGrid());
+        if (delta != G3D::Vector3::zero()) {
+            megaDragger->continueDragging();
+            G3D::Vector3 moved = megaDragger->safeMoveAlongLine(delta);
+            if (moved != G3D::Vector3::zero()) dragPoint = Math::toGrid(dragPoint + moved, axisMoveGrid());
+        }
+    }
+}
+}
+
+#include "tool/BasicMouseTools.h"
+#include "v8datamodel/Explosion.h"
 #include "util/Sound.h"
 
 namespace RBX {
-Instance* findUnanchoredPart(Instance* instance)
+char sHammerTool[] = "Hammer";
+void HammerTool::onMouseIdle(const UIEvent& input)
 {
-    if (PartInstance* part = dynamic_cast<PartInstance*>(instance))
-        if (!part->getAnchored()) return part;
-    boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > children = instance->children.read();
-    if (children) {
-        std::vector<boost::shared_ptr<Instance> >::const_iterator end = children->end();
-        std::vector<boost::shared_ptr<Instance> >::const_iterator it = children->begin();
-        for (; it != end; ++it)
-            if (findUnanchoredPart(it->get())) return it->get();
+    partInstance = shared_from(getUnlockedPartByLocalCharacter(input));
+}
+
+void HammerTool::render3dAdorn(Adorn* adorn)
+{
+    if (partInstance) partInstance->render3dSelect(adorn, static_cast<SelectState>(1));
+}
+
+const std::string HammerTool::getCursorName() const
+{
+    return partInstance ? "HammerOverCursor" : "HammerCursor";
+}
+
+MouseCommand* HammerTool::isSticky() const { return new HammerTool(workspace); }
+
+MouseCommand* HammerTool::onMouseDown(const UIEvent&)
+{
+    if (partInstance) {
+        boost::shared_ptr<Explosion> explosion = Creatable<Instance>::create<Explosion>();
+        Explosion::propPosition.setValue(explosion.get(), partInstance->getCoordinateFrame().translation);
+        Explosion::propBlastPressure.setValue(explosion.get(), 0.0f);
+        explosion->setParent(workspace);
+        partInstance->setParent(NULL);
+        ServiceProvider::create<Soundscape::SoundService>(workspace)->playSound(BOMB_SOUND);
     }
     return NULL;
 }
 
-void applyAnchored(Instance* instance, const bool& value)
+template<> const Name& Named<MouseCommand, sHammerTool>::getName() const
 {
-    bool local = value;
-    if (PartInstance* part = dynamic_cast<PartInstance*>(instance))
-        part->setAnchored(local);
-    else {
-        Instance::AnchorAction action = { local };
-        instance->applyAnchoredToChildren(action);
-    }
+    return NativeToolName<HammerTool>::get();
+}
+template<> MouseCommand* TToolVerb<HammerTool, RunStateVerb>::newMouseCommand()
+{
+    return new HammerTool(dataModel->getWorkspace());
+}
 }
 
-void AnchorTool::onMouseHover(const UIEvent& input)
-{
-    boost::shared_ptr<Instance> previous = target;
-    ModelTool::onMouseHover(input);
-    if (previous != target) {
-        bool value = target ? findUnanchoredPart(target.get()) == NULL : false;
-        anchored = value;
-    }
-}
+template class RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>;
+template class RBX::Reflection::TypedPropertyDescriptor<float>;
+template class boost::shared_ptr<RBX::Explosion>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>::GetSet>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<float>::GetSet>;
 
-MouseCommand* AnchorTool::onMouseDown(const UIEvent&)
-{
-    if (target && !PartInstance::getLocked(target.get())) {
-        bool value = findUnanchoredPart(target.get()) != NULL;
-        applyAnchored(target.get(), value);
-        ServiceProvider::create<Soundscape::SoundService>(workspace)->playSound(PING_SOUND);
-    }
-    return this;
-}
-}
+#include "tool/ModelTools.h"
 
 namespace RBX {
 const std::string AnchorTool::getCursorName() const
@@ -325,6 +269,8 @@ MouseCommand* SlingshotTool::isSticky() const { return new SlingshotTool(workspa
 namespace RBX {
 SurfaceTool::SurfaceTool(Workspace* workspace) : MouseCommand(workspace), surface(NULL) {}
 }
+
+#include "AppDraw/DrawAdorn.h"
 
 namespace RBX {
 void recordCameraHistory(const char*, const Instance*);
