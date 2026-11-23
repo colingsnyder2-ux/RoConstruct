@@ -205,6 +205,18 @@ namespace RBX
 		return cframe;
 	}
 
+#ifdef HUMANOID_HEADER_DECLARES_FINDRIGHTARM
+	// 005d7a90 (placeholder func_005d7a90; caller Tool::computeDesiredState 005fd460, ToolEvents.cpp): openrbx
+	// humanoid/Humanoid.cpp findRightArm. getParent (+0x104) tested first, the std::string("Right Arm") 0083c4dc built
+	// only on that branch (flag byte, conditional ~basic_string), findFirstChildByName 00557950, no cast code.
+	// Blocked: native-headers/humanoid/Humanoid2008.h does not declare findRightArm (the donor-shaped humanoid/Humanoid.h
+	// does); measured byte-identical against a scratch Humanoid2008.h with the declaration (batch 44).
+	PartInstance* Humanoid::findRightArm() const
+	{
+		return static_cast<PartInstance*>(getParent() ? getParent()->findFirstChildByName("Right Arm") : NULL);
+	}
+#endif
+
 	void Humanoid::renderWaypoint(Adorn* adorn, const G3D::Vector3& waypoint)
 	{
 		DrawAdorn::cylinder(adorn, G3D::CoordinateFrame(waypoint), 1, 0.2f, 1.0f, G3D::Color3::green());

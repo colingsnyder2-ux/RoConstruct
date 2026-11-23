@@ -24,6 +24,9 @@ namespace RBX
 		perpVel = body1Velocity - normalVelMul;
 	}
 
+	// 00613080 (placeholder func_00613080; GeoPair2008.h): same 95 bytes, but the original schedules the inline
+	// Body::accumulateForce root +0x10 -> simBody +0x2c loads between the y load and its fchs (0061309e); here they
+	// follow the third fstp. A named negated local did not move them (batch 44).
 	void GeoPair::forceToBodies(const G3D::Vector3& _force, const G3D::Vector3& _position)
 	{
 		this->body0->accumulateForce(-_force, _position);

@@ -88,13 +88,13 @@ namespace RBX
 		{
 			G3D::Vector3 axis = f0.getAxis(i);
 
-			float f0min, f0max;
+			// 00649e90: openrbx util/Face.cpp shape (one declaration of the four bounds; f1max - byAtLeast is
+			// compared with f0min, then f1min + byAtLeast with f0max).
+			float f0min, f0max, f1min, f1max;
 			f0.minMax(f0.c0, axis, f0min, f0max);
-
-			float f1min, f1max;
 			f1.minMax(f0.c0, axis, f1min, f1max);
 
-			if ((f0min - byAtLeast) < f1min || (f0max + byAtLeast) > f1max)
+			if (f1max - byAtLeast < f0min || f0max < f1min + byAtLeast)
 				return false;
 		}
 		
