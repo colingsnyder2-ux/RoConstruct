@@ -8,6 +8,9 @@
 #include "util/ContentProvider.h"
 #include "util/MeshId.h"
 #include <G3D/Color3.h>
+#include <G3D/Vector3.h>
+#include "util/TextureId.h"
+#include "util/Sound.h"
 
 namespace RBX {
 namespace Reflection {
@@ -107,6 +110,47 @@ bool TypedPropertyDescriptor<MeshId>::setStringValue(DescribedBase* instance, co
 		return true;
 	}
 	return false;
+}
+
+// 0056e0c0 (vtable 008158d4 slot 7)
+template<>
+std::string TypedPropertyDescriptor<std::string>::getStringValue(const DescribedBase* instance) const
+{
+	return getValue(instance);
+}
+
+// 0056e310 (vtable 00832c28 slot 7)
+template<>
+std::string TypedPropertyDescriptor<G3D::Vector3>::getStringValue(const DescribedBase* instance) const
+{
+	return StringConverter<G3D::Vector3>::convertToString(getValue(instance));
+}
+
+// 00597b50 (vtable 00837810 slot 7) - identical-code folded with ContentId
+template<>
+std::string TypedPropertyDescriptor<Soundscape::SoundId>::getStringValue(const DescribedBase* instance) const
+{
+	return StringConverter<Soundscape::SoundId>::convertToString(getValue(instance));
+}
+
+// 00597bd0 (vtable 00837810 slot 8)
+template<>
+bool TypedPropertyDescriptor<Soundscape::SoundId>::setStringValue(DescribedBase* instance, const std::string& text) const
+{
+	Soundscape::SoundId value;
+	if (StringConverter<Soundscape::SoundId>::convertToValue(text, value))
+	{
+		getset->setValue(instance, value);
+		return true;
+	}
+	return false;
+}
+
+// 00597b50 (vtable 00832494 slot 7) - identical-code folded with ContentId
+template<>
+std::string TypedPropertyDescriptor<TextureId>::getStringValue(const DescribedBase* instance) const
+{
+	return StringConverter<TextureId>::convertToString(getValue(instance));
 }
 
 }
