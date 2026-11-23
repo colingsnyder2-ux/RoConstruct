@@ -4,13 +4,10 @@
 // own file because it needs the native Clump / Joint headers (NATIVE_CLUMP_DECL, part-embedded native-body Primitive),
 // so NetworkPhysics.cpp's flags and includes stay unchanged. Flags follow the sender units (/fp:fast).
 //
-// BLOCKED (guard below): (1) core v8tree/Instance.h does not declare Instance::isAncestorOf 004c9c50
-// (?isAncestorOf@Instance@RBX@@QBE_NPBV12@@Z, registry; thiscall, ret 4); (2) Network/Replicator2008.h (not this
-// lease) keeps findTargetPlayer (slot 17, `call [edx+0x44]`) protected and has no `friend class
-// RoundRobinPhysicsSender;` (PhysicsSender / InterpolatingPhysicsReceiver already have that friendship).
-// Measured once (b37 nw01) with scratch copies of both headers carrying those two lines: 312 B, IDENTICAL to the target
-// with relocations masked. The registry row is still the placeholder func_004caaf0 (no candidate name).
-#ifdef ROUNDROBIN_SENDER_HEADERS_DECLARE_ISANCESTOROF
+// Both former blockers are resolved: core v8tree/Instance.h declares Instance::isAncestorOf 004c9c50
+// (?isAncestorOf@Instance@RBX@@QBE_NPBV12@@Z, thiscall, ret 4) and Network/Replicator2008.h has
+// `friend class RoundRobinPhysicsSender;` for findTargetPlayer (slot 17, `call [edx+0x44]`). The registry row is still
+// the placeholder func_004caaf0 (no candidate name).
 #define NATIVE_PRIMITIVE_NATIVE_BODY
 #define NATIVE_CLUMP_DECL
 #define NATIVE_REPLICATOR_NO_STATS_ITEM
@@ -74,4 +71,3 @@ namespace RBX
 		}
 	}
 }
-#endif

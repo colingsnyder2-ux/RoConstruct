@@ -66,6 +66,10 @@ namespace RBX
 			// NetworkSettings maxSendBPS +0x154, minExtraPing +0x158, extraPingVariance +0x15c; caller Client::connect
 			// 004a0c54). Body in PeerRecovery_004b5700.cpp.
 			void updateNetworkSimulator();
+			// 004ac9e0 (INFERRED name; registry placeholder func_004ac9e0): the setter of the reflected function
+			// BoundFuncDesc<Peer, void(bool), 1> "LogPackets" (static initializer 007f2260). Body in
+			// NetworkClientServer2008Peer.cpp.
+			void logPackets(bool value);
 		};
 	}
 }

@@ -83,7 +83,7 @@ Reflection::BoundProp<G3D::Vector2int16, 1> Player::prop_ClientSimulateLow("Clie
 Reflection::BoundProp<G3D::Vector2int16, 1> Player::prop_ClientSimulateHigh("ClientSimulateHigh", "DPHYS", &Player::clientSimulateHigh, Reflection::PropertyDescriptor::STREAMING); // 0096fcf0
 static Reflection::PropDescriptor<Player, BrickColor> prop_teamColor("TeamColor", "Team", &Player::getTeamColor, &Player::setTeamColor, Reflection::PropertyDescriptor::STANDARD); // 0096fd68
 static Reflection::PropDescriptor<Player, bool> prop_neutral("Neutral", "Team", &Player::getNeutral, &Player::setNeutral, Reflection::PropertyDescriptor::STANDARD); // 0096fec8
-static Reflection::SignalDesc<Player, void(std::string, boost::shared_ptr<Instance>)> event_Chatted("Chatted", "message", "recipient"); // 0096fca0
+Reflection::SignalDesc<Player, void(std::string, boost::shared_ptr<Instance>)> Player::event_Chatted("Chatted", "message", "recipient"); // 0096fca0 (class static: Players::addChatMessage 0049d630 fires it)
 static Reflection::SignalDesc<Player, void(float)> event_Idled("Idled", "time"); // 0096fc50
 
 namespace RBX

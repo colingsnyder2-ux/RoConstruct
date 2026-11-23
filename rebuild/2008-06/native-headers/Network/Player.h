@@ -1,4 +1,6 @@
 #pragma once
+// Player::event_Chatted is declared below: enables Players::addChatMessage 0049d630 in NetworkPlayers.cpp.
+#define PLAYER_HEADER_DECLARES_EVENT_CHATTED
 // 2008-06 native RBX::Network::Player (inactive). Shape after the donor tools/rbxgs Network/Player.h;
 // every base, field, virtual and descriptor below is read from the 2008-06 binary:
 //   RTTI       vtable 0082220c .?AVPlayer@Network@RBX@@ (23 bases) -> DescribedCreatable<Player,
@@ -91,6 +93,10 @@ namespace RBX
 			static Reflection::BoundProp<G3D::Vector2int16, 1> prop_ServerDemandHigh;   // 0096feac
 			static Reflection::BoundProp<G3D::Vector2int16, 1> prop_ClientSimulateLow;  // 0096fdd0
 			static Reflection::BoundProp<G3D::Vector2int16, 1> prop_ClientSimulateHigh; // 0096fcf0
+			// 0096fca0 "Chatted" (dynamic initializer in NetworkPlayer.cpp): fired by Players::addChatMessage 0049d630 from
+			// the Players unit, so it is a class member rather than a file static (b45/b46 measurements: 0049d630 318 B
+			// IDENTICAL with this declaration).
+			static Reflection::SignalDesc<Player, void(std::string, boost::shared_ptr<Instance>)> event_Chatted;
 
 		private:
 			virtual bool askAddChild(const Instance*) const
