@@ -1,0 +1,113 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /fp:fast
+// TypedPropertyDescriptor<T> string / XML members that no other native unit defines (donor-free trial,
+// rebuild/2008-06/out/donorfree/report-all-native.json). Addresses from each type's RTTI vtable (vtable slots
+// 7 getStringValue, 8 setStringValue, 10 writeValue, 11 readValue; work/donorfree-route/rtti_vtable.py). Same shapes as the
+// sibling specializations in TypedPropertyScalarMembers.cpp (flags line copied from it).
+#include "reflection/property.h"
+#include "v8xml/XmlElement.h"
+#include "util/ContentProvider.h"
+#include "util/MeshId.h"
+#include <G3D/Color3.h>
+
+namespace RBX {
+namespace Reflection {
+
+// 0056e7e0 (vtable 00815908 slot 11)
+template<>
+void TypedPropertyDescriptor<int>::readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
+{
+	if (!element->isXsiNil())
+	{
+		int value;
+		if (element->getValue(value))
+			getset->setValue(instance, value);
+	}
+}
+
+// 0056e6e0 (vtable 0080b9e8 slot 11)
+template<>
+void TypedPropertyDescriptor<bool>::readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
+{
+	if (!element->isXsiNil())
+	{
+		bool value;
+		if (element->getValue(value))
+			getset->setValue(instance, value);
+	}
+}
+
+// 0056e1c0 (vtable 00815dd4 slot 8)
+template<>
+bool TypedPropertyDescriptor<float>::setStringValue(DescribedBase* instance, const std::string& text) const
+{
+	float value;
+	if (StringConverter<float>::convertToValue(text, value))
+	{
+		getset->setValue(instance, value);
+		return true;
+	}
+	return false;
+}
+
+// 0056f560 (vtable 00832bf4 slot 7)
+template<>
+std::string TypedPropertyDescriptor<G3D::Color3>::getStringValue(const DescribedBase* instance) const
+{
+	return StringConverter<G3D::Color3>::convertToString(getValue(instance));
+}
+
+// 0056f5a0 (vtable 00832bf4 slot 8)
+template<>
+bool TypedPropertyDescriptor<G3D::Color3>::setStringValue(DescribedBase* instance, const std::string& text) const
+{
+	G3D::Color3 value;
+	if (StringConverter<G3D::Color3>::convertToValue(text, value))
+	{
+		getset->setValue(instance, value);
+		return true;
+	}
+	return false;
+}
+
+// 00597b50 (vtable 008312e0 slot 7)
+template<>
+std::string TypedPropertyDescriptor<ContentId>::getStringValue(const DescribedBase* instance) const
+{
+	return StringConverter<ContentId>::convertToString(getValue(instance));
+}
+
+// 00597bd0 (vtable 008312e0 slot 8)
+template<>
+bool TypedPropertyDescriptor<ContentId>::setStringValue(DescribedBase* instance, const std::string& text) const
+{
+	ContentId value;
+	if (StringConverter<ContentId>::convertToValue(text, value))
+	{
+		getset->setValue(instance, value);
+		return true;
+	}
+	return false;
+}
+
+// 00597b50 (vtable 00833318 slot 7) - identical-code folded with ContentId
+template<>
+std::string TypedPropertyDescriptor<MeshId>::getStringValue(const DescribedBase* instance) const
+{
+	return StringConverter<MeshId>::convertToString(getValue(instance));
+}
+
+// 00597bd0 (vtable 00833318 slot 8)
+template<>
+bool TypedPropertyDescriptor<MeshId>::setStringValue(DescribedBase* instance, const std::string& text) const
+{
+	MeshId value;
+	if (StringConverter<MeshId>::convertToValue(text, value))
+	{
+		getset->setValue(instance, value);
+		return true;
+	}
+	return false;
+}
+
+}
+}
