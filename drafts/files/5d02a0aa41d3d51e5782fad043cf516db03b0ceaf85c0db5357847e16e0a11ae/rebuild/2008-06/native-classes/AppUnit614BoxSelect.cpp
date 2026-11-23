@@ -1,0 +1,113 @@
+// native-flags: /I{headers}/selection-iterators /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
+#include "tool/ToolsArrow.h"
+#include "v8datamodel/Selection.h"
+#include "v8datamodel/Workspace.h"
+#include "v8datamodel/Camera.h"
+#include "v8datamodel/PartInstance.h"
+#include "util/ILocation.h"
+#include "util/ISelectable3d.h"
+#include "RbxGraphics/Adorn.h"
+#include <G3D/Rect2D.h>
+#include <G3D/Color3.h>
+namespace RBX {
+void BoxSelectCommand::getMouseInstances(std::set<Instance*>& instances, const UIEvent& uiEvent, G3D::Rect2D& selectBox)
+	{
+		Camera* camera = workspace->getCamera();
+		G3D::Rect2D viewport = G3D::Rect2D::xyxy(0.0f, 0.0f, uiEvent.windowSize.x, uiEvent.windowSize.y);
+
+		for (size_t i = 0; i < workspace->numChildren(); i++)
+		{
+			ILocation* location = dynamic_cast<ILocation*>(workspace->getChild(i));
+			ISelectable3d* selectable3d = dynamic_cast<ISelectable3d*>(workspace->getChild(i));
+
+			if (location && selectable3d)
+			{
+				Instance* instance = workspace->getChild(i);
+				if (!PartInstance::getLocked(instance))
+				{
+					G3D::Vector3 gridPos = location->getLocation().translation;
+					G3D::Vector3 projection = camera->getGCamera().project(gridPos, viewport);
+
+					if (selectBox.contains(projection.xy()))
+						instances.insert(instance);
+				}
+			}
+		}
+	}
+}
+
+namespace RBX {
+void BoxSelectCommand::render2d(Adorn* adorn)
+	{
+		G3D::Rect2D temp = G3D::Rect2D::xyxy(mouseDownView.x, mouseDownView.y, mouseCurrentView.x, mouseCurrentView.y);
+		adorn->outlineRect2d(temp, 0.5f, G3D::Color3::gray());
+	}
+}
+
+namespace RBX {
+void BoxSelectCommand::onMouseMove(const UIEvent& uiEvent)
+	{
+		mouseCurrentView = uiEvent.mousePosition;
+
+		std::set<Instance*> instances;
+		getMouseInstances(instances, uiEvent, G3D::Rect2D::xyxy(mouseDownView.x, mouseDownView.y, mouseCurrentView.x, mouseCurrentView.y));
+
+		if (reverseSelecting)
+			selectReverse(instances);
+		else
+			selectAnd(instances);
+	}
+}
+
+namespace RBX {
+MouseCommand* BoxSelectCommand::onMouseDown(const UIEvent& uiEvent)
+	{
+		previousItemsInBox.clear();
+		capture();
+
+		UserInputBase* input = uiEvent.userInput;
+		reverseSelecting = input->keyDown(SDLK_RSHIFT) || input->keyDown(SDLK_LSHIFT);
+
+		if (!reverseSelecting)
+			selection->clearSelection();
+
+		mouseDownView = uiEvent.mousePosition;
+		mouseCurrentView = uiEvent.mousePosition;
+		return this;
+	}
+}
+
+namespace RBX {
+BoxSelectCommand::BoxSelectCommand(Workspace* workspace)
+		: Base(workspace),
+		  selection(workspace)
+	{
+	}
+}
+
+namespace RBX {
+// 00617a50 (registry func_00617a50; caller onMouseMove 00617d69): openrbx ToolsArrow.cpp BoxSelectCommand::selectAnd.
+// ServiceClient<Selection>::createService(true) 00581cc0 per iterator, std::_Set_difference 006165f0 (AddIterator) /
+// 006167a0 (RemoveIterator), then the set assignment (_Tree erase 0064ad30 / _Copy 005ac050).
+// INFERRED: selection.operator->() for the ServiceClient conversion: the target pushes `true` to createService before
+// each iterator, as the inline operator-> does (core v8tree/Service.h declares operator T*() out of line).
+void BoxSelectCommand::selectAnd(const std::set<Instance*>& newItemsInBox)
+{
+	std::set_difference(newItemsInBox.begin(), newItemsInBox.end(), previousItemsInBox.begin(), previousItemsInBox.end(),
+		Selection::AddIterator(selection.operator->()));
+	std::set_difference(previousItemsInBox.begin(), previousItemsInBox.end(), newItemsInBox.begin(), newItemsInBox.end(),
+		Selection::RemoveIterator(selection.operator->()));
+	previousItemsInBox = newItemsInBox;
+}
+
+// 00617b30 (registry func_00617b30; caller onMouseMove 00617d5b): openrbx BoxSelectCommand::selectReverse
+// (ToggleIterator, std::_Set_difference 00616950 twice).
+void BoxSelectCommand::selectReverse(const std::set<Instance*>& newItemsInBox)
+{
+	std::set_difference(newItemsInBox.begin(), newItemsInBox.end(), previousItemsInBox.begin(), previousItemsInBox.end(),
+		Selection::ToggleIterator(selection.operator->()));
+	std::set_difference(previousItemsInBox.begin(), previousItemsInBox.end(), newItemsInBox.begin(), newItemsInBox.end(),
+		Selection::ToggleIterator(selection.operator->()));
+	previousItemsInBox = newItemsInBox;
+}
+}
