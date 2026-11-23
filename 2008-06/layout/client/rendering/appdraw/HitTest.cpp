@@ -1,3 +1,14 @@
+#include <AppDraw/HitTest.h>
+
+namespace RBX {
+float HitTest::distanceToHandleRadius(const G3D::Vector3& a, const G3D::Vector3& b) {
+    float distance = (a - b).magnitude();
+    float result = 0.5f;
+    if (distance > 28.66242027282715f) result = distance * 0.017444444820284843f;
+    return result;
+}
+}
+
 #include "AppDraw/HitTest.h"
 #include "G3D/CollisionDetection.h"
 #include "G3D/AABox.h"

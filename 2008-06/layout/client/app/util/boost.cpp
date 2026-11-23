@@ -1,3 +1,19 @@
+#include "Network/Players.h"
+#include <boost/bind.hpp>
+
+namespace RBX
+{
+	namespace Network
+	{
+		AbuseReporter::AbuseReporter(std::string abuseUrl)
+			: _data(new data())
+		{
+			requestProcessor.reset(
+				new worker_thread(boost::bind(&AbuseReporter::processRequests, _data, abuseUrl), "rbx_abusereporter"));
+		}
+	}
+}
+
 #include <windows.h>
 #include <string>
 #include <exception>

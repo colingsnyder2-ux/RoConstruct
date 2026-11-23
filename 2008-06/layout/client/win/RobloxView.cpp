@@ -157,11 +157,7 @@ void CRobloxView::OnEndPrinting(CDC* pDC, CPrintInfo* pInfo) {}
 void CRobloxView::OnDraw(CDC* pDC) {
 }
 
-void CRobloxView::onEvent(const RBX::Network::Players* source, RBX::SuperSafeChanged event) {}
-
 void CRobloxView::onEvent(const RBX::ServiceProvider* source, RBX::ServiceAdded event) {}
-
-void CRobloxView::onEvent(const RBX::ServiceProvider* source, RBX::ServiceRemoving event) {}
 
 void CRobloxView::detachDataModel() {
     RBX::DataModel::Lock lock(owner_170);
@@ -306,6 +302,11 @@ void CRobloxView::OnUpdateAlwaysEnable(CCmdUI* pCmdUI) {
 }
 
 void CRobloxView::insertFromFile(int mode) {
+}
+
+void CRobloxView::onEvent(const RBX::Network::Players *, RBX::SuperSafeChanged)
+{
+	::PostMessageA(m_hWnd, 0x46b, 0, 0);
 }
 
 #include <afxwin.h>

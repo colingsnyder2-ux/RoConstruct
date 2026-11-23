@@ -110,6 +110,26 @@ template class boost::shared_ptr<RBX::RunService>;
 template class std::_Vector_iterator<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance> > >;
 template class std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport> >;
 
+#include "G3D/System.h"
+
+namespace RBX
+{
+	namespace Network
+	{
+		// INFERRED: name from the 2007 donor declaration static void Player::onLocalPlayerNotIdle(ServiceProvider*);
+		void Player::onLocalPlayerNotIdle(ServiceProvider* serviceProvider)
+		{
+			Players* players = serviceProvider->find<Players>();
+			if (players)
+			{
+				Player* player = players->getLocalPlayer();
+				if (player && ServiceProvider::findServiceProvider(player))
+					player->lastActivityTime = G3D::System::getLocalTime();
+			}
+		}
+	}
+}
+
 #include "v8datamodel/ModelInstance.h"
 #include "v8datamodel/Camera.h"
 #include "humanoid/Humanoid2008.h"

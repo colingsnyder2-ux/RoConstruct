@@ -1,19 +1,73 @@
+#undef _RELEASEASSERT
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Surface.h"
+#include "v8xml/XmlElement.h"
+#include "reflection/enumconverter.h"
+#include "util/Name.h"
 
-namespace RBX {
-Surface::Surface(PartInstance* partInstance, NormalId surfId)
-		: partInstance(partInstance),
-		  surfId(surfId)
+namespace RBX
+{
+	void Surface::readValue(const XmlElement* element, IReferenceBinder& binder)
 	{
-	}
-}
+		static const Name& desc_LegacyType = Name::declare("Type", -1);
+		static const Name& desc_LegacySurfaceInput = Name::declare("SurfaceInput", -1);
+		static const Name& desc_LegacyParamA = Name::declare("ParamA", -1);
+		static const Name& desc_LegacyParamB = Name::declare("ParamB", -1);
+		static const Name& desc_LegacyConstraint = Name::declare("Constraint", -1);
 
-namespace RBX {
-bool Surface::isControllable() const
-	{
-		Controller::InputType inputType = getInput();
-		return inputType != Controller::NO_INPUT && inputType != Controller::CONSTANT_INPUT && inputType != Controller::SIN_INPUT;
+		const XmlElement* child = element->firstChild();
+		while (child)
+		{
+			const Name* name = NULL;
+			if (!child->isXsiNil() && child->findAttributeValue(name_name, name))
+			{
+				if (name == &desc_LegacyType)
+				{
+					std::string sValue;
+					if (child->getValue(sValue))
+					{
+						SurfaceType e;
+						if (Reflection::EnumDesc<SurfaceType>::singleton().convertToValue(Name::lookup(sValue.c_str()), e))
+							setSurfaceType(e);
+						else
+							setSurfaceType(NO_SURFACE);
+					}
+				}
+				else if (name == &desc_LegacySurfaceInput)
+				{
+					std::string sValue;
+					if (child->getValue(sValue))
+					{
+						Controller::InputType e;
+						if (Reflection::EnumDesc<Controller::InputType>::singleton().convertToValue(Name::lookup(sValue.c_str()), e))
+							setSurfaceInput(e);
+					}
+				}
+				else if (name == &desc_LegacyParamA)
+				{
+					float value;
+					if (child->getValue(value))
+						setParamA(value);
+				}
+				else if (name == &desc_LegacyParamB)
+				{
+					float value;
+					if (child->getValue(value))
+						setParamB(value);
+				}
+				else if (name == &desc_LegacyConstraint)
+				{
+					std::string sValue;
+					if (child->getValue(sValue))
+					{
+						SurfaceType e;
+						if (Reflection::EnumDesc<SurfaceType>::singleton().convertToValue(Name::lookup(sValue.c_str()), e) && e != NO_SURFACE)
+							setSurfaceType(e);
+					}
+				}
+			}
+			child = child->nextSibling();
+		}
 	}
 }
 

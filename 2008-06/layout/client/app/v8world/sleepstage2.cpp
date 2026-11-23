@@ -473,6 +473,190 @@ namespace RBX
 	}
 }
 
+namespace
+{
+	// INFERRED: donor SleepStage.h `static float sleepTolerance() { return 0.02f; }`; .rdata 00827488 holds 0.02f and
+	inline float sleepTolerance()
+	{
+		return 0.02f;
+	}
+}
+
+namespace RBX
+{
+	bool SleepStage::forceNeighborAwake(Assembly* a)
+	{
+		G3D::CoordinateFrame cofm = a->getRootClump()->getRootPrimitive()->getBody()->getBranchCofmCoordinateFrame();
+		float radius = a->getMaxRadius();
+		bool withinTolerance = a->getSleepInfo()->runningAverageState.withinTolerance(cofm, radius, 2.0f * sleepTolerance());
+
+		return !withinTolerance;
+	}
+
+	bool SleepStage::okNeighborSleep(Assembly* a)
+	{
+		G3D::CoordinateFrame cofm = a->getRootClump()->getRootPrimitive()->getBody()->getBranchCofmCoordinateFrame();
+		float radius = a->getMaxRadius();
+
+		return a->getSleepInfo()->runningAverageState.withinTolerance(cofm, radius, sleepTolerance());
+	}
+}
+
+#ifdef SLEEPSTAGE_HEADER_DECLARES_SHOULDSLEEP
+namespace RBX
+{
+	bool SleepStage::computeShouldSleep(Assembly* a)
+	{
+		G3D::CoordinateFrame cofm = a->getRootClump()->getRootPrimitive()->getBody()->getBranchCofmCoordinateFrame();
+		float maxRadius = a->getMaxRadius();
+		RunningAverageState& runningAverageState = a->getSleepInfo()->runningAverageState;
+
+		runningAverageState.update(cofm, maxRadius);
+
+		return runningAverageState.withinTolerance(cofm, maxRadius, sleepTolerance());
+	}
+
+	bool SleepStage::shouldSleep(Assembly* a)
+	{
+		if (!computeCanSleep(a))
+		{
+			return false;
+		}
+
+		if (!computeShouldSleep(a))
+		{
+			return false;
+		}
+
+		const G3D::Array<Edge*>& edges = a->getExternalEdges();
+
+		for (int i = 0; i < edges.size(); i++)
+		{
+			Edge* edge = edges[i];
+
+			if (edgeIsAwake(edge))
+			{
+				if (isAffecting(edge))
+				{
+					Assembly* other = a->otherAssembly(edge);
+
+					if (preventNeighborSleep(other))
+					{
+						return false;
+					}
+				}
+			}
+		}
+
+		return true;
+	}
+}
+#endif
+
+// native-headers/v8world/SleepStage2008.h (not assigned): its INFERRED vector element types are wrong for +0x10 /
+#ifdef SLEEPSTAGE_HEADER_DECLARES_STEP_PASSES
+namespace RBX
+{
+	bool SleepStage::isMoving(Assembly* a)
+	{
+		SleepInfo* info = a->getSleepInfo();
+		if (!info)
+			return false;
+
+		Sim::AssemblyState state = info->state;
+		return state == Sim::AWAKE || state == Sim::RECURSIVE_WAKE_PENDING || state == Sim::WAKE_PENDING;
+	}
+
+	bool SleepStage::atLeastOneAssemblyMoving(Assembly* a0, Assembly* a1)
+	{
+		return isMoving(a0) || isMoving(a1);
+	}
+
+	bool SleepStage::canThrottle(Assembly* a)
+	{
+		return a->getRootClump()->getRootPrimitive()->getBody()->getCanThrottle();
+	}
+
+	void SleepStage::stepJoints()
+	{
+		JointSet::iterator it;
+
+		for (it = steppingJoints.begin(); it != steppingJoints.end(); ++it)
+		{
+			Joint* j = *it;
+
+			Primitive* prim0 = j->getPrimitive(0);
+			Primitive* prim1 = j->getPrimitive(1);
+
+			if (!throttling || !prim0->getBody()->getCanThrottle() || !prim1->getBody()->getCanThrottle())
+			{
+				if (!atLeastOneAssemblyMoving(prim0->getAssemblyNoCheck(), prim1->getAssemblyNoCheck()))
+				{
+					toSleepingJoints.push_back(j);
+				}
+			}
+		}
+
+		changeJointState(toSleepingJoints, Sim::SLEEPING);
+		toSleepingJoints.resize(0);
+	}
+
+	void SleepStage::stepAssembliesAwake()
+	{
+		for (AssemblySet::iterator it = awake.begin(); it != awake.end(); ++it)
+		{
+			Assembly* a = *it;
+
+			if (!throttling || !canThrottle(a))
+			{
+				if (shouldSleep(a))
+				{
+					a->getSleepInfo()->sleepCount++;
+
+					if (a->getSleepInfo()->sleepCount > 20)
+					{
+						toSleepingChecking.push_back(a);
+					}
+				}
+				else
+				{
+					resetSleepCount(a);
+				}
+			}
+		}
+
+		changeAssemblyState(toSleepingChecking, Sim::SLEEPING_CHECKING);
+		toSleepingChecking.resize(0);
+	}
+
+	void SleepStage::stepAssembliesSleepingChecking()
+	{
+		for (AssemblySet::iterator it = sleepingChecking.begin(); it != sleepingChecking.end(); ++it)
+		{
+			Assembly* a = *it;
+
+			Sim::AssemblyState state = computeAssemblyState(a);
+
+			switch (state)
+			{
+			case Sim::AWAKE:
+				toWake.push_back(a);
+				break;
+
+			case Sim::SLEEPING_DEEPLY:
+				toDeep.push_back(a);
+				break;
+			}
+		}
+
+		changeAssemblyState(toWake, Sim::WAKE_PENDING);
+		changeAssemblyState(toDeep, Sim::SLEEPING_DEEPLY);
+		toWake.resize(0);
+		toDeep.resize(0);
+	}
+}
+#endif
+
 // INFERRED: RBX::SleepStage::sub_0064b7f0 (placeholder name for 0064b7f0 from the identity tier; body byte-proved against the native headers by the placeholder lane)
 
 void RBX::SleepStage::sub_0064b7f0(const std::vector<RBX::Joint*>& joints, RBX::Sim::EdgeState state)

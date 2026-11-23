@@ -24,3 +24,8 @@ namespace RBX
         }
     }
 }
+
+namespace RBX
+{
+
+}

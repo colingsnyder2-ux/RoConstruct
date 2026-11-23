@@ -1,4 +1,33 @@
 #include "v8xml/XmlElement.h"
+#include "metadata-load/v8xml/SerializerV2.h"
+
+void isolate(XmlElement* element, const std::map<RBX::Instance*, RBX::InstanceHandle>& isolationMap); // 00591d30
+
+// BLOCKER (core util/Handle.h, header owner): it declares `~InstanceHandle(void);` out of line (INFERRED header-gap
+void buildIsolationMap(XmlElement* element, std::map<RBX::Instance*, RBX::InstanceHandle>& isolationMap)
+{
+	XmlAttribute* referent = element->findAttribute(name_referent);
+	if (referent)
+	{
+		RBX::InstanceHandle h;
+		referent->getValue(h);
+
+		isolationMap[h.getTarget().get()] = RBX::InstanceHandle();
+	}
+
+	for (XmlElement* child = element->firstChild(); child != NULL; child = element->nextChild(child))
+	{
+		buildIsolationMap(child, isolationMap);
+	}
+}
+
+void SerializerV2::isolateHandles(XmlElement* root)
+{
+	std::map<RBX::Instance*, RBX::InstanceHandle> isolationMap;
+
+	buildIsolationMap(root, isolationMap);
+	isolate(root, isolationMap);
+}
 
 void isolate(XmlElement* element, const std::map<RBX::Instance*, RBX::InstanceHandle>& isolationMap);
 
@@ -16,8 +45,6 @@ void isolate(XmlElement* element, const std::map<RBX::Instance*, RBX::InstanceHa
 		isolate(child, isolationMap);
 	}
 }
-
-#include "metadata-load/v8xml/SerializerV2.h"
 
 bool ArchiveBinder::resolveIDREF(IDREFBinding binding)
 {

@@ -1,4 +1,50 @@
 #include "v8datamodel/DataModel.h"
+#include "v8datamodel/ChangeHistoryService.h"
+#include "util/RunStateOwner.h"
+#include "reflection/signal.h"
+
+namespace RBX
+{
+	// INFERRED: Service.h only forward-declares the ServiceProvider Closing event; the target passes it as one
+	class Closing
+	{
+	};
+
+	// INFERRED: the DataModel unit's "Close" signal descriptor (dword 00974fc8, vtable 008300a4
+	extern Reflection::SignalDesc<DataModel, void()> event_Closing;
+
+	void DataModel::closeDataModel(boost::shared_ptr<DataModel> dataModel, bool joinRunThread)
+	{
+		boost::shared_ptr<RunService> runService;
+		{
+			DataModel::Lock lock(dataModel);
+
+			if (ChangeHistoryService* changeHistory = ServiceProvider::find<ChangeHistoryService>(dataModel.get()))
+				changeHistory->setEnabled(false);
+
+			dataModel->renderEnabled = false;
+			runService = dataModel->runService;
+			runService->requestStop();
+		}
+
+		if (joinRunThread && runService)
+			runService->stop();
+
+		{
+			DataModel::Lock lock(dataModel);
+
+			// INFERRED: the donor calls the DataModel inline raiseClose() here (raise Closing, then fire event_Closing
+			DataModel* model = dataModel.get();
+			model->Notifier<ServiceProvider, Closing>::raise(Closing());
+			event_Closing.fire(model);
+
+			dataModel->clearContents();
+			dataModel->removeAllChildren();
+			dataModel->clearServices();
+		}
+	}
+}
+
 #include "util/Name.h"
 
 namespace RBX {
@@ -238,9 +284,21 @@ boost::shared_ptr<DataModel> DataModel::createDataModel(bool start) {
 }
 }
 
-#include "util/RunStateOwner.h"
-
 double RBX::DataModel::getDutyCycle() const { return runService->dutyCycle(); }
+
+namespace RBX {
+DataModel::Lock::Lock(const DataModel* dataModel) : lock(0) { doLock(dataModel); }
+DataModel::Lock::Lock(boost::shared_ptr<const DataModel> dataModel) : lock(0) { doLock(dataModel.get()); }
+void DataModel::Lock::doLock(const DataModel* dataModel) {
+    if (dataModel) {
+        mutex = dataModel->mutex;
+        lock = new boost::recursive_mutex::scoped_lock(*mutex);
+    }
+}
+DataModel::Lock::~Lock() { delete lock; }
+}
+
+template class boost::shared_ptr<boost::recursive_mutex>;
 
 double RBX::DataModel::getGameTime() const { return runService->gameTime(); }
 double RBX::DataModel::getFrameRate() const { return runService->frameRate(); }

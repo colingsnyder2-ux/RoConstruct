@@ -1,6 +1,108 @@
+#include "v8tree/Instance.h"
+#include "v8xml/SerializerV2.h"
+#include <boost/scoped_ptr.hpp>
+
+#ifdef NATIVE_INSTANCE_FROMXMLROOT_DECLARED
+namespace RBX {
+// INFERRED: the donor's inline Instance::toNewXmlRoot(Instance*) (openrbx v8tree/Instance.cpp), file-local because the
+static inline XmlElement* toNewXmlRoot(Instance* instance)
+{
+    XmlElement* root = SerializerV2::newRootElement();
+    root->addChild(instance->write());
+    return root;
+}
+
+boost::shared_ptr<Instance> Instance::clone()
+{
+    boost::scoped_ptr<XmlElement> root(toNewXmlRoot(this));
+    return fromXmlRoot(root.get());
+}
+}
+#endif
+
+#ifdef NATIVE_INSTANCE_SETPARENT_DECLARED
+#include <G3D/format.h>
+#include <stdexcept>
+#include <algorithm>
+
+namespace RBX {
+
+// INFERRED: 0055a8f0 raises ChildAdded; mirror of the canonical layout.
+struct ChildAdded {
+    const boost::shared_ptr<Instance> child;
+    ChildAdded(Instance* value) : child(shared_from_out_of_line(value)) {}
+    ChildAdded(const ChildAdded&); // 004116f0
+};
+
+// INFERRED: 0055a8f0 raises ChildRemoved; same single-shared_ptr layout.
+struct ChildRemoved {
+    const boost::shared_ptr<Instance> child;
+    ChildRemoved(Instance* value) : child(shared_from_out_of_line(value)) {}
+    ChildRemoved(const ChildRemoved&); // 004116f0
+};
+
+// INFERRED: the original TU had this inline; defining it here lets the optimizer
+// keep oldParent in ECX across the `contains` call in setParent (byte-exact codegen).
+bool Instance::contains(const Instance* child) const
+{
+    while (child) {
+        if (child == this)
+            return true;
+        child = child->parent;
+    }
+    return false;
+}
+
+void Instance::setParent(Instance* newParent)
+{
+    Instance* previousParent = parent;
+    if (newParent == previousParent)
+        return;
+    if (this == newParent) {
+        std::string message = G3D::format("Attempt to set %s as its own parent", getFullName().c_str());
+        throw std::runtime_error(message);
+    }
+    if (isAncestorOf(newParent)) {
+        std::string message = G3D::format("Attempt to set parent of %s to %s results in circular reference",
+                                          getFullName().c_str(), newParent->getFullName().c_str());
+        throw std::runtime_error(message);
+    }
+    boost::shared_ptr<Instance> oldParent = shared_from_out_of_line(previousParent);
+    boost::shared_ptr<Instance> self = shared_from_this();
+    if (oldParent) {
+        if (!oldParent->contains(newParent))
+            signalDescendentRemoving(self, oldParent.get(), newParent);
+        oldParent->onChildRemoving(this);
+        boost::shared_ptr<std::vector<boost::shared_ptr<Instance> > >& c = oldParent->children.write();
+        c->erase(std::find(c->begin(), c->end(), self));
+        if (c->size() == 0)
+            oldParent->children.reset();
+        parent = 0;
+        event_childRemoved.fire(oldParent.get(), self);
+        oldParent->Notifier<Instance, ChildRemoved>::raise(ChildRemoved(this));
+        oldParent->onChildRemoved(this);
+        if (oldParent->numChildren() == 0)
+            oldParent->onLastChildRemoved();
+    }
+    if (newParent)
+        newParent->children.write()->push_back(self);
+    parent = newParent;
+    if (newParent) {
+        newParent->onChildAdded(this);
+        if (!newParent->contains(oldParent.get()))
+            signalDescendentAdded(this, newParent, oldParent.get());
+        newParent->Notifier<Instance, ChildAdded>::raise(ChildAdded(this));
+        event_childAdded.fire(newParent, self);
+    }
+    onAncestorChanged(AncestorChanged(this, oldParent.get(), newParent));
+    raisePropertyChanged(propParent);
+}
+
+} // namespace RBX
+#endif
+
 #include "AppUnit558_2008/InstanceDescendantRemoving2008.h"
 #include "v8xml/XmlElement.h"
-#include <algorithm>
 #ifdef NATIVE_APPUNIT558_PENDING
 #include "v8datamodel/MergeBinder2008.h"  // IReferenceBinder (announceID slot 0)
 #endif
@@ -334,8 +436,6 @@ void Instance::applyAnchoredToChildren(AnchorAction value)
     }
 }
 }
-
-#include "v8tree/Instance.h"
 
 namespace RBX {
 Reflection::BoundProp<bool, 1> Instance::propArchivable("archivable", "Behavior", &Instance::archivable, Reflection::PropertyDescriptor::STANDARD);

@@ -129,6 +129,7 @@ namespace RBX
 	}
 }
 
+#undef _RELEASEASSERT   // the 2008 Face bodies carry no release asserts (fuzzyContainsInExtrusion 00649830, cornersAligned 006498b0, getAxis)
 #include "util/Face.h"
 #include "util/Math.h"
 
@@ -163,14 +164,14 @@ namespace RBX
 			G3D::Plane p0(face.c0, face.c1, face.c3);
 
 			G3D::Vector3 normal;
-			double distance;
+			float distance;
 			p0.getEquation(normal, distance);
 
 			Face overlapOn1 = otherFace.projectOverlapOnMe(face);
 
 			for (int j = 0; j < 4; ++j)
 			{
-				if (overlapOn1[j].dot(normal) > tolerance)
+				if (fabs(overlapOn1[j].dot(normal) + distance) > tolerance)
 					return false;
 			}
 		}
@@ -308,4 +309,9 @@ namespace RBX
 		}
 		return face;
 	}
+}
+
+namespace RBX
+{
+
 }

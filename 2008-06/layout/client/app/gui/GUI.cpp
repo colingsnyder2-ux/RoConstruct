@@ -1,133 +1,242 @@
 #include "gui/Gui.h"
 
+namespace RBX {
+GuiItem::GuiItem() : guiSize(0, 0) { setName("Unnamed GuiItem"); }
+}
+
+void RBX::GuiItem::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
+{
+    if (instance.get() == focus.get())
+        loseFocus();
+    Instance::onDescendentRemoving(instance);
+}
+
 namespace RBX
 {
-	const G3D::Color4& GuiItem::menuSelect()
+
+// INFERRED: unit-local inline definitions (the ScriptFileLoad.cpp getContext pattern). gui/Gui.h declares both out of
+inline GuiItem* GuiItem::getFocus()
+{
+	return focus.get();
+}
+
+// INFERRED: same pattern; getMyRect 00573310 (UnifiedWidgetLayout.cpp) is inlined by the handlers (getPosition slot
+inline Rect GuiItem::getMyRect() const
+{
+	G3D::Vector2 position = getPosition();
+	return Rect(position, position + getSize());
+}
+
+inline void UnifiedWidget::setMenuState(MenuState state)
+{
+	if (menuState != state)
 	{
-		static G3D::Color4 c(0.7f, 0.7f, 0.7f, 1.0f);
-		return c;
+		menuState = state;
+		onMenuStateChanged();
+	}
+}
+
+GuiResponse UnifiedWidget::processShown_InTitle(const GuiEvent& event)
+{
+	loseFocus();
+
+	if (menuState == SHOWN)
+	{
+		if (event.eventType == UIEvent::MOUSE_LEFT_BUTTON_UP)
+			setMenuState(HOVER);
+	}
+	else if (event.eventType == UIEvent::MOUSE_LEFT_BUTTON_UP)
+	{
+		setMenuState(SHOWN);
 	}
 
-	Rect GuiItem::getMyRect() const
+	return GuiResponse::used();
+}
+
+GuiResponse UnifiedWidget::processHover(const GuiEvent& event)
+{
+	loseFocus();
+
+	if (getMyRect().pointInRect(event.mousePosition))
 	{
-		G3D::Vector2 position = getPosition();
-		return Rect(position, position + getSize());
-	}
-
-	void GuiItem::label2d(Adorn* adorn, const std::string& label, const G3D::Color4& fill, const G3D::Color4& border,
-		Adorn::XAlign align) const
-	{
-		if (label.size() == 0)
-			return;
-
-		Rect myRect = getMyRect();
-
-		G3D::Vector2 size = myRect.size();
-		G3D::Vector2 pos = myRect.center();
-
-		switch (align)
+		switch (event.eventType)
 		{
-		case Adorn::XALIGN_RIGHT:
-			pos.x = myRect.high.x - size.x * 0.1f;
+		case UIEvent::MOUSE_LEFT_BUTTON_DOWN:
+			setMenuState(SHOWN_APPEARING);
 			break;
-
-		case Adorn::XALIGN_CENTER:
-			break;
-
-		default:
-			pos.x = myRect.low.x + size.x * 0.1f;
+		case UIEvent::MOUSE_LEFT_BUTTON_UP:
+			setMenuState(SHOWN);
 			break;
 		}
 
-		adorn->drawFont2D(label, pos, getFontSize(), fill, border, align, Adorn::YALIGN_CENTER, Adorn::PROPORTIONAL_SPACING);
+		return GuiResponse::used();
 	}
 
-	G3D::Vector2 UnifiedWidget::childOffset() const
-	{
-		return G3D::Vector2(0.0f, 28.0f);
-	}
+	setMenuState(NOTHING);
+	return GuiResponse::notUsed();
+}
 
-	void TopMenuBar::render2d(Adorn* adorn)
+GuiResponse UnifiedWidget::processNothing(const GuiEvent& event)
+{
+	loseFocus();
+
+	if (getMyRect().pointInRect(event.mousePosition))
 	{
-		if (isVisible())
+		switch (event.eventType)
 		{
-			if (backdropColor != G3D::Color4::clear())
-				adorn->rect2d(getMyRect2D(), backdropColor);
+		case UIEvent::MOUSE_LEFT_BUTTON_DOWN:
+		case UIEvent::MOUSE_LEFT_BUTTON_UP:
+			setMenuState(SHOWN_APPEARING);
+			return GuiResponse::used();
+		case UIEvent::MOUSE_MOVE:
+			setMenuState(HOVER);
+			return GuiResponse::used();
+		}
 
-			for (size_t i = 0; i < numChildren(); i++)
+		return GuiResponse::notUsed();
+	}
+
+	setMenuState(NOTHING);
+	return GuiResponse::notUsed();
+}
+}
+
+RBX::GuiResponse RBX::GuiItem::process(const GuiEvent& event)
+{
+    if ((int)event.eventType >= 1 && event.eventType == UIEvent::MOUSE_IDLE)
+        return GuiResponse::notUsed();
+    if (focus) {
+        if (focus->canLoseFocus()) {
+            GuiResponse result = processNonFocus(event);
+            if (result.wasUsed())
+                return result;
+        }
+        GuiResponse result = focus->process(event);
+        if (result.wasUsed())
+            return result;
+        loseFocus();
+    }
+    return processNonFocus(event);
+}
+
+const G3D::Color4& RBX::GuiItem::disabledFill() {
+    static G3D::Color4 c(0.7f, 0.7f, 0.7f, 0.5f);
+    return c;
+}
+
+const G3D::Color4& RBX::GuiItem::translucentBackdrop()
+{
+    static const G3D::Color4 c(0.6f, 0.6f, 0.6f, 0.6f);
+    return c;
+}
+
+RBX::GuiResponse RBX::GuiItem::processNonFocus(const GuiEvent& event)
+{
+    for (size_t i = 0; i < numChildren(); ++i) {
+        GuiItem* item = dynamic_cast<GuiItem*>(getChild(i));
+        if (item && item != focus.get()) {
+            GuiResponse response = item->process(event);
+            if (response.wasUsed()) {
+                loseFocus();
+                focus = shared_from(item);
+                focus->loseFocus();
+                return response;
+            }
+        }
+    }
+    return GuiResponse::notUsed();
+}
+namespace RBX {
+GuiItem* GuiItem::getGuiItem(int index)
+{
+    return dynamic_cast<GuiItem*>(getChild(index));
+}
+}
+
+namespace RBX {
+const GuiItem* GuiItem::getGuiParent() const
+{
+    return dynamic_cast<const GuiItem*>(getParent());
+}
+}
+
+namespace RBX {
+const G3D::Color4& GuiItem::menuSelect()
+{
+    static G3D::Color4 c(0.7f, 0.7f, 0.7f, 1.0f);
+    return c;
+}
+}
+
+namespace RBX {
+const G3D::Color4& GuiItem::menuEnabledFill()
+{
+    static G3D::Color4 c(0.3f, 0.3f, 0.3f, 1.0f);
+    return c;
+}
+}
+
+namespace RBX {
+const G3D::Color4& GuiItem::menuDisabledFill()
+{
+    static G3D::Color4 c(0.6f, 0.6f, 0.6f, 1.0f);
+    return c;
+}
+}
+
+namespace RBX
+{
+#ifdef UNIFIEDWIDGET_OUTOFTITLE_IN_GUI_UNIT
+GuiResponse UnifiedWidget::processShown_OutOfTitle(const GuiEvent& event)
+{
+	UnifiedWidget* oldFocus = dynamic_cast<UnifiedWidget*>(getFocus());
+
+	switch (event.eventType)
+	{
+	case UIEvent::MOUSE_LEFT_BUTTON_DOWN:
+	case UIEvent::MOUSE_LEFT_BUTTON_UP:
+		{
+			GuiResponse response = GuiItem::process(event);
+
+			if (response.wasNotUsed() || response.wasFinished())
 			{
-				GuiItem* current = dynamic_cast<GuiItem*>(getChild(i));
-				if (current)
-					current->render2d(adorn);
+				if (response.wasFinished())
+					loseFocus();
+
+				setMenuState(NOTHING);
 			}
+
+			return response;
 		}
-	}
-
-	void UnifiedWidget::render2dMe(Adorn* adorn)
-	{
-		adorn->rect2d(getMyRect2D(), menuState != NOTHING ? menuSelect() : G3D::Color4(G3D::Color3::white()));
-		adorn->outlineRect2d(getMyRect2D(), 1.0f, G3D::Color3::black());
-		label2d(adorn, getName(), G3D::Color3::black(), G3D::Color4::clear(), Adorn::XALIGN_CENTER);
-	}
-
-	void UnifiedWidget::render2dChildren(Adorn* adorn)
-	{
-		if (showChildren())
+	case UIEvent::MOUSE_MOVE:
 		{
-			for (size_t i = 0; i < numChildren(); ++i)
+			MenuState state = oldFocus != NULL ? oldFocus->getMenuState() : NOTHING;
+
+			GuiItem::process(event);
+
+			if (oldFocus != NULL)
 			{
-				GuiItem* item = dynamic_cast<GuiItem*>(getChild(i));
-				if (item)
-					item->render2d(adorn);
+				UnifiedWidget* newFocus = dynamic_cast<UnifiedWidget*>(getFocus());
+
+				if (newFocus != NULL && newFocus != oldFocus)
+					newFocus->setMenuState(state);
 			}
+
+			return GuiResponse::used();
 		}
 	}
 
-	void UnifiedWidget::render2d(Adorn* adorn)
-	{
-		if (isVisible())
-		{
-			render2dMe(adorn);
-			render2dChildren(adorn);
-		}
-	}
+	return GuiResponse::notUsed();
+}
+#endif
 
-	G3D::Vector2 UnifiedWidget::firstChildPosition() const
-	{
-		G3D::Vector2 position = getPosition();
-		G3D::Vector2 size = getSize();
-		position.x = (size.x + 4.0f) + position.x;
-		int rowHeight = int(size.y) + 4;
-		int maxRows = (int(GuiRoot::getCanvasSize().y) - 120) / rowHeight;
-		int row = (int(position.y) - 20) / rowHeight;
-		int half = int(numChildren()) / 2;
-		maxRows -= half;
-		row = std::max(half, row);
-		row = std::min(maxRows, row);
-		position.y = float((row - half) * rowHeight + 20);
-		return position;
-	}
+GuiResponse UnifiedWidget::processShown(const GuiEvent& event)
+{
+	if (getMyRect().pointInRect(event.mousePosition))
+		return processShown_InTitle(event);
 
-	G3D::Vector2 UnifiedWidget::getChildPosition(const GuiItem* child) const
-	{
-		G3D::Vector2 position = firstChildPosition();
-		for (size_t i = 0; i < numChildren(); ++i)
-		{
-			const GuiItem* item = dynamic_cast<const GuiItem*>(getChild(i));
-			if (item)
-			{
-				if (item == child)
-					return position;
-				position += childOffset();
-			}
-		}
-		return position;
-	}
-
-	void UnifiedWidget::onLoseFocus()
-	{
-		menuState = NOTHING;
-	}
+	return processShown_OutOfTitle(event);
+}
 }
 
 namespace RBX
@@ -163,21 +272,6 @@ PercentPanel::PercentPanel(Rect::Location xLoc, Rect::Location yLoc, const G3D::
 	: TopMenuBar(), xLocation(xLoc), yLocation(yLoc), position(pos)
 {
 }
-}
-
-#include "util/Name.h"
-
-namespace RBX {
-
-void __thiscall UnifiedWidget::setMenuState(UnifiedWidget::MenuState state)
-{
-	if (menuState != state)
-	{
-		menuState = state;
-		onMenuStateChanged();
-	}
-}
-
 }
 
 namespace RBX
@@ -223,6 +317,14 @@ TextDisplay::TextDisplay(const std::string& name, const std::string& text)
 }
 
 namespace RBX {
+GuiRoot::GuiRoot()
+		: GuiItem()
+	{
+		setName("GuiRoot");
+	}
+}
+
+namespace RBX {
 G3D::Vector2 GuiRoot::toPixelSize(const G3D::Vector2& percent)
 {
 	G3D::Vector2 pixelSize(0, 0);
@@ -231,84 +333,5 @@ G3D::Vector2 GuiRoot::toPixelSize(const G3D::Vector2& percent)
 	else
 		pixelSize = (0.01f * percent) * G3D::Vector2(1.33f * canvasSize.y, canvasSize.y);
 	return pixelSize;
-}
-}
-
-#include "gui/GUI.h"
-#include "util/object.h"
-
-namespace RBX {
-void TopMenuBar::init()
-{
-	layoutStyle = Layout::HORIZONTAL;
-	backdropColor = G3D::Color4::clear();
-	visible = true;
-}
-}
-
-namespace RBX {
-G3D::Vector2 TopMenuBar::getSize() const
-{
-    G3D::Vector2 result(0.0f, 0.0f);
-    for (size_t i = 0; i < numChildren(); ++i) {
-        const GuiItem* item = dynamic_cast<const GuiItem*>(getChild(i));
-        if (item) {
-            G3D::Vector2 size = item->getSize();
-            switch (layoutStyle) {
-            case Layout::HORIZONTAL:
-                result.x += size.x;
-                result.y = G3D::max(result.y, size.y);
-                break;
-            case Layout::VERTICAL:
-                result.x = G3D::max(result.x, size.x);
-                result.y += size.y;
-                break;
-            }
-        }
-    }
-    return result;
-}
-}
-
-namespace RBX {
-G3D::Vector2 TopMenuBar::getChildPosition(const GuiItem* child) const
-{
-    G3D::Vector2 position = getPosition();
-    G3D::Vector2 size = getSize();
-    for (size_t i = 0; i < numChildren(); ++i) {
-        const GuiItem* item = dynamic_cast<const GuiItem*>(getChild(i));
-        if (item) {
-            G3D::Vector2 childSize = item->getSize();
-            if (item == child) {
-                int crossAxis = (layoutStyle + 1) % 2;
-                position[crossAxis] += (size[crossAxis] - childSize[crossAxis]) * 0.5f;
-                return position;
-            }
-            switch (layoutStyle) {
-            case Layout::HORIZONTAL:
-            case Layout::VERTICAL:
-                position[layoutStyle] += item->getSize()[layoutStyle];
-                break;
-            }
-        }
-    }
-    return position;
-}
-}
-
-namespace RBX {
-GuiResponse TopMenuBar::process(const GuiEvent& event)
-{
-    if (isVisible()) {
-        {
-            GuiResponse response = GuiItem::process(event);
-            if (response.wasUsed())
-                return response;
-        }
-        if (backdropColor.a > 0.0f && event.eventType >= UIEvent::MOUSE_RIGHT_BUTTON_DOWN
-            && event.eventType <= UIEvent::MOUSE_IDLE && getMyRect().pointInRect(event.mousePosition))
-            return GuiResponse::used();
-    }
-    return GuiResponse::notUsed();
 }
 }

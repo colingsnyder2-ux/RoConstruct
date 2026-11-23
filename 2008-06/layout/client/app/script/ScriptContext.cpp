@@ -1,176 +1,107 @@
+#include "util/NativeContentProvider.h"
 #include "script/ScriptContext.h"
-#include "lua/LuaBridge.h"
-#include "script/LuaAtomicClasses.h"
-#include "LuaBridge2008/LuaBridge2008.h"
-#include "LuaBridge2008/LuaSignalBridge2008.h"
-#include "LuaBridge2008/LuaEnumBridge2008.h"
+#include "lauxlib.h"
+#include "script/ScriptEvent.h"
+#include "util/RunStateOwner.h"
 #include "util/StandardOut.h"
-#include "v8datamodel/DebugSettings.h"
-#include "v8datamodel/GlobalSettings.h"
-#include "security/SecurityContext.h"
-#include "G3D/System.h"
-#include "lua.h"
-#include "lualib.h"
 
-using namespace RBX;
-
-void ScriptContext::sandboxThread(lua_State* thread)
+namespace RBX {
+namespace Lua {
+const char* safe_lua_tostring(lua_State* thread, int index)
 {
-    lua_newtable(thread);
-    lua_newtable(thread);
-    lua_pushliteral(thread, "__index");
-    lua_pushvalue(thread, LUA_GLOBALSINDEX);
-    lua_settable(thread, -3);
-    lua_setmetatable(thread, -2);
-    lua_replace(thread, LUA_GLOBALSINDEX);
+    const char* value = lua_tolstring(thread, index, 0);
+    if (!value) {
+        std::string message("String expected");
+        throw std::runtime_error(message);
+    }
+    return value;
+}
 }
 
-size_t ScriptContext::getThreadCount() const
-{
-    if (globalState)
-        return RobloxExtraSpace::get(globalState)->getThreadCount();
-    else
-        return 0;
-}
-
-ScriptContext& ScriptContext::getContext(lua_State* thread)
+inline ScriptContext& ScriptContext::getContext(lua_State* thread)
 {
     lua_pushlightuserdata(thread, RBX_LUA_GLOBAL_SCRIPTCONTEXT);
     lua_gettable(thread, LUA_GLOBALSINDEX);
-    ScriptContext* sc = static_cast<ScriptContext*>(lua_touserdata(thread, -1));
+    ScriptContext* context = static_cast<ScriptContext*>(lua_touserdata(thread, -1));
     lua_pop(thread, 1);
-    return *sc;
+    return *context;
 }
 
-int ScriptContext::tick(lua_State* L)
+int ScriptContext::time(lua_State* L)
 {
-    lua_pushnumber(L, G3D::System::getTick());
+    lua_pushnumber(L, getContext(L).runService->gameTime());
     return 1;
 }
 
-int ScriptContext::print(lua_State* L)
+#ifdef SECURITY_CONTEXT_EXPOSES_IDENTITY
+int ScriptContext::printidentity(lua_State* L)
 {
-    std::string msg;
-    int top = lua_gettop(L);
-
-    lua_getglobal(L, "tostring");
-
-    for (int i = 1; i <= top; i++)
-    {
-        if (i > 1)
-            msg += ' ';
-
-        lua_pushvalue(L, -1);
-        lua_pushvalue(L, i);
-        lua_call(L, 1, 1);
-
-        const char* str = lua_tostring(L, -1);
-
-        if (!str)
-            throw std::runtime_error("'tostring' must return a string to 'print'");
-
-        msg += str;
-
-        if (i > 1)
-            fputs("\t", stdout);
-
-        lua_pop(L, 1);
-    }
-
-    StandardOut::singleton()->print(MESSAGE_OUTPUT, msg.c_str());
-
+    if (lua_isstring(L, -1))
+        StandardOut::singleton()->print(MESSAGE_OUTPUT, "%s %d", lua_tostring(L, -1), Security::Context::current().identity);
+    else
+        StandardOut::singleton()->print(MESSAGE_OUTPUT, "Current identity is %d", Security::Context::current().identity);
     return 0;
 }
+#endif
 
-void ScriptContext::onEvent(const RunService* source, RunTransition event)
+int ScriptContext::loadfile(lua_State* thread)
 {
-    if (globalState)
-        lua_gc(globalState, LUA_GCCOLLECT, 0);
+    Security::Context::current().requirePermission(Security::Administrator, "loadfile");
+    ContentId id(Lua::safe_lua_tostring(thread, -1));
+    const std::string& file = ServiceProvider::create<ContentProvider>(&getContext(thread))->getFile(id);
+    int results;
+    if (luaL_loadfile(thread, file.c_str()) == 0) results = 1;
+    else {
+        lua_pushnil(thread);
+        lua_insert(thread, -2);
+        results = 2;
+    }
+    return results;
 }
 
-// INFERRED: 00976b78 is a file-scope long of this unit: the timeout hook 005ae230 errors while it is > 0
-static long timedOutScripts;
-
-void ScriptContext::onEvent(const RunService* source, Heartbeat event)
+int ScriptContext::dofile(lua_State* thread)
 {
-    if (exeTime0 > 0)
-        exeTime1 = G3D::System::getLocalTime() + exeTime0;
+    Security::Context::current().requirePermission(Security::Administrator, "dofile");
+    const char* path = luaL_optstring(thread, 1, 0);
+    int top = lua_gettop(thread);
+    ContentId id(path);
+    const std::string& file = ServiceProvider::create<ContentProvider>(&getContext(thread))->getFile(id);
+    if (luaL_loadfile(thread, file.c_str()) != 0) lua_error(thread);
+    lua_call(thread, 0, LUA_MULTRET);
+    return lua_gettop(thread) - top;
+}
 
-    if (InterlockedExchange(reinterpret_cast<long*>(&exeState), 0) == 1)
-        InterlockedDecrement(&timedOutScripts);
-
-    boost::posix_time::ptime t(boost::posix_time::second_clock::local_time());
-
-    if (t >= nextPendingScripts)
+#ifdef SECURITY_CONTEXT_EXPOSES_IDENTITY
+ScriptContext::Result ScriptContext::resume(lua_State* thread, int narg)
+{
+    int n;
     {
-        startPendingScripts();
-        nextPendingScripts = boost::posix_time::second_clock::local_time() + boost::posix_time::seconds(1);
+        ScriptImpersonator impersonate(thread);
+        if (*static_cast<volatile int*>(&exeState))
+        {
+            if (Security::Context::current().identity == Security::GameScript)
+                throw std::runtime_error("Game script timout");
+        }
+        n = lua_resume(thread, narg);
     }
 
-    if (yieldEvent)
-        yieldEvent->resume(event);
-
-    if (globalState)
-        lua_gc(globalState, LUA_GCSTEP, 1);
-}
-
-void ScriptContext::setThreadIdentity(lua_State* thread, Security::Identities identity)
-{
-    lua_pushlightuserdata(thread, RBX_LUA_GLOBAL_IDENTITY);
-    lua_pushinteger(thread, identity);
-    lua_settable(thread, LUA_GLOBALSINDEX);
-
-    if (DebugSettings::singleton().ioEnabled)
+    switch (n)
     {
-        lua_pushcfunction(thread, luaopen_io);
-        lua_pushstring(thread, LUA_IOLIBNAME);
-        lua_call(thread, 1, 0);
+        case 0:
+            return Success;
+
+        case 1:
+            if (!RobloxExtraSpace::get(thread)->yieldCaptured)
+                yieldEvent->queueWaiter(thread);
+
+            return Yield;
+
+        default:
+            reportError(thread);
+            return Error;
     }
-
-    lua_pushstring(thread, "settings");
-    lua_pushcfunction(thread, ScriptContext::settings);
-    lua_settable(thread, LUA_GLOBALSINDEX);
 }
-
-int ScriptContext::settings(lua_State* thread)
-{
-    Security::Context::current().requirePermission(Security::Administrator, "settings()");
-    Lua::ObjectBridge::push(thread, GlobalSettings::singleton());
-    return 1;
-}
-
-ScriptContext::ScriptImpersonator::ScriptImpersonator(lua_State* thread)
-    : Security::Impersonator(getThreadIdentity(thread))
-{
-}
-
-namespace RBX
-{
-    namespace Lua
-    {
-        template class Bridge<G3D::CoordinateFrame, true>;
-        template class Bridge<G3D::Vector3, true>;
-        template class Bridge<G3D::Color3, true>;
-        template class Bridge<BrickColor, true>;
-        template class Bridge<boost::shared_ptr<Reflection::DescribedBase>, false>;
-        template class Bridge<boost::shared_ptr<Reflection::SignalInstance>, false>;
-        template class Bridge<boost::signals::connection, true>;
-        template class Bridge<ThreadRef::NodePtr, true>;
-        template class Bridge<AllEnumDescriptorsPtr, false>;
-        template class Bridge<EnumDescriptorPtr, false>;
-        template class Bridge<EnumDescriptorItemPtr, false>;
-        template class SingletonBridge<AllEnumDescriptorsPtr>;
-        template class SingletonBridge<EnumDescriptorPtr>;
-        template class SingletonBridge<EnumDescriptorItemPtr>;
-        template class SharedPtrBridge<Reflection::DescribedBase>;
-        template class SharedPtrBridge<Reflection::SignalInstance>;
-        template bool Bridge<G3D::CoordinateFrame, true>::getValue<Reflection::Value>(lua_State*, size_t, Reflection::Value&);
-        template bool Bridge<G3D::Vector3, true>::getValue<Reflection::Value>(lua_State*, size_t, Reflection::Value&);
-        template bool Bridge<G3D::Color3, true>::getValue<Reflection::Value>(lua_State*, size_t, Reflection::Value&);
-        template bool Bridge<BrickColor, true>::getValue<Reflection::Value>(lua_State*, size_t, Reflection::Value&);
-        template bool Bridge<boost::shared_ptr<Reflection::DescribedBase>, false>::getValue<Reflection::Value>(lua_State*, size_t, Reflection::Value&);
-        template bool SharedPtrBridge<Reflection::DescribedBase>::getPtr<Reflection::Value>(lua_State*, size_t, Reflection::Value&);
-    }
+#endif
 }
 
 #include "util/Name.h"
@@ -188,10 +119,24 @@ void ScriptContext::call(const Lua::FunctionRef& f, boost::function1<unsigned in
 }
 
 #include "script/Script.h"
+
+using namespace RBX;
+
+void ScriptContext::addScript(Script* script)
+{
+	if (scripts.insert(script).second == true)
+	{
+		if (!script->isDisabled())
+			startScript(shared_from(script));
+	}
+}
+
+#include "LuaBridge2008/LuaBridge2008.h"
 #include "LuaBridge2008/LuaInstanceBridge2008.h"
 #include "script/ThreadRef.h"
 #include "util/standardout.h"
 #include "lua/lua.hpp"
+#include "lualib.h"
 #include <stdexcept>
 #include <G3D/format.h>
 
@@ -252,6 +197,12 @@ void ScriptContext::startScript(boost::shared_ptr<Script> script)
 	}
 
 	lua_settop(thread, 0);
+}
+
+#include "reflection/reflection.h"
+
+namespace RBX {
+	Reflection::BoundProp<bool, true> ScriptContext::propScriptsDisabled("ScriptsDisabled", "State", &ScriptContext::scriptsDisabled, &ScriptContext::onChangedScriptEnabled, Reflection::PropertyDescriptor::UI);   // 00976b7c
 }
 
 #include <boost/date_time/posix_time/posix_time.hpp>

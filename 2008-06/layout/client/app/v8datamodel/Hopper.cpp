@@ -119,6 +119,19 @@ namespace RBX
 	static Reflection::PropDescriptor<HopperBin, std::string> desc_legacyCommand("Command", "Data", NULL, &HopperBin::setLegacyCommand, Reflection::PropertyDescriptor::LEGACY);
 	static Reflection::PropDescriptor<HopperBin, std::string> desc_legacyTextureName("TextureName", "Data", NULL, &HopperBin::setLegacyTextureName, Reflection::PropertyDescriptor::LEGACY);
 
+	Reflection::EnumDesc<HopperBin::BinType>::EnumDesc()
+		: EnumDescriptor("BinType", typeid(HopperBin::BinType))
+	{
+		addPair(HopperBin::SCRIPT_BIN, "Script");
+		addPair(HopperBin::GAME_TOOL, "GameTool");
+		addPair(HopperBin::GRAB_TOOL, "Grab");
+		addPair(HopperBin::CLONE_TOOL, "Clone");
+		addPair(HopperBin::HAMMER_TOOL, "Hammer");
+		addPair(HopperBin::SLINGSHOT_TOOL, "Slingshot");
+		addPair(HopperBin::ROCKET_TOOL, "Rocket");
+		addPair(HopperBin::LASER_TOOL, "Laser");
+	}
+
 	const TextureId BackpackItem::getTextureId() const
 	{
 		return textureId;

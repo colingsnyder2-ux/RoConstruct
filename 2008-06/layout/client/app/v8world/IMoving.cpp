@@ -2,6 +2,13 @@
 
 namespace RBX
 {
+	IMovingManager::~IMovingManager()
+	{
+	}
+}
+
+namespace RBX
+{
 	// makeMoving and moved have no out-of-line copy in the image; inlined into notifyMoved / setMovingManager.
 	void IMovingManager::moved(IMoving* iMoving)
 	{

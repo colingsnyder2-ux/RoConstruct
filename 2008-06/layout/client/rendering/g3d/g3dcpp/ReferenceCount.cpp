@@ -13,9 +13,10 @@ namespace RBX
 			const float bevel;
 			const int halfVertexCount;
 		public:
-			CylinderTransform(float bevel, int halfVertexCount)
+			// The face slots pass `elements`; the ctor halves it (2007 RenderLibNew/HeadMesh.cpp shape).
+			CylinderTransform(float bevel, int vertexCount)
 				: bevel(bevel),
-				  halfVertexCount(halfVertexCount)
+				  halfVertexCount((vertexCount + 1) / 2)
 			{
 			}
 			void operator()(G3D::Vector3& vertex, G3D::Vector3& normal, G3D::Vector2& tex, const G3D::Vector3& radius, const G3D::Vector2int16& ivertex); // 004fdbd0
@@ -87,26 +88,22 @@ namespace RBX
 
 		void HeadBuilder::buildLeft(Purpose purpose)
 		{
-			CylinderTransform transform(bevel, (elements + 1) / 2);
-			buildFace<NORM_X_NEG>(transform, G3D::Vector2int16(elements, elements), purpose);
+			buildFace<NORM_X_NEG>(CylinderTransform(bevel, elements), elements, elements, purpose);
 		}
 
 		void HeadBuilder::buildRight(Purpose purpose)
 		{
-			CylinderTransform transform(bevel, (elements + 1) / 2);
-			buildFace<NORM_X>(transform, G3D::Vector2int16(elements, elements), purpose);
+			buildFace<NORM_X>(CylinderTransform(bevel, elements), elements, elements, purpose);
 		}
 
 		void HeadBuilder::buildFront(Purpose purpose)
 		{
-			CylinderTransform transform(bevel, (elements + 1) / 2);
-			buildFace<NORM_Z_NEG>(transform, G3D::Vector2int16(elements, elements), purpose);
+			buildFace<NORM_Z_NEG>(CylinderTransform(bevel, elements), elements, elements, purpose);
 		}
 
 		void HeadBuilder::buildBack(Purpose purpose)
 		{
-			CylinderTransform transform(bevel, (elements + 1) / 2);
-			buildFace<NORM_Z>(transform, G3D::Vector2int16(elements, elements), purpose);
+			buildFace<NORM_Z>(CylinderTransform(bevel, elements), elements, elements, purpose);
 		}
 
 		HeadMesh::HeadMesh(const G3D::Vector3& size, RenderSurfaceTypes surfaceTypes)

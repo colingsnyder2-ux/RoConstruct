@@ -51,6 +51,14 @@ namespace RBX {
 	}
 }
 
+#ifdef NATIVE_SELECTION_ROOT_ANCESTOR_PENDING
+namespace RBX {
+void Selection::onEvent(const Instance* source, AncestorChanged event) {
+    if (source->getRootAncestor() != this->getRootAncestor()) removeFromSelection(source);
+}
+}
+#endif
+
 namespace RBX {
 
 boost::shared_ptr<Instance> Selection::back() const

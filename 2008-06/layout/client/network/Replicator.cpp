@@ -520,3 +520,8 @@ namespace RBX
 }
 
 template class std::map<const RBX::Instance*, RBX::Network::Replicator::ReplicationData>;
+
+namespace RBX { namespace Network {
+bool Replicator::canSendItems() { return receivedGlobals; }
+Player* Replicator::findTargetPlayer() { return players ? players->getLocalPlayer() : 0; }
+} }

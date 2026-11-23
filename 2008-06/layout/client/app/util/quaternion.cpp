@@ -98,3 +98,16 @@ void Quaternion::normalize()
     w *= inverse;
 }
 }
+
+// INFERRED: returns the largest of |x|, |y|, |z|, |w|; body derived from the 2008-06 binary.
+
+#include <math.h>
+#include <algorithm>
+
+namespace RBX
+{
+	float Quaternion::maxComponent() const
+	{
+		return std::max(std::max(fabs(x), fabs(y)), std::max(fabs(z), fabs(w)));
+	}
+}
