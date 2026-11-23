@@ -3,6 +3,10 @@
 // Verified by tests/record_native_network_client_server2008.py. Original bodies: constructor 004b4640, destructor
 // 004ac830, deleting destructor 004ad7a0, classDescriptor 0049ea10 (atexit 007fba70).
 #include "Network/Peer2008.h"
+#include "util/Log.h"
+#include "util/standardout.h"
+#include "GetTime.h"
+#include <stdio.h>
 
 namespace RBX
 {
@@ -51,6 +55,33 @@ public:
 	// INFERRED: 004aae00 is the UserIDTOString vftable override identified by class RTTI and link order.
 	virtual char* UserIDTOString(unsigned char id);
 };
+
+// 004ab630 (donor Replicator.cpp FilePacketLogger constructor): PacketLogger() 004baa10, vtable 0082450c, packetLogFile
+// +0x20c = NULL, Log::current() (provider 00976b4c) logFile +0x24 copied, rfind('\\') / erase, RakNet::GetTime
+// 004c9910 with "PacketLog%i.csv" 00824814, fopen(.., "wt" 00818784), StandardOut::print 005693a0 with
+// "Logging packets to %s" 008247fc (MESSAGE_INFO) or "Failed to create log file %s" 008247dc (MESSAGE_WARNING).
+FilePacketLogger::FilePacketLogger(RBX::Network::Peer* peer)
+	: packetLogFile(NULL)
+{
+	char filename[256];
+
+	std::string pathName = RBX::Log::current()->logFile;
+	pathName.erase(pathName.rfind('\\') + 1);
+
+	sprintf(filename, "PacketLog%i.csv", RakNet::GetTime());
+	pathName += filename;
+
+	packetLogFile = fopen(pathName.c_str(), "wt");
+
+	if (packetLogFile)
+	{
+		RBX::StandardOut::singleton()->print(RBX::MESSAGE_INFO, "Logging packets to %s", pathName.c_str());
+	}
+	else
+	{
+		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, "Failed to create log file %s", pathName.c_str());
+	}
+}
 
 namespace RBX
 {

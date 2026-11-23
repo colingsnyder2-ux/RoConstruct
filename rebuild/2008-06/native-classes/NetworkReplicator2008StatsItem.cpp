@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers} /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 #undef _RELEASEASSERT // 004b7f20 builds its ConstProperty without RBXASSERT(isMemberOf): 00570c40 has one caller in the exe
 // 2008-06 native RBX::Network::Replicator::ReplicatorStatsItem rows that do not depend on the (partial) Replicator
 // layout (inactive); evidence in native-headers/Network/Replicator2008.h. Verified by
@@ -193,12 +193,113 @@ namespace RBX
 				instanceSize->formatMem(instanceCount != 0 ? instanceBits / (instanceCount * 8) : 0);
 			}
 		}
+
+		// 004b62c0 (donor Replicator::ReplicatorStatsItem constructor, 2008 profiler tree read from the target): Item()
+		// 0045ebe0, createChildItem 005c9c70 ("Ping" 00824f34, "Packet Loss" 00824f14, "Instance size (In)" 00824f00,
+		// "Waiting Refs" 00824ef0), createBoundChildItem(const Profiler&) 005ca240 on the Replicator profilers
+		// +0x2d1c..+0x2d48 (read through the argument), createBoundChildItem<bool> 004b60c0 ("Bandwidth Exceeded"
+		// 00824f20, statistics->bandwidthExceeded +0xc4). Emitting it also emits the implicit destructor 004b6690 and
+		// the deleting destructor 004b6710 with the vtable 00824fbc.
+		Replicator::ReplicatorStatsItem::ReplicatorStatsItem(const boost::shared_ptr<Replicator>& replicator, const RakNetStatistics* statistics)
+			: replicator(replicator),
+			  statistics(statistics),
+			  instanceCount(0),
+			  instanceBits(0)
+		{
+			ping = createChildItem("Ping");
+			// A named item: the target calls 005ca240 before pushing the arguments of 004b60c0.
+			Item* bitsSent = createBoundChildItem(*replicator->profileBitsSent);
+			bitsSent->createBoundChildItem<bool>("Bandwidth Exceeded", statistics->bandwidthExceeded);
+
+			packetLoss = createChildItem("Packet Loss");
+			createBoundChildItem(*replicator->profileBitsReceived);
+			createBoundChildItem(*replicator->profileUnsplitMessagesSent);
+			createBoundChildItem(*replicator->profileSplitMessagesSent);
+
+			Item* rep = createBoundChildItem(*replicator->profileReplication);
+			rep->createBoundChildItem(*replicator->profileDataListening);
+			rep->createBoundChildItem(*replicator->profileDataOut);
+			Item* physicsOut = rep->createBoundChildItem(*replicator->profilePhysicsOut);
+			physicsOut->createBoundChildItem(*replicator->profileStep);
+			physicsOut->createBoundChildItem(*replicator->profileWrite);
+			rep->createBoundChildItem(*replicator->profileDataIn);
+			rep->createBoundChildItem(*replicator->profilePhysicsIn);
+
+			instanceSize = rep->createChildItem("Instance size (In)");
+			waitingRefs = rep->createChildItem("Waiting Refs");
+		}
 	}
 
 	template boost::shared_ptr<Network::Replicator::ReplicatorStatsItem>
 	Creatable<Instance>::create<Network::Replicator::ReplicatorStatsItem, boost::shared_ptr<Network::Replicator>,
 								RakNetStatistics*>(boost::shared_ptr<Network::Replicator>, RakNetStatistics*); // 004b7e50
 }
+
+
+// REPLICATOR_HEADER_DECLARES_STATS_AND_MARKER (header proposals, batch 47 nr01): needs
+//   Network/Replicator2008.h  (Replicator, private, after readInstanceDelete):
+//       void createStatsItems(Stats::StatsService* stats);                     // 004b82d0
+//       void readMarker(RakNet::BitStream& inBitstream);                       // 004b8490
+//   Network/ReplicatorMarker.h (Marker, public; #include "reflection/signal.h"):
+//       static Reflection::SignalDesc<Marker, void(void)> event_Returned;     // 00971690
+//   v8tree/Instance.h (public, after setParent): the donor inline
+//       void setParent2(boost::shared_ptr<Instance> instance) { setParent(instance.get()); } // out of line 004ab530
+// Measured with those three lines in scratch header copies: 004b82d0, 004b8490 and 004ab530 byte-identical
+// (relocations masked). The native RakPeerInterface.h (/I{headers} first on the flags line) supplies the 2008
+// SetPerConnectionOutgoingBandwidthLimit slot, which puts GetStatistics at +0x10c as in 004b8384.
+#ifdef REPLICATOR_HEADER_DECLARES_STATS_AND_MARKER
+#include "Network/ReplicatorMarker.h"
+
+namespace RBX
+{
+	namespace Network
+	{
+		// 004b82d0 (donor Replicator::createStatsItems): Instance::setParent(NULL) 0055a8f0, shared_ptr reset 00456e80,
+		// findFirstChildByName 00557950 ("Network" 00824384), shared_from_polymorphic_downcast 004c7530 (from the
+		// enable_shared_from_this base +0xe4), shared_from 00618a40, peer->GetStatistics (slot +0x10c),
+		// Creatable<Instance>::create<ReplicatorStatsItem> 004b7e50, setName (slot 1) with the name +0x110,
+		// Instance::setParent2 004ab530.
+		void Replicator::createStatsItems(Stats::StatsService* stats)
+		{
+			if (statsItem)
+			{
+				statsItem->setParent(NULL);
+				statsItem.reset();
+			}
+
+			if (stats)
+			{
+				boost::shared_ptr<Stats::Item> network = shared_from_polymorphic_downcast<Stats::Item>(stats->findFirstChildByName("Network"));
+
+				if (network)
+				{
+					statsItem = Creatable<Instance>::create<ReplicatorStatsItem>(shared_from(this), peer->GetStatistics(remotePlayerId));
+					statsItem->setName(getName());
+					statsItem->setParent2(network);
+				}
+			}
+		}
+
+		// 004b8490 (donor Replicator::readMarker; caller 004b8970): operator>>(BitStream&, long&) 004a61d0,
+		// NetworkSettings::singleton 0049e890 printInstances +0x131, "Received marker %d from %s" 008251c8,
+		// SystemAddress::ToString 004a98b0, SignalDescriptor::findSignalInstance 0056b620 on Marker::event_Returned
+		// 00971690, signal0::operator() 004b5950, deque pop_front 004ae2f0.
+		void Replicator::readMarker(RakNet::BitStream& inBitstream)
+		{
+			long markerId;
+			inBitstream >> markerId;
+
+			if (NetworkSettings::singleton().printInstances)
+			{
+				StandardOut::singleton()->print(MESSAGE_INFO, "Received marker %d from %s", (int)markerId, remotePlayerId.ToString());
+			}
+
+			Marker::event_Returned.fire(incomingMarkers.front().get());
+			incomingMarkers.pop();
+		}
+	}
+}
+#endif
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class boost::shared_ptr<RBX::Network::Replicator::ReplicatorStatsItem>;
