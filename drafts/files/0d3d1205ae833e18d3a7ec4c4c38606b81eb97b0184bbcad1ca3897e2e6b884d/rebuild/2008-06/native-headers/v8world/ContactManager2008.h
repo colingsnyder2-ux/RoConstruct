@@ -1,0 +1,84 @@
+#pragma once
+// 2008-06 native RBX::ContactManager (inactive), declared by members whose evidence is a call or an evidence name and by
+// its two leading fields; the members after +0x8 are not declared, so this class must not be used for new or sizeof. Declared under a
+// non-colliding name: the original path v8world/ContactManager.h is the donor header (reached by World.h, Dragger.h,
+// MouseCommand.h ...); a unit must not include both this header and the donor v8world/ContactManager.h.
+// Evidence (2008-06 binary, ContactManager unit 0060cae0..0060dd5f):
+//   names    getHit(Ray, const Array<const Primitive*>*, ...) 0060d6e0, getHit(Ray, const vector<const Primitive*>*, ...)
+//            0060db10, intersectingOthers(Primitive*, const set<Primitive*>&, float) 0060d630, intersectingOthers(const
+//            Array<Primitive*>&, float) 0060dc10, intersectingOthers(Primitive*, float) 0060dcd0, createContact 0060d770,
+//            onNewPair 0060d8b0, onPrimitiveGeometryTypeChanged 0060d8e0 (evidence names of offline/evidence.json).
+//   getHit   0060db10 copies *ignorePrim into a local G3D::Array<const Primitive*> (operator=(vector) 0060d200) and
+//            calls getHit 0060d6e0 with it (`ret 0x14`: the bool& argument is explicit).
+//   create   createContact 0060d770 (private: `?createContact@ContactManager@RBX@@AAEPAVContact@2@PAVPrimitive@2@0@Z`) orders
+//            the pair by Geometry::getGeometryType (slot 2 of the geometry at Primitive +0x9c) and news BallBallContact
+//            (0x38, 0060cae0), BallBlockContact (0x38, 0060cb90) or BlockBlockContact (0x7c, 0060d500).
+//   fields   spatialHash +0x0: ~ContactManager 0060ccf0 deletes it (~SpatialHash 0065b1b0, then operator delete).
+//            world +0x4: onNewPair 0060d8c4 / onPrimitiveGeometryTypeChanged 0060d991 pass it to World::insertContact
+//            005e9260 / destroyContact 005e9280, getHit 0060d6e4 to World 005e9520. World::getContactManager 005e6110
+//            returns the ContactManager pointer at World +0x40.
+//            +0x8: a G3D::Array that ~ContactManager 0060ccf0 frees (alignedFree 00507d20, then +0x8 / +0xc / +0x10 = 0);
+//            its element type and the size of ContactManager are not proven here, so nothing after +0x8 is declared.
+//   world    onNewPair 0060d8b0, onPrimitiveGeometryTypeChanged 0060d8e0 and getHit(Array) 0060d6e0 call World::update
+//            005e9520, insertContact 005e9260 and destroyContact 005e9280, declared by native v8world/World2008.h.
+#include <set>
+#include <vector>
+#include <G3D/Vector3.h>
+#include <G3D/Ray.h>
+#include <G3D/Array.h>
+#include "util/HitTestFilter.h"
+
+struct NativeContactUnit2008Layout;
+
+namespace RBX
+{
+	class Contact;
+	class Extents;
+	class Primitive;
+	class SpatialHash;
+	class World;
+
+	class ContactManager
+	{
+		friend struct ::NativeContactUnit2008Layout;
+
+	private:
+		SpatialHash* spatialHash;                                                              // +0x0
+		World* world;                                                                          // +0x4
+
+	private:
+		Contact* createContact(Primitive* p0, Primitive* p1);                                  // 0060d770 (evidence name)
+		Primitive* getFastHit(const G3D::Ray& worldRay, const G3D::Array<const Primitive*>* ignorePrim,
+			const HitTestFilter* filter, G3D::Vector3& hitPointWorld, bool& inside, bool& stopped) const;   // 0060d2d0
+
+	public:
+		Primitive* getHit(const G3D::Ray& worldRay, const std::vector<const Primitive*>* ignorePrim,
+			const HitTestFilter* filter, G3D::Vector3& hitPoint, bool& inside) const;          // 0060db10
+		Primitive* getHit(const G3D::Ray& worldRay, const G3D::Array<const Primitive*>* ignorePrim,
+			const HitTestFilter* filter, G3D::Vector3& hitPoint, bool& inside) const;          // 0060d6e0
+		bool intersectingOthers(Primitive* check, const std::set<Primitive*>& checkSet, float overlapIgnored);   // 0060d630
+		bool intersectingOthers(const G3D::Array<Primitive*>& check, float overlapIgnored);   // 0060dc10
+		bool intersectingOthers(Primitive* check, float overlapIgnored);                      // 0060dcd0
+		void onNewPair(Primitive* p0, Primitive* p1);                                         // 0060d8b0 (evidence name)
+		void onPrimitiveGeometryTypeChanged(Primitive* p);                                    // 0060d8e0 (evidence name)
+		// 0060d140 (registry func_0060d140; donor ContactManager.h name and signature): World::createJoints 005ea4d0 passes
+		// Primitive::getFastFuzzyExtents 005e7a50, the primitive itself and World::tempPrimitives (+0xf0).
+		void getPrimitivesTouchingExtents(const Extents& extents, const Primitive* ignore, G3D::Array<Primitive*>& found);
+		// 0060cc50 (registry func_0060cc50; donor name): `mov ecx, [ecx]` (spatialHash +0x0), `jmp` SpatialHash 0065abd0;
+		// callers World::onPrimitiveExtentsChanged 005e91c0 and onAssemblyExtentsChanged 005e91d0.
+		void onPrimitiveExtentsChanged(Primitive* p);
+		// 0060cc30 / 0060cc40 (registry placeholders func_0060cc30 / func_0060cc40; donor ContactManager.h names): `mov ecx,
+		// [ecx]` (spatialHash +0x0) and tail jumps to SpatialHash 0065a4e0 / 0065aac0; callers World::insertPrimitive 005e98f0
+		// and removePrimitive 005ea8b0.
+		void onPrimitiveAdded(Primitive* p);
+		void onPrimitiveRemoved(Primitive* p);
+		public:
+		void doStats(void);   // INFERRED: ?doStats@ContactManager@RBX@@QAEXXZ (header gap, header_gap_fill.py)
+	public:
+		~ContactManager(void);   // INFERRED: ??1ContactManager@RBX@@QAE@XZ (header gap, header_gap_fill.py)
+	private:
+		RBX::Primitive * getSlowHit(G3D::Array<RBX::Primitive *> const &,G3D::Ray const &,G3D::Array<RBX::Primitive const *> const *,RBX::HitTestFilter const *,G3D::Vector3 &,float,bool &,bool &)const;   // INFERRED: ?getSlowHit@ContactManager@RBX@@ABEPAVPrimitive@2@ABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVRay@5@PBV?$Array@PBVPrimitive@RBX@@@5@PBVHitTestFilter@2@AAVVector3@5@MAA_N5@Z (header gap, header_gap_fill.py)
+	public:
+		RBX::Primitive * getHitLegacy(G3D::Ray const &,RBX::Primitive const *,RBX::HitTestFilter const *,G3D::Vector3 &,float &,float const &)const;   // INFERRED: ?getHitLegacy@ContactManager@RBX@@QBEPAVPrimitive@2@ABVRay@G3D@@PBV32@PBVHitTestFilter@2@AAVVector3@5@AAMABM@Z (header gap, header_gap_fill.py)
+};
+}

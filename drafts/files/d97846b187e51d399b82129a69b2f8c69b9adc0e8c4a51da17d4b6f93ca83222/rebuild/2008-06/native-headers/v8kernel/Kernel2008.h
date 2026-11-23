@@ -1,0 +1,120 @@
+#pragma once
+// 2008-06 native RBX::Kernel (inactive). Declared under a non-colliding name: the original path v8kernel/Kernel.h is
+// included by the donor v8world/IPipelined.h, i.e. by every engine unit (Edge, Joint, Contact, Primitive, World ...),
+// so a header at that path would shadow the donor for nearly all recorders. A unit must not include both this header
+// and v8kernel/Kernel.h (or v8world/IPipelined.h / Edge.h / Primitive.h / World.h, which include it).
+// The base IStage comes from the donor v8kernel/IStage.h (vptr, upstream +0x4, downstream +0x8).
+// Every Kernel field, slot and size below is read from the 2008-06 binary:
+//   RTTI     Kernel 0084105c -> IStage (mdisp 0).
+//   slots    4: 0 scalar deleting dtor (005fb0c0, calls ~Kernel 005faca0), 1 getStageType (0077d800 `mov eax, 7`),
+//            2 stepWorld(int, int, bool, bool) (005fb3f0 `ret 0x10`; 4 arguments with the opt-in kernel-stages IStage), 3 getKernel (007188c0 `mov eax, ecx`).
+//   size     0x24 (SimJobStage() 0064d300 news 0x24 and calls Kernel(this) 005fb650).
+//   ctor     005fb650: IStage(upstream, NULL), inStepCode +0xc = false, kernelData +0x10 = new KernelData (0x3c,
+//            constructor 005fb5f0), realTimeConnectors +0x14 (G3D::Array: data +0x14 / num +0x18 / numAllocated +0x1c
+//            zeroed), profilingKernel +0x20 = new CodeProfiler("Kernel") (0xc048, constructor 005c43a0), then
+//            ++numKernels (0097b5b8).
+//   dtor     005faca0: vtable, --numKernels, delete kernelData (~KernelData 005fa970 out of line), ~scoped_ptr (virtual
+//            delete through slot 0), ~Array (00507d20 alignedFree, then data / num / numAllocated = 0), ~IStage.
+//   leaves   numBodies 005faa20 / numPoints 005faa30 / numConnectors 005faa40 read kernelData +0x4 / +0x10 / +0x1c:
+//            the sizes of the first three index arrays, at the donor KernelData offsets.
+//   The donor has maxBodies / maxPoints / maxConnectors after realTimeConnectors; 2008 has none (profilingKernel
+//   follows realTimeConnectors at +0x20).
+#include <G3D/Array.h>
+#include <G3D/Vector3.h>
+#include <boost/scoped_ptr.hpp>
+#include "v8kernel/IStage.h"
+
+struct NativeKernelStagesLayout;
+
+namespace RBX
+{
+	class KernelData;
+	class Connector;
+	class Point;
+	class Body;
+	namespace Profiling
+	{
+		class CodeProfiler;
+	}
+
+	class Kernel : public IStage
+	{
+		friend struct ::NativeKernelStagesLayout; // tests/NativeKernelStagesLayout.cpp offset asserts
+
+	private:
+		// 005fb1a0 (thiscall `ret 4`, called out of line by deletePoint 005fb3c0): KernelData points +0x18 swap-remove
+		// through the KernelIndex getter 005fa610 and Array<Point*>::resize 005fa870 (donor: private inline).
+		void removePoint(Point* point);                               // 005fb1a0
+
+#ifdef NATIVE_KERNEL_STAGE_NUMBERING
+		// 005fae00 (thiscall `ret 4`, 196 B; registry placeholder func_005fae00): called by stepWorld 005fb3f0 with
+		// worldStepId when its fourth argument is true. INFERRED: analog name and private access (no symbol or donor
+		// declaration; its only caller is stepWorld).
+		void stepMoveBodiesTest(int worldStepId);                     // 005fae00
+#endif
+		// 005faaa0 (thiscall `ret 4`, 169 B; registry placeholder func_005faaa0): its only caller is stepMoveBodiesTest
+		// 005fae00. Every KernelData body's frame is shifted by the argument, turned about the global y axis by 0.01 and
+		// re-orthonormalized. INFERRED: analog name and private access (no symbol or donor declaration).
+		void moveBodiesTest(const G3D::Vector3& delta);               // 005faaa0
+
+		bool inStepCode;                                              // +0xc
+		KernelData* kernelData;                                       // +0x10
+		G3D::Array<Connector*> realTimeConnectors;                    // +0x14
+		static int numKernels;                                        // 0097b5b8
+	public:
+		boost::scoped_ptr<Profiling::CodeProfiler> profilingKernel;   // +0x20
+
+	public:
+		Kernel(IStage* upstream);                                     // 005fb650
+		virtual ~Kernel();                                            // 005faca0 (slot 0 ??_G 005fb0c0)
+		virtual StageType getStageType();                             // slot 1 (0077d800; opt-in kernel-stages IStage)
+		// 005fb3f0 is `ret 0x10` and tests a fourth bool argument first (true: 005fae00 with worldStepId, then return),
+		// INFERRED: the fourth bool argument controls whether moveBodiesTest is called; the donor uses a separate 3-argument decoration ?stepWorld@Kernel@RBX@@UAEXHH_N@Z while the 2008 binary has the 4-argument variant ?stepWorld@Kernel@RBX@@UAEXHH_N0@Z, proven by vftable slot 2 matching.
+		// so the 2008 IStage slot 2 takes four arguments. Units that opt in to native-headers/kernel-stages (its
+		// v8kernel/IStage.h defines NATIVE_KERNEL_STAGE_NUMBERING and declares that 4-argument slot 2) get the 2008
+		// override; other units keep the 3-argument override of the donor IStage.h slot 2.
+#ifdef NATIVE_KERNEL_STAGE_NUMBERING
+		virtual void stepWorld(int worldStepId, int uiStepId, bool throttling, bool moveBodiesTest);   // slot 2 (005fb3f0)
+#else
+		virtual void stepWorld(int worldStepId, int uiStepId, bool throttling);   // slot 2 (005fb3f0, not built)
+#endif
+		virtual Kernel* getKernel()                                   // slot 3 (007188c0)
+		{
+			return this;
+		}
+
+		// openrbx v8kernel/Kernel.h names. 005fb0e0 / 005fb110 (thiscall `ret 4`, registry placeholders): KernelData
+		// insertBody 005faf90 / bodies fastRemove + removeLeafBodies 005faf20, then the body's SimBody dt (+0x2c -> +0x4) =
+		// Constants::kernelDt / 0. Callers: SimJobStage (0064d0f0 and its removal counterpart).
+		void insertBody(Body* b);                                     // 005fb0e0
+		void removeBody(Body* b);                                     // 005fb110
+		// 005fa630 (const thiscall, 57 B; registry placeholder func_005fa630): openrbx Kernel.cpp connectorSpringEnergy,
+		// Connector::potentialEnergy (slot 5) summed over the KernelData connectors; DataModel 'energyConnector' stat.
+		float connectorSpringEnergy() const;                          // 005fa630
+		int numBodies() const;                                        // 005faa20
+		int numPoints() const;                                        // 005faa30
+		int numConnectors() const;                                    // 005faa40
+		// INFERRED: 005fa620 is the fourth 7-byte leaf getter, `mov eax,[ecx+0x10]; mov eax,[eax+0x28]; ret`.
+		// kernelData is +0x10; KernelData2008.h places the connectors IndexArray at +0x24, so +0x28 is its
+		// count (array data +0x24 / num +0x28 / numAllocated +0x2c). Placeholder name (identity tier); body byte-proved.
+		int getUnknownKernelData0x28() const;                         // 005fa620
+		// INFERRED: name from the 'matrixSize' stat key this feeds: RBX::DataModel 00575d90 calls World::getKernel
+		// (005e9150) and streams the result for the 'matrixSize' EquationDisplay (GuiBuilder::buildStatsHud2;
+		// GuiHudBuilder2008.cpp:261). Body byte-proved: connectors.num + 6 * bodies.num (2008 layout: bodies
+		// num +0x4, connectors IndexArray at +0x24 -> num +0x28). 6 * 6-DOF bodies plus one row per constraint.
+		int matrixSize() const;                                      // 005faa90
+		float bodyKineticEnergy() const;                              // 005faa50 (`?bodyKineticEnergy@Kernel@RBX@@QBEMXZ`)
+		void insertConnector(Connector* connector);                    // 005fb160
+		// Callers: Contact::deleteConnector 00606d10, BlockBlockContact::deleteAllConnectors 00607c60 /
+		// deleteUnmatchedConnectors 00607e00 (thiscall `ret 4`; body native-classes/KernelStep.cpp, pending).
+		void removeConnector(Connector* connector);                    // 005fb1f0
+		void deletePoint(Point* point);                                // 005fb3c0
+		// Donor signatures; thiscall `ret 4` (005fad50 / 005fad80) and `ret 8` (005fb260). newPoint news 0x34 and calls
+		// the Point constructor 0064dc00 (native-classes/AppUnit5F8KernelArrays.cpp). Callers: BodyMover /
+		// Humanoid::onAncestorChanged 006308f0 / 005db560 through World::getKernel 005e9150, RotateJoint::putInKernel
+		// 00646550, GlueJoint::putInKernel 00647190.
+		void insertConnector2ndPass(Connector* connector);             // 005fad50
+		void removeConnector2ndPass(Connector* connector);             // 005fad80
+		Point* newPoint(Body* _body, const G3D::Vector3& worldPos);    // 005fb260
+	};
+}

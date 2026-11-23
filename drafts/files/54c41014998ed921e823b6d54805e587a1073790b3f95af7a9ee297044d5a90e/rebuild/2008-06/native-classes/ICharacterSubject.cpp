@@ -1,0 +1,223 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// Donor-derived TU (rbxgs v8datamodel/ICharacterSubject.cpp) on the native headers with the 2008 compiler; exact functions verified by
+// check_native_class.py (inactive range evidence, not identity/layout gated).
+#include "v8datamodel/ICharacterSubject.h"
+#include "v8datamodel/Camera.h"
+#include "v8datamodel/UserController.h"
+#include "v8datamodel/Workspace.h"
+#include "v8world/ContactManager.h"
+#include "v8world/Primitive.h"
+#include "v8datamodel/Filters2008.h"   // FilterCharacterOcclusion 00660210 (testOcclusion)
+
+namespace RBX
+{
+	ICharacterSubject::ICharacterSubject()
+		: lastOffset(G3D::Vector3::ZERO),
+		  cursorLocked(false),
+		  wasOccluded(false),
+		  hasGoalInFocus(false)
+	{
+	}
+
+	G3D::CoordinateFrame ICharacterSubject::getFocusLookingAtGoal(const G3D::CoordinateFrame& cameraFocus, const G3D::CoordinateFrame& cameraGoal)
+	{
+		G3D::CoordinateFrame temp = cameraFocus;
+		temp.lookAt(cameraGoal.translation);
+
+		return temp;
+	}
+
+	G3D::CoordinateFrame ICharacterSubject::goalFromDistance(const G3D::CoordinateFrame& cameraFocus, const G3D::CoordinateFrame& cameraGoal, const float distance)
+	{
+		G3D::CoordinateFrame manLookCamera = getFocusLookingAtGoal(cameraFocus, cameraGoal);
+		G3D::Vector3 newCameraPt = manLookCamera.lookVector() * distance + manLookCamera.translation;
+
+		return G3D::CoordinateFrame(G3D::Matrix3::identity(), newCameraPt);
+	}
+
+	// 00641390 (415 bytes, `ret 0xc`; vtable ICameraSubject slot, registry ?zoom@ICharacterSubject@RBX@@EAE_NMAAVCoordinateFrame@G3D@@0@Z).
+	// The 2008 body differs from the donor: it works on a copy of the goal that starts from goalFromDistance 00641280
+	// (focus, goal, unoccludedDistance +0x40) while wasOccluded (+0x3d) is set (Matrix3 copy 00513220), and at the end
+	// either stores the new distance in unoccludedDistance (occluded) or writes the copy back to cameraGoal.
+	// Camera::getNewZoomDistance 005cc240, Vector3::unitize 00518470.
+	bool ICharacterSubject::zoom(const float in, G3D::CoordinateFrame& cameraGoal, G3D::CoordinateFrame& cameraFocus)
+	{
+		G3D::CoordinateFrame goal = wasOccluded ? goalFromDistance(cameraFocus, cameraGoal, unoccludedDistance) : cameraGoal;
+
+		G3D::Vector3 focusToGoal = goal.translation - cameraFocus.translation;
+
+		float currentDistance = focusToGoal.magnitude();
+		float zoomDistance = Camera::getNewZoomDistance(currentDistance, in);
+		// The clamped distance lives in the 400.0f temporary's slot (a separate variable from the unclamped one).
+		float newDistance = G3D::min(400.0f, zoomDistance);
+
+		if (newDistance == currentDistance)
+			return false;
+
+		focusToGoal.y = 0.0f;
+		focusToGoal.unitize();
+		focusToGoal.y = newDistance * 0.03f;
+
+		goal.translation = focusToGoal.direction() * newDistance + cameraFocus.translation;
+
+		if (wasOccluded)
+			unoccludedDistance = (goal.translation - cameraFocus.translation).magnitude();
+		else
+			cameraGoal = goal;
+
+		return true;
+	}
+
+	// 00641530 (registry placeholder func_00641530). 2008 differences from the donor body, read from the target: an
+	// early `return false` when there is no ContactManager (00641560), and a FilterCharacterOcclusion(0) 00660210
+	// built after the original distance is stored (00641605) and passed to ContactManager::getHit 0060db10 as the
+	// hit-test filter (the donor passes NULL).
+	// PARKED (b45, 718 vs 716 B, was 720 B): frame, EH states, filter and early return now match; the only residual is
+	// the x87 operand order of the x component of `translation + pointOnMan * x` (target `fxch st(1); fadd [t.x]`,
+	// here `fld [t.x]; faddp st(2); fxch st(1)`), y/z identical. Rejected: `pointOnMan * x + translation` (no change),
+	// `r = translation; r += pointOnMan * x` (702 B, frame 0xa4).
+	bool ICharacterSubject::testOcclusion(const G3D::CoordinateFrame& cameraFocus, const G3D::CoordinateFrame& cameraGoal, float& distance)
+	{
+		ContactManager* contactManager = getContactManager();
+		if (!contactManager)
+			return false;
+
+		std::vector<const Primitive*> ignorePrims;
+		getIgnorePrims(ignorePrims);
+
+		G3D::CoordinateFrame manLookCamera = getFocusLookingAtGoal(cameraFocus, cameraGoal);
+		G3D::Vector3 pointOnMan = manLookCamera.leftVector();
+
+		int hits = 0;
+		float originalDistance = (cameraGoal.translation - cameraFocus.translation).magnitude();
+		distance = originalDistance;
+
+		FilterCharacterOcclusion filter(0);
+
+		for (int x = -2; x <= 2; x += 2)
+		{
+			G3D::Vector3 r = manLookCamera.translation + pointOnMan * (float)x;
+			G3D::Ray manToCamera = G3D::Ray::fromOriginAndDirection(r, cameraGoal.translation - r);
+
+			G3D::Vector3 hitPoint;
+			if (contactManager->getHit(manToCamera, &ignorePrims, &filter, hitPoint))
+			{
+				hits++;
+				float thisDistance = (hitPoint - r).magnitude();
+				distance = G3D::min(distance, thisDistance);
+			}
+		}
+
+		if (hits > 1)
+		{
+			distance -= 1.0f;
+			distance = G3D::max(distance, 0.5f);
+			distance = G3D::min(distance, 1000.0f);
+			return true;
+		}
+		else
+		{
+			distance = originalDistance;
+			return false;
+		}
+	}
+
+	void ICharacterSubject::onHeartBeat(G3D::CoordinateFrame& cameraGoal, G3D::CoordinateFrame& cameraFocus)
+	{
+		float dx = cameraGoal.translation.x - cameraFocus.translation.x;
+		float dy = cameraGoal.translation.y - cameraFocus.translation.y;
+		float dz = cameraGoal.translation.z - cameraFocus.translation.z;
+		cursorLocked = sqrtf(dx * dx + dy * dy + dz * dz) < 2.75f;
+
+		Instance* thisInstance = dynamic_cast<Instance*>(this);
+		if (Workspace* workspace = ServiceProvider::find<Workspace>(thisInstance))
+			workspace->setInMouselookMode(cursorLocked);
+
+		float angle = 0.0f;
+		if (cursorLocked)
+		{
+			float vx = cameraFocus.translation.x - cameraGoal.translation.x;
+			float vz = cameraFocus.translation.z - cameraGoal.translation.z;
+			float inv = 1.0f / sqrtf(vx * vx + vz * vz);
+			angle = Math::angleToE0(G3D::Vector2(vz * inv, vx * inv));
+		}
+
+		cameraSetWalkOrientation(angle, !cursorLocked);
+	}
+
+	// 00641800 (1085 bytes; vtable 0083d39c, ICameraSubject slot 5). No donor body. Close to the subject (< 2.75, the
+	// constant 0084a5f8 that onHeartBeat also uses) the goal follows the focus; otherwise the focus offset is smoothed
+	// (focusOffsetERA +0x18 pushAndGetAverage 00666290, focusERA +0x8 getAverage 006662d0, movement * 16 /= 30 through
+	// Vector3::operator/= 005183c0), the goal keeps its horizontal distance (Vector3::xz 005185f0, Vector2::direction
+	// 005cbe70) and its height offset, and goalInFocus +0x48 is stored in Math::getFocusSpace 005dec60 space
+	// (pointToObjectSpace 00501ca0). Then occlusion: goalFromDistance 00641280, testOcclusion 00641530, wasOccluded
+	// +0x3d, unoccludedDistance +0x40, tellCameraNear (slot 8). getLocation is ILocation slot 0 through the vbptr +4;
+	// getIntendedMovementVector slot 9, getIntendedRotationAboutYAxis slot 10 (result unused), rotationERA +0x34
+	// getAverage 00666270 / pushAndGetAverage 00666250 (results unused), CoordinateFrame::getHeading (getColumn 00513240).
+	// PARKED (b23, 3 hypotheses): the assigned focusOffset gives the target frame (sub esp, 0x10c; first divergence
+	// moves from insn 0 to insn 43) but 1145 B vs 1085 B (with the Camera::updateGoal forms below; 1155 B without). Remaining: the target calls Vector2::direction out of line
+	// (005cbe70, placeholder COMDAT) where this unit inlines it, and the getLocation return slots (0xbc / 0x8c) are
+	// swapped. Rejected alone: Camera::updateGoal forms (`goal += focus - old`, `.direction() * distance`): frame unchanged;
+	// `.fastDirection()`: still inlined.
+	void ICharacterSubject::stepGoalAndFocus(G3D::CoordinateFrame& cameraGoal, G3D::CoordinateFrame& cameraFocus, bool cameraExternallyAdjusted)
+	{
+		float distance = 0.0f;
+		G3D::Vector3 offset = cameraFocus.translation - cameraGoal.translation;
+
+		if ((cameraGoal.translation - cameraFocus.translation).magnitude() < 2.75f)
+		{
+			G3D::Vector3 oldFocus = cameraFocus.translation;
+			cameraFocus = getLocation();
+			cameraGoal.translation += cameraFocus.translation - oldFocus;
+		}
+		else
+		{
+			cameraFocus = getLocation();
+
+			G3D::Vector3 movement = getIntendedMovementVector() * 16.0f;
+			movement /= 30.0f;
+
+			G3D::Vector3 focusDelta = cameraFocus.translation - focusERA.getAverage() - movement;
+			focusDelta.y = 0.0f;
+			G3D::Vector3 focusOffset; // assigned, not initialised: the target copies the returned average into its own slot
+			focusOffset = focusOffsetERA.pushAndGetAverage(focusDelta);
+			focusERA.pushAndGetAverage(cameraFocus.translation);
+
+			float rotation = getIntendedRotationAboutYAxis(); // INFERRED: result unused by the target
+			G3D::CoordinateFrame location = getLocation();
+			float heading = location.getHeading();
+			float oldHeading = rotationERA.getAverage();       // INFERRED: result unused by the target
+			rotationERA.pushAndGetAverage(heading);
+
+			G3D::CoordinateFrame focusSpace = Math::getFocusSpace(cameraFocus);
+
+			cameraGoal.translation += focusOffset;
+
+			distance = offset.xz().length();
+			G3D::Vector2 direction = (cameraFocus.translation.xz() - cameraGoal.translation.xz()).direction() * distance;
+			cameraGoal.translation = cameraFocus.translation - G3D::Vector3(direction.x, offset.y, direction.y);
+
+			goalInFocus = focusSpace.pointToObjectSpace(cameraGoal.translation);
+			hasGoalInFocus = true;
+		}
+
+		G3D::CoordinateFrame unoccludedGoal = wasOccluded ? goalFromDistance(cameraFocus, cameraGoal, unoccludedDistance) : cameraGoal;
+
+		float occludedDistance;
+		bool occluded = testOcclusion(cameraFocus, unoccludedGoal, occludedDistance);
+		if (occluded)
+		{
+			if (!wasOccluded)
+				unoccludedDistance = offset.magnitude();
+
+			cameraGoal = goalFromDistance(cameraFocus, cameraGoal, occludedDistance);
+		}
+		else if (wasOccluded)
+		{
+			cameraGoal = unoccludedGoal;
+		}
+
+		wasOccluded = occluded;
+		tellCameraNear(occludedDistance);
+	}
+}
