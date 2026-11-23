@@ -8,6 +8,7 @@
 #include "util/ContentProvider.h"
 #include "util/MeshId.h"
 #include <G3D/Color3.h>
+#include <G3D/Color3uint8.h>
 #include <G3D/Vector3.h>
 #include "util/TextureId.h"
 #include "util/Sound.h"
@@ -151,6 +152,45 @@ template<>
 std::string TypedPropertyDescriptor<TextureId>::getStringValue(const DescribedBase* instance) const
 {
 	return StringConverter<TextureId>::convertToString(getValue(instance));
+}
+
+// 0056f6e0 (vtable 00832bf4 slot 10): the colour is stored as an unsigned 0xFFRRGGBB (XmlElement type 6 = UINT).
+template<>
+void TypedPropertyDescriptor<G3D::Color3>::writeValue(const DescribedBase* instance, XmlElement* element) const
+{
+	G3D::Color3uint8 color(getValue(instance));
+	element->setValue((unsigned)(0xff000000 + (color.r << 16) + (color.g << 8) + color.b));
+}
+
+// 0056f5f0 (vtable 00832bf4 slot 11): packed 0xFFRRGGBB unsigned first (XmlNameValuePair::getValue(unsigned&) 0057c550),
+// else the older <R>/<G>/<B> float children (tag_R 0097536c, tag_G 0097533c, tag_B 00975340).
+template<>
+void TypedPropertyDescriptor<G3D::Color3>::readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
+{
+	if (!element->isXsiNil())
+	{
+		unsigned packed;
+		if (element->getValue(packed))
+		{
+			G3D::Color3uint8 bytes;
+			bytes.r = (unsigned char)(packed >> 16);
+			bytes.g = (unsigned char)(packed >> 8);
+			bytes.b = (unsigned char)packed;
+			G3D::Color3 value(bytes);
+			getset->setValue(instance, value);
+		}
+		else
+		{
+			const XmlElement* R = element->findFirstChildByTag(tag_R);
+			const XmlElement* G = element->findFirstChildByTag(tag_G);
+			const XmlElement* B = element->findFirstChildByTag(tag_B);
+			G3D::Color3 legacy;
+			R->getValue(legacy.r);
+			G->getValue(legacy.g);
+			B->getValue(legacy.b);
+			getset->setValue(instance, legacy);
+		}
+	}
 }
 
 }
