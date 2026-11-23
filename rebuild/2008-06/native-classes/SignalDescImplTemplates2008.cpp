@@ -43,4 +43,11 @@ ADAPTER1(BrickColor)                // 00636740
 template void SignalDescImpl<2, void(std::string, InstancePtr)>::GenericSlotAdapter::operator()(std::string, InstancePtr); // 00491090
 template void SignalDescImpl<2, void(std::string, bool)>::GenericSlotAdapter::operator()(std::string, bool);               // 004b35e0
 template void SignalDescImpl<2, void(InstancePtr, const PropertyDescriptor*)>::GenericSlotAdapter::operator()(InstancePtr, const PropertyDescriptor*); // 00578670
-template void SignalDescImpl<2, void(std::string, int)>::fire(SignalSource*, std::string, int);                            // 004a0f00
+template void SignalDescImpl<2, void(std::string, int)>::fire(SignalSource*, std::string, int);                            // 004b6040
+
+// 004a0c90 (registry placeholder func_004a0c90): boost::signal3<void, std::string, int, std::string>::operator()
+// (thiscall, ret 0x40: hidden unusable result + string, int, string; ecx = TSignalInstance + 0x10). Its only caller is
+// SignalDescImpl<3, void(std::string, int, std::string)>::fire 004a0f00 (Client::event_ConnectionFailed, fired by
+// Client::OnReceive 004a1070), whose body stays blocked: the core reflection/signal.h has no arity-3 fire (proposal).
+// Same explicit-instantiation pattern as the signal2 rows of AppUnit4B0_2008Signals.cpp / AppUnit48C_2008Signals.cpp.
+template class boost::signal3<void,std::basic_string<char,std::char_traits<char>,std::allocator<char> >,int,std::basic_string<char,std::char_traits<char>,std::allocator<char> >,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(std::basic_string<char,std::char_traits<char>,std::allocator<char> >,int,std::basic_string<char,std::char_traits<char>,std::allocator<char> >),std::allocator<void> > >;

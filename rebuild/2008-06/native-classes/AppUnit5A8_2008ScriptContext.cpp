@@ -145,6 +145,21 @@ void ScriptContext::onEvent(const RunService* source, RunTransition event)
 // (mov eax,[00976b78]; test; jle) and onEvent(Heartbeat) 005b0710 decrements it; no header declares it.
 static long timedOutScripts;
 
+#ifdef SCRIPTCONTEXT_HEADER_DECLARES_ONHOOK
+// 005ae230 (registry placeholder func_005ae230, 71 B): the static lua_Hook that openState 005aefa0 installs with
+// lua_sethook(count 1000). While timedOutScripts > 0 (mov eax,[00976b78]; test; jle) it calls the member 005adbf0
+// (AppUnit5ACScriptContext.cpp, INFERRED name onHook) on getContext(L) (inlined: lightuserdata 0x43, lua_gettable
+// LUA_GLOBALSINDEX, lua_touserdata(-1), lua_settop(-2)), passing L and ar.
+// Blocked by script/ScriptContext.h (not editable here): it must declare 'void onHook(lua_State* L, lua_Debug* ar);'.
+void ScriptContext::scriptHook(lua_State* L, lua_Debug* ar)
+{
+    // volatile read: the target loads the counter (mov eax,[00976b78]; test eax,eax) instead of cmp [mem],0; the
+    // watchdog and onEvent change it through InterlockedIncrement/InterlockedDecrement.
+    if (*static_cast<volatile long*>(&timedOutScripts) > 0)
+        getContext(L).onHook(L, ar);
+}
+#endif
+
 // 005b0710 (Listener<RunService, Heartbeat> slot: this is the listener subobject at +0x134, globalState at +4,
 // nextPendingScripts +0x4c, yieldEvent +0x74, exeTime0/exeTime1/exeState +0x84/+0x8c/+0x94). The donor body plus
 // the 2008 timeout prefix: fldz/fcomp exeTime0/test ah,5 (exeTime0 > 0) -> exeTime1 = getLocalTime 00508410 +
@@ -232,6 +247,26 @@ namespace RBX
         {
             std::string name = G3D::format("Enum.%s.%s", object->owner.name.c_str(), object->name.c_str());
             lua_pushstring(L, name.c_str());
+            return 1;
+        }
+
+        // 005a9e00 (registry placeholder func_005a9e00, 40 B): the Enums bridge's __tostring thunk (pushed by its
+        // registerClass at 005aac95) inlines this specialization: getObject 1 (luaL_checkudata with className 0095b1d4)
+        // and lua_pushstring 00612280 of the literal "Enums" 00834370, return 1.
+        template<>
+        int Bridge<AllEnumDescriptorsPtr, false>::on_tostring(const AllEnumDescriptorsPtr& object, lua_State* L)
+        {
+            lua_pushstring(L, "Enums");
+            return 1;
+        }
+
+        // 005a9ef0 (registry placeholder func_005a9ef0, 76 B): the Enum bridge's __tostring thunk (registerClass
+        // 005aad65) inlines this specialization: lua_pushstring of the descriptor's name (Descriptor::name +4 -> the
+        // Name's std::string at +4, both _Bx branches), return 1.
+        template<>
+        int Bridge<EnumDescriptorPtr, false>::on_tostring(const EnumDescriptorPtr& object, lua_State* L)
+        {
+            lua_pushstring(L, object->name.c_str());
             return 1;
         }
 

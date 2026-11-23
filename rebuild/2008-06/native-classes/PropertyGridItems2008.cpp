@@ -341,8 +341,7 @@ void XItem<RBX::BrickColor, CPropertyGridItemBrickColor, RBX::Reflection::TypedP
 // XItem<Soundscape::SoundId, CXTPPropertyGridItem, TypedPropertyDescriptor<SoundId>> specializations
 template<>
 void XItem<RBX::Soundscape::SoundId, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId> >::update(RBX::SelectionGroup*) {}
-template<>
-void XItem<RBX::Soundscape::SoundId, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId> >::applyValue(RBX::Soundscape::SoundId const&) {}
+// XItem<SoundId>::applyValue 0043e4c0 is the generic template below (explicit instantiation at the end of the unit).
 template<>
 void XItem<RBX::Soundscape::SoundId, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId> >::writeValue(RBX::Instance*, RBX::Soundscape::SoundId const&) {}
 
@@ -415,3 +414,7 @@ void XItem<T, GridItem, Descriptor>::applyValue(const T& value)
 template void XItem<bool, CXTPPropertyGridItemBool, RBX::Reflection::TypedPropertyDescriptor<bool> >::applyValue(const bool&);
 template void XItem<float, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<float> >::applyValue(const float&);
 template void XItem<int, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<int> >::applyValue(const int&);
+// 0043e4c0 (registry placeholder func_0043e4c0, 892 B): the SoundId instantiation, called by SoundItem::browse 00441bc0
+// (AppLeftovers.cpp) and the SoundId OnValueChanged; its bind 0043e730 / for_each 0043e771 helpers lie in the
+// AppUnit438PropGrid.cpp range.
+template void XItem<RBX::Soundscape::SoundId, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId> >::applyValue(const RBX::Soundscape::SoundId&);

@@ -5,9 +5,28 @@
 // +0x15c, yLocation +0x160, offset +0x164; PercentPanel position +0x164) and util/Rect.h. GuiTarget::process 005732d0
 // and TopMenuBar::isVisible 00573e00 are inline in-class bodies already (gui/GuiEvent.h, gui/Gui.h).
 #include "gui/Gui.h"
+#include "RbxGraphics/Adorn.h"
 
 namespace RBX
 {
+	// INFERRED: setCanvasSize is inline in the 2008 header (stores straight into 00974d78 / 00974d7c here and in
+	// GuiRoot::render2d 00573c00, no out-of-line copy); the read-only gui/Gui.h only declares it (GuiRootRender.cpp
+	// pattern; proposal: make it inline there).
+	inline void GuiRoot::setCanvasSize(const G3D::Vector2& size)
+	{
+		canvasSize = size;
+	}
+
+	// 00573430 (registry placeholder func_00573430, cdecl): GuiRoot::render2dItem, called by the DataModel GUI
+	// render 0057a1b0 (0057a231) with the Adorn and the root GuiItem. Adorn getHeight (+0x18) / getWidth (+0x14)
+	// through Vector2int16 into canvasSize, then the item's render2d slot (+0x60). Statement shape of the 2007
+	// openrbx gui/GUI.cpp GuiRoot::render2dItem (ROBLOX 0x0058cd90).
+	void GuiRoot::render2dItem(Adorn* adorn, GuiItem* item)
+	{
+		setCanvasSize(G3D::Vector2(G3D::Vector2int16(adorn->getWidth(), adorn->getHeight())));
+		item->render2d(adorn);
+	}
+
 	// 00573480: setName("RelativePanel") through the Instance vtable, then the Layout fields in this order.
 	void RelativePanel::init(const Layout& layout)
 	{

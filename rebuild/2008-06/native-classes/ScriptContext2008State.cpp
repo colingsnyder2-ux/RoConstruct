@@ -13,6 +13,8 @@
 #include "script/LuaMemory.h"
 #include <algorithm>
 #include "AppUnit4BC_2008/AssociationTimeStamp.h"
+#include "lua/lua.hpp"
+#include "lauxlib.h"
 
 using namespace RBX;
 
@@ -300,4 +302,73 @@ void ScriptContext::resume(lua_State* thread, PushArgumentsClosure pushArguments
 		lua_settop(thread, 0);
 		throw std::runtime_error(err);
 	}
+}
+
+// 005af940 (registry placeholder func_005af940, 1049 B, ret 0x4c = identity, script, name + two boost::function closures
+// by value). Donor tools/rbxgs ScriptContext.cpp executeInNewThread(identity, script, name, pushArguments, readResults):
+// openState 005aefa0; CmdLine (3) builds commandLineSandbox (+0x13c, thread at +0x154) from lua_newthread(globalState
+// +0x138) 00612f60 via ThreadRef 00593e40 / operator= 00594100 / ~ThreadRef 00594380, sandboxThread 005a8660,
+// setThreadIdentity 005aeaf0, lua_settop(-2) 00611c20; "Unable to create ..." through StandardOut print 005693a0 and
+// std::runtime_error 00409d50; ScopedPopper(L, 1); "=" + (name or "Script"); luaL_loadbuffer 006114a0; the 2008 error
+// text comes from Lua::LuaArguments(newThread, -1) 0061c790 (as in resume 005aeb80); resume(newThread, closures) 005aeb80.
+void ScriptContext::executeInNewThread(Security::Identities identity, const char* script, const char* name, PushArgumentsClosure pushArguments, ReadResultsClosure readResults)
+{
+	openState();
+
+	lua_State* L;
+	lua_State* newThread;
+
+	if (identity == Security::CmdLine)
+	{
+		if (commandLineSandbox.empty())
+		{
+			{
+				Lua::ThreadRef threadRef(lua_newthread(globalState));
+				commandLineSandbox = threadRef;
+			}
+
+			if (commandLineSandbox.empty())
+				throw std::runtime_error("Unable to create trusted sandbox thread");
+
+			sandboxThread(commandLineSandbox.thread());
+			setThreadIdentity(commandLineSandbox.thread(), Security::CmdLine);
+			lua_pop(globalState, 1);
+		}
+
+		L = commandLineSandbox.thread();
+		newThread = lua_newthread(L);
+	}
+	else
+	{
+		L = globalState;
+		newThread = lua_newthread(L);
+		sandboxThread(newThread);
+		setThreadIdentity(newThread, identity);
+	}
+
+	if (!newThread)
+	{
+		StandardOut::singleton()->print(MESSAGE_ERROR, "ScriptContext::execute: Unable to create a new thread");
+		throw std::runtime_error("Unable to create a new thread");
+	}
+
+	Lua::ScopedPopper popper(L, 1);
+
+	std::string sName("=");
+
+	if (name)
+		sName += name;
+	else
+		sName += "Script";
+
+	if (luaL_loadbuffer(newThread, script, strlen(script), sName.c_str()))
+	{
+		std::string err = Lua::LuaArguments(newThread, -1);
+		lua_pop(newThread, 1);
+
+		StandardOut::singleton()->print(MESSAGE_ERROR, err.c_str());
+		throw std::runtime_error(err);
+	}
+
+	resume(newThread, pushArguments, readResults);
 }

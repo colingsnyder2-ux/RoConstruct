@@ -136,6 +136,23 @@ namespace RBX
 		jointStage->onJointPrimitiveSet(j, p);
 	}
 
+	// 005e9260 (donor World::insertContact): the first stage (+0x88) gets the contact as a new edge (slot 4,
+	// vtable +0x10), then numContacts (+0xe8) is incremented. Callers ContactManager::onNewPair 0060d8c8 / getHit.
+	void World::insertContact(Contact* c)
+	{
+		jointStage->onEdgeAdded(c);
+		numContacts++;
+	}
+
+	// 005e9280 (donor World::destroyContact): onEdgeRemoving (slot 5, vtable +0x14), the virtual deleting destructor
+	// of the contact, then --numContacts. Caller ContactManager::onPrimitiveGeometryTypeChanged 0060d995.
+	void World::destroyContact(Contact* c)
+	{
+		jointStage->onEdgeRemoving(c);
+		delete c;
+		numContacts--;
+	}
+
 	// 005e93b0: IStage::findStage walk (getStageType slot 1) for SIMJOB_STAGE 6
 	SimJobStage& World::getSimJobStage()
 	{
