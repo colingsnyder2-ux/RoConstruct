@@ -10,6 +10,7 @@
 #include <G3D/Color3.h>
 #include <G3D/Color3uint8.h>
 #include <G3D/Vector3.h>
+#include <G3D/Vector2int16.h>
 #include "util/TextureId.h"
 #include "util/Sound.h"
 
@@ -191,6 +192,46 @@ void TypedPropertyDescriptor<G3D::Color3>::readValue(DescribedBase* instance, co
 			getset->setValue(instance, legacy);
 		}
 	}
+}
+
+// 0056e3a0 (vtable 00815d90 slot 11): <X> / <Y> integer children.
+template<>
+void TypedPropertyDescriptor<G3D::Vector2int16>::readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
+{
+	if (!element->isXsiNil())
+	{
+		const XmlElement* X = element->findFirstChildByTag(tag_X);
+		const XmlElement* Y = element->findFirstChildByTag(tag_Y);
+		int x, y;
+		X->getValue(x);
+		Y->getValue(y);
+		G3D::Vector2int16 value((short)x, (short)y);
+		getset->setValue(instance, value);
+	}
+}
+
+// 0056e430 (vtable 00815d90 slot 10): the <X> and <Y> children are appended before the value is fetched.
+template<>
+void TypedPropertyDescriptor<G3D::Vector2int16>::writeValue(const DescribedBase* instance, XmlElement* element) const
+{
+	XmlElement* X = element->addChild(tag_X);
+	XmlElement* Y = element->addChild(tag_Y);
+	G3D::Vector2int16 value = getValue(instance);
+	X->setValue((int)value.x);
+	Y->setValue((int)value.y);
+}
+
+// 0056e900 (vtable 00832c28 slot 10): <X> <Y> <Z> float children, appended before the value is fetched.
+template<>
+void TypedPropertyDescriptor<G3D::Vector3>::writeValue(const DescribedBase* instance, XmlElement* element) const
+{
+	XmlElement* X = element->addChild(tag_X);
+	XmlElement* Y = element->addChild(tag_Y);
+	XmlElement* Z = element->addChild(tag_Z);
+	G3D::Vector3 value = getValue(instance);
+	X->setValue(value.x);
+	Y->setValue(value.y);
+	Z->setValue(value.z);
 }
 
 }
