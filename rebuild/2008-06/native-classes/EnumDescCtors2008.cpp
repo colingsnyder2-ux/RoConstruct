@@ -77,7 +77,9 @@ EnumDesc<SurfaceType>::EnumDesc() : EnumDescriptor("SurfaceType", typeid(Surface
 	addPair(WELD, "Weld");
 	addPair(STUDS, "Studs");
 	addPair(INLET, "Inlet");
-	addPair(SPAWN_deprecated, "Spawn");
+	// 0064d8d1: "Spawn" (0084b1c0) is not an addPair: Name::declare(-1) then nameToEnumLegacy[...] = 0 (edi), i.e. a
+	// legacy name for Smooth; value 5 gets no pair.
+	addLegacyName("Spawn", NO_SURFACE);
 	addPair(ROTATE, "Hinge");
 	addPair(ROTATE_V, "Motor");
 	addPair(ROTATE_P, "SteppingMotor");
