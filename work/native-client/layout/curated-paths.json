@@ -517,8 +517,8 @@
   "2007 rbxgs donor defines Kernel in App/v8kernel/Kernel.cpp (100% of this file's class-member definitions); inferred"
  ],
  "MathRadWrap": [
-  "client/app/util/MathRadWrap.cpp",
-  "005cbec0 radWrap sits between ControllerService rows and Camera::askSetParent, away from the Math rows 005dd780..005df47f: separate TU; own unit"
+  "client/app/util/Math.cpp",
+  "2007 rbxgs donor defines Math in App/util/Math.cpp (100% of this file's class-member definitions); inferred"
  ],
  "MathTiltQuadrant": [
   "client/app/util/Math.cpp",
@@ -655,10 +655,6 @@
  "ModelSetFrontTool": [
   "client/app/v8datamodel/ModelSetFrontTool.cpp",
   "INFERRED: joined with Workspace.cpp, MSVC inlines Math::getWorldNormal/Vector3 ops into applyToSurface (bytes differ), so it is a separate TU in the exe; own unit"
- ],
- "MathClosestRay": [
-  "client/app/util/MathClosestRay.cpp",
-  "INFERRED: joined with Math.cpp changes sortVector3 (inlining), so its TU differs; own unit"
  ],
  "OgreAuto_RBX_Math": [
   "client/app/util/MathAxisRotation.cpp",
