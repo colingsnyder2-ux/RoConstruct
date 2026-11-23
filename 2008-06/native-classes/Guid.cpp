@@ -4,7 +4,6 @@
 #include <windows.h>
 #include <objbase.h>
 #include <boost/thread/once.hpp>
-#include "../../../tools/rbxgs/Client/App/include/util/Guid.h"
 
 const RBX::Name* localScope = NULL;
 LONG nextIndex = 0;

@@ -167,16 +167,99 @@ namespace RBX {
 			value = getset->getValue(instance);
 		}
 		virtual void setVariant(Reflection::DescribedBase*, const Reflection::Value&) const;
-		virtual bool equalValues(const Reflection::DescribedBase*, const Reflection::DescribedBase*) const;
-		virtual bool hasStringValue() const;
-		virtual std::string getStringValue(const Reflection::DescribedBase*) const;
-		virtual bool setStringValue(Reflection::DescribedBase*, const std::string&) const;
-		virtual void writeValue(const Reflection::DescribedBase*, XmlElement*) const;
-		virtual void readValue(Reflection::DescribedBase*, const XmlElement*, IReferenceBinder&) const;
-		virtual unsigned getIndexValue(const Reflection::DescribedBase*) const;
-		virtual bool setIndexValue(Reflection::DescribedBase*, unsigned) const;
-		virtual int getEnumValue(const Reflection::DescribedBase*) const;
-		virtual bool setEnumValue(Reflection::DescribedBase*, int) const;
+		// The remaining overrides mirror Reflection::EnumPropDescriptor (reflection/reflection.h) on this class's own getset
+		// (+0x1c): vtable 0083fe94 (<NORM_Y, SurfaceType>) slot 3 equalValues is identical-code folded with
+		// EnumPropDescriptor::equalValues 005ee1d0, slot 6 hasStringValue with the shared `return true` 00565950 and slot 10
+		// writeValue with EnumPropDescriptor::writeValue 0059d4a0; slot 11 readValue 005ed900 and slot 12 getIndexValue
+		// 005ede90 have the EnumPropDescriptor statement shapes.
+		Enum getValue(const Reflection::DescribedBase* object) const
+		{
+			return getset->getValue(object);
+		}
+		void setValue(Reflection::DescribedBase* object, Enum value) const
+		{
+			getset->setValue(object, value);
+		}
+		virtual bool equalValues(const Reflection::DescribedBase* a, const Reflection::DescribedBase* b) const
+		{
+			return getValue(a) == getValue(b);
+		}
+		virtual bool hasStringValue() const
+		{
+			return true;
+		}
+		virtual std::string getStringValue(const Reflection::DescribedBase* instance) const
+		{
+			return Reflection::EnumDesc<Enum>::singleton().convertToString(getValue(instance));
+		}
+		virtual bool setStringValue(Reflection::DescribedBase* instance, const std::string& text) const
+		{
+			Enum val;
+			if (Reflection::EnumDesc<Enum>::singleton().convertToValue(Name::lookup(text.c_str()), val))
+			{
+				getset->setValue(instance, val);
+				return true;
+			}
+			return false;
+		}
+		virtual void writeValue(const Reflection::DescribedBase* instance, XmlElement* element) const
+		{
+			element->setValue(getValue(instance));
+		}
+		virtual void readValue(Reflection::DescribedBase* instance, const XmlElement* element, IReferenceBinder&) const
+		{
+			if (!element->isXsiNil())
+			{
+				if (element->isValueType<std::string>())
+				{
+					std::string text;
+					if (element->getValue(text))
+					{
+						Enum val;
+						if (Reflection::EnumDesc<Enum>::singleton().convertToValue(Name::lookup(text.c_str()), val))
+						{
+							getset->setValue(instance, val);
+							return;
+						}
+						if (text.size() == 0)
+						{
+							if (setIndexValue(instance, 0))
+								return;
+						}
+					}
+				}
+				int value;
+				if (element->getValue(value))
+					setValue(instance, (Enum) value);
+			}
+		}
+		virtual unsigned getIndexValue(const Reflection::DescribedBase* instance) const
+		{
+			return Reflection::EnumDesc<Enum>::singleton().convertToIndex(getValue(instance));
+		}
+		virtual bool setIndexValue(Reflection::DescribedBase* instance, unsigned index) const
+		{
+			Enum val;
+			if (Reflection::EnumDesc<Enum>::singleton().convertToValue(index, val))
+			{
+				getset->setValue(instance, val);
+				return true;
+			}
+			return false;
+		}
+		virtual int getEnumValue(const Reflection::DescribedBase* instance) const
+		{
+			return getValue(instance);
+		}
+		virtual bool setEnumValue(Reflection::DescribedBase* instance, int intValue) const
+		{
+			if (Reflection::EnumDesc<Enum>::singleton().isValue(intValue))
+			{
+				setValue(instance, (Enum) intValue);
+				return true;
+			}
+			return false;
+		}
 	};
 
 	// Dynamic initializers 007f7000..007f7140 (in this order). INFERRED: object names from the donor Surfaces.cpp

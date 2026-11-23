@@ -14,6 +14,9 @@
 
 namespace RBX
 {
+	// reflection/property.h declares Property(const Property&) without a body; the original copies the event's two
+	// dwords inline at 0040a1dd (same unit-local definition as AppUnit460_2008MarshaledEventData.cpp).
+	inline Reflection::Property::Property(const Property& other) : ConstProperty(other) {}
 	inline PropertyChanged::PropertyChanged(const PropertyChanged& other) : property(other.property) {}
 	inline CanAggregateChanged::CanAggregateChanged(const CanAggregateChanged& other) : canClump(other.canClump) {}
 

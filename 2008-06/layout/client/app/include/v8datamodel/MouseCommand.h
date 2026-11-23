@@ -18,6 +18,7 @@ namespace RBX
 
 	class MouseCommand : public INamed, public IRenderable
 	{
+		friend class Workspace;
 	private:
 		bool capturedMouse;
 	protected:
@@ -92,7 +93,6 @@ namespace RBX
 		}
 
 		void snapshotSelectionPosition(XmlState*);
-		// Recovered distance helper; original method name unproven.
 		float distanceFromCharacter(const G3D::Vector3&) const;
 		bool characterCanReach(const G3D::Vector3& hitPoint) const;
 		MouseCommand(Workspace* workspace);

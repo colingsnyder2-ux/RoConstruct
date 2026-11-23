@@ -22,6 +22,27 @@ static ATL::CPath getLocalCachePath(bool createPath)
     return path;
 }
 
+// 0055fa70 (registry placeholder func_0055fa70; cdecl, no this; only caller the CApp COM method at 00406260 after
+// AFX_MANAGE_STATE). INFERRED name after the 2007 OpenRBX ContentProvider::clearFileCache (a free function here, like
+// the unit's other 2008 members getLocalCachePath 0055f940 / registerImageContent 0055fbc0). Evidence:
+// getLocalCachePath(false), CStringT != "" through _mbscmp with "" 0080b716, FindFirstFile(path + "*.*" 008104dc)
+// with the out-of-line CStringT operator+(const CStringT&, PCXSTR) 0055de10 (Concatenate 0055d840), then
+// DeleteFile(path + cFileName) for every non-directory entry.
+void clearFileCache()
+{
+    ATL::CPath path = getLocalCachePath(false);
+    if (path.m_strPath != "") {
+        WIN32_FIND_DATA FindFileData;
+        HANDLE hFind = FindFirstFile(path.m_strPath + "*.*", &FindFileData);
+        if (hFind != INVALID_HANDLE_VALUE) {
+            do {
+                if (!(FindFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY))
+                    DeleteFile(path.m_strPath + FindFileData.cFileName);
+            } while (FindNextFile(hFind, &FindFileData));
+        }
+    }
+}
+
 ContentId registerImageContent(std::istream& content, const Name& mimeType)
 {
     ContentId id;

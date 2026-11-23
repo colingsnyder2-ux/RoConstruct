@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
 // 2008-06 native rows of the Creatable / FactoryProduct block 0048e6e0..004907ff and 00494940..00494a9f inside the
 // application range 0048c000..00498000 (Network/Player.cpp unit, inactive). Verified by
 // tests/record_native_app_unit48c_2008.py. All headers are read-only here.

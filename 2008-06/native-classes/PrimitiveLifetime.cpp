@@ -67,6 +67,47 @@ const G3D::CoordinateFrame& Primitive::getCoordinateFrame() const
     return body->getPV().position;
 }
 
+// 005e7980 (registry func_005e7980; openrbx Primitive::computeFuzzyExtents, only caller getFastFuzzyExtents 005e7a50):
+// two getCoordinateFrame inlines (updatePV 00599360 twice), geometry (+0x9c) slot 5 getCenterToCorner, expand(0.01f
+// 0082748c). NEAR MISS (197 B, same size): only the x87 operand order of the three c + r adds differs (target x: r + c,
+// y/z: c + r); writing r + c, a named corner local, or a file-local helper did not change it (batch 43, parked).
+Extents Primitive::computeFuzzyExtents() const
+{
+    const G3D::Matrix3& rotation = body->getCoordinateFrame().rotation;
+    const G3D::Vector3& translation = body->getCoordinateFrame().translation;
+
+    Extents extents = Extents::fromCenterCorner(translation, geometry->getCenterToCorner(rotation));
+    extents.expand(0.01f);
+
+    return extents;
+}
+
+// 005e7a50 (registry func_005e7a50; openrbx Primitive::getFastFuzzyExtents): fuzzyExtents +0x80, stateId +0x98.
+const Extents& Primitive::getFastFuzzyExtents() const
+{
+    if (fuzzyExtentsStateId != body->getStateIndex()) {
+        fuzzyExtents = computeFuzzyExtents();
+        fuzzyExtentsStateId = body->getStateIndex();
+    }
+
+    return fuzzyExtents;
+}
+
+// 005e7f20 (registry func_005e7f20; openrbx Primitive::hitTest, caller ContactManager::getSlowHit 0060ced0):
+// CoordinateFrame::toObjectSpace(Ray) 00518970, geometry slot 8 hitTest, pointToWorldSpace 004766a0.
+bool Primitive::hitTest(const G3D::Ray& worldRay, G3D::Vector3& worldHitPoint, bool& inside)
+{
+    G3D::Ray localRay = body->getCoordinateFrame().toObjectSpace(worldRay);
+    G3D::Vector3 localHitPoint;
+
+    if (geometry->hitTest(localRay, localHitPoint, inside)) {
+        worldHitPoint = body->getCoordinateFrame().pointToWorldSpace(localHitPoint);
+        return true;
+    }
+
+    return false;
+}
+
 void Primitive::onNewTouch(Primitive* p0, Primitive* p1)
 {
     newTouch(p0, p1);

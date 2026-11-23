@@ -163,6 +163,30 @@ namespace RBX
 
 		return movedSoFar;
 	}
+
+	// 00610a60 (registry func_00610a60; caller MegaDragger::safeRotate 0060e359): openrbx Dragger::safeRotate.
+	// computeExtents 00610070, center (0.5f 00819bac), toGrid inline (Math::toGrid 005dee10, 0.1f), identity 00513e20,
+	// toObjectSpace 0060e8f0, CoordinateFrame * 00476700 twice, fromPrimitive 00599f80, setCoordinateFrame 0059d8a0.
+	void Dragger::safeRotate(const G3D::Array<Primitive*>& primitives, const G3D::Matrix3& rotate, ContactManager& contactManager)
+	{
+		if (primitives.size() != 0)
+		{
+			G3D::Vector3 center = toGrid(computeExtents(primitives).center());
+
+			G3D::CoordinateFrame centerCoord(center);
+			G3D::CoordinateFrame rotationCoord(rotate, G3D::Vector3::zero());
+
+			for (int i = 0; i < primitives.size(); i++)
+			{
+				Primitive* primitive = primitives[i];
+				G3D::CoordinateFrame primInCenter = centerCoord.toObjectSpace(primitive->getCoordinateFrame());
+				G3D::CoordinateFrame newPrimInCenter = rotationCoord * primInCenter;
+				G3D::CoordinateFrame primInWorld = centerCoord * newPrimInCenter;
+				PartInstance* part = PartInstance::fromPrimitive(primitive);
+				part->setCoordinateFrame(primInWorld);
+			}
+		}
+	}
 }
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).

@@ -7,6 +7,10 @@
 #include "v8xml/XmlElement.h"
 #include "v8datamodel/Mouse.h"
 #include "v8datamodel/ToolMouseCommand.h"
+#include "v8datamodel/JointInstance.h"
+#include "v8datamodel/ModelInstance.h"
+#include "v8datamodel/Workspace.h"
+#include "humanoid/Humanoid.h"
 
 namespace RBX
 {
@@ -25,10 +29,11 @@ namespace RBX
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
 
+	// INFERRED: prop_Grip and the four event_* descriptors have external linkage (ToolEvents.cpp, same original unit, references them by name).
 	// Dynamic initializers 007f7640, 007f76a0, 007f7700, 007f7760, 007f77c0, 007f7820, 007f7880, 007f78e0, 007f7910,
 	// 007f7930, 007f7960, 007f7990 (in this order). Grip / BackendToolState / ActivationState push STREAMING (4),
 	// GripPos / GripForward / GripUp / GripRight push UI (1).
-	static Reflection::PropDescriptor<Tool, G3D::CoordinateFrame> prop_Grip("Grip", "Appearance", &Tool::getGrip, &Tool::setGrip, Reflection::PropertyDescriptor::STREAMING);
+	Reflection::PropDescriptor<Tool, G3D::CoordinateFrame> prop_Grip("Grip", "Appearance", &Tool::getGrip, &Tool::setGrip, Reflection::PropertyDescriptor::STREAMING);
 	static Reflection::PropDescriptor<Tool, G3D::Vector3> prop_GripPos("GripPos", "Appearance", &Tool::getGripPos, &Tool::setGripPos, Reflection::PropertyDescriptor::UI);
 	static Reflection::PropDescriptor<Tool, G3D::Vector3> prop_GripForward("GripForward", "Appearance", &Tool::getGripForward, &Tool::setGripForward, Reflection::PropertyDescriptor::UI);
 	static Reflection::PropDescriptor<Tool, G3D::Vector3> prop_GripUp("GripUp", "Appearance", &Tool::getGripUp, &Tool::setGripUp, Reflection::PropertyDescriptor::UI);
@@ -36,10 +41,10 @@ namespace RBX
 	static Reflection::PropDescriptor<Tool, int> prop_BackendToolState("BackendToolState", "Appearance", &Tool::getBackendToolState, &Tool::setBackendToolState, Reflection::PropertyDescriptor::STREAMING);
 	static Reflection::PropDescriptor<Tool, int> prop_FrontendActivationState("ActivationState", "Appearance", &Tool::getFrontendActivationState, &Tool::setFrontendActivationState, Reflection::PropertyDescriptor::STREAMING);
 	Reflection::BoundProp<bool, 1> Tool::prop_Enabled("Enabled", "State", &Tool::enabled, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::SignalDesc<Tool, void(boost::shared_ptr<Instance>)> event_Equipped("Equipped", "mouse");
-	static Reflection::SignalDesc<Tool, void(void)> event_Unequipped("Unequipped");
-	static Reflection::SignalDesc<Tool, void(void)> event_Activated("Activated");
-	static Reflection::SignalDesc<Tool, void(void)> event_Deactivated("Deactivated");
+	Reflection::SignalDesc<Tool, void(boost::shared_ptr<Instance>)> event_Equipped("Equipped", "mouse");
+	Reflection::SignalDesc<Tool, void(void)> event_Unequipped("Unequipped");
+	Reflection::SignalDesc<Tool, void(void)> event_Activated("Activated");
+	Reflection::SignalDesc<Tool, void(void)> event_Deactivated("Deactivated");
 
 	// 005fd3e0: name_name 00975338, findAttribute 0057c2b0, getValue 0057c360, "BackendToolState" 008416e8,
 	// "ActivationState" 008416d8, Instance::readProperty 00559170. Reads the public Name::name member directly, as the
@@ -116,9 +121,129 @@ namespace RBX
 		}
 	}
 
+
+	// computeDesiredState() has no out-of-line copy in the 2008 image: it is inlined into rebuildBackendState 005fdb70
+	// (getHandleConst 005b08a0, Workspace::contextInWorkspace 005a33d0, computeDesiredState(Instance*) 005fd460).
+	Tool::ToolState Tool::computeDesiredState()
+	{
+		if (!getHandleConst())
+			return NOTHING;
+
+		if (!Workspace::contextInWorkspace(this))
+			return HAS_HANDLE;
+
+		return computeDesiredState(getParent());
+	}
+
+	// 005fdb70: ServiceProvider::findServiceProvider 004898d0, setDesiredState 005ff900.
+	void Tool::rebuildBackendState()
+	{
+		ToolState desiredState = computeDesiredState();
+		setDesiredState(desiredState, ServiceProvider::findServiceProvider(this));
+	}
+
+	// 005fdc40: weld +0x1a4 (IEquipable), setDesiredState(HAS_TORSO = 4) 005ff900, rebuildBackendState 005fdb70.
+	void Tool::onEvent_RemovedBackend(boost::shared_ptr<Instance> child)
+	{
+		if (ServiceProvider::findServiceProvider(this) && child.get() != this)
+		{
+			if (child.get() == weld.get())
+				setDesiredState(HAS_TORSO, ServiceProvider::findServiceProvider(this));
+
+			rebuildBackendState();
+		}
+	}
+
+	// 005fec80: getHandleConst 005b08a0, the Tool slot assign 005febb0 (bind of onEvent_HandleTouched 005fe030),
+	// PartInstance::event_Touched 00976164 connect 004a3340 with priority 10, handleTouched +0x204 assignment 00595540,
+	// else disconnect 00595230.
+	void Tool::connectTouchEvent()
+	{
+		if (const PartInstance* handle = getHandleConst())
+		{
+			handleTouched = PartInstance::event_Touched.connect(const_cast<PartInstance*>(handle), boost::bind(&Tool::onEvent_HandleTouched, this, _1), 10);
+		}
+		else
+		{
+			handleTouched.disconnect();
+		}
+	}
+
+	// 005ff050: JointInstance::getPart0 005e2a10, Instance::setParent 0055a8f0, weld reset 00456e80, getHandleConst
+	// 005b08a0, setCanCollide 0059dd80, Humanoid::modelIsCharacter 005d9a20, ModelInstance::getLocation through ILocation,
+	// y + 4.0f (00826e6c), lookVector * 8.0f (0082ca40), moveToPoint 00608960, setRotationalVelocity 0059dad0, then a
+	// tail jump to connectTouchEvent 005fec80. The 2008 body sets CanCollide once (the 2007 analog twice).
+	void Tool::downFrom_Equipped()
+	{
+		ModelInstance* character = NULL;
+
+		if (weld)
+		{
+			if (PartInstance* part0 = weld->getPart0())
+				character = dynamic_cast<ModelInstance*>(part0->getParent());
+
+			weld->setParent(NULL);
+			weld.reset();
+		}
+
+		if (PartInstance* handle = getHandle())
+		{
+			handle->setCanCollide(true);
+
+			if (Humanoid::modelIsCharacter(character))
+			{
+				G3D::CoordinateFrame cf = character->getLocation();
+				G3D::Vector3 pos = cf.translation;
+				pos.y += 4;
+				pos += cf.lookVector() * 8;
+
+				handle->moveToPoint(pos);
+				handle->setRotationalVelocity(G3D::Vector3(1, 1, 1));
+			}
+		}
+
+		connectTouchEvent();
+	}
+
+	// 005ff1a0: Network::Players::findLocalCharacter 0049aca0, ServiceProvider::find<Workspace> 00491e50 into workspace
+	// +0x1ac, new ToolMouseCommand (0x2c bytes, constructor 005fe280) into toolMouseCommand +0x200,
+	// Workspace::setMouseCommand 005a1fc0.
+	void Tool::onEquipping()
+	{
+		if (getParent() && getParent() == Network::Players::findLocalCharacter(this))
+		{
+			workspace = ServiceProvider::find<Workspace>(this);
+			toolMouseCommand = new ToolMouseCommand(workspace, this);
+			workspace->setMouseCommand(toolMouseCommand);
+		}
+	}
+
 	void Tool::setGripPos(const G3D::Vector3& v)
 	{
 		setGrip(G3D::CoordinateFrame(grip.rotation, v));
+	}
+
+	// 005ffc50 (prop_GripForward setter, initializer 007f7700): CoordinateFrame copy 00513220, getColumn 00513240,
+	// Vector3::unitize(tolerance) 00518470, setColumn 00513260, setGrip 005ffb70. Same statement shape as setGripUp /
+	// setGripRight (OgreAuto_RBX_Tool.cpp).
+	void Tool::setGripForward(const G3D::Vector3& v)
+	{
+		G3D::CoordinateFrame c = grip;
+		G3D::Vector3 oldX = c.rotation.getColumn(0);
+		G3D::Vector3 oldY = c.rotation.getColumn(1);
+
+		G3D::Vector3 z = -v.direction();
+		G3D::Vector3 x = oldY.cross(z);
+		x.unitize();
+
+		G3D::Vector3 y = z.cross(x);
+		y.unitize();
+
+		c.rotation.setColumn(0, x);
+		c.rotation.setColumn(1, y);
+		c.rotation.setColumn(2, z);
+
+		setGrip(c);
 	}
 
 	Tool::Tool()

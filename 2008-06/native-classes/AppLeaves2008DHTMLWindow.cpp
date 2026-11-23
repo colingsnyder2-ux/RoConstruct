@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string /I{headers}/boost-function-pod-vtable-memptr
 // Inactive native 2008-06 DHTMLWindow (native-headers/AppLeaves2008/DHTMLWindow2008.h): the reflected members of the
 // DHTMLWindowService translation unit, their descriptors and DHTMLWindowService::askAddChild. The service itself and
 // the Marshaller registry of the same unit stay in AppLeaves2008DHTMLWindowService.cpp.
@@ -148,7 +148,10 @@ namespace RBX
 	}
 }
 
-// 0041b660: doWithView with CLuaHtmlView::unbindAll 0042b5f0.
+// 0041b660: doWithView with CLuaHtmlView::unbindAll 0042b5f0. The boost::function1<void, CLuaHtmlView*> built from the
+// member pointer keeps it raw in the small buffer (Boost 1.35 member_ptr_tag): manager 00417850 reports typeid
+// .P8CLuaHtmlView@@AEXXZ (0092c290) and the invoker 0041a080 copies it with the static vtable 0080ec90, hence the
+// /I{headers}/boost-function-pod-vtable-memptr profile on the flags line (batch 43: +24 exact, none lost).
 void DHTMLWindow::unbind()
 {
     htmlMarshaller->post(boost::bind(&DHTMLWindow::doWithView, RBX::shared_from(this), &CLuaHtmlView::unbindAll));

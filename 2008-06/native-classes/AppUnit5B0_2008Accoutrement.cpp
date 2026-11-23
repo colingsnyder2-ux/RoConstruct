@@ -14,12 +14,13 @@ namespace RBX
 {
 	// Property descriptors of the unit (static initializers 007f4fb0..007f5190, counted by appearance-working.json);
 	// defined here because setAttachmentPoint raises prop_AttachmentPoint (00976d20).
-	static Reflection::PropDescriptor<Accoutrement, G3D::CoordinateFrame> prop_AttachmentPoint("AttachmentPoint", "Appearance", &Accoutrement::getAttachmentPoint, &Accoutrement::setAttachmentPoint, Reflection::PropertyDescriptor::STREAMING);
-	static Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentPos("AttachmentPos", "Appearance", &Accoutrement::getAttachmentPos, &Accoutrement::setAttachmentPos, Reflection::PropertyDescriptor::UI);
-	static Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentForward("AttachmentForward", "Appearance", &Accoutrement::getAttachmentForward, &Accoutrement::setAttachmentForward, Reflection::PropertyDescriptor::UI);
-	static Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentUp("AttachmentUp", "Appearance", &Accoutrement::getAttachmentUp, &Accoutrement::setAttachmentUp, Reflection::PropertyDescriptor::UI);
-	static Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentRight("AttachmentRight", "Appearance", &Accoutrement::getAttachmentRight, &Accoutrement::setAttachmentRight, Reflection::PropertyDescriptor::UI);
-	static Reflection::PropDescriptor<Accoutrement, int> prop_BackendAccoutrementState("BackendAccoutrementState", "Appearance", &Accoutrement::getBackendAccoutrementState, &Accoutrement::setBackendAccoutrementState, Reflection::PropertyDescriptor::STREAMING);
+	// INFERRED: the one definition lives in Accoutrement.cpp (same original unit, external linkage); these are references.
+	extern Reflection::PropDescriptor<Accoutrement, G3D::CoordinateFrame> prop_AttachmentPoint;
+	extern Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentPos;
+	extern Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentForward;
+	extern Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentUp;
+	extern Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentRight;
+	extern Reflection::PropDescriptor<Accoutrement, int> prop_BackendAccoutrementState;
 
 	// @005b0840: name_name 00975338, findAttribute 0057c2b0, getValue 0057c360, "BackendAccoutrementState" 00834a0c,
 	// Instance::readProperty 00559170

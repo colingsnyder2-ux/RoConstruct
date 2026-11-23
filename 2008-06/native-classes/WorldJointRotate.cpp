@@ -98,9 +98,6 @@ namespace RBX
 	// Core util/SurfaceType.h stops at GLUE = 4; the rotate surface values follow the RotateJointChannel.cpp
 	// unit-local pattern. INFERRED: 00645e59 `sub eax, 6` (ROTATE), 00645e65 `sub eax, 1` -> new 0xc8 with EH state 2
 	// (ROTATE_V = 7), 00645e6a `sub eax, 1` -> new 0xc8 + call 00645d90 RotatePJoint with EH state 1 (ROTATE_P = 8).
-	static const SurfaceType ROTATE = static_cast<SurfaceType>(6);
-	static const SurfaceType ROTATE_V = static_cast<SurfaceType>(7);
-	static const SurfaceType ROTATE_P = static_cast<SurfaceType>(8);
 
 	// 00645e40: news 0xc4 (ROTATE), 0xc8 (ROTATE_P -> 00645d90, EH state 1; ROTATE_V -> 00645dd0, EH state 2).
 	RotateJoint* RotateJoint::surfaceTypeToJoint(SurfaceType surfaceType, Primitive* axlePrim, Primitive* holePrim,

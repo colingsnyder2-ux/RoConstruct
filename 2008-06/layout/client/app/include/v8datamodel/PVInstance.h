@@ -1,5 +1,3 @@
-// 2008-06 override of tools/rbxgs/Client/App/include/v8datamodel/PVInstance.h: class names are .data
-// char arrays passed directly as template arguments (see native-headers/util/Name.h).
 #pragma once
 #include <g3d/vector3.h>
 #include <g3d/coordinateframe.h>
@@ -35,7 +33,7 @@ namespace RBX
 		boost::scoped_ptr<G3D::CoordinateFrame> legacyOffset;
 	public:
 		static const Reflection::EnumPropDescriptor<PVInstance, Controller::ControllerType> prop_ControllerType;
-	  
+
 	private:
 		bool computeIsControllable() const;
 		bool computeIsTopFlag() const;
@@ -105,7 +103,7 @@ namespace RBX
 		PVInstance* getTopLevelPVParent();
 		bool isTopLevelPVInstance() const
 		{
-			return !queryTypedParent<PVInstance>() || getTypedRoot<PVInstance>() == getTypedParent<PVInstance>();
+			return !queryTypedParent<PVInstance>() || getTypedRoot<PVInstance>() == static_cast<const PVInstance*>(getParent());
 		}
 		void setPVGridOffsetLegacy(const G3D::CoordinateFrame& _offset);
 		G3D::CoordinateFrame* getLegacyOffset()

@@ -12,6 +12,7 @@ namespace RBX
 	class ContactManager;
 	class ICameraSubject;
 	class ICameraOwner;
+	struct MovementKeys;   // util/MovementKeys.h (core); forward-declared, only a reference parameter here
 
 	extern char sCamera[];   // INFERRED: ??__E?creator@?$FactoryProduct@...$1?sCamera@...@3PADA (2008 binary) = char array
 	class Camera : public DescribedCreatable<Camera, Instance, sCamera>
@@ -66,7 +67,6 @@ namespace RBX
 		}
 		void setGCameraCoordinateFrame(const G3D::CoordinateFrame& coord);
 		G3D::CoordinateFrame computeLineOfSiteGoal();
-		// Out of line in the original (005cc0c0 / 005cc690 are called, not inlined, from panRadians/tiltRadians).
 		__declspec(noinline) void getHeadingElevationDistance(float& heading, float& elevation, float& distance);
 		__declspec(noinline) void setHeadingElevationDistance(float, float, float);
 		void tellCameraMoved();
@@ -117,6 +117,7 @@ namespace RBX
 		bool tiltUnits(int);
 		void lookAt(const G3D::Vector3& point);
 		void setImageServerViewNoLerp(const G3D::CoordinateFrame& modelCoord, const G3D::Rect2D& viewPort);
+		void moveWithKeys(const MovementKeys& keys, int count);
 
 	public:
 		static float distanceDefault();
