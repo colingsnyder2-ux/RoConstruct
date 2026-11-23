@@ -216,19 +216,17 @@ namespace RBX
 	}
 }
 
-// Batch 42: further Primitive.cpp rows of the same unit (donor tools/rbxgs / openrbx v8world/Primitive.cpp bodies).
-// Blocked only by declarations: native-headers/v8world/Primitive2008.h (not assigned) does not declare
-// getFaceInObject 005e76f0, getGridCorner, setGridCorner, getFirstRigidAt or the static insertEdge / removeEdge(Edge*);
-// proposal filed with batch 42 (the header defines PRIMITIVE_HEADER_DECLARES_GRID_CORNER_EDGES with them).
-// Measured against a scratch Primitive2008.h with the declarations: getFaceInWorld 005e81b0, getGridCorner 005e82e0
-// and setGridCorner 005e8500 byte-exact; insertEdge / removeEdge byte-exact but each matches both 005e89f0 and
-// 005e86a0 (placeholders; registry name proposal); getFirstRigidAt 93 B vs 97 B (target keeps the getNextJoint NULL
-// arm `xor esi, esi` before the loop test, the build jump-threads it to the exit).
-#ifdef PRIMITIVE_HEADER_DECLARES_GRID_CORNER_EDGES
+// Batch 42: further Primitive.cpp rows of the same unit (donor tools/rbxgs / openrbx v8world/Primitive.cpp bodies),
+// declared by native-headers/v8world/Primitive2008.h since batch 46. Measured batch 42: insertEdge / removeEdge are
+// byte-exact but each matches both 005e89f0 and 005e86a0 (placeholders; registry name proposal).
 namespace RBX
 {
 	// 005e7c10 (registry func_005e7c10; donor Primitive::getFirstRigidAt): RigidJoint::isRigidJoint inline (slot 3
 	// getEdgeType == JOINT, slot 5 getJointType WELD 6 / SNAP 7), then the inline getNextJoint 005e7ba0 index walk.
+	// Parked (97 B target, 93 B build): the target keeps the NULL arm of the inline getNextJoint as `xor esi, esi`
+	// followed by the loop test; this build jump-threads it to the exit. Rejected: this donor while loop (batch 42) and
+	// a tail-recursive form (batch 46, the same 93 B). getNextRigid 005e7ca0 below is byte-identical but waits on this
+	// body's identity.
 	RigidJoint* Primitive::getFirstRigidAt(Edge* start)
 	{
 		while (start != NULL)
@@ -240,6 +238,13 @@ namespace RBX
 		}
 
 		return NULL;
+	}
+
+	// 005e7ca0 (registry func_005e7ca0; donor Primitive::getNextRigid; caller FlagStand::GetFlag): the inline
+	// getNextJoint 005e7ba0 index walk, then a tail jump to getFirstRigidAt 005e7c10.
+	RigidJoint* Primitive::getNextRigid(RigidJoint* prev)
+	{
+		return getFirstRigidAt(getNextJoint(prev));
 	}
 
 	// 005e81b0 (registry func_005e81b0): getFaceInObject 005e76f0, Face::toWorldSpace 00649970 of the body's
@@ -306,4 +311,4 @@ namespace RBX
 		}
 	}
 }
-#endif
+

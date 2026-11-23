@@ -40,10 +40,14 @@ namespace RBX
 		void onPrimitiveAddedAnchor(Primitive* p);
 		void onPrimitiveRemovedAnchor(Primitive* p);
 		// 0064cae0 (registry placeholder func_0064cae0; thiscall, `ret 4`, ebx = this): JointStage::onPrimitiveAdded
-		// 006685e2 calls it with ecx = downstream (+0x8) and the primitive pushed. Body not recovered here.
+		// 006685e2 calls it with ecx = downstream (+0x8) and the primitive pushed. Body in ClumpStage2008.cpp.
 		void onPrimitiveAdded(Primitive* p);         // 0064cae0
 		// 0064cbf0 (registry placeholder func_0064cbf0; thiscall, `ret 4`, edi = this, ebx = the pushed primitive):
 		// JointStage::onPrimitiveRemoving 00668850 calls it with ecx = downstream (+0x8). Body in ClumpStage2008.cpp.
 		void onPrimitiveRemoving(Primitive* p);      // 0064cbf0
+		// 0064ce40 (registry placeholder; thiscall, `ret 4`; only caller World::step 005ea137 on the stage of type 2):
+		// walks set10 (+0x10) and calls Joint slot 14 stepUi (vtable +0x38) on each element. Donor name (2009-era
+		// v8world/ClumpStage.h stepUi(int uiStepId)). Body in ClumpStage2008.cpp.
+		void stepUi(int uiStepId);                   // 0064ce40
 	};
 }

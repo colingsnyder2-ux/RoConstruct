@@ -16,13 +16,10 @@
 
 namespace RBX
 {
-#ifdef PRIMITIVE_HEADER_DECLARES_GETSIZEMULTIPLIER
 	// 00668bb0 (registry func_00668bb0; donor name, openrbx ClumpStage2.cpp getPrimitiveSize): the two largest grid size
 	// components of the geometry (+0x9c, gridSize +4) multiplied, floor 006a1bb0, iRound, times the primitive's +0x14
 	// multiplier (zero-extended: `push 0` before __allmul 006a16d0, so the 2008 value is unsigned), unsigned 64-bit to
-	// float. Blocked only by native-headers/v8world/Primitive2008.h (not owned here): +0x14 is private and has no
-	// getter. Measured batch 44 with the proposed `unsigned int getSizeMultiplier() const { return unknown0x14; }`:
-	// IDENTICAL (163 B), no loss in this unit.
+	// float. Primitive2008.h declares getSizeMultiplier (+0x14, batch 46).
 	float getPrimitiveSize(const Primitive* p)
 	{
 		const G3D::Vector3& size = p->getGeometry()->getGridSize();
@@ -53,9 +50,6 @@ haveArea:;
 
 		return (float) (G3D::iRound(gridArea) * (unsigned __int64) p->getSizeMultiplier());
 	}
-#else
-	float getPrimitiveSize(const Primitive* p); // 00668bb0 (registry func_00668bb0; donor name; body guarded above)
-#endif
 
 	// 00668c60
 	int biggerJointGuid(const Joint* j0, const Joint* j1)

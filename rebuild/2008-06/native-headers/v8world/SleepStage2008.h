@@ -90,17 +90,20 @@ namespace RBX
 		typedef std::set<Joint*> JointSet;
 
 	private:
-		// INFERRED: element types. Eight std::vector shapes (stride 0x18); the donor SleepStage.cpp keeps these as
-		// function-local statics (toStepping / toTouching / toSleeping ... in stepContacts, stepJoints and the
-		// stepAssemblies* functions), which 2008 turned into members. Only the vector shape is proven by 0064b8e0 / 0064b330.
-		std::vector<Contact*> contactsA;                  // +0x10
-		std::vector<Contact*> contactsB;                  // +0x28
-		std::vector<Contact*> contactsC;                  // +0x40
-		std::vector<Contact*> contactsD;                  // +0x58
-		std::vector<Joint*> jointsE;                      // +0x70
-		std::vector<Assembly*> assembliesF;               // +0x88
-		std::vector<Assembly*> assembliesG;               // +0xa0
-		std::vector<Assembly*> assembliesH;               // +0xb8
+		// Eight std::vector shapes (stride 0x18, 0064b8e0 / 0064b330); the donor SleepStage.cpp keeps these as function-local
+		// statics (toStepping / toTouching / toSleeping ... in stepContacts, stepJoints and the stepAssemblies* functions),
+		// which 2008 turned into members (donor names). Element types from the users: stepJoints 0064bc60 passes +0xb8 to
+		// changeJointState(vector<Joint*>) 0064b7f0, stepAssembliesAwake 0064bd80 passes +0x40 and
+		// stepAssembliesSleepingChecking 0064be80 passes +0x28 / +0x10 to changeAssemblyState(vector<Assembly*>) 0064b840;
+		// INFERRED: +0x58..+0xa0 are the stepContacts 0064c280 vectors (vector<Contact*>, changeContactState 0064c230).
+		std::vector<Assembly*> toDeep;                    // +0x10
+		std::vector<Assembly*> toWake;                    // +0x28
+		std::vector<Assembly*> toSleepingChecking;        // +0x40
+		std::vector<Contact*> toSleeping;                 // +0x58
+		std::vector<Contact*> toStepping;                 // +0x70
+		std::vector<Contact*> toTouching;                 // +0x88
+		std::vector<Contact*> toTouchingSleeping;         // +0xa0
+		std::vector<Joint*> toSleepingJoints;             // +0xb8
 		int numContactsInStage;                           // +0xd0
 		int numContactsInKernel;                          // +0xd4
 		bool throttling;                                  // +0xd8 INFERRED: donor field after the two counters
@@ -131,6 +134,12 @@ namespace RBX
 		SleepStage(IStage* upstream, World* world);       // 0064b8e0 (not built: needs the 8-vector / 7-set EH layout)
 		virtual ~SleepStage();                            // slot 0 (0064b330)
 		virtual StageType getStageType();                 // slot 1 (007359e0)
+		// Donor SleepStage.h accessor (no code of its own): World::computeFallen 005e9c40 walks awake (+0x120, _Myhead
+		// +0x138) of the stage of type 5 directly.
+		const AssemblySet& getAwakeAssemblies() const
+		{
+			return awake;
+		}
 		virtual void stepWorld(int worldStepId, int uiStepId, bool throttling, bool moveBodiesTest); // INFERRED: vtable slot 2, 0064ca00
 		virtual int getMetric(MetricType metricType);     // INFERRED: vtable slot 6, 0064a8c0
 		virtual void onEdgeAdded(Edge* e);                // slot 4 (0064b1b0)
@@ -156,6 +165,16 @@ namespace RBX
 		AssemblySet* stateToSet(Sim::AssemblyState state);                      // 0064a550
 		bool okNeighborSleep(Assembly* a);                                      // 0064a660 (donor name: RunningAverageState::withinTolerance 00668af0 on SleepInfo +0x8)
 		bool preventNeighborSleep(Assembly* a);                                 // 0064a740 (donor name)
+		bool computeShouldSleep(Assembly* a);                                   // 0064a6c0 (donor name)
+		bool shouldSleep(Assembly* a);                                          // 0064a950 (donor name)
+		// Donor SleepStage step passes (bodies in native-classes/SleepStage2008.cpp). isMoving / atLeastOneAssemblyMoving /
+		// canThrottle have no code of their own (inlined in 0064bc60 / 0064bd80 / 0064c280).
+		bool isMoving(Assembly* a);
+		bool atLeastOneAssemblyMoving(Assembly* a0, Assembly* a1);
+		bool canThrottle(Assembly* a);
+		void stepJoints();                                                      // 0064bc60
+		void stepAssembliesAwake();                                             // 0064bd80
+		void stepAssembliesSleepingChecking();                                  // 0064be80
 		void changeAssemblyState(Assembly* a, Sim::AssemblyState state);        // 0064ae90
 		void changeAssemblyState(const std::vector<Assembly*>& assemblies, Sim::AssemblyState state);   // 0064b840
 		void changeJointState(Joint* j, Sim::EdgeState state);                  // 0064ae10

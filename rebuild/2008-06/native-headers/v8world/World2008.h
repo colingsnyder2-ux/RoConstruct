@@ -1,6 +1,11 @@
 #pragma once
 // 2008-06 native RBX::World declaration (inactive). Minimal method surface needed by the
 // native Joint family; bodies remain inactive and are not selected in the running player.
+namespace G3D
+{
+	template <class T> class Array;   // computeFallen 005e9c40 parameter (G3D/Array.h declares it the same way)
+}
+
 namespace RBX
 {
 	class Joint;
@@ -29,6 +34,9 @@ namespace RBX
 #include <set>
 #include <G3D/Array.h>
 #include "util/Events.h"
+// The primitives member is the donor IndexArray<Primitive, &Primitive::worldIndexFunc> (same 0xc G3D::Array layout):
+// the unit includes v8world/Primitive2008.h before this header, so the member pointer names a complete Primitive.
+#include "util/IndexArray.h"
 namespace RBX
 {
 	class IStage;
@@ -70,7 +78,9 @@ namespace RBX
 		bool inStepCode;                                  // +0xa4
 		bool inJointNotification;                         // +0xa5
 		int worldStepId;                                  // +0xa8
-		G3D::Array<Primitive*> primitives;                // +0xac (donor IndexArray<Primitive, &Primitive::worldIndexFunc>)
+		// +0xac: insertPrimitive 005e98f0 stores the array size to Primitive +0x50 before Array::append 0059a190 (fastAppend);
+		// removePrimitive 005ea8b0 moves the last element into the slot and resizes (fastRemove).
+		IndexArray<Primitive, &Primitive::worldIndexFunc> primitives;   // +0xac
 		G3D::Array<Primitive*> unknownB8;                 // +0xb8 INFERRED: element type and name; the ctor zeroes an Array here
 		std::set<Joint*> breakableJoints;                 // +0xc4
 		int numJoints;                                    // +0xe4
@@ -82,8 +92,33 @@ namespace RBX
 		// ?destroyJoints@World@RBX@@AAEXPAVPrimitive@2@PAV?$set@... (private, as in the donor World.h).
 		void createJoints(Primitive* p, std::set<Primitive*>* ignoreGroup);
 		void destroyJoints(Primitive* p, std::set<Primitive*>* ignoreGroup);
+		// 005e9e00 (registry placeholder func_005e9e00; openrbx World::doBreakJoints, private): walks breakableJoints
+		// (+0xc4), and for each joint in the kernel (IPipelined stage type 7) that isBroken (slot 7) raises AutoDestroy on
+		// the +0x20 base (005e99d0) under inJointNotification (+0xa5). Caller World::step 005e9fd0.
+		void doBreakJoints();
+		// INFERRED: placeholder names (no name evidence; registry func_005e9550 / func_005e9bb0). Private World::step
+		// helpers (callers World::step 005e9fd0 / 005ea193): both walk primitives (+0xac / +0xb0), take getAssembly
+		// 005e7570 and the 2008 moving test (SleepInfo +0x18 non-NULL, state 3 / 1 / 2), then refresh the cached
+		// getCoordinateFrame 005e82c0 / getFastFuzzyExtents 005e7a50. 005e9550 (`ret 4`, its argument is unread): moving
+		// primitives only through their assembly root, fuzzy extents only when not moving. 005e9bb0: resize(0) of +0xb8
+		// (00599a70), then every moving primitive appended to it (0059a190), its frame unless it is the root, its extents.
+		void sub_005e9550(int unused);
+		void sub_005e9bb0();
 #endif
 	public:
+		// 005e98f0 / 005ea8b0 (registry placeholders func_005e98f0 / func_005ea8b0; openrbx World::insertPrimitive /
+		// removePrimitive; callers PartInstance::onAncestorChanged 0059ab3a / 0059ab21). Bodies in
+		// native-classes/RBXWorldRecovery_005e9170.cpp.
+		void insertPrimitive(Primitive* p);
+		void removePrimitive(Primitive* p);
+		// 005e98c0 (registry placeholder func_005e98c0; `ret 8`): appends both primitives to touch (+0x8c) / touchOther
+		// (+0x98) with Array::append 0059a190; donor name (caller the Primitive.cpp newTouch 005e7519). Body in
+		// native-classes/AppUnit5E8_2008World.cpp.
+		void onPrimitiveTouched(Primitive* touchP, Primitive* touchOtherP);
+		// 005e9c40 (registry placeholder func_005e9c40; `ret 4`, caller Workspace::step 005a2580; openrbx World::computeFallen):
+		// the first stage's findStage(5) (SleepStage), its awake set (+0x120), and every primitive of an assembly whose
+		// root primitive frame translation.y is below [0083f8a0] whose own frame is also below it, appended to fallen.
+		void computeFallen(G3D::Array<Primitive*>& fallen) const;
 		// EnumDesc<World::EThrottle> 00564be0 ("EnviromentalPhysicsThrottle") registers DefaultAuto, Disabled, Random and
 		// Always in this order; donor names (generated settings-items-pending World.h of tests/record_native_settings_items.py).
 		enum EThrottle

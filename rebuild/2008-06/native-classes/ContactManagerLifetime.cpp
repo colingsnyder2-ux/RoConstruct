@@ -7,4 +7,10 @@ namespace RBX {
 ContactManager::ContactManager(World* value) : spatialHash(new SpatialHash(value, this)), world(value) {}
 // 0060ccf0
 ContactManager::~ContactManager() { delete spatialHash; }
+// 0060cc30 (registry func_0060cc30; donor name; caller World::insertPrimitive 005e98f0): `mov ecx, [ecx]` (spatialHash
+// +0x0), tail jump to SpatialHash::onPrimitiveAdded 0065a4e0.
+void ContactManager::onPrimitiveAdded(Primitive* p) { spatialHash->onPrimitiveAdded(p); }
+// 0060cc40 (registry func_0060cc40; donor name; caller World::removePrimitive 005ea8b0): tail jump to
+// SpatialHash::onPrimitiveRemoved 0065aac0.
+void ContactManager::onPrimitiveRemoved(Primitive* p) { spatialHash->onPrimitiveRemoved(p); }
 }
