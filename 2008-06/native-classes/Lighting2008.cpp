@@ -156,6 +156,41 @@ namespace RBX
 		setTime(boost::posix_time::seconds(value * 60.0));
 	}
 
+
+#ifdef LIGHTING_HEADER_DECLARES_GEOGRAPHICLATITUDE
+	// Blocked only by native-headers/v8datamodel/Lighting2008.h (not owned here), which would need
+	//   float getGeographicLatitude() const;   // 005df490
+	//   void setGeographicLatitude(float value); // 005e2670
+	// Measured batch 44 with those two declarations in a scratch copy of the header: 005e2670 (103 B) and 005df490 (7 B)
+	// IDENTICAL, no loss in this unit.
+	// 0097a9f8, dynamic initializer 007f6a10 (??__Eprop_GeographicLatitude@RBX@@YAXXZ, a namespace-scope static as
+	// prop_Time): PropDescriptor<Lighting, float> ctor, "GeographicLatitude" 0083df64 / "Data" 00822490, getter 005df490,
+	// setter 005e2670, flags 5 (STANDARD).
+	static Reflection::PropDescriptor<Lighting, float> prop_GeographicLatitude("GeographicLatitude", "Data", &Lighting::getGeographicLatitude, &Lighting::setGeographicLatitude, Reflection::PropertyDescriptor::STANDARD);
+
+	// 005df490 (registry placeholder func_005df490): skyParameters.geoLatitude (+0x130 + 0xf4).
+	float Lighting::getGeographicLatitude() const
+	{
+		return skyParameters.geoLatitude;
+	}
+
+	// 005e2670 (registry placeholder func_005e2670): compares and stores skyParameters.geoLatitude (+0x224), raises
+	// prop_GeographicLatitude 0097a9f8, fires event_LightingChanged(false), then RunService::invalidateRunViews 00555350.
+	void Lighting::setGeographicLatitude(float value)
+	{
+		if (value != skyParameters.geoLatitude)
+		{
+			skyParameters.geoLatitude = value;
+
+			raisePropertyChanged(prop_GeographicLatitude);
+			fireLightingChanged(false);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
+		}
+	}
+#endif
+
 	void Lighting::replaceSky(Sky* newSky)
 	{
 		while (Sky* currentSky = findFirstChildOfType<Sky>())

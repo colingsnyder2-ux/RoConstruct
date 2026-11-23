@@ -341,6 +341,13 @@ namespace RBX
 	{
 	}
 
+	// 005caba0 (registry placeholder func_005caba0): PlayerController::getHardwareDevice, called by onEvent 005cb530;
+	// controllerService weak_ptr (+0x20/+0x24) expired test, lock 005cab00, ControllerService +0x130. Openrbx 2007 shape.
+	const UserInputBase* PlayerController::getHardwareDevice() const
+	{
+		return controllerService.expired() ? NULL : controllerService.lock()->getHardwareDevice();
+	}
+
 	// 005cb530 PlayerController::onEvent(const RunService*, Heartbeat) (748 bytes, Listener slot, this adjusted by
 	// -0xc, `ret 0xc`): NOT BUILT (parked, header gaps; no donor body). Decoded flow: hardware = getHardwareDevice()
 	// 005caba0; controlledInstance weak_ptr lock 005cab00 (released at once); character test

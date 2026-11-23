@@ -76,175 +76,187 @@ int CObjectBrowser::OnCreate(LPCREATESTRUCT cs)
     return 0;
 }
 
-#include "CClassTreeView.h"
-#include "reflection/object.h"
+#include "CDeclarationView.h"
+#include "reflection/function.h"
+#include "reflection/property.h"
+#include "reflection/signal.h"
 #include "reflection/enumconverter.h"
 #include "reflection/Metadata.h"
-#include "AuthoringSettings.h"
+#include <G3D/format.h>
 #include <boost/bind.hpp>
 #include <boost/ref.hpp>
+#include <string>
 
-IMPLEMENT_DYNCREATE(CMemberTreeView, CXTTreeView)
+IMPLEMENT_DYNCREATE(CDeclarationView, CHtmlView)
 
-BEGIN_MESSAGE_MAP(CMemberTreeView, CXTTreeView)
-    ON_WM_CREATE()
-    ON_NOTIFY_REFLECT(TVN_SELCHANGED, OnSelChanged)
+BEGIN_MESSAGE_MAP(CDeclarationView, CHtmlView)
 END_MESSAGE_MAP()
 
-CMemberTreeView::CMemberTreeView()
-    : showInherited(true), current(NULL)
+CDeclarationView::CDeclarationView()
 {
 }
 
-CMemberTreeView::~CMemberTreeView()
+CDeclarationView::~CDeclarationView()
 {
 }
 
-void CMemberTreeView::OnInitialUpdate()
+void CDeclarationView::OnInitialUpdate()
 {
-    CXTTreeView::OnInitialUpdate();
+    CHtmlView::OnInitialUpdate();
+    LoadFromResource(0xd2);
 }
 
-static BOOL createImageList(CImageList& list, UINT id)
+void CDeclarationView::setContent(const RBX::Reflection::Metadata::Item* item, const char* declarationText,
+                                  const char* ownerName)
 {
-    if (!list.Create(16, 16, ILC_COLOR24 | ILC_MASK, 0, 1))
-        return FALSE;
-    CBitmap bitmap;
-    bitmap.Attach(::LoadBitmap(AfxFindResourceHandle(MAKEINTRESOURCE(id), RT_BITMAP), MAKEINTRESOURCE(id)));
-    list.Add(&bitmap, CXTPImageManager::GetBitmapMaskColor(bitmap, CPoint(0, 0)));
-    return TRUE;
-}
-
-int CMemberTreeView::OnCreate(LPCREATESTRUCT cs)
-{
-    if (CXTTreeView::OnCreate(cs) == -1)
-        return -1;
-    if (!createImageList(images, 0xc4))
-        return -1;
-    GetTreeCtrl().SetImageList(&images, TVSIL_NORMAL);
-    return 0;
-}
-
-void CMemberTreeView::OnSelChanged(NMHDR* nm, LRESULT* result)
-{
-    if (declarationView)
-        declarationView->showDescriptor(
-            reinterpret_cast<const RBX::Reflection::Descriptor*>(reinterpret_cast<NMTREEVIEW*>(nm)->itemNew.lParam));
-    *result = 0;
-}
-
-void CMemberTreeView::addEnumItem(const RBX::Reflection::Descriptor* item)
-{
-    HTREEITEM handle = GetTreeCtrl().InsertItem(TVIF_TEXT | TVIF_IMAGE | TVIF_SELECTEDIMAGE, item->name.c_str(), 10, 10, 0, 0, 0, TVI_ROOT, TVI_LAST);
-    GetTreeCtrl().SetItem(handle, TVIF_PARAM, NULL, 0, 0, 0, 0, (LPARAM)item);
-}
-
-void CMemberTreeView::showEnum(const RBX::Reflection::EnumDescriptor* descriptor)
-{
-    GetTreeCtrl().DeleteAllItems();
-    current = descriptor;
-    boost::recursive_mutex::scoped_lock lock(RBX::Reflection::sync());
-    std::for_each(descriptor->begin(), descriptor->end(), boost::bind(&CMemberTreeView::addEnumItem, this, _1));
-    TVSORTCB sort;
-    sort.hParent = TVI_ROOT;
-    sort.lpfnCompare = CClassTreeView::compareItems;
-    GetTreeCtrl().SortChildrenCB(&sort);
-}
-
-void CMemberTreeView::addProperty(const RBX::Reflection::PropertyDescriptor* descriptor)
-{
-    if (!showInherited && &descriptor->owner != current)
-        return;
-    RBX::Reflection::Metadata::Member* metadata = RBX::Metadata::Reflection::singleton()->lookup(*descriptor);
-    if (metadata) {
-        AuthoringSettings& settings = AuthoringSettings::singleton();
-        if (metadata->unknown_131 && !settings.showDepricatedObjects)
-            return;
-        if (metadata->unknown_132 && !settings.showPreliminaryObjects)
-            return;
-        if (!metadata->unknown_130)
-            return;
+    if (declaration)
+        declaration->put_innerHTML(CComBSTR(declarationText ? declarationText : ""));
+    if (ownerDiv) {
+        CComPtr<IHTMLStyle> style;
+        ownerDiv->get_style(&style);
+        style->put_display(ownerName ? CComBSTR("block") : CComBSTR("none"));
+        owner->put_innerHTML(CComBSTR(ownerName));
     }
-    // INFERRED: inline bIsPublic test (bit 0 of the byte at descriptor + 0x10, 0043536d); see the comment above.
-    if (!(reinterpret_cast<const unsigned char*>(descriptor)[0x10] & 1))
-        return;
-    HTREEITEM item = GetTreeCtrl().InsertItem(TVIF_TEXT | TVIF_IMAGE | TVIF_SELECTEDIMAGE, descriptor->name.c_str(), 6, 6, 0, 0, 0, TVI_ROOT, TVI_LAST);
-    GetTreeCtrl().SetItem(item, TVIF_PARAM, NULL, 0, 0, 0, 0, (LPARAM)descriptor);
-    setItemStyle(item, metadata);
+    if (summaryDiv) {
+        CString summaryText(item ? item->unknown_134.c_str() : "");
+        CComPtr<IHTMLStyle> style;
+        summaryDiv->get_style(&style);
+        style->put_display(!summaryText.IsEmpty() ? CComBSTR("block") : CComBSTR("none"));
+        if (!summaryText.IsEmpty())
+            summary->put_innerHTML(CComBSTR(summaryText));
+    }
+    if (deprecatedElement) {
+        CComPtr<IHTMLStyle> style;
+        deprecatedElement->get_style(&style);
+        style->put_display(item && item->unknown_131 ? CComBSTR("block") : CComBSTR("none"));
+    }
+    if (preliminaryElement) {
+        CComPtr<IHTMLStyle> style;
+        preliminaryElement->get_style(&style);
+        style->put_display(item && item->unknown_132 ? CComBSTR("block") : CComBSTR("none"));
+    }
 }
 
-void CMemberTreeView::addSignal(const RBX::Reflection::SignalDescriptor* descriptor)
+void CDeclarationView::OnDocumentComplete(LPCTSTR url)
 {
-    if (!showInherited && &descriptor->owner != current)
-        return;
-    RBX::Reflection::Metadata::Member* metadata = RBX::Metadata::Reflection::singleton()->lookup(*descriptor);
-    if (metadata) {
-        AuthoringSettings& settings = AuthoringSettings::singleton();
-        if (metadata->unknown_131 && !settings.showDepricatedObjects)
-            return;
-        if (metadata->unknown_132 && !settings.showPreliminaryObjects)
-            return;
-        if (!metadata->unknown_130)
-            return;
+    document = GetHtmlDocument();
+    if (document) {
+        CComPtr<IHTMLElementCollection> all;
+        document->get_all(&all);
+        CComPtr<IDispatch> element;
+        all->item(CComVariant("Declaration"), CComVariant(), &element);
+        declaration = element;
+        element.Release();
+        all->item(CComVariant("OwnerDiv"), CComVariant(), &element);
+        ownerDiv = element;
+        element.Release();
+        all->item(CComVariant("Owner"), CComVariant(), &element);
+        owner = element;
+        element.Release();
+        all->item(CComVariant("DeprecatedElement"), CComVariant(), &element);
+        deprecatedElement = element;
+        element.Release();
+        all->item(CComVariant("PreliminaryElement"), CComVariant(), &element);
+        preliminaryElement = element;
+        element.Release();
+        all->item(CComVariant("SummaryDiv"), CComVariant(), &element);
+        summaryDiv = element;
+        element.Release();
+        all->item(CComVariant("Summary"), CComVariant(), &element);
+        summary = element;
+    } else {
+        declaration.Release();
+        ownerDiv.Release();
+        owner.Release();
+        summaryDiv.Release();
+        summary.Release();
+        deprecatedElement.Release();
+        preliminaryElement.Release();
     }
-    HTREEITEM item = GetTreeCtrl().InsertItem(TVIF_TEXT | TVIF_IMAGE | TVIF_SELECTEDIMAGE, descriptor->name.c_str(), 8, 8, 0, 0, 0, TVI_ROOT, TVI_LAST);
-    GetTreeCtrl().SetItem(item, TVIF_PARAM, NULL, 0, 0, 0, 0, (LPARAM)descriptor);
-    setItemStyle(item, metadata);
+    setContent(NULL, NULL, NULL);
 }
+
+// convert<std::string>() 0056f0b0 on a copy. INFERRED: reflection/type.h only declares get<T>; this is the same
+namespace RBX { namespace Reflection {
+template<class T> T Value::get() const
+{
+    if (isType<T>())
+        return boost::any_cast<const T&>(value);
+    Value copy(*this);
+    return copy.convert<T>();
+}
+} }
 
 static void appendArgument(int& count, std::string& text, const RBX::Reflection::SignatureDescriptor::Item& argument)
 {
     if (count > 0)
         text += ", ";
+    text += argument.type->name.c_str();
+    text += " ";
     text += argument.name->c_str();
+    if (argument.defaultValue.type() == *argument.type) {
+        text += " = ";
+        text += argument.defaultValue.get<std::string>();
+    }
     ++count;
 }
 
-void CMemberTreeView::addFunction(const RBX::Reflection::FunctionDescriptor* descriptor)
-{
-    if (!showInherited && &descriptor->owner != current)
-        return;
-    RBX::Reflection::Metadata::Member* metadata = RBX::Metadata::Reflection::singleton()->lookup(*descriptor);
-    if (metadata) {
-        AuthoringSettings& settings = AuthoringSettings::singleton();
-        if (metadata->unknown_131 && !settings.showDepricatedObjects)
-            return;
-        if (metadata->unknown_132 && !settings.showPreliminaryObjects)
-            return;
-        if (!metadata->unknown_130)
-            return;
+namespace {
+// INFERRED: the original reads SignalDescriptor::signature inline (00435ad5..00435b10: [esi + 0x2c] / [esi + 0x18]),
+struct SignalSignature : RBX::Reflection::SignalDescriptor {
+    static const RBX::Reflection::SignatureDescriptor& of(const RBX::Reflection::SignalDescriptor* signal)
+    {
+        return static_cast<const SignalSignature*>(signal)->signature;
     }
-    std::string text(descriptor->name.toString());
-    text += "(";
-    int count = 0;
-    std::for_each(descriptor->getSignature().arguments.begin(), descriptor->getSignature().arguments.end(), boost::bind(&appendArgument, boost::ref(count), boost::ref(text), _1));
-    text += ")";
-    int image = (descriptor->security != RBX::Reflection::FunctionDescriptor::NeedTrustedCaller) + 4;
-    LPCTSTR label = text.c_str();
-    HTREEITEM item = GetTreeCtrl().InsertItem(TVIF_TEXT | TVIF_IMAGE | TVIF_SELECTEDIMAGE, label, image, image, 0, 0, 0, TVI_ROOT, TVI_LAST);
-    GetTreeCtrl().SetItem(item, TVIF_PARAM, NULL, 0, 0, 0, 0, (LPARAM)descriptor);
-    setItemStyle(item, metadata);
+};
 }
 
-void CMemberTreeView::showClass(const RBX::Reflection::ClassDescriptor* descriptor)
+void CDeclarationView::showDescriptor(const RBX::Reflection::Descriptor* descriptor)
 {
     using namespace RBX::Reflection;
-    GetTreeCtrl().DeleteAllItems();
-    current = descriptor;
-    boost::recursive_mutex::scoped_lock lock(sync());
-    std::for_each(descriptor->MemberDescriptorContainer<PropertyDescriptor>::descriptors_begin(),
-                  descriptor->MemberDescriptorContainer<PropertyDescriptor>::descriptors_end(),
-                  boost::bind(&CMemberTreeView::addProperty, this, _1));
-    std::for_each(descriptor->MemberDescriptorContainer<FunctionDescriptor>::descriptors_begin(),
-                  descriptor->MemberDescriptorContainer<FunctionDescriptor>::descriptors_end(),
-                  boost::bind(&CMemberTreeView::addFunction, this, _1));
-    std::for_each(descriptor->MemberDescriptorContainer<SignalDescriptor>::descriptors_begin(),
-                  descriptor->MemberDescriptorContainer<SignalDescriptor>::descriptors_end(),
-                  boost::bind(&CMemberTreeView::addSignal, this, _1));
-    TVSORTCB sort;
-    sort.hParent = TVI_ROOT;
-    sort.lpfnCompare = CClassTreeView::compareItems;
-    GetTreeCtrl().SortChildrenCB(&sort);
+    if (!descriptor) {
+        setContent(NULL, NULL, NULL);
+        return;
+    }
+    std::string text;
+    const ClassDescriptor* ownerClass = NULL;
+    RBX::Reflection::Metadata::Item* item = NULL;
+    if (const FunctionDescriptor* function = dynamic_cast<const FunctionDescriptor*>(descriptor)) {
+        text = function->getSignature().resultType->name.toString();
+        text += " ";
+        text += function->name.toString();
+        text += "(";
+        int count = 0;
+        std::for_each(function->getSignature().arguments.begin(), function->getSignature().arguments.end(),
+                      boost::bind(&appendArgument, boost::ref(count), boost::ref(text), _1));
+        text += ")";
+        ownerClass = &function->owner;
+        item = RBX::Metadata::Reflection::singleton()->lookup(*function);
+    } else if (const PropertyDescriptor* property = dynamic_cast<const PropertyDescriptor*>(descriptor)) {
+        text = property->type.name.toString();
+        text += " ";
+        text += property->name.toString();
+        ownerClass = &property->owner;
+        item = RBX::Metadata::Reflection::singleton()->lookup(*property);
+    } else if (const SignalDescriptor* signal = dynamic_cast<const SignalDescriptor*>(descriptor)) {
+        text = "event ";
+        text += signal->name.toString();
+        text += "(";
+        int count = 0;
+        std::for_each(SignalSignature::of(signal).arguments.begin(), SignalSignature::of(signal).arguments.end(),
+                      boost::bind(&appendArgument, boost::ref(count), boost::ref(text), _1));
+        text += ")";
+        ownerClass = &signal->owner;
+        item = RBX::Metadata::Reflection::singleton()->lookup(*signal);
+    } else if (const EnumDescriptor::Item* enumItem = dynamic_cast<const EnumDescriptor::Item*>(descriptor)) {
+        text = G3D::format("%d: %s", enumItem->value, enumItem->name.c_str());
+    } else if (const ClassDescriptor* classDescriptor = dynamic_cast<const ClassDescriptor*>(descriptor)) {
+        text = classDescriptor->name.toString();
+        item = RBX::Metadata::Reflection::singleton()->lookup(*classDescriptor, false);
+    } else {
+        text = descriptor->name.toString();
+    }
+    setContent(item, text.c_str(), ownerClass ? ownerClass->name.c_str() : NULL);
 }
 
-template class boost::_bi::value<CMemberTreeView *>;
+template class ATL::CComPtrBase<IHTMLStyle>;

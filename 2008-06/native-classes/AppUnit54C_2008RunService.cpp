@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // Inactive 2008-06 native RunService unit (util/RunStateOwner.cpp, original 00554330..00557310), recorded by
 // tests/record_native_app_unit54c_2008.py. Built against the read-only native util/RunStateOwner.h (layout 0x2d8: the
 // size create<RunService> 00405fbf passes to new; fields from the ctor 00556b00 and dtor 00555c00).
@@ -243,3 +244,32 @@ template class std::vector<RBX::Listener<RBX::RunService,RBX::Heartbeat> *,std::
 template class std::vector<RBX::Listener<RBX::RunService,RBX::RunTransition> *,std::allocator<RBX::Listener<RBX::RunService,RBX::RunTransition> *> >;
 template class std::vector<RBX::Listener<RBX::RunService,RBX::Stepped> *,std::allocator<RBX::Listener<RBX::RunService,RBX::Stepped> *> >;
 template class std::vector<RBX::Listener<RBX::RunService,enum RBX::RunState> *,std::allocator<RBX::Listener<RBX::RunService,enum RBX::RunState> *> >;
+
+#ifdef RUNSERVICE_HEADER_DECLARES_STEP_RAISES
+// 00557150 (registry placeholder func_00557150, 96 B, ret 4) and 005571b0 (func_005571b0, 113 B, ret 4): the 2008
+// one-float raiseHeartbeat / raiseStepped, called by DataModel 00578dfd / 00578da2. Heartbeat: drainTasks 005559a0,
+// raise(Heartbeat(float(gameTime +0x1b8), step)) 00554960 on the +0x130 notifier, then event_Heartbeat (00973b40:
+// findSignalInstance 0056b620 on the SignalSource +0x14, signal1<void(float)> 004937f0). Stepped: gameTime += step,
+// raise(Stepped(time, step)) 005549e0 on +0x150, event_Stepped (00973bb8, signal2 00556eb0) with the same float time.
+// Blocked by the core util/RunStateOwner.h, which declares raiseHeartbeat/raiseStepped(float time, float step) and no
+// event_Heartbeat (proposal: 'void raiseHeartbeat(float step); void raiseStepped(float step);' and
+// 'static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat;'). Measured IDENTICAL (relocs masked) against
+// a scratch copy of that header under this unit's /fp:fast flags; without /fp:fast raiseStepped reloads the float
+// time (117 B), so /fp:fast is the unit's flag (the double -> float copies stay on the x87 stack).
+namespace RBX
+{
+	void RunService::raiseHeartbeat(float step)
+	{
+		drainTasks();
+		Notifier<RunService, Heartbeat>::raise(Heartbeat(gameTime(), step));
+		event_Heartbeat.fire(this, step);
+	}
+
+	void RunService::raiseStepped(float step)
+	{
+		float time = static_cast<float>(unknown0x1b8 += step);
+		Notifier<RunService, Stepped>::raise(Stepped(time, step));
+		event_Stepped.fire(this, time, step);
+	}
+}
+#endif

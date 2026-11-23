@@ -130,6 +130,29 @@ namespace RBX
 		setTime(boost::posix_time::seconds(value * 60.0));
 	}
 
+#ifdef LIGHTING_HEADER_DECLARES_GEOGRAPHICLATITUDE
+	static Reflection::PropDescriptor<Lighting, float> prop_GeographicLatitude("GeographicLatitude", "Data", &Lighting::getGeographicLatitude, &Lighting::setGeographicLatitude, Reflection::PropertyDescriptor::STANDARD);
+
+	float Lighting::getGeographicLatitude() const
+	{
+		return skyParameters.geoLatitude;
+	}
+
+	void Lighting::setGeographicLatitude(float value)
+	{
+		if (value != skyParameters.geoLatitude)
+		{
+			skyParameters.geoLatitude = value;
+
+			raisePropertyChanged(prop_GeographicLatitude);
+			fireLightingChanged(false);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
+		}
+	}
+#endif
+
 	void Lighting::replaceSky(Sky* newSky)
 	{
 		while (Sky* currentSky = findFirstChildOfType<Sky>())

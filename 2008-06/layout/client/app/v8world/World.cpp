@@ -82,4 +82,28 @@ namespace RBX
 			contactManager->onPrimitiveExtentsChanged(*it);
 		}
 	}
+#ifdef WORLD_HEADER_DECLARES_PRIMITIVE_INDEXARRAY
+
+	void World::insertPrimitive(Primitive* p)
+	{
+		primitives.fastAppend(p);
+		p->world = this;
+
+		static_cast<CleanStage*>(jointStage)->onPrimitiveAdded(p);
+		contactManager->onPrimitiveAdded(p);
+	}
+
+	void World::removePrimitive(Primitive* p)
+	{
+		destroyJoints(p, NULL);
+
+		contactManager->onPrimitiveRemoved(p);
+
+		static_cast<CleanStage*>(jointStage)->onPrimitiveRemoving(p);
+
+		primitives.fastRemove(p);
+
+		p->world = NULL;
+	}
+#endif
 }

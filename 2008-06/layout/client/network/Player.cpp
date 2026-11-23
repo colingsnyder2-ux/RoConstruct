@@ -110,26 +110,6 @@ template class boost::shared_ptr<RBX::RunService>;
 template class std::_Vector_iterator<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance> > >;
 template class std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport> >;
 
-#include "G3D/System.h"
-
-namespace RBX
-{
-	namespace Network
-	{
-		// INFERRED: name from the 2007 donor declaration static void Player::onLocalPlayerNotIdle(ServiceProvider*);
-		void Player::onLocalPlayerNotIdle(ServiceProvider* serviceProvider)
-		{
-			Players* players = serviceProvider->find<Players>();
-			if (players)
-			{
-				Player* player = players->getLocalPlayer();
-				if (player && ServiceProvider::findServiceProvider(player))
-					player->lastActivityTime = G3D::System::getLocalTime();
-			}
-		}
-	}
-}
-
 #include "v8datamodel/ModelInstance.h"
 #include "v8datamodel/Camera.h"
 #include "humanoid/Humanoid2008.h"
@@ -381,3 +361,34 @@ template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Listener<
 template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Listener<RBX::Network::Player,RBX::Network::CharacterRemoving> *> >;
 
 template void RBX::Name::callDoDeclare<RBX::Network::sPlayer>();
+
+namespace RBX { namespace Reflection {
+template<class T> T Value::get() const
+{
+	if (isType<T>())
+		return boost::any_cast<const T&>(value);
+	Value copy(*this);
+	return copy.convert<T>();
+}
+template boost::shared_ptr<DescribedBase> Value::get<boost::shared_ptr<DescribedBase> >() const;
+} }
+
+#include "G3D/System.h"
+
+namespace RBX
+{
+	namespace Network
+	{
+		// INFERRED: name from the 2007 donor declaration static void Player::onLocalPlayerNotIdle(ServiceProvider*);
+		void Player::onLocalPlayerNotIdle(ServiceProvider* serviceProvider)
+		{
+			Players* players = serviceProvider->find<Players>();
+			if (players)
+			{
+				Player* player = players->getLocalPlayer();
+				if (player && ServiceProvider::findServiceProvider(player))
+					player->lastActivityTime = G3D::System::getLocalTime();
+			}
+		}
+	}
+}

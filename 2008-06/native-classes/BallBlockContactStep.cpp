@@ -14,6 +14,7 @@
 #include "v8kernel/Connector2008.h"
 #include "v8world/Ball2008.h"
 #include "v8world/Block2008.h"
+#include "v8kernel/Body2008.h"
 #include <G3D/Vector3int16.h>
 
 namespace RBX
@@ -31,6 +32,42 @@ namespace RBX
 	inline Block* BallBlockContact::block()
 	{
 		return static_cast<Block*>(blockPrim()->getGeometry());
+	}
+
+	// 00607020 (placeholder func_00607020; Contact2008.h declares it at this address; callers stepContact 00607150 and
+	// computeIsColliding(float) 00607bd0): openrbx v8world/Contact.cpp. Primitive::aaBoxCollide inline (fuzzyExtents
+	// +0x80, Extents::overlapsOrTouches 00606b60), the Body pv +0x94 read without updatePV (Body2008.h getPVUnsafe, as
+	// BallBallContact::computeIsColliding 00606e90), Matrix3::transpose 00513510 * Vector3 00476580,
+	// Block::projectToFace 00647b90, CoordinateFrame::pointToWorldSpace 004766a0, magnitude (fsqrt) and the ball's
+	// Geometry slot 4 getRadius.
+	bool BallBlockContact::computeIsColliding(int& onBorder, G3D::Vector3int16& clip, G3D::Vector3& projectionInBlock,
+		float overlapIgnored)
+	{
+		// The primitives stay in registers across the overlapsOrTouches call (`lea eax, [edi + 0x80]` keeps edi) and
+		// give the bodies; geometry and radius reload them through block() / ball() (00607088 / 006070e3).
+		Primitive* ballPrimitive = ballPrim();
+		Primitive* blockPrimitive = blockPrim();
+
+		if (Primitive::aaBoxCollide(*ballPrimitive, *blockPrimitive))
+		{
+			Body* ballBody = ballPrimitive->getBody();
+			Body* blockBody = blockPrimitive->getBody();
+
+			const PV& ballPV = ballBody->getPVUnsafe();
+			const PV& blockPV = blockBody->getPVUnsafe();
+
+			G3D::Vector3 blockToBall = ballPV.position.translation - blockPV.position.translation;
+
+			projectionInBlock = blockPV.position.rotation.transpose() * blockToBall;
+
+			block()->projectToFace(projectionInBlock, clip, onBorder);
+
+			G3D::Vector3 blockPtWorld = blockPV.position.pointToWorldSpace(projectionInBlock);
+
+			return (blockPtWorld - ballPV.position.translation).magnitude() < ball()->getRadius() - overlapIgnored;
+		}
+
+		return false;
 	}
 
 	// 00607150: computeIsColliding(int&, Vector3int16&, Vector3&, float) 00607020 called directly with a zeroed

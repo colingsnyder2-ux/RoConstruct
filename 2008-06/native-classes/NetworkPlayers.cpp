@@ -309,3 +309,42 @@ namespace RBX
 		}
 	}
 }
+
+namespace RBX
+{
+	void makeGuidString(std::string& result); // 005a80d0 (body in Guid.cpp / GuidGeneration.cpp)
+
+	namespace Network
+	{
+		// 00496c20 (registry placeholder func_00496c20): callers Players::chat 0049cb30 and 0049d770; default-constructs
+		// time +0x00, message +0x1c from the const char*, copies source +0x38, clears destination +0x40, then
+		// makeGuidString 005a80d0 fills +0x00 (EH states 1..4 follow the member order).
+		// 0049acd0 (registry placeholder func_0049acd0): static Players::getPlayerFromCharacter (callers include
+		// SpawnLocation touched 005d1ec0 and Inferred_006195b0): find<Players> 00491d50, shared_from 00618a40,
+		// playerFromCharacter 00498030. Donor tools/rbxgs Players.cpp shape.
+		Player* Players::getPlayerFromCharacter(Instance* character)
+		{
+			Players* players = ServiceProvider::find<Players>(character);
+			if (players)
+			{
+				boost::shared_ptr<Instance> found = players->playerFromCharacter(shared_from(character));
+				return static_cast<Player*>(found.get());
+			}
+			else
+			{
+				return NULL;
+			}
+		}
+
+		ChatMessage::ChatMessage(const char* message, boost::shared_ptr<Player> source)
+			: message(message),
+			  source(source)
+		{
+			makeGuidString(time);
+		}
+	}
+}
+
+// 00496ff0 (registry placeholder func_00496ff0): std::list<ChatMessage>::_Incsize (max_size 0x38e38e3 = ~0u / 0x48,
+// "list<T> too long"); its only caller is the chatHistory push 0049d630 (Players::addChatMessage, not built here).
+template void std::list<RBX::Network::ChatMessage>::_Incsize(std::list<RBX::Network::ChatMessage>::size_type);

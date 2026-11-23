@@ -130,6 +130,34 @@ namespace RBX
 		onPrimitivesChanged();
 	}
 
+	// 005e67c0 (registry placeholder func_005e67c0; AssemblyLayout.h INFERRED name addRigidChild, cdecl (parent, joint,
+	// child), caller TreeStage::processEdge 0066962a): child->setClump(parent clump) 005e7550, child body setParent
+	// 006148b0 (parent body), the clump's onPrimitivesChanged (inlined one level, 005e62a0 for its parent), then
+	// setMeInParent 006142d0 with RigidJoint::getChildInParent 00645930. Shape of openrbx Assembly::addRigidChild
+	// without the 2007 clump-depth store, with onPrimitivesChanged ahead of setMeInParent as in the binary.
+	void Clump::addRigidChild(Primitive* parent, Joint* j, Primitive* child)
+	{
+		Clump* clump = parent->getClump();
+
+		child->setClump(clump);
+		child->getBody()->setParent(parent->getBody());
+
+		clump->onPrimitivesChanged();
+
+		child->getBody()->setMeInParent(static_cast<RigidJoint*>(j)->getChildInParent(parent, child));
+	}
+
+	// 005e7050 (registry ?addMotorChild@Assembly@RBX@@SAXPAVPrimitive@2@PAVMotorJoint@2@0@Z, placeholder func_005e7050;
+	// caller TreeStage::processEdge 006696c2): child clump setParent 005e6fd0 (parent clump), child body setParent
+	// 006148b0 (parent body), setMeInParent(Link*) 00614380 with MotorJoint::resetLink 005e5c90. Shape of openrbx
+	// Assembly::addMotorChild without the 2007 clump-depth store.
+	void Assembly::addMotorChild(Primitive* parent, MotorJoint* m, Primitive* child)
+	{
+		child->getClump()->setParent(parent->getClump());
+		child->getBody()->setParent(parent->getBody());
+		child->getBody()->setMeInParent(m->resetLink());
+	}
+
 	// 005e6fd0 (analog name: openrbx Assembly::setParent): fastRemoveShort<Assembly*> 005e5200 and the old parent's
 	// onPrimitivesChanged 005e62a0, addChild 005e6f70 on the new parent, setAssembly 005e6240 with the root (005e6070),
 	// then onPrimitivesChanged (inlined).

@@ -443,6 +443,17 @@ namespace RBX
 			peer->Send(&bitStream, MEDIUM_PRIORITY, RELIABLE_ORDERED, 0, remotePlayerId, false);
 		}
 
+		// 004aeba0 (registry placeholder func_004aeba0, 102 B, thiscall ret 8): DescriptorDictionary<Descriptor>::send,
+		// declared by Network/Replicator2008.h; called by ChangePropertyItem::write 004b6d10 on propNames (+0x2bf4) and by
+		// 004b8781. Body: map::find 00451600 (COMDAT) keyed by the descriptor address, the checked iterator ->second
+		// (two _invalid_parameter_noinfo tests), then BitStream::WriteBits 004a5600 of `bits` (+0x20), right aligned.
+		template<class Descriptor>
+		void DescriptorDictionary<Descriptor>::send(RakNet::BitStream& bitStream, const Descriptor& descriptor)
+		{
+			int index = dictionary.find(&descriptor)->second;
+			bitStream.WriteBits((const unsigned char*)&index, bits, true);
+		}
+
 		// 004ab850 (static; template-instance caller: for_each over containerConnections +0x2c38)
 		void Replicator::closeReplicationItem(const std::pair<const Instance* const, ReplicationData>& item)
 		{

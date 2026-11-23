@@ -37,9 +37,10 @@ World::World() :
             profilingPreStep->parent = profilingWorldStep.get();
             profilingPreStepInner->parent = profilingWorldStep.get();
             profilingBroadphase->parent = profilingWorldStep.get();
-            getCollisionStage()->profilingCollision->parent = profilingWorldStep.get();
-            getSleepStage()->profilingSleep->parent = profilingWorldStep.get();
-            jointStage->getKernel()->profilingKernel->parent = profilingWorldStep.get();
+            // INFERRED/PARKED: the donor also hooks the collision (absent in 2008), sleep and kernel profilers under "World Step" here;
+            // the exe does it through the 2008 stage/kernel layouts (Kernel2008.h profilingKernel +0x20), which this unit's headers
+            // cannot name yet (kernel-stages and the donor stage headers conflict). Profiling-only; dropped so World() does not
+            // dereference the donor Kernel layout.
         }
 
 World::~World()

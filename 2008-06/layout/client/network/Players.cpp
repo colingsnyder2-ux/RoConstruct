@@ -330,6 +330,37 @@ namespace RBX
 	}
 }
 
+namespace RBX
+{
+	void makeGuidString(std::string& result); // 005a80d0 (body in Guid.cpp / GuidGeneration.cpp)
+
+	namespace Network
+	{
+		Player* Players::getPlayerFromCharacter(Instance* character)
+		{
+			Players* players = ServiceProvider::find<Players>(character);
+			if (players)
+			{
+				boost::shared_ptr<Instance> found = players->playerFromCharacter(shared_from(character));
+				return static_cast<Player*>(found.get());
+			}
+			else
+			{
+				return NULL;
+			}
+		}
+
+		ChatMessage::ChatMessage(const char* message, boost::shared_ptr<Player> source)
+			: message(message),
+			  source(source)
+		{
+			makeGuidString(time);
+		}
+	}
+}
+
+template void std::list<RBX::Network::ChatMessage>::_Incsize(std::list<RBX::Network::ChatMessage>::size_type);
+
 bool RBX::Network::Players::superSafeOn() const
 {
     if (localPlayer)

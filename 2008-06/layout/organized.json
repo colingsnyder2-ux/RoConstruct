@@ -117,6 +117,14 @@
 "client/win/ReflectionMetadata.cpp",
 "inferred path"
 ],
+"0040a470": [
+"client/app/v8datamodel/Value.cpp",
+"merged unit, partial"
+],
+"0040a7e0": [
+"client/app/v8datamodel/Value.cpp",
+"merged unit, partial"
+],
 "0040dba0": [
 "client/boost_1_34_1/libs/python/src/object/class.cpp",
 "merged unit, complete"
@@ -332,34 +340,6 @@
 "00415800": [
 "client/win/ClipboardVerbs.cpp",
 "inferred path"
-],
-"00415a20": [
-"client/app/v8datamodel/Value.cpp",
-"merged unit, partial"
-],
-"00415aa0": [
-"client/app/v8datamodel/Value.cpp",
-"merged unit, partial"
-],
-"004161b0": [
-"client/app/v8datamodel/Value.cpp",
-"merged unit, partial"
-],
-"00416260": [
-"client/app/v8datamodel/Value.cpp",
-"merged unit, partial"
-],
-"00416310": [
-"client/app/v8datamodel/Value.cpp",
-"merged unit, partial"
-],
-"00416340": [
-"client/app/v8datamodel/Value.cpp",
-"merged unit, partial"
-],
-"00416370": [
-"client/app/v8datamodel/Value.cpp",
-"merged unit, partial"
 ],
 "004166a0": [
 "client/win/Content.cpp",
@@ -969,6 +949,10 @@
 "client/win/NullDoc.cpp",
 "inferred path"
 ],
+"00433380": [
+"client/win/ObjectBrowser.cpp",
+"merged unit, partial"
+],
 "00433410": [
 "client/win/ObjectBrowser.cpp",
 "merged unit, partial"
@@ -981,23 +965,7 @@
 "client/win/ObjectBrowser.cpp",
 "merged unit, partial"
 ],
-"004334f0": [
-"client/win/ObjectBrowser.cpp",
-"merged unit, partial"
-],
-"00433650": [
-"client/win/ObjectBrowser.cpp",
-"merged unit, partial"
-],
-"00433660": [
-"client/win/ObjectBrowser.cpp",
-"merged unit, partial"
-],
-"00433670": [
-"client/win/ObjectBrowser.cpp",
-"merged unit, partial"
-],
-"004336e0": [
+"004338c0": [
 "client/win/ObjectBrowser.cpp",
 "merged unit, partial"
 ],
@@ -1009,11 +977,19 @@
 "client/win/ObjectBrowser.cpp",
 "merged unit, partial"
 ],
-"00433db0": [
+"00434500": [
 "client/win/ObjectBrowser.cpp",
 "merged unit, partial"
 ],
-"00433ea0": [
+"00434550": [
+"client/win/ObjectBrowser.cpp",
+"merged unit, partial"
+],
+"00434570": [
+"client/win/ObjectBrowser.cpp",
+"merged unit, partial"
+],
+"00434640": [
 "client/win/ObjectBrowser.cpp",
 "merged unit, partial"
 ],
@@ -1021,31 +997,7 @@
 "client/win/ObjectBrowser.cpp",
 "merged unit, partial"
 ],
-"00435180": [
-"client/win/ObjectBrowser.cpp",
-"merged unit, partial"
-],
-"004353e0": [
-"client/win/ObjectBrowser.cpp",
-"merged unit, partial"
-],
-"00435510": [
-"client/win/ObjectBrowser.cpp",
-"merged unit, partial"
-],
-"00435680": [
-"client/win/ObjectBrowser.cpp",
-"merged unit, partial"
-],
-"00435c80": [
-"client/win/ObjectBrowser.cpp",
-"merged unit, partial"
-],
-"00435e70": [
-"client/win/ObjectBrowser.cpp",
-"merged unit, partial"
-],
-"00436040": [
+"004346b0": [
 "client/win/ObjectBrowser.cpp",
 "merged unit, partial"
 ],
@@ -1153,9 +1105,17 @@
 "client/win/ReflectionMetadata.cpp",
 "inferred path"
 ],
+"00443370": [
+"client/app/v8datamodel/Value.cpp",
+"merged unit, partial"
+],
 "00443660": [
 "client/win/ReflectionMetadata.cpp",
 "inferred path"
+],
+"00443960": [
+"client/app/v8datamodel/Value.cpp",
+"merged unit, partial"
 ],
 "00444910": [
 "client/win/ReflectionMetadata.cpp",
@@ -1164,6 +1124,14 @@
 "00444c50": [
 "client/win/ReflectionMetadata.cpp",
 "inferred path"
+],
+"00445a80": [
+"client/app/v8datamodel/Value.cpp",
+"merged unit, partial"
+],
+"00445f10": [
+"client/app/v8datamodel/Value.cpp",
+"merged unit, partial"
 ],
 "00449bf0": [
 "client/win/Roblox.cpp",
@@ -5353,6 +5321,10 @@
 "client/app/reflection/reflection_property.cpp",
 "inferred path"
 ],
+"0056d650": [
+"client/app/v8datamodel/Value.cpp",
+"merged unit, partial"
+],
 "0056e0c0": [
 "client/app/v8tree/enumproperty.cpp",
 "merged unit, partial"
@@ -5411,6 +5383,30 @@
 ],
 "0056f8c0": [
 "client/app/v8tree/enumproperty.cpp",
+"merged unit, partial"
+],
+"00570580": [
+"client/app/reflection/reflection_object.cpp",
+"merged unit, partial"
+],
+"00570660": [
+"client/app/reflection/reflection_object.cpp",
+"merged unit, partial"
+],
+"00570740": [
+"client/app/reflection/reflection_object.cpp",
+"merged unit, partial"
+],
+"00570820": [
+"client/app/reflection/reflection_object.cpp",
+"merged unit, partial"
+],
+"00570ba0": [
+"client/app/reflection/reflection_object.cpp",
+"merged unit, partial"
+],
+"00570c40": [
+"client/app/reflection/reflection_object.cpp",
 "merged unit, partial"
 ],
 "005726f0": [
@@ -5863,51 +5859,51 @@
 ],
 "005950f0": [
 "client/boost_1_34_1/libs/signals/src/connection.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00595230": [
 "client/boost_1_34_1/libs/signals/src/connection.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00595370": [
 "client/boost_1_34_1/libs/signals/src/connection.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "005953f0": [
 "client/boost_1_34_1/libs/signals/src/connection.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00595470": [
 "client/boost_1_34_1/libs/signals/src/connection.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "005954b0": [
 "client/boost_1_34_1/libs/signals/src/connection.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00595500": [
 "client/boost_1_34_1/libs/signals/src/connection.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00595540": [
 "client/boost_1_34_1/libs/signals/src/connection.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00595610": [
 "client/boost_1_34_1/libs/signals/src/connection.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00595640": [
 "client/boost_1_34_1/libs/signals/src/connection.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "005956d0": [
 "client/boost_1_34_1/libs/signals/src/connection.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00595700": [
 "client/boost_1_34_1/libs/signals/src/connection.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00597350": [
 "client/app/v8datamodel/Decal.cpp",
@@ -6223,135 +6219,123 @@
 ],
 "005b2f20": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b30a0": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b34a0": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b3580": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b3a20": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b3b10": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b3ba0": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b3c90": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b3d30": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b3f10": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b3fe0": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b4130": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b42f0": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b4390": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b43a0": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b4560": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b4570": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b4630": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b5c20": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b5c80": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b5c90": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b5cb0": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b5d80": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b5ee0": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b5f30": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b6090": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
-],
-"005b6120": [
-"client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
-],
-"005b6180": [
-"client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b61b0": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b6200": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b6270": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
-],
-"005b62a0": [
-"client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b62e0": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b6320": [
 "client/app/v8datamodel/ToolsPart.cpp",
@@ -6553,14 +6537,6 @@
 "client/app/tool/ToolsSurface.cpp",
 "merged unit, partial"
 ],
-"005c65b0": [
-"client/app/v8datamodel/Workspace.cpp",
-"merged unit, partial"
-],
-"005c65e0": [
-"client/app/v8datamodel/Workspace.cpp",
-"merged unit, partial"
-],
 "005c7060": [
 "client/app/v8datamodel/ModelSetFrontTool.cpp",
 "inferred path"
@@ -6575,10 +6551,6 @@
 ],
 "005c7500": [
 "client/app/v8datamodel/ToolsPart.cpp",
-"merged unit, partial"
-],
-"005c7890": [
-"client/app/tool/ToolsSurface.cpp",
 "merged unit, partial"
 ],
 "005c7a80": [
@@ -7649,7 +7621,7 @@
 "client/app/v8world/Primitive.cpp",
 "merged unit, partial"
 ],
-"00606f80": [
+"00607150": [
 "client/app/v8world/Contact.cpp",
 "merged unit, partial"
 ],
@@ -8094,19 +8066,19 @@
 "merged unit, complete"
 ],
 "00614be0": [
-"client/app/v8world/IMoving.cpp",
+"client/app/v8world/imoving.cpp",
 "merged unit, complete"
 ],
 "00614c20": [
-"client/app/v8world/IMoving.cpp",
+"client/app/v8world/imoving.cpp",
 "merged unit, complete"
 ],
 "00614cc0": [
-"client/app/v8world/IMoving.cpp",
+"client/app/v8world/imoving.cpp",
 "merged unit, complete"
 ],
 "00614d50": [
-"client/app/v8world/IMoving.cpp",
+"client/app/v8world/imoving.cpp",
 "merged unit, complete"
 ],
 "00614f80": [
@@ -8159,10 +8131,6 @@
 ],
 "00619a60": [
 "client/app/v8datamodel/Flag.cpp",
-"merged unit, partial"
-],
-"00619ad0": [
-"client/app/v8datamodel/Workspace.cpp",
 "merged unit, partial"
 ],
 "00619c30": [
@@ -8333,44 +8301,16 @@
 "client/app/tool/ToolsSurface.cpp",
 "merged unit, partial"
 ],
-"0063f6c0": [
-"client/app/tool/ToolsSurface.cpp",
+"00640560": [
+"client/app/v8datamodel/Workspace.cpp",
 "merged unit, partial"
 ],
-"0063f6f0": [
-"client/app/tool/ToolsSurface.cpp",
+"006405f0": [
+"client/app/v8datamodel/Workspace.cpp",
 "merged unit, partial"
 ],
-"0063f7b0": [
-"client/app/tool/ToolsSurface.cpp",
-"merged unit, partial"
-],
-"00640470": [
-"client/app/tool/ToolsSurface.cpp",
-"merged unit, partial"
-],
-"006406a0": [
-"client/app/tool/ToolsSurface.cpp",
-"merged unit, partial"
-],
-"00640700": [
-"client/app/tool/ToolsSurface.cpp",
-"merged unit, partial"
-],
-"00640800": [
-"client/app/tool/ToolsSurface.cpp",
-"merged unit, partial"
-],
-"00640d50": [
-"client/app/tool/ToolsSurface.cpp",
-"merged unit, partial"
-],
-"00640e20": [
-"client/app/tool/ToolsSurface.cpp",
-"merged unit, partial"
-],
-"00641160": [
-"client/app/tool/ToolsSurface.cpp",
+"00640620": [
+"client/app/v8datamodel/Workspace.cpp",
 "merged unit, partial"
 ],
 "00642690": [
@@ -8383,10 +8323,6 @@
 ],
 "00642750": [
 "client/app/gui/GuiDraw.cpp",
-"merged unit, partial"
-],
-"00643400": [
-"client/app/tool/NullTool.cpp",
 "merged unit, partial"
 ],
 "00644670": [
@@ -9079,14 +9015,6 @@
 ],
 "0065b4e0": [
 "client/app/v8world/SpatialHash.cpp",
-"merged unit, partial"
-],
-"006663f0": [
-"client/app/tool/NullTool.cpp",
-"merged unit, partial"
-],
-"00666980": [
-"client/app/tool/NullTool.cpp",
 "merged unit, partial"
 ],
 "00668280": [
@@ -11487,7 +11415,7 @@
 ],
 "007fe2c0": [
 "client/app/v8datamodel/BrickColor.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "007fe750": [
 "client/app/v8datamodel/Flag.cpp",

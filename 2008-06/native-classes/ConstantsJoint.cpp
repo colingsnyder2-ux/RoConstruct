@@ -4,6 +4,8 @@
 // (Vector3int16(const Vector3&) 007bbdc0); ball sizes use a jump table on x, blocks switch on x, y and z.
 #include "v8kernel/Constants.h"
 #include <G3D/Vector3int16.h>
+#include <G3D/g3dmath.h>
+#include <algorithm>
 
 namespace RBX
 {
@@ -144,4 +146,37 @@ namespace RBX
 
 		return value * 1.5f;
 	}
+
+	// 00649670 (placeholder func_00649670; caller GlueJoint::getMaxForce 00646c10): openrbx v8kernel/Constants.cpp
+	// getKmsMaxJointForce. G3D::iRound (fistp) of both grid sizes clamped to at least 1, width = max, overlap = min;
+	// 1/7 (0084ac8c), 0.5 (00819bac), 7500 (0084b034).
+	const float Constants::getKmsMaxJointForce(float grid1, float grid2)
+	{
+		int grid1int = std::max(1, G3D::iRound(grid1));
+		int grid2int = std::max(1, G3D::iRound(grid2));
+
+		int width = std::max(grid1int, grid2int);
+		int overlap = std::min(grid1int, grid2int);
+
+		float force;
+
+		if (width < 7)
+		{
+			force = MAX_LEGO_JOINT_FORCES_MEASURED[width];
+		}
+		else
+		{
+			force = width * (1.0f / 7.0f) * MAX_LEGO_JOINT_FORCES_MEASURED[6];
+		}
+
+		force = force * 0.5f;
+
+		return force * overlap * 7500.0f;
+	}
+
+	// 0084afbc (7 floats, .rdata: 0, 1.098, 2.134, 2.427, 3.191, 4.571, 4.681), read by getKmsMaxJointForce 00649670
+	// (`fld [edx*4 + 0x84afbc]`, [6] at 0084afd4). openrbx v8kernel/Constants.cpp MAX_LEGO_JOINT_FORCES_MEASURED.
+	// Defined after its reader: 0064970d still loads [6] from the table (`fmul [0084afd4]`), so the initializer was not
+	// visible to the front end when getKmsMaxJointForce was compiled (defined before it, VC9 folds [6] * 0.5f).
+	const float Constants::MAX_LEGO_JOINT_FORCES_MEASURED[7] = {0.0f, 1.098f, 2.134f, 2.427f, 3.191f, 4.571f, 4.681f};
 }

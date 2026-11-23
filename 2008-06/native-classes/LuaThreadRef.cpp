@@ -90,6 +90,30 @@ namespace RBX
 			return *this;
 		}
 
+		// 00594310 (registry placeholder func_00594310, 100 B, ret 4): FunctionRef::operator=, between ThreadRef::operator=
+		// 00594100 (which it calls) and ~ThreadRef 00594380. luaL_unref 00611170 / lua_rawgeti 00612530 / luaL_ref 006110c0
+		// with LUA_REGISTRYINDEX (0xffffd8f0) on L +0x18 and functionId +0x20; caller CLuaHtmlView 00417b97. Body: the 2007
+		// openrbx Client/App/script/ThreadRef.cpp FunctionRef::operator=.
+		FunctionRef& FunctionRef::operator=(const FunctionRef& other)
+		{
+			if (thread() != NULL) {
+				luaL_unref(thread(), LUA_REGISTRYINDEX, functionId);
+			}
+
+			ThreadRef::operator=(other);
+
+			if (thread() == NULL) {
+				functionId = 0;
+			}
+			else {
+				lua_rawgeti(thread(), LUA_REGISTRYINDEX, other.functionId);
+
+				functionId = luaL_ref(thread(), LUA_REGISTRYINDEX);
+			}
+
+			return *this;
+		}
+
 		// 005948f0 ?create@Node@ThreadRef@Lua@RBX@@SA?AV?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@PAUlua_State@@@Z
 		// (338 B). Donor script/ThreadRef.cpp body: lua_pushlightuserdata 00612410 (RBX_LUA_GLOBAL_THREADREFNODE 0x4e),
 		// NodeBridge::pushNewObject inlined (lua_newuserdata 00612c40 of 8 bytes, getmetatable by className 00949730,

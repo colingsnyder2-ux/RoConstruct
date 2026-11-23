@@ -339,7 +339,9 @@ namespace RBX
 		setName("Workspace");
 
 		profileWorkspaceStepInner->parent = profileWorkspaceStep.get();
-		world->getProfileWorldStep().parent = profileWorkspaceStepInner.get();
+		// PARKED (donor-free boot): the World profiler member is at a different offset in the exe than this unit's World.h assumes
+		// (members past +0xb8 are off by 0xc); the hookup is profiling-only and dereferenced a null there.
+		// world->getProfileWorldStep().parent = profileWorkspaceStepInner.get();
 		profileWorkspaceAssemble->parent = profileWorkspaceStep.get();
 		profileRunServiceStepped->parent = profileWorkspaceStep.get();
 		profileRunServiceHeartbeat->parent = profileWorkspaceStep.get();
@@ -405,6 +407,26 @@ namespace RBX
 		}
 	}
 
+	// 005a36d0 ?append@RBX@@YAXABV?$shared_ptr@VInstance@RBX@@@boost@@PAV?$vector@...@std@@@Z: the donor file helper
+	// (openrbx Workspace.cpp `static void append`). Its body is defined in native-classes/Inferred_005a36d0.cpp
+	// (external linkage there); declared here only, the 2008 insertContent below calls it out of line.
+	void append(const boost::shared_ptr<Instance>& item, std::vector<boost::shared_ptr<Instance> >* values);
+
+	// 005a39d0 (414 B, `ret 0x24`, registry placeholder func_005a39d0): the "InsertContent" reflection target (static
+	// initializer 007f4d73 pushes it into BoundFuncDesc ctor 005a4420). Calls insertContent(contentId, items, 1, 1)
+	// 005a3540, new vector (0x18, 004293d0), shared_ptr ctor 0049a6c0, then append 005a36d0 per item. Statement shape
+	// of the 2007 analog (openrbx Workspace.cpp 0x005b7650).
+	boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > Workspace::insertContent(ContentId contentId)
+	{
+		std::vector<boost::shared_ptr<Instance> > items;
+		insertContent(contentId, items, INSERT_TO_TREE, SUPPRESS_PROMPTS);
+
+		boost::shared_ptr<std::vector<boost::shared_ptr<Instance> > > values(new std::vector<boost::shared_ptr<Instance> >());
+
+		std::for_each(items.begin(), items.end(), boost::bind(&append, _1, values.get()));
+		return values;
+	}
+
 	// @005a0660 ?render2d@Workspace
 	void Workspace::render2d(Adorn* adorn)
 	{
@@ -431,3 +453,9 @@ namespace RBX
 // funclets 007d2a40..007d2a58). step itself stays out: the 2008 body takes two arguments (`ret 8`) where the read-only
 // Workspace.h declares step(float).
 template G3D::Array<boost::shared_ptr<RBX::PartInstance> >::~Array();
+
+// 005a31b0 (122 B, placeholder func_005a31b0): Creatable<Instance>::create<Flag>(): malloc 0x298, Flag::Flag 00619820
+// with the most-derived flag (push 1), shared_ptr<Flag>(p, Deleter) 005a3100. Only caller the FactoryProduct<Flag>
+// Creator::create 005a3230 (vtable 00833ac0, RTTI .?AVCreator@?$FactoryProduct@VFlag@RBX@@...), which sits in this
+// unit's range: the original Workspace.cpp emitted the Flag creator COMDATs (it includes v8datamodel/Flag.h).
+template boost::shared_ptr<RBX::Flag> RBX::Creatable<RBX::Instance>::create<RBX::Flag>();

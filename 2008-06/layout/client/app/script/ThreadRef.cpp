@@ -75,6 +75,26 @@ namespace RBX
 			return *this;
 		}
 
+		FunctionRef& FunctionRef::operator=(const FunctionRef& other)
+		{
+			if (thread() != NULL) {
+				luaL_unref(thread(), LUA_REGISTRYINDEX, functionId);
+			}
+
+			ThreadRef::operator=(other);
+
+			if (thread() == NULL) {
+				functionId = 0;
+			}
+			else {
+				lua_rawgeti(thread(), LUA_REGISTRYINDEX, other.functionId);
+
+				functionId = luaL_ref(thread(), LUA_REGISTRYINDEX);
+			}
+
+			return *this;
+		}
+
 		ThreadRef::NodePtr ThreadRef::Node::create(lua_State* thread)
 		{
 			lua_pushlightuserdata(thread, RBX_LUA_GLOBAL_THREADREFNODE);

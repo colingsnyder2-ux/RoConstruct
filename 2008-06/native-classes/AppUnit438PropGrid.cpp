@@ -272,3 +272,55 @@ template void XItem<RBX::BrickColor, CPropertyGridItemBrickColor, RBX::Reflectio
 template void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::OnValueChanged(CString);
 template void XItem<G3D::Vector3, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3> >::OnValueChanged(CString);
 template void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::update(RBX::SelectionGroup*);
+
+// XItem<T>::applyValue writes the value to every selected instance with
+//   std::for_each(instances.begin(), instances.end(),
+//                 boost::bind(&XItem::writeValue, this, boost::bind(&boost::shared_ptr<RBX::Instance>::get, _1), value));
+// (PropertyGridItems2008.cpp). The string, SoundId and Color3 instantiations of that call's helpers lie in this unit's
+// address range; callers: string applyValue 0043fc00 (bind 0043fe5d, for_each 0043fe9e), SoundId 0043e4c0 (bind
+// 0043e730, for_each 0043e771), Color3 0043f530 / 0043ff70 (for_each 0043f7cb / 0044020b).
+// Layout evidence: bind_t = { mf2 member pointer (8 B, multiple-inheritance XItem), value<XItem*>, the inner
+// bind_t<Instance*, cmf0<Instance*, shared_ptr<Instance> >, list1<arg<1> > > (8 B), value<T> } and checked vector
+// iterators of 8 B (for_each reads first/last at +0x24/+0x2c).
+typedef boost::_bi::bind_t<RBX::Instance*, boost::_mfi::cmf0<RBX::Instance*, boost::shared_ptr<RBX::Instance> >,
+                           boost::_bi::list1<boost::arg<1> > > PropGridInstanceGetBind;
+typedef std::vector<boost::shared_ptr<RBX::Instance> >::iterator PropGridInstanceIterator;
+
+typedef XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor> PropGridStringItem;
+typedef boost::_bi::value<PropGridStringItem*> PropGridStringItemValue;
+typedef boost::_bi::list3<PropGridStringItemValue, PropGridInstanceGetBind, boost::_bi::value<std::string> > PropGridStringWriteList;
+typedef boost::_bi::bind_t<void, boost::_mfi::mf2<void, PropGridStringItem, RBX::Instance*, const std::string&>,
+                           PropGridStringWriteList> PropGridStringWrite;
+// 0043ba60: storage3 constructor; 0043bad0: list3 constructor; 0043bb50: boost::bind; 0043bf60: std::for_each.
+template boost::_bi::storage3<PropGridStringItemValue, PropGridInstanceGetBind, boost::_bi::value<std::string> >::storage3(
+    PropGridStringItemValue, PropGridInstanceGetBind, boost::_bi::value<std::string>);
+template PropGridStringWriteList::list3(PropGridStringItemValue, PropGridInstanceGetBind, boost::_bi::value<std::string>);
+template PropGridStringWrite boost::bind<void, PropGridStringItem, RBX::Instance*, const std::string&,
+                                        PropGridStringItem*, PropGridInstanceGetBind, std::string>(
+    void (PropGridStringItem::*)(RBX::Instance*, const std::string&), PropGridStringItem*, PropGridInstanceGetBind, std::string);
+template PropGridStringWrite std::for_each<PropGridInstanceIterator, PropGridStringWrite>(
+    PropGridInstanceIterator, PropGridInstanceIterator, PropGridStringWrite);
+
+typedef XItem<RBX::Soundscape::SoundId, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId> > PropGridSoundItem;
+typedef boost::_bi::value<PropGridSoundItem*> PropGridSoundItemValue;
+typedef boost::_bi::list3<PropGridSoundItemValue, PropGridInstanceGetBind, boost::_bi::value<RBX::Soundscape::SoundId> > PropGridSoundWriteList;
+typedef boost::_bi::bind_t<void, boost::_mfi::mf2<void, PropGridSoundItem, RBX::Instance*, const RBX::Soundscape::SoundId&>,
+                           PropGridSoundWriteList> PropGridSoundWrite;
+// 0043ca80: storage3 constructor; 0043cba0: list3 constructor; 0043d0e0: boost::bind; 0043d1d0: std::for_each.
+template boost::_bi::storage3<PropGridSoundItemValue, PropGridInstanceGetBind, boost::_bi::value<RBX::Soundscape::SoundId> >::storage3(
+    PropGridSoundItemValue, PropGridInstanceGetBind, boost::_bi::value<RBX::Soundscape::SoundId>);
+template PropGridSoundWriteList::list3(PropGridSoundItemValue, PropGridInstanceGetBind, boost::_bi::value<RBX::Soundscape::SoundId>);
+template PropGridSoundWrite boost::bind<void, PropGridSoundItem, RBX::Instance*, const RBX::Soundscape::SoundId&,
+                                       PropGridSoundItem*, PropGridInstanceGetBind, RBX::Soundscape::SoundId>(
+    void (PropGridSoundItem::*)(RBX::Instance*, const RBX::Soundscape::SoundId&), PropGridSoundItem*, PropGridInstanceGetBind,
+    RBX::Soundscape::SoundId);
+template PropGridSoundWrite std::for_each<PropGridInstanceIterator, PropGridSoundWrite>(
+    PropGridInstanceIterator, PropGridInstanceIterator, PropGridSoundWrite);
+
+typedef XItem<G3D::Color3, CXTPPropertyGridItemColor, RBX::Reflection::TypedPropertyDescriptor<G3D::Color3> > PropGridColor3Item;
+typedef boost::_bi::bind_t<void, boost::_mfi::mf2<void, PropGridColor3Item, RBX::Instance*, const G3D::Color3&>,
+                           boost::_bi::list3<boost::_bi::value<PropGridColor3Item*>, PropGridInstanceGetBind,
+                                             boost::_bi::value<G3D::Color3> > > PropGridColor3Write;
+// 0043b390: std::for_each (its bind/list3 helpers are inlined into the callers).
+template PropGridColor3Write std::for_each<PropGridInstanceIterator, PropGridColor3Write>(
+    PropGridInstanceIterator, PropGridInstanceIterator, PropGridColor3Write);

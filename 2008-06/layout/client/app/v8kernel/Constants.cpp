@@ -23,6 +23,8 @@ namespace RBX
 }
 
 #include <G3D/Vector3int16.h>
+#include <G3D/g3dmath.h>
+#include <algorithm>
 
 namespace RBX
 {
@@ -158,4 +160,30 @@ namespace RBX
 
 		return value * 1.5f;
 	}
+
+	const float Constants::getKmsMaxJointForce(float grid1, float grid2)
+	{
+		int grid1int = std::max(1, G3D::iRound(grid1));
+		int grid2int = std::max(1, G3D::iRound(grid2));
+
+		int width = std::max(grid1int, grid2int);
+		int overlap = std::min(grid1int, grid2int);
+
+		float force;
+
+		if (width < 7)
+		{
+			force = MAX_LEGO_JOINT_FORCES_MEASURED[width];
+		}
+		else
+		{
+			force = width * (1.0f / 7.0f) * MAX_LEGO_JOINT_FORCES_MEASURED[6];
+		}
+
+		force = force * 0.5f;
+
+		return force * overlap * 7500.0f;
+	}
+
+	const float Constants::MAX_LEGO_JOINT_FORCES_MEASURED[7] = {0.0f, 1.098f, 2.134f, 2.427f, 3.191f, 4.571f, 4.681f};
 }

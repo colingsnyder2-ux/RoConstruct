@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers}/part-embedded
 // INFERRED: sub_0041ea40 (placeholder name for 0041ea40 from the identity tier; body byte-proved against the native headers by the placeholder lane)
 #include "util/Name.h"
 #include "v8datamodel/PartInstance.h"

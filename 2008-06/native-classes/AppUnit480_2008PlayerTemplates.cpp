@@ -24,6 +24,8 @@
 #include "v8datamodel/TimerService.h"
 #include "v8datamodel/SpawnerService.h"
 #include "v8datamodel/Hopper.h"
+#include <G3D/Rect2D.h>
+#include <G3D/Array.h>
 
 namespace RBX
 {
@@ -58,3 +60,8 @@ namespace RBX
 	template size_t ServiceProvider::getClassIndex<SpawnerService>();
 	template size_t ServiceProvider::getClassIndex<StarterPackService>();
 }
+
+// 0048ae50 (registry placeholder func_0048ae50): G3D::Array<G3D::Rect2D>::append(const Rect2D&) (G3D/Array.h inline:
+// 16-byte fld/fstp copy, inArray recursion 0048aec1, resize(num + 1, DONT_SHRINK) 0048a7c0); callers are the Player
+// unit's 004930d0 (after the Rect2D getter 00489910) and 004974f0. realloc 00489aa0 is Inferred_00489aa0.cpp.
+template void G3D::Array<G3D::Rect2D>::append(const G3D::Rect2D&);

@@ -172,6 +172,13 @@ namespace RBX
 		return cframe;
 	}
 
+#ifdef HUMANOID_HEADER_DECLARES_FINDRIGHTARM
+	PartInstance* Humanoid::findRightArm() const
+	{
+		return static_cast<PartInstance*>(getParent() ? getParent()->findFirstChildByName("Right Arm") : NULL);
+	}
+#endif
+
 	void Humanoid::renderWaypoint(Adorn* adorn, const G3D::Vector3& waypoint)
 	{
 		DrawAdorn::cylinder(adorn, G3D::CoordinateFrame(waypoint), 1, 0.2f, 1.0f, G3D::Color3::green());

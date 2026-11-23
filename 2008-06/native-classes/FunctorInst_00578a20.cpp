@@ -9,4 +9,6 @@
 #include <boost/signals/slot.hpp>
 #include <boost/thread/tss.hpp>
 typedef boost::_bi::bind_t<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::basic_string<char,std::char_traits<char>,std::allocator<char> > (*)(std::basic_string<char,std::char_traits<char>,std::allocator<char> >),boost::_bi::list1<boost::_bi::value<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > > > F;
-template boost::function0<std::basic_string<char,std::char_traits<char>,std::allocator<char> >, std::allocator<boost::function_base> >::function0(F, boost::enable_if_c<(boost::type_traits::ice_not<(boost::is_integral<F>::value)>::value), int>::type);
+// 00578a20: the stored vtable 00830038 holds manage 00577aa0 and void_function_obj_invoker0<F, void>::invoke 00577630, so
+// this is boost::function0<void> built from the string-returning bind (the result is discarded).
+template boost::function0<void, std::allocator<boost::function_base> >::function0(F, boost::enable_if_c<(boost::type_traits::ice_not<(boost::is_integral<F>::value)>::value), int>::type);

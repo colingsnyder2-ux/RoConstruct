@@ -1,8 +1,94 @@
 #define NATIVE_PRIMITIVE_NATIVE_BODY
+#include "v8world/Contact2008.h"
+#include "v8world/Primitive2008.h"
+#include "v8kernel/Connector2008.h"
+#include "v8world/Ball2008.h"
+#include "v8world/Block2008.h"
+#include "v8kernel/Body2008.h"
+#include <G3D/Vector3int16.h>
+
+namespace RBX
+{
+	static const IStage::StageType kernelStageType = static_cast<IStage::StageType>(7);
+
+	// Donor v8world/Contact.h inline accessors declared in Contact2008.h (rbx_static_cast of getGeometry; no code of
+	// their own).
+	inline Ball* BallBlockContact::ball()
+	{
+		return static_cast<Ball*>(ballPrim()->getGeometry());
+	}
+	inline Block* BallBlockContact::block()
+	{
+		return static_cast<Block*>(blockPrim()->getGeometry());
+	}
+
+	bool BallBlockContact::computeIsColliding(int& onBorder, G3D::Vector3int16& clip, G3D::Vector3& projectionInBlock,
+		float overlapIgnored)
+	{
+		Primitive* ballPrimitive = ballPrim();
+		Primitive* blockPrimitive = blockPrim();
+
+		if (Primitive::aaBoxCollide(*ballPrimitive, *blockPrimitive))
+		{
+			Body* ballBody = ballPrimitive->getBody();
+			Body* blockBody = blockPrimitive->getBody();
+
+			const PV& ballPV = ballBody->getPVUnsafe();
+			const PV& blockPV = blockBody->getPVUnsafe();
+
+			G3D::Vector3 blockToBall = ballPV.position.translation - blockPV.position.translation;
+
+			projectionInBlock = blockPV.position.rotation.transpose() * blockToBall;
+
+			block()->projectToFace(projectionInBlock, clip, onBorder);
+
+			G3D::Vector3 blockPtWorld = blockPV.position.pointToWorldSpace(projectionInBlock);
+
+			return (blockPtWorld - ballPV.position.translation).magnitude() < ball()->getRadius() - overlapIgnored;
+		}
+
+		return false;
+	}
+
+	bool BallBlockContact::stepContact()
+	{
+		G3D::Vector3int16 clip(0, 0, 0);
+		G3D::Vector3 projectionInBlock(0.0f, 0.0f, 0.0f);
+		int onBorder;
+
+		if (BallBlockContact::computeIsColliding(onBorder, clip, projectionInBlock, 0.0f))
+		{
+			if (inStage(kernelStageType))
+			{
+				if (!ballBlockConnector)
+					ballBlockConnector = createConnector(ballPrim()->getBody(), blockPrim()->getBody());
+
+				const G3D::Vector3* offset;
+				NormalId normId;
+				GeoPairType ballInsideType;
+
+				if (onBorder)
+					ballInsideType = block()->getBallBlockInfo(onBorder, clip, offset, normId);
+				else
+					ballInsideType = block()->getBallInsideInfo(projectionInBlock, offset, normId);
+
+				ballBlockConnector->setBallBlock(ball()->getRadius(), offset, normId, ballInsideType);
+			}
+			return true;
+		}
+		else
+		{
+			deleteAllConnectors();
+		}
+
+		return false;
+	}
+}
+
+#define NATIVE_PRIMITIVE_NATIVE_BODY
 #include <G3D/Array.h>
 #include <G3D/CoordinateFrame.h>
 #include <G3D/Vector2.h>
-#include <G3D/Vector3int16.h>
 #include "AppUnit658/Edge.h"
 #include "v8kernel/KernelIndex.h"
 #include "v8world/Geometry2008.h"
@@ -13,11 +99,6 @@
 #include "util/ComputeProp.h"
 #include "util/NormalId.h"
 
-#include "v8world/Primitive2008.h"
-
-#include "v8kernel/Connector2008.h"
-#include "v8world/Contact2008.h"
-#include "v8world/Block2008.h"
 #include "leaves2008/BlockBlockContact2008.h"
 
 namespace RBX
@@ -424,59 +505,5 @@ namespace RBX
 		firstApproach = 0;
 		threshold = 0;
 		forceMagLast = 0;
-	}
-}
-
-#define NATIVE_PRIMITIVE_NATIVE_BODY
-#include <math.h>
-#include "v8kernel/Body2008.h"
-#include "v8world/Ball2008.h"
-#include "util/Math.h"
-
-namespace RBX
-{
-	static const IStage::StageType kernelStageType = static_cast<IStage::StageType>(7);
-
-	// Donor v8world/Contact.h inline accessor declared in Contact2008.h (rbx_static_cast of getGeometry; no code of its
-	// own).
-	inline Ball* BallBallContact::ball(int i)
-	{
-		return static_cast<Ball*>(getPrimitive(i)->getGeometry());
-	}
-
-	bool BallBallContact::computeIsColliding(float overlapIgnored)
-	{
-		float b0Radius = ball(0)->getRadius();
-		float b1Radius = ball(1)->getRadius();
-
-		G3D::Vector3 delta = getPrimitive(1)->getBody()->getPVUnsafe().position.translation
-			- getPrimitive(0)->getBody()->getPVUnsafe().position.translation;
-		float b0b1RadiusSum = b0Radius + b1Radius;
-
-		if (b0b1RadiusSum > Math::longestVector3Component(delta))
-			return delta.magnitude() < (b0b1RadiusSum - overlapIgnored);
-		else
-			return false;
-	}
-
-	bool BallBallContact::stepContact()
-	{
-		if (BallBallContact::computeIsColliding(0.0f))
-		{
-			if (inStage(kernelStageType))
-			{
-				if (!ballBallConnector)
-					ballBallConnector = createConnector(getPrimitive(0)->getBody(), getPrimitive(1)->getBody());
-
-				ballBallConnector->setBallBall(ball(0)->getRadius(), ball(1)->getRadius());
-			}
-			return true;
-		}
-		else
-		{
-			deleteAllConnectors();
-		}
-
-		return false;
 	}
 }

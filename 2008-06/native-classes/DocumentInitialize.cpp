@@ -13,7 +13,7 @@
 #include "v8datamodel/Selection.h"
 #include "util/Sound.h"
 using namespace RBX;
-extern HRESULT __stdcall createNativeWorkspace(CWorkspace**) throw();
+#include <atlcom.h>
 class ReportAbuseVerb : public Verb {
     CRobloxDoc* doc;
 public:
@@ -174,7 +174,7 @@ typedef char native_doc_InsertTexture_size[(sizeof(InsertTexture)==36)?1:-1];
 typedef char native_doc_InsertObject_size[(sizeof(InsertObject)==28)?1:-1];
 typedef char native_doc_InsertService_size[(sizeof(InsertService)==28)?1:-1];
 void CRobloxDoc::initializeCommands() {
-    HRESULT hr=createNativeWorkspace(&workspace);
+    HRESULT hr=ATL::CComObject<CWorkspace>::CreateInstance(reinterpret_cast<ATL::CComObject<CWorkspace>**>(&workspace)); // 00450370 (was the placeholder createNativeWorkspace)
     if(hr==S_OK) {}
     else throw std::runtime_error("Unable to create CWorkspace");
     reinterpret_cast<IUnknown*>(workspace)->AddRef();

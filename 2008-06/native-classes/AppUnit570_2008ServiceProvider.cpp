@@ -90,6 +90,27 @@ namespace RBX
 			Notifier<ServiceProvider, ServiceRemoving>::raise(ServiceRemoving(child));
 	}
 
+	// 00572bc0 (registry placeholder func_00572bc0, 223 B, ret 4): ServiceProvider::onAddListener, slot 1 of the
+	// Notifier<ServiceProvider, ServiceAdded> subobject vtables at +0x150 (ServiceProvider 0082f130, GlobalSettings,
+	// DataModel and their DescribedNonCreatable/NonFactoryProduct vtables; util/Events.h declares the virtual). Children
+	// at [this-0x48] (Instance +0x108); __RTDynamicCast(child, 0, Instance 0092907c, Service 00929844); the event built
+	// in place by shared_from 00618a40 and raise(event, listener) 0048b030. Body: the 2007 openrbx
+	// v8tree/Service.cpp ServiceProvider::onAddListener. Needs the override and ServiceAdded(Instance*) declared in
+	// v8tree/Service.h (proposal).
+	void ServiceProvider::onAddListener(Listener<ServiceProvider, ServiceAdded>* listener) const
+	{
+		// The 2008 Instance exposes the CopyOnWrite children member (+0x108) in place of the 2007 getChildren().
+		if (children) {
+			std::vector<boost::shared_ptr<Instance> >::const_iterator end = children->end();
+			for (std::vector<boost::shared_ptr<Instance> >::const_iterator iter = children->begin(); iter != end;
+				 ++iter) {
+				if (dynamic_cast<Service*>(iter->get())) {
+					Notifier<ServiceProvider, ServiceAdded>::raise(iter->get(), listener);
+				}
+			}
+		}
+	}
+
 	void ServiceProvider::clearServices()                                    // 00572db0 (129 B)
 	{
 		// vector<shared_ptr<Instance>>::erase(begin, end) 00412180 at +0x190, then the map _Erase(root) 004b0d80

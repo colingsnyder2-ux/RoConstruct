@@ -36,6 +36,20 @@ namespace RBX
 			declareSignature(arg1Name, arg2Name, arg3Name);
 		}
 
+		// 00575460 (thiscall, ret 0xc; called only by the constructor 00579600): resultType = Type::singleton<std::string>
+		// 0056cdf0 into signature +0x14, then three SignatureDescriptor::addArgument 00594b40 calls with
+		// Name::declare(argName, -1) 00553f90 and Type::singleton<std::string> / <std::string> / <bool> 0056cc30 against
+		// default1 +0x40 / default2 +0x48 / default3 +0x50. reflection/reflection.h declares it without a body; the same
+		// template body is in AppLeaves2008DHTMLWindow.cpp for its own instantiation.
+		template<typename Class, typename Function>
+		void BoundFuncDesc<Class, Function, 3>::declareSignature(const char* arg1Name, const char* arg2Name, const char* arg3Name)
+		{
+			signature.resultType = &Type::singleton<typename result_type>();
+			signature.addArgument(Name::declare(arg1Name, -1), Type::singleton<typename Arg1>(), default1);
+			signature.addArgument(Name::declare(arg2Name, -1), Type::singleton<typename Arg2>(), default2);
+			signature.addArgument(Name::declare(arg3Name, -1), Type::singleton<typename Arg3>(), default3);
+		}
+
 		// 005797b0 (vtable 00830080 slot 1): the arguments copied from the defaults and fetched by index, the
 		// dynamic_cast to DataModel (bad_cast when null), then call<std::string> 005796d0.
 		template<typename Class, typename Function>

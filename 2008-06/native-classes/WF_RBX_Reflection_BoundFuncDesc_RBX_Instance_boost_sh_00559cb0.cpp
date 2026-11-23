@@ -14,5 +14,8 @@ namespace RBX
 	{
 		template class BoundFuncDesc<RBX::Instance, boost::shared_ptr<RBX::Instance>(std::string, bool), 2>;
 		template class BoundFuncDesc<RBX::DataModel, std::string(std::string, bool), 2>;
+		// 00579990 execute (vtable 0083008c slot 1, RTTI .?AV?$BoundFuncDesc@VDataModel@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@):
+		// dynamic_cast<DataModel*> (type descriptor 0092e8a0) then the bound void() member call through +0x38/+0x3c.
+		template class BoundFuncDesc<RBX::DataModel, void(), 0>;
 	}
 }

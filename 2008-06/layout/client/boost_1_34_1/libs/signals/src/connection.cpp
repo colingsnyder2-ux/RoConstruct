@@ -1,3 +1,19 @@
+#undef OGRE_NONCLIENT_BUILD
+#define NOMINMAX
+#include "ViewNew/PartChunk.h"
+#include "v8datamodel/SpecialShape.h"
+
+namespace RBX { namespace ViewNew {
+void PartChunk::onChildRemoved(boost::shared_ptr<Instance> child)
+{
+    if (child.get() == specialShape) {
+        shapePropertyChangedConnection.disconnect();
+        specialShape = NULL;
+        invalidateMesh();
+    }
+}
+} }
+
 // Copyright Douglas Gregor 2001-2004. Use, modification and
 // distribution is subject to the Boost Software License, Version
 // 1.0. (See accompanying file LICENSE_1_0.txt or copy at

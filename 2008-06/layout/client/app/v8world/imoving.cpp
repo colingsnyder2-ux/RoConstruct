@@ -1,6 +1,20 @@
 #include "v8world/IMoving.h"
 
-#include "../../../../../../tools/rbxgs/Client/App/include/v8world/IMoving.h"
+namespace RBX
+{
+	IMovingManager::~IMovingManager()
+	{
+	}
+}
+
+namespace RBX
+{
+	IMoving::IMoving()
+		: iMovingManager(NULL),
+		  stepsToSleep(0)
+	{
+	}
+}
 
 namespace RBX
 {
@@ -27,6 +41,11 @@ void IMoving::notifyMoved(void)
 		}
 	}
 }
+
+	IMovingManager::IMovingManager()
+	{
+		current = moving.end();
+	}
 
 	void IMovingManager::remove(IMoving* iMoving)
 	{

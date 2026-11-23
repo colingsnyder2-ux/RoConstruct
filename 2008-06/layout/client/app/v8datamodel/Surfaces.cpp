@@ -232,3 +232,34 @@ namespace RBX
 			&& Right.getSurfaceType() == NO_SURFACE;
 	}
 }
+
+#include "v8datamodel/Surface.h"
+
+namespace RBX
+{
+	namespace Reflection
+	{
+		template<>
+		const Type& Type::singleton<Surface>()
+		{
+			static Type type("Surface", typeid(Surface), "Complex");
+			return type;
+		}
+
+		// INFERRED: stand-in, no exe counterpart.
+		template<>
+		const Type& Type::singleton<Tuple>()
+		{
+			static Type type("Tuple", typeid(Tuple), "Complex");
+			return type;
+		}
+
+		// INFERRED: stand-in, no exe counterpart.
+		template<>
+		const Type& Type::singleton<PartInstance::FormFactor>()
+		{
+			static Type type("FormFactor", typeid(PartInstance::FormFactor), "Enum");
+			return type;
+		}
+	}
+}
