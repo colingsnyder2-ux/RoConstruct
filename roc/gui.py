@@ -343,6 +343,21 @@ class Dashboard:
                     args += ["--model", model]
                 config = dict(lane=lane, jobs=jobs, client="2008-06", model=model if lane == "families" else "")
                 title = "Native lane · " + lane
+            elif kind == "boot_recover":
+                # Donor-free boot recovery (work/donorfree-route/autorecover.py): an LLM drafts each stub, it is compiled and
+                # checked; every worker is a slot on the Workers tab (up to 5 share one queue).
+                addrs = [str(item).strip() for item in data.get("addrs", []) if re.fullmatch(r"[0-9a-fA-F]{6,8}", str(item).strip())]
+                workers, tries = int(data.get("workers", 3)), int(data.get("tries", 3))
+                if not addrs or not (1 <= workers <= 5 and 1 <= tries <= 5):
+                    raise ValueError("Boot recovery needs addresses, 1-5 workers and 1-5 tries")
+                mix = str(data.get("mix", "")).strip()
+                if mix and not re.fullmatch(r"(?:(?:sonnet|codex):[1-5],?)+", mix):
+                    raise ValueError("Mix looks like sonnet:3,codex:2")
+                if mix:
+                    workers = min(5, sum(int(part.split(":")[1]) for part in mix.strip(",").split(",")))
+                args = addrs + ["--workers", str(workers), "--tries", str(tries)] + (["--mix", mix.strip(",")] if mix else [])
+                config = dict(workers=workers, tries=tries, client="2008-06", lease_mode="native", model=mix or "sonnet")
+                title = "Boot recovery · 2008-06"
             elif kind == "command":
                 args, config = command_args(data), None
                 title = COMMANDS[args[0]][0] + (" · " + data["client"] if data.get("client") else "")
@@ -401,7 +416,9 @@ class Dashboard:
                                          else [str(ROOT / "work/native-client/native_llm.py"), *job["args"]]
                                          if job["kind"] == "native_llm"
                                          else [str(ROOT / "work/native-client/lane_runner.py"), *job["args"]]
-                                         if job["kind"] == "native_lane" else [str(ROOT / "roc.py"), *job["args"]])
+                                         if job["kind"] == "native_lane"
+                                         else [str(ROOT / "work/donorfree-route/autorecover.py"), *job["args"]]
+                                         if job["kind"] == "boot_recover" else [str(ROOT / "roc.py"), *job["args"]])
         env = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUNBUFFERED="1", ROC_GUI_EVENTS="1")
         env.update(ROC_TASK_ID=job_id, ROC_TASK_OWNER=job["owner"])
         if job["kind"] == "agent_worker" and self.worker_token:
