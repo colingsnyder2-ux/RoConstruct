@@ -659,5 +659,29 @@
  "OgreAuto_RBX_Math": [
   "client/app/util/MathAxisRotation.cpp",
   "INFERRED: builds against the donor Math.h class text (redefinition when joined with the 2008 Math unit); own unit"
+ ],
+ "AppUnit5ECSurfaces": [
+  "client/app/v8datamodel/Surfaces.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (original path); the refreshed evidence map lost the unique target (address candidates became ambiguous)"
+ ],
+ "AppUnit660_2008GroupDragTool": [
+  "client/app/tool/GroupDragTool.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (original path); the refreshed evidence map lost the unique target (address candidates became ambiguous)"
+ ],
+ "AppUnit660_2008PartDragTool": [
+  "client/app/tool/PartDragTool.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (original path); the refreshed evidence map lost the unique target (address candidates became ambiguous)"
+ ],
+ "AppUnit658SafeChat": [
+  "client/app/v8datamodel/SafeChat.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed evidence map lost the unique target (address candidates became ambiguous)"
+ ],
+ "AppLeftovers": [
+  "client/network/CrashReporter.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed evidence map lost the unique target (address candidates became ambiguous)"
+ ],
+ "MetadataReflectionLifetime": [
+  "client/win/ReflectionMetadata.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed evidence map lost the unique target (address candidates became ambiguous)"
  ]
 }
