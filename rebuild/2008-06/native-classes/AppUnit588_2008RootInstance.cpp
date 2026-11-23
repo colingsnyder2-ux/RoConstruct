@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /DNOMINMAX /fp:fast /U_RELEASEASSERT /I{headers}/engine-world
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /DNOMINMAX /fp:fast /U_RELEASEASSERT /I{headers}/engine-world /I{headers}/part-embedded
 // Flags: document-swap profile (work/2008-06/shared-layouts/document-swap-current.json), VS2008 RTM 21022, /fp:fast
 // /U_RELEASEASSERT, as tests/record_native_app_unit588_2008.py builds it. The earlier flags line spelled the profile as
 // words, so prove.py compiled this unit with no /O2 (batch 26: 47 -> 131 exact with the explicit flags; 32 /Od-only Wml/STL COMDAT matches lost).

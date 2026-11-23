@@ -96,6 +96,48 @@ namespace RBX
 		}
 	}
 
+	// 005fdfe0 (placeholder func_005fdfe0; openrbx Tool::moveAllToolsToBackpack, called from 005fe0da and
+	// onLocalClicked 005fe198): getCharacter (+0x170), findFirstChildOfType<Tool> 005fdf00, getPlayerBackpack
+	// 0048c470, setParent 0055a8f0.
+	void Tool::moveAllToolsToBackpack(Network::Player* player)
+	{
+		if (player && player->getCharacter())
+		{
+			ModelInstance* character = player->getCharacter();
+
+			while (Tool* tool = character->findFirstChildOfType<Tool>())
+			{
+				tool->setParent(player->getPlayerBackpack());
+			}
+		}
+	}
+
+	// 005fe030 (placeholder func_005fe030; openrbx Tool::onEvent_HandleTouched): backendToolState +0x1c4 ==
+	// IN_WORKSPACE, other->getParent() (+0x104), computeDesiredState 005fd460 == EQUIPPED, inlined
+	// characterCanUnequipTool (dynamic_cast to ModelInstance 00932a40, modelIsCharacter 005d9a20,
+	// findFirstChildOfType<Tool> 005fdf00, canUnequip slot 0x8c), getPlayerFromCharacter 0049acd0,
+	// canBePickedUpByPlayer slot 0x90, moveAllToolsToBackpack 005fdfe0, setParent 0055a8f0.
+	void Tool::onEvent_HandleTouched(boost::shared_ptr<Instance> other)
+	{
+		if (backendToolState == IN_WORKSPACE)
+		{
+			Instance* character = other->getParent();
+
+			if (computeDesiredState(character) == EQUIPPED &&
+				characterCanUnequipTool(dynamic_cast<ModelInstance*>(character)))
+			{
+				if (Network::Player* player = Network::Players::getPlayerFromCharacter(character))
+				{
+					if (canBePickedUpByPlayer(player))
+					{
+						moveAllToolsToBackpack(player);
+						setParent(character);
+					}
+				}
+			}
+		}
+	}
+
 	// 005fe6d0 (placeholder func_005fe6d0; openrbx Tool::upTo_Equipped, same shape as Accoutrement::upTo_Equipped
 	// 005b1830): handleTouched +0x204 disconnect 00595230, PartInstance::findParts 0059c640,
 	// DragUtilities::unJoinFromOutsiders 0060ec60, modelIsCharacter 005d9a20, getRightArm 005d8f10, getHandle 005b08a0,

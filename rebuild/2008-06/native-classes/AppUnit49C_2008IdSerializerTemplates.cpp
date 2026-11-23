@@ -138,6 +138,28 @@ namespace RBX
 			send(bitStream, value);
 		}
 
+		// 004a8ae0 (registry placeholder func_004a8ae0; donor Streaming.cpp IdSerializer::serializeId, declared in
+		// Network/IdSerializer.h). Evidence: thiscall, ret 8; a NULL instance sends Name::getNullName() 00554270 (+4 name
+		// string) through scopeNames (+0x130) StringSender::send 004a7e20; otherwise GuidItem<Instance>::registerGuid
+		// 0049bba0, the Guid::Data copied inline from +8 / +0xc, StringSender::send 004a7e20 with scope->name (+4) and
+		// WriteBits 004a5600 (&id.index, 24, true). Same shape as trySerializeId 004a8cc0 (IdSerializerTrySerializeId.cpp).
+		void IdSerializer::serializeId(RakNet::BitStream& stream, const Instance* instance)
+		{
+			if (instance)
+			{
+				// INFERRED: the 2008 getGuid() registers first (util/GuidItem.h proposal); registerGuid is non-const.
+				const_cast<Instance*>(instance)->registerGuid();
+				Guid::Data id;
+				instance->getGuid().extract(id);
+				scopeNames.send(stream, id.scope->name);
+				stream.WriteBits((unsigned char*)&id.index, 24);
+			}
+			else
+			{
+				scopeNames.send(stream, Name::getNullName().name);
+			}
+		}
+
 		// Donor Streaming.cpp IdSerializer::serializeRef: RefPropertyDescriptor slot 0x30 getRefValue, NULL-checked -0x14
 		// to Instance, then serializeId 004a8ae0.
 		void IdSerializer::serializeRef(const Reflection::ConstProperty& property, RakNet::BitStream& bitStream) // 004a8b90

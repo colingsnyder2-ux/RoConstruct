@@ -60,8 +60,17 @@ namespace RBX
 			builder.build(LevelBuilder::Surface);
 		}
 
+		// 004fd110. The dead shadow block follows the 2007 analog (openrbx RbxView/SphereMesh.cpp): the original
+		// unwind map 008e597c keeps its three null-action states (1->0, 2->0, 3->2) ahead of the live new/level/builder.
 		SphereMesh::SphereMesh(const G3D::Vector3& size, NormalId decalFace)
 		{
+			if (false) {
+				G3D::ReferenceCountedPointer<RenderBase::Mesh::Level> tempShadowLevel = new RenderBase::Mesh::Level(G3D::RenderDevice::TRIANGLES);
+				SphereBuilder builder(tempShadowLevel, size, RenderSurfaceTypes(), 3);
+				builder.build(LevelBuilder::Shadow);
+				computeShadowSurface(tempShadowLevel);
+			}
+
 			G3D::ReferenceCountedPointer<RenderBase::Mesh::Level> level = new RenderBase::Mesh::Level(G3D::RenderDevice::QUADS);
 			levels.push_back(level);
 

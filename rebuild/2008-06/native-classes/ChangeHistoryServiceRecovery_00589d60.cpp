@@ -44,3 +44,13 @@ RBX::Reflection::Tuple RBX::ChangeHistoryService::getCanRedo()
         return values;
     }
 }
+
+// Reflection registrations of the two bodies above (dynamic initializers 007f40b0 / 007f40e0: security 1, name
+// strings 008319a0 "GetCanUndo" / 008319ac "GetCanRedo", BoundFuncDesc<ChangeHistoryService, Tuple(), 0> ctor 0058b0f0,
+// objects 00975a88 / 00975b08). They follow the four ChangeHistoryService registrations of
+// InitStatics_ChangeHistoryService.cpp (007f3ff0..007f4080) in the original initializer order.
+// INFERRED: object names (not in the binary).
+namespace RBX {
+	static Reflection::BoundFuncDesc<ChangeHistoryService, Reflection::Tuple(), 0> desc_GetCanUndo(&ChangeHistoryService::getCanUndo, "GetCanUndo", Reflection::FunctionDescriptor::AnyCaller);   // 00975a88 (007f40b0)
+	static Reflection::BoundFuncDesc<ChangeHistoryService, Reflection::Tuple(), 0> desc_GetCanRedo(&ChangeHistoryService::getCanRedo, "GetCanRedo", Reflection::FunctionDescriptor::AnyCaller);   // 00975b08 (007f40e0)
+}

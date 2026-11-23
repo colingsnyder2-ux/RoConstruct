@@ -122,6 +122,28 @@ void CRenderSettings::setShadowMode(ShadowMode value)
     }
 }
 
+// INFERRED name; original 009317fc, a data-initialized pointer to "profiled5" (2007 analog: openrbx
+// Client/win/RenderSettings.cpp g_unk0x0091b48c).
+static const char* currentProfileName = "profiled5";
+
+#ifdef CRENDERSETTINGS_HEADER_DECLARES_CHECK_PROFILE
+// 004492d0 (thiscall ret 4; only caller CRobloxWnd::setDataModel 0045fa71 with false). Statement shape from the
+// 2007 analog FUN_0044d1b0; prop_profileName.getset +0x18 is 0096d52c.
+// Blocked: CRenderSettings.h (not this unit's file) must declare 'void checkProfile(bool force);' (INFERRED name).
+void CRenderSettings::checkProfile(bool force)
+{
+    if (force || profileName != currentProfileName) {
+        setMaxMeshDetail(100.0f);
+        setMinMeshDetail(100.0f);
+        setMaxMeshDetail(100.0f);
+        setMaxShadingQuality(100.0f);
+        setMinShadingQuality(100.0f);
+        setMaxShadingQuality(100.0f);
+        prop_profileName.setValue(this, currentProfileName);
+    }
+}
+#endif
+
 // 004491b0.
 void CRenderSettings::setFrameRateManagerMode(FrameRateManagerMode value)
 {

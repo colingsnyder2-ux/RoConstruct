@@ -143,8 +143,11 @@ void ScriptContext::reportError(lua_State* thread)
 		{
 			bool hasStack = false;
 			int level = 0;
-			while (lua_getstack(thread, level++, &ar))
+			do
 			{
+				if (!lua_getstack(thread, level++, &ar))
+					break;
+
 				if (lua_getinfo(thread, "nSlu", &ar) && ar.currentline >= 0)
 				{
 					hasStack = true;
@@ -155,9 +158,7 @@ void ScriptContext::reportError(lua_State* thread)
 					else
 						StandardOut::singleton()->print(MESSAGE_INFO, "%s, line %d", source, ar.currentline);
 				}
-				if (level >= 12)
-					break;
-			}
+			} while (level < 12);
 
 			if (hasStack && level < 12)
 				StandardOut::singleton()->print(MESSAGE_INFO, "   stack end");

@@ -54,6 +54,24 @@ namespace RBX
 {
 	namespace ViewNew
 	{
+#ifdef BRICKMESH_HEADER_DECLARES_APPEND_BEVEL_QUAD
+		// 004dcaa0 (thiscall ret 0x18, this unused; only caller the seven-argument buildBevel 004e3720, four calls):
+		// four shared vertices from the Mesh geometry statics (vertexArray 009738f0, normalArray 009738fc,
+		// texCoordArray 00973934) through allocVertex 00548000, stored to corners[0..3], then one quad on
+		// level->indexArray (append 004dc6a0 on copies of the four indices). INFERRED: the name.
+		// Blocked: ViewNew/BrickMesh.h must declare the member and ViewNew/RenderBaseMesh.h must give BrickMesh
+		// access to visibleGeometry / texCoordArray (both headers belong to the ViewNew owner).
+		void BrickMesh::appendBevelQuad(RenderBase::Mesh::LevelRef& level, int a, int b, int c, int d, int* corners)
+		{
+			// The int corners bind to the unsigned append parameters through copies (the original copies all four).
+			corners[0] = allocVertex(visibleGeometry.vertexArray[a], visibleGeometry.normalArray[a], texCoordArray[a], true);
+			corners[1] = allocVertex(visibleGeometry.vertexArray[b], visibleGeometry.normalArray[b], texCoordArray[b], true);
+			corners[2] = allocVertex(visibleGeometry.vertexArray[c], visibleGeometry.normalArray[c], texCoordArray[c], true);
+			corners[3] = allocVertex(visibleGeometry.vertexArray[d], visibleGeometry.normalArray[d], texCoordArray[d], true);
+			level->indexArray.append(corners[0], corners[1], corners[2], corners[3]);
+		}
+#endif
+
 		void buildShadowBox(const G3D::Vector3& halfSize, std::vector<G3D::Vector3>& vertices, std::vector<unsigned short>& indices)
 		{
 			vertices.reserve(8);
