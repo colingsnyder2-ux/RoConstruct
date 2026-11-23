@@ -1,41 +1,72 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-extern "C" void __stdcall fn_00401000(long hr); // ATL::AtlThrowImpl
+// INFERRED: no headers describe the objects involved, so the interfaces are
+// declared as minimal COM-style vtables. The calls are made through the
+// vtable slots seen in the disassembly.
 
-// INFERRED: immediates 0x81f038 / 0x850114 are addresses of GUID/IID globals
-extern "C" const unsigned char data_0081f038[];
-extern "C" const unsigned char data_00850114[];
+namespace ATL {
+    void __stdcall AtlThrowImpl(long hr);
+}
 
-typedef long (__stdcall *Slot4)(void* self, const void* a, void* b, int c);
-typedef long (__stdcall *Slot2)(void* self, const void* a);
-typedef long (__stdcall *SlotRc)(void* self, int a, void* b);
+// INFERRED: the two data addresses (0x81f038, 0x850114) look like GUIDs/IIDs.
+struct FakeGuid { unsigned long d1; unsigned short d2, d3; unsigned char d4[8]; };
+extern "C" const FakeGuid g_data_0081f038;
+extern "C" const FakeGuid g_data_00850114;
 
-struct Vtbl { void** slots; };
+// INFERRED: interface held at this+0x174, slot 3 is a QueryService-like call.
+struct IFirst {
+    virtual long __stdcall s0() = 0;
+    virtual long __stdcall s1() = 0;
+    virtual long __stdcall s2() = 0;
+    virtual long __stdcall Query(const FakeGuid* id, void** out, int extra) = 0;
+};
 
-// INFERRED: class unknown; fields at +0x174 (COM ptr) and +0x17c (COM ptr out)
-extern "C" void __fastcall fn_004675e0(char* self, int unusedEdx)
+struct SetupBlock {
+    unsigned long cb;
+    unsigned long a;
+    unsigned long b;
+    unsigned long c;
+    unsigned long flags;
+};
+
+// INFERRED: interface stored at this+0x17c; slot 11 takes an id, slot 6 takes (int, struct*).
+struct ISecond {
+    virtual long __stdcall s0() = 0;
+    virtual long __stdcall s1() = 0;
+    virtual long __stdcall s2() = 0;
+    virtual long __stdcall s3() = 0;
+    virtual long __stdcall s4() = 0;
+    virtual long __stdcall s5() = 0;
+    virtual long __stdcall Configure(int flag, SetupBlock* blk) = 0;
+    virtual long __stdcall s7() = 0;
+    virtual long __stdcall s8() = 0;
+    virtual long __stdcall s9() = 0;
+    virtual long __stdcall s10() = 0;
+    virtual long __stdcall SetId(const FakeGuid* id) = 0;
+};
+
+extern "C" void __fastcall fn_004675e0(void* self, int unusedEdx)
 {
-    void* src = *(void**)(self + 0x174);
-    void** out = (void**)(self + 0x17c);
+    char* base = (char*)self;
+    IFirst* first = *(IFirst**)(base + 0x174);
+    ISecond** slot = (ISecond**)(base + 0x17c);
 
-    long hr = ((Slot4)(*(void***)src)[3])(src, data_0081f038, out, 0);
+    long hr = first->Query(&g_data_0081f038, (void**)slot, 0);
     if (hr < 0)
-        fn_00401000(hr);
+        ATL::AtlThrowImpl(hr);
 
-    void* p = *out;
-    hr = ((Slot2)(*(void***)p)[0x2c / 4])(p, data_00850114);
+    hr = (*slot)->SetId(&g_data_00850114);
     if (hr < 0)
-        fn_00401000(hr);
+        ATL::AtlThrowImpl(hr);
 
-    void* q = *out;
-    // INFERRED: 5-dword descriptor struct (size 0x14)
-    int desc[5];
-    desc[0] = 0x14;
-    desc[1] = 0x10;
-    desc[2] = 0;
-    desc[3] = 0;
-    desc[4] = 0x800;
-    hr = ((SlotRc)(*(void***)q)[0x18 / 4])(q, 1, desc);
+    ISecond* second = *slot;
+    SetupBlock blk;
+    blk.cb = 0x14;
+    blk.a = 0x10;
+    blk.b = 0;
+    blk.c = 0;
+    blk.flags = 0x800;
+    hr = second->Configure(1, &blk);
     if (hr < 0)
-        fn_00401000(hr);
+        ATL::AtlThrowImpl(hr);
 }

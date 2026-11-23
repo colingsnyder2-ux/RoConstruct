@@ -1,3 +1,19 @@
+// =============================================================================
+// MegaDragger.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/tool/MegaDragger.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "tool/MegaDragger.h"
 #include "tool/DragUtilities.h"
 #include "tool/Dragger.h"
@@ -114,22 +130,24 @@ namespace RBX
 	}
 }
 
-namespace RBX {
+namespace RBX
+{
 bool MegaDragger::mousePartAlive()
 	{
 		return PartInstance::nonNullInWorkspace(mousePart.lock());
 	}
 }
 
-namespace RBX {
+namespace RBX
+{
 bool MegaDragger::anyDragPartAlive() { return DragUtilities::anyPartAlive(dragParts); }
 G3D::Vector3 MegaDragger::safeMoveAlongLine(const G3D::Vector3& delta) {
-    G3D::Array<Primitive*> primitives;
-    DragUtilities::partsToPrimitives(dragParts, primitives);
-    if (primitives.size() > 0) {
-        G3D::Vector3 result = Dragger::safeMoveAlongLine(primitives, delta, contactManager);
-        return result;
-    }
-    return G3D::Vector3::zero();
+	G3D::Array<Primitive*> primitives;
+	DragUtilities::partsToPrimitives(dragParts, primitives);
+	if (primitives.size() > 0) {
+		G3D::Vector3 result = Dragger::safeMoveAlongLine(primitives, delta, contactManager);
+		return result;
+	}
+	return G3D::Vector3::zero();
 }
 }

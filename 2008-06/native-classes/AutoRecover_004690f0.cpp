@@ -1,4 +1,4 @@
-// native-flags: /O2 /Oy /Ob2 /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Oy /Ob2 /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 #include <windows.h>
 #include <new>
@@ -11,7 +11,10 @@ extern "C" void* __fastcall fn_006a14a8(void* wnd, int unusedEdx);              
 extern "C" void* __fastcall fn_006a0974(void* wnd, int unusedEdx);                 // CWnd::GetParentFrame
 extern "C" void fn_00618a40(void* out, void* p);                                   // shared_from<...>
 extern "C" void* __fastcall fn_004530f0(void* sp, int unusedEdx);                  // ServiceProvider::create<RunService>
-extern "C" int  fn_0069fbd0(int a1, int a2, int a3, int a4, int a5, int a6);       // INFERRED: really takes 6 stack args
+// 0x69fbd0 is the import thunk for dinput8!DirectInput8Create (jmp [IAT]); original call passes 5 args (hinst, 0x800, IID at 0x81f028, out, 0)
+extern "C" __declspec(dllimport) long __stdcall DirectInput8Create(void* hinst, unsigned long version, const void* riid, void** out, void* outer);
+// IID_IDirectInput8A = BF798030-483A-4DA2-AA99-5D64ED369700 (the exe's 0x81f028 data)
+static const unsigned char kIID_IDirectInput8A[16] = {0x30,0x80,0x79,0xBF,0x3A,0x48,0xA2,0x4D,0xAA,0x99,0x5D,0x64,0xED,0x36,0x97,0x00};
 extern "C" void __stdcall fn_00401000(long hr);                                    // ATL::AtlThrowImpl
 extern "C" int  __fastcall fn_00467550(void* self, int unusedEdx);
 extern "C" int  __fastcall fn_004675e0(void* self, int unusedEdx);
@@ -80,7 +83,7 @@ extern "C" void* __fastcall fn_004690f0(void* selfv, int unusedEdx, void* wnd, v
 
     memset(self + 0x68, 0, 0x100);
 
-    int hr = fn_0069fbd0((int)GetModuleHandleA(0), 0, 0x800, 0x0081f028, (int)(self + 0x174), 0);
+    int hr = DirectInput8Create(GetModuleHandleA(0), 0x800, kIID_IDirectInput8A, (void**)(self + 0x174), 0);
     if (hr < 0)
         fn_00401000(hr);
 

@@ -1,3 +1,19 @@
+// =============================================================================
+// RobloxReportView.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/win/RobloxReportView.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "CRobloxReportView.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Stats.h"
@@ -64,7 +80,9 @@ void CRobloxReportView::setDataModel(boost::shared_ptr<RBX::DataModel> dataModel
         if (const RBX::ServiceProvider* provider = this->dataModel.get())
             provider->find<RBX::RunService>();
         RBX::Notifier<RBX::Instance, RBX::ChildAdded>::disconnect(stats, static_cast<RBX::Listener<RBX::Instance, RBX::ChildAdded>*>(this));
-        RBX::Notifier<RBX::Instance, RBX::ChildRemoved>::disconnect(stats, static_cast<RBX::Listener<RBX::Instance, RBX::ChildRemoved>*>(this));
+        RBX::Notifier<RBX::Instance, RBX::ChildRemoved>::disconnect(
+            stats,
+            static_cast<RBX::Listener<RBX::Instance, RBX::ChildRemoved>*>(this));
         RBX::MarshaledListener<RBX::Instance, RBX::ChildAdded>::detach();
         RBX::MarshaledListener<RBX::Instance, RBX::ChildRemoved>::detach();
         GetReportCtrl().GetRecords()->RemoveAll();
@@ -76,7 +94,9 @@ void CRobloxReportView::setDataModel(boost::shared_ptr<RBX::DataModel> dataModel
         RBX::DataModel::Lock lock(dataModel);
         stats = RBX::shared_from<RBX::Instance>(RBX::ServiceProvider::create<RBX::Stats::StatsService>(this->dataModel.get()));
         timer = ::SetTimer(m_hWnd, 1, 333, NULL);
-        RBX::Notifier<RBX::Instance, RBX::ChildRemoved>::connect(stats, static_cast<RBX::Listener<RBX::Instance, RBX::ChildRemoved>*>(this));
+        RBX::Notifier<RBX::Instance, RBX::ChildRemoved>::connect(
+            stats,
+            static_cast<RBX::Listener<RBX::Instance, RBX::ChildRemoved>*>(this));
         RBX::Notifier<RBX::Instance, RBX::ChildAdded>::connect(stats, static_cast<RBX::Listener<RBX::Instance, RBX::ChildAdded>*>(this));
         RBX::ServiceProvider::create<RBX::RunService>(this->dataModel.get());
     } else if (m_hWnd) {

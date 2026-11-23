@@ -6,6 +6,7 @@
 #include <string.h>
 #include <algorithm>
 #include <G3D/System.h>
+#include <utility>
 
 namespace RBX
 {
@@ -156,5 +157,42 @@ namespace RBX
 			addTreePairs(static_cast<SpatialLevelNode*>(node)->treeNode, p);
 
 		maxBucket = std::max(maxBucket, numNodes);
+	}
+
+	// 00659370 (placeholder sub_00659370, body in native-classes/Inferred_00659370.cpp): the int box shifted from one
+	// grid level to another. Declared here exactly as that unit defines it.
+	std::pair<Vector3int32, Vector3int32> __cdecl sub_00659370(int fromLevel, int toLevel, const std::pair<Vector3int32, Vector3int32>& source);
+}
+
+// 00659330 (cdecl int-box overlap, body in native-classes/DonorCtx_00659330.cpp, declared as it defines it).
+bool __cdecl intersects(const RBX::Vector3int32* a, const RBX::Vector3int32* b);
+
+namespace RBX
+{
+	// 006593d0 (registry placeholder func_006593d0; caller onPrimitiveExtentsChanged / the pair release path): both
+	// primitives need a spatial node (+0x64); equal levels (+0x20) test the two old spatial boxes (+0x68: min, +0x74:
+	// max) directly, otherwise the box of the lower-level primitive is shifted up to the higher level first. INFERRED:
+	// the box view of oldSpatialMin / oldSpatialMax as one pair (the two members are contiguous).
+	// PARKED (batch 46): 142 B, same instructions and control flow, register permutation only (target: me edi, other
+	// eax, high esi; here me esi, other edx, high edi). Rejected: level reads inline in both compares (144 B), named
+	// SpatialNode locals tested one by one (144 B).
+	bool SpatialHash::shareCommonGrid(Primitive* me, Primitive* other)
+	{
+		if (!me->spatialNodes || !other->spatialNodes)
+			return false;
+
+		int meLevel = me->spatialNodes->level;
+		int otherLevel = other->spatialNodes->level;
+
+		if (meLevel == otherLevel)
+			return intersects(&me->oldSpatialMin, &other->oldSpatialMin);
+
+		Primitive* high = meLevel > otherLevel ? me : other;
+		Primitive* low = high == me ? other : me;
+
+		std::pair<Vector3int32, Vector3int32> lowBox = sub_00659370(low->spatialNodes->level, high->spatialNodes->level,
+			*reinterpret_cast<const std::pair<Vector3int32, Vector3int32>*>(&low->oldSpatialMin));
+
+		return intersects(&high->oldSpatialMin, &lowBox.first);
 	}
 }

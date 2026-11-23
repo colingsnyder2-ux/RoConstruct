@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // INFERRED: mangled name puts the class under PlayerNativeMaterial, not RBX::ViewNew; layout follows 004d7460.
 // INFERRED: self-contained G3D refcount stand-ins; the header chain needs OgreMaterial.h, which is not on the include path.
 extern "C" __declspec(dllimport) long __stdcall InterlockedDecrement(volatile long*);

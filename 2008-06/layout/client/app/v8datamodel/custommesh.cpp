@@ -1,3 +1,19 @@
+// =============================================================================
+// custommesh.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/v8datamodel/custommesh.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "v8datamodel/SpecialShape.h"
 #include "v8datamodel/PartInstance.h"
 #include "reflection/enumconverter.h"
@@ -33,11 +49,36 @@ namespace RBX
 	}
 }
 
-static RBX::Reflection::EnumPropDescriptor<RBX::SpecialShape, RBX::SpecialShape::MeshType> desc_meshType("MeshType", "Data", &RBX::SpecialShape::getMeshType, &RBX::SpecialShape::setMeshType, RBX::Reflection::PropertyDescriptor::STANDARD);
-static RBX::Reflection::PropDescriptor<RBX::SpecialShape, G3D::Vector3> desc_scale("Scale", "Data", &RBX::SpecialShape::getScale, &RBX::SpecialShape::setScale, RBX::Reflection::PropertyDescriptor::STANDARD);
-static RBX::Reflection::PropDescriptor<RBX::SpecialShape, RBX::MeshId> desc_meshId("MeshId", "Data", &RBX::SpecialShape::getMeshId, &RBX::SpecialShape::setMeshId, RBX::Reflection::PropertyDescriptor::STANDARD);
-static RBX::Reflection::PropDescriptor<RBX::SpecialShape, RBX::TextureId> desc_textureId("TextureId", "Data", &RBX::SpecialShape::getTextureId, &RBX::SpecialShape::setTextureId, RBX::Reflection::PropertyDescriptor::STANDARD);
-static RBX::Reflection::PropDescriptor<RBX::SpecialShape, G3D::Vector3> desc_vertColor("VertexColor", "Data", &RBX::SpecialShape::getVertColor, &RBX::SpecialShape::setVertColor, RBX::Reflection::PropertyDescriptor::STANDARD);
+static RBX::Reflection::EnumPropDescriptor<RBX::SpecialShape, RBX::SpecialShape::MeshType> desc_meshType(
+	"MeshType",
+	"Data",
+	&RBX::SpecialShape::getMeshType,
+	&RBX::SpecialShape::setMeshType,
+	RBX::Reflection::PropertyDescriptor::STANDARD);
+static RBX::Reflection::PropDescriptor<RBX::SpecialShape, G3D::Vector3> desc_scale(
+	"Scale",
+	"Data",
+	&RBX::SpecialShape::getScale,
+	&RBX::SpecialShape::setScale,
+	RBX::Reflection::PropertyDescriptor::STANDARD);
+static RBX::Reflection::PropDescriptor<RBX::SpecialShape, RBX::MeshId> desc_meshId(
+	"MeshId",
+	"Data",
+	&RBX::SpecialShape::getMeshId,
+	&RBX::SpecialShape::setMeshId,
+	RBX::Reflection::PropertyDescriptor::STANDARD);
+static RBX::Reflection::PropDescriptor<RBX::SpecialShape, RBX::TextureId> desc_textureId(
+	"TextureId",
+	"Data",
+	&RBX::SpecialShape::getTextureId,
+	&RBX::SpecialShape::setTextureId,
+	RBX::Reflection::PropertyDescriptor::STANDARD);
+static RBX::Reflection::PropDescriptor<RBX::SpecialShape, G3D::Vector3> desc_vertColor(
+	"VertexColor",
+	"Data",
+	&RBX::SpecialShape::getVertColor,
+	&RBX::SpecialShape::setVertColor,
+	RBX::Reflection::PropertyDescriptor::STANDARD);
 
 namespace RBX
 {
@@ -102,6 +143,8 @@ namespace RBX
 	}
 }
 
+// Explicit instantiations: they give this file the same symbols as the original object,
+// where other files used them. Likely removable once the whole client links and those users exist.
 template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::SpecialShape::MeshType>;
 template class std::_Container_base_aux_alloc_real<std::allocator<enum RBX::SpecialShape::MeshType> >;
 template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum RBX::SpecialShape::MeshType> > >;

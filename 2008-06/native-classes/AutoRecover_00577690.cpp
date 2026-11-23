@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
 // INFERRED: function-local static with a non-trivial dtor (atexit thunk at 0x7fd3c0).
 // Layout from the stores: 3 dwords, then two bools (0, 1). Returns the object's address.

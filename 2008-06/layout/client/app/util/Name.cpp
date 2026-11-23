@@ -1,7 +1,25 @@
+// =============================================================================
+// Name.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/util/Name.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include <cstddef>
 
-namespace RBX {
-namespace RenderBase {
+namespace RBX
+{
+namespace RenderBase
+{
 // INFERRED: free function 00553f90 (AggregateChunk) used by 007f2bd0.
 int AggregateChunk(const char* name, int size);
 }
@@ -9,7 +27,7 @@ int AggregateChunk(const char* name, int size);
 
 void func_007f2bd0()
 {
-    *(volatile int*)0x00973ec4 = RBX::RenderBase::AggregateChunk((const char*)0x0080f7cc, 0xbb8);
+	*(volatile int*)0x00973ec4 = RBX::RenderBase::AggregateChunk((const char*)0x0080f7cc, 0xbb8);
 }
 
 #include "engine-world/v8world/World.h"
@@ -87,6 +105,8 @@ namespace RBX
 	template boost::shared_ptr<PhysicsService> Creatable<Instance>::create<PhysicsService>();
 }
 
+// Explicit instantiations: they give this file the same symbols as the original object,
+// where other files used them. Likely removable once the whole client links and those users exist.
 template class std::_Container_base_aux_alloc_real<std::allocator<RBX::PartInstance *> >;
 template class std::_Tree<std::_Tset_traits<RBX::PartInstance *,std::less<RBX::PartInstance *>,std::allocator<RBX::PartInstance *>,0> >;
 template class std::allocator<RBX::PartInstance *>;
@@ -115,7 +135,7 @@ void initMoo()
 static const RBX::Name* nullName;
 static void initNullName()
 {
-    nullName = &RBX::Name::declare("", 0);
+	nullName = &RBX::Name::declare("", 0);
 }
 
 namespace RBX
@@ -141,10 +161,10 @@ namespace RBX
 
 	const Name& Name::getNullName()
 	{
-        static boost::once_flag nullNameFlag = BOOST_ONCE_INIT;
-        boost::call_once(initNullName, nullNameFlag);
-        return *nullName;
-    }
+		static boost::once_flag nullNameFlag = BOOST_ONCE_INIT;
+		boost::call_once(initNullName, nullNameFlag);
+		return *nullName;
+	}
 
 	const Name& Name::declare(const char* sName, int dictionaryIndex)
 	{

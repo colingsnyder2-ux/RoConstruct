@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 #include <stdlib.h>
 
 // INFERRED: Script ctor (0x5c9f70) is thiscall with one stack arg; shared_ptr<Script,Deleter> ctor (0x5c92e0) is thiscall (ptr, deleter).

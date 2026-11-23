@@ -1,3 +1,19 @@
+// =============================================================================
+// jmemansi.c
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/ijg/jmemansi.c
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 /*
  * jmemansi.c
  *
@@ -95,10 +111,10 @@ read_backing_store (j_common_ptr cinfo, backing_store_ptr info,
 		    long file_offset, long byte_count)
 {
   if (fseek(info->temp_file, file_offset, SEEK_SET))
-    ERREXIT(cinfo, JERR_TFILE_SEEK);
+	ERREXIT(cinfo, JERR_TFILE_SEEK);
   if (JFREAD(info->temp_file, buffer_address, byte_count)
       != (size_t) byte_count)
-    ERREXIT(cinfo, JERR_TFILE_READ);
+	ERREXIT(cinfo, JERR_TFILE_READ);
 }
 
 METHODDEF(void)
@@ -107,10 +123,10 @@ write_backing_store (j_common_ptr cinfo, backing_store_ptr info,
 		     long file_offset, long byte_count)
 {
   if (fseek(info->temp_file, file_offset, SEEK_SET))
-    ERREXIT(cinfo, JERR_TFILE_SEEK);
+	ERREXIT(cinfo, JERR_TFILE_SEEK);
   if (JFWRITE(info->temp_file, buffer_address, byte_count)
       != (size_t) byte_count)
-    ERREXIT(cinfo, JERR_TFILE_WRITE);
+	ERREXIT(cinfo, JERR_TFILE_WRITE);
 }
 
 METHODDEF(void)
@@ -135,7 +151,7 @@ jpeg_open_backing_store (j_common_ptr cinfo, backing_store_ptr info,
 			 long total_bytes_needed)
 {
   if ((info->temp_file = _robustTmpfile()) == NULL)
-    ERREXITS(cinfo, JERR_TFILE_CREATE, "");
+	ERREXITS(cinfo, JERR_TFILE_CREATE, "");
   info->read_backing_store = read_backing_store;
   info->write_backing_store = write_backing_store;
   info->close_backing_store = close_backing_store;

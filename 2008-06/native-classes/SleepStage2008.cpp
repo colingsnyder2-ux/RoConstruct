@@ -584,11 +584,8 @@ namespace RBX
 // 0064a6c0 (registry func_0064a6c0; donor SleepStage::computeShouldSleep, RunningAverageState::update 00668a20 then
 // withinTolerance 00668af0) and 0064a950 (registry func_0064a950; donor SleepStage::shouldSleep with computeCanSleep
 // inline (0097abc1, canSleep ComputeProp +0x68), computeShouldSleep 0064a6c0 and preventNeighborSleep 0064a740 out of
-// line, getExternalEdges 005e6c70, otherAssembly 005e61b0). Blocked only by the declarations: native-headers/v8world/
-// SleepStage2008.h (not assigned) does not declare computeShouldSleep / shouldSleep; proposal filed with batch 42.
-// Measured against a scratch header with the two declarations and this macro: both bodies byte-exact (0064a6c0 122 B,
-// 0064a950 194 B). shouldSleep needs the named `other` local (inline call argument 220 B; one combined && test 230 B).
-#ifdef SLEEPSTAGE_HEADER_DECLARES_SHOULDSLEEP
+// line, getExternalEdges 005e6c70, otherAssembly 005e61b0). Declared by native-headers/v8world/SleepStage2008.h since
+// batch 46 (measured batch 42 against a scratch header: both bodies byte-exact, 0064a6c0 122 B, 0064a950 194 B). shouldSleep needs the named `other` local (inline call argument 220 B; one combined && test 230 B).
 namespace RBX
 {
 	bool SleepStage::computeShouldSleep(Assembly* a)
@@ -637,7 +634,6 @@ namespace RBX
 		return true;
 	}
 }
-#endif
 
 // 0064bc60 (registry func_0064bc60; donor SleepStage::stepJoints), 0064bd80 (func_0064bd80; donor stepAssembliesAwake)
 // and 0064be80 (func_0064be80; donor stepAssembliesSleepingChecking). 2008 keeps the donor function-local static
@@ -645,16 +641,12 @@ namespace RBX
 // stepJoints uses the vector at +0xb8 for changeJointState(vector) 0064b7f0 (SLEEPING 2), stepAssembliesAwake +0x40
 // for changeAssemblyState(vector) 0064b840 (SLEEPING_CHECKING 4), stepAssembliesSleepingChecking +0x28 (WAKE_PENDING
 // 2) and +0x10 (SLEEPING_DEEPLY 5). isMoving reads SleepInfo +0x18 behind a NULL test (states 3 / 1 / 2 in that
-// order) and atLeastOneAssemblyMoving takes getAssemblyNoCheck 005e7560 of both primitives. Blocked by
-// native-headers/v8world/SleepStage2008.h (not assigned): its INFERRED vector element types are wrong for +0x10 /
-// +0x28 / +0x40 (Assembly*), +0x70 / +0x88 / +0xa0 (Contact*) and +0xb8 (Joint*), and the step passes are not
-// declared; proposal filed with batch 42 (the header defines SLEEPSTAGE_HEADER_DECLARES_STEP_PASSES with them).
-// Measured against the scratch header: all three byte-exact (0064bc60 282 B needs the donor `JointSet::iterator it;`
+// order) and atLeastOneAssemblyMoving takes getAssemblyNoCheck 005e7560 of both primitives. The vector element types
+// and the step passes are declared by native-headers/v8world/SleepStage2008.h since batch 46. Measured batch 42: all three byte-exact (0064bc60 282 B needs the donor `JointSet::iterator it;`
 // declared before the loop: the for-init form swaps ebx / ebp, 281 B), and changeJointState(vector) 0064b7f0 /
 // changeAssemblyState(vector) 0064b840 become credited with the corrected element types. stepContacts 0064c280 is
 // parked: its canCollide test reads Primitive +0xa8 and +0xab (`!dragging && !flag_ab` per primitive, not the donor
 // getCanCollide +0xac), and Primitive2008.h has no accessor for +0xab whose meaning is evidenced (setter 005e75e0).
-#ifdef SLEEPSTAGE_HEADER_DECLARES_STEP_PASSES
 namespace RBX
 {
 	bool SleepStage::isMoving(Assembly* a)
@@ -755,4 +747,3 @@ namespace RBX
 		toDeep.resize(0);
 	}
 }
-#endif

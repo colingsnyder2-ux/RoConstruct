@@ -126,10 +126,8 @@ void CRenderSettings::setShadowMode(ShadowMode value)
 // Client/win/RenderSettings.cpp g_unk0x0091b48c).
 static const char* currentProfileName = "profiled5";
 
-#ifdef CRENDERSETTINGS_HEADER_DECLARES_CHECK_PROFILE
 // 004492d0 (thiscall ret 4; only caller CRobloxWnd::setDataModel 0045fa71 with false). Statement shape from the
-// 2007 analog FUN_0044d1b0; prop_profileName.getset +0x18 is 0096d52c.
-// Blocked: CRenderSettings.h (not this unit's file) must declare 'void checkProfile(bool force);' (INFERRED name).
+// 2007 analog FUN_0044d1b0; prop_profileName.getset +0x18 is 0096d52c. INFERRED: the name (declared in CRenderSettings.h).
 void CRenderSettings::checkProfile(bool force)
 {
     if (force || profileName != currentProfileName) {
@@ -142,7 +140,6 @@ void CRenderSettings::checkProfile(bool force)
         prop_profileName.setValue(this, currentProfileName);
     }
 }
-#endif
 
 // 004491b0.
 void CRenderSettings::setFrameRateManagerMode(FrameRateManagerMode value)

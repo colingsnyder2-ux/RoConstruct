@@ -1,3 +1,19 @@
+// =============================================================================
+// TwoDManager.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/rbxogre/TwoDManager.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "OgreRbxNode/TwoDManager2008.h"
 #include <OgreRoot.h>
 #include <OgreRenderSystem.h>
@@ -147,23 +163,23 @@ void TwoDManager::render() {
    unsigned n;
    float* out=buffer;
    if(batch.points==4) {
-    VERTEX(left,bottom,u0,v1) VERTEX(right,top,u1,v0) VERTEX(left,top,u0,v0)
-    VERTEX(left,bottom,u0,v1) VERTEX(right,top,u1,v0) VERTEX(right,bottom,u1,v1)
-    n=6;
+	VERTEX(left,bottom,u0,v1) VERTEX(right,top,u1,v0) VERTEX(left,top,u0,v0)
+	VERTEX(left,bottom,u0,v1) VERTEX(right,top,u1,v0) VERTEX(right,bottom,u1,v1)
+	n=6;
    } else {
-    VERTEXL(left,top,u0,v0)
-    if(batch.mode==0) {
+	VERTEXL(left,top,u0,v0)
+	if(batch.mode==0) {
      VERTEXF(right,top,u0,v0) VERTEX(right,top,u0,v0) VERTEX(right,bottom,u0,v0)
      VERTEX(right,bottom,u0,v0) VERTEX(left,bottom,u0,v0) VERTEX(left,bottom,u0,v0) VERTEXO(left,top,u0,v0)
      n=8;
-    } else {VERTEXOF(right,bottom,u0,v0) n=2;}
+	} else {VERTEXOF(right,bottom,u0,v0) n=2;}
    }
    batch.count+=n;
    buffer=out;
    i++;
    if(i==end || batch.texture!=i->texture || batch.points!=(*i).operationType) {
-    batches.push_back(batch);
-    if(i!=end) {batch.texture=i->texture; batch.points=i->operationType; batch.mode=i->mode; batch.count=0;}
+	batches.push_back(batch);
+	if(i!=end) {batch.texture=i->texture; batch.points=i->operationType; batch.mode=i->mode; batch.count=0;}
    }
  }
  vertexBuffer->unlock(); prepareRenderState();
@@ -176,17 +192,17 @@ void TwoDManager::render() {
   if(b->texture) {
    current=TextureManager::getSingleton().getByHandle((*b).texture);
    if(current.get()!=previous.get()) {
-    rs->_setTexture(0,true,current); rs->_setTextureMatrix(0,Matrix4::IDENTITY);
-    LayerBlendModeEx colour,alpha;
-    colour.blendType=LBT_COLOUR;
-    if(current->getName()=="ft0" || current->getFormat()==PF_A8) {
+	rs->_setTexture(0,true,current); rs->_setTextureMatrix(0,Matrix4::IDENTITY);
+	LayerBlendModeEx colour,alpha;
+	colour.blendType=LBT_COLOUR;
+	if(current->getName()=="ft0" || current->getFormat()==PF_A8) {
      colour.source2=LBS_DIFFUSE;colour.operation=LBX_SOURCE2;
-    }else {colour.source2=LBS_CURRENT;colour.operation=LBX_SOURCE1;}
-    colour.source1=LBS_TEXTURE;
-    previous=current;
-    alpha.blendType=LBT_ALPHA;alpha.source1=LBS_TEXTURE;alpha.source2=LBS_DIFFUSE;alpha.operation=LBX_SOURCE1;
-    rs->_setTextureBlendMode(0,colour);rs->_setTextureBlendMode(0,alpha);
-    rs->_setTextureUnitFiltering(0,FO_LINEAR,FO_LINEAR,FO_LINEAR);
+	}else {colour.source2=LBS_CURRENT;colour.operation=LBX_SOURCE1;}
+	colour.source1=LBS_TEXTURE;
+	previous=current;
+	alpha.blendType=LBT_ALPHA;alpha.source1=LBS_TEXTURE;alpha.source2=LBS_DIFFUSE;alpha.operation=LBX_SOURCE1;
+	rs->_setTextureBlendMode(0,colour);rs->_setTextureBlendMode(0,alpha);
+	rs->_setTextureUnitFiltering(0,FO_LINEAR,FO_LINEAR,FO_LINEAR);
    }
   }else {rs->_disableTextureUnit(0);previous.setNull();}
   renderOp.vertexData->vertexCount=b->count;renderOp.operationType=b->points;
@@ -246,7 +262,8 @@ template class std::allocator<std::_List_nod<Ogre::TwoDManager::Quad,std::alloca
 #undef OGRE_NONCLIENT_BUILD
 #include <OgreVertexIndexData.h>
 
-namespace Ogre {
+namespace Ogre
+{
 // INFERRED: method name from original target 006829a0 and TwoDManager::render caller.
 void TwoDManager::createVertexBuffer(unsigned int count) {
  renderOp.vertexData = new VertexData;
@@ -258,7 +275,11 @@ void TwoDManager::createVertexBuffer(unsigned int count) {
  declaration->addElement(0, offset, VET_COLOUR, VES_DIFFUSE);
  offset += VertexElement::getTypeSize(VET_COLOUR);
  declaration->addElement(0, offset, VET_FLOAT2, VES_TEXTURE_COORDINATES);
- vertexBuffer = HardwareBufferManager::getSingleton().createVertexBuffer(declaration->getVertexSize(0), count, HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY_DISCARDABLE, false);
+ vertexBuffer = HardwareBufferManager::getSingleton().createVertexBuffer(
+ 	declaration->getVertexSize(0),
+ 	count,
+ 	HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY_DISCARDABLE,
+ 	false);
  renderOp.vertexData->vertexBufferBinding->setBinding(0, vertexBuffer);
  renderOp.useIndexes = false;
  renderOp.operationType = RenderOperation::OT_TRIANGLE_LIST;

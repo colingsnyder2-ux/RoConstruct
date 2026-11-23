@@ -9,6 +9,7 @@
 // 004ca090 keeps the product on the x87 stack).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "Network/PhysicsSenders2008.h"
+#include "v8datamodel/PartInstance.h"  // complete PartInstance for shared_dynamic_cast 005d4080
 
 namespace RBX
 {
@@ -29,6 +30,25 @@ namespace RBX
 
 		PhysicsSender::~PhysicsSender()
 		{
+		}
+
+		// 004cd170 (registry placeholder func_004cd170; thiscall `ret 8`, bound by step 004cd920 through boost::bind and by
+		// the PhysicsService connection): shared_dynamic_cast<PartInstance> 005d4080 of the instance; the hashed index-0
+		// find 004cb340 (three-argument body with RBX::hash_value 004ca5b0 inlined, which is why it lives in this unit);
+		// when the part is not there, insert 004cc960 of PartItem(part) 004ca500 (by-value shared_ptr copy). The index-0
+		// reference local gives the null-checked container-to-index conversion of the original (as receivePacket 004c9120).
+		// Batch 46: IDENTICAL (385 B); credit blocked by the registry identity of its __ehhandler (007c99b8) and of the
+		// PartItem(shared_ptr) constructor 004ca500 (body proposed for PhysicsSenderRecovery_004cce00.cpp, which owns the
+		// .data float 0093cc40; measured 168 B with the same __ehhandler identity blocker). Rejected: `items.find(part) ==
+		// items.end()` (end() evaluated before find, 374 B); a container iterator local (no null-checked conversion).
+		void PhysicsSender::addPhysicsInstance(boost::shared_ptr<Instance> instance)
+		{
+			boost::shared_ptr<PartInstance> part = boost::shared_dynamic_cast<PartInstance>(instance);
+
+			PartItems::nth_index<0>::type& index = items.get<0>();
+			PartItems::nth_index<0>::type::iterator it = index.find(part);
+			if (it == index.end())
+				index.insert(PartItem(part));
 		}
 
 		InterpolatingPhysicsReceiver::InterpolatingPhysicsReceiver(Replicator* replicator)

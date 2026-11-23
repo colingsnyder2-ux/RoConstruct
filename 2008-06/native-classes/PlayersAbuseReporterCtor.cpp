@@ -1,6 +1,11 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-function-pod-vtable /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 // 2008-06 native RBX::Network::AbuseReporter constructor (inactive; original unit Network/Players.cpp). Flags copied
 // from NetworkPlayers.cpp / NetworkPlayersAbuseReporter.cpp (same original unit). Layout: native-headers/Network/Players.h.
+// /I{headers}/boost-function-pod-vtable (b46 hn03): the Boost 1.35 function_template.hpp inlines assign_to into the
+// function0<work_result>(bind_t) constructor 0049c440 (has_empty_target 0060a2f0, new(0x28) functor, stored vtable
+// 008229e0), which is then 162 B IDENTICAL with relocations masked (without it: 111 B calling a 190 B assign_to). It stays
+// uncredited: registry placeholders func_0049c440 (no candidate) and func_00497740 (the bind_t destructor it calls).
+// Exact set unchanged (49 -> 49 rows).
 #include "Network/Players.h"
 #include <boost/bind.hpp>
 

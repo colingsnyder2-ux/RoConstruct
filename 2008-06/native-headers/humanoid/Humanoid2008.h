@@ -186,6 +186,9 @@ namespace RBX
 		World* getWorld() const { return world; }
 		G3D::CoordinateFrame getTopOfHead() const;                            // 005d76a0
 		G3D::CoordinateFrame getRightArmGrip() const;                         // 005d7a30
+		// 005d7a90 (registry placeholder func_005d7a90; caller Tool::computeDesiredState 005fd460): openrbx / donor
+		// humanoid/Humanoid.h findRightArm (getParent()->findFirstChildByName("Right Arm") 00557950, no cast code).
+		PartInstance* findRightArm() const;                                   // 005d7a90
 		JointInstance* findRightShoulder() const;                             // 005d9010
 		void checkForJointDeath();                                            // 005dc6c0 (called by onEvent 005dc740)
 		void buildJoints();                                                   // 005d9340 (donor humanoid/Humanoid.h; caller

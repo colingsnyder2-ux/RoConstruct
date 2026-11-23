@@ -90,6 +90,11 @@ namespace RBX
 		// INFERRED: 0065abd0 passes Primitive::getFastFuzzyExtents (005e7a50) to 0065a950 (spatial node update, reads prim +0x64..+0x7c)
 		void onPrimitiveExtentsChanged(Primitive* p, const Extents& e);   // 0065a950
 		void onPrimitiveExtentsChanged(Primitive* p);                     // 0065abd0
+		// Donor SpatialHash.h names (openrbx): ContactManager::onPrimitiveAdded 0060cc30 / onPrimitiveRemoved 0060cc40 load
+		// spatialHash and tail-jump here (`ret 4` thiscall bodies; 0065a4e0 calls getFastFuzzyExtents 005e7a50 and the
+		// node insert 0065a220).
+		void onPrimitiveAdded(Primitive* p);                              // 0065a4e0
+		void onPrimitiveRemoved(Primitive* p);                            // 0065aac0
 		// 005e9170 World::getNumHashNodes / 005e9180 World::getMaxBucketSize read [[contactManager]+0x78] / +0x7c through
 		// these (donor SpatialHash.h names; the 2008 offsets of nodesOut / maxBucket above).
 		int getNodesOut() const
@@ -112,6 +117,11 @@ namespace RBX
 		void addTreePairs(SpatialTreeNode* tree, Primitive* p);                          // 00659a10
 		// 0065a220 (registry func_0065a220; donor SpatialHash::addNode extended to the 2008 grid levels).
 		void addNode(int level, Primitive* p, const Vector3int32& grid);
+		// 006593d0 (registry placeholder func_006593d0; thiscall `ret 8`, this unread; donor SpatialHash::shareCommonGrid
+		// in its 2008 grid-level form): compares the node levels (+0x20) of both primitives' first nodes (+0x64) and tests
+		// the old spatial boxes (+0x68 / +0x74) for overlap (00659330), the lower-level box first shifted to the other
+		// level (00659370). Body in native-classes/SpatialHash2008.cpp.
+		bool shareCommonGrid(Primitive* me, Primitive* other);
 
 	public:
 		static int gridSize;   // INFERRED (header-add): evidence: asm dword ptr [0x9625ac] loaded and shifted left by cl - byte-proved by 00659460

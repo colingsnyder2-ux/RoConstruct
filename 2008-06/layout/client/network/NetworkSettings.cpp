@@ -1,3 +1,19 @@
+// =============================================================================
+// NetworkSettings.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/network/NetworkSettings.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "Network/NetworkSettings.h"
 #include "reflection/enumconverter.h"
 #include <G3D/format.h>
@@ -53,24 +69,98 @@ namespace RBX
 		addPair(NetworkSettings::Interpolation, "Interpolation");
 	}
 
-	static Reflection::BoundProp<bool, 1> prop_PrintInstances("PrintInstances", "Diagnostics", &NetworkSettings::printInstances, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::BoundProp<bool, 1> prop_PrintProperties("PrintProperties", "Diagnostics", &NetworkSettings::printProperties, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::BoundProp<bool, 1> prop_PrintPacketBuffer("PrintPacketBuffer", "Diagnostics", &NetworkSettings::printPacketBuffer, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::BoundProp<bool, 1> prop_PrintPhysicsErrors("PrintPhysicsErrors", "Diagnostics", &NetworkSettings::printPhysicsErrors, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::BoundProp<bool, 1> prop_Test1("Test1", "Diagnostics", &NetworkSettings::test1, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::BoundProp<bool, 1> prop_Test2("Test2", "Diagnostics", &NetworkSettings::test2, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::BoundProp<bool, 1> prop_Test3("Test3", "Diagnostics", &NetworkSettings::test3, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::BoundProp<bool, 1> prop_Test4("Test4", "Diagnostics", &NetworkSettings::test4, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::BoundProp<int, 1> prop_MaxSendBPS("MaxSendBPS", "Simulator", &NetworkSettings::maxSendBPS, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::BoundProp<int, 1> prop_MinExtraPing("MinExtraPing", "Simulator", &NetworkSettings::minExtraPing, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::BoundProp<int, 1> prop_ExtraPingVariance("ExtraPingVariance", "Simulator", &NetworkSettings::extraPingVariance, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::EnumPropDescriptor<NetworkSettings, NetworkSettings::PhysicsSendMethod> prop_PhysicsSend("PhysicsSend", "Replication", &NetworkSettings::getPhysicsSendMethod, &NetworkSettings::setPhysicsSendMethod, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::EnumPropDescriptor<NetworkSettings, NetworkSettings::PhysicsReceiveMethod> prop_PhysicsReceive("PhysicsReceive", "Replication", &NetworkSettings::getPhysicsReceiveMethod, &NetworkSettings::setPhysicsReceiveMethod, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::BoundProp<int, 1> prop_PhysicsReplicationUpdateRate("PhysicsReplicationUpdateRate", "Replication", &NetworkSettings::physicsReplicationUpdateRate, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::BoundProp<int, 1> prop_MaxSendBuffer("MaxSendBuffer", "Replication", &NetworkSettings::maxSendBuffer, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::BoundProp<int, 1> prop_PhysicsMtuAdjust("PhysicsMtuAdjust", "Replication", &NetworkSettings::physicsMtuAdjust, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::BoundProp<int, 1> prop_ReplicationMtuAdjust("ReplicationMtuAdjust", "Replication", &NetworkSettings::replicationMtuAdjust, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::BoundProp<float, 1> prop_SendRate("SendRate", "Replication", &NetworkSettings::sendRate, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::BoundProp<bool, 1> prop_PrintInstances(
+		"PrintInstances",
+		"Diagnostics",
+		&NetworkSettings::printInstances,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::BoundProp<bool, 1> prop_PrintProperties(
+		"PrintProperties",
+		"Diagnostics",
+		&NetworkSettings::printProperties,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::BoundProp<bool, 1> prop_PrintPacketBuffer(
+		"PrintPacketBuffer",
+		"Diagnostics",
+		&NetworkSettings::printPacketBuffer,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::BoundProp<bool, 1> prop_PrintPhysicsErrors(
+		"PrintPhysicsErrors",
+		"Diagnostics",
+		&NetworkSettings::printPhysicsErrors,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::BoundProp<bool, 1> prop_Test1(
+		"Test1",
+		"Diagnostics",
+		&NetworkSettings::test1,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::BoundProp<bool, 1> prop_Test2(
+		"Test2",
+		"Diagnostics",
+		&NetworkSettings::test2,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::BoundProp<bool, 1> prop_Test3(
+		"Test3",
+		"Diagnostics",
+		&NetworkSettings::test3,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::BoundProp<bool, 1> prop_Test4(
+		"Test4",
+		"Diagnostics",
+		&NetworkSettings::test4,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::BoundProp<int, 1> prop_MaxSendBPS(
+		"MaxSendBPS",
+		"Simulator",
+		&NetworkSettings::maxSendBPS,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::BoundProp<int, 1> prop_MinExtraPing(
+		"MinExtraPing",
+		"Simulator",
+		&NetworkSettings::minExtraPing,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::BoundProp<int, 1> prop_ExtraPingVariance(
+		"ExtraPingVariance",
+		"Simulator",
+		&NetworkSettings::extraPingVariance,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::EnumPropDescriptor<NetworkSettings, NetworkSettings::PhysicsSendMethod> prop_PhysicsSend(
+		"PhysicsSend",
+		"Replication",
+		&NetworkSettings::getPhysicsSendMethod,
+		&NetworkSettings::setPhysicsSendMethod,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::EnumPropDescriptor<NetworkSettings, NetworkSettings::PhysicsReceiveMethod> prop_PhysicsReceive(
+		"PhysicsReceive",
+		"Replication",
+		&NetworkSettings::getPhysicsReceiveMethod,
+		&NetworkSettings::setPhysicsReceiveMethod,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::BoundProp<int, 1> prop_PhysicsReplicationUpdateRate(
+		"PhysicsReplicationUpdateRate",
+		"Replication",
+		&NetworkSettings::physicsReplicationUpdateRate,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::BoundProp<int, 1> prop_MaxSendBuffer(
+		"MaxSendBuffer",
+		"Replication",
+		&NetworkSettings::maxSendBuffer,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::BoundProp<int, 1> prop_PhysicsMtuAdjust(
+		"PhysicsMtuAdjust",
+		"Replication",
+		&NetworkSettings::physicsMtuAdjust,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::BoundProp<int, 1> prop_ReplicationMtuAdjust(
+		"ReplicationMtuAdjust",
+		"Replication",
+		&NetworkSettings::replicationMtuAdjust,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::BoundProp<float, 1> prop_SendRate(
+		"SendRate",
+		"Replication",
+		&NetworkSettings::sendRate,
+		Reflection::PropertyDescriptor::STANDARD);
 
 	NetworkSettings::NetworkSettings()
 		: printPhysicsErrors(false),
@@ -114,6 +204,8 @@ namespace RBX
 	}
 }
 
+// Explicit instantiations: they give this file the same symbols as the original object,
+// where other files used them. Likely removable once the whole client links and those users exist.
 template class RBX::AbstractFactoryProduct<RBX::Instance>;
 template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::NetworkSettings::PhysicsReceiveMethod>;
 template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::NetworkSettings::PhysicsSendMethod>;

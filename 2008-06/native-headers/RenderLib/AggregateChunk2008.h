@@ -82,8 +82,23 @@ namespace RBX
 			virtual G3D::ReferenceCountedPointer<MaterialBase> getMaterial() = 0;
 			virtual G3D::ReferenceCountedPointer<Mesh> getMesh() = 0;
 			virtual const G3D::CoordinateFrame& cframe() = 0;
+#ifdef CHUNK_HEADER_INLINES_SORT_VALUE
+			// Inline in the 2008 header: the Part constructor 004ebcc0 inlines the devirtualized pair (fld / fstp
+			// [esi+0x14]); 004e5b60 / 004e5b70 are their vtable copies. Transitional switch for units that need the
+			// inline form while SceneManager2008.cpp still defines them out of line (proposal: make this unconditional
+			// and drop those two definitions).
+			virtual void setSortValue(float value)                    // 004e5b60
+			{
+				sortValue = value;
+			}
+			virtual float getSortValue() const                        // 004e5b70
+			{
+				return sortValue;
+			}
+#else
 			virtual void setSortValue(float value);                   // 004e5b60
 			virtual float getSortValue() const;                       // 004e5b70
+#endif
 
 			// SimpleSceneManager::invalidateModel 004d7320 (inlined there)
 			void releaseEntity(); // Inline definition in SceneManager2008.cpp, its only caller unit.

@@ -1,3 +1,19 @@
+// =============================================================================
+// getOpenGLState.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/getOpenGLState.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #line 1 ".\\glg3dcpp\\getOpenGLState.cpp"
 /**
   @file getOpenGLState.cpp
@@ -13,127 +29,128 @@
 #include "GLG3D/GLCaps.h"
 #include "GLG3D/RenderDevice.h"
 
-namespace G3D {
+namespace G3D
+{
 
 size_t sizeOfGLFormat(GLenum format) {
-    switch (format) {
-    case GL_2_BYTES:
-        return 2;
+	switch (format) {
+	case GL_2_BYTES:
+		return 2;
 
-    case GL_3_BYTES:
-        return 3;
+	case GL_3_BYTES:
+		return 3;
 
-    case GL_4_BYTES:
-        return 4;
+	case GL_4_BYTES:
+		return 4;
 
-    case GL_DOUBLE:
-        return sizeof(double);
+	case GL_DOUBLE:
+		return sizeof(double);
 
-    case GL_FLOAT:
-        return sizeof(float);
+	case GL_FLOAT:
+		return sizeof(float);
 
-    case GL_FLOAT_VEC2_ARB:
-        return sizeof(float) * 2;
+	case GL_FLOAT_VEC2_ARB:
+		return sizeof(float) * 2;
 
-    case GL_FLOAT_VEC3_ARB:
-        return sizeof(float) * 3;
+	case GL_FLOAT_VEC3_ARB:
+		return sizeof(float) * 3;
 
-    case GL_FLOAT_VEC4_ARB:
-        return sizeof(float) * 4;
+	case GL_FLOAT_VEC4_ARB:
+		return sizeof(float) * 4;
 
-    case GL_FLOAT_MAT2_ARB:
-        return sizeof(float) * 4;
+	case GL_FLOAT_MAT2_ARB:
+		return sizeof(float) * 4;
 
-    case GL_FLOAT_MAT3_ARB:
-        return sizeof(float) * 9;
+	case GL_FLOAT_MAT3_ARB:
+		return sizeof(float) * 9;
 
-    case GL_FLOAT_MAT4_ARB:
-        return sizeof(float) * 16;
+	case GL_FLOAT_MAT4_ARB:
+		return sizeof(float) * 16;
 
-    case GL_UNSIGNED_SHORT:
-        return sizeof(unsigned short);
+	case GL_UNSIGNED_SHORT:
+		return sizeof(unsigned short);
 
-    case GL_SHORT:
-        return sizeof(short);
+	case GL_SHORT:
+		return sizeof(short);
 
-    case GL_UNSIGNED_INT:
-        return sizeof(unsigned int);
+	case GL_UNSIGNED_INT:
+		return sizeof(unsigned int);
 
-    case GL_INT:
-        return sizeof(int);
+	case GL_INT:
+		return sizeof(int);
 
-    case GL_INT_VEC2_ARB:
-        return sizeof(int) * 2;
+	case GL_INT_VEC2_ARB:
+		return sizeof(int) * 2;
 
-    case GL_INT_VEC3_ARB:
-        return sizeof(int) * 3;
+	case GL_INT_VEC3_ARB:
+		return sizeof(int) * 3;
 
-    case GL_INT_VEC4_ARB:
-        return sizeof(int) * 4;
+	case GL_INT_VEC4_ARB:
+		return sizeof(int) * 4;
 
-    case GL_UNSIGNED_BYTE:
-        return 1;
+	case GL_UNSIGNED_BYTE:
+		return 1;
 
-    case GL_BYTE:
-        return 1;
+	case GL_BYTE:
+		return 1;
 
-    default:
-        return 0;
-    }
+	default:
+		return 0;
+	}
 }
 
 GLint glGetTexParameteri(GLenum target, GLenum pname) {
-    GLint result;
-    glGetTexParameteriv(target, pname, &result);
-    return result;
+	GLint result;
+	glGetTexParameteriv(target, pname, &result);
+	return result;
 }
 
 GLint glGetInteger(GLenum which) {
-    // We allocate an array in case the caller accidentally
-    // invoked on a value that will return more than just
-    // one integer.
-    GLint result[32];
-    glGetIntegerv(which, result);
-    return result[0];
+	// We allocate an array in case the caller accidentally
+	// invoked on a value that will return more than just
+	// one integer.
+	GLint result[32];
+	glGetIntegerv(which, result);
+	return result[0];
 }
 
 GLfloat glGetFloat(GLenum which) {
-    // We allocate an array in case the caller accidentally
-    // invoked on a value that will return more than just
-    // one float.
-    GLfloat result[32];
-    glGetFloatv(which, result);
-    return result[0];
+	// We allocate an array in case the caller accidentally
+	// invoked on a value that will return more than just
+	// one float.
+	GLfloat result[32];
+	glGetFloatv(which, result);
+	return result[0];
 }
 
 GLboolean glGetBoolean(GLenum which) {
-    // We allocate an array in case the caller accidentally
-    // invoked on a value that will return more than just
-    // one bool.
-    GLboolean result[32];
-    glGetBooleanv(which, result);
-    return result[0];
+	// We allocate an array in case the caller accidentally
+	// invoked on a value that will return more than just
+	// one bool.
+	GLboolean result[32];
+	glGetBooleanv(which, result);
+	return result[0];
 }
 
 GLdouble glGetDouble(GLenum which) {
-    // We allocate an array in case the caller accidentally
-    // invoked on a value that will return more than just
-    // one double.
-    GLdouble result[32];
-    glGetDoublev(which, result);
-    return result[0];
+	// We allocate an array in case the caller accidentally
+	// invoked on a value that will return more than just
+	// one double.
+	GLdouble result[32];
+	glGetDoublev(which, result);
+	return result[0];
 }
 
 static std::string getClippingState() {
 	std::string result;
 
-    int numPlanes = glGetInteger(GL_MAX_CLIP_PLANES);
+	int numPlanes = glGetInteger(GL_MAX_CLIP_PLANES);
 	int C;
 
 	for(C = 0; C < numPlanes; C++) {
 		result += format("// Clip plane %d\n", C);
 
-        result += format("%s(GL_CLIP_PLANE0 + %d);\n", glIsEnabled(GL_CLIP_PLANE0 + C) ? "glEnable" : "glDisable", C);
+		result += format("%s(GL_CLIP_PLANE0 + %d);\n", glIsEnabled(GL_CLIP_PLANE0 + C) ? "glEnable" : "glDisable", C);
 
 		double x[4];
 		glGetClipPlane(GL_CLIP_PLANE0 + C, x);
@@ -145,83 +162,83 @@ static std::string getClippingState() {
 }
 
 static std::string getLightingState(bool showDisabled) {
-    std::string result;
-    int L;
+	std::string result;
+	int L;
 
-    if (glIsEnabled(GL_LIGHTING)) {
-        result += "glEnable(GL_LIGHTING);\n";
-    } else {
-        result += "glDisable(GL_LIGHTING);\n";
-        if (! showDisabled) {
-            return result;
-        }
-    }
+	if (glIsEnabled(GL_LIGHTING)) {
+		result += "glEnable(GL_LIGHTING);\n";
+	} else {
+		result += "glDisable(GL_LIGHTING);\n";
+		if (! showDisabled) {
+			return result;
+		}
+	}
 
-    for (L = 0; L < 8; L++) {
-        result += format("// Light %d\n", L);
-        if (glIsEnabled(GL_LIGHT0 + L)) {
-            result += format("glEnable(GL_LIGHT0 + %d);\n", L);
-        } else {
-            result += format("glDisable(GL_LIGHT0 + %d);\n", L);
-        }
+	for (L = 0; L < 8; L++) {
+		result += format("// Light %d\n", L);
+		if (glIsEnabled(GL_LIGHT0 + L)) {
+			result += format("glEnable(GL_LIGHT0 + %d);\n", L);
+		} else {
+			result += format("glDisable(GL_LIGHT0 + %d);\n", L);
+		}
 
-        if (showDisabled || glIsEnabled(GL_LIGHT0 + L)) {
-            float x[4];
-            glGetLightfv(GL_LIGHT0 + L, GL_POSITION, x);
-            result += format("{float pos[]={%4.4ff, %4.4ff, %4.4ff, %4.4ff};\nglLightfv(GL_LIGHT0 + %d, GL_POSITION, pos);}\n",
+		if (showDisabled || glIsEnabled(GL_LIGHT0 + L)) {
+			float x[4];
+			glGetLightfv(GL_LIGHT0 + L, GL_POSITION, x);
+			result += format("{float pos[]={%4.4ff, %4.4ff, %4.4ff, %4.4ff};\nglLightfv(GL_LIGHT0 + %d, GL_POSITION, pos);}\n",
                   x[0], x[1], x[2], x[3], L);
 
-            glGetLightfv(GL_LIGHT0 + L, GL_AMBIENT, x);
-            result += format("{float col[]={%4.4ff, %4.4ff, %4.4ff, %4.4ff};\nglLightfv(GL_LIGHT0 + %d, GL_AMBIENT, col);}\n",
+			glGetLightfv(GL_LIGHT0 + L, GL_AMBIENT, x);
+			result += format("{float col[]={%4.4ff, %4.4ff, %4.4ff, %4.4ff};\nglLightfv(GL_LIGHT0 + %d, GL_AMBIENT, col);}\n",
                   x[0], x[1], x[2], x[3], L);
 
-            glGetLightfv(GL_LIGHT0 + L, GL_DIFFUSE, x);
-            result += format("{float col[]={%4.4ff, %4.4ff, %4.4ff, %4.4ff};\nglLightfv(GL_LIGHT0 + %d, GL_DIFFUSE, col);}\n",
+			glGetLightfv(GL_LIGHT0 + L, GL_DIFFUSE, x);
+			result += format("{float col[]={%4.4ff, %4.4ff, %4.4ff, %4.4ff};\nglLightfv(GL_LIGHT0 + %d, GL_DIFFUSE, col);}\n",
                   x[0], x[1], x[2], x[3], L);
 
-            glGetLightfv(GL_LIGHT0 + L, GL_SPECULAR, x);
-            result += format("{float col[]={%4.4ff, %4.4ff, %4.4ff, %4.4ff};\nglLightfv(GL_LIGHT0 + %d, GL_SPECULAR, col);}\n",
+			glGetLightfv(GL_LIGHT0 + L, GL_SPECULAR, x);
+			result += format("{float col[]={%4.4ff, %4.4ff, %4.4ff, %4.4ff};\nglLightfv(GL_LIGHT0 + %d, GL_SPECULAR, col);}\n",
                   x[0], x[1], x[2], x[3], L);
 
-            glGetLightfv(GL_LIGHT0 + L, GL_CONSTANT_ATTENUATION, x);
-            result += format("glLightf (GL_LIGHT0 + %d, GL_CONSTANT_ATTENUATION,  %ff);\n",
+			glGetLightfv(GL_LIGHT0 + L, GL_CONSTANT_ATTENUATION, x);
+			result += format("glLightf (GL_LIGHT0 + %d, GL_CONSTANT_ATTENUATION,  %ff);\n",
                   L, x[0]);
 
-            glGetLightfv(GL_LIGHT0 + L, GL_LINEAR_ATTENUATION, x);
-            result += format("glLightf (GL_LIGHT0 + %d, GL_LINEAR_ATTENUATION,    %ff);\n",
+			glGetLightfv(GL_LIGHT0 + L, GL_LINEAR_ATTENUATION, x);
+			result += format("glLightf (GL_LIGHT0 + %d, GL_LINEAR_ATTENUATION,    %ff);\n",
                   L, x[0]);
 
-            glGetLightfv(GL_LIGHT0 + L, GL_QUADRATIC_ATTENUATION, x);
-            result += format("glLightf (GL_LIGHT0 + %d, GL_QUADRATIC_ATTENUATION, %ff);\n",
+			glGetLightfv(GL_LIGHT0 + L, GL_QUADRATIC_ATTENUATION, x);
+			result += format("glLightf (GL_LIGHT0 + %d, GL_QUADRATIC_ATTENUATION, %ff);\n",
                   L, x[0]);
-        }
+		}
 
-        result += "\n";
-    }
+		result += "\n";
+	}
 
-    // Ambient
-    result += "// Ambient\n";
-    float x[4];
-    glGetFloatv(GL_LIGHT_MODEL_AMBIENT, x);
-    result += format("{float col[] = {%ff, %ff, %ff, %ff};\n glLightModelfv(GL_LIGHT_MODEL_AMBIENT, col);}\n",
-        x[0], x[1], x[2], x[3]);
+	// Ambient
+	result += "// Ambient\n";
+	float x[4];
+	glGetFloatv(GL_LIGHT_MODEL_AMBIENT, x);
+	result += format("{float col[] = {%ff, %ff, %ff, %ff};\n glLightModelfv(GL_LIGHT_MODEL_AMBIENT, col);}\n",
+		x[0], x[1], x[2], x[3]);
 
-    result += "\n";
+	result += "\n";
 
-    return result;
+	return result;
 }
 
 static std::string getOneMatrixState(GLenum getWhich, GLenum which) {
 
-    std::string matrixName = GLenumToString(which);
+	std::string matrixName = GLenumToString(which);
 
-    GLdouble m[16];
-    glGetDoublev(getWhich, m);
+	GLdouble m[16];
+	glGetDoublev(getWhich, m);
 
-    std::string result = std::string("{glMatrixMode(") + matrixName + ");\n";
+	std::string result = std::string("{glMatrixMode(") + matrixName + ");\n";
 
-    result +=
-        format(" GLdouble m[16] = {%3.3f, %3.3f, %3.3f, %3.3f,\n"
+	result +=
+		format(" GLdouble m[16] = {%3.3f, %3.3f, %3.3f, %3.3f,\n"
                "                   %3.3f, %3.3f, %3.3f, %3.3f,\n"
                "                   %3.3f, %3.3f, %3.3f, %3.3f,\n"
                "                   %3.3f, %3.3f, %3.3f, %3.3f};\n",
@@ -229,147 +246,147 @@ static std::string getOneMatrixState(GLenum getWhich, GLenum which) {
                m[4], m[5], m[6], m[7],
                m[8], m[9], m[10], m[11],
                m[12], m[13], m[14], m[15]);
-    result += " glLoadMatrixd(m);}\n\n";
+	result += " glLoadMatrixd(m);}\n\n";
 
-    return result;
+	return result;
 }
 
 static std::string getMatrixState() {
-    std::string result;
+	std::string result;
 
-    result += getOneMatrixState(GL_MODELVIEW_MATRIX, GL_MODELVIEW);
-    result += getOneMatrixState(GL_PROJECTION_MATRIX, GL_PROJECTION);
+	result += getOneMatrixState(GL_MODELVIEW_MATRIX, GL_MODELVIEW);
+	result += getOneMatrixState(GL_PROJECTION_MATRIX, GL_PROJECTION);
 
-    // Get the matrix mode
-    result += std::string("glMatrixMode(") + GLenumToString(glGetInteger(GL_MATRIX_MODE)) + ");\n\n";
+	// Get the matrix mode
+	result += std::string("glMatrixMode(") + GLenumToString(glGetInteger(GL_MATRIX_MODE)) + ");\n\n";
 
-    return result;
+	return result;
 }
 
 static std::string getTextureState(bool showDisabled) {
 
-    std::string result;
-    GLenum pname[]  = {GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T, GL_TEXTURE_WRAP_R};
-    GLenum tname[]  = {GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_3D};
-    GLenum tname2[] = {GL_TEXTURE_BINDING_1D, GL_TEXTURE_BINDING_2D, GL_TEXTURE_BINDING_3D};
+	std::string result;
+	GLenum pname[]  = {GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T, GL_TEXTURE_WRAP_R};
+	GLenum tname[]  = {GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_3D};
+	GLenum tname2[] = {GL_TEXTURE_BINDING_1D, GL_TEXTURE_BINDING_2D, GL_TEXTURE_BINDING_3D};
 
-    // Let's check the multitexture availability
-    if (!GLCaps::supports_GL_ARB_multitexture()) {
+	// Let's check the multitexture availability
+	if (!GLCaps::supports_GL_ARB_multitexture()) {
 
-        result += format("//NO MULTITEXTURE\n");
+		result += format("//NO MULTITEXTURE\n");
 
-        // See if the texture unit is enabled
-        bool enabled = false;
-        for (int tt = 0; tt < 3; ++tt)
-            enabled = enabled || (glGetBoolean(tname[tt]) ? true : false);
+		// See if the texture unit is enabled
+		bool enabled = false;
+		for (int tt = 0; tt < 3; ++tt)
+			enabled = enabled || (glGetBoolean(tname[tt]) ? true : false);
 
-        if (!enabled && !showDisabled) {
-            for (int tt = 0; tt < 3; ++tt)
-                result += format("glDisable(%s); ", GLenumToString(tname[tt]));
-            result += "\n";
-        } else {
-            for (int tt = 0; tt < 3; ++tt) {
+		if (!enabled && !showDisabled) {
+			for (int tt = 0; tt < 3; ++tt)
+				result += format("glDisable(%s); ", GLenumToString(tname[tt]));
+			result += "\n";
+		} else {
+			for (int tt = 0; tt < 3; ++tt) {
 
-                bool on = glGetBoolean(tname[tt]) ? true : false;
-                result += format("%s(%s);\n",
-                    on ? "glEnable" : "glDisable",
-                    GLenumToString(tname[tt]));
+				bool on = glGetBoolean(tname[tt]) ? true : false;
+				result += format("%s(%s);\n",
+					on ? "glEnable" : "glDisable",
+					GLenumToString(tname[tt]));
 
-                if (showDisabled || on) {
-                    result += format("glBindTexture(%s, %d);\n",
-                        GLenumToString(tname[tt]),
-                        glGetInteger(tname2[tt]));
+				if (showDisabled || on) {
+					result += format("glBindTexture(%s, %d);\n",
+						GLenumToString(tname[tt]),
+						glGetInteger(tname2[tt]));
 
-                    for (int p = 0; p < 3; ++p) {
-                        result += format("glTexParameteri(%s, %s, %s);\n",
-                            GLenumToString(tname[tt]),
-                            GLenumToString(pname[p]),
-                            GLenumToString(glGetTexParameteri(tname[tt], pname[p])));
-                    }
+					for (int p = 0; p < 3; ++p) {
+						result += format("glTexParameteri(%s, %s, %s);\n",
+							GLenumToString(tname[tt]),
+							GLenumToString(pname[p]),
+							GLenumToString(glGetTexParameteri(tname[tt], pname[p])));
+					}
 
-                    result += "\n";
-                }
-            }
+					result += "\n";
+				}
+			}
 
-            // TODO: texture environment
+			// TODO: texture environment
 
-            GLdouble v[4];
-            glGetDoublev(GL_CURRENT_TEXTURE_COORDS, v);
-            result += format("glTexCoord4dARB(%g, %g, %g, %g);\n", v[0], v[1], v[2], v[3]);
+			GLdouble v[4];
+			glGetDoublev(GL_CURRENT_TEXTURE_COORDS, v);
+			result += format("glTexCoord4dARB(%g, %g, %g, %g);\n", v[0], v[1], v[2], v[3]);
 
-            result += getOneMatrixState(GL_TEXTURE_MATRIX, GL_TEXTURE);
-            result += "\n";
-        }
+			result += getOneMatrixState(GL_TEXTURE_MATRIX, GL_TEXTURE);
+			result += "\n";
+		}
 
-        return result;
-    }
+		return result;
+	}
 
-    //=============
-    //multitexture
-    //=============
-    int numUnits = glGetInteger(GL_MAX_TEXTURE_UNITS_ARB);
-    int active = glGetInteger(GL_ACTIVE_TEXTURE_ARB);
+	//=============
+	//multitexture
+	//=============
+	int numUnits = glGetInteger(GL_MAX_TEXTURE_UNITS_ARB);
+	int active = glGetInteger(GL_ACTIVE_TEXTURE_ARB);
 
-    // Iterate over all of the texture units
-    for (int t = 0; t < numUnits; ++t) {
+	// Iterate over all of the texture units
+	for (int t = 0; t < numUnits; ++t) {
 
-        result += format("// Texture Unit %d\n", t);
-        result += format("glActiveTextureARB(GL_TEXTURE0_ARB + %d);\n", t);
-        glActiveTextureARB(GL_TEXTURE0_ARB + t);
+		result += format("// Texture Unit %d\n", t);
+		result += format("glActiveTextureARB(GL_TEXTURE0_ARB + %d);\n", t);
+		glActiveTextureARB(GL_TEXTURE0_ARB + t);
 
-        // See if this unit is on
-        bool enabled = false;
-        for (int tt = 0; tt < 3; ++tt) {
-            enabled = enabled || (glGetBoolean(tname[tt]) ? true : false);
-        }
+		// See if this unit is on
+		bool enabled = false;
+		for (int tt = 0; tt < 3; ++tt) {
+			enabled = enabled || (glGetBoolean(tname[tt]) ? true : false);
+		}
 
-        if (! enabled && ! showDisabled) {
-            for (int tt = 0; tt < 3; ++tt) {
-                result += format("glDisable(%s); ",
-                    GLenumToString(tname[tt]));
-            }
+		if (! enabled && ! showDisabled) {
+			for (int tt = 0; tt < 3; ++tt) {
+				result += format("glDisable(%s); ",
+					GLenumToString(tname[tt]));
+			}
 
-            result += "\n";
-        } else {
-            for (int tt = 0; tt < 3; ++tt) {
+			result += "\n";
+		} else {
+			for (int tt = 0; tt < 3; ++tt) {
 
-                bool on = glGetBoolean(tname[tt]) ? true : false;
-                result += format("%s(%s);\n",
-                    on ? "glEnable" : "glDisable",
-                    GLenumToString(tname[tt]));
+				bool on = glGetBoolean(tname[tt]) ? true : false;
+				result += format("%s(%s);\n",
+					on ? "glEnable" : "glDisable",
+					GLenumToString(tname[tt]));
 
-                if (showDisabled || on) {
-                    result += format("glBindTexture(%s, %d);\n",
-                        GLenumToString(tname[tt]),
-                        glGetInteger(tname2[tt]));
+				if (showDisabled || on) {
+					result += format("glBindTexture(%s, %d);\n",
+						GLenumToString(tname[tt]),
+						glGetInteger(tname2[tt]));
 
-                    for (int p = 0; p < 3; ++p) {
-                        result += format("glTexParameteri(%s, %s, %s);\n",
-                            GLenumToString(tname[tt]),
-                            GLenumToString(pname[p]),
-                            GLenumToString(glGetTexParameteri(tname[tt], pname[p])));
-                    }
+					for (int p = 0; p < 3; ++p) {
+						result += format("glTexParameteri(%s, %s, %s);\n",
+							GLenumToString(tname[tt]),
+							GLenumToString(pname[p]),
+							GLenumToString(glGetTexParameteri(tname[tt], pname[p])));
+					}
 
-                    result += "\n";
-                }
-            }
+					result += "\n";
+				}
+			}
 
-            // TODO: texture environment
+			// TODO: texture environment
 
-            GLdouble v[4];
-            glGetDoublev(GL_CURRENT_TEXTURE_COORDS, v);
-            result += format("glMultiTexCoord4dARB(GL_TEXTURE0_ARB + %d, %g, %g, %g, %g);\n", t, v[0], v[1], v[2], v[3]);
+			GLdouble v[4];
+			glGetDoublev(GL_CURRENT_TEXTURE_COORDS, v);
+			result += format("glMultiTexCoord4dARB(GL_TEXTURE0_ARB + %d, %g, %g, %g, %g);\n", t, v[0], v[1], v[2], v[3]);
 
-            result += getOneMatrixState(GL_TEXTURE_MATRIX, GL_TEXTURE);
-            result += "\n";
-        }
-    }
+			result += getOneMatrixState(GL_TEXTURE_MATRIX, GL_TEXTURE);
+			result += "\n";
+		}
+	}
 
-    // Restore the active texture unit
-    glActiveTextureARB(active);
-    result += format("glActiveTextureARB(GL_TEXTURE0_ARB + %d);\n\n", active - GL_TEXTURE0_ARB);
+	// Restore the active texture unit
+	glActiveTextureARB(active);
+	result += format("glActiveTextureARB(GL_TEXTURE0_ARB + %d);\n\n", active - GL_TEXTURE0_ARB);
 
-    return result;
+	return result;
 }
 
 static std::string enableEntry(GLenum which) {
@@ -378,44 +395,44 @@ static std::string enableEntry(GLenum which) {
 }
 
 std::string getOpenGLState(bool showDisabled) {
-    {
-        glGetInteger(GL_BLEND);
-        debugAssertM(glGetError() != GL_INVALID_OPERATION,
+	{
+		glGetInteger(GL_BLEND);
+		debugAssertM(glGetError() != GL_INVALID_OPERATION,
              "Can't call getOpenGLState between glBegin() and glEnd()");
-    }
+	}
 
-    // The implementation has to be careful not to disrupt any OpenGL state and
-    // to produce output code that sets values that interact (e.g. lighting and modelview matrix) in an order
-    // so they produce the same results as currently in memory.
+	// The implementation has to be careful not to disrupt any OpenGL state and
+	// to produce output code that sets values that interact (e.g. lighting and modelview matrix) in an order
+	// so they produce the same results as currently in memory.
 
-    std::string result;
+	std::string result;
 
-    result += "///////////////////////////////////////////////////////////////////\n";
-    result += "//                         Matrices                              //\n\n";
-    result += getMatrixState();
+	result += "///////////////////////////////////////////////////////////////////\n";
+	result += "//                         Matrices                              //\n\n";
+	result += getMatrixState();
 
-    result += "///////////////////////////////////////////////////////////////////\n";
-    result += "//                         Lighting                              //\n\n";
-    result += getLightingState(showDisabled);
+	result += "///////////////////////////////////////////////////////////////////\n";
+	result += "//                         Lighting                              //\n\n";
+	result += getLightingState(showDisabled);
 
-    result += "///////////////////////////////////////////////////////////////////\n";
-    result += "//                         Clipping                              //\n\n";
-    result += getClippingState();
+	result += "///////////////////////////////////////////////////////////////////\n";
+	result += "//                         Clipping                              //\n\n";
+	result += getClippingState();
 
-    result += "///////////////////////////////////////////////////////////////////\n";
-    result += "//                         Textures                              //\n\n";
+	result += "///////////////////////////////////////////////////////////////////\n";
+	result += "//                         Textures                              //\n\n";
 
-    result += getTextureState(showDisabled);
+	result += getTextureState(showDisabled);
 
-    result += "///////////////////////////////////////////////////////////////////\n";
-    result += "//                          Other                                //\n\n";
+	result += "///////////////////////////////////////////////////////////////////\n";
+	result += "//                          Other                                //\n\n";
 
-    GLdouble d[4];
+	GLdouble d[4];
 	GLboolean b[4];
 
-    // Viewport
-    glGetDoublev(GL_VIEWPORT, d);
-    result += format("glViewport(%g, %g, %g, %g);\n\n", d[0], d[1], d[2], d[3]);
+	// Viewport
+	glGetDoublev(GL_VIEWPORT, d);
+	result += format("glViewport(%g, %g, %g, %g);\n\n", d[0], d[1], d[2], d[3]);
 
 	//color
 	result += enableEntry(GL_COLOR_ARRAY);
@@ -423,9 +440,9 @@ std::string getOpenGLState(bool showDisabled) {
 	result += enableEntry(GL_COLOR_MATERIAL);
 
 	glGetDoublev(GL_COLOR_CLEAR_VALUE, d);
-    result += format("glClearColor(%g, %g, %g, %g);\n", d[0], d[1], d[2], d[3]);
-    glGetDoublev(GL_CURRENT_COLOR, d);
-    result += format("glColor4d(%g, %g, %g, %g);\n", d[0], d[1], d[2], d[3]);
+	result += format("glClearColor(%g, %g, %g, %g);\n", d[0], d[1], d[2], d[3]);
+	glGetDoublev(GL_CURRENT_COLOR, d);
+	result += format("glColor4d(%g, %g, %g, %g);\n", d[0], d[1], d[2], d[3]);
 	glGetBooleanv(GL_COLOR_WRITEMASK, b);
 	result += format("glColorMask(%d, %d, %d, %d);\n", b[0], b[1], b[2], b[3]);
 
@@ -434,106 +451,106 @@ std::string getOpenGLState(bool showDisabled) {
 	//blend
 	result += enableEntry(GL_BLEND);
 
-    if (showDisabled || glGetBoolean(GL_BLEND)) {
+	if (showDisabled || glGetBoolean(GL_BLEND)) {
 	    result += format("glBlendFunc(%s, %s);\n",
-            GLenumToString(glGetInteger(GL_BLEND_DST)),
-            GLenumToString(glGetInteger(GL_BLEND_SRC)));
+			GLenumToString(glGetInteger(GL_BLEND_DST)),
+			GLenumToString(glGetInteger(GL_BLEND_SRC)));
     	result += format("\n");
-    }
+	}
 
 	//alpha
 	result += enableEntry(GL_ALPHA_TEST);
 
-    if (showDisabled || glGetBoolean(GL_ALPHA_TEST)) {
+	if (showDisabled || glGetBoolean(GL_ALPHA_TEST)) {
 	    result += format("glAlphaFunc(%s, %g);\n",
 		    GLenumToString(glGetInteger(GL_ALPHA_TEST_FUNC)),
 		    glGetDouble(GL_ALPHA_TEST_REF));
     	result += format("\n");
-    }
+	}
 
 	//depth stuff
-    result += "///////////////////////////////////////////////////////////////////\n";
-    result += "//                      Depth Buffer                             //\n\n";
+	result += "///////////////////////////////////////////////////////////////////\n";
+	result += "//                      Depth Buffer                             //\n\n";
 	result += enableEntry(GL_DEPTH_TEST);
-    if (showDisabled || glGetBoolean(GL_DEPTH_TEST)) {
+	if (showDisabled || glGetBoolean(GL_DEPTH_TEST)) {
 	    result += format("glDepthFunc(%s);\n",
-            GLenumToString(glGetInteger(GL_DEPTH_FUNC)));
-    }
+			GLenumToString(glGetInteger(GL_DEPTH_FUNC)));
+	}
 
 	result += format("glClearDepth(%g);\n", glGetDouble(GL_DEPTH_CLEAR_VALUE));
 	result += format("glDepthMask(%d);\n", glGetBoolean(GL_DEPTH_WRITEMASK));
 
-    {
-        Vector2 range = glGetVector2(GL_DEPTH_RANGE);
+	{
+		Vector2 range = glGetVector2(GL_DEPTH_RANGE);
     	result += format("glDepthRange(%g, %g);\n", range.x, range.y);
-    }
+	}
 
 	result += format("\n");
 
 	//stencil stuff
-    result += "///////////////////////////////////////////////////////////////////////\n";
-    result += "// Stencil\n\n";
+	result += "///////////////////////////////////////////////////////////////////////\n";
+	result += "// Stencil\n\n";
 
 	result += enableEntry(GL_STENCIL_TEST);
 
-    result += format("glClearStencil(0x%x);\n", glGetInteger(GL_STENCIL_CLEAR_VALUE));
+	result += format("glClearStencil(0x%x);\n", glGetInteger(GL_STENCIL_CLEAR_VALUE));
 
-    if (GLCaps::supports_GL_EXT_stencil_two_side()) {
-        result += "glActiveStencilFaceEXT(GL_BACK);\n";
-        glActiveStencilFaceEXT(GL_BACK);
-    }
+	if (GLCaps::supports_GL_EXT_stencil_two_side()) {
+		result += "glActiveStencilFaceEXT(GL_BACK);\n";
+		glActiveStencilFaceEXT(GL_BACK);
+	}
 
-    if (showDisabled || glGetBoolean(GL_STENCIL_TEST))
-        result += format(
-            "glStencilFunc(%s, %d, %d);\n",
-            GLenumToString(glGetInteger(GL_STENCIL_FUNC)),
-            glGetInteger(GL_STENCIL_REF),
+	if (showDisabled || glGetBoolean(GL_STENCIL_TEST))
+		result += format(
+			"glStencilFunc(%s, %d, %d);\n",
+			GLenumToString(glGetInteger(GL_STENCIL_FUNC)),
+			glGetInteger(GL_STENCIL_REF),
 		    glGetInteger(GL_STENCIL_VALUE_MASK));
 
 	result += format(
-        "glStencilOp(%s, %s, %s);\n",
+		"glStencilOp(%s, %s, %s);\n",
 		GLenumToString(glGetInteger(GL_STENCIL_FAIL)),
 		GLenumToString(glGetInteger(GL_STENCIL_PASS_DEPTH_FAIL)),
 		GLenumToString(glGetInteger(GL_STENCIL_PASS_DEPTH_PASS)));
 
-    result += format("glStencilMask(0x%x);\n", glGetInteger(GL_STENCIL_WRITEMASK));
+	result += format("glStencilMask(0x%x);\n", glGetInteger(GL_STENCIL_WRITEMASK));
 
-    if (GLCaps::supports_GL_EXT_stencil_two_side()) {
-        result += "\nglActiveStencilFaceEXT(GL_FRONT);\n";
-        glActiveStencilFaceEXT(GL_FRONT);
+	if (GLCaps::supports_GL_EXT_stencil_two_side()) {
+		result += "\nglActiveStencilFaceEXT(GL_FRONT);\n";
+		glActiveStencilFaceEXT(GL_FRONT);
 
-        if (showDisabled || glGetBoolean(GL_STENCIL_TEST))
-            result += format(
-                "glStencilFunc(%s, %d, %d);\n",
-                GLenumToString(glGetInteger(GL_STENCIL_FUNC)),
-                glGetInteger(GL_STENCIL_REF),
+		if (showDisabled || glGetBoolean(GL_STENCIL_TEST))
+			result += format(
+				"glStencilFunc(%s, %d, %d);\n",
+				GLenumToString(glGetInteger(GL_STENCIL_FUNC)),
+				glGetInteger(GL_STENCIL_REF),
 		        glGetInteger(GL_STENCIL_VALUE_MASK));
 
 	    result += format(
-            "glStencilOp(%s, %s, %s);\n",
+			"glStencilOp(%s, %s, %s);\n",
 		    GLenumToString(glGetInteger(GL_STENCIL_FAIL)),
 		    GLenumToString(glGetInteger(GL_STENCIL_PASS_DEPTH_FAIL)),
 		    GLenumToString(glGetInteger(GL_STENCIL_PASS_DEPTH_PASS)));
 
-        result += format("glStencilMask(0x%x);\n", glGetInteger(GL_STENCIL_WRITEMASK));
-    }
+		result += format("glStencilMask(0x%x);\n", glGetInteger(GL_STENCIL_WRITEMASK));
+	}
 
-    result += ("\n");
+	result += ("\n");
 
 	//misc
 	result += enableEntry(GL_NORMAL_ARRAY);
 	result += enableEntry(GL_NORMALIZE);
 
 	glGetDoublev(GL_CURRENT_NORMAL, d);
-    result += format("glNormal3d(%g, %g, %g);\n", d[0], d[1], d[2]);
+	result += format("glNormal3d(%g, %g, %g);\n", d[0], d[1], d[2]);
 
 	result += ("\n");
 
 	result += format("glPixelZoom(%g, %g);\n", glGetDouble(GL_ZOOM_X),
-        glGetDouble(GL_ZOOM_Y));
+		glGetDouble(GL_ZOOM_Y));
 
 	result += format("glReadBuffer(%s);\n",
-        GLenumToString(glGetInteger(GL_READ_BUFFER)));
+		GLenumToString(glGetInteger(GL_READ_BUFFER)));
 
 	result += enableEntry(GL_POLYGON_SMOOTH);
 	result += enableEntry(GL_POLYGON_STIPPLE);
@@ -582,7 +599,7 @@ std::string getOpenGLState(bool showDisabled) {
 
 	result += enableEntry(GL_SCISSOR_TEST);
 
-    return result;
+	return result;
 }
 
 } // namespace

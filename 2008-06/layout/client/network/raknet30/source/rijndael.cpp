@@ -1,3 +1,19 @@
+// =============================================================================
+// rijndael.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/network/raknet30/source/rijndael.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 /*
  *  taken from the 'aescrypt' project: www.sf.net/projects/aescrypt
  *  See LICENSE-EST for the license applicable to this file
@@ -30,24 +46,24 @@ int ROUNDS;
 
 static word8 shifts[3][4][2] = {
   {
-    {0, 0},
-    {1, 3},
-    {2, 2},
-    {3, 1}
+	{0, 0},
+	{1, 3},
+	{2, 2},
+	{3, 1}
   },
 
   {
-    {0, 0},
-    {1, 5},
-    {2, 4},
-    {3, 3}
+	{0, 0},
+	{1, 5},
+	{2, 4},
+	{3, 3}
   },
 
   {
-    {0, 0},
-    {1, 7},
-    {3, 5},
-    {4, 4}
+	{0, 0},
+	{1, 7},
+	{3, 5},
+	{4, 4}
   }
 };
 
@@ -209,23 +225,23 @@ int rijndaelEncrypt (word8 a[16], word8 b[16], word8 rk[MAXROUNDS+1][4][4])
 	int r;
    word8 temp[4][4];
 
-    *((word32*)temp[0]) = *((word32*)a) ^ *((word32*)rk[0][0]);
-    *((word32*)temp[1]) = *((word32*)(a+4)) ^ *((word32*)rk[0][1]);
-    *((word32*)temp[2]) = *((word32*)(a+8)) ^ *((word32*)rk[0][2]);
-    *((word32*)temp[3]) = *((word32*)(a+12)) ^ *((word32*)rk[0][3]);
-    *((word32*)b) = *((word32*)T1[temp[0][0]])
+	*((word32*)temp[0]) = *((word32*)a) ^ *((word32*)rk[0][0]);
+	*((word32*)temp[1]) = *((word32*)(a+4)) ^ *((word32*)rk[0][1]);
+	*((word32*)temp[2]) = *((word32*)(a+8)) ^ *((word32*)rk[0][2]);
+	*((word32*)temp[3]) = *((word32*)(a+12)) ^ *((word32*)rk[0][3]);
+	*((word32*)b) = *((word32*)T1[temp[0][0]])
            ^ *((word32*)T2[temp[1][1]])
            ^ *((word32*)T3[temp[2][2]])
            ^ *((word32*)T4[temp[3][3]]);
-    *((word32*)(b+4)) = *((word32*)T1[temp[1][0]])
+	*((word32*)(b+4)) = *((word32*)T1[temp[1][0]])
            ^ *((word32*)T2[temp[2][1]])
            ^ *((word32*)T3[temp[3][2]])
            ^ *((word32*)T4[temp[0][3]]);
-    *((word32*)(b+8)) = *((word32*)T1[temp[2][0]])
+	*((word32*)(b+8)) = *((word32*)T1[temp[2][0]])
            ^ *((word32*)T2[temp[3][1]])
            ^ *((word32*)T3[temp[0][2]])
            ^ *((word32*)T4[temp[1][3]]);
-    *((word32*)(b+12)) = *((word32*)T1[temp[3][0]])
+	*((word32*)(b+12)) = *((word32*)T1[temp[3][0]])
            ^ *((word32*)T2[temp[0][1]])
            ^ *((word32*)T3[temp[1][2]])
            ^ *((word32*)T4[temp[2][3]]);
@@ -351,11 +367,11 @@ int rijndaelDecrypt (word8 a[16], word8 b[16], word8 rk[MAXROUNDS+1][4][4])
 	int r;
    word8 temp[4][4];
 
-    *((word32*)temp[0]) = *((word32*)a) ^ *((word32*)rk[ROUNDS][0]);
-    *((word32*)temp[1]) = *((word32*)(a+4)) ^ *((word32*)rk[ROUNDS][1]);
-    *((word32*)temp[2]) = *((word32*)(a+8)) ^ *((word32*)rk[ROUNDS][2]);
-    *((word32*)temp[3]) = *((word32*)(a+12)) ^ *((word32*)rk[ROUNDS][3]);
-    *((word32*)b) = *((word32*)T5[temp[0][0]])
+	*((word32*)temp[0]) = *((word32*)a) ^ *((word32*)rk[ROUNDS][0]);
+	*((word32*)temp[1]) = *((word32*)(a+4)) ^ *((word32*)rk[ROUNDS][1]);
+	*((word32*)temp[2]) = *((word32*)(a+8)) ^ *((word32*)rk[ROUNDS][2]);
+	*((word32*)temp[3]) = *((word32*)(a+12)) ^ *((word32*)rk[ROUNDS][3]);
+	*((word32*)b) = *((word32*)T5[temp[0][0]])
            ^ *((word32*)T6[temp[3][1]])
            ^ *((word32*)T7[temp[2][2]])
            ^ *((word32*)T8[temp[1][3]]);
@@ -436,7 +452,7 @@ int rijndaelDecryptRound (word8 a[4][4],
 	// make number of rounds sane
 	if (rounds > ROUNDS) rounds = ROUNDS;
 
-        // First the special round:
+		// First the special round:
 	//   without InvMixColumn
 	//   with extra KeyAddition
 

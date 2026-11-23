@@ -1,3 +1,19 @@
+// =============================================================================
+// jquant2.c
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/ijg/jquant2.c
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 /*
  * jquant2.c
  *
@@ -227,8 +243,8 @@ prescan_quantize (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
   JDIMENSION width = cinfo->output_width;
 
   for (row = 0; row < num_rows; row++) {
-    ptr = input_buf[row];
-    for (col = width; col > 0; col--) {
+	ptr = input_buf[row];
+	for (col = width; col > 0; col--) {
       /* get pixel value and index into the histogram */
       histp = & histogram[GETJSAMPLE(ptr[0]) >> C0_SHIFT]
 			 [GETJSAMPLE(ptr[1]) >> C1_SHIFT]
@@ -237,7 +253,7 @@ prescan_quantize (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
       if (++(*histp) <= 0)
 	(*histp)--;
       ptr += 3;
-    }
+	}
   }
 }
 
@@ -272,10 +288,10 @@ find_biggest_color_pop (boxptr boxlist, int numboxes)
   boxptr which = NULL;
 
   for (i = 0, boxp = boxlist; i < numboxes; i++, boxp++) {
-    if (boxp->colorcount > maxc && boxp->volume > 0) {
+	if (boxp->colorcount > maxc && boxp->volume > 0) {
       which = boxp;
       maxc = boxp->colorcount;
-    }
+	}
   }
   return which;
 }
@@ -291,10 +307,10 @@ find_biggest_volume (boxptr boxlist, int numboxes)
   boxptr which = NULL;
 
   for (i = 0, boxp = boxlist; i < numboxes; i++, boxp++) {
-    if (boxp->volume > maxv) {
+	if (boxp->volume > maxv) {
       which = boxp;
       maxv = boxp->volume;
-    }
+	}
   }
   return which;
 }
@@ -317,7 +333,7 @@ update_box (j_decompress_ptr cinfo, boxptr boxp)
   c2min = boxp->c2min;  c2max = boxp->c2max;
 
   if (c0max > c0min)
-    for (c0 = c0min; c0 <= c0max; c0++)
+	for (c0 = c0min; c0 <= c0max; c0++)
       for (c1 = c1min; c1 <= c1max; c1++) {
 	histp = & histogram[c0][c1][c2min];
 	for (c2 = c2min; c2 <= c2max; c2++)
@@ -328,7 +344,7 @@ update_box (j_decompress_ptr cinfo, boxptr boxp)
       }
  have_c0min:
   if (c0max > c0min)
-    for (c0 = c0max; c0 >= c0min; c0--)
+	for (c0 = c0max; c0 >= c0min; c0--)
       for (c1 = c1min; c1 <= c1max; c1++) {
 	histp = & histogram[c0][c1][c2min];
 	for (c2 = c2min; c2 <= c2max; c2++)
@@ -339,7 +355,7 @@ update_box (j_decompress_ptr cinfo, boxptr boxp)
       }
  have_c0max:
   if (c1max > c1min)
-    for (c1 = c1min; c1 <= c1max; c1++)
+	for (c1 = c1min; c1 <= c1max; c1++)
       for (c0 = c0min; c0 <= c0max; c0++) {
 	histp = & histogram[c0][c1][c2min];
 	for (c2 = c2min; c2 <= c2max; c2++)
@@ -350,7 +366,7 @@ update_box (j_decompress_ptr cinfo, boxptr boxp)
       }
  have_c1min:
   if (c1max > c1min)
-    for (c1 = c1max; c1 >= c1min; c1--)
+	for (c1 = c1max; c1 >= c1min; c1--)
       for (c0 = c0min; c0 <= c0max; c0++) {
 	histp = & histogram[c0][c1][c2min];
 	for (c2 = c2min; c2 <= c2max; c2++)
@@ -361,7 +377,7 @@ update_box (j_decompress_ptr cinfo, boxptr boxp)
       }
  have_c1max:
   if (c2max > c2min)
-    for (c2 = c2min; c2 <= c2max; c2++)
+	for (c2 = c2min; c2 <= c2max; c2++)
       for (c0 = c0min; c0 <= c0max; c0++) {
 	histp = & histogram[c0][c1min][c2];
 	for (c1 = c1min; c1 <= c1max; c1++, histp += HIST_C2_ELEMS)
@@ -372,7 +388,7 @@ update_box (j_decompress_ptr cinfo, boxptr boxp)
       }
  have_c2min:
   if (c2max > c2min)
-    for (c2 = c2max; c2 >= c2min; c2--)
+	for (c2 = c2max; c2 >= c2min; c2--)
       for (c0 = c0min; c0 <= c0max; c0++) {
 	histp = & histogram[c0][c1min][c2];
 	for (c1 = c1min; c1 <= c1max; c1++, histp += HIST_C2_ELEMS)
@@ -399,13 +415,13 @@ update_box (j_decompress_ptr cinfo, boxptr boxp)
   /* Now scan remaining volume of box and compute population */
   ccount = 0;
   for (c0 = c0min; c0 <= c0max; c0++)
-    for (c1 = c1min; c1 <= c1max; c1++) {
+	for (c1 = c1min; c1 <= c1max; c1++) {
       histp = & histogram[c0][c1][c2min];
       for (c2 = c2min; c2 <= c2max; c2++, histp++)
 	if (*histp != 0) {
 	  ccount++;
 	}
-    }
+	}
   boxp->colorcount = ccount;
 }
 
@@ -419,66 +435,66 @@ median_cut (j_decompress_ptr cinfo, boxptr boxlist, int numboxes,
   register boxptr b1,b2;
 
   while (numboxes < desired_colors) {
-    /* Select box to split.
+	/* Select box to split.
      * Current algorithm: by population for first half, then by volume.
      */
-    if (numboxes*2 <= desired_colors) {
+	if (numboxes*2 <= desired_colors) {
       b1 = find_biggest_color_pop(boxlist, numboxes);
-    } else {
+	} else {
       b1 = find_biggest_volume(boxlist, numboxes);
-    }
-    if (b1 == NULL)		/* no splittable boxes left! */
+	}
+	if (b1 == NULL)		/* no splittable boxes left! */
       break;
-    b2 = &boxlist[numboxes];	/* where new box will go */
-    /* Copy the color bounds to the new box. */
-    b2->c0max = b1->c0max; b2->c1max = b1->c1max; b2->c2max = b1->c2max;
-    b2->c0min = b1->c0min; b2->c1min = b1->c1min; b2->c2min = b1->c2min;
-    /* Choose which axis to split the box on.
+	b2 = &boxlist[numboxes];	/* where new box will go */
+	/* Copy the color bounds to the new box. */
+	b2->c0max = b1->c0max; b2->c1max = b1->c1max; b2->c2max = b1->c2max;
+	b2->c0min = b1->c0min; b2->c1min = b1->c1min; b2->c2min = b1->c2min;
+	/* Choose which axis to split the box on.
      * Current algorithm: longest scaled axis.
      * See notes in update_box about scaling distances.
      */
-    c0 = ((b1->c0max - b1->c0min) << C0_SHIFT) * C0_SCALE;
-    c1 = ((b1->c1max - b1->c1min) << C1_SHIFT) * C1_SCALE;
-    c2 = ((b1->c2max - b1->c2min) << C2_SHIFT) * C2_SCALE;
-    /* We want to break any ties in favor of green, then red, blue last.
+	c0 = ((b1->c0max - b1->c0min) << C0_SHIFT) * C0_SCALE;
+	c1 = ((b1->c1max - b1->c1min) << C1_SHIFT) * C1_SCALE;
+	c2 = ((b1->c2max - b1->c2min) << C2_SHIFT) * C2_SCALE;
+	/* We want to break any ties in favor of green, then red, blue last.
      * This code does the right thing for R,G,B or B,G,R color orders only.
      */
 #if RGB_RED == 0
-    cmax = c1; n = 1;
-    if (c0 > cmax) { cmax = c0; n = 0; }
-    if (c2 > cmax) { n = 2; }
+	cmax = c1; n = 1;
+	if (c0 > cmax) { cmax = c0; n = 0; }
+	if (c2 > cmax) { n = 2; }
 #else
-    cmax = c1; n = 1;
-    if (c2 > cmax) { cmax = c2; n = 2; }
-    if (c0 > cmax) { n = 0; }
+	cmax = c1; n = 1;
+	if (c2 > cmax) { cmax = c2; n = 2; }
+	if (c0 > cmax) { n = 0; }
 #endif
-    /* Choose split point along selected axis, and update box bounds.
+	/* Choose split point along selected axis, and update box bounds.
      * Current algorithm: split at halfway point.
      * (Since the box has been shrunk to minimum volume,
      * any split will produce two nonempty subboxes.)
      * Note that lb value is max for lower box, so must be < old max.
      */
-    switch (n) {
-    case 0:
+	switch (n) {
+	case 0:
       lb = (b1->c0max + b1->c0min) / 2;
       b1->c0max = lb;
       b2->c0min = lb+1;
       break;
-    case 1:
+	case 1:
       lb = (b1->c1max + b1->c1min) / 2;
       b1->c1max = lb;
       b2->c1min = lb+1;
       break;
-    case 2:
+	case 2:
       lb = (b1->c2max + b1->c2min) / 2;
       b1->c2max = lb;
       b2->c2min = lb+1;
       break;
-    }
-    /* Update stats for boxes */
-    update_box(cinfo, b1);
-    update_box(cinfo, b2);
-    numboxes++;
+	}
+	/* Update stats for boxes */
+	update_box(cinfo, b1);
+	update_box(cinfo, b2);
+	numboxes++;
   }
   return numboxes;
 }
@@ -505,7 +521,7 @@ compute_color (j_decompress_ptr cinfo, boxptr boxp, int icolor)
   c2min = boxp->c2min;  c2max = boxp->c2max;
 
   for (c0 = c0min; c0 <= c0max; c0++)
-    for (c1 = c1min; c1 <= c1max; c1++) {
+	for (c1 = c1min; c1 <= c1max; c1++) {
       histp = & histogram[c0][c1][c2min];
       for (c2 = c2min; c2 <= c2max; c2++) {
 	if ((count = *histp++) != 0) {
@@ -515,7 +531,7 @@ compute_color (j_decompress_ptr cinfo, boxptr boxp, int icolor)
 	  c2total += ((c2 << C2_SHIFT) + ((1<<C2_SHIFT)>>1)) * count;
 	}
       }
-    }
+	}
 
   cinfo->colormap[0][icolor] = (JSAMPLE) ((c0total + (total>>1)) / total);
   cinfo->colormap[1][icolor] = (JSAMPLE) ((c1total + (total>>1)) / total);
@@ -532,7 +548,7 @@ select_colors (j_decompress_ptr cinfo, int desired_colors)
 
   /* Allocate workspace for box list */
   boxlist = (boxptr) (*cinfo->mem->alloc_small)
-    ((j_common_ptr) cinfo, JPOOL_IMAGE, desired_colors * SIZEOF(box));
+	((j_common_ptr) cinfo, JPOOL_IMAGE, desired_colors * SIZEOF(box));
   /* Initialize one box containing whole space */
   numboxes = 1;
   boxlist[0].c0min = 0;
@@ -547,7 +563,7 @@ select_colors (j_decompress_ptr cinfo, int desired_colors)
   numboxes = median_cut(cinfo, boxlist, numboxes, desired_colors);
   /* Compute the representative color for each box, fill colormap */
   for (i = 0; i < numboxes; i++)
-    compute_color(cinfo, & boxlist[i], i);
+	compute_color(cinfo, & boxlist[i], i);
   cinfo->actual_number_of_colors = numboxes;
   TRACEMS1(cinfo, 1, JTRC_QUANT_SELECTED, numboxes);
 }
@@ -669,19 +685,19 @@ find_nearby_colors (j_decompress_ptr cinfo, int minc0, int minc1, int minc2,
   minmaxdist = 0x7FFFFFFFL;
 
   for (i = 0; i < numcolors; i++) {
-    /* We compute the squared-c0-distance term, then add in the other two. */
-    x = GETJSAMPLE(cinfo->colormap[0][i]);
-    if (x < minc0) {
+	/* We compute the squared-c0-distance term, then add in the other two. */
+	x = GETJSAMPLE(cinfo->colormap[0][i]);
+	if (x < minc0) {
       tdist = (x - minc0) * C0_SCALE;
       min_dist = tdist*tdist;
       tdist = (x - maxc0) * C0_SCALE;
       max_dist = tdist*tdist;
-    } else if (x > maxc0) {
+	} else if (x > maxc0) {
       tdist = (x - maxc0) * C0_SCALE;
       min_dist = tdist*tdist;
       tdist = (x - minc0) * C0_SCALE;
       max_dist = tdist*tdist;
-    } else {
+	} else {
       /* within cell range so no contribution to min_dist */
       min_dist = 0;
       if (x <= centerc0) {
@@ -691,20 +707,20 @@ find_nearby_colors (j_decompress_ptr cinfo, int minc0, int minc1, int minc2,
 	tdist = (x - minc0) * C0_SCALE;
 	max_dist = tdist*tdist;
       }
-    }
+	}
 
-    x = GETJSAMPLE(cinfo->colormap[1][i]);
-    if (x < minc1) {
+	x = GETJSAMPLE(cinfo->colormap[1][i]);
+	if (x < minc1) {
       tdist = (x - minc1) * C1_SCALE;
       min_dist += tdist*tdist;
       tdist = (x - maxc1) * C1_SCALE;
       max_dist += tdist*tdist;
-    } else if (x > maxc1) {
+	} else if (x > maxc1) {
       tdist = (x - maxc1) * C1_SCALE;
       min_dist += tdist*tdist;
       tdist = (x - minc1) * C1_SCALE;
       max_dist += tdist*tdist;
-    } else {
+	} else {
       /* within cell range so no contribution to min_dist */
       if (x <= centerc1) {
 	tdist = (x - maxc1) * C1_SCALE;
@@ -713,20 +729,20 @@ find_nearby_colors (j_decompress_ptr cinfo, int minc0, int minc1, int minc2,
 	tdist = (x - minc1) * C1_SCALE;
 	max_dist += tdist*tdist;
       }
-    }
+	}
 
-    x = GETJSAMPLE(cinfo->colormap[2][i]);
-    if (x < minc2) {
+	x = GETJSAMPLE(cinfo->colormap[2][i]);
+	if (x < minc2) {
       tdist = (x - minc2) * C2_SCALE;
       min_dist += tdist*tdist;
       tdist = (x - maxc2) * C2_SCALE;
       max_dist += tdist*tdist;
-    } else if (x > maxc2) {
+	} else if (x > maxc2) {
       tdist = (x - maxc2) * C2_SCALE;
       min_dist += tdist*tdist;
       tdist = (x - minc2) * C2_SCALE;
       max_dist += tdist*tdist;
-    } else {
+	} else {
       /* within cell range so no contribution to min_dist */
       if (x <= centerc2) {
 	tdist = (x - maxc2) * C2_SCALE;
@@ -735,10 +751,10 @@ find_nearby_colors (j_decompress_ptr cinfo, int minc0, int minc1, int minc2,
 	tdist = (x - minc2) * C2_SCALE;
 	max_dist += tdist*tdist;
       }
-    }
+	}
 
-    mindist[i] = min_dist;	/* save away the results */
-    if (max_dist < minmaxdist)
+	mindist[i] = min_dist;	/* save away the results */
+	if (max_dist < minmaxdist)
       minmaxdist = max_dist;
   }
 
@@ -748,7 +764,7 @@ find_nearby_colors (j_decompress_ptr cinfo, int minc0, int minc1, int minc2,
    */
   ncolors = 0;
   for (i = 0; i < numcolors; i++) {
-    if (mindist[i] <= minmaxdist)
+	if (mindist[i] <= minmaxdist)
       colorlist[ncolors++] = (JSAMPLE) i;
   }
   return ncolors;
@@ -779,7 +795,7 @@ find_best_colors (j_decompress_ptr cinfo, int minc0, int minc1, int minc2,
   /* Initialize best-distance for each cell of the update box */
   bptr = bestdist;
   for (i = BOX_C0_ELEMS*BOX_C1_ELEMS*BOX_C2_ELEMS-1; i >= 0; i--)
-    *bptr++ = 0x7FFFFFFFL;
+	*bptr++ = 0x7FFFFFFFL;
 
   /* For each color selected by find_nearby_colors,
    * compute its distance to the center of each cell in the box.
@@ -792,23 +808,23 @@ find_best_colors (j_decompress_ptr cinfo, int minc0, int minc1, int minc2,
 #define STEP_C2  ((1 << C2_SHIFT) * C2_SCALE)
 
   for (i = 0; i < numcolors; i++) {
-    icolor = GETJSAMPLE(colorlist[i]);
-    /* Compute (square of) distance from minc0/c1/c2 to this color */
-    inc0 = (minc0 - GETJSAMPLE(cinfo->colormap[0][icolor])) * C0_SCALE;
-    dist0 = inc0*inc0;
-    inc1 = (minc1 - GETJSAMPLE(cinfo->colormap[1][icolor])) * C1_SCALE;
-    dist0 += inc1*inc1;
-    inc2 = (minc2 - GETJSAMPLE(cinfo->colormap[2][icolor])) * C2_SCALE;
-    dist0 += inc2*inc2;
-    /* Form the initial difference increments */
-    inc0 = inc0 * (2 * STEP_C0) + STEP_C0 * STEP_C0;
-    inc1 = inc1 * (2 * STEP_C1) + STEP_C1 * STEP_C1;
-    inc2 = inc2 * (2 * STEP_C2) + STEP_C2 * STEP_C2;
-    /* Now loop over all cells in box, updating distance per Thomas method */
-    bptr = bestdist;
-    cptr = bestcolor;
-    xx0 = inc0;
-    for (ic0 = BOX_C0_ELEMS-1; ic0 >= 0; ic0--) {
+	icolor = GETJSAMPLE(colorlist[i]);
+	/* Compute (square of) distance from minc0/c1/c2 to this color */
+	inc0 = (minc0 - GETJSAMPLE(cinfo->colormap[0][icolor])) * C0_SCALE;
+	dist0 = inc0*inc0;
+	inc1 = (minc1 - GETJSAMPLE(cinfo->colormap[1][icolor])) * C1_SCALE;
+	dist0 += inc1*inc1;
+	inc2 = (minc2 - GETJSAMPLE(cinfo->colormap[2][icolor])) * C2_SCALE;
+	dist0 += inc2*inc2;
+	/* Form the initial difference increments */
+	inc0 = inc0 * (2 * STEP_C0) + STEP_C0 * STEP_C0;
+	inc1 = inc1 * (2 * STEP_C1) + STEP_C1 * STEP_C1;
+	inc2 = inc2 * (2 * STEP_C2) + STEP_C2 * STEP_C2;
+	/* Now loop over all cells in box, updating distance per Thomas method */
+	bptr = bestdist;
+	cptr = bestcolor;
+	xx0 = inc0;
+	for (ic0 = BOX_C0_ELEMS-1; ic0 >= 0; ic0--) {
       dist1 = dist0;
       xx1 = inc1;
       for (ic1 = BOX_C1_ELEMS-1; ic1 >= 0; ic1--) {
@@ -829,7 +845,7 @@ find_best_colors (j_decompress_ptr cinfo, int minc0, int minc1, int minc2,
       }
       dist0 += xx0;
       xx0 += 2 * STEP_C0 * STEP_C0;
-    }
+	}
   }
 }
 
@@ -879,12 +895,12 @@ fill_inverse_cmap (j_decompress_ptr cinfo, int c0, int c1, int c2)
   c2 <<= BOX_C2_LOG;
   cptr = bestcolor;
   for (ic0 = 0; ic0 < BOX_C0_ELEMS; ic0++) {
-    for (ic1 = 0; ic1 < BOX_C1_ELEMS; ic1++) {
+	for (ic1 = 0; ic1 < BOX_C1_ELEMS; ic1++) {
       cachep = & histogram[c0+ic0][c1+ic1][c2];
       for (ic2 = 0; ic2 < BOX_C2_ELEMS; ic2++) {
 	*cachep++ = (histcell) (GETJSAMPLE(*cptr++) + 1);
       }
-    }
+	}
   }
 }
 
@@ -907,9 +923,9 @@ pass2_no_dither (j_decompress_ptr cinfo,
   JDIMENSION width = cinfo->output_width;
 
   for (row = 0; row < num_rows; row++) {
-    inptr = input_buf[row];
-    outptr = output_buf[row];
-    for (col = width; col > 0; col--) {
+	inptr = input_buf[row];
+	outptr = output_buf[row];
+	for (col = width; col > 0; col--) {
       /* get pixel value and index into the cache */
       c0 = GETJSAMPLE(*inptr++) >> C0_SHIFT;
       c1 = GETJSAMPLE(*inptr++) >> C1_SHIFT;
@@ -921,7 +937,7 @@ pass2_no_dither (j_decompress_ptr cinfo,
 	fill_inverse_cmap(cinfo, c0,c1,c2);
       /* Now emit the colormap index for this cell */
       *outptr++ = (JSAMPLE) (*cachep - 1);
-    }
+	}
   }
 }
 
@@ -952,9 +968,9 @@ pass2_fs_dither (j_decompress_ptr cinfo,
   SHIFT_TEMPS
 
   for (row = 0; row < num_rows; row++) {
-    inptr = input_buf[row];
-    outptr = output_buf[row];
-    if (cquantize->on_odd_row) {
+	inptr = input_buf[row];
+	outptr = output_buf[row];
+	if (cquantize->on_odd_row) {
       /* work right to left in this row */
       inptr += (width-1) * 3;	/* so point to rightmost pixel */
       outptr += width-1;
@@ -962,20 +978,20 @@ pass2_fs_dither (j_decompress_ptr cinfo,
       dir3 = -3;
       errorptr = cquantize->fserrors + (width+1)*3; /* => entry after last column */
       cquantize->on_odd_row = FALSE; /* flip for next time */
-    } else {
+	} else {
       /* work left to right in this row */
       dir = 1;
       dir3 = 3;
       errorptr = cquantize->fserrors; /* => entry before first real column */
       cquantize->on_odd_row = TRUE; /* flip for next time */
-    }
-    /* Preset error values: no error propagated to first pixel from left */
-    cur0 = cur1 = cur2 = 0;
-    /* and no error propagated to row below yet */
-    belowerr0 = belowerr1 = belowerr2 = 0;
-    bpreverr0 = bpreverr1 = bpreverr2 = 0;
+	}
+	/* Preset error values: no error propagated to first pixel from left */
+	cur0 = cur1 = cur2 = 0;
+	/* and no error propagated to row below yet */
+	belowerr0 = belowerr1 = belowerr2 = 0;
+	bpreverr0 = bpreverr1 = bpreverr2 = 0;
 
-    for (col = width; col > 0; col--) {
+	for (col = width; col > 0; col--) {
       /* curN holds the error propagated from the previous pixel on the
        * current line.  Add the error propagated from the previous line
        * to form the complete error correction term for this pixel, and
@@ -1055,14 +1071,14 @@ pass2_fs_dither (j_decompress_ptr cinfo,
       inptr += dir3;		/* Advance pixel pointers to next column */
       outptr += dir;
       errorptr += dir3;		/* advance errorptr to current column */
-    }
-    /* Post-loop cleanup: we must unload the final error values into the
+	}
+	/* Post-loop cleanup: we must unload the final error values into the
      * final fserrors[] entry.  Note we need not unload belowerrN because
      * it is for the dummy column before or after the actual array.
      */
-    errorptr[0] = (FSERROR) bpreverr0; /* unload prev errs into array */
-    errorptr[1] = (FSERROR) bpreverr1;
-    errorptr[2] = (FSERROR) bpreverr2;
+	errorptr[0] = (FSERROR) bpreverr0; /* unload prev errs into array */
+	errorptr[1] = (FSERROR) bpreverr1;
+	errorptr[2] = (FSERROR) bpreverr2;
   }
 }
 
@@ -1092,7 +1108,7 @@ init_error_limit (j_decompress_ptr cinfo)
   int in, out;
 
   table = (int *) (*cinfo->mem->alloc_small)
-    ((j_common_ptr) cinfo, JPOOL_IMAGE, (MAXJSAMPLE*2+1) * SIZEOF(int));
+	((j_common_ptr) cinfo, JPOOL_IMAGE, (MAXJSAMPLE*2+1) * SIZEOF(int));
   table += MAXJSAMPLE;		/* so can index -MAXJSAMPLE .. +MAXJSAMPLE */
   cquantize->error_limiter = table;
 
@@ -1100,15 +1116,15 @@ init_error_limit (j_decompress_ptr cinfo)
   /* Map errors 1:1 up to +- MAXJSAMPLE/16 */
   out = 0;
   for (in = 0; in < STEPSIZE; in++, out++) {
-    table[in] = out; table[-in] = -out;
+	table[in] = out; table[-in] = -out;
   }
   /* Map errors 1:2 up to +- 3*MAXJSAMPLE/16 */
   for (; in < STEPSIZE*3; in++, out += (in&1) ? 0 : 1) {
-    table[in] = out; table[-in] = -out;
+	table[in] = out; table[-in] = -out;
   }
   /* Clamp the rest to final out value (which is (MAXJSAMPLE+1)/8) */
   for (; in <= MAXJSAMPLE; in++) {
-    table[in] = out; table[-in] = -out;
+	table[in] = out; table[-in] = -out;
   }
 #undef STEPSIZE
 }
@@ -1149,29 +1165,29 @@ start_pass_2_quant (j_decompress_ptr cinfo, boolean is_pre_scan)
   /* Only F-S dithering or no dithering is supported. */
   /* If user asks for ordered dither, give him F-S. */
   if (cinfo->dither_mode != JDITHER_NONE)
-    cinfo->dither_mode = JDITHER_FS;
+	cinfo->dither_mode = JDITHER_FS;
 
   if (is_pre_scan) {
-    /* Set up method pointers */
-    cquantize->pub.color_quantize = prescan_quantize;
-    cquantize->pub.finish_pass = finish_pass1;
-    cquantize->needs_zeroed = TRUE; /* Always zero histogram */
+	/* Set up method pointers */
+	cquantize->pub.color_quantize = prescan_quantize;
+	cquantize->pub.finish_pass = finish_pass1;
+	cquantize->needs_zeroed = TRUE; /* Always zero histogram */
   } else {
-    /* Set up method pointers */
-    if (cinfo->dither_mode == JDITHER_FS)
+	/* Set up method pointers */
+	if (cinfo->dither_mode == JDITHER_FS)
       cquantize->pub.color_quantize = pass2_fs_dither;
-    else
+	else
       cquantize->pub.color_quantize = pass2_no_dither;
-    cquantize->pub.finish_pass = finish_pass2;
+	cquantize->pub.finish_pass = finish_pass2;
 
-    /* Make sure color count is acceptable */
-    i = cinfo->actual_number_of_colors;
-    if (i < 1)
+	/* Make sure color count is acceptable */
+	i = cinfo->actual_number_of_colors;
+	if (i < 1)
       ERREXIT1(cinfo, JERR_QUANT_FEW_COLORS, 1);
-    if (i > MAXNUMCOLORS)
+	if (i > MAXNUMCOLORS)
       ERREXIT1(cinfo, JERR_QUANT_MANY_COLORS, MAXNUMCOLORS);
 
-    if (cinfo->dither_mode == JDITHER_FS) {
+	if (cinfo->dither_mode == JDITHER_FS) {
       size_t arraysize = (size_t) ((cinfo->output_width + 2) *
 				   (3 * SIZEOF(FSERROR)));
       /* Allocate Floyd-Steinberg workspace if we didn't already. */
@@ -1184,16 +1200,16 @@ start_pass_2_quant (j_decompress_ptr cinfo, boolean is_pre_scan)
       if (cquantize->error_limiter == NULL)
 	init_error_limit(cinfo);
       cquantize->on_odd_row = FALSE;
-    }
+	}
 
   }
   /* Zero the histogram or inverse color map, if necessary */
   if (cquantize->needs_zeroed) {
-    for (i = 0; i < HIST_C0_ELEMS; i++) {
+	for (i = 0; i < HIST_C0_ELEMS; i++) {
       jzero_far((void FAR *) histogram[i],
 		HIST_C1_ELEMS*HIST_C2_ELEMS * SIZEOF(histcell));
-    }
-    cquantize->needs_zeroed = FALSE;
+	}
+	cquantize->needs_zeroed = FALSE;
   }
 }
 
@@ -1221,7 +1237,7 @@ jinit_2pass_quantizer (j_decompress_ptr cinfo)
   int i;
 
   cquantize = (my_cquantize_ptr)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
+	(*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
 				SIZEOF(my_cquantizer));
   cinfo->cquantize = (struct jpeg_color_quantizer *) cquantize;
   cquantize->pub.start_pass = start_pass_2_quant;
@@ -1231,13 +1247,13 @@ jinit_2pass_quantizer (j_decompress_ptr cinfo)
 
   /* Make sure jdmaster didn't give me a case I can't handle */
   if (cinfo->out_color_components != 3)
-    ERREXIT(cinfo, JERR_NOTIMPL);
+	ERREXIT(cinfo, JERR_NOTIMPL);
 
   /* Allocate the histogram/inverse colormap storage */
   cquantize->histogram = (hist3d) (*cinfo->mem->alloc_small)
-    ((j_common_ptr) cinfo, JPOOL_IMAGE, HIST_C0_ELEMS * SIZEOF(hist2d));
+	((j_common_ptr) cinfo, JPOOL_IMAGE, HIST_C0_ELEMS * SIZEOF(hist2d));
   for (i = 0; i < HIST_C0_ELEMS; i++) {
-    cquantize->histogram[i] = (hist2d) (*cinfo->mem->alloc_large)
+	cquantize->histogram[i] = (hist2d) (*cinfo->mem->alloc_large)
       ((j_common_ptr) cinfo, JPOOL_IMAGE,
        HIST_C1_ELEMS*HIST_C2_ELEMS * SIZEOF(histcell));
   }
@@ -1248,24 +1264,24 @@ jinit_2pass_quantizer (j_decompress_ptr cinfo)
    * the memory manager's space calculations.
    */
   if (cinfo->enable_2pass_quant) {
-    /* Make sure color count is acceptable */
-    int desired = cinfo->desired_number_of_colors;
-    /* Lower bound on # of colors ... somewhat arbitrary as long as > 0 */
-    if (desired < 8)
+	/* Make sure color count is acceptable */
+	int desired = cinfo->desired_number_of_colors;
+	/* Lower bound on # of colors ... somewhat arbitrary as long as > 0 */
+	if (desired < 8)
       ERREXIT1(cinfo, JERR_QUANT_FEW_COLORS, 8);
-    /* Make sure colormap indexes can be represented by JSAMPLEs */
-    if (desired > MAXNUMCOLORS)
+	/* Make sure colormap indexes can be represented by JSAMPLEs */
+	if (desired > MAXNUMCOLORS)
       ERREXIT1(cinfo, JERR_QUANT_MANY_COLORS, MAXNUMCOLORS);
-    cquantize->sv_colormap = (*cinfo->mem->alloc_sarray)
+	cquantize->sv_colormap = (*cinfo->mem->alloc_sarray)
       ((j_common_ptr) cinfo,JPOOL_IMAGE, (JDIMENSION) desired, (JDIMENSION) 3);
-    cquantize->desired = desired;
+	cquantize->desired = desired;
   } else
-    cquantize->sv_colormap = NULL;
+	cquantize->sv_colormap = NULL;
 
   /* Only F-S dithering or no dithering is supported. */
   /* If user asks for ordered dither, give him F-S. */
   if (cinfo->dither_mode != JDITHER_NONE)
-    cinfo->dither_mode = JDITHER_FS;
+	cinfo->dither_mode = JDITHER_FS;
 
   /* Allocate Floyd-Steinberg workspace if necessary.
    * This isn't really needed until pass 2, but again it is FAR storage.
@@ -1273,11 +1289,11 @@ jinit_2pass_quantizer (j_decompress_ptr cinfo)
    * we do not promise to honor max_memory_to_use if dither_mode changes.
    */
   if (cinfo->dither_mode == JDITHER_FS) {
-    cquantize->fserrors = (FSERRPTR) (*cinfo->mem->alloc_large)
+	cquantize->fserrors = (FSERRPTR) (*cinfo->mem->alloc_large)
       ((j_common_ptr) cinfo, JPOOL_IMAGE,
        (size_t) ((cinfo->output_width + 2) * (3 * SIZEOF(FSERROR))));
-    /* Might as well create the error-limiting table too. */
-    init_error_limit(cinfo);
+	/* Might as well create the error-limiting table too. */
+	init_error_limit(cinfo);
   }
 }
 

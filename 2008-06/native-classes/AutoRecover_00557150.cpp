@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // INFERRED: callees declared as C helpers; RunService layout offsets taken from the disassembly.
 
 extern "C" void __fastcall fn_005559a0(void* self, int unusedEdx);

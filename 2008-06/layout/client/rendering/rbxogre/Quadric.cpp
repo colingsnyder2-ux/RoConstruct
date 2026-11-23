@@ -1,7 +1,24 @@
+// =============================================================================
+// Quadric.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/rbxogre/Quadric.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #undef OGRE_NONCLIENT_BUILD
 #include "OgreRbx/RbxAdornState2008.h"
 
-namespace Ogre {
+namespace Ogre
+{
 // INFERRED name: original writes the quadric offset at +0x20.
 void RbxAdornState::setOffset(const Vector3& value) { offset = value; }
 }
@@ -46,56 +63,56 @@ ManualObject* RbxAdornState::cylinder(SceneManager*manager,const String&name,Man
 if(!object)object=manager->createManualObject(name);
 const Ogre::Vector3& off=offset;
 
-    int i,j;
-    float sinCache[240];
-    float cosCache[240];
-    float sinCache2[240];
-    float cosCache2[240];
-    float sinCache3[240];
-    float cosCache3[240];
-    float angle;
-    float zLow, zHigh;
-    float sintemp, costemp;
-    float length;
-    float deltaRadius;
-    float zNormal;
-    float xyNormalRatio;
-    float radiusLow, radiusHigh;
-    int needCache2, needCache3;
+	int i,j;
+	float sinCache[240];
+	float cosCache[240];
+	float sinCache2[240];
+	float cosCache2[240];
+	float sinCache3[240];
+	float cosCache3[240];
+	float angle;
+	float zLow, zHigh;
+	float sintemp, costemp;
+	float length;
+	float deltaRadius;
+	float zNormal;
+	float xyNormalRatio;
+	float radiusLow, radiusHigh;
+	int needCache2, needCache3;
 
-    if (slices >= 240) slices = 240-1;
+	if (slices >= 240) slices = 240-1;
 
-    if (slices < 2 || stacks < 1 || baseRadius < 0.0 || topRadius < 0.0 ||
+	if (slices < 2 || stacks < 1 || baseRadius < 0.0 || topRadius < 0.0 ||
 	    height < 0.0) {
 
 	return 0;
-    }
+	}
 
-    deltaRadius = baseRadius - topRadius;
-    length = sqrt(deltaRadius*deltaRadius + height*height);
-    if (length == 0.0) {
+	deltaRadius = baseRadius - topRadius;
+	length = sqrt(deltaRadius*deltaRadius + height*height);
+	if (length == 0.0) {
 
 	return 0;
-    }
+	}
 
-    needCache2 = needCache3 = 0;
-    if (normals == Smooth) {
+	needCache2 = needCache3 = 0;
+	if (normals == Smooth) {
 	needCache2 = 1;
-    }
+	}
 
-    if (normals == Flat) {
+	if (normals == Flat) {
 	if (drawStyle != Point) {
 	    needCache3 = 1;
 	}
 	if (drawStyle == Line) {
 	    needCache2 = 1;
 	}
-    }
+	}
 
-    zNormal = deltaRadius / length;
-    xyNormalRatio = height / length;
+	zNormal = deltaRadius / length;
+	xyNormalRatio = height / length;
 
-    for (i = 0; i < slices; i++) {
+	for (i = 0; i < slices; i++) {
 	angle = 2 * Ogre::Math::PI * i / slices;
 	if (needCache2) {
 	    if (orientation == Outside) {
@@ -108,9 +125,9 @@ const Ogre::Vector3& off=offset;
 	}
 	sinCache[i] = sin(angle);
 	cosCache[i] = cos(angle);
-    }
+	}
 
-    if (needCache3) {
+	if (needCache3) {
 	for (i = 0; i < slices; i++) {
 	    angle = 2 * Ogre::Math::PI * (i-0.5) / slices;
 	    if (orientation == Outside) {
@@ -121,20 +138,20 @@ const Ogre::Vector3& off=offset;
 		cosCache3[i] = -xyNormalRatio * cos(angle);
 	    }
 	}
-    }
+	}
 
-    sinCache[slices] = sinCache[0];
-    cosCache[slices] = cosCache[0];
-    if (needCache2) {
+	sinCache[slices] = sinCache[0];
+	cosCache[slices] = cosCache[0];
+	if (needCache2) {
 	sinCache2[slices] = sinCache2[0];
 	cosCache2[slices] = cosCache2[0];
-    }
-    if (needCache3) {
+	}
+	if (needCache3) {
 	sinCache3[slices] = sinCache3[0];
 	cosCache3[slices] = cosCache3[0];
-    }
+	}
 
-    switch (drawStyle) {
+	switch (drawStyle) {
       case Fill:
 
 	for (j = 0; j < stacks; j++) {
@@ -303,7 +320,7 @@ zLow = j * height / stacks;
 	break;
       default:
 	break;
-    }
+	}
 
 return object;
 }
@@ -313,53 +330,53 @@ ManualObject* RbxAdornState::partialDisk(SceneManager*manager,const String&name,
 if(!object)object=manager->createManualObject(name);
 int index=0;
 
-    int i,j;
-    float sinCache[240];
-    float cosCache[240];
-    double angle;
-    float sintemp, costemp;
-    float deltaRadius;
-    float radiusLow, radiusHigh;
-    float texLow = 0.0f, texHigh = 0.0f;
-    float angleOffset;
-    int slices2;
-    int finish;
+	int i,j;
+	float sinCache[240];
+	float cosCache[240];
+	double angle;
+	float sintemp, costemp;
+	float deltaRadius;
+	float radiusLow, radiusHigh;
+	float texLow = 0.0f, texHigh = 0.0f;
+	float angleOffset;
+	int slices2;
+	int finish;
 
-    if (slices >= 240) slices = 240-1;
-    if (slices < 2 || loops < 1 || outerRadius <= 0.0f || innerRadius < 0.0f ||
+	if (slices >= 240) slices = 240-1;
+	if (slices < 2 || loops < 1 || outerRadius <= 0.0f || innerRadius < 0.0f ||
 	    innerRadius > outerRadius) {
 
 	return 0;
-    }
+	}
 
-    if (sweepAngle < -360.0f) sweepAngle = 360.0f;
-    if (sweepAngle > 360.0f) sweepAngle = 360.0f;
-    if (sweepAngle < 0) {
+	if (sweepAngle < -360.0f) sweepAngle = 360.0f;
+	if (sweepAngle > 360.0f) sweepAngle = 360.0f;
+	if (sweepAngle < 0) {
 	startAngle += sweepAngle;
 	sweepAngle = -sweepAngle;
-    }
+	}
 
-    if (sweepAngle == 360.0f) {
+	if (sweepAngle == 360.0f) {
 	slices2 = slices;
-    } else {
+	} else {
 	slices2 = slices + 1;
-    }
+	}
 
-    deltaRadius = outerRadius - innerRadius;
+	deltaRadius = outerRadius - innerRadius;
 
-    angleOffset = startAngle / 180.0f * Ogre::Math::PI;
-    for (i = 0; i <= slices; i++) {
+	angleOffset = startAngle / 180.0f * Ogre::Math::PI;
+	for (i = 0; i <= slices; i++) {
 	angle = angleOffset + double((Ogre::Math::PI * sweepAngle) / 180.0f) * i / slices;
 	sinCache[i] = sin(angle);
 	cosCache[i] = cos(angle);
-    }
+	}
 
-    if (sweepAngle == 360.0f) {
+	if (sweepAngle == 360.0f) {
 	sinCache[slices] = sinCache[0];
 	cosCache[slices] = cosCache[0];
-    }
+	}
 
-    switch (drawStyle) {
+	switch (drawStyle) {
       case Fill:
 	if (innerRadius == 0.0f) {
 	    finish = loops - 1;
@@ -381,7 +398,7 @@ switch(normals) {
       default:
       case None:
 	break;
-    }
+	}
 
 if (textureCoords) {
 		object->textureCoord(0.5f, 0.5f);
@@ -439,7 +456,7 @@ switch(normals) {
       default:
       case None:
 	break;
-    }
+	}
 
 	    for (i = 0; i <= slices; i++) {
 		if (orientation == Outside) {
@@ -526,7 +543,7 @@ switch(normals) {
       default:
       case None:
 	break;
-    }
+	}
 
 	for (i = 0; i < slices2; i++) {
 	    sintemp = sinCache[i];
@@ -563,7 +580,7 @@ switch(normals) {
       default:
       case None:
 	break;
-    }
+	}
 
 	    for (i = 0; i <= slices; i++) {
 		object->position(innerRadius * sinCache[i] + offset.x, innerRadius * cosCache[i] + offset.y, 0.0f + offset.z);
@@ -637,7 +654,7 @@ switch(normals) {
       default:
       case None:
 	break;
-    }
+	}
 
 		for (j = 0; j <= loops; j++) {
 		    radiusLow = outerRadius - deltaRadius * ((float) j / loops);
@@ -677,7 +694,7 @@ if (textureCoords) {
 	break;
       default:
 	break;
-    }
+	}
 
 return object;
 }
@@ -693,49 +710,49 @@ const Ogre::Vector3& off=offset;
 if(!object)object=manager->createManualObject(name);
 unsigned int index=0;
 
-    int i,j;
-    float sinCache1a[240];
-    float cosCache1a[240];
-    float sinCache2a[240];
-    float cosCache2a[240];
-    float sinCache3a[240];
-    float cosCache3a[240];
-    float sinCache1b[240];
-    float cosCache1b[240];
-    float sinCache2b[240];
-    float cosCache2b[240];
-    float sinCache3b[240];
-    float cosCache3b[240];
-    float angle;
-    float zLow, zHigh;
-    float sintemp1, sintemp2, sintemp3 = 0.0, sintemp4 = 0.0;
-    float costemp1, costemp2 = 0.0, costemp3 = 0.0, costemp4 = 0.0;
-    bool needCache2, needCache3;
-    int start, finish;
+	int i,j;
+	float sinCache1a[240];
+	float cosCache1a[240];
+	float sinCache2a[240];
+	float cosCache2a[240];
+	float sinCache3a[240];
+	float cosCache3a[240];
+	float sinCache1b[240];
+	float cosCache1b[240];
+	float sinCache2b[240];
+	float cosCache2b[240];
+	float sinCache3b[240];
+	float cosCache3b[240];
+	float angle;
+	float zLow, zHigh;
+	float sintemp1, sintemp2, sintemp3 = 0.0, sintemp4 = 0.0;
+	float costemp1, costemp2 = 0.0, costemp3 = 0.0, costemp4 = 0.0;
+	bool needCache2, needCache3;
+	int start, finish;
 
-    if (slices >= 240) slices = 240-1;
-    if (stacks >= 240) stacks = 240-1;
-    if (slices < 2 || stacks < 1 || radius < 0.0) {
+	if (slices >= 240) slices = 240-1;
+	if (stacks >= 240) stacks = 240-1;
+	if (slices < 2 || stacks < 1 || radius < 0.0) {
 
 	return 0;
-    }
+	}
 
-    needCache2 = needCache3 = false;
+	needCache2 = needCache3 = false;
 
-    if (normals == Smooth) {
+	if (normals == Smooth) {
 	needCache2 = true;
-    }
+	}
 
-    if (normals == Flat) {
+	if (normals == Flat) {
 	if (drawStyle != Point) {
 	    needCache3 = true;
 	}
 	if (drawStyle == Line) {
 	    needCache2 = true;
 	}
-    }
+	}
 
-    for (i = 0; i < slices; i++) {
+	for (i = 0; i < slices; i++) {
 	angle = 2 * Ogre::Math::PI * i / slices;
 	sinCache1a[i] = sin(angle);
 	cosCache1a[i] = cos(angle);
@@ -743,9 +760,9 @@ unsigned int index=0;
 	    sinCache2a[i] = sinCache1a[i];
 	    cosCache2a[i] = cosCache1a[i];
 	}
-    }
+	}
 
-    for (j = 0; j <= stacks; j++) {
+	for (j = 0; j <= stacks; j++) {
 	angle = Ogre::Math::PI * j / stacks;
 	if (needCache2) {
 	    if (orientation == Outside) {
@@ -758,12 +775,12 @@ unsigned int index=0;
 	}
 	sinCache1b[j] = radius * sin(angle);
 	cosCache1b[j] = radius * cos(angle);
-    }
+	}
 
-    sinCache1b[0] = 0;
-    sinCache1b[stacks] = 0;
+	sinCache1b[0] = 0;
+	sinCache1b[stacks] = 0;
 
-    if (needCache3) {
+	if (needCache3) {
 	for (i = 0; i < slices; i++) {
 	    angle = 2 * Ogre::Math::PI * (i-0.5) / slices;
 	    sinCache3a[i] = sin(angle);
@@ -779,20 +796,20 @@ unsigned int index=0;
 		cosCache3b[j] = -cos(angle);
 	    }
 	}
-    }
+	}
 
-    sinCache1a[slices] = sinCache1a[0];
-    cosCache1a[slices] = cosCache1a[0];
-    if (needCache2) {
+	sinCache1a[slices] = sinCache1a[0];
+	cosCache1a[slices] = cosCache1a[0];
+	if (needCache2) {
 	sinCache2a[slices] = sinCache2a[0];
 	cosCache2a[slices] = cosCache2a[0];
-    }
-    if (needCache3) {
+	}
+	if (needCache3) {
 	sinCache3a[slices] = sinCache3a[0];
 	cosCache3a[slices] = cosCache3a[0];
-    }
+	}
 
-    switch(drawStyle){case Fill:if (!textureCoords) {start=1;finish=stacks-1;
+	switch(drawStyle){case Fill:if (!textureCoords) {start=1;finish=stacks-1;
 object->begin("", Ogre::RenderOperation::OT_TRIANGLE_FAN);
 if (colour.r >= 0.0f) object->colour(colour);
 index=0;
@@ -1206,7 +1223,7 @@ switch(normals) {
 	break;
       default:
 	break;
-    }
+	}
 
 return object;
 }

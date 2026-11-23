@@ -1,3 +1,19 @@
+// =============================================================================
+// GCamera.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/GCamera.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #line 1 ".\\G3Dcpp\\GCamera.cpp"
 /**
   @file GCamera.cpp
@@ -15,11 +31,12 @@
 #include "G3D/BinaryOutput.h"
 #include "G3D/Ray.h"
 
-namespace G3D {
+namespace G3D
+{
 
 GCamera::GCamera() {
-    nearPlane   = 0.1f;
-    farPlane    = (float)inf();
+	nearPlane   = 0.1f;
+	farPlane    = (float)inf();
 	setFieldOfView((float)toRadians(55.0f));
 }
 
@@ -49,98 +66,98 @@ void GCamera::setFieldOfView(float angle) {
 }
 
 void GCamera::setImagePlaneDepth(
-    float                                   depth,
-    const class Rect2D&                     viewport) {
+	float                                   depth,
+	const class Rect2D&                     viewport) {
 
-    debugAssert(depth > 0);
+	debugAssert(depth > 0);
 	setFieldOfView(2.0f * atanf(viewport.height() / (2.0f * depth)));
 }
 
 float GCamera::getImagePlaneDepth(
-    const class Rect2D&                     viewport) const {
+	const class Rect2D&                     viewport) const {
 
-    // The image plane depth has been pre-computed for
-    // a 1x1 image.  Now that the image is width x height,
-    // we need to scale appropriately.
+	// The image plane depth has been pre-computed for
+	// a 1x1 image.  Now that the image is width x height,
+	// we need to scale appropriately.
 
-    return imagePlaneDepth * viewport.height();
+	return imagePlaneDepth * viewport.height();
 }
 
 float GCamera::getViewportWidth(const Rect2D& viewport) const {
-    return getViewportHeight(viewport) * viewport.width() / viewport.height();
+	return getViewportHeight(viewport) * viewport.width() / viewport.height();
 }
 
 float GCamera::getViewportHeight(const Rect2D& viewport) const {
-    (void)viewport;
-    return nearPlane / imagePlaneDepth;
+	(void)viewport;
+	return nearPlane / imagePlaneDepth;
 }
 
 Ray GCamera::worldRay(
-    float                                  x,
-    float                                  y,
-    const Rect2D&                           viewport) const {
+	float                                  x,
+	float                                  y,
+	const Rect2D&                           viewport) const {
 
-    int screenWidth  = iFloor(viewport.width());
-    int screenHeight = iFloor(viewport.height());
+	int screenWidth  = iFloor(viewport.width());
+	int screenHeight = iFloor(viewport.height());
 
-    Ray out;
-    // Set the origin to 0
-    out.origin = Vector3::zero();
+	Ray out;
+	// Set the origin to 0
+	out.origin = Vector3::zero();
 
-    float cx = screenWidth  / 2.0f;
-    float cy = screenHeight / 2.0f;
+	float cx = screenWidth  / 2.0f;
+	float cy = screenHeight / 2.0f;
 
-    out.direction =
-        Vector3( (x - cx) * -CoordinateFrame::zLookDirection,
-                -(y - cy),
+	out.direction =
+		Vector3( (x - cx) * -CoordinateFrame::zLookDirection,
+				-(y - cy),
                  getImagePlaneDepth(viewport) * CoordinateFrame::zLookDirection);
 
-    out = cframe.toWorldSpace(out);
+	out = cframe.toWorldSpace(out);
 
-    // Normalize the direction (we didn't do it before)
-    out.direction = out.direction.direction();
+	// Normalize the direction (we didn't do it before)
+	out.direction = out.direction.direction();
 
-    return out;
+	return out;
 }
 
 Vector3 GCamera::project(
-    const Vector3&                      point,
-    const Rect2D&                       viewport) const {
+	const Vector3&                      point,
+	const Rect2D&                       viewport) const {
 
-    int screenWidth  = (int)viewport.width();
-    int screenHeight = (int)viewport.height();
+	int screenWidth  = (int)viewport.width();
+	int screenHeight = (int)viewport.height();
 
-    Vector3 out = cframe.pointToObjectSpace(point);
-    float w = out.z * CoordinateFrame::zLookDirection;
+	Vector3 out = cframe.pointToObjectSpace(point);
+	float w = out.z * CoordinateFrame::zLookDirection;
 
-    if (w <= 0) {
-        return Vector3::inf();
-    }
-    debugAssert(w > 0);
+	if (w <= 0) {
+		return Vector3::inf();
+	}
+	debugAssert(w > 0);
 
-    // Find where it hits an image plane of these dimensions
-    float zImagePlane = getImagePlaneDepth(viewport);
+	// Find where it hits an image plane of these dimensions
+	float zImagePlane = getImagePlaneDepth(viewport);
 
-    // Recover the distance
-    float rhw = zImagePlane / w;
+	// Recover the distance
+	float rhw = zImagePlane / w;
 
-    // Add the image center, flip the y axis
-    out.x = screenWidth / 2.0f - (rhw * out.x * CoordinateFrame::zLookDirection);
-    out.y = screenHeight / 2.0f - (rhw * out.y);
-    out.z = rhw;
+	// Add the image center, flip the y axis
+	out.x = screenWidth / 2.0f - (rhw * out.x * CoordinateFrame::zLookDirection);
+	out.y = screenHeight / 2.0f - (rhw * out.y);
+	out.z = rhw;
 
-    return out;
+	return out;
 }
 
 float GCamera::worldToScreenSpaceArea(float area, float z, const Rect2D& viewport) const {
 
-    if (z >= 0) {
-        return (float)inf();
-    }
+	if (z >= 0) {
+		return (float)inf();
+	}
 
-    float zImagePlane = getImagePlaneDepth(viewport);
+	float zImagePlane = getImagePlaneDepth(viewport);
 
-    return area * (float)square(zImagePlane / z);
+	return area * (float)square(zImagePlane / z);
 }
 
 /*
@@ -181,17 +198,17 @@ double GCamera::getZValue(
 */
 
 void GCamera::getClipPlanes(
-    const Rect2D&       viewport,
-    Array<Plane>&       clip) const {
+	const Rect2D&       viewport,
+	Array<Plane>&       clip) const {
 
-    Frustum fr;
-    getFrustum(viewport, fr);
-    clip.resize(fr.faceArray.size(), DONT_SHRINK_UNDERLYING_ARRAY);
-    for (int f = 0; f < clip.size(); ++f) {
-        clip[f] = fr.faceArray[f].plane;
-    }
+	Frustum fr;
+	getFrustum(viewport, fr);
+	clip.resize(fr.faceArray.size(), DONT_SHRINK_UNDERLYING_ARRAY);
+	for (int f = 0; f < clip.size(); ++f) {
+		clip[f] = fr.faceArray[f].plane;
+	}
 
-    /*
+	/*
     clip.resize(0, DONT_SHRINK_UNDERLYING_ARRAY);
 
     double screenWidth  = viewport.width();
@@ -248,150 +265,150 @@ void GCamera::getClipPlanes(
 }
 
 GCamera::Frustum GCamera::frustum(const Rect2D& viewport) const {
-    Frustum f;
-    getFrustum(viewport, f);
-    return f;
+	Frustum f;
+	getFrustum(viewport, f);
+	return f;
 }
 
 void GCamera::getFrustum(const Rect2D& viewport, Frustum& fr) const {
 
-    // The volume is the convex hull of the vertices definining the view
-    // frustum and the light source point at infinity.
+	// The volume is the convex hull of the vertices definining the view
+	// frustum and the light source point at infinity.
 
-    const float x               = getViewportWidth(viewport) / 2;
-    const float y               = getViewportHeight(viewport) / 2;
-    const float z               = getNearPlaneZ();
-    const float w               = z / getFarPlaneZ();
+	const float x               = getViewportWidth(viewport) / 2;
+	const float y               = getViewportHeight(viewport) / 2;
+	const float z               = getNearPlaneZ();
+	const float w               = z / getFarPlaneZ();
 	const float fovx            = x * fieldOfView / y;
 
-    // Near face (ccw from UR)
-    fr.vertexPos.append(
-        Vector4( x,  y, z, 1),
-        Vector4(-x,  y, z, 1),
-        Vector4(-x, -y, z, 1),
-        Vector4( x, -y, z, 1));
+	// Near face (ccw from UR)
+	fr.vertexPos.append(
+		Vector4( x,  y, z, 1),
+		Vector4(-x,  y, z, 1),
+		Vector4(-x, -y, z, 1),
+		Vector4( x, -y, z, 1));
 
-    // Far face (ccw from UR, from origin)
-    fr.vertexPos.append(
-        Vector4( x,  y, z, w),
-        Vector4(-x,  y, z, w),
-        Vector4(-x, -y, z, w),
-        Vector4( x, -y, z, w));
+	// Far face (ccw from UR, from origin)
+	fr.vertexPos.append(
+		Vector4( x,  y, z, w),
+		Vector4(-x,  y, z, w),
+		Vector4(-x, -y, z, w),
+		Vector4( x, -y, z, w));
 
-    Frustum::Face face;
+	Frustum::Face face;
 
-    // Near plane (wind backwards so normal faces into frustum)
+	// Near plane (wind backwards so normal faces into frustum)
 	// Recall that nearPlane, farPlane are positive numbers, so
 	// we need to negate them to produce actual z values.
 	face.plane = Plane(Vector3(0,0,-1), Vector3(0,0,-nearPlane));
-    face.vertexIndex[0] = 3;
-    face.vertexIndex[1] = 2;
-    face.vertexIndex[2] = 1;
-    face.vertexIndex[3] = 0;
-    fr.faceArray.append(face);
+	face.vertexIndex[0] = 3;
+	face.vertexIndex[1] = 2;
+	face.vertexIndex[2] = 1;
+	face.vertexIndex[3] = 0;
+	fr.faceArray.append(face);
 
-    // Right plane
-    face.plane = Plane(Vector3(-cosf(fovx/2), 0, -sinf(fovx/2)), Vector3::zero());
-    face.vertexIndex[0] = 0;
-    face.vertexIndex[1] = 4;
-    face.vertexIndex[2] = 7;
-    face.vertexIndex[3] = 3;
-    fr.faceArray.append(face);
+	// Right plane
+	face.plane = Plane(Vector3(-cosf(fovx/2), 0, -sinf(fovx/2)), Vector3::zero());
+	face.vertexIndex[0] = 0;
+	face.vertexIndex[1] = 4;
+	face.vertexIndex[2] = 7;
+	face.vertexIndex[3] = 3;
+	fr.faceArray.append(face);
 
-    // Left plane
+	// Left plane
 	face.plane = Plane(Vector3(-fr.faceArray.last().plane.normal().x, 0, fr.faceArray.last().plane.normal().z), Vector3::zero());
-    face.vertexIndex[0] = 5;
-    face.vertexIndex[1] = 1;
-    face.vertexIndex[2] = 2;
-    face.vertexIndex[3] = 6;
-    fr.faceArray.append(face);
+	face.vertexIndex[0] = 5;
+	face.vertexIndex[1] = 1;
+	face.vertexIndex[2] = 2;
+	face.vertexIndex[3] = 6;
+	fr.faceArray.append(face);
 
-    // Top plane
-    face.plane = Plane(Vector3(0, -cosf(fieldOfView/2.0f), -sinf(fieldOfView/2.0f)), Vector3::zero());
-    face.vertexIndex[0] = 1;
-    face.vertexIndex[1] = 5;
-    face.vertexIndex[2] = 4;
-    face.vertexIndex[3] = 0;
-    fr.faceArray.append(face);
+	// Top plane
+	face.plane = Plane(Vector3(0, -cosf(fieldOfView/2.0f), -sinf(fieldOfView/2.0f)), Vector3::zero());
+	face.vertexIndex[0] = 1;
+	face.vertexIndex[1] = 5;
+	face.vertexIndex[2] = 4;
+	face.vertexIndex[3] = 0;
+	fr.faceArray.append(face);
 
-    // Bottom plane
+	// Bottom plane
 	face.plane = Plane(Vector3(0, -fr.faceArray.last().plane.normal().y, fr.faceArray.last().plane.normal().z), Vector3::zero());
-    face.vertexIndex[0] = 2;
-    face.vertexIndex[1] = 3;
-    face.vertexIndex[2] = 7;
-    face.vertexIndex[3] = 6;
-    fr.faceArray.append(face);
+	face.vertexIndex[0] = 2;
+	face.vertexIndex[1] = 3;
+	face.vertexIndex[2] = 7;
+	face.vertexIndex[3] = 6;
+	fr.faceArray.append(face);
 
-    // Far plane
-    if (farPlane < inf()) {
+	// Far plane
+	if (farPlane < inf()) {
     	face.plane = Plane(Vector3(0, 0, 1), Vector3(0, 0, -farPlane));
-        face.vertexIndex[0] = 4;
-        face.vertexIndex[1] = 5;
-        face.vertexIndex[2] = 6;
-        face.vertexIndex[3] = 7;
-        fr.faceArray.append(face);
-    }
+		face.vertexIndex[0] = 4;
+		face.vertexIndex[1] = 5;
+		face.vertexIndex[2] = 6;
+		face.vertexIndex[3] = 7;
+		fr.faceArray.append(face);
+	}
 
-    // Transform vertices to world space
-    for (int v = 0; v < fr.vertexPos.size(); ++v) {
-        fr.vertexPos[v] = cframe.toWorldSpace(fr.vertexPos[v]);
-    }
+	// Transform vertices to world space
+	for (int v = 0; v < fr.vertexPos.size(); ++v) {
+		fr.vertexPos[v] = cframe.toWorldSpace(fr.vertexPos[v]);
+	}
 
 	// Transform planes to world space
 	for (int p = 0; p < fr.faceArray.size(); ++p) {
 		// Since there is no scale factor, we don't have to
 		// worry about the inverse transpose of the normal.
-        Vector3 normal;
-        float d;
+		Vector3 normal;
+		float d;
 
-        fr.faceArray[p].plane.getEquation(normal, d);
+		fr.faceArray[p].plane.getEquation(normal, d);
 
 		Vector3 newNormal = cframe.rotation * normal;
 
-        if (isFinite(d)) {
+		if (isFinite(d)) {
     		d = (newNormal * -d + cframe.translation).dot(newNormal);
     		fr.faceArray[p].plane = Plane(newNormal, newNormal * d);
-        } else {
-            // When d is infinite, we can't multiply 0's by it without
-            // generating NaNs.
-            fr.faceArray[p].plane = Plane::fromEquation(newNormal.x, newNormal.y, newNormal.z, d);
-        }
+		} else {
+			// When d is infinite, we can't multiply 0's by it without
+			// generating NaNs.
+			fr.faceArray[p].plane = Plane::fromEquation(newNormal.x, newNormal.y, newNormal.z, d);
+		}
 	}
 }
 
 void GCamera::get3DViewportCorners(
-    const Rect2D& viewport,
-    Vector3& outUR,
-    Vector3& outUL,
-    Vector3& outLL,
-    Vector3& outLR) const {
+	const Rect2D& viewport,
+	Vector3& outUR,
+	Vector3& outUL,
+	Vector3& outLL,
+	Vector3& outLR) const {
 
-    // Must be kept in sync with getFrustum()
+	// Must be kept in sync with getFrustum()
 
-    const float sign            = CoordinateFrame::zLookDirection;
-    const float w               = -sign * getViewportWidth(viewport) / 2.0f;
-    const float h               = getViewportHeight(viewport) / 2.0f;
-    const float z               = -sign * getNearPlaneZ();
+	const float sign            = CoordinateFrame::zLookDirection;
+	const float w               = -sign * getViewportWidth(viewport) / 2.0f;
+	const float h               = getViewportHeight(viewport) / 2.0f;
+	const float z               = -sign * getNearPlaneZ();
 
-    // Compute the points
-    outUR = Vector3( w,  h, z);
-    outUL = Vector3(-w,  h, z);
-    outLL = Vector3(-w, -h, z);
-    outLR = Vector3( w, -h, z);
+	// Compute the points
+	outUR = Vector3( w,  h, z);
+	outUL = Vector3(-w,  h, z);
+	outLL = Vector3(-w, -h, z);
+	outLR = Vector3( w, -h, z);
 
-    // Take to world space
-    outUR = cframe.pointToWorldSpace(outUR);
-    outUL = cframe.pointToWorldSpace(outUL);
-    outLR = cframe.pointToWorldSpace(outLR);
-    outLL = cframe.pointToWorldSpace(outLL);
+	// Take to world space
+	outUR = cframe.pointToWorldSpace(outUR);
+	outUL = cframe.pointToWorldSpace(outUL);
+	outLR = cframe.pointToWorldSpace(outLR);
+	outLL = cframe.pointToWorldSpace(outLL);
 }
 
 void GCamera::setPosition(const Vector3& t) {
-    cframe.translation = t;
+	cframe.translation = t;
 }
 
 void GCamera::lookAt(const Vector3& position, const Vector3& up) {
-    cframe.lookAt(position, up);
+	cframe.lookAt(position, up);
 }
 
 void GCamera::serialize(BinaryOutput& bo) const {

@@ -1,17 +1,41 @@
+// =============================================================================
+// RbxGeometryGenerator.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/rbxogre/RbxGeometryGenerator.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #undef OGRE_NONCLIENT_BUILD
 #include "OgreRbx/GeometryCreate2008.h"
 #include <OgreSubMesh.h>
 #include <OgreHardwareBufferManager.h>
 
-namespace Ogre {
+namespace Ogre
+{
 // INFERRED: helper name and pointer types from original 0067c020 and indexed geometry donor.
 SubMesh* GeometryBuilder::createIndices(const MeshPtr& mesh, const unsigned short* indices16, const unsigned* indices32, unsigned triangles) {
  boost::call_once(initializeGeometryContext, geometryOnce);
  boost::recursive_mutex::scoped_lock lock(geometryContext->mutex);
  SubMesh* submesh = mesh->createSubMesh();
  size_t count = triangles * 3;
- HardwareIndexBufferSharedPtr buffer = HardwareBufferManager::getSingleton().createIndexBuffer(indices16 ? HardwareIndexBuffer::IT_16BIT : HardwareIndexBuffer::IT_32BIT, count, HardwareBuffer::HBU_STATIC_WRITE_ONLY);
- buffer->writeData(0, buffer->getSizeInBytes(), indices16 ? static_cast<const void*>(indices16) : static_cast<const void*>(indices32), true);
+ HardwareIndexBufferSharedPtr buffer = HardwareBufferManager::getSingleton().createIndexBuffer(
+     indices16 ? HardwareIndexBuffer::IT_16BIT : HardwareIndexBuffer::IT_32BIT,
+     count,
+     HardwareBuffer::HBU_STATIC_WRITE_ONLY);
+ buffer->writeData(
+     0,
+     buffer->getSizeInBytes(),
+     indices16 ? static_cast<const void*>(indices16) : static_cast<const void*>(indices32),
+     true);
  submesh->useSharedVertices = true;
  submesh->indexData->indexBuffer = buffer;
  submesh->indexData->indexCount = count;
@@ -26,7 +50,8 @@ SubMesh* GeometryBuilder::createIndices(const MeshPtr& mesh, const unsigned shor
 #include <OgreRenderSystem.h>
 #include <vector>
 
-namespace RBX {
+namespace RBX
+{
 // INFERRED: source analog 00679ae0; actual receiver/signature identity still requires proof.
 Ogre::VertexData* OgreUtil::createVertexData(const Ogre::Vector3* positions, unsigned int count, const Ogre::Vector3* normals, const G3D::Color4* colors, const float* texCoords)
 {
@@ -37,7 +62,10 @@ Ogre::VertexData* OgreUtil::createVertexData(const Ogre::Vector3* positions, uns
     unsigned short source = 0;
     decl->addElement(source, 0, Ogre::VET_FLOAT3, Ogre::VES_POSITION);
     unsigned int vsize = Ogre::VertexElement::getTypeSize(Ogre::VET_FLOAT3);
-    Ogre::HardwareVertexBufferSharedPtr vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(vsize, vd->vertexCount, Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
+    Ogre::HardwareVertexBufferSharedPtr vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(
+        vsize,
+        vd->vertexCount,
+        Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
     vbuf->writeData(0, vbuf->getSizeInBytes(), positions, true);
     Ogre::VertexBufferBinding* bind = vd->vertexBufferBinding;
     bind->setBinding(source, vbuf);
@@ -55,7 +83,10 @@ Ogre::VertexData* OgreUtil::createVertexData(const Ogre::Vector3* positions, uns
         }
         decl->addElement(source, 0, Ogre::VET_COLOUR, Ogre::VES_DIFFUSE);
         unsigned int csize = Ogre::VertexElement::getTypeSize(Ogre::VET_COLOUR);
-        vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(csize, vd->vertexCount, Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
+        vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(
+            csize,
+            vd->vertexCount,
+            Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
         vbuf->writeData(0, vbuf->getSizeInBytes(), &colourData[0], true);
         bind->setBinding(source, vbuf);
         ++source;
@@ -63,7 +94,10 @@ Ogre::VertexData* OgreUtil::createVertexData(const Ogre::Vector3* positions, uns
     if (normals) {
         decl->addElement(source, 0, Ogre::VET_FLOAT3, Ogre::VES_NORMAL);
         unsigned int size = Ogre::VertexElement::getTypeSize(Ogre::VET_FLOAT3);
-        vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(size, vd->vertexCount, Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
+        vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(
+            size,
+            vd->vertexCount,
+            Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
         vbuf->writeData(0, vbuf->getSizeInBytes(), normals, true);
         bind->setBinding(source, vbuf);
         ++source;
@@ -71,7 +105,10 @@ Ogre::VertexData* OgreUtil::createVertexData(const Ogre::Vector3* positions, uns
     if (texCoords) {
         decl->addElement(source, 0, Ogre::VET_FLOAT2, Ogre::VES_TEXTURE_COORDINATES);
         unsigned int size = Ogre::VertexElement::getTypeSize(Ogre::VET_FLOAT2);
-        vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(size, vd->vertexCount, Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
+        vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(
+            size,
+            vd->vertexCount,
+            Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
         vbuf->writeData(0, vbuf->getSizeInBytes(), texCoords, true);
         bind->setBinding(source, vbuf);
     }
@@ -84,7 +121,8 @@ Ogre::VertexData* OgreUtil::createVertexData(const Ogre::Vector3* positions, uns
 #include <OgreAxisAlignedBox.h>
 #include <cmath>
 
-namespace Ogre {
+namespace Ogre
+{
 // INFERRED method name; 00679e70 replaces Mesh::sharedVertexData (+0x1e4),
 void GeometryBuilder::update(MeshPtr& mesh, const float* vertices, unsigned vertexCount,
     const float* normals, const float* colours, const float* texCoords,
@@ -134,7 +172,8 @@ void GeometryBuilder::update(MeshPtr& mesh, const float* vertices, unsigned vert
 #include <OgreLogManager.h>
 #include <OgreStringConverter.h>
 
-namespace Ogre {
+namespace Ogre
+{
 // INFERRED: method/signature from 0067c130 analog; fields from original allocation and stores.
 RbxSubMesh* GeometryBuilder::createIndexed(const float*vertices,unsigned vertexCount,const float*normals,const float*colours,const float*texCoords,const unsigned short*indices16,const unsigned*indices32,unsigned triangleCount,Vector3*minimum,Vector3*maximum){
  boost::call_once(initializeGeometryContext,geometryOnce);
@@ -145,7 +184,11 @@ RbxSubMesh* GeometryBuilder::createIndexed(const float*vertices,unsigned vertexC
  result->vertexData=createVertexData(vertices,vertexCount,normals,colours,texCoords);
  result->useSharedVertices=false;
  unsigned indexCount=3*triangleCount;
- HardwareIndexBufferSharedPtr buffer=HardwareBufferManager::getSingleton().createIndexBuffer(indices16?HardwareIndexBuffer::IT_16BIT:HardwareIndexBuffer::IT_32BIT,indexCount,HardwareBuffer::HBU_STATIC_WRITE_ONLY,false);
+ HardwareIndexBufferSharedPtr buffer=HardwareBufferManager::getSingleton().createIndexBuffer(
+     indices16?HardwareIndexBuffer::IT_16BIT:HardwareIndexBuffer::IT_32BIT,
+     indexCount,
+     HardwareBuffer::HBU_STATIC_WRITE_ONLY,
+     false);
  buffer->writeData(0,buffer->getSizeInBytes(),indices16?static_cast<const void*>(indices16):indices32,true);
  result->indexData->indexBuffer=buffer;
  result->indexData->indexCount=indexCount;
@@ -169,7 +212,8 @@ RbxSubMesh* GeometryBuilder::createIndexed(const float*vertices,unsigned vertexC
 }
 
 #undef OGRE_NONCLIENT_BUILD
-namespace Ogre {
+namespace Ogre
+{
 // Inferred receiver and signature; adapted from existing vertex-data implementation.
 Ogre::VertexData* GeometryBuilder::createVertexData(const float* positions, unsigned int count, const float* normals, const float* colors, const float* texCoords)
 {
@@ -180,7 +224,10 @@ Ogre::VertexData* GeometryBuilder::createVertexData(const float* positions, unsi
     unsigned short source = 0;
     decl->addElement(source, 0, Ogre::VET_FLOAT3, Ogre::VES_POSITION);
     unsigned int vsize = Ogre::VertexElement::getTypeSize(Ogre::VET_FLOAT3);
-    Ogre::HardwareVertexBufferSharedPtr vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(vsize, vd->vertexCount, Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
+    Ogre::HardwareVertexBufferSharedPtr vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(
+        vsize,
+        vd->vertexCount,
+        Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
     vbuf->writeData(0, vbuf->getSizeInBytes(), positions, true);
     Ogre::VertexBufferBinding* bind = vd->vertexBufferBinding;
     bind->setBinding(source, vbuf);
@@ -198,7 +245,10 @@ Ogre::VertexData* GeometryBuilder::createVertexData(const float* positions, unsi
         }
         decl->addElement(source, 0, Ogre::VET_COLOUR, Ogre::VES_DIFFUSE);
         unsigned int csize = Ogre::VertexElement::getTypeSize(Ogre::VET_COLOUR);
-        vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(csize, vd->vertexCount, Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
+        vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(
+            csize,
+            vd->vertexCount,
+            Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
         vbuf->writeData(0, vbuf->getSizeInBytes(), &colourData[0], true);
         bind->setBinding(source, vbuf);
         ++source;
@@ -206,7 +256,10 @@ Ogre::VertexData* GeometryBuilder::createVertexData(const float* positions, unsi
     if (normals) {
         decl->addElement(source, 0, Ogre::VET_FLOAT3, Ogre::VES_NORMAL);
         unsigned int size = Ogre::VertexElement::getTypeSize(Ogre::VET_FLOAT3);
-        vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(size, vd->vertexCount, Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
+        vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(
+            size,
+            vd->vertexCount,
+            Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
         vbuf->writeData(0, vbuf->getSizeInBytes(), normals, true);
         bind->setBinding(source, vbuf);
         ++source;
@@ -214,7 +267,10 @@ Ogre::VertexData* GeometryBuilder::createVertexData(const float* positions, unsi
     if (texCoords) {
         decl->addElement(source, 0, Ogre::VET_FLOAT2, Ogre::VES_TEXTURE_COORDINATES);
         unsigned int size = Ogre::VertexElement::getTypeSize(Ogre::VET_FLOAT2);
-        vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(size, vd->vertexCount, Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
+        vbuf = Ogre::HardwareBufferManager::getSingleton().createVertexBuffer(
+            size,
+            vd->vertexCount,
+            Ogre::HardwareBuffer::HBU_STATIC_WRITE_ONLY);
         vbuf->writeData(0, vbuf->getSizeInBytes(), texCoords, true);
         bind->setBinding(source, vbuf);
     }

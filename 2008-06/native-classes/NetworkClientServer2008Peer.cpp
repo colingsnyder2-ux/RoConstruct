@@ -35,10 +35,7 @@ namespace RBX
 // 009716c8). The 2007 OpenRBX analog is Peer::updateLogger (NetworkSettings::logPackets); the 2008 body takes the flag
 // and replaces the logger unconditionally when enabling: new(0x210) FilePacketLogger(this) 004ab630, rakPeer slot 58
 // AttachPlugin (+0xe8); disabling calls slot 59 DetachPlugin (+0xec) before the scoped_ptr reset.
-// BLOCKED (guard below): Network/Peer2008.h (not this batch's file) does not declare logPackets; the proposal adds
-// `void logPackets(bool value);` to Peer (public, after updateNetworkSimulator) and defines
-// PEER_HEADER_DECLARES_LOGPACKETS (measured against a scratch copy, batch 43 nr03).
-#ifdef PEER_HEADER_DECLARES_LOGPACKETS
+// Declared in Network/Peer2008.h (b46 hn03); the former PEER_HEADER_DECLARES_LOGPACKETS guard is gone.
 // Unit-local redeclaration of native-headers/Replicator.h FilePacketLogger (that header redefines Peer, so it cannot be
 // included next to Network/Peer2008.h); identical to the Replicator.h declaration.
 class FilePacketLogger : public PacketLogger
@@ -77,7 +74,6 @@ namespace RBX
 		}
 	}
 }
-#endif
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class boost::scoped_ptr<PacketLogger>;

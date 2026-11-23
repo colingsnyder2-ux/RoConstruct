@@ -1,3 +1,19 @@
+// =============================================================================
+// jutils.c
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/ijg/jutils.c
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 /*
  * jutils.c
  *
@@ -124,12 +140,12 @@ jcopy_sample_rows (JSAMPARRAY input_array, int source_row,
   output_array += dest_row;
 
   for (row = num_rows; row > 0; row--) {
-    inptr = *input_array++;
-    outptr = *output_array++;
+	inptr = *input_array++;
+	outptr = *output_array++;
 #ifdef FMEMCOPY
-    FMEMCOPY(outptr, inptr, count);
+	FMEMCOPY(outptr, inptr, count);
 #else
-    for (count = num_cols; count > 0; count--)
+	for (count = num_cols; count > 0; count--)
       *outptr++ = *inptr++;	/* needn't bother with GETJSAMPLE() here */
 #endif
   }
@@ -149,7 +165,7 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
   inptr = (JCOEFPTR) input_row;
   outptr = (JCOEFPTR) output_row;
   for (count = (long) num_blocks * DCTSIZE2; count > 0; count--) {
-    *outptr++ = *inptr++;
+	*outptr++ = *inptr++;
   }
 #endif
 }
@@ -166,7 +182,7 @@ jzero_far (void FAR * target, size_t bytestozero)
   register size_t count;
 
   for (count = bytestozero; count > 0; count--) {
-    *ptr++ = 0;
+	*ptr++ = 0;
   }
 #endif
 }
@@ -210,71 +226,71 @@ static int isFileGood(FILE* f) {
 }
 
 FILE* _robustTmpfile() {
-    FILE* t = tmpfile();
+	FILE* t = tmpfile();
 #ifdef _WIN32
 	char* n = NULL;
 #endif
 	char name[256];
 
-    if (isFileGood(t)) {
+	if (isFileGood(t)) {
 		return t;
 	}
 
-    /* tmpfile failed; try the tmpnam routine */
-    t = fopen(tmpnam(NULL), "w+");
-    if (isFileGood(t)) {
+	/* tmpfile failed; try the tmpnam routine */
+	t = fopen(tmpnam(NULL), "w+");
+	if (isFileGood(t)) {
 		return t;
 	}
 
-    #ifdef _WIN32
+	#ifdef _WIN32
 		n = _tempnam("c:/tmp/", "t");
-        /* Try to create something in C:\tmp */
-        t = fopen(n, "w+");
+		/* Try to create something in C:\tmp */
+		t = fopen(n, "w+");
 		if (isFileGood(t)) {
 			return t;
 		}
 
-        /* Try c:\temp */
+		/* Try c:\temp */
 		n = _tempnam("c:/temp/", "t");
-        t = fopen(n, "w+");
+		t = fopen(n, "w+");
 	    if (isFileGood(t)) {
 			return t;
 		}
 
-        /* try the current directory */
+		/* try the current directory */
 		n = _tempnam("./", "t");
-        t = fopen(n, "w+");
+		t = fopen(n, "w+");
 		if (isFileGood(t)) {
 			return t;
 		}
-    #endif
+	#endif
 
-    /* Try some hardcoded paths */
-    sprintf(name, "%s/tmp%d", "c:/tmp", rand());
-    t = fopen(name, "w+");
-    if (isFileGood(t)) {
+	/* Try some hardcoded paths */
+	sprintf(name, "%s/tmp%d", "c:/tmp", rand());
+	t = fopen(name, "w+");
+	if (isFileGood(t)) {
 		return t;
 	}
 
-    sprintf(name, "%s/tmp%d", "/tmp", rand());
-    t = fopen(name, "w+");
-    if (isFileGood(t)) {
+	sprintf(name, "%s/tmp%d", "/tmp", rand());
+	t = fopen(name, "w+");
+	if (isFileGood(t)) {
 		return t;
 	}
 
-    sprintf(name, "%s/tmp%d", "c:/temp", rand());
-    t = fopen(name, "w+");
-    if (isFileGood(t)) {
+	sprintf(name, "%s/tmp%d", "c:/temp", rand());
+	t = fopen(name, "w+");
+	if (isFileGood(t)) {
 		return t;
 	}
 
-    sprintf(name, "tmp%d", rand());
-    t = fopen(name, "w+");
-    if (isFileGood(t)) {
+	sprintf(name, "tmp%d", rand());
+	t = fopen(name, "w+");
+	if (isFileGood(t)) {
 		return t;
 	}
 
-    fprintf(stderr, "Unable to create a temporary file; robustTmpfile returning NULL\n");
+	fprintf(stderr, "Unable to create a temporary file; robustTmpfile returning NULL\n");
 
-    return NULL;
+	return NULL;
 }

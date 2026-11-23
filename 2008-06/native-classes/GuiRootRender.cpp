@@ -10,13 +10,6 @@
 
 namespace RBX
 {
-	// INFERRED: setCanvasSize is inline in the 2008 header (stores at 00573c3a / 00573c40, no out-of-line copy); the
-	// read-only gui/Gui.h only declares it. Proposal: make it inline there.
-	inline void GuiRoot::setCanvasSize(const G3D::Vector2& size)
-	{
-		canvasSize = size;
-	}
-
 	// 00573c00
 	void GuiRoot::render2d(Adorn* adorn)
 	{

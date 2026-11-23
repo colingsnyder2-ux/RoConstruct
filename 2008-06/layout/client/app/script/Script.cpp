@@ -1,3 +1,19 @@
+// =============================================================================
+// Script.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/script/Script.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "script/Script.h"
 #include "script/ScriptContext.h"
 #include "v8tree/Service.h"
@@ -23,30 +39,44 @@ namespace RBX
 
 using namespace RBX;
 
-const Reflection::PropDescriptor<Script, std::string> Script::prop_EmbeddedSourceCode("Source", "Data", &Script::getEmbeddedCode, &Script::setEmbeddedCode, Reflection::PropertyDescriptor::LEGACY);
-const Reflection::PropDescriptor<Script, ContentId> Script::prop_SourceCodeId("LinkedSource", "Data", &Script::getScriptId, &Script::setScriptId, Reflection::PropertyDescriptor::LEGACY);
-Reflection::BoundProp<bool, true> Script::prop_Disabled("Disabled", "Behavior", &Script::disabled, Reflection::PropertyDescriptor::STANDARD);
+const Reflection::PropDescriptor<Script, std::string> Script::prop_EmbeddedSourceCode(
+	"Source",
+	"Data",
+	&Script::getEmbeddedCode,
+	&Script::setEmbeddedCode,
+	Reflection::PropertyDescriptor::LEGACY);
+const Reflection::PropDescriptor<Script, ContentId> Script::prop_SourceCodeId(
+	"LinkedSource",
+	"Data",
+	&Script::getScriptId,
+	&Script::setScriptId,
+	Reflection::PropertyDescriptor::LEGACY);
+Reflection::BoundProp<bool, true> Script::prop_Disabled(
+	"Disabled",
+	"Behavior",
+	&Script::disabled,
+	Reflection::PropertyDescriptor::STANDARD);
 
 static boost::shared_ptr<const std::string> helloWorld;
 static boost::once_flag flagInitScriptCpp = BOOST_ONCE_INIT;
 
 void initScriptCpp()   // 005862a0 (boost::call_once target)
 {
-    helloWorld.reset(new std::string("print(\"Hello world!\")\r\n"));
+	helloWorld.reset(new std::string("print(\"Hello world!\")\r\n"));
 }
 
 Script::Script()   // 00586960
-    : DescribedCreatable("Script"),
+	: DescribedCreatable("Script"),
       disabled(false),
       owner(NULL)
 {
-    boost::call_once(&initScriptCpp, flagInitScriptCpp);
-    embeddedSource = helloWorld;
+	boost::call_once(&initScriptCpp, flagInitScriptCpp);
+	embeddedSource = helloWorld;
 }
 
 LocalScript::LocalScript()   // 00586d70
 {
-    setName("LocalScript");
+	setName("LocalScript");
 }
 
 Script::~Script()   // 00585e40
@@ -59,52 +89,52 @@ LocalScript::~LocalScript()   // 00586eb0
 
 void Script::setEmbeddedCode(const std::string& value)
 {
-    if (getEmbeddedCode() != value)
-    {
-        embeddedSource.reset(new std::string(value));
-        raisePropertyChanged(prop_EmbeddedSourceCode);
-    }
+	if (getEmbeddedCode() != value)
+	{
+		embeddedSource.reset(new std::string(value));
+		raisePropertyChanged(prop_EmbeddedSourceCode);
+	}
 }
 
 void Script::setScriptId(const ContentId& value)
 {
-    if (getScriptId() != value)
-    {
-        scriptId = value;
-        requestCode();
-        raisePropertyChanged(prop_SourceCodeId);
-    }
+	if (getScriptId() != value)
+	{
+		scriptId = value;
+		requestCode();
+		raisePropertyChanged(prop_SourceCodeId);
+	}
 }
 
 void Script::onAncestorChanged(const AncestorChanged& event)
 {
-    Instance::onAncestorChanged(event);
-    IScriptOwner* newOwner = NULL;
-    Instance* parent = this->getParent();
-    while (parent)
-    {
-        IScriptOwner* parentOwner = dynamic_cast<IScriptOwner*>(parent);
-        if (parentOwner)
-        {
-            newOwner = parentOwner->scriptShouldRun(this);
-            if (newOwner)
-                break;
-        }
-        parent = parent->getParent();
-    }
-    if (newOwner != owner)
-    {
-        if (owner)
-            owner->releaseScript(this);
-        owner = newOwner;
-        ScriptContext* sc = ServiceProvider::find<ScriptContext>(this);
-        if (sc)
-        {
-            sc->removeScript(this);
-            if (owner)
-                owner->runScript(this, sc);
-        }
-    }
+	Instance::onAncestorChanged(event);
+	IScriptOwner* newOwner = NULL;
+	Instance* parent = this->getParent();
+	while (parent)
+	{
+		IScriptOwner* parentOwner = dynamic_cast<IScriptOwner*>(parent);
+		if (parentOwner)
+		{
+			newOwner = parentOwner->scriptShouldRun(this);
+			if (newOwner)
+				break;
+		}
+		parent = parent->getParent();
+	}
+	if (newOwner != owner)
+	{
+		if (owner)
+			owner->releaseScript(this);
+		owner = newOwner;
+		ScriptContext* sc = ServiceProvider::find<ScriptContext>(this);
+		if (sc)
+		{
+			sc->removeScript(this);
+			if (owner)
+				owner->runScript(this, sc);
+		}
+	}
 }
 
 void Script::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
@@ -119,10 +149,10 @@ void Script::onServiceProvider(const ServiceProvider* oldProvider, const Service
 
 boost::shared_ptr<const std::string> Script::requestCode()
 {
-    if (scriptId.isNull())
-        return embeddedSource;
-    else
-        return ContentProvider::singleton().requestContentString(scriptId);
+	if (scriptId.isNull())
+		return embeddedSource;
+	else
+		return ContentProvider::singleton().requestContentString(scriptId);
 }
 
 template class boost::function1<void,RBX::Security::Context *,std::allocator<boost::function_base> >;

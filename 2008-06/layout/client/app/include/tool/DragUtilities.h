@@ -1,3 +1,19 @@
+// =============================================================================
+// DragUtilities.h
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/include/tool/DragUtilities.h
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #pragma once
 #include <G3D/Array.h>
 #include <G3D/Vector3.h>
@@ -41,7 +57,11 @@ namespace RBX
 		static void instancesToParts(const std::vector<Instance*>& instances, std::vector<boost::weak_ptr<PartInstance>>& parts);
 		static World* partsToPrimitives(const std::vector<boost::weak_ptr<PartInstance>>& parts, G3D::Array<Primitive*>& primitives);
 		static Extents computeExtents(const std::vector<boost::weak_ptr<PartInstance>>& parts);
-		static bool hitObjectOrPlane(const ContactManager& contactManager, const G3D::Ray& unitSearchRay, const G3D::Array<Primitive*>* ignorePrims, G3D::Vector3& hit);
+		static bool hitObjectOrPlane(
+			const ContactManager& contactManager,
+			const G3D::Ray& unitSearchRay,
+			const G3D::Array<Primitive*>* ignorePrims,
+			G3D::Vector3& hit);
 		static bool anyPartAlive(const std::vector<boost::weak_ptr<PartInstance>>& parts);
 		static void getPrimitives2(boost::shared_ptr<Instance>, std::vector<Primitive*>&);
 		static void getPrimitives(const Instance*, std::vector<Primitive*>&);

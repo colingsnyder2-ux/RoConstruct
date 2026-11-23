@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
 // INFERRED: Src/Dst are opaque polymorphic types; real names unknown (TDs 0x92907c / 0x92e15c).
 // Src has a parent pointer at +0x104 (vptr + 0x100 bytes of unknown members).

@@ -1,3 +1,19 @@
+// =============================================================================
+// Surface.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/v8datamodel/Surface.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #undef _RELEASEASSERT
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Surface.h"
@@ -71,7 +87,8 @@ namespace RBX
 	}
 }
 
-namespace RBX {
+namespace RBX
+{
 Surface::Surface(PartInstance* partInstance, NormalId surfId)
 		: partInstance(partInstance),
 		  surfId(surfId)
@@ -79,7 +96,8 @@ Surface::Surface(PartInstance* partInstance, NormalId surfId)
 	}
 }
 
-namespace RBX {
+namespace RBX
+{
 bool Surface::isControllable() const
 	{
 		Controller::InputType inputType = getInput();
@@ -89,24 +107,26 @@ bool Surface::isControllable() const
 
 #undef _RELEASEASSERT
 
-namespace RBX {
+namespace RBX
+{
 void Surface::flat()
 {
-    if (partInstance->primitive.getSurfaceType(surfId) != NO_SURFACE) {
-        partInstance->primitive.setSurfaceType(surfId, NO_SURFACE);
-        partInstance->onSurfaceChanged(surfId);
-        partInstance->raisePropertyChanged(partInstance->getSurfaces().getSurfaceType(surfId));
-    }
-    setSurfaceInput(SurfaceData::empty().inputType);
-    setParamA(SurfaceData::empty().paramA);
-    setParamB(SurfaceData::empty().paramB);
+	if (partInstance->primitive.getSurfaceType(surfId) != NO_SURFACE) {
+		partInstance->primitive.setSurfaceType(surfId, NO_SURFACE);
+		partInstance->onSurfaceChanged(surfId);
+		partInstance->raisePropertyChanged(partInstance->getSurfaces().getSurfaceType(surfId));
+	}
+	setSurfaceInput(SurfaceData::empty().inputType);
+	setParamA(SurfaceData::empty().paramA);
+	setParamB(SurfaceData::empty().paramB);
 }
 }
 
 #undef _RELEASEASSERT
 #include "v8datamodel/Surfaces.h"
 
-namespace RBX {
+namespace RBX
+{
 
 SurfaceType Surface::getSurfaceType() const
 {

@@ -1,3 +1,19 @@
+// =============================================================================
+// PacketLogger.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/network/raknet30/source/PacketLogger.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/PacketLogger.h"
 
 #include "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/BitStream.h"
@@ -11,13 +27,13 @@
 
 char* PacketLogger::UserIDTOString(unsigned char)
 {
-    return "Unknown";
+	return "Unknown";
 }
 
 char* PacketLogger::BaseIDTOString(unsigned char Id)
 {
 	if (Id >= ID_USER_PACKET_ENUM)
-        return 0;
+		return 0;
 
 	const char *IDTable[(int)ID_USER_PACKET_ENUM]=
 	{
@@ -231,7 +247,10 @@ void PacketLogger::OnInternalPacket(InternalPacket *internalPacket, unsigned fra
 		}
 		else if (internalPacket->data[0]==ID_RPC || (internalPacket->dataBitLength>(sizeof(unsigned char)+sizeof(RakNetTime))*8 && internalPacket->data[0]==ID_TIMESTAMP && internalPacket->data[sizeof(unsigned char)+sizeof(RakNetTime)]==ID_RPC))
 		{
-			const char *uniqueIdentifier = rakPeer->GetRPCString((const char*) internalPacket->data, internalPacket->dataBitLength, isSend==true ? remoteSystemAddress : UNASSIGNED_SYSTEM_ADDRESS);
+			const char *uniqueIdentifier = rakPeer->GetRPCString(
+				(const char*) internalPacket->data,
+				internalPacket->dataBitLength,
+				isSend==true ? remoteSystemAddress : UNASSIGNED_SYSTEM_ADDRESS);
 
 			if (internalPacket->data[0]==ID_TIMESTAMP)
 				sprintf(str, "%s%s,RpT,%5i,%5i,%s,%5i,%i,%u:%i,%u:%i%s",prefix,sendType, internalPacket->messageNumber,frameNumber,

@@ -1,3 +1,19 @@
+// =============================================================================
+// RegistryUtil.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/RegistryUtil.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #line 1 ".\\G3Dcpp\\RegistryUtil.cpp"
 /**
  @file RegistryUtil.cpp
@@ -28,7 +44,8 @@
     #define HKEY_PERFORMANCE_NLSTEXT    (( HKEY ) ((LONG)0x80000060) )
 #endif
 
-namespace G3D {
+namespace G3D
+{
 
 // static helpers
 static HKEY getKeyFromString(const char* str, size_t length);
@@ -83,7 +100,13 @@ bool RegistryUtil::readInt32(const std::string& key, int32& valueData) {
 
         if ( result == ERROR_SUCCESS ) {
             uint32 dataSize = sizeof(int32);
-            result = RegQueryValueEx(openKey, value.c_str(), NULL, NULL, reinterpret_cast<LPBYTE>(&valueData), reinterpret_cast<LPDWORD>(&dataSize));
+            result = RegQueryValueEx(
+                openKey,
+                value.c_str(),
+                NULL,
+                NULL,
+                reinterpret_cast<LPBYTE>(&valueData),
+                reinterpret_cast<LPDWORD>(&dataSize));
 
             debugAssertM(result == ERROR_SUCCESS, "Could not read registry key value.");
 
@@ -122,7 +145,13 @@ bool RegistryUtil::readBytes(const std::string& key, uint8* valueData, uint32& d
             if ( valueData == NULL ) {
                 result = RegQueryValueEx(openKey, value.c_str(), NULL, NULL, NULL, reinterpret_cast<LPDWORD>(&dataSize));
             } else {
-                result = RegQueryValueEx(openKey, value.c_str(), NULL, NULL, reinterpret_cast<LPBYTE>(&valueData), reinterpret_cast<LPDWORD>(&dataSize));
+                result = RegQueryValueEx(
+                    openKey,
+                    value.c_str(),
+                    NULL,
+                    NULL,
+                    reinterpret_cast<LPBYTE>(&valueData),
+                    reinterpret_cast<LPDWORD>(&dataSize));
             }
 
             debugAssertM(result == ERROR_SUCCESS, "Could not read registry key value.");
@@ -167,7 +196,13 @@ bool RegistryUtil::readString(const std::string& key, std::string& valueData) {
                 char* tmpStr = reinterpret_cast<char*>(System::malloc(dataSize));
                 System::memset(tmpStr, 0, dataSize);
 
-                result = RegQueryValueEx(openKey, value.c_str(), NULL, NULL, reinterpret_cast<LPBYTE>(tmpStr), reinterpret_cast<LPDWORD>(&dataSize));
+                result = RegQueryValueEx(
+                    openKey,
+                    value.c_str(),
+                    NULL,
+                    NULL,
+                    reinterpret_cast<LPBYTE>(tmpStr),
+                    reinterpret_cast<LPDWORD>(&dataSize));
 
                 if ( result == ERROR_SUCCESS ) {
                     valueData = tmpStr;
@@ -284,7 +319,13 @@ bool RegistryUtil::writeString(const std::string& key, const std::string& valueD
         int32 result = RegOpenKeyEx(hkey, subKey.c_str(), 0, KEY_ALL_ACCESS, &openKey);
 
         if ( result == ERROR_SUCCESS ) {
-            result = RegSetValueEx(openKey, value.c_str(), NULL, REG_SZ, reinterpret_cast<const BYTE*>(valueData.c_str()), (valueData.size() + 1));
+            result = RegSetValueEx(
+                openKey,
+                value.c_str(),
+                NULL,
+                REG_SZ,
+                reinterpret_cast<const BYTE*>(valueData.c_str()),
+                (valueData.size() + 1));
             debugAssertM(result == ERROR_SUCCESS, "Could not write registry key value.");
 
             RegCloseKey(openKey);

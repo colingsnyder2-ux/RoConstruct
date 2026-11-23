@@ -67,6 +67,7 @@ namespace RBX
 	class IMoving;
 	class Joint;
 	class Primitive;
+	class RigidJoint;
 	class SpatialNode;
 	class SurfaceData;
 	class World;
@@ -96,6 +97,9 @@ namespace RBX
 		// Donor Primitive.h: SpatialHash links its nodes through spatialNodes (+0x64): the SpatialHash node insert 0065a220
 		// reads and writes [prim + 0x64] directly.
 		friend class SpatialHash;
+		// openrbx World.cpp insertPrimitive 005e98f0 / removePrimitive 005ea8b0 store world (+0x58) directly
+		// (`mov [esi+0x58], edi` after the array append), as the donor World is a friend of Primitive.
+		friend class World;
 
 	private:
 		Guid guid;                                       // +0x8
@@ -142,6 +146,18 @@ namespace RBX
 		virtual float getRadius() const;                 // slot 3 (005e7f10)
 
 		void setUnknown0x14(int value);                  // 005e7420 (evidence name)
+		// INFERRED: getter name. getPrimitiveSize 00668bb0 (openrbx ClumpStage2.cpp) multiplies by +0x14 zero-extended
+		// (`push 0` before __allmul 006a16d0), so the value is read as unsigned.
+		unsigned int getSizeMultiplier() const
+		{
+			return unknown0x14;
+		}
+		// Donor IndexArray<Primitive, &Primitive::worldIndexFunc> accessor (openrbx Primitive.h): World::insertPrimitive
+		// 005e98f0 stores the array size to +0x50, removePrimitive 005ea8b0 reads it and stores -1.
+		int& worldIndexFunc()
+		{
+			return worldIndex;
+		}
 		const Guid& getGuid() const;                     // 005e7440 (`lea eax, [ecx + 8]`, out of line: called by
 		                                                 // lessAssembly 005e5f60 and biggerJointGuid 00668c60; donor name)
 		World* getWorld() const
@@ -234,7 +250,15 @@ namespace RBX
 		}
 
 		const G3D::CoordinateFrame& getCoordinateFrame() const;   // 005e82c0
+		Face getFaceInObject(NormalId objectFace);       // 005e76f0 (callers getFaceInWorld 005e81b0, GlueJoint 00647190)
 		Face getFaceInWorld(NormalId objectFace);        // 005e81b0
+		// Donor Primitive.h names (openrbx Primitive.cpp); bodies in native-classes/PrimitiveState.cpp.
+		G3D::CoordinateFrame getGridCorner() const;      // 005e82e0
+		void setGridCorner(const G3D::CoordinateFrame& gridCorner);   // 005e8500 (caller PartInstance 00599730)
+		RigidJoint* getFirstRigidAt(Edge* start);        // 005e7c10
+		RigidJoint* getNextRigid(RigidJoint* prev);      // 005e7ca0 (getFirstRigidAt(getNextJoint(prev)), tail jump)
+		static void insertEdge(Edge* e);                 // 005e89f0 (TreeStage onEdgeAdded caller)
+		static void removeEdge(Edge* e);                 // 005e86a0 (TreeStage::onEdgeRemoving 00669c70)
 		G3D::CoordinateFrame getFaceCoordInObject(NormalId objectFace); // 005e7680
 		const Extents& getFastFuzzyExtents() const;      // 005e7a50 (00606ce6 / 00606cee)
 

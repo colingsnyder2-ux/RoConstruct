@@ -1,44 +1,87 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-// INFERRED: object type unknown; offsets taken from the disassembly.
-struct xtime_t { long long sec; int nsec; };
+// INFERRED: no headers were provided, so the boost/RBX types are declared locally.
+// They are minimal and only match the mangled names and offsets seen in the disassembly.
+namespace RBX {
+    double getRealTime();
+}
 
-struct mutex_t;
-struct scoped_lock_t;
+namespace boost {
+    struct xtime {
+        long long sec;
+        int nsec;
+    };
+    int xtime_get(xtime* t, int base);
 
-extern "C" double fn_005f2000(void);                                              // RBX::getRealTime
-extern "C" int fn_005a6b40(xtime_t* xt, int type);                                // boost::xtime_get
-extern "C" void __fastcall fn_00594ce0(mutex_t* m, int unusedEdx);                // mutex::do_lock
-extern "C" void __fastcall fn_00594d00(mutex_t* m, int unusedEdx);                // mutex::do_unlock
-extern "C" bool __fastcall fn_00554c30(void* cond, int unusedEdx, scoped_lock_t* lk, xtime_t* xt); // condition::timed_wait
+    namespace detail { namespace thread {
+        template <class M> class scoped_lock;
+    } }
 
-// INFERRED: boost scoped_lock layout (mutex*, locked flag)
-struct scoped_lock_t {
-    mutex_t* m;
-    bool locked;
-    explicit scoped_lock_t(mutex_t* mm) : m(mm), locked(false) {
-        fn_00594ce0(m, 0);
-        locked = true;
-    }
-    ~scoped_lock_t() {
-        fn_00594d00(m, 0);
-    }
+    class mutex {
+    public:
+        char data[12];
+    private:
+        template <class M> friend class detail::thread::scoped_lock;
+        void do_lock();
+        void do_unlock();
+    };
+
+    namespace detail { namespace thread {
+        template <class M>
+        class scoped_lock {
+        public:
+            explicit scoped_lock(M& m) : m_mutex(m), m_locked(false) {
+                m_mutex.do_lock();
+                m_locked = true;
+            }
+            ~scoped_lock() {
+                if (m_locked)
+                    m_mutex.do_unlock();
+            }
+        private:
+            M& m_mutex;
+            bool m_locked;
+        };
+    } }
+
+    class condition {
+    public:
+        template <class L>
+        bool timed_wait(L& lock, const xtime& xt);
+        char data[92];
+    };
+}
+
+// INFERRED: layout reconstructed from offsets only; the real class is unknown.
+struct WaitOwner {
+    char pad0[0x1d0];
+    double lastWaitTime;                 // +0x1d0
+    char pad1[0x240 - 0x1d8];
+    boost::mutex mtx;                    // +0x240
+    boost::condition cond;               // +0x24c
+    int pendingFlag;                     // +0x2a8
 };
 
-extern "C" bool __fastcall fn_00554ed0(char* self, int unusedEdx)
+extern "C" bool __fastcall fn_00554ed0(WaitOwner* self, int unusedEdx)
 {
-    double start = fn_005f2000();
-    xtime_t xt;
-    fn_005a6b40(&xt, 1);
+    double start = RBX::getRealTime();
+
+    boost::xtime xt;
+    boost::xtime_get(&xt, 1);
     xt.sec += 1;
 
     bool result = false;
     {
-        scoped_lock_t lock((mutex_t*)(self + 0x240));
-        if (*(int*)(self + 0x2a8) == 0 ||
-            fn_00554c30(self + 0x24c, 0, &lock, &xt))
+        boost::detail::thread::scoped_lock<boost::mutex> lock(self->mtx);
+
+        if (self->pendingFlag == 0) {
             result = true;
-        *(double*)(self + 0x1d0) = fn_005f2000() - start;
+        } else {
+            if (self->cond.timed_wait(lock, xt))
+                result = true;
+        }
+
+        self->lastWaitTime = RBX::getRealTime() - start;
     }
     return result;
 }

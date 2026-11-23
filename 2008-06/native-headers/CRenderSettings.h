@@ -89,4 +89,8 @@ public:
 
     int getAggregateSize() const { return aggregateSize; }
     void setAggregateSize(int value);
+
+    // 004492d0 (thiscall ret 4; only caller CRobloxWnd::setDataModel 0045fa71 with false). INFERRED: the name
+    // (2007 analog openrbx Client/win/RenderSettings.cpp FUN_0044d1b0). Body: native-classes/CRenderSettings.cpp.
+    void checkProfile(bool force);
 };

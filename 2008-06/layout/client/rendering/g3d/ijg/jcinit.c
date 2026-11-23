@@ -1,3 +1,19 @@
+// =============================================================================
+// jcinit.c
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/ijg/jcinit.c
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 /*
  * jcinit.c
  *
@@ -33,23 +49,23 @@ jinit_compress_master (j_compress_ptr cinfo)
 
   /* Preprocessing */
   if (! cinfo->raw_data_in) {
-    jinit_color_converter(cinfo);
-    jinit_downsampler(cinfo);
-    jinit_c_prep_controller(cinfo, FALSE /* never need full buffer here */);
+	jinit_color_converter(cinfo);
+	jinit_downsampler(cinfo);
+	jinit_c_prep_controller(cinfo, FALSE /* never need full buffer here */);
   }
   /* Forward DCT */
   jinit_forward_dct(cinfo);
   /* Entropy encoding: either Huffman or arithmetic coding. */
   if (cinfo->arith_code) {
-    ERREXIT(cinfo, JERR_ARITH_NOTIMPL);
+	ERREXIT(cinfo, JERR_ARITH_NOTIMPL);
   } else {
-    if (cinfo->progressive_mode) {
+	if (cinfo->progressive_mode) {
 #ifdef C_PROGRESSIVE_SUPPORTED
       jinit_phuff_encoder(cinfo);
 #else
       ERREXIT(cinfo, JERR_NOT_COMPILED);
 #endif
-    } else
+	} else
       jinit_huff_encoder(cinfo);
   }
 

@@ -31,6 +31,11 @@ namespace RBX
 			static void releaseUnused();              // 004e5710
 		public:
 			static void flushCache();                 // 004e5670
+			// 004dcaa0 (thiscall ret 0x18, `this` unused; only caller the seven-argument bevel builder 004e3720, four
+			// calls). INFERRED: the name. Body: native-classes/ViewNewBrickMeshBuild2008.cpp. Spelled without the
+			// LevelRef typedef, which the partsurface-profile copy of RenderBaseMesh.h does not declare.
+			void appendBevelQuad(G3D::ReferenceCountedPointer<RenderBase::Mesh::Level>& level, int a, int b, int c, int d,
+				int* corners);
 		};
 	}
 }

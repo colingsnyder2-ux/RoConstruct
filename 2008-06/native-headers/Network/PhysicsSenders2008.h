@@ -99,6 +99,11 @@ namespace RBX
 				int lastSendStep;                                                  // +0x44 (index 2 key)
 				float error;                                                       // +0x48
 
+				// 004ca500 (registry placeholder; thiscall `ret 8`, the shared_ptr by value; only caller addPhysicsInstance
+				// 004cd170): part (add-ref), lastFrame = CoordinateFrame() 004782d0, accumulated = the sender unit's .data
+				// float 0093cc40 (physicsResetValue, PhysicsSenderRecovery_004cce00.cpp), lastSendStep = -1; priority and
+				// error are not written; the by-value argument is released at the end.
+				PartItem(boost::shared_ptr<PartInstance> part);
 				// INFERRED: 004c9e30, called by step with the player frame, character and step counter.
 				bool update(const G3D::CoordinateFrame& reference, ModelInstance* character, int newSequence);
 			};
@@ -160,6 +165,12 @@ namespace RBX
 				// 004c8150 (thiscall ret 0xc; only caller receivePacket 004c9120): pushes one received sample into the
 				// history ring (InterpolatingPhysicsReceiverRecovery_004b6290.cpp).
 				void receive(RakNet::BitStream& bitStream, unsigned int timestamp, ModelInstance* character);
+				// Reached from InterpolatingPhysicsReceiver::step 004c8fa0 (registry placeholders; analog names, bodies in
+				// InterpolatingPhysicsReceiverRecovery_004b6290.cpp): step 004c6f70, setPosition 004c6ed0 and
+				// interpolate 004c6dc0 (thiscall `ret 0xc`: lerped frame through setPhysics plus the motor angles).
+				bool step(unsigned int time);                                      // 004c6f70
+				void setPosition(const History& history);                          // 004c6ed0
+				void interpolate(const History& from, const History& to, float alpha); // 004c6dc0
 			};
 			typedef boost::multi_index::multi_index_container<
 				PartItem,

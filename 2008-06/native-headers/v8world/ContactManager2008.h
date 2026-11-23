@@ -67,6 +67,11 @@ namespace RBX
 		// 0060cc50 (registry func_0060cc50; donor name): `mov ecx, [ecx]` (spatialHash +0x0), `jmp` SpatialHash 0065abd0;
 		// callers World::onPrimitiveExtentsChanged 005e91c0 and onAssemblyExtentsChanged 005e91d0.
 		void onPrimitiveExtentsChanged(Primitive* p);
+		// 0060cc30 / 0060cc40 (registry placeholders func_0060cc30 / func_0060cc40; donor ContactManager.h names): `mov ecx,
+		// [ecx]` (spatialHash +0x0) and tail jumps to SpatialHash 0065a4e0 / 0065aac0; callers World::insertPrimitive 005e98f0
+		// and removePrimitive 005ea8b0.
+		void onPrimitiveAdded(Primitive* p);
+		void onPrimitiveRemoved(Primitive* p);
 		public:
 		void doStats(void);   // INFERRED: ?doStats@ContactManager@RBX@@QAEXXZ (header gap, header_gap_fill.py)
 	public:

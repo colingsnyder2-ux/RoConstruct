@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // INFERRED: the target starts mid-function (at "call edx"), so this is a best-effort
 // reconstruction of the tail of a larger routine. The register-carried state is modelled
 // as parameters: esi -> self, ebx -> parent, edi -> runView.

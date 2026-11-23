@@ -1,4 +1,6 @@
 #pragma once
+// onHook is declared below: enables the guarded onHook/scriptHook bodies of the ScriptContext units.
+#define SCRIPTCONTEXT_HEADER_DECLARES_ONHOOK
 #include "script/Script.h"
 #include "script/ScriptEvent.h"
 #include "script/LuaMemory.h"
@@ -111,6 +113,17 @@ namespace RBX
       
     private:
         void onChangedScriptEnabled(const Reflection::PropertyDescriptor&);
+        // INFERRED name: 005adbf0 (112 B, ret 8), called by the static lua_Hook scriptHook 005ae230 on getContext(L)
+        // while the timed-out counter 00976b78 is > 0; throws "Game script timout" for GameScript identity.
+        void onHook(lua_State* L, lua_Debug* ar);
+        // INFERRED name: 005ab4b0 (528 B), the "ScriptContext Timeout" watchdog thread body bound by setTimeout
+        // 005ae8f0 (mov edi,0x5ab4b0; boost::bind(&ScriptContext::<mf0>, shared_ptr<ScriptContext>)).
+        void watchdog();
+
+    public:
+        // INFERRED name: 005ae8f0 (506 B), the reflected function "SetTimeout"("seconds") (BoundFuncDesc<ScriptContext,
+        // void(double), 1> 00976b98 built by the static initializer 007f4f80).
+        void setTimeout(double seconds);
       
     public:
         void closeState();

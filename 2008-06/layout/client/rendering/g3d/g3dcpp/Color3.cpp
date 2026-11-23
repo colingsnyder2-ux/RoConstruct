@@ -1,3 +1,19 @@
+// =============================================================================
+// Color3.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Color3.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #line 1 ".\\G3Dcpp\\Color3.cpp"
 /**
  @file Color3.cpp
@@ -20,65 +36,66 @@
 #include "G3D/BinaryOutput.h"
 #include "G3D/Color3uint8.h"
 
-namespace G3D {
+namespace G3D
+{
 
 const Color3& Color3::red() {
-    static Color3 c(1, 0, 0);
-    return c;
+	static Color3 c(1, 0, 0);
+	return c;
 }
 
 const Color3& Color3::green() {
-    static Color3 c(0, 1, 0);
-    return c;
+	static Color3 c(0, 1, 0);
+	return c;
 }
 
 const Color3& Color3::blue() {
-    static Color3 c(0, 0, 1);
-    return c;
+	static Color3 c(0, 0, 1);
+	return c;
 }
 
 const Color3& Color3::purple() {
-    static Color3 c(0.7f, 0, 1);
-    return c;
+	static Color3 c(0.7f, 0, 1);
+	return c;
 }
 
 const Color3& Color3::cyan() {
-    static Color3 c(0, .7f, 1);
-    return c;
+	static Color3 c(0, .7f, 1);
+	return c;
 }
 
 const Color3& Color3::yellow() {
-    static Color3 c(1, 1, 0);
-    return c;
+	static Color3 c(1, 1, 0);
+	return c;
 }
 
 const Color3& Color3::brown() {
-    static Color3 c(.5f, .5f, 0);
-    return c;
+	static Color3 c(.5f, .5f, 0);
+	return c;
 }
 
 const Color3& Color3::orange() {
-    static Color3 c(1, 0.5f, 0);
-    return c;
+	static Color3 c(1, 0.5f, 0);
+	return c;
 }
 
 const Color3& Color3::black() {
-    static Color3 c(0, 0, 0);
-    return c;
+	static Color3 c(0, 0, 0);
+	return c;
 }
 
 const Color3& Color3::gray() {
-    static Color3 c(.7f, .7f, .7f);
-    return c;
+	static Color3 c(.7f, .7f, .7f);
+	return c;
 }
 
 const Color3& Color3::white() {
-    static Color3 c(1, 1, 1);
-    return c;
+	static Color3 c(1, 1, 1);
+	return c;
 }
 
 Color3::Color3(BinaryInput& bi) {
-    deserialize(bi);
+	deserialize(bi);
 }
 
 // Deprecated.
@@ -95,105 +112,105 @@ const Color3 Color3::GRAY(.7f, .7f, .7f);
 const Color3 Color3::WHITE(1, 1, 1);
 
 void Color3::deserialize(BinaryInput& bi) {
-    r = bi.readFloat32();
-    g = bi.readFloat32();
-    b = bi.readFloat32();
+	r = bi.readFloat32();
+	g = bi.readFloat32();
+	b = bi.readFloat32();
 }
 
 void Color3::serialize(BinaryOutput& bo) const {
-    bo.writeFloat32(r);
-    bo.writeFloat32(g);
-    bo.writeFloat32(b);
+	bo.writeFloat32(r);
+	bo.writeFloat32(g);
+	bo.writeFloat32(b);
 }
 
 const Color3& Color3::wheelRandom() {
-    static const Color3 colorArray[8] =
-    {Color3::BLUE,   Color3::RED,    Color3::GREEN,
+	static const Color3 colorArray[8] =
+	{Color3::BLUE,   Color3::RED,    Color3::GREEN,
      Color3::ORANGE, Color3::YELLOW,
      Color3::CYAN,   Color3::PURPLE, Color3::BROWN};
 
-    return colorArray[iRandom(0, 7)];
+	return colorArray[iRandom(0, 7)];
 }
 
 unsigned int Color3::hashCode() const {
-    unsigned int rhash = (*(int*)(void*)(&r));
-    unsigned int ghash = (*(int*)(void*)(&g));
-    unsigned int bhash = (*(int*)(void*)(&b));
+	unsigned int rhash = (*(int*)(void*)(&r));
+	unsigned int ghash = (*(int*)(void*)(&g));
+	unsigned int bhash = (*(int*)(void*)(&b));
 
-    return rhash + (ghash * 37) + (bhash * 101);
+	return rhash + (ghash * 37) + (bhash * 101);
 }
 
 Color3::Color3(const Vector3& v) {
-    r = v.x;
-    g = v.y;
-    b = v.z;
+	r = v.x;
+	g = v.y;
+	b = v.z;
 }
 
 Color3::Color3(const class Color3uint8& other) {
-    r = other.r / 255.0f;
-    g = other.g / 255.0f;
-    b = other.b / 255.0f;
+	r = other.r / 255.0f;
+	g = other.g / 255.0f;
+	b = other.b / 255.0f;
 }
 
 Color3 Color3::fromARGB(uint32 x) {
-    return Color3((float)((x >> 16) & 0xFF), (float)((x >> 8) & 0xFF), (float)(x & 0xFF)) / 255.0f;
+	return Color3((float)((x >> 16) & 0xFF), (float)((x >> 8) & 0xFF), (float)(x & 0xFF)) / 255.0f;
 }
 
 //----------------------------------------------------------------------------
 
 Color3 Color3::random() {
-    return Color3(uniformRandom(),
+	return Color3(uniformRandom(),
                   uniformRandom(),
                   uniformRandom()).direction();
 }
 
 //----------------------------------------------------------------------------
 Color3 Color3::operator/ (float fScalar) const {
-    Color3 kQuot;
+	Color3 kQuot;
 
-    if (fScalar != 0.0f) {
+	if (fScalar != 0.0f) {
 		float fInvScalar = 1.0f / fScalar;
-        kQuot.r = fInvScalar * r;
-        kQuot.g = fInvScalar * g;
-        kQuot.b = fInvScalar * b;
-        return kQuot;
+		kQuot.r = fInvScalar * r;
+		kQuot.g = fInvScalar * g;
+		kQuot.b = fInvScalar * b;
+		return kQuot;
 
-    } else {
+	} else {
 
-        return Color3((float)G3D::inf(), (float)G3D::inf(), (float)G3D::inf());
-    }
+		return Color3((float)G3D::inf(), (float)G3D::inf(), (float)G3D::inf());
+	}
 }
 
 //----------------------------------------------------------------------------
 Color3& Color3::operator/= (float fScalar) {
-    if (fScalar != 0.0f) {
+	if (fScalar != 0.0f) {
 		float fInvScalar = 1.0f / fScalar;
-        r *= fInvScalar;
-        g *= fInvScalar;
-        b *= fInvScalar;
-    } else {
-        r = (float)G3D::inf();
-        g = (float)G3D::inf();
-        b = (float)G3D::inf();
-    }
+		r *= fInvScalar;
+		g *= fInvScalar;
+		b *= fInvScalar;
+	} else {
+		r = (float)G3D::inf();
+		g = (float)G3D::inf();
+		b = (float)G3D::inf();
+	}
 
-    return *this;
+	return *this;
 }
 
 //----------------------------------------------------------------------------
 float Color3::unitize (float fTolerance) {
 	float fLength = length();
 
-    if ( fLength > fTolerance ) {
+	if ( fLength > fTolerance ) {
 		float fInvLength = 1.0f / fLength;
-        r *= fInvLength;
-        g *= fInvLength;
-        b *= fInvLength;
-    } else {
-        fLength = 0.0f;
-    }
+		r *= fInvLength;
+		g *= fInvLength;
+		b *= fInvLength;
+	} else {
+		fLength = 0.0f;
+	}
 
-    return fLength;
+	return fLength;
 }
 
 //----------------------------------------------------------------------------
@@ -225,7 +242,7 @@ Color3 Color3::fromHSV(const Vector3& _hsv) {
 	case 5:
 		return Color3(_hsv.z, m, n);
 
-    default:
+	default:
 		debugAssertM(false, "fell through switch..");
 	}
 	return Color3::black();
@@ -241,10 +258,10 @@ Vector3 Color3::toHSV(const Color3& _rgb) {
 		return hsv;
 	}
 
-    const float x =  G3D::min(G3D::min(_rgb.r, _rgb.g), _rgb.b);
+	const float x =  G3D::min(G3D::min(_rgb.r, _rgb.g), _rgb.b);
 	hsv.y = (hsv.z - x) / hsv.z;
 
-    if (G3D::fuzzyEq(hsv.y, 0.0f)) {
+	if (G3D::fuzzyEq(hsv.y, 0.0f)) {
 		return hsv;
 	}
 
@@ -261,7 +278,7 @@ Vector3 Color3::toHSV(const Color3& _rgb) {
 		hsv.x = (_rgb.r == x)? 3.0f + rgbN.y : 5.0f - rgbN.x;
 	}
 
-    hsv.x /= 6.0f;
+	hsv.x /= 6.0f;
 
 	return hsv;
 }
@@ -284,7 +301,7 @@ Color3 Color3::jetColorMap(const float& val) {
 }
 
 std::string Color3::toString() const {
-    return G3D::format("(%g, %g, %g)", r, g, b);
+	return G3D::format("(%g, %g, %g)", r, g, b);
 }
 
 //----------------------------------------------------------------------------

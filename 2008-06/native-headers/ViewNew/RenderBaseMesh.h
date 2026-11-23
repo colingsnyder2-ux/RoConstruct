@@ -44,6 +44,10 @@ namespace RBX
 	{
 		class RenderScene;
 	}
+	namespace ViewNew
+	{
+		class BrickMesh;
+	}
 	namespace RenderBase
 	{
 		class Chunk;
@@ -54,6 +58,9 @@ namespace RBX
 			// RenderScene::render 007ab0a0 reads levels (+0xc size), subMesh +0x80 (007ab7ed / 007ac5fa), meshKind +0x84
 			// (007ab889 / 007abf45 / 007ac613) and the sharedMesh static 009738b8 directly.
 			friend class RenderNew::RenderScene;
+			// INFERRED (access only): BrickMesh::appendBevelQuad 004dcaa0 reads the visibleGeometry vertex / normal arrays
+			// (009738f0 / 009738fc) and texCoordArray (00973934) directly. A friend keeps the statics' private decoration.
+			friend class ViewNew::BrickMesh;
 			typedef G3D::Array<int> VertexList;
 			static VertexList vertexRefCounts;
 			static VertexList freeList;

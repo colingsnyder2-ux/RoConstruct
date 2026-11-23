@@ -1,8 +1,10 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: 0x00456400 is a single-jmp thunk to 0x00455ea0; the argument convention is unknown, so a void(void) tail call is used.
-extern "C" void fn_00455ea0(void);
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-extern "C" void fn_00456400(void)
+// INFERRED: the target is a bare thunk (single jmp to 0x00455ea0). Its signature is
+// unknown, so both functions are declared with no parameters and the call compiles to a tail jump.
+extern "C" void fn_00455ea0();
+
+extern "C" void fn_00456400()
 {
     fn_00455ea0();
 }

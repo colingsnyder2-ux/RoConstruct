@@ -1,3 +1,19 @@
+// =============================================================================
+// Feature.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/v8datamodel/Feature.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "v8datamodel/Feature.h"
 #include "v8datamodel/PartInstance.h"
 
@@ -38,10 +54,30 @@ namespace RBX
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
 
-	static Reflection::RefPropDescriptor<VelocityMotor, Hole> prop_Hole("Hole", "Data", &VelocityMotor::getHole, &VelocityMotor::setHole, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<VelocityMotor, float> prop_MaxVelocity("MaxVelocity", "Data", &VelocityMotor::getMaxVelocity, &VelocityMotor::setMaxVelocity, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<VelocityMotor, float> prop_DesiredAngle("DesiredAngle", "Data", &VelocityMotor::getDesiredAngle, &VelocityMotor::setDesiredAngle, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<VelocityMotor, float> prop_CurrentAngle("CurrentAngle", "Data", &VelocityMotor::getCurrentAngle, &VelocityMotor::setCurrentAngle, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::RefPropDescriptor<VelocityMotor, Hole> prop_Hole(
+		"Hole",
+		"Data",
+		&VelocityMotor::getHole,
+		&VelocityMotor::setHole,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<VelocityMotor, float> prop_MaxVelocity(
+		"MaxVelocity",
+		"Data",
+		&VelocityMotor::getMaxVelocity,
+		&VelocityMotor::setMaxVelocity,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<VelocityMotor, float> prop_DesiredAngle(
+		"DesiredAngle",
+		"Data",
+		&VelocityMotor::getDesiredAngle,
+		&VelocityMotor::setDesiredAngle,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<VelocityMotor, float> prop_CurrentAngle(
+		"CurrentAngle",
+		"Data",
+		&VelocityMotor::getCurrentAngle,
+		&VelocityMotor::setCurrentAngle,
+		Reflection::PropertyDescriptor::STANDARD);
 
 	Reflection::EnumDesc<Feature::TopBottom>::EnumDesc()   // 0060b1d0
 		: EnumDescriptor("TopBottom", typeid(Feature::TopBottom))
@@ -67,10 +103,30 @@ namespace RBX
 		addPair(Feature::CENTER_IO, "Center");
 	}
 
-	static Reflection::EnumPropDescriptor<Feature, NormalId> prop_FaceId("FaceId", "Data", &Feature::getFaceId, &Feature::setFaceId, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::EnumPropDescriptor<Feature, Feature::TopBottom> prop_TopBottom("TopBottom", "Data", &Feature::getTopBottom, &Feature::setTopBottom, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::EnumPropDescriptor<Feature, Feature::LeftRight> prop_LeftRight("LeftRight", "Data", &Feature::getLeftRight, &Feature::setLeftRight, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::EnumPropDescriptor<Feature, Feature::InOut> prop_InOut("InOut", "Data", &Feature::getInOut, &Feature::setInOut, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::EnumPropDescriptor<Feature, NormalId> prop_FaceId(
+		"FaceId",
+		"Data",
+		&Feature::getFaceId,
+		&Feature::setFaceId,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::EnumPropDescriptor<Feature, Feature::TopBottom> prop_TopBottom(
+		"TopBottom",
+		"Data",
+		&Feature::getTopBottom,
+		&Feature::setTopBottom,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::EnumPropDescriptor<Feature, Feature::LeftRight> prop_LeftRight(
+		"LeftRight",
+		"Data",
+		&Feature::getLeftRight,
+		&Feature::setLeftRight,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::EnumPropDescriptor<Feature, Feature::InOut> prop_InOut(
+		"InOut",
+		"Data",
+		&Feature::getInOut,
+		&Feature::setInOut,
+		Reflection::PropertyDescriptor::STANDARD);
 
 	Feature::Feature()
 		: faceId(NORM_X),
@@ -324,7 +380,10 @@ namespace RBX
 			setPart(1, getHole());
 
 			if (getHole())
-				holeAncestorChanged = event_ancestryChanged.connect(hole.get(), boost::bind(&VelocityMotor::onEvent_HoleAncestorChanged, this), 10);
+				holeAncestorChanged = event_ancestryChanged.connect(
+					hole.get(),
+					boost::bind(&VelocityMotor::onEvent_HoleAncestorChanged, this),
+					10);
 			else
 				holeAncestorChanged.disconnect();
 		}
@@ -376,6 +435,8 @@ namespace RBX
 typedef boost::_bi::bind_t<void, boost::_mfi::mf0<void, RBX::VelocityMotor>, boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*> > > VelocityMotorHoleBinder;
 template boost::slot<boost::function<void(boost::shared_ptr<RBX::Instance>)> >::slot(const VelocityMotorHoleBinder&);
 
+// Explicit instantiations: they give this file the same symbols as the original object,
+// where other files used them. Likely removable once the whole client links and those users exist.
 template class RBX::Reflection::TypedPropertyDescriptor<RBX::Hole *>;
 template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::Feature::InOut>;
 template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::Feature::LeftRight>;

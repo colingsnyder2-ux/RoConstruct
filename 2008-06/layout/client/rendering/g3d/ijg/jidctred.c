@@ -1,3 +1,19 @@
+// =============================================================================
+// jidctred.c
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/ijg/jidctred.c
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 /*
  * jidctred.c
  *
@@ -131,10 +147,10 @@ jpeg_idct_4x4 (j_decompress_ptr cinfo, jpeg_component_info * compptr,
   quantptr = (ISLOW_MULT_TYPE *) compptr->dct_table;
   wsptr = workspace;
   for (ctr = DCTSIZE; ctr > 0; inptr++, quantptr++, wsptr++, ctr--) {
-    /* Don't bother to process column 4, because second pass won't use it */
-    if (ctr == DCTSIZE-4)
+	/* Don't bother to process column 4, because second pass won't use it */
+	if (ctr == DCTSIZE-4)
       continue;
-    if (inptr[DCTSIZE*1] == 0 && inptr[DCTSIZE*2] == 0 &&
+	if (inptr[DCTSIZE*1] == 0 && inptr[DCTSIZE*2] == 0 &&
 	inptr[DCTSIZE*3] == 0 && inptr[DCTSIZE*5] == 0 &&
 	inptr[DCTSIZE*6] == 0 && inptr[DCTSIZE*7] == 0) {
       /* AC terms all zero; we need not examine term 4 for 4x4 output */
@@ -146,55 +162,55 @@ jpeg_idct_4x4 (j_decompress_ptr cinfo, jpeg_component_info * compptr,
       wsptr[DCTSIZE*3] = dcval;
 
       continue;
-    }
+	}
 
-    /* Even part */
+	/* Even part */
 
-    tmp0 = DEQUANTIZE(inptr[DCTSIZE*0], quantptr[DCTSIZE*0]);
-    tmp0 <<= (CONST_BITS+1);
+	tmp0 = DEQUANTIZE(inptr[DCTSIZE*0], quantptr[DCTSIZE*0]);
+	tmp0 <<= (CONST_BITS+1);
 
-    z2 = DEQUANTIZE(inptr[DCTSIZE*2], quantptr[DCTSIZE*2]);
-    z3 = DEQUANTIZE(inptr[DCTSIZE*6], quantptr[DCTSIZE*6]);
+	z2 = DEQUANTIZE(inptr[DCTSIZE*2], quantptr[DCTSIZE*2]);
+	z3 = DEQUANTIZE(inptr[DCTSIZE*6], quantptr[DCTSIZE*6]);
 
-    tmp2 = MULTIPLY(z2, FIX_1_847759065) + MULTIPLY(z3, - FIX_0_765366865);
+	tmp2 = MULTIPLY(z2, FIX_1_847759065) + MULTIPLY(z3, - FIX_0_765366865);
 
-    tmp10 = tmp0 + tmp2;
-    tmp12 = tmp0 - tmp2;
+	tmp10 = tmp0 + tmp2;
+	tmp12 = tmp0 - tmp2;
 
-    /* Odd part */
+	/* Odd part */
 
-    z1 = DEQUANTIZE(inptr[DCTSIZE*7], quantptr[DCTSIZE*7]);
-    z2 = DEQUANTIZE(inptr[DCTSIZE*5], quantptr[DCTSIZE*5]);
-    z3 = DEQUANTIZE(inptr[DCTSIZE*3], quantptr[DCTSIZE*3]);
-    z4 = DEQUANTIZE(inptr[DCTSIZE*1], quantptr[DCTSIZE*1]);
+	z1 = DEQUANTIZE(inptr[DCTSIZE*7], quantptr[DCTSIZE*7]);
+	z2 = DEQUANTIZE(inptr[DCTSIZE*5], quantptr[DCTSIZE*5]);
+	z3 = DEQUANTIZE(inptr[DCTSIZE*3], quantptr[DCTSIZE*3]);
+	z4 = DEQUANTIZE(inptr[DCTSIZE*1], quantptr[DCTSIZE*1]);
 
-    tmp0 = MULTIPLY(z1, - FIX_0_211164243) /* sqrt(2) * (c3-c1) */
+	tmp0 = MULTIPLY(z1, - FIX_0_211164243) /* sqrt(2) * (c3-c1) */
 	 + MULTIPLY(z2, FIX_1_451774981) /* sqrt(2) * (c3+c7) */
 	 + MULTIPLY(z3, - FIX_2_172734803) /* sqrt(2) * (-c1-c5) */
 	 + MULTIPLY(z4, FIX_1_061594337); /* sqrt(2) * (c5+c7) */
 
-    tmp2 = MULTIPLY(z1, - FIX_0_509795579) /* sqrt(2) * (c7-c5) */
+	tmp2 = MULTIPLY(z1, - FIX_0_509795579) /* sqrt(2) * (c7-c5) */
 	 + MULTIPLY(z2, - FIX_0_601344887) /* sqrt(2) * (c5-c1) */
 	 + MULTIPLY(z3, FIX_0_899976223) /* sqrt(2) * (c3-c7) */
 	 + MULTIPLY(z4, FIX_2_562915447); /* sqrt(2) * (c1+c3) */
 
-    /* Final output stage */
+	/* Final output stage */
 
-    wsptr[DCTSIZE*0] = (int) DESCALE(tmp10 + tmp2, CONST_BITS-PASS1_BITS+1);
-    wsptr[DCTSIZE*3] = (int) DESCALE(tmp10 - tmp2, CONST_BITS-PASS1_BITS+1);
-    wsptr[DCTSIZE*1] = (int) DESCALE(tmp12 + tmp0, CONST_BITS-PASS1_BITS+1);
-    wsptr[DCTSIZE*2] = (int) DESCALE(tmp12 - tmp0, CONST_BITS-PASS1_BITS+1);
+	wsptr[DCTSIZE*0] = (int) DESCALE(tmp10 + tmp2, CONST_BITS-PASS1_BITS+1);
+	wsptr[DCTSIZE*3] = (int) DESCALE(tmp10 - tmp2, CONST_BITS-PASS1_BITS+1);
+	wsptr[DCTSIZE*1] = (int) DESCALE(tmp12 + tmp0, CONST_BITS-PASS1_BITS+1);
+	wsptr[DCTSIZE*2] = (int) DESCALE(tmp12 - tmp0, CONST_BITS-PASS1_BITS+1);
   }
 
   /* Pass 2: process 4 rows from work array, store into output array. */
 
   wsptr = workspace;
   for (ctr = 0; ctr < 4; ctr++) {
-    outptr = output_buf[ctr] + output_col;
-    /* It's not clear whether a zero row test is worthwhile here ... */
+	outptr = output_buf[ctr] + output_col;
+	/* It's not clear whether a zero row test is worthwhile here ... */
 
 #ifndef NO_ZERO_ROW_TEST
-    if (wsptr[1] == 0 && wsptr[2] == 0 && wsptr[3] == 0 &&
+	if (wsptr[1] == 0 && wsptr[2] == 0 && wsptr[3] == 0 &&
 	wsptr[5] == 0 && wsptr[6] == 0 && wsptr[7] == 0) {
       /* AC terms all zero */
       JSAMPLE dcval = range_limit[(int) DESCALE((INT32) wsptr[0], PASS1_BITS+3)
@@ -207,52 +223,52 @@ jpeg_idct_4x4 (j_decompress_ptr cinfo, jpeg_component_info * compptr,
 
       wsptr += DCTSIZE;		/* advance pointer to next row */
       continue;
-    }
+	}
 #endif
 
-    /* Even part */
+	/* Even part */
 
-    tmp0 = ((INT32) wsptr[0]) << (CONST_BITS+1);
+	tmp0 = ((INT32) wsptr[0]) << (CONST_BITS+1);
 
-    tmp2 = MULTIPLY((INT32) wsptr[2], FIX_1_847759065)
+	tmp2 = MULTIPLY((INT32) wsptr[2], FIX_1_847759065)
 	 + MULTIPLY((INT32) wsptr[6], - FIX_0_765366865);
 
-    tmp10 = tmp0 + tmp2;
-    tmp12 = tmp0 - tmp2;
+	tmp10 = tmp0 + tmp2;
+	tmp12 = tmp0 - tmp2;
 
-    /* Odd part */
+	/* Odd part */
 
-    z1 = (INT32) wsptr[7];
-    z2 = (INT32) wsptr[5];
-    z3 = (INT32) wsptr[3];
-    z4 = (INT32) wsptr[1];
+	z1 = (INT32) wsptr[7];
+	z2 = (INT32) wsptr[5];
+	z3 = (INT32) wsptr[3];
+	z4 = (INT32) wsptr[1];
 
-    tmp0 = MULTIPLY(z1, - FIX_0_211164243) /* sqrt(2) * (c3-c1) */
+	tmp0 = MULTIPLY(z1, - FIX_0_211164243) /* sqrt(2) * (c3-c1) */
 	 + MULTIPLY(z2, FIX_1_451774981) /* sqrt(2) * (c3+c7) */
 	 + MULTIPLY(z3, - FIX_2_172734803) /* sqrt(2) * (-c1-c5) */
 	 + MULTIPLY(z4, FIX_1_061594337); /* sqrt(2) * (c5+c7) */
 
-    tmp2 = MULTIPLY(z1, - FIX_0_509795579) /* sqrt(2) * (c7-c5) */
+	tmp2 = MULTIPLY(z1, - FIX_0_509795579) /* sqrt(2) * (c7-c5) */
 	 + MULTIPLY(z2, - FIX_0_601344887) /* sqrt(2) * (c5-c1) */
 	 + MULTIPLY(z3, FIX_0_899976223) /* sqrt(2) * (c3-c7) */
 	 + MULTIPLY(z4, FIX_2_562915447); /* sqrt(2) * (c1+c3) */
 
-    /* Final output stage */
+	/* Final output stage */
 
-    outptr[0] = range_limit[(int) DESCALE(tmp10 + tmp2,
+	outptr[0] = range_limit[(int) DESCALE(tmp10 + tmp2,
 					  CONST_BITS+PASS1_BITS+3+1)
 			    & RANGE_MASK];
-    outptr[3] = range_limit[(int) DESCALE(tmp10 - tmp2,
+	outptr[3] = range_limit[(int) DESCALE(tmp10 - tmp2,
 					  CONST_BITS+PASS1_BITS+3+1)
 			    & RANGE_MASK];
-    outptr[1] = range_limit[(int) DESCALE(tmp12 + tmp0,
+	outptr[1] = range_limit[(int) DESCALE(tmp12 + tmp0,
 					  CONST_BITS+PASS1_BITS+3+1)
 			    & RANGE_MASK];
-    outptr[2] = range_limit[(int) DESCALE(tmp12 - tmp0,
+	outptr[2] = range_limit[(int) DESCALE(tmp12 - tmp0,
 					  CONST_BITS+PASS1_BITS+3+1)
 			    & RANGE_MASK];
 
-    wsptr += DCTSIZE;		/* advance pointer to next row */
+	wsptr += DCTSIZE;		/* advance pointer to next row */
   }
 }
 
@@ -282,10 +298,10 @@ jpeg_idct_2x2 (j_decompress_ptr cinfo, jpeg_component_info * compptr,
   quantptr = (ISLOW_MULT_TYPE *) compptr->dct_table;
   wsptr = workspace;
   for (ctr = DCTSIZE; ctr > 0; inptr++, quantptr++, wsptr++, ctr--) {
-    /* Don't bother to process columns 2,4,6 */
-    if (ctr == DCTSIZE-2 || ctr == DCTSIZE-4 || ctr == DCTSIZE-6)
+	/* Don't bother to process columns 2,4,6 */
+	if (ctr == DCTSIZE-2 || ctr == DCTSIZE-4 || ctr == DCTSIZE-6)
       continue;
-    if (inptr[DCTSIZE*1] == 0 && inptr[DCTSIZE*3] == 0 &&
+	if (inptr[DCTSIZE*1] == 0 && inptr[DCTSIZE*3] == 0 &&
 	inptr[DCTSIZE*5] == 0 && inptr[DCTSIZE*7] == 0) {
       /* AC terms all zero; we need not examine terms 2,4,6 for 2x2 output */
       int dcval = DEQUANTIZE(inptr[DCTSIZE*0], quantptr[DCTSIZE*0]) << PASS1_BITS;
@@ -294,39 +310,39 @@ jpeg_idct_2x2 (j_decompress_ptr cinfo, jpeg_component_info * compptr,
       wsptr[DCTSIZE*1] = dcval;
 
       continue;
-    }
+	}
 
-    /* Even part */
+	/* Even part */
 
-    z1 = DEQUANTIZE(inptr[DCTSIZE*0], quantptr[DCTSIZE*0]);
-    tmp10 = z1 << (CONST_BITS+2);
+	z1 = DEQUANTIZE(inptr[DCTSIZE*0], quantptr[DCTSIZE*0]);
+	tmp10 = z1 << (CONST_BITS+2);
 
-    /* Odd part */
+	/* Odd part */
 
-    z1 = DEQUANTIZE(inptr[DCTSIZE*7], quantptr[DCTSIZE*7]);
-    tmp0 = MULTIPLY(z1, - FIX_0_720959822); /* sqrt(2) * (c7-c5+c3-c1) */
-    z1 = DEQUANTIZE(inptr[DCTSIZE*5], quantptr[DCTSIZE*5]);
-    tmp0 += MULTIPLY(z1, FIX_0_850430095); /* sqrt(2) * (-c1+c3+c5+c7) */
-    z1 = DEQUANTIZE(inptr[DCTSIZE*3], quantptr[DCTSIZE*3]);
-    tmp0 += MULTIPLY(z1, - FIX_1_272758580); /* sqrt(2) * (-c1+c3-c5-c7) */
-    z1 = DEQUANTIZE(inptr[DCTSIZE*1], quantptr[DCTSIZE*1]);
-    tmp0 += MULTIPLY(z1, FIX_3_624509785); /* sqrt(2) * (c1+c3+c5+c7) */
+	z1 = DEQUANTIZE(inptr[DCTSIZE*7], quantptr[DCTSIZE*7]);
+	tmp0 = MULTIPLY(z1, - FIX_0_720959822); /* sqrt(2) * (c7-c5+c3-c1) */
+	z1 = DEQUANTIZE(inptr[DCTSIZE*5], quantptr[DCTSIZE*5]);
+	tmp0 += MULTIPLY(z1, FIX_0_850430095); /* sqrt(2) * (-c1+c3+c5+c7) */
+	z1 = DEQUANTIZE(inptr[DCTSIZE*3], quantptr[DCTSIZE*3]);
+	tmp0 += MULTIPLY(z1, - FIX_1_272758580); /* sqrt(2) * (-c1+c3-c5-c7) */
+	z1 = DEQUANTIZE(inptr[DCTSIZE*1], quantptr[DCTSIZE*1]);
+	tmp0 += MULTIPLY(z1, FIX_3_624509785); /* sqrt(2) * (c1+c3+c5+c7) */
 
-    /* Final output stage */
+	/* Final output stage */
 
-    wsptr[DCTSIZE*0] = (int) DESCALE(tmp10 + tmp0, CONST_BITS-PASS1_BITS+2);
-    wsptr[DCTSIZE*1] = (int) DESCALE(tmp10 - tmp0, CONST_BITS-PASS1_BITS+2);
+	wsptr[DCTSIZE*0] = (int) DESCALE(tmp10 + tmp0, CONST_BITS-PASS1_BITS+2);
+	wsptr[DCTSIZE*1] = (int) DESCALE(tmp10 - tmp0, CONST_BITS-PASS1_BITS+2);
   }
 
   /* Pass 2: process 2 rows from work array, store into output array. */
 
   wsptr = workspace;
   for (ctr = 0; ctr < 2; ctr++) {
-    outptr = output_buf[ctr] + output_col;
-    /* It's not clear whether a zero row test is worthwhile here ... */
+	outptr = output_buf[ctr] + output_col;
+	/* It's not clear whether a zero row test is worthwhile here ... */
 
 #ifndef NO_ZERO_ROW_TEST
-    if (wsptr[1] == 0 && wsptr[3] == 0 && wsptr[5] == 0 && wsptr[7] == 0) {
+	if (wsptr[1] == 0 && wsptr[3] == 0 && wsptr[5] == 0 && wsptr[7] == 0) {
       /* AC terms all zero */
       JSAMPLE dcval = range_limit[(int) DESCALE((INT32) wsptr[0], PASS1_BITS+3)
 				  & RANGE_MASK];
@@ -336,30 +352,30 @@ jpeg_idct_2x2 (j_decompress_ptr cinfo, jpeg_component_info * compptr,
 
       wsptr += DCTSIZE;		/* advance pointer to next row */
       continue;
-    }
+	}
 #endif
 
-    /* Even part */
+	/* Even part */
 
-    tmp10 = ((INT32) wsptr[0]) << (CONST_BITS+2);
+	tmp10 = ((INT32) wsptr[0]) << (CONST_BITS+2);
 
-    /* Odd part */
+	/* Odd part */
 
-    tmp0 = MULTIPLY((INT32) wsptr[7], - FIX_0_720959822) /* sqrt(2) * (c7-c5+c3-c1) */
+	tmp0 = MULTIPLY((INT32) wsptr[7], - FIX_0_720959822) /* sqrt(2) * (c7-c5+c3-c1) */
 	 + MULTIPLY((INT32) wsptr[5], FIX_0_850430095) /* sqrt(2) * (-c1+c3+c5+c7) */
 	 + MULTIPLY((INT32) wsptr[3], - FIX_1_272758580) /* sqrt(2) * (-c1+c3-c5-c7) */
 	 + MULTIPLY((INT32) wsptr[1], FIX_3_624509785); /* sqrt(2) * (c1+c3+c5+c7) */
 
-    /* Final output stage */
+	/* Final output stage */
 
-    outptr[0] = range_limit[(int) DESCALE(tmp10 + tmp0,
+	outptr[0] = range_limit[(int) DESCALE(tmp10 + tmp0,
 					  CONST_BITS+PASS1_BITS+3+2)
 			    & RANGE_MASK];
-    outptr[1] = range_limit[(int) DESCALE(tmp10 - tmp0,
+	outptr[1] = range_limit[(int) DESCALE(tmp10 - tmp0,
 					  CONST_BITS+PASS1_BITS+3+2)
 			    & RANGE_MASK];
 
-    wsptr += DCTSIZE;		/* advance pointer to next row */
+	wsptr += DCTSIZE;		/* advance pointer to next row */
   }
 }
 

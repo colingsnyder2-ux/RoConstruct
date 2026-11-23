@@ -1,3 +1,19 @@
+// =============================================================================
+// Humanoid.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/humanoid/Humanoid.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "humanoid/Humanoid2008.h"
 #include "v8tree/Service.h"
 #include "util/Object.h"
@@ -50,18 +66,47 @@ namespace RBX
 		}
 	}
 
-	Reflection::PropDescriptor<Humanoid, G3D::Vector3> propWalkToPoint("WalkToPoint", "Control", &Humanoid::getWalkToPoint, &Humanoid::setWalkToPoint, Reflection::PropertyDescriptor::STREAMING); // 0097a4cc
-	Reflection::PropDescriptor<Humanoid, G3D::Vector3> propWalkDirection("WalkDirection", "Control", &Humanoid::getWalkDirection, &Humanoid::setWalkDirection, Reflection::PropertyDescriptor::STREAMING); // 0097a4e8
-	Reflection::PropDescriptor<Humanoid, float> propWalkRotationalVelocity("WalkRotationalVelocity", "Control", &Humanoid::getWalkRotationalVelocity, &Humanoid::setWalkRotationalVelocity, Reflection::PropertyDescriptor::STREAMING); // 0097a2d8
+	Reflection::PropDescriptor<Humanoid, G3D::Vector3> propWalkToPoint(
+		"WalkToPoint",
+		"Control",
+		&Humanoid::getWalkToPoint,
+		&Humanoid::setWalkToPoint,
+		Reflection::PropertyDescriptor::STREAMING); // 0097a4cc
+	Reflection::PropDescriptor<Humanoid, G3D::Vector3> propWalkDirection(
+		"WalkDirection",
+		"Control",
+		&Humanoid::getWalkDirection,
+		&Humanoid::setWalkDirection,
+		Reflection::PropertyDescriptor::STREAMING); // 0097a4e8
+	Reflection::PropDescriptor<Humanoid, float> propWalkRotationalVelocity(
+		"WalkRotationalVelocity",
+		"Control",
+		&Humanoid::getWalkRotationalVelocity,
+		&Humanoid::setWalkRotationalVelocity,
+		Reflection::PropertyDescriptor::STREAMING); // 0097a2d8
 	Reflection::PropDescriptor<Humanoid, bool> propJump("Jump", "Control", &Humanoid::getJump, &Humanoid::setJump, Reflection::PropertyDescriptor::STREAMING);                       // 0097a26c
-	Reflection::PropDescriptor<Humanoid, G3D::Vector3> propTargetPoint("TargetPoint", "Control", &Humanoid::getTargetPoint, &Humanoid::setTargetPoint, Reflection::PropertyDescriptor::STREAMING); // 0097a4b0
+	Reflection::PropDescriptor<Humanoid, G3D::Vector3> propTargetPoint(
+		"TargetPoint",
+		"Control",
+		&Humanoid::getTargetPoint,
+		&Humanoid::setTargetPoint,
+		Reflection::PropertyDescriptor::STREAMING); // 0097a4b0
 	Reflection::PropDescriptor<Humanoid, bool> propSit("Sit", "Control", &Humanoid::getSit, &Humanoid::setSit, Reflection::PropertyDescriptor::STREAMING);                           // 0097a3ec
 	Reflection::PropDescriptor<Humanoid, bool> propStrafe("Strafe", "Control", &Humanoid::getStrafe, &Humanoid::setStrafe, Reflection::PropertyDescriptor::STREAMING);               // 0097a5c0
 	Reflection::PropDescriptor<Humanoid, float> propHealth("Health", "Game", &Humanoid::getHealth, &Humanoid::setHealth, Reflection::PropertyDescriptor::STANDARD);                    // 0097a460
 	Reflection::PropDescriptor<Humanoid, float> propMaxHealth("MaxHealth", "Game", &Humanoid::getMaxHealth, &Humanoid::setMaxHealth, Reflection::PropertyDescriptor::STANDARD);       // 0097a3d0
 
-	static Reflection::BoundFuncDesc<Humanoid, void(float), 1> func_TakeDamage(&Humanoid::takeDamage, "TakeDamage", "amount", Reflection::FunctionDescriptor::NeedTrustedCaller); // 0097a288
-	static Reflection::BoundFuncDesc<Humanoid, void(G3D::Vector3, boost::shared_ptr<Instance>), 2> func_MoveTo(&Humanoid::moveTo2, "MoveTo", "location", "part", Reflection::FunctionDescriptor::NeedTrustedCaller); // 0097a408
+	static Reflection::BoundFuncDesc<Humanoid, void(float), 1> func_TakeDamage(
+		&Humanoid::takeDamage,
+		"TakeDamage",
+		"amount",
+		Reflection::FunctionDescriptor::NeedTrustedCaller); // 0097a288
+	static Reflection::BoundFuncDesc<Humanoid, void(G3D::Vector3, boost::shared_ptr<Instance>), 2> func_MoveTo(
+		&Humanoid::moveTo2,
+		"MoveTo",
+		"location",
+		"part",
+		Reflection::FunctionDescriptor::NeedTrustedCaller); // 0097a408
 
 	Humanoid::Humanoid()
 		: health(100.0f),
@@ -361,32 +406,34 @@ template void RBX::Name::callDoDeclare<RBX::sHumanoid>();
 #include "v8datamodel/PartInstance.h"
 #include "humanoid/HumanoidState.h"
 
-namespace RBX {
-namespace HUMAN {
+namespace RBX
+{
+namespace HUMAN
+{
 
 bool HumanoidState::canTransition(int event)
 {
-    switch (event)
-    {
-    case 0:  return humanoid->imDead;
-    case 1:  return humanoid->getJump();
-    case 4:  return humanoid->getSit();
-    case 5:  return !humanoid->getSit();
-    case 6:  return tipped();
-    case 7:  return upright();
-    case 8:  return floorFound;
-    case 9:  return !floorFound;
-    case 2:  return humanoid->getStrafe();
-    case 3:  return !humanoid->getStrafe();
-    case 11: return floorPart.get() != NULL;
-    case 10: return floorPart.get() == NULL;
-    case 12: return onFloorStep();
-    case 13: return !onFloorStep();
-    case 15: return value0c <= 0.0f;
-    case 14: return flag11;
-    case 16: return sub_00643eb0();
-    default: return false;
-    }
+	switch (event)
+	{
+	case 0:  return humanoid->imDead;
+	case 1:  return humanoid->getJump();
+	case 4:  return humanoid->getSit();
+	case 5:  return !humanoid->getSit();
+	case 6:  return tipped();
+	case 7:  return upright();
+	case 8:  return floorFound;
+	case 9:  return !floorFound;
+	case 2:  return humanoid->getStrafe();
+	case 3:  return !humanoid->getStrafe();
+	case 11: return floorPart.get() != NULL;
+	case 10: return floorPart.get() == NULL;
+	case 12: return onFloorStep();
+	case 13: return !onFloorStep();
+	case 15: return value0c <= 0.0f;
+	case 14: return flag11;
+	case 16: return sub_00643eb0();
+	default: return false;
+	}
 }
 
 }

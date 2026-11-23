@@ -15,7 +15,7 @@
 //              004b9bd0, then +0x2d68 boost::shared_ptr<Player> remotePlayer (zeroed) and +0x2d70 Server* server.
 //   dtor       004a18c0 -> ~Replicator 004b96b0.
 //   vtable     16 004a3290, 17 findTargetPlayer 004a1a30, 19 onSentMarker 004a1570, 21 00565950; PluginInterface
-//              slot 5 OnReceive 004a2c20 (not declared here).
+//              slot 5 OnReceive 004a2c20 (declared below; body in ClientProxyOnReceive.cpp).
 // Server2008.h first: its RakPeer.h pulls winsock2 before the windows.h that Instance.h reaches.
 #include "Network/Server2008.h"
 #include "Network/Replicator2008.h"
@@ -51,6 +51,9 @@ namespace RBX
 			virtual Player* findTargetPlayer() override;
 			// slot 19 004a1570: sets the inherited Replicator::sendPhysicsEnabled (+0x2cd0).
 			virtual void onSentMarker(long id) override;
+			// PluginInterface slot 5 override (ClientProxy vtable 008233c4 slot 5 = 004a2c20; donor
+			// Server::ClientProxy::OnReceive). Body in ClientProxyOnReceive.cpp.
+			virtual PluginReceiveResult OnReceive(RakPeerInterface* peer, Packet* packet) override; // 004a2c20
 		};
 	}
 }

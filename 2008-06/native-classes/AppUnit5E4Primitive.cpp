@@ -7,12 +7,34 @@
 #include "v8world/Contact2008.h"
 #include "v8world/Primitive2008.h"
 #include "v8kernel/Constants.h"
+#include "v8world/IMoving.h"
+#include "v8world/World2008.h"
+#include "v8world/AssemblyLayout.h"
 
 namespace RBX
 {
-	// 005e74c0 (Primitive.cpp file-level function; onNewTouch calls it twice). Not built here: it reads the 2008 Clump
-	// (+0x24 assembly) and Assembly sleep state, which no native header declares.
-	void newTouch(Primitive* touch, Primitive* touchOther);
+	// INFERRED: file-local helper (no code of its own). The 2008 awake test of the assembly reached through the clump
+	// (+0x24) and its SleepInfo (+0x18): NULL -> not awake, then state AWAKE 3, RECURSIVE_WAKE_PENDING 1 or WAKE_PENDING 2
+	// in that order (005e74e3..005e74fc, the same order as the SleepStage isMoving inline of 0064bc60).
+	static inline bool clumpIsMoving(Clump* clump)
+	{
+		int state = AssemblyLayout::getSleepStatus(reinterpret_cast<AssemblyLayout::ClumpFields*>(clump)->assembly);
+		return state == 3 || state == 1 || state == 2;
+	}
+
+	// 005e74c0 (registry func_005e74c0; Primitive.cpp file-level function, openrbx / rbxgs newTouch; onNewTouch calls it
+	// twice): both clumps (+0x5c) read first, myOwner (+0xa4) IMoving slot 1 reportTouches, then the awake test of
+	// either clump's assembly and World::onPrimitiveTouched 005e98c0 through world (+0x58).
+	void newTouch(Primitive* touch, Primitive* touchOther)
+	{
+		Clump* clumpTouch = touch->getClump();
+		Clump* clumpOTouch = touchOther->getClump();
+
+		if (touch->getOwner()->reportTouches() && (clumpIsMoving(clumpTouch) || clumpIsMoving(clumpOTouch)))
+		{
+			touch->getWorld()->onPrimitiveTouched(touch, touchOther);
+		}
+	}
 
 	// 005e7420: writes +0x14 only while world (+0x58) is NULL.
 	void Primitive::setUnknown0x14(int value)

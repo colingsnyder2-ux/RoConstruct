@@ -1,3 +1,19 @@
+// =============================================================================
+// FileSystem.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/util/FileSystem.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include <atlpath.h>
 #include "util/FileSystem.h"
 
@@ -39,7 +55,9 @@ namespace RBX
 				{
 					if (GetTokenInformation(hToken, TokenIntegrityLevel, pTIL, dwLengthNeeded, &dwLengthNeeded))
 					{
-						DWORD dwIntegrityLevel = *GetSidSubAuthority(pTIL->Label.Sid, (DWORD)(UCHAR)(*GetSidSubAuthorityCount(pTIL->Label.Sid) - 1));
+						DWORD dwIntegrityLevel = *GetSidSubAuthority(
+							pTIL->Label.Sid,
+							(DWORD)(UCHAR)(*GetSidSubAuthorityCount(pTIL->Label.Sid) - 1));
 
 						if (dwIntegrityLevel < SECURITY_MANDATORY_MEDIUM_RID)
 							*pVal = 1;
@@ -59,7 +77,8 @@ namespace RBX
 	}
 }
 
-namespace RBX {
+namespace RBX
+{
 VistaAPIs::VistaAPIs() : getKnownFolderPath(NULL) {
  gShell32DLLInst = LoadLibraryA("Shell32.dll");
  if(gShell32DLLInst) getKnownFolderPath = (GetKnownFolderPathPtr)GetProcAddress(gShell32DLLInst,"SHGetKnownFolderPath");
@@ -88,7 +107,13 @@ std::string FileSystem::getCacheDirectory(bool create) {
   }
  }
  char path[MAX_PATH];
- HRESULT result=SHGetFolderPathAndSubDirA(NULL,CSIDL_COMMON_APPDATA | (create ? CSIDL_FLAG_CREATE : 0),NULL,SHGFP_TYPE_CURRENT,"Roblox\\Cache",path);
+ HRESULT result=SHGetFolderPathAndSubDirA(
+ 	NULL,
+ 	CSIDL_COMMON_APPDATA | (create ? CSIDL_FLAG_CREATE : 0),
+ 	NULL,
+ 	SHGFP_TYPE_CURRENT,
+ 	"Roblox\\Cache",
+ 	path);
  if(result==S_OK) return path;
  else return "";
 }
@@ -108,8 +133,8 @@ std::string FileSystem::getUserAppDataDirectory(bool create, const char* subDire
    path += "\\Roblox\\";
    if(create) { if(!CreateDirectoryA(path,NULL)) { if(GetLastError()!=ERROR_ALREADY_EXISTS) return ""; } }
    if(subDirectory) {
-    path += subDirectory;
-    if(create) { if(!CreateDirectoryA(path,NULL)) { if(GetLastError()!=ERROR_ALREADY_EXISTS) return ""; } }
+	path += subDirectory;
+	if(create) { if(!CreateDirectoryA(path,NULL)) { if(GetLastError()!=ERROR_ALREADY_EXISTS) return ""; } }
    }
    ATL::CPath directory(path);
    directory.AddBackslash();
@@ -120,8 +145,20 @@ std::string FileSystem::getUserAppDataDirectory(bool create, const char* subDire
  std::string subPath("Roblox\\");
  if(subDirectory) subPath += subDirectory;
  ATL::CPath path;
- HRESULT result=SHGetFolderPathAndSubDirA(NULL,CSIDL_APPDATA|flags,NULL,SHGFP_TYPE_CURRENT,subPath.c_str(),path.m_strPath.GetBuffer(MAX_PATH));
- if(result!=S_OK) result=SHGetFolderPathAndSubDirA(NULL,CSIDL_COMMON_APPDATA|flags,NULL,SHGFP_TYPE_CURRENT,subPath.c_str(),path.m_strPath.GetBuffer(MAX_PATH));
+ HRESULT result=SHGetFolderPathAndSubDirA(
+ 	NULL,
+ 	CSIDL_APPDATA|flags,
+ 	NULL,
+ 	SHGFP_TYPE_CURRENT,
+ 	subPath.c_str(),
+ 	path.m_strPath.GetBuffer(MAX_PATH));
+ if(result!=S_OK) result=SHGetFolderPathAndSubDirA(
+ 	NULL,
+ 	CSIDL_COMMON_APPDATA|flags,
+ 	NULL,
+ 	SHGFP_TYPE_CURRENT,
+ 	subPath.c_str(),
+ 	path.m_strPath.GetBuffer(MAX_PATH));
  if(result==S_OK) {
   path.m_strPath.ReleaseBuffer();
   path.AddBackslash();

@@ -283,7 +283,12 @@ namespace RBX
 	public:
 		static GuiResponse processTarget(const GuiEvent&, GuiTarget*);
 		static void render2dItem(Adorn*, GuiItem*);
-		static void setCanvasSize(const G3D::Vector2&);
+		// Inline in the 2008 header: render2dItem 00573430 and render2d 00573c00 store straight into canvasSize
+		// 00974d78 / 00974d7c and the image has no out-of-line copy.
+		static void setCanvasSize(const G3D::Vector2& size)
+		{
+			canvasSize = size;
+		}
 		static G3D::Vector2 getCanvasSize()
 		{
 			return canvasSize;

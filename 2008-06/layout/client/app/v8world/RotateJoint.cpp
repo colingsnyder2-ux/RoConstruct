@@ -1,3 +1,19 @@
+// =============================================================================
+// RotateJoint.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/v8world/RotateJoint.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #undef _RELEASEASSERT
 #define NATIVE_PRIMITIVE_NATIVE_BODY
 #include "v8world/Primitive.h"
@@ -177,7 +193,13 @@ namespace RBX
 			Point* pMarker0 = getKernel()->newPoint(b0, marker0);
 			Point* pMarker1 = getKernel()->newPoint(b1, marker0);
 
-			RotateConnector* connector = new RotateConnector(getPoint(0), getPoint(2), pMarker0, pMarker1, getJointK(), getTorqueArmLength());
+			RotateConnector* connector = new RotateConnector(
+				getPoint(0),
+				getPoint(2),
+				pMarker0,
+				pMarker1,
+				getJointK(),
+				getTorqueArmLength());
 			rotateConnector = connector;
 			addToMultiJoint(pMarker0, pMarker1, connector);
 		}

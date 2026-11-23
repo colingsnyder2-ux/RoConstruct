@@ -1,3 +1,19 @@
+// =============================================================================
+// Surfaces.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/v8datamodel/Surfaces.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #undef _RELEASEASSERT
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Surfaces.h"
@@ -103,30 +119,150 @@ namespace RBX
 		}
 	};
 
-	static SurfaceEnumPropDescriptor<NORM_Y, SurfaceType> desc_TopType("TopSurface", "Surface", &Surface::getSurfaceType, &Surface::setSurfaceType, Reflection::PropertyDescriptor::STANDARD);
-	static SurfaceEnumPropDescriptor<NORM_Y, Controller::InputType> desc_TopSurfaceInput("TopSurfaceInput", "Surface Inputs", &Surface::getInput, &Surface::setSurfaceInput, Reflection::PropertyDescriptor::STANDARD);
-	static SurfacePropDescriptor<NORM_Y, float> desc_TopParamA("TopParamA", "Surface Inputs", &Surface::getParamA, &Surface::setParamA, Reflection::PropertyDescriptor::STANDARD);
-	static SurfacePropDescriptor<NORM_Y, float> desc_TopParamB("TopParamB", "Surface Inputs", &Surface::getParamB, &Surface::setParamB, Reflection::PropertyDescriptor::STANDARD);
-	static SurfaceEnumPropDescriptor<NORM_Y_NEG, SurfaceType> desc_BottomType("BottomSurface", "Surface", &Surface::getSurfaceType, &Surface::setSurfaceType, Reflection::PropertyDescriptor::STANDARD);
-	static SurfaceEnumPropDescriptor<NORM_Y_NEG, Controller::InputType> desc_BottomSurfaceInput("BottomSurfaceInput", "Surface Inputs", &Surface::getInput, &Surface::setSurfaceInput, Reflection::PropertyDescriptor::STANDARD);
-	static SurfacePropDescriptor<NORM_Y_NEG, float> desc_BottomParamA("BottomParamA", "Surface Inputs", &Surface::getParamA, &Surface::setParamA, Reflection::PropertyDescriptor::STANDARD);
-	static SurfacePropDescriptor<NORM_Y_NEG, float> desc_BottomParamB("BottomParamB", "Surface Inputs", &Surface::getParamB, &Surface::setParamB, Reflection::PropertyDescriptor::STANDARD);
-	static SurfaceEnumPropDescriptor<NORM_X_NEG, SurfaceType> desc_LeftType("LeftSurface", "Surface", &Surface::getSurfaceType, &Surface::setSurfaceType, Reflection::PropertyDescriptor::STANDARD);
-	static SurfaceEnumPropDescriptor<NORM_X_NEG, Controller::InputType> desc_LeftSurfaceInput("LeftSurfaceInput", "Surface Inputs", &Surface::getInput, &Surface::setSurfaceInput, Reflection::PropertyDescriptor::STANDARD);
-	static SurfacePropDescriptor<NORM_X_NEG, float> desc_LeftParamA("LeftParamA", "Surface Inputs", &Surface::getParamA, &Surface::setParamA, Reflection::PropertyDescriptor::STANDARD);
-	static SurfacePropDescriptor<NORM_X_NEG, float> desc_LeftParamB("LeftParamB", "Surface Inputs", &Surface::getParamB, &Surface::setParamB, Reflection::PropertyDescriptor::STANDARD);
-	static SurfaceEnumPropDescriptor<NORM_X, SurfaceType> desc_RightType("RightSurface", "Surface", &Surface::getSurfaceType, &Surface::setSurfaceType, Reflection::PropertyDescriptor::STANDARD);
-	static SurfaceEnumPropDescriptor<NORM_X, Controller::InputType> desc_RightSurfaceInput("RightSurfaceInput", "Surface Inputs", &Surface::getInput, &Surface::setSurfaceInput, Reflection::PropertyDescriptor::STANDARD);
-	static SurfacePropDescriptor<NORM_X, float> desc_RightParamA("RightParamA", "Surface Inputs", &Surface::getParamA, &Surface::setParamA, Reflection::PropertyDescriptor::STANDARD);
-	static SurfacePropDescriptor<NORM_X, float> desc_RightParamB("RightParamB", "Surface Inputs", &Surface::getParamB, &Surface::setParamB, Reflection::PropertyDescriptor::STANDARD);
-	static SurfaceEnumPropDescriptor<NORM_Z_NEG, SurfaceType> desc_FrontType("FrontSurface", "Surface", &Surface::getSurfaceType, &Surface::setSurfaceType, Reflection::PropertyDescriptor::STANDARD);
-	static SurfaceEnumPropDescriptor<NORM_Z_NEG, Controller::InputType> desc_FrontSurfaceInput("FrontSurfaceInput", "Surface Inputs", &Surface::getInput, &Surface::setSurfaceInput, Reflection::PropertyDescriptor::STANDARD);
-	static SurfacePropDescriptor<NORM_Z_NEG, float> desc_FrontParamA("FrontParamA", "Surface Inputs", &Surface::getParamA, &Surface::setParamA, Reflection::PropertyDescriptor::STANDARD);
-	static SurfacePropDescriptor<NORM_Z_NEG, float> desc_FrontParamB("FrontParamB", "Surface Inputs", &Surface::getParamB, &Surface::setParamB, Reflection::PropertyDescriptor::STANDARD);
-	static SurfaceEnumPropDescriptor<NORM_Z, SurfaceType> desc_BackType("BackSurface", "Surface", &Surface::getSurfaceType, &Surface::setSurfaceType, Reflection::PropertyDescriptor::STANDARD);
-	static SurfaceEnumPropDescriptor<NORM_Z, Controller::InputType> desc_BackSurfaceInput("BackSurfaceInput", "Surface Inputs", &Surface::getInput, &Surface::setSurfaceInput, Reflection::PropertyDescriptor::STANDARD);
-	static SurfacePropDescriptor<NORM_Z, float> desc_BackParamA("BackParamA", "Surface Inputs", &Surface::getParamA, &Surface::setParamA, Reflection::PropertyDescriptor::STANDARD);
-	static SurfacePropDescriptor<NORM_Z, float> desc_BackParamB("BackParamB", "Surface Inputs", &Surface::getParamB, &Surface::setParamB, Reflection::PropertyDescriptor::STANDARD);
+	static SurfaceEnumPropDescriptor<NORM_Y, SurfaceType> desc_TopType(
+		"TopSurface",
+		"Surface",
+		&Surface::getSurfaceType,
+		&Surface::setSurfaceType,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfaceEnumPropDescriptor<NORM_Y, Controller::InputType> desc_TopSurfaceInput(
+		"TopSurfaceInput",
+		"Surface Inputs",
+		&Surface::getInput,
+		&Surface::setSurfaceInput,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfacePropDescriptor<NORM_Y, float> desc_TopParamA(
+		"TopParamA",
+		"Surface Inputs",
+		&Surface::getParamA,
+		&Surface::setParamA,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfacePropDescriptor<NORM_Y, float> desc_TopParamB(
+		"TopParamB",
+		"Surface Inputs",
+		&Surface::getParamB,
+		&Surface::setParamB,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfaceEnumPropDescriptor<NORM_Y_NEG, SurfaceType> desc_BottomType(
+		"BottomSurface",
+		"Surface",
+		&Surface::getSurfaceType,
+		&Surface::setSurfaceType,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfaceEnumPropDescriptor<NORM_Y_NEG, Controller::InputType> desc_BottomSurfaceInput(
+		"BottomSurfaceInput",
+		"Surface Inputs",
+		&Surface::getInput,
+		&Surface::setSurfaceInput,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfacePropDescriptor<NORM_Y_NEG, float> desc_BottomParamA(
+		"BottomParamA",
+		"Surface Inputs",
+		&Surface::getParamA,
+		&Surface::setParamA,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfacePropDescriptor<NORM_Y_NEG, float> desc_BottomParamB(
+		"BottomParamB",
+		"Surface Inputs",
+		&Surface::getParamB,
+		&Surface::setParamB,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfaceEnumPropDescriptor<NORM_X_NEG, SurfaceType> desc_LeftType(
+		"LeftSurface",
+		"Surface",
+		&Surface::getSurfaceType,
+		&Surface::setSurfaceType,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfaceEnumPropDescriptor<NORM_X_NEG, Controller::InputType> desc_LeftSurfaceInput(
+		"LeftSurfaceInput",
+		"Surface Inputs",
+		&Surface::getInput,
+		&Surface::setSurfaceInput,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfacePropDescriptor<NORM_X_NEG, float> desc_LeftParamA(
+		"LeftParamA",
+		"Surface Inputs",
+		&Surface::getParamA,
+		&Surface::setParamA,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfacePropDescriptor<NORM_X_NEG, float> desc_LeftParamB(
+		"LeftParamB",
+		"Surface Inputs",
+		&Surface::getParamB,
+		&Surface::setParamB,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfaceEnumPropDescriptor<NORM_X, SurfaceType> desc_RightType(
+		"RightSurface",
+		"Surface",
+		&Surface::getSurfaceType,
+		&Surface::setSurfaceType,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfaceEnumPropDescriptor<NORM_X, Controller::InputType> desc_RightSurfaceInput(
+		"RightSurfaceInput",
+		"Surface Inputs",
+		&Surface::getInput,
+		&Surface::setSurfaceInput,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfacePropDescriptor<NORM_X, float> desc_RightParamA(
+		"RightParamA",
+		"Surface Inputs",
+		&Surface::getParamA,
+		&Surface::setParamA,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfacePropDescriptor<NORM_X, float> desc_RightParamB(
+		"RightParamB",
+		"Surface Inputs",
+		&Surface::getParamB,
+		&Surface::setParamB,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfaceEnumPropDescriptor<NORM_Z_NEG, SurfaceType> desc_FrontType(
+		"FrontSurface",
+		"Surface",
+		&Surface::getSurfaceType,
+		&Surface::setSurfaceType,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfaceEnumPropDescriptor<NORM_Z_NEG, Controller::InputType> desc_FrontSurfaceInput(
+		"FrontSurfaceInput",
+		"Surface Inputs",
+		&Surface::getInput,
+		&Surface::setSurfaceInput,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfacePropDescriptor<NORM_Z_NEG, float> desc_FrontParamA(
+		"FrontParamA",
+		"Surface Inputs",
+		&Surface::getParamA,
+		&Surface::setParamA,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfacePropDescriptor<NORM_Z_NEG, float> desc_FrontParamB(
+		"FrontParamB",
+		"Surface Inputs",
+		&Surface::getParamB,
+		&Surface::setParamB,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfaceEnumPropDescriptor<NORM_Z, SurfaceType> desc_BackType(
+		"BackSurface",
+		"Surface",
+		&Surface::getSurfaceType,
+		&Surface::setSurfaceType,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfaceEnumPropDescriptor<NORM_Z, Controller::InputType> desc_BackSurfaceInput(
+		"BackSurfaceInput",
+		"Surface Inputs",
+		&Surface::getInput,
+		&Surface::setSurfaceInput,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfacePropDescriptor<NORM_Z, float> desc_BackParamA(
+		"BackParamA",
+		"Surface Inputs",
+		&Surface::getParamA,
+		&Surface::setParamA,
+		Reflection::PropertyDescriptor::STANDARD);
+	static SurfacePropDescriptor<NORM_Z, float> desc_BackParamB(
+		"BackParamB",
+		"Surface Inputs",
+		&Surface::getParamB,
+		&Surface::setParamB,
+		Reflection::PropertyDescriptor::STANDARD);
 
 	bool Surfaces::isSurfaceDescriptor(const Reflection::PropertyDescriptor& descriptor)
 	{

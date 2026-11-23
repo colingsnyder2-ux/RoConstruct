@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // INFERRED: no header excerpt was found, so ServiceProvider is declared locally.
 // The body is a single tail jump to 0x0044f3c0, probably doGetClassIndex<RunService>.
 namespace RBX {

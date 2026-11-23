@@ -1,41 +1,23 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-#include <algorithm>
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+#include <boost/thread/mutex.hpp>
+#include <boost/thread/condition.hpp>
+#include <boost/thread/xtime.hpp>
 
-// INFERRED: boost 1.3x xtime layout {sec, nsec}; nsec at +8 per disassembly.
-struct xtime {
-    long long sec;
-    int nsec;
-};
-
-extern "C" int fn_005a6b40(xtime* xt, int type);                          // boost::xtime_get (cdecl)
-extern "C" void __fastcall fn_00594ce0(void* mutex, int unusedEdx);       // mutex::do_lock
-extern "C" void __fastcall fn_00594d00(void* mutex, int unusedEdx);       // mutex::do_unlock
-extern "C" bool __fastcall fn_00554c30(void* cond, int unusedEdx, void* lock, xtime* xt); // condition::timed_wait
-
-// INFERRED: scoped_lock<mutex> {mutex*, locked}; dtor produces the SEH unwind frame.
-struct ScopedLock {
-    void* m;
-    bool locked;
-    explicit ScopedLock(void* mm) : m(mm), locked(false) {
-        fn_00594ce0(m, 0);
-        locked = true;
-    }
-    ~ScopedLock() {
-        if (locked)
-            fn_00594d00(m, 0);
-    }
-};
-
+// INFERRED: the owning class is unknown, so the object is taken as a raw pointer.
+// Layout from the disassembly: boost::mutex at +0x240, boost::condition at +0x264.
+// INFERRED: the function is a thiscall taking a double timeout, with void return.
 extern "C" void __fastcall fn_00554e10(char* self, int unusedEdx, double seconds)
 {
-    // INFERRED: std::max(0.0, seconds) via reference to local 0.0 temp
-    seconds = (std::max)(0.0, seconds);
+    // clamp the timeout to >= 0
+    double zero = 0.0;
+    const double& t = (zero > seconds) ? zero : seconds;
+    seconds = t;
 
-    xtime xt;
-    fn_005a6b40(&xt, 1);
-    // INFERRED: 1e9 scale constant at 0x82d3f8 (seconds -> nanoseconds)
+    boost::xtime xt;
+    boost::xtime_get(&xt, 1);
+    // INFERRED: the scale is 1e9 (nanoseconds); it is added to the nsec field only, as in the disassembly.
     xt.nsec += (int)(seconds * 1000000000.0);
 
-    ScopedLock lock(self + 0x240);
-    fn_00554c30(self + 0x264, 0, &lock, &xt);
+    boost::mutex::scoped_lock lock(*(boost::mutex*)(self + 0x240));
+    ((boost::condition*)(self + 0x264))->timed_wait(lock, xt);
 }

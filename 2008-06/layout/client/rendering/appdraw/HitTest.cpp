@@ -1,11 +1,28 @@
+// =============================================================================
+// HitTest.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/appdraw/HitTest.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include <AppDraw/HitTest.h>
 
-namespace RBX {
+namespace RBX
+{
 float HitTest::distanceToHandleRadius(const G3D::Vector3& a, const G3D::Vector3& b) {
-    float distance = (a - b).magnitude();
-    float result = 0.5f;
-    if (distance > 28.66242027282715f) result = distance * 0.017444444820284843f;
-    return result;
+	float distance = (a - b).magnitude();
+	float result = 0.5f;
+	if (distance > 28.66242027282715f) result = distance * 0.017444444820284843f;
+	return result;
 }
 }
 

@@ -345,6 +345,131 @@ namespace RBX
 	}
 }
 
+// 0049d630 (registry placeholder func_0049d630): Players::addChatMessage (Players.h donor declaration). Identity: callers
+// OnReceive 0049d770 (ID_CHAT_ALL branch) only; thiscall ret 4 (const ChatMessage&). Body read from the target: list
+// insert at begin (_Buynode 00497860, _Incsize 00496ff0) = chatHistory.push_front (+0x178), then while size (+0x190) >
+// (unsigned) GameSettings::singleton() 0044bee0 ->chatHistory (+0x130) erase(--end()) 00498870 (= pop_back), then a
+// by-value copy 00496480 for Notifier<Players, ChatMessage>::raise 00496d90 (+0x130), then the Player "Chatted" signal
+// 0096fca0 fire 0049d2b0 (source.get() as SignalSource, message, destination). Shape: donor tools/rbxgs Players.cpp.
+// BLOCKED (guard): native Network/Player.h (not this batch's file) does not declare the signal; NetworkPlayer.cpp
+// defines it as a file-static `event_Chatted` (0096fca0). Proposal: declare
+// `static Reflection::SignalDesc<Player, void(std::string, boost::shared_ptr<Instance>)> event_Chatted; // 0096fca0`
+// in Player (public) with the NetworkPlayer.cpp definition made the member's, and define
+// PLAYER_HEADER_DECLARES_EVENT_CHATTED. Measured (batch 45, scratch copy of Network/Player.h with that declaration):
+// 318 B, byte-identical to 0049d630 (relocs masked).
+//
+// 0049d770 Players::OnReceive (Players.h; caller PluginInterfaceAdapter<Players>::OnReceive 0049df50). Body read from
+// the target (805 B): switch on packet->data[0]: 0x52 (abuse report; tested second) and 0x51 (ID_CHAT_ALL), any other id
+// returns true. Both cases are try/catch(std::exception&) blocks printing "Players::OnReceive packet %d: %s" (00822b38,
+// MESSAGE_ERROR) through StandardOut::singleton() 00569620 / print 005693a0, and return false. Chat: BitStream(data,
+// length, false) 004a5120, IgnoreBits(8) 004a5470, >> string 004a6610, Name::lookup 00554180, >> int 004a6250, the
+// GuidItem<Instance> registry lookup 0049ba80, >> message; unknown player: MESSAGE_WARNING "Chat message from unknown
+// Player %s %s" (00822b10) with systemAddress.ToString(true) 004a98b0; player->getParent() (+0x104) == this: ChatMessage
+// (message.c_str(), shared_from_polymorphic_downcast<Player>) 00496c20, addChatMessage 0049d630, peer slot 0x38
+// Send(data, length, HIGH_PRIORITY, RELIABLE, 2, systemAddress, true). Abuse report: if (abuseReporter) BitStream,
+// IgnoreBits(8), AbuseReport 00499320, >> submitterID, >> allegedAbuserID, >> comment, AbuseReporter::add 0049c710.
+// Shape: openrbx Client/Network/Players.cpp Players::OnReceive (ROBLOX 0x004b6fc0).
+// BLOCKED (guard): additionally needs the 0049ba80 declaration in core util/GuidItem.h (the NATIVE_GUID_REGISTRY_LOOKUP
+// proposal of AppUnit49C_2008IdSerializerTemplates.cpp: `static bool sub_0049ba80(const Guid::Data& id, T*& item);`).
+// Measured (batch 45, scratch Player.h + GuidItem.h): 805 B, same instructions; only the frame differs (sub esp 0x68 vs
+// 0x64, one extra 4-byte slot: the original reuses the dead `player` slot +0x60 for the ChatMessage argument's esp save,
+// and the catch-block StandardOut temporaries sit at +0x28/+0x20/+0x34 instead of +0x38/+0x30/+0x1c). Near miss.
+#ifdef PLAYER_HEADER_DECLARES_EVENT_CHATTED
+#include "v8datamodel/GameSettings.h"
+#include "AppUnit49C_2008/Streaming2008.h"
+#include "BitStream.h"
+#include "util/standardout.h"
+
+namespace RBX
+{
+	namespace Network
+	{
+		void Players::addChatMessage(const ChatMessage& message)
+		{
+			chatHistory.push_front(message);
+
+			while (chatHistory.size() > (size_t)GameSettings::singleton().chatHistory)
+				chatHistory.pop_back();
+
+			Notifier<Players, ChatMessage>::raise(message);
+			Player::event_Chatted.fire(message.source.get(), message.message, message.destination);
+		}
+
+#ifdef NATIVE_GUID_REGISTRY_LOOKUP
+		bool Players::OnReceive(RakPeerInterface* peer, Packet* packet)
+		{
+			switch (packet->data[0])
+			{
+			case 0x51: // ID_CHAT_ALL (2008 numbering)
+				try
+				{
+					RakNet::BitStream inBitstream(packet->data, packet->length, false);
+					inBitstream.IgnoreBits(8);
+
+					std::string foo;
+					inBitstream >> foo;
+
+					Guid::Data id;
+					id.scope = &Name::lookup(foo);
+					inBitstream >> id.index;
+
+					Instance* player = NULL;
+					GuidItem<Instance>::sub_0049ba80(id, player);
+
+					std::string message;
+					inBitstream >> message;
+
+					if (!player)
+					{
+						StandardOut::singleton()->print(MESSAGE_WARNING, "Chat message from unknown Player %s %s",
+							packet->systemAddress.ToString(true), message.c_str());
+					}
+					else if (player->getParent() == this)
+					{
+						ChatMessage event(message.c_str(), shared_from_polymorphic_downcast<Player>(player));
+						addChatMessage(event);
+
+						peer->Send(reinterpret_cast<const char*>(packet->data), packet->length, HIGH_PRIORITY, RELIABLE, 2,
+							packet->systemAddress, true);
+					}
+				}
+				catch (std::exception& e)
+				{
+					StandardOut::singleton()->print(MESSAGE_ERROR, "Players::OnReceive packet %d: %s", packet->data[0], e.what());
+				}
+				return false;
+
+			case 0x52: // abuse report (2008 numbering)
+				try
+				{
+					if (abuseReporter)
+					{
+						RakNet::BitStream inBitstream(packet->data, packet->length, false);
+						inBitstream.IgnoreBits(8);
+
+						AbuseReport r;
+						inBitstream >> r.submitterID;
+						inBitstream >> r.allegedAbuserID;
+						inBitstream >> r.comment;
+
+						abuseReporter->add(r, chatHistory);
+					}
+				}
+				catch (std::exception& e)
+				{
+					StandardOut::singleton()->print(MESSAGE_ERROR, "Players::OnReceive packet %d: %s", packet->data[0], e.what());
+				}
+				return false;
+
+			default:
+				return true;
+			}
+		}
+#endif
+	}
+}
+#endif
+
 // 00496ff0 (registry placeholder func_00496ff0): std::list<ChatMessage>::_Incsize (max_size 0x38e38e3 = ~0u / 0x48,
 // "list<T> too long"); its only caller is the chatHistory push 0049d630 (Players::addChatMessage, not built here).
 template void std::list<RBX::Network::ChatMessage>::_Incsize(std::list<RBX::Network::ChatMessage>::size_type);

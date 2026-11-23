@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 #include <intrin.h>
 
 // INFERRED: arg2 is a by-value boost::shared_ptr-style handle; the epilogue releases use/weak counts via vtable slots 1 and 2.

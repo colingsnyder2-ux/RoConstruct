@@ -1,3 +1,19 @@
+// =============================================================================
+// Sphere.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Sphere.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #line 1 ".\\G3Dcpp\\Sphere.cpp"
 /**
  @file Sphere.cpp
@@ -18,7 +34,8 @@
 #include "G3D/AABox.h"
 #include "G3D/Plane.h"
 
-namespace G3D {
+namespace G3D
+{
 
 int32 Sphere::dummy;
 
@@ -37,17 +54,17 @@ void Sphere::deserialize(class BinaryInput& b) {
 }
 
 std::string Sphere::toString() const {
-    return format("Sphere(<%g, %g, %g>, %g)",
-        center.x, center.y, center.z, radius);
+	return format("Sphere(<%g, %g, %g>, %g)",
+		center.x, center.y, center.z, radius);
 }
 
 bool Sphere::contains(const Vector3& point) const {
-    double distance = (center - point).squaredMagnitude();
-    return distance <= (radius * radius);
+	double distance = (center - point).squaredMagnitude();
+	return distance <= (radius * radius);
 }
 
 bool Sphere::culledBy(
-    const Array<Plane>&		plane,
+	const Array<Plane>&		plane,
 	int&				    cullingPlaneIndex,
 	const uint32			inMask,
 	uint32&					outMask) const {
@@ -56,7 +73,7 @@ bool Sphere::culledBy(
 }
 
 bool Sphere::culledBy(
-    const Array<Plane>&		plane,
+	const Array<Plane>&		plane,
 	int&				    cullingPlaneIndex,
 	const uint32			inMask) const {
 
@@ -64,71 +81,71 @@ bool Sphere::culledBy(
 }
 
 bool Sphere::culledBy(
-    const class Plane*  plane,
-    int                 numPlanes,
+	const class Plane*  plane,
+	int                 numPlanes,
 	int&				cullingPlane,
 	const uint32		_inMask,
-    uint32&             childMask) const {
+	uint32&             childMask) const {
 
-    if (radius == inf()) {
-        // No plane can cull the infinite box
-        return false;
-    }
+	if (radius == inf()) {
+		// No plane can cull the infinite box
+		return false;
+	}
 
 	uint32 inMask = _inMask;
 	assert(numPlanes < 31);
 
-    childMask = 0;
+	childMask = 0;
 
-    // See if there is one plane for which all of the
+	// See if there is one plane for which all of the
 	// vertices are in the negative half space.
-    for (int p = 0; p < numPlanes; p++) {
+	for (int p = 0; p < numPlanes; p++) {
 
 		// Only test planes that are not masked
 		if ((inMask & 1) != 0) {
 
-            bool culledLow = ! plane[p].halfSpaceContainsFinite(center + plane[p].normal() * radius);
-            bool culledHigh = ! plane[p].halfSpaceContainsFinite(center - plane[p].normal() * radius);
+			bool culledLow = ! plane[p].halfSpaceContainsFinite(center + plane[p].normal() * radius);
+			bool culledHigh = ! plane[p].halfSpaceContainsFinite(center - plane[p].normal() * radius);
 
 			if (culledLow) {
 				// Plane p culled the sphere
 				cullingPlane = p;
 
-                // The caller should not recurse into the children,
-                // since the parent is culled.  If they do recurse,
-                // make them only test against this one plane, which
-                // will immediately cull the volume.
-                childMask = 1 << p;
+				// The caller should not recurse into the children,
+				// since the parent is culled.  If they do recurse,
+				// make them only test against this one plane, which
+				// will immediately cull the volume.
+				childMask = 1 << p;
 				return true;
 
-            } else if (culledHigh) {
-                // The bounding volume straddled the plane; we have
-                // to keep testing against this plane
-                childMask |= (1 << p);
-            }
+			} else if (culledHigh) {
+				// The bounding volume straddled the plane; we have
+				// to keep testing against this plane
+				childMask |= (1 << p);
+			}
 		}
 
-        // Move on to the next bit.
+		// Move on to the next bit.
 		inMask = inMask >> 1;
-    }
+	}
 
-    // None of the planes could cull this box
+	// None of the planes could cull this box
 	cullingPlane = -1;
-    return false;
+	return false;
 }
 
 bool Sphere::culledBy(
-    const class Plane*  plane,
-    int                 numPlanes,
+	const class Plane*  plane,
+	int                 numPlanes,
 	int&				cullingPlane,
 	const uint32		_inMask) const {
 
 	uint32 inMask = _inMask;
 	assert(numPlanes < 31);
 
-    // See if there is one plane for which all of the
+	// See if there is one plane for which all of the
 	// vertices are in the negative half space.
-    for (int p = 0; p < numPlanes; p++) {
+	for (int p = 0; p < numPlanes; p++) {
 
 		// Only test planes that are not masked
 		if ((inMask & 1) != 0) {
@@ -137,44 +154,44 @@ bool Sphere::culledBy(
 				// Plane p culled the sphere
 				cullingPlane = p;
 				return true;
-            }
+			}
 		}
 
-        // Move on to the next bit.
+		// Move on to the next bit.
 		inMask = inMask >> 1;
-    }
+	}
 
-    // None of the planes could cull this box
+	// None of the planes could cull this box
 	cullingPlane = -1;
-    return false;
+	return false;
 }
 
 Vector3 Sphere::randomSurfacePoint() const {
-    return Vector3::random() * radius + center;
+	return Vector3::random() * radius + center;
 }
 
 Vector3 Sphere::randomInteriorPoint() const {
-    Vector3 result;
-    do {
-        result = Vector3((float)symmetricRandom(),
+	Vector3 result;
+	do {
+		result = Vector3((float)symmetricRandom(),
                          (float)symmetricRandom(),
                          (float)symmetricRandom());
-    } while (result.squaredMagnitude() >= 1.0f);
+	} while (result.squaredMagnitude() >= 1.0f);
 
-    return result * radius + center;
+	return result * radius + center;
 }
 
 float Sphere::volume() const {
-    return (float)G3D_PI * (4.0f / 3.0f) * powf((float)radius, 3.0f);
+	return (float)G3D_PI * (4.0f / 3.0f) * powf((float)radius, 3.0f);
 }
 
 float Sphere::surfaceArea() const {
-    return (float)G3D_PI * 4.0f * powf((float)radius, 2.0f);
+	return (float)G3D_PI * 4.0f * powf((float)radius, 2.0f);
 }
 
 void Sphere::getBounds(AABox& out) const {
-    Vector3 extent(radius, radius, radius);
-    out = AABox(center - extent, center + extent);
+	Vector3 extent(radius, radius, radius);
+	out = AABox(center - extent, center + extent);
 }
 
 } // namespace

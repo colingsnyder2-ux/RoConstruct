@@ -1,56 +1,76 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: no class header was provided, so the layout below is local and minimal.
-#include <windows.h>
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+#include <intrin.h>
+#include <new>
 
-extern "C" void* fn_006a0920(unsigned size);                        // operator new
-extern "C" void* __fastcall fn_004dbbe0(void* self, int unusedEdx, void* dmPtr, long* dmRef); // ViewG3D ctor
-extern "C" void* __fastcall fn_0047e400(void* self, int unusedEdx, unsigned bytes);          // TextureManager ctor
+// INFERRED: no class header was available, so the layout below is guessed from the offsets in the disassembly.
+struct SpCount { int vtbl; int use; };
 
-// INFERRED: boost::shared_ptr<DataModel> by value (ptr + refcount block, atomic use-count increment)
-struct SharedDM {
-    void* px;
-    long* pn;
-    SharedDM(const SharedDM& o) : px(o.px), pn(o.pn) {
-        if (pn) InterlockedIncrement(pn + 1);
+// INFERRED: minimal boost::shared_ptr-like value (px, pn). Its copy constructor does the lock xadd on pn+4.
+struct SharedPtrLike {
+    void*    px;
+    SpCount* pn;
+    SharedPtrLike() : px(0), pn(0) {}
+    SharedPtrLike(const SharedPtrLike& o) : px(o.px), pn(o.pn) {
+        if (pn) _InterlockedExchangeAdd((volatile long*)&pn->use, 1);
     }
 };
 
-// INFERRED: ref-counted objects with a virtual deleting destructor in slot 0
-struct Deletable {
-    virtual void destroy(int del) = 0;
+struct RefObj {
+    virtual ~RefObj();
 };
 
-struct TextureManagerHolder : Deletable {
-    void* owner;
-    char textureManager[0x18];
+// INFERRED: the 0x20-byte object with vtable 0x819d24 (the vtable itself is emitted by this TU).
+struct TexMgrHolder : RefObj {
+    int  owner;
+    char tm[0x18];
+    TexMgrHolder(int o);
+    virtual ~TexMgrHolder() {}
 };
 
-struct CRobloxWnd {
-    char pad0[0x70];
-    SharedDM dataModel;       // +0x70
-    char pad1[0xac - 0x78];
-    void* owner;              // +0xac
-    Deletable* view;          // +0xb0
-    Deletable* texMgr;        // +0xb4
+extern "C" void* fn_006a0920(int size); // operator new, cdecl
+extern "C" void* __fastcall fn_004dbbe0(void* self, int unusedEdx, SharedPtrLike dm); // ViewG3D::ViewG3D(shared_ptr<DataModel>)
+extern "C" void  __fastcall fn_0047e400(void* self, int unusedEdx, unsigned size);     // G3D::TextureManager::TextureManager(uint)
+
+RefObj::~RefObj() {}
+
+TexMgrHolder::TexMgrHolder(int o) : owner(o) {
+    fn_0047e400(tm, 0, 0xa00000);
+}
+
+struct RobloxWndLike {
+    char          pad0[0x70];
+    SharedPtrLike dataModel;   // +0x70
+    char          pad1[0xac - 0x80 + 0x8];
+    int           field_ac;    // +0xac
+    RefObj*       view;        // +0xb0
+    RefObj*       texMgr;      // +0xb4
 };
 
-extern "C" void fn_0045d850(CRobloxWnd* self)
+extern "C" void __fastcall fn_0045d850(RobloxWndLike* self, int unusedEdx)
 {
     void* mem = fn_006a0920(0x6c);
-    Deletable* v = 0;
-    if (mem)
-        v = (Deletable*)fn_004dbbe0(mem, 0, self->dataModel.px, self->dataModel.pn);
-    if (v != self->view && self->view)
-        self->view->destroy(1);
+    RefObj* v;
+    if (mem) {
+        v = (RefObj*)fn_004dbbe0(mem, 0, self->dataModel);
+    } else {
+        v = 0;
+    }
+    RefObj* old = self->view;
+    if (v != old && old) {
+        delete old;
+    }
     self->view = v;
 
-    TextureManagerHolder* t = (TextureManagerHolder*)fn_006a0920(0x20);
+    void* t = fn_006a0920(0x20);
+    RefObj* tm;
     if (t) {
-        t->owner = self->owner;
-        fn_0047e400(t->textureManager, 0, 0xa00000);
+        tm = new (t) TexMgrHolder(self->field_ac);
+    } else {
+        tm = 0;
     }
-    Deletable* old = self->texMgr;
-    if ((Deletable*)t != old && old)
-        old->destroy(1);
-    self->texMgr = t;
+    RefObj* oldTm = self->texMgr;
+    if (tm != oldTm && oldTm) {
+        delete oldTm;
+    }
+    self->texMgr = tm;
 }

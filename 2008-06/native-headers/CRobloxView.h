@@ -72,6 +72,12 @@ public:
     afx_msg void OnSize(UINT, int, int);   // 0045b010, INFERRED name (registry: resize)
     virtual BOOL PreCreateWindow(CREATESTRUCT&);   // 0045b330
     afx_msg void OnSetFocus(CWnd*);        // 0045b5d0, INFERRED name (registry: f(int))
+    afx_msg int OnCreate(LPCREATESTRUCT);  // 0045d550, WM_CREATE entry of the message map at 0081a3a8
+    void createRenderer(int width, int height);   // 0045d4c0, INFERRED name (mode 2: 0045d280, otherwise 0045cbf0)
+    void releaseRenderer();                // 0045be60, INFERRED name
+    virtual BOOL OnWndMsg(UINT, WPARAM, LPARAM, LRESULT*);   // 0045b4a0 (CWnd virtual override)
+    DECLARE_MESSAGE_MAP()                  // messageMap 0081a398 (base CWnd 006a1082), entries 0081a3a8
+public:   // DECLARE_MESSAGE_MAP leaves the access at protected
     void handle(int);                      // 0045cba0, 0 = run 0045beb0 then 0045c890, 1 = update the mouse; always ends in CWnd::Default
     void sub_0045beb0();                   // INFERRED placeholder name: restores the window state when flags_88_8b[2] (0x8a) is set; body not recovered
     void sub_0045c890();                   // INFERRED placeholder name: applies pendingThrottle under the shared lock; body not recovered

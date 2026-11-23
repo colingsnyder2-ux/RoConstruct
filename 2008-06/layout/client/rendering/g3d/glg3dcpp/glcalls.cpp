@@ -1,3 +1,19 @@
+// =============================================================================
+// glcalls.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/glcalls.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #line 1 ".\\glg3dcpp\\glcalls.cpp"
 /**
   @file glcalls.cpp
@@ -222,103 +238,104 @@ PFNGLSTENCILOPSEPARATEATIPROC glStencilOpSeparateATI = NULL;
 // Depth bounds
 PFNGLDEPTHBOUNDSEXTPROC glDepthBoundsEXT = NULL;
 
-namespace G3D {
+namespace G3D
+{
 
 /**
  Sets up matrix m from rot and trans
  */
 static void _getGLMatrix(GLfloat* m, const Matrix3& rot, const Vector3& trans) {
-    // GL wants a column major matrix
-    m[0] = rot[0][0];
-    m[1] = rot[1][0];
-    m[2] = rot[2][0];
-    m[3] = 0.0f;
+	// GL wants a column major matrix
+	m[0] = rot[0][0];
+	m[1] = rot[1][0];
+	m[2] = rot[2][0];
+	m[3] = 0.0f;
 
-    m[4] = rot[0][1];
-    m[5] = rot[1][1];
-    m[6] = rot[2][1];
-    m[7] = 0.0f;
+	m[4] = rot[0][1];
+	m[5] = rot[1][1];
+	m[6] = rot[2][1];
+	m[7] = 0.0f;
 
-    m[8] = rot[0][2];
-    m[9] = rot[1][2];
-    m[10] = rot[2][2];
-    m[11] = 0.0f;
+	m[8] = rot[0][2];
+	m[9] = rot[1][2];
+	m[10] = rot[2][2];
+	m[11] = 0.0f;
 
-    m[12] = trans[0];
-    m[13] = trans[1];
-    m[14] = trans[2];
-    m[15] = 1.0f;
+	m[12] = trans[0];
+	m[13] = trans[1];
+	m[14] = trans[2];
+	m[15] = 1.0f;
 }
 
 void glGetMatrix(GLenum name, Matrix4& m) {
-    float f[16];
-    glGetFloatv(name, f);
-    debugAssertGLOk();
-    m = Matrix4(f).transpose();
+	float f[16];
+	glGetFloatv(name, f);
+	debugAssertGLOk();
+	m = Matrix4(f).transpose();
 }
 
 Matrix4 glGetMatrix(GLenum name) {
-    Matrix4 m;
-    glGetMatrix(name, m);
-    return m;
+	Matrix4 m;
+	glGetMatrix(name, m);
+	return m;
 }
 
 void glLoadMatrix(const CoordinateFrame &cf) {
-    GLfloat matrix[16];
-    _getGLMatrix(matrix, cf.rotation, cf.translation);
-    glLoadMatrixf(matrix);
+	GLfloat matrix[16];
+	_getGLMatrix(matrix, cf.rotation, cf.translation);
+	glLoadMatrixf(matrix);
 }
 
 void glLoadMatrix(const Matrix4& m) {
-    GLfloat matrix[16];
-    for (int r = 0; r < 4; ++r) {
-        for (int c = 0; c < 4; ++c) {
-            // Transpose
-            matrix[c * 4 + r] = m[r][c];
-        }
-    }
+	GLfloat matrix[16];
+	for (int r = 0; r < 4; ++r) {
+		for (int c = 0; c < 4; ++c) {
+			// Transpose
+			matrix[c * 4 + r] = m[r][c];
+		}
+	}
 
-    glLoadMatrixf(matrix);
+	glLoadMatrixf(matrix);
 }
 
 void glLoadInvMatrix(const CoordinateFrame &cf) {
-    Matrix3 rotInv = cf.rotation.transpose();
+	Matrix3 rotInv = cf.rotation.transpose();
 
-    GLfloat matrix[16];
-    _getGLMatrix(matrix, rotInv, rotInv * -cf.translation);
-    glLoadMatrixf(matrix);
+	GLfloat matrix[16];
+	_getGLMatrix(matrix, rotInv, rotInv * -cf.translation);
+	glLoadMatrixf(matrix);
 }
 
 void glMultInvMatrix(const CoordinateFrame &cf) {
-    Matrix3 rotInv = cf.rotation.transpose();
+	Matrix3 rotInv = cf.rotation.transpose();
 
-    GLfloat matrix[16];
-    _getGLMatrix(matrix, rotInv, rotInv * -cf.translation);
-    glMultMatrixf(matrix);
+	GLfloat matrix[16];
+	_getGLMatrix(matrix, rotInv, rotInv * -cf.translation);
+	glMultMatrixf(matrix);
 }
 
 void glMultMatrix(const CoordinateFrame &cf) {
-    GLfloat matrix[16];
-    _getGLMatrix(matrix, cf.rotation, cf.translation);
-    glMultMatrixf(matrix);
+	GLfloat matrix[16];
+	_getGLMatrix(matrix, cf.rotation, cf.translation);
+	glMultMatrixf(matrix);
 }
 
 Vector2 glGetVector2(GLenum which) {
-    float v[4];
-    glGetFloatv(which, v);
-    return Vector2(v[0], v[1]);
+	float v[4];
+	glGetFloatv(which, v);
+	return Vector2(v[0], v[1]);
 }
 
 Vector3 glGetVector3(GLenum which) {
-    float v[4];
-    glGetFloatv(which, v);
-    return Vector3(v[0], v[1], v[2]);
+	float v[4];
+	glGetFloatv(which, v);
+	return Vector3(v[0], v[1], v[2]);
 }
 
 Vector4 glGetVector4(GLenum which) {
-    float v[4];
-    glGetFloatv(which, v);
-    return Vector4(v[0], v[1], v[2], v[3]);
+	float v[4];
+	glGetFloatv(which, v);
+	return Vector4(v[0], v[1], v[2], v[3]);
 }
 
 /**
@@ -330,58 +347,58 @@ Vector4 glGetVector4(GLenum which) {
  */
 Vector4 glToScreen(const Vector4& v) {
 
-    // Get the matrices and viewport
-    double modelView[16];
-    double projection[16];
-    double viewport[4];
-    double depthRange[2];
+	// Get the matrices and viewport
+	double modelView[16];
+	double projection[16];
+	double viewport[4];
+	double depthRange[2];
 
-    glGetDoublev(GL_MODELVIEW_MATRIX, modelView);
-    glGetDoublev(GL_PROJECTION_MATRIX, projection);
-    glGetDoublev(GL_VIEWPORT, viewport);
-    glGetDoublev(GL_DEPTH_RANGE, depthRange);
+	glGetDoublev(GL_MODELVIEW_MATRIX, modelView);
+	glGetDoublev(GL_PROJECTION_MATRIX, projection);
+	glGetDoublev(GL_VIEWPORT, viewport);
+	glGetDoublev(GL_DEPTH_RANGE, depthRange);
 
-    // Compose the matrices into a single row-major transformation
-    Vector4 T[4];
-    int r, c, i;
-    for (r = 0; r < 4; ++r) {
-        for (c = 0; c < 4; ++c) {
-            T[r][c] = 0;
-            for (i = 0; i < 4; ++i) {
-                // OpenGL matrices are column major
-                T[r][c] += projection[r + i * 4] * modelView[i + c * 4];
-            }
-        }
-    }
+	// Compose the matrices into a single row-major transformation
+	Vector4 T[4];
+	int r, c, i;
+	for (r = 0; r < 4; ++r) {
+		for (c = 0; c < 4; ++c) {
+			T[r][c] = 0;
+			for (i = 0; i < 4; ++i) {
+				// OpenGL matrices are column major
+				T[r][c] += projection[r + i * 4] * modelView[i + c * 4];
+			}
+		}
+	}
 
-    // Transform the vertex
-    Vector4 result;
-    for (r = 0; r < 4; ++r) {
-        result[r] = T[r].dot(v);
-    }
+	// Transform the vertex
+	Vector4 result;
+	for (r = 0; r < 4; ++r) {
+		result[r] = T[r].dot(v);
+	}
 
-    // Homogeneous divide
-    const double rhw = 1 / result.w;
+	// Homogeneous divide
+	const double rhw = 1 / result.w;
 
-    return Vector4(
-        (1 + result.x * rhw) * viewport[2] / 2 + viewport[0],
-        (1 - result.y * rhw) * viewport[3] / 2 + viewport[1],
-        (result.z * rhw) * (depthRange[1] - depthRange[0]) + depthRange[0],
-        rhw);
+	return Vector4(
+		(1 + result.x * rhw) * viewport[2] / 2 + viewport[0],
+		(1 - result.y * rhw) * viewport[3] / 2 + viewport[1],
+		(result.z * rhw) * (depthRange[1] - depthRange[0]) + depthRange[0],
+		rhw);
 }
 
 void glDisableAllTextures() {
   glDisable(GL_TEXTURE_2D);
   if (GLCaps::supports_GL_EXT_texture_3D()) {
-    glDisable(GL_TEXTURE_3D);
+	glDisable(GL_TEXTURE_3D);
   }
   if (GLCaps::supports_GL_EXT_texture_cube_map()) {
-    glDisable(GL_TEXTURE_CUBE_MAP_ARB);
+	glDisable(GL_TEXTURE_CUBE_MAP_ARB);
   }
   glDisable(GL_TEXTURE_1D);
 
   if (GLCaps::supports_GL_EXT_texture_rectangle()) {
-    glDisable(GL_TEXTURE_RECTANGLE_EXT);
+	glDisable(GL_TEXTURE_RECTANGLE_EXT);
   }
 }
 

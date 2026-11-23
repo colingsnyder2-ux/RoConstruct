@@ -1,3 +1,19 @@
+// =============================================================================
+// Explosion.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/v8datamodel/Explosion.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "v8datamodel/Explosion.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8world/Primitive.h"
@@ -34,9 +50,22 @@ namespace RBX
 		}
 	}
 
-	static Reflection::PropDescriptor<Explosion, float> propBlastRadius("BlastRadius", "Data", &Explosion::getBlastRadius, &Explosion::setBlastRadius, Reflection::PropertyDescriptor::STANDARD);
-	Reflection::BoundProp<float, 1> Explosion::propBlastPressure("BlastPressure", "Data", &Explosion::blastPressure, Reflection::PropertyDescriptor::STANDARD);
-	Reflection::BoundProp<G3D::Vector3, 1> Explosion::propPosition("Position", "Data", &Explosion::position, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Explosion, float> propBlastRadius(
+		"BlastRadius",
+		"Data",
+		&Explosion::getBlastRadius,
+		&Explosion::setBlastRadius,
+		Reflection::PropertyDescriptor::STANDARD);
+	Reflection::BoundProp<float, 1> Explosion::propBlastPressure(
+		"BlastPressure",
+		"Data",
+		&Explosion::blastPressure,
+		Reflection::PropertyDescriptor::STANDARD);
+	Reflection::BoundProp<G3D::Vector3, 1> Explosion::propPosition(
+		"Position",
+		"Data",
+		&Explosion::position,
+		Reflection::PropertyDescriptor::STANDARD);
 	Reflection::SignalDesc<Explosion, void(boost::shared_ptr<Instance>, float)> signal_Hit("Hit", "part", "distance");
 
 	void Explosion::setBlastRadius(float _blastRadius)
@@ -102,7 +131,8 @@ namespace RBX
 	}
 }
 
-namespace RBX {
+namespace RBX
+{
 char sExplosion[] = "Explosion";
 template<class C,class D,const char* N> FactoryProduct<C,D,N>::FactoryProduct():D() {}
 template<class C,class D,const char* N> const Name& FactoryProduct<C,D,N>::className() { return Name::declare<N>(); }

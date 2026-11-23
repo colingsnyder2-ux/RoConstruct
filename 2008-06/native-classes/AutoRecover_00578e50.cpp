@@ -1,36 +1,48 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+
+// INFERRED: no headers were provided, so the types below are minimal local declarations.
+// The Mark ctor/dtor and Camera::onHeartbeat link to the mangled names in the disassembly comments.
 namespace RBX {
-class Camera { public: void onHeartbeat(); };
-namespace Profiling {
-class CodeProfiler;
-// INFERRED: layout/size from stack slots; only ctor/dtor are used.
-class Mark {
-public:
-    Mark(CodeProfiler& p, bool enable);
-    ~Mark();
-private:
-    int data[4];
-};
-}
+    namespace Profiling {
+        class CodeProfiler;
+        class Mark {
+        public:
+            Mark(CodeProfiler& profiler, bool enable);
+            ~Mark();
+        private:
+            // INFERRED: the object occupies at most 0x20 bytes on the stack.
+            char storage[28];
+        };
+    }
+    class Camera {
+    public:
+        void onHeartbeat();
+    };
 }
 
-// INFERRED: object at +0x288 is an interface whose vtable slot 1 returns the Camera.
-struct CameraProvider {
-    virtual void slot0();
+// INFERRED: the object embedded at +0x288 has a vtable whose slot 1 returns the Camera.
+struct CameraHolder {
+    virtual void* slot0();
     virtual RBX::Camera* getCamera();
 };
 
 extern "C" int __fastcall fn_00578ca0(void* self, int unusedEdx, float a1);
 extern "C" int __fastcall fn_005fbd80(void* self, int unusedEdx);
 
-extern "C" void __fastcall fn_00578e50(char* self, int unusedEdx, float dt)
+extern "C" void __fastcall fn_00578e50(void* self, int unusedEdx, float arg)
 {
-    if (self[0x259]) {
-        char* owner = *(char**)(self + 0x204);
-        RBX::Profiling::Mark mark(*(RBX::Profiling::CodeProfiler**)(owner + 0x428)[0] ? *(RBX::Profiling::CodeProfiler*)*(void**)(owner + 0x428) : *(RBX::Profiling::CodeProfiler*)*(void**)(owner + 0x428), true);
-        fn_00578ca0(self, 0, dt);
-        CameraProvider* prov = (CameraProvider*)(*(char**)(self + 0x204) + 0x288);
-        prov->getCamera()->onHeartbeat();
-        fn_005fbd80(*(void**)(self + 0x1fc), 0);
+    char* p = (char*)self;
+    if (*(p + 0x259) != 0) {
+        char* inner = *(char**)(p + 0x204);
+        RBX::Profiling::CodeProfiler* prof = *(RBX::Profiling::CodeProfiler**)(inner + 0x428);
+        RBX::Profiling::Mark mark(*prof, true);
+
+        fn_00578ca0(self, 0, arg);
+
+        char* inner2 = *(char**)(p + 0x204);
+        CameraHolder* holder = (CameraHolder*)(inner2 + 0x288);
+        holder->getCamera()->onHeartbeat();
+
+        fn_005fbd80(*(void**)(p + 0x1fc), 0);
     }
 }

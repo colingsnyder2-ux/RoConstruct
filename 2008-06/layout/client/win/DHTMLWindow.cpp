@@ -1,3 +1,19 @@
+// =============================================================================
+// DHTMLWindow.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/win/DHTMLWindow.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "AppLeaves2008/DHTMLWindow2008.h"
 #include "LuaHtmlBinder2008/LuaHtmlBinder2008.h"   // CLuaHtmlView (CHtmlView base, CLuaFunction pointer +0xfc)
 #include <boost/bind.hpp>
@@ -11,49 +27,49 @@ Marshaller* htmlMarshaller;           // 0096cc4c (stored by initializeHtmlMarsh
 
 bool DHTMLWindowService::askAddChild(const RBX::Instance* instance) const
 {
-    return dynamic_cast<const DHTMLWindow*>(instance) != 0;
+	return dynamic_cast<const DHTMLWindow*>(instance) != 0;
 }
 
 void DHTMLWindow::close()
 {
-    setParent(NULL);
+	setParent(NULL);
 }
 
 void DHTMLWindow::show()
 {
-    if (showAllowed)
-        htmlMarshaller->post(boost::bind(&DHTMLWindow::doShow, RBX::shared_from(this)));
+	if (showAllowed)
+		htmlMarshaller->post(boost::bind(&DHTMLWindow::doShow, RBX::shared_from(this)));
 }
 
 void DHTMLWindow::resize(int x, int y)
 {
-    htmlMarshaller->post(boost::bind(&DHTMLWindow::doResize, RBX::shared_from(this), x, y));
+	htmlMarshaller->post(boost::bind(&DHTMLWindow::doResize, RBX::shared_from(this), x, y));
 }
 
 void DHTMLWindow::setCallback(RBX::Lua::FunctionRef function)
 {
-    htmlMarshaller->post(boost::bind(&DHTMLWindow::doSetCallback, RBX::shared_from(this), function));
+	htmlMarshaller->post(boost::bind(&DHTMLWindow::doSetCallback, RBX::shared_from(this), function));
 }
 
 void DHTMLWindow::navigate(std::string url)
 {
-    htmlMarshaller->post(boost::bind(&DHTMLWindow::doNavigate, RBX::shared_from(this), url));
+	htmlMarshaller->post(boost::bind(&DHTMLWindow::doNavigate, RBX::shared_from(this), url));
 }
 
 void DHTMLWindow::setBody(std::string html)
 {
-    htmlMarshaller->post(boost::bind(&DHTMLWindow::doSetBody, RBX::shared_from(this), html));
+	htmlMarshaller->post(boost::bind(&DHTMLWindow::doSetBody, RBX::shared_from(this), html));
 }
 
 void DHTMLWindow::bind(boost::shared_ptr<RBX::Instance> object, std::string property, std::string htmlElementId)
 {
-    if (!object)
-        throw std::runtime_error("The object to bind to must not be nil");
-    RBX::Reflection::PropertyIterator iter = object->findProperty(RBX::Name::lookup(property));
-    if (iter == object->properties_end())
-        throw std::runtime_error(G3D::format("Instance does not have property %s", property));
-    const RBX::Reflection::PropertyDescriptor& descriptor = (*iter).getDescriptor();
-    htmlMarshaller->post(boost::bind(&DHTMLWindow::doBind, RBX::shared_from(this), object, boost::cref(descriptor),
+	if (!object)
+		throw std::runtime_error("The object to bind to must not be nil");
+	RBX::Reflection::PropertyIterator iter = object->findProperty(RBX::Name::lookup(property));
+	if (iter == object->properties_end())
+		throw std::runtime_error(G3D::format("Instance does not have property %s", property));
+	const RBX::Reflection::PropertyDescriptor& descriptor = (*iter).getDescriptor();
+	htmlMarshaller->post(boost::bind(&DHTMLWindow::doBind, RBX::shared_from(this), object, boost::cref(descriptor),
                                      htmlElementId));
 }
 
@@ -139,60 +155,60 @@ namespace RBX
 
 void DHTMLWindow::unbind()
 {
-    htmlMarshaller->post(boost::bind(&DHTMLWindow::doWithView, RBX::shared_from(this), &CLuaHtmlView::unbindAll));
+	htmlMarshaller->post(boost::bind(&DHTMLWindow::doWithView, RBX::shared_from(this), &CLuaHtmlView::unbindAll));
 }
 
 void DHTMLWindow::doShow()
 {
-    boost::recursive_mutex::scoped_lock lock(viewLock);
-    if (view)
-    {
-        view->GetParentFrame()->CenterWindow();
-        view->GetParentFrame()->ShowWindow(SW_SHOW);
-    }
+	boost::recursive_mutex::scoped_lock lock(viewLock);
+	if (view)
+	{
+		view->GetParentFrame()->CenterWindow();
+		view->GetParentFrame()->ShowWindow(SW_SHOW);
+	}
 }
 
 void DHTMLWindow::doResize(int x, int y)
 {
-    boost::recursive_mutex::scoped_lock lock(viewLock);
-    if (view)
-        view->GetParentFrame()->SetWindowPos(NULL, 0, 0, x, y, SWP_NOMOVE | SWP_NOZORDER);
+	boost::recursive_mutex::scoped_lock lock(viewLock);
+	if (view)
+		view->GetParentFrame()->SetWindowPos(NULL, 0, 0, x, y, SWP_NOMOVE | SWP_NOZORDER);
 }
 
 void DHTMLWindow::doSetCallback(RBX::Lua::FunctionRef function)
 {
-    boost::recursive_mutex::scoped_lock lock(viewLock);
-    if (view)
-        view->callback->function = function;
+	boost::recursive_mutex::scoped_lock lock(viewLock);
+	if (view)
+		view->callback->function = function;
 }
 
 void DHTMLWindow::doNavigate(std::string url)
 {
-    boost::recursive_mutex::scoped_lock lock(viewLock);
-    if (view)
-        view->Navigate(url.c_str());
+	boost::recursive_mutex::scoped_lock lock(viewLock);
+	if (view)
+		view->Navigate(url.c_str());
 }
 
 void DHTMLWindow::doSetBody(std::string html)
 {
-    boost::recursive_mutex::scoped_lock lock(viewLock);
-    if (view)
-        view->setBody(html.c_str());
+	boost::recursive_mutex::scoped_lock lock(viewLock);
+	if (view)
+		view->setBody(html.c_str());
 }
 
 void DHTMLWindow::doBind(boost::shared_ptr<RBX::Instance> object, const RBX::Reflection::PropertyDescriptor& property,
                          std::string htmlElementId)
 {
-    boost::recursive_mutex::scoped_lock lock(viewLock);
-    if (view)
-        view->bindElement(object, property, htmlElementId.c_str());
+	boost::recursive_mutex::scoped_lock lock(viewLock);
+	if (view)
+		view->bindElement(object, property, htmlElementId.c_str());
 }
 
 void DHTMLWindow::doWithView(boost::function1<void, CLuaHtmlView*> function)
 {
-    boost::recursive_mutex::scoped_lock lock(viewLock);
-    if (view)
-        function(view);
+	boost::recursive_mutex::scoped_lock lock(viewLock);
+	if (view)
+		function(view);
 }
 
 using namespace RBX;

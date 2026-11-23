@@ -1,3 +1,19 @@
+// =============================================================================
+// OgreMath.h
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/ogresdk/include/OgreMath.h
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 /*
 -----------------------------------------------------------------------------
 This source file is part of OGRE
@@ -33,7 +49,7 @@ Torus Knot Software Ltd.
 
 namespace Ogre
 {
-    /** Wrapper class which indicates a given angle value is in Radians.
+	/** Wrapper class which indicates a given angle value is in Radians.
     @remarks
         Radian values are interchangeable with Degree values, and conversions
         will be done automatically between them.
@@ -53,7 +69,7 @@ namespace Ogre
 		Real valueRadians() const { return mRad; }
 		Real valueAngleUnits() const;
 
-        const Radian& operator + () const { return *this; }
+		const Radian& operator + () const { return *this; }
 		Radian operator + ( const Radian& r ) const { return Radian ( mRad + r.mRad ); }
 		Radian operator + ( const Degree& d ) const;
 		Radian& operator += ( const Radian& r ) { mRad += r.mRad; return *this; }
@@ -64,7 +80,7 @@ namespace Ogre
 		Radian& operator -= ( const Radian& r ) { mRad -= r.mRad; return *this; }
 		Radian& operator -= ( const Degree& d );
 		Radian operator * ( Real f ) const { return Radian ( mRad * f ); }
-        Radian operator * ( const Radian& f ) const { return Radian ( mRad * f.mRad ); }
+		Radian operator * ( const Radian& f ) const { return Radian ( mRad * f.mRad ); }
 		Radian& operator *= ( Real f ) { mRad *= f; return *this; }
 		Radian operator / ( Real f ) const { return Radian ( mRad / f ); }
 		Radian& operator /= ( Real f ) { mRad /= f; return *this; }
@@ -77,7 +93,7 @@ namespace Ogre
 		bool operator >  ( const Radian& r ) const { return mRad >  r.mRad; }
 	};
 
-    /** Wrapper class which indicates a given angle value is in Degrees.
+	/** Wrapper class which indicates a given angle value is in Degrees.
     @remarks
         Degree values are interchangeable with Radian values, and conversions
         will be done automatically between them.
@@ -108,7 +124,7 @@ namespace Ogre
 		Degree& operator -= ( const Degree& d ) { mDeg -= d.mDeg; return *this; }
 		Degree& operator -= ( const Radian& r ) { mDeg -= r.valueDegrees(); return *this; }
 		Degree operator * ( Real f ) const { return Degree ( mDeg * f ); }
-        Degree operator * ( const Degree& f ) const { return Degree ( mDeg * f.mDeg ); }
+		Degree operator * ( const Degree& f ) const { return Degree ( mDeg * f.mDeg ); }
 		Degree& operator *= ( Real f ) { mDeg *= f; return *this; }
 		Degree operator / ( Real f ) const { return Degree ( mDeg / f ); }
 		Degree& operator /= ( Real f ) { mDeg /= f; return *this; }
@@ -121,7 +137,7 @@ namespace Ogre
 		bool operator >  ( const Degree& d ) const { return mDeg >  d.mDeg; }
 	};
 
-    /** Wrapper class which identifies a value as the currently default angle
+	/** Wrapper class which identifies a value as the currently default angle
         type, as defined by Math::setAngleUnit.
     @remarks
         Angle values will be automatically converted between radians and degrees,
@@ -158,7 +174,7 @@ namespace Ogre
 		return *this;
 	}
 
-    /** Class to provide access to common mathematical functions.
+	/** Class to provide access to common mathematical functions.
         @remarks
             Most of the maths functions are aliased versions of the C runtime
             library functions. They are aliased here to provide future
@@ -168,8 +184,8 @@ namespace Ogre
             <br>This is based on MgcMath.h from
             <a href="http://www.geometrictools.com/">Wild Magic</a>.
     */
-    class _OgreExport Math
-    {
+	class _OgreExport Math
+	{
    public:
        /** The angular units used by the API. This functionality is now deprecated in favor
 	       of discreet angular unit types ( see Degree and Radian above ). The only place
@@ -182,40 +198,40 @@ namespace Ogre
            AU_RADIAN
        };
 
-    protected:
+	protected:
        // angle units used by the api
        static AngleUnit msAngleUnit;
 
-        /// Size of the trig tables as determined by constructor.
-        static int mTrigTableSize;
+		/// Size of the trig tables as determined by constructor.
+		static int mTrigTableSize;
 
-        /// Radian -> index factor value ( mTrigTableSize / 2 * PI )
-        static Real mTrigTableFactor;
-        static Real* mSinTable;
-        static Real* mTanTable;
+		/// Radian -> index factor value ( mTrigTableSize / 2 * PI )
+		static Real mTrigTableFactor;
+		static Real* mSinTable;
+		static Real* mTanTable;
 
-        /** Private function to build trig tables.
+		/** Private function to build trig tables.
         */
-        void buildTrigTables();
+		void buildTrigTables();
 
 		static Real SinTable (Real fValue);
 		static Real TanTable (Real fValue);
-    public:
-        /** Default constructor.
+	public:
+		/** Default constructor.
             @param
                 trigTableSize Optional parameter to set the size of the
                 tables used to implement Sin, Cos, Tan
         */
-        Math(unsigned int trigTableSize = 4096);
+		Math(unsigned int trigTableSize = 4096);
 
-        /** Default destructor.
+		/** Default destructor.
         */
-        ~Math();
+		~Math();
 
 		static inline int IAbs (int iValue) { return ( iValue >= 0 ? iValue : -iValue ); }
 		static inline int ICeil (float fValue) { return int(ceil(fValue)); }
 		static inline int IFloor (float fValue) { return int(floor(fValue)); }
-        static int ISign (int iValue);
+		static int ISign (int iValue);
 
 		static Real Abs (Real fValue);
 		static inline Degree Abs (const Degree& dValue) { return Degree(fabs(dValue.valueDegrees())); }
@@ -226,24 +242,24 @@ namespace Ogre
 		static inline Radian ATan2 (Real fY, Real fX) { return Radian(atan2(fY,fX)); }
 		static inline Real Ceil (Real fValue) { return Real(ceil(fValue)); }
 
-        /** Cosine function.
+		/** Cosine function.
             @param
                 fValue Angle in radians
             @param
                 useTables If true, uses lookup tables rather than
                 calculation - faster but less accurate.
         */
-        static inline Real Cos (const Radian& fValue, bool useTables = false) {
+		static inline Real Cos (const Radian& fValue, bool useTables = false) {
 			return (!useTables) ? Real(cos(fValue.valueRadians())) : SinTable(fValue.valueRadians() + HALF_PI);
 		}
-        /** Cosine function.
+		/** Cosine function.
             @param
                 fValue Angle in radians
             @param
                 useTables If true, uses lookup tables rather than
                 calculation - faster but less accurate.
         */
-        static inline Real Cos (Real fValue, bool useTables = false) {
+		static inline Real Cos (Real fValue, bool useTables = false) {
 			return (!useTables) ? Real(cos(fValue)) : SinTable(fValue + HALF_PI);
 		}
 
@@ -255,7 +271,7 @@ namespace Ogre
 
 		static inline Real Pow (Real fBase, Real fExponent) { return Real(pow(fBase,fExponent)); }
 
-        static Real Sign (Real fValue);
+		static Real Sign (Real fValue);
 		static inline Radian Sign ( const Radian& rValue )
 		{
 			return Radian(Sign(rValue.valueRadians()));
@@ -265,45 +281,45 @@ namespace Ogre
 			return Degree(Sign(dValue.valueDegrees()));
 		}
 
-        /** Sine function.
+		/** Sine function.
             @param
                 fValue Angle in radians
             @param
                 useTables If true, uses lookup tables rather than
                 calculation - faster but less accurate.
         */
-        static inline Real Sin (const Radian& fValue, bool useTables = false) {
+		static inline Real Sin (const Radian& fValue, bool useTables = false) {
 			return (!useTables) ? Real(sin(fValue.valueRadians())) : SinTable(fValue.valueRadians());
 		}
-        /** Sine function.
+		/** Sine function.
             @param
                 fValue Angle in radians
             @param
                 useTables If true, uses lookup tables rather than
                 calculation - faster but less accurate.
         */
-        static Real Sin (Real fValue, bool useTables = false);
+		static Real Sin (Real fValue, bool useTables = false);
 
 		static inline Real Sqr (Real fValue) { return fValue*fValue; }
 
 		static Real Sqrt (Real fValue);
 
-        static inline Radian Sqrt (const Radian& fValue) { return Radian(sqrt(fValue.valueRadians())); }
+		static inline Radian Sqrt (const Radian& fValue) { return Radian(sqrt(fValue.valueRadians())); }
 
-        static inline Degree Sqrt (const Degree& fValue) { return Degree(sqrt(fValue.valueDegrees())); }
+		static inline Degree Sqrt (const Degree& fValue) { return Degree(sqrt(fValue.valueDegrees())); }
 
-        /** Inverse square root i.e. 1 / Sqrt(x), good for vector
+		/** Inverse square root i.e. 1 / Sqrt(x), good for vector
             normalisation.
         */
 		static Real InvSqrt(Real fValue);
 
-        static Real UnitRandom ();  // in [0,1]
+		static Real UnitRandom ();  // in [0,1]
 
-        static Real RangeRandom (Real fLow, Real fHigh);  // in [fLow,fHigh]
+		static Real RangeRandom (Real fLow, Real fHigh);  // in [fLow,fHigh]
 
-        static Real SymmetricRandom ();  // in [-1,1]
+		static Real SymmetricRandom ();  // in [-1,1]
 
-        /** Tangent function.
+		/** Tangent function.
             @param
                 fValue Angle in radians
             @param
@@ -313,7 +329,7 @@ namespace Ogre
 		static inline Real Tan (const Radian& fValue, bool useTables = false) {
 			return (!useTables) ? Real(tan(fValue.valueRadians())) : TanTable(fValue.valueRadians());
 		}
-        /** Tangent function.
+		/** Tangent function.
             @param
                 fValue Angle in radians
             @param
@@ -325,7 +341,7 @@ namespace Ogre
 		}
 
 		static inline Real DegreesToRadians(Real degrees) { return degrees * fDeg2Rad; }
-        static inline Real RadiansToDegrees(Real radians) { return radians * fRad2Deg; }
+		static inline Real RadiansToDegrees(Real radians) { return radians * fRad2Deg; }
 
        /** These functions used to set the assumed angle units (radians or degrees)
             expected when using the Angle type.
@@ -367,7 +383,7 @@ namespace Ogre
                 If the point is outside the triangle, <b>false</b> is
                 returned.
         */
-        static bool pointInTri2D(const Vector2& p, const Vector2& a,
+		static bool pointInTri2D(const Vector2& p, const Vector2& a,
 			const Vector2& b, const Vector2& c);
 
        /** Checks whether a given 3D point is inside a triangle.
@@ -394,19 +410,19 @@ namespace Ogre
             If the point is outside the triangle, <b>false</b> is
             returned.
         */
-        static bool pointInTri3D(const Vector3& p, const Vector3& a,
+		static bool pointInTri3D(const Vector3& p, const Vector3& a,
 			const Vector3& b, const Vector3& c, const Vector3& normal);
-        /** Ray / plane intersection, returns boolean result and distance. */
-        static std::pair<bool, Real> intersects(const Ray& ray, const Plane& plane);
+		/** Ray / plane intersection, returns boolean result and distance. */
+		static std::pair<bool, Real> intersects(const Ray& ray, const Plane& plane);
 
-        /** Ray / sphere intersection, returns boolean result and distance. */
-        static std::pair<bool, Real> intersects(const Ray& ray, const Sphere& sphere,
-            bool discardInside = true);
+		/** Ray / sphere intersection, returns boolean result and distance. */
+		static std::pair<bool, Real> intersects(const Ray& ray, const Sphere& sphere,
+			bool discardInside = true);
 
-        /** Ray / box intersection, returns boolean result and distance. */
-        static std::pair<bool, Real> intersects(const Ray& ray, const AxisAlignedBox& box);
+		/** Ray / box intersection, returns boolean result and distance. */
+		static std::pair<bool, Real> intersects(const Ray& ray, const AxisAlignedBox& box);
 
-        /** Ray / box intersection, returns boolean result and two intersection distance.
+		/** Ray / box intersection, returns boolean result and two intersection distance.
         @param
             ray The ray.
         @param
@@ -428,10 +444,10 @@ namespace Ogre
             If the ray isn't intersects the box, <b>false</b> is returned, and
             <i>d1</i> and <i>d2</i> is unmodified.
         */
-        static bool intersects(const Ray& ray, const AxisAlignedBox& box,
-            Real* d1, Real* d2);
+		static bool intersects(const Ray& ray, const AxisAlignedBox& box,
+			Real* d1, Real* d2);
 
-        /** Ray / triangle intersection, returns boolean result and distance.
+		/** Ray / triangle intersection, returns boolean result and distance.
         @param
             ray The ray.
         @param
@@ -455,11 +471,11 @@ namespace Ogre
             If the ray isn't intersects the triangle, a pair of <b>false</b> and
             <b>0</b> returned.
         */
-        static std::pair<bool, Real> intersects(const Ray& ray, const Vector3& a,
-            const Vector3& b, const Vector3& c, const Vector3& normal,
-            bool positiveSide = true, bool negativeSide = true);
+		static std::pair<bool, Real> intersects(const Ray& ray, const Vector3& a,
+			const Vector3& b, const Vector3& c, const Vector3& normal,
+			bool positiveSide = true, bool negativeSide = true);
 
-        /** Ray / triangle intersection, returns boolean result and distance.
+		/** Ray / triangle intersection, returns boolean result and distance.
         @param
             ray The ray.
         @param
@@ -479,73 +495,73 @@ namespace Ogre
             If the ray isn't intersects the triangle, a pair of <b>false</b> and
             <b>0</b> returned.
         */
-        static std::pair<bool, Real> intersects(const Ray& ray, const Vector3& a,
-            const Vector3& b, const Vector3& c,
-            bool positiveSide = true, bool negativeSide = true);
+		static std::pair<bool, Real> intersects(const Ray& ray, const Vector3& a,
+			const Vector3& b, const Vector3& c,
+			bool positiveSide = true, bool negativeSide = true);
 
-        /** Sphere / box intersection test. */
-        static bool intersects(const Sphere& sphere, const AxisAlignedBox& box);
+		/** Sphere / box intersection test. */
+		static bool intersects(const Sphere& sphere, const AxisAlignedBox& box);
 
-        /** Plane / box intersection test. */
-        static bool intersects(const Plane& plane, const AxisAlignedBox& box);
+		/** Plane / box intersection test. */
+		static bool intersects(const Plane& plane, const AxisAlignedBox& box);
 
-        /** Ray / convex plane list intersection test.
+		/** Ray / convex plane list intersection test.
         @param ray The ray to test with
         @param plaeList List of planes which form a convex volume
         @param normalIsOutside Does the normal point outside the volume
         */
-        static std::pair<bool, Real> intersects(
-            const Ray& ray, const std::vector<Plane>& planeList,
-            bool normalIsOutside);
-        /** Ray / convex plane list intersection test.
+		static std::pair<bool, Real> intersects(
+			const Ray& ray, const std::vector<Plane>& planeList,
+			bool normalIsOutside);
+		/** Ray / convex plane list intersection test.
         @param ray The ray to test with
         @param plaeList List of planes which form a convex volume
         @param normalIsOutside Does the normal point outside the volume
         */
-        static std::pair<bool, Real> intersects(
-            const Ray& ray, const std::list<Plane>& planeList,
-            bool normalIsOutside);
+		static std::pair<bool, Real> intersects(
+			const Ray& ray, const std::list<Plane>& planeList,
+			bool normalIsOutside);
 
-        /** Sphere / plane intersection test.
+		/** Sphere / plane intersection test.
         @remarks NB just do a plane.getDistance(sphere.getCenter()) for more detail!
         */
-        static bool intersects(const Sphere& sphere, const Plane& plane);
+		static bool intersects(const Sphere& sphere, const Plane& plane);
 
-        /** Compare 2 reals, using tolerance for inaccuracies.
+		/** Compare 2 reals, using tolerance for inaccuracies.
         */
-        static bool RealEqual(Real a, Real b,
-            Real tolerance = std::numeric_limits<Real>::epsilon());
+		static bool RealEqual(Real a, Real b,
+			Real tolerance = std::numeric_limits<Real>::epsilon());
 
-        /** Calculates the tangent space vector for a given set of positions / texture coords. */
-        static Vector3 calculateTangentSpaceVector(
-            const Vector3& position1, const Vector3& position2, const Vector3& position3,
-            Real u1, Real v1, Real u2, Real v2, Real u3, Real v3);
+		/** Calculates the tangent space vector for a given set of positions / texture coords. */
+		static Vector3 calculateTangentSpaceVector(
+			const Vector3& position1, const Vector3& position2, const Vector3& position3,
+			Real u1, Real v1, Real u2, Real v2, Real u3, Real v3);
 
-        /** Build a reflection matrix for the passed in plane. */
-        static Matrix4 buildReflectionMatrix(const Plane& p);
-        /** Calculate a face normal, including the w component which is the offset from the origin. */
-        static Vector4 calculateFaceNormal(const Vector3& v1, const Vector3& v2, const Vector3& v3);
-        /** Calculate a face normal, no w-information. */
-        static Vector3 calculateBasicFaceNormal(const Vector3& v1, const Vector3& v2, const Vector3& v3);
-        /** Calculate a face normal without normalize, including the w component which is the offset from the origin. */
-        static Vector4 calculateFaceNormalWithoutNormalize(const Vector3& v1, const Vector3& v2, const Vector3& v3);
-        /** Calculate a face normal without normalize, no w-information. */
-        static Vector3 calculateBasicFaceNormalWithoutNormalize(const Vector3& v1, const Vector3& v2, const Vector3& v3);
+		/** Build a reflection matrix for the passed in plane. */
+		static Matrix4 buildReflectionMatrix(const Plane& p);
+		/** Calculate a face normal, including the w component which is the offset from the origin. */
+		static Vector4 calculateFaceNormal(const Vector3& v1, const Vector3& v2, const Vector3& v3);
+		/** Calculate a face normal, no w-information. */
+		static Vector3 calculateBasicFaceNormal(const Vector3& v1, const Vector3& v2, const Vector3& v3);
+		/** Calculate a face normal without normalize, including the w component which is the offset from the origin. */
+		static Vector4 calculateFaceNormalWithoutNormalize(const Vector3& v1, const Vector3& v2, const Vector3& v3);
+		/** Calculate a face normal without normalize, no w-information. */
+		static Vector3 calculateBasicFaceNormalWithoutNormalize(const Vector3& v1, const Vector3& v2, const Vector3& v3);
 
 		/** Generates a value based on the gaussian (normal) distribution function
 			with the given offset and scale parameters.
 		*/
 		static Real gaussianDistribution(Real x, Real offset = 0.0f, Real scale = 1.0f);
 
-        static const Real POS_INFINITY;
-        static const Real NEG_INFINITY;
-        static const Real PI;
-        static const Real TWO_PI;
-        static const Real HALF_PI;
+		static const Real POS_INFINITY;
+		static const Real NEG_INFINITY;
+		static const Real PI;
+		static const Real TWO_PI;
+		static const Real HALF_PI;
 		static const Real fDeg2Rad;
 		static const Real fRad2Deg;
 
-    };
+	};
 
 	// these functions must be defined down here, because they rely on the
 	// angle unit conversion functions in class Math:

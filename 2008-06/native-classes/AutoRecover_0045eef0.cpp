@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
 // INFERRED: object layout unknown; vtable stores done through byte offsets.
 // INFERRED: 8-byte local is {static data ptr 0x5ec170, ctor arg}, copied to self+0x160 on convert failure.

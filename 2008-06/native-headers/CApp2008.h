@@ -41,6 +41,9 @@ public:
         COM_INTERFACE_ENTRY(IObjectSafety)
     END_COM_MAP()
     DECLARE_PROTECT_FINAL_CONSTRUCT()
+    // INFERRED name: 004061e0 (static, cdecl, returns bool): AFX_MANAGE_STATE + theApp.logManager.hasCrashLogs()
+    // 004284e0 (openrbx Client/win/App.cpp FUN_00407300); called from CRobloxModule.
+    static bool hasErrorFiles();
     static void uploadErrorFiles(const char* url);
     STDMETHOD(CreateGame)(WINDOW_TYPE, IWorkspace**);
     STDMETHOD(LaunchIDE)();

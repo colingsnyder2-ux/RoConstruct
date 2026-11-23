@@ -27,6 +27,33 @@ namespace RBX
 		p->removeFromStage(this);
 	}
 
+	// 0064cae0 (registry placeholder func_0064cae0; caller JointStage::onPrimitiveAdded 006685e2): native-world
+	// ClumpStage.cpp onPrimitiveAdded shape in 2008 form: IPipelined::putInStage 00645830, TreeStage::onPrimitiveAdded
+	// 00668d30 on the downstream (+0x8), then new(0x88) AnchorJoint (vtable 0084b0cc) when the anchored state
+	// (+0xa8 / +0xa9 / +0xaa) is set, else FreeJoint (0084b10c), putInStage(this) and downstream slot 4 onEdgeAdded.
+	void ClumpStage::onPrimitiveAdded(Primitive* p)
+	{
+		p->putInStage(this);
+		static_cast<TreeStage*>(getDownstream())->onPrimitiveAdded(p);
+
+		Joint* joint;
+
+		if (p->getAnchor())
+			joint = new AnchorJoint(p);
+		else
+			joint = new FreeJoint(p);
+
+		joint->putInStage(this);
+		static_cast<IWorldStage*>(getDownstream())->onEdgeAdded(joint);
+	}
+
+	// 0064ce40 (caller World::step 005ea137): donor ClumpStage::stepUi, Joint slot 14 on every edge of set10 (+0x10).
+	void ClumpStage::stepUi(int uiStepId)
+	{
+		for (std::set<Edge*>::iterator it = set10.begin(); it != set10.end(); ++it)
+			static_cast<Joint*>(*it)->stepUi(uiStepId);
+	}
+
 	// 0064cc40 (native-world ClumpStage.cpp / openrbx shape): the FREE_JOINT of p (getJoint 0064ca60), new(0x88)
 	// AnchorJoint(p), IPipelined::putInStage 00645830, downstream slot 4 onEdgeAdded, then this slot 5 onEdgeRemoving
 	// on the free joint.

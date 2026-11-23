@@ -1,3 +1,19 @@
+// =============================================================================
+// Vector4.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Vector4.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #line 1 ".\\G3Dcpp\\Vector4.cpp"
 /**
  @file Vector4.cpp
@@ -17,92 +33,93 @@
 #include "G3D/BinaryInput.h"
 #include "G3D/BinaryOutput.h"
 
-namespace G3D {
+namespace G3D
+{
 
 unsigned int Vector4::hashCode() const {
-    unsigned int xhash = (*(int*)(void*)(&x));
-    unsigned int yhash = (*(int*)(void*)(&y));
-    unsigned int zhash = (*(int*)(void*)(&z));
-    unsigned int whash = (*(int*)(void*)(&w));
+	unsigned int xhash = (*(int*)(void*)(&x));
+	unsigned int yhash = (*(int*)(void*)(&y));
+	unsigned int zhash = (*(int*)(void*)(&z));
+	unsigned int whash = (*(int*)(void*)(&w));
 
-    return xhash + (yhash * 37) + (zhash * 101) + (whash * 241);
+	return xhash + (yhash * 37) + (zhash * 101) + (whash * 241);
 }
 
 Vector4::Vector4(const class Color4& c) {
-    x = c.r;
-    y = c.g;
-    z = c.b;
-    w = c.a;
+	x = c.r;
+	y = c.g;
+	z = c.b;
+	w = c.a;
 }
 
 Vector4::Vector4(const Vector2& v1, const Vector2& v2) {
-    x = v1.x;
-    y = v1.y;
-    z = v2.x;
-    w = v2.y;
+	x = v1.x;
+	y = v1.y;
+	z = v2.x;
+	w = v2.y;
 }
 
 Vector4::Vector4(const Vector2& v1, float fz, float fw) {
-    x = v1.x;
-    y = v1.y;
-    z = fz;
-    w = fw;
+	x = v1.x;
+	y = v1.y;
+	z = fz;
+	w = fw;
 }
 
 Vector4::Vector4(BinaryInput& b) {
-    deserialize(b);
+	deserialize(b);
 }
 
 void Vector4::deserialize(BinaryInput& b) {
-    x = b.readFloat32();
-    y = b.readFloat32();
-    z = b.readFloat32();
-    w = b.readFloat32();
+	x = b.readFloat32();
+	y = b.readFloat32();
+	z = b.readFloat32();
+	w = b.readFloat32();
 }
 
 void Vector4::serialize(BinaryOutput& b) const {
-    b.writeFloat32(x);
-    b.writeFloat32(y);
-    b.writeFloat32(z);
-    b.writeFloat32(w);
+	b.writeFloat32(x);
+	b.writeFloat32(y);
+	b.writeFloat32(z);
+	b.writeFloat32(w);
 }
 
 //----------------------------------------------------------------------------
 
 Vector4 Vector4::operator/ (float fScalar) const {
-    Vector4 kQuot;
+	Vector4 kQuot;
 
-    if ( fScalar != 0.0 ) {
+	if ( fScalar != 0.0 ) {
 		float fInvScalar = 1.0f / fScalar;
-        kQuot.x = fInvScalar * x;
-        kQuot.y = fInvScalar * y;
-        kQuot.z = fInvScalar * z;
-        kQuot.w = fInvScalar * w;
-        return kQuot;
-    } else {
-        return Vector4::inf();
-    }
+		kQuot.x = fInvScalar * x;
+		kQuot.y = fInvScalar * y;
+		kQuot.z = fInvScalar * z;
+		kQuot.w = fInvScalar * w;
+		return kQuot;
+	} else {
+		return Vector4::inf();
+	}
 }
 
 //----------------------------------------------------------------------------
 Vector4& Vector4::operator/= (float fScalar) {
-    if (fScalar != 0.0f) {
+	if (fScalar != 0.0f) {
 		float fInvScalar = 1.0f / fScalar;
-        x *= fInvScalar;
-        y *= fInvScalar;
-        z *= fInvScalar;
-        w *= fInvScalar;
-    } else {
+		x *= fInvScalar;
+		y *= fInvScalar;
+		z *= fInvScalar;
+		w *= fInvScalar;
+	} else {
 		*this = Vector4::inf();
-    }
+	}
 
-    return *this;
+	return *this;
 }
 
 //----------------------------------------------------------------------------
 
 std::string Vector4::toString() const {
-    return G3D::format("(%g, %g, %g, %g)", x, y, z, w);
+	return G3D::format("(%g, %g, %g, %g)", x, y, z, w);
 }
 // 2-char swizzles
 

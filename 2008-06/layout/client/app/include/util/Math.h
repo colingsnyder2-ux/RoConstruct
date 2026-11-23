@@ -1,3 +1,19 @@
+// =============================================================================
+// Math.h
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/include/util/Math.h
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #pragma once
 #include <G3D/Vector3.h>
 #include <G3D/Matrix3.h>
@@ -124,7 +140,11 @@ namespace RBX
 			static G3D::Matrix3 rotateAboutZ(const G3D::Matrix3& matrix, float radians);
 			static G3D::Matrix3 momentToObjectSpace(const G3D::Matrix3& iWorld, const G3D::Matrix3& bodyRotation);
 			static G3D::Matrix3 momentToWorldSpace(const G3D::Matrix3& iBody, const G3D::Matrix3& bodyRotation);
-			static G3D::Matrix3 getIWorldAtPoint(const G3D::Vector3& cofmPos, const G3D::Vector3& worldPos, const G3D::Matrix3& iWorldAtCofm, float mass);
+			static G3D::Matrix3 getIWorldAtPoint(
+				const G3D::Vector3& cofmPos,
+				const G3D::Vector3& worldPos,
+				const G3D::Matrix3& iWorldAtCofm,
+				float mass);
 			static void rotateAboutYLocal(G3D::CoordinateFrame&, float);
 			static void rotateAboutYGlobal(G3D::CoordinateFrame&, float);
 			static G3D::CoordinateFrame snapToGrid(const G3D::CoordinateFrame& snap, const G3D::Vector3& grid);

@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
 // INFERRED: boost::signals::detail::signal_base_impl::empty() (named_slot_map at this+8):
 // true when no slot is still connected. The iterator is a checked-iterator

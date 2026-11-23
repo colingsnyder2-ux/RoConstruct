@@ -1,3 +1,19 @@
+// =============================================================================
+// Vector2.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Vector2.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #line 1 ".\\G3Dcpp\\Vector2.cpp"
 /**
  @file Vector2.cpp
@@ -23,21 +39,22 @@
 #include "G3D/TextInput.h"
 #include "G3D/TextOutput.h"
 
-namespace G3D {
+namespace G3D
+{
 
 const Vector2& Vector2::zero() {
-    static Vector2 v(0, 0);
-    return v;
+	static Vector2 v(0, 0);
+	return v;
 }
 
 const Vector2& Vector2::unitX() {
-    static Vector2 v(1, 0);
-    return v;
+	static Vector2 v(1, 0);
+	return v;
 }
 
 const Vector2& Vector2::unitY() {
-    static Vector2 v(0, 1);
-    return v;
+	static Vector2 v(0, 1);
+	return v;
 }
 
 const Vector2& Vector2::inf() {
@@ -66,32 +83,32 @@ const Vector2 Vector2::UNIT_S(1, 0);
 const Vector2 Vector2::UNIT_T(0, 1);
 
 unsigned int Vector2::hashCode() const {
-    unsigned int xhash = (*(int*)(void*)(&x));
-    unsigned int yhash = (*(int*)(void*)(&y));
+	unsigned int xhash = (*(int*)(void*)(&x));
+	unsigned int yhash = (*(int*)(void*)(&y));
 
-    return xhash + (yhash * 37);
+	return xhash + (yhash * 37);
 }
 
 Vector2::Vector2(BinaryInput& b) {
-    deserialize(b);
+	deserialize(b);
 }
 
 void Vector2::deserialize(BinaryInput& b) {
-    x = b.readFloat32();
-    y = b.readFloat32();
+	x = b.readFloat32();
+	y = b.readFloat32();
 }
 
 void Vector2::serialize(BinaryOutput& b) const {
-    b.writeFloat32(x);
-    b.writeFloat32(y);
+	b.writeFloat32(x);
+	b.writeFloat32(y);
 }
 
 void Vector2::deserialize(TextInput& t) {
-    t.readSymbol("(");
-    x = (float)t.readNumber();
-    t.readSymbol(",");
-    y = (float)t.readNumber();
-    t.readSymbol(")");
+	t.readSymbol("(");
+	x = (float)t.readNumber();
+	t.readSymbol(",");
+	y = (float)t.readNumber();
+	t.readSymbol(")");
 }
 
 void Vector2::serialize(TextOutput& t) const {
@@ -105,64 +122,64 @@ void Vector2::serialize(TextOutput& t) const {
 //----------------------------------------------------------------------------
 
 Vector2 Vector2::random() {
-    Vector2 result;
+	Vector2 result;
 
-    do {
-        result = Vector2((float)symmetricRandom(), (float)symmetricRandom());
-    } while ((result.squaredLength() > 1.0f) || (result.squaredLength() == 1.0f));
+	do {
+		result = Vector2((float)symmetricRandom(), (float)symmetricRandom());
+	} while ((result.squaredLength() > 1.0f) || (result.squaredLength() == 1.0f));
 
-    result.unitize();
+	result.unitize();
 
-    return result;
+	return result;
 }
 
 //----------------------------------------------------------------------------
 Vector2 Vector2::operator/ (float fScalar) const {
-    Vector2 kQuot;
+	Vector2 kQuot;
 
-    if ( fScalar != 0.0f ) {
+	if ( fScalar != 0.0f ) {
 		float fInvScalar = 1.0f / fScalar;
-        kQuot.x = fInvScalar * x;
-        kQuot.y = fInvScalar * y;
-        return kQuot;
-    } else {
-        return Vector2::inf();
-    }
+		kQuot.x = fInvScalar * x;
+		kQuot.y = fInvScalar * y;
+		return kQuot;
+	} else {
+		return Vector2::inf();
+	}
 }
 
 //----------------------------------------------------------------------------
 Vector2& Vector2::operator/= (float fScalar) {
-    if (fScalar != 0.0f) {
+	if (fScalar != 0.0f) {
 		float fInvScalar = 1.0f / fScalar;
-        x *= fInvScalar;
-        y *= fInvScalar;
-    } else {
-        x = (float)G3D::inf();
-        y = (float)G3D::inf();
-    }
+		x *= fInvScalar;
+		y *= fInvScalar;
+	} else {
+		x = (float)G3D::inf();
+		y = (float)G3D::inf();
+	}
 
-    return *this;
+	return *this;
 }
 
 //----------------------------------------------------------------------------
 float Vector2::unitize (float fTolerance) {
 	float fLength = length();
 
-    if (fLength > fTolerance) {
+	if (fLength > fTolerance) {
 		float fInvLength = 1.0f / fLength;
-        x *= fInvLength;
-        y *= fInvLength;
-    } else {
-        fLength = 0.0;
-    }
+		x *= fInvLength;
+		y *= fInvLength;
+	} else {
+		fLength = 0.0;
+	}
 
-    return fLength;
+	return fLength;
 }
 
 //----------------------------------------------------------------------------
 
 std::string Vector2::toString() const {
-    return G3D::format("(%g, %g)", x, y);
+	return G3D::format("(%g, %g)", x, y);
 }
 
 // 2-char swizzles

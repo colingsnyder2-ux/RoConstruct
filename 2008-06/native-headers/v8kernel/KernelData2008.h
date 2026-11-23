@@ -39,7 +39,16 @@ namespace RBX
 		// (IndexArray::operator[] returns tInstance*); Body::getKernelIndex is inline (removeBody 005fb110).
 		IndexArray<Body, &Body::getKernelIndex> bodies;                     // +0x0
 		// INFERRED: Array<Body*> (005fabc0 / 005fa770); 005faff0 / 005fb050 maintain Body +0x4 inline.
+		// The leaf-body helpers 005faed0 / 005faf20 / 005faf90 / 005faff0 / 005fb050 are byte-identical only with the
+		// IndexArray inline shape (fastAppend copies its by-value argument inside the branch; fastRemove's register use),
+		// which needs a Body +0x4 accessor in native-headers/v8kernel/Body2008.h (not assigned to this batch; proposal:
+		// `int& getLeafBodyIndex()` plus `friend class Kernel; friend class KernelData;`, then define
+		// BODY_HEADER_GRANTS_KERNEL_ACCESS). Same 0xc-byte layout either way.
+#ifdef BODY_HEADER_GRANTS_KERNEL_ACCESS
+		IndexArray<Body, &Body::getLeafBodyIndex> leafBodies;               // +0xc  (analog name)
+#else
 		G3D::Array<Body*> leafBodies;                                       // +0xc  (analog name)
+#endif
 		// The donor IndexArray: removePoint 005fb1a0 / newPoint 005fb260 index it through the out-of-line Point::
 		// getKernelIndex 005fa610 and grow / shrink it with Array<Point*>::append 005fac30 / resize 005fa870.
 		IndexArray<Point, &Point::getKernelIndex> points;                   // +0x18
@@ -53,5 +62,14 @@ namespace RBX
 		// 005fb050 (`ret 4`): for i in 0..1, getBody(i); --[body + 0x8]; when it drops to 0 and +0x4 >= 0 the body is
 		// swap-removed from leafBodies and +0x4 = -1 (analog name).
 		void onConnectorRemoved(Connector* c);                              // 005fb050
+		// 005faf90 (`ret 4`; caller Kernel::insertBody 005fb0e0): a body still in leafBodies (+0x4 >= 0) is swap-removed from
+		// it, then bodies fastAppend (Array<Body*>::append 005fabc0) and addLeafBodies 005faed0 (analog name).
+		void insertBody(Body* b);                                           // 005faf90
+		// 005faed0 (`ret 4`, recursive): appends every descendant with numConnectors (+0x8) > 0 to leafBodies, setting its
+		// +0x4 index (analog name).
+		void addLeafBodies(Body* b);                                        // 005faed0
+		// 005faf20 (`ret 4`, recursive; caller Kernel::removeBody 005fb110): updatePV 00599360 of the body, then every
+		// descendant in leafBodies is swap-removed and its +0x4 index reset to -1 (analog name).
+		void removeLeafBodies(Body* b);                                     // 005faf20
 };
 }

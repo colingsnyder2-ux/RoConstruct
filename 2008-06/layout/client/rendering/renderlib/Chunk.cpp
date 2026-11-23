@@ -1,3 +1,19 @@
+// =============================================================================
+// Chunk.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/renderlib/Chunk.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "RenderLib/SceneManager2008.h"
 #include "OgreRbx/RbxEntity2008.h"
 #include "RenderLib/RenderScene2008.h"
@@ -6,13 +22,13 @@ namespace RBX
 {
 	namespace RenderBase
 	{
-        inline void Chunk::releaseEntity()
-        {
-            if (subEntity)
-                entity->removeSubEntity(subEntity);
-            subEntity = NULL;
-            entity = NULL;
-        }
+		inline void Chunk::releaseEntity()
+		{
+			if (subEntity)
+				entity->removeSubEntity(subEntity);
+			subEntity = NULL;
+			entity = NULL;
+		}
 
 		Chunk::Chunk(float polygonOffset)
 			: sortValue(0.0f),

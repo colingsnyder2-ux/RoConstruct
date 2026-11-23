@@ -1,3 +1,19 @@
+// =============================================================================
+// ReliabilityLayer.h
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/network/raknet30/source/ReliabilityLayer.h
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 /// \file
 /// \brief \b [Internal] Datagram reliable, ordered, unordered and sequenced sends.  Flow control.  Message splitting, reassembly, and coalescence.
 ///
@@ -90,7 +106,12 @@ public:
 	/// \param[in] MTUSize maximum datagram size
 	/// \retval true Success
 	/// \retval false Modified packet
-	bool HandleSocketReceiveFromConnectedPlayer( const char *buffer, int length, SystemAddress systemAddress, DataStructures::List<PluginInterface*> &messageHandlerList, int MTUSize );
+	bool HandleSocketReceiveFromConnectedPlayer(
+		const char *buffer,
+		int length,
+		SystemAddress systemAddress,
+		DataStructures::List<PluginInterface*> &messageHandlerList,
+		int MTUSize);
 
 	/// This allocates bytes and writes a user-level message to those bytes.
 	/// \param[out] data The message
@@ -107,7 +128,15 @@ public:
 	/// \param[in] MTUSize maximum datagram size
 	/// \param[in] currentTime Current time, as per RakNet::GetTime()
 	/// \return True or false for success or failure.
-	bool Send( char *data, int numberOfBitsToSend, PacketPriority priority, PacketReliability reliability, unsigned char orderingChannel, bool makeDataCopy, int MTUSize, RakNetTimeNS currentTime );
+	bool Send(
+		char *data,
+		int numberOfBitsToSend,
+		PacketPriority priority,
+		PacketReliability reliability,
+		unsigned char orderingChannel,
+		bool makeDataCopy,
+		int MTUSize,
+		RakNetTimeNS currentTime);
 
 	/// Call once per game cycle.  Handles internal lists and actually does the send.
 	/// \param[in] s the communication  end point
@@ -115,7 +144,13 @@ public:
 	/// \param[in] MTUSize maximum datagram size
 	/// \param[in] time current system time
 	/// \param[in] messageHandlerList A list of registered plugins
-	void Update(  SOCKET s, SystemAddress systemAddress, int MTUSize, RakNetTimeNS time, unsigned maxBitsPerSecond, DataStructures::List<PluginInterface*> &messageHandlerList );
+	void Update(
+		SOCKET s,
+		SystemAddress systemAddress,
+		int MTUSize,
+		RakNetTimeNS time,
+		unsigned maxBitsPerSecond,
+		DataStructures::List<PluginInterface*> &messageHandlerList);
 
 	/// If Read returns -1 and this returns true then a modified packetwas detected
 	/// \return true when a modified packet is detected
@@ -166,7 +201,13 @@ private:
 	/// \param[in] systemAddress Who we are sending to
 	/// \param[in] messageHandlerList A list of registered plugins
 	/// \return The number of messages sent
-	bool GenerateDatagram( RakNet::BitStream *output, int MTUSize, bool *reliableDataSent, RakNetTimeNS time, SystemAddress systemAddress, DataStructures::List<PluginInterface*> &messageHandlerList );
+	bool GenerateDatagram(
+		RakNet::BitStream *output,
+		int MTUSize,
+		bool *reliableDataSent,
+		RakNetTimeNS time,
+		SystemAddress systemAddress,
+		DataStructures::List<PluginInterface*> &messageHandlerList);
 
 	/// Send the contents of a bitstream to the socket
 	/// \param[in] s The socket used for sending data
@@ -175,7 +216,10 @@ private:
 	void SendBitStream( SOCKET s, SystemAddress systemAddress, RakNet::BitStream *bitStream );
 
 	///Parse an internalPacket and create a bitstream to represent this dataReturns number of bits used
-	int WriteToBitStreamFromInternalPacket( RakNet::BitStream *bitStream, const InternalPacket *const internalPacket, RakNetTimeNS curTime );
+	int WriteToBitStreamFromInternalPacket(
+		RakNet::BitStream *bitStream,
+		const InternalPacket *const internalPacket,
+		RakNetTimeNS curTime);
 
 	/// Parse a bitstream and create an internal packet to represent this data
 	InternalPacket* CreateInternalPacketFromBitStream( RakNet::BitStream *bitStream, RakNetTimeNS time );
@@ -204,7 +248,10 @@ private:
 	bool CheckSHA1( char code[ SHA1_LENGTH ], unsigned char * const buffer, unsigned int nbytes );
 
 	/// Search the specified list for sequenced packets on the specified ordering channel, optionally skipping those with splitPacketId, and delete them
-	void DeleteSequencedPacketsInList( unsigned char orderingChannel, DataStructures::List<InternalPacket*>&theList, int splitPacketId = -1 );
+	void DeleteSequencedPacketsInList(
+		unsigned char orderingChannel,
+		DataStructures::List<InternalPacket*>&theList,
+		int splitPacketId = -1);
 
 	/// Search the specified list for sequenced packets with a value less than orderingIndex and delete them
 	void DeleteSequencedPacketsInList( unsigned char orderingChannel, DataStructures::Queue<InternalPacket*>&theList );
@@ -278,7 +325,7 @@ private:
 	DataStructures::Queue<InternalPacket*> resendQueue;
 
 	DataStructures::Queue<InternalPacket*> sendPacketSet[ NUMBER_OF_PRIORITIES ];
-    DataStructures::OrderedList<SplitPacketIdType, SplitPacketChannel*, SplitPacketChannelComp> splitPacketChannelList;
+	DataStructures::OrderedList<SplitPacketIdType, SplitPacketChannel*, SplitPacketChannelComp> splitPacketChannelList;
 	MessageNumberType sendMessageNumberIndex;
 	//unsigned int windowSize;
 	RakNetTimeNS lastAckTime;

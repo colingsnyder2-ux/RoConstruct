@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // INFERRED: layout of the 8-byte (Instance*, shared_count) vector element and the call_once flag/init names come from the disassembly only.
 #include <stdlib.h>
 
@@ -29,7 +29,7 @@ struct InstPtr {
 };
 
 extern "C" int __fastcall fn_004b3380(void* self, int unusedEdx);
-extern "C" void __stdcall fn_004adb60(InstPtr* out);
+extern "C" void *fn_004adb60(void* ret);
 extern "C" void fn_004ac600();
 extern "C" int fn_004ab470();
 extern long g_00971490;

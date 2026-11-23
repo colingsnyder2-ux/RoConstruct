@@ -1,3 +1,19 @@
+// =============================================================================
+// enumproperty.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/v8tree/enumproperty.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "reflection/type.h"
 #include "G3D/g3dmath.h"
 #include "G3D/Vector3.h"
@@ -118,29 +134,31 @@ namespace RBX
 
 #include "reflection/property.h"
 
-namespace RBX {
-namespace Reflection {
+namespace RBX
+{
+namespace Reflection
+{
 
 template<>
 const Type& Type::singleton<DescribedBase*>()
 {
-    static Type type("Object", typeid(DescribedBase*));
-    return type;
+	static Type type("Object", typeid(DescribedBase*));
+	return type;
 }
 
 bool RefPropertyDescriptor::isWriteOnly() const
 {
-    return false;
+	return false;
 }
 
 void RefPropertyDescriptor::getVariant(const DescribedBase* instance, Value& value) const
 {
-    value = getRefValue(instance);
+	value = getRefValue(instance);
 }
 
 void RefPropertyDescriptor::setVariant(DescribedBase* instance, const Value& value) const
 {
-    setRefValue(instance, value.cast<DescribedBase*>());
+	setRefValue(instance, value.cast<DescribedBase*>());
 }
 
 }
@@ -149,75 +167,85 @@ void RefPropertyDescriptor::setVariant(DescribedBase* instance, const Value& val
 #include "v8xml/XmlElement.h"
 #include "util/Sound.h"
 
-namespace RBX {
-namespace Reflection {
+namespace RBX
+{
+namespace Reflection
+{
 
 template<>
 void TypedPropertyDescriptor<bool>::readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
 {
-    if (!element->isXsiNil())
-    {
-        bool value;
-        if (element->getValue(value))
-            getset->setValue(instance, value);
-    }
+	if (!element->isXsiNil())
+	{
+		bool value;
+		if (element->getValue(value))
+			getset->setValue(instance, value);
+	}
 }
 
 }
 }
 
-namespace RBX {
-namespace Reflection {
+namespace RBX
+{
+namespace Reflection
+{
 
 template<>
 std::string TypedPropertyDescriptor<G3D::Vector3>::getStringValue(const DescribedBase* instance) const
 {
-    return StringConverter<G3D::Vector3>::convertToString(getValue(instance));
+	return StringConverter<G3D::Vector3>::convertToString(getValue(instance));
 }
 
 } // namespace Reflection
 } // namespace RBX
 
-namespace RBX {
-namespace Reflection {
+namespace RBX
+{
+namespace Reflection
+{
 
 template<>
 void TypedPropertyDescriptor<RBX::Soundscape::SoundId>::readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
 {
-    if (!element->isXsiNil())
-    {
-        RBX::Soundscape::SoundId value;
-        if (element->getValue(value))
-        {
-            RBX::Soundscape::SoundId copy(value);
-            setValue(instance, copy);
-        }
-    }
+	if (!element->isXsiNil())
+	{
+		RBX::Soundscape::SoundId value;
+		if (element->getValue(value))
+		{
+			RBX::Soundscape::SoundId copy(value);
+			setValue(instance, copy);
+		}
+	}
 }
 
 }
 }
 
-namespace RBX {
-namespace Reflection {
+namespace RBX
+{
+namespace Reflection
+{
 
 template<>
 bool TypedPropertyDescriptor<float>::setStringValue(DescribedBase* instance, const std::string& text) const
 {
-    float value;
-    if (StringConverter<float>::convertToValue(text, value))
-    {
-        getset->setValue(instance, value);
-        return true;
-    }
-    return false;
+	float value;
+	if (StringConverter<float>::convertToValue(text, value))
+	{
+		getset->setValue(instance, value);
+		return true;
+	}
+	return false;
 }
 
 }
 }
 
-namespace RBX {
-namespace Reflection {
+namespace RBX
+{
+namespace Reflection
+{
 
 bool TypedPropertyDescriptor<G3D::Vector2int16>::setStringValue(DescribedBase* instance, const std::string& text) const
 {
@@ -233,8 +261,10 @@ bool TypedPropertyDescriptor<G3D::Vector2int16>::setStringValue(DescribedBase* i
 }
 }
 
-namespace RBX {
-namespace Reflection {
+namespace RBX
+{
+namespace Reflection
+{
 
 template<>
 void TypedPropertyDescriptor<G3D::Vector2int16>::readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
@@ -254,8 +284,10 @@ void TypedPropertyDescriptor<G3D::Vector2int16>::readValue(DescribedBase* instan
 }
 }
 
-namespace RBX {
-namespace Reflection {
+namespace RBX
+{
+namespace Reflection
+{
 
 template<>
 std::string TypedPropertyDescriptor<std::string>::getStringValue(const DescribedBase* object) const
@@ -266,8 +298,10 @@ std::string TypedPropertyDescriptor<std::string>::getStringValue(const Described
 }
 }
 
-namespace RBX {
-namespace Reflection {
+namespace RBX
+{
+namespace Reflection
+{
 
 template<>
 void TypedPropertyDescriptor<G3D::Vector2int16>::writeValue(const DescribedBase* instance, XmlElement* element) const
@@ -282,25 +316,29 @@ void TypedPropertyDescriptor<G3D::Vector2int16>::writeValue(const DescribedBase*
 }
 }
 
-namespace RBX {
-namespace Reflection {
+namespace RBX
+{
+namespace Reflection
+{
 
 template<>
 void TypedPropertyDescriptor<int>::readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
 {
-    if (!element->isXsiNil())
-    {
-        int value;
-        if (element->getValue(value))
-            getset->setValue(instance, value);
-    }
+	if (!element->isXsiNil())
+	{
+		int value;
+		if (element->getValue(value))
+			getset->setValue(instance, value);
+	}
 }
 
 }
 }
 
-namespace RBX {
-namespace Reflection {
+namespace RBX
+{
+namespace Reflection
+{
 
 template<>
 void TypedPropertyDescriptor<G3D::Vector3>::writeValue(const DescribedBase* instance, XmlElement* element) const

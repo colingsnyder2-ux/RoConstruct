@@ -28,6 +28,13 @@ STDMETHODIMP CApp::get_HasErrorFiles(VARIANT_BOOL* value)
     return S_OK;
 }
 
+// 004061e0 (registry placeholder func_004061e0, 120 B): openrbx FUN_00407300 shape.
+bool CApp::hasErrorFiles()
+{
+    AFX_MANAGE_STATE(AfxGetAppModuleState());
+    return theApp.logManager.hasCrashLogs();
+}
+
 STDMETHODIMP CApp::DeleteErrorFiles()
 {
     AFX_MANAGE_STATE(AfxGetAppModuleState());
@@ -59,6 +66,22 @@ STDMETHODIMP CApp::SendErrorFiles(BSTR url)
 {
     AFX_MANAGE_STATE(AfxGetAppModuleState());
     uploadErrorFiles(CString(url));
+    return S_OK;
+}
+
+namespace RBX
+{
+    // INFERRED: defined in ImageContentRegistration.cpp (0055fa70, free function in namespace RBX, cdecl); no native
+    // header declares it.
+    void clearFileCache();
+}
+
+// 00406260 (registry placeholder func_00406260, 64 B, ret 4): openrbx CApp::ClearFileCache shape; the 2008 client
+// calls the free function RBX::clearFileCache 0055fa70 instead of ContentProvider::singleton().clearFileCache().
+STDMETHODIMP CApp::ClearFileCache()
+{
+    AFX_MANAGE_STATE(AfxGetAppModuleState());
+    RBX::clearFileCache();
     return S_OK;
 }
 

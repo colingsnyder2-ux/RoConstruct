@@ -1,3 +1,19 @@
+// =============================================================================
+// color4uint8.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/color4uint8.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #line 1 ".\\G3Dcpp\\Color4uint8.cpp"
 /**
  @file Color4uint8.cpp
@@ -14,7 +30,8 @@
 #include "G3D/BinaryInput.h"
 #include "G3D/BinaryOutput.h"
 
-namespace G3D {
+namespace G3D
+{
 
 Color4uint8::Color4uint8(const class Color4& c) {
     r = iMin(255, iRound(c.r * 256));

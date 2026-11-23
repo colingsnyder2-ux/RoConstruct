@@ -358,6 +358,10 @@ namespace RBX
 			boost::shared_ptr<Instance> getPlayer();                                // 004ae860 (donor: inline in the class)
 			void requestCharacter();                                                // 004b49e0
 			void closeConnection();                                                 // 004aafd0
+			// 004b9210 (donor Replicator::sendMarker; reflected "SendMarker", static initializer 007f21a0 passes 004b9210 to
+			// the BoundFuncDesc constructor 004b3f30; thiscall, ret 4: hidden shared_ptr<DescribedBase> result). Body in
+			// ReplicatorSendMarker.cpp.
+			boost::shared_ptr<Reflection::DescribedBase> sendMarker();
 			// 004aeac0 (donor Replicator::isSerializePending, public: RoundRobinPhysicsSender::sendPhysicsData 004caaf0
 			// and PhysicsSender rows 004ca980 call it; thiscall, ret 4, reads pendingNewInstances +0x2c90 / head +0x2ca8
 			// through the set find 004ae060). Body in ReplicatorIsSerializePending_004aeac0.cpp.
@@ -369,6 +373,10 @@ namespace RBX
 		public:
 			// Instance slot 14 override: identical-code-folded `return NULL` (as Client / Server write).
 			virtual XmlElement* write();                                            // 00416690 (ICF)
+			// PluginInterface slot 5 override (vtable 00825450 slot 5 = 004b8c20; donor Replicator::OnReceive). Body not
+			// recovered (it times Profiling::Mark, out of line in the binary). Declared so that Server::ClientProxy::OnReceive
+			// 004a2c20 calls it non-virtually (`call 0x4b8c20`) and the Replicator vtables name the real override.
+			virtual PluginReceiveResult OnReceive(RakPeerInterface* peer, Packet* packet); // 004b8c20
 
 		protected:
 			// Virtual slots 16..21 (see the vtable notes above). Slot 16 has no donor counterpart: INFERRED name from its

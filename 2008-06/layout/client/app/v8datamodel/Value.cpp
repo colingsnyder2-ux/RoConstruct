@@ -1,3 +1,19 @@
+// =============================================================================
+// Value.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/v8datamodel/Value.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "v8datamodel/Value.h"
 #include "util/Object.h"
 
@@ -95,7 +111,12 @@ namespace RBX
 	template boost::shared_ptr<Object> FactoryProduct<Color3Value, Instance, sColor3Value>::Creator::create() const;
 	template boost::shared_ptr<Object> FactoryProduct<BrickColorValue, Instance, sBrickColorValue>::Creator::create() const;
 
-	Reflection::RefPropDescriptor<ObjectValue, Instance> ObjectValue::desc_Value("Value", "Data", &ObjectValue::getValue, &ObjectValue::setValue, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::RefPropDescriptor<ObjectValue, Instance> ObjectValue::desc_Value(
+		"Value",
+		"Data",
+		&ObjectValue::getValue,
+		&ObjectValue::setValue,
+		Reflection::PropertyDescriptor::STANDARD);
 	Reflection::SignalDesc<ObjectValue, void(boost::shared_ptr<Instance>)> ObjectValue::desc_ValueChanged("Changed", "value");
 
 	Instance* ObjectValue::getValue() const
@@ -127,6 +148,8 @@ namespace RBX
 	}
 }
 
+// Explicit instantiations: they give this file the same symbols as the original object,
+// where other files used them. Likely removable once the whole client links and those users exist.
 template class RBX::Reflection::TSignalDesc<void __cdecl(G3D::Color3)>;
 template class RBX::Reflection::TSignalDesc<void __cdecl(G3D::CoordinateFrame)>;
 template class RBX::Reflection::TSignalDesc<void __cdecl(G3D::Vector3)>;
@@ -174,11 +197,12 @@ template void RBX::Name::callDoDeclare<RBX::sStringValue>();
 template void RBX::Name::callDoDeclare<RBX::sCFrameValue>();
 template void RBX::Name::callDoDeclare<RBX::sBrickColorValue>();
 
-namespace RBX {
+namespace RBX
+{
 ObjectValue::ObjectValue()
 {
-    std::string name("Value");
-    Instance::setName(name);
+	std::string name("Value");
+	Instance::setName(name);
 }
 }
 
@@ -193,17 +217,17 @@ ObjectValue::ObjectValue()
 
 namespace RBX { namespace Reflection {
 template<class T> T& Value::genericConvert() {
-    T* id = boost::any_cast<T>(&value);
-    if (id) return *id;
-    if (isType<std::string>()) {
-        T v;
-        if (StringConverter<T>::convertToValue(*boost::any_cast<std::string>(&value),v)) {
-            value = v;
-            _type = &Type::singleton<T>();
-            return *boost::any_cast<T>(&value);
-        }
-    }
-    throw std::runtime_error(G3D::format("Unable to cast %s to %s", _type->tag.c_str(), Type::singleton<T>().tag.c_str()));
+	T* id = boost::any_cast<T>(&value);
+	if (id) return *id;
+	if (isType<std::string>()) {
+		T v;
+		if (StringConverter<T>::convertToValue(*boost::any_cast<std::string>(&value),v)) {
+			value = v;
+			_type = &Type::singleton<T>();
+			return *boost::any_cast<T>(&value);
+		}
+	}
+	throw std::runtime_error(G3D::format("Unable to cast %s to %s", _type->tag.c_str(), Type::singleton<T>().tag.c_str()));
 }
 template float& Value::genericConvert<float>();
 }}
@@ -212,9 +236,9 @@ template float& Value::genericConvert<float>();
 
 namespace RBX { namespace Reflection {
 template<class T> T Value::get() const {
-    if (isType<T>()) return boost::any_cast<const T&>(value);
-    Value copy(*this);
-    return copy.convert<T>();
+	if (isType<T>()) return boost::any_cast<const T&>(value);
+	Value copy(*this);
+	return copy.convert<T>();
 }
 template bool Value::get<bool>() const;
 template float Value::get<float>() const;

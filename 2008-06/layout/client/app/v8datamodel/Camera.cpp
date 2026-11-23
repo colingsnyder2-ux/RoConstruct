@@ -1,3 +1,19 @@
+// =============================================================================
+// Camera.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/v8datamodel/Camera.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "v8datamodel/Camera.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/ICameraOwner.h"
@@ -7,10 +23,30 @@
 
 namespace RBX
 {
-	static Reflection::EnumPropDescriptor<Camera, Camera::CameraType> desc_cameraType("CameraType", "Camera", &Camera::getCameraType, &Camera::setCameraType, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Camera, G3D::CoordinateFrame> desc_CoordFrame("CoordinateFrame", "Data", &Camera::getCameraCoordinateFrame, &Camera::setCameraCoordinateFrameNoLerp, Reflection::PropertyDescriptor::STREAMING);
-	static Reflection::PropDescriptor<Camera, G3D::CoordinateFrame> desc_Focus("Focus", "Data", &Camera::getCameraFocus, &Camera::setCameraFocus, Reflection::PropertyDescriptor::STREAMING);
-	static Reflection::RefPropDescriptor<Camera, Instance> cameraSubjectProp("CameraSubject", "Camera", &Camera::getCameraSubjectInstance, &Camera::setCameraSubject, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::EnumPropDescriptor<Camera, Camera::CameraType> desc_cameraType(
+		"CameraType",
+		"Camera",
+		&Camera::getCameraType,
+		&Camera::setCameraType,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Camera, G3D::CoordinateFrame> desc_CoordFrame(
+		"CoordinateFrame",
+		"Data",
+		&Camera::getCameraCoordinateFrame,
+		&Camera::setCameraCoordinateFrameNoLerp,
+		Reflection::PropertyDescriptor::STREAMING);
+	static Reflection::PropDescriptor<Camera, G3D::CoordinateFrame> desc_Focus(
+		"Focus",
+		"Data",
+		&Camera::getCameraFocus,
+		&Camera::setCameraFocus,
+		Reflection::PropertyDescriptor::STREAMING);
+	static Reflection::RefPropDescriptor<Camera, Instance> cameraSubjectProp(
+		"CameraSubject",
+		"Camera",
+		&Camera::getCameraSubjectInstance,
+		&Camera::setCameraSubject,
+		Reflection::PropertyDescriptor::STANDARD);
 
 	// No out-of-line copy in the binary (inlined at every call site).
 	void Camera::tellCameraMoved()
@@ -186,7 +222,8 @@ namespace RBX
 
 #include "util/Name.h"
 
-namespace RBX {
+namespace RBX
+{
 
 void __thiscall Camera::updateFocus(void)
 {
@@ -200,13 +237,14 @@ void __thiscall Camera::updateFocus(void)
 
 #include "v8datamodel/ICharacterSubject.h"
 
-namespace RBX {
+namespace RBX
+{
 bool Camera::isFirstPersonCamera() const
 {
-    ICameraSubject* subject = cameraSubject.get() ? dynamic_cast<ICameraSubject*>(cameraSubject.get()) : 0;
-    ICharacterSubject* character = dynamic_cast<ICharacterSubject*>(subject);
-    if (character) return character->getCursorCenterLocked();
-    return false;
+	ICameraSubject* subject = cameraSubject.get() ? dynamic_cast<ICameraSubject*>(cameraSubject.get()) : 0;
+	ICharacterSubject* character = dynamic_cast<ICharacterSubject*>(subject);
+	if (character) return character->getCursorCenterLocked();
+	return false;
 }
 }
 
@@ -214,18 +252,19 @@ bool Camera::isFirstPersonCamera() const
 #include <math.h>
 #pragma intrinsic(atan2)
 
-namespace RBX {
+namespace RBX
+{
 extern const float cameraRadiansToDegrees;
 void Camera::panUnits(int steps) {
-    G3D::Vector3 look = cameraGoal.lookVector();
-    float heading = atan2(-look.z, -look.x);
-    int current = G3D::iRound(heading * 1.2732394933700562f + steps);
-    panRadians(heading - current * 0.7853981852531433f);
+	G3D::Vector3 look = cameraGoal.lookVector();
+	float heading = atan2(-look.z, -look.x);
+	int current = G3D::iRound(heading * 1.2732394933700562f + steps);
+	panRadians(heading - current * 0.7853981852531433f);
 }
 
 bool Camera::tiltUnits(int steps) {
-    float elevation = Math::getElevation(cameraGoal.lookVector());
-    int current = G3D::iRound(elevation * cameraRadiansToDegrees * 0.1f);
-    return tiltRadians((current + steps) * 0.1745329350233078f - elevation);
+	float elevation = Math::getElevation(cameraGoal.lookVector());
+	int current = G3D::iRound(elevation * cameraRadiansToDegrees * 0.1f);
+	return tiltRadians((current + steps) * 0.1745329350233078f - elevation);
 }
 }
