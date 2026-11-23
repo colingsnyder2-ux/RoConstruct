@@ -145,12 +145,11 @@ void ScriptContext::onEvent(const RunService* source, RunTransition event)
 // (mov eax,[00976b78]; test; jle) and onEvent(Heartbeat) 005b0710 decrements it; no header declares it.
 static long timedOutScripts;
 
-#ifdef SCRIPTCONTEXT_HEADER_DECLARES_ONHOOK
 // 005ae230 (registry placeholder func_005ae230, 71 B): the static lua_Hook that openState 005aefa0 installs with
 // lua_sethook(count 1000). While timedOutScripts > 0 (mov eax,[00976b78]; test; jle) it calls the member 005adbf0
 // (AppUnit5ACScriptContext.cpp, INFERRED name onHook) on getContext(L) (inlined: lightuserdata 0x43, lua_gettable
 // LUA_GLOBALSINDEX, lua_touserdata(-1), lua_settop(-2)), passing L and ar.
-// Blocked by script/ScriptContext.h (not editable here): it must declare 'void onHook(lua_State* L, lua_Debug* ar);'.
+// script/ScriptContext.h declares the member onHook (batch 46).
 void ScriptContext::scriptHook(lua_State* L, lua_Debug* ar)
 {
     // volatile read: the target loads the counter (mov eax,[00976b78]; test eax,eax) instead of cmp [mem],0; the
@@ -158,7 +157,72 @@ void ScriptContext::scriptHook(lua_State* L, lua_Debug* ar)
     if (*static_cast<volatile long*>(&timedOutScripts) > 0)
         getContext(L).onHook(L, ar);
 }
-#endif
+
+// INFERRED: a file-local copy of boost 1.34 libs/thread/src/timeconv.inl to_time(int milliseconds, xtime&) (that
+// file is not a public header): xtime_get 005a6b40 (TIME_UTC 1), sec += ms / 1000 (64-bit add/adc), nsec +=
+// (ms % 1000) * 1000000, then the 1000000000 carry, all inlined into the watchdog 005ab4b0.
+static inline void to_time(int milliseconds, boost::xtime& xt)
+{
+    boost::xtime_get(&xt, boost::TIME_UTC);
+    xt.sec += (milliseconds / 1000);
+    xt.nsec += ((milliseconds % 1000) * 1000000);
+    if (xt.nsec >= static_cast<int>(1000000000))
+    {
+        ++xt.sec;
+        xt.nsec -= 1000000000;
+    }
+}
+
+// 005ab4b0 (registry placeholder func_005ab4b0, 528 B; INFERRED name watchdog): the "ScriptContext Timeout" thread
+// body that setTimeout 005ae8f0 starts with boost::bind(&ScriptContext::watchdog, shared_ptr<ScriptContext>).
+// While the context has a parent (+0x104) it waits on exeCondition (+0x1d8) under exeMutex (+0x1d0): timed by the
+// last timeout * 1010.0 (00834558) ms (at least 1) when positive, else untimed. Then, under the mutex again, while
+// exeTime0 (+0x1b8) is set the remaining time is exeTime1 (+0x1c0) - getLocalTime 00508410; once it runs out the
+// timeout restarts at exeTime0 and InterlockedExchange(&exeState +0x1c8, 1) == 0 increments the timed-out counter
+// 00976b78 (InterlockedIncrement). Without a timeout it waits untimed (-1.0, 0081cde0).
+void ScriptContext::watchdog()
+{
+    double timeout = exeTime0;
+
+    while (getParent())
+    {
+        {
+            boost::mutex::scoped_lock lock(exeMutex);
+
+            if (timeout > 0)
+            {
+                boost::xtime xt;
+                to_time(std::max(1, static_cast<int>(timeout * 1010.0)), xt);
+                exeCondition.timed_wait(lock, xt);
+            }
+            else
+            {
+                exeCondition.wait(lock);
+            }
+        }
+
+        {
+            boost::mutex::scoped_lock lock(exeMutex);
+
+            if (exeTime0 != 0)
+            {
+                timeout = exeTime1 - G3D::System::getLocalTime();
+
+                if (timeout <= 0)
+                {
+                    timeout = exeTime0;
+
+                    if (InterlockedExchange(reinterpret_cast<long*>(&exeState), 1) == 0)
+                        InterlockedIncrement(&timedOutScripts);
+                }
+            }
+            else
+            {
+                timeout = -1.0;
+            }
+        }
+    }
+}
 
 // 005b0710 (Listener<RunService, Heartbeat> slot: this is the listener subobject at +0x134, globalState at +4,
 // nextPendingScripts +0x4c, yieldEvent +0x74, exeTime0/exeTime1/exeState +0x84/+0x8c/+0x94). The donor body plus

@@ -27,9 +27,11 @@ namespace RBX
 		{
 			friend class Impersonator;
 
-		private:
-			const Identities identity;
 		public:
+			// INFERRED access: public. The 2008 ScriptContext reads it directly after current() 00493760
+			// (printidentity 005add30, resume 005ae0d0 and onHook 005adbf0: mov ecx,[eax]; cmp ecx,2).
+			const Identities identity;
+
 			void requirePermission(Permissions permission, const char* operation) const
 			{
 				if (!isInRole(identity, permission))

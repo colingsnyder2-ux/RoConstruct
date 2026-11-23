@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/script-file-load
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 #include "util/NativeContentProvider.h"
 #include "script/ScriptContext.h"
 #include "lauxlib.h"
@@ -36,10 +36,8 @@ int ScriptContext::time(lua_State* L)
     return 1;
 }
 
-#ifdef SECURITY_CONTEXT_EXPOSES_IDENTITY
-// Pending: security/SecurityContext.h (and its script-file-load profile copy) keep Context::identity private; the
-// target reads it directly (mov ecx,[eax] after current() 00493760), so the 2008 class exposed it. Byte-exact in a
-// scratch measurement with identity public (batch 42); define the macro once the header proposal lands.
+// security/SecurityContext.h declares Context::identity public: the target reads it directly (mov ecx,[eax] after
+// current() 00493760).
 // 005add30: global 'printidentity' (openState 005aefa0). lua_isstring(L, -1) (00611eb0) selects
 // "%s %d" (008346e0) with lua_tostring(L, -1), else "Current identity is %d" (008346c8); both MESSAGE_OUTPUT with
 // Security::Context::current() 00493760 identity (+0).
@@ -51,7 +49,6 @@ int ScriptContext::printidentity(lua_State* L)
         StandardOut::singleton()->print(MESSAGE_OUTPUT, "Current identity is %d", Security::Context::current().identity);
     return 0;
 }
-#endif
 
 int ScriptContext::loadfile(lua_State* thread)
 {
@@ -80,8 +77,7 @@ int ScriptContext::dofile(lua_State* thread)
     return lua_gettop(thread) - top;
 }
 
-#ifdef SECURITY_CONTEXT_EXPOSES_IDENTITY
-// Pending: Context::identity (see printidentity above). Near miss in the scratch measurement: the timeout check
+// Near miss in the batch 42 scratch measurement: the timeout check
 // matches once exeState is read as volatile (the target loads it with mov/test; exeState is shared with the watchdog
 // through InterlockedExchange 005ab66b), the rest differs only in register allocation (thread in ebx, the lua_resume
 // result kept in ebp; the candidate spills it).
@@ -118,5 +114,4 @@ ScriptContext::Result ScriptContext::resume(lua_State* thread, int narg)
             return Error;
     }
 }
-#endif
 }
