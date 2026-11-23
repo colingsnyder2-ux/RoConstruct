@@ -1,3 +1,19 @@
+// =============================================================================
+// ReferenceCount.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/ReferenceCount.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 // INFERRED: buildFace EndcapTransform spelling at004ff1e0; unique714B body and original references verified.
 #include "ViewNew/HeadMesh.h"
 #include "ViewNew/QuadVolumeFace.h"
@@ -19,7 +35,12 @@ namespace RBX
 				  halfVertexCount((vertexCount + 1) / 2)
 			{
 			}
-			void operator()(G3D::Vector3& vertex, G3D::Vector3& normal, G3D::Vector2& tex, const G3D::Vector3& radius, const G3D::Vector2int16& ivertex); // 004fdbd0
+			void operator()(
+				G3D::Vector3& vertex,
+				G3D::Vector3& normal,
+				G3D::Vector2& tex,
+				const G3D::Vector3& radius,
+				const G3D::Vector2int16& ivertex); // 004fdbd0
 		};
 
 		class EndcapTransform
@@ -30,7 +51,12 @@ namespace RBX
 				: bevel(bevel)
 			{
 			}
-			void operator()(G3D::Vector3& vertex, G3D::Vector3& normal, G3D::Vector2& tex, const G3D::Vector3& radius, const G3D::Vector2int16& ivertex); // 004fdcc0
+			void operator()(
+				G3D::Vector3& vertex,
+				G3D::Vector3& normal,
+				G3D::Vector2& tex,
+				const G3D::Vector3& radius,
+				const G3D::Vector2int16& ivertex); // 004fdcc0
 		};
 
 		HeadBuilder::HeadBuilder(G3D::ReferenceCountedPointer<RenderBase::Mesh::Level> level, G3D::Vector3 size, RenderSurfaceTypes surfaceTypes, size_t elements, float bevel)
@@ -154,96 +180,97 @@ namespace RBX
 #include "GLG3D/GModule.h"
 #include "GLG3D/RenderDevice.h"
 
-namespace G3D {
+namespace G3D
+{
 
 GModuleManagerRef GModuleManager::create() {
-    return new GModuleManager();
+	return new GModuleManager();
 }
 
 GModuleManager::GModuleManager() : m_locked(false), m_size(0), m_removeAll(false) {
 }
 
 int GModuleManager::size() const {
-    return m_size;
+	return m_size;
 }
 
 const GModuleRef& GModuleManager::operator[](int i) const {
-    debugAssert(i >= 0 && i < m_size);
-    for (int p = NUM_PRIORITY - 1; p >= 0; --p) {
-        if (i < m_moduleArray[p].size()) {
-            return m_moduleArray[p][i];
-        } else {
-            // Look in the next array.  We are guaranteed
-            // not to underflow by the assertion above.
-            i -= m_moduleArray[p].size();
-        }
-    }
+	debugAssert(i >= 0 && i < m_size);
+	for (int p = NUM_PRIORITY - 1; p >= 0; --p) {
+		if (i < m_moduleArray[p].size()) {
+			return m_moduleArray[p][i];
+		} else {
+			// Look in the next array.  We are guaranteed
+			// not to underflow by the assertion above.
+			i -= m_moduleArray[p].size();
+		}
+	}
 
-    static GModuleRef tmp;
-    return tmp;
+	static GModuleRef tmp;
+	return tmp;
 }
 
 void GModuleManager::beginLock() {
-    debugAssert(! m_locked);
-    m_locked = true;
+	debugAssert(! m_locked);
+	m_locked = true;
 }
 
 void GModuleManager::endLock() {
-    debugAssert(m_locked);
-    m_locked = false;
+	debugAssert(m_locked);
+	m_locked = false;
 
-    // Process add list
-    for (int i = 0; i < m_addList.size(); ++i) {
-        add(m_addList[i].module, m_addList[i].priority);
-    }
-    m_addList.clear();
+	// Process add list
+	for (int i = 0; i < m_addList.size(); ++i) {
+		add(m_addList[i].module, m_addList[i].priority);
+	}
+	m_addList.clear();
 
-    // Process remove list
-    for (int i = 0; i < m_removeList.size(); ++i) {
-        remove(m_removeList[i]);
-    }
-    m_removeList.clear();
+	// Process remove list
+	for (int i = 0; i < m_removeList.size(); ++i) {
+		remove(m_removeList[i]);
+	}
+	m_removeList.clear();
 
-    if (m_removeAll) {
-        clear();
-        m_removeAll = false;
-    }
+	if (m_removeAll) {
+		clear();
+		m_removeAll = false;
+	}
 }
 
 void GModuleManager::remove(const GModuleRef& m) {
-    if (m_locked) {
-        m_removeList.append(m);
-    } else {
-        for (int p = 0; p < NUM_PRIORITY; ++p) {
-            int j = m_moduleArray[p].findIndex(m);
-            if (j != -1) {
-                m_moduleArray[p].fastRemove(j);
-                --m_size;
-                return;
-            }
-        }
-        debugAssertM(false, "Removed a GModule that was not in the manager.");
-    }
+	if (m_locked) {
+		m_removeList.append(m);
+	} else {
+		for (int p = 0; p < NUM_PRIORITY; ++p) {
+			int j = m_moduleArray[p].findIndex(m);
+			if (j != -1) {
+				m_moduleArray[p].fastRemove(j);
+				--m_size;
+				return;
+			}
+		}
+		debugAssertM(false, "Removed a GModule that was not in the manager.");
+	}
 }
 
 void GModuleManager::add(const GModuleRef& m, EventPriority p) {
-    debugAssert(p >= LOW_PRIORITY && p <= HIGH_PRIORITY);
-    if (m_locked) {
-        m_addList.append(Add(m, p));
-    } else {
-        ++m_size;
-        m_moduleArray[p].append(m);
-    }
+	debugAssert(p >= LOW_PRIORITY && p <= HIGH_PRIORITY);
+	if (m_locked) {
+		m_addList.append(Add(m, p));
+	} else {
+		++m_size;
+		m_moduleArray[p].append(m);
+	}
 }
 
 void GModuleManager::clear() {
-    if (m_locked) {
-        m_removeAll = true;
-    } else {
-        for (int p = 0; p < NUM_PRIORITY; ++p) {
-            m_moduleArray[p].clear();
-        }
-    }
+	if (m_locked) {
+		m_removeAll = true;
+	} else {
+		for (int p = 0; p < NUM_PRIORITY; ++p) {
+			m_moduleArray[p].clear();
+		}
+	}
 }
 
 // Iterate through all modules in priority order.
@@ -260,64 +287,64 @@ void GModuleManager::clear() {
     endLock();
 
 void GModuleManager::getPosedModel(
-    Array<PosedModelRef>& posedArray,
-    Array<PosedModel2DRef>& posed2DArray) {
+	Array<PosedModelRef>& posedArray,
+	Array<PosedModel2DRef>& posed2DArray) {
 
-    ITERATOR(array[i]->getPosedModel(posedArray, posed2DArray));
+	ITERATOR(array[i]->getPosedModel(posedArray, posed2DArray));
 }
 
 void GModuleManager::onSimulation(RealTime rdt, SimTime sdt, SimTime idt) {
-    ITERATOR(array[i]->onSimulation(rdt, sdt, idt));
+	ITERATOR(array[i]->onSimulation(rdt, sdt, idt));
 }
 
 bool GModuleManager::onEvent(const GEvent& event) {
-    // if the event is ever consumed, abort iteration
-    ITERATOR(if (array[i]->onEvent(event)) { endLock(); return true; });
-    return false;
+	// if the event is ever consumed, abort iteration
+	ITERATOR(if (array[i]->onEvent(event)) { endLock(); return true; });
+	return false;
 }
 
 void GModuleManager::onUserInput(UserInput* ui) {
-    ITERATOR(array[i]->onUserInput(ui));
+	ITERATOR(array[i]->onUserInput(ui));
 }
 
 void GModuleManager::onNetwork() {
-    ITERATOR(array[i]->onNetwork());
+	ITERATOR(array[i]->onNetwork());
 }
 
 void GModuleManager::onLogic() {
-    ITERATOR(array[i]->onLogic());
+	ITERATOR(array[i]->onLogic());
 }
 
 #undef ITERATOR
 
 bool GModuleManager::onEvent(const GEvent& event, GModuleManagerRef& a, GModuleManagerRef& b) {
-    a->beginLock();
-    b->beginLock();
+	a->beginLock();
+	b->beginLock();
 
-    for (int p = NUM_PRIORITY - 1; p >= 0; --p) {
+	for (int p = NUM_PRIORITY - 1; p >= 0; --p) {
 
-        // Process each, interlaced
-        for (int k = 0; k < 2; ++k) {
-            Array<GModuleRef>& array =
-                (k == 0) ?
-                    a->m_moduleArray[p] :
-                    b->m_moduleArray[p];
+		// Process each, interlaced
+		for (int k = 0; k < 2; ++k) {
+			Array<GModuleRef>& array =
+				(k == 0) ?
+					a->m_moduleArray[p] :
+					b->m_moduleArray[p];
 
-            for (int i = array.size() - 1; i >= 0; --i) {
-                if (array[i]->onEvent(event)) {
-                    b->endLock();
-                    a->endLock();
-                    return true;
-                }
-            }
-        }
+			for (int i = array.size() - 1; i >= 0; --i) {
+				if (array[i]->onEvent(event)) {
+					b->endLock();
+					a->endLock();
+					return true;
+				}
+			}
+		}
 
-    }
+	}
 
-    b->endLock();
-    a->endLock();
+	b->endLock();
+	a->endLock();
 
-    return false;
+	return false;
 }
 
 } // G3D
@@ -338,77 +365,78 @@ bool GModuleManager::onEvent(const GEvent& event, GModuleManagerRef& a, GModuleM
 #include "GLG3D/glcalls.h"
 #include "GLG3D/TextureFormat.h"
 
-namespace G3D {
+namespace G3D
+{
 
 /////////////////////////////////////////////////////////////////////////////
 
 Renderbuffer::Renderbuffer (
-    const std::string&			_name,
-    const GLuint				_imageID,
-    const G3D::TextureFormat*	_format,
-    const int					_width,
-    const int					_height) :
-    mName(_name),
-    mImageID(_imageID),
-    mFormat(_format),
-    mWidth(_width),
-    mHeight(_height) {
+	const std::string&			_name,
+	const GLuint				_imageID,
+	const G3D::TextureFormat*	_format,
+	const int					_width,
+	const int					_height) :
+	mName(_name),
+	mImageID(_imageID),
+	mFormat(_format),
+	mWidth(_width),
+	mHeight(_height) {
 
-    // Intentionally empty
+	// Intentionally empty
 }
 
 Renderbuffer::~Renderbuffer () {
-    glDeleteRenderbuffersEXT(1, &mImageID);
+	glDeleteRenderbuffersEXT(1, &mImageID);
 }
 
 RenderbufferRef Renderbuffer::fromGLRenderbuffer(
-    const std::string&			_name,
-    const GLuint				_imageID,
-    const G3D::TextureFormat	*_format) {
+	const std::string&			_name,
+	const GLuint				_imageID,
+	const G3D::TextureFormat	*_format) {
 
-    GLint w, h;
+	GLint w, h;
 
-    // Extract the width and height
-    glGetRenderbufferParameterivEXT (GL_RENDERBUFFER_EXT, GL_RENDERBUFFER_WIDTH_EXT, &w);
-    glGetRenderbufferParameterivEXT (GL_RENDERBUFFER_EXT, GL_RENDERBUFFER_WIDTH_EXT, &h);
-    debugAssertGLOk();
+	// Extract the width and height
+	glGetRenderbufferParameterivEXT (GL_RENDERBUFFER_EXT, GL_RENDERBUFFER_WIDTH_EXT, &w);
+	glGetRenderbufferParameterivEXT (GL_RENDERBUFFER_EXT, GL_RENDERBUFFER_WIDTH_EXT, &h);
+	debugAssertGLOk();
 
-    // Create new renderbuffer
-    return new Renderbuffer(_name, _imageID, _format, w, h);
+	// Create new renderbuffer
+	return new Renderbuffer(_name, _imageID, _format, w, h);
 }
 
 RenderbufferRef Renderbuffer::createEmpty(
-    const std::string&			_name,
-    const G3D::TextureFormat*   _format,
-    const int					_width,
-    const int					_height) {
-    // New Renderbuffer ID
-    GLuint _imageID;
+	const std::string&			_name,
+	const G3D::TextureFormat*   _format,
+	const int					_width,
+	const int					_height) {
+	// New Renderbuffer ID
+	GLuint _imageID;
 
-    // Save old renderbuffer state
-    GLint origBuffer;
-    glGetIntegerv(GL_RENDERBUFFER_BINDING_EXT, &origBuffer);
+	// Save old renderbuffer state
+	GLint origBuffer;
+	glGetIntegerv(GL_RENDERBUFFER_BINDING_EXT, &origBuffer);
 
-    // Generate buffer
-    glGenRenderbuffersEXT (1, &_imageID);
-    debugAssertGLOk();
+	// Generate buffer
+	glGenRenderbuffersEXT (1, &_imageID);
+	debugAssertGLOk();
 
-    // Bind the buffer
-    glBindRenderbufferEXT (GL_RENDERBUFFER_EXT, _imageID);
-    debugAssertGLOk();
+	// Bind the buffer
+	glBindRenderbufferEXT (GL_RENDERBUFFER_EXT, _imageID);
+	debugAssertGLOk();
 
-    // Allocate storage for it
-    glRenderbufferStorageEXT(GL_RENDERBUFFER_EXT, _format->OpenGLFormat, _width, _height);
+	// Allocate storage for it
+	glRenderbufferStorageEXT(GL_RENDERBUFFER_EXT, _format->OpenGLFormat, _width, _height);
 
-    // Check for successful generation (ie, no INVALID_OPERATION)
-    debugAssertGLOk();
+	// Check for successful generation (ie, no INVALID_OPERATION)
+	debugAssertGLOk();
 
-    // Restore renderbuffer state
-    glBindRenderbufferEXT (GL_RENDERBUFFER_EXT, origBuffer);
-    debugAssertGLOk();
+	// Restore renderbuffer state
+	glBindRenderbufferEXT (GL_RENDERBUFFER_EXT, origBuffer);
+	debugAssertGLOk();
 
-    // Create new renderbuffer
-    return new Renderbuffer(_name, _imageID, _format, _width, _height);
+	// Create new renderbuffer
+	return new Renderbuffer(_name, _imageID, _format, _width, _height);
 }
 
 } // End Namespace G3D

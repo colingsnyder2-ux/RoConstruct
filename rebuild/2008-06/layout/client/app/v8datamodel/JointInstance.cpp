@@ -1,3 +1,19 @@
+// =============================================================================
+// JointInstance.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/v8datamodel/JointInstance.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #undef _RELEASEASSERT
 #include "v8datamodel/JointInstance.h"
 #include "v8datamodel/Workspace.h"
@@ -131,10 +147,21 @@ namespace RBX
 	}
 }
 
-static RBX::Reflection::RefPropDescriptor<RBX::AutoJoint, RBX::PartInstance> prop_Part0("Part0", "Data", &RBX::AutoJoint::getPart0, &RBX::AutoJoint::setPart0, RBX::Reflection::PropertyDescriptor::STANDARD);
-static RBX::Reflection::RefPropDescriptor<RBX::AutoJoint, RBX::PartInstance> prop_Part1("Part1", "Data", &RBX::AutoJoint::getPart1, &RBX::AutoJoint::setPart1, RBX::Reflection::PropertyDescriptor::STANDARD);
+static RBX::Reflection::RefPropDescriptor<RBX::AutoJoint, RBX::PartInstance> prop_Part0(
+	"Part0",
+	"Data",
+	&RBX::AutoJoint::getPart0,
+	&RBX::AutoJoint::setPart0,
+	RBX::Reflection::PropertyDescriptor::STANDARD);
+static RBX::Reflection::RefPropDescriptor<RBX::AutoJoint, RBX::PartInstance> prop_Part1(
+	"Part1",
+	"Data",
+	&RBX::AutoJoint::getPart1,
+	&RBX::AutoJoint::setPart1,
+	RBX::Reflection::PropertyDescriptor::STANDARD);
 
-namespace RBX {
+namespace RBX
+{
 void AutoJoint::setPart0(PartInstance* value)
 	{
 		setPart(0, value);

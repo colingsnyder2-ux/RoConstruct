@@ -1,3 +1,19 @@
+// =============================================================================
+// Decal.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/v8datamodel/Decal.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "AppUnit594_2008/TextureIdType2008.h"   // Type::singleton<TextureId> = singleton<ContentId> (005978a0)
 #include "v8datamodel/Decal.h"
 
@@ -20,11 +36,36 @@ namespace RBX
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
 
-	const Reflection::PropDescriptor<Decal, TextureId> Decal::prop_Texture("Texture", "Appearance", &Decal::getTexture, &Decal::setTexture, Reflection::PropertyDescriptor::STANDARD);
-	const Reflection::PropDescriptor<Decal, float> Decal::prop_Specular("Specular", "Appearance", &Decal::getSpecular, &Decal::setSpecular, Reflection::PropertyDescriptor::STANDARD);
-	const Reflection::PropDescriptor<Decal, float> Decal::prop_Shiny("Shiny", "Appearance", &Decal::getShiny, &Decal::setShiny, Reflection::PropertyDescriptor::STANDARD);
-	const Reflection::PropDescriptor<Texture, float> Texture::prop_StudsPerTileU("StudsPerTileU", "Appearance", &Texture::getStudsPerTileU, &Texture::setStudsPerTileU, Reflection::PropertyDescriptor::STANDARD);
-	const Reflection::PropDescriptor<Texture, float> Texture::prop_StudsPerTileV("StudsPerTileV", "Appearance", &Texture::getStudsPerTileV, &Texture::setStudsPerTileV, Reflection::PropertyDescriptor::STANDARD);
+	const Reflection::PropDescriptor<Decal, TextureId> Decal::prop_Texture(
+		"Texture",
+		"Appearance",
+		&Decal::getTexture,
+		&Decal::setTexture,
+		Reflection::PropertyDescriptor::STANDARD);
+	const Reflection::PropDescriptor<Decal, float> Decal::prop_Specular(
+		"Specular",
+		"Appearance",
+		&Decal::getSpecular,
+		&Decal::setSpecular,
+		Reflection::PropertyDescriptor::STANDARD);
+	const Reflection::PropDescriptor<Decal, float> Decal::prop_Shiny(
+		"Shiny",
+		"Appearance",
+		&Decal::getShiny,
+		&Decal::setShiny,
+		Reflection::PropertyDescriptor::STANDARD);
+	const Reflection::PropDescriptor<Texture, float> Texture::prop_StudsPerTileU(
+		"StudsPerTileU",
+		"Appearance",
+		&Texture::getStudsPerTileU,
+		&Texture::setStudsPerTileU,
+		Reflection::PropertyDescriptor::STANDARD);
+	const Reflection::PropDescriptor<Texture, float> Texture::prop_StudsPerTileV(
+		"StudsPerTileV",
+		"Appearance",
+		&Texture::getStudsPerTileV,
+		&Texture::setStudsPerTileV,
+		Reflection::PropertyDescriptor::STANDARD);
 
 	Decal::Decal() : specular(0.0f), shiny(20.0f) { setName("Decal"); }       // 00598400
 	Texture::Texture() : studsPerTile(2.0f, 2.0f) { setName("Texture"); }   // 00598870
@@ -75,6 +116,8 @@ namespace RBX
 	}
 }
 
+// Explicit instantiations: they give this file the same symbols as the original object,
+// where other files used them. Likely removable once the whole client links and those users exist.
 template class boost::any::holder<RBX::TextureId>;
 template boost::any::any(const RBX::TextureId&);
 template boost::any& boost::any::operator=(const RBX::TextureId&);

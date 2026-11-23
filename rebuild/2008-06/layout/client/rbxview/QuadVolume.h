@@ -1,3 +1,19 @@
+// =============================================================================
+// QuadVolume.h
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rbxview/QuadVolume.h
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #pragma once
 #include "ViewNew/RenderBaseMesh.h"
 #include "util/NormalId.h"
@@ -62,7 +78,14 @@ namespace RBX
 			void buildFace(Function function, G3D::Vector2int16 divisions, Purpose purpose);
 
 			template<NormalId id, class Function>
-			void buildFace(Function function, G3D::Rect2D rect, const float depth, G3D::Vector2 textureOrigin, G3D::Vector2 textureExtent, const int axis, G3D::Vector2int16 divisions);
+			void buildFace(
+				Function function,
+				G3D::Rect2D rect,
+				const float depth,
+				G3D::Vector2 textureOrigin,
+				G3D::Vector2 textureExtent,
+				const int axis,
+				G3D::Vector2int16 divisions);
 
 			template<NormalId id, class Builder>
 			void buildFace(Builder builder, const unsigned int x, const unsigned int y, Purpose purpose)

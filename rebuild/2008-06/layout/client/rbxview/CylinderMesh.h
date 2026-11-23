@@ -1,3 +1,19 @@
+// =============================================================================
+// CylinderMesh.h
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rbxview/CylinderMesh.h
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #pragma once
 #include "ViewNew/QuadVolume.h"
 #include "ViewNew/MeshFactory.h"
@@ -12,7 +28,11 @@ namespace RBX
 		public:
 			const size_t elements;                                // +0x20
 		public:
-			CylinderBuilder(G3D::ReferenceCountedPointer<RenderBase::Mesh::Level>& level, G3D::Vector3 size, RenderSurfaceTypes surfaceTypes, size_t slices); // 004fd430
+			CylinderBuilder(
+				G3D::ReferenceCountedPointer<RenderBase::Mesh::Level>& level,
+				G3D::Vector3 size,
+				RenderSurfaceTypes surfaceTypes,
+				size_t slices); // 004fd430
 		protected:
 			virtual void buildRight(Purpose purpose);             // 004fd590
 			virtual void buildTop(Purpose purpose);               // 004fd5c0

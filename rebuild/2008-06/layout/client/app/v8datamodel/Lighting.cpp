@@ -1,3 +1,19 @@
+// =============================================================================
+// Lighting.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/v8datamodel/Lighting.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "v8datamodel/Lighting2008.h"
 #include "v8datamodel/Sky.h"
 #include "util/RunStateOwner.h"
@@ -22,10 +38,20 @@ namespace RBX
 
 	Reflection::SignalDesc<Lighting, void(bool)> Lighting::event_LightingChanged("LightingChanged", "skyboxChanged");
 
-	static Reflection::PropDescriptor<Lighting, std::string> prop_Time("TimeOfDay", "Data", &Lighting::getTimeStr, &Lighting::setTimeStr, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Lighting, std::string> prop_Time(
+		"TimeOfDay",
+		"Data",
+		&Lighting::getTimeStr,
+		&Lighting::setTimeStr,
+		Reflection::PropertyDescriptor::STANDARD);
 
 	// INFERRED: the object name (desc_ShadowColor) follows the donor desc_ClearColor pattern; the binary records none.
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ShadowColor("ShadowColor", "Appearance", &Lighting::getShadowColor3, &Lighting::setClearColor3, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ShadowColor(
+		"ShadowColor",
+		"Appearance",
+		&Lighting::getShadowColor3,
+		&Lighting::setClearColor3,
+		Reflection::PropertyDescriptor::STANDARD);
 
 	Lighting::Lighting()
 		: ambientTop(209/255.0f, 208/255.0f, 217/255.0f),
@@ -80,7 +106,12 @@ namespace RBX
 
 #ifdef NATIVE_LIGHTING_BRIGHTNESS_PENDING
 	// result. INFERRED: descriptor object name and "Appearance" category follow desc_ShadowColor above.
-	static Reflection::PropDescriptor<Lighting, float> desc_Brightness("Brightness", "Appearance", &Lighting::getBrightness, &Lighting::setBrightness, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Lighting, float> desc_Brightness(
+		"Brightness",
+		"Appearance",
+		&Lighting::getBrightness,
+		&Lighting::setBrightness,
+		Reflection::PropertyDescriptor::STANDARD);
 
 	void Lighting::setBrightness(float value)
 	{
@@ -131,7 +162,12 @@ namespace RBX
 	}
 
 #ifdef LIGHTING_HEADER_DECLARES_GEOGRAPHICLATITUDE
-	static Reflection::PropDescriptor<Lighting, float> prop_GeographicLatitude("GeographicLatitude", "Data", &Lighting::getGeographicLatitude, &Lighting::setGeographicLatitude, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Lighting, float> prop_GeographicLatitude(
+		"GeographicLatitude",
+		"Data",
+		&Lighting::getGeographicLatitude,
+		&Lighting::setGeographicLatitude,
+		Reflection::PropertyDescriptor::STANDARD);
 
 	float Lighting::getGeographicLatitude() const
 	{
@@ -212,7 +248,8 @@ template class std::_String_const_iterator<char,std::char_traits<char>,std::allo
 
 #include "util/Name.h"
 
-namespace RBX {
+namespace RBX
+{
 
 G3D::Color3 Lighting::getAmbient() const
 {
@@ -224,9 +261,24 @@ G3D::Color3 Lighting::getAmbient() const
 namespace RBX
 {
 	// INFERRED: descriptor names and the "Appearance" category follow the donor Lighting pattern; the binary's
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ColorShiftTop("ColorShift_Top", "Appearance", &Lighting::getColorShiftTop, &Lighting::setColorShiftTop, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ColorShiftBottom("ColorShift_Bottom", "Appearance", &Lighting::getColorShiftBottom, &Lighting::setColorShiftBottom, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_Ambient("Ambient", "Appearance", &Lighting::getAmbient, &Lighting::setAmbient, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ColorShiftTop(
+		"ColorShift_Top",
+		"Appearance",
+		&Lighting::getColorShiftTop,
+		&Lighting::setColorShiftTop,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ColorShiftBottom(
+		"ColorShift_Bottom",
+		"Appearance",
+		&Lighting::getColorShiftBottom,
+		&Lighting::setColorShiftBottom,
+		Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_Ambient(
+		"Ambient",
+		"Appearance",
+		&Lighting::getAmbient,
+		&Lighting::setAmbient,
+		Reflection::PropertyDescriptor::STANDARD);
 
 	void Lighting::setColorShiftTop(G3D::Color3 value)
 	{
@@ -273,7 +325,8 @@ namespace RBX
 
 #include <boost/date_time/posix_time/time_formatters.hpp>
 
-namespace RBX {
+namespace RBX
+{
 std::string Lighting::getTimeStr() const
 	{
 		return boost::posix_time::to_simple_string(timeOfDay);

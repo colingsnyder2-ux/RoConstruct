@@ -1,3 +1,19 @@
+// =============================================================================
+// Sky.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Sky.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "v8datamodel/Sky.h"
 
 namespace RBX
@@ -25,7 +41,11 @@ namespace RBX
 	Reflection::BoundProp<TextureId, 1> Sky::prop_SkyFt("SkyboxFt", "Appearance", &Sky::skyFt, Reflection::PropertyDescriptor::STANDARD);
 	Reflection::BoundProp<TextureId, 1> Sky::prop_SkyDn("SkyboxDn", "Appearance", &Sky::skyDn, Reflection::PropertyDescriptor::STANDARD);
 	Reflection::BoundProp<int, 1> Sky::prop_StarCount("StarCount", "Appearance", &Sky::numStars, Reflection::PropertyDescriptor::STANDARD);
-	Reflection::BoundProp<bool, 1> Sky::prop_CelestialBodiesShown("CelestialBodiesShown", "Appearance", &Sky::drawCelestialBodies, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::BoundProp<bool, 1> Sky::prop_CelestialBodiesShown(
+		"CelestialBodiesShown",
+		"Appearance",
+		&Sky::drawCelestialBodies,
+		Reflection::PropertyDescriptor::STANDARD);
 
 #ifdef NATIVE_SKY_PENDING
 	// Needs ContentId::fromAssets(const char*) (proposal for util/ContentProvider.h).

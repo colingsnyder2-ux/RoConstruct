@@ -1,3 +1,19 @@
+// =============================================================================
+// Accoutrement.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/v8datamodel/Accoutrement.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "v8datamodel/Accoutrement.h"
 #include "v8datamodel/ModelInstance.h"
 #include "v8datamodel/Workspace.h"
@@ -41,12 +57,42 @@ namespace RBX
 	template DescribedCreatable<Accoutrement, Instance, sAccoutrement>::DescribedCreatable();
 	template DescribedCreatable<Hat, Accoutrement, sHat>::DescribedCreatable();
 
-	Reflection::PropDescriptor<Accoutrement, G3D::CoordinateFrame> prop_AttachmentPoint("AttachmentPoint", "Appearance", &Accoutrement::getAttachmentPoint, &Accoutrement::setAttachmentPoint, Reflection::PropertyDescriptor::STREAMING);
-	Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentPos("AttachmentPos", "Appearance", &Accoutrement::getAttachmentPos, &Accoutrement::setAttachmentPos, Reflection::PropertyDescriptor::UI);
-	Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentForward("AttachmentForward", "Appearance", &Accoutrement::getAttachmentForward, &Accoutrement::setAttachmentForward, Reflection::PropertyDescriptor::UI);
-	Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentUp("AttachmentUp", "Appearance", &Accoutrement::getAttachmentUp, &Accoutrement::setAttachmentUp, Reflection::PropertyDescriptor::UI);
-	Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentRight("AttachmentRight", "Appearance", &Accoutrement::getAttachmentRight, &Accoutrement::setAttachmentRight, Reflection::PropertyDescriptor::UI);
-	Reflection::PropDescriptor<Accoutrement, int> prop_BackendAccoutrementState("BackendAccoutrementState", "Appearance", &Accoutrement::getBackendAccoutrementState, &Accoutrement::setBackendAccoutrementState, Reflection::PropertyDescriptor::STREAMING);
+	Reflection::PropDescriptor<Accoutrement, G3D::CoordinateFrame> prop_AttachmentPoint(
+		"AttachmentPoint",
+		"Appearance",
+		&Accoutrement::getAttachmentPoint,
+		&Accoutrement::setAttachmentPoint,
+		Reflection::PropertyDescriptor::STREAMING);
+	Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentPos(
+		"AttachmentPos",
+		"Appearance",
+		&Accoutrement::getAttachmentPos,
+		&Accoutrement::setAttachmentPos,
+		Reflection::PropertyDescriptor::UI);
+	Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentForward(
+		"AttachmentForward",
+		"Appearance",
+		&Accoutrement::getAttachmentForward,
+		&Accoutrement::setAttachmentForward,
+		Reflection::PropertyDescriptor::UI);
+	Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentUp(
+		"AttachmentUp",
+		"Appearance",
+		&Accoutrement::getAttachmentUp,
+		&Accoutrement::setAttachmentUp,
+		Reflection::PropertyDescriptor::UI);
+	Reflection::PropDescriptor<Accoutrement, G3D::Vector3> prop_AttachmentRight(
+		"AttachmentRight",
+		"Appearance",
+		&Accoutrement::getAttachmentRight,
+		&Accoutrement::setAttachmentRight,
+		Reflection::PropertyDescriptor::UI);
+	Reflection::PropDescriptor<Accoutrement, int> prop_BackendAccoutrementState(
+		"BackendAccoutrementState",
+		"Appearance",
+		&Accoutrement::getBackendAccoutrementState,
+		&Accoutrement::setBackendAccoutrementState,
+		Reflection::PropertyDescriptor::STREAMING);
 
 	Accoutrement::Accoutrement()
 		: backendAccoutrementState(NOTHING)
@@ -444,13 +490,17 @@ template class std::vector<RBX::Listener<RBX::Workspace,RBX::DrawChanged> *,std:
 
 #include "util/Name.h"
 
-namespace RBX {
+namespace RBX
+{
 
 // INFERRED: noinline like downFrom_InCharacter in Accoutrement.cpp; the exe calls 005b1e50 from setDesiredState, joined into one TU MSVC inlines it.
 __declspec(noinline) void Accoutrement::upTo_InCharacter()
 {
 	characterChildAdded = Instance::event_childAdded.connect(getParent(), boost::bind(&Accoutrement::onEvent_AddedBackend, this, _1), 10);
-	characterChildRemoved = Instance::event_childRemoved.connect(getParent(), boost::bind(&Accoutrement::onEvent_RemovedBackend, this, _1), 10);
+	characterChildRemoved = Instance::event_childRemoved.connect(
+		getParent(),
+		boost::bind(&Accoutrement::onEvent_RemovedBackend, this, _1),
+		10);
 }
 
 }

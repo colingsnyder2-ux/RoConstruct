@@ -1,3 +1,19 @@
+// =============================================================================
+// DataModel.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/v8datamodel/DataModel.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/ChangeHistoryService.h"
 #include "util/RunStateOwner.h"
@@ -47,7 +63,8 @@ namespace RBX
 
 #include "util/Name.h"
 
-namespace RBX {
+namespace RBX
+{
 
 boost::shared_ptr<boost::recursive_mutex> __cdecl DataModel::getMutex(Instance* context)
 {
@@ -69,7 +86,8 @@ boost::shared_ptr<boost::recursive_mutex> __cdecl DataModel::getMutex(Instance* 
 
 #include "v8tree/Service.h"
 
-namespace RBX {
+namespace RBX
+{
 	bool ServiceProvider::askAddChild(const Instance* instance) const
 	{
 		return dynamic_cast<const Service*>(instance) != NULL;
@@ -78,11 +96,12 @@ namespace RBX {
 
 #include "GuiHud2008/GuiBuilder2008.h"
 
-namespace RBX {
+namespace RBX
+{
 void DataModel::buildGui(Adorn* adorn)
 {
-    GuiBuilder builder;
-    builder.buildGui(adorn, this, workspace.get());
+	GuiBuilder builder;
+	builder.buildGui(adorn, this, workspace.get());
 }
 }
 
@@ -272,28 +291,30 @@ namespace RBX
 	}
 }
 
-namespace RBX {
+namespace RBX
+{
 extern template boost::shared_ptr<DataModel> Creatable<Instance>::create<DataModel>();
 
 boost::shared_ptr<DataModel> DataModel::createDataModel(bool start) {
-    boost::shared_ptr<DataModel> result = Creatable<Instance>::create<DataModel>();
-    Lock lock(result);
-    result->initializeContents(start);
-    result->renderEnabled = true;
-    return result;
+	boost::shared_ptr<DataModel> result = Creatable<Instance>::create<DataModel>();
+	Lock lock(result);
+	result->initializeContents(start);
+	result->renderEnabled = true;
+	return result;
 }
 }
 
 double RBX::DataModel::getDutyCycle() const { return runService->dutyCycle(); }
 
-namespace RBX {
+namespace RBX
+{
 DataModel::Lock::Lock(const DataModel* dataModel) : lock(0) { doLock(dataModel); }
 DataModel::Lock::Lock(boost::shared_ptr<const DataModel> dataModel) : lock(0) { doLock(dataModel.get()); }
 void DataModel::Lock::doLock(const DataModel* dataModel) {
-    if (dataModel) {
-        mutex = dataModel->mutex;
-        lock = new boost::recursive_mutex::scoped_lock(*mutex);
-    }
+	if (dataModel) {
+		mutex = dataModel->mutex;
+		lock = new boost::recursive_mutex::scoped_lock(*mutex);
+	}
 }
 DataModel::Lock::~Lock() { delete lock; }
 }

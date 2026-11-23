@@ -1,3 +1,19 @@
+// =============================================================================
+// netaddress.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/netaddress.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #line 1 ".\\G3Dcpp\\NetAddress.cpp"
 /**
  @file NetMessage.cpp
@@ -13,125 +29,126 @@
 #include "G3D/stringutils.h"
 
 #if defined(G3D_LINUX) || defined(G3D_OSX)
-    #include <unistd.h>
-    #include <errno.h>
-    #include <sys/socket.h>
-    #include <netinet/in.h>
-    #include <arpa/inet.h>
-    #include <netdb.h>
-    #include <netinet/tcp.h>
-    #define _alloca alloca
+	#include <unistd.h>
+	#include <errno.h>
+	#include <sys/socket.h>
+	#include <netinet/in.h>
+	#include <arpa/inet.h>
+	#include <netdb.h>
+	#include <netinet/tcp.h>
+	#define _alloca alloca
 #endif
 
-namespace G3D {
+namespace G3D
+{
 
 NetAddress::NetAddress() {
-    memset(&addr, 0, sizeof(addr));
+	memset(&addr, 0, sizeof(addr));
 }
 
 void NetAddress::init(uint32 host, uint16 port) {
-    if ((host != 0) || (port != 0)) {
-        addr.sin_family      = AF_INET;
-        addr.sin_port        = htons(port);
-        if (host == 0) {
-            host = INADDR_ANY;
-        }
-        addr.sin_addr.s_addr = htonl(host);
-    } else {
-        memset(&addr, 0, sizeof(addr));
-    }
+	if ((host != 0) || (port != 0)) {
+		addr.sin_family      = AF_INET;
+		addr.sin_port        = htons(port);
+		if (host == 0) {
+			host = INADDR_ANY;
+		}
+		addr.sin_addr.s_addr = htonl(host);
+	} else {
+		memset(&addr, 0, sizeof(addr));
+	}
 }
 
 NetAddress::NetAddress(
-    const std::string&          hostname,
-    uint16                      port) {
-    init(hostname, port);
+	const std::string&          hostname,
+	uint16                      port) {
+	init(hostname, port);
 }
 
 void NetAddress::init(
-    const std::string&          hostname,
-    uint16                      port) {
+	const std::string&          hostname,
+	uint16                      port) {
 
-    uint32 addr;
+	uint32 addr;
 
-    if (hostname == "") {
-        addr = INADDR_NONE;
-    } else {
-        addr = inet_addr(hostname.c_str());
-    }
+	if (hostname == "") {
+		addr = INADDR_NONE;
+	} else {
+		addr = inet_addr(hostname.c_str());
+	}
 
 	// The address wasn't in numeric form, resolve it
-    if (addr == INADDR_NONE) {
-        // Get the IP address of the server and store it in host
-        struct hostent* host = gethostbyname(hostname.c_str());
+	if (addr == INADDR_NONE) {
+		// Get the IP address of the server and store it in host
+		struct hostent* host = gethostbyname(hostname.c_str());
 
-        if (host == NULL) {
-            init(0, 0);
-            return;
-        }
+		if (host == NULL) {
+			init(0, 0);
+			return;
+		}
 
-        memcpy(&addr, host->h_addr_list[0], host->h_length);
-    }
+		memcpy(&addr, host->h_addr_list[0], host->h_length);
+	}
 
-    if (addr != INADDR_NONE) {
-        addr = ntohl(addr);
-    }
-    init(addr, port);
+	if (addr != INADDR_NONE) {
+		addr = ntohl(addr);
+	}
+	init(addr, port);
 }
 
 NetAddress::NetAddress(uint32 hostip, uint16 port) {
-    init(hostip, port);
+	init(hostip, port);
 }
 
 NetAddress NetAddress::broadcastAddress(uint16 port) {
-    return NetAddress(0xFFFFFFFF, port);
+	return NetAddress(0xFFFFFFFF, port);
 }
 
 NetAddress::NetAddress(const std::string& hostnameAndPort) {
 
-    Array<std::string> part = stringSplit(hostnameAndPort, ':');
+	Array<std::string> part = stringSplit(hostnameAndPort, ':');
 
-    debugAssert(part.length() == 2);
-    init(part[0], atoi(part[1].c_str()));
+	debugAssert(part.length() == 2);
+	init(part[0], atoi(part[1].c_str()));
 }
 
 NetAddress::NetAddress(const SOCKADDR_IN& a) {
-    addr = a;
+	addr = a;
 }
 
 NetAddress::NetAddress(const struct in_addr& addr, uint16 port) {
-    #ifdef G3D_WIN32
-        init(ntohl(addr.S_un.S_addr), port);
-    #else
-        init(htonl(addr.s_addr), port);
-    #endif
+	#ifdef G3D_WIN32
+		init(ntohl(addr.S_un.S_addr), port);
+	#else
+		init(htonl(addr.s_addr), port);
+	#endif
 }
 
 void NetAddress::serialize(class BinaryOutput& b) const {
-    b.writeUInt32(ip());
-    b.writeUInt16(port());
+	b.writeUInt32(ip());
+	b.writeUInt16(port());
 }
 
 void NetAddress::deserialize(class BinaryInput& b) {
-    uint32 i;
-    uint16 p;
+	uint32 i;
+	uint16 p;
 
-    i = b.readUInt32();
-    p = b.readUInt16();
+	i = b.readUInt32();
+	p = b.readUInt16();
 
-    init(i, p);
+	init(i, p);
 }
 
 bool NetAddress::ok() const {
-    return addr.sin_family != 0;
+	return addr.sin_family != 0;
 }
 
 std::string NetAddress::ipString() const {
-    return format("%s", inet_ntoa(*(in_addr*)&(addr.sin_addr)));
+	return format("%s", inet_ntoa(*(in_addr*)&(addr.sin_addr)));
 }
 
 std::string NetAddress::toString() const {
-    return ipString() + format(":%d", ntohs(addr.sin_port));
+	return ipString() + format(":%d", ntohs(addr.sin_port));
 }
 
 }

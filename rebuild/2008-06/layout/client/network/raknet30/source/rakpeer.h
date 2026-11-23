@@ -1,3 +1,19 @@
+// =============================================================================
+// rakpeer.h
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/network/raknet30/source/rakpeer.h
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 /// \file
 /// \brief The main class used for data transmission and most of RakNet's functionality.
 ///
@@ -62,7 +78,11 @@ public:
 	/// \param[in] socketDescriptors An array of SocketDescriptor structures to force RakNet to listen on a particular IP address or port (or both).  Each SocketDescriptor will represent one unique socket.  Do not pass redundant structures.  To listen on a specific port, you can pass SocketDescriptor(myPort,0); such as for a server.  For a client, it is usually OK to just pass SocketDescriptor();
 	/// \param[in] socketDescriptorCount The size of the \a socketDescriptors array.  Pass 1 if you are not sure what to pass.
 	/// \return False on failure (can't create socket or thread), true on success.
-	bool Startup( unsigned short maxConnections, int _threadSleepTimer, SocketDescriptor *socketDescriptors, unsigned socketDescriptorCount );
+	bool Startup(
+		unsigned short maxConnections,
+		int _threadSleepTimer,
+		SocketDescriptor *socketDescriptors,
+		unsigned socketDescriptorCount);
 
 	/// Secures connections though a combination of SHA1, AES128, SYN Cookies, and RSA to prevent connection spoofing, replay attacks, data eavesdropping, packet tampering, and MitM attacks.
 	/// There is a significant amount of processing and a slight amount of bandwidth overhead for this feature.
@@ -116,7 +136,12 @@ public:
 	/// \param[in] passwordDataLength The length in bytes of passwordData
 	/// \param[in] connectionSocketIndex Index into the array of socket descriptors passed to socketDescriptors in RakPeer::Startup() to send on.
 	/// \return True on successful initiation. False on incorrect parameters, internal error, or too many existing peers.  Returning true does not mean you connected!
-	bool Connect( const char* host, unsigned short remotePort, const char *passwordData, int passwordDataLength, unsigned connectionSocketIndex=0 );
+	bool Connect(
+		const char* host,
+		unsigned short remotePort,
+		const char *passwordData,
+		int passwordDataLength,
+		unsigned connectionSocketIndex=0);
 
 	/// \brief Stops the network threads and closes all connections.
 	/// \param[in] blockDuration How long, in milliseconds, you should wait for all remaining messages to go out, including ID_DISCONNECTION_NOTIFICATION.  If 0, it doesn't wait at all.
@@ -143,7 +168,14 @@ public:
 	/// \param[in] systemAddress Who to send this packet to, or in the case of broadcasting who not to send it to.  Use UNASSIGNED_SYSTEM_ADDRESS to specify none
 	/// \param[in] broadcast True to send this packet to all connected systems. If true, then systemAddress specifies who not to send the packet to.
 	/// \return False if we are not connected to the specified recipient.  True otherwise
-	bool Send( const char *data, const int length, PacketPriority priority, PacketReliability reliability, char orderingChannel, SystemAddress systemAddress, bool broadcast );
+	bool Send(
+		const char *data,
+		const int length,
+		PacketPriority priority,
+		PacketReliability reliability,
+		char orderingChannel,
+		SystemAddress systemAddress,
+		bool broadcast);
 
 	/// Sends a block of data to the specified system that you are connected to.  Same as the above version, but takes a BitStream as input.
 	/// \param[in] bitStream The bitstream to send
@@ -153,7 +185,13 @@ public:
 	/// \param[in] systemAddress Who to send this packet to, or in the case of broadcasting who not to send it to.  Use UNASSIGNED_SYSTEM_ADDRESS to specify none
 	/// \param[in] broadcast True to send this packet to all connected systems. If true, then systemAddress specifies who not to send the packet to.
 	/// \return False if we are not connected to the specified recipient.  True otherwise
-	bool Send( const RakNet::BitStream * bitStream, PacketPriority priority, PacketReliability reliability, char orderingChannel, SystemAddress systemAddress, bool broadcast );
+	bool Send(
+		const RakNet::BitStream * bitStream,
+		PacketPriority priority,
+		PacketReliability reliability,
+		char orderingChannel,
+		SystemAddress systemAddress,
+		bool broadcast);
 
 	/// Gets a message from the incoming message queue.
 	/// Use DeallocatePacket() to deallocate the message after you are done with it.
@@ -212,7 +250,18 @@ public:
 	/// \param[in] networkID For static functions, pass UNASSIGNED_NETWORK_ID.  For member functions, you must derive from NetworkIDObject and pass the value returned by NetworkIDObject::GetNetworkID for that object.
 	/// \param[in] replyFromTarget If 0, this function is non-blocking.  Otherwise it will block while waiting for a reply from the target procedure, which should be remotely written to RPCParameters::replyToSender and copied to replyFromTarget.  The block will return early on disconnect or if the sent packet is unreliable and more than 3X the ping has elapsed.
 	/// \return True on a successful packet send (this does not indicate the recipient performed the call), false on failure
-	bool RPC( const char* uniqueID, const char *data, unsigned int bitLength, PacketPriority priority, PacketReliability reliability, char orderingChannel, SystemAddress systemAddress, bool broadcast, RakNetTime *includedTimestamp, NetworkID networkID, RakNet::BitStream *replyFromTarget );
+	bool RPC(
+		const char* uniqueID,
+		const char *data,
+		unsigned int bitLength,
+		PacketPriority priority,
+		PacketReliability reliability,
+		char orderingChannel,
+		SystemAddress systemAddress,
+		bool broadcast,
+		RakNetTime *includedTimestamp,
+		NetworkID networkID,
+		RakNet::BitStream *replyFromTarget);
 
 	/// \ingroup RAKNET_RPC
 	/// Calls a C function on the remote system that was already registered using RegisterAsRemoteProcedureCall.
@@ -231,7 +280,17 @@ public:
 	/// \param[in] networkID For static functions, pass UNASSIGNED_NETWORK_ID.  For member functions, you must derive from NetworkIDObject and pass the value returned by NetworkIDObject::GetNetworkID for that object.
 	/// \param[in] replyFromTarget If 0, this function is non-blocking.  Otherwise it will block while waiting for a reply from the target procedure, which should be remotely written to RPCParameters::replyToSender and copied to replyFromTarget.  The block will return early on disconnect or if the sent packet is unreliable and more than 3X the ping has elapsed.
 	/// \return True on a successful packet send (this does not indicate the recipient performed the call), false on failure
-	bool RPC( const char* uniqueID, const RakNet::BitStream *bitStream, PacketPriority priority, PacketReliability reliability, char orderingChannel, SystemAddress systemAddress, bool broadcast, RakNetTime *includedTimestamp, NetworkID networkID, RakNet::BitStream *replyFromTarget );
+	bool RPC(
+		const char* uniqueID,
+		const RakNet::BitStream *bitStream,
+		PacketPriority priority,
+		PacketReliability reliability,
+		char orderingChannel,
+		SystemAddress systemAddress,
+		bool broadcast,
+		RakNetTime *includedTimestamp,
+		NetworkID networkID,
+		RakNet::BitStream *replyFromTarget);
 
 	// -------------------------------------------------------------------------------------------- Connection Management Functions--------------------------------------------------------------------------------------------
 	/// Close the connection to another host (if we initiated the connection it will disconnect, if they did it will kick them out).
@@ -327,7 +386,7 @@ public:
 
 	/// Set the time, in MS, to use before considering ourselves disconnected after not being able to deliver a reliable message.
 	/// Default time is 10,000 or 10 seconds in release and 30,000 or 30 seconds in debug.
-    /// \param[in] timeMS Time, in MS
+	/// \param[in] timeMS Time, in MS
 	/// \param[in] target Which system to do this for
 	void SetTimeoutTime( RakNetTime timeMS, const SystemAddress target );
 
@@ -464,7 +523,7 @@ public:
 	/// \param[in] maxSendBPS Maximum bits per second to send.  Packetloss grows linearly.  0 to disable. (CURRENTLY BROKEN - ALWAYS DISABLED)
 	/// \param[in] minExtraPing The minimum time to delay sends.
 	/// \param[in] extraPingVariance The additional random time to delay sends.
-    void ApplyNetworkSimulator( double maxSendBPS, unsigned short minExtraPing, unsigned short extraPingVariance);
+	void ApplyNetworkSimulator( double maxSendBPS, unsigned short minExtraPing, unsigned short extraPingVariance);
 
 	/// Returns if you previously called ApplyNetworkSimulator
 	/// \return If you previously called ApplyNetworkSimulator
@@ -520,12 +579,24 @@ protected:
 #ifdef _WIN32
 	// friend unsigned __stdcall RecvFromNetworkLoop(LPVOID arguments);
 	friend void __stdcall ProcessPortUnreachable( const unsigned int binaryAddress, const unsigned short port, RakPeer *rakPeer );
-	friend void __stdcall ProcessNetworkPacket( const unsigned int binaryAddress, const unsigned short port, const char *data, const int length, RakPeer *rakPeer, unsigned connectionSocketIndex );
+	friend void __stdcall ProcessNetworkPacket(
+		const unsigned int binaryAddress,
+		const unsigned short port,
+		const char *data,
+		const int length,
+		RakPeer *rakPeer,
+		unsigned connectionSocketIndex);
 	friend unsigned __stdcall UpdateNetworkLoop( LPVOID arguments );
 #else
 	// friend void*  RecvFromNetworkLoop( void*  arguments );
 	friend void ProcessPortUnreachable( const unsigned int binaryAddress, const unsigned short port, RakPeer *rakPeer );
-	friend void ProcessNetworkPacket( const unsigned int binaryAddress, const unsigned short port, const char *data, const int length, RakPeer *rakPeer, unsigned connectionSocketIndex );
+	friend void ProcessNetworkPacket(
+		const unsigned int binaryAddress,
+		const unsigned short port,
+		const char *data,
+		const int length,
+		RakPeer *rakPeer,
+		unsigned connectionSocketIndex);
 	friend void* UpdateNetworkLoop( void* arguments );
 #endif
 
@@ -535,13 +606,22 @@ protected:
 	int GetIndexFromSystemAddress( const SystemAddress systemAddress, bool calledFromNetworkThread );
 
 	//void RemoveFromRequestedConnectionsList( const SystemAddress systemAddress );
-	bool SendConnectionRequest( const char* host, unsigned short remotePort, const char *passwordData, int passwordDataLength, unsigned connectionSocketIndex );
+	bool SendConnectionRequest(
+		const char* host,
+		unsigned short remotePort,
+		const char *passwordData,
+		int passwordDataLength,
+		unsigned connectionSocketIndex);
 	///Get the reliability layer associated with a systemAddress.
 	/// \param[in] systemAddress The player identifier
 	/// \return 0 if none
 	RemoteSystemStruct *GetRemoteSystemFromSystemAddress( const SystemAddress systemAddress, bool calledFromNetworkThread, bool onlyActive ) const;
 	///Parse out a connection request packet
-	void ParseConnectionRequestPacket( RakPeer::RemoteSystemStruct *remoteSystem, SystemAddress systemAddress, const char *data, int byteSize);
+	void ParseConnectionRequestPacket(
+		RakPeer::RemoteSystemStruct *remoteSystem,
+		SystemAddress systemAddress,
+		const char *data,
+		int byteSize);
 	///When we get a connection request from an ip / port, accept it unless full
 	void OnConnectionRequest( RakPeer::RemoteSystemStruct *remoteSystem, unsigned char *AESKey, bool setAESKey );
 	///Send a reliable disconnect packet to this player and disconnect them when it is delivered
@@ -549,7 +629,10 @@ protected:
 	///Returns how many remote systems initiated a connection to us
 	unsigned short GetNumberOfRemoteInitiatedConnections( void ) const;
 	///Get a free remote system from the list and assign our systemAddress to it.  Should only be called from the update thread - not the user thread
-	RemoteSystemStruct * AssignSystemAddressToRemoteSystemList( const SystemAddress systemAddress, RemoteSystemStruct::ConnectMode connectionMode, unsigned connectionSocketIndex );
+	RemoteSystemStruct * AssignSystemAddressToRemoteSystemList(
+		const SystemAddress systemAddress,
+		RemoteSystemStruct::ConnectMode connectionMode,
+		unsigned connectionSocketIndex);
 	///An incoming packet has a timestamp, so adjust it to be relative to this system
 	void ShiftIncomingTimestamp( unsigned char *data, SystemAddress systemAddress ) const;
 	///Get the most probably accurate clock differential for a certain player
@@ -716,9 +799,30 @@ protected:
 	void PingInternal( const SystemAddress target, bool performImmediate, PacketReliability reliability );
 	bool ValidSendTarget(SystemAddress systemAddress, bool broadcast);
 	// This stores the user send calls to be handled by the update thread.  This way we don't have thread contention over systemAddresss
-	void CloseConnectionInternal( const SystemAddress target, bool sendDisconnectionNotification, bool performImmediate, unsigned char orderingChannel );
-	void SendBuffered( const char *data, int numberOfBitsToSend, PacketPriority priority, PacketReliability reliability, char orderingChannel, SystemAddress systemAddress, bool broadcast, RemoteSystemStruct::ConnectMode connectionMode );
-	bool SendImmediate( char *data, int numberOfBitsToSend, PacketPriority priority, PacketReliability reliability, char orderingChannel, SystemAddress systemAddress, bool broadcast, bool useCallerDataAllocation, RakNetTimeNS currentTime );
+	void CloseConnectionInternal(
+		const SystemAddress target,
+		bool sendDisconnectionNotification,
+		bool performImmediate,
+		unsigned char orderingChannel);
+	void SendBuffered(
+		const char *data,
+		int numberOfBitsToSend,
+		PacketPriority priority,
+		PacketReliability reliability,
+		char orderingChannel,
+		SystemAddress systemAddress,
+		bool broadcast,
+		RemoteSystemStruct::ConnectMode connectionMode);
+	bool SendImmediate(
+		char *data,
+		int numberOfBitsToSend,
+		PacketPriority priority,
+		PacketReliability reliability,
+		char orderingChannel,
+		SystemAddress systemAddress,
+		bool broadcast,
+		bool useCallerDataAllocation,
+		RakNetTimeNS currentTime);
 	//bool HandleBufferedRPC(BufferedCommandStruct *bcs, RakNetTime time);
 	void ClearBufferedCommands(void);
 	void ClearRequestedConnectionList(void);

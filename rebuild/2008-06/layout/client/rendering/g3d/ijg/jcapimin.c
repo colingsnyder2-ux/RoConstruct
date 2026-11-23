@@ -1,3 +1,19 @@
+// =============================================================================
+// jcapimin.c
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/ijg/jcapimin.c
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 /*
  * jcapimin.c
  *
@@ -33,9 +49,9 @@ jpeg_CreateCompress (j_compress_ptr cinfo, int version, size_t structsize)
   /* Guard against version mismatches between library and caller. */
   cinfo->mem = NULL;		/* so jpeg_destroy knows mem mgr not called */
   if (version != JPEG_LIB_VERSION)
-    ERREXIT2(cinfo, JERR_BAD_LIB_VERSION, JPEG_LIB_VERSION, version);
+	ERREXIT2(cinfo, JERR_BAD_LIB_VERSION, JPEG_LIB_VERSION, version);
   if (structsize != SIZEOF(struct jpeg_compress_struct))
-    ERREXIT2(cinfo, JERR_BAD_STRUCT_SIZE,
+	ERREXIT2(cinfo, JERR_BAD_STRUCT_SIZE,
 	     (int) SIZEOF(struct jpeg_compress_struct), (int) structsize);
 
   /* For debugging purposes, we zero the whole master structure.
@@ -45,11 +61,11 @@ jpeg_CreateCompress (j_compress_ptr cinfo, int version, size_t structsize)
    * complain here.
    */
   {
-    struct jpeg_error_mgr * err = cinfo->err;
-    void * client_data = cinfo->client_data; /* ignore Purify complaint here */
-    MEMZERO(cinfo, SIZEOF(struct jpeg_compress_struct));
-    cinfo->err = err;
-    cinfo->client_data = client_data;
+	struct jpeg_error_mgr * err = cinfo->err;
+	void * client_data = cinfo->client_data; /* ignore Purify complaint here */
+	MEMZERO(cinfo, SIZEOF(struct jpeg_compress_struct));
+	cinfo->err = err;
+	cinfo->client_data = client_data;
   }
   cinfo->is_decompressor = FALSE;
 
@@ -63,11 +79,11 @@ jpeg_CreateCompress (j_compress_ptr cinfo, int version, size_t structsize)
   cinfo->comp_info = NULL;
 
   for (i = 0; i < NUM_QUANT_TBLS; i++)
-    cinfo->quant_tbl_ptrs[i] = NULL;
+	cinfo->quant_tbl_ptrs[i] = NULL;
 
   for (i = 0; i < NUM_HUFF_TBLS; i++) {
-    cinfo->dc_huff_tbl_ptrs[i] = NULL;
-    cinfo->ac_huff_tbl_ptrs[i] = NULL;
+	cinfo->dc_huff_tbl_ptrs[i] = NULL;
+	cinfo->ac_huff_tbl_ptrs[i] = NULL;
   }
 
   cinfo->script_space = NULL;
@@ -119,14 +135,14 @@ jpeg_suppress_tables (j_compress_ptr cinfo, boolean suppress)
   JHUFF_TBL * htbl;
 
   for (i = 0; i < NUM_QUANT_TBLS; i++) {
-    if ((qtbl = cinfo->quant_tbl_ptrs[i]) != NULL)
+	if ((qtbl = cinfo->quant_tbl_ptrs[i]) != NULL)
       qtbl->sent_table = suppress;
   }
 
   for (i = 0; i < NUM_HUFF_TBLS; i++) {
-    if ((htbl = cinfo->dc_huff_tbl_ptrs[i]) != NULL)
+	if ((htbl = cinfo->dc_huff_tbl_ptrs[i]) != NULL)
       htbl->sent_table = suppress;
-    if ((htbl = cinfo->ac_huff_tbl_ptrs[i]) != NULL)
+	if ((htbl = cinfo->ac_huff_tbl_ptrs[i]) != NULL)
       htbl->sent_table = suppress;
   }
 }
@@ -145,16 +161,16 @@ jpeg_finish_compress (j_compress_ptr cinfo)
 
   if (cinfo->global_state == CSTATE_SCANNING ||
       cinfo->global_state == CSTATE_RAW_OK) {
-    /* Terminate first pass */
-    if (cinfo->next_scanline < cinfo->image_height)
+	/* Terminate first pass */
+	if (cinfo->next_scanline < cinfo->image_height)
       ERREXIT(cinfo, JERR_TOO_LITTLE_DATA);
-    (*cinfo->master->finish_pass) (cinfo);
+	(*cinfo->master->finish_pass) (cinfo);
   } else if (cinfo->global_state != CSTATE_WRCOEFS)
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
+	ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
   /* Perform any remaining passes */
   while (! cinfo->master->is_last_pass) {
-    (*cinfo->master->prepare_for_pass) (cinfo);
-    for (iMCU_row = 0; iMCU_row < cinfo->total_iMCU_rows; iMCU_row++) {
+	(*cinfo->master->prepare_for_pass) (cinfo);
+	for (iMCU_row = 0; iMCU_row < cinfo->total_iMCU_rows; iMCU_row++) {
       if (cinfo->progress != NULL) {
 	cinfo->progress->pass_counter = (long) iMCU_row;
 	cinfo->progress->pass_limit = (long) cinfo->total_iMCU_rows;
@@ -165,8 +181,8 @@ jpeg_finish_compress (j_compress_ptr cinfo)
        */
       if (! (*cinfo->coef->compress_data) (cinfo, (JSAMPIMAGE) NULL))
 	ERREXIT(cinfo, JERR_CANT_SUSPEND);
-    }
-    (*cinfo->master->finish_pass) (cinfo);
+	}
+	(*cinfo->master->finish_pass) (cinfo);
   }
   /* Write EOI, do final cleanup */
   (*cinfo->marker->write_file_trailer) (cinfo);
@@ -192,13 +208,13 @@ jpeg_write_marker (j_compress_ptr cinfo, int marker,
       (cinfo->global_state != CSTATE_SCANNING &&
        cinfo->global_state != CSTATE_RAW_OK &&
        cinfo->global_state != CSTATE_WRCOEFS))
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
+	ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
 
   (*cinfo->marker->write_marker_header) (cinfo, marker, datalen);
   write_marker_byte = cinfo->marker->write_marker_byte;	/* copy for speed */
   while (datalen--) {
-    (*write_marker_byte) (cinfo, *dataptr);
-    dataptr++;
+	(*write_marker_byte) (cinfo, *dataptr);
+	dataptr++;
   }
 }
 
@@ -211,7 +227,7 @@ jpeg_write_m_header (j_compress_ptr cinfo, int marker, unsigned int datalen)
       (cinfo->global_state != CSTATE_SCANNING &&
        cinfo->global_state != CSTATE_RAW_OK &&
        cinfo->global_state != CSTATE_WRCOEFS))
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
+	ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
 
   (*cinfo->marker->write_marker_header) (cinfo, marker, datalen);
 }
@@ -247,7 +263,7 @@ GLOBAL(void)
 jpeg_write_tables (j_compress_ptr cinfo)
 {
   if (cinfo->global_state != CSTATE_START)
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
+	ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
 
   /* (Re)initialize error mgr and destination modules */
   (*cinfo->err->reset_error_mgr) ((j_common_ptr) cinfo);

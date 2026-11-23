@@ -1,3 +1,19 @@
+// =============================================================================
+// jccolor.c
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/ijg/jccolor.c
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 /*
  * jccolor.c
  *
@@ -88,25 +104,25 @@ rgb_ycc_start (j_compress_ptr cinfo)
 
   /* Allocate and fill in the conversion tables. */
   cconvert->rgb_ycc_tab = rgb_ycc_tab = (INT32 *)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
+	(*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
 				(TABLE_SIZE * SIZEOF(INT32)));
 
   for (i = 0; i <= MAXJSAMPLE; i++) {
-    rgb_ycc_tab[i+R_Y_OFF] = FIX(0.29900) * i;
-    rgb_ycc_tab[i+G_Y_OFF] = FIX(0.58700) * i;
-    rgb_ycc_tab[i+B_Y_OFF] = FIX(0.11400) * i     + ONE_HALF;
-    rgb_ycc_tab[i+R_CB_OFF] = (-FIX(0.16874)) * i;
-    rgb_ycc_tab[i+G_CB_OFF] = (-FIX(0.33126)) * i;
-    /* We use a rounding fudge-factor of 0.5-epsilon for Cb and Cr.
+	rgb_ycc_tab[i+R_Y_OFF] = FIX(0.29900) * i;
+	rgb_ycc_tab[i+G_Y_OFF] = FIX(0.58700) * i;
+	rgb_ycc_tab[i+B_Y_OFF] = FIX(0.11400) * i     + ONE_HALF;
+	rgb_ycc_tab[i+R_CB_OFF] = (-FIX(0.16874)) * i;
+	rgb_ycc_tab[i+G_CB_OFF] = (-FIX(0.33126)) * i;
+	/* We use a rounding fudge-factor of 0.5-epsilon for Cb and Cr.
      * This ensures that the maximum output will round to MAXJSAMPLE
      * not MAXJSAMPLE+1, and thus that we don't have to range-limit.
      */
-    rgb_ycc_tab[i+B_CB_OFF] = FIX(0.50000) * i    + CBCR_OFFSET + ONE_HALF-1;
+	rgb_ycc_tab[i+B_CB_OFF] = FIX(0.50000) * i    + CBCR_OFFSET + ONE_HALF-1;
 /*  B=>Cb and R=>Cr tables are the same
     rgb_ycc_tab[i+R_CR_OFF] = FIX(0.50000) * i    + CBCR_OFFSET + ONE_HALF-1;
 */
-    rgb_ycc_tab[i+G_CR_OFF] = (-FIX(0.41869)) * i;
-    rgb_ycc_tab[i+B_CR_OFF] = (-FIX(0.08131)) * i;
+	rgb_ycc_tab[i+G_CR_OFF] = (-FIX(0.41869)) * i;
+	rgb_ycc_tab[i+B_CR_OFF] = (-FIX(0.08131)) * i;
   }
 }
 
@@ -136,12 +152,12 @@ rgb_ycc_convert (j_compress_ptr cinfo,
   JDIMENSION num_cols = cinfo->image_width;
 
   while (--num_rows >= 0) {
-    inptr = *input_buf++;
-    outptr0 = output_buf[0][output_row];
-    outptr1 = output_buf[1][output_row];
-    outptr2 = output_buf[2][output_row];
-    output_row++;
-    for (col = 0; col < num_cols; col++) {
+	inptr = *input_buf++;
+	outptr0 = output_buf[0][output_row];
+	outptr1 = output_buf[1][output_row];
+	outptr2 = output_buf[2][output_row];
+	output_row++;
+	for (col = 0; col < num_cols; col++) {
       r = GETJSAMPLE(inptr[RGB_RED]);
       g = GETJSAMPLE(inptr[RGB_GREEN]);
       b = GETJSAMPLE(inptr[RGB_BLUE]);
@@ -163,7 +179,7 @@ rgb_ycc_convert (j_compress_ptr cinfo,
       outptr2[col] = (JSAMPLE)
 		((ctab[r+R_CR_OFF] + ctab[g+G_CR_OFF] + ctab[b+B_CR_OFF])
 		 >> SCALEBITS);
-    }
+	}
   }
 }
 
@@ -190,10 +206,10 @@ rgb_gray_convert (j_compress_ptr cinfo,
   JDIMENSION num_cols = cinfo->image_width;
 
   while (--num_rows >= 0) {
-    inptr = *input_buf++;
-    outptr = output_buf[0][output_row];
-    output_row++;
-    for (col = 0; col < num_cols; col++) {
+	inptr = *input_buf++;
+	outptr = output_buf[0][output_row];
+	output_row++;
+	for (col = 0; col < num_cols; col++) {
       r = GETJSAMPLE(inptr[RGB_RED]);
       g = GETJSAMPLE(inptr[RGB_GREEN]);
       b = GETJSAMPLE(inptr[RGB_BLUE]);
@@ -202,7 +218,7 @@ rgb_gray_convert (j_compress_ptr cinfo,
       outptr[col] = (JSAMPLE)
 		((ctab[r+R_Y_OFF] + ctab[g+G_Y_OFF] + ctab[b+B_Y_OFF])
 		 >> SCALEBITS);
-    }
+	}
   }
 }
 
@@ -228,13 +244,13 @@ cmyk_ycck_convert (j_compress_ptr cinfo,
   JDIMENSION num_cols = cinfo->image_width;
 
   while (--num_rows >= 0) {
-    inptr = *input_buf++;
-    outptr0 = output_buf[0][output_row];
-    outptr1 = output_buf[1][output_row];
-    outptr2 = output_buf[2][output_row];
-    outptr3 = output_buf[3][output_row];
-    output_row++;
-    for (col = 0; col < num_cols; col++) {
+	inptr = *input_buf++;
+	outptr0 = output_buf[0][output_row];
+	outptr1 = output_buf[1][output_row];
+	outptr2 = output_buf[2][output_row];
+	outptr3 = output_buf[3][output_row];
+	output_row++;
+	for (col = 0; col < num_cols; col++) {
       r = MAXJSAMPLE - GETJSAMPLE(inptr[0]);
       g = MAXJSAMPLE - GETJSAMPLE(inptr[1]);
       b = MAXJSAMPLE - GETJSAMPLE(inptr[2]);
@@ -258,7 +274,7 @@ cmyk_ycck_convert (j_compress_ptr cinfo,
       outptr2[col] = (JSAMPLE)
 		((ctab[r+R_CR_OFF] + ctab[g+G_CR_OFF] + ctab[b+B_CR_OFF])
 		 >> SCALEBITS);
-    }
+	}
   }
 }
 
@@ -280,13 +296,13 @@ grayscale_convert (j_compress_ptr cinfo,
   int instride = cinfo->input_components;
 
   while (--num_rows >= 0) {
-    inptr = *input_buf++;
-    outptr = output_buf[0][output_row];
-    output_row++;
-    for (col = 0; col < num_cols; col++) {
+	inptr = *input_buf++;
+	outptr = output_buf[0][output_row];
+	output_row++;
+	for (col = 0; col < num_cols; col++) {
       outptr[col] = inptr[0];	/* don't need GETJSAMPLE() here */
       inptr += instride;
-    }
+	}
   }
 }
 
@@ -309,17 +325,17 @@ null_convert (j_compress_ptr cinfo,
   JDIMENSION num_cols = cinfo->image_width;
 
   while (--num_rows >= 0) {
-    /* It seems fastest to make a separate pass for each component. */
-    for (ci = 0; ci < nc; ci++) {
+	/* It seems fastest to make a separate pass for each component. */
+	for (ci = 0; ci < nc; ci++) {
       inptr = *input_buf;
       outptr = output_buf[ci][output_row];
       for (col = 0; col < num_cols; col++) {
 	outptr[col] = inptr[ci]; /* don't need GETJSAMPLE() here */
 	inptr += nc;
       }
-    }
-    input_buf++;
-    output_row++;
+	}
+	input_buf++;
+	output_row++;
   }
 }
 
@@ -343,7 +359,7 @@ jinit_color_converter (j_compress_ptr cinfo)
   my_cconvert_ptr cconvert;
 
   cconvert = (my_cconvert_ptr)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
+	(*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
 				SIZEOF(my_color_converter));
   cinfo->cconvert = (struct jpeg_color_converter *) cconvert;
   /* set start_pass to null method until we find out differently */
@@ -352,97 +368,97 @@ jinit_color_converter (j_compress_ptr cinfo)
   /* Make sure input_components agrees with in_color_space */
   switch (cinfo->in_color_space) {
   case JCS_GRAYSCALE:
-    if (cinfo->input_components != 1)
+	if (cinfo->input_components != 1)
       ERREXIT(cinfo, JERR_BAD_IN_COLORSPACE);
-    break;
+	break;
 
   case JCS_RGB:
 #if RGB_PIXELSIZE != 3
-    if (cinfo->input_components != RGB_PIXELSIZE)
+	if (cinfo->input_components != RGB_PIXELSIZE)
       ERREXIT(cinfo, JERR_BAD_IN_COLORSPACE);
-    break;
+	break;
 #endif /* else share code with YCbCr */
 
   case JCS_YCbCr:
-    if (cinfo->input_components != 3)
+	if (cinfo->input_components != 3)
       ERREXIT(cinfo, JERR_BAD_IN_COLORSPACE);
-    break;
+	break;
 
   case JCS_CMYK:
   case JCS_YCCK:
-    if (cinfo->input_components != 4)
+	if (cinfo->input_components != 4)
       ERREXIT(cinfo, JERR_BAD_IN_COLORSPACE);
-    break;
+	break;
 
   default:			/* JCS_UNKNOWN can be anything */
-    if (cinfo->input_components < 1)
+	if (cinfo->input_components < 1)
       ERREXIT(cinfo, JERR_BAD_IN_COLORSPACE);
-    break;
+	break;
   }
 
   /* Check num_components, set conversion method based on requested space */
   switch (cinfo->jpeg_color_space) {
   case JCS_GRAYSCALE:
-    if (cinfo->num_components != 1)
+	if (cinfo->num_components != 1)
       ERREXIT(cinfo, JERR_BAD_J_COLORSPACE);
-    if (cinfo->in_color_space == JCS_GRAYSCALE)
+	if (cinfo->in_color_space == JCS_GRAYSCALE)
       cconvert->pub.color_convert = grayscale_convert;
-    else if (cinfo->in_color_space == JCS_RGB) {
+	else if (cinfo->in_color_space == JCS_RGB) {
       cconvert->pub.start_pass = rgb_ycc_start;
       cconvert->pub.color_convert = rgb_gray_convert;
-    } else if (cinfo->in_color_space == JCS_YCbCr)
+	} else if (cinfo->in_color_space == JCS_YCbCr)
       cconvert->pub.color_convert = grayscale_convert;
-    else
+	else
       ERREXIT(cinfo, JERR_CONVERSION_NOTIMPL);
-    break;
+	break;
 
   case JCS_RGB:
-    if (cinfo->num_components != 3)
+	if (cinfo->num_components != 3)
       ERREXIT(cinfo, JERR_BAD_J_COLORSPACE);
-    if (cinfo->in_color_space == JCS_RGB && RGB_PIXELSIZE == 3)
+	if (cinfo->in_color_space == JCS_RGB && RGB_PIXELSIZE == 3)
       cconvert->pub.color_convert = null_convert;
-    else
+	else
       ERREXIT(cinfo, JERR_CONVERSION_NOTIMPL);
-    break;
+	break;
 
   case JCS_YCbCr:
-    if (cinfo->num_components != 3)
+	if (cinfo->num_components != 3)
       ERREXIT(cinfo, JERR_BAD_J_COLORSPACE);
-    if (cinfo->in_color_space == JCS_RGB) {
+	if (cinfo->in_color_space == JCS_RGB) {
       cconvert->pub.start_pass = rgb_ycc_start;
       cconvert->pub.color_convert = rgb_ycc_convert;
-    } else if (cinfo->in_color_space == JCS_YCbCr)
+	} else if (cinfo->in_color_space == JCS_YCbCr)
       cconvert->pub.color_convert = null_convert;
-    else
+	else
       ERREXIT(cinfo, JERR_CONVERSION_NOTIMPL);
-    break;
+	break;
 
   case JCS_CMYK:
-    if (cinfo->num_components != 4)
+	if (cinfo->num_components != 4)
       ERREXIT(cinfo, JERR_BAD_J_COLORSPACE);
-    if (cinfo->in_color_space == JCS_CMYK)
+	if (cinfo->in_color_space == JCS_CMYK)
       cconvert->pub.color_convert = null_convert;
-    else
+	else
       ERREXIT(cinfo, JERR_CONVERSION_NOTIMPL);
-    break;
+	break;
 
   case JCS_YCCK:
-    if (cinfo->num_components != 4)
+	if (cinfo->num_components != 4)
       ERREXIT(cinfo, JERR_BAD_J_COLORSPACE);
-    if (cinfo->in_color_space == JCS_CMYK) {
+	if (cinfo->in_color_space == JCS_CMYK) {
       cconvert->pub.start_pass = rgb_ycc_start;
       cconvert->pub.color_convert = cmyk_ycck_convert;
-    } else if (cinfo->in_color_space == JCS_YCCK)
+	} else if (cinfo->in_color_space == JCS_YCCK)
       cconvert->pub.color_convert = null_convert;
-    else
+	else
       ERREXIT(cinfo, JERR_CONVERSION_NOTIMPL);
-    break;
+	break;
 
   default:			/* allow null conversion of JCS_UNKNOWN */
-    if (cinfo->jpeg_color_space != cinfo->in_color_space ||
+	if (cinfo->jpeg_color_space != cinfo->in_color_space ||
 	cinfo->num_components != cinfo->input_components)
       ERREXIT(cinfo, JERR_CONVERSION_NOTIMPL);
-    cconvert->pub.color_convert = null_convert;
-    break;
+	cconvert->pub.color_convert = null_convert;
+	break;
   }
 }

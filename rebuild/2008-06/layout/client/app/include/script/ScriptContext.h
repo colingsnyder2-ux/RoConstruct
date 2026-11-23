@@ -1,3 +1,19 @@
+// =============================================================================
+// ScriptContext.h
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/include/script/ScriptContext.h
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #pragma once
 #include "script/Script.h"
 #include "script/ScriptEvent.h"
@@ -87,9 +103,18 @@ namespace RBX
         std::auto_ptr<Reflection::ValueCollection> call(const Lua::FunctionRef&, const Reflection::ValueCollection&);
         void call(const Lua::FunctionRef&);
         void call(const Lua::FunctionRef&, PushArgumentsClosure, ReadResultsClosure);
-        std::auto_ptr<Reflection::ValueCollection> executeInNewThread(Security::Identities, const char*, const char*, const Reflection::ValueCollection&);
+        std::auto_ptr<Reflection::ValueCollection> executeInNewThread(
+            Security::Identities,
+            const char*,
+            const char*,
+            const Reflection::ValueCollection&);
         void executeInNewThread(Security::Identities, const char*, const char*);
-        void executeInNewThread(Security::Identities, const char*, const char*, PushArgumentsClosure pushArguments, ReadResultsClosure readResults);
+        void executeInNewThread(
+            Security::Identities,
+            const char*,
+            const char*,
+            PushArgumentsClosure pushArguments,
+            ReadResultsClosure readResults);
         Result resume(lua_State* thread, int narg);
         void resume(lua_State* thread, PushArgumentsClosure pushArguments, ReadResultsClosure readResults);
         __declspec(noinline) void gc()

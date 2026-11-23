@@ -1,3 +1,19 @@
+// =============================================================================
+// jdmainct.c
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/ijg/jdmainct.c
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 /*
  * jdmainct.c
  *
@@ -165,24 +181,24 @@ alloc_funny_pointers (j_decompress_ptr cinfo)
    * We alloc both arrays with one call to save a few cycles.
    */
   main->xbuffer[0] = (JSAMPIMAGE)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
+	(*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
 				cinfo->num_components * 2 * SIZEOF(JSAMPARRAY));
   main->xbuffer[1] = main->xbuffer[0] + cinfo->num_components;
 
   for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
        ci++, compptr++) {
-    rgroup = (compptr->v_samp_factor * compptr->DCT_scaled_size) /
+	rgroup = (compptr->v_samp_factor * compptr->DCT_scaled_size) /
       cinfo->min_DCT_scaled_size; /* height of a row group of component */
-    /* Get space for pointer lists --- M+4 row groups in each list.
+	/* Get space for pointer lists --- M+4 row groups in each list.
      * We alloc both pointer lists with one call to save a few cycles.
      */
-    xbuf = (JSAMPARRAY)
+	xbuf = (JSAMPARRAY)
       (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
 				  2 * (rgroup * (M + 4)) * SIZEOF(JSAMPROW));
-    xbuf += rgroup;		/* want one row group at negative offsets */
-    main->xbuffer[0][ci] = xbuf;
-    xbuf += rgroup * (M + 4);
-    main->xbuffer[1][ci] = xbuf;
+	xbuf += rgroup;		/* want one row group at negative offsets */
+	main->xbuffer[0][ci] = xbuf;
+	xbuf += rgroup * (M + 4);
+	main->xbuffer[1][ci] = xbuf;
   }
 }
 
@@ -203,28 +219,28 @@ make_funny_pointers (j_decompress_ptr cinfo)
 
   for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
        ci++, compptr++) {
-    rgroup = (compptr->v_samp_factor * compptr->DCT_scaled_size) /
+	rgroup = (compptr->v_samp_factor * compptr->DCT_scaled_size) /
       cinfo->min_DCT_scaled_size; /* height of a row group of component */
-    xbuf0 = main->xbuffer[0][ci];
-    xbuf1 = main->xbuffer[1][ci];
-    /* First copy the workspace pointers as-is */
-    buf = main->buffer[ci];
-    for (i = 0; i < rgroup * (M + 2); i++) {
+	xbuf0 = main->xbuffer[0][ci];
+	xbuf1 = main->xbuffer[1][ci];
+	/* First copy the workspace pointers as-is */
+	buf = main->buffer[ci];
+	for (i = 0; i < rgroup * (M + 2); i++) {
       xbuf0[i] = xbuf1[i] = buf[i];
-    }
-    /* In the second list, put the last four row groups in swapped order */
-    for (i = 0; i < rgroup * 2; i++) {
+	}
+	/* In the second list, put the last four row groups in swapped order */
+	for (i = 0; i < rgroup * 2; i++) {
       xbuf1[rgroup*(M-2) + i] = buf[rgroup*M + i];
       xbuf1[rgroup*M + i] = buf[rgroup*(M-2) + i];
-    }
-    /* The wraparound pointers at top and bottom will be filled later
+	}
+	/* The wraparound pointers at top and bottom will be filled later
      * (see set_wraparound_pointers, below).  Initially we want the "above"
      * pointers to duplicate the first actual data line.  This only needs
      * to happen in xbuffer[0].
      */
-    for (i = 0; i < rgroup; i++) {
+	for (i = 0; i < rgroup; i++) {
       xbuf0[i - rgroup] = xbuf0[0];
-    }
+	}
   }
 }
 
@@ -242,16 +258,16 @@ set_wraparound_pointers (j_decompress_ptr cinfo)
 
   for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
        ci++, compptr++) {
-    rgroup = (compptr->v_samp_factor * compptr->DCT_scaled_size) /
+	rgroup = (compptr->v_samp_factor * compptr->DCT_scaled_size) /
       cinfo->min_DCT_scaled_size; /* height of a row group of component */
-    xbuf0 = main->xbuffer[0][ci];
-    xbuf1 = main->xbuffer[1][ci];
-    for (i = 0; i < rgroup; i++) {
+	xbuf0 = main->xbuffer[0][ci];
+	xbuf1 = main->xbuffer[1][ci];
+	for (i = 0; i < rgroup; i++) {
       xbuf0[i - rgroup] = xbuf0[rgroup*(M+1) + i];
       xbuf1[i - rgroup] = xbuf1[rgroup*(M+1) + i];
       xbuf0[rgroup*(M+2) + i] = xbuf0[i];
       xbuf1[rgroup*(M+2) + i] = xbuf1[i];
-    }
+	}
   }
 }
 
@@ -269,25 +285,25 @@ set_bottom_pointers (j_decompress_ptr cinfo)
 
   for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
        ci++, compptr++) {
-    /* Count sample rows in one iMCU row and in one row group */
-    iMCUheight = compptr->v_samp_factor * compptr->DCT_scaled_size;
-    rgroup = iMCUheight / cinfo->min_DCT_scaled_size;
-    /* Count nondummy sample rows remaining for this component */
-    rows_left = (int) (compptr->downsampled_height % (JDIMENSION) iMCUheight);
-    if (rows_left == 0) rows_left = iMCUheight;
-    /* Count nondummy row groups.  Should get same answer for each component,
+	/* Count sample rows in one iMCU row and in one row group */
+	iMCUheight = compptr->v_samp_factor * compptr->DCT_scaled_size;
+	rgroup = iMCUheight / cinfo->min_DCT_scaled_size;
+	/* Count nondummy sample rows remaining for this component */
+	rows_left = (int) (compptr->downsampled_height % (JDIMENSION) iMCUheight);
+	if (rows_left == 0) rows_left = iMCUheight;
+	/* Count nondummy row groups.  Should get same answer for each component,
      * so we need only do it once.
      */
-    if (ci == 0) {
+	if (ci == 0) {
       main->rowgroups_avail = (JDIMENSION) ((rows_left-1) / rgroup + 1);
-    }
-    /* Duplicate the last real sample row rgroup*2 times; this pads out the
+	}
+	/* Duplicate the last real sample row rgroup*2 times; this pads out the
      * last partial rowgroup and ensures at least one full rowgroup of context.
      */
-    xbuf = main->xbuffer[main->whichptr][ci];
-    for (i = 0; i < rgroup * 2; i++) {
+	xbuf = main->xbuffer[main->whichptr][ci];
+	for (i = 0; i < rgroup * 2; i++) {
       xbuf[rows_left + i] = xbuf[rows_left-1];
-    }
+	}
   }
 }
 
@@ -302,28 +318,28 @@ start_pass_main (j_decompress_ptr cinfo, J_BUF_MODE pass_mode)
 
   switch (pass_mode) {
   case JBUF_PASS_THRU:
-    if (cinfo->upsample->need_context_rows) {
+	if (cinfo->upsample->need_context_rows) {
       main->pub.process_data = process_data_context_main;
       make_funny_pointers(cinfo); /* Create the xbuffer[] lists */
       main->whichptr = 0;	/* Read first iMCU row into xbuffer[0] */
       main->context_state = CTX_PREPARE_FOR_IMCU;
       main->iMCU_row_ctr = 0;
-    } else {
+	} else {
       /* Simple case with no context needed */
       main->pub.process_data = process_data_simple_main;
-    }
-    main->buffer_full = FALSE;	/* Mark buffer empty */
-    main->rowgroup_ctr = 0;
-    break;
+	}
+	main->buffer_full = FALSE;	/* Mark buffer empty */
+	main->rowgroup_ctr = 0;
+	break;
 #ifdef QUANT_2PASS_SUPPORTED
   case JBUF_CRANK_DEST:
-    /* For last pass of 2-pass quantization, just crank the postprocessor */
-    main->pub.process_data = process_data_crank_post;
-    break;
+	/* For last pass of 2-pass quantization, just crank the postprocessor */
+	main->pub.process_data = process_data_crank_post;
+	break;
 #endif
   default:
-    ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
-    break;
+	ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
+	break;
   }
 }
 
@@ -342,9 +358,9 @@ process_data_simple_main (j_decompress_ptr cinfo,
 
   /* Read input data if we haven't filled the main buffer yet */
   if (! main->buffer_full) {
-    if (! (*cinfo->coef->decompress_data) (cinfo, main->buffer))
+	if (! (*cinfo->coef->decompress_data) (cinfo, main->buffer))
       return;			/* suspension forced, can do nothing more */
-    main->buffer_full = TRUE;	/* OK, we have an iMCU row to work with */
+	main->buffer_full = TRUE;	/* OK, we have an iMCU row to work with */
   }
 
   /* There are always min_DCT_scaled_size row groups in an iMCU row. */
@@ -361,8 +377,8 @@ process_data_simple_main (j_decompress_ptr cinfo,
 
   /* Has postprocessor consumed all the data yet? If so, mark buffer empty */
   if (main->rowgroup_ctr >= rowgroups_avail) {
-    main->buffer_full = FALSE;
-    main->rowgroup_ctr = 0;
+	main->buffer_full = FALSE;
+	main->rowgroup_ctr = 0;
   }
 }
 
@@ -380,11 +396,11 @@ process_data_context_main (j_decompress_ptr cinfo,
 
   /* Read input data if we haven't filled the main buffer yet */
   if (! main->buffer_full) {
-    if (! (*cinfo->coef->decompress_data) (cinfo,
+	if (! (*cinfo->coef->decompress_data) (cinfo,
 					   main->xbuffer[main->whichptr]))
       return;			/* suspension forced, can do nothing more */
-    main->buffer_full = TRUE;	/* OK, we have an iMCU row to work with */
-    main->iMCU_row_ctr++;	/* count rows received */
+	main->buffer_full = TRUE;	/* OK, we have an iMCU row to work with */
+	main->iMCU_row_ctr++;	/* count rows received */
   }
 
   /* Postprocessor typically will not swallow all the input data it is handed
@@ -394,45 +410,45 @@ process_data_context_main (j_decompress_ptr cinfo,
    */
   switch (main->context_state) {
   case CTX_POSTPONED_ROW:
-    /* Call postprocessor using previously set pointers for postponed row */
-    (*cinfo->post->post_process_data) (cinfo, main->xbuffer[main->whichptr],
+	/* Call postprocessor using previously set pointers for postponed row */
+	(*cinfo->post->post_process_data) (cinfo, main->xbuffer[main->whichptr],
 			&main->rowgroup_ctr, main->rowgroups_avail,
 			output_buf, out_row_ctr, out_rows_avail);
-    if (main->rowgroup_ctr < main->rowgroups_avail)
+	if (main->rowgroup_ctr < main->rowgroups_avail)
       return;			/* Need to suspend */
-    main->context_state = CTX_PREPARE_FOR_IMCU;
-    if (*out_row_ctr >= out_rows_avail)
+	main->context_state = CTX_PREPARE_FOR_IMCU;
+	if (*out_row_ctr >= out_rows_avail)
       return;			/* Postprocessor exactly filled output buf */
-    /*FALLTHROUGH*/
+	/*FALLTHROUGH*/
   case CTX_PREPARE_FOR_IMCU:
-    /* Prepare to process first M-1 row groups of this iMCU row */
-    main->rowgroup_ctr = 0;
-    main->rowgroups_avail = (JDIMENSION) (cinfo->min_DCT_scaled_size - 1);
-    /* Check for bottom of image: if so, tweak pointers to "duplicate"
+	/* Prepare to process first M-1 row groups of this iMCU row */
+	main->rowgroup_ctr = 0;
+	main->rowgroups_avail = (JDIMENSION) (cinfo->min_DCT_scaled_size - 1);
+	/* Check for bottom of image: if so, tweak pointers to "duplicate"
      * the last sample row, and adjust rowgroups_avail to ignore padding rows.
      */
-    if (main->iMCU_row_ctr == cinfo->total_iMCU_rows)
+	if (main->iMCU_row_ctr == cinfo->total_iMCU_rows)
       set_bottom_pointers(cinfo);
-    main->context_state = CTX_PROCESS_IMCU;
-    /*FALLTHROUGH*/
+	main->context_state = CTX_PROCESS_IMCU;
+	/*FALLTHROUGH*/
   case CTX_PROCESS_IMCU:
-    /* Call postprocessor using previously set pointers */
-    (*cinfo->post->post_process_data) (cinfo, main->xbuffer[main->whichptr],
+	/* Call postprocessor using previously set pointers */
+	(*cinfo->post->post_process_data) (cinfo, main->xbuffer[main->whichptr],
 			&main->rowgroup_ctr, main->rowgroups_avail,
 			output_buf, out_row_ctr, out_rows_avail);
-    if (main->rowgroup_ctr < main->rowgroups_avail)
+	if (main->rowgroup_ctr < main->rowgroups_avail)
       return;			/* Need to suspend */
-    /* After the first iMCU, change wraparound pointers to normal state */
-    if (main->iMCU_row_ctr == 1)
+	/* After the first iMCU, change wraparound pointers to normal state */
+	if (main->iMCU_row_ctr == 1)
       set_wraparound_pointers(cinfo);
-    /* Prepare to load new iMCU row using other xbuffer list */
-    main->whichptr ^= 1;	/* 0=>1 or 1=>0 */
-    main->buffer_full = FALSE;
-    /* Still need to process last row group of this iMCU row, */
-    /* which is saved at index M+1 of the other xbuffer */
-    main->rowgroup_ctr = (JDIMENSION) (cinfo->min_DCT_scaled_size + 1);
-    main->rowgroups_avail = (JDIMENSION) (cinfo->min_DCT_scaled_size + 2);
-    main->context_state = CTX_POSTPONED_ROW;
+	/* Prepare to load new iMCU row using other xbuffer list */
+	main->whichptr ^= 1;	/* 0=>1 or 1=>0 */
+	main->buffer_full = FALSE;
+	/* Still need to process last row group of this iMCU row, */
+	/* which is saved at index M+1 of the other xbuffer */
+	main->rowgroup_ctr = (JDIMENSION) (cinfo->min_DCT_scaled_size + 1);
+	main->rowgroups_avail = (JDIMENSION) (cinfo->min_DCT_scaled_size + 2);
+	main->context_state = CTX_POSTPONED_ROW;
   }
 }
 
@@ -468,31 +484,31 @@ jinit_d_main_controller (j_decompress_ptr cinfo, boolean need_full_buffer)
   jpeg_component_info *compptr;
 
   main = (my_main_ptr)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
+	(*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
 				SIZEOF(my_main_controller));
   cinfo->main = (struct jpeg_d_main_controller *) main;
   main->pub.start_pass = start_pass_main;
 
   if (need_full_buffer)		/* shouldn't happen */
-    ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
+	ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
 
   /* Allocate the workspace.
    * ngroups is the number of row groups we need.
    */
   if (cinfo->upsample->need_context_rows) {
-    if (cinfo->min_DCT_scaled_size < 2) /* unsupported, see comments above */
+	if (cinfo->min_DCT_scaled_size < 2) /* unsupported, see comments above */
       ERREXIT(cinfo, JERR_NOTIMPL);
-    alloc_funny_pointers(cinfo); /* Alloc space for xbuffer[] lists */
-    ngroups = cinfo->min_DCT_scaled_size + 2;
+	alloc_funny_pointers(cinfo); /* Alloc space for xbuffer[] lists */
+	ngroups = cinfo->min_DCT_scaled_size + 2;
   } else {
-    ngroups = cinfo->min_DCT_scaled_size;
+	ngroups = cinfo->min_DCT_scaled_size;
   }
 
   for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
        ci++, compptr++) {
-    rgroup = (compptr->v_samp_factor * compptr->DCT_scaled_size) /
+	rgroup = (compptr->v_samp_factor * compptr->DCT_scaled_size) /
       cinfo->min_DCT_scaled_size; /* height of a row group of component */
-    main->buffer[ci] = (*cinfo->mem->alloc_sarray)
+	main->buffer[ci] = (*cinfo->mem->alloc_sarray)
 			((j_common_ptr) cinfo, JPOOL_IMAGE,
 			 compptr->width_in_blocks * compptr->DCT_scaled_size,
 			 (JDIMENSION) (rgroup * ngroups));

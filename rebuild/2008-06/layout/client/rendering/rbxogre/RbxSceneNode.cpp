@@ -1,3 +1,19 @@
+// =============================================================================
+// RbxSceneNode.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/rbxogre/RbxSceneNode.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "OgreRbxNode/RbxSceneNode2008.h"
 #include <OgreCamera.h>
 #include <OgreRenderQueue.h>
@@ -141,6 +157,8 @@ namespace Ogre
 	}
 }
 
+// Explicit instantiations: they give this file the same symbols as the original object,
+// where other files used them. Likely removable once the whole client links and those users exist.
 template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<unsigned long const ,Ogre::Matrix4 *> > >;
 template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<void const * const,Ogre::Sphere> > >;
 template class std::_Tmap_traits<unsigned long,Ogre::Matrix4 *,std::less<unsigned long>,std::allocator<std::pair<unsigned long const ,Ogre::Matrix4 *> >,0>;
@@ -158,7 +176,8 @@ template class stdext::_Hash<stdext::_Hmap_traits<std::basic_string<char,std::ch
 template class stdext::_Hash<stdext::_Hmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::Node *,stdext::hash_compare<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::Node *> >,0> >;
 
 #undef OGRE_NONCLIENT_BUILD
-namespace Ogre {
+namespace Ogre
+{
 // INFERRED: name and pointer type; original 00682150 erases from the sphere map.
 bool eraseSphere(const void* key) {
  if (!RbxSceneNode::spheres) return false;

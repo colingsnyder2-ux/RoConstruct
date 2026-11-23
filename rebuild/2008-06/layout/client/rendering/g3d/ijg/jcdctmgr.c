@@ -1,3 +1,19 @@
+// =============================================================================
+// jcdctmgr.c
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/ijg/jcdctmgr.c
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 /*
  * jcdctmgr.c
  *
@@ -59,17 +75,17 @@ start_pass_fdctmgr (j_compress_ptr cinfo)
 
   for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
        ci++, compptr++) {
-    qtblno = compptr->quant_tbl_no;
-    /* Make sure specified quantization table is present */
-    if (qtblno < 0 || qtblno >= NUM_QUANT_TBLS ||
+	qtblno = compptr->quant_tbl_no;
+	/* Make sure specified quantization table is present */
+	if (qtblno < 0 || qtblno >= NUM_QUANT_TBLS ||
 	cinfo->quant_tbl_ptrs[qtblno] == NULL)
       ERREXIT1(cinfo, JERR_NO_QUANT_TABLE, qtblno);
-    qtbl = cinfo->quant_tbl_ptrs[qtblno];
-    /* Compute divisors for this quant table */
-    /* We may do this more than once for same table, but it's not a big deal */
-    switch (cinfo->dct_method) {
+	qtbl = cinfo->quant_tbl_ptrs[qtblno];
+	/* Compute divisors for this quant table */
+	/* We may do this more than once for same table, but it's not a big deal */
+	switch (cinfo->dct_method) {
 #ifdef DCT_ISLOW_SUPPORTED
-    case JDCT_ISLOW:
+	case JDCT_ISLOW:
       /* For LL&M IDCT method, divisors are equal to raw quantization
        * coefficients multiplied by 8 (to counteract scaling).
        */
@@ -85,7 +101,7 @@ start_pass_fdctmgr (j_compress_ptr cinfo)
       break;
 #endif
 #ifdef DCT_IFAST_SUPPORTED
-    case JDCT_IFAST:
+	case JDCT_IFAST:
       {
 	/* For AA&N IDCT method, divisors are equal to quantization
 	 * coefficients scaled by scalefactor[row]*scalefactor[col], where
@@ -123,7 +139,7 @@ start_pass_fdctmgr (j_compress_ptr cinfo)
       break;
 #endif
 #ifdef DCT_FLOAT_SUPPORTED
-    case JDCT_FLOAT:
+	case JDCT_FLOAT:
       {
 	/* For float AA&N IDCT method, divisors are equal to quantization
 	 * coefficients scaled by scalefactor[row]*scalefactor[col], where
@@ -158,10 +174,10 @@ start_pass_fdctmgr (j_compress_ptr cinfo)
       }
       break;
 #endif
-    default:
+	default:
       ERREXIT(cinfo, JERR_NOT_COMPILED);
       break;
-    }
+	}
   }
 }
 
@@ -190,8 +206,8 @@ forward_DCT (j_compress_ptr cinfo, jpeg_component_info * compptr,
   sample_data += start_row;	/* fold in the vertical offset once */
 
   for (bi = 0; bi < num_blocks; bi++, start_col += DCTSIZE) {
-    /* Load data into workspace, applying unsigned->signed conversion */
-    { register DCTELEM *workspaceptr;
+	/* Load data into workspace, applying unsigned->signed conversion */
+	{ register DCTELEM *workspaceptr;
       register JSAMPROW elemptr;
       register int elemr;
 
@@ -215,13 +231,13 @@ forward_DCT (j_compress_ptr cinfo, jpeg_component_info * compptr,
 	}
 #endif
       }
-    }
+	}
 
-    /* Perform the DCT */
-    (*do_dct) (workspace);
+	/* Perform the DCT */
+	(*do_dct) (workspace);
 
-    /* Quantize/descale the coefficients, and store into coef_blocks[] */
-    { register DCTELEM temp, qval;
+	/* Quantize/descale the coefficients, and store into coef_blocks[] */
+	{ register DCTELEM temp, qval;
       register int i;
       register JCOEFPTR output_ptr = coef_blocks[bi];
 
@@ -256,7 +272,7 @@ forward_DCT (j_compress_ptr cinfo, jpeg_component_info * compptr,
 	}
 	output_ptr[i] = (JCOEF) temp;
       }
-    }
+	}
   }
 }
 
@@ -279,8 +295,8 @@ forward_DCT_float (j_compress_ptr cinfo, jpeg_component_info * compptr,
   sample_data += start_row;	/* fold in the vertical offset once */
 
   for (bi = 0; bi < num_blocks; bi++, start_col += DCTSIZE) {
-    /* Load data into workspace, applying unsigned->signed conversion */
-    { register FAST_FLOAT *workspaceptr;
+	/* Load data into workspace, applying unsigned->signed conversion */
+	{ register FAST_FLOAT *workspaceptr;
       register JSAMPROW elemptr;
       register int elemr;
 
@@ -305,13 +321,13 @@ forward_DCT_float (j_compress_ptr cinfo, jpeg_component_info * compptr,
 	}
 #endif
       }
-    }
+	}
 
-    /* Perform the DCT */
-    (*do_dct) (workspace);
+	/* Perform the DCT */
+	(*do_dct) (workspace);
 
-    /* Quantize/descale the coefficients, and store into coef_blocks[] */
-    { register FAST_FLOAT temp;
+	/* Quantize/descale the coefficients, and store into coef_blocks[] */
+	{ register FAST_FLOAT temp;
       register int i;
       register JCOEFPTR output_ptr = coef_blocks[bi];
 
@@ -326,7 +342,7 @@ forward_DCT_float (j_compress_ptr cinfo, jpeg_component_info * compptr,
 	 */
 	output_ptr[i] = (JCOEF) ((int) (temp + (FAST_FLOAT) 16384.5) - 16384);
       }
-    }
+	}
   }
 }
 
@@ -343,7 +359,7 @@ jinit_forward_dct (j_compress_ptr cinfo)
   int i;
 
   fdct = (my_fdct_ptr)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
+	(*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
 				SIZEOF(my_fdct_controller));
   cinfo->fdct = (struct jpeg_forward_dct *) fdct;
   fdct->pub.start_pass = start_pass_fdctmgr;
@@ -351,32 +367,32 @@ jinit_forward_dct (j_compress_ptr cinfo)
   switch (cinfo->dct_method) {
 #ifdef DCT_ISLOW_SUPPORTED
   case JDCT_ISLOW:
-    fdct->pub.forward_DCT = forward_DCT;
-    fdct->do_dct = jpeg_fdct_islow;
-    break;
+	fdct->pub.forward_DCT = forward_DCT;
+	fdct->do_dct = jpeg_fdct_islow;
+	break;
 #endif
 #ifdef DCT_IFAST_SUPPORTED
   case JDCT_IFAST:
-    fdct->pub.forward_DCT = forward_DCT;
-    fdct->do_dct = jpeg_fdct_ifast;
-    break;
+	fdct->pub.forward_DCT = forward_DCT;
+	fdct->do_dct = jpeg_fdct_ifast;
+	break;
 #endif
 #ifdef DCT_FLOAT_SUPPORTED
   case JDCT_FLOAT:
-    fdct->pub.forward_DCT = forward_DCT_float;
-    fdct->do_float_dct = jpeg_fdct_float;
-    break;
+	fdct->pub.forward_DCT = forward_DCT_float;
+	fdct->do_float_dct = jpeg_fdct_float;
+	break;
 #endif
   default:
-    ERREXIT(cinfo, JERR_NOT_COMPILED);
-    break;
+	ERREXIT(cinfo, JERR_NOT_COMPILED);
+	break;
   }
 
   /* Mark divisor tables unallocated */
   for (i = 0; i < NUM_QUANT_TBLS; i++) {
-    fdct->divisors[i] = NULL;
+	fdct->divisors[i] = NULL;
 #ifdef DCT_FLOAT_SUPPORTED
-    fdct->float_divisors[i] = NULL;
+	fdct->float_divisors[i] = NULL;
 #endif
   }
 }

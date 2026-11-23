@@ -1,3 +1,19 @@
+// =============================================================================
+// Dragger.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/tool/Dragger.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "tool/Dragger.h"
 #include "v8world/ContactManager.h"
 #include "util/Math.h"
@@ -166,34 +182,36 @@ namespace RBX
 
 template class G3D::Array<RBX::Primitive *>;
 
-namespace RBX {
+namespace RBX
+{
 G3D::Vector3 Dragger::safeMoveAlongLine(const G3D::Array<Primitive*>& primitives,
-    const G3D::Vector3& delta, ContactManager& contactManager) {
-    if (primitives.size() == 0) return G3D::Vector3::zero();
-    G3D::Vector3 result(G3D::Vector3::zero());
-    if (delta != G3D::Vector3::zero())
-        safePlaceAlongLine(primitives, G3D::Vector3::zero(), delta, result, contactManager);
-    return result;
+	const G3D::Vector3& delta, ContactManager& contactManager) {
+	if (primitives.size() == 0) return G3D::Vector3::zero();
+	G3D::Vector3 result(G3D::Vector3::zero());
+	if (delta != G3D::Vector3::zero())
+		safePlaceAlongLine(primitives, G3D::Vector3::zero(), delta, result, contactManager);
+	return result;
 }
 }
 
-namespace RBX {
+namespace RBX
+{
 void Dragger::movePrimitivesGoal(const G3D::Array<Primitive*>& primitives, const G3D::Vector3& goal, G3D::Vector3& previous) {
-    G3D::Vector3 difference = goal - previous;
-    G3D::Vector3 movement = Math::toGrid(difference, dragSnap());
-    if (movement != G3D::Vector3::zero()) { movePrimitives(primitives, movement); previous = goal; }
+	G3D::Vector3 difference = goal - previous;
+	G3D::Vector3 movement = Math::toGrid(difference, dragSnap());
+	if (movement != G3D::Vector3::zero()) { movePrimitives(primitives, movement); previous = goal; }
 }
 void Dragger::safePlaceAlongLine(const G3D::Array<Primitive*>& primitives, const G3D::Vector3& start,
-    const G3D::Vector3& end, G3D::Vector3& result, ContactManager& manager) {
-    movePrimitivesGoal(primitives, end, result);
-    if (!intersectingWorldOrOthers(primitives, manager)) return;
-    G3D::Vector3 average = (start + end) * 0.51f;
-    G3D::Vector3 midpoint = Math::toGrid(average, dragSnap());
-    movePrimitivesGoal(primitives, midpoint, result);
-    bool intersecting = intersectingWorldOrOthers(primitives, manager);
-    if (midpoint == end) {
-        if (intersecting) movePrimitivesGoal(primitives, start, result);
-    } else if (intersecting) safePlaceAlongLine(primitives, start, midpoint, result, manager);
-    else safePlaceAlongLine(primitives, midpoint, end, result, manager);
+	const G3D::Vector3& end, G3D::Vector3& result, ContactManager& manager) {
+	movePrimitivesGoal(primitives, end, result);
+	if (!intersectingWorldOrOthers(primitives, manager)) return;
+	G3D::Vector3 average = (start + end) * 0.51f;
+	G3D::Vector3 midpoint = Math::toGrid(average, dragSnap());
+	movePrimitivesGoal(primitives, midpoint, result);
+	bool intersecting = intersectingWorldOrOthers(primitives, manager);
+	if (midpoint == end) {
+		if (intersecting) movePrimitivesGoal(primitives, start, result);
+	} else if (intersecting) safePlaceAlongLine(primitives, start, midpoint, result, manager);
+	else safePlaceAlongLine(primitives, midpoint, end, result, manager);
 }
 }

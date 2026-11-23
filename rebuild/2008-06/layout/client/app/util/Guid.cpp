@@ -1,3 +1,19 @@
+// =============================================================================
+// Guid.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/util/Guid.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "util/Guid.h"
 #include <windows.h>
 #include <objbase.h>
@@ -7,42 +23,44 @@ const RBX::Name* localScope = NULL;
 LONG nextIndex = 0;
 void initLocalScope()
 {
-    std::string guid;
-    RBX::Guid::generateGUID(guid);
-    localScope = &RBX::Name::declare(guid.c_str(), -1);
+	std::string guid;
+	RBX::Guid::generateGUID(guid);
+	localScope = &RBX::Name::declare(guid.c_str(), -1);
 }
-namespace RBX {
+namespace RBX
+{
 __declspec(noinline) void makeGuidString(std::string& result)
 {
-    GUID guid;
-    CoCreateGuid(&guid);
-    wchar_t wide[64] = {0};
-    StringFromGUID2(guid, wide, 64);
-    char ansi[64];
-    WideCharToMultiByte(0, 0, wide, 64, ansi, 64, 0, 0);
-    result = ansi;
+	GUID guid;
+	CoCreateGuid(&guid);
+	wchar_t wide[64] = {0};
+	StringFromGUID2(guid, wide, 64);
+	char ansi[64];
+	WideCharToMultiByte(0, 0, wide, 64, ansi, 64, 0, 0);
+	result = ansi;
 }
 void Guid::generateGUID(std::string& result)
 {
-    makeGuidString(result);
-    result = "RBX" + result;
-    result.erase(40, 1);
-    result.erase(27, 1);
-    result.erase(22, 1);
-    result.erase(17, 1);
-    result.erase(12, 1);
-    result.erase(3, 1);
+	makeGuidString(result);
+	result = "RBX" + result;
+	result.erase(40, 1);
+	result.erase(27, 1);
+	result.erase(22, 1);
+	result.erase(17, 1);
+	result.erase(12, 1);
+	result.erase(3, 1);
 }
 Guid::Guid()
 {
-    static boost::once_flag flag = BOOST_ONCE_INIT;
-    boost::call_once(initLocalScope, flag);
-    data.scope = localScope;
-    data.index = InterlockedIncrement(&nextIndex);
+	static boost::once_flag flag = BOOST_ONCE_INIT;
+	boost::call_once(initLocalScope, flag);
+	data.scope = localScope;
+	data.index = InterlockedIncrement(&nextIndex);
 }
 }
 
-namespace RBX {
+namespace RBX
+{
 int Guid::compare(const Guid* a, const Guid* b)
 {
 	Name* x = a ? const_cast<Name*>(a->data.scope) : 0;

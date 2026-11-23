@@ -1,3 +1,19 @@
+// =============================================================================
+// ChatOutput.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/gui/ChatOutput.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "gui/ChatOutput.h"
 #include "v8datamodel/SafeChat.h"
 #include <boost/tokenizer.hpp>
@@ -113,6 +129,8 @@ namespace RBX
 	}
 }
 
+// Explicit instantiations: they give this file the same symbols as the original object,
+// where other files used them. Likely removable once the whole client links and those users exist.
 template class std::_Container_base_aux_alloc_real<std::allocator<RBX::ChatLine *> >;
 template class std::_Deque_const_iterator<RBX::ChatLine *,std::allocator<RBX::ChatLine *>,1>;
 template class std::_Deque_iterator<RBX::ChatLine *,std::allocator<RBX::ChatLine *>,1>;
@@ -128,10 +146,12 @@ template class std::vector<RBX::Listener<RBX::Network::Players,RBX::Network::Cha
 #include "v8datamodel/Team.h"
 #include "util/Color.h"
 
-namespace RBX {
+namespace RBX
+{
 unsigned int stringHash(const std::string&);
 }
-namespace RBX {
+namespace RBX
+{
 ChatLine::ChatLine(Network::Player* player, const std::string& text, float expiry)
 		: message(text), dieTime(expiry), profane(false)
 	{
@@ -148,7 +168,8 @@ ChatLine::ChatLine(Network::Player* player, const std::string& text, float expir
 	}
 }
 
-namespace RBX {
+namespace RBX
+{
 void ChatOutput::onEvent(const Network::Players*, Network::ChatMessage event)
 	{
 		while (fifo.size() > GameSettings::singleton().chatScrollLength)

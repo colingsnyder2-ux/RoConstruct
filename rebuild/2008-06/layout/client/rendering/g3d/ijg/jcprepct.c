@@ -1,3 +1,19 @@
+// =============================================================================
+// jcprepct.c
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/ijg/jcprepct.c
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 /*
  * jcprepct.c
  *
@@ -76,7 +92,7 @@ start_pass_prep (j_compress_ptr cinfo, J_BUF_MODE pass_mode)
   my_prep_ptr prep = (my_prep_ptr) cinfo->prep;
 
   if (pass_mode != JBUF_PASS_THRU)
-    ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
+	ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
 
   /* Initialize total-height counter for detecting bottom of image */
   prep->rows_to_go = cinfo->image_height;
@@ -104,7 +120,7 @@ expand_bottom_edge (JSAMPARRAY image_data, JDIMENSION num_cols,
   register int row;
 
   for (row = input_rows; row < output_rows; row++) {
-    jcopy_sample_rows(image_data, input_rows-1, image_data, row,
+	jcopy_sample_rows(image_data, input_rows-1, image_data, row,
 		      1, num_cols);
   }
 }
@@ -132,38 +148,38 @@ pre_process_data (j_compress_ptr cinfo,
 
   while (*in_row_ctr < in_rows_avail &&
 	 *out_row_group_ctr < out_row_groups_avail) {
-    /* Do color conversion to fill the conversion buffer. */
-    inrows = in_rows_avail - *in_row_ctr;
-    numrows = cinfo->max_v_samp_factor - prep->next_buf_row;
-    numrows = (int) MIN((JDIMENSION) numrows, inrows);
-    (*cinfo->cconvert->color_convert) (cinfo, input_buf + *in_row_ctr,
+	/* Do color conversion to fill the conversion buffer. */
+	inrows = in_rows_avail - *in_row_ctr;
+	numrows = cinfo->max_v_samp_factor - prep->next_buf_row;
+	numrows = (int) MIN((JDIMENSION) numrows, inrows);
+	(*cinfo->cconvert->color_convert) (cinfo, input_buf + *in_row_ctr,
 				       prep->color_buf,
 				       (JDIMENSION) prep->next_buf_row,
 				       numrows);
-    *in_row_ctr += numrows;
-    prep->next_buf_row += numrows;
-    prep->rows_to_go -= numrows;
-    /* If at bottom of image, pad to fill the conversion buffer. */
-    if (prep->rows_to_go == 0 &&
+	*in_row_ctr += numrows;
+	prep->next_buf_row += numrows;
+	prep->rows_to_go -= numrows;
+	/* If at bottom of image, pad to fill the conversion buffer. */
+	if (prep->rows_to_go == 0 &&
 	prep->next_buf_row < cinfo->max_v_samp_factor) {
       for (ci = 0; ci < cinfo->num_components; ci++) {
 	expand_bottom_edge(prep->color_buf[ci], cinfo->image_width,
 			   prep->next_buf_row, cinfo->max_v_samp_factor);
       }
       prep->next_buf_row = cinfo->max_v_samp_factor;
-    }
-    /* If we've filled the conversion buffer, empty it. */
-    if (prep->next_buf_row == cinfo->max_v_samp_factor) {
+	}
+	/* If we've filled the conversion buffer, empty it. */
+	if (prep->next_buf_row == cinfo->max_v_samp_factor) {
       (*cinfo->downsample->downsample) (cinfo,
 					prep->color_buf, (JDIMENSION) 0,
 					output_buf, *out_row_group_ctr);
       prep->next_buf_row = 0;
       (*out_row_group_ctr)++;
-    }
-    /* If at bottom of image, pad the output to a full iMCU height.
+	}
+	/* If at bottom of image, pad the output to a full iMCU height.
      * Note we assume the caller is providing a one-iMCU-height output buffer!
      */
-    if (prep->rows_to_go == 0 &&
+	if (prep->rows_to_go == 0 &&
 	*out_row_group_ctr < out_row_groups_avail) {
       for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
 	   ci++, compptr++) {
@@ -174,7 +190,7 @@ pre_process_data (j_compress_ptr cinfo,
       }
       *out_row_group_ctr = out_row_groups_avail;
       break;			/* can exit outer loop without test */
-    }
+	}
   }
 }
 
@@ -197,7 +213,7 @@ pre_process_context (j_compress_ptr cinfo,
   JDIMENSION inrows;
 
   while (*out_row_group_ctr < out_row_groups_avail) {
-    if (*in_row_ctr < in_rows_avail) {
+	if (*in_row_ctr < in_rows_avail) {
       /* Do color conversion to fill the conversion buffer. */
       inrows = in_rows_avail - *in_row_ctr;
       numrows = prep->next_buf_stop - prep->next_buf_row;
@@ -220,7 +236,7 @@ pre_process_context (j_compress_ptr cinfo,
       *in_row_ctr += numrows;
       prep->next_buf_row += numrows;
       prep->rows_to_go -= numrows;
-    } else {
+	} else {
       /* Return for more data, unless we are at the bottom of the image. */
       if (prep->rows_to_go != 0)
 	break;
@@ -232,9 +248,9 @@ pre_process_context (j_compress_ptr cinfo,
 	}
 	prep->next_buf_row = prep->next_buf_stop;
       }
-    }
-    /* If we've gotten enough data, downsample a row group. */
-    if (prep->next_buf_row == prep->next_buf_stop) {
+	}
+	/* If we've gotten enough data, downsample a row group. */
+	if (prep->next_buf_row == prep->next_buf_stop) {
       (*cinfo->downsample->downsample) (cinfo,
 					prep->color_buf,
 					(JDIMENSION) prep->this_row_group,
@@ -247,7 +263,7 @@ pre_process_context (j_compress_ptr cinfo,
       if (prep->next_buf_row >= buf_height)
 	prep->next_buf_row = 0;
       prep->next_buf_stop = prep->next_buf_row + cinfo->max_v_samp_factor;
-    }
+	}
   }
 }
 
@@ -268,31 +284,31 @@ create_context_buffer (j_compress_ptr cinfo)
    * we need five row groups' worth of pointers for each component.
    */
   fake_buffer = (JSAMPARRAY)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
+	(*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
 				(cinfo->num_components * 5 * rgroup_height) *
 				SIZEOF(JSAMPROW));
 
   for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
        ci++, compptr++) {
-    /* Allocate the actual buffer space (3 row groups) for this component.
+	/* Allocate the actual buffer space (3 row groups) for this component.
      * We make the buffer wide enough to allow the downsampler to edge-expand
      * horizontally within the buffer, if it so chooses.
      */
-    true_buffer = (*cinfo->mem->alloc_sarray)
+	true_buffer = (*cinfo->mem->alloc_sarray)
       ((j_common_ptr) cinfo, JPOOL_IMAGE,
        (JDIMENSION) (((long) compptr->width_in_blocks * DCTSIZE *
 		      cinfo->max_h_samp_factor) / compptr->h_samp_factor),
        (JDIMENSION) (3 * rgroup_height));
-    /* Copy true buffer row pointers into the middle of the fake row array */
-    MEMCOPY(fake_buffer + rgroup_height, true_buffer,
+	/* Copy true buffer row pointers into the middle of the fake row array */
+	MEMCOPY(fake_buffer + rgroup_height, true_buffer,
 	    3 * rgroup_height * SIZEOF(JSAMPROW));
-    /* Fill in the above and below wraparound pointers */
-    for (i = 0; i < rgroup_height; i++) {
+	/* Fill in the above and below wraparound pointers */
+	for (i = 0; i < rgroup_height; i++) {
       fake_buffer[i] = true_buffer[2 * rgroup_height + i];
       fake_buffer[4 * rgroup_height + i] = true_buffer[i];
-    }
-    prep->color_buf[ci] = fake_buffer + rgroup_height;
-    fake_buffer += 5 * rgroup_height; /* point to space for next component */
+	}
+	prep->color_buf[ci] = fake_buffer + rgroup_height;
+	fake_buffer += 5 * rgroup_height; /* point to space for next component */
   }
 }
 
@@ -310,10 +326,10 @@ jinit_c_prep_controller (j_compress_ptr cinfo, boolean need_full_buffer)
   jpeg_component_info * compptr;
 
   if (need_full_buffer)		/* safety check */
-    ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
+	ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
 
   prep = (my_prep_ptr)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
+	(*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
 				SIZEOF(my_prep_controller));
   cinfo->prep = (struct jpeg_c_prep_controller *) prep;
   prep->pub.start_pass = start_pass_prep;
@@ -323,23 +339,23 @@ jinit_c_prep_controller (j_compress_ptr cinfo, boolean need_full_buffer)
    * horizontally within the buffer, if it so chooses.
    */
   if (cinfo->downsample->need_context_rows) {
-    /* Set up to provide context rows */
+	/* Set up to provide context rows */
 #ifdef CONTEXT_ROWS_SUPPORTED
-    prep->pub.pre_process_data = pre_process_context;
-    create_context_buffer(cinfo);
+	prep->pub.pre_process_data = pre_process_context;
+	create_context_buffer(cinfo);
 #else
-    ERREXIT(cinfo, JERR_NOT_COMPILED);
+	ERREXIT(cinfo, JERR_NOT_COMPILED);
 #endif
   } else {
-    /* No context, just make it tall enough for one row group */
-    prep->pub.pre_process_data = pre_process_data;
-    for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
+	/* No context, just make it tall enough for one row group */
+	prep->pub.pre_process_data = pre_process_data;
+	for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
 	 ci++, compptr++) {
       prep->color_buf[ci] = (*cinfo->mem->alloc_sarray)
 	((j_common_ptr) cinfo, JPOOL_IMAGE,
 	 (JDIMENSION) (((long) compptr->width_in_blocks * DCTSIZE *
 			cinfo->max_h_samp_factor) / compptr->h_samp_factor),
 	 (JDIMENSION) cinfo->max_v_samp_factor);
-    }
+	}
   }
 }

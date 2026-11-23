@@ -1,3 +1,19 @@
+// =============================================================================
+// jquant1.c
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/ijg/jquant1.c
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 /*
  * jquant1.c
  *
@@ -193,22 +209,22 @@ select_ncolors (j_decompress_ptr cinfo, int Ncolors[])
   /* Compute floor(nc'th root of max_colors). */
   iroot = 1;
   do {
-    iroot++;
-    temp = iroot;		/* set temp = iroot ** nc */
-    for (i = 1; i < nc; i++)
+	iroot++;
+	temp = iroot;		/* set temp = iroot ** nc */
+	for (i = 1; i < nc; i++)
       temp *= iroot;
   } while (temp <= (long) max_colors); /* repeat till iroot exceeds root */
   iroot--;			/* now iroot = floor(root) */
 
   /* Must have at least 2 color values per component */
   if (iroot < 2)
-    ERREXIT1(cinfo, JERR_QUANT_FEW_COLORS, (int) temp);
+	ERREXIT1(cinfo, JERR_QUANT_FEW_COLORS, (int) temp);
 
   /* Initialize to iroot color values for each component */
   total_colors = 1;
   for (i = 0; i < nc; i++) {
-    Ncolors[i] = iroot;
-    total_colors *= iroot;
+	Ncolors[i] = iroot;
+	total_colors *= iroot;
   }
   /* We may be able to increment the count for one or more components without
    * exceeding max_colors, though we know not all can be incremented.
@@ -217,8 +233,8 @@ select_ncolors (j_decompress_ptr cinfo, int Ncolors[])
    * In RGB colorspace, try to increment G first, then R, then B.
    */
   do {
-    changed = FALSE;
-    for (i = 0; i < nc; i++) {
+	changed = FALSE;
+	for (i = 0; i < nc; i++) {
       j = (cinfo->out_color_space == JCS_RGB ? RGB_order[i] : i);
       /* calculate new total_colors if Ncolors[j] is incremented */
       temp = total_colors / Ncolors[j];
@@ -228,7 +244,7 @@ select_ncolors (j_decompress_ptr cinfo, int Ncolors[])
       Ncolors[j]++;		/* OK, apply the increment */
       total_colors = (int) temp;
       changed = TRUE;
-    }
+	}
   } while (changed);
 
   return total_colors;
@@ -273,18 +289,18 @@ create_colormap (j_decompress_ptr cinfo)
 
   /* Report selected color counts */
   if (cinfo->out_color_components == 3)
-    TRACEMS4(cinfo, 1, JTRC_QUANT_3_NCOLORS,
+	TRACEMS4(cinfo, 1, JTRC_QUANT_3_NCOLORS,
 	     total_colors, cquantize->Ncolors[0],
 	     cquantize->Ncolors[1], cquantize->Ncolors[2]);
   else
-    TRACEMS1(cinfo, 1, JTRC_QUANT_NCOLORS, total_colors);
+	TRACEMS1(cinfo, 1, JTRC_QUANT_NCOLORS, total_colors);
 
   /* Allocate and fill in the colormap. */
   /* The colors are ordered in the map in standard row-major order, */
   /* i.e. rightmost (highest-indexed) color changes most rapidly. */
 
   colormap = (*cinfo->mem->alloc_sarray)
-    ((j_common_ptr) cinfo, JPOOL_IMAGE,
+	((j_common_ptr) cinfo, JPOOL_IMAGE,
      (JDIMENSION) total_colors, (JDIMENSION) cinfo->out_color_components);
 
   /* blksize is number of adjacent repeated entries for a component */
@@ -292,10 +308,10 @@ create_colormap (j_decompress_ptr cinfo)
   blkdist = total_colors;
 
   for (i = 0; i < cinfo->out_color_components; i++) {
-    /* fill in colormap entries for i'th color component */
-    nci = cquantize->Ncolors[i]; /* # of distinct values for this color */
-    blksize = blkdist / nci;
-    for (j = 0; j < nci; j++) {
+	/* fill in colormap entries for i'th color component */
+	nci = cquantize->Ncolors[i]; /* # of distinct values for this color */
+	blksize = blkdist / nci;
+	for (j = 0; j < nci; j++) {
       /* Compute j'th output value (out of nci) for component */
       val = output_value(cinfo, i, j, nci-1);
       /* Fill in all colormap entries that have this value of this component */
@@ -304,8 +320,8 @@ create_colormap (j_decompress_ptr cinfo)
 	for (k = 0; k < blksize; k++)
 	  colormap[i][ptr+k] = (JSAMPLE) val;
       }
-    }
-    blkdist = blksize;		/* blksize of this color is blkdist of next */
+	}
+	blkdist = blksize;		/* blksize of this color is blkdist of next */
   }
 
   /* Save the colormap in private storage,
@@ -332,15 +348,15 @@ create_colorindex (j_decompress_ptr cinfo)
    * flag whether it was done in case user changes dithering mode.
    */
   if (cinfo->dither_mode == JDITHER_ORDERED) {
-    pad = MAXJSAMPLE*2;
-    cquantize->is_padded = TRUE;
+	pad = MAXJSAMPLE*2;
+	cquantize->is_padded = TRUE;
   } else {
-    pad = 0;
-    cquantize->is_padded = FALSE;
+	pad = 0;
+	cquantize->is_padded = FALSE;
   }
 
   cquantize->colorindex = (*cinfo->mem->alloc_sarray)
-    ((j_common_ptr) cinfo, JPOOL_IMAGE,
+	((j_common_ptr) cinfo, JPOOL_IMAGE,
      (JDIMENSION) (MAXJSAMPLE+1 + pad),
      (JDIMENSION) cinfo->out_color_components);
 
@@ -348,27 +364,27 @@ create_colorindex (j_decompress_ptr cinfo)
   blksize = cquantize->sv_actual;
 
   for (i = 0; i < cinfo->out_color_components; i++) {
-    /* fill in colorindex entries for i'th color component */
-    nci = cquantize->Ncolors[i]; /* # of distinct values for this color */
-    blksize = blksize / nci;
+	/* fill in colorindex entries for i'th color component */
+	nci = cquantize->Ncolors[i]; /* # of distinct values for this color */
+	blksize = blksize / nci;
 
-    /* adjust colorindex pointers to provide padding at negative indexes. */
-    if (pad)
+	/* adjust colorindex pointers to provide padding at negative indexes. */
+	if (pad)
       cquantize->colorindex[i] += MAXJSAMPLE;
 
-    /* in loop, val = index of current output value, */
-    /* and k = largest j that maps to current val */
-    indexptr = cquantize->colorindex[i];
-    val = 0;
-    k = largest_input_value(cinfo, i, 0, nci-1);
-    for (j = 0; j <= MAXJSAMPLE; j++) {
+	/* in loop, val = index of current output value, */
+	/* and k = largest j that maps to current val */
+	indexptr = cquantize->colorindex[i];
+	val = 0;
+	k = largest_input_value(cinfo, i, 0, nci-1);
+	for (j = 0; j <= MAXJSAMPLE; j++) {
       while (j > k)		/* advance val if past boundary */
 	k = largest_input_value(cinfo, i, ++val, nci-1);
       /* premultiply so that no multiplication needed in main processing */
       indexptr[j] = (JSAMPLE) (val * blksize);
-    }
-    /* Pad at both ends if necessary */
-    if (pad)
+	}
+	/* Pad at both ends if necessary */
+	if (pad)
       for (j = 1; j <= MAXJSAMPLE; j++) {
 	indexptr[-j] = indexptr[0];
 	indexptr[MAXJSAMPLE+j] = indexptr[MAXJSAMPLE];
@@ -389,7 +405,7 @@ make_odither_array (j_decompress_ptr cinfo, int ncolors)
   INT32 num,den;
 
   odither = (ODITHER_MATRIX_PTR)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
+	(*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
 				SIZEOF(ODITHER_MATRIX));
   /* The inter-value distance for this color is MAXJSAMPLE/(ncolors-1).
    * Hence the dither value for the matrix cell with fill order f
@@ -398,14 +414,14 @@ make_odither_array (j_decompress_ptr cinfo, int ncolors)
    */
   den = 2 * ODITHER_CELLS * ((INT32) (ncolors - 1));
   for (j = 0; j < ODITHER_SIZE; j++) {
-    for (k = 0; k < ODITHER_SIZE; k++) {
+	for (k = 0; k < ODITHER_SIZE; k++) {
       num = ((INT32) (ODITHER_CELLS-1 - 2*((int)base_dither_matrix[j][k])))
 	    * MAXJSAMPLE;
       /* Ensure round towards zero despite C's lack of consistency
        * about rounding negative values in integer division...
        */
       odither[j][k] = (int) (num<0 ? -((-num)/den) : num/den);
-    }
+	}
   }
   return odither;
 }
@@ -424,17 +440,17 @@ create_odither_tables (j_decompress_ptr cinfo)
   int i, j, nci;
 
   for (i = 0; i < cinfo->out_color_components; i++) {
-    nci = cquantize->Ncolors[i]; /* # of distinct values for this color */
-    odither = NULL;		/* search for matching prior component */
-    for (j = 0; j < i; j++) {
+	nci = cquantize->Ncolors[i]; /* # of distinct values for this color */
+	odither = NULL;		/* search for matching prior component */
+	for (j = 0; j < i; j++) {
       if (nci == cquantize->Ncolors[j]) {
 	odither = cquantize->odither[j];
 	break;
       }
-    }
-    if (odither == NULL)	/* need a new table? */
+	}
+	if (odither == NULL)	/* need a new table? */
       odither = make_odither_array(cinfo, nci);
-    cquantize->odither[i] = odither;
+	cquantize->odither[i] = odither;
   }
 }
 
@@ -457,15 +473,15 @@ color_quantize (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
   register int nc = cinfo->out_color_components;
 
   for (row = 0; row < num_rows; row++) {
-    ptrin = input_buf[row];
-    ptrout = output_buf[row];
-    for (col = width; col > 0; col--) {
+	ptrin = input_buf[row];
+	ptrout = output_buf[row];
+	for (col = width; col > 0; col--) {
       pixcode = 0;
       for (ci = 0; ci < nc; ci++) {
 	pixcode += GETJSAMPLE(colorindex[ci][GETJSAMPLE(*ptrin++)]);
       }
       *ptrout++ = (JSAMPLE) pixcode;
-    }
+	}
   }
 }
 
@@ -485,14 +501,14 @@ color_quantize3 (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
   JDIMENSION width = cinfo->output_width;
 
   for (row = 0; row < num_rows; row++) {
-    ptrin = input_buf[row];
-    ptrout = output_buf[row];
-    for (col = width; col > 0; col--) {
+	ptrin = input_buf[row];
+	ptrout = output_buf[row];
+	for (col = width; col > 0; col--) {
       pixcode  = GETJSAMPLE(colorindex0[GETJSAMPLE(*ptrin++)]);
       pixcode += GETJSAMPLE(colorindex1[GETJSAMPLE(*ptrin++)]);
       pixcode += GETJSAMPLE(colorindex2[GETJSAMPLE(*ptrin++)]);
       *ptrout++ = (JSAMPLE) pixcode;
-    }
+	}
   }
 }
 
@@ -514,11 +530,11 @@ quantize_ord_dither (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
   JDIMENSION width = cinfo->output_width;
 
   for (row = 0; row < num_rows; row++) {
-    /* Initialize output values to 0 so can process components separately */
-    jzero_far((void FAR *) output_buf[row],
+	/* Initialize output values to 0 so can process components separately */
+	jzero_far((void FAR *) output_buf[row],
 	      (size_t) (width * SIZEOF(JSAMPLE)));
-    row_index = cquantize->row_index;
-    for (ci = 0; ci < nc; ci++) {
+	row_index = cquantize->row_index;
+	for (ci = 0; ci < nc; ci++) {
       input_ptr = input_buf[row] + ci;
       output_ptr = output_buf[row];
       colorindex_ci = cquantize->colorindex[ci];
@@ -538,10 +554,10 @@ quantize_ord_dither (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
 	output_ptr++;
 	col_index = (col_index + 1) & ODITHER_MASK;
       }
-    }
-    /* Advance row index for next row */
-    row_index = (row_index + 1) & ODITHER_MASK;
-    cquantize->row_index = row_index;
+	}
+	/* Advance row index for next row */
+	row_index = (row_index + 1) & ODITHER_MASK;
+	cquantize->row_index = row_index;
   }
 }
 
@@ -566,15 +582,15 @@ quantize3_ord_dither (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
   JDIMENSION width = cinfo->output_width;
 
   for (row = 0; row < num_rows; row++) {
-    row_index = cquantize->row_index;
-    input_ptr = input_buf[row];
-    output_ptr = output_buf[row];
-    dither0 = cquantize->odither[0][row_index];
-    dither1 = cquantize->odither[1][row_index];
-    dither2 = cquantize->odither[2][row_index];
-    col_index = 0;
+	row_index = cquantize->row_index;
+	input_ptr = input_buf[row];
+	output_ptr = output_buf[row];
+	dither0 = cquantize->odither[0][row_index];
+	dither1 = cquantize->odither[1][row_index];
+	dither2 = cquantize->odither[2][row_index];
+	col_index = 0;
 
-    for (col = width; col > 0; col--) {
+	for (col = width; col > 0; col--) {
       pixcode  = GETJSAMPLE(colorindex0[GETJSAMPLE(*input_ptr++) +
 					dither0[col_index]]);
       pixcode += GETJSAMPLE(colorindex1[GETJSAMPLE(*input_ptr++) +
@@ -583,9 +599,9 @@ quantize3_ord_dither (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
 					dither2[col_index]]);
       *output_ptr++ = (JSAMPLE) pixcode;
       col_index = (col_index + 1) & ODITHER_MASK;
-    }
-    row_index = (row_index + 1) & ODITHER_MASK;
-    cquantize->row_index = row_index;
+	}
+	row_index = (row_index + 1) & ODITHER_MASK;
+	cquantize->row_index = row_index;
   }
 }
 
@@ -617,10 +633,10 @@ quantize_fs_dither (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
   SHIFT_TEMPS
 
   for (row = 0; row < num_rows; row++) {
-    /* Initialize output values to 0 so can process components separately */
-    jzero_far((void FAR *) output_buf[row],
+	/* Initialize output values to 0 so can process components separately */
+	jzero_far((void FAR *) output_buf[row],
 	      (size_t) (width * SIZEOF(JSAMPLE)));
-    for (ci = 0; ci < nc; ci++) {
+	for (ci = 0; ci < nc; ci++) {
       input_ptr = input_buf[row] + ci;
       output_ptr = output_buf[row];
       if (cquantize->on_odd_row) {
@@ -691,8 +707,8 @@ quantize_fs_dither (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
        * it is for the dummy column before or after the actual array.
        */
       errorptr[0] = (FSERROR) bpreverr; /* unload prev err into array */
-    }
-    cquantize->on_odd_row = (cquantize->on_odd_row ? FALSE : TRUE);
+	}
+	cquantize->on_odd_row = (cquantize->on_odd_row ? FALSE : TRUE);
   }
 }
 
@@ -709,7 +725,7 @@ alloc_fs_workspace (j_decompress_ptr cinfo)
 
   arraysize = (size_t) ((cinfo->output_width + 2) * SIZEOF(FSERROR));
   for (i = 0; i < cinfo->out_color_components; i++) {
-    cquantize->fserrors[i] = (FSERRPTR)
+	cquantize->fserrors[i] = (FSERRPTR)
       (*cinfo->mem->alloc_large)((j_common_ptr) cinfo, JPOOL_IMAGE, arraysize);
   }
 }
@@ -732,41 +748,41 @@ start_pass_1_quant (j_decompress_ptr cinfo, boolean is_pre_scan)
   /* Initialize for desired dithering mode. */
   switch (cinfo->dither_mode) {
   case JDITHER_NONE:
-    if (cinfo->out_color_components == 3)
+	if (cinfo->out_color_components == 3)
       cquantize->pub.color_quantize = color_quantize3;
-    else
+	else
       cquantize->pub.color_quantize = color_quantize;
-    break;
+	break;
   case JDITHER_ORDERED:
-    if (cinfo->out_color_components == 3)
+	if (cinfo->out_color_components == 3)
       cquantize->pub.color_quantize = quantize3_ord_dither;
-    else
+	else
       cquantize->pub.color_quantize = quantize_ord_dither;
-    cquantize->row_index = 0;	/* initialize state for ordered dither */
-    /* If user changed to ordered dither from another mode,
+	cquantize->row_index = 0;	/* initialize state for ordered dither */
+	/* If user changed to ordered dither from another mode,
      * we must recreate the color index table with padding.
      * This will cost extra space, but probably isn't very likely.
      */
-    if (! cquantize->is_padded)
+	if (! cquantize->is_padded)
       create_colorindex(cinfo);
-    /* Create ordered-dither tables if we didn't already. */
-    if (cquantize->odither[0] == NULL)
+	/* Create ordered-dither tables if we didn't already. */
+	if (cquantize->odither[0] == NULL)
       create_odither_tables(cinfo);
-    break;
+	break;
   case JDITHER_FS:
-    cquantize->pub.color_quantize = quantize_fs_dither;
-    cquantize->on_odd_row = FALSE; /* initialize state for F-S dither */
-    /* Allocate Floyd-Steinberg workspace if didn't already. */
-    if (cquantize->fserrors[0] == NULL)
+	cquantize->pub.color_quantize = quantize_fs_dither;
+	cquantize->on_odd_row = FALSE; /* initialize state for F-S dither */
+	/* Allocate Floyd-Steinberg workspace if didn't already. */
+	if (cquantize->fserrors[0] == NULL)
       alloc_fs_workspace(cinfo);
-    /* Initialize the propagated errors to zero. */
-    arraysize = (size_t) ((cinfo->output_width + 2) * SIZEOF(FSERROR));
-    for (i = 0; i < cinfo->out_color_components; i++)
+	/* Initialize the propagated errors to zero. */
+	arraysize = (size_t) ((cinfo->output_width + 2) * SIZEOF(FSERROR));
+	for (i = 0; i < cinfo->out_color_components; i++)
       jzero_far((void FAR *) cquantize->fserrors[i], arraysize);
-    break;
+	break;
   default:
-    ERREXIT(cinfo, JERR_NOT_COMPILED);
-    break;
+	ERREXIT(cinfo, JERR_NOT_COMPILED);
+	break;
   }
 }
 
@@ -801,7 +817,7 @@ jinit_1pass_quantizer (j_decompress_ptr cinfo)
   my_cquantize_ptr cquantize;
 
   cquantize = (my_cquantize_ptr)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
+	(*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
 				SIZEOF(my_cquantizer));
   cinfo->cquantize = (struct jpeg_color_quantizer *) cquantize;
   cquantize->pub.start_pass = start_pass_1_quant;
@@ -812,10 +828,10 @@ jinit_1pass_quantizer (j_decompress_ptr cinfo)
 
   /* Make sure my internal arrays won't overflow */
   if (cinfo->out_color_components > MAX_Q_COMPS)
-    ERREXIT1(cinfo, JERR_QUANT_COMPONENTS, MAX_Q_COMPS);
+	ERREXIT1(cinfo, JERR_QUANT_COMPONENTS, MAX_Q_COMPS);
   /* Make sure colormap indexes can be represented by JSAMPLEs */
   if (cinfo->desired_number_of_colors > (MAXJSAMPLE+1))
-    ERREXIT1(cinfo, JERR_QUANT_MANY_COLORS, MAXJSAMPLE+1);
+	ERREXIT1(cinfo, JERR_QUANT_MANY_COLORS, MAXJSAMPLE+1);
 
   /* Create the colormap and color index table. */
   create_colormap(cinfo);
@@ -828,7 +844,7 @@ jinit_1pass_quantizer (j_decompress_ptr cinfo)
    * possibly overrun the max_memory_to_use setting.
    */
   if (cinfo->dither_mode == JDITHER_FS)
-    alloc_fs_workspace(cinfo);
+	alloc_fs_workspace(cinfo);
 }
 
 #endif /* QUANT_1PASS_SUPPORTED */

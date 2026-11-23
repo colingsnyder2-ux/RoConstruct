@@ -1,3 +1,19 @@
+// =============================================================================
+// Log.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Log.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #line 1 ".\\G3Dcpp\\Log.cpp"
 /**
   @file Log.cpp
@@ -15,105 +31,106 @@
 #include <time.h>
 
 #ifdef G3D_WIN32
-    #include <imagehlp.h>
+	#include <imagehlp.h>
 #else
-    #include <stdarg.h>
+	#include <stdarg.h>
 #endif
 
-namespace G3D {
+namespace G3D
+{
 
 Log* Log::commonLog = NULL;
 
 Log::Log(const std::string& filename, int stripFromStackBottom) :
-    stripFromStackBottom(stripFromStackBottom) {
+	stripFromStackBottom(stripFromStackBottom) {
 
-    this->filename = filename;
+	this->filename = filename;
 
-    logFile = fopen(filename.c_str(), "w");
+	logFile = fopen(filename.c_str(), "w");
 
-    if (logFile != NULL) {
-        // Turn off buffering.
-        setvbuf(logFile, NULL, _IONBF, 0);
+	if (logFile != NULL) {
+		// Turn off buffering.
+		setvbuf(logFile, NULL, _IONBF, 0);
 
-        fprintf(logFile, "Application Log\n");
-        time_t t;
-        time(&t);
-        fprintf(logFile, "Start: %s\n", ctime(&t));
-        fflush(logFile);
-    }
+		fprintf(logFile, "Application Log\n");
+		time_t t;
+		time(&t);
+		fprintf(logFile, "Start: %s\n", ctime(&t));
+		fflush(logFile);
+	}
 
-    if (commonLog == NULL) {
-        commonLog = this;
-    }
+	if (commonLog == NULL) {
+		commonLog = this;
+	}
 }
 
 Log::~Log() {
-    section("Shutdown");
-    println("Closing log file");
+	section("Shutdown");
+	println("Closing log file");
 
-    // Make sure we don't leave a dangling pointer
-    if (Log::commonLog == this) {
-        Log::commonLog = NULL;
-    }
+	// Make sure we don't leave a dangling pointer
+	if (Log::commonLog == this) {
+		Log::commonLog = NULL;
+	}
 
-    if (logFile != NULL) {
-        fclose(logFile);
-    }
+	if (logFile != NULL) {
+		fclose(logFile);
+	}
 }
 
 FILE* Log::getFile() const {
-    return logFile;
+	return logFile;
 }
 
 Log* Log::common() {
-    if (commonLog == NULL) {
-        commonLog = new Log();
-    }
-    return commonLog;
+	if (commonLog == NULL) {
+		commonLog = new Log();
+	}
+	return commonLog;
 }
 
 std::string Log::getCommonLogFilename() {
-    return common()->filename;
+	return common()->filename;
 }
 
 void Log::section(const std::string& s) {
-    if (logFile != NULL) {
-        fprintf(logFile, "_____________________________________________________\n");
-        fprintf(logFile, "\n    ###    %s    ###\n\n", s.c_str());
-    }
+	if (logFile != NULL) {
+		fprintf(logFile, "_____________________________________________________\n");
+		fprintf(logFile, "\n    ###    %s    ###\n\n", s.c_str());
+	}
 }
 
 void __cdecl Log::printf(const char* fmt, ...) {
-    printHeader();
+	printHeader();
 
 	va_list arg_list;
 	va_start(arg_list, fmt);
-    print(vformat(fmt, arg_list));
-    va_end(arg_list);
+	print(vformat(fmt, arg_list));
+	va_end(arg_list);
 }
 
 void __cdecl Log::vprintf(const char* fmt, va_list argPtr) {
-    vfprintf(logFile, fmt, argPtr);
+	vfprintf(logFile, fmt, argPtr);
 }
 
 void Log::print(const std::string& s) {
-    if (logFile != NULL) {
-        printHeader();
-        fprintf(logFile, "%s", s.c_str());
-    }
+	if (logFile != NULL) {
+		printHeader();
+		fprintf(logFile, "%s", s.c_str());
+	}
 }
 
 void Log::println(const std::string& s) {
-    if (logFile != NULL) {
-        printHeader();
-        fprintf(logFile, "%s\n", s.c_str());
-    }
+	if (logFile != NULL) {
+		printHeader();
+		fprintf(logFile, "%s\n", s.c_str());
+	}
 }
 
 void Log::printHeader() {
-    time_t t;
-    if (time(&t) != ((time_t)-1)) {
-        /*
+	time_t t;
+	if (time(&t) != ((time_t)-1)) {
+		/*
         char buf[32];
         strftime(buf, 32, "[%H:%M:%S]", localtime(&t));
 
@@ -127,9 +144,9 @@ void Log::printHeader() {
         fprintf(logFile, "\n %s \n", buf);
         */
 
-    } else {
-        println("[Error getting time]");
-    }
+	} else {
+		println("[Error getting time]");
+	}
 }
 
 }

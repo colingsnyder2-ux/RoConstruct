@@ -1,3 +1,19 @@
+// =============================================================================
+// Service.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/v8tree/Service.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "v8tree/Service.h"
 
 namespace RBX
@@ -106,24 +122,25 @@ namespace RBX
 
 size_t RBX::ServiceProvider::newIndex()
 {
-    static size_t index = 0xffffffff;
-    return InterlockedIncrement(reinterpret_cast<LONG*>(&index));
+	static size_t index = 0xffffffff;
+	return InterlockedIncrement(reinterpret_cast<LONG*>(&index));
 }
 
 boost::shared_ptr<RBX::Instance> RBX::ServiceProvider::findServiceByClassName(const Name& name) const
 {
-    std::map<const Name*, boost::shared_ptr<Instance> >::const_iterator it = serviceMap.find(&name);
-    if (it != serviceMap.end()) return it->second;
-    return boost::shared_ptr<Instance>();
+	std::map<const Name*, boost::shared_ptr<Instance> >::const_iterator it = serviceMap.find(&name);
+	if (it != serviceMap.end()) return it->second;
+	return boost::shared_ptr<Instance>();
 }
 
 template class std::_Tmap_traits<RBX::Name const *,boost::shared_ptr<RBX::Instance>,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,boost::shared_ptr<RBX::Instance> > >,0>;
 template class std::_Tree<std::_Tmap_traits<RBX::Name const *,boost::shared_ptr<RBX::Instance>,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,boost::shared_ptr<RBX::Instance> > >,0> >;
 
-namespace RBX {
+namespace RBX
+{
 void ServiceProvider::clearServices(void)
 {
-    serviceArray.clear();
-    serviceMap.clear();
+	serviceArray.clear();
+	serviceMap.clear();
 }
 }

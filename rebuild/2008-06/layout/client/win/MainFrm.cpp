@@ -1,3 +1,19 @@
+// =============================================================================
+// MainFrm.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/win/MainFrm.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "CMainFrame.h"
 
 extern bool nativeLockA, nativeLockB, nativeLockC;
@@ -6,7 +22,11 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& create)
 {
     if (!CMDIFrameWnd::PreCreateWindow(create)) return FALSE;
     AfxGetModuleState();
-    create.lpszClass = AfxRegisterWndClass(0, 0, 0, ::LoadIcon(AfxFindResourceHandle(MAKEINTRESOURCE(0x80), RT_GROUP_ICON), MAKEINTRESOURCE(0x80)));
+    create.lpszClass = AfxRegisterWndClass(
+        0,
+        0,
+        0,
+        ::LoadIcon(AfxFindResourceHandle(MAKEINTRESOURCE(0x80), RT_GROUP_ICON), MAKEINTRESOURCE(0x80)));
     return TRUE;
 }
 
@@ -294,7 +314,10 @@ void CMainFrame::restoreFullscreen()
     if (::GetMonitorInfoA(monitor, &info)) {
         ShowWindow(0);
         LONG result = ::ChangeDisplaySettingsExA(info.szDevice, NULL, NULL, 0, NULL);
-        if (result) RBX::StandardOut::singleton()->print(RBX::MESSAGE_ERROR, "CMainFrame::RestoreResolution ChangeDisplaySettings == %d", result);
+        if (result) RBX::StandardOut::singleton()->print(
+            RBX::MESSAGE_ERROR,
+            "CMainFrame::RestoreResolution ChangeDisplaySettings == %d",
+            result);
     }
     ModifyStyle(0, WS_CAPTION | WS_THICKFRAME, 0);
 }
@@ -405,7 +428,9 @@ void CMainFrame::OnClose()
 void CMainFrame::updateMonitor()
 {
     monitor = ::MonitorFromWindow(m_hWnd, MONITOR_DEFAULTTONEAREST);
-    if (!monitor) RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, "CMainFrameFrameWnd::getMonitorInfo MonitorFromWindow returned NULL");
+    if (!monitor) RBX::StandardOut::singleton()->print(
+        RBX::MESSAGE_WARNING,
+        "CMainFrameFrameWnd::getMonitorInfo MonitorFromWindow returned NULL");
 }
 
 #include "v8datamodel/BrickColor.h"

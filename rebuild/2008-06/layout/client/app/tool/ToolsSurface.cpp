@@ -1,3 +1,19 @@
+// =============================================================================
+// ToolsSurface.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/tool/ToolsSurface.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 // Unsplit: combined from AxisMoveToolCore/Bounds/Down/Move/Render/Methods (mew 5fe2214 layout unsplit for native-doc).
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
@@ -14,7 +30,8 @@
 #include "AppDraw/DrawAdorn.h"
 #include <algorithm>
 
-namespace RBX {
+namespace RBX
+{
 
 char sAxisMoveTool[] = "AxisMove";
 
@@ -130,6 +147,8 @@ void AxisMoveTool::onMouseIdle(const UIEvent& event) {
 
 }
 
+// Explicit instantiations: they give this file the same symbols as the original object,
+// where other files used them. Likely removable once the whole client links and those users exist.
 template class RBX::ServiceClient<RBX::FilteredSelection<RBX::PVInstance> >;
 template class RBX::ServiceClient<RBX::Selection>;
 template class boost::function0<unsigned int,std::allocator<boost::function_base> >;
@@ -143,175 +162,181 @@ template class std::vector<RBX::Primitive *,std::allocator<RBX::Primitive *> >;
 #include "tool/ModelTool.h"
 #include "v8datamodel/PartInstance.h"
 
-namespace RBX {
+namespace RBX
+{
 ModelTool::ModelTool(Workspace* workspace) : MouseCommand(workspace) {}
 
 void ModelTool::onMouseHover(const UIEvent& input)
 {
-    if (PartInstance* part = getPart(input, NULL))
-        target = shared_from(Workspace::findTopInstance(part));
-    else
-        target.reset();
+	if (PartInstance* part = getPart(input, NULL))
+		target = shared_from(Workspace::findTopInstance(part));
+	else
+		target.reset();
 }
 
 void ModelTool::render3dAdorn(Adorn* adorn)
 {
-    // Rejected: the dynamic_cast alone (no explicit target test) drops the original's leading null check (49 of 53 B).
-    if (target)
-        if (IRenderable* renderable = dynamic_cast<IRenderable*>(target.get()))
-            renderable->render3dSelect(adorn, SELECT_NORMAL);
+	// Rejected: the dynamic_cast alone (no explicit target test) drops the original's leading null check (49 of 53 B).
+	if (target)
+		if (IRenderable* renderable = dynamic_cast<IRenderable*>(target.get()))
+			renderable->render3dSelect(adorn, SELECT_NORMAL);
 }
 }
 
 #include "tool/ModelTools.h"
 #include "util/Sound.h"
 
-namespace RBX {
+namespace RBX
+{
 Instance* findUnanchoredPart(Instance* instance)
 {
-    if (PartInstance* part = dynamic_cast<PartInstance*>(instance))
-        if (!part->getAnchored()) return part;
-    boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > children = instance->children.read();
-    if (children) {
-        std::vector<boost::shared_ptr<Instance> >::const_iterator end = children->end();
-        std::vector<boost::shared_ptr<Instance> >::const_iterator it = children->begin();
-        for (; it != end; ++it)
-            if (findUnanchoredPart(it->get())) return it->get();
-    }
-    return NULL;
+	if (PartInstance* part = dynamic_cast<PartInstance*>(instance))
+		if (!part->getAnchored()) return part;
+	boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > children = instance->children.read();
+	if (children) {
+		std::vector<boost::shared_ptr<Instance> >::const_iterator end = children->end();
+		std::vector<boost::shared_ptr<Instance> >::const_iterator it = children->begin();
+		for (; it != end; ++it)
+			if (findUnanchoredPart(it->get())) return it->get();
+	}
+	return NULL;
 }
 
 void applyAnchored(Instance* instance, const bool& value)
 {
-    bool local = value;
-    if (PartInstance* part = dynamic_cast<PartInstance*>(instance))
-        part->setAnchored(local);
-    else {
-        Instance::AnchorAction action = { local };
-        instance->applyAnchoredToChildren(action);
-    }
+	bool local = value;
+	if (PartInstance* part = dynamic_cast<PartInstance*>(instance))
+		part->setAnchored(local);
+	else {
+		Instance::AnchorAction action = { local };
+		instance->applyAnchoredToChildren(action);
+	}
 }
 
 void AnchorTool::onMouseHover(const UIEvent& input)
 {
-    boost::shared_ptr<Instance> previous = target;
-    ModelTool::onMouseHover(input);
-    if (previous != target) {
-        bool value = target ? findUnanchoredPart(target.get()) == NULL : false;
-        anchored = value;
-    }
+	boost::shared_ptr<Instance> previous = target;
+	ModelTool::onMouseHover(input);
+	if (previous != target) {
+		bool value = target ? findUnanchoredPart(target.get()) == NULL : false;
+		anchored = value;
+	}
 }
 
 MouseCommand* AnchorTool::onMouseDown(const UIEvent&)
 {
-    if (target && !PartInstance::getLocked(target.get())) {
-        bool value = findUnanchoredPart(target.get()) != NULL;
-        applyAnchored(target.get(), value);
-        ServiceProvider::create<Soundscape::SoundService>(workspace)->playSound(PING_SOUND);
-    }
-    return this;
+	if (target && !PartInstance::getLocked(target.get())) {
+		bool value = findUnanchoredPart(target.get()) != NULL;
+		applyAnchored(target.get(), value);
+		ServiceProvider::create<Soundscape::SoundService>(workspace)->playSound(PING_SOUND);
+	}
+	return this;
 }
 }
 
-namespace RBX {
+namespace RBX
+{
 const std::string AnchorTool::getCursorName() const
 {
-    if (target) {
-        if (anchored) return "UnAnchorCursor";
-        return "AnchorCursor";
-    }
-    return "AnchorCursor";
+	if (target) {
+		if (anchored) return "UnAnchorCursor";
+		return "AnchorCursor";
+	}
+	return "AnchorCursor";
 }
 
 const std::string LockTool::getCursorName() const
 {
-    if (target) {
-        bool locked = PartInstance::getLocked(target.get());
-        if (locked) return "UnlockCursor";
-        return "LockCursor";
-    }
-    return "LockCursor";
+	if (target) {
+		bool locked = PartInstance::getLocked(target.get());
+		if (locked) return "UnlockCursor";
+		return "LockCursor";
+	}
+	return "LockCursor";
 }
 
 MouseCommand* LockTool::onMouseDown(const UIEvent&)
 {
-    if (target) {
-        bool value = PartInstance::getLocked(target.get());
-        PartInstance::setLocked(target.get(), !value);
-        ServiceProvider::create<Soundscape::SoundService>(workspace)->playSound(PING_SOUND);
-    }
-    return this;
+	if (target) {
+		bool value = PartInstance::getLocked(target.get());
+		PartInstance::setLocked(target.get(), !value);
+		ServiceProvider::create<Soundscape::SoundService>(workspace)->playSound(PING_SOUND);
+	}
+	return this;
 }
 }
 
 #include "tool/ResizeTool.h"
 
-namespace RBX {
+namespace RBX
+{
 void recordCameraHistory(const char*, const Instance*);
 MouseCommand* ResizeTool::isSticky() const { return new ResizeTool(workspace); }
 const std::string ResizeTool::getCursorName() const {
-    return overHandle ? "ResizeCursor" : ArrowToolBase::getCursorName();
+	return overHandle ? "ResizeCursor" : ArrowToolBase::getCursorName();
 }
 void ResizeTool::onMouseHover(const UIEvent& inputObject) {
-    findTargetPV(inputObject);
-    overHandle = !targetPV.expired();
-    ArrowToolBase::onMouseHover(inputObject);
+	findTargetPV(inputObject);
+	overHandle = !targetPV.expired();
+	ArrowToolBase::onMouseHover(inputObject);
 }
 MouseCommand* ResizeTool::onMouseDown(const UIEvent& inputObject) {
-    findTargetPV(inputObject);
-    if (targetPV.expired()) return ArrowToolBase::onMouseDown(inputObject);
-    down = inputObject.mousePosition;
-    moveAxis = 0;
-    movePerp = 0;
-    overHandle = true;
-    capture();
-    return this;
+	findTargetPV(inputObject);
+	if (targetPV.expired()) return ArrowToolBase::onMouseDown(inputObject);
+	down = inputObject.mousePosition;
+	moveAxis = 0;
+	movePerp = 0;
+	overHandle = true;
+	capture();
+	return this;
 }
 MouseCommand* ResizeTool::onMouseUp(const UIEvent&) {
-    if (captured()) {
-        releaseCapture();
-        if (!targetPV.expired()) {
-            recordCameraHistory(getName().c_str(), workspace);
-            workspace->getDataState().setDirty(true);
-        }
-    }
-    return NULL;
+	if (captured()) {
+		releaseCapture();
+		if (!targetPV.expired()) {
+			recordCameraHistory(getName().c_str(), workspace);
+			workspace->getDataState().setDirty(true);
+		}
+	}
+	return NULL;
 }
 }
 
 #include <cmath>
 
-namespace RBX {
+namespace RBX
+{
 static inline G3D::Vector3 directNormal(NormalId id, const G3D::CoordinateFrame& f) {
-    const G3D::Matrix3& m = f.rotation;
-    int c = id % 3;
-    int sign = 1 - (id / 3) * 2;
-    return sign * G3D::Vector3(m[0][c], m[1][c], m[2][c]);
+	const G3D::Matrix3& m = f.rotation;
+	int c = id % 3;
+	int sign = 1 - (id / 3) * 2;
+	return sign * G3D::Vector3(m[0][c], m[1][c], m[2][c]);
 }
 void ResizeTool::onMouseMove(const UIEvent& event) {
-    if (targetPV.expired()) return;
-    G3D::Vector3 direction = directNormal(localNormalId, targetPV.lock()->getLocation());
-    G3D::Ray axis = G3D::Ray::fromOriginAndDirection(hitPointGrid, direction);
-    G3D::Ray mouse = getUnitMouseRay(event);
-    G3D::Vector3 hit = Math::closestPointOnRay(axis, mouse);
-    float dot = (hit - hitPointGrid).dot(axis.direction);
-    float delta = dot - moveAxis;
-    if (delta > 1.0f) {
-        int steps = G3D::iRound((float)std::floor(delta));
-        moveAxis += steps;
-        capturedDrag(steps);
-    }
-    if (delta < -1.0f) {
-        int steps = -G3D::iRound((float)std::floor(-delta));
-        moveAxis += steps;
-        capturedDrag(steps);
-    }
+	if (targetPV.expired()) return;
+	G3D::Vector3 direction = directNormal(localNormalId, targetPV.lock()->getLocation());
+	G3D::Ray axis = G3D::Ray::fromOriginAndDirection(hitPointGrid, direction);
+	G3D::Ray mouse = getUnitMouseRay(event);
+	G3D::Vector3 hit = Math::closestPointOnRay(axis, mouse);
+	float dot = (hit - hitPointGrid).dot(axis.direction);
+	float delta = dot - moveAxis;
+	if (delta > 1.0f) {
+		int steps = G3D::iRound((float)std::floor(delta));
+		moveAxis += steps;
+		capturedDrag(steps);
+	}
+	if (delta < -1.0f) {
+		int steps = -G3D::iRound((float)std::floor(-delta));
+		moveAxis += steps;
+		capturedDrag(steps);
+	}
 }
 }
 
 #include "tool/ShootTools.h"
 
-namespace RBX {
+namespace RBX
+{
 MouseCommand* ShootTool::onMouseDown(const UIEvent& input) { capture(); if (!remaining) shoot(input); return this; }
 void ShootTool::onMouseIdle(const UIEvent& input) { if (remaining>0) --remaining; if (captured()) onMouseMove(input); }
 void ShootTool::onMouseMove(const UIEvent& input) { if (enabled && !remaining) shoot(input); }
@@ -322,29 +347,31 @@ MouseCommand* SlingshotTool::isSticky() const { return new SlingshotTool(workspa
 
 #include "tool/SurfaceTool.h"
 
-namespace RBX {
+namespace RBX
+{
 SurfaceTool::SurfaceTool(Workspace* workspace) : MouseCommand(workspace), surface(NULL) {}
 }
 
-namespace RBX {
+namespace RBX
+{
 void recordCameraHistory(const char*, const Instance*);
 MouseCommand* SurfaceTool::onMouseDown(const UIEvent& input) {
-    onMouseHover(input);
-    if (surface) {
-        applyToSurface(surface);
-        ServiceProvider::create<Soundscape::SoundService>(reinterpret_cast<Instance*>(workspace))->playSound(PING_SOUND);
-        recordCameraHistory(cursor.c_str(), reinterpret_cast<Instance*>(workspace));
-        workspace->getDataState().setDirty(true);
-    }
-    return NULL;
+	onMouseHover(input);
+	if (surface) {
+		applyToSurface(surface);
+		ServiceProvider::create<Soundscape::SoundService>(reinterpret_cast<Instance*>(workspace))->playSound(PING_SOUND);
+		recordCameraHistory(cursor.c_str(), reinterpret_cast<Instance*>(workspace));
+		workspace->getDataState().setDirty(true);
+	}
+	return NULL;
 }
 void SurfaceTool::onMouseHover(const UIEvent& input) {
-    PartInstance* part;
-    surface = getSurface(input, part, surfaceId);
-    partInstance = shared_from(surface ? part : NULL);
+	PartInstance* part;
+	surface = getSurface(input, part, surfaceId);
+	partInstance = shared_from(surface ? part : NULL);
 }
 void SurfaceTool::render3dAdorn(Adorn* adorn) {
-    if (partInstance)
-        DrawAdorn::partSurface(partInstance->getPart(), surfaceId, adorn, G3D::Color4(G3D::Color3::orange(), 1.0f));
+	if (partInstance)
+		DrawAdorn::partSurface(partInstance->getPart(), surfaceId, adorn, G3D::Color4(G3D::Color3::orange(), 1.0f));
 }
 }

@@ -1,3 +1,19 @@
+// =============================================================================
+// Selection.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/app/v8datamodel/Selection.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "v8datamodel/Selection.h"
 
 namespace RBX
@@ -8,8 +24,15 @@ namespace RBX
 	}
 }
 
-static RBX::Reflection::BoundFuncDesc<RBX::Selection, boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance> > >(void), 0> func_getSelection(&RBX::Selection::getSelection2, "Get", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Selection, void(boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance> > >), 1> func_setSelection(&RBX::Selection::setSelection, "Set", "selection", RBX::Reflection::FunctionDescriptor::AnyCaller);
+static RBX::Reflection::BoundFuncDesc<RBX::Selection, boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance> > >(void), 0> func_getSelection(
+	&RBX::Selection::getSelection2,
+	"Get",
+	RBX::Reflection::FunctionDescriptor::AnyCaller);
+static RBX::Reflection::BoundFuncDesc<RBX::Selection, void(boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance> > >), 1> func_setSelection(
+	&RBX::Selection::setSelection,
+	"Set",
+	"selection",
+	RBX::Reflection::FunctionDescriptor::AnyCaller);
 
 namespace RBX
 {
@@ -44,7 +67,8 @@ template class std::vector<RBX::ISelectionBase *,std::allocator<RBX::ISelectionB
 
 #include <algorithm>
 
-namespace RBX {
+namespace RBX
+{
 	bool Selection::isSelected(const Instance* instance) const
 	{
 		return std::find(selection->begin(), selection->end(), shared_from(instance)) != selection->end();
@@ -52,40 +76,43 @@ namespace RBX {
 }
 
 #ifdef NATIVE_SELECTION_ROOT_ANCESTOR_PENDING
-namespace RBX {
+namespace RBX
+{
 void Selection::onEvent(const Instance* source, AncestorChanged event) {
-    if (source->getRootAncestor() != this->getRootAncestor()) removeFromSelection(source);
+	if (source->getRootAncestor() != this->getRootAncestor()) removeFromSelection(source);
 }
 }
 #endif
 
-namespace RBX {
+namespace RBX
+{
 
 boost::shared_ptr<Instance> Selection::back() const
 {
-    return selection->size() > 0 ? selection->back() : boost::shared_ptr<Instance>();
+	return selection->size() > 0 ? selection->back() : boost::shared_ptr<Instance>();
 }
 
 }
 
 boost::shared_ptr<RBX::Instance> RBX::Selection::front() const
 {
-    return selection->size() > 0 ? *selection->begin() : boost::shared_ptr<Instance>();
+	return selection->size() > 0 ? *selection->begin() : boost::shared_ptr<Instance>();
 }
 
 typedef std::vector<boost::shared_ptr<RBX::Instance> >::const_iterator SelectionIterator;
 
 SelectionIterator RBX::Selection::begin() const
 {
-    return selection->begin();
+	return selection->begin();
 }
 
 SelectionIterator RBX::Selection::end() const
 {
-    return selection->end();
+	return selection->end();
 }
 
-namespace RBX {
+namespace RBX
+{
 Selection::~Selection()
 {
 }

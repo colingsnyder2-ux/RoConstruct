@@ -1,3 +1,19 @@
+// =============================================================================
+// ReliabilityLayer.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/network/raknet30/source/ReliabilityLayer.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #include "ReliabilityLayer.h"
 
 bool ReliabilityLayer::AckTimeout(RakNetTimeNS curTime)
@@ -208,6 +224,8 @@ void ReliabilityLayer::FreeThreadedMemory()
 {
 }
 
+// Explicit instantiations: they give this file the same symbols as the original object,
+// where other files used them. Likely removable once the whole client links and those users exist.
 template class DataStructures::MemoryPool<DataStructures::Page<unsigned int,InternalPacket *,32> >;
 template class DataStructures::MemoryPool<InternalPacket>;
 template class DataStructures::Queue<DataStructures::Page<unsigned int,InternalPacket *,32> *>;
@@ -546,13 +564,24 @@ bool ReliabilityLayer::HandleSocketReceiveFromConnectedPlayer( const char *buffe
 	while ( internalPacket )
 	{
 		for (i=0; i < messageHandlerList.Size(); i++)
-			messageHandlerList[i]->OnInternalPacket(internalPacket, receivePacketCount, systemAddress, (RakNetTime)(time/(RakNetTimeNS)1000), false);
+			messageHandlerList[i]->OnInternalPacket(
+				internalPacket,
+				receivePacketCount,
+				systemAddress,
+				(RakNetTime)(time/(RakNetTimeNS)1000),
+				false);
 
 		{
 #ifdef _DEBUG_LOGGER
 			{
 				char temp[256];
-				sprintf(temp, "%p: Got packet %i data: %i bitlen: %i\n", this, internalPacket->messageNumber, (unsigned char) internalPacket->data[0], internalPacket->dataBitLength);
+				sprintf(
+					temp,
+					"%p: Got packet %i data: %i bitlen: %i\n",
+					this,
+					internalPacket->messageNumber,
+					(unsigned char) internalPacket->data[0],
+					internalPacket->dataBitLength);
 				OutputDebugStr(temp);
 			}
 #endif
@@ -749,7 +778,10 @@ bool ReliabilityLayer::HandleSocketReceiveFromConnectedPlayer( const char *buffe
 				if ( internalPacket->orderingChannel >= NUMBER_OF_ORDERED_STREAMS )
 				{
 #ifdef _DEBUG
-					printf("Got invalid ordering channel %i from packet %i\n", internalPacket->orderingChannel, internalPacket->messageNumber);
+					printf(
+						"Got invalid ordering channel %i from packet %i\n",
+						internalPacket->orderingChannel,
+						internalPacket->messageNumber);
 #endif
 					// Invalid packet
 					delete [] internalPacket->data;
@@ -792,11 +824,18 @@ bool ReliabilityLayer::HandleSocketReceiveFromConnectedPlayer( const char *buffe
 								if ( orderingListAtOrderingStream->Peek()->orderingIndex == waitingForOrderedPacketReadIndex[ orderingChannelCopy ] )
 								{
 									/*
-									RakNet::BitStream temp(orderingListAtOrderingStream->Peek()->data, BITS_TO_BYTES(orderingListAtOrderingStream->Peek()->dataBitLength), false);
+									RakNet::BitStream temp(
+										orderingListAtOrderingStream->Peek()->data,
+										BITS_TO_BYTES(orderingListAtOrderingStream->Peek()->dataBitLength),
+										false);
 									temp.IgnoreBits(8);
 									unsigned int receivedPacketNumber=0;
 									temp.Read(receivedPacketNumber);
-									printf("Receive: receivedPacketNumber=%i orderingIndex=%i waitingFor=%i\n", receivedPacketNumber, orderingListAtOrderingStream->Peek()->orderingIndex, waitingForOrderedPacketReadIndex[ orderingChannelCopy ]);
+									printf(
+										"Receive: receivedPacketNumber=%i orderingIndex=%i waitingFor=%i\n",
+										receivedPacketNumber,
+										orderingListAtOrderingStream->Peek()->orderingIndex,
+										waitingForOrderedPacketReadIndex[ orderingChannelCopy ]);
 									*/
 
 									//printf("Pushing delayed packet %i with ordering index %i. outputQueue.Size()==%i\n", orderingListAtOrderingStream->Peek()->messageNumber, orderingListAtOrderingStream->Peek()->orderingIndex, outputQueue.Size() );

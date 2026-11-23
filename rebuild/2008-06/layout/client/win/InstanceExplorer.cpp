@@ -1,3 +1,19 @@
+// =============================================================================
+// InstanceExplorer.cpp
+// =============================================================================
+// RoConstruct: matching-decompilation / source recovery of the 2008-06 Roblox client.
+//   Project : https://github.com/colingsnyder2-ux/RoConstruct
+//   Branch  : layout/2008-06 (organized layout, one file per original source path)
+//   Path    : rebuild/2008-06/layout/client/win/InstanceExplorer.cpp
+//
+// Recovered from the shipped binary and tidied for this layout. Where this file
+// is a compiled unit, its object is checked identical to the live recovery source
+// (same compiler and flags). Not a source-only client, a server match or a runtime gate.
+// Names or fields marked "// INFERRED:" are not in the binary and rest on stated evidence.
+// Hex numbers in comments are addresses in the 2008-06 binary; more notes are in
+// rebuild/2008-06/layout/evidence.json.
+// =============================================================================
+
 #undef NOMINMAX
 #include "CInstanceExplorer.h"
 #include "CSettingsExplorer.h"
@@ -50,12 +66,20 @@ int CInstanceExplorer::OnCreate(LPCREATESTRUCT cs)
 void CInstanceExplorer::setRoot(RBX::Instance* instance)
 {
     ScopedAssign<bool> assign(populating, true);
-    RBX::Notifier<RBX::Instance, RBX::DescendantAdded>::disconnect(root, static_cast<RBX::Listener<RBX::Instance, RBX::DescendantAdded>*>(this));
-    RBX::Notifier<RBX::Instance, RBX::DescendantRemoving>::disconnect(root, static_cast<RBX::Listener<RBX::Instance, RBX::DescendantRemoving>*>(this));
+    RBX::Notifier<RBX::Instance, RBX::DescendantAdded>::disconnect(
+        root,
+        static_cast<RBX::Listener<RBX::Instance, RBX::DescendantAdded>*>(this));
+    RBX::Notifier<RBX::Instance, RBX::DescendantRemoving>::disconnect(
+        root,
+        static_cast<RBX::Listener<RBX::Instance, RBX::DescendantRemoving>*>(this));
     GetReportCtrl().GetRecords()->RemoveAll();
     root = RBX::shared_from(instance);
-    RBX::Notifier<RBX::Instance, RBX::DescendantAdded>::connect(root, static_cast<RBX::Listener<RBX::Instance, RBX::DescendantAdded>*>(this));
-    RBX::Notifier<RBX::Instance, RBX::DescendantRemoving>::connect(root, static_cast<RBX::Listener<RBX::Instance, RBX::DescendantRemoving>*>(this));
+    RBX::Notifier<RBX::Instance, RBX::DescendantAdded>::connect(
+        root,
+        static_cast<RBX::Listener<RBX::Instance, RBX::DescendantAdded>*>(this));
+    RBX::Notifier<RBX::Instance, RBX::DescendantRemoving>::connect(
+        root,
+        static_cast<RBX::Listener<RBX::Instance, RBX::DescendantRemoving>*>(this));
     GetReportCtrl().Populate();
 }
 
@@ -132,7 +156,8 @@ void CSettingsExplorer::onEvent(const RBX::Instance* source, RBX::DescendantRemo
 #include "v8datamodel/Workspace.h"
 
 using namespace RBX;
-namespace RBX {
+namespace RBX
+{
 inline const Name& Verb::getName() const { return name; }
 void recordCameraHistory(const char*, const Instance*);
 }
