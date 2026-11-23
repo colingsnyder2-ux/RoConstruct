@@ -195,3 +195,103 @@ namespace RBX
 		}
 	}
 }
+
+// InterpolatingPhysicsReceiver::step 004c8fa0 and the PartItem helpers it reaches (004c6dc0 / 004c6ed0 / 004c6f70, all
+// registry placeholders between the Association rows 004c6d30.. and PartItem::PartItem 004c7a10 of this unit).
+// BLOCKED (guard below): Network/PhysicsSenders2008.h (not this batch's file) does not declare the three PartItem
+// members; the proposal adds `bool step(unsigned int time); void setPosition(const History& history); void
+// interpolate(const History& from, const History& to, float alpha);` to InterpolatingPhysicsReceiver::PartItem and
+// defines INTERPOLATING_RECEIVER_HEADER_DECLARES_STEP_HELPERS (measured against a scratch copy, batch 43 nr03).
+#ifdef INTERPOLATING_RECEIVER_HEADER_DECLARES_STEP_HELPERS
+#include "v8world/MotorJoint.h" // MotorJoint::setCurrentAngle 005e5da0
+#include <G3D/g3dmath.h>
+
+namespace RBX
+{
+	namespace Network
+	{
+		// 004c6dc0 (ret 0xc): setPhysics 005997f0 of from.frame.lerp(to.frame, alpha) 00518a50; when both samples
+		// carry as many motor angles as the assembly (getAssembly 005e7570, numMotors 005e62d0), each motor
+		// (getMotor 005e6400) gets setCurrentAngle 005e5da0 of the lerped angle (to[i] bounds-checked first).
+		void InterpolatingPhysicsReceiver::PartItem::interpolate(const History& from, const History& to, float alpha)
+		{
+			part->setPhysics(from.frame.lerp(to.frame, alpha));
+			if (from.motorAngles.size() == to.motorAngles.size())
+			{
+				Assembly* assembly = part->getPrimitive()->getAssembly();
+				if (assembly && assembly->numMotors() == from.motorAngles.size())
+				{
+					for (unsigned int i = 0; i < from.motorAngles.size(); i++)
+						assembly->getMotor(i)->setCurrentAngle(G3D::lerp(from.motorAngles[i], to.motorAngles[i], alpha));
+				}
+			}
+		}
+
+		// 004c6ed0 (ret 4): setPhysics 005997f0 of the sample frame, then its motor angles as in interpolate.
+		void InterpolatingPhysicsReceiver::PartItem::setPosition(const History& history)
+		{
+			part->setPhysics(history.frame);
+			Assembly* assembly = part->getPrimitive()->getAssembly();
+			if (assembly && assembly->numMotors() == history.motorAngles.size())
+			{
+				for (unsigned int i = 0; i < history.motorAngles.size(); i++)
+					assembly->getMotor(i)->setCurrentAngle(history.motorAngles[i]);
+			}
+		}
+
+		// 004c6f70 (ret 4): false (the receiver drops the item) for a dragged part (getDragging 00598d10) or one
+		// without an assembly; otherwise plays the newest sample not later than time - interval (unsigned to double
+		// through the 2^32 corrections 00811240 / 00819778), lerping toward the next newer one.
+		bool InterpolatingPhysicsReceiver::PartItem::step(unsigned int time)
+		{
+			if (part->getDragging())
+				return false;
+			if (!part->getPrimitive()->getAssembly())
+				return false;
+			if (count == 0)
+				return true;
+			if (count == 1)
+			{
+				setPosition(history[head]);
+				return true;
+			}
+
+			double t = time - interval;
+			const History* newer = NULL;
+			for (int i = 0; i < count; i++)
+			{
+				const History& item = history[(head + 8 - i) % 8];
+				if (!(item.timestamp > t))
+				{
+					if (newer)
+					{
+						interpolate(item, *newer, (float)(t - item.timestamp) / (unsigned int)(newer->timestamp - item.timestamp));
+						return true;
+					}
+					newer = &item;
+					break;
+				}
+				newer = &item;
+			}
+			setPosition(*newer);
+			return true;
+		}
+
+		// 004c8fa0 (vtable slot 1, ret 4): walks the hashed index, erasing (inline hashed unlink, ordered
+		// rebalance_for_erase 004c69e0, ~PartItem 004af950) every item whose step returns false.
+		void InterpolatingPhysicsReceiver::step(unsigned int time)
+		{
+			PartItems::nth_index<0>::type& index = items.get<0>();
+			PartItems::nth_index<0>::type::iterator it = index.begin();
+			PartItems::nth_index<0>::type::iterator end = index.end();
+			while (it != end)
+			{
+				if (!const_cast<PartItem&>(*it).step(time))
+					it = index.erase(it);
+				else
+					++it;
+			}
+		}
+	}
+}
+#endif
