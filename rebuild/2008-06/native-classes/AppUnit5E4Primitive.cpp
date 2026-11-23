@@ -10,6 +10,7 @@
 #include "v8world/IMoving.h"
 #include "v8world/World2008.h"
 #include "v8world/AssemblyLayout.h"
+#include "v8kernel/Body2008.h"   // Body::getParent / sub_005e7370 (Body +0x14 parent) for getBodyDepth 005e7470
 
 namespace RBX
 {
@@ -41,6 +42,20 @@ namespace RBX
 	{
 		if (value != unknown0x14 && world == NULL)
 			unknown0x14 = value;
+	}
+
+	// 005e7470 (registry placeholder func_005e7470; declared INFERRED in Primitive2008.h, callers TreeStage 00669b83 /
+	// 00669b9a): the depth of the primitive's body (+0xa0) in its body tree. The first level is inline (body parent
+	// +0x14); the parent's depth comes from the recursive Body body 005e7370 (Body2008.h sub_005e7370, plus one).
+	// NEAR MISS (same 26 bytes, register choice only: the target keeps the body in ecx). A scratch build with the
+	// Body2008.h proposal (sub_005e7370 defined inline in the class, `parent ? parent->sub_005e7370() + 1 : 1`) and
+	// this body as `return body->sub_005e7370();` is byte-identical: the 2008 Body getDepth is a header inline whose
+	// out-of-line COMDAT copy is 005e7370. Rejected here: explicit parent test (eax/ecx swap), double getParent(),
+	// local reassignment (all the same swap).
+	int Primitive::getBodyDepth() const
+	{
+		const Body* parent = body->getParent();
+		return parent ? parent->sub_005e7370() + 1 : 1;
 	}
 
 	// 005e7530: newTouch(p0, p1) then newTouch(p1, p0) (005e74c0).
@@ -76,6 +91,18 @@ namespace RBX
 	{
 		return contacts.edges.size() > 0 ? static_cast<Contact*>(contacts.edges[0]) : NULL;
 	}
+
+#ifdef PRIMITIVE_HEADER_DECLARES_GETFIRSTRIGID
+	// 005e7c80 (registry placeholder func_005e7c80; donor Primitive::getFirstRigid, caller FlagStand::GetFlag 0062b90c):
+	// the inline getFirstJoint (joints.edges size +0x3c > 0 ? data +0x38 [0] : NULL), then getFirstRigidAt 005e7c10
+	// (call + ret, not a tail jump). GUARDED: v8world/Primitive2008.h declares getFirstRigidAt / getNextRigid but not
+	// getFirstRigid (header proposal `RigidJoint* getFirstRigid();` beside them). A scratch build with that one line is
+	// byte-identical (27 bytes, relocs masked).
+	RigidJoint* Primitive::getFirstRigid()
+	{
+		return getFirstRigidAt(joints.edges.size() > 0 ? joints.edges[0] : NULL);
+	}
+#endif
 
 	// 005e7d30: search the smaller contact list's parallel primitive/edge arrays (donor Primitive::getContact).
 	Contact* Primitive::getContact(Primitive* p0, Primitive* p1)

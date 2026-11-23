@@ -217,3 +217,36 @@ namespace RBX
 		return G3D::Plane(normal, point);
 	}
 }
+
+// 0060e970 (registry placeholder func_0060e970; only caller MegaDragger::hitObjectOrPlane 0060dec0 at 0060df3e): donor
+// tools/rbxgs tool/DragUtilities.cpp DragUtilities::hitObjectOrPlane, declared by native tool/DragUtilities.h. A row of
+// the DragUtilities unit just below this Extents unit (before anyPartAlive 0060ead0, DragUtilitiesAlive.cpp), landed here
+// as assigned. Callees: MouseCommand::getSearchRay(const Ray&) 006158f0, ContactManager::getHit(Array) 0060d6e0 with the
+// default `inside` = ContactManager::ignoreBool 0097beb8, Plane(unitY, zero) 005259e0 (the Plane temporary is the EH
+// state), Math::intersectRayPlane 005df380, Dragger::toGrid 0060fea0. The 2008 body keeps the donor shape.
+#include "tool/DragUtilities.h"
+#include "tool/Dragger.h"
+#include "v8datamodel/MouseCommand.h"
+#include "v8world/ContactManager.h"
+#include <G3D/Plane.h>
+
+namespace RBX
+{
+	bool DragUtilities::hitObjectOrPlane(const ContactManager& contactManager, const G3D::Ray& unitSearchRay, const G3D::Array<Primitive*>* ignorePrims, G3D::Vector3& hit)
+	{
+		G3D::Ray ray = MouseCommand::getSearchRay(unitSearchRay);
+
+		if (!contactManager.getHit(ray, toConstPrimitives(ignorePrims), NULL, hit))
+		{
+			if (!Math::intersectRayPlane(ray, G3D::Plane(G3D::Vector3::unitY(), G3D::Vector3::zero()), hit))
+			{
+				hit = G3D::Vector3::zero();
+				return false;
+			}
+		}
+
+		hit = Dragger::toGrid(hit);
+
+		return true;
+	}
+}

@@ -49,6 +49,12 @@ RotateP::RotateP(Joint* joint)
     : DescribedCreatable<RotateP, JointInstance, sRotateP>(joint)
 {
 }
+// 005e4c60 (registry placeholder func_005e4c60; caller 004b2db4): the RotateP twin of RotateV() 005e4dd0: news a native
+// RotatePJoint (0xc8 bytes; DynamicRotateJoint base ctor 00645a70, channel value +0xc4 cleared inline, vtable 0083e13c)
+// and forwards it to the DescribedCreatable<RotateP> base ctor 005e41d0, then the RotateP vtables (0083f4dc ...).
+RotateP::RotateP() : DescribedCreatable<RotateP, JointInstance, sRotateP>(static_cast<Joint*>(new RotatePJoint()))
+{
+}
 RotateV::RotateV(Joint* joint) : DescribedCreatable<RotateV, JointInstance, sRotateV>(joint)
 {
 }
