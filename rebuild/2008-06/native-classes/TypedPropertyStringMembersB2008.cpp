@@ -148,13 +148,6 @@ bool TypedPropertyDescriptor<Soundscape::SoundId>::setStringValue(DescribedBase*
 	return false;
 }
 
-// 00597b50 (vtable 00832494 slot 7) - identical-code folded with ContentId
-template<>
-std::string TypedPropertyDescriptor<TextureId>::getStringValue(const DescribedBase* instance) const
-{
-	return StringConverter<TextureId>::convertToString(getValue(instance));
-}
-
 // 0056f6e0 (vtable 00832bf4 slot 10): the colour is stored as an unsigned 0xFFRRGGBB (XmlElement type 6 = UINT).
 template<>
 void TypedPropertyDescriptor<G3D::Color3>::writeValue(const DescribedBase* instance, XmlElement* element) const
@@ -232,6 +225,18 @@ void TypedPropertyDescriptor<G3D::Vector3>::writeValue(const DescribedBase* inst
 	X->setValue(value.x);
 	Y->setValue(value.y);
 	Z->setValue(value.z);
+}
+
+// 0056f7e0 (vtable 008312e0 slot 11)
+template<>
+void TypedPropertyDescriptor<ContentId>::readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
+{
+	if (!element->isXsiNil())
+	{
+		ContentId value;
+		if (element->getValue(value))
+			getset->setValue(instance, value);
+	}
 }
 
 }
