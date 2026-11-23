@@ -7,6 +7,7 @@
 #include "v8datamodel/Workspace.h"
 #include "v8world/ContactManager.h"
 #include "v8world/Primitive.h"
+#include "v8datamodel/Filters2008.h"   // FilterCharacterOcclusion 00660210 (testOcclusion)
 
 namespace RBX
 {
@@ -67,51 +68,58 @@ namespace RBX
 		return true;
 	}
 
-	//98.58% match
+	// 00641530 (registry placeholder func_00641530). 2008 differences from the donor body, read from the target: an
+	// early `return false` when there is no ContactManager (00641560), and a FilterCharacterOcclusion(0) 00660210
+	// built after the original distance is stored (00641605) and passed to ContactManager::getHit 0060db10 as the
+	// hit-test filter (the donor passes NULL).
+	// PARKED (b45, 718 vs 716 B, was 720 B): frame, EH states, filter and early return now match; the only residual is
+	// the x87 operand order of the x component of `translation + pointOnMan * x` (target `fxch st(1); fadd [t.x]`,
+	// here `fld [t.x]; faddp st(2); fxch st(1)`), y/z identical. Rejected: `pointOnMan * x + translation` (no change),
+	// `r = translation; r += pointOnMan * x` (702 B, frame 0xa4).
 	bool ICharacterSubject::testOcclusion(const G3D::CoordinateFrame& cameraFocus, const G3D::CoordinateFrame& cameraGoal, float& distance)
 	{
 		ContactManager* contactManager = getContactManager();
-		if (contactManager)
+		if (!contactManager)
+			return false;
+
+		std::vector<const Primitive*> ignorePrims;
+		getIgnorePrims(ignorePrims);
+
+		G3D::CoordinateFrame manLookCamera = getFocusLookingAtGoal(cameraFocus, cameraGoal);
+		G3D::Vector3 pointOnMan = manLookCamera.leftVector();
+
+		int hits = 0;
+		float originalDistance = (cameraGoal.translation - cameraFocus.translation).magnitude();
+		distance = originalDistance;
+
+		FilterCharacterOcclusion filter(0);
+
+		for (int x = -2; x <= 2; x += 2)
 		{
-			std::vector<const Primitive*> ignorePrims;
-			getIgnorePrims(ignorePrims);
+			G3D::Vector3 r = manLookCamera.translation + pointOnMan * (float)x;
+			G3D::Ray manToCamera = G3D::Ray::fromOriginAndDirection(r, cameraGoal.translation - r);
 
-			G3D::CoordinateFrame manLookCamera = getFocusLookingAtGoal(cameraFocus, cameraGoal);
-			G3D::Vector3 pointOnMan = manLookCamera.leftVector();
-
-			int hits = 0;
-			float originalDistance = (cameraGoal.translation - cameraFocus.translation).magnitude();
-			distance = originalDistance;
-
-			for (int x = -2; x <= 2; x += 2)
+			G3D::Vector3 hitPoint;
+			if (contactManager->getHit(manToCamera, &ignorePrims, &filter, hitPoint))
 			{
-				G3D::Vector3 r = manLookCamera.translation + pointOnMan * (float)x;
-				G3D::Ray manToCamera = G3D::Ray::fromOriginAndDirection(r, cameraGoal.translation - r);
-
-				G3D::Vector3 hitPoint;
-				if (contactManager->getHit(manToCamera, &ignorePrims, NULL, hitPoint))
-				{
-					hits++;
-					float thisDistance = (hitPoint - r).magnitude();
-					distance = G3D::min(distance, thisDistance);
-				}
-			}
-
-			if (hits > 1)
-			{
-				distance -= 1.0f;
-				distance = G3D::max(distance, 0.5f);
-				distance = G3D::min(distance, 1000.0f);
-				return true;
-			}
-			else
-			{
-				distance = originalDistance;
-				return false;
+				hits++;
+				float thisDistance = (hitPoint - r).magnitude();
+				distance = G3D::min(distance, thisDistance);
 			}
 		}
 
-		return false;
+		if (hits > 1)
+		{
+			distance -= 1.0f;
+			distance = G3D::max(distance, 0.5f);
+			distance = G3D::min(distance, 1000.0f);
+			return true;
+		}
+		else
+		{
+			distance = originalDistance;
+			return false;
+		}
 	}
 
 	void ICharacterSubject::onHeartBeat(G3D::CoordinateFrame& cameraGoal, G3D::CoordinateFrame& cameraFocus)

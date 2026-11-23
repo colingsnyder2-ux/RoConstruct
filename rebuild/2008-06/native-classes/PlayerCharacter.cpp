@@ -31,6 +31,19 @@ void addChild(const boost::shared_ptr<RBX::ModelInstance>& parent, const boost::
 // 004899b0 ?setAppearanceParentNull@@YAXPAVInstance@RBX@@@Z: defined in AppUnit480_2008Player.cpp (same Network/Player.cpp
 // unit); declared here for removeCharacterAppearance's for_eachChild.
 void setAppearanceParentNull(RBX::Instance* instance);
+// 0048a690 ?setAppearanceParent@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@0@Z: defined in AppUnit480_2008Player.cpp (same
+// Network/Player.cpp unit); declared here for loadCharacterAppearance's boost::bind.
+void setAppearanceParent(boost::shared_ptr<RBX::Instance> parent, boost::shared_ptr<RBX::Instance> instance);
+
+// 0048d0f0 (registry placeholder func_0048d0f0): std::for_each over the appearance vector<shared_ptr<Instance> > with
+// boost::bind(&setAppearanceParent, character, _1) (donor Network/Player.cpp loadCharacterAppearance; character is
+// the shared_ptr<ModelInstance> at +0x170). Its caller 00495380 loadCharacterAppearance is still parked (below), so
+// this unit emits the instance by explicit instantiation: each element and the bound character are copied by value
+// (two lock xadd copies per call through the function pointer), then the functor is returned and its copy released.
+typedef boost::_bi::bind_t<void, void (*)(boost::shared_ptr<RBX::Instance>, boost::shared_ptr<RBX::Instance>),
+	boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::ModelInstance> >, boost::arg<1> > > SetAppearanceParentBinder;
+template SetAppearanceParentBinder std::for_each(std::vector<boost::shared_ptr<RBX::Instance> >::iterator,
+	std::vector<boost::shared_ptr<RBX::Instance> >::iterator, SetAppearanceParentBinder);
 
 namespace RBX
 {
