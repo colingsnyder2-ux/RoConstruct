@@ -108,6 +108,30 @@ namespace RBX
 		return GuiResponse::used(currentCommand->captured() ? this : NULL);
 	}
 
+	// 005a3970 (84 B, registry placeholder func_005a3970): ?setInMouselookMode@Workspace@RBX@@QAEX_N@Z. Only caller
+	// ICharacterSubject::onHeartBeat 00641cb1 (native ICharacterSubject.cpp calls workspace->setInMouselookMode). Body
+	// from the disassembly: find<ControllerService> 005a32e0, hardwareDevice (+0x130), then UserInputBase::centerCursor
+	// (slot +0x10) and setWrapMode(WRAP_CENTER) (slot +8) when entering, else setWrapMode(WRAP_AUTO) unless
+	// inMouselookMode (+0x3f8) is set. The 2008 body does not store the field.
+	void Workspace::setInMouselookMode(bool value)
+	{
+		if (ControllerService* controllerService = ServiceProvider::find<ControllerService>(this))
+		{
+			if (UserInputBase* userInput = controllerService->getHardwareDevice())
+			{
+				if (value)
+				{
+					userInput->centerCursor();
+					userInput->setWrapMode(UserInputBase::WRAP_CENTER);
+				}
+				else if (!inMouselookMode)
+				{
+					userInput->setWrapMode(UserInputBase::WRAP_AUTO);
+				}
+			}
+		}
+	}
+
 	// @005a3470 ?onEvent@Workspace@RBX@@EAEXPBVRunService@2@VHeartbeat@2@@Z
 	// Entered with the Listener<RunService, Heartbeat> subobject (Workspace+0x384).
 	void Workspace::onEvent(const RunService*, Heartbeat)
