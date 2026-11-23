@@ -7,6 +7,8 @@
 // declares it) and reflection/reflection.h / v8tree/Instance.h, which declare these template members without bodies.
 #include <boost/thread/once.hpp>
 #include "script/ScriptContext.h"
+#include <boost/bind.hpp>
+#include <boost/function.hpp>
 
 namespace RBX
 {
@@ -48,6 +50,25 @@ template R::BoundFuncDesc<RBX::ScriptContext, void(double), 1>::BoundFuncDesc(
 // scoped_ptr<Lua::YieldingThreads>::~scoped_ptr 005ae210 (ScriptContext::yieldEvent +0x1a8): ~vector<WaitingThread>
 // of the waitingThreads member at +4, then operator delete.
 template boost::scoped_ptr<RBX::Lua::YieldingThreads>::~scoped_ptr();
+
+// boost::function0<void> holding boost::bind(&ScriptContext::<void() member>, shared_ptr<ScriptContext>) (RTTI type
+// descriptor 0094c938 .?AV?$bind_t@XV?$mf0@XVScriptContext@RBX@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VScriptContext
+// @RBX@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@), built by the timeout-watchdog setter 005ae8f0 (not recovered: its
+// member is not declared in script/ScriptContext.h) through function0<void>::function0 005ad140 / assign_to 005acee0,
+// which store the constant stored vtable 008345d4 = { manager 005acc70, invoker 005acaf0 }. The functor (16 B: the
+// 8-byte mf0 plus the shared_ptr) is kept in the function buffer.
+typedef boost::_bi::bind_t<void, boost::_mfi::mf0<void, RBX::ScriptContext>,
+	boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext> > > > ScriptContextSharedBind;
+// 005acaf0 void_function_obj_invoker0<ScriptContextSharedBind, void>::invoke (registry name is the Network::Player twin).
+template struct boost::detail::function::void_function_obj_invoker0<ScriptContextSharedBind, void>;
+// 005acc70 manage(in, out, op) (get_functor_type_tag 3 -> typeid 0094c938, else the tag-dispatched manager) and 005ac960
+// manager(in, out, op, mpl::true_) (registry placeholder func_005ac960, 155 B: clone copies the four words in place and
+// adds a use_count reference, destroy releases the shared_ptr, check_functor_type compares type_info 0094c938). Both
+// compile byte-identical here; the target's manage calls 005ac960 directly, while this compile keeps the 33-byte
+// function_obj_tag forwarder out of line (same bytes, different call target).
+template struct boost::detail::function::functor_manager<ScriptContextSharedBind, std::allocator<boost::function_base> >;
+// 005ad140 function0<void>::function0<ScriptContextSharedBind> and assign_to 005acee0 are instantiated by
+// FunctorInst_005ad140.cpp / FunctorInst_005acee0.cpp, not here.
 
 #ifdef SCRIPTCONTEXT_HEADER_DECLARES_ONHOOK
 // 005adbf0 (registry placeholder func_005adbf0, 112 B, ret 8): the member that the static lua_Hook scriptHook 005ae230

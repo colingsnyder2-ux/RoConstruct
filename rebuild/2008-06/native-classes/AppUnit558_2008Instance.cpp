@@ -280,6 +280,13 @@ boost::shared_ptr<Instance> Instance::findFirstChildByName2(std::string findName
 template class RBX::CopyOnWrite<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance> > > >;
 template class RBX::Reflection::SignalDescImpl<1,void __cdecl(boost::shared_ptr<RBX::Instance>)>;
 template class RBX::Reflection::TSignalDesc<void __cdecl(boost::shared_ptr<RBX::Instance>)>;
+// The Instance "Changed" signal (SignalDesc<Instance, void(const PropertyDescriptor*)>): its connectGeneric 0055b3c0
+// (registry name is the void(float,float) twin) calls signal1<void, const PropertyDescriptor*>::connect(slot, at)
+// 005594c0 (registry placeholder func_005594c0, 275 B, ret 0xc); the GenericSlotAdapter functor_manager manager 00559430
+// / manage 005595e0 follow it in this unit.
+template class RBX::Reflection::SignalDescImpl<1,void __cdecl(const RBX::Reflection::PropertyDescriptor*)>;
+template class RBX::Reflection::TSignalDesc<void __cdecl(const RBX::Reflection::PropertyDescriptor*)>;
+template class boost::signal1<void,const RBX::Reflection::PropertyDescriptor*,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(const RBX::Reflection::PropertyDescriptor*),std::allocator<void> > >;
 template class boost::function1<void,boost::shared_ptr<RBX::Instance>,std::allocator<void> >;
 template class boost::shared_ptr<RBX::Instance>;
 template class boost::shared_ptr<RBX::StandardOut>;
