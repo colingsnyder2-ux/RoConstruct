@@ -1,6 +1,6 @@
 """Run a 32-bit exe under a ctypes debugger; print the first exception's address, registers, stack words, and the nearest
 symbols from the link map. python crashsite.py EXE MAP [seconds]"""
-import ctypes, ctypes.wintypes as w, re, subprocess, sys, struct, time
+import os, ctypes, ctypes.wintypes as w, re, subprocess, sys, struct, time
 exe, mapf = sys.argv[1], sys.argv[2]
 k = ctypes.WinDLL('kernel32', use_last_error=True)
 class SI(ctypes.Structure):
@@ -10,6 +10,10 @@ class SI(ctypes.Structure):
 class PI(ctypes.Structure):
     _fields_ = [('hp', w.HANDLE), ('ht', w.HANDLE), ('pid', w.DWORD), ('tid', w.DWORD)]
 si, pi = SI(), PI(); si.cb = ctypes.sizeof(si)
+if not os.environ.get("ROC_PROBE_VISIBLE"):  # hidden desktop: no window on the user's screen; this thread joins it
+    _u = ctypes.WinDLL('user32'); _u.CreateDesktopW.restype = w.HANDLE
+    _hd = _u.CreateDesktopW('RocProbe', None, None, 0, 0x10000000, None); _u.SetThreadDesktop(w.HANDLE(_hd))
+    _dname = ctypes.create_unicode_buffer('RocProbe'); si.d = ctypes.cast(_dname, w.LPVOID)
 import os
 if not k.CreateProcessW(exe, None, None, None, False, 1, None, os.path.dirname(os.path.abspath(exe)), ctypes.byref(si), ctypes.byref(pi)):
     raise SystemExit('create failed %d' % ctypes.get_last_error())
@@ -66,10 +70,10 @@ def arm_bps():
 armed = False
 cxx_seen = 0
 ev = EV(); deadline = time.time() + float(sys.argv[3] if len(sys.argv) > 3 else 20); first = True; ids = {}
-posted = False; t_start = time.time()
+posted = False; posted_n = 0; pending = []; t_start = time.time()
 u32 = ctypes.WinDLL('user32')
-def post_cmd():
-    cmd = int(os.environ['POSTCMD']); found = []
+def post_cmd(cmd):
+    found = []
     CB = ctypes.WINFUNCTYPE(w.BOOL, w.HWND, w.LPARAM)
     def cb(h, l):
         pid = w.DWORD(); u32.GetWindowThreadProcessId(h, ctypes.byref(pid))
@@ -79,8 +83,11 @@ def post_cmd():
     print('POSTCMD to', [hex(x) for x in found], flush=True)
     for h in found: u32.PostMessageW(h, 0x111, cmd, 0)
 while time.time() < deadline:
-    if os.environ.get('POSTCMD') and not posted and armed and time.time() - t_start > 8:
-        posted = True; post_cmd()
+    # POSTCMD may be a comma list (e.g. File New then Insert Object), posted 5 s apart after an 8 s start
+    pending = [int(c, 0) for c in os.environ.get('POSTCMD', '').split(',') if c] if not posted else pending
+    if pending and armed and time.time() - t_start > 8 + 5 * posted_n:
+        post_cmd(pending.pop(0)); posted_n += 1
+    posted = True
     if not k.WaitForDebugEvent(ctypes.byref(ev), 500):
         continue
     status = 0x10002
@@ -119,13 +126,14 @@ while time.time() < deadline:
             print('fault rva %08x' % (c.Eip - allocbase))
             print('fault module', nm.value, 'access', struct.unpack('<Q', bytes(ev.u[40:48]))[0], 'addr %08x' % struct.unpack('<Q', bytes(ev.u[48:56]))[0])
             print('eax %08x ecx %08x edx %08x esp %08x ebp %08x' % (c.Eax, c.Ecx, c.Edx, c.Esp, c.Ebp))
-            buf = (ctypes.c_uint32 * 128)(); n = ctypes.c_size_t()
-            k.ReadProcessMemory(pi.hp, ctypes.c_void_p(c.Esp), buf, 512, ctypes.byref(n))
+            buf = (ctypes.c_uint32 * 2048)(); n = ctypes.c_size_t()
+            k.ReadProcessMemory(pi.hp, ctypes.c_void_p(c.Esp), buf, 8192, ctypes.byref(n))
+            shown = 0
             for v in buf:
-                if 0x401000 <= v < 0x980000: print('  stack', near(v))
+                if 0x401000 <= v < 0x980000 and shown < 60: print('  stack', near(v)); shown += 1
             status = 0x80010001
             k.TerminateProcess(pi.hp, 1); break
-        if code == 0xe06d7363 and cxx_seen < 4:
+        if code == 0xe06d7363 and cxx_seen < 12:
             cxx_seen += 1
             h = k.OpenThread(0x1fffff, False, ev.tid); c = CTX(); c.Flags = 0x10007
             k.Wow64GetThreadContext(h, ctypes.byref(c))

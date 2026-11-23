@@ -819,7 +819,7 @@ const NATIVE_LEGEND = `<span><i style="background:${NC.organized}"></i>organized
 const FILE_COLOR = {a: NC.organized, i: NC.organized, m: NC.none, g: "#3fb950", u: "#2b3a31", x: "#6b3a3a"};
 // Organized files are drawn in the Organized colour, darker the less of their code has native exact code (completion %).
 const mixHex = (a, b, t) => "#" + [1, 3, 5].map(i => Math.round(parseInt(a.slice(i, i + 2), 16) * (1 - t) + parseInt(b.slice(i, i + 2), 16) * t).toString(16).padStart(2, "0")).join("");
-const fileTileColor = p => (p[1] === "a" || p[1] === "i") ? mixHex("#161a24", NC.organized, 0.18 + 0.82 * ((p[7] ?? 100) / 100)) : FILE_COLOR[p[1]];
+const fileTileColor = p => (p[1] === "a" || p[1] === "i") ? mixHex("#161a24", NC.organized, 0.18 + 0.82 * ((p[7] ?? 0) / 100)) : FILE_COLOR[p[1]];
 const FILE_LEGEND = `<span><i style="background:linear-gradient(90deg,${mixHex("#161a24", NC.organized, 0.28)},${NC.organized})"></i>organized · native source exported; brighter = more of the file's code has native exact code (completion %)</span><span><i style="background:${FILE_COLOR.m}"></i>missing · no native source exported</span><span><i style="background:${FILE_COLOR.x}"></i>code with no file guess yet</span>`;
 function color(score, original, harness) {
   if (score === 100 && !original && !harness) return "#3a3d45";
@@ -1284,7 +1284,7 @@ async function client(name) {
     const named = !b.p && native && native.names[hex(b.f[0])];
     const isOrg = b.p && (b.p[1] === "a" || b.p[1] === "i");
     tip.textContent = b.p
-      ? `${b.p[0]} • ${fmt(b.p[2] || 0)} B • ${isOrg ? (b.p[7] != null ? b.p[7] + "%" : "0%") : ({m: "missing", x: "unplaced", g: "library matched", u: "library unmatched"})[b.p[1]] || "missing"}`
+      ? `${b.p[0]} • ${fmt(b.p[2] || 0)} B • ${isOrg ? (b.p[7] != null ? b.p[7] + "% native exact" : "organized · no exe code tied to this path yet") : ({m: "missing", x: "unplaced", g: "library matched", u: "library unmatched"})[b.p[1]] || "missing"}`
       : mapMode === "native"
       ? `${named ? named[0] : units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${({organized: "organized", integrated: "integrated", inactive: "inactive native", draft: "draft native"})[nativeKind(b.f)] || "source analog / unmined"}`
       : `${units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${b.f[2]}%` + (b.f[6] ? ` • family ${b.f[6]}` : "");
@@ -1298,7 +1298,7 @@ async function client(name) {
     if (b && b.p) {
       const [path, st, bytes, exp, tags, tiers, alt, pct] = b.p, lib = path.startsWith("libraries/");
       const statusText = ({a: "Organized", i: "Organized", m: "Missing · no native source", x: "Template machinery / unplaced", g: "Library file · matched", u: "Library file · unmatched"})[st] || "Missing";
-      const meta = `${fmt(bytes || 0)} bytes${(st === "a" || st === "i") && pct != null ? " · " + pct + "% native exact" : ""}`;
+      const meta = `${fmt(bytes || 0)} bytes${(st === "a" || st === "i") ? (pct != null ? " · " + pct + "% native exact" : " · no exe code tied to this path yet (source exported, completion not measurable)") : ""}`;
       const srcLink = exp ? `<span class="source-links"><a href="${REPO}/blob/layout/2008-06/rebuild/2008-06/layout/${exp.split("/").map(encodeURIComponent).join("/")}" target="_blank" rel="noopener">Native source ↗</a></span>` : "";
       const techDetails = (tags || tiers || alt) ? `<details><summary style="cursor:pointer;color:var(--accent2)">Technical details</summary>${tags ? `<p class="note">Seen by: ${esc(tagText(tags))}</p>` : ""}${tiers ? `<p class="note">Functions assigned by: ${tiers.split(",").map(t => { const [k, n] = t.split(":"); return esc((fileData.tier_names || {})[k] || k) + " " + fmt(+n) + " B"; }).join(" · ")}</p>` : ""}${alt ? `<p class="note">Other places listed: ${alt.split(";").map(x => { const [p, n] = x.split("|"); return `<code>${esc(p)}</code> (${/^[a-z]+$/.test(n) ? "also listed by " + tagText(n) : n + " functions"})`; }).join(", ")}</p>` : ""}</details>` : "";
       document.getElementById("detail").innerHTML = `<div class="function-card"><strong>${esc(path)}</strong><br><span class="function-status">${esc(statusText)}</span><div class="function-meta">${meta}</div>${srcLink}${techDetails}</div>`;

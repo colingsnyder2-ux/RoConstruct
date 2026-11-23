@@ -128,8 +128,13 @@ def compile_objects(sources, flags=None, tag='run', retry=True):
     env.pop('NATIVE_FLAGS', None)
     if flags:
         env['NATIVE_FLAGS'] = flags
-    out = subprocess.run([sys.executable, str(RUNNER), 'run', str(manifest), '--workers', str(WORKERS)], cwd=ROOT, env=env,
-                         capture_output=True, text=True).stdout.strip().splitlines()
+    done_run = subprocess.run([sys.executable, str(RUNNER), 'run', str(manifest), '--workers', str(WORKERS)], cwd=ROOT, env=env,
+                              capture_output=True, text=True)
+    out = done_run.stdout.strip().splitlines()
+    if not out:   # runner died (e.g. an unreadable source): report these sources as not compiled instead of crashing
+        (GATE / (tag + '.runner-error.txt')).write_text(done_run.stderr[-4000:])
+        print('runner gave no result for %s (see %s.runner-error.txt)' % (tag, tag), flush=True)
+        return {s: None for s in sources}
     results = json.loads(Path(json.loads(out[-1])['results']).read_text())
     rows = results if isinstance(results, list) else results['results']
     done = {str(Path(r['source']).resolve()).casefold(): r['object'] for r in rows if r['status'] == 'complete'}
@@ -149,6 +154,17 @@ def compile_objects(sources, flags=None, tag='run', retry=True):
     else:
         UNSETTLED.update(str(Path(s).resolve()).casefold() for s in again)
     return result
+
+
+def compile_batches(batches, tag):
+    """[(flags, [sources])] -> [{source: object}], one runner per flag set, run concurrently: a merge round is
+    often many tiny single-flag batches, and running them one after another left most workers idle."""
+    from concurrent.futures import ThreadPoolExecutor
+    if not batches:
+        return []
+    with ThreadPoolExecutor(max_workers=min(6, len(batches))) as pool:
+        return list(pool.map(lambda nb: compile_objects(nb[1][1], flags=nb[1][0] or None, tag='%s-%d' % (tag, nb[0])),
+                             enumerate(batches)))
 
 
 UNSETTLED = set()   # sources whose compile was rejected only because inputs changed under it
@@ -553,11 +569,13 @@ def merge_groups(rows, evidence):
             batches = {}
             for key in pending:
                 batches.setdefault(plans[key]['variants'][plans[key]['try']]['flags'], []).append(key)
-            for n, (flags, keys) in enumerate(sorted(batches.items())):
+            ordered = sorted(batches.items())
+            for flags, keys in ordered:
                 for key in keys:
                     plans[key]['dest'].parent.mkdir(parents=True, exist_ok=True)
                     plans[key]['dest'].write_bytes(plans[key]['variants'][plans[key]['try']]['text'].encode('latin-1'))
-                built = compile_objects([plans[k]['dest'] for k in keys], flags=flags or None, tag='%s-%d' % (tag, n))
+            results = compile_batches([(flags, [plans[k]['dest'] for k in keys]) for flags, keys in ordered], tag)
+            for (flags, keys), built in zip(ordered, results):
                 for key in keys:
                     before = [originals.get(ROOT / m) for m in plans[key]['variants'][plans[key]['try']]['members']]
                     obj = built[plans[key]['dest']]
@@ -611,14 +629,16 @@ def merge_groups(rows, evidence):
         for key in greedy:
             if state[key]['queue']:
                 batches.setdefault(state[key]['flags'], []).append(key)
-        for n, (flags, keys) in enumerate(sorted(batches.items())):
+        ordered = sorted(batches.items())
+        for flags, keys in ordered:
             for key in keys:
                 st, plan = state[key], plans[key]
                 st['cand'] = [m for m in plan['members'] if m in st['kept'] or m == st['queue'][0]]
                 st['cand_text'] = join_members(st['cand'], plan['texts'], plan['dest'])
                 plan['dest'].parent.mkdir(parents=True, exist_ok=True)
                 plan['dest'].write_bytes(st['cand_text'].encode('latin-1'))
-            built = compile_objects([plans[k]['dest'] for k in keys], flags=flags or None, tag='greedy-%d-%d' % (rounds, n))
+        results = compile_batches([(flags, [plans[k]['dest'] for k in keys]) for flags, keys in ordered], 'greedy-%d' % rounds)
+        for (flags, keys), built in zip(ordered, results):
             for key in keys:
                 st, plan = state[key], plans[key]
                 before = [originals.get(ROOT / m) for m in st['cand']]

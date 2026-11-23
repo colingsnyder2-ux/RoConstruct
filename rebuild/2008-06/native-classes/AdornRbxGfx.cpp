@@ -31,7 +31,7 @@ template class std::vector<Ogre::SceneNode*>;
 namespace RBX
 {
     // 0097da58: incremented by uniqueName 0066fc00, reset to 0 by finishRenderPass 00671f90.
-    static int nameCounter;
+    int nameCounter;   // global 0097da58: external linkage (AdornRbxGfx2d.cpp finishRenderPass is exact only so)
 
     void AdornRbxGfx::setObjectToWorldMatrix(const G3D::CoordinateFrame& c)
     {

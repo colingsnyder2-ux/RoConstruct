@@ -101,7 +101,7 @@
   "RBX::OgreUtil geometry creation (00679ae0); iOS 2.132 (Dec 2013) debug map lists Client/Rendering/RbxOgre/RbxGeometryGenerator.cpp"
  ],
  "LuaHtmlBinder2008": [
-  "client/win/DhtmlWindow.cpp",
+  "client/win/DHTMLWindow.cpp",
   "CLuaHtmlView::Binder and PropBinding implementations (DHTML window Lua binding)"
  ],
  "InstanceBaseCallbacks": [
@@ -111,5 +111,545 @@
  "ViewRenderLeftovers": [
   "client/rendering/renderlib/RenderScene.cpp",
   "rendering support callbacks"
+ ],
+ "AppUnit5DC_2008Quaternion": [
+  "client/app/util/quaternion.cpp",
+  "RBX::Quaternion operator=/Matrix3 ctor/toRotationMatrix; per-address evidence 005dd550 005dd570 005dd6d0 all -> util/quaternion.cpp"
+ ],
+ "Leaves2008RevoluteLink": [
+  "client/app/v8kernel/Link.cpp",
+  "RevoluteLink members; per-address evidence 00613cc0 00613d20 00613da0 all -> v8kernel/link.cpp"
+ ],
+ "SnapWeldCtors": [
+  "client/app/v8datamodel/JointInstance.cpp",
+  "Snap/Weld (JointInstance subclasses) ctors; per-address evidence 005e44f0 005e4600 005e4710 005e4810 all -> v8datamodel/jointinstance.cpp"
+ ],
+ "StatsCommands": [
+  "client/app/v8datamodel/Commands.cpp",
+  "stats verbs; per-address evidence 0057d9f0 0057db00 0057db90 all -> v8datamodel/Commands.cpp"
+ ],
+ "InstanceSerialization": [
+  "client/app/v8tree/Instance.cpp",
+  "Instance serialization member; per-address evidence 00558110 -> v8tree/instance.cpp"
+ ],
+ "ScriptContextRecovery_005aefa0": [
+  "client/app/script/ScriptContext.cpp",
+  "ScriptContext member; per-address evidence 005aefa0 -> script/scriptcontext.cpp"
+ ],
+ "SoundServiceFmod": [
+  "client/app/util/Sound.cpp",
+  "SoundService FMOD member; per-address evidence 005ba2e0 -> util/sound.cpp"
+ ],
+ "SoundServiceStatsItemCtor": [
+  "client/app/util/Sound.cpp",
+  "SoundService stats item ctor; per-address evidence 005bcc40 -> util/sound.cpp"
+ ],
+ "MD5Hasher": [
+  "client/app/util/ContentProvider.cpp",
+  "MD5Hasher members; per-address evidence 0055c540.. all -> util/contentprovider.cpp"
+ ],
+ "BlockBlockContactRecovery_00607f90": [
+  "client/app/v8world/Contact.cpp",
+  "BlockBlockContact members; per-address evidence 00607ea0 00608030 -> v8world/contact.cpp"
+ ],
+ "AppUnit5B0_2008Accoutrement": [
+  "client/app/v8datamodel/Accoutrement.cpp",
+  "2007 rbxgs donor defines Accoutrement in App/v8datamodel/Accoutrement.cpp (80% of this file's class-member definitions); inferred"
+ ],
+ "AppUnit5B4SoundReflection": [
+  "client/app/util/Sound.cpp",
+  "2007 rbxgs donor defines SoundChannel in App/util/Sound.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "AppUnit5E4Primitive": [
+  "client/app/v8world/Primitive.cpp",
+  "2007 rbxgs donor defines Primitive in App/v8world/Primitive.cpp (89% of this file's class-member definitions); inferred"
+ ],
+ "BlockBallShape": [
+  "client/app/v8world/Block.cpp",
+  "2007 rbxgs donor defines Block in App/v8world/Block.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "BodyBranch": [
+  "client/app/v8kernel/Body.cpp",
+  "2007 rbxgs donor defines Body in App/v8kernel/Body.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "ClumpStage2008": [
+  "client/app/v8world/clumpstage.cpp",
+  "2007 rbxgs donor defines ClumpStage in App/v8world/ClumpStage.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "CollectDragParts": [
+  "client/app/v8datamodel/PartInstance.cpp",
+  "2007 rbxgs donor defines PartInstance in App/v8datamodel/PartInstance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "ContentProviderSub00562730": [
+  "client/app/util/ContentProvider.cpp",
+  "2007 rbxgs donor defines ContentProvider in App/util/ContentProvider.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "DragUtilitiesJoin": [
+  "client/app/tool/dragutilities.cpp",
+  "2007 rbxgs donor defines DragUtilities in App/tool/DragUtilities.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "DrawSelectionBox": [
+  "client/rendering/g3d/glg3dcpp/Draw.cpp",
+  "2007 rbxgs donor defines Draw in Rendering/g3d/GLG3Dcpp/Draw.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "FaceInstanceLifetime": [
+  "client/app/v8datamodel/FaceInstance.cpp",
+  "2007 rbxgs donor defines FaceInstance in App/v8datamodel/FaceInstance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "FlagStandServiceClosest": [
+  "client/app/v8datamodel/flagstand.cpp",
+  "2007 rbxgs donor defines FlagStandService in App/v8datamodel/FlagStand.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "GlueJointKernel": [
+  "client/app/v8world/GlueJoint.cpp",
+  "2007 rbxgs donor defines GlueJoint in App/v8world/GlueJoint.cpp (80% of this file's class-member definitions); inferred"
+ ],
+ "GuiDrawImageSize": [
+  "client/app/gui/GuiDraw.cpp",
+  "2007 rbxgs donor defines GuiDrawImage in App/gui/GuiDraw.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "Humanoid2008": [
+  "client/app/humanoid/Humanoid.cpp",
+  "2007 rbxgs donor defines Humanoid in App/humanoid/Humanoid.cpp (93% of this file's class-member definitions); inferred"
+ ],
+ "IWorldStage2008": [
+  "client/app/v8world/IWorldStage.cpp",
+  "2007 rbxgs donor defines IWorldStage in App/v8world/IWorldStage.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "Inferred_005fdbc0": [
+  "client/app/v8datamodel/tool.cpp",
+  "2007 rbxgs donor defines Tool in App/v8datamodel/Tool.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InstanceArchivableDescriptor": [
+  "client/app/v8tree/Instance.cpp",
+  "2007 rbxgs donor defines Instance in App/v8tree/Instance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InstanceChildPermission": [
+  "client/app/v8tree/Instance.cpp",
+  "2007 rbxgs donor defines Instance in App/v8tree/Instance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InstanceNameDescriptor": [
+  "client/app/v8tree/Instance.cpp",
+  "2007 rbxgs donor defines Instance in App/v8tree/Instance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InstanceParentDescriptor": [
+  "client/app/v8tree/Instance.cpp",
+  "2007 rbxgs donor defines Instance in App/v8tree/Instance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InstanceSignalDescriptors": [
+  "client/app/v8tree/Instance.cpp",
+  "2007 rbxgs donor defines Instance in App/v8tree/Instance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "Leaves2008Point": [
+  "client/app/v8kernel/Point.cpp",
+  "2007 rbxgs donor defines Point in App/v8kernel/Point.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "Lighting2008": [
+  "client/app/v8datamodel/Lighting.cpp",
+  "2007 rbxgs donor defines Lighting in App/v8datamodel/Lighting.cpp (93% of this file's class-member definitions); inferred"
+ ],
+ "LuaThreadRef": [
+  "client/app/script/ThreadRef.cpp",
+  "2007 rbxgs donor defines ThreadRef in App/script/ThreadRef.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "LuaThreadRefNode": [
+  "client/app/script/ThreadRef.cpp",
+  "2007 rbxgs donor defines Node in App/script/ThreadRef.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "MouseGetSurface": [
+  "client/app/v8datamodel/MouseCommand.cpp",
+  "2007 rbxgs donor defines MouseCommand in App/v8datamodel/MouseCommand.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "NetworkPlayers": [
+  "client/Network/Players.cpp",
+  "2007 rbxgs donor defines Players in Network/Players.cpp (92% of this file's class-member definitions); inferred"
+ ],
+ "PartInstanceProperties": [
+  "client/app/v8datamodel/PartInstance.cpp",
+  "2007 rbxgs donor defines PartInstance in App/v8datamodel/PartInstance.cpp (80% of this file's class-member definitions); inferred"
+ ],
+ "PartOutfitChanged2008": [
+  "client/app/v8datamodel/PartInstance.cpp",
+  "2007 rbxgs donor defines PartInstance in App/v8datamodel/PartInstance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "PrimitiveEdges": [
+  "client/app/v8world/Primitive.cpp",
+  "2007 rbxgs donor defines Primitive in App/v8world/Primitive.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "RBXWorldRecovery_005e9170": [
+  "client/app/v8world/world.cpp",
+  "2007 rbxgs donor defines World in App/v8world/World.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "RakPeerSendImmediate2008": [
+  "client/network/raknet30/source/RakPeer.cpp",
+  "2007 rbxgs donor defines RakPeer in Network/raknet30/Source/RakPeer.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "Recovery_0064a740_SleepStageRecovery_0064a740": [
+  "client/app/v8world/sleepstage.cpp",
+  "2007 rbxgs donor defines SleepStage in App/v8world/SleepStage.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "ScriptApp2008Equipable": [
+  "client/app/v8datamodel/IEquipable.cpp",
+  "2007 rbxgs donor defines IEquipable in App/v8datamodel/IEquipable.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "SelectionIsSelected": [
+  "client/app/v8datamodel/Selection.cpp",
+  "2007 rbxgs donor defines Selection in App/v8datamodel/Selection.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "SimBodyStep": [
+  "client/app/v8kernel/SimBody.cpp",
+  "2007 rbxgs donor defines SimBody in App/v8kernel/SimBody.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "SocketLayerLifetime2008": [
+  "client/network/raknet30/source/SocketLayer.cpp",
+  "2007 rbxgs donor defines SocketLayer in Network/raknet30/Source/SocketLayer.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "SpatialHashRecovery_0065abd0": [
+  "client/app/v8world/SpatialHash.cpp",
+  "2007 rbxgs donor defines SpatialHash in App/v8world/SpatialHash.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "TextureShadePixel2008": [
+  "client/rendering/renderlib/TextureProxy.cpp",
+  "2007 rbxgs donor defines TextureProxy in Rendering/RenderLib/TextureProxy.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "ViewNewQuadVolume": [
+  "client/rbxview/quadvolume.cpp",
+  "2007 rbxgs donor defines Mesh in RbxView/QuadVolume.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "AggregateChunk2008": [
+  "client/rendering/renderlib/Chunk.cpp",
+  "2007 rbxgs donor defines AggregateChunk in Rendering/RenderLib/Chunk.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "AggregateChunkBuild2008": [
+  "client/rendering/renderlib/Chunk.cpp",
+  "2007 rbxgs donor defines AggregateChunk in Rendering/RenderLib/Chunk.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "AggregatingSceneManagerPrerender2008": [
+  "client/rendering/renderlib/aggregatingscenemanager.cpp",
+  "2007 rbxgs donor defines AggregatingSceneManager in Rendering/RenderLib/AggregatingSceneManager.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "AppUnit4A0ServerDescriptors": [
+  "client/network/server.cpp",
+  "2007 rbxgs donor defines Server in Network/Server.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "AppUnit588_2008RootInstance": [
+  "client/app/v8datamodel/RootInstance.cpp",
+  "2007 rbxgs donor defines RootInstance in App/v8datamodel/RootInstance.cpp (80% of this file's class-member definitions); inferred"
+ ],
+ "AppUnit5A4WorkspaceReflection": [
+  "client/App/v8datamodel/Workspace.cpp",
+  "2007 rbxgs donor defines Workspace in App/v8datamodel/Workspace.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "AppUnit5F8WinInet": [
+  "client/app/util/Http.cpp",
+  "2007 rbxgs donor defines Http in App/util/Http.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "Clusterer2008": [
+  "client/rendering/renderlib/clusterer.cpp",
+  "2007 rbxgs donor defines Clusterer in Rendering/RenderLib/Clusterer.cpp (83% of this file's class-member definitions); inferred"
+ ],
+ "ConstantsJointK": [
+  "client/app/v8kernel/Constants.cpp",
+  "2007 rbxgs donor defines Constants in App/v8kernel/Constants.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "ContactManagerHit2008": [
+  "client/app/v8world/ContactManager.cpp",
+  "2007 rbxgs donor defines ContactManager in App/v8world/ContactManager.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "ContentProviderSub00562670": [
+  "client/app/util/ContentProvider.cpp",
+  "2007 rbxgs donor defines ContentProvider in App/util/ContentProvider.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "DataModelClose": [
+  "client/app/v8datamodel/DataModel.cpp",
+  "2007 rbxgs donor defines DataModel in App/v8datamodel/DataModel.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "DataModelInitialize": [
+  "client/app/v8datamodel/DataModel.cpp",
+  "2007 rbxgs donor defines DataModel in App/v8datamodel/DataModel.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "DataModelLock": [
+  "client/app/v8datamodel/DataModel.cpp",
+  "2007 rbxgs donor defines Lock in App/v8datamodel/DataModel.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "DataModelRecovery_00578ef0": [
+  "client/app/v8datamodel/DataModel.cpp",
+  "2007 rbxgs donor defines DataModel in App/v8datamodel/DataModel.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "DragUtilitiesAlive": [
+  "client/app/tool/dragutilities.cpp",
+  "2007 rbxgs donor defines DragUtilities in App/tool/DragUtilities.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "DragUtilitiesMoveAndClean": [
+  "client/app/tool/dragutilities.cpp",
+  "2007 rbxgs donor defines DragUtilities in App/tool/DragUtilities.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "FeatureRecovery": [
+  "client/app/v8datamodel/Feature.cpp",
+  "2007 rbxgs donor defines Feature in App/v8datamodel/Feature.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "FontsGetFont": [
+  "client/rendering/appdraw/fonts.cpp",
+  "2007 rbxgs donor defines Fonts in Rendering/AppDraw/Fonts.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "G3DAABox": [
+  "client/rendering/g3d/g3dcpp/aabox.cpp",
+  "2007 rbxgs donor defines AABox in Rendering/g3d/G3Dcpp/AABox.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "G3DBinaryOutputLength2008": [
+  "client/rendering/g3d/g3dcpp/BinaryOutput.cpp",
+  "2007 rbxgs donor defines BinaryOutput in Rendering/g3d/G3Dcpp/BinaryOutput.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "G3DColor4uint8": [
+  "client/rendering/g3d/g3dcpp/color4uint8.cpp",
+  "2007 rbxgs donor defines Color4uint8 in Rendering/g3d/G3Dcpp/Color4uint8.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "G3DGImage_bayer": [
+  "client/rendering/g3d/g3dcpp/GImage.cpp",
+  "2007 rbxgs donor defines GImage in Rendering/g3d/G3Dcpp/GImage.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "G3DManualCameraController": [
+  "client/rendering/g3d/glg3dcpp/manualcameracontroller.cpp",
+  "2007 rbxgs donor defines FirstPersonManipulator in Rendering/g3d/GLG3Dcpp/ManualCameraController.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "G3DNetAddress": [
+  "client/rendering/g3d/g3dcpp/netaddress.cpp",
+  "2007 rbxgs donor defines NetAddress in Rendering/g3d/G3Dcpp/NetAddress.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "G3DPixelProgram": [
+  "client/rendering/g3d/glg3dcpp/pixelprogram.cpp",
+  "2007 rbxgs donor defines PixelProgram in Rendering/g3d/GLG3Dcpp/PixelProgram.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "G3DSDLWindow": [
+  "client/rendering/g3d/glg3dcpp/sdlwindow.cpp",
+  "2007 rbxgs donor defines SDLWindow in Rendering/g3d/GLG3Dcpp/SDLWindow.cpp (83% of this file's class-member definitions); inferred"
+ ],
+ "G3DTriangle": [
+  "client/rendering/g3d/g3dcpp/triangle.cpp",
+  "2007 rbxgs donor defines Triangle in Rendering/g3d/G3Dcpp/Triangle.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "G3DUserInput": [
+  "client/rendering/g3d/glg3dcpp/userinput.cpp",
+  "2007 rbxgs donor defines UserInput in Rendering/g3d/GLG3Dcpp/UserInput.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "G3DVertexProgram": [
+  "client/rendering/g3d/glg3dcpp/vertexprogram.cpp",
+  "2007 rbxgs donor defines VertexProgram in Rendering/g3d/GLG3Dcpp/VertexProgram.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "GuiRoot": [
+  "client/app/gui/GUI.cpp",
+  "2007 rbxgs donor defines GuiRoot in App/gui/GUI.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "HandleRadius": [
+  "client/rendering/appdraw/HitTest.cpp",
+  "2007 rbxgs donor defines HitTest in Rendering/AppDraw/HitTest.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "HumanoidLocalHead": [
+  "client/app/humanoid/Humanoid.cpp",
+  "2007 rbxgs donor defines Humanoid in App/humanoid/Humanoid.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "HumanoidRecovery_005db680": [
+  "client/app/humanoid/Humanoid.cpp",
+  "2007 rbxgs donor defines Humanoid in App/humanoid/Humanoid.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "IMovingManagerLifetime": [
+  "client/app/v8world/IMoving.cpp",
+  "2007 rbxgs donor defines IMovingManager in App/v8world/IMoving.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InitStatics_PartInstance": [
+  "client/app/v8datamodel/PartInstance.cpp",
+  "2007 rbxgs donor defines PartInstance in App/v8datamodel/PartInstance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InitStatics_ScriptContext": [
+  "client/app/script/ScriptContext.cpp",
+  "2007 rbxgs donor defines ScriptContext in App/script/ScriptContext.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InstanceAncestorChanged": [
+  "client/app/v8tree/Instance.cpp",
+  "2007 rbxgs donor defines Instance in App/v8tree/Instance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InstanceAncestorChangedNative": [
+  "client/app/v8tree/Instance.cpp",
+  "2007 rbxgs donor defines Instance in App/v8tree/Instance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InstanceChildListener": [
+  "client/app/v8tree/Instance.cpp",
+  "2007 rbxgs donor defines Instance in App/v8tree/Instance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InstanceDescendantEvents": [
+  "client/app/v8tree/Instance.cpp",
+  "2007 rbxgs donor defines Instance in App/v8tree/Instance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InstanceDescendantPropagation": [
+  "client/app/v8tree/Instance.cpp",
+  "2007 rbxgs donor defines Instance in App/v8tree/Instance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InstanceHandleLinkTo": [
+  "client/app/util/handle.cpp",
+  "2007 rbxgs donor defines InstanceHandle in App/util/Handle.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InstanceParent": [
+  "client/app/v8tree/Instance.cpp",
+  "2007 rbxgs donor defines Instance in App/v8tree/Instance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InstanceReadChildren": [
+  "client/app/v8tree/Instance.cpp",
+  "2007 rbxgs donor defines Instance in App/v8tree/Instance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InstanceReadProperty": [
+  "client/app/v8tree/Instance.cpp",
+  "2007 rbxgs donor defines Instance in App/v8tree/Instance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "InstanceRecovery_00559350": [
+  "client/app/v8tree/Instance.cpp",
+  "2007 rbxgs donor defines Instance in App/v8tree/Instance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "JointStage2008": [
+  "client/app/v8world/JointStage.cpp",
+  "2007 rbxgs donor defines JointStage in App/v8world/JointStage.cpp (88% of this file's class-member definitions); inferred"
+ ],
+ "KernelRecovery": [
+  "client/app/v8kernel/Kernel.cpp",
+  "2007 rbxgs donor defines Kernel in App/v8kernel/Kernel.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "KernelRecovery_005fb650": [
+  "client/app/v8kernel/Kernel.cpp",
+  "2007 rbxgs donor defines Kernel in App/v8kernel/Kernel.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "MathRadWrap": [
+  "client/app/util/Math.cpp",
+  "2007 rbxgs donor defines Math in App/util/Math.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "MathTiltQuadrant": [
+  "client/app/util/Math.cpp",
+  "2007 rbxgs donor defines Math in App/util/Math.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "NetworkClientServer2008Client": [
+  "client/network/Client.cpp",
+  "2007 rbxgs donor defines Client in Network/Client.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "NetworkIDObject2008": [
+  "client/network/raknet30/source/networkidobject.cpp",
+  "2007 rbxgs donor defines NetworkIDObject in Network/raknet30/Source/NetworkIDObject.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "NetworkPlayerRecovery_00492320": [
+  "client/network/Player.cpp",
+  "2007 rbxgs donor defines Player in Network/Player.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "PartInstanceLifetime": [
+  "client/app/v8datamodel/PartInstance.cpp",
+  "2007 rbxgs donor defines PartInstance in App/v8datamodel/PartInstance.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "PlayersAbusePredicate": [
+  "client/Network/Players.cpp",
+  "2007 rbxgs donor defines Players in Network/Players.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "PlayersLifetime": [
+  "client/Network/Players.cpp",
+  "2007 rbxgs donor defines Players in Network/Players.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "PrimitiveSurfaceData": [
+  "client/app/v8world/Primitive.cpp",
+  "2007 rbxgs donor defines Primitive in App/v8world/Primitive.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "Quaternion_maxComponent_006689b0": [
+  "client/app/util/quaternion.cpp",
+  "2007 rbxgs donor defines Quaternion in App/util/Quaternion.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "RakDataCompressor2008": [
+  "client/network/raknet30/source/datacompressor.cpp",
+  "2007 rbxgs donor defines DataCompressor in Network/raknet30/Source/DataCompressor.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "RakFileList2008": [
+  "client/network/raknet30/source/filelist.cpp",
+  "2007 rbxgs donor defines FileList in Network/raknet30/Source/FileList.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "RakPeerBan2008": [
+  "client/network/raknet30/source/RakPeer.cpp",
+  "2007 rbxgs donor defines RakPeer in Network/raknet30/Source/RakPeer.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "RakPeerBandwidth": [
+  "client/network/raknet30/source/RakPeer.cpp",
+  "2007 rbxgs donor defines RakPeer in Network/raknet30/Source/RakPeer.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "RakPeerRPCReceive2008": [
+  "client/network/raknet30/source/RakPeer.cpp",
+  "2007 rbxgs donor defines RakPeer in Network/raknet30/Source/RakPeer.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "RectPositioning": [
+  "client/app/util/Rect.cpp",
+  "2007 rbxgs donor defines Rect in App/util/Rect.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "ReliabilityLayerAux2008": [
+  "client/network/raknet30/source/ReliabilityLayer.cpp",
+  "2007 rbxgs donor defines ReliabilityLayer in Network/raknet30/Source/ReliabilityLayer.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "RenderSceneClearProxy_00504b00": [
+  "client/rendering/renderlib/RenderScene.cpp",
+  "2007 rbxgs donor defines RenderScene in Rendering/RenderLib/RenderScene.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "RenderSceneLights2008": [
+  "client/rendering/renderlib/RenderScene.cpp",
+  "2007 rbxgs donor defines RenderScene in Rendering/RenderLib/RenderScene.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "ReplicatorRecovery_004aafc0": [
+  "client/network/Replicator.cpp",
+  "2007 rbxgs donor defines Replicator in Network/Replicator.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "ScriptContextAddScript": [
+  "client/app/script/ScriptContext.cpp",
+  "2007 rbxgs donor defines ScriptContext in App/script/ScriptContext.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "SelectionAncestorListener": [
+  "client/app/v8datamodel/Selection.cpp",
+  "2007 rbxgs donor defines Selection in App/v8datamodel/Selection.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "SerializerV2Isolation": [
+  "client/app/v8xml/SerializerV2.cpp",
+  "2007 rbxgs donor defines SerializerV2 in App/v8xml/SerializerV2.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "Sky": [
+  "client/rendering/g3d/glg3dcpp/Sky.cpp",
+  "2007 rbxgs donor defines Sky in Rendering/g3d/GLG3Dcpp/Sky.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "SleepStageRecovery_0064a740": [
+  "client/app/v8world/sleepstage.cpp",
+  "2007 rbxgs donor defines SleepStage in App/v8world/SleepStage.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "SurfaceReadValue": [
+  "client/app/v8datamodel/Surface.cpp",
+  "2007 rbxgs donor defines Surface in App/v8datamodel/Surface.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "SystemAddressList2008": [
+  "client/network/raknet30/source/systemaddresslist.cpp",
+  "2007 rbxgs donor defines SystemAddressList in Network/raknet30/Source/SystemAddressList.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "VerbContainerLookup": [
+  "client/app/v8tree/Verb.cpp",
+  "2007 rbxgs donor defines VerbContainer in App/v8tree/Verb.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "ViewNewBrickCacheRecovery2008": [
+  "client/rbxview/BrickMesh.cpp",
+  "2007 rbxgs donor defines BrickMesh in RbxView/BrickMesh.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "ViewNewBrickMeshCtor": [
+  "client/rbxview/BrickMesh.cpp",
+  "2007 rbxgs donor defines BrickMesh in RbxView/BrickMesh.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "WorkspaceFindTopInstance": [
+  "client/App/v8datamodel/Workspace.cpp",
+  "2007 rbxgs donor defines Workspace in App/v8datamodel/Workspace.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "WorkspaceRecovery_005a05c0": [
+  "client/App/v8datamodel/Workspace.cpp",
+  "2007 rbxgs donor defines Workspace in App/v8datamodel/Workspace.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "WorkspaceSiteTrust": [
+  "client/app/util/Http.cpp",
+  "2007 rbxgs donor defines Http in App/util/Http.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "WorldLifetime": [
+  "client/app/v8world/world.cpp",
+  "2007 rbxgs donor defines World in App/v8world/World.cpp (100% of this file's class-member definitions); inferred"
  ]
 }
