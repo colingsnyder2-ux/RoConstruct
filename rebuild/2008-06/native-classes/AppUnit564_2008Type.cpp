@@ -8,6 +8,8 @@
 #include "G3D/Vector2int16.h"
 #include "G3D/Color3.h"
 #include "v8datamodel/BrickColor.h"
+#include "reflection/property.h"
+#include "v8xml/XmlElement.h"
 
 namespace RBX
 {
@@ -122,6 +124,32 @@ namespace RBX
 		{
 			static Type type("BrickColor", typeid(BrickColor), "int");
 			return type;
+		}
+
+		// 0056bee0 (registry placeholder func_0056bee0, 170 B, ret 8): PropertyDescriptor::write, beside
+		// PropertyDescriptor::read 0056be00 of the same reflection unit; caller Instance::writeProperties 00558b80.
+		// isReadOnly (slot +4) and bCanStreamWrite (bit 1 of +0x10) unless ignoreWriteProtection; new XmlElement (0x28)
+		// tagged type.tag (+0x14 -> +0xc); new XmlAttribute (0x18) name_name (00975338) = &name (+4) appended to the
+		// attribute list (+0x20/+0x24); writeValue slot +0x28. Body: the 2007 openrbx reflection_property.cpp.
+		XmlElement* PropertyDescriptor::write(const DescribedBase* instance, bool ignoreWriteProtection) const
+		{
+			if (!ignoreWriteProtection) {
+				if (isReadOnly()) {
+					return NULL;
+				}
+
+				if (!canStreamWrite()) {
+					return NULL;
+				}
+			}
+
+			XmlElement* element = new XmlElement(type.tag);
+
+			element->addAttribute<const RBX::Name*>(name_name, &name);
+
+			writeValue(instance, element);
+
+			return element;
 		}
 	}
 }

@@ -48,3 +48,27 @@ template R::BoundFuncDesc<RBX::ScriptContext, void(double), 1>::BoundFuncDesc(
 // scoped_ptr<Lua::YieldingThreads>::~scoped_ptr 005ae210 (ScriptContext::yieldEvent +0x1a8): ~vector<WaitingThread>
 // of the waitingThreads member at +4, then operator delete.
 template boost::scoped_ptr<RBX::Lua::YieldingThreads>::~scoped_ptr();
+
+#ifdef SCRIPTCONTEXT_HEADER_DECLARES_ONHOOK
+// 005adbf0 (registry placeholder func_005adbf0, 112 B, ret 8): the member that the static lua_Hook scriptHook 005ae230
+// (count hook set by openState 005aefa0) calls on getContext(L) while timedOutScripts (00976b78) > 0. exeState (+0x1c8)
+// set and Security::Context::current() 00493760 identity GameScript (2) -> std::runtime_error("Game script timout")
+// 008346a8 (runtime_error(const string&) 00409d50, _CxxThrowException with 008d1bc8). INFERRED: the name onHook.
+// Blocked by headers this unit may not edit: script/ScriptContext.h must declare 'void onHook(lua_State* L,
+// lua_Debug* ar);' and core security/SecurityContext.h keeps Context::identity private. Measured byte-identical
+// (credited by --infer-names, with __ehhandler 007cfeb9) against scratch copies of both headers; the volatile read
+// gives the target's mov/test (exeState is shared with the watchdog through InterlockedExchange).
+#include <stdexcept>
+#include "security/SecurityContext.h"
+namespace RBX
+{
+	void ScriptContext::onHook(lua_State* L, lua_Debug* ar)
+	{
+		if (*static_cast<volatile int*>(&exeState))
+		{
+			if (Security::Context::current().identity == Security::GameScript)
+				throw std::runtime_error("Game script timout");
+		}
+	}
+}
+#endif

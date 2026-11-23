@@ -91,7 +91,10 @@ template int Bridge<EnumDescriptorItemPtr, false>::on_newindex(lua_State*);
 
 #ifdef NATIVE_LUABRIDGE_PENDING
 // 0061f080 / 0061f0f0 need EnumDescriptor::allEnumsByName() (0056c520), private in the read-only native
-// reflection/enumconverter.h; the proposal adds the public inline EnumDescriptor::lookupDescriptor(const Name&).
+// reflection/enumconverter.h; the proposal adds the public inline EnumDescriptor::lookupDescriptor(const Name&)
+// (0061f080, 110 B, emitted out of line here: allEnumsByName() twice, map find 00451600 with &name, iter->second or
+// NULL). Batch 44: measured against a scratch enumconverter.h with that inline, 0061f080 and 0061f0f0 are exact and
+// the unit goes 12 -> 22 exact, no loss.
 template<>
 int Bridge<AllEnumDescriptorsPtr, false>::on_index(const AllEnumDescriptorsPtr& object, const char* name, lua_State* L)
 {

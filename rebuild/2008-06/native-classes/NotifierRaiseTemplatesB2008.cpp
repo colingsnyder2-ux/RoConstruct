@@ -5,7 +5,7 @@
 //   Notifier<Instance, PropertyChanged>::raise(event, listener) 0040a1c0 (197) and raise(event) 0040a530 (143)
 //   Notifier<PartInstance, CanAggregateChanged>::raise(event) 0059b220 (122)
 //   Notifier<Selection, SelectionChanged>::raise(event, listener) 00566960 (171)
-//   Notifier<FillToolColor, BrickColor>::raise(event, listener) 004305f0 (176)
+//   (Notifier<FillToolColor, BrickColor>::raise(event, listener) 004305f0 moved to FillToolColorRaise.cpp)
 #include "v8tree/Instance.h"
 #include "v8tree/PropertyChanged.h"
 #include "v8datamodel/PartInstance.h"
@@ -24,5 +24,5 @@ namespace RBX
 	template void Notifier<Instance, PropertyChanged>::raise(PropertyChanged) const throw();
 	template void Notifier<PartInstance, CanAggregateChanged>::raise(CanAggregateChanged) const throw();
 	template void Notifier<Selection, SelectionChanged>::raise(SelectionChanged, Listener<Selection, SelectionChanged>*) const;
-	template void Notifier<FillToolColor, BrickColor>::raise(BrickColor, Listener<FillToolColor, BrickColor>*) const;
+	// Notifier<FillToolColor, BrickColor>::raise(event, listener) 004305f0 moved to FillToolColorRaise.cpp (std-noinline-string).
 }
