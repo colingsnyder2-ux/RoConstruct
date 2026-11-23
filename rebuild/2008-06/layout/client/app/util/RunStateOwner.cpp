@@ -209,3 +209,22 @@ template class std::vector<RBX::Listener<RBX::RunService,RBX::Heartbeat> *,std::
 template class std::vector<RBX::Listener<RBX::RunService,RBX::RunTransition> *,std::allocator<RBX::Listener<RBX::RunService,RBX::RunTransition> *> >;
 template class std::vector<RBX::Listener<RBX::RunService,RBX::Stepped> *,std::allocator<RBX::Listener<RBX::RunService,RBX::Stepped> *> >;
 template class std::vector<RBX::Listener<RBX::RunService,enum RBX::RunState> *,std::allocator<RBX::Listener<RBX::RunService,enum RBX::RunState> *> >;
+
+#ifdef RUNSERVICE_HEADER_DECLARES_STEP_RAISES
+namespace RBX
+{
+	void RunService::raiseHeartbeat(float step)
+	{
+		drainTasks();
+		Notifier<RunService, Heartbeat>::raise(Heartbeat(gameTime(), step));
+		event_Heartbeat.fire(this, step);
+	}
+
+	void RunService::raiseStepped(float step)
+	{
+		float time = static_cast<float>(unknown0x1b8 += step);
+		Notifier<RunService, Stepped>::raise(Stepped(time, step));
+		event_Stepped.fire(this, time, step);
+	}
+}
+#endif

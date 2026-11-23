@@ -123,6 +123,24 @@ namespace RBX
 		return NULL;
 	}
 
+	float RotateJoint::getTorqueArmLength()
+	{
+		G3D::Vector3 ownerSize = getAxlePrim()->getGeometry()->getGridSize();
+		G3D::Vector3 otherSize = getHolePrim()->getGeometry()->getGridSize();
+
+		NormalId axleId = getAxleId();
+		// INFERRED: donor RotateJoint.h getHoleId inline (Joints2008.h does not declare it): 006464b8 / 006464be.
+		NormalId holeId = normalIdOpposite(Matrix3ToNormalId(getJointCoord(1).rotation));
+
+		int holeIndex0 = (holeId + 1) % 3;
+		int holeIndex1 = (holeId + 2) % 3;
+
+		float ownerMax = std::max(ownerSize[(axleId + 1) % 3], ownerSize[(axleId + 2) % 3]);
+		float otherMax = std::max(otherSize[holeIndex0], otherSize[holeIndex1]);
+
+		return std::min(ownerMax, otherMax) * 0.1f;
+	}
+
 	void RotateJoint::putInKernel(Kernel* _kernel)
 	{
 		MultiJoint::putInKernel(_kernel);

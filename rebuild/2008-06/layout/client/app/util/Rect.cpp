@@ -1,7 +1,37 @@
 #include "util/Rect.h"
+#include <algorithm>
 
 namespace RBX
 {
+	G3D::Vector2 Rect::positionPoint(Location xLocation, Location yLocation) const
+	{
+		G3D::Vector2 point = center();
+
+		switch (xLocation)
+		{
+		case LEFT:
+			point.x = low.x;
+			break;
+		case RIGHT:
+			point.x = high.x;
+			break;
+		}
+
+		switch (yLocation)
+		{
+		case TOP:
+			point.y = low.y;
+			break;
+		case BOTTOM:
+			point.y = high.y;
+			break;
+		case CENTER:
+			return point;
+		}
+
+		return point;
+	}
+
 	G3D::Vector2 Rect::positionPoint(const G3D::Vector2& point, Location xLocation, Location yLocation) const
 	{
 		G3D::Vector2 answer;
@@ -62,34 +92,14 @@ namespace RBX
 
 		return fromLowSize(newLow, childSize);
 	}
+
+	void Rect::unionWith(const Rect& other)
+	{
+		low.x = std::min(low.x, other.low.x);
+		low.y = std::min(low.y, other.low.y);
+		high.x = std::max(high.x, other.high.x);
+		high.y = std::max(high.y, other.high.y);
+	}
 }
 
 #include "../../../../../../tools/rbxgs/Client/App/include/util/Rect.h"
-
-namespace RBX {
-G3D::Vector2 Rect::positionPoint(Location xLocation, Location yLocation) const
-{
-	G3D::Vector2 result = (high + low) * 0.5f;
-	switch (xLocation)
-	{
-	case LEFT:
-		result.x = low.x;
-		break;
-	case RIGHT:
-		result.x = high.x;
-		break;
-	}
-	switch (yLocation)
-	{
-	case TOP:
-		result.y = low.y;
-		return result;
-	case BOTTOM:
-		result.y = high.y;
-		return result;
-	case CENTER:
-		return result;
-	}
-	return result;
-}
-}

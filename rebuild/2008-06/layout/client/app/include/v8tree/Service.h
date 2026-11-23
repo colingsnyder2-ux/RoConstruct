@@ -20,7 +20,7 @@ private:
 };
 extern char sServiceProvider[];
 
-class __declspec(novtable) ServiceProvider :
+class ServiceProvider :
     public DescribedNonCreatable<ServiceProvider, Instance, sServiceProvider>,
     public Notifier<ServiceProvider, Closing>,
     public Notifier<ServiceProvider, ServiceAdded>,

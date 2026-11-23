@@ -4,6 +4,8 @@
 #include "G3D/Vector2int16.h"
 #include "G3D/Color3.h"
 #include "v8datamodel/BrickColor.h"
+#include "reflection/property.h"
+#include "v8xml/XmlElement.h"
 
 namespace RBX
 {
@@ -104,6 +106,27 @@ namespace RBX
 		{
 			static Type type("BrickColor", typeid(BrickColor), "int");
 			return type;
+		}
+
+		XmlElement* PropertyDescriptor::write(const DescribedBase* instance, bool ignoreWriteProtection) const
+		{
+			if (!ignoreWriteProtection) {
+				if (isReadOnly()) {
+					return NULL;
+				}
+
+				if (!canStreamWrite()) {
+					return NULL;
+				}
+			}
+
+			XmlElement* element = new XmlElement(type.tag);
+
+			element->addAttribute<const RBX::Name*>(name_name, &name);
+
+			writeValue(instance, element);
+
+			return element;
 		}
 	}
 }

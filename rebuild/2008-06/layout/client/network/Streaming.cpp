@@ -349,12 +349,18 @@ namespace RBX
 
 	namespace Network
 	{
+		// INFERRED: an inline by-value BrickColor writer. 004a7570 copies the getValue<BrickColor> 004a7460 result into a
+		inline RakNet::BitStream& operator<<(RakNet::BitStream& stream, BrickColor value)
+		{
+			int index = value.getClosestPaletteIndex();
+			stream.WriteBits((unsigned char*)&index, 5);
+			return stream;
+		}
+
 		template<>
 		void serialize<BrickColor>(const Reflection::ConstProperty& property, RakNet::BitStream& bitStream) // 004a7570
 		{
-			BrickColor value = property.getValue<BrickColor>();
-			int index = value.getClosestPaletteIndex();
-			bitStream.WriteBits((unsigned char*)&index, 5);
+			bitStream << property.getValue<BrickColor>();
 		}
 
 		template<>

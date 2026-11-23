@@ -31,12 +31,6 @@ int XmlWriter::getHandleIndex(RBX::InstanceHandle h)
 
 #include "v8xml/XmlElement.h"
 
-template<>
-bool XmlNameValuePair::isValueType<RBX::ContentId>() const
-{
-	return valueType == CONTENTID;
-}
-
 bool XmlNameValuePair::isValueEqual(const RBX::Name* value) const
 {
 	switch (valueType) {
@@ -106,6 +100,31 @@ bool XmlNameValuePair::getValue(int& value) const
 	return false;
 }
 
+bool XmlNameValuePair::getValue(double& value) const
+{
+	if (valueType == DOUBLE) {
+		value = doubleValue;
+		return true;
+	}
+
+	if (valueType == FLOAT) {
+		value = floatValue;
+		clearValue();
+		doubleValue = value;
+		valueType = DOUBLE;
+		return true;
+	}
+
+	if (valueType == STRING && RBX::StringConverter<double>::convertToValue(*stringValue, value)) {
+		clearValue();
+		doubleValue = value;
+		valueType = DOUBLE;
+		return true;
+	}
+
+	return false;
+}
+
 void XmlNameValuePair::clearValue() const
 {
 	switch (valueType) {
@@ -166,4 +185,10 @@ XmlAttribute* XmlElement::findAttribute(const RBX::Name& name)
 	}
 
 	return NULL;
+}
+
+template<>
+bool XmlNameValuePair::isValueType<RBX::ContentId>() const
+{
+	return valueType == CONTENTID;
 }

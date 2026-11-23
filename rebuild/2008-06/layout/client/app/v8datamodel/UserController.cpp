@@ -328,6 +328,11 @@ namespace RBX
 	{
 	}
 
+	const UserInputBase* PlayerController::getHardwareDevice() const
+	{
+		return controllerService.expired() ? NULL : controllerService.lock()->getHardwareDevice();
+	}
+
 }
 
 template class RBX::ComputeProp<G3D::ReferenceCountedPointer<RBX::Controller>,RBX::PVInstance>;

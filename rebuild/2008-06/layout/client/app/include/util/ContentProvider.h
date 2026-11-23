@@ -119,7 +119,7 @@ namespace RBX
 		~ContentProvider();
 
 	public:
-		ContentId registerContent(std::istream& content, const Name& mimeType);
+		static ContentId registerContent(std::istream& content, const Name& mimeType);
 		ContentId registerContent(const char*, const Name&);
 		void clearFileCache();
 		bool isUrlBad(const char* url);
@@ -133,7 +133,7 @@ namespace RBX
 		std::auto_ptr<std::istream> getContent(ContentId ticket);
 		std::string getFile(ContentId ticket);
 		std::string getAssetFile(const std::string& filePath);
-		void setAssetFolder(const char* sPath);
+		static void setAssetFolder(const char* sPath);   // 00560590: no this pointer at the call (InitInstance path)
 		std::string assetFolder() const;
 		ContentId readContent(const char* id, std::istream& stream, unsigned long dataLength);
 	private:
