@@ -81,13 +81,13 @@ void CRobloxView::OnDraw(CDC* pDC) {
 }
 
 // 00458ea0
-void CRobloxView::onEvent(const RBX::Network::Players* source, RBX::SuperSafeChanged event) {}
+// (body: Inferred_00458ea0.cpp)
 
 // 0045a030
 void CRobloxView::onEvent(const RBX::ServiceProvider* source, RBX::ServiceAdded event) {}
 
 // 00459d60
-void CRobloxView::onEvent(const RBX::ServiceProvider* source, RBX::ServiceRemoving event) {}
+// (body: CRobloxViewRecovery_00459d60.cpp)
 
 // 0045a2f0
 void CRobloxView::detachDataModel() {

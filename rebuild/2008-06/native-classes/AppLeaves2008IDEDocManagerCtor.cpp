@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/libs/scintilla-mfc-1.20
 // Inactive native 2008-06 CIDEDocManager constructor 00449910 (native-headers/AppLeaves2008/IDEDocManager2008.h):
 // a separate unit because it needs the RUNTIME_CLASS getters of the IDE document, frame and view classes.
 // Include order: Scintilla's Platform.h (class Font) before afxhtml.h pulls in comdef.h, whose Font smart pointer

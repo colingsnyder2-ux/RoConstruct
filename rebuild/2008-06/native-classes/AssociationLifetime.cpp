@@ -14,17 +14,7 @@ namespace RBX
 	// first, while loop): the end iterator's container stays in a stack slot as in the target. Rejected in batch 32:
 	// the plain for loop re-reading items.end() (219 B), std::for_each with boost::checked_deleter (148 B), a hoisted
 	// `end` local built before begin() (212 B).
-	template<typename Associated>
-	Association<Associated>::~Association()
-	{
-		typename std::vector<Item*>::iterator iter = items.begin();
-		typename std::vector<Item*>::iterator end = items.end();
-		while (iter != end)
-		{
-			delete *iter;
-			++iter;
-		}
-	}
+	// ~Association body: native-headers/util/Association.h (inline there); instantiated out of line below.
 }
 
 template RBX::Association<RBX::Instance>::~Association();

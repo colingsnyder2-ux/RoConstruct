@@ -29,10 +29,11 @@ namespace RBX
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
 
+	// INFERRED: prop_Grip and the four event_* descriptors have external linkage (ToolEvents.cpp, same original unit, references them by name).
 	// Dynamic initializers 007f7640, 007f76a0, 007f7700, 007f7760, 007f77c0, 007f7820, 007f7880, 007f78e0, 007f7910,
 	// 007f7930, 007f7960, 007f7990 (in this order). Grip / BackendToolState / ActivationState push STREAMING (4),
 	// GripPos / GripForward / GripUp / GripRight push UI (1).
-	static Reflection::PropDescriptor<Tool, G3D::CoordinateFrame> prop_Grip("Grip", "Appearance", &Tool::getGrip, &Tool::setGrip, Reflection::PropertyDescriptor::STREAMING);
+	Reflection::PropDescriptor<Tool, G3D::CoordinateFrame> prop_Grip("Grip", "Appearance", &Tool::getGrip, &Tool::setGrip, Reflection::PropertyDescriptor::STREAMING);
 	static Reflection::PropDescriptor<Tool, G3D::Vector3> prop_GripPos("GripPos", "Appearance", &Tool::getGripPos, &Tool::setGripPos, Reflection::PropertyDescriptor::UI);
 	static Reflection::PropDescriptor<Tool, G3D::Vector3> prop_GripForward("GripForward", "Appearance", &Tool::getGripForward, &Tool::setGripForward, Reflection::PropertyDescriptor::UI);
 	static Reflection::PropDescriptor<Tool, G3D::Vector3> prop_GripUp("GripUp", "Appearance", &Tool::getGripUp, &Tool::setGripUp, Reflection::PropertyDescriptor::UI);
@@ -40,10 +41,10 @@ namespace RBX
 	static Reflection::PropDescriptor<Tool, int> prop_BackendToolState("BackendToolState", "Appearance", &Tool::getBackendToolState, &Tool::setBackendToolState, Reflection::PropertyDescriptor::STREAMING);
 	static Reflection::PropDescriptor<Tool, int> prop_FrontendActivationState("ActivationState", "Appearance", &Tool::getFrontendActivationState, &Tool::setFrontendActivationState, Reflection::PropertyDescriptor::STREAMING);
 	Reflection::BoundProp<bool, 1> Tool::prop_Enabled("Enabled", "State", &Tool::enabled, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::SignalDesc<Tool, void(boost::shared_ptr<Instance>)> event_Equipped("Equipped", "mouse");
-	static Reflection::SignalDesc<Tool, void(void)> event_Unequipped("Unequipped");
-	static Reflection::SignalDesc<Tool, void(void)> event_Activated("Activated");
-	static Reflection::SignalDesc<Tool, void(void)> event_Deactivated("Deactivated");
+	Reflection::SignalDesc<Tool, void(boost::shared_ptr<Instance>)> event_Equipped("Equipped", "mouse");
+	Reflection::SignalDesc<Tool, void(void)> event_Unequipped("Unequipped");
+	Reflection::SignalDesc<Tool, void(void)> event_Activated("Activated");
+	Reflection::SignalDesc<Tool, void(void)> event_Deactivated("Deactivated");
 
 	// 005fd3e0: name_name 00975338, findAttribute 0057c2b0, getValue 0057c360, "BackendToolState" 008416e8,
 	// "ActivationState" 008416d8, Instance::readProperty 00559170. Reads the public Name::name member directly, as the

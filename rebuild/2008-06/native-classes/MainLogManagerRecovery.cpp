@@ -3,6 +3,9 @@
 namespace RBX { const char* get_thread_name(); }
 #include "../native-donor-2007/LogManager.h"
 #include <G3D/Log.h>
+// The donor header names the +4 subobject's slot 1 getLogFileName; the 2008 native header (MainLogPath.cpp, exact 00427f30)
+// calls it getLogPath. Same signature and slot, so the donor-named reference resolves to the native definition.
+#pragma comment(linker, "/alternatename:?getLogFileName@MainLogManager@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ=?getLogPath@MainLogManager@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ")
 std::string MoveRelative(const char*, std::string);
 MainLogManager::~MainLogManager()
 {

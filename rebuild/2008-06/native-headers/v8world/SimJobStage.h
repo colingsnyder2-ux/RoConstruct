@@ -1,0 +1,71 @@
+#pragma once
+#include <list>
+#include "v8world/IWorldStage.h"
+
+namespace RBX
+{
+	class Mechanism;
+	class MechanismTracker;
+	class Assembly;
+	class World;
+	class Edge;
+
+	class SimJobStage : public IWorldStage
+	{
+	private:
+		std::list<Mechanism*> mechanisms;
+	  
+	private:
+		void combineMechanisms(Edge* e);
+		void insertMechanism(Mechanism* m);
+		void destroyMechanism(Mechanism* m);
+		void splitMechanisms(Assembly*, Assembly*);
+		bool validateEdge(Edge* e);
+	public:
+		Mechanism* nextMechanism(std::list<Mechanism*>& list, const Mechanism* current);
+	public:
+		SimJobStage(IStage* upstream, World* world);
+		virtual ~SimJobStage();
+	public:
+		virtual StageType getStageType()
+		{
+			return SIMJOB_STAGE;
+		}
+		virtual void onEdgeAdded(Edge* e);
+		virtual void onEdgeRemoving(Edge* e);
+		void onAssemblyAdded(Assembly* a);
+		void onAssemblyRemoving(Assembly* a);
+		void notifyMovingPrimitives();
+
+		template<typename Class>
+		void reportMechanisms(Class& callback, MechanismTracker& tracker, const Mechanism* ignore)
+		{
+			if (mechanisms.empty())
+				return;
+
+			if (!tracker.tracking())
+				tracker.setMechanism(mechanisms.front());
+
+			size_t i = 0;
+			Mechanism* current = tracker.getMechanism();
+
+			while (i < mechanisms.size())
+			{
+				Mechanism* temp = current;
+				i++;
+
+				current = nextMechanism(mechanisms, current);
+
+				if (temp != ignore)
+				{
+					if (!callback.report(*temp))
+						break;
+				}
+			}
+
+			tracker.setMechanism(current);
+		}
+	};
+}
+// 2008-06 native header port of rbxgs App/include/v8world/SimJobStage.h (2007 text). Kept only because every dependent exact native unit
+// compiles to an identical object with it in native-headers (proof: work/donorfree-route/header_port_proof.json).

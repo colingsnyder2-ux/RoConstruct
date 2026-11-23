@@ -6,6 +6,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/thread/recursive_mutex.hpp>
 #include <string>
+#include <vector>
 
 namespace RBX {
 class DataModel;
@@ -19,6 +20,7 @@ class GuiTarget;
 class IMetric;
 class Selection;
 class ContentId;
+class Adorn;
 class GuiEvent;
 class GuiResponse;
 extern char sDataModel[];
@@ -68,6 +70,9 @@ public:
     void clearContents();
     // INFERRED: 00579c10 authentic save(ContentId) declaration and call shape.
     void save(ContentId contentId);
+    // INFERRED: 00579f70 (DataModelGetObjectsFunctions) returns the loaded instances by ContentId.
+    boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > get(ContentId contentId);
+    void buildGui(Adorn* adorn);   // INFERRED: 005756e0 (DataModelGui)
     // INFERRED: 00579c10 passes this ? getContentProvider() : 0 as the first argument of the
     // 2008-06 TextXmlWriterWithEmbeddedContent(RBX::ContentProvider*, std::ostream&) constructor;
     // the selected image resolves the direct call to 0x41eea0.
