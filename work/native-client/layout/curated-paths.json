@@ -689,5 +689,20 @@
   "client/win/ReflectionMetadata.cpp",
   "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed evidence map lost the unique target (address candidates became ambiguous)",
   "reviewed"
+ ],
+ "AppUnit660_2008Units": [
+  "client/app/util/Units.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (original path); the refreshed evidence map lost the unique target (address candidates became ambiguous)",
+  "reviewed"
+ ],
+ "AppUnit628Explosion": [
+  "client/app/v8datamodel/Explosion.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (original path); the refreshed evidence map lost the unique target (address candidates became ambiguous)",
+  "reviewed"
+ ],
+ "AppUnit5E8_2008FaceInstance": [
+  "client/app/v8datamodel/FaceInstance.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (original path); the refreshed evidence map lost the unique target (address candidates became ambiguous)",
+  "reviewed"
  ]
 }
