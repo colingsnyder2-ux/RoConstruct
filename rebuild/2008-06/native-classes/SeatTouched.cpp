@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded /I{headers}/boost-function-pod-vtable
 // 2008-06 native RBX::Seat::onEvent_seatTouched 0063cf30 (inactive), the one Seat row Seat.cpp leaves undefined
 // (?onEvent_seatTouched@Seat@RBX@@AAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z, registry header-address name; it lies
 // inside the Seat unit 0063c430..0063d710 and is bound to PartInstance::event_Touched by onServiceProvider 0063d0d0).

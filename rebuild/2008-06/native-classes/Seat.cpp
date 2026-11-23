@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded /I{headers}/boost-function-pod-vtable
 // 2008-06 native RBX::Seat (inactive): one original unit (0063c430..0063d710; classDescriptor 005c3a40, doDeclare
 // 005bfe90 / callDoDeclare 005c0060, atexit 007fe6a0). Evidence in native-headers/v8datamodel/Seat.h.
 // Verified by tests/record_native_seat.py.
@@ -9,6 +9,7 @@
 #include "v8world/Assembly.h"
 #include "v8world/AssemblyLayout.h" // 2008 Assembly +0x24 root clump / Clump +0x1c root primitive (donor offsets differ)
 #include <G3D/System.h>
+#include <boost/bind.hpp>
 
 namespace RBX
 {
@@ -27,6 +28,21 @@ namespace RBX
 	template<class C, class D, const char* N>
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
+
+	// 0063d0d0 (vtable slot 12, the only slot that differs from PartInstance's): no base-class call in the 2008 body.
+	// oldProvider -> connection::disconnect 00595230 of seatTouched (+0x3e8); newProvider -> PartInstance::event_Touched
+	// (00976164) connect 004a3340 with group 10 of boost::bind(&Seat::onEvent_seatTouched 0063cf30, this, _1) (slot
+	// constructor 0063ce60, function assign_to 0063cd30), scoped_connection::operator= 00595540, ~connection 00595370,
+	// ~slot 0049f710. Donor shape: tools/openrbx v8datamodel/Seat.cpp (which also calls Instance::onServiceProvider and
+	// tests the providers the other way round).
+	void Seat::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
+	{
+		if (oldProvider)
+			seatTouched.disconnect();
+
+		if (newProvider)
+			seatTouched = PartInstance::event_Touched.connect(this, boost::bind(&Seat::onEvent_seatTouched, this, _1), 10);
+	}
 
 	// 0063d390 (459 bytes, ret 4): byte-identical (relocs masked). Not credited: part-embedded PartInstance.h now
 	// declares the setName override 00598c20 (batch 41), but its body is still unproven, and the shared reference

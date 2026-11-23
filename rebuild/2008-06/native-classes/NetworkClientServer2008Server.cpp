@@ -40,6 +40,26 @@ namespace RBX
 			rakPeer->SetIncomingPassword(API::version.c_str(), (int)API::version.size());
 		}
 
+#ifdef SERVER_HEADER_DECLARES_START
+		// 004a1d80 (registry placeholder func_004a1d80; bound as "Start" by the initializer 007f1c50). Donor Server.cpp
+		// start, 2008 shape read from the target: Startup(64, ...) slot 1, "Failed to start network server" 008234fc,
+		// GetInternalID(UNASSIGNED_SYSTEM_ADDRESS) slot 40 -> outgoingPort, "Started network server %s" 008234e0 with
+		// SystemAddress::ToString(true) 004a98b0, then updateNetworkSimulator 004ae950.
+		// BLOCKED: Network/Server2008.h does not declare Server::start.
+		void Server::start(int port, int threadSleepTime)
+		{
+			SocketDescriptor d(port, "");
+			if (!rakPeer->Startup(64, threadSleepTime, &d, 1))
+				throw std::runtime_error("Failed to start network server");
+
+			SystemAddress address = rakPeer->GetInternalID();
+			outgoingPort = address.port;
+			StandardOut::singleton()->print(MESSAGE_INFO, "Started network server %s", address.ToString(true));
+
+			updateNetworkSimulator();
+		}
+#endif
+
 		bool Server::serverIsPresent(const Instance* context, bool testInDatamodel)
 		{
 			return ServiceProvider::find<Server>(ServiceProvider::findServiceProvider(context)) != NULL;

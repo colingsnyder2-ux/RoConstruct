@@ -70,6 +70,34 @@ bool XmlNameValuePair::getValue(int& value) const
 	return false;
 }
 
+// 0057c670 (registry func_0057c670; after getValue(float&) 0057c610, caller 0056e760): the DOUBLE (9) read, the FLOAT
+// (7) widening and the STRING parse (StringConverter<double>::convertToValue 005be680) share one clearValue 0057c2d0 /
+// store-double tail (0057c6b7).
+bool XmlNameValuePair::getValue(double& value) const
+{
+	if (valueType == DOUBLE) {
+		value = doubleValue;
+		return true;
+	}
+
+	if (valueType == FLOAT) {
+		value = floatValue;
+		clearValue();
+		doubleValue = value;
+		valueType = DOUBLE;
+		return true;
+	}
+
+	if (valueType == STRING && RBX::StringConverter<double>::convertToValue(*stringValue, value)) {
+		clearValue();
+		doubleValue = value;
+		valueType = DOUBLE;
+		return true;
+	}
+
+	return false;
+}
+
 void XmlNameValuePair::clearValue() const
 {
 	switch (valueType) {

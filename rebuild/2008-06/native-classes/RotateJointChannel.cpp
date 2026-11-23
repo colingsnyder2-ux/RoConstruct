@@ -147,6 +147,29 @@ namespace RBX
 		return NULL;
 	}
 
+	// 00646460 (placeholder func_00646460; only caller putInKernel 00646550 at its RotateConnector construction):
+	// openrbx v8world/RotateJoint.cpp RotateJoint::getTorqueArmLength. Both grid sizes are copied from the
+	// geometry (+0x9c, gridSize +4), getAxleId is Matrix3ToNormalId 005ec310 on jointCoord0 (+0x28) and the donor
+	// getHoleId inline is normalIdOpposite 005ec180 of Matrix3ToNormalId on jointCoord1 (+0x58); the result is
+	// scaled by 0.1f (0081e704).
+	float RotateJoint::getTorqueArmLength()
+	{
+		G3D::Vector3 ownerSize = getAxlePrim()->getGeometry()->getGridSize();
+		G3D::Vector3 otherSize = getHolePrim()->getGeometry()->getGridSize();
+
+		NormalId axleId = getAxleId();
+		// INFERRED: donor RotateJoint.h getHoleId inline (Joints2008.h does not declare it): 006464b8 / 006464be.
+		NormalId holeId = normalIdOpposite(Matrix3ToNormalId(getJointCoord(1).rotation));
+
+		int holeIndex0 = (holeId + 1) % 3;
+		int holeIndex1 = (holeId + 2) % 3;
+
+		float ownerMax = std::max(ownerSize[(axleId + 1) % 3], ownerSize[(axleId + 2) % 3]);
+		float otherMax = std::max(otherSize[holeIndex0], otherSize[holeIndex1]);
+
+		return std::min(ownerMax, otherMax) * 0.1f;
+	}
+
 	// 00646550: MultiJoint::putInKernel 00646970, Body::updatePV 00599360 (getCoordinateFrame inline, pv +0x94),
 	// IPipelined::getKernel 00645850, Kernel::newPoint 005fb260, new PointToPointBreakConnector (0x1c, constructor
 	// inline, vtable 0084ada8, Math::inf static), addToMultiJoint 00646980, getTorqueArmLength 00646460, new

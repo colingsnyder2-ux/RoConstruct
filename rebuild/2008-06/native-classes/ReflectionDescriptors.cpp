@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /I{headers}/boost-function-pod-vtable-memptr
 // 2008-06 native reflection descriptor leaves (inactive).
 // Already defined inline in read-only headers, not repeated here:
 //   EnumDescriptor::equalValue 00448300, EnumDescriptor::isValue 00448450 (reflection/enumconverter.h)

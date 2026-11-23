@@ -120,4 +120,43 @@ namespace RBX
 			contactManager->onPrimitiveExtentsChanged(*it);
 		}
 	}
+#ifdef WORLD_HEADER_DECLARES_PRIMITIVE_INDEXARRAY
+	// Blocked only by headers this batch does not own. Measured batch 44 (scratch copies, both IDENTICAL: 005e98f0 69 B,
+	// 005ea8b0 99 B) with: v8world/World2008.h declaring public insertPrimitive / removePrimitive and the primitives member
+	// (+0xac) as the donor IndexArray<Primitive, &Primitive::worldIndexFunc> (util/IndexArray.h; same 0xc layout; the
+	// inline fastAppend's by-value parameter is what stores p back to its argument slot before Array::append);
+	// v8world/Primitive2008.h adding `int& worldIndexFunc() { return worldIndex; }` (+0x50) and `friend class World;`
+	// (world +0x58); v8world/ContactManager2008.h declaring onPrimitiveAdded 0060cc30 / onPrimitiveRemoved 0060cc40
+	// (`mov ecx, [ecx]` spatialHash, tail jumps). The first stage (+0x88) is the CleanStage (CleanStage2008.h:
+	// onPrimitiveAdded 0064a3e0 / onPrimitiveRemoving 0064a400, called directly, not through IStage); this unit would also
+	// include v8world/JointStage2008.h and v8world/CleanStage2008.h.
+
+	// 005e98f0 (registry placeholder func_005e98f0; openrbx World::insertPrimitive; caller PartInstance::onAncestorChanged
+	// 0059ab3a): primitives.fastAppend (worldIndex +0x50 = size, Array::append 0059a190), world +0x58 = this, then the
+	// first stage and the ContactManager.
+	void World::insertPrimitive(Primitive* p)
+	{
+		primitives.fastAppend(p);
+		p->world = this;
+
+		static_cast<CleanStage*>(jointStage)->onPrimitiveAdded(p);
+		contactManager->onPrimitiveAdded(p);
+	}
+
+	// 005ea8b0 (registry placeholder func_005ea8b0; openrbx World::removePrimitive; caller PartInstance::onAncestorChanged
+	// 0059ab21): destroyJoints(p, NULL) 005ea3f0, ContactManager 0060cc40, first stage 0064a400, primitives.fastRemove
+	// (last element moved into p's slot, resize 00599a70, worldIndex = -1), world = NULL.
+	void World::removePrimitive(Primitive* p)
+	{
+		destroyJoints(p, NULL);
+
+		contactManager->onPrimitiveRemoved(p);
+
+		static_cast<CleanStage*>(jointStage)->onPrimitiveRemoving(p);
+
+		primitives.fastRemove(p);
+
+		p->world = NULL;
+	}
+#endif
 }

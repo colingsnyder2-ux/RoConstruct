@@ -2,7 +2,10 @@
 // Inactive native 2008-06 CLuaHtmlView::Binder / PropBinding (native-headers/LuaHtmlBinder2008/LuaHtmlBinder2008.h).
 // Profile (tests/record_native_luahtml_binder2008.py): document-swap flags with native-headers/mfc-noinline-pcxstr,
 // std-noinline-string and boost-function-pod-vtable put first. The NATIVE_LUAHTMLBINDER2008_PENDING connect in the
-// PropBinding constructor needs Instance::event_propertyChanged (proposal in the receipt).
+// PropBinding constructor needs Instance::event_propertyChanged (00973f48), which the core v8tree/Instance.h does not
+// declare (proposal: 'static Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)>
+// event_propertyChanged;' after event_childRemoved). Batch 44: measured against a scratch Instance.h with only that
+// line, PropBinding::PropBinding 0042c630 is exact and the unit goes 162 -> 209 exact, no loss.
 #include "LuaHtmlBinder2008/LuaHtmlBinder2008.h"
 #include "AppLeaves2008/DHTMLWindowService2008.h"
 #include "security/SecurityContext.h"
@@ -24,6 +27,8 @@ CLuaHtmlView::Binder::PropBinding::PropBinding(boost::shared_ptr<RBX::Instance> 
                                                const RBX::Reflection::PropertyDescriptor& descriptor, Binder* binder)
     : instance(instance), descriptor(&descriptor)
 {
+    // 0042c630 (registry placeholder func_0042c630): slot 0042b9a0, SignalDesc connect 0042b680 with group 10,
+    // scoped_connection assignment 00595540.
 #ifdef NATIVE_LUAHTMLBINDER2008_PENDING
     connection = RBX::Instance::event_propertyChanged.connect(
         instance.get(), boost::bind(&Binder::onPropertyChanged, _1, boost::cref(descriptor), binder), 10);
