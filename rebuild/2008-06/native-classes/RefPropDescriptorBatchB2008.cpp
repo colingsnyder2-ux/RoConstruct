@@ -15,6 +15,7 @@
 #include "Network/Player.h"
 #include "Network/Players.h"
 #include "v8datamodel/Feature.h"
+#include "v8datamodel/Rocket.h"
 #include "v8datamodel/Workspace.h"
 
 namespace RBX
@@ -53,6 +54,7 @@ namespace RBX
 		INSTANTIATE(ObjectValue, Instance)
 		INSTANTIATE(Network::Player, ModelInstance)
 		INSTANTIATE(Network::Players, Network::Player)
+		INSTANTIATE(Rocket, PartInstance)
 		INSTANTIATE(VelocityMotor, Hole)
 		INSTANTIATE(Workspace, Camera)
 #undef INSTANTIATE
