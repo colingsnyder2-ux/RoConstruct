@@ -96,6 +96,11 @@ namespace RBX
 		void setTime(const boost::posix_time::time_duration& value);
 		void setTimeStr(const std::string& value);      // 005e2730 (prop_Time setter: duration_from_string 005e0c20)
 		void setMinutesAfterMidnight(double value);     // 005e26e0
+		// 005df490 / 005e2670 (registry placeholders): getter and setter of the "GeographicLatitude" PropDescriptor 0097a9f8
+		// (initializer 007f6a10): skyParameters.geoLatitude (+0x130 + 0xf4). The setter raises the property, fires
+		// event_LightingChanged(false), then RunService::invalidateRunViews 00555350. Donor Lighting.h names.
+		float getGeographicLatitude() const;            // 005df490
+		void setGeographicLatitude(float value);        // 005e2670
 
 		// INFERRED: decorated registry name ?setAmbient@Lighting@RBX@@QAEXVColor3@G3D@@@Z 005e2490 stores the Color3 at
 		// ambient +0x28c, raises its property and fires event_LightingChanged.

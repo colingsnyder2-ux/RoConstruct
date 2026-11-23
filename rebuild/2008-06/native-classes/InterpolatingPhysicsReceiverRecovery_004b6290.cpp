@@ -198,11 +198,8 @@ namespace RBX
 
 // InterpolatingPhysicsReceiver::step 004c8fa0 and the PartItem helpers it reaches (004c6dc0 / 004c6ed0 / 004c6f70, all
 // registry placeholders between the Association rows 004c6d30.. and PartItem::PartItem 004c7a10 of this unit).
-// BLOCKED (guard below): Network/PhysicsSenders2008.h (not this batch's file) does not declare the three PartItem
-// members; the proposal adds `bool step(unsigned int time); void setPosition(const History& history); void
-// interpolate(const History& from, const History& to, float alpha);` to InterpolatingPhysicsReceiver::PartItem and
-// defines INTERPOLATING_RECEIVER_HEADER_DECLARES_STEP_HELPERS (measured against a scratch copy, batch 43 nr03).
-#ifdef INTERPOLATING_RECEIVER_HEADER_DECLARES_STEP_HELPERS
+// The three PartItem members are declared in Network/PhysicsSenders2008.h since batch 46 (measured against a scratch
+// copy in batch 43 nr03).
 #include "v8world/MotorJoint.h" // MotorJoint::setCurrentAngle 005e5da0
 #include <G3D/g3dmath.h>
 
@@ -294,4 +291,3 @@ namespace RBX
 		}
 	}
 }
-#endif

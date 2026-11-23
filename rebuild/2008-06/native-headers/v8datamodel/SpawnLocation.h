@@ -60,5 +60,10 @@ namespace RBX
 		// 005d37d0: connects PartInstance::event_Touched (SignalDesc connect 004a3340 with a third argument 10)
 		// and registers with SpawnerService. Not defined here: see the receipt.
 		virtual void onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider);
+
+	private:
+		// 005d1ec0 (registry placeholder func_005d1ec0): the PartInstance::event_Touched slot bound by onServiceProvider
+		// 005d37d0 (openrbx SpawnLocation.h name). Body: native-classes/SpawnLocationTouched.cpp.
+		void onEvent_spawnerTouched(boost::shared_ptr<Instance> other);
 	};
 }

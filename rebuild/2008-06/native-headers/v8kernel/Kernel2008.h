@@ -52,6 +52,10 @@ namespace RBX
 		// declaration; its only caller is stepWorld).
 		void stepMoveBodiesTest(int worldStepId);                     // 005fae00
 #endif
+		// 005faaa0 (thiscall `ret 4`, 169 B; registry placeholder func_005faaa0): its only caller is stepMoveBodiesTest
+		// 005fae00. Every KernelData body's frame is shifted by the argument, turned about the global y axis by 0.01 and
+		// re-orthonormalized. INFERRED: analog name and private access (no symbol or donor declaration).
+		void moveBodiesTest(const G3D::Vector3& delta);               // 005faaa0
 
 		bool inStepCode;                                              // +0xc
 		KernelData* kernelData;                                       // +0x10
@@ -79,6 +83,14 @@ namespace RBX
 			return this;
 		}
 
+		// openrbx v8kernel/Kernel.h names. 005fb0e0 / 005fb110 (thiscall `ret 4`, registry placeholders): KernelData
+		// insertBody 005faf90 / bodies fastRemove + removeLeafBodies 005faf20, then the body's SimBody dt (+0x2c -> +0x4) =
+		// Constants::kernelDt / 0. Callers: SimJobStage (0064d0f0 and its removal counterpart).
+		void insertBody(Body* b);                                     // 005fb0e0
+		void removeBody(Body* b);                                     // 005fb110
+		// 005fa630 (const thiscall, 57 B; registry placeholder func_005fa630): openrbx Kernel.cpp connectorSpringEnergy,
+		// Connector::potentialEnergy (slot 5) summed over the KernelData connectors; DataModel 'energyConnector' stat.
+		float connectorSpringEnergy() const;                          // 005fa630
 		int numBodies() const;                                        // 005faa20
 		int numPoints() const;                                        // 005faa30
 		int numConnectors() const;                                    // 005faa40

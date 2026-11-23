@@ -1,10 +1,10 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /fp:fast /DNDEBUG /D_MBCS /I{headers}/part-embedded /I{headers}/spawn-touched /I{headers}/boost-function-pod-vtable
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /fp:fast /DNDEBUG /D_MBCS /I{headers}/part-embedded /I{headers}/boost-function-pod-vtable
 // 2008-06 native RBX::SpawnLocation touch/registration members of the original SpawnLocation unit 005d1ba0..005d39f0
 // (the rest is native-classes/SpawnLocation.cpp). Flags copied from SpawnLocation.cpp.
-// native-headers/v8datamodel/SpawnLocation.h does not declare the private slot member onEvent_spawnerTouched (005d1ec0,
-// openrbx SpawnLocation.h), which onServiceProvider 005d37d0 binds: the include overlay /I{headers}/spawn-touched adds
-// that declaration only. Proposal: add it to SpawnLocation.h and move both bodies into SpawnLocation.cpp, their original
-// unit (getTeamColor 005d1ba0 is then inlined through the accessor as in the original).
+// native-headers/v8datamodel/SpawnLocation.h declares the private slot member onEvent_spawnerTouched (005d1ec0, openrbx
+// SpawnLocation.h) since batch 46, so the /I{headers}/spawn-touched overlay is no longer used here (the overlay folder is
+// left for its owner to retire). Proposal: move both bodies into SpawnLocation.cpp, their original unit (getTeamColor
+// 005d1ba0 is then inlined through the accessor as in the original).
 #include "v8datamodel/SpawnLocation.h"
 #include "v8datamodel/SpawnerService.h"
 #include "humanoid/Humanoid.h"

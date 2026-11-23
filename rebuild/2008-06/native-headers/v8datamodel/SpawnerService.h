@@ -61,5 +61,9 @@ namespace RBX
 		{
 			spawners.remove(spawner);
 		}
+		// 005d2320 (registry placeholder func_005d2320; out of line, only caller DataModel 00578ef0 at 00578f43 after
+		// find<SpawnerService> 00490c30): spawners.clear() inline (head +0x144, size +0x148). INFERRED name (no symbol, donor
+		// or openrbx declaration); body native-classes/SpawnerServiceClear.cpp.
+		void ClearSpawners();                          // 005d2320
 	};
 }

@@ -157,12 +157,7 @@ namespace RBX
 	}
 
 
-#ifdef LIGHTING_HEADER_DECLARES_GEOGRAPHICLATITUDE
-	// Blocked only by native-headers/v8datamodel/Lighting2008.h (not owned here), which would need
-	//   float getGeographicLatitude() const;   // 005df490
-	//   void setGeographicLatitude(float value); // 005e2670
-	// Measured batch 44 with those two declarations in a scratch copy of the header: 005e2670 (103 B) and 005df490 (7 B)
-	// IDENTICAL, no loss in this unit.
+	// getGeographicLatitude / setGeographicLatitude are declared in native-headers/v8datamodel/Lighting2008.h since batch 46.
 	// 0097a9f8, dynamic initializer 007f6a10 (??__Eprop_GeographicLatitude@RBX@@YAXXZ, a namespace-scope static as
 	// prop_Time): PropDescriptor<Lighting, float> ctor, "GeographicLatitude" 0083df64 / "Data" 00822490, getter 005df490,
 	// setter 005e2670, flags 5 (STANDARD).
@@ -189,7 +184,6 @@ namespace RBX
 				runService->invalidateRunViews();
 		}
 	}
-#endif
 
 	void Lighting::replaceSky(Sky* newSky)
 	{
