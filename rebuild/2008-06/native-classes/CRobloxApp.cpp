@@ -3,6 +3,7 @@
 #include <atlbase.h>
 #include "util/standardout.h"
 #include "security/SecurityContext.h"
+#include "Network/API.h"
 
 IMPLEMENT_DYNAMIC(CRobloxApp, CWinApp)
 
@@ -34,6 +35,7 @@ int CRobloxApp::Run()
 #include <afxdisp.h>
 #include <stdexcept>
 #include "../native-headers/CMainFrame.h"
+#include "../native-headers/CRenderSettings.h"
 
 #include "VersionInfo.h" // PJ Naughter CVersionInfo (OpenRBX declaration)
 
@@ -69,9 +71,9 @@ void nativeInitializeCom();                           // 004495a0
 void nativeRegisterNames1();                          // 0041b8a0
 void nativeRegisterNames2();                          // 0041bb70
 void nativeRegisterNames3();                          // 0041bc40
-void nativeSetVersion(const char*);                   // 0049ecf0
+// 0049ecf0 is RBX::Network::API::init (NetworkApiInit2008.cpp)
 void nativeInitializeCallbacks();                     // 0044cbb0
-void* nativeStartupContext();                         // 00412d50 (+0x130: startup mode)
+// 00412d50 is GlobalSettingsItem<CRenderSettings>::singleton(); its +0x130 field is graphicsMode.
 void __stdcall nativeSetRegistrationMode(bool);       // 0044d150
 
 BOOL CRobloxApp::InitInstance()
@@ -123,12 +125,11 @@ BOOL CRobloxApp::InitInstance()
         static NativeClassRegistration classes;
         nativeRegisterNames1();
         nativeRegisterNames2();
-        nativeSetVersion(version.c_str());
+        RBX::Network::API::init(version.c_str());
         AfxEnableControlContainer(0);
         initializeSettings();
         nativeInitializeCallbacks();
-        void* startup = nativeStartupContext();
-        if (!nativeStartupMode) nativeStartupMode = *reinterpret_cast<int*>((char*)startup + 0x130);
+        if (!nativeStartupMode) nativeStartupMode = CRenderSettings::singleton().graphicsMode;
         if (nativeStartupMode == 5) command.noStartPage = true;
         nativeRegisterNames3();
         if (command.m_bRunEmbedded || command.m_bRunAutomated) {

@@ -339,7 +339,9 @@ namespace RBX
 		setName("Workspace");
 
 		profileWorkspaceStepInner->parent = profileWorkspaceStep.get();
-		world->getProfileWorldStep().parent = profileWorkspaceStepInner.get();
+		// PARKED (donor-free boot): the World profiler member is at a different offset in the exe than this unit's World.h assumes
+		// (members past +0xb8 are off by 0xc); the hookup is profiling-only and dereferenced a null there.
+		// world->getProfileWorldStep().parent = profileWorkspaceStepInner.get();
 		profileWorkspaceAssemble->parent = profileWorkspaceStep.get();
 		profileRunServiceStepped->parent = profileWorkspaceStep.get();
 		profileRunServiceHeartbeat->parent = profileWorkspaceStep.get();

@@ -7,6 +7,8 @@ namespace RBX { const char* get_thread_name(); }
 // calls it getLogPath. Same signature and slot, so the donor-named reference resolves to the native definition.
 #pragma comment(linker, "/alternatename:?getLogFileName@MainLogManager@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ=?getLogPath@MainLogManager@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ")
 std::string MoveRelative(const char*, std::string);
+extern MainLogManager* mainLogManager;   // the exe global (MainLogManagerState.cpp), not the donor header's LogManager::mainLogManager static
+
 MainLogManager::~MainLogManager()
 {
     if (G3D::Log::common()) {
@@ -17,7 +19,7 @@ MainLogManager::~MainLogManager()
         else
             MoveRelative(path.c_str(), "archive\\");
     }
-    mainLogManager = 0;
+    ::mainLogManager = 0;
 }
 
 #include "util/Guid.h"
@@ -36,7 +38,7 @@ MainLogManager::MainLogManager(const char* productName) : LogManager(productName
     path += "_G3D.txt";
     new G3D::Log(path);
 
-    mainLogManager = this;
+    ::mainLogManager = this;
     RBX::Log::setLogProvider(this);
     G3D::setAssertionHook(handleDebugAssert);
     G3D::setFailureHook(handleG3DFailure);

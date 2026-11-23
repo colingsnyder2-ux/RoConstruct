@@ -56,6 +56,9 @@ public:
     bool renderEnabled;
     boost::shared_ptr<boost::recursive_mutex> mutex;
 
+    DataModel();   // 0057b9f0 (DataModelCtor2008.cpp)
+    virtual void onChildAdded(Instance*);   // 00575750 (DataModelEvents2008.cpp)
+    virtual void onEvent(const RunService*, RunTransition);   // 00575840 (Listener<RunService, RunTransition> override)
     // INFERRED: 0057ad70 donor destructor and DataModel RTTI/vtable evidence.
     virtual ~DataModel();
     virtual void setDirty(bool value) { dirty = value; }
