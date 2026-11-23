@@ -704,5 +704,70 @@
   "client/app/v8datamodel/FaceInstance.cpp",
   "placed at this path by the pushed layout branch d205f0a351 (original path); the refreshed evidence map lost the unique target (address candidates became ambiguous)",
   "reviewed"
+ ],
+ "AppUnit609_2008Dragger": [
+  "client/app/tool/Dragger.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed census/evidence map dropped it after other native files started defining the same symbols",
+  "reviewed"
+ ],
+ "AppUnit610_2008NullTool": [
+  "client/app/tool/NullTool.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed census/evidence map dropped it after other native files started defining the same symbols",
+  "reviewed"
+ ],
+ "AxisMoveTool": [
+  "client/app/tool/ToolsSurface.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed census/evidence map dropped it after other native files started defining the same symbols",
+  "reviewed"
+ ],
+ "AnchorTool": [
+  "client/app/tool/ToolsSurface.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed census/evidence map dropped it after other native files started defining the same symbols",
+  "reviewed"
+ ],
+ "AppUnit5F0_2008Surface": [
+  "client/app/v8datamodel/Surface.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed census/evidence map dropped it after other native files started defining the same symbols",
+  "reviewed"
+ ],
+ "AppUnit634_2008Value": [
+  "client/app/v8datamodel/Value.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed census/evidence map dropped it after other native files started defining the same symbols",
+  "reviewed"
+ ],
+ "SoundValueGenericFloat": [
+  "client/app/v8datamodel/Value.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed census/evidence map dropped it after other native files started defining the same symbols",
+  "reviewed"
+ ],
+ "SoundValueGet": [
+  "client/app/v8datamodel/Value.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed census/evidence map dropped it after other native files started defining the same symbols",
+  "reviewed"
+ ],
+ "Tool": [
+  "client/app/v8datamodel/tool.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed census/evidence map dropped it after other native files started defining the same symbols",
+  "reviewed"
+ ],
+ "AppUnit5A0_2008Workspace": [
+  "client/app/v8datamodel/Workspace.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed census/evidence map dropped it after other native files started defining the same symbols",
+  "reviewed"
+ ],
+ "AxisMoveToolCore": [
+  "client/app/v8datamodel/Workspace.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed census/evidence map dropped it after other native files started defining the same symbols",
+  "reviewed"
+ ],
+ "ToolVerbFactoriesBasic": [
+  "client/app/v8datamodel/Workspace.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed census/evidence map dropped it after other native files started defining the same symbols",
+  "reviewed"
+ ],
+ "AppLeaves2008DHTMLWindow": [
+  "client/win/DHTMLWindow.cpp",
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed census/evidence map dropped it after other native files started defining the same symbols",
+  "reviewed"
  ]
 }
