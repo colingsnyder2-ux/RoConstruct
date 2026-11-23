@@ -136,6 +136,9 @@ namespace RBX
 			virtual G3D::ReferenceCountedPointer<RenderBase::MaterialBase> getMaterial(); // 004ebe70
 		protected:
 			void onDecalPropertyChanged(const Reflection::PropertyDescriptor* descriptor);   // 004e6b90
+			// 004e83b0 (2008 shape: re-parents through shared_from(dynamic_cast<PartInstance*>(decal->getParent())) and
+			// refreshes while in the Workspace). Bodies of both ancestor slots and of 004e6520 / 004ea5e0 / 004e7ed0:
+			// native-classes/ViewNewPartChunkRecovery2008.cpp.
 			void onDecalAncestorChanged(boost::shared_ptr<Instance> ancestor);               // 004e83b0
 		private:
 			virtual void updateMesh();                                          // 004f0300
@@ -155,7 +158,7 @@ namespace RBX
 			virtual G3D::ReferenceCountedPointer<RenderBase::MaterialBase> getMaterial(); // 004ec070
 		protected:
 			void onTexturePropertyChanged(const Reflection::PropertyDescriptor* descriptor); // 004e6bc0
-			void onTextureAncestorChanged(boost::shared_ptr<Instance> ancestor);
+			void onTextureAncestorChanged(boost::shared_ptr<Instance> ancestor);             // 004e6630
 		private:
 			virtual void updateMesh();                                          // 004f0540
 		};
