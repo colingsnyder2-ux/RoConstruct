@@ -22,7 +22,7 @@ extern char sServiceProvider[];
 
 // Original RTTI and 00568bf0 establish the three notifier bases. Existing
 // source supplies the service vector/map types; behavioral ABI remains open.
-class __declspec(novtable) ServiceProvider :
+class ServiceProvider :
     public DescribedNonCreatable<ServiceProvider, Instance, sServiceProvider>,
     public Notifier<ServiceProvider, Closing>,
     public Notifier<ServiceProvider, ServiceAdded>,

@@ -21,8 +21,14 @@ class IReferenceBinder;
 class XmlState;
 class Name;
 class RaiseDescendentAdded2;
-struct ChildAdded;
-struct ChildRemoved;
+struct ChildAdded {   // INFERRED: payload of Notifier<Instance, ChildAdded>::raise (setParent 0055a8f0 builds it from the child pointer)
+    boost::shared_ptr<Instance> child;   // 00594e00: the out-of-line ctor stores shared_from(instance)
+    ChildAdded(Instance* child);
+};
+struct ChildRemoved {   // INFERRED: as ChildAdded
+    boost::shared_ptr<Instance> child;
+    ChildRemoved(Instance* child);
+};
 struct DescendantAdded;
 struct DescendantRemoving;
 struct AncestorChanged {
@@ -114,6 +120,15 @@ public:
 				}
 			}
 		}
+    template<typename Function> void visitChildren(Function func) const   // 0044bca0 (void(*)(shared_ptr<Instance>) instance)
+    {
+        if (children) {
+            boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > c = children.read();
+            std::vector<boost::shared_ptr<Instance> >::const_iterator end = c->end();
+            for (std::vector<boost::shared_ptr<Instance> >::const_iterator iter = c->begin(); iter != end; iter++)
+                func(*iter);
+        }
+    }
     template<class Type> Type* findFirstChildOfType() const {
         if (children) {
             std::vector<boost::shared_ptr<Instance> >::const_iterator end = children->end();
@@ -143,6 +158,9 @@ public:
     template<class T> T* queryTypedParent() { return dynamic_cast<T*>(parent); }
     bool canAddChild(const Instance*) const;
     void setParent(Instance*);
+    bool isAncestorOf(const Instance*) const;   // 004c9c50
+    static void signalDescendentRemoving(const boost::shared_ptr<Instance>&, Instance*, Instance*);   // 00558370
+    static void signalDescendentAdded(Instance*, Instance*, Instance*);   // 00558220
     bool contains(const Instance*) const;
     void removeAllChildren();
     boost::shared_ptr<Instance> clone();  // ?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ
