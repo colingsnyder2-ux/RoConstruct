@@ -70,6 +70,9 @@ namespace RBX
 	// AppUnit54C_2008RunService.cpp declares the same overload.
 	boost::function0<void> background_function(const boost::function0<void>& threadfunc, const char* name, int priority);
 
+	// 00596ea0 (ThreadPrioritySetter.cpp): INFERRED 2008 signature with the thread priority after the by-value name.
+	void run_in_background(const boost::function0<void>& threadfunc, std::string name, int priority);
+
 	// 005971d0 ??0worker_thread@RBX@@QAE@ABV?$function0@W4work_result@worker_thread@RBX@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@PBD@Z
 	// new data (0x24, data() 00595a30), shared_ptr init (00596110, sp_enable_shared_from_this 0047d410),
 	// bind(&threadProc 00595e40, _data, work_function) 005965d0 -> function0<void> 00596f90,
@@ -106,6 +109,32 @@ namespace RBX
 	{
 		boost::mutex::scoped_lock scoped_lock(_data->sync);
 		_data->wakeCondition.notify_all();
+	}
+
+	// 00595e40 (static threadProc; the bind target of the worker_thread constructor, pushed at 005972a2): the donor
+	// rbxgs util/boost.cpp loop. Near miss (343 B against 335 B, batch 43): the candidate rotates the loop and repeats the
+	// endRequest test after the wait, the target tests only at the top (jmp 00595e66); the openrbx while (true) / if
+	// (endRequest) return form and a `continue` form compile to the same 343 B. endRequest (+0x20) ends it; work_function() (bad_function_call when empty) returning
+	// anything but `more` waits on wakeCondition (+8) under sync (+0): do_lock 00594ce0, condition enter_wait 005f1dd0,
+	// do_unlock(state) 00594d40, do_wait 005f1df0, do_lock(state) 00594d20, do_unlock 00594d00.
+	void worker_thread::threadProc(boost::shared_ptr<data> data, const boost::function0<enum work_result>& work_function)
+	{
+		while (!data->endRequest)
+		{
+			if (work_function() != more)
+			{
+				boost::mutex::scoped_lock scoped_lock(data->sync);
+				data->wakeCondition.wait(scoped_lock);
+			}
+		}
+	}
+
+	// 00597110: boost::bind(&run_in_background 00596ea0, threadfunc, std::string(name), priority) (bind 005968d0) into
+	// the returned function0<void> (00597080), whose functor_manager<bind_t<..., list3<function0<void>, std::string,
+	// int> > >::manager is 00596cd0 (RTTI type descriptor 00949af8).
+	boost::function0<void> background_function(const boost::function0<void>& threadfunc, const char* name, int priority)
+	{
+		return boost::bind(&run_in_background, threadfunc, std::string(name), priority);
 	}
 
 	// 00596db0 ?set_thread_name@RBX@@YAXPBD@Z: new std::string(name) (0x1c), call_once(init_foo), foo->reset

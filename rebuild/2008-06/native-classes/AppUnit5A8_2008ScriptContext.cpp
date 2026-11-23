@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/scriptevent-double
 // 2008-06 native rows of the ScriptContext translation unit (script/ScriptContext.cpp) in the application range
 // 005a8000..005b0000 (inactive). Verified by tests/record_native_app_unit5a8_2008.py; the unit map is in its receipt.
 //
@@ -17,8 +17,12 @@
 #include "v8datamodel/GlobalSettings.h"
 #include "security/SecurityContext.h"
 #include "G3D/System.h"
+#include "G3D/format.h"
 #include "lua.h"
 #include "lualib.h"
+#include "script/Script.h"
+#include "boost/bind.hpp"
+#include <algorithm>
 
 using namespace RBX;
 
@@ -58,6 +62,41 @@ int ScriptContext::tick(lua_State* L)
 {
     lua_pushnumber(L, G3D::System::getTick());
     return 1;
+}
+
+// wait / delay pass the lua_Number to YieldingThreads::queueWaiter(lua_State*, double) 006214e0 unconverted: the
+// read-only donor script/ScriptEvent.h declares float delays, so this unit compiles with the include profile
+// /I{headers}/scriptevent-double (the donor declaration with the 2008-06 double delays).
+// 005a9140 (the "delay" global, pushed by openState 005aefa0 at 005af676): lua_gettop 00611c10 < 2 throws
+// std::runtime_error("delay function requires 2 arguments") 00834454; lua_tonumber 00611f60 of argument 1,
+// lua_newthread 00612f60 held by a ThreadRef (00593e40 / 00594380), lua_pushvalue(2) 00611dd0, lua_xmove 00611ba0,
+// getContext inlined (lightuserdata 0x43, lua_gettable, lua_touserdata, lua_settop(-2)), queueWaiter 006214e0 on
+// yieldEvent (+0x1a8), lua_pop(1).
+int ScriptContext::delay(lua_State* thread)
+{
+    if (lua_gettop(thread) < 2)
+        throw std::runtime_error("delay function requires 2 arguments");
+
+    double timout = lua_tonumber(thread, 1);
+
+    Lua::ThreadRef functor(lua_newthread(thread));
+
+    lua_pushvalue(thread, 2);
+    lua_xmove(thread, functor.thread(), 1);
+
+    getContext(thread).yieldEvent->queueWaiter(functor.thread(), timout);
+
+    lua_pop(thread, 1);
+    return 0;
+}
+
+// 005a9260 (the "wait" global, pushed by openState at 005af641): lua_tonumber of argument 1 kept as a double,
+// getContext inlined, queueWaiter 006214e0, lua_yield 00621ec0.
+int ScriptContext::wait(lua_State* thread)
+{
+    double timout = lua_tonumber(thread, 1);
+    getContext(thread).yieldEvent->queueWaiter(thread, timout);
+    return lua_yield(thread, 0);
 }
 
 // 005a9320
@@ -135,6 +174,19 @@ void ScriptContext::onEvent(const RunService* source, Heartbeat event)
         lua_gc(globalState, LUA_GCSTEP, 1);
 }
 
+// 005b0590 (called by onEvent(Heartbeat) 005b0710 and 005b06a0): the donor body. scriptsDisabled (+0x1ac) skips it;
+// the pendingScripts (+0x188) copy (vector copy constructor 005acb00), erase(begin, end) 00412180 and
+// std::for_each 005ac4f0 of boost::bind(&ScriptContext::startScript 005affa0, this, _1) over the copy.
+void ScriptContext::startPendingScripts()
+{
+    if (!scriptsDisabled)
+    {
+        std::vector<boost::shared_ptr<Script> > copy(pendingScripts);
+        pendingScripts.erase(pendingScripts.begin(), pendingScripts.end());
+        std::for_each(copy.begin(), copy.end(), boost::bind(&ScriptContext::startScript, this, _1));
+    }
+}
+
 // 005aeaf0: "io" opens only when DebugSettings::ioEnabled (+0x131); settings() 005adc60 is the "settings" global.
 void ScriptContext::setThreadIdentity(lua_State* thread, Security::Identities identity)
 {
@@ -172,6 +224,17 @@ namespace RBX
 {
     namespace Lua
     {
+        // 005a85b0 (typed on_tostring of the EnumItem bridge, called by the lua_CFunction thunk 005a8b90 that the
+        // registry names after CoordinateFrame): G3D::format 00509b10 of "Enum.%s.%s" 00834378 with the owner enum's
+        // name (Item +8 -> Descriptor::name +4) and the item's own name (+4), lua_pushstring 00612280, return 1.
+        template<>
+        int Bridge<EnumDescriptorItemPtr, false>::on_tostring(const EnumDescriptorItemPtr& object, lua_State* L)
+        {
+            std::string name = G3D::format("Enum.%s.%s", object->owner.name.c_str(), object->name.c_str());
+            lua_pushstring(L, name.c_str());
+            return 1;
+        }
+
         template class Bridge<G3D::CoordinateFrame, true>;
         template class Bridge<G3D::Vector3, true>;
         template class Bridge<G3D::Color3, true>;
