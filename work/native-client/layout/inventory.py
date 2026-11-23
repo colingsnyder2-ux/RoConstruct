@@ -391,7 +391,10 @@ def run():
         # source placed by its file name or by those mentions and not confirmed by the census. A
         # header's path does not depend on which functions its comments cite, and a census path
         # comes from what the unit defines.
-        lexical = (path.suffix == '.cpp' and not confirmed
+        # A curated entry marked "reviewed" (third element) was placed by an earlier proven export: its path needs no
+        # lexical re-review (the object-identical proof still runs on every export).
+        curated_reviewed = bool(curated and len(curated) > 2 and curated[2] == 'reviewed' and choice.get('association', '').startswith('curated: '))
+        lexical = (path.suffix == '.cpp' and not confirmed and not curated_reviewed
                    and choice.get('evidence') in ('pdb', 'openrbx', 'class-rule'))
         if LIBRARY_NAME.match(path.stem):
             # Codejock XTP, MFC and ATL were linked in as libraries: never part of Roblox's source tree,

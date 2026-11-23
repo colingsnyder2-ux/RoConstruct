@@ -662,26 +662,32 @@
  ],
  "AppUnit5ECSurfaces": [
   "client/app/v8datamodel/Surfaces.cpp",
-  "placed at this path by the pushed layout branch d205f0a351 (original path); the refreshed evidence map lost the unique target (address candidates became ambiguous)"
+  "placed at this path by the pushed layout branch d205f0a351 (original path); the refreshed evidence map lost the unique target (address candidates became ambiguous)",
+  "reviewed"
  ],
  "AppUnit660_2008GroupDragTool": [
   "client/app/tool/GroupDragTool.cpp",
-  "placed at this path by the pushed layout branch d205f0a351 (original path); the refreshed evidence map lost the unique target (address candidates became ambiguous)"
+  "placed at this path by the pushed layout branch d205f0a351 (original path); the refreshed evidence map lost the unique target (address candidates became ambiguous)",
+  "reviewed"
  ],
  "AppUnit660_2008PartDragTool": [
   "client/app/tool/PartDragTool.cpp",
-  "placed at this path by the pushed layout branch d205f0a351 (original path); the refreshed evidence map lost the unique target (address candidates became ambiguous)"
+  "placed at this path by the pushed layout branch d205f0a351 (original path); the refreshed evidence map lost the unique target (address candidates became ambiguous)",
+  "reviewed"
  ],
  "AppUnit658SafeChat": [
   "client/app/v8datamodel/SafeChat.cpp",
-  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed evidence map lost the unique target (address candidates became ambiguous)"
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed evidence map lost the unique target (address candidates became ambiguous)",
+  "reviewed"
  ],
  "AppLeftovers": [
   "client/network/CrashReporter.cpp",
-  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed evidence map lost the unique target (address candidates became ambiguous)"
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed evidence map lost the unique target (address candidates became ambiguous)",
+  "reviewed"
  ],
  "MetadataReflectionLifetime": [
   "client/win/ReflectionMetadata.cpp",
-  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed evidence map lost the unique target (address candidates became ambiguous)"
+  "placed at this path by the pushed layout branch d205f0a351 (inferred path); the refreshed evidence map lost the unique target (address candidates became ambiguous)",
+  "reviewed"
  ]
 }
