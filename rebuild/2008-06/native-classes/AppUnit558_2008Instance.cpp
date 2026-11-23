@@ -284,6 +284,28 @@ template class RBX::Reflection::TSignalDesc<void __cdecl(boost::shared_ptr<RBX::
 // (registry name is the void(float,float) twin) calls signal1<void, const PropertyDescriptor*>::connect(slot, at)
 // 005594c0 (registry placeholder func_005594c0, 275 B, ret 0xc); the GenericSlotAdapter functor_manager manager 00559430
 // / manage 005595e0 follow it in this unit.
+// SignalDescImpl<1, S> members that reflection/signal.h only declares (same shape as ValueDouble2008.cpp). 0055b3c0
+// reads type_info 00943ad0 in manager 00559430 (GenericSlotAdapter functor) and calls the slot<function<...> >
+// ctor 0055a830 from 0055b414, the signal1 connect 005594c0 from 0055b434.
+namespace RBX
+{
+	namespace Reflection
+	{
+		// slot ctor 0055a830, functor_manager manager 00559430 / manage 005595e0 instantiate from this body
+		template<typename S>
+		SignalDescImpl<1, S>::GenericSlotAdapter::GenericSlotAdapter(GenericSlotWrapper* wrapper)
+			: wrapper(wrapper)
+		{
+		}
+
+		// 0055b3c0
+		template<typename S>
+		boost::signals::connection SignalDescImpl<1, S>::connectGeneric(SignalInstance* instance, GenericSlotWrapper* wrapper, boost::signals::connect_position pos) const
+		{
+			return static_cast<typename TSignalDesc<S>::TSignalInstance*>(instance)->connect(GenericSlotAdapter(wrapper), pos);
+		}
+	}
+}
 template class RBX::Reflection::SignalDescImpl<1,void __cdecl(const RBX::Reflection::PropertyDescriptor*)>;
 template class RBX::Reflection::TSignalDesc<void __cdecl(const RBX::Reflection::PropertyDescriptor*)>;
 template class boost::signal1<void,const RBX::Reflection::PropertyDescriptor*,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(const RBX::Reflection::PropertyDescriptor*),std::allocator<void> > >;
