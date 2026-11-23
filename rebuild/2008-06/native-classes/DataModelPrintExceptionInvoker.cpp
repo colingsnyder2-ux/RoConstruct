@@ -31,3 +31,20 @@ template boost::function0<void>::function0(PrintExceptionBind, int);
 // 00577970 boost::bind(&StandardOut::print_exception, function0<void>, MessageType, bool), called with 005696f0.
 template PrintExceptionBind boost::bind<void, const boost::function0<void>&, RBX::MessageType, bool, boost::function0<void>, RBX::MessageType, bool>(
 	void (__cdecl*)(const boost::function0<void>&, RBX::MessageType, bool), boost::function0<void>, RBX::MessageType, bool);
+
+// The other asynchronous DataModel helper 0057be10 wraps a two-string bind of a std::string(std::string, std::string)
+// function in function0<std::string>: the stored functor is 0x3c bytes (function pointer + two std::string values).
+typedef boost::_bi::bind_t<
+	std::string,
+	std::string (__cdecl*)(std::string, std::string),
+	boost::_bi::list2<
+		boost::_bi::value<std::string>,
+		boost::_bi::value<std::string> > > StringPairBind;
+
+// 00577ae0 functor_manager<StringPairBind, std::allocator<function_base> >::manage (registry name) and its heap
+// manager 005778c0 (registry func_005778c0, called only from 00577ae0: clone = new 0x3c + copy 00577370, destroy =
+// ~list2 00575700 + delete, check_functor_type against typeid(StringPairBind) 00946a70).
+template struct boost::detail::function::functor_manager<StringPairBind, std::allocator<boost::function_base> >;
+// 00578ad0 (registry func_00578ad0) function0<std::string>::function0<StringPairBind>(StringPairBind, int): called
+// from 0057be10 (0057befa); new 0x3c, stores the stored vtable 00830040 (ret 0x40 = the by-value bind_t plus the int).
+template boost::function0<std::string>::function0(StringPairBind, int);

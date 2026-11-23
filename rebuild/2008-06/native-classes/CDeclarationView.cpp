@@ -100,6 +100,21 @@ void CDeclarationView::OnDocumentComplete(LPCTSTR url)
     setContent(NULL, NULL, NULL);
 }
 
+// 00434f20: Value::get<std::string>() const, the COMDAT instance this unit's appendArgument calls (004355e3; the
+// string TypedPropertyDescriptor::setVariant 00443ba0 calls it too). Compares the stored Type's type_info with
+// typeid(std::string) (0092bef8), returns the out-of-line any_cast<const std::string&> 00434470 copy, else
+// convert<std::string>() 0056f0b0 on a copy. INFERRED: reflection/type.h only declares get<T>; this is the same
+// template body as Inferred_0056f0b0.cpp's other instances, defined here so the instance is emitted in its unit.
+namespace RBX { namespace Reflection {
+template<class T> T Value::get() const
+{
+    if (isType<T>())
+        return boost::any_cast<const T&>(value);
+    Value copy(*this);
+    return copy.convert<T>();
+}
+} }
+
 // Original 00435550: appends "type name" (and " = default" when the default value has the argument's type)
 // for one argument, comma-separated.
 static void appendArgument(int& count, std::string& text, const RBX::Reflection::SignatureDescriptor::Item& argument)
