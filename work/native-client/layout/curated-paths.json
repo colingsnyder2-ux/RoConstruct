@@ -517,8 +517,8 @@
   "2007 rbxgs donor defines Kernel in App/v8kernel/Kernel.cpp (100% of this file's class-member definitions); inferred"
  ],
  "MathRadWrap": [
-  "client/app/util/Math.cpp",
-  "2007 rbxgs donor defines Math in App/util/Math.cpp (100% of this file's class-member definitions); inferred"
+  "client/app/util/MathRadWrap.cpp",
+  "005cbec0 radWrap sits between ControllerService rows and Camera::askSetParent, away from the Math rows 005dd780..005df47f: separate TU; own unit"
  ],
  "MathTiltQuadrant": [
   "client/app/util/Math.cpp",
@@ -641,8 +641,8 @@
   "2007 rbxgs donor defines Workspace in App/v8datamodel/Workspace.cpp (100% of this file's class-member definitions); inferred"
  ],
  "WorkspaceRecovery_005a05c0": [
-  "client/App/v8datamodel/Workspace.cpp",
-  "2007 rbxgs donor defines Workspace in App/v8datamodel/Workspace.cpp (100% of this file's class-member definitions); inferred"
+  "client/app/v8datamodel/WorkspaceReset.cpp",
+  "INFERRED: joined with Workspace.cpp, World::reset/assertNotInStep get inlined into Workspace::reset 005a05c0 (bytes differ); separate TU in the exe; own unit"
  ],
  "WorkspaceSiteTrust": [
   "client/app/util/Http.cpp",
@@ -651,5 +651,17 @@
  "WorldLifetime": [
   "client/app/v8world/world.cpp",
   "2007 rbxgs donor defines World in App/v8world/World.cpp (100% of this file's class-member definitions); inferred"
+ ],
+ "ModelSetFrontTool": [
+  "client/app/v8datamodel/ModelSetFrontTool.cpp",
+  "INFERRED: joined with Workspace.cpp, MSVC inlines Math::getWorldNormal/Vector3 ops into applyToSurface (bytes differ), so it is a separate TU in the exe; own unit"
+ ],
+ "MathClosestRay": [
+  "client/app/util/MathClosestRay.cpp",
+  "INFERRED: joined with Math.cpp changes sortVector3 (inlining), so its TU differs; own unit"
+ ],
+ "OgreAuto_RBX_Math": [
+  "client/app/util/MathAxisRotation.cpp",
+  "INFERRED: builds against the donor Math.h class text (redefinition when joined with the 2008 Math unit); own unit"
  ]
 }
