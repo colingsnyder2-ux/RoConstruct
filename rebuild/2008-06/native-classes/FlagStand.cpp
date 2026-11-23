@@ -11,6 +11,7 @@
 #include "Network/Player.h"
 #include "Network/Players.h"
 #include <boost/bind.hpp>
+#include <boost/thread/once.hpp>
 
 namespace RBX
 {
@@ -116,6 +117,34 @@ namespace RBX
 			if (stand)
 				stand->AffixFlag(flag);
 		}
+	}
+
+	// ServiceProvider::create<FlagStandService>() const 00619360 (registry placeholder func_00619360, 228 B), called
+	// out of line by onServiceProvider 0062cf40 below: find<FlagStandService>() 00619080 (FlagStandServiceFind.cpp; only
+	// declared here), Creatable<Instance>::create<FlagStandService> 005c12b0, getClassIndex (call_once 00557330 on
+	// callDoGetClassIndex 00618650, doGetClassIndex 00618520), the serviceArray (+0x190) store 004025b0 and setParent
+	// 0055a8f0. v8tree/Service.h declares these templates without bodies (definitions as AppUnit454_2008ReportStats.cpp).
+	template<class Class> size_t ServiceProvider::doGetClassIndex() { static size_t index = newIndex(); return index; }
+	template<class Class> void ServiceProvider::callDoGetClassIndex() { doGetClassIndex<Class>(); }
+	template<class Class> size_t ServiceProvider::getClassIndex()
+	{
+		static boost::once_flag flag = BOOST_ONCE_INIT;
+		boost::call_once(&callDoGetClassIndex<Class>, flag);
+		return doGetClassIndex<Class>();
+	}
+
+	template<class Class> Class* ServiceProvider::create() const
+	{
+		Class* service = find<Class>();
+		if (service == NULL)
+		{
+			boost::shared_ptr<Class> value = Creatable<Instance>::create<Class>();
+			service = value.get();
+			size_t index = getClassIndex<Class>();
+			serviceArray[index] = value;
+			service->setParent(const_cast<ServiceProvider*>(this));
+		}
+		return service;
 	}
 
 	// 0062cf40 (vtable 0084657c slot 12, ret 8): no base-class call in the 2008 body. create<FlagStandService>

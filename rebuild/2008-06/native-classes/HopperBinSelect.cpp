@@ -129,4 +129,30 @@ namespace RBX
 		TextureId textureId = ContentId::fromAssets("Textures\\" + value + ".png");
 		setTextureId(textureId);
 	}
+
+	// 005d1770 (registry placeholder func_005d1770; setter of desc_legacyCommand "Command", Hopper.cpp, stored by its
+	// dynamic initializer 007f5ec0): EnumDesc<BinType>::singleton (call_once 00557330 / 005d0300), Name::lookup 00554290,
+	// convertToValue(const Name&) (COMDAT 005ed300), then setBinType 005d16d0 with SCRIPT_BIN (0) on failure.
+	// Statement shape: tools/openrbx and tools/rbxgs Hopper.cpp.
+	// INFERRED: the target takes text.c_str() before EnumDesc::singleton() and calls Name::lookup(const char*) after it,
+	// the shape of an inline EnumDesc::convertToValue(const char*, Enum&) { return convertToValue(Name::lookup(text),
+	// value); } called as convertToValue(text.c_str(), v) (batch 30 core proposal for reflection/enumconverter.h). The
+	// core header has only the std::string overload, so this file-local helper copies that inline.
+	template<class Enum>
+	static inline bool convertEnumText(const Reflection::EnumDesc<Enum>& desc, const char* text, Enum& value)
+	{
+		return desc.convertToValue(Name::lookup(text), value);
+	}
+
+	void HopperBin::setLegacyCommand(const std::string& text)
+	{
+		BinType newBinType;
+
+		if (!convertEnumText(Reflection::EnumDesc<BinType>::singleton(), text.c_str(), newBinType))
+		{
+			newBinType = SCRIPT_BIN;
+		}
+
+		setBinType(newBinType);
+	}
 }

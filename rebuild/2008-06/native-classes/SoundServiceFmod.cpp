@@ -8,6 +8,7 @@
 #include <G3D/format.h>
 #include "util/standardout.h"
 #include "util/Math.h"
+#include "v8datamodel/DebugSettings.h"
 
 namespace RBX {
 namespace Soundscape {
@@ -25,6 +26,22 @@ void checkFmodResult(FMOD_RESULT result)
 		std::string message = G3D::format("FMOD %d: %s", result, FMOD_ErrorString(result));
 		StandardOut::singleton()->print(MESSAGE_WARNING, message.c_str());
 		throw std::runtime_error(message);
+	}
+}
+
+// 005b87a0 (placeholder func_005b87a0, 215 B; INFERRED name logFmodResult as declared by the sibling sound units; the
+// openrbx util/Sound.cpp checkResultNoThrow): DebugSettings::singleton 00407be0 soundWarnings (+0x133), strncpy of
+// FMOD_ErrorString 005b65b0 into char[512], StandardOut print(MESSAGE_WARNING = 2) with "FMOD %d: %s" 008375f8.
+void logFmodResult(FMOD_RESULT result)
+{
+	if (result != FMOD_OK)
+	{
+		if (DebugSettings::singleton().soundWarnings)
+		{
+			char err[512];
+			strncpy(err, FMOD_ErrorString(result), 512);
+			StandardOut::singleton()->print(MESSAGE_WARNING, "FMOD %d: %s", result, err);
+		}
 	}
 }
 
