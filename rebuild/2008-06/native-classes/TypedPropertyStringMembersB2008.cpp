@@ -239,5 +239,63 @@ void TypedPropertyDescriptor<ContentId>::readValue(DescribedBase* instance, cons
 	}
 }
 
+// 0056e550 (vtable 00815d90 slot 8)
+template<>
+bool TypedPropertyDescriptor<G3D::Vector2int16>::setStringValue(DescribedBase* instance, const std::string& text) const
+{
+	G3D::Vector2int16 value(0, 0);
+	if (StringConverter<G3D::Vector2int16>::convertToValue(text, value))
+	{
+		getset->setValue(instance, value);
+		return true;
+	}
+	return false;
+}
+
+// 005b8150 (vtable 00832494 slot 11): identical-code folded across the content-id types other than ContentId.
+template<>
+void TypedPropertyDescriptor<TextureId>::readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
+{
+	if (!element->isXsiNil())
+	{
+		ContentId contentId;
+		if (element->getValue(contentId))
+		{
+			TextureId value(contentId);
+			getset->setValue(instance, value);
+		}
+	}
+}
+
+// 005b8150 (vtable 00833318 slot 11): identical-code folded across the content-id types other than ContentId.
+template<>
+void TypedPropertyDescriptor<MeshId>::readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
+{
+	if (!element->isXsiNil())
+	{
+		ContentId contentId;
+		if (element->getValue(contentId))
+		{
+			MeshId value(contentId);
+			getset->setValue(instance, value);
+		}
+	}
+}
+
+// 005b8150 (vtable 00837810 slot 11): identical-code folded across the content-id types other than ContentId.
+template<>
+void TypedPropertyDescriptor<Soundscape::SoundId>::readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
+{
+	if (!element->isXsiNil())
+	{
+		ContentId contentId;
+		if (element->getValue(contentId))
+		{
+			Soundscape::SoundId value(contentId);
+			getset->setValue(instance, value);
+		}
+	}
+}
+
 }
 }
