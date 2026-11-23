@@ -6,6 +6,11 @@
 #include "v8datamodel/FlagStand.h"
 #include "reflection/signal.h"
 #include "v8datamodel/Flag.h"
+#include "v8datamodel/FlagStandService.h"
+#include "humanoid/Humanoid2008.h"
+#include "Network/Player.h"
+#include "Network/Players.h"
+#include <boost/bind.hpp>
 
 namespace RBX
 {
@@ -65,6 +70,75 @@ namespace RBX
 	{
 		teamColor = color;
 		raisePropertyChanged(PartInstance::prop_Color);
+	}
+
+	// INFERRED: the 2007 openrbx FlagStand.h defines RegisterFlagStand / UnregisterFlagStand inline in the class
+	// (flagStands.push_back / remove); the 2008 binary has no out-of-line copy (onServiceProvider 0062cf40 inlines the
+	// push_back through _Buynode 0064d0b0 / _Incsize 005f26c0 and calls list::remove 0062c0c0 directly), while
+	// v8datamodel/FlagStandService.h declares them out of line (header proposal: make them inline there).
+	inline void FlagStandService::RegisterFlagStand(FlagStand* flagStand)
+	{
+		flagStands.push_back(flagStand);
+	}
+
+	inline void FlagStandService::UnregisterFlagStand(FlagStand* flagStand)
+	{
+		flagStands.remove(flagStand);
+	}
+
+	// 0062cde0 (thiscall, ret 8; bound into standTouched by onServiceProvider 0062cf40): Humanoid::modelIsCharacter
+	// 005d9a20 on the parent (+0x104), findFirstChildOfType<Flag> 0062bf20, Players::getPlayerFromCharacter 0049acd0,
+	// Player neutral +0x17c / teamColor +0x178 against teamColor +0x3fc, Flag::getTeamColor 00618380,
+	// event_FlagCaptured (0097c060) fire 0049d200 with shared_from(player) 00618a40, create<FlagStandService>(this)
+	// 00619450, FindClosestEmptyStandForFlag 0062c2e0, AffixFlag 0062bdc0. Shape: 2007 openrbx FlagStand.cpp.
+	void FlagStand::onEvent_standTouched(boost::shared_ptr<Instance> other)
+	{
+		Instance* character = other->getParent();
+		if (!Humanoid::modelIsCharacter(character))
+			return;
+
+		Flag* flag = character->findFirstChildOfType<Flag>();
+		if (!flag)
+			return;
+
+		Network::Player* player = Network::Players::getPlayerFromCharacter(character);
+		if (!player)
+			return;
+		if (player->getNeutral())
+			return;
+
+		if (player->getTeamColor() == getTeamColor() && flag->getTeamColor() != getTeamColor())
+		{
+			event_FlagCaptured.fire(this, shared_from(player));
+
+			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(this);
+			FlagStand* stand = flagStandService->FindClosestEmptyStandForFlag(flag);
+			if (stand)
+				stand->AffixFlag(flag);
+		}
+	}
+
+	// 0062cf40 (vtable 0084657c slot 12, ret 8): no base-class call in the 2008 body. create<FlagStandService>
+	// 00619360 on the provider, RegisterFlagStand (inline push_back), PartInstance::event_Touched (00976164)
+	// connect 004a3340 with boost::bind(&FlagStand::onEvent_standTouched, this, _1) and group 10 into standTouched
+	// +0x3e8 (scoped_connection::operator= 00595540); on removal list::remove 0062c0c0 and disconnect 00595230.
+	void FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
+	{
+		if (oldProvider == NULL)
+		{
+			FlagStandService* flagStandService = newProvider ? newProvider->create<FlagStandService>() : NULL;
+			flagStandService->RegisterFlagStand(this);
+
+			standTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1), 10);
+		}
+
+		if (newProvider == NULL)
+		{
+			FlagStandService* flagStandService = oldProvider ? oldProvider->create<FlagStandService>() : NULL;
+			flagStandService->UnregisterFlagStand(this);
+
+			standTouched.disconnect();
+		}
 	}
 }
 
