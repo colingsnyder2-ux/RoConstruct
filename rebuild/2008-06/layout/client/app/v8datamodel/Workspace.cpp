@@ -12,6 +12,7 @@
 #include "humanoid/Humanoid.h"
 #include "v8world/World.h"
 #include "v8xml/SerializerV2.h"
+#include "v8xml/XmlSerializer.h"
 
 namespace RBX
 {
@@ -322,12 +323,50 @@ namespace RBX
 			insertInstances(instances, this, insertMode, promptMode);
 	}
 
+	void Workspace::insertContent(ContentId contentId, std::vector<boost::shared_ptr<Instance>>& items, InsertMode insertMode, PromptMode promptMode)
+	{
+		std::auto_ptr<std::istream> stream = ServiceProvider::create<ContentProvider>(this)->getContent(contentId);
+
+		TextXmlParser machine(stream->rdbuf());
+		std::auto_ptr<XmlElement> root = machine.parse();
+
+		SerializerV2().loadInstances(root.get(), items);
+		if (items.size() > 0)
+			insertInstances(items, this, insertMode, promptMode);
+	}
+
+	void Workspace::start()
+	{
+		isSimulating = true;
+		getCamera()->alwaysMode();
+
+		if (scriptContext)
+		{
+			std::vector<boost::shared_ptr<Script> > startScripts;
+
+			std::set<Script*>::const_iterator iter = pendingScripts.begin();
+			std::set<Script*>::const_iterator end = pendingScripts.end();
+			while (iter != end)
+			{
+				startScripts.push_back(shared_from(*iter));
+				++iter;
+			}
+
+			pendingScripts.clear();
+
+			std::for_each(startScripts.begin(), startScripts.end(),
+				boost::bind(&ScriptContext::addScript, scriptContext, boost::bind(&boost::shared_ptr<Script>::get, _1)));
+		}
+	}
+
 	void Workspace::render2d(Adorn* adorn)
 	{
 		getCurrentMouseCommand()->render2d(adorn);
 		render2dItems(adorn);
 	}
 }
+
+template G3D::Array<boost::shared_ptr<RBX::PartInstance> >::~Array();
 
 #include "v8datamodel/DataModel.h"
 #include "tool/MegaDragger.h"

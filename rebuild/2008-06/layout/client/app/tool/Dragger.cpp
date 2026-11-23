@@ -141,6 +141,27 @@ namespace RBX
 
 		return movedSoFar;
 	}
+
+	void Dragger::safeRotate(const G3D::Array<Primitive*>& primitives, const G3D::Matrix3& rotate, ContactManager& contactManager)
+	{
+		if (primitives.size() != 0)
+		{
+			G3D::Vector3 center = toGrid(computeExtents(primitives).center());
+
+			G3D::CoordinateFrame centerCoord(center);
+			G3D::CoordinateFrame rotationCoord(rotate, G3D::Vector3::zero());
+
+			for (int i = 0; i < primitives.size(); i++)
+			{
+				Primitive* primitive = primitives[i];
+				G3D::CoordinateFrame primInCenter = centerCoord.toObjectSpace(primitive->getCoordinateFrame());
+				G3D::CoordinateFrame newPrimInCenter = rotationCoord * primInCenter;
+				G3D::CoordinateFrame primInWorld = centerCoord * newPrimInCenter;
+				PartInstance* part = PartInstance::fromPrimitive(primitive);
+				part->setCoordinateFrame(primInWorld);
+			}
+		}
+	}
 }
 
 template class G3D::Array<RBX::Primitive *>;

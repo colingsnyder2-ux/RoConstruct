@@ -1,247 +1,274 @@
 #include "v8datamodel/Tool.h"
 #include "v8datamodel/PartInstance.h"
-#include "v8datamodel/JointInstance.h"
-#include "v8datamodel/Workspace.h"
-#include "v8datamodel/Mouse.h"
-#include "humanoid/Humanoid.h"
 #include "Network/Players.h"
-#include "Network/Player.h"
-#include "v8datamodel/Backpack.h"
-#include "tool/DragUtilities.h"
+#include "v8xml/XmlElement.h"
+#include "v8datamodel/Mouse.h"
+#include "v8datamodel/ToolMouseCommand.h"
+#include "v8datamodel/JointInstance.h"
+#include "v8datamodel/ModelInstance.h"
+#include "v8datamodel/Workspace.h"
+#include "humanoid/Humanoid.h"
 
 namespace RBX
 {
-	extern Reflection::PropDescriptor<Tool, G3D::CoordinateFrame> prop_Grip;            // 0097b7a8
-	extern Reflection::SignalDesc<Tool, void(boost::shared_ptr<Instance>)> event_Equipped; // 0097b758
-	extern Reflection::SignalDesc<Tool, void(void)> event_Unequipped;                    // 0097b708
-	extern Reflection::SignalDesc<Tool, void(void)> event_Activated;                     // 0097b818
-	extern Reflection::SignalDesc<Tool, void(void)> event_Deactivated;                   // 0097b6d4
+	const char sTool[] = "Tool"; // 008416d0 (classDescriptor 005c3810, constructor setName)
 
-	Tool::ToolState Tool::computeDesiredState(Instance* testParent)
+	template<class C, class D, const char* N>
+	FactoryProduct<C, D, N>::FactoryProduct() : D() {}
+
+	template<class C, class D, const char* N>
+	const Name& FactoryProduct<C, D, N>::className() { return Name::declare<N>(); }
+
+	template<class C, class D, const char* N>
+	const Name& FactoryProduct<C, D, N>::getClassName() const { return className(); }
+
+	template<class C, class D, const char* N>
+	DescribedCreatable<C, D, N>::DescribedCreatable()
+		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
+
+	static Reflection::PropDescriptor<Tool, G3D::CoordinateFrame> prop_Grip("Grip", "Appearance", &Tool::getGrip, &Tool::setGrip, Reflection::PropertyDescriptor::STREAMING);
+	static Reflection::PropDescriptor<Tool, G3D::Vector3> prop_GripPos("GripPos", "Appearance", &Tool::getGripPos, &Tool::setGripPos, Reflection::PropertyDescriptor::UI);
+	static Reflection::PropDescriptor<Tool, G3D::Vector3> prop_GripForward("GripForward", "Appearance", &Tool::getGripForward, &Tool::setGripForward, Reflection::PropertyDescriptor::UI);
+	static Reflection::PropDescriptor<Tool, G3D::Vector3> prop_GripUp("GripUp", "Appearance", &Tool::getGripUp, &Tool::setGripUp, Reflection::PropertyDescriptor::UI);
+	static Reflection::PropDescriptor<Tool, G3D::Vector3> prop_GripRight("GripRight", "Appearance", &Tool::getGripRight, &Tool::setGripRight, Reflection::PropertyDescriptor::UI);
+	static Reflection::PropDescriptor<Tool, int> prop_BackendToolState("BackendToolState", "Appearance", &Tool::getBackendToolState, &Tool::setBackendToolState, Reflection::PropertyDescriptor::STREAMING);
+	static Reflection::PropDescriptor<Tool, int> prop_FrontendActivationState("ActivationState", "Appearance", &Tool::getFrontendActivationState, &Tool::setFrontendActivationState, Reflection::PropertyDescriptor::STREAMING);
+	Reflection::BoundProp<bool, 1> Tool::prop_Enabled("Enabled", "State", &Tool::enabled, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::SignalDesc<Tool, void(boost::shared_ptr<Instance>)> event_Equipped("Equipped", "mouse");
+	static Reflection::SignalDesc<Tool, void(void)> event_Unequipped("Unequipped");
+	static Reflection::SignalDesc<Tool, void(void)> event_Activated("Activated");
+	static Reflection::SignalDesc<Tool, void(void)> event_Deactivated("Deactivated");
+
+	void Tool::readProperty(const XmlElement* propertyElement, IReferenceBinder& binder)
 	{
-		Humanoid* humanoid = Humanoid::modelIsCharacter(testParent);
-		if (!humanoid)
-			return IN_WORKSPACE;
-
-		if (!humanoid->getTorso())
-			return IN_CHARACTER;
-
-		if (!humanoid->findRightArm() || !humanoid->findRightShoulder())
-			return HAS_TORSO;
-
-		return EQUIPPED;
-	}
-
-	bool Tool::characterCanUnequipTool(ModelInstance* character)
-	{
-		if (character && Humanoid::modelIsCharacter(character))
+		const Name* name = NULL;
+		if (const XmlAttribute* attrib = propertyElement->findAttribute(name_name))
 		{
-			Tool* tool = character->findFirstChildOfType<Tool>();
-			if (tool)
-				return tool->canUnequip();
-		}
-
-		return true;
-	}
-
-	void Tool::render3dSelect(Adorn* adorn, SelectState selectState)
-	{
-		for (size_t i = 0; i < numChildren(); i++)
-		{
-			if (IRenderable* renderable = dynamic_cast<IRenderable*>(getChild(i)))
-				renderable->render3dSelect(adorn, selectState);
-		}
-	}
-
-	void Tool::onLocalClicked()
-	{
-		Network::Player* localPlayer = Network::Players::findLocalPlayer(this);
-		if (localPlayer && characterCanUnequipTool(localPlayer->getCharacter()))
-		{
-			if (getParent() == localPlayer->getPlayerBackpack())
+			if (attrib->getValue(name))
 			{
-				moveAllToolsToBackpack(localPlayer);
-				setParent(localPlayer->getCharacter());
-			}
-			else
-			{
-				setParent(localPlayer->getPlayerBackpack());
-			}
-		}
-	}
-
-	void Tool::onLocalOtherClicked()
-	{
-		Network::Player* localPlayer = Network::Players::findLocalPlayer(this);
-		if (localPlayer && characterCanUnequipTool(localPlayer->getCharacter()))
-		{
-			if (getParent() != localPlayer->getPlayerBackpack())
-			{
-				setParent(localPlayer->getPlayerBackpack());
-			}
-		}
-	}
-
-	void Tool::upTo_Equipped()
-	{
-		handleTouched.disconnect();
-
-		std::vector<boost::weak_ptr<PartInstance> > parts;
-		PartInstance::findParts(this, parts);
-		DragUtilities::unJoinFromOutsiders(parts);
-
-		Humanoid* humanoid = Humanoid::modelIsCharacter(getParent());
-		PartInstance* arm = humanoid->getRightArm();
-		PartInstance* handle = const_cast<PartInstance*>(getHandleConst());
-		if (handle)
-			handle->setCanCollide(false);
-
-		buildWeld(arm, handle, humanoid->getRightArmGrip(), grip, "RightGrip");
-	}
-
-	void Tool::setBackendToolStateNoReplicate(int value)
-	{
-		ToolState state = (ToolState)value;
-
-		if (backendToolState < EQUIPPED && state >= EQUIPPED)
-		{
-			onEquipping();
-			event_Equipped.fire(this, getMouse());
-		}
-
-		if (state == ACTIVATED)
-			event_Activated.fire(this);
-
-		if (backendToolState == ACTIVATED)
-			event_Deactivated.fire(this);
-
-		if (backendToolState >= EQUIPPED && state < EQUIPPED)
-		{
-			event_Unequipped.fire(this);
-
-			if (toolMouseCommand)
-			{
-				toolMouseCommand = NULL;
-				workspace->setDefaultMouseCommand();
-				workspace = NULL;
+				if (name->name == "BackendToolState" || name->name == "ActivationState")
+					return;
 			}
 		}
 
-		backendToolState = state;
+		Instance::readProperty(propertyElement, binder);
 	}
 
-	void Tool::onAncestorChanged(const AncestorChanged& event)
+	void Tool::downFrom_InCharacter()
 	{
-		ToolState oldState = backendToolState;
+		characterChildAdded.disconnect();
+		characterChildRemoved.disconnect();
+	}
 
-		const ServiceProvider* oldProvider = ServiceProvider::findServiceProvider(event.oldParent);
-		const ServiceProvider* newProvider = ServiceProvider::findServiceProvider(event.newParent);
+	void Tool::downFrom_HasTorso()
+	{
+		torsoChildAdded.disconnect();
+		torsoChildRemoved.disconnect();
+	}
 
-		if (oldProvider)
+	const G3D::Vector3 Tool::getGripPos() const
+	{
+		return grip.translation;
+	}
+
+	const G3D::Vector3 Tool::getGripForward() const
+	{
+		return grip.lookVector();
+	}
+
+	const G3D::Vector3 Tool::getGripUp() const
+	{
+		return grip.upVector();
+	}
+
+	const G3D::Vector3 Tool::getGripRight() const
+	{
+		return grip.rightVector();
+	}
+
+	PartInstance* Tool::getHandle()
+	{
+		return const_cast<PartInstance*>(getHandleConst());
+	}
+
+	const G3D::CoordinateFrame Tool::getLocation() const
+	{
+		const PartInstance* handle = getHandleConst();
+		return handle ? handle->getCoordinateFrame() : G3D::CoordinateFrame();
+	}
+
+	Tool::~Tool()
+	{
+	}
+
+	void Tool::setBackendToolState(int value)
+	{
+		if (value != backendToolState)
 		{
-			if (Network::Players::backendProcessing(oldProvider, true))
-				setDesiredState(NOTHING, oldProvider);
-			else
-				setBackendToolStateNoReplicate(NOTHING);
+			setBackendToolStateNoReplicate(value);
+			raisePropertyChanged(prop_BackendToolState);
+		}
+	}
+
+	Tool::ToolState Tool::computeDesiredState()
+	{
+		if (!getHandleConst())
+			return NOTHING;
+
+		if (!Workspace::contextInWorkspace(this))
+			return HAS_HANDLE;
+
+		return computeDesiredState(getParent());
+	}
+
+	void Tool::rebuildBackendState()
+	{
+		ToolState desiredState = computeDesiredState();
+		setDesiredState(desiredState, ServiceProvider::findServiceProvider(this));
+	}
+
+	void Tool::onEvent_RemovedBackend(boost::shared_ptr<Instance> child)
+	{
+		if (ServiceProvider::findServiceProvider(this) && child.get() != this)
+		{
+			if (child.get() == weld.get())
+				setDesiredState(HAS_TORSO, ServiceProvider::findServiceProvider(this));
+
+			rebuildBackendState();
+		}
+	}
+
+	void Tool::connectTouchEvent()
+	{
+		if (const PartInstance* handle = getHandleConst())
+		{
+			handleTouched = PartInstance::event_Touched.connect(const_cast<PartInstance*>(handle), boost::bind(&Tool::onEvent_HandleTouched, this, _1), 10);
+		}
+		else
+		{
+			handleTouched.disconnect();
+		}
+	}
+
+	void Tool::downFrom_Equipped()
+	{
+		ModelInstance* character = NULL;
+
+		if (weld)
+		{
+			if (PartInstance* part0 = weld->getPart0())
+				character = dynamic_cast<ModelInstance*>(part0->getParent());
+
+			weld->setParent(NULL);
+			weld.reset();
 		}
 
-		Instance::onAncestorChanged(event);
-
-		if (newProvider)
+		if (PartInstance* handle = getHandle())
 		{
-			if (Network::Players::backendProcessing(newProvider, true))
-			{
-				rebuildBackendState();
-			}
-			else if (getParent() == Network::Players::findLocalCharacter(this))
-			{
-				if (oldState >= EQUIPPED)
-					setBackendToolStateNoReplicate(HAS_TORSO);
+			handle->setCanCollide(true);
 
-				setBackendToolStateNoReplicate(EQUIPPED);
+			if (Humanoid::modelIsCharacter(character))
+			{
+				G3D::CoordinateFrame cf = character->getLocation();
+				G3D::Vector3 pos = cf.translation;
+				pos.y += 4;
+				pos += cf.lookVector() * 8;
+
+				handle->moveToPoint(pos);
+				handle->setRotationalVelocity(G3D::Vector3(1, 1, 1));
+			}
+		}
+
+		connectTouchEvent();
+	}
+
+	void Tool::onEquipping()
+	{
+		if (getParent() && getParent() == Network::Players::findLocalCharacter(this))
+		{
+			workspace = ServiceProvider::find<Workspace>(this);
+			toolMouseCommand = new ToolMouseCommand(workspace, this);
+			workspace->setMouseCommand(toolMouseCommand);
+		}
+	}
+
+	void Tool::setGripPos(const G3D::Vector3& v)
+	{
+		setGrip(G3D::CoordinateFrame(grip.rotation, v));
+	}
+
+	void Tool::setGripForward(const G3D::Vector3& v)
+	{
+		G3D::CoordinateFrame c = grip;
+		G3D::Vector3 oldX = c.rotation.getColumn(0);
+		G3D::Vector3 oldY = c.rotation.getColumn(1);
+
+		G3D::Vector3 z = -v.direction();
+		G3D::Vector3 x = oldY.cross(z);
+		x.unitize();
+
+		G3D::Vector3 y = z.cross(x);
+		y.unitize();
+
+		c.rotation.setColumn(0, x);
+		c.rotation.setColumn(1, y);
+		c.rotation.setColumn(2, z);
+
+		setGrip(c);
+	}
+
+	Tool::Tool()
+		: backendToolState(NOTHING),
+		  frontendActivationState(0),
+		  toolMouseCommand(NULL),
+		  enabled(true)
+	{
+		setName(sTool);
+	}
+
+	void Tool::setFrontendActivationState(int value)
+	{
+		int prevState = frontendActivationState;
+
+		if (value > frontendActivationState)
+		{
+			frontendActivationState = value;
+			raisePropertyChanged(prop_FrontendActivationState);
+
+			if (ServiceProvider::findServiceProvider(this) && Network::Players::backendProcessing(this, true) && Tool::drawSelected())
+			{
+				if (value - 1 > prevState)
+					setBackendToolState((value - 1) % 2 == 0 ? EQUIPPED : ACTIVATED);
+
+				setBackendToolState(value % 2 == 0 ? EQUIPPED : ACTIVATED);
 			}
 		}
 	}
 
-	void Tool::setGrip(const G3D::CoordinateFrame& value)
+	boost::shared_ptr<Mouse> Tool::getMouse()
 	{
-		if (value != grip)
-		{
-			grip = value;
+		boost::shared_ptr<Mouse> mouse;
 
-			if (Workspace* workspace = ServiceProvider::find<Workspace>(this))
-				workspace->raiseDrawChanged();
+		if (toolMouseCommand)
+			mouse = toolMouseCommand->getMouse();
+		else
+			mouse = Creatable<Instance>::create<Mouse>();
 
-			raisePropertyChanged(prop_Grip);
+		return mouse;
+	}
 
-			if (weld)
-				weld->setC1(grip);
-		}
+	void Tool::activate()
+	{
+		setFrontendActivationState(frontendActivationState + (frontendActivationState % 2) + 1);
+	}
+
+	void Tool::deactivate()
+	{
+		setFrontendActivationState(frontendActivationState + ((frontendActivationState + 1) % 2) + 1);
 	}
 }
 
-namespace RBX
-{
-	// 005fd3d0: single-instruction tail call. INFERRED: fn_00642fc0 is the unresolved target of the
-	extern void fn_00642fc0();
-	void Tool::sub_005fd3d0()
-	{
-		fn_00642fc0();
-	}
-
-	extern "C" { extern Reflection::PropDescriptor<Tool, int> prop_BackendToolState; }
-
-	namespace { inline void emptyUpToWorkspace() {} inline void emptyUpToActivated() {}
-	           inline void emptyDownFromWorkspace() {} }
-
-	void Tool::setDesiredState(ToolState desiredState, const ServiceProvider* serviceProvider)
-	{
-		do
-		{
-			int next;
-
-			if ((int)desiredState > (int)backendToolState)
-			{
-				switch (backendToolState)
-				{
-				case HAS_TORSO:    upTo_Equipped();     break;
-				case IN_CHARACTER: upTo_HasTorso();     break;
-				case IN_WORKSPACE: upTo_InCharacter();  break;
-				case HAS_HANDLE:   emptyUpToWorkspace();   break;
-				case NOTHING:      connectTouchEvent();    break;
-				case EQUIPPED:     emptyUpToActivated();    break;
-				case ACTIVATED:    emptyUpToActivated();    break;
-				}
-				next = (int)backendToolState + 1;
-			}
-			else if ((int)desiredState < (int)backendToolState)
-			{
-				switch (backendToolState)
-				{
-				case EQUIPPED:     downFrom_Equipped();    break;
-				case HAS_TORSO:    downFrom_HasTorso();    break;
-				case IN_CHARACTER: downFrom_InCharacter(); break;
-				case IN_WORKSPACE: emptyDownFromWorkspace();  break;
-				case HAS_HANDLE:   handleTouched.disconnect(); break; // downFrom_HasHandle() inlined
-				case NOTHING:      emptyDownFromWorkspace(); break;
-				}
-				next = (int)backendToolState - 1;
-			}
-			else
-			{
-				continue;
-			}
-
-			// inlined setBackendToolState(next)
-			if (next != (int)backendToolState)
-			{
-				setBackendToolStateNoReplicate(next);
-				raisePropertyChanged(prop_BackendToolState);
-			}
-		}
-		while ((int)desiredState != (int)backendToolState);
-	}
-}
+template void RBX::Name::callDoDeclare<RBX::sTool>();
 
 #include "util/Name.h"
 

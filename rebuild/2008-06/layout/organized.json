@@ -3205,6 +3205,18 @@
 "client/app/util/name.cpp",
 "merged unit, partial"
 ],
+"004cbc10": [
+"client/app/v8datamodel/partinstance.cpp",
+"merged unit, partial"
+],
+"004cc210": [
+"client/app/v8datamodel/partinstance.cpp",
+"merged unit, partial"
+],
+"004ccc30": [
+"client/app/v8datamodel/partinstance.cpp",
+"merged unit, partial"
+],
 "004cd300": [
 "client/app/util/name.cpp",
 "merged unit, partial"
@@ -5821,6 +5833,22 @@
 "client/app/gui/ArrowPanel.cpp",
 "merged unit, partial"
 ],
+"0058d7e0": [
+"client/app/v8xml/XmlSerializer.cpp",
+"merged unit, partial"
+],
+"0058df70": [
+"client/app/v8xml/XmlSerializer.cpp",
+"merged unit, partial"
+],
+"0058e4a0": [
+"client/app/v8xml/XmlSerializer.cpp",
+"merged unit, partial"
+],
+"0058f270": [
+"client/app/v8xml/XmlSerializer.cpp",
+"merged unit, partial"
+],
 "005917e0": [
 "client/app/v8xml/SerializerV2.cpp",
 "merged unit, partial"
@@ -6005,27 +6033,39 @@
 "client/app/v8datamodel/Decal.cpp",
 "merged unit, partial"
 ],
-"00598b60": [
+"00598ad0": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00598d20": [
+"00598c60": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00598d70": [
+"00598c70": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00598d90": [
+"00598c90": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00599190": [
+"00598d10": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00599250": [
+"00598d40": [
+"client/app/v8datamodel/partinstance.cpp",
+"merged unit, partial"
+],
+"00598d50": [
+"client/app/v8datamodel/partinstance.cpp",
+"merged unit, partial"
+],
+"00598de0": [
+"client/app/v8datamodel/partinstance.cpp",
+"merged unit, partial"
+],
+"00599220": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
@@ -6033,79 +6073,95 @@
 "client/app/v8kernel/Body.cpp",
 "merged unit, complete"
 ],
-"00599fa0": [
+"005993e0": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059a760": [
+"005994c0": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059b4f0": [
+"00599530": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059bc70": [
+"005995f0": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059c490": [
+"00599640": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059cc70": [
+"00599690": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059d130": [
+"00599730": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059d370": [
+"00599770": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059db90": [
+"005997c0": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059dd20": [
+"005997f0": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059dd50": [
+"00599890": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059ddc0": [
+"00599eb0": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059deb0": [
+"00599f80": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059dee0": [
+"0059a040": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059df40": [
+"0059aa40": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059e090": [
+"0059aa90": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059e3d0": [
+"0059aae0": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059e430": [
+"0059ab80": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059e4d0": [
+"0059abb0": [
+"client/app/v8datamodel/partinstance.cpp",
+"merged unit, partial"
+],
+"0059abe0": [
+"client/app/v8datamodel/partinstance.cpp",
+"merged unit, partial"
+],
+"0059b4d0": [
+"client/app/v8datamodel/partinstance.cpp",
+"merged unit, partial"
+],
+"0059bbf0": [
+"client/app/v8datamodel/partinstance.cpp",
+"merged unit, partial"
+],
+"0059de20": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
@@ -6237,95 +6293,11 @@
 "client/app/util/Guid.cpp",
 "merged unit, partial"
 ],
-"005a8660": [
+"005ade40": [
 "client/app/script/ScriptContext.cpp",
 "merged unit, partial"
 ],
-"005a8750": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005a8770": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005a9120": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005a9810": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005a9840": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005a9870": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005a98a0": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005a9910": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005a99b0": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005a9a20": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005a9e90": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005a9fa0": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005aa860": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005aa930": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005aaa30": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005aaa80": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005ab6c0": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005ac150": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005ac1e0": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005ac270": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005ac560": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005ad8c0": [
+"005adf80": [
 "client/app/script/ScriptContext.cpp",
 "merged unit, partial"
 ],
@@ -6338,10 +6310,6 @@
 "merged unit, partial"
 ],
 "005aeea0": [
-"client/app/script/ScriptContext.cpp",
-"merged unit, partial"
-],
-"005b0710": [
 "client/app/script/ScriptContext.cpp",
 "merged unit, partial"
 ],
@@ -7721,7 +7689,67 @@
 "client/app/v8kernel/Kernel.cpp",
 "merged unit, partial"
 ],
-"005fdaf0": [
+"005fd3a0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fd3c0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fd3e0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fd4c0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fd4e0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fd500": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fd530": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fd580": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fd5a0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fd760": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fd770": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fd7d0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fd820": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fd880": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fd8e0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fd920": [
 "client/app/v8datamodel/tool.cpp",
 "merged unit, partial"
 ],
@@ -7729,7 +7757,15 @@
 "client/app/v8datamodel/tool.cpp",
 "merged unit, partial"
 ],
-"005fdf00": [
+"005fdcf0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fdd50": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fddb0": [
 "client/app/v8datamodel/tool.cpp",
 "merged unit, partial"
 ],
@@ -7737,19 +7773,55 @@
 "client/app/v8datamodel/tool.cpp",
 "merged unit, partial"
 ],
-"005fe140": [
+"005fe3a0": [
 "client/app/v8datamodel/tool.cpp",
 "merged unit, partial"
 ],
-"005fe1d0": [
+"005fe420": [
 "client/app/v8datamodel/tool.cpp",
 "merged unit, partial"
 ],
-"005ff750": [
+"005fe4a0": [
 "client/app/v8datamodel/tool.cpp",
 "merged unit, partial"
 ],
-"005ffa10": [
+"005fe4b0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fe860": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fe930": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fea00": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fead0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005ff2e0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005ff590": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005ff680": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005ff8d0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005ffc00": [
 "client/app/v8datamodel/tool.cpp",
 "merged unit, partial"
 ],
@@ -7758,6 +7830,30 @@
 "merged unit, partial"
 ],
 "005fff40": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"006000b0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"006001d0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"00600240": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"00600420": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"006004b0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"006004d0": [
 "client/app/v8datamodel/tool.cpp",
 "merged unit, partial"
 ],
@@ -8116,6 +8212,10 @@
 "0060e780": [
 "client/app/tool/MegaDragger.cpp",
 "merged unit, complete"
+],
+"0060e920": [
+"client/app/v8datamodel/partinstance.cpp",
+"merged unit, partial"
 ],
 "0060f3e0": [
 "client/app/util/Extents.cpp",
@@ -11609,14 +11709,6 @@
 "client/app/v8datamodel/Decal.cpp",
 "merged unit, partial"
 ],
-"007f4630": [
-"client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"007f4bc0": [
-"client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
 "007f5e30": [
 "client/app/v8datamodel/Hopper.cpp",
 "merged unit, partial"
@@ -11839,6 +11931,54 @@
 ],
 "007f75d0": [
 "client/app/v8datamodel/Surfaces.cpp",
+"merged unit, partial"
+],
+"007f7640": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"007f76a0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"007f7700": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"007f7760": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"007f77c0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"007f7820": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"007f7880": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"007f78e0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"007f7910": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"007f7930": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"007f7960": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"007f7990": [
+"client/app/v8datamodel/tool.cpp",
 "merged unit, partial"
 ],
 "007f79c0": [
@@ -12109,14 +12249,6 @@
 "client/app/v8datamodel/Decal.cpp",
 "merged unit, partial"
 ],
-"007fdd30": [
-"client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"007fde10": [
-"client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
 "007fe2c0": [
 "client/app/v8datamodel/BrickColor.cpp",
 "merged unit, complete"
@@ -12335,6 +12467,38 @@
 ],
 "007ffed0": [
 "client/app/v8datamodel/Surfaces.cpp",
+"merged unit, partial"
+],
+"007fff40": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"007fff60": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"007fff80": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"007fffa0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"007fffc0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"007fffe0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"00800000": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"00800020": [
+"client/app/v8datamodel/tool.cpp",
 "merged unit, partial"
 ],
 "00800150": [
