@@ -21,14 +21,8 @@ class IReferenceBinder;
 class XmlState;
 class Name;
 class RaiseDescendentAdded2;
-struct ChildAdded {   // INFERRED: payload of Notifier<Instance, ChildAdded>::raise (setParent 0055a8f0 builds it from the child pointer)
-    boost::shared_ptr<Instance> child;   // 00594e00: the out-of-line ctor stores shared_from(instance)
-    ChildAdded(Instance* child);
-};
-struct ChildRemoved {   // INFERRED: as ChildAdded
-    boost::shared_ptr<Instance> child;
-    ChildRemoved(Instance* child);
-};
+struct ChildAdded;
+struct ChildRemoved;
 struct DescendantAdded;
 struct DescendantRemoving;
 struct AncestorChanged {

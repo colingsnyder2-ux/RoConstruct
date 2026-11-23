@@ -4,12 +4,20 @@
 // G3D::format 00509b10, std::runtime_error 00409d50, throw 006a158c).
 #include "v8tree/Instance.h"
 #include "v8tree/PropertyChanged.h"
+#include "v8tree/InstanceEvents.h"
 #include <G3D/format.h>
 #include <algorithm>
 #include <stdexcept>
 
 namespace RBX
 {
+	// ChildRemoved payload as the other native headers declare it (an aggregate holding the child); built from the instance here.
+	struct ChildRemoved
+	{
+		boost::shared_ptr<Instance> child;
+		ChildRemoved(Instance* value) : child(shared_from(value)) {}
+	};
+
 	void Instance::setParent(Instance* newParent)
 	{
 		Instance* const currentParent = parent;
