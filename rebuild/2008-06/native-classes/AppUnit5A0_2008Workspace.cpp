@@ -15,6 +15,7 @@
 #include "humanoid/Humanoid.h"
 #include "v8world/World.h"
 #include "v8xml/SerializerV2.h"
+#include "v8xml/XmlSerializer.h"
 
 namespace RBX
 {
@@ -359,6 +360,51 @@ namespace RBX
 			insertInstances(instances, this, insertMode, promptMode);
 	}
 
+	// 005a3540 (placeholder func_005a3540, `ret 0x2c`: ContentId by value 0x20 + items + insertMode + promptMode; caller
+	// 005a39d0): ServiceProvider::create<ContentProvider> 00465210, getContent 00561f20, TextXmlParser 00415350 on the
+	// stream's rdbuf, parse 0058f6c0, SerializerV2::loadInstances 00593250, insertInstances 005911d0, ~XmlElement
+	// 00413a70, ~TextXmlParser 004147c0. Statement shape of the 2007 analog, which reads the ContentProvider singleton
+	// instead of the service.
+	void Workspace::insertContent(ContentId contentId, std::vector<boost::shared_ptr<Instance>>& items, InsertMode insertMode, PromptMode promptMode)
+	{
+		std::auto_ptr<std::istream> stream = ServiceProvider::create<ContentProvider>(this)->getContent(contentId);
+
+		TextXmlParser machine(stream->rdbuf());
+		std::auto_ptr<XmlElement> root = machine.parse();
+
+		SerializerV2().loadInstances(root.get(), items);
+		if (items.size() > 0)
+			insertInstances(items, this, insertMode, promptMode);
+	}
+
+	// 005a36e0 (placeholder func_005a36e0): isSimulating +0x3d0, getCamera through the ICameraOwner subobject +0x288,
+	// Camera::alwaysMode 005cc000, scriptContext +0x3f4, pendingScripts +0x3d4 copied into a vector of shared_from
+	// 00618a40 (push_back 00420110), cleared, then std::for_each 005a2800 (placeholder func_005a2800) of
+	// ScriptContext::addScript 005b06c0 over shared_ptr<Script>::get (0071f210). Statement shape of the 2007 analog.
+	void Workspace::start()
+	{
+		isSimulating = true;
+		getCamera()->alwaysMode();
+
+		if (scriptContext)
+		{
+			std::vector<boost::shared_ptr<Script> > startScripts;
+
+			std::set<Script*>::const_iterator iter = pendingScripts.begin();
+			std::set<Script*>::const_iterator end = pendingScripts.end();
+			while (iter != end)
+			{
+				startScripts.push_back(shared_from(*iter));
+				++iter;
+			}
+
+			pendingScripts.clear();
+
+			std::for_each(startScripts.begin(), startScripts.end(),
+				boost::bind(&ScriptContext::addScript, scriptContext, boost::bind(&boost::shared_ptr<Script>::get, _1)));
+		}
+	}
+
 	// @005a0660 ?render2d@Workspace
 	void Workspace::render2d(Adorn* adorn)
 	{
@@ -378,3 +424,10 @@ namespace RBX
 // @005a3b70 ?classDescriptor@?$Described@VWorkspace@RBX
 // @005a07b0 ??0?$NonFactoryProduct@VRootInstance@RBX
 // @005a17f0 ?getClassName@?$NonFactoryProduct@VRootInstance@RBX
+
+// 005a0e40 (placeholder func_005a0e40, 113 B): G3D::Array<shared_ptr<PartInstance> >::~Array (8-byte elements: each
+// shared_ptr released, System::alignedFree 00507d20, data / num / numAllocated zeroed), emitted after joinAllHack
+// 005a0de0 for the three part Arrays of Workspace::step 005a2580 (005a26cb / 005a26f6 / 005a2707 and its unwind
+// funclets 007d2a40..007d2a58). step itself stays out: the 2008 body takes two arguments (`ret 8`) where the read-only
+// Workspace.h declares step(float).
+template G3D::Array<boost::shared_ptr<RBX::PartInstance> >::~Array();

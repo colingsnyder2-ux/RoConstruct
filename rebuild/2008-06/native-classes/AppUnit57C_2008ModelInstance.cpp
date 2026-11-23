@@ -248,7 +248,19 @@ namespace RBX
 		for_eachChild(breakJ);
 	}
 
-	// 00584100: exact only with an inline Extents::areaXZ (generated util/Extents.h copy; proposal).
+	// INFERRED: Extents::areaXZ is inline in the 2008 header (no out-of-line copy; 00584192..0058419d computes
+	// the x extent then the z extent in place). The read-only util/Extents.h only declares it, so this unit gives the
+	// declared member that inline body (same pattern as the unit-local Property copy constructor of
+	// AppUnit460_2008MarshaledEventData.cpp); proposal: make it inline in util/Extents.h.
+	inline float Extents::areaXZ() const
+	{
+		// Rejected: (high.x - low.x) * (high.z - low.z) and the swapped product (both load the z extent first).
+		G3D::Vector3 size = high - low;
+		return size.x * size.z;
+	}
+
+	// 00584100 (placeholder func_00584100; primaryPartProp getter of the initializer 007f3dd0, IPrimaryPart thunk
+	// 00584b10 jumps here).
 	PartInstance* ModelInstance::getPrimaryPartInternal() const
 	{
 		if (primaryPart)
@@ -414,3 +426,18 @@ template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *
 template class std::allocator<std::pair<RBX::Name const * const,RBX::ICreator const *> >;
 template class std::vector<RBX::IModelModifier *,std::allocator<RBX::IModelModifier *> >;
 template class std::vector<RBX::Primitive const *,std::allocator<RBX::Primitive const *> >;
+
+// 00584c90 (placeholder func_00584c90, 236 B, `ret 4`): Reflection::Value::get<G3D::CoordinateFrame>() const, the only
+// callee of TypedPropertyDescriptor<CoordinateFrame>::setVariant 00584f70 in this unit's range. The stored value when
+// the type matches (typeid 00946380, any_cast<const CoordinateFrame&> 00584590), else convert<CoordinateFrame>
+// 0056efb0 on a copy; reflection/type.h declares get<T>() only. Same template body as Inferred_0056f0b0.cpp.
+namespace RBX { namespace Reflection {
+	template<class T> T Value::get() const
+	{
+		if (isType<T>())
+			return boost::any_cast<const T&>(value);
+		Value copy(*this);
+		return copy.convert<T>();
+	}
+	template G3D::CoordinateFrame Value::get<G3D::CoordinateFrame>() const;
+} }
