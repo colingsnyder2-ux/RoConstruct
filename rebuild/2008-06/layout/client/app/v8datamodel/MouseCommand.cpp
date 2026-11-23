@@ -1,4 +1,3 @@
-#undef _RELEASEASSERT
 #pragma float_control(precise, off)
 #include "v8datamodel/MouseCommand.h"
 #include "v8datamodel/PartInstance.h"
@@ -18,6 +17,16 @@ namespace RBX
 
 	MouseCommand::~MouseCommand()
 	{
+	}
+
+	bool MouseCommand::characterCanReach(const G3D::Vector3& hitPoint) const
+	{
+		PartInstance* head = Humanoid::getLocalHeadFromContext(workspace);
+
+		if (head)
+			return (head->getCoordinateFrame().translation - hitPoint).magnitude() < 60.0;
+		else
+			return false;
 	}
 
 	TextureId MouseCommand::getCursorId() const
@@ -129,51 +138,4 @@ namespace RBX
 
 		return top;
 	}
-}
-
-namespace RBX {
-float MouseCommand::distanceFromCharacter(const G3D::Vector3& point) const
-{
-    PartInstance* head = Humanoid::getLocalHeadFromContext(workspace);
-    if (head) return (head->getCoordinateFrame().translation - point).magnitude();
-    return 0.0f;
-}
-bool MouseCommand::characterCanReach(const G3D::Vector3& point) const
-{
-    return Humanoid::getLocalHeadFromContext(workspace) && distanceFromCharacter(point) < 60.0;
-}
-}
-
-#undef _RELEASEASSERT
-#include "v8datamodel/Surface.h"
-#include "v8datamodel/Decal.h"
-
-namespace RBX {
-inline NormalId FaceInstance::getFace() const { return face; }
-
-Decal* MouseCommand::getDecal(PartInstance* part, const UIEvent& input)
-{
-    int normal;
-    Surface* surface = getSurface(input, part, normal);
-    if (surface && part->children) {
-        std::vector<boost::shared_ptr<Instance> >::const_iterator end = part->children->end();
-        std::vector<boost::shared_ptr<Instance> >::const_iterator it = part->children->begin();
-        for (; it != end; ++it) {
-            Decal* decal = dynamic_cast<Decal*>(it->get());
-            if (decal && decal->getFace() == surface->getNormalId()) return decal;
-        }
-    }
-    return NULL;
-}
-}
-
-namespace RBX {
-UnlockedPartByLocalCharacter::UnlockedPartByLocalCharacter(Instance* root)
-    : PartByLocalCharacter(root) {}
-
-PartInstance* MouseCommand::getUnlockedPartByLocalCharacter(const UIEvent& event, G3D::Vector3& hitWorld)
-{
-    UnlockedPartByLocalCharacter filter(workspace);
-    return getPart(event, &filter, hitWorld);
-}
 }

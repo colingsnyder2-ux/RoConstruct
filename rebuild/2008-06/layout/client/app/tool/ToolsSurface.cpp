@@ -1,79 +1,6 @@
-#include "tool/ModelTool.h"
-#include "v8datamodel/Workspace.h"
-#include "v8datamodel/PartInstance.h"
-
-namespace RBX {
-ModelTool::ModelTool(Workspace* workspace) : MouseCommand(workspace) {}
-
-void ModelTool::onMouseHover(const UIEvent& input)
-{
-    if (PartInstance* part = getPart(input, NULL))
-        target = shared_from(Workspace::findTopInstance(part));
-    else
-        target.reset();
-}
-
-void ModelTool::render3dAdorn(Adorn* adorn)
-{
-    // Rejected: the dynamic_cast alone (no explicit target test) drops the original's leading null check (49 of 53 B).
-    if (target)
-        if (IRenderable* renderable = dynamic_cast<IRenderable*>(target.get()))
-            renderable->render3dSelect(adorn, SELECT_NORMAL);
-}
-}
-
-#include "tool/ModelTools.h"
-#include "util/Sound.h"
-
-namespace RBX {
-Instance* findUnanchoredPart(Instance* instance)
-{
-    if (PartInstance* part = dynamic_cast<PartInstance*>(instance))
-        if (!part->getAnchored()) return part;
-    boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > children = instance->children.read();
-    if (children) {
-        std::vector<boost::shared_ptr<Instance> >::const_iterator end = children->end();
-        std::vector<boost::shared_ptr<Instance> >::const_iterator it = children->begin();
-        for (; it != end; ++it)
-            if (findUnanchoredPart(it->get())) return it->get();
-    }
-    return NULL;
-}
-
-void applyAnchored(Instance* instance, const bool& value)
-{
-    bool local = value;
-    if (PartInstance* part = dynamic_cast<PartInstance*>(instance))
-        part->setAnchored(local);
-    else {
-        Instance::AnchorAction action = { local };
-        instance->applyAnchoredToChildren(action);
-    }
-}
-
-void AnchorTool::onMouseHover(const UIEvent& input)
-{
-    boost::shared_ptr<Instance> previous = target;
-    ModelTool::onMouseHover(input);
-    if (previous != target) {
-        bool value = target ? findUnanchoredPart(target.get()) == NULL : false;
-        anchored = value;
-    }
-}
-
-MouseCommand* AnchorTool::onMouseDown(const UIEvent&)
-{
-    if (target && !PartInstance::getLocked(target.get())) {
-        bool value = findUnanchoredPart(target.get()) != NULL;
-        applyAnchored(target.get(), value);
-        ServiceProvider::create<Soundscape::SoundService>(workspace)->playSound(PING_SOUND);
-    }
-    return this;
-}
-}
-
 // Unsplit: combined from AxisMoveToolCore/Bounds/Down/Move/Render/Methods (mew 5fe2214 layout unsplit for native-doc).
 #include "v8datamodel/DataModel.h"
+#include "v8datamodel/Workspace.h"
 #include "tool/MegaDragger.h"
 #include "tool/AxisMoveTool.h"
 #include "tool/AxisMoveGrid.h"
@@ -174,8 +101,8 @@ void AxisMoveTool::render3dAdorn(Adorn* adorn) {
 	if (bounds(box)) {
 		G3D::CoordinateFrame frame(box.center());
 		G3D::Vector3 size = box.size();
-		DrawAdorn::handles3d(size, frame, adorn, HANDLE_MOVE,
-			workspace->getGCamera().getCoordinateFrame().translation);
+		G3D::CoordinateFrame cameraFrame = workspace->getGCamera().getCoordinateFrame();
+		DrawAdorn::handles3d(size, frame, adorn, HANDLE_MOVE, cameraFrame.translation);
 	}
 }
 
@@ -212,6 +139,79 @@ template class boost::shared_ptr<RBX::Workspace>;
 template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Primitive *> >;
 template class std::auto_ptr<RBX::MegaDragger>;
 template class std::vector<RBX::Primitive *,std::allocator<RBX::Primitive *> >;
+
+#include "tool/ModelTool.h"
+#include "v8datamodel/PartInstance.h"
+
+namespace RBX {
+ModelTool::ModelTool(Workspace* workspace) : MouseCommand(workspace) {}
+
+void ModelTool::onMouseHover(const UIEvent& input)
+{
+    if (PartInstance* part = getPart(input, NULL))
+        target = shared_from(Workspace::findTopInstance(part));
+    else
+        target.reset();
+}
+
+void ModelTool::render3dAdorn(Adorn* adorn)
+{
+    // Rejected: the dynamic_cast alone (no explicit target test) drops the original's leading null check (49 of 53 B).
+    if (target)
+        if (IRenderable* renderable = dynamic_cast<IRenderable*>(target.get()))
+            renderable->render3dSelect(adorn, SELECT_NORMAL);
+}
+}
+
+#include "tool/ModelTools.h"
+#include "util/Sound.h"
+
+namespace RBX {
+Instance* findUnanchoredPart(Instance* instance)
+{
+    if (PartInstance* part = dynamic_cast<PartInstance*>(instance))
+        if (!part->getAnchored()) return part;
+    boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > children = instance->children.read();
+    if (children) {
+        std::vector<boost::shared_ptr<Instance> >::const_iterator end = children->end();
+        std::vector<boost::shared_ptr<Instance> >::const_iterator it = children->begin();
+        for (; it != end; ++it)
+            if (findUnanchoredPart(it->get())) return it->get();
+    }
+    return NULL;
+}
+
+void applyAnchored(Instance* instance, const bool& value)
+{
+    bool local = value;
+    if (PartInstance* part = dynamic_cast<PartInstance*>(instance))
+        part->setAnchored(local);
+    else {
+        Instance::AnchorAction action = { local };
+        instance->applyAnchoredToChildren(action);
+    }
+}
+
+void AnchorTool::onMouseHover(const UIEvent& input)
+{
+    boost::shared_ptr<Instance> previous = target;
+    ModelTool::onMouseHover(input);
+    if (previous != target) {
+        bool value = target ? findUnanchoredPart(target.get()) == NULL : false;
+        anchored = value;
+    }
+}
+
+MouseCommand* AnchorTool::onMouseDown(const UIEvent&)
+{
+    if (target && !PartInstance::getLocked(target.get())) {
+        bool value = findUnanchoredPart(target.get()) != NULL;
+        applyAnchored(target.get(), value);
+        ServiceProvider::create<Soundscape::SoundService>(workspace)->playSound(PING_SOUND);
+    }
+    return this;
+}
+}
 
 namespace RBX {
 const std::string AnchorTool::getCursorName() const

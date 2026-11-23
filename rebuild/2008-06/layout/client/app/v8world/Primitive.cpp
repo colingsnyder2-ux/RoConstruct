@@ -95,6 +95,13 @@ namespace RBX
 		return answer;
 	}
 
+	void Primitive::setMassInertia(float mass)
+	{
+		body->setMass(mass);
+		body->setMoment(geometry->getMoment(mass));
+		JointK.setDirty();
+	}
+
 	void Primitive::setGridSize(const G3D::Vector3& gridSize)
 	{
 		G3D::Vector3 safe = clipToSafeSize(gridSize);
@@ -164,6 +171,79 @@ namespace RBX
 		}
 	}
 }
+
+#ifdef PRIMITIVE_HEADER_DECLARES_GRID_CORNER_EDGES
+namespace RBX
+{
+	RigidJoint* Primitive::getFirstRigidAt(Edge* start)
+	{
+		while (start != NULL)
+		{
+			if (RigidJoint::isRigidJoint(start))
+				return static_cast<RigidJoint*>(start);
+
+			start = getNextJoint(static_cast<Joint*>(start));
+		}
+
+		return NULL;
+	}
+
+	Face Primitive::getFaceInWorld(NormalId objectFace)
+	{
+		return getFaceInObject(objectFace).toWorldSpace(body->getPV().position);
+	}
+
+	G3D::CoordinateFrame Primitive::getGridCorner() const
+	{
+		const G3D::CoordinateFrame& pos = body->getPV().position;
+		G3D::Vector3 hVec = -(geometry->getGridSize() * 0.5f);
+
+		return G3D::CoordinateFrame(pos.rotation, pos.pointToWorldSpace(hVec));
+	}
+
+	void Primitive::setGridCorner(const G3D::CoordinateFrame& gridCorner)
+	{
+		G3D::Vector3 hVec = geometry->getGridSize() * 0.5f;
+		setCoordinateFrame(G3D::CoordinateFrame(gridCorner.rotation, gridCorner.pointToWorldSpace(hVec)));
+	}
+
+	void Primitive::removeEdge(Edge* e)
+	{
+		Primitive* p0 = e->getPrimitive(0);
+		Primitive* p1 = e->getPrimitive(1);
+
+		if (e->getEdgeType() == Edge::JOINT)
+		{
+			p0->joints.removeEdge(e);
+			if (p1)
+				p1->joints.removeEdge(e);
+		}
+		else
+		{
+			p0->contacts.removeEdge(e);
+			p1->contacts.removeEdge(e);
+		}
+	}
+
+	void Primitive::insertEdge(Edge* e)
+	{
+		Primitive* p0 = e->getPrimitive(0);
+		Primitive* p1 = e->getPrimitive(1);
+
+		if (e->getEdgeType() == Edge::JOINT)
+		{
+			p0->joints.insertEdge(e);
+			if (p1)
+				p1->joints.insertEdge(e);
+		}
+		else
+		{
+			p0->contacts.insertEdge(e);
+			p1->contacts.insertEdge(e);
+		}
+	}
+}
+#endif
 
 namespace RBX
 {
@@ -285,5 +365,28 @@ namespace RBX
 	Assembly* Primitive::getAssemblyNoCheck() const
 	{
 		return clump->getAssembly();
+	}
+}
+
+// Identity: declared INFERRED at 005e7b20 in native-headers/v8world/Primitive2008.h; the body walks prev's slot
+#define NATIVE_CLUMP_DECL // the native 2008 RBX::Clump / RBX::Assembly of v8world/AssemblyLayout.h
+
+namespace RBX
+{
+	Edge* Primitive::getNextEdge(Edge* prev) const
+	{
+		if (prev->getEdgeType() == Edge::JOINT)
+		{
+			int i = prev->getIndex(this) + 1;
+			Edge* next = i < joints.edges.size() ? joints.edges[i] : NULL;
+			if (next)
+				return next;
+			return contacts.edges.size() > 0 ? contacts.edges[0] : NULL;
+		}
+		else
+		{
+			int i = prev->getIndex(this) + 1;
+			return i < contacts.edges.size() ? contacts.edges[i] : NULL;
+		}
 	}
 }

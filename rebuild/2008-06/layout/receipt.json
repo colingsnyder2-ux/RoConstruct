@@ -1,14 +1,139 @@
 {
- "files": 572,
+ "files": 627,
  "merged_units": {
-  "rebuild/2008-06/layout/client/win/IObjectSafetyRobloxImpl.cpp": {
+  "rebuild/2008-06/layout/client/app/v8tree/Verb.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/CAppObjectSafety.cpp",
-    "rebuild/2008-06/native-classes/IObjectSafetyRobloxImplRecovery_00407690.cpp",
-    "rebuild/2008-06/native-classes/CWorkspaceObjectSafety.cpp"
+    "rebuild/2008-06/native-classes/VerbContainerLookup.cpp",
+    "rebuild/2008-06/native-classes/Verb.cpp",
+    "rebuild/2008-06/native-classes/VerbBaseLifetime.cpp",
+    "rebuild/2008-06/native-classes/VerbContainer.cpp"
    ],
-   "flags": "/O2 /GS- /EHsc /MD /D_AFXDLL /D_ATL_APARTMENT_THREADED /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string /I{headers}/../../../tools/libs/mfc-9.0-rtm/atlmfc/include",
+   "flags": "",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/app/util/Rect.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/RectPositioning.cpp",
+    "rebuild/2008-06/native-classes/OgreAuto_RBX_Rect.cpp"
+   ],
+   "flags": "/O2 /GS- /EHsc /MD /fp:fast /D_AFXDLL /GS-",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/app/v8world/IMoving.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/IMovingManagerLifetime.cpp",
+    "rebuild/2008-06/native-classes/IMovingManager.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/network/Client.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/NetworkClientServer2008Client.cpp",
+    "rebuild/2008-06/native-classes/NetworkServiceHooks.cpp",
+    "rebuild/2008-06/native-classes/AppLeaves2008Exposer.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_af0a42b4a535f5e2__O2Ob2OyGFGSE.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/network/server.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppUnit4A0ServerDescriptors.cpp",
+    "rebuild/2008-06/native-classes/Inferred_004a40d0.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espeon_serverlogexpression_f4031b747f0f3f6e__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-net-dll/roc_unit_e6c2aeb7d3afc09b__O2Ob2OyGFGSE.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/util/quaternion.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppUnit5DC_2008Quaternion.cpp",
+    "rebuild/2008-06/native-classes/Quaternion_maxComponent_006689b0.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/app/v8datamodel/Hopper.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/HopperBinSelect.cpp",
+    "rebuild/2008-06/native-classes/Hopper.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "original",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_king_originala_hopper_legacy_92722dc306f04fcf__O2GSEHscMD.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/v8kernel/Constants.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/ConstantsJointK.cpp",
+    "rebuild/2008-06/native-classes/ConstantsJoint.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/openrbx-client/roc_kms_barrier_9872e41c7b51c383__O2Ob2OyGFGSE.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/rendering/appdraw/AdornRbxGfx.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AdornRbxGfx2d.cpp",
+    "rebuild/2008-06/native-classes/AdornRbxGfx.cpp",
+    "rebuild/2008-06/native-classes/AdornRbxGfx3.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_adorn_owner_native_context_snapshote7de5a5d309ab388__O2Ob2OiOtOyG.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_adorn_owner_native_particle_localb0ade42fadd1538d__O2Ob2OiOtOyG.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_adorn_ray_native_orientation4aeecbaf163133f1__O2Ob2OiOtOyG.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_claudeM_854f25b05ca3c1ba__O2Ob2OiOtOyG.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_codex_alias_55cb3ee98c5c3f01__O2Ob2OiOtOyG.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_369ebbc72e42bae0__O2Ob2OiOtOyG.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_8ec9b5cde1252dbf__O2Ob2OiOtOyG.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/rendering/appdraw/HitTest.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/HandleRadius.cpp",
+    "rebuild/2008-06/native-classes/HitTestShapes.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS",
+   "status": "merged (per-symbol identical; link order unproven)",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/app/tool/dragutilities.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/DragUtilitiesMoveAndClean.cpp",
+    "rebuild/2008-06/native-classes/DragUtilitiesJoin.cpp",
+    "rebuild/2008-06/native-classes/DragUtilitiesAlive.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/app/v8world/sleepstage.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/Recovery_0064a740_SleepStageRecovery_0064a740.cpp",
+    "rebuild/2008-06/native-classes/SleepStageRecovery_0064a740.cpp"
+   ],
+   "flags": "/I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS",
+   "status": "merged (per-symbol identical; link order unproven)",
    "path": "inferred"
   },
   "rebuild/2008-06/layout/client/app/v8world/sleepstage2.cpp": {
@@ -20,7 +145,7 @@
     "rebuild/2008-06/native-classes/Inferred_00668d30.cpp",
     "rebuild/2008-06/native-classes/Inferred_00668d40.cpp"
    ],
-   "flags": "/I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS",
+   "flags": "/I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
@@ -32,32 +157,123 @@
     "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_unit_f3d82a98e860a6cd__O2Ob2OyGFGSE.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/app/v8tree/enumproperty.cpp": {
+  "rebuild/2008-06/layout/client/app/v8datamodel/Surface.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/AppUnit564_2008ValueConvert.cpp",
-    "rebuild/2008-06/native-classes/RefPropertyDescriptorVirtuals.cpp",
-    "rebuild/2008-06/native-classes/TypedPropertySpecializations2008.cpp",
-    "rebuild/2008-06/native-classes/Inferred_0056f8c0.cpp",
-    "rebuild/2008-06/native-classes/SoundValueConvertFloat.cpp"
+    "rebuild/2008-06/native-classes/SurfaceReadValue.cpp",
+    "rebuild/2008-06/native-classes/AppUnit5F0_2008Surface.cpp",
+    "rebuild/2008-06/native-classes/SurfaceFlat.cpp",
+    "rebuild/2008-06/native-classes/SurfaceProperties.cpp"
    ],
-   "flags": "",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/app/util/Face.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp",
+    "rebuild/2008-06/native-classes/Face.cpp",
+    "rebuild/2008-06/native-classes/FaceSpace.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/app/v8xml/SerializerV2.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/SerializerV2Isolation.cpp",
+    "rebuild/2008-06/native-classes/XmlElementIsolate.cpp",
+    "rebuild/2008-06/native-classes/ArchiveBinder.cpp",
+    "rebuild/2008-06/native-classes/XmlBinders.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
-    "rebuild/2008-06/native-classes/Inferred_0056f0b0.cpp"
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_serializer_load_native_bdce1b0b0dd41fcf__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_serializer_loadinstances_native_890d0f4bc41911b9__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/SerializerRoot.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/win/LogManager.cpp": {
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/BinaryOutput.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/AppLeaves2008CrashReporter.cpp",
-    "rebuild/2008-06/native-classes/LogManagerDestructor.cpp",
-    "rebuild/2008-06/native-classes/LogManagerGet.cpp"
+    "rebuild/2008-06/native-classes/G3DBinaryOutput.cpp",
+    "rebuild/2008-06/native-classes/G3DBinaryOutputLength2008.cpp"
    ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/g3d-binary-output-2008",
+   "status": "merged (per-symbol identical; link order unproven)",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/rendering/renderlib/TextureProxy.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp",
+    "rebuild/2008-06/native-classes/TextureProxyResolve2008.cpp",
+    "rebuild/2008-06/native-classes/TextureShadePixel2008.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
-    "rebuild/2008-06/native-classes/MainLogManagerState.cpp"
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_codex_texture_implicit_color_654ccb20e062ae25__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/TextureProxyRender.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/v8datamodel/Accoutrement.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppUnit5B0_2008Accoutrement.cpp",
+    "rebuild/2008-06/native-classes/Inferred_005b1e50.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/Accoutrement.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/rbxview/BrickMesh.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/ViewNewBrickMeshCtor.cpp",
+    "rebuild/2008-06/native-classes/ViewNewBrickCacheRecovery2008.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/brickcache-profile",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/ViewNewBrickMeshBuild2008.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/GImage.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/G3DGImage.cpp",
+    "rebuild/2008-06/native-classes/G3DGImage_bayer.cpp",
+    "rebuild/2008-06/native-classes/G3DGImage_png.cpp",
+    "rebuild/2008-06/native-classes/G3DGImage_ppm.cpp",
+    "rebuild/2008-06/native-classes/G3DGImage_tga.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/g3d-image-2008",
+   "status": "merged (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-g3d-dll/roc_gimage_jpeg_native_visible_lifetime_cdeddbeb26c4f2e5__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/vendor/g3d-6.09/G3Dcpp__roc_line_d3a5963a6289e8b9__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/vendor/g3d-6.09/roc_g3d_bmp_exception_38498d93767fe727__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/vendor_i/g3d-6.09/G3Dcpp__roc_line_d3a5963a6289e8b9__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/vendor_i/g3d-6.09/roc_g3d_bmp_exception_38498d93767fe727__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/G3DGImage_bmp.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/network/Player.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppUnit48C_2008Services.cpp",
+    "rebuild/2008-06/native-classes/NetworkPlayerRecovery_00492320.cpp",
+    "rebuild/2008-06/native-classes/NetworkPlayer.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /D_XTP_STATICLINK /D_XTPLIB_NOAUTOLINK /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/PlayerLoadDonor.cpp",
+    "rebuild/2008-06/native-classes/PlayerLoadDonorB.cpp",
+    "rebuild/2008-06/native-classes/PlayerCharacter.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/gui/ArrowPanel.cpp": {
@@ -65,7 +281,7 @@
     "rebuild/2008-06/native-classes/GuiWidgets2008Arrow.cpp",
     "rebuild/2008-06/native-classes/ArrowPanel.cpp"
    ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/creatable-n-params",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
@@ -90,22 +306,15 @@
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred"
   },
-  "rebuild/2008-06/layout/client/app/gui/GUI.cpp": {
+  "rebuild/2008-06/layout/client/app/gui/GuiDraw.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/UnifiedWidgetLayout.cpp",
-    "rebuild/2008-06/native-classes/Inferred_005735c0.cpp",
-    "rebuild/2008-06/native-classes/TextDisplay.cpp",
-    "rebuild/2008-06/native-classes/OgreAuto_RBX_GuiRoot.cpp",
-    "rebuild/2008-06/native-classes/TopMenuBar.cpp"
+    "rebuild/2008-06/native-classes/GuiDrawImageSize.cpp"
    ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/partchunk-profile",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/openrbx-client/roc_manual_gui_5169e2e566c140cf__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/openrbx-client/roc_unit_006cb460d421f354__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/test_00573570.cpp",
-    "rebuild/2008-06/native-classes/GuiItem.cpp"
+    "rebuild/2008-06/native-classes/GuiDrawImage.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/gui/MenuItem.cpp": {
@@ -127,18 +336,17 @@
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred"
   },
-  "rebuild/2008-06/layout/client/app/humanoid/Humanoid.cpp": {
+  "rebuild/2008-06/layout/client/app/script/ThreadRef.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/Humanoid2008Parts.cpp",
-    "rebuild/2008-06/native-classes/HumanoidStateTransition.cpp"
+    "rebuild/2008-06/native-classes/LuaThreadRef.cpp",
+    "rebuild/2008-06/native-classes/LuaFunctionRefPush.cpp",
+    "rebuild/2008-06/native-classes/LuaThreadRefNode.cpp"
    ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers} /I{headers}/../../../tools/rbxgs/Client/App/include",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espeon_walknativehumanoidlayoutefa12ae2d470dac4__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_listenerclasstypesb23cf820a44cdb4c__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/HumanoidCamera.cpp"
+    "rebuild/2008-06/native-classes/Inferred_005947f0.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/tool/Dragger.cpp": {
@@ -149,15 +357,6 @@
    ],
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred"
-  },
-  "rebuild/2008-06/layout/client/app/tool/DragUtilities.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/Inferred_0060ec60.cpp",
-    "rebuild/2008-06/native-classes/Inferred_0060ecd0.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL",
-   "status": "merged (per-symbol identical; link order unproven)",
    "path": "inferred"
   },
   "rebuild/2008-06/layout/client/app/tool/MegaDragger.cpp": {
@@ -185,9 +384,9 @@
   },
   "rebuild/2008-06/layout/client/app/tool/ToolsSurface.cpp": {
    "sources": [
+    "rebuild/2008-06/native-classes/AxisMoveTool.cpp",
     "rebuild/2008-06/native-classes/ModelTool.cpp",
     "rebuild/2008-06/native-classes/AnchorTool.cpp",
-    "rebuild/2008-06/native-classes/AxisMoveTool.cpp",
     "rebuild/2008-06/native-classes/ModelToolActions.cpp",
     "rebuild/2008-06/native-classes/ResizeToolMethods.cpp",
     "rebuild/2008-06/native-classes/ResizeToolMove.cpp",
@@ -207,25 +406,16 @@
     "rebuild/2008-06/native-classes/SlingshotToolCore.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/app/util/ContentProvider.cpp": {
+  "rebuild/2008-06/layout/client/app/util/boost.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/Inferred_005624b0.cpp",
-    "rebuild/2008-06/native-classes/ContentIdAssets.cpp",
-    "rebuild/2008-06/native-classes/ContentProvider.cpp",
-    "rebuild/2008-06/native-classes/ContentProviderCacheSupport.cpp",
-    "rebuild/2008-06/native-classes/ContentProviderGetContent.cpp",
-    "rebuild/2008-06/native-classes/ContentProviderGetFile.cpp",
-    "rebuild/2008-06/native-classes/ContentProviderLoad.cpp",
-    "rebuild/2008-06/native-classes/ContentProviderRegisterFile.cpp",
-    "rebuild/2008-06/native-classes/ContentProviderUrl.cpp"
+    "rebuild/2008-06/native-classes/ThreadPrioritySetter.cpp",
+    "rebuild/2008-06/native-classes/ThreadNameStorage.cpp"
    ],
    "flags": "",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
-    "rebuild/2008-06/native-classes/AppUnit55CContentTemplates.cpp",
-    "rebuild/2008-06/native-classes/MD5Hasher.cpp",
-    "rebuild/2008-06/native-classes/ContentProviderLoadContent.cpp"
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_unit_a7ba09e28ae2b551__O2Ob2OyGFGSE.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/util/Extents.cpp": {
@@ -237,18 +427,6 @@
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred"
   },
-  "rebuild/2008-06/layout/client/app/util/Face.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp",
-    "rebuild/2008-06/native-classes/Face.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/FaceSpace.cpp"
-   ]
-  },
   "rebuild/2008-06/layout/client/app/util/Guid.cpp": {
    "sources": [
     "rebuild/2008-06/native-classes/GuidGeneration.cpp"
@@ -258,22 +436,6 @@
    "path": "inferred",
    "left_out": [
     "rebuild/2008-06/native-classes/Guid.cpp"
-   ]
-  },
-  "rebuild/2008-06/layout/client/app/util/Http.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/HttpResultCheck.cpp",
-    "rebuild/2008-06/native-classes/HttpRobloxSite.cpp",
-    "rebuild/2008-06/native-classes/HttpScriptCheck.cpp",
-    "rebuild/2008-06/native-classes/HttpTransport.cpp",
-    "rebuild/2008-06/native-classes/HttpTrustCheck.cpp",
-    "rebuild/2008-06/native-classes/HttpWinInet.cpp"
-   ],
-   "flags": "",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/HttpWinHttp.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/util/IRenderable.cpp": {
@@ -298,19 +460,6 @@
    "path": "inferred",
    "left_out": [
     "rebuild/2008-06/native-classes/Leaves2008Log.cpp"
-   ]
-  },
-  "rebuild/2008-06/layout/client/app/util/Math.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/MathClosestRay.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
-   "status": "merged (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_mathinvalidnative2549ed8ce07cf4c7__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/AppUnit5DC_2008Math.cpp",
-    "rebuild/2008-06/native-classes/OgreAuto_RBX_Math.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/util/name.cpp": {
@@ -349,27 +498,6 @@
     "rebuild/2008-06/native-classes/RunService.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/app/util/Sound.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/SoundChannel.cpp",
-    "rebuild/2008-06/native-classes/SoundChannelRecovery.cpp",
-    "rebuild/2008-06/native-classes/SoundServiceStock.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/SoundServiceFmod.cpp",
-    "rebuild/2008-06/native-classes/SoundServiceOpen.cpp",
-    "rebuild/2008-06/native-classes/SoundServiceReverb.cpp",
-    "rebuild/2008-06/native-classes/SoundServiceStatsItemCtor.cpp",
-    "rebuild/2008-06/native-classes/OgreAuto_RBX_Soundscape_SoundService.cpp",
-    "rebuild/2008-06/native-classes/SoundChannelSession.cpp",
-    "rebuild/2008-06/native-classes/SoundChannelSessionExtra.cpp",
-    "rebuild/2008-06/native-classes/SoundServiceEvent.cpp",
-    "rebuild/2008-06/native-classes/SoundServicePlay.cpp"
-   ]
-  },
   "rebuild/2008-06/layout/client/app/util/Units.cpp": {
    "sources": [
     "rebuild/2008-06/native-classes/AppUnit660_2008Units.cpp"
@@ -388,15 +516,6 @@
    ],
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/slingshot-load /fp:fast",
    "status": "merged (per-symbol identical; link order unproven)",
-   "path": "inferred"
-  },
-  "rebuild/2008-06/layout/client/app/v8datamodel/Accoutrement.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/Inferred_005b1e50.cpp",
-    "rebuild/2008-06/native-classes/Accoutrement.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred"
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/BrickColor.cpp": {
@@ -475,30 +594,9 @@
     "rebuild/2008-06/native-classes/RunStateCommands.cpp",
     "rebuild/2008-06/native-classes/SelectionVerbStates.cpp",
     "rebuild/2008-06/native-classes/StandardVerbsConstructor.cpp",
+    "rebuild/2008-06/native-classes/UngroupSelectionVerb.cpp",
     "rebuild/2008-06/native-classes/VerbQueries.cpp",
     "rebuild/2008-06/native-classes/WeldSnapActions.cpp"
-   ]
-  },
-  "rebuild/2008-06/layout/client/app/v8datamodel/DataModel.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/CRobloxWndFinishAttach.cpp",
-    "rebuild/2008-06/native-classes/Inferred_00464750.cpp",
-    "rebuild/2008-06/native-classes/ServiceProviderAskAddChild.cpp",
-    "rebuild/2008-06/native-classes/StringConverterTemplates2008.cpp",
-    "rebuild/2008-06/native-classes/DataModelCreate.cpp",
-    "rebuild/2008-06/native-classes/DataModelDutyCycle.cpp",
-    "rebuild/2008-06/native-classes/DataModelInitialize.cpp",
-    "rebuild/2008-06/native-classes/DataModelTiming.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /fp:fast",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_45bf34bb8168b481__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_696ed0a6cdbdaf74__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_unit_b7e4c02ad8531df9__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_espclaude_f56d7036539cbcb8__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/DataModelRecovery_00579c10.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/DebugSettings.cpp": {
@@ -524,7 +622,8 @@
    "path": "inferred",
    "left_out": [
     "rebuild/2008-06/native-classes/ViewNewPartSurfaceUpdate2008.cpp",
-    "rebuild/2008-06/native-classes/ViewNewSurfaceMaterial2008.cpp"
+    "rebuild/2008-06/native-classes/ViewNewSurfaceMaterial2008.cpp",
+    "rebuild/2008-06/native-classes/DecalLifetime.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/Explosion.cpp": {
@@ -539,18 +638,14 @@
     "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espeon_explosionsteppedevent_63ada37d19f46ecd__O2GSEHscMD.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/app/v8datamodel/Feature.cpp": {
+  "rebuild/2008-06/layout/client/app/v8datamodel/FaceInstance.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/Feature.cpp"
+    "rebuild/2008-06/native-classes/FaceInstanceLifetime.cpp",
+    "rebuild/2008-06/native-classes/AppUnit5E8_2008FaceInstance.cpp"
    ],
-   "flags": "/I{headers}/kernel-stages /I{headers}/part-embedded /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /U_RELEASEASSERT",
+   "flags": "",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_trial_5f2510aaf1d0b5ed__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/MotorFeatureCommands.cpp",
-    "rebuild/2008-06/native-classes/accepted/App/v8datamodel/Feature.cpp"
-   ]
+   "path": "inferred"
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/Flag.cpp": {
    "sources": [
@@ -566,7 +661,8 @@
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/FlagStand.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/FlagStand.cpp"
+    "rebuild/2008-06/native-classes/FlagStandServiceClosest.cpp",
+    "rebuild/2008-06/native-classes/FlagStandService.cpp"
    ],
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
@@ -575,7 +671,7 @@
     "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espclaude_12fb1623c20ba0ae__O2GSEHscMD.cpp",
     "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_flagstandservicelocalaa4966d7c1be1498__O2GSEHscMD.cpp",
     "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_flagstandvirtualbe7b24435e7fb07c__O2GSEHscMDfp.cpp",
-    "rebuild/2008-06/native-classes/FlagStandService.cpp"
+    "rebuild/2008-06/native-classes/FlagStand.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/Gyro.cpp": {
@@ -590,18 +686,6 @@
     "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_unit_365f050840f24fe4__O2Ob2OyGFGSE.cpp",
     "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_unit_e3d64f543a38d6a9__O2Ob2OyGFGSE.cpp",
     "rebuild/2008-06/native-classes/Rocket.cpp"
-   ]
-  },
-  "rebuild/2008-06/layout/client/app/v8datamodel/Hopper.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/HopperBinSelect.cpp",
-    "rebuild/2008-06/native-classes/Hopper.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "original",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_king_originala_hopper_legacy_92722dc306f04fcf__O2GSEHscMD.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/JointInstance.cpp": {
@@ -623,6 +707,7 @@
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/Lighting.cpp": {
    "sources": [
+    "rebuild/2008-06/native-classes/Lighting2008.cpp",
     "rebuild/2008-06/native-classes/Inferred_004d6ff0.cpp",
     "rebuild/2008-06/native-classes/LightingRecovery_005e22c0.cpp",
     "rebuild/2008-06/native-classes/AppUnit5E0LightingReflection.cpp"
@@ -656,38 +741,20 @@
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/MouseCommand.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/MouseCommand.cpp",
-    "rebuild/2008-06/native-classes/MouseCommandCapture.cpp",
-    "rebuild/2008-06/native-classes/MouseCommandDistance.cpp",
-    "rebuild/2008-06/native-classes/MouseGetDecal.cpp",
-    "rebuild/2008-06/native-classes/MouseUnlocked.cpp"
+    "rebuild/2008-06/native-classes/accepted/App/v8datamodel/MouseCommand.cpp"
    ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/engine-world /I{headers}/part-embedded",
+   "flags": "",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
     "rebuild/2008-06/native-classes/vendor/g3d-6.09/G3Dcpp__MeshAlgWeld__O2GSEHscMD.cpp",
     "rebuild/2008-06/native-classes/vendor_i/g3d-6.09/G3Dcpp__MeshAlgWeld__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/accepted/App/v8datamodel/MouseCommand.cpp"
-   ]
-  },
-  "rebuild/2008-06/layout/client/app/v8datamodel/partinstance.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/AppUnit598PartInstance.cpp",
-    "rebuild/2008-06/native-classes/AppUnit4CCPhysicsSenderIndex.cpp",
-    "rebuild/2008-06/native-classes/TPD_cframe.cpp",
-    "rebuild/2008-06/native-classes/PartInstanceGetSurface.cpp",
-    "rebuild/2008-06/native-classes/PartInstanceLocked.cpp",
-    "rebuild/2008-06/native-classes/PartInstanceLockedInPlace.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/openrbx-client/App__v8datamodel__roc_data_a1bf1287783b7259__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/PartInstanceResize.cpp",
-    "rebuild/2008-06/native-classes/PartInstanceCoordinate.cpp",
-    "rebuild/2008-06/native-classes/PartInstanceLifetime.cpp"
+    "rebuild/2008-06/native-classes/MouseCommand.cpp",
+    "rebuild/2008-06/native-classes/MouseCommandCapture.cpp",
+    "rebuild/2008-06/native-classes/MouseCommandDistance.cpp",
+    "rebuild/2008-06/native-classes/MouseGetDecal.cpp",
+    "rebuild/2008-06/native-classes/MouseGetSurface.cpp",
+    "rebuild/2008-06/native-classes/MouseUnlocked.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/PVInstance.cpp": {
@@ -702,22 +769,6 @@
     "rebuild/2008-06/native-classes/PVInstanceTopParent.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/app/v8datamodel/Selection.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/AppUnit564_2008Selection.cpp",
-    "rebuild/2008-06/native-classes/SelectionBack.cpp",
-    "rebuild/2008-06/native-classes/SelectionFront.cpp",
-    "rebuild/2008-06/native-classes/SelectionIterators.cpp"
-   ],
-   "flags": "",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/SelectionLifetime.cpp",
-    "rebuild/2008-06/native-classes/SelectionMutations.cpp",
-    "rebuild/2008-06/native-classes/SelectionRemove.cpp"
-   ]
-  },
   "rebuild/2008-06/layout/client/app/v8datamodel/SpawnLocation.cpp": {
    "sources": [
     "rebuild/2008-06/native-classes/SpawnLocation.cpp",
@@ -725,16 +776,6 @@
    ],
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /fp:fast /DNDEBUG /D_MBCS /I{headers}/part-embedded",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred"
-  },
-  "rebuild/2008-06/layout/client/app/v8datamodel/Surface.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/AppUnit5F0_2008Surface.cpp",
-    "rebuild/2008-06/native-classes/SurfaceFlat.cpp",
-    "rebuild/2008-06/native-classes/SurfaceProperties.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded",
-   "status": "merged (per-symbol identical; link order unproven)",
    "path": "inferred"
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/Surfaces.cpp": {
@@ -770,26 +811,6 @@
     "rebuild/2008-06/native-classes/accepted/App/v8datamodel/Teams.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/app/v8datamodel/tool.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/ToolEvents.cpp",
-    "rebuild/2008-06/native-classes/ToolRecovery_005fd3d0.cpp",
-    "rebuild/2008-06/native-classes/Inferred_005fed60.cpp",
-    "rebuild/2008-06/native-classes/Inferred_005feed0.cpp",
-    "rebuild/2008-06/native-classes/OgreAuto_RBX_Tool.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /GS-",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_032a4906dcd22147__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_b6952b05a547a859__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_f69d01038bd218bf__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_espclaude_cc7153d713b9aac6__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_espeon_touchconnectionsibling7a6e61bbb007f58a__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/Tool.cpp"
-   ]
-  },
   "rebuild/2008-06/layout/client/app/v8datamodel/ToolsPart.cpp": {
    "sources": [
     "rebuild/2008-06/native-classes/PartTools.cpp"
@@ -811,41 +832,17 @@
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
-    "rebuild/2008-06/native-classes/LuaArgs.cpp",
-    "rebuild/2008-06/native-classes/ValueConverter.cpp"
+    "rebuild/2008-06/native-classes/LuaArgs.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/app/v8datamodel/Workspace.cpp": {
+  "rebuild/2008-06/layout/client/app/v8kernel/Body.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/AppUnit5A0_2008Workspace.cpp",
-    "rebuild/2008-06/native-classes/AxisMoveToolCore.cpp",
-    "rebuild/2008-06/native-classes/ModelToolFactories.cpp",
-    "rebuild/2008-06/native-classes/PartToolFactories.cpp",
-    "rebuild/2008-06/native-classes/SurfaceToolFactories.cpp",
-    "rebuild/2008-06/native-classes/ToolVerbFactoriesBasic.cpp",
-    "rebuild/2008-06/native-classes/WorkspaceGroup.cpp",
-    "rebuild/2008-06/native-classes/WorkspaceSelectAll.cpp"
+    "rebuild/2008-06/native-classes/BodyBranch.cpp",
+    "rebuild/2008-06/native-classes/BodyPrimitive2008Body.cpp"
    ],
-   "flags": "",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espeon_camerastatevirtual_594bbcc27dbeb602__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espeon_workspacecameracall_f1bc359cfb700d43__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_claudeL_184cf9025cd54f62__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_6f0d189a6d77d9cd__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_a0963462eb77d728__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_a34b51fb93b16b65__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_workspacepositiveitemsfd18f79fafefab0d__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_workspacestarterasece39cbbb8deeb878__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/ArrowToolFactory.cpp",
-    "rebuild/2008-06/native-classes/FlatTool.cpp",
-    "rebuild/2008-06/native-classes/ModelSetFrontTool.cpp",
-    "rebuild/2008-06/native-classes/ResizeToolCore.cpp",
-    "rebuild/2008-06/native-classes/RocketToolCore.cpp",
-    "rebuild/2008-06/native-classes/WorkspaceJoin.cpp",
-    "rebuild/2008-06/native-classes/WorkspaceLifetime.cpp"
-   ]
+   "path": "inferred"
   },
   "rebuild/2008-06/layout/client/app/v8kernel/Connector.cpp": {
    "sources": [
@@ -859,53 +856,54 @@
     "rebuild/2008-06/native-classes/KernelConnector.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/app/v8kernel/Kernel.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/KernelStep.cpp"
-   ],
-   "flags": "/I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /U_RELEASEASSERT",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "original",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_kernelindexoffset_1f119e5d97fd81c5__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/Kernel2008.cpp"
-   ]
-  },
   "rebuild/2008-06/layout/client/app/v8kernel/Link.cpp": {
    "sources": [
+    "rebuild/2008-06/native-classes/Leaves2008RevoluteLink.cpp",
     "rebuild/2008-06/native-classes/Inferred_00613cb0.cpp"
    ],
-   "flags": "",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
-    "rebuild/2008-06/native-classes/Leaves2008RevoluteLink.cpp",
     "rebuild/2008-06/native-classes/accepted/App/v8kernel/Link.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/app/v8tree/Instance.cpp": {
+  "rebuild/2008-06/layout/client/app/v8kernel/Point.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/AppUnit558_2008Instance.cpp",
-    "rebuild/2008-06/native-classes/func_007f1c20.cpp",
-    "rebuild/2008-06/native-classes/ChangeHistoryStart.cpp",
-    "rebuild/2008-06/native-classes/InstanceAnchorChildren.cpp",
-    "rebuild/2008-06/native-classes/InstanceClassLookup.cpp",
-    "rebuild/2008-06/native-classes/InstanceFullName.cpp",
-    "rebuild/2008-06/native-classes/InstanceLifetime.cpp"
+    "rebuild/2008-06/native-classes/BodyPrimitive2008Point.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/Leaves2008Point.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/v8kernel/SimBody.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/SimBodyStep.cpp",
+    "rebuild/2008-06/native-classes/BodyPrimitive2008SimBody.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_claudesub_dbec07a4b021be47__O2GSEHscMDfp.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/v8tree/enumproperty.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppUnit564_2008ValueConvert.cpp",
+    "rebuild/2008-06/native-classes/RefPropertyDescriptorVirtuals.cpp",
+    "rebuild/2008-06/native-classes/TypedPropertySpecializations2008.cpp",
+    "rebuild/2008-06/native-classes/Inferred_0056f8c0.cpp",
+    "rebuild/2008-06/native-classes/SoundValueConvertFloat.cpp"
    ],
    "flags": "",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espeon_reconstructvector_fbc3142ffebf0181__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_instance_predelete_774736f7fbf4a3d4__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_claudeM_a5aa04164fc901dc__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/InstanceRecovery_00559350.cpp",
-    "rebuild/2008-06/native-classes/InstanceBaseCallbacks.cpp",
-    "rebuild/2008-06/native-classes/InstanceSerialization.cpp",
-    "rebuild/2008-06/native-classes/InstanceChildAcceptance.cpp",
-    "rebuild/2008-06/native-classes/InstanceContainment.cpp",
-    "rebuild/2008-06/native-classes/InstanceDescendantEvents.cpp"
+    "rebuild/2008-06/native-classes/Inferred_0056f0b0.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/v8tree/Service.cpp": {
@@ -917,16 +915,16 @@
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred"
   },
-  "rebuild/2008-06/layout/client/app/v8tree/Verb.cpp": {
+  "rebuild/2008-06/layout/client/app/v8world/Block.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/VerbBaseLifetime.cpp",
-    "rebuild/2008-06/native-classes/VerbContainer.cpp"
+    "rebuild/2008-06/native-classes/Block.cpp"
    ],
-   "flags": "",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
-    "rebuild/2008-06/native-classes/Verb.cpp"
+    "rebuild/2008-06/native-classes/donor_i/rbxgs/v8world__Block__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/BlockBallShape.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/v8world/ClumpStage2.cpp": {
@@ -940,8 +938,9 @@
   },
   "rebuild/2008-06/layout/client/app/v8world/Contact.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/BallBallContactStep.cpp",
-    "rebuild/2008-06/native-classes/BlockBlockContactStep.cpp"
+    "rebuild/2008-06/native-classes/BlockBlockContactStep.cpp",
+    "rebuild/2008-06/native-classes/Contact.cpp",
+    "rebuild/2008-06/native-classes/BallBallContactStep.cpp"
    ],
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
@@ -951,10 +950,21 @@
     "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espclaude_7d30727a4b451db5__O2Ob2OyGFGSE.cpp",
     "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espclaude_a839c76383df315d__O2Ob2OyGFGSE.cpp",
     "rebuild/2008-06/native-classes/Leaves2008BlockBlockContact.cpp",
-    "rebuild/2008-06/native-classes/Contact.cpp",
     "rebuild/2008-06/native-classes/BallBlockContactStep.cpp",
     "rebuild/2008-06/native-classes/BlockBlockContactRecovery_00607ea0.cpp",
     "rebuild/2008-06/native-classes/BlockBlockContactRecovery_00607f90.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/v8world/GlueJoint.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/GlueJointKernel.cpp",
+    "rebuild/2008-06/native-classes/WorldJointGlue.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_sol_gluetransform_ed1d80f4471ae699__O2Ob2OyGFGSE.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/v8world/IPipelined.cpp": {
@@ -968,6 +978,7 @@
   },
   "rebuild/2008-06/layout/client/app/v8world/IWorldStage.cpp": {
    "sources": [
+    "rebuild/2008-06/native-classes/IWorldStage2008.cpp",
     "rebuild/2008-06/native-classes/ClumpStageRecovery_0064cec0.cpp"
    ],
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
@@ -986,19 +997,6 @@
    "path": "inferred",
    "left_out": [
     "rebuild/2008-06/native-classes/JointFaces.cpp"
-   ]
-  },
-  "rebuild/2008-06/layout/client/app/v8world/JointStage.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/JointStageEvents.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/openrbx-client/roc_manual_jointstage_f8e4c36ae7205f3f__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/openrbx-client/roc_unit_367216b06c91c7e0__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/OgreAuto_RBX_JointStage.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/v8world/MotorJoint.cpp": {
@@ -1030,26 +1028,25 @@
     "rebuild/2008-06/native-classes/SimJobStage2008Ctor.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/app/v8xml/SerializerV2.cpp": {
+  "rebuild/2008-06/layout/client/app/v8world/SpatialHash.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/ArchiveBinder.cpp",
-    "rebuild/2008-06/native-classes/XmlBinders.cpp"
+    "rebuild/2008-06/native-classes/SpatialHash2008.cpp",
+    "rebuild/2008-06/native-classes/SpatialHashRecovery_0065abd0.cpp"
    ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_serializer_load_native_bdce1b0b0dd41fcf__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_serializer_loadinstances_native_890d0f4bc41911b9__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/SerializerRoot.cpp"
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_d27c86ddb5aece61__O2Ob2OyGFGSE.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/v8xml/XmlElement.cpp": {
    "sources": [
     "rebuild/2008-06/native-classes/XmlElementValues.cpp",
+    "rebuild/2008-06/native-classes/XmlNameValuePairValueType.cpp",
     "rebuild/2008-06/native-classes/XmlElement.cpp"
    ],
-   "flags": "",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
@@ -1077,97 +1074,14 @@
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred"
   },
-  "rebuild/2008-06/layout/client/network/Client.cpp": {
+  "rebuild/2008-06/layout/client/network/raknet30/source/SocketLayer.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/NetworkServiceHooks.cpp",
-    "rebuild/2008-06/native-classes/AppLeaves2008Exposer.cpp"
+    "rebuild/2008-06/native-classes/SocketLayer.cpp",
+    "rebuild/2008-06/native-classes/SocketLayerLifetime2008.cpp"
    ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /GS- /IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\raknet30\\Source",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_af0a42b4a535f5e2__O2Ob2OyGFGSE.cpp"
-   ]
-  },
-  "rebuild/2008-06/layout/client/network/Player.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/AppUnit48C_2008Services.cpp",
-    "rebuild/2008-06/native-classes/PlayerCharacter.cpp",
-    "rebuild/2008-06/native-classes/NetworkPlayer.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /D_XTP_STATICLINK /D_XTPLIB_NOAUTOLINK /fp:fast",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/PlayerLoadDonor.cpp",
-    "rebuild/2008-06/native-classes/PlayerLoadDonorB.cpp"
-   ]
-  },
-  "rebuild/2008-06/layout/client/network/Players.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/PlayersRecovery_0049cb30.cpp",
-    "rebuild/2008-06/native-classes/PlayersSuperSafe.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-net-dll/roc_unit_59a74edd08c96c8d__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/ErrorUploaderCallback.cpp",
-    "rebuild/2008-06/native-classes/ErrorUploaderUpload.cpp"
-   ]
-  },
-  "rebuild/2008-06/layout/client/network/raknet30/source/RakPeer.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/RakPeerBitStreamRPC.cpp",
-    "rebuild/2008-06/native-classes/RakPeerConfig2008.cpp",
-    "rebuild/2008-06/native-classes/RakPeerConnection2008.cpp",
-    "rebuild/2008-06/native-classes/RakPeerNetworkLoop.cpp",
-    "rebuild/2008-06/native-classes/RakPeerRawRPC.cpp",
-    "rebuild/2008-06/native-classes/RakPeerUpdate.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /U_RELEASE /FImalloc.h /I{headers}/../../../tools/openrbx/Client/Network/raknet30/Source /I{headers}/../../../tools/openrbx/util",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/RakPeer.cpp",
-    "rebuild/2008-06/native-classes/RakPeerCompression.cpp",
-    "rebuild/2008-06/native-classes/RakPeerLifecycle2008.cpp",
-    "rebuild/2008-06/native-classes/RakPeerSend2008.cpp",
-    "rebuild/2008-06/native-classes/RakPeerUpdateLoop2008.cpp"
-   ]
-  },
-  "rebuild/2008-06/layout/client/network/raknet30/source/ReliabilityLayer.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/ReliabilityLayer.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /FImalloc.h /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/ReliabilityLayerLifetime.cpp",
-    "rebuild/2008-06/native-classes/ReliabilityLayerPacket2008.cpp",
-    "rebuild/2008-06/native-classes/ReliabilityLayerStats2008.cpp"
-   ]
-  },
-  "rebuild/2008-06/layout/client/network/Replicator.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/NetworkReplicator2008StatsItem.cpp",
-    "rebuild/2008-06/native-classes/NetworkReplicator2008Items.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espclaude_75b06e686af54303__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_3c5ef1110f0fff6f__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_e3630ff3e82b33fa__O2Ob2GSEHscM.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-net-dll/roc_replicator_property_native_offset_91d34afc4bce4141__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-net-dll/roc_unit_c815068b43dd88be__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-net-dll/roc_unit_cc32e74e273c8479__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/NetworkClientServer2008Peer.cpp",
-    "rebuild/2008-06/native-classes/AppUnit4ACPeerHeartbeat.cpp"
-   ]
+   "path": "inferred"
   },
   "rebuild/2008-06/layout/client/network/Streaming.cpp": {
    "sources": [
@@ -1182,44 +1096,6 @@
     "rebuild/2008-06/native-classes/donor_i/rbxgs-net-dll/roc_espclaude_b42954e24904c734__O2Ob2OyGFGSE.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/rendering/appdraw/AdornRbxGfx.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/AdornRbxGfx.cpp",
-    "rebuild/2008-06/native-classes/AdornRbxGfx3.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_adorn_owner_native_context_snapshote7de5a5d309ab388__O2Ob2OiOtOyG.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_adorn_owner_native_particle_localb0ade42fadd1538d__O2Ob2OiOtOyG.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_adorn_ray_native_orientation4aeecbaf163133f1__O2Ob2OiOtOyG.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_claudeM_854f25b05ca3c1ba__O2Ob2OiOtOyG.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_codex_alias_55cb3ee98c5c3f01__O2Ob2OiOtOyG.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_369ebbc72e42bae0__O2Ob2OiOtOyG.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_8ec9b5cde1252dbf__O2Ob2OiOtOyG.cpp",
-    "rebuild/2008-06/native-classes/AdornRbxGfx2d.cpp"
-   ]
-  },
-  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/GImage.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/G3DGImage.cpp",
-    "rebuild/2008-06/native-classes/G3DGImage_png.cpp",
-    "rebuild/2008-06/native-classes/G3DGImage_ppm.cpp",
-    "rebuild/2008-06/native-classes/G3DGImage_tga.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/g3d-image-2008",
-   "status": "merged (per-symbol identical; link order unproven)",
-   "path": "original",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-g3d-dll/roc_gimage_jpeg_native_visible_lifetime_cdeddbeb26c4f2e5__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/vendor/g3d-6.09/G3Dcpp__roc_line_d3a5963a6289e8b9__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/vendor/g3d-6.09/roc_g3d_bmp_exception_38498d93767fe727__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/vendor_i/g3d-6.09/G3Dcpp__roc_line_d3a5963a6289e8b9__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/vendor_i/g3d-6.09/roc_g3d_bmp_exception_38498d93767fe727__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/G3DGImage_bmp.cpp"
-   ]
-  },
   "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Matrix3.cpp": {
    "sources": [
     "rebuild/2008-06/native-classes/G3DMatrix3.cpp"
@@ -1229,27 +1105,6 @@
    "path": "original",
    "left_out": [
     "rebuild/2008-06/native-classes/Matrix3.cpp"
-   ]
-  },
-  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/ReferenceCount.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp",
-    "rebuild/2008-06/native-classes/G3DGModule.cpp",
-    "rebuild/2008-06/native-classes/G3DRenderbuffer.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-view-dll/roc_espeon_materialnativefiltered898f72142e782492__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-view-dll/roc_espeon_materialnativevirtualslots68ab05449f862196__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/vendor/g3d-6.09/GLG3Dcpp__Texture__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/vendor_i/g3d-6.09/GLG3Dcpp__Texture__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/ViewNewPartMesh2008PBB.cpp",
-    "rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp",
-    "rebuild/2008-06/native-classes/TextureProxyBase2008.cpp",
-    "rebuild/2008-06/native-classes/G3DFramebuffer.cpp",
-    "rebuild/2008-06/native-classes/G3DNetworkDevice.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Vector3.cpp": {
@@ -1279,6 +1134,17 @@
     "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_082fafcb387d2616__O2GSEHscMDfp.cpp",
     "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_unit_32e3ce177c352edc__O2Ob2OyGFGSE.cpp",
     "rebuild/2008-06/native-classes/G3DVector3.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Draw.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/DrawSelectionBox.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/G3DDraw.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Shape.cpp": {
@@ -1320,10 +1186,10 @@
   },
   "rebuild/2008-06/layout/client/rendering/rbxogre/RbxGeometryGenerator.cpp": {
    "sources": [
+    "rebuild/2008-06/native-classes/OgreGeometryIndices2008.cpp",
     "rebuild/2008-06/native-classes/OgreGeometryBuilder2008.cpp",
     "rebuild/2008-06/native-classes/OgreGeometryUpdate2008.cpp",
     "rebuild/2008-06/native-classes/OgreGeometryIndexed2008.cpp",
-    "rebuild/2008-06/native-classes/OgreGeometryIndices2008.cpp",
     "rebuild/2008-06/native-classes/OgreGeometryVertexProvider2008.cpp"
    ],
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
@@ -1396,19 +1262,6 @@
     "rebuild/2008-06/native-classes/AppUnit500Profiler.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/rendering/renderlib/TextureProxy.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp",
-    "rebuild/2008-06/native-classes/TextureProxyResolve2008.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_codex_texture_implicit_color_654ccb20e062ae25__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/TextureProxyRender.cpp"
-   ]
-  },
   "rebuild/2008-06/layout/client/win/AboutRobloxDialog.cpp": {
    "sources": [
     "rebuild/2008-06/native-classes/CAboutRobloxDialogData.cpp",
@@ -1418,11 +1271,23 @@
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred"
   },
+  "rebuild/2008-06/layout/client/win/DHTMLWindow.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppLeaves2008DHTMLWindow.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/LuaHtmlBinder2008.cpp",
+    "rebuild/2008-06/native-classes/AppLeaves2008Marshaller.cpp"
+   ]
+  },
   "rebuild/2008-06/layout/client/win/DxUserInput.cpp": {
    "sources": [
     "rebuild/2008-06/native-classes/DxUserInput.cpp"
    ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/uievent-native",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
@@ -1431,11 +1296,22 @@
   },
   "rebuild/2008-06/layout/client/win/InstanceExplorer.cpp": {
    "sources": [
+    "rebuild/2008-06/native-classes/CInstanceExplorer.cpp",
     "rebuild/2008-06/native-classes/InsertDecalAction.cpp",
     "rebuild/2008-06/native-classes/InsertObjectAction.cpp"
    ],
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string",
-   "status": "merged (per-symbol identical; link order unproven)",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/win/IObjectSafetyRobloxImpl.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/CAppObjectSafety.cpp",
+    "rebuild/2008-06/native-classes/IObjectSafetyRobloxImplRecovery_00407690.cpp",
+    "rebuild/2008-06/native-classes/CWorkspaceObjectSafety.cpp"
+   ],
+   "flags": "/O2 /GS- /EHsc /MD /D_AFXDLL /D_ATL_APARTMENT_THREADED /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string /I{headers}/../../../tools/libs/mfc-9.0-rtm/atlmfc/include",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred"
   },
   "rebuild/2008-06/layout/client/win/LDraw2RobloxMapRoot.cpp": {
@@ -1456,16 +1332,32 @@
    "status": "merged (per-symbol identical; link order unproven)",
    "path": "inferred"
   },
+  "rebuild/2008-06/layout/client/win/LogManager.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppLeaves2008CrashReporter.cpp",
+    "rebuild/2008-06/native-classes/LogManagerDestructor.cpp",
+    "rebuild/2008-06/native-classes/LogManagerGet.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/MainLogManagerState.cpp"
+   ]
+  },
   "rebuild/2008-06/layout/client/win/MainFrm.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/CPatchedControlComboBox.cpp"
+    "rebuild/2008-06/native-classes/CMainFrameWindow.cpp",
+    "rebuild/2008-06/native-classes/CMainFrameXtp.cpp",
+    "rebuild/2008-06/native-classes/CMainFrameCommands.cpp",
+    "rebuild/2008-06/native-classes/CMainFrameColor.cpp",
+    "rebuild/2008-06/native-classes/CMainFrameCreate.cpp"
    ],
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
-    "rebuild/2008-06/native-classes/CMainFrameWindow.cpp",
-    "rebuild/2008-06/native-classes/CMainFrameCommands.cpp"
+    "rebuild/2008-06/native-classes/CPatchedControlComboBox.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/win/ObjectBrowser.cpp": {
@@ -1481,40 +1373,84 @@
     "rebuild/2008-06/native-classes/COutputView.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/win/Roblox.cpp": {
+  "rebuild/2008-06/layout/client/win/PropGrid.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/CRobloxDHtmlDialog.cpp",
-    "rebuild/2008-06/native-classes/AppLeaves2008IDEDocManager.cpp",
-    "rebuild/2008-06/native-classes/CBrowserDocManager.cpp",
-    "rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp"
+    "rebuild/2008-06/native-classes/PropertyGridItems2008.cpp",
+    "rebuild/2008-06/native-classes/Vector3ItemRecovery_0043d710.cpp"
    ],
-   "flags": "",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
-    "rebuild/2008-06/native-classes/AppLeaves2008IDEDocManagerCtor.cpp",
-    "rebuild/2008-06/native-classes/AppLeaves2008DocTemplates.cpp",
-    "rebuild/2008-06/native-classes/CRbxDocTemplate.cpp",
-    "rebuild/2008-06/native-classes/CRobloxCommandLineInfo.cpp"
+    "rebuild/2008-06/native-classes/CPropertyGridItemBrickColor.cpp",
+    "rebuild/2008-06/native-classes/WF_ContentItem_Vector3Item_0043e840.cpp",
+    "rebuild/2008-06/native-classes/CPropGrid.cpp",
+    "rebuild/2008-06/native-classes/XBoolItemRecovery_0043d330.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/win/RobloxView.cpp": {
+  "rebuild/2008-06/layout/client/win/Roblox.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/CRobloxViewInit.cpp",
-    "rebuild/2008-06/native-classes/Inferred_00458ea0.cpp",
-    "rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp",
-    "rebuild/2008-06/native-classes/Conv2008_LockPlayModeVerb_doIt_004590a0.cpp",
-    "rebuild/2008-06/native-classes/Conv2008_ToggleFullscreenVerb_doIt_00459120.cpp",
-    "rebuild/2008-06/native-classes/Conv2008_HelpCommand_doIt_00459150.cpp"
+    "rebuild/2008-06/native-classes/CRobloxApp.cpp",
+    "rebuild/2008-06/native-classes/CRobloxDHtmlDialog.cpp",
+    "rebuild/2008-06/native-classes/AppLeaves2008DocTemplates.cpp"
    ],
-   "flags": "",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /D_AFXDLL /D_DLL /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espeon_viewchanged_aa6405150c5bf390__O2GSEHscMD.cpp",
-    "rebuild/2008-06/native-classes/Conv2008_ToggleFullscreenVerb_isChecked_00459100.cpp",
-    "rebuild/2008-06/native-classes/CRobloxViewRecovery_00459d60.cpp"
+    "rebuild/2008-06/native-classes/AppLeaves2008IDEDocManager.cpp",
+    "rebuild/2008-06/native-classes/AppLeaves2008IDEDocManagerCtor.cpp",
+    "rebuild/2008-06/native-classes/CBrowserDocManager.cpp",
+    "rebuild/2008-06/native-classes/CIDEDocManager.cpp",
+    "rebuild/2008-06/native-classes/CRbxDocTemplate.cpp",
+    "rebuild/2008-06/native-classes/CRobloxCommandLineInfo.cpp",
+    "rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp"
    ]
+  },
+  "rebuild/2008-06/layout/client/win/RobloxDoc.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/CUploadPlaceDialog.cpp",
+    "rebuild/2008-06/native-classes/ExitCommand.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_publishideliteral21970d0d89d3ee76__O2GSEHscMD.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/win/RobloxReportView.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/CRobloxReportView.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/CRobloxReportSubViews.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/win/RobloxWnd.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/CRobloxWndRenderSettings.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/vendor/mfc-9.0-shared/roc_ui_network_window_ee9082b9a35d3d1a__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/vendor_i/mfc-9.0-shared/roc_ui_network_window_ee9082b9a35d3d1a__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/CRobloxWndThrottle.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/win/SelectionCaption.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/CSelectionCaption.cpp",
+    "rebuild/2008-06/native-classes/CSelectionCaptionUpdate.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred"
   },
   "rebuild/2008-06/layout/client/win/VersionInfo.cpp": {
    "sources": [
@@ -1543,11 +1479,50 @@
     "rebuild/2008-06/native-classes/WorkspaceExecUrl.cpp"
    ]
   },
+  "rebuild/2008-06/layout/client/app/gui/GUI.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/GuiItem.cpp",
+    "rebuild/2008-06/native-classes/GuiPanels.cpp",
+    "rebuild/2008-06/native-classes/TextDisplay.cpp",
+    "rebuild/2008-06/native-classes/GuiRoot.cpp",
+    "rebuild/2008-06/native-classes/OgreAuto_RBX_GuiRoot.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS- /fp:fast /I{headers}/widget-rect-2008",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/openrbx-client/roc_manual_gui_5169e2e566c140cf__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/openrbx-client/roc_unit_006cb460d421f354__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/UnifiedWidgetLayout.cpp",
+    "rebuild/2008-06/native-classes/test_00573570.cpp",
+    "rebuild/2008-06/native-classes/Inferred_005735c0.cpp",
+    "rebuild/2008-06/native-classes/TopMenuBar.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/humanoid/Humanoid.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/Humanoid2008.cpp",
+    "rebuild/2008-06/native-classes/HumanoidStateTransition.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espeon_walknativehumanoidlayoutefa12ae2d470dac4__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_listenerclasstypesb23cf820a44cdb4c__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/HumanoidCamera.cpp",
+    "rebuild/2008-06/native-classes/HumanoidRecovery_005db680.cpp",
+    "rebuild/2008-06/native-classes/HumanoidLocalHead.cpp",
+    "rebuild/2008-06/native-classes/Humanoid2008Parts.cpp"
+   ]
+  },
   "rebuild/2008-06/layout/client/app/script/ScriptContext.cpp": {
    "sources": [
     "rebuild/2008-06/native-classes/AppUnit5A8_2008ScriptContext.cpp",
     "rebuild/2008-06/native-classes/Inferred_005aed40.cpp",
+    "rebuild/2008-06/native-classes/ScriptContextAddScript.cpp",
     "rebuild/2008-06/native-classes/ScriptContextRecovery_005affa0.cpp",
+    "rebuild/2008-06/native-classes/InitStatics_ScriptContext.cpp",
     "rebuild/2008-06/native-classes/ScriptContextLifetime.cpp"
    ],
    "flags": "",
@@ -1563,22 +1538,303 @@
     "rebuild/2008-06/native-classes/vendor_i/boost-1.35.0/roc_espeon_scriptargumentbind135bf95ed9e0b65612b__O2GSEHscMD.cpp",
     "rebuild/2008-06/native-classes/vendor_i/boost-1.35.0/roc_espeon_scriptdefaultbind1358c320093deaa2206__O2GSEHscMD.cpp",
     "rebuild/2008-06/native-classes/ScriptContext2008State.cpp",
-    "rebuild/2008-06/native-classes/ScriptContextRecovery_005aefa0.cpp",
     "rebuild/2008-06/native-classes/ScriptFileLoad.cpp",
+    "rebuild/2008-06/native-classes/ScriptContextRecovery_005aefa0.cpp",
     "rebuild/2008-06/native-classes/accepted/App/script/ScriptContext.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/app/v8world/ContactManager.cpp": {
+  "rebuild/2008-06/layout/client/app/util/ContentProvider.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/ContactUnit2008Manager.cpp"
+    "rebuild/2008-06/native-classes/ContentProviderSub00562730.cpp",
+    "rebuild/2008-06/native-classes/Inferred_005624b0.cpp",
+    "rebuild/2008-06/native-classes/ContentProviderSub00562670.cpp",
+    "rebuild/2008-06/native-classes/ContentIdAssets.cpp",
+    "rebuild/2008-06/native-classes/ContentProvider.cpp",
+    "rebuild/2008-06/native-classes/ContentProviderCacheSupport.cpp",
+    "rebuild/2008-06/native-classes/ContentProviderGetContent.cpp",
+    "rebuild/2008-06/native-classes/ContentProviderGetFile.cpp",
+    "rebuild/2008-06/native-classes/ContentProviderLoad.cpp",
+    "rebuild/2008-06/native-classes/ContentProviderRegisterFile.cpp",
+    "rebuild/2008-06/native-classes/ContentProviderUrl.cpp"
+   ],
+   "flags": "",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/AppUnit55CContentTemplates.cpp",
+    "rebuild/2008-06/native-classes/MD5Hasher.cpp",
+    "rebuild/2008-06/native-classes/ContentProviderLoadContent.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/util/Http.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppUnit5F8WinInet.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/HttpResultCheck.cpp",
+    "rebuild/2008-06/native-classes/HttpRobloxSite.cpp",
+    "rebuild/2008-06/native-classes/HttpScriptCheck.cpp",
+    "rebuild/2008-06/native-classes/HttpTransport.cpp",
+    "rebuild/2008-06/native-classes/HttpTrustCheck.cpp",
+    "rebuild/2008-06/native-classes/HttpWinHttp.cpp",
+    "rebuild/2008-06/native-classes/HttpWinInet.cpp",
+    "rebuild/2008-06/native-classes/WorkspaceSiteTrust.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/util/Math.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/MathRadWrap.cpp",
+    "rebuild/2008-06/native-classes/MathClosestRay.cpp",
+    "rebuild/2008-06/native-classes/MathTiltQuadrant.cpp"
    ],
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_mathinvalidnative2549ed8ce07cf4c7__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/AppUnit5DC_2008Math.cpp",
+    "rebuild/2008-06/native-classes/OgreAuto_RBX_Math.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/util/Sound.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/SoundChannel.cpp",
+    "rebuild/2008-06/native-classes/SoundChannelRecovery.cpp",
+    "rebuild/2008-06/native-classes/SoundServiceStock.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/SoundServiceFmod.cpp",
+    "rebuild/2008-06/native-classes/AppUnit5B4SoundReflection.cpp",
+    "rebuild/2008-06/native-classes/SoundServiceOpen.cpp",
+    "rebuild/2008-06/native-classes/SoundChannelSessionExtra.cpp",
+    "rebuild/2008-06/native-classes/SoundServiceReverb.cpp",
+    "rebuild/2008-06/native-classes/SoundServiceStatsItemCtor.cpp",
+    "rebuild/2008-06/native-classes/OgreAuto_RBX_Soundscape_SoundService.cpp",
+    "rebuild/2008-06/native-classes/SoundChannelSession.cpp",
+    "rebuild/2008-06/native-classes/SoundServiceEvent.cpp",
+    "rebuild/2008-06/native-classes/SoundServicePlay.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/v8datamodel/DataModel.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/DataModelClose.cpp",
+    "rebuild/2008-06/native-classes/Inferred_00464750.cpp",
+    "rebuild/2008-06/native-classes/ServiceProviderAskAddChild.cpp",
+    "rebuild/2008-06/native-classes/DataModelGui.cpp",
+    "rebuild/2008-06/native-classes/StringConverterTemplates2008.cpp",
+    "rebuild/2008-06/native-classes/DataModelCreate.cpp",
+    "rebuild/2008-06/native-classes/DataModelDutyCycle.cpp",
+    "rebuild/2008-06/native-classes/DataModelLock.cpp",
+    "rebuild/2008-06/native-classes/DataModelTiming.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_45bf34bb8168b481__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_696ed0a6cdbdaf74__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_unit_b7e4c02ad8531df9__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_espclaude_f56d7036539cbcb8__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/CRobloxWndFinishAttach.cpp",
+    "rebuild/2008-06/native-classes/DataModelInitialize.cpp",
+    "rebuild/2008-06/native-classes/DataModelRecovery_00579c10.cpp",
+    "rebuild/2008-06/native-classes/DataModelRecovery_00578ef0.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/v8datamodel/Feature.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/Feature.cpp"
+   ],
+   "flags": "/I{headers}/kernel-stages /I{headers}/part-embedded /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /U_RELEASEASSERT /I{headers}/boost-function-pod-vtable",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_trial_5f2510aaf1d0b5ed__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/FeatureRecovery.cpp",
+    "rebuild/2008-06/native-classes/MotorFeatureCommands.cpp",
+    "rebuild/2008-06/native-classes/accepted/App/v8datamodel/Feature.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/v8datamodel/partinstance.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/PartInstanceProperties.cpp",
+    "rebuild/2008-06/native-classes/TPD_cframe.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded /I{headers}/engine-world",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/openrbx-client/App__v8datamodel__roc_data_a1bf1287783b7259__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/AppUnit598PartInstance.cpp",
+    "rebuild/2008-06/native-classes/AppUnit4CCPhysicsSenderIndex.cpp",
+    "rebuild/2008-06/native-classes/PartInstanceResize.cpp",
+    "rebuild/2008-06/native-classes/InitStatics_PartInstance.cpp",
+    "rebuild/2008-06/native-classes/PartOutfitChanged2008.cpp",
+    "rebuild/2008-06/native-classes/CollectDragParts.cpp",
+    "rebuild/2008-06/native-classes/PartInstanceCoordinate.cpp",
+    "rebuild/2008-06/native-classes/PartInstanceGetSurface.cpp",
+    "rebuild/2008-06/native-classes/PartInstanceLifetime.cpp",
+    "rebuild/2008-06/native-classes/PartInstanceLocked.cpp",
+    "rebuild/2008-06/native-classes/PartInstanceLockedInPlace.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/v8datamodel/Selection.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppUnit564_2008Selection.cpp",
+    "rebuild/2008-06/native-classes/SelectionIsSelected.cpp",
+    "rebuild/2008-06/native-classes/SelectionAncestorListener.cpp",
+    "rebuild/2008-06/native-classes/SelectionBack.cpp",
+    "rebuild/2008-06/native-classes/SelectionFront.cpp",
+    "rebuild/2008-06/native-classes/SelectionIterators.cpp"
+   ],
+   "flags": "",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/SelectionLifetime.cpp",
+    "rebuild/2008-06/native-classes/SelectionMutations.cpp",
+    "rebuild/2008-06/native-classes/SelectionRemove.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/v8datamodel/tool.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/ToolEvents.cpp",
+    "rebuild/2008-06/native-classes/ToolRecovery_005fd3d0.cpp",
+    "rebuild/2008-06/native-classes/Inferred_005fdbc0.cpp",
+    "rebuild/2008-06/native-classes/Inferred_005fed60.cpp",
+    "rebuild/2008-06/native-classes/Inferred_005feed0.cpp",
+    "rebuild/2008-06/native-classes/OgreAuto_RBX_Tool.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_032a4906dcd22147__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_b6952b05a547a859__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_f69d01038bd218bf__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_espclaude_cc7153d713b9aac6__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_espeon_touchconnectionsibling7a6e61bbb007f58a__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/Tool.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/v8datamodel/Workspace.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppUnit5A0_2008Workspace.cpp",
+    "rebuild/2008-06/native-classes/AxisMoveToolCore.cpp",
+    "rebuild/2008-06/native-classes/ModelToolFactories.cpp",
+    "rebuild/2008-06/native-classes/PartToolFactories.cpp",
+    "rebuild/2008-06/native-classes/SurfaceToolFactories.cpp",
+    "rebuild/2008-06/native-classes/ToolVerbFactoriesBasic.cpp",
+    "rebuild/2008-06/native-classes/WorkspaceGroup.cpp",
+    "rebuild/2008-06/native-classes/WorkspaceSelectAll.cpp"
+   ],
+   "flags": "",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espeon_camerastatevirtual_594bbcc27dbeb602__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espeon_workspacecameracall_f1bc359cfb700d43__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_claudeL_184cf9025cd54f62__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_6f0d189a6d77d9cd__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_a0963462eb77d728__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_a34b51fb93b16b65__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_workspacepositiveitemsfd18f79fafefab0d__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_workspacestarterasece39cbbb8deeb878__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/AppUnit5A4WorkspaceReflection.cpp",
+    "rebuild/2008-06/native-classes/WorkspaceRecovery_005a05c0.cpp",
+    "rebuild/2008-06/native-classes/ArrowToolFactory.cpp",
+    "rebuild/2008-06/native-classes/FlatTool.cpp",
+    "rebuild/2008-06/native-classes/ModelSetFrontTool.cpp",
+    "rebuild/2008-06/native-classes/ResizeToolCore.cpp",
+    "rebuild/2008-06/native-classes/RocketToolCore.cpp",
+    "rebuild/2008-06/native-classes/WorkspaceFindTopInstance.cpp",
+    "rebuild/2008-06/native-classes/WorkspaceJoin.cpp",
+    "rebuild/2008-06/native-classes/WorkspaceLifetime.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/v8kernel/Kernel.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/KernelStep.cpp",
+    "rebuild/2008-06/native-classes/KernelRecovery.cpp"
+   ],
+   "flags": "/I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /U_RELEASEASSERT",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_kernelindexoffset_1f119e5d97fd81c5__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/KernelRecovery_005fb650.cpp",
+    "rebuild/2008-06/native-classes/Kernel2008.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/v8tree/Instance.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/InstanceRecovery_00559350.cpp",
+    "rebuild/2008-06/native-classes/AppUnit558_2008Instance.cpp",
+    "rebuild/2008-06/native-classes/func_007f1c20.cpp",
+    "rebuild/2008-06/native-classes/ChangeHistoryStart.cpp",
+    "rebuild/2008-06/native-classes/InstanceAnchorChildren.cpp",
+    "rebuild/2008-06/native-classes/InstanceArchivableDescriptor.cpp",
+    "rebuild/2008-06/native-classes/InstanceClassLookup.cpp",
+    "rebuild/2008-06/native-classes/InstanceFullName.cpp",
+    "rebuild/2008-06/native-classes/InstanceLifetime.cpp",
+    "rebuild/2008-06/native-classes/InstanceNameDescriptor.cpp",
+    "rebuild/2008-06/native-classes/InstanceParentDescriptor.cpp",
+    "rebuild/2008-06/native-classes/InstanceSignalDescriptors.cpp"
+   ],
+   "flags": "",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espeon_reconstructvector_fbc3142ffebf0181__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_instance_predelete_774736f7fbf4a3d4__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_claudeM_a5aa04164fc901dc__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/InstanceChildPermission.cpp",
+    "rebuild/2008-06/native-classes/InstanceBaseCallbacks.cpp",
+    "rebuild/2008-06/native-classes/InstanceSerialization.cpp",
+    "rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp",
+    "rebuild/2008-06/native-classes/InstanceAncestorChangedNative.cpp",
+    "rebuild/2008-06/native-classes/InstanceChildAcceptance.cpp",
+    "rebuild/2008-06/native-classes/InstanceChildListener.cpp",
+    "rebuild/2008-06/native-classes/InstanceContainment.cpp",
+    "rebuild/2008-06/native-classes/InstanceDescendantEvents.cpp",
+    "rebuild/2008-06/native-classes/InstanceDescendantPropagation.cpp",
+    "rebuild/2008-06/native-classes/InstanceParent.cpp",
+    "rebuild/2008-06/native-classes/InstanceReadChildren.cpp",
+    "rebuild/2008-06/native-classes/InstanceReadProperty.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/v8world/ContactManager.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/ContactManagerHit2008.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/ContactUnit2008Manager.cpp",
     "rebuild/2008-06/native-classes/ContactManagerHitLegacy.cpp",
     "rebuild/2008-06/native-classes/ContactManagerLifetime.cpp",
     "rebuild/2008-06/native-classes/ContactManagerStats.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/v8world/JointStage.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/JointStage2008.cpp"
+   ],
+   "flags": "/I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/openrbx-client/roc_manual_jointstage_f8e4c36ae7205f3f__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/openrbx-client/roc_unit_367216b06c91c7e0__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/JointStageEvents.cpp",
+    "rebuild/2008-06/native-classes/OgreAuto_RBX_JointStage.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/app/v8world/Primitive.cpp": {
@@ -1586,14 +1842,157 @@
     "rebuild/2008-06/native-classes/PrimitiveState.cpp",
     "rebuild/2008-06/native-classes/EdgeListInsert.cpp",
     "rebuild/2008-06/native-classes/ContactUnit2008Contact.cpp",
-    "rebuild/2008-06/native-classes/SleepStage2008Primitive.cpp"
+    "rebuild/2008-06/native-classes/SleepStage2008Primitive.cpp",
+    "rebuild/2008-06/native-classes/PrimitiveEdges.cpp"
    ],
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
+    "rebuild/2008-06/native-classes/AppUnit5E4Primitive.cpp",
     "rebuild/2008-06/native-classes/PrimitiveLifetime.cpp",
-    "rebuild/2008-06/native-classes/AppUnit5E4PrimitiveParts.cpp"
+    "rebuild/2008-06/native-classes/AppUnit5E4PrimitiveParts.cpp",
+    "rebuild/2008-06/native-classes/PrimitiveSurfaceData.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/app/v8world/World.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/RBXWorldRecovery_005e9170.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/engine-world",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espclaude_9c71f42f11bab8d6__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_26d965918fecb544__O2GSEHscMDfp.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_movingprimitivesnativeset1fba8159194f33b8__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_espclaude_94b78efce9cfa189__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_unit_0ec1b5c0a1712ab3__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/AppUnit5E8_2008World.cpp",
+    "rebuild/2008-06/native-classes/WorldLifetime.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/network/Players.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/PlayersRecovery_0049cb30.cpp",
+    "rebuild/2008-06/native-classes/NetworkPlayers.cpp",
+    "rebuild/2008-06/native-classes/PlayersSuperSafe.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-net-dll/roc_unit_59a74edd08c96c8d__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/LoginRenewer.cpp",
+    "rebuild/2008-06/native-classes/ErrorUploaderCallback.cpp",
+    "rebuild/2008-06/native-classes/ErrorUploaderUpload.cpp",
+    "rebuild/2008-06/native-classes/PlayersAbusePredicate.cpp",
+    "rebuild/2008-06/native-classes/PlayersLifetime.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/RakPeer.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/RakPeerBandwidth.cpp",
+    "rebuild/2008-06/native-classes/RakPeerBitStreamRPC.cpp",
+    "rebuild/2008-06/native-classes/RakPeerConfig2008.cpp",
+    "rebuild/2008-06/native-classes/RakPeerConnection2008.cpp",
+    "rebuild/2008-06/native-classes/RakPeerNetworkLoop.cpp",
+    "rebuild/2008-06/native-classes/RakPeerRPCReceive2008.cpp",
+    "rebuild/2008-06/native-classes/RakPeerRawRPC.cpp",
+    "rebuild/2008-06/native-classes/RakPeerSendImmediate2008.cpp",
+    "rebuild/2008-06/native-classes/RakPeerUpdate.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /U_RELEASE /FImalloc.h /I{headers}/../../../tools/openrbx/Client/Network/raknet30/Source /I{headers}/../../../tools/openrbx/util",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/RakPeer.cpp",
+    "rebuild/2008-06/native-classes/RakPeerBan2008.cpp",
+    "rebuild/2008-06/native-classes/RakPeerCompression.cpp",
+    "rebuild/2008-06/native-classes/RakPeerLifecycle2008.cpp",
+    "rebuild/2008-06/native-classes/RakPeerSend2008.cpp",
+    "rebuild/2008-06/native-classes/RakPeerUpdateLoop2008.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/ReliabilityLayer.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/ReliabilityLayer.cpp",
+    "rebuild/2008-06/native-classes/ReliabilityLayerLifetime.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /FImalloc.h /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/ReliabilityLayerAux2008.cpp",
+    "rebuild/2008-06/native-classes/ReliabilityLayerPacket2008.cpp",
+    "rebuild/2008-06/native-classes/ReliabilityLayerStats2008.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/network/Replicator.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/NetworkReplicator2008StatsItem.cpp",
+    "rebuild/2008-06/native-classes/NetworkReplicator2008Items.cpp",
+    "rebuild/2008-06/native-classes/PeerLifetime.cpp",
+    "rebuild/2008-06/native-classes/PeerConstructor.cpp",
+    "rebuild/2008-06/native-classes/ReplicatorRecovery_004aafc0.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espclaude_75b06e686af54303__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_3c5ef1110f0fff6f__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_e3630ff3e82b33fa__O2Ob2GSEHscM.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-net-dll/roc_replicator_property_native_offset_91d34afc4bce4141__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-net-dll/roc_unit_c815068b43dd88be__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-net-dll/roc_unit_cc32e74e273c8479__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/NetworkClientServer2008Peer.cpp",
+    "rebuild/2008-06/native-classes/AppUnit4ACPeerHeartbeat.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/ReferenceCount.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp",
+    "rebuild/2008-06/native-classes/G3DGModule.cpp",
+    "rebuild/2008-06/native-classes/G3DRenderbuffer.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-view-dll/roc_espeon_materialnativefiltered898f72142e782492__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-view-dll/roc_espeon_materialnativevirtualslots68ab05449f862196__O2Ob2OyGFGSE.cpp",
+    "rebuild/2008-06/native-classes/vendor/g3d-6.09/GLG3Dcpp__Texture__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/vendor_i/g3d-6.09/GLG3Dcpp__Texture__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/ViewNewPartMesh2008PBB.cpp",
+    "rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp",
+    "rebuild/2008-06/native-classes/TextureProxyBase2008.cpp",
+    "rebuild/2008-06/native-classes/G3DFramebuffer.cpp",
+    "rebuild/2008-06/native-classes/G3DNetworkDevice.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Sky.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/Sky.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-g3d-dll/roc_g3d_sky_native_minimal_face_remap_8f4bae03351de51d__O2GSEHscMDfp.cpp",
+    "rebuild/2008-06/native-classes/G3DSky.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/client/rendering/renderlib/Chunk.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/SceneManager2008.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "path": "inferred",
+   "left_out": [
+    "rebuild/2008-06/native-classes/AggregateChunkBuild2008.cpp",
+    "rebuild/2008-06/native-classes/AggregateChunk2008.cpp"
    ]
   },
   "rebuild/2008-06/layout/client/rendering/renderlib/RenderScene.cpp": {
@@ -1609,68 +2008,65 @@
     "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_shadowgeometrybool8be85f1e5c42e020__O2GSEHscMD.cpp",
     "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_render_proxies_native_shadow_array_ref40cd72f4949d224e__O2Ob2OiOtOyG.cpp",
     "rebuild/2008-06/native-classes/donor_i/rbxgs-render/roc_unit_6c5e3f5d7442c234__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/RenderBaseMeshLevelSubMesh.cpp",
+    "rebuild/2008-06/native-classes/RenderSceneLights2008.cpp",
+    "rebuild/2008-06/native-classes/RenderSceneClearProxy_00504b00.cpp",
     "rebuild/2008-06/native-classes/PlayerLighting.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/win/DHTMLWindow.cpp": {
+  "rebuild/2008-06/layout/client/win/RobloxTreeCtrl.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/AppLeaves2008DHTMLWindow.cpp"
+    "rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp"
    ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string",
+   "flags": "",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
-    "rebuild/2008-06/native-classes/LuaHtmlBinder2008.cpp",
-    "rebuild/2008-06/native-classes/AppLeaves2008Marshaller.cpp"
+    "rebuild/2008-06/native-classes/vendor/atl-9.0-dll-rtm/roc_espclaude_da5a2b380f6d46c8__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/vendor_i/atl-9.0-dll-rtm/roc_espclaude_da5a2b380f6d46c8__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp"
    ]
   },
-  "rebuild/2008-06/layout/client/win/PropGrid.cpp": {
+  "rebuild/2008-06/layout/client/win/RobloxView.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/PropertyGridItems2008.cpp",
-    "rebuild/2008-06/native-classes/Vector3ItemRecovery_0043d710.cpp"
+    "rebuild/2008-06/native-classes/CRobloxViewInit.cpp",
+    "rebuild/2008-06/native-classes/CRobloxView.cpp",
+    "rebuild/2008-06/native-classes/Inferred_00458ea0.cpp",
+    "rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp",
+    "rebuild/2008-06/native-classes/ViewVerbs.cpp",
+    "rebuild/2008-06/native-classes/Conv2008_LockPlayModeVerb_doIt_004590a0.cpp",
+    "rebuild/2008-06/native-classes/Conv2008_ToggleFullscreenVerb_doIt_00459120.cpp",
+    "rebuild/2008-06/native-classes/Conv2008_HelpCommand_doIt_00459150.cpp"
    ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-",
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "path": "inferred",
    "left_out": [
-    "rebuild/2008-06/native-classes/CPropertyGridItemBrickColor.cpp",
-    "rebuild/2008-06/native-classes/WF_ContentItem_Vector3Item_0043e840.cpp",
-    "rebuild/2008-06/native-classes/CPropGrid.cpp",
-    "rebuild/2008-06/native-classes/XBoolItemRecovery_0043d330.cpp"
-   ]
-  },
-  "rebuild/2008-06/layout/client/win/RobloxReportView.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/CRobloxReportView.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "path": "inferred",
-   "left_out": [
-    "rebuild/2008-06/native-classes/CRobloxReportSubViews.cpp"
+    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espeon_viewchanged_aa6405150c5bf390__O2GSEHscMD.cpp",
+    "rebuild/2008-06/native-classes/Conv2008_ToggleFullscreenVerb_isChecked_00459100.cpp",
+    "rebuild/2008-06/native-classes/CRobloxViewRecovery_00459d60.cpp"
    ]
   }
  },
- "inferred_path_files": 176,
+ "inferred_path_files": 183,
  "status": {
-  "clean-identical": 209,
-  "verbatim-identical": 18,
-  "dropped": 18,
+  "clean-identical": 208,
+  "verbatim-identical": 17,
+  "dropped": 15,
   "verbatim": 67,
-  "clean (token-identical)": 145,
-  "verbatim (line-sensitive macros)": 12
+  "clean (token-identical)": 172,
+  "verbatim (line-sensitive macros)": 14
  },
  "held_back": {
-  "no original path": 1837,
-  "merge or conflict": 587,
-  "requires_inline_placement_review": 1,
-  "inferred path with no folder evidence": 21,
+  "no original path": 1766,
+  "merge or conflict": 733,
+  "requires_inline_placement_review": 6,
+  "inferred path with no folder evidence": 20,
   "library source (XTP, MFC, ATL): no Roblox path": 227,
   "requires_identity_review": 4,
-  "requires_case_review": 2,
+  "requires_split_review": 1,
   "wrapper around donor or library source": 348,
-  "profile overlay header (reached only through a unit /I flag)": 58,
+  "requires_case_review": 1,
+  "profile overlay header (reached only through a unit /I flag)": 76,
   "variant header that shadows the one other units build with": 14
  },
  "standard": "object identity by tu_signature (code, data, relocations, symbols; discardable .debug$S excluded)",
@@ -1678,6 +2074,11 @@
  "per_file": {
   "rebuild/2008-06/layout/client/win/ActiveDocView.cpp": {
    "source": "rebuild/2008-06/native-classes/ActiveDocView.cpp",
+   "status": "clean-identical",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/rendering/renderlib/aggregatingscenemanager.cpp": {
+   "source": "rebuild/2008-06/native-classes/AggregatingSceneManagerPrerender2008.cpp",
    "status": "clean-identical",
    "path": "inferred"
   },
@@ -1716,6 +2117,11 @@
    "status": "clean-identical",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/app/reflection/reflection_object.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit570_2008Reflection.cpp",
+   "status": "clean-identical",
+   "path": "original"
+  },
   "rebuild/2008-06/layout/client/app/script/Script.cpp": {
    "source": "rebuild/2008-06/native-classes/AppUnit57C_2008Script.cpp",
    "status": "clean-identical",
@@ -1731,13 +2137,8 @@
    "status": "clean-identical",
    "path": "original"
   },
-  "rebuild/2008-06/layout/client/app/util/quaternion.cpp": {
-   "source": "rebuild/2008-06/native-classes/AppUnit5DC_2008Quaternion.cpp",
-   "status": "clean-identical",
-   "path": "inferred"
-  },
-  "rebuild/2008-06/layout/client/app/v8world/World.cpp": {
-   "source": "rebuild/2008-06/native-classes/AppUnit5E8_2008World.cpp",
+  "rebuild/2008-06/layout/client/app/v8world/Mechanism.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit5E4Mechanism.cpp",
    "status": "clean-identical",
    "path": "original"
   },
@@ -1801,28 +2202,8 @@
    "status": "clean-identical",
    "path": "original"
   },
-  "rebuild/2008-06/layout/client/app/v8world/Block.cpp": {
-   "source": "rebuild/2008-06/native-classes/Block.cpp",
-   "status": "clean-identical",
-   "path": "original"
-  },
-  "rebuild/2008-06/layout/client/app/v8kernel/Body.cpp": {
-   "source": "rebuild/2008-06/native-classes/BodyPrimitive2008Body.cpp",
-   "status": "clean-identical",
-   "path": "original"
-  },
   "rebuild/2008-06/layout/client/app/v8kernel/Cofm.cpp": {
    "source": "rebuild/2008-06/native-classes/BodyPrimitive2008Cofm.cpp",
-   "status": "clean-identical",
-   "path": "original"
-  },
-  "rebuild/2008-06/layout/client/app/v8kernel/Point.cpp": {
-   "source": "rebuild/2008-06/native-classes/BodyPrimitive2008Point.cpp",
-   "status": "clean-identical",
-   "path": "original"
-  },
-  "rebuild/2008-06/layout/client/app/v8kernel/SimBody.cpp": {
-   "source": "rebuild/2008-06/native-classes/BodyPrimitive2008SimBody.cpp",
    "status": "clean-identical",
    "path": "original"
   },
@@ -1876,11 +2257,6 @@
    "status": "clean-identical",
    "path": "inferred"
   },
-  "rebuild/2008-06/layout/client/win/RobloxWnd.cpp": {
-   "source": "rebuild/2008-06/native-classes/CRobloxWndThrottle.cpp",
-   "status": "dropped",
-   "path": "inferred"
-  },
   "rebuild/2008-06/layout/client/win/SaveToRobloxDialog.cpp": {
    "source": "rebuild/2008-06/native-classes/CSaveToRobloxDialog.cpp",
    "status": "clean-identical",
@@ -1896,18 +2272,8 @@
    "status": "clean-identical",
    "path": "inferred"
   },
-  "rebuild/2008-06/layout/client/win/RobloxTreeCtrl.cpp": {
-   "source": "rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
-   "status": "dropped",
-   "path": "inferred"
-  },
   "rebuild/2008-06/layout/client/win/SettingsDialog.cpp": {
    "source": "rebuild/2008-06/native-classes/CSettingsDialog.cpp",
-   "status": "clean-identical",
-   "path": "inferred"
-  },
-  "rebuild/2008-06/layout/client/win/RobloxDoc.cpp": {
-   "source": "rebuild/2008-06/native-classes/CUploadPlaceDialog.cpp",
    "status": "clean-identical",
    "path": "inferred"
   },
@@ -1926,13 +2292,18 @@
    "status": "clean-identical",
    "path": "inferred"
   },
-  "rebuild/2008-06/layout/client/app/util/Color.cpp": {
-   "source": "rebuild/2008-06/native-classes/ColorNamed.cpp",
+  "rebuild/2008-06/layout/client/app/v8world/clumpstage.cpp": {
+   "source": "rebuild/2008-06/native-classes/ClumpStage2008.cpp",
    "status": "clean-identical",
    "path": "inferred"
   },
-  "rebuild/2008-06/layout/client/app/v8kernel/Constants.cpp": {
-   "source": "rebuild/2008-06/native-classes/ConstantsJoint.cpp",
+  "rebuild/2008-06/layout/client/rendering/renderlib/clusterer.cpp": {
+   "source": "rebuild/2008-06/native-classes/Clusterer2008.cpp",
+   "status": "clean-identical",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/app/util/Color.cpp": {
+   "source": "rebuild/2008-06/native-classes/ColorNamed.cpp",
    "status": "clean-identical",
    "path": "inferred"
   },
@@ -1976,14 +2347,14 @@
    "status": "clean-identical",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/aabox.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DAABox.cpp",
+   "status": "clean-identical",
+   "path": "inferred"
+  },
   "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/BinaryInput.cpp": {
    "source": "rebuild/2008-06/native-classes/G3DBinaryInput.cpp",
    "status": "clean-identical",
-   "path": "original"
-  },
-  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/BinaryOutput.cpp": {
-   "source": "rebuild/2008-06/native-classes/G3DBinaryOutput.cpp",
-   "status": "verbatim-identical",
    "path": "original"
   },
   "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Capsule.cpp": {
@@ -2011,6 +2382,11 @@
    "status": "clean-identical",
    "path": "inferred"
   },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/color4uint8.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DColor4uint8.cpp",
+   "status": "clean-identical",
+   "path": "inferred"
+  },
   "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/CoordinateFrame.cpp": {
    "source": "rebuild/2008-06/native-classes/G3DCoordinateFrame.cpp",
    "status": "clean-identical",
@@ -2030,11 +2406,6 @@
    "source": "rebuild/2008-06/native-classes/G3DDXCaps.cpp",
    "status": "clean-identical",
    "path": "inferred"
-  },
-  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Draw.cpp": {
-   "source": "rebuild/2008-06/native-classes/G3DDraw.cpp",
-   "status": "clean-identical",
-   "path": "original"
   },
   "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/GCamera.cpp": {
    "source": "rebuild/2008-06/native-classes/G3DGCamera.cpp",
@@ -2086,6 +2457,11 @@
    "status": "clean-identical",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/manualcameracontroller.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DManualCameraController.cpp",
+   "status": "clean-identical",
+   "path": "inferred"
+  },
   "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Matrix4.cpp": {
    "source": "rebuild/2008-06/native-classes/G3DMatrix4.cpp",
    "status": "clean-identical",
@@ -2111,6 +2487,16 @@
    "status": "clean-identical",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/netaddress.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DNetAddress.cpp",
+   "status": "clean-identical",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/pixelprogram.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DPixelProgram.cpp",
+   "status": "clean-identical",
+   "path": "inferred"
+  },
   "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Plane.cpp": {
    "source": "rebuild/2008-06/native-classes/G3DPlane.cpp",
    "status": "clean-identical",
@@ -2131,15 +2517,15 @@
    "status": "verbatim-identical",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/sdlwindow.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DSDLWindow.cpp",
+   "status": "verbatim-identical",
+   "path": "inferred"
+  },
   "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Shader.cpp": {
    "source": "rebuild/2008-06/native-classes/G3DShader.cpp",
    "status": "verbatim-identical",
    "path": "original"
-  },
-  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Sky.cpp": {
-   "source": "rebuild/2008-06/native-classes/G3DSky.cpp",
-   "status": "clean-identical",
-   "path": "inferred"
   },
   "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Sphere.cpp": {
    "source": "rebuild/2008-06/native-classes/G3DSphere.cpp",
@@ -2176,6 +2562,16 @@
    "status": "verbatim-identical",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/triangle.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DTriangle.cpp",
+   "status": "clean-identical",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/userinput.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DUserInput.cpp",
+   "status": "verbatim-identical",
+   "path": "inferred"
+  },
   "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/VAR.cpp": {
    "source": "rebuild/2008-06/native-classes/G3DVAR.cpp",
    "status": "verbatim-identical",
@@ -2203,6 +2599,11 @@
   },
   "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Vector4.cpp": {
    "source": "rebuild/2008-06/native-classes/G3DVector4.cpp",
+   "status": "clean-identical",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/vertexprogram.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DVertexProgram.cpp",
    "status": "clean-identical",
    "path": "inferred"
   },
@@ -2261,9 +2662,9 @@
    "status": "clean-identical",
    "path": "original"
   },
-  "rebuild/2008-06/layout/client/app/gui/GuiDraw.cpp": {
-   "source": "rebuild/2008-06/native-classes/GuiDrawImage.cpp",
-   "status": "verbatim-identical",
+  "rebuild/2008-06/layout/client/app/v8datamodel/GeometryService.cpp": {
+   "source": "rebuild/2008-06/native-classes/GeometryService.cpp",
+   "status": "clean-identical",
    "path": "original"
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/GuiBuilder.cpp": {
@@ -2276,20 +2677,10 @@
    "status": "clean-identical",
    "path": "original"
   },
-  "rebuild/2008-06/layout/client/rendering/appdraw/HitTest.cpp": {
-   "source": "rebuild/2008-06/native-classes/HitTestShapes.cpp",
-   "status": "clean-identical",
-   "path": "original"
-  },
   "rebuild/2008-06/layout/client/network/raknet30/source/DS_HuffmanEncodingTree.cpp": {
    "source": "rebuild/2008-06/native-classes/HuffmanEncodingTree.cpp",
    "status": "clean-identical",
    "path": "original"
-  },
-  "rebuild/2008-06/layout/client/app/humanoid/HumanoidState.cpp": {
-   "source": "rebuild/2008-06/native-classes/HumanoidStateFloor.cpp",
-   "status": "clean-identical",
-   "path": "inferred"
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/ICameraOwner.cpp": {
    "source": "rebuild/2008-06/native-classes/ICameraOwner.cpp",
@@ -2301,28 +2692,8 @@
    "status": "clean-identical",
    "path": "original"
   },
-  "rebuild/2008-06/layout/client/app/v8world/imoving.cpp": {
-   "source": "rebuild/2008-06/native-classes/IMovingManager.cpp",
-   "status": "clean-identical",
-   "path": "inferred"
-  },
-  "rebuild/2008-06/layout/client/network/Server.cpp": {
-   "source": "rebuild/2008-06/native-classes/Inferred_004a40d0.cpp",
-   "status": "clean-identical",
-   "path": "inferred"
-  },
-  "rebuild/2008-06/layout/client/app/script/ThreadRef.cpp": {
-   "source": "rebuild/2008-06/native-classes/Inferred_005947f0.cpp",
-   "status": "clean-identical",
-   "path": "inferred"
-  },
   "rebuild/2008-06/layout/client/app/v8world/clump.cpp": {
    "source": "rebuild/2008-06/native-classes/Inferred_005e6240.cpp",
-   "status": "clean-identical",
-   "path": "inferred"
-  },
-  "rebuild/2008-06/layout/client/app/util/RunningAverage.cpp": {
-   "source": "rebuild/2008-06/native-classes/JointStage2008.cpp",
    "status": "clean-identical",
    "path": "inferred"
   },
@@ -2591,15 +2962,20 @@
    "status": "clean-identical",
    "path": "inferred"
   },
+  "rebuild/2008-06/layout/client/network/raknet30/source/networkidobject.cpp": {
+   "source": "rebuild/2008-06/native-classes/NetworkIDObject2008.cpp",
+   "status": "clean-identical",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/network/RoundRobinPhysicsSender.cpp": {
+   "source": "rebuild/2008-06/native-classes/NetworkPhysics.cpp",
+   "status": "clean-identical",
+   "path": "inferred"
+  },
   "rebuild/2008-06/layout/client/network/NetworkSettings.cpp": {
    "source": "rebuild/2008-06/native-classes/NetworkSettings.cpp",
    "status": "clean-identical",
    "path": "original"
-  },
-  "rebuild/2008-06/layout/client/app/util/Rect.cpp": {
-   "source": "rebuild/2008-06/native-classes/OgreAuto_RBX_Rect.cpp",
-   "status": "clean-identical",
-   "path": "inferred"
   },
   "rebuild/2008-06/layout/client/rendering/rbxogre/RbxSky.cpp": {
    "source": "rebuild/2008-06/native-classes/OgreRbxSky.cpp",
@@ -2648,7 +3024,7 @@
   },
   "rebuild/2008-06/layout/client/app/gui/ProfanityFilter.cpp": {
    "source": "rebuild/2008-06/native-classes/ProfanityFilter.cpp",
-   "status": "verbatim-identical",
+   "status": "clean-identical",
    "path": "original"
   },
   "rebuild/2008-06/layout/client/app/util/utilities.cpp": {
@@ -2663,6 +3039,16 @@
   },
   "rebuild/2008-06/layout/client/network/raknet30/source/CheckSum.cpp": {
    "source": "rebuild/2008-06/native-classes/RakCheckSum2008.cpp",
+   "status": "clean-identical",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/datacompressor.cpp": {
+   "source": "rebuild/2008-06/native-classes/RakDataCompressor2008.cpp",
+   "status": "clean-identical",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/filelist.cpp": {
+   "source": "rebuild/2008-06/native-classes/RakFileList2008.cpp",
    "status": "clean-identical",
    "path": "inferred"
   },
@@ -2701,8 +3087,13 @@
    "status": "clean-identical",
    "path": "original"
   },
-  "rebuild/2008-06/layout/client/rendering/renderlib/Chunk.cpp": {
-   "source": "rebuild/2008-06/native-classes/SceneManager2008.cpp",
+  "rebuild/2008-06/layout/client/app/reflection/type.cpp": {
+   "source": "rebuild/2008-06/native-classes/ReflectionValueCtor.cpp",
+   "status": "clean-identical",
+   "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/app/v8world/RotateJoint.cpp": {
+   "source": "rebuild/2008-06/native-classes/RotateJointChannel.cpp",
    "status": "clean-identical",
    "path": "original"
   },
@@ -2736,16 +3127,6 @@
    "status": "clean-identical",
    "path": "original"
   },
-  "rebuild/2008-06/layout/client/network/raknet30/source/SocketLayer.cpp": {
-   "source": "rebuild/2008-06/native-classes/SocketLayer.cpp",
-   "status": "clean-identical",
-   "path": "original"
-  },
-  "rebuild/2008-06/layout/client/app/v8world/SpatialHash.cpp": {
-   "source": "rebuild/2008-06/native-classes/SpatialHash2008.cpp",
-   "status": "clean-identical",
-   "path": "inferred"
-  },
   "rebuild/2008-06/layout/client/app/v8datamodel/custommesh.cpp": {
    "source": "rebuild/2008-06/native-classes/SpecialShape.cpp",
    "status": "clean-identical",
@@ -2766,8 +3147,8 @@
    "status": "clean-identical",
    "path": "inferred"
   },
-  "rebuild/2008-06/layout/client/app/util/boost.cpp": {
-   "source": "rebuild/2008-06/native-classes/ThreadNameStorage.cpp",
+  "rebuild/2008-06/layout/client/network/raknet30/source/systemaddresslist.cpp": {
+   "source": "rebuild/2008-06/native-classes/SystemAddressList2008.cpp",
    "status": "clean-identical",
    "path": "inferred"
   },
@@ -2778,7 +3159,7 @@
   },
   "rebuild/2008-06/layout/client/win/MarshaledListener.cpp": {
    "source": "rebuild/2008-06/native-classes/TmplInst_00464d70.cpp",
-   "status": "dropped",
+   "status": "clean-identical",
    "path": "inferred"
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/ToolMouseCommand.cpp": {
@@ -2788,11 +3169,6 @@
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/UserController.cpp": {
    "source": "rebuild/2008-06/native-classes/UserController.cpp",
-   "status": "clean-identical",
-   "path": "original"
-  },
-  "rebuild/2008-06/layout/client/rbxview/BrickMesh.cpp": {
-   "source": "rebuild/2008-06/native-classes/ViewNewBrickMeshBuild2008.cpp",
    "status": "clean-identical",
    "path": "original"
   },
@@ -2820,11 +3196,6 @@
    "source": "rebuild/2008-06/native-classes/WidgetButtons.cpp",
    "status": "clean-identical",
    "path": "inferred"
-  },
-  "rebuild/2008-06/layout/client/app/v8world/GlueJoint.cpp": {
-   "source": "rebuild/2008-06/native-classes/WorldJointGlue.cpp",
-   "status": "clean-identical",
-   "path": "original"
   },
   "rebuild/2008-06/layout/client/app/v8world/mutiljoint.cpp": {
    "source": "rebuild/2008-06/native-classes/WorldJointMulti.cpp",
@@ -2916,6 +3287,16 @@
    "status": "verbatim",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/network/include/network/API.h": {
+   "source": "rebuild/2008-06/native-headers/Network/API.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
+  "rebuild/2008-06/layout/client/network/include/network/CrashReporter.h": {
+   "source": "rebuild/2008-06/native-headers/Network/CrashReporter.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
   "rebuild/2008-06/layout/client/network/include/network/IdSerializer.h": {
    "source": "rebuild/2008-06/native-headers/Network/IdSerializer.h",
    "status": "clean (token-identical)",
@@ -2940,6 +3321,11 @@
    "source": "rebuild/2008-06/native-headers/Network/ReplicatorMarker.h",
    "status": "clean (token-identical)",
    "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/network/include/network/SuperSafeChanged.h": {
+   "source": "rebuild/2008-06/native-headers/Network/SuperSafeChanged.h",
+   "status": "clean (token-identical)",
+   "path": "original"
   },
   "rebuild/2008-06/layout/client/rendering/ogresdk/include/OgreMath.h": {
    "source": "rebuild/2008-06/native-headers/OgreRbxEntityImports/OgreMath.h",
@@ -2991,9 +3377,29 @@
    "status": "clean (token-identical)",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/rendering/renderlib/include/renderlib/DepthBlur.h": {
+   "source": "rebuild/2008-06/native-headers/RenderLib/DepthBlur.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
+  "rebuild/2008-06/layout/client/rendering/renderlib/include/renderlib/EffectSettings.h": {
+   "source": "rebuild/2008-06/native-headers/RenderLib/EffectSettings.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
   "rebuild/2008-06/layout/client/rendering/renderlib/include/renderlib/Profiler.h": {
    "source": "rebuild/2008-06/native-headers/RenderLib/Profiler.h",
    "status": "verbatim",
+   "path": "original"
+  },
+  "rebuild/2008-06/layout/client/rendering/renderlib/include/renderlib/RenderStats.h": {
+   "source": "rebuild/2008-06/native-headers/RenderLib/RenderStats.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
+  "rebuild/2008-06/layout/client/rendering/renderlib/include/renderlib/TextureProxy.h": {
+   "source": "rebuild/2008-06/native-headers/RenderLib/TextureProxy.h",
+   "status": "clean (token-identical)",
    "path": "original"
   },
   "rebuild/2008-06/layout/client/network/replicator.h": {
@@ -3111,6 +3517,16 @@
    "status": "clean (token-identical)",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/app/include/gui/Layout.h": {
+   "source": "rebuild/2008-06/native-headers/gui/Layout.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
+  "rebuild/2008-06/layout/client/app/include/gui/ProfanityFilter.h": {
+   "source": "rebuild/2008-06/native-headers/gui/ProfanityFilter.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
   "rebuild/2008-06/layout/client/app/include/gui/ScoreHud.h": {
    "source": "rebuild/2008-06/native-headers/gui/ScoreHud.h",
    "status": "clean (token-identical)",
@@ -3173,6 +3589,11 @@
   },
   "rebuild/2008-06/layout/client/app/include/lua/LuaBridge.h": {
    "source": "rebuild/2008-06/native-headers/lua/LuaBridge.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
+  "rebuild/2008-06/layout/client/app/include/lua/lua.hpp": {
+   "source": "rebuild/2008-06/native-headers/lua/lua.hpp",
    "status": "clean (token-identical)",
    "path": "original"
   },
@@ -3248,6 +3669,11 @@
   },
   "rebuild/2008-06/layout/client/app/include/script/ScriptContext.h": {
    "source": "rebuild/2008-06/native-headers/script/ScriptContext.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
+  "rebuild/2008-06/layout/client/app/include/script/ScriptEvent.h": {
+   "source": "rebuild/2008-06/native-headers/script/ScriptEvent.h",
    "status": "clean (token-identical)",
    "path": "original"
   },
@@ -3366,6 +3792,11 @@
    "status": "verbatim",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/app/include/util/Association.h": {
+   "source": "rebuild/2008-06/native-headers/util/Association.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
   "rebuild/2008-06/layout/client/app/include/util/Color.h": {
    "source": "rebuild/2008-06/native-headers/util/Color.h",
    "status": "verbatim",
@@ -3461,13 +3892,38 @@
    "status": "verbatim",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/app/include/util/HitTestFilter.h": {
+   "source": "rebuild/2008-06/native-headers/util/HitTestFilter.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
   "rebuild/2008-06/layout/client/app/include/util/ICameraSubject.h": {
    "source": "rebuild/2008-06/native-headers/util/ICameraSubject.h",
    "status": "verbatim",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/app/include/util/IControllable.h": {
+   "source": "rebuild/2008-06/native-headers/util/IControllable.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/ILocation.h": {
+   "source": "rebuild/2008-06/native-headers/util/ILocation.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/IMetric.h": {
+   "source": "rebuild/2008-06/native-headers/util/IMetric.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
   "rebuild/2008-06/layout/client/app/include/util/IRenderable.h": {
    "source": "rebuild/2008-06/native-headers/util/IRenderable.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/ISelectable3d.h": {
+   "source": "rebuild/2008-06/native-headers/util/ISelectable3d.h",
    "status": "clean (token-identical)",
    "path": "original"
   },
@@ -3479,6 +3935,11 @@
   "rebuild/2008-06/layout/client/app/include/util/IndexArray.h": {
    "source": "rebuild/2008-06/native-headers/util/IndexArray.h",
    "status": "verbatim (line-sensitive macros)",
+   "path": "original"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/InsertMode.h": {
+   "source": "rebuild/2008-06/native-headers/util/InsertMode.h",
+   "status": "clean (token-identical)",
    "path": "original"
   },
   "rebuild/2008-06/layout/client/app/include/util/LDrawEntities.h": {
@@ -3566,6 +4027,11 @@
    "status": "clean (token-identical)",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/app/include/util/RunningAverage.h": {
+   "source": "rebuild/2008-06/native-headers/util/RunningAverage.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
   "rebuild/2008-06/layout/client/app/include/util/Sound.h": {
    "source": "rebuild/2008-06/native-headers/util/Sound.h",
    "status": "clean (token-identical)",
@@ -3585,6 +4051,11 @@
    "source": "rebuild/2008-06/native-headers/util/SurfaceTypeType.h",
    "status": "clean (token-identical)",
    "path": "inferred"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/TextureId.h": {
+   "source": "rebuild/2008-06/native-headers/util/TextureId.h",
+   "status": "clean (token-identical)",
+   "path": "original"
   },
   "rebuild/2008-06/layout/client/app/include/util/Units.h": {
    "source": "rebuild/2008-06/native-headers/util/Units.h",
@@ -3751,6 +4222,11 @@
    "status": "clean (token-identical)",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Gyro.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Gyro.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/HistoryRecord.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/HistoryRecord.h",
    "status": "clean (token-identical)",
@@ -3774,6 +4250,11 @@
   "rebuild/2008-06/layout/client/app/include/v8datamodel/IEquipable.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/IEquipable.h",
    "status": "verbatim",
+   "path": "original"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/IPrimaryPart.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/IPrimaryPart.h",
+   "status": "clean (token-identical)",
    "path": "original"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/JointInstance.h": {
@@ -3946,6 +4427,16 @@
    "status": "verbatim",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/app/include/v8kernel/Body.h": {
+   "source": "rebuild/2008-06/native-headers/v8kernel/Body.h",
+   "status": "verbatim (line-sensitive macros)",
+   "path": "original"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8kernel/Cofm.h": {
+   "source": "rebuild/2008-06/native-headers/v8kernel/Cofm.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
   "rebuild/2008-06/layout/client/app/include/v8kernel/Connector.h": {
    "source": "rebuild/2008-06/native-headers/v8kernel/Connector.h",
    "status": "clean (token-identical)",
@@ -3961,13 +4452,38 @@
    "status": "clean (token-identical)",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/app/include/v8kernel/KernelData.h": {
+   "source": "rebuild/2008-06/native-headers/v8kernel/KernelData.h",
+   "status": "verbatim (line-sensitive macros)",
+   "path": "original"
+  },
   "rebuild/2008-06/layout/client/app/include/v8kernel/KernelIndex.h": {
    "source": "rebuild/2008-06/native-headers/v8kernel/KernelIndex.h",
    "status": "verbatim (line-sensitive macros)",
    "path": "original"
   },
+  "rebuild/2008-06/layout/client/app/include/v8kernel/KernelInput.h": {
+   "source": "rebuild/2008-06/native-headers/v8kernel/KernelInput.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
   "rebuild/2008-06/layout/client/app/include/v8kernel/Link.h": {
    "source": "rebuild/2008-06/native-headers/v8kernel/Link.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8kernel/Pair.h": {
+   "source": "rebuild/2008-06/native-headers/v8kernel/Pair.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8kernel/Point.h": {
+   "source": "rebuild/2008-06/native-headers/v8kernel/Point.h",
+   "status": "clean (token-identical)",
+   "path": "original"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8kernel/SimBody.h": {
+   "source": "rebuild/2008-06/native-headers/v8kernel/SimBody.h",
    "status": "clean (token-identical)",
    "path": "original"
   },
@@ -4025,28 +4541,28 @@
  "coverage": {
   "note": "code bytes whose native source is in this export; not a link or runtime claim",
   "executable_code_bytes": 3742156,
-  "exported_bytes": 778292,
-  "exported_percent": 20.8,
+  "exported_bytes": 814647,
+  "exported_percent": 21.77,
   "tiers": {
    "inferred path": {
-    "files": 102,
-    "functions": 596,
-    "bytes": 106307
+    "files": 109,
+    "functions": 643,
+    "bytes": 112267
    },
    "original path": {
-    "files": 125,
-    "functions": 1234,
-    "bytes": 272646
+    "files": 116,
+    "functions": 1147,
+    "bytes": 259178
    },
    "merged unit, complete": {
-    "files": 32,
-    "functions": 344,
-    "bytes": 90745
+    "files": 43,
+    "functions": 443,
+    "bytes": 114679
    },
    "merged unit, partial": {
-    "files": 89,
-    "functions": 1831,
-    "bytes": 308594
+    "files": 106,
+    "functions": 2027,
+    "bytes": 328523
    }
   }
  },

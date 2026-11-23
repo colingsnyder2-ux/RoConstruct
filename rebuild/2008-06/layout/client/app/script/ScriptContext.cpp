@@ -188,6 +188,18 @@ void ScriptContext::call(const Lua::FunctionRef& f, boost::function1<unsigned in
 }
 
 #include "script/Script.h"
+
+using namespace RBX;
+
+void ScriptContext::addScript(Script* script)
+{
+	if (scripts.insert(script).second == true)
+	{
+		if (!script->isDisabled())
+			startScript(shared_from(script));
+	}
+}
+
 #include "LuaBridge2008/LuaInstanceBridge2008.h"
 #include "script/ThreadRef.h"
 #include "util/standardout.h"
@@ -252,6 +264,12 @@ void ScriptContext::startScript(boost::shared_ptr<Script> script)
 	}
 
 	lua_settop(thread, 0);
+}
+
+#include "reflection/reflection.h"
+
+namespace RBX {
+	Reflection::BoundProp<bool, true> ScriptContext::propScriptsDisabled("ScriptsDisabled", "State", &ScriptContext::scriptsDisabled, &ScriptContext::onChangedScriptEnabled, Reflection::PropertyDescriptor::UI);   // 00976b7c
 }
 
 #include <boost/date_time/posix_time/posix_time.hpp>

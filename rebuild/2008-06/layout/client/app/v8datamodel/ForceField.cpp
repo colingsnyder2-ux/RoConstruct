@@ -21,6 +21,12 @@ namespace RBX
 	template<class C, class D, const char* N>
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
+
+	template<> Reflection::ClassDescriptor& Reflection::Described<ForceField, sForceField,
+		FactoryProduct<ForceField, Instance, sForceField> >::classDescriptor() {
+		static Reflection::ClassDescriptor descriptor(Instance::classDescriptor(), sForceField);
+		return descriptor;
+	}
 }
 
 using namespace RBX;

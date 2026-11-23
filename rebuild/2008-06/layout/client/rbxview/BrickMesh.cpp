@@ -1,119 +1,93 @@
+// constructor is declared by brickcache-profile/ViewNew/BrickMesh.h (INFERRED there from the create calls 004e5574 /
 #include "ViewNewBrickBuild2008/BrickMeshCache2008.h"
-
-static int orderedCompare(const G3D::Vector3& a, const G3D::Vector3& b)   // 004dc360
-{
-	if (a.x < b.x)
-		return -1;
-	if (a.x > b.x)
-		return 1;
-
-	if (a.y < b.y)
-		return -1;
-	if (a.y > b.y)
-		return 1;
-
-	if (a.z < b.z)
-		return -1;
-	if (a.z > b.z)
-		return 1;
-
-	return 0;
-}
-
-inline bool Lookup::operator<(const Lookup& other) const
-{
-	int c = orderedCompare(size, other.size);
-	if (c < 0)
-		return true;
-	if (c > 0)
-		return false;
-	if (surfaceTypes.data < other.surfaceTypes.data)
-		return true;
-	if (surfaceTypes.data > other.surfaceTypes.data)
-		return false;
-	if (color < other.color)       // an if statement: `return color < other.color` materializes the bool (setl)
-		return true;
-	return false;
-}
-
-static void appendQuad(std::vector<unsigned short>& indices, int a, int b, int c, int d)   // 004de1d0
-{
-	indices.push_back(a);
-	indices.push_back(b);
-	indices.push_back(c);
-	indices.push_back(a);
-	indices.push_back(c);
-	indices.push_back(d);
-}
 
 namespace RBX
 {
+	extern bool shadowsEnabled;   // 0096de64 (INFERRED name, pbb-surface-profile/RenderLib/ViewBase2008.h)
+	// INFERRED: 00942ec4 is the render-mode int; createMaterial 00551730 builds RenderNew materials when it is 0.
+	extern int renderMode;
+
 	namespace ViewNew
 	{
-		void buildShadowBox(const G3D::Vector3& halfSize, std::vector<G3D::Vector3>& vertices, std::vector<unsigned short>& indices)
-		{
-			vertices.reserve(8);
-			indices.reserve(36);
-			vertices.push_back(G3D::Vector3(-halfSize.x, -halfSize.y, -halfSize.z));
-			vertices.push_back(G3D::Vector3(-halfSize.x, -halfSize.y, halfSize.z));
-			vertices.push_back(G3D::Vector3(-halfSize.x, halfSize.y, -halfSize.z));
-			vertices.push_back(G3D::Vector3(-halfSize.x, halfSize.y, halfSize.z));
-			vertices.push_back(G3D::Vector3(halfSize.x, -halfSize.y, -halfSize.z));
-			vertices.push_back(G3D::Vector3(halfSize.x, -halfSize.y, halfSize.z));
-			vertices.push_back(G3D::Vector3(halfSize.x, halfSize.y, -halfSize.z));
-			vertices.push_back(G3D::Vector3(halfSize.x, halfSize.y, halfSize.z));
-			appendQuad(indices, 7, 5, 4, 6);
-			appendQuad(indices, 2, 0, 1, 3);
-			appendQuad(indices, 7, 6, 2, 3);
-			appendQuad(indices, 1, 0, 4, 5);
-			appendQuad(indices, 3, 1, 5, 7);
-			appendQuad(indices, 6, 4, 0, 2);
-		}
+		// INFERRED: original global float 00972758 (same name as ViewNewBrickCacheRecovery2008.cpp).
+		extern float currentBevel;
 
-		BrickMesh::Cache* BrickMesh::cache;
-		boost::once_flag BrickMesh::cacheFlag = BOOST_ONCE_INIT;
-
-		void BrickMesh::initCache()
+		BrickMesh::BrickMesh(const G3D::Vector3& size, RenderSurfaceTypes surfaceTypes, BrickColor color, int a, int b,
+		                     int c, float scale)
 		{
-			cache = new Cache();
-		}
+			meshKind = 1;
 
-		void BrickMesh::flushCache()
-		{
-			boost::call_once(&initCache, cacheFlag);
-			Cache& c = *cache;
-			boost::recursive_mutex::scoped_lock lock(c.mutex);
-			c.meshes.clear();
-		}
+			if (a && b && c)
+				buildBevel(size, surfaceTypes, color, a, b, c, scale);
+			else
+				buildBevel(size, surfaceTypes, color);
 
-		void BrickMesh::releaseUnused()
-		{
-			boost::call_once(&initCache, cacheFlag);
-			Cache& c = *cache;
-			boost::recursive_mutex::scoped_lock lock(c.mutex);
-			for (std::map<Lookup, Variations>::iterator i = c.meshes.begin(); i != c.meshes.end(); ++i)
+			if (shadowsEnabled && renderMode == 0)
 			{
-				for (int k = 0; k < 4; ++k)
-				{
-					if (i->second.meshes[k].notNull() && i->second.meshes[k].isLastReference())
-						i->second.meshes[k] = NULL;
-				}
+				G3D::Vector3 halfSize = size * 0.5f;
+				buildShadowBox(G3D::Vector3(halfSize.x - currentBevel, halfSize.y - currentBevel, halfSize.z - currentBevel),
+				               shadowVertices, shadowIndices);
 			}
 		}
 	}
 }
 
-template Variations& std::map<Lookup, Variations>::operator[](const Lookup&);
+// INFERRED: method/global names and constructor argument types, evidenced by original calls.
+#undef OGRE_NONCLIENT_BUILD
+#define NOMINMAX
+#include <G3D/g3dmath.h>
+#include <algorithm>
 
-template class G3D::ReferenceCountedPointer<RBX::RenderBase::Mesh>;
-template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<Lookup const ,Variations> > >;
-template class std::_Tmap_traits<Lookup,Variations,std::less<Lookup>,std::allocator<std::pair<Lookup const ,Variations> >,0>;
-template class std::_Tree<std::_Tmap_traits<Lookup,Variations,std::less<Lookup>,std::allocator<std::pair<Lookup const ,Variations> >,0> >;
-template class std::_Vector_const_iterator<G3D::Vector3,std::allocator<G3D::Vector3> >;
-template class std::_Vector_const_iterator<unsigned short,std::allocator<unsigned short> >;
-template class std::_Vector_iterator<G3D::Vector3,std::allocator<G3D::Vector3> >;
-template class std::_Vector_iterator<unsigned short,std::allocator<unsigned short> >;
-template class std::allocator<std::_Tree_nod<std::_Tmap_traits<Lookup,Variations,std::less<Lookup>,std::allocator<std::pair<Lookup const ,Variations> >,0> >::_Node *>;
-template class std::allocator<std::pair<Lookup const ,Variations> >;
-template class std::vector<G3D::Vector3,std::allocator<G3D::Vector3> >;
-template class std::vector<unsigned short,std::allocator<unsigned short> >;
+namespace RBX { namespace ViewNew {
+// INFERRED: original global accesses at 009413c0 / 0097275c / 00972758.
+extern bool useBevels;
+extern bool buildingBevel;
+extern float currentBevel;
+G3D::ReferenceCountedPointer<RenderBase::Mesh> BrickMesh::create(const G3D::Vector3& size, RenderSurfaceTypes surfaceTypes, BrickColor color) {
+ Lookup lookup = {size, surfaceTypes, color};
+ boost::call_once(initCache, cacheFlag);
+ Cache* c = cache;
+ boost::recursive_mutex::scoped_lock lock(c->mutex);
+ Variations& variation = c->meshes[lookup];
+ size_t index = variation.count == 4 ? G3D::iRandom(0, 3) : std::min(3, G3D::iRandom(0, 8));
+ G3D::ReferenceCountedPointer<RenderBase::Mesh> thisMesh = variation.meshes[index];
+ if (thisMesh.isNull()) {
+  buildingBevel = false;
+  if (useBevels) {
+   currentBevel = 0.065f;
+   thisMesh = new BrickMesh(size, surfaceTypes, color, 0, 0, 0, 0.0f);
+   currentBevel = 0.0f;
+   buildingBevel = true;
+   dynamic_cast<BrickMesh*>(thisMesh.getPointer())->buildBevel(size, surfaceTypes, color);
+   buildingBevel = false;
+  } else {
+   currentBevel = 0.0f;
+   thisMesh = new BrickMesh(size, surfaceTypes, color, 0, 0, 0, 0.0f);
+  }
+  variation.meshes[index] = thisMesh;
+  variation.count++;
+  if (++c->count % 100 == 0) {
+   G3D::ReferenceCountedPointer<RenderBase::Mesh> keep = variation.meshes[index];
+   releaseUnused();
+  }
+ }
+ return thisMesh;
+}
+// INFERRED: helper name from donor; original uses seven-argument factory at 004e54e0.
+G3D::ReferenceCountedPointer<RenderBase::Mesh> createSpecialBrick(const G3D::Vector3& size, RenderSurfaceTypes surfaceTypes, BrickColor color, int a, int b, int c, float scale) {
+ G3D::ReferenceCountedPointer<RenderBase::Mesh> result;
+ buildingBevel = false;
+ if (useBevels) {
+  currentBevel = 0.065f;
+  result = new BrickMesh(size, surfaceTypes, color, a, b, c, scale);
+  currentBevel = 0.0f;
+  buildingBevel = true;
+  dynamic_cast<BrickMesh*>(result.getPointer())->buildBevel(size, surfaceTypes, color, a, b, c, scale);
+  buildingBevel = false;
+ } else {
+  currentBevel = 0.0f;
+  result = new BrickMesh(size, surfaceTypes, color, a, b, c, scale);
+ }
+ return result;
+}
+}}

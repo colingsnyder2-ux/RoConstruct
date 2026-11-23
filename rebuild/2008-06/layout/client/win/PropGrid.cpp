@@ -323,11 +323,12 @@ void XItem<T, GridItem, Descriptor>::applyValue(const T& value)
         const std::vector<const RBX::Reflection::ClassDescriptor*>::const_iterator end = classes.end();
         for (std::vector<const RBX::Reflection::ClassDescriptor*>::const_iterator it = classes.begin(); it != end; ++it) {
             const RBX::Reflection::ClassDescriptor* descriptor = *it;
-            RBX::SelectionGroup::iterator found = grid->groups.find(descriptor);
-            if (found == groupEnd)
-                continue;
-            for (std::vector<boost::shared_ptr<RBX::Instance> >::iterator i = found->second.begin(), iend = found->second.end(); i != iend; ++i)
-                instances.push_back(*i);
+            RBX::SelectionGroup& groups = grid->groups;
+            RBX::SelectionGroup::iterator found = groups.find(descriptor);
+            if (found != groupEnd) {
+                for (std::vector<boost::shared_ptr<RBX::Instance> >::iterator i = found->second.begin(), iend = found->second.end(); i != iend; ++i)
+                    instances.push_back(*i);
+            }
         }
         std::for_each(instances.begin(), instances.end(),
                       boost::bind(&XItem::writeValue, this, boost::bind(&boost::shared_ptr<RBX::Instance>::get, _1), value));

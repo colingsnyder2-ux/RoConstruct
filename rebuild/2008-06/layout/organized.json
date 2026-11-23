@@ -249,6 +249,42 @@
 "client/win/ChatPrompt.cpp",
 "inferred path"
 ],
+"00412ae0": [
+"client/win/ChildFrm.cpp",
+"inferred path"
+],
+"00412af0": [
+"client/win/ChildFrm.cpp",
+"inferred path"
+],
+"00412b00": [
+"client/win/ChildFrm.cpp",
+"inferred path"
+],
+"00412b40": [
+"client/win/ChildFrm.cpp",
+"inferred path"
+],
+"00412b80": [
+"client/win/ChildFrm.cpp",
+"inferred path"
+],
+"00412b90": [
+"client/win/ChildFrm.cpp",
+"inferred path"
+],
+"00412c50": [
+"client/win/ChildFrm.cpp",
+"inferred path"
+],
+"00412c90": [
+"client/win/ChildFrm.cpp",
+"inferred path"
+],
+"00412cf0": [
+"client/win/ChildFrm.cpp",
+"inferred path"
+],
 "00413490": [
 "client/app/v8datamodel/Commands.cpp",
 "merged unit, partial"
@@ -312,10 +348,6 @@
 "00416f10": [
 "client/win/DHTMLWindow.cpp",
 "merged unit, partial"
-],
-"00417360": [
-"client/app/script/ThreadRef.cpp",
-"inferred path"
 ],
 "004174b0": [
 "client/network/Replicator.cpp",
@@ -509,16 +541,300 @@
 "client/boost_1_34_1/libs/python/src/object/class.cpp",
 "merged unit, complete"
 ],
+"00420780": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00420790": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00420990": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00420c20": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00420db0": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00420ee0": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00420fb0": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00421080": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00421130": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00421240": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"004212f0": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00421410": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"004214a0": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00421620": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"004216a0": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00421740": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"004217c0": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00421940": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"004219f0": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00421a50": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00421bc0": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00421d00": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00421e70": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00421ed0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00421f00": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00422000": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00422030": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"004220d0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00422100": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"004221f0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00422220": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00422310": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00422340": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00422430": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00422460": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
 "004225b0": [
 "client/boost_1_34_1/libs/python/src/object/class.cpp",
 "merged unit, complete"
+],
+"00422640": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"004226e0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00422700": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00422720": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"004228b0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"004228f0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00422900": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00422930": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00422950": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00422960": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
 ],
 "00422ae0": [
 "client/app/v8tree/Instance.cpp",
 "merged unit, partial"
 ],
-"004259f0": [
-"client/app/v8tree/Instance.cpp",
+"00422e50": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"004230f0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00423240": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"004233d0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"004234d0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00423510": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00423c40": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00423d50": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00424600": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"004246d0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00424750": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00424eb0": [
+"client/app/v8datamodel/Selection.cpp",
+"merged unit, partial"
+],
+"00425810": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00425c90": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00425da0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"004265e0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00426640": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00426680": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00426780": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00426a80": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00426bd0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00426bf0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00426db0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00426ef0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"004270c0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"004271e0": [
+"client/win/RobloxTreeCtrl.cpp",
+"merged unit, partial"
+],
+"00427300": [
+"client/win/RobloxTreeCtrl.cpp",
 "merged unit, partial"
 ],
 "00427950": [
@@ -565,36 +881,152 @@
 "client/win/LuaHtmlView.cpp",
 "inferred path"
 ],
-"0042e6b0": [
+"0042e460": [
 "client/win/MainFrm.cpp",
 "merged unit, partial"
 ],
-"0042eac0": [
+"0042e570": [
 "client/win/MainFrm.cpp",
 "merged unit, partial"
 ],
-"0042eb20": [
+"0042e5e0": [
 "client/win/MainFrm.cpp",
 "merged unit, partial"
 ],
-"0042eb30": [
+"0042e610": [
 "client/win/MainFrm.cpp",
 "merged unit, partial"
 ],
-"0042fd50": [
+"0042eb40": [
 "client/win/MainFrm.cpp",
 "merged unit, partial"
 ],
-"0042fdd0": [
+"0042eb90": [
 "client/win/MainFrm.cpp",
 "merged unit, partial"
 ],
-"00430440": [
-"client/win/RobloxView.cpp",
+"0042ebc0": [
+"client/win/MainFrm.cpp",
 "merged unit, partial"
 ],
-"00430e10": [
-"client/app/v8datamodel/ToolsPart.cpp",
+"0042ec10": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"0042ece0": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"0042ed00": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"0042ee90": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"0042eec0": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"0042eef0": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"0042ef10": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"0042f9d0": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"0042fb20": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"0042fb80": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"0042fbb0": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"0042fbf0": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"0042fcf0": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"0042fe00": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"00430010": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"004300d0": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"00430160": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"004302b0": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"00430360": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"004309f0": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"00430b40": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"00430bd0": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"00430f50": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"004314c0": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"004314e0": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"00431b40": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"00431bf0": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"00431c40": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"00431ce0": [
+"client/win/MainFrm.cpp",
+"merged unit, partial"
+],
+"00431d00": [
+"client/win/MainFrm.cpp",
 "merged unit, partial"
 ],
 "00432950": [
@@ -777,14 +1209,6 @@
 "client/win/PropGrid.cpp",
 "merged unit, partial"
 ],
-"0043d710": [
-"client/win/PropGrid.cpp",
-"merged unit, partial"
-],
-"0043d790": [
-"client/win/PropGrid.cpp",
-"merged unit, partial"
-],
 "0043d890": [
 "client/win/PropGrid.cpp",
 "merged unit, partial"
@@ -802,10 +1226,6 @@
 "merged unit, partial"
 ],
 "0043dbf0": [
-"client/win/PropGrid.cpp",
-"merged unit, partial"
-],
-"0043e840": [
 "client/win/PropGrid.cpp",
 "merged unit, partial"
 ],
@@ -881,115 +1301,31 @@
 "client/app/v8datamodel/Value.cpp",
 "merged unit, partial"
 ],
-"00449650": [
+"00449fb0": [
 "client/win/Roblox.cpp",
 "merged unit, partial"
 ],
-"00449ae0": [
+"0044a010": [
 "client/win/Roblox.cpp",
 "merged unit, partial"
 ],
-"0044abd0": [
+"0044ad60": [
 "client/win/Roblox.cpp",
 "merged unit, partial"
 ],
-"0044ddd0": [
+"0044c3d0": [
 "client/win/Roblox.cpp",
 "merged unit, partial"
 ],
-"0044dde0": [
+"0044c440": [
 "client/win/Roblox.cpp",
 "merged unit, partial"
 ],
-"0044de10": [
+"0044d790": [
 "client/win/Roblox.cpp",
 "merged unit, partial"
 ],
-"0044deb0": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044dee0": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044dfa0": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044dfc0": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044e090": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044e2e0": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044e310": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044e370": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044e410": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044e460": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044e4a0": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044e500": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044e5a0": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044e5d0": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044e670": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044e6b0": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044e6e0": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044e730": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044e760": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044ec60": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044edf0": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
-"0044ee50": [
+"0044d810": [
 "client/win/Roblox.cpp",
 "merged unit, partial"
 ],
@@ -1029,6 +1365,10 @@
 "client/app/v8datamodel/Commands.cpp",
 "merged unit, partial"
 ],
+"0044f730": [
+"client/win/RobloxDoc.cpp",
+"merged unit, partial"
+],
 "004510f0": [
 "client/app/v8datamodel/Commands.cpp",
 "merged unit, partial"
@@ -1039,6 +1379,46 @@
 ],
 "004532d0": [
 "client/app/v8datamodel/Commands.cpp",
+"merged unit, partial"
+],
+"00455d50": [
+"client/win/RobloxReportView.cpp",
+"merged unit, partial"
+],
+"00455fd0": [
+"client/win/RobloxReportView.cpp",
+"merged unit, partial"
+],
+"00456250": [
+"client/win/RobloxReportView.cpp",
+"merged unit, partial"
+],
+"00456e60": [
+"client/win/RobloxReportView.cpp",
+"merged unit, partial"
+],
+"00457010": [
+"client/win/RobloxReportView.cpp",
+"merged unit, partial"
+],
+"00457a40": [
+"client/win/RobloxReportView.cpp",
+"merged unit, partial"
+],
+"004589c0": [
+"client/win/RobloxReportView.cpp",
+"merged unit, partial"
+],
+"00458b70": [
+"client/win/RobloxReportView.cpp",
+"merged unit, partial"
+],
+"00458e70": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"00458e80": [
+"client/win/RobloxView.cpp",
 "merged unit, partial"
 ],
 "00458ea0": [
@@ -1061,6 +1441,18 @@
 "client/win/RobloxView.cpp",
 "merged unit, partial"
 ],
+"00458fd0": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"004590a0": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"004590d0": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
 "00459120": [
 "client/win/RobloxView.cpp",
 "merged unit, partial"
@@ -1069,7 +1461,71 @@
 "client/win/RobloxView.cpp",
 "merged unit, partial"
 ],
+"00459170": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"004591e0": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"00459210": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"00459250": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"00459270": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"004592b0": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"00459390": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"004593b0": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"004597c0": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"004597f0": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"00459810": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"00459ba0": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"00459eb0": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"00459fd0": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"0045a2f0": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
 "0045a4a0": [
+"client/win/RobloxView.cpp",
+"merged unit, partial"
+],
+"0045ac20": [
 "client/win/RobloxView.cpp",
 "merged unit, partial"
 ],
@@ -1469,10 +1925,6 @@
 "client/win/ScintillaDocView.cpp",
 "inferred path"
 ],
-"00461fd0": [
-"client/win/ScintillaDocView.cpp",
-"inferred path"
-],
 "00462040": [
 "client/win/ScintillaDocView.cpp",
 "inferred path"
@@ -1541,13 +1993,165 @@
 "client/win/ScintillaDocView.cpp",
 "inferred path"
 ],
-"00463910": [
-"client/win/ObjectBrowser.cpp",
-"merged unit, partial"
+"004638b0": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"004638c0": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"004638d0": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00463930": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00463980": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"004639a0": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00463ed0": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00463f10": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00463f40": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00463f80": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00463fb0": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00463ff0": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00464040": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00464090": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"004640d0": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00464100": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00464140": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00464170": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"004641b0": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"004641e0": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00464270": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00464300": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"004643b0": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00464460": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"004644e0": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00464540": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00464590": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
 ],
 "00464750": [
 "client/app/v8datamodel/DataModel.cpp",
 "merged unit, partial"
+],
+"00464830": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00464960": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00465010": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00465160": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00465260": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00465500": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00465550": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"004657f0": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00465830": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"004659a0": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"004659f0": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
+],
+"00465a40": [
+"client/win/ScriptDoc.cpp",
+"inferred path"
 ],
 "00465a50": [
 "client/win/SecureHtmlView.cpp",
@@ -1571,6 +2175,110 @@
 ],
 "00465d70": [
 "client/win/SecureHtmlView.cpp",
+"inferred path"
+],
+"00465de0": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"00465df0": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"00465e00": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"00465e30": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"004661e0": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"00466260": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"00466310": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"004663c0": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"00466440": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"00466500": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"00466510": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"00466670": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"00466680": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"004666b0": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"00466700": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"00466880": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"00466940": [
+"client/win/SelectionCaption.cpp",
+"merged unit, complete"
+],
+"00466b60": [
+"client/win/SettingsDialog.cpp",
+"inferred path"
+],
+"00466b80": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00466b90": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00466c00": [
+"client/win/SettingsDialog.cpp",
+"inferred path"
+],
+"00466ca0": [
+"client/win/SettingsDialog.cpp",
+"inferred path"
+],
+"00466d40": [
+"client/win/InstanceExplorer.cpp",
+"merged unit, complete"
+],
+"00466e00": [
+"client/win/SettingsDialog.cpp",
+"inferred path"
+],
+"00466fa0": [
+"client/win/SettingsDialog.cpp",
+"inferred path"
+],
+"00467030": [
+"client/win/SettingsDialog.cpp",
 "inferred path"
 ],
 "00467530": [
@@ -1845,10 +2553,6 @@
 "client/network/Player.cpp",
 "merged unit, partial"
 ],
-"004925c0": [
-"client/network/Player.cpp",
-"merged unit, partial"
-],
 "004929c0": [
 "client/network/Player.cpp",
 "merged unit, partial"
@@ -1909,12 +2613,80 @@
 "client/network/Player.cpp",
 "merged unit, partial"
 ],
+"00495e60": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"00495e80": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"00495eb0": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"00495f30": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"00495fc0": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"00496510": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"00496680": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"004968f0": [
+"client/network/Client.cpp",
+"merged unit, partial"
+],
+"00496cf0": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"00496e20": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"00496eb0": [
+"client/network/Player.cpp",
+"merged unit, partial"
+],
+"00496ed0": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
 "00497600": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"00497ec0": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"00497f30": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"00497f40": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"00498250": [
 "client/network/Players.cpp",
 "merged unit, partial"
 ],
 "00498770": [
 "client/network/Player.cpp",
+"merged unit, partial"
+],
+"004987f0": [
+"client/network/Players.cpp",
 "merged unit, partial"
 ],
 "00498850": [
@@ -1923,6 +2695,10 @@
 ],
 "00498900": [
 "client/network/Player.cpp",
+"merged unit, partial"
+],
+"00498a60": [
+"client/network/Players.cpp",
 "merged unit, partial"
 ],
 "00498f00": [
@@ -1941,8 +2717,16 @@
 "client/network/Player.cpp",
 "merged unit, partial"
 ],
+"004993c0": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
 "00499520": [
 "client/network/Player.cpp",
+"merged unit, partial"
+],
+"00499630": [
+"client/network/Players.cpp",
 "merged unit, partial"
 ],
 "004999b0": [
@@ -1957,13 +2741,61 @@
 "client/network/Player.cpp",
 "merged unit, partial"
 ],
+"0049a8a0": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"0049a910": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"0049a9b0": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"0049ac80": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"0049aca0": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"0049af70": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"0049b9b0": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
 "0049bc40": [
 "client/network/Player.cpp",
+"merged unit, partial"
+],
+"0049bdc0": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"0049d450": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"0049daa0": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"0049df50": [
+"client/network/Players.cpp",
 "merged unit, partial"
 ],
 "0049e500": [
 "client/network/CrashReporter.cpp",
 "inferred path"
+],
+"0049f0f0": [
+"client/network/Client.cpp",
+"merged unit, partial"
 ],
 "0049f180": [
 "client/network/Client.cpp",
@@ -1980,6 +2812,10 @@
 "004a1b50": [
 "client/app/v8datamodel/Message.cpp",
 "merged unit, complete"
+],
+"004a2030": [
+"client/network/server.cpp",
+"merged unit, partial"
 ],
 "004a3980": [
 "client/app/v8datamodel/Message.cpp",
@@ -2002,8 +2838,8 @@
 "merged unit, complete"
 ],
 "004a40d0": [
-"client/network/Server.cpp",
-"inferred path"
+"client/network/server.cpp",
+"merged unit, partial"
 ],
 "004a4d40": [
 "client/app/v8datamodel/Message.cpp",
@@ -2233,6 +3069,10 @@
 "client/network/raknet30/source/RakPeer.cpp",
 "merged unit, partial"
 ],
+"004bbef0": [
+"client/network/raknet30/source/RakPeer.cpp",
+"merged unit, partial"
+],
 "004bbf00": [
 "client/network/raknet30/source/RakPeer.cpp",
 "merged unit, partial"
@@ -2261,6 +3101,10 @@
 "client/network/raknet30/source/RakPeer.cpp",
 "merged unit, partial"
 ],
+"004bcef0": [
+"client/network/raknet30/source/RakPeer.cpp",
+"merged unit, partial"
+],
 "004bcf30": [
 "client/network/raknet30/source/RakPeer.cpp",
 "merged unit, partial"
@@ -2286,6 +3130,10 @@
 "merged unit, partial"
 ],
 "004bfee0": [
+"client/network/raknet30/source/RakPeer.cpp",
+"merged unit, partial"
+],
+"004c0420": [
 "client/network/raknet30/source/RakPeer.cpp",
 "merged unit, partial"
 ],
@@ -2329,6 +3177,10 @@
 "client/network/raknet30/source/RakPeer.cpp",
 "merged unit, partial"
 ],
+"004c99c0": [
+"client/network/RoundRobinPhysicsSender.cpp",
+"inferred path"
+],
 "004c9ac0": [
 "client/app/util/name.cpp",
 "merged unit, partial"
@@ -2353,18 +3205,6 @@
 "client/app/util/name.cpp",
 "merged unit, partial"
 ],
-"004cbc10": [
-"client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"004cc210": [
-"client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"004ccc30": [
-"client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
 "004cd300": [
 "client/app/util/name.cpp",
 "merged unit, partial"
@@ -2381,7 +3221,63 @@
 "client/app/util/name.cpp",
 "merged unit, partial"
 ],
+"004ce570": [
+"client/network/raknet30/source/SocketLayer.cpp",
+"merged unit, complete"
+],
+"004ce680": [
+"client/network/raknet30/source/SocketLayer.cpp",
+"merged unit, complete"
+],
+"004ce6b0": [
+"client/network/raknet30/source/SocketLayer.cpp",
+"merged unit, complete"
+],
+"004ce780": [
+"client/network/raknet30/source/SocketLayer.cpp",
+"merged unit, complete"
+],
+"004ce800": [
+"client/network/raknet30/source/SocketLayer.cpp",
+"merged unit, complete"
+],
+"004ce830": [
+"client/network/raknet30/source/SocketLayer.cpp",
+"merged unit, complete"
+],
+"004ce8c0": [
+"client/network/raknet30/source/SocketLayer.cpp",
+"merged unit, complete"
+],
+"004ce940": [
+"client/network/raknet30/source/SocketLayer.cpp",
+"merged unit, complete"
+],
+"004ce980": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
+"004ce9d0": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
+"004ce9f0": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
 "004cea00": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
+"004cea10": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
+"004ceb60": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
+"004cec00": [
 "client/network/raknet30/source/ReliabilityLayer.cpp",
 "merged unit, partial"
 ],
@@ -2413,7 +3309,19 @@
 "client/network/raknet30/source/ReliabilityLayer.cpp",
 "merged unit, partial"
 ],
+"004cefc0": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
+"004cf0c0": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
 "004cf7f0": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
+"004cfc90": [
 "client/network/raknet30/source/ReliabilityLayer.cpp",
 "merged unit, partial"
 ],
@@ -2422,6 +3330,38 @@
 "merged unit, partial"
 ],
 "004d0620": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
+"004d1680": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
+"004d1940": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
+"004d24e0": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
+"004d25d0": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
+"004d2780": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
+"004d3610": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
+"004d3b40": [
+"client/network/raknet30/source/ReliabilityLayer.cpp",
+"merged unit, partial"
+],
+"004d3c70": [
 "client/network/raknet30/source/ReliabilityLayer.cpp",
 "merged unit, partial"
 ],
@@ -2437,9 +3377,17 @@
 "client/network/raknet30/source/CheckSum.cpp",
 "inferred path"
 ],
+"004d6f50": [
+"client/rendering/renderlib/Chunk.cpp",
+"merged unit, partial"
+],
 "004d6ff0": [
 "client/app/v8datamodel/Lighting.cpp",
 "merged unit, complete"
+],
+"004d7320": [
+"client/rendering/renderlib/Chunk.cpp",
+"merged unit, partial"
 ],
 "004d7460": [
 "client/rbxview/MaterialFactory.cpp",
@@ -2453,12 +3401,28 @@
 "client/rendering/g3d/g3dcpp/Vector3.cpp",
 "merged unit, partial"
 ],
+"004d7db0": [
+"client/rendering/renderlib/Chunk.cpp",
+"merged unit, partial"
+],
 "004d7dc0": [
 "client/rendering/g3d/g3dcpp/Vector3.cpp",
 "merged unit, partial"
 ],
 "004d7e30": [
 "client/rendering/g3d/g3dcpp/Vector3.cpp",
+"merged unit, partial"
+],
+"004d8310": [
+"client/rendering/renderlib/Chunk.cpp",
+"merged unit, partial"
+],
+"004d8320": [
+"client/rendering/renderlib/Chunk.cpp",
+"merged unit, partial"
+],
+"004d8380": [
+"client/rendering/renderlib/Chunk.cpp",
 "merged unit, partial"
 ],
 "004d83e0": [
@@ -2565,6 +3529,18 @@
 "client/rendering/g3d/g3dcpp/Vector3.cpp",
 "merged unit, partial"
 ],
+"004e54e0": [
+"client/rbxview/BrickMesh.cpp",
+"merged unit, partial"
+],
+"004e58b0": [
+"client/rbxview/BrickMesh.cpp",
+"merged unit, partial"
+],
+"004e5b60": [
+"client/rendering/renderlib/Chunk.cpp",
+"merged unit, partial"
+],
 "004e5c10": [
 "client/rendering/g3d/g3dcpp/Vector3.cpp",
 "merged unit, partial"
@@ -2669,12 +3645,24 @@
 "client/rendering/g3d/g3dcpp/Vector3.cpp",
 "merged unit, partial"
 ],
+"004e7a20": [
+"client/rendering/renderlib/Chunk.cpp",
+"merged unit, partial"
+],
 "004e7ad0": [
 "client/rendering/g3d/g3dcpp/Vector3.cpp",
 "merged unit, partial"
 ],
 "004e7cd0": [
 "client/rendering/g3d/g3dcpp/Vector3.cpp",
+"merged unit, partial"
+],
+"004e8160": [
+"client/rendering/renderlib/Chunk.cpp",
+"merged unit, partial"
+],
+"004e81d0": [
+"client/rendering/renderlib/Chunk.cpp",
 "merged unit, partial"
 ],
 "004e8690": [
@@ -2853,93 +3841,97 @@
 "client/rendering/g3d/g3dcpp/Vector3.cpp",
 "merged unit, partial"
 ],
+"004f08b0": [
+"client/rendering/renderlib/Chunk.cpp",
+"merged unit, partial"
+],
 "004f1eb0": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f2030": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f2110": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f2490": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f2810": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f2b80": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f2ef0": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f3260": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f3650": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f3930": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f3c10": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f3ef0": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f41d0": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f44b0": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f4790": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f47f0": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f4850": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f48b0": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f4910": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f4970": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f49d0": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004f4b20": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "004fdaf0": [
 "client/rendering/g3d/g3dcpp/ReferenceCount.cpp",
@@ -3240,6 +4232,38 @@
 "00518e80": [
 "client/rendering/g3d/g3dcpp/Sphere.cpp",
 "inferred path"
+],
+"005197b0": [
+"client/rendering/g3d/g3dcpp/BinaryOutput.cpp",
+"merged unit, complete"
+],
+"00519810": [
+"client/rendering/g3d/g3dcpp/BinaryOutput.cpp",
+"merged unit, complete"
+],
+"00519830": [
+"client/rendering/g3d/g3dcpp/BinaryOutput.cpp",
+"merged unit, complete"
+],
+"005198d0": [
+"client/rendering/g3d/g3dcpp/BinaryOutput.cpp",
+"merged unit, complete"
+],
+"00519950": [
+"client/rendering/g3d/g3dcpp/BinaryOutput.cpp",
+"merged unit, complete"
+],
+"005199b0": [
+"client/rendering/g3d/g3dcpp/BinaryOutput.cpp",
+"merged unit, complete"
+],
+"00519a30": [
+"client/rendering/g3d/g3dcpp/BinaryOutput.cpp",
+"merged unit, complete"
+],
+"00519a90": [
+"client/rendering/g3d/g3dcpp/BinaryOutput.cpp",
+"merged unit, complete"
 ],
 "0051e9d0": [
 "client/rendering/g3d/ijg/jerror.c",
@@ -4081,6 +5105,10 @@
 "client/app/v8tree/Instance.cpp",
 "merged unit, partial"
 ],
+"00559920": [
+"client/app/v8tree/Instance.cpp",
+"merged unit, partial"
+],
 "0055a540": [
 "client/app/v8tree/Instance.cpp",
 "merged unit, partial"
@@ -4405,30 +5433,6 @@
 "client/app/v8datamodel/Selection.cpp",
 "merged unit, partial"
 ],
-"00569920": [
-"client/app/util/Http.cpp",
-"merged unit, partial"
-],
-"00569a40": [
-"client/app/util/Http.cpp",
-"merged unit, partial"
-],
-"00569ae0": [
-"client/app/util/Http.cpp",
-"merged unit, partial"
-],
-"0056a040": [
-"client/app/util/Http.cpp",
-"merged unit, partial"
-],
-"0056a160": [
-"client/app/util/Http.cpp",
-"merged unit, partial"
-],
-"0056a2e0": [
-"client/app/util/Http.cpp",
-"merged unit, partial"
-],
 "0056a560": [
 "client/app/util/Debug.cpp",
 "inferred path"
@@ -4569,19 +5573,27 @@
 "client/app/v8tree/Service.cpp",
 "merged unit, complete"
 ],
-"00573310": [
+"00573190": [
 "client/app/gui/GUI.cpp",
 "merged unit, partial"
 ],
-"00573530": [
+"005731d0": [
 "client/app/gui/GUI.cpp",
 "merged unit, partial"
 ],
-"005735a0": [
+"00573210": [
 "client/app/gui/GUI.cpp",
 "merged unit, partial"
 ],
-"005735c0": [
+"00573290": [
+"client/app/gui/GUI.cpp",
+"merged unit, partial"
+],
+"005732f0": [
+"client/app/gui/GUI.cpp",
+"merged unit, partial"
+],
+"00573480": [
 "client/app/gui/GUI.cpp",
 "merged unit, partial"
 ],
@@ -4597,44 +5609,32 @@
 "client/app/gui/GUI.cpp",
 "merged unit, partial"
 ],
-"00573960": [
+"005738e0": [
 "client/app/gui/GUI.cpp",
 "merged unit, partial"
 ],
-"00573e30": [
+"005739d0": [
 "client/app/gui/GUI.cpp",
 "merged unit, partial"
 ],
-"00573f30": [
+"00573ac0": [
 "client/app/gui/GUI.cpp",
 "merged unit, partial"
 ],
-"00574050": [
+"005746a0": [
 "client/app/gui/GUI.cpp",
 "merged unit, partial"
 ],
-"00574170": [
+"00574980": [
 "client/app/gui/GUI.cpp",
 "merged unit, partial"
 ],
-"00574280": [
+"00574b10": [
 "client/app/gui/GUI.cpp",
 "merged unit, partial"
 ],
-"00574300": [
-"client/app/gui/GUI.cpp",
-"merged unit, partial"
-],
-"00574330": [
-"client/app/gui/GUI.cpp",
-"merged unit, partial"
-],
-"00574400": [
-"client/app/gui/GUI.cpp",
-"merged unit, partial"
-],
-"00574bf0": [
-"client/app/gui/GUI.cpp",
+"005756e0": [
+"client/app/v8datamodel/DataModel.cpp",
 "merged unit, partial"
 ],
 "005757d0": [
@@ -4653,10 +5653,6 @@
 "client/app/v8tree/Instance.cpp",
 "merged unit, partial"
 ],
-"0057a9f0": [
-"client/app/v8datamodel/DataModel.cpp",
-"merged unit, partial"
-],
 "0057c100": [
 "client/app/v8datamodel/DataModel.cpp",
 "merged unit, partial"
@@ -4670,6 +5666,10 @@
 "merged unit, partial"
 ],
 "0057c2b0": [
+"client/app/v8xml/XmlElement.cpp",
+"merged unit, partial"
+],
+"0057c2d0": [
 "client/app/v8xml/XmlElement.cpp",
 "merged unit, partial"
 ],
@@ -4711,6 +5711,14 @@
 ],
 "0057dee0": [
 "client/app/util/Extents.cpp",
+"merged unit, complete"
+],
+"0057dfd0": [
+"client/app/v8tree/Verb.cpp",
+"merged unit, complete"
+],
+"0057e050": [
+"client/app/v8tree/Verb.cpp",
 "merged unit, complete"
 ],
 "0057e330": [
@@ -4787,15 +5795,19 @@
 ],
 "00583210": [
 "client/app/v8tree/Verb.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "005832c0": [
 "client/app/v8tree/Verb.cpp",
-"merged unit, partial"
+"merged unit, complete"
+],
+"005833e0": [
+"client/app/v8tree/Verb.cpp",
+"merged unit, complete"
 ],
 "00583460": [
 "client/app/v8tree/Verb.cpp",
-"merged unit, partial"
+"merged unit, complete"
 ],
 "00583520": [
 "client/app/v8datamodel/ModelInstance.cpp",
@@ -4818,6 +5830,10 @@
 "merged unit, partial"
 ],
 "00591d80": [
+"client/app/v8xml/SerializerV2.cpp",
+"merged unit, partial"
+],
+"00592180": [
 "client/app/v8xml/SerializerV2.cpp",
 "merged unit, partial"
 ],
@@ -4845,6 +5861,10 @@
 "client/app/v8xml/SerializerV2.cpp",
 "merged unit, partial"
 ],
+"00592fd0": [
+"client/app/v8xml/SerializerV2.cpp",
+"merged unit, partial"
+],
 "005930c0": [
 "client/app/v8xml/SerializerV2.cpp",
 "merged unit, partial"
@@ -4852,10 +5872,6 @@
 "00593170": [
 "client/app/v8xml/SerializerV2.cpp",
 "merged unit, partial"
-],
-"005947f0": [
-"client/app/script/ThreadRef.cpp",
-"inferred path"
 ],
 "00594e20": [
 "client/boost_1_34_1/libs/signals/src/trackable.cpp",
@@ -4989,135 +6005,107 @@
 "client/app/v8datamodel/Decal.cpp",
 "merged unit, partial"
 ],
-"00598ad0": [
+"00598b60": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00598bf0": [
+"00598d20": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00598c60": [
+"00598d70": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00598c70": [
+"00598d90": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00598c90": [
+"00599190": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00598d10": [
+"00599250": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00598d40": [
+"00599360": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00599fa0": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00598d50": [
+"0059a760": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00598de0": [
+"0059b4f0": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00599220": [
+"0059bc70": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"005993e0": [
+"0059c490": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"005994c0": [
+"0059cc70": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00599530": [
+"0059d130": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"005995f0": [
+"0059d370": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00599640": [
+"0059db90": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00599690": [
+"0059dd20": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00599730": [
+"0059dd50": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00599770": [
+"0059ddc0": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"005997c0": [
+"0059deb0": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"005997f0": [
+"0059dee0": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00599890": [
+"0059df40": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00599eb0": [
+"0059e090": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"00599f80": [
+"0059e3d0": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059a040": [
+"0059e430": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"0059aa40": [
-"client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059aa90": [
-"client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059aae0": [
-"client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059ab80": [
-"client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059abb0": [
-"client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059abe0": [
-"client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059b4d0": [
-"client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059bbf0": [
-"client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059de20": [
+"0059e4d0": [
 "client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
@@ -5357,169 +6345,45 @@
 "client/app/script/ScriptContext.cpp",
 "merged unit, partial"
 ],
-"005b0820": [
+"005b0840": [
 "client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
-"005b0830": [
+"005b08a0": [
 "client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
-"005b0920": [
+"005b0b70": [
 "client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
-"005b0940": [
+"005b10a0": [
 "client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
-"005b0970": [
+"005b1480": [
 "client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b09c0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b09e0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b0a00": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b0a60": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b0bd0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b0d90": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b0da0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b0fa0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b1020": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b1110": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b1190": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b1230": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b1310": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b1370": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b13d0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b1520": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b15e0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b16d0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b16e0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b1700": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b1950": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b19c0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b1a30": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b1b00": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b1bd0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b1d70": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b1e50": [
 "client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
-"005b1fc0": [
+"005b25f0": [
 "client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
-"005b2140": [
+"005b2750": [
 "client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
-"005b2230": [
+"005b28d0": [
 "client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
-"005b23f0": [
+"005b2a40": [
 "client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b24e0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b2510": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b2700": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b2bb0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"005b2d10": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
+"merged unit, partial"
 ],
 "005b2f20": [
 "client/app/v8datamodel/BrickColor.cpp",
@@ -5665,6 +6529,10 @@
 "client/app/v8datamodel/ToolsPart.cpp",
 "merged unit, partial"
 ],
+"005b7680": [
+"client/app/util/Sound.cpp",
+"merged unit, partial"
+],
 "005b8150": [
 "client/app/v8tree/enumproperty.cpp",
 "merged unit, partial"
@@ -5685,11 +6553,19 @@
 "client/app/util/Sound.cpp",
 "merged unit, partial"
 ],
+"005bc480": [
+"client/app/util/Sound.cpp",
+"merged unit, partial"
+],
 "005bc5b0": [
 "client/app/util/Sound.cpp",
 "merged unit, partial"
 ],
 "005bc610": [
+"client/app/util/Sound.cpp",
+"merged unit, partial"
+],
+"005bc670": [
 "client/app/util/Sound.cpp",
 "merged unit, partial"
 ],
@@ -5899,7 +6775,7 @@
 ],
 "005ceea0": [
 "client/app/util/Rect.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "005cf160": [
 "client/app/v8datamodel/Hopper.cpp",
@@ -6245,71 +7121,183 @@
 "client/app/v8datamodel/Teams.cpp",
 "merged unit, partial"
 ],
-"005d75a0": [
+"005d74d0": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"005d79b0": [
+"005d7510": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"005d8a10": [
+"005d7520": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"005d8b10": [
+"005d7530": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"005d8c10": [
+"005d7540": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"005d8d10": [
+"005d7550": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"005d8e10": [
+"005d7670": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"005d8f10": [
+"005d76a0": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"005d9210": [
+"005d76d0": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"005dbf40": [
+"005d7750": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"005dc150": [
+"005d77d0": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"005dc2f0": [
+"005d7830": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"005dc3d0": [
+"005d7890": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"005dc480": [
+"005d7a30": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"005dc540": [
+"005d7b60": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"005dc600": [
+"005d7bf0": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"005dca00": [
+"005d7c30": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005d7fe0": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005d80c0": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005d80e0": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005d9a20": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005d9bb0": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005d9bf0": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005d9c10": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005da290": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005dab50": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005dac60": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005dad30": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005dae00": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005daeb0": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005dafa0": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005db040": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005db0f0": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005db280": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005db4c0": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005db560": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005db600": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005db960": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005dbe70": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005dbf10": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005dbf80": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005dc0c0": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005dc230": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005dc270": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"005dc2b0": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
@@ -6357,11 +7345,67 @@
 "client/app/v8datamodel/Message.cpp",
 "merged unit, complete"
 ],
+"005dd550": [
+"client/app/util/quaternion.cpp",
+"merged unit, complete"
+],
+"005dd570": [
+"client/app/util/quaternion.cpp",
+"merged unit, complete"
+],
+"005dd6d0": [
+"client/app/util/quaternion.cpp",
+"merged unit, complete"
+],
 "005df270": [
 "client/app/util/Math.cpp",
 "merged unit, partial"
 ],
+"005df4d0": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005df500": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005df530": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005df560": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005df5c0": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
 "005df740": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e0020": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e01b0": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e02d0": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e04c0": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e0650": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e0690": [
 "client/app/v8datamodel/Lighting.cpp",
 "merged unit, complete"
 ],
@@ -6377,7 +7421,59 @@
 "client/app/v8datamodel/Lighting.cpp",
 "merged unit, complete"
 ],
+"005e0c20": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e1170": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e1380": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e1a40": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e1d60": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e2030": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e2100": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e2160": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e2260": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
 "005e2490": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e2540": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e2570": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e26e0": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"005e2730": [
 "client/app/v8datamodel/Lighting.cpp",
 "merged unit, complete"
 ],
@@ -6457,10 +7553,6 @@
 "client/app/v8world/Primitive.cpp",
 "merged unit, partial"
 ],
-"005e7850": [
-"client/app/v8world/Primitive.cpp",
-"merged unit, partial"
-],
 "005e7ba0": [
 "client/app/v8world/Primitive.cpp",
 "merged unit, partial"
@@ -6525,6 +7617,22 @@
 "client/app/util/name.cpp",
 "merged unit, partial"
 ],
+"005eb290": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"005eb300": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"005eb3d0": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"005eb4a0": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
 "005ec9f0": [
 "client/app/v8datamodel/Surfaces.cpp",
 "merged unit, partial"
@@ -6537,9 +7645,21 @@
 "client/app/v8datamodel/Surfaces.cpp",
 "merged unit, partial"
 ],
+"005ecc50": [
+"client/app/v8datamodel/Surfaces.cpp",
+"merged unit, partial"
+],
+"005ef400": [
+"client/app/v8datamodel/FaceInstance.cpp",
+"merged unit, complete"
+],
 "005ef520": [
 "client/app/v8datamodel/Feature.cpp",
 "merged unit, partial"
+],
+"005ef530": [
+"client/app/v8datamodel/FaceInstance.cpp",
+"merged unit, complete"
 ],
 "005f1290": [
 "client/app/v8datamodel/Surface.cpp",
@@ -6573,17 +7693,17 @@
 "client/app/util/Timer.cpp",
 "inferred path"
 ],
-"005f9440": [
-"client/app/util/Http.cpp",
-"merged unit, partial"
-],
-"005f9c30": [
-"client/app/util/Http.cpp",
-"merged unit, partial"
+"005fa770": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
 ],
 "005faa50": [
 "client/app/v8kernel/Kernel.cpp",
 "merged unit, partial"
+],
+"005fabc0": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
 ],
 "005fb160": [
 "client/app/v8kernel/Kernel.cpp",
@@ -6602,6 +7722,10 @@
 "merged unit, partial"
 ],
 "005fdaf0": [
+"client/app/v8datamodel/tool.cpp",
+"merged unit, partial"
+],
+"005fdbc0": [
 "client/app/v8datamodel/tool.cpp",
 "merged unit, partial"
 ],
@@ -6637,6 +7761,10 @@
 "client/app/v8datamodel/tool.cpp",
 "merged unit, partial"
 ],
+"00601050": [
+"client/app/gui/GUI.cpp",
+"merged unit, partial"
+],
 "00601c50": [
 "client/app/gui/ChatWidget.cpp",
 "merged unit, complete"
@@ -6647,6 +7775,10 @@
 ],
 "00606100": [
 "client/app/v8kernel/Connector.cpp",
+"merged unit, partial"
+],
+"00606230": [
+"client/app/v8world/Contact.cpp",
 "merged unit, partial"
 ],
 "00606250": [
@@ -6683,6 +7815,10 @@
 ],
 "00606bc0": [
 "client/app/v8world/Primitive.cpp",
+"merged unit, partial"
+],
+"00606d10": [
+"client/app/v8world/Contact.cpp",
 "merged unit, partial"
 ],
 "00606e00": [
@@ -6754,6 +7890,10 @@
 "merged unit, partial"
 ],
 "00608fa0": [
+"client/app/v8datamodel/PVInstance.cpp",
+"merged unit, partial"
+],
+"006090c0": [
 "client/app/v8datamodel/PVInstance.cpp",
 "merged unit, partial"
 ],
@@ -6933,62 +8073,6 @@
 "client/app/v8datamodel/Feature.cpp",
 "merged unit, partial"
 ],
-"0060cae0": [
-"client/app/v8world/ContactManager.cpp",
-"merged unit, partial"
-],
-"0060cb50": [
-"client/app/v8world/ContactManager.cpp",
-"merged unit, partial"
-],
-"0060cb60": [
-"client/app/v8world/ContactManager.cpp",
-"merged unit, partial"
-],
-"0060cb90": [
-"client/app/v8world/ContactManager.cpp",
-"merged unit, partial"
-],
-"0060cbc0": [
-"client/app/v8world/ContactManager.cpp",
-"merged unit, partial"
-],
-"0060d200": [
-"client/app/v8world/ContactManager.cpp",
-"merged unit, partial"
-],
-"0060d630": [
-"client/app/v8world/ContactManager.cpp",
-"merged unit, partial"
-],
-"0060d770": [
-"client/app/v8world/ContactManager.cpp",
-"merged unit, partial"
-],
-"0060d8b0": [
-"client/app/v8world/ContactManager.cpp",
-"merged unit, partial"
-],
-"0060d8e0": [
-"client/app/v8world/ContactManager.cpp",
-"merged unit, partial"
-],
-"0060db10": [
-"client/app/v8world/ContactManager.cpp",
-"merged unit, partial"
-],
-"0060dba0": [
-"client/app/v8world/ContactManager.cpp",
-"merged unit, partial"
-],
-"0060dc10": [
-"client/app/v8world/ContactManager.cpp",
-"merged unit, partial"
-],
-"0060dcd0": [
-"client/app/v8world/ContactManager.cpp",
-"merged unit, partial"
-],
 "0060dd60": [
 "client/app/tool/MegaDragger.cpp",
 "merged unit, complete"
@@ -7033,14 +8117,6 @@
 "client/app/tool/MegaDragger.cpp",
 "merged unit, complete"
 ],
-"0060ec60": [
-"client/app/tool/DragUtilities.cpp",
-"merged unit, complete"
-],
-"0060ecd0": [
-"client/app/tool/DragUtilities.cpp",
-"merged unit, complete"
-],
 "0060f3e0": [
 "client/app/util/Extents.cpp",
 "merged unit, complete"
@@ -7078,6 +8154,10 @@
 "merged unit, complete"
 ],
 "0060fea0": [
+"client/app/tool/Dragger.cpp",
+"merged unit, complete"
+],
+"0060fef0": [
 "client/app/tool/Dragger.cpp",
 "merged unit, complete"
 ],
@@ -7129,93 +8209,129 @@
 "client/app/tool/Dragger.cpp",
 "merged unit, complete"
 ],
+"00612fb0": [
+"client/app/v8kernel/SimBody.cpp",
+"merged unit, partial"
+],
 "00613cb0": [
 "client/app/v8kernel/Link.cpp",
 "merged unit, partial"
 ],
+"00613cc0": [
+"client/app/v8kernel/Link.cpp",
+"merged unit, partial"
+],
+"00613d20": [
+"client/app/v8kernel/Link.cpp",
+"merged unit, partial"
+],
+"00613d60": [
+"client/app/v8kernel/Link.cpp",
+"merged unit, partial"
+],
+"00613da0": [
+"client/app/v8kernel/Link.cpp",
+"merged unit, partial"
+],
+"00613e80": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00613ef0": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00613f20": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00613f40": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00613f70": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00613fb0": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00614040": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"006140b0": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00614110": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00614200": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"006142d0": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00614380": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00614400": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00614480": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"006144e0": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00614560": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"006145e0": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00614670": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00614b40": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00614bb0": [
+"client/app/v8kernel/Body.cpp",
+"merged unit, complete"
+],
+"00614be0": [
+"client/app/v8world/IMoving.cpp",
+"merged unit, complete"
+],
+"00614c20": [
+"client/app/v8world/IMoving.cpp",
+"merged unit, complete"
+],
+"00614cc0": [
+"client/app/v8world/IMoving.cpp",
+"merged unit, complete"
+],
+"00614d50": [
+"client/app/v8world/IMoving.cpp",
+"merged unit, complete"
+],
 "00614f80": [
 "client/app/v8world/Controller.cpp",
 "inferred path"
-],
-"00615780": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"006157a0": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"00615820": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"00615830": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"00615880": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"006158f0": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"00615940": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"006159f0": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"00615a50": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"00615b60": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"00615c30": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"00615cc0": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"00615d00": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"00615d40": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"00615d90": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"00615f90": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"00616000": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"00616080": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"006160b0": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
-],
-"00616c90": [
-"client/app/v8datamodel/MouseCommand.cpp",
-"merged unit, partial"
 ],
 "00618380": [
 "client/app/v8datamodel/Flag.cpp",
@@ -7317,6 +8433,10 @@
 "client/app/v8datamodel/Explosion.cpp",
 "merged unit, partial"
 ],
+"00629bb0": [
+"client/app/v8kernel/SimBody.cpp",
+"merged unit, partial"
+],
 "00629c60": [
 "client/app/v8datamodel/Explosion.cpp",
 "merged unit, partial"
@@ -7373,15 +8493,7 @@
 "client/app/v8datamodel/Explosion.cpp",
 "merged unit, partial"
 ],
-"0062b8f0": [
-"client/app/v8datamodel/FlagStand.cpp",
-"merged unit, partial"
-],
-"0062b900": [
-"client/app/v8datamodel/FlagStand.cpp",
-"merged unit, partial"
-],
-"0062cdc0": [
+"0062bfc0": [
 "client/app/v8datamodel/FlagStand.cpp",
 "merged unit, partial"
 ],
@@ -7769,13 +8881,17 @@
 "client/app/tool/ToolsSurface.cpp",
 "merged unit, partial"
 ],
-"006432e0": [
-"client/app/humanoid/HumanoidState.cpp",
-"inferred path"
+"00642690": [
+"client/app/gui/GuiDraw.cpp",
+"merged unit, partial"
 ],
-"00643360": [
-"client/app/humanoid/HumanoidState.cpp",
-"inferred path"
+"006426f0": [
+"client/app/gui/GuiDraw.cpp",
+"merged unit, partial"
+],
+"00642750": [
+"client/app/gui/GuiDraw.cpp",
+"merged unit, partial"
 ],
 "00644670": [
 "client/app/humanoid/Humanoid.cpp",
@@ -7881,9 +8997,93 @@
 "client/app/v8world/mutiljoint.cpp",
 "inferred path"
 ],
+"00646b60": [
+"client/app/v8world/GlueJoint.cpp",
+"merged unit, partial"
+],
+"00646c10": [
+"client/app/v8world/GlueJoint.cpp",
+"merged unit, partial"
+],
+"00646f60": [
+"client/app/v8world/GlueJoint.cpp",
+"merged unit, partial"
+],
+"00647760": [
+"client/app/v8world/Block.cpp",
+"merged unit, partial"
+],
+"006477b0": [
+"client/app/v8world/Block.cpp",
+"merged unit, partial"
+],
+"006478f0": [
+"client/app/v8world/Block.cpp",
+"merged unit, partial"
+],
+"00647900": [
+"client/app/v8world/Block.cpp",
+"merged unit, partial"
+],
+"00647990": [
+"client/app/v8world/Block.cpp",
+"merged unit, partial"
+],
+"00647ab0": [
+"client/app/v8world/Block.cpp",
+"merged unit, partial"
+],
+"00647b90": [
+"client/app/v8world/Block.cpp",
+"merged unit, partial"
+],
+"00647d10": [
+"client/app/v8world/Block.cpp",
+"merged unit, partial"
+],
+"00647e70": [
+"client/app/v8world/Block.cpp",
+"merged unit, partial"
+],
+"00647f40": [
+"client/app/v8world/Block.cpp",
+"merged unit, partial"
+],
+"006480b0": [
+"client/app/v8world/Block.cpp",
+"merged unit, partial"
+],
+"00648270": [
+"client/app/v8world/Block.cpp",
+"merged unit, partial"
+],
+"00648960": [
+"client/app/v8world/Block.cpp",
+"merged unit, partial"
+],
+"00648fd0": [
+"client/app/v8world/Block.cpp",
+"merged unit, partial"
+],
+"006490b0": [
+"client/app/v8world/Block.cpp",
+"merged unit, partial"
+],
+"006497e0": [
+"client/app/util/Face.cpp",
+"merged unit, complete"
+],
 "00649920": [
 "client/app/util/Face.cpp",
-"merged unit, partial"
+"merged unit, complete"
+],
+"00649970": [
+"client/app/util/Face.cpp",
+"merged unit, complete"
+],
+"00649af0": [
+"client/app/util/Face.cpp",
+"merged unit, complete"
 ],
 "0064a550": [
 "client/app/v8world/sleepstage2.cpp",
@@ -7924,6 +9124,10 @@
 "0064ca60": [
 "client/app/v8world/ClumpStage2.cpp",
 "merged unit, complete"
+],
+"0064cbf0": [
+"client/app/v8world/clumpstage.cpp",
+"inferred path"
 ],
 "0064d060": [
 "client/app/v8world/SimJobStage.cpp",
@@ -7971,6 +9175,18 @@
 ],
 "0064da90": [
 "client/boost_1_34_1/libs/iostreams/src/zlib.cpp",
+"merged unit, partial"
+],
+"0064dc70": [
+"client/app/v8kernel/Point.cpp",
+"merged unit, partial"
+],
+"0064dc90": [
+"client/app/v8kernel/Point.cpp",
+"merged unit, partial"
+],
+"0064dd40": [
+"client/app/v8kernel/Point.cpp",
 "merged unit, partial"
 ],
 "0064e840": [
@@ -8341,21 +9557,37 @@
 "client/app/v8datamodel/SafeChat.cpp",
 "inferred path"
 ],
+"006588a0": [
+"client/app/v8kernel/SimBody.cpp",
+"merged unit, partial"
+],
+"00658920": [
+"client/app/v8kernel/SimBody.cpp",
+"merged unit, partial"
+],
+"00658ae0": [
+"client/app/v8kernel/SimBody.cpp",
+"merged unit, partial"
+],
+"00658ca0": [
+"client/app/v8kernel/SimBody.cpp",
+"merged unit, partial"
+],
 "0065b4e0": [
 "client/app/v8world/SpatialHash.cpp",
-"inferred path"
+"merged unit, partial"
 ],
 "006601b0": [
 "client/app/util/Units.cpp",
 "merged unit, partial"
 ],
-"00668850": [
+"00668280": [
 "client/app/v8world/JointStage.cpp",
 "merged unit, partial"
 ],
 "00668af0": [
-"client/app/util/RunningAverage.cpp",
-"inferred path"
+"client/app/v8world/JointStage.cpp",
+"merged unit, partial"
 ],
 "00668d30": [
 "client/app/v8world/sleepstage2.cpp",
@@ -8389,6 +9621,18 @@
 "client/app/v8world/SpatialFilter.cpp",
 "inferred path"
 ],
+"0066f920": [
+"client/rendering/appdraw/AdornRbxGfx.cpp",
+"merged unit, partial"
+],
+"0066f9c0": [
+"client/rendering/appdraw/AdornRbxGfx.cpp",
+"merged unit, partial"
+],
+"0066fa50": [
+"client/rendering/appdraw/AdornRbxGfx.cpp",
+"merged unit, partial"
+],
 "0066fac0": [
 "client/rendering/appdraw/AdornRbxGfx.cpp",
 "merged unit, partial"
@@ -8413,6 +9657,10 @@
 "client/rendering/renderlib/TextureProxy.cpp",
 "merged unit, partial"
 ],
+"00670020": [
+"client/rendering/appdraw/AdornRbxGfx.cpp",
+"merged unit, partial"
+],
 "00670380": [
 "client/rendering/appdraw/AdornRbxGfx.cpp",
 "merged unit, partial"
@@ -8424,6 +9672,22 @@
 "00671e20": [
 "client/rendering/appdraw/AdornRbxGfx.cpp",
 "merged unit, partial"
+],
+"00671f90": [
+"client/rendering/appdraw/AdornRbxGfx.cpp",
+"merged unit, partial"
+],
+"00677190": [
+"client/rendering/appdraw/HitTest.cpp",
+"merged unit, complete"
+],
+"00677260": [
+"client/rendering/appdraw/HitTest.cpp",
+"merged unit, complete"
+],
+"00677300": [
+"client/rendering/appdraw/HitTest.cpp",
+"merged unit, complete"
 ],
 "00677630": [
 "client/rendering/appdraw/DrawAdorn.cpp",
@@ -10077,6 +11341,10 @@
 "client/rendering/renderlib/TextureProxy.cpp",
 "merged unit, partial"
 ],
+"007add10": [
+"client/rendering/renderlib/TextureProxy.cpp",
+"merged unit, partial"
+],
 "007ade10": [
 "client/rendering/renderlib/TextureProxy.cpp",
 "merged unit, partial"
@@ -10185,10 +11453,6 @@
 "client/rendering/g3d/g3dcpp/Vector3int16.cpp",
 "inferred path"
 ],
-"007c15b0": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
 "007eed70": [
 "client/win/DHTMLWindow.cpp",
 "merged unit, partial"
@@ -10215,10 +11479,6 @@
 ],
 "007eeef0": [
 "client/win/DHTMLWindow.cpp",
-"merged unit, partial"
-],
-"007ef8c0": [
-"client/win/Roblox.cpp",
 "merged unit, partial"
 ],
 "007f0f40": [
@@ -10277,12 +11537,36 @@
 "client/network/Player.cpp",
 "merged unit, partial"
 ],
+"007f17c0": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"007f17f0": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"007f1a10": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"007f1a30": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"007f2540": [
+"client/network/raknet30/source/SocketLayer.cpp",
+"merged unit, complete"
+],
 "007f27a0": [
 "client/rendering/renderlib/Mesh.cpp",
 "merged unit, partial"
 ],
 "007f27c0": [
 "client/rendering/renderlib/Mesh.cpp",
+"merged unit, partial"
+],
+"007f28e0": [
+"client/app/v8tree/Instance.cpp",
 "merged unit, partial"
 ],
 "007f2ed0": [
@@ -10325,29 +11609,13 @@
 "client/app/v8datamodel/Decal.cpp",
 "merged unit, partial"
 ],
-"007f4fb0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
+"007f4630": [
+"client/app/v8datamodel/partinstance.cpp",
+"merged unit, partial"
 ],
-"007f5010": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"007f5070": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"007f50d0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"007f5130": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"007f5190": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
+"007f4bc0": [
+"client/app/v8datamodel/partinstance.cpp",
+"merged unit, partial"
 ],
 "007f5e30": [
 "client/app/v8datamodel/Hopper.cpp",
@@ -10381,20 +11649,60 @@
 "client/app/v8datamodel/CharacterAppearance.cpp",
 "merged unit, partial"
 ],
-"007f62d0": [
+"007f66f0": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"007f6330": [
+"007f6750": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"007f6390": [
+"007f67b0": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"007f67f0": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"007f6840": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"007f6870": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"007f6890": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"007f68b0": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"007f68d0": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"007f68f0": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"007f6930": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"007f6950": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
 "007f6970": [
 "client/app/v8datamodel/Message.cpp",
+"merged unit, complete"
+],
+"007f69d0": [
+"client/app/v8datamodel/Lighting.cpp",
 "merged unit, complete"
 ],
 "007f6e40": [
@@ -10403,6 +11711,38 @@
 ],
 "007f6e60": [
 "client/app/util/name.cpp",
+"merged unit, partial"
+],
+"007f6e80": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"007f6eb0": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"007f6ee0": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"007f6f10": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"007f6f40": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"007f6f70": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"007f6fa0": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"007f6fd0": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
 "merged unit, partial"
 ],
 "007f7180": [
@@ -10581,10 +11921,6 @@
 "client/win/DHTMLWindow.cpp",
 "merged unit, partial"
 ],
-"007faeb0": [
-"client/win/Roblox.cpp",
-"merged unit, partial"
-],
 "007fb110": [
 "client/network/Player.cpp",
 "merged unit, partial"
@@ -10641,6 +11977,18 @@
 "client/network/Player.cpp",
 "merged unit, partial"
 ],
+"007fb7e0": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"007fb800": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
+"007fb820": [
+"client/network/Players.cpp",
+"merged unit, partial"
+],
 "007fbbe0": [
 "client/app/v8datamodel/Message.cpp",
 "merged unit, complete"
@@ -10648,6 +11996,10 @@
 "007fc360": [
 "client/app/util/name.cpp",
 "merged unit, partial"
+],
+"007fc370": [
+"client/network/raknet30/source/SocketLayer.cpp",
+"merged unit, complete"
 ],
 "007fc6c0": [
 "client/rendering/renderlib/Mesh.cpp",
@@ -10757,45 +12109,17 @@
 "client/app/v8datamodel/Decal.cpp",
 "merged unit, partial"
 ],
-"007fe1e0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
+"007fdd30": [
+"client/app/v8datamodel/partinstance.cpp",
+"merged unit, partial"
 ],
-"007fe200": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"007fe220": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"007fe240": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"007fe260": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"007fe280": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"007fe2a0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
-],
-"007fe2b0": [
-"client/app/v8datamodel/Accoutrement.cpp",
-"merged unit, complete"
+"007fde10": [
+"client/app/v8datamodel/partinstance.cpp",
+"merged unit, partial"
 ],
 "007fe2c0": [
 "client/app/v8datamodel/BrickColor.cpp",
 "merged unit, complete"
-],
-"007fe740": [
-"client/app/v8datamodel/FlagStand.cpp",
-"merged unit, partial"
 ],
 "007fe750": [
 "client/app/v8datamodel/Flag.cpp",
@@ -10857,21 +12181,65 @@
 "client/app/v8datamodel/Teams.cpp",
 "merged unit, partial"
 ],
-"007ff2a0": [
+"007ff360": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"007ff2e0": [
+"007ff380": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
-"007ff300": [
+"007ff5c0": [
+"client/app/humanoid/Humanoid.cpp",
+"merged unit, partial"
+],
+"007ff650": [
 "client/app/humanoid/Humanoid.cpp",
 "merged unit, partial"
 ],
 "007ff6a0": [
 "client/app/v8datamodel/Message.cpp",
 "merged unit, complete"
+],
+"007ff760": [
+"client/app/v8datamodel/Lighting.cpp",
+"merged unit, complete"
+],
+"007ffa70": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"007ffa90": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"007ffab0": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"007ffad0": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"007ffaf0": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"007ffb10": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"007ffb30": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"007ffb50": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
+],
+"007ffb70": [
+"client/rendering/g3d/glg3dcpp/Sky.cpp",
+"merged unit, partial"
 ],
 "007ffbf0": [
 "client/app/v8datamodel/Surfaces.cpp",

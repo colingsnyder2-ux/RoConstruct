@@ -1,61 +1,4 @@
 #define NATIVE_PRIMITIVE_NATIVE_BODY
-#include <math.h>
-#include "v8world/Contact2008.h"
-#include "v8world/Primitive2008.h"
-#include "v8kernel/Connector2008.h"
-#include "v8kernel/Body2008.h"
-#include "v8world/Ball2008.h"
-#include "util/Math.h"
-
-namespace RBX
-{
-	static const IStage::StageType kernelStageType = static_cast<IStage::StageType>(7);
-
-	// Donor v8world/Contact.h inline accessor declared in Contact2008.h (rbx_static_cast of getGeometry; no code of its
-	// own).
-	inline Ball* BallBallContact::ball(int i)
-	{
-		return static_cast<Ball*>(getPrimitive(i)->getGeometry());
-	}
-
-	bool BallBallContact::computeIsColliding(float overlapIgnored)
-	{
-		float b0Radius = ball(0)->getRadius();
-		float b1Radius = ball(1)->getRadius();
-
-		G3D::Vector3 delta = getPrimitive(1)->getBody()->getPVUnsafe().position.translation
-			- getPrimitive(0)->getBody()->getPVUnsafe().position.translation;
-		float b0b1RadiusSum = b0Radius + b1Radius;
-
-		if (b0b1RadiusSum > Math::longestVector3Component(delta))
-			return delta.magnitude() < (b0b1RadiusSum - overlapIgnored);
-		else
-			return false;
-	}
-
-	bool BallBallContact::stepContact()
-	{
-		if (BallBallContact::computeIsColliding(0.0f))
-		{
-			if (inStage(kernelStageType))
-			{
-				if (!ballBallConnector)
-					ballBallConnector = createConnector(getPrimitive(0)->getBody(), getPrimitive(1)->getBody());
-
-				ballBallConnector->setBallBall(ball(0)->getRadius(), ball(1)->getRadius());
-			}
-			return true;
-		}
-		else
-		{
-			deleteAllConnectors();
-		}
-
-		return false;
-	}
-}
-
-#define NATIVE_PRIMITIVE_NATIVE_BODY
 #include <G3D/Array.h>
 #include <G3D/CoordinateFrame.h>
 #include <G3D/Vector2.h>
@@ -70,6 +13,10 @@ namespace RBX
 #include "util/ComputeProp.h"
 #include "util/NormalId.h"
 
+#include "v8world/Primitive2008.h"
+
+#include "v8kernel/Connector2008.h"
+#include "v8world/Contact2008.h"
 #include "v8world/Block2008.h"
 #include "leaves2008/BlockBlockContact2008.h"
 
@@ -271,6 +218,169 @@ namespace RBX
 			edgeLength);
 	}
 
+	int BlockBlockContact::intersectRectQuad(G3D::Vector2& planeRect, G3D::Vector2 (&otherQuad)[4])
+	{
+		bool quadCrossRect[4][4];
+
+		bool quadIn[4] = {true, true, true, true};
+
+		int foundCounter = 0;
+
+		for (int i = 3; i >= 0; i--)
+		{
+			if (otherQuad[i].y <= planeRect.y)
+			{
+				quadCrossRect[0][i] = true;
+			}
+			else
+			{
+				quadCrossRect[0][i] = false;
+				quadIn[i] = false;
+			}
+
+			if (otherQuad[i].x >= -planeRect.x)
+			{
+				quadCrossRect[1][i] = true;
+			}
+			else
+			{
+				quadCrossRect[1][i] = false;
+				quadIn[i] = false;
+			}
+
+			if (otherQuad[i].y >= -planeRect.y)
+			{
+				quadCrossRect[2][i] = true;
+			}
+			else
+			{
+				quadCrossRect[2][i] = false;
+				quadIn[i] = false;
+			}
+
+			if (otherQuad[i].x <= planeRect.x)
+			{
+				quadCrossRect[3][i] = true;
+			}
+			else
+			{
+				quadCrossRect[3][i] = false;
+				quadIn[i] = false;
+			}
+		}
+
+		for (int i = 3; i >= 0; i--)
+		{
+			if (quadIn[i])
+			{
+				loadGeoPairPointPlane(bOther, bPlane, i, otherPlaneID, planeID);
+				foundCounter++;
+			}
+		}
+
+		if (foundCounter == 4)
+			return foundCounter;
+		else
+		{
+			bool rectCrossQuad[4][4];
+			G3D::Vector2 rect[4];
+			rect[0] = G3D::Vector2(planeRect.x, planeRect.y);
+			rect[1] = G3D::Vector2(-planeRect.x, planeRect.y);
+			rect[2] = G3D::Vector2(-planeRect.x, -planeRect.y);
+			rect[3] = G3D::Vector2(planeRect.x, -planeRect.y);
+
+			bool rectIn[4] = {true, true, true, true};
+
+			for (int i = 3; i >= 0; i--)
+			{
+				G3D::Vector2& current = otherQuad[i];
+				G3D::Vector2& currentO = otherQuad[(i + 3) % 4];
+				for (int j = 0; j < 4; j++)
+				{
+					G3D::Vector2 math1 = rect[j] - current;
+					G3D::Vector2 math2 = currentO - current;
+
+					if ((math2.x * math1.y) - (math2.y * math1.x) >= 0.0f)
+					{
+						rectCrossQuad[i][j] = true;
+					}
+					else
+					{
+						rectCrossQuad[i][j] = false;
+						rectIn[j] = false;
+					}
+				}
+			}
+
+			int wasZero = foundCounter == 0;
+
+			for (int i = 0; i < 4; i++)
+			{
+				if (rectIn[i])
+				{
+					loadGeoPairPointPlane(bPlane, bOther, i, planeID, otherPlaneID);
+					foundCounter++;
+				}
+			}
+
+			if (wasZero && foundCounter == 4)
+				return foundCounter;
+			else
+			{
+				for (int i = 0; i < 4; i++)
+				{
+					for (int j = 3; j >= 0; j--)
+					{
+						if (quadCrossRect[i][j] != quadCrossRect[i][(j + 3) % 4] && rectCrossQuad[j][i] != rectCrossQuad[j][(i + 1) % 4])
+						{
+							loadGeoPairEdgeEdgePlane(bOther, bPlane, block(bOther)->faceVertexToEdge(otherPlaneID, (j + 3) % 4), block(bPlane)->faceVertexToEdge(planeID, i));
+							foundCounter++;
+						}
+					}
+				}
+				return foundCounter;
+			}
+		}
+	}
+
+	int BlockBlockContact::computePlaneContact()
+	{
+		if (feature[0] >= 0)
+		{
+			planeID = (NormalId)feature[0];
+			bPlane = 0;
+			bOther = 1;
+		}
+		else
+		{
+			planeID = (NormalId)feature[1];
+			bPlane = 1;
+			bOther = 0;
+		}
+
+		const G3D::CoordinateFrame& otherFrame = getPrimitive(bOther)->getBody()->getPVUnsafe().position;
+		const G3D::CoordinateFrame& planeFrame = getPrimitive(bPlane)->getBody()->getPVUnsafe().position;
+
+		G3D::CoordinateFrame otherToPlane = planeFrame.inverse() * otherFrame;
+
+		Block* otherBlock = block(bOther);
+		Block* planeBlock = block(bPlane);
+
+		G3D::Vector3 otherVertexPlaneCoords = Math::getWorldNormal(planeID, planeFrame);
+		otherPlaneID = Math::getClosestObjectNormalId(-otherVertexPlaneCoords, otherFrame.rotation);
+
+		G3D::Vector2 planeRect = planeBlock->getProjectedVertex(*(planeBlock->getFaceVertex(planeID, 0)), planeID);
+
+		G3D::Vector2 otherQuad[4] = {};
+
+		for (int i = 0; i < 4; i++)
+		{
+			G3D::Vector3 world = otherToPlane.pointToWorldSpace(*(otherBlock->getFaceVertex(otherPlaneID, i)));
+			otherQuad[i] = otherBlock->getProjectedVertex(world, planeID);
+		}
+		return intersectRectQuad(planeRect, otherQuad);
+	}
+
 	bool BlockBlockContact::stepContact()
 	{
 		if (Primitive::aaBoxCollide(*getPrimitive(0), *getPrimitive(1)) && getBestPlaneEdge(0.0f))
@@ -279,5 +389,94 @@ namespace RBX
 			separation = 1e9f;
 		updateConnectors();
 		return separation <= 0.0f;
+	}
+}
+
+#include "v8kernel/Kernel2008.h" // the 2008 Kernel (removeConnector 005fb1f0); formerly the donor v8kernel/Kernel.h
+#include "v8kernel/Connector.h"
+
+namespace RBX
+{
+	Contact::Contact(Primitive* prim0, Primitive* prim1)
+		: Edge(prim0, prim1),
+		  lastContactStep(-1),
+		  steppingIndex(-1),
+		  jointK(0),
+		  elasticJointK(0),
+		  kFriction(0)
+	{
+	}
+
+	void Contact::deleteConnector(ContactConnector*& c)
+	{
+		getKernel()->removeConnector(c);
+		delete c;
+		c = NULL;
+	}
+
+	ContactConnector::ContactConnector(float _k, float _kNeg, float _kFriction)
+		: geoPair()
+	{
+		k = _k;
+		kNeg = _kNeg;
+		kFriction = _kFriction;
+		frictionOffset = G3D::Vector3::zero();
+		firstApproach = 0;
+		threshold = 0;
+		forceMagLast = 0;
+	}
+}
+
+#define NATIVE_PRIMITIVE_NATIVE_BODY
+#include <math.h>
+#include "v8kernel/Body2008.h"
+#include "v8world/Ball2008.h"
+#include "util/Math.h"
+
+namespace RBX
+{
+	static const IStage::StageType kernelStageType = static_cast<IStage::StageType>(7);
+
+	// Donor v8world/Contact.h inline accessor declared in Contact2008.h (rbx_static_cast of getGeometry; no code of its
+	// own).
+	inline Ball* BallBallContact::ball(int i)
+	{
+		return static_cast<Ball*>(getPrimitive(i)->getGeometry());
+	}
+
+	bool BallBallContact::computeIsColliding(float overlapIgnored)
+	{
+		float b0Radius = ball(0)->getRadius();
+		float b1Radius = ball(1)->getRadius();
+
+		G3D::Vector3 delta = getPrimitive(1)->getBody()->getPVUnsafe().position.translation
+			- getPrimitive(0)->getBody()->getPVUnsafe().position.translation;
+		float b0b1RadiusSum = b0Radius + b1Radius;
+
+		if (b0b1RadiusSum > Math::longestVector3Component(delta))
+			return delta.magnitude() < (b0b1RadiusSum - overlapIgnored);
+		else
+			return false;
+	}
+
+	bool BallBallContact::stepContact()
+	{
+		if (BallBallContact::computeIsColliding(0.0f))
+		{
+			if (inStage(kernelStageType))
+			{
+				if (!ballBallConnector)
+					ballBallConnector = createConnector(getPrimitive(0)->getBody(), getPrimitive(1)->getBody());
+
+				ballBallConnector->setBallBall(ball(0)->getRadius(), ball(1)->getRadius());
+			}
+			return true;
+		}
+		else
+		{
+			deleteAllConnectors();
+		}
+
+		return false;
 	}
 }

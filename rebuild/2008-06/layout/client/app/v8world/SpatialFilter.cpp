@@ -10,6 +10,12 @@
 
 namespace RBX
 {
+	// 00668cd0 (registry func_00668cd0; TreeStage::createAssembly, declared INFERRED in AppUnit668/TreeStage.h; only
+	Assembly* TreeStage::createAssembly(Primitive* p)
+	{
+		return static_cast<Assembly*>(new Clump(p));
+	}
+
 	void TreeStage::reconcile(Primitive* left, Primitive* right, int leftDepth, int rightDepth, Joint*& lightest, int& lightestSide)
 	{
 		for (;;)

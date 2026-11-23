@@ -1,13 +1,10 @@
+#ifdef NATIVE_DXUSERINPUT_KEYBOARD_PENDING
+#include "CMainFrame.h"
+#endif
 #include "util/DxUserInput.h"
 #include "v8datamodel/DataModel.h"
 #include "util/Object.h"
-#ifdef NATIVE_DXUSERINPUT_MOUSE_PENDING
-#include "v8datamodel/Workspace.h"   // processMouse 004685b0 calls Workspace::onWrapMouse 005a0220 (conflicts here, see below)
-#endif
-
-#ifdef NATIVE_DXUSERINPUT_KEYBOARD_PENDING
-#include "CMainFrame.h"   // processKeyboard 004681b0 reads CMainFrame::state104 (+0x104) of the application main window
-#endif
+#include "v8datamodel/Workspace.h"   // processMouse 004685b0 calls Workspace::onWrapMouse 005a0220 (through /I{headers}/uievent-native)
 
 // Identity-tier placeholder helpers (bodies byte-proved in Inferred_00469f50.cpp / Inferred_00469360.cpp /
 // Inferred_00469c60.cpp), all cdecl: keyboard state -> SDLMod, DIK scan code -> SDLKey, SDLKey -> virtual key.
@@ -291,7 +288,11 @@ namespace RBX
 		else if (eventType == 4)
 			dragging = false;
 		G3D::Vector2int16 mousePosition(position);
+#ifdef UIEVENT_HEADER_DECLARES_POSITION_SIZE_CTOR
+		UIEvent event(this, (UIEvent::EventType)eventType, mousePosition, sub_00467440());
+#else
 		UIEvent event(this, (UIEvent::EventType)eventType, mousePosition, G3D::Vector2int16(0, 0), sub_00467440());
+#endif
 		postEvent(event);
 	}
 
@@ -349,7 +350,6 @@ namespace RBX
 	}
 #endif
 
-#ifdef NATIVE_DXUSERINPUT_MOUSE_PENDING
 	void DxUserInput::processMouse()
 	{
 		DWORD count = 0x800;
@@ -369,12 +369,12 @@ namespace RBX
 			switch (data[i].dwOfs)
 			{
 			case 0xc: // DIMOFS_BUTTON0
-				::PostMessage(window->m_hWnd, 0x4bb, 0, 0);
+				window->PostMessage(0x4bb);
 				postMouseEvent(data[i].dwData == 0x80 ? UIEvent::MOUSE_LEFT_BUTTON_DOWN : UIEvent::MOUSE_LEFT_BUTTON_UP,
 							   getCursorPosition());
 				break;
 			case 0xd: // DIMOFS_BUTTON1
-				::PostMessage(window->m_hWnd, 0x4bb, 0, 0);
+				window->PostMessage(0x4bb);
 				postMouseEvent(data[i].dwData == 0x80 ? UIEvent::MOUSE_RIGHT_BUTTON_DOWN : UIEvent::MOUSE_RIGHT_BUTTON_UP,
 							   getCursorPosition());
 				break;
@@ -403,8 +403,6 @@ namespace RBX
 			postMouseEvent(UIEvent::MOUSE_MOVE, getCursorPosition());
 		}
 	}
-
-#endif
 
 	void DxUserInput::onEvent(const RunService*, Heartbeat)
 	{

@@ -38,6 +38,7 @@ namespace RBX
 			{
 				int userID;
 				std::string text;
+				std::string guid;   // +0x20 INFERRED: AbuseReport::Message size/offset from the 004971c0 area
 			};
 
 		public:

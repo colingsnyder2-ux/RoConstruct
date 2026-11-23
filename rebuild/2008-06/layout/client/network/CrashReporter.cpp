@@ -57,3 +57,9 @@ void TextureItem::browse()
         applyValue(id);
     }
 }
+
+#include <boost/any.hpp>
+template RBX::ContentId boost::any_cast<RBX::ContentId>(boost::any&);
+
+template std::string RBX::Reflection::Value::cast<std::string>();
+template RBX::ContentId RBX::Reflection::Value::cast<RBX::ContentId>();

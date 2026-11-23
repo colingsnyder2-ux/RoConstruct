@@ -42,7 +42,7 @@ protected:
 	bool operatorLess(const InstanceHandle& other) const;
 	bool operatorGreater(const InstanceHandle&) const;
 public:
-	~InstanceHandle(void);   // INFERRED: ??1InstanceHandle@RBX@@QAE@XZ (header gap, header_gap_fill.py)
+	// ~InstanceHandle is compiler-generated; the binary has it out of line only as an emitted COMDAT (core header fix 2026-11-22).
 };
 
 } // namespace RBX

@@ -32,7 +32,7 @@ namespace RBX
 		if (isTopLevelPVInstance())
 			return true;
 
-		return getTypedParent<PVInstance>()->getTopPVController()->getControllerType() == Controller::NO_CONTROLLER;
+		return static_cast<const PVInstance*>(getParent())->getTopPVController()->getControllerType() == Controller::NO_CONTROLLER;
 	}
 
 	void PVInstance::setPVGridOffsetLegacy(const G3D::CoordinateFrame& _offset)
@@ -46,19 +46,20 @@ namespace RBX
 
 	G3D::ReferenceCountedPointer<Controller> PVInstance::computeTopPVController() const
 	{
-		if (queryTypedParent<PVInstance>() && getTypedRoot<PVInstance>() != getParent())
+		if (!isTopLevelPVInstance())
 		{
-			G3D::ReferenceCountedPointer<RBX::Controller> controller = static_cast<const PVInstance*>(getParent())->TopPVController;
+			G3D::ReferenceCountedPointer<Controller> parentController =
+				static_cast<const PVInstance*>(getParent())->TopPVController;
 
-			if (controller.notNull())
+			if (parentController.notNull() && parentController->getControllerType() != Controller::NO_CONTROLLER)
 			{
-				if (controller->getControllerType() != Controller::NO_CONTROLLER && !controller->isUserController())
-					return controller;
+				if (!parentController->isUserController())
+					return parentController.getPointer();
 			}
 		}
 
-		ControllerService* controllerService = ServiceProvider::create<ControllerService>(this);
-		return controllerService ? controllerService->getController(controllerType, this) : NULL;
+		ControllerService* service = ServiceProvider::create<ControllerService>(this);
+		return service ? service->getController(getControllerType(), this) : G3D::ReferenceCountedPointer<Controller>();
 	}
 
 	void PVInstance::setShowControllerFlag(bool _showControllerFlag)

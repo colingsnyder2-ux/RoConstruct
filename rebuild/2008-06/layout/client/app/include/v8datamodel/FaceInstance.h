@@ -18,6 +18,7 @@ namespace RBX
 		FaceInstance();
 		NormalId getFace() const;
 		void setFace(NormalId);
+		virtual void render3dSelect(Adorn* adorn, SelectState selectState);
 	protected:
 		virtual bool askSetParent(const Instance*) const;
 	};

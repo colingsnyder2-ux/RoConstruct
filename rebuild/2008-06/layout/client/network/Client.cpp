@@ -1,4 +1,56 @@
 #include "Network/Client2008.h"
+
+namespace RBX
+{
+	// Template members the shared headers only declare (same definitions as TimerService.cpp / ClickDetector.cpp).
+	template<class C, class D, const char* N>
+	FactoryProduct<C, D, N>::FactoryProduct() : D() {}
+
+	template<class C, class D, const char* N>
+	const Name& FactoryProduct<C, D, N>::className() { return Name::declare<N>(); }
+
+	template<class C, class D, const char* N>
+	const Name& FactoryProduct<C, D, N>::getClassName() const { return className(); }
+
+	template<class C, class D, const char* N>
+	DescribedCreatable<C, D, N>::DescribedCreatable()
+		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
+
+	namespace Network
+	{
+		char sClient[] = "NetworkClient"; // 00938c88 (classDescriptor 0049eb30, constructor setName)
+
+		Client::Client()
+		{
+			setName(sClient);
+		}
+
+		bool Client::clientIsPresent(const Instance* context, bool testInDatamodel)
+		{
+			return ServiceProvider::find<Client>(ServiceProvider::findServiceProvider(context)) != NULL;
+		}
+
+		Client::~Client()
+		{
+			rakPeer->CloseConnection(serverId, true, 0);
+		}
+
+		void Client::disconnect(int blockDuration)
+		{
+			removeAllChildren();
+			rakPeer->CloseConnection(serverId, true, 0);
+			rakPeer->Shutdown(blockDuration, 0);
+		}
+
+#ifdef NATIVE_NETWORK_CLIENT_PENDING
+		void Client::onEvent(const ServiceProvider* source, Closing event)
+		{
+			disconnect(3000);
+		}
+#endif
+	}
+}
+
 #include "Network/Players.h"
 
 namespace RBX

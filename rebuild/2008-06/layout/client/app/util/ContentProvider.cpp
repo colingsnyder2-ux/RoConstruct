@@ -1,4 +1,28 @@
+// INFERRED: RBX::ContentProvider::sub_00562730 (placeholder name for 00562730 from the identity tier; body from assembly)
 #include "util/NativeContentProvider.h"
+#include <fstream>
+#include <sstream>
+
+namespace RBX {
+// INFERRED: 0055f4f0 is an out-of-line stream copy helper (istream, ostream, chunk size); a boost iostreams copy, not recovered here
+void __cdecl copyStream(std::istream& in, std::ostream& out, int chunk);
+
+boost::shared_ptr<const std::string> ContentProvider::sub_00562730(const ContentId& id)
+{
+    CachedContent* content = loadContent(id, 1, NULL);
+    if (!content)
+        return boost::shared_ptr<const std::string>();
+    boost::mutex::scoped_lock lock(contentCacheMutex);
+    if (!content->data) {
+        std::ifstream file(content->filename->c_str(), std::ios::in | std::ios::binary, _SH_DENYNO);
+        std::ostringstream data(std::ios::out);
+        copyStream(file, data, 0x1000);
+        content->data.reset(new std::string(data.str()));
+    }
+    return content->data;
+}
+}
+
 #include "util/Name.h"
 
 namespace RBX {
@@ -8,6 +32,29 @@ bool ContentProvider::hasContent(ContentId id)
 	return loadContent(id, 0, 0) != 0;
 }
 
+}
+
+// INFERRED: RBX::ContentProvider::sub_00562670 (placeholder name for 00562670 from the identity tier; body from assembly)
+
+namespace RBX {
+void ContentProvider::sub_00562670(const ContentId& id, ::RBX::RequestResult& result, std::string& filename)
+{
+    CachedContent* content = loadContent(id, 1, NULL);
+    if (!content) {
+        if (id.isHttp() && !isUrlBad(id.c_str())) {
+            result = (::RBX::RequestResult)0;
+            return;
+        }
+        result = (::RBX::RequestResult)2;
+        return;
+    }
+    if (!registerFile(content)) {
+        result = (::RBX::RequestResult)2;
+        return;
+    }
+    filename = *content->filename;
+    result = (::RBX::RequestResult)1;
+}
 }
 
 namespace RBX {
@@ -127,8 +174,6 @@ template class boost::date_time::gregorian_calendar_base<boost::date_time::year_
 template class boost::date_time::int_adapter<__int64>;
 
 #include <G3D/format.h>
-#include <fstream>
-#include <sstream>
 #include <stdexcept>
 
 namespace RBX {

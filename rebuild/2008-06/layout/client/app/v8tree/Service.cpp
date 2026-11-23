@@ -23,8 +23,6 @@ namespace RBX
 }
 
 #ifdef NATIVE_APPUNIT570_PENDING
-// Needs the ServiceProvider overrides declared in v8tree/Service.h (proposal; the recorder builds these only against a
-// generated copy of that header under out/app-unit570-2008/pending/ and records them exact=false).
 namespace RBX
 {
 	void ServiceProvider::onDescendentAdded(Instance* instance)            // 005726a0: Instance::onDescendentAdded 0055ae20
@@ -85,7 +83,7 @@ namespace RBX
 	boost::shared_ptr<Instance> ServiceProvider::findServiceByClassNameString(std::string className)
 	{
 		const Name& name = Name::lookup(className);
-		if (&name == &Name::getNullName())
+		if (&Name::getNullName() == &name)
 			throw std::runtime_error(G3D::format("'%s' is not a valid Service name", className.c_str()));
 		return shared_from(create(this, name));
 	}

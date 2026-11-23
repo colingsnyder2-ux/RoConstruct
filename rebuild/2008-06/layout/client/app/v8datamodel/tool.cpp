@@ -7,6 +7,7 @@
 #include "Network/Players.h"
 #include "Network/Player.h"
 #include "v8datamodel/Backpack.h"
+#include "tool/DragUtilities.h"
 
 namespace RBX
 {
@@ -15,6 +16,21 @@ namespace RBX
 	extern Reflection::SignalDesc<Tool, void(void)> event_Unequipped;                    // 0097b708
 	extern Reflection::SignalDesc<Tool, void(void)> event_Activated;                     // 0097b818
 	extern Reflection::SignalDesc<Tool, void(void)> event_Deactivated;                   // 0097b6d4
+
+	Tool::ToolState Tool::computeDesiredState(Instance* testParent)
+	{
+		Humanoid* humanoid = Humanoid::modelIsCharacter(testParent);
+		if (!humanoid)
+			return IN_WORKSPACE;
+
+		if (!humanoid->getTorso())
+			return IN_CHARACTER;
+
+		if (!humanoid->findRightArm() || !humanoid->findRightShoulder())
+			return HAS_TORSO;
+
+		return EQUIPPED;
+	}
 
 	bool Tool::characterCanUnequipTool(ModelInstance* character)
 	{
@@ -64,6 +80,23 @@ namespace RBX
 				setParent(localPlayer->getPlayerBackpack());
 			}
 		}
+	}
+
+	void Tool::upTo_Equipped()
+	{
+		handleTouched.disconnect();
+
+		std::vector<boost::weak_ptr<PartInstance> > parts;
+		PartInstance::findParts(this, parts);
+		DragUtilities::unJoinFromOutsiders(parts);
+
+		Humanoid* humanoid = Humanoid::modelIsCharacter(getParent());
+		PartInstance* arm = humanoid->getRightArm();
+		PartInstance* handle = const_cast<PartInstance*>(getHandleConst());
+		if (handle)
+			handle->setCanCollide(false);
+
+		buildWeld(arm, handle, humanoid->getRightArmGrip(), grip, "RightGrip");
 	}
 
 	void Tool::setBackendToolStateNoReplicate(int value)
@@ -211,6 +244,16 @@ namespace RBX
 }
 
 #include "util/Name.h"
+
+namespace RBX {
+
+void Tool::onEvent_AddedBackend(boost::shared_ptr<Instance> instance)
+{
+	if (instance.get() != this)
+		rebuildBackendState();
+}
+
+}
 
 namespace RBX {
 

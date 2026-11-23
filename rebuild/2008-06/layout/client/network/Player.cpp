@@ -110,90 +110,23 @@ template class boost::shared_ptr<RBX::RunService>;
 template class std::_Vector_iterator<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance> > >;
 template class std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport> >;
 
-#include <stdexcept>
+#include "G3D/System.h"
 
 namespace RBX
 {
 	namespace Network
 	{
-		void Player::rebuildBackpack()
+		// INFERRED: name from the 2007 donor declaration static void Player::onLocalPlayerNotIdle(ServiceProvider*);
+		void Player::onLocalPlayerNotIdle(ServiceProvider* serviceProvider)
 		{
-			if (!Players::backendProcessing(this, true))
-				throw std::runtime_error("rebuildBackpack can only be called by the backend server");
-
-			while (Backpack* r = findFirstChildOfType<Backpack>())
+			Players* players = serviceProvider->find<Players>();
+			if (players)
 			{
-				r->setParent(NULL);
-			}
-
-			boost::shared_ptr<Instance> backpack = Creatable<Instance>::create<Backpack>();
-			backpack->setParent(this);
-
-			if (StarterPackService* starterPack = ServiceProvider::find<StarterPackService>(this))
-			{
-				for (size_t i = 0; i < starterPack->numChildren(); i++)
-				{
-					boost::shared_ptr<Instance> copy = starterPack->getChild(i)->clone();
-					copy->setParent(backpack.get());
-				}
+				Player* player = players->getLocalPlayer();
+				if (player && ServiceProvider::findServiceProvider(player))
+					player->lastActivityTime = G3D::System::getLocalTime();
 			}
 		}
-
-#if 0
-		void Player::loadCharacter(bool inGame)
-		{
-			Workspace* workspace = ServiceProvider::find<Workspace>(this);
-			if (!workspace)
-				throw std::runtime_error("LoadCharacter can only be called when Player is in the world");
-
-			if (!Players::backendProcessing(this, true))
-				throw std::runtime_error("LoadCharacter can only be called by the backend server");
-
-			std::vector<boost::shared_ptr<Instance> > instances;
-			ServiceProvider::create<ContentProvider>(this)->load(ContentId::fromAssets("fonts\\character.rbxm"), instances);
-
-			if (instances.size() != 1)
-				throw std::runtime_error("character.rbxm should contain a Character model");
-
-			boost::shared_ptr<ModelInstance> model = boost::shared_dynamic_cast<ModelInstance>(instances.front());
-			if (!model)
-				throw std::runtime_error("character.rbxm should contain a Character model");
-
-			Humanoid* humanoid = Humanoid::modelIsCharacter(model.get());
-			if (!humanoid)
-				throw std::runtime_error("character.rbxm should contain a humanoid");
-
-			{
-				std::vector<boost::shared_ptr<Instance> > extraSound;
-				ServiceProvider::create<ContentProvider>(this)->load(ContentId::fromAssets("fonts\\humanoidSound.rbxm"), extraSound);
-				std::for_each(extraSound.begin(), extraSound.end(), boost::bind(&addChild, model, _1));
-			}
-			{
-				std::vector<boost::shared_ptr<Instance> > extraHealth;
-				ServiceProvider::create<ContentProvider>(this)->load(ContentId::fromAssets("fonts\\humanoidHealth.rbxm"), extraHealth);
-				std::for_each(extraHealth.begin(), extraHealth.end(), boost::bind(&addChild, model, _1));
-			}
-			{
-				std::vector<boost::shared_ptr<Instance> > extraAnimate;
-				ServiceProvider::create<ContentProvider>(this)->load(ContentId::fromAssets("fonts\\humanoidAnimate.rbxm"), extraAnimate);
-				std::for_each(extraAnimate.begin(), extraAnimate.end(), boost::bind(&addChild, model, _1));
-			}
-
-			model->setName(getName());
-			if (inGame)
-				humanoid->buildJoints();
-			Instance::propArchivable.setValue(model.get(), false);
-			setCharacter(model.get());
-			model->setParent(workspace);
-			loadCharacterAppearance(!inGame);
-
-			if (SpawnerService* spawnerService = ServiceProvider::find<SpawnerService>(this))
-				spawnerService->SpawnPlayer(model, this);   // 005d2b80 (declared in v8datamodel/SpawnerService.h)
-			else
-				workspace->moveToPoint(model.get(), G3D::Vector3(0.0f, 20.0f, 25.0f));
-		}
-#endif
-
 	}
 }
 

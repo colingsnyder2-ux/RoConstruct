@@ -2,12 +2,27 @@
 #include "v8world/ContactManager.h"
 #include "util/Math.h"
 #include "v8world/Primitive.h"
+#include "v8datamodel/PartInstance.h"
+#include "tool/DragUtilities.h"
 
 namespace RBX
 {
 	G3D::Vector3 Dragger::toGrid(const G3D::Vector3& v)
 	{
 		return Math::toGrid(v, dragSnap());
+	}
+
+	void Dragger::movePrimitives(const G3D::Array<Primitive*>& primitives, const G3D::Vector3& delta)
+	{
+		if (delta != G3D::Vector3::zero())
+		{
+			for (int i = 0; i < primitives.size(); ++i)
+			{
+				Primitive* primitive = primitives[i];
+				PartInstance* part = PartInstance::fromPrimitive(primitive);
+				DragUtilities::moveAndClean(part, delta);
+			}
+		}
 	}
 
 	Extents Dragger::computeExtents(const G3D::Array<Primitive*>& primitives)

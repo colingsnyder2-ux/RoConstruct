@@ -1,7 +1,5 @@
 #include "util/Quaternion.h"
 
-#include "../../../../../../tools/rbxgs/Client/App/include/util/Quaternion.h"
-
 extern "C" double __cdecl sqrt(double);
 namespace RBX
 {
@@ -99,4 +97,17 @@ void Quaternion::normalize()
     z *= inverse;
     w *= inverse;
 }
+}
+
+// INFERRED: returns the largest of |x|, |y|, |z|, |w|; body derived from the 2008-06 binary.
+
+#include <math.h>
+#include <algorithm>
+
+namespace RBX
+{
+	float Quaternion::maxComponent() const
+	{
+		return std::max(std::max(fabs(x), fabs(y)), std::max(fabs(z), fabs(w)));
+	}
 }

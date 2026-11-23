@@ -90,6 +90,220 @@ template class std::vector<RBX::Listener<RBX::ServiceProvider,RBX::ServiceRemovi
 
 #include "Network/Players.h"
 
+class CRobloxDoc;
+void setActiveDocument(bool active, CRobloxDoc* document);
+
+IMPLEMENT_DYNCREATE(CRobloxView, CView)
+
+BEGIN_MESSAGE_MAP(CRobloxView, CView)
+    ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
+    ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
+    ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
+    ON_WM_SIZE()
+    ON_WM_CREATE()
+    ON_WM_ERASEBKGND()
+    ON_WM_DESTROY()
+    ON_MESSAGE(WM_USER + 107, &CRobloxView::updateReflector)
+    ON_MESSAGE(WM_USER + 108, &CRobloxView::closeToolbox)
+    ON_COMMAND(0x8020, &CRobloxView::OnInsertFromFileAt)
+    ON_COMMAND(0x80d6, &CRobloxView::OnInsertFromFile)
+    ON_WM_CONTEXTMENU()
+    ON_WM_SETFOCUS()
+    ON_COMMAND(0x80fc, &CRobloxView::OnWindowCommand)
+    ON_UPDATE_COMMAND_UI(0x80fe, &CRobloxView::OnUpdateToolboxCheck)
+    ON_COMMAND(0x80fe, &CRobloxView::toggleToolbox)
+    ON_COMMAND(0x80fd, &CRobloxView::showHelp)
+    ON_COMMAND(0x800c, &CRobloxView::openToolboxPage)
+    ON_UPDATE_COMMAND_UI(0x800c, &CRobloxView::OnUpdateAlwaysEnable)
+END_MESSAGE_MAP()
+
+CRobloxView::CRobloxView() : RBX::VerbContainer(0), window(0), slot_1d8(0) {
+    popupMenu.Attach(::LoadMenu(AfxFindResourceHandle(MAKEINTRESOURCE(0x67), RT_MENU), MAKEINTRESOURCE(0x67)));
+}
+
+CRobloxView::~CRobloxView() {}
+
+void CRobloxView::OnActivateFrame(UINT state, CFrameWnd* frame) {
+    if (state) window.setActive(true);
+    else window.setActive(false);
+    CView::OnActivateFrame(state, frame);
+}
+
+void CRobloxView::OnUpdateToolboxCheck(CCmdUI* ui) { ui->SetCheck(slot_1d8 != 0); }
+
+boost::shared_ptr<const RBX::DataModel> CRobloxView::getDataModel() const { return owner_170; }
+
+void CRobloxView::OnActivateView(BOOL bActivate, CView* pActivateView, CView* pDeactiveView) {
+    CView::OnActivateView(bActivate, pActivateView, pDeactiveView);
+    if (bActivate) {
+        setActiveDocument(true, reinterpret_cast<CRobloxDoc*>(m_pDocument));
+        window.setActive(true);
+    } else if (pActivateView != pDeactiveView) {
+        setActiveDocument(false, reinterpret_cast<CRobloxDoc*>(m_pDocument));
+        window.setActive(false);
+    }
+}
+
+BOOL CRobloxView::OnPreparePrinting(CPrintInfo* pInfo) {
+    return DoPreparePrinting(pInfo);
+}
+
+// slot 97
+void CRobloxView::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo) {}
+
+// slot 99
+void CRobloxView::OnEndPrinting(CDC* pDC, CPrintInfo* pInfo) {}
+
+void CRobloxView::OnDraw(CDC* pDC) {
+}
+
+void CRobloxView::onEvent(const RBX::ServiceProvider* source, RBX::ServiceAdded event) {}
+
+void CRobloxView::detachDataModel() {
+    RBX::DataModel::Lock lock(owner_170);
+    slot_1dc.reset();
+    slot_1e0.reset();
+    slot_1e4.reset();
+    slot_1e8.reset();
+    slot_1ec.reset();
+    RBX::Listener<RBX::ServiceProvider, RBX::ServiceAdded>* added = this;
+    if (owner_170.get())
+        owner_170->RBX::Notifier<RBX::ServiceProvider, RBX::ServiceAdded>::removeListener(added);
+    RBX::Listener<RBX::ServiceProvider, RBX::ServiceRemoving>* removing =
+        &static_cast<RBX::Listener<RBX::ServiceProvider, RBX::ServiceRemoving>&>(*this);
+    if (owner_170.get())
+        owner_170->RBX::Notifier<RBX::ServiceProvider, RBX::ServiceRemoving>::removeListener(removing);
+    RBX::Network::Players* players = RBX::ServiceProvider::find<RBX::Network::Players>(getDataModel().get());
+    if (players)
+        players->RBX::Notifier<RBX::Network::Players, RBX::SuperSafeChanged>::removeListener(
+            static_cast<RBX::Listener<RBX::Network::Players, RBX::SuperSafeChanged>*>(this));
+}
+
+template class RBX::Listener<RBX::Network::Players,RBX::SuperSafeChanged>;
+template class RBX::Listener<RBX::ServiceProvider,RBX::ServiceAdded>;
+template class RBX::Listener<RBX::ServiceProvider,RBX::ServiceRemoving>;
+template class boost::scoped_ptr<RBX::Verb>;
+template class std::map<unsigned int,RBX::Name const *,std::less<unsigned int>,std::allocator<std::pair<unsigned int const ,RBX::Name const *> > >;
+
+void CRobloxView::toggleToolbox()
+{
+    showToolbox(slot_1d8 == 0, true);
+}
+
+void CRobloxView::openToolboxPage()
+{
+    showToolbox(true, true);
+    slot_1d8->showPage(9);
+}
+
+LRESULT CRobloxView::closeToolbox(WPARAM, LPARAM)
+{
+    if (slot_1d8) {
+        slot_1d8->DestroyWindow();
+        slot_1d8 = 0;
+        layout();
+    }
+    return 0;
+}
+
+void CRobloxView::OnSetFocus(CWnd* pOldWnd)
+{
+    CView::OnSetFocus(pOldWnd);
+    GetParentFrame()->SetActiveView(this, 0);
+    window.SetFocus();
+}
+
+void CRobloxView::layout()
+{
+    RECT rect;
+    GetClientRect(&rect);
+    int height = rect.bottom - rect.top;
+    int width = rect.right - rect.left;
+    int viewHeight = height;
+
+    if (slot_1d8 && slot_1d8->m_hWnd)
+        width -= 0xe1;
+    if (reflector.m_hWnd)
+        viewHeight = height - 0x14;
+
+    int h = std::max(viewHeight, 0);
+    int w = std::max(width, 0);
+
+    if (window.m_hWnd)
+        window.MoveWindow(0, 0, w, h, 1);
+    if (slot_1d8 && slot_1d8->m_hWnd)
+        slot_1d8->MoveWindow(w, 0, 0xe1, height, 1);
+    if (reflector.m_hWnd)
+        reflector.MoveWindow(0, h, w, 0x14, 1);
+}
+
+void CRobloxView::showHelp()
+{
+    CStringA applicationBaseUrl();
+    class CBrowserView* showBrowserPopup(tagRECT, CWnd*, CStringA, IDispatch*);
+
+    tagRECT rect;
+    ::GetClientRect(window.m_hWnd, &rect);
+    ::InflateRect(&rect, -12, -12);
+
+    rect.right = (rect.right - rect.left) / 2;
+    int height = rect.bottom - rect.top;
+    int limit = 480;
+    const int& m = height < limit ? height : limit;
+    rect.bottom = m - rect.top;
+
+    showBrowserPopup(rect, &window, applicationBaseUrl() + "/Game/Help.aspx", 0);
+}
+
+int CRobloxView::OnCreate(LPCREATESTRUCT lpCreateStruct) {
+    RECT rect;
+    if (CView::OnCreate(lpCreateStruct) == -1)
+        return -1;
+
+    ::GetClientRect(m_hWnd, &rect);
+    return (window.Create(0, "Roblox", 0x50000000, rect, this, 1, 0) != 0) - 1;
+}
+
+void CRobloxView::OnSize(UINT nType, int cx, int cy) {
+    CView::OnSize(nType, cx, cy);
+    layout();
+}
+
+void CRobloxView::OnDestroy() {
+    detachDataModel();
+    CView::OnDestroy();
+}
+
+BOOL CRobloxView::OnEraseBkgnd(CDC*) {
+    return TRUE;
+}
+
+void CRobloxView::OnContextMenu(CWnd*, CPoint) {
+}
+
+void CRobloxView::OnWindowCommand() {
+    window.windowCommand();
+}
+
+void CRobloxView::OnInsertFromFile() {
+    insertFromFile(0);
+}
+
+void CRobloxView::OnInsertFromFileAt() {
+    insertFromFile(1);
+}
+
+LRESULT CRobloxView::updateReflector(WPARAM, LPARAM) {
+    return 0;
+}
+
+void CRobloxView::OnUpdateAlwaysEnable(CCmdUI* pCmdUI) {
+    pCmdUI->Enable(TRUE);
+}
+
+void CRobloxView::insertFromFile(int mode) {
+}
+
 void CRobloxView::onEvent(const RBX::Network::Players *, RBX::SuperSafeChanged)
 {
 	::PostMessageA(m_hWnd, 0x46b, 0, 0);
@@ -123,12 +337,58 @@ void InsertModelFromRobloxVerb::doIt(RBX::IDataState*)
     view->PostMessage(WM_COMMAND, 0x80fe);
 }
 
-void LockPlayModeVerb::doIt(RBX::IDataState* dataState)
+#ifdef VIEWVERBS_MAINFRAME_HEADER_COMPILES
+#include "CMainFrame.h"
+
+static CMainFrame* mainFrame() { return static_cast<CMainFrame*>(AfxGetApp()->m_pMainWnd); }
+#endif
+
+#ifdef VIEWVERBS_OWNS_SHARD_BODIES
+void HelpCommand::doIt(RBX::IDataState*)
 {
-	if (isEnabled())
-	{
-		AfxGetApp()->m_pMainWnd->PostMessageA(0x111, 0x80f5, 0);
-	}
+    view->PostMessage(WM_COMMAND, 0x80fd);
+}
+
+#ifdef VIEWVERBS_MAINFRAME_HEADER_COMPILES
+bool ToggleFullscreenVerb::isChecked() const
+{
+    return mainFrame()->stateF8;
+}
+#endif
+
+void ToggleFullscreenVerb::doIt(RBX::IDataState*)
+{
+    AfxGetApp()->m_pMainWnd->PostMessage(WM_COMMAND, 0x80f4);
+}
+#endif
+
+void LockPlayModeVerb::doIt(RBX::IDataState*)
+{
+    AfxGetApp()->m_pMainWnd->PostMessage(WM_COMMAND, 0x80ff);
+}
+
+ToggleIDEModeVerb::ToggleIDEModeVerb(RBX::VerbContainer* c)
+    : RBX::Verb(c, std::string("TogglePlayMode")), createdAt(G3D::System::getTick()) {}
+
+#ifdef VIEWVERBS_MAINFRAME_HEADER_COMPILES
+bool ToggleIDEModeVerb::isEnabled() const
+{
+    double now = G3D::System::getTick();
+    if (createdAt + 10.0 > now)
+        return false;
+    return !mainFrame()->state105;
+}
+
+bool ToggleIDEModeVerb::isChecked() const
+{
+    return !mainFrame()->state104;
+}
+#endif
+
+void ToggleIDEModeVerb::doIt(RBX::IDataState*)
+{
+    if (isEnabled())
+        AfxGetApp()->m_pMainWnd->PostMessage(WM_COMMAND, 0x80f5);
 }
 
 void ToggleFullscreenVerb::doIt(RBX::IDataState* dataState)

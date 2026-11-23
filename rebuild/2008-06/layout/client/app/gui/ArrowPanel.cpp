@@ -15,7 +15,6 @@ namespace RBX
 		return dataModel->getWorkspace()->getControllersUsed().hasController(controller);
 	}
 
-#ifdef NATIVE_GUIWIDGETS_PENDING
 	void ArrowPanel::init(Adorn* adorn, const std::string& title, const std::string& up, const std::string& down,
 						  const std::string& left, const std::string& right, SDLKey upKey, SDLKey downKey, SDLKey leftKey,
 						  SDLKey rightKey)
@@ -38,6 +37,7 @@ namespace RBX
 		addGuiItem(rightPanel);
 	}
 
+#ifdef NATIVE_GUIWIDGETS_PENDING
 	ArrowPanel::ArrowPanel(Adorn* adorn, DataModel* dataModel, Controller::ControllerType controller)
 		: TopMenuBar("ArrowPanel", Layout::HORIZONTAL)
 	{

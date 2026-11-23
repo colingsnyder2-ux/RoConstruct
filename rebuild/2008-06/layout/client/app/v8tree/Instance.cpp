@@ -1,6 +1,108 @@
+#include "v8tree/Instance.h"
+#include "v8xml/SerializerV2.h"
+#include <boost/scoped_ptr.hpp>
+
+#ifdef NATIVE_INSTANCE_FROMXMLROOT_DECLARED
+namespace RBX {
+// INFERRED: the donor's inline Instance::toNewXmlRoot(Instance*) (openrbx v8tree/Instance.cpp), file-local because the
+static inline XmlElement* toNewXmlRoot(Instance* instance)
+{
+    XmlElement* root = SerializerV2::newRootElement();
+    root->addChild(instance->write());
+    return root;
+}
+
+boost::shared_ptr<Instance> Instance::clone()
+{
+    boost::scoped_ptr<XmlElement> root(toNewXmlRoot(this));
+    return fromXmlRoot(root.get());
+}
+}
+#endif
+
+#ifdef NATIVE_INSTANCE_SETPARENT_DECLARED
+#include <G3D/format.h>
+#include <stdexcept>
+#include <algorithm>
+
+namespace RBX {
+
+// INFERRED: 0055a8f0 raises ChildAdded; mirror of the canonical layout.
+struct ChildAdded {
+    const boost::shared_ptr<Instance> child;
+    ChildAdded(Instance* value) : child(shared_from_out_of_line(value)) {}
+    ChildAdded(const ChildAdded&); // 004116f0
+};
+
+// INFERRED: 0055a8f0 raises ChildRemoved; same single-shared_ptr layout.
+struct ChildRemoved {
+    const boost::shared_ptr<Instance> child;
+    ChildRemoved(Instance* value) : child(shared_from_out_of_line(value)) {}
+    ChildRemoved(const ChildRemoved&); // 004116f0
+};
+
+// INFERRED: the original TU had this inline; defining it here lets the optimizer
+// keep oldParent in ECX across the `contains` call in setParent (byte-exact codegen).
+bool Instance::contains(const Instance* child) const
+{
+    while (child) {
+        if (child == this)
+            return true;
+        child = child->parent;
+    }
+    return false;
+}
+
+void Instance::setParent(Instance* newParent)
+{
+    Instance* previousParent = parent;
+    if (newParent == previousParent)
+        return;
+    if (this == newParent) {
+        std::string message = G3D::format("Attempt to set %s as its own parent", getFullName().c_str());
+        throw std::runtime_error(message);
+    }
+    if (isAncestorOf(newParent)) {
+        std::string message = G3D::format("Attempt to set parent of %s to %s results in circular reference",
+                                          getFullName().c_str(), newParent->getFullName().c_str());
+        throw std::runtime_error(message);
+    }
+    boost::shared_ptr<Instance> oldParent = shared_from_out_of_line(previousParent);
+    boost::shared_ptr<Instance> self = shared_from_this();
+    if (oldParent) {
+        if (!oldParent->contains(newParent))
+            signalDescendentRemoving(self, oldParent.get(), newParent);
+        oldParent->onChildRemoving(this);
+        boost::shared_ptr<std::vector<boost::shared_ptr<Instance> > >& c = oldParent->children.write();
+        c->erase(std::find(c->begin(), c->end(), self));
+        if (c->size() == 0)
+            oldParent->children.reset();
+        parent = 0;
+        event_childRemoved.fire(oldParent.get(), self);
+        oldParent->Notifier<Instance, ChildRemoved>::raise(ChildRemoved(this));
+        oldParent->onChildRemoved(this);
+        if (oldParent->numChildren() == 0)
+            oldParent->onLastChildRemoved();
+    }
+    if (newParent)
+        newParent->children.write()->push_back(self);
+    parent = newParent;
+    if (newParent) {
+        newParent->onChildAdded(this);
+        if (!newParent->contains(oldParent.get()))
+            signalDescendentAdded(this, newParent, oldParent.get());
+        newParent->Notifier<Instance, ChildAdded>::raise(ChildAdded(this));
+        event_childAdded.fire(newParent, self);
+    }
+    onAncestorChanged(AncestorChanged(this, oldParent.get(), newParent));
+    raisePropertyChanged(propParent);
+}
+
+} // namespace RBX
+#endif
+
 #include "AppUnit558_2008/InstanceDescendantRemoving2008.h"
 #include "v8xml/XmlElement.h"
-#include <algorithm>
 #ifdef NATIVE_APPUNIT558_PENDING
 #include "v8datamodel/MergeBinder2008.h"  // IReferenceBinder (announceID slot 0)
 #endif
@@ -95,7 +197,7 @@ void Instance::onAncestorChanged(const AncestorChanged& event)
 void Instance::onDescendentAdded(Instance* instance)
 {
     if (Notifier<Instance, DescendantAdded>::hasListeners())
-        Notifier<Instance, DescendantAdded>::raise(DescendantAdded(instance, instance->parent));
+        Notifier<Instance, DescendantAdded>::raise(DescendantAdded(instance, instance->getParent()));
     event_descendentAdded.fire(this, shared_from(instance));
 }
 
@@ -152,10 +254,13 @@ Reflection::MemberDescriptorContainer<Reflection::PropertyDescriptor>::ConstIter
 
 void Instance::writeProperties(XmlElement* container) const
 {
-    for (Reflection::ConstPropertyIterator iter = properties_begin(); iter != properties_end(); ++iter) {
-        XmlElement* child = iter.getDescriptor().write(this, false);
+    Reflection::ConstPropertyIterator iter = properties_begin();
+    while (iter != properties_end()) {
+        const Reflection::PropertyDescriptor& descriptor = iter.getDescriptor();
+        XmlElement* child = descriptor.write(this, false);
         if (child)
             container->addChild(child);
+        ++iter;
     }
 }
 
@@ -332,7 +437,9 @@ void Instance::applyAnchoredToChildren(AnchorAction value)
 }
 }
 
-#include "v8tree/Instance.h"
+namespace RBX {
+Reflection::BoundProp<bool, 1> Instance::propArchivable("archivable", "Behavior", &Instance::archivable, Reflection::PropertyDescriptor::STANDARD);
+}
 
 RBX::Instance* RBX::Instance::findFirstChildByClassName(std::string className) const
 {
@@ -393,3 +500,20 @@ template class std::_Tmap_traits<RBX::Reflection::SignalDescriptor const *,boost
 template class std::_Tree<std::_Tmap_traits<RBX::Reflection::SignalDescriptor const *,boost::shared_ptr<RBX::Reflection::SignalInstance>,std::less<RBX::Reflection::SignalDescriptor const *>,std::allocator<std::pair<RBX::Reflection::SignalDescriptor const * const,boost::shared_ptr<RBX::Reflection::SignalInstance> > >,0> >;
 template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Reflection::SignalDescriptor const *,boost::shared_ptr<RBX::Reflection::SignalInstance>,std::less<RBX::Reflection::SignalDescriptor const *>,std::allocator<std::pair<RBX::Reflection::SignalDescriptor const * const,boost::shared_ptr<RBX::Reflection::SignalInstance> > >,0> >::_Node *>;
 template class std::map<RBX::Reflection::SignalDescriptor const *,boost::shared_ptr<RBX::Reflection::SignalInstance>,std::less<RBX::Reflection::SignalDescriptor const *>,std::allocator<std::pair<RBX::Reflection::SignalDescriptor const * const,boost::shared_ptr<RBX::Reflection::SignalInstance> > > >;
+
+namespace RBX {
+const Reflection::PropDescriptor<Instance, std::string> Instance::desc_Name("Name", "Data", &Instance::getName, &Instance::setName, Reflection::PropertyDescriptor::STANDARD);
+}
+
+namespace RBX {
+const Reflection::RefPropDescriptor<Instance, Instance> Instance::propParent("Parent", "Data", &Instance::getParent, &Instance::setParent, Reflection::PropertyDescriptor::UI);
+}
+
+namespace RBX {
+Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)>
+    Instance::event_descendentAdded("DescendantAdded", "descendant");
+Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)>
+    Instance::event_descendentRemoving("DescendantRemoving", "descendant");
+Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)>
+    Instance::event_ancestryChanged("AncestryChanged", "child");
+}

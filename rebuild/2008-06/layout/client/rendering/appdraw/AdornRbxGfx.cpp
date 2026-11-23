@@ -1,5 +1,62 @@
 #include "RbxGraphics/AdornRbxGfx2008.h"
+#include "OgreRbx/VisualEngine2008.h"
+#include "OgreRbxNode/TwoDManager2008.h"
+#include "OgreRbx/RbxEntity2008.h"
+#include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
+#include <OgreViewport.h>
+
+namespace RBX
+{
+    extern int nameCounter;
+
+    void AdornRbxGfx::rect2d(const G3D::Rect2D& rect, const G3D::Color4& color) const
+    {
+        visualEngine->twoD->addQuad(texture2d, color,
+                                    rect.x0(), (getHeight() - 1) - rect.y0(),
+                                    rect.x1(), (getHeight() - 1) - rect.y1(),
+                                    0, 0, 1, 1);
+    }
+
+    static inline void outlineRectangle2d(const AdornRbxGfx* adorn, Ogre::TwoDManager* twoD,
+                                          float x0, float y0, float x1, float y1, const G3D::Color4& color)
+    {
+        twoD->primitive(Ogre::RenderOperation::OT_LINE_LIST,
+                        x0, (adorn->getHeight() - 1) - y0,
+                        x1, (adorn->getHeight() - 1) - y1,
+                        color);
+    }
+
+    void AdornRbxGfx::outlineRect2d(const G3D::Rect2D& rect, float thick, const G3D::Color4& color) const
+    {
+        outlineRectangle2d(this, visualEngine->twoD, rect.x0(), rect.y0(), rect.x1(), rect.y1(), color);
+    }
+
+    void AdornRbxGfx::line2d(const G3D::Vector2& p0, const G3D::Vector2& p1, const G3D::Color4& color) const
+    {
+        Ogre::TwoDManager* twoD = visualEngine->twoD;
+        twoD->outlineRectangle(p0.x, (getHeight() - 1) - p0.y,
+                               p1.x, (getHeight() - 1) - p1.y,
+                               color);
+    }
+
+    G3D::Rect2D AdornRbxGfx::getViewport() const
+    {
+        Ogre::Viewport* viewport = visualEngine->viewport;
+        return G3D::Rect2D::xywh(viewport->getActualLeft(), viewport->getActualTop(),
+                                 viewport->getActualWidth(), viewport->getActualHeight());
+    }
+
+    void AdornRbxGfx::finishRenderPass()
+    {
+        rootNode->removeAndDestroyAllChildren();
+        visualEngine->sceneManager->destroyAllManualObjects();
+        nameCounter = 0;
+        entity->func_0067d3d0();
+        releaseSubEntities();
+    }
+}
+
 #include <OgreMatrix3.h>
 #include <OgreMatrix4.h>
 #include <OgreQuaternion.h>
@@ -18,7 +75,7 @@ template class std::vector<Ogre::SceneNode*>;
 
 namespace RBX
 {
-    static int nameCounter;
+    int nameCounter;   // global 0097da58: external linkage (AdornRbxGfx2d.cpp finishRenderPass is exact only so)
 
     void AdornRbxGfx::setObjectToWorldMatrix(const G3D::CoordinateFrame& c)
     {
@@ -99,9 +156,7 @@ template class std::reverse_iterator<std::_Vector_const_iterator<Ogre::SceneNode
 template class std::reverse_iterator<std::_Vector_iterator<Ogre::RbxSubEntity *,std::allocator<Ogre::RbxSubEntity *> > >;
 template class std::reverse_iterator<std::_Vector_iterator<Ogre::SceneNode *,std::allocator<Ogre::SceneNode *> > >;
 
-#include "OgreRbx/VisualEngine2008.h"
 #include "OgreRbx/VRbxFont2008.h"
-#include <OgreViewport.h>
 
 namespace RBX
 {
@@ -130,9 +185,7 @@ namespace RBX
 }
 
 #include "OgreRbxNode/RbxSceneNode2008.h"
-#include "OgreRbx/RbxEntity2008.h"
 #include "AppUnit67C_2008/RbxSubEntity2008.h"
-#include <OgreSceneManager.h>
 #include <OgreParticleSystem.h>
 
 namespace RBX

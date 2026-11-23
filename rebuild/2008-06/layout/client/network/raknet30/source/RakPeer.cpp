@@ -1,3 +1,10 @@
+#include "RakPeer.h"
+
+void RakPeer::SetPerConnectionOutgoingBandwidthLimit(unsigned maxBitsPerSecond)
+{
+    maxOutgoingBPS = maxBitsPerSecond;
+}
+
 /// \file
 ///
 /// This file is part of RakNet Copyright 2003 Kevin Jenkins.
@@ -15,7 +22,6 @@
 /// option) any later version.
 
 #include "RakNetDefines.h"
-#include "RakPeer.h"
 #include "RakNetTypes.h"
 
 #ifdef _WIN32
@@ -702,6 +708,297 @@ void* UpdateNetworkLoop( void* arguments )
 	return 0;
 }
 
+// 2008 native headers, with simulator fields; complete ABI and runtime unverified.
+#define alloca _malloca
+/// \file
+///
+/// This file is part of RakNet Copyright 2003 Kevin Jenkins.
+///
+/// Usage of RakNet is subject to the appropriate license agreement.
+/// Creative Commons Licensees are subject to the
+/// license found at
+/// http://creativecommons.org/licenses/by-nc/2.5/
+/// Single application licensees are subject to the license found at
+/// http://www.rakkarsoft.com/SingleApplicationLicense.html
+/// Custom license users are subject to the terms therein.
+/// GPL license users are subject to the GNU General Public
+/// License as published by the Free
+/// Software Foundation; either version 2 of the License, or (at your
+/// option) any later version.
+
+#ifdef _WIN32
+//#include <Shlwapi.h>
+#else
+#define closesocket close
+#endif
+
+#if !defined ( __APPLE__ ) && !defined ( __APPLE_CC__ )
+#endif
+
+#ifdef _COMPATIBILITY_1
+//
+#elif defined(_WIN32)
+//
+#elif defined(_COMPATIBILITY_2)
+#else
+#endif
+
+#ifdef _MSC_VER
+#pragma warning( push )
+#endif
+
+#ifdef _WIN32
+unsigned __stdcall UpdateNetworkLoop( LPVOID arguments );
+#else
+void* UpdateNetworkLoop( void* arguments );
+#endif
+
+bool RakPeer::HandleRPCPacket( const char *data, int length, SystemAddress systemAddress )
+{
+	// RPC BitStream format is
+	// ID_RPC - unsigned char
+	// Unique identifier string length - unsigned char
+	// The unique ID  - string with each letter in upper case, subtracted by 'A' and written in 5 bits.
+	// Number of bits of the data (int)
+	// The data
+
+	RakNet::BitStream incomingBitStream( (unsigned char *) data, length, false );
+	char uniqueIdentifier[ 256 ];
+//	unsigned int bitLength;
+	unsigned char *userData;
+	//bool hasTimestamp;
+	bool nameIsEncoded, networkIDIsEncoded;
+	RPCIndex rpcIndex;
+	RPCNode *node;
+	RPCParameters rpcParms;
+	NetworkID networkID;
+	bool blockingCommand;
+	RakNet::BitStream replyToSender;
+	rpcParms.replyToSender=&replyToSender;
+
+	rpcParms.recipient=this;
+	rpcParms.sender=systemAddress;
+
+	// Note to self - if I change this format then I have to change the PacketLogger class too
+	incomingBitStream.IgnoreBits(8);
+	if (data[0]==ID_TIMESTAMP)
+	{
+		incomingBitStream.IgnoreBits(8*(sizeof(RakNetTime)+sizeof(MessageID)));
+		memcpy(&rpcParms.remoteTimestamp, data+sizeof(MessageID), sizeof(RakNetTime));
+	}
+	else
+		rpcParms.remoteTimestamp=0;
+	if ( incomingBitStream.Read( nameIsEncoded ) == false )
+	{
+#ifdef _DEBUG
+		assert( 0 ); // bitstream was not long enough.  Some kind of internal error
+#endif
+		return false;
+	}
+
+	if (nameIsEncoded)
+	{
+		if ( stringCompressor->DecodeString(uniqueIdentifier, 256, &incomingBitStream) == false )
+		{
+#ifdef _DEBUG
+			assert( 0 ); // bitstream was not long enough.  Some kind of internal error
+#endif
+			return false;
+		}
+
+		rpcIndex = rpcMap.GetIndexFromFunctionName(uniqueIdentifier);
+	}
+	else
+	{
+		if ( incomingBitStream.ReadCompressed( rpcIndex ) == false )
+		{
+#ifdef _DEBUG
+			assert( 0 ); // bitstream was not long enough.  Some kind of internal error
+#endif
+			return false;
+		}
+	}
+	if ( incomingBitStream.Read( blockingCommand ) == false )
+	{
+#ifdef _DEBUG
+		assert( 0 ); // bitstream was not long enough.  Some kind of internal error
+#endif
+		return false;
+	}
+
+	/*
+	if ( incomingBitStream.Read( rpcParms.hasTimestamp ) == false )
+	{
+#ifdef _DEBUG
+		assert( 0 ); // bitstream was not long enough.  Some kind of internal error
+#endif
+		return false;
+	}
+	*/
+
+	if ( incomingBitStream.ReadCompressed( rpcParms.numberOfBitsOfData ) == false )
+	{
+#ifdef _DEBUG
+		assert( 0 ); // bitstream was not long enough.  Some kind of internal error
+#endif
+		return false;
+	}
+
+	if ( incomingBitStream.Read( networkIDIsEncoded ) == false )
+	{
+#ifdef _DEBUG
+		assert( 0 ); // bitstream was not long enough.  Some kind of internal error
+#endif
+		return false;
+	}
+
+	if (networkIDIsEncoded)
+	{
+		if ( incomingBitStream.Read( networkID ) == false )
+		{
+#ifdef _DEBUG
+			assert( 0 ); // bitstream was not long enough.  Some kind of internal error
+#endif
+			return false;
+		}
+	}
+
+	if (rpcIndex==UNDEFINED_RPC_INDEX)
+	{
+		// Unregistered function
+		RakAssert(0);
+		return false;
+	}
+
+	node = rpcMap.GetNodeFromIndex(rpcIndex);
+	if (node==0)
+	{
+#ifdef _DEBUG
+		assert( 0 ); // Should never happen except perhaps from threading errors?  No harm in checking anyway
+#endif
+		return false;
+	}
+
+	// Make sure the call type matches - if this is a pointer to a class member then networkID must be defined.  Otherwise it must not be defined
+	if (node->isPointerToMember==true && networkIDIsEncoded==false)
+	{
+		// If this hits then this pointer was registered as a class member function but the packet does not have an NetworkID.
+		// Most likely this means this system registered a function with REGISTER_CLASS_MEMBER_RPC and the remote system called it
+		// using the unique ID for a function registered with REGISTER_STATIC_RPC.
+		assert(0);
+		return false;
+	}
+
+	if (node->isPointerToMember==false && networkIDIsEncoded==true)
+	{
+		// If this hits then this pointer was not registered as a class member function but the packet does have an NetworkID.
+		// Most likely this means this system registered a function with REGISTER_STATIC_RPC and the remote system called it
+		// using the unique ID for a function registered with REGISTER_CLASS_MEMBER_RPC.
+		assert(0);
+		return false;
+	}
+
+	if (nameIsEncoded && GetRemoteSystemFromSystemAddress(systemAddress, false, true))
+	{
+		// Send ID_RPC_MAPPING to the sender so they know what index to use next time
+		RakNet::BitStream rpcMapBitStream;
+		rpcMapBitStream.Write((MessageID)ID_RPC_MAPPING);
+		stringCompressor->EncodeString(node->uniqueIdentifier, 256, &rpcMapBitStream);
+        rpcMapBitStream.WriteCompressed(rpcIndex);
+		SendBuffered( (const char*)rpcMapBitStream.GetData(), rpcMapBitStream.GetNumberOfBitsUsed(), HIGH_PRIORITY, UNRELIABLE, 0, systemAddress, false, RemoteSystemStruct::NO_ACTION );
+	}
+
+	rpcParms.functionName=node->uniqueIdentifier;
+
+	// Call the function
+	if ( rpcParms.numberOfBitsOfData == 0 )
+	{
+		rpcParms.input=0;
+		if (networkIDIsEncoded)
+		{
+			if (networkIDManager)
+			{
+				void *object = networkIDManager->GET_OBJECT_FROM_ID(networkID);
+				if (object)
+					(node->memberFunctionPointer(object, &rpcParms));
+			}
+		}
+		else
+		{
+			node->staticFunctionPointer( &rpcParms );
+		}
+	}
+	else
+	{
+		if ( incomingBitStream.GetNumberOfUnreadBits() == 0 )
+		{
+#ifdef _DEBUG
+			assert( 0 );
+#endif
+			return false; // No data was appended!
+		}
+
+		// We have to copy into a new data chunk because the user data might not be byte aligned.
+		bool usedAlloca=false;
+#if !defined(_COMPATIBILITY_1)
+		if (BITS_TO_BYTES( incomingBitStream.GetNumberOfUnreadBits() ) < MAX_ALLOCA_STACK_ALLOCATION)
+		{
+			userData = ( unsigned char* ) alloca( BITS_TO_BYTES( incomingBitStream.GetNumberOfUnreadBits() ) );
+			usedAlloca=true;
+		}
+		else
+#endif
+			userData = new unsigned char[BITS_TO_BYTES(incomingBitStream.GetNumberOfUnreadBits())];
+
+		// The false means read out the internal representation of the bitstream data rather than
+		// aligning it as we normally would with user data.  This is so the end user can cast the data received
+		// into a bitstream for reading
+		if ( incomingBitStream.ReadBits( ( unsigned char* ) userData, rpcParms.numberOfBitsOfData, false ) == false )
+		{
+#ifdef _DEBUG
+			assert( 0 );
+#endif
+			#if defined(_COMPATIBILITY_1)
+			delete [] userData;
+			#endif
+
+			return false; // Not enough data to read
+		}
+
+//		if ( rpcParms.hasTimestamp )
+//			ShiftIncomingTimestamp( userData, systemAddress );
+
+		// Call the function callback
+		rpcParms.input=userData;
+		if (networkIDIsEncoded)
+		{
+			if (networkIDManager)
+			{
+				void *object = networkIDManager->GET_OBJECT_FROM_ID(networkID);
+				if (object)
+					(node->memberFunctionPointer(object, &rpcParms));
+			}
+		}
+		else
+		{
+			node->staticFunctionPointer( &rpcParms );
+		}
+
+		if (usedAlloca==false)
+			delete [] userData;
+	}
+
+	if (blockingCommand)
+	{
+		RakNet::BitStream reply;
+		reply.Write((MessageID)ID_RPC_REPLY);
+		reply.Write((char*)replyToSender.GetData(), replyToSender.GetNumberOfBytesUsed());
+		Send(&reply, HIGH_PRIORITY, RELIABLE, 0, systemAddress, false);
+	}
+
+	return true;
+}
+
 /// \file
 ///
 /// This file is part of RakNet Copyright 2003 Kevin Jenkins.
@@ -968,6 +1265,147 @@ bool RakPeer::RPC( const char* uniqueID, const char *data, unsigned int bitLengt
 	}
 
 	return true;
+}
+
+// 2008 native headers, with simulator fields; complete ABI and runtime unverified.
+#define alloca _malloca
+/// \file
+///
+/// This file is part of RakNet Copyright 2003 Kevin Jenkins.
+///
+/// Usage of RakNet is subject to the appropriate license agreement.
+/// Creative Commons Licensees are subject to the
+/// license found at
+/// http://creativecommons.org/licenses/by-nc/2.5/
+/// Single application licensees are subject to the license found at
+/// http://www.rakkarsoft.com/SingleApplicationLicense.html
+/// Custom license users are subject to the terms therein.
+/// GPL license users are subject to the GNU General Public
+/// License as published by the Free
+/// Software Foundation; either version 2 of the License, or (at your
+/// option) any later version.
+
+#ifdef _WIN32
+//#include <Shlwapi.h>
+#else
+#define closesocket close
+#endif
+
+#if !defined ( __APPLE__ ) && !defined ( __APPLE_CC__ )
+#endif
+
+#ifdef _COMPATIBILITY_1
+//
+#elif defined(_WIN32)
+//
+#elif defined(_COMPATIBILITY_2)
+#else
+#endif
+
+#ifdef _MSC_VER
+#pragma warning( push )
+#endif
+
+#ifdef _WIN32
+unsigned __stdcall UpdateNetworkLoop( LPVOID arguments );
+#else
+void* UpdateNetworkLoop( void* arguments );
+#endif
+
+bool RakPeer::SendImmediate( char *data, int numberOfBitsToSend, PacketPriority priority, PacketReliability reliability, char orderingChannel, SystemAddress systemAddress, bool broadcast, bool useCallerDataAllocation, RakNetTimeNS currentTime )
+{
+	unsigned *sendList;
+	unsigned sendListSize;
+	bool callerDataAllocationUsed;
+	unsigned remoteSystemIndex, sendListIndex; // Iterates into the list of remote systems
+	unsigned numberOfBytesUsed = BITS_TO_BYTES(numberOfBitsToSend);
+	callerDataAllocationUsed=false;
+
+	sendListSize=0;
+
+	// 03/06/06 - If broadcast is false, use the optimized version of GetIndexFromSystemAddress
+	if (broadcast==false)
+	{
+#if !defined(_COMPATIBILITY_1)
+		sendList=(unsigned *)alloca(sizeof(unsigned));
+#else
+		sendList = new unsigned[1];
+#endif
+		remoteSystemIndex=GetIndexFromSystemAddress( systemAddress, true );
+		if (remoteSystemIndex!=(unsigned)-1 &&
+			remoteSystemList[remoteSystemIndex].isActive &&
+			remoteSystemList[remoteSystemIndex].connectMode!=RemoteSystemStruct::DISCONNECT_ASAP &&
+			remoteSystemList[remoteSystemIndex].connectMode!=RemoteSystemStruct::DISCONNECT_ASAP_SILENTLY &&
+			remoteSystemList[remoteSystemIndex].connectMode!=RemoteSystemStruct::DISCONNECT_ON_NO_ACK)
+		{
+			sendList[0]=remoteSystemIndex;
+			sendListSize=1;
+		}
+	}
+	else
+	{
+#if !defined(_COMPATIBILITY_1)
+	//sendList=(unsigned *)alloca(sizeof(unsigned)*remoteSystemListSize);
+		sendList=(unsigned *)alloca(sizeof(unsigned)*maximumNumberOfPeers);
+#else
+	//sendList = new unsigned[remoteSystemListSize];
+		sendList = new unsigned[maximumNumberOfPeers];
+#endif
+
+		// remoteSystemList in network thread
+		for ( remoteSystemIndex = 0; remoteSystemIndex < maximumNumberOfPeers; remoteSystemIndex++ )
+		//for ( remoteSystemIndex = 0; remoteSystemIndex < remoteSystemListSize; remoteSystemIndex++ )
+		{
+			if ( remoteSystemList[ remoteSystemIndex ].isActive && remoteSystemList[ remoteSystemIndex ].systemAddress != systemAddress && remoteSystemList[ remoteSystemIndex ].systemAddress != UNASSIGNED_SYSTEM_ADDRESS )
+				sendList[sendListSize++]=remoteSystemIndex;
+		}
+	}
+
+	if (sendListSize==0)
+	{
+#if defined(_COMPATIBILITY_1)
+		delete [] sendList;
+#endif
+		return false;
+	}
+
+	for (sendListIndex=0; sendListIndex < sendListSize; sendListIndex++)
+	{
+		if ( trackFrequencyTable )
+		{
+			unsigned i;
+			// Store output frequency
+			for (i=0 ; i < numberOfBytesUsed; i++ )
+				frequencyTable[ (unsigned char)(data[i]) ]++;
+			rawBytesSent += numberOfBytesUsed;
+		}
+
+		if ( outputTree )
+		{
+			RakNet::BitStream bitStreamCopy( numberOfBytesUsed );
+			outputTree->EncodeArray( (unsigned char*) data, numberOfBytesUsed, &bitStreamCopy );
+			compressedBytesSent += bitStreamCopy.GetNumberOfBytesUsed();
+			remoteSystemList[sendList[sendListIndex]].reliabilityLayer.Send( (char*) bitStreamCopy.GetData(), bitStreamCopy.GetNumberOfBitsUsed(), priority, reliability, orderingChannel, true, remoteSystemList[sendList[sendListIndex]].MTUSize, currentTime );
+		}
+		else
+		{
+			// Send may split the packet and thus deallocate data.  Don't assume data is valid if we use the callerAllocationData
+			bool useData = useCallerDataAllocation && callerDataAllocationUsed==false && sendListIndex+1==sendListSize;
+			remoteSystemList[sendList[sendListIndex]].reliabilityLayer.Send( data, numberOfBitsToSend, priority, reliability, orderingChannel, useData==false, remoteSystemList[sendList[sendListIndex]].MTUSize, currentTime );
+			if (useData)
+				callerDataAllocationUsed=true;
+		}
+
+		if (reliability==RELIABLE || reliability==RELIABLE_ORDERED || reliability==RELIABLE_SEQUENCED)
+			remoteSystemList[sendList[sendListIndex]].lastReliableSend=(RakNetTime)(currentTime/(RakNetTimeNS)1000);
+	}
+
+#if defined(_COMPATIBILITY_1)
+	delete [] sendList;
+#endif
+
+	// Return value only meaningful if true was passed for useCallerDataAllocation.  Means the reliability layer used that data copy, so the caller should not deallocate it
+	return callerDataAllocationUsed;
 }
 
 /// \file

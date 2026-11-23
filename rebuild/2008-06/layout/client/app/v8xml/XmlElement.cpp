@@ -31,6 +31,12 @@ int XmlWriter::getHandleIndex(RBX::InstanceHandle h)
 
 #include "v8xml/XmlElement.h"
 
+template<>
+bool XmlNameValuePair::isValueType<RBX::ContentId>() const
+{
+	return valueType == CONTENTID;
+}
+
 bool XmlNameValuePair::isValueEqual(const RBX::Name* value) const
 {
 	switch (valueType) {

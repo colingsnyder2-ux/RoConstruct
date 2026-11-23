@@ -1,8 +1,45 @@
 #include "v8kernel/Constants.h"
+#include "util/Math.h"
+
+namespace RBX
+{
+	__forceinline G3D::Vector3 getClippedSortedSize(const G3D::Vector3& v)
+	{
+		return v.max(G3D::Vector3(1.0f, 1.0f, 1.0f));
+	}
+
+	const float Constants::getJointK(const G3D::Vector3& gridSize, bool ball)
+	{
+		G3D::Vector3 sortedSize = Math::sortVector3(gridSize);
+		G3D::Vector3 clippedSize = getClippedSortedSize(sortedSize);
+
+		float JointKMultiplier = getJointKMultiplier(clippedSize, ball);
+
+		if (sortedSize.x < 1.0)
+			JointKMultiplier *= sortedSize.x;
+
+		return JointKMultiplier * 960000.0f;
+	}
+}
+
 #include <G3D/Vector3int16.h>
 
 namespace RBX
 {
+	const float Constants::getElasticMultiplier(float elasticity)
+	{
+		if (elasticity < 0.05f)
+			return 0.28f;
+		else if (elasticity < 0.26f)
+			return 0.42f;
+		else if (elasticity < 0.51f)
+			return 0.57f;
+		else if (elasticity < 0.76f)
+			return 0.8f;
+		else
+			return 1.0f;
+	}
+
 	const float Constants::getJointKMultiplier(const G3D::Vector3& clippedSortedSize, bool ball)
 	{
 		G3D::Vector3int16 size(clippedSortedSize);

@@ -64,7 +64,12 @@ namespace RBX
 		return controllerService ? controllerService->getHardwareDevice() : NULL;
 	}
 
-#ifdef NATIVE_USER_CONTROLLER_PENDING
+	// INFERRED: 005ca390 body (keyDown(0x133) || keyDown(0x134)) and the inlined copies in 005ca500 / 005ca760.
+	static inline bool inlineAltKeyDown(const UserInputBase* device)
+	{
+		return device->keyDown(SDLK_RALT) || device->keyDown(SDLK_LALT);
+	}
+
 	float KeyboardPrimaryController::getValue(Controller::InputType inputType) const
 	{
 		if (!getHardwareDevice())
@@ -89,7 +94,7 @@ namespace RBX
 			break;
 		}
 
-		if (hardware->altKeyDown())
+		if (inlineAltKeyDown(hardware))
 			return 0.0f;
 		if (getHardwareDevice()->ctrlKeyDown())
 			return 0.0f;
@@ -136,7 +141,7 @@ namespace RBX
 			break;
 		}
 
-		if (hardware->altKeyDown())
+		if (inlineAltKeyDown(hardware))
 			return 0.0f;
 		if (getHardwareDevice()->ctrlKeyDown())
 			return 0.0f;
@@ -168,7 +173,6 @@ namespace RBX
 			return 0.0f;
 		}
 	}
-#endif
 
 	AIController::AIController(const PVInstance* controlledInstance)
 		: SteppingController(controlledInstance),

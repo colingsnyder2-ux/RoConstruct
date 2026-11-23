@@ -1,4 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // 2008-06 native G3DBinaryOutput (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/BinaryOutput.cpp, verbatim.
 #line 1 ".\\G3Dcpp\\BinaryOutput.cpp"
 /**
@@ -503,4 +502,19 @@ void BinaryOutput::endBits() {
     beginEndBits = 0;
 }
 
+}
+
+#include <exception>
+
+namespace G3D {
+void BinaryOutput::setLength(int n) {
+    n = n - (int)alreadyWritten;
+    // INFERRED: original 0050ab9d constructs std::exception with this message.
+    if (n < 0)
+        throw std::exception("Cannot resize huge files to be shorter.");
+    if (n < bufferLen)
+        pos = n;
+    if (n > bufferLen)
+        reserveBytes(n - bufferLen);
+}
 }

@@ -1,6 +1,29 @@
+#include "v8kernel/Body2008.h"
+#include "../../../../native-classes/PVFrameOps.h"
+
+namespace RBX
+{
+	void Body::updatePV() const
+	{
+		if (parent)
+		{
+			const Body* rootNow = root;              // root read once per state-index read (edi in the target)
+			rootNow->updatePV();
+			if (stateIndex != rootNow->stateIndex)
+			{
+				parent->updatePV();
+				const G3D::CoordinateFrame& meInParentNow = link ? link->getChildInParent() : meInParent;
+				recoveredPVLocalFrame(parent->getPV(), meInParentNow, pv);
+				const Body* rootAfter = root;
+				rootAfter->updatePV();
+				stateIndex = rootAfter->stateIndex;
+			}
+		}
+	}
+}
+
 #include <boost/thread/once.hpp>
 #include <limits.h>
-#include "v8kernel/Body2008.h"
 
 namespace RBX
 {

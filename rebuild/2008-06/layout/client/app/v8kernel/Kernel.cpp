@@ -145,3 +145,10 @@ namespace RBX
 	}
 #endif
 }
+
+#define NATIVE_PRIMITIVE_NATIVE_BODY
+
+void RBX::Kernel::removeConnector2ndPass(Connector* connector)
+{
+    kernelData->connectors2ndPass.fastRemove(connector);
+}
