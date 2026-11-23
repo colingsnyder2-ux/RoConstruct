@@ -278,3 +278,18 @@ template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Listener<
 // Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
 template void RBX::Name::callDoDeclare<RBX::Network::sPlayer>();
 
+
+// 004917f0 (registry placeholder func_004917f0): Reflection::Value::get<boost::shared_ptr<DescribedBase> >() const, the
+// only caller RefPropertyDescriptor::setVariant 005da5b0 (OgreAuto_RBX_Reflection_RefPropertyDescriptor.cpp): typeid
+// 00937010 compare, any_cast 00491690, else convert 0056f3b0 on a copy. reflection/type.h declares get<T> only; same
+// template body as Inferred_0056f0b0.cpp / SoundValueGet.cpp / AppUnit57C_2008ModelInstance.cpp.
+namespace RBX { namespace Reflection {
+template<class T> T Value::get() const
+{
+	if (isType<T>())
+		return boost::any_cast<const T&>(value);
+	Value copy(*this);
+	return copy.convert<T>();
+}
+template boost::shared_ptr<DescribedBase> Value::get<boost::shared_ptr<DescribedBase> >() const;
+} }

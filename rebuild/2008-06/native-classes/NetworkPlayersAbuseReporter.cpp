@@ -13,6 +13,7 @@
 // It returns worker_thread::done (0) when the queue is empty and more (1) otherwise (ret, cdecl: shared_ptr<data>
 // and std::string by value).
 #include "Network/Players.h"
+#include "Network/Player.h"
 #include "v8xml/XmlElement.h"
 #include "v8xml/XmlSerializer.h"
 #include "util/Http.h"
@@ -30,12 +31,24 @@ static void writeMessage(const RBX::Network::AbuseReport::Message& msg, XmlEleme
 	XmlElement* message = messages->addChild(RBX::Name::declare("message", -1));
 	message->setValue(msg.text);
 	message->addAttribute(RBX::Name::declare("userID", -1), msg.userID);
+	message->addAttribute(RBX::Name::declare("guid", -1), msg.guid); // "guid" 00822700, addAttribute<std::string> 00497120
 }
 
 namespace RBX
 {
 	namespace Network
 	{
+		// 004990a0 (registry placeholder func_004990a0): AbuseReport::addMessage, passed as the member pointer at 0049c73d
+		// in AbuseReporter::add 0049c710. Openrbx 2007 shape; 2008 reads the user id inline (+0x1b4, getUserID) and the
+		// Message aggregate copies ChatMessage::message (+0x1c) then ChatMessage::time (+0x00) into guid (+0x20); list
+		// push_back through _Buynode 004977c0 / _Incsize 00496f50.
+		void AbuseReport::addMessage(const ChatMessage& cm)
+		{
+			int userID = cm.source ? cm.source->getUserID() : 0;
+			Message m = {userID, cm.message, cm.time};
+			messages.push_back(m);
+		}
+
 		// 0049bf90 AbuseReporter::processRequests (identity in the banner above).
 		worker_thread::work_result AbuseReporter::processRequests(boost::shared_ptr<data> _data, std::string abuseUrl)
 		{
