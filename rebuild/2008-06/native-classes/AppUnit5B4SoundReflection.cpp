@@ -160,6 +160,14 @@ template S::SoundId* boost::any_cast<S::SoundId>(boost::any*);
 // 005bbeb0 (15 B, registry placeholder func_005bbeb0): RBX::registerSound(), declared by util/Sound.h; donor openrbx
 // util/Sound.cpp: the three Described<>::classDescriptor() accessors SoundChannel 005bb860, StockSound 005bb8d0 and
 // SoundService 005bb7f0 (the last one a tail jump). Its only caller is NativeClassRegistration() 005c3ca0 (005c3d89).
+// 005bd250 ??0StockSound@@QAE@XZ: DescribedCreatable<StockSound, SoundChannel, sStockSound>() 005bd0f0, the
+// StockSound vtables 00838180..00838248, then Instance::propArchivable (00973e8c, GetSet slot 3) setValue false.
+// Shape: openrbx 2007 util/Sound.cpp StockSound::StockSound.
+StockSound::StockSound()
+{
+	propArchivable.setValue(this, false);
+}
+
 namespace RBX
 {
 	void registerSound()

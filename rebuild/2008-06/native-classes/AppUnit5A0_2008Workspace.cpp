@@ -459,6 +459,10 @@ template G3D::Array<boost::shared_ptr<RBX::PartInstance> >::~Array();
 // Creator::create 005a3230 (vtable 00833ac0, RTTI .?AVCreator@?$FactoryProduct@VFlag@RBX@@...), which sits in this
 // unit's range: the original Workspace.cpp emitted the Flag creator COMDATs (it includes v8datamodel/Flag.h).
 template boost::shared_ptr<RBX::Flag> RBX::Creatable<RBX::Instance>::create<RBX::Flag>();
+// 005a0930 ??$singleton@PAVModelInstance@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ (registry name): the function-local
+// static RefType at 00976a58 (guard 00976a68), Type constructor 004897a0 ("Object", typeid(RefType) 00934d40, "Ref"),
+// vtable 0082144c, atexit 007fe0a0. Its static and guard sit between the other Workspace-unit statics.
+template const RBX::Reflection::RefType& RBX::Reflection::RefType::singleton<RBX::ModelInstance*>();
 
 // 005a23f0 (registry placeholder func_005a23f0): the invoker of boost::function0<double> over
 // bind(&Workspace::<double getter> const, const Workspace*): the boost::function vtable 00833908 {manager 005a1380, invoker
