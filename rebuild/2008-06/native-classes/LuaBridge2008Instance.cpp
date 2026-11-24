@@ -29,6 +29,17 @@ using namespace RBX::Lua;
 using namespace RBX::Reflection;
 using namespace RBX::Soundscape;
 
+// 00443530 ?equalValues@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z: the target reads a
+// first ([esp+4] before [esp+8]); the in-class property.h body (getValue(b) == getValue(a)) reads b first. Specialized
+// before the `template class TypedPropertyDescriptor<int>` instantiation below (inline, like the header body), as
+// AppUnit480_2008Player.cpp does for BrickColor.
+template<>
+inline bool RBX::Reflection::TypedPropertyDescriptor<int>::equalValues(
+	const RBX::Reflection::DescribedBase* a, const RBX::Reflection::DescribedBase* b) const
+{
+	return getValue(a) == getValue(b);
+}
+
 void RBX::Lua::newweaktable(lua_State* L, const char* mode)
 {
     lua_newtable(L);
@@ -55,6 +66,17 @@ const luaL_Reg ObjectBridge::classLibrary[] =
     {"new", ObjectBridge::newInstance},
     {NULL, NULL}
 };
+
+// 0061a400 ?setEnumItem@EnumPropertyDescriptor@Reflection@RBX@@QBE_NPAVDescribedBase@23@ABVItem@EnumDescriptor@23@@Z
+// Declared in reflection/property.h, defined in no other native file. Called by assignLuaValue (call 0061b6f5).
+// Compares item.owner (+8) with this->enumDescriptor (+0x18), then tail-calls setEnumValue (vtable +0x3c) with
+// item.value (+0xc); ret 8.
+bool Reflection::EnumPropertyDescriptor::setEnumItem(Reflection::DescribedBase* instance, const Reflection::EnumDescriptor::Item& item) const
+{
+    if (&item.owner != &enumDescriptor)
+        return false;
+    return setEnumValue(instance, item.value);
+}
 
 int ObjectBridge::newInstance(lua_State* thread)
 {

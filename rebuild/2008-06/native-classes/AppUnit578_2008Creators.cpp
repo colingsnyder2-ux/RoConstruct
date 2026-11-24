@@ -95,3 +95,13 @@ template boost::shared_ptr<RBX::Tool> RBX::Creatable<RBX::Instance>::create<RBX:
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::LocalBackpackItem, RBX::Widget, RBX::sLocalBackpackItem>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::LocalBackpack, RBX::RelativePanel, RBX::sLocalBackpack>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Tool, RBX::BackpackItem, RBX::sTool>::Creator::create() const;
+
+// 005774b0 boost::bind<std::string, std::string, std::string, std::string, std::string> (registry name) and its
+// out-of-line callee 00576510, the storage2<value<string>, value<string>> copy constructor (two basic_string copy
+// ctors at +0 / +0x1c). Used by the DataModel asynchronous HTTP helper 0057be10 (not recovered); instantiated here
+// so both bodies are emitted.
+#include <boost/bind.hpp>
+template boost::_bi::bind_t<std::string, std::string (*)(std::string, std::string),
+	boost::_bi::list2<boost::_bi::value<std::string>, boost::_bi::value<std::string> > >
+	boost::bind<std::string, std::string, std::string, std::string, std::string>(
+		std::string (*)(std::string, std::string), std::string, std::string);

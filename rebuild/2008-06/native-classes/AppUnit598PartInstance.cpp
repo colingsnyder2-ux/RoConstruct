@@ -34,6 +34,21 @@ namespace RBX
 	{
 	}
 
+#ifdef PRIMITIVE_HEADER_DECLARES_SET_UNKNOWN0X14
+	// 00598c20 ?setName@PartInstance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
+	// (registry placeholder func_00598c20). Instance::setName 0055af90, then string == "Torso" (00832a1c) and
+	// primitive (+0x228) setUnknown0x14 005e7420 with 5, else 1. Guarded: part-embedded/v8world/Primitive.h does not
+	// declare setUnknown0x14 (v8world/Primitive2008.h does, line 148); header proposal filed.
+	void PartInstance::setName(const std::string& name)
+	{
+		Instance::setName(name);
+		if (name == "Torso")
+			primitive.setUnknown0x14(5);
+		else
+			primitive.setUnknown0x14(1);
+	}
+#endif
+
 	// 00598de0
 	Surfaces& PartInstance::getSurfaces()
 	{
