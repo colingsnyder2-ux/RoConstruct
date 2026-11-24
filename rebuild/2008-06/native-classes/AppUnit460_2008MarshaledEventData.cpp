@@ -32,7 +32,16 @@ namespace RBX
 	// so it is defined unit-locally as in NotifierRaiseTemplatesB2008.cpp (implicit member-wise copy of `property`).
 	// INFERRED: same evidence; reflection/property.h only declares Property's copy constructor (ConstProperty's is inline).
 	inline Reflection::Property::Property(const Property& other) : ConstProperty(other) {}
+#ifdef REFLECTION_CONSTPROPERTY_CTOR_UNASSERTED
+	// Batch 50: copying through a temporary Property(descriptor, instance) (as PropertyChanged's private ctor does) makes
+	// the Instance/PropertyChanged marshal 00464ea0 IDENTICAL (92 B, scratch compile) only when ConstProperty(const
+	// PropertyDescriptor&, const DescribedBase*) carries no RBXASSERT (118 B with it). onEvent 004649f0 stays 61 B.
+	// Enabled once the reflection/property.h owner publishes that constructor without the assert.
+	inline PropertyChanged::PropertyChanged(const PropertyChanged& other)
+		: property(Reflection::Property(other.property.getDescriptor(), other.property.getInstance())) {}
+#else
 	inline PropertyChanged::PropertyChanged(const PropertyChanged& other) : property(other.property) {}
+#endif
 }
 
 // RunService / RunState: ctor 00464b60, dtor 00464ce0, ??_G 00464e00, execute 00464d70 (+ catch 00464dbe).
