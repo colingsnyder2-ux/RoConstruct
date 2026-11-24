@@ -3,12 +3,23 @@
 // FUN_004500e0): log "GlobalSettings ---", visit every child writing "\t<name>" and each string-valued property as
 // "\t\t<category>.<name>: <value>" (callback 0044c4d0, property helper inlined), then "End GlobalSettings ---".
 // The exe symbol is unknown (nativeLogGlobalSettings stands in for it).
+#undef _RELEASEASSERT // the for_each 0044bc00 builds each Property without RBXASSERT(isMemberOf) (as MachineConfiguration2008.cpp 0044bff0)
 #include <algorithm>
 #include <G3D/format.h>
 #include "v8datamodel/GlobalSettings.h"
 #include "util/Log.h"
 #include "reflection/reflection.h"
 #include "v8tree/Instance.h"
+
+// The property for_each increments inline (add 4 after the checked-iterator compare, as 0044bff0): unit-local inline
+// specialization, the HistoryItemState.cpp pattern.
+template<>
+inline RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>::Iterator&
+RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>::Iterator::operator++()
+{
+	++iter;
+	return *this;
+}
 
 namespace
 {

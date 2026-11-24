@@ -162,6 +162,54 @@ namespace RBX
 			replicator.pendingDeleteInstances.insert(instance.get());
 		}
 
+		// INFERRED: models the 2008 getGuid() that registers the guid before returning it (0049bba0 then the inline
+		// `lea ecx,[instance+8]`, the instance pointer loaded once): util/GuidItem.h proposal. Unit-local, no body.
+		static inline const Guid& registeredGuidOf(const Instance* instance)
+		{
+			const_cast<Instance*>(instance)->registerGuid();
+			return instance->getGuid();
+		}
+
+		// 004b47b0 (donor Replicator::DeleteInstanceItem::write, vtable 00824b2c slot 1; catch(std::runtime_error&)
+		// funclet 004b4965 returns to 004b486c). Identity: pendingDeleteInstances +0x2cb0 erase 005e9f60,
+		// "Replication: ~NULL >> %s" 00824d24 (MESSAGE_ERROR), writeItemType 004ab5d0 (ItemTypeDelete), serializeId
+		// 004a8ae0, printInstances +0x131, registerGuid 0049bba0, Guid::readableString 004aadd0,
+		// "Replication: ~%s:%s >> %s" 00824d08, catch print "Replication: ~%s >> %s, %s" 00824cec (MESSAGE_ERROR,
+		// e.what() last); remotePlayerId +0x2d54 ToString(true) 004a98b0. The 2008 strings differ from the donor's.
+		void Replicator::DeleteInstanceItem::write(RakNet::BitStream& bitStream)
+		{
+			if (replicator.pendingDeleteInstances.erase(instance.get()))
+			{
+				if (!instance)
+				{
+					StandardOut::singleton()->print(MESSAGE_ERROR, "Replication: ~NULL >> %s", replicator.remotePlayerId.ToString(true));
+					return;
+				}
+
+				try
+				{
+					writeItemType(bitStream, ItemTypeDelete);
+					replicator.serializeId(bitStream, instance.get());
+
+					if (NetworkSettings::singleton().printInstances)
+					{
+						// INFERRED: registerGuid (0049bba0) runs right before readableString, as in ChangePropertyItem::write.
+						StandardOut::singleton()->print(MESSAGE_INFO, "Replication: ~%s:%s >> %s",
+							instance->getClassName().c_str(),
+							registeredGuidOf(instance.get()).readableString(4).c_str(),
+							replicator.remotePlayerId.ToString(true));
+					}
+				}
+				catch (std::runtime_error& e)
+				{
+					StandardOut::singleton()->print(MESSAGE_ERROR, "Replication: ~%s >> %s, %s",
+						instance->getClassName().c_str(),
+						replicator.remotePlayerId.ToString(true),
+						e.what());
+				}
+			}
+		}
+
 		// INFERRED: donor Replicator.cpp inline helper (no standalone body in the client: onParentChanged 004b01e0
 		// tests the set erase 005e9f60 result through `setne al; test al,al`).
 		inline bool Replicator::removeFromPendingNewInstances(const Instance* instance)
