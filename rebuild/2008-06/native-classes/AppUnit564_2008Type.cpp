@@ -118,6 +118,18 @@ namespace RBX
 			static Type type("Table", typeid(ValueCollection));
 			return type;
 		}
+		// 0056d020: "Tuple" 0082f6e8, 00946340 (.?AUTuple@Reflection@RBX@@), untagged, atexit 007fd2e0.
+		// TypeSingletonsBoot2008.cpp holds an INFERRED stand-in Type("Tuple", typeid(Tuple), "Complex") that says the exe has
+		// none; this is the exe body. Guarded so the two never both define the specialization (proposal: drop the stand-in).
+#ifdef APPUNIT564_DEFINES_TUPLE_SINGLETON
+		template<>
+		const Type& Type::singleton<Tuple>()
+		{
+			static Type type("Tuple", typeid(Tuple));
+			return type;
+		}
+#endif
+
 		// 0056d120: "BrickColor" 0082f710, 00935398, tag "int" 00820df4: the tagged Type(name, type, tag) 004897a0
 		template<>
 		const Type& Type::singleton<BrickColor>()
