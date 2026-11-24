@@ -310,19 +310,19 @@ void ScriptItem::OnInplaceButtonDown(CXTPPropertyGridInplaceButton*)
 
 // XItem<int, CXTPPropertyGridItemEnum, EnumPropertyDescriptor> specializations
 // XItem<int,Enum>::update 0043c6a0 is defined in AppUnit438PropGrid.cpp.
-template<>
-void XItem<int, CXTPPropertyGridItemEnum, RBX::Reflection::EnumPropertyDescriptor>::applyValue(int const&) {}
+// XItem<int,Enum>::applyValue 004402d0 is the generic template below (explicit instantiation at the end of the unit).
 
 // XItem<string, CXTPPropertyGridItem, PropertyDescriptor> specializations
 // 00438450 (94 B): GetValue (00437ed0) into a temporary, CSimpleStringT::operator PCXSTR through mfc90 #910, then the
 // basic_string(const char*) import straight into the return slot. "return std::string((LPCTSTR)GetValue());" is
 // relocation-masked IDENTICAL here (verified 2026-11-19 xi06), but dropping CT2A also drops this unit's only
 // references to the ATL/MFC COMDATs AfxCrtErrorCheck 00401680 and Checked::tcsncpy_s 00401810 (exact here at
-// baseline), so the CT2A body stays until the lead accepts that trade (proposal in the batch 25 report).
+// baseline). Batch 49: both COMDATs are now exact in CWorkspaceRegistration.cpp and ValueConverter.cpp, so the
+// trade is free and the plain body is used.
 template<>
 std::string XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::readValue()
 {
-    return std::string(CT2A(GetValue()));
+    return std::string((LPCTSTR)GetValue());
 }
 template<>
 void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::displayValue(std::string const& v)
@@ -330,13 +330,11 @@ void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescripto
     SetValue(v.c_str());
 }
 // XItem<string>::writeValue 0043b9d0 and update 0043bc20 are defined in AppUnit438PropGrid.cpp.
-template<>
-void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::applyValue(std::string const&) {}
+// XItem<string>::applyValue 0043fc00 is the generic template below (explicit instantiation at the end of the unit).
 
 // XItem<BrickColor, CPropertyGridItemBrickColor, TypedPropertyDescriptor<BrickColor>> specializations
 // XItem<BrickColor>::update 0043b5b0 is defined in AppUnit438PropGrid.cpp.
-template<>
-void XItem<RBX::BrickColor, CPropertyGridItemBrickColor, RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor> >::applyValue(RBX::BrickColor const&) {}
+// XItem<BrickColor>::applyValue 0043f890 is the generic template below (explicit instantiation at the end of the unit).
 
 // XItem<Soundscape::SoundId, CXTPPropertyGridItem, TypedPropertyDescriptor<SoundId>> specializations
 template<>
@@ -355,8 +353,7 @@ void XItem<RBX::TextureId, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyD
 
 // XItem<Vector3, CXTPPropertyGridItem, TypedPropertyDescriptor<Vector3>> specializations
 // XItem<Vector3>::update 0043c170 is defined in AppUnit438PropGrid.cpp.
-template<>
-void XItem<G3D::Vector3, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3> >::applyValue(G3D::Vector3 const&) {}
+// XItem<Vector3>::applyValue 0043ff70 is the generic template below (explicit instantiation at the end of the unit).
 template<>
 void XItem<G3D::Vector3, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3> >::writeValue(RBX::Instance*, G3D::Vector3 const&) {}
 
@@ -418,3 +415,14 @@ template void XItem<int, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDes
 // (AppLeftovers.cpp) and the SoundId OnValueChanged; its bind 0043e730 / for_each 0043e771 helpers lie in the
 // AppUnit438PropGrid.cpp range.
 template void XItem<RBX::Soundscape::SoundId, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId> >::applyValue(const RBX::Soundscape::SoundId&);
+// 0043ff70 (registry placeholder func_0043ff70, 862 B): the Vector3 instantiation (for_each 0043b390, the same
+// 12-byte value shape as Color3 0043f530); called from XItem<Vector3>::OnValueChanged 00441660.
+template void XItem<G3D::Vector3, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3> >::applyValue(const G3D::Vector3&);
+// 004402d0 (registry placeholder func_004402d0, 875 B): the enum instantiation (for_each 0043c940, shared with the
+// int row); called from XItem<int,Enum>::OnValueChanged 00441770.
+template void XItem<int, CXTPPropertyGridItemEnum, RBX::Reflection::EnumPropertyDescriptor>::applyValue(const int&);
+// 0043f530 Color3, 0043f890 BrickColor and 0043fc00 std::string instantiations (batch 45 proposal; callers are the
+// OnValueChanged bodies 004414e0 / 00441560 / 004415d0 instantiated in AppUnit438PropGrid.cpp).
+template void XItem<G3D::Color3, CXTPPropertyGridItemColor, RBX::Reflection::TypedPropertyDescriptor<G3D::Color3> >::applyValue(const G3D::Color3&);
+template void XItem<RBX::BrickColor, CPropertyGridItemBrickColor, RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor> >::applyValue(const RBX::BrickColor&);
+template void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::applyValue(const std::string&);
