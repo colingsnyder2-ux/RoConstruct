@@ -92,13 +92,12 @@ namespace RBX
 		bool stopRequested;                                      // +0x248
 		boost::condition runViewsDoneCondition;                  // +0x24c
 		boost::condition stateChangedCondition;                  // +0x264
-		// INFERRED: workspace pointer at +0x27c accessed by RunService::stop (00554460)
-		class Workspace* workspace;                              // +0x27c
+		// stop 00554460 joins it (boost::thread::join 005a6850), start 00556520 stores it, RunService() 00556b00 zeroes it
+		boost::scoped_ptr<boost::thread> runThread;              // +0x27c
 		boost::mutex viewMutex;                                  // +0x280
 		std::map<IRunView*, bool> views;                         // +0x288
-		boost::scoped_ptr<boost::thread> runThread;
-		int invalidRunViewCount;
-		boost::mutex unknownMutex0x2ac;
+		int invalidRunViewCount;                                 // +0x2a8
+		boost::mutex unknownMutex0x2ac;                          // +0x2ac
 		// Original enqueue and drain paths store zero-argument callables; return type remains inferred.
 		std::deque<boost::function<void()> > unknownQueue0x2b4;
 	public:

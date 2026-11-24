@@ -357,57 +357,19 @@ void CRobloxWnd::createRenderer(int width, int height)
         g_009326f8 = 0.5f;
 }
 
-// 0045bf30 (registry placeholder func_0045bf30; WM_KILLFOCUS entry of the message map 0081a398, see the PENDING
-// list below): clears keyboard-wanted on the DxUserInput at +0x84 (setKeyboardWanted 00468050, the mirror of
-// OnSetFocus 0045b5d0), runs the pending buffer swap 0045beb0, then CWnd::OnKillFocus (inline Default 006a0c68),
-// ret 4. GUARDED: the maintainer-owned CRobloxView.h does not declare it. Proposal for that header, inside
-// CRobloxWnd next to OnSetFocus:
-//     afx_msg void OnKillFocus(CWnd*);       // 0045bf30
-// Not measured (no header declaration); the body follows the target's call order exactly.
-#ifdef CROBLOXWND_HEADER_DECLARES_ONKILLFOCUS
-void CRobloxWnd::OnKillFocus(CWnd* newWnd)
-{
-    if (userInput)
-        userInput->setKeyboardWanted(false);
-    sub_0045beb0();
-    CWnd::OnKillFocus(newWnd);
-}
-#endif
-
-// 0045bf90 windowCommand (declared in CRobloxView.h; registry placeholder func_0045bf90; only caller
-// CRobloxView's OnWindowCommand, CRobloxView.cpp `window.windowCommand()`): under the DxUserInput critical section (+0x34,
-// CComCritSecLock as in DxUserInput.cpp) it drops the DirectInput keyboard if acquired (+0x193, setKeyboardWanted
-// 00468050), sends Alt+PrintScreen (window screenshot to the clipboard) with SendInput, and wants the keyboard
-// again. The four INPUT records are aggregate-initialised, so the five values fill the union's first member
-// (MOUSEINPUT dx, dy, mouseData, dwFlags, time): the target stores the virtual key at +4, the scan code at +8 and
-// KEYEVENTF_KEYUP (2) at +0xc. The scan codes come from MapVirtualKey(VK_MENU) and MapVirtualKey(VK_PRINT 0x2a).
-// NEAR MISS (346 vs 338 B, batch 50): same calls, stores and EH state; the target keeps this in edi and the
-// constant 1 in ebp (INPUT types and setKeyboardWanted(true)) and reloads the lock's critical section from the
-// frame for LeaveCriticalSection, while this build keeps the critical section in edi and this in ebp. Rejected:
-// a `const DWORD type = INPUT_KEYBOARD` local for the four types (no change).
-void CRobloxWnd::windowCommand()
-{
-    CComCritSecLock<DxCriticalSection> lock(userInput->mutex);
-    bool keyboardAcquired = userInput->keyboardAcquired;
-    if (keyboardAcquired)
-        userInput->setKeyboardWanted(false);
-    INPUT inputs[4] = {
-        { INPUT_KEYBOARD, { VK_MENU, MapVirtualKey(VK_MENU, 0), 0, 0, 0 } },
-        { INPUT_KEYBOARD, { VK_SNAPSHOT, MapVirtualKey(VK_PRINT, 0), 0, 0, 0 } },
-        { INPUT_KEYBOARD, { VK_SNAPSHOT, MapVirtualKey(VK_PRINT, 0), KEYEVENTF_KEYUP, 0, 0 } },
-        { INPUT_KEYBOARD, { VK_MENU, MapVirtualKey(VK_MENU, 0), KEYEVENTF_KEYUP, 0, 0 } },
-    };
-    SendInput(4, inputs, sizeof(INPUT));
-    if (keyboardAcquired)
-        userInput->setKeyboardWanted(true);
-}
-
-// Message map 0081a398: entries 0081a3a8 in this order in the target. Only handlers recovered natively are listed;
-// PENDING: WM_DESTROY 0045fd80, WM_ERASEBKGND 0045aff0, WM_PAINT 0045eaa0, WM_SIZE 0045d7c0, WM_KILLFOCUS 0045bf30,
-// 0x4bb 0045aeb0, WM_WINDOWPOSCHANGING 0045bf60, WM_CLOSE 0045bf80.
+// Message map 0081a398: entries 0081a3a8 in this order in the target (11 entries). Handlers without native bodies are
+// declared in CRobloxView.h with their addresses; the link binds them to the converted exact functions.
 BEGIN_MESSAGE_MAP(CRobloxWnd, CWnd)
     ON_WM_CREATE()
+    ON_WM_DESTROY()
+    ON_WM_ERASEBKGND()
+    ON_WM_PAINT()
+    { WM_SIZE, 0, 0, 0, AfxSig_vwii, (AFX_PMSG)(AFX_PMSGW)static_cast<void (AFX_MSG_CALL CWnd::*)(UINT, int, int)>(&CRobloxWnd::OnSizeMessage) },   // 0045d7c0
     { WM_TIMER, 0, 0, 0, AfxSig_vw, (AFX_PMSG)(AFX_PMSGW)static_cast<void (AFX_MSG_CALL CWnd::*)(UINT_PTR)>(reinterpret_cast<void (AFX_MSG_CALL CRobloxWnd::*)(UINT_PTR)>(&CRobloxWnd::handle)) },   // 0045cba0
     ON_WM_SETFOCUS()
+    ON_WM_KILLFOCUS()
+    ON_MESSAGE(0x4bb, &CRobloxWnd::OnMessage4bb)
+    ON_WM_WINDOWPOSCHANGING()
+    ON_WM_CLOSE()
 END_MESSAGE_MAP()
 

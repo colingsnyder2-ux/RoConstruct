@@ -17,7 +17,7 @@
 #include <G3D/GImage.h>
 #include <windows.h>
 // INFERRED: path-helper spellings; original direct callees 0055d0b0/0055c4c0.
-namespace RBX { std::string nativeAssetPath(const char*); std::string nativeAssetFolder(); }
+namespace RBX { namespace LDraw2Lua { std::string resolveMapPath(const char*); std::string originalAssetFolder(); } }   // 0055d0b0 / 0055c4c0 (LDrawPath.cpp)
 using namespace RBX;
 static const char* const imageExtensions[] = {"JPG","BMP","TGA","PCX","ICO","PNG","PPM","PPM"};
 static const char materialTemplate[] = "material %s\n{\n\ttechnique\n\t{\n\t\tpass\n\t\t{\n\t\t\tlighting off\n\t\t\tdepth_write off\n\t\t\ttexture_unit\n\t\t\t{\n\t\t\t\tcubic_texture %s %s %s %s %s %s separateUV\n\t\t\t\ttex_address_mode clamp\n\t\t\t}\n\t\t}\n\t}\n}\n";
@@ -51,12 +51,12 @@ void RBX::ViewNew::ViewRbxGfx::updateSkybox(Ogre::VisualEngine* engine)
         filenames[4] = ServiceProvider::create<ContentProvider>(static_cast<ServiceProvider*>(dataModel.get()))->getFile(up);
         filenames[5] = ServiceProvider::create<ContentProvider>(static_cast<ServiceProvider*>(dataModel.get()))->getFile(down);
     } catch (...) {
-        filenames[0] = nativeAssetPath("Sky\\null_plainsky512_ft.jpg");
-        filenames[1] = nativeAssetPath("Sky\\null_plainsky512_bk.jpg");
-        filenames[2] = nativeAssetPath("Sky\\null_plainsky512_lf.jpg");
-        filenames[3] = nativeAssetPath("Sky\\null_plainsky512_rt.jpg");
-        filenames[4] = nativeAssetPath("Sky\\null_plainsky512_up.jpg");
-        filenames[5] = nativeAssetPath("Sky\\null_plainsky512_dn.jpg");
+        filenames[0] = LDraw2Lua::resolveMapPath("Sky\\null_plainsky512_ft.jpg");
+        filenames[1] = LDraw2Lua::resolveMapPath("Sky\\null_plainsky512_bk.jpg");
+        filenames[2] = LDraw2Lua::resolveMapPath("Sky\\null_plainsky512_lf.jpg");
+        filenames[3] = LDraw2Lua::resolveMapPath("Sky\\null_plainsky512_rt.jpg");
+        filenames[4] = LDraw2Lua::resolveMapPath("Sky\\null_plainsky512_up.jpg");
+        filenames[5] = LDraw2Lua::resolveMapPath("Sky\\null_plainsky512_dn.jpg");
     }
     std::string originalNames[6];
     std::string basename, directory;
@@ -90,7 +90,7 @@ void RBX::ViewNew::ViewRbxGfx::updateSkybox(Ogre::VisualEngine* engine)
         Ogre::MaterialManager::getSingleton().parseScript(stream,"General");
         Ogre::MaterialPtr material(Ogre::MaterialManager::getSingleton().getByName(materialName));
         // Target assigns a native string at scene-manager extension +8bbc.
-        static_cast<Ogre::RbxSceneManager*>(engine->sceneManager)->mRbxSkyName = nativeAssetFolder()+"Sky\\";
+        static_cast<Ogre::RbxSceneManager*>(engine->sceneManager)->mRbxSkyName = LDraw2Lua::originalAssetFolder()+"Sky\\";
         engine->sceneManager->setSkyBox(true,materialName,2700.0f);
     } catch (std::exception& e) {
         Ogre::LogManager::getSingleton().logMessage(std::string("RBX error in skybox: ")+e.what(),Ogre::LML_NORMAL,false);

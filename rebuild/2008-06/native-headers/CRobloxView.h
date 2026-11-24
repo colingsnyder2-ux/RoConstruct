@@ -73,6 +73,16 @@ public:
     virtual BOOL PreCreateWindow(CREATESTRUCT&);   // 0045b330
     afx_msg void OnSetFocus(CWnd*);        // 0045b5d0, INFERRED name (registry: f(int))
     afx_msg int OnCreate(LPCREATESTRUCT);  // 0045d550, WM_CREATE entry of the message map at 0081a3a8
+    // Remaining message-map handlers (entries 0081a3a8, signatures from their AfxSig codes); bodies are the converted
+    // exact functions at these addresses (qualname_alias.py binds the declaration comment's address). INFERRED names.
+    afx_msg void OnDestroy();                       // 0045fd80, WM_DESTROY AfxSig_vv
+    afx_msg BOOL OnEraseBkgnd(CDC*);                // 0045aff0, WM_ERASEBKGND AfxSig_bD
+    afx_msg void OnPaint();                         // 0045eaa0, WM_PAINT AfxSig_vv (draw 0045e6c0 -> doRender 0045e3f0)
+    afx_msg void OnSizeMessage(UINT, int, int);     // 0045d7c0, WM_SIZE AfxSig_vwii
+    afx_msg void OnKillFocus(CWnd*);                // 0045bf30, WM_KILLFOCUS AfxSig_vW
+    afx_msg LRESULT OnMessage4bb(WPARAM, LPARAM);   // 0045aeb0, message 0x4bb AfxSig_lwl
+    afx_msg void OnWindowPosChanging(WINDOWPOS*);   // 0045bf60, WM_WINDOWPOSCHANGING
+    afx_msg void OnClose();                         // 0045bf80, WM_CLOSE AfxSig_vv
     void createRenderer(int width, int height);   // 0045d4c0, INFERRED name (mode 2: 0045d280, otherwise 0045cbf0)
     void releaseRenderer();                // 0045be60, INFERRED name
     virtual BOOL OnWndMsg(UINT, WPARAM, LPARAM, LRESULT*);   // 0045b4a0 (CWnd virtual override)
