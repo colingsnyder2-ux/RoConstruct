@@ -21,6 +21,42 @@ namespace RBX
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
 
+	namespace Reflection
+	{
+		// 0049fa40: SignalDescImpl<3, void(std::string, int, std::string)>::GenericSlotAdapter::operator() of
+		// event_ConnectionFailed (00970bb4). The binary's RTTI names SignalDescImpl<3, ...>::GenericSlotAdapter
+		// (004a0900); its boost::function invoker 0049fd90 (function vtable 00822fa8) calls this body. Same shape as the
+		// arity-1 adapter in reflection/signal.h: Arguments(3) (0041b170), any::operator= per argument (string 00417230,
+		// int holder vtable 008106cc), then wrapper->execute (GenericSlotWrapper slot 1). The core header declares the
+		// operator only; the definition lives here like the FactoryProduct members above.
+		template<int ArgCount, typename CallbackSignature>
+		void SignalDescImpl<ArgCount, CallbackSignature>::GenericSlotAdapter::operator()(
+			typename boost::function_traits<CallbackSignature>::arg1_type arg1,
+			typename boost::function_traits<CallbackSignature>::arg2_type arg2,
+			typename boost::function_traits<CallbackSignature>::arg3_type arg3)
+		{
+			std::vector<boost::any> args(3);
+			args[0] = arg1;
+			args[1] = arg2;
+			args[2] = arg3;
+
+			wrapper->execute(args);
+		}
+
+		template void SignalDescImpl<3, void(std::string, int, std::string)>::GenericSlotAdapter::operator()(
+			std::string, int, std::string);
+	}
+}
+
+// 0049fd90: the boost::function<void(std::string, int, std::string)> invoker of that adapter (function vtable
+// 00822fa8 slot 1): copies both strings and calls 0049fa40 on the stored functor.
+template struct boost::detail::function::void_function_obj_invoker3<
+	RBX::Reflection::SignalDescImpl<3, void(std::string, int, std::string)>::GenericSlotAdapter,
+	void, std::string, int, std::string>;
+
+namespace RBX
+{
+
 	namespace Network
 	{
 		char sClient[] = "NetworkClient"; // 00938c88 (classDescriptor 0049eb30, constructor setName)

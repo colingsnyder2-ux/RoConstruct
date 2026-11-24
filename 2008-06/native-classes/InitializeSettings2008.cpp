@@ -31,14 +31,14 @@ void CRobloxApp::initializeSettings()
     AfxGetModuleShortFileName(AfxGetApp()->m_hInstance, moduleFileName);
     ATL::CPath path(moduleFileName);
     path.RemoveFileSpec();
-    px.LoadFromFile(path.m_strPath + "\AppSettings.xml");
+    px.LoadFromFile(path.m_strPath + "\\AppSettings.xml");
 
     {
         BOOL silent = TRUE;
         if (!PX_Bool(&px, "SilentCrashReport", silent) || silent) {
             silent = FALSE;
             ATL::CRegKey key;
-            if (key.Open(HKEY_CURRENT_USER, "Software\ROBLOX Corporation\Roblox", KEY_READ) == ERROR_SUCCESS) {
+            if (key.Open(HKEY_CURRENT_USER, "Software\\ROBLOX Corporation\\Roblox", KEY_READ) == ERROR_SUCCESS) {
                 DWORD value = 0;
                 key.QueryDWORDValue("SilentCrashReport", value);
                 silent = value;
@@ -51,7 +51,7 @@ void CRobloxApp::initializeSettings()
     PX_String(&px, "BaseUrl", nativeCrashReportText);
     if (nativeCrashReportText.IsEmpty()) {
         ATL::CRegKey key;
-        if (key.Open(HKEY_LOCAL_MACHINE, "Software\Roblox", KEY_READ) == ERROR_SUCCESS) {
+        if (key.Open(HKEY_LOCAL_MACHINE, "Software\\Roblox", KEY_READ) == ERROR_SUCCESS) {
             ULONG length = 1024;
             key.QueryStringValue("BaseUrl", nativeCrashReportText.GetBuffer(1024), &length);
             nativeCrashReportText.ReleaseBuffer();
@@ -63,7 +63,7 @@ void CRobloxApp::initializeSettings()
     if (!contentFolder.IsEmpty()) {
         ATL::CPath assetFolder;
         assetFolder.Combine(path, contentFolder);
-        RBX::ContentProvider::singleton().setAssetFolder(assetFolder);
+        RBX::ContentProvider::setAssetFolder(assetFolder);   // static 00560590: no singleton() call in 0044c760
     }
 
     CRenderSettings::singleton();

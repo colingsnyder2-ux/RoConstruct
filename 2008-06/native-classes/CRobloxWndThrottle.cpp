@@ -4,6 +4,7 @@
 
 // Original shared lock lifetime: 007ef980 / 007faf20; original identifier unknown.
 // External linkage: CRobloxWndRenderSettings.cpp (0045c890) shares the same lock object.
+// 0096df6c: the lock's original address (exact code reads it there)
 ATL::CCriticalSection throttleCriticalSection;
 
 // 0045ba60 (IRunView vtable 008199e8 slot 1; this = IRunView subobject at CRobloxWnd+0x54).

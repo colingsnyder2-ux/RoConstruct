@@ -308,9 +308,7 @@ namespace RBX
 		case WRAP_AUTO:
 			if (sub_004674a0() || dragging)
 			{
-				G3D::Vector2int16 size = sub_00467440();
-				G3D::Vector2 v((float)size.x, (float)size.y);
-				sub_0046a100(input, output, lastPosition, v);
+				sub_0046a100(input, output, lastPosition, sub_00467440());
 			}
 			else if (sub_00467d50())
 			{
@@ -318,13 +316,11 @@ namespace RBX
 			}
 			else if (sub_00467380())
 			{
-				G3D::Vector2 v(sub_00467440());
-				sub_0046a130(input, output, lastPosition, v);
+				sub_0046a130(input, output, lastPosition, sub_00467440());
 			}
 			else
 			{
-				G3D::Vector2 v(sub_00467440());
-				sub_0046a1b0(input, output, lastPosition, v);
+				sub_0046a1b0(input, output, lastPosition, sub_00467440());
 			}
 			break;
 		case WRAP_CENTER:

@@ -37,11 +37,17 @@ struct Function1 {
     }
 };
 
+// The original stores the vtable of boost::any::holder<boost::function<void(shared_ptr<Instance>,
+// const PropertyDescriptor*)>> (00826bd4: ??_E 0041aba0, type 004d7a70, clone 004d7a80, 004d77b0). An invented
+// virtual class here gave the holder a 1-slot vtable, and boost::signals' any copy called garbage through slot 2.
+// INFERRED: the original vtable is reached through its data placeholder (relocated slots), not redeclared.
+extern "C" void* dat_00826bd4[];
+
 struct Holder {
-    Function1 held;
-    // INFERRED: a virtual member provides the vptr without registering a base-destructor unwind state
-    virtual void dummy() {}
-    __forceinline Holder(const Function1& f) : held(f) {}
+    void** vptr;    // +0
+    int pad_;       // INFERRED: +4, held is 8-aligned (function buffer)
+    Function1 held; // +8
+    __forceinline Holder(const Function1& f) : vptr(dat_00826bd4), held(f) {}
 
     // INFERRED: class-specific placement new so the object is built in place (no delete cleanup state)
     static void* operator new(unsigned int, void* p) { return p; }

@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-function-pod-vtable /I{headers}/part-embedded
 // 2008-06 native RBX::FlagStand (inactive): the FlagStand half of the original FlagStand/FlagStandService unit
 // (0062b8f0..0062cf40, initializers 007f7e90/007f7ef0, atexit 00800450/00800470). The FlagStandService half lives in
 // native-classes/FlagStandService.cpp (another contributor). Evidence in native-headers/v8datamodel/FlagStand.h.
@@ -122,6 +122,8 @@ namespace RBX
 	// 00619360 on the provider, RegisterFlagStand (inline push_back), PartInstance::event_Touched (00976164)
 	// connect 004a3340 with boost::bind(&FlagStand::onEvent_standTouched, this, _1) and group 10 into standTouched
 	// +0x3e8 (scoped_connection::operator= 00595540); on removal list::remove 0062c0c0 and disconnect 00595230.
+	// The bind's boost::slot constructor 0062c590 and function1::assign_to 0062c160 are emitted by this unit; both are
+	// byte-identical only with /I{headers}/boost-function-pod-vtable (assign_to takes the functor by reference).
 	void FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
 	{
 		if (oldProvider == NULL)

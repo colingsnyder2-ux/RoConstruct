@@ -10,7 +10,8 @@ class DescribedBase;
 }
 }
 
-extern boost::shared_ptr<RBX::Reflection::DescribedBase> __cdecl convert(const boost::shared_ptr<RBX::Instance>&);
+// 0056e080 is boost::static_pointer_cast<DescribedBase, Instance> (TmplInst_0056e080.cpp / Inferred_0056e080.cpp), called
+// out of line by 0056f3b0 (push source, push result slot, add esp 8).
 
 namespace RBX {
 namespace Reflection {
@@ -27,7 +28,7 @@ boost::shared_ptr<DescribedBase>& Value::convert<boost::shared_ptr<DescribedBase
 	if (isType<SourceShared>()) {
 		SourceShared* source = boost::any_cast<SourceShared>(&value);
 		if (source)
-			value = ::convert(*source);
+			value = boost::static_pointer_cast<DescribedBase>(*source);
 		else
 			value = Shared();
 		_type = &Type::singleton<Shared>();

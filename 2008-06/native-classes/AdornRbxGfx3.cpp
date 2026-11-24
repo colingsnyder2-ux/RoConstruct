@@ -10,7 +10,10 @@ namespace RBX
 {
     // 00962da8: the 2D text font, an Ogre::SharedPtr<RbxFont> (vptr 0084d1d4, pRep at 00962dac) assigned from
     // RbxFont::fromFile by the AdornRbxGfx constructor 00674210 (guard `[00962dac] == 0`, call 00670670 on 00962da8).
-    extern Ogre::SharedPtr<Ogre::RbxFont> font2d;
+    // INFERRED: the global is defined here (dynamic init constructs the empty SharedPtr: vptr + null pRep, the state the
+    // constructor's `[00962dac] == 0` guard tests); declared extern only, nothing constructed it and exact code
+    // assigned into a null-vptr object.
+    Ogre::SharedPtr<Ogre::RbxFont> font2d;
 
     // 0066f900 (slot 5): tail-jumps to Viewport::getActualWidth (rgmain import).
     int AdornRbxGfx::getWidth() const
