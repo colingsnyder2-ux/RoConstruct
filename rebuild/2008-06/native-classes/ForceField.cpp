@@ -1,9 +1,10 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-function-pod-vtable /I{headers}/engine-world /I{headers}/part-embedded
 // 2008-06 native RBX::ForceField (inactive); evidence in native-headers/v8datamodel/ForceField.h.
 // Verified by tests/record_native_debris_forcefield.py (built with /fp:fast: renderPart 0062d200 reuses the 0.0f of
 // the transparency compare as the green channel).
 // askSetParent 0062d090 and the ancestor walk 0062d380 dynamic_cast to the native RBX::Workspace; render3dAdorn
-// 0062d570 uses the native Instance::visitDescendents (0062d400). renderPart 0062d200 is compiled but not exact
-// (2008 PartInstance float at +0x328).
+// 0062d570 uses the native Instance::visitDescendents (0062d400). renderPart 0062d200 reads the part-embedded
+// PartInstance alphaModifier (+0x328).
 #include "v8datamodel/ForceField.h"
 #include "v8datamodel/PartInstance.h"
 #include "AppDraw/Draw.h"
@@ -36,8 +37,9 @@ static void renderPart(boost::shared_ptr<Instance> instance, Adorn* adorn, int c
 {
 	if (PartInstance* part = dynamic_cast<PartInstance*>(instance.get()))
 	{
-		// +0x328 of the 2008 PartInstance (accessor provisional); the original draws when it is non-zero.
-		if (part->getTransparencyXml() != 0.0f)
+		// 0062d241: fld [part+0x328], the part-embedded PartInstance alphaModifier (the native-flags line now selects
+		// /I{headers}/part-embedded, as Explosion's unit does); the original draws when it is non-zero.
+		if (part->getAlphaModifier() != 0.0f)
 		{
 			float a = (cycle < 15 ? cycle : 30 - cycle) * (1.0f / 15.0f);
 			Draw::selectionBox(part->getPart(), adorn, G3D::Color4(a, 0.0f, 1.0f - a, 0.5f)); // 00676e00 (Draw.cpp, Color4 overload)

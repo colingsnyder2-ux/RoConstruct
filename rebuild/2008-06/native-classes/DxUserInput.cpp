@@ -91,7 +91,15 @@ namespace RBX
 			if (mouse->Acquire() == 0)
 			{
 				G3D::Vector2 offset = position - sub_004673f0().center();
+#ifdef DXUSERINPUT_HEADER_RETURNS_VECTOR2_004672E0
+				// 00467670 pushes (&returnSlot esp+0xc, &offset esp+4, -10) and copies the returned eax into +0x60
+				// without zeroing the slot: 004672e0 returns its Vector2 by value through the hidden pointer (header
+				// proposal for util/DxUserInput.h). Measured batch 47: 168 = 168 bytes; only the frame is left (target
+				// sub esp,0x20 keeps the Rect2D temporary at esp+0x14 apart from the return slot; here 0x18, shared).
+				lastPosition = sub_004672e0(offset, -10);
+#else
 				lastPosition = sub_004672e0(offset, offset, -10);
+#endif
 				mouseAcquired = true;
 				dragging = false;
 			}
@@ -300,9 +308,7 @@ namespace RBX
 		case WRAP_AUTO:
 			if (sub_004674a0() || dragging)
 			{
-				G3D::Vector2int16 size = sub_00467440();
-				G3D::Vector2 v((float)size.x, (float)size.y);
-				sub_0046a100(input, output, lastPosition, v);
+				sub_0046a100(input, output, lastPosition, sub_00467440());
 			}
 			else if (sub_00467d50())
 			{
@@ -310,13 +316,11 @@ namespace RBX
 			}
 			else if (sub_00467380())
 			{
-				G3D::Vector2 v(sub_00467440());
-				sub_0046a130(input, output, lastPosition, v);
+				sub_0046a130(input, output, lastPosition, sub_00467440());
 			}
 			else
 			{
-				G3D::Vector2 v(sub_00467440());
-				sub_0046a1b0(input, output, lastPosition, v);
+				sub_0046a1b0(input, output, lastPosition, sub_00467440());
 			}
 			break;
 		case WRAP_CENTER:
