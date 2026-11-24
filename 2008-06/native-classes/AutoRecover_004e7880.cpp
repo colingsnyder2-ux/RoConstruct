@@ -1,31 +1,30 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-namespace G3D {
-class System {
-public:
-    static void* alignedMalloc(unsigned int bytes, unsigned int alignment);
-    static void memset(void* dst, unsigned char value, unsigned int n);
-};
-}
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// INFERRED: copy-constructor-like routine for a hash-table style container:
+// +4 = count, +8 = bucket array, +0xc = bucket count; cloning non-null chains.
+// INFERRED: fn_004e6f50 clones a node chain, returns new head. The target never
+// sets edx before the call, so the helper is declared with only the object pointer.
 
-// INFERRED: pointer-array container; field names guessed from usage only.
-struct PtrArray2008 {
-    int unk0;
-    int field4;
-    void** data;
+extern "C" int __fastcall fn_004e6f50(void* self);
+extern "C" void* __cdecl fn_00508580(unsigned size, unsigned align);
+extern "C" void __cdecl fn_00508a30(void* p, unsigned char v, unsigned n);
+
+struct HashTable {
+    int pad0;
     int count;
+    void** buckets;
+    int numBuckets;
 };
 
-extern "C" int __fastcall fn_004e6f50(void* self, int unusedEdx);
-
-extern "C" void __fastcall fn_004e7880(PtrArray2008* self, int unusedEdx, PtrArray2008* other)
+extern "C" void __fastcall fn_004e7880(HashTable* self, int unusedEdx, HashTable* other)
 {
-    self->field4 = other->field4;
     self->count = other->count;
-    self->data = (void**)G3D::System::alignedMalloc(self->count * 4, 16);
-    G3D::System::memset(self->data, 0, self->count * 4);
-    for (int i = 0; i < self->count; ++i) {
-        if (other->data[i]) {
-            self->data[i] = (void*)fn_004e6f50(other->data[i], 0);
+    self->numBuckets = other->numBuckets;
+    // INFERRED: G3D::System::alignedMalloc(size, alignment) and System::memset
+    self->buckets = (void**)fn_00508580(self->numBuckets * 4, 16);
+    fn_00508a30(self->buckets, 0, self->numBuckets * 4);
+    for (int i = 0; i < self->numBuckets; ++i) {
+        if (other->buckets[i]) {
+            self->buckets[i] = (void*)fn_004e6f50(other->buckets[i]);
         }
     }
 }

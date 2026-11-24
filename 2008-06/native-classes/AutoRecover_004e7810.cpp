@@ -1,37 +1,32 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-
-// INFERRED: the object is a chained hash-table-like container whose copy
-// routine duplicates the bucket array and deep-copies each non-null bucket.
-// INFERRED: the layout below is guessed from the offsets the code touches.
-
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 namespace G3D {
 class System {
 public:
     static void* alignedMalloc(unsigned int bytes, unsigned int alignment);
-    static void memset(void* dst, unsigned char value, unsigned int n);
+    static void memset(void* dst, unsigned char value, unsigned int numBytes);
 };
 }
 
-struct BucketTable {
-    int field0;          // INFERRED: unknown / vtable
-    int field4;          // copied verbatim
-    void** buckets;      // +8
-    int numBuckets;      // +0xc
+// INFERRED: layout from the disassembly offsets; +0 is untouched by this function.
+struct Table4E7810 {
+    int field0;
+    int field4;
+    void** buckets;
+    int count;
 };
 
-extern "C" int __fastcall fn_004e6eb0(void* self, int unusedEdx);
+// Callee only reads ecx; a single fastcall arg avoids the dummy edx zeroing.
+extern "C" void* __fastcall fn_004e6eb0(void* self);
 
-extern "C" void __fastcall fn_004e7810(BucketTable* self, int unusedEdx, BucketTable* other)
+extern "C" void __fastcall fn_004e7810(Table4E7810* self, int unusedEdx, Table4E7810* other)
 {
     self->field4 = other->field4;
-    int n = other->numBuckets;
-    self->numBuckets = n;
-    self->buckets = (void**)G3D::System::alignedMalloc(n * 4, 16);
-    G3D::System::memset(self->buckets, 0, self->numBuckets * 4);
-    for (int i = 0; i < self->numBuckets; ++i) {
-        void** src = &other->buckets[i];
-        if (*src != 0) {
-            self->buckets[i] = (void*)fn_004e6eb0(*src, 0);
+    self->count = other->count;
+    self->buckets = (void**)G3D::System::alignedMalloc(self->count * 4, 16);
+    G3D::System::memset(self->buckets, 0, self->count * 4);
+    for (int i = 0; i < self->count; ++i) {
+        if (other->buckets[i] != 0) {
+            self->buckets[i] = fn_004e6eb0(other->buckets[i]);
         }
     }
 }

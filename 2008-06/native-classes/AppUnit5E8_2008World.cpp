@@ -188,4 +188,15 @@ namespace RBX
 	{
 		rbx_static_cast<ClumpStage*>(jointStage->findStage(IStage::CLUMP_STAGE))->process();
 	}
+
+	// 005e9dd0 (registry placeholder func_005e9dd0; `ret 4`, only caller World::insertJoint 005ea320 at 005ea34e, after
+	// Primitive::getJoint(p0, p1) 005e7ce0 found an existing joint): the private World::destroyJoint(Joint*) that the
+	// engine-world World.h declares (no body elsewhere). Sets inJointNotification (+0xa5), raises AutoDestroy through
+	// the +0x20 Notifier base (005e99d0), clears the flag: the donor insertJoint inline block, out of line in 2008.
+	void World::destroyJoint(Joint* j)
+	{
+		inJointNotification = true;
+		Notifier<World, AutoDestroy>::raise(AutoDestroy(j));
+		inJointNotification = false;
+	}
 }

@@ -129,6 +129,19 @@ namespace RBX
 	// of line); the `> tolerance` tests are `test ah, 0x41; jne`. Donor body: tools/rbxgs util/RunningAverage.cpp.
 	// /fp:fast (file flags) is required: without it the build is 218 bytes (spilled Quaternion temps, fcompp/test ah,5);
 	// the integer JointStage rows above stay exact under /fp:fast.
+	// 00668a20 (registry placeholder func_00668a20; `ret 8`, callers SleepStage::computeShouldSleep 0064a6c0 at 0064a70e):
+	// donor RunningAverageState::update (tools/rbxgs util/RunningAverage.cpp), same placement note as withinTolerance
+	// below. Constants 0.25f 0083a3e4 / 0.75f 0082f840, Quaternion(const Matrix3&) 005dd570, Quaternion::operator=
+	// 005dd550 (out of line). PARKED near miss (197 bytes both; first divergence 00668a7d): after the Quaternion(Matrix3)
+	// call the target loads the scale first (`fld [esp+0x38]; fld st(0); fmul [eax]`), this build loads q.x first
+	// (`fld [eax]; fld [esp+0x38]; fmul st(1), st(0)`). Rejected: a named Quaternion with operator*= (222 B), operator*=
+	// on the temporary (212 B), and a scratch util/Quaternion.h whose operator*(float) multiplies `fNum * x` (unchanged).
+	void RunningAverageState::update(const G3D::CoordinateFrame& cofm, float radius)
+	{
+		this->position = this->position * 0.75f + cofm.translation * 0.25f;
+		this->angles = this->angles * 0.75f + Quaternion(cofm.rotation) * (radius * 0.25f);
+	}
+
 	bool RunningAverageState::withinTolerance(const G3D::CoordinateFrame& cofm, float radius, float tolerance)
 	{
 		G3D::Vector3 deltaPos = Math::vector3Abs(this->position - cofm.translation);

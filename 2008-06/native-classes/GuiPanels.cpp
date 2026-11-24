@@ -9,14 +9,6 @@
 
 namespace RBX
 {
-	// INFERRED: setCanvasSize is inline in the 2008 header (stores straight into 00974d78 / 00974d7c here and in
-	// GuiRoot::render2d 00573c00, no out-of-line copy); the read-only gui/Gui.h only declares it (GuiRootRender.cpp
-	// pattern; proposal: make it inline there).
-	inline void GuiRoot::setCanvasSize(const G3D::Vector2& size)
-	{
-		canvasSize = size;
-	}
-
 	// 00573430 (registry placeholder func_00573430, cdecl): GuiRoot::render2dItem, called by the DataModel GUI
 	// render 0057a1b0 (0057a231) with the Adorn and the root GuiItem. Adorn getHeight (+0x18) / getWidth (+0x14)
 	// through Vector2int16 into canvasSize, then the item's render2d slot (+0x60). Statement shape of the 2007

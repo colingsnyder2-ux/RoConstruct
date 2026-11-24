@@ -459,3 +459,14 @@ template G3D::Array<boost::shared_ptr<RBX::PartInstance> >::~Array();
 // Creator::create 005a3230 (vtable 00833ac0, RTTI .?AVCreator@?$FactoryProduct@VFlag@RBX@@...), which sits in this
 // unit's range: the original Workspace.cpp emitted the Flag creator COMDATs (it includes v8datamodel/Flag.h).
 template boost::shared_ptr<RBX::Flag> RBX::Creatable<RBX::Instance>::create<RBX::Flag>();
+
+// 005a23f0 (registry placeholder func_005a23f0): the invoker of boost::function0<double> over
+// bind(&Workspace::<double getter> const, const Workspace*): the boost::function vtable 00833908 {manager 005a1380, invoker
+// 005a23f0}, stored by function0<double>::assign_to 005a2860 (the manager compares typeid 0094ba80
+// `bind_t<double, cmf0<double, Workspace>, list1<value<const Workspace*> > >`). Its real users are the WorkspaceStatsItem
+// constructor 005a5c90 child items (FPS ...) of this unit (005a6509 .. 005a65e7 call 005a2860), not recovered yet
+// (stats/WorkspaceStatsItem.h), so the template instance is emitted by explicit instantiation. The member pointer call
+// goes through the Workspace virtual base pointer at +0x134.
+#include <boost/function.hpp>
+#include <boost/bind.hpp>
+template struct boost::detail::function::function_obj_invoker0<boost::_bi::bind_t<double, boost::_mfi::cmf0<double, RBX::Workspace>, boost::_bi::list1<boost::_bi::value<const RBX::Workspace*> > >, double>;

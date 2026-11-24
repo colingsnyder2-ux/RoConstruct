@@ -96,3 +96,56 @@ namespace RBX
         sparkles.clear();
     }
 }
+
+#include <GLG3D/Texture.h>
+#include <OgreTextureManager.h>
+#include <OgreTexture.h>
+
+namespace RBX
+{
+    // 00670210 (vtable slot 8, ret 8 = hidden Rect2D + TextureProxyBaseRef by value): resolve (TextureProxyBase slot 6,
+    // the visual engine pointer passed as in setTexture 006700e0) with its RCP discarded, then
+    // TextureManager::getSingleton().getByName(filename +0x0c) (ResourceManager vtable +0x4c) into a TexturePtr;
+    // getHeight (+0x64) is read before getWidth (+0x60) (right-to-left arguments), both size_t (unsigned fild fix-up).
+    G3D::Rect2D AdornRbxGfx::getTextureSize(TextureProxyBaseRef _texture) const
+    {
+        _texture->resolve(reinterpret_cast<G3D::RenderDevice*>(visualEngine));
+        Ogre::TexturePtr texture = Ogre::TextureManager::getSingleton().getByName(_texture->filename);
+        size_t width = texture->getWidth();
+        size_t height = texture->getHeight();
+        return G3D::Rect2D(G3D::Vector2(width, height));
+    }
+}
+
+#ifdef ADORNRBXGFX_HEADER_DECLARES_SET_COLOR_MATERIAL
+#include <OgreMaterialManager.h>
+#include <OgreTechnique.h>
+#include <OgrePass.h>
+#include <stdio.h>
+
+namespace RBX
+{
+    // 00670400 (thiscall, ret 8; callers cylinderAlongX 006726a0, sphere 00672ba0, quad 00672f50, ray 006735a0).
+    // Guarded: RbxGraphics/AdornRbxGfx2008.h does not declare this private helper (header proposal).
+    // INFERRED: name and the int parameter's meaning (registry placeholder func_00670400; the openrbx 2007 analog
+    // AppDraw/AdornRbxGfx.cpp calls it FUN_0066aae0). Body: _snprintf format 0084d214 (64-byte buffer), MaterialManager
+    // getByName (vtable +0x4c) into textureMaterial +0x24, create (vtable +0x10, group 008163c4) when null, then pass 0
+    // of technique 0: setAmbient / setDiffuse / setSpecular / setShininess (0x827490) and setLightingEnabled(true).
+    void AdornRbxGfx::setColorMaterial(const G3D::Color4& color, int variant)
+    {
+        char name[64];
+        _snprintf(name, sizeof(name), "setColor%.3f%.3f%.3f%.3f%d", color.r, color.g, color.b, color.a, variant);
+        textureMaterial = Ogre::MaterialManager::getSingleton().getByName(name);
+        if (textureMaterial.isNull())
+        {
+            textureMaterial = Ogre::MaterialManager::getSingleton().create(name, "adorn3d");
+            Ogre::Pass* pass = textureMaterial->getTechnique(0)->getPass(0);
+            pass->setAmbient(color.r, color.g, color.b);
+            pass->setDiffuse(color.r, color.g, color.b, color.a);
+            pass->setSpecular(color.r, color.g, color.b, color.a);
+            pass->setShininess(10.0f);
+            textureMaterial->setLightingEnabled(true);
+        }
+    }
+}
+#endif

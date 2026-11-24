@@ -1,70 +1,78 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-#include <utility>
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// INFERRED: the original unit was built with fast floating-point semantics
+// (fcomp against memory, swaps without a stack temporary). These pragmas
+// give /fp:fast behaviour for this file.
+#pragma float_control(except, off)
+#pragma float_control(precise, off)
 #include <algorithm>
+#include <utility>
 
-extern "C" void fn_00678880(float* a, float* b, float* c);
+// INFERRED: func_00678880 is std::_Median(first, mid, last) on float*; the
+// 7-arg signature in the prompt is replaced by the 3 args the call site pushes.
+extern "C" int fn_00678880(float* a, float* b, float* c);
 
-// INFERRED: MSVC 2008 std::_Partition<float*, std::less<float>> (introsort partition), median helper is fn_00678880
-std::pair<float*, float*> fn_006789e0(float* first, float* last)
+// INFERRED: this is VS2008 std::_Unguarded_partition<float*>. The pair is
+// returned through a hidden first pointer argument (out), then _First, _Last.
+extern "C" void fn_006789e0(std::pair<float*, float*>* out, float* _First, float* _Last)
 {
-    float* mid = first + (last - first) / 2;
-    fn_00678880(first, mid, last - 1);
-    float* pfirst = mid;
-    float* plast = pfirst + 1;
-    while (first < pfirst && !(*pfirst < *(pfirst - 1)) && !(*(pfirst - 1) < *pfirst))
-        --pfirst;
-    while (plast < last && !(*pfirst < *plast) && !(*plast < *pfirst))
-        ++plast;
+    float* _Mid = _First + (_Last - _First) / 2;
+    fn_00678880(_First, _Mid, _Last - 1);
+    float* _Pfirst = _Mid;
+    float* _Plast = _Pfirst + 1;
 
-    float* gfirst = plast;
-    float* glast = pfirst;
+    while (_First < _Pfirst
+        && !(*(_Pfirst - 1) < *_Pfirst)
+        && !(*_Pfirst < *(_Pfirst - 1)))
+        --_Pfirst;
+    while (_Plast < _Last
+        && !(*_Plast < *_Pfirst)
+        && !(*_Pfirst < *_Plast))
+        ++_Plast;
+
+    float* _Gfirst = _Plast;
+    float* _Glast = _Pfirst;
+
     for (;;)
     {
-        for (; gfirst < last; ++gfirst)
+        for (; _Gfirst < _Last; ++_Gfirst)
         {
-            if (*pfirst < *gfirst)
-                continue;
-            if (*gfirst < *pfirst)
+            if (*_Pfirst < *_Gfirst)
+                ;
+            else if (*_Gfirst < *_Pfirst)
                 break;
-            if (plast != gfirst)
-                std::iter_swap(plast, gfirst);
-            ++plast;
+            else
+                std::iter_swap(_Plast++, _Gfirst);
         }
-        for (; first < glast; --glast)
+        for (; _First < _Glast; --_Glast)
         {
-            if (*(glast - 1) < *pfirst)
-                continue;
-            if (*pfirst < *(glast - 1))
+            if (*(_Glast - 1) < *_Pfirst)
+                ;
+            else if (*_Pfirst < *(_Glast - 1))
                 break;
-            --pfirst;
-            if (glast - 1 != pfirst)
-                std::iter_swap(glast - 1, pfirst);
+            else
+                std::iter_swap(--_Pfirst, _Glast - 1);
         }
-        if (glast == first && gfirst == last)
-            return std::pair<float*, float*>(pfirst, plast);
-        if (glast == first)
+        if (_Glast == _First && _Gfirst == _Last)
         {
-            if (plast != gfirst)
-                std::iter_swap(pfirst, plast);
-            ++plast;
-            std::iter_swap(pfirst, gfirst);
-            ++pfirst;
-            ++gfirst;
+            out->first = _Pfirst;
+            out->second = _Plast;
+            return;
         }
-        else if (gfirst == last)
+
+        if (_Glast == _First)
         {
-            --glast;
-            --pfirst;
-            if (glast != pfirst)
-                std::iter_swap(glast, pfirst);
-            --plast;
-            std::iter_swap(pfirst, plast);
+            if (_Plast != _Gfirst)
+                std::iter_swap(_Pfirst, _Plast);
+            ++_Plast;
+            std::iter_swap(_Pfirst++, _Gfirst++);
+        }
+        else if (_Gfirst == _Last)
+        {
+            if (--_Glast != --_Pfirst)
+                std::iter_swap(_Glast, _Pfirst);
+            std::iter_swap(_Pfirst, --_Plast);
         }
         else
-        {
-            --glast;
-            std::iter_swap(gfirst, glast);
-            ++gfirst;
-        }
+            std::iter_swap(_Gfirst++, --_Glast);
     }
 }

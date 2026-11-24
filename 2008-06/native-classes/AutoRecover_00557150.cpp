@@ -1,18 +1,48 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: callees declared as C helpers; RunService layout offsets taken from the disassembly.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-extern "C" void __fastcall fn_005559a0(void* self, int unusedEdx);
-extern "C" void __fastcall fn_00554960(void* notifier, int unusedEdx, float time, float step);
-extern "C" void* __fastcall fn_0056b620(void* descriptor, int unusedEdx, const void* source);
-extern "C" void __fastcall fn_004937f0(void* signal, int unusedEdx, float arg, const float* argRef);
+// INFERRED: callees are declared as real __thiscall member functions so the compiler
+// emits plain thiscall sequences (no dummy edx). The member names stand in for the
+// real symbols (drainTasks, Notifier::raise, findSignalInstance, signal1::operator()).
+struct Heartbeat {
+    const float time;
+    const float step;
+    Heartbeat(float t, float s) : time(t), step(s) {}
+};
 
-extern "C" void __fastcall fn_00557150(char* self, int unusedEdx, float step)
+struct Signal {
+    void raise(Heartbeat); // 0x554960
+};
+
+struct Listener {
+    void emit(const float*, float); // 0x4937f0
+};
+
+struct Result {
+    char pad[0x10];
+    Listener listener;
+};
+
+struct Registry {
+    Result* find(const void*); // 0x56b620
+};
+
+struct Primary { char pad[0x14]; };
+struct Instance { char pad[0x11c]; };
+
+struct RunService : Primary, Instance {
+    char pad[0x88];
+    double time;
+    void tick(); // 0x5559a0 drainTasks
+};
+
+// INFERRED: the object at 0x973b40 is the SignalDescriptor global used for findSignalInstance.
+extern "C" Registry g_00973b40;
+
+extern "C" void __fastcall fn_00557150(RunService* self, int unusedEdx, float step)
 {
-    fn_005559a0(self, 0);                       // drainTasks
-    float time = (float)*(double*)(self + 0x1b8);
-    fn_00554960(self + 0x130, 0, time, step);   // Notifier<RunService, Heartbeat>::raise
-
-    void* sig = fn_0056b620((void*)0x973b40, 0, self + 0x14);   // findSignalInstance
-    if (sig)
-        fn_004937f0((char*)sig + 0x10, 0, step, &step);
+    self->tick();
+    reinterpret_cast<Signal*>(reinterpret_cast<char*>(self) + 0x130)->raise(Heartbeat((float)self->time, step));
+    Result* r = g_00973b40.find(static_cast<Instance*>(self));
+    if (r)
+        r->listener.emit(&step, step);
 }

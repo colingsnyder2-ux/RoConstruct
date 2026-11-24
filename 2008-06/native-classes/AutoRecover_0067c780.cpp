@@ -1,30 +1,32 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-// INFERRED: this is std::__adjust_heap for 8-byte elements ordered by the float in the second dword.
+// INFERRED: element is an 8-byte pair whose second dword is a float sort key.
 struct HeapElem {
-    int   a;
+    int   first;
     float key;
 };
 
-// INFERRED: the disassembly pushes 5 stack args and the caller pops 0x14, so this is declared
-// as plain cdecl with 5 args rather than the __fastcall form suggested in the task.
-// It is the push_heap step.
-extern "C" void fn_0067c640(HeapElem* first, int hole, int top, int v0, int v1);
+// INFERRED: the disassembly shows a plain cdecl call with 5 stack args
+// (base, hole, top, value by value as 2 dwords), caller pops 0x14.
+// This is the push_heap step.
+extern "C" void fn_0067c640(HeapElem* base, int hole, int top, HeapElem value);
 
-extern "C" void fn_0067c780(HeapElem* first, int hole, int len, int v0, int v1)
+// INFERRED: std::__adjust_heap on 8-byte elements, compared by the float key.
+extern "C" void fn_0067c780(HeapElem* first, int holeIndex, int len, HeapElem value)
 {
-    int top = hole;
-    int child = 2 * hole + 2;
+    int topIndex = holeIndex;
+    int child = 2 * holeIndex + 2;
     while (child < len) {
+        // INFERRED: comparator written as greater-than on [child-1] vs [child]
         if (first[child - 1].key > first[child].key)
             --child;
-        first[hole] = first[child];
-        hole = child;
-        child = 2 * child + 2;
+        first[holeIndex] = first[child];
+        holeIndex = child;
+        child = 2 * (child + 1);
     }
     if (child == len) {
-        first[hole] = first[len - 1];
-        hole = len - 1;
+        first[holeIndex] = first[len - 1];
+        holeIndex = len - 1;
     }
-    fn_0067c640(first, hole, top, v0, v1);
+    fn_0067c640(first, holeIndex, topIndex, value);
 }

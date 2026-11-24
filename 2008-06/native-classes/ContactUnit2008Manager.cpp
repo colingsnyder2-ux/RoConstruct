@@ -94,6 +94,19 @@ namespace RBX
 		return fastHit;
 	}
 
+#ifdef CONTACTMANAGER_HEADER_DECLARES_ONRELEASEPAIR
+	// 0060cc00 (registry placeholder func_0060cc00; `ret 8`, callers SpatialHash 0065a92e / 0065abba, the pair release
+	// path beside onNewPair 0060d8b0): donor ContactManager::onReleasePair with the 2008 NULL test: Primitive::getContact
+	// 005e7d30, then World::destroyContact 005e9280 through world (+0x4). GUARDED: v8world/ContactManager2008.h does not
+	// declare it (header proposal `void onReleasePair(Primitive* p0, Primitive* p1);` after onNewPair). A scratch build
+	// with that line is byte-identical (38 bytes, relocs masked).
+	void ContactManager::onReleasePair(Primitive* p0, Primitive* p1)
+	{
+		if (Contact* contact = Primitive::getContact(p0, p1))
+			world->destroyContact(contact);
+	}
+#endif
+
 	// 0060d8b0
 	void ContactManager::onNewPair(Primitive* p0, Primitive* p1)
 	{

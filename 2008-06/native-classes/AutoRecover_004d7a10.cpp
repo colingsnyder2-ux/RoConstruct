@@ -1,43 +1,55 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-#include <new>
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-// INFERRED: layout and types are guesses from the constructor-like disassembly.
-struct SrcImpl {
-    // called cdecl-style (caller cleans 12 bytes), no 'this' passed
-    void (__cdecl *fn)(void* a, void* b, int c);
+// INFERRED: minimal local reconstruction of boost::any::holder<boost::function<void(shared_ptr<Instance>)>>
+// layout: holder { vptr@0, held@8 { vtable@0, functor buffer@8 (8-aligned) } }.
+
+struct FnBuffer {
+    union {
+        void* obj_ptr;
+        char data[16];
+        long long align_;
+    };
 };
 
-struct SrcHolder {
-    SrcImpl* impl;   // +0
-    int pad;         // +4
-    int data[1];     // +8 (address passed on)
+struct FnVTable {
+    void (*manager)(const FnBuffer* in, FnBuffer* out, int op);
+    void* invoker;
 };
 
-struct Payload {
-    int words[4];
-    // INFERRED: non-trivial destructor explains the EH frame / state store
-    ~Payload() {}
-};
+// INFERRED: single function object with a destructor gives the single EH state (0) seen in the original
+struct Function1 {
+    FnVTable* vtable;
+    FnBuffer functor;
 
-struct Obj {
-    virtual ~Obj() {}   // INFERRED: vtable at 0x826bd4
-    int field4;
-    SrcImpl* source;    // +8
-    int fieldC;
-    Payload payload;    // +0x10
-    Obj(SrcHolder* h);
-};
-
-Obj::Obj(SrcHolder* h)
-{
-    source = 0;
-    if (h->impl != 0) {
-        source = h->impl;
-        h->impl->fn(h->data, &payload, 0);
+    __forceinline Function1(const Function1& f) : vtable(0)
+    {
+        if (f.vtable) {
+            vtable = f.vtable;
+            f.vtable->manager(&f.functor, &functor, 0); // clone_functor_tag
+        }
     }
-}
+    __forceinline ~Function1()
+    {
+        if (vtable) {
+            vtable->manager(&functor, &functor, 2); // destroy_functor_tag
+            vtable = 0;
+        }
+    }
+};
 
-extern "C" Obj* __fastcall fn_004d7a10(Obj* self, int unusedEdx, SrcHolder* h)
+struct Holder {
+    Function1 held;
+    // INFERRED: a virtual member provides the vptr without registering a base-destructor unwind state
+    virtual void dummy() {}
+    __forceinline Holder(const Function1& f) : held(f) {}
+
+    // INFERRED: class-specific placement new so the object is built in place (no delete cleanup state)
+    static void* operator new(unsigned int, void* p) { return p; }
+};
+
+extern "C" Holder* __fastcall fn_004d7a10(Holder* self, int unusedEdx, const Function1* f)
 {
-    return new (self) Obj(h);
+    // INFERRED: original is a real constructor, so no null check on 'this'
+    __assume(self != 0);
+    return new (self) Holder(*f);
 }

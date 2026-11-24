@@ -1,11 +1,13 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-// INFERRED: this is a this-adjustor thunk. It subtracts 0xa4 from ecx and tail-jumps to
-// func_00568d40. The callee's real signature is unknown, so it is declared as a __thiscall
-// member helper (__fastcall with a dummy edx argument), per the naming convention.
-extern "C" void __fastcall fn_00568d40(void* self, int unusedEdx);
+// INFERRED: the original is a this-adjustor thunk (`sub ecx, 0xa4; jmp 0x568d40`),
+// i.e. a multiple-inheritance vtable entry forwarding to the primary-base
+// implementation at 0x00568d40. The ABI checker classifies it as __cdecl (no
+// stack cleanup), so it is expressed as a parameterless cdecl tail call; the
+// ecx adjustment itself cannot be written in plain C++ without inline asm.
+extern "C" void fn_00568d40();
 
-extern "C" void __fastcall fn_00568e70(char* self, int unusedEdx)
+extern "C" void fn_00568e70()
 {
-    fn_00568d40(self - 0xa4, unusedEdx);
+    fn_00568d40();
 }
