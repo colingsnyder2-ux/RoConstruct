@@ -10,6 +10,7 @@
 #include "v8world/IMoving.h"
 #include "v8world/World2008.h"
 #include "v8world/AssemblyLayout.h"
+#include "v8world/Joints2008.h"   // complete Joint (Edge subclass) for getJoint 005e7ce0
 #include "v8kernel/Body2008.h"   // Body::getParent / sub_005e7370 (Body +0x14 parent) for getBodyDepth 005e7470
 
 namespace RBX
@@ -103,6 +104,22 @@ namespace RBX
 		return getFirstRigidAt(joints.edges.size() > 0 ? joints.edges[0] : NULL);
 	}
 #endif
+
+	// 005e7ce0 (74 B, cdecl; registry placeholder func_005e7ce0; declared INFERRED in Primitive2008.h): the joint twin
+	// of getContact 005e7d30 below (same shape on joints: size +0x3c, otherPrimitives data +0x44, edges data +0x38).
+	// Donor static Primitive::getJoint(p0, p1); callers World::createJoints 005ea4d0 (005ea573) and
+	// RBXWorldRecovery_005e9170.cpp. No other native unit defines it.
+	Joint* Primitive::getJoint(Primitive* p0, Primitive* p1)
+	{
+		Primitive* least = p0->joints.edges.size() < p1->joints.edges.size() ? p0 : p1;
+		Primitive* other = least == p0 ? p1 : p0;
+		for (int i = 0; i < least->joints.edges.size(); ++i)
+		{
+			if (least->joints.otherPrimitives[i] == other)
+				return static_cast<Joint*>(least->joints.edges[i]);
+		}
+		return NULL;
+	}
 
 	// 005e7d30: search the smaller contact list's parallel primitive/edge arrays (donor Primitive::getContact).
 	Contact* Primitive::getContact(Primitive* p0, Primitive* p1)
