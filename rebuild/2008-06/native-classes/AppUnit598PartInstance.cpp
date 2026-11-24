@@ -343,4 +343,30 @@ namespace RBX
 	{
 		return !event_Touched.empty(this);
 	}
+
+	// Workspace double getters (registry placeholders func_005a00f0 / func_005a0100 / func_005a0110 / func_005a0120):
+	// `fld qword ptr [ecx + 0x410/0x418/0x420]; ret` and the sum in the order 0x420 + 0x418 + 0x410.
+	// WorkspaceStatsItem::WorkspaceStatsItem 005a5c90 binds 005a00f0 / 005a0100 / 005a0110 (data refs 005a6532,
+	// 005a6569, 005a65b3). Declarations and INFERRED names: native-headers/v8datamodel/Workspace.h. They live in the
+	// Workspace unit (005a....); no Workspace unit is assigned to this batch, so they are drafted here.
+	// 005a00f0
+	double Workspace::getUnknown0x410() const
+	{
+		return unknown0x410;
+	}
+	// 005a0100
+	double Workspace::getUnknown0x418() const
+	{
+		return unknown0x418;
+	}
+	// 005a0110
+	double Workspace::getUnknown0x420() const
+	{
+		return unknown0x420;
+	}
+	// 005a0120
+	double Workspace::getUnknownSum() const
+	{
+		return unknown0x420 + unknown0x418 + unknown0x410;
+	}
 }
