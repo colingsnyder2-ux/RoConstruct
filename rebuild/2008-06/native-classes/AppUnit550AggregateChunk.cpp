@@ -37,3 +37,20 @@ template G3D::Array<G3D::Vector2>::Array();
 template G3D::Array<G3D::MeshAlg::Edge>::~Array();
 template G3D::Array<G3D::MeshAlg::Face>::~Array();
 template G3D::VAR::VAR(const G3D::Array<G3D::Vector2>&, G3D::VARAreaRef);
+
+// 00551730: RenderBase::createMaterial (cdecl, no arguments; callers AggregateChunk ctor 005520b5, Part::getMaterial
+// 004eb190, Decal::getMaterial 004ebe70, 004f1a60 / 004f1c60). Render-mode global 00942ec4 selects the material family:
+// 0 -> new RenderNew::Material (0x18, ctor 007ad960), 1 -> new Render::Material (0x18, ctor 007b80a0), otherwise it
+// throws std::exception("Invalid factory type") (string 0082d058). Name 00942ec4 as declared in CRobloxWndWindow.cpp.
+namespace RBX { extern int renderMode; }   // 00942ec4
+namespace RBX { namespace RenderBase {
+MaterialBase* createMaterial()
+{
+	if (renderMode == 0)
+		return new RenderNew::Material();
+	else if (renderMode == 1)
+		return new Render::Material();
+	else
+		throw std::exception("Invalid factory type");
+}
+} }
