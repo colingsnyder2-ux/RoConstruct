@@ -1,41 +1,221 @@
 // from server: 100% by auto
-// roc 2009-12 0079a240  unit: lua_exception  size: 77 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0079a240
-//
-// 0079a240  53                   push ebx
-// 0079a241  8bc2                 mov eax, edx
-// 0079a243  57                   push edi
-// 0079a244  8b7e08               mov edi, dword ptr [esi + 8]
-// 0079a247  8d5801               lea ebx, [eax + 1]
-// 0079a24a  8d9b00000000         lea ebx, [ebx]
-// 0079a250  8a08                 mov cl, byte ptr [eax]
-// 0079a252  40                   inc eax
-// 0079a253  84c9                 test cl, cl
-// 0079a255  75f9                 jne 0x79a250
-// 0079a257  2bc3                 sub eax, ebx
-// 0079a259  50                   push eax
-// 0079a25a  52                   push edx
-// 0079a25b  56                   push esi
-// 0079a25c  e82f690300           call 0x7d0b90
-// 0079a261  8907                 mov dword ptr [edi], eax
-// 0079a263  c7470804000000       mov dword ptr [edi + 8], 4
-// 0079a26a  8b461c               mov eax, dword ptr [esi + 0x1c]
-// 0079a26d  2b4608               sub eax, dword ptr [esi + 8]
-// 0079a270  bf10000000           mov edi, 0x10
-// 0079a275  83c40c               add esp, 0xc
-// 0079a278  3bc7                 cmp eax, edi
-// 0079a27a  7f0b                 jg 0x79a287
-// 0079a27c  6a01                 push 1
-// 0079a27e  56                   push esi
-// 0079a27f  e8acd0ffff           call 0x797330
-// 0079a284  83c408               add esp, 8
-// 0079a287  017e08               add dword ptr [esi + 8], edi
-// 0079a28a  5f                   pop edi
-// 0079a28b  5b                   pop ebx
-// 0079a28c  c3                   ret 
-// library lua-5.1/lobject.c (function _pushstr)
-
 // roc-lang: c
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /MD
 // roc-lib: lua-5.1 lobject.c
+
+// Candidate translation unit (score above; library headers required).
+/*
+** $Id: lobject.c,v 2.22 2006/02/10 17:43:52 roberto Exp $
+** Some generic functions over Lua objects
+** See Copyright Notice in lua.h
+*/
+
+#include <ctype.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define lobject_c
+#define LUA_CORE
+
+#include "lua.h"
+
+#include "ldo.h"
+#include "lmem.h"
+#include "lobject.h"
+#include "lstate.h"
+#include "lstring.h"
+#include "lvm.h"
+
+
+
+const TValue luaO_nilobject_ = {{NULL}, LUA_TNIL};
+
+
+/*
+** converts an integer to a "floating point byte", represented as
+** (eeeeexxx), where the real value is (1xxx) * 2^(eeeee - 1) if
+** eeeee != 0 and (xxx) otherwise.
+*/
+int luaO_int2fb (unsigned int x) {
+  int e = 0;  /* expoent */
+  while (x >= 16) {
+    x = (x+1) >> 1;
+    e++;
+  }
+  if (x < 8) return x;
+  else return ((e+1) << 3) | (cast_int(x) - 8);
+}
+
+
+/* converts back */
+int luaO_fb2int (int x) {
+  int e = (x >> 3) & 31;
+  if (e == 0) return x;
+  else return ((x & 7)+8) << (e - 1);
+}
+
+
+int luaO_log2 (unsigned int x) {
+  static const lu_byte log_2[256] = {
+    0,1,2,2,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+    6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,
+    7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,
+    7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,
+    8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+    8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+    8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+    8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8
+  };
+  int l = -1;
+  while (x >= 256) { l += 8; x >>= 8; }
+  return l + log_2[x];
+
+}
+
+
+int luaO_rawequalObj (const TValue *t1, const TValue *t2) {
+  if (ttype(t1) != ttype(t2)) return 0;
+  else switch (ttype(t1)) {
+    case LUA_TNIL:
+      return 1;
+    case LUA_TNUMBER:
+      return luai_numeq(nvalue(t1), nvalue(t2));
+    case LUA_TBOOLEAN:
+      return bvalue(t1) == bvalue(t2);  /* boolean true must be 1 !! */
+    case LUA_TLIGHTUSERDATA:
+      return pvalue(t1) == pvalue(t2);
+    default:
+      lua_assert(iscollectable(t1));
+      return gcvalue(t1) == gcvalue(t2);
+  }
+}
+
+
+int luaO_str2d (const char *s, lua_Number *result) {
+  char *endptr;
+  *result = lua_str2number(s, &endptr);
+  if (endptr == s) return 0;  /* conversion failed */
+  if (*endptr == 'x' || *endptr == 'X')  /* maybe an hexadecimal constant? */
+    *result = cast_num(strtoul(s, &endptr, 16));
+  if (*endptr == '\0') return 1;  /* most common case */
+  while (isspace(cast(unsigned char, *endptr))) endptr++;
+  if (*endptr != '\0') return 0;  /* invalid trailing characters? */
+  return 1;
+}
+
+
+
+static void pushstr (lua_State *L, const char *str) {
+  setsvalue2s(L, L->top, luaS_new(L, str));
+  incr_top(L);
+}
+
+
+/* this function handles only `%d', `%c', %f, %p, and `%s' formats */
+const char *luaO_pushvfstring (lua_State *L, const char *fmt, va_list argp) {
+  int n = 1;
+  pushstr(L, "");
+  for (;;) {
+    const char *e = strchr(fmt, '%');
+    if (e == NULL) break;
+    setsvalue2s(L, L->top, luaS_newlstr(L, fmt, e-fmt));
+    incr_top(L);
+    switch (*(e+1)) {
+      case 's': {
+        const char *s = va_arg(argp, char *);
+        if (s == NULL) s = "(null)";
+        pushstr(L, s);
+        break;
+      }
+      case 'c': {
+        char buff[2];
+        buff[0] = cast(char, va_arg(argp, int));
+        buff[1] = '\0';
+        pushstr(L, buff);
+        break;
+      }
+      case 'd': {
+        setnvalue(L->top, cast_num(va_arg(argp, int)));
+        incr_top(L);
+        break;
+      }
+      case 'f': {
+        setnvalue(L->top, cast_num(va_arg(argp, l_uacNumber)));
+        incr_top(L);
+        break;
+      }
+      case 'p': {
+        char buff[4*sizeof(void *) + 8]; /* should be enough space for a `%p' */
+        sprintf(buff, "%p", va_arg(argp, void *));
+        pushstr(L, buff);
+        break;
+      }
+      case '%': {
+        pushstr(L, "%");
+        break;
+      }
+      default: {
+        char buff[3];
+        buff[0] = '%';
+        buff[1] = *(e+1);
+        buff[2] = '\0';
+        pushstr(L, buff);
+        break;
+      }
+    }
+    n += 2;
+    fmt = e+2;
+  }
+  pushstr(L, fmt);
+  luaV_concat(L, n+1, cast_int(L->top - L->base) - 1);
+  L->top -= n;
+  return svalue(L->top - 1);
+}
+
+
+const char *luaO_pushfstring (lua_State *L, const char *fmt, ...) {
+  const char *msg;
+  va_list argp;
+  va_start(argp, fmt);
+  msg = luaO_pushvfstring(L, fmt, argp);
+  va_end(argp);
+  return msg;
+}
+
+
+void luaO_chunkid (char *out, const char *source, size_t bufflen) {
+  if (*source == '=') {
+    strncpy(out, source+1, bufflen);  /* remove first char */
+    out[bufflen-1] = '\0';  /* ensures null termination */
+  }
+  else {  /* out = "source", or "...source" */
+    if (*source == '@') {
+      size_t l;
+      source++;  /* skip the `@' */
+      bufflen -= sizeof(" '...' ");
+      l = strlen(source);
+      strcpy(out, "");
+      if (l > bufflen) {
+        source += (l-bufflen);  /* get last part of file name */
+        strcat(out, "...");
+      }
+      strcat(out, source);
+    }
+    else {  /* out = [string "string"] */
+      size_t len = strcspn(source, "\n\r");  /* stop at first newline */
+      bufflen -= sizeof(" [string \"...\"] ");
+      if (len > bufflen) len = bufflen;
+      strcpy(out, "[string \"");
+      if (source[len] != '\0') {  /* must truncate? */
+        strncat(out, source, len);
+        strcat(out, "...");
+      }
+      else
+        strcat(out, source);
+      strcat(out, "\"]");
+    }
+  }
+}

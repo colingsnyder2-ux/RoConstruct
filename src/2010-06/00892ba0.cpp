@@ -1,185 +1,954 @@
 // from server: 100% by auto
-// roc 2010-06 00892ba0  unit: CXTColorPageCustom  size: 501 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 00892ba0
-//
-// 00892ba0  53                   push ebx
-// 00892ba1  56                   push esi
-// 00892ba2  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 00892ba6  57                   push edi
-// 00892ba7  8bf9                 mov edi, ecx
-// 00892ba9  8d8788000000         lea eax, [edi + 0x88]
-// 00892baf  50                   push eax
-// 00892bb0  6a65                 push 0x65
-// 00892bb2  56                   push esi
-// 00892bb3  e83657f1ff           call 0x7a82ee
-// 00892bb8  8d8f08010000         lea ecx, [edi + 0x108]
-// 00892bbe  51                   push ecx
-// 00892bbf  6a66                 push 0x66
-// 00892bc1  56                   push esi
-// 00892bc2  e82757f1ff           call 0x7a82ee
-// 00892bc7  8d9780010000         lea edx, [edi + 0x180]
-// 00892bcd  52                   push edx
-// 00892bce  6a69                 push 0x69
-// 00892bd0  56                   push esi
-// 00892bd1  e81857f1ff           call 0x7a82ee
-// 00892bd6  8d87d4010000         lea eax, [edi + 0x1d4]
-// 00892bdc  50                   push eax
-// 00892bdd  6a6b                 push 0x6b
-// 00892bdf  56                   push esi
-// 00892be0  e80957f1ff           call 0x7a82ee
-// 00892be5  8d8f28020000         lea ecx, [edi + 0x228]
-// 00892beb  51                   push ecx
-// 00892bec  6a6a                 push 0x6a
-// 00892bee  56                   push esi
-// 00892bef  e8fa56f1ff           call 0x7a82ee
-// 00892bf4  8d977c020000         lea edx, [edi + 0x27c]
-// 00892bfa  52                   push edx
-// 00892bfb  6a68                 push 0x68
-// 00892bfd  56                   push esi
-// 00892bfe  e8eb56f1ff           call 0x7a82ee
-// 00892c03  8d87d0020000         lea eax, [edi + 0x2d0]
-// 00892c09  50                   push eax
-// 00892c0a  6a6c                 push 0x6c
-// 00892c0c  56                   push esi
-// 00892c0d  e8dc56f1ff           call 0x7a82ee
-// 00892c12  8d8f24030000         lea ecx, [edi + 0x324]
-// 00892c18  51                   push ecx
-// 00892c19  6a6d                 push 0x6d
-// 00892c1b  56                   push esi
-// 00892c1c  e8cd56f1ff           call 0x7a82ee
-// 00892c21  8d9778030000         lea edx, [edi + 0x378]
-// 00892c27  52                   push edx
-// 00892c28  6a74                 push 0x74
-// 00892c2a  56                   push esi
-// 00892c2b  e8be56f1ff           call 0x7a82ee
-// 00892c30  8d87cc030000         lea eax, [edi + 0x3cc]
-// 00892c36  50                   push eax
-// 00892c37  6a77                 push 0x77
-// 00892c39  56                   push esi
-// 00892c3a  e8af56f1ff           call 0x7a82ee
-// 00892c3f  8d8f20040000         lea ecx, [edi + 0x420]
-// 00892c45  51                   push ecx
-// 00892c46  6a75                 push 0x75
-// 00892c48  56                   push esi
-// 00892c49  e8a056f1ff           call 0x7a82ee
-// 00892c4e  8d9774040000         lea edx, [edi + 0x474]
-// 00892c54  52                   push edx
-// 00892c55  6a70                 push 0x70
-// 00892c57  56                   push esi
-// 00892c58  e89156f1ff           call 0x7a82ee
-// 00892c5d  8d87c8040000         lea eax, [edi + 0x4c8]
-// 00892c63  50                   push eax
-// 00892c64  6a78                 push 0x78
-// 00892c66  56                   push esi
-// 00892c67  e88256f1ff           call 0x7a82ee
-// 00892c6c  8d8f1c050000         lea ecx, [edi + 0x51c]
-// 00892c72  51                   push ecx
-// 00892c73  6a79                 push 0x79
-// 00892c75  56                   push esi
-// 00892c76  e87356f1ff           call 0x7a82ee
-// 00892c7b  8d9770050000         lea edx, [edi + 0x570]
-// 00892c81  52                   push edx
-// 00892c82  6a73                 push 0x73
-// 00892c84  56                   push esi
-// 00892c85  e86456f1ff           call 0x7a82ee
-// 00892c8a  8d87c4050000         lea eax, [edi + 0x5c4]
-// 00892c90  50                   push eax
-// 00892c91  6a6f                 push 0x6f
-// 00892c93  56                   push esi
-// 00892c94  e85556f1ff           call 0x7a82ee
-// 00892c99  8d8f18060000         lea ecx, [edi + 0x618]
-// 00892c9f  51                   push ecx
-// 00892ca0  6a76                 push 0x76
-// 00892ca2  56                   push esi
-// 00892ca3  e84656f1ff           call 0x7a82ee
-// 00892ca8  8d976c060000         lea edx, [edi + 0x66c]
-// 00892cae  52                   push edx
-// 00892caf  6a71                 push 0x71
-// 00892cb1  56                   push esi
-// 00892cb2  e83756f1ff           call 0x7a82ee
-// 00892cb7  8d87c0060000         lea eax, [edi + 0x6c0]
-// 00892cbd  50                   push eax
-// 00892cbe  6a6e                 push 0x6e
-// 00892cc0  56                   push esi
-// 00892cc1  e82856f1ff           call 0x7a82ee
-// 00892cc6  8d8f14070000         lea ecx, [edi + 0x714]
-// 00892ccc  51                   push ecx
-// 00892ccd  6a72                 push 0x72
-// 00892ccf  56                   push esi
-// 00892cd0  e81956f1ff           call 0x7a82ee
-// 00892cd5  8d9f68070000         lea ebx, [edi + 0x768]
-// 00892cdb  53                   push ebx
-// 00892cdc  6a6e                 push 0x6e
-// 00892cde  56                   push esi
-// 00892cdf  e81eaa0e00           call 0x97d702
-// 00892ce4  8b13                 mov edx, dword ptr [ebx]
-// 00892ce6  68ff000000           push 0xff
-// 00892ceb  6a00                 push 0
-// 00892ced  52                   push edx
-// 00892cee  56                   push esi
-// 00892cef  e808aa0e00           call 0x97d6fc
-// 00892cf4  8d9f6c070000         lea ebx, [edi + 0x76c]
-// 00892cfa  53                   push ebx
-// 00892cfb  6a76                 push 0x76
-// 00892cfd  56                   push esi
-// 00892cfe  e8ffa90e00           call 0x97d702
-// 00892d03  8b03                 mov eax, dword ptr [ebx]
-// 00892d05  68ff000000           push 0xff
-// 00892d0a  6a00                 push 0
-// 00892d0c  50                   push eax
-// 00892d0d  56                   push esi
-// 00892d0e  e8e9a90e00           call 0x97d6fc
-// 00892d13  8d9f70070000         lea ebx, [edi + 0x770]
-// 00892d19  53                   push ebx
-// 00892d1a  6a6f                 push 0x6f
-// 00892d1c  56                   push esi
-// 00892d1d  e8e0a90e00           call 0x97d702
-// 00892d22  8b0b                 mov ecx, dword ptr [ebx]
-// 00892d24  68ff000000           push 0xff
-// 00892d29  6a00                 push 0
-// 00892d2b  51                   push ecx
-// 00892d2c  56                   push esi
-// 00892d2d  e8caa90e00           call 0x97d6fc
-// 00892d32  8d9f74070000         lea ebx, [edi + 0x774]
-// 00892d38  53                   push ebx
-// 00892d39  6a73                 push 0x73
-// 00892d3b  56                   push esi
-// 00892d3c  e8c1a90e00           call 0x97d702
-// 00892d41  8b13                 mov edx, dword ptr [ebx]
-// 00892d43  68ff000000           push 0xff
-// 00892d48  6a00                 push 0
-// 00892d4a  52                   push edx
-// 00892d4b  56                   push esi
-// 00892d4c  e8aba90e00           call 0x97d6fc
-// 00892d51  8d9f78070000         lea ebx, [edi + 0x778]
-// 00892d57  53                   push ebx
-// 00892d58  6a71                 push 0x71
-// 00892d5a  56                   push esi
-// 00892d5b  e8a2a90e00           call 0x97d702
-// 00892d60  8b03                 mov eax, dword ptr [ebx]
-// 00892d62  68ff000000           push 0xff
-// 00892d67  6a00                 push 0
-// 00892d69  50                   push eax
-// 00892d6a  56                   push esi
-// 00892d6b  e88ca90e00           call 0x97d6fc
-// 00892d70  81c77c070000         add edi, 0x77c
-// 00892d76  57                   push edi
-// 00892d77  6a72                 push 0x72
-// 00892d79  56                   push esi
-// 00892d7a  e883a90e00           call 0x97d702
-// 00892d7f  8b0f                 mov ecx, dword ptr [edi]
-// 00892d81  68ff000000           push 0xff
-// 00892d86  6a00                 push 0
-// 00892d88  51                   push ecx
-// 00892d89  56                   push esi
-// 00892d8a  e86da90e00           call 0x97d6fc
-// 00892d8f  5f                   pop edi
-// 00892d90  5e                   pop esi
-// 00892d91  5b                   pop ebx
-// 00892d92  c20400               ret 4
-// library xtp-13.2.1/Source\Controls\XTColorPageCustom.cpp (function ?DoDataExchange@CXTColorPageCustom@@MAEXPAVCDataExchange@@@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-13.2.1 Source/Controls/XTColorPageCustom.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTColorPageCustom.cpp : implementation file
+//
+// This file is a part of the XTREME CONTROLS MFC class library.
+// (c)1998-2009 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "Resource.h"
+
+#include "Common/XTPDrawHelpers.h"
+#include "Common/XTPColorManager.h"
+#include "Common/XTPSystemHelpers.h"
+
+#include "XTNotify.h"
+#include "XTColorRef.h"
+#include "XTColorDialog.h"
+#include "XTColorPageCustom.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+#define DEFAULT_LUMINANCE 0.50f
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTColorBase
+
+CXTColorBase::CXTColorBase()
+{
+	m_nLum = 0.0;
+	m_nSat = 0.0;
+	m_nHue = 0.0;
+	m_ptMousePos = CPoint(0, 0);
+	m_bPreSubclassInit = true;
+}
+
+CXTColorBase::~CXTColorBase()
+{
+}
+
+CXTColorBase::FocusedControl CXTColorBase::m_eHasFocus = focusNone;
+
+BEGIN_MESSAGE_MAP(CXTColorBase, CStatic)
+	//{{AFX_MSG_MAP(CXTColorBase)
+	ON_WM_LBUTTONDOWN()
+	ON_WM_MOUSEMOVE()
+	ON_WM_LBUTTONUP()
+	ON_WM_LBUTTONDBLCLK()
+	ON_WM_CREATE()
+	//}}AFX_MSG_MAP
+END_MESSAGE_MAP()
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTColorBase message handlers
+
+bool CXTColorBase::Init()
+{
+	if (::IsWindow(m_hWnd))
+	{
+		// Set the style to SS_NOTIFY.
+		DWORD dwStyle = ::GetWindowLong(m_hWnd, GWL_STYLE);
+		::SetWindowLong(m_hWnd, GWL_STYLE, dwStyle | SS_NOTIFY);
+
+		return true;
+	}
+
+	return false;
+}
+
+void CXTColorBase::PreSubclassWindow()
+{
+	CWnd::PreSubclassWindow();
+
+	if (m_bPreSubclassInit)
+	{
+		// Initialize the control.
+		Init();
+	}
+}
+
+int CXTColorBase::OnCreate(LPCREATESTRUCT lpCreateStruct)
+{
+	if (CWnd::OnCreate(lpCreateStruct) == -1)
+		return -1;
+
+	// Initialize the control.
+	Init();
+
+	return 0;
+}
+
+BOOL CXTColorBase::PreCreateWindow(CREATESTRUCT& cs)
+{
+	if (!CWnd::PreCreateWindow(cs))
+		return FALSE;
+
+	// When creating controls dynamically Init() must
+	// be called from OnCreate() and not from
+	// PreSubclassWindow().
+
+	m_bPreSubclassInit = false;
+
+	return TRUE;
+}
+
+void CXTColorBase::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	CWnd::OnLButtonDown(nFlags, point);
+	SetCapture();
+	UpdateCursorPos(point);
+
+	if (GetFocus() != this)
+	{
+		SetFocus();
+	}
+}
+
+void CXTColorBase::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	ReleaseCapture();
+	CStatic::OnLButtonUp(nFlags, point);
+}
+
+void CXTColorBase::OnMouseMove(UINT nFlags, CPoint point)
+{
+	CWnd::OnMouseMove(nFlags, point);
+
+	if (nFlags & MK_LBUTTON)
+	{
+		UpdateCursorPos(point);
+
+		if (GetFocus() != this)
+		{
+			SetFocus();
+		}
+	}
+}
+
+void CXTColorBase::OnLButtonDblClk(UINT nFlags, CPoint point)
+{
+	CStatic::OnLButtonDblClk(nFlags, point);
+
+	UpdateCursorPos(point);
+
+	CPropertyPage* pParentPage = (CPropertyPage*)GetParent();
+	ASSERT_VALID(pParentPage);
+
+	CPropertySheet* pParentSheet = (CPropertySheet*)pParentPage->GetParent();
+	ASSERT_VALID(pParentSheet);
+
+	pParentSheet->EndDialog(IDOK);
+}
+
+void CXTColorBase::UpdateCursorPos(CPoint /*point*/)
+{
+
+}
+
+COLORREF CXTColorBase::HLStoRGB(double h, double l, double s)
+{
+	return CXTColorRef::fromHSL(h, s, l);
+}
+
+void CXTColorBase::RGBtoHSL(COLORREF color, double* h, double* s, double* l)
+{
+	CXTColorRef(color).toHSL(*h, *s, *l);
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTColorWnd
+
+CXTColorWnd::CXTColorWnd()
+{
+}
+
+CXTColorWnd::~CXTColorWnd()
+{
+}
+
+BEGIN_MESSAGE_MAP(CXTColorWnd, CXTColorBase)
+	//{{AFX_MSG_MAP(CXTColorWnd)
+	ON_WM_PAINT()
+	ON_WM_SETFOCUS()
+	ON_WM_KILLFOCUS()
+	ON_WM_ERASEBKGND()
+	//}}AFX_MSG_MAP
+END_MESSAGE_MAP()
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTColorWnd message handlers
+
+void CXTColorWnd::OnPaint()
+{
+	CPaintDC dc(this); // device context for painting
+
+	CRect rc;
+	GetClientRect(&rc);
+	CXTPBufferDC memDC(dc);
+
+	int cy = rc.Height();
+	int cx = rc.Width();
+
+	if (m_bmpPicker.GetSafeHandle() == NULL)
+	{
+		// create bitmap
+		m_bmpPicker.CreateCompatibleBitmap(&memDC, cx, cy);
+
+		// create picker DC
+		CXTPCompatibleDC dcPicker(&memDC, m_bmpPicker);
+
+		// fill color picker bitmap
+		int x;
+		for (x = 0; x < cx; x++)
+		{
+			int y;
+			for (y = 0; y < cy; y++)
+			{
+				COLORREF clr = HLStoRGB((double)x/(double)cx,
+					DEFAULT_LUMINANCE, (double)y/(double)cy);
+
+				dcPicker.SetPixelV(x, (cy-1)-y, clr);
+			}
+		}
+	}
+
+	memDC.DrawState(CPoint(0, 0), CSize(0, 0), &m_bmpPicker, DSS_NORMAL, NULL);
+	DrawCrossHair(&memDC);
+}
+
+BOOL CXTColorWnd::OnEraseBkgnd(CDC* /*pDC*/)
+{
+	return TRUE;
+}
+
+void CXTColorWnd::UpdateCursorPos(CPoint point)
+{
+	CRect rcClient;
+	GetClientRect(rcClient);
+
+	if (point.y < 0) point.y = 0;
+	if (point.x < 0) point.x = 0;
+	if (point.y > rcClient.bottom) point.y = rcClient.bottom;
+	if (point.x > rcClient.right) point.x = rcClient.right;
+	m_ptMousePos = point;
+
+	m_nHue = (double)point.x / (double)rcClient.Width();
+	m_nSat = (double)(rcClient.Height() - point.y) / (double)rcClient.Height();
+	m_nLum = DEFAULT_LUMINANCE;
+
+	CWnd* pWnd = GetOwner();
+	if (pWnd)
+	{
+		pWnd->SendMessage(XTWM_UPDATECOLOR,
+			(WPARAM)HLStoRGB(m_nHue, m_nLum, m_nSat), (LPARAM)m_hWnd);
+	}
+
+	Invalidate(FALSE);
+}
+
+BOOL CXTColorWnd::PreTranslateMessage(MSG* pMsg)
+{
+	if (m_eHasFocus == focusColorWheel)
+	{
+		switch (pMsg->message)
+		{
+		case WM_KEYDOWN:
+			{
+				CRect rect;
+				GetClientRect(&rect);
+
+				TCHAR vkey = (TCHAR)pMsg->wParam;
+				switch (vkey)
+				{
+				case VK_LEFT:
+					m_ptMousePos.x--;
+					UpdateCursorPos(m_ptMousePos);
+					return TRUE;
+
+				case VK_UP:
+					m_ptMousePos.y--;
+					UpdateCursorPos(m_ptMousePos);
+					return TRUE;
+
+				case VK_RIGHT:
+					m_ptMousePos.x++;
+					UpdateCursorPos(m_ptMousePos);
+					return TRUE;
+
+				case VK_DOWN:
+					m_ptMousePos.y++;
+					UpdateCursorPos(m_ptMousePos);
+					return TRUE;
+				case VK_RETURN:
+				case VK_SPACE:
+					CPropertyPage* pParentPage = (CPropertyPage*)GetParent();
+					ASSERT_VALID(pParentPage);
+
+					CPropertySheet* pParentSheet = (CPropertySheet*)pParentPage->GetParent();
+					ASSERT_VALID(pParentSheet);
+
+					pParentSheet->EndDialog(IDOK);
+					break;
+				}
+			}
+			break;
+		}
+	}
+
+	return CStatic::PreTranslateMessage(pMsg);
+}
+
+void CXTColorWnd::DrawCrossHair(CDC* pDC)
+{
+	int x = m_ptMousePos.x;
+	int y = m_ptMousePos.y;
+
+	CPen pen1(PS_SOLID, 1, RGB(0xff, 0xff, 0xff));
+	CPen pen2(PS_SOLID, 1, RGB(0x00, 0x00, 0x00));
+
+	CPen* pOldPen = pDC->SelectObject((m_eHasFocus == focusColorWheel) ? &pen1 : &pen2);
+
+	pDC->MoveTo(x-5, y-1);
+	pDC->LineTo(x-10, y-1);
+	pDC->MoveTo(x-5, y);
+	pDC->LineTo(x-10, y);
+	pDC->MoveTo(x-5, y + 1);
+	pDC->LineTo(x-10, y + 1);
+
+	pDC->MoveTo(x + 5, y-1);
+	pDC->LineTo(x + 10, y-1);
+	pDC->MoveTo(x + 5, y);
+	pDC->LineTo(x + 10, y);
+	pDC->MoveTo(x + 5, y + 1);
+	pDC->LineTo(x + 10, y + 1);
+
+	pDC->MoveTo(x-1, y-5);
+	pDC->LineTo(x-1, y-10);
+	pDC->MoveTo(x, y-5);
+	pDC->LineTo(x, y-10);
+	pDC->MoveTo(x + 1, y-5);
+	pDC->LineTo(x + 1, y-10);
+
+	pDC->MoveTo(x-1, y + 5);
+	pDC->LineTo(x-1, y + 10);
+	pDC->MoveTo(x, y + 5);
+	pDC->LineTo(x, y + 10);
+	pDC->MoveTo(x + 1, y + 5);
+	pDC->LineTo(x + 1, y + 10);
+
+	pDC->SelectObject(pOldPen);
+}
+
+void CXTColorWnd::SetColor(double nHue, double nSat)
+{
+	SetHue(nHue);
+	SetSaturation(nSat);
+}
+
+void CXTColorWnd::SetHue(double h)
+{
+	m_nHue = h;
+	CRect rc;
+	GetClientRect(&rc);
+	m_ptMousePos.x = (long)((double)rc.Width() * h);
+	Invalidate(FALSE);
+}
+
+void CXTColorWnd::SetSaturation(double s)
+{
+	m_nSat = s;
+	CRect rc;
+	GetClientRect(&rc);
+	m_ptMousePos.y = rc.Height()-(long)((double)rc.Height() * s);
+	Invalidate(FALSE);
+}
+
+void CXTColorWnd::OnSetFocus(CWnd* pOldWnd)
+{
+	CXTColorBase::OnSetFocus(pOldWnd);
+	m_eHasFocus = focusColorWheel;
+
+	Invalidate(FALSE);
+}
+
+void CXTColorWnd::OnKillFocus(CWnd* pNewWnd)
+{
+	CXTColorBase::OnKillFocus(pNewWnd);
+	m_eHasFocus = focusNone;
+
+	Invalidate(FALSE);
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTColorLum
+
+CXTColorLum::CXTColorLum()
+{
+	m_ptMousePos.y = 0;
+}
+
+CXTColorLum::~CXTColorLum()
+{
+}
+
+BEGIN_MESSAGE_MAP(CXTColorLum, CXTColorBase)
+	//{{AFX_MSG_MAP(CXTColorLum)
+	ON_WM_PAINT()
+	ON_WM_SETFOCUS()
+	ON_WM_KILLFOCUS()
+	ON_WM_ERASEBKGND()
+	//}}AFX_MSG_MAP
+END_MESSAGE_MAP()
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTColorLum message handlers
+
+void CXTColorLum::OnPaint()
+{
+	CPaintDC dc(this); // device context for painting
+
+	CRect rc;
+	GetClientRect(&rc);
+	CXTPBufferDC memDC(dc);
+
+	HBRUSH hBrush = (HBRUSH)GetParent()->SendMessage(WM_CTLCOLORSTATIC, (WPARAM)memDC.GetSafeHdc(), (LPARAM)m_hWnd);
+	if (hBrush)
+	{
+		::FillRect(memDC.GetSafeHdc(), rc, hBrush);
+	}
+	else
+	{
+		memDC.FillSolidRect(rc, GetXtremeColor(COLOR_3DFACE));
+	}
+
+
+	DrawLuminanceBar(&memDC);
+	DrawSliderArrow(&memDC);
+}
+
+BOOL CXTColorLum::OnEraseBkgnd(CDC* /*pDC*/)
+{
+	return TRUE;
+}
+
+void CXTColorLum::GetLumBarRect(CRect& rect)
+{
+	GetClientRect(&rect);
+	rect.DeflateRect(0, 4);
+	rect.right = rect.left + 14;
+}
+
+void CXTColorLum::SetColor(double nHue, double nSat)
+{
+	m_nHue = nHue;
+	m_nSat = nSat;
+	Invalidate(FALSE);
+}
+
+
+void CXTColorLum::SetLuminance(double l)
+{
+	m_nLum = l;
+
+	CRect rcBar;
+	GetLumBarRect(rcBar);
+
+	// Set the slider position based on the current
+	// luminance.
+	m_ptMousePos.y = rcBar.top + rcBar.Height()-(long)((double)rcBar.Height() * l);
+	Invalidate(FALSE);
+}
+
+void CXTColorLum::DrawLuminanceBar(CDC* pDC)
+{
+	CRect rcBar;
+	GetLumBarRect(rcBar);
+
+	int  cy = rcBar.Height();
+	int  cx = rcBar.Width();
+
+	// fill color picker bitmap
+	for (int y = 0; y < cy; y++)
+	{
+		COLORREF clr;
+		if (y == cy)
+		{
+			clr = RGB(0x00, 0x00, 0x00);
+		}
+		else if (y == 0)
+		{
+			clr = RGB(0xff, 0xff, 0xff);
+		}
+		else
+		{
+			clr = HLStoRGB(m_nHue, (double)((double)(cy - y)/(double)cy), m_nSat);
+		}
+
+		pDC->FillSolidRect(rcBar.left, y + rcBar.top, cx, 1, clr);
+	}
+}
+
+void CXTColorLum::DrawSliderArrow(CDC* pDC)
+{
+	CRect rc;
+	GetClientRect(&rc);
+	rc.left += 17;
+
+	int x = rc.left;
+	int y = m_ptMousePos.y;
+
+	CRect rcBar;
+	GetLumBarRect(rcBar);
+	y = max(rcBar.top, y);
+	y = min(rcBar.bottom, y);
+
+	CPen pen1(PS_SOLID, 1, RGB(0x00, 0x00, 0x00));
+	CPen pen2(PS_SOLID, 1, GetXtremeColor(COLOR_3DSHADOW));
+
+	CPen* pOldPen = pDC->SelectObject((m_eHasFocus == focusLumination) ? &pen1 : &pen2);
+
+	pDC->MoveTo(x + 7, y-4);
+	pDC->LineTo(x + 9, y-4);
+	pDC->MoveTo(x + 5, y-3);
+	pDC->LineTo(x + 9, y-3);
+	pDC->MoveTo(x + 3, y-2);
+	pDC->LineTo(x + 9, y-2);
+	pDC->MoveTo(x + 1, y-1);
+	pDC->LineTo(x + 9, y-1);
+	pDC->MoveTo(x, y);
+	pDC->LineTo(x + 9, y);
+	pDC->MoveTo(x + 2, y + 1);
+	pDC->LineTo(x + 9, y + 1);
+	pDC->MoveTo(x + 4, y + 2);
+	pDC->LineTo(x + 9, y + 2);
+	pDC->MoveTo(x + 6, y + 3);
+	pDC->LineTo(x + 9, y + 3);
+	pDC->MoveTo(x + 8, y + 4);
+	pDC->LineTo(x + 9, y + 4);
+
+	if (m_eHasFocus != focusLumination)
+	{
+		COLORREF clr = RGB(0x00, 0x00, 0x00);
+		pDC->SetPixel(x, y, clr);
+		pDC->SetPixel(x + 1, y, clr);
+		pDC->SetPixel(x + 1, y-1, clr);
+		pDC->SetPixel(x + 2, y-1, clr);
+		pDC->SetPixel(x + 3, y-2, clr);
+		pDC->SetPixel(x + 4, y-2, clr);
+		pDC->SetPixel(x + 5, y-3, clr);
+		pDC->SetPixel(x + 6, y-3, clr);
+		pDC->SetPixel(x + 7, y-4, clr);
+		pDC->SetPixel(x + 8, y-4, clr);
+		pDC->SetPixel(x + 8, y-3, clr);
+		pDC->SetPixel(x + 8, y-2, clr);
+		pDC->SetPixel(x + 8, y-1, clr);
+		pDC->SetPixel(x + 8, y, clr);
+		pDC->SetPixel(x + 8, y + 1, clr);
+		pDC->SetPixel(x + 8, y + 2, clr);
+		pDC->SetPixel(x + 8, y + 3, clr);
+		pDC->SetPixel(x + 8, y + 4, clr);
+		pDC->SetPixel(x + 7, y + 3, clr);
+		pDC->SetPixel(x + 6, y + 3, clr);
+		pDC->SetPixel(x + 5, y + 2, clr);
+		pDC->SetPixel(x + 4, y + 2, clr);
+		pDC->SetPixel(x + 3, y + 1, clr);
+		pDC->SetPixel(x + 2, y + 1, clr);
+	}
+
+	pDC->SelectObject(pOldPen);
+}
+
+void CXTColorLum::UpdateCursorPos(CPoint point)
+{
+	point.x = 0;
+
+	CRect rcBar;
+	GetLumBarRect(rcBar);
+
+	point.y = max(rcBar.top, point.y);
+	point.y = min(rcBar.bottom, point.y);
+	double cy = (double)rcBar.Height();
+
+	m_nLum = double(double(cy - (point.y - rcBar.top))/cy);
+
+	CWnd* pWnd = GetOwner();
+	if (pWnd)
+	{
+		pWnd->SendMessage(XTWM_UPDATECOLOR,
+			(WPARAM)HLStoRGB(m_nHue, m_nLum, m_nSat), (LPARAM)m_hWnd);
+	}
+
+	m_ptMousePos = point;
+
+	Invalidate(FALSE);
+}
+
+BOOL CXTColorLum::PreTranslateMessage(MSG* pMsg)
+{
+	if (m_eHasFocus == focusLumination)
+	{
+		CRect rcBar;
+		GetLumBarRect(rcBar);
+
+		switch (pMsg->message)
+		{
+		case WM_KEYDOWN:
+			{
+				TCHAR vkey = (TCHAR)pMsg->wParam;
+				switch (vkey)
+				{
+				case VK_UP:
+					m_ptMousePos.y--;
+					UpdateCursorPos(m_ptMousePos);
+					return TRUE;
+
+				case VK_DOWN:
+					m_ptMousePos.y++;
+					UpdateCursorPos(m_ptMousePos);
+					return TRUE;
+
+				case VK_RETURN:
+				case VK_SPACE:
+					CPropertyPage* pParentPage = (CPropertyPage*)GetParent();
+					ASSERT_VALID(pParentPage);
+
+					CPropertySheet* pParentSheet = (CPropertySheet*)pParentPage->GetParent();
+					ASSERT_VALID(pParentSheet);
+
+					pParentSheet->EndDialog(IDOK);
+					break;
+				}
+			}
+			break;
+		}
+	}
+
+	return CStatic::PreTranslateMessage(pMsg);
+}
+
+void CXTColorLum::OnSetFocus(CWnd* pOldWnd)
+{
+	CXTColorBase::OnSetFocus(pOldWnd);
+	m_eHasFocus = focusLumination;
+
+	Invalidate(FALSE);
+}
+
+void CXTColorLum::OnKillFocus(CWnd* pNewWnd)
+{
+	CXTColorBase::OnKillFocus(pNewWnd);
+	m_eHasFocus = focusNone;
+
+	Invalidate(FALSE);
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTColorPageCustom
+
+BEGIN_MESSAGE_MAP(CXTColorPageCustom, CPropertyPage)
+	//{{AFX_MSG_MAP(CXTColorPageCustom)
+	ON_EN_CHANGE(XT_IDC_EDIT_RED, OnChangeEdit)
+	ON_EN_CHANGE(XT_IDC_EDIT_GREEN, OnChangeEdit)
+	ON_EN_CHANGE(XT_IDC_EDIT_BLUE, OnChangeEdit)
+	ON_EN_CHANGE(XT_IDC_EDIT_LUM, OnChangeEditLum)
+	ON_EN_CHANGE(XT_IDC_EDIT_HUE, OnChangeEditHue)
+	ON_EN_CHANGE(XT_IDC_EDIT_SAT, OnChangeEditSat)
+	//}}AFX_MSG_MAP
+	ON_MESSAGE(XTWM_UPDATECOLOR, OnUpdateColor)
+END_MESSAGE_MAP()
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTColorPageCustom construction/destruction
+
+CXTColorPageCustom::CXTColorPageCustom(CXTColorDialog* pParentSheet)
+	: CPropertyPage(CXTColorPageCustom::IDD)
+{
+	m_psp.dwFlags &= ~PSP_HASHELP;
+	m_pParentSheet = pParentSheet;
+
+
+	//{{AFX_DATA_INIT(CXTColorPageCustom)
+	m_nR = 0;
+	m_nB = 0;
+	m_nG = 0;
+	m_nH = 0;
+	m_nL = 0;
+	m_nS = 0;
+	//}}AFX_DATA_INIT
+}
+
+CXTColorPageCustom::~CXTColorPageCustom()
+{
+}
+
+void CXTColorPageCustom::DoDataExchange(CDataExchange* pDX)
+{
+	CPropertyPage::DoDataExchange(pDX);
+	//{{AFX_DATA_MAP(CXTColorPageCustom)
+	DDX_Control(pDX, XT_IDC_CLR_WND, m_colorWnd);
+	DDX_Control(pDX, XT_IDC_CLR_LUM, m_colorLum);
+	DDX_Control(pDX, XT_IDC_TXT_SAT, m_txtSat);
+	DDX_Control(pDX, XT_IDC_TXT_RED, m_txtRed);
+	DDX_Control(pDX, XT_IDC_TXT_LUM, m_txtLum);
+	DDX_Control(pDX, XT_IDC_TXT_HUE, m_txtHue);
+	DDX_Control(pDX, XT_IDC_TXT_GREEN, m_txtGreen);
+	DDX_Control(pDX, XT_IDC_TXT_BLUE, m_txtBlue);
+	DDX_Control(pDX, XT_IDC_SPIN_SAT, m_spinSat);
+	DDX_Control(pDX, XT_IDC_SPIN_RED, m_spinRed);
+	DDX_Control(pDX, XT_IDC_SPIN_LUM, m_spinLum);
+	DDX_Control(pDX, XT_IDC_SPIN_HUE, m_spinHue);
+	DDX_Control(pDX, XT_IDC_SPIN_GREEN, m_spinGreen);
+	DDX_Control(pDX, XT_IDC_SPIN_BLUE, m_spinBlue);
+	DDX_Control(pDX, XT_IDC_EDIT_HUE, m_editHue);
+	DDX_Control(pDX, XT_IDC_EDIT_GREEN, m_editGreen);
+	DDX_Control(pDX, XT_IDC_EDIT_BLUE, m_editBlue);
+	DDX_Control(pDX, XT_IDC_EDIT_LUM, m_editLum);
+	DDX_Control(pDX, XT_IDC_EDIT_RED, m_editRed);
+	DDX_Control(pDX, XT_IDC_EDIT_SAT, m_editSat);
+	DDX_Text(pDX, XT_IDC_EDIT_RED, m_nR);
+	DDV_MinMaxInt(pDX, m_nR, 0, 255);
+	DDX_Text(pDX, XT_IDC_EDIT_BLUE, m_nB);
+	DDV_MinMaxInt(pDX, m_nB, 0, 255);
+	DDX_Text(pDX, XT_IDC_EDIT_GREEN, m_nG);
+	DDV_MinMaxInt(pDX, m_nG, 0, 255);
+	DDX_Text(pDX, XT_IDC_EDIT_HUE, m_nH);
+	DDV_MinMaxInt(pDX, m_nH, 0, 255);
+	DDX_Text(pDX, XT_IDC_EDIT_LUM, m_nL);
+	DDV_MinMaxInt(pDX, m_nL, 0, 255);
+	DDX_Text(pDX, XT_IDC_EDIT_SAT, m_nS);
+	DDV_MinMaxInt(pDX, m_nS, 0, 255);
+	//}}AFX_DATA_MAP
+}
+
+BOOL CXTColorPageCustom::OnInitDialog()
+{
+	CPropertyPage::OnInitDialog();
+
+	// TODO: Add extra initialization here
+	m_spinSat.SetBuddy(&m_editSat);
+	m_spinSat.SetRange(0, 255);
+
+	m_spinLum.SetBuddy(&m_editLum);
+	m_spinLum.SetRange(0, 255);
+
+	m_spinHue.SetBuddy(&m_editHue);
+	m_spinHue.SetRange(0, 255);
+
+	m_spinRed.SetBuddy(&m_editRed);
+	m_spinRed.SetRange(0, 255);
+
+	m_spinGreen.SetBuddy(&m_editGreen);
+	m_spinGreen.SetRange(0, 255);
+
+	m_spinBlue.SetBuddy(&m_editBlue);
+	m_spinBlue.SetRange(0, 255);
+
+	CRect rc;
+	m_colorLum.GetWindowRect(&rc);
+	ScreenToClient(rc);
+	rc.InflateRect(0, 4);
+	m_colorLum.MoveWindow(&rc);
+
+
+	return TRUE;
+}
+
+BOOL CXTColorPageCustom::OnSetActive()
+{
+	COLORREF clr = m_pParentSheet->GetColor();
+	RGBtoHSL(clr, &m_nL, &m_nS, &m_nH);
+
+	m_colorWnd.SetColor((double)m_nH/255, (double)m_nS/255);
+	m_colorLum.SetColor((double)m_nH/255, (double)m_nS/255);
+	m_colorLum.SetLuminance((double)m_nL/255);
+
+	UpdateRGB(clr);
+
+	return CPropertyPage::OnSetActive();
+}
+
+void CXTColorPageCustom::OnChangeEdit()
+{
+	UpdateData();
+	COLORREF clr = (COLORREF)RGB(m_nR, m_nG, m_nB);
+
+	OnUpdateColor((WPARAM)clr, 0);
+}
+
+void CXTColorPageCustom::OnChangeEditLum()
+{
+	UpdateData();
+	m_colorLum.SetLuminance((double)m_nL/255);
+
+	COLORREF clr = m_colorLum.HLStoRGB((double)m_nH/255, (double)m_nL/255, (double)m_nS/255);
+
+	if (clr != m_pParentSheet->GetColor())
+		m_pParentSheet->SetNewColor(clr, FALSE);
+
+	UpdateRGB(clr);
+}
+
+void CXTColorPageCustom::UpdateRGB(COLORREF clr)
+{
+	m_nR = GetRValue(clr);
+	m_nG = GetGValue(clr);
+	m_nB = GetBValue(clr);
+
+	UpdateData(FALSE);
+}
+
+void CXTColorPageCustom::OnChangeEditHue()
+{
+	UpdateData();
+	m_colorWnd.SetHue((double)m_nH/255);
+
+	COLORREF clr = m_colorWnd.HLStoRGB((double)m_nH/255, (double)m_nL/255, (double)m_nS/255);
+
+	m_colorLum.SetColor((double)m_nH/255, (double)m_nS/255);
+
+	if (clr != m_pParentSheet->GetColor())
+		m_pParentSheet->SetNewColor(clr, FALSE);
+
+	UpdateRGB(clr);
+}
+
+void CXTColorPageCustom::OnChangeEditSat()
+{
+	UpdateData();
+	m_colorWnd.SetSaturation((double)m_nS/255);
+
+	COLORREF clr = m_colorWnd.HLStoRGB((double)m_nH/255, (double)m_nL/255, (double)m_nS/255);
+
+	m_colorLum.SetColor((double)m_nH/255, (double)m_nS/255);
+
+	if (clr != m_pParentSheet->GetColor())
+		m_pParentSheet->SetNewColor(clr, FALSE);
+
+	UpdateRGB(clr);
+}
+
+LRESULT CXTColorPageCustom::OnUpdateColor(WPARAM wParam, LPARAM lParam)
+{
+	COLORREF clr = (COLORREF)wParam;
+
+	if ((HWND)lParam == m_colorWnd.m_hWnd)
+	{
+		m_nS = int(m_colorWnd.m_nSat * 255);
+		m_nH = int(m_colorWnd.m_nHue * 255);
+
+		clr = m_colorWnd.HLStoRGB((double)m_nH/255, DEFAULT_LUMINANCE, (double)m_nS/255);
+		m_colorLum.SetColor((double)m_nH/255, (double)m_nS/255);
+	}
+
+	else if ((HWND)lParam == m_colorLum.m_hWnd)
+	{
+		m_nL = int(m_colorLum.m_nLum * 255);
+
+		clr = m_colorWnd.HLStoRGB((double)m_nH/255, (double)m_nL/255, (double)m_nS/255);
+	}
+
+	else
+	{
+		RGBtoHSL(clr, &m_nL, &m_nS, &m_nH);
+
+		m_colorWnd.SetColor((double)m_nH/255, (double)m_nS/255);
+		m_colorLum.SetColor((double)m_nH/255, (double)m_nS/255);
+		m_colorLum.SetLuminance((double)m_nL/255);
+
+		POINT pt;
+		::GetCursorPos(&pt);
+
+		if (::WindowFromPoint(pt) == m_colorLum.m_hWnd)
+			m_colorLum.SetFocus();
+		else
+			m_colorWnd.SetFocus();
+	}
+
+	if ((HWND)lParam != m_pParentSheet->GetSafeHwnd())
+	{
+		if (clr != m_pParentSheet->GetColor())
+			m_pParentSheet->SetNewColor(clr, FALSE);
+	}
+
+	UpdateRGB(clr);
+	return 0;
+}
+
+void CXTColorPageCustom::RGBtoHSL(COLORREF color, int* lum, int* sat, int* hue)
+{
+	double r = (double)GetRValue(color)/255;
+	double g = (double)GetGValue(color)/255;
+	double b = (double)GetBValue(color)/255;
+
+	double maxcolor = __max(r, __max(g, b));
+	double mincolor = __min(r, __min(g, b));
+
+	double l = (maxcolor + mincolor)/2;
+
+	if (maxcolor == mincolor)
+	{
+		*hue = 0;
+		*sat = 0;
+	}
+	else
+	{
+		double s;
+		double h;
+
+		if (l < 0.5)
+			s = (maxcolor-mincolor)/(maxcolor + mincolor);
+		else
+			s = (maxcolor-mincolor)/(2.0-maxcolor-mincolor);
+
+		if (r == maxcolor)
+			h = (g-b)/(maxcolor-mincolor);
+		else if (g == maxcolor)
+			h = 2.0+(b-r)/(maxcolor-mincolor);
+		else
+			h = 4.0+(r-g)/(maxcolor-mincolor);
+
+		h /= 6.0;
+		if (h < 0.0)
+			h += 1;
+
+		*hue = (int)((double)h * 255);
+		*sat = (int)((double)s * 255);
+	}
+
+	*lum = (int)((double)l * 255);
+}

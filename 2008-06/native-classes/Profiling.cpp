@@ -3,6 +3,9 @@
 
 namespace RBX
 {
+	// INFERRED: name from DebugSettingsProfiler.cpp / NativeGlobalData2008.cpp (double at 0094f638, initial 0.01).
+	extern double profilerBucketTimeSpan;
+
 	namespace Profiling
 	{
 		DWORD Mark::markTlsIndex = NULL;
@@ -29,8 +32,11 @@ namespace RBX
 			return *this;
 		}
 
+		// 005c4340: the bucket span is read from the process-wide setting at 0094f638 (.data, initial 0.01; defined in
+		// NativeGlobalData2008.cpp, set by DebugSettings::setProfilerBucketTimeSpan), not a literal: the target loads
+		// fld qword ptr [0094f638].
 		Profiler::Profiler(const char* name)
-			: bucketTimeSpan(0.01),
+			: bucketTimeSpan(profilerBucketTimeSpan),
 			  currentBucket(0),
 			  lastSampleTime(G3D::System::getTick()),
 			  name(name)

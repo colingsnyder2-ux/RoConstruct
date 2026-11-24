@@ -1,46 +1,230 @@
 // from server: 100% by auto
-// roc 2009-12 007d5110  unit: seg_007d0000  size: 102 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 007d5110
-//
-// 007d5110  8b4c2410             mov ecx, dword ptr [esp + 0x10]
-// 007d5114  8a01                 mov al, byte ptr [ecx]
-// 007d5116  83ec10               sub esp, 0x10
-// 007d5119  3c40                 cmp al, 0x40
-// 007d511b  7412                 je 0x7d512f
-// 007d511d  3c3d                 cmp al, 0x3d
-// 007d511f  740e                 je 0x7d512f
-// 007d5121  3c1b                 cmp al, 0x1b
-// 007d5123  750b                 jne 0x7d5130
-// 007d5125  c744240cb0f09e00     mov dword ptr [esp + 0xc], 0x9ef0b0
-// 007d512d  eb05                 jmp 0x7d5134
-// 007d512f  41                   inc ecx
-// 007d5130  894c240c             mov dword ptr [esp + 0xc], ecx
-// 007d5134  8b442418             mov eax, dword ptr [esp + 0x18]
-// 007d5138  8b4c241c             mov ecx, dword ptr [esp + 0x1c]
-// 007d513c  56                   push esi
-// 007d513d  57                   push edi
-// 007d513e  8b7c241c             mov edi, dword ptr [esp + 0x1c]
-// 007d5142  8d742408             lea esi, [esp + 8]
-// 007d5146  897c2408             mov dword ptr [esp + 8], edi
-// 007d514a  8944240c             mov dword ptr [esp + 0xc], eax
-// 007d514e  894c2410             mov dword ptr [esp + 0x10], ecx
-// 007d5152  e8f9feffff           call 0x7d5050
-// 007d5157  6a02                 push 2
-// 007d5159  68acf09e00           push 0x9ef0ac
-// 007d515e  57                   push edi
-// 007d515f  e82cbaffff           call 0x7d0b90
-// 007d5164  50                   push eax
-// 007d5165  8bd6                 mov edx, esi
-// 007d5167  52                   push edx
-// 007d5168  e8a3fcffff           call 0x7d4e10
-// 007d516d  83c414               add esp, 0x14
-// 007d5170  5f                   pop edi
-// 007d5171  5e                   pop esi
-// 007d5172  83c410               add esp, 0x10
-// 007d5175  c3                   ret 
-// library lua-5.1/lundump.c (function _luaU_undump)
-
 // roc-lang: c
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /MD
 // roc-lib: lua-5.1 lundump.c
+
+// Candidate translation unit (score above; library headers required).
+/*
+** $Id: lundump.c,v 1.60 2006/02/16 15:53:49 lhf Exp $
+** load precompiled Lua chunks
+** See Copyright Notice in lua.h
+*/
+
+#include <string.h>
+
+#define lundump_c
+#define LUA_CORE
+
+#include "lua.h"
+
+#include "ldebug.h"
+#include "ldo.h"
+#include "lfunc.h"
+#include "lmem.h"
+#include "lobject.h"
+#include "lstring.h"
+#include "lundump.h"
+#include "lzio.h"
+
+typedef struct {
+ lua_State* L;
+ ZIO* Z;
+ Mbuffer* b;
+ const char* name;
+} LoadState;
+
+#ifdef LUAC_TRUST_BINARIES
+#define IF(c,s)
+#else
+#define IF(c,s)		if (c) error(S,s)
+
+static void error(LoadState* S, const char* why)
+{
+ luaO_pushfstring(S->L,"%s: %s in precompiled chunk",S->name,why);
+ luaD_throw(S->L,LUA_ERRSYNTAX);
+}
+#endif
+
+#define LoadMem(S,b,n,size)	LoadBlock(S,b,(n)*(size))
+#define	LoadByte(S)		(lu_byte)LoadChar(S)
+#define LoadVar(S,x)		LoadMem(S,&x,1,sizeof(x))
+#define LoadVector(S,b,n,size)	LoadMem(S,b,n,size)
+
+static void LoadBlock(LoadState* S, void* b, size_t size)
+{
+ size_t r=luaZ_read(S->Z,b,size);
+ IF (r!=0, "unexpected end");
+}
+
+static int LoadChar(LoadState* S)
+{
+ char x;
+ LoadVar(S,x);
+ return x;
+}
+
+static int LoadInt(LoadState* S)
+{
+ int x;
+ LoadVar(S,x);
+ IF (x<0, "bad integer");
+ return x;
+}
+
+static lua_Number LoadNumber(LoadState* S)
+{
+ lua_Number x;
+ LoadVar(S,x);
+ return x;
+}
+
+static TString* LoadString(LoadState* S)
+{
+ size_t size;
+ LoadVar(S,size);
+ if (size==0)
+  return NULL;
+ else
+ {
+  char* s=luaZ_openspace(S->L,S->b,size);
+  LoadBlock(S,s,size);
+  return luaS_newlstr(S->L,s,size-1);		/* remove trailing '\0' */
+ }
+}
+
+static void LoadCode(LoadState* S, Proto* f)
+{
+ int n=LoadInt(S);
+ f->code=luaM_newvector(S->L,n,Instruction);
+ f->sizecode=n;
+ LoadVector(S,f->code,n,sizeof(Instruction));
+}
+
+static Proto* LoadFunction(LoadState* S, TString* p);
+
+static void LoadConstants(LoadState* S, Proto* f)
+{
+ int i,n;
+ n=LoadInt(S);
+ f->k=luaM_newvector(S->L,n,TValue);
+ f->sizek=n;
+ for (i=0; i<n; i++) setnilvalue(&f->k[i]);
+ for (i=0; i<n; i++)
+ {
+  TValue* o=&f->k[i];
+  int t=LoadChar(S);
+  switch (t)
+  {
+   case LUA_TNIL:
+   	setnilvalue(o);
+	break;
+   case LUA_TBOOLEAN:
+   	setbvalue(o,LoadChar(S));
+	break;
+   case LUA_TNUMBER:
+	setnvalue(o,LoadNumber(S));
+	break;
+   case LUA_TSTRING:
+	setsvalue2n(S->L,o,LoadString(S));
+	break;
+   default:
+	IF (1, "bad constant");
+	break;
+  }
+ }
+ n=LoadInt(S);
+ f->p=luaM_newvector(S->L,n,Proto*);
+ f->sizep=n;
+ for (i=0; i<n; i++) f->p[i]=NULL;
+ for (i=0; i<n; i++) f->p[i]=LoadFunction(S,f->source);
+}
+
+static void LoadDebug(LoadState* S, Proto* f)
+{
+ int i,n;
+ n=LoadInt(S);
+ f->lineinfo=luaM_newvector(S->L,n,int);
+ f->sizelineinfo=n;
+ LoadVector(S,f->lineinfo,n,sizeof(int));
+ n=LoadInt(S);
+ f->locvars=luaM_newvector(S->L,n,LocVar);
+ f->sizelocvars=n;
+ for (i=0; i<n; i++) f->locvars[i].varname=NULL;
+ for (i=0; i<n; i++)
+ {
+  f->locvars[i].varname=LoadString(S);
+  f->locvars[i].startpc=LoadInt(S);
+  f->locvars[i].endpc=LoadInt(S);
+ }
+ n=LoadInt(S);
+ f->upvalues=luaM_newvector(S->L,n,TString*);
+ f->sizeupvalues=n;
+ for (i=0; i<n; i++) f->upvalues[i]=NULL;
+ for (i=0; i<n; i++) f->upvalues[i]=LoadString(S);
+}
+
+static Proto* LoadFunction(LoadState* S, TString* p)
+{
+ Proto* f=luaF_newproto(S->L);
+ setptvalue2s(S->L,S->L->top,f); incr_top(S->L);
+ f->source=LoadString(S); if (f->source==NULL) f->source=p;
+ f->linedefined=LoadInt(S);
+ f->lastlinedefined=LoadInt(S);
+ f->nups=LoadByte(S);
+ f->numparams=LoadByte(S);
+ f->is_vararg=LoadByte(S);
+ f->maxstacksize=LoadByte(S);
+ LoadCode(S,f);
+ LoadConstants(S,f);
+ LoadDebug(S,f);
+ IF (!luaG_checkcode(f), "bad code");
+ S->L->top--;
+ return f;
+}
+
+static void LoadHeader(LoadState* S)
+{
+ char h[LUAC_HEADERSIZE];
+ char s[LUAC_HEADERSIZE];
+ luaU_header(h);
+ LoadBlock(S,s,LUAC_HEADERSIZE);
+ IF (memcmp(h,s,LUAC_HEADERSIZE)!=0, "bad header");
+}
+
+/*
+** load precompiled chunk
+*/
+Proto* luaU_undump (lua_State* L, ZIO* Z, Mbuffer* buff, const char* name)
+{
+ LoadState S;
+ if (*name=='@' || *name=='=')
+  S.name=name+1;
+ else if (*name==LUA_SIGNATURE[0])
+  S.name="binary string";
+ else
+  S.name=name;
+ S.L=L;
+ S.Z=Z;
+ S.b=buff;
+ LoadHeader(&S);
+ return LoadFunction(&S,luaS_newliteral(L,"=?"));
+}
+
+/*
+* make header
+*/
+void luaU_header (char* h)
+{
+ int x=1;
+ memcpy(h,LUA_SIGNATURE,sizeof(LUA_SIGNATURE)-1);
+ h+=sizeof(LUA_SIGNATURE)-1;
+ *h++=(char)LUAC_VERSION;
+ *h++=(char)LUAC_FORMAT;
+ *h++=(char)*(char*)&x;				/* endianness */
+ *h++=(char)sizeof(int);
+ *h++=(char)sizeof(size_t);
+ *h++=(char)sizeof(Instruction);
+ *h++=(char)sizeof(lua_Number);
+ *h++=(char)(((lua_Number)0.5)==0);		/* is lua_Number integral? */
+}

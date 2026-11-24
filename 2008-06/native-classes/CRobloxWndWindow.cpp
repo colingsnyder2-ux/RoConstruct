@@ -357,12 +357,19 @@ void CRobloxWnd::createRenderer(int width, int height)
         g_009326f8 = 0.5f;
 }
 
-// Message map 0081a398: entries 0081a3a8 in this order in the target. Only handlers recovered natively are listed;
-// PENDING: WM_DESTROY 0045fd80, WM_ERASEBKGND 0045aff0, WM_PAINT 0045eaa0, WM_SIZE 0045d7c0, WM_KILLFOCUS 0045bf30,
-// 0x4bb 0045aeb0, WM_WINDOWPOSCHANGING 0045bf60, WM_CLOSE 0045bf80.
+// Message map 0081a398: entries 0081a3a8 in this order in the target (11 entries). Handlers without native bodies are
+// declared in CRobloxView.h with their addresses; the link binds them to the converted exact functions.
 BEGIN_MESSAGE_MAP(CRobloxWnd, CWnd)
     ON_WM_CREATE()
+    ON_WM_DESTROY()
+    ON_WM_ERASEBKGND()
+    ON_WM_PAINT()
+    { WM_SIZE, 0, 0, 0, AfxSig_vwii, (AFX_PMSG)(AFX_PMSGW)static_cast<void (AFX_MSG_CALL CWnd::*)(UINT, int, int)>(&CRobloxWnd::OnSizeMessage) },   // 0045d7c0
     { WM_TIMER, 0, 0, 0, AfxSig_vw, (AFX_PMSG)(AFX_PMSGW)static_cast<void (AFX_MSG_CALL CWnd::*)(UINT_PTR)>(reinterpret_cast<void (AFX_MSG_CALL CRobloxWnd::*)(UINT_PTR)>(&CRobloxWnd::handle)) },   // 0045cba0
     ON_WM_SETFOCUS()
+    ON_WM_KILLFOCUS()
+    ON_MESSAGE(0x4bb, &CRobloxWnd::OnMessage4bb)
+    ON_WM_WINDOWPOSCHANGING()
+    ON_WM_CLOSE()
 END_MESSAGE_MAP()
 

@@ -1,50 +1,497 @@
 // from server: 100% by auto
-// roc 2007-08 00545930  unit: RBX::MD5HasherImpl  size: 96 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00545930
-//
-// 00545930  56                   push esi
-// 00545931  8bf1                 mov esi, ecx
-// 00545933  8b0e                 mov ecx, dword ptr [esi]
-// 00545935  8379f400             cmp dword ptr [ecx - 0xc], 0
-// 00545939  8d41f0               lea eax, [ecx - 0x10]
-// 0054593c  57                   push edi
-// 0054593d  8b38                 mov edi, dword ptr [eax]
-// 0054593f  744c                 je 0x54598d
-// 00545941  83780c00             cmp dword ptr [eax + 0xc], 0
-// 00545945  8d500c               lea edx, [eax + 0xc]
-// 00545948  7d1f                 jge 0x545969
-// 0054594a  8379f800             cmp dword ptr [ecx - 8], 0
-// 0054594e  7d0a                 jge 0x54595a
-// 00545950  6857000780           push 0x80070057
-// 00545955  e8a6b6ebff           call 0x401000
-// 0054595a  c741f400000000       mov dword ptr [ecx - 0xc], 0
-// 00545961  8b06                 mov eax, dword ptr [esi]
-// 00545963  5f                   pop edi
-// 00545964  c60000               mov byte ptr [eax], 0
-// 00545967  5e                   pop esi
-// 00545968  c3                   ret 
-// 00545969  83c9ff               or ecx, 0xffffffff
-// 0054596c  f00fc10a             lock xadd dword ptr [edx], ecx
-// 00545970  49                   dec ecx
-// 00545971  85c9                 test ecx, ecx
-// 00545973  7f0a                 jg 0x54597f
-// 00545975  8b08                 mov ecx, dword ptr [eax]
-// 00545977  8b11                 mov edx, dword ptr [ecx]
-// 00545979  50                   push eax
-// 0054597a  8b4204               mov eax, dword ptr [edx + 4]
-// 0054597d  ffd0                 call eax
-// 0054597f  8b17                 mov edx, dword ptr [edi]
-// 00545981  8b420c               mov eax, dword ptr [edx + 0xc]
-// 00545984  8bcf                 mov ecx, edi
-// 00545986  ffd0                 call eax
-// 00545988  83c010               add eax, 0x10
-// 0054598b  8906                 mov dword ptr [esi], eax
-// 0054598d  5f                   pop edi
-// 0054598e  5e                   pop esi
-// 0054598f  c3                   ret 
-// library mfc-8.0/atlmfc\src\mfc\afxstate.cpp (function ?Empty@?$CSimpleStringT@D$0A@@ATL@@QAEXXZ)
-
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /GS- /MD
 // roc-lib: mfc-8.0 atlmfc/src/mfc/afxstate.cpp
+
+// Candidate translation unit (score above; library headers required).
+// This is a part of the Microsoft Foundation Classes C++ library.
+// Copyright (C) Microsoft Corporation
+// All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Microsoft Foundation Classes Reference and related
+// electronic documentation provided with the library.
+// See these sources for detailed information regarding the
+// Microsoft Foundation Classes product.
+
+#include "stdafx.h"
+#include <stddef.h>
+
+
+
+#pragma warning(disable: 4074)
+#pragma init_seg(compiler)
+
+/////////////////////////////////////////////////////////////////////////////
+// AFX_MODULE_STATE push/pop implementation
+
+#ifdef _AFXDLL
+AFX_MODULE_STATE* AFXAPI AfxSetModuleState(AFX_MODULE_STATE* pNewState)
+{
+	_AFX_THREAD_STATE* pState = _afxThreadState;
+	ASSERT(pState);
+	if(pState)
+	{
+	AFX_MODULE_STATE* pPrevState = pState->m_pModuleState;
+	pState->m_pModuleState = pNewState;
+	return pPrevState;
+}
+	else
+	{
+		return NULL;
+	}
+}
+
+AFX_MAINTAIN_STATE::~AFX_MAINTAIN_STATE()
+{
+	_AFX_THREAD_STATE* pState = _afxThreadState;
+	ASSERT(pState);
+	if(pState)
+	{
+	pState->m_pModuleState = m_pPrevModuleState;
+}
+}
+#endif //_AFXDLL
+
+AFX_MAINTAIN_STATE2::AFX_MAINTAIN_STATE2(AFX_MODULE_STATE* pNewState) throw()
+{
+#ifdef _AFXDLL
+	m_pThreadState = _afxThreadState;
+	ASSERT(m_pThreadState);
+	if(m_pThreadState)
+	{
+	m_pPrevModuleState = m_pThreadState->m_pModuleState;
+	m_pThreadState->m_pModuleState = pNewState;
+	}
+	else
+	{
+		// This is a very bad state; we have no good way to report the error at this moment
+		// since exceptions from here are not expected
+		m_pPrevModuleState=NULL;
+		m_pThreadState=NULL;
+	}
+#endif
+
+	if (AfxGetAmbientActCtx() && 
+		pNewState->m_hActCtx != INVALID_HANDLE_VALUE)
+	{
+		m_bValidActCtxCookie = AfxActivateActCtx(pNewState->m_hActCtx, &m_ulActCtxCookie);
+	}
+	else
+	{
+		m_bValidActCtxCookie = FALSE;
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// _AFX_THREAD_STATE implementation
+
+_AFX_THREAD_STATE::_AFX_THREAD_STATE()
+{
+#ifdef _DEBUG
+	m_nDisablePumpCount = 0;
+#endif
+	m_msgCur.message = WM_NULL;
+	m_nMsgLast = WM_NULL;
+	//::GetCursorPos(&(m_ptCursorLast));
+	m_ptCursorLast = CPoint(0,0);
+}
+
+_AFX_THREAD_STATE::~_AFX_THREAD_STATE()
+{
+	// unhook windows hooks
+	if (m_hHookOldMsgFilter != NULL)
+		::UnhookWindowsHookEx(m_hHookOldMsgFilter);
+	if (m_hHookOldCbtFilter != NULL)
+		::UnhookWindowsHookEx(m_hHookOldCbtFilter);
+
+	// free safety pool buffer
+	if (m_pSafetyPoolBuffer != NULL)
+		free(m_pSafetyPoolBuffer);
+
+	// parking window must have already been cleaned up by now!
+	ASSERT(m_pWndPark == NULL);
+}
+
+_AFX_THREAD_STATE* AFXAPI AfxGetThreadState()
+{
+	_AFX_THREAD_STATE *pState =_afxThreadState.GetData();
+	ENSURE(pState != NULL); 
+	return pState;
+}
+
+THREAD_LOCAL(_AFX_THREAD_STATE, _afxThreadState)
+
+/////////////////////////////////////////////////////////////////////////////
+// AFX_MODULE_STATE implementation
+
+#ifdef _AFXDLL
+AFX_MODULE_STATE::AFX_MODULE_STATE(BOOL bDLL, WNDPROC pfnAfxWndProc,
+	DWORD dwVersion, BOOL bSystem)
+#else
+AFX_MODULE_STATE::AFX_MODULE_STATE(BOOL bDLL)
+#endif
+{
+#ifndef _AFX_NO_OLE_SUPPORT
+	m_factoryList.Construct(offsetof(COleObjectFactory, m_pNextFactory));
+#endif
+	m_classList.Construct(offsetof(CRuntimeClass, m_pNextClass));
+
+	m_fRegisteredClasses = 0;
+	m_bDLL = (BYTE)bDLL;
+#ifdef _AFXDLL
+	m_pfnAfxWndProc = pfnAfxWndProc;
+	m_dwVersion = dwVersion;
+	m_bSystem = (BYTE)bSystem;
+#endif
+	BOOL bEnable = TRUE;
+	TRY
+	{
+		//Preallocate the registered classes string, but CRT memory leak report is
+		//called before the string frees memory, so need to disable tracking.
+		bEnable = AfxEnableMemoryTracking(FALSE);
+		m_strUnregisterList.Preallocate(4096);
+		AfxEnableMemoryTracking(bEnable);	
+	}		
+	CATCH(CMemoryException, e)
+	{
+		AfxEnableMemoryTracking(bEnable);	
+		DELETE_EXCEPTION(e);
+	}
+	END_CATCH
+	// app starts out in "user control"
+	m_bUserCtrl = TRUE;
+
+#ifndef _AFX_NO_OCC_SUPPORT
+	m_lockList.Construct(offsetof(COleControlLock, m_pNextLock));
+#endif
+#ifdef _AFXDLL
+	m_libraryList.Construct(offsetof(CDynLinkLibrary, m_pNextDLL));
+#endif
+	
+
+	bEnable = AfxEnableMemoryTracking(FALSE);		
+	//Fusion: allocate dll wrappers array.
+	m_pDllIsolationWrappers = new CDllIsolationWrapperBase*[2];
+#ifndef _AFX_NO_AFXCMN_SUPPORT
+	m_pDllIsolationWrappers[_AFX_COMCTL32_ISOLATION_WRAPPER_INDEX] = new CComCtlWrapper;
+#endif
+	m_pDllIsolationWrappers[_AFX_COMMDLG_ISOLATION_WRAPPER_INDEX] = new CCommDlgWrapper;
+	AfxEnableMemoryTracking(bEnable);
+	m_bSetAmbientActCtx = TRUE;
+	m_hActCtx = NULL;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// Activation Context API wrappers
+
+#define AFX_ACTCTX_API_INIT_PROCPTR(hKernel,name) \
+	pfn##name = (PFN_##name) GetProcAddress(hKernel, #name)\
+	
+
+/////////////////////////////////////////////////////////////////////////////
+// Global function pointers for Context (WinSxS/Manifest) API, to be init during MFC global init.
+#define AFX_ACTCTX_API_PTR_DEFINE(name, type, params) \
+	typedef type (WINAPI* PFN_##name)params; \
+	PFN_##name pfn##name = NULL;
+
+AFX_ACTCTX_API_PTR_DEFINE(CreateActCtxW, HANDLE, (PCACTCTXW));
+AFX_ACTCTX_API_PTR_DEFINE(ReleaseActCtx, void, (HANDLE));
+AFX_ACTCTX_API_PTR_DEFINE(ActivateActCtx, BOOL, (HANDLE, ULONG_PTR*));
+AFX_ACTCTX_API_PTR_DEFINE(DeactivateActCtx, BOOL, (DWORD, ULONG_PTR));
+
+AFX_STATIC void AFXAPI _AfxInitContextAPI()
+{
+	static HMODULE hKernel = NULL;
+	if (hKernel == NULL)
+	{
+		hKernel = GetModuleHandle(_T("KERNEL32"));
+		ENSURE(hKernel != NULL);
+		AFX_ACTCTX_API_INIT_PROCPTR(hKernel,CreateActCtxW);
+		AFX_ACTCTX_API_INIT_PROCPTR(hKernel,ReleaseActCtx);
+		AFX_ACTCTX_API_INIT_PROCPTR(hKernel,ActivateActCtx);
+		AFX_ACTCTX_API_INIT_PROCPTR(hKernel,DeactivateActCtx);	
+	}
+}
+
+#if (_WIN32_WINNT >= 0x0500) || (_WIN32_FUSION >= 0x0100)
+HANDLE AFXAPI AfxCreateActCtxW(PCACTCTXW pActCtx)
+{	
+	HANDLE hCtx = pfnCreateActCtxW != 0 ? pfnCreateActCtxW(pActCtx) : INVALID_HANDLE_VALUE;
+	return hCtx;
+}
+#else
+HANDLE AFXAPI AfxCreateActCtxW(void *pActCtx)
+{	
+	HANDLE hCtx = pfnCreateActCtxW != 0 ? pfnCreateActCtxW(pActCtx) : INVALID_HANDLE_VALUE;
+	return hCtx;
+}
+#endif
+
+void AFXAPI AfxReleaseActCtx(HANDLE hActCtx)
+{	
+	if (pfnReleaseActCtx != 0)
+	{
+		pfnReleaseActCtx(hActCtx);
+	}
+}
+
+BOOL AFXAPI AfxActivateActCtx(HANDLE hActCtx, ULONG_PTR *lpCookie) 
+{	
+	BOOL rc = pfnActivateActCtx != 0 ? pfnActivateActCtx(hActCtx, lpCookie) : FALSE;	
+	return rc;
+}
+
+BOOL AFXAPI AfxDeactivateActCtx(DWORD dwFlags, ULONG_PTR ulCookie)
+{	
+	BOOL rc = pfnDeactivateActCtx != 0 ? pfnDeactivateActCtx(dwFlags, ulCookie) : FALSE;
+	return rc;
+}
+
+eActCtxResult AFXAPI AfxActivateActCtxWrapper(HANDLE hActCtx, ULONG_PTR *lpCookie)
+{
+	ENSURE_ARG(lpCookie!=NULL);
+	eActCtxResult eResult=ActCtxFailed;
+	if (pfnActivateActCtx != 0)
+	{ 
+		eResult=AfxActivateActCtx(hActCtx, lpCookie) ? ActCtxSucceeded : ActCtxFailed;
+	} else
+	{		
+		eResult=ActCtxNoFusion;
+	}
+		
+	return eResult;	
+}
+
+void AFX_MODULE_STATE::CreateActivationContext()
+{
+	_AfxInitContextAPI();
+	HMODULE hModule = m_hCurrentInstanceHandle;
+
+	WCHAR rgchFullModulePath[MAX_PATH + 2];
+	rgchFullModulePath[_countof(rgchFullModulePath) - 1] = 0;
+	rgchFullModulePath[_countof(rgchFullModulePath) - 2] = 0;
+	DWORD dw = GetModuleFileNameW(hModule, rgchFullModulePath, _countof(rgchFullModulePath)-1);
+	if (dw == 0)
+	{
+		return;
+	}
+	if (rgchFullModulePath[_countof(rgchFullModulePath) - 2] != 0)
+	{
+		SetLastError(ERROR_BUFFER_OVERFLOW);
+		return;
+	}
+	//First try ID 2 and then ID 1 - this is to consider also a.dll.manifest file
+	//for dlls, which ID 2 ignores.
+	ACTCTXW actCtx;
+	actCtx.cbSize = sizeof(actCtx);
+	actCtx.dwFlags = ACTCTX_FLAG_RESOURCE_NAME_VALID | ACTCTX_FLAG_HMODULE_VALID;
+	actCtx.lpSource = rgchFullModulePath;
+	actCtx.lpResourceName =  MAKEINTRESOURCEW(ISOLATIONAWARE_MANIFEST_RESOURCE_ID);
+	actCtx.hModule = hModule;
+	m_hActCtx = AfxCreateActCtxW(&actCtx);
+	if (m_hActCtx == INVALID_HANDLE_VALUE)
+	{		
+		actCtx.lpResourceName =  MAKEINTRESOURCEW(ISOLATIONAWARE_NOSTATICIMPORT_MANIFEST_RESOURCE_ID);
+		m_hActCtx = AfxCreateActCtxW(&actCtx);
+	}
+	if (m_hActCtx == INVALID_HANDLE_VALUE)
+	{		
+		actCtx.lpResourceName =  MAKEINTRESOURCEW(CREATEPROCESS_MANIFEST_RESOURCE_ID);
+		m_hActCtx = AfxCreateActCtxW(&actCtx);
+	}
+	if (m_hActCtx == INVALID_HANDLE_VALUE)
+	{
+		m_hActCtx = NULL;
+	}		
+}
+
+AFX_MODULE_STATE::~AFX_MODULE_STATE()
+{
+#ifndef _AFX_NO_DAO_SUPPORT
+	delete m_pDaoState;
+#endif
+
+	// clean up type lib cache map, if any
+	if (m_pTypeLibCacheMap != NULL)
+	{
+		m_pTypeLibCacheMap->RemoveAll(&m_typeLibCache);
+		delete m_pTypeLibCacheMap;
+	}
+	//Fusion: delete each member of the array and the array itself
+#ifndef _AFX_NO_AFXCMN_SUPPORT
+	delete m_pDllIsolationWrappers[_AFX_COMCTL32_ISOLATION_WRAPPER_INDEX];
+#endif
+	delete m_pDllIsolationWrappers[_AFX_COMMDLG_ISOLATION_WRAPPER_INDEX];
+	delete [] m_pDllIsolationWrappers;
+	if (m_hActCtx != NULL && m_hActCtx != INVALID_HANDLE_VALUE)
+	{
+		AfxReleaseActCtx(m_hActCtx);
+		m_hActCtx = INVALID_HANDLE_VALUE;
+	}
+}
+
+void CTypeLibCacheMap::RemoveAll(void* pExcept)
+{
+	POSITION pos = GetStartPosition();
+	void* pTypeLibID;
+	CTypeLibCache* pCache;
+	while (pos != NULL)
+	{
+		GetNextAssoc(pos, pTypeLibID, (void*&)pCache);
+		if (pCache != pExcept)
+			delete pCache;
+	}
+}
+
+AFX_MODULE_THREAD_STATE::AFX_MODULE_THREAD_STATE()
+{
+	m_nLastHit = static_cast<INT_PTR>(-1);
+	m_nLastStatus = static_cast<INT_PTR>(-1);
+	m_pLastInfo = NULL;
+
+	m_frameList.Construct(offsetof(CFrameWnd, m_pNextFrameWnd));
+
+	// Note: it is only necessary to initialize non-zero data
+	m_pfnNewHandler = &AfxNewHandler;
+}
+
+AFX_MODULE_THREAD_STATE::~AFX_MODULE_THREAD_STATE()
+{
+	// cleanup thread local tooltip window
+	if (m_pToolTip != NULL)
+		m_pToolTip->DestroyToolTipCtrl();
+
+	delete m_pLastInfo;
+
+	// cleanup temp/permanent maps (just the maps themselves)
+	delete m_pmapHWND;
+	delete m_pmapHMENU;
+	delete m_pmapHDC;
+	delete m_pmapHGDIOBJ;
+	delete m_pmapHIMAGELIST;
+
+#ifndef _AFX_NO_SOCKET_SUPPORT
+	// cleanup socket notification list
+	if (m_plistSocketNotifications != NULL)
+		while (!m_plistSocketNotifications->IsEmpty())
+			delete m_plistSocketNotifications->RemoveHead();
+#ifndef _AFXDLL
+	// cleanup dynamically allocated socket maps
+	delete m_pmapSocketHandle;
+	delete m_pmapDeadSockets;
+	delete m_plistSocketNotifications;
+#endif
+#endif //!_AFX_NO_SOCKET_SUPPORT
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// AFX_MODULE_STATE for base application
+
+LRESULT CALLBACK AfxWndProcBase(HWND, UINT, WPARAM, LPARAM);
+
+class _AFX_BASE_MODULE_STATE : public AFX_MODULE_STATE
+{
+public:
+#ifdef _AFXDLL
+	_AFX_BASE_MODULE_STATE() : AFX_MODULE_STATE(TRUE, AfxWndProcBase, _MFC_VER)
+#else
+	_AFX_BASE_MODULE_STATE() : AFX_MODULE_STATE(TRUE)
+#endif
+		{ }
+};
+
+PROCESS_LOCAL(_AFX_BASE_MODULE_STATE, _afxBaseModuleState)
+
+#ifdef _AFXDLL
+
+#undef AfxWndProc
+LRESULT CALLBACK
+AfxWndProcBase(HWND hWnd, UINT nMsg, WPARAM wParam, LPARAM lParam)
+{
+	AFX_MANAGE_STATE(_afxBaseModuleState.GetData());
+	return AfxWndProc(hWnd, nMsg, wParam, lParam);
+}
+
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+// helper functions for module state
+
+AFX_MODULE_STATE* AFXAPI AfxGetAppModuleState()
+{
+	return _afxBaseModuleState.GetData();
+}
+
+AFX_MODULE_STATE* AFXAPI AfxGetModuleState()
+{
+	_AFX_THREAD_STATE* pState = _afxThreadState;
+	ENSURE(pState);
+	AFX_MODULE_STATE* pResult;
+	if (pState->m_pModuleState != NULL)
+	{
+		// thread state's module state serves as override
+		pResult = pState->m_pModuleState;
+	}
+	else
+	{
+		// otherwise, use global app state
+		pResult = _afxBaseModuleState.GetData();
+	}
+	ENSURE(pResult != NULL);
+	return pResult;
+}
+
+HINSTANCE AFXAPI AfxGetInstanceHandleHelper()
+{
+	return AfxGetModuleState()->m_hCurrentInstanceHandle;
+}
+
+BOOL AFXAPI AfxIsModuleDll()
+{
+	return AfxGetModuleState()->m_bDLL;
+}
+
+BOOL AFXAPI AfxInitCurrentStateApp()
+{
+	CWinApp* pApp = AfxGetModuleState()->m_pCurrentWinApp;
+	if (pApp != NULL && !pApp->InitInstance())
+	{
+		// Init Failed
+		pApp->ExitInstance();
+		AfxWinTerm();
+		return FALSE;
+	}
+	return TRUE;
+}
+
+AFX_MODULE_THREAD_STATE* AFXAPI AfxGetModuleThreadState()
+{
+	AFX_MODULE_THREAD_STATE* pResult=AfxGetModuleState()->m_thread.GetData();
+	ENSURE(pResult != NULL);
+	return pResult;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CTypeLibCache::Unlock
+// (Note: the rest of CTypeLibCache is implemented in oletyplb.cpp)
+
+void CTypeLibCache::Unlock()
+{
+	ASSERT(m_cRef > 0);
+
+	if (InterlockedDecrement(&m_cRef) == 0)
+	{
+		if (m_ptinfo != NULL)
+		{
+			m_ptinfo->Release();
+			m_ptinfo = NULL;
+		}
+		if (m_ptlib != NULL)
+		{
+			m_ptlib->Release();
+			m_ptlib = NULL;
+		}
+	}
+}

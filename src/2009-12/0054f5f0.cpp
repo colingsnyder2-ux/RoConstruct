@@ -1,29 +1,157 @@
 // from server: 100% by auto
-// roc 2009-12 0054f5f0  unit: RBX::Network::IdSerializer  size: 54 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0054f5f0
-//
-// 0054f5f0  a1d807b800           mov eax, dword ptr [0xb807d8]
-// 0054f5f5  40                   inc eax
-// 0054f5f6  a3d807b800           mov dword ptr [0xb807d8], eax
-// 0054f5fb  83f801               cmp eax, 1
-// 0054f5fe  7525                 jne 0x54f625
-// 0054f600  6a0c                 push 0xc
-// 0054f602  e859422a00           call 0x7f3860
-// 0054f607  33c9                 xor ecx, ecx
-// 0054f609  83c404               add esp, 4
-// 0054f60c  3bc1                 cmp eax, ecx
-// 0054f60e  740e                 je 0x54f61e
-// 0054f610  894808               mov dword ptr [eax + 8], ecx
-// 0054f613  8908                 mov dword ptr [eax], ecx
-// 0054f615  894804               mov dword ptr [eax + 4], ecx
-// 0054f618  a3d407b800           mov dword ptr [0xb807d4], eax
-// 0054f61d  c3                   ret 
-// 0054f61e  33c0                 xor eax, eax
-// 0054f620  a3d407b800           mov dword ptr [0xb807d4], eax
-// 0054f625  c3                   ret 
-// library raknet-4.081/StringTable.cpp (function ?AddReference@StringTable@RakNet@@SAXXZ)
-
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: raknet-4.081 StringTable.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+ *  Copyright (c) 2014, Oculus VR, Inc.
+ *  All rights reserved.
+ *
+ *  This source code is licensed under the BSD-style license found in the
+ *  LICENSE file in the root directory of this source tree. An additional grant 
+ *  of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+#include "StringTable.h"
+#include <string.h>
+#include "RakAssert.h"
+#include <stdio.h>
+#include "BitStream.h"
+#include "StringCompressor.h"
+using namespace RakNet;
+
+StringTable* StringTable::instance=0;
+int StringTable::referenceCount=0;
+
+
+int RakNet::StrAndBoolComp( char *const &key, const StrAndBool &data )
+{
+	return strcmp(key,(const char*)data.str);
+}
+
+StringTable::StringTable()
+{
+	
+}
+
+StringTable::~StringTable()
+{
+	unsigned i;
+	for (i=0; i < orderedStringList.Size(); i++)
+	{
+		if (orderedStringList[i].b)
+			rakFree_Ex(orderedStringList[i].str, _FILE_AND_LINE_ );
+	}
+}
+
+void StringTable::AddReference(void)
+{
+	if (++referenceCount==1)
+	{
+		instance = RakNet::OP_NEW<StringTable>( _FILE_AND_LINE_ );
+	}
+}
+void StringTable::RemoveReference(void)
+{
+	RakAssert(referenceCount > 0);
+
+	if (referenceCount > 0)
+	{
+		if (--referenceCount==0)
+		{
+			RakNet::OP_DELETE(instance, _FILE_AND_LINE_);
+			instance=0;
+		}
+	}
+}
+
+StringTable* StringTable::Instance(void)
+{
+	return instance;
+}
+
+void StringTable::AddString(const char *str, bool copyString)
+{
+	StrAndBool sab;
+	sab.b=copyString;
+	if (copyString)
+	{
+		sab.str = (char*) rakMalloc_Ex( strlen(str)+1, _FILE_AND_LINE_ );
+		strcpy(sab.str, str);
+	}
+	else
+	{
+		sab.str=(char*)str;
+	}
+
+	// If it asserts inside here you are adding duplicate strings.
+	orderedStringList.Insert(sab.str,sab, true, _FILE_AND_LINE_);
+
+	// If this assert hits you need to increase the range of StringTableType
+	RakAssert(orderedStringList.Size() < (StringTableType)-1);	
+	
+}
+void StringTable::EncodeString( const char *input, int maxCharsToWrite, RakNet::BitStream *output )
+{
+	unsigned index;
+	bool objectExists;
+	// This is fast because the list is kept ordered.
+	index=orderedStringList.GetIndexFromKey((char*)input, &objectExists);
+	if (objectExists)
+	{
+		output->Write(true);
+		output->Write((StringTableType)index);
+	}
+	else
+	{
+		LogStringNotFound(input);
+		output->Write(false);
+		StringCompressor::Instance()->EncodeString(input, maxCharsToWrite, output);
+	}
+}
+
+bool StringTable::DecodeString( char *output, int maxCharsToWrite, RakNet::BitStream *input )
+{
+	bool hasIndex=false;
+	RakAssert(maxCharsToWrite>0);
+
+	if (maxCharsToWrite==0)
+		return false;
+	if (!input->Read(hasIndex))
+		return false;
+	if (hasIndex==false)
+	{
+		StringCompressor::Instance()->DecodeString(output, maxCharsToWrite, input);
+	}
+	else
+	{
+		StringTableType index;
+		if (!input->Read(index))
+			return false;
+		if (index >= orderedStringList.Size())
+		{
+#ifdef _DEBUG
+			// Critical error - got a string index out of range, which means AddString was called more times on the remote system than on this system.
+			// All systems must call AddString the same number of types, with the same strings in the same order.
+			RakAssert(0);
+#endif
+			return false;
+		}
+		
+		strncpy(output, orderedStringList[index].str, maxCharsToWrite);
+		output[maxCharsToWrite-1]=0;
+	}
+
+	return true;
+}
+void StringTable::LogStringNotFound(const char *strName)
+{
+	(void) strName;
+
+#ifdef _DEBUG
+	RAKNET_DEBUG_PRINTF("Efficiency Warning! Unregistered String %s sent to StringTable.\n", strName);
+#endif
+}

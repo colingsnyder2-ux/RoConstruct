@@ -13,6 +13,7 @@ namespace RBX
     // INFERRED: the global is defined here (dynamic init constructs the empty SharedPtr: vptr + null pRep, the state the
     // constructor's `[00962dac] == 0` guard tests); declared extern only, nothing constructed it and exact code
     // assigned into a null-vptr object.
+    // 00962da8: font2d (SharedPtr vptr; pRep 00962dac, pUseCount 00962db0)
     Ogre::SharedPtr<Ogre::RbxFont> font2d;
 
     // 0066f900 (slot 5): tail-jumps to Viewport::getActualWidth (rgmain import).

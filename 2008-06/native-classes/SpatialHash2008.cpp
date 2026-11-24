@@ -67,6 +67,20 @@ namespace RBX
 		}
 	}
 
+	// 00659670 (registry func_00659670, `ret 0xc`; callers newNode 00659f90 and addNode 0065a220): walks the tree-node
+	// chain of levels[level][hash] (.treeNodes +4, next +0x28) for the node whose grid (+0x1c..+0x24) equals grid.
+	SpatialTreeNode* SpatialHash::findTreeNode(int level, int hash, const Vector3int32& grid)
+	{
+		SpatialTreeNode* node = levels[level][hash].treeNodes;
+		while (node)
+		{
+			if (node->gridId == grid)
+				return node;
+			node = node->next;
+		}
+		return NULL;
+	}
+
 	// 0065a220 (registry func_0065a220, `ret 0xc`): donor SpatialHash::addNode for one grid level, then the same pair search
 	// in each coarser level (grid >> 1 per level up to spatialHashLevels 009625a8), linking the cell into the tree nodes
 	// (00659670 find / 006596d0 new; child bit x + 2y + 4z of the original grid at that depth) until a child is already

@@ -1,33 +1,163 @@
 // from server: 100% by auto
-// roc 2007-08 0063d7c0  unit: CXTPPaintManager  size: 60 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0063d7c0
-//
-// 0063d7c0  8b442414             mov eax, dword ptr [esp + 0x14]
-// 0063d7c4  85c0                 test eax, eax
-// 0063d7c6  7403                 je 0x63d7cb
-// 0063d7c8  8b4004               mov eax, dword ptr [eax + 4]
-// 0063d7cb  8b542420             mov edx, dword ptr [esp + 0x20]
-// 0063d7cf  52                   push edx
-// 0063d7d0  8b542420             mov edx, dword ptr [esp + 0x20]
-// 0063d7d4  52                   push edx
-// 0063d7d5  8b542420             mov edx, dword ptr [esp + 0x20]
-// 0063d7d9  52                   push edx
-// 0063d7da  8b542418             mov edx, dword ptr [esp + 0x18]
-// 0063d7de  50                   push eax
-// 0063d7df  8b442420             mov eax, dword ptr [esp + 0x20]
-// 0063d7e3  50                   push eax
-// 0063d7e4  8b44241c             mov eax, dword ptr [esp + 0x1c]
-// 0063d7e8  52                   push edx
-// 0063d7e9  8b54241c             mov edx, dword ptr [esp + 0x1c]
-// 0063d7ed  50                   push eax
-// 0063d7ee  8b4104               mov eax, dword ptr [ecx + 4]
-// 0063d7f1  52                   push edx
-// 0063d7f2  50                   push eax
-// 0063d7f3  ff153cd17700         call dword ptr [0x77d13c]
-// 0063d7f9  c22000               ret 0x20
-// library mfc-8.0/atlmfc\src\mfc\winbtn.cpp (function ?BitBlt@CDC@@QAEHHHHHPAV1@HHK@Z)
-
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /GS- /MD
 // roc-lib: mfc-8.0 atlmfc/src/mfc/winbtn.cpp
+
+// Candidate translation unit (score above; library headers required).
+// This is a part of the Microsoft Foundation Classes C++ library.
+// Copyright (C) Microsoft Corporation
+// All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Microsoft Foundation Classes Reference and related
+// electronic documentation provided with the library.
+// See these sources for detailed information regarding the
+// Microsoft Foundation Classes product.
+
+#include "stdafx.h"
+
+
+
+#define new DEBUG_NEW
+
+/////////////////////////////////////////////////////////////////////////////
+// CBitmapButton
+
+// LoadBitmaps will load in one, two, three or all four bitmaps
+// returns TRUE if all specified images are loaded
+BOOL CBitmapButton::LoadBitmaps(LPCTSTR lpszBitmapResource,
+	LPCTSTR lpszBitmapResourceSel, LPCTSTR lpszBitmapResourceFocus,
+	LPCTSTR lpszBitmapResourceDisabled)
+{
+	// delete old bitmaps (if present)
+	m_bitmap.DeleteObject();
+	m_bitmapSel.DeleteObject();
+	m_bitmapFocus.DeleteObject();
+	m_bitmapDisabled.DeleteObject();
+
+	if (!m_bitmap.LoadBitmap(lpszBitmapResource))
+	{
+		TRACE(traceAppMsg, 0, "Failed to load bitmap for normal image.\n");
+		return FALSE;   // need this one image
+	}
+	BOOL bAllLoaded = TRUE;
+	if (lpszBitmapResourceSel != NULL)
+	{
+		if (!m_bitmapSel.LoadBitmap(lpszBitmapResourceSel))
+		{
+			TRACE(traceAppMsg, 0, "Failed to load bitmap for selected image.\n");
+			bAllLoaded = FALSE;
+		}
+	}
+	if (lpszBitmapResourceFocus != NULL)
+	{
+		if (!m_bitmapFocus.LoadBitmap(lpszBitmapResourceFocus))
+			bAllLoaded = FALSE;
+	}
+	if (lpszBitmapResourceDisabled != NULL)
+	{
+		if (!m_bitmapDisabled.LoadBitmap(lpszBitmapResourceDisabled))
+			bAllLoaded = FALSE;
+	}
+	return bAllLoaded;
+}
+
+// SizeToContent will resize the button to the size of the bitmap
+void CBitmapButton::SizeToContent()
+{
+	ASSERT(m_bitmap.m_hObject != NULL);
+	CSize bitmapSize;
+	BITMAP bmInfo;
+	VERIFY(m_bitmap.GetObject(sizeof(bmInfo), &bmInfo) == sizeof(bmInfo));
+	VERIFY(SetWindowPos(NULL, -1, -1, bmInfo.bmWidth, bmInfo.bmHeight,
+		SWP_NOMOVE|SWP_NOZORDER|SWP_NOREDRAW|SWP_NOACTIVATE));
+}
+
+// Autoload will load the bitmap resources based on the text of
+//  the button
+// Using suffices "U", "D", "F" and "X" for up/down/focus/disabled
+BOOL CBitmapButton::AutoLoad(UINT nID, CWnd* pParent)
+{
+	// first attach the CBitmapButton to the dialog control
+	if (!SubclassDlgItem(nID, pParent))
+		return FALSE;
+
+	CString buttonName;
+	GetWindowText(buttonName);
+	ASSERT(!buttonName.IsEmpty());      // must provide a title
+
+	LoadBitmaps(buttonName + _T("U"), buttonName + _T("D"),
+	  buttonName + _T("F"), buttonName + _T("X"));
+
+	// we need at least the primary
+	if (m_bitmap.m_hObject == NULL)
+		return FALSE;
+
+	// size to content
+	SizeToContent();
+	return TRUE;
+}
+
+// Draw the appropriate bitmap
+void CBitmapButton::DrawItem(LPDRAWITEMSTRUCT lpDIS)
+{
+	ASSERT(lpDIS != NULL);
+	// must have at least the first bitmap loaded before calling DrawItem
+	ASSERT(m_bitmap.m_hObject != NULL);     // required
+
+	// use the main bitmap for up, the selected bitmap for down
+	CBitmap* pBitmap = &m_bitmap;
+	UINT state = lpDIS->itemState;
+	if ((state & ODS_SELECTED) && m_bitmapSel.m_hObject != NULL)
+		pBitmap = &m_bitmapSel;
+	else if ((state & ODS_FOCUS) && m_bitmapFocus.m_hObject != NULL)
+		pBitmap = &m_bitmapFocus;   // third image for focused
+	else if ((state & ODS_DISABLED) && m_bitmapDisabled.m_hObject != NULL)
+		pBitmap = &m_bitmapDisabled;   // last image for disabled
+
+	// draw the whole button
+	CDC* pDC = CDC::FromHandle(lpDIS->hDC);
+	CDC memDC;
+	memDC.CreateCompatibleDC(pDC);
+	CBitmap* pOld = memDC.SelectObject(pBitmap);
+	if (pOld == NULL)
+		return;     // destructors will clean up
+
+	CRect rect;
+	rect.CopyRect(&lpDIS->rcItem);
+	pDC->BitBlt(rect.left, rect.top, rect.Width(), rect.Height(),
+		&memDC, 0, 0, SRCCOPY);
+	memDC.SelectObject(pOld);
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CBitmapButton diagnostics
+#ifdef _DEBUG
+void CBitmapButton::AssertValid() const
+{
+	CButton::AssertValid();
+
+	m_bitmap.AssertValid();
+	m_bitmapSel.AssertValid();
+	m_bitmapFocus.AssertValid();
+	m_bitmapDisabled.AssertValid();
+}
+
+void CBitmapButton::Dump(CDumpContext& dc) const
+{
+	CButton::Dump(dc);
+
+	dc << "m_bitmap = " << (void*)m_bitmap.m_hObject;
+	dc << "\nm_bitmapSel = " << (void*)m_bitmapSel.m_hObject;
+	dc << "\nm_bitmapFocus = " << (void*)m_bitmapFocus.m_hObject;
+	dc << "\nm_bitmapDisabled = " << (void*)m_bitmapDisabled.m_hObject;
+
+	dc << "\n";
+}
+#endif
+
+
+IMPLEMENT_DYNAMIC(CBitmapButton, CButton)
+
+/////////////////////////////////////////////////////////////////////////////

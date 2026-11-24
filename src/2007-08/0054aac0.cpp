@@ -1,14 +1,31 @@
 // from server: 100% by auto
-// roc 2007-08 0054aac0  unit: RBX::ServiceProvider  size: 10 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0054aac0
-//
-// 0054aac0  8b01                 mov eax, dword ptr [ecx]
-// 0054aac2  50                   push eax
-// 0054aac3  ff1508ef7700         call dword ptr [0x77ef08]
-// 0054aac9  c3                   ret 
-// library mfc-8.0/atlmfc\src\mfc\afxabort.cpp (function ??1CComBSTR@ATL@@QAE@XZ)
-
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /GS- /MD
 // roc-lib: mfc-8.0 atlmfc/src/mfc/afxabort.cpp
+
+// Candidate translation unit (score above; library headers required).
+// This is a part of the Microsoft Foundation Classes C++ library.
+// Copyright (C) Microsoft Corporation
+// All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Microsoft Foundation Classes Reference and related
+// electronic documentation provided with the library.
+// See these sources for detailed information regarding the
+// Microsoft Foundation Classes product.
+
+#include "stdafx.h"
+
+
+// Note: in separate module so it can be replaced if needed
+
+void AFXAPI AfxAbort()
+{
+	TRACE(traceAppMsg, 0, "AfxAbort called.\n");
+
+	AfxWinTerm();
+	abort();
+}
+
+/////////////////////////////////////////////////////////////////////////////

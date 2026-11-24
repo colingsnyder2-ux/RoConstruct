@@ -1,154 +1,349 @@
 // from server: 100% by auto
-// roc 2010-06 007d2c90  unit: VCXTPReportRow::V?$CXTPSmartPtrInternalT::?$CArray  size: 351 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 007d2c90
-//
-// 007d2c90  53                   push ebx
-// 007d2c91  8b5c2408             mov ebx, dword ptr [esp + 8]
-// 007d2c95  56                   push esi
-// 007d2c96  57                   push edi
-// 007d2c97  33ff                 xor edi, edi
-// 007d2c99  3bdf                 cmp ebx, edi
-// 007d2c9b  8bf1                 mov esi, ecx
-// 007d2c9d  7d05                 jge 0x7d2ca4
-// 007d2c9f  e8a84ffdff           call 0x7a7c4c
-// 007d2ca4  8b442414             mov eax, dword ptr [esp + 0x14]
-// 007d2ca8  3bc7                 cmp eax, edi
-// 007d2caa  7c03                 jl 0x7d2caf
-// 007d2cac  894610               mov dword ptr [esi + 0x10], eax
-// 007d2caf  3bdf                 cmp ebx, edi
-// 007d2cb1  751f                 jne 0x7d2cd2
-// 007d2cb3  8b4604               mov eax, dword ptr [esi + 4]
-// 007d2cb6  3bc7                 cmp eax, edi
-// 007d2cb8  740c                 je 0x7d2cc6
-// 007d2cba  50                   push eax
-// 007d2cbb  e8864ffdff           call 0x7a7c46
-// 007d2cc0  83c404               add esp, 4
-// 007d2cc3  897e04               mov dword ptr [esi + 4], edi
-// 007d2cc6  897e0c               mov dword ptr [esi + 0xc], edi
-// 007d2cc9  897e08               mov dword ptr [esi + 8], edi
-// 007d2ccc  5f                   pop edi
-// 007d2ccd  5e                   pop esi
-// 007d2cce  5b                   pop ebx
-// 007d2ccf  c20800               ret 8
-// 007d2cd2  8b5604               mov edx, dword ptr [esi + 4]
-// 007d2cd5  55                   push ebp
-// 007d2cd6  3bd7                 cmp edx, edi
-// 007d2cd8  7533                 jne 0x7d2d0d
-// 007d2cda  8b6e10               mov ebp, dword ptr [esi + 0x10]
-// 007d2cdd  3bdd                 cmp ebx, ebp
-// 007d2cdf  7e02                 jle 0x7d2ce3
-// 007d2ce1  8beb                 mov ebp, ebx
-// 007d2ce3  8d7c6d00             lea edi, [ebp + ebp*2]
-// 007d2ce7  03ff                 add edi, edi
-// 007d2ce9  03ff                 add edi, edi
-// 007d2ceb  57                   push edi
-// 007d2cec  e8914ffdff           call 0x7a7c82
-// 007d2cf1  57                   push edi
-// 007d2cf2  6a00                 push 0
-// 007d2cf4  50                   push eax
-// 007d2cf5  894604               mov dword ptr [esi + 4], eax
-// 007d2cf8  e8e75efdff           call 0x7a8be4
-// 007d2cfd  83c410               add esp, 0x10
-// 007d2d00  896e0c               mov dword ptr [esi + 0xc], ebp
-// 007d2d03  5d                   pop ebp
-// 007d2d04  5f                   pop edi
-// 007d2d05  895e08               mov dword ptr [esi + 8], ebx
-// 007d2d08  5e                   pop esi
-// 007d2d09  5b                   pop ebx
-// 007d2d0a  c20800               ret 8
-// 007d2d0d  8b4e0c               mov ecx, dword ptr [esi + 0xc]
-// 007d2d10  3bd9                 cmp ebx, ecx
-// 007d2d12  7f31                 jg 0x7d2d45
-// 007d2d14  8b4e08               mov ecx, dword ptr [esi + 8]
-// 007d2d17  3bd9                 cmp ebx, ecx
-// 007d2d19  0f8ec6000000         jle 0x7d2de5
-// 007d2d1f  8bc3                 mov eax, ebx
-// 007d2d21  2bc1                 sub eax, ecx
-// 007d2d23  8d0440               lea eax, [eax + eax*2]
-// 007d2d26  03c0                 add eax, eax
-// 007d2d28  03c0                 add eax, eax
-// 007d2d2a  50                   push eax
-// 007d2d2b  8d0c49               lea ecx, [ecx + ecx*2]
-// 007d2d2e  8d148a               lea edx, [edx + ecx*4]
-// 007d2d31  57                   push edi
-// 007d2d32  52                   push edx
-// 007d2d33  e8ac5efdff           call 0x7a8be4
-// 007d2d38  83c40c               add esp, 0xc
-// 007d2d3b  5d                   pop ebp
-// 007d2d3c  5f                   pop edi
-// 007d2d3d  895e08               mov dword ptr [esi + 8], ebx
-// 007d2d40  5e                   pop esi
-// 007d2d41  5b                   pop ebx
-// 007d2d42  c20800               ret 8
-// 007d2d45  8b4610               mov eax, dword ptr [esi + 0x10]
-// 007d2d48  3bc7                 cmp eax, edi
-// 007d2d4a  7524                 jne 0x7d2d70
-// 007d2d4c  8b4608               mov eax, dword ptr [esi + 8]
-// 007d2d4f  99                   cdq 
-// 007d2d50  83e207               and edx, 7
-// 007d2d53  03c2                 add eax, edx
-// 007d2d55  c1f803               sar eax, 3
-// 007d2d58  83f804               cmp eax, 4
-// 007d2d5b  7d07                 jge 0x7d2d64
-// 007d2d5d  b804000000           mov eax, 4
-// 007d2d62  eb0c                 jmp 0x7d2d70
-// 007d2d64  3d00040000           cmp eax, 0x400
-// 007d2d69  7e05                 jle 0x7d2d70
-// 007d2d6b  b800040000           mov eax, 0x400
-// 007d2d70  8d3c01               lea edi, [ecx + eax]
-// 007d2d73  3bdf                 cmp ebx, edi
-// 007d2d75  7d06                 jge 0x7d2d7d
-// 007d2d77  897c2414             mov dword ptr [esp + 0x14], edi
-// 007d2d7b  eb06                 jmp 0x7d2d83
-// 007d2d7d  895c2414             mov dword ptr [esp + 0x14], ebx
-// 007d2d81  8bfb                 mov edi, ebx
-// 007d2d83  3bf9                 cmp edi, ecx
-// 007d2d85  7d05                 jge 0x7d2d8c
-// 007d2d87  e8c04efdff           call 0x7a7c4c
-// 007d2d8c  8d3c7f               lea edi, [edi + edi*2]
-// 007d2d8f  03ff                 add edi, edi
-// 007d2d91  03ff                 add edi, edi
-// 007d2d93  57                   push edi
-// 007d2d94  e8e94efdff           call 0x7a7c82
-// 007d2d99  8b4e04               mov ecx, dword ptr [esi + 4]
-// 007d2d9c  8be8                 mov ebp, eax
-// 007d2d9e  8b4608               mov eax, dword ptr [esi + 8]
-// 007d2da1  8d0440               lea eax, [eax + eax*2]
-// 007d2da4  03c0                 add eax, eax
-// 007d2da6  03c0                 add eax, eax
-// 007d2da8  50                   push eax
-// 007d2da9  51                   push ecx
-// 007d2daa  57                   push edi
-// 007d2dab  55                   push ebp
-// 007d2dac  e83ffec2ff           call 0x402bf0
-// 007d2db1  8b4e08               mov ecx, dword ptr [esi + 8]
-// 007d2db4  8bc3                 mov eax, ebx
-// 007d2db6  2bc1                 sub eax, ecx
-// 007d2db8  8d1440               lea edx, [eax + eax*2]
-// 007d2dbb  03d2                 add edx, edx
-// 007d2dbd  03d2                 add edx, edx
-// 007d2dbf  52                   push edx
-// 007d2dc0  8d0449               lea eax, [ecx + ecx*2]
-// 007d2dc3  8d4c8500             lea ecx, [ebp + eax*4]
-// 007d2dc7  6a00                 push 0
-// 007d2dc9  51                   push ecx
-// 007d2dca  e8155efdff           call 0x7a8be4
-// 007d2dcf  8b5604               mov edx, dword ptr [esi + 4]
-// 007d2dd2  52                   push edx
-// 007d2dd3  e86e4efdff           call 0x7a7c46
-// 007d2dd8  8b442438             mov eax, dword ptr [esp + 0x38]
-// 007d2ddc  83c424               add esp, 0x24
-// 007d2ddf  896e04               mov dword ptr [esi + 4], ebp
-// 007d2de2  89460c               mov dword ptr [esi + 0xc], eax
-// 007d2de5  5d                   pop ebp
-// 007d2de6  5f                   pop edi
-// 007d2de7  895e08               mov dword ptr [esi + 8], ebx
-// 007d2dea  5e                   pop esi
-// 007d2deb  5b                   pop ebx
-// 007d2dec  c20800               ret 8
-// library xtp-13.2.1/Source\Common\XTPNotifyConnection.cpp (function ?SetSize@?$CArray@UCONNECTION_DESCRIPTOR@CXTPNotifyConnection@@AAU12@@@QAEXHH@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-13.2.1 Source/Common/XTPNotifyConnection.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPNotifyConnection.cpp: implementation of the CXTPNotifyConnection and CXTPNotifySink classes.
+//
+// This file is a part of the XTREME TOOLKIT PRO MFC class library.
+// (c)1998-2009 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "XTPNotifyConnection.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+#pragma warning(disable: 4571) // warning C4571: catch(...) blocks compiled with /EHs do not catch or re-throw Structured Exceptions
+
+/////////////////////////////////////////////////////////////////////////////
+static LPCTSTR XTP_NOTIFICATION_SINK_MT_MSGWND_NAME  = _T("XTPNotificationSinkMT_MsgWnd");
+
+
+/////////////////////////////////////////////////////////////////////////////
+//class CEmptySyncObject : public CSyncObject
+
+CXTPNotifyConnection::CEmptySyncObject::CEmptySyncObject() :
+		CSyncObject(_T("XTPEmptySyncObject"))
+{
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+CXTPNotifyConnection::CXTPNotifyConnection()
+{
+	m_nSendQueueCacheSize = 0;
+}
+
+CXTPNotifyConnection::~CXTPNotifyConnection()
+{
+	RemoveAll();
+}
+
+void CXTPNotifyConnection::RemoveAll()
+{
+	CSingleLock singleLock(GetDataLock(), TRUE);
+
+	int nCount = (int)m_arrConnections.GetSize();
+	for (int i = 0; i < nCount; i++)
+	{
+		CONNECTION_DESCRIPTOR* pCurElem = m_arrConnections[i];
+		ASSERT(pCurElem);
+		if (pCurElem)
+		{
+			delete pCurElem;
+		}
+		m_arrConnections[i] = NULL;
+	}
+
+	m_arrConnections.RemoveAll();
+}
+
+XTP_CONNECTION_ID CXTPNotifyConnection::Advise(XTP_NOTIFY_CODE Event, CXTPNotifySink* pSink)
+{
+	ASSERT(pSink);
+
+	CSingleLock singleLock(GetDataLock(), TRUE);
+
+	CONNECTION_DESCRIPTOR* pNewElem = new CONNECTION_DESCRIPTOR;
+
+	if (!pNewElem)
+	{
+		return 0;
+	}
+
+	pNewElem->dwConnectionID = (XTP_CONNECTION_ID)pNewElem;
+	pNewElem->dwNotifyCode = Event;
+	pNewElem->pSink = pSink;
+
+	m_arrConnections.Add(pNewElem);
+
+	return pNewElem->dwConnectionID;
+}
+
+void  CXTPNotifyConnection::Unadvise(XTP_CONNECTION_ID ConnectionID)
+{
+	CSingleLock singleLock(GetDataLock(), TRUE);
+
+	try
+	{
+		int nCount = (int)m_arrConnections.GetSize();
+		int nFIndex = FindConnection(ConnectionID);
+
+		if (nFIndex >= 0 && nFIndex < nCount)
+		{
+			CONNECTION_DESCRIPTOR* pElem = m_arrConnections[nFIndex];
+
+			ASSERT(pElem);
+			if (pElem)
+			{
+				delete pElem;
+			}
+			m_arrConnections.RemoveAt(nFIndex);
+		}
+		else
+		{
+			ASSERT(FALSE);
+		}
+	}
+	catch(...)
+	{
+		ASSERT(FALSE);
+		TRACE(_T("EXCEPTION! CXTPNotifyConnection::Unadvise(ConnectionID = %d)\n"), ConnectionID);
+	}
+}
+
+BOOL CXTPNotifyConnection::SendEvent(XTP_NOTIFY_CODE Event,
+								WPARAM wParam , LPARAM lParam, DWORD dwFlags)
+{
+	CSingleLock singleLock(GetDataLock(), TRUE);
+	InternalAddRef();
+
+	int nCount = (int)m_arrConnections.GetSize();
+
+	if (m_arrSendQueueCache.GetSize() < nCount + m_nSendQueueCacheSize)
+	{
+		m_arrSendQueueCache.SetSize(nCount + m_nSendQueueCacheSize);
+	}
+	//******************************************************************************
+	int nFirstLocalClientIndex = m_nSendQueueCacheSize;
+
+	int i;
+	for (i = 0; i < nCount; i++)
+	{
+		CONNECTION_DESCRIPTOR* pElem = m_arrConnections[i];
+		ASSERT(pElem);
+		if (pElem && pElem->dwNotifyCode == Event)
+		{
+			m_arrSendQueueCache.SetAt(m_nSendQueueCacheSize, *pElem);
+			m_nSendQueueCacheSize++;
+		}
+	}
+	int nLastLocalClientIndex = m_nSendQueueCacheSize-1;
+
+	singleLock.Unlock();
+	//************************************************************************
+	for (i = nFirstLocalClientIndex; i <= nLastLocalClientIndex; i++)
+	{
+		singleLock.Lock();
+
+		if (i >= m_arrSendQueueCache.GetSize())
+		{
+			ASSERT(FALSE);
+			return FALSE;
+		}
+
+		CONNECTION_DESCRIPTOR& rElem = m_arrSendQueueCache.ElementAt(i);
+		int nFIndex = FindConnection(rElem.dwConnectionID);
+		if (nFIndex < 0)
+		{
+			// Unadvise was called inside OnEvent(...) Call
+			continue;
+		}
+		try
+		{
+			CXTPNotifySink* ptrSink = rElem.pSink;
+
+			singleLock.Unlock();
+
+			if (ptrSink)
+			{
+				ptrSink->OnEvent(Event, wParam, lParam, dwFlags);
+			}
+			else
+			{
+				ASSERT(FALSE);
+				TRACE(_T("CXTPNotifyConnection::SendEvent(Event = %d, wParam = %d, lParam = %d, dwFlags = %x) pSink = %x\n"),
+						Event, wParam, lParam, dwFlags, rElem.pSink);
+			}
+		}
+		catch(...)
+		{
+			ASSERT(FALSE);
+			TRACE(_T("EXCEPTION! CXTPNotifyConnection::SendEvent(Event = %d, wParam = %d, lParam = %d, dwFlags = %x)\n"),
+					Event, wParam, lParam, dwFlags);
+		}
+	}
+
+	//==============================================================================
+	singleLock.Lock();
+
+	m_nSendQueueCacheSize = nFirstLocalClientIndex;
+
+	singleLock.Unlock();
+
+	InternalRelease();
+	return (nFirstLocalClientIndex <= nLastLocalClientIndex);
+}
+
+int CXTPNotifyConnection::FindConnection(XTP_CONNECTION_ID ConnectionID)
+{
+	CSingleLock singleLock(GetDataLock(), TRUE);
+
+	int nCount = (int)m_arrConnections.GetSize();
+	for (int i = 0; i < nCount; i++)
+	{
+		CONNECTION_DESCRIPTOR* pCurElem = m_arrConnections[i];
+		ASSERT(pCurElem);
+		if (pCurElem)
+		{
+			if (pCurElem->dwConnectionID == ConnectionID)
+			{
+				return i;
+			}
+		}
+	}
+	return -1;
+}
+
+////////////////////////////////////////////////////////////////////////////
+//class CXTPNotifyConnectionMT : public CXTPNotifyConnection
+
+CXTPNotifyConnectionMT::CXTPNotifyConnectionMT()
+{
+}
+
+CXTPNotifyConnectionMT::~CXTPNotifyConnectionMT()
+{
+}
+
+
+////////////////////////////////////////////////////////////////////////////
+BEGIN_MESSAGE_MAP(CXTPNotifySinkImplMTMsgWnd, CWnd)
+	ON_REGISTERED_MESSAGE(xtp_wm_NotificationSinkMTOnEvent, OnInterThreadEvent)
+END_MESSAGE_MAP()
+
+CXTPNotifySinkImplMTMsgWnd::CXTPNotifySinkImplMTMsgWnd()
+{
+}
+
+CXTPNotifySinkImplMTMsgWnd::~CXTPNotifySinkImplMTMsgWnd()
+{
+}
+
+BOOL CXTPNotifySinkImplMTMsgWnd::CreateWnd()
+{
+	LPCTSTR pcszSimpleWndClass = AfxRegisterWndClass(0);
+	CRect rcEmpty(0, 0, 0, 0);
+
+	BOOL bCreated = CreateEx(0, pcszSimpleWndClass,
+		XTP_NOTIFICATION_SINK_MT_MSGWND_NAME,
+		WS_POPUP, rcEmpty, NULL, 0);
+	ASSERT(bCreated);
+	return bCreated;
+}
+
+//////////////////////////////////////////////////////////////////////////
+// CXTPNotifySink
+
+CXTPNotifySink::CXTPNotifySink()
+{
+}
+
+CXTPNotifySink::~CXTPNotifySink()
+{
+	UnadviseAll();
+}
+
+XTP_CONNECTION_ID CXTPNotifySink::Advise(CXTPNotifyConnection* pConnection,
+								XTP_NOTIFY_CODE dwNotifyCode)
+{
+	ASSERT(pConnection);
+	if (!pConnection)
+	{
+		return 0;
+	}
+
+	XTP_CONNECTION_ID dwConnectionID = pConnection->Advise(dwNotifyCode, this);
+	ASSERT(dwConnectionID);
+
+	if (dwConnectionID)
+	{
+		ADVISE_DESCRIPTOR advDataNew;
+		ASSERT(!m_mapAdviseData.Lookup(dwConnectionID, advDataNew));
+
+		advDataNew.dwConnectionID = dwConnectionID;
+		advDataNew.pConnection = pConnection;
+		advDataNew.dwNotifyCode = dwNotifyCode;
+		pConnection->InternalAddRef();
+
+		m_mapAdviseData.SetAt(dwConnectionID, advDataNew);
+
+	}
+	return dwConnectionID;
+}
+
+void CXTPNotifySink::UnadviseAll()
+{
+	XTP_CONNECTION_ID ConnectionID = 0;
+	ADVISE_DESCRIPTOR advData;
+	POSITION pos = m_mapAdviseData.GetStartPosition();
+	while (pos)
+	{
+		m_mapAdviseData.GetNextAssoc(pos, ConnectionID, advData);
+		if (advData.pConnection)
+		{
+			advData.pConnection->Unadvise(advData.dwConnectionID);
+			advData.pConnection->InternalRelease();
+		}
+	}
+	m_mapAdviseData.RemoveAll();
+}
+
+void CXTPNotifySink::Unadvise(XTP_CONNECTION_ID ConnectionID)
+{
+	ADVISE_DESCRIPTOR advData;
+	if (m_mapAdviseData.Lookup(ConnectionID, advData))
+	{
+		if (advData.pConnection)
+		{
+			advData.pConnection->Unadvise(advData.dwConnectionID);
+			advData.pConnection->InternalRelease();
+		}
+		m_mapAdviseData.RemoveKey(ConnectionID);
+	}
+	else
+	{
+		ASSERT(FALSE);
+	}
+}

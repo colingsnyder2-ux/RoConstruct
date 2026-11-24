@@ -470,3 +470,17 @@ template boost::shared_ptr<RBX::Flag> RBX::Creatable<RBX::Instance>::create<RBX:
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
 template struct boost::detail::function::function_obj_invoker0<boost::_bi::bind_t<double, boost::_mfi::cmf0<double, RBX::Workspace>, boost::_bi::list1<boost::_bi::value<const RBX::Workspace*> > >, double>;
+
+// Batch 51: the two sibling invokers of the same WorkspaceStatsItem constructor 005a5c90, identified by the typeids
+// their managers compare (boost::function vtables {manager, invoker}):
+//   005a19e0 (vtable 008338d8 {005a11c0, 005a19e0}, typeid 0094b730
+//     `bind_t<double, double (*)(Profiling::CodeProfiler*), list1<value<Profiling::CodeProfiler*> > >`): the "FPS"
+//     child item, donor Workspace.cpp `boost::bind(&getFPS, workspace->profileWorkspaceStep.get())` (bound at 005a5d87
+//     with Workspace +0x428 and the free function 005a02e0). Body: forward the bound pointer, tail-jump the function.
+//   005a23d0 (vtable 008338f8 {005a12e0, 005a23d0}, typeid 0094b940
+//     `bind_t<int, cmf1<int, World, IWorldStage::MetricType>, list2<value<const World*>, value<MetricType> > >`): the
+//     "CtctStageCtcts" .. "MaxTreeDepth" items, `boost::bind(&World::getMetric, world, IWorldStage::...)` (function0<int>
+//     constructor 005a2f50, called at 005a60e9 / 005a613b / 005a618d / 005a61df).
+#include "util/Profiling.h"
+template struct boost::detail::function::function_obj_invoker0<boost::_bi::bind_t<double, double (*)(RBX::Profiling::CodeProfiler*), boost::_bi::list1<boost::_bi::value<RBX::Profiling::CodeProfiler*> > >, double>;
+template struct boost::detail::function::function_obj_invoker0<boost::_bi::bind_t<int, boost::_mfi::cmf1<int, RBX::World, RBX::IWorldStage::MetricType>, boost::_bi::list2<boost::_bi::value<const RBX::World*>, boost::_bi::value<RBX::IWorldStage::MetricType> > >, int>;

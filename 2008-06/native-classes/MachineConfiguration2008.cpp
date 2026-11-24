@@ -43,8 +43,8 @@ namespace
 
 void nativeInitializeCallbacks()
 {
-	CString url = applicationBaseUrl() + "/Game/MachineConfiguration.ashx";
-	std::string urlText(url);
+	// 0044cbd3: the CString temporaries (base url at +0x3c, the sum at +0x38) die right after urlText is built.
+	std::string urlText(applicationBaseUrl() + "/Game/MachineConfiguration.ashx");
 	std::string response;
 	try
 	{

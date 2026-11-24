@@ -1,13 +1,97 @@
 // from server: 100% by auto
-// roc 2010-06 0081af00  unit: CPropertyGridItemBrickColor  size: 18 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 0081af00
-//
-// 0081af00  c7017c2fa600         mov dword ptr [ecx], 0xa62f7c
-// 0081af06  c741201c2fa600       mov dword ptr [ecx + 0x20], 0xa62f1c
-// 0081af0d  e9befeffff           jmp 0x81add0
-// library xtp-13.2.1/Source\CommandBars\XTPControlButton.cpp (function ??1CXTPControlButton@@UAE@XZ)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-13.2.1 Source/CommandBars/XTPControlButton.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPControlButton.cpp : implementation of the CXTPControlButton class.
+//
+// This file is a part of the XTREME COMMANDBARS MFC class library.
+// (c)1998-2009 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "XTPControlButton.h"
+#include "XTPCommandBar.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTPControlButton
+
+IMPLEMENT_XTP_CONTROL(CXTPControlButton, CXTPControl)
+
+CXTPControlButton::CXTPControlButton()
+{
+	EnableAutomation();
+
+	m_controlType = xtpControlButton;
+}
+
+CXTPControlButton::~CXTPControlButton()
+{
+}
+
+void CXTPControlButton::OnLButtonUp(CPoint /*point*/)
+{
+	if (GetEnabled() && (m_pParent->GetType() == xtpBarTypePopup || m_pParent->GetPosition() == xtpBarPopup))
+	{
+		OnExecute();
+	}
+}
+
+void CXTPControlButton::OnClick(BOOL bKeyboard, CPoint pt)
+{
+	if (!GetEnabled()) return;
+
+	if (IsCustomizeMode())
+	{
+		m_pParent->SetPopuped(-1);
+		m_pParent->SetSelected(-1);
+		CustomizeStartDrag(pt);
+		return;
+	}
+
+	if (!bKeyboard)
+	{
+		if (m_pParent->GetType() != xtpBarTypePopup)
+			ClickToolBarButton();
+	}
+	else
+	{
+		OnExecute();
+	}
+}
+
+void CXTPControlButton::Copy(CXTPControl* pControl, BOOL bRecursive)
+{
+	ASSERT(DYNAMIC_DOWNCAST(CXTPControlButton, pControl));
+
+	CXTPControl::Copy(pControl, bRecursive);
+}
+
+
+
+
+
+

@@ -10,10 +10,10 @@
 // Unit profile: document-swap flags, /fp:fast and /U_RELEASEASSERT (the unit profile of the ModelInstance unit).
 // Codegen analog: bodies follow the donor tools/rbxgs script/Script.cpp; the recorder proves each against the bytes
 // and every call / data target.
+#include "util/NativeContentProvider.h"   // the 2008 service class (the 2007 util/ContentProvider.h singleton was 0x88 B)   // first: later headers include the 2007 file
 #include "script/Script.h"
 #include "script/ScriptContext.h"
 #include "v8tree/Service.h"
-#include "util/ContentProvider.h"
 #include "boost/thread/once.hpp"
 
 namespace RBX
@@ -136,13 +136,31 @@ void Script::onServiceProvider(const ServiceProvider* oldProvider, const Service
 		requestCode();	// prefetch the script source when entering a provider
 }
 
+// INFERRED: ContentProvider::requestContentString (00562730, registry placeholder func_00562730, exact) is not declared
+// in util/NativeContentProvider.h yet; called through its address name until the header declares it.
+extern "C" boost::shared_ptr<const std::string>* __fastcall fn_00562730(RBX::ContentProvider* self, int unusedEdx,
+    boost::shared_ptr<const std::string>* result, const RBX::ContentId& id);
+
 // 00586b10: NOT exact (see the receipt)
 boost::shared_ptr<const std::string> Script::requestCode()
 {
     if (scriptId.isNull())
         return embeddedSource;
     else
-        return ContentProvider::singleton().requestContentString(scriptId);
+    {
+        // 00586b10: the context's ContentProvider service (ServiceProvider::create<ContentProvider> 00465210), then
+        // requestContentString 00562730 (thiscall, result by hidden pointer, ret 8); no singleton in 2008.
+        if (ContentProvider* provider = ServiceProvider::create<ContentProvider>(this))
+        {
+            typedef boost::shared_ptr<const std::string> Code;
+            union { char raw[sizeof(Code)]; double align; } slot;
+            fn_00562730(provider, 0, reinterpret_cast<Code*>(slot.raw), scriptId);
+            Code code = *reinterpret_cast<Code*>(slot.raw);
+            reinterpret_cast<Code*>(slot.raw)->~Code();
+            return code;
+        }
+        return boost::shared_ptr<const std::string>();
+    }
 }
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).

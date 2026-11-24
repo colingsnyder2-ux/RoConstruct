@@ -1,48 +1,309 @@
 // from server: 100% by auto
-// roc 2009-12 00564d40  unit: CXTPRichRender::XTextHost  size: 95 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 00564d40
-//
-// 00564d40  8b442408             mov eax, dword ptr [esp + 8]
-// 00564d44  53                   push ebx
-// 00564d45  56                   push esi
-// 00564d46  57                   push edi
-// 00564d47  8bd9                 mov ebx, ecx
-// 00564d49  8b33                 mov esi, dword ptr [ebx]
-// 00564d4b  33ff                 xor edi, edi
-// 00564d4d  85c0                 test eax, eax
-// 00564d4f  7646                 jbe 0x564d97
-// 00564d51  55                   push ebp
-// 00564d52  8b6c2420             mov ebp, dword ptr [esp + 0x20]
-// 00564d56  89442418             mov dword ptr [esp + 0x18], eax
-// 00564d5a  8d9b00000000         lea ebx, [ebx]
-// 00564d60  8b4c2414             mov ecx, dword ptr [esp + 0x14]
-// 00564d64  e8f79dfcff           call 0x52eb60
-// 00564d69  84c0                 test al, al
-// 00564d6b  7505                 jne 0x564d72
-// 00564d6d  8b7608               mov esi, dword ptr [esi + 8]
-// 00564d70  eb03                 jmp 0x564d75
-// 00564d72  8b760c               mov esi, dword ptr [esi + 0xc]
-// 00564d75  837e0800             cmp dword ptr [esi + 8], 0
-// 00564d79  7514                 jne 0x564d8f
-// 00564d7b  837e0c00             cmp dword ptr [esi + 0xc], 0
-// 00564d7f  750e                 jne 0x564d8f
-// 00564d81  3b7c241c             cmp edi, dword ptr [esp + 0x1c]
-// 00564d85  7305                 jae 0x564d8c
-// 00564d87  8a06                 mov al, byte ptr [esi]
-// 00564d89  88042f               mov byte ptr [edi + ebp], al
-// 00564d8c  8b33                 mov esi, dword ptr [ebx]
-// 00564d8e  47                   inc edi
-// 00564d8f  836c241801           sub dword ptr [esp + 0x18], 1
-// 00564d94  75ca                 jne 0x564d60
-// 00564d96  5d                   pop ebp
-// 00564d97  8bc7                 mov eax, edi
-// 00564d99  5f                   pop edi
-// 00564d9a  5e                   pop esi
-// 00564d9b  5b                   pop ebx
-// 00564d9c  c21000               ret 0x10
-// library raknet-4.081/DS_HuffmanEncodingTree.cpp (function ?DecodeArray@HuffmanEncodingTree@RakNet@@QAEIPAVBitStream@2@IIPAE@Z)
-
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: raknet-4.081 DS_HuffmanEncodingTree.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+ *  Copyright (c) 2014, Oculus VR, Inc.
+ *  All rights reserved.
+ *
+ *  This source code is licensed under the BSD-style license found in the
+ *  LICENSE file in the root directory of this source tree. An additional grant 
+ *  of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+#include "DS_HuffmanEncodingTree.h"
+#include "DS_Queue.h"
+#include "BitStream.h"
+#include "RakAssert.h" 
+
+#ifdef _MSC_VER
+#pragma warning( push )
+#endif
+
+using namespace RakNet;
+
+HuffmanEncodingTree::HuffmanEncodingTree()
+{
+	root = 0;
+}
+
+HuffmanEncodingTree::~HuffmanEncodingTree()
+{
+	FreeMemory();
+}
+
+void HuffmanEncodingTree::FreeMemory( void )
+{
+	if ( root == 0 )
+		return ;
+
+	// Use an in-order traversal to delete the tree
+	DataStructures::Queue<HuffmanEncodingTreeNode *> nodeQueue;
+
+	HuffmanEncodingTreeNode *node;
+
+	nodeQueue.Push( root, _FILE_AND_LINE_  );
+
+	while ( nodeQueue.Size() > 0 )
+	{
+		node = nodeQueue.Pop();
+
+		if ( node->left )
+			nodeQueue.Push( node->left, _FILE_AND_LINE_  );
+
+		if ( node->right )
+			nodeQueue.Push( node->right, _FILE_AND_LINE_  );
+
+		RakNet::OP_DELETE(node, _FILE_AND_LINE_);
+	}
+
+	// Delete the encoding table
+	for ( int i = 0; i < 256; i++ )
+		rakFree_Ex(encodingTable[ i ].encoding, _FILE_AND_LINE_ );
+
+	root = 0;
+}
+
+
+////#include <stdio.h>
+
+// Given a frequency table of 256 elements, all with a frequency of 1 or more, generate the tree
+void HuffmanEncodingTree::GenerateFromFrequencyTable( unsigned int frequencyTable[ 256 ] )
+{
+	int counter;
+	HuffmanEncodingTreeNode * node;
+	HuffmanEncodingTreeNode *leafList[ 256 ]; // Keep a copy of the pointers to all the leaves so we can generate the encryption table bottom-up, which is easier
+	// 1.  Make 256 trees each with a weight equal to the frequency of the corresponding character
+	DataStructures::LinkedList<HuffmanEncodingTreeNode *> huffmanEncodingTreeNodeList;
+
+	FreeMemory();
+
+	for ( counter = 0; counter < 256; counter++ )
+	{
+		node = RakNet::OP_NEW<HuffmanEncodingTreeNode>( _FILE_AND_LINE_ );
+		node->left = 0;
+		node->right = 0;
+		node->value = (unsigned char) counter;
+		node->weight = frequencyTable[ counter ];
+
+		if ( node->weight == 0 )
+			node->weight = 1; // 0 weights are illegal
+
+		leafList[ counter ] = node; // Used later to generate the encryption table
+
+		InsertNodeIntoSortedList( node, &huffmanEncodingTreeNodeList ); // Insert and maintain sort order.
+	}
+
+
+	// 2.  While there is more than one tree, take the two smallest trees and merge them so that the two trees are the left and right
+	// children of a new node, where the new node has the weight the sum of the weight of the left and right child nodes.
+#ifdef _MSC_VER
+#pragma warning( disable : 4127 ) // warning C4127: conditional expression is constant
+#endif
+	while ( 1 )
+	{
+		huffmanEncodingTreeNodeList.Beginning();
+		HuffmanEncodingTreeNode *lesser, *greater;
+		lesser = huffmanEncodingTreeNodeList.Pop();
+		greater = huffmanEncodingTreeNodeList.Pop();
+		node = RakNet::OP_NEW<HuffmanEncodingTreeNode>( _FILE_AND_LINE_ );
+		node->left = lesser;
+		node->right = greater;
+		node->weight = lesser->weight + greater->weight;
+		lesser->parent = node;  // This is done to make generating the encryption table easier
+		greater->parent = node;  // This is done to make generating the encryption table easier
+
+		if ( huffmanEncodingTreeNodeList.Size() == 0 )
+		{
+			// 3. Assign the one remaining node in the list to the root node.
+			root = node;
+			root->parent = 0;
+			break;
+		}
+
+		// Put the new node back into the list at the correct spot to maintain the sort.  Linear search time
+		InsertNodeIntoSortedList( node, &huffmanEncodingTreeNodeList );
+	}
+
+	bool tempPath[ 256 ]; // Maximum path length is 256
+	unsigned short tempPathLength;
+	HuffmanEncodingTreeNode *currentNode;
+	RakNet::BitStream bitStream;
+
+	// Generate the encryption table. From before, we have an array of pointers to all the leaves which contain pointers to their parents.
+	// This can be done more efficiently but this isn't bad and it's way easier to program and debug
+
+	for ( counter = 0; counter < 256; counter++ )
+	{
+		// Already done at the end of the loop and before it!
+		tempPathLength = 0;
+
+		// Set the current node at the leaf
+		currentNode = leafList[ counter ];
+
+		do
+		{
+			if ( currentNode->parent->left == currentNode )   // We're storing the paths in reverse order.since we are going from the leaf to the root
+				tempPath[ tempPathLength++ ] = false;
+			else
+				tempPath[ tempPathLength++ ] = true;
+
+			currentNode = currentNode->parent;
+		}
+
+		while ( currentNode != root );
+
+		// Write to the bitstream in the reverse order that we stored the path, which gives us the correct order from the root to the leaf
+		while ( tempPathLength-- > 0 )
+		{
+			if ( tempPath[ tempPathLength ] )   // Write 1's and 0's because writing a bool will write the BitStream TYPE_CHECKING validation bits if that is defined along with the actual data bit, which is not what we want
+				bitStream.Write1();
+			else
+				bitStream.Write0();
+		}
+
+		// Read data from the bitstream, which is written to the encoding table in bits and bitlength. Note this function allocates the encodingTable[counter].encoding pointer
+		encodingTable[ counter ].bitLength = ( unsigned char ) bitStream.CopyData( &encodingTable[ counter ].encoding );
+
+		// Reset the bitstream for the next iteration
+		bitStream.Reset();
+	}
+}
+
+// Pass an array of bytes to array and a preallocated BitStream to receive the output
+void HuffmanEncodingTree::EncodeArray( unsigned char *input, size_t sizeInBytes, RakNet::BitStream * output )
+{		
+	unsigned counter;
+
+	// For each input byte, Write out the corresponding series of 1's and 0's that give the encoded representation
+	for ( counter = 0; counter < sizeInBytes; counter++ )
+	{
+		output->WriteBits( encodingTable[ input[ counter ] ].encoding, encodingTable[ input[ counter ] ].bitLength, false ); // Data is left aligned
+	}
+
+	// Byte align the output so the unassigned remaining bits don't equate to some actual value
+	if ( output->GetNumberOfBitsUsed() % 8 != 0 )
+	{
+		// Find an input that is longer than the remaining bits.  Write out part of it to pad the output to be byte aligned.
+		unsigned char remainingBits = (unsigned char) ( 8 - ( output->GetNumberOfBitsUsed() % 8 ) );
+
+		for ( counter = 0; counter < 256; counter++ )
+			if ( encodingTable[ counter ].bitLength > remainingBits )
+			{
+				output->WriteBits( encodingTable[ counter ].encoding, remainingBits, false ); // Data is left aligned
+				break;
+			}
+
+#ifdef _DEBUG
+			RakAssert( counter != 256 );  // Given 256 elements, we should always be able to find an input that would be >= 7 bits
+
+#endif
+
+	}
+}
+
+unsigned HuffmanEncodingTree::DecodeArray( RakNet::BitStream * input, BitSize_t sizeInBits, size_t maxCharsToWrite, unsigned char *output )
+{
+	HuffmanEncodingTreeNode * currentNode;
+
+	unsigned outputWriteIndex;
+	outputWriteIndex = 0;
+	currentNode = root;
+
+	// For each bit, go left if it is a 0 and right if it is a 1.  When we reach a leaf, that gives us the desired value and we restart from the root
+
+	for ( unsigned counter = 0; counter < sizeInBits; counter++ )
+	{
+		if ( input->ReadBit() == false )   // left!
+			currentNode = currentNode->left;
+		else
+			currentNode = currentNode->right;
+
+		if ( currentNode->left == 0 && currentNode->right == 0 )   // Leaf
+		{
+
+			if ( outputWriteIndex < maxCharsToWrite )
+				output[ outputWriteIndex ] = currentNode->value;
+
+			outputWriteIndex++;
+
+			currentNode = root;
+		}
+	}
+
+	return outputWriteIndex;
+}
+
+// Pass an array of encoded bytes to array and a preallocated BitStream to receive the output
+void HuffmanEncodingTree::DecodeArray( unsigned char *input, BitSize_t sizeInBits, RakNet::BitStream * output )
+{
+	HuffmanEncodingTreeNode * currentNode;
+
+	if ( sizeInBits <= 0 )
+		return ;
+
+	RakNet::BitStream bitStream( input, BITS_TO_BYTES(sizeInBits), false );
+
+	currentNode = root;
+
+	// For each bit, go left if it is a 0 and right if it is a 1.  When we reach a leaf, that gives us the desired value and we restart from the root
+	for ( unsigned counter = 0; counter < sizeInBits; counter++ )
+	{
+		if ( bitStream.ReadBit() == false )   // left!
+			currentNode = currentNode->left;
+		else
+			currentNode = currentNode->right;
+
+		if ( currentNode->left == 0 && currentNode->right == 0 )   // Leaf
+		{
+			output->WriteBits( &( currentNode->value ), sizeof( char ) * 8, true ); // Use WriteBits instead of Write(char) because we want to avoid TYPE_CHECKING
+			currentNode = root;
+		}
+	}
+}
+
+// Insertion sort.  Slow but easy to write in this case
+void HuffmanEncodingTree::InsertNodeIntoSortedList( HuffmanEncodingTreeNode * node, DataStructures::LinkedList<HuffmanEncodingTreeNode *> *huffmanEncodingTreeNodeList ) const
+{
+	if ( huffmanEncodingTreeNodeList->Size() == 0 )
+	{
+		huffmanEncodingTreeNodeList->Insert( node );
+		return ;
+	}
+
+	huffmanEncodingTreeNodeList->Beginning();
+
+	unsigned counter = 0;
+#ifdef _MSC_VER
+#pragma warning( disable : 4127 ) // warning C4127: conditional expression is constant
+#endif
+	while ( 1 )
+	{
+		if ( huffmanEncodingTreeNodeList->Peek()->weight < node->weight )
+			++( *huffmanEncodingTreeNodeList );
+		else
+		{
+			huffmanEncodingTreeNodeList->Insert( node );
+			break;
+		}
+
+		// Didn't find a spot in the middle - add to the end
+		if ( ++counter == huffmanEncodingTreeNodeList->Size() )
+		{
+			huffmanEncodingTreeNodeList->End();
+
+			huffmanEncodingTreeNodeList->Add( node )
+
+				; // Add to the end
+			break;
+		}
+	}
+}
+
+#ifdef _MSC_VER
+#pragma warning( pop )
+#endif

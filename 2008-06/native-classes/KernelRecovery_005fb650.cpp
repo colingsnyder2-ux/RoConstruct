@@ -1,4 +1,4 @@
-// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native RBX::Kernel (draft; lease: family:class_RBX_Kernel).
 // Two functions: 005fb650 (rtti-ctor-dtor, 178 bytes) and 005fb3f0 (stepWorld, 502 bytes).
 // stepWorld is slot 2 of the vftable (own-vft tier): tests a fourth bool argument first
@@ -41,6 +41,20 @@ Kernel::Kernel(IStage* upstream)
 {
     ++numKernels;
 }
+
+#ifdef KERNEL_HEADER_DECLARES_SOLVERITERATIONS
+// 005fadd0 (35 B, thiscall; registry placeholder func_005fadd0). Name from the 'solverIterations' stat key
+// (string 0082feb4) that DataModel 00575d90 pushes right before calling World::getKernel 005e9150 and this
+// function; the neighbouring keys feed matrixSize 005faa90, numBodies 005faa20 and numPoints 005faa30.
+// Body: 6 * bodies.num (KernelData +0x4) + connectors.num (+0x28) + 4, fild, fsqrt twice, _ftol2, + 1.
+// The inline fsqrt pair needs /fp:fast on this unit (without it cl emits two __CIsqrt calls, 41 B); measured
+// IDENTICAL (35 B, relocs masked) in a scratch copy with the declaration added, like KernelStep.cpp's flags.
+// Pending: v8kernel/Kernel2008.h needs `int solverIterations() const;   // 005fadd0` (header proposal).
+int Kernel::solverIterations() const
+{
+    return (int)sqrt(sqrt((double)(6 * kernelData->bodies.size() + kernelData->connectors.size() + 4))) + 1;
+}
+#endif
 
 // 005fb3f0 (stepWorld, 502 bytes, vftable-slot (own-vft tier)):
 // Virtual slot 2: void stepWorld(int worldStepId, int uiStepId, bool throttling, bool moveBodiesTest)

@@ -1,138 +1,457 @@
 // from server: 100% by auto
-// roc 2010-06 00893b10  unit: CXTPRichRender  size: 343 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 00893b10
-//
-// 00893b10  83ec30               sub esp, 0x30
-// 00893b13  53                   push ebx
-// 00893b14  8bd9                 mov ebx, ecx
-// 00893b16  8b4b24               mov ecx, dword ptr [ebx + 0x24]
-// 00893b19  55                   push ebp
-// 00893b1a  33ed                 xor ebp, ebp
-// 00893b1c  3bcd                 cmp ecx, ebp
-// 00893b1e  7511                 jne 0x893b31
-// 00893b20  8b44243c             mov eax, dword ptr [esp + 0x3c]
-// 00893b24  8928                 mov dword ptr [eax], ebp
-// 00893b26  896804               mov dword ptr [eax + 4], ebp
-// 00893b29  5d                   pop ebp
-// 00893b2a  5b                   pop ebx
-// 00893b2b  83c430               add esp, 0x30
-// 00893b2e  c20c00               ret 0xc
-// 00893b31  56                   push esi
-// 00893b32  8d542414             lea edx, [esp + 0x14]
-// 00893b36  52                   push edx
-// 00893b37  6800000400           push 0x40000
-// 00893b3c  896c241c             mov dword ptr [esp + 0x1c], ebp
-// 00893b40  8b01                 mov eax, dword ptr [ecx]
-// 00893b42  8b400c               mov eax, dword ptr [eax + 0xc]
-// 00893b45  55                   push ebp
-// 00893b46  6845040000           push 0x445
-// 00893b4b  ffd0                 call eax
-// 00893b4d  8b442448             mov eax, dword ptr [esp + 0x48]
-// 00893b51  33f6                 xor esi, esi
-// 00893b53  03c0                 add eax, eax
-// 00893b55  89ab28010000         mov dword ptr [ebx + 0x128], ebp
-// 00893b5b  89ab24010000         mov dword ptr [ebx + 0x124], ebp
-// 00893b61  89742410             mov dword ptr [esp + 0x10], esi
-// 00893b65  896c240c             mov dword ptr [esp + 0xc], ebp
-// 00893b69  89442448             mov dword ptr [esp + 0x48], eax
-// 00893b6d  896c241c             mov dword ptr [esp + 0x1c], ebp
-// 00893b71  896c2420             mov dword ptr [esp + 0x20], ebp
-// 00893b75  896c2424             mov dword ptr [esp + 0x24], ebp
-// 00893b79  896c2428             mov dword ptr [esp + 0x28], ebp
-// 00893b7d  57                   push edi
-// 00893b7e  8bff                 mov edi, edi
-// 00893b80  8b7b24               mov edi, dword ptr [ebx + 0x24]
-// 00893b83  55                   push ebp
-// 00893b84  55                   push ebp
-// 00893b85  03c6                 add eax, esi
-// 00893b87  55                   push ebp
-// 00893b88  99                   cdq 
-// 00893b89  8d4c242c             lea ecx, [esp + 0x2c]
-// 00893b8d  51                   push ecx
-// 00893b8e  8b4c2458             mov ecx, dword ptr [esp + 0x58]
-// 00893b92  2bc2                 sub eax, edx
-// 00893b94  55                   push ebp
-// 00893b95  8d542444             lea edx, [esp + 0x44]
-// 00893b99  8bf0                 mov esi, eax
-// 00893b9b  52                   push edx
-// 00893b9c  d1fe                 sar esi, 1
-// 00893b9e  55                   push ebp
-// 00893b9f  896c244c             mov dword ptr [esp + 0x4c], ebp
-// 00893ba3  896c2450             mov dword ptr [esp + 0x50], ebp
-// 00893ba7  89742454             mov dword ptr [esp + 0x54], esi
-// 00893bab  c744245801000000     mov dword ptr [esp + 0x58], 1
-// 00893bb3  e828a0f1ff           call 0x7adbe0
-// 00893bb8  50                   push eax
-// 00893bb9  8b07                 mov eax, dword ptr [edi]
-// 00893bbb  8b4010               mov eax, dword ptr [eax + 0x10]
-// 00893bbe  33ed                 xor ebp, ebp
-// 00893bc0  55                   push ebp
-// 00893bc1  55                   push ebp
-// 00893bc2  55                   push ebp
-// 00893bc3  6a01                 push 1
-// 00893bc5  8bcf                 mov ecx, edi
-// 00893bc7  ffd0                 call eax
-// 00893bc9  8b4c2410             mov ecx, dword ptr [esp + 0x10]
-// 00893bcd  3bcd                 cmp ecx, ebp
-// 00893bcf  750a                 jne 0x893bdb
-// 00893bd1  8b8b28010000         mov ecx, dword ptr [ebx + 0x128]
-// 00893bd7  894c2410             mov dword ptr [esp + 0x10], ecx
-// 00893bdb  398b28010000         cmp dword ptr [ebx + 0x128], ecx
-// 00893be1  7e0b                 jle 0x893bee
-// 00893be3  8b44244c             mov eax, dword ptr [esp + 0x4c]
-// 00893be7  46                   inc esi
-// 00893be8  89742414             mov dword ptr [esp + 0x14], esi
-// 00893bec  eb0b                 jmp 0x893bf9
-// 00893bee  8d46ff               lea eax, [esi - 1]
-// 00893bf1  8b742414             mov esi, dword ptr [esp + 0x14]
-// 00893bf5  8944244c             mov dword ptr [esp + 0x4c], eax
-// 00893bf9  3bf0                 cmp esi, eax
-// 00893bfb  7c83                 jl 0x893b80
-// 00893bfd  398b28010000         cmp dword ptr [ebx + 0x128], ecx
-// 00893c03  5f                   pop edi
-// 00893c04  7e43                 jle 0x893c49
-// 00893c06  40                   inc eax
-// 00893c07  89442434             mov dword ptr [esp + 0x34], eax
-// 00893c0b  8b442444             mov eax, dword ptr [esp + 0x44]
-// 00893c0f  896c242c             mov dword ptr [esp + 0x2c], ebp
-// 00893c13  896c2430             mov dword ptr [esp + 0x30], ebp
-// 00893c17  c744243801000000     mov dword ptr [esp + 0x38], 1
-// 00893c1f  3bc5                 cmp eax, ebp
-// 00893c21  7504                 jne 0x893c27
-// 00893c23  33c0                 xor eax, eax
-// 00893c25  eb03                 jmp 0x893c2a
-// 00893c27  8b4004               mov eax, dword ptr [eax + 4]
-// 00893c2a  8b4b24               mov ecx, dword ptr [ebx + 0x24]
-// 00893c2d  8b11                 mov edx, dword ptr [ecx]
-// 00893c2f  55                   push ebp
-// 00893c30  55                   push ebp
-// 00893c31  55                   push ebp
-// 00893c32  8d742428             lea esi, [esp + 0x28]
-// 00893c36  56                   push esi
-// 00893c37  55                   push ebp
-// 00893c38  8d742440             lea esi, [esp + 0x40]
-// 00893c3c  56                   push esi
-// 00893c3d  55                   push ebp
-// 00893c3e  50                   push eax
-// 00893c3f  8b4210               mov eax, dword ptr [edx + 0x10]
-// 00893c42  55                   push ebp
-// 00893c43  55                   push ebp
-// 00893c44  55                   push ebp
-// 00893c45  6a01                 push 1
-// 00893c47  ffd0                 call eax
-// 00893c49  8b8b24010000         mov ecx, dword ptr [ebx + 0x124]
-// 00893c4f  8b442440             mov eax, dword ptr [esp + 0x40]
-// 00893c53  8b9328010000         mov edx, dword ptr [ebx + 0x128]
-// 00893c59  5e                   pop esi
-// 00893c5a  5d                   pop ebp
-// 00893c5b  8908                 mov dword ptr [eax], ecx
-// 00893c5d  895004               mov dword ptr [eax + 4], edx
-// 00893c60  5b                   pop ebx
-// 00893c61  83c430               add esp, 0x30
-// 00893c64  c20c00               ret 0xc
-// library xtp-13.2.1/Source\Common\XTPRichRender.cpp (function ?GetTextExtent@CXTPRichRender@@QAE?AVCSize@@PAVCDC@@H@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-13.2.1 Source/Common/XTPRichRender.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPRichRender.cpp: implementation of the CXTPRichRender class.
+//
+// This file is a part of the XTREME TOOLKIT PRO MFC class library.
+// (c)1998-2009 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+
+#include "XTPVC80Helpers.h"
+#include "XTPRichRender.h"
+#include "XTPResourceManager.h"
+
+const IID IID_XTPITextServices =
+{
+	0x8d33f740, 0xcf58, 0x11ce, {0xa8, 0x9d, 0x00, 0xaa, 0x00, 0x6c, 0xad, 0xc5}
+};
+
+const IID IID_XTPITextHost =
+{
+	0xc5bdd8d0, 0xd26e, 0x11ce, {0xa8, 0x9e, 0x00, 0xaa, 0x00, 0x6c, 0xad, 0xc5}
+};
+
+CXTPRichRender::CXTPRichRender()
+{
+	NONCLIENTMETRICS ncm;
+	::ZeroMemory(&ncm, sizeof(ncm));
+	ncm.cbSize = sizeof(ncm);
+	::SystemParametersInfo(SPI_GETNONCLIENTMETRICS, sizeof(ncm), &ncm, 0);
+
+	HDC hDC = ::GetDC(NULL);
+
+	::ZeroMemory(&m_charformat, sizeof(m_charformat));
+	m_charformat.cbSize = sizeof(m_charformat);
+	m_charformat.dwMask = CFM_BOLD | CFM_CHARSET | CFM_COLOR  |CFM_FACE | CFM_ITALIC |
+		CFM_SIZE | CFM_STRIKEOUT | CFM_UNDERLINE;
+	m_charformat.yHeight = -MulDiv(ncm.lfMessageFont.lfHeight, 1440, ::GetDeviceCaps(hDC, LOGPIXELSY));
+	m_charformat.crTextColor = ::GetSysColor(COLOR_BTNTEXT);
+	m_charformat.bPitchAndFamily = DEFAULT_PITCH | FF_DONTCARE;
+	WCSNCPY_S(m_charformat.szFaceName, LF_FACESIZE, XTP_CT2CW(ncm.lfMessageFont.lfFaceName), LF_FACESIZE);
+
+	::ReleaseDC(NULL,hDC);
+
+	::ZeroMemory(&m_paraformat, sizeof(m_paraformat));
+	m_paraformat.cbSize = sizeof(m_paraformat);
+	m_paraformat.dwMask = PFM_ALIGNMENT | PFM_NUMBERING | PFM_OFFSET | PFM_OFFSETINDENT |
+		PFM_RIGHTINDENT | PFM_RTLPARA | PFM_STARTINDENT | PFM_TABSTOPS;
+	m_paraformat.wAlignment = PFA_LEFT;
+
+	m_pTextService = NULL;
+
+	m_hModule = LoadLibraryA("RICHED20.dll");
+	if (!m_hModule)
+		return;
+
+	// Get an interface to the windowless rich edit control
+	IUnknown* pUnknown = NULL;
+	PCreateTextServices lpCreateTextServices = (PCreateTextServices)GetProcAddress(m_hModule, "CreateTextServices");
+	HRESULT hr = lpCreateTextServices(NULL, &m_xTextHost, &pUnknown);
+
+	if (SUCCEEDED(hr))
+	{
+		pUnknown->QueryInterface(IID_XTPITextServices, (void**)&m_pTextService);
+		pUnknown->Release();
+	}
+}
+
+CXTPRichRender::~CXTPRichRender()
+{
+	if (m_hModule)
+	{
+		FreeLibrary(m_hModule);
+	}
+}
+
+void CXTPRichRender::SetDefaultCharFormat(CHARFORMATW* pcf)
+{
+	if (!pcf)
+		return;
+
+	m_charformat = *pcf;
+
+	if (m_pTextService)
+	{
+		LRESULT lResult = 0;
+		m_pTextService->TxSendMessage(EM_SETCHARFORMAT, 0, (LPARAM)pcf, &lResult);
+	}
+}
+
+DWORD CALLBACK CXTPRichRender::RichTextCtrlCallbackIn(DWORD_PTR dwCookie, LPBYTE pbBuff, LONG cb, LONG* pcb)
+{
+	CFile* pFile = (CFile*) dwCookie;
+	*pcb = pFile->Read(pbBuff, cb);
+	return 0;
+}
+
+LRESULT CXTPRichRender::SetText(LPCTSTR lpszText)
+{
+	if (!m_pTextService)
+		return 0;
+
+	if (lpszText == 0 || lpszText[0] == 0)
+	{
+		m_pTextService->TxSetText(L"");
+		return 0;
+	}
+
+	LRESULT nResult = 0;
+
+	EDITSTREAM es;
+	es.pfnCallback = &CXTPRichRender::RichTextCtrlCallbackIn;
+
+	if (lpszText[0] == _T('{'))
+	{
+	#ifdef _UNICODE
+		CXTPResourceManager::CXTPW2A _lpa(lpszText);
+		LPSTR lpBuffer = (LPSTR)(LPCSTR)_lpa;
+	#else
+		LPSTR lpBuffer = (LPSTR)lpszText;
+	#endif
+
+		CMemFile cFile((BYTE*)lpBuffer, (UINT)strlen(lpBuffer));
+		es.dwCookie = (DWORD_PTR)&cFile;
+
+		m_pTextService->TxSendMessage(EM_STREAMIN, SF_RTF, (LPARAM)&es, &nResult);
+		if (nResult > 0)
+		{
+			return nResult;
+		}
+	}
+
+	CMemFile cFile((BYTE*)lpszText, (UINT)_tcslen(lpszText) * sizeof(TCHAR));
+	es.dwCookie = (DWORD_PTR)&cFile;
+
+	m_pTextService->TxSendMessage(EM_STREAMIN, SF_TEXT | (sizeof(TCHAR) > 1 ? SF_UNICODE : 0), (LPARAM)&es, &nResult);
+
+	return nResult;
+}
+
+
+CSize CXTPRichRender::GetTextExtent(CDC* pDC, int nMaxWidth)
+{
+	if (!m_pTextService)
+		return CSize(0);
+
+	LRESULT lResult = 0;
+
+	m_pTextService->TxSendMessage(EM_SETEVENTMASK, 0, ENM_REQUESTRESIZE, &lResult);
+	m_sizeEditMin.cx = m_sizeEditMin.cy = 0;
+
+	// Performing the binary search for the best dimension
+	int cxFirst = 0;
+	int cxLast = nMaxWidth;
+	int cyMin = 0;
+
+	cxLast *= 2;    // cos the first thing we do it divide it by two
+	RECT rcUpdate = {0, 0, 0, 0};
+	do
+	{
+		// Taking a guess
+		int cx = (cxFirst + cxLast) / 2;
+
+		// Testing this guess
+		RECTL rc = {0, 0, cx, 1};
+
+		m_pTextService->TxDraw(DVASPECT_CONTENT, 0, NULL, NULL, pDC->GetSafeHdc(), 0,
+			&rc, NULL, &rcUpdate, NULL, 0, 0);
+
+		// If it's the first time, take the result anyway.
+		// This is the minimum height the control needs
+		if (cyMin == 0)
+			cyMin = m_sizeEditMin.cy;
+
+		// Iterating
+		if (m_sizeEditMin.cy > cyMin)
+		{
+			// If the control required a larger height, then
+			// it's too narrow.
+			cxFirst = cx + 1;
+		}
+		else
+		{
+			// If the control didn't required a larger height,
+			// then it's too wide.
+			cxLast = cx - 1;
+		}
+	}
+	while (cxFirst < cxLast);
+
+	if (m_sizeEditMin.cy > cyMin)
+	{
+		RECTL rc = {0, 0, cxLast + 1, 1};
+		m_pTextService->TxDraw(DVASPECT_CONTENT, 0, NULL, NULL, pDC->GetSafeHdc(), 0,
+			&rc, NULL, &rcUpdate, NULL, 0, 0);
+	}
+
+	return m_sizeEditMin;
+}
+
+void CXTPRichRender::DrawText(CDC* pDC, LPCRECT lpRect)
+{
+	if (!m_pTextService)
+		return;
+
+	m_pTextService->TxDraw(DVASPECT_CONTENT, 0, NULL, NULL, pDC->GetSafeHdc(), 0,
+		(LPCRECTL)lpRect, NULL, NULL, NULL, 0, 0);
+}
+
+BEGIN_INTERFACE_MAP(CXTPRichRender, CCmdTarget)
+	INTERFACE_PART(CXTPRichRender, IID_XTPITextHost, TextHost)
+END_INTERFACE_MAP()
+
+STDMETHODIMP_(ULONG) CXTPRichRender::XTextHost::AddRef()
+{
+	return 1;
+}
+
+STDMETHODIMP_(ULONG) CXTPRichRender::XTextHost::Release()
+{
+	return 1;
+}
+
+STDMETHODIMP CXTPRichRender::XTextHost::QueryInterface(REFIID iid, LPVOID* ppvObj)
+{
+	METHOD_PROLOGUE(CXTPRichRender, TextHost)
+	return (HRESULT)pThis->InternalQueryInterface(&iid, ppvObj);
+}
+
+HDC CXTPRichRender::XTextHost::TxGetDC()
+{
+	return 0;
+}
+
+INT CXTPRichRender::XTextHost::TxReleaseDC(HDC /*hdc*/)
+{
+	return 0;
+}
+
+BOOL CXTPRichRender::XTextHost::TxShowScrollBar(INT /*fnBar*/, BOOL /*fShow*/)
+{
+	return FALSE;
+}
+
+BOOL CXTPRichRender::XTextHost::TxEnableScrollBar(INT /*fuSBFlags*/, INT /*fuArrowflags*/)
+{
+	return FALSE;
+}
+
+BOOL CXTPRichRender::XTextHost::TxSetScrollRange(INT /*fnBar*/, LONG /*nMinPos*/, INT /*nMaxPos*/, BOOL /*fRedraw*/)
+{
+	return FALSE;
+}
+
+BOOL CXTPRichRender::XTextHost::TxSetScrollPos(INT /*fnBar*/, INT /*nPos*/, BOOL /*fRedraw*/)
+{
+	return FALSE;
+}
+
+void CXTPRichRender::XTextHost::TxInvalidateRect(LPCRECT /*prc*/, BOOL /*fMode*/)
+{
+}
+
+void CXTPRichRender::XTextHost::TxViewChange(BOOL /*fUpdate*/)
+{
+}
+
+BOOL CXTPRichRender::XTextHost::TxCreateCaret(HBITMAP /*hbmp*/, INT /*xWidth*/, INT /*yHeight*/)
+{
+	return FALSE;
+}
+
+BOOL CXTPRichRender::XTextHost::TxShowCaret(BOOL /*fShow*/)
+{
+	return FALSE;
+}
+
+BOOL CXTPRichRender::XTextHost::TxSetCaretPos(INT /*x*/, INT /*y*/)
+{
+	return FALSE;
+}
+
+BOOL CXTPRichRender::XTextHost::TxSetTimer(UINT /*idTimer*/, UINT /*uTimeout*/)
+{
+	return FALSE;
+}
+
+void CXTPRichRender::XTextHost::TxKillTimer(UINT /*idTimer*/)
+{
+}
+
+void CXTPRichRender::XTextHost::TxScrollWindowEx(INT /*dx*/, INT /*dy*/, LPCRECT /*lprcScroll*/,
+	LPCRECT /*lprcClip*/, HRGN /*hrgnUpdate*/, LPRECT /*lprcUpdate*/, UINT /*fuScroll*/)
+{
+}
+
+void CXTPRichRender::XTextHost::TxSetCapture(BOOL /*fCapture*/)
+{
+}
+
+void CXTPRichRender::XTextHost::TxSetFocus()
+{
+}
+
+void CXTPRichRender::XTextHost::TxSetCursor(HCURSOR /*hcur*/, BOOL /*fText*/)
+{
+}
+
+BOOL CXTPRichRender::XTextHost::TxScreenToClient(LPPOINT /*lppt*/)
+{
+	return FALSE;
+}
+
+BOOL CXTPRichRender::XTextHost::TxClientToScreen(LPPOINT /*lppt*/)
+{
+	return FALSE;
+}
+
+HRESULT CXTPRichRender::XTextHost::TxActivate(LONG* /*plOldState*/)
+{
+	return E_FAIL;
+}
+
+HRESULT CXTPRichRender::XTextHost::TxDeactivate(LONG /*lNewState*/)
+{
+	return E_FAIL;
+}
+
+HRESULT CXTPRichRender::XTextHost::TxGetClientRect(LPRECT /*prc*/)
+{
+	return E_FAIL;
+}
+
+HRESULT CXTPRichRender::XTextHost::TxGetViewInset(LPRECT prc)
+{
+	*prc = CRect(0,0,0,0);
+	return S_OK;
+}
+
+HRESULT CXTPRichRender::XTextHost::TxGetCharFormat(const CHARFORMATW **ppCF)
+{
+	METHOD_PROLOGUE(CXTPRichRender, TextHost)
+
+	*ppCF = &(pThis->m_charformat);
+	return S_OK;
+}
+
+HRESULT CXTPRichRender::XTextHost::TxGetParaFormat(const PARAFORMAT **ppPF)
+{
+	METHOD_PROLOGUE(CXTPRichRender, TextHost)
+
+	*ppPF = &(pThis->m_paraformat);
+	return S_OK;
+}
+
+COLORREF CXTPRichRender::XTextHost::TxGetSysColor(int nIndex)
+{
+	return ::GetSysColor(nIndex);
+}
+
+HRESULT CXTPRichRender::XTextHost::TxGetBackStyle(TXTBACKSTYLE *pstyle)
+{
+	*pstyle = TXTBACK_TRANSPARENT;
+	return S_OK;
+}
+
+HRESULT CXTPRichRender::XTextHost::TxGetMaxLength(DWORD *plength)
+{
+	*plength = 1024*1024*16;
+	return S_OK;
+}
+
+HRESULT CXTPRichRender::XTextHost::TxGetScrollBars(DWORD *pdwScrollBar)
+{
+	*pdwScrollBar = 0;
+	return S_OK;
+}
+
+HRESULT CXTPRichRender::XTextHost::TxGetPasswordChar(TCHAR* /*pch*/)
+{
+	return S_FALSE;
+}
+
+HRESULT CXTPRichRender::XTextHost::TxGetAcceleratorPos(LONG *pcp)
+{
+	*pcp = -1;
+	return S_OK;
+}
+
+HRESULT CXTPRichRender::XTextHost::TxGetExtent(LPSIZEL /*lpExtent*/)
+{
+	return E_NOTIMPL;
+}
+
+HRESULT CXTPRichRender::XTextHost::OnTxCharFormatChange(const CHARFORMATW * /*pcf*/)
+{
+	return E_FAIL;
+}
+
+HRESULT CXTPRichRender::XTextHost::OnTxParaFormatChange(const PARAFORMAT * /*ppf*/)
+{
+	return E_FAIL;
+}
+
+HRESULT CXTPRichRender::XTextHost::TxGetPropertyBits(DWORD dwMask, DWORD *pdwBits)
+{
+	DWORD bits = TXTBIT_MULTILINE | TXTBIT_RICHTEXT | TXTBIT_WORDWRAP;
+	*pdwBits = bits & dwMask;
+	return S_OK;
+}
+
+HRESULT CXTPRichRender::XTextHost::TxNotify(DWORD iNotify, void* pv)
+{
+	METHOD_PROLOGUE(CXTPRichRender, TextHost)
+	if (iNotify == EN_REQUESTRESIZE)
+	{
+		REQRESIZE* prr = (REQRESIZE*)pv;
+		pThis->m_sizeEditMin.cx = prr->rc.right - prr->rc.left;
+		pThis->m_sizeEditMin.cy = prr->rc.bottom - prr->rc.top;
+	}
+
+	return S_OK;
+}
+
+XTP_HIMC CXTPRichRender::XTextHost::TxImmGetContext()
+{
+	return 0;
+}
+
+void CXTPRichRender::XTextHost::TxImmReleaseContext(XTP_HIMC /*himc*/)
+{
+}
+
+HRESULT CXTPRichRender::XTextHost::TxGetSelectionBarWidth(LONG* lSelBarWidth)
+{
+	*lSelBarWidth = 0;
+	return S_OK;
+}

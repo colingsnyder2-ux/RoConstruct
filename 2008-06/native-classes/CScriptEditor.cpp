@@ -10,6 +10,18 @@
 #include <sstream>
 
 namespace RBX {
+#ifdef REFLECTION_CONSTPROPERTY_CTOR_UNASSERTED
+	// INFERRED: marshal 00465110 copies the 8-byte PropertyChanged argument inline, loading both dwords before
+	// `sub esp, 8` (00465121..00465128). v8tree/PropertyChanged.h and reflection/property.h only declare these copy
+	// constructors, so they are defined unit-locally (pattern of AppUnit460_2008MarshaledEventData.cpp). The copy goes
+	// through a temporary Property(descriptor, instance), as PropertyChanged's own private ctor does. Batch 50 scratch
+	// measurement (stand-in Scintilla headers): IDENTICAL 77 B only when ConstProperty(const PropertyDescriptor&,
+	// const DescribedBase*) carries no RBXASSERT; with the header's assert it is 136 B. Guarded until the
+	// reflection/property.h owner publishes that constructor without the assert and defines this macro.
+	inline Reflection::Property::Property(const Property& other) : ConstProperty(other) {}
+	inline PropertyChanged::PropertyChanged(const PropertyChanged& other)
+		: property(Reflection::Property(other.property.getDescriptor(), other.property.getInstance())) {}
+#endif
 }
 
 // Posted by setScript 00465260 and dispatched by the message map entry at 0081b648+0x1b0.
@@ -162,6 +174,10 @@ void CScriptEditor::setScript(boost::shared_ptr<RBX::Script> value)
 // Parked (header): the original copies the 8-byte PropertyChanged argument inline (two dword stores,
 // 00465126 and 00465128); v8tree/PropertyChanged.h declares an out-of-line copy constructor, so this unit
 // calls it. No original address exists for ??0PropertyChanged@RBX@@QAE@ABV01@@Z.
+// Batch 50 (scratch compiles, stand-in Scintilla headers): inline member-wise copy -> 47 B (both branches merge);
+// copy through a temporary Property(desc, inst) -> 136 B (RBXASSERT isMemberOf); temporary Property(copy) -> 47 B
+// (elided). The temporary Property(desc, inst) form without the ConstProperty RBXASSERT is IDENTICAL (77 B): see the
+// REFLECTION_CONSTPROPERTY_CTOR_UNASSERTED block at the top of this file.
 void CScriptEditor::marshal(const RBX::Instance* source, RBX::PropertyChanged event) throw()
 {
     if (&event.getDescriptor() == &RBX::Script::prop_EmbeddedSourceCode)

@@ -1,34 +1,296 @@
 // from server: 100% by auto
-// roc 2009-12 0045a940  unit: CRobloxDoc  size: 89 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0045a940
-//
-// 0045a940  6aff                 push -1
-// 0045a942  683a7c9200           push 0x927c3a
-// 0045a947  64a100000000         mov eax, dword ptr fs:[0]
-// 0045a94d  50                   push eax
-// 0045a94e  64892500000000       mov dword ptr fs:[0], esp
-// 0045a955  51                   push ecx
-// 0045a956  68a0000000           push 0xa0
-// 0045a95b  e8008f3900           call 0x7f3860
-// 0045a960  83c404               add esp, 4
-// 0045a963  890424               mov dword ptr [esp], eax
-// 0045a966  c744240c00000000     mov dword ptr [esp + 0xc], 0
-// 0045a96e  85c0                 test eax, eax
-// 0045a970  7416                 je 0x45a988
-// 0045a972  8bc8                 mov ecx, eax
-// 0045a974  e807e7ffff           call 0x459080
-// 0045a979  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 0045a97d  64890d00000000       mov dword ptr fs:[0], ecx
-// 0045a984  83c410               add esp, 0x10
-// 0045a987  c3                   ret 
-// 0045a988  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 0045a98c  33c0                 xor eax, eax
-// 0045a98e  64890d00000000       mov dword ptr fs:[0], ecx
-// 0045a995  83c410               add esp, 0x10
-// 0045a998  c3                   ret 
-// library raknet-4.081/LogCommandParser.cpp (function ??$OP_NEW@VLogCommandParser@RakNet@@@RakNet@@YAPAVLogCommandParser@0@PBDI@Z)
-
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: raknet-4.081 LogCommandParser.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+ *  Copyright (c) 2014, Oculus VR, Inc.
+ *  All rights reserved.
+ *
+ *  This source code is licensed under the BSD-style license found in the
+ *  LICENSE file in the root directory of this source tree. An additional grant 
+ *  of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+#include "NativeFeatureIncludes.h"
+#if _RAKNET_SUPPORT_LogCommandParser==1
+
+#include "LogCommandParser.h"
+#include "TransportInterface.h"
+
+#include <memory.h>
+
+#include <stdio.h>
+#include <string.h>
+#include <stdarg.h>
+
+#include "LinuxStrings.h"
+
+#ifdef _MSC_VER
+#pragma warning( push )
+#endif
+
+using namespace RakNet;
+
+STATIC_FACTORY_DEFINITIONS(LogCommandParser,LogCommandParser);
+
+LogCommandParser::LogCommandParser()
+{
+	RegisterCommand(CommandParserInterface::VARIABLE_NUMBER_OF_PARAMETERS,"Subscribe","[<ChannelName>] - Subscribes to a named channel, or all channels");
+	RegisterCommand(CommandParserInterface::VARIABLE_NUMBER_OF_PARAMETERS,"Unsubscribe","[<ChannelName>] - Unsubscribes from a named channel, or all channels");
+	memset(channelNames,0,sizeof(channelNames));
+}
+LogCommandParser::~LogCommandParser()
+{
+}
+bool LogCommandParser::OnCommand(const char *command, unsigned numParameters, char **parameterList, TransportInterface *transport, const SystemAddress &systemAddress, const char *originalString)
+{
+	(void) originalString;
+
+	if (strcmp(command, "Subscribe")==0)
+	{
+		unsigned channelIndex;
+		if (numParameters==0)
+		{
+			Subscribe(systemAddress, 0);
+			transport->Send(systemAddress, "Subscribed to all channels.\r\n");
+		}
+		else if (numParameters==1)
+		{
+			if ((channelIndex=Subscribe(systemAddress, parameterList[0]))!=(unsigned)-1)
+			{
+				transport->Send(systemAddress, "You are now subscribed to channel %s.\r\n", channelNames[channelIndex]);
+			}
+			else
+			{
+				transport->Send(systemAddress, "Cannot find channel %s.\r\n", parameterList[0]);
+				PrintChannels(systemAddress, transport);
+			}
+		}
+		else
+		{
+			transport->Send(systemAddress, "Subscribe takes either 0 or 1 parameters.\r\n");
+		}
+	}
+	else if (strcmp(command, "Unsubscribe")==0)
+	{
+		unsigned channelIndex;
+		if (numParameters==0)
+		{
+			Unsubscribe(systemAddress, 0);
+			transport->Send(systemAddress, "Unsubscribed from all channels.\r\n");
+		}
+		else if (numParameters==1)
+		{
+			if ((channelIndex=Unsubscribe(systemAddress, parameterList[0]))!=(unsigned)-1)
+			{
+				transport->Send(systemAddress, "You are now unsubscribed from channel %s.\r\n", channelNames[channelIndex]);
+			}
+			else
+			{
+				transport->Send(systemAddress, "Cannot find channel %s.\r\n", parameterList[0]);
+				PrintChannels(systemAddress, transport);
+			}
+		}
+		else
+		{
+			transport->Send(systemAddress, "Unsubscribe takes either 0 or 1 parameters.\r\n");
+		}
+	}
+
+	return true;
+}
+const char *LogCommandParser::GetName(void) const
+{
+	return "Logger";
+}
+void LogCommandParser::SendHelp(TransportInterface *transport, const SystemAddress &systemAddress)
+{
+	transport->Send(systemAddress, "The logger will accept user log data via the Log(...) function.\r\n");
+	transport->Send(systemAddress, "Each log is associated with a named channel.\r\n");
+	transport->Send(systemAddress, "You can subscribe to or unsubscribe from named channels.\r\n");
+	PrintChannels(systemAddress, transport);
+}
+void LogCommandParser::AddChannel(const char *channelName)
+{
+	unsigned channelIndex=0;
+	channelIndex = GetChannelIndexFromName(channelName);
+	// Each channel can only be added once.
+	RakAssert(channelIndex==(unsigned)-1);
+
+	unsigned i;
+	for (i=0; i < 32; i++)
+	{
+		if (channelNames[i]==0)
+		{
+			// Assuming a persistent static string.
+			channelNames[i]=channelName;
+			return;
+		}
+	}
+
+	// No more available channels - max 32 with this implementation where I save subscribed channels with bit operations
+	RakAssert(0);
+}
+void LogCommandParser::WriteLog(const char *channelName, const char *format, ...)
+{
+	if (channelName==0 || format==0)
+		return;
+
+	unsigned channelIndex;
+	channelIndex = GetChannelIndexFromName(channelName);
+	if (channelIndex==(unsigned)-1)
+	{
+		AddChannel(channelName);
+	}
+
+	char text[REMOTE_MAX_TEXT_INPUT];
+	va_list ap;
+	va_start(ap, format);
+	_vsnprintf(text, REMOTE_MAX_TEXT_INPUT, format, ap);
+	va_end(ap);
+	text[REMOTE_MAX_TEXT_INPUT-1]=0;
+
+	// Make sure that text ends in \r\n
+	int textLen;
+	textLen=(int)strlen(text);
+	if (textLen==0)
+		return;
+	if (text[textLen-1]=='\n')
+	{
+		text[textLen-1]=0;
+	}
+	if (textLen < REMOTE_MAX_TEXT_INPUT-4)
+		strcat(text, "\r\n");
+	else
+	{
+		text[textLen-3]='\r';
+		text[textLen-2]='\n';
+		text[textLen-1]=0;
+	}
+
+	// For each user that subscribes to this channel, send to them.
+	unsigned i;
+	for (i=0; i < remoteUsers.Size(); i++)
+	{
+		if (remoteUsers[i].channels & (1 << channelIndex))
+		{
+			trans->Send(remoteUsers[i].systemAddress, text);
+		}
+	}
+}
+void LogCommandParser::PrintChannels(const SystemAddress &systemAddress, TransportInterface *transport) const
+{
+	unsigned i;
+	bool anyChannels=false;
+	transport->Send(systemAddress, "CHANNELS:\r\n");
+	for (i=0; i < 32; i++)
+	{
+		if (channelNames[i])
+		{
+			transport->Send(systemAddress, "%i. %s\r\n", i+1,channelNames[i]);
+			anyChannels=true;
+		}
+	}
+	if (anyChannels==false)
+		transport->Send(systemAddress, "None.\r\n");
+}
+void LogCommandParser::OnNewIncomingConnection(const SystemAddress &systemAddress, TransportInterface *transport)
+{
+	(void) systemAddress;
+	(void) transport;
+}
+void LogCommandParser::OnConnectionLost(const SystemAddress &systemAddress, TransportInterface *transport)
+{
+	(void) transport;
+	Unsubscribe(systemAddress, 0);
+}
+unsigned LogCommandParser::Unsubscribe(const SystemAddress &systemAddress, const char *channelName)
+{
+	unsigned i;
+	for (i=0; i < remoteUsers.Size(); i++)
+	{
+		if (remoteUsers[i].systemAddress==systemAddress)
+		{
+			if (channelName==0)
+			{
+				// Unsubscribe from all and delete this user.
+				remoteUsers[i]=remoteUsers[remoteUsers.Size()-1];
+				remoteUsers.RemoveFromEnd();
+				return 0;
+			}
+			else
+			{
+				unsigned channelIndex;
+				channelIndex = GetChannelIndexFromName(channelName);
+				if (channelIndex!=(unsigned)-1)
+				{
+					remoteUsers[i].channels&=0xFFFF ^ (1<<channelIndex); // Unset this bit
+				}
+				return channelIndex;
+			}
+		}
+	}
+	return (unsigned)-1;
+}
+unsigned LogCommandParser::Subscribe(const SystemAddress &systemAddress, const char *channelName)
+{
+	unsigned i;
+	unsigned channelIndex=(unsigned)-1;
+	if (channelName)
+	{
+		channelIndex = GetChannelIndexFromName(channelName);
+		if (channelIndex==(unsigned)-1)
+			return channelIndex;
+	}
+
+	for (i=0; i < remoteUsers.Size(); i++)
+	{
+		if (remoteUsers[i].systemAddress==systemAddress)
+		{
+			if (channelName)
+				remoteUsers[i].channels|=1<<channelIndex; // Set this bit for an existing user
+			else
+				remoteUsers[i].channels=0xFFFF;
+			return channelIndex;
+		}
+	}
+
+	// Make a new user
+	SystemAddressAndChannel newUser;
+	newUser.systemAddress = systemAddress;
+	if (channelName)
+		newUser.channels=1<<channelIndex;
+	else
+		newUser.channels=0xFFFF;
+	remoteUsers.Insert(newUser, _FILE_AND_LINE_);
+	return channelIndex;
+}
+unsigned LogCommandParser::GetChannelIndexFromName(const char *channelName)
+{
+	unsigned i;
+	for (i=0; i < 32; i++)
+	{
+		if (channelNames[i]==0)
+			return (unsigned) -1;
+
+		if (_stricmp(channelNames[i], channelName)==0)
+			return i;
+	}
+	return (unsigned)-1;
+}
+
+void LogCommandParser::OnTransportChange(TransportInterface *transport)
+{
+	// I don't want users to have to pass TransportInterface *transport to Log.
+	trans=transport;
+}
+
+#ifdef _MSC_VER
+#pragma warning( pop )
+#endif
+
+#endif // _RAKNET_SUPPORT_*

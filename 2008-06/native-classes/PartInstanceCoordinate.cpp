@@ -48,6 +48,32 @@ void PartInstance::setTranslationUi(const G3D::Vector3& value)
         if (world) world->createJoints(&primitive);
     }
 }
+// Body getters through the embedded primitive's body (+0x2c8), each an updatePV 00599360 call then a field
+// address/value of the 2008 Body (Body2008.h: mass +0x8c, pv +0x94; pv.position.translation +0xb8, pv.velocity
+// linear +0xc4 / rotational +0xd0). Identities: 00599830 is the getter of prop_PositionUi (static init 007f4390
+// stores it), 00599850 / 00599870 the getters of prop_Velocity / prop_RotVelocity (007f43f0 / 007f4450); 00598cc0
+// is the float() BoundFuncDesc target of the static init 007f4530 (descriptor 0x976288; openrbx PartInstance
+// "GetMass" -> getMass). Registry placeholders func_00599830/50/70, func_00598cc0.
+// 00598cc0
+float PartInstance::getMass()
+{
+    return primitive.getBody()->getMass();
+}
+// 00599830
+const G3D::Vector3& PartInstance::getTranslationUi() const
+{
+    return primitive.getBody()->getPos();
+}
+// 00599850
+const G3D::Vector3& PartInstance::getLinearVelocity() const
+{
+    return primitive.getBody()->getVelocity().linear;
+}
+// 00599870
+const G3D::Vector3& PartInstance::getRotationalVelocity() const
+{
+    return primitive.getBody()->getVelocity().rotational;
+}
 // 0059da10 (registry func_0059da10): openrbx PartInstance::setLinearVelocity; body +0x2c8 (embedded primitive's
 // body), updatePV 00599360, Body::setVelocity 00614040, raisePropertyChanged(prop_Velocity 0x97632c).
 void PartInstance::setLinearVelocity(const G3D::Vector3& set)

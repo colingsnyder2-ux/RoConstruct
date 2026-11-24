@@ -1,109 +1,280 @@
-// roc 2012-06 005c79c0  unit: RakNet::RakPeer  size: 275 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 005c79c0
-//
-// 005c79c0  53                   push ebx
-// 005c79c1  55                   push ebp
-// 005c79c2  8b6c2414             mov ebp, dword ptr [esp + 0x14]
-// 005c79c6  837d00ff             cmp dword ptr [ebp], -1
-// 005c79ca  56                   push esi
-// 005c79cb  57                   push edi
-// 005c79cc  8b7c2414             mov edi, dword ptr [esp + 0x14]
-// 005c79d0  8d7708               lea esi, [edi + 8]
-// 005c79d3  8d9f34060000         lea ebx, [edi + 0x634]
-// 005c79d9  7d0d                 jge 0x5c79e8
-// 005c79db  6805110000           push 0x1105
-// 005c79e0  e89bffffff           call 0x5c7980
-// 005c79e5  83c404               add esp, 4
-// 005c79e8  8b4c2418             mov ecx, dword ptr [esp + 0x18]
-// 005c79ec  c745006f020000       mov dword ptr [ebp], 0x26f
-// 005c79f3  8d4704               lea eax, [edi + 4]
-// 005c79f6  8901                 mov dword ptr [ecx], eax
-// 005c79f8  8b0f                 mov ecx, dword ptr [edi]
-// 005c79fa  8b00                 mov eax, dword ptr [eax]
-// 005c79fc  8bd3                 mov edx, ebx
-// 005c79fe  bde3000000           mov ebp, 0xe3
-// 005c7a03  2bd6                 sub edx, esi
-// 005c7a05  8bd8                 mov ebx, eax
-// 005c7a07  33d9                 xor ebx, ecx
-// 005c7a09  81e3feffff7f         and ebx, 0x7ffffffe
-// 005c7a0f  33d9                 xor ebx, ecx
-// 005c7a11  8bc8                 mov ecx, eax
-// 005c7a13  80e101               and cl, 1
-// 005c7a16  0fb6c9               movzx ecx, cl
-// 005c7a19  d1eb                 shr ebx, 1
-// 005c7a1b  f7d9                 neg ecx
-// 005c7a1d  1bc9                 sbb ecx, ecx
-// 005c7a1f  81e1dfb00899         and ecx, 0x9908b0df
-// 005c7a25  33d9                 xor ebx, ecx
-// 005c7a27  331c32               xor ebx, dword ptr [edx + esi]
-// 005c7a2a  8bc8                 mov ecx, eax
-// 005c7a2c  891f                 mov dword ptr [edi], ebx
-// 005c7a2e  8b06                 mov eax, dword ptr [esi]
-// 005c7a30  83c704               add edi, 4
-// 005c7a33  83c604               add esi, 4
-// 005c7a36  83ed01               sub ebp, 1
-// 005c7a39  75ca                 jne 0x5c7a05
-// 005c7a3b  8b5c2414             mov ebx, dword ptr [esp + 0x14]
-// 005c7a3f  bd8c010000           mov ebp, 0x18c
-// 005c7a44  8bd0                 mov edx, eax
-// 005c7a46  33d1                 xor edx, ecx
-// 005c7a48  81e2feffff7f         and edx, 0x7ffffffe
-// 005c7a4e  33d1                 xor edx, ecx
-// 005c7a50  8bc8                 mov ecx, eax
-// 005c7a52  80e101               and cl, 1
-// 005c7a55  0fb6c9               movzx ecx, cl
-// 005c7a58  d1ea                 shr edx, 1
-// 005c7a5a  f7d9                 neg ecx
-// 005c7a5c  1bc9                 sbb ecx, ecx
-// 005c7a5e  81e1dfb00899         and ecx, 0x9908b0df
-// 005c7a64  33d1                 xor edx, ecx
-// 005c7a66  3313                 xor edx, dword ptr [ebx]
-// 005c7a68  8bc8                 mov ecx, eax
-// 005c7a6a  8917                 mov dword ptr [edi], edx
-// 005c7a6c  8b06                 mov eax, dword ptr [esi]
-// 005c7a6e  83c704               add edi, 4
-// 005c7a71  83c304               add ebx, 4
-// 005c7a74  83c604               add esi, 4
-// 005c7a77  83ed01               sub ebp, 1
-// 005c7a7a  75c8                 jne 0x5c7a44
-// 005c7a7c  8b542414             mov edx, dword ptr [esp + 0x14]
-// 005c7a80  8b12                 mov edx, dword ptr [edx]
-// 005c7a82  8bc2                 mov eax, edx
-// 005c7a84  33c1                 xor eax, ecx
-// 005c7a86  25feffff7f           and eax, 0x7ffffffe
-// 005c7a8b  33c1                 xor eax, ecx
-// 005c7a8d  8bca                 mov ecx, edx
-// 005c7a8f  80e101               and cl, 1
-// 005c7a92  d1e8                 shr eax, 1
-// 005c7a94  0fb6c9               movzx ecx, cl
-// 005c7a97  f7d9                 neg ecx
-// 005c7a99  1bc9                 sbb ecx, ecx
-// 005c7a9b  81e1dfb00899         and ecx, 0x9908b0df
-// 005c7aa1  33c1                 xor eax, ecx
-// 005c7aa3  3303                 xor eax, dword ptr [ebx]
-// 005c7aa5  8907                 mov dword ptr [edi], eax
-// 005c7aa7  8bc2                 mov eax, edx
-// 005c7aa9  c1e80b               shr eax, 0xb
-// 005c7aac  33d0                 xor edx, eax
-// 005c7aae  8bca                 mov ecx, edx
-// 005c7ab0  81e1ad583aff         and ecx, 0xff3a58ad
-// 005c7ab6  c1e107               shl ecx, 7
-// 005c7ab9  33d1                 xor edx, ecx
-// 005c7abb  8bc2                 mov eax, edx
-// 005c7abd  258cdfffff           and eax, 0xffffdf8c
-// 005c7ac2  c1e00f               shl eax, 0xf
-// 005c7ac5  33d0                 xor edx, eax
-// 005c7ac7  5f                   pop edi
-// 005c7ac8  5e                   pop esi
-// 005c7ac9  8bc2                 mov eax, edx
-// 005c7acb  c1e812               shr eax, 0x12
-// 005c7ace  5d                   pop ebp
-// 005c7acf  33c2                 xor eax, edx
-// 005c7ad1  5b                   pop ebx
-// 005c7ad2  c3                   ret 
-// copied from an identical function in another client (function ?reloadMT@@YAIPAIAAPAIAAH@Z)
-
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: raknet-4.081 Rand.cpp
+
+// Candidate translation unit (score above; library headers required).
+/**
+*
+* Grabbed by Kevin from http://www.math.keio.ac.jp/~matumoto/cokus.c
+* This is the ``Mersenne Twister'' random number generator MT19937, which
+* generates pseudorandom integers uniformly distributed in 0..(2^32 - 1)
+* starting from any odd seed in 0..(2^32 - 1).  This version is a recode
+* by Shawn Cokus (Cokus@math.washington.edu) on March 8, 1998 of a version by
+* Takuji Nishimura (who had suggestions from Topher Cooper and Marc Rieffel in
+* July-August 1997).
+*
+* Effectiveness of the recoding (on Goedel2.math.washington.edu, a DEC Alpha
+* running OSF/1) using GCC -O3 as a compiler: before recoding: 51.6 sec. to
+* generate 300 million random numbers; after recoding: 24.0 sec. for the same
+* (i.e., 46.5% of original time), so speed is now about 12.5 million random
+* number generations per second on this machine.
+*
+* According to the URL <http://www.math.keio.ac.jp/~matumoto/emt.html>
+* (and paraphrasing a bit in places), the Mersenne Twister is ``designed
+* with consideration of the flaws of various existing generators,'' has
+* a period of 2^19937 - 1, gives a sequence that is 623-dimensionally
+* equidistributed, and ``has passed many stringent tests, including the
+* die-hard test of G. Marsaglia and the load test of P. Hellekalek and
+* S. Wegenkittl.''  It is efficient in memory usage (typically using 2506
+* to 5012 bytes of static data, depending on data type sizes, and the code
+* is quite short as well).  It generates random numbers in batches of 624
+* at a time, so the caching and pipelining of modern systems is exploited.
+* It is also divide- and mod-free.
+*
+* Licensing is free http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/elicense.html
+*
+* The code as Shawn received it included the following notice:
+*
+*   Copyright (C) 1997 Makoto Matsumoto and Takuji Nishimura. When
+*   you use this, send an e-mail to <matumoto@math.keio.ac.jp> with
+*   an appropriate reference to your work.
+*
+* It would be nice to CC: <Cokus@math.washington.edu> when you write.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "Rand.h"
+
+//
+// uint32 must be an unsigned integer type capable of holding at least 32
+// bits; exactly 32 should be fastest, but 64 is better on an Alpha with
+// GCC at -O3 optimization so try your options and see what's best for you
+//
+
+//typedef unsigned int uint32;
+
+#define N        (624)       // length of state vector
+#define M        (397)       // a period parameter
+#define K        (0x9908B0DFU)      // a magic constant
+#define hiBit(u)       ((u) & 0x80000000U)   // mask all but highest   bit of u
+#define loBit(u)       ((u) & 0x00000001U)   // mask all but lowest    bit of u
+#define loBits(u)      ((u) & 0x7FFFFFFFU)   // mask  the highest   bit of u
+#define mixBits(u, v)  (hiBit(u)|loBits(v))  // move hi bit of u to hi bit of v
+
+static unsigned int _state[ N + 1 ];     // state vector + 1 extra to not violate ANSI C
+static unsigned int *_next;        // next random value is computed from here
+static int _left = -1; // can *next++ this many times before reloading
+
+using namespace RakNet;
+
+void seedMT( unsigned int seed, unsigned int *state, unsigned int *&next, int &left );
+unsigned int reloadMT( unsigned int *state, unsigned int *&next, int &left );
+unsigned int randomMT( unsigned int *state, unsigned int *&next, int &left );
+void fillBufferMT( void *buffer, unsigned int bytes, unsigned int *state, unsigned int *&next, int &left );
+float frandomMT( unsigned int *state, unsigned int *&next, int &left );
+
+// Uses global vars
+void seedMT( unsigned int seed )
+{
+	seedMT(seed, _state, _next, _left);
+}
+unsigned int reloadMT( void )
+{
+	return reloadMT(_state, _next, _left);
+}
+unsigned int randomMT( void )
+{
+	return randomMT(_state, _next, _left);
+}
+float frandomMT( void )
+{
+	return frandomMT(_state, _next, _left);
+}
+void fillBufferMT( void *buffer, unsigned int bytes )
+{
+	fillBufferMT(buffer, bytes, _state, _next, _left);
+}
+
+void seedMT( unsigned int seed, unsigned int *state, unsigned int *&next, int &left )   // Defined in cokus_c.c
+{
+	(void) next;
+
+	//
+	// We initialize state[0..(N-1)] via the generator
+	//
+	//  x_new = (69069 * x_old) mod 2^32
+	//
+	// from Line 15 of Table 1, p. 106, Sec. 3.3.4 of Knuth's
+	// _The Art of Computer Programming_, Volume 2, 3rd ed.
+	//
+	// Notes (SJC): I do not know what the initial state requirements
+	// of the Mersenne Twister are, but it seems this seeding generator
+	// could be better.  It achieves the maximum period for its modulus
+	// (2^30) iff x_initial is odd (p. 20-21, Sec. 3.2.1.2, Knuth); if
+	// x_initial can be even, you have sequences like 0, 0, 0, ...;
+	// 2^31, 2^31, 2^31, ...; 2^30, 2^30, 2^30, ...; 2^29, 2^29 + 2^31,
+	// 2^29, 2^29 + 2^31, ..., etc. so I force seed to be odd below.
+	//
+	// Even if x_initial is odd, if x_initial is 1 mod 4 then
+	//
+	//  the   lowest bit of x is always 1,
+	//  the  next-to-lowest bit of x is always 0,
+	//  the 2nd-from-lowest bit of x alternates   ... 0 1 0 1 0 1 0 1 ... ,
+	//  the 3rd-from-lowest bit of x 4-cycles   ... 0 1 1 0 0 1 1 0 ... ,
+	//  the 4th-from-lowest bit of x has the 8-cycle ... 0 0 0 1 1 1 1 0 ... ,
+	//   ...
+	//
+	// and if x_initial is 3 mod 4 then
+	//
+	//  the   lowest bit of x is always 1,
+	//  the  next-to-lowest bit of x is always 1,
+	//  the 2nd-from-lowest bit of x alternates   ... 0 1 0 1 0 1 0 1 ... ,
+	//  the 3rd-from-lowest bit of x 4-cycles   ... 0 0 1 1 0 0 1 1 ... ,
+	//  the 4th-from-lowest bit of x has the 8-cycle ... 0 0 1 1 1 1 0 0 ... ,
+	//   ...
+	//
+	// The generator's potency (min. s>=0 with (69069-1)^s = 0 mod 2^32) is
+	// 16, which seems to be alright by p. 25, Sec. 3.2.1.3 of Knuth.  It
+	// also does well in the dimension 2..5 spectral tests, but it could be
+	// better in dimension 6 (Line 15, Table 1, p. 106, Sec. 3.3.4, Knuth).
+	//
+	// Note that the random number user does not see the values generated
+	// here directly since reloadMT() will always munge them first, so maybe
+	// none of all of this matters.  In fact, the seed values made here could
+	// even be extra-special desirable if the Mersenne Twister theory says
+	// so-- that's why the only change I made is to restrict to odd seeds.
+	//
+
+	register unsigned int x = ( seed | 1U ) & 0xFFFFFFFFU, *s = state;
+	register int j;
+
+	for ( left = 0, *s++ = x, j = N; --j;
+		*s++ = ( x *= 69069U ) & 0xFFFFFFFFU )
+
+		;
+}
+
+
+unsigned int reloadMT( unsigned int *state, unsigned int *&next, int &left )
+{
+	register unsigned int * p0 = state, *p2 = state + 2, *pM = state + M, s0, s1;
+	register int j;
+
+	if ( left < -1 )
+		seedMT( 4357U );
+
+	left = N - 1, next = state + 1;
+
+	for ( s0 = state[ 0 ], s1 = state[ 1 ], j = N - M + 1; --j; s0 = s1, s1 = *p2++ )
+		* p0++ = *pM++ ^ ( mixBits( s0, s1 ) >> 1 ) ^ ( loBit( s1 ) ? K : 0U );
+
+	for ( pM = state, j = M; --j; s0 = s1, s1 = *p2++ )
+		* p0++ = *pM++ ^ ( mixBits( s0, s1 ) >> 1 ) ^ ( loBit( s1 ) ? K : 0U );
+
+	s1 = state[ 0 ], *p0 = *pM ^ ( mixBits( s0, s1 ) >> 1 ) ^ ( loBit( s1 ) ? K : 0U );
+
+	s1 ^= ( s1 >> 11 );
+
+	s1 ^= ( s1 << 7 ) & 0x9D2C5680U;
+
+	s1 ^= ( s1 << 15 ) & 0xEFC60000U;
+
+	return ( s1 ^ ( s1 >> 18 ) );
+}
+
+
+unsigned int randomMT( unsigned int *state, unsigned int *&next, int &left )
+{
+	unsigned int y;
+
+	if ( --left < 0 )
+		return ( reloadMT(state, next, left) );
+
+	y = *next++;
+
+	y ^= ( y >> 11 );
+
+	y ^= ( y << 7 ) & 0x9D2C5680U;
+
+	y ^= ( y << 15 ) & 0xEFC60000U;
+
+	return ( y ^ ( y >> 18 ) );
+
+	// This change made so the value returned is in the same range as what rand() returns
+	// return(y ^ (y >> 18)) % 32767;
+}
+
+void fillBufferMT( void *buffer, unsigned int bytes, unsigned int *state, unsigned int *&next, int &left )
+{
+	unsigned int offset=0;
+	unsigned int r;
+	while (bytes-offset>=sizeof(r))
+	{
+		r = randomMT(state, next, left);
+		memcpy((char*)buffer+offset, &r, sizeof(r));
+		offset+=sizeof(r);
+	}
+
+	r = randomMT(state, next, left);
+	memcpy((char*)buffer+offset, &r, bytes-offset);
+}
+
+float frandomMT( unsigned int *state, unsigned int *&next, int &left )
+{
+	return ( float ) ( ( double ) randomMT(state, next, left) / 4294967296.0 );
+}
+RakNetRandom::RakNetRandom()
+{
+	left=-1;
+}
+RakNetRandom::~RakNetRandom()
+{
+}
+void RakNetRandom::SeedMT( unsigned int seed )
+{
+	printf("%i\n",seed);
+	seedMT(seed, state, next, left);
+}
+
+unsigned int RakNetRandom::ReloadMT( void )
+{
+	return reloadMT(state, next, left);
+}
+
+unsigned int RakNetRandom::RandomMT( void )
+{
+	return randomMT(state, next, left);
+}
+
+float RakNetRandom::FrandomMT( void )
+{
+	return frandomMT(state, next, left);
+}
+
+void RakNetRandom::FillBufferMT( void *buffer, unsigned int bytes )
+{
+	fillBufferMT(buffer, bytes, state, next, left);
+}
+
+/*
+int main(void)
+{
+int j;
+
+// you can seed with any uint32, but the best are odds in 0..(2^32 - 1)
+
+seedMT(4357U);
+
+// print the first 2,002 random numbers seven to a line as an example
+
+for(j=0; j<2002; j++)
+RAKNET_DEBUG_PRINTF(" %10lu%s", (unsigned int) randomMT(), (j%7)==6 ? "\n" : "");
+
+return(EXIT_SUCCESS);
+}
+
+*/
+

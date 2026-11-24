@@ -1,23 +1,97 @@
 // from server: 100% by auto
-// roc 2010-06 0075de40  unit: RBX::MultiJoint  size: 43 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 0075de40
-//
-// 0075de40  56                   push esi
-// 0075de41  8bf1                 mov esi, ecx
-// 0075de43  c706a420a500         mov dword ptr [esi], 0xa520a4
-// 0075de49  c746208420a500       mov dword ptr [esi + 0x20], 0xa52084
-// 0075de50  e81bb4faff           call 0x709270
-// 0075de55  f644240801           test byte ptr [esp + 8], 1
-// 0075de5a  7409                 je 0x75de65
-// 0075de5c  56                   push esi
-// 0075de5d  e8389b0400           call 0x7a799a
-// 0075de62  83c404               add esp, 4
-// 0075de65  8bc6                 mov eax, esi
-// 0075de67  5e                   pop esi
-// 0075de68  c20400               ret 4
-// library xtp-13.2.1/Source\CommandBars\XTPControlButton.cpp (function ??_GCXTPControlButton@@UAEPAXI@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-13.2.1 Source/CommandBars/XTPControlButton.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPControlButton.cpp : implementation of the CXTPControlButton class.
+//
+// This file is a part of the XTREME COMMANDBARS MFC class library.
+// (c)1998-2009 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "XTPControlButton.h"
+#include "XTPCommandBar.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTPControlButton
+
+IMPLEMENT_XTP_CONTROL(CXTPControlButton, CXTPControl)
+
+CXTPControlButton::CXTPControlButton()
+{
+	EnableAutomation();
+
+	m_controlType = xtpControlButton;
+}
+
+CXTPControlButton::~CXTPControlButton()
+{
+}
+
+void CXTPControlButton::OnLButtonUp(CPoint /*point*/)
+{
+	if (GetEnabled() && (m_pParent->GetType() == xtpBarTypePopup || m_pParent->GetPosition() == xtpBarPopup))
+	{
+		OnExecute();
+	}
+}
+
+void CXTPControlButton::OnClick(BOOL bKeyboard, CPoint pt)
+{
+	if (!GetEnabled()) return;
+
+	if (IsCustomizeMode())
+	{
+		m_pParent->SetPopuped(-1);
+		m_pParent->SetSelected(-1);
+		CustomizeStartDrag(pt);
+		return;
+	}
+
+	if (!bKeyboard)
+	{
+		if (m_pParent->GetType() != xtpBarTypePopup)
+			ClickToolBarButton();
+	}
+	else
+	{
+		OnExecute();
+	}
+}
+
+void CXTPControlButton::Copy(CXTPControl* pControl, BOOL bRecursive)
+{
+	ASSERT(DYNAMIC_DOWNCAST(CXTPControlButton, pControl));
+
+	CXTPControl::Copy(pControl, bRecursive);
+}
+
+
+
+
+
+

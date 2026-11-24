@@ -1,66 +1,171 @@
 // from server: 100% by auto
-// roc 2009-12 007d1290  unit: seg_007d0000  size: 127 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 007d1290
-//
-// 007d1290  51                   push ecx
-// 007d1291  57                   push edi
-// 007d1292  85c0                 test eax, eax
-// 007d1294  744f                 je 0x7d12e5
-// 007d1296  8d7810               lea edi, [eax + 0x10]
-// 007d1299  85ff                 test edi, edi
-// 007d129b  7448                 je 0x7d12e5
-// 007d129d  8b400c               mov eax, dword ptr [eax + 0xc]
-// 007d12a0  40                   inc eax
-// 007d12a1  837e1000             cmp dword ptr [esi + 0x10], 0
-// 007d12a5  89442404             mov dword ptr [esp + 4], eax
-// 007d12a9  7561                 jne 0x7d130c
-// 007d12ab  8b4608               mov eax, dword ptr [esi + 8]
-// 007d12ae  8b16                 mov edx, dword ptr [esi]
-// 007d12b0  50                   push eax
-// 007d12b1  8b4604               mov eax, dword ptr [esi + 4]
-// 007d12b4  6a04                 push 4
-// 007d12b6  8d4c240c             lea ecx, [esp + 0xc]
-// 007d12ba  51                   push ecx
-// 007d12bb  52                   push edx
-// 007d12bc  ffd0                 call eax
-// 007d12be  894610               mov dword ptr [esi + 0x10], eax
-// 007d12c1  8b442414             mov eax, dword ptr [esp + 0x14]
-// 007d12c5  83c410               add esp, 0x10
-// 007d12c8  837e1000             cmp dword ptr [esi + 0x10], 0
-// 007d12cc  753e                 jne 0x7d130c
-// 007d12ce  8b4e08               mov ecx, dword ptr [esi + 8]
-// 007d12d1  8b16                 mov edx, dword ptr [esi]
-// 007d12d3  51                   push ecx
-// 007d12d4  50                   push eax
-// 007d12d5  8b4604               mov eax, dword ptr [esi + 4]
-// 007d12d8  57                   push edi
-// 007d12d9  52                   push edx
-// 007d12da  ffd0                 call eax
-// 007d12dc  83c410               add esp, 0x10
-// 007d12df  894610               mov dword ptr [esi + 0x10], eax
-// 007d12e2  5f                   pop edi
-// 007d12e3  59                   pop ecx
-// 007d12e4  c3                   ret 
-// 007d12e5  837e1000             cmp dword ptr [esi + 0x10], 0
-// 007d12e9  c744240400000000     mov dword ptr [esp + 4], 0
-// 007d12f1  7519                 jne 0x7d130c
-// 007d12f3  8b4e08               mov ecx, dword ptr [esi + 8]
-// 007d12f6  8b06                 mov eax, dword ptr [esi]
-// 007d12f8  51                   push ecx
-// 007d12f9  8b4e04               mov ecx, dword ptr [esi + 4]
-// 007d12fc  6a04                 push 4
-// 007d12fe  8d54240c             lea edx, [esp + 0xc]
-// 007d1302  52                   push edx
-// 007d1303  50                   push eax
-// 007d1304  ffd1                 call ecx
-// 007d1306  894610               mov dword ptr [esi + 0x10], eax
-// 007d1309  83c410               add esp, 0x10
-// 007d130c  5f                   pop edi
-// 007d130d  59                   pop ecx
-// 007d130e  c3                   ret 
-// library lua-5.1/ldump.c (function _DumpString)
-
 // roc-lang: c
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /MD
 // roc-lib: lua-5.1 ldump.c
+
+// Candidate translation unit (score above; library headers required).
+/*
+** $Id: ldump.c,v 1.15 2006/02/16 15:53:49 lhf Exp $
+** save precompiled Lua chunks
+** See Copyright Notice in lua.h
+*/
+
+#include <stddef.h>
+
+#define ldump_c
+#define LUA_CORE
+
+#include "lua.h"
+
+#include "lobject.h"
+#include "lstate.h"
+#include "lundump.h"
+
+typedef struct {
+ lua_State* L;
+ lua_Writer writer;
+ void* data;
+ int strip;
+ int status;
+} DumpState;
+
+#define DumpMem(b,n,size,D)	DumpBlock(b,(n)*(size),D)
+#define DumpVar(x,D)	 	DumpMem(&x,1,sizeof(x),D)
+
+static void DumpBlock(const void* b, size_t size, DumpState* D)
+{
+ if (D->status==0)
+ {
+  lua_unlock(D->L);
+  D->status=(*D->writer)(D->L,b,size,D->data);
+  lua_lock(D->L);
+ }
+}
+
+static void DumpChar(int y, DumpState* D)
+{
+ char x=(char)y;
+ DumpVar(x,D);
+}
+
+static void DumpInt(int x, DumpState* D)
+{
+ DumpVar(x,D);
+}
+
+static void DumpNumber(lua_Number x, DumpState* D)
+{
+ DumpVar(x,D);
+}
+
+static void DumpVector(const void* b, int n, size_t size, DumpState* D)
+{
+ DumpInt(n,D);
+ DumpMem(b,n,size,D);
+}
+
+static void DumpString(const TString* s, DumpState* D)
+{
+ if (s==NULL || getstr(s)==NULL)
+ {
+  size_t size=0;
+  DumpVar(size,D);
+ }
+ else
+ {
+  size_t size=s->tsv.len+1;		/* include trailing '\0' */
+  DumpVar(size,D);
+  DumpBlock(getstr(s),size,D);
+ }
+}
+
+#define DumpCode(f,D)	 DumpVector(f->code,f->sizecode,sizeof(Instruction),D)
+
+static void DumpFunction(const Proto* f, const TString* p, DumpState* D);
+
+static void DumpConstants(const Proto* f, DumpState* D)
+{
+ int i,n=f->sizek;
+ DumpInt(n,D);
+ for (i=0; i<n; i++)
+ {
+  const TValue* o=&f->k[i];
+  DumpChar(ttype(o),D);
+  switch (ttype(o))
+  {
+   case LUA_TNIL:
+	break;
+   case LUA_TBOOLEAN:
+	DumpChar(bvalue(o),D);
+	break;
+   case LUA_TNUMBER:
+	DumpNumber(nvalue(o),D);
+	break;
+   case LUA_TSTRING:
+	DumpString(rawtsvalue(o),D);
+	break;
+   default:
+	lua_assert(0);			/* cannot happen */
+	break;
+  }
+ }
+ n=f->sizep;
+ DumpInt(n,D);
+ for (i=0; i<n; i++) DumpFunction(f->p[i],f->source,D);
+}
+
+static void DumpDebug(const Proto* f, DumpState* D)
+{
+ int i,n;
+ n= (D->strip) ? 0 : f->sizelineinfo;
+ DumpVector(f->lineinfo,n,sizeof(int),D);
+ n= (D->strip) ? 0 : f->sizelocvars;
+ DumpInt(n,D);
+ for (i=0; i<n; i++)
+ {
+  DumpString(f->locvars[i].varname,D);
+  DumpInt(f->locvars[i].startpc,D);
+  DumpInt(f->locvars[i].endpc,D);
+ }
+ n= (D->strip) ? 0 : f->sizeupvalues;
+ DumpInt(n,D);
+ for (i=0; i<n; i++) DumpString(f->upvalues[i],D);
+}
+
+static void DumpFunction(const Proto* f, const TString* p, DumpState* D)
+{
+ DumpString((f->source==p || D->strip) ? NULL : f->source,D);
+ DumpInt(f->linedefined,D);
+ DumpInt(f->lastlinedefined,D);
+ DumpChar(f->nups,D);
+ DumpChar(f->numparams,D);
+ DumpChar(f->is_vararg,D);
+ DumpChar(f->maxstacksize,D);
+ DumpCode(f,D);
+ DumpConstants(f,D);
+ DumpDebug(f,D);
+}
+
+static void DumpHeader(DumpState* D)
+{
+ char h[LUAC_HEADERSIZE];
+ luaU_header(h);
+ DumpBlock(h,LUAC_HEADERSIZE,D);
+}
+
+/*
+** dump Lua function as precompiled chunk
+*/
+int luaU_dump (lua_State* L, const Proto* f, lua_Writer w, void* data, int strip)
+{
+ DumpState D;
+ D.L=L;
+ D.writer=w;
+ D.data=data;
+ D.strip=strip;
+ D.status=0;
+ DumpHeader(&D);
+ DumpFunction(f,NULL,&D);
+ return D.status;
+}

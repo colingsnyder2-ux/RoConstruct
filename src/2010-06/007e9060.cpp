@@ -1,13 +1,85 @@
 // from server: 100% by auto
-// roc 2010-06 007e9060  unit: CXTTreeView  size: 18 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 007e9060
-//
-// 007e9060  c70174b4a500         mov dword ptr [ecx], 0xa5b474
-// 007e9066  c74160ecb3a500       mov dword ptr [ecx + 0x60], 0xa5b3ec
-// 007e906d  e9befeffff           jmp 0x7e8f30
-// library xtp-13.2.1/Source\Controls\XTListCtrlView.cpp (function ??1CXTListView@@UAE@XZ)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O1 /GS- /MD
 // roc-lib: xtp-13.2.1 Source/Controls/XTListCtrlView.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTListCtrlView.cpp : implementation of the CXTListView and CXTListCtrl class.
+//
+// This file is a part of the XTREME CONTROLS MFC class library.
+// (c)1998-2009 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "Resource.h"
+
+#include "XTDefines.h"
+#include "XTGlobal.h"
+#include "XTVC50Helpers.h"
+#include "XTHeaderCtrl.h"
+#include "XTListCtrlView.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTListView
+/////////////////////////////////////////////////////////////////////////////
+CXTListView::CXTListView()
+{
+	ImplAttach(&GetListCtrl());
+}
+
+CXTListView::~CXTListView()
+{
+
+}
+
+IMPLEMENT_DYNCREATE(CXTListView, CListView)
+
+BEGIN_MESSAGE_MAP(CXTListView, CListView)
+	//{{AFX_MSG_MAP(CXTListView)
+	ON_LISTCTRL_REFLECT()
+	//}}AFX_MSG_MAP
+END_MESSAGE_MAP()
+
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTListCtrl
+/////////////////////////////////////////////////////////////////////////////
+
+CXTListCtrl::CXTListCtrl()
+{
+	ImplAttach(this);
+}
+
+CXTListCtrl::~CXTListCtrl()
+{
+}
+
+
+IMPLEMENT_DYNAMIC(CXTListCtrl, CListCtrl)
+
+BEGIN_MESSAGE_MAP(CXTListCtrl, CListCtrl)
+	//{{AFX_MSG_MAP(CXTListCtrl)
+	ON_LISTCTRL_REFLECT()
+	//}}AFX_MSG_MAP
+END_MESSAGE_MAP()
