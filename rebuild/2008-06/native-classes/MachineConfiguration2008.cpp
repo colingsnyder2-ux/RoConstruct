@@ -5,6 +5,7 @@
 // "name:value;" for every DebugSettings property of category "Profile" and every CRenderSettings property of category
 // "General"; any std::exception is swallowed. The category compare, writer 0044ac80 and for_each 0044bff0 are the exe's.
 // INFERRED: the exe symbol names (nativeInitializeCallbacks stands in for the real one).
+#undef _RELEASEASSERT // 0044bff0 builds each Property without RBXASSERT(isMemberOf) (as NetworkReplicator2008StatsItem.cpp)
 #include <afxwin.h>
 #include <algorithm>
 #include <sstream>
@@ -15,6 +16,16 @@
 #include "reflection/reflection.h"
 
 CString applicationBaseUrl();
+
+// 0044bff0 (for_each over the property iterator) increments inline (add edi, 4 after the checked-iterator compare):
+// unit-local inline specialization, the HistoryItemState.cpp pattern.
+template<>
+inline RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>::Iterator&
+RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>::Iterator::operator++()
+{
+	++iter;
+	return *this;
+}
 
 namespace
 {
