@@ -1,0 +1,89 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
+#include "CRobloxDHtmlDialog.h"
+#include "util/Http.h"
+#include <exdispid.h>
+IMPLEMENT_DYNAMIC(CRobloxDHtmlDialog, CDHtmlDialog)
+
+BEGIN_EVENTSINK_MAP(CRobloxDHtmlDialog, CDHtmlDialog)
+    ON_EVENT(CRobloxDHtmlDialog, 102, DISPID_BEFORENAVIGATE2, BeforeNavigate2,
+        VTS_DISPATCH VTS_PVARIANT VTS_PVARIANT VTS_PVARIANT VTS_PVARIANT VTS_PVARIANT VTS_PBOOL)
+    ON_EVENT(CRobloxDHtmlDialog, 102, DISPID_WINDOWCLOSING, WindowClosing, VTS_BOOL VTS_PBOOL)
+END_EVENTSINK_MAP()
+
+// Original 0041dcb0; name inferred from its call to Http::trustCheck.
+__declspec(noinline) HRESULT __cdecl checkDialogUrl(const char* url)
+{
+    return RBX::Http::trustCheck(url) ? S_OK : E_FAIL;
+}
+
+// Original 0041dcd0 (?validateWorkspaceSiteUrl@@YAJPB_W@Z; callers CContent::Upload 004166a0, CWorkspace::Insert
+// 0046c920, validateWorkspaceSiteZone 0041dd40): the wide URL converted through a temporary CString (mfc90 #306 ctor,
+// #910 operator const char*, #601 dtor), then the same trustCheck test as checkDialogUrl.
+HRESULT validateWorkspaceSiteUrl(const wchar_t* url)
+{
+    return RBX::Http::trustCheck(CString(url)) ? S_OK : E_FAIL;
+}
+
+// Original 0041dd40 (?validateWorkspaceSiteZone@@YAJPB_WK@Z; callers IObjectSafetyRobloxImpl<CWorkspace,1>::checkSite
+// 00403b60, 00407500): URLZONE_UNTRUSTED (4) is refused outright, every other zone falls back to the URL check.
+HRESULT validateWorkspaceSiteZone(const wchar_t* url, DWORD zone)
+{
+    if (zone == URLZONE_UNTRUSTED)
+        return E_FAIL;
+    return validateWorkspaceSiteUrl(url);
+}
+
+CRobloxDHtmlDialog::CRobloxDHtmlDialog(UINT dialog, UINT html, CWnd* parent)
+    : CDHtmlDialog(dialog, html, parent)
+{
+    m_bUseHtmlTitle = TRUE;
+    SetHostFlags(m_dwHostFlags | 0x01844013);
+}
+
+CRobloxDHtmlDialog::CRobloxDHtmlDialog(UINT dialog, const char* location, CWnd* parent)
+    : CDHtmlDialog(dialog, 0x72, parent), url(location)
+{
+    m_bUseHtmlTitle = TRUE;
+    SetHostFlags(m_dwHostFlags | 0x01844013);
+}
+
+int CRobloxDHtmlDialog::OnInitDialog(void)
+{
+    CDHtmlDialog::OnInitDialog();
+    if (url.length() != 0)
+    {
+        const char* (std::string::*pc)() const = &std::string::c_str;
+        Navigate((url.*pc)(), 0, 0, 0, 0, 0);
+        return 0;
+    }
+    return 1;
+}
+
+BOOL CRobloxDHtmlDialog::IsExternalDispatchSafe()
+{
+    return TRUE;
+}
+
+void CRobloxDHtmlDialog::BeforeNavigate2(LPDISPATCH browser, VARIANT* location,
+    VARIANT*, VARIANT*, VARIANT*, VARIANT*, BOOL* cancel)
+{
+    extern long __cdecl checkDialogUrl(const char*);
+    CString address(location->bstrVal);
+    const char* (ATL::CSimpleStringT<char, 1>::*text)() const = &ATL::CSimpleStringT<char, 1>::operator const char*;
+    if (checkDialogUrl((address.*text)()))
+        *cancel = 1;
+    else
+        OnBeforeNavigate(browser, (address.*text)());
+}
+
+void CRobloxDHtmlDialog::WindowClosing(BOOL, BOOL* cancel)
+{
+    *cancel = -1;
+    CString result;
+    DDX_DHtml_ElementText("DialogResult", DISPID_A_VALUE, result, TRUE);
+    const char* (ATL::CSimpleStringT<char, 1>::*text)() const = &ATL::CSimpleStringT<char, 1>::operator const char*;
+    if (result.Compare("") != 0 && atoi((result.*text)()) == 1)
+        OnOK();
+    else
+        OnCancel();
+}
