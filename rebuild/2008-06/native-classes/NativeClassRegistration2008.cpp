@@ -1,8 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native NativeClassRegistration::NativeClassRegistration() 005c3ca0 (inactive; InitInstance's function-local static
 // `classes`). The body is only calls: every registered class's Described<>::classDescriptor() accessor in a fixed order (it
-// creates the function-local ClassDescriptor, which links it under its base), then SoundChannel/StockSound/SoundService
-// (005bbeb0, inlined here), registerBodyMovers 00630860 and registerValueClasses 00637ae0. Call order and class list were
+// creates the function-local ClassDescriptor, which links it under its base), then RBX::registerSound()
+// (005bbeb0, the Sound unit's SoundChannel/StockSound/SoundService accessors, called out of line), registerBodyMovers 00630860 and registerValueClasses 00637ae0. Call order and class list were
 // read from the 2008 disassembly (class names from each accessor's descriptor string / mangled name).
 // INFERRED: the registrar class name and that the three trailing registration functions are plain free functions.
 #include "v8datamodel/Accoutrement.h"
@@ -102,9 +102,7 @@ NativeClassRegistration::NativeClassRegistration()
 	Weld::classDescriptor();
 	MotorFeature::classDescriptor();
 	Hole::classDescriptor();
-	Soundscape::SoundChannel::classDescriptor();
-	StockSound::classDescriptor();
-	Soundscape::SoundService::classDescriptor();
+	registerSound();               // 005bbeb0 (call at 005c3d89; AppUnit5B4SoundReflection.cpp, batch 51)
 	registerBodyMovers();
 	registerValueClasses();
 }
