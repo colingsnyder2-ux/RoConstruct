@@ -1,10 +1,13 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-// INFERRED: this is a this-pointer adjustor thunk (sub ecx,0x10; jmp real_method).
-// The real method at 0x00568d40 is a __thiscall member, declared __fastcall with a dummy edx.
-extern "C" void __fastcall fn_00568d40(void* self, int unusedEdx);
+// INFERRED: this-adjusting thunk (sub ecx,0x10; jmp func_00568d40) to a
+// __thiscall member. The required ABI is __cdecl, and C++ cannot read ecx in a
+// __cdecl function, so the object pointer is taken as a stack argument instead.
+// The adjusted pointer is forwarded in ecx via __fastcall with a dummy edx,
+// which lets the compiler emit a tail jmp.
+extern "C" int __fastcall fn_00568d40(void* self, int unusedEdx);
 
-extern "C" void __fastcall fn_00568d20(char* self, int unusedEdx)
+extern "C" int __cdecl fn_00568d20(void* self)
 {
-    fn_00568d40(self - 0x10, unusedEdx);
+    return fn_00568d40(reinterpret_cast<char*>(self) - 0x10, 0);
 }

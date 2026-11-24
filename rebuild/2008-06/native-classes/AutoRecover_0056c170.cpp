@@ -1,91 +1,93 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 #include <vector>
 #include <algorithm>
 
 namespace RBX {
-class Name {
-public:
-    static int compare(Name& a, Name& b);
-};
-class GuidRegistryMutex {
-public:
-    void lock();
-    void unlock();
-};
-namespace Reflection {
-// INFERRED: layout from the disassembly (name ref at +4, category-like object at +0xc whose +4 is a Name ref).
-struct Category { int pad; Name* name; };
-struct PropertyDescriptor {
-    int pad0;
-    Name* name;     // +4
+    class Name {
+    public:
+        static int __cdecl compare(Name& a, Name& b);
+    };
+}
+
+namespace boost {
+    void __cdecl call_once(void (__cdecl *func)(), long& flag);
+}
+
+// INFERRED: descriptor layout (name at +4, category descriptor at +0xc whose name is at +4)
+struct Descriptor {
+    void* vtbl;
+    RBX::Name* name;
     int pad8;
-    Category* category; // +0xc
+    Descriptor* category;
 };
-class Descriptor;
-}
-}
-namespace boost { void call_once(void (*)(), long&); }
 
-using namespace RBX;
-using namespace RBX::Reflection;
-
-extern "C" void fn_004a7d00();
-extern "C" GuidRegistryMutex* __fastcall fn_0056be10(void* self, int unusedEdx);
-extern "C" bool fn_0056b500(const PropertyDescriptor* a, const PropertyDescriptor* b);
-
-typedef std::vector<PropertyDescriptor*> PropVec;
-
-// INFERRED: process-wide property list created on first use, guarded by call_once.
-static PropVec& allProps()
-{
-    static long flag;
-    boost::call_once(fn_004a7d00, flag);
-    static PropVec v;
-    return v;
-}
-
-namespace RBX { namespace Reflection {
-class Descriptor {
-public:
-    PropVec props;                       // +0
-    std::vector<Descriptor*> derived;    // +0x18
-    void addProperty(PropertyDescriptor* pd);
+// INFERRED: container layout: descriptors vector at +0, derived containers vector at +0x18
+struct DescriptorContainer {
+    std::vector<Descriptor*> descriptors;            // +0x00
+    std::vector<DescriptorContainer*> derived;       // +0x18
 };
-}}
+
+struct ContainerMutex;
+
+// INFERRED: mutex getter (ICF-folded with G3D::Shape::axes)
+extern "C" ContainerMutex* __fastcall fn_0056be10(DescriptorContainer* self, int unusedEdx);
+// INFERRED: lock/unlock (ICF-folded with GuidRegistryMutex::lock/unlock)
+extern "C" void __fastcall fn_00563090(ContainerMutex* self, int unusedEdx);
+extern "C" void __fastcall fn_005630e0(ContainerMutex* self, int unusedEdx);
+// INFERRED: descriptor comparison predicate passed to lower_bound
+extern "C" bool __cdecl fn_0056b500(const Descriptor* a, const Descriptor* b);
+// INFERRED: once-init function for the static mutex
+extern "C" void __cdecl fn_004a7d00();
+extern "C" long g_00971004;
+
+extern "C" int __fastcall fn_0056c170(DescriptorContainer* self, int unusedEdx, Descriptor* d);
+
+namespace {
 
 struct ScopedLock {
-    GuidRegistryMutex* m;
-    bool locked;
-    explicit ScopedLock(GuidRegistryMutex* mm) : m(mm), locked(true) { m->lock(); }
-    ~ScopedLock() { m->unlock(); }
+    ContainerMutex* m;
+    explicit ScopedLock(ContainerMutex* mm) : m(mm) { fn_00563090(m, 0); }
+    ~ScopedLock() { fn_005630e0(m, 0); }
 };
 
-inline void Descriptor::addProperty(PropertyDescriptor* pd)
+// INFERRED: global list of all descriptors (function static guarded by call_once)
+static std::vector<Descriptor*>& allDescriptors()
 {
-    ScopedLock lock(fn_0056be10(this, 0));
-
-    PropVec::iterator it = std::lower_bound(props.begin(), props.end(), pd, fn_0056b500);
-    if (it == props.end() || *it != pd)
-        props.insert(it, pd);
-
-    for (std::vector<Descriptor*>::iterator c = derived.begin(); c != derived.end(); ++c)
-        (*c)->addProperty(pd);
-
-    PropVec::iterator g = allProps().begin();
-    for (; g != allProps().end(); ++g) {
-        PropertyDescriptor* o = *g;
-        if (o == pd)
-            return;
-        int c = Name::compare(*pd->name, *o->name);
-        if (c < 0)
-            break;
-        if (c == 0 && Name::compare(*pd->category->name, *o->category->name) < 0)
-            break;
-    }
-    allProps().insert(g, pd);
+    boost::call_once(&fn_004a7d00, g_00971004);
+    static std::vector<Descriptor*> all;
+    return all;
 }
 
-extern "C" void __fastcall fn_0056c170(Descriptor* self, int unusedEdx, PropertyDescriptor* pd)
+}
+
+extern "C" int __fastcall fn_0056c170(DescriptorContainer* self, int unusedEdx, Descriptor* d)
 {
-    self->addProperty(pd);
+    ScopedLock lock(fn_0056be10(self, 0));
+
+    std::vector<Descriptor*>::iterator it =
+        std::lower_bound(self->descriptors.begin(), self->descriptors.end(), d, fn_0056b500);
+    if (it == self->descriptors.end() || *it != d)
+        self->descriptors.insert(it, d);
+
+    for (std::vector<DescriptorContainer*>::iterator c = self->derived.begin();
+         c != self->derived.end(); ++c)
+        fn_0056c170(*c, 0, d);
+
+    std::vector<Descriptor*>::iterator iter = allDescriptors().begin();
+    for (; iter != allDescriptors().end(); ++iter)
+    {
+        Descriptor* other = *iter;
+        if (other == d)
+            return 0;
+        int cmp = RBX::Name::compare(*d->name, *other->name);
+        if (cmp < 0)
+            break;
+        if (cmp == 0)
+        {
+            if (RBX::Name::compare(*d->category->name, *other->category->name) < 0)
+                break;
+        }
+    }
+    allDescriptors().insert(iter, d);
+    return 0;
 }

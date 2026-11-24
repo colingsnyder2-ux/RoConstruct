@@ -1,14 +1,11 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: std::copy_backward-style helper over 8-byte elements; returns new dest begin.
-struct Elem8 { int a; int b; };
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// INFERRED: std::_Copy_backward_opt for a vector of 8-byte POD elements, with a cdecl-style signature (first, last, destEnd).
+struct E { int v[2]; };
 
-extern "C" Elem8* fn_0065a830(Elem8* first, Elem8* last, Elem8* destEnd)
+extern "C" E* fn_0065a830(E* first, E* last, E* dest)
 {
-    Elem8* result = destEnd - (last - first);
-    while (first != last) {
-        --last;
-        --destEnd;
-        *destEnd = *last;
-    }
+    E* result = dest - (last - first);
+    for (; first != last; )
+        *--dest = *--last;
     return result;
 }

@@ -2,11 +2,27 @@
 #include <new>
 #include "stats/Stats.h"
 
-// INFERRED: I couldn't read stats/Stats.h in this session, so this is unchecked against it.
-// The previous attempt's C2084 says Item::Item() already has an inline body in the header,
-// so it can't be redefined here. This helper only forces that inline constructor to be
-// emitted (0045ebe0: the DescribedNonCreatable base ctor, then the value and name members).
-extern "C" RBX::Stats::Item* fn_force_Item_ctor(void* p)
+// INFERRED: the earlier compiler errors (C2084 "already has a body", C2614 "'value' is not
+// a member") show that stats/Stats.h already defines RBX::Stats::Item::Item() inline. That
+// body holds the +0x130 double zero-init, the vtable stores and the std::string member
+// construction. So this file does not redefine the constructor.
+//
+// Instead it forces the compiler to emit the inline constructor out of line as
+// ??0Item@Stats@RBX@@QAE@XZ. It does this with a file-local, explicitly instantiated
+// template that constructs an Item, while inline expansion is disabled.
+#pragma inline_depth(0)
+
+namespace {
+
+template <class T>
+T* constructInPlace(void* mem)
 {
-    return new (p) RBX::Stats::Item();
+    return new (mem) T();
 }
+
+// INFERRED: explicit instantiation forces the template body to be emitted. With inlining
+// disabled, that body makes an out-of-line call to the Item constructor, so the
+// constructor gets emitted too.
+template RBX::Stats::Item* constructInPlace<RBX::Stats::Item>(void*);
+
+} // namespace

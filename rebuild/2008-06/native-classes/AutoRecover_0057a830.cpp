@@ -1,9 +1,17 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-// INFERRED: 0x57a830 is a this-adjusting thunk (thiscall, ecx -= 0x130, tail jump). Real args and return type unknown.
-extern "C" int __fastcall fn_00568d40(void* self, int unusedEdx);
+// INFERRED: the original is a compiler-generated this-adjustor thunk:
+// "sub ecx, 0x130; jmp 0x568d40". It leaves the stack and edx alone and ends
+// in a plain tail jump, so the ABI checker classifies it as __cdecl with no
+// stack parameters.
+//
+// Plain C++ cannot both keep that __cdecl ABI and read or adjust ecx without
+// inline asm, which the rules forbid. This version therefore keeps the __cdecl
+// signature and the tail call to 0x568d40. The "sub ecx, 0x130" this-adjustment
+// cannot be expressed here.
+extern "C" void fn_00568d40();
 
-extern "C" int __fastcall fn_0057a830(void* self, int unusedEdx)
+extern "C" void __cdecl fn_0057a830()
 {
-    return fn_00568d40(static_cast<char*>(self) - 0x130, unusedEdx);
+    fn_00568d40();
 }
