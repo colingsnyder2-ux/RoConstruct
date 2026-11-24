@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
 // INFERRED: tail-call thunk; loads member at this+0x2e4 into ecx and jumps to 0x5e9520 (thiscall on that member).
 extern "C" void __fastcall fn_005e9520(void* member, int unusedEdx);

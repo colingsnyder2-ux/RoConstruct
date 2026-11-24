@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // INFERRED: no class header excerpt was available, so this file declares local
 // stand-ins. It is not compile-verified and will not reproduce the vtable stores
 // at +0x10..+0xc4 until the real headers are used. Swap in the native-header

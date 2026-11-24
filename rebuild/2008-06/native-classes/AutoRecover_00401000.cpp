@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // ATL::AtlThrowImpl: throws CMemoryException for E_OUTOFMEMORY, else COleException.
 // Callee names come from the 2008 disassembly (AfxThrowMemoryException / AfxThrowOleException).
 

@@ -222,7 +222,7 @@ std::string CRobloxWnd::getMetric(const std::string& name) const
 }
 #endif
 
-#ifdef NATIVE_CROBLOXWND_MEMBER_DECLS_PENDING
+// (was NATIVE_CROBLOXWND_MEMBER_DECLS_PENDING: CRobloxView.h now declares these members)
 #include "RbxGraphics/Adorn.h"   // complete RBX::Adorn for the virtual delete in releaseRenderer
 // PENDING (batch 29): CRobloxWnd members the maintainer-owned native-headers/CRobloxView.h does not declare yet.
 // Proposal for its owner, inside CRobloxWnd (names INFERRED from the bodies; measured against a scratch header copy
@@ -337,4 +337,32 @@ BOOL CRobloxWnd::OnWndMsg(UINT message, WPARAM wParam, LPARAM lParam, LRESULT* p
         return TRUE;
     return CWnd::OnWndMsg(message, wParam, lParam, pResult);
 }
-#endif
+
+// 0045d4c0: creates the renderer for the given client size (mode 2: G3D 0045d280, otherwise RbxGfx 0045cbf0), sets the
+// render-mode global 00942ec4 (1 in G3D mode) and halves the 009326f8 scale (0.5f from 00819bac) when 00678510 reports
+// less than 0x1ab3f00 (28 MB) of video memory.
+extern "C" void __fastcall fn_0045d280(CRobloxWnd* self, int unusedEdx, int width, int height);   // G3D renderer
+extern "C" void __fastcall fn_0045cbf0(CRobloxWnd* self, int unusedEdx, int width, int height);   // RbxGfx renderer
+extern "C" int fn_00678510();   // INFERRED: available video memory in bytes
+namespace RBX { extern int renderMode; }   // 00942ec4
+extern "C" float g_009326f8;   // INFERRED: unnamed float global, data-initialized to 1.0f
+void CRobloxWnd::createRenderer(int width, int height)
+{
+    if (mode_5c == 2)
+        fn_0045d280(this, 0, width, height);
+    else
+        fn_0045cbf0(this, 0, width, height);
+    RBX::renderMode = (mode_5c == 2);
+    if (fn_00678510() < 0x1ab3f00)
+        g_009326f8 = 0.5f;
+}
+
+// Message map 0081a398: entries 0081a3a8 in this order in the target. Only handlers recovered natively are listed;
+// PENDING: WM_DESTROY 0045fd80, WM_ERASEBKGND 0045aff0, WM_PAINT 0045eaa0, WM_SIZE 0045d7c0, WM_KILLFOCUS 0045bf30,
+// 0x4bb 0045aeb0, WM_WINDOWPOSCHANGING 0045bf60, WM_CLOSE 0045bf80.
+BEGIN_MESSAGE_MAP(CRobloxWnd, CWnd)
+    ON_WM_CREATE()
+    { WM_TIMER, 0, 0, 0, AfxSig_vw, (AFX_PMSG)(AFX_PMSGW)static_cast<void (AFX_MSG_CALL CWnd::*)(UINT_PTR)>(reinterpret_cast<void (AFX_MSG_CALL CRobloxWnd::*)(UINT_PTR)>(&CRobloxWnd::handle)) },   // 0045cba0
+    ON_WM_SETFOCUS()
+END_MESSAGE_MAP()
+

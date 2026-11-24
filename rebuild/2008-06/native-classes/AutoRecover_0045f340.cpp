@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // INFERRED: raw-offset constructor; sub-object vtables written directly (types unknown)
 extern "C" {
 void* __fastcall fn_0045ebe0(void* self, int unusedEdx);

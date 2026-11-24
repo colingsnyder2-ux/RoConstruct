@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
 // INFERRED: unnamed thiscall member (this in ecx, float[4] out on stack); signed 16-bit fields at +0x1c8..+0x1ce widened to float.
 extern "C" void __fastcall fn_00489910(char* self, int unusedEdx, float* out)

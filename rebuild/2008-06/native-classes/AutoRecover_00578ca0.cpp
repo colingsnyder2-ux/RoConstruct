@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // INFERRED: unmatched draft. I could not check the header paths, the class layout or the Mark/Array types against the real headers.
 #include "v8datamodel/Workspace.h"
 #include "util/Profiling.h"
@@ -11,9 +11,9 @@ struct RenderState { char pad[0x1b4]; int mode; };
 extern "C" int  __fastcall fn_00574fe0(RenderHost* self, int unusedEdx);
 extern "C" void* fn_00577690();
 extern "C" void __fastcall fn_00578c20(RenderHost* self, int unusedEdx, void* state);
-extern "C" void fn_005571b0(void* p, float dt);     // INFERRED: p = this+0x20c object
+extern "C" void __fastcall fn_005571b0(char* self, int unusedEdx, float step);     // INFERRED: p = this+0x20c object
 extern "C" void __fastcall fn_005a0e30(void* ws, int unusedEdx);
-extern "C" void fn_00557150(void* p, float dt);
+extern "C" void __fastcall fn_00557150(char* self, int unusedEdx, float step);
 extern bool g_974e61;  // INFERRED: global byte at 0x974e61
 
 struct StepState {

@@ -1,47 +1,27 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: the Instance and PropertyDescriptor declarations below are minimal local stand-ins,
-// because the real headers were not shown.
-namespace RBX {
-namespace Reflection { class PropertyDescriptor; }
-class Instance {
-public:
-    void raisePropertyChanged(const Reflection::PropertyDescriptor& desc);
-};
-}
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+#include "CRenderSettings.h"
+#include "v8tree/Instance.h"
 
-extern "C" int __stdcall fn_00448f40(int a1);
+// INFERRED: global property descriptor at 0x0096d464 (MaxShadingQuality); the type is abstract, so it is declared as raw storage and cast.
+extern "C" char g_prop_0096d464[];
+// INFERRED: float constant at 0x008163a4, upper clamp bound.
+extern const float kShadingQualityUpper;
 
-// INFERRED: global float constant at 0x8163a4 (upper bound)
-extern "C" const float dat_008163a4;
-// INFERRED: static property descriptor at 0x96d464
-extern "C" RBX::Reflection::PropertyDescriptor dat_0096d464;
-
-// INFERRED: unnamed target, so it is exposed as a C-linkage fastcall free function (this in ecx).
-// It looks like a clamped float setter: the field at +0x144 is the lower bound
-// and the field at +0x148 is the value.
-extern "C" void __fastcall fn_00448fd0(RBX::Instance* self, int unusedEdx, float v)
+// INFERRED: unnamed setter; clamps value to [minShadingQuality, upper] and raises change.
+extern "C" void __fastcall fn_00448fd0(CRenderSettings* self, int unusedEdx, float value)
 {
-    char* base = reinterpret_cast<char*>(self);
-    float* minp = reinterpret_cast<float*>(base + 0x144);
-    float* valp = reinterpret_cast<float*>(base + 0x148);
+    float* minQ = (float*)((char*)self + 0x144);
+    float* maxQ = (float*)((char*)self + 0x148);
 
-    const float* pick = minp;
-    if (!(v > *minp)) {
-        // INFERRED: the call takes the float bits as its single stack argument
-        union { float f; int i; } u;
-        u.f = v;
-        fn_00448f40(u.i);
-    }
-    if (!(v <= *minp))
-        pick = &v;
+    if (value < *minQ)
+        self->setMinShadingQuality(value);
 
-    float lo = *pick;
-    float hi = dat_008163a4;
-    const float* res = (hi > lo) ? &lo : &hi;
-    float r = *res;
+    const float* p = (*minQ < value) ? &value : minQ;
+    float v = *p;
+    const float* q = (v < kShadingQualityUpper) ? &v : &kShadingQualityUpper;
 
-    if (*valp != r) {
-        *valp = r;
-        self->raisePropertyChanged(dat_0096d464);
+    if (*maxQ != *q) {
+        *maxQ = *q;
+        ((RBX::Instance*)self)->raisePropertyChanged(*(RBX::Reflection::PropertyDescriptor*)g_prop_0096d464);
     }
 }

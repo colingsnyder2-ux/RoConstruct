@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // INFERRED: no class header available. Layout is taken from the disassembly:
 // +0x108 slot_base, +0x1a0 shared_ptr-like member (ptr, refcount block).
 // INFERRED: the checked-iterator calls (_invalid_parameter_noinfo) come from

@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // INFERRED: header paths, struct shapes and the signature are reconstructed from the disassembly alone.
 // INFERRED: unverified against the headers or the compiler. Call order and copies follow the asm.
 #include "G3D/Array.h"

@@ -1,120 +1,116 @@
-// native-flags: /O2 /Oy /Ob2 /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// INFERRED: 0x45f9f0 is a mid-function fragment (the first bytes are a misdecoded tail).
+// This is a best-effort analog of the tail of a doc/view initializer. The frame
+// (ebp = ServiceProvider* slot, esi = this) is taken from the disassembly.
 #include <string>
-#include <intrin.h>
-#include <windows.h>
 
-// INFERRED: The listing starts in the middle of an instruction, so this is the
-// tail of a larger function (the CRobloxWnd/view init path). The real frame
-// (esi = this, ebp = &dataModel, ebx = parent instance, a Lock at esp+0x1c) is
-// reconstructed with opaque pointers and raw offsets because no headers were given.
-
-extern "C" {
-void* __fastcall fn_004530f0(void* serviceProvider, int unusedEdx);          // ServiceProvider::create<RunService>
-void* fn_00618a40(void* outSharedPtr, void* partInstance);                   // shared_from<PartInstance>
-void* __fastcall fn_004025b0(void* sharedCountDst, int unusedEdx, void* src);// shared_count::operator=
-void* fn_00412d50(int a1);                                                   // GlobalSettingsItem<CRenderSettings>::singleton
-int __fastcall fn_004492d0(void* self, int unusedEdx, int a1);
-int __fastcall fn_0045d850(void* self, int unusedEdx);
-int fn_0045b3a0(void);
-int __fastcall fn_0045c890(void* self, int unusedEdx);
-int __fastcall fn_0045de20(void* self, int unusedEdx);
-int __fastcall fn_00458610(void* self, int unusedEdx);
-int fn_0045f730(int a1, int a2);
-int __fastcall fn_005ca240(void* self, int unusedEdx, int a1);
-void __fastcall fn_005cea00(void* userInput, int unusedEdx, void* adorn);    // UserInputBase::init
-void __fastcall fn_0055a8f0(void* instance, int unusedEdx, void* parent);    // Instance::setParent
-void __fastcall fn_005557c0(void* runService, int unusedEdx, void* runView); // RunService::addRunView
-void __fastcall fn_005773c0(void* lock, int unusedEdx);                      // DataModel::Lock::~Lock
+namespace RBX {
+    class Instance;
+    class RunService;
+    class ServiceProvider;
+    class Adorn;
+    class UserInputBase;
+    class IRunView;
+    class CRenderSettings;
 }
 
-namespace {
-struct CountBase {
-    void** vtbl;
-    long use;
-    long weak;
+// INFERRED: Win32 declarations written locally to avoid pulling in windows.h
+struct HWND__;
+typedef HWND__* HWND;
+typedef int BOOL;
+typedef struct tagRECT RECT;
+extern "C" __declspec(dllimport) BOOL __stdcall InvalidateRect(HWND hWnd, const RECT* lpRect, BOOL bErase);
+
+// INFERRED: shared_ptr-like pair {px, pn}
+struct SharedPtrRaw { void* px; void* pn; };
+
+extern RBX::RunService* createRunService_004530f0(RBX::ServiceProvider* sp);
+extern SharedPtrRaw* sharedFromRunService_00618a40(SharedPtrRaw* out, RBX::RunService* rs);
+extern void sharedCountAssign_004025b0(void* dst, void* src);
+extern RBX::CRenderSettings* renderSettingsSingleton_00412d50(int create);
+extern void renderSettingsInit_004492d0(RBX::CRenderSettings* rs);
+extern void initViewA_0045d850(void* self);
+extern void initViewB_0045b3a0(void* self);
+extern void userInputInit_005cea00(void* userInput, RBX::Adorn* adorn);
+extern void* getWorkspaceLike_0045de20(RBX::ServiceProvider* sp);
+extern RBX::Instance* getInstanceFor_00458610(RBX::ServiceProvider* sp);
+extern void makeInstance_0045f730(SharedPtrRaw* out, void* arg);
+extern void instanceSetParent_0055a8f0(void* inst, RBX::Instance* parent);
+extern void instanceAttach_005ca240(void* inst, void* arg);
+extern void runServiceAddRunView_005557c0(void* runService, void* runView);
+extern void dataModelLockDtor_005773c0(void* lock);
+extern void initMisc_0045c890(void* self);
+
+struct DocFragmentThis {
+    char pad0[0x20];
+    void* hwnd;            // +0x20
+    char pad1[0x54 - 0x24];
+    void* runView;         // +0x54 (IRunView subobject, vtable slot 1 takes double)
+    char pad2[0x5c - 0x58];
+    int mode;              // +0x5c
+    char pad3[0x64 - 0x60];
+    void* renderInst_px;   // +0x64
+    void* renderInst_pn;   // +0x68
+    char pad4[0x78 - 0x6c];
+    void* runService_px;   // +0x78
+    void* runService_pn;   // +0x7c
+    char pad5[0x84 - 0x80];
+    void* userInput;       // +0x84
+    char pad6[0x98 - 0x88];
+    void* attachArg;       // +0x98
+    char pad7[0xb0 - 0x9c];
+    void* nameSource;      // +0xb0
+    RBX::Adorn* adorn;     // +0xb4
 };
 
-struct SpTmp {
-    void* px;
-    CountBase* pn;
-    ~SpTmp()
-    {
-        if (pn) {
-            if (_InterlockedDecrement(&pn->use) == 0) {
-                ((void(__fastcall*)(CountBase*))pn->vtbl[1])(pn);
-                if (_InterlockedDecrement(&pn->weak) == 0)
-                    ((void(__fastcall*)(CountBase*))pn->vtbl[2])(pn);
-            }
-        }
-    }
-};
-
-template <class T> inline T& at(void* base, int off)
+void docInitTail_0045f9f0(DocFragmentThis* self, RBX::ServiceProvider* sp, char* lock)
 {
-    return *reinterpret_cast<T*>(static_cast<char*>(base) + off);
-}
-}
+    SharedPtrRaw tmp;
+    RBX::RunService* rs = sp ? createRunService_004530f0(sp) : 0;
+    SharedPtrRaw* p = sharedFromRunService_00618a40(&tmp, rs);
+    self->runService_px = p->px;
+    sharedCountAssign_004025b0(&self->runService_pn, &p->pn);
 
-extern "C" void fn_0045f9f0(void* self, void** dataModelRef, void* parentInstance, void* partInstance, void* lockObj)
-{
-    // INFERRED: parameters stand in for registers/locals live at entry of this fragment.
-    void* dm = *dataModelRef;
-    void* runService = dm ? fn_004530f0(dm, 0) : 0;
+    renderSettingsInit_004492d0(renderSettingsSingleton_00412d50(0));
 
-    {
-        SpTmp tmp;
-        SpTmp* r = (SpTmp*)fn_00618a40(&tmp, runService);
-        at<void*>(self, 0x78) = r->px;
-        fn_004025b0((char*)self + 0x7c, 0, &r->pn);
-    }
-
-    fn_004492d0(fn_00412d50(0), 0, 0);
-
-    if (at<int>(self, 0x5c) == (int)(INT_PTR)parentInstance)
-        fn_0045d850(self, 0);
+    if (self->mode == 0)
+        initViewA_0045d850(self);
     else
-        fn_0045b3a0();
+        initViewB_0045b3a0(self);
 
-    fn_005cea00(at<void*>(self, 0x84), 0, at<void*>(self, 0xb4));
+    userInputInit_005cea00(self->userInput, self->adorn);
 
-    void* obj54 = (char*)self + 0x54;
-    {
-        void** vt = *(void***)obj54;
-        ((void(__fastcall*)(void*, int, double))vt[1])(obj54, 0, 0.0);
-    }
-    fn_0045c890(self, 0);
+    // runView->vtbl[1](0.0)
+    typedef void (__thiscall *SetTimeFn)(void*, double);
+    void** vt = *(void***)&self->runView;
+    ((SetTimeFn)vt[1])(&self->runView, 0.0);
 
-    dm = *dataModelRef;
-    void* p = dm ? (void*)(INT_PTR)fn_0045de20(dm, 0) : 0;
-    at<void*>(p, 0x130) = at<void*>(self, 0x84);
+    initMisc_0045c890(self);
 
-    dm = *dataModelRef;
-    void* workspace = dm ? (void*)(INT_PTR)fn_00458610(dm, 0) : 0;
+    char* ws = sp ? (char*)getWorkspaceLike_0045de20(sp) : 0;
+    *(void**)(ws + 0x130) = self->userInput;
 
-    void* o = at<void*>(self, 0xb0);
-    int v = ((int(__fastcall*)(void*))(*(void***)o)[7])(o);
-    {
-        SpTmp tmp2;
-        SpTmp* r = (SpTmp*)(INT_PTR)fn_0045f730((int)(INT_PTR)&tmp2, v);
-        at<void*>(self, 0x64) = r->px;
-        fn_004025b0((char*)self + 0x68, 0, &r->pn);
-    }
+    RBX::Instance* parent = sp ? getInstanceFor_00458610(sp) : 0;
 
-    {
-        std::string name("Render");
-        void* inst = at<void*>(self, 0x64);
-        void** vt = *(void***)inst;
-        std::string tmpName;
-        ((void(__fastcall*)(void*, int, std::string*))vt[1])(inst, 0, &tmpName);
-    }
+    typedef void* (__thiscall *GetFn)(void*);
+    void** nvt = *(void***)self->nameSource;
+    void* arg = ((GetFn)nvt[7])(self->nameSource);
+    SharedPtrRaw* q = &tmp;
+    makeInstance_0045f730(q, arg);
+    self->renderInst_px = q->px;
+    sharedCountAssign_004025b0(&self->renderInst_pn, &q->pn);
 
-    fn_0055a8f0(at<void*>(self, 0x64), 0, workspace);
-    fn_005ca240(at<void*>(self, 0x64), 0, at<int>(self, 0x98));
-    fn_005557c0(at<void*>(self, 0x78), 0, obj54);
-    fn_005773c0(lockObj, 0);
+    std::string name("Render");
+    typedef void (__thiscall *SetNameFn)(void*, std::string*);
+    void** ivt = *(void***)self->renderInst_px;
+    ((SetNameFn)ivt[1])(self->renderInst_px, &name);
 
-    HWND hwnd = at<HWND>(self, 0x20);
-    if (hwnd)
-        InvalidateRect(hwnd, 0, TRUE);
+    instanceSetParent_0055a8f0(self->renderInst_px, parent);
+    instanceAttach_005ca240(self->renderInst_px, self->attachArg);
+    runServiceAddRunView_005557c0(self->runService_px, &self->runView);
+
+    dataModelLockDtor_005773c0(lock);
+
+    if (self->hwnd)
+        InvalidateRect((HWND)self->hwnd, 0, 1);
 }

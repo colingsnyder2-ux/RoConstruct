@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // INFERRED: no Script.h found; Script is declared locally as an Instance subclass.
 // INFERRED: the weak_this hookup at +0xe4 comes from Instance's enable_shared_from_this base.
 #include <boost/shared_ptr.hpp>

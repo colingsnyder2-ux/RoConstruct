@@ -1,23 +1,29 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-struct Obj4490c0 {
-    char pad[0x14c];
-    float lo;   // INFERRED: lower bound at +0x14c
-    float val;  // INFERRED: stored value at +0x150
+// INFERRED: object layout; only the two floats at +0x14c (lower bound) and +0x150 (value) are used.
+struct ClampedFloatObject {
+    char  pad[0x14c];
+    float minValue;   // +0x14c
+    float value;      // +0x150
 };
 
-extern "C" float g_fn_004490c0_max; // INFERRED: float global at 0x008163a4, upper bound
-extern "C" void __fastcall fn_0040db00(Obj4490c0* self, int unusedEdx, int desc);
+// INFERRED: global float upper bound at 0x8163a4
+extern "C" float g_float_008163a4;
+// INFERRED: property descriptor at 0x96d49c, passed to the change notifier
+extern "C" char g_desc_0096d49c[];
 
-extern "C" void __fastcall fn_004490c0(Obj4490c0* self, int unusedEdx, float arg)
+// INFERRED: tail-called thiscall helper (property-changed raise) taking a descriptor pointer
+extern "C" void __fastcall fn_0040db00(ClampedFloatObject* self, int unusedEdx, const void* desc);
+
+extern "C" void __fastcall fn_004490c0(ClampedFloatObject* self, int unusedEdx, float v)
 {
-    const float* p = &arg;
-    if (!(self->lo < arg)) p = &self->lo;
-    float hi = g_fn_004490c0_max;
-    if (!(hi < *p)) {} else p = &hi;
-    float v = *p;
-    if (self->val != v) {
-        self->val = v;
-        fn_0040db00(self, 0, 0x96d49c); // INFERRED: property descriptor address
+    float upper = g_float_008163a4;
+    const float* p = (v > self->minValue) ? &v : &self->minValue;
+    if (!(upper > *p))
+        p = &upper;
+    float result = *p;
+    if (self->value != result) {
+        self->value = result;
+        fn_0040db00(self, 0, g_desc_0096d49c);
     }
 }

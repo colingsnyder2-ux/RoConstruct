@@ -1,16 +1,92 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-#include "v8tree/Instance.h"
-#include "v8datamodel/GlobalSettings.h"
-#include "v8datamodel/GlobalSettingsItem.h"   // INFERRED: header declaring GlobalSettingsItem<T, name>
-#include "CRenderSettings.h"                  // INFERRED: header declaring CRenderSettings
-#include <boost/shared_ptr.hpp>
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// INFERRED: the headers v8datamodel/GlobalSettingsItem.h and CRenderSettings.h do not
+// exist, so everything this function needs is declared locally.
+
+extern "C" long __cdecl _InterlockedDecrement(long volatile*);
+#pragma intrinsic(_InterlockedDecrement)
+
+namespace boost {
+namespace detail {
+// INFERRED: vtable layout +0 dtor, +4 dispose, +8 destroy; use count at +4, weak count at +8
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() = 0;
+    long use_count_;
+    long weak_count_;
+    void release()
+    {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            if (_InterlockedDecrement(&weak_count_) == 0)
+                destroy();
+        }
+    }
+};
+}
+
+template<class T>
+class shared_ptr {
+public:
+    T* px;
+    detail::sp_counted_base* pn;
+    ~shared_ptr()
+    {
+        if (pn)
+            pn->release();
+    }
+    T* get() const { return px; }
+    T* operator->() const { return px; }
+};
+}
+
+class CRenderSettings;
+
+namespace RBX {
+
+class GuidRegistryMutex {
+public:
+    void lock();
+    void unlock();
+};
+
+class Instance {
+public:
+    void setParent(Instance* parent);
+};
+
+class GlobalSettings : public Instance {
+public:
+    static boost::shared_ptr<GlobalSettings> singleton();
+};
+
+template<class T>
+class Creatable {
+public:
+    template<class U>
+    static boost::shared_ptr<U> create();
+};
+
+}
+
+class CRenderSettings : public RBX::Instance {
+};
 
 extern char* sRenderSettings;
 
 namespace RBX {
 
-// INFERRED: the global mutex object at 0x974aa0 is a GuidRegistryMutex instance
-extern GuidRegistryMutex gSettingsMutex;
+template<class T, char*& name>
+class GlobalSettingsItem {
+public:
+    static T& singleton();
+};
+
+// INFERRED: global mutex object at 0x974aa0
+extern GuidRegistryMutex gGlobalSettingsMutex;
+// INFERRED: static instance pointer at 0x96cbec
+extern CRenderSettings* gRenderSettingsInstance;
 
 namespace {
 struct SettingsLock {
@@ -23,15 +99,13 @@ struct SettingsLock {
 template<>
 CRenderSettings& GlobalSettingsItem<CRenderSettings, sRenderSettings>::singleton()
 {
-    SettingsLock lock(gSettingsMutex);
-    // INFERRED: static instance pointer at 0x96cbec, filled in by the CRenderSettings
-    // constructor / registration, not by this function
-    if (!sInstance)
+    SettingsLock lock(gGlobalSettingsMutex);
+    if (!gRenderSettingsInstance)
     {
         boost::shared_ptr<CRenderSettings> s = Creatable<Instance>::create<CRenderSettings>();
         s->setParent(GlobalSettings::singleton().get());
     }
-    return *sInstance;
+    return *gRenderSettingsInstance;
 }
 
 }

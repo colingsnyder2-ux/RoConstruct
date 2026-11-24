@@ -1,29 +1,32 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-// INFERRED: layout from disassembly; Array<Vector4> = {data, num, numAllocated, flagA, flagB}, owner holds int at +0 and array at +4.
-extern "C" void __fastcall fn_00496ef0(void* self, int unusedEdx, const void* src); // G3D::Array<Vector4>::_copy
-extern "C" void fn_00507d20(void* p); // G3D::System::alignedFree
+// INFERRED: layouts from disassembly only; G3D Array<Vector4> is 3 dwords with data pointer first.
+extern "C" void __fastcall fn_00507d20_unused();
+namespace G3D { struct System { static void alignedFree(void* p); }; }
 
-struct ArrayV4 {
+struct Vec4Array {
     void* data;
-    int num;
-    int numAllocated;
-    unsigned char flagA;
-    unsigned char flagB;
-    ~ArrayV4() { fn_00507d20(data); }
+    int   a;
+    int   b;
+    ~Vec4Array() { G3D::System::alignedFree(data); }
 };
 
-struct Func00498610Obj {
-    int first;
-    ArrayV4 arr;
+extern "C" void __fastcall fn_00496ef0(Vec4Array* self, int unusedEdx, const Vec4Array* src);
+
+struct Obj498610 {
+    int       id;
+    Vec4Array arr;
+    bool      f1;
+    bool      f2;
 };
 
-// INFERRED: by-value ArrayV4 argument is destroyed by the callee (ret 0x18); second int arg unused.
-extern "C" Func00498610Obj* __fastcall fn_00498610(Func00498610Obj* self, int unusedEdx, int a, int unused, ArrayV4 src)
+extern "C" Obj498610* __fastcall fn_00498610(Obj498610* self, int unusedEdx, int id,
+                                             int unusedArg2, Vec4Array src,
+                                             bool f1, bool f2)
 {
-    self->first = a;
+    self->id = id;
     fn_00496ef0(&self->arr, 0, &src);
-    self->arr.flagA = src.flagA;
-    self->arr.flagB = src.flagB;
+    self->f1 = f1;
+    self->f2 = f2;
     return self;
 }

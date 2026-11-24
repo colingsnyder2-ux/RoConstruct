@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // INFERRED: raw offset writes; class layout for this Stats::Item subclass is unknown.
 extern "C" void __fastcall fn_0045ebe0(void* self, int unusedEdx);
 extern "C" bool fn_0060a2f0(void* args);

@@ -1,17 +1,15 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 #include "CRobloxView.h"
 #include "v8datamodel/DataModel.h"
+#include "util/DxUserInput.h"
+#include "CRenderSettings.h"
 
 // INFERRED: the disassembly is truncated at 0045fb25, so everything after the
 // 0x64/0x68 shared_ptr assignment is not recovered. Unnamed and cross-class
 // callees are declared as fn_ externs below.
 extern "C" int __fastcall fn_0045dce0(void* self, int unusedEdx);
-extern "C" int fn_006a0920(int a1);
-extern "C" int __fastcall fn_004690f0(void* self, int unusedEdx, int a1, int a2);
-extern "C" int __fastcall fn_004492d0(void* self, int unusedEdx, int a1);
 extern "C" int __fastcall fn_0045d850(void* self, int unusedEdx);
 extern "C" int __fastcall fn_0045b3a0(void* self, int unusedEdx);
-extern "C" int __fastcall fn_0045c890(void* self, int unusedEdx);
 extern "C" int __fastcall fn_0045de20(void* self, int unusedEdx);
 extern "C" int __fastcall fn_00458610(void* self, int unusedEdx);
 extern "C" boost::shared_ptr<RBX::Instance>* fn_0045f730(boost::shared_ptr<RBX::Instance>* out, int a2);
@@ -21,7 +19,6 @@ extern "C" void __fastcall fn_0055a8f0(void* self, int unusedEdx, void* parent);
 extern "C" void __fastcall fn_00555830(void* self, int unusedEdx, void* runView);      // RunService::removeRunView
 extern "C" void* __fastcall fn_004530f0(void* self, int unusedEdx);                    // ServiceProvider::create<RunService>
 extern "C" boost::shared_ptr<RBX::Instance>* fn_00618a40(boost::shared_ptr<RBX::Instance>* out, void* p);
-extern "C" void* fn_00412d50(int a);                                                   // GlobalSettingsItem<CRenderSettings>::singleton
 extern "C" void __fastcall fn_005cea00(void* self, int unusedEdx, void* adorn);        // UserInputBase::init
 extern "C" boost::shared_ptr<RBX::DataModel>* __fastcall fn_0046a940(void* self, int unusedEdx, boost::shared_ptr<RBX::DataModel>* out); // CWorkspace::getDataModel
 
@@ -76,14 +73,9 @@ void CRobloxWnd::setDataModel(void* dm)
 
             fn_00555830(slot78.get(), 0, static_cast<RBX::IRunView*>(this));
 
-            char* ui = reinterpret_cast<char*>(userInput);
+            RBX::DxUserInput* ui = userInput;
             userInput = 0;
-            if (ui)
-            {
-                void* sub = ui + 0x28;
-                void** vt = *reinterpret_cast<void***>(sub);
-                reinterpret_cast<VFn1>(vt[1])(sub, 1);
-            }
+            delete ui;   // virtual ~DxUserInput (deleting form 004690d0)
             slot78.reset();
         }
     }
@@ -122,18 +114,10 @@ void CRobloxWnd::setDataModel(void* dm)
 
         if (!flag_9c)
         {
-            int mem = fn_006a0920(0x194);
-            int obj = 0;
-            if (mem)
-                obj = fn_004690f0(reinterpret_cast<void*>(mem), 0, (int)this, (int)gptr.get());
-            char* old = reinterpret_cast<char*>(userInput);
-            userInput = reinterpret_cast<RBX::DxUserInput*>(obj);
-            if (old)
-            {
-                void* sub = old + 0x28;
-                void** vt = *reinterpret_cast<void***>(sub);
-                reinterpret_cast<VFn1>(vt[1])(sub, 1);
-            }
+            // operator new(0x194) 006a0920 + DxUserInput(CWnd*, DataModel*) 004690f0
+            RBX::DxUserInput* old = userInput;
+            userInput = new RBX::DxUserInput(this, gptr.get());
+            delete old;
         }
 
         void* rs = gptr.get() ? fn_004530f0(gptr.get(), 0) : 0;
@@ -141,7 +125,7 @@ void CRobloxWnd::setDataModel(void* dm)
         slot78 = *fn_00618a40(&tmpRun, rs);
         tmpRun.reset();
 
-        fn_004492d0(fn_00412d50(0), 0, 0);
+        CRenderSettings::singleton().checkProfile(false);   // 00412d50 + 004492d0
 
         if (mode_5c == 2)
             fn_0045d850(this, 0);
@@ -158,7 +142,7 @@ void CRobloxWnd::setDataModel(void* dm)
             reinterpret_cast<VFnD>(vt[1])(rv, 0.0);
         }
 
-        fn_0045c890(this, 0);
+        sub_0045c890();
 
         int inst = gptr.get() ? fn_0045de20(gptr.get(), 0) : 0;
         *reinterpret_cast<void**>(inst + 0x130) = userInput;

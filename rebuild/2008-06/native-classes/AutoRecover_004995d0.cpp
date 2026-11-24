@@ -1,33 +1,24 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-
-// INFERRED: 16-byte G3D::Array<Vector4> passed by value; bytes at +0xc/+0xd are flags copied after _copy.
-struct Vec4Array16;
-extern "C" void __fastcall fn_00496ef0(Vec4Array16* self, int unusedEdx, const Vec4Array16* src);
-
-struct Vec4Array16 {
-    char data[12];
-    unsigned char flagA;
-    unsigned char flagB;
-    char pad[2];
-    Vec4Array16(const Vec4Array16& o) {
-        fn_00496ef0(this, 0, &o);
-        flagA = o.flagA;
-        flagB = o.flagB;
-    }
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// INFERRED: Array<Vector4> modeled as a 16-byte POD (data,num,alloc,flags at +0xc/+0xd); not compile-checked.
+struct Arr16 {
+    int a, b, c;
+    unsigned char f0, f1, pad[2];
 };
 
-struct Target;
+extern "C" unsigned char g_00970298; // INFERRED: unknown global byte
+extern "C" void __stdcall fn_004974f0(SrcBase* obj, CountedRef ref, void* target);   // INFERRED: callback passed by address
+extern "C" void __fastcall fn_00496ef0(Arr16* dst, int unusedEdx, const Arr16* src);
+extern "C" int fn_00499430(Arr16* a1, void* a2, int a3, void* a4, int a5);
+extern "C" int __fastcall fn_004984d0(void* self, int unusedEdx, Arr16 a, Arr16 b);
+extern "C" void __fastcall fn_004995d0(void* self, int unusedEdx, Arr16* arg);
 
-extern "C" unsigned char g_byte_00970298;
-extern "C" void fn_004974f0();
-extern "C" void fn_00499430(Vec4Array16 arr, void* outBuf, void (*cb)(), int zero, Target* self, int flag);
-extern "C" void __fastcall fn_004984d0(Target* self, int unusedEdx);
-extern "C" void __fastcall fn_004995d0(Target* self, int unusedEdx, Vec4Array16* arg);
-
-extern "C" void __fastcall fn_004995d0(Target* self, int unusedEdx, Vec4Array16* arg)
+extern "C" void __fastcall fn_004995d0(void* self, int unusedEdx, Arr16* arg)
 {
-    char local[0x20]; // INFERRED: uninitialised 32-byte out buffer passed by pointer
-    arg->flagA = 1;
-    fn_00499430(*arg, local, fn_004974f0, 0, self, g_byte_00970298);
-    fn_004984d0(self, 0);
+    Arr16 pair[2];
+    arg->f0 = 1;
+    fn_00496ef0(&pair[1], 0, arg);
+    pair[1].f0 = arg->f0;
+    pair[1].f1 = arg->f1;
+    fn_00499430(&pair[0], (void*)fn_004974f0, 0, self, g_00970298);
+    fn_004984d0(self, 0, pair[0], pair[1]);
 }

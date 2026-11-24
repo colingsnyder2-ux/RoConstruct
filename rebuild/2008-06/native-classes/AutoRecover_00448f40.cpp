@@ -1,41 +1,26 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+#include "CRenderSettings.h"
+#include "reflection/enumconverter.h"
 #include <algorithm>
 
-namespace RBX {
-namespace Reflection {
-class PropertyDescriptor;
-}
-class Instance {
-public:
-    void raisePropertyChanged(const Reflection::PropertyDescriptor& desc);
-};
-}
+// INFERRED: field names are guesses. The 0x144/0x148 offsets come from the disassembly.
+// The descriptor at 0x0096d448 is an unknown global, so it is declared as an extern.
+extern "C" char g_0096d448[];
 
-extern "C" int __stdcall fn_00448fd0(int a1);
-
-// INFERRED: descriptor object at 0x0096d448 (property descriptor for this setter)
-extern "C" char g_desc_0096d448[];
-
-// INFERRED: unnamed target, a float property setter on an Instance-derived object
-// (value at +0x144, upper bound at +0x148). Value is clamped to [0, max].
-extern "C" void __fastcall fn_00448f40(char* self, int unusedEdx, float v)
+extern "C" void __fastcall fn_00448f40(CRenderSettings* self, int unusedEdx, float value)
 {
-    float& maxValue = *reinterpret_cast<float*>(self + 0x148);
-    float& curValue = *reinterpret_cast<float*>(self + 0x144);
+    float* quality = (float*)((char*)self + 0x144);
+    float* maxQuality = (float*)((char*)self + 0x148);
 
-    if (v > maxValue) {
-        // INFERRED: callee takes the float bits as its argument (pushed from st0)
-        float tmp = v;
-        fn_00448fd0(*reinterpret_cast<int*>(&tmp));
-    }
+    if (value > *maxQuality)
+        self->setMaxShadingQuality(value);
 
-    v = std::min(maxValue, v);
-    float zero = 0.0f;
-    v = std::max(zero, v);
+    float v = std::min(*maxQuality, value);
+    v = std::max(0.0f, v);
 
-    if (curValue != v) {
-        curValue = v;
-        reinterpret_cast<RBX::Instance*>(self)->raisePropertyChanged(
-            *reinterpret_cast<const RBX::Reflection::PropertyDescriptor*>(g_desc_0096d448));
+    if (*quality != v) {
+        *quality = v;
+        ((RBX::Instance*)self)->raisePropertyChanged(
+            *(RBX::Reflection::PropertyDescriptor*)g_0096d448);
     }
 }

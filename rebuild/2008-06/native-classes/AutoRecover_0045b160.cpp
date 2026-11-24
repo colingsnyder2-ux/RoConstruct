@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // INFERRED: Name header path unknown, so a minimal local declaration is used.
 // INFERRED: the original pushes the literal address (0x9510b4), so the body uses the
 // string literal rather than loading sControllerService.
