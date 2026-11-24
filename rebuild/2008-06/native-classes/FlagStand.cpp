@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-function-pod-vtable /I{headers}/part-embedded
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/boost-function-pod-vtable /I{headers}/part-embedded
 // 2008-06 native RBX::FlagStand (inactive): the FlagStand half of the original FlagStand/FlagStandService unit
 // (0062b8f0..0062cf40, initializers 007f7e90/007f7ef0, atexit 00800450/00800470). The FlagStandService half lives in
 // native-classes/FlagStandService.cpp (another contributor). Evidence in native-headers/v8datamodel/FlagStand.h.
@@ -64,6 +64,31 @@ namespace RBX
 		}
 
 		return NULL;
+	}
+
+	// 0062bdc0 (thiscall, ret 4): GetFlag 0062b900, Instance::setParent 0055a8f0 with parent +0x104, Tool::getHandle
+	// 005fd760, CoordinateFrame() 004782d0, PartInstance::setCoordinateFrame 0059d8a0, virtual getLocation through
+	// the vbptr +0x134, translation.y + 0.5f (00819bac), PVInstance::moveToPoint 00608960, PartInstance::join
+	// 00598c90. Donor tools/rbxgs v8datamodel/FlagStand.cpp FlagStand::AffixFlag. The x87 sequence keeps the translation
+	// in registers and adds a dword 0.5f constant, which only /fp:fast reproduces (unit flag; no exact lost).
+	void FlagStand::AffixFlag(Flag* flag)
+	{
+		if (!GetFlag())
+		{
+			flag->setParent(getParent());
+
+			PartInstance* handle = flag->getHandle();
+			if (handle)
+			{
+				handle->setCoordinateFrame(G3D::CoordinateFrame());
+
+				G3D::Vector3 location = getLocation().translation;
+				location.y += 0.5f;
+
+				handle->moveToPoint(location);
+				handle->join();
+			}
+		}
 	}
 
 	void FlagStand::setTeamColor(BrickColor color)

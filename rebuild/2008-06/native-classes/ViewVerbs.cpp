@@ -1,15 +1,16 @@
 // native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /D_AFXDLL /D_DLL /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
 // 2008-06 native verbs created by CRobloxView's initializer (0045a4a0), original unit 00458fd0..00459169 (inactive).
 // Classes in native-headers/ViewVerbs.h. Flags copied from the byte-exact sibling shards Conv2008_*Verb_*.cpp.
+// CMainFrame.h (XTP) needs the windows min/max macros, which later headers remove: include it first.
+#include "../native-headers/CMainFrame.h"
 #include "../native-headers/ViewVerbs.h"
 #include "../native-headers/CRobloxView.h"
 #include <G3D/System.h>
 
-// The CMainFrame state readers below need native-headers/CMainFrame.h, which reaches core util/MarshaledListener.h
-// (stray '}' closes namespace RBX early; line 26 'missing , before <'). Define VIEWVERBS_MAINFRAME_HEADER_COMPILES once
-// that core header is fixed.
+// The CMainFrame state readers below need native-headers/CMainFrame.h. Batch 49: core util/MarshaledListener.h
+// compiles again, and with CMainFrame.h included first the unit builds (isEnabled 00459040 / isChecked 00459080 exact).
+#define VIEWVERBS_MAINFRAME_HEADER_COMPILES
 #ifdef VIEWVERBS_MAINFRAME_HEADER_COMPILES
-#include "../native-headers/CMainFrame.h"
 static CMainFrame* mainFrame() { return static_cast<CMainFrame*>(AfxGetApp()->m_pMainWnd); }
 #endif
 

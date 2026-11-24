@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /D_AFXDLL /D_DLL /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
+// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /D_AFXDLL /D_DLL /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string /I{headers}/boost-function-pod-vtable
 // ErrorUploader (2008 ctor 0044d610, dtor 0044a830; header rebuild/2008-06/native-headers/CRobloxApp.h).
 // Body ported from the Dec 2007 client decomp (OpenRBX Client/win/ErrorUploader.{h,cpp}, ROBLOX 0x004520c0 /
 // 0x0041e020), same 0x1c object layout (shared state + worker_thread). The 2008 state is 72 bytes vs 0x3c in

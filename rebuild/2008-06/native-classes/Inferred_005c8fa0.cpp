@@ -28,6 +28,23 @@ void Stats::Item::formatValue<G3D::Stopwatch>(const G3D::Stopwatch& sw)
 #include <boost/pool/singleton_pool.hpp>
 #include <algorithm>
 
+// 005c8930 (9 B): rbxgs / openrbx LuaMemory.cpp LuaAllocator::clearHeapMax.
+void LuaAllocator::clearHeapMax()
+{
+	maxHeapSize = 0;
+	maxHeapCount = 0;
+}
+
+// 005c8960 (38 B, ret 0x10; caller ScriptContext stats 005aefa0 unit): rbxgs / openrbx LuaMemory.cpp
+// LuaAllocator::getHeapStats, the four fields +0x0 / +0x4 / +0x8 / +0xc in order.
+void LuaAllocator::getHeapStats(size_t& heapSize, size_t& heapCount, size_t& maxHeapSize, size_t& maxHeapCount) const
+{
+	heapSize = this->heapSize;
+	heapCount = this->heapCount;
+	maxHeapSize = this->maxHeapSize;
+	maxHeapCount = this->maxHeapCount;
+}
+
 // Original 005c8c40 (394 B): ??$bucketRealloc@$0BA@$0CA@@@YAPAXPAXII@Z.
 // Body IDENTICAL to the original (relocations masked, batch 48); unproved only because its callees 005c8b60 /
 // 005c8ba0 / 005c8bd0 / 005c8c10 (singleton_pool<LuaAllocator, 32 / 16>::malloc / free) still carry placeholder

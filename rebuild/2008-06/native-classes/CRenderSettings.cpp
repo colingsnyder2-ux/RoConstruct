@@ -144,6 +144,23 @@ void CRenderSettings::checkProfile(bool force)
 }
 #endif
 
+// 00449440 (registry placeholder func_00449440; thiscall, no arguments). Latches the graphics mode once per process:
+// the global 0096d358 (registry ?nativeStartupMode@@3HA) takes graphicsMode (+0x130) the first time it is still 0 and is
+// returned from then on. Callers: CRobloxWnd 0045d1da / 0045d377 / 0045d41e on CRenderSettings::singleton() (compare
+// with 1); the 2007 analog is openrbx Client/win/RenderSettings.h FUN_0044d430 (inline there, global g_unk0x00953ae0).
+// INFERRED: the name. GUARDED: CRenderSettings.h (not owned here) needs the declaration
+//     GraphicsMode getLatchedGraphicsMode();
+// A scratch compile with that declaration is IDENTICAL to 00449440 (21 B, relocs masked).
+#ifdef CRENDERSETTINGS_HEADER_DECLARES_LATCHED_GRAPHICS_MODE
+extern int nativeStartupMode;   // 0096d358
+CRenderSettings::GraphicsMode CRenderSettings::getLatchedGraphicsMode()
+{
+    if (!nativeStartupMode)
+        nativeStartupMode = graphicsMode;
+    return (GraphicsMode)nativeStartupMode;
+}
+#endif
+
 // 004491b0.
 void CRenderSettings::setFrameRateManagerMode(FrameRateManagerMode value)
 {

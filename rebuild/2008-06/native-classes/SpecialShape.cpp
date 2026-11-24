@@ -4,7 +4,7 @@
 // setVertColor compare with `fld; fcomp mem`). The EnumPropDescriptor constructor 0059fe00 and the
 // TypedPropertyDescriptor<MeshId> Value/boost::any helpers 0059eec0..0059f400 come from header templates; they are
 // exact only against the generated reflection.h / type.h / property.h copies the recorder writes (proposals).
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded
 #include "v8datamodel/SpecialShape.h"
 #include "v8datamodel/PartInstance.h"
 #include "reflection/enumconverter.h"
@@ -26,6 +26,25 @@ namespace RBX
 	template<class C, class D, const char* N>
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
+
+#ifdef SPECIALSHAPE_HEADER_DECLARES_GETALPHA
+	// 0059eca0 (registry placeholder func_0059eca0): donor custommesh.cpp getAlpha, the first body of the unit (just
+	// before the FactoryProduct<SpecialShape> destructor 0059ece0). Parent +0x104, dynamic_cast to PartInstance
+	// (??_R0 0092dd50), then PartInstance::alpha() = 1 - (1 - transparency +0x1e8) * alphaModifier +0x328 (the
+	// part-embedded PartInstance layout). Guarded: native-headers/v8datamodel/SpecialShape.h does not yet declare
+	// `const float getAlpha() const;` (header proposal). Measured byte-identical with that declaration (batch 50 mx06).
+	const float SpecialShape::getAlpha() const
+	{
+		Instance* parent = getParent();
+		if (!parent)
+			return 0.0f;
+
+		if (PartInstance* part = dynamic_cast<PartInstance*>(parent))
+			return part->alpha();
+
+		return 0.0f;
+	}
+#endif
 
 	Reflection::EnumDesc<SpecialShape::MeshType>::EnumDesc()   // 0059f630
 		: EnumDescriptor("MeshType", typeid(SpecialShape::MeshType))

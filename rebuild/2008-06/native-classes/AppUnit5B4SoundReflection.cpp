@@ -156,3 +156,16 @@ template const R::EnumDesc<RBX::SoundType>& R::EnumDesc<RBX::SoundType>::singlet
 // any_cast<SoundId>(any*) 005b6ca0, holder<SoundId>(const SoundId&) 005b6d50, holder<SoundId>::type() 005b6db0
 template class boost::any::holder<S::SoundId>;
 template S::SoundId* boost::any_cast<S::SoundId>(boost::any*);
+
+// 005bbeb0 (15 B, registry placeholder func_005bbeb0): RBX::registerSound(), declared by util/Sound.h; donor openrbx
+// util/Sound.cpp: the three Described<>::classDescriptor() accessors SoundChannel 005bb860, StockSound 005bb8d0 and
+// SoundService 005bb7f0 (the last one a tail jump). Its only caller is NativeClassRegistration() 005c3ca0 (005c3d89).
+namespace RBX
+{
+	void registerSound()
+	{
+		Soundscape::SoundChannel::classDescriptor();
+		StockSound::classDescriptor();
+		Soundscape::SoundService::classDescriptor();
+	}
+}

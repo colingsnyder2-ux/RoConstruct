@@ -34,6 +34,21 @@ namespace RBX
 	{
 	}
 
+#ifdef PRIMITIVE_HEADER_DECLARES_SET_UNKNOWN0X14
+	// 00598c20 ?setName@PartInstance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
+	// (registry placeholder func_00598c20). Instance::setName 0055af90, then string == "Torso" (00832a1c) and
+	// primitive (+0x228) setUnknown0x14 005e7420 with 5, else 1. Guarded: part-embedded/v8world/Primitive.h does not
+	// declare setUnknown0x14 (v8world/Primitive2008.h does, line 148); header proposal filed.
+	void PartInstance::setName(const std::string& name)
+	{
+		Instance::setName(name);
+		if (name == "Torso")
+			primitive.setUnknown0x14(5);
+		else
+			primitive.setUnknown0x14(1);
+	}
+#endif
+
 	// 00598de0
 	Surfaces& PartInstance::getSurfaces()
 	{
@@ -327,5 +342,31 @@ namespace RBX
 	bool PartInstance::reportTouches() const
 	{
 		return !event_Touched.empty(this);
+	}
+
+	// Workspace double getters (registry placeholders func_005a00f0 / func_005a0100 / func_005a0110 / func_005a0120):
+	// `fld qword ptr [ecx + 0x410/0x418/0x420]; ret` and the sum in the order 0x420 + 0x418 + 0x410.
+	// WorkspaceStatsItem::WorkspaceStatsItem 005a5c90 binds 005a00f0 / 005a0100 / 005a0110 (data refs 005a6532,
+	// 005a6569, 005a65b3). Declarations and INFERRED names: native-headers/v8datamodel/Workspace.h. They live in the
+	// Workspace unit (005a....); no Workspace unit is assigned to this batch, so they are drafted here.
+	// 005a00f0
+	double Workspace::getUnknown0x410() const
+	{
+		return unknown0x410;
+	}
+	// 005a0100
+	double Workspace::getUnknown0x418() const
+	{
+		return unknown0x418;
+	}
+	// 005a0110
+	double Workspace::getUnknown0x420() const
+	{
+		return unknown0x420;
+	}
+	// 005a0120
+	double Workspace::getUnknownSum() const
+	{
+		return unknown0x420 + unknown0x418 + unknown0x410;
 	}
 }

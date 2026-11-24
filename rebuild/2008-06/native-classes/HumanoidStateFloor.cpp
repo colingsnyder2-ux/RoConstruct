@@ -35,6 +35,34 @@ void HumanoidState::setLimbFlag(bool value)
         humanoid->getLeftLeg()->getPrimitive()->getBody()->setCanThrottle(value);
 }
 
+// 006439b0 (registry func_006439b0; declared INFERRED in humanoid/HumanoidState.h; callers tipped 00643a30 and
+// upright 00643a50 only): Humanoid::getTorsoBody 005d9160 (NULL -> 1.0f), the guarded G3D Vector3::unitY() static
+// (00972898, guard 009728a4), Body::updatePV 00599360, Matrix3::transpose 00513510 of pv.position.rotation (+0x94),
+// then only row 1 of the product (+0xc..+0x14) dotted with unitY (inline
+// CoordinateFrame::vectorToObjectSpace). Here, not in HumanoidState.cpp: this unit reaches the 2008 Body (pv +0x94).
+float HumanoidState::getRatio() const
+{
+    if (Body* torso = humanoid->getTorsoBody())
+        return torso->getCoordinateFrame().vectorToObjectSpace(G3D::Vector3::unitY()).y;
+    return 1.0f;
+}
+
+// 00643a30 (registry func_00643a30): getRatio() < 0.85f [0082f83c] (`test ah, 5; jp`).
+bool HumanoidState::tipped() const
+{
+    if (getRatio() < 0.85f)
+        return true;
+    return false;
+}
+
+// 00643a50 (registry func_00643a50): getRatio() > 0.9f [00826fc8] (`test ah, 0x41; jne`).
+bool HumanoidState::upright() const
+{
+    if (getRatio() > 0.9f)
+        return true;
+    return false;
+}
+
 // 006432e0
 HitTestFilter::Result HumanoidState::filterResult(const Primitive* testMe) const
 {

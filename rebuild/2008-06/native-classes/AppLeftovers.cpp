@@ -39,8 +39,17 @@ void MainLogManager::startCrashReporter()
 // ---------------------------------------------------------------------------------------------------------------
 // CrashReporter unit (0049e490..0049e50f). The filter and the kernel32 hook are its free functions
 // (CrashExceptionFilter 0049e490, PreventSetUnhandledExceptionFilter 0049e4a0).
-LONG WINAPI CrashExceptionFilter(_EXCEPTION_POINTERS* ExceptionInfo);
 BOOL PreventSetUnhandledExceptionFilter();
+
+// 0049e490 ?CrashExceptionFilter@@YGJPAU_EXCEPTION_POINTERS@@@Z (registry, library-replay relocation proof): the
+// top-level filter Start installs. Body after openrbx Network/CrashReporter.cpp: a tail call through vtable slot 0
+// (CrashReporter::ProcessException) of CrashReporter::singleton (009706c0): mov ecx,[singleton]; mov eax,[ecx];
+// mov eax,[eax]; jmp eax. Defined here because no native unit defines it (CrashHookAndThreadName2008.cpp holds the
+// rest of the CrashReporter unit: ProcessException 0049e290 and PreventSetUnhandledExceptionFilter 0049e4a0).
+LONG WINAPI CrashExceptionFilter(_EXCEPTION_POINTERS* ExceptionInfo)
+{
+    return CrashReporter::singleton->ProcessException(ExceptionInfo);
+}
 
 // 0049e500. The original is in the CrashReporter unit, not MainLogManager's: 00428180 calls it out of line.
 // auto_inline(off) only stands in for that unit boundary while both share this leftovers file (move it to its own

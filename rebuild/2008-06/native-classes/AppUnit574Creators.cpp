@@ -31,3 +31,21 @@ namespace RBX
 template boost::shared_ptr<RBX::Workspace> RBX::Creatable<RBX::Instance>::create<RBX::Workspace, RBX::DataModel*>(RBX::DataModel*);
 template boost::shared_ptr<RBX::GuiRoot> RBX::Creatable<RBX::Instance>::create<RBX::GuiRoot>();
 template boost::shared_ptr<RBX::LocalBackpack> RBX::Creatable<RBX::Instance>::create<RBX::LocalBackpack>();
+
+// Batch 51: 00574f80 (18 B, registry placeholder func_00574f80) is DataModel::setUiMessageBrickCount, the inline
+// v8datamodel/DataModel.h body `uiMessage = "[[[progress]]]"` (std::string::operator=(const char*) import on
+// this +0x234 with the literal 0082fd64). The DataModel.cpp object emits it out of line because its address is the
+// member pointer of the "SetMessageBrickCount" function descriptor: the dynamic initializer 007f3670 pushes
+// security 1 / "SetMessageBrickCount" 008304b4 / the 8-byte member pointer {00574f80, 0} and calls the
+// BoundFuncDesc<DataModel, void(), 0> constructor 00579920 on the static object 00974eb8 (donor openrbx
+// v8datamodel/DataModel.cpp func_SetUIMessageBrickCount; the target binary passes security 1).
+// BLOCKED: the core v8datamodel/DataModel.h does not declare it. Proposal, public section next to getGuiRoot:
+//     void setUiMessageBrickCount() { uiMessage = "[[[progress]]]"; }   // 00574f80
+// Define DATAMODEL_HEADER_DECLARES_SETUIMESSAGEBRICKCOUNT (or drop the guard) once the core header declares it.
+#ifdef DATAMODEL_HEADER_DECLARES_SETUIMESSAGEBRICKCOUNT
+#include "reflection/reflection.h"
+namespace RBX
+{
+	static Reflection::BoundFuncDesc<DataModel, void(), 0> func_SetUIMessageBrickCount(&DataModel::setUiMessageBrickCount, "SetMessageBrickCount", static_cast<Reflection::FunctionDescriptor::Security>(1));
+}
+#endif

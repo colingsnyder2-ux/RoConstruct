@@ -89,6 +89,23 @@ namespace RBX
 		FlagHeight.setDirty();
 	}
 
+	// 00583860 (placeholder func_00583860) ?zero@Extents@RBX@@SAABV12@XZ and 00583920
+	// ?negativeInfiniteExtents@Extents@RBX@@SAABV12@XZ: function-local statics (guards 00975568 / 00975584) emitted in
+	// this unit; util/Extents.h declares both without a body and no native file defines them. zero() inlines
+	// G3D::Vector3::zero (guard 0096f050); negativeInfiniteExtents() calls Vector3::inf 00510960 twice (the default
+	// Extents ctor: low = inf, high = -inf).
+	const Extents& Extents::zero()
+	{
+		static Extents e(G3D::Vector3::zero(), G3D::Vector3::zero());
+		return e;
+	}
+
+	const Extents& Extents::negativeInfiniteExtents()
+	{
+		static Extents e;
+		return e;
+	}
+
 	void ModelInstance::onExtentsChanged() const   // 00583a20
 	{
 		dirtyAll();

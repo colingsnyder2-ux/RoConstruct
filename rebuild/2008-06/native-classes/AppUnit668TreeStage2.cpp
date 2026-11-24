@@ -309,6 +309,30 @@ namespace RBX
 		}
 	}
 
+	// 00669940 (registry func_00669940; declared INFERRED in AppUnit668/TreeStage.h; callers onEdgeAdded path 00669b60 and
+	// onEdgeRemoving 00669c70): the old lightest joint is dirtied (dirtyAssemblies 00669240) and deactivated (+0x24 = 0);
+	// with no replacement the old joint's prim0 clump (+0xc -> +0x5c) is erased and deleted (006692e0, tail path);
+	// otherwise the new joint is dirtied, activated (+0x24 = 1) and walked from p at depth 0 (walkEdges 006697a0).
+	void TreeStage::replaceLightest(Joint* oldJoint, Joint* newJoint, Primitive* p)
+	{
+		if (oldJoint)
+		{
+			dirtyAssemblies(oldJoint);
+			oldJoint->setActive(false);
+			if (!newJoint)
+			{
+				eraseDirtyAssemblyAndDelete(static_cast<Assembly*>(oldJoint->getPrimitive(0)->getClump()));
+				return;
+			}
+		}
+		if (newJoint)
+		{
+			dirtyAssemblies(newJoint);
+			newJoint->setActive(true);
+			walkEdges(newJoint, p, 0);
+		}
+	}
+
 	// 006699a0
 	// The iterator is declared before the loop and assigned: 00669a02..00669a12 load begin() (`mov eax, [eax]`) and copy
 	// it into the loop register (`mov ebx, eax`); the for-init declaration form fuses the two (`mov ebx, [eax]`).
@@ -407,5 +431,43 @@ namespace RBX
 			edges.erase(value);
 			e->setInEdgeList(false);
 		}
+	}
+
+	// 00669d30 ?canBuildJoint@SnapJoint@RBX@@SAPAV12@PAVPrimitive@2@0W4NormalId@2@1@Z (Joints2008.h; registry
+	// func_00669d30; caller JointBuilder::canJoin 0064d410). Donor tools/rbxgs v8world/SnapJoint.cpp: surfaceType
+	// +0xb8 + 4 * face read inline, STUDS 3 against INLET 4 either way round, Joint::canBuildJointTight 00645560,
+	// RigidJoint::faceIdToCoords 00645980 into two CoordinateFrames (004782d0), new(0x88), Joint(p0, p1, c0, c1)
+	// 006455c0 and the SnapJoint vtable 0083e0fc. It lies past the TreeStage rows (00669cf0..) in its own original
+	// object; placed here because this unit already reaches both Joints2008.h and the native Primitive2008.h.
+	SnapJoint* SnapJoint::canBuildJoint(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1)
+	{
+		SurfaceType s0 = p0->getSurfaceType(nId0);
+		SurfaceType s1 = p1->getSurfaceType(nId1);
+		if (((s0 == STUDS && s1 == INLET) || (s0 == INLET && s1 == STUDS))
+			&& Joint::canBuildJointTight(p0, p1, nId0, nId1))
+		{
+			G3D::CoordinateFrame c0;
+			G3D::CoordinateFrame c1;
+			RigidJoint::faceIdToCoords(p0, p1, nId0, nId1, c0, c1);
+			return new SnapJoint(p0, p1, c0, c1);
+		}
+		return NULL;
+	}
+
+	// 00669e20 ?canBuildJoint@WeldJoint@RBX@@SAPAV12@PAVPrimitive@2@0W4NormalId@2@1@Z (Joints2008.h; registry
+	// func_00669e20; caller JointBuilder::canJoin 0064d410). Donor tools/rbxgs v8world/WeldJoint.cpp: either face WELD
+	// (2), canBuildJointTight 00645560, faceIdToCoords 00645980, new(0x88) WeldJoint (vtable 0083e0bc).
+	WeldJoint* WeldJoint::canBuildJoint(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1)
+	{
+		SurfaceType s0 = p0->getSurfaceType(nId0);
+		SurfaceType s1 = p1->getSurfaceType(nId1);
+		if ((s0 == WELD || s1 == WELD) && Joint::canBuildJointTight(p0, p1, nId0, nId1))
+		{
+			G3D::CoordinateFrame c0;
+			G3D::CoordinateFrame c1;
+			RigidJoint::faceIdToCoords(p0, p1, nId0, nId1, c0, c1);
+			return new WeldJoint(p0, p1, c0, c1);
+		}
+		return NULL;
 	}
 }
