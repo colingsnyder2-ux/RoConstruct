@@ -556,7 +556,8 @@ def coff_externals(data):
     _, _, _, symptr, nsym, _, _ = struct.unpack_from("<HHIIIHH", data, 0)
     strtab, out, i = symptr + nsym * 18, {}, 0
     while i < nsym:
-        raw, _, secnum, _, cls, naux = struct.unpack_from("<8sIhHBB", data, symptr + 18 * i)
+        raw, _, secnum, _, cls, naux = struct.unpack_from("<8sIHHBB", data, symptr + 18 * i)
+        secnum = secnum - 0x10000 if secnum >= 0xFFFE else secnum   # unsigned section number; -1 abs / -2 debug stay special
         if cls == 2:
             if raw[:4] == b"\0\0\0\0":  # find the terminator in place: slicing to the end copied the rest per name
                 at = strtab + struct.unpack_from("<I", raw, 4)[0]
@@ -583,7 +584,8 @@ def strip_symbols(data, keep=None, drop=(), live_references_only=False):
     remove, comdat_key, assoc, shared, twins, i = set(), {}, [], set(), {}, 0
     while i < nsym:
         at = symptr + 18 * i
-        raw, value, secnum, typ, cls, naux = struct.unpack_from("<8sIhHBB", data, at)
+        raw, value, secnum, typ, cls, naux = struct.unpack_from("<8sIHHBB", data, at)
+        secnum = secnum - 0x10000 if secnum >= 0xFFFE else secnum   # unsigned section number; -1 abs / -2 debug stay special
         if cls == 3 and naux and secnum > 0 and value == 0:  # section symbol: aux holds COMDAT selection
             number, selection = struct.unpack_from("<HB", data, at + 18 + 12)
             if selection == 5:
