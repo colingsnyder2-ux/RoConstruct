@@ -8,6 +8,7 @@
    "recipe": "zlib-1.2.3-winapi",
    "files": "recipe",
    "cl": 50727,
+   "cl_variant": "rtm",
    "flags": "/O2 /GS- /MD",
    "direct": true
   }

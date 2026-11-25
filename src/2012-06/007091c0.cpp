@@ -1,37 +1,20 @@
-// from server: 89% by colin
+// from server: 99% by Xemicl
+// from server: 100% by tajop
 // roc-lang: cpp
-// roc-cl: 50727
+// roc-cl: 30729
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs reflection/type.cpp
+struct TypeBase {
+    TypeBase(const char* name, const void* extra);
+    ~TypeBase();
+};
 
-// Candidate translation unit (score above; library headers required).
-#include "reflection/type.h"
+struct ProtectedStringType : TypeBase {
+    ProtectedStringType() : TypeBase("ProtectedString", 0) {}
+    virtual void describe() const;
+};
 
-namespace RBX
+const ProtectedStringType& protectedStringType()
 {
-	namespace Reflection
-	{
-		template<>
-		const Type& Type::singleton<void>()
-		{
-			static Type type("void", typeid(void));
-			return type;
-		}
-
-		Value::Value()
-			: _type(&Type::singleton<void>())
-		{
-		}
-
-		SignatureDescriptor::SignatureDescriptor()
-			: resultType(&Type::singleton<void>())
-		{
-		}
-
-		void SignatureDescriptor::addArgument(const Name& name, const Type& type, const Value& defaultValue)
-		{
-			Item i = {&name, &type, defaultValue};
-			arguments.push_back(i);
-		}
-	}
+    static ProtectedStringType type;
+    return type;
 }

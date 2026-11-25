@@ -357,6 +357,37 @@ void CRobloxWnd::createRenderer(int width, int height)
         g_009326f8 = 0.5f;
 }
 
+// 0045bf60 (WM_WINDOWPOSCHANGING; identity registry ICF-folds this with CXTPSyntaxEditColorSampleText::OnEnable)
+void CRobloxWnd::OnWindowPosChanging(WINDOWPOS* lpwndpos)
+{
+    CWnd::OnWindowPosChanging(lpwndpos);
+    sub_0045beb0();
+}
+
+// 0045bf80 (WM_CLOSE)
+void CRobloxWnd::OnClose()
+{
+    sub_0045beb0();
+    CWnd::OnClose();
+}
+
+// 0045bf30 (WM_KILLFOCUS)
+void CRobloxWnd::OnKillFocus(CWnd* newWnd)
+{
+    if (userInput)
+        userInput->setKeyboardWanted(false);
+    sub_0045beb0();
+    CWnd::OnKillFocus(newWnd);
+}
+
+// 0045aff0 (WM_ERASEBKGND)
+BOOL CRobloxWnd::OnEraseBkgnd(CDC* pDC)
+{
+    if (flag_a8)
+        return CWnd::OnEraseBkgnd(pDC);
+    return TRUE;
+}
+
 // Message map 0081a398: entries 0081a3a8 in this order in the target (11 entries). Handlers without native bodies are
 // declared in CRobloxView.h with their addresses; the link binds them to the converted exact functions.
 BEGIN_MESSAGE_MAP(CRobloxWnd, CWnd)

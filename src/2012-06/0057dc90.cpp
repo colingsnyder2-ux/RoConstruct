@@ -1,18 +1,22 @@
-// from server: 27% by atomic.potato
-extern "C" void* __cdecl sub_98211a(unsigned int);
-extern "C" void __cdecl sub_814bf0(void*);
+// from server: 100% by Xemicl
+// from server: 100% by auto
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: openrbx-client roc_xemicl_5c33a6277f1aaa5f.cpp
 
-struct VManualGlue {
-    void sub_57dc20(void*, void*);
-    void __cdecl sub_57dc90(void*);
+// Candidate translation unit (score above; library headers required).
+#include "util/object.h"
+namespace RBX {
+class Instance : public boost::enable_shared_from_this<Instance> {
+public:
+    virtual ~Instance();
+    static void predelete(Instance*);
 };
-
-void VManualGlue::sub_57dc90(void* arg) {
-    void* p = sub_98211a(0xac);
-    if (p) {
-        sub_814bf0(p);
-    } else {
-        p = 0;
-    }
-    sub_57dc20(p, arg);
+class Created_0057dc90 : public Instance {
+public:
+    Created_0057dc90();
+    char pad[0xa0];
+};
+template boost::shared_ptr<Created_0057dc90> Creatable<Instance>::create<Created_0057dc90>();
 }

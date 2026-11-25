@@ -1,19 +1,22 @@
-// from server: 25% by atomic.potato
-extern "C" void* __cdecl func_0098211a(unsigned int);
-extern "C" void __cdecl func_0068ad50(void*);
-extern "C" void __cdecl func_00402f40(void*, void*, void*);
+// from server: 100% by Xemicl
+// from server: 100% by auto
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: openrbx-client roc_xemicl_3e21fd2f3b7e6372.cpp
 
-struct S {
-    void __cdecl f(void* a);
+// Candidate translation unit (score above; library headers required).
+#include "util/object.h"
+namespace RBX {
+class Instance : public boost::enable_shared_from_this<Instance> {
+public:
+    virtual ~Instance();
+    static void predelete(Instance*);
 };
-
-void S::f(void* a)
-{
-    void* p = func_0098211a(0x180);
-    void* q = 0;
-    if (p) {
-        func_0068ad50(p);
-        q = p;
-    }
-    func_00402f40(this, q, a);
+class Created_00402fb0 : public Instance {
+public:
+    Created_00402fb0();
+    char pad[0x174];
+};
+template boost::shared_ptr<Created_00402fb0> Creatable<Instance>::create<Created_00402fb0>();
 }

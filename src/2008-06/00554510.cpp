@@ -1,249 +1,107 @@
-// from server: 0% by tester
+// from server: 100% by Xemicl
+﻿// from server: 100% by king_originala
+// roc 2008-06 005e9800  unit: RBX::PhysicsService  size: 182 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 005e9800
+//
+// 005e9800  55                   push ebp
+// 005e9801  8bec                 mov ebp, esp
+// 005e9803  6aff                 push -1
+// 005e9805  68e1697d00           push 0x7d69e1
+// 005e980a  64a100000000         mov eax, dword ptr fs:[0]
+// 005e9810  50                   push eax
+// 005e9811  64892500000000       mov dword ptr fs:[0], esp
+// 005e9818  83ec2c               sub esp, 0x2c
+// 005e981b  53                   push ebx
+// 005e981c  56                   push esi
+// 005e981d  33c0                 xor eax, eax
+// 005e981f  57                   push edi
+// 005e9820  8965f0               mov dword ptr [ebp - 0x10], esp
+// 005e9823  8945fc               mov dword ptr [ebp - 4], eax
+// 005e9826  3bc8                 cmp ecx, eax
+// 005e9828  7403                 je 0x5e982d
+// 005e982a  8d41a0               lea eax, [ecx - 0x60]
+// 005e982d  8b7508               mov esi, dword ptr [ebp + 8]
+// 005e9830  8b4d0c               mov ecx, dword ptr [ebp + 0xc]
+// 005e9833  8b11                 mov edx, dword ptr [ecx]
+// 005e9835  56                   push esi
+// 005e9836  50                   push eax
+// 005e9837  8b02                 mov eax, dword ptr [edx]
+// 005e9839  ffd0                 call eax
+// 005e983b  8b4df4               mov ecx, dword ptr [ebp - 0xc]
+// 005e983e  5f                   pop edi
+// 005e983f  5e                   pop esi
+// 005e9840  64890d00000000       mov dword ptr fs:[0], ecx
+// 005e9847  5b                   pop ebx
+// 005e9848  8be5                 mov esp, ebp
+// 005e984a  5d                   pop ebp
+// 005e984b  c20800               ret 8
+// 005e984e  8b4dec               mov ecx, dword ptr [ebp - 0x14]
+// 005e9851  8b11                 mov edx, dword ptr [ecx]
+// 005e9853  8b4204               mov eax, dword ptr [edx + 4]
+// 005e9856  ffd0                 call eax
+// 005e9858  50                   push eax
+// 005e9859  8d4dc8               lea ecx, [ebp - 0x38]
+// 005e985c  ff1558248000         call dword ptr [0x802458]
+// 005e9862  8d4de4               lea ecx, [ebp - 0x1c]
+// 005e9865  bb02000000           mov ebx, 2
+// 005e986a  51                   push ecx
+// 005e986b  885dfc               mov byte ptr [ebp - 4], bl
+// 005e986e  e8adfdf7ff           call 0x569620
+// 005e9873  83c404               add esp, 4
+// 005e9876  837de010             cmp dword ptr [ebp - 0x20], 0x10
+// 005e987a  8b4dcc               mov ecx, dword ptr [ebp - 0x34]
+// 005e987d  c645fc03             mov byte ptr [ebp - 4], 3
+// 005e9881  7303                 jae 0x5e9886
+// 005e9883  8d4dcc               lea ecx, [ebp - 0x34]
+// 005e9886  8b00                 mov eax, dword ptr [eax]
+// 005e9888  51                   push ecx
+// 005e9889  68c4b98000           push 0x80b9c4
+// 005e988e  53                   push ebx
+// 005e988f  50                   push eax
+// 005e9890  e80bfbf7ff           call 0x5693a0
+// 005e9895  83c410               add esp, 0x10
+// 005e9898  8d4de4               lea ecx, [ebp - 0x1c]
+// 005e989b  885dfc               mov byte ptr [ebp - 4], bl
+// 005e989e  e8bd6d0100           call 0x600660
+// 005e98a3  8d4dc8               lea ecx, [ebp - 0x38]
+// 005e98a6  c645fc01             mov byte ptr [ebp - 4], 1
+// 005e98aa  ff1568248000         call dword ptr [0x802468]
+// 005e98b0  b83b985e00           mov eax, 0x5e983b
+// 005e98b5  c3                   ret 
+
+#include <string>
+#include <exception>
+struct StandardOut {
+    void print(int, const char *, ...);
+};
+
+struct OutHandle {
+    StandardOut *pointer;
+    void *count;
+    ~OutHandle();
+    StandardOut *operator->() const { return pointer; }
+};
+
+OutHandle __cdecl singleton();
+
+
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lang: cpp
-// roc-lib: openrbx-client App/util/RunStateOwner.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
-
-#include "util/Timer.h"
-#include "util/boost.hpp"
-#include "v8datamodel/DataModel.h"
-
-#include <algorithm>
-#include <boost/bind.hpp>
-#include <boost/thread/thread.hpp>
-#include <boost/thread/xtime.hpp>
-
-namespace RBX {
-
-const char sRunService[] = "RunService";
-
-Reflection::SignalDesc<RunService, void(float, float)> RunService::event_Stepped("Stepped", "time", "step");
-
-static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "interval");
-
-static Reflection::BoundFuncDesc<RunService, void(), 0> runFunction(
-	&RunService::run, "Run", Reflection::FunctionDescriptor::NeedTrustedCaller
-);
-
-static Reflection::BoundFuncDesc<RunService, void(), 0> pauseFunction(
-	&RunService::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller
-);
-
-static Reflection::BoundFuncDesc<RunService, void(), 0> resetFunction(
-	&RunService::reset, "Reset", Reflection::FunctionDescriptor::NeedTrustedCaller
-);
-
-// FUNCTION: WEBSERVICE 0x10054320
-// FUNCTION: ROBLOX 0x00568ae0
-void RunService::endRunThread(bool join)
+struct Source;
+struct Event { void* value; void* extra; };
+struct Listener { virtual void onEvent(const Source*, Event) = 0; };
+struct Padding { char bytes[0x130]; };
+template <class T, class E> struct Notifier { void raise(E event, Listener* listener) const; int state; };
+struct Source : Padding, Notifier<Source, Event> {};
+template <class T, class E> void Notifier<T,E>::raise(E event, Listener* listener) const
 {
-	stopRequested = true;
-	stateChangedCondition.notify_all();
-
-	if (join) {
-		runThread->join();
-	}
+    try {
+        listener->onEvent(static_cast<const T*>(this), event);
+    }
+    catch (std::exception& error) {
+        std::string what(error.what());
+        singleton()->print(2, "Exception caught in onEvent. %s", what.c_str());
+    }
 }
-
-// FUNCTION: WEBSERVICE 0x100543b0
-// FUNCTION: ROBLOX 0x00568b20
-void RunService::onAncestorChanged(const AncestorChanged& event)
-{
-	if (getParent() == NULL) {
-		endRunThread(false);
-	}
-}
-
-// FUNCTION: ROBLOX 0x00569480
-void RunService::FUN_00569480(RunState state)
-{
-	if (state == RS_RUNNING) {
-		if (!isEditState() && !isPauseState()) {
-			return;
-		}
-	}
-	else if (state == RS_PAUSED) {
-		if (!isRunState()) {
-			return;
-		}
-	}
-
-	setRunState(state);
-}
-
-// FUNCTION: WEBSERVICE 0x10054cb0
-// FUNCTION: ROBLOX 0x005694e0
-void RunService::runProc(boost::shared_ptr<DataModel> dataModel)
-{
-	double desiredTime = getRealTime();
-
-	while (true) {
-		const double timeLeft = desiredTime - getRealTime();
-
-		{
-			boost::mutex::scoped_lock lock(viewMutex);
-
-			for (Views::iterator iter = views.begin(); iter != views.end(); ++iter) {
-				iter->first->AdjustThrottle(timeLeft);
-			}
-		}
-
-		const double waitTime = std::max(0.0, timeLeft);
-
-		boost::xtime xt;
-
-		boost::xtime_get(&xt, boost::TIME_UTC);
-		xt.nsec += (int) (waitTime * 1000000000.0);
-
-		bool signalled;
-
-		{
-			boost::mutex::scoped_lock lock(runMutex);
-
-			signalled = stateChangedCondition.timed_wait(lock, xt);
-		}
-
-		if (!signalled) {
-			boost::xtime xt;
-
-			boost::xtime_get(&xt, boost::TIME_UTC);
-			xt.sec += 1;
-
-			boost::mutex::scoped_lock lock(runMutex);
-
-			if (invalidRunViewCount != 0) {
-				runViewsDoneCondition.timed_wait(lock, xt);
-			}
-		}
-
-		if (timeLeft <= 0.0) {
-			desiredTime = getRealTime();
-		}
-
-		{
-			DataModel::Lock lock(dataModel);
-
-			if (stopRequested) {
-				break;
-			}
-
-			dataModel->step(framePeriod);
-		}
-
-		desiredTime += framePeriod;
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10054fd0
-// FUNCTION: ROBLOX 0x00569800
-void RunService::invalidateRunViews()
-{
-	boost::mutex::scoped_lock lock(viewMutex);
-
-	if (invalidRunViewCount != 0) {
-		return;
-	}
-
-	invalidRunViewCount = views.size();
-
-	if (invalidRunViewCount > 0) {
-		for (Views::iterator iter = views.begin(); iter != views.end(); ++iter) {
-			iter->first->InvalidateRunView();
-			iter->second = false;
-		}
-
-		runViewsDoneCondition.notify_all();
-	}
-}
-
-// FUNCTION: ROBLOX 0x00569930
-void RunService::runViewValid(IRunView* runView)
-{
-	boost::mutex::scoped_lock lock(viewMutex);
-
-	if (invalidRunViewCount == 0) {
-		return;
-	}
-
-	Views::iterator iter = views.find(runView);
-
-	if (iter != views.end() && !iter->second) {
-		invalidRunViewCount--;
-		iter->second = true;
-	}
-
-	if (invalidRunViewCount == 0) {
-		runViewsDoneCondition.notify_all();
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10055380
-// FUNCTION: ROBLOX 0x00569c40
-RunService::~RunService()
-{
-}
-
-// FUNCTION: ROBLOX 0x00569ef0
-void RunService::removeRunView(IRunView* runView)
-{
-	boost::mutex::scoped_lock lock(viewMutex);
-
-	runViewValid(runView);
-	views.erase(runView);
-}
-
-// FUNCTION: ROBLOX 0x0056a100
-void RunService::addRunView(IRunView* runView)
-{
-	boost::mutex::scoped_lock lock(viewMutex);
-
-	views[runView] = true;
-}
-
-// FUNCTION: WEBSERVICE 0x10056950
-// FUNCTION: ROBLOX 0x0056add0
-RunService::RunService()
-	: runState(RS_NORMAL), stopRequested(false), framePeriod(1.0f / 30.0f), runThread(NULL), invalidRunViewCount(0),
-	  runDisabled(false)
-{
-	setName("Run Service");
-}
-
-// FUNCTION: WEBSERVICE 0x100573e0
-// FUNCTION: ROBLOX 0x0056b4e0
-void RunService::start()
-{
-	boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
-
-	runThread.reset(new boost::thread(
-		background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc")
-	));
-}
-
-// FUNCTION: WEBSERVICE 0x100577f0
-// FUNCTION: ROBLOX 0x0056b7d0
-void RunService::raiseHeartbeat(float time, float step)
-{
-	Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-	event_Heartbeat.fire(this, step);
-}
-
-// FUNCTION: WEBSERVICE 0x10057860
-// FUNCTION: ROBLOX 0x0056b840
-void RunService::raiseStepped(float time, float step)
-{
-	Notifier<RunService, Stepped>::raise(Stepped(time, step));
-	event_Stepped.fire(this, time, step);
-}
-
-} // namespace RBX
-
-template class RBX::FactoryProduct<RBX::RunService, RBX::Instance, RBX::sRunService>;
-template class RBX::Reflection::Described<
-	RBX::RunService,
-	RBX::sRunService,
-	RBX::FactoryProduct<RBX::RunService, RBX::Instance, RBX::sRunService> >;
-template class RBX::DescribedCreatable<RBX::RunService, RBX::Instance, RBX::sRunService>;
+template void Notifier<Source,Event>::raise(Event,Listener*) const;

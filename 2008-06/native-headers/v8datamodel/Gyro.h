@@ -11,7 +11,7 @@ namespace RBX
 	{
 	protected:
 		World* world;
-		PartInstance* part;
+		boost::weak_ptr<PartInstance> part; // INFERRED: 2008 BodyMover keeps a weak_ptr at +0x140 (BodyMovers.h; sizeof(BodyMover) 0x148, Rocket 0x190 per create<Rocket> 005c28a0); donor text had a raw pointer (-4 bytes)
 
 	protected:
 		BodyMover(const char* name);

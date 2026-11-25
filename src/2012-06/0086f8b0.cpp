@@ -1,194 +1,107 @@
-// from server: 42% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/FlagStand.cpp
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+// roc 2012-06 008f6a80  unit: RBX::Scale9Frame  size: 177 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 008f6a80
+//
+// 008f6a80  64a100000000         mov eax, dword ptr fs:[0]
+// 008f6a86  6aff                 push -1
+// 008f6a88  6890c9aa00           push 0xaac990
+// 008f6a8d  50                   push eax
+// 008f6a8e  64892500000000       mov dword ptr fs:[0], esp
+// 008f6a95  56                   push esi
+// 008f6a96  c744240c01000000     mov dword ptr [esp + 0xc], 1
+// 008f6a9e  8d711c               lea esi, [ecx + 0x1c]
+// 008f6aa1  e8fa27e1ff           call 0x7092a0
+// 008f6aa6  8906                 mov dword ptr [esi], eax
+// 008f6aa8  e823a9dcff           call 0x6c13d0
+// 008f6aad  8d4c2418             lea ecx, [esp + 0x18]
+// 008f6ab1  51                   push ecx
+// 008f6ab2  50                   push eax
+// 008f6ab3  8d54241c             lea edx, [esp + 0x1c]
+// 008f6ab7  52                   push edx
+// 008f6ab8  e82388d8ff           call 0x67f2e0
+// 008f6abd  83c404               add esp, 4
+// 008f6ac0  50                   push eax
+// 008f6ac1  8bce                 mov ecx, esi
+// 008f6ac3  e8b829e1ff           call 0x709480
+// 008f6ac8  e803a9dcff           call 0x6c13d0
+// 008f6acd  8d4c2460             lea ecx, [esp + 0x60]
+// 008f6ad1  51                   push ecx
+// 008f6ad2  50                   push eax
+// 008f6ad3  8d542464             lea edx, [esp + 0x64]
+// 008f6ad7  52                   push edx
+// 008f6ad8  e80388d8ff           call 0x67f2e0
+// 008f6add  83c404               add esp, 4
+// 008f6ae0  50                   push eax
+// 008f6ae1  8bce                 mov ecx, esi
+// 008f6ae3  e89829e1ff           call 0x709480
+// 008f6ae8  8b44241c             mov eax, dword ptr [esp + 0x1c]
+// 008f6aec  c644240c00           mov byte ptr [esp + 0xc], 0
+// 008f6af1  85c0                 test eax, eax
+// 008f6af3  740d                 je 0x8f6b02
+// 008f6af5  8b5004               mov edx, dword ptr [eax + 4]
+// 008f6af8  8d4c2420             lea ecx, [esp + 0x20]
+// 008f6afc  51                   push ecx
+// 008f6afd  ffd2                 call edx
+// 008f6aff  83c404               add esp, 4
+// 008f6b02  8b442464             mov eax, dword ptr [esp + 0x64]
+// 008f6b06  c744240cffffffff     mov dword ptr [esp + 0xc], 0xffffffff
+// 008f6b0e  85c0                 test eax, eax
+// 008f6b10  740d                 je 0x8f6b1f
+// 008f6b12  8b5004               mov edx, dword ptr [eax + 4]
+// 008f6b15  8d4c2468             lea ecx, [esp + 0x68]
+// 008f6b19  51                   push ecx
+// 008f6b1a  ffd2                 call edx
+// 008f6b1c  83c404               add esp, 4
+// 008f6b1f  8b4c2404             mov ecx, dword ptr [esp + 4]
+// 008f6b23  64890d00000000       mov dword ptr fs:[0], ecx
+// 008f6b2a  5e                   pop esi
+// 008f6b2b  83c40c               add esp, 0xc
+// 008f6b2e  c29000               ret 0x90
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/FlagStand.h"
-#include "v8datamodel/Flag.h"
-#include "humanoid/Humanoid.h"
-#include "Network/Player.h"
-
-namespace RBX
+struct Manager
 {
-	char* sFlagStand = "FlagStand";
+    int pad0;
+    void (*destroy)(void*);
+};
 
-	static Reflection::PropDescriptor<FlagStand, BrickColor> prop_Color("TeamColor", "Data", &FlagStand::getTeamColor, &FlagStand::setTeamColor, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::SignalDesc<FlagStand, void(boost::shared_ptr<Instance>)> event_FlagCaptured("FlagCaptured", "Player");
+struct Functor
+{
+    int head;
+    char tag[4];
+    Manager* manager;
+    char buffer[0x3c];
 
-	FlagStand::FlagStand()
-	{
-		setName("FlagStand");
-	}
+    ~Functor()
+    {
+        if (manager)
+            manager->destroy(buffer);
+    }
+};
 
-	BrickColor FlagStand::getTeamColor() const
-	{
-		return teamColor;
-	}
+struct Container
+{
+    void* node;
+    void insert(void* key, void* where, void* value);
+};
 
-	void FlagStand::setTeamColor(BrickColor color)
-	{
-		teamColor = color;
-		raisePropertyChanged(PartInstance::prop_Color);
-	}
+extern void* buyNode();
+extern void* endNode();
+extern void* keyOf(Functor* item);
 
-	void FlagStand::AffixFlag(Flag* flag)
-	{
-		if (!GetFlag())
-		{
-			flag->setParent(getParent());
+struct Scale9FrameData
+{
+    char pad0[0x1c];
+    Container items;
 
-			PartInstance* handle = flag->getHandle();
+    void init(Functor first, Functor second);
+};
 
-			handle->setCoordinateFrame(G3D::CoordinateFrame());
-
-			G3D::Vector3 location = getLocation().translation;
-			location.y += 0.5f;
-
-			handle->moveToPoint(location);
-			handle->join();
-		}
-	}
-
-	Flag* FlagStand::GetFlag()
-	{
-		Primitive* primitive = getPrimitive();
-
-		for (RigidJoint* current = primitive->getFirstRigid(); current != NULL; current = primitive->getNextRigid(current))
-		{
-			for (int i = 0; i < 2; i++)
-			{
-				Flag* flag = dynamic_cast<Flag*>(PartInstance::fromPrimitive(current->getPrimitive(i))->getParent());
-				if (flag)
-					return flag;
-			}
-		}
-
-		return NULL;
-	}
-
-	bool FlagStand::HasFlag()
-	{
-		return GetFlag() != NULL;
-	}
-
-	void FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		if (!oldProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(newProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->RegisterFlagStand(this);
-
-			standTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1));
-		}
-
-		if (!newProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(oldProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->UnregisterFlagStand(this);
-
-			standTouched.disconnect();
-		}
-	}
-
-	void FlagStand::onEvent_standTouched(boost::shared_ptr<Instance> other)
-	{
-		RBXASSERT(Network::Players::backendProcessing(this, true));
-		Instance* parent = other->getParent();
-
-		Humanoid* humanoid = Humanoid::modelIsCharacter(parent);
-		if (!humanoid)
-			return;
-
-		Flag* flag = parent->findFirstChildOfType<Flag>();
-		if (!flag)
-			return;
-
-		Network::Player* player = Network::Players::getPlayerFromCharacter(parent);
-		if (!player)
-			return;
-
-		if (player->getNeutral() != false)
-			return;
-
-		BrickColor current = teamColor;
-		if (player->getTeamColor() != current)
-			return;
-
-		if (flag->getTeamColor() == current)
-			return;
-
-		event_FlagCaptured.fire(this, shared_from(player));
-
-		FlagStandService* fss = ServiceProvider::create<FlagStandService>(this);
-		if (FlagStand* fs = fss->FindClosestEmptyStandForFlag(flag))
-		{
-			fs->AffixFlag(flag);
-		}
-	}
-
-	const char* const sFlagStandService = "FlagStandService";
-
-	FlagStandService::FlagStandService()
-	{
-		setName("FlagStandService");
-		propArchivable.setValue(this, false);
-	}
-
-	FlagStandService::~FlagStandService() {}
-
-	FlagStand* FlagStandService::FindStandWithFlag(Flag* f)
-	{
-		if (flagStands.empty())
-			return NULL;
-
-		for (std::list<FlagStand*>::const_iterator iter = flagStands.begin(); iter != flagStands.end(); iter++)
-		{
-			if ((*iter)->GetFlag() == f)
-				return *iter;
-		}
-
-		return NULL;
-	}
-
-	void FlagStandService::RegisterFlagStand(FlagStand* s)
-	{
-		flagStands.push_back(s);
-	}
-
-	void FlagStandService::UnregisterFlagStand(FlagStand* s)
-	{
-		flagStands.remove(s);
-	}
-
-	FlagStand* FlagStandService::FindClosestEmptyStandForFlag(Flag* f)
-	{
-		if (flagStands.empty())
-			return NULL;
-
-		std::vector<FlagStand*> possibleLocations;
-		
-		for (std::list<FlagStand*>::const_iterator iter = flagStands.begin(); iter != flagStands.end(); iter++)
-		{
-			if ((*iter)->teamColor.asInt() == f->getTeamColor().asInt())
-			{
-				if (!(*iter)->HasFlag())
-				{
-					possibleLocations.push_back((*iter));
-				}
-			}
-		}
-
-		if (possibleLocations.empty())
-			return NULL;
-
-		return possibleLocations[rand() % possibleLocations.size()];
-	}
+void Scale9FrameData::init(Functor first, Functor second)
+{
+    items.node = buyNode();
+    void* where = endNode();
+    items.insert(keyOf(&first), where, first.tag);
+    where = endNode();
+    items.insert(keyOf(&second), where, second.tag);
 }

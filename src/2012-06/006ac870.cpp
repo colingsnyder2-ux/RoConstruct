@@ -1,162 +1,76 @@
-// from server: 68% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/signals/src/connection.cpp
-
-// Candidate translation unit (score above; library headers required).
-// Boost.Signals library
-
-// Copyright Douglas Gregor 2001-2004. Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#define BOOST_SIGNALS_SOURCE
-
-#include <boost/signals/connection.hpp>
-#include <cassert>
-
-namespace boost {
-  namespace BOOST_SIGNALS_NAMESPACE {
-
-    connection::connection(const connection& other) :
-      con(other.con), controlling_connection(other.controlling_connection)
-    {
-    }
-
-    connection::~connection()
-    {
-      if (controlling_connection) {
-        disconnect();
-      }
-    }
-
-    void
-    connection::reset(BOOST_SIGNALS_NAMESPACE::detail::basic_connection* new_con)
-    {
-      con.reset(new_con);
-    }
-
-    bool connection::operator==(const connection& other) const
-    {
-      return con.get() == other.con.get();
-    }
-
-    bool connection::operator<(const connection& other) const
-    {
-      return con.get() < other.con.get();
-    }
-
-    connection& connection::operator=(const connection& other)
-    {
-      connection(other).swap(*this);
-      return *this;
-    }
-
-    void connection::swap(connection& other)
-    {
-      this->con.swap(other.con);
-      std::swap(this->controlling_connection, other.controlling_connection);
-    }
-
-    void swap(connection& c1, connection& c2)
-    {
-      c1.swap(c2);
-    }
-
-    scoped_connection::scoped_connection(const connection& other) :
-      connection(other),
-      released(false)
-    {
-    }
-
-    scoped_connection::scoped_connection(const scoped_connection& other) :
-      connection(other),
-      released(other.released)
-    {
-    }
-
-    scoped_connection::~scoped_connection()
-    {
-      if (!released) {
-        this->disconnect();
-      }
-    }
-
-    connection scoped_connection::release()
-    {
-      released = true;
-      return *this;
-    }
-
-    void scoped_connection::swap(scoped_connection& other)
-    {
-      this->connection::swap(other);
-      bool other_released = other.released;
-      other.released = this->released;
-      this->released = other_released;
-    }
-
-    void swap(scoped_connection& c1, scoped_connection& c2)
-    {
-      c1.swap(c2);
-    }
-
-    scoped_connection&
-    scoped_connection::operator=(const connection& other)
-    {
-      scoped_connection(other).swap(*this);
-      return *this;
-    }
-
-    scoped_connection&
-    scoped_connection::operator=(const scoped_connection& other)
-    {
-      scoped_connection(other).swap(*this);
-      return *this;
-    }
-
-    void
-    connection::add_bound_object(const BOOST_SIGNALS_NAMESPACE::detail::bound_object& b)
-    {
-      assert(con.get() != 0);
-      con->bound_objects.push_back(b);
-    }
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+// roc 2012-06 008f5f70  unit: RBX::TweenService  size: 101 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 008f5f70
+//
+// 008f5f70  6aff                 push -1
+// 008f5f72  6888f6ac00           push 0xacf688
+// 008f5f77  64a100000000         mov eax, dword ptr fs:[0]
+// 008f5f7d  50                   push eax
+// 008f5f7e  64892500000000       mov dword ptr fs:[0], esp
+// 008f5f85  51                   push ecx
+// 008f5f86  56                   push esi
+// 008f5f87  8bf1                 mov esi, ecx
+// 008f5f89  89742404             mov dword ptr [esp + 4], esi
+// 008f5f8d  e81e02d9ff           call 0x6861b0
+// 008f5f92  c706b4ffbe00         mov dword ptr [esi], 0xbeffb4
+// 008f5f98  c74604acffbe00       mov dword ptr [esi + 4], 0xbeffac
+// 008f5f9f  c74618a0ffbe00       mov dword ptr [esi + 0x18], 0xbeffa0
+// 008f5fa6  c7461c94ffbe00       mov dword ptr [esi + 0x1c], 0xbeff94
+// 008f5fad  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 008f5fb5  e876bfe8ff           call 0x781f30
+// 008f5fba  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 008f5fbe  894628               mov dword ptr [esi + 0x28], eax
+// 008f5fc1  ff051c8ce400         inc dword ptr [0xe48c1c]
+// 008f5fc7  8bc6                 mov eax, esi
+// 008f5fc9  5e                   pop esi
+// 008f5fca  64890d00000000       mov dword ptr fs:[0], ecx
+// 008f5fd1  83c410               add esp, 0x10
+// 008f5fd4  c3                   ret 
 
 
-    void connection::disconnect() const
-    {
-      if (this->connected()) {
-        // Make sure we have a reference to the basic_connection object,
-        // because 'this' may disappear
-        shared_ptr<detail::basic_connection> local_con = con;
+struct InstanceA {
+    virtual void a0();
+};
 
-        void (*signal_disconnect)(void*, void*) = local_con->signal_disconnect;
+struct InstanceB {
+    virtual void b0();
+};
 
-        // Note that this connection no longer exists
-        // Order is important here: we could get into an infinite loop if this
-        // isn't cleared before we try the disconnect.
-        local_con->signal_disconnect = 0;
+struct InstanceBase : InstanceA, InstanceB {
+    InstanceBase();
+    char pad[0x10];
+};
 
-        // Disconnect signal
-        signal_disconnect(local_con->signal, local_con->signal_data);
+struct __declspec(novtable) HeartbeatInstance {
+    virtual void h0();
+};
 
-        // Disconnect all bound objects
-        typedef std::list<BOOST_SIGNALS_NAMESPACE::detail::bound_object>::iterator iterator;
-        for (iterator i = local_con->bound_objects.begin();
-             i != local_con->bound_objects.end(); ++i) {
-          assert(i->disconnect != 0);
-          i->disconnect(i->obj, i->data);
-        }
-      }
-    }
-  } // end namespace boost
-} // end namespace boost
+struct __declspec(novtable) IStepped {
+    virtual void s0();
+};
 
-#ifndef BOOST_MSVC
-// Explicit instantiations to keep everything in the library
-template class std::list<boost::BOOST_SIGNALS_NAMESPACE::detail::bound_object>;
-#endif
+struct Holder {
+    ~Holder();
+    int p;
+};
+
+int fetchTweenToken();
+extern int g_tweenServiceCount;
+
+struct TweenService : InstanceBase, HeartbeatInstance, IStepped {
+    int m20;
+    Holder m24;
+    int token;
+    TweenService();
+    virtual void a0();
+    virtual void b0();
+    virtual void h0();
+    virtual void s0();
+};
+
+TweenService::TweenService()
+    : token(fetchTweenToken())
+{
+    ++g_tweenServiceCount;
+}

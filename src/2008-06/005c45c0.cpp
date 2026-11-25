@@ -1,42 +1,37 @@
-// from server: 0% by Espeon
-// roc-lang: cpp
-// roc-cl: 21022
+// from server: 100% by Xemicl
+﻿// roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_visitdeadline_46db66ed1d73fba8.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include <boost/thread/thread.hpp>
-#include <boost/thread/xtime.hpp>
 #include <string>
-struct Parser {
+
+namespace boost {
+    struct xtime {
+        __int64 sec;
+        int nsec;
+    };
+    int __cdecl xtime_get(xtime* xtp, int clock_type);
+    struct thread {
+        static void __cdecl sleep(const xtime& xt);
+    };
+}
+
+struct Report {
     std::string first;
     std::string second;
-
-    Parser(const std::string&);
-    ~Parser();
-    void parse(std::string&);
+    Report(const std::string& text) : first(text) {}
+    void send(const std::string& message);
 };
 
-__forceinline Parser::Parser(const std::string& source)
-    : first(source), second()
-{
-}
-
-__forceinline Parser::~Parser()
-{
-}
-
-int process(std::string source, int duration)
+int __cdecl wait_and_report(std::string text, int seconds)
 {
     try {
-        std::string result;
-        Parser parser(source);
-        parser.parse(result);
+        std::string message;
+        Report report(text);
+        report.send(message);
     } catch (...) {
     }
-    boost::xtime deadline;
-    boost::xtime_get(&deadline, boost::TIME_UTC);
-    deadline.sec += duration;
-    boost::thread::sleep(deadline);
+    boost::xtime xt;
+    boost::xtime_get(&xt, 1);
+    xt.sec += seconds;
+    boost::thread::sleep(xt);
     return 1;
 }

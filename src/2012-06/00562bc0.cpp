@@ -1,274 +1,65 @@
-// from server: 73% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /GF /GS- /EHsc /MD /Ob1 /Oy-
-// roc-lib: rbxgs-net Server.cpp
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+// roc 2012-06 0077a170  unit: RBX::PAVDebugSettings::?$sp_counted_impl_pd  size: 99 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 0077a170
+//
+// 0077a170  6aff                 push -1
+// 0077a172  682baeab00           push 0xabae2b
+// 0077a177  64a100000000         mov eax, dword ptr fs:[0]
+// 0077a17d  50                   push eax
+// 0077a17e  64892500000000       mov dword ptr fs:[0], esp
+// 0077a185  51                   push ecx
+// 0077a186  8b442418             mov eax, dword ptr [esp + 0x18]
+// 0077a18a  53                   push ebx
+// 0077a18b  56                   push esi
+// 0077a18c  8b74241c             mov esi, dword ptr [esp + 0x1c]
+// 0077a190  57                   push edi
+// 0077a191  8bf9                 mov edi, ecx
+// 0077a193  50                   push eax
+// 0077a194  8d5f04               lea ebx, [edi + 4]
+// 0077a197  56                   push esi
+// 0077a198  8bcb                 mov ecx, ebx
+// 0077a19a  897c2414             mov dword ptr [esp + 0x14], edi
+// 0077a19e  8937                 mov dword ptr [edi], esi
+// 0077a1a0  e83bffffff           call 0x77a0e0
+// 0077a1a5  33c0                 xor eax, eax
+// 0077a1a7  89442418             mov dword ptr [esp + 0x18], eax
+// 0077a1ab  3bf0                 cmp esi, eax
+// 0077a1ad  7403                 je 0x77a1b2
+// 0077a1af  8d4620               lea eax, [esi + 0x20]
+// 0077a1b2  56                   push esi
+// 0077a1b3  50                   push eax
+// 0077a1b4  53                   push ebx
+// 0077a1b5  e82603feff           call 0x75a4e0
+// 0077a1ba  8b4c241c             mov ecx, dword ptr [esp + 0x1c]
+// 0077a1be  83c40c               add esp, 0xc
+// 0077a1c1  8bc7                 mov eax, edi
+// 0077a1c3  5f                   pop edi
+// 0077a1c4  5e                   pop esi
+// 0077a1c5  5b                   pop ebx
+// 0077a1c6  64890d00000000       mov dword ptr fs:[0], ecx
+// 0077a1cd  83c410               add esp, 0x10
+// 0077a1d0  c20800               ret 8
 
-// Candidate translation unit (score above; library headers required).
-#include <RakPeer.h>
-#include "Server.h"
-#include "IdManager.h"
-#include "NetworkSettings.h"
-#include "PacketIds.h"
-#include "API.h"
-#include "util/Http.h"
-#include "util/standardout.h"
-#include <boost/thread.hpp>
+struct Pad { int a[8]; };
+struct Esft { int w; };
+struct T : Pad, Esft { };
+typedef void (*Deleter)(T*);
 
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Server, void(int, int), 2> server_startFunction(&RBX::Network::Server::start, "Start", "port", "threadSleepTime", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Server, void(int), 1>  f_disconnect(&RBX::Network::Server::stop, "Stop", "blockDuration", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Server, int(void), 0> f_GetClientCount(&RBX::Network::Server::getClientCount, "GetClientCount", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
+struct shared_count {
+    int* pi;
+    shared_count(T* p, Deleter d);
+    ~shared_count();
+};
 
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Server, void(std::string, std::string, int), 3> server_setServerManagerPingFunction(&RBX::Network::Server::setServerManagerPing, "SetServerManagerPing", "pingUrl", "publicIP", "thumbnailId", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
+void sp_enable_shared_from_this(shared_count const* pn, Esft const* e, T const* p);
 
-RBX::Reflection::SignalDesc<RBX::Network::Server, void(std::string, boost::shared_ptr<RBX::Instance>)> RBX::Network::Server::event_IncommingConnection("IncommingConnection", "peer", "replicator");
+struct shared_ptr_T {
+    T* px;
+    shared_count pn;
+    shared_ptr_T(T* p, Deleter d);
+};
 
-static bool isReplicator(boost::shared_ptr<RBX::Instance> instance)
-{
-	return dynamic_cast<const RBX::Network::Replicator*>(instance.get()) != NULL;
-}
-
-namespace RBX
-{
-	namespace Network
-	{
-		char* sServer = "NetworkServer";
-
-		Server::Server()
-			: outgoingPort(0)
-		{
-			setName("NetworkServer");
-			rakPeer->SetMaximumIncomingConnections(32);
-			rakPeer->SetIncomingPassword(API::version.c_str(), (int)API::version.size());
-			updateLogger();
-		}
-
-		Server::~Server() {}
-
-		void Server::stop(int blockDuration)
-		{
-			if (rakPeer->IsActive())
-				rakPeer->Shutdown(blockDuration);
-
-			removeAllChildren();
-		}
-
-		void Server::start(int port, int threadSleepTime)
-		{
-			SocketDescriptor d(port, "");
-
-			if (!rakPeer->Startup(32, threadSleepTime, &d, 1))
-				throw std::runtime_error("Failed to start network server");
-
-			outgoingPort = port;
-			StandardOut::singleton()->print(MESSAGE_INFO, "Starting network server on port %d", port);
-
-			unsigned numAddresses = rakPeer->GetNumberOfAddresses();
-
-			StandardOut::singleton()->print(MESSAGE_INFO, "IP addresses:");
-
-			for (unsigned i = 0; i < numAddresses; i++)
-			{
-				StandardOut::singleton()->print(MESSAGE_INFO, "%s", rakPeer->GetLocalIP(i));
-			}
-
-			updateNetworkSimulator();
-		}
-
-		int Server::getClientCount()
-		{
-			if (getChildren())
-			{
-				return std::count_if(getChildren()->begin(), getChildren()->end(), &isReplicator);
-			}
-			else
-			{
-				return 0;
-			}
-		}
-
-		void Server::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-		{
-			if (oldProvider)
-			{
-				players->setConnection(NULL);
-
-				if (rakPeer->IsActive())
-					rakPeer->Shutdown(1000);
-
-				removeAllChildren();
-
-				players.reset();
-			}
-
-			Peer::onServiceProvider(oldProvider, newProvider);
-
-			if (newProvider)
-			{
-				players = shared_from(newProvider->create<Players>());
-
-				players->setConnection(peerInterface());
-			}
-		}
-
-		void Server::setServerManagerPing(std::string pingUrl, std::string publicIP, int thumbnailId)
-		{
-			pingThread.reset(new worker_thread(boost::bind(&Server::ping, boost::weak_ptr<Server>(shared_from(this)), publicIP, thumbnailId, pingUrl), "rbx_serverping"));
-		}
-
-		bool Server::serverIsPresent(const Instance* context, bool testInDatamodel)
-		{
-			const ServiceProvider* sp = ServiceProvider::findServiceProvider(context);
-			RBXASSERT(!testInDatamodel || sp);
-
-			return ServiceProvider::find<Server>(sp) != NULL;
-		}
-
-		PluginReceiveResult Server::OnReceive(RakPeerInterface* peer, Packet* packet)
-		{
-			PluginReceiveResult result = PluginInterface::OnReceive(peer, packet);
-			if (result != RR_CONTINUE_PROCESSING)
-				return result;
-
-			if (packet->data[0] == ID_NEW_INCOMING_CONNECTION)
-			{
-				try
-				{
-					StandardOut::singleton()->print(MESSAGE_INFO, "New connection from %s\n", packet->systemAddress.ToString());
-
-					boost::shared_ptr<ClientProxy> proxy = Creatable::create<ClientProxy>(packet->systemAddress, this);
-					proxy->setParent(this);
-					proxy->sendTop();
-
-					event_IncommingConnection.fire(this, packet->systemAddress.ToString(), proxy);
-				}
-				catch (std::exception& e)
-				{
-					StandardOut::singleton()->print(MESSAGE_ERROR, "Server::OnReceive packet %d: %s", packet->data[0], e.what());
-				}
-			}
-
-			return RR_CONTINUE_PROCESSING;
-		}
-
-		worker_thread::work_result Server::ping(boost::weak_ptr<Server> server, std::string publicIP, int thumbnailId, std::string pingUrl)
-		{
-			try
-			{
-				std::stringstream nameStream;
-
-				{
-					TextXmlWriter writer(nameStream);
-
-					XmlElement root(Name::declare("root", -1));
-
-					boost::shared_ptr<Server> s = server.lock();
-					if (!s)
-						return worker_thread::done;
-
-					root.addChild(new XmlElement(Name::declare("server", -1), publicIP));
-					root.addChild(new XmlElement(Name::declare("port", -1), s->outgoingPort));
-					root.addChild(new XmlElement(Name::declare("numPlayers", -1), s->players->numPlayers()));
-					root.addChild(new XmlElement(Name::declare("maxPlayers", -1), s->players->getMaxPlayers()));
-					root.addChild(new XmlElement(Name::declare("thumbnailId", -1), thumbnailId));
-
-					writer.serialize(&root);
-
-					nameStream.flush();
-				}
-
-				std::string response;
-				Http(pingUrl).post(nameStream, false, response);
-			}
-			catch (std::exception& exp)
-			{
-				StandardOut::singleton()->print(MESSAGE_ERROR, exp);
-			}
-
-			boost::xtime xt;
-			boost::xtime_get(&xt, boost::TIME_UTC);
-
-			xt.sec += 10;
-
-			boost::thread::sleep(xt);
-
-			return worker_thread::more;
-		}
-
-		Server::ClientProxy::ClientProxy(SystemAddress systemAddress, Server* server)
-			: Replicator(systemAddress, server->peerInterface()),
-			  server(server)
-		{
-		}
-		
-		Server::ClientProxy::~ClientProxy() {}
-
-		void Server::ClientProxy::onSentMarker(long id)
-		{
-			sendPhysicsEnabled = true;
-		}
-
-		void Server::ClientProxy::sendTop()
-		{
-			RakNet::BitStream bitStream;
-
-			bitStream << (unsigned char)ID_SET_GLOBALS;
-
-			std::vector<Instance*>::iterator end = replicationContainers.end();
-
-			for (std::vector<Instance*>::iterator iter = replicationContainers.begin(); iter != end; iter++)
-			{
-				RBXASSERT(*iter != NULL);
-
-				serializeId(bitStream, *iter);
-				ServiceProvider::create<IdManager>(this)->addInstance(*iter);
-			}
-
-			peer->Send(&bitStream, MEDIUM_PRIORITY, RELIABLE_ORDERED, 0, remotePlayerId, false);
-		}
-
-		//99.80% matching.
-		PluginReceiveResult Server::ClientProxy::OnReceive(RakPeerInterface* peer, Packet* packet)
-		{
-			if (packet->systemAddress != remotePlayerId)
-				return Replicator::OnReceive(peer, packet);
-
-			if (packet->data[0] != ID_REQUEST_CHARACTER)
-				return Replicator::OnReceive(peer, packet);
-
-			try
-			{
-				RakNet::BitStream inBitstream(packet->data, packet->length, false);
-				inBitstream.IgnoreBits(8);
-
-				Instance* instance;
-				Guid::Data id;
-
-				if (deserializeInstanceRef(inBitstream, instance, id))
-				{
-					if (NetworkSettings::singleton().printInstances)
-					{
-						StandardOut::singleton()->print(MESSAGE_INFO, "Received remotePlayer %s from %s", this, id.readableString(4).c_str(), packet->systemAddress.ToString());
-					}
-
-					remotePlayer = shared_from_dynamic_cast<Player>(instance);
-
-					if (!remotePlayer)
-						throw std::runtime_error("remotePlayer is NULL");
-
-					remotePlayer->loadCharacter();
-				}
-				else
-				{
-					throw std::runtime_error(G3D::format("Couldn't resolve remotePlayer %s from %s", id.readableString(4).c_str(), packet->systemAddress.ToString()));
-				}
-			}
-			catch (std::exception& e)
-			{
-				StandardOut::singleton()->print(MESSAGE_ERROR, "Replicator::ClientProxy::OnReceive packet %d: %s", packet->data[0], e.what());
-			}
-
-			return RR_STOP_PROCESSING_AND_DEALLOCATE;
-		}
-	}
+shared_ptr_T::shared_ptr_T(T* p, Deleter d) : px(p), pn(p, d) {
+    sp_enable_shared_from_this(&pn, p, p);
 }

@@ -1,91 +1,103 @@
-// from server: 0% by EspClaude
-// from server: 81% by Espeon
-// roc-lang: cpp
+// from server: 100% by Xemicl
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espclaude_5e226d55ea09768e.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include <boost/shared_ptr.hpp>
 #include <string>
+#include <vector>
 #include <memory>
-struct String { char storage[28]; __declspec(dllimport) ~String(); __declspec(dllimport) const char* c_str() const; };
-struct OwnerBase {
-    void* proxy;
-    OwnerBase();
-    ~OwnerBase();
-};
-struct Owner : OwnerBase {
-    unsigned int reserved[2];
-    unsigned int first;
-    unsigned int last;
-    unsigned int end;
-    Owner();
-    ~Owner();
+
+extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+#pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement)
+#pragma intrinsic(_InterlockedDecrement)
+
+struct Control {
+    virtual void unused();
+    virtual void dispose();
+    virtual void destroy();
+    volatile long use;
+    volatile long weak;
+    void release()
+    {
+        if (_InterlockedDecrement(&use) == 0) {
+            dispose();
+            if (_InterlockedDecrement(&weak) == 0)
+                destroy();
+        }
+    }
 };
 
-typedef std::auto_ptr<Owner> Holder;
-
-struct Runner {
-    Holder run(int, const char*, const char*, Owner*);
+template <class T>
+struct Shared {
+    T* px;
+    Control* pn;
+    Shared(const Shared& other) : px(other.px), pn(other.pn)
+    {
+        if (pn)
+            _InterlockedIncrement(&pn->use);
+    }
+    ~Shared()
+    {
+        if (pn)
+            pn->release();
+    }
+    template <class U>
+    Shared(const Shared<U>& other) : px(other.px), pn(other.pn)
+    {
+        if (pn)
+            _InterlockedIncrement(&pn->use);
+    }
+    T* operator->() const { return px; }
 };
 
-struct Model {
-    Runner* runner();
+struct Variant {
+    int value;
+    ~Variant();
+};
+struct Tuple : std::vector<Variant> {
+    ~Tuple();
 };
 
-typedef boost::shared_ptr<Model> Result;
-struct Returned : Result {};
+template <class T>
+struct AutoPtr {
+    T* p;
+    ~AutoPtr() { delete p; }
+};
+
+extern const char* (__thiscall *string_c_str)(const std::string*);
+
+struct ScriptContext {
+    std::auto_ptr<Tuple> execute(int security, const char* script, const char* name, Tuple& args);
+};
+
+struct Instance {
+    int reserved;
+};
+
+struct DataModel : Instance {
+    ScriptContext* scriptContext();
+};
 
 struct Lock {
-    unsigned char storage[12];
-    Lock(Result);
+    Lock(Shared<Instance> instance);
     ~Lock();
+    char storage[0xc];
 };
 
-struct Source {
-    void copy(Result*);
+struct Doc {
+    Shared<DataModel> getDataModel() const;
+    int run(std::string script);
 };
 
-struct S {
-    unsigned char padding[0x94];
-    Source* source;
-    Returned f();
-    int execute(String);
-};
-
-inline OwnerBase::OwnerBase()
+int Doc::run(std::string script)
 {
-    void** p = new void*(this);
-    proxy = p;
-}
-
-void lengthError();
-inline void checkCapacity(unsigned int count)
-{
-    if (count > 0x3fffffff)
-        lengthError();
-}
-
-inline Owner::Owner()
-{
-    checkCapacity(0);
-    first = 0;
-    last = 0;
-    end = 0;
-}
-
-
-int S::execute(String text)
-{
-    Lock lock(f());
-    Owner owner;
+    Lock lock(getDataModel());
+    Tuple args;
     try {
-        f()->runner()->run(1, text.c_str(), "Doc script", &owner);
+        getDataModel()->scriptContext()->execute(1, string_c_str(&script), "Doc script", args);
         return 1;
-    }
-    catch (...) {
+    } catch (...) {
         return 0;
     }
 }
-

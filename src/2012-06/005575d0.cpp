@@ -1,116 +1,65 @@
-// from server: 66% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+// roc 2012-06 00781330  unit: RBX::W4WaterCellDirection::?$EnumDesc  size: 127 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 00781330
+//
+// 00781330  6aff                 push -1
+// 00781332  689e49ac00           push 0xac499e
+// 00781337  64a100000000         mov eax, dword ptr fs:[0]
+// 0078133d  50                   push eax
+// 0078133e  64892500000000       mov dword ptr fs:[0], esp
+// 00781345  51                   push ecx
+// 00781346  b801000000           mov eax, 1
+// 0078134b  8405dc18e400         test byte ptr [0xe418dc], al
+// 00781351  7548                 jne 0x78139b
+// 00781353  0905dc18e400         or dword ptr [0xe418dc], eax
+// 00781359  33c9                 xor ecx, ecx
+// 0078135b  51                   push ecx
+// 0078135c  83ec0c               sub esp, 0xc
+// 0078135f  8bc4                 mov eax, esp
+// 00781361  8808                 mov byte ptr [eax], cl
+// 00781363  884801               mov byte ptr [eax + 1], cl
+// 00781366  894804               mov dword ptr [eax + 4], ecx
+// 00781369  c740081b000000       mov dword ptr [eax + 8], 0x1b
+// 00781370  a100febe00           mov eax, dword ptr [0xbefe00]
+// 00781375  89642410             mov dword ptr [esp + 0x10], esp
+// 00781379  50                   push eax
+// 0078137a  894c2420             mov dword ptr [esp + 0x20], ecx
+// 0078137e  e8fd43f8ff           call 0x705780
+// 00781383  50                   push eax
+// 00781384  b9f816e400           mov ecx, 0xe416f8
+// 00781389  e8d297f4ff           call 0x6cab60
+// 0078138e  6860afb100           push 0xb1af60
+// 00781393  e85d1e2000           call 0x9831f5
+// 00781398  83c404               add esp, 4
+// 0078139b  8b4c2404             mov ecx, dword ptr [esp + 4]
+// 0078139f  b8f816e400           mov eax, 0xe416f8
+// 007813a4  64890d00000000       mov dword ptr fs:[0], ecx
+// 007813ab  83c410               add esp, 0x10
+// 007813ae  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
+struct WaterDirArg
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
+    char a;
+    char b;
+    int c;
+    int d;
+    WaterDirArg() : a(0), b(0), c(0), d(27) {}
+    WaterDirArg(const WaterDirArg& o);
+    ~WaterDirArg();
+};
 
-void initMoo()
+extern int g_waterDirName;
+int __stdcall makeWaterDirDesc(int name, WaterDirArg arg, int extra);
+
+struct W4WaterCellDirectionEnumDesc
 {
-	moo2();
-}
+    W4WaterCellDirectionEnumDesc(int x);
+    ~W4WaterCellDirectionEnumDesc();
+};
 
-namespace RBX
+const W4WaterCellDirectionEnumDesc& func_00781330()
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	Name::NamMap::~NamMap()
-	{
-		for (std::map<std::string, Name*>::iterator iter = this->begin(); iter != this->end(); iter++)
-		{
-			delete iter->second;
-		}
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    static W4WaterCellDirectionEnumDesc s(makeWaterDirDesc(g_waterDirName, WaterDirArg(), 0));
+    return s;
 }

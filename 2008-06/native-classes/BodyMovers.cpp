@@ -5,6 +5,7 @@
 // Batch 16: NATIVE_PRIMITIVE_NATIVE_BODY selects the 2008 Body (native-headers/v8kernel/Body2008.h) through the
 // part-embedded Primitive.h and BodyMovers.h -> v8kernel/Connector2008.h; v8kernel/Kernel2008.h declares
 // insertConnector2ndPass 005fad50 / removeConnector2ndPass 005fad80 for BodyMover::onAncestorChanged 006308f0.
+#undef _RELEASEASSERT
 #define NATIVE_PRIMITIVE_NATIVE_BODY
 #include "v8datamodel/BodyMovers.h"
 #include "v8datamodel/Rocket.h"

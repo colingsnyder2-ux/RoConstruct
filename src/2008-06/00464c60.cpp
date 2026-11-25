@@ -1,65 +1,32 @@
-// from server: 0% by Espeon
-// roc-lang: cpp
-// roc-cl: 21022
+// from server: 100% by Xemicl
+﻿// roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_eventdispatchshared_8ab0cbe995a41f96.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include <boost/shared_ptr.hpp>
-// from server: 86% by colin
+struct Value { int a; int b; Value(int x, int y) : a(x), b(y) {} Value(const Value& o) : a(o.a), b(o.b) {} };
 struct EventData;
-
-struct Value
-{
-    void* first;
-    void* second;
-
-    Value(const Value& other);
-    Value(void* a, void* b);
+struct Listener {
+    void unregister(EventData* data);
+    virtual void v0();
+    virtual void v1();
+    virtual void process(int arg, Value instance);
 };
-
-inline Value::Value(const Value& other)
-{
-    *this = other;
-}
-
-inline Value::Value(void* a, void* b)
-{
-    first = a;
-    second = b;
-}
-
-struct Listener
-{
-    virtual void slot0();
-    virtual void slot1();
-    virtual void dispatch(void* source, Value value);
-    void prepare(EventData* event);
-};
-
-struct EventData
-{
-    void* field0;
-    boost::shared_ptr<void> source;
+struct EventData {
+    virtual ~EventData();
+    int arg;
+    int getArg() const { return arg; }
+    int reserved;
     Listener* listener;
-    Value value;
-
-    void invoke();
-    void finish();
+    int x;
+    int y;
+    void fire();
 };
 
-void EventData::invoke()
+void EventData::fire()
 {
-    if (listener)
-    {
-        try
-        {
-            listener->prepare(this);
-            Value temp(value.first, value.second);
-            listener->dispatch(source.get(), temp);
-        }
-        catch (...)
-        {
+    if (listener) {
+        try {
+            listener->unregister(this);
+            listener->process(getArg(), Value(x, y));
+        } catch (...) {
         }
         listener = 0;
     }

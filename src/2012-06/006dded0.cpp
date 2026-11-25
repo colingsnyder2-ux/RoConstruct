@@ -1,486 +1,519 @@
-// from server: 63% by intel
+// from server: 68% by Xemicl
+// from server: 68% by colin
 // roc-lang: cpp
-// roc-cl: 50727
+// roc-cl: 30729
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/DataModel.cpp
+// roc-lib: rbxgs v8tree/Instance.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Lighting.h"
-#include "v8datamodel/DataModel.h"
-#include "v8datamodel/TimeState.h"
-#include "v8datamodel/Workspace.h"
-#include "v8datamodel/Hopper.h"
-#include "v8datamodel/Teams.h"
-#include "v8datamodel/JointsService.h"
-#include "v8datamodel/LocalBackpack.h"
-#include "v8datamodel/GuiBuilder.h"
-#include "script/ScriptContext.h"
-#include "gui/GUI.h"
-#include "util/Log.h"
-#include "util/IMetric.h"
-#include "util/standardout.h"
-#include "util/Http.h"
-#include "util/Sound.h"
+#include "v8tree/Instance.h"
+#include "v8xml/Serializer.h"
+#include "reflection/function.h"
+#include "reflection/property.h"
+#include <algorithm>
 
 namespace RBX
 {
-	const char* const sDataModel = "DataModel";
+	const char* const sInstance = "Instance";
 
-	static Reflection::BoundFuncDesc<DataModel, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(ContentId), 1> getContentFunctionOld(&DataModel::get, "get", "url", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<DataModel, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(ContentId), 1> getContentFunction(&DataModel::get, "GetObjects", "url", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<DataModel, void(ContentId), 1> loadFunction(&DataModel::loadContent, "Load", "url", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<DataModel, void(ContentId), 1> saveFunction(&DataModel::save, "Save", "url", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<DataModel, std::string(std::string, bool), 2> httpGetFunction(&DataModel::httpGet, "HttpGet", "url", "synchronous", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<DataModel, std::string(std::string, std::string, bool), 3> httpPostFunction(&DataModel::httpPost, "HttpPost", "url", "data", "synchronous", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<DataModel, void(void), 0> sanitizeFunction(&DataModel::clearContents, "ClearContent", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<DataModel, void(void), 0> closeFunction(&DataModel::close, "Close", Reflection::FunctionDescriptor::NeedTrustedCaller);
+	Reflection::BoundProp<bool, 1> Instance::propArchivable("archivable", "Behavior", &Instance::archivable, Reflection::PropertyDescriptor::STANDARD); // L14
+	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<Instance>(std::string, bool), 2> findFirstChild(&Instance::findFirstChildByName2, "FindFirstChild", "name", "recursive", false, Reflection::FunctionDescriptor::AnyCaller); // L15
+	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<Instance>(), 0> func_clone(&Instance::clone, "Clone", Reflection::FunctionDescriptor::AnyCaller); // L16
+	static Reflection::BoundFuncDesc<Instance, void(), 0> func_Remove(&Instance::remove, "Remove", Reflection::FunctionDescriptor::AnyCaller); // L17
+	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(), 0> func_childrenOld(&Instance::getChildren2, "children", Reflection::FunctionDescriptor::AnyCaller); // L18
+	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(), 0> func_children(&Instance::getChildren2, "GetChildren", Reflection::FunctionDescriptor::AnyCaller); // L19
+	static Reflection::BoundFuncDesc<Instance, bool(boost::shared_ptr<Instance>), 1> func_isDescendentOf(&Instance::isDescendentOf2, "IsDescendentOf", "ancestor", Reflection::FunctionDescriptor::AnyCaller); // L20
+	static Reflection::BoundFuncDesc<Instance, bool(boost::shared_ptr<Instance>), 1> func_isAncestorOf(&Instance::isAncestorOf2, "IsAncestorOf", "descendent", Reflection::FunctionDescriptor::AnyCaller); // L21
+	static Reflection::PropDescriptor<Instance, std::string> prop_className("className", "Data", &Instance::getClassNameStr, NULL, Reflection::PropertyDescriptor::UI); // L22
 
-	static Reflection::BoundFuncDesc<DataModel, void(std::string), 1> func_SetUIMessage(&DataModel::setUiMessage, "SetMessage", "message", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<DataModel, void(void), 0> func_ClearUIMessage(&DataModel::clearUiMessage, "ClearMessage", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<DataModel, void(void), 0> func_SetUIMessageBrickCount(&DataModel::setUiMessageBrickCount, "SetMessageBrickCount", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	
-	static Reflection::SignalDesc<DataModel, void(void)> event_Closing("Close");
+	const Reflection::PropDescriptor<Instance, std::string> Instance::desc_Name("Name", "Data", &Instance::getName, &Instance::setName, Reflection::PropertyDescriptor::STANDARD); // L24
+	const Reflection::RefPropDescriptor<Instance, Instance> Instance::propParent("Parent", "Data", &Instance::getParent, &Instance::setParent, Reflection::PropertyDescriptor::UI); // L25
 
-#pragma warning (push)
-#pragma warning (disable : 4355) // warning C4355: 'this' : used in base member initializer list
+	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_childAdded("ChildAdded", "child"); // L27
+	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_childRemoved("ChildRemoved", "child"); // L28
+	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_descendentAdded("DescendentAdded", "descendent"); // L29
+	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_descendentRemoving("DescendentRemoving", "descendent"); // L30
+	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_ancestryChanged("AncestryChanged", "child"); // L31
+	Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> Instance::event_propertyChanged("Changed", "property"); // L32 
 
-	DataModel::DataModel()
-		: VerbContainer(NULL),
-		  workspace(Creatable::create<Workspace>(this)),
-		  guiRoot(Creatable::create<GuiRoot>()),
-		  guiHooks(Creatable::create<GuiRoot>()),
-		  timeState(new TimeState),
-		  mutex(new boost::recursive_mutex),
-		  guiTarget(NULL),
-		  forceArrowCursor(true),
-		  dirty(false),
-		  drawId(0)
+	Instance::Instance(const char* name)
+		: assoc(),
+		  parent(NULL),
+		  children(),
+		  name(name),
+		  archivable(true),
+		  guid()
 	{
-		setName("Level");
 	}
 
-#pragma warning (pop)
-
-	DataModel::~DataModel()
+	Instance::Instance()
+		: assoc(),
+		  parent(NULL),
+		  children(),
+		  name("Instance"),
+		  archivable(true),
+		  guid()
 	{
-		Notifier<RunService, RunTransition>::disconnect(runService, this);
-		StandardOut::singleton()->print(MESSAGE_INFO, "~DataModel");
 	}
 
-	bool DataModel::askAddChild(const Instance* instance) const
+	Instance::~Instance()
 	{
-		return dynamic_cast<const Service*>(instance) != NULL;
+		RBXASSERT(!parent);
 	}
 
-	boost::shared_ptr<DataModel> DataModel::createDataModel()
+	bool Instance::askAddChild(const Instance* instance) const
 	{
-		ContentProvider::singleton().clearContentCache();
-		
-		boost::shared_ptr<DataModel> dataModel = Creatable::create<DataModel>();
+		return false;
+	}
 
+	bool Instance::askSetParent(const Instance* instance) const
+	{
+		return false;
+	}
+
+	void Instance::setName(const std::string& value)
+	{
+		if (name != value)
 		{
-			Lock lock(dataModel);
-			dataModel->initializeContents();
-		}
-
-		return dataModel;
-	}
-	
-	void DataModel::onChildAdded(Instance* child)
-	{
-		ServiceProvider::onChildAdded(child);
-
-		if (child->getClassName() == "NetworkClient")
-		{
-			Verb* lockPlayMode = getVerb("LockPlayMode");
-			if (lockPlayMode)
-				lockPlayMode->doIt(NULL);
-
-			workspace->setNullMouseCommand();
+			name = value;
+			raisePropertyChanged(desc_Name);
 		}
 	}
 
-	void DataModel::onEvent(const RunService* source, RunTransition event)
+	void Instance::onDescendentAdded(Instance* instance)
 	{
-		switch (event.newState)
-		{
-		case RS_NORMAL:
-			if (event.oldState == RS_RUNNING)
-				workspace->reset();
+		if (Notifier<Instance, DescendentAdded>::hasListeners())
+			Notifier<Instance, DescendentAdded>::raise(DescendentAdded(instance, instance->parent));
 
-			timeState->clear();
-			break;
-		case RS_RUNNING:
-			workspace->start();
-			break;
-		case RS_PAUSED:
-			workspace->stop();
-			break;
+		event_descendentAdded.fire(this, shared_from(instance));
+	}
+
+	void Instance::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
+	{
+		event_descendentRemoving.fire(this, instance);
+
+		if (Notifier<Instance, DescendentRemoving>::hasListeners())
+			Notifier<Instance, DescendentRemoving>::raise(DescendentRemoving(instance, shared_from(instance->parent)));
+	}
+
+	class RaiseDescendentAdded2
+	{
+	private:
+		const Instance* notifier;
+		Listener<Instance, DescendentAdded>* listener;
+	  
+	public:
+		RaiseDescendentAdded2(const Instance* notifier, Listener<Instance, DescendentAdded>* listener)
+			: notifier(notifier),
+			  listener(listener)
+		{
+		}
+	public:
+		void operator()(Instance* instance)
+		{
+			notifier->Notifier<Instance, DescendentAdded>::raise(DescendentAdded(instance, instance->parent), listener);
+			instance->for_eachChild(*this);
+		}
+	};
+
+	void Instance::onAddListener(Listener<Instance, DescendentAdded>* listener) const
+	{
+		for_eachChild(RaiseDescendentAdded2(this, listener));
+	}
+
+	void Instance::onAddListener(Listener<Instance, ChildAdded>* listener) const
+	{
+		if (children)
+		{
+			boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> c = children.read();
+			for (std::vector<boost::shared_ptr<Instance>>::const_iterator iter = c->begin(); iter != c->end(); iter++)
+			{
+				Notifier<Instance, ChildAdded>::raise(ChildAdded((*iter).get()), listener);
+			}
 		}
 	}
 
-	std::string DataModel::doHttpGet(std::string url)
+	void Instance::removeAllChildren()
 	{
-		std::string result;
-		Http(url.c_str()).get(result);
-
-		return result;
-	}
-
-	std::string DataModel::doHttpPost(std::string url, std::string data)
-	{
-		std::string result;
-		Http(url).post(std::istringstream(data), true, result);
-
-		return result;
-	}
-
-	void DataModel::close()
-	{
-		Verb* exitVerb = getVerb("Exit");
-		if (!exitVerb)
-			throw std::runtime_error("Couldn\'t find Exit Verb");
-
-		exitVerb->doIt(NULL);
-	}
-
-	std::string DataModel::httpGet(std::string url, bool synchronous)
-	{
-		if (synchronous)
+		while (children)
 		{
-			return doHttpGet(url);
+			children->back()->setParent(NULL);
+		}
+	}
+
+	void Instance::onChildChanged(Instance* instance, const PropertyChanged& event)
+	{
+		Instance* p = parent;
+
+		if (p)
+			p->onChildChanged(instance, event);
+	}
+
+	void Instance::readProperties(const XmlElement* container, IReferenceBinder& binder)
+	{
+		for (const XmlElement* i = container->firstChild(); i != NULL; i = i->nextSibling())
+			readProperty(i, binder);
+	}
+
+	void Instance::readChild(const XmlElement* childElement, IReferenceBinder& binder)
+	{
+		const Name* className = NULL;
+
+		if (childElement->findAttributeValue(tag_class, className))
+		{
+			boost::shared_ptr<Instance> childInstance = createChild(*className);
+			if (childInstance)
+			{
+				childInstance->read(childElement, binder);
+				if (childInstance)
+					childInstance->setParent(this);
+			}
+			else
+			{
+				const XmlAttribute* nameRef = childElement->findAttribute(name_referent);
+				if (nameRef)
+					binder.announceID(nameRef, NULL);
+			}
+		}
+	}
+
+	void Instance::readChildren(const XmlElement* element, IReferenceBinder& binder)
+	{
+		if (element)
+		{
+			for (const XmlElement* current = element->findFirstChildByTag(tag_Item); current != NULL; current = element->findNextChildWithSameTag(current))
+			{
+				readChild(current, binder);
+			}
+		}
+	}
+
+	void Instance::read(const XmlElement* element, IReferenceBinder& binder)
+	{
+		const XmlAttribute* nameRef = element->findAttribute(name_referent);
+		if (nameRef)
+		{
+			binder.announceID(nameRef, this);
+		}
+
+		if (element->getTag() == tag_Item)
+		{
+			const XmlElement* properties = element->findFirstChildByTag(tag_Properties);
+			if (properties)
+			{
+				readProperties(properties, binder);
+			}
+			readChildren(element, binder);
 		}
 		else
 		{
-			if (url.size() > 0)
-			{
-				boost::function0<void> f = boost::bind(&DataModel::doHttpGet, url);
-				boost::function0<void> g = boost::bind(&StandardOut::print_exception, f, MESSAGE_ERROR, false);
+			readProperty(element, binder);
+		}
+	}
 
-				boost::thread(background_function(g, "rbx_httpGet"));
+	void Instance::predelete(Instance* instance)
+	{
+		instance->predelete();
+	}
+
+	void Instance::predelete()
+	{
+		RBXASSERT(!parent);
+
+		while (children)
+		{
+			boost::shared_ptr<Instance> child;
+
+			{
+				boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> c = children.write();
+
+				child = c->back();
+
+				signalDescendentRemoving(child, this, NULL);
+
+				this->onChildRemoving(child.get());
+				child->parent = NULL;
+				c->pop_back();
+
+				if (c->empty())
+					children.reset();
 			}
 
-			return "";
+			event_childRemoved.fire(this, child);
+			Notifier<Instance, ChildRemoved>::raise(ChildRemoved(child.get()));
+
+			child->onAncestorChanged(AncestorChanged(child.get(), this, NULL));
+			child->raisePropertyChanged(propParent);
 		}
 	}
 
-	std::string DataModel::httpPost(std::string url, std::string data, bool synchronous)
+	void Instance::onAncestorChanged(const AncestorChanged& event)
 	{
-		if (synchronous)
+		typedef std::vector<boost::shared_ptr<Instance>>::const_iterator Iterator;
+
+		if (children)
 		{
-			return doHttpPost(url, data);
+			boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> r = children.read();
+
+			for (Iterator it = r->begin(); it != r->end(); it++)
+			{
+				(*it)->onAncestorChanged(event);
+			}
 		}
+
+		event_ancestryChanged.fire(this, shared_from(event.child));
+		Notifier<Instance, AncestorChanged>::raise(event);
+	}
+
+	void Instance::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
+	{
+		return;
+	}
+
+	bool Instance::contains(const Instance* child) const
+	{
+		for (; child != NULL; child = child->parent)
+		{
+			if (child == this)
+				return true;
+		}
+
+		return false;
+	}
+
+	boost::shared_ptr<Instance> Instance::createChild(const Name& className)
+	{
+		return AbstractFactoryProduct::create(className);
+	}
+
+	int Instance::findChildIndex(const Instance* instance) const
+	{
+		RBXASSERT(children);
+
+		const std::vector<boost::shared_ptr<Instance>>& c = *children;
+
+		std::vector<boost::shared_ptr<Instance>>::const_iterator found = std::find(c.begin(), c.end(), instance->shared_from_this());
+		return (int)std::distance(c.begin(), found);
+	}
+
+	void Instance::writeChildren(XmlElement* container)
+	{
+		if (children)
+		{
+			const std::vector<boost::shared_ptr<Instance>>& c = *children;
+
+			for (std::vector<boost::shared_ptr<Instance>>::const_iterator it = c.begin(); it != c.end(); it++)
+			{
+				XmlElement* element = (*it)->write();
+				if (element)
+					container->pushBackChild(element);
+			}
+		}
+	}
+
+	Instance* Instance::findFirstChildByName(const std::string& findName) const
+	{
+		if (!children)
+			return NULL;
+
+		const std::vector<boost::shared_ptr<Instance>>& c = *children;
+
+		for (size_t i = 0; i < c.size(); i++)
+		{
+			if (c[i]->name == findName)
+				return c[i].get();
+		}
+
+		return NULL;
+	}
+
+	Instance* Instance::findFirstChildByNameRecursive(const std::string& findName) const
+	{
+		Instance* foundChild = findFirstChildByName(findName);
+		if (foundChild)
+			return foundChild;
+
+		if (!children)
+			return NULL;
+
+		const std::vector<boost::shared_ptr<Instance>>& c = *children;
+
+		for (size_t i = 0; i < c.size(); i++)
+		{
+			Instance* child = c[i]->findFirstChildByNameRecursive(findName);
+			if (child)
+				return child;
+		}
+
+		return NULL;
+	}
+
+	void Instance::signalDescendentAdded(Instance* instance, Instance* beginParent, Instance* oldParent)
+	{
+		for (Instance* parent = beginParent; parent != NULL; parent = parent->getParent())
+		{
+			if (parent == oldParent || parent->isAncestorOf(oldParent))
+				break;
+
+			parent->onDescendentAdded(instance);
+		}
+
+		boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> c = instance->children.read();
+
+		if (c)
+		{
+			for (std::vector<boost::shared_ptr<Instance>>::const_iterator iter = c->begin(); iter != c->end(); iter++)
+			{
+				signalDescendentAdded((*iter).get(), beginParent, oldParent);
+			}
+		}
+	}
+
+	void Instance::signalDescendentRemoving(const boost::shared_ptr<Instance>& instance, Instance* beginParent, Instance* newParent)
+	{
+		for (Instance* parent = beginParent; parent != NULL; parent = parent->getParent())
+		{
+			if (parent == newParent || parent->isAncestorOf(newParent))
+				break;
+
+			parent->onDescendentRemoving(instance);
+		}
+
+		boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> c = instance->children.read();
+
+		if (c)
+		{
+			for (std::vector<boost::shared_ptr<Instance>>::const_iterator iter = c->begin(); iter != c->end(); iter++)
+			{
+				signalDescendentRemoving((*iter), beginParent, newParent);
+			}
+		}
+	}
+
+	void Instance::readProperty(const XmlElement* propertyElement, IReferenceBinder& binder)
+	{
+		const Name* value = NULL;
+
+		if (propertyElement->findAttributeValue(name_name, value))
+		{
+			Reflection::PropertyIterator iter = findProperty(*value);
+
+			if (iter != properties_end())
+			{
+				(*iter).read(propertyElement, binder);
+			}
+		}
+	}
+
+	XmlElement* Instance::write()
+	{
+		if (archivable)
+		{
+			if (getClassName() != Name::getNullName())
+			{
+				XmlElement* element = new XmlElement(tag_Item);
+				element->addAttribute(tag_class, &getClassName());
+				element->addAttribute(name_referent, InstanceHandle(this));
+
+				writeProperties(element->addChild(tag_Properties));
+				writeChildren(element);
+
+				return element;
+			}
+		}
+
+		return new XmlElement(tag_External, InstanceHandle(this));
+	}
+  
+	void Instance::setParent(Instance* newParent)
+	{
+		if (newParent == parent)
+			return;
+
+		boost::shared_ptr<Instance> oldParent = shared_from(parent);
+		boost::shared_ptr<Instance> self = this->shared_from_this();
+
+		if (oldParent)
+		{
+			if (!oldParent->contains(newParent))
+				signalDescendentRemoving(self, oldParent.get(), newParent);
+
+			oldParent->onChildRemoving(this);
+
+			boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& c = oldParent->children.write();
+			c->erase(std::find(c->begin(), c->end(), self));
+
+			if (c->empty())
+				oldParent->children.reset();
+
+			parent = NULL;
+
+			event_childRemoved.fire(oldParent.get(), self);
+			oldParent->Notifier<Instance, ChildRemoved>::raise(ChildRemoved(this));
+
+			oldParent->onChildRemoved(this);
+
+			if (oldParent->numChildren() == 0)
+				oldParent->onLastChildRemoved();
+		}
+
+		if (newParent)
+		{
+			newParent->children.write()->push_back(self);
+		}
+
+		parent = newParent;
+
+		if (newParent)
+		{
+			newParent->onChildAdded(this);
+
+			if (!newParent->contains(oldParent.get()))
+				signalDescendentAdded(this, newParent, oldParent.get());
+
+			newParent->Notifier<Instance, ChildAdded>::raise(ChildAdded(this));
+			event_childAdded.fire(newParent, self);
+		}
+
+		onAncestorChanged(AncestorChanged(this, oldParent.get(), newParent));
+		raisePropertyChanged(propParent);
+	}
+
+	void Instance::writeProperties(XmlElement* container) const
+	{
+		for (Reflection::ConstPropertyIterator iter = this->properties_begin(); iter != this->properties_end(); ++iter)
+		{
+			const Reflection::PropertyDescriptor& descriptor = (*iter).getDescriptor();
+			XmlElement* element = descriptor.write(this, false);
+			if (element)
+				container->addChild(element);
+		}
+	}
+
+	boost::shared_ptr<Instance> Instance::fromXmlRoot(XmlElement* xmlRoot)
+	{		
+		SerializerV2::isolateHandles(xmlRoot);
+
+		Serializer serializer;
+		std::vector<boost::shared_ptr<Instance>> newInstances;
+		serializer.loadInstances(xmlRoot, newInstances);
+
+		if (newInstances.empty())
+			return boost::shared_ptr<Instance>();
 		else
-		{
-			boost::function0<void> f = boost::bind(&DataModel::doHttpPost, url, data);
-			boost::function0<void> g = boost::bind(&StandardOut::print_exception, f, MESSAGE_ERROR, false);
-
-			boost::thread(background_function(g, "rbx_httpPost"));
-
-			return "";
-		}
+			return newInstances.front();
 	}
 
-	void DataModel::buildGui(Adorn* adorn)
+	XmlElement* Instance::toNewXmlRoot(Instance* instance) // this is a guess
 	{
-		RBXASSERT(guiRoot->numChildren() == 0);
-		GuiBuilder().buildGui(adorn, this, workspace.get());
+		XmlElement* root = SerializerV2::newRootElement();
+		root->addChild(instance->write());
+		return root;
 	}
 
-	void DataModel::clearContents()
+	boost::shared_ptr<Instance> Instance::clone()
 	{
-		workspace->setMouseCommand(NULL);
-		workspace->removeAllChildren();
-		workspace->setCamera(NULL);
-		
-		starterPackService->removeAllChildren();
-
-		Teams* teams = ServiceProvider::find<Teams>(this);
-		if (teams)
-			teams->removeAllChildren();
-
-		Lighting* lighting = ServiceProvider::find<Lighting>(this);
-		if (lighting)
-			lighting->removeAllChildren();
-
-		ScriptContext* script = ServiceProvider::find<ScriptContext>(this);
-		if (script)
-		{
-			script->closeState();
-			ScriptContext::propScriptsDisabled.setValue(script, false);
-		}
-	}
-
-	void DataModel::loadContent(ContentId contentId)
-	{
-		std::auto_ptr<std::istream> stream = ContentProvider::singleton().getContent(contentId);
-		StandardOut::singleton()->print(MESSAGE_INFO, "DataModel Loading %s", contentId.c_str());
-
-		SerializerV2 serializer;
-		serializer.load(*stream, this);
-
-		workspace->joinAllHack();
-	}
-
-	void DataModel::save(ContentId contentId)
-	{
-		std::stringstream stream;
-
-		{
-			boost::scoped_ptr<XmlElement> root(SerializerV2::newRootElement());
-			writeChildren(root.get());
-
-			TextXmlWriterWithEmbeddedContent machine(stream);
-			machine.serialize(root.get());
-
-			stream.flush();
-		}
-		
-		std::string response;
-		Http(contentId.toString()).post(stream, true, response);
-	}
-
-	boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> DataModel::get(ContentId contentId)
-	{
-		std::auto_ptr<std::istream> stream = ContentProvider::singleton().getContent(contentId);
-
-		TextXmlParser machine(stream->rdbuf());
-		std::auto_ptr<XmlElement> root = machine.parse();
-
-		boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> result(new std::vector<boost::shared_ptr<Instance>>);
-
-		SerializerV2 serializer;
-		serializer.loadInstances(root.get(), *result);
-
-		return result;
-	}
-
-	static std::string report(const G3D::Stopwatch& timer)
-	{
-		if (timer.smoothElapsedTime() > 0.0f)
-		{
-			std::string t = Log::formatTime(timer.smoothElapsedTime());
-			char buffer[256];
-			sprintf(buffer, "%s (%.3gfps)", t.c_str(), 1.0f / timer.smoothElapsedTime());
-
-			return std::string(buffer);
-		}
-		else
-		{
-			return Log::formatTime(timer.smoothElapsedTime());
-		}
-	}
-
-	std::string DataModel::evaluate(const std::string& valueName) const
-	{
-		World* world = workspace->getWorld();
-
-		if (valueName == "timer")
-		{
-			float time = timeState->totalVirtualTime;
-			return StringConverter<float>::convertToString(time);
-		}
-		else if (valueName == "FPS")
-		{
-			return G3D::format("%.3g", timeState->fpsStopwatch.smoothFPS());
-		}
-		else if (valueName == "simDC")
-		{
-			return report(timeState->simulationStopwatch);
-		}
-		else if (valueName == "drawId")
-		{
-			return StringConverter<int>::convertToString(drawId);
-		}
-		else if (valueName == "graphicsMode")
-		{
-			return tempMetric->getMetric(valueName);
-		}
-		else if (valueName == "culling")
-		{
-			return tempMetric->getMetric(valueName);
-		}
-		else if (valueName == "cullingPercent")
-		{
-			return tempMetric->getMetric(valueName);
-		}
-		else if (valueName == "antiAliasing")
-		{
-			return tempMetric->getMetric(valueName);
-		}
-		else if (valueName == "bevels")
-		{
-			return tempMetric->getMetric(valueName);
-		}
-		else if (valueName == "videoMemory")
-		{
-			return tempMetric->getMetric(valueName);
-		}
-		else if (valueName == "GfxTime")
-		{
-			return tempMetric->getMetric(valueName);
-		}
-		else if (valueName == "numPrimitives")
-		{
-			return StringConverter<int>::convertToString(world->getPrimitives().size());
-		}
-		else if (valueName == "numJoints")
-		{
-			return StringConverter<int>::convertToString(world->getNumJoints());
-		}
-		else if (valueName == "numContacts")
-		{
-			return StringConverter<int>::convertToString(world->getNumContacts());
-		}
-		else if (valueName == "numContactsInCollisionStage")
-		{
-			return StringConverter<int>::convertToString(world->getMetric(IWorldStage::NUM_CONTACTSTAGE_CONTACTS));
-		}
-		else if (valueName == "numSteppingContacts")
-		{
-			return StringConverter<int>::convertToString(world->getMetric(IWorldStage::NUM_STEPPING_CONTACTS));
-		}
-		else if (valueName == "numTouchingContacts")
-		{
-			return StringConverter<int>::convertToString(world->getMetric(IWorldStage::NUM_TOUCHING_CONTACTS));
-		}
-		else if (valueName == "maxTreeDepth")
-		{
-			return StringConverter<int>::convertToString(world->getMetric(IWorldStage::MAX_TREE_DEPTH));
-		}
-		else if (valueName == "contactPairHitRatio")
-		{
-			return StringConverter<float>::convertToString(BlockBlockContact::contactPairHitRatio());
-		}
-		else if (valueName == "numLinkCalls")
-		{
-			return StringConverter<int>::convertToString(world->getNumLinkCalls());
-		}
-		else if (valueName == "numHashNodes")
-		{
-			return StringConverter<int>::convertToString(world->getNumHashNodes());
-		}
-		else if (valueName == "maxBucketSize")
-		{
-			return StringConverter<int>::convertToString(world->getMaxBucketSize());
-		}
-		else if (valueName == "numBodies")
-		{
-			return StringConverter<int>::convertToString(world->getNumBodies());
-		}
-		else if (valueName == "numConstraints")
-		{
-			return StringConverter<int>::convertToString(world->getNumConstraints());
-		}
-		else if (valueName == "numPoints")
-		{
-			return StringConverter<int>::convertToString(world->getNumPoints());
-		}
-		else if (valueName == "energyBody")
-		{
-			return StringConverter<float>::convertToString(world->getKernel().bodyKineticEnergy());
-		}
-		else if (valueName == "energyConnector")
-		{
-			return StringConverter<float>::convertToString(world->getKernel().connectorSpringEnergy());
-		}
-		else if (valueName == "energyTotal")
-		{
-			return StringConverter<float>::convertToString(world->getKernel().totalKineticEnergy());
-		}
-		else
-		{
-			return "?";
-		}
-	}
-
-	void DataModel::initializeContents()
-	{
-		workspace->setParent(this);
-		guiRoot->setParent(this);
-		guiHooks->setParent(this);
-
-		localBackpack = shared_from(ServiceProvider::create<LocalBackpack>());
-		starterPackService = shared_from(ServiceProvider::create<StarterPackService>());
-		runService = shared_from(ServiceProvider::create<RunService>());
-		ServiceProvider::create<Soundscape::SoundService>();
-
-		workspace->setDefaultMouseCommand();
-		workspace->setVerbParent(this);
-
-		runService->start();
-		Notifier<RunService, RunTransition>::connect(runService, this);
-
-		ServiceProvider::create<JointsService>();
-	}
-
-	float DataModel::step(float timeInterval)
-	{
-		workspace->profileRun->sample(GetCurrentThread());
-		Profiling::Mark mark = Profiling::Mark(*workspace->profileWorkspaceStep.get(), true);
-
-		timeState->fpsStopwatch.tick();
-		timeState->fpsStopwatch.tock();
-
-		if (runService->isRunState())
-		{
-			timeState->simulationStopwatch.tick();
-			timeInterval = workspace->step(timeInterval);
-			timeState->simulationStopwatch.tock();
-
-			timeState->totalVirtualTime += timeInterval;
-
-			Profiling::Mark mark = Profiling::Mark(*workspace->profileRunServiceStepped.get(), true);
-
-			float totalVirtualTime = timeState->totalVirtualTime;
-			runService->raiseStepped(totalVirtualTime, timeInterval);
-		}
-
-		{
-			Profiling::Mark mark = Profiling::Mark(*workspace->profileRunServiceHeartbeat.get(), true);
-
-			float totalVirtualTime = timeState->totalVirtualTime;
-			runService->raiseHeartbeat(totalVirtualTime, timeInterval);
-		}
-
-		workspace->getCamera()->onHeartbeat();
-		localBackpack->onHeartbeat();
-
-		return timeInterval;
-	}
-
-	void DataModel::closeDataModel(boost::shared_ptr<DataModel> dataModel, bool joinRunThread)
-	{
-		boost::shared_ptr<RunService> runService;
-		{
-			DataModel::Lock lock(dataModel);
-			runService = dataModel->runService;
-		}
-
-		if (runService)
-			runService->endRunThread(joinRunThread);
-
-		DataModel::Lock lock(dataModel);
-
-		dataModel->Notifier<ServiceProvider, Closing>::raise(Closing());
-		event_Closing.fire(dataModel.get());
-
-		dataModel->clearContents();
-		dataModel->removeAllChildren();
-		dataModel->clearServices();
-	}
-
-	void DataModel::Lock::doLock(const DataModel* dataModel)
-	{
-		if (dataModel)
-		{
-			mutex = dataModel->mutex;
-			lock = new boost::recursive_mutex::scoped_lock(*mutex);
-		}
-	}
-
-	DataModel::Lock::~Lock()
-	{
-		delete lock;
+		boost::scoped_ptr<XmlElement> root(toNewXmlRoot(this));
+		return fromXmlRoot(root.get());
 	}
 }

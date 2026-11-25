@@ -12,7 +12,6 @@ public:
 };
 }
 
-inline void* operator new(size_t, void* p) { return p; }
 
 extern char g_0084d688[];
 extern char g_0097db0c[];

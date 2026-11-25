@@ -488,3 +488,4 @@ template struct boost::detail::function::function_obj_invoker0<boost::_bi::bind_
 #include "util/Profiling.h"
 template struct boost::detail::function::function_obj_invoker0<boost::_bi::bind_t<double, double (*)(RBX::Profiling::CodeProfiler*), boost::_bi::list1<boost::_bi::value<RBX::Profiling::CodeProfiler*> > >, double>;
 template struct boost::detail::function::function_obj_invoker0<boost::_bi::bind_t<int, boost::_mfi::cmf1<int, RBX::World, RBX::IWorldStage::MetricType>, boost::_bi::list2<boost::_bi::value<const RBX::World*>, boost::_bi::value<RBX::IWorldStage::MetricType> > >, int>;
+template struct boost::detail::function::functor_manager<boost::_bi::bind_t<int, boost::_mfi::cmf1<int, RBX::World, RBX::IWorldStage::MetricType>, boost::_bi::list2<boost::_bi::value<const RBX::World*>, boost::_bi::value<RBX::IWorldStage::MetricType> > >, std::allocator<boost::function_base> >;

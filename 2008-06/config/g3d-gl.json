@@ -12,7 +12,7 @@
    "files": "GLG3Dcpp/*.cpp",
    "direct": true,
    "extra_defines": "NO_SDL_MAIN",
-   "flags": "/O2 /GS- /EHsc /MD"
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast"
   },
   {
    "name": "tonemap",
@@ -21,7 +21,7 @@
    "files": "contrib/ArticulatedModel/ToneMap.cpp",
    "direct": true,
    "extra_defines": "NO_SDL_MAIN",
-   "flags": "/O2 /GS- /EHsc /MD"
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast"
   }
  ],
  "test": "g3d_gl",

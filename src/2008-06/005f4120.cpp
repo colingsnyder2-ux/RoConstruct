@@ -1,4 +1,7 @@
-// from server: 92% by king_originala
+// from server: 100% by Xemicl
+﻿#include <exception>
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
 typedef void* (__thiscall *AppendFunction)(void*, const char*, unsigned int);
 typedef int (__thiscall *SyncFunction)(void*);
 
@@ -19,29 +22,39 @@ struct S {
     char* buffer;
     int capacity;
 
+    char* pbase() const { return *first; }
+    char* pptr() const { return *next; }
+    void setp(char* b, char* e) { *first = b; *next = b; *remaining = e - b; }
+    int write(const char* s, int n) { basic_string_append(string, s, n); return n; }
+    void sync_impl()
+    {
+        int avail, amt;
+        if ((avail = static_cast<int>(pptr() - pbase())) > 0) {
+            if ((amt = write(pbase(), avail)) == avail)
+                setp(buffer, buffer + capacity);
+            else {
+                const char* ptr = pptr();
+                setp(buffer + amt, buffer + capacity);
+            }
+        }
+    }
+    bool flush(void* sb)
+    {
+        bool result = true;
+        if (sb && basic_streambuf_pubsync(sb) == -1)
+            result = false;
+        return result;
+    }
     int sync();
 };
 
 int S::sync()
 {
-    char* finish = *next;
-    char* start = *first;
-    int count = finish - start;
     try {
-        if (count > 0) {
-            basic_string_append(string, start, count);
-            char* begin = buffer;
-            char* end = begin + capacity;
-            *first = begin;
-            *next = begin;
-            *remaining = end - begin;
-        }
-        if (streambuf)
-            basic_streambuf_pubsync(streambuf);
-    }
-    catch (...) {
+        sync_impl();
+        flush(streambuf);
+        return 0;
+    } catch (std::exception&) {
         return -1;
     }
-    return 0;
 }
-

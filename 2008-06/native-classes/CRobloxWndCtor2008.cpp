@@ -15,18 +15,16 @@ CRobloxWnd::CRobloxWnd(int arg)
 	slots_64_6b[0] = 0;
 	slots_64_6b[1] = 0;
 	dataModel = 0;
-	dataModelPtr.reset();
 	slot_78 = 0;
 	slot_7c = 0;
 	flag_80 = true;
 	userInput = 0;
 	pendingThrottle = 666.0;
-	flags_88_8b[0] = (arg != 0);   // INFERRED: the exe stores the low byte of the argument
+	flags_88_8b[0] = static_cast<unsigned char>(arg);
 	flags_88_8b[1] = false;
 	flags_88_8b[2] = false;
 	flags_88_8b[3] = true;
-	void* profilerMemory = operator new(0xc048);
-	source_98 = profilerMemory ? new (profilerMemory) RBX::Profiling::CodeProfiler("Render") : 0;
+	source_98 = new RBX::Profiling::CodeProfiler("Render");
 	flag_9c = false;
 	slot_a0 = 0;
 	adorn = 0;
@@ -36,8 +34,9 @@ CRobloxWnd::CRobloxWnd(int arg)
 	slot_b4 = 0;
 	visualEngine = 0;
 	retries_60 = 0;
+	CRenderSettings& settings = CRenderSettings::singleton();
 	if (!nativeStartupMode)
-		nativeStartupMode = CRenderSettings::singleton().graphicsMode;
+		nativeStartupMode = settings.graphicsMode;
 	mode_5c = nativeStartupMode;
 	if (mode_5c == 1)
 		mode_5c = 3;

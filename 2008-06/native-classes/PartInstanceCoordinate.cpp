@@ -6,6 +6,10 @@
 #include "v8datamodel/Workspace.h"
 
 namespace RBX {
+// 007f4330 (static init, 0x976198): "CFrame" ("Data"), flags 5 (STANDARD), getter 00598cb0, setter 0059d8a0.
+const Reflection::PropDescriptor<PartInstance, G3D::CoordinateFrame> PartInstance::prop_CFrame(
+    "CFrame", "Data", &PartInstance::getCoordinateFrame, &PartInstance::setCoordinateFrame,
+    Reflection::PropertyDescriptor::STANDARD);
 static Reflection::PropDescriptor<PartInstance, G3D::Vector3> prop_PositionUi(
     "Position", "Data", &PartInstance::getTranslationUi, &PartInstance::setTranslationUi,
     Reflection::PropertyDescriptor::UI);

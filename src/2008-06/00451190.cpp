@@ -1,31 +1,40 @@
-// from server: 88% by colin
-// from server: 88% by king_originala
+// from server: 100% by Xemicl
+﻿// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
 struct Buffer {
-    char unused;
+    __declspec(dllimport) int pubsync();
 };
-
-extern int (__thiscall *pubsync)(Buffer *);
-
 struct Stream {
     int padding;
     Buffer buffer;
 };
-
-struct S {
-    Stream *volatile *stream;
-    volatile unsigned int flags;
-    ~S();
+struct Device {
+    Stream* stream;
 };
 
-S::~S()
+inline void close(Device& device, int which)
+{
+    Stream* stream = device.stream;
+    if (which & 2)
+        stream->buffer.pubsync();
+}
+
+struct external_device_closer {
+    ~external_device_closer();
+    Device* device_;
+    int which_;
+    bool dummy_;
+    bool& nothrow_;
+};
+
+external_device_closer::~external_device_closer()
 {
     try {
-        unsigned int state = flags;
-        Stream *p = *stream;
-        if (state & 2)
-            pubsync(&p->buffer);
-    }
-    catch (...) {
-        flags |= 4;
+        close(*device_, which_);
+    } catch (...) {
+        if (!nothrow_) {
+            nothrow_ = true;
+            throw;
+        }
     }
 }

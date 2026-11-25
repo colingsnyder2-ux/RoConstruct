@@ -1,22 +1,22 @@
-// from server: 23% by atomic.potato
-extern "C" void* __cdecl sub_98211a(unsigned int);
-extern "C" void __cdecl sub_53e4a0();
+// from server: 100% by Xemicl
+// from server: 100% by auto
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: openrbx-client roc_xemicl_ca0fe0a2e95323fc.cpp
 
-struct Inner {
-    void ctor();
+// Candidate translation unit (score above; library headers required).
+#include "util/object.h"
+namespace RBX {
+class Instance : public boost::enable_shared_from_this<Instance> {
+public:
+    virtual ~Instance();
+    static void predelete(Instance*);
 };
-
-struct Outer {
-    void __cdecl method(Inner* p, int a);
-    void method2(Inner* p, int a);
+class Created_0040a100 : public Instance {
+public:
+    Created_0040a100();
+    char pad[0x174];
 };
-
-void Outer::method(Inner* p, int a) {
-    void* mem = sub_98211a(0x180);
-    Inner* obj = 0;
-    if (mem) {
-        obj = (Inner*)mem;
-        sub_53e4a0();
-    }
-    method2(obj, a);
+template boost::shared_ptr<Created_0040a100> Creatable<Instance>::create<Created_0040a100>();
 }

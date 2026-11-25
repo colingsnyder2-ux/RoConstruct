@@ -1,6 +1,19 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 #include "v8xml/XmlElement.h"
 
+const RBX::Name& value_IDREF_null = RBX::Name::declare("null", 1);     // 007f37c0
+const RBX::Name& value_IDREF_nil = RBX::Name::declare("nil", 2);       // 007f37e0
+const RBX::Name& name_referent = RBX::Name::declare("referent", 7);    // 007f3880
+const RBX::Name& name_name = RBX::Name::declare("name", 14);           // 007f3940
+const RBX::Name& tag_xmlnsxsi = RBX::Name::declare("xmlns:xsi", 5);    // 007f3840
+const RBX::Name& tag_roblox = RBX::Name::declare("roblox", 9);         // 007f38a0
+const RBX::Name& tag_version = RBX::Name::declare("version", 10);      // 007f38c0
+const RBX::Name& tag_External = RBX::Name::declare("External", 11);    // 007f38e0
+const RBX::Name& tag_class = RBX::Name::declare("class", 38);          // 007f3b60
+const RBX::Name& tag_Item = RBX::Name::declare("Item", 39);            // 007f3b80
+const RBX::Name& tag_Properties = RBX::Name::declare("Properties", 40);// 007f3ba0
+const RBX::Name& tag_xsinoNamespaceSchemaLocation = RBX::Name::declare("xsi:noNamespaceSchemaLocation", 49); // 007f3c40
+
 bool XmlNameValuePair::isValueEqual(const RBX::Name* value) const
 {
 	switch (valueType) {

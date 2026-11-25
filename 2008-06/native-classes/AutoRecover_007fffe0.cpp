@@ -4,5 +4,5 @@
 // INFERRED: accessor names getSkyboxRt/setSkyboxRt (property name is "SkyboxRt"); the previous getSkyRt/setSkyRt did not exist in Sky.h.
 // INFERRED: constructor arguments; the atexit destructor does not depend on them.
 namespace RBX {
-Reflection::BoundProp<TextureId, 1> Sky::prop_SkyRt("SkyboxRt", "Appearance", &Sky::getSkyboxRt, &Sky::setSkyboxRt);
+Reflection::BoundProp<TextureId, 1> Sky::prop_SkyRt("SkyboxRt", "Appearance", &Sky::skyRt, Reflection::PropertyDescriptor::STANDARD);
 }

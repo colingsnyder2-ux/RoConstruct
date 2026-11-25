@@ -1,668 +1,221 @@
-// from server: 48% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8tree/Instance.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8tree/Instance.h"
-
-#include "decomp.h"
-#include "v8xml/SerializerV2.h"
-
-#include <algorithm>
-#include <boost/bind.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <cstddef>
-
-namespace RBX {
-
-const char sInstance[] = "Instance";
-
-Reflection::BoundProp<bool, 1> Instance::propArchivable("archivable", "Behavior", &Instance::archivable);
-
-static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<Instance>(std::string, bool), 2> findFirstChild(
-	&Instance::findFirstChildByName2,
-	"FindFirstChild",
-	"name",
-	"recursive",
-	false,
-	Reflection::FunctionDescriptor::AnyCaller
-);
-
-static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<Instance>(), 0> func_clone(
-	&Instance::clone, "Clone", Reflection::FunctionDescriptor::AnyCaller
-);
-
-static Reflection::BoundFuncDesc<Instance, void(), 0> func_Remove(
-	&Instance::remove, "Remove", Reflection::FunctionDescriptor::AnyCaller
-);
-
-static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<const std::vector<shared_ptr<Instance> > >(), 0>
-	func_childrenOld(&Instance::getChildren2, "children", Reflection::FunctionDescriptor::AnyCaller);
-static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<const std::vector<shared_ptr<Instance> > >(), 0>
-	func_children(&Instance::getChildren2, "GetChildren", Reflection::FunctionDescriptor::AnyCaller);
-static Reflection::BoundFuncDesc<Instance, bool(shared_ptr<Instance>), 1> func_isDescendentOf(
-	&Instance::isDescendentOf2, "IsDescendentOf", "ancestor", Reflection::FunctionDescriptor::AnyCaller
-);
-
-static Reflection::BoundFuncDesc<Instance, bool(shared_ptr<Instance>), 1> func_isAncestorOf(
-	&Instance::isAncestorOf2, "IsAncestorOf", "descendent", Reflection::FunctionDescriptor::AnyCaller
-);
-
-static const Reflection::PropDescriptor<Instance, std::string> prop_className(
-	"className", "Data", &Instance::getClassNameStr, NULL, Reflection::PropertyDescriptor::UI
-);
-
-const Reflection::PropDescriptor<Instance, std::string> Instance::desc_Name(
-	"Name", "Data", &Instance::getName, &Instance::setName, Reflection::PropertyDescriptor::STANDARD
-);
-
-const Reflection::RefPropDescriptor<Instance, Instance> Instance::propParent(
-	"Parent", "Data", &Instance::getParent, &Instance::setParent, Reflection::PropertyDescriptor::UI
-);
-
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_childAdded("ChildAdded", "child");
-
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_childRemoved("ChildRemoved", "child");
-
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_descendentAdded(
-	"DescendentAdded", "descendent"
-);
-
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_descendentRemoving(
-	"DescendentRemoving", "descendent"
-);
-
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_ancestryChanged(
-	"AncestryChanged", "child"
-);
-
-Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> Instance::event_propertyChanged(
-	"Changed", "property"
-);
-
-static const Name& nameName = Name::declare("Name", 3000);
-static const Name& nameParent = Name::declare("Parent", 3001);
-
-ChildAdded::ChildAdded(Instance* child) : child(shared_from(child))
-{
-}
-
-ChildAdded::ChildAdded(const ChildAdded& other) : child(other.child)
-{
-}
-
-ChildRemoved::ChildRemoved(Instance* child) : child(shared_from(child))
-{
-}
-
-ChildRemoved::ChildRemoved(const ChildRemoved& other) : child(other.child)
-{
-}
-
-// FUNCTION: WEBSERVICE 0x10047af0
-// FUNCTION: ROBLOX 0x00576310
-void Instance::onChildChanged(Instance* instance, const PropertyChanged& event)
-{
-	if (getParent() != NULL) {
-		getParent()->onChildChanged(instance, event);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10047b20
-// FUNCTION: ROBLOX 0x00576340
-bool Instance::contains(const Instance* child) const
-{
-	while (child != 0) {
-		if (child == this) {
-			return true;
-		}
-
-		child = child->parent;
-	}
-
-	return false;
-}
-
-// FUNCTION: WEBSERVICE 0x10048340
-// FUNCTION: ROBLOX 0x00576740
-void Instance::readProperties(const XmlElement* container, IReferenceBinder& binder)
-{
-	for (XmlElement* child = container->firstChild(); child != NULL; child = child->nextSibling()) {
-		readProperty(child, binder);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10048370
-// FUNCTION: ROBLOX 0x00576770
-void Instance::writeChildren(XmlElement* container)
-{
-	const std::vector<shared_ptr<Instance> >* kids = children.operator->();
-
-	if (kids != NULL) {
-		for (std::vector<shared_ptr<Instance> >::const_iterator it = kids->begin(); it != kids->end(); ++it) {
-			XmlElement* child = (*it)->write();
-
-			if (child != NULL) {
-				container->addChild(child);
-			}
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100483f0
-// FUNCTION: ROBLOX 0x005767f0
-Instance* Instance::findFirstChildByName(const std::string& findName) const
-{
-	const std::vector<shared_ptr<Instance> >* c = children.operator->();
-	if (!c) {
-		return NULL;
-	}
-
-	for (unsigned int i = 0; i < c->size(); ++i) {
-		if ((*c)[i]->getName() == findName) {
-			return (*c)[i].get();
-		}
-	}
-
-	return NULL;
-}
-
-// FUNCTION: WEBSERVICE 0x10048f30
-// FUNCTION: ROBLOX 0x005770a0
-Instance* Instance::findFirstChildByNameRecursive(const std::string& findName) const
-{
-	Instance* result = findFirstChildByName(findName);
-	if (result) {
-		return result;
-	}
-
-	const std::vector<shared_ptr<Instance> >* c = children.operator->();
-	if (!c) {
-		return NULL;
-	}
-
-	for (unsigned int i = 0; i < c->size(); ++i) {
-		result = (*c)[i]->findFirstChildByNameRecursive(findName);
-		if (result) {
-			return result;
-		}
-	}
-
-	return NULL;
-}
-
-// FUNCTION: WEBSERVICE 0x10048fb0
-// FUNCTION: ROBLOX 0x00577120
-void Instance::signalDescendentAdded(Instance* instance, Instance* beginParent, Instance* oldParent)
-{
-	for (Instance* walk = beginParent; walk != NULL; walk = walk->parent) {
-		if (walk == oldParent) {
-			break;
-		}
-
-		if (walk->isAncestorOf(oldParent)) {
-			break;
-		}
-
-		walk->onDescendentAdded(instance);
-	}
-
-	boost::shared_ptr<const std::vector<shared_ptr<Instance> > > c = instance->children.read();
-
-	if (c) {
-		for (std::vector<shared_ptr<Instance> >::const_iterator it = c->begin(); it != c->end(); ++it) {
-			signalDescendentAdded(it->get(), beginParent, oldParent);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100490d0
-// FUNCTION: ROBLOX 0x00577240
-void Instance::signalDescendentRemoving(
-	const shared_ptr<Instance>& instance, Instance* beginParent, Instance* newParent
-)
-{
-	for (Instance* walk = beginParent; walk != NULL; walk = walk->parent) {
-		if (walk == newParent) {
-			break;
-		}
-
-		if (walk->isAncestorOf(newParent)) {
-			break;
-		}
-
-		walk->onDescendentRemoving(instance);
-	}
-
-	boost::shared_ptr<const std::vector<shared_ptr<Instance> > > c = instance->children.read();
-
-	if (c) {
-		for (std::vector<shared_ptr<Instance> >::const_iterator it = c->begin(); it != c->end(); ++it) {
-			signalDescendentRemoving(*it, beginParent, newParent);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10049b30
-// FUNCTION: ROBLOX 0x005777d0
-boost::shared_ptr<Instance> Instance::findFirstChildByName2(std::string findName, bool recursive)
-{
-	return recursive ? shared_from(findFirstChildByNameRecursive(findName))
-					 : shared_from(findFirstChildByName(findName));
-}
-
-// FUNCTION: ROBLOX 0x00577920
-XmlElement* Instance::writeDelete()
-{
-	XmlElement* element = new XmlElement(name_DeleteItem);
-	element->addAttribute(name_referent, InstanceHandle(this));
-	return element;
-}
-
-// FUNCTION: WEBSERVICE 0x10049c80
-// FUNCTION: ROBLOX 0x00577980
-void Instance::writeProperties(XmlElement* container) const
-{
-	Reflection::MemberDescriptorContainer<Reflection::PropertyDescriptor>::ConstIterator iter = properties_begin();
-	while (iter != properties_end()) {
-		const Reflection::PropertyDescriptor& descriptor = iter.getDescriptor();
-
-		XmlElement* child = descriptor.write(this, false);
-		if (child) {
-			container->addChild(child);
-		}
-
-		++iter;
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10049d40
-// FUNCTION: ROBLOX 0x00577a40
-XmlElement* Instance::write()
-{
-	if (!archivable || getClassName() == Name::getNullName()) {
-		return new XmlElement(tag_External, InstanceHandle(this));
-	}
-
-	XmlElement* element = new XmlElement(tag_Item);
-
-	element->addAttribute(tag_class, &getClassName());
-
-	element->addAttribute(name_referent, InstanceHandle(this));
-
-	writeProperties(element->addChild(tag_Properties));
-
-	writeChildren(element);
-
-	return element;
-}
-
-// FUNCTION: WEBSERVICE 0x10049e80
-// FUNCTION: ROBLOX 0x00577b80
-int Instance::findChildIndex(const Instance* instance) const
-{
-	const std::vector<shared_ptr<Instance> >& c = *children;
-	std::vector<shared_ptr<Instance> >::const_iterator iter =
-		std::find(c.begin(), c.end(), instance->shared_from_this());
-	return iter - c.begin();
-}
-
-// FUNCTION: WEBSERVICE 0x1004a010
-// FUNCTION: ROBLOX 0x00577c40
-void Instance::readProperty(const XmlElement* propertyElement, IReferenceBinder& binder)
-{
-	const Name* name = NULL;
-	if (propertyElement->findAttributeValue(name_name, name)) {
-		Reflection::MemberDescriptorContainer<Reflection::PropertyDescriptor>::Iterator iter = findProperty(*name);
-		if (iter != properties_end()) {
-			(*iter).read(propertyElement, binder);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x1004a0e0
-// FUNCTION: ROBLOX 0x00577d10
-void Instance::onAddListener(Listener<Instance, ChildAdded>* listener) const
-{
-	if (children) {
-		boost::shared_ptr<const std::vector<shared_ptr<Instance> > > c = children.read();
-		std::vector<shared_ptr<Instance> >::const_iterator end = c->end();
-		for (std::vector<shared_ptr<Instance> >::const_iterator iter = c->begin(); iter != end; ++iter) {
-			Notifier<Instance, ChildAdded>::raise(ChildAdded(iter->get()), listener);
-		}
-	}
-}
-
-// SIZE 0x8
-class RaiseDescendentAdded2
-{
-	const Instance* const notifier;                      // 0x00
-	Listener<Instance, DescendentAdded>* const listener; // 0x04
-
-public:
-	RaiseDescendentAdded2(const Instance* notifier, Listener<Instance, DescendentAdded>* listener)
-		: notifier(notifier), listener(listener)
-	{
-	}
-
-	void operator()(Instance* child)
-	{
-		notifier->Notifier<Instance, DescendentAdded>::raise(DescendentAdded(child, child->getParent()), listener);
-		child->for_eachChild(*this);
-	}
+// from server: 100% by Xemicl
+// from server: 100% by EspClaude
+// roc 2009-06 0043e100  unit: 1RBX::Metadata::VReflection::?$FactoryProduct  size: 147 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0043e100
+//
+// 0043e100  51                   push ecx
+// 0043e101  53                   push ebx
+// 0043e102  55                   push ebp
+// 0043e103  56                   push esi
+// 0043e104  57                   push edi
+// 0043e105  8bf9                 mov edi, ecx
+// 0043e107  8b774c               mov esi, dword ptr [edi + 0x4c]
+// 0043e10a  85f6                 test esi, esi
+// 0043e10c  747d                 je 0x43e18b
+// 0043e10e  8b4610               mov eax, dword ptr [esi + 0x10]
+// 0043e111  8b1dace98900         mov ebx, dword ptr [0x89e9ac]
+// 0043e117  89442410             mov dword ptr [esp + 0x10], eax
+// 0043e11b  39460c               cmp dword ptr [esi + 0xc], eax
+// 0043e11e  7602                 jbe 0x43e122
+// 0043e120  ffd3                 call ebx
+// 0043e122  8b2e                 mov ebp, dword ptr [esi]
+// 0043e124  8b774c               mov esi, dword ptr [edi + 0x4c]
+// 0043e127  8b7e0c               mov edi, dword ptr [esi + 0xc]
+// 0043e12a  3b7e10               cmp edi, dword ptr [esi + 0x10]
+// 0043e12d  7602                 jbe 0x43e131
+// 0043e12f  ffd3                 call ebx
+// 0043e131  8b36                 mov esi, dword ptr [esi]
+// 0043e133  85f6                 test esi, esi
+// 0043e135  7404                 je 0x43e13b
+// 0043e137  3bf5                 cmp esi, ebp
+// 0043e139  7402                 je 0x43e13d
+// 0043e13b  ffd3                 call ebx
+// 0043e13d  3b7c2410             cmp edi, dword ptr [esp + 0x10]
+// 0043e141  7448                 je 0x43e18b
+// 0043e143  85f6                 test esi, esi
+// 0043e145  753c                 jne 0x43e183
+// 0043e147  ffd3                 call ebx
+// 0043e149  33c0                 xor eax, eax
+// 0043e14b  3b7810               cmp edi, dword ptr [eax + 0x10]
+// 0043e14e  7202                 jb 0x43e152
+// 0043e150  ffd3                 call ebx
+// 0043e152  8b07                 mov eax, dword ptr [edi]
+// 0043e154  6a00                 push 0
+// 0043e156  681cd99d00           push 0x9dd91c
+// 0043e15b  6840be9d00           push 0x9dbe40
+// 0043e160  6a00                 push 0
+// 0043e162  50                   push eax
+// 0043e163  e812bb2d00           call 0x719c7a
+// 0043e168  83c414               add esp, 0x14
+// 0043e16b  85c0                 test eax, eax
+// 0043e16d  751e                 jne 0x43e18d
+// 0043e16f  85f6                 test esi, esi
+// 0043e171  7514                 jne 0x43e187
+// 0043e173  ffd3                 call ebx
+// 0043e175  33c0                 xor eax, eax
+// 0043e177  3b7810               cmp edi, dword ptr [eax + 0x10]
+// 0043e17a  7202                 jb 0x43e17e
+// 0043e17c  ffd3                 call ebx
+// 0043e17e  83c708               add edi, 8
+// 0043e181  ebb0                 jmp 0x43e133
+// 0043e183  8b06                 mov eax, dword ptr [esi]
+// 0043e185  ebc4                 jmp 0x43e14b
+// 0043e187  8b06                 mov eax, dword ptr [esi]
+// 0043e189  ebec                 jmp 0x43e177
+// 0043e18b  33c0                 xor eax, eax
+// 0043e18d  5f                   pop edi
+// 0043e18e  5e                   pop esi
+// 0043e18f  5d                   pop ebp
+// 0043e190  5b                   pop ebx
+// 0043e191  59                   pop ecx
+// 0043e192  c3                   ret 
+
+// from server: 100% by king_originala
+// roc 2008-06 00443820  unit: RBX::Reflection::H::?$TypedPropertyDescriptor  size: 160 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 00443820
+//
+// 00443820  51                   push ecx
+// 00443821  53                   push ebx
+// 00443822  55                   push ebp
+// 00443823  56                   push esi
+// 00443824  57                   push edi
+// 00443825  8bf9                 mov edi, ecx
+// 00443827  8bb708010000         mov esi, dword ptr [edi + 0x108]
+// 0044382d  85f6                 test esi, esi
+// 0044382f  0f8483000000         je 0x4438b8
+// 00443835  8b4610               mov eax, dword ptr [esi + 0x10]
+// 00443838  8b1d90288000         mov ebx, dword ptr [0x802890]
+// 0044383e  89442410             mov dword ptr [esp + 0x10], eax
+// 00443842  39460c               cmp dword ptr [esi + 0xc], eax
+// 00443845  7602                 jbe 0x443849
+// 00443847  ffd3                 call ebx
+// 00443849  8b2e                 mov ebp, dword ptr [esi]
+// 0044384b  8bb708010000         mov esi, dword ptr [edi + 0x108]
+// 00443851  8b7e0c               mov edi, dword ptr [esi + 0xc]
+// 00443854  3b7e10               cmp edi, dword ptr [esi + 0x10]
+// 00443857  7602                 jbe 0x44385b
+// 00443859  ffd3                 call ebx
+// 0044385b  8b36                 mov esi, dword ptr [esi]
+// 0044385d  8d4900               lea ecx, [ecx]
+// 00443860  85f6                 test esi, esi
+// 00443862  7404                 je 0x443868
+// 00443864  3bf5                 cmp esi, ebp
+// 00443866  7402                 je 0x44386a
+// 00443868  ffd3                 call ebx
+// 0044386a  3b7c2410             cmp edi, dword ptr [esp + 0x10]
+// 0044386e  7448                 je 0x4438b8
+// 00443870  85f6                 test esi, esi
+// 00443872  753c                 jne 0x4438b0
+// 00443874  ffd3                 call ebx
+// 00443876  33c0                 xor eax, eax
+// 00443878  3b7810               cmp edi, dword ptr [eax + 0x10]
+// 0044387b  7202                 jb 0x44387f
+// 0044387d  ffd3                 call ebx
+// 0044387f  8b07                 mov eax, dword ptr [edi]
+// 00443881  6a00                 push 0
+// 00443883  68b4a99200           push 0x92a9b4
+// 00443888  687c909200           push 0x92907c
+// 0044388d  6a00                 push 0
+// 0044388f  50                   push eax
+// 00443890  e831df2500           call 0x6a17c6
+// 00443895  83c414               add esp, 0x14
+// 00443898  85c0                 test eax, eax
+// 0044389a  751e                 jne 0x4438ba
+// 0044389c  85f6                 test esi, esi
+// 0044389e  7514                 jne 0x4438b4
+// 004438a0  ffd3                 call ebx
+// 004438a2  33c0                 xor eax, eax
+// 004438a4  3b7810               cmp edi, dword ptr [eax + 0x10]
+// 004438a7  7202                 jb 0x4438ab
+// 004438a9  ffd3                 call ebx
+// 004438ab  83c708               add edi, 8
+// 004438ae  ebb0                 jmp 0x443860
+// 004438b0  8b06                 mov eax, dword ptr [esi]
+// 004438b2  ebc4                 jmp 0x443878
+// 004438b4  8b06                 mov eax, dword ptr [esi]
+// 004438b6  ebec                 jmp 0x4438a4
+// 004438b8  33c0                 xor eax, eax
+// 004438ba  5f                   pop edi
+// 004438bb  5e                   pop esi
+// 004438bc  5d                   pop ebp
+// 004438bd  5b                   pop ebx
+// 004438be  59                   pop ecx
+// 004438bf  c3                   ret 
+
+extern "C" void (__cdecl *invalid_parameter_noinfo)();
+extern "C" void* __cdecl __RTDynamicCast(void*, long, void*, void*, int);
+
+extern char instance_type;
+extern char properties_type;
+
+struct Entry {
+    void* object;
+    void* other;
 };
 
-// FUNCTION: WEBSERVICE 0x1004a470
-// FUNCTION: ROBLOX 0x00577fe0
-void Instance::onAddListener(Listener<Instance, DescendentAdded>* listener) const
+struct Storage;
+
+struct Owner {
+    Storage* storage;
+};
+
+struct Storage {
+    Owner* owner;
+    unsigned char padding[8];
+    Entry* begin;
+    Entry* end;
+};
+
+struct S {
+    unsigned char padding[0x4c];
+    Storage* storage;
+    void* f();
+};
+
+void* S::f()
 {
-	for_eachChild(RaiseDescendentAdded2(this, listener));
+    Storage* s = storage;
+    if (s) {
+        Entry* last = s->end;
+        void (__cdecl *invalid)() = invalid_parameter_noinfo;
+        if (s->begin > last)
+            invalid();
+
+        Owner* lastOwner = s->owner;
+        s = storage;
+        Entry* current = s->begin;
+        if (current > s->end)
+            invalid();
+
+        Owner* owner = s->owner;
+        for (;;) {
+            if (!owner || owner != lastOwner)
+                invalid();
+
+            if (current == last)
+                break;
+
+            if (!owner)
+                invalid();
+            Storage* container = owner ? owner->storage : 0;
+
+            if (current >= container->end)
+                invalid();
+
+            void* result = __RTDynamicCast(
+                current->object, 0, &instance_type, &properties_type, 0);
+            if (result)
+                return result;
+
+            if (!owner)
+                invalid();
+            container = owner ? owner->storage : 0;
+
+            if (current >= container->end)
+                invalid();
+
+            ++current;
+        }
+    }
+    return 0;
 }
-
-// FUNCTION: WEBSERVICE 0x1004a9c0
-// FUNCTION: ROBLOX 0x00578000
-boost::shared_ptr<Instance> Instance::fromXmlRoot(XmlElement* xmlRoot)
-{
-	Serializer serializer;
-
-	SerializerV2::isolateHandles(xmlRoot);
-	std::vector<shared_ptr<Instance> > newInstances;
-	serializer.loadInstances(xmlRoot, newInstances);
-	if (newInstances.size() == 0) {
-		return shared_ptr<Instance>();
-	}
-
-	return newInstances.front();
-}
-
-inline XmlElement* Instance::toNewXmlRoot(Instance* instance)
-{
-	XmlElement* root = SerializerV2::newRootElement();
-	root->addChild(instance->write());
-	return root;
-}
-
-// FUNCTION: WEBSERVICE 0x1004ab00
-// FUNCTION: ROBLOX 0x00578140
-boost::shared_ptr<Instance> Instance::clone()
-{
-	boost::scoped_ptr<XmlElement> root(toNewXmlRoot(this));
-	return fromXmlRoot(root.get());
-}
-
-// FUNCTION: WEBSERVICE 0x1004cdf0
-// FUNCTION: ROBLOX 0x005794d0
-shared_ptr<Instance> Instance::createChild(const Name& className)
-{
-	return Instance::create(className);
-}
-
-// FUNCTION: WEBSERVICE 0x1004d0b0
-// FUNCTION: ROBLOX 0x00579580
-Instance::~Instance()
-{
-}
-
-// FUNCTION: WEBSERVICE 0x1004da80
-// FUNCTION: ROBLOX 0x005799c0
-void Instance::setParent(Instance* newParent)
-{
-	if (newParent == parent) {
-		return;
-	}
-
-	shared_ptr<Instance> oldParent = shared_from(parent);
-	shared_ptr<Instance> self = shared_from_this();
-
-	if (oldParent) {
-		if (!oldParent->contains(newParent)) {
-			signalDescendentRemoving(self, oldParent.get(), newParent);
-		}
-
-		oldParent->onChildRemoving(this);
-
-		shared_ptr<std::vector<shared_ptr<Instance> > >& children = oldParent->children.write();
-
-		children->erase(std::find(children->begin(), children->end(), self));
-
-		if (children->size() == 0) {
-			oldParent->children.reset();
-		}
-
-		parent = NULL;
-
-		event_childRemoved.fire(oldParent.get(), self);
-
-		oldParent->Notifier<Instance, ChildRemoved>::raise(this);
-		oldParent->onChildRemoved(this);
-
-		if (oldParent->numChildren() == 0) {
-			oldParent->onLastChildRemoved();
-		}
-	}
-
-	if (newParent != NULL) {
-		newParent->children.write()->push_back(self);
-	}
-
-	parent = newParent;
-
-	if (newParent != NULL) {
-		newParent->onChildAdded(this);
-
-		if (!newParent->contains(oldParent.get())) {
-			signalDescendentAdded(this, newParent, oldParent.get());
-		}
-
-		newParent->Notifier<Instance, ChildAdded>::raise(this);
-
-		event_childAdded.fire(newParent, self);
-	}
-
-	onAncestorChanged(AncestorChanged(this, oldParent.get(), newParent));
-	raisePropertyChanged(propParent);
-}
-
-// FUNCTION: WEBSERVICE 0x1004ddb0
-// FUNCTION: ROBLOX 0x00579cf0
-void Instance::onAncestorChanged(const AncestorChanged& event)
-{
-	if (children) {
-		boost::shared_ptr<const std::vector<shared_ptr<Instance> > > c = children.read();
-		for (std::vector<shared_ptr<Instance> >::const_iterator it = c->begin(); it != c->end(); ++it) {
-			(*it)->onAncestorChanged(event);
-		}
-	}
-
-	event_ancestryChanged.fire(this, shared_from(event.child));
-
-	Notifier<Instance, AncestorChanged>::raise(event);
-}
-
-// FUNCTION: WEBSERVICE 0x1004dee0
-// FUNCTION: ROBLOX 0x00579e20
-void Instance::onDescendentAdded(Instance* instance)
-{
-	if (Notifier<Instance, DescendentAdded>::hasListeners()) {
-		Notifier<Instance, DescendentAdded>::raise(DescendentAdded(instance, instance->getParent()));
-	}
-	event_descendentAdded.fire(this, shared_from(instance));
-}
-
-// FUNCTION: WEBSERVICE 0x1004df50
-// FUNCTION: ROBLOX 0x00579e90
-void Instance::onDescendentRemoving(const shared_ptr<Instance>& instance)
-{
-	event_descendentRemoving.fire(this, instance);
-	if (Notifier<Instance, DescendentRemoving>::hasListeners()) {
-		Notifier<Instance, DescendentRemoving>::raise(DescendentRemoving(instance, shared_from(instance->getParent())));
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x1004e040
-// FUNCTION: ROBLOX 0x00579f80
-void Instance::setName(const std::string& value)
-{
-	if (name != value) {
-		name = value;
-		raisePropertyChanged(desc_Name);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x1004e080
-// FUNCTION: ROBLOX 0x00579fc0
-void Instance::removeAllChildren()
-{
-	while (children) {
-		children->back()->setParent(NULL);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x1004e0f0
-// FUNCTION: ROBLOX 0x0057a030
-void Instance::predelete()
-{
-	while (children) {
-		shared_ptr<Instance> child;
-
-		{
-			shared_ptr<std::vector<shared_ptr<Instance> > > c = children.write();
-			child = c->back();
-
-			signalDescendentRemoving(child, this, NULL);
-			onChildRemoving(child.get());
-			child->parent = NULL;
-
-			c->pop_back();
-
-			if (c->size() == 0) {
-				children.reset();
-			}
-		}
-
-		event_childRemoved.fire(this, child);
-		Notifier<Instance, ChildRemoved>::raise(child.get());
-
-		child->onAncestorChanged(AncestorChanged(child.get(), this, NULL));
-		child->raisePropertyChanged(propParent);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x1004e4f0
-// FUNCTION: ROBLOX 0x005663a0
-void Instance::remove()
-{
-	boost::shared_ptr<const std::vector<shared_ptr<Instance> > > c = children.read();
-	setParent(NULL);
-	if (c) {
-		std::for_each(c->begin(), c->end(), boost::bind(&Instance::remove, _1));
-	}
-}
-
-// FUNCTION: ROBLOX 0x0057a2f0
-void Instance::promoteChildren()
-{
-	while (numChildren()) {
-		getChild(0)->setParent(getParent());
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x1004e5e0
-// FUNCTION: ROBLOX 0x0057a3f0
-void Instance::readChild(const XmlElement* childElement, IReferenceBinder& binder)
-{
-	const Name* className = NULL;
-	if (childElement->findAttributeValue(tag_class, className)) {
-		shared_ptr<Instance> childInstance = createChild(*className);
-
-		if (childInstance) {
-			childInstance->read(childElement, binder);
-			if (childInstance) {
-				childInstance->setParent(this);
-			}
-		}
-		else {
-			const XmlAttribute* referent = childElement->findAttribute(name_referent);
-			if (referent) {
-				binder.announceID(referent, NULL);
-			}
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x1004e6e0
-// FUNCTION: ROBLOX 0x0057a4f0
-void Instance::readChildren(const XmlElement* element, IReferenceBinder& binder)
-{
-	if (element != NULL) {
-		const XmlElement* item = element->findFirstChildByTag(tag_Item);
-
-		while (item != NULL) {
-			readChild(item, binder);
-			item = element->findNextChildWithSameTag(item);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x1004e730
-// FUNCTION: ROBLOX 0x0057a540
-void Instance::read(const XmlElement* element, IReferenceBinder& binder)
-{
-	const XmlAttribute* referent = element->findAttribute(name_referent);
-	if (referent) {
-		binder.announceID(referent, this);
-	}
-
-	if (&element->getTag() == &tag_Item) {
-		const XmlElement* properties = element->findFirstChildByTag(tag_Properties);
-		if (properties) {
-			readProperties(properties, binder);
-		}
-
-		readChildren(element, binder);
-	}
-	else {
-		readProperty(element, binder);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x1004e7b0
-// FUNCTION: ROBLOX 0x0057a5c0
-void Instance::predelete(Instance* instance)
-{
-	instance->predelete();
-}
-
-// FUNCTION: WEBSERVICE 0x1004eb10
-// FUNCTION: ROBLOX 0x0057a780
-Instance::Instance() : parent(NULL), name("Instance"), archivable(true)
-{
-}
-
-// FUNCTION: WEBSERVICE 0x1004ec70
-// FUNCTION: ROBLOX 0x0057a8e0
-Instance::Instance(const char* name) : parent(NULL), name(name), archivable(true)
-{
-}
-
-// FUNCTION: WEBSERVICE 0x101019f0 FOLDED
-// FUNCTION: ROBLOX 0x007859e0 FOLDED
-void Instance::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-{
-}
-
-// FUNCTION: WEBSERVICE 0x100c74e0 FOLDED
-bool Instance::askSetParent(const Instance* instance) const
-{
-	return false;
-}
-
-// FUNCTION: WEBSERVICE 0x100c74e0 FOLDED
-bool Instance::askAddChild(const Instance* instance) const
-{
-	return false;
-}
-
-} // namespace RBX

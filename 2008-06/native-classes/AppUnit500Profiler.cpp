@@ -71,7 +71,7 @@ namespace RBX
 			return ((G3D::int64)t1Hi * 0x100000000 + t1Lo) - (((G3D::int64)t0Hi << 32) + t0Lo);
 		}
 
-		static void Delay(unsigned time)
+		void Delay(unsigned time)
 		{
 			LARGE_INTEGER Frequency, StartCounter, EndCounter;
 			G3D::int64 x;
@@ -90,7 +90,7 @@ namespace RBX
 			while (EndCounter.QuadPart - StartCounter.QuadPart < x);
 		}
 
-		static void DelayOverhead(unsigned time)
+		void DelayOverhead(unsigned time)
 		{
 			LARGE_INTEGER Frequency, StartCounter, EndCounter;
 			G3D::int64 x;
@@ -109,7 +109,7 @@ namespace RBX
 			while (EndCounter.QuadPart - StartCounter.QuadPart == x);
 		}
 
-		static std::string getCPUMake()
+		std::string getCPUMake()
 		{
 			std::string cpu_name;
 			if (G3D::RegistryUtil::readString("HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString", cpu_name))
@@ -131,7 +131,7 @@ namespace RBX
 			return count;
 		}
 
-		static int getCPUSpeed()
+		int getCPUSpeed()
 		{
 			G3D::int32 speed;
 
@@ -163,7 +163,7 @@ namespace RBX
 			return (int)total;
 		}
 
-		static std::string getMaxRes()
+		std::string getMaxRes()
 		{
 			int width = GetSystemMetrics(SM_CXSCREEN);
 			int height = GetSystemMetrics(SM_CYSCREEN);

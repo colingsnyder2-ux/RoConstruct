@@ -12,6 +12,7 @@
 namespace RBX
 {
 	char sFaceInstance[] = "FaceInstance";
+	const Reflection::EnumPropDescriptor<FaceInstance, NormalId> FaceInstance::prop_Face("Face", "Data", &FaceInstance::getFace, &FaceInstance::setFace, Reflection::PropertyDescriptor::STANDARD);   // 0097b57c (init 007f7600)
 
 	FaceInstance::FaceInstance() : face(NORM_Z_NEG) {}
 

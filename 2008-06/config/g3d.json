@@ -53,7 +53,7 @@
    "recipe": "g3d-6.09-rbx2008",
    "files": "G3Dcpp/*.cpp",
    "direct": true,
-   "flags": "/O2 /GS- /EHsc /MD"
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast"
   },
   {
    "name": "ijg",

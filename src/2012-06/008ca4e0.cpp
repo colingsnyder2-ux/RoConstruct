@@ -1,44 +1,57 @@
-// from server: 98% by Intel
-struct DialogChoice {
-    int vfptr;
-    int vfptr2;
-    char pad_8[0x10];
-    int field_18;
-    int field_1C;
-    char pad_20[0x60];
-    int field_80;
-    int field_84;
-    char pad_88[0x8];
-    int field_90;
-    char pad_94[0x8];
-    int field_9C;
-    char pad_A0[0x14];
-    int field_B4;
-    char pad_B8[0x10];
-    int field_C8;
+// from server: 100% by Xemicl
+// from server: 100% by atomic.potato
+// roc 2012-06 007b4650  unit: RBX::FormFactorPart  size: 124 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 007b4650
+//
+// 007b4650  8b8184000000         mov eax, dword ptr [ecx + 0x84]
+// 007b4656  c7013487bb00         mov dword ptr [ecx], 0xbb8734
+// 007b465c  c741042c87bb00       mov dword ptr [ecx + 4], 0xbb872c
+// 007b4663  c741182087bb00       mov dword ptr [ecx + 0x18], 0xbb8720
+// 007b466a  c7411c1487bb00       mov dword ptr [ecx + 0x1c], 0xbb8714
+// 007b4671  c781800000000c87bb00 mov dword ptr [ecx + 0x80], 0xbb870c
+// 007b467b  c78190000000f486bb00 mov dword ptr [ecx + 0x90], 0xbb86f4
+// 007b4685  c7819c000000c886bb00 mov dword ptr [ecx + 0x9c], 0xbb86c8
+// 007b468f  c781b40000009c86bb00 mov dword ptr [ecx + 0xb4], 0xbb869c
+// 007b4699  c781c80000009486bb00 mov dword ptr [ecx + 0xc8], 0xbb8694
+// 007b46a3  8b5004               mov edx, dword ptr [eax + 4]
+// 007b46a6  c7840a840000008c86bb00 mov dword ptr [edx + ecx + 0x84], 0xbb868c
+// 007b46b1  8b8184000000         mov eax, dword ptr [ecx + 0x84]
+// 007b46b7  8b4004               mov eax, dword ptr [eax + 4]
+// 007b46ba  8d90b8fdffff         lea edx, [eax - 0x248]
+// 007b46c0  89940880000000       mov dword ptr [eax + ecx + 0x80], edx
+// 007b46c7  e9d4feffff           jmp 0x7b45a0
 
-    int sub_8CA4E0();
+struct RBX_FormFactorPart {
+    void construct();
+    char pad0[0x80];
+    int field80;
+    int field84;
+    char pad88[0x8];
+    int field90;
+    char pad94[0x8];
+    int field9c;
+    char padA0[0x14];
+    int fieldB4;
+    char padB8[0x10];
+    int fieldC8;
 };
 
-extern "C" void __stdcall sub_7587e0();
-
-int DialogChoice::sub_8CA4E0() {
-    int eax = this->field_84;
-    this->vfptr = 0xBE6EF4;
-    this->vfptr2 = 0xBE6EEC;
-    this->field_18 = 0xBE6EE0;
-    this->field_1C = 0xBE6ED4;
-    this->field_80 = 0xBE6ECC;
-    this->field_90 = 0xBE6EB4;
-    this->field_9C = 0xBE6E88;
-    this->field_B4 = 0xBE6E5C;
-    this->field_C8 = 0xBE6E54;
-    int edx = *(int*)(eax + 4);
-    *(int*)(edx + (int)this + 0x84) = 0xBE6E4C;
-    eax = this->field_84;
-    eax = *(int*)(eax + 4);
-    edx = eax - 0x240;
-    *(int*)(eax + (int)this + 0x80) = edx;
-    sub_7587e0();
-    return 0;
+void RBX_FormFactorPart::construct() {
+    int* p = *(int**)((char*)this + 0x84);
+    *(int*)((char*)this + 0x00) = 0xbb8734;
+    *(int*)((char*)this + 0x04) = 0xbb872c;
+    *(int*)((char*)this + 0x18) = 0xbb8720;
+    *(int*)((char*)this + 0x1c) = 0xbb8714;
+    *(int*)((char*)this + 0x80) = 0xbb870c;
+    *(int*)((char*)this + 0x90) = 0xbb86f4;
+    *(int*)((char*)this + 0x9c) = 0xbb86c8;
+    *(int*)((char*)this + 0xb4) = 0xbb869c;
+    *(int*)((char*)this + 0xc8) = 0xbb8694;
+    int v = p[1];
+    *(int*)((char*)this + v + 0x84) = 0xbb868c;
+    int* q = *(int**)((char*)this + 0x84);
+    int w = q[1];
+    *(int*)((char*)this + w + 0x80) = w - 0x240;
+    extern void tail();
+    tail();
 }

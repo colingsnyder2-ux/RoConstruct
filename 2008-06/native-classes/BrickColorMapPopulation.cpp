@@ -13,8 +13,7 @@ void BrickColor::BrickMap::insert(Number number, unsigned char r, unsigned char 
 
 		map1.insert(std::pair<Number, G3D::Color4uint8>(number, c));
 
-		G3D::Color4 color4 = G3D::Color4(c);
-		map2.insert(std::pair<Number, G3D::Color4>(number, color4));
+		map2.insert(std::pair<Number, G3D::Color4>(number, G3D::Color4(c)));
 
 		map3.insert(std::pair<Number, std::string>(number, name));
 	}

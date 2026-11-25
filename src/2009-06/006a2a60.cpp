@@ -1,116 +1,41 @@
-// from server: 45% by colin
+// from server: 100% by Xemicl
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
+namespace boost {
+namespace detail { namespace function {
+union function_buffer {
+	void* obj_ptr;
+	void (*func_ptr)();
+	double align_;
+	char data[16];
+};
+struct vtable_base { void (*manager)(); };
+template<class R, class T0> struct basic_vtable1 {
+	vtable_base base;
+	void (*invoker)();
+	template<class F> bool assign_to(F f, function_buffer& functor);
+};
+}}
+class function_base {
+public:
+	detail::function::vtable_base* vtable;
+	mutable detail::function::function_buffer functor;
+};
+template<class R, class T0> class function1 : public function_base {
+	typedef detail::function::basic_vtable1<R, T0> vtable_type;
+public:
+	template<class Functor> void assign_to(Functor f);
+};
+template<class R, class T0> template<class Functor> void function1<R, T0>::assign_to(Functor f)
 {
-	static boost::mutex mutex2;
-	return mutex2;
+	static vtable_type stored_vtable;
+	if (stored_vtable.assign_to(f, functor))
+		vtable = &stored_vtable.base;
+	else
+		vtable = 0;
 }
-
-void initMoo()
-{
-	moo2();
 }
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	Name::NamMap::~NamMap()
-	{
-		for (std::map<std::string, Name*>::iterator iter = this->begin(); iter != this->end(); iter++)
-		{
-			delete iter->second;
-		}
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
-}
+struct Functor2 { int a[6]; };
+template void boost::function1<void, int>::assign_to<Functor2>(Functor2);

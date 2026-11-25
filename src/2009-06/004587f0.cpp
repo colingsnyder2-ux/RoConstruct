@@ -1,75 +1,34 @@
-// from server: 90% by EspClaude
+// from server: 100% by Xemicl
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-#include <memory>
 extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile*);
-namespace boost { class Instance; template<class T> class shared_ptr { T* p; void* c; }; namespace noncopyable_ { class noncopyable { protected: noncopyable() {} }; } }
-namespace RBX {
-class Instance;
-template<class T> class Countable {
-	static long count;
+struct Key { int a, b, c, d; };
+struct Quad { int a, b, c, d; Quad() : a(0), b(0), c(0), d(0) {} };
+struct Data { char bytes[0x18]; };
+class Registry { public: bool find(Key k, Data* out); };
+extern Registry g_registry;
+extern long g_count;
+extern int g_default;
+class Counted { public: Counted() { InterlockedIncrement(&g_count); } };
+class Base : public Counted {
 public:
-	Countable() { InterlockedIncrement(&count); }
+    Base() {}
+    virtual void v0();
+    struct Info { char f4; bool flag; int f8; int fc; Info() : flag(true), f8(0), fc(g_default) {} } info;
 };
+class Derived : public Base {
+public:
+    Derived(Key k, int x);
+    virtual void v0();
+    int f10;
+    int f14;
+    Registry* registry;
+    int f1c;
+    Data data;
+    Quad quad;
+};
+Derived::Derived(Key k, int x) : f10(x), registry(g_registry.find(k, &data) ? &g_registry : 0)
+{
 }
-extern void* const gDefault;
-struct NP { void* p; NP() : p(0) {} };
-namespace boost {
-namespace detail { namespace function {
-union function_buffer { void* obj_ptr; char data[0x18]; double d; };
-struct vtable_base { void* manager; };
-template<class R, class Alloc> struct basic_vtable1 {
-    vtable_base base;
-    void* invoker;
-    template<class F> bool assign_to(F f, function_buffer& functor) throw();
-};
-}}
-class function_base {
-public:
-    detail::function::vtable_base* vtable;
-    mutable detail::function::function_buffer functor;
-    function_base()  {}
-};
-template<class R, class T0> class function1 : public function_base {
-public:
-    typedef detail::function::basic_vtable1<R, std::allocator<void> > vtable_type;
-    template<class Functor> function1(Functor f, int = 0) : function_base() { this->assign_to(f); }
-    template<class Functor> void assign_to(Functor f) {
-        static vtable_type stored_vtable = { { 0 }, 0 };
-        if (stored_vtable.assign_to(f, functor)) vtable = &stored_vtable.base;
-        else vtable = 0;
-    }
-};
-template<class Sig> class function;
-template<class R, class A> class function<R(A)> : public function1<R, A> {
-public:
-    template<class Functor> function(Functor f, int = 0) : function1<R, A>(f) {}
-};
-}
-namespace rbx { namespace signals {
-class connection {
-public:
-	class slot : boost::noncopyable_::noncopyable, RBX::Countable<slot> {
-	public:
-		slot(void* owner) : connected(true), def(gDefault), owner(owner) {}
-		virtual ~slot();
-		bool connected;
-		NP next;
-		void* def;
-		void* owner;
-	};
-};
-struct Functor { int a, b, c, d; };
-template<class Sig> class signal {
-public:
-	class slot : public connection::slot {
-	public:
-		slot(Functor f, void* owner) : connection::slot(owner), func(f), a(0), b(0), c(0), d(0) {}
-		virtual ~slot();
-		boost::function<Sig> func;
-		int a, b, c, d;
-	};
-};
-template class signal<void(boost::shared_ptr<RBX::Instance>)>::slot;
-} }

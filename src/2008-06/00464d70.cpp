@@ -1,44 +1,31 @@
-// from server: 0% by Espeon
-// roc-lang: cpp
-// roc-cl: 21022
+// from server: 100% by Xemicl
+﻿// roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_eventdispatchdirect_2aa7fd57483e2cca.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include <boost/shared_ptr.hpp>
-// from server: 81% by king_originala
+typedef int Value;
 struct EventData;
-
-struct Listener
-{
-    virtual void slot0() = 0;
-    virtual void slot1() = 0;
-    virtual void dispatch(void*, int) = 0;
-
-    void prepare(EventData*);
+struct Listener {
+    void unregister(EventData* data);
+    virtual void v0();
+    virtual void v1();
+    virtual void process(int arg, Value instance);
 };
-
-struct EventData
-{
-    int field0;
-    boost::shared_ptr<void> argument;
+struct EventData {
+    virtual ~EventData();
+    int arg;
+    int getArg() const { return arg; }
+    int reserved;
     Listener* listener;
-    int value;
-
-    void invoke();
+    Value instance;
+    void fire();
 };
 
-void EventData::invoke()
+void EventData::fire()
 {
-    if (listener)
-    {
-        try
-        {
-            listener->prepare(this);
-            listener->dispatch(argument.get(), value);
-        }
-        catch (...)
-        {
+    if (listener) {
+        try {
+            listener->unregister(this);
+            listener->process(getArg(), instance);
+        } catch (...) {
         }
         listener = 0;
     }

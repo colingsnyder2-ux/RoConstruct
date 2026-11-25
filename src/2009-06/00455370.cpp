@@ -1,152 +1,81 @@
-// from server: 37% by colin
+// from server: 100% by Xemicl
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O1 /GS- /MD
-// roc-lib: xtp-15.2.1 Source/SyntaxEdit/XTPSyntaxEditColorSampleText.cpp
-
-// Candidate translation unit (score above; library headers required).
-// XTPSyntaxEditColorSampleText.cpp : implementation file
-//
-// This file is a part of the XTREME TOOLKIT PRO MFC class library.
-// (c)1998-2011 Codejock Software, All Rights Reserved.
-//
-// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
-// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
-// CONSENT OF CODEJOCK SOFTWARE.
-//
-// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
-// IN THE XTREME SYNTAX EDIT LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
-// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
-// SINGLE COMPUTER.
-//
-// CONTACT INFORMATION:
-// support@codejock.com
-// http://www.codejock.com
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#include "stdafx.h"
-
-// common includes
-#include "Common/XTPDrawHelpers.h"
-#include "Common/XTPColorManager.h"
-
-// syntax editor includes
-#include "XTPSyntaxEditColorSampleText.h"
-
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTPSyntaxEditColorSampleText
-
-CXTPSyntaxEditColorSampleText::CXTPSyntaxEditColorSampleText()
-: m_crBack(::GetSysColor(COLOR_WINDOW))
-, m_crText(::GetSysColor(COLOR_WINDOWTEXT))
-, m_crBorder(::GetSysColor(COLOR_3DDKSHADOW))
-{
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <intrin.h>
+#pragma intrinsic(_InterlockedDecrement)
+#pragma intrinsic(_InterlockedIncrement)
+namespace boost {
+namespace detail {
+inline void atomic_increment(long* pw) { _InterlockedIncrement(pw); }
+class sp_counted_base {
+public:
+    long use_count_;
+    long weak_count_;
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    void weak_add_ref() { atomic_increment(&weak_count_); }
+    void weak_release()
+    {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
+};
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    template<class P, class D> shared_count(P p, D d);
+    ~shared_count();
+};
+class weak_count {
+public:
+    sp_counted_base* pi_;
+    weak_count& operator=(shared_count const& r)
+    {
+        sp_counted_base* tmp = r.pi_;
+        if (tmp != pi_)
+        {
+            if (tmp != 0) tmp->weak_add_ref();
+            if (pi_ != 0) pi_->weak_release();
+            pi_ = tmp;
+        }
+        return *this;
+    }
+};
 }
-
-CXTPSyntaxEditColorSampleText::~CXTPSyntaxEditColorSampleText()
+template<class T> class weak_ptr {
+public:
+    T* px;
+    detail::weak_count pn;
+    template<class Y> void _internal_assign(Y* px2, detail::shared_count const& pn2) { px = px2; pn = pn2; }
+};
+template<class T> class enable_shared_from_this {
+public:
+    mutable weak_ptr<T> _internal_weak_this;
+};
+namespace detail {
+template<class T, class Y> inline void sp_enable_shared_from_this(shared_count const& pn, enable_shared_from_this<T> const* pe, Y const* px)
 {
+    if (pe != 0) pe->_internal_weak_this._internal_assign(const_cast<Y*>(px), pn);
 }
-
-BEGIN_MESSAGE_MAP(CXTPSyntaxEditColorSampleText, CStatic)
-	//{{AFX_MSG_MAP(CXTPSyntaxEditColorSampleText)
-	ON_WM_PAINT()
-	ON_WM_NCPAINT()
-	ON_WM_SYSCOLORCHANGE()
-	ON_WM_ENABLE()
-	//}}AFX_MSG_MAP
-END_MESSAGE_MAP()
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTPSyntaxEditColorSampleText message handlers
-
-void CXTPSyntaxEditColorSampleText::OnNcPaint()
-{
-	CWindowDC dc(this);
-
-	CXTPWindowRect rc(this);
-	rc.OffsetRect(-rc.TopLeft());
-
-	dc.Draw3dRect(rc, GetBorderColor(), GetBorderColor());
-	rc.DeflateRect(1, 1);
-	dc.Draw3dRect(rc, GetBackColor(), GetBackColor());
+inline void sp_enable_shared_from_this(shared_count const&, ...) {}
 }
-
-void CXTPSyntaxEditColorSampleText::OnPaint()
-{
-	CPaintDC dc(this); // device context for painting
-
-	CXTPClientRect rc(this);
-	dc.FillSolidRect(&rc, GetBackColor());
-
-	CString csText;
-	GetWindowText(csText);
-
-	dc.SetBkColor(GetBackColor());
-	dc.SetTextColor(GetTextColor());
-
-	CXTPFontDC fontDC(&dc, GetFont());
-	dc.DrawText(csText, &rc, DT_SINGLELINE | DT_VCENTER | DT_CENTER);
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+    template<class Y, class D> shared_ptr(Y* p, D d) : px(p), pn(p, d)
+    {
+        detail::sp_enable_shared_from_this(pn, p, p);
+    }
+};
 }
-
-void CXTPSyntaxEditColorSampleText::Refresh()
-{
-	if (::IsWindow(m_hWnd))
-	{
-		RedrawWindow(NULL, NULL, RDW_UPDATENOW | RDW_ALLCHILDREN | RDW_FRAME |
-			RDW_INVALIDATE | RDW_ERASE);
-	}
+namespace RBX {
+struct ExePad24 { char pad[0x24]; };
+class Instance : public ExePad24, public boost::enable_shared_from_this<Instance> {};
+template<class T> class Creatable { public: struct Deleter { void operator()(T* p); }; };
+class Script : public Instance {};
 }
-
-void CXTPSyntaxEditColorSampleText::SetTextColor(COLORREF crText)
-{
-	m_crText = crText;
-	Refresh();
-}
-
-COLORREF CXTPSyntaxEditColorSampleText::GetTextColor() const
-{
-	return (IsWindowEnabled()? m_crText: ::GetSysColor(COLOR_GRAYTEXT));
-}
-
-void CXTPSyntaxEditColorSampleText::SetBackColor(COLORREF crBack)
-{
-	m_crBack = crBack;
-	Refresh();
-}
-
-COLORREF CXTPSyntaxEditColorSampleText::GetBackColor() const
-{
-	return (IsWindowEnabled()? m_crBack: ::GetSysColor(COLOR_3DFACE));
-}
-
-void CXTPSyntaxEditColorSampleText::SetBorderColor(COLORREF crBorder)
-{
-	m_crBorder = crBorder;
-	Refresh();
-}
-
-COLORREF CXTPSyntaxEditColorSampleText::GetBorderColor() const
-{
-	return (IsWindowEnabled()? m_crBorder: ::GetSysColor(COLOR_GRAYTEXT));
-}
-
-void CXTPSyntaxEditColorSampleText::OnEnable(BOOL bEnable)
-{
-	CWnd::OnEnable(bEnable);
-	Refresh();
-}
-
-void CXTPSyntaxEditColorSampleText::OnSysColorChange()
-{
-	CStatic::OnSysColorChange();
-	m_crBack.SetStandardValue(::GetSysColor(COLOR_WINDOW));
-	m_crText.SetStandardValue(::GetSysColor(COLOR_WINDOWTEXT));
-	m_crBorder.SetStandardValue(::GetSysColor(COLOR_3DDKSHADOW));
-}
+template boost::shared_ptr<RBX::Script>::shared_ptr(RBX::Script*, RBX::Creatable<RBX::Instance>::Deleter);

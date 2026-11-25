@@ -7,5 +7,5 @@
 // compile this or check the header names.
 namespace RBX {
 const char* const sSkyRt = "SkyboxRt";
-Reflection::BoundProp<TextureId, 1> Sky::prop_SkyRt("SkyboxRt", "Appearance", &Sky::getSkyRt, &Sky::setSkyRt);
+Reflection::BoundProp<TextureId, 1> Sky::prop_SkyRt("SkyboxRt", "Appearance", &Sky::skyRt, Reflection::PropertyDescriptor::STANDARD);
 }

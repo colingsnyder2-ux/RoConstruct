@@ -1,154 +1,116 @@
-// from server: 36% by colin
+// from server: 95% by Xemicl
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O1 /Ob2 /Oy /GS- /EHsc /MD
-// roc-lib: rbxgs util/boost.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: rbxgs-dll roc_espeon_abuseworkerimplicit11e5489400ca45c4.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/boost.hpp"
-#include "util/standardout.h"
-#include "util/Debug.h"
-#include <boost/bind.hpp>
-#include <windows.h>
-#include <boost/thread/tss.hpp>
-#include <boost/thread/once.hpp>
+// from server: 89% by colin
+extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+#pragma intrinsic(_InterlockedExchangeAdd)
 
-namespace RBX
+void* __cdecl operator new(unsigned int);
+void __cdecl operator delete(void*);
+
+#include <string>
+typedef std::string String;
+
+struct Storage {
+    unsigned char data[40];
+    Storage();
+    ~Storage();
+};
+
+struct Control {
+    void* vtable;
+    volatile long strong;
+    volatile long weak;
+};
+
+struct Count {
+    Control* pointer;
+    Count(Storage*);
+    ~Count();
+};
+
+void __cdecl func_0047d410(Count*, Storage*, Storage*) throw();
+
+struct Shared {
+    Storage* pointer;
+    Count count;
+    Shared(Storage*);
+    Shared(const Shared&);
+};
+
+Shared::Shared(Storage* p) : pointer(p), count(p)
 {
-	namespace boost_detail
-	{
-		boost::thread_specific_ptr<std::string>* foo;
-		
-		boost::once_flag once_init_foo = BOOST_ONCE_INIT;
-		void init_foo()
-		{
-			static boost::thread_specific_ptr<std::string> value;
-			foo = &value;
-		}
+    func_0047d410(&count, p, p);
+}
 
-		void set_foo(std::string* value)
-		{
-			boost::call_once(&boost_detail::init_foo, boost_detail::once_init_foo);
-			boost_detail::foo->reset(value);
-		}
-	}
+Shared::Shared(const Shared& other)
+    : pointer(other.pointer), count(other.count)
+{
+    if (count.pointer) {
+        volatile long* counter = &count.pointer->strong;
+        _InterlockedExchangeAdd(counter, 1);
+    }
+}
 
-	// Thread name stuff based on https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/xcb2z8hs(v=vs.90)
-	static bool nameThreads = true;
+typedef void (__cdecl *Callback)(Shared, String);
+void __cdecl callback(Shared, String);
 
-	typedef struct tagTHREADNAME_INFO
-	{
-		DWORD dwType;
-		LPCSTR szName;
-		DWORD dwThreadID;
-		DWORD dwFlags;
-	} THREADNAME_INFO;
+struct Bound {
+    Callback callback;
+    Shared object;
+    String text;
+    void operator()() const;
+};
 
-	void SetThreadName(DWORD dwThreadID, LPCSTR szThreadName)
-	{
-		THREADNAME_INFO info;
-		info.dwType = 0x1000;
-		info.szName = szThreadName;
-		info.dwThreadID = dwThreadID;
-		info.dwFlags = 0;
+Bound __cdecl bind(Callback, Shared, String);
 
-		__try
-		{
-			if (nameThreads)
-				RaiseException(0x406D1388, 0, sizeof(info)/sizeof(ULONG_PTR), (ULONG_PTR*)&info);
-		}
-		__except (EXCEPTION_CONTINUE_EXECUTION)
-		{
-		}
-	}
+#include <boost/function.hpp>
+typedef boost::function0<void> Function;
+struct Thread {
+    unsigned char data[20];
+    Thread(const Function&, const char*);
+    ~Thread();
+};
 
-	void set_thread_name(const char* name)
-	{
-		boost_detail::set_foo(new std::string(name));
-		SetThreadName(GetCurrentThreadId(), name);
-	}
+extern const char threadName[];
 
-	class ThreadPrioritySetter
-	{
-	private:
-		const int old;
-		bool success;
-	  
-	public:
-		ThreadPrioritySetter(int priority)
-			: old(GetThreadPriority(GetCurrentThread())),
-			  success(SetThreadPriority(GetCurrentThread(), priority) == TRUE)
-		{
-		}
-		~ThreadPrioritySetter()
-		{
-			if (success)
-				SetThreadPriority(GetCurrentThread(), old);
-		}
-	};
+struct ThreadOwner {
+    Thread* pointer;
+    ThreadOwner();
+    ~ThreadOwner();
+    void reset(Thread*);
+};
 
-	void run_in_background(const boost::function0<void>& threadfunc, std::string name)
-	{
-		try
-		{
-			set_thread_name(name.c_str());
+ThreadOwner::ThreadOwner() : pointer(0)
+{
+}
 
-			{
-				ThreadPrioritySetter set(THREAD_PRIORITY_BELOW_NORMAL);
-				threadfunc();
-			}
-		}
-		catch (std::exception& ex)
-		{
-			StandardOut::singleton()->print(MESSAGE_ERROR, "Crashed via C++ exception in run_in_background:", ex.what());
-			RBXASSERT(false);
-		}
-	}
+ThreadOwner::~ThreadOwner()
+{
+    delete pointer;
+}
 
-	boost::function0<void> background_function(const boost::function0<void>& threadfunc, const char* name)
-	{
-		return boost::bind(&run_in_background, threadfunc, std::string(name));
-	}
+void ThreadOwner::reset(Thread* p)
+{
+    Thread* old = pointer;
+    pointer = p;
+    delete old;
+}
 
-	worker_thread::worker_thread(const boost::function0<enum work_result>& work_function, const char* name)
-		: _data(new data()),
-		  thread(background_function(boost::bind(&threadProc, _data, work_function), name))
-	{
-	}
+struct S {
+    Shared object;
+    ThreadOwner thread;
+    S(String);
+};
 
-	worker_thread::~worker_thread()
-	{
-		boost::mutex::scoped_lock scoped_lock(_data->sync);
-		_data->endRequest = true;
-		_data->wakeCondition.notify_all();
-	}
-
-	void worker_thread::join()
-	{
-		{
-			boost::mutex::scoped_lock scoped_lock(_data->sync);
-			_data->endRequest = true;
-			_data->wakeCondition.notify_all();
-		}
-
-		thread.join();
-	}
-
-	void worker_thread::wake()
-	{
-		boost::mutex::scoped_lock scoped_lock(_data->sync);
-		_data->wakeCondition.notify_all();
-	}
-
-	void worker_thread::threadProc(boost::shared_ptr<data> data, const boost::function0<enum work_result>& work_function)
-	{
-		while (!data->endRequest)
-		{
-			if (work_function() != more)
-			{
-				boost::mutex::scoped_lock scoped_lock(data->sync);
-				data->wakeCondition.wait(scoped_lock);	
-			}
-		}
-	}
+S::S(String text) : object(new Storage), thread()
+{
+    thread.reset(new Thread(
+        bind(callback, object, text),
+        "rbx_abusereporter"));
 }

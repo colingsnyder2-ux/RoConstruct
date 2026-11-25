@@ -1,82 +1,37 @@
-// from server: 44% by colin
+// from server: 100% by Xemicl
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/script/ScriptEvent.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "script/ScriptEvent.h"
-
-#include "script/ScriptContext.h"
-
-#include <lua.h>
-
-namespace RBX {
-namespace Lua {
-
-// FUNCTION: WEBSERVICE 0x100b5790
-// FUNCTION: ROBLOX 0x00601f80
-YieldingThreads::WaitingThread::WaitingThread(lua_State* L, double requestedDelay)
-	: thread(new ThreadRef(L)), requestedDelay(requestedDelay), elapsedTime(0.0)
-{
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement)
+namespace boost {
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    long use_count_;
+    long weak_count_;
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+};
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count();
+};
 }
-
-// FUNCTION: WEBSERVICE 0x100b5e00
-// FUNCTION: ROBLOX 0x006025f0
-YieldingThreads::YieldingThreads(ScriptContext* context) : context(context)
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+};
+class any;
+template<typename ValueType> ValueType any_cast(any& operand);
+template<typename ValueType> inline ValueType any_cast(const any& operand)
 {
+    return any_cast<const ValueType&>(const_cast<any&>(operand));
 }
-
-// FUNCTION: WEBSERVICE 0x100b5f80
-// FUNCTION: ROBLOX 0x00602770
-void YieldingThreads::queueWaiter(lua_State* L, double requestedDelay)
-{
-	RobloxExtraSpace::get(L)->yieldCaptured = true;
-
-	waitingThreads.push_back(WaitingThread(L, requestedDelay));
 }
-
-// FUNCTION: WEBSERVICE 0x100b6030
-// FUNCTION: ROBLOX 0x00602820
-void YieldingThreads::resume(Heartbeat event)
-{
-	if (waitingThreads.size() == 0) {
-		return;
-	}
-
-	ThreadRefs copy(waitingThreads);
-
-	waitingThreads.clear();
-
-	for (ThreadRefs::iterator iter = copy.begin(); iter != copy.end(); ++iter) {
-		if (!iter->thread->thread()) {
-			continue;
-		}
-
-		iter->elapsedTime += event.step;
-		if (iter->elapsedTime < iter->requestedDelay) {
-			waitingThreads.push_back(*iter);
-		}
-		else {
-			lua_State* thread = iter->thread->thread();
-
-			const int oldTop = lua_gettop(thread);
-
-			lua_pushnumber(thread, iter->elapsedTime);
-
-			context->resume(thread, 1);
-
-			lua_settop(thread, oldTop);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100b61d0
-// FUNCTION: ROBLOX 0x006029c0
-void YieldingThreads::queueWaiter(lua_State* L)
-{
-	queueWaiter(L, 0.0);
-}
-
-} // namespace Lua
-} // namespace RBX
+namespace RBX { class ScriptContext; }
+template boost::shared_ptr<RBX::ScriptContext> boost::any_cast<boost::shared_ptr<RBX::ScriptContext> >(const boost::any&);
