@@ -10,7 +10,7 @@ public:
 }
 
 // INFERRED: the disassembly pushes no stack args for this call, so it is declared with none (the supplied 4-arg declaration looks wrong).
-extern "C" void __fastcall fn_004d7dc0(void* self, int unusedEdx);
+extern "C" void __fastcall fn_004d7dc0(void* self);
 
 // INFERRED: unknown global at 0x826bf4 is the vtable of the node's embedded polymorphic member.
 extern "C" char g_00826bf4[];
@@ -25,6 +25,7 @@ struct HashNode {
     HashNodeSub sub;   // +8, polymorphic member
     int pad2;
     int pad3;
+    int pad4;  // INFERRED: next pointer sits at +0x18 in the disassembly
     HashNode* next;    // +0x18
 };
 
@@ -42,7 +43,7 @@ extern "C" void __fastcall fn_004d8dc0(HashTable* self, int unusedEdx)
         while (node) {
             HashNode* next = node->next;
             node->sub.vtable = g_00826bf4;
-            fn_004d7dc0(&node->sub, 0);
+            fn_004d7dc0(&node->sub);
             G3D::System::free(node);
             node = next;
         }

@@ -1,39 +1,15 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-
-// INFERRED: no class headers were available. The target is the compiler-generated
-// adjustor{36} thunk for a secondary base subobject at offset 36 of RBX::Accoutrement:
-//   sub ecx, 0x24
-//   jmp <real vector deleting destructor>
-// The class layout below is a minimal stand-in that makes the compiler emit that thunk.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// INFERRED: The target is the compiler-generated adjustor{36} thunk for
+// Accoutrement's vector deleting destructor ("sub ecx,0x24; jmp
+// Accoutrement::`vector deleting destructor'"). It is emitted in the
+// translation unit that emits Accoutrement's vftable. Defining the destructor
+// out of line from the real header makes the compiler emit the vftables, the
+// vector deleting destructor and the adjustor thunk.
+#include "v8datamodel/Accoutrement.h"
 
 namespace RBX {
 
-// INFERRED: primary base occupying 36 bytes (vptr + 32 bytes of data).
-class AccoutrementPrimaryBase {
-public:
-    int data[8];
-    AccoutrementPrimaryBase() {}
-    virtual ~AccoutrementPrimaryBase() {}
-};
-
-// INFERRED: secondary base with a virtual destructor, located at offset 36.
-class AccoutrementSecondaryBase {
-public:
-    int more;
-    AccoutrementSecondaryBase() : more(0) {}
-    virtual ~AccoutrementSecondaryBase() {}
-};
-
-class Accoutrement : public AccoutrementPrimaryBase, public AccoutrementSecondaryBase {
-public:
-    Accoutrement() {}
-    virtual ~Accoutrement() {}
-};
-
-// Forces the vtable, including the `vector deleting destructor'`adjustor{36}' thunk, to be emitted.
-Accoutrement* makeAccoutrementForVtable()
-{
-    return new Accoutrement();
-}
+// INFERRED: assumes the header declares `virtual ~Accoutrement();` without an inline body.
+Accoutrement::~Accoutrement() {}
 
 } // namespace RBX

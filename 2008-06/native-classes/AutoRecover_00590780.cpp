@@ -7,7 +7,8 @@
 
 namespace RBX {
 
-char* sWorkspace = 0;
+// Declaration only: defined as char sWorkspace[] = "Workspace" in NativeWorkspaceClassNames.cpp (odrdiff: 4 vs 47 B).
+extern char* sWorkspace;
 
 // INFERRED: primary base of 20 bytes (vptr + 16 bytes of data) placing the second base at +20
 class InstanceBase {

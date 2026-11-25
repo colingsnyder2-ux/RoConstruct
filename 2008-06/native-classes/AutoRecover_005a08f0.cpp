@@ -1,42 +1,12 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-// INFERRED: no class headers were supplied, so this uses minimal stand-in types.
-// The adjustor{16} vector-deleting-destructor thunk (sub ecx,0x10; jmp real_vdtor) is emitted
-// by the compiler for the secondary-base vftable slot of the explicitly instantiated class.
+// INFERRED: no class header excerpt was provided, so the include path below is a guess.
+// The target is the compiler-generated adjustor{16} thunk (this -= 16; jmp the real
+// vector deleting destructor) for the secondary-base vtable slot. Explicitly
+// instantiating the real template makes the compiler emit it, so no class is redefined here.
+#include "v8datamodel/Workspace.h"
 
-namespace RBX {
-
-char* sWorkspace;
-
-// INFERRED: primary polymorphic base occupying the first 16 bytes, with a virtual destructor
-struct InstancePrimary {
-    virtual ~InstancePrimary() {}
-    int pad[3];
-};
-
-// INFERRED: secondary base at offset 16 that also carries a virtual destructor
-struct InstanceSecondary {
-    virtual ~InstanceSecondary() {}
-    int pad2;
-};
-
-class RootInstance : public InstancePrimary, public InstanceSecondary {
-public:
-    virtual ~RootInstance() {}
-};
-
-class Workspace;
-
-// INFERRED: the template argument is a pointer to the object (mangled $1?sWorkspace@2@3PADA),
-// so the non-type parameter is a char** and not a reference.
-template<class T, class Base, char** Name>
-class DescribedNonCreatable : public Base {
-public:
-    DescribedNonCreatable() {}
-    virtual ~DescribedNonCreatable() {}
-};
-
-// Explicit instantiation emits the vtables and the destructor thunks.
-template class DescribedNonCreatable<Workspace, RootInstance, &sWorkspace>;
-
-}
+// INFERRED: the previous attempt failed because sWorkspace is declared as an array
+// (char[]), so &sWorkspace has type char(*)[]. The template parameter is a
+// const char*, so the array name is passed directly and decays to a pointer.
+template class RBX::DescribedNonCreatable<RBX::Workspace, RBX::RootInstance, RBX::sWorkspace>;

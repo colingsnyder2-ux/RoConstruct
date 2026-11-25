@@ -1,50 +1,19 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-// INFERRED: no class headers were available, so this is a minimal layout model.
-// Accoutrement has a primary polymorphic base of 0x130 bytes and a second
-// polymorphic base at offset 0x130 (304). FactoryProduct<Hat,Accoutrement,&sHat>
-// derives from Accoutrement and overrides the virtual destructor (protected,
-// per the 'O' access code in the mangled thunk name). The compiler emits the
-// `vector deleting destructor'`adjustor{304}' thunk (sub ecx,0x130; jmp) for
-// the secondary vtable.
+#include <new>
+#include "v8datamodel/Accoutrement.h"
 
-namespace RBX {
-
-extern const char* const sHat;
-
-// INFERRED: primary base, 0x130 bytes including its vptr
-struct AccPrimary {
-    virtual ~AccPrimary() {}
-    char pad[0x12C];
-};
-
-// INFERRED: secondary base at offset 0x130 with a virtual destructor
-struct AccSecondary {
-    virtual ~AccSecondary() {}
-};
-
-class Accoutrement : public AccPrimary, public AccSecondary {
-public:
-    virtual ~Accoutrement() {}
-};
-
-class Hat;
-
-template<class T, class Base, const char* const* Name>
-class FactoryProduct : public Base {
-public:
-    FactoryProduct() {}
-    static FactoryProduct* create() { return new FactoryProduct; }
-protected:
-    virtual ~FactoryProduct() {}
-};
-
-}
-
-const char* const RBX::sHat = "Hat";
-
-// Forces emission of the vftables (and hence the adjustor{304} thunk).
-void* createHatForVtable()
+// INFERRED: the target is the compiler-generated adjustor{304} thunk
+// (sub ecx,0x130; jmp) for the vector deleting destructor of
+// RBX::FactoryProduct<RBX::Hat, RBX::Accoutrement, &RBX::sHat>.
+// The thunk has no source of its own, so, as in the twin, this helper
+// constructs a Hat to force the vftable and thunk to be emitted.
+// INFERRED: Hat.h does not exist; Accoutrement.h is assumed to declare
+// Hat and the FactoryProduct base.
+// The global placement new (::new) bypasses any private class-level
+// operator new/delete.
+RBX::Hat* createHatForVtable()
 {
-    return RBX::FactoryProduct<RBX::Hat, RBX::Accoutrement, &RBX::sHat>::create();
+    void* mem = ::operator new(sizeof(RBX::Hat));
+    return ::new (mem) RBX::Hat();
 }

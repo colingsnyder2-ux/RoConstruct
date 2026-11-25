@@ -1,42 +1,22 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: no native header paths were visible, so the needed declarations are made file-local.
-// INFERRED: the offsets 0x1a0 and 0x1d0 come from the disassembly; their field meanings are guesses.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// INFERRED: layout from disassembly offsets; no native header for Players members used here.
+struct Local_00492320_Players {
+    char padding[0x1a0];
+    char* localPlayer;
+};
 
-namespace RBX {
-    class Instance;
-    namespace Network {
-        class Players;
-    }
-    class ServiceProvider {
-    public:
-        template<class T> T* find() const;
-        static const ServiceProvider* findServiceProvider(const Instance* instance);
-    };
-}
+// ServiceProvider::find<Players> is __thiscall (ecx = provider, no edx use): one-arg __fastcall.
+extern "C" Local_00492320_Players* __fastcall fn_004125d0(void* serviceProvider);
+extern "C" const void* __cdecl fn_004898d0(const void* instance);
+extern "C" double __cdecl fn_00508410(void);
 
-namespace G3D {
-    class System {
-    public:
-        static double getLocalTime();
-    };
-}
-
-extern "C" void fn_00492320(const RBX::ServiceProvider* sp)
+extern "C" void __cdecl fn_00492320(void* serviceProvider)
 {
-    RBX::Network::Players* players = sp->find<RBX::Network::Players>();
-    if (players)
-    {
-        // INFERRED: the pointer at +0x1a0 is the local player, an Instance subclass.
-        RBX::Instance* player = *reinterpret_cast<RBX::Instance**>(
-            reinterpret_cast<char*>(players) + 0x1a0);
-        if (player)
-        {
-            if (RBX::ServiceProvider::findServiceProvider(player))
-            {
-                // INFERRED: +0x1d0 holds a double timestamp on the player.
-                *reinterpret_cast<double*>(reinterpret_cast<char*>(player) + 0x1d0) =
-                    G3D::System::getLocalTime();
-            }
-        }
+    Local_00492320_Players* players = fn_004125d0(serviceProvider);
+    if (players) {
+        // INFERRED: member at 0x1a0 is an Instance*, 0x1d0 double lives on that object.
+        char* inst = players->localPlayer;
+        if (inst && fn_004898d0(inst))
+            *(double*)(inst + 0x1d0) = fn_00508410();
     }
 }

@@ -1,117 +1,92 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 #include <string>
 #include <stdexcept>
 
-// INFERRED: std::_Tree<...> layout (Dinkumware VC9): _Myhead at +0x18, _Mysize at +0x1c
-struct RocTree
-{
+// INFERRED: this is std::_Tree<set<int>>::_Insert(bool addleft, _Nodeptr where, const int& val)
+// returning an iterator through a hidden pointer (first stack arg).
+// Node accessors at 0x54c630/0x54c640/0x541da0/0x543630 are cdecl (caller does add esp,4).
+extern "C" int* fn_0054c630(int node);   // _Left
+extern "C" int* fn_0054c640(int node);   // _Parent
+extern "C" int* fn_00541da0(int node);   // _Right
+extern "C" char* fn_00543630(int node);  // _Color
+
+extern "C" int __fastcall fn_00550a30(void* self, int unusedEdx, int a1, int a2, int a3, int a4, int a5);
+extern "C" int* __fastcall fn_005423f0(void* self, int unusedEdx);   // _Root
+extern "C" int* __fastcall fn_0054cec0(void* self, int unusedEdx);   // _Rmost
+extern "C" int* __fastcall fn_005508e0(void* self, int unusedEdx);   // _Lmost
+extern "C" int __fastcall fn_00550900(void* self, int unusedEdx, int node); // _Lrotate
+extern "C" int __fastcall fn_00544070(void* self, int unusedEdx, int node); // _Rrotate
+extern "C" int __fastcall fn_00543650(Unknown543650* self, int unusedEdx);
+extern "C" void* __fastcall fn_0054e320(void* self, int unusedEdx, int node, void* tree); // iterator ctor
+
+struct TreeHdr {
     char pad[0x18];
-    void* _Myhead;
-    unsigned int _Mysize;
+    int head;
+    unsigned size;
 };
 
-typedef void* NodePtr;
-
-// INFERRED: max_size()
-extern "C" unsigned int __fastcall fn_00543650(RocTree* self, int unusedEdx);
-// INFERRED: _Buynode(_Larg, _Parg, _Rarg, _Val, _Carg)
-extern "C" NodePtr __fastcall fn_00550a30(RocTree* self, int unusedEdx, NodePtr larg, NodePtr parg, NodePtr rarg, const void* val, char carg);
-// INFERRED: _Root()
-extern "C" NodePtr* __fastcall fn_005423f0(RocTree* self, int unusedEdx);
-// INFERRED: _Lmost()
-extern "C" NodePtr* __fastcall fn_005508e0(RocTree* self, int unusedEdx);
-// INFERRED: _Rmost()
-extern "C" NodePtr* __fastcall fn_0054cec0(RocTree* self, int unusedEdx);
-// INFERRED: _Lrotate(_Wherenode)
-extern "C" void __fastcall fn_00550900(RocTree* self, int unusedEdx, NodePtr wherenode);
-// INFERRED: _Rrotate(_Wherenode)
-extern "C" void __fastcall fn_00544070(RocTree* self, int unusedEdx, NodePtr wherenode);
-// INFERRED: const_iterator(_Nodeptr, const _Tree*) constructor (folded COMDAT)
-extern "C" void* __fastcall fn_0054e320(void* self, int unusedEdx, NodePtr node, RocTree* tree);
-
-// INFERRED: static node accessors (cdecl)
-extern "C" NodePtr* __cdecl fn_0054c630(NodePtr p); // _Left
-extern "C" NodePtr* __cdecl fn_0054c640(NodePtr p); // _Parent
-extern "C" NodePtr* __cdecl fn_00541da0(NodePtr p); // _Right
-extern "C" char*    __cdecl fn_00543630(NodePtr p); // _Color
-
-// std::_Tree::_Insert(bool _Addleft, _Nodeptr _Wherenode, const value_type& _Val)
-extern "C" void* __fastcall fn_0054f3f0(RocTree* self, int unusedEdx, void* result, bool addleft, NodePtr wherenode, const void* val)
+extern "C" void* __fastcall fn_0054f3f0(TreeHdr* self, int unusedEdx, void* retIter, int addLeft, int where, int val)
 {
-    if (fn_00543650(self, 0) - 1 <= self->_Mysize)
-        throw std::length_error("map/set<T> too long");
+    // max_size() check; INFERRED: original max_size is func_00543650
+    if ((unsigned)fn_00543650(self, 0, 0, 0, 0, 0, 0, 0) - 1 <= self->size) {
+        // INFERRED: _Xlen
+        throw std::length_error(std::string("map/set<T> too long"));
+    }
 
-    NodePtr newnode = fn_00550a30(self, 0, self->_Myhead, wherenode, self->_Myhead, val, 0);
+    int newnode = fn_00550a30(self, 0, self->head, where, self->head, val, 0);
+    ++self->size;
 
-    ++self->_Mysize;
-    if (wherenode == self->_Myhead)
-    {
+    if (where == self->head) {
         *fn_005423f0(self, 0) = newnode;
         *fn_005508e0(self, 0) = newnode;
         *fn_0054cec0(self, 0) = newnode;
-    }
-    else if (addleft)
-    {
-        *fn_0054c630(wherenode) = newnode;
-        if (wherenode == *fn_005508e0(self, 0))
+    } else if ((unsigned char)addLeft) {
+        *fn_0054c630(where) = newnode;
+        if (where == *fn_005508e0(self, 0))
             *fn_005508e0(self, 0) = newnode;
-    }
-    else
-    {
-        *fn_00541da0(wherenode) = newnode;
-        if (wherenode == *fn_0054cec0(self, 0))
+    } else {
+        *fn_00541da0(where) = newnode;
+        if (where == *fn_0054cec0(self, 0))
             *fn_0054cec0(self, 0) = newnode;
     }
 
-    for (NodePtr pnode = newnode; *fn_00543630(*fn_0054c640(pnode)) == 0; )
-    {
-        if (*fn_0054c640(pnode) == *fn_0054c630(*fn_0054c640(*fn_0054c640(pnode))))
-        {
-            wherenode = *fn_00541da0(*fn_0054c640(*fn_0054c640(pnode)));
-            if (*fn_00543630(wherenode) == 0)
-            {
-                *fn_00543630(*fn_0054c640(pnode)) = 1;
-                *fn_00543630(wherenode) = 1;
-                *fn_00543630(*fn_0054c640(*fn_0054c640(pnode))) = 0;
-                pnode = *fn_0054c640(*fn_0054c640(pnode));
-            }
-            else
-            {
-                if (pnode == *fn_00541da0(*fn_0054c640(pnode)))
-                {
-                    pnode = *fn_0054c640(pnode);
-                    fn_00550900(self, 0, pnode);
+    int p = newnode;
+    while (*fn_00543630(*fn_0054c640(p)) == 0) {
+        if (*fn_0054c640(p) == *fn_0054c630(*fn_0054c640(*fn_0054c640(p)))) {
+            int w = *fn_00541da0(*fn_0054c640(*fn_0054c640(p)));
+            if (*fn_00543630(w) == 0) {
+                *fn_00543630(*fn_0054c640(p)) = 1;
+                *fn_00543630(w) = 1;
+                *fn_00543630(*fn_0054c640(*fn_0054c640(p))) = 0;
+                p = *fn_0054c640(*fn_0054c640(p));
+            } else {
+                if (p == *fn_00541da0(*fn_0054c640(p))) {
+                    p = *fn_0054c640(p);
+                    fn_00550900(self, 0, p);
                 }
-                *fn_00543630(*fn_0054c640(pnode)) = 1;
-                *fn_00543630(*fn_0054c640(*fn_0054c640(pnode))) = 0;
-                fn_00544070(self, 0, *fn_0054c640(*fn_0054c640(pnode)));
+                *fn_00543630(*fn_0054c640(p)) = 1;
+                *fn_00543630(*fn_0054c640(*fn_0054c640(p))) = 0;
+                fn_00544070(self, 0, *fn_0054c640(*fn_0054c640(p)));
             }
-        }
-        else
-        {
-            wherenode = *fn_0054c630(*fn_0054c640(*fn_0054c640(pnode)));
-            if (*fn_00543630(wherenode) == 0)
-            {
-                *fn_00543630(*fn_0054c640(pnode)) = 1;
-                *fn_00543630(wherenode) = 1;
-                *fn_00543630(*fn_0054c640(*fn_0054c640(pnode))) = 0;
-                pnode = *fn_0054c640(*fn_0054c640(pnode));
-            }
-            else
-            {
-                if (pnode == *fn_0054c630(*fn_0054c640(pnode)))
-                {
-                    pnode = *fn_0054c640(pnode);
-                    fn_00544070(self, 0, pnode);
+        } else {
+            int w = *fn_0054c630(*fn_0054c640(*fn_0054c640(p)));
+            if (*fn_00543630(w) == 0) {
+                *fn_00543630(*fn_0054c640(p)) = 1;
+                *fn_00543630(w) = 1;
+                *fn_00543630(*fn_0054c640(*fn_0054c640(p))) = 0;
+                p = *fn_0054c640(*fn_0054c640(p));
+            } else {
+                if (p == *fn_0054c630(*fn_0054c640(p))) {
+                    p = *fn_0054c640(p);
+                    fn_00544070(self, 0, p);
                 }
-                *fn_00543630(*fn_0054c640(pnode)) = 1;
-                *fn_00543630(*fn_0054c640(*fn_0054c640(pnode))) = 0;
-                fn_00550900(self, 0, *fn_0054c640(*fn_0054c640(pnode)));
+                *fn_00543630(*fn_0054c640(p)) = 1;
+                *fn_00543630(*fn_0054c640(*fn_0054c640(p))) = 0;
+                fn_00550900(self, 0, *fn_0054c640(*fn_0054c640(p)));
             }
         }
     }
 
     *fn_00543630(*fn_005423f0(self, 0)) = 1;
-    fn_0054e320(result, 0, newnode, self);
-    return result;
+    return fn_0054e320(retIter, 0, newnode, self);
 }

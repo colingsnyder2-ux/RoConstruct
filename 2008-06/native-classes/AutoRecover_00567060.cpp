@@ -1,39 +1,16 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-// INFERRED: no class header was available. The target is the adjustor thunk
-// `sub ecx,14h; jmp Selection::`vector deleting destructor'`. MSVC emits it into
-// the vftable of a secondary base at offset 20 when the derived class overrides
-// that base's virtual destructor. It is modeled here as a 20-byte primary base
-// plus a secondary base with a virtual destructor. The real members and base
-// classes of Selection are unknown.
-// The out-of-line constructor makes the compiler emit the vftable and the thunk.
+#include "selection-iterators/v8datamodel/Selection.h"
 
 namespace RBX {
 
-struct SelectionPrimaryBase {
-    virtual ~SelectionPrimaryBase() {}
-    char pad[16]; // INFERRED: fills the first 20 bytes (vptr + 16)
-};
-
-struct SelectionSecondaryBase {
-    virtual ~SelectionSecondaryBase() {}
-    int dummy;
-};
-
-class Selection : public SelectionPrimaryBase, public SelectionSecondaryBase {
-public:
-    Selection();
-    virtual ~Selection();
-    void* member; // INFERRED
-};
-
-Selection::Selection()
-{
-    member = 0;
-}
-
+// INFERRED: the target is the compiler-generated thunk
+// Selection::`vector deleting destructor'`adjustor{20}' (sub ecx,14h; jmp).
+// Defining the destructor out of line in this unit makes the compiler emit
+// the vftable and the thunk. This assumes the header declares the destructor
+// without an inline body.
 Selection::~Selection()
 {
 }
 
-} // namespace RBX
+}

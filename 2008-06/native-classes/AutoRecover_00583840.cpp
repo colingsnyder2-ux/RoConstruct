@@ -11,7 +11,9 @@
 
 namespace RBX {
 
-    char* sModel; // INFERRED: non-const char* variable used as the template argument
+    // Declaration only: the definition is char sModel[] = "Model" (NativeWorkspaceClassNames.cpp); a second
+    // null char* definition here broke ODR (auto/odrdiff.json: sizes 4 vs 10/47) and could win at link time.
+    extern char* sModel; // INFERRED: non-const char* variable used as the template argument
 
     class Instance {
     public:

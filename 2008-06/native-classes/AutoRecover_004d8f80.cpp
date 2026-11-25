@@ -1,45 +1,41 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-namespace G3D {
-class System {
-public:
-    static void free(void* p);
-    static void alignedFree(void* p);
-};
-}
+extern "C" char g_00826c14[];   // INFERRED: unnamed global at 0x00826c14 in the original
+#include "G3D/System.h"
 
-struct PoolNode {
-    char pad0[8];
-    void* vtbl;          // INFERRED: sub-object at +8 gets vtable reset before its dtor-like helper
-    char pad1[0x10];
-    PoolNode* next;      // +0x18
-};
+// INFERRED: the callee takes only ecx (the disassembly sets up no edx and pushes no stack args).
+// Declared with a single fastcall argument so the compiler does not zero edx before the call.
+extern "C" int __fastcall fn_004d7e30(void* self);
 
-struct PoolArray {
-    int unk0;
-    int field4;
-    PoolNode** data;     // +8
-    int num;             // +0xc
+// INFERRED: the node payload is a polymorphic object at offset 8 whose vtable is reset before destruction.
+struct Local_004d8f80Node {
+    unsigned char data[8];
+    void* vtable;
+    unsigned char payload[12];
+    Local_004d8f80Node* next;
 };
 
-// INFERRED: vtable of the node sub-object (original address 0x826c14)
-extern "C" char g_00826c14[];
+// INFERRED: hash table container with buckets at +8 and bucketCount at +0xc.
+struct Local_004d8f80Table {
+    unsigned int field0;
+    int size;
+    Local_004d8f80Node** buckets;
+    int bucketCount;
+};
 
-extern "C" int __fastcall fn_004d7e30(void* self, int unusedEdx);
-
-extern "C" void __fastcall fn_004d8f80(PoolArray* self, int unusedEdx)
+extern "C" void __fastcall fn_004d8f80(Local_004d8f80Table* self, int unusedEdx)
 {
-    for (int i = 0; i < self->num; ++i) {
-        PoolNode* n = self->data[i];
-        while (n) {
-            PoolNode* next = n->next;
-            n->vtbl = g_00826c14;
-            fn_004d7e30(&n->vtbl, 0);
-            G3D::System::free(n);
-            n = next;
+    for (int i = 0; i < self->bucketCount; ++i) {
+        Local_004d8f80Node* node = self->buckets[i];
+        while (node) {
+            Local_004d8f80Node* next = node->next;
+            node->vtable = (void*)((int)&g_00826c14);
+            fn_004d7e30(&node->vtable);
+            G3D::System::free(node);
+            node = next;
         }
     }
-    G3D::System::alignedFree(self->data);
-    self->data = 0;
-    self->num = 0;
-    self->field4 = 0;
+    G3D::System::alignedFree(self->buckets);
+    self->buckets = 0;
+    self->bucketCount = 0;
+    self->size = 0;
 }

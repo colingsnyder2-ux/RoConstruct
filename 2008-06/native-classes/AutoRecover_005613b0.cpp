@@ -1,16 +1,15 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+extern "C" char g_00944430[];   // INFERRED: unnamed global at 0x00944430 in the original
+// INFERRED: signature of boost-style functor manager (a, b, op); callee is manage(const void* const*, void**, int)
+extern "C" void __cdecl fn_00560f00(int, int, int, int);
 
-// INFERRED: 4th arg is a by-value tag; the disassembly passes (op & ~0xff).
-extern "C" void fn_00560f00(const void* const* in, void** out, int op, int tag);
-
-// INFERRED: unknown global at 0x944430 (type_info / vtable-like pointer stored for the get_functor_type case).
-extern "C" char g_00944430;
-
-extern "C" void fn_005613b0(const void* const* in, void** out, int op)
+extern "C" void __cdecl fn_005613b0(int a, int b, int c)
 {
-    if (op == 3) {
-        *out = &g_00944430;
+    if (c != 3)
+    {
+        char zero = 0;
+        fn_00560f00(a, b, c, *(int*)&zero);
         return;
     }
-    fn_00560f00(in, out, op, op & ~0xff);
+    *(int*)b = ((int)&g_00944430);
 }

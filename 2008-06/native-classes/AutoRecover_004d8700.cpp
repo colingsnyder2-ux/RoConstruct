@@ -1,36 +1,27 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-
-// INFERRED: the target's class and its layout are unknown. The object is modelled as a
-// vtable-like dword at +0, an unused dword at +4, and an 8-byte payload at +8.
-struct Fn4d8700Obj {
-    const void* vtbl;   // +0
-    int pad;            // +4
-    int payload[2];     // +8
+extern "C" char g_00826be0[];   // INFERRED: unnamed global at 0x00826be0 in the original
+struct Local_004d8700 {
+    int f(int a, int b, int c);
 };
 
-// StringConverter<G3D::CoordinateFrame>::convertToValue, called with one pointer argument.
-// INFERRED: the pointer is to an 8-byte local built from arg1 and arg2.
-extern "C" char __cdecl fn_0060a2f0(int* in);
+// INFERRED: convertToValue(const std::string&, CoordinateFrame&) takes a single stack arg here (pointer to the 2-dword local)
+extern "C" bool __cdecl fn_0060a2f0(int* p);
 
-// INFERRED: the value stored at [esi] on the failure path is the address of an unknown
-// global (likely a vtable or type-descriptor object).
-extern "C" char g_00826be0;
-
-extern "C" Fn4d8700Obj* __fastcall fn_004d8700(Fn4d8700Obj* self, int unusedEdx, int arg1, int arg2, int arg3)
+extern "C" Local_004d8700* __fastcall fn_004d8700(Local_004d8700* self, int unusedEdx, int a, int b, int c)
 {
     int local[2];
-    local[0] = arg1;
-    local[1] = arg2;
-    self->vtbl = 0;
+    local[0] = a;
+    local[1] = b;
+    *(int*)self = 0;
     if (!fn_0060a2f0(local)) {
-        int* dst = self->payload;
-        if (dst) {
-            dst[0] = local[0];
-            dst[1] = local[1];
+        int* p = (int*)((char*)self + 8);
+        if (p) {
+            p[0] = local[0];
+            p[1] = local[1];
         }
-        self->vtbl = &g_00826be0;
+        *(int*)self = ((int)&g_00826be0);
         return self;
     }
-    self->vtbl = 0;
+    *(int*)self = 0;
     return self;
 }

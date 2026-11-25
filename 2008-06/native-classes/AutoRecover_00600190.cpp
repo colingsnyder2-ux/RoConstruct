@@ -1,49 +1,52 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-
-// The target is a compiler-generated adjustor thunk
-// ("sub ecx,0x14; jmp `vector deleting destructor'"). It is produced by the
-// compiler when the vtable of DescribedCreatable<Tool,BackpackItem,&sTool>
-// is emitted and a polymorphic base sits at offset 0x14.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
 namespace RBX {
 
-class Tool;
-class BackpackItem;
+// INFERRED: no class headers were available, so these are minimal stand-ins.
+// The target is the compiler-generated thunk
+// `DescribedCreatable<Tool,BackpackItem,&sTool>::`vector deleting destructor'`adjustor{20}'.
+// It does `sub ecx,14h` and jumps to the primary vector deleting destructor.
+
+// INFERRED: the primary base is 20 bytes (vfptr + 16 bytes) with no virtual destructor.
+class Local_00600190_Base0 {
+public:
+    virtual void describe() {}
+    int pad[4];
+};
+
+// INFERRED: the secondary base at offset 20 owns the virtual destructor.
+class Local_00600190_Base1 {
+public:
+    virtual ~Local_00600190_Base1() {}
+    int x;
+};
+
+// INFERRED: stand-in for BackpackItem.
+class BackpackItem : public Local_00600190_Base0, public Local_00600190_Base1 {
+public:
+    BackpackItem() : y(0) {}
+    virtual ~BackpackItem() {}
+    int y;
+};
+
+// INFERRED: stand-in for Tool.
+class Tool : public BackpackItem {
+public:
+    Tool() {}
+    virtual ~Tool() {}
+};
+
 extern const char* const sTool;
+const char* const sTool = "Tool";
 
-// INFERRED: primary polymorphic base occupying 0x14 bytes (vptr + 16 bytes).
-class DescribedCreatablePrimaryBase
-{
+template<class T, class Base, const char* const* Name>
+class DescribedCreatable : public Base {
 public:
-    virtual ~DescribedCreatablePrimaryBase();
-private:
-    char pad_[0x10];
-};
-
-// INFERRED: secondary polymorphic base located at offset 0x14 (adjustor{20}).
-class DescribedCreatableSecondaryBase
-{
-public:
-    virtual ~DescribedCreatableSecondaryBase();
-};
-
-template<class Class, class Base, const char* const* ClassName>
-class DescribedCreatable
-    : public DescribedCreatablePrimaryBase
-    , public DescribedCreatableSecondaryBase
-{
-public:
-    DescribedCreatable();
+    DescribedCreatable() {}
     virtual ~DescribedCreatable() {}
 };
 
-template<class Class, class Base, const char* const* ClassName>
-DescribedCreatable<Class, Base, ClassName>::DescribedCreatable()
-{
-}
-
-// Explicit instantiation emits the vtable and thus the
-// `vector deleting destructor'`adjustor{20}' thunk.
+// Explicit instantiation emits the vftables and the adjustor{20} thunk.
 template class DescribedCreatable<Tool, BackpackItem, &sTool>;
 
-} // namespace RBX
+}

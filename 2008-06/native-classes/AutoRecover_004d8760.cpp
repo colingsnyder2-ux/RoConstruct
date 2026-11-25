@@ -1,38 +1,28 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: callee is StringConverter<CoordinateFrame>::convertToValue; the disassembly passes one stack argument, a pointer to an 8-byte local built from arg1 and arg2. Declared as a plain cdecl helper.
-extern "C" bool fn_0060a2f0(void* arg);
-
-// INFERRED: unknown global (the tag stored on failure, likely a vtable).
-extern "C" char g_00826be8;
-
-// INFERRED: local struct for the target object. It has a tag dword at +0 and an 8-byte payload at +8.
-struct Fn4d8760Obj {
-    const void* tag;
-    int pad;
-    int v0;
-    int v1;
+extern "C" char g_00826be8[];   // INFERRED: unnamed global at 0x00826be8 in the original
+// INFERRED: the callee takes (const std::string&, CoordinateFrame&) style args; modeled as the analog's
+// pointer-to-local with the two string-ish dwords stored in the local, matching the verified analog.
+struct Local_004d8760 {
+    int f(int a, int b, int c);
 };
 
-struct Fn4d8760Pair {
-    int a;
-    int b;
-};
+extern "C" bool __cdecl fn_0060a2f0(int* p);
 
-extern "C" Fn4d8760Obj* __fastcall fn_004d8760(Fn4d8760Obj* self, int unusedEdx, int arg1, int arg2, int arg3)
+extern "C" Local_004d8760* __fastcall fn_004d8760(Local_004d8760* self, int unusedEdx, int a, int b, int c)
 {
-    Fn4d8760Pair tmp;
-    tmp.a = arg1;
-    tmp.b = arg2;
-    self->tag = 0;
-    if (!fn_0060a2f0(&tmp)) {
-        int* dst = &self->v0;
-        if (dst) {
-            dst[0] = tmp.a;
-            dst[1] = tmp.b;
+    int local[2];
+    local[0] = a;
+    local[1] = b;
+    *(int*)self = 0;
+    if (!fn_0060a2f0(local)) {
+        int* p = (int*)((char*)self + 8);
+        if (p) {
+            p[0] = local[0];
+            p[1] = local[1];
         }
-        self->tag = &g_00826be8;
+        *(int*)self = ((int)&g_00826be8);
         return self;
     }
-    self->tag = 0;
+    *(int*)self = 0;
     return self;
 }

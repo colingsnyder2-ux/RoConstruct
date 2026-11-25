@@ -27,6 +27,7 @@ static void timeStamp(std::ofstream& stream, bool includeDate)
 
 namespace RBX
 {
+	// 00976b4c: Log::provider (setLogProvider 005a6bb0 stores it; the registry labels that address G3D::_internal::_debugHook)
 	ILogProvider* Log::provider;
 
 	void Log::setLogProvider(ILogProvider* provider)
