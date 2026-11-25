@@ -1,38 +1,50 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: no class header was available, so most types here are raw ints/pointers and the argument roles are guesses.
-// INFERRED: this reconstructs a PropDescriptor<FlagStand,BrickColor> constructor from the disassembly's call order only.
-// NOTE: not verified against the original bytes. The EH frame and the argument layout are inferred.
-extern "C" char g_0083d654[];   // INFERRED: vtable for PropDescriptor<FlagStand,BrickColor>
+// INFERRED: PropDescriptor constructor (12-byte MFPs, auto_ptr<GetSet> return from getset);
+// no real header is included to avoid inlining TypedPropertyDescriptor<T> ctor.
+void __cdecl operator delete(void*) throw();
+extern "C" char g_0083d654[];
+extern "C" void* __cdecl fn_005c0860(void);
 
-// INFERRED: auto_ptr-like owner. Its destructor is what forces the SEH frame.
-struct Local_005da7e0_Owner {
-    int* p;
-    ~Local_005da7e0_Owner() {
-        if (p) operator delete(p);
+struct Local_005da7e0_Mfp {
+    int a, b, c;
+};
+
+struct Local_005da7e0_Ref {
+    int* _Ref;
+    explicit Local_005da7e0_Ref(int* p) : _Ref(p) {}
+};
+
+struct Local_005da7e0_AutoPtr {
+    int* _Myptr;
+    explicit Local_005da7e0_AutoPtr(int* p = 0) throw() : _Myptr(p) {}
+    Local_005da7e0_AutoPtr(Local_005da7e0_AutoPtr& r) throw() : _Myptr(r._Myptr) { r._Myptr = 0; }
+    Local_005da7e0_AutoPtr(Local_005da7e0_Ref r) throw() : _Myptr(r._Ref) {}
+    operator Local_005da7e0_Ref() throw() {
+        int* p = _Myptr;
+        _Myptr = 0;
+        return Local_005da7e0_Ref(p);
+    }
+    ~Local_005da7e0_AutoPtr() {
+        if (_Myptr != 0)
+            delete _Myptr;
     }
 };
 
-struct Local_005da7e0 {
-    void* vtbl;
+// INFERRED: non-POD return prevents extern "C" in MSVC (C2526); C++ __cdecl matches hidden-ret ABI.
+Local_005da7e0_AutoPtr __cdecl fn_005d8230(Local_005da7e0_Mfp getter, Local_005da7e0_Mfp setter);
+
+struct Local_005da7e0_Base {
+    void init(void* cd, const char* name, const char* category,
+        Local_005da7e0_AutoPtr gs, int flags);
 };
 
-extern "C" int* __fastcall fn_005d8230(void* self, int unusedEdx, int a1, int a2, int a3, int a4, int a5, int a6, int a7);
-extern "C" int fn_005c0860(int a, int b);
-extern "C" int __fastcall fn_00445610(void* self, int unusedEdx, int desc, int ownedPtr);
-
-extern "C" Local_005da7e0* __fastcall fn_005da7e0(Local_005da7e0* self, int unusedEdx,
-    int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8,
-    Local_005da7e0_Owner arg9)
+extern "C" void* __fastcall fn_005da7e0(
+    Local_005da7e0_Base* self, int unusedEdx,
+    const char* name, const char* category,
+    Local_005da7e0_Mfp getter, Local_005da7e0_Mfp setter,
+    int flags)
 {
-    // INFERRED: arg9 is an owner passed by value (destroyed by this function on exit).
-    int* r = fn_005d8230((void*)arg6, 0, (int)&arg9, arg3, arg4, arg5, arg6, arg7, arg8);
-    Local_005da7e0_Owner tmp;
-    tmp.p = (int*)*r;
-    *r = 0;
-    int desc = fn_005c0860(arg1, arg2);
-    int owned = (int)tmp.p;
-    tmp.p = 0;
-    fn_00445610(self, 0, desc, owned);
-    self->vtbl = g_0083d654;
+    self->init(fn_005c0860(), name, category, fn_005d8230(getter, setter), flags);
+    *(void**)self = g_0083d654;
     return self;
 }

@@ -1,19 +1,42 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: __thiscall getset factory; self=ecx is the hidden auto_ptr out pointer, 6 dword stack args, ret 0x18 per disassembly is not shown (ret 0), so args are passed via stack by the caller.
-extern "C" void* fn_006a0920(int size);
-extern "C" char g_00843df0[];
+extern "C" void* fn_006a0920(unsigned int size);
 
-struct Local_006188e0 {
-    void* vtbl;
-    int pad4;
-    int f8, fC, f10, pad14, f18, f1C, f20, pad24;
+struct Local_006188e0_Base {};
+struct Local_006188e0_Obj : virtual public Local_006188e0_Base {};
+
+typedef int (Local_006188e0_Obj::*Local_006188e0_GetFn)() const;
+typedef void (Local_006188e0_Obj::*Local_006188e0_SetFn)(int);
+
+struct Local_006188e0_GetSet {
+    virtual bool isReadOnly() const = 0;
+    virtual bool isWriteOnly() const = 0;
+    virtual int getValue(const void*) const = 0;
+    virtual void setValue(void*, const int&) const = 0;
 };
 
-extern "C" Local_006188e0** __fastcall fn_006188e0(Local_006188e0** self, int unusedEdx)
+struct Local_006188e0_GetSetImpl : public Local_006188e0_GetSet {
+    Local_006188e0_GetFn get;
+    Local_006188e0_SetFn set;
+
+    Local_006188e0_GetSetImpl(Local_006188e0_GetFn g, Local_006188e0_SetFn s)
+        : Local_006188e0_GetSet(), get(g), set(s) {}
+
+    static void* operator new(unsigned int sz) { return fn_006a0920(sz); }
+    static void operator delete(void*) {}
+
+    virtual bool isReadOnly() const { return false; }
+    virtual bool isWriteOnly() const { return false; }
+    virtual int getValue(const void* o) const { return (((const Local_006188e0_Obj*)o)->*get)(); }
+    virtual void setValue(void* o, const int& v) const { (((Local_006188e0_Obj*)o)->*set)(v); }
+};
+
+struct Local_006188e0_AutoPtr {
+    Local_006188e0_GetSet* _Myptr;
+    Local_006188e0_AutoPtr* set(Local_006188e0_GetSet* p) { _Myptr = p; return this; }
+};
+
+extern "C" Local_006188e0_AutoPtr* fn_006188e0(Local_006188e0_AutoPtr* __restrict out, Local_006188e0_GetFn get, Local_006188e0_SetFn set)
 {
-    // INFERRED: disassembly reads [esp+8..0x20] after push ecx+local: stack args at 4..0x1c from entry.
-    // The target is declared with zero stack args per ABI check; the args are read from caller frame.
-    int* args = (int*)((char*)&self - 0) ;
-    (void)args;
-    return self;
+    int volatile dummy = 0;
+    return out->set(new Local_006188e0_GetSetImpl(get, set));
 }

@@ -33,10 +33,15 @@ struct Local_005ad2b0_AutoPtr {
         _Myptr = 0;
         return Local_005ad2b0_Ref(p);
     }
-    ~Local_005ad2b0_AutoPtr() { delete _Myptr; }
-    void reset(Local_005ad2b0_GetSet* p = 0) {
-        if (p != _Myptr)
+    ~Local_005ad2b0_AutoPtr() {
+        if (_Myptr != 0)
             delete _Myptr;
+    }
+    void reset(Local_005ad2b0_GetSet* p = 0) {
+        if (p != _Myptr) {
+            if (_Myptr != 0)
+                delete _Myptr;
+        }
         _Myptr = p;
     }
 };

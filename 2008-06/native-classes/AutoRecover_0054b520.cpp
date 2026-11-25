@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 #include <string>
 #include <stdexcept>
 #include <algorithm>
@@ -15,6 +15,9 @@ struct TreeIter {
     void* ptr;    // INFERRED: node pointer
 };
 
+struct Local_0054b520 {
+    TreeIter* erase(TreeIter* ret, int whereCont, void* wherePtr);
+};
 struct TreeObj;
 
 extern "C" {
@@ -26,17 +29,17 @@ extern "C" {
     NodePtr   fn_0054ce80(NodePtr n);   // _Min
     NodePtr   fn_0054ce40(NodePtr n);   // _Max
 
-    NodePtr*  __fastcall fn_005423f0(void* self, int unusedEdx);            // _Root
-    NodePtr*  __fastcall fn_005508e0(void* self, int unusedEdx);            // _Lmost
-    NodePtr*  __fastcall fn_0054cec0(void* self, int unusedEdx);            // _Rmost
+    NodePtr*  __fastcall fn_005423f0(void* self);            // _Root
+    NodePtr*  __fastcall fn_005508e0(void* self);            // _Lmost
+    NodePtr*  __fastcall fn_0054cec0(void* self);            // _Rmost
     int       __fastcall fn_0054cd10(void* self, int unusedEdx, NodePtr n); // _Lrotate
     int       __fastcall fn_0054cee0(void* self, int unusedEdx, NodePtr n); // _Rrotate
     int       __fastcall fn_0054d100(void* self, int unusedEdx, NodePtr n); // destroy
     int       __fastcall fn_00543610(void* self, int unusedEdx, NodePtr n, int count); // deallocate
     TreeIter* __fastcall fn_00544730(void* self, int unusedEdx, TreeIter* ret, int cont, void* ptr); // _Make_iter
 
-    NodePtr   __fastcall fn_0054bf70(TreeIter* self, int unusedEdx);  // _Mynode
-    int       __fastcall fn_0054db80(TreeIter* self, int unusedEdx);  // operator++
+    NodePtr   __fastcall fn_0054bf70(TreeIter* self);  // _Mynode
+    int       __fastcall fn_0054db80(TreeIter* self);  // operator++
 }
 
 #pragma optimize("", off)
@@ -44,13 +47,13 @@ extern "C" {
 // INFERRED: 'where' iterator passed by value occupies [ebp+0xc]/[ebp+0x10]
 #define WHERE ((TreeIter*)&whereCont)
 
-extern "C" TreeIter* __fastcall fn_0054b520(TreeObj* self, int unusedEdx, TreeIter* ret, int whereCont, void* wherePtr)
+TreeIter* Local_0054b520::erase(TreeIter* ret, int whereCont, void* wherePtr)
 {
-    if (*fn_0054c600(fn_0054bf70(WHERE, 0)) != 0)
+    if (*fn_0054c600(fn_0054bf70(WHERE)) != 0)
         throw std::out_of_range("invalid map/set<T> iterator");
 
-    NodePtr _Erasednode = fn_0054bf70(WHERE, 0);
-    fn_0054db80(WHERE, 0);
+    NodePtr _Erasednode = fn_0054bf70(WHERE);
+    fn_0054db80(WHERE);
 
     NodePtr _Fixnode;
     NodePtr _Pnode = _Erasednode;
@@ -61,7 +64,7 @@ extern "C" TreeIter* __fastcall fn_0054b520(TreeObj* self, int unusedEdx, TreeIt
     else if (*fn_0054c600(*fn_00541da0(_Pnode)) != 0)
         _Fixnode = *fn_0054c630(_Pnode);
     else {
-        _Pnode = fn_0054bf70(WHERE, 0);
+        _Pnode = fn_0054bf70(WHERE);
         _Fixnode = *fn_00541da0(_Pnode);
     }
 
@@ -70,18 +73,18 @@ extern "C" TreeIter* __fastcall fn_0054b520(TreeObj* self, int unusedEdx, TreeIt
         if (*fn_0054c600(_Fixnode) == 0)
             *fn_0054c640(_Fixnode) = _Fixnodeparent;
 
-        if (*fn_005423f0(self, 0) == _Erasednode)
-            *fn_005423f0(self, 0) = _Fixnode;
+        if (*fn_005423f0(this) == _Erasednode)
+            *fn_005423f0(this) = _Fixnode;
         else if (*fn_0054c630(_Fixnodeparent) == _Erasednode)
             *fn_0054c630(_Fixnodeparent) = _Fixnode;
         else
             *fn_00541da0(_Fixnodeparent) = _Fixnode;
 
-        if (*fn_005508e0(self, 0) == _Erasednode)
-            *fn_005508e0(self, 0) = (*fn_0054c600(_Fixnode) != 0) ? _Fixnodeparent : fn_0054ce80(_Fixnode);
+        if (*fn_005508e0(this) == _Erasednode)
+            *fn_005508e0(this) = (*fn_0054c600(_Fixnode) != 0) ? _Fixnodeparent : fn_0054ce80(_Fixnode);
 
-        if (*fn_0054cec0(self, 0) == _Erasednode)
-            *fn_0054cec0(self, 0) = (*fn_0054c600(_Fixnode) != 0) ? _Fixnodeparent : fn_0054ce40(_Fixnode);
+        if (*fn_0054cec0(this) == _Erasednode)
+            *fn_0054cec0(this) = (*fn_0054c600(_Fixnode) != 0) ? _Fixnodeparent : fn_0054ce40(_Fixnode);
     } else {
         *fn_0054c640(*fn_0054c630(_Erasednode)) = _Pnode;
         *fn_0054c630(_Pnode) = *fn_0054c630(_Erasednode);
@@ -97,8 +100,8 @@ extern "C" TreeIter* __fastcall fn_0054b520(TreeObj* self, int unusedEdx, TreeIt
             *fn_0054c640(*fn_00541da0(_Erasednode)) = _Pnode;
         }
 
-        if (*fn_005423f0(self, 0) == _Erasednode)
-            *fn_005423f0(self, 0) = _Pnode;
+        if (*fn_005423f0(this) == _Erasednode)
+            *fn_005423f0(this) = _Pnode;
         else if (*fn_0054c630(*fn_0054c640(_Erasednode)) == _Erasednode)
             *fn_0054c630(*fn_0054c640(_Erasednode)) = _Pnode;
         else
@@ -109,7 +112,7 @@ extern "C" TreeIter* __fastcall fn_0054b520(TreeObj* self, int unusedEdx, TreeIt
     }
 
     if (*fn_0054c5f0(_Erasednode) == 1) {
-        for (; _Fixnode != *fn_005423f0(self, 0) && *fn_0054c5f0(_Fixnode) == 1;
+        for (; _Fixnode != *fn_005423f0(this) && *fn_0054c5f0(_Fixnode) == 1;
              _Fixnodeparent = *fn_0054c640(_Fixnode))
         {
             if (_Fixnode == *fn_0054c630(_Fixnodeparent)) {
@@ -117,7 +120,7 @@ extern "C" TreeIter* __fastcall fn_0054b520(TreeObj* self, int unusedEdx, TreeIt
                 if (*fn_0054c5f0(_Pnode) == 0) {
                     *fn_0054c5f0(_Pnode) = 1;
                     *fn_0054c5f0(_Fixnodeparent) = 0;
-                    fn_0054cd10(self, 0, _Fixnodeparent);
+                    fn_0054cd10(this, 0, _Fixnodeparent);
                     _Pnode = *fn_00541da0(_Fixnodeparent);
                 }
                 if (*fn_0054c600(_Pnode) != 0)
@@ -130,13 +133,13 @@ extern "C" TreeIter* __fastcall fn_0054b520(TreeObj* self, int unusedEdx, TreeIt
                     if (*fn_0054c5f0(*fn_00541da0(_Pnode)) == 1) {
                         *fn_0054c5f0(*fn_0054c630(_Pnode)) = 1;
                         *fn_0054c5f0(_Pnode) = 0;
-                        fn_0054cee0(self, 0, _Pnode);
+                        fn_0054cee0(this, 0, _Pnode);
                         _Pnode = *fn_00541da0(_Fixnodeparent);
                     }
                     *fn_0054c5f0(_Pnode) = *fn_0054c5f0(_Fixnodeparent);
                     *fn_0054c5f0(_Fixnodeparent) = 1;
                     *fn_0054c5f0(*fn_00541da0(_Pnode)) = 1;
-                    fn_0054cd10(self, 0, _Fixnodeparent);
+                    fn_0054cd10(this, 0, _Fixnodeparent);
                     break;
                 }
             } else {
@@ -144,7 +147,7 @@ extern "C" TreeIter* __fastcall fn_0054b520(TreeObj* self, int unusedEdx, TreeIt
                 if (*fn_0054c5f0(_Pnode) == 0) {
                     *fn_0054c5f0(_Pnode) = 1;
                     *fn_0054c5f0(_Fixnodeparent) = 0;
-                    fn_0054cee0(self, 0, _Fixnodeparent);
+                    fn_0054cee0(this, 0, _Fixnodeparent);
                     _Pnode = *fn_0054c630(_Fixnodeparent);
                 }
                 if (*fn_0054c600(_Pnode) != 0)
@@ -157,13 +160,13 @@ extern "C" TreeIter* __fastcall fn_0054b520(TreeObj* self, int unusedEdx, TreeIt
                     if (*fn_0054c5f0(*fn_0054c630(_Pnode)) == 1) {
                         *fn_0054c5f0(*fn_00541da0(_Pnode)) = 1;
                         *fn_0054c5f0(_Pnode) = 0;
-                        fn_0054cd10(self, 0, _Pnode);
+                        fn_0054cd10(this, 0, _Pnode);
                         _Pnode = *fn_0054c630(_Fixnodeparent);
                     }
                     *fn_0054c5f0(_Pnode) = *fn_0054c5f0(_Fixnodeparent);
                     *fn_0054c5f0(_Fixnodeparent) = 1;
                     *fn_0054c5f0(*fn_0054c630(_Pnode)) = 1;
-                    fn_0054cee0(self, 0, _Fixnodeparent);
+                    fn_0054cee0(this, 0, _Fixnodeparent);
                     break;
                 }
             }
@@ -171,13 +174,13 @@ extern "C" TreeIter* __fastcall fn_0054b520(TreeObj* self, int unusedEdx, TreeIt
         *fn_0054c5f0(_Fixnode) = 1;
     }
 
-    fn_0054d100((char*)self + 0xc, 0, _Erasednode);
-    fn_00543610((char*)self + 0xc, 0, _Erasednode, 1);
+    fn_0054d100((char*)this + 0xc, 0, _Erasednode);
+    fn_00543610((char*)this + 0xc, 0, _Erasednode, 1);
 
-    if (*(unsigned int*)((char*)self + 0x1c) > 0)
-        *(unsigned int*)((char*)self + 0x1c) = *(unsigned int*)((char*)self + 0x1c) - 1;
+    if (*(unsigned int*)((char*)this + 0x1c) > 0)
+        *(unsigned int*)((char*)this + 0x1c) = *(unsigned int*)((char*)this + 0x1c) - 1;
 
-    fn_00544730(self, 0, ret, whereCont, wherePtr);
+    fn_00544730(this, 0, ret, whereCont, wherePtr);
     return ret;
 }
 

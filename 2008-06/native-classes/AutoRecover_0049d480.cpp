@@ -19,10 +19,10 @@ extern "C" {
 void __fastcall fn_00409d50(void* self, int unusedEdx, const std::string* msg); // runtime_error ctor
 void __fastcall fn_0042bc10(Local_0049d480_Impersonator* self, int unusedEdx, int identity);
 boost::shared_ptr<Local_0049d480_Player>* __cdecl fn_004093b0(Local_0049d480_Impersonator* ret);
-void* __cdecl fn_0042bbb0();                                              // Context::ptr (tss)
-void* __fastcall fn_005a7570(void* tss, int unusedEdx);                   // tss::get
-void __fastcall fn_005a76b0(void* tss, int unusedEdx, void* p);           // tss::set
-void __fastcall fn_005a6ff0(void* tss, int unusedEdx, void* p);           // tss::cleanup
+void* __cdecl fn_0042bbb0();
+void* __fastcall fn_005a7570(void* tss, int unusedEdx);
+void __fastcall fn_005a76b0(void* tss, int unusedEdx, void* p);
+void __fastcall fn_005a6ff0(void* tss, int unusedEdx, void* p);
 void __fastcall fn_00494830(Local_0049d480_Player* self, int unusedEdx, int userId);
 void __fastcall fn_0055a8f0(Local_0049d480_Player* self, int unusedEdx, void* parent);
 void __fastcall fn_0040db00(void* self, int unusedEdx, const void* desc);
@@ -37,31 +37,34 @@ fn_0049d480(Local_0049d480_World* self, int unusedEdx,
         throw std::runtime_error("Local player already exists");
 
     Local_0049d480_Impersonator imp;
-    fn_0042bc10(&imp, 0, 6);
+    // INFERRED: pass the incoming EDX through so no dummy-argument setup is emitted.
+    fn_0042bc10(&imp, unusedEdx, 6);
 
     boost::shared_ptr<Local_0049d480_Player>* p = fn_004093b0(&imp);
     self->localPlayer = p->get();
-    self->localPlayerCount = p->_internal_count();
+    // INFERRED: shared_ptr layout is px at +0, shared_count at +4 (boost 1.34).
+    self->localPlayerCount =
+        *reinterpret_cast<boost::detail::shared_count*>(reinterpret_cast<char*>(p) + 4);
 
     // inlined ~Impersonator: restore previous security context
     void* tss = fn_0042bbb0();
-    void* cur = fn_005a7570(tss, 0);
+    void* cur = fn_005a7570(tss, unusedEdx);
     if (cur != imp.prev) {
-        fn_005a76b0(tss, 0, imp.prev);
+        fn_005a76b0(tss, unusedEdx, imp.prev);
         if (cur)
-            fn_005a6ff0(tss, 0, cur);
+            fn_005a6ff0(tss, unusedEdx, cur);
     }
 
-    fn_00494830(self->localPlayer, 0, userId);
-    fn_0055a8f0(self->localPlayer, 0, self);
-    fn_0040db00(self, 0, 0);
+    fn_00494830(self->localPlayer, unusedEdx, userId);
+    fn_0055a8f0(self->localPlayer, unusedEdx, self);
+    fn_0040db00(self, unusedEdx, 0);
 
     bool joined = false;
     if (self->localPlayer)
         joined = false; // INFERRED: virtual query on the player, result passed to raise
-    fn_00496e20((char*)self + 0x150, 0, joined);
+    fn_00496e20((char*)self + 0x150, unusedEdx, joined);
 
     new (out) boost::shared_ptr<Local_0049d480_Player>(
-        boost::shared_ptr<Local_0049d480_Player>(*(boost::shared_ptr<Local_0049d480_Player>*)&self->localPlayer));
+        *(boost::shared_ptr<Local_0049d480_Player>*)&self->localPlayer);
     return out;
 }

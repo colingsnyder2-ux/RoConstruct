@@ -6,12 +6,12 @@
 extern "C" void fn_0050a940(void);
 extern "C" void fn_0050a9b0(void);
 
-struct Local_00475d60_Img {
-    virtual ~Local_00475d60_Img() {}
+struct Local_475d60_Img {
+    virtual ~Local_475d60_Img() {}
     volatile long references;
 };
 
-extern "C" void __fastcall fn_0045ad90(Local_00475d60_Img* self);
+extern "C" void __fastcall fn_0045ad90(Local_475d60_Img* self);
 
 extern unsigned long g_0096efd0;
 extern int g_0096efcc;
@@ -19,9 +19,9 @@ extern bool g_0096efe1;
 extern bool (__cdecl *g_0094278c)(const char*, const std::string&, const char*, int, bool*, bool);
 extern void (__stdcall *g_0096f8e8)(int, unsigned long*);
 
-struct Local_00475d60_Ref {
-    Local_00475d60_Img* p;
-    ~Local_00475d60_Ref() {
+struct Local_475d60_Ref {
+    Local_475d60_Img* p;
+    __forceinline ~Local_475d60_Ref() {
         if (p) {
             if (InterlockedDecrement(&p->references) == 0) {
                 fn_0045ad90(p);
@@ -33,18 +33,18 @@ struct Local_00475d60_Ref {
     }
 };
 
-struct Local_00475d60_Base {
-    virtual ~Local_00475d60_Base() {}
+struct Local_475d60_Base {
+    __forceinline virtual ~Local_475d60_Base() {}
 };
 
-struct Local_00475d60 : Local_00475d60_Base {
+struct Local_475d60 : Local_475d60_Base {
     unsigned long padding0[2];
-    Local_00475d60_Ref image;
+    Local_475d60_Ref image;
     unsigned long padding1[6];
     unsigned long size;
     unsigned long texture;
     void* memory;
-    virtual ~Local_00475d60() {
+    __forceinline virtual ~Local_475d60() {
         g_0096efd0 -= size;
         if (size) {
             switch (g_0096efcc) {
@@ -60,7 +60,7 @@ struct Local_00475d60 : Local_00475d60_Base {
                 if (!g_0096efe1) {
                     fn_0050a940();
                     if (g_0094278c &&
-                        g_0094278c("false", std::string("Fell through switch."),
+                        g_0094278c("false", "Fell through switch.",
                                    ".\\glg3dcpp\\VARArea.cpp", 136, &g_0096efe1, true))
                         exit(-1);
                     fn_0050a9b0();
@@ -72,7 +72,7 @@ struct Local_00475d60 : Local_00475d60_Base {
     }
 };
 
-extern "C" void __fastcall fn_00475d60(Local_00475d60* self, int unusedEdx)
+extern "C" void __fastcall fn_00475d60(Local_475d60* self, int unusedEdx)
 {
-    self->Local_00475d60::~Local_00475d60();
+    self->Local_475d60::~Local_475d60();
 }

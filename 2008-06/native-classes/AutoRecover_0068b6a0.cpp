@@ -1,33 +1,20 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: base QueuedRenderableVisitor is a dllimport class from rgmain.dll (its vtable is loaded via the import slot).
-// INFERRED: derived dtor is trivial; the compiler-generated vector deleting dtor stores own vtable, then base vtable, then conditionally deletes.
+// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/OgreLightInline /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+#include "OgreRbx/RbxSceneManager2008.h"
+
 namespace Ogre {
 
-class Renderable;
-
-class __declspec(dllimport) QueuedRenderableVisitor {
-public:
-    virtual ~QueuedRenderableVisitor() {}
-    virtual void visit(Renderable *r, unsigned short group, bool onlyIfPassed) = 0;
+// INFERRED: derived helper accesses protected nested SceneMgrQueuedRenderableVisitor
+// and triggers emission of its 38-byte scalar deleting destructor (??_G).
+// Note: function-files.json records 0068b6a0 as ??_E (the vtable slot alias in the
+// 2008 link), while MSVC emits ??_G (38 bytes identical); delete[] forces ??_E with a vector loop.
+struct Local_0068b6a0_Access : public RbxSceneManager {
+    static void touch();
 };
 
-class RbxSceneManager {
-public:
-    class SceneMgrQueuedRenderableVisitor : public QueuedRenderableVisitor {
-    public:
-        SceneMgrQueuedRenderableVisitor();
-        virtual ~SceneMgrQueuedRenderableVisitor() {}
-        virtual void visit(Renderable *r, unsigned short group, bool onlyIfPassed);
-    };
-};
-
-// INFERRED: out-of-line ctor so the vtable (and its deleting dtor) is emitted in this file.
-RbxSceneManager::SceneMgrQueuedRenderableVisitor::SceneMgrQueuedRenderableVisitor()
+void Local_0068b6a0_Access::touch()
 {
-}
-
-void RbxSceneManager::SceneMgrQueuedRenderableVisitor::visit(Renderable *, unsigned short, bool)
-{
+    SceneMgrQueuedRenderableVisitor* v = new SceneMgrQueuedRenderableVisitor();
+    delete v;
 }
 
 }

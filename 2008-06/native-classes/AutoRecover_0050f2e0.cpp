@@ -1,37 +1,37 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-#include "G3D/GImage.h"
-#include "G3D/BinaryOutput.h"
+// native-flags: /O2 /GS /EHsc /MD
+// INFERRED: odd cases pass BinaryOutput& both in EDX (thiscall-style register
+// argument) and as the stack argument, which makes MSVC emit mov edx,[esp+8] /
+// push edx exactly like the original.
 
-namespace G3D {
+extern "C" void __fastcall fn_0050eaf0(void* self, int unusedEdx, void* out);
+extern "C" void __fastcall fn_0050ba30(void* self, void* outReg, void* outStack);
+extern "C" void __fastcall fn_0050b700(void* self, int unusedEdx, void* out);
+extern "C" void __fastcall fn_0050e8a0(void* self, void* outReg, void* outStack);
+extern "C" void __fastcall fn_0050aef0(void* self, int unusedEdx, void* out);
+extern "C" void __fastcall fn_0050b1a0(void* self, void* outReg, void* outStack);
 
-// INFERRED: this is GImage::encode(Format, BinaryOutput&) const. The jump table
-// at 0x50f340 decodes to these targets, indexed by format value:
-//   0 -> encodeJPEG, 1 -> encodeBMP, 2 -> encodeTGA, 3 -> default (return),
-//   4 -> default (return), 5 -> encodePNG, 6 -> encodePPMASCII, 7 -> encodePPM.
-// Numeric case labels are used because the exact enum names are not known.
-void GImage::encode(Format format, BinaryOutput& out) const {
-    switch ((int)format) {
-    case 0:
-        encodeJPEG(out);
-        break;
-    case 1:
-        encodeBMP(out);
-        break;
-    case 2:
-        encodeTGA(out);
-        break;
-    case 5:
-        encodePNG(out);
-        break;
+extern "C" void __fastcall fn_0050f2e0(void* self, int unusedEdx, int format, void* out)
+{
+    switch (format) {
     case 6:
-        encodePPMASCII(out);
+        fn_0050eaf0(self, unusedEdx, out);
         break;
     case 7:
-        encodePPM(out);
+        fn_0050ba30(self, out, out);
+        break;
+    case 5:
+        fn_0050b700(self, unusedEdx, out);
+        break;
+    case 0:
+        fn_0050e8a0(self, out, out);
+        break;
+    case 1:
+        fn_0050aef0(self, unusedEdx, out);
+        break;
+    case 2:
+        fn_0050b1a0(self, out, out);
         break;
     default:
         break;
     }
 }
-
-} // namespace G3D

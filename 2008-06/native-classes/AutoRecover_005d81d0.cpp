@@ -1,37 +1,42 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+extern "C" void* fn_006a0920(unsigned int size);
 
-extern "C" int fn_006a0920(int a1, int a2);
-extern "C" char g_0083d31c[];           // INFERRED: GetSet vtable data symbol at 0x83d31c
+struct Local_005d81d0_Base {};
+struct Local_005d81d0_Obj : virtual public Local_005d81d0_Base {};
 
-// INFERRED: GetSet layout from the stores (vtable, +8 +0xc +0x10 +0x18 +0x1c +0x20).
-struct Local_005d81d0Obj {
-    void* vtbl;
-    int pad4;
-    int a, b, c;
-    int pad14;
-    int d, e, f;
+typedef int (Local_005d81d0_Obj::*Local_005d81d0_GetFn)() const;
+typedef void (Local_005d81d0_Obj::*Local_005d81d0_SetFn)(int);
+
+struct Local_005d81d0_GetSet {
+    virtual bool isReadOnly() const = 0;
+    virtual bool isWriteOnly() const = 0;
+    virtual int getValue(const void*) const = 0;
+    virtual void setValue(void*, const int&) const = 0;
 };
 
-// INFERRED: stands in for std::auto_ptr<GetSet>, returned via a hidden sret pointer.
-struct Local_005d81d0Ptr {
-    Local_005d81d0Obj* p;
+struct Local_005d81d0_GetSetImpl : public Local_005d81d0_GetSet {
+    Local_005d81d0_GetFn get;
+    Local_005d81d0_SetFn set;
+
+    Local_005d81d0_GetSetImpl(Local_005d81d0_GetFn g, Local_005d81d0_SetFn s)
+        : Local_005d81d0_GetSet(), get(g), set(s) {}
+
+    static void* operator new(unsigned int sz) { return fn_006a0920(sz); }
+    static void operator delete(void*) {}
+
+    virtual bool isReadOnly() const { return false; }
+    virtual bool isWriteOnly() const { return false; }
+    virtual int getValue(const void* o) const { return (((const Local_005d81d0_Obj*)o)->*get)(); }
+    virtual void setValue(void* o, const int& v) const { (((Local_005d81d0_Obj*)o)->*set)(v); }
 };
 
-// INFERRED: the code never reads ecx, so the "__thiscall" ABI guess is wrong. It reads
-// 7 stack dwords (sret ptr + 6 values) and returns with ret 0, which is plain cdecl.
-extern "C" Local_005d81d0Ptr* fn_005d81d0(Local_005d81d0Ptr* self,
-    int a, int b, int c, int d, int e, int f)
+struct Local_005d81d0_AutoPtr {
+    Local_005d81d0_GetSet* _Myptr;
+    Local_005d81d0_AutoPtr* set(Local_005d81d0_GetSet* p) { _Myptr = p; return this; }
+};
+
+extern "C" Local_005d81d0_AutoPtr* fn_005d81d0(Local_005d81d0_AutoPtr* __restrict out, Local_005d81d0_GetFn get, Local_005d81d0_SetFn set)
 {
-    Local_005d81d0Obj* o = (Local_005d81d0Obj*)fn_006a0920(0x28, 0);
-    if (o) {
-        o->vtbl = g_0083d31c;
-        o->a = a;
-        o->b = b;
-        o->c = c;
-        o->d = d;
-        o->e = e;
-        o->f = f;
-    }
-    self->p = o;
-    return self;
+    int volatile dummy = 0;
+    return out->set(new Local_005d81d0_GetSetImpl(get, set));
 }

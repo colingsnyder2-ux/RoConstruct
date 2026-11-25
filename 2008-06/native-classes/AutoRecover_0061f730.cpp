@@ -3,14 +3,15 @@
 #include <boost/any.hpp>
 #include <boost/shared_ptr.hpp>
 
-// INFERRED: the element type of the shared_ptr is unknown; the type_info at 0x935980 identifies it.
+// INFERRED: boost::any_cast<shared_ptr<T> >(any&) returning by value through a hidden
+// first argument.  C linkage cannot return a C++ class, so the hidden out pointer is explicit.
 struct InferredHeld;
+typedef boost::shared_ptr<InferredHeld> Shared_0061f730;
 
-// INFERRED: boost::any_cast<boost::shared_ptr<T> >(any&) returning the shared_ptr by value through a
-// hidden first argument (cdecl). C linkage forbids returning a C++ class, so the hidden out-pointer
-// is declared explicitly and the result is copy-constructed into it. The out-pointer is returned in eax.
-extern "C" boost::shared_ptr<InferredHeld>* fn_0061f730(boost::shared_ptr<InferredHeld>* out, boost::any* operand)
+extern "C" void fn_0061f730(Shared_0061f730* out, boost::any* operand)
 {
-    return new (out) boost::shared_ptr<InferredHeld>(
-        boost::any_cast< boost::shared_ptr<InferredHeld>& >(*operand));
+    Shared_0061f730* held = boost::any_cast<Shared_0061f730>(operand);
+    if (!held)
+        boost::throw_exception(boost::bad_any_cast());
+    new (out) Shared_0061f730(*held);
 }

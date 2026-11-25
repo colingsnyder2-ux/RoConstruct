@@ -1,36 +1,50 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: headers were not used. Signatures, argument order and local types are reconstructed from the disassembly.
-// INFERRED: this is the PropDescriptor<FlagStand,BrickColor> constructor.
-// INFERRED: I have not compiled this draft or compared it with the original bytes.
-// INFERRED: the call to fn_005fdd50 uses 7 stack dwords as declared, but the disassembly shows 8 dwords pushed. How the 8th (likely `functionality`) is passed is unresolved.
-#include <new>
+// INFERRED: PropDescriptor constructor (12-byte MFPs, auto_ptr<GetSet> return from getset);
+// no real header is included to avoid inlining TypedPropertyDescriptor<T> ctor.
+void __cdecl operator delete(void*) throw();
+extern "C" char g_00841b18[];
+extern "C" void* __cdecl fn_005c3810(void);
 
-extern "C" char g_00841b18[];   // INFERRED: vtable of PropDescriptor<FlagStand,BrickColor>
-
-extern "C" int __fastcall fn_005fdd50(void* self, int unusedEdx, int a1, int a2, int a3, int a4, int a5, int a6, int a7);
-extern "C" void* fn_005c3810(const char* a, const char* b);
-extern "C" void* __fastcall fn_0059a4b0(void* self, int unusedEdx, void* desc);
-
-// INFERRED: owner of the accessor object; deletes it on scope exit, which gives the EH state change
-struct Local_005fe930Own {
-    int* p;
-    Local_005fe930Own(int* q) : p(q) {}
-    ~Local_005fe930Own() { if (p) ::operator delete(p); }
+struct Local_005fe930_Mfp {
+    int a, b, c;
 };
 
-extern "C" void* __fastcall fn_005fe930(void* self, int unusedEdx,
+struct Local_005fe930_Ref {
+    int* _Ref;
+    explicit Local_005fe930_Ref(int* p) : _Ref(p) {}
+};
+
+struct Local_005fe930_AutoPtr {
+    int* _Myptr;
+    explicit Local_005fe930_AutoPtr(int* p = 0) throw() : _Myptr(p) {}
+    Local_005fe930_AutoPtr(Local_005fe930_AutoPtr& r) throw() : _Myptr(r._Myptr) { r._Myptr = 0; }
+    Local_005fe930_AutoPtr(Local_005fe930_Ref r) throw() : _Myptr(r._Ref) {}
+    operator Local_005fe930_Ref() throw() {
+        int* p = _Myptr;
+        _Myptr = 0;
+        return Local_005fe930_Ref(p);
+    }
+    ~Local_005fe930_AutoPtr() {
+        if (_Myptr != 0)
+            delete _Myptr;
+    }
+};
+
+// INFERRED: non-POD return prevents extern "C" in MSVC (C2526); C++ __cdecl matches hidden-ret ABI.
+Local_005fe930_AutoPtr __cdecl fn_005fdd50(Local_005fe930_Mfp getter, Local_005fe930_Mfp setter);
+
+struct Local_005fe930_Base {
+    void init(void* cd, const char* name, const char* category,
+        Local_005fe930_AutoPtr gs, int flags);
+};
+
+extern "C" void* __fastcall fn_005fe930(
+    Local_005fe930_Base* self, int unusedEdx,
     const char* name, const char* category,
-    int g0, int g1, int g2,
-    int s0, int s1, int s2,
-    int functionality)
+    Local_005fe930_Mfp getter, Local_005fe930_Mfp setter,
+    int flags)
 {
-    int slot = 0;
-    int* r = (int*)(long)fn_005fdd50(self, 0, (int)(long)&slot, g0, g1, g2, s0, s1, s2);
-    Local_005fe930Own acc((int*)(long)*r);
-    *r = 0;
-
-    fn_0059a4b0(self, 0, fn_005c3810(name, category));
-
-    *(void**)self = (void*)g_00841b18;
+    self->init(fn_005c3810(), name, category, fn_005fdd50(getter, setter), flags);
+    *(void**)self = g_00841b18;
     return self;
 }

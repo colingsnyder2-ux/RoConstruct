@@ -12,10 +12,6 @@ extern "C" char g_0083a654[];   // INFERRED: unnamed global at 0x0083a654 in the
 extern "C" long __cdecl _InterlockedDecrement(volatile long*);
 #pragma intrinsic(_InterlockedDecrement)
 
-extern "C" int __fastcall fn_005107a0(void* self, int unusedEdx);
-// INFERRED: base destructor (FactoryProduct<Script,...>::~FactoryProduct) called as thiscall
-extern "C" void __fastcall fn_005cc120(void* self, int unusedEdx);
-
 struct Local_005cdbf0_Control {
     virtual void unused();
     virtual void dispose();
@@ -42,7 +38,7 @@ struct Local_005cdbf0_Shared {
 
 struct Local_005cdbf0_Member {
     char pad[0xac];
-    __forceinline ~Local_005cdbf0_Member() { fn_005107a0(this, 0); }
+    void Destroy();   // INFERRED: thiscall helper corresponding to fn_005107a0
 };
 
 struct Local_005cdbf0_Base {
@@ -64,28 +60,41 @@ struct Local_005cdbf0_Base {
     char padA8[0x1c];
     volatile unsigned long tableC4;
     char padC8[0x68];
-    __forceinline ~Local_005cdbf0_Base() { fn_005cc120(this, 0); }
+    int Destroy();   // INFERRED: thiscall helper corresponding to fn_005cc120
 };
 
-struct Local_005cdbf0 : Local_005cdbf0_Base {
+struct Local_005cdbf0 {
+    Local_005cdbf0_Base base;
     Local_005cdbf0_Member member;
     Local_005cdbf0_Shared shared;
-    __forceinline ~Local_005cdbf0()
-    {
-        table0 = ((int)&g_0083a654);
-        table10 = ((int)&g_0083a648);
-        table14 = ((int)&g_0083a640);
-        table20 = ((int)&g_0083a638);
-        table24 = ((int)&g_0083a628);
-        table44 = ((int)&g_0083a618);
-        table64 = ((int)&g_0083a608);
-        table84 = ((int)&g_0083a5f8);
-        tableA4 = ((int)&g_0083a5e8);
-        tableC4 = ((int)&g_0083a5d8);
-    }
 };
+
+__forceinline void Local_005cdbf0_body(Local_005cdbf0* self)
+{
+    self->base.table0 = (unsigned long)&g_0083a654;
+    self->base.table10 = (unsigned long)&g_0083a648;
+    self->base.table14 = (unsigned long)&g_0083a640;
+    self->base.table20 = (unsigned long)&g_0083a638;
+    self->base.table24 = (unsigned long)&g_0083a628;
+    self->base.table44 = (unsigned long)&g_0083a618;
+    self->base.table64 = (unsigned long)&g_0083a608;
+    self->base.table84 = (unsigned long)&g_0083a5f8;
+    self->base.tableA4 = (unsigned long)&g_0083a5e8;
+    self->base.tableC4 = (unsigned long)&g_0083a5d8;
+    Local_005cdbf0_Control* p = self->shared.control;
+    if (p) {
+        if (_InterlockedDecrement(&p->strong) == 0) {
+            p->dispose();
+            if (_InterlockedDecrement(&p->weak) == 0)
+                p->destroy();
+        }
+    }
+    self->member.Destroy();
+    volatile int sink = self->base.Destroy();
+    (void)sink;
+}
 
 extern "C" void __fastcall fn_005cdbf0(Local_005cdbf0* self, int unusedEdx)
 {
-    self->~Local_005cdbf0();
+    Local_005cdbf0_body(self);
 }

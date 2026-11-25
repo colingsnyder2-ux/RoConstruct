@@ -1,21 +1,42 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-#include <new>
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+extern "C" void* fn_006a0920(unsigned int size);
 
-// INFERRED: layout from stores at +8,+0xc,+0x10,+0x18,+0x1c,+0x20; size 0x28 from allocation.
-struct Local_005fdcf0 {
-    virtual ~Local_005fdcf0() {}
-    int a8, aC, a10, pad14, a18, a1C, a20, pad24;
-    Local_005fdcf0(int p0, int p1, int p2, int p3, int p4, int p5) {
-        a8 = p0; aC = p1; a10 = p2; a18 = p3; a1C = p4; a20 = p5;
-    }
+struct Local_005fdcf0_Base {};
+struct Local_005fdcf0_Obj : virtual public Local_005fdcf0_Base {};
+
+typedef int (Local_005fdcf0_Obj::*Local_005fdcf0_GetFn)() const;
+typedef void (Local_005fdcf0_Obj::*Local_005fdcf0_SetFn)(int);
+
+struct Local_005fdcf0_GetSet {
+    virtual bool isReadOnly() const = 0;
+    virtual bool isWriteOnly() const = 0;
+    virtual int getValue(const void*) const = 0;
+    virtual void setValue(void*, const int&) const = 0;
 };
 
-// INFERRED: static cdecl PropDescriptor::getset returning auto_ptr<GetSet> via hidden pointer
-// (first stack arg), followed by five stack args; ecx is unused.
-extern "C" Local_005fdcf0** fn_005fdcf0(Local_005fdcf0** self, int p0, int p1, int p2, int p3, int p4)
+struct Local_005fdcf0_GetSetImpl : public Local_005fdcf0_GetSet {
+    Local_005fdcf0_GetFn get;
+    Local_005fdcf0_SetFn set;
+
+    Local_005fdcf0_GetSetImpl(Local_005fdcf0_GetFn g, Local_005fdcf0_SetFn s)
+        : Local_005fdcf0_GetSet(), get(g), set(s) {}
+
+    static void* operator new(unsigned int sz) { return fn_006a0920(sz); }
+    static void operator delete(void*) {}
+
+    virtual bool isReadOnly() const { return false; }
+    virtual bool isWriteOnly() const { return false; }
+    virtual int getValue(const void* o) const { return (((const Local_005fdcf0_Obj*)o)->*get)(); }
+    virtual void setValue(void* o, const int& v) const { (((Local_005fdcf0_Obj*)o)->*set)(v); }
+};
+
+struct Local_005fdcf0_AutoPtr {
+    Local_005fdcf0_GetSet* _Myptr;
+    Local_005fdcf0_AutoPtr* set(Local_005fdcf0_GetSet* p) { _Myptr = p; return this; }
+};
+
+extern "C" Local_005fdcf0_AutoPtr* fn_005fdcf0(Local_005fdcf0_AutoPtr* __restrict out, Local_005fdcf0_GetFn get, Local_005fdcf0_SetFn set)
 {
-    Local_005fdcf0* obj = 0;
-    obj = new Local_005fdcf0(p0, p1, p2, p3, p4, 0);
-    *self = obj;
-    return self;
+    int volatile dummy = 0;
+    return out->set(new Local_005fdcf0_GetSetImpl(get, set));
 }

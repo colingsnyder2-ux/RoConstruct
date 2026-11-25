@@ -1,11 +1,18 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-// INFERRED: callee at 0x701580 (named OnLButtonDown(UINT, CPoint) in the comments) takes
-// three stack dwords and sets no ecx, so it is declared as a plain __stdcall helper.
-extern "C" void __stdcall fn_00701580(unsigned int a1, int a2, int a3);
+// INFERRED: CPoint-like by-value struct (two dwords).
+struct Local_007015c0_Point {
+    int x;
+    int y;
+};
 
-// INFERRED: the target forwards its three dword arguments unchanged.
-extern "C" void __stdcall fn_007015c0(unsigned int a1, int a2, int a3)
+// INFERRED: callee at 00701580 is __thiscall CXTPTabClientWnd::CSingleWorkspace::OnLButtonDown(UINT, CPoint);
+// declaring it as a member function keeps ecx live and avoids dummy edx setup.
+struct Local_007015c0_Self {
+    void OnLButtonDown(unsigned int nFlags, Local_007015c0_Point pt);
+};
+
+extern "C" void __fastcall fn_007015c0(Local_007015c0_Self* self, int unusedEdx, unsigned int nFlags, Local_007015c0_Point pt)
 {
-    fn_00701580(a1, a2, a3);
+    self->OnLButtonDown(nFlags, pt);
 }

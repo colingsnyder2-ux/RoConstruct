@@ -1,13 +1,32 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string /I{headers}/../../../tools/rbxgs/Client/App/include /I{headers}/../../../tools/rbxgs/Client/Rendering/g3d/include /I{headers}/../../../tools/rbxgs/Client/boost_1_34_1/src /I{headers}
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-import-length /I{headers}/std-noinline-string /I{headers}/../../../tools/rbxgs/Client/App/include /I{headers}/../../../tools/rbxgs/Client/Rendering/g3d/include /I{headers}/../../../tools/rbxgs/Client/boost_1_34_1/src /I{headers}
 #include <afxwin.h>
 namespace RBX { const char* get_thread_name(); }
 #include "../native-donor-2007/LogManager.h"
+#include "util/FileSystem.h"
 #include <G3D/Log.h>
-// The donor header names the +4 subobject's slot 1 getLogFileName; the 2008 native header (MainLogPath.cpp, exact 00427f30)
-// calls it getLogPath. Same signature and slot, so the donor-named reference resolves to the native definition.
-#pragma comment(linker, "/alternatename:?getLogFileName@MainLogManager@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ=?getLogPath@MainLogManager@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ")
 std::string MoveRelative(const char*, std::string);
 extern MainLogManager* mainLogManager;   // the exe global (MainLogManagerState.cpp), not the donor header's LogManager::mainLogManager static
+
+static CString __stdcall logDirectory()
+{
+    std::string directory = RBX::FileSystem::getUserAppDataDirectory(true, "logs");
+    return directory.c_str();
+}
+
+std::string MainLogManager::getLogFileName()
+{
+    CString directory = logDirectory();
+    std::string filename("log_");
+    filename += guid;
+    filename.erase(12, std::string::npos);
+    filename.erase(4, 3);
+    filename += ".txt";
+    const char* text = filename.c_str();
+    char* buffer = directory.GetBuffer(CString::StringLength(text) + directory.GetLength() + 1);
+    PathAppendA(buffer, text);
+    directory.ReleaseBuffer();
+    return std::string(static_cast<const char*>(directory));
+}
 
 MainLogManager::~MainLogManager()
 {
