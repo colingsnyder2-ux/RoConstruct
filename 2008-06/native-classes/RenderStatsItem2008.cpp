@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/boost-function-pod-vtable
 // 2008-06 native CRobloxWnd::RenderStatsItem unit (inactive): the render statistics item that CRobloxWnd
 // (0045f7b0) parents under the Stats service, and the Stats::TypedStatsItem<G3D::Stopwatch> / <int> template
 // instances its constructor binds (original COMDATs 0045c250..0045f730 in the CRobloxWnd unit). Evidence in
@@ -16,6 +16,9 @@ namespace RBX
 {
 	namespace Stats
 	{
+		// Batch 52: /I{headers}/boost-function-pod-vtable on the flags line inlines function0::assign_to (has_empty_target
+		// 0060a2f0, stored vtable 00819ce4 at +0x158), so both 194 B constructors are now byte-identical to 0045ecc0 /
+		// 0045eef0 (relocs masked; no exact lost). They stay unbound: twin bodies with placeholder registry names.
 		template class TypedStatsItem<G3D::Stopwatch>; // vtable 0081a08c, ctor 0045ecc0, update 0045ee30
 		template class TypedStatsItem<int>;            // vtable 0081a154, ctor 0045eef0, update 0045eff0
 		template Item* Item::createBoundChildItem<G3D::Stopwatch>(const char*, const G3D::Stopwatch&); // 0045f120

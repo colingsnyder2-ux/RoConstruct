@@ -1,60 +1,71 @@
-// native-flags: /Od /Ob0 /GS /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: server-verified analog shape from packet_00540240.md; unknown
-// callees use the required fn_<addr> naming convention.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+#include <locale>
+
 #pragma optimize("g", off)
+#pragma strict_gs_check(on)
 
-extern "C" int __fastcall fn_00540fb0(void* self, int unusedEdx, int a1);
-extern "C" int __fastcall fn_00540b10(void* self, int unusedEdx, void* a1, void* a2);
-extern "C" void __fastcall fn_00541030(void* self);
+// INFERRED: Local layouts follow the supplied codegen analog.
+struct Local_00540240_Node;
 
-struct Node;
+extern "C" int __fastcall fn_00540fb0(void* self, int unusedEdx, Local_00540240_Node* node);
+extern "C" int __fastcall fn_00540b10(void* self, int unusedEdx, void* result, void* value);
 
-struct Handle
+struct Local_00540240_Ctype : std::ctype<char>
 {
-    Node* pointer;
-    void* control;
-
-    explicit Handle(int n)
+    static __forceinline void destroy(void* value)
     {
-        fn_00540fb0(this, 0, n);
-    }
-    ~Handle()
-    {
-        fn_00541030(this);
+        static_cast<Local_00540240_Ctype*>(value)->std::ctype<char>::~ctype();
     }
 };
 
-struct Iterator
+struct Local_00540240_Handle
 {
-    Node* node;
+    Local_00540240_Node* pointer;
+    void* control;
+
+    __forceinline Local_00540240_Handle(Local_00540240_Node* node)
+    {
+        fn_00540fb0(this, 0, node);
+    }
+
+    __forceinline ~Local_00540240_Handle()
+    {
+        Local_00540240_Ctype::destroy(this);
+    }
+};
+
+struct Local_00540240_Iterator
+{
+    Local_00540240_Node* node;
     void* owner;
 };
 
-struct InsertResult
+struct Local_00540240_InsertResult
 {
-    Iterator position;
+    Local_00540240_Iterator position;
     bool inserted;
 };
 
-struct Bucket
+struct Local_00540240_Bucket
 {
     unsigned char storage[32];
 };
 
-struct Local_00540240_S
+struct Local_00540240
 {
     unsigned char padding[40];
-    Bucket first;
-    Bucket second;
+    Local_00540240_Bucket first;
+    Local_00540240_Bucket second;
 };
 
-extern "C" void __fastcall fn_00540240(Local_00540240_S* self, int unusedEdx, int arg1, unsigned char flag)
+extern "C" void __fastcall fn_00540240(
+    Local_00540240* self, int unusedEdx, Local_00540240_Node* node, bool flag)
 {
     if (flag)
     {
         {
-            Handle value(arg1);
-            InsertResult result;
+            Local_00540240_Handle value(node);
+            Local_00540240_InsertResult result;
             fn_00540b10(&self->first, 0, &result, &value);
         }
         do {} while (0);
@@ -63,8 +74,8 @@ extern "C" void __fastcall fn_00540240(Local_00540240_S* self, int unusedEdx, in
     else
     {
         {
-            Handle value(arg1);
-            InsertResult result;
+            Local_00540240_Handle value(node);
+            Local_00540240_InsertResult result;
             fn_00540b10(&self->second, 0, &result, &value);
         }
         do {} while (0);

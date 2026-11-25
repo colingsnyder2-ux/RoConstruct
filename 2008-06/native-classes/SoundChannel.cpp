@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/openrbx/Client/fmod/api/inc
 // 2008-06 native SoundChannel members of the util/Sound.cpp unit (inactive).
 // Declarations: native-headers/SoundChannel/SoundChannel.h, the unit-local redeclaration of util/Sound.h (Sound::get
 // takes the context; the extra private member 005bc610; isPaused defined in the class) plus the FMOD Ex API subset.
@@ -8,6 +8,9 @@
 // Property descriptors referenced by address: playCountProperty 00977010, loopedProperty 00977118.
 // NativeContentProvider.h first: it declares the 2008 ContentProvider (ContentProvider::sub_00562730) and consumes
 // the donor util/ContentProvider.h include (ContentId) that SoundChannel.h repeats.
+// The FMOD Ex SDK header (as AppUnit5B4SoundReflection.cpp uses it) ahead of SoundChannel.h's API subset: Sound::get
+// needs System::createSound and FMOD_CREATESOUNDEXINFO, which the subset does not declare.
+#include <fmod.hpp>
 #include "util/NativeContentProvider.h"
 #include "v8datamodel/GameSettings.h"
 #include "SoundChannel/SoundChannel.h"
@@ -44,6 +47,31 @@ namespace RBX
 				sound->refCount--;
 				sound.reset();
 			}
+		}
+
+		// 005bc6f0 Sound::get(const Instance* context): fmod_sound +0, system +4, id +0xc, is3D +0x2c. The content comes
+		// from the context's ContentProvider (create 00465210, 00562730); createSound 0069fc54 result through
+		// checkFmodResult 005b6fe0. GameSettings::singleton() 0044bee0 softwareSound +0x139. Shape: openrbx 2007
+		// util/Sound.cpp Sound::get (2008 takes the context, see SoundChannel.h difference 1).
+		FMOD::Sound* Sound::get(const Instance* context)
+		{
+			if (!fmod_sound)
+			{
+				boost::shared_ptr<const std::string> data = ServiceProvider::create<ContentProvider>(context)->sub_00562730(id);
+				if (!data)
+					return NULL;
+
+				FMOD_MODE mode = is3D ? FMOD_3D : 0;
+				mode |= FMOD_OPENMEMORY | (GameSettings::singleton().softwareSound ? FMOD_SOFTWARE : FMOD_HARDWARE);
+
+				FMOD_CREATESOUNDEXINFO info;
+				memset(&info, 0, sizeof(FMOD_CREATESOUNDEXINFO));
+				info.cbsize = sizeof(FMOD_CREATESOUNDEXINFO);
+				info.length = data->size();
+
+				checkFmodResult(system->createSound(data->c_str(), mode, &info, &fmod_sound));
+			}
+			return fmod_sound;
 		}
 
 		extern Reflection::PropDescriptor<SoundChannel, SoundId> soundIdProperty; // 00977064

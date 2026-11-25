@@ -1,27 +1,38 @@
 // from server: 100% by colin
-// roc 2007-08 0054bd90  unit: boost::iostreams::DUoutput::V?$basic_null_device::?$stream_buffer  size: 40 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0054bd90
-//
-// 0054bd90  51                   push ecx
-// 0054bd91  8b0424               mov eax, dword ptr [esp]
-// 0054bd94  8b4c2420             mov ecx, dword ptr [esp + 0x20]
-// 0054bd98  8b54241c             mov edx, dword ptr [esp + 0x1c]
-// 0054bd9c  50                   push eax
-// 0054bd9d  8b44241c             mov eax, dword ptr [esp + 0x1c]
-// 0054bda1  51                   push ecx
-// 0054bda2  8b4c241c             mov ecx, dword ptr [esp + 0x1c]
-// 0054bda6  52                   push edx
-// 0054bda7  8b542418             mov edx, dword ptr [esp + 0x18]
-// 0054bdab  50                   push eax
-// 0054bdac  8b442418             mov eax, dword ptr [esp + 0x18]
-// 0054bdb0  51                   push ecx
-// 0054bdb1  52                   push edx
-// 0054bdb2  50                   push eax
-// 0054bdb3  e8d8360000           call 0x54f490
-// copied from an identical function in another client (function ??$seek@V?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@iostreams@boost@@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@23@@?$device_wrapper_impl@Uany_tag@iostreams@boost@@@detail@iostreams@boost@@SA?AV?$fpos@H@std@@AAV?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@PAV?$linked_streambuf@DU?$char_traits@D@std@@@123@_JHH@Z)
-
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: templates-boost-1_34_1 roc_string_sink_401c42386b16c308.cpp
+
+// Candidate translation unit (score above; library headers required).
+#define NDEBUG
+#include <string>
+#include <vector>
+#include <windows.h>
+extern "C" {
+__declspec(dllimport) BOOL __stdcall WinHttpQueryDataAvailable(void*,DWORD*);
+__declspec(dllimport) BOOL __stdcall WinHttpReadData(void*,void*,DWORD,DWORD*);
+__declspec(dllimport) BOOL __stdcall InternetQueryDataAvailable(void*,DWORD*,DWORD,DWORD_PTR);
+__declspec(dllimport) BOOL __stdcall InternetReadFile(void*,void*,DWORD,DWORD*);
+}
+#include <boost/any.hpp>
+#include <boost/function.hpp>
+#include <boost/signal.hpp>
+#include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/copy.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
+#include <boost/iostreams/device/null.hpp>
+#include <boost/iostreams/stream_buffer.hpp>
+class WinHttpRequest_source : public boost::iostreams::device<boost::iostreams::input>
+{ void* request; public: WinHttpRequest_source(void* r):request(r){}
+ int read(char* s,int n){DWORD a;if(!WinHttpQueryDataAvailable(request,&a))goto fail;if(a==0)goto fail;DWORD b;if(!WinHttpReadData(request,s,n,&b))throw std::runtime_error("InternetReadFile failed");return b;fail:return -1;} };
+class WiniInetRequest_source : public boost::iostreams::device<boost::iostreams::input>
+{ void* request; public: WiniInetRequest_source(void* r):request(r){}
+ int read(char* s,int n){DWORD a;if(!InternetQueryDataAvailable(request,&a,0,NULL))goto fail;if(a==0)goto fail;DWORD b;if(!InternetReadFile(request,s,n,&b))throw std::runtime_error("InternetReadFile failed");return b;fail:return -1;} };
+struct String_sink : public boost::iostreams::device<boost::iostreams::output>
+{ std::string& s; String_sink(std::string& x):s(x){} int write(const char* c,int n){s.append(c,n);return n;} };
+template class boost::iostreams::detail::indirect_streambuf<class WiniInetRequest_source,struct std::char_traits<char>,class std::allocator<char>,struct boost::iostreams::input>;
+template class boost::iostreams::detail::indirect_streambuf<struct String_sink,struct std::char_traits<char>,class std::allocator<char>,struct boost::iostreams::output>;
+template class boost::iostreams::stream_buffer<class WinHttpRequest_source,struct std::char_traits<char>,class std::allocator<char>,struct boost::iostreams::input>;
+template class boost::iostreams::stream_buffer<struct String_sink,struct std::char_traits<char>,class std::allocator<char>,struct boost::iostreams::output>;

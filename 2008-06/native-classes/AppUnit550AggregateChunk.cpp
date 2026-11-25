@@ -54,3 +54,32 @@ MaterialBase* createMaterial()
 		throw std::exception("Invalid factory type");
 }
 } }
+
+// Texture-proxy factories beside createMaterial, same /Od shape and render-mode global 00942ec4 (0 -> RenderNew,
+// 1 -> Render, otherwise std::exception("Invalid factory type"), string 0082d0a0). INFERRED: descriptive names, the ones
+// the callers already declare (ViewRbxGfxConstructor2008.cpp MaterialFactory ctor, ViewNewPartMaterial.cpp,
+// ViewNewSurfaceMaterial2008.cpp); the original names are not in the binary.
+#include "RenderLib/TextureProxy2008.h"
+
+// 00551920: new RenderNew::TextureProxy (0x60, ctor 00551e30) or Render::TextureProxy (0x54, ctor 00551b30).
+RBX::TextureProxyBase* createPartTexture(G3D::TextureManager* textureManager, const std::string& filename, bool tiled)
+{
+	if (RBX::renderMode == 0)
+		return new RBX::RenderNew::TextureProxy(*textureManager, filename, tiled);
+	else if (RBX::renderMode == 1)
+		return new RBX::Render::TextureProxy(*textureManager, filename, tiled);
+	else
+		throw std::exception("Invalid factory type");
+}
+
+// 00551a30: new RenderNew::MegaTextureProxy (0x64, ctor 007ae4b0) or Render::MegaTextureProxy (0x58, ctor 007b8fb0);
+// caller MaterialFactory::MaterialFactory (megaTexture, "textures\\SurfacesStrip.png").
+RBX::TextureProxyBase* createStripTexture(G3D::TextureManager* textureManager, const std::string& filename)
+{
+	if (RBX::renderMode == 0)
+		return new RBX::RenderNew::MegaTextureProxy(*textureManager, filename);
+	else if (RBX::renderMode == 1)
+		return new RBX::Render::MegaTextureProxy(*textureManager, filename);
+	else
+		throw std::exception("Invalid factory type");
+}

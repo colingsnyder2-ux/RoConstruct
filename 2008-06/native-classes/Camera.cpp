@@ -36,8 +36,10 @@ namespace RBX
 		  cameraExternallyAdjusted(false)
 	{
 		setName("Camera");
-		gCamera.setNearPlaneZ(1.25);
-		gCamera.setFarPlaneZ(5000);
+		// plane Z values are negative (G3D stores -z): the original ctor 005cd9a0 stores +1.25 / +5000 in nearPlane/farPlane;
+		// positive arguments made Ogre's Frustum::setNearClipDistance(-1.25) throw on the first render
+		gCamera.setNearPlaneZ(-1.25);
+		gCamera.setFarPlaneZ(-5000);
 		gCamera.setFieldOfView(G3D::toRadians(60));
 
 		G3D::CoordinateFrame cameraCoord(G3D::Vector3(0, 5, 5));

@@ -63,17 +63,32 @@ namespace RBX
 				tex.y = 2.0f * radius.y - (1.0f - (tex.y - radius.y) / radius.y) * radius.y * factor;
 		}
 
+		// 004fdcc0 (2007 RenderLibNew/HeadMesh.cpp shape: ratio *= 1.0 - bevel / radius)
 		void EndcapTransform::operator()(G3D::Vector3& vertex, G3D::Vector3& normal, G3D::Vector2& tex, const G3D::Vector3& radius, const G3D::Vector2int16& ivertex)
 		{
-			float scale;
-			float absY = float(fabs(vertex.y));
-			float absX = float(fabs(vertex.x));
-			if (absY >= absX)
-				scale = vertex.y == 0.0f ? 0.0f : absY / vertex.xy().length() * (1.0f - bevel / radius.y);
+			float ratio;
+			if (fabs(vertex.y) >= fabs(vertex.x))
+			{
+				if (vertex.y == 0)
+					ratio = 0;
+				else
+				{
+					ratio = fabs(vertex.y) / vertex.xy().length();
+					ratio *= 1.0 - bevel / radius.y;
+				}
+			}
 			else
-				scale = vertex.x == 0.0f ? 0.0f : absX / vertex.xy().length() * (1.0f - bevel / radius.x);
-			vertex.x *= scale;
-			vertex.y *= scale;
+			{
+				if (vertex.x == 0)
+					ratio = 0;
+				else
+				{
+					ratio = fabs(vertex.x) / vertex.xy().length();
+					ratio *= 1.0 - bevel / radius.x;
+				}
+			}
+			vertex.x *= ratio;
+			vertex.y *= ratio;
 		}
 
 		void HeadBuilder::buildTop(Purpose purpose)

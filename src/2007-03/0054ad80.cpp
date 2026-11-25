@@ -1,25 +1,38 @@
 // from server: 100% by colin
-// roc 2007-03 0054ad80  unit: seg_00540000  size: 36 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 0054ad80
-//
-// 0054ad80  8b442414             mov eax, dword ptr [esp + 0x14]
-// 0054ad84  8b542410             mov edx, dword ptr [esp + 0x10]
-// 0054ad88  50                   push eax
-// 0054ad89  8b442410             mov eax, dword ptr [esp + 0x10]
-// 0054ad8d  52                   push edx
-// 0054ad8e  8b542410             mov edx, dword ptr [esp + 0x10]
-// 0054ad92  50                   push eax
-// 0054ad93  8b442424             mov eax, dword ptr [esp + 0x24]
-// 0054ad97  52                   push edx
-// 0054ad98  50                   push eax
-// 0054ad99  51                   push ecx
-// 0054ad9a  8b4c241c             mov ecx, dword ptr [esp + 0x1c]
-// 0054ad9e  51                   push ecx
-// 0054ad9f  e86cfdffff           call 0x54ab10
-// copied from an identical function in another client (function ??$seek@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@?$concept_adapter@V?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@iostreams@boost@@@detail@iostreams@boost@@QAE?AV?$fpos@H@std@@_JHHPAV?$linked_streambuf@DU?$char_traits@D@std@@@123@@Z)
-
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: templates-boost-1_34_1 roc_string_sink_401c42386b16c308.cpp
+
+// Candidate translation unit (score above; library headers required).
+#define NDEBUG
+#include <string>
+#include <vector>
+#include <windows.h>
+extern "C" {
+__declspec(dllimport) BOOL __stdcall WinHttpQueryDataAvailable(void*,DWORD*);
+__declspec(dllimport) BOOL __stdcall WinHttpReadData(void*,void*,DWORD,DWORD*);
+__declspec(dllimport) BOOL __stdcall InternetQueryDataAvailable(void*,DWORD*,DWORD,DWORD_PTR);
+__declspec(dllimport) BOOL __stdcall InternetReadFile(void*,void*,DWORD,DWORD*);
+}
+#include <boost/any.hpp>
+#include <boost/function.hpp>
+#include <boost/signal.hpp>
+#include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/copy.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
+#include <boost/iostreams/device/null.hpp>
+#include <boost/iostreams/stream_buffer.hpp>
+class WinHttpRequest_source : public boost::iostreams::device<boost::iostreams::input>
+{ void* request; public: WinHttpRequest_source(void* r):request(r){}
+ int read(char* s,int n){DWORD a;if(!WinHttpQueryDataAvailable(request,&a))goto fail;if(a==0)goto fail;DWORD b;if(!WinHttpReadData(request,s,n,&b))throw std::runtime_error("InternetReadFile failed");return b;fail:return -1;} };
+class WiniInetRequest_source : public boost::iostreams::device<boost::iostreams::input>
+{ void* request; public: WiniInetRequest_source(void* r):request(r){}
+ int read(char* s,int n){DWORD a;if(!InternetQueryDataAvailable(request,&a,0,NULL))goto fail;if(a==0)goto fail;DWORD b;if(!InternetReadFile(request,s,n,&b))throw std::runtime_error("InternetReadFile failed");return b;fail:return -1;} };
+struct String_sink : public boost::iostreams::device<boost::iostreams::output>
+{ std::string& s; String_sink(std::string& x):s(x){} int write(const char* c,int n){s.append(c,n);return n;} };
+template class boost::iostreams::detail::indirect_streambuf<class WiniInetRequest_source,struct std::char_traits<char>,class std::allocator<char>,struct boost::iostreams::input>;
+template class boost::iostreams::detail::indirect_streambuf<struct String_sink,struct std::char_traits<char>,class std::allocator<char>,struct boost::iostreams::output>;
+template class boost::iostreams::stream_buffer<class WinHttpRequest_source,struct std::char_traits<char>,class std::allocator<char>,struct boost::iostreams::input>;
+template class boost::iostreams::stream_buffer<struct String_sink,struct std::char_traits<char>,class std::allocator<char>,struct boost::iostreams::output>;

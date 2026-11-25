@@ -1,34 +1,36 @@
 // from server: 100% by colin
-// roc 2007-08 0054aeb0  unit: boost::iostreams::DUoutput::V?$basic_null_device::?$stream_buffer  size: 57 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0054aeb0
-//
-// 0054aeb0  56                   push esi
-// 0054aeb1  57                   push edi
-// 0054aeb2  8b7c240c             mov edi, dword ptr [esp + 0xc]
-// 0054aeb6  8bf1                 mov esi, ecx
-// 0054aeb8  397e04               cmp dword ptr [esi + 4], edi
-// 0054aebb  7427                 je 0x54aee4
-// 0054aebd  6a00                 push 0
-// 0054aebf  57                   push edi
-// 0054aec0  8d4c2414             lea ecx, [esp + 0x14]
-// 0054aec4  ff1518e67700         call dword ptr [0x77e618]
-// 0054aeca  8b5604               mov edx, dword ptr [esi + 4]
-// 0054aecd  897e04               mov dword ptr [esi + 4], edi
-// 0054aed0  8b0e                 mov ecx, dword ptr [esi]
-// 0054aed2  85c9                 test ecx, ecx
-// 0054aed4  8906                 mov dword ptr [esi], eax
-// 0054aed6  740c                 je 0x54aee4
-// 0054aed8  52                   push edx
-// 0054aed9  51                   push ecx
-// 0054aeda  8d4c2414             lea ecx, [esp + 0x14]
-// 0054aede  ff1510e67700         call dword ptr [0x77e610]
-// 0054aee4  5f                   pop edi
-// 0054aee5  5e                   pop esi
-// 0054aee6  c20400               ret 4
-// copied from an identical function in another client (function ?resize@?$basic_buffer@DV?$allocator@D@std@@@detail@iostreams@boost@@QAEXH@Z)
-
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: templates-boost-1_34_1-dll roc_boost_resume_389d0bd197ae56e1.cpp
+
+// Candidate translation unit (score above; library headers required).
+#define NDEBUG
+#include <string>
+#include <vector>
+#include <windows.h>
+extern "C" {
+__declspec(dllimport) BOOL __stdcall WinHttpQueryDataAvailable(void*,DWORD*);
+__declspec(dllimport) BOOL __stdcall WinHttpReadData(void*,void*,DWORD,DWORD*);
+__declspec(dllimport) BOOL __stdcall InternetQueryDataAvailable(void*,DWORD*,DWORD,DWORD_PTR);
+__declspec(dllimport) BOOL __stdcall InternetReadFile(void*,void*,DWORD,DWORD*);
+}
+#include <boost/any.hpp>
+#include <boost/function.hpp>
+#include <boost/signal.hpp>
+#include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/copy.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
+#include <boost/iostreams/device/null.hpp>
+#include <boost/iostreams/stream_buffer.hpp>
+class WinHttpRequest_source : public boost::iostreams::device<boost::iostreams::input>
+{ void* request; public: WinHttpRequest_source(void* r):request(r){}
+ int read(char* s,int n){DWORD a;if(!WinHttpQueryDataAvailable(request,&a))goto fail;if(a==0)goto fail;DWORD b;if(!WinHttpReadData(request,s,n,&b))throw std::runtime_error("InternetReadFile failed");return b;fail:return -1;} };
+class WiniInetRequest_source : public boost::iostreams::device<boost::iostreams::input>
+{ void* request; public: WiniInetRequest_source(void* r):request(r){}
+ int read(char* s,int n){DWORD a;if(!InternetQueryDataAvailable(request,&a,0,NULL))goto fail;if(a==0)goto fail;DWORD b;if(!InternetReadFile(request,s,n,&b))throw std::runtime_error("InternetReadFile failed");return b;fail:return -1;} };
+struct String_sink : public boost::iostreams::device<boost::iostreams::output>
+{ std::string& s; String_sink(std::string& x):s(x){} int write(const char* c,int n){s.append(c,n);return n;} };
+template class boost::iostreams::detail::indirect_streambuf<class WiniInetRequest_source,struct std::char_traits<char>,class std::allocator<char>,struct boost::iostreams::input>;
+template class boost::iostreams::detail::indirect_streambuf<struct String_sink,struct std::char_traits<char>,class std::allocator<char>,struct boost::iostreams::output>;
