@@ -19,7 +19,7 @@ namespace RBX
 		  guiHooks(Creatable<Instance>::create<GuiRoot>()),
 		  guiTarget(NULL),
 		  forceArrowCursor(true),
-		  tempMetric(NULL),
+		  drawId(0),   // 0057bb3a stores 0 at +0x250 (drawId; tempMetric is +0x254, see 0057a1fa); 2007 donor DataModel.cpp:715
 		  dirty(false),
 		  renderEnabled(false),
 		  mutex(new boost::recursive_mutex)

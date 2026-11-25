@@ -27,3 +27,11 @@ R::PropDescriptor<RBX::JointInstance, G3D::CoordinateFrame>::getset(
 	const G3D::CoordinateFrame& (RBX::JointInstance::*)() const, void (RBX::JointInstance::*)(const G3D::CoordinateFrame&));
 template std::auto_ptr<R::TypedPropertyDescriptor<float>::GetSet>
 R::PropDescriptor<RBX::Motor, float>::getset(float (RBX::Motor::*)() const, void (RBX::Motor::*)(float));
+
+// 005e3540 (169 B, ret 0x1c): RefPropDescriptor<JointInstance, PartInstance> constructor. Seven argument dwords
+// (name, category, two 8-byte JointInstance member pointers, flags), RefPropertyDescriptor base 0056c650, vtables
+// 0083e988 / IIDREF 0083e980 at +0x18, getset factory 005e2920 stored at +0x1c. The registry names it with 4-byte
+// Instance member pointers (RefPropDescriptor<Instance, Instance>), which would be ret 0x14.
+template R::RefPropDescriptor<RBX::JointInstance, RBX::PartInstance>::RefPropDescriptor(const char*, const char*,
+	RBX::PartInstance* (RBX::JointInstance::*)() const, void (RBX::JointInstance::*)(RBX::PartInstance*),
+	R::PropertyDescriptor::Functionality);

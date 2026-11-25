@@ -97,3 +97,8 @@ namespace RBX
 		}
 	}
 }
+
+// 004b4110 (registry placeholder func_004b4110, ret 8): dynamic_cast<Replicator&> (__RTDynamicCast with the
+// DescribedBase 009291fc / Replicator 00938db4 type descriptors, std::bad_cast on failure), then the bound void()
+// member through the descriptor's pointer-to-member at +0x38 / +0x3c: BoundFuncDesc<Replicator, void(void), 0>::execute.
+template class RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator, void(void), 0>;
