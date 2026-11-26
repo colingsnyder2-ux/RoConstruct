@@ -1,33 +1,51 @@
-// from server: 46% by atomic.potato
-extern "C" void* __stdcall sub_007090e0();
-extern "C" void* __stdcall sub_006c1520();
-extern "C" void* __stdcall sub_006c1280();
-extern "C" void* __stdcall sub_0067f2e0(void*, void*, void*);
-extern "C" void* __stdcall sub_00709480();
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
 
-struct S {
-    char pad[0x1c];
-    void* field_1c;
-    void method(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int);
+// from server: 100% by tajop
+
+struct Manager
+{
+    int pad0;
+    void (*destroy)(void*);
 };
 
-void S::method(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int)
+struct Functor
 {
-    void* a;
-    void* b;
-    field_1c = sub_007090e0();
-    void* p1 = sub_006c1520();
-    sub_0067f2e0(&a, p1, &a);
-    sub_00709480();
-    void* p2 = sub_006c1280();
-    sub_0067f2e0(&b, p2, &b);
-    sub_00709480();
-    if (a) {
-        void (*f)(void*) = *(void (**)(void*))((char*)a + 4);
-        f(&a);
+    int head;
+    char tag[4];
+    Manager* manager;
+    char buffer[0x3c];
+
+    ~Functor()
+    {
+        if (manager)
+            manager->destroy(buffer);
     }
-    if (b) {
-        void (*f)(void*) = *(void (**)(void*))((char*)b + 4);
-        f(&b);
-    }
+};
+
+struct Container
+{
+    void* node;
+    void insert(void* key, void* where, void* value);
+};
+
+extern void* buyNode();
+extern void* endNode();
+extern void* keyOf(Functor* item);
+
+struct Scale9FrameData
+{
+    char pad0[0x1c];
+    Container items;
+
+    void init(Functor first, Functor second);
+};
+
+void Scale9FrameData::init(Functor first, Functor second)
+{
+    items.node = buyNode();
+    void* where = endNode();
+    items.insert(keyOf(&first), where, first.tag);
+    where = endNode();
+    items.insert(keyOf(&second), where, second.tag);
 }

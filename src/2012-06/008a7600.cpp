@@ -1,20 +1,35 @@
-// from server: 70% by atomic.potato
-extern "C" int __cdecl sub_495f40(void *);
-extern "C" void * __cdecl sub_983b6a(int);
-extern "C" void *g_b229ec;
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+
+struct type_info {
+    __declspec(dllimport) bool operator==(const type_info&) const;
+};
+
+extern type_info type_info_0xdeb9d8;
+extern "C" type_info* __cdecl sub_00983B6A(void*);
+
+struct Target {
+    void* sub_00495F40();
+};
+
+struct Owner {
+    char pad[0xac4];
+    Target* target;
+};
 
 struct TToolVerb
 {
-    char padding[12];
-    void *field_0c;
-    int f();
+    int pad0;
+    int pad1;
+    int pad2;
+    Owner* owner;
+    bool f();
 };
 
-int TToolVerb::f()
+bool TToolVerb::f()
 {
-    int value = sub_495f40(*(void **)((char *)field_0c + 0xac4));
-    if (!value)
-        return 0;
-    sub_983b6a(value);
-    return 0;
+    void* value = owner->target->sub_00495F40();
+    if (value)
+        return type_info_0xdeb9d8 == *sub_00983B6A(value);
+    return false;
 }

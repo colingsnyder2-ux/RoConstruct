@@ -1,17 +1,30 @@
-// from server: 46% by Intel
-struct S
-{
-    char *field_2c;
-    int f(char *p);
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+
+// from server: 100% by tajop
+
+struct InstanceBase {
+    char pad[0x1c];
 };
 
-extern "C" void sub_78b3e0(char *);
+struct DescBase {
+    int field_0;
+};
 
-int S::f(char *p)
+struct Signal {
+    int f();
+};
+
+struct EventClass : InstanceBase, DescBase {
+};
+
+struct EventDesc {
+    char pad[0x2c];
+    Signal EventClass::* sig;
+    int invoke(DescBase* source);
+};
+
+int EventDesc::invoke(DescBase* source)
 {
-    if (p == 0)
-        sub_78b3e0(field_2c + ((char *)p - (char *)0x1c));
-    else
-        sub_78b3e0(field_2c);
-    return 0;
+    return (static_cast<EventClass*>(source)->*sig).f();
 }

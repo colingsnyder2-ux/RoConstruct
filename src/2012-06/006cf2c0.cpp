@@ -1,41 +1,92 @@
-// from server: 2% by atomic.potato
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement)
+#pragma intrinsic(_InterlockedDecrement)
 
-extern "C" void __stdcall sub_0052dfe0();
-extern "C" void __stdcall sub_00531370();
-extern "C" void __stdcall sub_00684c80();
-
-struct S_func_006cf2c0 {
-    void f(int a, int b, int c, int d);
+struct Counted {
+    long use;
+    long weak;
+    virtual ~Counted();
+    virtual void dispose();
+    virtual void destroy();
+    void weak_release() {
+        if (_InterlockedDecrement(&weak) == 0) destroy();
+    }
+    void release() {
+        if (_InterlockedDecrement(&use) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
 };
 
-void S_func_006cf2c0::f(int a, int b, int c, int d)
+struct SP {
+    void* px;
+    Counted* pn;
+    SP(const SP& o) : px(o.px), pn(o.pn) {
+        if (pn) _InterlockedIncrement(&pn->use);
+    }
+    ~SP() {
+        if (pn) pn->release();
+    }
+};
+
+struct B1 { int a; };
+struct B2 { int b; };
+struct T : B1, B2 { void m(int); };
+
+struct Arg1 {};
+extern Arg1 g_1;
+
+struct BindT {
+    void (T::*f)(int);
+    SP a;
+};
+
+BindT bind(void (T::*f)(int), SP p, Arg1 a);
+
+struct Buf { int d[6]; };
+
+struct VT {
+    typedef void (*Mgr)(Buf&, Buf&, int);
+    Mgr manager;
+    void clear(Buf& b) {
+        Mgr m = manager;
+        if (m) m(b, b, 2);
+    }
+};
+
+struct Func {
+    VT* vtable;
+    int pad;
+    Buf functor;
+    Func(BindT f, int = 0);
+    ~Func() {
+        if (vtable) {
+            vtable->clear(functor);
+            vtable = 0;
+        }
+    }
+};
+
+struct Conn {
+    int x;
+    Conn(const Conn&);
+    ~Conn();
+};
+
+struct S {
+    Conn g(int a, const Func& f);
+    Conn f(int a, SP b);
+};
+
+Conn S::f(int a, SP b)
 {
-    char pad[0x28];
-    int local14 = 0;
-    int local1c = 0;
-    int local28 = 0;
-    int local30 = 0;
-    int local34 = 0;
-    int local3c = 0;
-    int local44 = 0;
-    int local48 = 0;
-    int local50 = 0;
-    int local5c = 0;
-    (void)pad;
-    (void)local14;
-    (void)local1c;
-    (void)local28;
-    (void)local30;
-    (void)local34;
-    (void)local3c;
-    (void)local44;
-    (void)local48;
-    (void)local50;
-    (void)local5c;
-    (void)a;
-    (void)b;
-    (void)c;
-    (void)d;
+    Func fn(bind(&T::m, b, g_1));
+    return g(a, fn);
 }

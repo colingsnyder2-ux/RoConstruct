@@ -1,19 +1,20 @@
-// from server: 85% by atomic.potato
-extern "C" void __stdcall sub_008f1f00(void *);
-extern "C" void __stdcall sub_00982114(void *);
+// from server: 100% by Xemicl
+// from server: 100% by atomic.potato
 
 struct S
 {
-    int f(int);
+    int *f(unsigned char);
 };
 
-int S::f(int value)
+extern "C" void __cdecl fn91f320();
+extern "C" void __cdecl fn982114(S *);
+
+int *S::f(unsigned char flags)
 {
-    S *p = this;
-    *(unsigned long *)p = 0x00bc5c1c;
-    *(unsigned long *)((char *)p + 0x1c) = 0x00bc5c00;
-    sub_008f1f00(p);
-    if (value & 1)
-        sub_00982114(p);
-    return (int)p;
+    *(int *)this = 0xbc6064;
+    *(int *)((char *)this + 0x1c) = 0xbc6044;
+    fn91f320();
+    if (flags & 1)
+        fn982114(this);
+    return (int *)this;
 }

@@ -1,22 +1,35 @@
-// from server: 60% by atomic.potato
-typedef int BOOL;
+// from server: 100% by Xemicl
+// from server: 100% by tajop
 
-struct S {
-    void* field;
-    BOOL f();
+struct type_info {
+    __declspec(dllimport) bool operator==(const type_info&) const;
 };
 
-extern "C" void* __cdecl sub_495f40(void*);
-extern "C" void* __cdecl sub_983b6a(void*);
-typedef void (__cdecl *Fn)(void*, void*);
-extern Fn g_call;
+extern type_info type_info_0xdeb9d8;
+extern "C" type_info* __cdecl sub_00983B6A(void*);
 
-BOOL S::f()
+struct Target {
+    void* sub_00495F40();
+};
+
+struct Owner {
+    char pad[0xac4];
+    Target* target;
+};
+
+struct TToolVerb
 {
-    void* a = sub_495f40(*(void**)((char*)this->field + 0xac4));
-    if (!a)
-        return 0;
-    a = sub_983b6a(a);
-    g_call((void*)0x00dec4a4, a);
-    return 1;
+    int pad0;
+    int pad1;
+    int pad2;
+    Owner* owner;
+    bool f();
+};
+
+bool TToolVerb::f()
+{
+    void* value = owner->target->sub_00495F40();
+    if (value)
+        return type_info_0xdeb9d8 == *sub_00983B6A(value);
+    return false;
 }

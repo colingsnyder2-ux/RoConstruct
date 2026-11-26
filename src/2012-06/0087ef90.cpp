@@ -1,16 +1,30 @@
-// from server: 43% by atomic.potato
-struct EventDesc
-{
-    int Dispatch(int value);
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+
+// from server: 100% by tajop
+
+struct InstanceBase {
+    char pad[0x1c];
 };
 
-extern "C" void __stdcall Call_87E530(void*);
+struct DescBase {
+    int field_0;
+};
 
-int EventDesc::Dispatch(int value)
+struct Signal {
+    int f();
+};
+
+struct EventClass : InstanceBase, DescBase {
+};
+
+struct EventDesc {
+    char pad[0x2c];
+    Signal EventClass::* sig;
+    int invoke(DescBase* source);
+};
+
+int EventDesc::invoke(DescBase* source)
 {
-    char* p = *(char**)((char*)this + 0x2c);
-    if (value != 0)
-        p += value - 0x1c;
-    Call_87E530(p);
-    return 0;
+    return (static_cast<EventClass*>(source)->*sig).f();
 }

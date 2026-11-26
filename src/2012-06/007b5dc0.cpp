@@ -1,16 +1,20 @@
-// from server: 75% by atomic.potato
-extern "C" void __cdecl g(int*);
+// from server: 100% by Xemicl
+// from server: 100% by atomic.potato
 
-struct S
+extern "C" void __declspec(nothrow) __stdcall GlobalAdvancedSettingsItemChanged(int);
+
+struct GlobalAdvancedSettingsItem
 {
-    void f(int);
+    char padding[152];
+    int value;
+    void set(int);
 };
 
-void S::f(int value)
+void GlobalAdvancedSettingsItem::set(int value)
 {
-    if (*(int*)((char*)this + 0x98) != value)
+    if (this->value != value)
     {
-        *(int*)((char*)this + 0x98) = value;
-        g((int*)0x00e4b0c0);
+        this->value = value;
+        GlobalAdvancedSettingsItemChanged(0xe33240);
     }
 }

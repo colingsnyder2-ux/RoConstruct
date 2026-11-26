@@ -1,18 +1,30 @@
-// from server: 63% by atomic.potato
-struct S
-{
-    int f(int);
-    char pad[44];
-    void* p;
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+
+// from server: 100% by tajop
+
+struct InstanceBase {
+    char pad[0x1c];
 };
 
-extern void G1_func_00537040(void*);
+struct DescBase {
+    int field_0;
+};
 
-int S::f(int value)
+struct Signal {
+    int f();
+};
+
+struct EventClass : InstanceBase, DescBase {
+};
+
+struct EventDesc {
+    char pad[0x2c];
+    Signal EventClass::* sig;
+    int invoke(DescBase* source);
+};
+
+int EventDesc::invoke(DescBase* source)
 {
-    if (value != 0)
-        G1_func_00537040((char*)p + value - 0x1c);
-    else
-        G1_func_00537040(p);
-    return 0;
+    return (static_cast<EventClass*>(source)->*sig).f();
 }

@@ -1,30 +1,31 @@
-// from server: 58% by Intel
-struct FactoryProduct {
-    FactoryProduct* __thiscall Initialize();
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+
+// from server: 100% by tajop
+
+struct Ptr {
+    int p;
+    Ptr() : p(0) {}
+    ~Ptr();
 };
 
-extern "C" void __cdecl func_004015a0(int, int);
-extern "C" void __cdecl func_009831f5(int);
+struct Holder {
+    int a;
+    int b;
+    Holder() : a(0), b(0) {}
+    ~Holder();
+};
 
-int g_flag_00e23c64;
-int g_dword_00e23c5c;
-int g_dword_00e23c60;
-int g_dword_00e23c68;
-int g_dword_0055a610;
-int g_dword_00b14290;
+extern long g_once;
+void g_once_init();
+void call_once(long& flag, void (*f)());
 
-FactoryProduct* __thiscall FactoryProduct::Initialize() {
-    int* this_ptr = reinterpret_cast<int*>(this);
-    *this_ptr = 0;
+struct ThreadRef {
+    Ptr liveThreadRef;
+    ThreadRef();
+};
 
-    func_004015a0(g_dword_0055a610, g_dword_00e23c68);
-
-    if (!(g_flag_00e23c64 & 1)) {
-        g_flag_00e23c64 |= 1;
-        g_dword_00e23c5c = 0;
-        g_dword_00e23c60 = 0;
-        func_009831f5(g_dword_00b14290);
-    }
-
-    return this;
+ThreadRef::ThreadRef() {
+    call_once(g_once, g_once_init);
+    static Holder holder;
 }

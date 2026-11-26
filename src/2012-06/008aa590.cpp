@@ -1,14 +1,22 @@
-// from server: 54% by atomic.potato
-struct ModelSetFrontTool
-{
-    void f(int, int*, int*, int*);
+// from server: 100% by Xemicl
+// from server: 100% by Intel
+
+struct ConstraintSurfacePair {
+    int* vtable;
+    int field4;
+    int field8;
+    int fieldC;
+    int field10;
+
+    ConstraintSurfacePair* ctor(int a1, int a2, int a3, int a4);
 };
 
-void ModelSetFrontTool::f(int a, int* b, int* c, int* d)
-{
-    *(int*)((char*)this + 4) = a;
-    *(int*)((char*)this + 8) = *c;
-    *(int*)((char*)this + 12) = *b;
-    *(int*)((char*)this + 16) = *d;
-    *(int*)this = 0xBE0668;
+ConstraintSurfacePair* ConstraintSurfacePair::ctor(int a1, int a2, int a3, int a4) {
+    this->vtable = (int*)0xBE0658;
+    this->field4 = a1;
+    this->field8 = a3;
+    this->fieldC = *(int*)a2;
+    this->field10 = *(int*)a4;
+    this->vtable = (int*)0xBE0688;
+    return this;
 }

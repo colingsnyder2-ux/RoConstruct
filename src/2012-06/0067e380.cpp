@@ -1,83 +1,41 @@
-// from server: 66% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/DebrisService.cpp
+// from server: 100% by Xemicl
+// from server: 100% by Intel
+// roc 2012-06 008e3f80  unit: RBX::Reflection::_N::?$TypedPropertyDescriptor  size: 43 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 008e3f80
+//
+// 008e3f80  56                   push esi
+// 008e3f81  8bf1                 mov esi, ecx
+// 008e3f83  8b4628               mov eax, dword ptr [esi + 0x28]
+// 008e3f86  50                   push eax
+// 008e3f87  e888e10900           call 0x982114
+// 008e3f8c  83c404               add esp, 4
+// 008e3f8f  f644240801           test byte ptr [esp + 8], 1
+// 008e3f94  c7062c3cb400         mov dword ptr [esi], 0xb43c2c
+// 008e3f9a  7409                 je 0x8e3fa5
+// 008e3f9c  56                   push esi
+// 008e3f9d  e872e10900           call 0x982114
+// 008e3fa2  83c404               add esp, 4
+// 008e3fa5  8bc6                 mov eax, esi
+// 008e3fa7  5e                   pop esi
+// 008e3fa8  c20400               ret 4
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/DebrisService.h"
-#include "v8datamodel/TimerService.h"
-#include "util/standardout.h"
+extern "C" void __cdecl external_func(void* param);
 
-static RBX::Reflection::BoundFuncDesc<RBX::DebrisService, void(boost::shared_ptr<RBX::Instance>, double), 2> func_AddItem(&RBX::DebrisService::addItem, "AddItem", "item", "lifetime", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::PropDescriptor<RBX::DebrisService, int> prop_MaxItems("MaxItems", "Data", &RBX::DebrisService::getMaxItems, &RBX::DebrisService::setMaxItems, RBX::Reflection::PropertyDescriptor::STANDARD);
+struct TypedPropertyDescriptor {
+    char pad[0x2c];
+    void* field_28;
+    
+    TypedPropertyDescriptor* method(int arg);
+};
 
-static void cleanup(boost::weak_ptr<RBX::Instance> item)
-{
-	try
-	{
-		boost::shared_ptr<RBX::Instance> i = item.lock();
-		if (i)
-			i->setParent(NULL);
-	}
-	catch (std::exception& e)
-	{
-		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
-	}
-}
-
-namespace RBX
-{
-	char* sDebrisService = "Debris";
-
-	DebrisService::DebrisService()
-		: Base("Debris"),
-		  maxItems(300),
-		  timer(NULL)
-	{
-	}
-
-	void DebrisService::setMaxItems(int value)
-	{
-		if (value != maxItems)
-		{
-			if (value < 0)
-				throw std::runtime_error("DebrisService MaxItems must be greater than 0");
-
-			maxItems = value;
-			raisePropertyChanged(prop_MaxItems);
-			DebrisService::cleanup();
-		}
-	}
-
-	void DebrisService::addItem(boost::shared_ptr<Instance> item, double lifetime)
-	{
-		if (timer)
-			timer->delay(boost::bind(&::cleanup, item), lifetime);
-
-		queue.push(item);
-		DebrisService::cleanup();
-	}
-
-	void DebrisService::cleanup()
-	{
-		while ((int)queue.size() > maxItems)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-	}
-
-	void DebrisService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		while ((int)queue.size() > 0)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		timer = ServiceProvider::create<TimerService>(newProvider);
-	}
+TypedPropertyDescriptor* TypedPropertyDescriptor::method(int arg) {
+    external_func(field_28);
+    
+    *(void**)this = (void*)0xB43C2C;
+    
+    if (arg & 1) {
+        external_func(this);
+    }
+    
+    return this;
 }

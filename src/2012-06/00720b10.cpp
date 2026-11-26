@@ -1,19 +1,31 @@
-// from server: 43% by colin
-struct S {
-    int f();
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+
+// from server: 100% by tajop
+
+struct Ptr {
+    int p;
+    Ptr() : p(0) {}
+    ~Ptr();
 };
 
-extern "C" void __cdecl sub_4015A0(int, int);
-extern "C" void __cdecl sub_9831F5(int);
+struct Holder {
+    int a;
+    int b;
+    Holder() : a(0), b(0) {}
+    ~Holder();
+};
 
-int S::f() {
-    *(int*)this = 0;
-    sub_4015A0(0xe25c1c, 0x5ab850);
-    if (!(*(unsigned char*)0xe25c0c & 1)) {
-        *(unsigned int*)0xe25c0c |= 1;
-        *(unsigned int*)0xe25c04 = 0;
-        *(unsigned int*)0xe25c08 = 0;
-        sub_9831F5(0xb14a30);
-    }
-    return (int)this;
+extern long g_once;
+void g_once_init();
+void call_once(long& flag, void (*f)());
+
+struct ThreadRef {
+    Ptr liveThreadRef;
+    ThreadRef();
+};
+
+ThreadRef::ThreadRef() {
+    call_once(g_once, g_once_init);
+    static Holder holder;
 }

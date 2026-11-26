@@ -1,48 +1,38 @@
-// from server: 63% by Intel
-// roc-repair: genuine WinNT.h definitions (no SDK shipped)
-typedef unsigned long DWORD;
-// Global variables
-char g_initialized = 0;  // 0xe2f9c8
-DWORD g_marker = 0;      // 0xe2f9bc
-DWORD g_unk1 = 0;        // 0xe2f9c0
-DWORD g_unk2 = 0;        // 0xe2f9c4
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
 
-// External function
-extern "C" void __stdcall InitializeSomething(DWORD arg);
+// from server: 100% by tajop
 
-// The class
-struct SlotWrapper {
-    void* marker;  // 0
-    void* data;    // 4
-    
-    SlotWrapper* Connect(void* callable);
+inline void* __cdecl operator new(unsigned int, void* p) throw() { return p; }
+
+void destroy_fn(void*);
+void other_fn(void*);
+
+struct Desc {
+    void (*destroy)(void*);
+    void (*other)(void*);
+    Desc(void (*a)(void*), void (*b)(void*)) { other = b; destroy = a; }
+    virtual ~Desc();
 };
 
-SlotWrapper* SlotWrapper::Connect(void* callable) {
-    if (!g_initialized) {
-        g_initialized = 1;
-        InitializeSomething(0xB16B90);
-        g_marker = 0xDA45B8;
-        g_unk2 = 0x5708D0;
-        g_unk1 = 0x59A790;
+struct S {
+    Desc* vt;
+    int storage;
+    S& assign(const int& v);
+};
+
+S& S::assign(const int& v)
+{
+    static Desc desc(destroy_fn, other_fn);
+    if (vt == &desc) {
+        storage = v;
+        return *this;
     }
-    
-    if (marker == (void*)0xE2F9BC) {
-        // Direct assignment
-        data = *(void**)callable;
-        return this;
+    if (vt != 0) {
+        vt->destroy(&storage);
+        vt = 0;
     }
-    
-    if (marker != 0) {
-        // Call cleanup function
-        typedef void (__thiscall *CleanupFunc)(void*);
-        CleanupFunc cleanup = (CleanupFunc)*(DWORD*)((DWORD)marker + 4);
-        cleanup(&data);
-        marker = 0;
-    }
-    
-    // Assign new callable
-    data = *(void**)callable;
-    marker = (void*)0xE2F9BC;
-    return this;
+    new (&storage) int(v);
+    vt = &desc;
+    return *this;
 }

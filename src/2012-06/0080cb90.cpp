@@ -1,26 +1,19 @@
-// from server: 68% by atomic.potato
-typedef unsigned int DWORD;
+// from server: 100% by Xemicl
+// from server: 100% by atomic.potato
 
 struct S
 {
-    DWORD v0;
-    DWORD v4;
-    DWORD pad[4];
-    DWORD v18;
-    DWORD v1c;
-    DWORD pad2[24];
-    DWORD v80;
-    DWORD v84;
-
-    S();
+    void f();
 };
 
-S::S()
+void S::f()
 {
-    v0 = 0x00bc501c;
-    v4 = 0x00bc5010;
-    v18 = 0x00bc5004;
-    v1c = 0x00bc4ff8;
-    v80 = 0x00bc4fe8;
-    v84 = 0x00bc4fbc;
+    *(int *)this = 0xba77ac;
+    *(int *)((char *)this + 4) = 0xba77a4;
+    *(int *)((char *)this + 0x18) = 0xba7798;
+    *(int *)((char *)this + 0x1c) = 0xba778c;
+    *(int *)((char *)this + 0x80) = 0xba777c;
+    *(int *)((char *)this + 0x84) = 0xba7750;
+    extern void g();
+    g();
 }

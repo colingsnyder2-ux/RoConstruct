@@ -1,38 +1,36 @@
-// from server: 56% by Intel
-typedef void __stdcall InitializeCriticalSection_t(void* lpCriticalSection);
-extern "C" InitializeCriticalSection_t InitializeCriticalSection;
+// from server: 100% by Xemicl
+// from server: 100% by tajop
 
-extern "C" void __cdecl sub_9831f5(int);
+extern "C" __declspec(dllimport) void __stdcall InitializeCriticalSection(void*);
+extern "C" void __cdecl func_009831f5(void*);
 
-int* dword_E56CFC = (int*)0xE56CFC;
-int* dword_E56D00 = (int*)0xE56D00;
-int* dword_E56D04 = (int*)0xE56D04;
-int* dword_E56D08 = (int*)0xE56D08;
-int* dword_E56D0C = (int*)0xE56D0C;
-int* dword_E56D10 = (int*)0xE56D10;
-unsigned char* byte_E56D14 = (unsigned char*)0xE56D14;
-void* criticalSection_E56CE4 = (void*)0xE56CE4;
-int* dword_B21340 = (int*)0xB21340;
-
-int __cdecl sub_9295D0()
+struct CAboutRobloxDialog
 {
-    if (*byte_E56D14)
+    static CAboutRobloxDialog* GetInstance();
+};
+
+CAboutRobloxDialog* CAboutRobloxDialog::GetInstance()
+{
+    static int initFlag;
+    static char section[24];
+    static int field24;
+    static int field28;
+    static int field2c;
+    static int field30;
+    static int field34;
+    static int field38;
+
+    if ((initFlag & 1) == 0)
     {
-        return 0xE56CE4;
+        initFlag |= 1;
+        InitializeCriticalSection(section);
+        field24 = 0;
+        field28 = 0;
+        field2c = 0;
+        field30 = 0x84;
+        field34 = 0x20;
+        field38 = 0x20;
+        func_009831f5((void*)0xb11390);
     }
-
-    *byte_E56D14 = 1;
-    InitializeCriticalSection(criticalSection_E56CE4);
-
-    *dword_E56CFC = 0;
-    *dword_E56D00 = 0;
-    *dword_E56D04 = 0;
-
-    *dword_E56D08 = 0x84;
-    *dword_E56D0C = 0x20;
-    *dword_E56D10 = 0x20;
-
-    sub_9831f5(*dword_B21340);
-
-    return 0xE56CE4;
+    return (CAboutRobloxDialog*)section;
 }

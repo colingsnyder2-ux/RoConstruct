@@ -1,162 +1,31 @@
-// from server: 73% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/RunStateOwner.cpp
+// from server: 100% by Xemicl
+// from server: 100% by tajop
 
-// Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
-#include "util/Timer.h"
-#include "util/standardout.h"
-#include "v8datamodel/DataModel.h"
-#include <boost/thread/xtime.hpp>
+struct Vt0 { virtual void f0(); };
+struct Vt4 { virtual void f4(); int pad4[4]; };
+struct Vt18 { virtual void f18(); };
+struct Vt1c { virtual void f1c(); int pad20[2]; int value28; int pad2c[21]; };
+struct Vt80 { virtual void f80(); };
 
-namespace RBX
-{
-	const char* const sRunService = "RunService";
+struct RelativePanelBase : Vt0, Vt4, Vt18, Vt1c, Vt80 {
+    RelativePanelBase();
+};
 
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> runFunction(&RunService::run, "Run", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> pauseFunction(&RunService::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> resetFunction(&RunService::reset, "Reset", Reflection::FunctionDescriptor::NeedTrustedCaller);
+struct Guard {
+    int value;
+    Guard() {}
+    ~Guard();
+};
 
-	static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "interval");
-	Reflection::SignalDesc<RunService, void(float, float)> RunService::event_Stepped("Stepped", "time", "step");
+int getValue();
 
-	RunService::RunService()
-		: framePeriod(1.0f/30.0f),
-		  runState(RS_NORMAL),
-		  invalidRunViewCount(0),
-		  stopRequested(false),
-		  runDisabled(false)
-	{
-		setName("Run Service");
-	}
+struct NonFactoryProduct : RelativePanelBase {
+    static int counter;
+    Guard guard;
+    NonFactoryProduct();
+};
 
-	RunService::~RunService()
-	{
-		RBXASSERT(views.empty());
-	}
-
-	void RunService::endRunThread(bool join)
-	{
-		stopRequested = true;
-		stateChangedCondition.notify_all();
-
-		if (join)
-			runThread->join();
-	}
-
-	void RunService::onAncestorChanged(const AncestorChanged& event)
-	{
-		if (!getParent())
-		{
-			stopRequested = true;
-			stateChangedCondition.notify_all();
-		}
-	}
-
-	void RunService::setRunState(RunState newState)
-	{
-		RunTransition transition(runState, newState);
-		runState = newState;
-
-		Notifier<RunService, RunState>::raise(newState);
-		Notifier<RunService, RunTransition>::raise(transition);
-	}
-
-	void RunService::raiseStepped(float time, float step)
-	{
-		Notifier<RunService, Stepped>::raise(Stepped(time, step));
-		event_Stepped.fire(this, time, step);
-	}
-
-	void RunService::raiseHeartbeat(float time, float step)
-	{
-		Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-		event_Heartbeat.fire(this, step);
-	}
-
-	void RunService::invalidateRunViews()
-	{
-		boost::mutex::scoped_lock lock(viewMutex);
-
-		if (invalidRunViewCount == 0)
-		{
-			invalidRunViewCount = (int)views.size();
-			if (invalidRunViewCount > 0)
-			{
-				for (std::map<IRunView*, bool>::iterator iter = views.begin(); iter != views.end(); iter++)
-				{
-					iter->first->InvalidateRunView();
-					iter->second = false;
-				}
-				runViewsDoneCondition.notify_all();
-			}
-		}
-	}
-
-	void RunService::start()
-	{
-		RBXASSERT(!runThread);
-
-		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
-		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc")));
-	}
-
-	void RunService::runProc(boost::shared_ptr<DataModel> dataModel)
-	{
-		double lastTime = getRealTime();
-		while (true)
-		{
-			double deltaTime = lastTime - getRealTime();
-
-			{
-				boost::mutex::scoped_lock lock(viewMutex);
-				for (std::map<IRunView*, bool>::iterator it = views.begin(); it != views.end(); it++)
-					it->first->AdjustThrottle(deltaTime);
-			}
-
-			double clampedDeltaTime = G3D::max(0.0, deltaTime);
-			boost::xtime stateChangedTimeout;
-			boost::xtime_get(&stateChangedTimeout, boost::TIME_UTC);
-			stateChangedTimeout.nsec += (boost::xtime::xtime_nsec_t)(clampedDeltaTime * 1e9);
-
-			bool stateChanged;
-			{
-				boost::mutex::scoped_lock lock(runMutex);
-				stateChanged = stateChangedCondition.timed_wait(lock, stateChangedTimeout);
-			}
-
-			if (!stateChanged)
-			{
-				boost::xtime runViewsDoneTimeout;
-				boost::xtime_get(&runViewsDoneTimeout, boost::TIME_UTC);
-				runViewsDoneTimeout.sec += 1;
-
-				boost::mutex::scoped_lock lock(runMutex);
-				if (invalidRunViewCount != 0)
-					runViewsDoneCondition.timed_wait(lock, runViewsDoneTimeout);
-			}
-
-			if (deltaTime <= 0.0)
-				lastTime = getRealTime();
-
-			{
-				DataModel::Lock lock(dataModel);
-
-				if (!stopRequested)
-				{
-					RBXASSERT(getParent() == dataModel.get());
-					dataModel->step(framePeriod);
-				}
-				else
-				{
-					StandardOut::singleton()->print(MESSAGE_INFO, "runProc ending");
-					return;
-				}
-			}
-
-			lastTime += framePeriod;
-		}
-	}
+NonFactoryProduct::NonFactoryProduct() {
+    value28 = getValue();
+    ++counter;
 }

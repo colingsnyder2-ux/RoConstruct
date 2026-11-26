@@ -1,19 +1,35 @@
-// from server: 52% by atomic.potato
-struct S
-{
-    int f();
-    int pad0[3];
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+
+struct type_info {
+    __declspec(dllimport) bool operator==(const type_info&) const;
 };
 
-extern "C" int __cdecl sub_495f40(void *);
-extern "C" int __cdecl sub_983b6a(int);
-extern "C" int (__cdecl *sub_b229ec)(int);
+extern type_info type_info_0xdeb9d8;
+extern "C" type_info* __cdecl sub_00983B6A(void*);
 
-int S::f()
+struct Target {
+    void* sub_00495F40();
+};
+
+struct Owner {
+    char pad[0xac4];
+    Target* target;
+};
+
+struct TToolVerb
 {
-    int v = sub_495f40(*(int **)((char *)this + 0xc + 0xac4));
-    if (!v)
-        return 0;
-    v = sub_983b6a(v);
-    return sub_b229ec(v);
+    int pad0;
+    int pad1;
+    int pad2;
+    Owner* owner;
+    bool f();
+};
+
+bool TToolVerb::f()
+{
+    void* value = owner->target->sub_00495F40();
+    if (value)
+        return type_info_0xdeb9d8 == *sub_00983B6A(value);
+    return false;
 }

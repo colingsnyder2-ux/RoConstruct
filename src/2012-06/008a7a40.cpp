@@ -1,25 +1,35 @@
-// from server: 77% by atomic.potato
-typedef int (__thiscall *Fn495f40)(void *);
-typedef void * (__cdecl *Fn983b6a)(int);
-typedef int (__thiscall *FnImport)(void *, void *);
+// from server: 100% by Xemicl
+// from server: 100% by tajop
 
-extern "C" int __cdecl call_495f40(void *);
-extern "C" void * __cdecl call_983b6a(int);
-extern "C" FnImport g_import;
-
-struct TToolVerb {
-    char padding[12];
-    void *field_0c;
-    int f();
+struct type_info {
+    __declspec(dllimport) bool operator==(const type_info&) const;
 };
 
-int TToolVerb::f()
+extern type_info type_info_0xdeb9d8;
+extern "C" type_info* __cdecl sub_00983B6A(void*);
+
+struct Target {
+    void* sub_00495F40();
+};
+
+struct Owner {
+    char pad[0xac4];
+    Target* target;
+};
+
+struct TToolVerb
 {
-    int value = call_495f40(*(void **)((char *)field_0c + 0xac4));
+    int pad0;
+    int pad1;
+    int pad2;
+    Owner* owner;
+    bool f();
+};
+
+bool TToolVerb::f()
+{
+    void* value = owner->target->sub_00495F40();
     if (value)
-    {
-        void *converted = call_983b6a(value);
-        return g_import((void *)0xdecb98, converted);
-    }
-    return 0;
+        return type_info_0xdeb9d8 == *sub_00983B6A(value);
+    return false;
 }

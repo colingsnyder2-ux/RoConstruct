@@ -1,28 +1,30 @@
-// from server: 83% by colin
-struct EnumDesc {
-    char pad0[0x2c];
-    unsigned int count;
-    char pad1[0x90 - 0x30];
-    const char** names;
-    bool get(unsigned int index, const char** out) const;
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+
+
+struct Any { void assign(const unsigned*); };
+struct Variant { const void* type; Any value; };
+extern int once_flag;
+void init_type();
+void call_once(int&, void (*)());
+const void* get_type();
+struct S {
+    char a[0x2c];
+    unsigned count;
+    char b[0x90 - 0x30];
+    unsigned* values;
+    bool f(unsigned, Variant&) const;
 };
-
-extern "C" void __cdecl sub_4015A0(const char*, const char*);
-extern "C" int __cdecl sub_770200();
-extern "C" void __cdecl sub_7697A0(const char**);
-
-bool EnumDesc::get(unsigned int index, const char** out) const {
-    bool found;
-    const char* name;
+bool S::f(unsigned index, Variant& out) const {
+    bool ok;
     if (index < count) {
-        name = names[index];
-        found = true;
+        index = values[index];
+        ok = true;
     } else {
-        found = false;
+        ok = false;
     }
-    sub_4015A0((const char*)0xe48588, (const char*)0x770260);
-    int v = sub_770200();
-    *out = (const char*)v;
-    sub_7697A0(&name);
-    return found;
+    call_once(once_flag, init_type);
+    out.type = get_type();
+    out.value.assign(&index);
+    return ok;
 }

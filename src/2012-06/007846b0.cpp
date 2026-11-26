@@ -1,28 +1,30 @@
-// from server: 83% by colin
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+
+
+struct Any { void assign(const unsigned*); };
+struct Variant { const void* type; Any value; };
+extern int once_flag;
+void init_type();
+void call_once(int&, void (*)());
+const void* get_type();
 struct S {
-    char pad[0x2c];
-    unsigned int count;
-    char pad2[0x90 - 0x30];
-    int* array;
-    bool get(unsigned int index, int* out);
+    char a[0x2c];
+    unsigned count;
+    char b[0x90 - 0x30];
+    unsigned* values;
+    bool f(unsigned, Variant&) const;
 };
-
-extern "C" void __cdecl sub_4015a0(const char*, const char*);
-extern "C" int __cdecl sub_770430();
-extern "C" void __cdecl sub_76a470(int*);
-
-bool S::get(unsigned int index, int* out) {
-    int val;
+bool S::f(unsigned index, Variant& out) const {
     bool ok;
     if (index < count) {
-        val = array[index];
+        index = values[index];
         ok = true;
     } else {
         ok = false;
     }
-    sub_4015a0((const char*)0xe4859c, (const char*)0x770490);
-    int r = sub_770430();
-    *out = r;
-    sub_76a470(&val);
+    call_once(once_flag, init_type);
+    out.type = get_type();
+    out.value.assign(&index);
     return ok;
 }

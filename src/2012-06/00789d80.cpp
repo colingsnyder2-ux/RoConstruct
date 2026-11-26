@@ -1,16 +1,23 @@
-// from server: 82% by atomic.potato
-struct InterpolatingPhysicsReceiver_Job
+// from server: 100% by Xemicl
+// from server: 100% by tester
+
+struct S
 {
-    double m_value;
-    char pad0[544];
-    double m_field228;
-    int f(int a1, int a2);
+    double value;
+    unsigned char state;
 };
 
-extern "C" int __stdcall Function_00977d20(double value, int a1, int a2);
+void __stdcall f(S *a, const S *b, double c);
 
-int InterpolatingPhysicsReceiver_Job::f(int a1, int a2)
+struct PacketReceiveJob
 {
-    Function_00977d20(m_field228, a1, a2);
-    return a1;
+    char pad[0x228];
+    double value;
+    int g(S *a, S *b);
+};
+
+int PacketReceiveJob::g(S *a, S *b)
+{
+    f(a, b, value);
+    return (int)a;
 }

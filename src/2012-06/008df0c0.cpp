@@ -1,38 +1,54 @@
-// from server: 28% by atomic.potato
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+
+// from server: 100% by tajop
+
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedDecrement)
 
-extern "C" void __cdecl free(void*);
+extern "C" void (__cdecl* imp_free)(void*);
 
-struct Inner {
-    void** vptr;
-    long refcount;
-};
-
-struct Obj {
-    Inner* p;
-};
-
-struct S {
-    Obj* field0;
-    void dtor();
-};
-
-void S::dtor()
+struct Counts
 {
-    Obj* o = this->field0;
-    this->field0 = 0;
-    if (o) {
-        Inner* in = o->p;
-        if (in) {
-            char* base = (char*)in - 8;
-            if (_InterlockedExchangeAdd((volatile long*)base, -1) == 1) {
-                void** vt = *(void***)in;
-                ((void (__stdcall*)(void*))vt[0])(0);
-                if (_InterlockedExchangeAdd((volatile long*)(base + 4), -1) == 1) {
-                    free(base);
-                }
+    volatile long strong;
+    volatile long weak;
+};
+
+struct Obj
+{
+    virtual ~Obj();
+};
+
+struct Ptr
+{
+    char* p;
+    ~Ptr()
+    {
+        if (p)
+        {
+            char* a = p + 5;
+            Obj* o = a ? (Obj*)(a - 5) : 0;
+            Counts* c = (Counts*)((char*)o - 8);
+            if (_InterlockedDecrement(&c->strong) == 0)
+            {
+                o->~Obj();
+                if (_InterlockedDecrement(&c->weak) == 0)
+                    imp_free(c);
             }
         }
     }
+};
+
+struct S
+{
+    Ptr m;
+    void clear();
+    ~S();
+};
+
+S::~S()
+{
+    clear();
 }

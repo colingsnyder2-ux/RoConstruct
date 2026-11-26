@@ -1,16 +1,30 @@
-// from server: 70% by atomic.potato
-extern "C" void __stdcall Call785420(void*);
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
 
-struct S
-{
-    int f(void*);
+// from server: 100% by tajop
+
+struct InstanceBase {
+    char pad[0x1c];
 };
 
-int S::f(void* value)
+struct DescBase {
+    int field_0;
+};
+
+struct Signal {
+    int f();
+};
+
+struct EventClass : InstanceBase, DescBase {
+};
+
+struct EventDesc {
+    char pad[0x2c];
+    Signal EventClass::* sig;
+    int invoke(DescBase* source);
+};
+
+int EventDesc::invoke(DescBase* source)
 {
-    if (value)
-        Call785420(*(char**)((char*)this + 0x2c) + (int)value - 0x1c);
-    else
-        Call785420(*(char**)((char*)this + 0x2c));
-    return 0;
+    return (static_cast<EventClass*>(source)->*sig).f();
 }

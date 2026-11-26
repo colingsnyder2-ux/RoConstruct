@@ -1,33 +1,37 @@
-// from server: 25% by Intel
-struct std_string {
-    char _buf[16];
-    int _len;
-    int _cap;
-    char _small[16];
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+
+struct lua_State;
+
+struct Str
+{
+	void* alloc;
+	union
+	{
+		char buf[16];
+		char* ptr;
+	} bx;
+	unsigned int mysize;
+	unsigned int myres;
+
+	~Str();
+	const char* c_str() const { return myres >= 16 ? bx.ptr : bx.buf; }
+	unsigned int size() const { return mysize; }
 };
 
-extern "C" void __stdcall __CxxFrameHandler3();
-extern "C" void __cdecl sub_745620(void* dst, const void* src);
-extern "C" void __cdecl sub_8320f0(const char* str, int len, int arg);
+extern void (Str::*Str_dtor)();
 
-struct VWaitScriptSlot {
-    int func();
-};
+inline Str::~Str()
+{
+	(this->*Str_dtor)();
+}
 
-int VWaitScriptSlot::func() {
-    int v20;
-    std_string s;
-    int v24 = 0;
+Str convertToString(const void* value);
+void lua_pushlstring(lua_State* L, const char* s, unsigned int len);
 
-    sub_745620(&s, (void*)(v20 + 4));
-
-    const char* str = (s._len >= 16) ? *(const char**)&s._buf[0] : &s._small[0];
-    int len = s._len;
-
-    sub_8320f0(str, len, v20);
-
-    v24 = -1;
-    s.~std_string();
-
-    return 1;
+int pushStringValue(const void* value, lua_State* L)
+{
+	Str s = convertToString(value);
+	lua_pushlstring(L, s.c_str(), s.size());
+	return 1;
 }

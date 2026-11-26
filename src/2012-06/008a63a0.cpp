@@ -1,22 +1,35 @@
-// from server: 54% by atomic.potato
-struct S
-{
-    char pad[12];
-    int *p;
-    int f();
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+
+struct type_info {
+    __declspec(dllimport) bool operator==(const type_info&) const;
 };
 
-typedef void *(__thiscall *Fn495f40)(void *);
-typedef void *(__cdecl *Fn983b6a)(void *);
-typedef void (__thiscall *FnGlobal)(void *, void *);
+extern type_info type_info_0xdeb9d8;
+extern "C" type_info* __cdecl sub_00983B6A(void*);
 
-int S::f()
+struct Target {
+    void* sub_00495F40();
+};
+
+struct Owner {
+    char pad[0xac4];
+    Target* target;
+};
+
+struct TToolVerb
 {
-    void *a = ((Fn495f40)0x495f40)((void *)p[0x2b1]);
-    if (a)
-    {
-        void *b = ((Fn983b6a)0x983b6a)(a);
-        ((FnGlobal)(*(void ***)0x00b229ec))((void *)0x00dec1f4, b);
-    }
-    return 0;
+    int pad0;
+    int pad1;
+    int pad2;
+    Owner* owner;
+    bool f();
+};
+
+bool TToolVerb::f()
+{
+    void* value = owner->target->sub_00495F40();
+    if (value)
+        return type_info_0xdeb9d8 == *sub_00983B6A(value);
+    return false;
 }

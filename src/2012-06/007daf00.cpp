@@ -1,21 +1,30 @@
-// from server: 62% by atomic.potato
-struct S
-{
-    int f(void* p);
-    int g(void* p);
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+
+// from server: 100% by tajop
+
+struct InstanceBase {
+    char pad[0x1c];
 };
 
-extern "C" int target(char*);
+struct DescBase {
+    int field_0;
+};
 
-int S::f(void* p)
-{
-    char* q = (char*)p;
-    if (q)
-        q -= 0x1c;
-    return target(*(char**)((char*)this + 0x2c) + (int)q);
-}
+struct Signal {
+    int f();
+};
 
-int S::g(void* p)
+struct EventClass : InstanceBase, DescBase {
+};
+
+struct EventDesc {
+    char pad[0x2c];
+    Signal EventClass::* sig;
+    int invoke(DescBase* source);
+};
+
+int EventDesc::invoke(DescBase* source)
 {
-    return target(*(char**)((char*)this + 0x2c));
+    return (static_cast<EventClass*>(source)->*sig).f();
 }

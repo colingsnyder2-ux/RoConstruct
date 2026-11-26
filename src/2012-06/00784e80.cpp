@@ -1,24 +1,30 @@
-// from server: 40% by Intel
-struct EnumDesc {
-    int field_2C;
-    char pad_30[96];
-    int* field_90;
+// from server: 100% by Xemicl
+// from server: 100% by tajop
 
-    int f(int arg1, int* arg2);
+
+struct Any { void assign(const unsigned*); };
+struct Variant { const void* type; Any value; };
+extern int once_flag;
+void init_type();
+void call_once(int&, void (*)());
+const void* get_type();
+struct S {
+    char a[0x2c];
+    unsigned count;
+    char b[0x90 - 0x30];
+    unsigned* values;
+    bool f(unsigned, Variant&) const;
 };
-
-extern "C" void __stdcall sub_4015a0(int, int);
-extern "C" int __cdecl sub_771070();
-extern "C" void __cdecl sub_76E5F0(int*);
-
-int EnumDesc::f(int arg1, int* arg2) {
-    int v;
-    if (arg1 < field_2C) {
-        v = field_90[arg1];
+bool S::f(unsigned index, Variant& out) const {
+    bool ok;
+    if (index < count) {
+        index = values[index];
+        ok = true;
+    } else {
+        ok = false;
     }
-    sub_4015a0(0x7710D0, 0xE4860C);
-    int eax = sub_771070();
-    *arg2 = eax;
-    sub_76E5F0(arg2 + 1);
-    return arg1 < field_2C;
+    call_once(once_flag, init_type);
+    out.type = get_type();
+    out.value.assign(&index);
+    return ok;
 }

@@ -1,25 +1,42 @@
-// from server: 94% by Intel
-extern "C" int __cdecl sub_972290(int, const char*);
-extern "C" void __cdecl sub_4015a0(int, int);
-extern "C" void __cdecl sub_40bc40();
-extern "C" void __cdecl sub_67f480();
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
 
-int __cdecl sub_40d710() {
-    if (*(char*)0xe580b3) {
-        if (*(int*)0xe16528 != 0x29a) {
-            int (__cdecl* callback)(int, int, int) = (int (__cdecl*)(int, int, int))*(int*)0xe5809c;
-            if (callback) {
-                if (callback(0xb42f90, 0xb42fa8, 0xcf)) {
-                    return 0;
-                }
-            }
-            sub_972290(*(char*)0xe580b3, (const char*)0xb42f20);
+// from server: 100% by intel
+
+extern "C" int __cdecl sub_00972290(int, const char*);
+extern "C" void __cdecl sub_004015a0(const char*, const char*);
+extern "C" void __cdecl sub_0067f480();
+extern "C" void __cdecl sub_00767160();
+
+extern char g_e580b3;
+extern int g_e3796c;
+extern int g_e5809c;
+extern int g_be7a7c;
+extern char g_b42f20[];
+extern char g_b42f90[];
+extern char g_b42fa8[];
+extern char g_e37a14[];
+extern char g_767fd0[];
+
+void func_007687d0()
+{
+    if (g_e580b3 != 0)
+    {
+        if (g_e3796c == 0x29a)
+            goto L_76881b;
+        if (g_e5809c != 0)
+        {
+            if (((char (__cdecl*)(int, char*, char*))g_e5809c)(0xcf, g_b42fa8, g_b42f90) != 0)
+                goto L_76881b;
         }
+        sub_00972290((unsigned char)g_e580b3, g_b42f20);
     }
-    if (!*(int*)0xb57664) {
-        sub_67f480();
+L_76881b:
+    if (g_be7a7c == 0)
+    {
+        sub_0067f480();
+        return;
     }
-    sub_4015a0(0xe16570, 0x40c9b0);
-    sub_40bc40();
-    return 0;
+    sub_004015a0(g_767fd0, g_e37a14);
+    sub_00767160();
 }

@@ -1,116 +1,46 @@
-// from server: 60% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 100% by Xemicl
+// from server: 100% by atomic.potato
+// roc 2012-06 00743130  unit: RBX::PartTool  size: 30 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 00743130
+//
+// 00743130  8b4130               mov eax, dword ptr [ecx + 0x30]
+// 00743133  85c0                 test eax, eax
+// 00743135  7414                 je 0x74314b
+// 00743137  8b542404             mov edx, dword ptr [esp + 4]
+// 0074313b  8d889c000000         lea ecx, [eax + 0x9c]
+// 00743141  8b01                 mov eax, dword ptr [ecx]
+// 00743143  8b4020               mov eax, dword ptr [eax + 0x20]
+// 00743146  6a00                 push 0
+// 00743148  52                   push edx
+// 00743149  ffd0                 call eax
+// 0074314b  c20400               ret 4
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+struct Inner {
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual void v6();
+    virtual void v7();
+    virtual void Target(int arg, int arg2);
+};
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+struct Holder {
+    char pad[0x9c];
+    Inner inner;
+};
 
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
-}
+struct PartTool {
+    char pad[0x30];
+    Holder* h;
+    void DoIt(int arg);
+};
 
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	Name::NamMap::~NamMap()
-	{
-		for (std::map<std::string, Name*>::iterator iter = this->begin(); iter != this->end(); iter++)
-		{
-			delete iter->second;
-		}
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+void PartTool::DoIt(int arg) {
+    Holder* hp = this->h;
+    if (hp) {
+        hp->inner.Target(arg, 1);
+    }
 }

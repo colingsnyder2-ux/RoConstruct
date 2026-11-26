@@ -1,27 +1,35 @@
-// from server: 54% by colin
-struct EnumDesc {
-    char pad[0x2c];
-    unsigned int count;
-    char pad2[0x90 - 0x30];
-    int* items;
-    bool getItem(unsigned int index, int* out);
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+
+struct Sub {
+    void assign(const int* v);
 };
 
-extern "C" int __cdecl sub_783A70();
-extern "C" void __cdecl sub_737300(int* p);
+struct Out {
+    int head;
+    Sub tail;
+};
 
-bool EnumDesc::getItem(unsigned int index, int* out)
-{
-    bool found;
+struct S {
+    char pad0[0x2c];
+    unsigned int count;
+    char pad1[0x90 - 0x30];
+    int* items;
+    bool get(unsigned int index, Out* out);
+};
+
+extern "C" int __cdecl sub_783d50();
+
+bool S::get(unsigned int index, Out* out) {
+    bool ok;
     int value;
     if (index < count) {
         value = items[index];
-        found = true;
+        ok = true;
     } else {
-        found = false;
+        ok = false;
     }
-    int converted = sub_783A70();
-    *out = converted;
-    sub_737300(out + 1);
-    return found;
+    out->head = sub_783d50();
+    out->tail.assign(&value);
+    return ok;
 }

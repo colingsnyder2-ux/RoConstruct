@@ -1,89 +1,62 @@
-// from server: 41% by atomic.potato
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+
+// from server: 100% by tajop
+
 struct Node {
-    Node* parent;
     Node* left;
+    Node* parent;
     Node* right;
-    char pad[9];
+    char value[8];
     char color;
+    char isnil;
 };
 
-struct Stage {
-    char pad0[4];
-    Node* header;
-    int count;
-    void erase_node(Node*);
-    void insert_node(Node**, Node*);
+struct Iter {
+    Node* ptr;
+    Iter(Node* p) : ptr(p) {}
+    Iter& operator++() {
+        if (!ptr->isnil) {
+            if (!ptr->right->isnil) {
+                Node* n = ptr->right;
+                while (!n->left->isnil)
+                    n = n->left;
+                ptr = n;
+            } else {
+                Node* p;
+                while (!(p = ptr->parent)->isnil && ptr == p->right)
+                    ptr = p;
+                ptr = p;
+            }
+        }
+        return *this;
+    }
+    Iter operator++(int) {
+        Iter t = *this;
+        ++*this;
+        return t;
+    }
 };
 
-void Stage::erase_node(Node* n) {
-    Node* p = n->parent;
-    Node* c = n->left;
-    if (c->color == 0) {
-        while (c->left->color == 0) {
-            c = c->left;
-        }
-        p = c;
-    } else {
-        Node* r = n->right;
-        if (r->color == 0) {
-            while (n == r->left) {
-                n = r;
-                r = r->parent;
-            }
-            if (r->right->color == 0) {
-                p = r;
-            } else {
-                p = r->parent;
-            }
-        } else {
-            p = r;
-        }
-    }
-    insert_node(&p, n);
-}
+struct Tree {
+    int comp;
+    Node* head;
+    unsigned int size;
+    void eraseSubtree(Node* n);
+    Iter erase(Iter where);
+    Iter erase(Iter first, Iter last);
+};
 
-void Stage::insert_node(Node** pos, Node* n) {
-    Node* p = *pos;
-    Node* h = header;
-    if (p == h) {
-        if (n == h) {
-            erase_node(h->parent);
-            header->parent = header;
-            count = 0;
-            header->left = header;
-            header->right = header;
-            *pos = header->parent;
-            return;
-        }
+Iter Tree::erase(Iter first, Iter last) {
+    if (first.ptr == head->left && last.ptr == head) {
+        eraseSubtree(head->parent);
+        head->parent = head;
+        size = 0;
+        head->left = head;
+        head->right = head;
+        return Iter(head->left);
     }
-    while (p != n) {
-        Node* q = p;
-        if (q->color == 0) {
-            Node* r = q->left;
-            if (r->color == 0) {
-                while (r->left->color == 0) {
-                    r = r->left;
-                }
-                q = r;
-            } else {
-                Node* s = q->right;
-                if (s->color == 0) {
-                    while (q == s->left) {
-                        q = s;
-                        s = s->parent;
-                    }
-                    if (s->right->color == 0) {
-                        q = s;
-                    } else {
-                        q = s->parent;
-                    }
-                } else {
-                    q = s;
-                }
-            }
-        }
-        insert_node(&q, p);
-        p = *pos;
-    }
-    *pos = p;
+    while (first.ptr != last.ptr)
+        erase(first++);
+    return Iter(first.ptr);
 }

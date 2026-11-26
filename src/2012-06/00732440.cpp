@@ -1,13 +1,20 @@
-// from server: 94% by intel
-struct VCRenderSettingsItem {
-    void EnumPropDescriptor(int value);
+// from server: 100% by Xemicl
+// from server: 100% by atomic.potato
+
+extern "C" void __declspec(nothrow) __stdcall GlobalAdvancedSettingsItemChanged(int);
+
+struct GlobalAdvancedSettingsItem
+{
+    char padding[152];
+    int value;
+    void set(int);
 };
 
-extern "C" void __stdcall sub_414da0(int);
-
-void VCRenderSettingsItem::EnumPropDescriptor(int value) {
-    if (*reinterpret_cast<int*>(reinterpret_cast<char*>(this) + 0xB0) != value) {
-        *reinterpret_cast<int*>(reinterpret_cast<char*>(this) + 0xB0) = value;
-        sub_414da0(0xE55928);
+void GlobalAdvancedSettingsItem::set(int value)
+{
+    if (this->value != value)
+    {
+        this->value = value;
+        GlobalAdvancedSettingsItemChanged(0xe33240);
     }
 }

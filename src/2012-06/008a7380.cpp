@@ -1,25 +1,42 @@
-// from server: 51% by atomic.potato
-extern "C" void* __cdecl sub_98211a(unsigned int size);
+// from server: 100% by Xemicl
+// from server: 100% by sophus
 
-struct Alloc {
-    void init(int arg);
+void* __cdecl operator new(unsigned int);
+void __cdecl operator delete(void*);
+
+struct Base
+{
+    int field0;
+    int field4;
+    char padding[0x34];
+    Base(void* arg);
 };
 
-struct VMaterialTool {
-    char pad[0xc];
-    void* field_c;
-    void* method();
+struct ToolVerb : Base
+{
+    __forceinline ToolVerb(void* arg);
 };
 
-void* VMaterialTool::method() {
-    Alloc* mem = (Alloc*)sub_98211a(0x3c);
-    void* result = 0;
-    if (mem != 0) {
-        int arg = *(int*)((char*)field_c + 0xac4);
-        mem->init(arg);
-        *(void**)mem = (void*)0xbdfadc;
-        *(void**)((char*)mem + 4) = (void*)0xbdfaac;
-        result = mem;
-    }
-    return result;
+__forceinline ToolVerb::ToolVerb(void* arg) : Base(arg)
+{
+    field0 = 0xba3c6c;
+    field4 = 0xba3c3c;
+}
+
+struct FieldC
+{
+    char padding[0xAC4];
+    void* fieldAC4;
+};
+
+struct VAdvArrowTool
+{
+    char padding[0xC];
+    FieldC* fieldC;
+    ToolVerb* create();
+};
+
+ToolVerb* VAdvArrowTool::create()
+{
+    return new ToolVerb(fieldC->fieldAC4);
 }

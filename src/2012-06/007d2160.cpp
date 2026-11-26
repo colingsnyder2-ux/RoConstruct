@@ -1,36 +1,31 @@
-// from server: 89% by tajop
-extern void *ShirtGraphic_vftable0[];
-extern void *ShirtGraphic_vftable4[];
-extern void *ShirtGraphic_vftable18[];
-extern void *ShirtGraphic_vftable1C[];
-extern void *ShirtGraphic_vftable80[];
-extern int ShirtGraphic_instanceCount;
-int makeField28();
+// from server: 100% by Xemicl
+// from server: 100% by tajop
 
-struct LegacyBase {
-    void **vt0;
-    void **vt4;
-    char pad8[0x10];
-    void **vt18;
-    void **vt1c;
-    char pad20[8];
-    int field28;
-    char pad2c[0x54];
-    void **vt80;
-    LegacyBase();
-    ~LegacyBase();
+struct Vt0 { virtual void f0(); };
+struct Vt4 { virtual void f4(); int pad4[4]; };
+struct Vt18 { virtual void f18(); };
+struct Vt1c { virtual void f1c(); int pad20[2]; int value28; int pad2c[21]; };
+struct Vt80 { virtual void f80(); };
+
+struct RelativePanelBase : Vt0, Vt4, Vt18, Vt1c, Vt80 {
+    RelativePanelBase();
 };
 
-struct ShirtGraphic : LegacyBase {
-    ShirtGraphic();
+struct Guard {
+    int value;
+    Guard() {}
+    ~Guard();
 };
 
-ShirtGraphic::ShirtGraphic() {
-    vt0 = ShirtGraphic_vftable0;
-    vt4 = ShirtGraphic_vftable4;
-    vt18 = ShirtGraphic_vftable18;
-    vt1c = ShirtGraphic_vftable1C;
-    vt80 = ShirtGraphic_vftable80;
-    field28 = makeField28();
-    ++ShirtGraphic_instanceCount;
+int getValue();
+
+struct NonFactoryProduct : RelativePanelBase {
+    static int counter;
+    Guard guard;
+    NonFactoryProduct();
+};
+
+NonFactoryProduct::NonFactoryProduct() {
+    value28 = getValue();
+    ++counter;
 }

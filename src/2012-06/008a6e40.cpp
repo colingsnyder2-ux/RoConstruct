@@ -1,22 +1,35 @@
-// from server: 66% by atomic.potato
-struct TToolVerb
-{
-    int f();
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+
+struct type_info {
+    __declspec(dllimport) bool operator==(const type_info&) const;
 };
 
-typedef int (*GetVerbType)(void *);
-typedef int (*ConvertType)(int);
-typedef int (*CompareType)(void *, int);
+extern type_info type_info_0xdeb9d8;
+extern "C" type_info* __cdecl sub_00983B6A(void*);
 
-extern "C" int __cdecl sub_495f40(void *);
-extern "C" int __cdecl sub_983b6a(int);
-extern "C" int __cdecl sub_b229ec(void *, int);
+struct Target {
+    void* sub_00495F40();
+};
 
-int TToolVerb::f()
+struct Owner {
+    char pad[0xac4];
+    Target* target;
+};
+
+struct TToolVerb
 {
-    int *p = *(int **)((char *)this + 0xc);
-    int type = sub_495f40((void *)p[0xac4 / 4]);
-    if (!type)
-        return 0;
-    return sub_b229ec((void *)0xdec6d0, sub_983b6a(type));
+    int pad0;
+    int pad1;
+    int pad2;
+    Owner* owner;
+    bool f();
+};
+
+bool TToolVerb::f()
+{
+    void* value = owner->target->sub_00495F40();
+    if (value)
+        return type_info_0xdeb9d8 == *sub_00983B6A(value);
+    return false;
 }

@@ -1,16 +1,30 @@
-// from server: 73% by atomic.potato
-struct S_func_00684090 {
-    char pad0[44];
-    void *m_data;
-    void f(void *p);
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+
+// from server: 100% by tajop
+
+struct InstanceBase {
+    char pad[0x1c];
 };
 
-extern "C" void sub_0046A960(void *);
+struct DescBase {
+    int field_0;
+};
 
-void S_func_00684090::f(void *p)
+struct Signal {
+    int f();
+};
+
+struct EventClass : InstanceBase, DescBase {
+};
+
+struct EventDesc {
+    char pad[0x2c];
+    Signal EventClass::* sig;
+    int invoke(DescBase* source);
+};
+
+int EventDesc::invoke(DescBase* source)
 {
-    if (p)
-        sub_0046A960((char *)m_data + ((char *)p - (char *)0x1c));
-    else
-        sub_0046A960(m_data);
+    return (static_cast<EventClass*>(source)->*sig).f();
 }

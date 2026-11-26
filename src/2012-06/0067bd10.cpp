@@ -1,22 +1,35 @@
-// from server: 54% by Intel
-struct S {
-    int f(int, int*, int*);
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+
+struct Sub {
+    void assign(const int* v);
 };
 
-extern "C" int __stdcall sub_783b90();
-extern "C" void __stdcall sub_67bc80(int*, int*);
+struct Out {
+    int head;
+    Sub tail;
+};
 
-int S::f(int arg0, int* arg4, int* arg8) {
-    int v;
-    if (arg0 < *(int*)((char*)this + 0x2C)) {
-        int* arr = *(int**)((char*)this + 0x90);
-        v = arr[arg0];
-        *arg4 = v;
+struct S {
+    char pad0[0x2c];
+    unsigned int count;
+    char pad1[0x90 - 0x30];
+    int* items;
+    bool get(unsigned int index, Out* out);
+};
+
+extern "C" int __cdecl sub_783d50();
+
+bool S::get(unsigned int index, Out* out) {
+    bool ok;
+    int value;
+    if (index < count) {
+        value = items[index];
+        ok = true;
     } else {
-        v = 0;
+        ok = false;
     }
-    int eax = sub_783b90();
-    *arg8 = eax;
-    sub_67bc80(arg4, arg4 + 1);
-    return v != 0;
+    out->head = sub_783d50();
+    out->tail.assign(&value);
+    return ok;
 }

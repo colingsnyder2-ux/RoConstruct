@@ -1,17 +1,23 @@
-// from server: 82% by atomic.potato
-typedef double Double;
+// from server: 100% by Xemicl
+// from server: 100% by tester
 
-extern "C" void __stdcall Function_009779e0(Double value, int a0, int a1);
-
-struct InterpolatingPhysicsReceiver_Job
+struct S
 {
-    char pad0[0x228];
-    Double value;
-    int f(int a0, int a1);
+    double value;
+    unsigned char state;
 };
 
-int InterpolatingPhysicsReceiver_Job::f(int a0, int a1)
+void __stdcall f(S *a, const S *b, double c);
+
+struct PacketReceiveJob
 {
-    Function_009779e0(value, a0, a1);
-    return a0;
+    char pad[0x228];
+    double value;
+    int g(S *a, S *b);
+};
+
+int PacketReceiveJob::g(S *a, S *b)
+{
+    f(a, b, value);
+    return (int)a;
 }

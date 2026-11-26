@@ -1,491 +1,196 @@
-// from server: 71% by intel
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-net Players.cpp
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+// roc 2012-06 0068de70  unit: RBX::ModelInstance  size: 81 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 0068de70
+//
+// 0068de70  83ec08               sub esp, 8
+// 0068de73  56                   push esi
+// 0068de74  57                   push edi
+// 0068de75  8d442408             lea eax, [esp + 8]
+// 0068de79  50                   push eax
+// 0068de7a  81c1c8000000         add ecx, 0xc8
+// 0068de80  e8abb4daff           call 0x439330
+// 0068de85  8b74240c             mov esi, dword ptr [esp + 0xc]
+// 0068de89  8b38                 mov edi, dword ptr [eax]
+// 0068de8b  85f6                 test esi, esi
+// 0068de8d  742a                 je 0x68deb9
+// 0068de8f  8d4e04               lea ecx, [esi + 4]
+// 0068de92  83caff               or edx, 0xffffffff
+// 0068de95  f00fc111             lock xadd dword ptr [ecx], edx
+// 0068de99  751e                 jne 0x68deb9
+// 0068de9b  8b06                 mov eax, dword ptr [esi]
+// 0068de9d  8b5004               mov edx, dword ptr [eax + 4]
+// 0068dea0  8bce                 mov ecx, esi
+// 0068dea2  ffd2                 call edx
+// 0068dea4  8d4608               lea eax, [esi + 8]
+// 0068dea7  83c9ff               or ecx, 0xffffffff
+// 0068deaa  f00fc108             lock xadd dword ptr [eax], ecx
+// 0068deae  7509                 jne 0x68deb9
+// 0068deb0  8b16                 mov edx, dword ptr [esi]
+// 0068deb2  8b4208               mov eax, dword ptr [edx + 8]
+// 0068deb5  8bce                 mov ecx, esi
+// 0068deb7  ffd0                 call eax
+// 0068deb9  8bc7                 mov eax, edi
+// 0068debb  5f                   pop edi
+// 0068debc  5e                   pop esi
+// 0068debd  83c408               add esp, 8
+// 0068dec0  c3                   ret 
+// copied from an identical function in another client (function ?get@RotatePJoint@ns_ROCX000013@@QAEPAXXZ)
 
-// Candidate translation unit (score above; library headers required).
-#include <RakPeer.h>
-#include <BitStream.h>
-#include "Client.h"
-#include "Server.h"
-#include "Players.h"
-#include "Streaming.h"
-#include "IdManager.h"
-#include "PacketIds.h"
-#include "v8datamodel/GameSettings.h"
-#include "v8datamodel/Teams.h"
-#include "util/Http.h"
-#include "util/standardout.h"
+namespace ns_ROCX000013 {
+// from server: 100% by EspClaude
+// roc 2009-06 0067b800  unit: RBX::VRotate::?$FactoryProduct  size: 81 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0067b800
+//
+// 0067b800  83ec08               sub esp, 8
+// 0067b803  56                   push esi
+// 0067b804  57                   push edi
+// 0067b805  8d442408             lea eax, [esp + 8]
+// 0067b809  50                   push eax
+// 0067b80a  81c19c000000         add ecx, 0x9c
+// 0067b810  e81be3f7ff           call 0x5f9b30
+// 0067b815  8b74240c             mov esi, dword ptr [esp + 0xc]
+// 0067b819  8b38                 mov edi, dword ptr [eax]
+// 0067b81b  85f6                 test esi, esi
+// 0067b81d  742a                 je 0x67b849
+// 0067b81f  8d4e04               lea ecx, [esi + 4]
+// 0067b822  83caff               or edx, 0xffffffff
+// 0067b825  f00fc111             lock xadd dword ptr [ecx], edx
+// 0067b829  751e                 jne 0x67b849
+// 0067b82b  8b06                 mov eax, dword ptr [esi]
+// 0067b82d  8b5004               mov edx, dword ptr [eax + 4]
+// 0067b830  8bce                 mov ecx, esi
+// 0067b832  ffd2                 call edx
+// 0067b834  8d4608               lea eax, [esi + 8]
+// 0067b837  83c9ff               or ecx, 0xffffffff
+// 0067b83a  f00fc108             lock xadd dword ptr [eax], ecx
+// 0067b83e  7509                 jne 0x67b849
+// 0067b840  8b16                 mov edx, dword ptr [esi]
+// 0067b842  8b4208               mov eax, dword ptr [edx + 8]
+// 0067b845  8bce                 mov ecx, esi
+// 0067b847  ffd0                 call eax
+// 0067b849  8bc7                 mov eax, edi
+// 0067b84b  5f                   pop edi
+// 0067b84c  5e                   pop esi
+// 0067b84d  83c408               add esp, 8
+// 0067b850  c3                   ret 
 
-template<class Class>
-class PluginInterfaceAdapter : public PluginInterface
-{
-private:
-	Class* c;
-protected:
-	PluginInterfaceAdapter(Class* c)
-		: PluginInterface(),
-		  c(c)
-	{
-	}
-public:
-	virtual PluginReceiveResult OnReceive(RakPeerInterface* peer, Packet* packet)
-	{
-		return c->OnReceive(peer, packet) ? RR_CONTINUE_PROCESSING : RR_STOP_PROCESSING_AND_DEALLOCATE;
-	}
+// from server: 97% by EspClaude
+// roc 2009-06 0067b800  unit: RBX::VRotate::?$FactoryProduct  size: 81 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0067b800
+//
+// 0067b800  83ec08               sub esp, 8
+// 0067b803  56                   push esi
+// 0067b804  57                   push edi
+// 0067b805  8d442408             lea eax, [esp + 8]
+// 0067b809  50                   push eax
+// 0067b80a  81c19c000000         add ecx, 0x9c
+// 0067b810  e81be3f7ff           call 0x5f9b30
+// 0067b815  8b74240c             mov esi, dword ptr [esp + 0xc]
+// 0067b819  8b38                 mov edi, dword ptr [eax]
+// 0067b81b  85f6                 test esi, esi
+// 0067b81d  742a                 je 0x67b849
+// 0067b81f  8d4e04               lea ecx, [esi + 4]
+// 0067b822  83caff               or edx, 0xffffffff
+// 0067b825  f00fc111             lock xadd dword ptr [ecx], edx
+// 0067b829  751e                 jne 0x67b849
+// 0067b82b  8b06                 mov eax, dword ptr [esi]
+// 0067b82d  8b5004               mov edx, dword ptr [eax + 4]
+// 0067b830  8bce                 mov ecx, esi
+// 0067b832  ffd2                 call edx
+// 0067b834  8d4608               lea eax, [esi + 8]
+// 0067b837  83c9ff               or ecx, 0xffffffff
+// 0067b83a  f00fc108             lock xadd dword ptr [eax], ecx
+// 0067b83e  7509                 jne 0x67b849
+// 0067b840  8b16                 mov edx, dword ptr [esi]
+// 0067b842  8b4208               mov eax, dword ptr [edx + 8]
+// 0067b845  8bce                 mov ecx, esi
+// 0067b847  ffd0                 call eax
+// 0067b849  8bc7                 mov eax, edi
+// 0067b84b  5f                   pop edi
+// 0067b84c  5e                   pop esi
+// 0067b84d  83c408               add esp, 8
+// 0067b850  c3                   ret 
+
+// from server: 100% by king_originala
+// roc 2008-06 005e2a10  unit: RBX::RotatePJoint  size: 81 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 005e2a10
+//
+// 005e2a10  83ec08               sub esp, 8
+// 005e2a13  56                   push esi
+// 005e2a14  57                   push edi
+// 005e2a15  8d442408             lea eax, [esp + 8]
+// 005e2a19  50                   push eax
+// 005e2a1a  81c140010000         add ecx, 0x140
+// 005e2a20  e8db80feff           call 0x5cab00
+// 005e2a25  8b74240c             mov esi, dword ptr [esp + 0xc]
+// 005e2a29  8b38                 mov edi, dword ptr [eax]
+// 005e2a2b  85f6                 test esi, esi
+// 005e2a2d  742a                 je 0x5e2a59
+// 005e2a2f  8d4e04               lea ecx, [esi + 4]
+// 005e2a32  83caff               or edx, 0xffffffff
+// 005e2a35  f00fc111             lock xadd dword ptr [ecx], edx
+// 005e2a39  751e                 jne 0x5e2a59
+// 005e2a3b  8b06                 mov eax, dword ptr [esi]
+// 005e2a3d  8b5004               mov edx, dword ptr [eax + 4]
+// 005e2a40  8bce                 mov ecx, esi
+// 005e2a42  ffd2                 call edx
+// 005e2a44  8d4608               lea eax, [esi + 8]
+// 005e2a47  83c9ff               or ecx, 0xffffffff
+// 005e2a4a  f00fc108             lock xadd dword ptr [eax], ecx
+// 005e2a4e  7509                 jne 0x5e2a59
+// 005e2a50  8b16                 mov edx, dword ptr [esi]
+// 005e2a52  8b4208               mov eax, dword ptr [edx + 8]
+// 005e2a55  8bce                 mov ecx, esi
+// 005e2a57  ffd0                 call eax
+// 005e2a59  8bc7                 mov eax, edi
+// 005e2a5b  5f                   pop edi
+// 005e2a5c  5e                   pop esi
+// 005e2a5d  83c408               add esp, 8
+// 005e2a60  c3                   ret 
+
+extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+#pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedDecrement)
+
+struct Control {
+    virtual ~Control();
+    virtual void dispose();
+    virtual void destroy();
+
+    volatile long strongCount;
+    volatile long weakCount;
 };
 
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, void(boost::shared_ptr<RBX::Instance>, std::string), 2> funcReportAbuse(&RBX::Network::Players::reportAbuse, "ReportAbuse", "player", "message", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance>>>(void), 0> func_players(&RBX::Network::Players::getPlayers, "players", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance>>>(void), 0> func_GetPlayers(&RBX::Network::Players::getPlayers, "GetPlayers", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<RBX::Instance>(int), 1> func_createLocalPlayer(&RBX::Network::Players::createLocalPlayer, "CreateLocalPlayer", "userId", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, void(std::string), 1> func_setAbuseReportUrl(&RBX::Network::Players::setAbuseReportUrl, "SetAbuseReportUrl", "url", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<RBX::Instance>(boost::shared_ptr<RBX::Instance>), 1> func_playerFromCharacterOld(&RBX::Network::Players::playerFromCharacter, "playerFromCharacter", "character", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<RBX::Instance>(boost::shared_ptr<RBX::Instance>), 1> func_playerFromCharacter(&RBX::Network::Players::playerFromCharacter, "GetPlayerFromCharacter", "character", RBX::Reflection::FunctionDescriptor::AnyCaller);
+struct Shared {
+    void* ptr;
+    Control* control;
 
-static RBX::Reflection::SignalDesc<RBX::Network::Players, void(boost::shared_ptr<RBX::Instance>)> event_PlayerAdded("PlayerAdded", "player");
-static RBX::Reflection::SignalDesc<RBX::Network::Players, void(boost::shared_ptr<RBX::Instance>)> event_PlayerRemoving("PlayerRemoving", "player");
+    ~Shared() {
+        Control* p = control;
+        if (p) {
+            if (_InterlockedDecrement(&p->strongCount) == 0) {
+                p->dispose();
+                if (_InterlockedDecrement(&p->weakCount) == 0)
+                    p->destroy();
+            }
+        }
+    }
+};
 
-static RBX::Reflection::PropDescriptor<RBX::Network::Players, int> propPlayerCount("NumPlayers", "Data", &RBX::Network::Players::numPlayers, NULL, RBX::Reflection::PropertyDescriptor::UI);
-static RBX::Reflection::PropDescriptor<RBX::Network::Players, int> propPlayerMaxCount("MaxPlayers", "Data", &RBX::Network::Players::getMaxPlayers, &RBX::Network::Players::setMaxPlayers, RBX::Reflection::PropertyDescriptor::STANDARD);
+struct Factory {
+    Shared get();
+};
 
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<RBX::Instance>(int), 1> func_GetPlayerByID(&RBX::Network::Players::getPlayerByID, "GetPlayerByID", "userID", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, void(std::string), 1> funcChat(&RBX::Network::Players::chat, "Chat", "message", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
+struct RotatePJoint {
+    char padding[0xa8];
+    Factory factory;
 
-RBX::Reflection::RefPropDescriptor<RBX::Network::Players, RBX::Network::Player> RBX::Network::Players::propLocalPlayer("LocalPlayer", "Data", &RBX::Network::Players::getLocalPlayer, NULL, RBX::Reflection::PropertyDescriptor::STANDARD);
+    void* get();
+};
 
-static void writeMessage(const RBX::Network::AbuseReport::Message& msg, XmlElement* messages)
-{
-	XmlElement* message = messages->addChild(RBX::Name::declare("message", -1));
-	message->setValue(msg.text);
-	message->addAttribute(RBX::Name::declare("userID", -1), msg.userID);
+void* RotatePJoint::get() {
+    return factory.get().ptr;
 }
-
-namespace RBX
-{
-	namespace Network
-	{
-		char* sPlayers = "Players";
-
-		class Players::Plugin : public PluginInterfaceAdapter<Players>
-		{
-		public:
-			Plugin(Players* players)
-				: PluginInterfaceAdapter<Players>(players)
-			{
-			}
-		};
-		
-		Players::Players()
-			: players(std::vector<boost::shared_ptr<Instance>>()),
-			  peer(NULL),
-			  maxPlayers(12)
-		{
-			setName("Players");
-			plugin.reset(new Plugin(this));
-		}
-
-		Players::~Players()
-		{
-			if (peer)
-				peer->DetachPlugin(plugin.get());
-
-			peer = NULL;
-		}
-
-		bool Players::clientIsPresent(const Instance* context, bool testInDatamodel)
-		{
-			return Client::clientIsPresent(context, testInDatamodel);
-		}
-
-		bool Players::askAddChild(const Instance* instance) const
-		{
-			return dynamic_cast<const Player*>(instance) != NULL;
-		}
-
-		void Players::setConnection(RakPeerInterface* peer)
-		{
-			if (this->peer)
-				this->peer->DetachPlugin(plugin.get());
-
-			this->peer = peer;
-
-			if (peer)
-				peer->AttachPlugin(plugin.get());
-		}
-
-		Player* Players::findLocalPlayer(const Instance* context)
-		{
-			Players* players = ServiceProvider::find<Players>(context);
-			return players ? players->getLocalPlayer() : NULL;
-		}
-
-		ModelInstance* Players::findLocalCharacter(const Instance* context)
-		{
-			Player* player = Players::findLocalPlayer(context);
-			return player ? player->getCharacter() : NULL;
-		}
-
-		void Players::setAbuseReportUrl(std::string value)
-		{
-			if (value.empty())
-				abuseReporter.reset(NULL);
-			else
-				abuseReporter.reset(new AbuseReporter(value));
-		}
-
-		void Players::setMaxPlayers(int value)
-		{
-			if (value != maxPlayers)
-			{
-				maxPlayers = value;
-				raisePropertyChanged(propPlayerMaxCount);
-			}
-		}
-
-		void Players::reportAbuse(boost::shared_ptr<Instance> player, std::string comment)
-		{
-			reportAbuse(dynamic_cast<Player*>(player.get()), comment);
-		}
-
-		void Players::reportAbuse(Player* player, std::string comment)
-		{
-			if (abuseReporter)
-			{
-				StandardOut::singleton()->print(MESSAGE_INFO, "Submitting abuse report from %s", player ? player->getName().c_str() : "[[[anonymous]]]");
-				
-				AbuseReport r;
-				r.submitterID = localPlayer ? localPlayer->getUserID() : 0;
-				r.allegedAbuserID = player ? player->getUserID() : 0;
-				r.comment = comment;
-
-				abuseReporter->add(r, chatHistory);
-			}
-			else
-			{
-				StandardOut::singleton()->print(MESSAGE_INFO, "Sending abuse report to game server via Raknet");
-				if (!peer)
-					throw std::runtime_error("Can\'t report abuse: Not in a networked game");
-
-				RakNet::BitStream bitStream;
-				bitStream << (unsigned char)ID_REPORT_ABUSE;
-				bitStream << (localPlayer ? localPlayer->getUserID() : 0);
-				bitStream << (player ? player->getUserID() : 0);
-				bitStream << comment;
-
-				peer->Send(&bitStream, HIGH_PRIORITY, RELIABLE, 2, UNASSIGNED_SYSTEM_ADDRESS, true);
-			}
-		}
-
-		Player* Players::getPlayerFromCharacter(Instance* character)
-		{
-			Players* players = ServiceProvider::find<Players>(character);
-			if (players)
-			{
-				boost::shared_ptr<Instance> found = players->playerFromCharacter(shared_from(character));
-				return static_cast<Player*>(found.get());
-			}
-			else
-			{
-				return NULL;
-			}
-		}
-
-		void Players::chat(std::string message)
-		{
-			if (!localPlayer)
-				throw std::runtime_error("No local Player to chat from");
-
-			RakNet::BitStream bitStream;
-			bitStream << (unsigned char)ID_CHAT_ALL;
-
-			Guid::Data data;
-			localPlayer->getGuid().extract(data);
-
-			bitStream << data.scope->name;
-			bitStream << data.index;
-			bitStream << message;
-
-			peer->Send(&bitStream, MEDIUM_PRIORITY, RELIABLE, 2, UNASSIGNED_SYSTEM_ADDRESS, true);
-
-			ChatMessage event = {message, localPlayer, boost::shared_ptr<Player>()};
-			Notifier<Players, ChatMessage>::raise(event);
-		}
-
-		bool Players::backendProcessing(const Instance* context, bool testInDatamodel)
-		{
-			const ServiceProvider* sp = ServiceProvider::findServiceProvider(context);
-			RBXASSERT(!testInDatamodel || sp);
-
-			return sp && !Client::clientIsPresent(context, testInDatamodel);
-		}
-
-		bool Players::frontendProcessing(const Instance* context, bool testInDatamodel)
-		{
-			const ServiceProvider* sp = ServiceProvider::findServiceProvider(context);
-			RBXASSERT(!testInDatamodel || sp);
-
-			return sp && !Server::serverIsPresent(context, testInDatamodel);
-		}
-
-		boost::shared_ptr<Instance> Players::playerFromCharacter(boost::shared_ptr<Instance> character)
-		{
-			boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> myPlayers = getPlayers();
-
-			std::vector<boost::shared_ptr<Instance>>::const_iterator iter = myPlayers->begin();
-			std::vector<boost::shared_ptr<Instance>>::const_iterator end = myPlayers->end();
-
-			for (; iter != end; iter++)
-			{
-				if (static_cast<Player*>(iter->get())->getCharacter() == static_cast<ModelInstance*>(character.get()))
-					return *iter;
-			}
-
-			return boost::shared_ptr<Instance>();
-		}
-
-		boost::shared_ptr<Instance> Players::getPlayerByID(int userID)
-		{
-			std::vector<boost::shared_ptr<Instance>>::const_iterator iter = players->begin();
-			std::vector<boost::shared_ptr<Instance>>::const_iterator end = players->end();
-
-			for (; iter != end; iter++)
-			{
-				if (static_cast<Player*>(iter->get())->getUserID() == userID)
-					return *iter;
-			}
-
-			return boost::shared_ptr<Instance>();
-		}
-
-		void Players::onEvent(const Player* source, CharacterAdded event)
-		{
-			RBXASSERT(backendProcessing(this, true));
-			const_cast<Player*>(source)->rebuildBackpack();
-		}
-
-		void Players::addChatMessage(const ChatMessage& message)
-		{
-			chatHistory.push_front(message);
-
-			while (chatHistory.size() > (size_t)GameSettings::singleton().chatHistory)
-			{
-				chatHistory.pop_back();
-			}
-
-			Notifier<Players, ChatMessage>::raise(message);
-			Player::event_Chatted.fire(message.source.get(), message.message, message.destination);
-		}
-
-		void Players::onChildAdded(Instance* child)
-		{
-			Player* player = dynamic_cast<Player*>(child);
-			if (!player)
-				return;
-
-			if (player->getUserID() > 0)
-			{
-				boost::shared_ptr<Instance> otherPlayer = getPlayerByID(player->getUserID());
-				if (otherPlayer)
-					otherPlayer->setParent(NULL);
-			}
-
-			boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& myPlayers = players.write();
-			myPlayers->push_back(shared_from(child));
-
-			if (backendProcessing(this, true))
-			{
-				player->Notifier<Player, CharacterAdded>::addListener(this);
-				player->rebuildBackpack();
-
-				if (Teams* teams = ServiceProvider::find<Teams>(this))
-					teams->assignNewPlayerToTeam(player);
-
-				event_PlayerAdded.fire(this, shared_from(player));
-			}
-		}
-		
-		void Players::onChildRemoving(Instance* child)
-		{
-			Player* player = dynamic_cast<Player*>(child);
-			if (!player)
-				return;
-
-			boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& myPlayers = players.write();
-			myPlayers->erase(std::find(myPlayers->begin(), myPlayers->end(), shared_from(child)));
-
-			if (backendProcessing(this, false))
-				event_PlayerRemoving.fire(this, shared_from(player));
-
-			Notifier<Player, CharacterAdded>::disconnect(player, this);
-		}
-
-		void Players::onChildChanged(Instance* instance, const PropertyChanged& event)
-		{
-			if (instance == localPlayer.get() && &event.getProperty().getDescriptor() == &Player::prop_SuperSafeChat)
-			{
-				bool s = localPlayer ? Player::prop_SuperSafeChat.getValue(localPlayer.get()) : false;
-				Notifier<Players, SuperSafeChanged>::raise(SuperSafeChanged(s));
-			}
-		}
-
-		boost::shared_ptr<Instance> Players::createLocalPlayer(int userId)
-		{
-			if (localPlayer)
-				throw std::runtime_error("Local player already exists");
-
-			localPlayer = Creatable::create<Player>();
-			Player::prop_userId.setValue(localPlayer.get(), userId);
-			localPlayer->setParent(this);
-			raisePropertyChanged(propLocalPlayer);
-
-			bool s = localPlayer ? Player::prop_SuperSafeChat.getValue(localPlayer.get()) : false;
-			Notifier<Players, SuperSafeChanged>::raise(SuperSafeChanged(s));
-
-			return localPlayer;
-		}
-
-		// 98% match
-		bool Players::OnReceive(RakPeerInterface* peer, Packet* packet)
-		{
-			switch (packet->data[0])
-			{
-			case ID_CHAT_ALL:
-				try
-				{
-					Instance* instance = NULL;
-					RakNet::BitStream inBitstream(packet->data, packet->length, false);
-					inBitstream.IgnoreBits(8);
-
-					Guid::Data id;
-
-					std::string foo;
-					inBitstream >> foo;
-					id.scope = &Name::lookup(foo);
-
-					inBitstream >> id.index;
-
-					IdManager* idManager = ServiceProvider::find<IdManager>(this);
-					if (idManager)
-						instance = idManager->getInstance(id);
-
-					std::string message;
-					inBitstream >> message;
-
-					if (!instance)
-					{
-						StandardOut::singleton()->print(MESSAGE_WARNING, "Chat message from unknown Player %s %s", packet->systemAddress.ToString(), message.c_str());
-					}
-					else if (instance->getParent() == this)
-					{
-						ChatMessage event = {message, shared_from_polymorphic_downcast<Player>(instance), boost::shared_ptr<Player>()};
-						addChatMessage(event);
-						peer->Send((const char*)packet->data, packet->length, MEDIUM_PRIORITY, RELIABLE_ORDERED, 2, packet->systemAddress, true);
-					}
-				}
-				catch (std::exception& e)
-				{
-					StandardOut::singleton()->print(MESSAGE_ERROR, "Players::OnReceive packet %d: %s", packet->data[0], e.what());
-				}
-				return false;
-
-			case ID_REPORT_ABUSE:
-				try
-				{
-					if (abuseReporter)
-					{
-						RakNet::BitStream inBitstream(packet->data, packet->length, false);
-						inBitstream.IgnoreBits(8);
-
-						AbuseReport r;
-						inBitstream >> r.submitterID;
-						inBitstream >> r.allegedAbuserID;
-						inBitstream >> r.comment;
-
-						abuseReporter->add(r, chatHistory);
-					}
-				}
-				catch (std::exception& e)
-				{
-					StandardOut::singleton()->print(MESSAGE_ERROR, "Players::OnReceive packet %d: %s", packet->data[0], e.what());
-				}
-				return false;
-			}
-
-			return true;
-		}
-
-		void AbuseReport::addMessage(const ChatMessage& cm)
-		{
-			int userId = cm.source ? Player::prop_userId.getValue(cm.source.get()) : 0;
-			AbuseReport::Message m = {userId, cm.message};
-			messages.push_back(m);
-		}
-
-		AbuseReporter::AbuseReporter(std::string abuseUrl)
-			: _data(new AbuseReporter::data)
-		{
-			requestProcessor.reset(new worker_thread(boost::bind(&AbuseReporter::processRequests, _data, abuseUrl), "rbx_abusereporter"));
-		}
-
-		void AbuseReporter::add(AbuseReport& r, const std::list<ChatMessage>& chatHistory)
-		{
-			std::for_each(chatHistory.begin(), chatHistory.end(), boost::bind(&AbuseReport::addMessage, boost::ref(r), _1));
-
-			{
-				boost::mutex::scoped_lock lock(_data->requestSync);
-				_data->queue.push(r);
-			}
-
-			requestProcessor->wake();
-		}
-
-		worker_thread::work_result AbuseReporter::processRequests(boost::shared_ptr<data> _data, std::string abuseUrl)
-		{
-			try
-			{
-				AbuseReport abuseReport;
-
-				{
-					boost::mutex::scoped_lock lock(_data->requestSync);
-					if (_data->queue.empty())
-						return worker_thread::done;
-
-					abuseReport = _data->queue.front();
-				}
-
-				std::stringstream body;
-
-				{
-					TextXmlWriter writer(body);
-
-					XmlElement root(Name::declare("report", -1));
-					root.addAttribute(Name::declare("userID", -1), abuseReport.submitterID);
-					root.addChild(new XmlElement(Name::declare("comment", -1), abuseReport.comment));
-					XmlElement* messages = root.addChild(new XmlElement(Name::declare("messages", -1)));
-
-					std::for_each(abuseReport.messages.begin(), abuseReport.messages.end(), boost::bind(&writeMessage, _1, messages));
-					writer.serialize(&root);
-					body.flush();
-				}
-
-				std::string response;
-				Http(abuseUrl).post(body, false, response);
-
-				StandardOut::singleton()->print(MESSAGE_INFO, "Posted abuse report to %s", abuseUrl.c_str());
-			}
-			catch (std::exception& e)
-			{
-				StandardOut::singleton()->print(MESSAGE_WARNING, "Unable to post abuse report to %s. %s", abuseUrl.c_str(), e.what());
-			}
-
-			{
-				boost::mutex::scoped_lock lock(_data->requestSync);
-				_data->queue.pop();
-			}
-
-			return worker_thread::more;
-		}
-	}
 }

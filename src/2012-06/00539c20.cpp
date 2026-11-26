@@ -1,15 +1,30 @@
-// from server: 63% by atomic.potato
-struct EventDesc
-{
-    void f(void *);
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+
+// from server: 100% by tajop
+
+struct InstanceBase {
+    char pad[0x1c];
 };
 
-extern "C" void G_00537180(void *);
+struct DescBase {
+    int field_0;
+};
 
-void EventDesc::f(void *arg)
+struct Signal {
+    int f();
+};
+
+struct EventClass : InstanceBase, DescBase {
+};
+
+struct EventDesc {
+    char pad[0x2c];
+    Signal EventClass::* sig;
+    int invoke(DescBase* source);
+};
+
+int EventDesc::invoke(DescBase* source)
 {
-    if (arg)
-        G_00537180((char *)arg - 0x1c);
-    else
-        G_00537180((char *)0);
+    return (static_cast<EventClass*>(source)->*sig).f();
 }

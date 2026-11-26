@@ -1,163 +1,47 @@
-// from server: 67% by intel
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/Teams.cpp
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+// roc 2012-06 007fa220  unit: RBX::MoveResizeJoinTool  size: 80 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 007fa220
+//
+// 007fa220  64a100000000         mov eax, dword ptr fs:[0]
+// 007fa226  6aff                 push -1
+// 007fa228  6819e7ab00           push 0xabe719
+// 007fa22d  50                   push eax
+// 007fa22e  64892500000000       mov dword ptr fs:[0], esp
+// 007fa235  8d442410             lea eax, [esp + 0x10]
+// 007fa239  50                   push eax
+// 007fa23a  81c1c8000000         add ecx, 0xc8
+// 007fa240  c744240c00000000     mov dword ptr [esp + 0xc], 0
+// 007fa248  ff155826b200         call dword ptr [0xb22658]
+// 007fa24e  8d4c2410             lea ecx, [esp + 0x10]
+// 007fa252  c7442408ffffffff     mov dword ptr [esp + 8], 0xffffffff
+// 007fa25a  ff153c26b200         call dword ptr [0xb2263c]
+// 007fa260  8b0c24               mov ecx, dword ptr [esp]
+// 007fa263  64890d00000000       mov dword ptr fs:[0], ecx
+// 007fa26a  83c40c               add esp, 0xc
+// 007fa26d  c21c00               ret 0x1c
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Teams.h"
-#include "v8datamodel/ModelInstance.h"
-#include "Network/Players.h"
+struct String {
+    char storage[28];
+    String& operator=(const String& other);
+    ~String();
+};
 
-namespace RBX
+extern String& (String::*g_stringAssign)(const String&);
+extern void (String::*g_stringDestroy)();
+
+inline String& String::operator=(const String& other) { return (this->*g_stringAssign)(other); }
+inline String::~String() { (this->*g_stringDestroy)(); }
+
+namespace RBX {
+    struct MoveResizeJoinTool {
+        char pad[0xa0];
+        String cursor;
+        void setCursor(String newCursor);
+    };
+}
+
+void RBX::MoveResizeJoinTool::setCursor(String newCursor)
 {
-	const char* const sTeams = "Teams";
-
-	static Reflection::BoundFuncDesc<Teams, void(void), 0> teams_rebalanceTeamsFunction(&Teams::rebalanceTeams, "RebalanceTeams", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<Teams, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(void), 0> func_teams(&Teams::getTeams, "GetTeams", Reflection::FunctionDescriptor::AnyCaller);
-
-	Teams::Teams()
-		: teams(std::vector<boost::shared_ptr<Instance>>())
-	{
-		setName("Teams");
-	}
-
-	Teams::~Teams()
-	{
-	}
-
-	int Teams::getNumPlayersInTeam(BrickColor brickColor)
-	{
-		int numOfPlayers = 0;
-
-		Network::Players* players = ServiceProvider::find<Network::Players>(this);
-		RBXASSERT(players);
-
-		for (size_t i = 0; i < players->numChildren(); i++)
-		{
-			Network::Player* player = dynamic_cast<Network::Player*>(players->getChild(i));
-			if (player)
-			{
-				if (!player->getNeutral() && player->getTeamColor() == brickColor)
-					numOfPlayers++;
-			}
-		}
-		
-		return numOfPlayers;
-	}
-	
-	bool Teams::teamExists(BrickColor brickColor)
-	{
-		return getTeamFromTeamColor(brickColor) != NULL;
-	}
-
-	bool Teams::isTeamGame()
-	{
-		Network::Players* players = ServiceProvider::find<Network::Players>(this);
-		RBXASSERT(players);
-
-		for (size_t i = 0; i < players->numChildren(); ++i)
-		{
-			if (Network::Player* player = dynamic_cast<Network::Player*>(players->getChild(i)))
-			{
-				if (!player->getNeutral())
-					return true;
-			}
-		}
-
-		return false;
-	}
-
-	Team* Teams::getTeamFromTeamColor(BrickColor brickColor)
-	{
-		for (size_t i = 0; i < numChildren(); i++)
-		{
-			Team* team = dynamic_cast<Team*>(getChild(i));
-			if (team && team->getTeamColor() == brickColor)
-				return team;
-		}
-		
-		return NULL;
-	}
-
-	Team* Teams::getTeamFromPlayer(Network::Player* player)
-	{
-		return player->getNeutral() ? NULL : getTeamFromTeamColor(player->getTeamColor());
-	}
-
-	G3D::Color3 Teams::getTeamColorForHumanoid(Humanoid* humanoid)
-	{
-		Network::Players* players = ServiceProvider::find<Network::Players>(this);
-		RBXASSERT(players);
-
-		for (size_t i = 0; i < players->numChildren(); i++)
-		{
-			Network::Player* player = dynamic_cast<Network::Player*>(players->getChild(i));
-			if (player)
-			{
-				if (!player->getNeutral() && player->getCharacter())
-				{
-					ModelInstance* character = player->getCharacter();
-					if (character->findFirstChildOfType<Humanoid>() == humanoid)
-					{
-						return player->getTeamColor().color3();
-					}
-				}
-			}
-		}
-
-		return G3D::Color3::white();
-	}
-
-	void Teams::assignNewPlayerToTeam(Network::Player* player)
-	{
-		BrickColor best = BrickColor::lego_28;
-		int best_count = 10000;
-		bool found = false;
-
-		for (size_t i = 0; i < numChildren(); i++)
-		{
-			Team* team = dynamic_cast<Team*>(getChild(i));
-			if (team && team->getAutoAssignable() == true)
-			{
-				int count = getNumPlayersInTeam(team->getTeamColor());
-
-				if (count < best_count)
-				{
-					best = team->getTeamColor();
-					best_count = count;
-					found = true;
-				}
-			}
-		}
-		
-		if (found)
-		{
-			player->setTeamColor(best);
-			player->setNeutral(false);
-		}
-	}
-
-	void Teams::onChildAdded(Instance* child)
-	{
-		if (dynamic_cast<Team*>(child))
-		{
-			boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& myTeams = teams.write();
-			myTeams->push_back(shared_from(child));
-		}
-	}
-
-	void Teams::onChildRemoving(Instance* child)
-	{
-		if (dynamic_cast<Team*>(child))
-		{
-			boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& myTeams = teams.write();
-			myTeams->erase(std::find(myTeams->begin(), myTeams->end(), shared_from(child)));
-		}
-	}
-
-	void Teams::rebalanceTeams()
-	{
-		return;
-	}
+    cursor = newCursor;
 }

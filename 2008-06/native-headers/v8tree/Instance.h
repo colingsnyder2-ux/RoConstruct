@@ -60,6 +60,7 @@ public:
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>, const Reflection::PropertyDescriptor*)> event_itemChanged;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_childAdded;     // 00973e90 (registry symbol)
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_childRemoved;   // 00973c6c (registry symbol)
+    static Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> event_propertyChanged;   // 00973f48 (registry symbol; initializer 007f2bb0 "Changed", "property")
     Instance();
     explicit Instance(const char*);
     virtual ~Instance();
@@ -166,6 +167,12 @@ public:
     std::string getClassNameStr() const;
     Instance* findFirstChildByName(const std::string&) const;
     Instance* findFirstChildByClassName(std::string) const; // 0046ae30; name provisional.
+    // Lua-bound wrappers of the reflection function descriptors (initializers 007f2910..007f2a30). INFERRED names:
+    // donor tools/rbxgs include/v8tree/Instance.h (inline there; the 2008-06 binary has out-of-line bodies).
+    boost::shared_ptr<Instance> findFirstChildByName2(std::string findName, bool recursive);   // registry symbol
+    boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > getChildren2();   // 005580e0
+    bool isDescendentOf2(boost::shared_ptr<Instance> ancestor);   // 00557890
+    bool isAncestorOf2(boost::shared_ptr<Instance> descendent);   // 00557640
 private:
     void readChild(const ::XmlElement*, IReferenceBinder&);
     void writeProperties(::XmlElement*) const;

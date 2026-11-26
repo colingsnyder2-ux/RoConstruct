@@ -1,83 +1,30 @@
-// from server: 61% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/DebrisService.cpp
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/DebrisService.h"
-#include "v8datamodel/TimerService.h"
-#include "util/standardout.h"
+// from server: 100% by tajop
 
-static RBX::Reflection::BoundFuncDesc<RBX::DebrisService, void(boost::shared_ptr<RBX::Instance>, double), 2> func_AddItem(&RBX::DebrisService::addItem, "AddItem", "item", "lifetime", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::PropDescriptor<RBX::DebrisService, int> prop_MaxItems("MaxItems", "Data", &RBX::DebrisService::getMaxItems, &RBX::DebrisService::setMaxItems, RBX::Reflection::PropertyDescriptor::STANDARD);
-
-static void cleanup(boost::weak_ptr<RBX::Instance> item)
+struct WaterDirArg
 {
-	try
-	{
-		boost::shared_ptr<RBX::Instance> i = item.lock();
-		if (i)
-			i->setParent(NULL);
-	}
-	catch (std::exception& e)
-	{
-		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
-	}
-}
+    char a;
+    char b;
+    int c;
+    int d;
+    WaterDirArg() : a(0), b(0), c(0), d(27) {}
+    WaterDirArg(const WaterDirArg& o);
+    ~WaterDirArg();
+};
 
-namespace RBX
+extern int g_waterDirName;
+int __stdcall makeWaterDirDesc(int name, WaterDirArg arg, int extra);
+
+struct W4WaterCellDirectionEnumDesc
 {
-	char* sDebrisService = "Debris";
+    W4WaterCellDirectionEnumDesc(int x);
+    ~W4WaterCellDirectionEnumDesc();
+};
 
-	DebrisService::DebrisService()
-		: Base("Debris"),
-		  maxItems(300),
-		  timer(NULL)
-	{
-	}
-
-	void DebrisService::setMaxItems(int value)
-	{
-		if (value != maxItems)
-		{
-			if (value < 0)
-				throw std::runtime_error("DebrisService MaxItems must be greater than 0");
-
-			maxItems = value;
-			raisePropertyChanged(prop_MaxItems);
-			DebrisService::cleanup();
-		}
-	}
-
-	void DebrisService::addItem(boost::shared_ptr<Instance> item, double lifetime)
-	{
-		if (timer)
-			timer->delay(boost::bind(&::cleanup, item), lifetime);
-
-		queue.push(item);
-		DebrisService::cleanup();
-	}
-
-	void DebrisService::cleanup()
-	{
-		while ((int)queue.size() > maxItems)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-	}
-
-	void DebrisService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		while ((int)queue.size() > 0)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		timer = ServiceProvider::create<TimerService>(newProvider);
-	}
+const W4WaterCellDirectionEnumDesc& func_00781330()
+{
+    static W4WaterCellDirectionEnumDesc s(makeWaterDirDesc(g_waterDirName, WaterDirArg(), 0));
+    return s;
 }

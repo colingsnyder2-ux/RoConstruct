@@ -1,98 +1,92 @@
-// from server: 33% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-net ClientPhysics.cpp
+// from server: 100% by Xemicl
+// from server: 100% by tajop
 
-// Candidate translation unit (score above; library headers required).
-#include "ClientPhysics.h"
-#include "NetworkSettings.h"
-#include "v8datamodel/PartInstance.h"
+extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+#pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement)
+#pragma intrinsic(_InterlockedDecrement)
 
-//99.98% match
-bool areClose(const G3D::CoordinateFrame& c1, const G3D::CoordinateFrame& c2)
+struct Counted {
+    long use;
+    long weak;
+    virtual ~Counted();
+    virtual void dispose();
+    virtual void destroy();
+    void weak_release() {
+        if (_InterlockedDecrement(&weak) == 0) destroy();
+    }
+    void release() {
+        if (_InterlockedDecrement(&use) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
+};
+
+struct SP {
+    void* px;
+    Counted* pn;
+    SP(const SP& o) : px(o.px), pn(o.pn) {
+        if (pn) _InterlockedIncrement(&pn->use);
+    }
+    ~SP() {
+        if (pn) pn->release();
+    }
+};
+
+struct B1 { int a; };
+struct B2 { int b; };
+struct T : B1, B2 { void m(int); };
+
+struct Arg1 {};
+extern Arg1 g_1;
+
+struct BindT {
+    void (T::*f)(int);
+    SP a;
+};
+
+BindT bind(void (T::*f)(int), SP p, Arg1 a);
+
+struct Buf { int d[6]; };
+
+struct VT {
+    typedef void (*Mgr)(Buf&, Buf&, int);
+    Mgr manager;
+    void clear(Buf& b) {
+        Mgr m = manager;
+        if (m) m(b, b, 2);
+    }
+};
+
+struct Func {
+    VT* vtable;
+    int pad;
+    Buf functor;
+    Func(BindT f, int = 0);
+    ~Func() {
+        if (vtable) {
+            vtable->clear(functor);
+            vtable = 0;
+        }
+    }
+};
+
+struct Conn {
+    int x;
+    Conn(const Conn&);
+    ~Conn();
+};
+
+struct S {
+    Conn g(int a, const Func& f);
+    Conn f(int a, SP b);
+};
+
+Conn S::f(int a, SP b)
 {
-	if (fabs(c1.translation.x - c2.translation.x) > 0.2f)
-		return false;
-
-	if (fabs(c1.translation.y - c2.translation.y) > 0.2f)
-		return false;
-
-	if (fabs(c1.translation.z - c2.translation.z) > 0.2f)
-		return false;
-
-	for (int i = 0; i < 3; i++)
-	{
-		G3D::Vector3 v1, v2;
-
-		v1.x = c1.rotation[0][i];
-		v1.y = c1.rotation[1][i];
-		v1.z = c1.rotation[2][i];
-		v2.x = c2.rotation[0][i];
-		v2.y = c2.rotation[1][i];
-		v2.z = c2.rotation[2][i];
-
-		if ((v1 - v2).squaredMagnitude() > 0.010000001f)
-			return false;
-	}
-
-	return true;
-}
-
-namespace RBX
-{
-	namespace Network
-	{
-		ClientPhysics::ClientPhysics(PartInstance* part)
-			: part(part)
-		{
-		}
-
-		ClientPhysics::~ClientPhysics()
-		{
-			Notifier<RunService, Heartbeat>::disconnect(runService.lock(), this);
-		}
-
-		void ClientPhysics::sleep()
-		{
-			Notifier<RunService, Heartbeat>::disconnect(runService.lock(), this);
-			runService.reset();
-
-			lastPos = part->getCoordinateFrame();
-		}
-
-		void ClientPhysics::onEvent(const RunService* source, Heartbeat event)
-		{
-			G3D::RealTime currentTime = G3D::System::getLocalTime();
-
-			if (NetworkSettings::singleton().clientPhysicsLifetime + lastUpdateTime < currentTime)
-				sleep();
-			else
-				RBXASSERT(0);
-		}
-
-		void ClientPhysics::update(const boost::shared_ptr<RunService>& runService)
-		{
-			lastUpdateTime = G3D::System::getLocalTime();
-
-			const G3D::CoordinateFrame& cframe = part->getCoordinateFrame();
-
-			if (areClose(lastPos, cframe))
-			{
-				sleep();
-				return;
-			}
-
-			lastPos = cframe;
-
-			if (this->runService.lock() != runService)
-			{
-				Notifier<RunService, Heartbeat>::disconnect(this->runService.lock(), this);
-
-				this->runService = runService;
-
-				Notifier<RunService, Heartbeat>::connect(this->runService.lock(), this);
-			}
-		}
-	}
+    Func fn(bind(&T::m, b, g_1));
+    return g(a, fn);
 }

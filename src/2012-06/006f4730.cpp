@@ -1,33 +1,42 @@
-// from server: 83% by atomic.potato
-extern "C" {
-    extern unsigned char dword_E580B3;
-    extern unsigned int dword_E3021C;
-    extern int (__cdecl *dword_E5809C)(const char*, const char*, int);
-    extern unsigned char byte_E580B3;
-    extern int dword_BDDB30;
-    extern void __stdcall sub_972290(unsigned char, const char*);
-    extern void __stdcall sub_4015A0(void*, void*);
-    extern void __cdecl sub_67F480();
-    extern void __cdecl sub_6F3610();
-}
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
 
-void __cdecl sub_6F4730()
+// from server: 100% by intel
+
+extern "C" int __cdecl sub_00972290(int, const char*);
+extern "C" void __cdecl sub_004015a0(const char*, const char*);
+extern "C" void __cdecl sub_0067f480();
+extern "C" void __cdecl sub_00767160();
+
+extern char g_e580b3;
+extern int g_e3796c;
+extern int g_e5809c;
+extern int g_be7a7c;
+extern char g_b42f20[];
+extern char g_b42f90[];
+extern char g_b42fa8[];
+extern char g_e37a14[];
+extern char g_767fd0[];
+
+void func_007687d0()
 {
-    if (dword_E580B3 != 0 && dword_E3021C != 0x29a)
+    if (g_e580b3 != 0)
     {
-        if (dword_E5809C != 0)
+        if (g_e3796c == 0x29a)
+            goto L_76881b;
+        if (g_e5809c != 0)
         {
-            if (dword_E5809C("wasConstructed()", "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h", 0xcf))
-                goto label_6F477B;
+            if (((char (__cdecl*)(int, char*, char*))g_e5809c)(0xcf, g_b42fa8, g_b42f90) != 0)
+                goto L_76881b;
         }
-        sub_972290(byte_E580B3, "wasConstructed() file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h line: 207");
+        sub_00972290((unsigned char)g_e580b3, g_b42f20);
     }
-label_6F477B:
-    if (dword_BDDB30 == 0)
+L_76881b:
+    if (g_be7a7c == 0)
     {
-        sub_67F480();
+        sub_0067f480();
         return;
     }
-    sub_4015A0((void*)0xE3022C, (void*)0x6F3D90);
-    sub_6F3610();
+    sub_004015a0(g_767fd0, g_e37a14);
+    sub_00767160();
 }

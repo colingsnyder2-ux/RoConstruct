@@ -1,93 +1,24 @@
-// from server: 42% by intel
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/IRenderable.cpp
+// from server: 100% by Xemicl
+// from server: 100% by tajop
 
-// Candidate translation unit (score above; library headers required).
-#include "util/IRenderable.h"
+struct S {
+    void sub_41a5e0();
+    S* f(unsigned int flags);
+};
 
-namespace RBX 
-{
-	IRenderable::~IRenderable()
-	{
-		RBXASSERT(index2d == -1);
-		RBXASSERT(index3d == -1);
-		RBXASSERT(bucket == NULL);
-	}
+extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void*);
+extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void*);
 
-	void IRenderable::shouldRenderSetDirty()
-	{
-		if (bucket)
-			bucket->recomputeShouldRender(this);
-	}
+extern "C" void* __cdecl sub_401970();
 
-	IRenderableBucket::~IRenderableBucket()
-	{
-		RBXASSERT(renderable2ds.size() == 0);
-		RBXASSERT(renderable3ds.size() == 0);
-	}
-
-	void IRenderableBucket::onAdded(IRenderable* iR)
-	{
-		RBXASSERT(iR->index2d == -1);
-		RBXASSERT(iR->index3d == -1);
-		RBXASSERT(iR->bucket == NULL);
-
-		iR->bucket = this;
-		recomputeShouldRender(iR);
-	}
-
-	void IRenderableBucket::onRemoving(IRenderable* iR)
-	{
-		RBXASSERT(iR->bucket == this);
-
-		if (iR->index2d >= 0)
-			renderable2ds.fastRemove(iR);
-
-		if (iR->index3d >= 0)
-			renderable3ds.fastRemove(iR);
-
-		iR->bucket = NULL;
-
-		RBXASSERT(iR->index2d == -1);
-		RBXASSERT(iR->index3d == -1);
-	}
-
-	void IRenderableBucket::recomputeShouldRender(IRenderable* iR)
-	{
-		RBXASSERT(iR->bucket == this);
-
-		if (iR->shouldRender2d())
-		{
-			if (iR->index2d < 0)
-				renderable2ds.fastAppend(iR);
-		}
-		else if (iR->index2d >= 0)
-		{
-			renderable2ds.fastRemove(iR);
-		}
-
-		if (iR->shouldRender3dAdorn())
-		{
-			if (iR->index3d < 0)
-				renderable3ds.fastAppend(iR);
-		}
-		else if (iR->index3d >= 0)
-		{
-			renderable3ds.fastRemove(iR);
-		}
-	}
-
-	void IRenderableBucket::render2dItems(Adorn* adorn)
-	{
-		for (int i = 0; i < renderable2ds.size(); ++i)
-			renderable2ds[i]->render2d(adorn);
-	}
-
-	void IRenderableBucket::render3dAdornItems(Adorn* adorn)
-	{
-		for (int i = 0; i < renderable3ds.size(); ++i)
-			renderable3ds[i]->render3dAdorn(adorn);
-	}
+S* S::f(unsigned int flags) {
+    sub_41a5e0();
+    if (flags & 1) {
+        void* p = sub_401970();
+        EnterCriticalSection(p);
+        *(void**)this = *(void**)((char*)p + 0x18);
+        *(void**)((char*)p + 0x18) = this;
+        LeaveCriticalSection(p);
+    }
+    return this;
 }

@@ -1,83 +1,35 @@
-// from server: 65% by intel
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/DebrisService.cpp
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+// roc 2012-06 004163a0  unit: CIDEBrowserView  size: 89 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 004163a0
+//
+// 004163a0  6aff                 push -1
+// 004163a2  686a21aa00           push 0xaa216a
+// 004163a7  64a100000000         mov eax, dword ptr fs:[0]
+// 004163ad  50                   push eax
+// 004163ae  64892500000000       mov dword ptr fs:[0], esp
+// 004163b5  51                   push ecx
+// 004163b6  68b4020000           push 0x2b4
+// 004163bb  e85abd5600           call 0x98211a
+// 004163c0  83c404               add esp, 4
+// 004163c3  890424               mov dword ptr [esp], eax
+// 004163c6  c744240c00000000     mov dword ptr [esp + 0xc], 0
+// 004163ce  85c0                 test eax, eax
+// 004163d0  7416                 je 0x4163e8
+// 004163d2  8bc8                 mov ecx, eax
+// 004163d4  e8b7fcffff           call 0x416090
+// 004163d9  8b4c2404             mov ecx, dword ptr [esp + 4]
+// 004163dd  64890d00000000       mov dword ptr fs:[0], ecx
+// 004163e4  83c410               add esp, 0x10
+// 004163e7  c3                   ret 
+// 004163e8  8b4c2404             mov ecx, dword ptr [esp + 4]
+// 004163ec  33c0                 xor eax, eax
+// 004163ee  64890d00000000       mov dword ptr fs:[0], ecx
+// 004163f5  83c410               add esp, 0x10
+// 004163f8  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/DebrisService.h"
-#include "v8datamodel/TimerService.h"
-#include "util/standardout.h"
+// copied from an identical function in another client (function ?f@@YAPAUT@@XZ)
 
-static RBX::Reflection::BoundFuncDesc<RBX::DebrisService, void(boost::shared_ptr<RBX::Instance>, double), 2> func_AddItem(&RBX::DebrisService::addItem, "AddItem", "item", "lifetime", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::PropDescriptor<RBX::DebrisService, int> prop_MaxItems("MaxItems", "Data", &RBX::DebrisService::getMaxItems, &RBX::DebrisService::setMaxItems, RBX::Reflection::PropertyDescriptor::STANDARD);
-
-static void cleanup(boost::weak_ptr<RBX::Instance> item)
-{
-	try
-	{
-		boost::shared_ptr<RBX::Instance> i = item.lock();
-		if (i)
-			i->setParent(NULL);
-	}
-	catch (std::exception& e)
-	{
-		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
-	}
-}
-
-namespace RBX
-{
-	char* sDebrisService = "Debris";
-
-	DebrisService::DebrisService()
-		: Base("Debris"),
-		  maxItems(300),
-		  timer(NULL)
-	{
-	}
-
-	void DebrisService::setMaxItems(int value)
-	{
-		if (value != maxItems)
-		{
-			if (value < 0)
-				throw std::runtime_error("DebrisService MaxItems must be greater than 0");
-
-			maxItems = value;
-			raisePropertyChanged(prop_MaxItems);
-			DebrisService::cleanup();
-		}
-	}
-
-	void DebrisService::addItem(boost::shared_ptr<Instance> item, double lifetime)
-	{
-		if (timer)
-			timer->delay(boost::bind(&::cleanup, item), lifetime);
-
-		queue.push(item);
-		DebrisService::cleanup();
-	}
-
-	void DebrisService::cleanup()
-	{
-		while ((int)queue.size() > maxItems)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-	}
-
-	void DebrisService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		while ((int)queue.size() > 0)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		timer = ServiceProvider::create<TimerService>(newProvider);
-	}
-}
+void* __cdecl operator new(unsigned int);
+struct T { char pad[0xd8]; T(); };
+T* f() { return new T; }

@@ -1,39 +1,54 @@
-// from server: 37% by atomic.potato
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+
+// from server: 100% by tajop
+
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedDecrement)
 
-extern "C" void __cdecl free(void*);
+extern "C" void (__cdecl* imp_free)(void*);
 
-struct Inner {
-    virtual void f(int);
-    char pad[4];
-    long ref;
-};
-
-struct Outer {
-    Inner* m_ptr;
-    void release();
-};
-
-void Outer::release()
+struct Counts
 {
-    Inner* p = m_ptr;
-    if (p) {
-        char* base = (char*)p + 5;
-        char* obj;
-        if (base)
-            obj = base - 5;
-        else
-            obj = 0;
-        char* cnt = obj - 8;
-        if (_InterlockedExchangeAdd((volatile long*)cnt, -1) == 1) {
-            void** vt = *(void***)obj;
-            void (*fn)(void*, int) = (void (*)(void*, int))vt[0];
-            fn(obj, 0);
-            char* cnt2 = cnt + 4;
-            if (_InterlockedExchangeAdd((volatile long*)cnt2, -1) == 1) {
-                free(cnt);
+    volatile long strong;
+    volatile long weak;
+};
+
+struct Obj
+{
+    virtual ~Obj();
+};
+
+struct Ptr
+{
+    char* p;
+    ~Ptr()
+    {
+        if (p)
+        {
+            char* a = p + 5;
+            Obj* o = a ? (Obj*)(a - 5) : 0;
+            Counts* c = (Counts*)((char*)o - 8);
+            if (_InterlockedDecrement(&c->strong) == 0)
+            {
+                o->~Obj();
+                if (_InterlockedDecrement(&c->weak) == 0)
+                    imp_free(c);
             }
         }
     }
+};
+
+struct S
+{
+    Ptr m;
+    void clear();
+    ~S();
+};
+
+S::~S()
+{
+    clear();
 }

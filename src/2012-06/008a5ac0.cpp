@@ -1,23 +1,35 @@
-// from server: 46% by atomic.potato
-typedef int (__thiscall *Fn495f40)(void *);
-typedef int (__cdecl *Fn983b6a)(int);
-typedef int (__thiscall *FnB229ec)(void *, int);
+// from server: 100% by Xemicl
+// from server: 100% by tajop
 
-struct S
-{
-    void *field0c;
-    unsigned char f();
+struct type_info {
+    __declspec(dllimport) bool operator==(const type_info&) const;
 };
 
-unsigned char S::f()
+extern type_info type_info_0xdeb9d8;
+extern "C" type_info* __cdecl sub_00983B6A(void*);
+
+struct Target {
+    void* sub_00495F40();
+};
+
+struct Owner {
+    char pad[0xac4];
+    Target* target;
+};
+
+struct TToolVerb
 {
-    int value;
-    int converted;
+    int pad0;
+    int pad1;
+    int pad2;
+    Owner* owner;
+    bool f();
+};
 
-    value = ((Fn495f40)0x495f40)((void *)((*(void **)((char *)field0c + 0xac4))));
-    if (!value)
-        return 0;
-
-    converted = ((Fn983b6a)0x983b6a)(value);
-    return (unsigned char)((FnB229ec)0xb229ec)((void *)0xdae1d8, converted);
+bool TToolVerb::f()
+{
+    void* value = owner->target->sub_00495F40();
+    if (value)
+        return type_info_0xdeb9d8 == *sub_00983B6A(value);
+    return false;
 }

@@ -1,21 +1,37 @@
-// from server: 28% by Intel
-struct String {
-    char _buf[16];
-    int _len;
-    int _cap;
-    char* _ptr;
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+
+struct lua_State;
+
+struct Str
+{
+	void* alloc;
+	union
+	{
+		char buf[16];
+		char* ptr;
+	} bx;
+	unsigned int mysize;
+	unsigned int myres;
+
+	~Str();
+	const char* c_str() const { return myres >= 16 ? bx.ptr : bx.buf; }
+	unsigned int size() const { return mysize; }
 };
 
-extern "C" void __cdecl string_ctor(String* this_, const char* str);
-extern "C" void __cdecl string_dtor(String* this_);
-extern "C" void __stdcall func_8320f0(void* a1, const char* a2, int a3);
-extern "C" void __stdcall func_B2263C(void*);
+extern void (Str::*Str_dtor)();
 
-int __cdecl func_8435F0(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
-    String s;
-    string_ctor(&s, (const char*)arg0);
-    func_8320f0((void*)arg4, s._len < 16 ? s._buf : s._ptr, s._len);
-    string_dtor(&s);
-    func_B2263C(0);
-    return 1;
+inline Str::~Str()
+{
+	(this->*Str_dtor)();
+}
+
+Str convertToString(const void* value);
+void lua_pushlstring(lua_State* L, const char* s, unsigned int len);
+
+int pushStringValue(const void* value, lua_State* L)
+{
+	Str s = convertToString(value);
+	lua_pushlstring(L, s.c_str(), s.size());
+	return 1;
 }

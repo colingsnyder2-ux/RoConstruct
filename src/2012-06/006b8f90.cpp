@@ -1,20 +1,31 @@
-// from server: 33% by atomic.potato
-extern "C" void __stdcall sub_4015A0(int, int);
-extern "C" void __stdcall sub_9831F5(int);
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
 
-struct RBX_MD5HasherImpl {
-    int field_0;
-    void init();
+// from server: 100% by tajop
+
+struct Ptr {
+    int p;
+    Ptr() : p(0) {}
+    ~Ptr();
 };
 
-void RBX_MD5HasherImpl::init()
-{
-    field_0 = 0;
-    sub_4015A0(0x44d700, 0xe189c8);
-    if ((*(unsigned char*)0xe189b8 & 1) != 0) {
-        *(unsigned int*)0xe189b8 |= 1;
-        *(unsigned int*)0xe189b0 = 0;
-        *(unsigned int*)0xe189b4 = 0;
-        sub_9831F5(0xb11b80);
-    }
+struct Holder {
+    int a;
+    int b;
+    Holder() : a(0), b(0) {}
+    ~Holder();
+};
+
+extern long g_once;
+void g_once_init();
+void call_once(long& flag, void (*f)());
+
+struct ThreadRef {
+    Ptr liveThreadRef;
+    ThreadRef();
+};
+
+ThreadRef::ThreadRef() {
+    call_once(g_once, g_once_init);
+    static Holder holder;
 }

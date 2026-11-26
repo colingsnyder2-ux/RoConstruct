@@ -1,25 +1,30 @@
-// from server: 47% by Intel
-struct DialogRoot_W4DialogTone_EnumDesc {
-    int getEnumValue(int index, int* outValue, int* outName);
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+
+
+struct Any { void assign(const unsigned*); };
+struct Variant { const void* type; Any value; };
+extern int once_flag;
+void init_type();
+void call_once(int&, void (*)());
+const void* get_type();
+struct S {
+    char a[0x2c];
+    unsigned count;
+    char b[0x90 - 0x30];
+    unsigned* values;
+    bool f(unsigned, Variant&) const;
 };
-
-extern "C" int __stdcall sub_4015a0(int a1, int a2);
-extern "C" int __stdcall sub_771230();
-extern "C" int __stdcall sub_76F070(int* a1, int* a2);
-
-int DialogRoot_W4DialogTone_EnumDesc::getEnumValue(int index, int* outValue, int* outName) {
-    int result = 0;
-    if (index < *(int*)((char*)this + 0x2C)) {
-        int* array = *(int**)((char*)this + 0x90);
-        *outValue = array[index];
-        result = 1;
+bool S::f(unsigned index, Variant& out) const {
+    bool ok;
+    if (index < count) {
+        index = values[index];
+        ok = true;
+    } else {
+        ok = false;
     }
-    sub_4015a0(0x771290, 0xE4861C);
-    int v = sub_771230();
-    *outName = v;
-    int temp[2];
-    temp[0] = *outValue;
-    temp[1] = v;
-    sub_76F070(temp + 1, temp);
-    return result;
+    call_once(once_flag, init_type);
+    out.type = get_type();
+    out.value.assign(&index);
+    return ok;
 }

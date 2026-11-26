@@ -1,154 +1,55 @@
-// from server: 49% by intel
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/boost.cpp
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
 
-// Candidate translation unit (score above; library headers required).
-#include "util/boost.hpp"
-#include "util/standardout.h"
-#include "util/Debug.h"
-#include <boost/bind.hpp>
-#include <windows.h>
-#include <boost/thread/tss.hpp>
-#include <boost/thread/once.hpp>
+// from server: 100% by tajop
 
-namespace RBX
-{
-	namespace boost_detail
-	{
-		boost::thread_specific_ptr<std::string>* foo;
-		
-		boost::once_flag once_init_foo = BOOST_ONCE_INIT;
-		void init_foo()
-		{
-			static boost::thread_specific_ptr<std::string> value;
-			foo = &value;
-		}
+extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+#pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" unsigned char __cdecl _interlockedbittestandset(volatile long*, long);
+#pragma intrinsic(_interlockedbittestandset)
 
-		void set_foo(std::string* value)
-		{
-			boost::call_once(&boost_detail::init_foo, boost_detail::once_init_foo);
-			boost_detail::foo->reset(value);
-		}
-	}
+extern "C" int (__stdcall *_imp__SetEvent)(void*);
 
-	// Thread name stuff based on https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/xcb2z8hs(v=vs.90)
-	static bool nameThreads = true;
+struct OnceFlag { long status; };
+extern OnceFlag onceFlag;
+void onceInit();
+void callOnce(OnceFlag& flag, void (*fn)());
 
-	typedef struct tagTHREADNAME_INFO
-	{
-		DWORD dwType;
-		LPCSTR szName;
-		DWORD dwThreadID;
-		DWORD dwFlags;
-	} THREADNAME_INFO;
+struct Mutex {
+    long active_count;
+    void* event;
+    Mutex() { active_count = 0; event = 0; }
+    ~Mutex();
+    void* get_event();
+    void unlock() {
+        long old_count = _InterlockedExchangeAdd(&active_count, (long)0x80000000);
+        if (!(old_count & 0x40000000) && old_count > (long)0x80000000) {
+            if (!_interlockedbittestandset(&active_count, 30)) {
+                _imp__SetEvent(get_event());
+            }
+        }
+    }
+};
 
-	void SetThreadName(DWORD dwThreadID, LPCSTR szThreadName)
-	{
-		THREADNAME_INFO info;
-		info.dwType = 0x1000;
-		info.szName = szThreadName;
-		info.dwThreadID = dwThreadID;
-		info.dwFlags = 0;
+struct ScopedLock {
+    Mutex* m;
+    bool is_locked;
+    ScopedLock(Mutex& m_) : m(&m_), is_locked(false) { lock(); }
+    ~ScopedLock() {
+        if (is_locked)
+            m->unlock();
+    }
+    void lock();
+};
 
-		__try
-		{
-			if (nameThreads)
-				RaiseException(0x406D1388, 0, sizeof(info)/sizeof(ULONG_PTR), (ULONG_PTR*)&info);
-		}
-		__except (EXCEPTION_CONTINUE_EXECUTION)
-		{
-		}
-	}
+struct S {
+    void* value;
+    bool isNull();
+};
 
-	void set_thread_name(const char* name)
-	{
-		boost_detail::set_foo(new std::string(name));
-		SetThreadName(GetCurrentThreadId(), name);
-	}
-
-	class ThreadPrioritySetter
-	{
-	private:
-		const int old;
-		bool success;
-	  
-	public:
-		ThreadPrioritySetter(int priority)
-			: old(GetThreadPriority(GetCurrentThread())),
-			  success(SetThreadPriority(GetCurrentThread(), priority) == TRUE)
-		{
-		}
-		~ThreadPrioritySetter()
-		{
-			if (success)
-				SetThreadPriority(GetCurrentThread(), old);
-		}
-	};
-
-	void run_in_background(const boost::function0<void>& threadfunc, std::string name)
-	{
-		try
-		{
-			set_thread_name(name.c_str());
-
-			{
-				ThreadPrioritySetter set(THREAD_PRIORITY_BELOW_NORMAL);
-				threadfunc();
-			}
-		}
-		catch (std::exception& ex)
-		{
-			StandardOut::singleton()->print(MESSAGE_ERROR, "Crashed via C++ exception in run_in_background:", ex.what());
-			RBXASSERT(false);
-		}
-	}
-
-	boost::function0<void> background_function(const boost::function0<void>& threadfunc, const char* name)
-	{
-		return boost::bind(&run_in_background, threadfunc, std::string(name));
-	}
-
-	worker_thread::worker_thread(const boost::function0<enum work_result>& work_function, const char* name)
-		: _data(new data()),
-		  thread(background_function(boost::bind(&threadProc, _data, work_function), name))
-	{
-	}
-
-	worker_thread::~worker_thread()
-	{
-		boost::mutex::scoped_lock scoped_lock(_data->sync);
-		_data->endRequest = true;
-		_data->wakeCondition.notify_all();
-	}
-
-	void worker_thread::join()
-	{
-		{
-			boost::mutex::scoped_lock scoped_lock(_data->sync);
-			_data->endRequest = true;
-			_data->wakeCondition.notify_all();
-		}
-
-		thread.join();
-	}
-
-	void worker_thread::wake()
-	{
-		boost::mutex::scoped_lock scoped_lock(_data->sync);
-		_data->wakeCondition.notify_all();
-	}
-
-	void worker_thread::threadProc(boost::shared_ptr<data> data, const boost::function0<enum work_result>& work_function)
-	{
-		while (!data->endRequest)
-		{
-			if (work_function() != more)
-			{
-				boost::mutex::scoped_lock scoped_lock(data->sync);
-				data->wakeCondition.wait(scoped_lock);	
-			}
-		}
-	}
+bool S::isNull() {
+    callOnce(onceFlag, onceInit);
+    static Mutex mutex;
+    ScopedLock lock(mutex);
+    return value == 0;
 }

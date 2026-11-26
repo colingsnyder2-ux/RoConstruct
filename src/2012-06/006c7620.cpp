@@ -1,116 +1,58 @@
-// from server: 69% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+// roc 2012-06 00401050  unit: CAboutRobloxDialog  size: 80 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 00401050
+//
+// 00401050  6aff                 push -1
+// 00401052  68c89ea900           push 0xa99ec8
+// 00401057  64a100000000         mov eax, dword ptr fs:[0]
+// 0040105d  50                   push eax
+// 0040105e  64892500000000       mov dword ptr fs:[0], esp
+// 00401065  51                   push ecx
+// 00401066  56                   push esi
+// 00401067  8bf1                 mov esi, ecx
+// 00401069  89742404             mov dword ptr [esp + 4], esi
+// 0040106d  8d8e14010000         lea ecx, [esi + 0x114]
+// 00401073  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 0040107b  ff153c26b200         call dword ptr [0xb2263c]
+// 00401081  8bce                 mov ecx, esi
+// 00401083  c7442410ffffffff     mov dword ptr [esp + 0x10], 0xffffffff
+// 0040108b  e890105800           call 0x982120
+// 00401090  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 00401094  5e                   pop esi
+// 00401095  64890d00000000       mov dword ptr fs:[0], ecx
+// 0040109c  83c410               add esp, 0x10
+// 0040109f  c3                   ret 
+// copied from an identical function in another client (function ??1S@ns_ROCX000003@@QAE@XZ)
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+namespace ns_ROCX000003 {
+struct String;
+extern void (__thiscall *string_destroy)(String *);
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
+struct String
 {
-	static boost::mutex mutex2;
-	return mutex2;
+    char storage[28];
+    ~String();
+};
+
+inline String::~String()
+{
+    string_destroy(this);
 }
 
-void initMoo()
+struct Base
 {
-	moo2();
+    char storage[0xac];
+    ~Base();
+};
+
+struct S : Base
+{
+    String value;
+    ~S();
+};
+
+S::~S()
+{
 }
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	Name::NamMap::~NamMap()
-	{
-		for (std::map<std::string, Name*>::iterator iter = this->begin(); iter != this->end(); iter++)
-		{
-			delete iter->second;
-		}
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
 }

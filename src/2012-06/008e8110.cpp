@@ -1,23 +1,19 @@
-// from server: 94% by atomic.potato
-struct FactoryProduct
+// from server: 100% by Xemicl
+// from server: 100% by atomic.potato
+
+struct S
 {
-    int a;
-    int b;
-    int pad[4];
-    int c;
-    int d;
-    int pad2[24];
-    int e;
-    int f;
-    void method();
+    void f();
 };
 
-void FactoryProduct::method()
+void S::f()
 {
-    a = 0xbed42c;
-    b = 0xbed420;
-    c = 0xbed414;
-    d = 0xbed408;
-    e = 0xbed3f8;
-    f = 0xbed3cc;
+    *(int *)this = 0xba77ac;
+    *(int *)((char *)this + 4) = 0xba77a4;
+    *(int *)((char *)this + 0x18) = 0xba7798;
+    *(int *)((char *)this + 0x1c) = 0xba778c;
+    *(int *)((char *)this + 0x80) = 0xba777c;
+    *(int *)((char *)this + 0x84) = 0xba7750;
+    extern void g();
+    g();
 }

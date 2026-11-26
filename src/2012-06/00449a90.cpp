@@ -1,85 +1,42 @@
-// from server: 79% by intel
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: xtp-15.2.1 Source/Controls/Tree/XTPTreeCtrlView.cpp
-
-// Candidate translation unit (score above; library headers required).
-// XTPTreeCtrl.cpp : implementation file
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+// roc 2012-06 0042a740  unit: CRobloxTreeCtrl  size: 51 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 0042a740
 //
-// This file is a part of the XTREME CONTROLS MFC class library.
-// (c)1998-2011 Codejock Software, All Rights Reserved.
-//
-// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
-// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
-// CONSENT OF CODEJOCK SOFTWARE.
-//
-// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
-// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
-// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
-// SINGLE COMPUTER.
-//
-// CONTACT INFORMATION:
-// support@codejock.com
-// http://www.codejock.com
-//
-/////////////////////////////////////////////////////////////////////////////
+// 0042a740  8b442404             mov eax, dword ptr [esp + 4]
+// 0042a744  56                   push esi
+// 0042a745  8bf1                 mov esi, ecx
+// 0042a747  8b4820               mov ecx, dword ptr [eax + 0x20]
+// 0042a74a  83e1ef               and ecx, 0xffffffef
+// 0042a74d  83c92d               or ecx, 0x2d
+// 0042a750  894820               mov dword ptr [eax + 0x20], ecx
+// 0042a753  50                   push eax
+// 0042a754  8bce                 mov ecx, esi
+// 0042a756  e8437a5500           call 0x98219e
+// 0042a75b  85c0                 test eax, eax
+// 0042a75d  7504                 jne 0x42a763
+// 0042a75f  5e                   pop esi
+// 0042a760  c20400               ret 4
+// 0042a763  c6869000000000       mov byte ptr [esi + 0x90], 0
+// 0042a76a  b801000000           mov eax, 1
+// 0042a76f  5e                   pop esi
+// 0042a770  c20400               ret 4
+// copied from an identical function in another client (function ?func@CRobloxTreeCtrl@ns_ROCX00007d@@QAEHPAX@Z)
 
-#include "stdafx.h"
+namespace ns_ROCX00007d {
+struct CRobloxTreeCtrl {
+    char pad[0x9c];
+    char field_90;
+    int sub_6a070a(void*);
+    int func(void*);
+};
 
-#include "XTPTreeBase.h"
-#include "XTPTreeCtrlView.h"
-
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
-
-
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTPTreeView
-
-CXTPTreeView::CXTPTreeView()
-{
-	m_pTreeCtrl = (CTreeCtrl_Friendly*)&GetTreeCtrl();
-
+int CRobloxTreeCtrl::func(void* arg) {
+    int* p = (int*)arg;
+    p[8] = (p[8] & 0xffffffef) | 0x20;
+    if (sub_6a070a(arg) == 0)
+        return 0;
+    field_90 = 0;
+    return 1;
 }
-
-CXTPTreeView::~CXTPTreeView()
-{
 }
-
-IMPLEMENT_DYNCREATE(CXTPTreeView, CTreeView)
-
-BEGIN_MESSAGE_MAP(CXTPTreeView, CTreeView)
-	//{{AFX_MSG_MAP(CXTPTreeView)
-	ON_TREECTRL_REFLECT()
-	//}}AFX_MSG_MAP
-END_MESSAGE_MAP()
-
-
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTPTreeCtrl
-
-CXTPTreeCtrl::CXTPTreeCtrl()
-{
-	m_pTreeCtrl = (CTreeCtrl_Friendly*)this;
-}
-
-CXTPTreeCtrl::~CXTPTreeCtrl()
-{
-}
-
-IMPLEMENT_DYNAMIC(CXTPTreeCtrl, CTreeCtrl)
-
-BEGIN_MESSAGE_MAP(CXTPTreeCtrl, CTreeCtrl)
-	//{{AFX_MSG_MAP(CXTPTreeCtrl)
-	ON_TREECTRL_REFLECT()
-	//}}AFX_MSG_MAP
-END_MESSAGE_MAP()
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTPTreeCtrl message handlers

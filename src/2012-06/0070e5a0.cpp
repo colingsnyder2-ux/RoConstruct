@@ -1,21 +1,31 @@
-// from server: 33% by Intel
-struct VHopperBinFactoryProduct {
-    VHopperBinFactoryProduct* construct();
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+
+struct Vt0 { virtual void f0(); };
+struct Vt4 { virtual void f4(); int pad4[4]; };
+struct Vt18 { virtual void f18(); };
+struct Vt1c { virtual void f1c(); int pad20[2]; int value28; int pad2c[21]; };
+struct Vt80 { virtual void f80(); };
+
+struct RelativePanelBase : Vt0, Vt4, Vt18, Vt1c, Vt80 {
+    RelativePanelBase();
 };
 
-extern "C" void __fastcall base_construct(void*);
-extern "C" int __cdecl sub_52C7D0();
-extern int dword_E48ABC;
+struct Guard {
+    int value;
+    Guard() {}
+    ~Guard();
+};
 
-VHopperBinFactoryProduct* VHopperBinFactoryProduct::construct() {
-    base_construct(this);
-    *(int*)this = 0xBA031C;
-    *(int*)((char*)this + 4) = 0xBA0314;
-    *(int*)((char*)this + 0x18) = 0xBA0308;
-    *(int*)((char*)this + 0x1C) = 0xBA02FC;
-    *(int*)((char*)this + 0x80) = 0xBA02F4;
-    int result = sub_52C7D0();
-    *(int*)((char*)this + 0x28) = result;
-    ++dword_E48ABC;
-    return this;
+int getValue();
+
+struct NonFactoryProduct : RelativePanelBase {
+    static int counter;
+    Guard guard;
+    NonFactoryProduct();
+};
+
+NonFactoryProduct::NonFactoryProduct() {
+    value28 = getValue();
+    ++counter;
 }

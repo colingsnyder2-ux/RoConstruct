@@ -1,43 +1,37 @@
-// from server: 92% by Intel
-struct VBasicPartInstance {
-    int vfptr;
-    int field_4;
-    char pad_8[20];
-    int field_18;
-    int field_1C;
-    char pad_20[96];
-    int field_80;
-    int field_84;
-    char pad_88[12];
-    int field_90;
-    char pad_94[8];
-    int field_9C;
-    char pad_A0[20];
-    int field_B4;
-    char pad_B8[20];
-    int field_C8;
+// from server: 100% by Xemicl
+// from server: 100% by atomic.potato
 
-    void FactoryProduct();
+struct RBX_FormFactorPart {
+    void construct();
+    char pad0[0x80];
+    int field80;
+    int field84;
+    char pad88[0x8];
+    int field90;
+    char pad94[0x8];
+    int field9c;
+    char padA0[0x14];
+    int fieldB4;
+    char padB8[0x10];
+    int fieldC8;
 };
 
-extern "C" void __stdcall sub_7B45A0();
-
-void VBasicPartInstance::FactoryProduct() {
-    int v84 = this->field_84;
-    this->vfptr = 0xBB8E3C;
-    this->field_4 = 0xBB8E30;
-    this->field_18 = 0xBB8E24;
-    this->field_1C = 0xBB8E18;
-    this->field_80 = 0xBB8E10;
-    this->field_90 = 0xBB8DF8;
-    this->field_9C = 0xBB8DCC;
-    this->field_B4 = 0xBB8DA0;
-    this->field_C8 = 0xBB8D98;
-    int edx = *(int*)(v84 + 4);
-    *(int*)(edx + (int)this + 0x84) = 0xBB8D90;
-    int eax = this->field_84;
-    eax = *(int*)(eax + 4);
-    edx = eax - 0x248;
-    *(int*)(eax + (int)this + 0x80) = edx;
-    sub_7B45A0();
+void RBX_FormFactorPart::construct() {
+    int* p = *(int**)((char*)this + 0x84);
+    *(int*)((char*)this + 0x00) = 0xbb8734;
+    *(int*)((char*)this + 0x04) = 0xbb872c;
+    *(int*)((char*)this + 0x18) = 0xbb8720;
+    *(int*)((char*)this + 0x1c) = 0xbb8714;
+    *(int*)((char*)this + 0x80) = 0xbb870c;
+    *(int*)((char*)this + 0x90) = 0xbb86f4;
+    *(int*)((char*)this + 0x9c) = 0xbb86c8;
+    *(int*)((char*)this + 0xb4) = 0xbb869c;
+    *(int*)((char*)this + 0xc8) = 0xbb8694;
+    int v = p[1];
+    *(int*)((char*)this + v + 0x84) = 0xbb868c;
+    int* q = *(int**)((char*)this + 0x84);
+    int w = q[1];
+    *(int*)((char*)this + w + 0x80) = w - 0x248;
+    extern void tail();
+    tail();
 }

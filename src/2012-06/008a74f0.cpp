@@ -1,47 +1,42 @@
-// from server: 50% by Intel
-// Forward declarations for external functions
-extern "C" void* __cdecl operator_new(unsigned int size);  // 0x98211a
+// from server: 100% by Xemicl
+// from server: 100% by sophus
 
-// Vtable addresses (immediate values in assembly)
-const int vtable1_addr = 0x00bdfb94;
-const int vtable2_addr = 0x00bdfb68;
+void* __cdecl operator new(unsigned int);
+void __cdecl operator delete(void*);
 
-// The constructed object type (60 bytes, two vtables for multiple inheritance)
-struct DropperCursor {
-    void* vtable1;
-    void* vtable2;
-    char pad[60 - 8];
-    
-    // Constructor at 0x743150 - called with thiscall, one argument
-    void __thiscall construct(void* arg);
+struct Base
+{
+    int field0;
+    int field4;
+    char padding[0x34];
+    Base(void* arg);
 };
 
-// The class this method belongs to
-struct VDropperTool {
-    char pad_0[0xc];
-    void* field_c;
-    
-    // The method we're reconstructing
-    DropperCursor* __thiscall create_dropper_cursor();
+struct ToolVerb : Base
+{
+    __forceinline ToolVerb(void* arg);
 };
 
-// Implementation
-DropperCursor* VDropperTool::create_dropper_cursor() {
-    // Allocate 60 bytes
-    void* mem = operator_new(0x3c);
-    DropperCursor* obj = static_cast<DropperCursor*>(mem);
-    
-    if (obj != 0) {
-        // Get the argument from this->field_c + 0xac4
-        void* arg = *reinterpret_cast<void**>(reinterpret_cast<char*>(field_c) + 0xac4);
-        
-        // Call constructor
-        obj->construct(arg);
-        
-        // Set vtables (immediate values from assembly)
-        obj->vtable1 = reinterpret_cast<void*>(vtable1_addr);
-        obj->vtable2 = reinterpret_cast<void*>(vtable2_addr);
-    }
-    
-    return obj;
+__forceinline ToolVerb::ToolVerb(void* arg) : Base(arg)
+{
+    field0 = 0xba3c6c;
+    field4 = 0xba3c3c;
+}
+
+struct FieldC
+{
+    char padding[0xAC4];
+    void* fieldAC4;
+};
+
+struct VAdvArrowTool
+{
+    char padding[0xC];
+    FieldC* fieldC;
+    ToolVerb* create();
+};
+
+ToolVerb* VAdvArrowTool::create()
+{
+    return new ToolVerb(fieldC->fieldAC4);
 }

@@ -1,19 +1,28 @@
-// from server: 92% by tajop
-struct type_info {
-    __declspec(dllimport) bool operator==(const type_info&) const;
-};
+// from server: 100% by Xemicl
+namespace RBX { class Instance; }
+// from server: 100% by tajop
+// roc-lang: cpp
+// roc-cl: 30729
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <typeinfo>
 
-extern type_info type_info_0xd63ec4;
+namespace RBX { namespace Reflection { struct Tuple; } }
+namespace boost { template<class T> class shared_ptr { T* px; void* pn; }; }
 
-struct VCRbxObject_CComObjectNoLock {
-    void* inner;
-    bool is_shared_ptr_instance();
-};
-
-bool VCRbxObject_CComObjectNoLock::is_shared_ptr_instance() {
-    type_info* ti = *(type_info**)((char*)inner + 0x10);
-    if (ti == &type_info_0xd63ec4) {
-        return true;
+// [this]->+0x10 holds the described value's type_info.
+struct Descriptor {
+    char pad[0x10]; const std::type_info* type;
+    template<class T> bool isType() const {
+        if (type == &typeid(T)) return true;
+        return typeid(T) == *type;
     }
-    return type_info_0xd63ec4.operator==(*ti);
+};
+struct DescriptorRef {
+    const Descriptor* desc;
+    bool isTuple() const;
+};
+
+bool DescriptorRef::isTuple() const
+{
+    return desc->isType<boost::shared_ptr<RBX::Instance> >();
 }
