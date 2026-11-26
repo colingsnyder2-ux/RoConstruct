@@ -1,16 +1,17 @@
-// from server: 73% by atomic.potato
-extern "C" void sub_00683ab0(void *);
-
-struct S_func_008c9400 {
-    char pad0[44];
-    char *m_data;
-    void f(void *);
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct T { void g(); };
+struct S
+{
+    char pad[0x2c];
+    char *p;
+    void f(char *x);
 };
 
-void S_func_008c9400::f(void *arg)
+void S::f(char *x)
 {
-    if (arg)
-        sub_00683ab0(m_data + ((char *)arg - (char *)0) - 28);
-    else
-        sub_00683ab0(m_data);
+    int off = x ? (int)x - 0x1c : 0;
+    ((T *)(p + off))->g();
 }

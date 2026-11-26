@@ -1,12 +1,6 @@
-// from server: 82% by atomic.potato
-struct S_func_00422420 {
-    int f(int* p);
-};
-
-int S_func_00422420::f(int* p)
-{
-    int* q = *(int**)((char*)p - 8);
-    int* vtable = *(int**)q;
-    int (__stdcall* fn)(int*) = *(int (__stdcall**)(int*))vtable;
-    return fn(q);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct G{ unsigned long d1; unsigned short d2,d3; unsigned char d4[8]; };
+struct I{ virtual long __stdcall QI(const G& iid, void** pp)=0; virtual unsigned long __stdcall AR()=0; virtual unsigned long __stdcall RL()=0; };
+long __stdcall f(char* self, const G& iid, void** pp){ return (*(I**)(self-8))->QI(iid,pp); }

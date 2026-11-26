@@ -1,168 +1,76 @@
-// from server: 75% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/Selection.cpp
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+// roc 2012-06 008f5f70  unit: RBX::TweenService  size: 101 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 008f5f70
+//
+// 008f5f70  6aff                 push -1
+// 008f5f72  6888f6ac00           push 0xacf688
+// 008f5f77  64a100000000         mov eax, dword ptr fs:[0]
+// 008f5f7d  50                   push eax
+// 008f5f7e  64892500000000       mov dword ptr fs:[0], esp
+// 008f5f85  51                   push ecx
+// 008f5f86  56                   push esi
+// 008f5f87  8bf1                 mov esi, ecx
+// 008f5f89  89742404             mov dword ptr [esp + 4], esi
+// 008f5f8d  e81e02d9ff           call 0x6861b0
+// 008f5f92  c706b4ffbe00         mov dword ptr [esi], 0xbeffb4
+// 008f5f98  c74604acffbe00       mov dword ptr [esi + 4], 0xbeffac
+// 008f5f9f  c74618a0ffbe00       mov dword ptr [esi + 0x18], 0xbeffa0
+// 008f5fa6  c7461c94ffbe00       mov dword ptr [esi + 0x1c], 0xbeff94
+// 008f5fad  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 008f5fb5  e876bfe8ff           call 0x781f30
+// 008f5fba  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 008f5fbe  894628               mov dword ptr [esi + 0x28], eax
+// 008f5fc1  ff051c8ce400         inc dword ptr [0xe48c1c]
+// 008f5fc7  8bc6                 mov eax, esi
+// 008f5fc9  5e                   pop esi
+// 008f5fca  64890d00000000       mov dword ptr fs:[0], ecx
+// 008f5fd1  83c410               add esp, 0x10
+// 008f5fd4  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Selection.h"
 
-static RBX::Reflection::BoundFuncDesc<RBX::Selection, boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance>>>(void), 0> func_getSelection(&RBX::Selection::getSelection2, "Get", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Selection, void(boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance>>>), 1> func_setSelection(&RBX::Selection::setSelection, "Set", "selection", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
+struct InstanceA {
+    virtual void a0();
+};
 
-namespace RBX
+struct InstanceB {
+    virtual void b0();
+};
+
+struct InstanceBase : InstanceA, InstanceB {
+    InstanceBase();
+    char pad[0x10];
+};
+
+struct __declspec(novtable) HeartbeatInstance {
+    virtual void h0();
+};
+
+struct __declspec(novtable) IStepped {
+    virtual void s0();
+};
+
+struct Holder {
+    ~Holder();
+    int p;
+};
+
+int fetchTweenToken();
+extern int g_tweenServiceCount;
+
+struct TweenService : InstanceBase, HeartbeatInstance, IStepped {
+    int m20;
+    Holder m24;
+    int token;
+    TweenService();
+    virtual void a0();
+    virtual void b0();
+    virtual void h0();
+    virtual void s0();
+};
+
+TweenService::TweenService()
+    : token(fetchTweenToken())
 {
-	const char* const sSelection = "Selection";
-
-	Selection::Selection()
-		: selection(std::vector<boost::shared_ptr<Instance>>())
-	{
-		setName("Selection");
-	}
-
-	Selection::~Selection()
-	{
-		RBXASSERT(size() == 0);
-	}
-
-	void Selection::addFilteredSelection(ISelectionBase* fs)
-	{
-		filteredSelections.push_back(fs);
-	}
-
-	void Selection::removeFilteredSelection(ISelectionBase* fs)
-	{
-		filteredSelections.erase(std::find(filteredSelections.begin(), filteredSelections.end(), fs));
-	}
-
-	void Selection::raiseAdded(boost::shared_ptr<Instance> instance)
-	{
-		SelectionChanged event(instance, boost::shared_ptr<Instance>());
-
-		for (std::vector<ISelectionBase*>::iterator iter = filteredSelections.begin(); iter != filteredSelections.end(); iter++)
-		{
-			(*iter)->onSelectionChanged(event);
-		}
-
-		Notifier<Selection, SelectionChanged>::raise(event);
-	}
-
-	void Selection::raiseRemoved(boost::shared_ptr<Instance> source)
-	{
-		SelectionChanged event(boost::shared_ptr<Instance>(), source);
-
-		for (std::vector<ISelectionBase*>::iterator iter = filteredSelections.begin(); iter != filteredSelections.end(); iter++)
-		{
-			(*iter)->onSelectionChanged(event);
-		}
-
-		Notifier<Selection, SelectionChanged>::raise(event);
-	}
-
-	void Selection::toggleSelection(Instance* instance)
-	{
-		boost::shared_ptr<Instance> shared = shared_from(instance);
-		boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> sel = selection.write();
-
-		std::vector<boost::shared_ptr<Instance>>::iterator found = std::find(sel->begin(), sel->end(), shared);
-
-		if (found == sel->end())
-		{
-			sel->push_back(shared);
-			instance->Notifier<Instance, AncestorChanged>::addListener(this);
-			raiseAdded(shared);
-		}
-		else
-		{
-			sel->erase(found);
-			instance->Notifier<Instance, AncestorChanged>::removeListener(this);
-			raiseRemoved(shared);
-		}
-	}
-
-	void Selection::addToSelection(Instance* instance)
-	{
-		boost::shared_ptr<Instance> shared = shared_from(instance);
-		RBXASSERT(instance);
-
-		boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> sel = selection.write();
-
-		std::vector<boost::shared_ptr<Instance>>::iterator found = std::find(sel->begin(), sel->end(), shared);
-
-		if (found == sel->end())
-		{
-			sel->push_back(shared);
-			instance->Notifier<Instance, AncestorChanged>::addListener(this);
-			raiseAdded(shared);
-		}
-	}
-	
-	void Selection::removeFromSelection(const Instance* instance)
-	{
-		RBXASSERT(instance);
-
-		boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> sel = selection.write();
-
-		std::vector<boost::shared_ptr<Instance>>::iterator found = std::find(sel->begin(), sel->end(), shared_from(instance));
-
-		if (found != sel->end())
-		{
-			boost::shared_ptr<Instance> nonConst = *found;
-
-			sel->erase(found);
-			instance->Notifier<Instance, AncestorChanged>::removeListener(this);
-			raiseRemoved(nonConst);
-		}
-	}
-
-	void Selection::clearSelection()
-	{
-		while (!selection->empty())
-		{
-			boost::shared_ptr<Instance> instance = selection->back();
-			selection.write()->pop_back();
-
-			instance->Notifier<Instance, AncestorChanged>::removeListener(this);
-			raiseRemoved(instance);
-		}
-	}
-
-	void Selection::setSelection(Instance* instance)
-	{
-		boost::shared_ptr<Instance> inst = shared_from(instance);
-		
-		while (!selection->empty())
-		{
-			boost::shared_ptr<Instance> item = selection->back();
-
-			if (item == inst)
-			{
-				if (selection->size() == 1)
-					return;
-
-				boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> sel = selection.write();
-				sel->back() = sel->front();
-				sel->front() = item;
-			}
-			else
-			{
-				selection.write()->pop_back();
-				item->Notifier<Instance, AncestorChanged>::removeListener(this);
-				raiseRemoved(item);
-			}
-		}
-
-		if (inst)
-		{
-			selection.write()->push_back(inst);
-			instance->Notifier<Instance, AncestorChanged>::addListener(this);
-			raiseAdded(inst);
-		}
-	}
-
-	void Selection::onEvent(const Instance* source, AncestorChanged event)
-	{
-		if (source->getRootAncestor() != this->getRootAncestor())
-			removeFromSelection(source);
-	}
+    ++g_tweenServiceCount;
 }

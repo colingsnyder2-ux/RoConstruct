@@ -1,3 +1,4 @@
+// from server: 100% by Xemicl
 // roc 2012-06 0063de70  unit: seg_00630000  size: 22 bytes
 // Make this compile to the exact bytes below, then: roc check 2012-06 0063de70
 //

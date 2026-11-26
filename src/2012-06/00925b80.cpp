@@ -1,3 +1,4 @@
+// from server: 100% by Xemicl
 // roc 2012-06 00925b80  unit: RBX::SleepStage  size: 27 bytes
 // Make this compile to the exact bytes below, then: roc check 2012-06 00925b80
 //
@@ -13,20 +14,20 @@
 // 00925b96  5f                   pop edi
 // 00925b97  5e                   pop esi
 // 00925b98  c20400               ret 4
-// copied from an identical function in another client (function ?onPrimitiveAdded@JointStage@ns_ROCX00000e@@QAEXPAX@Z)
+// copied from an identical function in another client (function ?onBodyChanged@Stage@RBX@@QAEXPAVBody@2@@Z)
 
-namespace ns_ROCX00000e {
-struct IWorldStage {
-    void onPrimitiveAdded(void* p);
-};
-
-struct JointStage : IWorldStage {
-    void onPrimitiveAdded(void* p);
-};
-
-void JointStage::onPrimitiveAdded(void* p)
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+namespace RBX {
+class Body;
+class IStage { public: void onBody(Body* b); };
+class Body { public: void setStage(IStage* s); };
+class Stage : public IStage { public: void onBodyChanged(Body* b); };
+void Stage::onBodyChanged(Body* b)
 {
-    IWorldStage::onPrimitiveAdded(p);
-    ((IWorldStage*)p)->onPrimitiveAdded(this);
+    IStage::onBody(b);
+    b->setStage(this);
 }
 }

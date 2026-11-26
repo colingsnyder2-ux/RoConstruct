@@ -2,6 +2,8 @@
 // char arrays passed directly as template arguments (see native-headers/util/Name.h).
 #pragma once
 #include "AppDraw/Part.h"
+#include "v8world/Primitive.h" // INFERRED: 2008 PartInstance embeds Primitive at +0x228 (sizeof 0x404; part-embedded/v8datamodel/PartInstance.h)
+#include "util/ContentId.h"    // INFERRED: 2008 PartInstance holds ContentId after SurfacesNeedAdorn
 #include "AppDraw/SelectState.h"
 #include "v8datamodel/PVInstance.h"
 #include "v8datamodel/BrickColor.h"
@@ -55,13 +57,16 @@ namespace RBX
 		bool locked;
 		mutable Surfaces surfaces;
 		float renderImportance;
-		boost::scoped_ptr<Primitive> primitive;
+		Primitive primitive; // INFERRED: embedded Primitive at +0x228 (sizeof(PartInstance)==0x404, part-embedded/v8datamodel/PartInstance.h)
+		char _primitive_2008_tail[0x30]; // INFERRED: 2008 Primitive2008.h is 0xfc (+4B align) vs donor v8world/Primitive.h 0xd0; shortcut: pad until v8world/Primitive.h promotes to Primitive2008.h
 		World* myWorld;
 		float alphaModifier;
 		ComputeProp<Part, PartInstance> PersistentPart;
 		ComputeProp<bool, PartInstance> SurfacesNeedAdorn;
+		ContentId contentId; // INFERRED: recovered member type after SurfacesNeedAdorn (part-embedded/v8datamodel/PartInstance.h)
 
 	public:
+		static bool showContactPoints; // 00975f89 (rbxgs patch name; tested by shouldRender3dAdorn 00599fa0)
 		static bool highlightSleepParts;
 		static bool highlightAwakeParts;
 		static bool showAnchoredParts;
@@ -94,14 +99,16 @@ namespace RBX
 	public:
 		PartInstance();
 		virtual ~PartInstance();
+		// INFERRED: 00598c20 (vtable slot 1 of PartInstance/Seat/SpawnLocation/FlagStand, part-embedded/v8datamodel/PartInstance.h)
+		virtual void setName(const std::string& name);
 	public:
 		const Primitive* getPrimitive() const
 		{
-			return primitive.get();
+			return &primitive;
 		}
 		Primitive* getPrimitive()
 		{
-			return primitive.get();
+			return &primitive;
 		}
 		void setPartTypeUi(Part::PartType _type);
 		void setPartSizeUi(const G3D::Vector3& uiSize);
@@ -167,6 +174,7 @@ namespace RBX
 			return getTransparencyUi() > 0.1f;
 		}
 		void setTransparency(float value);
+		float getAlphaModifier() const { return alphaModifier; }
 		void setAlphaModifier(float value);
 		float getReflectance() const
 		{
@@ -213,7 +221,7 @@ namespace RBX
 		virtual void onCameraNear(float distance);
 		virtual void getCameraIgnorePrimitives(std::vector<const Primitive*>& primitives)
 		{
-			primitives.push_back(primitive.get());
+			primitives.push_back(&primitive);
 		}
 		virtual bool shouldRender3dAdorn() const;
 		virtual void render3dAdorn(Adorn* adorn);
@@ -231,7 +239,7 @@ namespace RBX
 		virtual void onParentControllerChanged();
 		virtual const Primitive* getBiggestPrimitive() const
 		{
-			return primitive.get();
+			return &primitive;
 		}
 		virtual bool hitTest(const G3D::Ray& worldRay, G3D::Vector3& worldHitPoint);
 		virtual Extents getExtentsWorld() const;

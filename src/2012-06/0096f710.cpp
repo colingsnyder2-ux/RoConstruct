@@ -1,250 +1,53 @@
-// from server: 66% by intel
+// from server: 100% by Xemicl
+// roc 2012-06 0096f710  unit: W4_D3DFORMAT::?$EnumDesc  size: 93 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 0096f710
+//
+// 0096f710  b801000000           mov eax, 1
+// 0096f715  8405f87fe500         test byte ptr [0xe57ff8], al
+// 0096f71b  751d                 jne 0x96f73a
+// 0096f71d  0905f87fe500         or dword ptr [0xe57ff8], eax
+// 0096f723  b96074e500           mov ecx, 0xe57460
+// 0096f728  e823efffff           call 0x96e650
+// 0096f72d  68c014b200           push 0xb214c0
+// 0096f732  e8be3a0100           call 0x9831f5
+// 0096f737  83c404               add esp, 4
+// 0096f73a  803d281ce00000       cmp byte ptr [0xe01c28], 0
+// 0096f741  740b                 je 0x96f74e
+// 0096f743  684474e500           push 0xe57444
+// 0096f748  ff15b821b200         call dword ptr [0xb221b8]
+// 0096f74e  803d281ce00000       cmp byte ptr [0xe01c28], 0
+// 0096f755  56                   push esi
+// 0096f756  8b356074e500         mov esi, dword ptr [0xe57460]
+// 0096f75c  740b                 je 0x96f769
+// 0096f75e  684474e500           push 0xe57444
+// 0096f763  ff15b421b200         call dword ptr [0xb221b4]
+// 0096f769  8bc6                 mov eax, esi
+// 0096f76b  5e                   pop esi
+// 0096f76c  c3                   ret 
+// copied from an identical function in another client (function ?getRegistryValue@@YAPAXXZ)
+
+// from server: 100% by EspClaude
+// roc 2009-06 007141b0
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 GLG3Dcpp/Shape.cpp
-
-// Candidate translation unit (score above; library headers required).
-/**
- @file GLG3D/Shape.cpp
-
- @maintainer Morgan McGuire, matrix@graphics3d.com
-
- @created 2005-08-30
- @edited  2005-08-30
- */
-
-#include "GLG3D/Shape.h"
-#include "GLG3D/RenderDevice.h"
-#include "GLG3D/Draw.h"
-
-namespace G3D {
-
-std::string Shape::typeToString(Type t) {
-    const static std::string name[] = 
-    {"NONE", "MESH", "BOX", "CYLINDER", "SPHERE", "RAY", "CAPSULE", "PLANE", "AXES"};
-
-    if (t <= AXES) {
-        return name[t];
-    } else {
-        return "";
-    }
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct CRITICAL_SECTION_ { char data[24]; };
+extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(CRITICAL_SECTION_*);
+extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(CRITICAL_SECTION_*);
+extern bool g_lockEnabled;
+extern CRITICAL_SECTION_ g_cs;
+struct ScopedLock {
+    ScopedLock() { if (g_lockEnabled) EnterCriticalSection(&g_cs); }
+    ~ScopedLock() { if (g_lockEnabled) LeaveCriticalSection(&g_cs); }
+};
+struct Registry {
+    void* value;
+    Registry() throw();
+    ~Registry();
+};
+void* getRegistryValue()
+{
+    static Registry s;
+    ScopedLock lock;
+    return s.value;
 }
-
-////////////////////////////////////////////////////////////////////////
-
-MeshShape::MeshShape(
-    const Array<Vector3>& vertex, 
-    const Array<int>& index) : 
-    _vertexArray(vertex), 
-    _indexArray(index),
-    _hasTree(false) {
-    
-    debugAssert(index.size() % 3 == 0);
-    debugAssert(index.size() >= 0);
-}
-
-
-void MeshShape::buildBSP() {
-    debugAssert(! _hasTree);
-
-    _area = 0;
-    for (int i = 0; i < _indexArray.size(); i += 3) {
-        const int v0 = _indexArray[i];
-        const int v1 = _indexArray[i + 1];
-        const int v2 = _indexArray[i + 2];
-
-        Triangle tri(_vertexArray[v0], _vertexArray[v1], _vertexArray[v2]);
-        _area += tri.area();
-        _bspTree.insert(tri);
-    }
-    _bspTree.balance();
-
-    Box box;
-    MeshAlg::computeBounds(_vertexArray, box, _boundingSphere);
-    _boundingSphere.getBounds(_boundingAABox);
-
-    _hasTree = true;
-}
-
-
-float MeshShape::area() const {
-    if (! _hasTree) {
-        const_cast<MeshShape*>(this)->buildBSP();
-    }
-    return _area;
-}
-
-
-float MeshShape::volume() const {
-    return 0;
-}
-
-Vector3 MeshShape::center() const {
-    if (! _hasTree) {
-        const_cast<MeshShape*>(this)->buildBSP();
-    }
-
-    return _boundingAABox.center();
-}
-
-Sphere MeshShape::boundingSphere() const {
-    if (! _hasTree) {
-        const_cast<MeshShape*>(this)->buildBSP();
-    }
-    return _boundingSphere;
-}
-
-AABox MeshShape::boundingAABox() const {
-    if (! _hasTree) {
-        const_cast<MeshShape*>(this)->buildBSP();
-    }
-    return _boundingAABox;
-}
-
-void MeshShape::getRandomSurfacePoint(
-    Vector3& P,
-    Vector3& N) const {
-    
-    if (! _hasTree) {
-        const_cast<MeshShape*>(this)->buildBSP();
-    }
-
-    // Choose uniformly at random based on surface area
-    float sum = random(0, _area);
-    typedef AABSPTree<Triangle>::Iterator IT;
-
-    IT it  = _bspTree.begin();
-    IT end = _bspTree.end();
-
-    while (it != end) {
-        const Triangle& tri = *it;
-        sum -= tri.area();
-        if (sum <= 0) {
-            // We want a point from this triangle.
-            N = tri.normal();
-            P = tri.randomPoint();
-            return;
-        }
-        ++it;
-    }
-    
-    // Should never get here, but we might due to roundoff.  Choose a point 
-    // on the first triangle.
-    const Triangle& tri = *_bspTree.begin();
-    N = tri.normal();
-    P = tri.randomPoint();
-}
-
-
-Vector3 MeshShape::randomInteriorPoint() const {
-    Vector3 P;
-    getRandomSurfacePoint(P);
-    return P;
-}
-
-
-void MeshShape::render(RenderDevice* rd, const CoordinateFrame& cframe, Color4 solidColor, Color4 wireColor) {
-    CoordinateFrame cframe0 = rd->getObjectToWorldMatrix();
-
-    rd->pushState();
-        rd->setObjectToWorldMatrix(cframe0 * cframe);
-        if (solidColor.a < 1.0) {
-            rd->setBlendFunc(RenderDevice::BLEND_SRC_ALPHA, RenderDevice::BLEND_ONE_MINUS_SRC_ALPHA);
-        }
-        rd->setColor(solidColor);
-        rd->beginPrimitive(RenderDevice::TRIANGLES);
-            for (int i = 0; i < _indexArray.size(); i += 3) {
-                const Vector3& v0 = _vertexArray[_indexArray[i + 0]];
-                const Vector3& v1 = _vertexArray[_indexArray[i + 1]];
-                const Vector3& v2 = _vertexArray[_indexArray[i + 2]];
-                rd->sendVertex(v0);
-                rd->sendVertex(v1);
-                rd->sendVertex(v2);
-            }
-        rd->endPrimitive();
-
-        rd->setBlendFunc(RenderDevice::BLEND_SRC_ALPHA, RenderDevice::BLEND_ONE_MINUS_SRC_ALPHA);
-        rd->setLineWidth(2);
-        rd->setColor(wireColor);
-        rd->beginPrimitive(RenderDevice::LINES);
-            for (int i = 0; i < _indexArray.size(); i += 3) {
-                const Vector3& v0 = _vertexArray[_indexArray[i + 0]];
-                const Vector3& v1 = _vertexArray[_indexArray[i + 1]];
-                const Vector3& v2 = _vertexArray[_indexArray[i + 2]];
-                rd->sendVertex(v0);
-                rd->sendVertex(v1);
-                rd->sendVertex(v1);
-                rd->sendVertex(v2);
-                rd->sendVertex(v2);
-                rd->sendVertex(v0);
-            }
-        rd->endPrimitive();
-    rd->popState();
-}
-
-////////////////////////////////////////////////////////////////////////
-
-void BoxShape::render(RenderDevice* rd, const CoordinateFrame& cframe, Color4 solidColor, Color4 wireColor) {
-    CoordinateFrame cframe0 = rd->getObjectToWorldMatrix();
-    rd->setObjectToWorldMatrix(cframe0 * cframe);
-    Draw::box(geometry, rd, solidColor, wireColor);
-    rd->setObjectToWorldMatrix(cframe0);
-}
-
-
-void SphereShape::render(RenderDevice* rd, const CoordinateFrame& cframe, Color4 solidColor, Color4 wireColor) {
-    CoordinateFrame cframe0 = rd->getObjectToWorldMatrix();
-    rd->setObjectToWorldMatrix(cframe0 * cframe);
-    Draw::sphere(geometry, rd, solidColor, wireColor);
-    rd->setObjectToWorldMatrix(cframe0);
-}
-
-
-void CylinderShape::render(RenderDevice* rd, const CoordinateFrame& cframe, Color4 solidColor, Color4 wireColor) {
-    CoordinateFrame cframe0 = rd->getObjectToWorldMatrix();
-    rd->setObjectToWorldMatrix(cframe0 * cframe);
-    Draw::cylinder(geometry, rd, solidColor, wireColor);
-    rd->setObjectToWorldMatrix(cframe0);
-}
-
-
-void CapsuleShape::render(RenderDevice* rd, const CoordinateFrame& cframe, Color4 solidColor, Color4 wireColor) {
-    CoordinateFrame cframe0 = rd->getObjectToWorldMatrix();
-    rd->setObjectToWorldMatrix(cframe0 * cframe);
-    Draw::capsule(geometry, rd, solidColor, wireColor);
-    rd->setObjectToWorldMatrix(cframe0);
-}
-
-
-void RayShape::render(RenderDevice* rd, const CoordinateFrame& cframe, Color4 solidColor, Color4 wireColor) {
-    (void)wireColor;
-    CoordinateFrame cframe0 = rd->getObjectToWorldMatrix();
-    rd->setObjectToWorldMatrix(cframe0 * cframe);
-    Draw::ray(geometry, rd, solidColor);
-    rd->setObjectToWorldMatrix(cframe0);
-}
-
-
-void AxesShape::render(RenderDevice* rd, const CoordinateFrame& cframe, Color4 solidColor, Color4 wireColor) {
-    (void)wireColor;
-    (void)solidColor;
-    CoordinateFrame cframe0 = rd->getObjectToWorldMatrix();
-    rd->setObjectToWorldMatrix(cframe0 * cframe);
-    Draw::axes(geometry, rd);
-    rd->setObjectToWorldMatrix(cframe0);
-}
-
-
-void PlaneShape::render(RenderDevice* rd, const CoordinateFrame& cframe, Color4 solidColor, Color4 wireColor) {
-    CoordinateFrame cframe0 = rd->getObjectToWorldMatrix();
-
-    rd->setObjectToWorldMatrix(cframe0 * cframe);
-
-    Draw::plane(geometry, rd, solidColor, wireColor);
-    
-    rd->setObjectToWorldMatrix(cframe0);
-}
-
-}
-

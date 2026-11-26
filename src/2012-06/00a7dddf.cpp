@@ -1,15 +1,8 @@
-// from server: 61% by atomic.potato
-extern "C" void __cdecl sub_a814d5(int);
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function _fn_ROCX000000_0081ce41@8)
 
-extern "C" void __cdecl imported_QQVW(int, float);
-
-struct S
-{
-    void f(int, float);
-};
-
-void S::f(int a, float b)
-{
-    sub_a814d5(1);
-    imported_QQVW(a, b);
-}
+// from server: 100% by EspClaude
+// roc-flags: /O1 /GS- /EHsc /MD /Oy- /hotpatch
+extern "C" int __stdcall helper(int);
+extern "C" int (__stdcall *pfn_0081ce41)(int, float);
+extern "C" int __stdcall func_0081ce41(int a, float b) { helper(1); return pfn_0081ce41(a, b); }

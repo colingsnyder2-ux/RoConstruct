@@ -1,192 +1,99 @@
-// from server: 63% by colin
+// from server: 100% by Xemicl
+// roc 2012-06 006810f0  unit: VAuthoringSettings::?$FactoryProduct  size: 123 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 006810f0
+//
+// 006810f0  6aff                 push -1
+// 006810f2  684b9baa00           push 0xaa9b4b
+// 006810f7  64a100000000         mov eax, dword ptr fs:[0]
+// 006810fd  50                   push eax
+// 006810fe  64892500000000       mov dword ptr fs:[0], esp
+// 00681105  51                   push ecx
+// 00681106  56                   push esi
+// 00681107  8bf1                 mov esi, ecx
+// 00681109  89742404             mov dword ptr [esp + 4], esi
+// 0068110d  8b4e04               mov ecx, dword ptr [esi + 4]
+// 00681110  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 00681118  85c9                 test ecx, ecx
+// 0068111a  7406                 je 0x681122
+// 0068111c  56                   push esi
+// 0068111d  e84e87efff           call 0x579870
+// 00681122  8b7608               mov esi, dword ptr [esi + 8]
+// 00681125  c7442410ffffffff     mov dword ptr [esp + 0x10], 0xffffffff
+// 0068112d  85f6                 test esi, esi
+// 0068112f  742a                 je 0x68115b
+// 00681131  8d4604               lea eax, [esi + 4]
+// 00681134  83c9ff               or ecx, 0xffffffff
+// 00681137  f00fc108             lock xadd dword ptr [eax], ecx
+// 0068113b  751e                 jne 0x68115b
+// 0068113d  8b16                 mov edx, dword ptr [esi]
+// 0068113f  8b4204               mov eax, dword ptr [edx + 4]
+// 00681142  8bce                 mov ecx, esi
+// 00681144  ffd0                 call eax
+// 00681146  8d4e08               lea ecx, [esi + 8]
+// 00681149  83caff               or edx, 0xffffffff
+// 0068114c  f00fc111             lock xadd dword ptr [ecx], edx
+// 00681150  7509                 jne 0x68115b
+// 00681152  8b06                 mov eax, dword ptr [esi]
+// 00681154  8b5008               mov edx, dword ptr [eax + 8]
+// 00681157  8bce                 mov ecx, esi
+// 00681159  ffd2                 call edx
+// 0068115b  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 0068115f  5e                   pop esi
+// 00681160  64890d00000000       mov dword ptr fs:[0], ecx
+// 00681167  83c410               add esp, 0x10
+// 0068116a  c3                   ret 
+// copied from an identical function in another client (function ??1?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ)
+
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 GLG3Dcpp/TextureManager.cpp
-
-// Candidate translation unit (score above; library headers required).
-/**
-  @file TextureManager.cpp
-
-  @maintainer Morgan McGuire, matrix@graphics3d.com
-  @cite by Morgan McGuire & Peter Sibley
-
-  @created 2003-11-25
-  @edited  2005-02-24
-*/
-
-#include "GLG3D/TextureManager.h"
-
-namespace G3D {
-
-TextureManager::TextureManager(size_t _sizeHint) : size(0), sizeHint(_sizeHint) {}
-
-unsigned int TextureManager::TextureArgs::hashCode() const {
-    return 
-        (int)format +
-        (int)wrap + 
-        (int)interpolate * 1027 +
-        (int)dimension +
-        ::hashCode(filename) +
-        (int)brighten;
-}
-
-
-bool TextureManager::TextureArgs::operator==(const TextureArgs& other) const {
-    return 
-        (format         == other.format)        &&
-        (wrap           == other.wrap)          &&
-        (interpolate    == other.interpolate)   &&
-        (filename       == other.filename)      &&
-        (dimension      == other.dimension )    && 
-        (brighten       == other.brighten);
-}
-
-
-void TextureManager::setMemorySizeHint(size_t _sizeHint){
-    debugAssert(_sizeHint > 0 && _sizeHint < 1000*1024*1024);
-    sizeHint = _sizeHint;
-}
-
-    
-size_t TextureManager::memorySizeHint() const {
-    return sizeHint;
-}
-    
-
-size_t TextureManager::sizeInMemory() const {
-    return size;
-}
-
-TextureRef TextureManager::findTexture(
-									   const std::string&          filename, 
-									   const TextureFormat*        desiredFormat,    
-									   Texture::WrapMode           wrap,  
-									   Texture::InterpolateMode    interpolate ,  
-									   Texture::Dimension          dimension,  
-									   double                      brighten)
-{
-	TextureArgs args(desiredFormat);
-
-	args.filename       = filename;
-	args.wrap           = wrap;
-	args.interpolate    = interpolate;
-	args.dimension      = dimension;
-	args.brighten       = brighten;
-
-	TextureRef texture;
-	cache.get(args, texture);
-	return texture;
-}
-
-
-bool TextureManager::cacheTexture(
-					 TextureRef					texture,
-					 const std::string&          filename, 
-					 const TextureFormat*        desiredFormat,    
-					 Texture::WrapMode           wrap,  
-					 Texture::InterpolateMode    interpolate ,  
-					 Texture::Dimension          dimension,  
-					 double                      brighten)
-{
-	TextureArgs args(desiredFormat);
-
-	args.filename       = filename;
-	args.wrap           = wrap;
-	args.interpolate    = interpolate;
-	args.dimension      = dimension;
-	args.brighten       = brighten;
-
-	if (cache.containsKey(args))
-		return false;
-	cache.set(args, texture);
-	size += texture->sizeInMemory();
-	checkCacheSize();
-	return true;
-}
-
-TextureRef TextureManager::loadTexture(
-    const std::string&          filename, 
-    const TextureFormat*        desiredFormat,    
-    Texture::WrapMode           wrap,  
-    Texture::InterpolateMode    interpolate ,  
-    Texture::Dimension          dimension,  
-    double                      brighten) {
-
-    TextureArgs args(desiredFormat);
-
-    args.filename       = filename;
-    args.wrap           = wrap;
-    args.interpolate    = interpolate;
-    args.dimension      = dimension;
-    args.brighten       = brighten;
-
-    if (! cache.containsKey(args)) {
-        // Not in the cache, so we must load it        
-        TextureRef texture = NULL;
-
-        texture = Texture::fromFile(
-            filename,
-            desiredFormat,  
-            wrap,
-            interpolate,
-            dimension,
-            brighten);
-
-        alwaysAssertM(texture != NULL, std::string("Texture not found ") + filename); 
-        cache.set(args, texture);
-        size += texture->sizeInMemory();
-        checkCacheSize();
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <intrin.h>
+#pragma intrinsic(_InterlockedDecrement)
+namespace std { template<class T> class allocator; }
+namespace boost {
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    void release()
+    {
+        if (_InterlockedDecrement(&use_count_) == 0) { dispose(); weak_release(); }
     }
-    return cache[args];
-}
-
-void TextureManager::checkCacheSize() {
-    if (size <= sizeHint) {
-        return;
+    void weak_release()
+    {
+        if (_InterlockedDecrement(&weak_count_) == 0) destroy();
     }
-
-    Array <TextureArgs> staleEntry;
-    getStaleEntries(staleEntry);
-    
-    //To avoid thrashing we we remove entries in a random order
-    staleEntry.randomize();
-
-    while ((size > sizeHint) && (staleEntry.size() > 0)) {
-        size -= cache[staleEntry.last()]->sizeInMemory();
-        debugPrintf(" CheckCacheSize is removing %s   \n" , staleEntry.last().filename.c_str());
-        cache.remove(staleEntry.pop());
-    }
+    long use_count_;
+    long weak_count_;
+};
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
 }
-
-void TextureManager::emptyCache() {
-    cache.clear();
-    size = 0;
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+    T* get() const { return px; }
+};
+template<class Sig, class A> class function;
+namespace signals { namespace detail {
+class slot_base {
+public:
+    struct data_t { void release(const slot_base* s); };
+    int pad;
+    shared_ptr<data_t> data;
+};
+}}
+template<class SlotFunction> class slot : public signals::detail::slot_base {
+public:
+    ~slot() { if (data.get()) data.get()->release(this); }
+};
 }
-
-
-void TextureManager::trimCache() {
-    Array <TextureArgs> staleEntry;
-    getStaleEntries(staleEntry);
-    for (int i = 0; i < staleEntry.length(); ++i) {
-        size -= cache[staleEntry[i]]->sizeInMemory();
-            debugPrintf("TrimCache is removing %s   \n" , staleEntry.last().filename.c_str());
-        cache.remove(staleEntry[i]);
-    }
-}
-
-
-void TextureManager::getStaleEntries(Array <TextureArgs>& staleEntry) {
-    Table <TextureArgs, TextureRef>::Iterator current   = cache.begin();
-    Table <TextureArgs, TextureRef>::Iterator end       = cache.end();
-    // We cannot modify the hash table while we iterate over it. 
-    // So we create a list of entries to be removed.
-    while (current != end) {
-        if (current->value.isLastReference()) {
-            staleEntry.append(current->key);
-        }
-        ++current;
-    }
-}
-
-}
+namespace RBX { class Instance; }
+template class boost::slot<boost::function<void (boost::shared_ptr<RBX::Instance>), std::allocator<void> > >;

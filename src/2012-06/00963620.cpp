@@ -1,18 +1,26 @@
-// from server: 61% by atomic.potato
-struct EdgeStage
-{
-    int pad0;
-    int pad4;
-    int field8;
-    void *f(unsigned int);
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?f@CleanStage@ns_ROCX00000b@@QAEXPAUS_func_00645830@2@@Z)
+
+namespace ns_ROCX00000b {
+struct S_func_00645830 {
+    char pad0[4];
+    int m_x;
+    void f(int a1);
 };
 
-extern "C" void sub_917430(void *, EdgeStage *);
-extern "C" void sub_96bbc0(int, unsigned int);
+struct NextStage {
+    void f(S_func_00645830* object);
+};
 
-void *EdgeStage::f(unsigned int value)
+struct CleanStage {
+    char pad0[8];
+    NextStage* next;
+    void f(S_func_00645830* object);
+};
+
+void CleanStage::f(S_func_00645830* object)
 {
-    sub_917430((void *)value, this);
-    sub_96bbc0(field8, value);
-    return this;
+    object->f((int)this);
+    next->f(object);
+}
 }

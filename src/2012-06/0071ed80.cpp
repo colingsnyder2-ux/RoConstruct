@@ -1,11 +1,4 @@
-// from server: 90% by Intel
-struct S_func_0071ed80 {
-    char pad[20];
-    int m_value;
-    double f();
-};
-double S_func_0071ed80::f()
-{
-    extern const double divisor;
-    return divisor / static_cast<double>(m_value);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /fp:fast /GS- /EHsc /MD
+struct S{ char p[0x14]; int n; float f(); }; float S::f(){ return 100.0f/n; }

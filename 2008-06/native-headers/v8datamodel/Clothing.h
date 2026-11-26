@@ -46,11 +46,14 @@ namespace RBX
 	// scalar deleting destructor, e.g. 005d5890 -> 005d58a0). No IModelModifier vtable exists in the binary
 	// and the factory constructors/destructors store none, hence novtable. native ModelInstance.h keeps a
 	// vector<IModelModifier*>; this definition belongs there or in its own header (proposal).
+#ifndef RBX_IMODELMODIFIER_DEFINED
+#define RBX_IMODELMODIFIER_DEFINED
 	class __declspec(novtable) IModelModifier
 	{
 	public:
 		virtual ~IModelModifier() {}
 	};
+#endif
 
 	// CharacterAppearance: abstract, no vtable or class descriptor in the binary; the FactoryProduct
 	// constructors (e.g. 005d3e50) call Instance::Instance directly and the destructors (005d3bc0) jump to

@@ -1,162 +1,516 @@
-// from server: 35% by intel
+// from server: 100% by Xemicl
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/RunStateOwner.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: raknet-4.081 StringCompressor.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
-#include "util/Timer.h"
-#include "util/standardout.h"
-#include "v8datamodel/DataModel.h"
-#include <boost/thread/xtime.hpp>
+/*
+ *  Copyright (c) 2014, Oculus VR, Inc.
+ *  All rights reserved.
+ *
+ *  This source code is licensed under the BSD-style license found in the
+ *  LICENSE file in the root directory of this source tree. An additional grant 
+ *  of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
 
-namespace RBX
+/// \file
+///
+
+
+
+#include "StringCompressor.h"
+#include "DS_HuffmanEncodingTree.h"
+#include "BitStream.h"
+#include "RakString.h"
+#include "RakAssert.h"
+#include <string.h>
+
+#include <memory.h>
+
+
+
+
+
+
+
+using namespace RakNet;
+
+StringCompressor* StringCompressor::instance=0;
+int StringCompressor::referenceCount=0;
+
+void StringCompressor::AddReference(void)
 {
-	const char* const sRunService = "RunService";
-
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> runFunction(&RunService::run, "Run", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> pauseFunction(&RunService::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> resetFunction(&RunService::reset, "Reset", Reflection::FunctionDescriptor::NeedTrustedCaller);
-
-	static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "interval");
-	Reflection::SignalDesc<RunService, void(float, float)> RunService::event_Stepped("Stepped", "time", "step");
-
-	RunService::RunService()
-		: framePeriod(1.0f/30.0f),
-		  runState(RS_NORMAL),
-		  invalidRunViewCount(0),
-		  stopRequested(false),
-		  runDisabled(false)
+	if (++referenceCount==1)
 	{
-		setName("Run Service");
+		instance = RakNet::OP_NEW<StringCompressor>( _FILE_AND_LINE_ );
 	}
+}
+void StringCompressor::RemoveReference(void)
+{
+	RakAssert(referenceCount > 0);
 
-	RunService::~RunService()
+	if (referenceCount > 0)
 	{
-		RBXASSERT(views.empty());
-	}
-
-	void RunService::endRunThread(bool join)
-	{
-		stopRequested = true;
-		stateChangedCondition.notify_all();
-
-		if (join)
-			runThread->join();
-	}
-
-	void RunService::onAncestorChanged(const AncestorChanged& event)
-	{
-		if (!getParent())
+		if (--referenceCount==0)
 		{
-			stopRequested = true;
-			stateChangedCondition.notify_all();
+			RakNet::OP_DELETE(instance, _FILE_AND_LINE_);
+			instance=0;
 		}
 	}
+}
 
-	void RunService::setRunState(RunState newState)
+StringCompressor* StringCompressor::Instance(void)
+{
+	return instance;
+}
+
+unsigned int englishCharacterFrequencies[ 256 ] =
+{
+	0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		722,
+		0,
+		0,
+		2,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		11084,
+		58,
+		63,
+		1,
+		0,
+		31,
+		0,
+		317,
+		64,
+		64,
+		44,
+		0,
+		695,
+		62,
+		980,
+		266,
+		69,
+		67,
+		56,
+		7,
+		73,
+		3,
+		14,
+		2,
+		69,
+		1,
+		167,
+		9,
+		1,
+		2,
+		25,
+		94,
+		0,
+		195,
+		139,
+		34,
+		96,
+		48,
+		103,
+		56,
+		125,
+		653,
+		21,
+		5,
+		23,
+		64,
+		85,
+		44,
+		34,
+		7,
+		92,
+		76,
+		147,
+		12,
+		14,
+		57,
+		15,
+		39,
+		15,
+		1,
+		1,
+		1,
+		2,
+		3,
+		0,
+		3611,
+		845,
+		1077,
+		1884,
+		5870,
+		841,
+		1057,
+		2501,
+		3212,
+		164,
+		531,
+		2019,
+		1330,
+		3056,
+		4037,
+		848,
+		47,
+		2586,
+		2919,
+		4771,
+		1707,
+		535,
+		1106,
+		152,
+		1243,
+		100,
+		0,
+		2,
+		0,
+		10,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0
+};
+
+StringCompressor::StringCompressor()
+{
+	DataStructures::Map<int, HuffmanEncodingTree *>::IMPLEMENT_DEFAULT_COMPARISON();
+
+	// Make a default tree immediately, since this is used for RPC possibly from multiple threads at the same time
+	HuffmanEncodingTree *huffmanEncodingTree = RakNet::OP_NEW<HuffmanEncodingTree>( _FILE_AND_LINE_ );
+	huffmanEncodingTree->GenerateFromFrequencyTable( englishCharacterFrequencies );
+
+	huffmanEncodingTrees.Set(0, huffmanEncodingTree);
+}
+void StringCompressor::GenerateTreeFromStrings( unsigned char *input, unsigned inputLength, uint8_t languageId )
+{
+	HuffmanEncodingTree *huffmanEncodingTree;
+	if (huffmanEncodingTrees.Has(languageId))
 	{
-		RunTransition transition(runState, newState);
-		runState = newState;
-
-		Notifier<RunService, RunState>::raise(newState);
-		Notifier<RunService, RunTransition>::raise(transition);
+		huffmanEncodingTree = huffmanEncodingTrees.Get(languageId);
+		RakNet::OP_DELETE(huffmanEncodingTree, _FILE_AND_LINE_);
 	}
 
-	void RunService::raiseStepped(float time, float step)
+	unsigned index;
+	unsigned int frequencyTable[ 256 ];
+
+	if ( inputLength == 0 )
+		return ;
+
+	// Zero out the frequency table
+	memset( frequencyTable, 0, sizeof( frequencyTable ) );
+
+	// Generate the frequency table from the strings
+	for ( index = 0; index < inputLength; index++ )
+		frequencyTable[ input[ index ] ] ++;
+
+	// Build the tree
+	huffmanEncodingTree = RakNet::OP_NEW<HuffmanEncodingTree>( _FILE_AND_LINE_ );
+	huffmanEncodingTree->GenerateFromFrequencyTable( frequencyTable );
+	huffmanEncodingTrees.Set(languageId, huffmanEncodingTree);
+}
+
+StringCompressor::~StringCompressor()
+{
+	for (unsigned i=0; i < huffmanEncodingTrees.Size(); i++)
+		RakNet::OP_DELETE(huffmanEncodingTrees[i], _FILE_AND_LINE_);
+}
+
+void StringCompressor::EncodeString( const char *input, int maxCharsToWrite, RakNet::BitStream *output, uint8_t languageId )
+{
+	HuffmanEncodingTree *huffmanEncodingTree;
+	if (huffmanEncodingTrees.Has(languageId)==false)
+		return;
+	huffmanEncodingTree=huffmanEncodingTrees.Get(languageId);
+
+	if ( input == 0 )
 	{
-		Notifier<RunService, Stepped>::raise(Stepped(time, step));
-		event_Stepped.fire(this, time, step);
+		output->WriteCompressed( (uint32_t) 0 );
+		return ;
 	}
 
-	void RunService::raiseHeartbeat(float time, float step)
+	RakNet::BitStream encodedBitStream;
+
+	uint32_t stringBitLength;
+
+	int charsToWrite;
+
+	if ( maxCharsToWrite<=0 || ( int ) strlen( input ) < maxCharsToWrite )
+		charsToWrite = ( int ) strlen( input );
+	else
+		charsToWrite = maxCharsToWrite - 1;
+
+	huffmanEncodingTree->EncodeArray( ( unsigned char* ) input, charsToWrite, &encodedBitStream );
+
+	stringBitLength = (uint32_t) encodedBitStream.GetNumberOfBitsUsed();
+
+	output->WriteCompressed( stringBitLength );
+
+	output->WriteBits( encodedBitStream.GetData(), stringBitLength );
+}
+
+bool StringCompressor::DecodeString( char *output, int maxCharsToWrite, RakNet::BitStream *input, uint8_t languageId )
+{
+	HuffmanEncodingTree *huffmanEncodingTree;
+	if (huffmanEncodingTrees.Has(languageId)==false)
+		return false;
+	if (maxCharsToWrite<=0)
+		return false;
+	huffmanEncodingTree=huffmanEncodingTrees.Get(languageId);
+
+	uint32_t stringBitLength;
+	int bytesInStream;
+
+	output[ 0 ] = 0;
+
+	if ( input->ReadCompressed( stringBitLength ) == false )
+		return false;
+
+	if ( (unsigned) input->GetNumberOfUnreadBits() < stringBitLength )
+		return false;
+
+	bytesInStream = huffmanEncodingTree->DecodeArray( input, stringBitLength, maxCharsToWrite, ( unsigned char* ) output );
+
+	if ( bytesInStream < maxCharsToWrite )
+		output[ bytesInStream ] = 0;
+	else
+		output[ maxCharsToWrite - 1 ] = 0;
+
+	return true;
+}
+#ifdef _CSTRING_COMPRESSOR
+void StringCompressor::EncodeString( const CString &input, int maxCharsToWrite, RakNet::BitStream *output )
+{
+	LPTSTR p = input;
+	EncodeString(p, maxCharsToWrite*sizeof(TCHAR), output, languageID);
+}
+bool StringCompressor::DecodeString( CString &output, int maxCharsToWrite, RakNet::BitStream *input, uint8_t languageId )
+{
+	LPSTR p = output.GetBuffer(maxCharsToWrite*sizeof(TCHAR));
+	DecodeString(p,maxCharsToWrite*sizeof(TCHAR), input, languageID);
+	output.ReleaseBuffer(0)
+
+}
+#endif
+#ifdef _STD_STRING_COMPRESSOR
+void StringCompressor::EncodeString( const std::string &input, int maxCharsToWrite, RakNet::BitStream *output, uint8_t languageId )
+{
+	EncodeString(input.c_str(), maxCharsToWrite, output, languageId);
+}
+bool StringCompressor::DecodeString( std::string *output, int maxCharsToWrite, RakNet::BitStream *input, uint8_t languageId )
+{
+	if (maxCharsToWrite <= 0)
 	{
-		Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-		event_Heartbeat.fire(this, step);
+		output->clear();
+		return true;
 	}
 
-	void RunService::invalidateRunViews()
-	{
-		boost::mutex::scoped_lock lock(viewMutex);
+	char *destinationBlock;
+	bool out;
 
-		if (invalidRunViewCount == 0)
-		{
-			invalidRunViewCount = (int)views.size();
-			if (invalidRunViewCount > 0)
-			{
-				for (std::map<IRunView*, bool>::iterator iter = views.begin(); iter != views.end(); iter++)
-				{
-					iter->first->InvalidateRunView();
-					iter->second = false;
-				}
-				runViewsDoneCondition.notify_all();
-			}
-		}
+#if USE_ALLOCA==1
+	if (maxCharsToWrite < MAX_ALLOCA_STACK_ALLOCATION)
+	{
+		destinationBlock = (char*) alloca(maxCharsToWrite);
+		out=DecodeString(destinationBlock, maxCharsToWrite, input, languageId);
+		*output=destinationBlock;
+	}
+	else
+#endif
+	{
+		destinationBlock = (char*) rakMalloc_Ex( maxCharsToWrite, _FILE_AND_LINE_ );
+		out=DecodeString(destinationBlock, maxCharsToWrite, input, languageId);
+		*output=destinationBlock;
+		rakFree_Ex(destinationBlock, _FILE_AND_LINE_ );
 	}
 
-	void RunService::start()
+	return out;
+}
+#endif
+void StringCompressor::EncodeString( const RakString *input, int maxCharsToWrite, RakNet::BitStream *output, uint8_t languageId )
+{
+	EncodeString(input->C_String(), maxCharsToWrite, output, languageId);
+}
+bool StringCompressor::DecodeString( RakString *output, int maxCharsToWrite, RakNet::BitStream *input, uint8_t languageId )
+{
+	if (maxCharsToWrite <= 0)
 	{
-		RBXASSERT(!runThread);
-
-		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
-		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc")));
+		output->Clear();
+		return true;
 	}
 
-	void RunService::runProc(boost::shared_ptr<DataModel> dataModel)
+	char *destinationBlock;
+	bool out;
+
+#if USE_ALLOCA==1
+	if (maxCharsToWrite < MAX_ALLOCA_STACK_ALLOCATION)
 	{
-		double lastTime = getRealTime();
-		while (true)
-		{
-			double deltaTime = lastTime - getRealTime();
-
-			{
-				boost::mutex::scoped_lock lock(viewMutex);
-				for (std::map<IRunView*, bool>::iterator it = views.begin(); it != views.end(); it++)
-					it->first->AdjustThrottle(deltaTime);
-			}
-
-			double clampedDeltaTime = G3D::max(0.0, deltaTime);
-			boost::xtime stateChangedTimeout;
-			boost::xtime_get(&stateChangedTimeout, boost::TIME_UTC);
-			stateChangedTimeout.nsec += (boost::xtime::xtime_nsec_t)(clampedDeltaTime * 1e9);
-
-			bool stateChanged;
-			{
-				boost::mutex::scoped_lock lock(runMutex);
-				stateChanged = stateChangedCondition.timed_wait(lock, stateChangedTimeout);
-			}
-
-			if (!stateChanged)
-			{
-				boost::xtime runViewsDoneTimeout;
-				boost::xtime_get(&runViewsDoneTimeout, boost::TIME_UTC);
-				runViewsDoneTimeout.sec += 1;
-
-				boost::mutex::scoped_lock lock(runMutex);
-				if (invalidRunViewCount != 0)
-					runViewsDoneCondition.timed_wait(lock, runViewsDoneTimeout);
-			}
-
-			if (deltaTime <= 0.0)
-				lastTime = getRealTime();
-
-			{
-				DataModel::Lock lock(dataModel);
-
-				if (!stopRequested)
-				{
-					RBXASSERT(getParent() == dataModel.get());
-					dataModel->step(framePeriod);
-				}
-				else
-				{
-					StandardOut::singleton()->print(MESSAGE_INFO, "runProc ending");
-					return;
-				}
-			}
-
-			lastTime += framePeriod;
-		}
+		destinationBlock = (char*) alloca(maxCharsToWrite);
+		out=DecodeString(destinationBlock, maxCharsToWrite, input, languageId);
+		*output=destinationBlock;
 	}
+	else
+#endif
+	{
+		destinationBlock = (char*) rakMalloc_Ex( maxCharsToWrite, _FILE_AND_LINE_ );
+		out=DecodeString(destinationBlock, maxCharsToWrite, input, languageId);
+		*output=destinationBlock;
+		rakFree_Ex(destinationBlock, _FILE_AND_LINE_ );
+	}
+
+	return out;
 }

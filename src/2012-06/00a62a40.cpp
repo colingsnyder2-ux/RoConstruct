@@ -1,21 +1,21 @@
-// from server: 72% by intel
+// from server: 100% by Xemicl
 // roc-lang: cpp
 // roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: xtp-15.2.1 Source/SyntaxEdit/XTPSyntaxEditColorComboBox.cpp
+// roc-flags: /O2 /MD /GS /EHsc /Ob1
+// roc-lib: xtp-11.2.2-lib-strlen Source/Controls/XTColorPageCustom.cpp
 
 // Candidate translation unit (score above; library headers required).
-// XTPSyntaxEditColorComboBox.cpp : implementation file
+// XTColorPageCustom.cpp : implementation file
 //
-// This file is a part of the XTREME TOOLKIT PRO MFC class library.
-// (c)1998-2011 Codejock Software, All Rights Reserved.
+// This file is a part of the XTREME CONTROLS MFC class library.
+// (c)1998-2007 Codejock Software, All Rights Reserved.
 //
 // THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
 // RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
 // CONSENT OF CODEJOCK SOFTWARE.
 //
 // THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
-// IN THE XTREME SYNTAX EDIT LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
 // YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
 // SINGLE COMPUTER.
 //
@@ -27,15 +27,15 @@
 
 #include "stdafx.h"
 #include "Resource.h"
-#include "Common/Resource.h"
 
-// common includes
-
+#include "Common/XTPDrawHelpers.h"
 #include "Common/XTPColorManager.h"
-#include "Common/XTPResourceManager.h"
+#include "Common/XTPSystemHelpers.h"
 
-// syntax editor includes
-#include "XTPSyntaxEditColorComboBox.h"
+#include "XTNotify.h"
+#include "XTColorRef.h"
+#include "XTColorDialog.h"
+#include "XTColorPageCustom.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -43,152 +43,67 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
-#define COLOR_ITEM_WIDTH   11
+#define DEFAULT_LUMINANCE 0.50f
 
 /////////////////////////////////////////////////////////////////////////////
-// CXTPSyntaxEditColorComboBox
+// CXTColorBase
 
-CXTPSyntaxEditColorComboBox::CXTPSyntaxEditColorComboBox()
-: m_bPreInit(true)
-, m_crAuto(COLORREF_NULL)
-, m_crUser(COLORREF_NULL)
-, m_iPrevSel(CB_ERR)
+CXTColorBase::CXTColorBase()
+{
+	m_nLum = 0.0;
+	m_nSat = 0.0;
+	m_nHue = 0.0;
+	m_ptMousePos = CPoint(0, 0);
+	m_bPreSubclassInit = true;
+}
+
+CXTColorBase::~CXTColorBase()
 {
 }
 
-CXTPSyntaxEditColorComboBox::~CXTPSyntaxEditColorComboBox()
-{
-}
+CXTColorBase::FocusedControl CXTColorBase::m_eHasFocus = focusNone;
 
-IMPLEMENT_DYNAMIC(CXTPSyntaxEditColorComboBox, CComboBox)
-
-BEGIN_MESSAGE_MAP(CXTPSyntaxEditColorComboBox, CComboBox)
-	//{{AFX_MSG_MAP(CXTPSyntaxEditColorComboBox)
+BEGIN_MESSAGE_MAP(CXTColorBase, CStatic)
+	//{{AFX_MSG_MAP(CXTColorBase)
+	ON_WM_LBUTTONDOWN()
+	ON_WM_MOUSEMOVE()
+	ON_WM_LBUTTONUP()
+	ON_WM_LBUTTONDBLCLK()
 	ON_WM_CREATE()
-	ON_WM_MOUSEWHEEL()
-	ON_CONTROL_REFLECT(CBN_CLOSEUP, OnCloseUp)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CXTPSyntaxEditColorComboBox message handlers
+// CXTColorBase message handlers
 
-int CXTPSyntaxEditColorComboBox::SetSelColor(COLORREF crColor)
+bool CXTColorBase::Init()
 {
-	int iIndex = FindColor(crColor);
-
-	if (iIndex == CB_ERR)
+	if (::IsWindow(m_hWnd))
 	{
-		iIndex = SetUserColor(crColor);
+		// Set the style to SS_NOTIFY.
+		DWORD dwStyle = ::GetWindowLong(m_hWnd, GWL_STYLE);
+		::SetWindowLong(m_hWnd, GWL_STYLE, dwStyle | SS_NOTIFY);
 
-		if (iIndex == CB_ERR)
-		{
-			return CB_ERR;
-		}
+		return true;
 	}
 
-	return SetCurSel(iIndex);
+	return false;
 }
 
-COLORREF CXTPSyntaxEditColorComboBox::GetSelColor()
+void CXTColorBase::PreSubclassWindow()
 {
-	int iIndex = GetCurSel();
+	CWnd::PreSubclassWindow();
 
-	if (iIndex == CB_ERR)
-	{
-		return COLORREF_NULL;
-	}
-
-	return (COLORREF)GetItemData(iIndex);
-}
-
-int CXTPSyntaxEditColorComboBox::DeleteColor(COLORREF crColor)
-{
-	int iIndex = FindColor(crColor);
-
-	if (iIndex != CB_ERR)
-	{
-		return DeleteString(iIndex);
-	}
-
-	return CB_ERR;
-}
-
-int CXTPSyntaxEditColorComboBox::FindColor(COLORREF crColor)
-{
-	for (int iIndex = 0; iIndex < GetCount(); ++iIndex)
-	{
-		COLORREF crItem = (COLORREF)GetItemData(iIndex);
-		if (crItem == crColor)
-		{
-			return iIndex;
-		}
-	}
-	return CB_ERR;
-}
-
-int CXTPSyntaxEditColorComboBox::AddColor(COLORREF crColor, UINT nID)
-{
-	CString csName;
-	XTPResourceManager()->LoadString(&csName, nID);
-
-	if (!csName.IsEmpty())
-	{
-		int iIndex = AddString(csName);
-
-		if (iIndex != CB_ERR)
-			SetItemData(iIndex, (DWORD)crColor);
-
-		return iIndex;
-	}
-	return CB_ERR;
-}
-
-bool CXTPSyntaxEditColorComboBox::Init()
-{
-	// MFCBUG: adjust height so display is the same as non-owner drawn
-	// CComboBoxes. MFC sets the height of an owner-drawn CComboBox
-	// 2-3 pixels larger than a non owner-drawn combo.
-
-	SetItemHeight(-1, (::GetSystemMetrics(SM_CYVTHUMB)-::GetSystemMetrics(SM_CYEDGE)));
-
-	ResetContent();
-
-	AddColor( RGB(0x00, 0x00, 0x00), XTP_IDS_CLR_BLACK ),
-	AddColor( RGB(0xff, 0xff, 0xff), XTP_IDS_CLR_WHITE ),
-	AddColor( RGB(0x80, 0x00, 0x00), XTP_IDS_CLR_MAROON ),
-	AddColor( RGB(0x00, 0x80, 0x00), XTP_IDS_CLR_DARK_GREEN ),
-	AddColor( RGB(0x80, 0x80, 0x00), XTP_IDS_CLR_OLIVE ),
-	AddColor( RGB(0x00, 0x00, 0x80), XTP_IDS_CLR_DARK_BLUE ),
-	AddColor( RGB(0x80, 0x00, 0x80), XTP_IDS_CLR_PURPLE ),
-	AddColor( RGB(0x00, 0x80, 0x80), XTP_IDS_CLR_TEAL ),
-	AddColor( RGB(0xC0, 0xC0, 0xC0), XTP_IDS_CLR_GRAY25 ),
-	AddColor( RGB(0x80, 0x80, 0x80), XTP_IDS_CLR_GRAY50 ),
-	AddColor( RGB(0xFF, 0x00, 0x00), XTP_IDS_CLR_RED ),
-	AddColor( RGB(0x00, 0xFF, 0x00), XTP_IDS_CLR_GREEN ),
-	AddColor( RGB(0xFF, 0xFF, 0x00), XTP_IDS_CLR_YELLOW ),
-	AddColor( RGB(0x00, 0x00, 0xFF), XTP_IDS_CLR_BLUE ),
-	AddColor( RGB(0xFF, 0x00, 0xFF), XTP_IDS_CLR_PINK ),
-	AddColor( RGB(0x00, 0xFF, 0xFF), XTP_IDS_CLR_TURQUOISE ),
-
-	SetCurSel(0);
-	return true;
-}
-
-void CXTPSyntaxEditColorComboBox::PreSubclassWindow()
-{
-	CComboBox::PreSubclassWindow();
-
-	if (m_bPreInit)
+	if (m_bPreSubclassInit)
 	{
 		// Initialize the control.
 		Init();
 	}
 }
 
-int CXTPSyntaxEditColorComboBox::OnCreate(LPCREATESTRUCT lpCreateStruct)
+int CXTColorBase::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
-	if (CComboBox::OnCreate(lpCreateStruct) == -1)
+	if (CWnd::OnCreate(lpCreateStruct) == -1)
 		return -1;
 
 	// Initialize the control.
@@ -197,382 +112,821 @@ int CXTPSyntaxEditColorComboBox::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	return 0;
 }
 
-BOOL CXTPSyntaxEditColorComboBox::PreCreateWindow(CREATESTRUCT& cs)
+BOOL CXTColorBase::PreCreateWindow(CREATESTRUCT& cs)
 {
-	if (!CComboBox::PreCreateWindow(cs))
+	if (!CWnd::PreCreateWindow(cs))
 		return FALSE;
 
 	// When creating controls dynamically Init() must
 	// be called from OnCreate() and not from
 	// PreSubclassWindow().
 
-	m_bPreInit = false;
+	m_bPreSubclassInit = false;
 
 	return TRUE;
 }
 
-int CXTPSyntaxEditColorComboBox::SelectUserColor()
+void CXTColorBase::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	CColorDialog dlg(GetSelColor(), CC_RGBINIT, this);
-	if (dlg.DoModal() == IDOK)
+	CWnd::OnLButtonDown(nFlags, point);
+	SetCapture();
+	UpdateCursorPos(point);
+
+	if (GetFocus() != this)
 	{
-		COLORREF crUser = dlg.GetColor();
-		if (FindColor(crUser) == CB_ERR)
-		{
-			SetUserColor(crUser);
-		}
-		else
-		{
-			SetUserColor(COLORREF_NULL);
-		}
-		return SetSelColor(crUser);
-	}
-	return CB_ERR;
-}
-
-int CXTPSyntaxEditColorComboBox::SetUserColor(COLORREF crColor, LPCTSTR lpszUserText/*=NULL*/)
-{
-	CString csCustom;
-	if (lpszUserText == NULL)
-	{
-		XTPResourceManager()->LoadString(
-			&csCustom, XTP_IDS_EDIT_CUSTOM);
-	}
-	else
-	{
-		csCustom = lpszUserText;
-	}
-
-	if (crColor == COLORREF_NULL)
-	{
-		m_crUser = COLORREF_NULL;
-
-		int iIndex = FindStringExact(-1, csCustom);
-		if (iIndex != CB_ERR)
-		{
-			return DeleteString(iIndex);
-		}
-
-		return CB_ERR;
-	}
-
-	if (m_crUser == COLORREF_NULL)
-	{
-		int iIndex = AddString(csCustom);
-		if (iIndex != CB_ERR)
-		{
-			m_crUser = crColor;
-			SetItemData(iIndex, (DWORD)m_crUser);
-			RedrawWindow();
-			return iIndex;
-		}
-	}
-	else
-	{
-		int iIndex = FindStringExact(-1, csCustom);
-		if (iIndex != CB_ERR)
-		{
-			m_crUser = crColor;
-			SetItemData(iIndex, (DWORD)m_crUser);
-			RedrawWindow();
-			return iIndex;
-		}
-	}
-
-	return CB_ERR;
-}
-
-int CXTPSyntaxEditColorComboBox::SetAutoColor(COLORREF crColor, LPCTSTR lpszAutoText/*=NULL*/)
-{
-	CString csAuto;
-	if (lpszAutoText == NULL)
-	{
-		XTPResourceManager()->LoadString(
-			&csAuto, XTP_IDS_CLR_AUTOMATIC);
-
-		int nTipIndex = csAuto.Find(_T('\n'), 0);
-		if (nTipIndex > 0)
-			csAuto.ReleaseBuffer(nTipIndex);
-	}
-	else
-	{
-		csAuto = lpszAutoText;
-	}
-
-	if (crColor == COLORREF_NULL)
-	{
-		m_crAuto = COLORREF_NULL;
-
-		int iIndex = FindStringExact(-1, csAuto);
-		if (iIndex != CB_ERR)
-		{
-			return DeleteString(iIndex);
-		}
-
-		return CB_ERR;
-	}
-
-	if (m_crAuto == COLORREF_NULL)
-	{
-		int iIndex = InsertString(0, csAuto);
-		if (iIndex != CB_ERR)
-		{
-			m_crAuto = crColor;
-			SetItemData(iIndex, (DWORD)m_crAuto);
-			RedrawWindow();
-			return iIndex;
-		}
-	}
-	else
-	{
-		int iIndex = FindStringExact(-1, csAuto);
-		if (iIndex != CB_ERR)
-		{
-			m_crAuto = crColor;
-			SetItemData(iIndex, (DWORD)m_crAuto);
-			RedrawWindow();
-			return iIndex;
-		}
-	}
-
-	return CB_ERR;
-}
-
-void CXTPSyntaxEditColorComboBox::DrawItem(LPDRAWITEMSTRUCT lpDIS)
-{
-	CDC*  pDC       = CDC::FromHandle(lpDIS->hDC);
-	UINT  itemState = lpDIS->itemState;
-	UINT  itemID    = lpDIS->itemID;
-	CRect rcItem    = lpDIS->rcItem;
-
-	if (itemID == (UINT)-1)
-	{
-		return;
-	}
-
-	BOOL bDisabled = ((itemState & ODS_DISABLED) == ODS_DISABLED);
-	BOOL bSelected = ((itemState & ODS_SELECTED) == ODS_SELECTED);
-	BOOL bFocus    = ((itemState & ODS_FOCUS)    == ODS_FOCUS);
-
-	// draw background.
-	if (bDisabled)
-	{
-		pDC->SetTextColor(GetXtremeColor(COLOR_GRAYTEXT));
-		pDC->SetBkColor(GetXtremeColor(COLOR_3DFACE));
-		pDC->FillSolidRect(&rcItem, GetXtremeColor(COLOR_3DFACE));
-	}
-	else
-	{
-		if (bSelected)
-		{
-			pDC->SetTextColor(GetXtremeColor(COLOR_HIGHLIGHTTEXT));
-			pDC->SetBkColor(GetXtremeColor(COLOR_WINDOW));
-			pDC->FillSolidRect(&rcItem, GetXtremeColor(COLOR_HIGHLIGHT));
-		}
-		else
-		{
-			pDC->SetTextColor(GetXtremeColor(COLOR_WINDOWTEXT));
-			pDC->SetBkColor(GetXtremeColor(COLOR_WINDOW));
-			pDC->FillSolidRect(&rcItem, GetXtremeColor(COLOR_WINDOW));
-		}
-
-		// draw focus rectangle.
-		if (bFocus)
-		{
-			pDC->DrawFocusRect(&rcItem);
-		}
-	}
-
-	// determine the size of the color rectangle.
-	CRect rColor(rcItem);
-	rColor.DeflateRect(2, 2);
-	rColor.right = rColor.left + COLOR_ITEM_WIDTH;
-	rColor.bottom = rColor.top + COLOR_ITEM_WIDTH;
-
-	// draw color rectangle.
-	pDC->FillSolidRect(rColor,
-		bDisabled? GetXtremeColor(COLOR_3DFACE): (COLORREF)lpDIS->itemData);
-
-	pDC->Draw3dRect(rColor,
-		GetXtremeColor(bDisabled? COLOR_GRAYTEXT: COLOR_WINDOWTEXT),
-		GetXtremeColor(bDisabled? COLOR_GRAYTEXT: COLOR_WINDOWTEXT));
-
-	// determine the size of the text display.
-	CRect rText(rColor);
-	rText.top -= 2;
-	rText.bottom = rText.top + (::GetSystemMetrics(SM_CYVTHUMB)-::GetSystemMetrics(SM_CYEDGE));
-	rText.left = rText.right + 4;
-	rText.right = rcItem.right;
-
-	// draw text.
-	CString csItemText;
-	GetLBText(itemID, csItemText);
-	if (!csItemText.IsEmpty())
-	{
-		pDC->SetBkMode(TRANSPARENT);
-		pDC->DrawText(csItemText, rText, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
+		SetFocus();
 	}
 }
 
-void CXTPSyntaxEditColorComboBox::MeasureItem(LPMEASUREITEMSTRUCT lpMIS)
+void CXTColorBase::OnLButtonUp(UINT nFlags, CPoint point)
 {
-	ASSERT(lpMIS->CtlType == ODT_COMBOBOX);
-	lpMIS->itemHeight = (::GetSystemMetrics(SM_CYVTHUMB)-::GetSystemMetrics(SM_CYEDGE));
-	lpMIS->itemWidth = 0;
+	ReleaseCapture();
+	CStatic::OnLButtonUp(nFlags, point);
 }
 
-int CXTPSyntaxEditColorComboBox::CompareItem(LPCOMPAREITEMSTRUCT lpCIS)
+void CXTColorBase::OnMouseMove(UINT nFlags, CPoint point)
 {
-	COLORREF color1 = (COLORREF)lpCIS->itemData1;
-	COLORREF color2 = (COLORREF)lpCIS->itemData2;
+	CWnd::OnMouseMove(nFlags, point);
 
-	// exact match
-	if (color1 == color2)
-		return 0;
-
-	// first do an intensity sort, lower intensities go first
-	int intensity1 = GetRValue(color1) + GetGValue(color1) + GetBValue(color1);
-	int intensity2 = GetRValue(color2) + GetGValue(color2) + GetBValue(color2);
-
-	// lower intensity goes first
-	if (intensity1 < intensity2)
-		return -1;
-
-	// higher intensity goes second
-	else if (intensity1 > intensity2)
-		return 1;
-
-	// if same intensity, sort by color (blues first, reds last)
-	if (GetBValue(color1) > GetBValue(color2))
-		return -1;
-
-	else if (GetGValue(color1) > GetGValue(color2))
-		return -1;
-
-	else if (GetRValue(color1) > GetRValue(color2))
-		return -1;
-
-	return 1;
-}
-
-BOOL CXTPSyntaxEditColorComboBox::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
-{
-	if (GetDroppedState() == TRUE)
+	if (nFlags & MK_LBUTTON)
 	{
-		HWND hWnd = ::FindWindow(_T("ComboLBox"), NULL);
-		if (::IsWindow(hWnd))
+		UpdateCursorPos(point);
+
+		if (GetFocus() != this)
 		{
-			::SendMessage(hWnd, WM_SETREDRAW, FALSE, 0);
-
-			BOOL bRet = CComboBox::OnMouseWheel(nFlags, zDelta, pt);
-
-			::SendMessage(hWnd, WM_SETREDRAW, TRUE, 0);
-			::RedrawWindow(hWnd, NULL, (HRGN)NULL,
-				RDW_UPDATENOW | RDW_ALLCHILDREN | RDW_FRAME | RDW_INVALIDATE | RDW_ERASE);
-
-			return bRet;
+			SetFocus();
 		}
 	}
-
-	return CComboBox::OnMouseWheel(nFlags, zDelta, pt);
 }
 
-void CXTPSyntaxEditColorComboBox::NotifyOwner(UINT nCode)
+void CXTColorBase::OnLButtonDblClk(UINT nFlags, CPoint point)
 {
-	CWnd* pWndOwner = CWnd::GetOwner();
-	if (::IsWindow(pWndOwner->GetSafeHwnd()))
-	{
-		pWndOwner->SendMessage(WM_COMMAND,
-			MAKEWPARAM(GetDlgCtrlID(), nCode), (LPARAM)m_hWnd);
-	}
+	CStatic::OnLButtonDblClk(nFlags, point);
+
+	UpdateCursorPos(point);
+
+	CPropertyPage* pParentPage = (CPropertyPage*)GetParent();
+	ASSERT_VALID(pParentPage);
+
+	CPropertySheet* pParentSheet = (CPropertySheet*)pParentPage->GetParent();
+	ASSERT_VALID(pParentSheet);
+
+	pParentSheet->EndDialog(IDOK);
 }
 
-int CXTPSyntaxEditColorComboBox::GetLBCurSel() const
+void CXTColorBase::UpdateCursorPos(CPoint /*point*/)
 {
-	if (GetDroppedState() == TRUE)
+
+}
+
+COLORREF CXTColorBase::HLStoRGB(double h, double l, double s)
+{
+	return CXTColorRef::fromHSL(h, s, l);
+}
+
+void CXTColorBase::RGBtoHSL(COLORREF color, double* h, double* s, double* l)
+{
+	CXTColorRef(color).toHSL(*h, *s, *l);
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTColorWnd
+
+CXTColorWnd::CXTColorWnd()
+{
+}
+
+CXTColorWnd::~CXTColorWnd()
+{
+}
+
+BEGIN_MESSAGE_MAP(CXTColorWnd, CXTColorBase)
+	//{{AFX_MSG_MAP(CXTColorWnd)
+	ON_WM_PAINT()
+	ON_WM_SETFOCUS()
+	ON_WM_KILLFOCUS()
+	ON_WM_ERASEBKGND()
+	//}}AFX_MSG_MAP
+END_MESSAGE_MAP()
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTColorWnd message handlers
+
+void CXTColorWnd::OnPaint()
+{
+	CPaintDC dc(this); // device context for painting
+
+	CRect rc;
+	GetClientRect(&rc);
+	CXTPBufferDC memDC(dc);
+
+	int cy = rc.Height();
+	int cx = rc.Width();
+
+	if (m_bmpPicker.GetSafeHandle() == NULL)
 	{
-		HWND hWnd = ::FindWindow(_T("ComboLBox"), NULL);
-		if (::IsWindow(hWnd))
+		// create bitmap
+		m_bmpPicker.CreateCompatibleBitmap(&memDC, cx, cy);
+
+		// create picker DC
+		CXTPCompatibleDC dcPicker(&memDC, m_bmpPicker);
+
+		// fill color picker bitmap
+		int x;
+		for (x = 0; x < cx; x++)
 		{
-			return (int)::SendMessage(hWnd, LB_GETCURSEL, 0, 0);
-		}
-	}
-	return LB_ERR;
-}
-
-BOOL CXTPSyntaxEditColorComboBox::PreTranslateMessage(MSG* pMsg)
-{
-	switch (pMsg->message)
-	{
-	case WM_KEYDOWN:
-		{
-			switch (pMsg->wParam)
+			int y;
+			for (y = 0; y < cy; y++)
 			{
-			case VK_ESCAPE:
-				{
-					if (GetDroppedState() == TRUE)
-					{
-						ShowDropDown(FALSE);
-						NotifyOwner(CBN_SELENDCANCEL);
-						return TRUE;
-					}
-				}
-				break;
+				COLORREF clr = HLStoRGB((double)x/(double)cx,
+					DEFAULT_LUMINANCE, (double)y/(double)cy);
 
-			case VK_SPACE:
-			case VK_RETURN:
-				{
-					if (GetDroppedState() == TRUE)
-					{
-						m_iPrevSel = GetLBCurSel();
-						ShowDropDown(FALSE);
-						NotifyOwner(CBN_SELENDOK);
-						return TRUE;
-					}
-				}
-				break;
-
-			case VK_UP:
-			case VK_DOWN:
-				{
-					if (GetDroppedState() == FALSE)
-					{
-						m_iPrevSel = GetCurSel();
-						ShowDropDown(TRUE);
-						return TRUE;
-					}
-				}
-				break;
+				dcPicker.SetPixelV(x, (cy-1)-y, clr);
 			}
 		}
 	}
 
-	return CComboBox::PreTranslateMessage(pMsg);
+	memDC.DrawState(CPoint(0, 0), CSize(0, 0), &m_bmpPicker, DSS_NORMAL, NULL);
+	DrawCrossHair(&memDC);
 }
 
-void CXTPSyntaxEditColorComboBox::OnCloseUp()
+BOOL CXTColorWnd::OnEraseBkgnd(CDC* /*pDC*/)
 {
-	if (m_iPrevSel != CB_ERR)
-	{
-		if (m_iPrevSel != GetCurSel())
-			SetCurSel(m_iPrevSel);
+	return TRUE;
+}
 
-		m_iPrevSel = CB_ERR;
+void CXTColorWnd::UpdateCursorPos(CPoint point)
+{
+	CRect rcClient;
+	GetClientRect(rcClient);
+
+	if (point.y < 0) point.y = 0;
+	if (point.x < 0) point.x = 0;
+	if (point.y > rcClient.bottom) point.y = rcClient.bottom;
+	if (point.x > rcClient.right) point.x = rcClient.right;
+	m_ptMousePos = point;
+
+	m_nHue = (double)point.x / (double)rcClient.Width();
+	m_nSat = (double)(rcClient.Height() - point.y) / (double)rcClient.Height();
+
+	GetParent()->SendMessage(XTWM_UPDATECOLOR, 0, (LPARAM)m_hWnd);
+
+	Invalidate(FALSE);
+}
+
+BOOL CXTColorWnd::PreTranslateMessage(MSG* pMsg)
+{
+	if (m_eHasFocus == focusColorWheel)
+	{
+		switch (pMsg->message)
+		{
+		case WM_KEYDOWN:
+			{
+				CRect rect;
+				GetClientRect(&rect);
+
+				TCHAR vkey = (TCHAR)pMsg->wParam;
+				switch (vkey)
+				{
+				case VK_LEFT:
+					m_ptMousePos.x--;
+					UpdateCursorPos(m_ptMousePos);
+					return TRUE;
+
+				case VK_UP:
+					m_ptMousePos.y--;
+					UpdateCursorPos(m_ptMousePos);
+					return TRUE;
+
+				case VK_RIGHT:
+					m_ptMousePos.x++;
+					UpdateCursorPos(m_ptMousePos);
+					return TRUE;
+
+				case VK_DOWN:
+					m_ptMousePos.y++;
+					UpdateCursorPos(m_ptMousePos);
+					return TRUE;
+				case VK_RETURN:
+				case VK_SPACE:
+					CPropertyPage* pParentPage = (CPropertyPage*)GetParent();
+					ASSERT_VALID(pParentPage);
+
+					CPropertySheet* pParentSheet = (CPropertySheet*)pParentPage->GetParent();
+					ASSERT_VALID(pParentSheet);
+
+					pParentSheet->EndDialog(IDOK);
+					break;
+				}
+			}
+			break;
+		}
 	}
+
+	return CStatic::PreTranslateMessage(pMsg);
 }
 
-_XTP_EXT_CLASS void AFXAPI DDX_CBSyntaxColor(CDataExchange *pDX, int nIDC, COLORREF& value)
+void CXTColorWnd::DrawCrossHair(CDC* pDC)
 {
-	HWND hWndCtrl = pDX->PrepareCtrl(nIDC);
-	ASSERT(hWndCtrl != NULL);
+	int x = m_ptMousePos.x;
+	int y = m_ptMousePos.y;
 
-	CXTPSyntaxEditColorComboBox* pColorCombo = (CXTPSyntaxEditColorComboBox*)CWnd::FromHandle(hWndCtrl);
-	if (pDX->m_bSaveAndValidate)
+	CPen pen1(PS_SOLID, 1, RGB(0xff, 0xff, 0xff));
+	CPen pen2(PS_SOLID, 1, RGB(0x00, 0x00, 0x00));
+
+	CPen* pOldPen = pDC->SelectObject((m_eHasFocus == focusColorWheel) ? &pen1 : &pen2);
+
+	pDC->MoveTo(x-5, y-1);
+	pDC->LineTo(x-10, y-1);
+	pDC->MoveTo(x-5, y);
+	pDC->LineTo(x-10, y);
+	pDC->MoveTo(x-5, y + 1);
+	pDC->LineTo(x-10, y + 1);
+
+	pDC->MoveTo(x + 5, y-1);
+	pDC->LineTo(x + 10, y-1);
+	pDC->MoveTo(x + 5, y);
+	pDC->LineTo(x + 10, y);
+	pDC->MoveTo(x + 5, y + 1);
+	pDC->LineTo(x + 10, y + 1);
+
+	pDC->MoveTo(x-1, y-5);
+	pDC->LineTo(x-1, y-10);
+	pDC->MoveTo(x, y-5);
+	pDC->LineTo(x, y-10);
+	pDC->MoveTo(x + 1, y-5);
+	pDC->LineTo(x + 1, y-10);
+
+	pDC->MoveTo(x-1, y + 5);
+	pDC->LineTo(x-1, y + 10);
+	pDC->MoveTo(x, y + 5);
+	pDC->LineTo(x, y + 10);
+	pDC->MoveTo(x + 1, y + 5);
+	pDC->LineTo(x + 1, y + 10);
+
+	pDC->SelectObject(pOldPen);
+}
+
+void CXTColorWnd::SetColor(double nHue, double nSat)
+{
+	SetHue(nHue);
+	SetSaturation(nSat);
+}
+
+void CXTColorWnd::SetHue(double h)
+{
+	m_nHue = h;
+	CRect rc;
+	GetClientRect(&rc);
+	m_ptMousePos.x = (long)((double)rc.Width() * h);
+	Invalidate(FALSE);
+}
+
+void CXTColorWnd::SetSaturation(double s)
+{
+	m_nSat = s;
+	CRect rc;
+	GetClientRect(&rc);
+	m_ptMousePos.y = rc.Height()-(long)((double)rc.Height() * s);
+	Invalidate(FALSE);
+}
+
+void CXTColorWnd::OnSetFocus(CWnd* pOldWnd)
+{
+	CXTColorBase::OnSetFocus(pOldWnd);
+	m_eHasFocus = focusColorWheel;
+
+	Invalidate(FALSE);
+}
+
+void CXTColorWnd::OnKillFocus(CWnd* pNewWnd)
+{
+	CXTColorBase::OnKillFocus(pNewWnd);
+	m_eHasFocus = focusNone;
+
+	Invalidate(FALSE);
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTColorLum
+
+CXTColorLum::CXTColorLum()
+{
+	m_ptMousePos.y = 0;
+}
+
+CXTColorLum::~CXTColorLum()
+{
+}
+
+BEGIN_MESSAGE_MAP(CXTColorLum, CXTColorBase)
+	//{{AFX_MSG_MAP(CXTColorLum)
+	ON_WM_PAINT()
+	ON_WM_SETFOCUS()
+	ON_WM_KILLFOCUS()
+	ON_WM_ERASEBKGND()
+	//}}AFX_MSG_MAP
+END_MESSAGE_MAP()
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTColorLum message handlers
+
+void CXTColorLum::OnPaint()
+{
+	CPaintDC dc(this); // device context for painting
+
+	CRect rc;
+	GetClientRect(&rc);
+	CXTPBufferDC memDC(dc);
+
+	HBRUSH hBrush = (HBRUSH)GetParent()->SendMessage(WM_CTLCOLORSTATIC, (WPARAM)memDC.GetSafeHdc(), (LPARAM)m_hWnd);
+	if (hBrush)
 	{
-		value = pColorCombo->GetSelColor();
+		::FillRect(memDC.GetSafeHdc(), rc, hBrush);
 	}
 	else
 	{
-		pColorCombo->SetSelColor(value);
+		memDC.FillSolidRect(rc, GetXtremeColor(COLOR_3DFACE));
 	}
+
+
+	DrawLuminanceBar(&memDC);
+	DrawSliderArrow(&memDC);
+}
+
+BOOL CXTColorLum::OnEraseBkgnd(CDC* /*pDC*/)
+{
+	return TRUE;
+}
+
+void CXTColorLum::GetLumBarRect(CRect& rect)
+{
+	GetClientRect(&rect);
+	rect.DeflateRect(0, 4);
+	rect.right = rect.left + 14;
+}
+
+void CXTColorLum::SetColor(double nHue, double nSat)
+{
+	m_nHue = nHue;
+	m_nSat = nSat;
+	Invalidate(FALSE);
+}
+
+
+void CXTColorLum::SetLuminance(double l)
+{
+	m_nLum = l;
+
+	CRect rcBar;
+	GetLumBarRect(rcBar);
+
+	// Set the slider position based on the current
+	// luminance.
+	m_ptMousePos.y = rcBar.top + rcBar.Height()-(long)((double)rcBar.Height() * l);
+	Invalidate(FALSE);
+}
+
+void CXTColorLum::DrawLuminanceBar(CDC* pDC)
+{
+	CRect rcBar;
+	GetLumBarRect(rcBar);
+
+	int  cy = rcBar.Height();
+	int  cx = rcBar.Width();
+
+	// fill color picker bitmap
+	for (int y = 0; y < cy; y++)
+	{
+		COLORREF clr;
+		if (y == cy)
+		{
+			clr = RGB(0x00, 0x00, 0x00);
+		}
+		else if (y == 0)
+		{
+			clr = RGB(0xff, 0xff, 0xff);
+		}
+		else
+		{
+			clr = HLStoRGB(m_nHue, (double)((double)(cy - y)/(double)cy), m_nSat);
+		}
+
+		pDC->FillSolidRect(rcBar.left, y + rcBar.top, cx, 1, clr);
+	}
+}
+
+void CXTColorLum::DrawSliderArrow(CDC* pDC)
+{
+	CRect rc;
+	GetClientRect(&rc);
+	rc.left += 17;
+
+	int x = rc.left;
+	int y = m_ptMousePos.y;
+
+	CRect rcBar;
+	GetLumBarRect(rcBar);
+	y = max(rcBar.top, y);
+	y = min(rcBar.bottom, y);
+
+	CPen pen1(PS_SOLID, 1, RGB(0x00, 0x00, 0x00));
+	CPen pen2(PS_SOLID, 1, GetXtremeColor(COLOR_3DSHADOW));
+
+	CPen* pOldPen = pDC->SelectObject((m_eHasFocus == focusLumination) ? &pen1 : &pen2);
+
+	pDC->MoveTo(x + 7, y-4);
+	pDC->LineTo(x + 9, y-4);
+	pDC->MoveTo(x + 5, y-3);
+	pDC->LineTo(x + 9, y-3);
+	pDC->MoveTo(x + 3, y-2);
+	pDC->LineTo(x + 9, y-2);
+	pDC->MoveTo(x + 1, y-1);
+	pDC->LineTo(x + 9, y-1);
+	pDC->MoveTo(x, y);
+	pDC->LineTo(x + 9, y);
+	pDC->MoveTo(x + 2, y + 1);
+	pDC->LineTo(x + 9, y + 1);
+	pDC->MoveTo(x + 4, y + 2);
+	pDC->LineTo(x + 9, y + 2);
+	pDC->MoveTo(x + 6, y + 3);
+	pDC->LineTo(x + 9, y + 3);
+	pDC->MoveTo(x + 8, y + 4);
+	pDC->LineTo(x + 9, y + 4);
+
+	if (m_eHasFocus != focusLumination)
+	{
+		COLORREF clr = RGB(0x00, 0x00, 0x00);
+		pDC->SetPixel(x, y, clr);
+		pDC->SetPixel(x + 1, y, clr);
+		pDC->SetPixel(x + 1, y-1, clr);
+		pDC->SetPixel(x + 2, y-1, clr);
+		pDC->SetPixel(x + 3, y-2, clr);
+		pDC->SetPixel(x + 4, y-2, clr);
+		pDC->SetPixel(x + 5, y-3, clr);
+		pDC->SetPixel(x + 6, y-3, clr);
+		pDC->SetPixel(x + 7, y-4, clr);
+		pDC->SetPixel(x + 8, y-4, clr);
+		pDC->SetPixel(x + 8, y-3, clr);
+		pDC->SetPixel(x + 8, y-2, clr);
+		pDC->SetPixel(x + 8, y-1, clr);
+		pDC->SetPixel(x + 8, y, clr);
+		pDC->SetPixel(x + 8, y + 1, clr);
+		pDC->SetPixel(x + 8, y + 2, clr);
+		pDC->SetPixel(x + 8, y + 3, clr);
+		pDC->SetPixel(x + 8, y + 4, clr);
+		pDC->SetPixel(x + 7, y + 3, clr);
+		pDC->SetPixel(x + 6, y + 3, clr);
+		pDC->SetPixel(x + 5, y + 2, clr);
+		pDC->SetPixel(x + 4, y + 2, clr);
+		pDC->SetPixel(x + 3, y + 1, clr);
+		pDC->SetPixel(x + 2, y + 1, clr);
+	}
+
+	pDC->SelectObject(pOldPen);
+}
+
+void CXTColorLum::UpdateCursorPos(CPoint point)
+{
+	point.x = 0;
+
+	CRect rcBar;
+	GetLumBarRect(rcBar);
+
+	point.y = max(rcBar.top, point.y);
+	point.y = min(rcBar.bottom, point.y);
+	double cy = (double)rcBar.Height();
+
+	m_nLum = double(double(cy - (point.y - rcBar.top))/cy);
+
+	GetParent()->SendMessage(XTWM_UPDATECOLOR, 0, (LPARAM)m_hWnd);
+
+	m_ptMousePos = point;
+
+	Invalidate(FALSE);
+}
+
+BOOL CXTColorLum::PreTranslateMessage(MSG* pMsg)
+{
+	if (m_eHasFocus == focusLumination)
+	{
+		CRect rcBar;
+		GetLumBarRect(rcBar);
+
+		switch (pMsg->message)
+		{
+		case WM_KEYDOWN:
+			{
+				TCHAR vkey = (TCHAR)pMsg->wParam;
+				switch (vkey)
+				{
+				case VK_UP:
+					m_ptMousePos.y--;
+					UpdateCursorPos(m_ptMousePos);
+					return TRUE;
+
+				case VK_DOWN:
+					m_ptMousePos.y++;
+					UpdateCursorPos(m_ptMousePos);
+					return TRUE;
+
+				case VK_RETURN:
+				case VK_SPACE:
+					CPropertyPage* pParentPage = (CPropertyPage*)GetParent();
+					ASSERT_VALID(pParentPage);
+
+					CPropertySheet* pParentSheet = (CPropertySheet*)pParentPage->GetParent();
+					ASSERT_VALID(pParentSheet);
+
+					pParentSheet->EndDialog(IDOK);
+					break;
+				}
+			}
+			break;
+		}
+	}
+
+	return CStatic::PreTranslateMessage(pMsg);
+}
+
+void CXTColorLum::OnSetFocus(CWnd* pOldWnd)
+{
+	CXTColorBase::OnSetFocus(pOldWnd);
+	m_eHasFocus = focusLumination;
+
+	Invalidate(FALSE);
+}
+
+void CXTColorLum::OnKillFocus(CWnd* pNewWnd)
+{
+	CXTColorBase::OnKillFocus(pNewWnd);
+	m_eHasFocus = focusNone;
+
+	Invalidate(FALSE);
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTColorPageCustom
+
+BEGIN_MESSAGE_MAP(CXTColorPageCustom, CPropertyPage)
+	//{{AFX_MSG_MAP(CXTColorPageCustom)
+	ON_EN_CHANGE(XT_IDC_EDIT_RED, OnChangeEdit)
+	ON_EN_CHANGE(XT_IDC_EDIT_GREEN, OnChangeEdit)
+	ON_EN_CHANGE(XT_IDC_EDIT_BLUE, OnChangeEdit)
+	ON_EN_CHANGE(XT_IDC_EDIT_LUM, OnChangeEditLum)
+	ON_EN_CHANGE(XT_IDC_EDIT_HUE, OnChangeEditHue)
+	ON_EN_CHANGE(XT_IDC_EDIT_SAT, OnChangeEditSat)
+	//}}AFX_MSG_MAP
+	ON_MESSAGE(XTWM_UPDATECOLOR, OnUpdateColor)
+END_MESSAGE_MAP()
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTColorPageCustom construction/destruction
+
+CXTColorPageCustom::CXTColorPageCustom(CXTColorDialog* pParentSheet)
+	: CPropertyPage(CXTColorPageCustom::IDD)
+{
+	m_psp.dwFlags &= ~PSP_HASHELP;
+	m_pParentSheet = pParentSheet;
+
+
+	//{{AFX_DATA_INIT(CXTColorPageCustom)
+	m_nR = 0;
+	m_nB = 0;
+	m_nG = 0;
+	m_nH = 0;
+	m_nL = 0;
+	m_nS = 0;
+	//}}AFX_DATA_INIT
+}
+
+CXTColorPageCustom::~CXTColorPageCustom()
+{
+}
+
+void CXTColorPageCustom::DoDataExchange(CDataExchange* pDX)
+{
+	CPropertyPage::DoDataExchange(pDX);
+	//{{AFX_DATA_MAP(CXTColorPageCustom)
+	DDX_Control(pDX, XT_IDC_CLR_WND, m_colorWnd);
+	DDX_Control(pDX, XT_IDC_CLR_LUM, m_colorLum);
+	DDX_Control(pDX, XT_IDC_TXT_SAT, m_txtSat);
+	DDX_Control(pDX, XT_IDC_TXT_RED, m_txtRed);
+	DDX_Control(pDX, XT_IDC_TXT_LUM, m_txtLum);
+	DDX_Control(pDX, XT_IDC_TXT_HUE, m_txtHue);
+	DDX_Control(pDX, XT_IDC_TXT_GREEN, m_txtGreen);
+	DDX_Control(pDX, XT_IDC_TXT_BLUE, m_txtBlue);
+	DDX_Control(pDX, XT_IDC_SPIN_SAT, m_spinSat);
+	DDX_Control(pDX, XT_IDC_SPIN_RED, m_spinRed);
+	DDX_Control(pDX, XT_IDC_SPIN_LUM, m_spinLum);
+	DDX_Control(pDX, XT_IDC_SPIN_HUE, m_spinHue);
+	DDX_Control(pDX, XT_IDC_SPIN_GREEN, m_spinGreen);
+	DDX_Control(pDX, XT_IDC_SPIN_BLUE, m_spinBlue);
+	DDX_Control(pDX, XT_IDC_EDIT_HUE, m_editHue);
+	DDX_Control(pDX, XT_IDC_EDIT_GREEN, m_editGreen);
+	DDX_Control(pDX, XT_IDC_EDIT_BLUE, m_editBlue);
+	DDX_Control(pDX, XT_IDC_EDIT_LUM, m_editLum);
+	DDX_Control(pDX, XT_IDC_EDIT_RED, m_editRed);
+	DDX_Control(pDX, XT_IDC_EDIT_SAT, m_editSat);
+	DDX_Text(pDX, XT_IDC_EDIT_RED, m_nR);
+	DDV_MinMaxInt(pDX, m_nR, 0, 255);
+	DDX_Text(pDX, XT_IDC_EDIT_BLUE, m_nB);
+	DDV_MinMaxInt(pDX, m_nB, 0, 255);
+	DDX_Text(pDX, XT_IDC_EDIT_GREEN, m_nG);
+	DDV_MinMaxInt(pDX, m_nG, 0, 255);
+	DDX_Text(pDX, XT_IDC_EDIT_HUE, m_nH);
+	DDV_MinMaxInt(pDX, m_nH, 0, 255);
+	DDX_Text(pDX, XT_IDC_EDIT_LUM, m_nL);
+	DDV_MinMaxInt(pDX, m_nL, 0, 255);
+	DDX_Text(pDX, XT_IDC_EDIT_SAT, m_nS);
+	DDV_MinMaxInt(pDX, m_nS, 0, 255);
+	//}}AFX_DATA_MAP
+}
+
+BOOL CXTColorPageCustom::OnInitDialog()
+{
+	CPropertyPage::OnInitDialog();
+
+	// TODO: Add extra initialization here
+	m_spinSat.SetBuddy(&m_editSat);
+	m_spinSat.SetRange(0, 255);
+
+	m_spinLum.SetBuddy(&m_editLum);
+	m_spinLum.SetRange(0, 255);
+
+	m_spinHue.SetBuddy(&m_editHue);
+	m_spinHue.SetRange(0, 255);
+
+	m_spinRed.SetBuddy(&m_editRed);
+	m_spinRed.SetRange(0, 255);
+
+	m_spinGreen.SetBuddy(&m_editGreen);
+	m_spinGreen.SetRange(0, 255);
+
+	m_spinBlue.SetBuddy(&m_editBlue);
+	m_spinBlue.SetRange(0, 255);
+
+	CRect rc;
+	m_colorLum.GetWindowRect(&rc);
+	ScreenToClient(rc);
+	rc.InflateRect(0, 4);
+	m_colorLum.MoveWindow(&rc);
+
+
+	return TRUE;
+}
+
+BOOL CXTColorPageCustom::OnSetActive()
+{
+	COLORREF clr = m_pParentSheet->GetColor();
+	RGBtoHSL(clr, &m_nL, &m_nS, &m_nH);
+
+	m_colorWnd.SetColor((double)m_nH/255, (double)m_nS/255);
+	m_colorLum.SetColor((double)m_nH/255, (double)m_nS/255);
+	m_colorLum.SetLuminance((double)m_nL/255);
+
+	UpdateRGB(clr);
+
+	return CPropertyPage::OnSetActive();
+}
+
+void CXTColorPageCustom::OnChangeEdit()
+{
+	UpdateData();
+	COLORREF clr = (COLORREF)RGB(m_nR, m_nG, m_nB);
+
+	OnUpdateColor((WPARAM)clr, 0);
+}
+
+void CXTColorPageCustom::OnChangeEditLum()
+{
+	UpdateData();
+	m_colorLum.SetLuminance((double)m_nL/255);
+
+	COLORREF clr = m_colorLum.HLStoRGB((double)m_nH/255, (double)m_nL/255, (double)m_nS/255);
+
+	if (clr != m_pParentSheet->GetColor())
+		m_pParentSheet->SetNewColor(clr, FALSE);
+
+	UpdateRGB(clr);
+}
+
+void CXTColorPageCustom::UpdateRGB(COLORREF clr)
+{
+	m_nR = GetRValue(clr);
+	m_nG = GetGValue(clr);
+	m_nB = GetBValue(clr);
+
+	UpdateData(FALSE);
+}
+
+void CXTColorPageCustom::OnChangeEditHue()
+{
+	UpdateData();
+	m_colorWnd.SetHue((double)m_nH/255);
+
+	COLORREF clr = m_colorWnd.HLStoRGB((double)m_nH/255, (double)m_nL/255, (double)m_nS/255);
+
+	m_colorLum.SetColor((double)m_nH/255, (double)m_nS/255);
+
+	if (clr != m_pParentSheet->GetColor())
+		m_pParentSheet->SetNewColor(clr, FALSE);
+
+	UpdateRGB(clr);
+}
+
+void CXTColorPageCustom::OnChangeEditSat()
+{
+	UpdateData();
+	m_colorWnd.SetSaturation((double)m_nS/255);
+
+	COLORREF clr = m_colorWnd.HLStoRGB((double)m_nH/255, (double)m_nL/255, (double)m_nS/255);
+
+	m_colorLum.SetColor((double)m_nH/255, (double)m_nS/255);
+
+	if (clr != m_pParentSheet->GetColor())
+		m_pParentSheet->SetNewColor(clr, FALSE);
+
+	UpdateRGB(clr);
+}
+
+LRESULT CXTColorPageCustom::OnUpdateColor(WPARAM wParam, LPARAM lParam)
+{
+	COLORREF clr = (COLORREF)wParam;
+
+	if ((HWND)lParam == m_colorWnd)
+	{
+		m_nS = int(m_colorWnd.m_nSat * 255);
+		m_nH = int(m_colorWnd.m_nHue * 255);
+
+		clr = m_colorWnd.HLStoRGB((double)m_nH/255, (double)m_nL/255, (double)m_nS/255);
+		m_colorLum.SetColor((double)m_nH/255, (double)m_nS/255);
+	}
+
+	if ((HWND)lParam == m_colorLum)
+	{
+		m_nL = int(m_colorLum.m_nLum * 255);
+
+		clr = m_colorWnd.HLStoRGB((double)m_nH/255, (double)m_nL/255, (double)m_nS/255);
+	}
+
+	if (lParam == 0)
+	{
+		RGBtoHSL(clr, &m_nL, &m_nS, &m_nH);
+
+		m_colorWnd.SetColor((double)m_nH/255, (double)m_nS/255);
+		m_colorLum.SetColor((double)m_nH/255, (double)m_nS/255);
+		m_colorLum.SetLuminance((double)m_nL/255);
+	}
+
+	if (clr != m_pParentSheet->GetColor())
+		m_pParentSheet->SetNewColor(clr, FALSE);
+
+	UpdateRGB(clr);
+	return 0;
+}
+
+void CXTColorPageCustom::RGBtoHSL(COLORREF color, int* lum, int* sat, int* hue)
+{
+	double r = (double)GetRValue(color)/255;
+	double g = (double)GetGValue(color)/255;
+	double b = (double)GetBValue(color)/255;
+
+	double maxcolor = __max(r, __max(g, b));
+	double mincolor = __min(r, __min(g, b));
+
+	double l = (maxcolor + mincolor)/2;
+
+	if (maxcolor == mincolor)
+	{
+		*hue = 0;
+		*sat = 0;
+	}
+	else
+	{
+		double s;
+		double h;
+
+		if (l < 0.5)
+			s = (maxcolor-mincolor)/(maxcolor + mincolor);
+		else
+			s = (maxcolor-mincolor)/(2.0-maxcolor-mincolor);
+
+		if (r == maxcolor)
+			h = (g-b)/(maxcolor-mincolor);
+		else if (g == maxcolor)
+			h = 2.0+(b-r)/(maxcolor-mincolor);
+		else
+			h = 4.0+(r-g)/(maxcolor-mincolor);
+
+		h /= 6.0;
+		if (h < 0.0)
+			h += 1;
+
+		*hue = (int)((double)h * 255);
+		*sat = (int)((double)s * 255);
+	}
+
+	*lum = (int)((double)l * 255);
 }

@@ -1,8 +1,8 @@
-// from server: 91% by colin
-// roc-cl: 50727
+// from server: 100% by Xemicl
 // roc-lang: cpp
+// roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MT
-// roc-lib: ogre-1.6.4 OgreBillboardChain.cpp
+// roc-lib: ogre-1.6.4 OgreResourceGroupManager.cpp
 
 // Candidate translation unit (score above; library headers required).
 /*
@@ -33,797 +33,1700 @@ the OGRE Unrestricted License provided you have obtained such a license from
 Torus Knot Software Ltd.
 -----------------------------------------------------------------------------
 */
-
-// Thanks to Vincent Cantin (karmaGfa) for the original implementation of this
-// class, although it has now been mostly rewritten
-
 #include "OgreStableHeaders.h"
-#include "OgreBillboardChain.h"
-
-#include "OgreSimpleRenderable.h"
-#include "OgreHardwareBufferManager.h"
-#include "OgreNode.h"
-#include "OgreCamera.h"
-#include "OgreRoot.h"
-#include "OgreMaterialManager.h"
+#include "OgreResourceGroupManager.h"
+#include "OgreException.h"
+#include "OgreArchive.h"
+#include "OgreArchiveManager.h"
 #include "OgreLogManager.h"
-#include "OgreStringConverter.h"
+#include "OgreScriptLoader.h"
+#include "OgreSceneManager.h"
 
 namespace Ogre {
-	const size_t BillboardChain::SEGMENT_EMPTY = 0xffffffff;
-	//-----------------------------------------------------------------------
-	BillboardChain::Element::Element()
-	{
-	}
-	//-----------------------------------------------------------------------
-	BillboardChain::Element::Element(Vector3 _position,
-		Real _width,
-		Real _texCoord,
-		ColourValue _colour) :
-	position(_position),
-		width(_width),
-		texCoord(_texCoord),
-		colour(_colour)
-	{
-	}
-	//-----------------------------------------------------------------------
-	BillboardChain::BillboardChain(const String& name, size_t maxElements,
-		size_t numberOfChains, bool useTextureCoords, bool useColours, bool dynamic)
-		:MovableObject(name),
-		mMaxElementsPerChain(maxElements),
-		mChainCount(numberOfChains),
-		mUseTexCoords(useTextureCoords),
-		mUseVertexColour(useColours),
-		mDynamic(dynamic),
-		mVertexDeclDirty(true),
-		mBuffersNeedRecreating(true),
-		mBoundsDirty(true),
-		mIndexContentDirty(true),
-		mRadius(0.0f),
-		mTexCoordDir(TCD_U)
-	{
-		mVertexData = OGRE_NEW VertexData();
-		mIndexData = OGRE_NEW IndexData();
 
-		mOtherTexCoordRange[0] = 0.0f;
-		mOtherTexCoordRange[1] = 1.0f;
+    //-----------------------------------------------------------------------
+    template<> ResourceGroupManager* Singleton<ResourceGroupManager>::ms_Singleton = 0;
+    ResourceGroupManager* ResourceGroupManager::getSingletonPtr(void)
+    {
+        return ms_Singleton;
+    }
+    ResourceGroupManager& ResourceGroupManager::getSingleton(void)
+    {  
+        assert( ms_Singleton );  return ( *ms_Singleton );  
+    }
+	String ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME = "General";
+	String ResourceGroupManager::INTERNAL_RESOURCE_GROUP_NAME = "Internal";
+	String ResourceGroupManager::BOOTSTRAP_RESOURCE_GROUP_NAME = "Bootstrap";
+	String ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME = "Autodetect";
+	// A reference count of 3 means that only RGM and RM have references
+	// RGM has one (this one) and RM has 2 (by name and by handle)
+	size_t ResourceGroupManager::RESOURCE_SYSTEM_NUM_REFERENCE_COUNTS = 3;
+    //-----------------------------------------------------------------------
+    //-----------------------------------------------------------------------
+    ResourceGroupManager::ResourceGroupManager()
+        : mCurrentGroup(0), mLoadingListener(0)
+    {
+        // Create the 'General' group
+        createResourceGroup(DEFAULT_RESOURCE_GROUP_NAME);
+        // Create the 'Internal' group
+        createResourceGroup(INTERNAL_RESOURCE_GROUP_NAME);
+		// Create the 'Autodetect' group (only used for temp storage)
+		createResourceGroup(AUTODETECT_RESOURCE_GROUP_NAME);
+        // default world group to the default group
+        mWorldGroupName = DEFAULT_RESOURCE_GROUP_NAME;
+    }
+    //-----------------------------------------------------------------------
+    ResourceGroupManager::~ResourceGroupManager()
+    {
+        // delete all resource groups
+        ResourceGroupMap::iterator i, iend;
+        iend = mResourceGroupMap.end();
+        for (i = mResourceGroupMap.begin(); i != iend; ++i)
+        {
+			deleteGroup(i->second);
+        }
+        mResourceGroupMap.clear();
+    }
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::createResourceGroup(const String& name)
+    {
+		OGRE_LOCK_AUTO_MUTEX
 
-		setupChainContainers();
-
-		mVertexData->vertexStart = 0;
-		// index data set up later
-		// set basic white material
-		this->setMaterialName("BaseWhiteNoLighting");
-
-	}
+		LogManager::getSingleton().logMessage("Creating resource group " + name);
+        if (getResourceGroup(name))
+        {
+            OGRE_EXCEPT(Exception::ERR_DUPLICATE_ITEM, 
+                "Resource group with name '" + name + "' already exists!", 
+                "ResourceGroupManager::createResourceGroup");
+        }
+        ResourceGroup* grp = OGRE_NEW_T(ResourceGroup, MEMCATEGORY_RESOURCE)();
+		grp->groupStatus = ResourceGroup::UNINITIALSED;
+        grp->name = name;
+        grp->worldGeometrySceneManager = 0;
+        mResourceGroupMap.insert(
+            ResourceGroupMap::value_type(name, grp));
+    }
 	//-----------------------------------------------------------------------
-	BillboardChain::~BillboardChain()
+	void ResourceGroupManager::initialiseResourceGroup(const String& name)
 	{
-		OGRE_DELETE mVertexData;
-		OGRE_DELETE mIndexData;
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::setupChainContainers(void)
-	{
-		// Allocate enough space for everything
-		mChainElementList.resize(mChainCount * mMaxElementsPerChain);
-		mVertexData->vertexCount = mChainElementList.size() * 2;
-
-		// Configure chains
-		mChainSegmentList.resize(mChainCount);
-		for (size_t i = 0; i < mChainCount; ++i)
+		OGRE_LOCK_AUTO_MUTEX
+		LogManager::getSingleton().logMessage("Initialising resource group " + name);
+		ResourceGroup* grp = getResourceGroup(name);
+		if (!grp)
 		{
-			ChainSegment& seg = mChainSegmentList[i];
-			seg.start = i * mMaxElementsPerChain;
-			seg.tail = seg.head = SEGMENT_EMPTY;
-
+			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+				"Cannot find a group named " + name, 
+				"ResourceGroupManager::initialiseResourceGroup");
 		}
+		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
 
-
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::setupVertexDeclaration(void)
-	{
-		if (mVertexDeclDirty)
+		if (grp->groupStatus == ResourceGroup::UNINITIALSED)
 		{
-			VertexDeclaration* decl = mVertexData->vertexDeclaration;
-			decl->removeAllElements();
+			// in the process of initialising
+			grp->groupStatus = ResourceGroup::INITIALISING;
+			// Set current group
+			parseResourceGroupScripts(grp);
+			mCurrentGroup = grp;
+			createDeclaredResources(grp);
+			grp->groupStatus = ResourceGroup::INITIALISED;
 
-			size_t offset = 0;
-			// Add a description for the buffer of the positions of the vertices
-			decl->addElement(0, offset, VET_FLOAT3, VES_POSITION);
-			offset += VertexElement::getTypeSize(VET_FLOAT3);
-
-			if (mUseVertexColour)
-			{
-				decl->addElement(0, offset, VET_COLOUR, VES_DIFFUSE);
-				offset += VertexElement::getTypeSize(VET_COLOUR);
-			}
-
-			if (mUseTexCoords)
-			{
-				decl->addElement(0, offset, VET_FLOAT2, VES_TEXTURE_COORDINATES);
-				offset += VertexElement::getTypeSize(VET_FLOAT2);
-			}
-
-			if (!mUseTexCoords && !mUseVertexColour)
-			{
-				LogManager::getSingleton().logMessage(
-					"Error - BillboardChain '" + mName + "' is using neither "
-					"texture coordinates or vertex colours; it will not be "
-					"visible on some rendering APIs so you should change this "
-					"so you use one or the other.");
-			}
-			mVertexDeclDirty = false;
+			// Reset current group
+			mCurrentGroup = 0;
 		}
 	}
 	//-----------------------------------------------------------------------
-	void BillboardChain::setupBuffers(void)
+	void ResourceGroupManager::initialiseAllResourceGroups(void)
 	{
-		setupVertexDeclaration();
-		if (mBuffersNeedRecreating)
-		{
-			// Create the vertex buffer (always dynamic due to the camera adjust)
-			HardwareVertexBufferSharedPtr pBuffer =
-				HardwareBufferManager::getSingleton().createVertexBuffer(
-				mVertexData->vertexDeclaration->getVertexSize(0),
-				mVertexData->vertexCount,
-				HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY_DISCARDABLE);
+		OGRE_LOCK_AUTO_MUTEX
 
-			// (re)Bind the buffer
-			// Any existing buffer will lose its reference count and be destroyed
-			mVertexData->vertexBufferBinding->setBinding(0, pBuffer);
-
-			mIndexData->indexBuffer =
-				HardwareBufferManager::getSingleton().createIndexBuffer(
-					HardwareIndexBuffer::IT_16BIT,
-					mChainCount * mMaxElementsPerChain * 6, // max we can use
-					mDynamic? HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY : HardwareBuffer::HBU_STATIC_WRITE_ONLY);
-			// NB we don't set the indexCount on IndexData here since we will
-			// probably use less than the maximum number of indices
-
-			mBuffersNeedRecreating = false;
-		}
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::setMaxChainElements(size_t maxElements)
-	{
-		mMaxElementsPerChain = maxElements;
-		setupChainContainers();
-        mBuffersNeedRecreating = mIndexContentDirty = true;
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::setNumberOfChains(size_t numChains)
-	{
-		mChainCount = numChains;
-		setupChainContainers();
-        mBuffersNeedRecreating = mIndexContentDirty = true;
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::setUseTextureCoords(bool use)
-	{
-		mUseTexCoords = use;
-		mVertexDeclDirty = mBuffersNeedRecreating = true;
-        mIndexContentDirty = true;
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::setTextureCoordDirection(BillboardChain::TexCoordDirection dir)
-	{
-		mTexCoordDir = dir;
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::setOtherTextureCoordRange(Real start, Real end)
-	{
-		mOtherTexCoordRange[0] = start;
-		mOtherTexCoordRange[1] = end;
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::setUseVertexColours(bool use)
-	{
-		mUseVertexColour = use;
-		mVertexDeclDirty = mBuffersNeedRecreating = true;
-        mIndexContentDirty = true;
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::setDynamic(bool dyn)
-	{
-		mDynamic = dyn;
-		mBuffersNeedRecreating = mIndexContentDirty = true;
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::addChainElement(size_t chainIndex,
-		const BillboardChain::Element& dtls)
-	{
-
-		if (chainIndex >= mChainCount)
+		// Intialise all declared resource groups
+		ResourceGroupMap::iterator i, iend;
+		iend = mResourceGroupMap.end();
+		for (i = mResourceGroupMap.begin(); i != iend; ++i)
 		{
-			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-				"chainIndex out of bounds",
-				"BillboardChain::addChainElement");
-		}
-		ChainSegment& seg = mChainSegmentList[chainIndex];
-		if (seg.head == SEGMENT_EMPTY)
-		{
-			// Tail starts at end, head grows backwards
-			seg.tail = mMaxElementsPerChain - 1;
-			seg.head = seg.tail;
-			mIndexContentDirty = true;
-		}
-		else
-		{
-			if (seg.head == 0)
+			ResourceGroup* grp = i->second;
+			OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+			if (grp->groupStatus == ResourceGroup::UNINITIALSED)
 			{
-				// Wrap backwards
-				seg.head = mMaxElementsPerChain - 1;
-			}
-			else
-			{
-				// Just step backward
-				--seg.head;
-			}
-			// Run out of elements?
-			if (seg.head == seg.tail)
-			{
-				// Move tail backwards too, losing the end of the segment and re-using
-				// it in the head
-				if (seg.tail == 0)
-					seg.tail = mMaxElementsPerChain - 1;
-				else
-					--seg.tail;
+				// in the process of initialising
+				grp->groupStatus = ResourceGroup::INITIALISING;
+				// Set current group
+				mCurrentGroup = grp;
+				parseResourceGroupScripts(grp);
+				createDeclaredResources(grp);
+				grp->groupStatus = ResourceGroup::INITIALISED;
+				// Reset current group
+				mCurrentGroup = 0;
 			}
 		}
-
-		// Set the details
-		mChainElementList[seg.start + seg.head] = dtls;
-
-		mIndexContentDirty = true;
-		mBoundsDirty = true;
-		// tell parent node to update bounds
-		if (mParentNode)
-			mParentNode->needUpdate();
-
 	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::removeChainElement(size_t chainIndex)
-	{
-		if (chainIndex >= mChainCount)
-		{
-			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-				"chainIndex out of bounds",
-				"BillboardChain::removeChainElement");
-		}
-		ChainSegment& seg = mChainSegmentList[chainIndex];
-		if (seg.head == SEGMENT_EMPTY)
-			return; // do nothing, nothing to remove
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::prepareResourceGroup(const String& name, 
+		bool prepareMainResources, bool prepareWorldGeom)
+    {
+		// Can only bulk-load one group at a time (reasonable limitation I think)
+		OGRE_LOCK_AUTO_MUTEX
 
-
-		if (seg.tail == seg.head)
+		LogManager::getSingleton().stream()
+			<< "Preparing resource group '" << name << "' - Resources: "
+			<< prepareMainResources << " World Geometry: " << prepareWorldGeom;
+		// load all created resources
+		ResourceGroup* grp = getResourceGroup(name);
+		if (!grp)
 		{
-			// last item
-			seg.head = seg.tail = SEGMENT_EMPTY;
-		}
-		else if (seg.tail == 0)
-		{
-			seg.tail = mMaxElementsPerChain - 1;
-		}
-		else
-		{
-			--seg.tail;
+			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+				"Cannot find a group named " + name, 
+				"ResourceGroupManager::prepareResourceGroup");
 		}
 
-		// we removed an entry so indexes need updating
-		mIndexContentDirty = true;
-		mBoundsDirty = true;
-		// tell parent node to update bounds
-		if (mParentNode)
-			mParentNode->needUpdate();
+		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex 
+		// Set current group
+		mCurrentGroup = grp;
 
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::clearChain(size_t chainIndex)
-	{
-		if (chainIndex >= mChainCount)
+		// Count up resources for starting event
+		ResourceGroup::LoadResourceOrderMap::iterator oi;
+		size_t resourceCount = 0;
+		if (prepareMainResources)
 		{
-			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-				"chainIndex out of bounds",
-				"BillboardChain::clearChain");
-		}
-		ChainSegment& seg = mChainSegmentList[chainIndex];
-
-		// Just reset head & tail
-		seg.tail = seg.head = SEGMENT_EMPTY;
-
-		// we removed an entry so indexes need updating
-		mIndexContentDirty = true;
-		mBoundsDirty = true;
-		// tell parent node to update bounds
-		if (mParentNode)
-			mParentNode->needUpdate();
-
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::clearAllChains(void)
-	{
-		for (size_t i = 0; i < mChainCount; ++i)
-		{
-			clearChain(i);
-		}
-
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::updateChainElement(size_t chainIndex, size_t elementIndex,
-		const BillboardChain::Element& dtls)
-	{
-		if (chainIndex >= mChainCount)
-		{
-			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-				"chainIndex out of bounds",
-				"BillboardChain::updateChainElement");
-		}
-		ChainSegment& seg = mChainSegmentList[chainIndex];
-		if (seg.head == SEGMENT_EMPTY)
-		{
-			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-				"Chain segment is empty",
-				"BillboardChain::updateChainElement");
-		}
-
-		size_t idx = seg.head + elementIndex;
-		// adjust for the edge and start
-		idx = (idx % mMaxElementsPerChain) + seg.start;
-
-		mChainElementList[idx] = dtls;
-
-		mBoundsDirty = true;
-		// tell parent node to update bounds
-		if (mParentNode)
-			mParentNode->needUpdate();
-
-
-	}
-	//-----------------------------------------------------------------------
-	const BillboardChain::Element&
-	BillboardChain::getChainElement(size_t chainIndex, size_t elementIndex) const
-	{
-
-		if (chainIndex >= mChainCount)
-		{
-			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-				"chainIndex out of bounds",
-				"BillboardChain::getChainElement");
-		}
-		const ChainSegment& seg = mChainSegmentList[chainIndex];
-
-		size_t idx = seg.head + elementIndex;
-		// adjust for the edge and start
-		idx = (idx % mMaxElementsPerChain) + seg.start;
-
-		return mChainElementList[idx];
-	}
-	//-----------------------------------------------------------------------
-	size_t BillboardChain::getNumChainElements(size_t chainIndex) const
-	{
-		if (chainIndex >= mChainCount)
-		{
-			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-				"chainIndex out of bounds",
-				"BillboardChain::getNumChainElements");
-		}
-		const ChainSegment& seg = mChainSegmentList[chainIndex];
-
-		return seg.tail - seg.head + 1;
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::updateBoundingBox(void) const
-	{
-		if (mBoundsDirty)
-		{
-			mAABB.setNull();
-			Vector3 widthVector;
-			for (ChainSegmentList::const_iterator segi = mChainSegmentList.begin();
-				segi != mChainSegmentList.end(); ++segi)
+			for (oi = grp->loadResourceOrderMap.begin(); oi != grp->loadResourceOrderMap.end(); ++oi)
 			{
-				const ChainSegment& seg = *segi;
+				resourceCount += oi->second->size();
+			}
+		}
+        // Estimate world geometry size
+        if (grp->worldGeometrySceneManager && prepareWorldGeom)
+        {
+            resourceCount += 
+				grp->worldGeometrySceneManager->estimateWorldGeometry(
+					grp->worldGeometry);
+        }
 
-				if (seg.head != SEGMENT_EMPTY)
+		fireResourceGroupPrepareStarted(name, resourceCount);
+
+		// Now load for real
+		if (prepareMainResources)
+		{
+			for (oi = grp->loadResourceOrderMap.begin(); 
+				oi != grp->loadResourceOrderMap.end(); ++oi)
+			{
+				size_t n = 0;
+				LoadUnloadResourceList::iterator l = oi->second->begin();
+				while (l != oi->second->end())
 				{
+					ResourcePtr res = *l;
 
-					for(size_t e = seg.head; ; ++e) // until break
+					// Fire resource events no matter whether resource needs preparing
+                    // or not. This ensures that the number of callbacks
+					// matches the number originally estimated, which is important
+					// for progress bars.
+					fireResourcePrepareStarted(res);
+
+					// If preparing one of these resources cascade-prepares another resource, 
+					// the list will get longer! But these should be prepared immediately
+					// Call prepare regardless, already prepared or loaded resources will be skipped
+					res->prepare();
+
+					fireResourcePrepareEnded();
+
+					// Did the resource change group? if so, our iterator will have
+					// been invalidated
+					if (res->getGroup() != name)
 					{
-						// Wrap forwards
-						if (e == mMaxElementsPerChain)
-							e = 0;
-
-						const Element& elem = mChainElementList[seg.start + e];
-
-						widthVector.x = widthVector.y = widthVector.z = elem.width;
-						mAABB.merge(elem.position - widthVector);
-						mAABB.merge(elem.position + widthVector);
-
-						if (e == seg.tail)
-							break;
-
-					}
-				}
-
-			}
-
-			// Set the current radius
-			if (mAABB.isNull())
-			{
-				mRadius = 0.0f;
-			}
-			else
-			{
-				mRadius = Math::Sqrt(
-					std::max(mAABB.getMinimum().squaredLength(),
-					mAABB.getMaximum().squaredLength()));
-			}
-
-			mBoundsDirty = false;
-		}
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::updateVertexBuffer(Camera* cam)
-	{
-		setupBuffers();
-		HardwareVertexBufferSharedPtr pBuffer =
-			mVertexData->vertexBufferBinding->getBuffer(0);
-		void* pBufferStart = pBuffer->lock(HardwareBuffer::HBL_DISCARD);
-
-		const Vector3& camPos = cam->getDerivedPosition();
-		Vector3 eyePos = mParentNode->_getDerivedOrientation().Inverse() *
-			(camPos - mParentNode->_getDerivedPosition()) / mParentNode->_getDerivedScale();
-
-		Vector3 chainTangent;
-		for (ChainSegmentList::iterator segi = mChainSegmentList.begin();
-			segi != mChainSegmentList.end(); ++segi)
-		{
-			ChainSegment& seg = *segi;
-
-			// Skip 0 or 1 element segment counts
-			if (seg.head != SEGMENT_EMPTY && seg.head != seg.tail)
-			{
-				size_t laste = seg.head;
-				for (size_t e = seg.head; ; ++e) // until break
-				{
-					// Wrap forwards
-					if (e == mMaxElementsPerChain)
-						e = 0;
-
-					Element& elem = mChainElementList[e + seg.start];
-					assert (((e + seg.start) * 2) < 65536 && "Too many elements!");
-					uint16 baseIdx = static_cast<uint16>((e + seg.start) * 2);
-
-					// Determine base pointer to vertex #1
-					void* pBase = static_cast<void*>(
-						static_cast<char*>(pBufferStart) +
-							pBuffer->getVertexSize() * baseIdx);
-
-					// Get index of next item
-					size_t nexte = e + 1;
-					if (nexte == mMaxElementsPerChain)
-						nexte = 0;
-
-					if (e == seg.head)
-					{
-						// No laste, use next item
-						chainTangent = mChainElementList[nexte + seg.start].position - elem.position;
-					}
-					else if (e == seg.tail)
-					{
-						// No nexte, use only last item
-						chainTangent = elem.position - mChainElementList[laste + seg.start].position;
+						l = oi->second->begin();
+						std::advance(l, n);
 					}
 					else
 					{
-						// A mid position, use tangent across both prev and next
-						chainTangent = mChainElementList[nexte + seg.start].position - mChainElementList[laste + seg.start].position;
-
-					}
-
-					Vector3 vP1ToEye = eyePos - elem.position;
-					Vector3 vPerpendicular = chainTangent.crossProduct(vP1ToEye);
-					vPerpendicular.normalise();
-					vPerpendicular *= (elem.width * 0.5);
-
-					Vector3 pos0 = elem.position - vPerpendicular;
-					Vector3 pos1 = elem.position + vPerpendicular;
-
-					float* pFloat = static_cast<float*>(pBase);
-					// pos1
-					*pFloat++ = pos0.x;
-					*pFloat++ = pos0.y;
-					*pFloat++ = pos0.z;
-
-					pBase = static_cast<void*>(pFloat);
-
-					if (mUseVertexColour)
-					{
-						RGBA* pCol = static_cast<RGBA*>(pBase);
-						Root::getSingleton().convertColourValue(elem.colour, pCol);
-						pCol++;
-						pBase = static_cast<void*>(pCol);
-					}
-
-					if (mUseTexCoords)
-					{
-						pFloat = static_cast<float*>(pBase);
-						if (mTexCoordDir == TCD_U)
-						{
-							*pFloat++ = elem.texCoord;
-							*pFloat++ = mOtherTexCoordRange[0];
-						}
-						else
-						{
-							*pFloat++ = mOtherTexCoordRange[0];
-							*pFloat++ = elem.texCoord;
-						}
-						pBase = static_cast<void*>(pFloat);
-					}
-
-					// pos2
-					pFloat = static_cast<float*>(pBase);
-					*pFloat++ = pos1.x;
-					*pFloat++ = pos1.y;
-					*pFloat++ = pos1.z;
-					pBase = static_cast<void*>(pFloat);
-
-					if (mUseVertexColour)
-					{
-						RGBA* pCol = static_cast<RGBA*>(pBase);
-						Root::getSingleton().convertColourValue(elem.colour, pCol);
-						pCol++;
-						pBase = static_cast<void*>(pCol);
-					}
-
-					if (mUseTexCoords)
-					{
-						pFloat = static_cast<float*>(pBase);
-						if (mTexCoordDir == TCD_U)
-						{
-							*pFloat++ = elem.texCoord;
-							*pFloat++ = mOtherTexCoordRange[1];
-						}
-						else
-						{
-							*pFloat++ = mOtherTexCoordRange[1];
-							*pFloat++ = elem.texCoord;
-						}
-						pBase = static_cast<void*>(pFloat);
-					}
-
-					if (e == seg.tail)
-						break; // last one
-
-					laste = e;
-
-				} // element
-			} // segment valid?
-
-		} // each segment
-
-
-
-		pBuffer->unlock();
-
-
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::updateIndexBuffer(void)
-	{
-
-		setupBuffers();
-		if (mIndexContentDirty)
-		{
-
-			uint16* pShort = static_cast<uint16*>(
-				mIndexData->indexBuffer->lock(HardwareBuffer::HBL_DISCARD));
-			mIndexData->indexCount = 0;
-			// indexes
-			for (ChainSegmentList::iterator segi = mChainSegmentList.begin();
-				segi != mChainSegmentList.end(); ++segi)
-			{
-				ChainSegment& seg = *segi;
-
-				// Skip 0 or 1 element segment counts
-				if (seg.head != SEGMENT_EMPTY && seg.head != seg.tail)
-				{
-					// Start from head + 1 since it's only useful in pairs
-					size_t laste = seg.head;
-					while(1) // until break
-					{
-						size_t e = laste + 1;
-						// Wrap forwards
-						if (e == mMaxElementsPerChain)
-							e = 0;
-						// indexes of this element are (e * 2) and (e * 2) + 1
-						// indexes of the last element are the same, -2
-						assert (((e + seg.start) * 2) < 65536 && "Too many elements!");
-						uint16 baseIdx = static_cast<uint16>((e + seg.start) * 2);
-						uint16 lastBaseIdx = static_cast<uint16>((laste + seg.start) * 2);
-						*pShort++ = lastBaseIdx;
-						*pShort++ = lastBaseIdx + 1;
-						*pShort++ = baseIdx;
-						*pShort++ = lastBaseIdx + 1;
-						*pShort++ = baseIdx + 1;
-						*pShort++ = baseIdx;
-
-						mIndexData->indexCount += 6;
-
-
-						if (e == seg.tail)
-							break; // last one
-
-						laste = e;
-
+						++l;
+						++n;
 					}
 				}
-
 			}
-			mIndexData->indexBuffer->unlock();
-
-			mIndexContentDirty = false;
 		}
+        // Load World Geometry
+        if (grp->worldGeometrySceneManager && prepareWorldGeom)
+        {
+            grp->worldGeometrySceneManager->prepareWorldGeometry(
+                grp->worldGeometry);
+        }
+		fireResourceGroupPrepareEnded(name);
 
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::_notifyCurrentCamera(Camera* cam)
-	{
-		updateVertexBuffer(cam);
-	}
-	//-----------------------------------------------------------------------
-	Real BillboardChain::getSquaredViewDepth(const Camera* cam) const
-	{
-		Vector3 min, max, mid, dist;
-		min = mAABB.getMinimum();
-		max = mAABB.getMaximum();
-		mid = ((max - min) * 0.5) + min;
-		dist = cam->getDerivedPosition() - mid;
+		// reset current group
+		mCurrentGroup = 0;
+		
+		LogManager::getSingleton().logMessage("Finished preparing resource group " + name);
+    }
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::loadResourceGroup(const String& name, 
+		bool loadMainResources, bool loadWorldGeom)
+    {
+		// Can only bulk-load one group at a time (reasonable limitation I think)
+		OGRE_LOCK_AUTO_MUTEX
 
-		return dist.squaredLength();
-	}
-	//-----------------------------------------------------------------------
-	Real BillboardChain::getBoundingRadius(void) const
-	{
-		return mRadius;
-	}
-	//-----------------------------------------------------------------------
-	const AxisAlignedBox& BillboardChain::getBoundingBox(void) const
-	{
-		updateBoundingBox();
-		return mAABB;
-	}
-	//-----------------------------------------------------------------------
-	const MaterialPtr& BillboardChain::getMaterial(void) const
-	{
-		return mMaterial;
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::setMaterialName(const String& name)
-	{
-		mMaterialName = name;
-		mMaterial = MaterialManager::getSingleton().getByName(mMaterialName);
-
-		if (mMaterial.isNull())
+		LogManager::getSingleton().stream()
+			<< "Loading resource group '" << name << "' - Resources: "
+			<< loadMainResources << " World Geometry: " << loadWorldGeom;
+		// load all created resources
+		ResourceGroup* grp = getResourceGroup(name);
+		if (!grp)
 		{
-			LogManager::getSingleton().logMessage("Can't assign material " + name +
-				" to BillboardChain " + mName + " because this "
-				"Material does not exist. Have you forgotten to define it in a "
-				".material script?");
-			mMaterial = MaterialManager::getSingleton().getByName("BaseWhiteNoLighting");
-			if (mMaterial.isNull())
-			{
-				OGRE_EXCEPT(Exception::ERR_INTERNAL_ERROR, "Can't assign default material "
-					"to BillboardChain of " + mName + ". Did "
-					"you forget to call MaterialManager::initialise()?",
-					"BillboardChain.setMaterialName");
-			}
+			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+				"Cannot find a group named " + name, 
+				"ResourceGroupManager::loadResourceGroup");
 		}
-		// Ensure new material loaded (will not load again if already loaded)
-		mMaterial->load();
-	}
-	//-----------------------------------------------------------------------
-	const String& BillboardChain::getMovableType(void) const
-	{
-		return BillboardChainFactory::FACTORY_TYPE_NAME;
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::_updateRenderQueue(RenderQueue* queue)
-	{
-		updateIndexBuffer();
 
-		if (mIndexData->indexCount > 0)
+		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex 
+		// Set current group
+		mCurrentGroup = grp;
+
+		// Count up resources for starting event
+		ResourceGroup::LoadResourceOrderMap::iterator oi;
+		size_t resourceCount = 0;
+		if (loadMainResources)
 		{
-            if (mRenderQueueIDSet)
-                queue->addRenderable(this, mRenderQueueID);
-            else
-                queue->addRenderable(this);
+			for (oi = grp->loadResourceOrderMap.begin(); oi != grp->loadResourceOrderMap.end(); ++oi)
+			{
+				resourceCount += oi->second->size();
+			}
 		}
+        // Estimate world geometry size
+        if (grp->worldGeometrySceneManager && loadWorldGeom)
+        {
+            resourceCount += 
+				grp->worldGeometrySceneManager->estimateWorldGeometry(
+					grp->worldGeometry);
+        }
 
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::getRenderOperation(RenderOperation& op)
-	{
-		op.indexData = mIndexData;
-		op.operationType = RenderOperation::OT_TRIANGLE_LIST;
-		op.srcRenderable = this;
-		op.useIndexes = true;
-		op.vertexData = mVertexData;
-	}
-	//-----------------------------------------------------------------------
-	void BillboardChain::getWorldTransforms(Matrix4* xform) const
-	{
-		*xform = _getParentNodeFullTransform();
-	}
-	//-----------------------------------------------------------------------
-	const LightList& BillboardChain::getLights(void) const
-	{
-		return queryLights();
-	}
-	//---------------------------------------------------------------------
-	void BillboardChain::visitRenderables(Renderable::Visitor* visitor, 
-		bool debugRenderables)
-	{
-		// only one renderable
-		visitor->visit(this, 0, false);
-	}
-	//-----------------------------------------------------------------------
-	//-----------------------------------------------------------------------
-	String BillboardChainFactory::FACTORY_TYPE_NAME = "BillboardChain";
-	//-----------------------------------------------------------------------
-	const String& BillboardChainFactory::getType(void) const
-	{
-		return FACTORY_TYPE_NAME;
-	}
-	//-----------------------------------------------------------------------
-	MovableObject* BillboardChainFactory::createInstanceImpl( const String& name,
-		const NameValuePairList* params)
-	{
-		size_t maxElements = 20;
-		size_t numberOfChains = 1;
-		bool useTex = true;
-		bool useCol = true;
-		bool dynamic = true;
-		// optional params
-		if (params != 0)
+		fireResourceGroupLoadStarted(name, resourceCount);
+
+		// Now load for real
+		if (loadMainResources)
 		{
-			NameValuePairList::const_iterator ni = params->find("maxElements");
-			if (ni != params->end())
+			for (oi = grp->loadResourceOrderMap.begin(); 
+				oi != grp->loadResourceOrderMap.end(); ++oi)
 			{
-				maxElements = StringConverter::parseUnsignedLong(ni->second);
+				size_t n = 0;
+				LoadUnloadResourceList::iterator l = oi->second->begin();
+				while (l != oi->second->end())
+				{
+					ResourcePtr res = *l;
+
+					// Fire resource events no matter whether resource is already
+					// loaded or not. This ensures that the number of callbacks
+					// matches the number originally estimated, which is important
+					// for progress bars.
+					fireResourceLoadStarted(res);
+
+					// If loading one of these resources cascade-loads another resource, 
+					// the list will get longer! But these should be loaded immediately
+					// Call load regardless, already loaded resources will be skipped
+					res->load();
+
+					fireResourceLoadEnded();
+
+					// Did the resource change group? if so, our iterator will have
+					// been invalidated
+					if (res->getGroup() != name)
+					{
+						l = oi->second->begin();
+						std::advance(l, n);
+					}
+					else
+					{
+						++l;
+						++n;
+					}
+				}
 			}
-			ni = params->find("numberOfChains");
-			if (ni != params->end())
+		}
+        // Load World Geometry
+        if (grp->worldGeometrySceneManager && loadWorldGeom)
+        {
+            grp->worldGeometrySceneManager->setWorldGeometry(
+                grp->worldGeometry);
+        }
+		fireResourceGroupLoadEnded(name);
+
+		// group is loaded
+		grp->groupStatus = ResourceGroup::LOADED;
+
+		// reset current group
+		mCurrentGroup = 0;
+		
+		LogManager::getSingleton().logMessage("Finished loading resource group " + name);
+    }
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::unloadResourceGroup(const String& name, bool reloadableOnly)
+    {
+		// Can only bulk-unload one group at a time (reasonable limitation I think)
+		OGRE_LOCK_AUTO_MUTEX
+
+		LogManager::getSingleton().logMessage("Unloading resource group " + name);
+		ResourceGroup* grp = getResourceGroup(name);
+		if (!grp)
+		{
+			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+				"Cannot find a group named " + name, 
+				"ResourceGroupManager::unloadResourceGroup");
+		}
+		// Set current group
+		mCurrentGroup = grp;
+		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex 
+
+		// Count up resources for starting event
+		ResourceGroup::LoadResourceOrderMap::reverse_iterator oi;
+		// unload in reverse order
+		for (oi = grp->loadResourceOrderMap.rbegin(); oi != grp->loadResourceOrderMap.rend(); ++oi)
+		{
+			for (LoadUnloadResourceList::iterator l = oi->second->begin();
+				l != oi->second->end(); ++l)
 			{
-				numberOfChains = StringConverter::parseUnsignedLong(ni->second);
+				Resource* resource = l->get();
+				if (!reloadableOnly || resource->isReloadable())
+				{
+					resource->unload();
+				}
 			}
-			ni = params->find("useTextureCoords");
-			if (ni != params->end())
+		}
+
+		grp->groupStatus = ResourceGroup::INITIALISED;
+
+		// reset current group
+		mCurrentGroup = 0;
+		LogManager::getSingleton().logMessage("Finished unloading resource group " + name);
+    }
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::unloadUnreferencedResourcesInGroup(
+		const String& name, bool reloadableOnly )
+	{
+		// Can only bulk-unload one group at a time (reasonable limitation I think)
+		OGRE_LOCK_AUTO_MUTEX
+
+		LogManager::getSingleton().logMessage(
+			"Unloading unused resources in resource group " + name);
+		ResourceGroup* grp = getResourceGroup(name);
+		if (!grp)
+		{
+			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+				"Cannot find a group named " + name, 
+				"ResourceGroupManager::unloadUnreferencedResourcesInGroup");
+		}
+		// Set current group
+		mCurrentGroup = grp;
+
+		ResourceGroup::LoadResourceOrderMap::reverse_iterator oi;
+		// unload in reverse order
+		for (oi = grp->loadResourceOrderMap.rbegin(); oi != grp->loadResourceOrderMap.rend(); ++oi)
+		{
+			for (LoadUnloadResourceList::iterator l = oi->second->begin();
+				l != oi->second->end(); ++l)
 			{
-				useTex = StringConverter::parseBool(ni->second);
+				// A use count of 3 means that only RGM and RM have references
+				// RGM has one (this one) and RM has 2 (by name and by handle)
+				if (l->useCount() == RESOURCE_SYSTEM_NUM_REFERENCE_COUNTS)
+				{
+					Resource* resource = l->get();
+					if (!reloadableOnly || resource->isReloadable())
+					{
+						resource->unload();
+					}
+				}
 			}
-			ni = params->find("useVertexColours");
-			if (ni != params->end())
+		}
+
+		grp->groupStatus = ResourceGroup::INITIALISED;
+
+		// reset current group
+		mCurrentGroup = 0;
+		LogManager::getSingleton().logMessage(
+			"Finished unloading unused resources in resource group " + name);
+	}
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::clearResourceGroup(const String& name)
+	{
+		// Can only bulk-clear one group at a time (reasonable limitation I think)
+		OGRE_LOCK_AUTO_MUTEX
+
+			LogManager::getSingleton().logMessage("Clearing resource group " + name);
+		ResourceGroup* grp = getResourceGroup(name);
+		if (!grp)
+		{
+			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+				"Cannot find a group named " + name, 
+				"ResourceGroupManager::clearResourceGroup");
+		}
+		// set current group
+		mCurrentGroup = grp;
+		dropGroupContents(grp);
+		// clear initialised flag
+		grp->groupStatus = ResourceGroup::UNINITIALSED;
+		// reset current group
+		mCurrentGroup = 0;
+		LogManager::getSingleton().logMessage("Finished clearing resource group " + name);
+	}
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::destroyResourceGroup(const String& name)
+    {
+		// Can only bulk-destroy one group at a time (reasonable limitation I think)
+		OGRE_LOCK_AUTO_MUTEX
+
+		LogManager::getSingleton().logMessage("Destroying resource group " + name);
+		ResourceGroup* grp = getResourceGroup(name);
+		if (!grp)
+		{
+			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+				"Cannot find a group named " + name, 
+				"ResourceGroupManager::destroyResourceGroup");
+		}
+		// set current group
+		mCurrentGroup = grp;
+        unloadResourceGroup(name, false); // will throw an exception if name not valid
+		dropGroupContents(grp);
+		deleteGroup(grp);
+        mResourceGroupMap.erase(mResourceGroupMap.find(name));
+		// reset current group
+		mCurrentGroup = 0;
+    }
+	//-----------------------------------------------------------------------
+	bool ResourceGroupManager::isResourceGroupInitialised(const String& name)
+    {
+		// Can only bulk-destroy one group at a time (reasonable limitation I think)
+		OGRE_LOCK_AUTO_MUTEX
+
+		ResourceGroup* grp = getResourceGroup(name);
+		if (!grp)
+		{
+			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+				"Cannot find a group named " + name, 
+				"ResourceGroupManager::isResourceGroupInitialised");
+		}
+		return (grp->groupStatus != ResourceGroup::UNINITIALSED &&
+			grp->groupStatus != ResourceGroup::INITIALISING);
+    }
+	//-----------------------------------------------------------------------
+	bool ResourceGroupManager::isResourceGroupLoaded(const String& name)
+    {
+		// Can only bulk-destroy one group at a time (reasonable limitation I think)
+		OGRE_LOCK_AUTO_MUTEX
+
+		ResourceGroup* grp = getResourceGroup(name);
+		if (!grp)
+		{
+			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+				"Cannot find a group named " + name, 
+				"ResourceGroupManager::isResourceGroupInitialised");
+		}
+		return (grp->groupStatus == ResourceGroup::LOADED);
+    }
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::addResourceLocation(const String& name, 
+        const String& locType, const String& resGroup, bool recursive)
+    {
+        ResourceGroup* grp = getResourceGroup(resGroup);
+        if (!grp)
+        {
+            createResourceGroup(resGroup);
+            grp = getResourceGroup(resGroup);
+        }
+
+		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+
+        // Get archive
+        Archive* pArch = ArchiveManager::getSingleton().load( name, locType );
+        // Add to location list
+		ResourceLocation* loc = OGRE_NEW_T(ResourceLocation, MEMCATEGORY_RESOURCE);
+		loc->archive = pArch;
+		loc->recursive = recursive;
+        grp->locationList.push_back(loc);
+        // Index resources
+        StringVectorPtr vec = pArch->find("*", recursive);
+        for( StringVector::iterator it = vec->begin(); it != vec->end(); ++it )
+        {
+			// Index under full name, case sensitive
+            grp->resourceIndexCaseSensitive[(*it)] = pArch;
+            if (!pArch->isCaseSensitive())
+            {
+	            // Index under lower case name too for case insensitive match
+    	        String indexName = (*it);
+                StringUtil::toLowerCase(indexName);
+	            grp->resourceIndexCaseInsensitive[indexName] = pArch;
+            }
+        }
+		
+		StringUtil::StrStreamType msg;
+		msg << "Added resource location '" << name << "' of type '" << locType
+			<< "' to resource group '" << resGroup << "'";
+		if (recursive)
+			msg << " with recursive option";
+		LogManager::getSingleton().logMessage(msg.str());
+
+    }
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::removeResourceLocation(const String& name, 
+        const String& resGroup)
+    {
+		ResourceGroup* grp = getResourceGroup(resGroup);
+		if (!grp)
+        {
+            OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+                "Cannot locate a resource group called '" + resGroup + "'", 
+                "ResourceGroupManager::removeResourceLocation");
+        }
+
+		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+
+        // Remove from location list
+		LocationList::iterator li, liend;
+		liend = grp->locationList.end();
+		for (li = grp->locationList.begin(); li != liend; ++li)
+		{
+			Archive* pArch = (*li)->archive;
+			if (pArch->getName() == name)
 			{
-				useCol = StringConverter::parseBool(ni->second);
-			}
-			ni = params->find("dynamic");
-			if (ni != params->end())
-			{
-				dynamic = StringConverter::parseBool(ni->second);
+				// Delete indexes
+				ResourceLocationIndex::iterator rit, ritend;
+				ritend = grp->resourceIndexCaseInsensitive.end();
+				for (rit = grp->resourceIndexCaseInsensitive.begin(); rit != ritend;)
+				{
+					if (rit->second == pArch)
+					{
+						ResourceLocationIndex::iterator del = rit++;
+						grp->resourceIndexCaseInsensitive.erase(del);
+					}
+					else
+					{
+						++rit;
+					}
+				}
+                ritend = grp->resourceIndexCaseSensitive.end();
+                for (rit = grp->resourceIndexCaseSensitive.begin(); rit != ritend;)
+                {
+                    if (rit->second == pArch)
+                    {
+                        ResourceLocationIndex::iterator del = rit++;
+                        grp->resourceIndexCaseSensitive.erase(del);
+                    }
+                    else
+                    {
+                        ++rit;
+                    }
+                }
+				// Erase list entry
+				OGRE_DELETE_T(*li, ResourceLocation, MEMCATEGORY_RESOURCE);
+				grp->locationList.erase(li);
+
+				break;
 			}
 
 		}
 
-		return OGRE_NEW BillboardChain(name, maxElements, numberOfChains, useTex, useCol, dynamic);
+		LogManager::getSingleton().logMessage("Removed resource location " + name);
+
+
+    }
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::declareResource(const String& name, 
+        const String& resourceType, const String& groupName,
+		const NameValuePairList& loadParameters)
+    {
+        declareResource(name, resourceType, groupName, 0, loadParameters);
+    }
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::declareResource(const String& name, 
+        const String& resourceType, const String& groupName,
+        ManualResourceLoader* loader,
+        const NameValuePairList& loadParameters)
+    {
+		ResourceGroup* grp = getResourceGroup(groupName);
+		if (!grp)
+		{
+			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+				"Cannot find a group named " + groupName, 
+				"ResourceGroupManager::declareResource");
+		}
+		
+		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+
+		ResourceDeclaration dcl;
+		dcl.loader = loader;
+		dcl.parameters = loadParameters;
+		dcl.resourceName = name;
+		dcl.resourceType = resourceType;
+		grp->resourceDeclarations.push_back(dcl);
+    }
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::undeclareResource(const String& name, 
+		const String& groupName)
+    {
+		ResourceGroup* grp = getResourceGroup(groupName);
+		if (!grp)
+		{
+			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+				"Cannot find a group named " + groupName, 
+				"ResourceGroupManager::undeclareResource");
+		}
+
+		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+
+		for (ResourceDeclarationList::iterator i = grp->resourceDeclarations.begin();
+			i != grp->resourceDeclarations.end(); ++i)
+		{
+			if (i->resourceName == name)
+			{
+				grp->resourceDeclarations.erase(i);
+				break;
+			}
+		}
+    }
+    //-----------------------------------------------------------------------
+    DataStreamPtr ResourceGroupManager::openResource(
+        const String& resourceName, const String& groupName, 
+		bool searchGroupsIfNotFound, Resource* resourceBeingLoaded)
+    {
+		OGRE_LOCK_AUTO_MUTEX
+
+		if(mLoadingListener)
+		{
+			DataStreamPtr stream = mLoadingListener->resourceLoading(resourceName, groupName, resourceBeingLoaded);
+			if(!stream.isNull())
+				return stream;
+		}
+
+		// Try to find in resource index first
+		ResourceGroup* grp = getResourceGroup(groupName);
+		if (!grp)
+		{
+			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+				"Cannot locate a resource group called '" + groupName + 
+				"' for resource '" + resourceName + "'" , 
+				"ResourceGroupManager::openResource");
+		}
+
+		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+
+		Archive* pArch = 0;
+		ResourceLocationIndex::iterator rit = grp->resourceIndexCaseSensitive.find(resourceName);
+		if (rit != grp->resourceIndexCaseSensitive.end())
+		{
+			// Found in the index
+			pArch = rit->second;
+			DataStreamPtr stream = pArch->open(resourceName);
+			if (mLoadingListener)
+				mLoadingListener->resourceStreamOpened(resourceName, groupName, resourceBeingLoaded, stream);
+			return stream;
+		}
+        else 
+        {
+            // try case insensitive
+            String lcResourceName = resourceName;
+            StringUtil::toLowerCase(lcResourceName);
+            rit = grp->resourceIndexCaseInsensitive.find(lcResourceName);
+            if (rit != grp->resourceIndexCaseInsensitive.end())
+            {
+                // Found in the index
+                pArch = rit->second;
+				DataStreamPtr stream = pArch->open(resourceName);
+				if (mLoadingListener)
+					mLoadingListener->resourceStreamOpened(resourceName, groupName, resourceBeingLoaded, stream);
+				return stream;
+            }
+		    else
+		    {
+			    // Search the hard way
+			    LocationList::iterator li, liend;
+			    liend = grp->locationList.end();
+			    for (li = grp->locationList.begin(); li != liend; ++li)
+			    {
+				    Archive* arch = (*li)->archive;
+                    if (arch->exists(resourceName))
+				    {
+                        DataStreamPtr ptr = arch->open(resourceName);
+						if (mLoadingListener)
+							mLoadingListener->resourceStreamOpened(resourceName, groupName, resourceBeingLoaded, ptr);
+					    return ptr;
+				    }
+			    }
+		    }
+        }
+
+		
+		// Not found
+		if (searchGroupsIfNotFound)
+		{
+			ResourceGroup* grp = findGroupContainingResourceImpl(resourceName); 
+			if (grp)
+			{
+				if (resourceBeingLoaded)
+				{
+					resourceBeingLoaded->changeGroupOwnership(grp->name);
+				}
+				return openResource(resourceName, grp->name, false);
+			}
+			else
+			{
+				OGRE_EXCEPT(Exception::ERR_FILE_NOT_FOUND, 
+					"Cannot locate resource " + resourceName + 
+					" in resource group " + groupName + " or any other group.", 
+					"ResourceGroupManager::openResource");
+			}
+		}
+		OGRE_EXCEPT(Exception::ERR_FILE_NOT_FOUND, "Cannot locate resource " + 
+			resourceName + " in resource group " + groupName + ".", 
+			"ResourceGroupManager::openResource");
+
+		// Keep compiler happy
+		return DataStreamPtr();
+
+
+    }
+    //-----------------------------------------------------------------------
+    DataStreamListPtr ResourceGroupManager::openResources(
+        const String& pattern, const String& groupName)
+    {
+		OGRE_LOCK_AUTO_MUTEX
+		ResourceGroup* grp = getResourceGroup(groupName);
+		if (!grp)
+		{
+			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+				"Cannot locate a resource group called '" + groupName + "'", 
+				"ResourceGroupManager::openResources");
+		}
+
+		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+
+		// Iterate through all the archives and build up a combined list of
+		// streams
+		// MEMCATEGORY_GENERAL is the only category supported for SharedPtr
+		DataStreamListPtr ret = DataStreamListPtr(OGRE_NEW_T(DataStreamList, MEMCATEGORY_GENERAL)(), SPFM_DELETE_T);
+
+		LocationList::iterator li, liend;
+		liend = grp->locationList.end();
+		for (li = grp->locationList.begin(); li != liend; ++li)
+		{
+			Archive* arch = (*li)->archive;
+			// Find all the names based on whether this archive is recursive
+			StringVectorPtr names = arch->find(pattern, (*li)->recursive);
+
+			// Iterate over the names and load a stream for each
+			for (StringVector::iterator ni = names->begin(); ni != names->end(); ++ni)
+			{
+				DataStreamPtr ptr = arch->open(*ni);
+				if (!ptr.isNull())
+				{
+					ret->push_back(ptr);
+				}
+			}
+		}
+		return ret;
+		
+    }
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::addResourceGroupListener(ResourceGroupListener* l)
+    {
+		OGRE_LOCK_AUTO_MUTEX
+
+		mResourceGroupListenerList.push_back(l);
+    }
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::removeResourceGroupListener(ResourceGroupListener* l)
+    {
+		OGRE_LOCK_AUTO_MUTEX
+
+		for (ResourceGroupListenerList::iterator i = mResourceGroupListenerList.begin();
+			i != mResourceGroupListenerList.end(); ++i)
+		{
+			if (*i == l)
+			{
+				mResourceGroupListenerList.erase(i);
+				break;
+			}
+		}
+    }
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::_registerResourceManager(
+        const String& resourceType, ResourceManager* rm)
+    {
+		OGRE_LOCK_AUTO_MUTEX
+
+		LogManager::getSingleton().logMessage(
+			"Registering ResourceManager for type " + resourceType);
+		mResourceManagerMap[resourceType] = rm;
+    }
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::_unregisterResourceManager(
+        const String& resourceType)
+    {
+		OGRE_LOCK_AUTO_MUTEX
+
+		LogManager::getSingleton().logMessage(
+			"Unregistering ResourceManager for type " + resourceType);
+		
+		ResourceManagerMap::iterator i = mResourceManagerMap.find(resourceType);
+		if (i != mResourceManagerMap.end())
+		{
+			mResourceManagerMap.erase(i);
+		}
+    }
+	//-----------------------------------------------------------------------
+    void ResourceGroupManager::_registerScriptLoader(ScriptLoader* su)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+
+		mScriptLoaderOrderMap.insert(
+			ScriptLoaderOrderMap::value_type(su->getLoadingOrder(), su));
+	}
+	//-----------------------------------------------------------------------
+    void ResourceGroupManager::_unregisterScriptLoader(ScriptLoader* su)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+
+		Real order = su->getLoadingOrder();
+		ScriptLoaderOrderMap::iterator oi = mScriptLoaderOrderMap.find(order);
+		while (oi != mScriptLoaderOrderMap.end() && oi->first == order)
+		{
+			if (oi->second == su)
+			{
+				// erase does not invalidate on multimap, except current
+				ScriptLoaderOrderMap::iterator del = oi++;
+				mScriptLoaderOrderMap.erase(del);
+			}
+			else
+			{
+				++oi;
+			}
+		}
+	}
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::parseResourceGroupScripts(ResourceGroup* grp)
+	{
+
+		LogManager::getSingleton().logMessage(
+			"Parsing scripts for resource group " + grp->name);
+
+		// Count up the number of scripts we have to parse
+        typedef std::list<FileInfoListPtr> FileListList;
+        typedef SharedPtr<FileListList> FileListListPtr;
+        typedef std::pair<ScriptLoader*, FileListListPtr> LoaderFileListPair;
+        typedef std::list<LoaderFileListPair> ScriptLoaderFileList;
+        ScriptLoaderFileList scriptLoaderFileList;
+		size_t scriptCount = 0;
+		// Iterate over script users in loading order and get streams
+		ScriptLoaderOrderMap::iterator oi;
+		for (oi = mScriptLoaderOrderMap.begin();
+			oi != mScriptLoaderOrderMap.end(); ++oi)
+		{
+			ScriptLoader* su = oi->second;
+			// MEMCATEGORY_GENERAL is the only category supported for SharedPtr
+            FileListListPtr fileListList(OGRE_NEW_T(FileListList, MEMCATEGORY_GENERAL)(), SPFM_DELETE_T);
+
+			// Get all the patterns and search them
+			const StringVector& patterns = su->getScriptPatterns();
+			for (StringVector::const_iterator p = patterns.begin(); p != patterns.end(); ++p)
+			{
+				FileInfoListPtr fileList = findResourceFileInfo(grp->name, *p);
+				scriptCount += fileList->size();
+				fileListList->push_back(fileList);
+			}
+            scriptLoaderFileList.push_back(
+                LoaderFileListPair(su, fileListList));
+		}
+		// Fire scripting event
+		fireResourceGroupScriptingStarted(grp->name, scriptCount);
+
+		// Iterate over scripts and parse
+		// Note we respect original ordering
+        for (ScriptLoaderFileList::iterator slfli = scriptLoaderFileList.begin();
+            slfli != scriptLoaderFileList.end(); ++slfli)
+        {
+			ScriptLoader* su = slfli->first;
+            // Iterate over each list
+            for (FileListList::iterator flli = slfli->second->begin(); flli != slfli->second->end(); ++flli)
+            {
+			    // Iterate over each item in the list
+			    for (FileInfoList::iterator fii = (*flli)->begin(); fii != (*flli)->end(); ++fii)
+			    {
+					bool skipScript = false;
+                    fireScriptStarted(fii->filename, skipScript);
+					if(skipScript)
+					{
+						LogManager::getSingleton().logMessage(
+							"Skipping script " + fii->filename);
+					}
+					else
+					{
+						LogManager::getSingleton().logMessage(
+							"Parsing script " + fii->filename);
+                        DataStreamPtr stream = fii->archive->open(fii->filename);
+                        if (!stream.isNull())
+                        {
+							if (mLoadingListener)
+								mLoadingListener->resourceStreamOpened(fii->filename, grp->name, 0, stream);
+                            su->parseScript(stream, grp->name);
+                        }
+                    }
+					fireScriptEnded(fii->filename, skipScript);
+			    }
+            }
+		}
+
+		fireResourceGroupScriptingEnded(grp->name);
+		LogManager::getSingleton().logMessage(
+			"Finished parsing scripts for resource group " + grp->name);
+	}
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::createDeclaredResources(ResourceGroup* grp)
+	{
+
+		for (ResourceDeclarationList::iterator i = grp->resourceDeclarations.begin();
+			i != grp->resourceDeclarations.end(); ++i)
+		{
+			ResourceDeclaration& dcl = *i;
+			// Retrieve the appropriate manager
+			ResourceManager* mgr = _getResourceManager(dcl.resourceType);
+			// Create the resource
+			ResourcePtr res = mgr->create(dcl.resourceName, grp->name,
+                dcl.loader != 0, dcl.loader, &dcl.parameters);
+			// Add resource to load list
+			ResourceGroup::LoadResourceOrderMap::iterator li = 
+				grp->loadResourceOrderMap.find(mgr->getLoadingOrder());
+			LoadUnloadResourceList* loadList;
+			if (li == grp->loadResourceOrderMap.end())
+			{
+				loadList = OGRE_NEW_T(LoadUnloadResourceList, MEMCATEGORY_RESOURCE)();
+				grp->loadResourceOrderMap[mgr->getLoadingOrder()] = loadList;
+			}
+			else
+			{
+				loadList = li->second;
+			}
+			loadList->push_back(res);
+
+		}
+
+	}
+    //-----------------------------------------------------------------------
+	void ResourceGroupManager::_notifyResourceCreated(ResourcePtr& res)
+	{
+		if (mCurrentGroup && res->getGroup() == mCurrentGroup->name)
+		{
+			// Use current group (batch loading)
+			addCreatedResource(res, *mCurrentGroup);
+		}
+		else
+		{
+			// Find group
+			ResourceGroup* grp = getResourceGroup(res->getGroup());
+			if (grp)
+			{
+				addCreatedResource(res, *grp);
+			}
+		}
+	}
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::_notifyResourceRemoved(ResourcePtr& res)
+	{
+		if (mCurrentGroup)
+		{
+			// Do nothing - we're batch unloading so list will be cleared
+		}
+		else
+		{
+			// Find group
+			ResourceGroup* grp = getResourceGroup(res->getGroup());
+			if (grp)
+			{
+				OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+				ResourceGroup::LoadResourceOrderMap::iterator i = 
+					grp->loadResourceOrderMap.find(
+						res->getCreator()->getLoadingOrder());
+				if (i != grp->loadResourceOrderMap.end())
+				{
+					// Iterate over the resource list and remove
+					LoadUnloadResourceList* resList = i->second;
+					for (LoadUnloadResourceList::iterator l = resList->begin();
+						l != resList->end(); ++ l)
+					{
+						if ((*l).getPointer() == res.getPointer())
+						{
+							// this is the one
+							resList->erase(l);
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::_notifyResourceGroupChanged(const String& oldGroup, 
+		Resource* res)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+	
+		// New group
+		ResourceGroup* newGrp = getResourceGroup(res->getGroup());
+		// find old entry
+		ResourceGroupMap::iterator grpi = mResourceGroupMap.find(oldGroup);
+
+		assert(grpi != mResourceGroupMap.end());
+		ResourceGroup* grp = grpi->second;
+		Real order = res->getCreator()->getLoadingOrder();
+		ResourceGroup::LoadResourceOrderMap::iterator i = 
+			grp->loadResourceOrderMap.find(order);
+		assert(i != grp->loadResourceOrderMap.end());
+		LoadUnloadResourceList* loadList = i->second;
+		for (LoadUnloadResourceList::iterator l = loadList->begin(); 
+			l != loadList->end(); ++l)
+		{
+			if ((*l).getPointer() == res)
+			{
+				addCreatedResource(*l, *newGrp);
+				loadList->erase(l);
+				break;
+			}
+		}
 
 	}
 	//-----------------------------------------------------------------------
-	void BillboardChainFactory::destroyInstance( MovableObject* obj)
+	void ResourceGroupManager::_notifyAllResourcesRemoved(ResourceManager* manager)
 	{
-		OGRE_DELETE  obj;
+		OGRE_LOCK_AUTO_MUTEX
+
+		// Iterate over all groups
+		for (ResourceGroupMap::iterator grpi = mResourceGroupMap.begin();
+			grpi != mResourceGroupMap.end(); ++grpi)
+		{
+			OGRE_LOCK_MUTEX(grpi->second->OGRE_AUTO_MUTEX_NAME)
+			// Iterate over all priorities
+			for (ResourceGroup::LoadResourceOrderMap::iterator oi = grpi->second->loadResourceOrderMap.begin();
+				oi != grpi->second->loadResourceOrderMap.end(); ++oi)
+			{
+				// Iterate over all resources
+				for (LoadUnloadResourceList::iterator l = oi->second->begin();
+					l != oi->second->end(); )
+				{
+					if ((*l)->getCreator() == manager)
+					{
+						// Increment first since iterator will be invalidated
+						LoadUnloadResourceList::iterator del = l++;
+						oi->second->erase(del);
+					}
+					else
+					{
+						++l;
+					}
+				}
+			}
+
+		}
 	}
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::addCreatedResource(ResourcePtr& res, ResourceGroup& grp)
+	{
+		OGRE_LOCK_MUTEX(grp.OGRE_AUTO_MUTEX_NAME)
+		Real order = res->getCreator()->getLoadingOrder();
+
+		ResourceGroup::LoadResourceOrderMap::iterator i = grp.loadResourceOrderMap.find(order);
+		LoadUnloadResourceList* loadList;
+		if (i == grp.loadResourceOrderMap.end())
+		{
+			loadList = OGRE_NEW_T(LoadUnloadResourceList, MEMCATEGORY_RESOURCE)();
+			grp.loadResourceOrderMap[order] = loadList;
+		}
+		else
+		{
+			loadList = i->second;
+		}
+		loadList->push_back(res);
+	}
+	//-----------------------------------------------------------------------
+	ResourceGroupManager::ResourceGroup* ResourceGroupManager::getResourceGroup(const String& name)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+
+		ResourceGroupMap::iterator i = mResourceGroupMap.find(name);
+		if (i != mResourceGroupMap.end())
+		{
+			return i->second;
+		}
+		return 0;
+
+	}
+    //-----------------------------------------------------------------------
+    ResourceManager* ResourceGroupManager::_getResourceManager(const String& resourceType) 
+    {
+		OGRE_LOCK_AUTO_MUTEX
+
+        ResourceManagerMap::iterator i = mResourceManagerMap.find(resourceType);
+        if (i == mResourceManagerMap.end())
+        {
+            OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+                "Cannot locate resource manager for resource type '" +
+                resourceType + "'", "ResourceGroupManager::_getResourceManager");
+        }
+        return i->second;
+
+    }
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::dropGroupContents(ResourceGroup* grp)
+	{
+		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME)
+
+		bool groupSet = false;
+		if (!mCurrentGroup)
+		{
+			// Set current group to indicate ignoring of notifications
+			mCurrentGroup = grp;
+			groupSet = true;
+		}
+		// delete all the load list entries
+		ResourceGroup::LoadResourceOrderMap::iterator j, jend;
+		jend = grp->loadResourceOrderMap.end();
+		for (j = grp->loadResourceOrderMap.begin(); j != jend; ++j)
+		{
+			// Iterate over resources
+			for (LoadUnloadResourceList::iterator k = j->second->begin();
+				k != j->second->end(); ++k)
+			{
+				(*k)->getCreator()->remove((*k)->getHandle());
+			}
+			OGRE_DELETE_T(j->second, LoadUnloadResourceList, MEMCATEGORY_RESOURCE);
+		}
+        grp->loadResourceOrderMap.clear();
+
+		if (groupSet)
+		{
+			mCurrentGroup = 0;
+		}
+	}
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::deleteGroup(ResourceGroup* grp)
+	{
+        {
+		    OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME)
+		    // delete all the load list entries
+		    ResourceGroup::LoadResourceOrderMap::iterator j, jend;
+		    jend = grp->loadResourceOrderMap.end();
+		    for (j = grp->loadResourceOrderMap.begin(); j != jend; ++j)
+		    {
+			    // Don't iterate over resources to drop with ResourceManager
+			    // Assume this is being done anyway since this is a shutdown method
+			    OGRE_DELETE_T(j->second, LoadUnloadResourceList, MEMCATEGORY_RESOURCE);
+		    }
+		    // Drop location list
+		    for (LocationList::iterator ll = grp->locationList.begin();
+			    ll != grp->locationList.end(); ++ll)
+		    {
+			    OGRE_DELETE_T(*ll, ResourceLocation, MEMCATEGORY_RESOURCE);
+		    }
+        }
+
+		// delete ResourceGroup
+		OGRE_DELETE_T(grp, ResourceGroup, MEMCATEGORY_RESOURCE);
+	}
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::fireResourceGroupScriptingStarted(const String& groupName, size_t scriptCount)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+		for (ResourceGroupListenerList::iterator l = mResourceGroupListenerList.begin();
+			l != mResourceGroupListenerList.end(); ++l)
+		{
+			(*l)->resourceGroupScriptingStarted(groupName, scriptCount);
+		}
+	}
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::fireScriptStarted(const String& scriptName, bool &skipScript)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+		for (ResourceGroupListenerList::iterator l = mResourceGroupListenerList.begin();
+			l != mResourceGroupListenerList.end(); ++l)
+		{
+			bool temp = false;
+			(*l)->scriptParseStarted(scriptName, temp);
+			if(temp)
+				skipScript = true;
+		}
+	}
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::fireScriptEnded(const String& scriptName, bool skipped)
+    {
+        OGRE_LOCK_AUTO_MUTEX
+            for (ResourceGroupListenerList::iterator l = mResourceGroupListenerList.begin();
+                l != mResourceGroupListenerList.end(); ++l)
+            {
+                (*l)->scriptParseEnded(scriptName, skipped);
+            }
+    }
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::fireResourceGroupScriptingEnded(const String& groupName)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+		for (ResourceGroupListenerList::iterator l = mResourceGroupListenerList.begin();
+			l != mResourceGroupListenerList.end(); ++l)
+		{
+			(*l)->resourceGroupScriptingEnded(groupName);
+		}
+	}
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::fireResourceGroupLoadStarted(const String& groupName, size_t resourceCount)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+		for (ResourceGroupListenerList::iterator l = mResourceGroupListenerList.begin();
+			l != mResourceGroupListenerList.end(); ++l)
+		{
+			(*l)->resourceGroupLoadStarted(groupName, resourceCount);
+		}
+	}
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::fireResourceLoadStarted(const ResourcePtr& resource)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+		for (ResourceGroupListenerList::iterator l = mResourceGroupListenerList.begin();
+			l != mResourceGroupListenerList.end(); ++l)
+		{
+			(*l)->resourceLoadStarted(resource);
+		}
+	}
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::fireResourceLoadEnded(void)
+    {
+        OGRE_LOCK_AUTO_MUTEX
+            for (ResourceGroupListenerList::iterator l = mResourceGroupListenerList.begin();
+                l != mResourceGroupListenerList.end(); ++l)
+            {
+                (*l)->resourceLoadEnded();
+            }
+    }
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::_notifyWorldGeometryStageStarted(const String& desc)
+    {
+		OGRE_LOCK_AUTO_MUTEX
+		for (ResourceGroupListenerList::iterator l = mResourceGroupListenerList.begin();
+			l != mResourceGroupListenerList.end(); ++l)
+		{
+			(*l)->worldGeometryStageStarted(desc);
+		}
+    }
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::_notifyWorldGeometryStageEnded(void)
+    {
+        OGRE_LOCK_AUTO_MUTEX
+            for (ResourceGroupListenerList::iterator l = mResourceGroupListenerList.begin();
+                l != mResourceGroupListenerList.end(); ++l)
+            {
+                (*l)->worldGeometryStageEnded();
+            }
+    }
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::fireResourceGroupLoadEnded(const String& groupName)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+		for (ResourceGroupListenerList::iterator l = mResourceGroupListenerList.begin();
+			l != mResourceGroupListenerList.end(); ++l)
+		{
+			(*l)->resourceGroupLoadEnded(groupName);
+		}
+	}
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::fireResourceGroupPrepareStarted(const String& groupName, size_t resourceCount)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+		for (ResourceGroupListenerList::iterator l = mResourceGroupListenerList.begin();
+			l != mResourceGroupListenerList.end(); ++l)
+		{
+			(*l)->resourceGroupPrepareStarted(groupName, resourceCount);
+		}
+	}
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::fireResourcePrepareStarted(const ResourcePtr& resource)
+    {
+        OGRE_LOCK_AUTO_MUTEX
+        for (ResourceGroupListenerList::iterator l = mResourceGroupListenerList.begin();
+            l != mResourceGroupListenerList.end(); ++l)
+        {
+            (*l)->resourcePrepareStarted(resource);
+        }
+    }
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::fireResourcePrepareEnded(void)
+    {
+        OGRE_LOCK_AUTO_MUTEX
+            for (ResourceGroupListenerList::iterator l = mResourceGroupListenerList.begin();
+                l != mResourceGroupListenerList.end(); ++l)
+            {
+                (*l)->resourcePrepareEnded();
+            }
+    }
+	//-----------------------------------------------------------------------
+	void ResourceGroupManager::fireResourceGroupPrepareEnded(const String& groupName)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+		for (ResourceGroupListenerList::iterator l = mResourceGroupListenerList.begin();
+			l != mResourceGroupListenerList.end(); ++l)
+		{
+			(*l)->resourceGroupPrepareEnded(groupName);
+		}
+	}
+	//-----------------------------------------------------------------------
+    void ResourceGroupManager::shutdownAll(void)
+    {
+        OGRE_LOCK_AUTO_MUTEX
+
+        ResourceManagerMap::iterator i, iend;
+        iend = mResourceManagerMap.end();
+        for (i = mResourceManagerMap.begin(); i != iend; ++i)
+        {
+            i->second->removeAll();
+        }
+    }
+    //-----------------------------------------------------------------------
+    StringVectorPtr ResourceGroupManager::listResourceNames(const String& groupName, bool dirs)
+    {
+        OGRE_LOCK_AUTO_MUTEX
+		// MEMCATEGORY_GENERAL is the only category supported for SharedPtr
+        StringVectorPtr vec(OGRE_NEW_T(StringVector, MEMCATEGORY_GENERAL)(), SPFM_DELETE_T);
+
+        // Try to find in resource index first
+        ResourceGroup* grp = getResourceGroup(groupName);
+        if (!grp)
+        {
+            OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+                "Cannot locate a resource group called '" + groupName + "'", 
+                "ResourceGroupManager::listResourceNames");
+        }
+
+        OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+
+        // Iterate over the archives
+        LocationList::iterator i, iend;
+        iend = grp->locationList.end();
+        for (i = grp->locationList.begin(); i != iend; ++i)
+        {
+            StringVectorPtr lst = (*i)->archive->list((*i)->recursive, dirs);
+            vec->insert(vec->end(), lst->begin(), lst->end());
+        }
+
+        return vec;
+
+
+    }
+    //-----------------------------------------------------------------------
+    FileInfoListPtr ResourceGroupManager::listResourceFileInfo(const String& groupName, bool dirs)
+    {
+        OGRE_LOCK_AUTO_MUTEX
+		// MEMCATEGORY_GENERAL is the only category supported for SharedPtr
+        FileInfoListPtr vec(OGRE_NEW_T(FileInfoList, MEMCATEGORY_GENERAL)(), SPFM_DELETE_T);
+
+        // Try to find in resource index first
+        ResourceGroup* grp = getResourceGroup(groupName);
+        if (!grp)
+        {
+            OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+                "Cannot locate a resource group called '" + groupName + "'", 
+                "ResourceGroupManager::listResourceFileInfo");
+        }
+
+        OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+
+        // Iterate over the archives
+        LocationList::iterator i, iend;
+        iend = grp->locationList.end();
+        for (i = grp->locationList.begin(); i != iend; ++i)
+        {
+            FileInfoListPtr lst = (*i)->archive->listFileInfo((*i)->recursive, dirs);
+            vec->insert(vec->end(), lst->begin(), lst->end());
+        }
+
+        return vec;
+
+    }
+    //-----------------------------------------------------------------------
+    StringVectorPtr ResourceGroupManager::findResourceNames(const String& groupName, 
+        const String& pattern, bool dirs)
+    {
+        OGRE_LOCK_AUTO_MUTEX
+		// MEMCATEGORY_GENERAL is the only category supported for SharedPtr
+		StringVectorPtr vec(OGRE_NEW_T(StringVector, MEMCATEGORY_GENERAL)(), SPFM_DELETE_T);
+
+        // Try to find in resource index first
+        ResourceGroup* grp = getResourceGroup(groupName);
+        if (!grp)
+        {
+            OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+                "Cannot locate a resource group called '" + groupName + "'", 
+                "ResourceGroupManager::findResourceNames");
+        }
+
+        OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+
+            // Iterate over the archives
+            LocationList::iterator i, iend;
+        iend = grp->locationList.end();
+        for (i = grp->locationList.begin(); i != iend; ++i)
+        {
+            StringVectorPtr lst = (*i)->archive->find(pattern, (*i)->recursive, dirs);
+            vec->insert(vec->end(), lst->begin(), lst->end());
+        }
+
+        return vec;
+    }
+    //-----------------------------------------------------------------------
+    FileInfoListPtr ResourceGroupManager::findResourceFileInfo(const String& groupName, 
+        const String& pattern, bool dirs)
+    {
+        OGRE_LOCK_AUTO_MUTEX
+		// MEMCATEGORY_GENERAL is the only category supported for SharedPtr
+        FileInfoListPtr vec(OGRE_NEW_T(FileInfoList, MEMCATEGORY_GENERAL)(), SPFM_DELETE_T);
+
+        // Try to find in resource index first
+        ResourceGroup* grp = getResourceGroup(groupName);
+        if (!grp)
+        {
+            OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+                "Cannot locate a resource group called '" + groupName + "'", 
+                "ResourceGroupManager::findResourceFileInfo");
+        }
+
+        OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+
+            // Iterate over the archives
+            LocationList::iterator i, iend;
+        iend = grp->locationList.end();
+        for (i = grp->locationList.begin(); i != iend; ++i)
+        {
+            FileInfoListPtr lst = (*i)->archive->findFileInfo(pattern, (*i)->recursive, dirs);
+            vec->insert(vec->end(), lst->begin(), lst->end());
+        }
+
+        return vec;
+    }
+    //-----------------------------------------------------------------------
+	bool ResourceGroupManager::resourceExists(const String& groupName, const String& resourceName)
+	{
+        OGRE_LOCK_AUTO_MUTEX
+
+		// Try to find in resource index first
+        ResourceGroup* grp = getResourceGroup(groupName);
+        if (!grp)
+        {
+            OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+                "Cannot locate a resource group called '" + groupName + "'", 
+                "ResourceGroupManager::resourceExists");
+        }
+
+		return resourceExists(grp, resourceName);
+	}
+    //-----------------------------------------------------------------------
+	bool ResourceGroupManager::resourceExists(ResourceGroup* grp, const String& resourceName)
+	{
+
+		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+
+		// Try indexes first
+		ResourceLocationIndex::iterator rit = grp->resourceIndexCaseSensitive.find(resourceName);
+		if (rit != grp->resourceIndexCaseSensitive.end())
+		{
+			// Found in the index
+			return true;
+		}
+        else 
+        {
+            // try case insensitive
+            String lcResourceName = resourceName;
+            StringUtil::toLowerCase(lcResourceName);
+            rit = grp->resourceIndexCaseInsensitive.find(lcResourceName);
+            if (rit != grp->resourceIndexCaseInsensitive.end())
+            {
+                // Found in the index
+                return true;
+            }
+		    else
+		    {
+			    // Search the hard way
+			    LocationList::iterator li, liend;
+			    liend = grp->locationList.end();
+			    for (li = grp->locationList.begin(); li != liend; ++li)
+			    {
+				    Archive* arch = (*li)->archive;
+                    if (arch->exists(resourceName))
+				    {
+						return true;
+				    }
+			    }
+		    }
+        }
+
+		return false;
+
+	}
+	//-----------------------------------------------------------------------
+	time_t ResourceGroupManager::resourceModifiedTime(const String& groupName, const String& resourceName)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+
+		// Try to find in resource index first
+		ResourceGroup* grp = getResourceGroup(groupName);
+		if (!grp)
+		{
+			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+				"Cannot locate a resource group called '" + groupName + "'", 
+				"ResourceGroupManager::resourceModifiedTime");
+		}
+
+		return resourceModifiedTime(grp, resourceName);
+
+	}
+	//-----------------------------------------------------------------------
+	time_t ResourceGroupManager::resourceModifiedTime(ResourceGroup* grp, const String& resourceName)
+	{
+		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+
+		// Try indexes first
+		ResourceLocationIndex::iterator rit = grp->resourceIndexCaseSensitive.find(resourceName);
+		if (rit != grp->resourceIndexCaseSensitive.end())
+		{
+			return rit->second->getModifiedTime(resourceName);
+		}
+        else 
+        {
+            // try case insensitive
+            String lcResourceName = resourceName;
+            StringUtil::toLowerCase(lcResourceName);
+            rit = grp->resourceIndexCaseInsensitive.find(lcResourceName);
+            if (rit != grp->resourceIndexCaseInsensitive.end())
+            {
+				return rit->second->getModifiedTime(resourceName);
+            }
+		    else
+		    {
+			    // Search the hard way
+			    LocationList::iterator li, liend;
+			    liend = grp->locationList.end();
+			    for (li = grp->locationList.begin(); li != liend; ++li)
+			    {
+				    Archive* arch = (*li)->archive;
+					time_t testTime = arch->getModifiedTime(resourceName);
+
+                    if (testTime > 0)
+				    {
+						return testTime;
+				    }
+			    }
+		    }
+        }
+
+		return 0;
+	}
+	//-----------------------------------------------------------------------
+	ResourceGroupManager::ResourceGroup* 
+	ResourceGroupManager::findGroupContainingResourceImpl(const String& filename)
+	{
+        OGRE_LOCK_AUTO_MUTEX
+
+			// Iterate over resource groups and find
+		for (ResourceGroupMap::iterator i = mResourceGroupMap.begin();
+			i != mResourceGroupMap.end(); ++i)
+		{
+	        ResourceGroup* grp = i->second;
+
+			OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+				
+			if (resourceExists(grp, filename))
+				return grp;
+		}
+		// Not found
+		return 0;
+	}
+    //-----------------------------------------------------------------------
+	const String& ResourceGroupManager::findGroupContainingResource(const String& filename)
+	{
+		ResourceGroup* grp = findGroupContainingResourceImpl(filename);
+		if (!grp)
+		{
+			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
+				"Unable to derive resource group for " + 
+				filename + " automatically since the resource was not "
+				"found.", 
+				"ResourceGroupManager::findGroupContainingResource");
+		}
+		return grp->name;
+	}
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::linkWorldGeometryToResourceGroup(const String& group, 
+        const String& worldGeometry, SceneManager* sceneManager)
+    {
+        OGRE_LOCK_AUTO_MUTEX
+        ResourceGroup* grp = getResourceGroup(group);
+        if (!grp)
+        {
+            OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+                "Cannot locate a resource group called '" + group + "'", 
+                "ResourceGroupManager::linkWorldGeometryToResourceGroup");
+        }
+
+        OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+
+        grp->worldGeometry = worldGeometry;
+        grp->worldGeometrySceneManager = sceneManager;
+    }
+    //-----------------------------------------------------------------------
+    void ResourceGroupManager::unlinkWorldGeometryFromResourceGroup(const String& group)
+    {
+        OGRE_LOCK_AUTO_MUTEX
+        ResourceGroup* grp = getResourceGroup(group);
+        if (!grp)
+        {
+            OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+                "Cannot locate a resource group called '" + group + "'", 
+                "ResourceGroupManager::unlinkWorldGeometryFromResourceGroup");
+        }
+
+		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+        grp->worldGeometry = StringUtil::BLANK;
+        grp->worldGeometrySceneManager = 0;
+    }
+    //-----------------------------------------------------------------------
+	StringVector ResourceGroupManager::getResourceGroups(void)
+	{
+        OGRE_LOCK_AUTO_MUTEX
+		StringVector vec;
+		for (ResourceGroupMap::iterator i = mResourceGroupMap.begin();
+			i != mResourceGroupMap.end(); ++i)
+		{
+			vec.push_back(i->second->name);
+		}
+		return vec;
+	}
+    //-----------------------------------------------------------------------
+	ResourceGroupManager::ResourceDeclarationList 
+	ResourceGroupManager::getResourceDeclarationList(const String& group)
+	{
+        OGRE_LOCK_AUTO_MUTEX
+        ResourceGroup* grp = getResourceGroup(group);
+        if (!grp)
+        {
+            OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+                "Cannot locate a resource group called '" + group + "'", 
+                "ResourceGroupManager::getResourceDeclarationList");
+        }
+
+		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+		return grp->resourceDeclarations;
+	}
+	//-------------------------------------------------------------------------
+	void ResourceGroupManager::setLoadingListener(ResourceLoadingListener *listener)
+	{
+		mLoadingListener = listener;
+	}
+	//-------------------------------------------------------------------------
+	ResourceLoadingListener *ResourceGroupManager::getLoadingListener()
+	{
+		return mLoadingListener;
+	}
+	//-----------------------------------------------------------------------
+	ScriptLoader::~ScriptLoader()
+	{
+	}
+
 
 }
-

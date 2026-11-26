@@ -1,160 +1,125 @@
-// from server: 99% by Xemicl
-// from server: 100% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: boost-1.34.1-dll roc_bind_factory_matrix_88fcf2790ed4c606.cpp
+// from server: 100% by Xemicl
+// roc 2012-06 00542430  unit: RBX::VObjectValue::?$FactoryProduct::Creator  size: 167 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 00542430
+//
+// 00542430  6aff                 push -1
+// 00542432  68e852ad00           push 0xad52e8
+// 00542437  64a100000000         mov eax, dword ptr fs:[0]
+// 0054243d  50                   push eax
+// 0054243e  64892500000000       mov dword ptr fs:[0], esp
+// 00542445  51                   push ecx
+// 00542446  56                   push esi
+// 00542447  57                   push edi
+// 00542448  8bf9                 mov edi, ecx
+// 0054244a  8b4c2420             mov ecx, dword ptr [esp + 0x20]
+// 0054244e  83ec08               sub esp, 8
+// 00542451  8bc4                 mov eax, esp
+// 00542453  8908                 mov dword ptr [eax], ecx
+// 00542455  8b54242c             mov edx, dword ptr [esp + 0x2c]
+// 00542459  895004               mov dword ptr [eax + 4], edx
+// 0054245c  8b44242c             mov eax, dword ptr [esp + 0x2c]
+// 00542460  c744241c00000000     mov dword ptr [esp + 0x1c], 0
+// 00542468  89642410             mov dword ptr [esp + 0x10], esp
+// 0054246c  85c0                 test eax, eax
+// 0054246e  740c                 je 0x54247c
+// 00542470  83c004               add eax, 4
+// 00542473  b901000000           mov ecx, 1
+// 00542478  f00fc108             lock xadd dword ptr [eax], ecx
+// 0054247c  8b542424             mov edx, dword ptr [esp + 0x24]
+// 00542480  52                   push edx
+// 00542481  8bcf                 mov ecx, edi
+// 00542483  e83857efff           call 0x437bc0
+// 00542488  8b742424             mov esi, dword ptr [esp + 0x24]
+// 0054248c  c7442414ffffffff     mov dword ptr [esp + 0x14], 0xffffffff
+// 00542494  85f6                 test esi, esi
+// 00542496  742a                 je 0x5424c2
+// 00542498  8d4604               lea eax, [esi + 4]
+// 0054249b  83c9ff               or ecx, 0xffffffff
+// 0054249e  f00fc108             lock xadd dword ptr [eax], ecx
+// 005424a2  751e                 jne 0x5424c2
+// 005424a4  8b16                 mov edx, dword ptr [esi]
+// 005424a6  8b4204               mov eax, dword ptr [edx + 4]
+// 005424a9  8bce                 mov ecx, esi
+// 005424ab  ffd0                 call eax
+// 005424ad  8d4e08               lea ecx, [esi + 8]
+// 005424b0  83caff               or edx, 0xffffffff
+// 005424b3  f00fc111             lock xadd dword ptr [ecx], edx
+// 005424b7  7509                 jne 0x5424c2
+// 005424b9  8b06                 mov eax, dword ptr [esi]
+// 005424bb  8b5008               mov edx, dword ptr [eax + 8]
+// 005424be  8bce                 mov ecx, esi
+// 005424c0  ffd2                 call edx
+// 005424c2  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 005424c6  8bc7                 mov eax, edi
+// 005424c8  5f                   pop edi
+// 005424c9  64890d00000000       mov dword ptr fs:[0], ecx
+// 005424d0  5e                   pop esi
+// 005424d1  83c410               add esp, 0x10
+// 005424d4  c21000               ret 0x10
+// copied from an identical function in another client (function ??0S@ns_ROCX00001e@@QAE@PAXUShared@1@H@Z)
 
-// Candidate translation unit (score above; library headers required).
-// Declaration excerpt from RBLXDecomp/RBXGSdecomp at
-// 3c9c0c32ac5e7ba320767bfcd2bd3c54f86ef461, ThreadRef.h.
-// Out-of-line copy/destructor are the already-exact 005944e0/00594470.
-#define NDEBUG
-#include <boost/shared_ptr.hpp>
-#include <boost/mem_fn.hpp>
+namespace ns_ROCX00001e {
+extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+#pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedDecrement)
 
-struct lua_State;
-namespace boost { class mutex; }
-namespace RBX { namespace Lua {
-class ThreadRef {
-public:
-    class Node;
-private:
-    const boost::shared_ptr<boost::mutex> sync;
-    Node* node;
-    ThreadRef* previous;
-    ThreadRef* next;
-    lua_State* L;
-    int threadId;
-protected:
-    virtual void removeRef();
-public:
-    ThreadRef(const ThreadRef&);
-    ~ThreadRef();
+struct Control {
+    virtual void unused() = 0;
+    virtual void dispose() = 0;
+    virtual void destroy() = 0;
+    volatile long strong;
+    volatile long weak;
+
+    void weak_release();
 };
-class FunctionRef : public ThreadRef {
-public:
-    int functionId;
-    FunctionRef(const FunctionRef&);
-    ~FunctionRef();
-    FunctionRef& operator=(const FunctionRef&);
-    bool operator==(const FunctionRef&) const;
-    bool operator!=(const FunctionRef&) const;
-protected:
-    virtual void removeRef();
+
+__forceinline void Control::weak_release()
+{
+    if (_InterlockedDecrement(&weak) == 0)
+        destroy();
+}
+
+struct Shared {
+    void* pointer;
+    Control* control;
+
+    Shared(const Shared&);
+    ~Shared();
 };
-}}
 
-// Target stores an eight-byte member-function pointer (entry + this adjustment).
-class __multiple_inheritance DHTMLWindow;
-typedef RBX::Lua::FunctionRef FunctionRef;
-typedef boost::_mfi::mf1<void, DHTMLWindow, FunctionRef> Callback;
-template void Callback::operator()<boost::shared_ptr<DHTMLWindow> >(
-    boost::shared_ptr<DHTMLWindow> const&, FunctionRef) const;
+inline Shared::Shared(const Shared& other)
+    : pointer(other.pointer), control(other.control)
+{
+    Control* p = control;
+    if (p) {
+        volatile long* count = &p->strong;
+        _InterlockedExchangeAdd(count, 1);
+    }
+}
 
-#include <boost/bind.hpp>
-#include <boost/function.hpp>
-typedef boost::_bi::value<boost::shared_ptr<DHTMLWindow> > WindowValue;
-typedef boost::_bi::value<FunctionRef> FunctionValue;
-typedef boost::_bi::list2<WindowValue, FunctionValue> Arguments;
-typedef boost::_bi::bind_t<void, Callback, Arguments> Bound;
-// Full observed RTTI bind_t type: genuine list/storage constructors and manager.
-template class boost::_bi::value<FunctionRef>;
-template class boost::_bi::storage2<WindowValue, FunctionValue>;
-template class boost::_bi::list2<WindowValue, FunctionValue>;
-template class boost::_bi::bind_t<void, Callback, Arguments>;
-void invoke_bound(Bound& bound) { bound(); }
-void assign_bound(boost::function<void()>& function, Bound const& bound) { function = bound; }
+inline Shared::~Shared()
+{
+    Control* p = control;
+    if (p) {
+        volatile long* count = &p->strong;
+        if (_InterlockedDecrement(count) == 0) {
+            p->dispose();
+            p->weak_release();
+        }
+    }
+}
 
-#include <string>
-namespace RBX { class Instance; namespace Reflection { class PropertyDescriptor; } }
-typedef boost::_mfi::mf0<void, DHTMLWindow> CloseCallback;
-typedef boost::_bi::list1<WindowValue> CloseArguments;
-typedef boost::_bi::bind_t<void, CloseCallback, CloseArguments> CloseBound;
-template class boost::_mfi::mf0<void, DHTMLWindow>;
-template class boost::_bi::list1<WindowValue>;
-template class boost::_bi::bind_t<void, CloseCallback, CloseArguments>;
-void assign_close(boost::function<void()>& f, CloseBound const& b) { f = b; }
+struct Base {
+    Base(void*, Shared);
+};
 
-typedef boost::_mfi::mf1<void, DHTMLWindow, std::string> StringCallback;
-typedef boost::_bi::value<std::string> StringValue;
-typedef boost::_bi::list2<WindowValue, StringValue> StringArguments;
-typedef boost::_bi::bind_t<void, StringCallback, StringArguments> StringBound;
-template void StringCallback::operator()<boost::shared_ptr<DHTMLWindow> >(boost::shared_ptr<DHTMLWindow> const&, std::string) const;
-template class boost::_bi::storage2<WindowValue, StringValue>;
-template class boost::_bi::list2<WindowValue, StringValue>;
-template class boost::_bi::bind_t<void, StringCallback, StringArguments>;
-void assign_string(boost::function<void()>& f, StringBound const& b) { f = b; }
+struct S : Base {
+    S(void*, Shared, int);
+};
 
-typedef boost::_mfi::mf2<void, DHTMLWindow, int, int> ResizeCallback;
-typedef boost::_bi::value<int> IntValue;
-typedef boost::_bi::list3<WindowValue, IntValue, IntValue> ResizeArguments;
-typedef boost::_bi::bind_t<void, ResizeCallback, ResizeArguments> ResizeBound;
-template class boost::_mfi::mf2<void, DHTMLWindow, int, int>;
-template class boost::_bi::list3<WindowValue, IntValue, IntValue>;
-template class boost::_bi::bind_t<void, ResizeCallback, ResizeArguments>;
-void assign_resize(boost::function<void()>& f, ResizeBound const& b) { f = b; }
-
-typedef boost::shared_ptr<RBX::Instance> InstancePtr;
-typedef RBX::Reflection::PropertyDescriptor const& PropertyRef;
-typedef boost::_mfi::mf3<void, DHTMLWindow, InstancePtr, PropertyRef, std::string> PropertyCallback;
-typedef boost::_bi::list4<WindowValue, boost::_bi::value<InstancePtr>, boost::reference_wrapper<RBX::Reflection::PropertyDescriptor const>, StringValue> PropertyArguments;
-typedef boost::_bi::bind_t<void, PropertyCallback, PropertyArguments> PropertyBound;
-template class boost::_mfi::mf3<void, DHTMLWindow, InstancePtr, PropertyRef, std::string>;
-template class boost::_bi::list4<WindowValue, boost::_bi::value<InstancePtr>, boost::reference_wrapper<RBX::Reflection::PropertyDescriptor const>, StringValue>;
-template class boost::_bi::bind_t<void, PropertyCallback, PropertyArguments>;
-void assign_property(boost::function<void()>& f, PropertyBound const& b) { f = b; }
-
-#include <boost/weak_ptr.hpp>
-typedef boost::shared_ptr<DHTMLWindow> FactoryOwner;
-typedef boost::weak_ptr<RBX::Instance> FactoryWeak;
-typedef boost::reference_wrapper<RBX::Reflection::PropertyDescriptor const> FactoryProperty;
-
-typedef void (DHTMLWindow::*Factory12Method)(double);
-typedef boost::_bi::list_av_2<FactoryOwner, double >::type Factory12Args;
-typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, DHTMLWindow, double >, Factory12Args> Factory12Bound;
-template Factory12Bound boost::bind<void, DHTMLWindow, double, FactoryOwner, double >(Factory12Method, FactoryOwner, double);
-typedef void (DHTMLWindow::*Factory13Method)(double);
-typedef boost::_bi::list_av_2<DHTMLWindow*, double >::type Factory13Args;
-typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, DHTMLWindow, double >, Factory13Args> Factory13Bound;
-template Factory13Bound boost::bind<void, DHTMLWindow, double, DHTMLWindow*, double >(Factory13Method, DHTMLWindow*, double);
-typedef void (*Factory14Method)(double);
-typedef boost::_bi::list_av_1<double >::type Factory14Args;
-typedef boost::_bi::bind_t<void, Factory14Method, Factory14Args> Factory14Bound;
-template Factory14Bound boost::bind<void, double, double >(Factory14Method, double);
-typedef void (DHTMLWindow::*Factory15Method)(void*);
-typedef boost::_bi::list_av_2<FactoryOwner, void* >::type Factory15Args;
-typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, DHTMLWindow, void* >, Factory15Args> Factory15Bound;
-template Factory15Bound boost::bind<void, DHTMLWindow, void*, FactoryOwner, void* >(Factory15Method, FactoryOwner, void*);
-typedef void (DHTMLWindow::*Factory16Method)(void*);
-typedef boost::_bi::list_av_2<DHTMLWindow*, void* >::type Factory16Args;
-typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, DHTMLWindow, void* >, Factory16Args> Factory16Bound;
-template Factory16Bound boost::bind<void, DHTMLWindow, void*, DHTMLWindow*, void* >(Factory16Method, DHTMLWindow*, void*);
-typedef void (*Factory17Method)(void*);
-typedef boost::_bi::list_av_1<void* >::type Factory17Args;
-typedef boost::_bi::bind_t<void, Factory17Method, Factory17Args> Factory17Bound;
-template Factory17Bound boost::bind<void, void*, void* >(Factory17Method, void*);
-typedef void (DHTMLWindow::*Factory18Method)(std::string);
-typedef boost::_bi::list_av_2<FactoryOwner, std::string >::type Factory18Args;
-typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, DHTMLWindow, std::string >, Factory18Args> Factory18Bound;
-template Factory18Bound boost::bind<void, DHTMLWindow, std::string, FactoryOwner, std::string >(Factory18Method, FactoryOwner, std::string);
-typedef void (DHTMLWindow::*Factory19Method)(std::string);
-typedef boost::_bi::list_av_2<DHTMLWindow*, std::string >::type Factory19Args;
-typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, DHTMLWindow, std::string >, Factory19Args> Factory19Bound;
-template Factory19Bound boost::bind<void, DHTMLWindow, std::string, DHTMLWindow*, std::string >(Factory19Method, DHTMLWindow*, std::string);
-typedef void (*Factory20Method)(std::string);
-typedef boost::_bi::list_av_1<std::string >::type Factory20Args;
-typedef boost::_bi::bind_t<void, Factory20Method, Factory20Args> Factory20Bound;
-template Factory20Bound boost::bind<void, std::string, std::string >(Factory20Method, std::string);
-typedef void (DHTMLWindow::*Factory21Method)(InstancePtr);
-typedef boost::_bi::list_av_2<FactoryOwner, InstancePtr >::type Factory21Args;
-typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, DHTMLWindow, InstancePtr >, Factory21Args> Factory21Bound;
-template Factory21Bound boost::bind<void, DHTMLWindow, InstancePtr, FactoryOwner, InstancePtr >(Factory21Method, FactoryOwner, InstancePtr);
-typedef void (DHTMLWindow::*Factory22Method)(InstancePtr);
-typedef boost::_bi::list_av_2<DHTMLWindow*, InstancePtr >::type Factory22Args;
-typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, DHTMLWindow, InstancePtr >, Factory22Args> Factory22Bound;
-template Factory22Bound boost::bind<void, DHTMLWindow, InstancePtr, DHTMLWindow*, InstancePtr >(Factory22Method, DHTMLWindow*, InstancePtr);
-typedef void (*Factory23Method)(InstancePtr);
-typedef boost::_bi::list_av_1<InstancePtr >::type Factory23Args;
-typedef boost::_bi::bind_t<void, Factory23Method, Factory23Args> Factory23Bound;
-template Factory23Bound boost::bind<void, InstancePtr, InstancePtr >(Factory23Method, InstancePtr);
+S::S(void* owner, Shared object, int)
+    : Base(owner, object)
+{
+}
+}

@@ -1,162 +1,118 @@
-// from server: 53% by intel
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/RunStateOwner.cpp
+// from server: 100% by Xemicl
+// roc 2012-06 00749f10  unit: RBX::ContentProvider  size: 145 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 00749f10
+//
+// 00749f10  6aff                 push -1
+// 00749f12  684c19ac00           push 0xac194c
+// 00749f17  64a100000000         mov eax, dword ptr fs:[0]
+// 00749f1d  50                   push eax
+// 00749f1e  64892500000000       mov dword ptr fs:[0], esp
+// 00749f25  83ec3c               sub esp, 0x3c
+// 00749f28  8d442420             lea eax, [esp + 0x20]
+// 00749f2c  56                   push esi
+// 00749f2d  50                   push eax
+// 00749f2e  c744240800000000     mov dword ptr [esp + 8], 0
+// 00749f36  e885faffff           call 0x7499c0
+// 00749f3b  8b4c2458             mov ecx, dword ptr [esp + 0x58]
+// 00749f3f  51                   push ecx
+// 00749f40  50                   push eax
+// 00749f41  8d542414             lea edx, [esp + 0x14]
+// 00749f45  52                   push edx
+// 00749f46  c744245801000000     mov dword ptr [esp + 0x58], 1
+// 00749f4e  ff15c426b200         call dword ptr [0xb226c4]
+// 00749f54  83c410               add esp, 0x10
+// 00749f57  8b742450             mov esi, dword ptr [esp + 0x50]
+// 00749f5b  50                   push eax
+// 00749f5c  8bce                 mov ecx, esi
+// 00749f5e  c644244c02           mov byte ptr [esp + 0x4c], 2
+// 00749f63  ff154426b200         call dword ptr [0xb22644]
+// 00749f69  8d4c2408             lea ecx, [esp + 8]
+// 00749f6d  c744240401000000     mov dword ptr [esp + 4], 1
+// 00749f75  c644244801           mov byte ptr [esp + 0x48], 1
+// 00749f7a  ff153c26b200         call dword ptr [0xb2263c]
+// 00749f80  8d4c2424             lea ecx, [esp + 0x24]
+// 00749f84  c644244800           mov byte ptr [esp + 0x48], 0
+// 00749f89  ff153c26b200         call dword ptr [0xb2263c]
+// 00749f8f  8b4c2440             mov ecx, dword ptr [esp + 0x40]
+// 00749f93  8bc6                 mov eax, esi
+// 00749f95  5e                   pop esi
+// 00749f96  64890d00000000       mov dword ptr fs:[0], ecx
+// 00749f9d  83c448               add esp, 0x48
+// 00749fa0  c3                   ret 
+// copied from an identical function in another client (function ?sub_55D0B0@ns_ROCX000001@@YA?AUS@1@PBD@Z)
 
-// Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
-#include "util/Timer.h"
-#include "util/standardout.h"
-#include "v8datamodel/DataModel.h"
-#include <boost/thread/xtime.hpp>
+namespace ns_ROCX000001 {
+// from server: 100% by king_originala
+// roc 2008-06 0055d0b0  unit: RBX::MD5HasherImpl  size: 145 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 0055d0b0
+//
+// 0055d0b0  6aff                 push -1
+// 0055d0b2  684ce87c00           push 0x7ce84c
+// 0055d0b7  64a100000000         mov eax, dword ptr fs:[0]
+// 0055d0bd  50                   push eax
+// 0055d0be  64892500000000       mov dword ptr fs:[0], esp
+// 0055d0c5  83ec3c               sub esp, 0x3c
+// 0055d0c8  8d442420             lea eax, [esp + 0x20]
+// 0055d0cc  56                   push esi
+// 0055d0cd  50                   push eax
+// 0055d0ce  c744240800000000     mov dword ptr [esp + 8], 0
+// 0055d0d6  e8e5f3ffff           call 0x55c4c0
+// 0055d0db  8b4c2458             mov ecx, dword ptr [esp + 0x58]
+// 0055d0df  51                   push ecx
+// 0055d0e0  50                   push eax
+// 0055d0e1  8d542414             lea edx, [esp + 0x14]
+// 0055d0e5  52                   push edx
+// 0055d0e6  c744245801000000     mov dword ptr [esp + 0x58], 1
+// 0055d0ee  ff15e4238000         call dword ptr [0x8023e4]
+// 0055d0f4  83c410               add esp, 0x10
+// 0055d0f7  8b742450             mov esi, dword ptr [esp + 0x50]
+// 0055d0fb  50                   push eax
+// 0055d0fc  8bce                 mov ecx, esi
+// 0055d0fe  c644244c02           mov byte ptr [esp + 0x4c], 2
+// 0055d103  ff155c248000         call dword ptr [0x80245c]
+// 0055d109  8d4c2408             lea ecx, [esp + 8]
+// 0055d10d  c744240401000000     mov dword ptr [esp + 4], 1
+// 0055d115  c644244801           mov byte ptr [esp + 0x48], 1
+// 0055d11a  ff1568248000         call dword ptr [0x802468]
+// 0055d120  8d4c2424             lea ecx, [esp + 0x24]
+// 0055d124  c644244800           mov byte ptr [esp + 0x48], 0
+// 0055d129  ff1568248000         call dword ptr [0x802468]
+// 0055d12f  8b4c2440             mov ecx, dword ptr [esp + 0x40]
+// 0055d133  8bc6                 mov eax, esi
+// 0055d135  5e                   pop esi
+// 0055d136  64890d00000000       mov dword ptr fs:[0], ecx
+// 0055d13d  83c448               add esp, 0x48
+// 0055d140  c3                   ret 
 
-namespace RBX
+struct S
 {
-	const char* const sRunService = "RunService";
+    char storage[28];
 
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> runFunction(&RunService::run, "Run", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> pauseFunction(&RunService::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> resetFunction(&RunService::reset, "Reset", Reflection::FunctionDescriptor::NeedTrustedCaller);
+    S(const S &);
+    ~S();
+};
 
-	static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "interval");
-	Reflection::SignalDesc<RunService, void(float, float)> RunService::event_Stepped("Stepped", "time", "step");
+typedef S *(__thiscall *CopyFunction)(S *, const S &);
+typedef void (__thiscall *DestroyFunction)(S *);
+typedef S (__cdecl *ConcatFunction)(const S &, const char *);
 
-	RunService::RunService()
-		: framePeriod(1.0f/30.0f),
-		  runState(RS_NORMAL),
-		  invalidRunViewCount(0),
-		  stopRequested(false),
-		  runDisabled(false)
-	{
-		setName("Run Service");
-	}
+extern CopyFunction copyFunction;
+extern DestroyFunction destroyFunction;
+extern ConcatFunction concatenate;
+extern S __cdecl construct();
 
-	RunService::~RunService()
-	{
-		RBXASSERT(views.empty());
-	}
+__forceinline S::S(const S &other)
+{
+    copyFunction(this, other);
+}
 
-	void RunService::endRunThread(bool join)
-	{
-		stopRequested = true;
-		stateChangedCondition.notify_all();
+__forceinline S::~S()
+{
+    destroyFunction(this);
+}
 
-		if (join)
-			runThread->join();
-	}
-
-	void RunService::onAncestorChanged(const AncestorChanged& event)
-	{
-		if (!getParent())
-		{
-			stopRequested = true;
-			stateChangedCondition.notify_all();
-		}
-	}
-
-	void RunService::setRunState(RunState newState)
-	{
-		RunTransition transition(runState, newState);
-		runState = newState;
-
-		Notifier<RunService, RunState>::raise(newState);
-		Notifier<RunService, RunTransition>::raise(transition);
-	}
-
-	void RunService::raiseStepped(float time, float step)
-	{
-		Notifier<RunService, Stepped>::raise(Stepped(time, step));
-		event_Stepped.fire(this, time, step);
-	}
-
-	void RunService::raiseHeartbeat(float time, float step)
-	{
-		Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-		event_Heartbeat.fire(this, step);
-	}
-
-	void RunService::invalidateRunViews()
-	{
-		boost::mutex::scoped_lock lock(viewMutex);
-
-		if (invalidRunViewCount == 0)
-		{
-			invalidRunViewCount = (int)views.size();
-			if (invalidRunViewCount > 0)
-			{
-				for (std::map<IRunView*, bool>::iterator iter = views.begin(); iter != views.end(); iter++)
-				{
-					iter->first->InvalidateRunView();
-					iter->second = false;
-				}
-				runViewsDoneCondition.notify_all();
-			}
-		}
-	}
-
-	void RunService::start()
-	{
-		RBXASSERT(!runThread);
-
-		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
-		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc")));
-	}
-
-	void RunService::runProc(boost::shared_ptr<DataModel> dataModel)
-	{
-		double lastTime = getRealTime();
-		while (true)
-		{
-			double deltaTime = lastTime - getRealTime();
-
-			{
-				boost::mutex::scoped_lock lock(viewMutex);
-				for (std::map<IRunView*, bool>::iterator it = views.begin(); it != views.end(); it++)
-					it->first->AdjustThrottle(deltaTime);
-			}
-
-			double clampedDeltaTime = G3D::max(0.0, deltaTime);
-			boost::xtime stateChangedTimeout;
-			boost::xtime_get(&stateChangedTimeout, boost::TIME_UTC);
-			stateChangedTimeout.nsec += (boost::xtime::xtime_nsec_t)(clampedDeltaTime * 1e9);
-
-			bool stateChanged;
-			{
-				boost::mutex::scoped_lock lock(runMutex);
-				stateChanged = stateChangedCondition.timed_wait(lock, stateChangedTimeout);
-			}
-
-			if (!stateChanged)
-			{
-				boost::xtime runViewsDoneTimeout;
-				boost::xtime_get(&runViewsDoneTimeout, boost::TIME_UTC);
-				runViewsDoneTimeout.sec += 1;
-
-				boost::mutex::scoped_lock lock(runMutex);
-				if (invalidRunViewCount != 0)
-					runViewsDoneCondition.timed_wait(lock, runViewsDoneTimeout);
-			}
-
-			if (deltaTime <= 0.0)
-				lastTime = getRealTime();
-
-			{
-				DataModel::Lock lock(dataModel);
-
-				if (!stopRequested)
-				{
-					RBXASSERT(getParent() == dataModel.get());
-					dataModel->step(framePeriod);
-				}
-				else
-				{
-					StandardOut::singleton()->print(MESSAGE_INFO, "runProc ending");
-					return;
-				}
-			}
-
-			lastTime += framePeriod;
-		}
-	}
+S __cdecl sub_55D0B0(const char *text)
+{
+    return static_cast<const S &>(concatenate(construct(), text));
+}
 }

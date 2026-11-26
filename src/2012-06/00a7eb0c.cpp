@@ -1,15 +1,17 @@
-// from server: 54% by atomic.potato
-extern "C" void __cdecl fn_a814d5(int);
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function _D3DXFunc43@12)
 
-extern "C" int __cdecl fn_e085e8(int, int, float);
-
-struct S
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O1 /Oy- /hotpatch /GS- /MD
+struct D3DXMATRIX;
+struct D3DXVECTOR3;
+typedef D3DXMATRIX* (__stdcall *PFN)(D3DXMATRIX*, const D3DXVECTOR3*, float);
+extern "C" void __stdcall D3DXCpuInit(int);
+extern "C" PFN g_pfn43;
+extern "C" D3DXMATRIX* __stdcall D3DXFunc43(D3DXMATRIX* pOut, const D3DXVECTOR3* pV, float angle)
 {
-    int f(int, int, float);
-};
-
-int S::f(int a, int b, float c)
-{
-    fn_a814d5(1);
-    return fn_e085e8(a, b, c);
+    D3DXCpuInit(1);
+    return g_pfn43(pOut, pV, angle);
 }

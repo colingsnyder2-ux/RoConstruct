@@ -1,12 +1,10 @@
-// from server: 45% by atomic.potato
-struct UserInputJob
-{
-    UserInputJob *Run(double, double);
-};
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?f@S@@QAE?AUR@@ABN@Z)
 
-extern "C" UserInputJob *__stdcall JobCall(UserInputJob *, double, double);
-
-UserInputJob *UserInputJob::Run(double a, double b)
-{
-    return JobCall(this, a, b);
-}
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct R { double v; bool b; };
+struct S { R g(const double& a, double b); R f(const double& a); };
+R S::f(const double& a) { return g(a, 60.0); }

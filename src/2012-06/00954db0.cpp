@@ -1,19 +1,35 @@
-// from server: 71% by atomic.potato
-struct MechToAssemblyStage;
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?f@S@ns_ROCX00000b@@QAEXPAUPrimitive@2@@Z)
 
-extern "C" void __stdcall sub_00917430(MechToAssemblyStage*);
-extern "C" void __stdcall sub_00925b60(int, MechToAssemblyStage*);
-extern "C" void __stdcall sub_00954cc0(void*, void*, int);
+namespace ns_ROCX00000b {
+// from server: 100% by EspClaude
+struct Primitive;
+struct Stage {
+    void f(Primitive* a1);
+};
+typedef void (Stage::*StageFn)(Primitive*);
 
-struct MechToAssemblyStage {
-    char pad[8];
-    int field8;
-    void method(MechToAssemblyStage* other);
+struct Functor { StageFn fn; Stage* s; Functor(StageFn f, Stage* p) : fn(f), s(p) {} };
+struct Prims {
+    void visit(Functor fn);
 };
 
-void MechToAssemblyStage::method(MechToAssemblyStage* other)
+struct Primitive {
+    char pad0[8];
+    Prims prims;
+    void attach(void* a1);
+};
+
+struct S {
+    char pad0[8];
+    Stage* m_p;
+    void f(Primitive* a1);
+};
+
+void S::f(Primitive* a1)
 {
-    sub_00917430(other);
-    sub_00925b60(field8, other);
-    sub_00954cc0((void*)0x925ba0, (char*)other + 8, field8);
+    a1->attach(this);
+    m_p->f(a1);
+    a1->prims.visit(Functor(&Stage::f, m_p));
+}
 }

@@ -1,43 +1,18 @@
-// from server: 31% by atomic.potato
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: boost-1.40.0 roc_espclaude_e547168d0424882c.cpp
 
-extern "C" void* __cdecl sub_801040(void*);
-
-struct Inner {
-    void** vptr;
-    long refcount;
-};
-
-struct Obj {
-    void* field0;
-    Inner* field4;
-    long field8;
-};
-
-struct S {
-    void* field0;
-    Obj* field4;
-    long field8;
-    void ctor(Obj* a, Obj* b, Obj* c, Obj* d);
-};
-
-void S::ctor(Obj* a, Obj* b, Obj* c, Obj* d)
-{
-    Inner* inner = (Inner*)d;
-    if (inner)
-        _InterlockedExchangeAdd(&inner->refcount, 1);
-
-    void* r = sub_801040((void*)0xdd44f4);
-    this->field0 = (r != 0) ? (void*)0xdd44f4 : 0;
-
-    if (inner)
-    {
-        if (_InterlockedExchangeAdd(&inner->refcount, -1) == 1)
-        {
-            ((void (__thiscall*)(Inner*))inner->vptr[1])(inner);
-            if (_InterlockedExchangeAdd(&inner->refcount, -1) == 1)
-                ((void (__thiscall*)(Inner*))inner->vptr[2])(inner);
-        }
-    }
-}
+// Candidate translation unit (score above; library headers required).
+#define _DLL
+#define NDEBUG
+#include <boost/shared_ptr.hpp>
+#include <boost/bind.hpp>
+#include <boost/function.hpp>
+class __multiple_inheritance DHTMLWindow;
+typedef boost::_mfi::mf0<void, DHTMLWindow> CloseCallback;
+typedef boost::_bi::value<boost::shared_ptr<DHTMLWindow> > WindowValue;
+typedef boost::_bi::list1<WindowValue> CloseArguments;
+typedef boost::_bi::bind_t<void, CloseCallback, CloseArguments> CloseBound;
+template void boost::function0<void>::assign_to<CloseBound>(CloseBound);

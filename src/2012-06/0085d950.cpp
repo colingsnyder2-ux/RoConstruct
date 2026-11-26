@@ -1,197 +1,157 @@
-// from server: 44% by intel
+// from server: 93% by Xemicl
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/iostreams/src/zlib.cpp
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs-atl90-dll roc_http_wininet_catch_19404fecbe27f869.cpp
 
 // Candidate translation unit (score above; library headers required).
-// (C) Copyright Jonathan Turkanis 2003.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
+#define _SCL_SECURE_NO_DEPRECATE // required to disable a warning
+#include "util/Http.h"
+#include <windows.h>
+#include <atlutil.h>
+#include <wininet.h>
+#include <sstream>
+#include <G3D/format.h>
+#include <boost/scoped_ptr.hpp>
+#include <boost/thread/mutex.hpp>
+#include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/copy.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
 
-// See http://www.boost.org/libs/iostreams for documentation.
-
-// To configure Boost to work with zlib, see the 
-// installation instructions here:
-// http://boost.org/libs/iostreams/doc/index.html?path=7
-
-// Define BOOST_IOSTREAMS_SOURCE so that <boost/iostreams/detail/config.hpp> 
-// knows that we are building the library (possibly exporting code), rather 
-// than using it (possibly importing code).
-#define BOOST_IOSTREAMS_SOURCE 
-
-#include <boost/iostreams/detail/config/dyn_link.hpp>
-#include <boost/iostreams/filter/zlib.hpp> 
-#include "zlib.h"   // Jean-loup Gailly's and Mark Adler's "zlib.h" header.
-                    // To configure Boost to work with zlib, see the 
-                    // installation instructions here:
-                    // http://boost.org/libs/iostreams/doc/index.html?path=7
-
-namespace boost { namespace iostreams {
-
-namespace zlib {
-
-                    // Compression levels
-
-const int no_compression       = Z_NO_COMPRESSION;
-const int best_speed           = Z_BEST_SPEED;
-const int best_compression     = Z_BEST_COMPRESSION;
-const int default_compression  = Z_DEFAULT_COMPRESSION;
-
-                    // Compression methods
-
-const int deflated             = Z_DEFLATED;
-
-                    // Compression strategies
-
-const int default_strategy     = Z_DEFAULT_STRATEGY;
-const int filtered             = Z_FILTERED;
-const int huffman_only         = Z_HUFFMAN_ONLY;
-
-                    // Status codes
-
-const int okay                 = Z_OK;
-const int stream_end           = Z_STREAM_END;
-const int stream_error         = Z_STREAM_ERROR;
-const int version_error        = Z_VERSION_ERROR;
-const int data_error           = Z_DATA_ERROR;
-const int mem_error            = Z_MEM_ERROR;
-const int buf_error            = Z_BUF_ERROR;
-
-                    // Flush codes
-
-const int finish               = Z_FINISH;
-const int no_flush             = Z_NO_FLUSH;
-const int sync_flush           = Z_SYNC_FLUSH;
-
-                    // Code for current OS
-
-//const int os_code              = OS_CODE;
-
-} // End namespace zlib. 
-
-//------------------Implementation of zlib_error------------------------------//
-                    
-zlib_error::zlib_error(int error) 
-    : BOOST_IOSTREAMS_FAILURE("zlib error"), error_(error) 
-    { }
-
-void zlib_error::check(int error)
+class HttpRequest_source : public boost::iostreams::device<boost::iostreams::input>
 {
-    switch (error) {
-    case Z_OK: 
-    case Z_STREAM_END: 
-    //case Z_BUF_ERROR: 
-        return;
-    case Z_MEM_ERROR: 
-        throw std::bad_alloc();
-    default:
-        throw zlib_error(error);
-        ;
-    }
-}
+private:
+	void* request;
 
-//------------------Implementation of zlib_base-------------------------------//
+public:
+	HttpRequest_source(void* request)
+		: request(request)
+	{
+	}
+public:
+	// does not match
+	int read(char* s, int n)
+	{
+		DWORD numBytes;
+		if (!InternetQueryDataAvailable(request, &numBytes, 0, NULL))
+			return -1;
+		if (numBytes == 0)
+			return -1;
 
-namespace detail {
+		DWORD bytesRead;
+		if (!InternetReadFile(request, s, n, &bytesRead))
+			throw std::runtime_error("InternetReadFile failed");
 
-zlib_base::zlib_base()
-    : stream_(new z_stream), calculate_crc_(false), crc_(0)
-    { }
+		return bytesRead;
+	}
+};
 
-zlib_base::~zlib_base() { delete static_cast<z_stream*>(stream_); }
-
-void zlib_base::before( const char*& src_begin, const char* src_end,
-                        char*& dest_begin, char* dest_end )
+struct String_sink : public boost::iostreams::device<boost::iostreams::output>
 {
-    z_stream* s = static_cast<z_stream*>(stream_);
-    s->next_in = reinterpret_cast<zlib::byte*>(const_cast<char*>(src_begin));
-    s->avail_in = static_cast<zlib::uint>(src_end - src_begin);
-    s->next_out = reinterpret_cast<zlib::byte*>(dest_begin);
-    s->avail_out= static_cast<zlib::uint>(dest_end - dest_begin);
+public:
+	std::string& s;
+
+public:
+	String_sink(std::string& s)
+		: s(s)
+	{
+	}
+public:
+	// NOTE: not checked
+	int write(const char* c, int n)
+	{
+		s.append(c, n);
+		return n;
+	}
+};
+
+
+namespace RBX {
+	class MD5Hasher
+	{
+	public:
+		virtual void addData(std::istream& data) = 0;
+		virtual void addData(const std::string& data) = 0;
+		virtual void addData(const char* data, size_t nBytes) = 0;
+		
+		virtual std::string toString() = 0;
+		virtual const char* c_str() = 0;
+
+	public:
+		static MD5Hasher* create();
+	};
+struct NativeInternetHandle {
+ HINTERNET value;
+ NativeInternetHandle(HINTERNET v):value(v){}
+ ~NativeInternetHandle(){InternetCloseHandle(value);}
+ operator HINTERNET()const{return value;}
+};
+class NativeHttp:public Http {public:void request(bool,std::istream&,bool,const char*,std::string&);void failure(bool,const char*);};
+void NativeHttp::request(bool isPost,std::istream& data,bool compressData,const char* additionalHeaders,std::string& response) {
+ if(url.empty())throw std::runtime_error("empty url");
+ if(!Http::trustCheck(url.c_str()))throw std::runtime_error(G3D::format("trust check failed for %s",url.c_str()));
+ ATL::CUrl crack;crack.CrackUrl(url.c_str());
+ if(crack.GetHostNameLength()==0)throw std::runtime_error(G3D::format("'%s' is missing a hostName",url.c_str()));
+ HINTERNET session=InternetOpenA("Roblox/WinInet",INTERNET_OPEN_TYPE_PRECONFIG,NULL,NULL,0);
+ try {
+ HINTERNET connection=InternetConnectA(session,crack.GetHostName(),crack.GetPortNumber(),crack.GetUserNameA(),crack.GetPassword(),INTERNET_SERVICE_HTTP,0,TRUE);
+ try {
+ ATL::CStringA path=crack.GetUrlPath();path+=crack.GetExtraInfo();
+ HINTERNET request=HttpOpenRequestA(connection,isPost?"POST":"GET",path.GetString(),NULL,NULL,NULL,INTERNET_FLAG_EXISTING_CONNECT|INTERNET_FLAG_KEEP_CONNECTION|INTERNET_FLAG_NEED_FILE,TRUE);
+ try {
+ if(!request)throw std::runtime_error(G3D::format("HttpOpenRequest failed for %s",url.c_str()));
+ if(additionalHeaders)failure(HttpAddRequestHeadersA(request,additionalHeaders,(int)strlen(additionalHeaders),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+ failure(HttpAddRequestHeadersA(request,"Accept-Encoding: gzip\r\n",(int)strlen("Accept-Encoding: gzip\r\n"),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+ boost::iostreams::gzip_params gzipParams(boost::iostreams::zlib::default_compression);
+ if(isPost) {
+  std::string uploadData;
+  {
+   boost::iostreams::filtering_stream<boost::iostreams::output> out;
+   if(compressData) {
+    std::string contentEncodingHeader="Content-Encoding: gzip\r\n";
+    failure(HttpAddRequestHeadersA(request,contentEncodingHeader.c_str(),(int)contentEncodingHeader.size(),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+    out.push(boost::iostreams::basic_gzip_compressor<>(gzipParams));
+   }
+   out.push(String_sink(uploadData));boost::iostreams::copy(data,out);
+  }
+  int length=(int)uploadData.size();
+  if(length>10000) {
+   std::string sizeHeader=G3D::format("Roblox-Content-Size: %d\r\n",length);
+   failure(HttpAddRequestHeadersA(request,sizeHeader.c_str(),(int)sizeHeader.size(),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+   std::string firstHeader=G3D::format("Roblox-Content-First: %d\r\n",uploadData[0]);
+   failure(HttpAddRequestHeadersA(request,firstHeader.c_str(),(int)firstHeader.size(),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+   std::string lastHeader=G3D::format("Roblox-Content-Last: %d\r\n",uploadData[length-1]);
+   failure(HttpAddRequestHeadersA(request,lastHeader.c_str(),(int)lastHeader.size(),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+   boost::scoped_ptr<MD5Hasher> hasher(MD5Hasher::create());hasher->addData(uploadData);
+   std::string hashHeader=G3D::format("Roblox-Content-Hash: %s\r\n",hasher->c_str());
+   failure(HttpAddRequestHeadersA(request,hashHeader.c_str(),(int)hashHeader.size(),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+  }
+  INTERNET_BUFFERSA buffers={0};buffers.dwStructSize=sizeof(buffers);buffers.dwBufferTotal=length;
+  if(!HttpSendRequestExA(request,&buffers,NULL,0,0))throw std::runtime_error("HttpSendRequestEx failed");
+  DWORD written;
+  failure(InternetWriteFile(request,uploadData.c_str(),length,&written)==TRUE,"InternetWriteFile failed");
+  if(written!=length)throw std::runtime_error("Failed to upload content");
+  failure(HttpEndRequestA(request,NULL,0,0)==TRUE,"HttpEndRequest failed");
+ }else failure(HttpSendRequestA(request,NULL,0,NULL,0)==TRUE,"HttpSendRequest failed");
+ int status;DWORD length=sizeof(status);
+ failure(HttpQueryInfoA(request,HTTP_QUERY_STATUS_CODE|HTTP_QUERY_FLAG_NUMBER,&status,&length,NULL)==TRUE,"HttpQueryInfo failed");
+ {
+  boost::iostreams::filtering_stream<boost::iostreams::input> in;
+  char buffer[256];DWORD length=sizeof(buffer);
+  if(HttpQueryInfoA(request,HTTP_QUERY_CONTENT_ENCODING,buffer,&length,NULL))if(std::string(buffer)=="gzip")in.push(boost::iostreams::basic_gzip_decompressor<>());
+  in.push(HttpRequest_source(request));boost::iostreams::copy(in,String_sink(response));
+ }
+ if(status!=200) {
+  char buffer[512];DWORD length=sizeof(buffer);
+  if(HttpQueryInfoA(request,HTTP_QUERY_STATUS_TEXT,buffer,&length,NULL))throw std::runtime_error(std::string(buffer));
+  else throw std::runtime_error(G3D::format("statusCode = %d",status));
+ }
+ }catch(...){InternetCloseHandle(request);throw;}
+ InternetCloseHandle(request);
+ }catch(...){InternetCloseHandle(connection);throw;}
+ InternetCloseHandle(connection);
+ }catch(...){InternetCloseHandle(session);throw;}
+ InternetCloseHandle(session);
+
 }
-
-void zlib_base::after(const char*& src_begin, char*& dest_begin, bool compress)
-{
-    z_stream* s = static_cast<z_stream*>(stream_);
-    char* next_in = reinterpret_cast<char*>(s->next_in);
-    char* next_out = reinterpret_cast<char*>(s->next_out);
-    if (calculate_crc_) {
-        const zlib::byte* buf = compress ?
-            reinterpret_cast<const zlib::byte*>(src_begin) :
-            reinterpret_cast<const zlib::byte*>(
-                const_cast<const char*>(dest_begin)
-            );
-        zlib::uint length = compress ?
-            static_cast<zlib::uint>(next_in - src_begin) :
-            static_cast<zlib::uint>(next_out - dest_begin);
-        if (length > 0)
-            crc_ = crc32(crc_, buf, length);
-    }
-    total_in_ = s->total_in;
-    total_out_ = s->total_out;
-    src_begin = const_cast<const char*>(next_in);
-    dest_begin = next_out;
 }
-
-int zlib_base::deflate(int flush)
-{ 
-    return ::deflate(static_cast<z_stream*>(stream_), flush);
-}
-
-int zlib_base::inflate(int flush)
-{ 
-    return ::inflate(static_cast<z_stream*>(stream_), flush);
-}
-
-void zlib_base::reset(bool compress, bool realloc)
-{
-    z_stream* s = static_cast<z_stream*>(stream_);
-    // Undiagnosed bug:
-    // deflateReset(), etc., return Z_DATA_ERROR
-    //zlib_error::check(
-        realloc ?
-            (compress ? deflateReset(s) : inflateReset(s)) :
-            (compress ? deflateEnd(s) : inflateEnd(s))
-                ;
-    //);
-}
-
-void zlib_base::do_init
-    ( const zlib_params& p, bool compress, 
-      #if !BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-          zlib::alloc_func alloc, zlib::free_func free, 
-      #endif
-      void* derived )
-{
-    calculate_crc_ = p.calculate_crc;
-    z_stream* s = static_cast<z_stream*>(stream_);
-
-    // Current interface for customizing memory management 
-    // is non-conforming and has been disabled:
-    //#if !BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-    //    s->zalloc = alloc;
-    //    s->zfree = free;
-    //#else
-        s->zalloc = 0;
-        s->zfree = 0;
-    //#endif
-    s->opaque = derived;
-    int window_bits = p.noheader? -p.window_bits : p.window_bits;
-    zlib_error::check(
-        compress ?
-            deflateInit2( s, 
-                          p.level,
-                          p.method,
-                          window_bits,
-                          p.mem_level,
-                          p.strategy ) :
-            inflateInit2(s, window_bits)
-    );
-}
-
-} // End namespace detail.
-
-//----------------------------------------------------------------------------//
-
-} } // End namespaces iostreams, boost.

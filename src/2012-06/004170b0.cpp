@@ -1,709 +1,518 @@
-// from server: 62% by colin
+// from server: 100% by Xemicl
 // roc-lang: cpp
-// roc-cl: 50727
+// roc-cl: 30729
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/Workspace.cpp
+// roc-lib: rbxgs v8tree/Instance.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Workspace.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8datamodel/MouseCommand.h"
-#include "v8datamodel/Flag.h"
-#include "v8datamodel/Camera.h"
-#include "v8datamodel/Hopper.h"
-#include "v8datamodel/Selection.h"
-#include "v8datamodel/UserController.h"
-#include "script/ScriptContext.h"
-#include "humanoid/Humanoid.h"
-#include "v8world/CollisionStage.h"
-#include "v8world/SleepStage.h"
-#include "v8world/World.h"
-#include "tool/NullTool.h"
-#include "tool/ToolsArrow.h"
-#include "Network/Players.h"
+#include "v8tree/Instance.h"
+#include "v8xml/Serializer.h"
+#include "reflection/function.h"
+#include "reflection/property.h"
+#include <algorithm>
 
 namespace RBX
 {
-	char* sWorkspace = "Workspace";
+	const char* const sInstance = "Instance";
 
-	static Reflection::RefPropDescriptor<Workspace, Camera> currentCameraProxyProp("CurrentCamera", "Data", &Workspace::getCamera, &Workspace::setCamera, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::BoundProp<bool, 1> Instance::propArchivable("archivable", "Behavior", &Instance::archivable, Reflection::PropertyDescriptor::STANDARD); // L14
+	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<Instance>(std::string, bool), 2> findFirstChild(&Instance::findFirstChildByName2, "FindFirstChild", "name", "recursive", false, Reflection::FunctionDescriptor::AnyCaller); // L15
+	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<Instance>(), 0> func_clone(&Instance::clone, "Clone", Reflection::FunctionDescriptor::AnyCaller); // L16
+	static Reflection::BoundFuncDesc<Instance, void(), 0> func_Remove(&Instance::remove, "Remove", Reflection::FunctionDescriptor::AnyCaller); // L17
+	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(), 0> func_childrenOld(&Instance::getChildren2, "children", Reflection::FunctionDescriptor::AnyCaller); // L18
+	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(), 0> func_children(&Instance::getChildren2, "GetChildren", Reflection::FunctionDescriptor::AnyCaller); // L19
+	static Reflection::BoundFuncDesc<Instance, bool(boost::shared_ptr<Instance>), 1> func_isDescendentOf(&Instance::isDescendentOf2, "IsDescendentOf", "ancestor", Reflection::FunctionDescriptor::AnyCaller); // L20
+	static Reflection::BoundFuncDesc<Instance, bool(boost::shared_ptr<Instance>), 1> func_isAncestorOf(&Instance::isAncestorOf2, "IsAncestorOf", "descendent", Reflection::FunctionDescriptor::AnyCaller); // L21
+	static Reflection::PropDescriptor<Instance, std::string> prop_className("className", "Data", &Instance::getClassNameStr, NULL, Reflection::PropertyDescriptor::UI); // L22
 
-	static Reflection::BoundFuncDesc<Workspace, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(ContentId), 1> workspace_insertContent(&Workspace::insertContent, "InsertContent", "url", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<Workspace, void(boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>), 1> workspace_makeJoints(&Workspace::makeJoints, "MakeJoints", "objects", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<Workspace, void(boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>), 1> workspace_breakJoints(&Workspace::breakJoints, "BreakJoints", "objects", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<Workspace, void(bool), 1> workspace_SetThrottleEnabled(&Workspace::setThrottleEnabled, "SetPhysicsThrottleEnabled", "value", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<Workspace, void(void), 0> workspace_zoomToExtents(&Workspace::zoomToExtents, "ZoomToExtents", Reflection::FunctionDescriptor::NeedTrustedCaller);
+	const Reflection::PropDescriptor<Instance, std::string> Instance::desc_Name("Name", "Data", &Instance::getName, &Instance::setName, Reflection::PropertyDescriptor::STANDARD); // L24
+	const Reflection::RefPropDescriptor<Instance, Instance> Instance::propParent("Parent", "Data", &Instance::getParent, &Instance::setParent, Reflection::PropertyDescriptor::UI); // L25
 
-	bool Workspace::showWorldCoord = false;
-	bool Workspace::showHashGrid = false;
+	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_childAdded("ChildAdded", "child"); // L27
+	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_childRemoved("ChildRemoved", "child"); // L28
+	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_descendentAdded("DescendentAdded", "descendent"); // L29
+	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_descendentRemoving("DescendentRemoving", "descendent"); // L30
+	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_ancestryChanged("AncestryChanged", "child"); // L31
+	Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> Instance::event_propertyChanged("Changed", "property"); // L32 
 
-	Workspace::Workspace(IDataState* dataState)
-		: VerbContainer(NULL),
-		  dataState(dataState),
-		  profileWorkspaceStep(new Profiling::CodeProfiler("DataModel Step")),
-		  profileRunServiceStepped(new Profiling::CodeProfiler("RunService Stepped")),
-		  profileRunServiceHeartbeat(new Profiling::CodeProfiler("RunService Heartbeat")),
-		  profileRun(new Profiling::ThreadProfiler("Run Thread")),
-		  arrowCameraControls(false),
-		  inMouselookMode(false),
-		  isSimulating(false),
-		  scriptContext(NULL),
-		  imageServerViewHack(0)
+	Instance::Instance(const char* name)
+		: assoc(),
+		  parent(NULL),
+		  children(),
+		  name(name),
+		  archivable(true),
+		  guid()
 	{
-		RBXASSERT(dataState);
-		setName("Workspace");
-
-		world->getProfileWorldStep().parent = profileWorkspaceStep.get();
-		profileRunServiceStepped->parent = profileWorkspaceStep.get();
-		profileRunServiceHeartbeat->parent = profileWorkspaceStep.get();
 	}
 
-	Workspace::~Workspace() {}
-
-	bool Workspace::askAddChild(const Instance* instance) const
+	Instance::Instance()
+		: assoc(),
+		  parent(NULL),
+		  children(),
+		  name("Instance"),
+		  archivable(true),
+		  guid()
 	{
-		return dynamic_cast<const IRenderable*>(instance) != NULL;
 	}
 
-	const G3D::GCamera& Workspace::getGCamera() const
+	Instance::~Instance()
 	{
-		RBXASSERT(getCamera());
-		return getCamera()->getGCamera();
+		RBXASSERT(!parent);
 	}
 
-	void Workspace::zoomToExtents()
+	bool Instance::askAddChild(const Instance* instance) const
 	{
-		getCamera()->zoomExtents(viewPort);
+		return false;
 	}
 
-	void Workspace::insertItems(XmlElement* root, std::vector<boost::shared_ptr<Instance>>& instances, InsertMode insertMode, PromptMode promptMode)
+	bool Instance::askSetParent(const Instance* instance) const
 	{
-		RBXASSERT(instances.size() == 0);
-
-		SerializerV2 serializer;
-		serializer.loadInstances(root, instances);
-
-		if (instances.size() != 0)
-			insertInstances(instances, this, insertMode, promptMode);
+		return false;
 	}
 
-	void Workspace::stop()
+	void Instance::setName(const std::string& value)
 	{
-		RBXASSERT(isSimulating);
-		isSimulating = false;
-
-		getCamera()->autoMode();
-		RBXASSERT(!getCurrentMouseCommand()->captured());
-	}
-
-	MouseCommand* newNullTool(Workspace* workspace)
-	{
-		return new NewNullTool(workspace);
-	}
-
-	void Workspace::setNullMouseCommand()
-	{
-		stickyCommand.reset();
-		currentCommand.reset(newNullTool(this));
-	}
-
-	void Workspace::render2d(Adorn* adorn)
-	{
-		getCurrentMouseCommand()->render2d(adorn);
-		render2dItems(adorn);
-	}
-
-	void Workspace::setThrottleEnabled(bool value)
-	{
-		world->setCanThrottle(value);
-	}
-
-	void Workspace::joinAllHack()
-	{
-		world->joinAll();
-	}
-
-	void Workspace::reset()
-	{
-		stop();
-		world->reset();
-	}
-
-	Camera* Workspace::getCamera() const
-	{
-		if (!currentCamera || !currentCamera->isDescendentOf(this))
+		if (name != value)
 		{
-			boost::shared_ptr<Camera> newCamera = Creatable::create<Camera>();
-			newCamera->setParent(const_cast<Workspace*>(this));
-			currentCamera = newCamera;
-		}
-
-		RBXASSERT(currentCamera->isDescendentOf(this));
-		return currentCamera.get();
-	}
-
-	void Workspace::onChildChanged(Instance* instance, const PropertyChanged& event)
-	{
-		Instance::onChildChanged(instance, event);
-		raiseDrawChanged();
-	}
-
-	void Workspace::onDescendentAdded(Instance* instance)
-	{
-		RootInstance::onDescendentAdded(instance);
-		raiseDrawChanged();
-
-		IRenderable* renderable = dynamic_cast<IRenderable*>(instance);
-		if (renderable)
-			onAdded(renderable);
-
-		PVInstance* pvInstance = dynamic_cast<PVInstance*>(instance);
-		if (pvInstance && pvInstance->getLegacyOffset())
-		{
-			RBXASSERT(instance->getParent() == this);
-
-			pvInstance->legacyTraverseState(G3D::CoordinateFrame());
-			pvInstance->clearLegacyOffset();
-			if (legacyOffset)
-				legacyOffset.reset();
+			name = value;
+			raisePropertyChanged(desc_Name);
 		}
 	}
 
-	void Workspace::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
+	void Instance::onDescendentAdded(Instance* instance)
 	{
-		IRenderable* renderable = dynamic_cast<IRenderable*>(instance.get());
-		if (renderable)
-			onRemoving(renderable);
+		if (Notifier<Instance, DescendentAdded>::hasListeners())
+			Notifier<Instance, DescendentAdded>::raise(DescendentAdded(instance, instance->parent));
 
-		RootInstance::onDescendentRemoving(instance);
-		raiseDrawChanged();
+		event_descendentAdded.fire(this, shared_from(instance));
 	}
 
-	template<bool isJoin>
-	static void wrapper(Instance* instance)
+	void Instance::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
 	{
-		PartInstance* part = dynamic_cast<PartInstance*>(instance);
-		if (part)
+		event_descendentRemoving.fire(this, instance);
+
+		if (Notifier<Instance, DescendentRemoving>::hasListeners())
+			Notifier<Instance, DescendentRemoving>::raise(DescendentRemoving(instance, shared_from(instance->parent)));
+	}
+
+	class RaiseDescendentAdded2
+	{
+	private:
+		const Instance* notifier;
+		Listener<Instance, DescendentAdded>* listener;
+	  
+	public:
+		RaiseDescendentAdded2(const Instance* notifier, Listener<Instance, DescendentAdded>* listener)
+			: notifier(notifier),
+			  listener(listener)
 		{
-			if (isJoin)
-				part->join();
+		}
+	public:
+		void operator()(Instance* instance)
+		{
+			notifier->Notifier<Instance, DescendentAdded>::raise(DescendentAdded(instance, instance->parent), listener);
+			instance->for_eachChild(*this);
+		}
+	};
+
+	void Instance::onAddListener(Listener<Instance, DescendentAdded>* listener) const
+	{
+		for_eachChild(RaiseDescendentAdded2(this, listener));
+	}
+
+	void Instance::onAddListener(Listener<Instance, ChildAdded>* listener) const
+	{
+		if (children)
+		{
+			boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> c = children.read();
+			for (std::vector<boost::shared_ptr<Instance>>::const_iterator iter = c->begin(); iter != c->end(); iter++)
+			{
+				Notifier<Instance, ChildAdded>::raise(ChildAdded((*iter).get()), listener);
+			}
+		}
+	}
+
+	void Instance::removeAllChildren()
+	{
+		while (children)
+		{
+			children->back()->setParent(NULL);
+		}
+	}
+
+	void Instance::onChildChanged(Instance* instance, const PropertyChanged& event)
+	{
+		Instance* p = parent;
+
+		if (p)
+			p->onChildChanged(instance, event);
+	}
+
+	void Instance::readProperties(const XmlElement* container, IReferenceBinder& binder)
+	{
+		for (const XmlElement* i = container->firstChild(); i != NULL; i = i->nextSibling())
+			readProperty(i, binder);
+	}
+
+	void Instance::readChild(const XmlElement* childElement, IReferenceBinder& binder)
+	{
+		const Name* className = NULL;
+
+		if (childElement->findAttributeValue(tag_class, className))
+		{
+			boost::shared_ptr<Instance> childInstance = createChild(*className);
+			if (childInstance)
+			{
+				childInstance->read(childElement, binder);
+				if (childInstance)
+					childInstance->setParent(this);
+			}
 			else
-				part->destroyJoints();
-		}
-		else
-		{
-			instance->for_eachChild(&wrapper<isJoin>);
-		}
-	}
-
-	template<bool isJoin>
-	static void wrapper2(boost::shared_ptr<Instance> instance)
-	{
-		wrapper<isJoin>(instance.get());
-	}
-
-	void Workspace::makeJoints(boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> instances)
-	{
-		std::for_each(instances->begin(), instances->end(), &wrapper2<true>);
-	}
-
-	void Workspace::breakJoints(boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> instances)
-	{
-		std::for_each(instances->begin(), instances->end(), &wrapper2<false>);
-	}
-
-	void clearEmptiedModels(boost::shared_ptr<Instance> test, Instance* parent)
-	{
-		if (test.get() != parent)
-		{
-			ModelInstance* model = dynamic_cast<ModelInstance*>(test.get());
-			if (model && !Humanoid::modelIsCharacter(model) && !model->findFirstChildOfType<PartInstance>() && !model->findFirstChildOfType<ModelInstance>())
 			{
-				boost::shared_ptr<Instance> oldParent = shared_from(model->getParent());
-				model->setParent(NULL);
-				clearEmptiedModels(oldParent, parent);
-			}
-
-			Flag* flag = dynamic_cast<Flag*>(test.get());
-			if (flag && !flag->findFirstChildOfType<PartInstance>())
-			{
-				boost::shared_ptr<Instance> oldParent = shared_from(flag->getParent());
-				flag->setParent(NULL);
-				clearEmptiedModels(oldParent, parent);
+				const XmlAttribute* nameRef = childElement->findAttribute(name_referent);
+				if (nameRef)
+					binder.announceID(nameRef, NULL);
 			}
 		}
 	}
 
-	void Workspace::handleFallenParts(const G3D::Array<boost::shared_ptr<PartInstance>>& fallenParts)
+	void Instance::readChildren(const XmlElement* element, IReferenceBinder& binder)
 	{
-		for (int i = 0; i < fallenParts.size(); i++)
+		if (element)
 		{
-			boost::shared_ptr<PartInstance> part = fallenParts[i];
-
-			boost::shared_ptr<Instance> oldParent = shared_from(part->getParent());
-			part->setParent(NULL);
-			clearEmptiedModels(oldParent, this);
+			for (const XmlElement* current = element->findFirstChildByTag(tag_Item); current != NULL; current = element->findNextChildWithSameTag(current))
+			{
+				readChild(current, binder);
+			}
 		}
 	}
 
-	void Workspace::setMouseCommand(MouseCommand* newMouseCommand)
+	void Instance::read(const XmlElement* element, IReferenceBinder& binder)
 	{
-		if (!newMouseCommand)
+		const XmlAttribute* nameRef = element->findAttribute(name_referent);
+		if (nameRef)
 		{
-			if (!stickyCommand.get() || (newMouseCommand = stickyCommand->isSticky(), !newMouseCommand))
+			binder.announceID(nameRef, this);
+		}
+
+		if (element->getTag() == tag_Item)
+		{
+			const XmlElement* properties = element->findFirstChildByTag(tag_Properties);
+			if (properties)
 			{
-				if (!Network::Players::findLocalPlayer(this))
-					newMouseCommand = new ArrowTool(this);
-				else
-					newMouseCommand = newNullTool(this);
+				readProperties(properties, binder);
+			}
+			readChildren(element, binder);
+		}
+		else
+		{
+			readProperty(element, binder);
+		}
+	}
+
+	void Instance::predelete(Instance* instance)
+	{
+		instance->predelete();
+	}
+
+	void Instance::predelete()
+	{
+		RBXASSERT(!parent);
+
+		while (children)
+		{
+			boost::shared_ptr<Instance> child;
+
+			{
+				boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> c = children.write();
+
+				child = c->back();
+
+				signalDescendentRemoving(child, this, NULL);
+
+				this->onChildRemoving(child.get());
+				child->parent = NULL;
+				c->pop_back();
+
+				if (c->empty())
+					children.reset();
+			}
+
+			event_childRemoved.fire(this, child);
+			Notifier<Instance, ChildRemoved>::raise(ChildRemoved(child.get()));
+
+			child->onAncestorChanged(AncestorChanged(child.get(), this, NULL));
+			child->raisePropertyChanged(propParent);
+		}
+	}
+
+	void Instance::onAncestorChanged(const AncestorChanged& event)
+	{
+		typedef std::vector<boost::shared_ptr<Instance>>::const_iterator Iterator;
+
+		if (children)
+		{
+			boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> r = children.read();
+
+			for (Iterator it = r->begin(); it != r->end(); it++)
+			{
+				(*it)->onAncestorChanged(event);
 			}
 		}
 
-		RBXASSERT(newMouseCommand);
+		event_ancestryChanged.fire(this, shared_from(event.child));
+		Notifier<Instance, AncestorChanged>::raise(event);
+	}
 
-		if (newMouseCommand != currentCommand.get())
+	void Instance::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
+	{
+		return;
+	}
+
+	bool Instance::contains(const Instance* child) const
+	{
+		for (; child != NULL; child = child->parent)
 		{
-			RBXASSERT(!currentCommand.get() || !currentCommand->captured());
+			if (child == this)
+				return true;
+		}
 
-			currentCommand.reset(newMouseCommand);
+		return false;
+	}
 
-			MouseCommand* sticky = newMouseCommand->isSticky();
-			if (sticky)
-				stickyCommand.reset(sticky);
+	boost::shared_ptr<Instance> Instance::createChild(const Name& className)
+	{
+		return AbstractFactoryProduct::create(className);
+	}
 
-			Notifier<Workspace, ToolChanged>::raise(ToolChanged());
+	int Instance::findChildIndex(const Instance* instance) const
+	{
+		RBXASSERT(children);
+
+		const std::vector<boost::shared_ptr<Instance>>& c = *children;
+
+		std::vector<boost::shared_ptr<Instance>>::const_iterator found = std::find(c.begin(), c.end(), instance->shared_from_this());
+		return (int)std::distance(c.begin(), found);
+	}
+
+	void Instance::writeChildren(XmlElement* container)
+	{
+		if (children)
+		{
+			const std::vector<boost::shared_ptr<Instance>>& c = *children;
+
+			for (std::vector<boost::shared_ptr<Instance>>::const_iterator it = c.begin(); it != c.end(); it++)
+			{
+				XmlElement* element = (*it)->write();
+				if (element)
+					container->pushBackChild(element);
+			}
 		}
 	}
 
-	float Workspace::step(float timeInterval)
+	Instance* Instance::findFirstChildByName(const std::string& findName) const
 	{
-		RBXASSERT(isSimulating);
-
-		timeInterval = world->step(timeInterval);
-		
-		G3D::Array<boost::shared_ptr<PartInstance>> touchParts;
-		G3D::Array<boost::shared_ptr<PartInstance>> touchOtherParts;
-		G3D::Array<Primitive*> fallen;
-		G3D::Array<boost::shared_ptr<PartInstance>> fallenParts;
-
-		PartInstance::primitivesToParts(world->getTouch(), touchParts);
-		PartInstance::primitivesToParts(world->getTouchOther(), touchOtherParts);
-		world->computeFallen(fallen);
-		PartInstance::primitivesToParts(fallen, fallenParts);
-		
-		handleFallenParts(fallenParts);
-
-		for (int i = 0; i < touchParts.size(); i++)
-		{
-			touchParts[i]->onTouchThisStep(touchOtherParts[i]);
-		}
-
-		raiseDrawChanged();
-		return timeInterval;
-	}
-
-	void Workspace::setDefaultMouseCommand()
-	{
-		stickyCommand.reset();
-		setMouseCommand(NULL);
-	}
-
-	void Workspace::runScript(Script* script, ScriptContext* context)
-	{
-		RBXASSERT(context == scriptContext);
-
-		if (Network::Players::backendProcessing(this, true) && !isSimulating)
-			pendingScripts.insert(script);
-		else
-			context->addScript(script);
-	}
-
-	void Workspace::releaseScript(Script* script)
-	{
-		pendingScripts.erase(script);
-	}
-
-	Workspace* Workspace::findWorkspace(const Instance* context)
-	{
-		return ServiceProvider::find<Workspace>(context);
-	}
-
-	Workspace* Workspace::getWorkspaceIfInWorkspace(const Instance* context)
-	{
-		Workspace* workspace = ServiceProvider::find<Workspace>(context);
-
-		if (workspace && (context == workspace || context->isDescendentOf(workspace)))
-			return workspace;
-		else
+		if (!children)
 			return NULL;
+
+		const std::vector<boost::shared_ptr<Instance>>& c = *children;
+
+		for (size_t i = 0; i < c.size(); i++)
+		{
+			if (c[i]->name == findName)
+				return c[i].get();
+		}
+
+		return NULL;
 	}
 
-	World* Workspace::getWorldIfInWorkspace(const Instance* context)
+	Instance* Instance::findFirstChildByNameRecursive(const std::string& findName) const
 	{
-		Workspace* workspace = ServiceProvider::find<Workspace>(context);
+		Instance* foundChild = findFirstChildByName(findName);
+		if (foundChild)
+			return foundChild;
 
-		if (workspace && (context == workspace || context->isDescendentOf(workspace)))
-			return workspace->getWorld();
-		else
+		if (!children)
 			return NULL;
-	}
 
-	bool Workspace::contextInWorkspace(const Instance* context)
-	{
-		return getWorkspaceIfInWorkspace(context) != NULL;
-	}
+		const std::vector<boost::shared_ptr<Instance>>& c = *children;
 
-	void Workspace::setCamera(Camera* value)
-	{
-		if (value != currentCamera.get())
+		for (size_t i = 0; i < c.size(); i++)
 		{
-			if (currentCamera)
-				currentCamera->setParent(NULL);
-
-			currentCamera = shared_from(value);
-			raisePropertyChanged(currentCameraProxyProp);
-		}
-	}
-
-	Workspace* Workspace::getMyWorkspaceFast(const Instance* context)
-	{
-		RBXASSERT(getWorldIfInWorkspace(context));
-
-		Instance* parent = context->getParent();
-		RBXASSERT(parent);
-
-		Instance* parent2 = parent->getParent();
-		RBXASSERT(parent2);
-
-		while (parent2->getParent())
-		{
-			parent = parent2;
-			parent2 = parent2->getParent();
+			Instance* child = c[i]->findFirstChildByNameRecursive(findName);
+			if (child)
+				return child;
 		}
 
-		return rbx_static_cast<Workspace*>(parent);
+		return NULL;
 	}
 
-	World* Workspace::getMyWorldFast(const Instance* context)
+	void Instance::signalDescendentAdded(Instance* instance, Instance* beginParent, Instance* oldParent)
 	{
-		return getMyWorkspaceFast(context)->getWorld();
-	}
-
-	//94% match
-	//std::set<>::clear is being inlined more aggressively
-	void Workspace::start()
-	{
-		RBXASSERT(!isSimulating);
-		isSimulating = true;
-
-		getCamera()->alwaysMode();
-
-		RBXASSERT(!getCurrentMouseCommand()->captured());
-
-		if (scriptContext)
+		for (Instance* parent = beginParent; parent != NULL; parent = parent->getParent())
 		{
-			std::vector<boost::shared_ptr<Script>> startScripts;
+			if (parent == oldParent || parent->isAncestorOf(oldParent))
+				break;
 
-			std::set<Script*>::const_iterator iter = pendingScripts.begin();
-			std::set<Script*>::const_iterator end = pendingScripts.end();
+			parent->onDescendentAdded(instance);
+		}
 
-			for (; iter != end; iter++)
+		boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> c = instance->children.read();
+
+		if (c)
+		{
+			for (std::vector<boost::shared_ptr<Instance>>::const_iterator iter = c->begin(); iter != c->end(); iter++)
 			{
-				startScripts.push_back(shared_from(*iter));
-			}
-
-			pendingScripts.clear();
-			std::for_each(startScripts.begin(), startScripts.end(), boost::bind(&ScriptContext::addScript, scriptContext, boost::bind(&boost::shared_ptr<Script>::get, _1)));
-		}
-	}
-
-	void Workspace::setImageServerView(const G3D::Rect2D& viewPortRect)
-	{
-		HopperBin* superHack = NULL;
-
-		for (size_t i = 0; i < numChildren(); i++)
-		{
-			HopperBin* hopperBin = queryTypedChild<HopperBin>((int)i);
-			ILocation* location = queryTypedChild<ILocation>((int)i);
-			IRenderable* renderable = queryTypedChild<IRenderable>((int)i);
-
-			if (location && renderable)
-			{
-				G3D::CoordinateFrame modelCoord = location->getLocation();
-				getCamera()->setImageServerViewNoLerp(modelCoord, viewPortRect); 
-			}
-
-			if (hopperBin)
-				superHack = hopperBin;
-		}
-
-		if (superHack)
-		{
-			StarterPackService* starterPack = ServiceProvider::create<StarterPackService>(this);
-			superHack->setParent(starterPack);
-		}
-
-		imageServerViewHack = (imageServerViewHack <= 0);
-	}
-
-	static void append(const boost::shared_ptr<Instance>& item, std::vector<boost::shared_ptr<Instance>>* values)
-	{
-		values->push_back(item);
-	}
-
-	boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> Workspace::insertContent(ContentId contentId)
-	{
-		std::vector<boost::shared_ptr<Instance>> items;
-		insertContent(contentId, items, INSERT_TO_TREE, SUPPRESS_PROMPTS);
-
-		boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> values(new std::vector<boost::shared_ptr<Instance>>);
-		std::for_each(items.begin(), items.end(), boost::bind(&append, _1, values.get()));
-
-		return values;
-	}
-
-	void Workspace::insertContent(ContentId contentId, std::vector<boost::shared_ptr<Instance>>& items, InsertMode insertMode, PromptMode promptMode)
-	{
-		std::auto_ptr<std::istream> stream = ContentProvider::singleton().getContent(contentId);
-
-		TextXmlParser machine(stream->rdbuf());
-		std::auto_ptr<XmlElement> root = machine.parse();
-
-		insertItems(root.get(), items, insertMode, promptMode);
-	}
-
-	void Workspace::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Notifier<RunService, Heartbeat>::disconnect(ServiceProvider::find<RunService>(oldProvider), this);
-
-		if (statsItem)
-		{
-			statsItem->setParent(NULL);
-			statsItem.reset();
-		}
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		scriptContext = ServiceProvider::create<ScriptContext>(newProvider);
-
-		if (Stats::Item* item = ServiceProvider::create<Stats::Item>(newProvider))
-		{
-			statsItem = Creatable::create<WorkspaceStatsItem>(this, world.get());
-			statsItem->setParent(item);
-		}
-
-		Notifier<RunService, Heartbeat>::connect(ServiceProvider::find<RunService>(newProvider), this);
-	}
-
-	static void DrawAdorn(boost::shared_ptr<Instance> wsi, Adorn* adorn, SelectState selectState, Workspace* workspace)
-	{
-		if (IRenderable* ir = dynamic_cast<IRenderable*>(wsi.get()))
-		{
-			if (workspace->contains(wsi.get()))
-			{
-				ir->render3dSelect(adorn, selectState);
+				signalDescendentAdded((*iter).get(), beginParent, oldParent);
 			}
 		}
 	}
 
-	void Workspace::render3dAdorn(Adorn* adorn)
+	void Instance::signalDescendentRemoving(const boost::shared_ptr<Instance>& instance, Instance* beginParent, Instance* newParent)
 	{
-		viewPort = adorn->getViewport();
-		ServiceClient<Selection> sel(this);
-
-		if (sel)
-			std::for_each(sel->getSelection()->begin(), sel->getSelection()->end(), boost::bind(&DrawAdorn, _1, adorn, SELECT_NORMAL, this));
-
-		render3dAdornItems(adorn);
-		if (showWorldCoord)
+		for (Instance* parent = beginParent; parent != NULL; parent = parent->getParent())
 		{
-			adorn->setObjectToWorldMatrix(G3D::CoordinateFrame());
-			adorn->axes(G3D::Color3::red(), G3D::Color3::green(), G3D::Color3::blue(), 50.0f);
+			if (parent == newParent || parent->isAncestorOf(newParent))
+				break;
+
+			parent->onDescendentRemoving(instance);
 		}
 
-		if (showHashGrid)
+		boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> c = instance->children.read();
+
+		if (c)
 		{
-			adorn->setObjectToWorldMatrix(G3D::CoordinateFrame());
-			adorn->box(G3D::AABox(G3D::Vector3(28, 4, 12), G3D::Vector3(32, 8, 16)), G3D::Color4(1.0, 0.2, 0.2, 0.5), G3D::Color4::clear());
+			for (std::vector<boost::shared_ptr<Instance>>::const_iterator iter = c->begin(); iter != c->end(); iter++)
+			{
+				signalDescendentRemoving((*iter), beginParent, newParent);
+			}
 		}
 	}
 
-	IScriptOwner* Workspace::scriptShouldRun(Script* script)
+	void Instance::readProperty(const XmlElement* propertyElement, IReferenceBinder& binder)
 	{
-		RBXASSERT(this->isAncestorOf(script));
+		const Name* value = NULL;
 
-		bool c;
-
-		if (!dynamic_cast<LocalScript*>(script))
+		if (propertyElement->findAttributeValue(name_name, value))
 		{
-			c = Network::Players::backendProcessing(this, true);
+			Reflection::PropertyIterator iter = findProperty(*value);
+
+			if (iter != properties_end())
+			{
+				(*iter).read(propertyElement, binder);
+			}
 		}
+	}
+
+	XmlElement* Instance::write()
+	{
+		if (archivable)
+		{
+			if (getClassName() != Name::getNullName())
+			{
+				XmlElement* element = new XmlElement(tag_Item);
+				element->addAttribute(tag_class, &getClassName());
+				element->addAttribute(name_referent, InstanceHandle(this));
+
+				writeProperties(element->addChild(tag_Properties));
+				writeChildren(element);
+
+				return element;
+			}
+		}
+
+		return new XmlElement(tag_External, InstanceHandle(this));
+	}
+  
+	void Instance::setParent(Instance* newParent)
+	{
+		if (newParent == parent)
+			return;
+
+		boost::shared_ptr<Instance> oldParent = shared_from(parent);
+		boost::shared_ptr<Instance> self = this->shared_from_this();
+
+		if (oldParent)
+		{
+			if (!oldParent->contains(newParent))
+				signalDescendentRemoving(self, oldParent.get(), newParent);
+
+			oldParent->onChildRemoving(this);
+
+			boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& c = oldParent->children.write();
+			c->erase(std::find(c->begin(), c->end(), self));
+
+			if (c->empty())
+				oldParent->children.reset();
+
+			parent = NULL;
+
+			event_childRemoved.fire(oldParent.get(), self);
+			oldParent->Notifier<Instance, ChildRemoved>::raise(ChildRemoved(this));
+
+			oldParent->onChildRemoved(this);
+
+			if (oldParent->numChildren() == 0)
+				oldParent->onLastChildRemoved();
+		}
+
+		if (newParent)
+		{
+			newParent->children.write()->push_back(self);
+		}
+
+		parent = newParent;
+
+		if (newParent)
+		{
+			newParent->onChildAdded(this);
+
+			if (!newParent->contains(oldParent.get()))
+				signalDescendentAdded(this, newParent, oldParent.get());
+
+			newParent->Notifier<Instance, ChildAdded>::raise(ChildAdded(this));
+			event_childAdded.fire(newParent, self);
+		}
+
+		onAncestorChanged(AncestorChanged(this, oldParent.get(), newParent));
+		raisePropertyChanged(propParent);
+	}
+
+	void Instance::writeProperties(XmlElement* container) const
+	{
+		for (Reflection::ConstPropertyIterator iter = this->properties_begin(); iter != this->properties_end(); ++iter)
+		{
+			const Reflection::PropertyDescriptor& descriptor = (*iter).getDescriptor();
+			XmlElement* element = descriptor.write(this, false);
+			if (element)
+				container->addChild(element);
+		}
+	}
+
+	boost::shared_ptr<Instance> Instance::fromXmlRoot(XmlElement* xmlRoot)
+	{		
+		SerializerV2::isolateHandles(xmlRoot);
+
+		Serializer serializer;
+		std::vector<boost::shared_ptr<Instance>> newInstances;
+		serializer.loadInstances(xmlRoot, newInstances);
+
+		if (newInstances.empty())
+			return boost::shared_ptr<Instance>();
 		else
-		{
-			ModelInstance* character = Network::Players::findLocalCharacter(this);
-			c = (character && script->isDescendentOf(character));
-		}
-
-		return c ? this : NULL;
+			return newInstances.front();
 	}
 
-	GuiResponse Workspace::process(const GuiEvent& event)
+	XmlElement* Instance::toNewXmlRoot(Instance* instance) // this is a guess
 	{
-		RBXASSERT(currentCommand.get());
-
-		switch (event.eventType)
-		{
-		case UIEvent::KEY_DOWN:
-			currentCommand->onPeekKeyDown(event);
-			if (!currentCommand->captured())
-				return GuiResponse::notUsed();
-
-			setMouseCommand(currentCommand->onKeyDown(event));
-			break;
-
-		case UIEvent::MOUSE_RIGHT_BUTTON_DOWN:
-			inMouselookMode = true;
-			event.userInput->setWrapMode(UserInputBase::WRAP_CENTER);
-			break;
-
-		case UIEvent::MOUSE_RIGHT_BUTTON_UP:
-			inMouselookMode = false;
-			event.userInput->setWrapMode(UserInputBase::WRAP_AUTO);
-			break;
-
-		case UIEvent::MOUSE_LEFT_BUTTON_DOWN:
-			if (!currentCommand->captured())
-				setMouseCommand(currentCommand->onMouseDown(event));
-			break;
-
-		case UIEvent::MOUSE_MOVE:
-			if (currentCommand->captured())
-				currentCommand->onMouseMove(event);
-			else
-				currentCommand->onMouseHover(event);
-
-			break;
-
-		case UIEvent::MOUSE_DELTA:
-			if (currentCommand->captured())
-				currentCommand->onMouseDelta(event);
-			break;
-
-		case UIEvent::MOUSE_LEFT_BUTTON_UP:
-			setMouseCommand(currentCommand->onMouseUp(event));
-			break;
-
-		default:
-			return GuiResponse::notUsed();
-		}
-
-		if (event.isMouseEvent())
-		{
-			idleMouseEvent = event;
-			idleMouseEvent.eventType = UIEvent::MOUSE_IDLE;
-		}
-
-		RBXASSERT(currentCommand.get());
-
-		return GuiResponse::used(currentCommand->captured() ? this : NULL);
+		XmlElement* root = SerializerV2::newRootElement();
+		root->addChild(instance->write());
+		return root;
 	}
 
-	// 98% match
-	void Workspace::onEvent(const RunService* source, Heartbeat event)
+	boost::shared_ptr<Instance> Instance::clone()
 	{
-		onMovingHeartbeat();
-		
-		RBXASSERT(currentCommand.get());
-		if (idleMouseEvent.eventType == UIEvent::MOUSE_IDLE)
-			currentCommand->onMouseIdle(idleMouseEvent);
-
-		if (Network::Players::findLocalCharacter(this))
-			return;
-
-		ControllerService* controllerService = ServiceProvider::find<ControllerService>(this);
-		if (!controllerService)
-			return;
-
-		UserInputBase* device = controllerService->getHardwareDevice();
-		if (!device)
-			return;
-
-		RBXASSERT(getCamera() != NULL);
-
-		bool F = device->keyDown(SDLK_UP) || device->keyDown(SDLK_w);
-		bool B = device->keyDown(SDLK_DOWN) || device->keyDown(SDLK_s);
-		bool L = device->keyDown(SDLK_LEFT) || device->keyDown(SDLK_a);
-		bool R = device->keyDown(SDLK_RIGHT) || device->keyDown(SDLK_d);
-
-		if (F || B || R || L)
-		{
-			G3D::CoordinateFrame current = getCamera()->getCameraCoordinateFrame();
-			getCamera();
-			G3D::Vector3 look = current.getLookVector();
-			G3D::Vector3 right = current.getRightVector();
-
-			G3D::Vector3 move(0.0f, 0.0f, 0.0f);
-
-			if (F)
-				move += look * 2.0f;
-
-			if (B)
-				move -= look * 2.0f;
-
-			if (R)
-				move += right * 2.0f;
-
-			if (L)
-				move -= right * 2.0f;
-
-			current.translation += move;
-			getCamera()->setCameraType(Camera::FIXED_CAMERA);
-			getCamera()->setCameraCoordinateFrameNoLerp(current);
-			getCamera()->setCameraFocus(G3D::CoordinateFrame(look * 20.0f + current.translation));
-		}
-	}
-
-	static double getFPS(Profiling::CodeProfiler* profiler)
-	{
-		return profiler->getData(3.0).getActualFPS();
-	}
-
-	WorkspaceStatsItem::WorkspaceStatsItem(const Workspace* workspace, const World* world)
-	{
-		setName("Workspace");
-
-		createChildItem<double>("FPS", boost::bind(&getFPS, workspace->profileWorkspaceStep.get()));
-		createBoundChildItem(*workspace->profileRun);
-
-		Stats::Item* pWorkspaceStep = createBoundChildItem(*workspace->profileWorkspaceStep);
-		Stats::Item* pWorldStep = pWorkspaceStep->createBoundChildItem(world->getProfileWorldStep());
-
-		pWorldStep->createBoundChildItem(world->getProfileUiStep());
-		pWorldStep->createBoundChildItem(world->getProfileBroadphase());
-		pWorldStep->createBoundChildItem(*world->getCollisionStage()->profilingCollision);
-		pWorldStep->createBoundChildItem(*world->getSleepStage()->profilingSleep);
-		pWorldStep->createBoundChildItem(*world->getKernel().profilingKernel);
-
-		pWorkspaceStep->createBoundChildItem(*workspace->profileRunServiceStepped);
-		pWorkspaceStep->createBoundChildItem(*workspace->profileRunServiceHeartbeat);
-
-		Stats::Item* pWorld = createChildItem("World");
-		pWorld->createChildItem<int>("Primitives", boost::bind(&World::getNumPrimitives, world));
-		pWorld->createChildItem<int>("Joints", boost::bind(&World::getNumJoints, world));
-		pWorld->createChildItem<int>("Contacts", boost::bind(&World::getNumContacts, world));
-		
-		Stats::Item* pContacts = createChildItem("Contacts");
-		pContacts->createChildItem<int>("CtctStageCtcts", boost::bind(&World::getMetric, world, IWorldStage::NUM_CONTACTSTAGE_CONTACTS));
-		pContacts->createChildItem<int>("SteppingCtcts", boost::bind(&World::getMetric, world, IWorldStage::NUM_STEPPING_CONTACTS));
-		pContacts->createChildItem<int>("TouchingCtcts", boost::bind(&World::getMetric, world, IWorldStage::NUM_TOUCHING_CONTACTS));
-		pContacts->createChildItem<int>("MaxTreeDepth", boost::bind(&World::getMetric, world, IWorldStage::MAX_TREE_DEPTH));
-		pContacts->createChildItem<int>("# link(p)", boost::bind(&World::getNumLinkCalls, world));
-		pContacts->createChildItem<int>("Hash Nodes Out", boost::bind(&World::getNumHashNodes, world));
-		pContacts->createChildItem<int>("Max Bucket Size", boost::bind(&World::getMaxBucketSize, world));
-
-		Stats::Item* pKernel = createChildItem("Kernel");
-		pKernel->createChildItem<int>("Bodies", boost::bind(&World::getNumBodies, world));
-		pKernel->createChildItem<int>("Constraints", boost::bind(&World::getNumConstraints, world));
-		pKernel->createChildItem<int>("Points", boost::bind(&World::getNumPoints, world));
+		boost::scoped_ptr<XmlElement> root(toNewXmlRoot(this));
+		return fromXmlRoot(root.get());
 	}
 }

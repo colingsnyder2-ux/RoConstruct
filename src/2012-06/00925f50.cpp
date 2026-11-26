@@ -1,31 +1,24 @@
-// from server: 34% by atomic.potato
-struct StepJointsStage {
-    void* vfptr;
-    int field_4;
-    void* field_8;
-    void* field_c;
-    StepJointsStage* ctor(void* a, void* b);
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ??0C@@QAE@PAUA@@PAUB@@@Z)
+
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct A; struct B; class C;
+struct T {
+    char d[0x10];
+    T(C* owner, B* b);
 };
-
-struct Helper {
-    void init(void* a, void* b);
+struct Base {
+    A* a;
+    T* obj;
+    B* b;
+    Base(A* a, T* obj, B* b) : a(a), obj(obj), b(b) {}
 };
-
-extern "C" void* __cdecl func_0098211a(unsigned int size);
-
-StepJointsStage* StepJointsStage::ctor(void* a, void* b)
-{
-    void* mem = func_0098211a(0x10);
-    void* obj;
-    if (mem) {
-        ((Helper*)mem)->init(this, b);
-        obj = mem;
-    } else {
-        obj = 0;
-    }
-    this->field_4 = (int)a;
-    this->field_c = b;
-    this->field_8 = obj;
-    this->vfptr = (void*)0xbfae70;
-    return this;
-}
+class C : public Base {
+public:
+    C(A* a, B* b);
+    virtual ~C();
+};
+C::C(A* a, B* b) : Base(a, new T(this, b), b) {}

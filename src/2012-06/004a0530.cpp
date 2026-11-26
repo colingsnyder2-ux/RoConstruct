@@ -1,24 +1,23 @@
-// from server: 38% by atomic.potato
-struct S_func_004f3c90 {
-    char pad0[88];
-    int m_x;
-    int* f();
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?fn_ROCX000003_00463f10@CScriptEditor@ns_ROCX000003@@QAEXXZ)
+
+namespace ns_ROCX000003 {
+struct Control {
+    int fn_ROCX000003_00460120(int direct);
+    int fn_ROCX000003_00460c10(int position, int direct);
+    void fn_ROCX000003_00460400(int position, int anchor, int direct);
 };
 
-struct S_func_004a0530 {
-    int f();
+struct CScriptEditor {
+    int* fn_ROCX000003_004613d0();
+    void fn_ROCX000003_00463f10();
 };
 
-int* S_func_004f3c90::f()
+void CScriptEditor::fn_ROCX000003_00463f10()
 {
-    return &m_x;
+    Control* control = reinterpret_cast<Control*>(fn_ROCX000003_004613d0());
+    int position = control->fn_ROCX000003_00460120(1);
+    position = control->fn_ROCX000003_00460c10(position, 1);
+    control->fn_ROCX000003_00460400(position, 0, 1);
 }
-
-int S_func_004a0530::f()
-{
-    S_func_004f3c90* p = (S_func_004f3c90*)0x4f3c90;
-    int* q = p->f();
-    int a = ((int (__thiscall*)(void*, int))0x49ca30)(q, 1);
-    int b = ((int (__thiscall*)(void*, int, int))0x49d560)(q, a, 1);
-    return ((int (__thiscall*)(void*, int, int, int))0x49cda0)(q, b, 0, 1);
 }

@@ -1,20 +1,21 @@
-// from server: 77% by Intel
-extern "C" void __cdecl func_004015a0(int, int);
-extern "C" void __cdecl func_009831f5(int);
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?getInstance@@YAAAV?$shared_ptr@VItem@@@boost@@XZ)
 
-char byte_00E4A498;
-int dword_00E4A490;
-int dword_00E4A494;
-
-int func_007A1B20()
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+namespace boost {
+struct once_flag { long state; };
+void call_once(once_flag& flag, void (*f)());
+template<class T> class shared_ptr { public: T* px; void* pn; shared_ptr() : px(0), pn(0) {} ~shared_ptr(); };
+}
+class Item;
+static boost::shared_ptr<Item>& instance() { static boost::shared_ptr<Item> sp; return sp; }
+static void initInstance() { instance(); }
+static boost::once_flag flag;
+boost::shared_ptr<Item>& getInstance()
 {
-    func_004015a0(0xE4A49C, 0x7A1AF0);
-    if (byte_00E4A498)
-        return 0xE4A490;
-
-    byte_00E4A498 = 1;
-    dword_00E4A490 = 0;
-    dword_00E4A494 = 0;
-    func_009831f5(0xB1BEF0);
-    return 0xE4A490;
+    boost::call_once(flag, &initInstance);
+    return instance();
 }

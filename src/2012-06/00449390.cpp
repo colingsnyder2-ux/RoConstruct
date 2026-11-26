@@ -1,85 +1,36 @@
-// from server: 50% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: xtp-15.2.1 Source/Controls/Tree/XTPTreeCtrlView.cpp
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ??1CClassTreeView@ns_ROCX00002f@@UAE@XZ)
 
-// Candidate translation unit (score above; library headers required).
-// XTPTreeCtrl.cpp : implementation file
-//
-// This file is a part of the XTREME CONTROLS MFC class library.
-// (c)1998-2011 Codejock Software, All Rights Reserved.
-//
-// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
-// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
-// CONSENT OF CODEJOCK SOFTWARE.
-//
-// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
-// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
-// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
-// SINGLE COMPUTER.
-//
-// CONTACT INFORMATION:
-// support@codejock.com
-// http://www.codejock.com
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#include "stdafx.h"
-
-#include "XTPTreeBase.h"
-#include "XTPTreeCtrlView.h"
-
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
-
-
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTPTreeView
-
-CXTPTreeView::CXTPTreeView()
+namespace ns_ROCX00002f {
+struct Primary
 {
-	m_pTreeCtrl = (CTreeCtrl_Friendly*)&GetTreeCtrl();
+    virtual ~Primary();
+    char padding[0x5c];
+};
 
-}
+struct Secondary
+{
+    virtual ~Secondary();
+    char padding[0x3c];
+};
 
-CXTPTreeView::~CXTPTreeView()
+struct Base : Primary, Secondary
+{
+    virtual ~Base();
+};
+
+struct Member
+{
+    ~Member();
+};
+
+struct CClassTreeView : Base
+{
+    Member member;
+    virtual ~CClassTreeView();
+};
+
+CClassTreeView::~CClassTreeView()
 {
 }
-
-IMPLEMENT_DYNCREATE(CXTPTreeView, CTreeView)
-
-BEGIN_MESSAGE_MAP(CXTPTreeView, CTreeView)
-	//{{AFX_MSG_MAP(CXTPTreeView)
-	ON_TREECTRL_REFLECT()
-	//}}AFX_MSG_MAP
-END_MESSAGE_MAP()
-
-
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTPTreeCtrl
-
-CXTPTreeCtrl::CXTPTreeCtrl()
-{
-	m_pTreeCtrl = (CTreeCtrl_Friendly*)this;
 }
-
-CXTPTreeCtrl::~CXTPTreeCtrl()
-{
-}
-
-IMPLEMENT_DYNAMIC(CXTPTreeCtrl, CTreeCtrl)
-
-BEGIN_MESSAGE_MAP(CXTPTreeCtrl, CTreeCtrl)
-	//{{AFX_MSG_MAP(CXTPTreeCtrl)
-	ON_TREECTRL_REFLECT()
-	//}}AFX_MSG_MAP
-END_MESSAGE_MAP()
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTPTreeCtrl message handlers

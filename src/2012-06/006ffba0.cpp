@@ -1,154 +1,151 @@
-// from server: 40% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O1 /Ob2 /Oy /GS- /EHsc /MD
-// roc-lib: rbxgs util/boost.cpp
+// from server: 100% by Xemicl
+// roc 2012-06 006ffba0  unit: RBX::VInstance::$$A6AXV?$shared_ptr::?$signal::Vslot::?$callable  size: 144 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 006ffba0
+//
+// 006ffba0  6aff                 push -1
+// 006ffba2  68f6d1ab00           push 0xabd1f6
+// 006ffba7  64a100000000         mov eax, dword ptr fs:[0]
+// 006ffbad  50                   push eax
+// 006ffbae  64892500000000       mov dword ptr fs:[0], esp
+// 006ffbb5  51                   push ecx
+// 006ffbb6  8b442414             mov eax, dword ptr [esp + 0x14]
+// 006ffbba  56                   push esi
+// 006ffbbb  8bf1                 mov esi, ecx
+// 006ffbbd  8b08                 mov ecx, dword ptr [eax]
+// 006ffbbf  890e                 mov dword ptr [esi], ecx
+// 006ffbc1  8b5004               mov edx, dword ptr [eax + 4]
+// 006ffbc4  895604               mov dword ptr [esi + 4], edx
+// 006ffbc7  8b4808               mov ecx, dword ptr [eax + 8]
+// 006ffbca  89742404             mov dword ptr [esp + 4], esi
+// 006ffbce  894e08               mov dword ptr [esi + 8], ecx
+// 006ffbd1  85c9                 test ecx, ecx
+// 006ffbd3  740c                 je 0x6ffbe1
+// 006ffbd5  83c104               add ecx, 4
+// 006ffbd8  ba01000000           mov edx, 1
+// 006ffbdd  f00fc111             lock xadd dword ptr [ecx], edx
+// 006ffbe1  8b480c               mov ecx, dword ptr [eax + 0xc]
+// 006ffbe4  894e0c               mov dword ptr [esi + 0xc], ecx
+// 006ffbe7  8b5010               mov edx, dword ptr [eax + 0x10]
+// 006ffbea  895610               mov dword ptr [esi + 0x10], edx
+// 006ffbed  8b4814               mov ecx, dword ptr [eax + 0x14]
+// 006ffbf0  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 006ffbf8  894e14               mov dword ptr [esi + 0x14], ecx
+// 006ffbfb  85c9                 test ecx, ecx
+// 006ffbfd  740c                 je 0x6ffc0b
+// 006ffbff  83c104               add ecx, 4
+// 006ffc02  ba01000000           mov edx, 1
+// 006ffc07  f00fc111             lock xadd dword ptr [ecx], edx
+// 006ffc0b  83c018               add eax, 0x18
+// 006ffc0e  50                   push eax
+// 006ffc0f  8d4e18               lea ecx, [esi + 0x18]
+// 006ffc12  c644241401           mov byte ptr [esp + 0x14], 1
+// 006ffc17  e8c4f6ffff           call 0x6ff2e0
+// 006ffc1c  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 006ffc20  8bc6                 mov eax, esi
+// 006ffc22  5e                   pop esi
+// 006ffc23  64890d00000000       mov dword ptr fs:[0], ecx
+// 006ffc2a  83c410               add esp, 0x10
+// 006ffc2d  c20400               ret 4
+// copied from an identical function in another client (function ??0S@ns_ROCX00000c@@QAE@ABU01@@Z)
 
-// Candidate translation unit (score above; library headers required).
-#include "util/boost.hpp"
-#include "util/standardout.h"
-#include "util/Debug.h"
-#include <boost/bind.hpp>
-#include <windows.h>
-#include <boost/thread/tss.hpp>
-#include <boost/thread/once.hpp>
+namespace ns_ROCX00000c {
+// from server: 100% by king_originala
+// roc 2008-06 00589cd0  unit: RBX::VChangeHistoryService::?$FactoryProduct  size: 144 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 00589cd0
+//
+// 00589cd0  6aff                 push -1
+// 00589cd2  6856157d00           push 0x7d1556
+// 00589cd7  64a100000000         mov eax, dword ptr fs:[0]
+// 00589cdd  50                   push eax
+// 00589cde  64892500000000       mov dword ptr fs:[0], esp
+// 00589ce5  51                   push ecx
+// 00589ce6  8b442414             mov eax, dword ptr [esp + 0x14]
+// 00589cea  56                   push esi
+// 00589ceb  8bf1                 mov esi, ecx
+// 00589ced  8b08                 mov ecx, dword ptr [eax]
+// 00589cef  890e                 mov dword ptr [esi], ecx
+// 00589cf1  8b5004               mov edx, dword ptr [eax + 4]
+// 00589cf4  895604               mov dword ptr [esi + 4], edx
+// 00589cf7  8b4808               mov ecx, dword ptr [eax + 8]
+// 00589cfa  89742404             mov dword ptr [esp + 4], esi
+// 00589cfe  894e08               mov dword ptr [esi + 8], ecx
+// 00589d01  85c9                 test ecx, ecx
+// 00589d03  740c                 je 0x589d11
+// 00589d05  83c104               add ecx, 4
+// 00589d08  ba01000000           mov edx, 1
+// 00589d0d  f00fc111             lock xadd dword ptr [ecx], edx
+// 00589d11  8b480c               mov ecx, dword ptr [eax + 0xc]
+// 00589d14  894e0c               mov dword ptr [esi + 0xc], ecx
+// 00589d17  8b5010               mov edx, dword ptr [eax + 0x10]
+// 00589d1a  895610               mov dword ptr [esi + 0x10], edx
+// 00589d1d  8b4814               mov ecx, dword ptr [eax + 0x14]
+// 00589d20  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 00589d28  894e14               mov dword ptr [esi + 0x14], ecx
+// 00589d2b  85c9                 test ecx, ecx
+// 00589d2d  740c                 je 0x589d3b
+// 00589d2f  83c104               add ecx, 4
+// 00589d32  ba01000000           mov edx, 1
+// 00589d37  f00fc111             lock xadd dword ptr [ecx], edx
+// 00589d3b  83c018               add eax, 0x18
+// 00589d3e  50                   push eax
+// 00589d3f  8d4e18               lea ecx, [esi + 0x18]
+// 00589d42  c644241401           mov byte ptr [esp + 0x14], 1
+// 00589d47  e8c4f4ffff           call 0x589210
+// 00589d4c  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 00589d50  8bc6                 mov eax, esi
+// 00589d52  5e                   pop esi
+// 00589d53  64890d00000000       mov dword ptr fs:[0], ecx
+// 00589d5a  83c410               add esp, 0x10
+// 00589d5d  c20400               ret 4
 
-namespace RBX
+extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+#pragma intrinsic(_InterlockedExchangeAdd)
+
+__forceinline void increment(volatile long* references)
 {
-	namespace boost_detail
-	{
-		boost::thread_specific_ptr<std::string>* foo;
-		
-		boost::once_flag once_init_foo = BOOST_ONCE_INIT;
-		void init_foo()
-		{
-			static boost::thread_specific_ptr<std::string> value;
-			foo = &value;
-		}
+    _InterlockedExchangeAdd(references, 1);
+}
 
-		void set_foo(std::string* value)
-		{
-			boost::call_once(&boost_detail::init_foo, boost_detail::once_init_foo);
-			boost_detail::foo->reset(value);
-		}
-	}
+struct Control {
+    long reserved;
+    volatile long references;
+};
 
-	// Thread name stuff based on https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/xcb2z8hs(v=vs.90)
-	static bool nameThreads = true;
+struct Shared {
+    void* pointer;
+    Control* control;
 
-	typedef struct tagTHREADNAME_INFO
-	{
-		DWORD dwType;
-		LPCSTR szName;
-		DWORD dwThreadID;
-		DWORD dwFlags;
-	} THREADNAME_INFO;
+    Shared(const Shared& other);
+    ~Shared();
+};
 
-	void SetThreadName(DWORD dwThreadID, LPCSTR szThreadName)
-	{
-		THREADNAME_INFO info;
-		info.dwType = 0x1000;
-		info.szName = szThreadName;
-		info.dwThreadID = dwThreadID;
-		info.dwFlags = 0;
+__forceinline Shared::Shared(const Shared& other)
+    : pointer(other.pointer), control(other.control)
+{
+    if (control)
+        increment(&control->references);
+}
 
-		__try
-		{
-			if (nameThreads)
-				RaiseException(0x406D1388, 0, sizeof(info)/sizeof(ULONG_PTR), (ULONG_PTR*)&info);
-		}
-		__except (EXCEPTION_CONTINUE_EXECUTION)
-		{
-		}
-	}
+struct Tail {
+    Tail(const Tail& other);
+};
 
-	void set_thread_name(const char* name)
-	{
-		boost_detail::set_foo(new std::string(name));
-		SetThreadName(GetCurrentThreadId(), name);
-	}
+struct S {
+    long first;
+    Shared firstShared;
+    long second;
+    Shared secondShared;
+    Tail tail;
 
-	class ThreadPrioritySetter
-	{
-	private:
-		const int old;
-		bool success;
-	  
-	public:
-		ThreadPrioritySetter(int priority)
-			: old(GetThreadPriority(GetCurrentThread())),
-			  success(SetThreadPriority(GetCurrentThread(), priority) == TRUE)
-		{
-		}
-		~ThreadPrioritySetter()
-		{
-			if (success)
-				SetThreadPriority(GetCurrentThread(), old);
-		}
-	};
+    S(const S& other);
+};
 
-	void run_in_background(const boost::function0<void>& threadfunc, std::string name)
-	{
-		try
-		{
-			set_thread_name(name.c_str());
-
-			{
-				ThreadPrioritySetter set(THREAD_PRIORITY_BELOW_NORMAL);
-				threadfunc();
-			}
-		}
-		catch (std::exception& ex)
-		{
-			StandardOut::singleton()->print(MESSAGE_ERROR, "Crashed via C++ exception in run_in_background:", ex.what());
-			RBXASSERT(false);
-		}
-	}
-
-	boost::function0<void> background_function(const boost::function0<void>& threadfunc, const char* name)
-	{
-		return boost::bind(&run_in_background, threadfunc, std::string(name));
-	}
-
-	worker_thread::worker_thread(const boost::function0<enum work_result>& work_function, const char* name)
-		: _data(new data()),
-		  thread(background_function(boost::bind(&threadProc, _data, work_function), name))
-	{
-	}
-
-	worker_thread::~worker_thread()
-	{
-		boost::mutex::scoped_lock scoped_lock(_data->sync);
-		_data->endRequest = true;
-		_data->wakeCondition.notify_all();
-	}
-
-	void worker_thread::join()
-	{
-		{
-			boost::mutex::scoped_lock scoped_lock(_data->sync);
-			_data->endRequest = true;
-			_data->wakeCondition.notify_all();
-		}
-
-		thread.join();
-	}
-
-	void worker_thread::wake()
-	{
-		boost::mutex::scoped_lock scoped_lock(_data->sync);
-		_data->wakeCondition.notify_all();
-	}
-
-	void worker_thread::threadProc(boost::shared_ptr<data> data, const boost::function0<enum work_result>& work_function)
-	{
-		while (!data->endRequest)
-		{
-			if (work_function() != more)
-			{
-				boost::mutex::scoped_lock scoped_lock(data->sync);
-				data->wakeCondition.wait(scoped_lock);	
-			}
-		}
-	}
+S::S(const S& other)
+    : first(other.first),
+      firstShared(other.firstShared),
+      second(other.second),
+      secondShared(other.secondShared),
+      tail(other.tail)
+{
+}
 }

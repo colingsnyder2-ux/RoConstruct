@@ -1,17 +1,36 @@
-// from server: 66% by atomic.potato
-struct MechToAssemblyStage {
-    char pad0[8];
-    void* field8;
-    void method(void* arg);
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?f@S@@QAEXPAUPrimitive@@@Z)
+
+// from server: 100% by EspClaude
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Primitive;
+struct Stage {
+    void g(Primitive* a1);
+    void h(Primitive* a1);
+};
+typedef void (Stage::*StageFn)(Primitive*);
+
+struct Functor { StageFn fn; Stage* s; Functor(StageFn f, Stage* p) { s = p; fn = f; } };
+struct Prims {
+    void visit(Functor fn);
 };
 
-extern "C" void (__thiscall *sub_954CC0)(void*, void*);
-extern "C" void __stdcall sub_925B80(void*, void*);
-extern "C" void __stdcall sub_917560(void*, void*);
+struct Primitive {
+    char pad0[8];
+    Prims prims;
+    void detach(void* a1);
+};
 
-void MechToAssemblyStage::method(void* arg) {
-    void* p = field8;
-    sub_954CC0((void*)0x925bc0, (char*)arg + 8);
-    sub_925B80(field8, arg);
-    sub_917560(arg, this);
+struct S {
+    char pad0[8];
+    Stage* m_p;
+    void f(Primitive* a1);
+};
+
+void S::f(Primitive* a1)
+{
+    a1->prims.visit(Functor(&Stage::g, m_p));
+    m_p->h(a1);
+    a1->detach(this);
 }

@@ -1,67 +1,39 @@
-// from server: 55% by colin
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ??$create@VTarget004bb620@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VTarget004bb620@RBX@@@boost@@XZ)
+
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/regex/src/usinstances.cpp
-
-// Candidate translation unit (score above; library headers required).
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
- */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE:        winstances.cpp
-  *   VERSION:     see <boost/version.hpp>
-  *   DESCRIPTION: regex unsigned short template instances (MSVC only).
-  */
-
-#define BOOST_REGEX_SOURCE
-
-#include <boost/regex/config.hpp>
-
-#if !defined(BOOST_NO_WREGEX) && defined(BOOST_REGEX_HAS_OTHER_WCHAR_T) && !defined(BOOST_REGEX_NO_EXTERNAL_TEMPLATES)
-#define BOOST_REGEX_US_INSTANTIATE
-
-#ifdef _DLL_CPPLIB
-#include <boost/detail/workaround.hpp>
-//
-// This is a horrible workaround, without declaring these symbols extern we get
-// duplicate symbol errors when linking if the application is built without
-// /Zc:wchar_t
-//
-namespace std{
-template _CRTIMP2 bool __cdecl operator==(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-template _CRTIMP2 bool __cdecl operator==(
-   const unsigned short *,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-template _CRTIMP2 bool __cdecl operator==(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const unsigned short *);
-template _CRTIMP2 bool __cdecl operator<(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-template _CRTIMP2 bool __cdecl operator>(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-#if BOOST_WORKAROUND(BOOST_MSVC, > 1300) && BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1400))
-template<> _CRTIMP2 std::size_t __cdecl char_traits<unsigned short>::length(unsigned short const*);
-#endif
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+typedef unsigned int size_t;
+extern "C" void* __cdecl malloc(size_t);
+extern "C" void __cdecl free(void*);
+namespace boost {
+namespace detail { class shared_count { public: void* pi_; ~shared_count(); }; }
+template<class T> class shared_ptr {
+public:
+    T* px; detail::shared_count pn;
+    template<class Y, class D> shared_ptr(Y* p, D d);
+};
 }
-#endif
-
-
-#include <boost/regex.hpp>
-
-#endif
-
-
+namespace RBX {
+class Object { public: virtual ~Object() {} };
+template<class T> class Creatable : public Object {
+public:
+    class Deleter { public: void operator()(T* instance) { T::predelete(instance); delete instance; } };
+    template<class U> static boost::shared_ptr<U> create() { return boost::shared_ptr<U>(new U(), Deleter()); }
+protected:
+    Creatable() {}
+    virtual ~Creatable() {}
+    static void* operator new(size_t size) { return malloc(size); }
+    static void operator delete(void* p) { free(p); }
+};
+class Instance : public Creatable<Instance> {
+public:
+    static void predelete(Instance*);
+protected:
+    Instance();
+};
+class Target004bb620 : public Instance { public: Target004bb620(); char padB[0xe0 - 4]; };
+template boost::shared_ptr<Target004bb620> Creatable<Instance>::create<Target004bb620>();
+}

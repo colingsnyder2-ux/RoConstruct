@@ -1,18 +1,35 @@
-// from server: 59% by atomic.potato
-struct Inner {
-    char pad[8];
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?f@S@ns_ROCX00000b@@QAEXPAUPrimitive@2@@Z)
+
+namespace ns_ROCX00000b {
+// from server: 100% by EspClaude
+struct Primitive;
+struct Stage {
+    void f(Primitive* a1);
+};
+typedef void (Stage::*StageFn)(Primitive*);
+
+struct Functor { StageFn fn; Stage* s; Functor(StageFn f, Stage* p) : fn(f), s(p) {} };
+struct Prims {
+    void visit(Functor fn);
 };
 
-struct Outer {
-    char pad[8];
-    Inner* inner;
+struct Primitive {
+    char pad0[8];
+    Prims prims;
+    void attach(void* a1);
 };
 
-struct A { void f(Outer* arg); };
+struct S {
+    char pad0[8];
+    Stage* m_p;
+    void f(Primitive* a1);
+};
 
-void A::f(Outer* arg)
+void S::f(Primitive* a1)
 {
-    ((void(__thiscall*)(void*, Outer*))0x917430)(arg, (Outer*)this);
-    ((void(__thiscall*)(Inner*, Outer*))0x925c70)(((Outer*)this)->inner, arg);
-    ((void(__thiscall*)(void*, void*, Inner*))0x954cc0)((char*)arg + 8, (void*)0x925c10, ((Outer*)this)->inner);
+    a1->attach(this);
+    m_p->f(a1);
+    a1->prims.visit(Functor(&Stage::f, m_p));
+}
 }

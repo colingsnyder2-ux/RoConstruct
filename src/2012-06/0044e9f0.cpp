@@ -1,16 +1,52 @@
-// from server: 55% by Intel
-struct Vout_of_range {
-    void U_error_info_injector_clone_impl();
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?rethrow@?$clone_impl@U?$error_info_injector@Ubad_year@gregorian@boost@@@exception_detail@boost@@@exception_detail@boost@@EBEXXZ)
+
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <stdexcept>
+#include <string>
+namespace boost {
+namespace exception_detail { class error_info_container; }
+class exception {
+protected:
+    exception() throw();
+    exception(exception const&) throw();
+    virtual ~exception() throw() = 0;
+private:
+    exception_detail::error_info_container* data_;
+    char const* throw_function_;
+    char const* throw_file_;
+    int throw_line_;
 };
-
-extern "C" void __stdcall sub_44D8D0(void* thisptr);
-extern "C" void __cdecl sub_983144(int, void*, int);
-
-void Vout_of_range::U_error_info_injector_clone_impl() {
-    char buffer[0x40];
-    sub_44D8D0(buffer + 4);
-    *(int*)(buffer + 8) = 0xB531C8;
-    *(int*)(buffer + 0x30) = 0xB531C0;
-    *(int*)(buffer + 0x44) = 0xB531B0;
-    sub_983144(0xCDD7D4, buffer + 4, 0x40);
+namespace gregorian {
+struct bad_year : public std::out_of_range {
+    bad_year() : std::out_of_range(std::string("Year is out of valid range: 1400..10000")) {}
+};
+}
+namespace exception_detail {
+template<class T>
+struct error_info_injector : public T, public exception {
+    explicit error_info_injector(T const& x);
+    error_info_injector(error_info_injector const& x);
+    ~error_info_injector() throw();
+};
+class clone_base {
+public:
+    virtual clone_base const* clone() const = 0;
+    virtual void rethrow() const = 0;
+    virtual ~clone_base() throw() {}
+};
+template<class T>
+class clone_impl : public T, public clone_base {
+public:
+    explicit clone_impl(T const& x) : T(x) {}
+    ~clone_impl() throw() {}
+private:
+    clone_base const* clone() const;
+    void rethrow() const { throw *this; }
+};
+template class clone_impl<error_info_injector<gregorian::bad_year> >;
+}
 }

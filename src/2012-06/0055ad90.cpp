@@ -1,16 +1,6 @@
-// from server: 83% by atomic.potato
-struct S_func_0055ad90 {
-    char f();
-};
-
-extern "C" void* __cdecl func_0055ad10();
-extern "C" int __cdecl func_005a0f50();
-
-char S_func_0055ad90::f()
-{
-    void* p = func_0055ad10();
-    if (p) {
-        return (char)func_005a0f50();
-    }
-    return 0;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct B{ bool g(); };
+struct S{ B* h(); bool f(); };
+bool S::f(){ B* p = h(); if(p) return p->g(); return false; }

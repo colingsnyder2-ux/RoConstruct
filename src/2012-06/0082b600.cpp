@@ -1,93 +1,46 @@
-// from server: 60% by colin
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?instance@?$singleton_default@Upool_type@?$singleton_pool@VMotorJoint@RBX@@$0NA@Udefault_user_allocator_new_delete@boost@@Vwin32_mutex@pool@details@4@$0CA@@boost@@@pool@details@boost@@SAAAUpool_type@?$singleton_pool@VMotorJoint@RBX@@$0NA@Udefault_user_allocator_new_delete@boost@@Vwin32_mutex@pool@details@4@$0CA@@4@XZ)
+
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/IRenderable.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/IRenderable.h"
-
-namespace RBX 
-{
-	IRenderable::~IRenderable()
-	{
-		RBXASSERT(index2d == -1);
-		RBXASSERT(index3d == -1);
-		RBXASSERT(bucket == NULL);
-	}
-
-	void IRenderable::shouldRenderSetDirty()
-	{
-		if (bucket)
-			bucket->recomputeShouldRender(this);
-	}
-
-	IRenderableBucket::~IRenderableBucket()
-	{
-		RBXASSERT(renderable2ds.size() == 0);
-		RBXASSERT(renderable3ds.size() == 0);
-	}
-
-	void IRenderableBucket::onAdded(IRenderable* iR)
-	{
-		RBXASSERT(iR->index2d == -1);
-		RBXASSERT(iR->index3d == -1);
-		RBXASSERT(iR->bucket == NULL);
-
-		iR->bucket = this;
-		recomputeShouldRender(iR);
-	}
-
-	void IRenderableBucket::onRemoving(IRenderable* iR)
-	{
-		RBXASSERT(iR->bucket == this);
-
-		if (iR->index2d >= 0)
-			renderable2ds.fastRemove(iR);
-
-		if (iR->index3d >= 0)
-			renderable3ds.fastRemove(iR);
-
-		iR->bucket = NULL;
-
-		RBXASSERT(iR->index2d == -1);
-		RBXASSERT(iR->index3d == -1);
-	}
-
-	void IRenderableBucket::recomputeShouldRender(IRenderable* iR)
-	{
-		RBXASSERT(iR->bucket == this);
-
-		if (iR->shouldRender2d())
-		{
-			if (iR->index2d < 0)
-				renderable2ds.fastAppend(iR);
-		}
-		else if (iR->index2d >= 0)
-		{
-			renderable2ds.fastRemove(iR);
-		}
-
-		if (iR->shouldRender3dAdorn())
-		{
-			if (iR->index3d < 0)
-				renderable3ds.fastAppend(iR);
-		}
-		else if (iR->index3d >= 0)
-		{
-			renderable3ds.fastRemove(iR);
-		}
-	}
-
-	void IRenderableBucket::render2dItems(Adorn* adorn)
-	{
-		for (int i = 0; i < renderable2ds.size(); ++i)
-			renderable2ds[i]->render2d(adorn);
-	}
-
-	void IRenderableBucket::render3dAdornItems(Adorn* adorn)
-	{
-		for (int i = 0; i < renderable3ds.size(); ++i)
-			renderable3ds[i]->render3dAdorn(adorn);
-	}
+struct CRITICAL_SECTION { void* a; long b, c; void* d, *e; unsigned long f; };
+extern "C" __declspec(dllimport) void __stdcall InitializeCriticalSection(CRITICAL_SECTION*);
+extern "C" __declspec(dllimport) void __stdcall DeleteCriticalSection(CRITICAL_SECTION*);
+namespace boost { namespace details { namespace pool {
+class win32_mutex {
+    CRITICAL_SECTION mtx;
+public:
+    win32_mutex() { InitializeCriticalSection(&mtx); }
+    ~win32_mutex() { DeleteCriticalSection(&mtx); }
+};
+template <typename T> struct singleton_default {
+    static T& instance() { static T obj; return obj; }
+};
+}}
+struct default_user_allocator_new_delete {};
+template <typename UA> class pool {
+    void* first;
+    char* list_ptr;
+    unsigned list_sz;
+    const unsigned requested_size;
+    unsigned next_size;
+    unsigned start_size;
+public:
+    explicit pool(unsigned nrequested_size, unsigned nnext_size = 32)
+        : first(0), list_ptr(0), list_sz(0), requested_size(nrequested_size), next_size(nnext_size), start_size(nnext_size) {}
+    ~pool();
+};
+template <typename Tag, unsigned RequestedSize, typename UA = default_user_allocator_new_delete,
+          typename Mutex = details::pool::win32_mutex, unsigned NextSize = 32>
+struct singleton_pool {
+    struct pool_type : Mutex {
+        pool<UA> p;
+        pool_type() : p(RequestedSize, NextSize) {}
+    };
+    typedef details::pool::singleton_default<pool_type> singleton;
+};
 }
+namespace RBX { class MotorJoint; }
+template struct boost::details::pool::singleton_default<boost::singleton_pool<RBX::MotorJoint, 0xd0>::pool_type>;

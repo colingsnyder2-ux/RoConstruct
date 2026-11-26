@@ -1,162 +1,65 @@
-// from server: 65% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/RunStateOwner.cpp
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+// roc 2012-06 0077a170  unit: RBX::PAVDebugSettings::?$sp_counted_impl_pd  size: 99 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 0077a170
+//
+// 0077a170  6aff                 push -1
+// 0077a172  682baeab00           push 0xabae2b
+// 0077a177  64a100000000         mov eax, dword ptr fs:[0]
+// 0077a17d  50                   push eax
+// 0077a17e  64892500000000       mov dword ptr fs:[0], esp
+// 0077a185  51                   push ecx
+// 0077a186  8b442418             mov eax, dword ptr [esp + 0x18]
+// 0077a18a  53                   push ebx
+// 0077a18b  56                   push esi
+// 0077a18c  8b74241c             mov esi, dword ptr [esp + 0x1c]
+// 0077a190  57                   push edi
+// 0077a191  8bf9                 mov edi, ecx
+// 0077a193  50                   push eax
+// 0077a194  8d5f04               lea ebx, [edi + 4]
+// 0077a197  56                   push esi
+// 0077a198  8bcb                 mov ecx, ebx
+// 0077a19a  897c2414             mov dword ptr [esp + 0x14], edi
+// 0077a19e  8937                 mov dword ptr [edi], esi
+// 0077a1a0  e83bffffff           call 0x77a0e0
+// 0077a1a5  33c0                 xor eax, eax
+// 0077a1a7  89442418             mov dword ptr [esp + 0x18], eax
+// 0077a1ab  3bf0                 cmp esi, eax
+// 0077a1ad  7403                 je 0x77a1b2
+// 0077a1af  8d4620               lea eax, [esi + 0x20]
+// 0077a1b2  56                   push esi
+// 0077a1b3  50                   push eax
+// 0077a1b4  53                   push ebx
+// 0077a1b5  e82603feff           call 0x75a4e0
+// 0077a1ba  8b4c241c             mov ecx, dword ptr [esp + 0x1c]
+// 0077a1be  83c40c               add esp, 0xc
+// 0077a1c1  8bc7                 mov eax, edi
+// 0077a1c3  5f                   pop edi
+// 0077a1c4  5e                   pop esi
+// 0077a1c5  5b                   pop ebx
+// 0077a1c6  64890d00000000       mov dword ptr fs:[0], ecx
+// 0077a1cd  83c410               add esp, 0x10
+// 0077a1d0  c20800               ret 8
 
-// Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
-#include "util/Timer.h"
-#include "util/standardout.h"
-#include "v8datamodel/DataModel.h"
-#include <boost/thread/xtime.hpp>
+struct Pad { int a[8]; };
+struct Esft { int w; };
+struct T : Pad, Esft { };
+typedef void (*Deleter)(T*);
 
-namespace RBX
-{
-	const char* const sRunService = "RunService";
+struct shared_count {
+    int* pi;
+    shared_count(T* p, Deleter d);
+    ~shared_count();
+};
 
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> runFunction(&RunService::run, "Run", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> pauseFunction(&RunService::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> resetFunction(&RunService::reset, "Reset", Reflection::FunctionDescriptor::NeedTrustedCaller);
+void sp_enable_shared_from_this(shared_count const* pn, Esft const* e, T const* p);
 
-	static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "interval");
-	Reflection::SignalDesc<RunService, void(float, float)> RunService::event_Stepped("Stepped", "time", "step");
+struct shared_ptr_T {
+    T* px;
+    shared_count pn;
+    shared_ptr_T(T* p, Deleter d);
+};
 
-	RunService::RunService()
-		: framePeriod(1.0f/30.0f),
-		  runState(RS_NORMAL),
-		  invalidRunViewCount(0),
-		  stopRequested(false),
-		  runDisabled(false)
-	{
-		setName("Run Service");
-	}
-
-	RunService::~RunService()
-	{
-		RBXASSERT(views.empty());
-	}
-
-	void RunService::endRunThread(bool join)
-	{
-		stopRequested = true;
-		stateChangedCondition.notify_all();
-
-		if (join)
-			runThread->join();
-	}
-
-	void RunService::onAncestorChanged(const AncestorChanged& event)
-	{
-		if (!getParent())
-		{
-			stopRequested = true;
-			stateChangedCondition.notify_all();
-		}
-	}
-
-	void RunService::setRunState(RunState newState)
-	{
-		RunTransition transition(runState, newState);
-		runState = newState;
-
-		Notifier<RunService, RunState>::raise(newState);
-		Notifier<RunService, RunTransition>::raise(transition);
-	}
-
-	void RunService::raiseStepped(float time, float step)
-	{
-		Notifier<RunService, Stepped>::raise(Stepped(time, step));
-		event_Stepped.fire(this, time, step);
-	}
-
-	void RunService::raiseHeartbeat(float time, float step)
-	{
-		Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-		event_Heartbeat.fire(this, step);
-	}
-
-	void RunService::invalidateRunViews()
-	{
-		boost::mutex::scoped_lock lock(viewMutex);
-
-		if (invalidRunViewCount == 0)
-		{
-			invalidRunViewCount = (int)views.size();
-			if (invalidRunViewCount > 0)
-			{
-				for (std::map<IRunView*, bool>::iterator iter = views.begin(); iter != views.end(); iter++)
-				{
-					iter->first->InvalidateRunView();
-					iter->second = false;
-				}
-				runViewsDoneCondition.notify_all();
-			}
-		}
-	}
-
-	void RunService::start()
-	{
-		RBXASSERT(!runThread);
-
-		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
-		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc")));
-	}
-
-	void RunService::runProc(boost::shared_ptr<DataModel> dataModel)
-	{
-		double lastTime = getRealTime();
-		while (true)
-		{
-			double deltaTime = lastTime - getRealTime();
-
-			{
-				boost::mutex::scoped_lock lock(viewMutex);
-				for (std::map<IRunView*, bool>::iterator it = views.begin(); it != views.end(); it++)
-					it->first->AdjustThrottle(deltaTime);
-			}
-
-			double clampedDeltaTime = G3D::max(0.0, deltaTime);
-			boost::xtime stateChangedTimeout;
-			boost::xtime_get(&stateChangedTimeout, boost::TIME_UTC);
-			stateChangedTimeout.nsec += (boost::xtime::xtime_nsec_t)(clampedDeltaTime * 1e9);
-
-			bool stateChanged;
-			{
-				boost::mutex::scoped_lock lock(runMutex);
-				stateChanged = stateChangedCondition.timed_wait(lock, stateChangedTimeout);
-			}
-
-			if (!stateChanged)
-			{
-				boost::xtime runViewsDoneTimeout;
-				boost::xtime_get(&runViewsDoneTimeout, boost::TIME_UTC);
-				runViewsDoneTimeout.sec += 1;
-
-				boost::mutex::scoped_lock lock(runMutex);
-				if (invalidRunViewCount != 0)
-					runViewsDoneCondition.timed_wait(lock, runViewsDoneTimeout);
-			}
-
-			if (deltaTime <= 0.0)
-				lastTime = getRealTime();
-
-			{
-				DataModel::Lock lock(dataModel);
-
-				if (!stopRequested)
-				{
-					RBXASSERT(getParent() == dataModel.get());
-					dataModel->step(framePeriod);
-				}
-				else
-				{
-					StandardOut::singleton()->print(MESSAGE_INFO, "runProc ending");
-					return;
-				}
-			}
-
-			lastTime += framePeriod;
-		}
-	}
+shared_ptr_T::shared_ptr_T(T* p, Deleter d) : px(p), pn(p, d) {
+    sp_enable_shared_from_this(&pn, p, p);
 }

@@ -1,16 +1,16 @@
-// from server: 63% by atomic.potato
-struct Climbing
-{
-    int* state;
-    Climbing(int* a);
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ??0D_006cf940@@QAE@HH@Z)
+
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct B1_006cf940 { virtual void a1(); };
+struct B2_006cf940 { virtual void a2(); };
+struct Base_006cf940 : B1_006cf940, B2_006cf940 { Base_006cf940(int a, int b); };
+struct D_006cf940 : Base_006cf940 {
+    D_006cf940(int a, int b);
+    virtual void a1();
+    virtual void a2();
 };
-
-extern "C" void sub_0095e600(Climbing*, int*, int*);
-
-Climbing::Climbing(int* a)
-{
-    int* b = a;
-    sub_0095e600(this, b, a);
-    state = (int*)0x00c042a0;
-    *((int**)this + 1) = (int*)0x00c04294;
-}
+D_006cf940::D_006cf940(int a, int b) : Base_006cf940(a, b) {}

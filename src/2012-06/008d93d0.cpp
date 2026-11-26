@@ -1,15 +1,17 @@
-// from server: 61% by atomic.potato
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct T { void g(); };
 struct S
 {
-    int f(void* p);
+    char pad[0x2c];
+    char *p;
+    void f(char *x);
 };
 
-extern "C" int G1_func_008d7660(void*);
-
-int S::f(void* p)
+void S::f(char *x)
 {
-    char* base = *(char**)((char*)this + 0x2c);
-    if (p)
-        return G1_func_008d7660(base + ((char*)p - (char*)0) - 0x1c);
-    return G1_func_008d7660(base);
+    int off = x ? (int)x - 0x1c : 0;
+    ((T *)(p + off))->g();
 }

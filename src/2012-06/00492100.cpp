@@ -1,196 +1,73 @@
-// from server: 39% by intel
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-9.0 atlmfc/src/mfc/dumpstak.cpp
-
-// Candidate translation unit (score above; library headers required).
-// This is a part of the Microsoft Foundation Classes C++ library.
-// Copyright (C) Microsoft Corporation
-// All rights reserved.
+// from server: 100% by Xemicl
+// roc 2012-06 00492100  unit: CRobloxReportView  size: 64 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 00492100
 //
-// This source code is only intended as a supplement to the
-// Microsoft Foundation Classes Reference and related
-// electronic documentation provided with the library.
-// See these sources for detailed information regarding the
-// Microsoft Foundation Classes product.
+// 00492100  51                   push ecx
+// 00492101  56                   push esi
+// 00492102  8bf1                 mov esi, ecx
+// 00492104  e82f064f00           call 0x982738
+// 00492109  8b4e54               mov ecx, dword ptr [esi + 0x54]
+// 0049210c  83ec08               sub esp, 8
+// 0049210f  8bc4                 mov eax, esp
+// 00492111  8964240c             mov dword ptr [esp + 0xc], esp
+// 00492115  85c9                 test ecx, ecx
+// 00492117  7410                 je 0x492129
+// 00492119  50                   push eax
+// 0049211a  e82106f7ff           call 0x402740
+// 0049211f  8bce                 mov ecx, esi
+// 00492121  e86afcffff           call 0x491d90
+// 00492126  5e                   pop esi
+// 00492127  59                   pop ecx
+// 00492128  c3                   ret 
+// 00492129  c70000000000         mov dword ptr [eax], 0
+// 0049212f  8bce                 mov ecx, esi
+// 00492131  c7400400000000       mov dword ptr [eax + 4], 0
+// 00492138  e853fcffff           call 0x491d90
+// 0049213d  5e                   pop esi
+// 0049213e  59                   pop ecx
+// 0049213f  c3                   ret 
+// copied from an identical function in another client (function ?f@S@@QAEXXZ)
 
-#include "stdafx.h"
-
-#include <atlutil.h>
-
-
-/////////////////////////////////////////////////////////////////////////////
-// Routine to produce stack dump
-
-class CTraceClipboardData : public IStackDumpHandler
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Count
 {
-	HGLOBAL m_hMemory;
-	DWORD	m_dwSize;
-	DWORD m_dwUsed;
-	DWORD m_dwTarget;
-
-public:
-	void __stdcall OnBegin()
-	{
-		SendOut("=== begin AfxDumpStack output ===\r\n");
-	}
-	void __stdcall OnEntry(void *pvAddress, LPCSTR szModule, LPCSTR szSymbol)
-	{
-		char sz[40];
-		sprintf_s(sz, _countof(sz), "%p: ", pvAddress);
-		SendOut(sz);
-
-		if (szModule)
-		{
-			ATLASSERT(szSymbol);
-			SendOut(szModule);
-			SendOut("! ");
-			SendOut(szSymbol);
-		}
-		else
-			SendOut("symbol not found");
-		SendOut("\r\n");
-	}
-
-	void __stdcall OnError(LPCSTR szError)
-	{
-		SendOut(szError);
-	}
-	void __stdcall OnEnd()
-	{
-		SendOut("=== end AfxDumpStack() output ===\r\n");
-	}
-	void SendOut(LPCSTR pszData);
-	CTraceClipboardData(DWORD dwTarget);
-	~CTraceClipboardData();
+    unsigned int pi;
+    Count() : pi(0) {}
+    Count(const Count& o) : pi(o.pi) {}
+    ~Count() {}
 };
 
-CTraceClipboardData::CTraceClipboardData(DWORD dwTarget)
-	: m_dwTarget(dwTarget), m_dwSize(0), m_dwUsed(0), m_hMemory(NULL)
+struct Result
 {
-}
+    unsigned int px;
+    Count pn;
 
-CTraceClipboardData::~CTraceClipboardData()
+    Result() : px(0), pn() {}
+};
+
+struct Source
 {
-	if (m_hMemory != NULL)
-	{
-		// chuck it onto the clipboard
-		// don't free it unless there's an error
+    Result get();
+};
 
-		if (!OpenClipboard(NULL))
-			GlobalFree(m_hMemory);
-		else if (!EmptyClipboard() ||
-				SetClipboardData(CF_TEXT, m_hMemory) == NULL)
-		{
-			GlobalFree(m_hMemory);
-		}
-		else
-			CloseClipboard();
-	}
-}
-
-void CTraceClipboardData::SendOut(LPCSTR pszData)
+struct S
 {
-	int nLength;
-	if (pszData == NULL || (nLength = lstrlenA(pszData)) == 0)
-		return;
+    unsigned char padding[0x54];
+    Source* source;
 
-	// send it to TRACE (can be redirected)
-	if (m_dwTarget & AFX_STACK_DUMP_TARGET_TRACE)
-		TRACE(traceAppMsg, 0, "%hs", pszData);
+    void baseCall();
+    void consume(Result value);
+    void f();
+};
 
-	// send it to OutputDebugString() (can't redirect)
-	if (m_dwTarget & AFX_STACK_DUMP_TARGET_ODS)
-		OutputDebugStringA(pszData);
-
-	// build a buffer for the clipboard
-	if (m_dwTarget & AFX_STACK_DUMP_TARGET_CLIPBOARD)
-	{
-		if (m_hMemory == NULL)
-		{
-			if( nLength > (1024L*1024L) - 1 )
-			{
-				TRACE(traceAppMsg, 0, "AfxDumpStack Error: pszData larger than one megabyte.\n");
-				m_dwTarget &= ~AFX_STACK_DUMP_TARGET_CLIPBOARD;
-			}
-			else
-			{
-				m_hMemory = GlobalAlloc(GMEM_MOVEABLE, max( 1024L, nLength + 1 ) );
-				if (m_hMemory == NULL)
-				{
-					TRACE(traceAppMsg, 0, "AfxDumpStack Error: No memory available for clipboard.\n");
-					m_dwTarget &= ~AFX_STACK_DUMP_TARGET_CLIPBOARD;
-				}
-				else
-				{
-					m_dwUsed = nLength;
-					m_dwSize = max( 1024L, nLength + 1 );
-					LPSTR pstr = (LPSTR) GlobalLock(m_hMemory);
-					if (pstr != NULL)
-					{
-						Checked::strcpy_s(pstr, ::GlobalSize(m_hMemory), pszData);
-						GlobalUnlock(m_hMemory);
-					}
-					else
-					{
-						TRACE(traceAppMsg, 0, "AfxDumpStack Error: Couldn't lock memory!\n");
-						GlobalFree(m_hMemory);
-						m_hMemory = NULL;
-						m_dwTarget &= ~AFX_STACK_DUMP_TARGET_CLIPBOARD;
-					}
-				}
-			}
-		}
-		else
-		{
-			if ((m_dwUsed + nLength + 1) >= m_dwSize)
-			{
-				// grow by leaps and bounds
-				DWORD dwNewSize = m_dwSize * 2;
-				if (dwNewSize > (1024L*1024L))
-				{
-					TRACE(traceAppMsg, 0, "AfxDumpStack Error: more than one megabyte on clipboard.\n");
-					m_dwTarget &= ~AFX_STACK_DUMP_TARGET_CLIPBOARD;
-				}
-
-				HGLOBAL hMemory = GlobalReAlloc(m_hMemory, dwNewSize, GMEM_MOVEABLE);
-				if (hMemory == NULL)
-				{
-					TRACE(traceAppMsg, 0, "AfxDumpStack Error: Couldn't get %d bytes!\n", m_dwSize);
-					m_dwTarget &= ~AFX_STACK_DUMP_TARGET_CLIPBOARD;
-				}
-				else
-				{
-					m_hMemory = hMemory;
-					m_dwSize = dwNewSize;
-				}
-			}
-
-			LPSTR pstr = (LPSTR) GlobalLock(m_hMemory);
-			if (pstr != NULL)
-			{
-				Checked::strncpy_s(pstr + m_dwUsed, m_dwSize - m_dwUsed, pszData, _TRUNCATE);
-				m_dwUsed += nLength;
-				GlobalUnlock(m_hMemory);
-			}
-			else
-			{
-				TRACE(traceAppMsg, 0, "AfxDumpStack Error: Couldn't lock memory!\n");
-				m_dwTarget &= ~AFX_STACK_DUMP_TARGET_CLIPBOARD;
-			}
-		}
-	}
-
-	return;
-}
-
-/////////////////////////////////////////////////////////////////////////////
-// AfxDumpStack API
-
-void AFXAPI AfxDumpStack(DWORD dwTarget /* = AFX_STACK_DUMP_TARGET_DEFAULT */)
+void S::f()
 {
-	CTraceClipboardData clipboardData(dwTarget);
-
-	AtlDumpStack(&clipboardData);
+    baseCall();
+    if (source)
+        consume(source->get());
+    else
+        consume(Result());
 }

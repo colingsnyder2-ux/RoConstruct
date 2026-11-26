@@ -1,504 +1,103 @@
-// from server: 52% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 G3Dcpp/Vector3.cpp
+// from server: 100% by Xemicl
+// roc 2012-06 00678560  unit: DummyArbiter  size: 185 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 00678560
+//
+// 00678560  6aff                 push -1
+// 00678562  689c4fab00           push 0xab4f9c
+// 00678567  64a100000000         mov eax, dword ptr fs:[0]
+// 0067856d  50                   push eax
+// 0067856e  64892500000000       mov dword ptr fs:[0], esp
+// 00678575  83ec3c               sub esp, 0x3c
+// 00678578  53                   push ebx
+// 00678579  56                   push esi
+// 0067857a  8d4c240c             lea ecx, [esp + 0xc]
+// 0067857e  c744240800000000     mov dword ptr [esp + 8], 0
+// 00678586  ff155426b200         call dword ptr [0xb22654]
+// 0067858c  6868dcb800           push 0xb8dc68
+// 00678591  8d4c242c             lea ecx, [esp + 0x2c]
+// 00678595  c744245001000000     mov dword ptr [esp + 0x50], 1
+// 0067859d  ff154826b200         call dword ptr [0xb22648]
+// 006785a3  8d44240c             lea eax, [esp + 0xc]
+// 006785a7  50                   push eax
+// 006785a8  8d4c242c             lea ecx, [esp + 0x2c]
+// 006785ac  51                   push ecx
+// 006785ad  c644245402           mov byte ptr [esp + 0x54], 2
+// 006785b2  e869453000           call 0x97cb20
+// 006785b7  83c408               add esp, 8
+// 006785ba  8d4c2428             lea ecx, [esp + 0x28]
+// 006785be  8ad8                 mov bl, al
+// 006785c0  c644244c01           mov byte ptr [esp + 0x4c], 1
+// 006785c5  ff153c26b200         call dword ptr [0xb2263c]
+// 006785cb  8b742454             mov esi, dword ptr [esp + 0x54]
+// 006785cf  8bce                 mov ecx, esi
+// 006785d1  84db                 test bl, bl
+// 006785d3  740d                 je 0x6785e2
+// 006785d5  8d54240c             lea edx, [esp + 0xc]
+// 006785d9  52                   push edx
+// 006785da  ff154426b200         call dword ptr [0xb22644]
+// 006785e0  eb0b                 jmp 0x6785ed
+// 006785e2  682870b700           push 0xb77028
+// 006785e7  ff154826b200         call dword ptr [0xb22648]
+// 006785ed  8d4c240c             lea ecx, [esp + 0xc]
+// 006785f1  c744240801000000     mov dword ptr [esp + 8], 1
+// 006785f9  c644244c00           mov byte ptr [esp + 0x4c], 0
+// 006785fe  ff153c26b200         call dword ptr [0xb2263c]
+// 00678604  8b4c2444             mov ecx, dword ptr [esp + 0x44]
+// 00678608  8bc6                 mov eax, esi
+// 0067860a  5e                   pop esi
+// 0067860b  5b                   pop ebx
+// 0067860c  64890d00000000       mov dword ptr fs:[0], ecx
+// 00678613  83c448               add esp, 0x48
+// 00678616  c20400               ret 4
+// copied from an identical function in another client (function ?f@S@ns_ROCX00001c@@QAE?AUString@2@XZ)
 
-// Candidate translation unit (score above; library headers required).
-/**
- @file Vector3.cpp
- 
- 3D vector class
- 
- @maintainer Morgan McGuire, matrix@graphics3d.com
- 
- @cite Portions based on Dave Eberly's Magic Software Library at http://www.magic-software.com
- 
- @created 2001-06-02
- @edited  2006-01-30
- */
+namespace ns_ROCX00001c {
+struct String;
 
-#include <limits>
-#include <stdlib.h>
-#include "G3D/Vector3.h"
-#include "G3D/g3dmath.h"
-#include "G3D/stringutils.h"
-#include "G3D/BinaryInput.h"
-#include "G3D/BinaryOutput.h"
-#include "G3D/TextInput.h"
-#include "G3D/TextOutput.h"
-#include "G3D/Vector3int16.h"
-#include "G3D/Matrix3.h"
-#include "G3D/Vector2.h"
- 
-namespace G3D {
+extern void (__thiscall *stringDefaultConstruct)(String *);
+extern void (__thiscall *stringTextConstruct)(String *, const char *);
+extern void (__thiscall *stringCopyConstruct)(String *, const String &);
+extern void (__thiscall *stringDestroy)(String *);
 
-Vector3 Vector3::dummy;
+extern const char productNameKey[];
+extern const char fallbackName[];
 
-// Deprecated.
-const Vector3 Vector3::ZERO(0, 0, 0);
-const Vector3 Vector3::ZERO3(0, 0, 0);
-const Vector3 Vector3::UNIT_X(1, 0, 0);
-const Vector3 Vector3::UNIT_Y(0, 1, 0);
-const Vector3 Vector3::UNIT_Z(0, 0, 1);
-const Vector3 Vector3::INF3((float)G3D::inf(), (float)G3D::inf(), (float)G3D::inf());
-const Vector3 Vector3::NAN3((float)G3D::nan(), (float)G3D::nan(), (float)G3D::nan());
+struct String {
+    unsigned char storage[28];
 
-Vector3::Vector3(const class Vector2& v, float _z) : x(v.x), y(v.y), z(_z) {
+    String();
+    String(const char *);
+    String(const String &);
+    ~String();
+};
+
+inline String::String() {
+    stringDefaultConstruct(this);
 }
 
-Vector3::Axis Vector3::primaryAxis() const {
-    
-    Axis a = X_AXIS;
-
-    double nx = abs(x);
-    double ny = abs(y);
-    double nz = abs(z);
-
-    if (nx > ny) {
-        if (nx > nz) {
-            a = X_AXIS;
-        } else {
-            a = Z_AXIS;
-        }
-    } else {
-        if (ny > nz) {
-            a = Y_AXIS;
-        } else {
-            a = Z_AXIS;
-        }
-    }
-
-    return a;
+inline String::String(const char *text) {
+    stringTextConstruct(this, text);
 }
 
-
-unsigned int Vector3::hashCode() const {
-    unsigned int xhash = (*(int*)(void*)(&x));
-    unsigned int yhash = (*(int*)(void*)(&y));
-    unsigned int zhash = (*(int*)(void*)(&z));
-
-    return xhash + (yhash * 37) + (zhash * 101);
+inline String::String(const String &other) {
+    stringCopyConstruct(this, other);
 }
 
-std::ostream& operator<<(std::ostream& os, const Vector3& v) {
-    return os << v.toString();
+inline String::~String() {
+    stringDestroy(this);
 }
 
+extern bool __cdecl readProductName(const String &, String &);
 
-//----------------------------------------------------------------------------
+struct S {
+    String f();
+};
 
-double frand() {
-    return rand() / (double) RAND_MAX;
+String S::f() {
+    String result;
+    bool found = readProductName(String(productNameKey), result);
+    if (found)
+        return result;
+    return String(fallbackName);
 }
-
-Vector3::Vector3(TextInput& t) {
-	deserialize(t);
 }
-
-Vector3::Vector3(BinaryInput& b) {
-    deserialize(b);
-}
-
-
-Vector3::Vector3(const class Vector3int16& v) {
-    x = v.x;
-    y = v.y;
-    z = v.z;
-}
-
-
-void Vector3::deserialize(BinaryInput& b) {
-    x = b.readFloat32();
-    y = b.readFloat32();
-    z = b.readFloat32();
-}
-
-
-void Vector3::deserialize(TextInput& t) {
-    t.readSymbol("(");
-    x = (float)t.readNumber();
-    t.readSymbol(",");
-    y = (float)t.readNumber();
-    t.readSymbol(",");
-    z = (float)t.readNumber();
-    t.readSymbol(")");
-}
-
-
-void Vector3::serialize(TextOutput& t) const {
-   t.writeSymbol("(");
-   t.writeNumber(x);
-   t.writeSymbol(",");
-   t.writeNumber(y);
-   t.writeSymbol(",");
-   t.writeNumber(z);
-   t.writeSymbol(")");
-}
-
-
-void Vector3::serialize(BinaryOutput& b) const {
-    b.writeFloat32(x);
-    b.writeFloat32(y);
-    b.writeFloat32(z);
-}
-
-
-Vector3 Vector3::random() {
-    Vector3 result;
-
-    do {
-        result = Vector3(uniformRandom(-1.0, 1.0), 
-                         uniformRandom(-1.0, 1.0),
-                         uniformRandom(-1.0, 1.0));
-    } while (result.squaredMagnitude() >= 1.0f);
-
-    result.unitize();
-
-    return result;
-}
-
-//----------------------------------------------------------------------------
-Vector3 Vector3::operator/ (float fScalar) const {
-    Vector3 kQuot;
-
-    if ( fScalar != 0.0 ) {
-		float fInvScalar = 1.0f / fScalar;
-        kQuot.x = fInvScalar * x;
-        kQuot.y = fInvScalar * y;
-        kQuot.z = fInvScalar * z;
-        return kQuot;
-    } else {
-        return Vector3::inf();
-    }
-}
-
-//----------------------------------------------------------------------------
-Vector3& Vector3::operator/= (float fScalar) {
-    if (fScalar != 0.0) {
-		float fInvScalar = 1.0f / fScalar;
-        x *= fInvScalar;
-        y *= fInvScalar;
-        z *= fInvScalar;
-    } else {
-        x = (float)G3D::inf();
-        y = (float)G3D::inf();
-        z = (float)G3D::inf();
-    }
-
-    return *this;
-}
-
-//----------------------------------------------------------------------------
-float Vector3::unitize (float fTolerance) {
-	float fMagnitude = magnitude();
-
-    if (fMagnitude > fTolerance) {
-		float fInvMagnitude = 1.0f / fMagnitude;
-        x *= fInvMagnitude;
-        y *= fInvMagnitude;
-        z *= fInvMagnitude;
-    } else {
-        fMagnitude = 0.0f;
-    }
-
-    return fMagnitude;
-}
-
-//----------------------------------------------------------------------------
-
-Vector3 Vector3::reflectAbout(const Vector3& normal) const {
-
-    Vector3 out;
-
-    Vector3 N = normal.direction();
-
-    // 2 * normal.dot(this) * normal - this
-    return N * 2 * this->dot(N) - *this;
-}
-
-//----------------------------------------------------------------------------
-Vector3 Vector3::cosRandom(const Vector3& normal) {
-    double e1 = G3D::random(0, 1);
-    double e2 = G3D::random(0, 1);
-
-    // Angle from normal
-    double theta = acos(sqrt(e1));
-
-    // Angle about normal
-    double phi   = 2 * G3D_PI * e2;
-
-    // Make a coordinate system
-    Vector3 U = normal.direction();
-    Vector3 V = Vector3::unitX();
-
-    if (abs(U.dot(V)) > .9) {
-        V = Vector3::unitY();
-    }
-
-    Vector3 W = U.cross(V).direction();
-    V = W.cross(U);
-
-    // Convert to rectangular form
-    return cos(theta) * U + sin(theta) * (cos(phi) * V + sin(phi) * W);
-}
-//----------------------------------------------------------------------------
-
-Vector3 Vector3::hemiRandom(const Vector3& normal) {
-    Vector3 V = Vector3::random();
-
-    if (V.dot(normal) < 0) {
-        return -V;
-    } else {
-        return V;
-    }
-}
-
-//----------------------------------------------------------------------------
-
-Vector3 Vector3::reflectionDirection(const Vector3& normal) const {
-    return -reflectAbout(normal).direction();
-}
-
-//----------------------------------------------------------------------------
-
-Vector3 Vector3::refractionDirection(
-    const Vector3&  normal,
-    float           iInside,
-    float           iOutside) const {
-
-    // From pg. 24 of Henrik Wann Jensen. Realistic Image Synthesis
-    // Using Photon Mapping.  AK Peters. ISBN: 1568811470. July 2001.
-
-    // Invert the directions from Wann Jensen's formulation
-    // and normalize the vectors.
-    const Vector3 W = -direction();
-    Vector3 N = normal.direction();
-
-    float h1 = iOutside;
-    float h2 = iInside;
-
-    if (normal.dot(*this) > 0.0f) {
-        h1 = iInside;
-        h2 = iOutside;
-        N  = -N;
-    }
-
-    const float hRatio = h1 / h2;
-    const float WdotN = W.dot(N);
-
-    float det = 1.0f - (float)square(hRatio) * (1.0f - (float)square(WdotN));
-
-    if (det < 0) {
-        // Total internal reflection
-        return Vector3::zero();
-    } else {
-        return -hRatio * (W - WdotN * N) - N * sqrt(det);
-    }
-}
-
-//----------------------------------------------------------------------------
-void Vector3::orthonormalize (Vector3 akVector[3]) {
-    // If the input vectors are v0, v1, and v2, then the Gram-Schmidt
-    // orthonormalization produces vectors u0, u1, and u2 as follows,
-    //
-    //   u0 = v0/|v0|
-    //   u1 = (v1-(u0*v1)u0)/|v1-(u0*v1)u0|
-    //   u2 = (v2-(u0*v2)u0-(u1*v2)u1)/|v2-(u0*v2)u0-(u1*v2)u1|
-    //
-    // where |A| indicates length of vector A and A*B indicates dot
-    // product of vectors A and B.
-
-    // compute u0
-    akVector[0].unitize();
-
-    // compute u1
-	float fDot0 = akVector[0].dot(akVector[1]);
-    akVector[1] -= akVector[0] * fDot0;
-    akVector[1].unitize();
-
-    // compute u2
-	float fDot1 = akVector[1].dot(akVector[2]);
-    fDot0 = akVector[0].dot(akVector[2]);
-    akVector[2] -= akVector[0] * fDot0 + akVector[1] * fDot1;
-    akVector[2].unitize();
-}
-
-//----------------------------------------------------------------------------
-void Vector3::generateOrthonormalBasis (Vector3& rkU, Vector3& rkV,
-                                        Vector3& rkW, bool bUnitLengthW) {
-    if ( !bUnitLengthW )
-        rkW.unitize();
-
-    if ( G3D::abs(rkW.x) >= G3D::abs(rkW.y)
-            && G3D::abs(rkW.x) >= G3D::abs(rkW.z) ) {
-        rkU.x = -rkW.y;
-        rkU.y = + rkW.x;
-        rkU.z = 0.0;
-    } else {
-        rkU.x = 0.0;
-        rkU.y = + rkW.z;
-        rkU.z = -rkW.y;
-    }
-
-    rkU.unitize();
-    rkV = rkW.cross(rkU);
-}
-
-//----------------------------------------------------------------------------
-
-std::string Vector3::toString() const {
-    return G3D::format("(%g, %g, %g)", x, y, z);
-}
-
-
-//----------------------------------------------------------------------------
-
-Matrix3 Vector3::cross() const {
-    return Matrix3( 0, -z,  y,
-                    z,  0, -x,
-                   -y,  x,  0);
-}
-
-
-void serialize(const Vector3::Axis& a, class BinaryOutput& bo) {
-    bo.writeUInt8((uint8)a);
-}
-
-void deserialize(Vector3::Axis& a, class BinaryInput& bi) {
-    a = (Vector3::Axis)bi.readUInt8();
-}
-
-//----------------------------------------------------------------------------
-// 2-char swizzles
-
-Vector2 Vector3::xx() const  { return Vector2       (x, x); }
-Vector2 Vector3::yx() const  { return Vector2       (y, x); }
-Vector2 Vector3::zx() const  { return Vector2       (z, x); }
-Vector2 Vector3::xy() const  { return Vector2       (x, y); }
-Vector2 Vector3::yy() const  { return Vector2       (y, y); }
-Vector2 Vector3::zy() const  { return Vector2       (z, y); }
-Vector2 Vector3::xz() const  { return Vector2       (x, z); }
-Vector2 Vector3::yz() const  { return Vector2       (y, z); }
-Vector2 Vector3::zz() const  { return Vector2       (z, z); }
-
-// 3-char swizzles
-
-Vector3 Vector3::xxx() const  { return Vector3       (x, x, x); }
-Vector3 Vector3::yxx() const  { return Vector3       (y, x, x); }
-Vector3 Vector3::zxx() const  { return Vector3       (z, x, x); }
-Vector3 Vector3::xyx() const  { return Vector3       (x, y, x); }
-Vector3 Vector3::yyx() const  { return Vector3       (y, y, x); }
-Vector3 Vector3::zyx() const  { return Vector3       (z, y, x); }
-Vector3 Vector3::xzx() const  { return Vector3       (x, z, x); }
-Vector3 Vector3::yzx() const  { return Vector3       (y, z, x); }
-Vector3 Vector3::zzx() const  { return Vector3       (z, z, x); }
-Vector3 Vector3::xxy() const  { return Vector3       (x, x, y); }
-Vector3 Vector3::yxy() const  { return Vector3       (y, x, y); }
-Vector3 Vector3::zxy() const  { return Vector3       (z, x, y); }
-Vector3 Vector3::xyy() const  { return Vector3       (x, y, y); }
-Vector3 Vector3::yyy() const  { return Vector3       (y, y, y); }
-Vector3 Vector3::zyy() const  { return Vector3       (z, y, y); }
-Vector3 Vector3::xzy() const  { return Vector3       (x, z, y); }
-Vector3 Vector3::yzy() const  { return Vector3       (y, z, y); }
-Vector3 Vector3::zzy() const  { return Vector3       (z, z, y); }
-Vector3 Vector3::xxz() const  { return Vector3       (x, x, z); }
-Vector3 Vector3::yxz() const  { return Vector3       (y, x, z); }
-Vector3 Vector3::zxz() const  { return Vector3       (z, x, z); }
-Vector3 Vector3::xyz() const  { return Vector3       (x, y, z); }
-Vector3 Vector3::yyz() const  { return Vector3       (y, y, z); }
-Vector3 Vector3::zyz() const  { return Vector3       (z, y, z); }
-Vector3 Vector3::xzz() const  { return Vector3       (x, z, z); }
-Vector3 Vector3::yzz() const  { return Vector3       (y, z, z); }
-Vector3 Vector3::zzz() const  { return Vector3       (z, z, z); }
-
-// 4-char swizzles
-
-Vector4 Vector3::xxxx() const  { return Vector4       (x, x, x, x); }
-Vector4 Vector3::yxxx() const  { return Vector4       (y, x, x, x); }
-Vector4 Vector3::zxxx() const  { return Vector4       (z, x, x, x); }
-Vector4 Vector3::xyxx() const  { return Vector4       (x, y, x, x); }
-Vector4 Vector3::yyxx() const  { return Vector4       (y, y, x, x); }
-Vector4 Vector3::zyxx() const  { return Vector4       (z, y, x, x); }
-Vector4 Vector3::xzxx() const  { return Vector4       (x, z, x, x); }
-Vector4 Vector3::yzxx() const  { return Vector4       (y, z, x, x); }
-Vector4 Vector3::zzxx() const  { return Vector4       (z, z, x, x); }
-Vector4 Vector3::xxyx() const  { return Vector4       (x, x, y, x); }
-Vector4 Vector3::yxyx() const  { return Vector4       (y, x, y, x); }
-Vector4 Vector3::zxyx() const  { return Vector4       (z, x, y, x); }
-Vector4 Vector3::xyyx() const  { return Vector4       (x, y, y, x); }
-Vector4 Vector3::yyyx() const  { return Vector4       (y, y, y, x); }
-Vector4 Vector3::zyyx() const  { return Vector4       (z, y, y, x); }
-Vector4 Vector3::xzyx() const  { return Vector4       (x, z, y, x); }
-Vector4 Vector3::yzyx() const  { return Vector4       (y, z, y, x); }
-Vector4 Vector3::zzyx() const  { return Vector4       (z, z, y, x); }
-Vector4 Vector3::xxzx() const  { return Vector4       (x, x, z, x); }
-Vector4 Vector3::yxzx() const  { return Vector4       (y, x, z, x); }
-Vector4 Vector3::zxzx() const  { return Vector4       (z, x, z, x); }
-Vector4 Vector3::xyzx() const  { return Vector4       (x, y, z, x); }
-Vector4 Vector3::yyzx() const  { return Vector4       (y, y, z, x); }
-Vector4 Vector3::zyzx() const  { return Vector4       (z, y, z, x); }
-Vector4 Vector3::xzzx() const  { return Vector4       (x, z, z, x); }
-Vector4 Vector3::yzzx() const  { return Vector4       (y, z, z, x); }
-Vector4 Vector3::zzzx() const  { return Vector4       (z, z, z, x); }
-Vector4 Vector3::xxxy() const  { return Vector4       (x, x, x, y); }
-Vector4 Vector3::yxxy() const  { return Vector4       (y, x, x, y); }
-Vector4 Vector3::zxxy() const  { return Vector4       (z, x, x, y); }
-Vector4 Vector3::xyxy() const  { return Vector4       (x, y, x, y); }
-Vector4 Vector3::yyxy() const  { return Vector4       (y, y, x, y); }
-Vector4 Vector3::zyxy() const  { return Vector4       (z, y, x, y); }
-Vector4 Vector3::xzxy() const  { return Vector4       (x, z, x, y); }
-Vector4 Vector3::yzxy() const  { return Vector4       (y, z, x, y); }
-Vector4 Vector3::zzxy() const  { return Vector4       (z, z, x, y); }
-Vector4 Vector3::xxyy() const  { return Vector4       (x, x, y, y); }
-Vector4 Vector3::yxyy() const  { return Vector4       (y, x, y, y); }
-Vector4 Vector3::zxyy() const  { return Vector4       (z, x, y, y); }
-Vector4 Vector3::xyyy() const  { return Vector4       (x, y, y, y); }
-Vector4 Vector3::yyyy() const  { return Vector4       (y, y, y, y); }
-Vector4 Vector3::zyyy() const  { return Vector4       (z, y, y, y); }
-Vector4 Vector3::xzyy() const  { return Vector4       (x, z, y, y); }
-Vector4 Vector3::yzyy() const  { return Vector4       (y, z, y, y); }
-Vector4 Vector3::zzyy() const  { return Vector4       (z, z, y, y); }
-Vector4 Vector3::xxzy() const  { return Vector4       (x, x, z, y); }
-Vector4 Vector3::yxzy() const  { return Vector4       (y, x, z, y); }
-Vector4 Vector3::zxzy() const  { return Vector4       (z, x, z, y); }
-Vector4 Vector3::xyzy() const  { return Vector4       (x, y, z, y); }
-Vector4 Vector3::yyzy() const  { return Vector4       (y, y, z, y); }
-Vector4 Vector3::zyzy() const  { return Vector4       (z, y, z, y); }
-Vector4 Vector3::xzzy() const  { return Vector4       (x, z, z, y); }
-Vector4 Vector3::yzzy() const  { return Vector4       (y, z, z, y); }
-Vector4 Vector3::zzzy() const  { return Vector4       (z, z, z, y); }
-Vector4 Vector3::xxxz() const  { return Vector4       (x, x, x, z); }
-Vector4 Vector3::yxxz() const  { return Vector4       (y, x, x, z); }
-Vector4 Vector3::zxxz() const  { return Vector4       (z, x, x, z); }
-Vector4 Vector3::xyxz() const  { return Vector4       (x, y, x, z); }
-Vector4 Vector3::yyxz() const  { return Vector4       (y, y, x, z); }
-Vector4 Vector3::zyxz() const  { return Vector4       (z, y, x, z); }
-Vector4 Vector3::xzxz() const  { return Vector4       (x, z, x, z); }
-Vector4 Vector3::yzxz() const  { return Vector4       (y, z, x, z); }
-Vector4 Vector3::zzxz() const  { return Vector4       (z, z, x, z); }
-Vector4 Vector3::xxyz() const  { return Vector4       (x, x, y, z); }
-Vector4 Vector3::yxyz() const  { return Vector4       (y, x, y, z); }
-Vector4 Vector3::zxyz() const  { return Vector4       (z, x, y, z); }
-Vector4 Vector3::xyyz() const  { return Vector4       (x, y, y, z); }
-Vector4 Vector3::yyyz() const  { return Vector4       (y, y, y, z); }
-Vector4 Vector3::zyyz() const  { return Vector4       (z, y, y, z); }
-Vector4 Vector3::xzyz() const  { return Vector4       (x, z, y, z); }
-Vector4 Vector3::yzyz() const  { return Vector4       (y, z, y, z); }
-Vector4 Vector3::zzyz() const  { return Vector4       (z, z, y, z); }
-Vector4 Vector3::xxzz() const  { return Vector4       (x, x, z, z); }
-Vector4 Vector3::yxzz() const  { return Vector4       (y, x, z, z); }
-Vector4 Vector3::zxzz() const  { return Vector4       (z, x, z, z); }
-Vector4 Vector3::xyzz() const  { return Vector4       (x, y, z, z); }
-Vector4 Vector3::yyzz() const  { return Vector4       (y, y, z, z); }
-Vector4 Vector3::zyzz() const  { return Vector4       (z, y, z, z); }
-Vector4 Vector3::xzzz() const  { return Vector4       (x, z, z, z); }
-Vector4 Vector3::yzzz() const  { return Vector4       (y, z, z, z); }
-Vector4 Vector3::zzzz() const  { return Vector4       (z, z, z, z); }
-
-
-
-
-
-
-} // namespace

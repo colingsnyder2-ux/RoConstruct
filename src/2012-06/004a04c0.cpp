@@ -1,49 +1,23 @@
-// from server: 26% by atomic.potato
-struct S_func_004f3c90 {
-    char pad0[88];
-    int m_x;
-    int* f();
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?fn_ROCX000003_00463f10@CScriptEditor@ns_ROCX000003@@QAEXXZ)
+
+namespace ns_ROCX000003 {
+struct Control {
+    int fn_ROCX000003_00460120(int direct);
+    int fn_ROCX000003_00460c10(int position, int direct);
+    void fn_ROCX000003_00460400(int position, int anchor, int direct);
 };
 
-struct S_func_004a04c0 {
-    int* f();
+struct CScriptEditor {
+    int* fn_ROCX000003_004613d0();
+    void fn_ROCX000003_00463f10();
 };
 
-int* S_func_004f3c90::f()
+void CScriptEditor::fn_ROCX000003_00463f10()
 {
-    return &m_x;
+    Control* control = reinterpret_cast<Control*>(fn_ROCX000003_004613d0());
+    int position = control->fn_ROCX000003_00460120(1);
+    position = control->fn_ROCX000003_00460c10(position, 1);
+    control->fn_ROCX000003_00460400(position, 0, 1);
 }
-
-extern "C" int* __cdecl func_004f3c90();
-
-struct S_ctrl {
-    char pad0[84];
-    int m_a;
-    int m_b;
-    int* f1(int);
-    int* f2(int, int);
-    int* f3(int, int, int);
-};
-
-int* S_ctrl::f1(int a)
-{
-    return (int*)a;
-}
-
-int* S_ctrl::f2(int a, int b)
-{
-    return (int*)a;
-}
-
-int* S_ctrl::f3(int a, int b, int c)
-{
-    return (int*)a;
-}
-
-int* S_func_004a04c0::f()
-{
-    S_ctrl* p = (S_ctrl*)func_004f3c90();
-    int* a = p->f1(1);
-    int* b = p->f2((int)a, 1);
-    return p->f3((int)b, 0, 1);
 }

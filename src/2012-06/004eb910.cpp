@@ -1,13 +1,5 @@
-// from server: 50% by Intel
-struct Ogre_RbxSubEntity_RbxSubEntityShadowRenderable {
-    void * __thiscall field_80();
-    void * __thiscall field_18();
-};
-void * __thiscall Ogre_RbxSubEntity_RbxSubEntityShadowRenderable::field_80()
-{
-    return *(void **)((char *)this + 0x80);
-}
-void * __thiscall Ogre_RbxSubEntity_RbxSubEntityShadowRenderable::field_18()
-{
-    return *(void **)((char *)this + 0x18);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct A { char p[128]; void* o; int f(); };
+int A::f(){ void* obj=o; void* vt=*(void**)obj; int (__thiscall *fn)(void*) = *(int (__thiscall**)(void*))((char*)vt+24); return fn(obj); }

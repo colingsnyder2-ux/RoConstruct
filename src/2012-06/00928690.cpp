@@ -1,15 +1,26 @@
-// from server: 86% by colin
-struct Joint;
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?f@CleanStage@ns_ROCX00000b@@QAEXPAUS_func_00645830@2@@Z)
 
-struct StepJointsStage {
-    void onSimulateAssemblyAdded(Joint* j);
+namespace ns_ROCX00000b {
+struct S_func_00645830 {
+    char pad0[4];
+    int m_x;
+    void f(int a1);
 };
 
-extern "C" void __stdcall func_00917430(StepJointsStage* stage, Joint* j);
-extern "C" void __fastcall func_00928270(void* self, Joint* j);
+struct NextStage {
+    void f(S_func_00645830* object);
+};
 
-void StepJointsStage::onSimulateAssemblyAdded(Joint* j)
+struct CleanStage {
+    char pad0[8];
+    NextStage* next;
+    void f(S_func_00645830* object);
+};
+
+void CleanStage::f(S_func_00645830* object)
 {
-    func_00917430(this, j);
-    func_00928270(*(void**)((char*)this + 8), j);
+    object->f((int)this);
+    next->f(object);
+}
 }

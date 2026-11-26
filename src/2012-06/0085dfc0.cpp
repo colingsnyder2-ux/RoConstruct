@@ -1,1126 +1,390 @@
-// from server: 24% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: xtp-15.2.1 Source/Calendar/XTPCalendarController.cpp
-
-// Candidate translation unit (score above; library headers required).
-// XTPCalendarController.cpp : implementation file
+// from server: 100% by Xemicl
+// roc 2012-06 0085dfc0  unit: std::D::V?$allocator::V?$basic_gzip_decompressor::?$stream_buffer  size: 398 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 0085dfc0
 //
-// This file is a part of the XTREME CALENDAR MFC class library.
-// (c)1998-2011 Codejock Software, All Rights Reserved.
+// 0085dfc0  83ec10               sub esp, 0x10
+// 0085dfc3  53                   push ebx
+// 0085dfc4  55                   push ebp
+// 0085dfc5  56                   push esi
+// 0085dfc6  57                   push edi
+// 0085dfc7  8bf9                 mov edi, ecx
+// 0085dfc9  8b07                 mov eax, dword ptr [edi]
+// 0085dfcb  f6402401             test byte ptr [eax + 0x24], 1
+// 0085dfcf  7512                 jne 0x85dfe3
+// 0085dfd1  83482401             or dword ptr [eax + 0x24], 1
+// 0085dfd5  8b07                 mov eax, dword ptr [edi]
+// 0085dfd7  8b4814               mov ecx, dword ptr [eax + 0x14]
+// 0085dfda  83c014               add eax, 0x14
+// 0085dfdd  894808               mov dword ptr [eax + 8], ecx
+// 0085dfe0  89480c               mov dword ptr [eax + 0xc], ecx
+// 0085dfe3  8b07                 mov eax, dword ptr [edi]
+// 0085dfe5  8b7024               mov esi, dword ptr [eax + 0x24]
+// 0085dfe8  8b4c2428             mov ecx, dword ptr [esp + 0x28]
+// 0085dfec  8b54242c             mov edx, dword ptr [esp + 0x2c]
+// 0085dff0  c1ee02               shr esi, 2
+// 0085dff3  f7d6                 not esi
+// 0085dff5  83e601               and esi, 1
+// 0085dff8  894c2410             mov dword ptr [esp + 0x10], ecx
+// 0085dffc  03ca                 add ecx, edx
+// 0085dffe  8d6820               lea ebp, [eax + 0x20]
+// 0085e001  83ce04               or esi, 4
+// 0085e004  83c01c               add eax, 0x1c
+// 0085e007  894c2418             mov dword ptr [esp + 0x18], ecx
+// 0085e00b  896c241c             mov dword ptr [esp + 0x1c], ebp
+// 0085e00f  89442414             mov dword ptr [esp + 0x14], eax
+// 0085e013  8b442414             mov eax, dword ptr [esp + 0x14]
+// 0085e017  8b00                 mov eax, dword ptr [eax]
+// 0085e019  8b4d00               mov ecx, dword ptr [ebp]
+// 0085e01c  83fe04               cmp esi, 4
+// 0085e01f  0f94c3               sete bl
+// 0085e022  3bc1                 cmp eax, ecx
+// 0085e024  7504                 jne 0x85e02a
+// 0085e026  84db                 test bl, bl
+// 0085e028  7470                 je 0x85e09a
+// 0085e02a  8b542418             mov edx, dword ptr [esp + 0x18]
+// 0085e02e  8b2f                 mov ebp, dword ptr [edi]
+// 0085e030  52                   push edx
+// 0085e031  89442430             mov dword ptr [esp + 0x30], eax
+// 0085e035  8d442414             lea eax, [esp + 0x14]
+// 0085e039  50                   push eax
+// 0085e03a  51                   push ecx
+// 0085e03b  8d4c2438             lea ecx, [esp + 0x38]
+// 0085e03f  51                   push ecx
+// 0085e040  8bcd                 mov ecx, ebp
+// 0085e042  e8c9f31100           call 0x97d410
+// 0085e047  a114c6c000           mov eax, dword ptr [0xc0c614]
+// 0085e04c  84db                 test bl, bl
+// 0085e04e  7505                 jne 0x85e055
+// 0085e050  a118c6c000           mov eax, dword ptr [0xc0c618]
+// 0085e055  50                   push eax
+// 0085e056  8bcd                 mov ecx, ebp
+// 0085e058  e8d3f41100           call 0x97d530
+// 0085e05d  6a01                 push 1
+// 0085e05f  8d542414             lea edx, [esp + 0x14]
+// 0085e063  8bd8                 mov ebx, eax
+// 0085e065  52                   push edx
+// 0085e066  8d442434             lea eax, [esp + 0x34]
+// 0085e06a  50                   push eax
+// 0085e06b  8bcd                 mov ecx, ebp
+// 0085e06d  e8eef31100           call 0x97d460
+// 0085e072  53                   push ebx
+// 0085e073  e888f21100           call 0x97d300
+// 0085e078  8b4c2430             mov ecx, dword ptr [esp + 0x30]
+// 0085e07c  8b542418             mov edx, dword ptr [esp + 0x18]
+// 0085e080  83c404               add esp, 4
+// 0085e083  3b1dfcc5c000         cmp ebx, dword ptr [0xc0c5fc]
+// 0085e089  890a                 mov dword ptr [edx], ecx
+// 0085e08b  0f94c0               sete al
+// 0085e08e  84c0                 test al, al
+// 0085e090  0f858f000000         jne 0x85e125
+// 0085e096  8b6c241c             mov ebp, dword ptr [esp + 0x1c]
+// 0085e09a  83fe06               cmp esi, 6
+// 0085e09d  750f                 jne 0x85e0ae
+// 0085e09f  8b442414             mov eax, dword ptr [esp + 0x14]
+// 0085e0a3  8b08                 mov ecx, dword ptr [eax]
+// 0085e0a5  3b4d00               cmp ecx, dword ptr [ebp]
+// 0085e0a8  0f848e000000         je 0x85e13c
+// 0085e0ae  8b542410             mov edx, dword ptr [esp + 0x10]
+// 0085e0b2  3b542418             cmp edx, dword ptr [esp + 0x18]
+// 0085e0b6  0f8480000000         je 0x85e13c
+// 0085e0bc  83fe05               cmp esi, 5
+// 0085e0bf  0f854effffff         jne 0x85e013
+// 0085e0c5  8b07                 mov eax, dword ptr [edi]
+// 0085e0c7  8b4818               mov ecx, dword ptr [eax + 0x18]
+// 0085e0ca  8b4014               mov eax, dword ptr [eax + 0x14]
+// 0085e0cd  8b742424             mov esi, dword ptr [esp + 0x24]
+// 0085e0d1  51                   push ecx
+// 0085e0d2  50                   push eax
+// 0085e0d3  8bce                 mov ecx, esi
+// 0085e0d5  ff157c25b200         call dword ptr [0xb2257c]
+// 0085e0db  85c0                 test eax, eax
+// 0085e0dd  7404                 je 0x85e0e3
+// 0085e0df  8bc8                 mov ecx, eax
+// 0085e0e1  eb0c                 jmp 0x85e0ef
+// 0085e0e3  8a463c               mov al, byte ptr [esi + 0x3c]
+// 0085e0e6  2401                 and al, 1
+// 0085e0e8  0fb6c8               movzx ecx, al
+// 0085e0eb  f7d9                 neg ecx
+// 0085e0ed  1bc9                 sbb ecx, ecx
+// 0085e0ef  8b07                 mov eax, dword ptr [edi]
+// 0085e0f1  83f9ff               cmp ecx, -1
+// 0085e0f4  750d                 jne 0x85e103
+// 0085e0f6  be04000000           mov esi, 4
+// 0085e0fb  097024               or dword ptr [eax + 0x24], esi
+// 0085e0fe  e910ffffff           jmp 0x85e013
+// 0085e103  8b5014               mov edx, dword ptr [eax + 0x14]
+// 0085e106  83c014               add eax, 0x14
+// 0085e109  895008               mov dword ptr [eax + 8], edx
+// 0085e10c  03d1                 add edx, ecx
+// 0085e10e  89500c               mov dword ptr [eax + 0xc], edx
+// 0085e111  8b17                 mov edx, dword ptr [edi]
+// 0085e113  33c0                 xor eax, eax
+// 0085e115  3b4a18               cmp ecx, dword ptr [edx + 0x18]
+// 0085e118  0f95c0               setne al
+// 0085e11b  83c005               add eax, 5
+// 0085e11e  8bf0                 mov esi, eax
+// 0085e120  e9eefeffff           jmp 0x85e013
+// 0085e125  8b442410             mov eax, dword ptr [esp + 0x10]
+// 0085e129  2b442428             sub eax, dword ptr [esp + 0x28]
+// 0085e12d  7515                 jne 0x85e144
+// 0085e12f  5f                   pop edi
+// 0085e130  5e                   pop esi
+// 0085e131  5d                   pop ebp
+// 0085e132  83c8ff               or eax, 0xffffffff
+// 0085e135  5b                   pop ebx
+// 0085e136  83c410               add esp, 0x10
+// 0085e139  c20c00               ret 0xc
+// 0085e13c  8b442410             mov eax, dword ptr [esp + 0x10]
+// 0085e140  2b442428             sub eax, dword ptr [esp + 0x28]
+// 0085e144  5f                   pop edi
+// 0085e145  5e                   pop esi
+// 0085e146  5d                   pop ebp
+// 0085e147  5b                   pop ebx
+// 0085e148  83c410               add esp, 0x10
+// 0085e14b  c20c00               ret 0xc
+// copied from an identical function in another client (function ?f@S@ns_ROCX000005@@QAEHPAU?$basic_streambuf@DU?$char_traits@D@std@ns_ROCX000005@@@std@2@PADH@Z)
+
+namespace ns_ROCX000005 {
+// from server: 100% by king_originala
+// roc 2008-06 005f6450  unit: std::D::V?$allocator::V?$basic_gzip_decompressor::?$stream_buffer  size: 390 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 005f6450
 //
-// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
-// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
-// CONSENT OF CODEJOCK SOFTWARE.
-//
-// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
-// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
-// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
-// SINGLE COMPUTER.
-//
-// CONTACT INFORMATION:
-// support@codejock.com
-// http://www.codejock.com
-//
-/////////////////////////////////////////////////////////////////////////////
+// 005f6450  83ec10               sub esp, 0x10
+// 005f6453  53                   push ebx
+// 005f6454  55                   push ebp
+// 005f6455  56                   push esi
+// 005f6456  57                   push edi
+// 005f6457  8bf9                 mov edi, ecx
+// 005f6459  8b07                 mov eax, dword ptr [edi]
+// 005f645b  f6402401             test byte ptr [eax + 0x24], 1
+// 005f645f  7512                 jne 0x5f6473
+// 005f6461  83482401             or dword ptr [eax + 0x24], 1
+// 005f6465  8b07                 mov eax, dword ptr [edi]
+// 005f6467  8b4814               mov ecx, dword ptr [eax + 0x14]
+// 005f646a  83c014               add eax, 0x14
+// 005f646d  894808               mov dword ptr [eax + 8], ecx
+// 005f6470  89480c               mov dword ptr [eax + 0xc], ecx
+// 005f6473  8b07                 mov eax, dword ptr [edi]
+// 005f6475  8b7024               mov esi, dword ptr [eax + 0x24]
+// 005f6478  8b4c2428             mov ecx, dword ptr [esp + 0x28]
+// 005f647c  8b54242c             mov edx, dword ptr [esp + 0x2c]
+// 005f6480  c1ee02               shr esi, 2
+// 005f6483  f7d6                 not esi
+// 005f6485  83e601               and esi, 1
+// 005f6488  894c2410             mov dword ptr [esp + 0x10], ecx
+// 005f648c  03ca                 add ecx, edx
+// 005f648e  8d6820               lea ebp, [eax + 0x20]
+// 005f6491  83ce04               or esi, 4
+// 005f6494  83c01c               add eax, 0x1c
+// 005f6497  894c2418             mov dword ptr [esp + 0x18], ecx
+// 005f649b  896c241c             mov dword ptr [esp + 0x1c], ebp
+// 005f649f  89442414             mov dword ptr [esp + 0x14], eax
+// 005f64a3  8b442414             mov eax, dword ptr [esp + 0x14]
+// 005f64a7  8b00                 mov eax, dword ptr [eax]
+// 005f64a9  8b4d00               mov ecx, dword ptr [ebp]
+// 005f64ac  83fe04               cmp esi, 4
+// 005f64af  0f94c3               sete bl
+// 005f64b2  3bc1                 cmp eax, ecx
+// 005f64b4  7504                 jne 0x5f64ba
+// 005f64b6  84db                 test bl, bl
+// 005f64b8  7470                 je 0x5f652a
+// 005f64ba  8b542418             mov edx, dword ptr [esp + 0x18]
+// 005f64be  8b2f                 mov ebp, dword ptr [edi]
+// 005f64c0  52                   push edx
+// 005f64c1  89442430             mov dword ptr [esp + 0x30], eax
+// 005f64c5  8d442414             lea eax, [esp + 0x14]
+// 005f64c9  50                   push eax
+// 005f64ca  51                   push ecx
+// 005f64cb  8d4c2438             lea ecx, [esp + 0x38]
+// 005f64cf  51                   push ecx
+// 005f64d0  8bcd                 mov ecx, ebp
+// 005f64d2  e8b9750500           call 0x64da90
+// 005f64d7  a128b28400           mov eax, dword ptr [0x84b228]
+// 005f64dc  84db                 test bl, bl
+// 005f64de  7505                 jne 0x5f64e5
+// 005f64e0  a12cb28400           mov eax, dword ptr [0x84b22c]
+// 005f64e5  50                   push eax
+// 005f64e6  8bcd                 mov ecx, ebp
+// 005f64e8  e833760500           call 0x64db20
+// 005f64ed  6a01                 push 1
+// 005f64ef  8d542414             lea edx, [esp + 0x14]
+// 005f64f3  8bd8                 mov ebx, eax
+// 005f64f5  52                   push edx
+// 005f64f6  8d442434             lea eax, [esp + 0x34]
+// 005f64fa  50                   push eax
+// 005f64fb  8bcd                 mov ecx, ebp
+// 005f64fd  e8be750500           call 0x64dac0
+// 005f6502  53                   push ebx
+// 005f6503  e8d8740500           call 0x64d9e0
+// 005f6508  8b4c2430             mov ecx, dword ptr [esp + 0x30]
+// 005f650c  8b542418             mov edx, dword ptr [esp + 0x18]
+// 005f6510  83c404               add esp, 4
+// 005f6513  3b1d10b28400         cmp ebx, dword ptr [0x84b210]
+// 005f6519  890a                 mov dword ptr [edx], ecx
+// 005f651b  0f94c0               sete al
+// 005f651e  84c0                 test al, al
+// 005f6520  0f8587000000         jne 0x5f65ad
+// 005f6526  8b6c241c             mov ebp, dword ptr [esp + 0x1c]
+// 005f652a  83fe06               cmp esi, 6
+// 005f652d  750f                 jne 0x5f653e
+// 005f652f  8b442414             mov eax, dword ptr [esp + 0x14]
+// 005f6533  8b08                 mov ecx, dword ptr [eax]
+// 005f6535  3b4d00               cmp ecx, dword ptr [ebp]
+// 005f6538  0f8486000000         je 0x5f65c4
+// 005f653e  8b542410             mov edx, dword ptr [esp + 0x10]
+// 005f6542  3b542418             cmp edx, dword ptr [esp + 0x18]
+// 005f6546  747c                 je 0x5f65c4
+// 005f6548  83fe05               cmp esi, 5
+// 005f654b  0f8552ffffff         jne 0x5f64a3
+// 005f6551  8b07                 mov eax, dword ptr [edi]
+// 005f6553  8b4818               mov ecx, dword ptr [eax + 0x18]
+// 005f6556  8b4014               mov eax, dword ptr [eax + 0x14]
+// 005f6559  8b742424             mov esi, dword ptr [esp + 0x24]
+// 005f655d  51                   push ecx
+// 005f655e  50                   push eax
+// 005f655f  8bce                 mov ecx, esi
+// 005f6561  ff1574238000         call dword ptr [0x802374]
+// 005f6567  85c0                 test eax, eax
+// 005f6569  7404                 je 0x5f656f
+// 005f656b  8bc8                 mov ecx, eax
+// 005f656d  eb08                 jmp 0x5f6577
+// 005f656f  0fb64e3c             movzx ecx, byte ptr [esi + 0x3c]
+// 005f6573  f7d9                 neg ecx
+// 005f6575  1bc9                 sbb ecx, ecx
+// 005f6577  8b07                 mov eax, dword ptr [edi]
+// 005f6579  83f9ff               cmp ecx, -1
+// 005f657c  750d                 jne 0x5f658b
+// 005f657e  be04000000           mov esi, 4
+// 005f6583  097024               or dword ptr [eax + 0x24], esi
+// 005f6586  e918ffffff           jmp 0x5f64a3
+// 005f658b  8b5014               mov edx, dword ptr [eax + 0x14]
+// 005f658e  83c014               add eax, 0x14
+// 005f6591  895008               mov dword ptr [eax + 8], edx
+// 005f6594  03d1                 add edx, ecx
+// 005f6596  89500c               mov dword ptr [eax + 0xc], edx
+// 005f6599  8b07                 mov eax, dword ptr [edi]
+// 005f659b  33d2                 xor edx, edx
+// 005f659d  3b4818               cmp ecx, dword ptr [eax + 0x18]
+// 005f65a0  0f95c2               setne dl
+// 005f65a3  83c205               add edx, 5
+// 005f65a6  8bf2                 mov esi, edx
+// 005f65a8  e9f6feffff           jmp 0x5f64a3
+// 005f65ad  8b442410             mov eax, dword ptr [esp + 0x10]
+// 005f65b1  2b442428             sub eax, dword ptr [esp + 0x28]
+// 005f65b5  7515                 jne 0x5f65cc
+// 005f65b7  5f                   pop edi
+// 005f65b8  5e                   pop esi
+// 005f65b9  5d                   pop ebp
+// 005f65ba  83c8ff               or eax, 0xffffffff
+// 005f65bd  5b                   pop ebx
+// 005f65be  83c410               add esp, 0x10
+// 005f65c1  c20c00               ret 0xc
+// 005f65c4  8b442410             mov eax, dword ptr [esp + 0x10]
+// 005f65c8  2b442428             sub eax, dword ptr [esp + 0x28]
+// 005f65cc  5f                   pop edi
+// 005f65cd  5e                   pop esi
+// 005f65ce  5d                   pop ebp
+// 005f65cf  5b                   pop ebx
+// 005f65d0  83c410               add esp, 0x10
+// 005f65d3  c20c00               ret 0xc
 
-#include "stdafx.h"
-
-
-#include "Common/XTPNotifyConnection.h"
-#include "Common/XTPColorManager.h"
-#include "Common/XTPSmartPtrInternalT.h"
-
-#include "XTPCalendarUtils.h"
-#include "XTPCalendarDefines.h"
-#include "XTPCalendarNotifications.h"
-#include "XTPCalendarPtrCollectionT.h"
-
-#include "XTPCalendarEvent.h"
-#include "XTPCalendarEvents.h"
-
-#include "XTPCalendarView.h"
-#include "XTPCalendarWeekView.h"
-#include "XTPCalendarMonthView.h"
-#include "XTPCalendarDayView.h"
-#include "XTPCalendarTimeLineView.h"
-
-#include "XTPCalendarControl.h"
-
-#include "XTPCalendarResource.h"
-
-#include "XTPDatePickerControl.h"
-#include "XTPDatePickerPaintManager.h"
-#include "XTPDatePickerNotifications.h"
-
-#include "XTPCalendarController.h"
-
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
-
-// DBG
-#define DBG_TRACE_DP_NF
-#define DBG_TRACE_DP_TIMER
-
-//#define DBG_TRACE_DP_NF  TRACE
-//#define DBG_TRACE_DP_TIMER     TRACE
-// DBG
-
-/////////////////////////////////////////////////////////////////////////////
-#define XTP_CC_DONT_SCROLL_DP 1234567890
-
-#define XTP_CC_REFRESH_DAYS_STEP_TIMER_MS 120
-#define XTP_CC_REFRESH_DAYS_STEP_DAYS     3
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTPCalendarController
-
-const int nXTPMaxDayViewDays = 6;
-
-////////////////////////////////////////////////////////////////////////////
-CXTPCalendarController::CXTPDayInfoCache::CXTPMapTimers CXTPCalendarController::CXTPDayInfoCache::m_mapTimers;
-
-IMPLEMENT_DYNCREATE(CXTPCalendarController, CCmdTarget)
-//////////////////////////////////////////////////////////////////////////
-CXTPCalendarController::CXTPDayInfoCache::CXTPDayInfoCache()
-{
-	// 37, 53, 79 , 101, 127, 199, 503, 1021, 1511, 2003, 3001, 4001, 5003, 6007, 8009, 12007, 16001
-	m_mapDaysInfo.InitHashTable(503, FALSE);
-	m_mapDaysToRefresh.InitHashTable(503, FALSE);
-
-	m_pOwner = NULL;
-
-	m_uTimerID = 0;
-	m_dwLastRedrawTime = 0;
-	m_dwLastSelfClearTime = 0;
-	m_dwWaitingDataTime = 0;
-
-	m_uActivePriority = 1;
+namespace std {
+template<class T> struct char_traits;
+template<class T, class Traits> struct basic_streambuf {
+    unsigned char padding[60];
+    unsigned char eof;
+};
 }
 
-CXTPCalendarController::CXTPDayInfoCache::~CXTPDayInfoCache()
+extern int (__thiscall *sgetn)(
+    std::basic_streambuf<char, std::char_traits<char> > *, char *, int);
+
+extern int finish_mode;
+extern int normal_mode;
+extern int stream_end;
+extern "C" void __cdecl check_status(int);
+
+struct Buffer {
+    char *data;
+    int size;
+    char *next;
+    char *end;
+};
+
+struct State {
+    void *state;
+    unsigned char padding[16];
+    Buffer buffer;
+    unsigned int flags;
+
+    void before(char **, char *, char **, char *);
+    int inflate(int);
+    void after(char **, char **, int);
+};
+
+struct S {
+    State *state;
+    int f(std::basic_streambuf<char, std::char_traits<char> > *, char *, int);
+};
+
+int S::f(std::basic_streambuf<char, std::char_traits<char> > *source,
+         char *destination, int length)
 {
-	KillTimer();
+    if (!(state->flags & 1)) {
+        state->flags |= 1;
+        Buffer &buffer = state->buffer;
+        buffer.next = buffer.data;
+        buffer.end = buffer.data;
+    }
+
+    int mode = ((~(state->flags >> 2)) & 1) | 4;
+    char *output = destination;
+    char *output_end = destination + length;
+    char **end = &state->buffer.end;
+    char **next = &state->buffer.next;
+
+    for (;;) {
+        bool finishing = mode == 4;
+
+        if (*next != *end || finishing) {
+            char *input = *next;
+            State *current = state;
+            current->before(&input, *end, &output, output_end);
+            int result = current->inflate(finishing ? finish_mode : normal_mode);
+            current->after(&input, &output, 1);
+            check_status(result);
+            bool done = result == stream_end;
+            *next = input;
+
+            if (done) {
+                int count = output - destination;
+                return count ? count : -1;
+            }
+        }
+
+        if (mode == 6 && *next == *end)
+            break;
+        if (output == output_end)
+            break;
+
+        if (mode == 5) {
+            int size = state->buffer.size;
+            char *data = state->buffer.data;
+            int result = sgetn(source, data, size);
+            int count = result ? result : ((source->eof & 1) ? -1 : 0);
+
+            if (count == -1) {
+                mode = 4;
+                state->flags |= mode;
+            } else {
+                Buffer &buffer = state->buffer;
+                buffer.next = buffer.data;
+                buffer.end = buffer.data + count;
+                mode = 5 + (count != state->buffer.size);
+            }
+        }
+    }
+
+    return output - destination;
 }
-
-void CXTPCalendarController::CXTPDayInfoCache::KillTimer()
-{
-	if (m_uTimerID)
-	{
-		::KillTimer(NULL, m_uTimerID);
-		m_mapTimers.RemoveKey(m_uTimerID);
-		m_uTimerID = 0;
-	}
-}
-
-BOOL CXTPCalendarController::CXTPDayInfoCache::HasEvents(DATE dtDay)
-{
-	XTPDayInfo tmpDI;
-	if (m_mapDaysInfo.Lookup((long)dtDay, tmpDI))
-	{
-		UpdateDayInfo(dtDay, tmpDI.bHasEvents);
-		return tmpDI.bHasEvents;
-	}
-	else
-	{
-		_RequestToRefreshDays(dtDay, dtDay, m_uActivePriority);
-	}
-	return FALSE;
-}
-
-void CXTPCalendarController::CXTPDayInfoCache::Init(CXTPCalendarController* pOwner)
-{
-	ASSERT(pOwner);
-	m_pOwner = pOwner;
-}
-
-void CXTPCalendarController::CXTPDayInfoCache::Clear()
-{
-	m_mapDaysInfo.RemoveAll();
-	m_mapDaysToRefresh.RemoveAll();
-	m_uActivePriority = 1;
-
-	DBG_TRACE_DP_TIMER(_T("XTPCalendarController::DayInfoCache - CLEAR \n"));
-}
-
-UINT CXTPCalendarController::CXTPDayInfoCache::UpActivePriority()
-{
-	return ++m_uActivePriority;
-}
-
-void CXTPCalendarController::CXTPDayInfoCache::UpdateDayInfo(DATE dtDay, BOOL bHasEvents)
-{
-	XTPDayInfo tmpDI = {bHasEvents, (DATE)CXTPCalendarUtils::GetCurrentTime()};
-	m_mapDaysInfo[(long)dtDay] = tmpDI;
-}
-
-void CXTPCalendarController::CXTPDayInfoCache::ClearDays(COleDateTime dtDayFrom, COleDateTime dtDayTo)
-{
-	long nDay = min((long)dtDayFrom, (long)dtDayTo);
-	long nDay2 = max((long)dtDayFrom, (long)dtDayTo);
-	for (; nDay <= nDay2; nDay++)
-	{
-		m_mapDaysInfo.RemoveKey(nDay);
-	}
-
-	DBG_TRACE_DP_TIMER(_T("XTPCalendarController::DayInfoCache - Clear days (%s - %s) \n"), (LPCTSTR)dtDayFrom.Format(), (LPCTSTR)dtDayTo.Format());
-}
-
-void CXTPCalendarController::CXTPDayInfoCache::RequestToRefreshDays(COleDateTime dtDayFrom, COleDateTime dtDayTo)
-{
-	m_uActivePriority++;
-
-	DBG_TRACE_DP_TIMER(_T("XTPCalendarController::DayInfoCache - RequestToRefreshDays (%s - %s). ActivePriority = %d \n"),
-					(LPCTSTR)dtDayFrom.Format(), (LPCTSTR)dtDayTo.Format(), m_uActivePriority);
-
-	_RequestToRefreshDays(dtDayFrom, dtDayTo, m_uActivePriority);
-}
-
-void CXTPCalendarController::CXTPDayInfoCache::_RequestToRefreshDays(COleDateTime dtDayFrom, COleDateTime dtDayTo, UINT uPriority)
-{
-	ASSERT(m_pOwner);
-	if (!m_pOwner)
-	{
-		return;
-	}
-
-	long nDay = min((long)dtDayFrom, (long)dtDayTo);
-	long nDay2 = max((long)dtDayFrom, (long)dtDayTo);
-
-	// WARNING! - Ooo... The days range is too large!
-	ASSERT(nDay2 - nDay < 10*1000);
-
-	for (; nDay <= nDay2; nDay++)
-	{
-		m_mapDaysToRefresh[nDay] = uPriority;
-	}
-
-	if (m_mapDaysToRefresh.GetCount() && m_uTimerID == 0)
-	{
-		UINT uTimeOut = (UINT)m_pOwner->m_nBoldDaysIdleStepTime_ms;
-
-		m_uTimerID = ::SetTimer(NULL, 0, uTimeOut, OnTimerCallback);
-		m_mapTimers[m_uTimerID] = this;
-
-		DBG_TRACE_DP_TIMER(_T("XTPCalendarController::DayInfoCache - _RequestToRefreshDays, SetTimer (ID = %d) \n"), m_uTimerID);
-	}
-}
-
-void CXTPCalendarController::CXTPDayInfoCache::OnRefreshDays(int nDaysCountToRefresh)
-{
-	ASSERT(m_pOwner);
-
-	if (!XTP_SAFE_GET1(m_pOwner, m_pResourcesNf, NULL))
-	{
-		if (!m_dwWaitingDataTime)
-		{
-			m_dwWaitingDataTime = GetTickCount();
-			DBG_TRACE_DP_TIMER(_T("XTPCalendarController::DayInfoCache - OnRefreshDays, Start Wait for data\n"));
-		}
-
-		if (abs((long)(GetTickCount() - m_dwWaitingDataTime)) >= 5000)
-		{
-			m_dwWaitingDataTime = 0;
-
-			if (m_uTimerID)
-			{
-				DBG_TRACE_DP_TIMER(_T("XTPCalendarController::DayInfoCache - OnRefreshDays, KillTimer (ID = %d) \n"), m_uTimerID);
-				DBG_TRACE_DP_TIMER(_T("XTPCalendarController::DayInfoCache - OnRefreshDays, end Wait for data\n"));
-
-				KillTimer();
-
-				OnSelfClearOld();
-			}
-		}
-		return;
-	}
-	else
-	{
-		if (m_dwWaitingDataTime)
-		{
-			DBG_TRACE_DP_TIMER(_T("XTPCalendarController::DayInfoCache - OnRefreshDays, end Wait for data\n"));
-		}
-		m_dwWaitingDataTime = 0;
-	}
-
-	//***************************************************
-	for (int i = 0; i < nDaysCountToRefresh; i++)
-	{
-		long nDay_min = LONG_MAX;
-		UINT uPriority_max = 0;
-
-		POSITION pos = m_mapDaysToRefresh.GetStartPosition();
-		while (pos)
-		{
-			long nDay = 0;
-			UINT uPriority = 0;
-			m_mapDaysToRefresh.GetNextAssoc(pos, nDay, uPriority);
-
-			if (uPriority == uPriority_max && nDay < nDay_min ||
-				uPriority > uPriority_max)
-			{
-				uPriority_max = uPriority;
-				nDay_min = nDay;
-			}
-		}
-
-		if (nDay_min < LONG_MAX)
-		{
-			m_mapDaysToRefresh.RemoveKey(nDay_min);
-
-			COleDateTime dtDay((DATE)nDay_min);
-			BOOL bHasEvents = XTP_SAFE_GET1(m_pOwner, _HasEvents(dtDay), FALSE);
-
-			UpdateDayInfo(dtDay, bHasEvents);
-		}
-	}
-	//***************************************************
-
-	if (m_mapDaysToRefresh.GetCount() == 0 && m_uTimerID)
-	{
-		DBG_TRACE_DP_TIMER(_T("XTPCalendarController::DayInfoCache - OnRefreshDays, KillTimer (ID = %d) \n"), m_uTimerID);
-		DBG_TRACE_DP_TIMER(_T("XTPCalendarController::DayInfoCache - Days In Cache %d \n"), m_mapDaysInfo.GetCount());
-
-		KillTimer();
-
-		OnSelfClearOld();
-	}
-
-	if (abs((long)(GetTickCount() - m_dwLastRedrawTime)) >= 500 || m_uTimerID == 0)
-	{
-		XTP_SAFE_CALL2(m_pOwner, m_pDatePickerCtrl, RedrawControl());
-		m_dwLastRedrawTime = GetTickCount();
-	}
-}
-void CXTPCalendarController::CXTPDayInfoCache::OnSelfClearOld()
-{
-
-#ifdef _DEBUG
-	int nUpdateTime_ms = 20 * 1000;
-	COleDateTimeSpan spCachePeriod(0, 0, 1, 0); // 1 min
-#else
-	int nUpdateTime_ms = 5 * 60 * 1000; // 5 min
-	COleDateTimeSpan spCachePeriod(0, 1, 0, 0); // 1 hour
-#endif
-
-	if (abs((long)(GetTickCount() - m_dwLastSelfClearTime)) < nUpdateTime_ms)
-	{
-		return;
-	}
-	m_dwLastSelfClearTime = ::GetTickCount();
-
-	COleDateTime dtOldTime = CXTPCalendarUtils::GetCurrentTime();
-	dtOldTime -= spCachePeriod;
-
-	DBG_TRACE_DP_TIMER(_T("XTPCalendarController::DayInfoCache - OnSelfClear, Start. Days In Cache %d \n"), m_mapDaysInfo.GetCount());
-
-	POSITION pos = m_mapDaysInfo.GetStartPosition();
-	while (pos)
-	{
-		long nDay = 0;
-		XTPDayInfo tmpDI;
-
-		m_mapDaysInfo.GetNextAssoc(pos, nDay, tmpDI);
-		if (tmpDI.dtLastAccessTime < dtOldTime)
-		{
-			m_mapDaysInfo.RemoveKey(nDay);
-		}
-	}
-
-	DBG_TRACE_DP_TIMER(_T("XTPCalendarController::DayInfoCache - OnSelfClear, End. Days In Cache %d \n"), m_mapDaysInfo.GetCount());
-}
-
-VOID CALLBACK CXTPCalendarController::CXTPDayInfoCache::OnTimerCallback(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime)
-{
-	UNREFERENCED_PARAMETER(hwnd);
-	UNREFERENCED_PARAMETER(uMsg);
-	UNREFERENCED_PARAMETER(dwTime);
-
-	CXTPDayInfoCache* pThis = m_mapTimers[idEvent];
-	ASSERT(pThis && pThis->m_pOwner);
-
-	if (pThis && pThis->m_pOwner)
-	{
-		//***********************
-		SAFE_MANAGE_STATE(pThis->m_pOwner->m_pModuleState);
-		//***********************
-
-		pThis->OnRefreshDays(pThis->m_pOwner->m_nBoldDaysPerIdleStep);
-	}
-}
-
-
-//////////////////////////////////////////////////////////////////////////
-
-CXTPCalendarController::CXTPCalendarController()
-{
-	m_pSink = new CXTPNotifySink();
-
-	m_pCalendarCtrl = NULL;
-	m_pDatePickerCtrl = NULL;
-	m_bAdjustingView = FALSE;
-
-	m_bBoldDaysWithEvents = TRUE;
-
-	m_bBoldDaysOnIdle = TRUE;
-	m_nBoldDaysPerIdleStep = XTP_CC_REFRESH_DAYS_STEP_DAYS;
-	m_nBoldDaysIdleStepTime_ms = XTP_CC_REFRESH_DAYS_STEP_TIMER_MS;
-
-	m_bUseActiveViewResoucesForBold = FALSE;
-
-	m_pResourcesNf = NULL;
-	m_eLastActiveView = -1;
-
-	m_cnidEventAdded = 0;
-	m_cnidEventChanged = 0;
-	m_cnidEventDeleted = 0;
-
-	m_DayInfoCache.Init(this);
-}
-
-CXTPCalendarController::~CXTPCalendarController()
-{
-	CMDTARGET_RELEASE(m_pCalendarCtrl);
-	CMDTARGET_RELEASE(m_pDatePickerCtrl);
-	CMDTARGET_RELEASE(m_pResourcesNf);
-
-	m_pSink->Delete();
-}
-
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTPCalendarController message handlers
-
-void CXTPCalendarController::AdviseToNotifications()
-{
-	m_pSink->UnadviseAll();
-
-	m_cnidEventAdded = 0;
-	m_cnidEventChanged = 0;
-	m_cnidEventDeleted = 0;
-
-	CMDTARGET_RELEASE(m_pResourcesNf);
-
-	// Advise to Calendar notifications
-	if (m_pCalendarCtrl)
-	{
-		CXTPNotifyConnection* pConnection = m_pCalendarCtrl ? m_pCalendarCtrl->GetConnection() : NULL;
-		ASSERT(pConnection);
-
-		if (!pConnection)
-		{
-			return;
-		}
-
-		m_pSink->Advise(pConnection, XTP_NC_CALENDARVIEWWASCHANGED, CreateNotfySinkClassDelegate(this, &CXTPCalendarController::OnEvent_CalendarView));
-		m_pSink->Advise(pConnection, XTP_NC_CALENDAROPTIONSWASCHANGED, CreateNotfySinkClassDelegate(this, &CXTPCalendarController::OnEvent_CalendarOptionsChanged));
-		m_pSink->Advise(pConnection, XTP_NC_CALENDAR_RESOURCES_WHERE_CHANGED, CreateNotfySinkClassDelegate(this, &CXTPCalendarController::OnEvent_CalendarResourcesChanged));
-		m_pSink->Advise(pConnection, XTP_NC_CALENDAR_THEME_CHANGED, CreateNotfySinkClassDelegate(this, &CXTPCalendarController::OnEvent_CalendarThemeChanged));
-	}
-
-	// Advise to Date Picker notifications
-	if (m_pDatePickerCtrl)
-	{
-		CXTPNotifyConnection* pConnection = m_pDatePickerCtrl ? m_pDatePickerCtrl->GetConnection() : NULL;
-		ASSERT(pConnection);
-
-		if (!pConnection)
-		{
-			return;
-		}
-
-		m_pSink->Advise(pConnection, XTP_NC_DATEPICKERBUTTONCLICKED, CreateNotfySinkClassDelegate(this, &CXTPCalendarController::OnEvent_DatePicker));
-		m_pSink->Advise(pConnection, XTP_NC_DATEPICKERSELECTIONCHANGED, CreateNotfySinkClassDelegate(this, &CXTPCalendarController::OnEvent_DatePicker));
-		m_pSink->Advise(pConnection, XTP_NC_DATEPICKERBEFOREGOMODAL, CreateNotfySinkClassDelegate(this, &CXTPCalendarController::OnEvent_DatePicker));
-		m_pSink->Advise(pConnection, XTP_NC_DATEPICKERMONTHCHANGED, CreateNotfySinkClassDelegate(this, &CXTPCalendarController::OnEvent_DatePicker));
-		m_pSink->Advise(pConnection, XTP_NC_DATEPICKERGETDAYMETRICS, CreateNotfySinkClassDelegate(this, &CXTPCalendarController::OnEvent_DtPickGetItemMetrics));
-	}
-}
-
-void CXTPCalendarController::_AdviseToDataChanged()
-{
-	ASSERT(m_pResourcesNf);
-	if (!m_pResourcesNf)
-	{
-		return;
-	}
-
-	CXTPNotifyConnection* pConnection = m_pResourcesNf->GetConnection();
-	ASSERT(pConnection);
-
-	if (!pConnection)
-	{
-		return;
-	}
-
-	m_cnidEventAdded = m_pSink->Advise(pConnection, XTP_NC_CALENDAREVENTWASADDED, CreateNotfySinkClassDelegate(this, &CXTPCalendarController::OnEvent_CalendarDataChanged));
-	m_cnidEventChanged = m_pSink->Advise(pConnection, XTP_NC_CALENDAREVENTWASCHANGED, CreateNotfySinkClassDelegate(this, &CXTPCalendarController::OnEvent_CalendarDataChanged));
-	m_cnidEventDeleted = m_pSink->Advise(pConnection, XTP_NC_CALENDAREVENTWASDELETED, CreateNotfySinkClassDelegate(this, &CXTPCalendarController::OnEvent_CalendarDataChanged));
-}
-
-void CXTPCalendarController::_UnadviseFromDataChanged()
-{
-	if (m_cnidEventAdded)
-	{
-		m_pSink->Unadvise(m_cnidEventAdded);
-	}
-
-	if (m_cnidEventChanged)
-	{
-		m_pSink->Unadvise(m_cnidEventChanged);
-	}
-
-	if (m_cnidEventDeleted)
-	{
-		m_pSink->Unadvise(m_cnidEventDeleted);
-	}
-
-	m_cnidEventAdded = 0;
-	m_cnidEventChanged = 0;
-	m_cnidEventDeleted = 0;
-}
-
-//BOOL CXTPCalendarController::IsFirstDayOfWeekShifted_FromSun2Mon()
-//{
-//  if (!m_pCalendarCtrl || !m_pCalendarCtrl->GetActiveView())
-//      return FALSE;
-//
-//  int nViewType = m_pCalendarCtrl->GetActiveView()->GetViewType();
-//  if (nViewType == xtpCalendarMonthView)
-//  {
-//      if (m_pCalendarCtrl->MonthView_IsCompressWeekendDays())
-//      {
-//          if (m_pCalendarCtrl->GetFirstDayOfWeek() == 1)
-//              return TRUE;
-//      }
-//  }
-//  else if (nViewType == xtpCalendarWeekView)
-//  {
-//      if (m_pCalendarCtrl->GetFirstDayOfWeek() == 1)
-//          return TRUE;
-//  }
-//  return FALSE;
-//}
-
-void CXTPCalendarController::OnEvent_CalendarView(XTP_NOTIFY_CODE Event, WPARAM /*wParam*/, LPARAM lParam)
-{
-	if (!XTP_NC_CALENDARVIEWWASCHANGED == Event)
-	{
-		ASSERT(FALSE);
-		return;
-	}
-	if (m_bAdjustingView)
-	{
-		return;
-	}
-
-	if (m_pDatePickerCtrl && m_pCalendarCtrl)
-	{
-		CXTPCalendarView* pView = m_pCalendarCtrl->GetActiveView();
-		if (!pView)
-			return;
-
-		int nViewTypeX = pView->GetViewType();
-
-		if (nViewTypeX == xtpCalendarWorkWeekView)
-			nViewTypeX = xtpCalendarDayView;
-
-		if (m_eLastActiveView != nViewTypeX)
-		{
-			m_eLastActiveView = nViewTypeX;
-			CMDTARGET_RELEASE(m_pResourcesNf);
-			_UnadviseFromDataChanged();
-
-			if (m_bBoldDaysOnIdle)
-			{
-				COleDateTime dtFirstVisibleDay, dtLastVisibleDay;
-				if (m_pDatePickerCtrl->GetVisibleRange(dtFirstVisibleDay, dtLastVisibleDay))
-				{
-					m_DayInfoCache.RequestToRefreshDays(dtFirstVisibleDay, dtLastVisibleDay);
-				}
-			}
-		}
-
-		COleDateTimeSpan spCompressCorrector(0, 0, 0, 0);
-		//if (IsFirstDayOfWeekShifted_FromSun2Mon())
-		//  spCompressCorrector.SetDateTimeSpan(-1, 0, 0, 0);
-
-		int nCount = pView->GetViewDayCount();
-		if (nCount > 0)
-		{
-			COleDateTime dtDay = m_pCalendarCtrl->GetActiveView()->GetViewDayDate(0);
-			dtDay += spCompressCorrector;
-			m_pDatePickerCtrl->SetSelRange(dtDay, dtDay);
-		}
-
-		for (int i = 1; i < nCount; i++)
-		{
-			COleDateTime dtDay = m_pCalendarCtrl->GetActiveView()->GetViewDayDate(i);
-			dtDay += spCompressCorrector;
-			m_pDatePickerCtrl->Select(dtDay);
-		}
-
-		if (lParam != XTP_CC_DONT_SCROLL_DP)
-			m_pDatePickerCtrl->EnsureVisibleSelection();
-
-		if (::IsWindow(m_pDatePickerCtrl->GetSafeHwnd()))
-		{
-			m_pDatePickerCtrl->RedrawControl();
-			m_pDatePickerCtrl->UpdateWindow();
-		}
-	}
-}
-
-void CXTPCalendarController::OnEvent_DatePicker(XTP_NOTIFY_CODE Event, WPARAM wParam, LPARAM /*lParam*/)
-{
-	wParam;
-
-	switch (Event)
-	{
-	case XTP_NC_DATEPICKERBEFOREGOMODAL:
-		if (m_pDatePickerCtrl && m_pCalendarCtrl)
-		{
-			OnEvent_CalendarView(XTP_NC_CALENDARVIEWWASCHANGED, 0, 0);
-		}
-		break;
-	case XTP_NC_DATEPICKERBUTTONCLICKED:
-		DBG_TRACE_DP_NF(_T("OnEvent: DatePickerButtonClicked - ID = %u.     {CalendarController}. \n"), wParam);
-		break;
-	case XTP_NC_DATEPICKERMONTHCHANGED:
-		m_DayInfoCache.UpActivePriority();
-		break;
-	case XTP_NC_DATEPICKERSELECTIONCHANGED:
-		DBG_TRACE_DP_NF(_T("OnEvent: XTP_NC_DATEPICKERSELECTIONCHANGED.     {CalendarController}. \n"));
-		if (m_pDatePickerCtrl && m_pCalendarCtrl && m_pCalendarCtrl->GetActiveView())
-		{
-			BOOL bFastMode = m_pCalendarCtrl->m_bSwitchToDayViewIfPickedSingleDay;
-			BOOL bChanged = FALSE;
-
-			COleDateTime dtFrom;
-			COleDateTime dtTo;
-			if (m_pDatePickerCtrl->GetSelRange(dtFrom, dtTo))
-			{
-				int nFirstDayOfWeekIndex = m_pDatePickerCtrl->GetFirstDayOfWeek();
-				int nFirstDayOfWeek = dtFrom.GetDayOfWeek();
-				BOOL bWeekStart = (nFirstDayOfWeekIndex == nFirstDayOfWeek);
-
-				CXTPCalendarControl::CUpdateContext updateContext(m_pCalendarCtrl);
-
-				int nSelRangeDays = CXTPCalendarUtils::GetTotalDays(dtTo - dtFrom) + 1;
-				// count selected days
-				int nSelDays = 0;
-				COleDateTimeSpan spDay(1, 0, 0, 0);
-				for (COleDateTime dtDay = dtFrom; dtDay <= dtTo; dtDay += spDay)
-				{
-					if (m_pDatePickerCtrl->IsSelected(dtDay))
-						nSelDays++;
-				}
-				BOOL bDaysCont = (nSelRangeDays == nSelDays);
-//LOGIC TO SELECT VIEW TYPE <<
-				// Day view
-				int eViewMode = XTP_SAFE_GET2(m_pCalendarCtrl, GetActiveView(), GetViewType(), xtpCalendarDayView);
-
-				if (eViewMode == xtpCalendarTimeLineView)
-				{
-					CXTPCalendarTimeLineView* pView = (CXTPCalendarTimeLineView* ) m_pCalendarCtrl->GetActiveView();
-					if (pView)
-					{
-						pView->SetStartViewDate(dtFrom);
-						if (nSelRangeDays == 1)
-							pView->SetTimeScaleID(xtpTSPID_Day);
-						else if (nSelRangeDays <= 5)
-							pView->SetTimeScaleID(xtpTSPID_WorkWeek);
-						else if (nSelRangeDays <= 7)
-							pView->SetTimeScaleID(xtpTSPID_Week);
-						else
-							pView->SetTimeScaleID(xtpTSPID_Month);
-					}
-
-					return;
-				}
-
-				if (nSelRangeDays <= nXTPMaxDayViewDays ||
-					!bDaysCont || !bWeekStart && nSelRangeDays <= 8)
-				{
-					m_bAdjustingView = TRUE;
-
-					// to save WorkWeek view mode
-
-					//if (eViewMode != xtpCalendarWorkWeekView || nSelDays != 1)
-					if (bFastMode &&
-						((eViewMode != xtpCalendarWorkWeekView)
-						&& (eViewMode != xtpCalendarFullWeekView))
-						|| nSelDays != 1)
-						eViewMode = xtpCalendarDayView;
-
-					if (eViewMode == xtpCalendarMonthView)
-					{
-						CXTPCalendarMonthView* pMonthView = DYNAMIC_DOWNCAST(CXTPCalendarMonthView, m_pCalendarCtrl->GetActiveView());
-						if (pMonthView)
-						{
-							pMonthView->SelectDay(dtFrom);
-							CXTPCalendarControl::CViewChangedContext viewChanged(m_pCalendarCtrl, xtpCalendarViewChangedLock);
-							COleDateTime dtBegin = dtFrom;
-							// Calculate weeks count
-							COleDateTime dtWeekFromBegin = pMonthView->GetGrid()->ShiftDateToCell_00(dtFrom);
-							COleDateTime dtWeekToEnd = pMonthView->GetGrid()->ShiftDateToCell_00(dtTo);
-							dtWeekToEnd += COleDateTimeSpan(7, 0, 0, 0);
-							int nSelectedWeeksRange = CXTPCalendarUtils::GetTotalDays(dtWeekToEnd - dtWeekFromBegin);
-
-							int nWeeks = nSelectedWeeksRange / 7;
-							nWeeks = max(XTP_CALENDAR_MONTHVIEW_SHOW_WEEKS_MIN, nWeeks);
-							nWeeks = min(XTP_CALENDAR_MONTHVIEW_SHOW_WEEKS_MAX, nWeeks);
-
-							pMonthView->GetGrid()->SetBeginDate(dtBegin);
-							pMonthView->GetGrid()->SetWeeksCount(nWeeks);
-
-							m_pCalendarCtrl->Populate();
-						}
-					}
-					else if ((eViewMode == xtpCalendarWorkWeekView)
-						|| (eViewMode == xtpCalendarFullWeekView)
-						|| (eViewMode == xtpCalendarWeekView))
-					{
-						CXTPCalendarDayView* pDayView = DYNAMIC_DOWNCAST(CXTPCalendarDayView, m_pCalendarCtrl->GetActiveView());
-						if (pDayView)
-						{
-							pDayView->UnselectAllEvents();
-
-							COleDateTime dtWWStart;
-							m_pCalendarCtrl->GetWorkDayStartTime(dtWWStart);
-							dtWWStart = CXTPCalendarUtils::UpdateDate(dtWWStart, dtFrom);
-
-							pDayView->SetSelection(dtWWStart, dtWWStart + pDayView->GetCellDuration());
-						}
-						else
-						{
-							CXTPCalendarWeekView* pWeekView = DYNAMIC_DOWNCAST(CXTPCalendarWeekView, m_pCalendarCtrl->GetActiveView());
-							if (pWeekView)
-							{
-								pWeekView->SelectDay(dtFrom);
-								pWeekView->SetBeginDate(dtFrom);
-								m_pCalendarCtrl->Populate();
-							}
-						}
-					}
-
-					//*** switch calendar view
-					m_pCalendarCtrl->SwitchActiveView((XTPCalendarViewType)eViewMode);
-					//***
-
-					CXTPCalendarDayView* pDayView = DYNAMIC_DOWNCAST(CXTPCalendarDayView, m_pCalendarCtrl->GetActiveView());
-
-					// DayView - set visible days
-					if (pDayView && eViewMode == xtpCalendarDayView)
-					{
-						COleDateTime dtSelStart, dtSelEnd;
-						BOOL bAllDay = FALSE;
-						BOOL bSel = pDayView->GetSelection(&dtSelStart, &dtSelEnd, &bAllDay);
-						if (bSel)
-						{
-							COleDateTimeSpan spSel = dtSelEnd - dtSelStart;
-							COleDateTimeSpan spSelMin = pDayView->GetCellDuration();
-							if (spSel < spSelMin)
-								bSel = FALSE;
-						}
-						if (!bSel)
-						{
-							m_pCalendarCtrl->GetWorkDayStartTime(dtSelStart);
-							dtSelEnd = dtSelStart + pDayView->GetCellDuration();
-							bAllDay = FALSE;
-						}
-						dtSelStart = CXTPCalendarUtils::UpdateDate(dtSelStart, dtFrom);
-						dtSelEnd = CXTPCalendarUtils::UpdateDate(dtSelEnd, dtFrom);
-
-						pDayView->ShowDay(dtFrom);
-
-						pDayView->SetSelection(dtSelStart, dtSelEnd, bAllDay);
-
-						// add other selected days to calendar view
-						for (COleDateTime dtDay(dtFrom + spDay); dtDay <= dtTo; dtDay += spDay)
-						{
-							if (m_pDatePickerCtrl->IsSelected(dtDay))
-								pDayView->AddDay(dtDay); // add it to Calendar View
-						}
-						m_pCalendarCtrl->Populate();
-					}
-					m_bAdjustingView = FALSE;
-
-					bChanged = TRUE;
-				}
-				// Week view
-				else if (nSelRangeDays == 7 && bDaysCont)
-				{
-					COleDateTime dtBegin = dtFrom;
-
-					m_bAdjustingView = TRUE;
-
-					if (m_pCalendarCtrl->m_bMultiColumnWeekMode)
-						m_pCalendarCtrl->SwitchActiveView(xtpCalendarFullWeekView);
-					else
-						m_pCalendarCtrl->SwitchActiveView(xtpCalendarWeekView);
-
-					CXTPCalendarWeekView* pWeekView = DYNAMIC_DOWNCAST(CXTPCalendarWeekView, m_pCalendarCtrl->GetActiveView());
-					if (pWeekView)
-					{
-						pWeekView->SetBeginDate(dtBegin);
-
-						m_pCalendarCtrl->Populate();
-					}
-					else if (m_pCalendarCtrl->m_bMultiColumnWeekMode)
-					{
-						CXTPCalendarDayView* pWeekDayView = DYNAMIC_DOWNCAST(CXTPCalendarDayView, m_pCalendarCtrl->GetActiveView());
-						if (pWeekDayView)
-						{
-							pWeekDayView->ShowDays(dtBegin, dtTo);
-
-							m_pCalendarCtrl->Populate();
-						}
-					}
-					m_bAdjustingView = FALSE;
-
-					bChanged = TRUE;
-				}
-				// Month view
-				else
-				{
-					ASSERT(nSelRangeDays == nSelDays && nSelRangeDays > 7);
-
-					m_bAdjustingView = TRUE;
-
-					m_pCalendarCtrl->SwitchActiveView(xtpCalendarMonthView);
-					CXTPCalendarMonthView* pMonthView = DYNAMIC_DOWNCAST(CXTPCalendarMonthView, m_pCalendarCtrl->GetActiveView());
-					if (pMonthView)
-					{
-						CXTPCalendarControl::CViewChangedContext viewChanged(m_pCalendarCtrl, xtpCalendarViewChangedLock);
-						COleDateTime dtBegin = dtFrom;
-						// Calculate weeks count
-						COleDateTime dtWeekFromBegin = pMonthView->GetGrid()->ShiftDateToCell_00(dtFrom);
-						COleDateTime dtWeekToEnd = pMonthView->GetGrid()->ShiftDateToCell_00(dtTo);
-						dtWeekToEnd += COleDateTimeSpan(7, 0, 0, 0);
-						int nSelectedWeeksRange = CXTPCalendarUtils::GetTotalDays(dtWeekToEnd - dtWeekFromBegin);
-
-						int nWeeks = nSelectedWeeksRange / 7;
-						nWeeks = max(XTP_CALENDAR_MONTHVIEW_SHOW_WEEKS_MIN, nWeeks);
-						nWeeks = min(XTP_CALENDAR_MONTHVIEW_SHOW_WEEKS_MAX, nWeeks);
-
-						pMonthView->GetGrid()->SetBeginDate(dtBegin);
-						pMonthView->GetGrid()->SetWeeksCount(nWeeks);
-
-						m_pCalendarCtrl->Populate();
-					}
-					m_bAdjustingView = FALSE;
-
-					bChanged = TRUE;
-				}
-//LOGIC TO SELECT VIEW TYPE <<
-				if (bChanged)
-				{
-					OnEvent_CalendarView(XTP_NC_CALENDARVIEWWASCHANGED, 0, XTP_CC_DONT_SCROLL_DP);
-
-					if (m_pDatePickerCtrl->IsModal())
-					{
-						m_pCalendarCtrl->Invalidate(FALSE);
-						m_pCalendarCtrl->RedrawControl();
-					}
-				}
-			}
-		}
-		break;
-	default:
-		ASSERT(FALSE);
-	}
-}
-
-void CXTPCalendarController::OnEvent_CalendarOptionsChanged(XTP_NOTIFY_CODE Event, WPARAM wParam, LPARAM /*lParam*/)
-{
-	if (Event != XTP_NC_CALENDAROPTIONSWASCHANGED)
-	{
-		ASSERT(FALSE);
-		return;
-	}
-
-	if ((int) wParam < 0)
-		SetFirstDayOfWeekToDatePicker();
-}
-
-void CXTPCalendarController::OnEvent_CalendarResourcesChanged(XTP_NOTIFY_CODE Event, WPARAM /*wParam*/, LPARAM /*lParam*/)
-{
-	if (Event != XTP_NC_CALENDARDATAPROVIDERWASCHANGED)
-	{
-		ASSERT(FALSE);
-		return;
-	}
-
-	CMDTARGET_RELEASE(m_pResourcesNf);
-	_UnadviseFromDataChanged();
-
-	m_DayInfoCache.Clear();
-}
-
-void CXTPCalendarController::OnEvent_CalendarThemeChanged(XTP_NOTIFY_CODE Event, WPARAM /*wParam*/, LPARAM /*lParam*/)
-{
-	if (Event != XTP_NC_CALENDAR_THEME_CHANGED)
-	{
-		ASSERT(FALSE);
-		return;
-	}
-
-	if (m_pCalendarCtrl && m_pDatePickerCtrl)
-	{
-		if (m_pDatePickerCtrl->GetPaintTheme() != m_pCalendarCtrl->GetPaintTheme())
-		{
-			m_pDatePickerCtrl->SetPaintTheme(m_pCalendarCtrl->GetPaintTheme());
-		}
-	}
-
-}
-
-void CXTPCalendarController::OnEvent_CalendarDataChanged(XTP_NOTIFY_CODE Event, WPARAM /*wParam*/, LPARAM lParam)
-{
-	if (!m_pDatePickerCtrl)
-	{
-		return;
-	}
-
-	if (Event != XTP_NC_CALENDAREVENTWASADDED &&
-		Event != XTP_NC_CALENDAREVENTWASCHANGED&&
-		Event != XTP_NC_CALENDAREVENTWASDELETED)
-	{
-		ASSERT(FALSE);
-		return;
-	}
-
-	COleDateTime dtFirstVisibleDay, dtLastVisibleDay;
-
-	BOOL bRes = m_pDatePickerCtrl->GetVisibleRange(dtFirstVisibleDay, dtLastVisibleDay);
-	if (!bRes)
-	{
-		return;
-	}
-
-	CXTPCalendarEvent* pEvent = (CXTPCalendarEvent*)lParam;
-	if (!pEvent)
-	{
-		return;
-	}
-
-	if (Event == XTP_NC_CALENDAREVENTWASADDED ||
-		Event == XTP_NC_CALENDAREVENTWASDELETED)
-	{
-		if (CXTPCalendarUtils::ResetTime(pEvent->GetStartTime()) > dtLastVisibleDay ||
-			CXTPCalendarUtils::ResetTime(pEvent->GetEndTime()) < dtFirstVisibleDay )
-		{
-			return; // xtpCalendar_Skip;
-		}
-
-		if (m_bBoldDaysOnIdle)
-		{
-			m_DayInfoCache.ClearDays(pEvent->GetStartTime(), pEvent->GetEndTime());
-		}
-	}
-	else
-	{
-		if (m_bBoldDaysOnIdle)
-		{
-			m_DayInfoCache.RequestToRefreshDays(dtFirstVisibleDay, dtLastVisibleDay);
-
-			COleDateTime dtFom = max(dtFirstVisibleDay, pEvent->GetStartTime());
-			COleDateTime dtTo = min(dtLastVisibleDay, pEvent->GetEndTime());
-			m_DayInfoCache.RequestToRefreshDays(dtFom, dtTo);
-		}
-	}
-
-	m_pDatePickerCtrl->_RedrawControl(FALSE);
-}
-
-void CXTPCalendarController::SetFirstDayOfWeekToDatePicker()
-{
-	if (m_pDatePickerCtrl && m_pCalendarCtrl)
-	{
-		int nFirstDayOfWeekIndex = m_pCalendarCtrl->GetFirstDayOfWeek();
-//<<<
-		int nOldFirstDayOfWeekIndex = m_pDatePickerCtrl->GetFirstDayOfWeek();
-
-		COleDateTime dt1, dt2;
-		m_pDatePickerCtrl->GetSelRange(dt1, dt2);
-		dt1 += COleDateTimeSpan(nFirstDayOfWeekIndex - nOldFirstDayOfWeekIndex, 0, 0, 0);
-		dt2 += COleDateTimeSpan(nFirstDayOfWeekIndex - nOldFirstDayOfWeekIndex, 0, 0, 0);
-
-		int nViewType = m_pCalendarCtrl->GetActiveView()->GetViewType();
-		if (nViewType == xtpCalendarWeekView)
-			m_pDatePickerCtrl->SetSelRange(dt1, dt2);
-//>>>
-		m_pDatePickerCtrl->SetFirstDayOfWeek(nFirstDayOfWeekIndex);
-	}
-}
-
-void CXTPCalendarController::OnEvent_DtPickGetItemMetrics(XTP_NOTIFY_CODE Event, WPARAM wParam, LPARAM lParam)
-{
-	if (Event != XTP_NC_DATEPICKERGETDAYMETRICS)
-	{
-		ASSERT(FALSE);
-		return;
-	}
-	if (!m_bBoldDaysWithEvents)
-	{
-		return;
-	}
-
-	const COleDateTime dtDay = (DATE)(XTP_DATE_VALUE)wParam;
-	XTP_DAYITEM_METRICS* pDayItemMetrics = (XTP_DAYITEM_METRICS*)lParam;
-	ASSERT(pDayItemMetrics);
-
-	if (!pDayItemMetrics || !m_pCalendarCtrl || !m_pDatePickerCtrl)
-	{
-		return;
-	}
-
-	if (!m_pResourcesNf)
-	{
-		m_pResourcesNf = new CXTPCalendarResourcesNf();
-		if (!m_pResourcesNf)
-		{
-			return;
-		}
-		CXTPCalendarResources* pRC0 = m_pCalendarCtrl->GetResources();
-		if (m_bUseActiveViewResoucesForBold)
-		{
-			pRC0 = m_pCalendarCtrl->GetActiveView()->GetResources();
-		}
-
-		m_pResourcesNf->Append(pRC0);
-
-		_AdviseToDataChanged();
-
-		m_pResourcesNf->ReBuildInternalData();
-	}
-
-	BOOL bHasEvents = FALSE;
-
-	if (m_bBoldDaysOnIdle)
-	{
-		bHasEvents = m_DayInfoCache.HasEvents(dtDay);
-	}
-	else
-	{
-		// check whether specified day has events
-		bHasEvents = _HasEvents(dtDay);
-	}
-
-	// make the day with events as bold
-	if (bHasEvents)
-	{
-		// set bold to day metrics
-		pDayItemMetrics->SetFont(m_pDatePickerCtrl->GetPaintManager()->GetDayTextFontBold());
-	}
-}
-BOOL CXTPCalendarController::_HasEvents(COleDateTime dtDay)
-{
-	ASSERT(m_pResourcesNf);
-	if (!m_pResourcesNf)
-	{
-		return FALSE;
-	}
-
-	const CXTPCalendarResources* pRCx = m_pResourcesNf->GetResourcesGroupedByDP();
-	int nRCCount = pRCx ? pRCx->GetCount() : 0;
-
-	for (int i = 0; i < nRCCount; i++)
-	{
-		CXTPCalendarResource* pRC = pRCx->GetAt(i);
-		ASSERT(pRC);
-		CXTPCalendarEventsPtr ptrEvents = pRC ? pRC->RetrieveDayEvents(dtDay) : NULL;
-		if (ptrEvents && ptrEvents->GetCount() > 0)
-		{
-			return TRUE;
-		}
-	}
-
-	return FALSE;
-}
-
-
-void CXTPCalendarController::SetCalendar(CXTPCalendarControl* pCalendarCtrl)
-{
-	m_pSink->UnadviseAll();
-
-	if (m_pCalendarCtrl)
-	{
-		m_pCalendarCtrl->InternalRelease();
-	}
-	m_pCalendarCtrl = pCalendarCtrl;
-	if (m_pCalendarCtrl)
-	{
-		m_pCalendarCtrl->InternalAddRef();
-
-		AdviseToNotifications();
-
-		SetFirstDayOfWeekToDatePicker();
-
-		OnEvent_CalendarThemeChanged(XTP_NC_CALENDAR_THEME_CHANGED, 0, 0);
-	}
-
-	if (m_pCalendarCtrl && m_pDatePickerCtrl)
-	{
-		m_eLastActiveView = -1; // to ensure update
-		OnEvent_CalendarView(XTP_NC_CALENDARVIEWWASCHANGED, 0, 0);
-	}
-}
-
-void CXTPCalendarController::SetDatePicker(CXTPDatePickerControl* pDatePickerCtrl)
-{
-	m_pSink->UnadviseAll();
-
-	if (m_pDatePickerCtrl)
-	{
-		m_pDatePickerCtrl->InternalRelease();
-	}
-	m_pDatePickerCtrl = pDatePickerCtrl;
-	if (m_pDatePickerCtrl)
-	{
-		m_pDatePickerCtrl->InternalAddRef();
-
-		m_pDatePickerCtrl->SetMaxSelCount(XTP_CALENDAR_MONTHVIEW_SHOW_WEEKS_MAX * 7);
-
-		AdviseToNotifications();
-
-		SetFirstDayOfWeekToDatePicker();
-
-		OnEvent_CalendarThemeChanged(XTP_NC_CALENDAR_THEME_CHANGED, 0, 0);
-	}
-
-	if (m_pCalendarCtrl && m_pDatePickerCtrl)
-	{
-		m_eLastActiveView = -1; // to ensure update
-		OnEvent_CalendarView(XTP_NC_CALENDARVIEWWASCHANGED, 0, 0);
-	}
-}
-
-CXTPCalendarControl* CXTPCalendarController::GetCalendar() const
-{
-	return m_pCalendarCtrl;
-}
-
-CXTPDatePickerControl* CXTPCalendarController::GetDatePicker() const
-{
-	return m_pDatePickerCtrl;
-}
-
-void CXTPCalendarController::SetBoldDaysWithEvents(BOOL bBold)
-{
-	m_bBoldDaysWithEvents = bBold;
-
-	if (m_pResourcesNf && !m_bBoldDaysWithEvents)
-	{
-		CMDTARGET_RELEASE(m_pResourcesNf);
-		m_eLastActiveView = -1;
-		_UnadviseFromDataChanged();
-
-		m_DayInfoCache.Clear();
-	}
 }

@@ -1,216 +1,110 @@
-// from server: 42% by colin
+// from server: 100% by Xemicl
+// roc 2012-06 007ab220  unit: RBX::VLighting::?$FactoryProduct  size: 194 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 007ab220
+//
+// 007ab220  6aff                 push -1
+// 007ab222  68b06dac00           push 0xac6db0
+// 007ab227  64a100000000         mov eax, dword ptr fs:[0]
+// 007ab22d  50                   push eax
+// 007ab22e  64892500000000       mov dword ptr fs:[0], esp
+// 007ab235  83ec58               sub esp, 0x58
+// 007ab238  8d4c2414             lea ecx, [esp + 0x14]
+// 007ab23c  ff15e824b200         call dword ptr [0xb224e8]
+// 007ab242  c744241410a9ba00     mov dword ptr [esp + 0x14], 0xbaa910
+// 007ab24a  8b442468             mov eax, dword ptr [esp + 0x68]
+// 007ab24e  83781810             cmp dword ptr [eax + 0x18], 0x10
+// 007ab252  c744246000000000     mov dword ptr [esp + 0x60], 0
+// 007ab25a  7205                 jb 0x7ab261
+// 007ab25c  8b4804               mov ecx, dword ptr [eax + 4]
+// 007ab25f  eb03                 jmp 0x7ab264
+// 007ab261  8d4804               lea ecx, [eax + 4]
+// 007ab264  8b4014               mov eax, dword ptr [eax + 0x14]
+// 007ab267  894c2450             mov dword ptr [esp + 0x50], ecx
+// 007ab26b  03c8                 add ecx, eax
+// 007ab26d  8d442468             lea eax, [esp + 0x68]
+// 007ab271  894c2454             mov dword ptr [esp + 0x54], ecx
+// 007ab275  50                   push eax
+// 007ab276  8d4c2418             lea ecx, [esp + 0x18]
+// 007ab27a  e861f7ffff           call 0x7aa9e0
+// 007ab27f  84c0                 test al, al
+// 007ab281  742b                 je 0x7ab2ae
+// 007ab283  56                   push esi
+// 007ab284  0fb774246c           movzx esi, word ptr [esp + 0x6c]
+// 007ab289  8d4c2418             lea ecx, [esp + 0x18]
+// 007ab28d  c7442464ffffffff     mov dword ptr [esp + 0x64], 0xffffffff
+// 007ab295  ff15b424b200         call dword ptr [0xb224b4]
+// 007ab29b  8b4c245c             mov ecx, dword ptr [esp + 0x5c]
+// 007ab29f  668bc6               mov ax, si
+// 007ab2a2  5e                   pop esi
+// 007ab2a3  64890d00000000       mov dword ptr fs:[0], ecx
+// 007ab2aa  83c464               add esp, 0x64
+// 007ab2ad  c3                   ret 
+// 007ab2ae  682841b400           push 0xb44128
+// 007ab2b3  8d4c2404             lea ecx, [esp + 4]
+// 007ab2b7  ff15202ab200         call dword ptr [0xb22a20]
+// 007ab2bd  c704247ca8ba00       mov dword ptr [esp], 0xbaa87c
+// 007ab2c4  c744240c500bd600     mov dword ptr [esp + 0xc], 0xd60b50
+// 007ab2cc  c7442410e472dc00     mov dword ptr [esp + 0x10], 0xdc72e4
+// 007ab2d4  8d0c24               lea ecx, [esp]
+// 007ab2d7  51                   push ecx
+// 007ab2d8  c644246401           mov byte ptr [esp + 0x64], 1
+// 007ab2dd  e8ee95f9ff           call 0x7448d0
+// copied from an identical function in another client (function ??$lexical_cast@GV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$0A@D@detail@boost@@YAGABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PADI@Z)
+
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/Lighting.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Lighting.h"
-#include "util/RunStateOwner.h"
-
-namespace RBX
+#include <string>
+#include <streambuf>
+#include <typeinfo>
+namespace boost {
+class bad_lexical_cast : public std::bad_cast {
+public:
+    bad_lexical_cast() : source(&typeid(void)), target(&typeid(void)) {}
+    bad_lexical_cast(const std::type_info& s, const std::type_info& t) : source(&s), target(&t) {}
+    const std::type_info& source_type() const { return *source; }
+    virtual const char* what() const throw() { return "bad lexical cast: source type value could not be interpreted as target"; }
+    virtual ~bad_lexical_cast() throw() {}
+private:
+    const std::type_info* source;
+    const std::type_info* target;
+};
+template<class E> __declspec(noreturn) void throw_exception(E const& e);
+namespace detail {
+template<class CharT, class Base, class Traits>
+class lexical_stream_limited_src : public Base {
+    CharT* start;
+    CharT* finish;
+public:
+    lexical_stream_limited_src(CharT* sta, CharT* fin) : start(sta), finish(fin) {}
+    bool operator<<(std::basic_string<CharT, Traits> const& str)
+    {
+        start = const_cast<CharT*>(str.data());
+        finish = start + str.length();
+        return true;
+    }
+    template<class InputStreamable> bool operator>>(InputStreamable& output);
+};
+template<class Target, class Source, bool Unlimited, class CharT>
+Target lexical_cast(Source const& arg, CharT* buf, std::size_t src_len)
 {
-	char* sLighting = "Lighting";
-
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_AmbientTop("TopAmbientV9", "Appearance", &Lighting::getAmbientTop, &Lighting::setAmbientTop, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_AmbientBottom("BottomAmbientV9", "Appearance", &Lighting::getAmbientBottom, &Lighting::setAmbientBottom, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_LightColor("SpotLightV9", "Appearance", &Lighting::getLightColor, &Lighting::setLightColor, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ClearColor("ClearColor", "Appearance", &Lighting::getClearColor3, &Lighting::setClearColor3, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, std::string> prop_Time("TimeOfDay", "Data", &Lighting::getTimeStr, &Lighting::setTimeStr, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, float> prop_GeographicLatitude("GeographicLatitude", "Data", &Lighting::getGeographicLatitude, &Lighting::setGeographicLatitude, Reflection::PropertyDescriptor::STANDARD);
-
-	static Reflection::BoundFuncDesc<Lighting, float(void), 0> prop_GetMoonPhase(&Lighting::getMoonPhase, "GetMoonPhase", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<Lighting, G3D::Vector3(void), 0> prop_GetMoonPosition(&Lighting::getMoonPosition, "GetMoonDirection", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<Lighting, G3D::Vector3(void), 0> prop_GetSunPosition(&Lighting::getSunPosition, "GetSunDirection", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<Lighting, double(void), 0> prop_GetMinutesAfterMidnight(&Lighting::getMinutesAfterMidnight, "GetMinutesAfterMidnight", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<Lighting, void(double), 1> prop_SetMinutesAfterMidnight(&Lighting::setMinutesAfterMidnight, "SetMinutesAfterMidnight", "minutes", Reflection::FunctionDescriptor::AnyCaller);
-
-	Reflection::SignalDesc<Lighting, void(bool)> Lighting::event_LightingChanged("LightingChanged", "skyboxChanged");
-
-	Lighting::Lighting()
-		: Base(),
-		  ambientTop(209/255.0f, 208/255.0f, 217/255.0f),
-		  ambientBottom(122/255.0f, 134/255.0f, 120/255.0f),
-		  hasSky(true),
-		  clearColor(G3D::Color3::white()),
-		  timeOfDay(boost::posix_time::duration_from_string("14:00:00"))
-	{
-		skyParameters.lightColor = G3D::Color3(152/255.0f, 137/255.0f, 102/255.0f);
-		skyParameters.setTime(timeOfDay.total_seconds());
-		setName("Lighting");
-	}
-
-	G3D::Vector3 Lighting::getMoonPosition()
-	{
-		return (skyParameters.physicallyCorrect) ? skyParameters.trueMoonPosition : skyParameters.moonPosition;
-	}
-
-	G3D::Vector3 Lighting::getSunPosition()
-	{
-		return (skyParameters.physicallyCorrect) ? skyParameters.trueSunPosition : skyParameters.sunPosition;
-	}
-
-	void Lighting::replaceSky(Sky* newSky)
-	{
-		while (Sky* currentSky = findFirstChildOfType<Sky>())
-		{
-			currentSky->setParent(NULL);
-		}
-
-		newSky->setParent(this);
-	}
-
-	std::string Lighting::getTimeStr() const
-	{
-		return boost::posix_time::to_simple_string(timeOfDay);
-	}
-
-	void Lighting::setTimeStr(const std::string& value)
-	{
-		setTime(boost::posix_time::duration_from_string(value));
-	}
-
-	void Lighting::setClearColor(G3D::Color4 value)
-	{
-		if (value != clearColor)
-		{
-			clearColor = value;
-
-			raisePropertyChanged(desc_ClearColor);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::setLightColor(G3D::Color3 value)
-	{
-		if (value != skyParameters.lightColor)
-		{
-			skyParameters.lightColor = value;
-
-			raisePropertyChanged(desc_LightColor);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::setAmbientBottom(G3D::Color3 value)
-	{
-		if (value != ambientBottom)
-		{
-			ambientBottom = value;
-
-			raisePropertyChanged(desc_AmbientBottom);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::setAmbientTop(G3D::Color3 value)
-	{
-		if (value != ambientTop)
-		{
-			ambientTop = value;
-
-			raisePropertyChanged(desc_AmbientTop);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::setGeographicLatitude(float value)
-	{
-		if (value != skyParameters.geoLatitude)
-		{
-			skyParameters.geoLatitude = value;
-
-			raisePropertyChanged(prop_GeographicLatitude);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::setTime(const boost::posix_time::time_duration& value)
-	{
-		int totalSeconds = value.total_seconds();
-		totalSeconds -= (totalSeconds / 86400) * 86400;
-
-		if (timeOfDay.total_seconds() != totalSeconds)
-		{
-			timeOfDay = boost::posix_time::seconds(totalSeconds);
-			skyParameters.setTime(timeOfDay.total_seconds());
-
-			raisePropertyChanged(prop_Time);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	double Lighting::getMinutesAfterMidnight()
-	{
-		return timeOfDay.total_milliseconds() / 60000.0;
-	}
-
-	void Lighting::setMinutesAfterMidnight(double value)
-	{
-		setTime(boost::posix_time::seconds(value * 60.0));
-	}
-
-	void Lighting::onChildAdded(Instance* child)
-	{
-		Sky* newSky = dynamic_cast<Sky*>(child);
-
-		if (newSky)
-		{
-			sky = shared_from(newSky);
-
-			fireLightingChanged(true);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::onChildRemoving(Instance* child)
-	{
-		if (sky.get() == child)
-		{
-			sky.reset();
-
-			fireLightingChanged(true);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::onChildChanged(Instance* instance, const PropertyChanged& event)
-	{
-		Instance::onChildChanged(instance, event);
-		if (sky.get() == instance)
-		{
-			fireLightingChanged(true);
-
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	bool Lighting::askAddChild(const Instance* instance) const
-	{
-		return dynamic_cast<const Sky*>(instance) != NULL;
-	}
+    typedef std::char_traits<CharT> traits;
+    lexical_stream_limited_src<CharT, std::basic_streambuf<CharT, traits>, traits> interpreter(buf, buf + src_len);
+    if (interpreter << arg) {
+        Target result;
+        if (interpreter >> result)
+            return result;
+    }
+    throw_exception(bad_lexical_cast(typeid(Source), typeid(Target)));
+    return Target();
 }
+}
+template<class Target, class Source>
+inline Target lexical_cast(const Source& arg)
+{
+    char buf[2];
+    return detail::lexical_cast<Target, Source, false>(arg, buf, 1);
+}
+}
+template unsigned short boost::lexical_cast<unsigned short, std::string>(const std::string&);

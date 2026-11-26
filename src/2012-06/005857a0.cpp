@@ -1,1242 +1,252 @@
-// from server: 38% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-net Replicator.cpp
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+// roc 2012-06 005658c0  unit: RBX::VInstance::$$A6AXV?$shared_ptr::?$signal::Vslot::?$callable  size: 475 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 005658c0
+//
+// 005658c0  6aff                 push -1
+// 005658c2  6870daa900           push 0xa9da70
+// 005658c7  64a100000000         mov eax, dword ptr fs:[0]
+// 005658cd  50                   push eax
+// 005658ce  64892500000000       mov dword ptr fs:[0], esp
+// 005658d5  83ec08               sub esp, 8
+// 005658d8  53                   push ebx
+// 005658d9  55                   push ebp
+// 005658da  56                   push esi
+// 005658db  8b742424             mov esi, dword ptr [esp + 0x24]
+// 005658df  57                   push edi
+// 005658e0  8b3e                 mov edi, dword ptr [esi]
+// 005658e2  33db                 xor ebx, ebx
+// 005658e4  8be9                 mov ebp, ecx
+// 005658e6  897c2428             mov dword ptr [esp + 0x28], edi
+// 005658ea  3bfb                 cmp edi, ebx
+// 005658ec  740c                 je 0x5658fa
+// 005658ee  8d4705               lea eax, [edi + 5]
+// 005658f1  50                   push eax
+// 005658f2  e8596eeaff           call 0x40c750
+// 005658f7  83c404               add esp, 4
+// 005658fa  6890225600           push 0x562290
+// 005658ff  685043e200           push 0xe24350
+// 00565904  895c2428             mov dword ptr [esp + 0x28], ebx
+// 00565908  e893bce9ff           call 0x4015a0
+// 0056590d  83c408               add esp, 8
+// 00565910  f6054c43e20001       test byte ptr [0xe2434c], 1
+// 00565917  7520                 jne 0x565939
+// 00565919  830d4c43e20001       or dword ptr [0xe2434c], 1
+// 00565920  68d043b100           push 0xb143d0
+// 00565925  891d4443e200         mov dword ptr [0xe24344], ebx
+// 0056592b  891d4843e200         mov dword ptr [0xe24348], ebx
+// 00565931  e8bfd84100           call 0x9831f5
+// 00565936  83c404               add esp, 4
+// 00565939  8d4c2410             lea ecx, [esp + 0x10]
+// 0056593d  c74424104443e200     mov dword ptr [esp + 0x10], 0xe24344
+// 00565945  885c2414             mov byte ptr [esp + 0x14], bl
+// 00565949  e842dfeaff           call 0x413890
+// 0056594e  8b06                 mov eax, dword ptr [esi]
+// 00565950  c644242001           mov byte ptr [esp + 0x20], 1
+// 00565955  8bce                 mov ecx, esi
+// 00565957  3bc3                 cmp eax, ebx
+// 00565959  7503                 jne 0x56595e
+// 0056595b  55                   push ebp
+// 0056595c  eb04                 jmp 0x565962
+// 0056595e  83c00c               add eax, 0xc
+// 00565961  50                   push eax
+// 00565962  e869d81600           call 0x6d31d0
+// 00565967  885c2420             mov byte ptr [esp + 0x20], bl
+// 0056596b  391e                 cmp dword ptr [esi], ebx
+// 0056596d  0f8594000000         jne 0x565a07
+// 00565973  385c2414             cmp byte ptr [esp + 0x14], bl
+// 00565977  7432                 je 0x5659ab
+// 00565979  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 0056597d  b800000080           mov eax, 0x80000000
+// 00565982  8bd1                 mov edx, ecx
+// 00565984  f00fc102             lock xadd dword ptr [edx], eax
+// 00565988  a900000040           test eax, 0x40000000
+// 0056598d  751c                 jne 0x5659ab
+// 0056598f  3d00000080           cmp eax, 0x80000000
+// 00565994  7e15                 jle 0x5659ab
+// 00565996  8bc1                 mov eax, ecx
+// 00565998  f00fba281e           lock bts dword ptr [eax], 0x1e
+// 0056599d  720c                 jb 0x5659ab
+// 0056599f  e81c60eaff           call 0x40b9c0
+// 005659a4  50                   push eax
+// 005659a5  ff150c23b200         call dword ptr [0xb2230c]
+// 005659ab  c7442420ffffffff     mov dword ptr [esp + 0x20], 0xffffffff
+// 005659b3  3bfb                 cmp edi, ebx
+// 005659b5  7439                 je 0x5659f0
+// 005659b7  8d4705               lea eax, [edi + 5]
+// 005659ba  3bc3                 cmp eax, ebx
+// 005659bc  7405                 je 0x5659c3
+// 005659be  8d48fb               lea ecx, [eax - 5]
+// 005659c1  eb02                 jmp 0x5659c5
+// 005659c3  33c9                 xor ecx, ecx
+// 005659c5  8d71f8               lea esi, [ecx - 8]
+// 005659c8  8bd6                 mov edx, esi
+// 005659ca  83c8ff               or eax, 0xffffffff
+// 005659cd  f00fc102             lock xadd dword ptr [edx], eax
+// 005659d1  751d                 jne 0x5659f0
+// 005659d3  8b11                 mov edx, dword ptr [ecx]
+// 005659d5  8b02                 mov eax, dword ptr [edx]
+// 005659d7  53                   push ebx
+// 005659d8  ffd0                 call eax
+// 005659da  8d4e04               lea ecx, [esi + 4]
+// 005659dd  83caff               or edx, 0xffffffff
+// 005659e0  f00fc111             lock xadd dword ptr [ecx], edx
+// 005659e4  750a                 jne 0x5659f0
+// 005659e6  56                   push esi
+// 005659e7  ff15c829b200         call dword ptr [0xb229c8]
+// 005659ed  83c404               add esp, 4
+// 005659f0  5f                   pop edi
+// 005659f1  5e                   pop esi
+// 005659f2  5d                   pop ebp
+// 005659f3  32c0                 xor al, al
+// 005659f5  5b                   pop ebx
+// 005659f6  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 005659fa  64890d00000000       mov dword ptr fs:[0], ecx
+// 00565a01  83c414               add esp, 0x14
+// 00565a04  c20400               ret 4
+// 00565a07  385c2414             cmp byte ptr [esp + 0x14], bl
+// 00565a0b  7432                 je 0x565a3f
+// 00565a0d  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 00565a11  b800000080           mov eax, 0x80000000
+// 00565a16  8bd1                 mov edx, ecx
+// 00565a18  f00fc102             lock xadd dword ptr [edx], eax
+// 00565a1c  a900000040           test eax, 0x40000000
+// 00565a21  751c                 jne 0x565a3f
+// 00565a23  3d00000080           cmp eax, 0x80000000
+// 00565a28  7e15                 jle 0x565a3f
+// 00565a2a  8bc1                 mov eax, ecx
+// 00565a2c  f00fba281e           lock bts dword ptr [eax], 0x1e
+// 00565a31  720c                 jb 0x565a3f
+// 00565a33  e8885feaff           call 0x40b9c0
+// 00565a38  50                   push eax
+// 00565a39  ff150c23b200         call dword ptr [0xb2230c]
+// 00565a3f  c7442420ffffffff     mov dword ptr [esp + 0x20], 0xffffffff
+// 00565a47  3bfb                 cmp edi, ebx
+// 00565a49  7439                 je 0x565a84
+// 00565a4b  8d4705               lea eax, [edi + 5]
+// 00565a4e  3bc3                 cmp eax, ebx
+// 00565a50  7405                 je 0x565a57
+// 00565a52  8d48fb               lea ecx, [eax - 5]
+// 00565a55  eb02                 jmp 0x565a59
+// 00565a57  33c9                 xor ecx, ecx
+// 00565a59  8d71f8               lea esi, [ecx - 8]
+// 00565a5c  8bd6                 mov edx, esi
+// 00565a5e  83c8ff               or eax, 0xffffffff
+// 00565a61  f00fc102             lock xadd dword ptr [edx], eax
+// 00565a65  751d                 jne 0x565a84
+// 00565a67  8b11                 mov edx, dword ptr [ecx]
+// 00565a69  8b02                 mov eax, dword ptr [edx]
+// 00565a6b  53                   push ebx
+// 00565a6c  ffd0                 call eax
+// 00565a6e  8d4e04               lea ecx, [esi + 4]
+// 00565a71  83caff               or edx, 0xffffffff
+// 00565a74  f00fc111             lock xadd dword ptr [ecx], edx
+// 00565a78  750a                 jne 0x565a84
+// 00565a7a  56                   push esi
+// 00565a7b  ff15c829b200         call dword ptr [0xb229c8]
+// 00565a81  83c404               add esp, 4
+// 00565a84  8b4c2418             mov ecx, dword ptr [esp + 0x18]
+// 00565a88  5f                   pop edi
+// 00565a89  5e                   pop esi
+// 00565a8a  5d                   pop ebp
+// 00565a8b  b001                 mov al, 1
+// 00565a8d  5b                   pop ebx
+// 00565a8e  64890d00000000       mov dword ptr fs:[0], ecx
+// 00565a95  83c414               add esp, 0x14
+// 00565a98  c20400               ret 4
 
-// Candidate translation unit (score above; library headers required).
-#include <RakPeer.h>
-#include <PacketLogger.h>
-#include <GetTime.h>
-#include "Replicator.h"
-#include "NetworkSettings.h"
-#include "PacketIds.h"
-#include "security/SecurityContext.h"
-#include "v8datamodel/Lighting.h"
-#include "v8datamodel/Stats.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8datamodel/Hopper.h"
-#include "v8datamodel/Teams.h"
-#include "v8datamodel/JointsService.h"
-#include "v8world/SimJobStage.h"
-#include "util/Log.h"
-#include "util/standardout.h"
-#include <g3d/system.h>
-#include "IdManager.h"
+extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+#pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedDecrement)
+extern "C" unsigned char __cdecl _interlockedbittestandset(long*, long);
+#pragma intrinsic(_interlockedbittestandset)
+extern "C" int (__stdcall* SetEvent_ptr)(void*);
+extern "C" void (__cdecl* free_ptr)(void*);
 
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator, boost::shared_ptr<RBX::Reflection::DescribedBase>(void), 0> func_SendMarker(&RBX::Network::Replicator::sendMarker, "SendMarker", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator, void(void), 0> func_requestCharacter(&RBX::Network::Replicator::requestCharacter, "RequestCharacter", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator, void(void), 0> func_closeConnection(&RBX::Network::Replicator::closeConnection, "CloseConnection", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
+struct Empty {};
+struct Base {};
+struct Node;
+void intrusive_ptr_add_ref(Base*);
+void call_once(long&, void (*)());
+void init_once();
 
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator, boost::shared_ptr<RBX::Instance>(void), 0> prop_RemotePlayer(&RBX::Network::Replicator::getPlayer, "GetPlayer", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-
-RBX::Reflection::BoundProp<int, 1> RBX::Network::Replicator::prop_maxDataModelSendBuffer("MaxDataModelSendBuffer", "Replication", &RBX::NetworkSettings::maxDataModelSendBuffer, RBX::Reflection::PropertyDescriptor::STANDARD);
-
-RBX::Reflection::SignalDesc<RBX::Network::Marker, void(void)> RBX::Network::Marker::event_Returned("Received");
-RBX::Reflection::SignalDesc<RBX::Network::Replicator, void(std::string, bool)> RBX::Network::Replicator::event_Disconnection("Disconnection", "peer", "lostConnection");
-
-enum ValueType // NOTE: may not be intended for this file
-{
-	ValueType_nil,
-	ValueType_string,
-	ValueType_bool,
-	ValueType_int,
-	ValueType_float,
-	ValueType_BrickColor,
-	ValueType_Color3,
-	ValueType_Vector3,
-	ValueType_BrickVector,
-	ValueType_CoordinateFrame,
-	ValueType_Enum,
-	ValueType_Ref,
-	ValueType_ContentId
+struct Ptr {
+    Node* px;
+    Ptr(const Ptr& o);
+    ~Ptr();
+    Ptr& operator=(const Ptr& o);
 };
 
-class ExtractorHack : public RakPeer
-{
-public:
-	HANDLE getProcessPacketsThreadHandle() // the lengths you have to go through to get a protected member
-	{
-		return processPacketsThreadHandle;
-	}
+struct Node : Empty, Base {
+    virtual ~Node();
+    int pad;
+    Ptr next;
 };
 
-static void checkDisconnect(RBX::Instance* instance)
-{
-	RBX::Network::Replicator* repl = dynamic_cast<RBX::Network::Replicator*>(instance);
-
-	if (repl && repl->disconnected)
-	{
-		repl->setParent(NULL);
-	}
+inline void intrusive_ptr_release(Base* p) {
+    Node* n = static_cast<Node*>(p);
+    long* c = (long*)((char*)n - 8);
+    if (_InterlockedDecrement(c) == 0) {
+        n->~Node();
+        if (_InterlockedDecrement(c + 1) == 0)
+            free_ptr(c);
+    }
 }
 
-void writeValueType(bool includeLength, ValueType vt, RakNet::BitStream& outBitStream)
-{
-	if (includeLength)
-	{
-		unsigned char c = (unsigned char)vt;
-		outBitStream.WriteBits(&c, 4, true);
-	}
+inline Ptr::Ptr(const Ptr& o) : px(o.px) {
+    if (px)
+        intrusive_ptr_add_ref(px);
 }
 
-FilePacketLogger::FilePacketLogger(RBX::Network::Peer* peer)
-	: packetLogFile(NULL)
-{
-	char filename[256];
-
-	std::string pathName = RBX::Log::current()->logFile;
-	pathName.erase(pathName.rfind('\\') + 1);
-
-	sprintf(filename, "PacketLog%i.csv", RakNet::GetTime());
-	pathName += filename;
-
-	packetLogFile = fopen(pathName.c_str(), "wt");
-
-	if (packetLogFile)
-	{
-		RBX::StandardOut::singleton()->print(RBX::MESSAGE_INFO, "Logging packets to %s", pathName.c_str());
-	}
-	else
-	{
-		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, "Failed to create log file %s", pathName.c_str());
-	}
+inline Ptr::~Ptr() {
+    if (px)
+        intrusive_ptr_release(px);
 }
 
-FilePacketLogger::~FilePacketLogger()
-{
-	if (packetLogFile)
-		fclose(packetLogFile);
-}
-
-void FilePacketLogger::OnAttach(RakPeerInterface* peer)
-{
-	PacketLogger::OnAttach(peer);
-	LogHeader();
-}
-
-void FilePacketLogger::WriteLog(const char* str)
-{
-	if (packetLogFile)
-		fputs(str, packetLogFile);
-}
-
-namespace RBX
-{
-	namespace Network
-	{
-		const char* const sMarker = "NetworkMarker";
-		const char* const sPeer = "NetworkPeer";
-
-		Peer::Peer()
-			: profilePacketsThread(new Profiling::ThreadProfiler("Packets Thread")),
-			  rakPeer(new RakPeer)
-		{
-			rakPeer->AttachPlugin(this);
-		}
-
-		Peer::~Peer() 
-		{
-			rakPeer->DetachPlugin(this);
-		}
-
-		void Peer::onEvent(const RunService* source, Heartbeat event)
-		{
-			double tick = G3D::System::getTick() + event.step / 5.0;
-
-			do
-			{
-				Packet* receivedPacket = rakPeer->Receive();
-				if (receivedPacket)
-					rakPeer->DeallocatePacket(receivedPacket);
-				else
-					break;
-			}
-			while (G3D::System::getTick() < tick);
-
-			for_eachChild(&checkDisconnect);
-		}
-
-		RakPeerInterface* Peer::peerInterface()
-		{
-			return rakPeer.get();
-		}
-
-		void Peer::Update(RakPeerInterface* peer)
-		{
-			RBXASSERT(peer == rakPeer.get());
-
-			profilePacketsThread->sample(static_cast<ExtractorHack*>(peer)->getProcessPacketsThreadHandle());
-			PluginInterface::Update(peer); // TODO: blank function shared by multiple symbols. is this the correct one?
-		}
-
-		void Peer::updateLogger()
-		{
-			if (!NetworkSettings::singleton().logPackets)
-			{
-				logger.reset();
-			}
-			else if (!logger)
-			{
-				logger.reset(new FilePacketLogger(this));
-				rakPeer->AttachPlugin(logger.get());
-			}
-		}
-
-		void Peer::updateNetworkSimulator()
-		{
-			rakPeer->ApplyNetworkSimulator(
-				NetworkSettings::singleton().maxSendBPS, 
-				NetworkSettings::singleton().minExtraPing,
-				NetworkSettings::singleton().extraPingVariance
-			);
-		}
-
-		void Peer::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-		{
-			Stats::StatsService* oldStats = ServiceProvider::find<Stats::StatsService>(oldProvider);
-			if (oldStats)
-			{
-				boost::shared_ptr<Stats::Item> network = shared_from_polymorphic_downcast<Stats::Item>(oldStats->findFirstChildByName("Network"));
-				if (network)
-					network->setParent(NULL);
-			}
-
-			Notifier<RunService, Heartbeat>::disconnect(ServiceProvider::find<RunService>(oldProvider), this);
-
-			Instance::onServiceProvider(oldProvider, newProvider);
-
-			Notifier<RunService, Heartbeat>::connect(ServiceProvider::find<RunService>(newProvider), this);
-
-			Stats::StatsService* newStats = ServiceProvider::find<Stats::StatsService>(newProvider);
-			if (newStats)
-			{
-				RBXASSERT(!shared_from_polymorphic_downcast<Stats::Item>(newStats->findFirstChildByName("Network")));
-
-				boost::shared_ptr<Stats::Item> network = Creatable::create<Stats::Item>();
-				network->setName("Network");
-				network->setParent(newStats);
-				network->createBoundChildItem(*profilePacketsThread);
-			}
-		}
-
-		const char* const sReplicator = "NetworkReplicator";
-
-		Replicator::Replicator(SystemAddress remotePlayerId, RakPeerInterface* peer)
-			: lastSendTime(G3D::System::getLocalTime()),
-			  lastCharacterSendTime(G3D::System::getLocalTime()),
-			  profileReplication(new Profiling::CodeProfiler("Replication")),
-			  profileDataListening(new Profiling::CodeProfiler("Data Listening")),
-			  profileDataIn(new Profiling::CodeProfiler("Data In")),
-			  profileDataOut(new Profiling::CodeProfiler("Data Out")),
-			  profilePhysicsIn(new Profiling::CodeProfiler("Physics In")),
-			  profilePhysicsOut(new Profiling::CodeProfiler("Physics Out")),
-			  remotePlayerId(remotePlayerId),
-			  peer(peer),
-			  disconnected(false),
-			  receivedGlobals(false),
-			  sendPhysicsEnabled(false),
-			  players(NULL),
-			  deserializeProperty(NULL),
-			  removingInstance(NULL)
-		{
-			peer->AttachPlugin(this);
-			setName(remotePlayerId.ToString(true));
-
-			profileDataListening->parent = profileReplication.get();
-			profileDataIn->parent = profileReplication.get();
-			profileDataOut->parent = profileReplication.get();
-			profilePhysicsIn->parent = profileReplication.get();
-			profilePhysicsOut->parent = profileReplication.get();
-		}
-
-		Replicator::~Replicator()
-		{
-			if (peer)
-				peer->DetachPlugin(this);
-		}
-
-		bool Replicator::wantReplicate(const Instance* source) const
-		{
-			return dynamic_cast<const Camera*>(source) == NULL ? true : false;
-		}
-
-		bool Replicator::canSendItems()
-		{
-			return receivedGlobals;
-		}
-
-		void Replicator::closeConnection()
-		{
-			peer->CloseConnection(remotePlayerId, true);
-			setParent(NULL);
-		}
-
-		Player* Replicator::findTargetPlayer()
-		{
-			return players ? players->getLocalPlayer() : NULL;
-		}
-
-		Mechanism* Replicator::findTargetPlayerCharacterMechanism()
-		{
-			Player* player = findTargetPlayer();
-
-			if (player && player->getCharacter())
-			{
-				PartInstance* part = player->getCharacter()->getPrimaryPart();
-
-				if (part)
-					return Mechanism::getMechanismFromPrimitive(part->getPrimitive());
-			}
-			
-			return NULL;
-		}
-
-		bool Replicator::isSerializePending(const Instance* instance) const
-		{
-			return pendingNewInstances.find(instance) != pendingNewInstances.end();
-		}
-
-		void Replicator::disconnectAllPropertyChangedConnections()
-		{
-			while (propertyChangedConnections.size() > 0)
-			{
-				propertyChangedConnections.begin()->second.disconnect();
-				propertyChangedConnections.erase(propertyChangedConnections.begin());
-			}
-		}
-
-		void Replicator::requestCharacter()
-		{
-			RakNet::BitStream bitStream;
-
-			bitStream << (unsigned char)ID_REQUEST_CHARACTER;
-
-			Player* player = findTargetPlayer();
-			if (!player)
-				throw std::runtime_error("Attempting to send a Character request without a local Player");
-
-			serializeId(bitStream, player);
-
-			if (NetworkSettings::singleton().printInstances)
-			{
-				Guid::Data id;
-				player->getGuid().extract(id);
-
-				StandardOut::singleton()->print(MESSAGE_INFO, "Replicator: Requesting character for %s", id.readableString(4).c_str());
-			}
-
-			peer->Send(&bitStream, MEDIUM_PRIORITY, RELIABLE_ORDERED, 0, remotePlayerId, false);
-		}
-
-		void Replicator::connectPropertyChanged(boost::shared_ptr<Instance> instance)
-		{
-			if (propertyChangedConnections.find(instance) == propertyChangedConnections.end())
-			{
-				propertyChangedConnections[instance] = Instance::event_propertyChanged.connect(instance.get(), boost::bind(&Replicator::onPropertyChanged, this, instance, _1));
-			}
-		}
-
-		void Replicator::disconnectPropertyChanged(boost::shared_ptr<Instance> instance)
-		{
-			std::map<boost::shared_ptr<Instance>, boost::signals::connection>::iterator iter = propertyChangedConnections.find(instance);
-
-			if (iter != propertyChangedConnections.end())
-			{
-				iter->second.disconnect();
-				propertyChangedConnections.erase(iter);
-			}
-		}
-
-		void Replicator::deleteDisconnectInstances()
-		{
-			std::set<boost::weak_ptr<Instance>>::iterator iter = deleteOnDisconnectInstances.begin();
-			std::set<boost::weak_ptr<Instance>>::iterator end = deleteOnDisconnectInstances.end();
-
-			for (; iter != end; iter++)
-			{
-				boost::shared_ptr<Instance> instance = iter->lock();
-				if (instance)
-					instance->setParent(NULL);
-			}
-
-			deleteOnDisconnectInstances.clear();
-		}
-
-		bool Replicator::isInReplicationScope(const Instance* instance) const
-		{
-			std::vector<Instance*>::const_iterator begin = replicationContainers.begin();
-			std::vector<Instance*>::const_iterator end = replicationContainers.end();
-
-			if (std::find_if(begin, end, boost::bind(&Instance::isDescendentOf, instance, _1)) != end)
-			{
-				return true;
-			}
-			else
-			{
-				return std::find(begin, end, instance) != end ? true : false;
-			}
-		}
-
-		void Replicator::readMarker(RakNet::BitStream& inBitstream)
-		{
-			long markerId;
-			inBitstream >> markerId;
-
-			if (NetworkSettings::singleton().printInstances)
-			{
-				StandardOut::singleton()->print(MESSAGE_INFO, "Received marker %d from %s", (int)markerId, remotePlayerId.ToString());
-			}
-
-			RBXASSERT(reinterpret_cast<Marker*>(markerId) == incomingMarkers.front().get());
-
-			Marker::event_Returned.fire(incomingMarkers.front().get());
-			incomingMarkers.pop();
-		}
-
-		boost::shared_ptr<Reflection::DescribedBase> Replicator::sendMarker()
-		{
-			boost::shared_ptr<Marker> marker = Marker::newMarker();
-
-			RakNet::BitStream bitStream;
-			bitStream << (unsigned char)ID_REQUEST_MARKER;
-			bitStream << marker->id();
-
-			if (NetworkSettings::singleton().printInstances)
-			{
-				StandardOut::singleton()->print(MESSAGE_INFO, "Replicator: Requesting Marker %d of %s", (int)marker->id(), remotePlayerId.ToString());
-			}
-
-			incomingMarkers.push(marker);
-			peer->Send(&bitStream, HIGH_PRIORITY, RELIABLE, 0, remotePlayerId, false);
-
-			return marker;
-		}
-
-		bool Replicator::sendPhysicsPacket()
-		{
-			if (!sendPhysicsEnabled)
-			{
-				return false;
-			}
-			else if (!peer->GetStatistics(remotePlayerId)) // TODO: vtable offset does not match due to missing function in RakPeerInterface
-			{
-				return false;
-			}
-			else
-			{
-				Profiling::Mark mark(*profilePhysicsOut, false);
-				JobSender jobSender(*this, peer);
-
-				Workspace* workspace = ServiceProvider::find<Workspace>(this);
-				if (workspace)
-				{
-					SimJobStage& sim = workspace->getWorld()->getSimJobStage();
-					Mechanism* mech = findTargetPlayerCharacterMechanism();
-					if (mech)
-					{
-						G3D::RealTime t = G3D::System::getLocalTime();
-						if (t > lastCharacterSendTime + 0.1)
-						{
-							jobSender.setPacketPriority(MEDIUM_PRIORITY);
-							jobSender.report(*mech);
-							jobSender.setPacketPriority(MEDIUM_PRIORITY);
-
-							lastCharacterSendTime = t;
-						}
-						else
-						{
-							mech = NULL;
-						}
-					}
-
-					sim.reportMechanisms(jobSender, jobStagePos, mech);
-				}
-
-				return jobSender.sentPacket;
-			}
-		}
-
-		bool Replicator::sendItems()
-		{
-			if (!canSendItems())
-			{
-				return false;
-			}
-			else
-			{
-				Profiling::Mark mark(*profileDataOut, false);
-				ItemSender sender(*this, peer);
-
-				while (pendingItems.size() > 0)
-				{
-					boost::shared_ptr<Item> item = pendingItems.front();
-
-					if (item)
-					{
-						if (!sender.send(*item))
-							break;
-					}
-
-					pendingItems.pop_front();
-				}
-
-				return sender.sentItems;
-			}
-		}
-
-		const Instance* Replicator::getDefault(const Name& className)
-		{
-			Security::Impersonator impersonate(Security::Replicator);
-
-			std::map<const Name*, boost::shared_ptr<Instance>>::iterator iter = defaultObjects.find(&className);
-
-			if (iter == defaultObjects.end())
-			{
-				boost::shared_ptr<Instance> instance = AbstractFactoryProduct::create(className);
-
-				if (!instance)
-				{
-					StandardOut::singleton()->print(MESSAGE_ERROR, "Replication: Can\'t create default object of type %s", className.c_str());
-				}
-
-				defaultObjects[&className] = instance;
-				return instance.get();
-			}
-			else
-			{
-				return iter->second.get();
-			}
-		}
-
-		SharedStringDictionary& Replicator::getSharedDictionary(const Reflection::PropertyDescriptor& descriptor)
-		{
-			std::map<const Reflection::PropertyDescriptor*, boost::shared_ptr<SharedStringDictionary>>::iterator iter = strings.find(&descriptor);
-
-			if (iter == strings.end())
-			{
-				boost::shared_ptr<SharedStringDictionary> result(new SharedStringDictionary);
-
-				strings[&descriptor] = result;
-				return *result;
-			}
-			else
-			{
-				return *iter->second;
-			}
-		}
-
-		void Replicator::receiveData(Packet* packet)
-		{
-			Profiling::Mark mark(*profileDataIn, false);
-
-			RakNet::BitStream inBitstream(packet->data, packet->length, false);
-			inBitstream.IgnoreBits(8);
-
-			Security::Impersonator impersonate(Security::Replicator);
-
-			while (true)
-			{
-				Item::ItemType itemType;
-				Item::readItemType(inBitstream, itemType);
-				
-				switch (itemType)
-				{
-				case Item::ItemTypeDelete:
-					readInstanceDelete(inBitstream);
-					break;
-				case Item::ItemTypeNew:
-					readInstanceNew(inBitstream);
-					break;
-				case Item::ItemTypeChangeProperty:
-					readChangedProperty(inBitstream);
-					break;
-				case Item::ItemTypeMarker:
-					readMarker(inBitstream);
-					break;
-				case Item::ItemTypeEnd:
-					return;
-				}
-			}
-		}
-
-		//99% match
-		void Replicator::Update(RakPeerInterface* peer)
-		{
-			PluginInterface::Update(peer);
-
-			if (getParent())
-			{
-				Profiling::Mark mark(*profileReplication, false);
-
-				RakNetStatistics* statistics = peer->GetStatistics(remotePlayerId);
-
-				if (statistics)
-				{
-					G3D::RealTime t = G3D::System::getLocalTime();
-
-					if (1.0f / NetworkSettings::singleton().sendRate + lastSendTime < t)
-					{
-						int maxBuffer = NetworkSettings::singleton().maxDataModelSendBuffer;
-						int sendBuffer = statistics->messageSendBuffer[MEDIUM_PRIORITY] + statistics->messageSendBuffer[HIGH_PRIORITY];
-
-						if (maxBuffer - sendBuffer >= 2 && !statistics->bandwidthExceeded)
-						{
-							sendPhysicsPacket();
-							sendItems();
-							lastSendTime = t;
-						}
-					}
-
-					if (NetworkSettings::singleton().printPacketBuffer)
-					{
-						size_t sendBuffer = statistics->messageSendBuffer[MEDIUM_PRIORITY] + statistics->messageSendBuffer[HIGH_PRIORITY] * 2;
-						size_t maxBuffer = NetworkSettings::singleton().maxDataModelSendBuffer;
-
-						if (sendBuffer > maxBuffer)
-						{
-							StandardOut::singleton()->print(MESSAGE_WARNING, "SendBuffer = %d", sendBuffer);
-						}
-						else if (sendBuffer > 0)
-						{
-							StandardOut::singleton()->print(MESSAGE_INFO, "SendBuffer = %d", sendBuffer);
-						}
-					}
-				}
-			}
-		}
-
-		void Replicator::createStatsItems(Stats::StatsService* stats)
-		{
-			if (statsItem)
-			{
-				statsItem->setParent(NULL);
-				statsItem.reset();
-			}
-
-			if (stats)
-			{
-				boost::shared_ptr<Stats::Item> network = shared_from_polymorphic_downcast<Stats::Item>(stats->findFirstChildByName("Network"));
-
-				if (network)
-				{
-					statsItem = Creatable::create<ReplicatorStatsItem>(shared_from(this), peer->GetStatistics(remotePlayerId));
-					statsItem->setName(getName());
-					statsItem->setParent2(network);
-				}
-			}
-		}
-
-		//95.65% match
-		//functionally accurate, *slightly* different instruction ordering
-		bool Replicator::isChildOfPendingDeleteInstance(const Instance* instance) const
-		{
-			for (const Instance* current = instance->getParent(); current != NULL; current = current->getParent())
-			{
-				if (pendingDeleteInstances.find(current) != pendingDeleteInstances.end())
-					return true;
-			}
-
-			return false;
-		}
-
-		void Replicator::onPropertyChanged(boost::shared_ptr<Instance> instance, const Reflection::PropertyDescriptor* descriptor)
-		{
-			Profiling::Mark mark(*profileReplication, false);
-			Profiling::Mark mark2(*profileDataListening, false);
-
-			if (instance.get() != removingInstance)
-			{
-				bool isDeserializeProperty = false;
-
-				if (deserializeProperty)
-				{
-					Reflection::Property prop(*descriptor, instance.get());
-					if (prop == *deserializeProperty)
-						isDeserializeProperty = true;
-				}
-				
-				if (!isDeserializeProperty && (descriptor->canStreamWrite() || descriptor == &Instance::propParent) && !isSerializePending(instance.get()))
-				{
-					// ideally this should also be a ConstProperty/Property but i couldnt get the constructor to inline with it
-					const DescribedBase* inst = static_cast<DescribedBase*>(instance.get());
-					RBXASSERT(descriptor->isMemberOf(inst));
-
-					Player* targetPlayer = findTargetPlayer();
-
-					if (targetPlayer && targetPlayer->getCharacter() && instance->isDescendentOf(targetPlayer->getCharacter()))
-					{
-						pendingItems.push_front(boost::shared_ptr<Item>(new ChangePropertyItem(*this, instance, *descriptor)));
-					}
-					else
-					{
-						pendingItems.push_back(boost::shared_ptr<Item>(new ChangePropertyItem(*this, instance, *descriptor)));
-					}
-				}
-			}
-		}
-
-		bool Replicator::remoteDeleteOnDisconnect(const Instance* instance) const
-		{
-			if (instance->isDescendentOf(players))
-				return true;
-
-			if (instance == Players::findLocalCharacter(instance))
-				return true;
-
-			return false;
-		}
-
-		void Replicator::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-		{
-			Instance* oldLighting = ServiceProvider::create<Lighting>(oldProvider);
-			if (oldLighting)
-				disconnectPropertyChanged(shared_from(oldLighting));
-
-			disconnectAllPropertyChangedConnections();
-			pendingItems.clear();
-			replicationContainers.clear();
-
-			Instance::onServiceProvider(oldProvider, newProvider);
-
-			createStatsItems(ServiceProvider::find<Stats::StatsService>(newProvider));
-
-			replicationContainers.push_back(ServiceProvider::create<StarterPackService>(newProvider));
-			replicationContainers.push_back(ServiceProvider::find<Workspace>(newProvider));
-			replicationContainers.push_back(ServiceProvider::create<JointsService>(newProvider));
-
-			Players* players = ServiceProvider::create<Players>(newProvider);
-			this->players = players;
-
-			replicationContainers.push_back(players);
-			replicationContainers.push_back(ServiceProvider::create<Lighting>(newProvider));
-			replicationContainers.push_back(ServiceProvider::create<Teams>(newProvider));
-
-			Instance* newLighting = ServiceProvider::create<Lighting>(newProvider);
-			if (newLighting)
-			{
-				connectPropertyChanged(shared_from(newLighting));
-				pendingItems.push_back(boost::shared_ptr<Item>(new NewInstanceItem(*this, shared_from(newLighting))));
-			}
-
-			connectToReplicationContainers();
-
-			if (!newProvider)
-			{
-				if (peer)
-				{
-					peer->DetachPlugin(this);
-					peer = NULL;
-				}
-				deleteDisconnectInstances();
-			}
-		}
-
-		void Replicator::connectToReplicationContainers()
-		{
-			std::vector<boost::signals::connection>::iterator dEnd = replicationContainerConnections.end();
-
-			for (std::vector<boost::signals::connection>::iterator it = replicationContainerConnections.begin(); it != dEnd; it++)
-			{
-				it->disconnect();
-			}
-
-			replicationContainerConnections.clear();
-
-			std::vector<Instance*>::iterator cEnd = replicationContainers.end();
-
-			for (std::vector<Instance*>::iterator it = replicationContainers.begin(); it != cEnd; it++)
-			{
-				if (*it && wantReplicate(*it))
-				{
-					replicationContainerConnections.push_back(Instance::event_descendentAdded.connect(*it, boost::bind(&Replicator::onDescendentAdded, this, _1)));
-					replicationContainerConnections.push_back(Instance::event_descendentRemoving.connect(*it, boost::bind(&Replicator::onDescendentRemoving, this, _1)));
-					(*it)->visitDescendents(boost::bind(&Replicator::onDescendentAdded, this, _1));
-				}
-			}
-		}
-
-		void Replicator::Item::readItemType(RakNet::BitStream& stream, ItemType& value)
-		{
-			value = ItemTypeEnd;
-
-			stream.ReadBits((unsigned char*)&value, 2, true);
-
-			if (value < ItemTypeDelete || value > ItemTypeChangeProperty) // neither of Delete, New, ChangeProperty
-			{
-				stream.Read(value);
-			}
-		}
-
-		void Replicator::Item::writeItemType(RakNet::BitStream& stream, ItemType value)
-		{
-			if (value >= ItemTypeDelete && value <= ItemTypeChangeProperty) // Delete, New, ChangeProperty
-			{
-				stream.WriteBits((unsigned char*)&value, 2, true);
-			}
-			else
-			{
-				unsigned char zero = 0;
-				stream.WriteBits(&zero, 2, true);
-				stream.Write(value);
-			}
-		}
-
-		Replicator::ItemSender::ItemSender(Replicator& replicator, RakPeerInterface* peer)
-			: replicator(replicator),
-			  peer(peer),
-			  maxStreamSize(G3D::iRound(NetworkSettings::singleton().dataPacketSize * (peer->GetMTUSize(replicator.remotePlayerId) - 128))),
-			  sentItems(false)
-		{
-		}
-
-		Replicator::ItemSender::~ItemSender()
-		{
-			if (bitStream.GetNumberOfBitsUsed() > 0)
-			{
-				Item::writeItemType(bitStream, Item::ItemTypeEnd);
-				peer->Send(&bitStream, MEDIUM_PRIORITY, RELIABLE_ORDERED, 0, replicator.remotePlayerId, false);
-				bitStream.Reset();
-			}
-		}
-
-		bool Replicator::ItemSender::send(Item& item)
-		{
-			if (bitStream.GetNumberOfBytesUsed() < maxStreamSize)
-			{
-				if (bitStream.GetNumberOfBitsUsed() == 0)
-				{
-					bitStream << (unsigned char)ID_DATA;
-				}
-
-				item.write(bitStream);
-				sentItems = true;
-
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-
-		Replicator::JobSender::JobSender(Replicator& replicator, RakPeerInterface* peer)
-			: replicator(replicator),
-			  peer(peer),
-			  firstA(NULL),
-			  firstM(NULL),
-			  packetPriority(MEDIUM_PRIORITY),
-			  sentPacket(false),
-			  hasOpenPacket(false),
-			  bitStream(1364) // what
-		{
-		}
-
-		Replicator::JobSender::~JobSender()
-		{
-			if (hasOpenPacket)
-			{
-				closePacket();
-			}
-		}
-
-		void Replicator::JobSender::setPacketPriority(PacketPriority packetPriority)
-		{
-			if (this->packetPriority != packetPriority)
-			{
-				closePacket();
-				this->packetPriority = packetPriority;
-			}
-		}
-
-		void Replicator::JobSender::closePacket()
-		{
-			replicator.serializeId(bitStream, NULL);
-			peer->Send(&bitStream, packetPriority, UNRELIABLE, 0, replicator.remotePlayerId, false);
-			hasOpenPacket = false;
-		}
-
-		bool Replicator::JobSender::report(const Mechanism& m)
-		{
-			if (!hasOpenPacket)
-			{
-				bitStream.Reset();
-
-				bitStream << (unsigned char)ID_TIMESTAMP;
-				bitStream << RakNet::GetTime();
-				bitStream << (unsigned char)ID_PHYSICS;
-
-				hasOpenPacket = true;
-				sentPacket = true;
-			}
-
-			replicator.sendPhysicsData(bitStream, m);
-			replicator.serializeId(bitStream, NULL);
-
-			return bitStream.GetNumberOfBytesUsed() < 1364u;
-		}
-
-		void Replicator::MarkerItem::write(RakNet::BitStream& bitStream)
-		{
-			writeItemType(bitStream, ItemTypeMarker);
-			bitStream << (int)id;
-
-			if (NetworkSettings::singleton().printInstances)
-			{
-				StandardOut::singleton()->print(MESSAGE_INFO, "Replication: Sending marker %d to %s", id, replicator.remotePlayerId.ToString());
-			}
-
-			replicator.onSentMarker(id);
-		}
-
-		Replicator::ReplicatorStatsItem::ReplicatorStatsItem(const boost::shared_ptr<Replicator>& replicator, const RakNetStatistics* statistics)
-			: replicator(replicator),
-			  statistics(statistics),
-			  instanceCount(0),
-			  instanceBits(0)
-		{
-			bps = createChildItem("Bytes/s");
-			bps->createBoundChildItem<bool>("Bandwidth Exceeded", statistics->bandwidthExceeded);
-
-			packetLoss = bps->createChildItem("Packet Loss");
-			ping = createChildItem("Ping");
-
-			Item* rep = createBoundChildItem(*replicator->profileReplication);
-
-			rep->createBoundChildItem(*replicator->profileDataListening);
-			rep->createBoundChildItem(*replicator->profileDataOut);
-			rep->createBoundChildItem(*replicator->profilePhysicsOut);
-			rep->createBoundChildItem(*replicator->profileDataIn);
-			rep->createBoundChildItem(*replicator->profilePhysicsIn);
-
-			instanceSize = rep->createChildItem("Instance size (In)");
-			waitingRefs = createChildItem("Waiting Refs");
-		}
-
-		void Replicator::ReplicatorStatsItem::update()
-		{
-			if (replicator->peer)
-			{
-				bps->formatMem((unsigned)statistics->bitsPerSecond / 8);
-
-				ping->formatValue(
-					replicator->peer->GetLastPing(replicator->remotePlayerId),
-					"%d avg:%d best:%d",
-					replicator->peer->GetLastPing(replicator->remotePlayerId),
-					replicator->peer->GetAveragePing(replicator->remotePlayerId),
-					replicator->peer->GetLowestPing(replicator->remotePlayerId)
-				);
-
-				waitingRefs->formatValue(replicator->numWaitingRefs());
-
-				float ratio = (float)statistics->messagesTotalBitsResent / statistics->totalBitsSent;
-				packetLoss->formatValue(ratio, "%.1g%%", ratio * 100.0);
-
-				instanceSize->formatMem(instanceCount != 0 ? instanceBits / (instanceCount * 8) : 0);
-			}
-		}
-
-		Replicator::ChangePropertyItem::ChangePropertyItem(Replicator& replicator, const boost::shared_ptr<const Instance>& instance, const Reflection::PropertyDescriptor& desc)
-			: Item(replicator),
-			  instance(instance),
-			  desc(desc)
-		{
-		}
-
-		void Replicator::ChangePropertyItem::write(RakNet::BitStream& bitStream)
-		{
-			if (replicator.isInReplicationScope(instance.get()))
-			{
-				writeItemType(bitStream, ItemTypeChangeProperty);
-
-				const Name& descName = desc.name;
-
-				replicator.serializeId(bitStream, instance.get());
-
-				SharedStringDictionary& r = replicator.propNames;
-
-				r.send(bitStream, descName.toString());
-
-				if (NetworkSettings::singleton().printProperties)
-				{
-					StandardOut::singleton()->print(
-						MESSAGE_INFO, 
-						"Replication: %s << %s:%s.%s", 
-						replicator.remotePlayerId.ToString(true), 
-						instance->getClassName().c_str(),
-						instance->getGuid().readableString(4).c_str(),
-						descName.c_str()
-					);
-				}
-
-				replicator.serializeValue(Reflection::ConstProperty(desc, instance.get()), true, bitStream);
-			}
-		}
-
-		Replicator::NewInstanceItem::NewInstanceItem(Replicator& replicator, const boost::shared_ptr<Instance>& instance)
-			: Item(replicator),
-			  instance(instance)
-		{
-			replicator.pendingNewInstances.insert(instance.get());
-		}
-
-		Replicator::DeleteInstanceItem::DeleteInstanceItem(Replicator& replicator, const boost::shared_ptr<const Instance>& instance)
-			: Item(replicator),
-			  instance(instance)
-		{
-			replicator.pendingDeleteInstances.insert(instance.get());
-		}
-
-		void Replicator::DeleteInstanceItem::write(RakNet::BitStream& bitStream)
-		{
-			size_t erased = replicator.pendingDeleteInstances.erase(instance.get());
-
-			if (erased)
-			{
-				if (!instance.get())
-				{
-					StandardOut::singleton()->print(MESSAGE_ERROR, "Replication: %s << ~NULL", replicator.remotePlayerId.ToString(true));
-					return;
-				}
-				
-				try 
-				{
-					writeItemType(bitStream, ItemTypeDelete);
-					replicator.serializeId(bitStream, instance.get());
-
-					if (NetworkSettings::singleton().printInstances)
-					{
-						StandardOut::singleton()->print(
-							MESSAGE_INFO,
-							"Replication: %s << ~%s:%s",
-							replicator.remotePlayerId.ToString(true),
-							instance->getClassName().c_str(),
-							instance->getGuid().readableString(4).c_str()
-						);
-					}
-				}
-				catch (std::runtime_error& e)
-				{
-					StandardOut::singleton()->print(
-						MESSAGE_ERROR,
-						"Replication: %s << ~%s, %s",
-						replicator.remotePlayerId.ToString(true),
-						instance->getClassName().c_str(),
-						e.what()
-					);
-				}
-			}
-		}
-
-		void Replicator::deserializeValue(RakNet::BitStream& inBitStream, bool lengthIncluded, Reflection::Property& property)
-		{
-			if (lengthIncluded)
-			{
-				ValueType output = ValueType_nil;
-				inBitStream.ReadBits((unsigned char*)&output, 4);
-			}
-
-			if (property.getDescriptor().type == Reflection::Type::singleton<std::string>())
-			{
-				getSharedDictionary(property.getDescriptor()).deserializeString(property, inBitStream);
-			}
-			else if (property.getDescriptor().type == Reflection::Type::singleton<bool>())
-			{
-				deserialize<bool>(property, inBitStream);
-			}
-			else if (property.getDescriptor().type == Reflection::Type::singleton<int>())
-			{
-				deserialize<int>(property, inBitStream);
-			}
-			else if (property.getDescriptor().type == Reflection::Type::singleton<float>())
-			{
-				deserialize<float>(property, inBitStream);
-			}
-			else if (property.getDescriptor().type == Reflection::Type::singleton<BrickColor>())
-			{
-				deserialize<BrickColor>(property, inBitStream);
-			}
-			else if (property.getDescriptor().type == Reflection::Type::singleton<G3D::Color3>())
-			{
-				deserialize<G3D::Color3>(property, inBitStream);
-			}
-			else if (property.getDescriptor().type == Reflection::Type::singleton<G3D::Vector3>())
-			{
-				if (property.getDescriptor() == PartInstance::prop_Size)
-				{
-					G3D::Vector3 value;
-					readBrickVector(inBitStream, value);
-					property.setValue<G3D::Vector3>(value);
-				}
-				else
-				{
-					deserialize<G3D::Vector3>(property, inBitStream);
-				}
-			}
-			else if (property.getDescriptor().type == Reflection::Type::singleton<G3D::CoordinateFrame>())
-			{
-				deserialize<G3D::CoordinateFrame>(property, inBitStream);
-			}
-			else if (dynamic_cast<const Reflection::EnumPropertyDescriptor*>(&property.getDescriptor()))
-			{
-				deserializeEnum(property, inBitStream);
-			}
-			else if (dynamic_cast<const Reflection::RefPropertyDescriptor*>(&property.getDescriptor()))
-			{
-				deserializeRef(property, inBitStream);
-			}
-			else if (property.getDescriptor().type == Reflection::Type::singleton<ContentId>())
-			{
-				deserialize<ContentId>(property, inBitStream);
-			}
-			else
-			{
-				RBXASSERT(false);
-			}
-		}
-
-		void Replicator::serializeValue(const Reflection::ConstProperty& property, bool includeLength, RakNet::BitStream& outBitStream)
-		{
-			if (property.getDescriptor().type == Reflection::Type::singleton<std::string>())
-			{
-				writeValueType(includeLength, ValueType_string, outBitStream);
-				getSharedDictionary(property.getDescriptor()).serializeString(property, outBitStream);
-			}
-			else if (property.getDescriptor().type == Reflection::Type::singleton<bool>())
-			{
-				writeValueType(includeLength, ValueType_bool, outBitStream);
-				serialize<bool>(property, outBitStream);
-			}
-			else if (property.getDescriptor().type == Reflection::Type::singleton<int>())
-			{
-				writeValueType(includeLength, ValueType_int, outBitStream);
-				serialize<int>(property, outBitStream);
-			}
-			else if (property.getDescriptor().type == Reflection::Type::singleton<float>())
-			{
-				writeValueType(includeLength, ValueType_float, outBitStream);
-				serialize<float>(property, outBitStream);
-			}
-			else if (property.getDescriptor().type == Reflection::Type::singleton<BrickColor>())
-			{
-				writeValueType(includeLength, ValueType_BrickColor, outBitStream);
-				serialize<BrickColor>(property, outBitStream);
-			}
-			else if (property.getDescriptor().type == Reflection::Type::singleton<G3D::Color3>())
-			{
-				writeValueType(includeLength, ValueType_Color3, outBitStream);
-				serialize<G3D::Color3>(property, outBitStream);
-			}
-			else if (property.getDescriptor().type == Reflection::Type::singleton<G3D::Vector3>())
-			{
-				if (property.getDescriptor() == PartInstance::prop_Size)
-				{
-					writeValueType(includeLength, ValueType_BrickVector, outBitStream);
-					writeBrickVector(outBitStream, property.getValue<G3D::Vector3>());
-				}
-				else
-				{
-					writeValueType(includeLength, ValueType_Vector3, outBitStream);
-					serialize<G3D::Vector3>(property, outBitStream);
-				}
-			}
-			else if (property.getDescriptor().type == Reflection::Type::singleton<G3D::CoordinateFrame>())
-			{
-				writeValueType(includeLength, ValueType_CoordinateFrame, outBitStream);
-				serialize<G3D::CoordinateFrame>(property, outBitStream);
-			}
-			else if (dynamic_cast<const Reflection::EnumPropertyDescriptor*>(&property.getDescriptor()))
-			{
-				writeValueType(includeLength, ValueType_Enum, outBitStream);
-				serializeEnum(property, outBitStream);
-			}
-			else if (dynamic_cast<const Reflection::RefPropertyDescriptor*>(&property.getDescriptor()))
-			{
-				writeValueType(includeLength, ValueType_Ref, outBitStream);
-				serializeRef(property, outBitStream);
-			}
-			else if (property.getDescriptor().type == Reflection::Type::singleton<ContentId>())
-			{
-				writeValueType(includeLength, ValueType_ContentId, outBitStream);
-				serialize<ContentId>(property, outBitStream);
-			}
-			else
-			{
-				RBXASSERT(false);
-			}
-		}
-
-		PluginReceiveResult Replicator::OnReceive(RakPeerInterface* peer, Packet* packet)
-		{
-			RBXASSERT(this->peer == peer);
-			if (packet->systemAddress == remotePlayerId)
-			{
-				Profiling::Mark mark(*profileReplication, false);
-
-				try
-				{
-					switch(packet->data[0])
-					{
-					case ID_TIMESTAMP:
-						{
-							return OnReceive_ID_TIMESTAMP(packet);
-						}
-					case ID_CONNECTION_LOST:
-						{
-							StandardOut::singleton()->print(MESSAGE_WARNING, "Lost connection to %s\n", packet->systemAddress.ToString());
-							event_Disconnection.fire(this, packet->systemAddress.ToString(), true);
-							disconnected = true;
-							return RR_CONTINUE_PROCESSING;
-						}
-					case ID_DISCONNECTION_NOTIFICATION:
-						{
-							StandardOut::singleton()->print(MESSAGE_INFO, "Disconnect from %s", packet->systemAddress.ToString());
-							event_Disconnection.fire(this, packet->systemAddress.ToString(), false);
-							disconnected = true;
-							return RR_CONTINUE_PROCESSING;
-						}
-					case ID_DATA:
-						{
-							receiveData(packet);
-							return RR_STOP_PROCESSING_AND_DEALLOCATE;
-						}
-					case ID_REQUEST_MARKER:
-						{
-							RakNet::BitStream inBitstream(packet->data, packet->length, false);
-							inBitstream.IgnoreBits(8);
-
-							int id;
-							inBitstream >> id;
-
-							pendingItems.push_back(boost::shared_ptr<Item>(new MarkerItem(*this, id)));
-							return RR_STOP_PROCESSING_AND_DEALLOCATE;
-						}
-					case ID_SET_GLOBALS:
-						{
-							RakNet::BitStream inBitstream(packet->data, packet->length, false);
-							inBitstream.IgnoreBits(8);
-
-							std::vector<Instance*>::iterator end = replicationContainers.end();
-
-							for (std::vector<Instance*>::iterator iter = replicationContainers.begin(); iter != end; iter++)
-							{
-								Guid::Data id;
-								deserializeId(inBitstream, id);
-								ServiceProvider::create<IdManager>(this)->addInstance(*iter, id);
-								resolvePendingBindings(*iter, id);
-							}
-						}
-						receivedGlobals = true;
-						return RR_STOP_PROCESSING_AND_DEALLOCATE;
-					}
-				}
-				catch (std::exception& e)
-				{
-					StandardOut::singleton()->print(MESSAGE_ERROR, "Replicator::OnReceive packet %d: %s", packet->data[0], e.what());
-				}
-			}
-
-			return RR_CONTINUE_PROCESSING;
-		}
-	}
+struct Mutex {
+    long count;
+    void* event;
+    Mutex() { count = 0; event = 0; }
+    ~Mutex();
+    void* get_event();
+    void unlock() {
+        long const offset = (long)0x80000000;
+        long const old = _InterlockedExchangeAdd(&count, offset);
+        if (!(old & 0x40000000) && old > offset) {
+            if (!_interlockedbittestandset(&count, 30))
+                SetEvent_ptr(get_event());
+        }
+    }
+};
+
+struct Lock {
+    Mutex* m;
+    bool locked;
+    Lock(Mutex& mm) : m(&mm), locked(false) { lock(); }
+    ~Lock() {
+        if (locked)
+            m->unlock();
+    }
+    void lock();
+};
+
+struct S {
+    Ptr head;
+    bool step(Ptr& cur);
+};
+
+bool S::step(Ptr& cur) {
+    Ptr old(cur);
+    static long flag = 0;
+    call_once(flag, init_once);
+    static Mutex m;
+    Lock lock(m);
+    if (!cur.px)
+        cur = head;
+    else
+        cur = cur.px->next;
+    if (!cur.px)
+        return false;
+    return true;
 }

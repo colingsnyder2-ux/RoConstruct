@@ -1,6 +1,6 @@
-// from server: 0% by colin
+// from server: 18% by Marcio
 struct lua_exception {
-    void func_005c58d0(int a, int b, int c);
+    void __cdecl func_005c58d0(int a, int b, int c);
 };
 
 void lua_exception::func_005c58d0(int a, int b, int c)

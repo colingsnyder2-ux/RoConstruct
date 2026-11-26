@@ -1,14 +1,12 @@
-// from server: 57% by Intel
-struct RBX__A6AXABVHeartbeat$$signalVslot$callable {
-    void* field0;
-    void* field4;
-    void* field8;
-    void operator()(void* arg);
-};
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: boost-1.40.0 roc_espclaude_94bf03fd925cb760.cpp
 
-void RBX__A6AXABVHeartbeat$$signalVslot$callable::operator()(void* arg) {
-    void* vtable = field0;
-    void* func = *(void**)((char*)vtable + 8);
-    void* this_ptr = *(void**)((char*)vtable + 4);
-    ((void(__stdcall*)(void*, void*))func)(this_ptr, arg);
-}
+// Candidate translation unit (score above; library headers required).
+#include <boost/bind.hpp>
+#include <boost/function.hpp>
+struct Ev { short a, b; }; class T { public: int m(Ev); };
+typedef boost::_bi::bind_t<int, boost::_mfi::mf1<int, T, Ev>, boost::_bi::list2<boost::_bi::value<T*>, boost::_bi::value<Ev> > > B;
+template struct boost::detail::function::function_obj_invoker0<B, int>;

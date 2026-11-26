@@ -1,16 +1,26 @@
-// from server: 78% by atomic.potato
-extern "C" void __stdcall sub_9172a0(void *, void *);
-extern "C" void __stdcall sub_9623e0(void *, void *);
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?f@CleanStage@ns_ROCX00000b@@QAEXPAUS_func_00645830@2@@Z)
 
-struct S
-{
-    void *field8;
-    void *f(unsigned int);
+namespace ns_ROCX00000b {
+struct S_func_00645830 {
+    char pad0[4];
+    int m_x;
+    void f(int a1);
 };
 
-void *S::f(unsigned int value)
+struct NextStage {
+    void f(S_func_00645830* object);
+};
+
+struct CleanStage {
+    char pad0[8];
+    NextStage* next;
+    void f(S_func_00645830* object);
+};
+
+void CleanStage::f(S_func_00645830* object)
 {
-    sub_9172a0((void *)value, this);
-    sub_9623e0(field8, (void *)value);
-    return 0;
+    object->f((int)this);
+    next->f(object);
+}
 }

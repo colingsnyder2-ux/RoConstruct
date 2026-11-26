@@ -1,16 +1,17 @@
-// from server: 62% by atomic.potato
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct T { void g(); };
 struct S
 {
-    int* p;
-    void f(int);
+    char pad[0x2c];
+    char *p;
+    void f(char *x);
 };
 
-extern "C" void sub_008fa3e0(int*);
-
-void S::f(int value)
+void S::f(char *x)
 {
-    if (value != 0)
-        sub_008fa3e0(p + value - 7);
-    else
-        sub_008fa3e0(p);
+    int off = x ? (int)x - 0x1c : 0;
+    ((T *)(p + off))->g();
 }

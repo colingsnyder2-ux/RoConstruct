@@ -1,34 +1,44 @@
-// from server: 41% by Intel
-struct SignalSlotCallable {
-    int vtable;
-    int field_4;
-    int field_8;
-    int field_C;
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ??$assign_to@UFn@boost@@@function1@boost@@QAEXUFn@1@@Z)
 
-    int func(int a1, int a2);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <new>
+namespace boost { namespace detail { namespace function {
+union function_buffer { void* obj_ptr; double align; char data[8]; };
+inline bool has_empty_target(...) { return false; }
+struct vtable_base { void (*manager)(); };
+template<class F> struct functor_manager { static void manage(); };
+template<class F> struct invoker1 { static void invoke(); };
+struct basic_vtable1 {
+    vtable_base base;
+    void (*invoker)();
+    template<typename F> bool assign_to(F f, function_buffer& functor) const
+    {
+        if (!has_empty_target(&f)) {
+            new ((void*)&functor.data) F(f);
+            return true;
+        }
+        return false;
+    }
 };
-
-extern "C" bool __stdcall func_00880f30();
-
-int SignalSlotCallable::func(int a1, int a2) {
-    int v4;
-    int v5;
-    int v6;
-    int v7;
-
-    v6 = a1;
-    v7 = a2;
-    v4 = 0;
-    v5 = 0;
-    if (func_00880f30()) {
-        vtable = 0;
-        return 0;
+}}
+struct Obj;
+struct Fn { void (*f)(Obj*); Obj* o; };
+class function1 {
+public:
+    detail::function::vtable_base* vtable;
+    detail::function::function_buffer functor;
+    template<typename Functor> void assign_to(Functor f)
+    {
+        static const detail::function::basic_vtable1 stored_vtable = { { &detail::function::functor_manager<Functor>::manage }, &detail::function::invoker1<Functor>::invoke };
+        if (stored_vtable.assign_to(f, functor))
+            vtable = (detail::function::vtable_base*)&stored_vtable.base;
+        else
+            vtable = 0;
     }
-    int* ptr = &field_8;
-    if (ptr) {
-        *ptr = v4;
-        *(ptr + 1) = v5;
-    }
-    vtable = 0xD70B2C;
-    return 0;
+};
+template void function1::assign_to<Fn>(Fn f);
 }

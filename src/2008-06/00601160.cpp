@@ -16,7 +16,7 @@ namespace boost {template<class E> __declspec(noreturn) void throw_exception(E c
 //
 // what:  lexical_cast custom keyword cast
 // who:   contributed by Kevlin Henney,
-//        enhanced with contributions from Terje Slettebø,
+//        enhanced with contributions from Terje SlettebÃ¸,
 //        with additional fixes and suggestions from Gennaro Prota,
 //        Beman Dawes, Dave Abrahams, Daryle Walker, Peter Dimov,
 //        and other Boosters

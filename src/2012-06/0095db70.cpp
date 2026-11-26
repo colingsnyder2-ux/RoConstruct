@@ -1,18 +1,16 @@
-// from server: 94% by atomic.potato
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ??0D_006cf940@@QAE@HH@Z)
 
-
-struct MechToAssemblyStage
-{
-    int value0;
-    int value4;
-    MechToAssemblyStage* f(void*, void*);
-void sub_0095e600(void*, void*);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct B1_006cf940 { virtual void a1(); };
+struct B2_006cf940 { virtual void a2(); };
+struct Base_006cf940 : B1_006cf940, B2_006cf940 { Base_006cf940(int a, int b); };
+struct D_006cf940 : Base_006cf940 {
+    D_006cf940(int a, int b);
+    virtual void a1();
+    virtual void a2();
 };
-
-MechToAssemblyStage* MechToAssemblyStage::f(void* a, void* b)
-{
-    sub_0095e600(b, a);
-    value0 = 0x00c04320;
-    value4 = 0x00c04314;
-    return this;
-}
+D_006cf940::D_006cf940(int a, int b) : Base_006cf940(a, b) {}

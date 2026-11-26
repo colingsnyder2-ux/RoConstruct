@@ -1,530 +1,137 @@
-// from server: 39% by Viper
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/program_options/src/cmdline.cpp
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+// roc 2012-06 004ae680  unit: VerbBinderJob  size: 202 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 004ae680
+//
+// 004ae680  51                   push ecx
+// 004ae681  8b542410             mov edx, dword ptr [esp + 0x10]
+// 004ae685  56                   push esi
+// 004ae686  8bf1                 mov esi, ecx
+// 004ae688  8b4604               mov eax, dword ptr [esi + 4]
+// 004ae68b  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 004ae68f  3b08                 cmp ecx, dword ptr [eax]
+// 004ae691  7537                 jne 0x4ae6ca
+// 004ae693  3bd0                 cmp edx, eax
+// 004ae695  7533                 jne 0x4ae6ca
+// 004ae697  8b4004               mov eax, dword ptr [eax + 4]
+// 004ae69a  50                   push eax
+// 004ae69b  8bce                 mov ecx, esi
+// 004ae69d  e83efeffff           call 0x4ae4e0
+// 004ae6a2  8b4604               mov eax, dword ptr [esi + 4]
+// 004ae6a5  894004               mov dword ptr [eax + 4], eax
+// 004ae6a8  8b4604               mov eax, dword ptr [esi + 4]
+// 004ae6ab  c7460800000000       mov dword ptr [esi + 8], 0
+// 004ae6b2  8900                 mov dword ptr [eax], eax
+// 004ae6b4  8b4604               mov eax, dword ptr [esi + 4]
+// 004ae6b7  894008               mov dword ptr [eax + 8], eax
+// 004ae6ba  8b4e04               mov ecx, dword ptr [esi + 4]
+// 004ae6bd  8b11                 mov edx, dword ptr [ecx]
+// 004ae6bf  8b44240c             mov eax, dword ptr [esp + 0xc]
+// 004ae6c3  8910                 mov dword ptr [eax], edx
+// 004ae6c5  5e                   pop esi
+// 004ae6c6  59                   pop ecx
+// 004ae6c7  c20c00               ret 0xc
+// 004ae6ca  3bca                 cmp ecx, edx
+// 004ae6cc  7471                 je 0x4ae73f
+// 004ae6ce  8bff                 mov edi, edi
+// 004ae6d0  80791900             cmp byte ptr [ecx + 0x19], 0
+// 004ae6d4  8bd1                 mov edx, ecx
+// 004ae6d6  7550                 jne 0x4ae728
+// 004ae6d8  8b4108               mov eax, dword ptr [ecx + 8]
+// 004ae6db  80781900             cmp byte ptr [eax + 0x19], 0
+// 004ae6df  751f                 jne 0x4ae700
+// 004ae6e1  8bc8                 mov ecx, eax
+// 004ae6e3  8b01                 mov eax, dword ptr [ecx]
+// 004ae6e5  80781900             cmp byte ptr [eax + 0x19], 0
+// 004ae6e9  750f                 jne 0x4ae6fa
+// 004ae6eb  eb03                 jmp 0x4ae6f0
+// 004ae6ed  8d4900               lea ecx, [ecx]
+// 004ae6f0  8bc8                 mov ecx, eax
+// 004ae6f2  8b01                 mov eax, dword ptr [ecx]
+// 004ae6f4  80781900             cmp byte ptr [eax + 0x19], 0
+// 004ae6f8  74f6                 je 0x4ae6f0
+// 004ae6fa  894c2410             mov dword ptr [esp + 0x10], ecx
+// 004ae6fe  eb28                 jmp 0x4ae728
+// 004ae700  8b4104               mov eax, dword ptr [ecx + 4]
+// 004ae703  80781900             cmp byte ptr [eax + 0x19], 0
+// 004ae707  751b                 jne 0x4ae724
+// 004ae709  8da42400000000       lea esp, [esp]
+// 004ae710  3b4808               cmp ecx, dword ptr [eax + 8]
+// 004ae713  750f                 jne 0x4ae724
+// 004ae715  8bc8                 mov ecx, eax
+// 004ae717  894c2410             mov dword ptr [esp + 0x10], ecx
+// 004ae71b  8b4004               mov eax, dword ptr [eax + 4]
+// 004ae71e  80781900             cmp byte ptr [eax + 0x19], 0
+// 004ae722  74ec                 je 0x4ae710
+// 004ae724  89442410             mov dword ptr [esp + 0x10], eax
+// 004ae728  52                   push edx
+// 004ae729  8d442408             lea eax, [esp + 8]
+// 004ae72d  50                   push eax
+// 004ae72e  8bce                 mov ecx, esi
+// 004ae730  e8abfaffff           call 0x4ae1e0
+// 004ae735  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 004ae739  3b4c2414             cmp ecx, dword ptr [esp + 0x14]
+// 004ae73d  7591                 jne 0x4ae6d0
+// 004ae73f  8b44240c             mov eax, dword ptr [esp + 0xc]
+// 004ae743  8908                 mov dword ptr [eax], ecx
+// 004ae745  5e                   pop esi
+// 004ae746  59                   pop ecx
+// 004ae747  c20c00               ret 0xc
 
-// Candidate translation unit (score above; library headers required).
-// Copyright Vladimir Prus 2002-2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
+struct Node {
+    Node* left;
+    Node* parent;
+    Node* right;
+    char value[44];
+    char color;
+    char isnil;
+};
 
-#define BOOST_PROGRAM_OPTIONS_SOURCE
-#include <boost/program_options/config.hpp>
-
-#include <boost/config.hpp>
-
-#include <boost/program_options/detail/cmdline.hpp>
-#include <boost/program_options/errors.hpp>
-#include <boost/program_options/value_semantic.hpp>
-#include <boost/program_options/options_description.hpp>
-#include <boost/program_options/positional_options.hpp>
-#include <boost/throw_exception.hpp>
-
-#include <boost/bind.hpp>
-
-#include <string>
-#include <utility>
-#include <vector>
-#include <cassert>
-#include <cstring>
-#include <cctype>
-
-#include <cstdio>
-
-#include <iostream>
-
-namespace boost { namespace program_options {
-
-    using namespace std;
-    using namespace boost::program_options::command_line_style;
-    
-    invalid_command_line_syntax::
-    invalid_command_line_syntax(const std::string& tokens, kind_t kind)
-    : invalid_syntax(tokens, error_message(kind)), m_kind(kind)
-    {}
-
-    std::string 
-    invalid_command_line_syntax::error_message(kind_t kind)
-    {
-        // Initially, store the message in 'const char*' variable,
-        // to avoid conversion to std::string in all cases.
-        const char* msg;
-        switch(kind)
-        {
-        case long_not_allowed:
-            msg = "long options are not allowed";
-            break;
-        case long_adjacent_not_allowed:
-            msg = "parameters adjacent to long options not allowed";
-            break;
-        case short_adjacent_not_allowed:
-            msg = "parameters adjust to short options are not allowed";
-            break;
-        case empty_adjacent_parameter:
-            msg = "adjacent parameter is empty";
-            break;
-        case missing_parameter:
-            msg = "required parameter is missing";
-            break;
-        case extra_parameter:
-            msg = "extra parameter";
-            break;
-        default:
-            msg = "unknown error";
-        }
-        return msg;
-    }
-
-    invalid_command_line_syntax::kind_t 
-    invalid_command_line_syntax::kind() const
-    {
-        return m_kind;
-    }
-
-
-}}
-
-
-namespace boost { namespace program_options { namespace detail {
-
-    // vc6 needs this, but borland chokes when this is added.
-#if BOOST_WORKAROUND(_MSC_VER, < 1300)
-    using namespace std;
-    using namespace program_options;
-#endif
-
-
-    cmdline::cmdline(const std::vector<std::string>& args)
-    {
-        init(args);
-    }
-
-    cmdline::cmdline(int argc, const char*const * argv)
-    {
-#if defined(BOOST_NO_TEMPLATED_ITERATOR_CONSTRUCTORS)
-        vector<string> args;
-        copy(argv+1, argv+argc, inserter(args, args.end()));
-        init(args);
-#else
-        init(vector<string>(argv+1, argv+argc));
-#endif
-    }
-
-    void
-    cmdline::init(const std::vector<std::string>& args)
-    {
-        this->args = args;        
-        m_style = command_line_style::default_style;
-        m_desc = 0;
-        m_positional = 0;
-        m_allow_unregistered = false;
-    }
-
-    void 
-    cmdline::style(int style)
-    {
-        if (style == 0) 
-            style = default_style;        
-
-        check_style(style);
-        this->m_style = style_t(style);
-    }
-    
-    void 
-    cmdline::allow_unregistered()
-    {
-        this->m_allow_unregistered = true;
-    }
-
-    void 
-    cmdline::check_style(int style) const
-    {
-        bool allow_some_long = 
-            (style & allow_long) || (style & allow_long_disguise);
-
-        const char* error = 0;
-        if (allow_some_long && 
-            !(style & long_allow_adjacent) && !(style & long_allow_next))
-            error = "style disallows parameters for long options";
-
-        if (!error && (style & allow_short) &&
-            !(style & short_allow_adjacent) && !(style & short_allow_next))
-            error = "style disallows parameters for short options";
-
-        if (!error && (style & allow_short) &&
-            !(style & allow_dash_for_short) && !(style & allow_slash_for_short))
-            error = "style disallows all characters for short options";
-
-        if (error)
-            throw invalid_command_line_style(error);
-
-        // Need to check that if guessing and long disguise are enabled
-        // -f will mean the same as -foo
-    }
-
-    void 
-    cmdline::set_options_description(const options_description& desc)
-    {
-        m_desc = &desc;
-    }
-
-    void 
-    cmdline::set_positional_options(
-        const positional_options_description& positional)
-    {
-        m_positional = &positional;
-    }
-
-
-    vector<option>
-    cmdline::run()
-    {
-        // The parsing is done by having a set of 'style parsers'
-        // and trying then in order. Each parser is passed a vector
-        // of unparsed tokens and can consume some of them (by
-        // removing elements on front) and return a vector of options.
-        //
-        // We try each style parser in turn, untill some input
-        // is consumed. The returned vector of option may contain the
-        // result of just syntactic parsing of token, say --foo will
-        // be parsed as option with name 'foo', and the style parser
-        // is not required to care if that option is defined, and how
-        // many tokens the value may take.
-        // So, after vector is returned, we validate them.
-        assert(m_desc);
-
-        vector<style_parser> style_parsers;      
-
-        if (m_style_parser)
-            style_parsers.push_back(m_style_parser);
-
-        if (m_additional_parser)
-            style_parsers.push_back(
-                bind(&cmdline::handle_additional_parser, this, _1));
-
-        if (m_style & allow_long)
-            style_parsers.push_back(
-                bind(&cmdline::parse_long_option, this, _1));
-
-        if ((m_style & allow_long_disguise))
-            style_parsers.push_back(
-                bind(&cmdline::parse_disguised_long_option, this, _1));
-
-        if ((m_style & allow_short) && (m_style & allow_dash_for_short))
-            style_parsers.push_back(
-                bind(&cmdline::parse_short_option, this, _1));
-
-        if ((m_style & allow_short) && (m_style & allow_slash_for_short))
-            style_parsers.push_back(bind(&cmdline::parse_dos_option, this, _1));
-
-        style_parsers.push_back(bind(&cmdline::parse_terminator, this, _1));
-
-        vector<option> result;
-        while(!args.empty())
-        {
-            bool ok = false;
-            for(unsigned i = 0; i < style_parsers.size(); ++i)
-            {
-                unsigned current_size = args.size();
-                vector<option> next = style_parsers[i](args);
-
-                // Check that option names
-                // are valid, and that all values are in place.
-                if (!next.empty())
-                {
-                    vector<string> e;
-                    for(unsigned k = 0; k < next.size()-1; ++k) {
-                        finish_option(next[k], e);
-                    }
-                    // For the last option, pass the unparsed tokens
-                    // so that they can be added to next.back()'s values
-                    // if appropriate.
-                    finish_option(next.back(), args);
-                    for (unsigned j = 0; j < next.size(); ++j)
-                        result.push_back(next[j]);                    
-                }
-                                
-                if (args.size() != current_size) {
-                    ok = true;
-                    break;                
-                } 
-            }
-            
-            if (!ok) {
-                option opt;
-                opt.value.push_back(args[0]);
-                opt.original_tokens.push_back(args[0]);
-                result.push_back(opt);
-                args.erase(args.begin());
-            }
-        }
-
-        // Assign position keys to positional options.
-        int position_key = 0;
-        for(unsigned i = 0; i < result.size(); ++i) {
-            if (result[i].string_key.empty())
-                result[i].position_key = position_key++;
-        }
-
-        if (m_positional)
-        {
-            unsigned position = 0;
-            for (unsigned i = 0; i < result.size(); ++i) {
-                option& opt = result[i];
-                if (opt.position_key != -1) {
-                    if (position >= m_positional->max_total_count())
-                    {
-                        throw too_many_positional_options_error(
-                            "too many positional options");
-                    }
-                    opt.string_key = m_positional->name_for_position(position);
-                    ++position;
-                }
-            }
-        }
-
-        return result;
-    }
-
-    void
-    cmdline::finish_option(option& opt,
-                           vector<string>& other_tokens)
-    {                                    
-        if (opt.string_key.empty())
-            return;
-
-        // First check that the option is valid, and get its description.
-        // TODO: case-sensitivity.
-        const option_description* xd = 
-            m_desc->find_nothrow(opt.string_key, (m_style & allow_guessing));
-
-        if (!xd)
-        {
-            if (m_allow_unregistered) {
-                opt.unregistered = true;
-                return;
+struct Iter {
+    Node* ptr;
+    Iter(Node* p) : ptr(p) {}
+    Iter& operator++() {
+        if (!ptr->isnil) {
+            if (!ptr->right->isnil) {
+                Node* n = ptr->right;
+                while (!n->left->isnil)
+                    n = n->left;
+                ptr = n;
             } else {
-                boost::throw_exception(unknown_option(opt.string_key));
-            }                
-        }
-        const option_description& d = *xd;
-
-        // Canonize the name
-        opt.string_key = d.key(opt.string_key);
-
-        // We check that the min/max number of tokens for the option
-        // agrees with the number of tokens we have. The 'adjacent_value'
-        // (the value in --foo=1) counts as a separate token, and if present
-        // must be consumed. The following tokens on the command line may be
-        // left unconsumed.
-
-        // We don't check if those tokens look like option, or not!
-
-        unsigned min_tokens = d.semantic()->min_tokens();
-        unsigned max_tokens = d.semantic()->max_tokens();
-        
-        unsigned present_tokens = opt.value.size() + other_tokens.size();
-        
-        if (present_tokens >= min_tokens)
-        {
-            if (!opt.value.empty() && max_tokens == 0) {
-                throw invalid_command_line_syntax(opt.string_key,
-                    invalid_command_line_syntax::extra_parameter);                                                                
-            }
-            
-            max_tokens -= opt.value.size();
-
-            // Everything's OK, move the values to the result.            
-            for(;!other_tokens.empty() && max_tokens--; ) {
-                opt.value.push_back(other_tokens[0]);
-                opt.original_tokens.push_back(other_tokens[0]);
-                other_tokens.erase(other_tokens.begin());
+                Node* p;
+                while (!(p = ptr->parent)->isnil && ptr == p->right)
+                    ptr = p;
+                ptr = p;
             }
         }
-        else
-        {
-            throw invalid_command_line_syntax(opt.string_key,
-                invalid_command_line_syntax::missing_parameter); 
-
-        }
+        return *this;
     }
-
-    std::vector<option> 
-    cmdline::parse_long_option(std::vector<string>& args)
-    {
-        vector<option> result;
-        const std::string& tok = args[0];
-        if (tok.size() >= 3 && tok[0] == '-' && tok[1] == '-')
-        {   
-            string name, adjacent;
-
-            string::size_type p = tok.find('=');
-            if (p != tok.npos)
-            {
-                name = tok.substr(2, p-2);
-                adjacent = tok.substr(p+1);
-                if (adjacent.empty())
-                    throw invalid_command_line_syntax(name,
-                      invalid_command_line_syntax::empty_adjacent_parameter);
-            }
-            else
-            {
-                name = tok.substr(2);
-            }
-            option opt;
-            opt.string_key = name;
-            if (!adjacent.empty())
-                opt.value.push_back(adjacent);
-            opt.original_tokens.push_back(tok);
-            result.push_back(opt);
-            args.erase(args.begin());
-        }
-        return result;
+    Iter operator++(int) {
+        Iter t = *this;
+        ++*this;
+        return t;
     }
+};
 
+struct Tree {
+    int comp;
+    Node* head;
+    unsigned int size;
+    void eraseSubtree(Node* n);
+    Iter erase(Iter where);
+    Iter erase(Iter first, Iter last);
+};
 
-    std::vector<option> 
-    cmdline::parse_short_option(std::vector<string>& args)
-    {
-        const std::string& tok = args[0];
-        if (tok.size() >= 2 && tok[0] == '-' && tok[1] != '-')
-        {   
-            vector<option> result;
-
-            string name = tok.substr(0,2);
-            string adjacent = tok.substr(2);
-
-            // Short options can be 'grouped', so that
-            // "-d -a" becomes "-da". Loop, processing one
-            // option at a time. We exit the loop when either
-            // we've processed all the token, or when the remainder
-            // of token is considered to be value, not further grouped
-            // option.
-            for(;;) {
-                const option_description* d 
-                    = m_desc->find_nothrow(name, false);
-
-                // FIXME: check for 'allow_sticky'.
-                if (d && (m_style & allow_sticky) &&
-                    d->semantic()->max_tokens() == 0 && !adjacent.empty()) {
-                    // 'adjacent' is in fact further option.
-                    option opt;
-                    opt.string_key = name;
-                    result.push_back(opt);
-
-                    if (adjacent.empty())
-                    {
-                        args.erase(args.begin());
-                        break;
-                    }
-
-                    name = string("-") + adjacent[0];
-                    adjacent.erase(adjacent.begin());
-                } else {
-                    
-                    option opt;
-                    opt.string_key = name;
-                    opt.original_tokens.push_back(tok);
-                    if (!adjacent.empty())
-                        opt.value.push_back(adjacent);
-                    result.push_back(opt);
-                    args.erase(args.begin());                    
-                    break;
-                }
-            }
-            return result;
-        }
-        return std::vector<option>();
+Iter Tree::erase(Iter first, Iter last) {
+    if (first.ptr == head->left && last.ptr == head) {
+        eraseSubtree(head->parent);
+        head->parent = head;
+        size = 0;
+        head->left = head;
+        head->right = head;
+        return Iter(head->left);
     }
-
-    std::vector<option> 
-    cmdline::parse_dos_option(std::vector<string>& args)
-    {
-        vector<option> result;
-        const std::string& tok = args[0];
-        if (tok.size() >= 2 && tok[0] == '/')
-        {   
-            string name = "-" + tok.substr(1,1);
-            string adjacent = tok.substr(2);
-
-            option opt;
-            opt.string_key = name;
-            if (!adjacent.empty())
-                opt.value.push_back(adjacent);
-            opt.original_tokens.push_back(tok);
-            result.push_back(opt);
-            args.erase(args.begin());
-        }
-        return result;
-    }
-
-    std::vector<option> 
-    cmdline::parse_disguised_long_option(std::vector<string>& args)
-    {
-        const std::string& tok = args[0];
-        if (tok.size() >= 2 && 
-            ((tok[0] == '-' && tok[1] != '-') ||
-             ((m_style & allow_slash_for_short) && tok[0] == '/')))            
-        {
-            if (m_desc->find_nothrow(tok.substr(1, tok.find('=')-1), 
-                                     m_style & allow_guessing)) {
-                args[0].insert(0, "-");
-                if (args[0][1] == '/')
-                    args[0][1] = '-';
-                return parse_long_option(args);
-            }
-        }
-        return vector<option>();
-    }
-
-    std::vector<option> 
-    cmdline::parse_terminator(std::vector<std::string>& args)
-    {
-        vector<option> result;
-        const std::string& tok = args[0];
-        if (tok == "--")
-        {
-            for(unsigned i = 1; i < args.size(); ++i)
-            {
-                option opt;
-                opt.value.push_back(args[i]);
-                result.push_back(opt);
-            }
-            args.clear();
-        }
-        return result;
-    }
-
-    std::vector<option> 
-    cmdline::handle_additional_parser(std::vector<std::string>& args)
-    {
-        vector<option> result;
-        pair<string, string> r = m_additional_parser(args[0]);
-        if (!r.first.empty()) {
-            option next;
-            next.string_key = r.first;
-            if (!r.second.empty())
-                next.value.push_back(r.second);
-            result.push_back(next);
-            args.erase(args.begin());
-        }
-        return result;
-    }
-
-    void 
-    cmdline::set_additional_parser(additional_parser p)
-    {
-        m_additional_parser = p;
-    }
-
-    void 
-    cmdline::extra_style_parser(style_parser s)
-    {
-        m_style_parser = s;
-    }
-
-
-
-}}}
+    while (first.ptr != last.ptr)
+        erase(first++);
+    return Iter(first.ptr);
+}

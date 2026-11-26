@@ -1,25 +1,23 @@
-// from server: 47% by atomic.potato
-extern "C" void* __cdecl sub_98211A(unsigned int);
-extern "C" void __cdecl sub_982114(void*);
+// from server: 97% by Xemicl
+// from server: 97% by tajop
+// roc-lang: cpp
+// roc-cl: 30729
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <memory>
 
-struct VCRenderSettingsItem_FactoryProduct {
-    void* method(void* a, void* b, void* c);
+struct GetSetBase {
+    virtual void get() const = 0;
 };
 
-void* VCRenderSettingsItem_FactoryProduct::method(void* a, void* b, void* c)
+// operator new(0x10): vptr + a 12-byte by-value argument (stack +8..+0x10).
+struct Accessors { int a, b, c; };
+struct GetSetImpl : GetSetBase {
+    Accessors acc;
+    explicit GetSetImpl(const Accessors& a) : acc(a) {}
+    virtual void get() const;
+};
+
+std::auto_ptr<GetSetBase> makeGetSet(Accessors acc)
 {
-    void* p = sub_98211A(0x10);
-    if (p != 0)
-    {
-        *(unsigned int*)p = 0xb57cb4;
-        *(void**)((char*)p + 4) = a;
-        *(void**)((char*)p + 8) = b;
-        *(void**)((char*)p + 12) = c;
-    }
-    else
-    {
-        p = 0;
-    }
-    sub_982114(p);
-    return p;
+    return std::auto_ptr<GetSetBase>(new GetSetImpl(acc));
 }

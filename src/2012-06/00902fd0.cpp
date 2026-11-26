@@ -1,15 +1,16 @@
-// from server: 58% by atomic.potato
-extern "C" void sub_95e600(void *, void *);
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ??0D_006cf940@@QAE@HH@Z)
 
-struct S
-{
-    int *f(void *);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct B1_006cf940 { virtual void a1(); };
+struct B2_006cf940 { virtual void a2(); };
+struct Base_006cf940 : B1_006cf940, B2_006cf940 { Base_006cf940(int a, int b); };
+struct D_006cf940 : Base_006cf940 {
+    D_006cf940(int a, int b);
+    virtual void a1();
+    virtual void a2();
 };
-
-int *S::f(void *arg)
-{
-    sub_95e600(this, arg);
-    *(int *)this = (int)0xbf2120;
-    *((int *)this + 1) = (int)0xbf2114;
-    return (int *)this;
-}
+D_006cf940::D_006cf940(int a, int b) : Base_006cf940(a, b) {}

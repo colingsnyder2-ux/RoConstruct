@@ -1,491 +1,137 @@
-// from server: 47% by intel
+// from server: 100% by Xemicl
+// roc 2012-06 0051f060  unit: RBX::Network::P8Player::?$GetSetImpl  size: 237 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 0051f060
+//
+// 0051f060  6aff                 push -1
+// 0051f062  6878b0aa00           push 0xaab078
+// 0051f067  64a100000000         mov eax, dword ptr fs:[0]
+// 0051f06d  50                   push eax
+// 0051f06e  64892500000000       mov dword ptr fs:[0], esp
+// 0051f075  51                   push ecx
+// 0051f076  56                   push esi
+// 0051f077  57                   push edi
+// 0051f078  8bf9                 mov edi, ecx
+// 0051f07a  8d44241c             lea eax, [esp + 0x1c]
+// 0051f07e  50                   push eax
+// 0051f07f  c744241800000000     mov dword ptr [esp + 0x18], 0
+// 0051f087  e8a41e3600           call 0x880f30
+// 0051f08c  83c404               add esp, 4
+// 0051f08f  84c0                 test al, al
+// 0051f091  0f8589000000         jne 0x51f120
+// 0051f097  8b54242c             mov edx, dword ptr [esp + 0x2c]
+// 0051f09b  88442408             mov byte ptr [esp + 8], al
+// 0051f09f  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 0051f0a3  8b442424             mov eax, dword ptr [esp + 0x24]
+// 0051f0a7  51                   push ecx
+// 0051f0a8  52                   push edx
+// 0051f0a9  83ec10               sub esp, 0x10
+// 0051f0ac  8bf4                 mov esi, esp
+// 0051f0ae  89642444             mov dword ptr [esp + 0x44], esp
+// 0051f0b2  894608               mov dword ptr [esi + 8], eax
+// 0051f0b5  c70600000000         mov dword ptr [esi], 0
+// 0051f0bb  83f808               cmp eax, 8
+// 0051f0be  7708                 ja 0x51f0c8
+// 0051f0c0  8bc6                 mov eax, esi
+// 0051f0c2  8d4c2434             lea ecx, [esp + 0x34]
+// 0051f0c6  eb0f                 jmp 0x51f0d7
+// 0051f0c8  50                   push eax
+// 0051f0c9  e822334600           call 0x9823f0
+// 0051f0ce  8906                 mov dword ptr [esi], eax
+// 0051f0d0  8b4c2438             mov ecx, dword ptr [esp + 0x38]
+// 0051f0d4  83c404               add esp, 4
+// 0051f0d7  8b5608               mov edx, dword ptr [esi + 8]
+// 0051f0da  52                   push edx
+// 0051f0db  51                   push ecx
+// 0051f0dc  50                   push eax
+// 0051f0dd  e87a454600           call 0x98365c
+// 0051f0e2  8b44244c             mov eax, dword ptr [esp + 0x4c]
+// 0051f0e6  83c40c               add esp, 0xc
+// 0051f0e9  8bcf                 mov ecx, edi
+// 0051f0eb  89460c               mov dword ptr [esi + 0xc], eax
+// 0051f0ee  e85de8ffff           call 0x51d950
+// 0051f0f3  837c242408           cmp dword ptr [esp + 0x24], 8
+// 0051f0f8  7611                 jbe 0x51f10b
+// 0051f0fa  8b44241c             mov eax, dword ptr [esp + 0x1c]
+// 0051f0fe  85c0                 test eax, eax
+// 0051f100  7409                 je 0x51f10b
+// 0051f102  50                   push eax
+// 0051f103  e8b2324600           call 0x9823ba
+// 0051f108  83c404               add esp, 4
+// 0051f10b  b001                 mov al, 1
+// 0051f10d  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 0051f111  64890d00000000       mov dword ptr fs:[0], ecx
+// 0051f118  5f                   pop edi
+// 0051f119  5e                   pop esi
+// 0051f11a  83c410               add esp, 0x10
+// 0051f11d  c21800               ret 0x18
+// 0051f120  837c242408           cmp dword ptr [esp + 0x24], 8
+// 0051f125  7611                 jbe 0x51f138
+// 0051f127  8b44241c             mov eax, dword ptr [esp + 0x1c]
+// 0051f12b  85c0                 test eax, eax
+// 0051f12d  7409                 je 0x51f138
+// 0051f12f  50                   push eax
+// 0051f130  e885324600           call 0x9823ba
+// 0051f135  83c404               add esp, 4
+// 0051f138  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 0051f13c  5f                   pop edi
+// 0051f13d  32c0                 xor al, al
+// 0051f13f  64890d00000000       mov dword ptr fs:[0], ecx
+// 0051f146  5e                   pop esi
+// 0051f147  83c410               add esp, 0x10
+// 0051f14a  c21800               ret 0x18
+// copied from an identical function in another client (function ?assign_to@basic_vtable0@@QAE_NUFunctor@@AATfunction_buffer@@Ufunction_obj_tag@@@Z)
+
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 50727
+// roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-net Players.cpp
+#include <string.h>
+#include <new>
 
-// Candidate translation unit (score above; library headers required).
-#include <RakPeer.h>
-#include <BitStream.h>
-#include "Client.h"
-#include "Server.h"
-#include "Players.h"
-#include "Streaming.h"
-#include "IdManager.h"
-#include "PacketIds.h"
-#include "v8datamodel/GameSettings.h"
-#include "v8datamodel/Teams.h"
-#include "util/Http.h"
-#include "util/standardout.h"
-
-template<class Class>
-class PluginInterfaceAdapter : public PluginInterface
-{
-private:
-	Class* c;
-protected:
-	PluginInterfaceAdapter(Class* c)
-		: PluginInterface(),
-		  c(c)
-	{
-	}
-public:
-	virtual PluginReceiveResult OnReceive(RakPeerInterface* peer, Packet* packet)
-	{
-		return c->OnReceive(peer, packet) ? RR_CONTINUE_PROCESSING : RR_STOP_PROCESSING_AND_DEALLOCATE;
-	}
+struct Functor {
+    union { char buf[8]; char* ptr; };
+    unsigned int size;
+    int extra;
+    const char* data() const { return size > 8 ? ptr : buf; }
+    __forceinline Functor(const Functor& o) : size(o.size)
+    {
+        ptr = 0;
+        char* d;
+        const char* src;
+        if (size <= 8) {
+            d = buf;
+            src = o.buf;
+        } else {
+            d = ptr = (char*)operator new(size);
+            src = o.ptr;
+        }
+        memcpy(d, src, size);
+        extra = o.extra;
+    }
+    ~Functor()
+    {
+        if (size > 8 && ptr)
+            operator delete(ptr);
+    }
 };
 
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, void(boost::shared_ptr<RBX::Instance>, std::string), 2> funcReportAbuse(&RBX::Network::Players::reportAbuse, "ReportAbuse", "player", "message", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance>>>(void), 0> func_players(&RBX::Network::Players::getPlayers, "players", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance>>>(void), 0> func_GetPlayers(&RBX::Network::Players::getPlayers, "GetPlayers", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<RBX::Instance>(int), 1> func_createLocalPlayer(&RBX::Network::Players::createLocalPlayer, "CreateLocalPlayer", "userId", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, void(std::string), 1> func_setAbuseReportUrl(&RBX::Network::Players::setAbuseReportUrl, "SetAbuseReportUrl", "url", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<RBX::Instance>(boost::shared_ptr<RBX::Instance>), 1> func_playerFromCharacterOld(&RBX::Network::Players::playerFromCharacter, "playerFromCharacter", "character", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<RBX::Instance>(boost::shared_ptr<RBX::Instance>), 1> func_playerFromCharacter(&RBX::Network::Players::playerFromCharacter, "GetPlayerFromCharacter", "character", RBX::Reflection::FunctionDescriptor::AnyCaller);
+struct true_ {};
+struct function_obj_tag {};
+union function_buffer { void* obj_ptr; double align; char data[16]; };
 
-static RBX::Reflection::SignalDesc<RBX::Network::Players, void(boost::shared_ptr<RBX::Instance>)> event_PlayerAdded("PlayerAdded", "player");
-static RBX::Reflection::SignalDesc<RBX::Network::Players, void(boost::shared_ptr<RBX::Instance>)> event_PlayerRemoving("PlayerRemoving", "player");
+inline bool has_empty_target(...) { return false; }
 
-static RBX::Reflection::PropDescriptor<RBX::Network::Players, int> propPlayerCount("NumPlayers", "Data", &RBX::Network::Players::numPlayers, NULL, RBX::Reflection::PropertyDescriptor::UI);
-static RBX::Reflection::PropDescriptor<RBX::Network::Players, int> propPlayerMaxCount("MaxPlayers", "Data", &RBX::Network::Players::getMaxPlayers, &RBX::Network::Players::setMaxPlayers, RBX::Reflection::PropertyDescriptor::STANDARD);
+struct basic_vtable0 {
+    void assign_functor(Functor f, function_buffer& functor, true_);
+    bool assign_to(Functor f, function_buffer& functor, function_obj_tag);
+};
 
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<RBX::Instance>(int), 1> func_GetPlayerByID(&RBX::Network::Players::getPlayerByID, "GetPlayerByID", "userID", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, void(std::string), 1> funcChat(&RBX::Network::Players::chat, "Chat", "message", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-
-RBX::Reflection::RefPropDescriptor<RBX::Network::Players, RBX::Network::Player> RBX::Network::Players::propLocalPlayer("LocalPlayer", "Data", &RBX::Network::Players::getLocalPlayer, NULL, RBX::Reflection::PropertyDescriptor::STANDARD);
-
-static void writeMessage(const RBX::Network::AbuseReport::Message& msg, XmlElement* messages)
+bool basic_vtable0::assign_to(Functor f, function_buffer& functor, function_obj_tag)
 {
-	XmlElement* message = messages->addChild(RBX::Name::declare("message", -1));
-	message->setValue(msg.text);
-	message->addAttribute(RBX::Name::declare("userID", -1), msg.userID);
-}
-
-namespace RBX
-{
-	namespace Network
-	{
-		char* sPlayers = "Players";
-
-		class Players::Plugin : public PluginInterfaceAdapter<Players>
-		{
-		public:
-			Plugin(Players* players)
-				: PluginInterfaceAdapter<Players>(players)
-			{
-			}
-		};
-		
-		Players::Players()
-			: players(std::vector<boost::shared_ptr<Instance>>()),
-			  peer(NULL),
-			  maxPlayers(12)
-		{
-			setName("Players");
-			plugin.reset(new Plugin(this));
-		}
-
-		Players::~Players()
-		{
-			if (peer)
-				peer->DetachPlugin(plugin.get());
-
-			peer = NULL;
-		}
-
-		bool Players::clientIsPresent(const Instance* context, bool testInDatamodel)
-		{
-			return Client::clientIsPresent(context, testInDatamodel);
-		}
-
-		bool Players::askAddChild(const Instance* instance) const
-		{
-			return dynamic_cast<const Player*>(instance) != NULL;
-		}
-
-		void Players::setConnection(RakPeerInterface* peer)
-		{
-			if (this->peer)
-				this->peer->DetachPlugin(plugin.get());
-
-			this->peer = peer;
-
-			if (peer)
-				peer->AttachPlugin(plugin.get());
-		}
-
-		Player* Players::findLocalPlayer(const Instance* context)
-		{
-			Players* players = ServiceProvider::find<Players>(context);
-			return players ? players->getLocalPlayer() : NULL;
-		}
-
-		ModelInstance* Players::findLocalCharacter(const Instance* context)
-		{
-			Player* player = Players::findLocalPlayer(context);
-			return player ? player->getCharacter() : NULL;
-		}
-
-		void Players::setAbuseReportUrl(std::string value)
-		{
-			if (value.empty())
-				abuseReporter.reset(NULL);
-			else
-				abuseReporter.reset(new AbuseReporter(value));
-		}
-
-		void Players::setMaxPlayers(int value)
-		{
-			if (value != maxPlayers)
-			{
-				maxPlayers = value;
-				raisePropertyChanged(propPlayerMaxCount);
-			}
-		}
-
-		void Players::reportAbuse(boost::shared_ptr<Instance> player, std::string comment)
-		{
-			reportAbuse(dynamic_cast<Player*>(player.get()), comment);
-		}
-
-		void Players::reportAbuse(Player* player, std::string comment)
-		{
-			if (abuseReporter)
-			{
-				StandardOut::singleton()->print(MESSAGE_INFO, "Submitting abuse report from %s", player ? player->getName().c_str() : "[[[anonymous]]]");
-				
-				AbuseReport r;
-				r.submitterID = localPlayer ? localPlayer->getUserID() : 0;
-				r.allegedAbuserID = player ? player->getUserID() : 0;
-				r.comment = comment;
-
-				abuseReporter->add(r, chatHistory);
-			}
-			else
-			{
-				StandardOut::singleton()->print(MESSAGE_INFO, "Sending abuse report to game server via Raknet");
-				if (!peer)
-					throw std::runtime_error("Can\'t report abuse: Not in a networked game");
-
-				RakNet::BitStream bitStream;
-				bitStream << (unsigned char)ID_REPORT_ABUSE;
-				bitStream << (localPlayer ? localPlayer->getUserID() : 0);
-				bitStream << (player ? player->getUserID() : 0);
-				bitStream << comment;
-
-				peer->Send(&bitStream, HIGH_PRIORITY, RELIABLE, 2, UNASSIGNED_SYSTEM_ADDRESS, true);
-			}
-		}
-
-		Player* Players::getPlayerFromCharacter(Instance* character)
-		{
-			Players* players = ServiceProvider::find<Players>(character);
-			if (players)
-			{
-				boost::shared_ptr<Instance> found = players->playerFromCharacter(shared_from(character));
-				return static_cast<Player*>(found.get());
-			}
-			else
-			{
-				return NULL;
-			}
-		}
-
-		void Players::chat(std::string message)
-		{
-			if (!localPlayer)
-				throw std::runtime_error("No local Player to chat from");
-
-			RakNet::BitStream bitStream;
-			bitStream << (unsigned char)ID_CHAT_ALL;
-
-			Guid::Data data;
-			localPlayer->getGuid().extract(data);
-
-			bitStream << data.scope->name;
-			bitStream << data.index;
-			bitStream << message;
-
-			peer->Send(&bitStream, MEDIUM_PRIORITY, RELIABLE, 2, UNASSIGNED_SYSTEM_ADDRESS, true);
-
-			ChatMessage event = {message, localPlayer, boost::shared_ptr<Player>()};
-			Notifier<Players, ChatMessage>::raise(event);
-		}
-
-		bool Players::backendProcessing(const Instance* context, bool testInDatamodel)
-		{
-			const ServiceProvider* sp = ServiceProvider::findServiceProvider(context);
-			RBXASSERT(!testInDatamodel || sp);
-
-			return sp && !Client::clientIsPresent(context, testInDatamodel);
-		}
-
-		bool Players::frontendProcessing(const Instance* context, bool testInDatamodel)
-		{
-			const ServiceProvider* sp = ServiceProvider::findServiceProvider(context);
-			RBXASSERT(!testInDatamodel || sp);
-
-			return sp && !Server::serverIsPresent(context, testInDatamodel);
-		}
-
-		boost::shared_ptr<Instance> Players::playerFromCharacter(boost::shared_ptr<Instance> character)
-		{
-			boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> myPlayers = getPlayers();
-
-			std::vector<boost::shared_ptr<Instance>>::const_iterator iter = myPlayers->begin();
-			std::vector<boost::shared_ptr<Instance>>::const_iterator end = myPlayers->end();
-
-			for (; iter != end; iter++)
-			{
-				if (static_cast<Player*>(iter->get())->getCharacter() == static_cast<ModelInstance*>(character.get()))
-					return *iter;
-			}
-
-			return boost::shared_ptr<Instance>();
-		}
-
-		boost::shared_ptr<Instance> Players::getPlayerByID(int userID)
-		{
-			std::vector<boost::shared_ptr<Instance>>::const_iterator iter = players->begin();
-			std::vector<boost::shared_ptr<Instance>>::const_iterator end = players->end();
-
-			for (; iter != end; iter++)
-			{
-				if (static_cast<Player*>(iter->get())->getUserID() == userID)
-					return *iter;
-			}
-
-			return boost::shared_ptr<Instance>();
-		}
-
-		void Players::onEvent(const Player* source, CharacterAdded event)
-		{
-			RBXASSERT(backendProcessing(this, true));
-			const_cast<Player*>(source)->rebuildBackpack();
-		}
-
-		void Players::addChatMessage(const ChatMessage& message)
-		{
-			chatHistory.push_front(message);
-
-			while (chatHistory.size() > (size_t)GameSettings::singleton().chatHistory)
-			{
-				chatHistory.pop_back();
-			}
-
-			Notifier<Players, ChatMessage>::raise(message);
-			Player::event_Chatted.fire(message.source.get(), message.message, message.destination);
-		}
-
-		void Players::onChildAdded(Instance* child)
-		{
-			Player* player = dynamic_cast<Player*>(child);
-			if (!player)
-				return;
-
-			if (player->getUserID() > 0)
-			{
-				boost::shared_ptr<Instance> otherPlayer = getPlayerByID(player->getUserID());
-				if (otherPlayer)
-					otherPlayer->setParent(NULL);
-			}
-
-			boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& myPlayers = players.write();
-			myPlayers->push_back(shared_from(child));
-
-			if (backendProcessing(this, true))
-			{
-				player->Notifier<Player, CharacterAdded>::addListener(this);
-				player->rebuildBackpack();
-
-				if (Teams* teams = ServiceProvider::find<Teams>(this))
-					teams->assignNewPlayerToTeam(player);
-
-				event_PlayerAdded.fire(this, shared_from(player));
-			}
-		}
-		
-		void Players::onChildRemoving(Instance* child)
-		{
-			Player* player = dynamic_cast<Player*>(child);
-			if (!player)
-				return;
-
-			boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& myPlayers = players.write();
-			myPlayers->erase(std::find(myPlayers->begin(), myPlayers->end(), shared_from(child)));
-
-			if (backendProcessing(this, false))
-				event_PlayerRemoving.fire(this, shared_from(player));
-
-			Notifier<Player, CharacterAdded>::disconnect(player, this);
-		}
-
-		void Players::onChildChanged(Instance* instance, const PropertyChanged& event)
-		{
-			if (instance == localPlayer.get() && &event.getProperty().getDescriptor() == &Player::prop_SuperSafeChat)
-			{
-				bool s = localPlayer ? Player::prop_SuperSafeChat.getValue(localPlayer.get()) : false;
-				Notifier<Players, SuperSafeChanged>::raise(SuperSafeChanged(s));
-			}
-		}
-
-		boost::shared_ptr<Instance> Players::createLocalPlayer(int userId)
-		{
-			if (localPlayer)
-				throw std::runtime_error("Local player already exists");
-
-			localPlayer = Creatable::create<Player>();
-			Player::prop_userId.setValue(localPlayer.get(), userId);
-			localPlayer->setParent(this);
-			raisePropertyChanged(propLocalPlayer);
-
-			bool s = localPlayer ? Player::prop_SuperSafeChat.getValue(localPlayer.get()) : false;
-			Notifier<Players, SuperSafeChanged>::raise(SuperSafeChanged(s));
-
-			return localPlayer;
-		}
-
-		// 98% match
-		bool Players::OnReceive(RakPeerInterface* peer, Packet* packet)
-		{
-			switch (packet->data[0])
-			{
-			case ID_CHAT_ALL:
-				try
-				{
-					Instance* instance = NULL;
-					RakNet::BitStream inBitstream(packet->data, packet->length, false);
-					inBitstream.IgnoreBits(8);
-
-					Guid::Data id;
-
-					std::string foo;
-					inBitstream >> foo;
-					id.scope = &Name::lookup(foo);
-
-					inBitstream >> id.index;
-
-					IdManager* idManager = ServiceProvider::find<IdManager>(this);
-					if (idManager)
-						instance = idManager->getInstance(id);
-
-					std::string message;
-					inBitstream >> message;
-
-					if (!instance)
-					{
-						StandardOut::singleton()->print(MESSAGE_WARNING, "Chat message from unknown Player %s %s", packet->systemAddress.ToString(), message.c_str());
-					}
-					else if (instance->getParent() == this)
-					{
-						ChatMessage event = {message, shared_from_polymorphic_downcast<Player>(instance), boost::shared_ptr<Player>()};
-						addChatMessage(event);
-						peer->Send((const char*)packet->data, packet->length, MEDIUM_PRIORITY, RELIABLE_ORDERED, 2, packet->systemAddress, true);
-					}
-				}
-				catch (std::exception& e)
-				{
-					StandardOut::singleton()->print(MESSAGE_ERROR, "Players::OnReceive packet %d: %s", packet->data[0], e.what());
-				}
-				return false;
-
-			case ID_REPORT_ABUSE:
-				try
-				{
-					if (abuseReporter)
-					{
-						RakNet::BitStream inBitstream(packet->data, packet->length, false);
-						inBitstream.IgnoreBits(8);
-
-						AbuseReport r;
-						inBitstream >> r.submitterID;
-						inBitstream >> r.allegedAbuserID;
-						inBitstream >> r.comment;
-
-						abuseReporter->add(r, chatHistory);
-					}
-				}
-				catch (std::exception& e)
-				{
-					StandardOut::singleton()->print(MESSAGE_ERROR, "Players::OnReceive packet %d: %s", packet->data[0], e.what());
-				}
-				return false;
-			}
-
-			return true;
-		}
-
-		void AbuseReport::addMessage(const ChatMessage& cm)
-		{
-			int userId = cm.source ? Player::prop_userId.getValue(cm.source.get()) : 0;
-			AbuseReport::Message m = {userId, cm.message};
-			messages.push_back(m);
-		}
-
-		AbuseReporter::AbuseReporter(std::string abuseUrl)
-			: _data(new AbuseReporter::data)
-		{
-			requestProcessor.reset(new worker_thread(boost::bind(&AbuseReporter::processRequests, _data, abuseUrl), "rbx_abusereporter"));
-		}
-
-		void AbuseReporter::add(AbuseReport& r, const std::list<ChatMessage>& chatHistory)
-		{
-			std::for_each(chatHistory.begin(), chatHistory.end(), boost::bind(&AbuseReport::addMessage, boost::ref(r), _1));
-
-			{
-				boost::mutex::scoped_lock lock(_data->requestSync);
-				_data->queue.push(r);
-			}
-
-			requestProcessor->wake();
-		}
-
-		worker_thread::work_result AbuseReporter::processRequests(boost::shared_ptr<data> _data, std::string abuseUrl)
-		{
-			try
-			{
-				AbuseReport abuseReport;
-
-				{
-					boost::mutex::scoped_lock lock(_data->requestSync);
-					if (_data->queue.empty())
-						return worker_thread::done;
-
-					abuseReport = _data->queue.front();
-				}
-
-				std::stringstream body;
-
-				{
-					TextXmlWriter writer(body);
-
-					XmlElement root(Name::declare("report", -1));
-					root.addAttribute(Name::declare("userID", -1), abuseReport.submitterID);
-					root.addChild(new XmlElement(Name::declare("comment", -1), abuseReport.comment));
-					XmlElement* messages = root.addChild(new XmlElement(Name::declare("messages", -1)));
-
-					std::for_each(abuseReport.messages.begin(), abuseReport.messages.end(), boost::bind(&writeMessage, _1, messages));
-					writer.serialize(&root);
-					body.flush();
-				}
-
-				std::string response;
-				Http(abuseUrl).post(body, false, response);
-
-				StandardOut::singleton()->print(MESSAGE_INFO, "Posted abuse report to %s", abuseUrl.c_str());
-			}
-			catch (std::exception& e)
-			{
-				StandardOut::singleton()->print(MESSAGE_WARNING, "Unable to post abuse report to %s. %s", abuseUrl.c_str(), e.what());
-			}
-
-			{
-				boost::mutex::scoped_lock lock(_data->requestSync);
-				_data->queue.pop();
-			}
-
-			return worker_thread::more;
-		}
-	}
+    if (!has_empty_target(&f)) {
+        assign_functor(f, functor, true_());
+        return true;
+    } else {
+        return false;
+    }
 }

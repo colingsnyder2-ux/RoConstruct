@@ -1,13 +1,61 @@
-// from server: 66% by atomic.potato
-extern "C" void __cdecl G1_func_0043a0f0(void *, void *);
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?keep_00427310@ns_ROCX00009b@@YA?AUString@1@XZ)
 
-struct CDataModelPropGrid
+namespace ns_ROCX00009b {
+struct Temporary
 {
-    void * __cdecl func_0043aa60(void *);
+    void *data;
+    const char *text() const;
+    ~Temporary();
 };
 
-void *CDataModelPropGrid::func_0043aa60(void *value)
+typedef const char *(__thiscall *GetText)(const Temporary *);
+typedef void (__thiscall *DestroyTemporary)(Temporary *);
+
+extern GetText getText;
+extern DestroyTemporary destroyTemporary;
+extern Temporary __cdecl make_exception();
+
+inline const char *Temporary::text() const
 {
-    G1_func_0043a0f0(0, value);
-    return value;
+    return getText(this);
+}
+
+inline Temporary::~Temporary()
+{
+    destroyTemporary(this);
+}
+
+struct String
+{
+    unsigned char storage[28];
+    String(const char *);
+    ~String();
+    String &append(const char *);
+};
+
+typedef void (__thiscall *ConstructString)(String *, const char *);
+typedef String &(__thiscall *AppendString)(String *, const char *);
+
+extern ConstructString constructString;
+extern AppendString appendString;
+
+inline String::String(const char *text)
+{
+    constructString(this, text);
+}
+
+inline String &String::append(const char *text)
+{
+    return appendString(this, text);
+}
+
+static String __cdecl fn_ROCX00009b_00427310()
+{
+    String result(make_exception().text());
+    result.append("/Game/KeepAlivePinger.ashx");
+    return result;
+}
+
+String __cdecl keep_00427310() { return fn_ROCX00009b_00427310(); }
 }

@@ -1,7 +1,5 @@
-// from server: 46% by intel
-void* __cdecl sub_5a7950(void* arg)
-{
-    void (__stdcall *free_ptr)(void*) = (void (__stdcall *)(void*))0xb229c8;
-    free_ptr(arg);
-    return arg;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct S{int v;}; __declspec(dllimport) void __cdecl g(S);
+void f(S s){ g(s); }

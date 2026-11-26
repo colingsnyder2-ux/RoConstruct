@@ -1,7 +1,8 @@
+// from server: 100% by Xemicl
 // roc-lang: cpp
-// roc-cl: 21022
+// roc-cl: 30729
 // roc-flags: /O2 /MD /GS /EHsc /Ob1
-// roc-lib: xtp-11.2.2-shared-mfc-internals Source\CommandBars\XTPCommandBar.cpp
+// roc-lib: xtp-11.2.2-lib-strlen Source/CommandBars/XTPCommandBar.cpp
 
 // Candidate translation unit (score above; library headers required).
 // XTPCommandBar.cpp : implementation of the CXTPCommandBar class.

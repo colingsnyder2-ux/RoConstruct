@@ -1,14 +1,26 @@
-// from server: 86% by atomic.potato
-extern "C" void __stdcall Call917430(void*, void*);
-extern "C" void __stdcall Call926db0(void*, void*);
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?f@CleanStage@ns_ROCX00000b@@QAEXPAUS_func_00645830@2@@Z)
 
-struct S
-{
-    void f(void*);
+namespace ns_ROCX00000b {
+struct S_func_00645830 {
+    char pad0[4];
+    int m_x;
+    void f(int a1);
 };
 
-void S::f(void* arg)
+struct NextStage {
+    void f(S_func_00645830* object);
+};
+
+struct CleanStage {
+    char pad0[8];
+    NextStage* next;
+    void f(S_func_00645830* object);
+};
+
+void CleanStage::f(S_func_00645830* object)
 {
-    Call917430(arg, this);
-    Call926db0(*(void**)((char*)this + 8), arg);
+    object->f((int)this);
+    next->f(object);
+}
 }

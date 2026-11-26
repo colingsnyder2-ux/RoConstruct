@@ -1,232 +1,137 @@
-// from server: 28% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: ogre-1.7.0 OgreRotationSpline.cpp
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+// roc 2012-06 004ae680  unit: VerbBinderJob  size: 202 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 004ae680
+//
+// 004ae680  51                   push ecx
+// 004ae681  8b542410             mov edx, dword ptr [esp + 0x10]
+// 004ae685  56                   push esi
+// 004ae686  8bf1                 mov esi, ecx
+// 004ae688  8b4604               mov eax, dword ptr [esi + 4]
+// 004ae68b  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 004ae68f  3b08                 cmp ecx, dword ptr [eax]
+// 004ae691  7537                 jne 0x4ae6ca
+// 004ae693  3bd0                 cmp edx, eax
+// 004ae695  7533                 jne 0x4ae6ca
+// 004ae697  8b4004               mov eax, dword ptr [eax + 4]
+// 004ae69a  50                   push eax
+// 004ae69b  8bce                 mov ecx, esi
+// 004ae69d  e83efeffff           call 0x4ae4e0
+// 004ae6a2  8b4604               mov eax, dword ptr [esi + 4]
+// 004ae6a5  894004               mov dword ptr [eax + 4], eax
+// 004ae6a8  8b4604               mov eax, dword ptr [esi + 4]
+// 004ae6ab  c7460800000000       mov dword ptr [esi + 8], 0
+// 004ae6b2  8900                 mov dword ptr [eax], eax
+// 004ae6b4  8b4604               mov eax, dword ptr [esi + 4]
+// 004ae6b7  894008               mov dword ptr [eax + 8], eax
+// 004ae6ba  8b4e04               mov ecx, dword ptr [esi + 4]
+// 004ae6bd  8b11                 mov edx, dword ptr [ecx]
+// 004ae6bf  8b44240c             mov eax, dword ptr [esp + 0xc]
+// 004ae6c3  8910                 mov dword ptr [eax], edx
+// 004ae6c5  5e                   pop esi
+// 004ae6c6  59                   pop ecx
+// 004ae6c7  c20c00               ret 0xc
+// 004ae6ca  3bca                 cmp ecx, edx
+// 004ae6cc  7471                 je 0x4ae73f
+// 004ae6ce  8bff                 mov edi, edi
+// 004ae6d0  80791900             cmp byte ptr [ecx + 0x19], 0
+// 004ae6d4  8bd1                 mov edx, ecx
+// 004ae6d6  7550                 jne 0x4ae728
+// 004ae6d8  8b4108               mov eax, dword ptr [ecx + 8]
+// 004ae6db  80781900             cmp byte ptr [eax + 0x19], 0
+// 004ae6df  751f                 jne 0x4ae700
+// 004ae6e1  8bc8                 mov ecx, eax
+// 004ae6e3  8b01                 mov eax, dword ptr [ecx]
+// 004ae6e5  80781900             cmp byte ptr [eax + 0x19], 0
+// 004ae6e9  750f                 jne 0x4ae6fa
+// 004ae6eb  eb03                 jmp 0x4ae6f0
+// 004ae6ed  8d4900               lea ecx, [ecx]
+// 004ae6f0  8bc8                 mov ecx, eax
+// 004ae6f2  8b01                 mov eax, dword ptr [ecx]
+// 004ae6f4  80781900             cmp byte ptr [eax + 0x19], 0
+// 004ae6f8  74f6                 je 0x4ae6f0
+// 004ae6fa  894c2410             mov dword ptr [esp + 0x10], ecx
+// 004ae6fe  eb28                 jmp 0x4ae728
+// 004ae700  8b4104               mov eax, dword ptr [ecx + 4]
+// 004ae703  80781900             cmp byte ptr [eax + 0x19], 0
+// 004ae707  751b                 jne 0x4ae724
+// 004ae709  8da42400000000       lea esp, [esp]
+// 004ae710  3b4808               cmp ecx, dword ptr [eax + 8]
+// 004ae713  750f                 jne 0x4ae724
+// 004ae715  8bc8                 mov ecx, eax
+// 004ae717  894c2410             mov dword ptr [esp + 0x10], ecx
+// 004ae71b  8b4004               mov eax, dword ptr [eax + 4]
+// 004ae71e  80781900             cmp byte ptr [eax + 0x19], 0
+// 004ae722  74ec                 je 0x4ae710
+// 004ae724  89442410             mov dword ptr [esp + 0x10], eax
+// 004ae728  52                   push edx
+// 004ae729  8d442408             lea eax, [esp + 8]
+// 004ae72d  50                   push eax
+// 004ae72e  8bce                 mov ecx, esi
+// 004ae730  e8abfaffff           call 0x4ae1e0
+// 004ae735  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 004ae739  3b4c2414             cmp ecx, dword ptr [esp + 0x14]
+// 004ae73d  7591                 jne 0x4ae6d0
+// 004ae73f  8b44240c             mov eax, dword ptr [esp + 0xc]
+// 004ae743  8908                 mov dword ptr [eax], ecx
+// 004ae745  5e                   pop esi
+// 004ae746  59                   pop ecx
+// 004ae747  c20c00               ret 0xc
 
-// Candidate translation unit (score above; library headers required).
-/*
------------------------------------------------------------------------------
-This source file is part of OGRE
-    (Object-oriented Graphics Rendering Engine)
-For the latest info, see http://www.ogre3d.org/
+struct Node {
+    Node* left;
+    Node* parent;
+    Node* right;
+    char value[80];
+    char color;
+    char isnil;
+};
 
-Copyright (c) 2000-2009 Torus Knot Software Ltd
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
------------------------------------------------------------------------------
-*/
-#include "OgreStableHeaders.h"
-#include "OgreRotationalSpline.h"
-
-
-
-namespace Ogre {
-
-    //---------------------------------------------------------------------
-    RotationalSpline::RotationalSpline()
-        : mAutoCalc(true)
-    {
-    }
-    //---------------------------------------------------------------------
-    RotationalSpline::~RotationalSpline()
-    {
-    }
-    //---------------------------------------------------------------------
-    void RotationalSpline::addPoint(const Quaternion& p)
-    {
-        mPoints.push_back(p);
-        if (mAutoCalc)
-        {
-            recalcTangents();
-        }
-    }
-    //---------------------------------------------------------------------
-    Quaternion RotationalSpline::interpolate(Real t, bool useShortestPath)
-    {
-        // Work out which segment this is in
-        Real fSeg = t * (mPoints.size() - 1);
-        unsigned int segIdx = (unsigned int)fSeg;
-        // Apportion t 
-        t = fSeg - segIdx;
-
-        return interpolate(segIdx, t, useShortestPath);
-
-    }
-    //---------------------------------------------------------------------
-    Quaternion RotationalSpline::interpolate(unsigned int fromIndex, Real t,
-		bool useShortestPath)
-    {
-        // Bounds check
-        assert (fromIndex >= 0 && fromIndex < mPoints.size() &&
-            "fromIndex out of bounds");
-
-        if ((fromIndex + 1) == mPoints.size())
-        {
-            // Duff request, cannot blend to nothing
-            // Just return source
-            return mPoints[fromIndex];
-
-        }
-        // Fast special cases
-        if (t == 0.0f)
-        {
-            return mPoints[fromIndex];
-        }
-        else if(t == 1.0f)
-        {
-            return mPoints[fromIndex + 1];
-        }
-
-        // Real interpolation
-        // Use squad using tangents we've already set up
-        Quaternion &p = mPoints[fromIndex];
-        Quaternion &q = mPoints[fromIndex+1];
-        Quaternion &a = mTangents[fromIndex];
-        Quaternion &b = mTangents[fromIndex+1];
-
-        // NB interpolate to nearest rotation
-        return Quaternion::Squad(t, p, a, b, q, useShortestPath);
-
-    }
-    //---------------------------------------------------------------------
-    void RotationalSpline::recalcTangents(void)
-    {
-        // ShoeMake (1987) approach
-        // Just like Catmull-Rom really, just more gnarly
-        // And no, I don't understand how to derive this!
-        //
-        // let p = point[i], pInv = p.Inverse
-        // tangent[i] = p * exp( -0.25 * ( log(pInv * point[i+1]) + log(pInv * point[i-1]) ) )
-        //
-        // Assume endpoint tangents are parallel with line with neighbour
-
-        unsigned int i, numPoints;
-        bool isClosed;
-
-        numPoints = (unsigned int)mPoints.size();
-
-        if (numPoints < 2)
-        {
-            // Can't do anything yet
-            return;
-        }
-
-        mTangents.resize(numPoints);
-
-        if (mPoints[0] == mPoints[numPoints-1])
-        {
-            isClosed = true;
-        }
-        else
-        {
-            isClosed = false;
-        }
-
-        Quaternion invp, part1, part2, preExp;
-        for(i = 0; i < numPoints; ++i)
-        {
-            Quaternion &p = mPoints[i];
-            invp = p.Inverse();
-
-            if (i ==0)
-            {
-                // special case start
-                part1 = (invp * mPoints[i+1]).Log();
-                if (isClosed)
-                {
-                    // Use numPoints-2 since numPoints-1 == end == start == this one
-                    part2 = (invp * mPoints[numPoints-2]).Log();
-                }
-                else
-                {
-                    part2 = (invp * p).Log();
-                }
+struct Iter {
+    Node* ptr;
+    Iter(Node* p) : ptr(p) {}
+    Iter& operator++() {
+        if (!ptr->isnil) {
+            if (!ptr->right->isnil) {
+                Node* n = ptr->right;
+                while (!n->left->isnil)
+                    n = n->left;
+                ptr = n;
+            } else {
+                Node* p;
+                while (!(p = ptr->parent)->isnil && ptr == p->right)
+                    ptr = p;
+                ptr = p;
             }
-            else if (i == numPoints-1)
-            {
-                // special case end
-                if (isClosed)
-                {
-                    // Wrap to [1] (not [0], this is the same as end == this one)
-                    part1 = (invp * mPoints[1]).Log();
-                }
-                else
-                {
-                    part1 = (invp * p).Log();
-                }
-                part2 = (invp * mPoints[i-1]).Log();
-            }
-            else
-            {
-                part1 = (invp * mPoints[i+1]).Log();
-                part2 = (invp * mPoints[i-1]).Log();
-            }
-
-            preExp = -0.25 * (part1 + part2);
-            mTangents[i] = p * preExp.Exp();
-            
         }
-
-
-
+        return *this;
     }
-    //---------------------------------------------------------------------
-    const Quaternion& RotationalSpline::getPoint(unsigned short index) const
-    {
-        assert (index < mPoints.size() && "Point index is out of bounds!!");
-
-        return mPoints[index];
+    Iter operator++(int) {
+        Iter t = *this;
+        ++*this;
+        return t;
     }
-    //---------------------------------------------------------------------
-    unsigned short RotationalSpline::getNumPoints(void) const
-    {
-        return (unsigned short)mPoints.size();
-    }
-    //---------------------------------------------------------------------
-    void RotationalSpline::clear(void)
-    {
-        mPoints.clear();
-        mTangents.clear();
-    }
-    //---------------------------------------------------------------------
-    void RotationalSpline::updatePoint(unsigned short index, const Quaternion& value)
-    {
-        assert (index < mPoints.size() && "Point index is out of bounds!!");
+};
 
-        mPoints[index] = value;
-        if (mAutoCalc)
-        {
-            recalcTangents();
-        }
+struct Tree {
+    int comp;
+    Node* head;
+    unsigned int size;
+    void eraseSubtree(Node* n);
+    Iter erase(Iter where);
+    Iter erase(Iter first, Iter last);
+};
+
+Iter Tree::erase(Iter first, Iter last) {
+    if (first.ptr == head->left && last.ptr == head) {
+        eraseSubtree(head->parent);
+        head->parent = head;
+        size = 0;
+        head->left = head;
+        head->right = head;
+        return Iter(head->left);
     }
-    //---------------------------------------------------------------------
-    void RotationalSpline::setAutoCalculate(bool autoCalc)
-    {
-        mAutoCalc = autoCalc;
-    }
-    //---------------------------------------------------------------------
-
-
-
+    while (first.ptr != last.ptr)
+        erase(first++);
+    return Iter(first.ptr);
 }
-
-
-
-

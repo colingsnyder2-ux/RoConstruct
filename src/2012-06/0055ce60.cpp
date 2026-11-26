@@ -1,16 +1,17 @@
-// from server: 62% by atomic.potato
-extern "C" void G1_func_004c0290(void *);
-
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct T { void g(); };
 struct S
 {
-    void *field_2c;
-    void f(void *);
+    char pad[0x2c];
+    char *p;
+    void f(char *x);
 };
 
-void S::f(void *p)
+void S::f(char *x)
 {
-    if (p != 0)
-        G1_func_004c0290((char *)field_2c + ((char *)p - (char *)0x1c));
-    else
-        G1_func_004c0290(field_2c);
+    int off = x ? (int)x - 0x1c : 0;
+    ((T *)(p + off))->g();
 }

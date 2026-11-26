@@ -1,280 +1,70 @@
-// from server: 51% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: xtp-15.2.1 Source/Controls/Shell/XTPShellTreeCtrlView.cpp
-
-// Candidate translation unit (score above; library headers required).
-// XTPShellTreeCtrl.cpp : implementation file
+// from server: 100% by Xemicl
+// roc 2012-06 0042a5b0  unit: CXTTreeCtrl  size: 96 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 0042a5b0
 //
-// This file is a part of the XTREME CONTROLS MFC class library.
-// (c)1998-2011 Codejock Software, All Rights Reserved.
-//
-// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
-// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
-// CONSENT OF CODEJOCK SOFTWARE.
-//
-// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
-// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
-// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
-// SINGLE COMPUTER.
-//
-// CONTACT INFORMATION:
-// support@codejock.com
-// http://www.codejock.com
-//
-/////////////////////////////////////////////////////////////////////////////
+// 0042a5b0  6aff                 push -1
+// 0042a5b2  687835aa00           push 0xaa3578
+// 0042a5b7  64a100000000         mov eax, dword ptr fs:[0]
+// 0042a5bd  50                   push eax
+// 0042a5be  64892500000000       mov dword ptr fs:[0], esp
+// 0042a5c5  83ec54               sub esp, 0x54
+// 0042a5c8  56                   push esi
+// 0042a5c9  8bf1                 mov esi, ecx
+// 0042a5cb  56                   push esi
+// 0042a5cc  8d4c2408             lea ecx, [esp + 8]
+// 0042a5d0  e899845500           call 0x982a6e
+// 0042a5d5  8b4654               mov eax, dword ptr [esi + 0x54]
+// 0042a5d8  8b406c               mov eax, dword ptr [eax + 0x6c]
+// 0042a5db  8d4e54               lea ecx, [esi + 0x54]
+// 0042a5de  6a01                 push 1
+// 0042a5e0  8d542408             lea edx, [esp + 8]
+// 0042a5e4  52                   push edx
+// 0042a5e5  c744246800000000     mov dword ptr [esp + 0x68], 0
+// 0042a5ed  ffd0                 call eax
+// 0042a5ef  8d4c2404             lea ecx, [esp + 4]
+// 0042a5f3  c7442460ffffffff     mov dword ptr [esp + 0x60], 0xffffffff
+// 0042a5fb  e868845500           call 0x982a68
+// 0042a600  8b4c2458             mov ecx, dword ptr [esp + 0x58]
+// 0042a604  5e                   pop esi
+// 0042a605  64890d00000000       mov dword ptr fs:[0], ecx
+// 0042a60c  83c460               add esp, 0x60
+// 0042a60f  c3                   ret 
+// copied from an identical function in another client (function ?f@S@ns_ROCX000078@@QAEXXZ)
 
-#include "stdafx.h"
+namespace ns_ROCX000078 {
+struct S;
 
-#include "Common/XTPSystemHelpers.h"
-
-#include "../Defines.h"
-#include "XTPShellPidl.h"
-#include "XTPShellSettings.h"
-#include "../Tree/XTPTreeBase.h"
-#include "XTPShellTreeBase.h"
-#include "XTPShellTreeCtrlView.h"
-
-
-
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTPShellTreeView
-
-CXTPShellTreeView::CXTPShellTreeView()
+struct Context
 {
-	m_pTreeCtrl = (CTreeCtrl_Friendly*)&GetTreeCtrl();
+    char storage[0x54];
+    Context(S*);
+    ~Context();
+};
+
+struct View;
+
+struct ViewTable
+{
+    void* reserved[27];
+    void (__thiscall *draw)(View*, Context*, int);
+};
+
+struct View
+{
+    ViewTable* table;
+};
+
+struct S
+{
+    char reserved[0x54];
+    View view;
+
+    void f();
+};
+
+void S::f()
+{
+    Context context(this);
+    view.table->draw(&view, &context, 1);
 }
-
-CXTPShellTreeView::~CXTPShellTreeView()
-{
-
-}
-
-IMPLEMENT_DYNCREATE(CXTPShellTreeView, CTreeView)
-
-BEGIN_MESSAGE_MAP(CXTPShellTreeView, CTreeView)
-	ON_SHELLTREE_REFLECT()
-END_MESSAGE_MAP()
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTPShellTreeView message handlers
-
-void CXTPShellTreeView::SelectionChanged(HTREEITEM hItem, CString strFolderPath)
-{
-	if (hItem != NULL && !m_bTunneling)
-	{
-		CDocument* pDoc = GetDocument();
-		if (pDoc != NULL)
-		{
-			pDoc->UpdateAllViews(this, SHN_XTP_TREESELCHANGE,
-				(CObject*)GetTreeCtrl().GetItemData(hItem));
-		}
-	}
-
-	CXTPShellTreeBase::SelectionChanged(hItem, strFolderPath);
-
-}
-
-void CXTPShellTreeView::OnInitialUpdate()
-{
-	CTreeView::OnInitialUpdate();
-
-	// mimic native Windows Explorer styles.
-	DWORD dwStyle = TVS_SHOWSELALWAYS | TVS_HASBUTTONS;
-
-	if (XTPSystemVersion()->IsWinXPOrGreater())
-	{
-		dwStyle |= (TVS_TRACKSELECT);
-	}
-	else
-	{
-		dwStyle |= (TVS_HASLINES | TVS_LINESATROOT);
-	}
-
-	if (InitializeTree(dwStyle))
-	{
-		PopulateTreeView();
-	}
-
-	// make the parent of the selected item visible if found.
-	HTREEITEM hItem = GetTreeCtrl().GetSelectedItem();
-	HTREEITEM hItemParent = GetTreeCtrl().GetParentItem(hItem);
-
-	GetTreeCtrl().EnsureVisible(hItemParent ? hItemParent : hItem);
-}
-
-void CXTPShellTreeView::OnUpdate(CView* /*pSender*/, LPARAM lHint, CObject* pHint)
-{
-	switch (lHint)
-	{
-	// Update selection of tree view to the
-	case SHN_XTP_SELECTCHILD:
-		{
-			XTP_LVITEMDATA*  lplvid = (XTP_LVITEMDATA*)pHint;
-			ASSERT(lplvid != NULL);
-
-			if (!FindTreeItem(GetTreeCtrl().GetSelectedItem(), lplvid, FALSE))
-			{
-				// The folder was not found so we send back a message
-				// to the listview to execute the itemid
-				CDocument* pDoc = GetDocument();
-				pDoc->UpdateAllViews(this, SHN_XTP_NOFOLDER, (CObject*)lplvid);
-			}
-		}
-		break;
-
-	default:
-		break;
-	}
-}
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTPShellTreeCtrl
-
-IMPLEMENT_DYNAMIC(CXTPShellTreeCtrl, CTreeCtrl)
-
-CXTPShellTreeCtrl::CXTPShellTreeCtrl()
-{
-	m_pListCtrl = NULL;
-	m_bAutoInit = TRUE;
-	m_pTreeCtrl = (CTreeCtrl_Friendly*)this;
-}
-
-CXTPShellTreeCtrl::~CXTPShellTreeCtrl()
-{
-}
-
-BEGIN_MESSAGE_MAP(CXTPShellTreeCtrl, CTreeCtrl)
-	ON_SHELLTREE_REFLECT()
-	ON_MESSAGE(WM_XTP_SHELL_NOTIFY, OnUpdateShell)
-END_MESSAGE_MAP()
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTPShellTreeCtrl message handlers
-
-void CXTPShellTreeCtrl::SelectionChanged(HTREEITEM hItem, CString strFolderPath)
-{
-	if (hItem != NULL && !m_bTunneling)
-	{
-		CWnd* pWndNotify = (CWnd*)m_pListCtrl;
-		if (!::IsWindow(pWndNotify->GetSafeHwnd()))
-		{
-			pWndNotify = GetOwner();
-		}
-
-		// notify list control of selection change.
-		if (::IsWindow(pWndNotify->GetSafeHwnd()))
-		{
-			pWndNotify->SendMessage(WM_XTP_SHELL_NOTIFY,
-				(WPARAM)SHN_XTP_TREESELCHANGE,
-				(LPARAM)(CObject*)GetItemData(hItem));
-		}
-	}
-	CXTPShellTreeBase::SelectionChanged(hItem, strFolderPath);
-}
-
-LRESULT CXTPShellTreeCtrl::OnUpdateShell(WPARAM wParam, LPARAM lParam)
-{
-	switch (wParam)
-	{
-	// Update selection of tree view to the
-	case SHN_XTP_SELECTCHILD:
-		{
-			XTP_LVITEMDATA*  lplvid = (XTP_LVITEMDATA*)lParam;
-			ASSERT(lplvid != NULL);
-
-			if (!FindTreeItem(GetSelectedItem(), lplvid, FALSE) && m_pListCtrl != NULL)
-			{
-				// The folder was not found so we send back a message
-				// to the listview to execute the itemid
-				m_pListCtrl->SendMessage(WM_XTP_SHELL_NOTIFY,
-					(WPARAM)SHN_XTP_NOFOLDER,
-					(LPARAM)(CObject*)lplvid);
-			}
-		}
-		break;
-
-	default:
-		break;
-	}
-
-	return 0;
-}
-
-bool CXTPShellTreeCtrl::Init()
-{
-	if (!CXTPShellTreeCtrlBase::Init())
-		return false;
-
-	if (m_bAutoInit)
-	{
-		// mimic native Windows Explorer styles.
-		DWORD dwStyle = TVS_SHOWSELALWAYS | TVS_HASBUTTONS;
-
-		if (XTPSystemVersion()->IsWinXPOrGreater())
-		{
-			dwStyle |= (TVS_TRACKSELECT);
-		}
-		else
-		{
-			dwStyle |= (TVS_HASLINES | TVS_LINESATROOT);
-		}
-
-		if (InitializeTree(dwStyle))
-		{
-			PopulateTreeView();
-		}
-
-		// make the parent of the selected item visible if found.
-		HTREEITEM hItem = GetSelectedItem();
-		HTREEITEM hItemParent = GetParentItem(hItem);
-
-		EnsureVisible(hItemParent ? hItemParent : hItem);
-	}
-
-	return true;
-}
-
-void CXTPShellTreeCtrl::AssociateList(CWnd* pWnd)
-{
-	ASSERT_VALID(pWnd); // must be a valid window.
-
-	if (::IsWindow(pWnd->GetSafeHwnd()))
-	{
-		m_pListCtrl = pWnd;
-
-		// make sure list gets updated.
-		HTREEITEM hItem = GetSelectedItem();
-		if (hItem)
-		{
-			XTP_TVITEMDATA* pItemData = (XTP_TVITEMDATA*)GetItemData(hItem);
-			if (pItemData)
-			{
-				m_pListCtrl->SendMessage(WM_XTP_SHELL_NOTIFY,
-					(WPARAM)SHN_XTP_TREESELCHANGE, (LPARAM)pItemData);
-			}
-		}
-	}
-}
-
-void CXTPShellTreeCtrl::AssociateCombo(CWnd* pWnd)
-{
-	CXTPShellTreeBase::AssociateCombo(pWnd);
-
-	if (::IsWindow(pWnd->GetSafeHwnd()))
-	{
-		CString strSelectedPath;
-		GetSelectedFolderPath(strSelectedPath);
-
-		// make sure list gets updated.
-		CXTPShellTreeBase::SelectionChanged(
-			GetSelectedItem(), strSelectedPath);
-	}
 }

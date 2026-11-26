@@ -1,154 +1,127 @@
-// from server: 50% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O1 /Ob2 /Oy /GS- /EHsc /MD
-// roc-lib: rbxgs util/boost.cpp
+// from server: 100% by Xemicl
+// roc 2012-06 0052e110  unit: RBX::VInstance::$$A6AXV?$shared_ptr::?$signal::Vslot::?$callable  size: 91 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 0052e110
+//
+// 0052e110  64a100000000         mov eax, dword ptr fs:[0]
+// 0052e116  6aff                 push -1
+// 0052e118  68085fad00           push 0xad5f08
+// 0052e11d  50                   push eax
+// 0052e11e  64892500000000       mov dword ptr fs:[0], esp
+// 0052e125  8b01                 mov eax, dword ptr [ecx]
+// 0052e127  83ec28               sub esp, 0x28
+// 0052e12a  85c0                 test eax, eax
+// 0052e12c  7516                 jne 0x52e144
+// 0052e12e  8d0c24               lea ecx, [esp]
+// 0052e131  e8aae1edff           call 0x40c2e0
+// 0052e136  50                   push eax
+// 0052e137  c744243400000000     mov dword ptr [esp + 0x34], 0
+// 0052e13f  e87c13eeff           call 0x40f4c0
+// 0052e144  dd442438             fld qword ptr [esp + 0x38]
+// 0052e148  8b4004               mov eax, dword ptr [eax + 4]
+// 0052e14b  83ec08               sub esp, 8
+// 0052e14e  83c108               add ecx, 8
+// 0052e151  dd1c24               fstp qword ptr [esp]
+// 0052e154  51                   push ecx
+// 0052e155  ffd0                 call eax
+// 0052e157  8b4c2434             mov ecx, dword ptr [esp + 0x34]
+// 0052e15b  83c40c               add esp, 0xc
+// 0052e15e  64890d00000000       mov dword ptr fs:[0], ecx
+// 0052e165  83c434               add esp, 0x34
+// 0052e168  c20800               ret 8
+// copied from an identical function in another client (function ??RCallable@ns_ROCX000013@@QAEXN@Z)
 
-// Candidate translation unit (score above; library headers required).
-#include "util/boost.hpp"
-#include "util/standardout.h"
-#include "util/Debug.h"
-#include <boost/bind.hpp>
-#include <windows.h>
-#include <boost/thread/tss.hpp>
-#include <boost/thread/once.hpp>
+namespace ns_ROCX000013 {
+extern "C" void (__cdecl *invalid_parameter_noinfo)();
 
-namespace RBX
+struct ExceptionObject
 {
-	namespace boost_detail
-	{
-		boost::thread_specific_ptr<std::string>* foo;
-		
-		boost::once_flag once_init_foo = BOOST_ONCE_INIT;
-		void init_foo()
-		{
-			static boost::thread_specific_ptr<std::string> value;
-			foo = &value;
-		}
+    unsigned long words[10];
+    ExceptionObject();
+    ~ExceptionObject();
+};
 
-		void set_foo(std::string* value)
-		{
-			boost::call_once(&boost_detail::init_foo, boost_detail::once_init_foo);
-			boost_detail::foo->reset(value);
-		}
-	}
+extern __declspec(noreturn) void __cdecl raise_exception(const void *);
 
-	// Thread name stuff based on https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/xcb2z8hs(v=vs.90)
-	static bool nameThreads = true;
+struct FunctionManager
+{
+    void *reserved;
+    void (__cdecl *invoke)(void *, double);
+};
 
-	typedef struct tagTHREADNAME_INFO
-	{
-		DWORD dwType;
-		LPCSTR szName;
-		DWORD dwThreadID;
-		DWORD dwFlags;
-	} THREADNAME_INFO;
+struct Callable
+{
+    FunctionManager *manager;
+    unsigned long unused;
+    unsigned long storage[2];
 
-	void SetThreadName(DWORD dwThreadID, LPCSTR szThreadName)
-	{
-		THREADNAME_INFO info;
-		info.dwType = 0x1000;
-		info.szName = szThreadName;
-		info.dwThreadID = dwThreadID;
-		info.dwFlags = 0;
+    void operator()(double value);
+};
 
-		__try
-		{
-			if (nameThreads)
-				RaiseException(0x406D1388, 0, sizeof(info)/sizeof(ULONG_PTR), (ULONG_PTR*)&info);
-		}
-		__except (EXCEPTION_CONTINUE_EXECUTION)
-		{
-		}
-	}
+inline void Callable::operator()(double value)
+{
+    if (!manager)
+        (raise_exception(&ExceptionObject()), __assume(0));
+    manager->invoke(storage, value);
+}
 
-	void set_thread_name(const char* name)
-	{
-		boost_detail::set_foo(new std::string(name));
-		SetThreadName(GetCurrentThreadId(), name);
-	}
+struct FunctionObject
+{
+    unsigned long reserved[2];
+    Callable callable;
+};
 
-	class ThreadPrioritySetter
-	{
-	private:
-		const int old;
-		bool success;
-	  
-	public:
-		ThreadPrioritySetter(int priority)
-			: old(GetThreadPriority(GetCurrentThread())),
-			  success(SetThreadPriority(GetCurrentThread(), priority) == TRUE)
-		{
-		}
-		~ThreadPrioritySetter()
-		{
-			if (success)
-				SetThreadPriority(GetCurrentThread(), old);
-		}
-	};
+struct Node
+{
+    unsigned long reserved[6];
+    FunctionObject *function;
+};
 
-	void run_in_background(const boost::function0<void>& threadfunc, std::string name)
-	{
-		try
-		{
-			set_thread_name(name.c_str());
+struct Owner
+{
+    unsigned long reserved[5];
+    Node *end;
+};
 
-			{
-				ThreadPrioritySetter set(THREAD_PRIORITY_BELOW_NORMAL);
-				threadfunc();
-			}
-		}
-		catch (std::exception& ex)
-		{
-			StandardOut::singleton()->print(MESSAGE_ERROR, "Crashed via C++ exception in run_in_background:", ex.what());
-			RBXASSERT(false);
-		}
-	}
+struct Iterator
+{
+    unsigned long reserved[4];
+    Owner **owner;
+    Node *node;
+    unsigned long unused[8];
+    double *value;
+    bool *done;
 
-	boost::function0<void> background_function(const boost::function0<void>& threadfunc, const char* name)
-	{
-		return boost::bind(&run_in_background, threadfunc, std::string(name));
-	}
+    bool equal(const Iterator &other);
+    void advance();
+};
 
-	worker_thread::worker_thread(const boost::function0<enum work_result>& work_function, const char* name)
-		: _data(new data()),
-		  thread(background_function(boost::bind(&threadProc, _data, work_function), name))
-	{
-	}
+void *__stdcall process(void *result, Iterator first, Iterator last)
+{
+    if (!first.equal(last))
+    {
+        void (__cdecl *invalid)() = invalid_parameter_noinfo;
+        do
+        {
+            if (!*first.done)
+            {
+                if (!first.owner)
+                    invalid();
 
-	worker_thread::~worker_thread()
-	{
-		boost::mutex::scoped_lock scoped_lock(_data->sync);
-		_data->endRequest = true;
-		_data->wakeCondition.notify_all();
-	}
+                Owner *owner = first.owner ? *first.owner : 0;
+                if (first.node == owner->end)
+                    invalid();
 
-	void worker_thread::join()
-	{
-		{
-			boost::mutex::scoped_lock scoped_lock(_data->sync);
-			_data->endRequest = true;
-			_data->wakeCondition.notify_all();
-		}
+                Callable *callable = &first.node->function->callable;
+                (*callable)(*first.value);
 
-		thread.join();
-	}
+                if (!*first.done)
+                    *first.done = true;
+            }
 
-	void worker_thread::wake()
-	{
-		boost::mutex::scoped_lock scoped_lock(_data->sync);
-		_data->wakeCondition.notify_all();
-	}
+            first.advance();
+        } while (!first.equal(last));
+    }
 
-	void worker_thread::threadProc(boost::shared_ptr<data> data, const boost::function0<enum work_result>& work_function)
-	{
-		while (!data->endRequest)
-		{
-			if (work_function() != more)
-			{
-				boost::mutex::scoped_lock scoped_lock(data->sync);
-				data->wakeCondition.wait(scoped_lock);	
-			}
-		}
-	}
+    return result;
+}
 }

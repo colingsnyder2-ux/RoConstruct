@@ -1,154 +1,45 @@
-// from server: 77% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/boost.cpp
+// from server: 100% by Xemicl
+// from server: 100% by tester
+// roc 2012-06 007fac60  unit: RBX::VInsertService::?$FactoryProduct  size: 68 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 007fac60
+//
+// 007fac60  6870ab7f00           push 0x7fab70
+// 007fac65  68c4f4e400           push 0xe4f4c4
+// 007fac6a  e83169c0ff           call 0x4015a0
+// 007fac6f  b801000000           mov eax, 1
+// 007fac74  83c408               add esp, 8
+// 007fac77  8405a4f4e400         test byte ptr [0xe4f4a4], al
+// 007fac7d  751f                 jne 0x7fac9e
+// 007fac7f  0905a4f4e400         or dword ptr [0xe4f4a4], eax
+// 007fac85  33c0                 xor eax, eax
+// 007fac87  68e0dbb100           push 0xb1dbe0
+// 007fac8c  a39cf4e400           mov dword ptr [0xe4f49c], eax
+// 007fac91  a3a0f4e400           mov dword ptr [0xe4f4a0], eax
+// 007fac96  e85a851800           call 0x9831f5
+// 007fac9b  83c404               add esp, 4
+// 007fac9e  b89cf4e400           mov eax, 0xe4f49c
+// 007faca3  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "util/boost.hpp"
-#include "util/standardout.h"
-#include "util/Debug.h"
-#include <boost/bind.hpp>
-#include <windows.h>
-#include <boost/thread/tss.hpp>
-#include <boost/thread/once.hpp>
+extern "C" void __cdecl sub_4015A0(void*, void*);
+extern "C" void __cdecl sub_9831F5(void*);
 
-namespace RBX
+extern unsigned char byte_E4F4A4;
+extern unsigned int dword_E4F4A4;
+extern unsigned int dword_E4F49C;
+extern unsigned int dword_E4F4A0;
+
+struct S {
+    unsigned int* f();
+};
+
+unsigned int* S::f()
 {
-	namespace boost_detail
-	{
-		boost::thread_specific_ptr<std::string>* foo;
-		
-		boost::once_flag once_init_foo = BOOST_ONCE_INIT;
-		void init_foo()
-		{
-			static boost::thread_specific_ptr<std::string> value;
-			foo = &value;
-		}
-
-		void set_foo(std::string* value)
-		{
-			boost::call_once(&boost_detail::init_foo, boost_detail::once_init_foo);
-			boost_detail::foo->reset(value);
-		}
-	}
-
-	// Thread name stuff based on https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/xcb2z8hs(v=vs.90)
-	static bool nameThreads = true;
-
-	typedef struct tagTHREADNAME_INFO
-	{
-		DWORD dwType;
-		LPCSTR szName;
-		DWORD dwThreadID;
-		DWORD dwFlags;
-	} THREADNAME_INFO;
-
-	void SetThreadName(DWORD dwThreadID, LPCSTR szThreadName)
-	{
-		THREADNAME_INFO info;
-		info.dwType = 0x1000;
-		info.szName = szThreadName;
-		info.dwThreadID = dwThreadID;
-		info.dwFlags = 0;
-
-		__try
-		{
-			if (nameThreads)
-				RaiseException(0x406D1388, 0, sizeof(info)/sizeof(ULONG_PTR), (ULONG_PTR*)&info);
-		}
-		__except (EXCEPTION_CONTINUE_EXECUTION)
-		{
-		}
-	}
-
-	void set_thread_name(const char* name)
-	{
-		boost_detail::set_foo(new std::string(name));
-		SetThreadName(GetCurrentThreadId(), name);
-	}
-
-	class ThreadPrioritySetter
-	{
-	private:
-		const int old;
-		bool success;
-	  
-	public:
-		ThreadPrioritySetter(int priority)
-			: old(GetThreadPriority(GetCurrentThread())),
-			  success(SetThreadPriority(GetCurrentThread(), priority) == TRUE)
-		{
-		}
-		~ThreadPrioritySetter()
-		{
-			if (success)
-				SetThreadPriority(GetCurrentThread(), old);
-		}
-	};
-
-	void run_in_background(const boost::function0<void>& threadfunc, std::string name)
-	{
-		try
-		{
-			set_thread_name(name.c_str());
-
-			{
-				ThreadPrioritySetter set(THREAD_PRIORITY_BELOW_NORMAL);
-				threadfunc();
-			}
-		}
-		catch (std::exception& ex)
-		{
-			StandardOut::singleton()->print(MESSAGE_ERROR, "Crashed via C++ exception in run_in_background:", ex.what());
-			RBXASSERT(false);
-		}
-	}
-
-	boost::function0<void> background_function(const boost::function0<void>& threadfunc, const char* name)
-	{
-		return boost::bind(&run_in_background, threadfunc, std::string(name));
-	}
-
-	worker_thread::worker_thread(const boost::function0<enum work_result>& work_function, const char* name)
-		: _data(new data()),
-		  thread(background_function(boost::bind(&threadProc, _data, work_function), name))
-	{
-	}
-
-	worker_thread::~worker_thread()
-	{
-		boost::mutex::scoped_lock scoped_lock(_data->sync);
-		_data->endRequest = true;
-		_data->wakeCondition.notify_all();
-	}
-
-	void worker_thread::join()
-	{
-		{
-			boost::mutex::scoped_lock scoped_lock(_data->sync);
-			_data->endRequest = true;
-			_data->wakeCondition.notify_all();
-		}
-
-		thread.join();
-	}
-
-	void worker_thread::wake()
-	{
-		boost::mutex::scoped_lock scoped_lock(_data->sync);
-		_data->wakeCondition.notify_all();
-	}
-
-	void worker_thread::threadProc(boost::shared_ptr<data> data, const boost::function0<enum work_result>& work_function)
-	{
-		while (!data->endRequest)
-		{
-			if (work_function() != more)
-			{
-				boost::mutex::scoped_lock scoped_lock(data->sync);
-				data->wakeCondition.wait(scoped_lock);	
-			}
-		}
-	}
+    sub_4015A0((void*)0x7FAB70, (void*)0xE4F4C4);
+    if ((byte_E4F4A4 & 1) == 0) {
+        dword_E4F4A4 |= 1;
+        dword_E4F49C = 0;
+        dword_E4F4A0 = 0;
+        sub_9831F5((void*)0xB1DBE0);
+    }
+    return &dword_E4F49C;
 }

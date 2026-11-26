@@ -1,16 +1,26 @@
-// from server: 75% by atomic.potato
-struct S
-{
-    int f(void *);
-    int *field;
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?f@CleanStage@ns_ROCX00000b@@QAEXPAUS_func_00645830@2@@Z)
+
+namespace ns_ROCX00000b {
+struct S_func_00645830 {
+    char pad0[4];
+    int m_x;
+    void f(int a1);
 };
 
-extern "C" void G1_func_00917430(void *, void *);
-extern "C" void G1_func_00925b60(int *, void *);
+struct NextStage {
+    void f(S_func_00645830* object);
+};
 
-int S::f(void *arg)
+struct CleanStage {
+    char pad0[8];
+    NextStage* next;
+    void f(S_func_00645830* object);
+};
+
+void CleanStage::f(S_func_00645830* object)
 {
-    G1_func_00917430(arg, this);
-    G1_func_00925b60(field, arg);
-    return 0;
+    object->f((int)this);
+    next->f(object);
+}
 }

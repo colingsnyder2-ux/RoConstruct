@@ -1,203 +1,77 @@
-// from server: 53% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client Rendering/RenderLib/Profiler.cpp
+// from server: 100% by Xemicl
+// roc 2012-06 00a95690  unit: seg_00a90000  size: 160 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 00a95690
+//
+// 00a95690  6aff                 push -1
+// 00a95692  684961ab00           push 0xab6149
+// 00a95697  64a100000000         mov eax, dword ptr fs:[0]
+// 00a9569d  50                   push eax
+// 00a9569e  64892500000000       mov dword ptr fs:[0], esp
+// 00a956a5  83ec1c               sub esp, 0x1c
+// 00a956a8  56                   push esi
+// 00a956a9  33f6                 xor esi, esi
+// 00a956ab  56                   push esi
+// 00a956ac  8d442408             lea eax, [esp + 8]
+// 00a956b0  68a0fac300           push 0xc3faa0
+// 00a956b5  50                   push eax
+// 00a956b6  e88536baff           call 0x638d40
+// 00a956bb  8d4c2410             lea ecx, [esp + 0x10]
+// 00a956bf  51                   push ecx
+// 00a956c0  89742438             mov dword ptr [esp + 0x38], esi
+// 00a956c4  e83771eeff           call 0x97c800
+// 00a956c9  83c410               add esp, 0x10
+// 00a956cc  84c0                 test al, al
+// 00a956ce  743c                 je 0xa9570c
+// 00a956d0  8d4c2404             lea ecx, [esp + 4]
+// 00a956d4  46                   inc esi
+// 00a956d5  c7442428ffffffff     mov dword ptr [esp + 0x28], 0xffffffff
+// 00a956dd  ff153c26b200         call dword ptr [0xb2263c]
+// 00a956e3  56                   push esi
+// 00a956e4  8d542408             lea edx, [esp + 8]
+// 00a956e8  68a0fac300           push 0xc3faa0
+// 00a956ed  52                   push edx
+// 00a956ee  e84d36baff           call 0x638d40
+// 00a956f3  8d442410             lea eax, [esp + 0x10]
+// 00a956f7  50                   push eax
+// 00a956f8  c744243800000000     mov dword ptr [esp + 0x38], 0
+// 00a95700  e8fb70eeff           call 0x97c800
+// 00a95705  83c410               add esp, 0x10
+// 00a95708  84c0                 test al, al
+// 00a9570a  75c4                 jne 0xa956d0
+// 00a9570c  8d4c2404             lea ecx, [esp + 4]
+// 00a95710  c7442428ffffffff     mov dword ptr [esp + 0x28], 0xffffffff
+// 00a95718  ff153c26b200         call dword ptr [0xb2263c]
+// 00a9571e  8b4c2420             mov ecx, dword ptr [esp + 0x20]
+// 00a95722  8bc6                 mov eax, esi
+// 00a95724  5e                   pop esi
+// 00a95725  64890d00000000       mov dword ptr fs:[0], ecx
+// 00a9572c  83c428               add esp, 0x28
+// 00a9572f  c3                   ret 
+// copied from an identical function in another client (function ?countProcessors@ns_ROCX00000f@@YAHXZ)
 
-// Candidate translation unit (score above; library headers required).
-#include "renderlib/Profiler.h"
+namespace ns_ROCX00000f {
+struct String;
+extern void (__thiscall *destroyString)(String *);
 
-#include "decomp.h"
+struct String {
+    unsigned char storage[28];
+    ~String() { destroyString(this); }
+};
 
-#include <G3D/RegistryUtil.h>
-#include <GLG3D/DXCaps.h>
-#include <GLG3D/GLCaps.h>
-#include <boost/lexical_cast.hpp>
-#include <string>
-#include <windows.h>
+extern String __cdecl formatString(const char *, ...);
+extern bool __cdecl keyExists(const String &);
 
-namespace RBX {
-namespace Render {
-
-typedef void (*DelayFunction)(unsigned int uiParameter);
-
-static float getShaderModel();
-static int getCPUSpeed();
-static std::string getCPUMake();
-static std::string getMaxRes();
-static int getRam();
-
-bool SpecData::glLoaded;
-
-// FUNCTION: WEBSERVICE 0x10169a30
-// FUNCTION: ROBLOX 0x0049c8b0
-static float getShaderModel()
+int countProcessors()
 {
-	if ((G3D::GLCaps::supports_GL_ARB_fragment_shader() && G3D::GLCaps::supports_GL_ARB_vertex_shader()) ||
-		(G3D::GLCaps::supports_GL_ARB_shader_objects() && G3D::GLCaps::supports_GL_ARB_shading_language_100())) {
-		return 2.0f;
-	}
-
-	if (G3D::GLCaps::supports("GL_ATI_fragment_shader") || G3D::GLCaps::supports("GL_NV_fragement_program")) {
-		return 2.0f;
-	}
-
-	if (G3D::GLCaps::supports("GL_ATI_texture_env_combine3") || G3D::GLCaps::supports("GL_NV_texture_shader3")) {
-		return 1.4f;
-	}
-
-	if (G3D::GLCaps::supports("GL_NV_register_combiners")) {
-		return 1.2f;
-	}
-
-	return 1.0f;
+    int count = 0;
+    for (;;) {
+        String key = formatString(
+            "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\%d",
+            count);
+        if (!keyExists(key))
+            break;
+        ++count;
+    }
+    return count;
 }
-
-// FUNCTION: WEBSERVICE 0x10169c60
-// FUNCTION: ROBLOX 0x0049cae0
-static __int64 GetCyclesDifference(DelayFunction DelayFunction, unsigned int uiParameter)
-{
-	unsigned int t0Lo, t0Hi;
-	unsigned int t1Lo, t1Hi;
-
-	__try {
-		__asm {
-			rdtsc
-			mov esi, eax
-			mov edi, edx
-
-			push uiParameter
-			call DelayFunction
-			pop ebx
-
-			rdtsc
-			mov t1Hi, edx
-			mov t1Lo, eax
-
-			mov t0Hi, edi
-			mov t0Lo, esi
-		}
-	}
-	__except (1) {
-		return 0;
-	}
-
-	return (__int64) t1Hi * 0x100000000 - ((__int64) t0Hi << 32) - t0Lo + t1Lo;
 }
-
-// FUNCTION: WEBSERVICE 0x10169d20
-// FUNCTION: ROBLOX 0x0049cba0
-static void Delay(unsigned int time)
-{
-	LARGE_INTEGER Frequency, StartCounter, EndCounter;
-
-	if (QueryPerformanceFrequency(&Frequency)) {
-		__int64 ticks = (Frequency.QuadPart / 1000) * time;
-
-		QueryPerformanceCounter(&StartCounter);
-
-		do {
-			QueryPerformanceCounter(&EndCounter);
-		} while ((EndCounter.QuadPart - StartCounter.QuadPart) < ticks);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10169d90
-// FUNCTION: ROBLOX 0x0049cc10
-static void DelayOverhead(unsigned int time)
-{
-	LARGE_INTEGER Frequency, StartCounter, EndCounter;
-
-	if (QueryPerformanceFrequency(&Frequency)) {
-		__int64 ticks = (Frequency.QuadPart / 1000) * time;
-
-		QueryPerformanceCounter(&StartCounter);
-
-		do {
-			QueryPerformanceCounter(&EndCounter);
-		} while ((EndCounter.QuadPart - StartCounter.QuadPart) == ticks);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10169e00
-// FUNCTION: ROBLOX 0x0049cc80
-static std::string getCPUMake()
-{
-	std::string cpu_name;
-
-	if (G3D::RegistryUtil::readString(
-			"HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString", cpu_name
-		)) {
-		return cpu_name;
-	}
-
-	return "Could not determine CPU name";
-}
-
-// FUNCTION: WEBSERVICE 0x10169ee0
-// FUNCTION: ROBLOX 0x0049cd60
-static int getCPUSpeed()
-{
-	int speed;
-
-	if (G3D::RegistryUtil::read32bitNumber(
-			"HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\~MHz", speed
-		)) {
-		if (speed > 300) {
-			return speed;
-		}
-	}
-
-	__int64 total = 0;
-	__int64 overhead = 0;
-
-	for (int i = 0; i < 2; i++) {
-		total += GetCyclesDifference(Delay, 50);
-		overhead += GetCyclesDifference(DelayOverhead, 50);
-	}
-
-	total = (total - overhead) / 2;
-	total = total / 50;
-	total = total / 1000;
-
-	if (total < 100 || total > 50000) {
-		total = 1400;
-	}
-
-	return (int) total;
-}
-
-// FUNCTION: WEBSERVICE 0x10169ff0
-// FUNCTION: ROBLOX 0x0049d080
-static std::string getMaxRes()
-{
-	int width = GetSystemMetrics(SM_CXSCREEN);
-	int height = GetSystemMetrics(SM_CYSCREEN);
-
-	std::string w = boost::lexical_cast<std::string>(width);
-	std::string h = boost::lexical_cast<std::string>(height);
-
-	return w + "x" + h;
-}
-
-static int getRam()
-{
-	MEMORYSTATUS memoryStatus;
-
-	GlobalMemoryStatus(&memoryStatus);
-
-	return (int) memoryStatus.dwTotalPhys / (1024 * 1024);
-}
-
-// FUNCTION: WEBSERVICE 0x1016a100
-// FUNCTION: ROBLOX 0x0049d190
-SpecData::SpecData()
-	: shaderModel(glLoaded ? getShaderModel() : 0.0f),
-	  videoMemory((int) (G3D::DXCaps::videoMemorySize() / (1024 * 1024))), CPUSpeed(getCPUSpeed()),
-	  glVendor(glLoaded ? G3D::GLCaps::vendor() : "?"), gfxcard(glLoaded ? G3D::GLCaps::renderer() : "?"),
-	  cpu(getCPUMake()), ram(getRam()), resolution(getMaxRes())
-{
-}
-
-} // namespace Render
-} // namespace RBX

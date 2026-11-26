@@ -1,15 +1,17 @@
-// from server: 43% by atomic.potato
-extern "C" void G1_func_0069f5f0(void *);
-
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct T { void g(); };
 struct S
 {
-    void f(void *);
+    char pad[0x2c];
+    char *p;
+    void f(char *x);
 };
 
-void S::f(void *p)
+void S::f(char *x)
 {
-    void *q = *(void **)((char *)this + 0x2c);
-    if (p)
-        q = (char *)q + (long)p - 0x1c;
-    G1_func_0069f5f0(q);
+    int off = x ? (int)x - 0x1c : 0;
+    ((T *)(p + off))->g();
 }

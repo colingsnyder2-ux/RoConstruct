@@ -1,154 +1,106 @@
-// from server: 35% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O1 /Ob2 /Oy /GS- /EHsc /MD
-// roc-lib: rbxgs util/boost.cpp
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+// roc 2012-06 00538160  unit: rbx::signals::Z::$$A6AX_NH::?$signal::Vslot::?$callable  size: 165 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 00538160
+//
+// 00538160  64a100000000         mov eax, dword ptr fs:[0]
+// 00538166  6aff                 push -1
+// 00538168  6898d5aa00           push 0xaad598
+// 0053816d  50                   push eax
+// 0053816e  64892500000000       mov dword ptr fs:[0], esp
+// 00538175  83ec08               sub esp, 8
+// 00538178  56                   push esi
+// 00538179  8bf1                 mov esi, ecx
+// 0053817b  837e1000             cmp dword ptr [esi + 0x10], 0
+// 0053817f  7474                 je 0x5381f5
+// 00538181  e88a6affff           call 0x52ec10
+// 00538186  8d4c2404             lea ecx, [esp + 4]
+// 0053818a  89442404             mov dword ptr [esp + 4], eax
+// 0053818e  c644240800           mov byte ptr [esp + 8], 0
+// 00538193  e8f8b6edff           call 0x413890
+// 00538198  8b4e10               mov ecx, dword ptr [esi + 0x10]
+// 0053819b  c744241400000000     mov dword ptr [esp + 0x14], 0
+// 005381a3  85c9                 test ecx, ecx
+// 005381a5  740d                 je 0x5381b4
+// 005381a7  56                   push esi
+// 005381a8  c7461000000000       mov dword ptr [esi + 0x10], 0
+// 005381af  e83c843800           call 0x8c05f0
+// 005381b4  807c240800           cmp byte ptr [esp + 8], 0
+// 005381b9  c7442414ffffffff     mov dword ptr [esp + 0x14], 0xffffffff
+// 005381c1  7432                 je 0x5381f5
+// 005381c3  8b4c2404             mov ecx, dword ptr [esp + 4]
+// 005381c7  b800000080           mov eax, 0x80000000
+// 005381cc  8bd1                 mov edx, ecx
+// 005381ce  f00fc102             lock xadd dword ptr [edx], eax
+// 005381d2  a900000040           test eax, 0x40000000
+// 005381d7  751c                 jne 0x5381f5
+// 005381d9  3d00000080           cmp eax, 0x80000000
+// 005381de  7e15                 jle 0x5381f5
+// 005381e0  8bc1                 mov eax, ecx
+// 005381e2  f00fba281e           lock bts dword ptr [eax], 0x1e
+// 005381e7  720c                 jb 0x5381f5
+// 005381e9  e8d237edff           call 0x40b9c0
+// 005381ee  50                   push eax
+// 005381ef  ff150c23b200         call dword ptr [0xb2230c]
+// 005381f5  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 005381f9  5e                   pop esi
+// 005381fa  64890d00000000       mov dword ptr fs:[0], ecx
+// 00538201  83c414               add esp, 0x14
+// 00538204  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "util/boost.hpp"
-#include "util/standardout.h"
-#include "util/Debug.h"
-#include <boost/bind.hpp>
-#include <windows.h>
-#include <boost/thread/tss.hpp>
-#include <boost/thread/once.hpp>
+extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+#pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" unsigned char __cdecl _interlockedbittestandset(volatile long*, long);
+#pragma intrinsic(_interlockedbittestandset)
+extern "C" int (__stdcall* pSetEvent)(void*);
 
-namespace RBX
-{
-	namespace boost_detail
-	{
-		boost::thread_specific_ptr<std::string>* foo;
-		
-		boost::once_flag once_init_foo = BOOST_ONCE_INIT;
-		void init_foo()
-		{
-			static boost::thread_specific_ptr<std::string> value;
-			foo = &value;
-		}
+struct timed_mutex {
+    volatile long active_count;
+    void* event;
+    void* get_event();
+    void unlock() {
+        long const offset = (long)0x80000000;
+        long const old_count = _InterlockedExchangeAdd(&active_count, offset);
+        if (!(old_count & 0x40000000) && old_count > offset) {
+            if (!_interlockedbittestandset(&active_count, 30)) {
+                pSetEvent(get_event());
+            }
+        }
+    }
+};
 
-		void set_foo(std::string* value)
-		{
-			boost::call_once(&boost_detail::init_foo, boost_detail::once_init_foo);
-			boost_detail::foo->reset(value);
-		}
-	}
+struct scoped_lock {
+    timed_mutex* m;
+    bool is_locked;
+    explicit scoped_lock(timed_mutex& m_) : m(&m_), is_locked(false) { lock(); }
+    ~scoped_lock() {
+        if (is_locked)
+            m->unlock();
+    }
+    void lock();
+};
 
-	// Thread name stuff based on https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/xcb2z8hs(v=vs.90)
-	static bool nameThreads = true;
+timed_mutex& get_mutex();
 
-	typedef struct tagTHREADNAME_INFO
-	{
-		DWORD dwType;
-		LPCSTR szName;
-		DWORD dwThreadID;
-		DWORD dwFlags;
-	} THREADNAME_INFO;
+struct callable;
 
-	void SetThreadName(DWORD dwThreadID, LPCSTR szThreadName)
-	{
-		THREADNAME_INFO info;
-		info.dwType = 0x1000;
-		info.szName = szThreadName;
-		info.dwThreadID = dwThreadID;
-		info.dwFlags = 0;
+struct slot_owner {
+    void remove(callable* c);
+};
 
-		__try
-		{
-			if (nameThreads)
-				RaiseException(0x406D1388, 0, sizeof(info)/sizeof(ULONG_PTR), (ULONG_PTR*)&info);
-		}
-		__except (EXCEPTION_CONTINUE_EXECUTION)
-		{
-		}
-	}
+struct callable {
+    char pad[0x10];
+    slot_owner* owner;
+    void disconnect();
+};
 
-	void set_thread_name(const char* name)
-	{
-		boost_detail::set_foo(new std::string(name));
-		SetThreadName(GetCurrentThreadId(), name);
-	}
-
-	class ThreadPrioritySetter
-	{
-	private:
-		const int old;
-		bool success;
-	  
-	public:
-		ThreadPrioritySetter(int priority)
-			: old(GetThreadPriority(GetCurrentThread())),
-			  success(SetThreadPriority(GetCurrentThread(), priority) == TRUE)
-		{
-		}
-		~ThreadPrioritySetter()
-		{
-			if (success)
-				SetThreadPriority(GetCurrentThread(), old);
-		}
-	};
-
-	void run_in_background(const boost::function0<void>& threadfunc, std::string name)
-	{
-		try
-		{
-			set_thread_name(name.c_str());
-
-			{
-				ThreadPrioritySetter set(THREAD_PRIORITY_BELOW_NORMAL);
-				threadfunc();
-			}
-		}
-		catch (std::exception& ex)
-		{
-			StandardOut::singleton()->print(MESSAGE_ERROR, "Crashed via C++ exception in run_in_background:", ex.what());
-			RBXASSERT(false);
-		}
-	}
-
-	boost::function0<void> background_function(const boost::function0<void>& threadfunc, const char* name)
-	{
-		return boost::bind(&run_in_background, threadfunc, std::string(name));
-	}
-
-	worker_thread::worker_thread(const boost::function0<enum work_result>& work_function, const char* name)
-		: _data(new data()),
-		  thread(background_function(boost::bind(&threadProc, _data, work_function), name))
-	{
-	}
-
-	worker_thread::~worker_thread()
-	{
-		boost::mutex::scoped_lock scoped_lock(_data->sync);
-		_data->endRequest = true;
-		_data->wakeCondition.notify_all();
-	}
-
-	void worker_thread::join()
-	{
-		{
-			boost::mutex::scoped_lock scoped_lock(_data->sync);
-			_data->endRequest = true;
-			_data->wakeCondition.notify_all();
-		}
-
-		thread.join();
-	}
-
-	void worker_thread::wake()
-	{
-		boost::mutex::scoped_lock scoped_lock(_data->sync);
-		_data->wakeCondition.notify_all();
-	}
-
-	void worker_thread::threadProc(boost::shared_ptr<data> data, const boost::function0<enum work_result>& work_function)
-	{
-		while (!data->endRequest)
-		{
-			if (work_function() != more)
-			{
-				boost::mutex::scoped_lock scoped_lock(data->sync);
-				data->wakeCondition.wait(scoped_lock);	
-			}
-		}
-	}
+void callable::disconnect() {
+    if (owner != 0) {
+        scoped_lock lock(get_mutex());
+        slot_owner* p = owner;
+        if (p != 0) {
+            owner = 0;
+            p->remove(this);
+        }
+    }
 }

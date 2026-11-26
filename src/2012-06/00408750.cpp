@@ -1,225 +1,58 @@
-// from server: 69% by intel
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8datamodel/CharacterAppearance.cpp
+// from server: 100% by Xemicl
+// roc 2012-06 00408750  unit: VCApp::?$CComAggObject  size: 95 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 00408750
+//
+// 00408750  6aff                 push -1
+// 00408752  688ba3a900           push 0xa9a38b
+// 00408757  64a100000000         mov eax, dword ptr fs:[0]
+// 0040875d  50                   push eax
+// 0040875e  64892500000000       mov dword ptr fs:[0], esp
+// 00408765  51                   push ecx
+// 00408766  56                   push esi
+// 00408767  8bf1                 mov esi, ecx
+// 00408769  89742404             mov dword ptr [esp + 4], esi
+// 0040876d  c706103bb400         mov dword ptr [esi], 0xb43b10
+// 00408773  c74604010000c0       mov dword ptr [esi + 4], 0xc0000001
+// 0040877a  8b0dc463e100         mov ecx, dword ptr [0xe163c4]
+// 00408780  8b01                 mov eax, dword ptr [ecx]
+// 00408782  8b5008               mov edx, dword ptr [eax + 8]
+// 00408785  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 0040878d  ffd2                 call edx
+// 0040878f  8d4e08               lea ecx, [esi + 8]
+// 00408792  c7442410ffffffff     mov dword ptr [esp + 0x10], 0xffffffff
+// 0040879a  e841cbffff           call 0x4052e0
+// 0040879f  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 004087a3  5e                   pop esi
+// 004087a4  64890d00000000       mov dword ptr fs:[0], ecx
+// 004087ab  83c410               add esp, 0x10
+// 004087ae  c3                   ret 
+// copied from an identical function in another client (function ??1S@ns_ROCX00000a@@UAE@XZ)
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/CharacterAppearance.h"
-
-#include "v8datamodel/Decal.h"
-#include "v8datamodel/ModelInstance.h"
-#include "v8datamodel/PartInstance.h"
-
-namespace RBX {
-
-const char sShirt[] = "Shirt";
-
-const char sShirtGraphic[] = "ShirtGraphic";
-
-using namespace Reflection;
-
-BoundProp<TextureId, 1> ShirtGraphic::prop_Graphic(
-	"Graphic", "Appearance", &ShirtGraphic::graphic, &ShirtGraphic::dataChanged
-);
-
-BoundProp<BrickColor, 1> Shirt::prop_leftSleeveColor(
-	"LeftSleeveColor", "Appearance", &Shirt::leftSleeveColor, &Shirt::dataChanged
-);
-
-BoundProp<BrickColor, 1> Shirt::prop_rightSleeveColor(
-	"RightSleeveColor", "Appearance", &Shirt::rightSleeveColor, &Shirt::dataChanged
-);
-
-BoundProp<BrickColor, 1> Shirt::prop_torsoColor("TorsoColor", "Appearance", &Shirt::torsoColor, &Shirt::dataChanged);
-
-const char sSkin[] = "Skin";
-
-BoundProp<BrickColor, 1> Skin::prop_skinColor("SkinColor", "Appearance", &Skin::skinColor, &Skin::dataChanged);
-
-const char sBodyColors[] = "BodyColors";
-
-BoundProp<BrickColor, 1> BodyColors::prop_HeadColor(
-	"HeadColor", "Appearance", &BodyColors::headColor, &BodyColors::dataChanged
-);
-
-BoundProp<BrickColor, 1> BodyColors::prop_LeftArmColor(
-	"LeftArmColor", "Appearance", &BodyColors::leftArmColor, &BodyColors::dataChanged
-);
-
-BoundProp<BrickColor, 1> BodyColors::prop_RightArmColor(
-	"RightArmColor", "Appearance", &BodyColors::rightArmColor, &BodyColors::dataChanged
-);
-
-BoundProp<BrickColor, 1> BodyColors::prop_TorsoColor(
-	"TorsoColor", "Appearance", &BodyColors::torsoColor, &BodyColors::dataChanged
-);
-
-BoundProp<BrickColor, 1> BodyColors::prop_LeftLegColor(
-	"LeftLegColor", "Appearance", &BodyColors::leftLegColor, &BodyColors::dataChanged
-);
-
-BoundProp<BrickColor, 1> BodyColors::prop_RightLegColor(
-	"RightLegColor", "Appearance", &BodyColors::rightLegColor, &BodyColors::dataChanged
-);
-
-// FUNCTION: WEBSERVICE 0x10059c10 FOLDED
-// FUNCTION: ROBLOX 0x00564b10 FOLDED
-bool CharacterAppearance::askSetParent(const Instance* instance) const
+namespace ns_ROCX00000a {
+struct Global
 {
-	return dynamic_cast<const ModelInstance*>(instance) != NULL;
-}
+    virtual void first();
+    virtual void second();
+    virtual unsigned long release();
+};
 
-// FUNCTION: WEBSERVICE 0x100e0420
-// FUNCTION: ROBLOX 0x005e5f50
-void CharacterAppearance::onAncestorChanged(const AncestorChanged& event)
+extern Global* global;
+
+struct Member
 {
-	if (event.child == this) {
-		apply();
-	}
-}
+    ~Member();
+};
 
-// FUNCTION: WEBSERVICE 0x100e0980
-// FUNCTION: ROBLOX 0x005e6440
-void ShirtGraphic::apply(Humanoid* humanoid)
+struct S
 {
-	if (PartInstance* torso = humanoid->getTorso()) {
-		if (Decal* decal = torso->findFirstChildOfType<Decal>()) {
-			decal->setTexture(graphic);
-		}
-	}
-}
+    virtual ~S();
+    unsigned long references;
+    Member member;
+};
 
-// FUNCTION: WEBSERVICE 0x100e09d0
-// FUNCTION: ROBLOX 0x005e6490
-void Shirt::apply(Humanoid* humanoid)
+S::~S()
 {
-	ShirtGraphic::apply(humanoid);
-
-	if (PartInstance* torso = humanoid->getTorso()) {
-		torso->setColor(torsoColor);
-	}
-	if (PartInstance* leftArm = humanoid->getLeftArm()) {
-		leftArm->setColor(leftSleeveColor);
-	}
-	if (PartInstance* rightArm = humanoid->getRightArm()) {
-		rightArm->setColor(rightSleeveColor);
-	}
+    references = 0xC0000001UL;
+    global->release();
 }
-
-// FUNCTION: WEBSERVICE 0x100e0a90
-// FUNCTION: ROBLOX 0x005e6550
-void Skin::apply(Humanoid* humanoid)
-{
-	bool hasShirt = getParent()->findFirstChildOfType<Shirt>() != NULL;
-
-	if (PartInstance* head = humanoid->getHead()) {
-		head->setColor(skinColor);
-	}
-	if (PartInstance* leftLeg = humanoid->getLeftLeg()) {
-		leftLeg->setColor(skinColor);
-	}
-	if (PartInstance* rightLeg = humanoid->getRightLeg()) {
-		rightLeg->setColor(skinColor);
-	}
-	if (!hasShirt) {
-		if (PartInstance* torso = humanoid->getTorso()) {
-			torso->setColor(skinColor);
-		}
-		if (PartInstance* leftArm = humanoid->getLeftArm()) {
-			leftArm->setColor(skinColor);
-		}
-		if (PartInstance* rightArm = humanoid->getRightArm()) {
-			rightArm->setColor(skinColor);
-		}
-	}
 }
-
-// FUNCTION: WEBSERVICE 0x100e0b60
-// FUNCTION: ROBLOX 0x005e6620
-void BodyColors::apply(Humanoid* humanoid)
-{
-	bool hasSkin = getParent()->findFirstChildOfType<Skin>() != NULL;
-
-	if (!hasSkin) {
-		bool hasShirt = getParent()->findFirstChildOfType<Shirt>() != NULL;
-
-		if (PartInstance* head = humanoid->getHead()) {
-			head->setColor(headColor);
-		}
-		if (PartInstance* leftLeg = humanoid->getLeftLeg()) {
-			leftLeg->setColor(leftLegColor);
-		}
-		if (PartInstance* rightLeg = humanoid->getRightLeg()) {
-			rightLeg->setColor(rightLegColor);
-		}
-		if (!hasShirt) {
-			if (PartInstance* torso = humanoid->getTorso()) {
-				torso->setColor(torsoColor);
-			}
-			if (PartInstance* leftArm = humanoid->getLeftArm()) {
-				leftArm->setColor(leftArmColor);
-			}
-			if (PartInstance* rightArm = humanoid->getRightArm()) {
-				rightArm->setColor(rightArmColor);
-			}
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100e1440
-// FUNCTION: ROBLOX 0x005e6f40
-ShirtGraphic::ShirtGraphic()
-{
-	setName("Shirt Graphic");
-}
-
-// FUNCTION: WEBSERVICE 0x100e15c0
-// FUNCTION: ROBLOX 0x005e70c0
-Skin::Skin() : skinColor(BrickColor::lego_226)
-{
-	setName("Skin");
-}
-
-// FUNCTION: WEBSERVICE 0x100e16d0
-// FUNCTION: ROBLOX 0x005e71e0
-BodyColors::BodyColors()
-	: headColor(BrickColor::lego_226), leftArmColor(BrickColor::lego_226), rightArmColor(BrickColor::lego_226),
-	  torsoColor(BrickColor::lego_28), leftLegColor(BrickColor::lego_23), rightLegColor(BrickColor::lego_23)
-{
-	setName("Body Colors");
-}
-
-// FUNCTION: WEBSERVICE 0x100e1990
-// FUNCTION: ROBLOX 0x005e74f0
-Shirt::Shirt()
-	: leftSleeveColor(BrickColor::lego_23), rightSleeveColor(BrickColor::lego_23), torsoColor(BrickColor::lego_1)
-{
-	setName("Shirt");
-}
-
-} // namespace RBX
-
-template class RBX::FactoryProduct<RBX::BodyColors, RBX::CharacterAppearance, RBX::sBodyColors>;
-template class RBX::Reflection::Described<
-	RBX::BodyColors,
-	RBX::sBodyColors,
-	RBX::FactoryProduct<RBX::BodyColors, RBX::CharacterAppearance, RBX::sBodyColors> >;
-template class RBX::DescribedCreatable<RBX::BodyColors, RBX::CharacterAppearance, RBX::sBodyColors>;
-
-template class RBX::FactoryProduct<RBX::ShirtGraphic, RBX::CharacterAppearance, RBX::sShirtGraphic>;
-template class RBX::Reflection::Described<
-	RBX::ShirtGraphic,
-	RBX::sShirtGraphic,
-	RBX::FactoryProduct<RBX::ShirtGraphic, RBX::CharacterAppearance, RBX::sShirtGraphic> >;
-template class RBX::DescribedCreatable<RBX::ShirtGraphic, RBX::CharacterAppearance, RBX::sShirtGraphic>;
-
-template class RBX::FactoryProduct<RBX::Skin, RBX::CharacterAppearance, RBX::sSkin>;
-template class RBX::Reflection::
-	Described<RBX::Skin, RBX::sSkin, RBX::FactoryProduct<RBX::Skin, RBX::CharacterAppearance, RBX::sSkin> >;
-template class RBX::DescribedCreatable<RBX::Skin, RBX::CharacterAppearance, RBX::sSkin>;
-
-template class RBX::FactoryProduct<RBX::Shirt, RBX::ShirtGraphic, RBX::sShirt>;
-template class RBX::Reflection::
-	Described<RBX::Shirt, RBX::sShirt, RBX::FactoryProduct<RBX::Shirt, RBX::ShirtGraphic, RBX::sShirt> >;
-template class RBX::DescribedCreatable<RBX::Shirt, RBX::ShirtGraphic, RBX::sShirt>;

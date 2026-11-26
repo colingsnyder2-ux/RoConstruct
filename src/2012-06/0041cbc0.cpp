@@ -1,83 +1,39 @@
-// from server: 45% by intel
+// from server: 100% by Xemicl
+// roc 2012-06 0041cbc0  unit: RBX::Reflection::$$CBUTuple::$$A6AXV?$shared_ptr::PAV?$function::?$sp_counted_impl_pd  size: 51 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 0041cbc0
+//
+// 0041cbc0  51                   push ecx
+// 0041cbc1  8b44240c             mov eax, dword ptr [esp + 0xc]
+// 0041cbc5  56                   push esi
+// 0041cbc6  57                   push edi
+// 0041cbc7  50                   push eax
+// 0041cbc8  c744240c00000000     mov dword ptr [esp + 0xc], 0
+// 0041cbd0  e88b612a00           call 0x6c2d60
+// 0041cbd5  8b7c2414             mov edi, dword ptr [esp + 0x14]
+// 0041cbd9  83c404               add esp, 4
+// 0041cbdc  8bf0                 mov esi, eax
+// 0041cbde  56                   push esi
+// 0041cbdf  8bcf                 mov ecx, edi
+// 0041cbe1  ff154426b200         call dword ptr [0xb22644]
+// 0041cbe7  8b4e1c               mov ecx, dword ptr [esi + 0x1c]
+// 0041cbea  894f1c               mov dword ptr [edi + 0x1c], ecx
+// 0041cbed  8bc7                 mov eax, edi
+// 0041cbef  5f                   pop edi
+// 0041cbf0  5e                   pop esi
+// 0041cbf1  59                   pop ecx
+// 0041cbf2  c3                   ret 
+// copied from an identical function in another client (function ??$any_cast@US@boost@@@boost@@YA?AUS@0@AAVany@0@@Z)
+
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/DebrisService.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/DebrisService.h"
-#include "v8datamodel/TimerService.h"
-#include "util/standardout.h"
-
-static RBX::Reflection::BoundFuncDesc<RBX::DebrisService, void(boost::shared_ptr<RBX::Instance>, double), 2> func_AddItem(&RBX::DebrisService::addItem, "AddItem", "item", "lifetime", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::PropDescriptor<RBX::DebrisService, int> prop_MaxItems("MaxItems", "Data", &RBX::DebrisService::getMaxItems, &RBX::DebrisService::setMaxItems, RBX::Reflection::PropertyDescriptor::STANDARD);
-
-static void cleanup(boost::weak_ptr<RBX::Instance> item)
-{
-	try
-	{
-		boost::shared_ptr<RBX::Instance> i = item.lock();
-		if (i)
-			i->setParent(NULL);
-	}
-	catch (std::exception& e)
-	{
-		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
-	}
-}
-
-namespace RBX
-{
-	char* sDebrisService = "Debris";
-
-	DebrisService::DebrisService()
-		: Base("Debris"),
-		  maxItems(300),
-		  timer(NULL)
-	{
-	}
-
-	void DebrisService::setMaxItems(int value)
-	{
-		if (value != maxItems)
-		{
-			if (value < 0)
-				throw std::runtime_error("DebrisService MaxItems must be greater than 0");
-
-			maxItems = value;
-			raisePropertyChanged(prop_MaxItems);
-			DebrisService::cleanup();
-		}
-	}
-
-	void DebrisService::addItem(boost::shared_ptr<Instance> item, double lifetime)
-	{
-		if (timer)
-			timer->delay(boost::bind(&::cleanup, item), lifetime);
-
-		queue.push(item);
-		DebrisService::cleanup();
-	}
-
-	void DebrisService::cleanup()
-	{
-		while ((int)queue.size() > maxItems)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-	}
-
-	void DebrisService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		while ((int)queue.size() > 0)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		timer = ServiceProvider::create<TimerService>(newProvider);
-	}
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <string>
+namespace boost {
+class any;
+struct S { std::string s; int v; };
+template<class T> T* any_cast(any* operand);
+template<> S* any_cast<S>(any* operand);
+template<class T> T any_cast(any& operand) { return *any_cast<T>(&operand); }
+template S any_cast<S>(any& operand);
 }

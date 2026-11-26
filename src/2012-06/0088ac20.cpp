@@ -1,14 +1,6 @@
-// from server: 89% by tester
-extern "C" void __stdcall sub_89E620(void* self, const void* name);
-
-struct UnifiedImageWidget {
-    char pad[0x98];
-    void* setImageName(const void* name);
-};
-
-void* UnifiedImageWidget::setImageName(const void* name) {
-    void* result = const_cast<void*>(name);
-    void* sub = reinterpret_cast<char*>(this) + 0x98;
-    sub_89E620(sub, name);
-    return result;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct B{ int g(int); };
+struct S{ char p[0x98]; B b; int f(int,int,int); };
+int S::f(int a,int,int){ b.g(a); return a; }

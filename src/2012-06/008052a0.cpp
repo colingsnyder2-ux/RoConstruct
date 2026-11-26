@@ -1,16 +1,17 @@
-// from server: 70% by atomic.potato
-struct EventDesc
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct T { void g(); };
+struct S
 {
-    int f(int value);
+    char pad[0x2c];
+    char *p;
+    void f(char *x);
 };
 
-extern "C" void __stdcall G1_func_00803f70(void*);
-
-int EventDesc::f(int value)
+void S::f(char *x)
 {
-    if (value)
-        G1_func_00803f70((char*)*(char**)((char*)this + 0x2c) + value - 0x1c);
-    else
-        G1_func_00803f70(*(char**)((char*)this + 0x2c));
-    return 0;
+    int off = x ? (int)x - 0x1c : 0;
+    ((T *)(p + off))->g();
 }

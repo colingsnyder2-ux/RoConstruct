@@ -1,16 +1,10 @@
-// from server: 94% by Intel
-typedef double QWORD_FLOAT;
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?f@S@@QAE?AUR@@ABN@Z)
 
-extern "C" void __stdcall Function977d20(void*, void*, QWORD_FLOAT);
-
-struct UserInputJob
-{
-    int Run(void*, void*);
-};
-
-int UserInputJob::Run(void* a, void* b)
-{
-    QWORD_FLOAT value = *(QWORD_FLOAT*)0xB5EF30;
-    Function977d20(b, a, value);
-    return (int)b;
-}
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct R { double v; bool b; };
+struct S { R g(const double& a, double b); R f(const double& a); };
+R S::f(const double& a) { return g(a, 60.0); }

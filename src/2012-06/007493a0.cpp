@@ -1,162 +1,69 @@
-// from server: 58% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/RunStateOwner.cpp
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+// roc 2012-06 007fa880  unit: RBX::VInsertService::?$FactoryProduct  size: 119 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 007fa880
+//
+// 007fa880  64a100000000         mov eax, dword ptr fs:[0]
+// 007fa886  6aff                 push -1
+// 007fa888  68586bad00           push 0xad6b58
+// 007fa88d  50                   push eax
+// 007fa88e  64892500000000       mov dword ptr fs:[0], esp
+// 007fa895  56                   push esi
+// 007fa896  c744240c00000000     mov dword ptr [esp + 0xc], 0
+// 007fa89e  8d711c               lea esi, [ecx + 0x1c]
+// 007fa8a1  e83ae8f0ff           call 0x7090e0
+// 007fa8a6  8906                 mov dword ptr [esi], eax
+// 007fa8a8  e8d369ecff           call 0x6c1280
+// 007fa8ad  8d4c2418             lea ecx, [esp + 0x18]
+// 007fa8b1  51                   push ecx
+// 007fa8b2  50                   push eax
+// 007fa8b3  8d54241c             lea edx, [esp + 0x1c]
+// 007fa8b7  52                   push edx
+// 007fa8b8  e8234ae8ff           call 0x67f2e0
+// 007fa8bd  83c404               add esp, 4
+// 007fa8c0  50                   push eax
+// 007fa8c1  8bce                 mov ecx, esi
+// 007fa8c3  e8b8ebf0ff           call 0x709480
+// 007fa8c8  8b44241c             mov eax, dword ptr [esp + 0x1c]
+// 007fa8cc  c744240cffffffff     mov dword ptr [esp + 0xc], 0xffffffff
+// 007fa8d4  85c0                 test eax, eax
+// 007fa8d6  740d                 je 0x7fa8e5
+// 007fa8d8  8b5004               mov edx, dword ptr [eax + 4]
+// 007fa8db  8d4c2420             lea ecx, [esp + 0x20]
+// 007fa8df  51                   push ecx
+// 007fa8e0  ffd2                 call edx
+// 007fa8e2  83c404               add esp, 4
+// 007fa8e5  8b4c2404             mov ecx, dword ptr [esp + 4]
+// 007fa8e9  64890d00000000       mov dword ptr fs:[0], ecx
+// 007fa8f0  5e                   pop esi
+// 007fa8f1  83c40c               add esp, 0xc
+// 007fa8f4  c24800               ret 0x48
 
-// Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
-#include "util/Timer.h"
-#include "util/standardout.h"
-#include "v8datamodel/DataModel.h"
-#include <boost/thread/xtime.hpp>
 
-namespace RBX
+struct Mgr_007fa880 { void* a; void (*destroy)(void*); };
+struct Fn_007fa880 {
+    int x;
+    Mgr_007fa880* mgr;
+    char buf[60];
+    Fn_007fa880(const Fn_007fa880&);
+    ~Fn_007fa880() { if (mgr) mgr->destroy(buf); }
+};
+struct Key_007fa880 { int v; };
+struct Sub_007fa880 {
+    int v;
+    void set(int a, int b, const Fn_007fa880& f);
+};
+int make_007fa880();
+int get_007fa880();
+int conv_007fa880(const Key_007fa880& k);
+struct S_007fa880 {
+    char pad[0x1c];
+    Sub_007fa880 sub;
+    void f(Key_007fa880 k, Fn_007fa880 fn);
+};
+void S_007fa880::f(Key_007fa880 k, Fn_007fa880 fn)
 {
-	const char* const sRunService = "RunService";
-
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> runFunction(&RunService::run, "Run", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> pauseFunction(&RunService::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> resetFunction(&RunService::reset, "Reset", Reflection::FunctionDescriptor::NeedTrustedCaller);
-
-	static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "interval");
-	Reflection::SignalDesc<RunService, void(float, float)> RunService::event_Stepped("Stepped", "time", "step");
-
-	RunService::RunService()
-		: framePeriod(1.0f/30.0f),
-		  runState(RS_NORMAL),
-		  invalidRunViewCount(0),
-		  stopRequested(false),
-		  runDisabled(false)
-	{
-		setName("Run Service");
-	}
-
-	RunService::~RunService()
-	{
-		RBXASSERT(views.empty());
-	}
-
-	void RunService::endRunThread(bool join)
-	{
-		stopRequested = true;
-		stateChangedCondition.notify_all();
-
-		if (join)
-			runThread->join();
-	}
-
-	void RunService::onAncestorChanged(const AncestorChanged& event)
-	{
-		if (!getParent())
-		{
-			stopRequested = true;
-			stateChangedCondition.notify_all();
-		}
-	}
-
-	void RunService::setRunState(RunState newState)
-	{
-		RunTransition transition(runState, newState);
-		runState = newState;
-
-		Notifier<RunService, RunState>::raise(newState);
-		Notifier<RunService, RunTransition>::raise(transition);
-	}
-
-	void RunService::raiseStepped(float time, float step)
-	{
-		Notifier<RunService, Stepped>::raise(Stepped(time, step));
-		event_Stepped.fire(this, time, step);
-	}
-
-	void RunService::raiseHeartbeat(float time, float step)
-	{
-		Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-		event_Heartbeat.fire(this, step);
-	}
-
-	void RunService::invalidateRunViews()
-	{
-		boost::mutex::scoped_lock lock(viewMutex);
-
-		if (invalidRunViewCount == 0)
-		{
-			invalidRunViewCount = (int)views.size();
-			if (invalidRunViewCount > 0)
-			{
-				for (std::map<IRunView*, bool>::iterator iter = views.begin(); iter != views.end(); iter++)
-				{
-					iter->first->InvalidateRunView();
-					iter->second = false;
-				}
-				runViewsDoneCondition.notify_all();
-			}
-		}
-	}
-
-	void RunService::start()
-	{
-		RBXASSERT(!runThread);
-
-		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
-		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc")));
-	}
-
-	void RunService::runProc(boost::shared_ptr<DataModel> dataModel)
-	{
-		double lastTime = getRealTime();
-		while (true)
-		{
-			double deltaTime = lastTime - getRealTime();
-
-			{
-				boost::mutex::scoped_lock lock(viewMutex);
-				for (std::map<IRunView*, bool>::iterator it = views.begin(); it != views.end(); it++)
-					it->first->AdjustThrottle(deltaTime);
-			}
-
-			double clampedDeltaTime = G3D::max(0.0, deltaTime);
-			boost::xtime stateChangedTimeout;
-			boost::xtime_get(&stateChangedTimeout, boost::TIME_UTC);
-			stateChangedTimeout.nsec += (boost::xtime::xtime_nsec_t)(clampedDeltaTime * 1e9);
-
-			bool stateChanged;
-			{
-				boost::mutex::scoped_lock lock(runMutex);
-				stateChanged = stateChangedCondition.timed_wait(lock, stateChangedTimeout);
-			}
-
-			if (!stateChanged)
-			{
-				boost::xtime runViewsDoneTimeout;
-				boost::xtime_get(&runViewsDoneTimeout, boost::TIME_UTC);
-				runViewsDoneTimeout.sec += 1;
-
-				boost::mutex::scoped_lock lock(runMutex);
-				if (invalidRunViewCount != 0)
-					runViewsDoneCondition.timed_wait(lock, runViewsDoneTimeout);
-			}
-
-			if (deltaTime <= 0.0)
-				lastTime = getRealTime();
-
-			{
-				DataModel::Lock lock(dataModel);
-
-				if (!stopRequested)
-				{
-					RBXASSERT(getParent() == dataModel.get());
-					dataModel->step(framePeriod);
-				}
-				else
-				{
-					StandardOut::singleton()->print(MESSAGE_INFO, "runProc ending");
-					return;
-				}
-			}
-
-			lastTime += framePeriod;
-		}
-	}
+    sub.v = make_007fa880();
+    int b = get_007fa880();
+    sub.set(conv_007fa880(k), b, fn);
 }

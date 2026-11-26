@@ -1,20 +1,21 @@
-// from server: 77% by Intel
-extern "C" void __stdcall __security_init_cookie(int, int);
-extern "C" void __cdecl sub_9831F5(int);
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?getInstance@@YAAAV?$shared_ptr@VItem@@@boost@@XZ)
 
-struct islot {
-    static int instance();
-};
-
-int islot::instance() {
-    __security_init_cookie(0x428850, 0xE1828C);
-    int eax = 1;
-    if (!(*(unsigned char*)0xE18284 & 1)) {
-        *(int*)0xE18284 |= eax;
-        eax = 0;
-        *(int*)0xE1827C = eax;
-        *(int*)0xE18280 = eax;
-        sub_9831F5(0xB118A0);
-    }
-    return 0xE1827C;
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+namespace boost {
+struct once_flag { long state; };
+void call_once(once_flag& flag, void (*f)());
+template<class T> class shared_ptr { public: T* px; void* pn; shared_ptr() : px(0), pn(0) {} ~shared_ptr(); };
+}
+class Item;
+static boost::shared_ptr<Item>& instance() { static boost::shared_ptr<Item> sp; return sp; }
+static void initInstance() { instance(); }
+static boost::once_flag flag;
+boost::shared_ptr<Item>& getInstance()
+{
+    boost::call_once(flag, &initInstance);
+    return instance();
 }

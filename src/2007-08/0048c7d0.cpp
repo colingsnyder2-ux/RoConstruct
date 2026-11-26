@@ -1,4 +1,4 @@
-// from server: 24% by colin
+// from server: 30% by Marcio
 extern "C" void* __stdcall malloc(unsigned int size);
 
 struct ICreator {
@@ -11,7 +11,7 @@ struct Creator : public ICreator {
 
 struct VTimerService {
     void* creator;
-    void init(Creator* c);
+    void __cdecl init(Creator* c);
 };
 
 void VTimerService::init(Creator* c) {

@@ -1,6 +1,4 @@
-// from server: 55% by Intel
-// roc-repair: genuine WinNT.h definitions (no SDK shipped)
-typedef unsigned long DWORD;
+// from server: 100% by Xemicl
 // roc 2012-06 0044b940  unit: CDeclarationView  size: 49 bytes
 // Make this compile to the exact bytes below, then: roc check 2012-06 0044b940
 //
@@ -17,23 +15,26 @@ typedef unsigned long DWORD;
 // 0044b964  8b4c2408             mov ecx, dword ptr [esp + 8]
 // 0044b968  c70100000000         mov dword ptr [ecx], 0
 // 0044b96e  c20800               ret 8
-// library xtp-15.2.1/Source\Controls\Deprecated\XTHtmlView.cpp (function ?get_accChild@CFormView@@UAEJUtagVARIANT@@PAPAUIDispatch@@@Z)
+// copied from an identical function in another client (function ?f@CDeclarationView@ns_ROCX000007@@QAEXPAXPAPAX@Z)
 
-
-
-
-
-struct CDeclarationView {
-    void f();
+namespace ns_ROCX000007 {
+// from server: 100% by atomic.potato
+struct CDeclarationView
+{
+    char padding[0xb0];
+    void *fieldB0;
+    void f(void *, void **);
 };
 
-void CDeclarationView::f() {
-    if (*(DWORD*)((char*)this + 0xb0)) {
-        DWORD* eax = (DWORD*)*(DWORD*)((char*)this + 4);
-        DWORD edx = eax[0x5c / sizeof(DWORD)];
-        ((void(__stdcall*)(DWORD))0x44b320)(edx);
-        *(DWORD*)*(DWORD*)((char*)this + 8) = 0;
-    } else {
-        *(DWORD*)*(DWORD*)((char*)this + 8) = 0;
-    }
+struct Helper
+{
+    void f(void *);
+};
+
+void CDeclarationView::f(void *arg1, void **arg2)
+{
+    if (fieldB0 != 0)
+        ((Helper *)fieldB0)->f(*(void **)((char *)arg1 + 0x5c));
+    *arg2 = 0;
+}
 }

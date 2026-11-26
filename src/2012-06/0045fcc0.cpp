@@ -1,36 +1,47 @@
-// from server: 39% by atomic.potato
-struct S_func_009dcb20 {
-    char pad0[140];
-    int m_x;
-    int f();
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ??0ScriptItem@ns_ROCX000001@@QAE@HH@Z)
+
+namespace ns_ROCX000001 {
+// from server: 100% by king_originala
+
+struct Buttons;
+typedef void (__thiscall *ButtonMethod)(Buttons *, const char *, int, int);
+
+struct Buttons {
+    ButtonMethod *table;
 };
 
-struct S_func_009f1350 {
-    char pad0[0x8c];
-    int m_field8c;
-    char pad1[0x44];
-    void* m_fieldd4;
-    void set(int);
+struct Primary {
+    virtual ~Primary();
+    char padding[28];
 };
 
-struct S {
-    char pad0[0xc4];
-    void* m_fieldc4;
-    void* construct(int, int);
+struct Secondary {
+    virtual ~Secondary();
+    char padding0[160];
+    Buttons *buttons;
+    char padding1[68];
 };
 
-void* S::construct(int a, int b)
+struct Tertiary {
+    virtual ~Tertiary();
+};
+
+struct Base : Primary, Secondary, Tertiary {
+    Base(int, int);
+    virtual ~Base();
+    int getFlags();
+    void setFlags(int);
+};
+
+struct ScriptItem : Base {
+    ScriptItem(int, int);
+    virtual ~ScriptItem();
+};
+
+ScriptItem::ScriptItem(int a, int b) : Base(a, b)
 {
-    S_func_009dcb20* p = (S_func_009dcb20*)this;
-    p->f();
-    int v = p->f();
-    v |= 4;
-    ((S_func_009f1350*)this)->set(v);
-    void* q = m_fieldc4;
-    void** vt = *(void***)q;
-    typedef void (__stdcall *Fn)(void*, int, int, const char*);
-    Fn fn = (Fn)vt[0x58/4];
-    fn(q, 1, 0xe120, (const char*)0xb56c8c);
-
-    return this;
+    setFlags(getFlags() | 4);
+    buttons->table[22](buttons, "Clear", 1, 0xe120);
+}
 }

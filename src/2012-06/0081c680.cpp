@@ -1,24 +1,5 @@
-// from server: 41% by Intel
-struct UTuple {
-    int field_0x78;
-    int field_0xa4;
-};
-
-struct shared_ptr {
-    int data;
-};
-
-struct function {
-    int func;
-};
-
-struct UTuple$$A6A {
-    shared_ptr* sp;
-    function* func;
-};
-
-UTuple$$A6A* get_uttuple_data(UTuple* this_ptr) {
-    shared_ptr* v1 = (shared_ptr*)((int)this_ptr + 0xa4);
-    function* v2 = (function*)((int)v1->data + 0x24);
-    return (UTuple$$A6A*)((int)v2 + 0x78);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct C{ char p[0x78]; int x; }; struct B{ char p[0x24]; C* c; }; struct A{ char p[0xa4]; B* b; int f(); };
+int A::f(){ return b->c->x; }

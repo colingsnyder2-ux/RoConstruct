@@ -1,13 +1,71 @@
-// from server: 75% by atomic.potato
-extern "C" int __stdcall sub_742B50(int, int);
+// from server: 100% by Xemicl
+// roc 2012-06 00742ff0  unit: seg_00740000  size: 54 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 00742ff0
+//
+// 00742ff0  51                   push ecx
+// 00742ff1  8a44240c             mov al, byte ptr [esp + 0xc]
+// 00742ff5  8a4c240d             mov cl, byte ptr [esp + 0xd]
+// 00742ff9  8a54240e             mov dl, byte ptr [esp + 0xe]
+// 00742ffd  56                   push esi
+// 00742ffe  8b74240c             mov esi, dword ptr [esp + 0xc]
+// 00743002  88442404             mov byte ptr [esp + 4], al
+// 00743006  884c2405             mov byte ptr [esp + 5], cl
+// 0074300a  88542406             mov byte ptr [esp + 6], dl
+// 0074300e  c644240700           mov byte ptr [esp + 7], 0
+// 00743013  8b442404             mov eax, dword ptr [esp + 4]
+// 00743017  50                   push eax
+// 00743018  56                   push esi
+// 00743019  e832fbffff           call 0x742b50
+// 0074301e  83c408               add esp, 8
+// 00743021  8bc6                 mov eax, esi
+// 00743023  5e                   pop esi
+// 00743024  59                   pop ecx
+// 00743025  c3                   ret 
+// copied from an identical function in another client (function ?f@ns_ROCX000009@@YAPAXPAXURGB@1@@Z)
 
-int __cdecl sub_742FF0(int a, char b, char c, char d)
+namespace ns_ROCX000009 {
+// from server: 100% by king_originala
+// roc 2008-06 005b62a0  unit: RBX::VHat::?$FactoryProduct  size: 54 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 005b62a0
+//
+// 005b62a0  51                   push ecx
+// 005b62a1  8a44240c             mov al, byte ptr [esp + 0xc]
+// 005b62a5  8a4c240d             mov cl, byte ptr [esp + 0xd]
+// 005b62a9  8a54240e             mov dl, byte ptr [esp + 0xe]
+// 005b62ad  56                   push esi
+// 005b62ae  8b74240c             mov esi, dword ptr [esp + 0xc]
+// 005b62b2  88442404             mov byte ptr [esp + 4], al
+// 005b62b6  884c2405             mov byte ptr [esp + 5], cl
+// 005b62ba  88542406             mov byte ptr [esp + 6], dl
+// 005b62be  c644240700           mov byte ptr [esp + 7], 0
+// 005b62c3  8b442404             mov eax, dword ptr [esp + 4]
+// 005b62c7  50                   push eax
+// 005b62c8  56                   push esi
+// 005b62c9  e8b2faffff           call 0x5b5d80
+// 005b62ce  83c408               add esp, 8
+// 005b62d1  8bc6                 mov eax, esi
+// 005b62d3  5e                   pop esi
+// 005b62d4  59                   pop ecx
+// 005b62d5  c3                   ret 
+
+struct RGB {
+    unsigned char r, g, b;
+};
+
+struct RGBA {
+    unsigned char r, g, b, a;
+};
+
+extern void __cdecl convert(void *destination, RGBA color);
+
+void *__cdecl f(void *destination, RGB color)
 {
-    char buf[4];
-    buf[0] = b;
-    buf[1] = c;
-    buf[2] = d;
-    buf[3] = 0;
-    sub_742B50(a, *(int*)buf);
-    return a;
+    RGBA value;
+    value.r = color.r;
+    value.g = color.g;
+    value.b = color.b;
+    value.a = 0;
+    convert(destination, value);
+    return destination;
+}
 }

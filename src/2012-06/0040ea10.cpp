@@ -1,19 +1,48 @@
-// from server: 29% by atomic.potato
-extern "C" void* __cdecl sub_98211A(unsigned int);
-extern "C" void __cdecl sub_40DC00(void*, void*);
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ?clone@?$clone_impl@U?$error_info_injector@Vlength_error@std@@@exception_detail@boost@@@exception_detail@boost@@EBEPBVclone_base@23@XZ)
 
-struct S {
-    void f();
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MT
+#include <stdexcept>
+namespace boost {
+namespace exception_detail { class error_info_container; }
+class exception {
+protected:
+    exception() throw();
+    exception(exception const&) throw();
+    virtual ~exception() throw() = 0;
+private:
+    exception_detail::error_info_container* data_;
+    char const* throw_function_;
+    char const* throw_file_;
+    int throw_line_;
 };
-
-void S::f()
-{
-    void* p = sub_98211A(0x40);
-    if (p != 0) {
-        sub_40DC00((char*)this - 0x3c, p);
-        *(int*)((char*)p + 0x3c) = 0xb43c34;
-        *(int*)((char*)p) = 0xb442b4;
-        *(int*)((char*)p + 0x28) = 0xb442ac;
-        *(int*)((char*)p + 0x3c) = 0xb4429c;
-    }
+namespace exception_detail {
+template<class T>
+struct error_info_injector : public T, public exception {
+    explicit error_info_injector(T const& x);
+    error_info_injector(error_info_injector const& x);
+    ~error_info_injector() throw();
+};
+class clone_base {
+public:
+    virtual clone_base const* clone() const = 0;
+    virtual void rethrow() const = 0;
+    virtual ~clone_base() throw() {}
+};
+template<class T>
+class clone_impl : public T, public clone_base {
+public:
+    explicit clone_impl(T const& x) : T(x) {}
+    ~clone_impl() throw() {}
+private:
+    clone_base const* clone() const;
+    void rethrow() const;
+};
+template<class T>
+clone_base const* clone_impl<T>::clone() const { return new clone_impl(*this); }
+template clone_base const* clone_impl<error_info_injector<std::length_error> >::clone() const;
+}
 }

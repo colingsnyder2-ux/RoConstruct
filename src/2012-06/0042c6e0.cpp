@@ -1,11 +1,5 @@
-// from server: 50% by Intel
-struct S {
-    void* f();
-};
-
-void* S::f()
-{
-    void* v1 = *(void**)((char*)this + 0x10);
-    void* v2 = *(void**)((char*)this + 0xC);
-    return ((void* (__stdcall *)(void*))v2)(v1);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct T{ void m(int); }; struct A{ int a,b,c; void (T::*fn)(int); T* o; void f(int); };
+void A::f(int x){ (o->*fn)(x); }

@@ -1,83 +1,77 @@
-// from server: 52% by colin
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ??$assign_to@U?$bind_t@XP6AXV?$function0@X@boost@@@ZU?$list1@U?$value@V?$function0@X@boost@@@_bi@boost@@@_bi@2@@_bi@boost@@@function1@boost@@QAEXU?$bind_t@XP6AXV?$function0@X@boost@@@ZU?$list1@U?$value@V?$function0@X@boost@@@_bi@boost@@@_bi@2@@_bi@1@@Z)
+
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/DebrisService.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/DebrisService.h"
-#include "v8datamodel/TimerService.h"
-#include "util/standardout.h"
-
-static RBX::Reflection::BoundFuncDesc<RBX::DebrisService, void(boost::shared_ptr<RBX::Instance>, double), 2> func_AddItem(&RBX::DebrisService::addItem, "AddItem", "item", "lifetime", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::PropDescriptor<RBX::DebrisService, int> prop_MaxItems("MaxItems", "Data", &RBX::DebrisService::getMaxItems, &RBX::DebrisService::setMaxItems, RBX::Reflection::PropertyDescriptor::STANDARD);
-
-static void cleanup(boost::weak_ptr<RBX::Instance> item)
-{
-	try
-	{
-		boost::shared_ptr<RBX::Instance> i = item.lock();
-		if (i)
-			i->setParent(NULL);
-	}
-	catch (std::exception& e)
-	{
-		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
-	}
+namespace boost {
+namespace detail { namespace function {
+struct X;
+union function_buffer {
+    void* obj_ptr;
+    struct type_t { const void* type; bool c; bool v; } type;
+    void (*func_ptr)();
+    struct bound_memfunc_ptr_t { void (X::*memfunc_ptr)(int); void* obj_ptr; } bound_memfunc_ptr;
+    double d;
+    char data[0x18];
+};
+enum functor_manager_operation_type { clone_functor_tag, move_functor_tag, destroy_functor_tag, check_functor_type_tag, get_functor_type_tag };
+struct vtable_base {
+    void (*manager)(const function_buffer& in_buffer, function_buffer& out_buffer, functor_manager_operation_type op);
+    void clear(function_buffer& functor)
+    {
+        if (manager)
+            manager(functor, functor, destroy_functor_tag);
+    }
+};
+}}
+class function_base {
+public:
+    function_base() : vtable(0) {}
+    bool empty() const { return !vtable; }
+    detail::function::vtable_base* vtable;
+    mutable detail::function::function_buffer functor;
+};
+template<class R> class function0 : public function_base {
+public:
+    function0(const function0& f) : function_base() { assign_to_own(f); }
+    ~function0() { if (this->vtable) this->vtable->clear(this->functor); }
+    void assign_to_own(const function0& f)
+    {
+        if (!f.empty()) {
+            this->vtable = f.vtable;
+            f.vtable->manager(f.functor, this->functor, detail::function::clone_functor_tag);
+        }
+    }
+};
+namespace _bi {
+template<class T> struct value { T t_; };
+template<class A1> struct list1 { A1 a1_; };
+template<class R, class F, class L> struct bind_t { F f_; L l_; };
 }
-
-namespace RBX
-{
-	char* sDebrisService = "Debris";
-
-	DebrisService::DebrisService()
-		: Base("Debris"),
-		  maxItems(300),
-		  timer(NULL)
-	{
-	}
-
-	void DebrisService::setMaxItems(int value)
-	{
-		if (value != maxItems)
-		{
-			if (value < 0)
-				throw std::runtime_error("DebrisService MaxItems must be greater than 0");
-
-			maxItems = value;
-			raisePropertyChanged(prop_MaxItems);
-			DebrisService::cleanup();
-		}
-	}
-
-	void DebrisService::addItem(boost::shared_ptr<Instance> item, double lifetime)
-	{
-		if (timer)
-			timer->delay(boost::bind(&::cleanup, item), lifetime);
-
-		queue.push(item);
-		DebrisService::cleanup();
-	}
-
-	void DebrisService::cleanup()
-	{
-		while ((int)queue.size() > maxItems)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-	}
-
-	void DebrisService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		while ((int)queue.size() > 0)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		timer = ServiceProvider::create<TimerService>(newProvider);
-	}
+namespace detail { namespace function {
+template<class F> struct basic_vtable {
+    vtable_base base;
+    void (*invoker)();
+    bool assign_to(F f, function_buffer& functor) const;
+};
+void manage(const function_buffer&, function_buffer&, functor_manager_operation_type);
+void invoke();
+}}
+class function1 : public function_base {
+public:
+    template<class F> void assign_to(F f)
+    {
+        typedef detail::function::basic_vtable<F> vtable_type;
+        static vtable_type stored_vtable = { { &detail::function::manage }, &detail::function::invoke };
+        if (stored_vtable.assign_to(f, this->functor))
+            this->vtable = &stored_vtable.base;
+        else
+            this->vtable = 0;
+    }
+};
 }
+typedef void (*Fn)(boost::function0<void>);
+typedef boost::_bi::bind_t<void, Fn, boost::_bi::list1<boost::_bi::value<boost::function0<void> > > > B;
+template void boost::function1::assign_to<B>(B);

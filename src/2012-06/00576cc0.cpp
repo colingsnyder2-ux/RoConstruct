@@ -1,709 +1,137 @@
-// from server: 38% by intel
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/Workspace.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Workspace.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8datamodel/MouseCommand.h"
-#include "v8datamodel/Flag.h"
-#include "v8datamodel/Camera.h"
-#include "v8datamodel/Hopper.h"
-#include "v8datamodel/Selection.h"
-#include "v8datamodel/UserController.h"
-#include "script/ScriptContext.h"
-#include "humanoid/Humanoid.h"
-#include "v8world/CollisionStage.h"
-#include "v8world/SleepStage.h"
-#include "v8world/World.h"
-#include "tool/NullTool.h"
-#include "tool/ToolsArrow.h"
-#include "Network/Players.h"
-
-namespace RBX
-{
-	char* sWorkspace = "Workspace";
-
-	static Reflection::RefPropDescriptor<Workspace, Camera> currentCameraProxyProp("CurrentCamera", "Data", &Workspace::getCamera, &Workspace::setCamera, Reflection::PropertyDescriptor::STANDARD);
-
-	static Reflection::BoundFuncDesc<Workspace, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(ContentId), 1> workspace_insertContent(&Workspace::insertContent, "InsertContent", "url", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<Workspace, void(boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>), 1> workspace_makeJoints(&Workspace::makeJoints, "MakeJoints", "objects", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<Workspace, void(boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>), 1> workspace_breakJoints(&Workspace::breakJoints, "BreakJoints", "objects", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<Workspace, void(bool), 1> workspace_SetThrottleEnabled(&Workspace::setThrottleEnabled, "SetPhysicsThrottleEnabled", "value", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<Workspace, void(void), 0> workspace_zoomToExtents(&Workspace::zoomToExtents, "ZoomToExtents", Reflection::FunctionDescriptor::NeedTrustedCaller);
-
-	bool Workspace::showWorldCoord = false;
-	bool Workspace::showHashGrid = false;
-
-	Workspace::Workspace(IDataState* dataState)
-		: VerbContainer(NULL),
-		  dataState(dataState),
-		  profileWorkspaceStep(new Profiling::CodeProfiler("DataModel Step")),
-		  profileRunServiceStepped(new Profiling::CodeProfiler("RunService Stepped")),
-		  profileRunServiceHeartbeat(new Profiling::CodeProfiler("RunService Heartbeat")),
-		  profileRun(new Profiling::ThreadProfiler("Run Thread")),
-		  arrowCameraControls(false),
-		  inMouselookMode(false),
-		  isSimulating(false),
-		  scriptContext(NULL),
-		  imageServerViewHack(0)
-	{
-		RBXASSERT(dataState);
-		setName("Workspace");
-
-		world->getProfileWorldStep().parent = profileWorkspaceStep.get();
-		profileRunServiceStepped->parent = profileWorkspaceStep.get();
-		profileRunServiceHeartbeat->parent = profileWorkspaceStep.get();
-	}
-
-	Workspace::~Workspace() {}
-
-	bool Workspace::askAddChild(const Instance* instance) const
-	{
-		return dynamic_cast<const IRenderable*>(instance) != NULL;
-	}
-
-	const G3D::GCamera& Workspace::getGCamera() const
-	{
-		RBXASSERT(getCamera());
-		return getCamera()->getGCamera();
-	}
-
-	void Workspace::zoomToExtents()
-	{
-		getCamera()->zoomExtents(viewPort);
-	}
-
-	void Workspace::insertItems(XmlElement* root, std::vector<boost::shared_ptr<Instance>>& instances, InsertMode insertMode, PromptMode promptMode)
-	{
-		RBXASSERT(instances.size() == 0);
-
-		SerializerV2 serializer;
-		serializer.loadInstances(root, instances);
-
-		if (instances.size() != 0)
-			insertInstances(instances, this, insertMode, promptMode);
-	}
-
-	void Workspace::stop()
-	{
-		RBXASSERT(isSimulating);
-		isSimulating = false;
-
-		getCamera()->autoMode();
-		RBXASSERT(!getCurrentMouseCommand()->captured());
-	}
-
-	MouseCommand* newNullTool(Workspace* workspace)
-	{
-		return new NewNullTool(workspace);
-	}
-
-	void Workspace::setNullMouseCommand()
-	{
-		stickyCommand.reset();
-		currentCommand.reset(newNullTool(this));
-	}
-
-	void Workspace::render2d(Adorn* adorn)
-	{
-		getCurrentMouseCommand()->render2d(adorn);
-		render2dItems(adorn);
-	}
-
-	void Workspace::setThrottleEnabled(bool value)
-	{
-		world->setCanThrottle(value);
-	}
-
-	void Workspace::joinAllHack()
-	{
-		world->joinAll();
-	}
-
-	void Workspace::reset()
-	{
-		stop();
-		world->reset();
-	}
-
-	Camera* Workspace::getCamera() const
-	{
-		if (!currentCamera || !currentCamera->isDescendentOf(this))
-		{
-			boost::shared_ptr<Camera> newCamera = Creatable::create<Camera>();
-			newCamera->setParent(const_cast<Workspace*>(this));
-			currentCamera = newCamera;
-		}
-
-		RBXASSERT(currentCamera->isDescendentOf(this));
-		return currentCamera.get();
-	}
-
-	void Workspace::onChildChanged(Instance* instance, const PropertyChanged& event)
-	{
-		Instance::onChildChanged(instance, event);
-		raiseDrawChanged();
-	}
-
-	void Workspace::onDescendentAdded(Instance* instance)
-	{
-		RootInstance::onDescendentAdded(instance);
-		raiseDrawChanged();
-
-		IRenderable* renderable = dynamic_cast<IRenderable*>(instance);
-		if (renderable)
-			onAdded(renderable);
-
-		PVInstance* pvInstance = dynamic_cast<PVInstance*>(instance);
-		if (pvInstance && pvInstance->getLegacyOffset())
-		{
-			RBXASSERT(instance->getParent() == this);
-
-			pvInstance->legacyTraverseState(G3D::CoordinateFrame());
-			pvInstance->clearLegacyOffset();
-			if (legacyOffset)
-				legacyOffset.reset();
-		}
-	}
-
-	void Workspace::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
-	{
-		IRenderable* renderable = dynamic_cast<IRenderable*>(instance.get());
-		if (renderable)
-			onRemoving(renderable);
-
-		RootInstance::onDescendentRemoving(instance);
-		raiseDrawChanged();
-	}
-
-	template<bool isJoin>
-	static void wrapper(Instance* instance)
-	{
-		PartInstance* part = dynamic_cast<PartInstance*>(instance);
-		if (part)
-		{
-			if (isJoin)
-				part->join();
-			else
-				part->destroyJoints();
-		}
-		else
-		{
-			instance->for_eachChild(&wrapper<isJoin>);
-		}
-	}
-
-	template<bool isJoin>
-	static void wrapper2(boost::shared_ptr<Instance> instance)
-	{
-		wrapper<isJoin>(instance.get());
-	}
-
-	void Workspace::makeJoints(boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> instances)
-	{
-		std::for_each(instances->begin(), instances->end(), &wrapper2<true>);
-	}
-
-	void Workspace::breakJoints(boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> instances)
-	{
-		std::for_each(instances->begin(), instances->end(), &wrapper2<false>);
-	}
-
-	void clearEmptiedModels(boost::shared_ptr<Instance> test, Instance* parent)
-	{
-		if (test.get() != parent)
-		{
-			ModelInstance* model = dynamic_cast<ModelInstance*>(test.get());
-			if (model && !Humanoid::modelIsCharacter(model) && !model->findFirstChildOfType<PartInstance>() && !model->findFirstChildOfType<ModelInstance>())
-			{
-				boost::shared_ptr<Instance> oldParent = shared_from(model->getParent());
-				model->setParent(NULL);
-				clearEmptiedModels(oldParent, parent);
-			}
-
-			Flag* flag = dynamic_cast<Flag*>(test.get());
-			if (flag && !flag->findFirstChildOfType<PartInstance>())
-			{
-				boost::shared_ptr<Instance> oldParent = shared_from(flag->getParent());
-				flag->setParent(NULL);
-				clearEmptiedModels(oldParent, parent);
-			}
-		}
-	}
-
-	void Workspace::handleFallenParts(const G3D::Array<boost::shared_ptr<PartInstance>>& fallenParts)
-	{
-		for (int i = 0; i < fallenParts.size(); i++)
-		{
-			boost::shared_ptr<PartInstance> part = fallenParts[i];
-
-			boost::shared_ptr<Instance> oldParent = shared_from(part->getParent());
-			part->setParent(NULL);
-			clearEmptiedModels(oldParent, this);
-		}
-	}
-
-	void Workspace::setMouseCommand(MouseCommand* newMouseCommand)
-	{
-		if (!newMouseCommand)
-		{
-			if (!stickyCommand.get() || (newMouseCommand = stickyCommand->isSticky(), !newMouseCommand))
-			{
-				if (!Network::Players::findLocalPlayer(this))
-					newMouseCommand = new ArrowTool(this);
-				else
-					newMouseCommand = newNullTool(this);
-			}
-		}
-
-		RBXASSERT(newMouseCommand);
-
-		if (newMouseCommand != currentCommand.get())
-		{
-			RBXASSERT(!currentCommand.get() || !currentCommand->captured());
-
-			currentCommand.reset(newMouseCommand);
-
-			MouseCommand* sticky = newMouseCommand->isSticky();
-			if (sticky)
-				stickyCommand.reset(sticky);
-
-			Notifier<Workspace, ToolChanged>::raise(ToolChanged());
-		}
-	}
-
-	float Workspace::step(float timeInterval)
-	{
-		RBXASSERT(isSimulating);
-
-		timeInterval = world->step(timeInterval);
-		
-		G3D::Array<boost::shared_ptr<PartInstance>> touchParts;
-		G3D::Array<boost::shared_ptr<PartInstance>> touchOtherParts;
-		G3D::Array<Primitive*> fallen;
-		G3D::Array<boost::shared_ptr<PartInstance>> fallenParts;
-
-		PartInstance::primitivesToParts(world->getTouch(), touchParts);
-		PartInstance::primitivesToParts(world->getTouchOther(), touchOtherParts);
-		world->computeFallen(fallen);
-		PartInstance::primitivesToParts(fallen, fallenParts);
-		
-		handleFallenParts(fallenParts);
-
-		for (int i = 0; i < touchParts.size(); i++)
-		{
-			touchParts[i]->onTouchThisStep(touchOtherParts[i]);
-		}
-
-		raiseDrawChanged();
-		return timeInterval;
-	}
-
-	void Workspace::setDefaultMouseCommand()
-	{
-		stickyCommand.reset();
-		setMouseCommand(NULL);
-	}
-
-	void Workspace::runScript(Script* script, ScriptContext* context)
-	{
-		RBXASSERT(context == scriptContext);
-
-		if (Network::Players::backendProcessing(this, true) && !isSimulating)
-			pendingScripts.insert(script);
-		else
-			context->addScript(script);
-	}
-
-	void Workspace::releaseScript(Script* script)
-	{
-		pendingScripts.erase(script);
-	}
-
-	Workspace* Workspace::findWorkspace(const Instance* context)
-	{
-		return ServiceProvider::find<Workspace>(context);
-	}
-
-	Workspace* Workspace::getWorkspaceIfInWorkspace(const Instance* context)
-	{
-		Workspace* workspace = ServiceProvider::find<Workspace>(context);
-
-		if (workspace && (context == workspace || context->isDescendentOf(workspace)))
-			return workspace;
-		else
-			return NULL;
-	}
-
-	World* Workspace::getWorldIfInWorkspace(const Instance* context)
-	{
-		Workspace* workspace = ServiceProvider::find<Workspace>(context);
-
-		if (workspace && (context == workspace || context->isDescendentOf(workspace)))
-			return workspace->getWorld();
-		else
-			return NULL;
-	}
-
-	bool Workspace::contextInWorkspace(const Instance* context)
-	{
-		return getWorkspaceIfInWorkspace(context) != NULL;
-	}
-
-	void Workspace::setCamera(Camera* value)
-	{
-		if (value != currentCamera.get())
-		{
-			if (currentCamera)
-				currentCamera->setParent(NULL);
-
-			currentCamera = shared_from(value);
-			raisePropertyChanged(currentCameraProxyProp);
-		}
-	}
-
-	Workspace* Workspace::getMyWorkspaceFast(const Instance* context)
-	{
-		RBXASSERT(getWorldIfInWorkspace(context));
-
-		Instance* parent = context->getParent();
-		RBXASSERT(parent);
-
-		Instance* parent2 = parent->getParent();
-		RBXASSERT(parent2);
-
-		while (parent2->getParent())
-		{
-			parent = parent2;
-			parent2 = parent2->getParent();
-		}
-
-		return rbx_static_cast<Workspace*>(parent);
-	}
-
-	World* Workspace::getMyWorldFast(const Instance* context)
-	{
-		return getMyWorkspaceFast(context)->getWorld();
-	}
-
-	//94% match
-	//std::set<>::clear is being inlined more aggressively
-	void Workspace::start()
-	{
-		RBXASSERT(!isSimulating);
-		isSimulating = true;
-
-		getCamera()->alwaysMode();
-
-		RBXASSERT(!getCurrentMouseCommand()->captured());
-
-		if (scriptContext)
-		{
-			std::vector<boost::shared_ptr<Script>> startScripts;
-
-			std::set<Script*>::const_iterator iter = pendingScripts.begin();
-			std::set<Script*>::const_iterator end = pendingScripts.end();
-
-			for (; iter != end; iter++)
-			{
-				startScripts.push_back(shared_from(*iter));
-			}
-
-			pendingScripts.clear();
-			std::for_each(startScripts.begin(), startScripts.end(), boost::bind(&ScriptContext::addScript, scriptContext, boost::bind(&boost::shared_ptr<Script>::get, _1)));
-		}
-	}
-
-	void Workspace::setImageServerView(const G3D::Rect2D& viewPortRect)
-	{
-		HopperBin* superHack = NULL;
-
-		for (size_t i = 0; i < numChildren(); i++)
-		{
-			HopperBin* hopperBin = queryTypedChild<HopperBin>((int)i);
-			ILocation* location = queryTypedChild<ILocation>((int)i);
-			IRenderable* renderable = queryTypedChild<IRenderable>((int)i);
-
-			if (location && renderable)
-			{
-				G3D::CoordinateFrame modelCoord = location->getLocation();
-				getCamera()->setImageServerViewNoLerp(modelCoord, viewPortRect); 
-			}
-
-			if (hopperBin)
-				superHack = hopperBin;
-		}
-
-		if (superHack)
-		{
-			StarterPackService* starterPack = ServiceProvider::create<StarterPackService>(this);
-			superHack->setParent(starterPack);
-		}
-
-		imageServerViewHack = (imageServerViewHack <= 0);
-	}
-
-	static void append(const boost::shared_ptr<Instance>& item, std::vector<boost::shared_ptr<Instance>>* values)
-	{
-		values->push_back(item);
-	}
-
-	boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> Workspace::insertContent(ContentId contentId)
-	{
-		std::vector<boost::shared_ptr<Instance>> items;
-		insertContent(contentId, items, INSERT_TO_TREE, SUPPRESS_PROMPTS);
-
-		boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> values(new std::vector<boost::shared_ptr<Instance>>);
-		std::for_each(items.begin(), items.end(), boost::bind(&append, _1, values.get()));
-
-		return values;
-	}
-
-	void Workspace::insertContent(ContentId contentId, std::vector<boost::shared_ptr<Instance>>& items, InsertMode insertMode, PromptMode promptMode)
-	{
-		std::auto_ptr<std::istream> stream = ContentProvider::singleton().getContent(contentId);
-
-		TextXmlParser machine(stream->rdbuf());
-		std::auto_ptr<XmlElement> root = machine.parse();
-
-		insertItems(root.get(), items, insertMode, promptMode);
-	}
-
-	void Workspace::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Notifier<RunService, Heartbeat>::disconnect(ServiceProvider::find<RunService>(oldProvider), this);
-
-		if (statsItem)
-		{
-			statsItem->setParent(NULL);
-			statsItem.reset();
-		}
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		scriptContext = ServiceProvider::create<ScriptContext>(newProvider);
-
-		if (Stats::Item* item = ServiceProvider::create<Stats::Item>(newProvider))
-		{
-			statsItem = Creatable::create<WorkspaceStatsItem>(this, world.get());
-			statsItem->setParent(item);
-		}
-
-		Notifier<RunService, Heartbeat>::connect(ServiceProvider::find<RunService>(newProvider), this);
-	}
-
-	static void DrawAdorn(boost::shared_ptr<Instance> wsi, Adorn* adorn, SelectState selectState, Workspace* workspace)
-	{
-		if (IRenderable* ir = dynamic_cast<IRenderable*>(wsi.get()))
-		{
-			if (workspace->contains(wsi.get()))
-			{
-				ir->render3dSelect(adorn, selectState);
-			}
-		}
-	}
-
-	void Workspace::render3dAdorn(Adorn* adorn)
-	{
-		viewPort = adorn->getViewport();
-		ServiceClient<Selection> sel(this);
-
-		if (sel)
-			std::for_each(sel->getSelection()->begin(), sel->getSelection()->end(), boost::bind(&DrawAdorn, _1, adorn, SELECT_NORMAL, this));
-
-		render3dAdornItems(adorn);
-		if (showWorldCoord)
-		{
-			adorn->setObjectToWorldMatrix(G3D::CoordinateFrame());
-			adorn->axes(G3D::Color3::red(), G3D::Color3::green(), G3D::Color3::blue(), 50.0f);
-		}
-
-		if (showHashGrid)
-		{
-			adorn->setObjectToWorldMatrix(G3D::CoordinateFrame());
-			adorn->box(G3D::AABox(G3D::Vector3(28, 4, 12), G3D::Vector3(32, 8, 16)), G3D::Color4(1.0, 0.2, 0.2, 0.5), G3D::Color4::clear());
-		}
-	}
-
-	IScriptOwner* Workspace::scriptShouldRun(Script* script)
-	{
-		RBXASSERT(this->isAncestorOf(script));
-
-		bool c;
-
-		if (!dynamic_cast<LocalScript*>(script))
-		{
-			c = Network::Players::backendProcessing(this, true);
-		}
-		else
-		{
-			ModelInstance* character = Network::Players::findLocalCharacter(this);
-			c = (character && script->isDescendentOf(character));
-		}
-
-		return c ? this : NULL;
-	}
-
-	GuiResponse Workspace::process(const GuiEvent& event)
-	{
-		RBXASSERT(currentCommand.get());
-
-		switch (event.eventType)
-		{
-		case UIEvent::KEY_DOWN:
-			currentCommand->onPeekKeyDown(event);
-			if (!currentCommand->captured())
-				return GuiResponse::notUsed();
-
-			setMouseCommand(currentCommand->onKeyDown(event));
-			break;
-
-		case UIEvent::MOUSE_RIGHT_BUTTON_DOWN:
-			inMouselookMode = true;
-			event.userInput->setWrapMode(UserInputBase::WRAP_CENTER);
-			break;
-
-		case UIEvent::MOUSE_RIGHT_BUTTON_UP:
-			inMouselookMode = false;
-			event.userInput->setWrapMode(UserInputBase::WRAP_AUTO);
-			break;
-
-		case UIEvent::MOUSE_LEFT_BUTTON_DOWN:
-			if (!currentCommand->captured())
-				setMouseCommand(currentCommand->onMouseDown(event));
-			break;
-
-		case UIEvent::MOUSE_MOVE:
-			if (currentCommand->captured())
-				currentCommand->onMouseMove(event);
-			else
-				currentCommand->onMouseHover(event);
-
-			break;
-
-		case UIEvent::MOUSE_DELTA:
-			if (currentCommand->captured())
-				currentCommand->onMouseDelta(event);
-			break;
-
-		case UIEvent::MOUSE_LEFT_BUTTON_UP:
-			setMouseCommand(currentCommand->onMouseUp(event));
-			break;
-
-		default:
-			return GuiResponse::notUsed();
-		}
-
-		if (event.isMouseEvent())
-		{
-			idleMouseEvent = event;
-			idleMouseEvent.eventType = UIEvent::MOUSE_IDLE;
-		}
-
-		RBXASSERT(currentCommand.get());
-
-		return GuiResponse::used(currentCommand->captured() ? this : NULL);
-	}
-
-	// 98% match
-	void Workspace::onEvent(const RunService* source, Heartbeat event)
-	{
-		onMovingHeartbeat();
-		
-		RBXASSERT(currentCommand.get());
-		if (idleMouseEvent.eventType == UIEvent::MOUSE_IDLE)
-			currentCommand->onMouseIdle(idleMouseEvent);
-
-		if (Network::Players::findLocalCharacter(this))
-			return;
-
-		ControllerService* controllerService = ServiceProvider::find<ControllerService>(this);
-		if (!controllerService)
-			return;
-
-		UserInputBase* device = controllerService->getHardwareDevice();
-		if (!device)
-			return;
-
-		RBXASSERT(getCamera() != NULL);
-
-		bool F = device->keyDown(SDLK_UP) || device->keyDown(SDLK_w);
-		bool B = device->keyDown(SDLK_DOWN) || device->keyDown(SDLK_s);
-		bool L = device->keyDown(SDLK_LEFT) || device->keyDown(SDLK_a);
-		bool R = device->keyDown(SDLK_RIGHT) || device->keyDown(SDLK_d);
-
-		if (F || B || R || L)
-		{
-			G3D::CoordinateFrame current = getCamera()->getCameraCoordinateFrame();
-			getCamera();
-			G3D::Vector3 look = current.getLookVector();
-			G3D::Vector3 right = current.getRightVector();
-
-			G3D::Vector3 move(0.0f, 0.0f, 0.0f);
-
-			if (F)
-				move += look * 2.0f;
-
-			if (B)
-				move -= look * 2.0f;
-
-			if (R)
-				move += right * 2.0f;
-
-			if (L)
-				move -= right * 2.0f;
-
-			current.translation += move;
-			getCamera()->setCameraType(Camera::FIXED_CAMERA);
-			getCamera()->setCameraCoordinateFrameNoLerp(current);
-			getCamera()->setCameraFocus(G3D::CoordinateFrame(look * 20.0f + current.translation));
-		}
-	}
-
-	static double getFPS(Profiling::CodeProfiler* profiler)
-	{
-		return profiler->getData(3.0).getActualFPS();
-	}
-
-	WorkspaceStatsItem::WorkspaceStatsItem(const Workspace* workspace, const World* world)
-	{
-		setName("Workspace");
-
-		createChildItem<double>("FPS", boost::bind(&getFPS, workspace->profileWorkspaceStep.get()));
-		createBoundChildItem(*workspace->profileRun);
-
-		Stats::Item* pWorkspaceStep = createBoundChildItem(*workspace->profileWorkspaceStep);
-		Stats::Item* pWorldStep = pWorkspaceStep->createBoundChildItem(world->getProfileWorldStep());
-
-		pWorldStep->createBoundChildItem(world->getProfileUiStep());
-		pWorldStep->createBoundChildItem(world->getProfileBroadphase());
-		pWorldStep->createBoundChildItem(*world->getCollisionStage()->profilingCollision);
-		pWorldStep->createBoundChildItem(*world->getSleepStage()->profilingSleep);
-		pWorldStep->createBoundChildItem(*world->getKernel().profilingKernel);
-
-		pWorkspaceStep->createBoundChildItem(*workspace->profileRunServiceStepped);
-		pWorkspaceStep->createBoundChildItem(*workspace->profileRunServiceHeartbeat);
-
-		Stats::Item* pWorld = createChildItem("World");
-		pWorld->createChildItem<int>("Primitives", boost::bind(&World::getNumPrimitives, world));
-		pWorld->createChildItem<int>("Joints", boost::bind(&World::getNumJoints, world));
-		pWorld->createChildItem<int>("Contacts", boost::bind(&World::getNumContacts, world));
-		
-		Stats::Item* pContacts = createChildItem("Contacts");
-		pContacts->createChildItem<int>("CtctStageCtcts", boost::bind(&World::getMetric, world, IWorldStage::NUM_CONTACTSTAGE_CONTACTS));
-		pContacts->createChildItem<int>("SteppingCtcts", boost::bind(&World::getMetric, world, IWorldStage::NUM_STEPPING_CONTACTS));
-		pContacts->createChildItem<int>("TouchingCtcts", boost::bind(&World::getMetric, world, IWorldStage::NUM_TOUCHING_CONTACTS));
-		pContacts->createChildItem<int>("MaxTreeDepth", boost::bind(&World::getMetric, world, IWorldStage::MAX_TREE_DEPTH));
-		pContacts->createChildItem<int>("# link(p)", boost::bind(&World::getNumLinkCalls, world));
-		pContacts->createChildItem<int>("Hash Nodes Out", boost::bind(&World::getNumHashNodes, world));
-		pContacts->createChildItem<int>("Max Bucket Size", boost::bind(&World::getMaxBucketSize, world));
-
-		Stats::Item* pKernel = createChildItem("Kernel");
-		pKernel->createChildItem<int>("Bodies", boost::bind(&World::getNumBodies, world));
-		pKernel->createChildItem<int>("Constraints", boost::bind(&World::getNumConstraints, world));
-		pKernel->createChildItem<int>("Points", boost::bind(&World::getNumPoints, world));
-	}
+// from server: 100% by Xemicl
+// from server: 100% by tajop
+// roc 2012-06 004ae680  unit: VerbBinderJob  size: 202 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 004ae680
+//
+// 004ae680  51                   push ecx
+// 004ae681  8b542410             mov edx, dword ptr [esp + 0x10]
+// 004ae685  56                   push esi
+// 004ae686  8bf1                 mov esi, ecx
+// 004ae688  8b4604               mov eax, dword ptr [esi + 4]
+// 004ae68b  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 004ae68f  3b08                 cmp ecx, dword ptr [eax]
+// 004ae691  7537                 jne 0x4ae6ca
+// 004ae693  3bd0                 cmp edx, eax
+// 004ae695  7533                 jne 0x4ae6ca
+// 004ae697  8b4004               mov eax, dword ptr [eax + 4]
+// 004ae69a  50                   push eax
+// 004ae69b  8bce                 mov ecx, esi
+// 004ae69d  e83efeffff           call 0x4ae4e0
+// 004ae6a2  8b4604               mov eax, dword ptr [esi + 4]
+// 004ae6a5  894004               mov dword ptr [eax + 4], eax
+// 004ae6a8  8b4604               mov eax, dword ptr [esi + 4]
+// 004ae6ab  c7460800000000       mov dword ptr [esi + 8], 0
+// 004ae6b2  8900                 mov dword ptr [eax], eax
+// 004ae6b4  8b4604               mov eax, dword ptr [esi + 4]
+// 004ae6b7  894008               mov dword ptr [eax + 8], eax
+// 004ae6ba  8b4e04               mov ecx, dword ptr [esi + 4]
+// 004ae6bd  8b11                 mov edx, dword ptr [ecx]
+// 004ae6bf  8b44240c             mov eax, dword ptr [esp + 0xc]
+// 004ae6c3  8910                 mov dword ptr [eax], edx
+// 004ae6c5  5e                   pop esi
+// 004ae6c6  59                   pop ecx
+// 004ae6c7  c20c00               ret 0xc
+// 004ae6ca  3bca                 cmp ecx, edx
+// 004ae6cc  7471                 je 0x4ae73f
+// 004ae6ce  8bff                 mov edi, edi
+// 004ae6d0  80791900             cmp byte ptr [ecx + 0x19], 0
+// 004ae6d4  8bd1                 mov edx, ecx
+// 004ae6d6  7550                 jne 0x4ae728
+// 004ae6d8  8b4108               mov eax, dword ptr [ecx + 8]
+// 004ae6db  80781900             cmp byte ptr [eax + 0x19], 0
+// 004ae6df  751f                 jne 0x4ae700
+// 004ae6e1  8bc8                 mov ecx, eax
+// 004ae6e3  8b01                 mov eax, dword ptr [ecx]
+// 004ae6e5  80781900             cmp byte ptr [eax + 0x19], 0
+// 004ae6e9  750f                 jne 0x4ae6fa
+// 004ae6eb  eb03                 jmp 0x4ae6f0
+// 004ae6ed  8d4900               lea ecx, [ecx]
+// 004ae6f0  8bc8                 mov ecx, eax
+// 004ae6f2  8b01                 mov eax, dword ptr [ecx]
+// 004ae6f4  80781900             cmp byte ptr [eax + 0x19], 0
+// 004ae6f8  74f6                 je 0x4ae6f0
+// 004ae6fa  894c2410             mov dword ptr [esp + 0x10], ecx
+// 004ae6fe  eb28                 jmp 0x4ae728
+// 004ae700  8b4104               mov eax, dword ptr [ecx + 4]
+// 004ae703  80781900             cmp byte ptr [eax + 0x19], 0
+// 004ae707  751b                 jne 0x4ae724
+// 004ae709  8da42400000000       lea esp, [esp]
+// 004ae710  3b4808               cmp ecx, dword ptr [eax + 8]
+// 004ae713  750f                 jne 0x4ae724
+// 004ae715  8bc8                 mov ecx, eax
+// 004ae717  894c2410             mov dword ptr [esp + 0x10], ecx
+// 004ae71b  8b4004               mov eax, dword ptr [eax + 4]
+// 004ae71e  80781900             cmp byte ptr [eax + 0x19], 0
+// 004ae722  74ec                 je 0x4ae710
+// 004ae724  89442410             mov dword ptr [esp + 0x10], eax
+// 004ae728  52                   push edx
+// 004ae729  8d442408             lea eax, [esp + 8]
+// 004ae72d  50                   push eax
+// 004ae72e  8bce                 mov ecx, esi
+// 004ae730  e8abfaffff           call 0x4ae1e0
+// 004ae735  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 004ae739  3b4c2414             cmp ecx, dword ptr [esp + 0x14]
+// 004ae73d  7591                 jne 0x4ae6d0
+// 004ae73f  8b44240c             mov eax, dword ptr [esp + 0xc]
+// 004ae743  8908                 mov dword ptr [eax], ecx
+// 004ae745  5e                   pop esi
+// 004ae746  59                   pop ecx
+// 004ae747  c20c00               ret 0xc
+
+struct Node {
+    Node* left;
+    Node* parent;
+    Node* right;
+    char value[12];
+    char color;
+    char isnil;
+};
+
+struct Iter {
+    Node* ptr;
+    Iter(Node* p) : ptr(p) {}
+    Iter& operator++() {
+        if (!ptr->isnil) {
+            if (!ptr->right->isnil) {
+                Node* n = ptr->right;
+                while (!n->left->isnil)
+                    n = n->left;
+                ptr = n;
+            } else {
+                Node* p;
+                while (!(p = ptr->parent)->isnil && ptr == p->right)
+                    ptr = p;
+                ptr = p;
+            }
+        }
+        return *this;
+    }
+    Iter operator++(int) {
+        Iter t = *this;
+        ++*this;
+        return t;
+    }
+};
+
+struct Tree {
+    int comp;
+    Node* head;
+    unsigned int size;
+    void eraseSubtree(Node* n);
+    Iter erase(Iter where);
+    Iter erase(Iter first, Iter last);
+};
+
+Iter Tree::erase(Iter first, Iter last) {
+    if (first.ptr == head->left && last.ptr == head) {
+        eraseSubtree(head->parent);
+        head->parent = head;
+        size = 0;
+        head->left = head;
+        head->right = head;
+        return Iter(head->left);
+    }
+    while (first.ptr != last.ptr)
+        erase(first++);
+    return Iter(first.ptr);
 }

@@ -1,518 +1,108 @@
-// from server: 71% by colin
+// from server: 100% by Xemicl
+// roc 2012-06 00679fc0  unit: RBX::VTaskSchedulerSettings::?$FactoryProduct  size: 140 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 00679fc0
+//
+// 00679fc0  6aff                 push -1
+// 00679fc2  6808c8ac00           push 0xacc808
+// 00679fc7  64a100000000         mov eax, dword ptr fs:[0]
+// 00679fcd  50                   push eax
+// 00679fce  64892500000000       mov dword ptr fs:[0], esp
+// 00679fd5  83ec0c               sub esp, 0xc
+// 00679fd8  8d442404             lea eax, [esp + 4]
+// 00679fdc  56                   push esi
+// 00679fdd  50                   push eax
+// 00679fde  e8fd1edcff           call 0x43bee0
+// 00679fe3  8b00                 mov eax, dword ptr [eax]
+// 00679fe5  8b5030               mov edx, dword ptr [eax + 0x30]
+// 00679fe8  8d4c2408             lea ecx, [esp + 8]
+// 00679fec  51                   push ecx
+// 00679fed  52                   push edx
+// 00679fee  c744242400000000     mov dword ptr [esp + 0x24], 0
+// 00679ff6  e8a5a62f00           call 0x9746a0
+// 00679ffb  8b742418             mov esi, dword ptr [esp + 0x18]
+// 00679fff  83c40c               add esp, 0xc
+// 0067a002  c7442418ffffffff     mov dword ptr [esp + 0x18], 0xffffffff
+// 0067a00a  85f6                 test esi, esi
+// 0067a00c  742a                 je 0x67a038
+// 0067a00e  8d4604               lea eax, [esi + 4]
+// 0067a011  83c9ff               or ecx, 0xffffffff
+// 0067a014  f00fc108             lock xadd dword ptr [eax], ecx
+// 0067a018  751e                 jne 0x67a038
+// 0067a01a  8b16                 mov edx, dword ptr [esi]
+// 0067a01c  8b4204               mov eax, dword ptr [edx + 4]
+// 0067a01f  8bce                 mov ecx, esi
+// 0067a021  ffd0                 call eax
+// 0067a023  8d4e08               lea ecx, [esi + 8]
+// 0067a026  83caff               or edx, 0xffffffff
+// 0067a029  f00fc111             lock xadd dword ptr [ecx], edx
+// 0067a02d  7509                 jne 0x67a038
+// 0067a02f  8b06                 mov eax, dword ptr [esi]
+// 0067a031  8b5008               mov edx, dword ptr [eax + 8]
+// 0067a034  8bce                 mov ecx, esi
+// 0067a036  ffd2                 call edx
+// 0067a038  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 0067a03c  8b442404             mov eax, dword ptr [esp + 4]
+// 0067a040  5e                   pop esi
+// 0067a041  64890d00000000       mov dword ptr fs:[0], ecx
+// 0067a048  83c418               add esp, 0x18
+// 0067a04b  c3                   ret 
+// copied from an identical function in another client (function ?getTotalProcessorTime@Stats@RBX@@QBEJXZ)
+
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 30729
+// roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8tree/Instance.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8tree/Instance.h"
-#include "v8xml/Serializer.h"
-#include "reflection/function.h"
-#include "reflection/property.h"
-#include <algorithm>
-
-namespace RBX
+#include <intrin.h>
+namespace boost {
+namespace detail {
+inline long atomic_decrement(long* pw) { return _InterlockedDecrement(pw); }
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    void weak_release() { if (atomic_decrement(&weak_count_) == 0) destroy(); }
+    void release() { if (atomic_decrement(&use_count_) == 0) { dispose(); weak_release(); } }
+    long use_count_;
+    long weak_count_;
+};
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+}
+template<class T> class shared_ptr {
+public:
+    T* operator->() const { return px; }
+    T* px;
+    detail::shared_count pn;
+};
+}
+typedef void* PDH_HCOUNTER;
+namespace RBX {
+struct ExeBaseA { virtual ~ExeBaseA(); };
+struct ExeBaseB { virtual ~ExeBaseB(); };
+class PerfCountersImpl {
+public:
+    char pad[0x30];
+    PDH_HCOUNTER totalProcessorTime;
+    PDH_HCOUNTER processorTime;
+    char pad2[0x40 - 0x38];
+    PDH_HCOUNTER pageFileBytes;
+    PDH_HCOUNTER virtualBytes;
+    PDH_HCOUNTER privateWorkingSetBytes;
+};
+boost::shared_ptr<PerfCountersImpl> getPerfCounters();
+void getCounterValue(PDH_HCOUNTER counter, long& value);
+class Stats : public ExeBaseA, public ExeBaseB {
+public:
+    long getTotalProcessorTime() const;
+};
+long Stats::getTotalProcessorTime() const
 {
-	const char* const sInstance = "Instance";
-
-	Reflection::BoundProp<bool, 1> Instance::propArchivable("archivable", "Behavior", &Instance::archivable, Reflection::PropertyDescriptor::STANDARD); // L14
-	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<Instance>(std::string, bool), 2> findFirstChild(&Instance::findFirstChildByName2, "FindFirstChild", "name", "recursive", false, Reflection::FunctionDescriptor::AnyCaller); // L15
-	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<Instance>(), 0> func_clone(&Instance::clone, "Clone", Reflection::FunctionDescriptor::AnyCaller); // L16
-	static Reflection::BoundFuncDesc<Instance, void(), 0> func_Remove(&Instance::remove, "Remove", Reflection::FunctionDescriptor::AnyCaller); // L17
-	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(), 0> func_childrenOld(&Instance::getChildren2, "children", Reflection::FunctionDescriptor::AnyCaller); // L18
-	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(), 0> func_children(&Instance::getChildren2, "GetChildren", Reflection::FunctionDescriptor::AnyCaller); // L19
-	static Reflection::BoundFuncDesc<Instance, bool(boost::shared_ptr<Instance>), 1> func_isDescendentOf(&Instance::isDescendentOf2, "IsDescendentOf", "ancestor", Reflection::FunctionDescriptor::AnyCaller); // L20
-	static Reflection::BoundFuncDesc<Instance, bool(boost::shared_ptr<Instance>), 1> func_isAncestorOf(&Instance::isAncestorOf2, "IsAncestorOf", "descendent", Reflection::FunctionDescriptor::AnyCaller); // L21
-	static Reflection::PropDescriptor<Instance, std::string> prop_className("className", "Data", &Instance::getClassNameStr, NULL, Reflection::PropertyDescriptor::UI); // L22
-
-	const Reflection::PropDescriptor<Instance, std::string> Instance::desc_Name("Name", "Data", &Instance::getName, &Instance::setName, Reflection::PropertyDescriptor::STANDARD); // L24
-	const Reflection::RefPropDescriptor<Instance, Instance> Instance::propParent("Parent", "Data", &Instance::getParent, &Instance::setParent, Reflection::PropertyDescriptor::UI); // L25
-
-	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_childAdded("ChildAdded", "child"); // L27
-	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_childRemoved("ChildRemoved", "child"); // L28
-	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_descendentAdded("DescendentAdded", "descendent"); // L29
-	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_descendentRemoving("DescendentRemoving", "descendent"); // L30
-	Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> Instance::event_ancestryChanged("AncestryChanged", "child"); // L31
-	Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> Instance::event_propertyChanged("Changed", "property"); // L32 
-
-	Instance::Instance(const char* name)
-		: assoc(),
-		  parent(NULL),
-		  children(),
-		  name(name),
-		  archivable(true),
-		  guid()
-	{
-	}
-
-	Instance::Instance()
-		: assoc(),
-		  parent(NULL),
-		  children(),
-		  name("Instance"),
-		  archivable(true),
-		  guid()
-	{
-	}
-
-	Instance::~Instance()
-	{
-		RBXASSERT(!parent);
-	}
-
-	bool Instance::askAddChild(const Instance* instance) const
-	{
-		return false;
-	}
-
-	bool Instance::askSetParent(const Instance* instance) const
-	{
-		return false;
-	}
-
-	void Instance::setName(const std::string& value)
-	{
-		if (name != value)
-		{
-			name = value;
-			raisePropertyChanged(desc_Name);
-		}
-	}
-
-	void Instance::onDescendentAdded(Instance* instance)
-	{
-		if (Notifier<Instance, DescendentAdded>::hasListeners())
-			Notifier<Instance, DescendentAdded>::raise(DescendentAdded(instance, instance->parent));
-
-		event_descendentAdded.fire(this, shared_from(instance));
-	}
-
-	void Instance::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
-	{
-		event_descendentRemoving.fire(this, instance);
-
-		if (Notifier<Instance, DescendentRemoving>::hasListeners())
-			Notifier<Instance, DescendentRemoving>::raise(DescendentRemoving(instance, shared_from(instance->parent)));
-	}
-
-	class RaiseDescendentAdded2
-	{
-	private:
-		const Instance* notifier;
-		Listener<Instance, DescendentAdded>* listener;
-	  
-	public:
-		RaiseDescendentAdded2(const Instance* notifier, Listener<Instance, DescendentAdded>* listener)
-			: notifier(notifier),
-			  listener(listener)
-		{
-		}
-	public:
-		void operator()(Instance* instance)
-		{
-			notifier->Notifier<Instance, DescendentAdded>::raise(DescendentAdded(instance, instance->parent), listener);
-			instance->for_eachChild(*this);
-		}
-	};
-
-	void Instance::onAddListener(Listener<Instance, DescendentAdded>* listener) const
-	{
-		for_eachChild(RaiseDescendentAdded2(this, listener));
-	}
-
-	void Instance::onAddListener(Listener<Instance, ChildAdded>* listener) const
-	{
-		if (children)
-		{
-			boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> c = children.read();
-			for (std::vector<boost::shared_ptr<Instance>>::const_iterator iter = c->begin(); iter != c->end(); iter++)
-			{
-				Notifier<Instance, ChildAdded>::raise(ChildAdded((*iter).get()), listener);
-			}
-		}
-	}
-
-	void Instance::removeAllChildren()
-	{
-		while (children)
-		{
-			children->back()->setParent(NULL);
-		}
-	}
-
-	void Instance::onChildChanged(Instance* instance, const PropertyChanged& event)
-	{
-		Instance* p = parent;
-
-		if (p)
-			p->onChildChanged(instance, event);
-	}
-
-	void Instance::readProperties(const XmlElement* container, IReferenceBinder& binder)
-	{
-		for (const XmlElement* i = container->firstChild(); i != NULL; i = i->nextSibling())
-			readProperty(i, binder);
-	}
-
-	void Instance::readChild(const XmlElement* childElement, IReferenceBinder& binder)
-	{
-		const Name* className = NULL;
-
-		if (childElement->findAttributeValue(tag_class, className))
-		{
-			boost::shared_ptr<Instance> childInstance = createChild(*className);
-			if (childInstance)
-			{
-				childInstance->read(childElement, binder);
-				if (childInstance)
-					childInstance->setParent(this);
-			}
-			else
-			{
-				const XmlAttribute* nameRef = childElement->findAttribute(name_referent);
-				if (nameRef)
-					binder.announceID(nameRef, NULL);
-			}
-		}
-	}
-
-	void Instance::readChildren(const XmlElement* element, IReferenceBinder& binder)
-	{
-		if (element)
-		{
-			for (const XmlElement* current = element->findFirstChildByTag(tag_Item); current != NULL; current = element->findNextChildWithSameTag(current))
-			{
-				readChild(current, binder);
-			}
-		}
-	}
-
-	void Instance::read(const XmlElement* element, IReferenceBinder& binder)
-	{
-		const XmlAttribute* nameRef = element->findAttribute(name_referent);
-		if (nameRef)
-		{
-			binder.announceID(nameRef, this);
-		}
-
-		if (element->getTag() == tag_Item)
-		{
-			const XmlElement* properties = element->findFirstChildByTag(tag_Properties);
-			if (properties)
-			{
-				readProperties(properties, binder);
-			}
-			readChildren(element, binder);
-		}
-		else
-		{
-			readProperty(element, binder);
-		}
-	}
-
-	void Instance::predelete(Instance* instance)
-	{
-		instance->predelete();
-	}
-
-	void Instance::predelete()
-	{
-		RBXASSERT(!parent);
-
-		while (children)
-		{
-			boost::shared_ptr<Instance> child;
-
-			{
-				boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> c = children.write();
-
-				child = c->back();
-
-				signalDescendentRemoving(child, this, NULL);
-
-				this->onChildRemoving(child.get());
-				child->parent = NULL;
-				c->pop_back();
-
-				if (c->empty())
-					children.reset();
-			}
-
-			event_childRemoved.fire(this, child);
-			Notifier<Instance, ChildRemoved>::raise(ChildRemoved(child.get()));
-
-			child->onAncestorChanged(AncestorChanged(child.get(), this, NULL));
-			child->raisePropertyChanged(propParent);
-		}
-	}
-
-	void Instance::onAncestorChanged(const AncestorChanged& event)
-	{
-		typedef std::vector<boost::shared_ptr<Instance>>::const_iterator Iterator;
-
-		if (children)
-		{
-			boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> r = children.read();
-
-			for (Iterator it = r->begin(); it != r->end(); it++)
-			{
-				(*it)->onAncestorChanged(event);
-			}
-		}
-
-		event_ancestryChanged.fire(this, shared_from(event.child));
-		Notifier<Instance, AncestorChanged>::raise(event);
-	}
-
-	void Instance::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		return;
-	}
-
-	bool Instance::contains(const Instance* child) const
-	{
-		for (; child != NULL; child = child->parent)
-		{
-			if (child == this)
-				return true;
-		}
-
-		return false;
-	}
-
-	boost::shared_ptr<Instance> Instance::createChild(const Name& className)
-	{
-		return AbstractFactoryProduct::create(className);
-	}
-
-	int Instance::findChildIndex(const Instance* instance) const
-	{
-		RBXASSERT(children);
-
-		const std::vector<boost::shared_ptr<Instance>>& c = *children;
-
-		std::vector<boost::shared_ptr<Instance>>::const_iterator found = std::find(c.begin(), c.end(), instance->shared_from_this());
-		return (int)std::distance(c.begin(), found);
-	}
-
-	void Instance::writeChildren(XmlElement* container)
-	{
-		if (children)
-		{
-			const std::vector<boost::shared_ptr<Instance>>& c = *children;
-
-			for (std::vector<boost::shared_ptr<Instance>>::const_iterator it = c.begin(); it != c.end(); it++)
-			{
-				XmlElement* element = (*it)->write();
-				if (element)
-					container->pushBackChild(element);
-			}
-		}
-	}
-
-	Instance* Instance::findFirstChildByName(const std::string& findName) const
-	{
-		if (!children)
-			return NULL;
-
-		const std::vector<boost::shared_ptr<Instance>>& c = *children;
-
-		for (size_t i = 0; i < c.size(); i++)
-		{
-			if (c[i]->name == findName)
-				return c[i].get();
-		}
-
-		return NULL;
-	}
-
-	Instance* Instance::findFirstChildByNameRecursive(const std::string& findName) const
-	{
-		Instance* foundChild = findFirstChildByName(findName);
-		if (foundChild)
-			return foundChild;
-
-		if (!children)
-			return NULL;
-
-		const std::vector<boost::shared_ptr<Instance>>& c = *children;
-
-		for (size_t i = 0; i < c.size(); i++)
-		{
-			Instance* child = c[i]->findFirstChildByNameRecursive(findName);
-			if (child)
-				return child;
-		}
-
-		return NULL;
-	}
-
-	void Instance::signalDescendentAdded(Instance* instance, Instance* beginParent, Instance* oldParent)
-	{
-		for (Instance* parent = beginParent; parent != NULL; parent = parent->getParent())
-		{
-			if (parent == oldParent || parent->isAncestorOf(oldParent))
-				break;
-
-			parent->onDescendentAdded(instance);
-		}
-
-		boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> c = instance->children.read();
-
-		if (c)
-		{
-			for (std::vector<boost::shared_ptr<Instance>>::const_iterator iter = c->begin(); iter != c->end(); iter++)
-			{
-				signalDescendentAdded((*iter).get(), beginParent, oldParent);
-			}
-		}
-	}
-
-	void Instance::signalDescendentRemoving(const boost::shared_ptr<Instance>& instance, Instance* beginParent, Instance* newParent)
-	{
-		for (Instance* parent = beginParent; parent != NULL; parent = parent->getParent())
-		{
-			if (parent == newParent || parent->isAncestorOf(newParent))
-				break;
-
-			parent->onDescendentRemoving(instance);
-		}
-
-		boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> c = instance->children.read();
-
-		if (c)
-		{
-			for (std::vector<boost::shared_ptr<Instance>>::const_iterator iter = c->begin(); iter != c->end(); iter++)
-			{
-				signalDescendentRemoving((*iter), beginParent, newParent);
-			}
-		}
-	}
-
-	void Instance::readProperty(const XmlElement* propertyElement, IReferenceBinder& binder)
-	{
-		const Name* value = NULL;
-
-		if (propertyElement->findAttributeValue(name_name, value))
-		{
-			Reflection::PropertyIterator iter = findProperty(*value);
-
-			if (iter != properties_end())
-			{
-				(*iter).read(propertyElement, binder);
-			}
-		}
-	}
-
-	XmlElement* Instance::write()
-	{
-		if (archivable)
-		{
-			if (getClassName() != Name::getNullName())
-			{
-				XmlElement* element = new XmlElement(tag_Item);
-				element->addAttribute(tag_class, &getClassName());
-				element->addAttribute(name_referent, InstanceHandle(this));
-
-				writeProperties(element->addChild(tag_Properties));
-				writeChildren(element);
-
-				return element;
-			}
-		}
-
-		return new XmlElement(tag_External, InstanceHandle(this));
-	}
-  
-	void Instance::setParent(Instance* newParent)
-	{
-		if (newParent == parent)
-			return;
-
-		boost::shared_ptr<Instance> oldParent = shared_from(parent);
-		boost::shared_ptr<Instance> self = this->shared_from_this();
-
-		if (oldParent)
-		{
-			if (!oldParent->contains(newParent))
-				signalDescendentRemoving(self, oldParent.get(), newParent);
-
-			oldParent->onChildRemoving(this);
-
-			boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& c = oldParent->children.write();
-			c->erase(std::find(c->begin(), c->end(), self));
-
-			if (c->empty())
-				oldParent->children.reset();
-
-			parent = NULL;
-
-			event_childRemoved.fire(oldParent.get(), self);
-			oldParent->Notifier<Instance, ChildRemoved>::raise(ChildRemoved(this));
-
-			oldParent->onChildRemoved(this);
-
-			if (oldParent->numChildren() == 0)
-				oldParent->onLastChildRemoved();
-		}
-
-		if (newParent)
-		{
-			newParent->children.write()->push_back(self);
-		}
-
-		parent = newParent;
-
-		if (newParent)
-		{
-			newParent->onChildAdded(this);
-
-			if (!newParent->contains(oldParent.get()))
-				signalDescendentAdded(this, newParent, oldParent.get());
-
-			newParent->Notifier<Instance, ChildAdded>::raise(ChildAdded(this));
-			event_childAdded.fire(newParent, self);
-		}
-
-		onAncestorChanged(AncestorChanged(this, oldParent.get(), newParent));
-		raisePropertyChanged(propParent);
-	}
-
-	void Instance::writeProperties(XmlElement* container) const
-	{
-		for (Reflection::ConstPropertyIterator iter = this->properties_begin(); iter != this->properties_end(); ++iter)
-		{
-			const Reflection::PropertyDescriptor& descriptor = (*iter).getDescriptor();
-			XmlElement* element = descriptor.write(this, false);
-			if (element)
-				container->addChild(element);
-		}
-	}
-
-	boost::shared_ptr<Instance> Instance::fromXmlRoot(XmlElement* xmlRoot)
-	{		
-		SerializerV2::isolateHandles(xmlRoot);
-
-		Serializer serializer;
-		std::vector<boost::shared_ptr<Instance>> newInstances;
-		serializer.loadInstances(xmlRoot, newInstances);
-
-		if (newInstances.empty())
-			return boost::shared_ptr<Instance>();
-		else
-			return newInstances.front();
-	}
-
-	XmlElement* Instance::toNewXmlRoot(Instance* instance) // this is a guess
-	{
-		XmlElement* root = SerializerV2::newRootElement();
-		root->addChild(instance->write());
-		return root;
-	}
-
-	boost::shared_ptr<Instance> Instance::clone()
-	{
-		boost::scoped_ptr<XmlElement> root(toNewXmlRoot(this));
-		return fromXmlRoot(root.get());
-	}
+    long value;
+    getCounterValue(getPerfCounters()->totalProcessorTime, value);
+    return value;
+}
 }

@@ -1,15 +1,17 @@
-// from server: 61% by atomic.potato
-struct RemoteEventDesc;
-
-extern "C" int sub_4c83e0(void*);
-
-struct RemoteEventDesc {
-    int f(void*);
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct T { void g(); };
+struct S
+{
+    char pad[0x2c];
+    char *p;
+    void f(char *x);
 };
 
-int RemoteEventDesc::f(void* value) {
-    char* base = *reinterpret_cast<char**>(reinterpret_cast<char*>(this) + 0x2c);
-    if (value)
-        return sub_4c83e0(base + (reinterpret_cast<char*>(value) - reinterpret_cast<char*>(0x1c)));
-    return sub_4c83e0(base);
+void S::f(char *x)
+{
+    int off = x ? (int)x - 0x1c : 0;
+    ((T *)(p + off))->g();
 }

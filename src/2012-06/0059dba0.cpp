@@ -1,1513 +1,1430 @@
-// from server: 50% by colin
+// from server: 100% by Xemicl
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 GLG3Dcpp/Texture.cpp
+// roc-lib: raknet-4.081 FullyConnectedMesh2.cpp
 
 // Candidate translation unit (score above; library headers required).
-/**
- @file Texture.cpp
-
- @author Morgan McGuire, morgan3d@graphics3d.com
-
- Notes:
- <UL>
- <LI>http://developer.apple.com/opengl/extensions/ext_texture_rectangle.html
- </UL>
-
- @created 2001-02-28
- @edited  2005-04-05
-*/
-
-#include "G3D/Log.h"
-#include "G3D/Matrix3.h"
-#include "G3D/Rect2D.h"
-#include "G3D/GImage.h"
-#include "G3D/fileutils.h"
-#include "GLG3D/glcalls.h"
-#include "GLG3D/TextureFormat.h"
-#include "GLG3D/Texture.h"
-#include "GLG3D/getOpenGLState.h"
-#include "GLG3D/GLCaps.h"
-
-G3D::uint32 hashCode(const G3D::Texture::Settings& p) {
-    return p.hashCode();
-}
-
-namespace G3D {
-
-static const char* cubeMapString[] = {"ft", "bk", "up", "dn", "rt", "lf"};
-
-size_t Texture::_sizeOfAllTexturesInMemory = 0;
-
-/**
- Returns true if the system supports automatic MIP-map generation.
- */
-static bool hasAutoMipMap() {
-    static bool initialized = false;
-    static bool ham = false;
-
-    if (! initialized) {
-        initialized = true;
-        std::string ext = (char*)glGetString(GL_EXTENSIONS);
-        ham = (ext.find("GL_SGIS_generate_mipmap") != std::string::npos) &&
-            ! GLCaps::hasBug_mipmapGeneration() &&
-            ! GLCaps::hasBug_redBlueMipmapSwap();
-    }
-
-    return ham;
-}
-
-
-Texture::Settings::Settings() : 
-    interpolateMode(TRILINEAR_MIPMAP),
-    wrapMode(TILE),
-    depthReadMode(DEPTH_NORMAL),
-    maxAnisotropy(2.0),
-    autoMipMap(true),
-    minMipMap(-1000),
-    maxMipMap(1000) {
-}
-
-
-const Texture::Settings& Texture::Settings::defaults() {
-    static Settings param;
-    return param;
-}
-
-
-const Texture::Settings& Texture::Settings::video() {
-
-    static bool initialized = false;
-    static Settings param;
-
-    if (! initialized) {
-        initialized = true;
-        param.interpolateMode = BILINEAR_NO_MIPMAP;
-        param.wrapMode = CLAMP;
-        param.depthReadMode = DEPTH_NORMAL;
-        param.maxAnisotropy = 1.0;
-        param.autoMipMap = false;
-    }
-
-    return param;
-}
-
-
-const Texture::Settings& Texture::Settings::shadow() {
-
-    static bool initialized = false;
-    static Settings param;
-
-    if (! initialized) {
-        initialized = true;
-        param.interpolateMode = BILINEAR_NO_MIPMAP;
-        param.wrapMode = CLAMP;
-        param.depthReadMode = DEPTH_LEQUAL;
-        param.maxAnisotropy = 1.0;
-        param.autoMipMap = false;
-    }
-
-    return param;
-}
-
 /*
-void Texture::Settings::serialize(class BinaryOutput& b) {
-    // TODO: use chunk format
+ *  Copyright (c) 2014, Oculus VR, Inc.
+ *  All rights reserved.
+ *
+ *  This source code is licensed under the BSD-style license found in the
+ *  LICENSE file in the root directory of this source tree. An additional grant 
+ *  of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
 
+/// \file
+///
+
+
+#include "NativeFeatureIncludes.h"
+#if _RAKNET_SUPPORT_FullyConnectedMesh2==1
+
+#include "FullyConnectedMesh2.h"
+#include "RakPeerInterface.h"
+#include "MessageIdentifiers.h"
+#include "RakAssert.h"
+#include "GetTime.h"
+#include "Rand.h"
+#include "DS_OrderedList.h"
+
+using namespace RakNet;
+
+int FCM2ParticipantComp( FullyConnectedMesh2::FCM2Participant * const &key, FullyConnectedMesh2::FCM2Participant * const &data )
+{
+	if (key->fcm2Guid < data->fcm2Guid)
+		return -1;
+	if (key->fcm2Guid > data->fcm2Guid)
+		return 1;
+	return 0;
 }
 
-void Texture::Settings::deserialize(class BinaryInput& b) {
+STATIC_FACTORY_DEFINITIONS(FullyConnectedMesh2,FullyConnectedMesh2);
 
+FullyConnectedMesh2::FullyConnectedMesh2()
+{
+	startupTime=0;
+	totalConnectionCount=0;
+	ourFCMGuid=0;
+	autoParticipateConnections=true;
+
+
+
+
+	connectOnNewRemoteConnections=true;
+
+	hostRakNetGuid=UNASSIGNED_RAKNET_GUID;
 }
-
-void Texture::Settings::serialize(class TextOutput& t) {
-    // TODO: ini-like format
+FullyConnectedMesh2::~FullyConnectedMesh2()
+{
+	Clear();
 }
+RakNetGUID FullyConnectedMesh2::GetConnectedHost(void) const
+{
+	if (ourFCMGuid==0)
+		return UNASSIGNED_RAKNET_GUID;
+	return hostRakNetGuid;
+}
+SystemAddress FullyConnectedMesh2::GetConnectedHostAddr(void) const
+{
+	if (ourFCMGuid==0)
+		return UNASSIGNED_SYSTEM_ADDRESS;
+	return rakPeerInterface->GetSystemAddressFromGuid(hostRakNetGuid);
+}
+RakNetGUID FullyConnectedMesh2::GetHostSystem(void) const
+{
+	if (ourFCMGuid==0)
+		return rakPeerInterface->GetGuidFromSystemAddress(UNASSIGNED_SYSTEM_ADDRESS);
 
-void Texture::Settings::deserialize(class TextInput& t) {
+	return hostRakNetGuid;
+}
+bool FullyConnectedMesh2::IsHostSystem(void) const
+{
+	return GetHostSystem()==rakPeerInterface->GetGuidFromSystemAddress(UNASSIGNED_SYSTEM_ADDRESS);
+}
+void FullyConnectedMesh2::GetHostOrder(DataStructures::List<RakNetGUID> &hostList)
+{
+	hostList.Clear(true, _FILE_AND_LINE_);
+
+	if (ourFCMGuid==0 || fcm2ParticipantList.Size()==0)
+	{
+		hostList.Push(rakPeerInterface->GetMyGUID(), _FILE_AND_LINE_);
+		return;
+	}
+
+	FCM2Participant fcm2;
+	fcm2.fcm2Guid=ourFCMGuid;
+	fcm2.rakNetGuid=rakPeerInterface->GetMyGUID();
+
+	DataStructures::OrderedList<FCM2Participant*, FCM2Participant*, FCM2ParticipantComp> olist;
+	olist.Insert(&fcm2, &fcm2, true, _FILE_AND_LINE_);
+	for (unsigned int i=0; i < fcm2ParticipantList.Size(); i++)
+		olist.Insert(fcm2ParticipantList[i], fcm2ParticipantList[i], true, _FILE_AND_LINE_);
+
+	for (unsigned int i=0; i < olist.Size(); i++)
+	{
+		hostList.Push(olist[i]->rakNetGuid, _FILE_AND_LINE_);
+	}
+}
+bool FullyConnectedMesh2::IsConnectedHost(void) const
+{
+	return GetConnectedHost()==rakPeerInterface->GetGuidFromSystemAddress(UNASSIGNED_SYSTEM_ADDRESS);
+}
+void FullyConnectedMesh2::SetAutoparticipateConnections(bool b)
+{
+	autoParticipateConnections=b;
+}
+void FullyConnectedMesh2::ResetHostCalculation(void)
+{
+	hostRakNetGuid=UNASSIGNED_RAKNET_GUID;
+	startupTime=RakNet::GetTimeUS();
+	totalConnectionCount=0;
+	ourFCMGuid=0;
+	for (unsigned int i=0; i < fcm2ParticipantList.Size(); i++)
+		SendFCMGuidRequest(fcm2ParticipantList[i]->rakNetGuid);
+}
+// bool FullyConnectedMesh2::AddParticipantInternal( RakNetGUID rakNetGuid, FCM2Guid theirFCMGuid, BitStream *userContext )
+bool FullyConnectedMesh2::AddParticipantInternal( RakNetGUID rakNetGuid, FCM2Guid theirFCMGuid )
+{
+	for (unsigned int i=0; i < fcm2ParticipantList.Size(); i++)
+	{
+		if (fcm2ParticipantList[i]->rakNetGuid==rakNetGuid)
+		{
+			if (theirFCMGuid!=0)
+				fcm2ParticipantList[i]->fcm2Guid=theirFCMGuid;
+			/*
+			fcm2ParticipantList[i]->userContext.Reset();
+			if (userContext)
+			{
+				userContext->ResetReadPointer();
+				fcm2ParticipantList[i]->userContext.Write(userContext);
+			}
+			*/
+			return false;
+		}
+	}
+
+	FCM2Participant *participant = RakNet::OP_NEW<FCM2Participant>(_FILE_AND_LINE_);
+	participant->rakNetGuid=rakNetGuid;
+	participant->fcm2Guid=theirFCMGuid;
+	/*
+	if (userContext)
+	{
+		userContext->ResetReadPointer();
+		participant->userContext.Write(userContext);
+	}
+	*/
+	fcm2ParticipantList.Push(participant,_FILE_AND_LINE_);
+
+	SendFCMGuidRequest(rakNetGuid);
+
+	return true;
+}
+void FullyConnectedMesh2::AddParticipant( RakNetGUID rakNetGuid )
+{
+	if (rakPeerInterface->GetConnectionState(rakPeerInterface->GetSystemAddressFromGuid(rakNetGuid))!=IS_CONNECTED)
+	{
+#ifdef DEBUG_FCM2
+		printf("AddParticipant to %s failed (not connected)\n", rakNetGuid.ToString());
+#endif
+		return;
+	}
+
+	// Need to query other system for userdata before calling AddParticipantInternal
+	// But maybe I can call with no data, and piggyback on ID_FCM2_REQUEST_FCMGUID
+	//AddParticipantInternal(rakNetGuid,0,0);
+	AddParticipantInternal(rakNetGuid,0);
+}
+void FullyConnectedMesh2::GetParticipantList(DataStructures::List<RakNetGUID> &participantList)
+{
+	participantList.Clear(true, _FILE_AND_LINE_);
+	unsigned int i;
+	for (i=0; i < fcm2ParticipantList.Size(); i++)
+		participantList.Push(fcm2ParticipantList[i]->rakNetGuid, _FILE_AND_LINE_);
+}
+bool FullyConnectedMesh2::HasParticipant(RakNetGUID participantGuid)
+{
+	unsigned int i;
+	for (i=0; i < fcm2ParticipantList.Size(); i++)
+	{
+		if (fcm2ParticipantList[i]->rakNetGuid==participantGuid)
+			return true;
+	}
+	return false;
+}
+/*
+bool FullyConnectedMesh2::GetParticipantContext(RakNetGUID participantGuid, BitStream *userContext)
+{
+	unsigned int i;
+	for (i=0; i < fcm2ParticipantList.Size(); i++)
+	{
+		if (fcm2ParticipantList[i]->rakNetGuid==participantGuid)
+		{
+			if (fcm2ParticipantList[i]->userContext.GetNumberOfBitsUsed() > 0)
+			{
+				userContext->Write(fcm2ParticipantList[i]->userContext);
+				fcm2ParticipantList[i]->userContext.ResetReadPointer();
+				return true;
+			}
+			return false;
+		}
+	}
+	return false;
+}
+void FullyConnectedMesh2::SetMyContext(BitStream *userContext)
+{
+	if (userContext==0)
+	{
+		if (myContext.GetNumberOfBitsUsed()==0)
+			return;
+		myContext.Reset();
+	}
+	else
+	{
+		myContext.Write(userContext);
+		userContext->ResetReadPointer();
+	}
+
+	RakNet::BitStream bsOut;
+	bsOut.Write((MessageID)ID_FCM2_UPDATE_USER_CONTEXT);
+	bsOut.Write(myContext);
+	myContext.ResetReadPointer();
+
+	unsigned int idx;
+	for (idx=0; idx < fcm2ParticipantList.Size(); idx++)
+	{
+		rakPeerInterface->Send(&bsOut,HIGH_PRIORITY,RELIABLE_ORDERED,0,fcm2ParticipantList[idx]->rakNetGuid,false);
+	}
 }
 */
+PluginReceiveResult FullyConnectedMesh2::OnReceive(Packet *packet)
+{
+	switch (packet->data[0])
+	{
+	case ID_REMOTE_NEW_INCOMING_CONNECTION:
+		{
+			if (connectOnNewRemoteConnections)
+				ConnectToRemoteNewIncomingConnections(packet);
+		}
+		break;
+	case ID_FCM2_REQUEST_FCMGUID:
+		OnRequestFCMGuid(packet);
+		return RR_STOP_PROCESSING_AND_DEALLOCATE;
+	//case ID_FCM2_UPDATE_USER_CONTEXT:
+	//	OnUpdateUserContext(packet);
+	//	return RR_STOP_PROCESSING_AND_DEALLOCATE;
+	case ID_FCM2_RESPOND_CONNECTION_COUNT:
+		OnRespondConnectionCount(packet);
+		return RR_STOP_PROCESSING_AND_DEALLOCATE;
+	case ID_FCM2_INFORM_FCMGUID:
+		OnInformFCMGuid(packet);
+		return RR_STOP_PROCESSING_AND_DEALLOCATE;
+	case ID_FCM2_UPDATE_MIN_TOTAL_CONNECTION_COUNT:
+		OnUpdateMinTotalConnectionCount(packet);
+		return RR_STOP_PROCESSING_AND_DEALLOCATE;
+	case ID_FCM2_NEW_HOST:
+		if (packet->wasGeneratedLocally==false)
+			return RR_STOP_PROCESSING_AND_DEALLOCATE;
+		break;
+	case ID_FCM2_VERIFIED_JOIN_START:
+		return OnVerifiedJoinStart(packet);
+	case ID_FCM2_VERIFIED_JOIN_CAPABLE:
+		return OnVerifiedJoinCapable(packet);
+	case ID_FCM2_VERIFIED_JOIN_FAILED:
+		OnVerifiedJoinFailed(packet->guid, true);
+		return RR_CONTINUE_PROCESSING;
+	case ID_FCM2_VERIFIED_JOIN_ACCEPTED:
+		if (packet->wasGeneratedLocally==false)
+			OnVerifiedJoinAccepted(packet);
+		return RR_CONTINUE_PROCESSING;
+	case ID_FCM2_VERIFIED_JOIN_REJECTED:
+		OnVerifiedJoinRejected(packet);
+		return RR_CONTINUE_PROCESSING;
 
-uint32 Texture::Settings::hashCode() const {
-    return 
-        (uint32)interpolateMode + 
-        16 * (uint32)wrapMode + 
-        256 * (uint32)depthReadMode + 
-        (autoMipMap ? 512 : 0) +
-        (uint32)(1024 * maxAnisotropy) +
-        (minMipMap ^ (maxMipMap << 16));
+	case ID_NAT_TARGET_UNRESPONSIVE:
+	case ID_NAT_TARGET_NOT_CONNECTED:
+	case ID_NAT_CONNECTION_TO_TARGET_LOST:
+		{
+			RakNet::RakNetGUID g;
+			RakNet::BitStream b(packet->data, packet->length, false);
+			b.IgnoreBits(8); // Ignore the ID_...
+			b.Read(g);
+			UpdateVerifiedJoinInProgressMember(g, UNASSIGNED_RAKNET_GUID, JIPS_FAILED);
+			return RR_CONTINUE_PROCESSING;
+		}
+	case ID_NAT_PUNCHTHROUGH_FAILED:
+		UpdateVerifiedJoinInProgressMember(packet->guid, UNASSIGNED_RAKNET_GUID, JIPS_FAILED);
+		return RR_CONTINUE_PROCESSING;
+	}
+
+	return RR_CONTINUE_PROCESSING;
 }
-
-
-
-/**
- Pushes all OpenGL texture state.
- */
-// TODO: this is slow; push only absolutely necessary state
-// or back up state that will be corrupted.
-static void glStatePush() {
-    glPushAttrib(GL_ALL_ATTRIB_BITS);
-    glPushClientAttrib(GL_ALL_CLIENT_ATTRIB_BITS);
-
-    if (GLCaps::supports_GL_ARB_multitexture()) {
-        glActiveTextureARB(GL_TEXTURE0_ARB);
-    }
+void FullyConnectedMesh2::OnRakPeerStartup(void)
+{
+	Clear();
+	startupTime=RakNet::GetTimeUS();
 }
-
-/**
- Pops all OpenGL texture state.
- */
-static void glStatePop() {
-    glPopClientAttrib();
-    glPopAttrib();
+void FullyConnectedMesh2::OnAttach(void)
+{
+	Clear();
+	// In case Startup() was called first
+	if (rakPeerInterface->IsActive())
+		startupTime=RakNet::GetTimeUS();
 }
-
-
-static GLenum dimensionToTarget(Texture::Dimension d) {
-    switch (d) {
-    case Texture::DIM_CUBE_MAP_NPOT:
-    case Texture::DIM_CUBE_MAP:
-        return GL_TEXTURE_CUBE_MAP_ARB;
-
-    case Texture::DIM_2D_NPOT:
-    case Texture::DIM_2D:
-        return GL_TEXTURE_2D;
-
-    case Texture::DIM_2D_RECT:
-        return GL_TEXTURE_RECTANGLE_EXT;
-
-    default:
-        debugAssert(false);
-        return GL_TEXTURE_2D;
-    }
+void FullyConnectedMesh2::OnRakPeerShutdown(void)
+{
+	Clear();
+	startupTime=0;
 }
+void FullyConnectedMesh2::OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason )
+{
+	(void) lostConnectionReason;
+	(void) systemAddress;
+	(void) rakNetGUID;
 
+	unsigned int idx;
+	idx=0;
+	while (idx < joinsInProgress.Size())
+	{
+		if (joinsInProgress[idx]->requester==rakNetGUID)
+		{
+			Packet *p = AllocatePacketUnified(sizeof(MessageID)+sizeof(unsigned char));
+			p->data[0]=ID_FCM2_VERIFIED_JOIN_FAILED;
+			p->systemAddress=systemAddress;
+			p->systemAddress.systemIndex=(SystemIndex)-1;
+			p->guid=rakNetGUID;
+			p->wasGeneratedLocally=true;
+			rakPeerInterface->PushBackPacket(p, true);
 
-static void createTexture(
-    GLenum          target,
-    const uint8*    rawBytes,
-    GLenum          bytesFormat,
-    GLenum          bytesActualFormat,
-    int             width,
-    int             height,
-    GLenum          textureFormat,
-    int             bytesPerPixel,
-    int             mipLevel = 0,
-    bool            compressed = false,
-    bool            useNPOT = false,
-    float           rescaleFactor = 1.0f) {
+			for (unsigned int j=0; j < joinsInProgress[idx]->vjipMembers.Size(); j++)
+			{
+				if ( joinsInProgress[idx]->vjipMembers[j].userData != 0)
+				{
+					RakNet::OP_DELETE(joinsInProgress[idx]->vjipMembers[j].userData, _FILE_AND_LINE_);
+				}
+			}
 
-    uint8* bytes = const_cast<uint8*>(rawBytes);
+			RakNet::OP_DELETE(joinsInProgress[idx], _FILE_AND_LINE_);
+			joinsInProgress.RemoveAtIndex(idx);
+		}
+		else
+		{
+			idx++;
+		}
+	}
 
-    // If true, we're supposed to free the byte array at the end of
-    // the function.
-    bool   freeBytes = false; 
+	UpdateVerifiedJoinInProgressMember(rakNetGUID, UNASSIGNED_RAKNET_GUID, JIPS_FAILED);
 
-    switch (target) {
-    case GL_TEXTURE_CUBE_MAP_POSITIVE_X_ARB:
-    case GL_TEXTURE_CUBE_MAP_NEGATIVE_X_ARB:
-    case GL_TEXTURE_CUBE_MAP_POSITIVE_Y_ARB:
-    case GL_TEXTURE_CUBE_MAP_NEGATIVE_Y_ARB:
-    case GL_TEXTURE_CUBE_MAP_POSITIVE_Z_ARB:
-    case GL_TEXTURE_CUBE_MAP_NEGATIVE_Z_ARB:
-    case GL_TEXTURE_2D:
-        if ((! isPow2(width) || ! isPow2(height)) &&
-            (! useNPOT || ! GLCaps::supports_GL_ARB_texture_non_power_of_two())) {
-            // NPOT texture with useNPOT disabled: resize to a power of two
+	for (idx=0; idx < fcm2ParticipantList.Size(); idx++)
+	{
+		if (fcm2ParticipantList[idx]->rakNetGuid==rakNetGUID)
+		{
+			fcm2ParticipantList[idx]=fcm2ParticipantList[fcm2ParticipantList.Size()-1];
+#ifdef DEBUG_FCM2
+			printf("Popping participant %s\n", fcm2ParticipantList[fcm2ParticipantList.Size()-1].rakNetGuid.ToString());
+#endif
 
-            debugAssertM(! compressed,
-                "This device does not support NPOT compressed textures.");
+			fcm2ParticipantList.Pop();
+			if (rakNetGUID==hostRakNetGuid && ourFCMGuid!=0)
+			{	
+				if (fcm2ParticipantList.Size()==0)
+				{
+					hostRakNetGuid=rakPeerInterface->GetMyGUID();
+					hostFCM2Guid=ourFCMGuid;
+				}
+				else
+				{
+					CalculateHost(&hostRakNetGuid, &hostFCM2Guid);
+				}
+				PushNewHost(hostRakNetGuid, rakNetGUID);
+			}
+			return;
+		}
+	}
 
-            int oldWidth = width;
-            int oldHeight = height;
-            width  = ceilPow2(static_cast<unsigned int>(width * rescaleFactor));
-            height = ceilPow2(static_cast<unsigned int>(height * rescaleFactor));
-
-            bytes = new uint8[width * height * bytesPerPixel];
-            freeBytes = true;
-
-            // Rescale the image to a power of 2
-            gluScaleImage(
-                bytesFormat,
-                oldWidth,
-                oldHeight,
-                GL_UNSIGNED_BYTE,
-                rawBytes,
-                width,
-                height,
-                GL_UNSIGNED_BYTE,
-                bytes);
-
-        }
-
-        // Intentionally fall through for power of 2 case
-
-    case GL_TEXTURE_RECTANGLE_EXT:
-
-        // Note code falling through from above
-
-        if (compressed) {
-            
-            debugAssertM((target != GL_TEXTURE_RECTANGLE_EXT),
-                "Compressed textures must be DIM_2D.");
-
-            glCompressedTexImage2DARB(target, mipLevel, bytesActualFormat, width, 
-                height, 0, (bytesPerPixel * ((width + 3) / 4) * ((height + 3) / 4)), rawBytes);
-
-        } else {
-
-            // 2D texture, level of detail 0 (normal), internal format, x size from image, y size from image, 
-            // border 0 (normal), rgb color data, unsigned byte data, and finally the data itself.
-            glTexImage2D(target, mipLevel, textureFormat, width, height, 0, bytesFormat, GL_UNSIGNED_BYTE, bytes);
-        }
-        break;
-
-    default:
-        debugAssertM(false, "Fell through switch");
-    }
-
-    if (freeBytes) {
-        // Texture was resized; free the temporary.
-        delete[] bytes;
-    }
 }
-
-
-static void createMipMapTexture(    
-    GLenum          target,
-    const uint8*    _bytes,
-    int             bytesFormat,
-    int             width,
-    int             height,
-    GLenum          textureFormat,
-    size_t          bytesFormatBytesPerPixel,
-    float           rescaleFactor) {
-
-    switch (target) {
-    case GL_TEXTURE_2D:
-    case GL_TEXTURE_CUBE_MAP_POSITIVE_X_ARB:
-    case GL_TEXTURE_CUBE_MAP_NEGATIVE_X_ARB:
-    case GL_TEXTURE_CUBE_MAP_POSITIVE_Y_ARB:
-    case GL_TEXTURE_CUBE_MAP_NEGATIVE_Y_ARB:
-    case GL_TEXTURE_CUBE_MAP_POSITIVE_Z_ARB:
-    case GL_TEXTURE_CUBE_MAP_NEGATIVE_Z_ARB:
-        {
-            bool freeBytes = false;
-            const uint8* bytes = _bytes;
-
-            if (rescaleFactor != 1.0f) {
-                int oldWidth = width;
-                int oldHeight = height;
-                width  = ceilPow2(static_cast<unsigned int>(width * rescaleFactor));
-                height = ceilPow2(static_cast<unsigned int>(height * rescaleFactor));
-
-                bytes = new uint8[width * height * bytesFormatBytesPerPixel];
-                freeBytes = true;
-
-                // Rescale the image to a power of 2
-                gluScaleImage(
-                    bytesFormat,
-                    oldWidth,
-                    oldHeight,
-                    GL_UNSIGNED_BYTE,
-                    _bytes,
-                    width,
-                    height,
-                    GL_UNSIGNED_BYTE,
-                    (void*)bytes);
-            }
-
-            int r = gluBuild2DMipmaps(target, textureFormat, width, height, bytesFormat, GL_UNSIGNED_BYTE, bytes);
-            debugAssertM(r == 0, (const char*)gluErrorString(r)); (void)r;
-
-            if (freeBytes) {
-                delete[] const_cast<uint8*>(bytes);
-            }
-            break;
-        }
-
-    default:
-        debugAssertM(false, "Mipmaps not supported for this texture target");
-    }
+RakNet::TimeUS FullyConnectedMesh2::GetElapsedRuntime(void)
+{
+	RakNet::TimeUS curTime=RakNet::GetTimeUS();
+	if (curTime>startupTime)
+		return curTime-startupTime;
+	else
+		return 0;
 }
+void FullyConnectedMesh2::OnNewConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, bool isIncoming)
+{
+	(void) isIncoming;
+	(void) rakNetGUID;
+	(void) systemAddress;
 
+	UpdateVerifiedJoinInProgressMember(rakNetGUID, rakNetGUID, JIPS_CONNECTED);
 
-
-/**
- Overrides the current wrap and interpolation parameters for the
- current texture.
- */
-static void setTexParameters(
-    GLenum                          target,
-    const Texture::Settings&        settings) {
-
-    debugAssert(
-        target == GL_TEXTURE_2D ||
-        target == GL_TEXTURE_RECTANGLE_EXT ||
-        target == GL_TEXTURE_CUBE_MAP_ARB);
-
-    debugAssertGLOk();
-
-    // Set the wrap and interpolate state
-
-    bool supports3D = GLCaps::supports_GL_EXT_texture_3D();
-    GLenum mode = GL_NONE;
-    
-    switch (settings.wrapMode) {
-    case Texture::TILE:
-      mode = GL_REPEAT;
-      break;
-
-    case Texture::CLAMP:  
-      if (GLCaps::supports_GL_EXT_texture_edge_clamp())
-        mode = GL_CLAMP_TO_EDGE;
-      else
-        mode = GL_CLAMP;
-      break;
-
-    case Texture::TRANSPARENT_BORDER:
-      if (GLCaps::supports_GL_ARB_texture_border_clamp())
-        mode = GL_CLAMP_TO_BORDER_ARB;
-      else
-        mode = GL_CLAMP;
-      {
-        Color4 black(0,0,0,0);
-        glTexParameterfv(target, GL_TEXTURE_BORDER_COLOR, black);
-        debugAssertGLOk();
-      }
-      break;
-
-    default:
-        debugAssert(false);
-    }
-    glTexParameteri(target, GL_TEXTURE_WRAP_S, mode);
-    glTexParameteri(target, GL_TEXTURE_WRAP_T, mode);
-    if (supports3D) {
-        glTexParameteri(target, GL_TEXTURE_WRAP_R, mode);
-    }
-
-    debugAssertGLOk();
-
-    if (GLCaps::supports("GL_EXT_texture_lod")) {
-        glTexParameteri(target, GL_TEXTURE_MAX_LOD_SGIS, settings.maxMipMap);
-        glTexParameteri(target, GL_TEXTURE_MIN_LOD_SGIS, settings.minMipMap);
-    }
-
-
-    switch (settings.interpolateMode) {
-    case Texture::TRILINEAR_MIPMAP:
-        glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-
-        if (hasAutoMipMap()) {  
-            glTexParameteri(target, GL_GENERATE_MIPMAP_SGIS, GL_TRUE);
-        }
-        break;
-
-    case Texture::BILINEAR_MIPMAP:
-        glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
-
-        if (hasAutoMipMap() && settings.autoMipMap) {  
-            glTexParameteri(target, GL_GENERATE_MIPMAP_SGIS, GL_TRUE);
-        }
-        break;
-
-    case Texture::NEAREST_MIPMAP:
-        glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
-
-        if (hasAutoMipMap() && settings.autoMipMap) {  
-            glTexParameteri(target, GL_GENERATE_MIPMAP_SGIS, GL_TRUE);
-        }
-        break;
-
-    case Texture::BILINEAR_NO_MIPMAP:
-        glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR); 
-        glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR); 
-        break;
-
-    case Texture::NO_INTERPOLATION:
-    case Texture::NEAREST_NO_MIPMAP:
-        glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_NEAREST); 
-        glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-        break;
-
-    default:
-        debugAssert(false);
-    }
-    debugAssertGLOk();
-
-
-    static const bool anisotropic = GLCaps::supports("GL_EXT_texture_filter_anisotropic");
-
-    if (anisotropic) {
-        glTexParameterf(target, GL_TEXTURE_MAX_ANISOTROPY_EXT, settings.maxAnisotropy);
-    }
-
-    if (GLCaps::supports_GL_ARB_shadow()) {
-        if (settings.depthReadMode == Texture::DEPTH_NORMAL) {
-            glTexParameteri(target, GL_TEXTURE_COMPARE_MODE_ARB, GL_NONE);
-        } else {
-            glTexParameteri(target, GL_TEXTURE_COMPARE_MODE_ARB, GL_COMPARE_R_TO_TEXTURE_ARB);
-
-            glTexParameteri(target, GL_TEXTURE_COMPARE_FUNC_ARB, 
-                (settings.depthReadMode == Texture::DEPTH_LEQUAL) ? GL_LEQUAL : GL_GEQUAL);
-        }
-
-    }
-    debugAssertGLOk();
+	if (autoParticipateConnections)
+		AddParticipant(rakNetGUID);
 }
-
-/////////////////////////////////////////////////////////////////////////////
-
-const Texture::Settings& Texture::parameters() const {
-    return _settings;
+void FullyConnectedMesh2::OnFailedConnectionAttempt(Packet *packet, PI2_FailedConnectionAttemptReason failedConnectionAttemptReason)
+{
+	if (failedConnectionAttemptReason==FCAR_ALREADY_CONNECTED)
+	{
+		UpdateVerifiedJoinInProgressMember(packet->guid, packet->guid, JIPS_CONNECTED);
+	}
+	else
+	{
+		UpdateVerifiedJoinInProgressMember(packet->systemAddress, UNASSIGNED_RAKNET_GUID, JIPS_FAILED);
+	}
 }
+void FullyConnectedMesh2::Clear(void)
+{
+	for (unsigned int i=0; i < fcm2ParticipantList.Size(); i++)
+	{
+		delete fcm2ParticipantList[i];
+	}
+	fcm2ParticipantList.Clear(false, _FILE_AND_LINE_);
 
-const Texture::Settings& Texture::settings() const {
-    return _settings;
-}
-
-
-void Texture::getImage(GImage& dst, const TextureFormat* outFormat) const {
-    alwaysAssertM(outFormat == TextureFormat::AUTO ||
-                  outFormat == TextureFormat::RGB8 ||
-                  outFormat == TextureFormat::RGBA8 ||
-                  outFormat == TextureFormat::L8 ||
-                  outFormat == TextureFormat::A8, "Illegal texture format.");
-
-    if (outFormat == TextureFormat::AUTO) {
-        switch(format->OpenGLBaseFormat) { 
-        case GL_ALPHA:
-            outFormat = TextureFormat::A8;
-            break;
-
-        case GL_LUMINANCE:
-            outFormat = TextureFormat::L8;
-            break;
-
-        case GL_RGB:
-            outFormat = TextureFormat::RGB8;
-            break;
-
-        case GL_RGBA:
-            // Fall through intentionally
-        default:
-            outFormat = TextureFormat::RGBA8;
-            break;
-        }
-    }
-
-    int channels = 0;
-
-
-    switch(outFormat->OpenGLBaseFormat) {
-    case GL_LUMINANCE:
-    case GL_ALPHA:
-        channels = 1;
-        break;
-
-    case GL_RGB:
-        channels = 3;
-        break;
-
-    case GL_RGBA:
-        channels = 4;
-        break;
-
-    default:
-        alwaysAssertM(false, "This texture format is not appropriate for reading to an image.");
-    }
-
-    dst.resize(width, height, channels);
-
-    GLenum target = dimensionToTarget(dimension);
-
-    glPushAttrib(GL_TEXTURE_BIT);
-    glBindTexture(target, textureID);
-
-    glGetTexImage(
-       target,
-       0,
-       outFormat->OpenGLBaseFormat,
-       GL_UNSIGNED_BYTE,
-       dst.byte());
-
-    glPopAttrib();
-}
-
-Texture::Texture(
-    const std::string&      _name,
-    GLuint                  _textureID,
-    Dimension               _dimension,
-    const TextureFormat*    _format,
-    InterpolateMode         _interpolate,
-    WrapMode                _wrap,
-    bool                    __opaque,
-    DepthReadMode           __dr,
-    float                   _aniso) :
-    
-    textureID(_textureID),
-    dimension(_dimension),
-    format(_format),
-    _opaque(__opaque),
-    _depthRead(__dr),
-    _maxAnisotropy(_aniso) {
-
-    debugAssert(_format);
-    debugAssertGLOk();
-
-    _settings.interpolateMode = _interpolate;
-    _settings.wrapMode = _wrap;
-    _settings.maxAnisotropy = _aniso;
-    _settings.depthReadMode = __dr;
-    _settings.autoMipMap = true;
-
-    glStatePush();
-
-        GLenum target = dimensionToTarget(_dimension);
-        glBindTexture(target, _textureID);
-
-        name = _name;
-
-		// For cube map, we can't read "cube map" but must choose a face
-		GLenum readbackTarget = target;
-		if ((_dimension == DIM_CUBE_MAP) || (_dimension == DIM_CUBE_MAP_NPOT)) {
-			readbackTarget = GL_TEXTURE_CUBE_MAP_POSITIVE_X_ARB;
+	for (unsigned int i=0; i < joinsInProgress.Size(); i++)
+	{
+		for (unsigned int j=0; j < joinsInProgress[i]->vjipMembers.Size(); j++)
+		{
+			if ( joinsInProgress[i]->vjipMembers[j].userData != 0)
+			{
+				RakNet::OP_DELETE(joinsInProgress[i]->vjipMembers[j].userData, _FILE_AND_LINE_);
+			}
 		}
 
-        glGetTexLevelParameteriv(readbackTarget, 0, GL_TEXTURE_WIDTH, &width);
-        glGetTexLevelParameteriv(readbackTarget, 0, GL_TEXTURE_HEIGHT, &height);
+		RakNet::OP_DELETE(joinsInProgress[i], _FILE_AND_LINE_);
+	}
+	joinsInProgress.Clear(true, _FILE_AND_LINE_);
 
-        depth = 1;
-        invertY = false;
-        
-        interpolate         = _interpolate;
-        wrap                = _wrap;
-        debugAssertGLOk();
-        setTexParameters(target, _settings);
-        debugAssertGLOk();
-    glStatePop();
-    debugAssertGLOk();
+	totalConnectionCount=0;
+	ourFCMGuid=0;
+	lastPushedHost=UNASSIGNED_RAKNET_GUID;
+}
+void FullyConnectedMesh2::PushNewHost(const RakNetGUID &guid, RakNetGUID oldHost)
+{
+	Packet *p = AllocatePacketUnified(sizeof(MessageID)+sizeof(oldHost));
+	RakNet::BitStream bs(p->data,p->length,false);
+	bs.SetWriteOffset(0);
+	bs.Write((MessageID)ID_FCM2_NEW_HOST);
+	bs.Write(oldHost);
+	p->systemAddress=rakPeerInterface->GetSystemAddressFromGuid(guid);
+	p->systemAddress.systemIndex=(SystemIndex)-1;
+	p->guid=guid;
+	p->wasGeneratedLocally=true;
+	rakPeerInterface->PushBackPacket(p, true);
 
-    _sizeOfAllTexturesInMemory += sizeInMemory();
+	lastPushedHost=guid;
+}
+void FullyConnectedMesh2::SendFCMGuidRequest(RakNetGUID rakNetGuid)
+{
+	if (rakNetGuid==rakPeerInterface->GetGuidFromSystemAddress(UNASSIGNED_SYSTEM_ADDRESS))
+		return;
+
+	RakNet::BitStream bsOut;
+	bsOut.Write((MessageID)ID_FCM2_REQUEST_FCMGUID);
+	if (ourFCMGuid==0)
+	{
+		bsOut.Write(false);
+		bsOut.Write(GetElapsedRuntime());
+	}
+	else
+	{
+		bsOut.Write(true);
+		bsOut.Write(totalConnectionCount);
+		bsOut.Write(ourFCMGuid);
+	}
+	bsOut.Write(myContext);
+	myContext.ResetReadPointer();
+	rakPeerInterface->Send(&bsOut,HIGH_PRIORITY,RELIABLE_ORDERED,0,rakNetGuid,false);
+}
+void FullyConnectedMesh2::SendOurFCMGuid(SystemAddress addr)
+{
+	RakNet::BitStream bsOut;
+	bsOut.Write((MessageID)ID_FCM2_INFORM_FCMGUID);
+	RakAssert(ourFCMGuid!=0); // Can't inform others of our FCM2Guid if it's unset!
+	bsOut.Write(ourFCMGuid);
+	bsOut.Write(totalConnectionCount);
+	bsOut.Write(myContext);
+	myContext.ResetReadPointer();
+	rakPeerInterface->Send(&bsOut,HIGH_PRIORITY,RELIABLE_ORDERED,0,addr,false);
+}
+void FullyConnectedMesh2::SendConnectionCountResponse(SystemAddress addr, unsigned int responseTotalConnectionCount)
+{
+	RakNet::BitStream bsOut;
+	bsOut.Write((MessageID)ID_FCM2_RESPOND_CONNECTION_COUNT);
+	bsOut.Write(responseTotalConnectionCount);
+	//bsOut.Write(myContext);
+	//myContext.ResetReadPointer();
+	rakPeerInterface->Send(&bsOut,HIGH_PRIORITY,RELIABLE_ORDERED,0,addr,false);
+}
+void FullyConnectedMesh2::AssignOurFCMGuid(void)
+{
+	// Only assigned once ever
+	RakAssert(ourFCMGuid==0);
+	unsigned int randomNumber = randomMT();
+	randomNumber ^= (unsigned int) (RakNet::GetTimeUS() & 0xFFFFFFFF);
+	randomNumber ^= (unsigned int) (rakPeerInterface->GetGuidFromSystemAddress(UNASSIGNED_SYSTEM_ADDRESS).g & 0xFFFFFFFF);
+	ourFCMGuid |= randomNumber;
+	uint64_t reponse64 = totalConnectionCount;
+	ourFCMGuid |= reponse64<<32;
+}
+void FullyConnectedMesh2::CalculateHost(RakNetGUID *rakNetGuid, FCM2Guid *fcm2Guid)
+{
+	// Can't calculate host without knowing our own
+	RakAssert(ourFCMGuid!=0);
+
+	// Can't calculate host without being connected to anyone else
+	RakAssert(fcm2ParticipantList.Size()>0);
+
+	// Return the lowest value of all FCM2Guid
+	FCM2Guid lowestFCMGuid=ourFCMGuid;
+	//	SystemAddress associatedSystemAddress=UNASSIGNED_SYSTEM_ADDRESS;
+	RakNetGUID associatedRakNetGuid=rakPeerInterface->GetGuidFromSystemAddress(UNASSIGNED_SYSTEM_ADDRESS);
+
+	unsigned int idx;
+	for (idx=0; idx < fcm2ParticipantList.Size(); idx++)
+	{
+		if (fcm2ParticipantList[idx]->fcm2Guid!=0 && fcm2ParticipantList[idx]->fcm2Guid<lowestFCMGuid)
+		{
+			lowestFCMGuid=fcm2ParticipantList[idx]->fcm2Guid;
+			associatedRakNetGuid=fcm2ParticipantList[idx]->rakNetGuid;
+		}
+	}
+
+	*rakNetGuid=associatedRakNetGuid;
+	*fcm2Guid=lowestFCMGuid;
+}
+void FullyConnectedMesh2::OnRequestFCMGuid(Packet *packet)
+{
+	RakNet::BitStream bsIn(packet->data,packet->length,false);
+	bsIn.IgnoreBytes(sizeof(MessageID));
+	bool hasRemoteFCMGuid=false;
+	bsIn.Read(hasRemoteFCMGuid);
+	RakNet::TimeUS senderElapsedRuntime=0;
+	unsigned int remoteTotalConnectionCount=0;
+	FCM2Guid theirFCMGuid=0;
+	if (hasRemoteFCMGuid)
+	{
+		bsIn.Read(remoteTotalConnectionCount);
+		bsIn.Read(theirFCMGuid);
+	}
+	else
+	{
+		bsIn.Read(senderElapsedRuntime);
+	}
+	/*
+	BitStream remoteContext;
+	bsIn.Read(remoteContext);
+	AddParticipantInternal(packet->guid,theirFCMGuid, &remoteContext);
+	*/
+	AddParticipantInternal(packet->guid,theirFCMGuid);
+	if (ourFCMGuid==0)
+	{
+		if (hasRemoteFCMGuid==false)
+		{
+			// Nobody has a fcmGuid
+
+			RakNet::TimeUS ourElapsedRuntime = GetElapsedRuntime();
+			if (ourElapsedRuntime>senderElapsedRuntime)
+			{
+				// We are probably host
+				SendConnectionCountResponse(packet->systemAddress, 2);
+			}
+			else
+			{
+				// They are probably host
+				SendConnectionCountResponse(packet->systemAddress, 1);
+			}
+		}
+		else
+		{
+			// They have a fcmGuid, we do not
+			IncrementTotalConnectionCount(remoteTotalConnectionCount+1);
+
+			AssignOurFCMGuid();
+			unsigned int idx;
+			for (idx=0; idx < fcm2ParticipantList.Size(); idx++)
+				SendOurFCMGuid(rakPeerInterface->GetSystemAddressFromGuid(fcm2ParticipantList[idx]->rakNetGuid));
+		}
+	}
+	else
+	{
+		if (hasRemoteFCMGuid==false)
+		{
+			// We have a fcmGuid they do not
+			SendConnectionCountResponse(packet->systemAddress, totalConnectionCount+1);
+		}
+		else
+		{
+			// We both have fcmGuids
+			IncrementTotalConnectionCount(remoteTotalConnectionCount);
+
+			SendOurFCMGuid(packet->systemAddress);
+		}
+	}
+	CalculateAndPushHost();
+}
+/*
+void FullyConnectedMesh2::OnUpdateUserContext(Packet *packet)
+{
+	RakNet::BitStream bsIn(packet->data,packet->length,false);
+	bsIn.IgnoreBytes(sizeof(MessageID));
+	BitStream remoteContext;
+	bsIn.Read(remoteContext);
+
+	for (unsigned int i=0; i < fcm2ParticipantList.Size(); i++)
+	{
+		if (fcm2ParticipantList[i]->rakNetGuid==packet->guid)
+		{
+			fcm2ParticipantList[i]->userContext.Reset();
+			remoteContext.Read(fcm2ParticipantList[i]->userContext);
+			break;
+		}
+	}
+}
+*/
+void FullyConnectedMesh2::OnRespondConnectionCount(Packet *packet)
+{
+	RakNet::BitStream bsIn(packet->data,packet->length,false);
+	bsIn.IgnoreBytes(sizeof(MessageID));
+	unsigned int responseTotalConnectionCount;
+	bsIn.Read(responseTotalConnectionCount);
+	/*
+	BitStream remoteContext;
+	bsIn.Read(remoteContext);
+
+	for (unsigned int i=0; i < fcm2ParticipantList.Size(); i++)
+	{
+		if (fcm2ParticipantList[i]->rakNetGuid==packet->guid)
+		{
+			fcm2ParticipantList[i]->userContext.Reset();
+			remoteContext.Read(fcm2ParticipantList[i]->userContext);
+			break;
+		}
+	}
+	*/
+
+	IncrementTotalConnectionCount(responseTotalConnectionCount);
+	bool wasAssigned;
+	if (ourFCMGuid==0)
+	{
+		wasAssigned=true;
+		AssignOurFCMGuid();
+	}
+	else
+		wasAssigned=false;
+
+	// 1 is returned to give us lower priority, but the actual minimum is 2
+	IncrementTotalConnectionCount(2);
+
+	if (wasAssigned==true)
+	{
+		unsigned int idx;
+		for (idx=0; idx < fcm2ParticipantList.Size(); idx++)
+			SendOurFCMGuid(rakPeerInterface->GetSystemAddressFromGuid(fcm2ParticipantList[idx]->rakNetGuid));
+		CalculateAndPushHost();
+	}
+}
+void FullyConnectedMesh2::OnInformFCMGuid(Packet *packet)
+{
+	RakNet::BitStream bsIn(packet->data,packet->length,false);
+	bsIn.IgnoreBytes(sizeof(MessageID));
+
+	FCM2Guid theirFCMGuid;
+	unsigned int theirTotalConnectionCount;
+	bsIn.Read(theirFCMGuid);
+	bsIn.Read(theirTotalConnectionCount);
+
+	BitStream remoteContext;
+	bsIn.Read(remoteContext);
+
+	IncrementTotalConnectionCount(theirTotalConnectionCount);
+
+	//if (AddParticipantInternal(packet->guid,theirFCMGuid, &remoteContext))
+	if (AddParticipantInternal(packet->guid,theirFCMGuid))
+	{
+		// 1/19/2010 - Relay increased total connection count in case new participant only connects to part of the mesh
+		unsigned int idx;
+		RakNet::BitStream bsOut;
+		bsOut.Write((MessageID)ID_FCM2_UPDATE_MIN_TOTAL_CONNECTION_COUNT);
+		bsOut.Write(totalConnectionCount);
+		for (idx=0; idx < fcm2ParticipantList.Size(); idx++)
+		{
+			if (packet->guid!=fcm2ParticipantList[idx]->rakNetGuid)
+				rakPeerInterface->Send(&bsOut,HIGH_PRIORITY,RELIABLE_ORDERED,0,fcm2ParticipantList[idx]->rakNetGuid,false);
+		}
+	}
+
+	if (ourFCMGuid==0)
+	{
+		AssignOurFCMGuid();
+		unsigned int idx;
+		for (idx=0; idx < fcm2ParticipantList.Size(); idx++)
+			SendOurFCMGuid(rakPeerInterface->GetSystemAddressFromGuid(fcm2ParticipantList[idx]->rakNetGuid));
+	}
+
+	CalculateAndPushHost();
+}
+void FullyConnectedMesh2::OnUpdateMinTotalConnectionCount(Packet *packet)
+{
+	RakNet::BitStream bsIn(packet->data,packet->length,false);
+	bsIn.IgnoreBytes(sizeof(MessageID));
+	unsigned int newMin;
+	bsIn.Read(newMin);
+	IncrementTotalConnectionCount(newMin);
+}
+void FullyConnectedMesh2::GetParticipantCount(unsigned int *participantListSize) const
+{
+	*participantListSize=fcm2ParticipantList.Size();
 }
 
-
-TextureRef Texture::fromMemory(
-    const std::string&              name,
-    const uint8*                    bytes,
-    const class TextureFormat*      bytesFormat,
-    int                             width,
-    int                             height,
-    const class TextureFormat*      desiredFormat,
-    Dimension                       dimension,
-    const Settings&               param) {
-
-	const uint8* b[6] = {NULL, NULL, NULL, NULL, NULL, NULL};
-	b[0] = bytes;
-
-	return Texture::fromMemory(name, b, bytesFormat, width, height, 1, 
-		desiredFormat, param.wrapMode, param.interpolateMode, dimension, param.depthReadMode, param.maxAnisotropy);
+unsigned int FullyConnectedMesh2::GetParticipantCount(void) const
+{
+	return fcm2ParticipantList.Size();
+}
+void FullyConnectedMesh2::CalculateAndPushHost(void)
+{
+	RakNetGUID newHostGuid;
+	FCM2Guid newFcmGuid;
+	if (ParticipantListComplete())
+	{
+		CalculateHost(&newHostGuid, &newFcmGuid);
+		if (newHostGuid!=lastPushedHost)
+		{
+			hostRakNetGuid=newHostGuid;
+			hostFCM2Guid=newFcmGuid;
+			PushNewHost(hostRakNetGuid, lastPushedHost);
+		}
+	}
+}
+bool FullyConnectedMesh2::ParticipantListComplete(void)
+{
+	for (unsigned int i=0; i < fcm2ParticipantList.Size(); i++)
+	{
+		if (fcm2ParticipantList[i]->fcm2Guid==0)
+			return false;
+	}
+	return true;
+}
+void FullyConnectedMesh2::IncrementTotalConnectionCount(unsigned int i)
+{
+	if (i>totalConnectionCount)
+	{
+		totalConnectionCount=i;
+		//	printf("totalConnectionCount=%i\n",i);
+	}
+}
+void FullyConnectedMesh2::SetConnectOnNewRemoteConnection(bool attemptConnection, RakNet::RakString pw)
+{
+	connectOnNewRemoteConnections=attemptConnection;
+	connectionPassword=pw;
 }
 
+void FullyConnectedMesh2::ConnectToRemoteNewIncomingConnections(Packet *packet)
+{
+	unsigned int count;
+	RakNet::BitStream bsIn(packet->data, packet->length, false);
+	bsIn.IgnoreBytes(sizeof(MessageID));
+	bsIn.Read(count);
+	SystemAddress remoteAddress;
+	RakNetGUID remoteGuid;
+	char str[64];
+	for (unsigned int i=0; i < count; i++)
+	{
+		bsIn.Read(remoteAddress);
+		bsIn.Read(remoteGuid);
+		remoteAddress.ToString(false,str);
+		rakPeerInterface->Connect(str,remoteAddress.GetPort(),connectionPassword.C_String(),(int) connectionPassword.GetLength());
+	}
+}
+unsigned int FullyConnectedMesh2::GetTotalConnectionCount(void) const
+{
+	return totalConnectionCount;
+}
+void FullyConnectedMesh2::StartVerifiedJoin(RakNetGUID client)
+{
+	// Assert is because there is no point calling StartVerifiedJoin() if this client is already a participant
+	RakAssert(HasParticipant(client)==false);
+	RakAssert(client!=rakPeerInterface->GetMyGUID());
 
-TextureRef Texture::fromMemory(
-    const std::string&              name,
-    const uint8*                    bytes,
-    const class TextureFormat*      bytesFormat,
-    int                             width,
-    int                             height,
-    const class TextureFormat*      desiredFormat,
-    WrapMode                        wrap,
-    InterpolateMode                 interpolate,
-    Dimension                       dimension,
-    DepthReadMode                   depthRead,
-    float                           maxAnisotropy,
-    float                           scale) {
+	BitStream bsOut;
+	bsOut.Write((MessageID) ID_FCM2_VERIFIED_JOIN_START);
+	bsOut.WriteCasted<unsigned short>(fcm2ParticipantList.Size());
+	unsigned int i;
+	for (i=0; i < fcm2ParticipantList.Size(); i++)
+	{
+		bsOut.Write(fcm2ParticipantList[i]->rakNetGuid);
+		bsOut.Write(rakPeerInterface->GetSystemAddressFromGuid(fcm2ParticipantList[i]->rakNetGuid));
+		
+		BitStream vjsOut;
+		//WriteVJSUserData(&vjsOut, fcm2ParticipantList[i]->rakNetGuid, &fcm2ParticipantList[i]->userContext );
+		WriteVJSUserData(&vjsOut, fcm2ParticipantList[i]->rakNetGuid );
+		bsOut.Write(vjsOut.GetNumberOfBitsUsed());
+		bsOut.Write(&vjsOut);
+		bsOut.AlignWriteToByteBoundary();
+	}
+	SendUnified(&bsOut, HIGH_PRIORITY, RELIABLE_ORDERED, 0, client, false);
+}
+void FullyConnectedMesh2::RespondOnVerifiedJoinCapable(Packet *packet, bool accept, BitStream *additionalData)
+{
+	VerifiedJoinInProgress vjip;
+	DecomposeJoinCapable(packet, &vjip);
 
-	const uint8* b[6] = {NULL, NULL, NULL, NULL, NULL, NULL};
-	b[0] = bytes;
+	DataStructures::List<RakNetGUID> participatingMembersOnClientSucceeded;
+	DataStructures::List<RakNetGUID> participatingMembersOnClientFailed;
+	DataStructures::List<RakNetGUID> participatingMembersNotOnClient;
+	DataStructures::List<RakNetGUID> clientMembersNotParticipatingSucceeded;
+	DataStructures::List<RakNetGUID> clientMembersNotParticipatingFailed;
+	CategorizeVJIP(&vjip,
+		participatingMembersOnClientSucceeded,
+		participatingMembersOnClientFailed,
+		participatingMembersNotOnClient,
+		clientMembersNotParticipatingSucceeded,
+		clientMembersNotParticipatingFailed);
 
-	return Texture::fromMemory(name, b, bytesFormat, width, height, 1, 
-		desiredFormat, wrap, interpolate, dimension, depthRead, maxAnisotropy,
-        scale);
+	if (participatingMembersNotOnClient.Size()>0)
+	{
+		BitStream bsOut;
+		bsOut.Write((MessageID) ID_FCM2_VERIFIED_JOIN_START);
+		bsOut.WriteCasted<unsigned short>(participatingMembersNotOnClient.Size());
+		unsigned int i;
+		for (i=0; i < participatingMembersNotOnClient.Size(); i++)
+		{
+			bsOut.Write(participatingMembersNotOnClient[i]);
+			bsOut.Write(rakPeerInterface->GetSystemAddressFromGuid(participatingMembersNotOnClient[i]));
+
+			bool written=false;
+			for (unsigned int j=0; j < fcm2ParticipantList.Size(); j++)
+			{
+				if (fcm2ParticipantList[j]->rakNetGuid == participatingMembersNotOnClient[i])
+				{
+					written=true;
+
+					BitStream vjsOut;
+					//WriteVJSUserData(&vjsOut, fcm2ParticipantList[j]->rakNetGuid, &fcm2ParticipantList[j]->userContext );
+					WriteVJSUserData(&vjsOut, fcm2ParticipantList[j]->rakNetGuid );
+					bsOut.Write(vjsOut.GetNumberOfBitsUsed());
+					bsOut.Write(&vjsOut);
+					bsOut.AlignWriteToByteBoundary();
+					break;
+				}
+			}
+			RakAssert(written==true);
+		}
+		SendUnified(&bsOut, HIGH_PRIORITY, RELIABLE_ORDERED, 0, packet->guid, false);
+		return;
+	}
+
+	RakAssert(participatingMembersOnClientFailed.Size()==0);
+	RakAssert(participatingMembersNotOnClient.Size()==0);
+	
+	RakNet::BitStream bsOut;
+	if (accept)
+	{
+		bsOut.Write((MessageID)ID_FCM2_VERIFIED_JOIN_ACCEPTED);
+		bsOut.Write(packet->guid);
+		
+		// Tell client to disconnect from clientMembersNotParticipatingSucceeded 
+		bsOut.WriteCasted<unsigned short>(clientMembersNotParticipatingSucceeded.Size());
+		for (unsigned int i=0; i < clientMembersNotParticipatingSucceeded.Size(); i++)
+			bsOut.Write(clientMembersNotParticipatingSucceeded[i]);
+		
+		// Tell client to call AddParticipant() for participatingMembersOnClientSucceeded
+		bsOut.WriteCasted<unsigned short>(participatingMembersOnClientSucceeded.Size());
+		for (unsigned int i=0; i < participatingMembersOnClientSucceeded.Size(); i++)
+			bsOut.Write(participatingMembersOnClientSucceeded[i]);
+
+		if (additionalData)
+			bsOut.Write(additionalData);
+
+		for (unsigned int i=0; i < fcm2ParticipantList.Size(); i++)
+			SendUnified(&bsOut, HIGH_PRIORITY, RELIABLE_ORDERED, 0, fcm2ParticipantList[i]->rakNetGuid, false);
+
+		// Process immediately
+		// This is so if another ID_FCM2_VERIFIED_JOIN_CAPABLE is buffered, it responds with ID_FCM2_VERIFIED_JOIN_START
+		AddParticipant(packet->guid);
+
+		Packet *p = AllocatePacketUnified(bsOut.GetNumberOfBytesUsed());
+		memcpy(p->data, bsOut.GetData(), bsOut.GetNumberOfBytesUsed());
+		p->systemAddress=packet->systemAddress;
+		p->systemAddress.systemIndex=(SystemIndex)-1;
+		p->guid=packet->guid;
+		p->wasGeneratedLocally=true;
+		rakPeerInterface->PushBackPacket(p, true);
+	}
+	else
+	{
+		// Tell client rejected, otherwise process the same as ID_FCM2_VERIFIED_JOIN_FAILED
+		bsOut.Write((MessageID)ID_FCM2_VERIFIED_JOIN_REJECTED);
+		if (additionalData)
+			bsOut.Write(additionalData);
+	}
+
+	SendUnified(&bsOut, HIGH_PRIORITY, RELIABLE_ORDERED, 0, packet->guid, false);
+}
+void FullyConnectedMesh2::GetVerifiedJoinRequiredProcessingList(RakNetGUID host, DataStructures::List<SystemAddress> &addresses, DataStructures::List<RakNetGUID> &guids, DataStructures::List<BitStream*> &userData)
+{
+	addresses.Clear(true, _FILE_AND_LINE_);
+	guids.Clear(true, _FILE_AND_LINE_);
+
+	unsigned int curIndex = GetJoinsInProgressIndex(host);
+	if (curIndex!=(unsigned int) -1)
+	{
+		VerifiedJoinInProgress *vjip = joinsInProgress[curIndex];
+		unsigned int j;
+		for (j=0; j < vjip->vjipMembers.Size(); j++)
+		{
+			if (vjip->vjipMembers[j].joinInProgressState==JIPS_PROCESSING)
+			{
+				addresses.Push(vjip->vjipMembers[j].systemAddress, _FILE_AND_LINE_);
+				guids.Push(vjip->vjipMembers[j].guid, _FILE_AND_LINE_);
+				userData.Push(vjip->vjipMembers[j].userData, _FILE_AND_LINE_);
+			}
+		}
+	}
+}
+void FullyConnectedMesh2::GetVerifiedJoinAcceptedAdditionalData(Packet *packet, bool *thisSystemAccepted, DataStructures::List<RakNetGUID> &systemsAccepted, BitStream *additionalData)
+{
+	systemsAccepted.Clear(true, _FILE_AND_LINE_);
+
+	RakNet::BitStream bsIn(packet->data, packet->length, false);
+	bsIn.IgnoreBytes(sizeof(MessageID));
+	RakNetGUID systemToAddGuid;
+	bsIn.Read(systemToAddGuid);
+	*thisSystemAccepted = systemToAddGuid == rakPeerInterface->GetMyGUID();
+	unsigned short listSize;
+	bsIn.Read(listSize);
+	bsIn.IgnoreBytes(listSize*RakNetGUID::size());
+	bsIn.Read(listSize);
+	if (systemToAddGuid==rakPeerInterface->GetMyGUID())
+	{
+		for (unsigned short i=0; i < listSize; i++)
+		{
+			bsIn.Read(systemToAddGuid);
+			systemsAccepted.Push(systemToAddGuid, _FILE_AND_LINE_);
+		}
+		systemsAccepted.Push(packet->guid, _FILE_AND_LINE_);
+	}
+	else
+	{
+		systemsAccepted.Push(systemToAddGuid, _FILE_AND_LINE_);
+		bsIn.IgnoreBytes(listSize*RakNetGUID::size());
+	}
+	if (additionalData)
+	{
+		additionalData->Reset();
+		additionalData->Write(bsIn);
+	}
+}
+void FullyConnectedMesh2::GetVerifiedJoinRejectedAdditionalData(Packet *packet, BitStream *additionalData)
+{
+	RakNet::BitStream bsIn(packet->data, packet->length, false);
+	bsIn.IgnoreBytes(sizeof(MessageID));
+	if (additionalData)
+	{
+		additionalData->Reset();
+		additionalData->Write(bsIn);
+	}
+}
+PluginReceiveResult FullyConnectedMesh2::OnVerifiedJoinStart(Packet *packet)
+{
+	RakNet::BitStream bsIn(packet->data,packet->length,false);
+	bsIn.IgnoreBytes(sizeof(MessageID));
+
+	unsigned short listSize;
+	bsIn.Read(listSize);
+
+	unsigned int curIndex = GetJoinsInProgressIndex(packet->guid);
+	if (curIndex!=(unsigned int) -1)
+	{
+		// Got update to existing list
+
+		VerifiedJoinInProgress *vjip = joinsInProgress[curIndex];
+// 		if (vjip->sentResults==false)
+// 		{
+// 			// Got ID_FCM2_VERIFIED_JOIN_START twice before sending ID_FCM2_VERIFIED_JOIN_CAPABLE
+// 			RakAssert(vjip->sentResults!=false);
+// 			return RR_STOP_PROCESSING_AND_DEALLOCATE;
+// 		}
+
+		for (unsigned int i=0; i < vjip->vjipMembers.Size(); i++)
+		{
+			vjip->vjipMembers[i].workingFlag=false;
+		}
+
+		// Server has updated list of participants
+		for (unsigned short i=0; i < listSize; i++)
+		{
+			VerifiedJoinInProgressMember vjipm;
+			ReadVerifiedJoinInProgressMember(&bsIn, &vjipm);
+
+			unsigned int j;
+			if (vjipm.guid!=UNASSIGNED_RAKNET_GUID)
+				j = GetVerifiedJoinInProgressMemberIndex(vjipm.guid, vjip);
+			else
+				j = GetVerifiedJoinInProgressMemberIndex(vjipm.systemAddress, vjip);
+
+			if (j==(unsigned int)-1)
+			{
+				// New
+				vjipm.workingFlag=true;
+
+				// 11/13/2013 - ReadVerifiedJoinInProgressMember already sets joinInProgressState
+				// http://www.jenkinssoftware.com/forum/index.php?topic=5211.0
+				// vjipm.joinInProgressState=JIPS_PROCESSING;
+				vjip->vjipMembers.Push(vjipm, _FILE_AND_LINE_);
+
+				// Allow resend of ID_FCM2_VERIFIED_JOIN_CAPABLE
+				//vjip->sentResults=false;
+			}
+			else
+			{
+				vjip->vjipMembers[j].workingFlag=true;
+			}
+		}
+
+		for (unsigned int i=0; i < vjip->vjipMembers.Size(); i++)
+		{
+			if (vjip->vjipMembers[i].workingFlag==false)
+				vjip->vjipMembers[i].joinInProgressState=JIPS_UNNECESSARY;
+		}
+
+		if (ProcessVerifiedJoinInProgressIfCompleted(vjip))
+		{
+			// Completed
+			return RR_STOP_PROCESSING_AND_DEALLOCATE;
+		}
+
+		// Else tell user about new list
+		return RR_CONTINUE_PROCESSING;
+	}
+
+	VerifiedJoinInProgress *vjip = RakNet::OP_NEW<VerifiedJoinInProgress>(_FILE_AND_LINE_);
+	vjip->requester=packet->guid;
+	if (listSize==0)
+	{
+		//vjip->sentResults=true;
+
+		// Send back result
+		RakNet::BitStream bsOut;
+		bsOut.Write((MessageID)ID_FCM2_VERIFIED_JOIN_CAPABLE);
+		bsOut.WriteCasted<unsigned short>(0);
+		WriteVJCUserData(&bsOut);
+		SendUnified(&bsOut, HIGH_PRIORITY, RELIABLE_ORDERED, 0, packet->guid, false);
+		//vjip->sentResults=true;
+		joinsInProgress.Push(vjip, _FILE_AND_LINE_);
+		return RR_STOP_PROCESSING_AND_DEALLOCATE;
+	}
+
+	//vjip->sentResults=false;
+
+	for (unsigned short i=0; i < listSize; i++)
+	{
+		VerifiedJoinInProgressMember vjipm;
+		ReadVerifiedJoinInProgressMember(&bsIn, &vjipm);
+		vjip->vjipMembers.Push(vjipm, _FILE_AND_LINE_);
+	}
+
+	joinsInProgress.Push(vjip, _FILE_AND_LINE_);
+
+	// 11/13/2013 - ReadVerifiedJoinInProgressMember may set JIPS_CONNECTED, so this may already be done
+	// http://www.jenkinssoftware.com/forum/index.php?topic=5211.0
+	if (ProcessVerifiedJoinInProgressIfCompleted(vjip))
+	{
+		// Completed
+		return RR_STOP_PROCESSING_AND_DEALLOCATE;
+	}
+
+	return RR_CONTINUE_PROCESSING;
+}
+void FullyConnectedMesh2::SkipToVJCUserData(RakNet::BitStream *bsIn)
+{
+	bsIn->IgnoreBytes(sizeof(MessageID));
+	unsigned short listSize;
+	bsIn->Read(listSize);
+	for (unsigned short i=0; i < listSize; i++)
+	{
+		bsIn->IgnoreBytes(RakNetGUID::size());
+		bsIn->IgnoreBytes(SystemAddress::size());
+		bsIn->IgnoreBytes(sizeof(unsigned char));
+	}
+}
+void FullyConnectedMesh2::DecomposeJoinCapable(Packet *packet, VerifiedJoinInProgress *vjip)
+{
+	RakNet::BitStream bsIn(packet->data,packet->length,false);
+	bsIn.IgnoreBytes(sizeof(MessageID));
+
+	unsigned short listSize;
+	bsIn.Read(listSize);
+
+	for (unsigned short i=0; i < listSize; i++)
+	{
+		VerifiedJoinInProgressMember member;
+		bsIn.Read(member.guid);
+		bsIn.Read(member.systemAddress);
+		bsIn.ReadCasted<unsigned char>(member.joinInProgressState);
+		member.userData = 0;
+		member.workingFlag=false;
+		vjip->vjipMembers.Push(member, _FILE_AND_LINE_);
+	}
+}
+PluginReceiveResult FullyConnectedMesh2::OnVerifiedJoinCapable(Packet *packet)
+{
+	VerifiedJoinInProgress vjip;
+	DecomposeJoinCapable(packet, &vjip);
+
+	// If this assert hits, AddParticipant() was called on this system, or another system, which it should not have been.
+	RakAssert(HasParticipant(packet->guid)==false);
+
+	DataStructures::List<RakNetGUID> participatingMembersOnClientSucceeded;
+	DataStructures::List<RakNetGUID> participatingMembersOnClientFailed;
+	DataStructures::List<RakNetGUID> participatingMembersNotOnClient;
+	DataStructures::List<RakNetGUID> clientMembersNotParticipatingSucceeded;
+	DataStructures::List<RakNetGUID> clientMembersNotParticipatingFailed;
+	CategorizeVJIP(&vjip,
+		participatingMembersOnClientSucceeded,
+		participatingMembersOnClientFailed,
+		participatingMembersNotOnClient,
+		clientMembersNotParticipatingSucceeded,
+		clientMembersNotParticipatingFailed);
+
+	if (participatingMembersOnClientFailed.Size()>0)
+	{
+		// Send ID_FCM2_VERIFIED_JOIN_FAILED with GUIDs to disconnect
+		BitStream bsOut;
+		bsOut.Write((MessageID) ID_FCM2_VERIFIED_JOIN_FAILED);
+		SendUnified(&bsOut, HIGH_PRIORITY, RELIABLE_ORDERED, 0, packet->guid, false);
+		return RR_STOP_PROCESSING_AND_DEALLOCATE;
+	}
+
+	if (participatingMembersNotOnClient.Size()>0)
+	{
+		BitStream bsOut;
+		bsOut.Write((MessageID) ID_FCM2_VERIFIED_JOIN_START);
+		bsOut.WriteCasted<unsigned short>(participatingMembersNotOnClient.Size());
+		unsigned int i;
+		for (i=0; i < participatingMembersNotOnClient.Size(); i++)
+		{
+			bsOut.Write(participatingMembersNotOnClient[i]);
+			bsOut.Write(rakPeerInterface->GetSystemAddressFromGuid(participatingMembersNotOnClient[i]));
+
+			bool written=false;
+			for (unsigned int j=0; j < fcm2ParticipantList.Size(); j++)
+			{
+				if (fcm2ParticipantList[j]->rakNetGuid == participatingMembersNotOnClient[i])
+				{
+					written=true;
+
+					BitStream vjsOut;
+					//WriteVJSUserData(&vjsOut, fcm2ParticipantList[j]->rakNetGuid, &fcm2ParticipantList[j]->userContext );
+					WriteVJSUserData(&vjsOut, fcm2ParticipantList[j]->rakNetGuid );
+					bsOut.Write(vjsOut.GetNumberOfBitsUsed());
+					bsOut.Write(&vjsOut);
+					bsOut.AlignWriteToByteBoundary();
+					break;
+				}
+			}
+			RakAssert(written);
+		}
+		SendUnified(&bsOut, HIGH_PRIORITY, RELIABLE_ORDERED, 0, packet->guid, false);
+		return RR_STOP_PROCESSING_AND_DEALLOCATE;
+	}
+
+	// Let server decide if to accept or reject via RespondOnVerifiedJoinCapable
+	return RR_CONTINUE_PROCESSING;
+}
+void FullyConnectedMesh2::OnVerifiedJoinFailed(RakNetGUID hostGuid, bool callCloseConnection)
+{
+	unsigned int curIndex = GetJoinsInProgressIndex(hostGuid);
+	if (curIndex==(unsigned int) -1)
+		return;
+
+	if (callCloseConnection)
+	{
+		VerifiedJoinInProgress *vjip = joinsInProgress[curIndex];
+		for (unsigned int j=0; j < vjip->vjipMembers.Size(); j++)
+		{
+			if (vjip->vjipMembers[j].joinInProgressState!=JIPS_FAILED)
+			{
+				rakPeerInterface->CloseConnection(vjip->vjipMembers[j].guid, true);
+			}
+
+			if (vjip->vjipMembers[j].userData != 0)
+				RakNet::OP_DELETE(vjip->vjipMembers[j].userData, _FILE_AND_LINE_);
+		}
+	}
+
+	for (unsigned int j=0; j < joinsInProgress[curIndex]->vjipMembers.Size(); j++)
+	{
+		if ( joinsInProgress[curIndex]->vjipMembers[j].userData != 0)
+		{
+			RakNet::OP_DELETE(joinsInProgress[curIndex]->vjipMembers[j].userData, _FILE_AND_LINE_);
+		}
+	}
+	
+
+	// Clear joinsInProgress for packet->guid
+	RakNet::OP_DELETE(joinsInProgress[curIndex], _FILE_AND_LINE_);
+	joinsInProgress.RemoveAtIndex(curIndex);
+}
+void FullyConnectedMesh2::OnVerifiedJoinAccepted(Packet *packet)
+{
+	RakNet::BitStream bsIn(packet->data,packet->length,false);
+	bsIn.IgnoreBytes(sizeof(MessageID));
+
+	RakNetGUID systemToAddGuid;
+	bsIn.Read(systemToAddGuid);
+
+	if (systemToAddGuid==rakPeerInterface->GetMyGUID())
+	{
+		// My own system
+		unsigned int curIndex = GetJoinsInProgressIndex(packet->guid);
+		if (curIndex==(unsigned int)-1)
+			return;
+
+		unsigned short listSize;
+		bsIn.Read(listSize);
+		for (unsigned short i=0; i < listSize; i++)
+		{
+			// List of clientMembersNotParticipatingSucceeded
+			RakNetGUID guid;
+			bsIn.Read(guid);
+			rakPeerInterface->CloseConnection(guid, true);
+		}
+
+		bsIn.Read(listSize);
+		for (unsigned short i=0; i < listSize; i++)
+		{
+			// List of participatingMembersOnClientSucceeded
+			RakNetGUID guid;
+			bsIn.Read(guid);
+			AddParticipant(guid);
+		}
+		AddParticipant(packet->guid);
+
+		for (unsigned int j=0; j < joinsInProgress[curIndex]->vjipMembers.Size(); j++)
+		{
+			if ( joinsInProgress[curIndex]->vjipMembers[j].userData != 0)
+			{
+				RakNet::OP_DELETE(joinsInProgress[curIndex]->vjipMembers[j].userData, _FILE_AND_LINE_);
+			}
+		}
+
+		// Clear joinsInProgress for packet->guid
+		RakNet::OP_DELETE(joinsInProgress[curIndex], _FILE_AND_LINE_);
+		joinsInProgress.RemoveAtIndex(curIndex);
+	}
+	else
+	{
+		// Another system
+		ConnectionState cs = rakPeerInterface->GetConnectionState(systemToAddGuid);
+		RakAssert(cs==IS_CONNECTED);
+		if (cs==IS_CONNECTED)
+			AddParticipant(systemToAddGuid);
+	}
+}
+void FullyConnectedMesh2::OnVerifiedJoinRejected(Packet *packet)
+{
+	OnVerifiedJoinFailed(packet->guid, true);
+}
+unsigned int FullyConnectedMesh2::GetJoinsInProgressIndex(RakNetGUID requester) const
+{
+	for (unsigned int i=0; i < joinsInProgress.Size(); i++)
+	{
+		if (joinsInProgress[i]->requester==requester)
+			return i;
+	}
+	return (unsigned int) -1;
+}
+void FullyConnectedMesh2::UpdateVerifiedJoinInProgressMember(const AddressOrGUID systemIdentifier, RakNetGUID guidToAssign, FullyConnectedMesh2::JoinInProgressState newState)
+{
+	bool anythingChanged;
+
+	for (unsigned int i=0; i < joinsInProgress.Size(); i++)
+	{
+		VerifiedJoinInProgress *vjip = joinsInProgress[i];
+		//if (vjip->sentResults==true)
+		//	continue;
+		anythingChanged=false;
+
+		unsigned int j;
+		j = GetVerifiedJoinInProgressMemberIndex(systemIdentifier, vjip);
+		if (j!=(unsigned int)-1)
+		{
+			if (vjip->vjipMembers[j].guid==UNASSIGNED_RAKNET_GUID && guidToAssign!=UNASSIGNED_RAKNET_GUID)
+				vjip->vjipMembers[j].guid = guidToAssign;
+
+			if (vjip->vjipMembers[j].joinInProgressState==JIPS_PROCESSING)
+			{
+				anythingChanged=true;
+				vjip->vjipMembers[j].joinInProgressState=newState;
+			}
+		}
+
+		if (anythingChanged)
+		{
+			ProcessVerifiedJoinInProgressIfCompleted(vjip);
+		}
+	}
+}
+bool FullyConnectedMesh2::ProcessVerifiedJoinInProgressIfCompleted(VerifiedJoinInProgress *vjip)
+{
+	//if (vjip->sentResults)
+	//	return true;
+
+	// If no systems in processing state, send results to server
+	// Return true if this was done
+	bool anyProcessing=false;
+	for (unsigned int i=0; i < vjip->vjipMembers.Size(); i++)
+	{
+		if (vjip->vjipMembers[i].joinInProgressState==JIPS_PROCESSING)
+		{
+			anyProcessing=true;
+			break;
+		}
+	}
+
+	if (anyProcessing==true)
+		return false;
+
+	// Send results to server
+	BitStream bsOut;
+	WriteVerifiedJoinCapable(&bsOut, vjip);
+	WriteVJCUserData(&bsOut);
+	SendUnified(&bsOut, HIGH_PRIORITY, RELIABLE_ORDERED, 0, vjip->requester, false);
+
+	//vjip->sentResults=true;
+	return true;
+}
+void FullyConnectedMesh2::WriteVerifiedJoinCapable(RakNet::BitStream *bsOut, VerifiedJoinInProgress *vjip)
+{
+	bsOut->Write((MessageID) ID_FCM2_VERIFIED_JOIN_CAPABLE);
+	bsOut->WriteCasted<unsigned short>(vjip->vjipMembers.Size());
+	unsigned int i;
+	for (i=0; i < vjip->vjipMembers.Size(); i++)
+	{
+		bsOut->Write(vjip->vjipMembers[i].guid);
+		bsOut->Write(vjip->vjipMembers[i].systemAddress);
+		bsOut->WriteCasted<unsigned char>(vjip->vjipMembers[i].joinInProgressState);
+	}
 }
 
+void FullyConnectedMesh2::ReadVerifiedJoinInProgressMember(RakNet::BitStream *bsIn, VerifiedJoinInProgressMember *vjipm)
+{
+	bsIn->Read(vjipm->guid);
+	bsIn->Read(vjipm->systemAddress);
+	ConnectionState cs = rakPeerInterface->GetConnectionState(vjipm->guid);
+	if (cs==IS_CONNECTED)
+		vjipm->joinInProgressState=JIPS_CONNECTED;
+	else if (cs==IS_DISCONNECTING || cs==IS_SILENTLY_DISCONNECTING)
+		vjipm->joinInProgressState=JIPS_FAILED;
+	else
+		vjipm->joinInProgressState=JIPS_PROCESSING;
 
-void Texture::setAutoMipMap(bool b) {
-    _settings.autoMipMap = b;
-
-    // Update the OpenGL state
-    GLenum target = dimensionToTarget(dimension);
-
-    glPushAttrib(GL_TEXTURE_BIT);
-    glBindTexture(target, textureID);
-
-    if (hasAutoMipMap()) {
-        glTexParameteri(target, GL_GENERATE_MIPMAP_SGIS, b ? GL_TRUE : GL_FALSE);
-    }
-
-    // Restore the old texture
-    glPopAttrib();
+	BitSize_t vjsUserDataSize;
+	bsIn->Read(vjsUserDataSize);
+	if (vjsUserDataSize > 0)
+	{
+		vjipm->userData = RakNet::OP_NEW<BitStream>(_FILE_AND_LINE_);
+		bsIn->Read(vjipm->userData, vjsUserDataSize);
+	}
+	else
+		vjipm->userData = 0;
+	bsIn->AlignReadToByteBoundary();
 }
 
-
-TextureRef Texture::fromGLTexture(
-    const std::string&      name,
-    GLuint                  textureID,
-    const TextureFormat*    textureFormat,
-    WrapMode                wrap,
-    InterpolateMode         interpolate,
-    Dimension               dimension,
-    DepthReadMode           depthRead,
-    float                   aniso) {
-
-    debugAssert(textureFormat);
-
-    return new Texture(name, textureID, dimension, textureFormat, interpolate, wrap, 
-        textureFormat->opaque, depthRead, aniso);
+unsigned int FullyConnectedMesh2::GetVerifiedJoinInProgressMemberIndex(const AddressOrGUID systemIdentifier, VerifiedJoinInProgress *vjip)
+{
+	for (unsigned int j=0; j < vjip->vjipMembers.Size(); j++)
+	{
+		if ((systemIdentifier.rakNetGuid!=UNASSIGNED_RAKNET_GUID && vjip->vjipMembers[j].guid==systemIdentifier.rakNetGuid) ||
+			(systemIdentifier.systemAddress!=UNASSIGNED_SYSTEM_ADDRESS && vjip->vjipMembers[j].systemAddress==systemIdentifier.systemAddress))
+		{
+			return j;
+		}
+	}
+	return (unsigned int) -1;
 }
 
+void FullyConnectedMesh2::CategorizeVJIP(VerifiedJoinInProgress *vjip,
+										 DataStructures::List<RakNetGUID> &participatingMembersOnClientSucceeded,
+										 DataStructures::List<RakNetGUID> &participatingMembersOnClientFailed,
+										 DataStructures::List<RakNetGUID> &participatingMembersNotOnClient,
+										 DataStructures::List<RakNetGUID> &clientMembersNotParticipatingSucceeded,
+										 DataStructures::List<RakNetGUID> &clientMembersNotParticipatingFailed)
+{
+	for (unsigned int i=0; i < vjip->vjipMembers.Size(); i++)
+		vjip->vjipMembers[i].workingFlag=false;
 
-/**
- Scales the intensity up or down of an entire image.
- @param skipAlpha 0 if there is no alpha channel, 1 if there is 
- */
-static void brightenImage(uint8* byte, int n, double brighten, int skipAlpha) {
+	for (unsigned int i=0; i < fcm2ParticipantList.Size(); i++)
+	{
+		unsigned int j = GetVerifiedJoinInProgressMemberIndex(fcm2ParticipantList[i]->rakNetGuid, vjip);
+		if (j==(unsigned int)-1)
+		{
+			participatingMembersNotOnClient.Push(fcm2ParticipantList[i]->rakNetGuid, _FILE_AND_LINE_);
+		}
+		else
+		{
+			if (vjip->vjipMembers[j].joinInProgressState==JIPS_FAILED)
+				participatingMembersOnClientFailed.Push(fcm2ParticipantList[i]->rakNetGuid, _FILE_AND_LINE_);
+			else
+				participatingMembersOnClientSucceeded.Push(fcm2ParticipantList[i]->rakNetGuid, _FILE_AND_LINE_);
+			vjip->vjipMembers[j].workingFlag=true;
+		}
+	}
 
-    // Make a lookup table
-    uint8 bright[256];
-    for (int i = 0; i < 256; ++i) {
-        bright[i] = iClamp(iRound(i * brighten), 0, 255);
-    }
 
-    for (int i = 0; i < n; i += skipAlpha) {
-        for (int c = 0; c < 3; ++c, ++i) {
-            byte[i] = bright[byte[i]];
-        }
-    }
+	for (unsigned int j=0; j < vjip->vjipMembers.Size(); j++)
+	{
+		if (vjip->vjipMembers[j].workingFlag==false)
+		{
+			if (vjip->vjipMembers[j].joinInProgressState==JIPS_FAILED)
+				clientMembersNotParticipatingFailed.Push(vjip->vjipMembers[j].guid, _FILE_AND_LINE_);
+			else
+				clientMembersNotParticipatingSucceeded.Push(vjip->vjipMembers[j].guid, _FILE_AND_LINE_);
+		}
+	}
 }
 
-
-Rect2D Texture::rect2DBounds() const {
-    return Rect2D::xywh(0, 0, (float)width, (float)height);
-}
-
-
-TextureRef Texture::fromFile(
-    const std::string               filename[6],
-    const class TextureFormat*      desiredFormat,
-    WrapMode                        wrap,
-    InterpolateMode                 interpolate,
-    Dimension                       dimension,
-    double                          brighten,
-    DepthReadMode                   depthRead,
-    float                           maxAnisotropy,
-    float                           sizeFactor) {
-
-    std::string realFilename[6];
-
-    const TextureFormat* format = TextureFormat::RGB8;
-    bool opaque = true;
-
-    // The six cube map faces, or the one texture and 5 dummys.
-    GImage image[6];
-    const uint8* array[6];
-    for (int i = 0; i < 6; ++i) {
-        array[i] = NULL;
-    }
-
-    const int numFaces = (dimension == DIM_CUBE_MAP) ?
-        6 : (dimension == DIM_CUBE_MAP_NPOT) ? 
-        6 : 1;
-
-    // Check for DDS file and load separately.
-    std::string ddsExt;
-
-    // Find the period
-    size_t period = filename[0].rfind('.');
-
-    // Make sure it is before a slash!
-    size_t j = iMax(filename[0].rfind('/'), filename[0].rfind('\\'));
-    if ((period != std::string::npos) && (period > j)) {
-        ddsExt = filename[0].substr(period + 1, filename[0].size() - period - 1);
-    }
-
-    if (G3D::toUpper(ddsExt) == "DDS") {
-
-        debugAssertM(GLCaps::supports_GL_EXT_texture_compression_s3tc(),
-            "This device does not support s3tc compression formats.");
-
-        DDSTexture ddsTexture(filename[0]);
-        Array< Array< const void* > > byteMipMapFaces;
-
-        uint8* byteStart = ddsTexture.getBytes();
-        debugAssert( byteStart != NULL );
-
-        const TextureFormat* bytesFormat = ddsTexture.getBytesFormat();
-        debugAssert( bytesFormat );
-
-        // Assert that we are loading a cubemap DDS
-        debugAssert( numFaces == ddsTexture.getNumFaces() );
-
-        int numMipMaps = ddsTexture.getNumMipMaps();
-        int mapWidth = ddsTexture.getWidth();
-        int mapHeight = ddsTexture.getHeight();
-
-        byteMipMapFaces.resize(numMipMaps);
-
-        for (int i = 0; i < numMipMaps; ++i) {
-            
-            byteMipMapFaces[i].resize(numFaces);
-
-            for (int face = 0; face < numFaces; ++face) {
-                byteMipMapFaces[i][face] = byteStart;
-                byteStart += ((bytesFormat->packedBitsPerTexel / 8) * ((mapWidth + 3) / 4) * ((mapHeight + 3) / 4));
-            }
-            mapWidth = iMax(1, iFloor(mapWidth/2));
-            mapHeight = iMax(1,iFloor(mapHeight/2));
-        }
-
-        return Texture::fromMemory(filename[0], byteMipMapFaces, bytesFormat, ddsTexture.getWidth(), ddsTexture.getHeight(), 1, desiredFormat, wrap, interpolate, dimension, depthRead, maxAnisotropy, sizeFactor);
-    }
-
-    // Test for both DIM_CUBE_MAP and DIM_CUBE_MAP_NPOT
-    if (numFaces == 6) {
-        if (filename[1] == "") {
-            // Wildcard format
-            // Parse the filename into a base name and extension
-            std::string filenameBase, filenameExt;
-            splitFilenameAtWildCard(filename[0], filenameBase, filenameExt);
-            for (int f = 0; f < 6; ++f) {
-                realFilename[f] = filenameBase + cubeMapString[f] + filenameExt;
-            }
-        } else {
-            // Separate filenames have been provided
-            realFilename[0] = filename[0];
-            for (int f = 1; f < 6; ++f) {
-                debugAssert(filename[f] != "");
-                realFilename[f] = filename[f];
-            }
-        }
-    } else {
-        debugAssertM(filename[1] == "",
-            "Can't specify more than one filename unless loading a cube map");
-        realFilename[0] = filename[0];
-    }
-
-    for (int f = 0; f < numFaces; ++f) {
-
-        image[f].load(realFilename[f]);
-
-        if (image[f].channels == 4) {
-            format = TextureFormat::RGBA8;
-            opaque = false;
-        }
-
-        if (desiredFormat == NULL) {
-            desiredFormat = format;
-        }
-
-        array[f] = image[f].byte();
-    }
-
-
-    if (brighten != 1.0) {
-        for (int f = 0; f < numFaces; ++f) {
-            brightenImage(
-                image[f].byte(),
-                image[f].width * image[f].height * image[f].channels,
-                brighten,
-                image[f].channels - 3);
-        }
-    }
-
-    TextureRef t =
-        Texture::fromMemory(filename[0], array, format,
-            image[0].width, image[0].height, 1,
-            desiredFormat, wrap, interpolate, dimension,
-            depthRead, maxAnisotropy, sizeFactor);
-
-    return t;
-}
-
-
-TextureRef Texture::fromFile(
-    const std::string&      filename,
-    const TextureFormat*    desiredFormat,
-    WrapMode                wrap,
-    InterpolateMode         interpolate,
-    Dimension               dimension,
-    double                  brighten,
-    DepthReadMode           depthRead,
-    float                   maxAnisotropy,
-    float                   scale) {
-
-    std::string f[6];
-    f[0] = filename;
-    f[1] = "";
-    f[2] = "";
-    f[3] = "";
-    f[4] = "";
-    f[5] = "";
-
-    return fromFile(f, desiredFormat, wrap, interpolate, dimension, brighten, depthRead, maxAnisotropy, scale);
-}
-
-
-TextureRef Texture::fromTwoFiles(
-    const std::string&      filename,
-    const std::string&      alphaFilename,
-    const TextureFormat*    desiredFormat,
-    WrapMode                wrap,
-    InterpolateMode         interpolate,
-    Dimension               dimension,
-    DepthReadMode           depthRead,
-    float                   maxAnisotropy) {
-
-    debugAssert(desiredFormat);
-
-    // The six cube map faces, or the one texture and 5 dummys.
-    const uint8* array[6];
-    for (int i = 0; i < 6; ++i) {
-        array[i] = NULL;
-    }
-
-    const int numFaces = (dimension == DIM_CUBE_MAP) ?
-        6 : (dimension == DIM_CUBE_MAP_NPOT) ? 
-        6 : 1;
-
-    // Parse the filename into a base name and extension
-    std::string filenameBase = filename;
-    std::string filenameExt;
-    std::string alphaFilenameBase = alphaFilename;
-    std::string alphaFilenameExt;
-
-    // Test for both DIM_CUBE_MAP and DIM_CUBE_MAP_NPOT
-    if (numFaces == 6) {
-        splitFilenameAtWildCard(filename, filenameBase, filenameExt);
-    }
-    
-    GImage color[6];
-    GImage alpha[6];
-    TextureRef t;
-
-    try {
-    for (int f = 0; f < numFaces; ++f) {
-
-        std::string fn = filename;
-        std::string an = alphaFilename;
-
-        // Test for both DIM_CUBE_MAP and DIM_CUBE_MAP_NPOT
-        if (numFaces == 6) {
-            fn = filenameBase + cubeMapString[f] + filenameExt;
-            an = alphaFilenameBase + cubeMapString[f] + alphaFilenameExt;
-        }
-
-        // Compose the two images to a single RGBA
-        color[f].load(fn);
-        alpha[f].load(an);
-        uint8* data = NULL;
-
-        if (color[f].channels == 4) {
-            data = color[f].byte();
-            // Write the data inline
-            for (int i = 0; i < color[f].width * color[f].height; ++i) {
-                data[i * 4 + 3] = alpha[f].byte()[i * alpha[f].channels];
-            }
-        } else {
-            debugAssert(color[f].channels == 3);
-            data = new uint8[color[f].width * color[f].height * 4];
-            // Write the data inline
-            for (int i = 0; i < color[f].width * color[f].height; ++i) {
-                data[i * 4 + 0] = color[f].byte()[i * 3 + 0];
-                data[i * 4 + 1] = color[f].byte()[i * 3 + 1];
-                data[i * 4 + 2] = color[f].byte()[i * 3 + 2];
-                data[i * 4 + 3] = alpha[f].byte()[i * alpha[f].channels];
-            }
-        }
-
-        array[f] = data;
-    }
-
-    t = Texture::fromMemory(filename, array, TextureFormat::RGBA8,
-            color[0].width, color[0].height, 1, 
-            desiredFormat, wrap, interpolate, dimension, depthRead, maxAnisotropy);
-
-    if (color[0].channels == 3) {
-        // Delete the data if it was dynamically allocated
-        for (int f = 0; f < numFaces; ++f) {
-            delete[] const_cast<unsigned char*>(array[f]);
-        }
-    }
-
-    } catch (const GImage::Error& e) {
-        Log::common()->printf("\n**************************\n\n"
-            "Loading \"%s\" failed. %s\n", e.filename.c_str(),
-            e.reason.c_str());
-    }
-
-    return t;
-}
-
-static const GLenum cubeFaceTarget[] =
-    {GL_TEXTURE_CUBE_MAP_POSITIVE_X_ARB,
-     GL_TEXTURE_CUBE_MAP_NEGATIVE_X_ARB,
-     GL_TEXTURE_CUBE_MAP_POSITIVE_Y_ARB,
-     GL_TEXTURE_CUBE_MAP_NEGATIVE_Y_ARB,
-     GL_TEXTURE_CUBE_MAP_POSITIVE_Z_ARB,
-     GL_TEXTURE_CUBE_MAP_NEGATIVE_Z_ARB};
-
-
-static bool isMipMapformat(Texture::InterpolateMode i) {
-    switch (i) {
-    case Texture::TRILINEAR_MIPMAP:
-    case Texture::BILINEAR_MIPMAP:
-    case Texture::NEAREST_MIPMAP:
-        return true;
-
-    case Texture::BILINEAR_NO_MIPMAP:
-    case Texture::NEAREST_NO_MIPMAP:
-    case Texture::NO_INTERPOLATION:
-        return false;
-    }
-
-    alwaysAssertM(false, "Illegal interpolate mode");
-    return false;
-}
-
-
-TextureRef Texture::fromMemory(
-    const std::string&                  name,
-    const Array< Array<const void*> >&  bytes,
-    const TextureFormat*                bytesFormat,
-    int                                 width,
-    int                                 height,
-    int                                 depth,
-    const TextureFormat*                desiredFormat,
-    WrapMode                            wrap,
-    InterpolateMode                     interpolate,
-    Dimension                           dimension,
-    DepthReadMode                       depthRead,
-    float                               maxAnisotropy,
-    float                               rescaleFactor) {
-        
-    debugAssert(bytesFormat);
-    (void)depth;
-    
-    // Check for at least one miplevel on the incoming data
-    int numMipMaps = bytes.length();
-    debugAssert( numMipMaps > 0 );
-
-    // Create the texture
-    GLuint textureID = newGLTextureID();
-    GLenum target = dimensionToTarget(dimension);
-
-    if ((desiredFormat == TextureFormat::AUTO) || (bytesFormat->compressed)) {
-        desiredFormat = bytesFormat;
-    }
-
-    if (GLCaps::hasBug_redBlueMipmapSwap() && (desiredFormat == TextureFormat::RGB8)) {
-        desiredFormat = TextureFormat::RGBA8;
-    }
-
-    debugAssertM(GLCaps::supports(desiredFormat), "Unsupported texture format.");
-
-    glStatePush();
-
-		// Set unpacking alignment
-		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-
-        glEnable(target);
-        glBindTexture(target, textureID);
-        debugAssertGLOk();
-        if (isMipMapformat(interpolate) && hasAutoMipMap() && (numMipMaps == 1)) {
-            // Enable hardware MIP-map generation.
-            // Must enable before setting the level 0 image (we'll set it again
-            // in setTexParameters, but that is intended primarily for 
-            // the case where that function is called for a pre-existing GL texture ID).
-            glTexParameteri(target, GL_GENERATE_MIPMAP_SGIS, GL_TRUE);
-        }
-
-        int mipWidth = width;
-        int mipHeight = height;
-        for (int mipLevel = 0; mipLevel < numMipMaps; ++mipLevel) {
-
-            const int numFaces = bytes[mipLevel].length();
-            
-            debugAssert(
-                ((dimension == DIM_CUBE_MAP) ? 
-                6 : (dimension == DIM_CUBE_MAP_NPOT) ? 
-                6 : 1) == numFaces);
-        
-            for (int f = 0; f < numFaces; ++f) {
-        
-                // Test for both DIM_CUBE_MAP and DIM_CUBE_MAP_NPOT
-                if (numFaces == 6) {
-                    // Choose the appropriate face target
-                    target = cubeFaceTarget[f];
-                }
-
-                if (isMipMapformat(interpolate) && ! hasAutoMipMap() && (numMipMaps == 1)) {
-
-                    debugAssertM((bytesFormat->compressed == false), "Cannot manually generate Mip-Maps for compressed textures.");
-
-                    createMipMapTexture(target, reinterpret_cast<const uint8*>(bytes[mipLevel][f]),
-                                  bytesFormat->OpenGLBaseFormat,
-                                  mipWidth, mipHeight, desiredFormat->OpenGLFormat,
-                                  desiredFormat->packedBitsPerTexel / 8, rescaleFactor);
-                } else {
-                    const bool useNPOT = (dimension == DIM_2D_NPOT) ?
-                        true : (dimension == DIM_CUBE_MAP_NPOT) ?
-                        true : false;
-
-                    createTexture(target, reinterpret_cast<const uint8*>(bytes[mipLevel][f]), bytesFormat->OpenGLBaseFormat,
-                                  bytesFormat->OpenGLFormat, mipWidth, mipHeight, desiredFormat->OpenGLFormat, 
-                                  bytesFormat->packedBitsPerTexel / 8, mipLevel, bytesFormat->compressed, useNPOT, 
-                                  rescaleFactor);
-                }
-
-                debugAssertGLOk();
-            }
-
-            mipWidth = iMax(1, mipWidth / 2);
-            mipHeight = iMax(1, mipHeight / 2);
-        }
-    glStatePop();
-
-    if ((dimension != DIM_2D_RECT) &&
-        ((dimension != DIM_2D_NPOT && dimension != DIM_CUBE_MAP_NPOT))) {
-        width  = ceilPow2(width);
-        height = ceilPow2(height);
-    }
-
-    debugAssertGLOk();
-    TextureRef t = fromGLTexture(name, textureID, desiredFormat, wrap, interpolate, dimension, depthRead, maxAnisotropy);
-    debugAssertGLOk();
-
-    t->width = width;
-    t->height = height;
-    return t;
-}
-
-
-TextureRef Texture::fromMemory(
-    const std::string&      name,
-    const uint8**           bytes,
-    const TextureFormat*    bytesFormat,
-    int                     width,
-    int                     height,
-    int                     depth,
-    const TextureFormat*    desiredFormat,
-    WrapMode                wrap,
-    InterpolateMode         interpolate,
-    Dimension               dimension,
-    DepthReadMode           depthRead,
-    float                   maxAnisotropy,
-    float                   rescaleFactor) {
-
-    Array< Array<const void* > > arrayMipMapFaces(1);
-
-    const int numFaces = (dimension == DIM_CUBE_MAP) ?
-        6 : (dimension == DIM_CUBE_MAP_NPOT) ? 
-        6 : 1;        
-
-    for (int f = 0; f < numFaces; ++f) {
-        arrayMipMapFaces[0].append(bytes[f]);
-    }
-
-    return Texture::fromMemory(name, arrayMipMapFaces, bytesFormat, width, height, 
-        depth, desiredFormat, wrap, interpolate, dimension, depthRead, maxAnisotropy,
-        rescaleFactor);
-}
-
-
-TextureRef Texture::fromGImage(
-    const std::string&              name,
-    const GImage&                   image,
-    const class TextureFormat*      desiredFormat,
-    WrapMode                        wrap,
-    InterpolateMode                 interpolate,
-    Dimension                       dimension,
-    DepthReadMode                   depthRead,
-    float                           maxAnisotropy) {
-
-    const TextureFormat* format = TextureFormat::RGB8;
-    bool opaque = true;
-
-    // The six cube map faces, or the one texture and 5 dummys.
-    const uint8* array[1];
-
-    switch (image.channels) {
-    case 4:
-        format = TextureFormat::RGBA8;
-        opaque = false;
-        break;
-
-    case 3:
-        format = TextureFormat::RGB8;
-        opaque = true;
-        break;
-
-    case 1:
-        format = TextureFormat::L8;
-        opaque = true;
-        break;
-
-    default:
-        alwaysAssertM(
-            false,
-            G3D::format("GImage has an unexpected number of channels (%d)", image.channels));
-    }
-
-    if (desiredFormat == NULL) {
-        desiredFormat = format;
-    }
-
-    array[0] = image.byte();
-
-    TextureRef t =
-        Texture::fromMemory(name, array, format,
-            image.width, image.height, 1,
-            desiredFormat, wrap, interpolate, 
-            dimension, depthRead, maxAnisotropy);
-
-    return t;
-}
-
-
-TextureRef Texture::createEmpty(
-    int                              w,
-    int                              h,
-    const std::string&               name,
-    const TextureFormat*             desiredFormat,
-    Texture::WrapMode                wrap,
-    Texture::InterpolateMode         interpolate,
-    Texture::Dimension               dimension,
-    Texture::DepthReadMode           depthRead,
-    float                            maxAnisotropy) {
-
-    debugAssertGLOk();
-    debugAssertM(desiredFormat, "desiredFormat may not be TextureFormat::AUTO");
-
-    // We must pretend the input is in the desired format otherwise 
-    // OpenGL might refuse to negotiate formats for us.
-    Array<uint8> data(w * h * desiredFormat->packedBitsPerTexel / 8);
-    const uint8* bytes[6];
-    for (int i = 0; i < 6; ++i) {
-        bytes[i] = data.getCArray();
-    }
-
-    TextureRef t = Texture::fromMemory(name, bytes, desiredFormat, w, h, 1, desiredFormat, 
-        wrap, interpolate, dimension, depthRead, maxAnisotropy);
-
-    debugAssertGLOk();
-    return t;
-}
-
-
-void Texture::splitFilenameAtWildCard(
-    const std::string&  filename,
-    std::string&        filenameBase,
-    std::string&        filenameExt) {
-
-    const std::string splitter = "*";
-
-    int i = filename.rfind(splitter);
-    if (i != -1) {
-        filenameBase = filename.substr(0, i);
-        filenameExt  = filename.substr(i + 1, filename.size() - i - splitter.length()); 
-    } else {
-        throw GImage::Error("Cube map filenames must contain \"*\" as a "
-                            "placeholder for up/lf/rt/bk/ft/dn", filename);
-    }
-}
-
-
-Texture::~Texture() {
-    _sizeOfAllTexturesInMemory -= sizeInMemory();
-	glDeleteTextures(1, &textureID);
-	textureID = 0;
-}
-
-
-unsigned int Texture::newGLTextureID() {
-    unsigned int t;
-
-    // Clear the OpenGL error flag
-    glGetError();
-
-    glGenTextures(1, &t);
-
-    alwaysAssertM(glGetError() != GL_INVALID_OPERATION, 
-         "GL_INVALID_OPERATION: Probably caused by invoking "
-         "glGenTextures between glBegin and glEnd.");
-
-    return t;
-}
-
-
-/** Returns the buffer constant that matches the current draw buffer (left vs. right) */
-static GLenum getCurrentBuffer(bool useBack) {
-    GLenum draw = glGetInteger(GL_DRAW_BUFFER);
-
-    if (useBack) {
-        switch (draw) {
-        case GL_FRONT_LEFT:
-        case GL_BACK_LEFT:
-            return GL_BACK_LEFT;
-
-        case GL_FRONT_RIGHT:
-        case GL_BACK_RIGHT:
-            return GL_BACK_RIGHT;
-
-        default:
-			// FBO goes here
-            return draw;
-        }
-    } else {
-        switch (draw) {
-        case GL_FRONT_LEFT:
-        case GL_BACK_LEFT:
-            return GL_FRONT_LEFT;
-
-        case GL_FRONT_RIGHT:
-        case GL_BACK_RIGHT:
-            return GL_FRONT_RIGHT;
-
-        default:
-			// FBO goes here
-            return draw;
-        }
-    }
-}
-
-
-void Texture::copyFromScreen(
-    const Rect2D& rect,
-    bool useBackBuffer) {
-
-    glStatePush();
-
-    glReadBuffer(getCurrentBuffer(useBackBuffer));
-
-    _sizeOfAllTexturesInMemory -= sizeInMemory();
-
-    // Set up new state
-    this->width   = (int)rect.width();
-    this->height  = (int)rect.height();
-    this->depth   = 1;
-    debugAssert(this->dimension == DIM_2D || this->dimension == DIM_2D_RECT || this->dimension == DIM_2D_NPOT);
-
-    if (GLCaps::supports_GL_ARB_multitexture()) {
-        glActiveTextureARB(GL_TEXTURE0_ARB);
-    }
-    glDisableAllTextures();
-    GLenum target = dimensionToTarget(dimension);
-    glEnable(target);
-
-    glBindTexture(target, textureID);
-    int e = glGetError();
-    alwaysAssertM(e == GL_NONE, 
-        std::string("Error encountered during glBindTexture: ") + GLenumToString(e));
-
-    double viewport[4];
-    glGetDoublev(GL_VIEWPORT, viewport);
-    double viewportHeight = viewport[3];
-    debugAssertGLOk();
-    
-    glCopyTexImage2D(target, 0, format->OpenGLFormat,
-                     iRound(rect.x0()), 
-                     iRound(viewportHeight - rect.y1()), 
-                     iRound(rect.width()), iRound(rect.height()), 
-                     0);
-
-    debugAssertGLOk();
-    // Reset the original properties
-    setTexParameters(target, _settings);
-
-    debugAssertGLOk();
-    glDisable(target);
-
-    // Once copied from the screen, the direction will be reversed.
-    invertY = true;
-
-    glStatePop();
-
-    _sizeOfAllTexturesInMemory += sizeInMemory();
-}
-
-
-void Texture::copyFromScreen(
-    const Rect2D&       rect,
-    CubeFace            face,
-    bool                useBackBuffer) {
-
-    glStatePush();
-
-    glReadBuffer(getCurrentBuffer(useBackBuffer));
-
-    // Set up new state
-    debugAssertM(width == rect.width(), "Cube maps require all six faces to have the same dimensions");
-    debugAssertM(height == rect.height(), "Cube maps require all six faces to have the same dimensions");
-    debugAssert(this->dimension == DIM_CUBE_MAP || this->dimension == DIM_CUBE_MAP_NPOT);
-    debugAssert(face >= 0);
-    debugAssert(face < 6);
-
-    if (GLCaps::supports_GL_ARB_multitexture()) {
-        glActiveTextureARB(GL_TEXTURE0_ARB);
-    }
-    glDisableAllTextures();
-
-    glEnable(GL_TEXTURE_CUBE_MAP_ARB);
-    glBindTexture(GL_TEXTURE_CUBE_MAP_ARB, textureID);
-
-    GLenum target = cubeFaceTarget[(int)face];
-
-    int e = glGetError();
-    alwaysAssertM(e == GL_NONE, 
-        std::string("Error encountered during glBindTexture: ") + GLenumToString(e));
-
-    double viewport[4];
-    glGetDoublev(GL_VIEWPORT, viewport);
-    double viewportHeight = viewport[3];
-    debugAssertGLOk();
-
-    glCopyTexImage2D(target, 0, format->OpenGLFormat,
-                     iRound(rect.x0()), 
-                     iRound(viewportHeight - rect.y1()), 
-                     iRound(rect.width()), 
-                     iRound(rect.height()), 0);
-
-    debugAssertGLOk();
-    glDisable(GL_TEXTURE_CUBE_MAP_ARB);
-    glStatePop();
-}
-
-
-void Texture::getCameraRotation(CubeFace face, Matrix3& outMatrix) {
-    switch (face) {
-    case CUBE_POS_X:
-        outMatrix = Matrix3::fromEulerAnglesYXZ((float)G3D_HALF_PI, (float)G3D_PI, 0);
-        break;
-
-    case CUBE_NEG_X:
-        outMatrix = Matrix3::fromEulerAnglesYXZ(-(float)G3D_HALF_PI, (float)G3D_PI, 0);
-        break;
-
-    case CUBE_POS_Y:
-        outMatrix = Matrix3::fromEulerAnglesXYZ((float)G3D_HALF_PI, 0, 0);
-        break;
-
-    case CUBE_NEG_Y:
-        outMatrix = Matrix3::fromEulerAnglesXYZ(-(float)G3D_HALF_PI, 0, 0);
-        break;
-
-    case CUBE_POS_Z:
-        outMatrix = Matrix3::fromEulerAnglesYZX((float)G3D_PI, (float)G3D_PI, 0);
-        break;
-
-    case CUBE_NEG_Z:
-        outMatrix = Matrix3::fromAxisAngle(Vector3::unitZ(), (float)G3D_PI);
-        break;
-    }
-}
-
-
-size_t Texture::sizeInMemory() const {
-
-	if (!TextureFormat::valid)
-		return 0;
-
-    int base = (width * height * depth * format->hardwareBitsPerTexel) / 8;
-
-    int total = 0;
-
-    if (interpolate == TRILINEAR_MIPMAP) {
-        int w = width;
-        int h = height;
-
-        while ((w > 2) && (h > 2)) {
-            total += base;
-            base /= 4;
-            w /= 2;
-            h /= 2;
-        }
-
-    } else {
-        total = base;
-    }
-
-    if (dimension == DIM_CUBE_MAP) {
-        total *= 6;
-    }
-
-    return total;
-}
-
-
-unsigned int Texture::getOpenGLTextureTarget() const {
-    switch (dimension) {
-    case DIM_CUBE_MAP_NPOT:
-    case DIM_CUBE_MAP:
-        return GL_TEXTURE_CUBE_MAP_ARB;
-
-    case DIM_2D_NPOT:
-    case DIM_2D:
-        return GL_TEXTURE_2D;
-
-    case Texture::DIM_2D_RECT:
-        return GL_TEXTURE_RECTANGLE_EXT;
-
-    default:
-        debugAssertM(false, "Fell through switch");
-    }
-    return 0;
-}
-
-
-TextureRef Texture::alphaOnlyVersion() const {
-    if (opaque()) {
-        return NULL;
-    }
-
-    debugAssert(_depthRead == DEPTH_NORMAL);
-    debugAssertM(
-        dimension == DIM_2D ||
-        dimension == DIM_2D_RECT ||
-        dimension == DIM_2D_NPOT,
-        "alphaOnlyVersion only supported for 2D textures");
-
-    int numFaces = 1;
-
-    uint8** bytes = (uint8**)System::malloc(numFaces * sizeof(uint8*));
-    const TextureFormat* bytesFormat = TextureFormat::A8;
-
-    glStatePush();
-    // Setup to later implement cube faces
-    for (int f = 0; f < numFaces; ++f) {
-        GLenum target = dimensionToTarget(dimension);
-        glBindTexture(target, textureID);
-        bytes[f] = (uint8*)System::malloc(width * height);
-        glGetTexImage(target, 0, GL_ALPHA, GL_UNSIGNED_BYTE, bytes[f]);
-    }
-
-    glStatePop();
-
-    TextureRef ret = 
-        fromMemory(name + " Alpha", (const uint8**)bytes, bytesFormat,
-            width, height, 1, TextureFormat::A8, wrap, interpolate,
-            dimension); 
-
-    for (int f = 0; f < numFaces; ++f) {
-        System::free(bytes[f]);
-    }
-    System::free(bytes);
-
-    return ret;
-}
-
-} // G3D
+#endif // _RAKNET_SUPPORT_*

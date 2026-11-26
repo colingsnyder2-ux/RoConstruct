@@ -1,17 +1,81 @@
-// from server: 78% by Intel
-struct CProgressDialog
-{
-    void f();
-};
+// from server: 100% by Xemicl
+// roc 2012-06 00453cb0  unit: CProgressDialog  size: 37 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 00453cb0
+//
+// 00453cb0  56                   push esi
+// 00453cb1  8bf1                 mov esi, ecx
+// 00453cb3  8b4610               mov eax, dword ptr [esi + 0x10]
+// 00453cb6  85c0                 test eax, eax
+// 00453cb8  7419                 je 0x453cd3
+// 00453cba  8b00                 mov eax, dword ptr [eax]
+// 00453cbc  8d4e18               lea ecx, [esi + 0x18]
+// 00453cbf  85c0                 test eax, eax
+// 00453cc1  7409                 je 0x453ccc
+// 00453cc3  6a02                 push 2
+// 00453cc5  51                   push ecx
+// 00453cc6  51                   push ecx
+// 00453cc7  ffd0                 call eax
+// 00453cc9  83c40c               add esp, 0xc
+// 00453ccc  c7461000000000       mov dword ptr [esi + 0x10], 0
+// 00453cd3  5e                   pop esi
+// 00453cd4  c3                   ret 
+// copied from an identical function in another client (function ??1_Node@?$_List_nod@UItem@TimerService@RBX@@V?$allocator@UItem@TimerService@RBX@@@std@@@std@@QAE@XZ)
 
-void CProgressDialog::f()
-{
-    typedef void (__thiscall *Callback)(void *, int, void *);
-    Callback cb = *reinterpret_cast<Callback *>(this + 0x10);
-    if (cb)
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <list>
+namespace boost {
+namespace detail {
+namespace function {
+struct X;
+union function_buffer {
+    void* obj_ptr;
+    struct type_t { const void* type; bool c; bool v; } type;
+    void (*func_ptr)();
+    struct bound_memfunc_ptr_t { void (X::*memfunc_ptr)(int); void* obj_ptr; } bound_memfunc_ptr;
+    char data;
+};
+enum functor_manager_operation_type { clone_functor_tag, move_functor_tag, destroy_functor_tag, check_functor_type_tag, get_functor_type_tag };
+struct vtable_base {
+    void (*manager)(const function_buffer& in_buffer, function_buffer& out_buffer, functor_manager_operation_type op);
+    void clear(function_buffer& functor)
     {
-        void *context = reinterpret_cast<void *>(reinterpret_cast<char *>(this) + 0x18);
-        cb(context, 2, context);
-        *reinterpret_cast<int *>(this + 0x10) = 0;
+        if (manager)
+            manager(functor, functor, destroy_functor_tag);
     }
+};
 }
+}
+class function_base {
+public:
+    function_base() : vtable(0) {}
+    bool empty() const { return !vtable; }
+    detail::function::vtable_base* vtable;
+    mutable detail::function::function_buffer functor;
+};
+template<class R> class function0 : public function_base {
+public:
+    function0() {}
+    function0(const function0& f);
+    ~function0() { clear(); }
+    void clear()
+    {
+        if (this->vtable) {
+            this->vtable->clear(this->functor);
+            this->vtable = 0;
+        }
+    }
+};
+}
+namespace RBX {
+class TimerService {
+public:
+	struct Item {
+		__int64 time;
+		boost::function0<void> func;
+	};
+};
+}
+template std::list<RBX::TimerService::Item>::iterator std::list<RBX::TimerService::Item>::erase(std::list<RBX::TimerService::Item>::const_iterator);

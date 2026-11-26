@@ -1,39 +1,54 @@
-// from server: 76% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/regex/src/instances.cpp
+// from server: 100% by Xemicl
+// roc 2012-06 004354f0  unit: CPatchedControlComboBox  size: 74 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 004354f0
+//
+// 004354f0  6aff                 push -1
+// 004354f2  6838d0a900           push 0xa9d038
+// 004354f7  64a100000000         mov eax, dword ptr fs:[0]
+// 004354fd  50                   push eax
+// 004354fe  64892500000000       mov dword ptr fs:[0], esp
+// 00435505  51                   push ecx
+// 00435506  56                   push esi
+// 00435507  8bf1                 mov esi, ecx
+// 00435509  89742404             mov dword ptr [esp + 4], esi
+// 0043550d  e8b0d55400           call 0x982ac2
+// 00435512  8d4e58               lea ecx, [esi + 0x58]
+// 00435515  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 0043551d  c70664fab400         mov dword ptr [esi], 0xb4fa64
+// 00435523  e8b87affff           call 0x42cfe0
+// 00435528  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 0043552c  8bc6                 mov eax, esi
+// 0043552e  5e                   pop esi
+// 0043552f  64890d00000000       mov dword ptr fs:[0], ecx
+// 00435536  83c410               add esp, 0x10
+// 00435539  c3                   ret 
+// copied from an identical function in another client (function ??0CPatchedControlComboBox@ns_ROCX0000e5@@QAE@XZ)
 
-// Candidate translation unit (score above; library headers required).
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
- */
+namespace ns_ROCX0000e5 {
+struct Base
+{
+    char padding[84];
 
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE:        instances.cpp
-  *   VERSION:     see <boost/version.hpp>
-  *   DESCRIPTION: regex narrow character template instances.
-  */
+    Base();
+    virtual ~Base();
+};
 
-#define BOOST_REGEX_SOURCE
+struct Member
+{
+    Member();
+    ~Member();
+};
 
-#include <boost/regex/config.hpp>
+struct CPatchedControlComboBox : Base
+{
+    Member member;
 
-#if !defined(BOOST_REGEX_NO_EXTERNAL_TEMPLATES)
-#define BOOST_REGEX_NARROW_INSTANTIATE
+    CPatchedControlComboBox();
+    virtual ~CPatchedControlComboBox();
+};
 
-#ifdef __BORLANDC__
-#pragma hrdstop
-#endif
-
-#include <boost/regex.hpp>
-
-#endif
+CPatchedControlComboBox::CPatchedControlComboBox()
+    : Base(), member()
+{
+}
+}

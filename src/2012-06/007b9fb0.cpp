@@ -1,15 +1,5 @@
-// from server: 90% by tajop
-namespace RBX {
-struct Block {
-    char pad[0x9c];
-    int* items;
-    int count;
-    int first() const;
-};
-int Block::first() const {
-    if (count > 0) {
-        return *items;
-    }
-    return 0;
-}
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct S{ char p[0xc0]; int* a; int n; int f(); };
+int S::f(){ if(n > 0) return *a; return 0; }

@@ -1,67 +1,105 @@
-// from server: 51% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/regex/src/usinstances.cpp
-
-// Candidate translation unit (score above; library headers required).
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
- */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE:        winstances.cpp
-  *   VERSION:     see <boost/version.hpp>
-  *   DESCRIPTION: regex unsigned short template instances (MSVC only).
-  */
-
-#define BOOST_REGEX_SOURCE
-
-#include <boost/regex/config.hpp>
-
-#if !defined(BOOST_NO_WREGEX) && defined(BOOST_REGEX_HAS_OTHER_WCHAR_T) && !defined(BOOST_REGEX_NO_EXTERNAL_TEMPLATES)
-#define BOOST_REGEX_US_INSTANTIATE
-
-#ifdef _DLL_CPPLIB
-#include <boost/detail/workaround.hpp>
+// from server: 100% by Xemicl
+// roc 2012-06 0042ab80  unit: CSelectionTreeCtrl  size: 80 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 0042ab80
 //
-// This is a horrible workaround, without declaring these symbols extern we get
-// duplicate symbol errors when linking if the application is built without
-// /Zc:wchar_t
+// 0042ab80  53                   push ebx
+// 0042ab81  8b5c2408             mov ebx, dword ptr [esp + 8]
+// 0042ab85  56                   push esi
+// 0042ab86  8bf1                 mov esi, ecx
+// 0042ab88  83fb71               cmp ebx, 0x71
+// 0042ab8b  752b                 jne 0x42abb8
+// 0042ab8d  8b4620               mov eax, dword ptr [esi + 0x20]
+// 0042ab90  57                   push edi
+// 0042ab91  8b3d043cb200         mov edi, dword ptr [0xb23c04]
+// 0042ab97  6a00                 push 0
+// 0042ab99  6a09                 push 9
+// 0042ab9b  680a110000           push 0x110a
+// 0042aba0  50                   push eax
+// 0042aba1  ffd7                 call edi
+// 0042aba3  8b4e20               mov ecx, dword ptr [esi + 0x20]
+// 0042aba6  50                   push eax
+// 0042aba7  6a00                 push 0
+// 0042aba9  680e110000           push 0x110e
+// 0042abae  51                   push ecx
+// 0042abaf  ffd7                 call edi
+// 0042abb1  50                   push eax
+// 0042abb2  e8af7a5500           call 0x982666
+// 0042abb7  5f                   pop edi
+// 0042abb8  8b542414             mov edx, dword ptr [esp + 0x14]
+// 0042abbc  8b442410             mov eax, dword ptr [esp + 0x10]
+// 0042abc0  52                   push edx
+// 0042abc1  50                   push eax
+// 0042abc2  53                   push ebx
+// 0042abc3  8d4e54               lea ecx, [esi + 0x54]
+// 0042abc6  e825705900           call 0x9c1bf0
+// 0042abcb  5e                   pop esi
+// 0042abcc  5b                   pop ebx
+// 0042abcd  c20c00               ret 0xc
+// copied from an identical function in another client (function ?fn_ROCX000000_00422f70@CRobloxTreeCtrl@@QAEXIII@Z)
+
+// from server: 86% by king_originala
+// roc 2008-06 00422f70  unit: CRobloxTreeCtrl  size: 80 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 00422f70
 //
-namespace std{
-template _CRTIMP2 bool __cdecl operator==(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-template _CRTIMP2 bool __cdecl operator==(
-   const unsigned short *,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-template _CRTIMP2 bool __cdecl operator==(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const unsigned short *);
-template _CRTIMP2 bool __cdecl operator<(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-template _CRTIMP2 bool __cdecl operator>(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-#if BOOST_WORKAROUND(BOOST_MSVC, > 1300) && BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1400))
-template<> _CRTIMP2 std::size_t __cdecl char_traits<unsigned short>::length(unsigned short const*);
-#endif
+// 00422f70  53                   push ebx
+// 00422f71  8b5c2408             mov ebx, dword ptr [esp + 8]
+// 00422f75  56                   push esi
+// 00422f76  8bf1                 mov esi, ecx
+// 00422f78  83fb71               cmp ebx, 0x71
+// 00422f7b  752b                 jne 0x422fa8
+// 00422f7d  8b4620               mov eax, dword ptr [esi + 0x20]
+// 00422f80  57                   push edi
+// 00422f81  8b3d142e8000         mov edi, dword ptr [0x802e14]
+// 00422f87  6a00                 push 0
+// 00422f89  6a09                 push 9
+// 00422f8b  680a110000           push 0x110a
+// 00422f90  50                   push eax
+// 00422f91  ffd7                 call edi
+// 00422f93  8b4e20               mov ecx, dword ptr [esi + 0x20]
+// 00422f96  50                   push eax
+// 00422f97  6a00                 push 0
+// 00422f99  680e110000           push 0x110e
+// 00422f9e  51                   push ecx
+// 00422f9f  ffd7                 call edi
+// 00422fa1  50                   push eax
+// 00422fa2  e837dc2700           call 0x6a0bde
+// 00422fa7  5f                   pop edi
+// 00422fa8  8b542414             mov edx, dword ptr [esp + 0x14]
+// 00422fac  8b442410             mov eax, dword ptr [esp + 0x10]
+// 00422fb0  52                   push edx
+// 00422fb1  50                   push eax
+// 00422fb2  53                   push ebx
+// 00422fb3  8d4e54               lea ecx, [esi + 0x54]
+// 00422fb6  e855b62b00           call 0x6de610
+// 00422fbb  5e                   pop esi
+// 00422fbc  5b                   pop ebx
+// 00422fbd  c20c00               ret 0xc
+#include <intrin.h>
+extern "C" __declspec(dllimport) long __stdcall SendMessageA(void*, unsigned int, unsigned int, long);
+
+extern "C" void __stdcall func_006a0bde(long);
+
+struct Handler
+{
+    void func_006de610(unsigned int, unsigned int, unsigned int);
+};
+
+struct CRobloxTreeCtrl
+{
+    char padding0[0x20];
+    void* window;
+    char padding1[0x30];
+    Handler handler;
+
+    void func_00422f70(unsigned int, unsigned int, unsigned int);
+};
+
+void CRobloxTreeCtrl::func_00422f70(unsigned int key, unsigned int repeat, unsigned int flags)
+{
+    if (key == 0x71)
+    {
+        long item = SendMessageA(window, 0x110a, 9, 0);
+        func_006a0bde(SendMessageA(window, 0x110e, 0, item));
+    }
+    handler.func_006de610(key, repeat, flags);
 }
-#endif
-
-
-#include <boost/regex.hpp>
-
-#endif
-
-

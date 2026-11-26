@@ -1,22 +1,39 @@
-// from server: 57% by atomic.potato
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ??$any_cast@V?$shared_ptr@VScriptContext@RBX@@@boost@@@boost@@YA?AV?$shared_ptr@VScriptContext@RBX@@@0@ABVany@0@@Z)
 
-extern "C" void* __cdecl sub_84e050(void*);
-
-struct LuaArguments {
-    void* field_0x0;
-    void* field_0x4;
-    void __cdecl assign(void* src);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement)
+namespace boost {
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    long use_count_;
+    long weak_count_;
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
 };
-
-void LuaArguments::assign(void* src) {
-    void* tmp = 0;
-    void* result = sub_84e050(src);
-    void** p = (void**)result;
-    field_0x0 = p[0];
-    field_0x4 = p[1];
-    if (field_0x4) {
-        _InterlockedExchangeAdd((volatile long*)((char*)field_0x4 + 4), 1);
-    }
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count();
+};
 }
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+};
+class any;
+template<typename ValueType> ValueType any_cast(any& operand);
+template<typename ValueType> inline ValueType any_cast(const any& operand)
+{
+    return any_cast<const ValueType&>(const_cast<any&>(operand));
+}
+}
+namespace RBX { class ScriptContext; }
+template boost::shared_ptr<RBX::ScriptContext> boost::any_cast<boost::shared_ptr<RBX::ScriptContext> >(const boost::any&);

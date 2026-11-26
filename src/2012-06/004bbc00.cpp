@@ -1,22 +1,40 @@
-// from server: 69% by atomic.potato
-extern "C" void sub_004bad30(void *, void *);
+// from server: 100% by Xemicl
+// copied from an identical function in another client (function ??0?$clone_impl@U?$error_info_injector@Vbad_function_call@boost@@@exception_detail@boost@@@exception_detail@boost@@QAE@ABV012@@Z)
 
-struct S
-{
-    int f(void *);
-    int v0;
-    char pad0[36];
-    int v1;
-    char pad1[16];
-    int v2;
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <stdexcept>
+namespace boost {
+class exception {
+protected:
+    exception();
+    exception(const exception&);
+    virtual ~exception();
+private:
+    void* data_; const char* fn_; const char* file_; int line_;
 };
-
-int S::f(void *arg)
+class bad_function_call : public std::runtime_error {
+public:
+    bad_function_call();
+};
+namespace exception_detail {
+template<class T> struct error_info_injector : public T, public exception {
+    explicit error_info_injector(const T& x);
+    ~error_info_injector() throw();
+};
+class clone_base { public: virtual ~clone_base() throw(); };
+template<class T> class clone_impl : public T, public clone_base {
+public:
+    explicit clone_impl(const T& x);
+    ~clone_impl() throw();
+};
+template<class T> error_info_injector<T> enable_error_info(const T& x);
+template<class T> clone_impl<T> enable_current_exception(const T& x);
+}
+__declspec(noreturn) void throw_bfc(const bad_function_call& e)
 {
-    sub_004bad30(this, arg);
-    v1 = 0x00b43c34;
-    v0 = 0x00b64c0c;
-    v2 = 0x00b64c04;
-    v1 = 0x00b64bf4;
-    return (int)this;
+    throw exception_detail::enable_current_exception(exception_detail::enable_error_info(e));
+}
 }

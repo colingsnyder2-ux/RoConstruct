@@ -1,14 +1,8 @@
-// from server: 97% by atomic.potato
-struct RBX_VPartInstance_EventDesc {
-    char pad[0x2ec];
-    int field_2ec;
-    void set(int);
-};
-
-extern "C" void __cdecl sub_414da0(void *);
-
-void RBX_VPartInstance_EventDesc::set(int value)
-{
-    field_2ec = value;
-    sub_414da0((void *)0xe35f48);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct C{ int n; };
+extern char sym[];
+void __stdcall g(const char*);
+struct S{ char p[0x2ec]; int x; void f(C); };
+void S::f(C a){ x = a.n; g(sym); }
