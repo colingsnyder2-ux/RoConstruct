@@ -1,140 +1,40 @@
-// from server: 52% by Intel
-extern "C" unsigned char g_e580b3;
-extern "C" int g_e16540;
-extern "C" int g_e16588;
-extern "C" int g_b57680;
-extern "C" int (__cdecl *g_e5809c)(const char*, const char*, unsigned int);
-extern "C" void __cdecl sub_972290(unsigned char, const char*);
-
-extern "C" const char str_b42f90[];
-extern "C" const char str_b42fa8[];
-extern "C" const char str_b43010[];
-extern "C" const char str_b43080[];
-extern "C" const char str_b4311c[];
-extern "C" const char str_b43160[];
-extern "C" const char str_b431d0[];
-extern "C" const char str_b431e8[];
-extern "C" const char str_b43284[];
-extern "C" const char str_40ca10[];
-
-struct Value { int x; };
-Value& func_0040bee0();
-void* sub_004015a0(int, int);
-void* sub_004019d0(void*);
-void* sub_00466420(void*);
-void* sub_00457100(void*);
-void sub_0067f480();
-
-struct FactoryProduct {
-    void* method();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#define _SECURE_SCL 0
+#define _HAS_ITERATOR_DEBUGGING 0
+#include <map>
+struct Name;
+extern unsigned char g_assertEnabled;
+extern char (__cdecl *g_assertHook)(const char*, const char*, int);
+void __cdecl g_assertFail(unsigned char, const char*);
+extern void* const g_initPtr;
+const Name& initDirect();
+const Name& instance();
+void __cdecl callOnce(int* flag, void (*fn)());
+extern int g_onceFlag;
+void onceFn();
+#define FILE_ "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h"
+#define ASSERT_(cond, cs, line, lines) if (g_assertEnabled && !(cond)) { if (!g_assertHook || !g_assertHook(cs, FILE_, line)) g_assertFail(g_assertEnabled, cs " file: " FILE_ " line: " lines); }
+struct CreatorBase;
+struct Class {
+    typedef std::map<const Name*, CreatorBase*> Creators;
+    static Creators& getCreators();
 };
-
-void* FactoryProduct::method()
+inline const Name& className() { if (g_initPtr == 0) return initDirect(); callOnce(&g_onceFlag, &onceFn); return instance(); }
+struct CreatorBase {
+    static int magic;
+    static bool wasConstructed() { return magic == 0x29a; }
+    CreatorBase();
+    virtual ~CreatorBase();
+};
+CreatorBase::CreatorBase()
 {
-    int v1;
-    int v2;
-    int v3;
+    const Name& name = className();
+    ASSERT_(Class::getCreators().find(&name)==Class::getCreators().end(), "Class::getCreators().find(&name)==Class::getCreators().end()", 0xd7, "215")
+    ASSERT_(!wasConstructed(), "!wasConstructed()", 0xd8, "216")
+    Class::getCreators()[&name] = this;
+    magic = 0x29a;
+    ASSERT_(Class::getCreators().find(&name)!=Class::getCreators().end(), "Class::getCreators().find(&name)!=Class::getCreators().end()", 0xdd, "221")
+    ASSERT_(wasConstructed(), "wasConstructed()", 0xde, "222")}
 
-    int* this_ptr = &v1;
-    this_ptr = (int*)this;
-
-    *this_ptr = 0xb44710;
-
-    if (g_b57680 == 0)
-    {
-        sub_0067f480();
-    }
-    else
-    {
-        sub_004015a0((int)str_40ca10, g_e16588);
-        func_0040bee0();
-    }
-
-    void* edi = sub_004019d0(&v2);
-
-    if (g_e580b3 != 0)
-    {
-        v3 = (int)edi;
-        void* esi_ptr = sub_004019d0(&v2);
-        int esi = *(int*)((int)esi_ptr + 4);
-        void* eax_ptr = sub_004019d0(&v3);
-        int eax_val = *(int*)sub_00466420(eax_ptr);
-
-        if (eax_val != esi)
-        {
-            if (g_e5809c != 0)
-            {
-                if (g_e5809c(str_b43284, str_b42fa8, 0xd7))
-                {
-                    goto LABEL_C0;
-                }
-            }
-            sub_972290(g_e580b3, str_b431e8);
-        }
-    LABEL_C0:
-        if (g_e580b3 != 0)
-        {
-            if (g_e16540 != 0x29a)
-            {
-                if (g_e5809c != 0)
-                {
-                    if (g_e5809c(str_b431d0, str_b42fa8, 0xd8))
-                    {
-                        goto LABEL_10B;
-                    }
-                }
-                sub_972290(g_e580b3, str_b43160);
-            }
-        LABEL_10B:
-            v3 = (int)edi;
-            void* esi_ptr2 = sub_004019d0(&v2);
-            int esi2 = *(int*)((int)esi_ptr2 + 4);
-            void* eax_ptr2 = sub_004019d0(&v3);
-            int eax_val2 = *(int*)sub_00466420(eax_ptr2);
-
-            if (eax_val2 == esi2)
-            {
-                if (g_e580b3 != 0)
-                {
-                    if (g_e16540 == 0x29a)
-                    {
-                        if (g_e5809c != 0)
-                        {
-                            if (g_e5809c(str_b4311c, str_b42fa8, 0xdd))
-                            {
-                                goto LABEL_1E0;
-                            }
-                        }
-                        sub_972290(g_e580b3, str_b43080);
-                    }
-                }
-            }
-            else
-            {
-                if (g_e580b3 != 0)
-                {
-                    if (g_e16540 != 0x29a)
-                    {
-                        if (g_e5809c != 0)
-                        {
-                            if (g_e5809c(str_b42f90, str_b42fa8, 0xde))
-                            {
-                                goto LABEL_1E0;
-                            }
-                        }
-                        sub_972290(g_e580b3, str_b43010);
-                    }
-                }
-            }
-        LABEL_1E0:;
-        }
-    }
-
-    v3 = (int)edi;
-    void* eax_ptr3 = sub_004019d0(&v3);
-    *(int*)sub_00457100(eax_ptr3) = (int)this_ptr;
-
-    g_e16540 = 0x29a;
-
-    return this_ptr;
-}

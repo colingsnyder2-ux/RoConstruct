@@ -1,491 +1,58 @@
-// from server: 57% by intel
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-net Players.cpp
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement, _InterlockedDecrement)
 
-// Candidate translation unit (score above; library headers required).
-#include <RakPeer.h>
-#include <BitStream.h>
-#include "Client.h"
-#include "Server.h"
-#include "Players.h"
-#include "Streaming.h"
-#include "IdManager.h"
-#include "PacketIds.h"
-#include "v8datamodel/GameSettings.h"
-#include "v8datamodel/Teams.h"
-#include "util/Http.h"
-#include "util/standardout.h"
-
-template<class Class>
-class PluginInterfaceAdapter : public PluginInterface
-{
-private:
-	Class* c;
-protected:
-	PluginInterfaceAdapter(Class* c)
-		: PluginInterface(),
-		  c(c)
-	{
-	}
-public:
-	virtual PluginReceiveResult OnReceive(RakPeerInterface* peer, Packet* packet)
-	{
-		return c->OnReceive(peer, packet) ? RR_CONTINUE_PROCESSING : RR_STOP_PROCESSING_AND_DEALLOCATE;
-	}
+struct sp_counted_base {
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy() = 0;
+    long use_count_;
+    long weak_count_;
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            if (_InterlockedDecrement(&weak_count_) == 0) destroy();
+        }
+    }
+    void add_ref() { _InterlockedIncrement(&use_count_); }
 };
 
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, void(boost::shared_ptr<RBX::Instance>, std::string), 2> funcReportAbuse(&RBX::Network::Players::reportAbuse, "ReportAbuse", "player", "message", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance>>>(void), 0> func_players(&RBX::Network::Players::getPlayers, "players", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance>>>(void), 0> func_GetPlayers(&RBX::Network::Players::getPlayers, "GetPlayers", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<RBX::Instance>(int), 1> func_createLocalPlayer(&RBX::Network::Players::createLocalPlayer, "CreateLocalPlayer", "userId", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, void(std::string), 1> func_setAbuseReportUrl(&RBX::Network::Players::setAbuseReportUrl, "SetAbuseReportUrl", "url", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<RBX::Instance>(boost::shared_ptr<RBX::Instance>), 1> func_playerFromCharacterOld(&RBX::Network::Players::playerFromCharacter, "playerFromCharacter", "character", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<RBX::Instance>(boost::shared_ptr<RBX::Instance>), 1> func_playerFromCharacter(&RBX::Network::Players::playerFromCharacter, "GetPlayerFromCharacter", "character", RBX::Reflection::FunctionDescriptor::AnyCaller);
+struct shared_count {
+    sp_counted_base* pi;
+    shared_count() : pi(0) {}
+    shared_count(const shared_count& r) : pi(r.pi) { if (pi) pi->add_ref(); }
+    ~shared_count() { if (pi) pi->release(); }
+};
 
-static RBX::Reflection::SignalDesc<RBX::Network::Players, void(boost::shared_ptr<RBX::Instance>)> event_PlayerAdded("PlayerAdded", "player");
-static RBX::Reflection::SignalDesc<RBX::Network::Players, void(boost::shared_ptr<RBX::Instance>)> event_PlayerRemoving("PlayerRemoving", "player");
+struct Base1 { int pad; };
+struct Other { char a[0x18]; };
+struct Derived : Other, Base1 { int x; };
+struct Creator : Derived {};
 
-static RBX::Reflection::PropDescriptor<RBX::Network::Players, int> propPlayerCount("NumPlayers", "Data", &RBX::Network::Players::numPlayers, NULL, RBX::Reflection::PropertyDescriptor::UI);
-static RBX::Reflection::PropDescriptor<RBX::Network::Players, int> propPlayerMaxCount("MaxPlayers", "Data", &RBX::Network::Players::getMaxPlayers, &RBX::Network::Players::setMaxPlayers, RBX::Reflection::PropertyDescriptor::STANDARD);
+struct sp_Derived {
+    Derived* px;
+    shared_count pn;
+};
+struct sp_Base {
+    Base1* px;
+    shared_count pn;
+    sp_Base(const sp_Derived& r) : px(r.px), pn(r.pn) {}
+};
 
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<RBX::Instance>(int), 1> func_GetPlayerByID(&RBX::Network::Players::getPlayerByID, "GetPlayerByID", "userID", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, void(std::string), 1> funcChat(&RBX::Network::Players::chat, "Chat", "message", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
+extern "C" void __cdecl sub_972290(unsigned char, const char*);
+sp_Derived __cdecl sub_4141e0();
+extern unsigned char byte_E580B3;
+extern int dword_E1653C;
+extern char (__cdecl *dword_E5809C)(const char*, const char*, int);
 
-RBX::Reflection::RefPropDescriptor<RBX::Network::Players, RBX::Network::Player> RBX::Network::Players::propLocalPlayer("LocalPlayer", "Data", &RBX::Network::Players::getLocalPlayer, NULL, RBX::Reflection::PropertyDescriptor::STANDARD);
-
-static void writeMessage(const RBX::Network::AbuseReport::Message& msg, XmlElement* messages)
+sp_Base __stdcall sub_4148C0()
 {
-	XmlElement* message = messages->addChild(RBX::Name::declare("message", -1));
-	message->setValue(msg.text);
-	message->addAttribute(RBX::Name::declare("userID", -1), msg.userID);
-}
-
-namespace RBX
-{
-	namespace Network
-	{
-		char* sPlayers = "Players";
-
-		class Players::Plugin : public PluginInterfaceAdapter<Players>
-		{
-		public:
-			Plugin(Players* players)
-				: PluginInterfaceAdapter<Players>(players)
-			{
-			}
-		};
-		
-		Players::Players()
-			: players(std::vector<boost::shared_ptr<Instance>>()),
-			  peer(NULL),
-			  maxPlayers(12)
-		{
-			setName("Players");
-			plugin.reset(new Plugin(this));
-		}
-
-		Players::~Players()
-		{
-			if (peer)
-				peer->DetachPlugin(plugin.get());
-
-			peer = NULL;
-		}
-
-		bool Players::clientIsPresent(const Instance* context, bool testInDatamodel)
-		{
-			return Client::clientIsPresent(context, testInDatamodel);
-		}
-
-		bool Players::askAddChild(const Instance* instance) const
-		{
-			return dynamic_cast<const Player*>(instance) != NULL;
-		}
-
-		void Players::setConnection(RakPeerInterface* peer)
-		{
-			if (this->peer)
-				this->peer->DetachPlugin(plugin.get());
-
-			this->peer = peer;
-
-			if (peer)
-				peer->AttachPlugin(plugin.get());
-		}
-
-		Player* Players::findLocalPlayer(const Instance* context)
-		{
-			Players* players = ServiceProvider::find<Players>(context);
-			return players ? players->getLocalPlayer() : NULL;
-		}
-
-		ModelInstance* Players::findLocalCharacter(const Instance* context)
-		{
-			Player* player = Players::findLocalPlayer(context);
-			return player ? player->getCharacter() : NULL;
-		}
-
-		void Players::setAbuseReportUrl(std::string value)
-		{
-			if (value.empty())
-				abuseReporter.reset(NULL);
-			else
-				abuseReporter.reset(new AbuseReporter(value));
-		}
-
-		void Players::setMaxPlayers(int value)
-		{
-			if (value != maxPlayers)
-			{
-				maxPlayers = value;
-				raisePropertyChanged(propPlayerMaxCount);
-			}
-		}
-
-		void Players::reportAbuse(boost::shared_ptr<Instance> player, std::string comment)
-		{
-			reportAbuse(dynamic_cast<Player*>(player.get()), comment);
-		}
-
-		void Players::reportAbuse(Player* player, std::string comment)
-		{
-			if (abuseReporter)
-			{
-				StandardOut::singleton()->print(MESSAGE_INFO, "Submitting abuse report from %s", player ? player->getName().c_str() : "[[[anonymous]]]");
-				
-				AbuseReport r;
-				r.submitterID = localPlayer ? localPlayer->getUserID() : 0;
-				r.allegedAbuserID = player ? player->getUserID() : 0;
-				r.comment = comment;
-
-				abuseReporter->add(r, chatHistory);
-			}
-			else
-			{
-				StandardOut::singleton()->print(MESSAGE_INFO, "Sending abuse report to game server via Raknet");
-				if (!peer)
-					throw std::runtime_error("Can\'t report abuse: Not in a networked game");
-
-				RakNet::BitStream bitStream;
-				bitStream << (unsigned char)ID_REPORT_ABUSE;
-				bitStream << (localPlayer ? localPlayer->getUserID() : 0);
-				bitStream << (player ? player->getUserID() : 0);
-				bitStream << comment;
-
-				peer->Send(&bitStream, HIGH_PRIORITY, RELIABLE, 2, UNASSIGNED_SYSTEM_ADDRESS, true);
-			}
-		}
-
-		Player* Players::getPlayerFromCharacter(Instance* character)
-		{
-			Players* players = ServiceProvider::find<Players>(character);
-			if (players)
-			{
-				boost::shared_ptr<Instance> found = players->playerFromCharacter(shared_from(character));
-				return static_cast<Player*>(found.get());
-			}
-			else
-			{
-				return NULL;
-			}
-		}
-
-		void Players::chat(std::string message)
-		{
-			if (!localPlayer)
-				throw std::runtime_error("No local Player to chat from");
-
-			RakNet::BitStream bitStream;
-			bitStream << (unsigned char)ID_CHAT_ALL;
-
-			Guid::Data data;
-			localPlayer->getGuid().extract(data);
-
-			bitStream << data.scope->name;
-			bitStream << data.index;
-			bitStream << message;
-
-			peer->Send(&bitStream, MEDIUM_PRIORITY, RELIABLE, 2, UNASSIGNED_SYSTEM_ADDRESS, true);
-
-			ChatMessage event = {message, localPlayer, boost::shared_ptr<Player>()};
-			Notifier<Players, ChatMessage>::raise(event);
-		}
-
-		bool Players::backendProcessing(const Instance* context, bool testInDatamodel)
-		{
-			const ServiceProvider* sp = ServiceProvider::findServiceProvider(context);
-			RBXASSERT(!testInDatamodel || sp);
-
-			return sp && !Client::clientIsPresent(context, testInDatamodel);
-		}
-
-		bool Players::frontendProcessing(const Instance* context, bool testInDatamodel)
-		{
-			const ServiceProvider* sp = ServiceProvider::findServiceProvider(context);
-			RBXASSERT(!testInDatamodel || sp);
-
-			return sp && !Server::serverIsPresent(context, testInDatamodel);
-		}
-
-		boost::shared_ptr<Instance> Players::playerFromCharacter(boost::shared_ptr<Instance> character)
-		{
-			boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> myPlayers = getPlayers();
-
-			std::vector<boost::shared_ptr<Instance>>::const_iterator iter = myPlayers->begin();
-			std::vector<boost::shared_ptr<Instance>>::const_iterator end = myPlayers->end();
-
-			for (; iter != end; iter++)
-			{
-				if (static_cast<Player*>(iter->get())->getCharacter() == static_cast<ModelInstance*>(character.get()))
-					return *iter;
-			}
-
-			return boost::shared_ptr<Instance>();
-		}
-
-		boost::shared_ptr<Instance> Players::getPlayerByID(int userID)
-		{
-			std::vector<boost::shared_ptr<Instance>>::const_iterator iter = players->begin();
-			std::vector<boost::shared_ptr<Instance>>::const_iterator end = players->end();
-
-			for (; iter != end; iter++)
-			{
-				if (static_cast<Player*>(iter->get())->getUserID() == userID)
-					return *iter;
-			}
-
-			return boost::shared_ptr<Instance>();
-		}
-
-		void Players::onEvent(const Player* source, CharacterAdded event)
-		{
-			RBXASSERT(backendProcessing(this, true));
-			const_cast<Player*>(source)->rebuildBackpack();
-		}
-
-		void Players::addChatMessage(const ChatMessage& message)
-		{
-			chatHistory.push_front(message);
-
-			while (chatHistory.size() > (size_t)GameSettings::singleton().chatHistory)
-			{
-				chatHistory.pop_back();
-			}
-
-			Notifier<Players, ChatMessage>::raise(message);
-			Player::event_Chatted.fire(message.source.get(), message.message, message.destination);
-		}
-
-		void Players::onChildAdded(Instance* child)
-		{
-			Player* player = dynamic_cast<Player*>(child);
-			if (!player)
-				return;
-
-			if (player->getUserID() > 0)
-			{
-				boost::shared_ptr<Instance> otherPlayer = getPlayerByID(player->getUserID());
-				if (otherPlayer)
-					otherPlayer->setParent(NULL);
-			}
-
-			boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& myPlayers = players.write();
-			myPlayers->push_back(shared_from(child));
-
-			if (backendProcessing(this, true))
-			{
-				player->Notifier<Player, CharacterAdded>::addListener(this);
-				player->rebuildBackpack();
-
-				if (Teams* teams = ServiceProvider::find<Teams>(this))
-					teams->assignNewPlayerToTeam(player);
-
-				event_PlayerAdded.fire(this, shared_from(player));
-			}
-		}
-		
-		void Players::onChildRemoving(Instance* child)
-		{
-			Player* player = dynamic_cast<Player*>(child);
-			if (!player)
-				return;
-
-			boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& myPlayers = players.write();
-			myPlayers->erase(std::find(myPlayers->begin(), myPlayers->end(), shared_from(child)));
-
-			if (backendProcessing(this, false))
-				event_PlayerRemoving.fire(this, shared_from(player));
-
-			Notifier<Player, CharacterAdded>::disconnect(player, this);
-		}
-
-		void Players::onChildChanged(Instance* instance, const PropertyChanged& event)
-		{
-			if (instance == localPlayer.get() && &event.getProperty().getDescriptor() == &Player::prop_SuperSafeChat)
-			{
-				bool s = localPlayer ? Player::prop_SuperSafeChat.getValue(localPlayer.get()) : false;
-				Notifier<Players, SuperSafeChanged>::raise(SuperSafeChanged(s));
-			}
-		}
-
-		boost::shared_ptr<Instance> Players::createLocalPlayer(int userId)
-		{
-			if (localPlayer)
-				throw std::runtime_error("Local player already exists");
-
-			localPlayer = Creatable::create<Player>();
-			Player::prop_userId.setValue(localPlayer.get(), userId);
-			localPlayer->setParent(this);
-			raisePropertyChanged(propLocalPlayer);
-
-			bool s = localPlayer ? Player::prop_SuperSafeChat.getValue(localPlayer.get()) : false;
-			Notifier<Players, SuperSafeChanged>::raise(SuperSafeChanged(s));
-
-			return localPlayer;
-		}
-
-		// 98% match
-		bool Players::OnReceive(RakPeerInterface* peer, Packet* packet)
-		{
-			switch (packet->data[0])
-			{
-			case ID_CHAT_ALL:
-				try
-				{
-					Instance* instance = NULL;
-					RakNet::BitStream inBitstream(packet->data, packet->length, false);
-					inBitstream.IgnoreBits(8);
-
-					Guid::Data id;
-
-					std::string foo;
-					inBitstream >> foo;
-					id.scope = &Name::lookup(foo);
-
-					inBitstream >> id.index;
-
-					IdManager* idManager = ServiceProvider::find<IdManager>(this);
-					if (idManager)
-						instance = idManager->getInstance(id);
-
-					std::string message;
-					inBitstream >> message;
-
-					if (!instance)
-					{
-						StandardOut::singleton()->print(MESSAGE_WARNING, "Chat message from unknown Player %s %s", packet->systemAddress.ToString(), message.c_str());
-					}
-					else if (instance->getParent() == this)
-					{
-						ChatMessage event = {message, shared_from_polymorphic_downcast<Player>(instance), boost::shared_ptr<Player>()};
-						addChatMessage(event);
-						peer->Send((const char*)packet->data, packet->length, MEDIUM_PRIORITY, RELIABLE_ORDERED, 2, packet->systemAddress, true);
-					}
-				}
-				catch (std::exception& e)
-				{
-					StandardOut::singleton()->print(MESSAGE_ERROR, "Players::OnReceive packet %d: %s", packet->data[0], e.what());
-				}
-				return false;
-
-			case ID_REPORT_ABUSE:
-				try
-				{
-					if (abuseReporter)
-					{
-						RakNet::BitStream inBitstream(packet->data, packet->length, false);
-						inBitstream.IgnoreBits(8);
-
-						AbuseReport r;
-						inBitstream >> r.submitterID;
-						inBitstream >> r.allegedAbuserID;
-						inBitstream >> r.comment;
-
-						abuseReporter->add(r, chatHistory);
-					}
-				}
-				catch (std::exception& e)
-				{
-					StandardOut::singleton()->print(MESSAGE_ERROR, "Players::OnReceive packet %d: %s", packet->data[0], e.what());
-				}
-				return false;
-			}
-
-			return true;
-		}
-
-		void AbuseReport::addMessage(const ChatMessage& cm)
-		{
-			int userId = cm.source ? Player::prop_userId.getValue(cm.source.get()) : 0;
-			AbuseReport::Message m = {userId, cm.message};
-			messages.push_back(m);
-		}
-
-		AbuseReporter::AbuseReporter(std::string abuseUrl)
-			: _data(new AbuseReporter::data)
-		{
-			requestProcessor.reset(new worker_thread(boost::bind(&AbuseReporter::processRequests, _data, abuseUrl), "rbx_abusereporter"));
-		}
-
-		void AbuseReporter::add(AbuseReport& r, const std::list<ChatMessage>& chatHistory)
-		{
-			std::for_each(chatHistory.begin(), chatHistory.end(), boost::bind(&AbuseReport::addMessage, boost::ref(r), _1));
-
-			{
-				boost::mutex::scoped_lock lock(_data->requestSync);
-				_data->queue.push(r);
-			}
-
-			requestProcessor->wake();
-		}
-
-		worker_thread::work_result AbuseReporter::processRequests(boost::shared_ptr<data> _data, std::string abuseUrl)
-		{
-			try
-			{
-				AbuseReport abuseReport;
-
-				{
-					boost::mutex::scoped_lock lock(_data->requestSync);
-					if (_data->queue.empty())
-						return worker_thread::done;
-
-					abuseReport = _data->queue.front();
-				}
-
-				std::stringstream body;
-
-				{
-					TextXmlWriter writer(body);
-
-					XmlElement root(Name::declare("report", -1));
-					root.addAttribute(Name::declare("userID", -1), abuseReport.submitterID);
-					root.addChild(new XmlElement(Name::declare("comment", -1), abuseReport.comment));
-					XmlElement* messages = root.addChild(new XmlElement(Name::declare("messages", -1)));
-
-					std::for_each(abuseReport.messages.begin(), abuseReport.messages.end(), boost::bind(&writeMessage, _1, messages));
-					writer.serialize(&root);
-					body.flush();
-				}
-
-				std::string response;
-				Http(abuseUrl).post(body, false, response);
-
-				StandardOut::singleton()->print(MESSAGE_INFO, "Posted abuse report to %s", abuseUrl.c_str());
-			}
-			catch (std::exception& e)
-			{
-				StandardOut::singleton()->print(MESSAGE_WARNING, "Unable to post abuse report to %s. %s", abuseUrl.c_str(), e.what());
-			}
-
-			{
-				boost::mutex::scoped_lock lock(_data->requestSync);
-				_data->queue.pop();
-			}
-
-			return worker_thread::more;
-		}
-	}
+    if (byte_E580B3 != 0 && dword_E1653C != 0x29a) {
+        if (dword_E5809C == 0 || !dword_E5809C("wasConstructed()", "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h", 0xca))
+            sub_972290(byte_E580B3, "wasConstructed() file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h line: 202");
+    }
+    return sp_Base(sub_4141e0());
 }

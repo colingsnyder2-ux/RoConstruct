@@ -1,35 +1,13 @@
-// from server: 52% by Intel
-struct Node {
-    Node* left;
-    Node* right;
-    Node* parent;
-    char field_5d;
-};
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 
-struct Iterator {
-    Node* current;
-    Node* getNext();
-};
-
-Node* Iterator::getNext() {
-    Node* node = current;
-    if (node->field_5d)
-        return current;
-
-    Node* right = node->right;
-    if (!right->field_5d) {
-        Node* leftmost = right;
-        while (!leftmost->left->field_5d)
-            leftmost = leftmost->left;
-        current = leftmost;
-        return current;
-    }
-
-    Node* parent = node->parent;
-    while (!parent->field_5d && node == parent->right) {
-        node = parent;
-        parent = parent->parent;
-    }
-    current = parent;
-    return current;
-}
+struct Node { Node* _Left; Node* _Parent; Node* _Right; char pad[0x5d-12]; char _Isnil; };
+static Node* Min(Node* p) { while (!p->_Left->_Isnil) p = p->_Left; return p; }
+struct It { Node* _Ptr;
+  void _Inc() {
+    if (_Ptr->_Isnil) ;
+    else if (!_Ptr->_Right->_Isnil) _Ptr = Min(_Ptr->_Right);
+    else { Node* p; while (!(p = _Ptr->_Parent)->_Isnil && _Ptr == p->_Right) _Ptr = p; _Ptr = p; }
+  } };
+void g(It* i) { i->_Inc(); }

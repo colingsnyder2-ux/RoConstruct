@@ -1,21 +1,32 @@
-// from server: 32% by atomic.potato
-extern "C" void __cdecl sub_4125D0();
-extern "C" void __cdecl sub_6CAB60();
-extern "C" void __cdecl sub_9831F5();
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+//
 
-extern unsigned char g_00e36f54;
-extern unsigned char g_00e36d70;
 
-struct S_00760640 {
-    void f_00760640();
+
+struct WaterDirArg
+{
+    char a;
+    char b;
+    int c;
+    int d;
+    WaterDirArg() : a(0), b(0), c(0), d(27) {}
+    WaterDirArg(const WaterDirArg& o);
+    ~WaterDirArg();
 };
 
-void S_00760640::f_00760640()
+extern int g_waterDirName;
+int __stdcall makeWaterDirDesc(const char* name, WaterDirArg arg, int extra);
+
+struct W4WaterCellDirectionEnumDesc
 {
-    if (!(g_00e36f54 & 1)) {
-        g_00e36f54 |= 1;
-        sub_4125D0();
-        sub_6CAB60();
-        sub_9831F5();
-    }
+    W4WaterCellDirectionEnumDesc(int x);
+    ~W4WaterCellDirectionEnumDesc();
+};
+
+const W4WaterCellDirectionEnumDesc& func_00781330()
+{
+    static W4WaterCellDirectionEnumDesc s(makeWaterDirDesc("LuaSettings", WaterDirArg(), 0));
+    return s;
 }

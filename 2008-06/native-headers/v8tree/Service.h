@@ -58,6 +58,12 @@ public:
 	ServiceProvider(void);   // INFERRED: ??0ServiceProvider@RBX@@QAE@XZ (header gap, header_gap_fill.py)
 protected:
 	void clearServices(void);   // INFERRED: ?clearServices@ServiceProvider@RBX@@IAEXXZ (header gap, header_gap_fill.py)
+	// INFERRED: 005726a0/005726c0/00572ca0/00572b40/00572bc0 vtable overrides (slots 5-8 + Notifier<ServiceAdded> slot 1)
+	virtual void onDescendentAdded(Instance* instance);
+	virtual void onDescendentRemoving(const boost::shared_ptr<Instance>& instance);
+	virtual void onChildAdded(Instance* child);
+	virtual void onChildRemoving(Instance* child);
+	virtual void onAddListener(Listener<ServiceProvider, ServiceAdded>* listener) const;
 };
 
 // Layout recovered from the existing ServiceClient declaration. Method bodies

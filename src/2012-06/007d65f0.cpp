@@ -1,17 +1,17 @@
-// from server: 45% by atomic.potato
-extern "C" void* __cdecl sub_54bbf0(void*);
-
-struct VPlayersRefPropDescriptor {
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-lang: cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Target { virtual void v0(); virtual void v1(); virtual void v2(); virtual void set(int, void* const&); };
+void* conv(void*);
+struct VModelInstance {
     char pad[0x2c];
-    void* field_2c;
-    void __thiscall set(void* a, void* b);
+    Target* field_2c;
+    void method(int a, void* b);
 };
-
-void VPlayersRefPropDescriptor::set(void* a, void* b)
-{
-    void* v = a ? sub_54bbf0(a) : 0;
-    void* p = v;
-    void* obj = field_2c;
-    void* fn = *(void**)(*(char**)obj + 0xc);
-    ((void (__thiscall*)(void*, void*, void*))fn)(obj, b, p);
+void VModelInstance::method(int a, void* b) {
+    void* r;
+    if (b) r = conv(b); else r = 0;
+    b = r;
+    field_2c->set(a, b);
 }

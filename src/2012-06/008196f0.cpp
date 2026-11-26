@@ -1,19 +1,17 @@
-// from server: 22% by atomic.potato
-struct Inner {
-    char pad[4];
-    void init();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Sub { void init(); };
+struct Players {
+    int a;
+    Sub sub;
+    void g(int* out, int z);
+    int* f(int* out, int z);
 };
-
-struct S {
-    char pad0[4];
-    Inner inner;
-    void* method(void* a, void* b);
-};
-
-void Inner::init() {}
-
-void* S::method(void* a, void* b)
+int* Players::f(int* out, int z)
 {
-    inner.init();
-    return a;
+    volatile int zero = 0;
+    sub.init();
+    g(out, z);
+    return out;
 }

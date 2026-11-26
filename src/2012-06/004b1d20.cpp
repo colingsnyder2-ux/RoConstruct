@@ -1,32 +1,31 @@
-// from server: 82% by atomic.potato
-extern "C" unsigned char g_e580b3;
-extern "C" char (__cdecl *g_e5809c)(const char*, const char*, unsigned int);
-extern "C" void __cdecl sub_972290(unsigned char, const char*);
-extern "C" const char str_file[];
-extern "C" const char str_file_line[];
-
-struct FactoryProduct {
-    void* method();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#define EMPTY &getNullName() == this
+extern unsigned char g_assertEnabled;
+extern char (__cdecl *g_assertHook)(const char*, const char*, int);
+void __cdecl g_assertFail(unsigned char, const char*);
+#define FILE_ "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h"
+#define ASSERT_(cond, cs, line, lines) if (g_assertEnabled && !(cond)) { if (!g_assertHook || !g_assertHook(cs, FILE_, line)) g_assertFail(g_assertEnabled, cs " file: " FILE_ " line: " lines); }
+namespace RBX {
+class Name {
+public:
+    static const Name& getNullName();
+    bool empty() const { return EMPTY; }
 };
-
-extern "C" void* __cdecl sub_4b18a0();
-extern "C" void* __cdecl sub_47edb0(void*);
-extern "C" void* __cdecl sub_67f480();
-
-bool func_004b1d20()
+class ClassDescriptor {
+public:
+    const Name& name() const;
+};
+class Product {
+public:
+    static ClassDescriptor& classDescriptor();
+    static const Name& className() { return classDescriptor().name(); }
+    static bool isNullClassName();
+};
+bool Product::isNullClassName()
 {
-    if (g_e580b3) {
-        void* a = sub_4b18a0();
-        void* b = sub_47edb0(a);
-        void* c = sub_67f480();
-        if (c == b) {
-            if (g_e5809c) {
-                if (g_e5809c(str_file, str_file_line, 0x107)) {
-                    return false;
-                }
-            }
-            sub_972290(g_e580b3, (const char*)0xb5a010);
-        }
-    }
+    ASSERT_(!className().empty(), "!className().empty()", 0x107, "263")
     return false;
+}
 }

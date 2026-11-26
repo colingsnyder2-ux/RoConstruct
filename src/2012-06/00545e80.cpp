@@ -1,104 +1,68 @@
-// from server: 95% by tajop
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 extern "C" long __cdecl _InterlockedIncrement(volatile long*);
 extern "C" long __cdecl _InterlockedDecrement(volatile long*);
-#pragma intrinsic(_InterlockedIncrement)
-#pragma intrinsic(_InterlockedDecrement)
-
-struct sp_counted_base
-{
-    long use_count_;
-    long weak_count_;
+#pragma intrinsic(_InterlockedIncrement, _InterlockedDecrement)
+struct sp_counted_base {
+    long use_count_; long weak_count_;
     virtual ~sp_counted_base();
     virtual void dispose() = 0;
     virtual void destroy();
-    void add_ref_copy()
-    {
-        _InterlockedIncrement(&use_count_);
-    }
-    void release()
-    {
-        if (_InterlockedDecrement(&use_count_) == 0)
-        {
-            dispose();
-            weak_release();
-        }
-    }
-    void weak_release()
-    {
-        if (_InterlockedDecrement(&weak_count_) == 0)
-            destroy();
-    }
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void weak_release() { if (_InterlockedDecrement(&weak_count_) == 0) destroy(); }
+    void release() { if (_InterlockedDecrement(&use_count_) == 0) { dispose(); weak_release(); } }
 };
-
-struct shared_count
-{
+struct shared_count {
     sp_counted_base* pi_;
-    shared_count(sp_counted_base* p) : pi_(p)
-    {
-        if (p != 0)
-            p->add_ref_copy();
-    }
-    shared_count(const shared_count& r) : pi_(r.pi_)
-    {
-        if (pi_ != 0)
-            pi_->add_ref_copy();
-    }
-    ~shared_count()
-    {
-        if (pi_ != 0)
-            pi_->release();
-    }
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
 };
-
 struct Node;
-
-struct NodePtr
-{
-    Node* px;
-    shared_count pn;
-    NodePtr(Node* p, sp_counted_base* c) : px(p), pn(c)
-    {
-    }
+struct NodePtr {
+    Node* px; shared_count pn;
+    Node* get() const { return px; }
+    Node* operator->() const { return px; }
+    operator bool() const { return px != 0; }
 };
-
-struct HeldPtr
-{
-    Node* px;
-    sp_counted_base* pi_;
-    ~HeldPtr()
-    {
-    }
-};
-
-struct Node
-{
-    void attach(NodePtr other, int value);
-};
-
-struct S
-{
+struct Node { void attach(NodePtr other, int value); };
+struct S {
     NodePtr get(int key);
-    HeldPtr getHeld(int key);
     void f(int a, int b, int c);
 };
-
+// The callees' bodies are visible in the original translation unit; that is what lets the
+// compiler keep both shared_ptr locals' fields in registers across the calls.
+struct Table { int count; NodePtr* items; int* keys; };
+Table* lookupTable(S* s, int key);
+NodePtr S::get(int key)
+{
+    Table* t = lookupTable(this, key);
+    for (int i = 0; i < t->count; ++i) {
+        if (t->keys[i] == key) {
+            for (int j = i; j < t->count; ++j)
+                if (t->keys[j] == key + i)
+                    return t->items[j];
+            return t->items[i];
+        }
+    }
+    return t->items[0];
+}
+void noteAttach(Node* n, int value, Node* other);
+void Node::attach(NodePtr other, int value)
+{
+    for (int i = 0; i < value; ++i) {
+        noteAttach(this, i, other.px);
+        if (i == value / 2)
+            noteAttach(other.px, i, this);
+    }
+    noteAttach(this, value, other.px);
+}// Two shared_ptr locals, both real objects with destructors; the second is copied
+// by value into the call.
 void S::f(int a, int b, int c)
 {
     NodePtr first = get(a);
-    sp_counted_base* pi;
-    {
-        HeldPtr second = getHeld(b);
-        Node* p = first.px;
-        pi = second.pi_;
-        if (p != 0)
-        {
-            Node* q = second.px;
-            if (q != 0)
-                p->attach(NodePtr(q, pi), c);
-        }
-    }
-    if (pi != 0)
-        pi->release();
+    NodePtr second = get(b);
+    if (first && second)
+        first->attach(second, c);
 }

@@ -1,18 +1,11 @@
-// from server: 43% by atomic.potato
-typedef char StringObject;
-
-extern "C" void std_string_copy(StringObject *, const StringObject *);
-
-struct Frame
-{
-    int pad;
-    StringObject value;
-    int fields[7];
-    Frame *f(StringObject *);
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <string>
+struct S { std::string s; int v; };
+struct Shirt {
+    char pad[0x4];
+    S value;
+    S GetValue();
 };
-
-Frame *Frame::f(StringObject *source)
-{
-    std_string_copy(&value, source);
-    return (Frame *)source;
-}
+S Shirt::GetValue() { return value; }

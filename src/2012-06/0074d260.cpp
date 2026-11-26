@@ -1,49 +1,32 @@
-// from server: 38% by colin
-// roc-lang: cpp
+// from server: 100% by Xemicl
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Handle.cpp
+//
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Handle.h"
-#include "v8tree/Instance.h"
 
-namespace RBX
+
+struct WaterDirArg
 {
-	InstanceHandle::InstanceHandle(Instance* target)
-		: target(shared_from(target))
-	{
-	}
+    char a;
+    char b;
+    int c;
+    int d;
+    WaterDirArg() : a(0), b(0), c(0), d(17) {}
+    WaterDirArg(const WaterDirArg& o);
+    ~WaterDirArg();
+};
 
-	boost::shared_ptr<Instance> InstanceHandle::getTarget() const
-	{
-		return target;
-	}
+extern int g_waterDirName;
+int __stdcall makeWaterDirDesc(const char* name, WaterDirArg arg, int extra);
 
-	// inlined
-	bool InstanceHandle::operatorEqual(const InstanceHandle& other) const
-	{
-		return this->target == other.target;
-	}
+struct W4WaterCellDirectionEnumDesc
+{
+    W4WaterCellDirectionEnumDesc(int x);
+    ~W4WaterCellDirectionEnumDesc();
+};
 
-	bool InstanceHandle::operatorLess(const InstanceHandle& other) const
-	{
-		return this->target < other.target;
-	}
-
-	// inlined
-	bool InstanceHandle::operatorGreater(const InstanceHandle& other) const
-	{
-		return other.target < this->target;
-	}
-
-	bool InstanceHandle::empty() const
-	{
-		return target == NULL;
-	}
-
-	void InstanceHandle::linkTo(boost::shared_ptr<Instance> target)
-	{
-		this->target = target;
-	}
+const W4WaterCellDirectionEnumDesc& func_00781330()
+{
+    static W4WaterCellDirectionEnumDesc s(makeWaterDirDesc("ContentProvider", WaterDirArg(), 0));
+    return s;
 }

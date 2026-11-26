@@ -1,116 +1,29 @@
-// from server: 49% by colin
-// roc-lang: cpp
+// from server: 100% by Xemicl
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <typeinfo>
+extern "C" void __cdecl sub_972290(unsigned char, const char*);
+extern unsigned char byte_E580B3;
+extern char (__cdecl *dword_E5809C)(const char*, const char*, int);
+int __stdcall sub_52acb0(int, int, int, int);
+namespace RBX {
+class Base {
+public:
+    Base(int);
+    virtual ~Base();
+};
+class LocalBackpack : public Base {
+public:
+    LocalBackpack(int a1, int a2, int a3, int a4);
+    virtual ~LocalBackpack();
+};
 }
-
-void initMoo()
+using namespace RBX;
+LocalBackpack::LocalBackpack(int a1, int a2, int a3, int a4)
+    : Base(sub_52acb0(a1, a2, a3, a4))
 {
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	Name::NamMap::~NamMap()
-	{
-		for (std::map<std::string, Name*>::iterator iter = this->begin(); iter != this->end(); iter++)
-		{
-			delete iter->second;
-		}
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    if (byte_E580B3 != 0 && !(typeid(LocalBackpack) == typeid(LocalBackpack))) {
+        if (dword_E5809C == 0 || !dword_E5809C("Class::classType()==typeid(Class)", "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Reflection/Reflection.h", 0x1d5))
+            sub_972290(byte_E580B3, "Class::classType()==typeid(Class) file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Reflection/Reflection.h line: 469");
+    }
 }

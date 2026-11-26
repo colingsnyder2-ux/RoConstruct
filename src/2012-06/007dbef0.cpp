@@ -1,18 +1,24 @@
-// from server: 46% by atomic.potato
-struct EventDesc {
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Target { void run(int* out, int z); };
+struct A { char p[0x1c]; };
+struct B1 { int z; };
+struct Dd : A, B1 {};
+struct Client {
     char pad[0x2c];
-    int field_2c;
-    int invoke(int a, int b);
+    char* off;
+    int* f(int* out, B1* inst, int z);
 };
-
-int EventDesc::invoke(int a, int b)
+int* Client::f(int* out, B1* inst, int z)
 {
-    int result = 0;
-    if (a != 0) {
-        result = this->field_2c + (a - 0x1c);
-        ((EventDesc*)(a - 0x1c))->invoke(result, b);
-        return result;
+    volatile int zero = 0;
+    if (inst) {
+        Dd& d = static_cast<Dd&>(*inst);
+        Target* t = (Target*)(off + (int)&d);
+        t->run(out, z);
+        return out;
     }
-    *(int*)b = 0;
-    return result;
+    *out = 0;
+    return out;
 }

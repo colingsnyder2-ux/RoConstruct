@@ -1,19 +1,24 @@
-// from server: 24% by atomic.potato
-struct RBX_Settings {
-    char pad0[0x1c];
-    int field_1c;
-    char pad20[0x10];
-    int field_30;
-    int field_34;
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+int sub_6c11a0();
+struct Base {
+    char pad[0x18];
+    int m1c;
+    char pad2[0x10];
+    Base(int a, int b, int c, int d);
+    virtual ~Base();
 };
-
-extern "C" void __stdcall sub_006c7190();
-extern "C" int __stdcall sub_007092a0();
-
-void __stdcall RBX_Settings_ctor(RBX_Settings* self, int a, int b, int c, int d, int e, int f)
+struct Replicator : Base {
+    int m30;
+    int m34;
+    Replicator(int a1, int a2, int a3, int a4, int a5, int a6);
+    virtual ~Replicator();
+};
+Replicator::Replicator(int a1, int a2, int a3, int a4, int a5, int a6)
+    : Base(a3, a4, a5, a6)
 {
-    sub_006c7190();
-    self->field_1c = sub_007092a0();
-    self->field_30 = c;
-    self->field_34 = d;
+    m30 = a1;
+    m34 = a2;
+    m1c = sub_6c11a0();
 }

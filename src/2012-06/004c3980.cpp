@@ -1,12 +1,4 @@
-// from server: 59% by atomic.potato
-extern "C" void __stdcall sub_004c35d0(int, int, int, int, int);
-
-struct S
-{
-    void f(int, int, int);
-};
-
-void S::f(int a, int b, int c)
-{
-    sub_004c35d0(c, b, c, a, a);
-}
+// from server: 75% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+void __stdcall g(int,int,int,int,int); void __stdcall f(int a,int b,int c,int d){ g(a,a,b,c,d); }

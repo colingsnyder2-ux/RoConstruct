@@ -1,15 +1,6 @@
-// from server: 74% by atomic.potato
-struct S_00776fa0 {
-    char pad0[0x198];
-    int m_value;
-    void f(int);
-};
-
-extern "C" void __stdcall sub_00751080(S_00776fa0 *, int);
-extern "C" void __stdcall sub_007B92E0(int *, int);
-
-void S_00776fa0::f(int value)
-{
-    sub_00751080(this, value);
-    sub_007B92E0(&m_value, 2);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct X { void m(int); };
+struct S { char p[0x198]; X* x; void a(int); void f(int v); };
+void S::f(int v) { a(v); x->m(2); }

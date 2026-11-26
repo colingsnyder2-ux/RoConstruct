@@ -1,30 +1,33 @@
-// from server: 23% by Intel
-struct HumanoidController;
-
-extern "C" void __cdecl sub_5C9FE8(int, const char*, int);
-extern "C" void __stdcall sub_511180(void**);
-extern "C" void __stdcall sub_793330(void*, void*);
-
-struct HumanoidController {
-    bool getNext(void** out);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Iter {
+    void* cur;
+    Iter() : cur(0) {}
+    ~Iter();
+};
+struct E { int x; };
+struct HC {
+    bool next(Iter* it);
+    void handle(E* e);
     void process(void* arg);
 };
-
-bool HumanoidController::getNext(void** out) {
-    return false;
-}
-
-void HumanoidController::process(void* arg) {
-    void* local = 0;
-    unsigned char flag = *reinterpret_cast<unsigned char*>(0xE580E1);
-    if (flag != 0) {
-        sub_5C9FE8(flag, reinterpret_cast<const char*>(0xB44EB8), 0);
-    }
-    while (true) {
-        if (!getNext(&local)) {
+extern unsigned char g_flag;
+extern void __cdecl assertFail(int, const char*, int);
+extern void __cdecl visit(void* item, void* arg);
+extern const char g_msg[];
+void HC::process(void* arg)
+{
+    Iter it;
+    if (g_flag)
+        assertFail(g_flag, g_msg, 0);
+    for (;;) {
+        try {
+            while (next(&it))
+                visit(it.cur, arg);
             break;
+        } catch (E& e) {
+            handle(&e);
         }
-        sub_793330(arg, local);
     }
-    sub_511180(&local);
 }

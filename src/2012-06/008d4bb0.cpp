@@ -1,16 +1,23 @@
-// from server: 95% by atomic.potato
-extern "C" void __cdecl call_414da0(const char *);
-
-struct S_008d4bb0 {
-    char pad0[396];
-    int m_value;
-    void f(int value);
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+// The property value is a 4-byte class type passed by value (e.g. BrickColor);
+// a class-type parameter blocks the tail call that an int parameter would get.
+struct Desc { int x; };
+extern Desc desc;
+struct Value { int v; bool operator!=(const Value& o) const { return v != o.v; } };
+struct S {
+    char padding[0x18c];
+    Value member;
+    void raisePropertyChanged(const Desc&);
+    void f(Value);
 };
-
-void S_008d4bb0::f(int value)
+void S::f(Value value)
 {
-    if (m_value != value) {
-        m_value = value;
-        call_414da0("XSUV3");
+    if (member != value) {
+        member = value;
+        raisePropertyChanged(desc);
     }
 }

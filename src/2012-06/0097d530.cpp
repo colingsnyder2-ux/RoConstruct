@@ -1,13 +1,6 @@
-// from server: 39% by atomic.potato
-struct S
-{
-    int f(int);
-};
-
-extern "C" int __stdcall call_target(int, int);
-
-int S::f(int x)
-{
-    call_target(*(int*)this, x);
-    return 0;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
+void __stdcall G(int, int);
+struct S { int m; void f(int a); };
+void S::f(int a) { G(m, a); }

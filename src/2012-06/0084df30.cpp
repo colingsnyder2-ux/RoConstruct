@@ -1,45 +1,26 @@
-// from server: 29% by Intel
-struct TypeInfo {
-    virtual int __stdcall Equals(const TypeInfo* other) = 0;
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <typeinfo>
+namespace RBX { namespace Lua { class WeakFunctionRef {}; } }
+namespace boost { template<class E> __declspec(noreturn) void throw_exception(const E& e); }
+namespace rbx {
+class bad_placement_any_cast : public std::bad_cast {
+public:
+    virtual const char* what() const throw();
 };
-
-extern "C" void __stdcall RaiseException(unsigned long, unsigned long, unsigned long, unsigned long*);
-
-struct LuaArguments {
-    void* vfptr;
-    void* field_4;
-
-    int Method(void* arg);
+struct fxn_ptr_table { const std::type_info* type; };
+class placement_any {
+public:
+    const std::type_info& type() const { return table ? *table->type : typeid(void); }
+    fxn_ptr_table* table;
+    char storage[16];
 };
-
-void __stdcall sub_40f520(void*);
-
-int LuaArguments::Method(void* arg) {
-    void* vfptr = this->vfptr;
-    int type_id;
-
-    if (vfptr) {
-        type_id = *reinterpret_cast<int*>(vfptr);
-    } else {
-        type_id = 0xD60AC8;
-    }
-
-    if (type_id == 0xDA201C) {
-        int obj_type_id;
-        if (vfptr) {
-            obj_type_id = *reinterpret_cast<int*>(vfptr);
-        } else {
-            obj_type_id = 0xD60AC8;
-        }
-
-        if (reinterpret_cast<TypeInfo*>(obj_type_id)->Equals(reinterpret_cast<TypeInfo*>(0xDA201C))) {
-            unsigned long args[2];
-            args[0] = 0xB44128;
-            args[1] = 0xB44120;
-            RaiseException(0xE06D7363, 1, 2, args);
-            sub_40f520(0);
-        }
-    }
-
-    return reinterpret_cast<int>(this->field_4);
+template<class T> T& placement_any_cast(placement_any& operand)
+{
+    if (&operand.type() != &typeid(T) && operand.type() != typeid(T))
+        boost::throw_exception(bad_placement_any_cast());
+    return *reinterpret_cast<T*>(operand.storage);
+}
+template ::RBX::Lua::WeakFunctionRef& placement_any_cast<::RBX::Lua::WeakFunctionRef>(placement_any&);
 }

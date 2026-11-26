@@ -1,162 +1,21 @@
-// from server: 56% by colin
-// roc-lang: cpp
+// from server: 85% by Xemicl
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-render AggregatingSceneManager.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "RenderLib/AggregatingSceneManager.h"
-
-namespace RBX
-{
-	namespace Render
-	{
-		AggregatingSceneManager::AggregatingSceneManager(RenderScene* renderScene)
-			: SceneManager(renderScene)
-		{
-		}
-
-		AggregatingSceneManager::~AggregatingSceneManager() {}
-
-		void AggregatingSceneManager::addModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			addToScene(chunk);
-		}
-
-		void AggregatingSceneManager::removeModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			invalidSleepingModels.erase(chunk);
-			invalidMovingModels.erase(chunk);
-
-			G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-			if (aggregate.notNull())
-				deconstructAggregate(aggregate);
-
-			removeFromScene(chunk);
-			dequeueSleepingChunk(chunk);
-		}
-
-		void AggregatingSceneManager::setSleeping(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool sleeping)
-		{
-			if (sleeping)
-			{
-				bool erased = invalidMovingModels.erase(chunk) == 1;
-
-				if (erased)
-					invalidSleepingModels.insert(chunk);
-
-				queueSleepingChunk(chunk);
-			}
-			else
-			{
-				bool erased = invalidSleepingModels.erase(chunk) == 1;
-
-				if (erased)
-					invalidMovingModels.insert(chunk);
-
-				G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-				if (aggregate.notNull())
-					deconstructAggregate(aggregate);
-
-				dequeueSleepingChunk(chunk);
-			}
-		}
-
-		void AggregatingSceneManager::invalidateModel(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool isSleeping)
-		{
-			if (isSleeping)
-				invalidSleepingModels.insert(chunk);
-			else
-				invalidMovingModels.insert(chunk);
-		}
-
-		void AggregatingSceneManager::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				if (iter->second->dequeueSleepingChunk(chunk))
-					break;
-			}
-		}
-
-		void AggregatingSceneManager::clear()
-		{
-			invalidSleepingModels.clear();
-			invalidMovingModels.clear();
-
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				iter->second->clear();
-			}
-
-			clearScene();
-		}
-
-		bool AggregatingSceneManager::Bucket::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::vector<G3D::ReferenceCountedPointer<Chunk>>::iterator found = std::find(queue.begin(), queue.end(), chunk);
-
-			if (found != queue.end())
-			{
-				queue.erase(found);
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-
-		void AggregatingSceneManager::queueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			G3D::ReferenceCountedPointer<Bucket> queue;
-
-			{
-				BucketKey key(chunk);
-
-				std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.find(key);
-
-				if (iter == buckets.end())
-				{
-					queue = new Bucket;
-					buckets[key] = queue;
-				}
-				else
-				{
-					queue = iter->second;
-				}
-			}
-
-			queue->addToQueue(chunk);
-		}
-
-		bool AggregatingSceneManager::BucketKey::operator<(const AggregatingSceneManager::BucketKey& that) const
-		{
-			if (this->material < that.material)
-				return true;
-			if (this->material > that.material)
-				return false;
-
-			if (this->castsShadows < that.castsShadows)
-				return true;
-			if (this->castsShadows > that.castsShadows)
-				return false;
-
-			if (this->polygonOffset < that.polygonOffset)
-				return true;
-			if (this->polygonOffset > that.polygonOffset)
-				return false;
-
-			if (this->cullable < that.cullable)
-				return true;
-			else
-				return false;
-		}
-	}
-}
+// roc-flags: /O2 /GS- /EHsc /MD
+int sub_7092a0();
+namespace RBX {
+struct Base {
+    char pad[0x18];
+    int m1c;
+    char pad2[0x10];
+    Base(int a, int b, int c, int d);
+    virtual ~Base();
+};
+struct Pair { int m30; int m34; Pair(int a, int b) : m30(a), m34(b) {} };struct Value { void* p; char pad[0x3c]; Value() : p(0) {} Value(const Value&); ~Value(); }; struct Item { const void* type; Value value; Item(const void* t) : type(t) {} };
+struct RootInstance : Base, Pair {
+    int m38;
+    int m3c;
+    RootInstance(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8);
+    virtual ~RootInstance();
+    void init(int a, Item b);
+};
+RootInstance::RootInstance(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8) : Base(a4, a6, a7, a8), Pair(a1, a2), m38(a3), m3c(0) { init(a5, Item((const void*)sub_7092a0())); } }

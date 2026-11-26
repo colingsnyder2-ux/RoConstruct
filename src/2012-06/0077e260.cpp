@@ -1,87 +1,40 @@
-// from server: 40% by Intel
-struct FactoryProduct {
-    void* vftable;
-
-    FactoryProduct* ctor();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#define _SECURE_SCL 0
+#define _HAS_ITERATOR_DEBUGGING 0
+#include <map>
+struct Name;
+extern unsigned char g_assertEnabled;
+extern char (__cdecl *g_assertHook)(const char*, const char*, int);
+void __cdecl g_assertFail(unsigned char, const char*);
+extern void* const g_initPtr;
+const Name& initDirect();
+const Name& instance();
+void __cdecl callOnce(int* flag, void (*fn)());
+extern int g_onceFlag;
+void onceFn();
+#define FILE_ "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h"
+#define ASSERT_(cond, cs, line, lines) if (g_assertEnabled && !(cond)) { if (!g_assertHook || !g_assertHook(cs, FILE_, line)) g_assertFail(g_assertEnabled, cs " file: " FILE_ " line: " lines); }
+struct CreatorBase;
+struct Class {
+    typedef std::map<const Name*, CreatorBase*> Creators;
+    static Creators& getCreators();
 };
+inline const Name& className() { if (g_initPtr == 0) return initDirect(); callOnce(&g_onceFlag, &onceFn); return instance(); }
+struct CreatorBase {
+    static int magic;
+    static bool wasConstructed() { return magic == 0x29a; }
+    CreatorBase();
+    virtual ~CreatorBase();
+};
+CreatorBase::CreatorBase()
+{
+    const Name& name = className();
+    ASSERT_(Class::getCreators().find(&name)==Class::getCreators().end(), "Class::getCreators().find(&name)==Class::getCreators().end()", 0xd7, "215")
+    ASSERT_(!wasConstructed(), "!wasConstructed()", 0xd8, "216")
+    Class::getCreators()[&name] = this;
+    magic = 0x29a;
+    ASSERT_(Class::getCreators().find(&name)!=Class::getCreators().end(), "Class::getCreators().find(&name)!=Class::getCreators().end()", 0xdd, "221")
+    ASSERT_(wasConstructed(), "wasConstructed()", 0xde, "222")}
 
-extern "C" void __cdecl sub_67F480();
-extern "C" void __cdecl sub_4015A0(int, int);
-extern "C" void __cdecl sub_767DA0();
-extern "C" int __cdecl sub_4019D0();
-extern "C" int __cdecl sub_466420(int);
-extern "C" int __cdecl sub_457100(int);
-extern "C" int __cdecl sub_972290(int, int);
-extern "C" int __cdecl sub_E5809C(int, int, int);
-
-int g_dword_BC0BC0;
-int g_dword_E379DC;
-int g_dword_E5809C;
-char g_byte_E580B3;
-
-FactoryProduct* FactoryProduct::ctor() {
-    int v12;
-    int v14;
-    FactoryProduct* this_ptr = this;
-    int edi;
-    int esi;
-    int eax;
-
-    this->vftable = (void*)0xBB0DF8;
-
-    if (!g_dword_BC0BC0) {
-        sub_67F480();
-    } else {
-        sub_4015A0(0x768190, 0xE37A84);
-        sub_767DA0();
-    }
-
-    edi = sub_4019D0();
-
-    if (g_byte_E580B3) {
-        v12 = edi;
-        eax = sub_4019D0();
-        esi = *(int*)(eax + 4);
-        eax = sub_4019D0();
-        if (*(int*)sub_466420(eax) != esi) {
-            if (g_dword_E5809C && sub_E5809C(0xD7, 0xB42FA8, 0xB43284)) {
-            } else {
-                sub_972290(g_byte_E580B3, 0xB431E8);
-            }
-        }
-    }
-
-    if (g_byte_E580B3 && g_dword_E379DC == 0x29A) {
-        if (g_dword_E5809C && sub_E5809C(0xD8, 0xB42FA8, 0xB431D0)) {
-        } else {
-            sub_972290(g_byte_E580B3, 0xB43160);
-        }
-    }
-
-    v14 = edi;
-    eax = sub_4019D0();
-    *(int*)sub_457100(eax) = (int)this_ptr;
-
-    if (g_byte_E580B3) {
-        g_dword_E379DC = 0x29A;
-        v12 = edi;
-        eax = sub_4019D0();
-        esi = *(int*)(eax + 4);
-        eax = sub_4019D0();
-        if (*(int*)sub_466420(eax) == esi) {
-            if (g_dword_E5809C && sub_E5809C(0xDD, 0xB42FA8, 0xB4311C)) {
-            } else {
-                sub_972290(g_byte_E580B3, 0xB43080);
-            }
-        }
-
-        if (g_byte_E580B3 && g_dword_E379DC != 0x29A) {
-            if (g_dword_E5809C && sub_E5809C(0xDE, 0xB42FA8, 0xB42F90)) {
-            } else {
-                sub_972290(g_byte_E580B3, 0xB43010);
-            }
-        }
-    }
-
-    return this_ptr;
-}

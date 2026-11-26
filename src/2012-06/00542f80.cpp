@@ -1,14 +1,6 @@
-// from server: 73% by atomic.potato
-extern "C" void __stdcall sub_4289e0(void *, void *);
-
-struct S {
-    void *f(void *);
-};
-
-void *S::f(void *p)
-{
-    void *result;
-    sub_4289e0((char *)this + 0x1a4, p);
-    result = p;
-    return result;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct M { void m(void*); };
+struct S { char p[0x1a4]; M sub; void* f(void* a); };
+void* S::f(void* a) { volatile int z = 0; sub.m(a); return a; }

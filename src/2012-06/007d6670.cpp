@@ -1,83 +1,98 @@
-// from server: 61% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/DebrisService.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/DebrisService.h"
-#include "v8datamodel/TimerService.h"
-#include "util/standardout.h"
-
-static RBX::Reflection::BoundFuncDesc<RBX::DebrisService, void(boost::shared_ptr<RBX::Instance>, double), 2> func_AddItem(&RBX::DebrisService::addItem, "AddItem", "item", "lifetime", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::PropDescriptor<RBX::DebrisService, int> prop_MaxItems("MaxItems", "Data", &RBX::DebrisService::getMaxItems, &RBX::DebrisService::setMaxItems, RBX::Reflection::PropertyDescriptor::STANDARD);
-
-static void cleanup(boost::weak_ptr<RBX::Instance> item)
-{
-	try
-	{
-		boost::shared_ptr<RBX::Instance> i = item.lock();
-		if (i)
-			i->setParent(NULL);
-	}
-	catch (std::exception& e)
-	{
-		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
-	}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+namespace boost {
+namespace noncopyable_ {
+class noncopyable {
+protected:
+    noncopyable() {}
+    ~noncopyable() {}
+private:
+    noncopyable(const noncopyable&);
+    const noncopyable& operator=(const noncopyable&);
+};
 }
-
-namespace RBX
-{
-	char* sDebrisService = "Debris";
-
-	DebrisService::DebrisService()
-		: Base("Debris"),
-		  maxItems(300),
-		  timer(NULL)
-	{
-	}
-
-	void DebrisService::setMaxItems(int value)
-	{
-		if (value != maxItems)
-		{
-			if (value < 0)
-				throw std::runtime_error("DebrisService MaxItems must be greater than 0");
-
-			maxItems = value;
-			raisePropertyChanged(prop_MaxItems);
-			DebrisService::cleanup();
-		}
-	}
-
-	void DebrisService::addItem(boost::shared_ptr<Instance> item, double lifetime)
-	{
-		if (timer)
-			timer->delay(boost::bind(&::cleanup, item), lifetime);
-
-		queue.push(item);
-		DebrisService::cleanup();
-	}
-
-	void DebrisService::cleanup()
-	{
-		while ((int)queue.size() > maxItems)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-	}
-
-	void DebrisService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		while ((int)queue.size() > 0)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		timer = ServiceProvider::create<TimerService>(newProvider);
-	}
+typedef noncopyable_::noncopyable noncopyable;
+namespace detail { namespace function {
+union function_buffer {
+    void* obj_ptr;
+    double align;
+    char data[16];
+};
+struct vtable_base {
+    void (*manager)(const function_buffer& in, function_buffer& out, int op);
+};
+} }
+template<typename Signature> class function;
+template<typename R, typename T0>
+class function<R(T0)> {
+public:
+    detail::function::vtable_base* vtable;
+    detail::function::function_buffer functor;
+    function(const function& f) : vtable(0)
+    {
+        if (f.vtable) {
+            vtable = f.vtable;
+            f.vtable->manager(f.functor, functor, 0);
+        }
+    }
+    ~function();
+};
 }
+namespace RBX { class Humanoid { public: enum Status { A }; }; }
+namespace rbx {
+template<class T, class Count = int, int a = 0, int b = 0>
+class intrusive_ptr_target {
+};
+template<class T>
+class intrusive_ptr {
+    T* p;
+public:
+    intrusive_ptr() : p(0) {}
+    ~intrusive_ptr();
+};
+template<int N, typename Signature>
+class icallable {
+public:
+    virtual void call(RBX::Humanoid::Status) = 0;
+};
+template<class Base, class F, int N, typename Signature>
+class callable : public Base {
+    F func;
+public:
+    template<class A>
+    callable(const F& f, A a);
+    virtual void call(RBX::Humanoid::Status);
+};
+namespace signals {
+class connection {
+public:
+    class islot : boost::noncopyable, public rbx::intrusive_ptr_target<islot> {
+    public:
+        virtual ~islot();
+        virtual void disconnect() = 0;
+        virtual bool connected() const = 0;
+    };
+};
+template<typename Signature>
+class signal {
+public:
+    class slot : public connection::islot, public rbx::icallable<1, Signature> {
+    public:
+        rbx::intrusive_ptr<slot> next;
+        signal* sig;
+        slot(signal* s) : sig(s) {}
+        virtual void disconnect();
+        virtual bool connected() const;
+    };
+};
+}
+template<class Base, class F, int N, typename Signature>
+template<class A>
+callable<Base, F, N, Signature>::callable(const F& f, A a)
+    : Base(a), func(f)
+{
+}
+}
+typedef void Sig(RBX::Humanoid::Status);
+template rbx::callable<rbx::signals::signal<Sig>::slot, boost::function<Sig>, 1, Sig>::callable(const boost::function<Sig>&, rbx::signals::signal<Sig>*);

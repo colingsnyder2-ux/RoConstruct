@@ -1,45 +1,26 @@
-// from server: 32% by Intel
-struct TypeDescriptor {
-    void* pVFTable;
-    void* spare;
-    const char* name;
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <typeinfo>
+namespace RBX { namespace Network { namespace Players { enum ChatOption { ChatOption_e0 }; } } }
+namespace boost { template<class E> __declspec(noreturn) void throw_exception(const E& e); }
+namespace rbx {
+class bad_placement_any_cast : public std::bad_cast {
+public:
+    virtual const char* what() const throw();
 };
-
-extern "C" int __stdcall CompareTypeDescriptors(TypeDescriptor* a, TypeDescriptor* b);
-extern "C" void* __stdcall CreateExceptionObject(void* typeDesc, const char* name, int a3);
-extern "C" void __stdcall ThrowException(void* exception);
-
-struct W4ChatOption {
-    TypeDescriptor* typeInfo;
-
-    int EnumDesc(W4ChatOption* esi);
+struct fxn_ptr_table { const std::type_info* type; };
+class placement_any {
+public:
+    const std::type_info& type() const { return table ? *table->type : typeid(void); }
+    fxn_ptr_table* table;
+    char storage[16];
 };
-
-int W4ChatOption::EnumDesc(W4ChatOption* esi) {
-    TypeDescriptor* eax = esi->typeInfo;
-    TypeDescriptor* ecx;
-
-    if (eax)
-        ecx = *reinterpret_cast<TypeDescriptor**>(eax);
-    else
-        ecx = reinterpret_cast<TypeDescriptor*>(0xD60AC8);
-
-    if (ecx != reinterpret_cast<TypeDescriptor*>(0xD824AC)) {
-        TypeDescriptor* eax2;
-        if (eax)
-            eax2 = *reinterpret_cast<TypeDescriptor**>(eax);
-        else
-            eax2 = reinterpret_cast<TypeDescriptor*>(0xD60AC8);
-
-        if (CompareTypeDescriptors(eax2, reinterpret_cast<TypeDescriptor*>(0xD824AC))) {
-            void* exception = CreateExceptionObject(
-                reinterpret_cast<void*>(0xB44128),
-                ".?AV?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@",
-                0
-            );
-            ThrowException(exception);
-        }
-    }
-
-    return reinterpret_cast<int>(esi + 1);
+template<class T> T& placement_any_cast(placement_any& operand)
+{
+    if (&operand.type() != &typeid(T) && operand.type() != typeid(T))
+        boost::throw_exception(bad_placement_any_cast());
+    return *reinterpret_cast<T*>(operand.storage);
+}
+template ::RBX::Network::Players::ChatOption& placement_any_cast<::RBX::Network::Players::ChatOption>(placement_any&);
 }

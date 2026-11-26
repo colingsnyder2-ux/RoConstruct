@@ -1,87 +1,40 @@
-// from server: 40% by atomic.potato
-struct X_0055f670 {
-    void* f_0;
-    X_0055f670* run();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#define _SECURE_SCL 0
+#define _HAS_ITERATOR_DEBUGGING 0
+#include <map>
+struct Name;
+extern unsigned char g_assertEnabled;
+extern char (__cdecl *g_assertHook)(const char*, const char*, int);
+void __cdecl g_assertFail(unsigned char, const char*);
+extern void* const g_initPtr;
+const Name& initDirect();
+const Name& instance();
+void __cdecl callOnce(int* flag, void (*fn)());
+extern int g_onceFlag;
+void onceFn();
+#define FILE_ "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h"
+#define ASSERT_(cond, cs, line, lines) if (g_assertEnabled && !(cond)) { if (!g_assertHook || !g_assertHook(cs, FILE_, line)) g_assertFail(g_assertEnabled, cs " file: " FILE_ " line: " lines); }
+struct CreatorBase;
+struct Class {
+    typedef std::map<const Name*, CreatorBase*> Creators;
+    static Creators& getCreators();
 };
+inline const Name& className() { if (g_initPtr == 0) return initDirect(); callOnce(&g_onceFlag, &onceFn); return instance(); }
+struct CreatorBase {
+    static int magic;
+    static bool wasConstructed() { return magic == 0x29a; }
+    CreatorBase();
+    virtual ~CreatorBase();
+};
+CreatorBase::CreatorBase()
+{
+    const Name& name = className();
+    ASSERT_(Class::getCreators().find(&name)==Class::getCreators().end(), "Class::getCreators().find(&name)==Class::getCreators().end()", 0xd7, "215")
+    ASSERT_(!wasConstructed(), "!wasConstructed()", 0xd8, "216")
+    Class::getCreators()[&name] = this;
+    magic = 0x29a;
+    ASSERT_(Class::getCreators().find(&name)!=Class::getCreators().end(), "Class::getCreators().find(&name)!=Class::getCreators().end()", 0xdd, "221")
+    ASSERT_(wasConstructed(), "wasConstructed()", 0xde, "222")}
 
-extern "C" void* __cdecl sub_0067f480();
-extern "C" void __cdecl sub_004015a0(void*, void*);
-extern "C" void* __cdecl sub_0055dee0();
-extern "C" void* __cdecl sub_004019d0();
-extern "C" void* __cdecl sub_00466420();
-extern "C" void __cdecl sub_00972290(unsigned char, void*);
-extern "C" void* __cdecl sub_00457100();
-
-extern unsigned char byte_00e580b3;
-extern void* dword_00e5809c;
-extern int dword_00e23e10;
-
-X_0055f670* X_0055f670::run() {
-    f_0 = (void*)0xb73e80;
-    if (*(int*)0xbc49dc == 0) {
-        sub_0067f480();
-    } else {
-        sub_004015a0((void*)0x55e330, (void*)0xe23e20);
-        sub_0055dee0();
-    }
-    void* edi = sub_0055dee0();
-    if (byte_00e580b3 != 0) {
-        void* esi = *(void**)((char*)sub_004019d0() + 4);
-        void* eax = sub_004019d0();
-        void* r = sub_00466420();
-        if (*(void**)r != esi) {
-            void* fn = dword_00e5809c;
-            if (fn != 0) {
-                ((char(__cdecl*)(int, void*, void*))fn)(0xd7, (void*)0xb42fa8, (void*)0xb43284);
-                if (byte_00e580b3 != 0) {
-                    sub_00972290(byte_00e580b3, (void*)0xb431e8);
-                }
-            } else {
-                sub_00972290(byte_00e580b3, (void*)0xb431e8);
-            }
-        }
-        if (byte_00e580b3 != 0 && dword_00e23e10 == 0x29a) {
-            void* fn = dword_00e5809c;
-            if (fn != 0) {
-                ((char(__cdecl*)(int, void*, void*))fn)(0xd8, (void*)0xb42fa8, (void*)0xb431d0);
-                if (byte_00e580b3 != 0) {
-                    sub_00972290(byte_00e580b3, (void*)0xb43160);
-                }
-            } else {
-                sub_00972290(byte_00e580b3, (void*)0xb43160);
-            }
-        }
-    }
-    void* eax2 = sub_004019d0();
-    void* r2 = sub_00457100();
-    *(void**)r2 = this;
-    dword_00e23e10 = 0x29a;
-    if (byte_00e580b3 != 0) {
-        void* esi2 = *(void**)((char*)sub_004019d0() + 4);
-        void* eax3 = sub_004019d0();
-        void* r3 = sub_00466420();
-        if (*(void**)r3 == esi2) {
-            void* fn = dword_00e5809c;
-            if (fn != 0) {
-                ((char(__cdecl*)(int, void*, void*))fn)(0xdd, (void*)0xb42fa8, (void*)0xb4311c);
-                if (byte_00e580b3 != 0) {
-                    sub_00972290(byte_00e580b3, (void*)0xb43080);
-                }
-            } else {
-                sub_00972290(byte_00e580b3, (void*)0xb43080);
-            }
-        }
-        if (byte_00e580b3 != 0 && dword_00e23e10 != 0x29a) {
-            void* fn = dword_00e5809c;
-            if (fn != 0) {
-                ((char(__cdecl*)(int, void*, void*))fn)(0xde, (void*)0xb42fa8, (void*)0xb42f90);
-                if (byte_00e580b3 != 0) {
-                    sub_00972290(byte_00e580b3, (void*)0xb43010);
-                }
-            } else {
-                sub_00972290(byte_00e580b3, (void*)0xb43010);
-            }
-        }
-    }
-    return this;
-}

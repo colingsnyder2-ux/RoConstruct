@@ -1,58 +1,31 @@
-// from server: 64% by Intel
-struct Node
-{
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Node {
     Node* left;
-    Node* right;
     Node* parent;
-    char field_29;
+    Node* right;
+    char pad[0x1d];
+    char isnil;
 };
-
-struct Iterator
-{
-    Node* node;
-    void increment();
+struct TreeIterator {
+    Node* ptr;
+    void dec();
 };
-
-void Iterator::increment()
-{
-    Node* current = this->node;
-    if (current->field_29)
-    {
-        this->node = current->right;
-        return;
+void TreeIterator::dec() {
+    if (ptr->isnil) {
+        ptr = ptr->right;
+    } else if (!ptr->left->isnil) {
+        Node* p = ptr->left;
+        while (!p->right->isnil)
+            p = p->right;
+        ptr = p;
+    } else {
+        Node* p;
+        while (!(p = ptr->parent)->isnil && ptr == p->left)
+            ptr = p;
+        if (!ptr->isnil)
+            ptr = p;
     }
-
-    Node* left = current->left;
-    if (!left->field_29)
-    {
-        Node* leftRight = left->right;
-        if (!leftRight->field_29)
-        {
-            do
-            {
-                left = leftRight;
-                leftRight = left->right;
-            } while (!leftRight->field_29);
-        }
-        this->node = left;
-        return;
-    }
-
-    Node* parent = current->parent;
-    if (!parent->field_29)
-    {
-        Node* currentNode = current;
-        do
-        {
-            if (currentNode != parent->left)
-                break;
-            this->node = parent;
-            parent = parent->parent;
-            currentNode = this->node;
-        } while (!parent->field_29);
-    }
-
-    Node* currentCheck = this->node;
-    if (!currentCheck->field_29)
-        this->node = parent;
 }

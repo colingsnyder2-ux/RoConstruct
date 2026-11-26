@@ -1,55 +1,13 @@
-// from server: 45% by tester
-struct Node {
-    Node* left;
-    Node* parent;
-    Node* right;
-    char color;
-    char pad[0x39 - 0x0d];
-};
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 
-struct Map {
-    Node* header;
-    void erase_one();
-};
-
-void Map::erase_one()
-{
-    Node* n = header;
-    if (n->color != 0) {
-        return;
-    }
-    Node* p = n->parent;
-    if (p->color != 0) {
-        Node* q = n->left;
-        if (q->color != 0) {
-            header = p;
-            return;
-        }
-        while (1) {
-            Node* r = q->left;
-            if (r->color != 0) {
-                break;
-            }
-            q = r;
-        }
-        header = q;
-        return;
-    }
-    Node* q = p->left;
-    if (q->color != 0) {
-        header = q;
-        return;
-    }
-    while (1) {
-        Node* r = header;
-        if (r != q->right) {
-            break;
-        }
-        header = q;
-        q = q->left;
-        if (q->color != 0) {
-            break;
-        }
-    }
-    header = q;
-}
+struct Node { Node* _Left; Node* _Parent; Node* _Right; char pad[0x39-12]; char _Isnil; };
+static Node* Min(Node* p) { while (!p->_Left->_Isnil) p = p->_Left; return p; }
+struct It { Node* _Ptr;
+  void _Inc() {
+    if (_Ptr->_Isnil) ;
+    else if (!_Ptr->_Right->_Isnil) _Ptr = Min(_Ptr->_Right);
+    else { Node* p; while (!(p = _Ptr->_Parent)->_Isnil && _Ptr == p->_Right) _Ptr = p; _Ptr = p; }
+  } };
+void g(It* i) { i->_Inc(); }

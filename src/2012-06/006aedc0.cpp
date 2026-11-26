@@ -1,29 +1,24 @@
-// from server: 35% by tester
-struct FunctionDescriptor {
-    FunctionDescriptor(const void* classDesc, const char* name, int security, int attributes);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+int sub_6c11a0();
+struct Base {
+    char pad[0x18];
+    int m1c;
+    char pad2[0x10];
+    Base(int a, int b, int c, int d);
+    virtual ~Base();
 };
-
-struct FuncDesc : FunctionDescriptor {
-    FuncDesc(const char* name, int security, int attributes)
-        : FunctionDescriptor(0, name, security, attributes) {}
+struct Replicator : Base {
+    int m30;
+    int m34;
+    Replicator(int a1, int a2, int a3, int a4, int a5, int a6);
+    virtual ~Replicator();
 };
-
-struct BoundFuncDesc : FuncDesc {
-    void* function;
-    int field_1c;
-    int field_30;
-    int field_34;
-
-    BoundFuncDesc(void* function, const char* name, int security, int attributes);
-};
-
-extern "C" int __cdecl sub_7090E0();
-
-BoundFuncDesc::BoundFuncDesc(void* function_, const char* name, int security, int attributes)
-    : FuncDesc(name, security, attributes)
+Replicator::Replicator(int a1, int a2, int a3, int a4, int a5, int a6)
+    : Base(a3, a4, a5, a6)
 {
-    this->function = function_;
-    this->field_1c = sub_7090E0();
-    this->field_30 = 0;
-    this->field_34 = 0;
+    m30 = a1;
+    m34 = a2;
+    m1c = sub_6c11a0();
 }

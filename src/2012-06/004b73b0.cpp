@@ -1,19 +1,4 @@
-// from server: 65% by atomic.potato
-struct CVideoStream {
-    char pad[0x24];
-    char field_24;
-    char pad2[0x98 - 0x25];
-    void* field_98;
-    int Stop();
-};
-
-int CVideoStream::Stop()
-{
-    field_24 = 0;
-    void* p = field_98;
-    if (p == 0)
-        return 0x8004020a;
-    int* vtbl = *(int**)p;
-    int (__stdcall *fn)(void*) = (int (__stdcall *)(void*))vtbl[6];
-    return fn(p);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /MD
+struct I{ virtual long __stdcall a0(); virtual long __stdcall a1(); virtual long __stdcall a2(); virtual long __stdcall a3(); virtual long __stdcall a4(); virtual long __stdcall a5(); virtual long __stdcall m6(); }; struct X{ char p[0x24]; char c; char q[0x73]; I* i; long f(){ c=0; if(!i) return 0x8004020a; return i->m6(); } }; long k(X*x){return x->f();}

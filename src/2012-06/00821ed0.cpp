@@ -1,116 +1,56 @@
-// from server: 39% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <memory>
+#include <string>
+#include <typeinfo>
+extern unsigned char g_assertEnabled;
+extern char (__cdecl *g_assertHook)(const char*, const char*, int);
+void __cdecl g_assertFail(unsigned char, const char*);
+#define FILE_ "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Reflection/Reflection.h"
+#define ASSERT_(cond, cs, line, lines) if (g_assertEnabled && !(cond)) { if (!g_assertHook || !g_assertHook(cs, FILE_, line)) g_assertFail(g_assertEnabled, cs " file: " FILE_ " line: " lines); }
+namespace RBX {
+namespace Reflection {
+class ClassDescriptor;
+class PropertyDescriptor {
+public:
+    struct Functionality { int a; int b; int c; };
+    virtual ~PropertyDescriptor();
+};
+template<class PropType>
+class TypedPropertyDescriptor : public PropertyDescriptor {
+public:
+    class GetSet {
+    public:
+        int pad;
+        virtual PropType getValue(const void* object) const = 0;
+    };
+    TypedPropertyDescriptor(ClassDescriptor& classDescriptor, const char* name, const char* category, std::auto_ptr<GetSet> getset, Functionality flags, int security);
+    virtual ~TypedPropertyDescriptor();
+};
+template<class Class, class PropType>
+class PropDescriptor : public TypedPropertyDescriptor<PropType> {
+    typedef typename TypedPropertyDescriptor<PropType>::GetSet GetSet;
+    template<typename GetFunc, typename SetFunc>
+    static std::auto_ptr<GetSet> getset(GetFunc getFunc, SetFunc setFunc);
+public:
+    template<typename GetFunc, typename SetFunc>
+    PropDescriptor(const char* name, const char* category, GetFunc getFunc, SetFunc setFunc, PropertyDescriptor::Functionality flags, int security)
+        : TypedPropertyDescriptor<PropType>(Class::classDescriptor(), name, category, getset(getFunc, setFunc), flags, security)
+    {
+        ASSERT_(Class::classType()==typeid(Class), "Class::classType()==typeid(Class)", 0xae, "174")
+    }
+    virtual ~PropDescriptor();
+};
 }
-
-void initMoo()
-{
-	moo2();
+class B1 { public: int x; };
+class B2 { public: int y; };
+class BevelMesh : public B1, public B2 {
+public:
+    static const std::type_info& classType() { return typeid(BevelMesh); }
+    static Reflection::ClassDescriptor& classDescriptor();
+    std::string get() const;
+    void set(std::string);
+};
 }
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	Name::NamMap::~NamMap()
-	{
-		for (std::map<std::string, Name*>::iterator iter = this->begin(); iter != this->end(); iter++)
-		{
-			delete iter->second;
-		}
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
-}
+template RBX::Reflection::PropDescriptor<RBX::BevelMesh, std::string>::PropDescriptor(const char*, const char*, std::string (RBX::BevelMesh::*)() const, void (RBX::BevelMesh::*)(std::string), RBX::Reflection::PropertyDescriptor::Functionality, int);

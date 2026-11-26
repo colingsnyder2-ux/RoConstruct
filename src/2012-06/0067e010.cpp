@@ -1,24 +1,24 @@
-// from server: 39% by atomic.potato
-struct VTaBoundFuncDesc {
-    char pad0[0x1c];
-    int field1c;
-    char pad20[0x10];
-    int field30;
-    int field34;
-    void* field0;
-    void* construct(int, int, int, int, int, int);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+int sub_6c11a0();
+struct Base {
+    char pad[0x18];
+    int m1c;
+    char pad2[0x10];
+    Base(int a, int b, int c, int d);
+    virtual ~Base();
 };
-
-extern "C" void __stdcall sub_67d8b0(int, int, int, int, int, int);
-extern "C" int __stdcall sub_7092a0();
-
-void* VTaBoundFuncDesc::construct(int a, int b, int c, int d, int e, int f)
+struct Replicator : Base {
+    int m30;
+    int m34;
+    Replicator(int a1, int a2, int a3, int a4, int a5, int a6);
+    virtual ~Replicator();
+};
+Replicator::Replicator(int a1, int a2, int a3, int a4, int a5, int a6)
+    : Base(a3, a4, a5, a6)
 {
-    sub_67d8b0(a, b, c, d, e, f);
-    field0 = (void*)0xb8e594;
-    field30 = c;
-    field34 = d;
-    field1c = sub_7092a0();
-
-    return this;
+    m30 = a1;
+    m34 = a2;
+    m1c = sub_6c11a0();
 }

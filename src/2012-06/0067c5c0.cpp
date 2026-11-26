@@ -1,31 +1,32 @@
-// from server: 24% by Intel
-extern "C" void __stdcall func_004125d0();
-extern "C" void __stdcall func_006cab60();
-extern "C" void __stdcall func_009831f5();
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+//
 
-struct EnumDesc {
-    int f();
+
+
+struct WaterDirArg
+{
+    char a;
+    char b;
+    int c;
+    int d;
+    WaterDirArg() : a(0), b(0), c(0), d(27) {}
+    WaterDirArg(const WaterDirArg& o);
+    ~WaterDirArg();
 };
 
-int EnumDesc::f() {
-    int v1;
-    char v2[12];
-    int v3;
+extern int g_waterDirName;
+int __stdcall makeWaterDirDesc(const char* name, WaterDirArg arg, int extra);
 
-    if (*(char*)0xE294C4) {
-        return (int)0xE292E0;
-    }
+struct W4WaterCellDirectionEnumDesc
+{
+    W4WaterCellDirectionEnumDesc(int x);
+    ~W4WaterCellDirectionEnumDesc();
+};
 
-    *(char*)0xE294C4 = 1;
-    v3 = 0;
-    v2[0] = 0;
-    v2[1] = 0;
-    *(int*)&v2[4] = 0;
-    *(int*)&v2[8] = 27;
-
-    func_004125d0();
-    func_006cab60();
-    func_009831f5();
-
-    return (int)0xE292E0;
+const W4WaterCellDirectionEnumDesc& func_00781330()
+{
+    static W4WaterCellDirectionEnumDesc s(makeWaterDirDesc("TaskScheduler", WaterDirArg(), 0));
+    return s;
 }

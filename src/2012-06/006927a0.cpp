@@ -1,16 +1,11 @@
-// from server: 59% by atomic.potato
-struct S_func_006927a0
-{
-    char pad0[140];
-    char m_data[32];
-    void *f(void *arg);
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <string>
+struct S { std::string s; int v; };
+struct Shirt {
+    char pad[0x8c];
+    S value;
+    S GetValue();
 };
-
-extern "C" void std_string_copy(void *, const void *);
-
-void *S_func_006927a0::f(void *arg)
-{
-    std_string_copy(arg, this + 140);
-    *(int *)((char *)arg + 28) = *(int *)((char *)this + 168);
-    return arg;
-}
+S Shirt::GetValue() { return value; }

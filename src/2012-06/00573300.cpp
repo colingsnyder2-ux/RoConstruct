@@ -1,45 +1,28 @@
-// from server: 85% by tester
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Target { virtual void v0(); virtual void v1(); virtual void v2(); virtual void call(int, int); };
+struct Checker { bool check(int token); };
+struct Impl { char pad[0x20]; Checker* checker; char pad2[4]; Target* target; };
 struct AsyncResult {
-    void* vtable;
+    Impl* impl;
     int field4;
-    void returnResult(int);
+    void returnResult(int arg);
 };
-
-extern "C" void* __stdcall sub_6c1590();
-extern "C" char __cdecl sub_4492f0(void*);
-extern "C" void __cdecl sub_972290(unsigned char, const char*);
-
-extern unsigned char byte_E580B3;
-extern void* dword_E5809C;
-extern const char str_B43F40[];
-extern const char str_B753E0[];
-extern const char str_B753F8[];
-
+extern "C" int __cdecl getToken();
+extern "C" void __cdecl failAssert(int, const char*);
+extern unsigned char g_flag;
+extern char (__cdecl *g_handler)(const char*, const char*, int);
+extern const char g_expr[];
+extern const char g_file[];
+extern const char g_msg[];
 void AsyncResult::returnResult(int arg)
 {
-    if (byte_E580B3 != 0) {
-        sub_6c1590();
-        void* vt = *(void**)this;
-        void* obj = *(void**)((char*)vt + 0x20);
-        if (sub_4492f0(obj)) {
-            goto done;
+    if (g_flag) {
+        if (!impl->checker->check(getToken())) {
+            if (!g_handler || !g_handler(g_expr, g_file, 0x133))
+                failAssert(g_flag, g_msg);
         }
-        if (dword_E5809C != 0) {
-            typedef char (__stdcall *Fn)(const char*, const char*, unsigned);
-            Fn fn = (Fn)dword_E5809C;
-            if (fn(str_B753E0, str_B43F40, 0x133)) {
-                goto done;
-            }
-        }
-        sub_972290(byte_E580B3, str_B753F8);
     }
-done:
-    {
-        void* vt = *(void**)this;
-        void* obj = *(void**)((char*)vt + 0x28);
-        void** vtbl = *(void***)obj;
-        typedef void (__stdcall *Fn2)(void*, int, int);
-        Fn2 fn = (Fn2)vtbl[3];
-        fn(obj, field4, arg);
-    }
+    impl->target->call(field4, arg);
 }

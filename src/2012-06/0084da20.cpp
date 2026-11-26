@@ -1,30 +1,66 @@
-// from server: 79% by atomic.potato
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct lua_State;
 extern "C" {
-    int __cdecl func_00831fd0(int, int);
-    int __cdecl func_00832480(int, int);
-    void __cdecl func_00832340(int, int, int);
-    int __cdecl func_00831dc0(int, int, int);
-    void __cdecl func_00831b00(int, int);
-    int __cdecl func_006c1bf0();
-    void __cdecl func_00575bc0(int, int);
+void* lua_touserdata(lua_State* L, int idx);
+int lua_getmetatable(lua_State* L, int idx);
+void lua_getfield(lua_State* L, int idx, const char* k);
+int lua_rawequal(lua_State* L, int a, int b);
+void lua_settop(lua_State* L, int idx);
 }
-
-extern unsigned int DAT_00de13e4;
-
-bool __cdecl func_0084da20(int a, int b, int* out)
-{
-    int v = func_00831fd0(a, b);
-    if (v == 0)
-        return false;
-    if (func_00832480(a, b) == 0)
-        return false;
-    func_00832340(a, -10000, DAT_00de13e4);
-    if (func_00831dc0(a, -1, -2) != 0) {
-        func_00831b00(a, -3);
-        *out = func_006c1bf0();
-        func_00575bc0((int)(out + 1), v);
-        return true;
+namespace RBX {
+namespace Reflection {
+class Type {
+public:
+    template<class T> static const Type& singleton();
+};
+struct Storage {
+    template<class T> void assign(const T& v);
+};
+class Variant {
+public:
+    const Type* type;
+    Storage value;
+    template<class T> Variant& operator=(const T& v) { type = &Type::singleton<T>(); value.assign<T>(v); return *this; }
+};
+}
+namespace Lua {
+template<class T> struct Bridge {
+    static const char* className;
+    static T* getPtr(lua_State* L, int idx)
+    {
+        void* p = lua_touserdata(L, idx);
+        if (p) {
+            if (lua_getmetatable(L, idx)) {
+                lua_getfield(L, -10000, className);
+                if (lua_rawequal(L, -1, -2)) {
+                    lua_settop(L, -3);
+                    return (T*)p;
+                }
+                lua_settop(L, -3);
+            }
+        }
+        return 0;
     }
-    func_00831b00(a, -3);
+};
+class A;
+template<class T> bool getValue(lua_State* L, int idx, Reflection::Variant& value)
+{
+    void* p = lua_touserdata(L, idx);
+    if (p) {
+        if (lua_getmetatable(L, idx)) {
+            lua_getfield(L, -10000, Bridge<T>::className);
+            if (lua_rawequal(L, -1, -2)) {
+                lua_settop(L, -3);
+                value = *(T*)p;
+                return true;
+            }
+            lua_settop(L, -3);
+        }
+    }
     return false;
 }
+template bool getValue<A>(lua_State*, int, Reflection::Variant&);
+}}
+

@@ -1,30 +1,36 @@
-// from server: 45% by Intel
-
-
-struct CRobloxView {
-    int f_00494b70(void* arg1, void** arg2);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <new>
+void* __cdecl rbx_allocate(unsigned int size);
+template<class T> class Target {};
+template<class T> void intrusive_ptr_add_ref(Target<T>* p);
+template<class T> void intrusive_ptr_release(Target<T>* p);
+template<class T> class intrusive_ptr {
+public:
+    T* px;
+    intrusive_ptr(T* p) : px(p) { if (px != 0) intrusive_ptr_add_ref(px); }
+    intrusive_ptr(const intrusive_ptr& r) : px(r.px) { if (px != 0) intrusive_ptr_add_ref(px); }
+    ~intrusive_ptr() { if (px != 0) intrusive_ptr_release(px); }
 };
-
-extern "C" void* __cdecl alloc_004287b0(unsigned int size);
-extern "C" void __cdecl free_00428700(void* ptr);
-extern "C" void __stdcall method_0048a090(CRobloxView* thisptr, void* arg);
-extern "C" void* __stdcall method_00494140(void* thisptr, CRobloxView* view, void* arg);
-
-int CRobloxView::f_00494b70(void* arg1, void** arg2)
+class Owner;
+#pragma pack(push, 1)
+struct First { int a; char b; };
+#pragma pack(pop)
+class Item : public First, public Target<Item> {
+public:
+    int pad[8];
+    Item(int a, Owner* owner) throw();
+};
+class Owner {
+public:
+    void add(Item* item);
+    intrusive_ptr<Item> create(int a);
+};
+intrusive_ptr<Item> Owner::create(int a)
 {
-    void* allocated = alloc_004287b0(0x28);
-    void* result = 0;
-
-    if (allocated != 0) {
-        result = method_00494140(allocated, this, arg1);
-    }
-
-    method_0048a090(this, result);
-    *arg2 = result;
-
-    if (result != 0) {
-        free_00428700((char*)result + 5);
-    }
-
-    return (int)arg2;
+    Item* item = new (rbx_allocate(sizeof(Item))) Item(a, this);
+    add(item);
+    return intrusive_ptr<Item>(item);
 }
+

@@ -1,24 +1,24 @@
-// from server: 33% by Intel
-extern "C" void __stdcall G1_func_008fc030(int, int, int);
-
-struct VAnimationTrackState
-{
-    int EventDesc(int, int, int);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Target { void run(int* out, int z); };
+struct A { char p[0x1c]; };
+struct B1 { int z; };
+struct Dd : A, B1 {};
+struct Client {
+    char pad[0x2c];
+    char* off;
+    int* f(int* out, B1* inst, int z);
 };
-
-int VAnimationTrackState::EventDesc(int a1, int a2, int a3)
+int* Client::f(int* out, B1* inst, int z)
 {
-    int v3 = a1;
-    *(int*)(&a1) = 0;
-    if (!v3)
-    {
-        *(int*)a2 = 0;
-        return 0;
+    volatile int zero = 0;
+    if (inst) {
+        Dd& d = static_cast<Dd&>(*inst);
+        Target* t = (Target*)(off + (int)&d);
+        t->run(out, z);
+        return out;
     }
-
-    int v4 = *(int*)((char*)this + 0x2C);
-    int v5 = a2;
-    v3 -= 0x1C;
-    G1_func_008fc030(v4 + v3, v5, a3);
-    return v5;
+    *out = 0;
+    return out;
 }

@@ -1,14 +1,11 @@
-// from server: 49% by atomic.potato
-extern "C" void basic_string_copy(void*, const void*);
-
-struct S_func_008e7850 {
-    char pad[212];
-    void* m_string;
-    void f(void*);
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <string>
+struct S { std::string s; int v; };
+struct Shirt {
+    char pad[0xb8];
+    S value;
+    S GetValue();
 };
-
-void S_func_008e7850::f(void* target)
-{
-    basic_string_copy(target, m_string);
-    *(char**)((char*)target + 0x1c) = *(char**)((char*)m_string + 0x1c);
-}
+S Shirt::GetValue() { return value; }

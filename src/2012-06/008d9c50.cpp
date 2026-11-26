@@ -1,26 +1,17 @@
-// from server: 48% by atomic.potato
-struct Sub {
-    char pad[4];
-    void init();
-};
-
-struct S {
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Sub { void init(); };
+struct Players {
+    int a;
     Sub sub;
-    void* f(void* a, void* b);
+    void g(int* out, int z);
+    int* f(int* out, int z);
 };
-
-extern "C" void __stdcall sub_init(Sub* self);
-
-void Sub::init()
+int* Players::f(int* out, int z)
 {
-    sub_init(this);
-}
-
-extern "C" void __stdcall call_8d9b20(S* self, void* a, void* b);
-
-void* S::f(void* a, void* b)
-{
+    volatile int zero = 0;
     sub.init();
-    call_8d9b20(this, a, b);
-    return a;
+    g(out, z);
+    return out;
 }

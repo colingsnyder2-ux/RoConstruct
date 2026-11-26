@@ -1,16 +1,11 @@
-// from server: 43% by atomic.potato
-extern "C" void __stdcall copy_string(void*, void*);
-
-struct S
-{
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <string>
+struct S { std::string s; int v; };
+struct Shirt {
     char pad[0x11c];
-    char value[0x20];
-    S* f(S* source);
+    S value;
+    S GetValue();
 };
-
-S* S::f(S* source)
-{
-    copy_string((void*)(this + 0x11c), (void*)(source + 0x1c));
-    *(void**)(source + 0x1c) = *(void**)(this + 0x11c + 0x1c);
-    return source;
-}
+S Shirt::GetValue() { return value; }

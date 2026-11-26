@@ -1,20 +1,8 @@
-// from server: 57% by Intel
-struct S
-{
-    int f();
-};
-
-struct T
-{
-    int v[2];
-};
-
-extern "C" int __cdecl sub_686620(S*, int);
-
-int S::f()
-{
-    T* p = *(T**)((char*)this + 12);
-    int (__cdecl *fn)(T*) = (int (__cdecl *)(T*))(*(int**)((char*)p + 336));
-    int r = fn((T*)((char*)p + 336));
-    return sub_686620((S*)r, 1);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct R { int m(int); };
+struct I { virtual void a0(); virtual void a1(); virtual R* a2(); };
+struct P { char pad[0x150]; I o; };
+struct S { char pad[0xc]; P* p; int f(); };
+int S::f() { R* r = p->o.a2(); return r->m(1); }

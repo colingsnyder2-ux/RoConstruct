@@ -1,66 +1,58 @@
-// from server: 57% by atomic.potato
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement, _InterlockedDecrement)
 
-extern "C" int __cdecl sub_4990D0(int*);
-extern "C" void __cdecl sub_972290(int, const char*);
-
-struct RefCounted {
-    void* vptr;
-    long refcount;
+struct sp_counted_base {
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy() = 0;
+    long use_count_;
+    long weak_count_;
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            if (_InterlockedDecrement(&weak_count_) == 0) destroy();
+        }
+    }
+    void add_ref() { _InterlockedIncrement(&use_count_); }
 };
 
-struct Obj {
-    void* vptr;
-    long refcount;
-    long refcount2;
+struct shared_count {
+    sp_counted_base* pi;
+    shared_count() : pi(0) {}
+    shared_count(const shared_count& r) : pi(r.pi) { if (pi) pi->add_ref(); }
+    ~shared_count() { if (pi) pi->release(); }
 };
 
-struct Result {
-    void* ptr;
-    void* ptr2;
+struct Base1 { int pad; };
+struct Other { char a[0x18]; };
+struct Derived : Other, Base1 { int x; };
+struct Creator : Derived {};
+
+struct sp_Derived {
+    Derived* px;
+    shared_count pn;
+};
+struct sp_Base {
+    Base1* px;
+    shared_count pn;
+    sp_Base(const sp_Derived& r) : px(r.px), pn(r.pn) {}
 };
 
-int __stdcall sub_499150(Result* out)
+extern "C" void __cdecl sub_972290(unsigned char, const char*);
+sp_Derived __cdecl sub_4141e0();
+extern unsigned char byte_E580B3;
+extern int dword_E1653C;
+extern char (__cdecl *dword_E5809C)(const char*, const char*, int);
+
+sp_Base __stdcall sub_4148C0()
 {
-    int local = 0;
-    if (*(char*)0xE580B3 != 0) {
-        if (*(int*)0xE1A900 != 0x29A) {
-            int (*fn)(const char*, const char*, int) = *(int(**)(const char*, const char*, int))0xE5809C;
-            if (fn != 0) {
-                if (fn((const char*)0xB42F90, (const char*)0xB42FA8, 0xCA) != 0) {
-                    goto skip;
-                }
-            }
-            sub_972290(*(unsigned char*)0xE580B3, (const char*)0xB432F8);
-        }
+    if (byte_E580B3 != 0 && dword_E1653C != 0x29a) {
+        if (dword_E5809C == 0 || !dword_E5809C("wasConstructed()", "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h", 0xca))
+            sub_972290(byte_E580B3, "wasConstructed() file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h line: 202");
     }
-skip:
-    int* p = (int*)sub_4990D0(&local);
-    int* ecx = (int*)*p;
-    if (ecx != 0) {
-        ecx = (int*)((char*)ecx + 0x18);
-    } else {
-        ecx = 0;
-    }
-    out->ptr = ecx;
-    int* eax = (int*)p[1];
-    out->ptr2 = eax;
-    if (eax != 0) {
-        _InterlockedExchangeAdd((volatile long*)((char*)eax + 4), 1);
-    }
-    int* esi = (int*)local;
-    if (esi != 0) {
-        if (_InterlockedExchangeAdd((volatile long*)((char*)esi + 4), -1) == 1) {
-            void** vt = (void**)*esi;
-            void (*f1)(int*) = (void (*)(int*))vt[1];
-            f1(esi);
-            if (_InterlockedExchangeAdd((volatile long*)((char*)esi + 8), -1) == 1) {
-                void** vt2 = (void**)*esi;
-                void (*f2)(int*) = (void (*)(int*))vt2[2];
-                f2(esi);
-            }
-        }
-    }
-    return (int)out;
+    return sp_Base(sub_4141e0());
 }

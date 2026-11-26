@@ -1,33 +1,31 @@
-// from server: 79% by Intel
-extern "C" unsigned char g_e580b3;
-extern "C" int (__cdecl *g_e5809c)(const char*, const char*, unsigned int);
-extern "C" void __cdecl sub_972290(unsigned char, const char*);
-
-struct FactoryProduct {
-    void* method();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#define EMPTY &getNullName() == this
+extern unsigned char g_assertEnabled;
+extern char (__cdecl *g_assertHook)(const char*, const char*, int);
+void __cdecl g_assertFail(unsigned char, const char*);
+#define FILE_ "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h"
+#define ASSERT_(cond, cs, line, lines) if (g_assertEnabled && !(cond)) { if (!g_assertHook || !g_assertHook(cs, FILE_, line)) g_assertFail(g_assertEnabled, cs " file: " FILE_ " line: " lines); }
+namespace RBX {
+class Name {
+public:
+    static const Name& getNullName();
+    bool empty() const { return EMPTY; }
 };
-
-extern "C" FactoryProduct* __cdecl sub_5421f0();
-extern "C" int __cdecl sub_51FA30(FactoryProduct*);
-extern "C" int __cdecl sub_67F480();
-
-unsigned char sub_544140() {
-    if (!g_e580b3)
-        return 0;
-
-    FactoryProduct* product = sub_5421f0();
-    int v1 = sub_51FA30(product);
-    int v2 = sub_67F480();
-
-    if (v1 != v2)
-        return 0;
-
-    int (__cdecl *callback)(const char*, const char*, unsigned int) = g_e5809c;
-    if (callback) {
-        if (callback((const char*)0xB42FA8, (const char*)0xB5A084, 0x107))
-            return 0;
-    }
-
-    sub_972290(g_e580b3, (const char*)0xB5A010);
-    return 0;
+class ClassDescriptor {
+public:
+    const Name& name() const;
+};
+class Product {
+public:
+    static ClassDescriptor& classDescriptor();
+    static const Name& className() { return classDescriptor().name(); }
+    static bool isNullClassName();
+};
+bool Product::isNullClassName()
+{
+    ASSERT_(!className().empty(), "!className().empty()", 0x107, "263")
+    return false;
+}
 }

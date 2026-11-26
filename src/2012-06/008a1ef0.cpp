@@ -1,116 +1,105 @@
-// from server: 40% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <stddef.h>
+namespace boost {
+namespace noncopyable_ {
+class noncopyable {
+protected:
+    noncopyable() {}
+    ~noncopyable() {}
+private:
+    noncopyable(const noncopyable&);
+    const noncopyable& operator=(const noncopyable&);
+};
 }
-
-void initMoo()
-{
-	moo2();
+typedef noncopyable_::noncopyable noncopyable;
+template<class T> class shared_ptr;
+template<class T>
+class intrusive_ptr {
+    T* px;
+public:
+    intrusive_ptr() : px(0) {}
+    intrusive_ptr(T* p) : px(p) { if (px != 0) intrusive_ptr_add_ref(px); }
+    intrusive_ptr(const intrusive_ptr& rhs) : px(rhs.px) { if (px != 0) intrusive_ptr_add_ref(px); }
+    ~intrusive_ptr();
+};
+namespace _mfi { template<class R, class T> class mf0 { R (T::*f_)(); }; }
+namespace _bi {
+template<class T> class value { T t_; };
+template<class A1> class list1 { A1 a1_; };
+template<class R, class F, class L> class bind_t { F f_; L l_; };
 }
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	Name::NamMap::~NamMap()
-	{
-		for (std::map<std::string, Name*>::iterator iter = this->begin(); iter != this->end(); iter++)
-		{
-			delete iter->second;
-		}
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
 }
+namespace RBX {
+class Instance;
+class VB { int a; }; class VC { int b; };
+class VelocityMotor : public VB, public VC {};
+}
+namespace rbx {
+template<class T, class Count = int, int a = 0, int b = 0>
+class intrusive_ptr_target {
+public:
+    void* operator new(size_t size) throw();
+};
+template<class T, class Count, int a, int b>
+void intrusive_ptr_add_ref(const intrusive_ptr_target<T, Count, a, b>* p);
+template<int N, typename Signature>
+class icallable {
+public:
+    virtual void call() = 0;
+};
+template<class Base, class F, int N, typename Signature>
+class callable : public Base {
+protected:
+    F func;
+public:
+    template<class A>
+    callable(const F& f, A a) : Base(a), func(f) {}
+    virtual void call();
+};
+namespace signals {
+class connection {
+public:
+    class islot : boost::noncopyable, public rbx::intrusive_ptr_target<islot> {
+    public:
+        virtual ~islot();
+        virtual void disconnect() = 0;
+        virtual bool connected() const = 0;
+    };
+    connection(islot* s) : slot_(s) {}
+private:
+    boost::intrusive_ptr<islot> slot_;
+};
+template<typename Signature>
+class signal {
+public:
+    class slot : public connection::islot, public rbx::icallable<2, Signature> {
+    public:
+        boost::intrusive_ptr<slot> next;
+        signal* sig;
+        slot(signal* s) : sig(s) {}
+        virtual void disconnect();
+        virtual bool connected() const;
+    };
+    template<class F>
+    class callable_slot : public rbx::callable<slot, F, 2, Signature> {
+    public:
+        callable_slot(const F& f, signal* s) : rbx::callable<slot, F, 2, Signature>(f, s) {}
+    };
+    boost::intrusive_ptr<slot> head;
+    void insert(slot* item);
+    template<class F>
+    connection connect(const F& f)
+    {
+        callable_slot<F>* item = new callable_slot<F>(f, this);
+        insert(item);
+        return connection(item);
+    }
+};
+}
+}
+typedef void Sig(boost::shared_ptr<RBX::Instance>, boost::shared_ptr<RBX::Instance>);
+typedef boost::_bi::bind_t<void, boost::_mfi::mf0<void, RBX::VelocityMotor>, boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*> > > Bound;
+template rbx::signals::connection rbx::signals::signal<Sig>::connect<Bound>(const Bound&);
+

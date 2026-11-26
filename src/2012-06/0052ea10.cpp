@@ -1,154 +1,47 @@
-// from server: 35% by atomic.potato
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O1 /Ob2 /Oy /GS- /EHsc /MD
-// roc-lib: rbxgs util/boost.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/boost.hpp"
-#include "util/standardout.h"
-#include "util/Debug.h"
-#include <boost/bind.hpp>
-#include <windows.h>
-#include <boost/thread/tss.hpp>
-#include <boost/thread/once.hpp>
-
-namespace RBX
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD /D_SECURE_SCL=0
+#define ARG T
+#define INST A*, B*
+#define ARG1 T1
+#define ARG2 T2
+#include <vector>
+namespace RBX { namespace Reflection {
+class Type {
+public:
+    template<class T> static const Type& singleton();
+};
+struct Storage {
+    struct Table { void (*a)(); void (*destroy)(void*); };
+    Table* table;
+    char data[0x3c];
+    Storage();
+    Storage(const Storage&);
+    ~Storage() { if (table) table->destroy(data); }
+    template<class T> void assign(ARG);
+};
+class Variant {
+public:
+    const Type* type;
+    Storage value;
+    Variant();
+    Variant(const Variant&);
+    Variant& operator=(const Variant&);
+    template<class T> Variant& operator=(ARG v) { type = &Type::singleton<T>(); value.assign<T>(v); return *this; }
+};
+class A; class B;
+class Sink {
+public:
+    virtual void f0();
+    virtual void process(const std::vector<Variant>& args);
+    template<class T1, class T2> void fire(ARG1 a1, ARG2 a2);
+};
+template<class T1, class T2> void Sink::fire(ARG1 a1, ARG2 a2)
 {
-	namespace boost_detail
-	{
-		boost::thread_specific_ptr<std::string>* foo;
-		
-		boost::once_flag once_init_foo = BOOST_ONCE_INIT;
-		void init_foo()
-		{
-			static boost::thread_specific_ptr<std::string> value;
-			foo = &value;
-		}
-
-		void set_foo(std::string* value)
-		{
-			boost::call_once(&boost_detail::init_foo, boost_detail::once_init_foo);
-			boost_detail::foo->reset(value);
-		}
-	}
-
-	// Thread name stuff based on https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/xcb2z8hs(v=vs.90)
-	static bool nameThreads = true;
-
-	typedef struct tagTHREADNAME_INFO
-	{
-		DWORD dwType;
-		LPCSTR szName;
-		DWORD dwThreadID;
-		DWORD dwFlags;
-	} THREADNAME_INFO;
-
-	void SetThreadName(DWORD dwThreadID, LPCSTR szThreadName)
-	{
-		THREADNAME_INFO info;
-		info.dwType = 0x1000;
-		info.szName = szThreadName;
-		info.dwThreadID = dwThreadID;
-		info.dwFlags = 0;
-
-		__try
-		{
-			if (nameThreads)
-				RaiseException(0x406D1388, 0, sizeof(info)/sizeof(ULONG_PTR), (ULONG_PTR*)&info);
-		}
-		__except (EXCEPTION_CONTINUE_EXECUTION)
-		{
-		}
-	}
-
-	void set_thread_name(const char* name)
-	{
-		boost_detail::set_foo(new std::string(name));
-		SetThreadName(GetCurrentThreadId(), name);
-	}
-
-	class ThreadPrioritySetter
-	{
-	private:
-		const int old;
-		bool success;
-	  
-	public:
-		ThreadPrioritySetter(int priority)
-			: old(GetThreadPriority(GetCurrentThread())),
-			  success(SetThreadPriority(GetCurrentThread(), priority) == TRUE)
-		{
-		}
-		~ThreadPrioritySetter()
-		{
-			if (success)
-				SetThreadPriority(GetCurrentThread(), old);
-		}
-	};
-
-	void run_in_background(const boost::function0<void>& threadfunc, std::string name)
-	{
-		try
-		{
-			set_thread_name(name.c_str());
-
-			{
-				ThreadPrioritySetter set(THREAD_PRIORITY_BELOW_NORMAL);
-				threadfunc();
-			}
-		}
-		catch (std::exception& ex)
-		{
-			StandardOut::singleton()->print(MESSAGE_ERROR, "Crashed via C++ exception in run_in_background:", ex.what());
-			RBXASSERT(false);
-		}
-	}
-
-	boost::function0<void> background_function(const boost::function0<void>& threadfunc, const char* name)
-	{
-		return boost::bind(&run_in_background, threadfunc, std::string(name));
-	}
-
-	worker_thread::worker_thread(const boost::function0<enum work_result>& work_function, const char* name)
-		: _data(new data()),
-		  thread(background_function(boost::bind(&threadProc, _data, work_function), name))
-	{
-	}
-
-	worker_thread::~worker_thread()
-	{
-		boost::mutex::scoped_lock scoped_lock(_data->sync);
-		_data->endRequest = true;
-		_data->wakeCondition.notify_all();
-	}
-
-	void worker_thread::join()
-	{
-		{
-			boost::mutex::scoped_lock scoped_lock(_data->sync);
-			_data->endRequest = true;
-			_data->wakeCondition.notify_all();
-		}
-
-		thread.join();
-	}
-
-	void worker_thread::wake()
-	{
-		boost::mutex::scoped_lock scoped_lock(_data->sync);
-		_data->wakeCondition.notify_all();
-	}
-
-	void worker_thread::threadProc(boost::shared_ptr<data> data, const boost::function0<enum work_result>& work_function)
-	{
-		while (!data->endRequest)
-		{
-			if (work_function() != more)
-			{
-				boost::mutex::scoped_lock scoped_lock(data->sync);
-				data->wakeCondition.wait(scoped_lock);	
-			}
-		}
-	}
+    std::vector<Variant> args(2);
+    args[0].operator=<T1>(a1);
+    args[1].operator=<T2>(a2);
+    process(args);
 }
+template void Sink::fire<A*, B*>(INST);
+}}

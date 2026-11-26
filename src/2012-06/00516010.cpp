@@ -1,17 +1,7 @@
-// from server: 74% by Intel
-struct Ogre_RbxCullableSceneNode {
-    bool func_00516010();
-};
-
-bool Ogre_RbxCullableSceneNode::func_00516010() {
-    int eax = *(int*)((char*)this + 0x170);
-    eax += 0x45e0;
-    if (eax == 0) {
-        return false;
-    }
-    int ecx = *(int*)((char*)this + 0x210);
-    if (ecx > *(int*)(eax + 0x2c)) {
-        return false;
-    }
-    return true;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Y { char p[0x2c]; int v; };
+struct X { char p[0x45e0]; Y m; };
+struct S { char p[0x170]; X* a; char q[0x210 - 0x174]; int n; bool f(); };
+bool S::f() { Y* y = &a->m; if (y && n <= y->v) return true; return false; }

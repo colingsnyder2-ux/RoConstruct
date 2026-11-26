@@ -1,74 +1,58 @@
-// from server: 51% by Intel
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement, _InterlockedDecrement)
 
-struct RefCounted {
-    int vptr;
-    long refCount;
-};
-
-struct SmartPtr {
-    RefCounted* ptr;
-    long unk;
-};
-
-struct Creator {
-    virtual SmartPtr* create(SmartPtr* out, void* arg);
-};
-
-extern "C" void __cdecl sub_504BC0(SmartPtr*);
-extern "C" void __cdecl sub_972290(const char*, int);
-
-extern int dword_E1D518;
-extern int dword_E5809C;
-extern char byte_E580B3;
-
-SmartPtr* Creator::create(SmartPtr* out, void* arg) {
-    SmartPtr temp;
-    temp.ptr = 0;
-    temp.unk = 0;
-
-    if (byte_E580B3) {
-        if (dword_E1D518 != 0x29A) {
-            int (__cdecl* callback)(int, int, int) = (int (__cdecl*)(int, int, int))dword_E5809C;
-            if (callback) {
-                if (callback(0xCA, 0xB64958, 0xB42F90)) {
-                    goto LABEL_RETURN;
-                }
-            }
-            sub_972290("wasConstructed()", byte_E580B3);
+struct sp_counted_base {
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy() = 0;
+    long use_count_;
+    long weak_count_;
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            if (_InterlockedDecrement(&weak_count_) == 0) destroy();
         }
     }
+    void add_ref() { _InterlockedIncrement(&use_count_); }
+};
 
-LABEL_RETURN:
-    sub_504BC0(&temp);
+struct shared_count {
+    sp_counted_base* pi;
+    shared_count() : pi(0) {}
+    shared_count(const shared_count& r) : pi(r.pi) { if (pi) pi->add_ref(); }
+    ~shared_count() { if (pi) pi->release(); }
+};
 
-    RefCounted* obj = temp.ptr;
-    RefCounted* target = obj ? (RefCounted*)((char*)obj + 0x18) : 0;
+struct Base1 { int pad; };
+struct Other { char a[0x18]; };
+struct Derived : Other, Base1 { int x; };
+struct Creator : Derived {};
 
-    out->ptr = target;
-    out->unk = obj ? obj->refCount : 0;
+struct sp_Derived {
+    Derived* px;
+    shared_count pn;
+};
+struct sp_Base {
+    Base1* px;
+    shared_count pn;
+    sp_Base(const sp_Derived& r) : px(r.px), pn(r.pn) {}
+};
 
-    if (obj) {
-        _InterlockedExchangeAdd(&obj->refCount, 1);
+extern "C" void __cdecl sub_972290(unsigned char, const char*);
+sp_Derived __cdecl sub_4141e0();
+extern unsigned char byte_E580B3;
+extern int dword_E1653C;
+extern char (__cdecl *dword_E5809C)(const char*, const char*, int);
+
+sp_Base __stdcall sub_4148C0()
+{
+    if (byte_E580B3 != 0 && dword_E1653C != 0x29a) {
+        if (dword_E5809C == 0 || !dword_E5809C("wasConstructed()", "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\Include\\Util/Object.h", 0xca))
+            sub_972290(byte_E580B3, "wasConstructed() file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\Include\\Util/Object.h line: 202");
     }
-
-    void* esi = arg;
-    int guard = 0;
-    int flag = 1;
-
-    if (esi) {
-        long* ref = (long*)((char*)esi + 4);
-        if (_InterlockedExchangeAdd(ref, -1) == 1) {
-            int (__thiscall* dtor1)(void*) = *(int (__thiscall**)(void*))esi;
-            dtor1(esi);
-            long* ref2 = (long*)((char*)esi + 8);
-            if (_InterlockedExchangeAdd(ref2, -1) == 1) {
-                int (__thiscall* dtor2)(void*) = *(int (__thiscall**)(void*))((char*)esi + 4);
-                dtor2(esi);
-            }
-        }
-    }
-
-    return out;
+    return sp_Base(sub_4141e0());
 }

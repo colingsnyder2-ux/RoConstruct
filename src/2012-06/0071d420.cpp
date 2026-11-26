@@ -1,38 +1,56 @@
-// from server: 33% by atomic.potato
-extern "C" void __stdcall func_00982114(void*);
-extern "C" void* __stdcall func_0098211a(int);
-extern "C" void* __stdcall func_0071aa10(void*, int, int, int, int, int);
-extern "C" void* __stdcall func_0042ddf0(int, int);
-extern "C" void __stdcall func_0040ccf0(void*, void*);
-extern "C" void __stdcall func_00972290(int, void*);
-extern "C" int __stdcall func_00b229ec(void*);
-
-struct S {
-    void f(int, int, int, int, int, int, int, int, int, int);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <memory>
+#include <string>
+#include <typeinfo>
+extern unsigned char g_assertEnabled;
+extern char (__cdecl *g_assertHook)(const char*, const char*, int);
+void __cdecl g_assertFail(unsigned char, const char*);
+#define FILE_ "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Reflection/Reflection.h"
+#define ASSERT_(cond, cs, line, lines) if (g_assertEnabled && !(cond)) { if (!g_assertHook || !g_assertHook(cs, FILE_, line)) g_assertFail(g_assertEnabled, cs " file: " FILE_ " line: " lines); }
+namespace RBX {
+namespace Reflection {
+class ClassDescriptor;
+class PropertyDescriptor {
+public:
+    struct Functionality { int a; int b; int c; };
+    virtual ~PropertyDescriptor();
 };
-
-void S::f(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10)
-{
-    int local1 = 0;
-    int local2 = 0;
-    void* p = func_0071aa10(&local1, a1, a2, a3, a4, a5);
-    int v = *(int*)p;
-    *(int*)p = 0;
-    local2 = 0;
-    int* q = &local2;
-    *q = v;
-    void* r = func_0042ddf0(a6, a7);
-    func_0040ccf0(this, r);
-    func_00982114((void*)a8);
-    *(int*)this = 0xba3658;
-    if (*(volatile char*)0xe580b3 != 0) {
-        if (func_00b229ec((void*)0xd6f7f4) != 0) {
-            if (*(void**)0xe5809c != 0) {
-                if (((int(__stdcall*)(int, void*, void*))*(void**)0xe5809c)(0xae, (void*)0xb58618, (void*)0xb44978) != 0) {
-                    return;
-                }
-            }
-            func_00972290(*(unsigned char*)0xe580b3, (void*)0xb58680);
-        }
+template<class PropType>
+class TypedPropertyDescriptor : public PropertyDescriptor {
+public:
+    class GetSet {
+    public:
+        int pad;
+        virtual PropType getValue(const void* object) const = 0;
+    };
+    TypedPropertyDescriptor(ClassDescriptor& classDescriptor, const char* name, const char* category, std::auto_ptr<GetSet> getset, Functionality flags, int security);
+    virtual ~TypedPropertyDescriptor();
+};
+template<class Class, class PropType>
+class PropDescriptor : public TypedPropertyDescriptor<PropType> {
+    typedef typename TypedPropertyDescriptor<PropType>::GetSet GetSet;
+    template<typename GetFunc, typename SetFunc>
+    static std::auto_ptr<GetSet> getset(GetFunc getFunc, SetFunc setFunc);
+public:
+    template<typename GetFunc, typename SetFunc>
+    PropDescriptor(const char* name, const char* category, GetFunc getFunc, SetFunc setFunc, PropertyDescriptor::Functionality flags, int security)
+        : TypedPropertyDescriptor<PropType>(Class::classDescriptor(), name, category, getset(getFunc, setFunc), flags, security)
+    {
+        ASSERT_(Class::classType()==typeid(Class), "Class::classType()==typeid(Class)", 0xae, "174")
     }
+    virtual ~PropDescriptor();
+};
 }
+class B1 { public: int x; };
+class B2 { public: int y; };
+class BaseScript : public B1, public B2 {
+public:
+    static const std::type_info& classType() { return typeid(BaseScript); }
+    static Reflection::ClassDescriptor& classDescriptor();
+    std::string get() const;
+    void set(std::string);
+};
+}
+template RBX::Reflection::PropDescriptor<RBX::BaseScript, std::string>::PropDescriptor(const char*, const char*, std::string (RBX::BaseScript::*)() const, void (RBX::BaseScript::*)(std::string), RBX::Reflection::PropertyDescriptor::Functionality, int);

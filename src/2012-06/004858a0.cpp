@@ -1,83 +1,58 @@
-// from server: 59% by intel
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/DebrisService.cpp
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement, _InterlockedDecrement)
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/DebrisService.h"
-#include "v8datamodel/TimerService.h"
-#include "util/standardout.h"
+struct sp_counted_base {
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy() = 0;
+    long use_count_;
+    long weak_count_;
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            if (_InterlockedDecrement(&weak_count_) == 0) destroy();
+        }
+    }
+    void add_ref() { _InterlockedIncrement(&use_count_); }
+};
 
-static RBX::Reflection::BoundFuncDesc<RBX::DebrisService, void(boost::shared_ptr<RBX::Instance>, double), 2> func_AddItem(&RBX::DebrisService::addItem, "AddItem", "item", "lifetime", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::PropDescriptor<RBX::DebrisService, int> prop_MaxItems("MaxItems", "Data", &RBX::DebrisService::getMaxItems, &RBX::DebrisService::setMaxItems, RBX::Reflection::PropertyDescriptor::STANDARD);
+struct shared_count {
+    sp_counted_base* pi;
+    shared_count() : pi(0) {}
+    shared_count(const shared_count& r) : pi(r.pi) { if (pi) pi->add_ref(); }
+    ~shared_count() { if (pi) pi->release(); }
+};
 
-static void cleanup(boost::weak_ptr<RBX::Instance> item)
+struct Base1 { int pad; };
+struct Other { char a[0x18]; };
+struct Derived : Other, Base1 { int x; };
+struct Creator : Derived {};
+
+struct sp_Derived {
+    Derived* px;
+    shared_count pn;
+};
+struct sp_Base {
+    Base1* px;
+    shared_count pn;
+    sp_Base(const sp_Derived& r) : px(r.px), pn(r.pn) {}
+};
+
+extern "C" void __cdecl sub_972290(unsigned char, const char*);
+sp_Derived __cdecl sub_4141e0();
+extern unsigned char byte_E580B3;
+extern int dword_E1653C;
+extern char (__cdecl *dword_E5809C)(const char*, const char*, int);
+
+sp_Base __stdcall sub_4148C0()
 {
-	try
-	{
-		boost::shared_ptr<RBX::Instance> i = item.lock();
-		if (i)
-			i->setParent(NULL);
-	}
-	catch (std::exception& e)
-	{
-		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
-	}
-}
-
-namespace RBX
-{
-	char* sDebrisService = "Debris";
-
-	DebrisService::DebrisService()
-		: Base("Debris"),
-		  maxItems(300),
-		  timer(NULL)
-	{
-	}
-
-	void DebrisService::setMaxItems(int value)
-	{
-		if (value != maxItems)
-		{
-			if (value < 0)
-				throw std::runtime_error("DebrisService MaxItems must be greater than 0");
-
-			maxItems = value;
-			raisePropertyChanged(prop_MaxItems);
-			DebrisService::cleanup();
-		}
-	}
-
-	void DebrisService::addItem(boost::shared_ptr<Instance> item, double lifetime)
-	{
-		if (timer)
-			timer->delay(boost::bind(&::cleanup, item), lifetime);
-
-		queue.push(item);
-		DebrisService::cleanup();
-	}
-
-	void DebrisService::cleanup()
-	{
-		while ((int)queue.size() > maxItems)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-	}
-
-	void DebrisService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		while ((int)queue.size() > 0)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		timer = ServiceProvider::create<TimerService>(newProvider);
-	}
+    if (byte_E580B3 != 0 && dword_E1653C != 0x29a) {
+        if (dword_E5809C == 0 || !dword_E5809C("wasConstructed()", "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h", 0xca))
+            sub_972290(byte_E580B3, "wasConstructed() file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h line: 202");
+    }
+    return sp_Base(sub_4141e0());
 }

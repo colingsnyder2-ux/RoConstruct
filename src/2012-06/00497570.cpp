@@ -1,53 +1,32 @@
-// from server: 57% by Intel
-extern "C" {
-    extern unsigned char g_flag_00E580B3;
-    extern void* g_ptr_00BB2C60;
-    extern int (__cdecl *g_callback_00E5809C)(const char*, const char*, int);
-    extern const char* g_str_004965E0;
-    extern const char* g_str_00E1A908;
-    extern const char* g_str_00B42FA8;
-    extern const char* g_str_00B46518;
-    extern const char* g_str_00B46490;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Name { int x; };
+extern "C" void __cdecl sub_4015a0(void*, void (__cdecl*)());
+extern "C" void __cdecl sub_51d190();
+extern char dword_E1E170[];
+extern "C" void __cdecl sub_972290(unsigned char, const char*);
+extern "C" const Name* __cdecl sub_67f480();
+extern "C" const Name* __cdecl sub_51bb80();
+extern unsigned char byte_E580B3;
+extern char (__cdecl *dword_E5809C)(const char*, const char*, int);
+extern const Name* sClassName;
 
-extern "C" void __cdecl func_004015A0(const char*, const char*);
-extern "C" void* __cdecl func_00495A90();
-extern "C" void* __cdecl func_0067F480();
-extern "C" void __cdecl func_00972290(unsigned char, const char*);
-
-int __cdecl func_00497570()
+bool isClassNameNull()
 {
-    if (!g_flag_00E580B3)
-        goto LABEL_RETURN;
-
-    if (!g_ptr_00BB2C60)
-    {
-        func_0067F480();
+    if (byte_E580B3 != 0) {
+        const Name* a;
+        if (sClassName == 0) {
+            a = sub_67f480();
+        } else {
+            sub_4015a0(dword_E1E170, sub_51d190);
+            a = sub_51bb80();
+        }
+        const Name* b = sub_67f480();
+        if ((b == a) != (sClassName == 0)) {
+            if (dword_E5809C == 0 || !dword_E5809C("className().empty() == (sClassName==NULL)", "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h", 0x14b))
+                sub_972290(byte_E580B3, "className().empty() == (sClassName==NULL) file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h line: 331");
+        }
     }
-    else
-    {
-        func_004015A0(g_str_004965E0, g_str_00E1A908);
-        func_00495A90();
-    }
-
-    void* esi_val = func_00495A90();
-    void* eax_val = func_0067F480();
-
-    int cl = (eax_val == esi_val) ? 1 : 0;
-    int dl = (g_ptr_00BB2C60 == 0) ? 1 : 0;
-
-    if (cl == dl)
-        goto LABEL_RETURN;
-
-    if (g_callback_00E5809C)
-    {
-        int result = g_callback_00E5809C(g_str_00B46518, g_str_00B42FA8, 0x14B);
-        if (result)
-            goto LABEL_RETURN;
-    }
-
-    func_00972290(g_flag_00E580B3, g_str_00B46490);
-
-LABEL_RETURN:
-    return (g_ptr_00BB2C60 == 0) ? 1 : 0;
+    return sClassName == 0;
 }

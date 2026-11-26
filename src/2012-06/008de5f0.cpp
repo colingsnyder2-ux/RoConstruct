@@ -1,83 +1,47 @@
-// from server: 44% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/DebrisService.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/DebrisService.h"
-#include "v8datamodel/TimerService.h"
-#include "util/standardout.h"
-
-static RBX::Reflection::BoundFuncDesc<RBX::DebrisService, void(boost::shared_ptr<RBX::Instance>, double), 2> func_AddItem(&RBX::DebrisService::addItem, "AddItem", "item", "lifetime", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::PropDescriptor<RBX::DebrisService, int> prop_MaxItems("MaxItems", "Data", &RBX::DebrisService::getMaxItems, &RBX::DebrisService::setMaxItems, RBX::Reflection::PropertyDescriptor::STANDARD);
-
-static void cleanup(boost::weak_ptr<RBX::Instance> item)
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD /D_SECURE_SCL=0
+#define ARG T
+#define INST A*, B*
+#define ARG1 T1
+#define ARG2 T2
+#include <vector>
+namespace RBX { namespace Reflection {
+class Type {
+public:
+    template<class T> static const Type& singleton();
+};
+struct Storage {
+    struct Table { void (*a)(); void (*destroy)(void*); };
+    Table* table;
+    char data[0x3c];
+    Storage();
+    Storage(const Storage&);
+    ~Storage() { if (table) table->destroy(data); }
+    template<class T> void assign(ARG);
+};
+class Variant {
+public:
+    const Type* type;
+    Storage value;
+    Variant();
+    Variant(const Variant&);
+    Variant& operator=(const Variant&);
+    template<class T> Variant& operator=(ARG v) { type = &Type::singleton<T>(); value.assign<T>(v); return *this; }
+};
+class A; class B;
+class Sink {
+public:
+    virtual void f0();
+    virtual void process(const std::vector<Variant>& args);
+    template<class T1, class T2> void fire(ARG1 a1, ARG2 a2);
+};
+template<class T1, class T2> void Sink::fire(ARG1 a1, ARG2 a2)
 {
-	try
-	{
-		boost::shared_ptr<RBX::Instance> i = item.lock();
-		if (i)
-			i->setParent(NULL);
-	}
-	catch (std::exception& e)
-	{
-		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
-	}
+    std::vector<Variant> args(2);
+    args[0].operator=<T1>(a1);
+    args[1].operator=<T2>(a2);
+    process(args);
 }
-
-namespace RBX
-{
-	char* sDebrisService = "Debris";
-
-	DebrisService::DebrisService()
-		: Base("Debris"),
-		  maxItems(300),
-		  timer(NULL)
-	{
-	}
-
-	void DebrisService::setMaxItems(int value)
-	{
-		if (value != maxItems)
-		{
-			if (value < 0)
-				throw std::runtime_error("DebrisService MaxItems must be greater than 0");
-
-			maxItems = value;
-			raisePropertyChanged(prop_MaxItems);
-			DebrisService::cleanup();
-		}
-	}
-
-	void DebrisService::addItem(boost::shared_ptr<Instance> item, double lifetime)
-	{
-		if (timer)
-			timer->delay(boost::bind(&::cleanup, item), lifetime);
-
-		queue.push(item);
-		DebrisService::cleanup();
-	}
-
-	void DebrisService::cleanup()
-	{
-		while ((int)queue.size() > maxItems)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-	}
-
-	void DebrisService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		while ((int)queue.size() > 0)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		timer = ServiceProvider::create<TimerService>(newProvider);
-	}
-}
+template void Sink::fire<A*, B*>(INST);
+}}

@@ -1,49 +1,31 @@
-// from server: 46% by colin
+// from server: 100% by Xemicl
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Handle.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Handle.h"
-#include "v8tree/Instance.h"
-
-namespace RBX
+namespace RBX {
+struct Inner {
+    char d[0x28];
+    ~Inner();
+};
+struct Item {
+    int key;
+    int key2;
+    Inner inner;
+    Item(const Item&);
+};
+class Registry {
+public:
+    bool add(Item item, void* slot);
+};
+extern Registry registry;
+struct Holder {
+    Registry* reg;
+    int x;
+    int slot;
+    void init(Item item);
+};
+void Holder::init(Item item)
 {
-	InstanceHandle::InstanceHandle(Instance* target)
-		: target(shared_from(target))
-	{
-	}
-
-	boost::shared_ptr<Instance> InstanceHandle::getTarget() const
-	{
-		return target;
-	}
-
-	// inlined
-	bool InstanceHandle::operatorEqual(const InstanceHandle& other) const
-	{
-		return this->target == other.target;
-	}
-
-	bool InstanceHandle::operatorLess(const InstanceHandle& other) const
-	{
-		return this->target < other.target;
-	}
-
-	// inlined
-	bool InstanceHandle::operatorGreater(const InstanceHandle& other) const
-	{
-		return other.target < this->target;
-	}
-
-	bool InstanceHandle::empty() const
-	{
-		return target == NULL;
-	}
-
-	void InstanceHandle::linkTo(boost::shared_ptr<Instance> target)
-	{
-		this->target = target;
-	}
+    reg = registry.add(item, &slot) ? &registry : 0;
+}
 }

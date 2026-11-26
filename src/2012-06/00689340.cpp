@@ -1,30 +1,23 @@
-// from server: 84% by atomic.potato
-struct Inner {
-    virtual void f();
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+namespace G3D { struct CoordinateFrame { float rotation[9]; float translation[3]; }; }
+struct GetSet {
+    virtual void slot0();
+    virtual void slot1();
+    virtual G3D::CoordinateFrame getValue(const void* instance) const;
 };
-
-struct Outer {
+struct Any { void assign(const G3D::CoordinateFrame& v); };
+const void* typeSingleton();
+struct Variant {
+    const void* type;
+    Any value;
+    void set(const G3D::CoordinateFrame& v);
+};
+inline void Variant::set(const G3D::CoordinateFrame& v) { type = typeSingleton(); value.assign(v); }
+struct TypedPropertyDescriptor {
     char pad[0x28];
-    Inner* p;
+    GetSet* getset;
+    void getVariant(const void* instance, Variant& out) const;
 };
-
-struct S {
-    char pad[4];
-    int f(int a, int b);
-};
-
-extern "C" int __stdcall sub_753310();
-extern "C" void __stdcall sub_577260(int);
-
-int S::f(int a, int b)
-{
-    Inner* inner = *(Inner**)((char*)this + 0x28);
-    void** vtbl = *(void***)inner;
-    void (*fn)(void*, int*, int) = (void (*)(void*, int*, int))vtbl[2];
-    char buf[0x30];
-    int result = ((int (__stdcall*)(void*, int*, int))fn)(inner, (int*)buf, a);
-    int* out = (int*)b;
-    *out = sub_753310();
-    sub_577260((int)(out + 1));
-    return result;
-}
+void TypedPropertyDescriptor::getVariant(const void* instance, Variant& out) const { out.set(getset->getValue(instance)); }

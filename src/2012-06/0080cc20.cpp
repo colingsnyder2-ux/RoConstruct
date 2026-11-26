@@ -1,30 +1,32 @@
-// from server: 51% by atomic.potato
-struct VTextLabel {
-    void* vf0;
-    void* vf4;
-    char pad8[0x10];
-    void* vf18;
-    void* vf1c;
-    char pad20[8];
-    void* field28;
-    char pad2c[0x54];
-    void* vf80;
-    void* vf84;
-    VTextLabel(void*);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Vt0 { virtual void f0(); };
+struct Vt4 { virtual void f4(); int pad4[4]; };
+struct Vt18 { virtual void f18(); };
+struct Vt1c { virtual void f1c(); int pad20[2]; int value28; int pad2c[21]; };
+struct Vt80 { virtual void f80(); };
+struct Vt84 { virtual void f84(); };
+
+struct Base : Vt0, Vt4, Vt18, Vt1c, Vt80, Vt84 {
+    Base(int a);
 };
 
-extern "C" void __stdcall sub_7f4ee0(void*);
-extern "C" void* __stdcall sub_73a2c0();
-extern int dword_e48ad0;
+struct Guard {
+    int value;
+    Guard() {}
+    ~Guard();
+};
 
-VTextLabel::VTextLabel(void* a) {
-    sub_7f4ee0(a);
-    vf0 = (void*)0xbc501c;
-    vf4 = (void*)0xbc5010;
-    vf18 = (void*)0xbc5004;
-    vf1c = (void*)0xbc4ff8;
-    vf80 = (void*)0xbc4fe8;
-    vf84 = (void*)0xbc4fbc;
-    field28 = sub_73a2c0();
-    dword_e48ad0++;
+int getValue();
+
+struct Derived : Base {
+    static int counter;
+    Guard guard;
+    Derived(int a);
+};
+
+Derived::Derived(int a) : Base(a) {
+    value28 = getValue();
+    ++counter;
 }

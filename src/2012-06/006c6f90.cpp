@@ -1,22 +1,32 @@
-// from server: 22% by Intel
-extern "C" void __stdcall func_005574b0();
-extern "C" void __stdcall func_006cab60(int);
-extern "C" void __stdcall func_009831f5(int);
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+//
 
-struct Settings {
-    void func_006c6f90();
+
+
+struct WaterDirArg
+{
+    char a;
+    char b;
+    int c;
+    int d;
+    WaterDirArg() : a(0), b(0), c(0), d(27) {}
+    WaterDirArg(const WaterDirArg& o);
+    ~WaterDirArg();
 };
 
-void Settings::func_006c6f90() {
-    static int guard = 0;
-    if (!guard) {
-        guard = 1;
-        char buffer[12];
-        *(int*)buffer = 0;
-        *(int*)(buffer + 4) = 0;
-        *(int*)(buffer + 8) = 27;
-        func_005574b0();
-        func_006cab60(0xE2E4E8);
-        func_009831f5(0xB167B0);
-    }
+extern int g_waterDirName;
+int __stdcall makeWaterDirDesc(const char* name, WaterDirArg arg, int extra);
+
+struct W4WaterCellDirectionEnumDesc
+{
+    W4WaterCellDirectionEnumDesc(int x);
+    ~W4WaterCellDirectionEnumDesc();
+};
+
+const W4WaterCellDirectionEnumDesc& func_00781330()
+{
+    static W4WaterCellDirectionEnumDesc s(makeWaterDirDesc("UserSettings", WaterDirArg(), 0));
+    return s;
 }

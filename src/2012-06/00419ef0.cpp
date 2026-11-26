@@ -1,272 +1,40 @@
-// from server: 37% by intel
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8xml/SerializerV2.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8xml/SerializerV2.h"
-#include "v8datamodel/DataModel.h"
-#include <boost/bind.hpp>
-#include <G3D/Log.h>
-#include <algorithm>
-
-bool ArchiveBinder::resolveRefs()
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#define _SECURE_SCL 0
+#define _HAS_ITERATOR_DEBUGGING 0
+#include <map>
+struct Name;
+extern unsigned char g_assertEnabled;
+extern char (__cdecl *g_assertHook)(const char*, const char*, int);
+void __cdecl g_assertFail(unsigned char, const char*);
+extern void* const g_initPtr;
+const Name& initDirect();
+const Name& instance();
+void __cdecl callOnce(int* flag, void (*fn)());
+extern int g_onceFlag;
+void onceFn();
+#define FILE_ "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h"
+#define ASSERT_(cond, cs, line, lines) if (g_assertEnabled && !(cond)) { if (!g_assertHook || !g_assertHook(cs, FILE_, line)) g_assertFail(g_assertEnabled, cs " file: " FILE_ " line: " lines); }
+struct CreatorBase;
+struct Class {
+    typedef std::map<const Name*, CreatorBase*> Creators;
+    static Creators& getCreators();
+};
+inline const Name& className() { if (g_initPtr == 0) return initDirect(); callOnce(&g_onceFlag, &onceFn); return instance(); }
+struct CreatorBase {
+    static int magic;
+    static bool wasConstructed() { return magic == 0x29a; }
+    CreatorBase();
+    virtual ~CreatorBase();
+};
+CreatorBase::CreatorBase()
 {
-	size_t counts = std::count_if(idrefBindings.begin(), idrefBindings.end(), std::bind1st(std::mem_fun(&ArchiveBinder::resolveIDREF), this));
+    const Name& name = className();
+    ASSERT_(Class::getCreators().find(&name)==Class::getCreators().end(), "Class::getCreators().find(&name)==Class::getCreators().end()", 0xd7, "215")
+    ASSERT_(!wasConstructed(), "!wasConstructed()", 0xd8, "216")
+    Class::getCreators()[&name] = this;
+    magic = 0x29a;
+    ASSERT_(Class::getCreators().find(&name)!=Class::getCreators().end(), "Class::getCreators().find(&name)!=Class::getCreators().end()", 0xdd, "221")
+    ASSERT_(wasConstructed(), "wasConstructed()", 0xde, "222")}
 
-	return MergeBinder::resolveRefs() && counts == idrefBindings.size();
-}
-
-bool ArchiveBinder::resolveIDREF(IDREFBinding binding)
-{
-	std::string s;
-	bool success = binding.valueIDREF->getValue(s);
-
-	RBXASSERT(success);
-	RBXASSERT(value_IDREF_nil != s);
-	RBXASSERT(value_IDREF_null != s);
-	RBXASSERT(s != "");
-
-	std::map<std::string, RBX::InstanceHandle>::iterator found = idMap.find(s);
-	if (found != idMap.end())
-	{
-		RBX::InstanceHandle& foundHandle = found->second;
-		binding.idref->assignIDREF(binding.propertyOwner,foundHandle);
-		return true;
-	}
-	else
-	{
-		binding.idref->assignIDREF(binding.propertyOwner,RBX::InstanceHandle(NULL));
-		return false;
-	}
-}
-
-bool ArchiveBinder::processID(const XmlNameValuePair* valueID, RBX::Instance* source)
-{
-	if (!MergeBinder::processID(valueID, source))
-	{
-		std::string s;
-		bool success = valueID->getValue(s);
-
-		RBXASSERT(success);
-		RBXASSERT(idMap.find(s) == idMap.end());
-
-		idMap[s] = shared_from(source);
-	}
-
-	return true;
-}
-
-bool ArchiveBinder::processIDREF(const XmlNameValuePair* valueIDREF, RBX::Reflection::DescribedBase* propertyOwner, const RBX::IIDREF* idref)
-{
-	if (!MergeBinder::processIDREF(valueIDREF, propertyOwner, idref))
-	{
-		IDREFBinding binding = {valueIDREF, propertyOwner, idref};
-		idrefBindings.push_back(binding);
-	}
-
-	return true;
-}
-
-static void buildIsolationMap(XmlElement* element, std::map<RBX::Instance*, RBX::InstanceHandle>& isolationMap)
-{
-	XmlAttribute* referent = element->findAttribute(name_referent);
-	if (referent)
-	{
-		RBX::InstanceHandle h;
-		bool success = referent->getValue(h);
-
-		RBXASSERT(success);
-		RBXASSERT(isolationMap.find(h.getTarget().get()) == isolationMap.end());
-
-		isolationMap[h.getTarget().get()] = RBX::InstanceHandle();
-	}
-
-	for (XmlElement* child = element->firstChild(); child != NULL; child = element->nextChild(child))
-	{
-		buildIsolationMap(child, isolationMap);
-	}
-}
-
-static void isolate(XmlElement* element, const std::map<RBX::Instance*, RBX::InstanceHandle>& isolationMap)
-{
-	element->replaceHandles(isolationMap);
-
-	for (XmlAttribute* attr = element->getFirstAttribute(); attr != NULL; attr = element->getNextAttribute(attr))
-	{
-		attr->replaceHandles(isolationMap);
-	}
-
-	for (XmlElement* elem = element->firstChild(); elem != NULL; elem = element->nextChild(elem))
-	{
-		isolate(elem, isolationMap);
-	}
-}
-
-void SerializerV2::isolateHandles(XmlElement* root)
-{
-	std::map<RBX::Instance*, RBX::InstanceHandle> isolationMap;
-
-	buildIsolationMap(root, isolationMap);
-	isolate(root, isolationMap);
-}
-
-XmlElement* SerializerV2::newRootElement()
-{
-	static const RBX::Name& tag_xmlnsxmime = RBX::Name::declare("xmlns:xmime", -1);
-
-	XmlElement* thisElement = new XmlElement(tag_roblox);
-	thisElement->addAttribute(tag_xmlnsxmime,"http://www.w3.org/2005/05/xmlmime");
-	thisElement->addAttribute(tag_xmlnsxsi,"http://www.w3.org/2001/XMLSchema-instance");
-	thisElement->addAttribute(tag_xsinoNamespaceSchemaLocation,"http://www.roblox.com/roblox.xsd");
-
-	thisElement->addAttribute(tag_version, 4);
-
-	thisElement->pushBackChild(new XmlElement(tag_External, &value_IDREF_null));
-	thisElement->pushBackChild(new XmlElement(tag_External, &value_IDREF_nil));
-
-	return thisElement;
-}
-
-void SerializerV2::load(XmlElement* root, RBX::DataModel* dataModel)
-{
-	ArchiveBinder binder;
-	dataModel->readChildren(root, binder);
-
-	binder.resolveRefs();
-}
-
-// 98% match
-// some MSVC shenanigans going on here
-void SerializerV2::load(std::istream& stream, RBX::DataModel* dataModel)
-{
-	char header[5];
-	header[4] = '\0';
-
-	if (!stream.read(header, 4).good())
-		throw std::runtime_error("SerializerV2::load can\'t read header");
-
-	if (strcmp(header, "RBX_") != 0)
-	{
-		stream.clear();
-		stream.seekg(0, std::ios::beg);
-	}
-	else
-	{
-		unsigned long fileFormatVersion;
-		if (!stream.read((char*)&fileFormatVersion, 4).good())
-			throw std::runtime_error("SerializerV2::load can\'t read old fileFormatVersion");
-
-		if (fileFormatVersion != 1)
-			throw std::runtime_error("SerializerV2::load canfileFormatVersion!=1");
-
-		unsigned long contentPos = 0;
-		if (!stream.read((char*)&contentPos, 4).good())
-			throw std::runtime_error("SerializerV2::load can\'t read contentPos");
-
-		if (contentPos != 0)
-		{
-			int prev = stream.tellg();
-			stream.clear();
-			stream.seekg(contentPos, std::ios::beg);
-
-			while (stream.peek() != '\0')
-			{
-				char id[33];
-				id[32] = '\0';
-
-				if (!stream.read(id, 32).good())
-					throw std::runtime_error("SerializerV2::load error reading compound file (1)");
-
-				unsigned long contentLength;
-				if (!stream.read((char*)&contentLength, 4).good())
-					throw std::runtime_error("SerializerV2::load error reading compound file (2)");
-
-				unsigned char compression;
-				if (!stream.read((char*)&compression, 1).good())
-					throw std::runtime_error("SerializerV2::load error reading compound file (3)");
-
-				if (compression != 0)
-					throw std::runtime_error("SerializerV2::load error reading compound file (4)");
-
-				RBX::ContentProvider::singleton().readContent(id, stream, contentLength);
-			}
-
-			stream.clear();
-			stream.seekg(prev, std::ios::beg);
-		}
-
-		unsigned char xmlCompression;
-		if (!stream.read((char*)&xmlCompression, 1).good())
-			throw std::runtime_error("SerializerV2::load error reading compound file (5)");
-
-		if (xmlCompression != 0)
-			throw std::runtime_error("SerializerV2::load error reading compound file (6)");
-	}
-
-	loadXML(stream, dataModel);
-}
-
-void SerializerV2::loadXML(std::istream& stream, RBX::DataModel* dataModel)
-{
-	TextXmlParser machine(stream.rdbuf());
-	std::auto_ptr<XmlElement> root = machine.parse();
-
-	if (root->getTag() == tag_roblox)
-	{
-		XmlAttribute* version = root->findAttribute(tag_version);
-		if (!version->getValue(schemaVersionLoading))
-			throw std::runtime_error("SerializerV2::loadXML no version number");
-
-		if (schemaVersionLoading < 4)
-			throw std::runtime_error("SerializerV2::loadXML schemaVersionLoading<4");
-
-		load(root.get(), dataModel);
-		dataModel->setDirty(false);
-	}
-	else
-	{
-		schemaVersionLoading = 1;
-		throw std::runtime_error("SerializerV2::loadXML ill-formed XML. No Roblox tag");
-	}
-}
-
-void SerializerV2::loadInstances(XmlElement* root, std::vector<boost::shared_ptr<RBX::Instance>>& result)
-{
-	if (root->getTag() == tag_roblox)
-	{
-		XmlAttribute* versionAttribute = root->findAttribute(tag_version);
-		if (versionAttribute && versionAttribute->getValue(schemaVersionLoading) && schemaVersionLoading >= 4)
-		{
-			ArchiveBinder binder;
-			const XmlElement* item = root->findFirstChildByTag(tag_Item);
-			while (item != NULL)
-			{
-				const RBX::Name* className = NULL;
-				if (item->findAttributeValue(tag_class, className))
-				{
-					boost::shared_ptr<RBX::Instance> instance = RBX::AbstractFactoryProduct<RBX::Instance>::create(*className);
-					if (instance)
-					{
-						instance->read(item, binder);
-						result.push_back(instance);
-					}
-					else
-					{
-						RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, "Unknown object class \"%s\" while reading XML", className ? className->c_str() : "");
-					}
-				}
-
-				item = root->findNextChildWithSameTag(item);
-			}
-
-			bool success = binder.resolveRefs();
-			RBXASSERT(success);
-
-			return;
-		}
-	}
-
-	G3D::Log::common()->println("Version 1.0 - 3.0 model files not supported - all future version will be supported");
-}

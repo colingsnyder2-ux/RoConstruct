@@ -1,23 +1,5 @@
-// from server: 72% by atomic.potato
-struct FunctionalTest
-{
-    char padding_ac[172];
-    int field_ac;
-    int field_b0;
-
-    void f(int value);
-    void g();
-};
-
-void FunctionalTest::f(int value)
-{
-    if (value == field_ac)
-    {
-        if (--field_b0 == 0)
-            g();
-    }
-}
-
-void FunctionalTest::g()
-{
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct F { char p[0xac]; int a; int b; void g(); void f(int v); };
+void F::f(int v) { if (v == a) { if (--b == 0) g(); } }

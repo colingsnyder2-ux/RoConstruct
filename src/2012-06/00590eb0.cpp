@@ -1,4 +1,8 @@
-// from server: 97% by atomic.potato
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct T { void set(int); };
 struct S {
     char pad0[4];
     int field4;
@@ -6,9 +10,6 @@ struct S {
     char padC[4];
     void method(int, int);
 };
-
-extern "C" void __stdcall sub_6a6210(int, int);
-
 void S::method(int a, int b) {
     int edi;
     if (a) {
@@ -16,7 +17,7 @@ void S::method(int a, int b) {
     } else {
         edi = 0;
     }
-    sub_6a6210(field4 + edi, b);
+    ((T*)(field4 + edi))->set(b);
     if (field8) {
         field8(edi + *(int*)((char*)this + 0xc));
     }

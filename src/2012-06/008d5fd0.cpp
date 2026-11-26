@@ -1,19 +1,24 @@
-// from server: 66% by Intel
-struct EventReplicator {
-    int method(int* a1, int a2, int a3);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Target { void run(int* out, int z); };
+struct A { char p[0x1c]; };
+struct B1 { int z; };
+struct Dd : A, B1 {};
+struct Client {
+    char pad[0x2c];
+    char* off;
+    int* f(int* out, B1* inst, int z);
 };
-
-int EventReplicator::method(int* a1, int a2, int a3) {
-    int* v4 = 0;
-    if (a1) {
-        int v5 = a3;
-        int v6 = *(int*)((char*)this + 0x2C);
-        int v7 = a2;
-        int v8 = (int)a1 - 0x1C;
-        v6 += v8;
-        int v9 = ((int(__thiscall*)(int, int, int))0x8D5D70)(v6, v7, v5);
-        return v7;
+int* Client::f(int* out, B1* inst, int z)
+{
+    volatile int zero = 0;
+    if (inst) {
+        Dd& d = static_cast<Dd&>(*inst);
+        Target* t = (Target*)(off + (int)&d);
+        t->run(out, z);
+        return out;
     }
-    *a1 = 0;
-    return 0;
+    *out = 0;
+    return out;
 }

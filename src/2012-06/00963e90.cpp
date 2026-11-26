@@ -1,18 +1,7 @@
-// from server: 80% by atomic.potato
-struct EdgeStage
-{
-    EdgeStage();
-    int value;
-    int field0c;
-    int field10;
-    int field14;
-};
-
-extern void func_007219d0(void *);
-
-EdgeStage::EdgeStage()
-{
-    *(int *)this = 0xc06c48;
-    func_007219d0((char *)this + 4);
-    field14 = 0;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Sub { char d[16]; Sub(); };
+struct E { Sub s; int f14; E(); virtual void v(); };
+E::E() : f14(0) {}
+void E::v() {}

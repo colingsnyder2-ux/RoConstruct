@@ -1,33 +1,40 @@
-// from server: 62% by Intel
-struct Object {
-    char pad[0x38];
-    Object* field_38;
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+namespace RBX {
+
+class Instance {
+public:
+    virtual ~Instance();
+    char pad[0x34];
+    Instance* parent;
+    Instance* getRoot();
 };
 
-extern "C" void __stdcall sub_4A01E0(Object* ecx);
-extern "C" int __stdcall sub_983448(int, Object*, int, int, int);
-extern "C" void __stdcall sub_4979D0(Object* ecx);
+class ServiceProvider : public Instance {
+public:
+    virtual ~ServiceProvider();
+    int doWork();
+};
 
-int __cdecl func_007226B0(Object* ecx) {
-    if (!ecx)
-        return 0;
+}
 
-    Object* eax = ecx->field_38;
-    if (eax) {
-        Object* ecx2 = eax->field_38;
-        if (ecx2)
-            sub_4A01E0(ecx2);
-    } else {
-        eax = ecx;
+int func_007226b0(RBX::Instance* p)
+{
+    if (p) {
+        RBX::Instance* r = p->parent;
+        if (r) {
+            RBX::Instance* g = r->parent;
+            if (g)
+                r = g->getRoot();
+        } else {
+            r = p;
+        }
+        if (r) {
+            RBX::ServiceProvider* t = dynamic_cast<RBX::ServiceProvider*>(r);
+            if (t)
+                return t->doWork();
+        }
     }
-
-    if (!eax)
-        return 0;
-
-    int result = sub_983448(0, eax, 0, 0xD601E8, 0xD65108);
-    if (!result)
-        return 0;
-
-    sub_4979D0(reinterpret_cast<Object*>(result));
     return 0;
 }

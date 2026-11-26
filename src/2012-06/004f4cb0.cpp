@@ -1,60 +1,43 @@
-// from server: 87% by tajop
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
-
-union __declspec(intrin_type) __m128 {
-    float m128_f32[4];
-    unsigned __int64 m128_u64[2];
-    signed char m128_i8[16];
-    short m128_i16[8];
-    int m128_i32[4];
-    __int64 m128_i64[2];
-    unsigned char m128_u8[16];
-    unsigned short m128_u16[8];
-    unsigned int m128_u32[4];
-};
-
-extern "C" __m128 _mm_setzero_ps(void);
-extern "C" void _mm_store_ss(float*, __m128);
-
-struct sp_counted_base {
-    void* vtable_;
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD /arch:SSE
+#include <intrin.h>
+namespace boost {
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
     long use_count_;
-    void add_ref_copy() {
-        volatile long* p = &use_count_;
-        _InterlockedExchangeAdd(p, 1);
-    }
+    long weak_count_;
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
 };
-
-struct shared_ptr_any {
-    void* px;
+class shared_count {
+public:
     sp_counted_base* pi_;
-    void init(const shared_ptr_any& r) {
-        px = r.px;
-        pi_ = r.pi_;
-        if (pi_ != 0) pi_->add_ref_copy();
-    }
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
 };
-
-namespace Ogre {
-
-struct RbxMeshPartAdapter {
+}
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+};
+}
+class A; class B;
+class LevelGenFunc {
+public:
+    virtual void slot0();
     int count;
+    LevelGenFunc(int c) : count(c) {}
+};
+class BuilderLevelGenFunc : public LevelGenFunc {
+public:
     int zero;
     float value;
-    shared_ptr_any first;
-    shared_ptr_any second;
-    RbxMeshPartAdapter(const shared_ptr_any& a, const shared_ptr_any& b, int c);
+    boost::shared_ptr<A> first;
+    boost::shared_ptr<B> second;
+    BuilderLevelGenFunc(const boost::shared_ptr<A>& a, const boost::shared_ptr<B>& b, int c);
     virtual void slot0();
 };
+BuilderLevelGenFunc::BuilderLevelGenFunc(const boost::shared_ptr<A>& a, const boost::shared_ptr<B>& b, int c) : LevelGenFunc(c), zero(0), value(0.0f), first(a), second(b) {}
 
-RbxMeshPartAdapter::RbxMeshPartAdapter(const shared_ptr_any& a, const shared_ptr_any& b, int c) {
-    __m128 z = _mm_setzero_ps();
-    count = c;
-    zero = 0;
-    _mm_store_ss(&value, z);
-    first.init(a);
-    second.init(b);
-}
-
-}

@@ -1,26 +1,24 @@
-// from server: 41% by Intel
-struct VBrickColor {
-    int f();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Target { void run(int* out, int z); };
+struct A { char p[0x1c]; };
+struct B1 { int z; };
+struct Dd : A, B1 {};
+struct Client {
+    char pad[0x2c];
+    char* off;
+    int* f(int* out, B1* inst, int z);
 };
-
-extern "C" int __stdcall sub_7DB310(int, int, int);
-
-int VBrickColor::f() {
-    int v1;
-    int v2 = *(int*)((char*)&v1 + 12);
-    *(int*)&v1 = 0;
-    if (!v2)
-        goto LABEL_5;
-    int v3 = *(int*)((char*)&v1 + 16);
-    int v4 = *(int*)((char*)this + 44);
-    int v5 = *(int*)((char*)&v1 + 12);
-    v2 += -28;
-    int v6 = v4 + v2;
-    sub_7DB310(v6, v3, v5);
-    int result = v5;
-    return result;
-LABEL_5:
-    int v7 = *(int*)((char*)&v1 + 8);
-    *(int*)v7 = 0;
-    return 0;
+int* Client::f(int* out, B1* inst, int z)
+{
+    volatile int zero = 0;
+    if (inst) {
+        Dd& d = static_cast<Dd&>(*inst);
+        Target* t = (Target*)(off + (int)&d);
+        t->run(out, z);
+        return out;
+    }
+    *out = 0;
+    return out;
 }

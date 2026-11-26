@@ -1,17 +1,32 @@
-// from server: 23% by atomic.potato
-struct PhysicsPacketCache {
-    void sub_5a4c40();
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+//
+
+
+
+struct WaterDirArg
+{
+    char a;
+    char b;
+    int c;
+    int d;
+    WaterDirArg() : a(0), b(0), c(0), d(27) {}
+    WaterDirArg(const WaterDirArg& o);
+    ~WaterDirArg();
 };
 
-extern "C" void __cdecl sub_4125d0();
-extern "C" void __cdecl sub_6cab60();
-extern "C" void __cdecl sub_9831f5();
+extern int g_waterDirName;
+int __stdcall makeWaterDirDesc(const char* name, WaterDirArg arg, int extra);
 
-void PhysicsPacketCache::sub_5a4c40() {
-    if ((*(unsigned char*)0xe25b24 & 1) == 0) {
-        *(unsigned int*)0xe25b24 |= 1;
-        sub_4125d0();
-        sub_6cab60();
-        sub_9831f5();
-    }
+struct W4WaterCellDirectionEnumDesc
+{
+    W4WaterCellDirectionEnumDesc(int x);
+    ~W4WaterCellDirectionEnumDesc();
+};
+
+const W4WaterCellDirectionEnumDesc& func_00781330()
+{
+    static W4WaterCellDirectionEnumDesc s(makeWaterDirDesc("InstancePacketCache", WaterDirArg(), 0));
+    return s;
 }

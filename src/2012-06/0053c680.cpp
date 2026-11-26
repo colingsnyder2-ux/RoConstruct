@@ -1,17 +1,17 @@
-// from server: 53% by atomic.potato
-extern "C" void __stdcall sub_004c8700(void*);
-extern "C" void __stdcall sub_0053a820(void*, int, int);
-
-struct VPlayerEventDesc
-{
-    char pad0[4];
-    char field4[4];
-    int init(int a, int b);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Sub { void init(); };
+struct Players {
+    int a;
+    Sub sub;
+    void g(int* out, int z);
+    int* f(int* out, int z);
 };
-
-int VPlayerEventDesc::init(int a, int b)
+int* Players::f(int* out, int z)
 {
-    sub_004c8700(field4);
-    sub_0053a820(this, a, b);
-    return a;
+    volatile int zero = 0;
+    sub.init();
+    g(out, z);
+    return out;
 }

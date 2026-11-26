@@ -1,162 +1,98 @@
-// from server: 54% by colin
-// roc-lang: cpp
-// roc-cl: 50727
+// from server: 100% by Xemicl
+// roc-cl: 30729
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/signals/src/connection.cpp
-
-// Candidate translation unit (score above; library headers required).
-// Boost.Signals library
-
-// Copyright Douglas Gregor 2001-2004. Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#define BOOST_SIGNALS_SOURCE
-
-#include <boost/signals/connection.hpp>
-#include <cassert>
-
 namespace boost {
-  namespace BOOST_SIGNALS_NAMESPACE {
-
-    connection::connection(const connection& other) :
-      con(other.con), controlling_connection(other.controlling_connection)
+namespace noncopyable_ {
+class noncopyable {
+protected:
+    noncopyable() {}
+    ~noncopyable() {}
+private:
+    noncopyable(const noncopyable&);
+    const noncopyable& operator=(const noncopyable&);
+};
+}
+typedef noncopyable_::noncopyable noncopyable;
+namespace detail { namespace function {
+union function_buffer {
+    void* obj_ptr;
+    double align;
+    char data[16];
+};
+struct vtable_base {
+    void (*manager)(const function_buffer& in, function_buffer& out, int op);
+};
+} }
+template<typename Signature> class function;
+template<typename R, typename T0>
+class function<R(T0)> {
+public:
+    detail::function::vtable_base* vtable;
+    detail::function::function_buffer functor;
+    function(const function& f) : vtable(0)
     {
-    }
-
-    connection::~connection()
-    {
-      if (controlling_connection) {
-        disconnect();
-      }
-    }
-
-    void
-    connection::reset(BOOST_SIGNALS_NAMESPACE::detail::basic_connection* new_con)
-    {
-      con.reset(new_con);
-    }
-
-    bool connection::operator==(const connection& other) const
-    {
-      return con.get() == other.con.get();
-    }
-
-    bool connection::operator<(const connection& other) const
-    {
-      return con.get() < other.con.get();
-    }
-
-    connection& connection::operator=(const connection& other)
-    {
-      connection(other).swap(*this);
-      return *this;
-    }
-
-    void connection::swap(connection& other)
-    {
-      this->con.swap(other.con);
-      std::swap(this->controlling_connection, other.controlling_connection);
-    }
-
-    void swap(connection& c1, connection& c2)
-    {
-      c1.swap(c2);
-    }
-
-    scoped_connection::scoped_connection(const connection& other) :
-      connection(other),
-      released(false)
-    {
-    }
-
-    scoped_connection::scoped_connection(const scoped_connection& other) :
-      connection(other),
-      released(other.released)
-    {
-    }
-
-    scoped_connection::~scoped_connection()
-    {
-      if (!released) {
-        this->disconnect();
-      }
-    }
-
-    connection scoped_connection::release()
-    {
-      released = true;
-      return *this;
-    }
-
-    void scoped_connection::swap(scoped_connection& other)
-    {
-      this->connection::swap(other);
-      bool other_released = other.released;
-      other.released = this->released;
-      this->released = other_released;
-    }
-
-    void swap(scoped_connection& c1, scoped_connection& c2)
-    {
-      c1.swap(c2);
-    }
-
-    scoped_connection&
-    scoped_connection::operator=(const connection& other)
-    {
-      scoped_connection(other).swap(*this);
-      return *this;
-    }
-
-    scoped_connection&
-    scoped_connection::operator=(const scoped_connection& other)
-    {
-      scoped_connection(other).swap(*this);
-      return *this;
-    }
-
-    void
-    connection::add_bound_object(const BOOST_SIGNALS_NAMESPACE::detail::bound_object& b)
-    {
-      assert(con.get() != 0);
-      con->bound_objects.push_back(b);
-    }
-
-
-    void connection::disconnect() const
-    {
-      if (this->connected()) {
-        // Make sure we have a reference to the basic_connection object,
-        // because 'this' may disappear
-        shared_ptr<detail::basic_connection> local_con = con;
-
-        void (*signal_disconnect)(void*, void*) = local_con->signal_disconnect;
-
-        // Note that this connection no longer exists
-        // Order is important here: we could get into an infinite loop if this
-        // isn't cleared before we try the disconnect.
-        local_con->signal_disconnect = 0;
-
-        // Disconnect signal
-        signal_disconnect(local_con->signal, local_con->signal_data);
-
-        // Disconnect all bound objects
-        typedef std::list<BOOST_SIGNALS_NAMESPACE::detail::bound_object>::iterator iterator;
-        for (iterator i = local_con->bound_objects.begin();
-             i != local_con->bound_objects.end(); ++i) {
-          assert(i->disconnect != 0);
-          i->disconnect(i->obj, i->data);
+        if (f.vtable) {
+            vtable = f.vtable;
+            f.vtable->manager(f.functor, functor, 0);
         }
-      }
     }
-  } // end namespace boost
-} // end namespace boost
-
-#ifndef BOOST_MSVC
-// Explicit instantiations to keep everything in the library
-template class std::list<boost::BOOST_SIGNALS_NAMESPACE::detail::bound_object>;
-#endif
+    ~function();
+};
+}
+namespace RBX { class Humanoid { public: enum Status { A }; }; }
+namespace rbx {
+template<class T, class Count = int, int a = 0, int b = 0>
+class intrusive_ptr_target {
+};
+template<class T>
+class intrusive_ptr {
+    T* p;
+public:
+    intrusive_ptr() : p(0) {}
+    ~intrusive_ptr();
+};
+template<int N, typename Signature>
+class icallable {
+public:
+    virtual void call(RBX::Humanoid::Status) = 0;
+};
+template<class Base, class F, int N, typename Signature>
+class callable : public Base {
+    F func;
+public:
+    template<class A>
+    callable(const F& f, A a);
+    virtual void call(RBX::Humanoid::Status);
+};
+namespace signals {
+class connection {
+public:
+    class islot : boost::noncopyable, public rbx::intrusive_ptr_target<islot> {
+    public:
+        virtual ~islot();
+        virtual void disconnect() = 0;
+        virtual bool connected() const = 0;
+    };
+};
+template<typename Signature>
+class signal {
+public:
+    class slot : public connection::islot, public rbx::icallable<1, Signature> {
+    public:
+        rbx::intrusive_ptr<slot> next;
+        signal* sig;
+        slot(signal* s) : sig(s) {}
+        virtual void disconnect();
+        virtual bool connected() const;
+    };
+};
+}
+template<class Base, class F, int N, typename Signature>
+template<class A>
+callable<Base, F, N, Signature>::callable(const F& f, A a)
+    : Base(a), func(f)
+{
+}
+}
+typedef void Sig(RBX::Humanoid::Status);
+template rbx::callable<rbx::signals::signal<Sig>::slot, boost::function<Sig>, 1, Sig>::callable(const boost::function<Sig>&, rbx::signals::signal<Sig>*);

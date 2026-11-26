@@ -1,6 +1,13 @@
-// from server: 96% by tajop
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement)
+
+// The lookup takes its key as a 4-byte class by value, built from a temporary;
+// that gives the key eax and the pointer ecx.
+struct Id { int v; Id(int q) : v(q) {} };
 
 struct Counted {
     void* vtbl;
@@ -12,7 +19,7 @@ struct SP {
     Counted* pn;
     SP(const SP& o) : px(o.px), pn(o.pn)
     {
-        if (pn) _InterlockedExchangeAdd(&pn->use_count, 1);
+        if (pn) _InterlockedIncrement(&pn->use_count);
     }
     ~SP();
 };
@@ -39,7 +46,7 @@ struct PingJob {
     virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31();
     virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
     virtual void v36(); virtual void v37(); virtual void v38();
-    virtual int check(int id, void* px);
+    virtual int check(Id id, void* px);
     virtual void apply(int id, void* px);
 
     void onAdded(SP sp);
@@ -56,7 +63,7 @@ void PingJob::handle(const Desc* d, int type, const Event* e)
         break;
     case 2:
         if (d->flags & 2) {
-            if (!check(d->id, e->sp.px))
+            if (!check(Id(d->id), e->sp.px))
                 apply(d->id, e->sp.px);
         }
         break;

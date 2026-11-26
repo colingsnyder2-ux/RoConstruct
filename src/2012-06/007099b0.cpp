@@ -1,37 +1,5 @@
-// from server: 72% by colin
-// roc-lang: cpp
+// from server: 100% by Xemicl
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs reflection/type.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "reflection/type.h"
-
-namespace RBX
-{
-	namespace Reflection
-	{
-		template<>
-		const Type& Type::singleton<void>()
-		{
-			static Type type("void", typeid(void));
-			return type;
-		}
-
-		Value::Value()
-			: _type(&Type::singleton<void>())
-		{
-		}
-
-		SignatureDescriptor::SignatureDescriptor()
-			: resultType(&Type::singleton<void>())
-		{
-		}
-
-		void SignatureDescriptor::addArgument(const Name& name, const Type& type, const Value& defaultValue)
-		{
-			Item i = {&name, &type, defaultValue};
-			arguments.push_back(i);
-		}
-	}
-}
+struct I { virtual void v0(); virtual void v1(int); };
+void f(I* p) { p->v1(0); }

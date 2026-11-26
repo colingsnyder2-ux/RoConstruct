@@ -1,30 +1,29 @@
-// from server: 44% by atomic.potato
-extern "C" {
-    int __stdcall sub_4691A0(int, int, int, int);
-    void __stdcall sub_759C10();
-    void __stdcall sub_972290(int, int);
-    int __cdecl sub_B229EC(int);
-}
-
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <typeinfo>
+extern "C" void __cdecl sub_972290(unsigned char, const char*);
 extern unsigned char byte_E580B3;
-extern int (__cdecl *dword_E5809C)(int, int, int);
+extern char (__cdecl *dword_E5809C)(const char*, const char*, int);
+int __stdcall sub_52acb0(int, int, int, int);
 
-struct S {
-    void f(int, int, int, int);
+class Base {
+public:
+    Base(int);
+    virtual ~Base();
+};
+class CRenderSettingsItem : public Base {
+public:
+    CRenderSettingsItem(int a1, int a2, int a3, int a4);
+    virtual ~CRenderSettingsItem();
 };
 
-void S::f(int a, int b, int c, int d)
+
+CRenderSettingsItem::CRenderSettingsItem(int a1, int a2, int a3, int a4)
+    : Base(sub_52acb0(a1, a2, a3, a4))
 {
-    int v = sub_4691A0(a, b, c, d);
-    sub_759C10();
-    *(int*)this = 0xB58674;
-    if (byte_E580B3 != 0) {
-        if (sub_B229EC(0xD6A8CC) == 0) {
-            if (dword_E5809C != 0) {
-                if (dword_E5809C(0xB44978, 0xB58618, 0x1D5) != 0)
-                    return;
-            }
-            sub_972290(byte_E580B3, 0xB58588);
-        }
+    if (byte_E580B3 != 0 && !(typeid(CRenderSettingsItem) == typeid(CRenderSettingsItem))) {
+        if (dword_E5809C == 0 || !dword_E5809C("Class::classType()==typeid(Class)", "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Reflection/Reflection.h", 0x1d5))
+            sub_972290(byte_E580B3, "Class::classType()==typeid(Class) file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Reflection/Reflection.h line: 469");
     }
 }

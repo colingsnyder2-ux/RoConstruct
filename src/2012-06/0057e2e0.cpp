@@ -1,31 +1,26 @@
-// from server: 80% by atomic.potato
-extern "C" int __stdcall sub_972290(unsigned char, const char*);
-extern "C" void* __stdcall sub_4019d0(void*);
-extern "C" void __stdcall sub_4a11d0(void*, void*);
-extern "C" void __stdcall sub_574a30(void*);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" void __cdecl sub_972290(unsigned char, const char*);
+struct Sink { void run(); };
+Sink* __stdcall sub_4019d0(void**);
+struct Creator {
+    virtual ~Creator();
+    virtual void f1();
+    virtual void f2();
+    void* base();
 
-extern unsigned char byte_E580B3;
-extern int dword_E246B4;
-extern int dword_E5809C;
-
-struct S {
-    void ctor();
 };
+extern unsigned char byte_E580B3;
+extern int dword_E1E0B8;
+extern char (__cdecl *dword_E5809C)(const char*, const char*, int);
 
-void S::ctor()
+Creator::~Creator()
 {
-    *(int*)this = 0xB76ED8;
-    if (byte_E580B3 != 0 && dword_E246B4 != 0x29A) {
-        int f = dword_E5809C;
-        if (f != 0) {
-            char r = ((char (__stdcall*)(const char*, const char*, int))f)((const char*)0xB42F90, (const char*)0xB42FA8, 0xE2);
-            if (r != 0)
-                goto skip;
-        }
-        sub_972290(byte_E580B3, (const char*)0xB43368);
+    if (byte_E580B3 != 0 && dword_E1E0B8 != 0x29a) {
+        if (dword_E5809C == 0 || !dword_E5809C("wasConstructed()", "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h", 0xe2))
+            sub_972290(byte_E580B3, "wasConstructed() file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h line: 226");
     }
-skip:
-    sub_574a30(this);
-    void* p = sub_4019d0(&p);
-    sub_4a11d0(p, 0);
+    void* p = base();
+    sub_4019d0(&p)->run();
 }

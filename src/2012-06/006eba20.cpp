@@ -1,125 +1,146 @@
-// from server: 37% by atomic.potato
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
-
-extern "C" void __stdcall SetEvent(void*);
-extern "C" void __cdecl free(void*);
-
-extern "C" void __cdecl sub_4015A0(void*, void*);
-extern "C" void* __cdecl sub_40B9C0();
-extern "C" void __cdecl sub_40C750(void*);
-extern "C" void __cdecl sub_413890();
-extern "C" void __cdecl sub_6D31D0(void*, void*);
-extern "C" void __cdecl sub_8EA4F0();
-extern "C" void __cdecl sub_972290(void*, void*);
-extern "C" void __cdecl sub_9831F5(void*);
-
-extern char byte_E580B3;
-extern void* dword_E5809C;
-extern void* dword_E2F918;
-extern void* dword_E2F91C;
-extern long dword_E2F920;
-extern void* dword_B229C8;
-extern void* dword_B2230C;
-
-struct VInstance_ {
-    void* field0;
-    char pad[0x100];
-    void removeSlot(void*);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <stdlib.h>
+#include <intrin.h>
+extern unsigned char g_assertEnabled;
+extern char (__cdecl *g_assertHook)(const char*, const char*, int);
+void __cdecl g_assertFail(unsigned char, const char*);
+#define FILE_ "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\Base\\include\\rbx/signal.h"
+#define ASSERT_(cond, cs, line, lines) if (g_assertEnabled && !(cond)) { if (!g_assertHook || !g_assertHook(cs, FILE_, line)) g_assertFail(g_assertEnabled, cs " file: " FILE_ " line: " lines); }
+void __cdecl callOnce(int* flag, void (*fn)());
+extern int g_onceFlag;
+void onceFn();
+extern "C" __declspec(dllimport) int __stdcall SetEvent(void*);
+namespace boost {
+namespace noncopyable_ {
+class noncopyable {
+protected:
+    noncopyable() {}
+    ~noncopyable() {}
+private:
+    noncopyable(const noncopyable&);
+    const noncopyable& operator=(const noncopyable&);
 };
-
-void VInstance_::removeSlot(void* slot) {
-    sub_8EA4F0();
 }
-
-void target(VInstance_* self, void* arg) {
-    void* ebx = arg;
-    void* ebp = self;
-    void* edi = 0;
-    void* esi;
-
-    if (byte_E580B3 != 0) {
-        if (ebx != 0) {
-            goto skip_check1;
-        }
-        if (dword_E5809C != 0) {
-            void* fn = dword_E5809C;
-            ((void(__cdecl*)(int, void*, void*))fn)(0x11b, (void*)0xb4e5a8, (void*)0xb4e9a4);
-            if ((char)0 != 0) {
-                goto skip_check1;
-            }
-        }
-        sub_972290((void*)0xb4e940, (void*)(unsigned)byte_E580B3);
-    }
-skip_check1:
-    sub_4015A0((void*)0x6d1c70, (void*)0xe2f96c);
-
-    if ((dword_E2F920 & 1) == 0) {
-        dword_E2F920 |= 1;
-        dword_E2F918 = 0;
-        dword_E2F91C = 0;
-        sub_9831F5((void*)0xb16a90);
-    }
-
-    void* local14 = (void*)0xe2f918;
-    char local18 = 0;
-    sub_413890();
-
-    esi = *(void**)ebp;
-    void* local24 = 0;
-    if (esi == 0) {
-        sub_8EA4F0();
-        goto cleanup;
-    }
-
-    edi = (char*)esi + 5;
-    sub_40C750(edi);
-    void* local10 = 0;
-    sub_6D31D0((char*)ebx + 0xc, &local10);
-
-    if (byte_E580B3 != 0) {
-        if (esi == *(void**)ebp) {
-            goto skip_check2;
-        }
-        if (dword_E5809C != 0) {
-            void* fn = dword_E5809C;
-            ((void(__cdecl*)(int, void*, void*))fn)(0x12f, (void*)0xb4e5a8, (void*)0xb4e92c);
-            if ((char)0 != 0) {
-                goto skip_check2;
-            }
-        }
-        sub_972290((void*)0xb4e8c0, (void*)(unsigned)byte_E580B3);
-    }
-skip_check2:
-    sub_8EA4F0();
-
-    local24 = 0;
-    if (edi != 0) {
-        void* ecx = (char*)edi - 5;
-        esi = (char*)ecx - 8;
-        long old = _InterlockedExchangeAdd((volatile long*)esi, -1);
-        if (old == 1) {
-            void* eax = *(void**)ecx;
-            void* edx = *(void**)eax;
-            ((void(__cdecl*)(void*))edx)(0);
-            void* eax2 = (char*)esi + 4;
-            long old2 = _InterlockedExchangeAdd((volatile long*)eax2, -1);
-            if (old2 == 1) {
-                free(esi);
+typedef noncopyable_::noncopyable noncopyable;
+namespace detail {
+namespace win32 {
+using ::SetEvent;
+inline bool interlocked_bit_test_and_set(long* x, long bit) { return _interlockedbittestandset(x, bit) != 0; }
+}
+struct basic_timed_mutex {
+    static const unsigned char lock_flag_bit = 31;
+    static const unsigned char event_set_flag_bit = 30;
+    static const long lock_flag_value = 1 << lock_flag_bit;
+    static const long event_set_flag_value = 1 << event_set_flag_bit;
+    long active_count;
+    void* event;
+    void* get_event();
+    void unlock()
+    {
+        long const offset = lock_flag_value;
+        long const old_count = _InterlockedExchangeAdd(&active_count, lock_flag_value);
+        if (!(old_count & event_set_flag_value) && (old_count > offset)) {
+            if (!win32::interlocked_bit_test_and_set(&active_count, event_set_flag_bit)) {
+                win32::SetEvent(get_event());
             }
         }
     }
-
-cleanup:
-    if (local18 != 0) {
-        local24 = (void*)0xffffffff;
-        void* ecx = local14;
-        long old = _InterlockedExchangeAdd((volatile long*)ecx, (long)0x80000000);
-        if ((old & 0x40000000) == 0 && old > (long)0x80000000) {
-            if (!_InterlockedExchangeAdd((volatile long*)ecx, 0)) {
-                void* eax = sub_40B9C0();
-                SetEvent(eax);
-            }
-        }
+};
+}
+class mutex : public detail::basic_timed_mutex {
+public:
+    mutex() { active_count = 0; event = 0; }
+    ~mutex();
+};
+template<typename Mutex>
+class unique_lock {
+    Mutex* m;
+    bool is_locked;
+public:
+    explicit unique_lock(Mutex& m_) : m(&m_), is_locked(false) { lock(); }
+    void lock();
+    bool owns_lock() const { return is_locked; }
+    ~unique_lock() { if (owns_lock()) { m->unlock(); } }
+};
+template<class T>
+class intrusive_ptr {
+    T* px;
+public:
+    intrusive_ptr() : px(0) {}
+    intrusive_ptr(T* p) : px(p) { if (px != 0) intrusive_ptr_add_ref(px); }
+    intrusive_ptr(const intrusive_ptr& rhs) : px(rhs.px) { if (px != 0) intrusive_ptr_add_ref(px); }
+    ~intrusive_ptr() { if (px != 0) intrusive_ptr_release(px); }
+    intrusive_ptr& operator=(const intrusive_ptr& rhs) { intrusive_ptr(rhs).swap(*this); return *this; }
+    intrusive_ptr& operator=(T* rhs) { intrusive_ptr(rhs).swap(*this); return *this; }
+    void swap(intrusive_ptr& rhs) { T* tmp = px; px = rhs.px; rhs.px = tmp; }
+    T* get() const { return px; }
+    T* operator->() const { return px; }
+};
+}
+namespace rbx {
+template<class T, class Count = int, int a = 0, int b = 0>
+class intrusive_ptr_target {
+public:
+    struct counts { long strong; long weak; };
+};
+template<class T, class Count, int a, int b>
+void intrusive_ptr_add_ref(const intrusive_ptr_target<T, Count, a, b>* p);
+template<class T, class Count, int a, int b>
+void intrusive_ptr_release(const intrusive_ptr_target<T, Count, a, b>* p)
+{
+    T* t = const_cast<T*>(static_cast<const T*>(p));
+    typename intrusive_ptr_target<T, Count, a, b>::counts* c = reinterpret_cast<typename intrusive_ptr_target<T, Count, a, b>::counts*>(t) - 1;
+    if (_InterlockedDecrement(&c->strong) == 0) {
+        t->~T();
+        if (_InterlockedDecrement(&c->weak) == 0)
+            free(c);
     }
 }
+template<int N, typename Signature>
+class icallable {
+public:
+    virtual void call() = 0;
+};
+namespace signals {
+class connection {
+public:
+    class islot : boost::noncopyable, public rbx::intrusive_ptr_target<islot> {
+    public:
+        virtual ~islot();
+        virtual void disconnect() = 0;
+        virtual bool connected() const = 0;
+    };
+};
+template<typename Signature>
+class signal {
+public:
+    class slot : public connection::islot, public rbx::icallable<1, Signature> {
+    public:
+        boost::intrusive_ptr<slot> next;
+        signal* sig;
+    };
+    boost::intrusive_ptr<slot> head;
+    static boost::mutex& mutex() { callOnce(&g_onceFlag, &onceFn); static boost::mutex m; return m; }
+    void insert(slot* item);
+};
+template<typename Signature>
+void signal<Signature>::insert(slot* item)
+{
+    ASSERT_(item, "item", 0x11b, "283")
+    boost::unique_lock<boost::mutex> lock(mutex());
+    slot* next = head.get();
+    if (!next) { head = item; return; }
+    boost::intrusive_ptr<slot> n(next);
+    boost::intrusive_ptr<slot> unused;
+    item->next = n;
+        ASSERT_(next == head.get(), "next == head", 0x12f, "303")
+    head = item;
+}
+}
+}
+template void rbx::signals::signal<void()>::insert(slot*);
+
+
+

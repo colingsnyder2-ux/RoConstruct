@@ -1,22 +1,12 @@
-// from server: 54% by atomic.potato
-struct RBX_Image
-{
-    void sub_5a7ef0(int* out);
-    void sub_8b1a70(int* out, int a, int b);
-    int sub_5a8870(int arg);
+// from server: 100% by Xemicl
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#define _SECURE_SCL 0
+#define _HAS_ITERATOR_DEBUGGING 0
+#include <set>
+namespace RBX { class Script; }
+typedef std::set<RBX::Script*> ScriptSet;
+struct Holder : ScriptSet {
+    size_t doErase(RBX::Script* const& k) { return erase(k); }
 };
-
-extern "C" void __stdcall sub_5a8020(int a, int b, int* out, int zero);
-
-int RBX_Image::sub_5a8870(int arg)
-{
-    int local1;
-    int local2;
-    sub_5a7ef0(&local1);
-    int v1 = local1;
-    int v2 = local2;
-    int zero = 0;
-    sub_5a8020(v2, v1, &local2, zero);
-    sub_8b1a70(&local1, v2, v1);
-    return local2;
-}
+size_t __fastcall wrapper(Holder* h, int, RBX::Script* const& k) { return h->doErase(k); }

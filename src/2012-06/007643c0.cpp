@@ -1,12 +1,4 @@
-// from server: 60% by Intel
-struct VExplosion {
-    struct EventDesc {
-        void __thiscall func(int arg);
-    };
-};
-
-extern "C" void __stdcall std_basic_string_destructor(void*);
-
-void VExplosion::EventDesc::func(int arg) {
-    std_basic_string_destructor(reinterpret_cast<void*>(&arg));
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct T{int a,b,c; __declspec(dllimport) void g();}; void f(T x){ x.g(); }

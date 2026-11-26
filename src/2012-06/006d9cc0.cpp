@@ -1,37 +1,26 @@
-// from server: 24% by Intel
-struct TypeInfo {
-    int vftable;
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <typeinfo>
+namespace RBX { namespace DataModel { enum GearGenreSetting { GearGenreSetting_e0 }; } }
+namespace boost { template<class E> __declspec(noreturn) void throw_exception(const E& e); }
+namespace rbx {
+class bad_placement_any_cast : public std::bad_cast {
+public:
+    virtual const char* what() const throw();
 };
-
-extern "C" int __stdcall type_info_equal(TypeInfo* a, TypeInfo* b);
-extern "C" void __stdcall bad_cast_ctor(void* exc, const char* msg);
-extern "C" void __cdecl throw_exception(void* exc);
-
-int __cdecl sub_6D9CC0(int* esi) {
-    TypeInfo* eax = reinterpret_cast<TypeInfo*>(esi[0]);
-    TypeInfo* ecx;
-
-    if (eax) {
-        ecx = reinterpret_cast<TypeInfo*>(eax->vftable);
-    } else {
-        ecx = reinterpret_cast<TypeInfo*>(0xD60AC8);
-    }
-
-    if (ecx == reinterpret_cast<TypeInfo*>(0xDA4608)) {
-        TypeInfo* eax2;
-        if (eax) {
-            eax2 = reinterpret_cast<TypeInfo*>(eax->vftable);
-        } else {
-            eax2 = reinterpret_cast<TypeInfo*>(0xD60AC8);
-        }
-
-        if (type_info_equal(eax2, reinterpret_cast<TypeInfo*>(0xDA4608))) {
-            int local_8 = 0xB44128;
-            int local_4 = 0xB44120;
-            int local_C = 0;
-            throw_exception(&local_8);
-        }
-    }
-
-    return esi[1];
+struct fxn_ptr_table { const std::type_info* type; };
+class placement_any {
+public:
+    const std::type_info& type() const { return table ? *table->type : typeid(void); }
+    fxn_ptr_table* table;
+    char storage[16];
+};
+template<class T> T& placement_any_cast(placement_any& operand)
+{
+    if (&operand.type() != &typeid(T) && operand.type() != typeid(T))
+        boost::throw_exception(bad_placement_any_cast());
+    return *reinterpret_cast<T*>(operand.storage);
+}
+template ::RBX::DataModel::GearGenreSetting& placement_any_cast<::RBX::DataModel::GearGenreSetting>(placement_any&);
 }

@@ -1,16 +1,18 @@
-// from server: 36% by atomic.potato
-struct S
-{
-    float value;
-    void update(float);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /arch:SSE2 /fp:fast
+struct Descriptor { int x; };
+extern Descriptor desc_size;
+struct TextBox {
+    char pad[0x3a0];
+    float fontSize;
+    void raiseChanged(const Descriptor& d);
+    void setFontSize(float v);
 };
-
-void S::update(float v)
+void TextBox::setFontSize(float v)
 {
-    if (value != v || value != value)
-    {
-        value = v;
-        extern void __stdcall f(unsigned long);
-        f(0x00e55a9c);
+    if (fontSize != v) {
+        fontSize = v;
+        raiseChanged(desc_size);
     }
 }

@@ -1,29 +1,19 @@
-// from server: 46% by atomic.potato
-struct Pose_007a6b30 {
-    char pad0[0x1c];
-    struct Inner {
-        char pad0[0xc];
-        void* m_p;
-    } m_inner;
-};
-
-struct C_006c8100 {
-    char __thiscall f(void* arg);
-};
-
-extern "C" void* __stdcall sub_007824b0();
-
-char __stdcall check_007a6b30(Pose_007a6b30* p)
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Type { bool isA(const void* t); };
+struct B1 { char pad[0x1c]; };
+struct B2 { char pad[0xc]; Type* type; };
+struct D : B1, B2 {};
+extern const void* __cdecl getType();
+static inline D* cast(D* d)
 {
-    if (p == 0)
-        return 0;
-    Pose_007a6b30::Inner* inner = &p->m_inner;
-    if (inner == 0)
-        return 0;
-    void* v = inner->m_p;
-    void* r = sub_007824b0();
-    char ok = ((C_006c8100*)v)->f(r);
-    if (!ok)
-        return 0;
-    return (p != 0) ? 1 : 0;
+    B2* b = d;
+    if (b) {
+        Type* t = b->type;
+        if (t->isA(getType()))
+            return static_cast<D*>(b);
+    }
+    return 0;
 }
+bool __stdcall f(D* d) { return cast(d) != 0; }

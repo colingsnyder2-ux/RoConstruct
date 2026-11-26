@@ -1,45 +1,48 @@
-// from server: 38% by colin
-struct MegaClusterInstance {
-    char pad[0x1c];
-    void* field_1c;
-    void initialize();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+namespace RBX {
+class Name { public: static const Name& declare(const char* const& s); };
+namespace Reflection {
+class Type {
+public:
+    template<class T> static const Type& singleton();
 };
-
-extern "C" void* __cdecl sub_6c16e0();
-extern "C" void* __cdecl sub_6c1280();
-extern "C" void* __cdecl sub_67f2e0(void*, void*, void*);
-extern "C" void __stdcall sub_709480(void*, void*);
-
-void MegaClusterInstance::initialize() {
-    void* p1;
-    void* p2;
-    void* p3;
-    void* v;
-
-    field_1c = sub_6c16e0();
-
-    v = sub_6c1280();
-    sub_67f2e0(&p1, v, &p1);
-    sub_709480(&field_1c, p1);
-
-    v = sub_6c1280();
-    sub_67f2e0(&p2, v, &p2);
-    sub_709480(&field_1c, p2);
-
-    v = sub_6c1280();
-    sub_67f2e0(&p3, v, &p3);
-    sub_709480(&field_1c, p3);
-
-    if (p1) {
-        void (__stdcall *fn)(void*, void*) = *(void (__stdcall **)(void*, void*))((char*)p1 + 4);
-        fn((char*)p1, &p1);
-    }
-    if (p2) {
-        void (__stdcall *fn)(void*, void*) = *(void (__stdcall **)(void*, void*))((char*)p2 + 4);
-        fn((char*)p2, &p2);
-    }
-    if (p3) {
-        void (__stdcall *fn)(void*, void*) = *(void (__stdcall **)(void*, void*))((char*)p3 + 4);
-        fn((char*)p3, &p3);
-    }
+struct Storage {
+    struct Table { void (*a)(); void (*destroy)(void*); };
+    Table* table;
+    char data[0x3c];
+    Storage();
+    Storage(const Storage&);
+    ~Storage() { if (table) table->destroy(data); }
+};
+class Variant {
+public:
+    const Type* type;
+    Storage value;
+};
+template<class T> struct Arg {
+    const char* name;
+    Variant defaultValue;
+};
+struct SignatureDescriptor {
+    const Type* resultType;
+    void addArgument(const Name& name, const Type& type, const Variant& defaultValue); template<class T> void add(const Arg<T>& a) { const Type& t = Type::singleton<T>(); addArgument(Name::declare(a.name), t, a.defaultValue); }
+};
+class A; class B; class C;
+class Desc {
+public:
+    char pad[0x1c];
+    SignatureDescriptor signature;
+    template<class A1, class A2, class A3> void init(Arg<A1> a1, Arg<A2> a2, Arg<A3> a3);
+};
+template<class A1, class A2, class A3> void Desc::init(Arg<A1> a1, Arg<A2> a2, Arg<A3> a3)
+{
+    signature.resultType = &Type::singleton<void>();
+    signature.add<A1>(a1);
+    signature.add<A2>(a2);
+    signature.add<A3>(a3);
 }
+template void Desc::init<A, B, C>(Arg<A>, Arg<B>, Arg<C>);
+}}
+

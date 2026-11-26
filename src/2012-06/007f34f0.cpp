@@ -1,16 +1,17 @@
-// from server: 42% by Intel
-struct VGuiButton {
-    char pad[4];
-    int field_4;
-
-    int __stdcall EventReplicator(int a2, int a3);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Sub { void init(); };
+struct Players {
+    int a;
+    Sub sub;
+    void g(int* out, int z);
+    int* f(int* out, int z);
 };
-
-extern "C" void __stdcall sub_4C8700(int* thisptr);
-extern "C" void __stdcall sub_7F2860(VGuiButton* thisptr, int a2, int a3);
-
-int __stdcall VGuiButton::EventReplicator(int a2, int a3) {
-    sub_4C8700(&this->field_4);
-    sub_7F2860(this, a2, a3);
-    return a2;
+int* Players::f(int* out, int z)
+{
+    volatile int zero = 0;
+    sub.init();
+    g(out, z);
+    return out;
 }

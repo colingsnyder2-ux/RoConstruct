@@ -1,20 +1,4 @@
-// from server: 67% by atomic.potato
-struct S
-{
-    int f();
-};
-
-struct V
-{
-    void (__thiscall *g)(void *);
-};
-
-extern V *g_00E20704;
-
-int S::f()
-{
-    void *p = *(void **)((char *)this + 0x1ac);
-    if (p)
-        g_00E20704->g((char *)p + 0x1c);
-    return 0;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct G{ virtual void a(); virtual void b(); virtual bool c(void*); }; G* gp; struct A{ char p[0x1ac]; char* q; bool f(){ if(q) return gp->c(q+0x1c); return false; } }; bool k(A*a){return a->f();}

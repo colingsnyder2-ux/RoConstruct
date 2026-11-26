@@ -1,31 +1,24 @@
-// from server: 52% by colin
-// roc 2012-06 004654b0  unit: VCRenderSettingsItem::?$FactoryProduct  size: 76 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 004654b0
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 30729
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <memory>
 
-void* __cdecl sub_98211a(unsigned int size);
-void __cdecl sub_982114(void* p);
-
-extern void* g_vtable;
-
-struct Creator {
-    void* vtable;
-    void* field4;
-    void* field8;
-    void* fieldC;
+struct GetSetBase {
+    virtual void get() const = 0;
 };
 
-void* __cdecl makeCreator(void** out, void* a1, void* a2, void* a3)
+// operator new(0x10): vptr + a scalar (object/getter) + an 8-byte pair copied by reference.
+struct Pair { int b, c; };
+struct GetSetImpl : GetSetBase {
+    int a;
+    Pair bc;
+    GetSetImpl(int a_, const Pair& p) : a(a_), bc(p) {}
+    virtual void get() const;
+};
+
+std::auto_ptr<GetSetBase> makeGetSet(int a, Pair bc)
 {
-    Creator* c = (Creator*)sub_98211a(0x10);
-    if (c != 0) {
-        c->vtable = &g_vtable;
-        c->field4 = a1;
-        c->field8 = a2;
-        c->fieldC = a3;
-    } else {
-        c = 0;
-    }
-    *out = c;
-    sub_982114(0);
-    return out;
+    return std::auto_ptr<GetSetBase>(new GetSetImpl(a, bc));
 }

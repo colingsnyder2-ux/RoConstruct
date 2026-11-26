@@ -1,23 +1,11 @@
-// from server: 66% by atomic.potato
-struct Shirt
-{
-    char padding[0xa4];
-    char value[0x20];
-
-    Shirt *f(Shirt *source);
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <string>
+struct S { std::string s; int v; };
+struct Shirt {
+    char pad[0xa4];
+    S value;
+    S GetValue();
 };
-
-struct StringData
-{
-    char data[0x20];
-};
-
-extern "C" StringData *copy_string(StringData *, StringData *);
-
-Shirt *Shirt::f(Shirt *source)
-{
-    StringData *destination = (StringData *)((char *)this + 0xa4);
-    copy_string((StringData *)source, destination);
-    source->value[0] = destination->data[0];
-    return source;
-}
+S Shirt::GetValue() { return value; }

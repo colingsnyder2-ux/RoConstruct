@@ -1,22 +1,17 @@
-// from server: 61% by atomic.potato
-struct RefPropDescriptor {
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-lang: cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Target { virtual void v0(); virtual void v1(); virtual void v2(); virtual void set(int, void* const&); };
+void* conv(void*);
+struct VModelInstance {
     char pad[0x2c];
-    void* field_2c;
-    void set(void* a, void* b);
+    Target* field_2c;
+    void method(int a, void* b);
 };
-
-extern "C" void* __cdecl sub_8ddea0(void* p);
-
-void RefPropDescriptor::set(void* a, void* b)
-{
-    void* v;
-    if (a != 0) {
-        v = sub_8ddea0(a);
-    } else {
-        v = 0;
-    }
-    void* p = field_2c;
-    void* fn = *(void**)p;
-    fn = *(void**)((char*)fn + 0xc);
-    ((void (__stdcall*)(void*, void**))fn)(b, &v);
+void VModelInstance::method(int a, void* b) {
+    void* r;
+    if (b) r = conv(b); else r = 0;
+    b = r;
+    field_2c->set(a, b);
 }

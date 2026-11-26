@@ -1,49 +1,26 @@
-// from server: 39% by atomic.potato
-extern "C" {
-    void __stdcall sub_40F520(void*);
-}
-
-struct type_info {
-    bool operator==(const type_info&) const;
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <typeinfo>
+namespace G3D { namespace Vector3 { enum Axis { Axis_e0 }; } }
+namespace boost { template<class E> __declspec(noreturn) void throw_exception(const E& e); }
+namespace rbx {
+class bad_placement_any_cast : public std::bad_cast {
+public:
+    virtual const char* what() const throw();
 };
-
-struct bad_cast {
-    bad_cast(const char*);
+struct fxn_ptr_table { const std::type_info* type; };
+class placement_any {
+public:
+    const std::type_info& type() const { return table ? *table->type : typeid(void); }
+    fxn_ptr_table* table;
+    char storage[16];
 };
-
-extern type_info* g_typeinfo_0;
-extern type_info* g_typeinfo_1;
-extern void* g_vtable_0;
-
-struct S {
-    void* field0;
-    void func();
-};
-
-void S::func()
+template<class T> T& placement_any_cast(placement_any& operand)
 {
-    void* p = this->field0;
-    type_info* ti;
-    if (p) {
-        ti = *(type_info**)p;
-    } else {
-        ti = g_typeinfo_0;
-    }
-    if (ti != g_typeinfo_1) {
-        type_info* ti2;
-        if (p) {
-            ti2 = *(type_info**)p;
-        } else {
-            ti2 = g_typeinfo_0;
-        }
-        if (!ti2->operator==(*g_typeinfo_1)) {
-            goto end;
-        }
-        bad_cast bc("bad cast");
-        *(void**)((char*)&bc + 4) = g_vtable_0;
-        void* local = (char*)&bc + 4;
-        sub_40F520(&local);
-    }
-end:
-    ;
+    if (&operand.type() != &typeid(T) && operand.type() != typeid(T))
+        boost::throw_exception(bad_placement_any_cast());
+    return *reinterpret_cast<T*>(operand.storage);
+}
+template ::G3D::Vector3::Axis& placement_any_cast<::G3D::Vector3::Axis>(placement_any&);
 }

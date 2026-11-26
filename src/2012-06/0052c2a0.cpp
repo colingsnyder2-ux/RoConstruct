@@ -1,83 +1,73 @@
-// from server: 35% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/DebrisService.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/DebrisService.h"
-#include "v8datamodel/TimerService.h"
-#include "util/standardout.h"
-
-static RBX::Reflection::BoundFuncDesc<RBX::DebrisService, void(boost::shared_ptr<RBX::Instance>, double), 2> func_AddItem(&RBX::DebrisService::addItem, "AddItem", "item", "lifetime", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::PropDescriptor<RBX::DebrisService, int> prop_MaxItems("MaxItems", "Data", &RBX::DebrisService::getMaxItems, &RBX::DebrisService::setMaxItems, RBX::Reflection::PropertyDescriptor::STANDARD);
-
-static void cleanup(boost::weak_ptr<RBX::Instance> item)
-{
-	try
-	{
-		boost::shared_ptr<RBX::Instance> i = item.lock();
-		if (i)
-			i->setParent(NULL);
-	}
-	catch (std::exception& e)
-	{
-		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
-	}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <memory>
+#include <typeinfo>
+extern unsigned char g_assertEnabled;
+extern char (__cdecl *g_assertHook)(const char*, const char*, int);
+void __cdecl g_assertFail(unsigned char, const char*);
+#define FILE_ "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\reflection/property.h"
+#define ASSERT_(cond, cs, line, lines) if (g_assertEnabled && !(cond)) { if (!g_assertHook || !g_assertHook(cs, FILE_, line)) g_assertFail(g_assertEnabled, cs " file: " FILE_ " line: " lines); }
+namespace RBX {
+namespace Reflection {
+class ClassDescriptor;
+class PropertyDescriptor {
+public:
+    struct Functionality { int a; int b; int c; };
+    virtual ~PropertyDescriptor();
+    char pad[0x24];
+};
+template<class PropType>
+class TypedPropertyDescriptor : public PropertyDescriptor {
+public:
+    class GetSet {
+    public:
+        virtual bool isReadOnly() const = 0;
+        virtual bool isWriteOnly() const = 0;
+        virtual PropType getValue(const void* object) const = 0;
+        virtual void setValue(void* object, const PropType& value) const = 0;
+    };
+    std::auto_ptr<GetSet> getset;
+    TypedPropertyDescriptor(ClassDescriptor& classDescriptor, const char* name, const char* category, std::auto_ptr<GetSet> getset, Functionality flags, int security);
+    virtual ~TypedPropertyDescriptor();
+};
+template<class PropType, int N>
+class BoundProp : public TypedPropertyDescriptor<PropType> {
+    typedef typename TypedPropertyDescriptor<PropType>::GetSet GetSet;
+    template<class Class>
+    class BoundPropGetSet : public GetSet {
+    public:
+        BoundProp* desc;
+        PropType Class::*member;
+        int pad;
+        void (Class::*changed)(const PropertyDescriptor&);
+        typedef void (Class::*Changed)(const PropertyDescriptor&); BoundPropGetSet(BoundProp* desc, PropType Class::*member, Changed changed = 0) : desc(desc), member(member), changed(changed) {}
+        virtual bool isReadOnly() const;
+        virtual bool isWriteOnly() const;
+        virtual PropType getValue(const void* object) const;
+        virtual void setValue(void* object, const PropType& value) const;
+    };
+public:
+    template<class Class>
+    BoundProp(const char* name, const char* category, PropType Class::*member, PropertyDescriptor::Functionality flags, int security)
+        : TypedPropertyDescriptor<PropType>(Class::classDescriptor(), name, category, std::auto_ptr<GetSet>(), flags, security)
+    {
+        ASSERT_(Class::classType()==typeid(Class), "Class::classType()==typeid(Class)", 0x1b0, "432")
+        this->getset.reset(new BoundPropGetSet<Class>(this, member));
+    }
+    virtual ~BoundProp();
+};
 }
-
-namespace RBX
-{
-	char* sDebrisService = "Debris";
-
-	DebrisService::DebrisService()
-		: Base("Debris"),
-		  maxItems(300),
-		  timer(NULL)
-	{
-	}
-
-	void DebrisService::setMaxItems(int value)
-	{
-		if (value != maxItems)
-		{
-			if (value < 0)
-				throw std::runtime_error("DebrisService MaxItems must be greater than 0");
-
-			maxItems = value;
-			raisePropertyChanged(prop_MaxItems);
-			DebrisService::cleanup();
-		}
-	}
-
-	void DebrisService::addItem(boost::shared_ptr<Instance> item, double lifetime)
-	{
-		if (timer)
-			timer->delay(boost::bind(&::cleanup, item), lifetime);
-
-		queue.push(item);
-		DebrisService::cleanup();
-	}
-
-	void DebrisService::cleanup()
-	{
-		while ((int)queue.size() > maxItems)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-	}
-
-	void DebrisService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		while ((int)queue.size() > 0)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		timer = ServiceProvider::create<TimerService>(newProvider);
-	}
+class B1 { public: int x; };
+class B2 { public: int y; };
+namespace Network {
+class Player : public B1, public B2 {
+public:
+    static const std::type_info& classType() { return typeid(Player); }
+    static Reflection::ClassDescriptor& classDescriptor();
+    float f;
+};
 }
+}
+template RBX::Reflection::BoundProp<float, 1>::BoundProp(const char*, const char*, float RBX::Network::Player::*, RBX::Reflection::PropertyDescriptor::Functionality, int);
+

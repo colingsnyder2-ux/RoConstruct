@@ -1,4 +1,4 @@
-// from server: 97% by tajop
+// from server: 100% by Xemicl
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
@@ -8,15 +8,16 @@ struct GetSetBase {
     virtual void get() const = 0;
 };
 
-// operator new(0x10): vptr + a 12-byte by-value argument (stack +8..+0x10).
-struct Accessors { int a, b, c; };
+// operator new(0x10): vptr + a scalar (object/getter) + an 8-byte pair copied by reference.
+struct Pair { int b, c; };
 struct GetSetImpl : GetSetBase {
-    Accessors acc;
-    explicit GetSetImpl(const Accessors& a) : acc(a) {}
+    int a;
+    Pair bc;
+    GetSetImpl(int a_, const Pair& p) : a(a_), bc(p) {}
     virtual void get() const;
 };
 
-std::auto_ptr<GetSetBase> makeGetSet(Accessors acc)
+std::auto_ptr<GetSetBase> makeGetSet(int a, Pair bc)
 {
-    return std::auto_ptr<GetSetBase>(new GetSetImpl(acc));
+    return std::auto_ptr<GetSetBase>(new GetSetImpl(a, bc));
 }

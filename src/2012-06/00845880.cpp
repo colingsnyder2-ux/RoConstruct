@@ -1,6 +1,6 @@
-// from server: 86% by colin
+// from server: 100% by Xemicl
 // roc-lang: cpp
-// roc-cl: 21022
+// roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD
 // roc-lib: ogre-1.4.9-dll OgreSceneManager.cpp
 

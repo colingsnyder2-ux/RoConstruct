@@ -1,17 +1,30 @@
-// from server: 75% by atomic.potato
-struct CRenderSettingsItem
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct PropertyDescriptor;
+
+struct Notifier
 {
-    void Update(unsigned char value);
-    unsigned char padding[225];
-    unsigned char field;
+	void raisePropertyChanged(const PropertyDescriptor* desc);
 };
 
-void CRenderSettingsItem::Update(unsigned char value)
+extern const PropertyDescriptor desc_Prop;
+
+struct CRenderSettings
 {
-    if (value != field)
-    {
-        field = value;
-        *(unsigned long*)0xE19A50 = 0xE19A50;
-        *(unsigned long*)((char*)this + 0x144) = 0xE19A50;
-    }
+	char pad0[0xe1];
+	unsigned char value_;
+	char pad1[0x144 - 0xe2];
+	Notifier notifier;
+
+	void setProp(unsigned char value);
+};
+
+void CRenderSettings::setProp(unsigned char value)
+{
+	if (value != value_)
+	{
+		value_ = value;
+		notifier.raisePropertyChanged(&desc_Prop);
+	}
 }

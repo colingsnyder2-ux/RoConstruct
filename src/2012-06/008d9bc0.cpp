@@ -1,17 +1,17 @@
-// from server: 34% by atomic.potato
-extern "C" void __stdcall func_004c8700();
-extern "C" void __stdcall func_008d8870();
-
-struct S {
-    char pad0[4];
-    char field4;
-    int method(int a, int b);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Sub { void init(); };
+struct Players {
+    int a;
+    Sub sub;
+    void g(int* out, int z);
+    int* f(int* out, int z);
 };
-
-int S::method(int a, int b)
+int* Players::f(int* out, int z)
 {
-    int local = 0;
-    func_004c8700();
-    func_008d8870();
-    return a;
+    volatile int zero = 0;
+    sub.init();
+    g(out, z);
+    return out;
 }

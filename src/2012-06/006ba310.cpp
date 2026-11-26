@@ -1,10 +1,6 @@
-// from server: 78% by atomic.potato
-extern "C" unsigned long __stdcall GetLastError();
-
-extern "C" int __cdecl Function006B9F30(int, int);
-
-void __cdecl Function006BA310(char enabled, int first, int second)
-{
-    if (!enabled)
-        Function006B9F30(first, second);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+__declspec(dllimport) int __stdcall imp(int, int);
+void __stdcall g(int);
+void f(char c, int a, int b) { if (!c) g(imp(a, b)); }

@@ -1,16 +1,22 @@
-// from server: 95% by atomic.potato
-extern "C" void __cdecl SetPersistentDataStoreValue(unsigned int);
-
-struct S
-{
-    void f(unsigned int);
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+// The property value is a 4-byte class type passed by value (e.g. BrickColor);
+// a class-type parameter blocks the tail call that an int parameter would get.
+struct Desc { int x; };
+extern Desc desc;
+struct Value { int v; bool operator!=(const Value& o) const { return v != o.v; } };
+struct S {
+    char padding[0x88];
+    Value member;
+    void raisePropertyChanged(const Desc&);
+    void f(Value);
 };
-
-void S::f(unsigned int value)
+void S::f(Value value)
 {
-    if (value != *(unsigned int*)((char*)this + 0x88))
-    {
-        *(unsigned int*)((char*)this + 0x88) = value;
-        SetPersistentDataStoreValue(0xe208c4);
+    if (value != member) {
+        member = value;
+        raisePropertyChanged(desc);
     }
 }

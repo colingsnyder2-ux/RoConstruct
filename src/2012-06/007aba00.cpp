@@ -1,216 +1,56 @@
-// from server: 34% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/Lighting.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Lighting.h"
-#include "util/RunStateOwner.h"
-
-namespace RBX
-{
-	char* sLighting = "Lighting";
-
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_AmbientTop("TopAmbientV9", "Appearance", &Lighting::getAmbientTop, &Lighting::setAmbientTop, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_AmbientBottom("BottomAmbientV9", "Appearance", &Lighting::getAmbientBottom, &Lighting::setAmbientBottom, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_LightColor("SpotLightV9", "Appearance", &Lighting::getLightColor, &Lighting::setLightColor, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ClearColor("ClearColor", "Appearance", &Lighting::getClearColor3, &Lighting::setClearColor3, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, std::string> prop_Time("TimeOfDay", "Data", &Lighting::getTimeStr, &Lighting::setTimeStr, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, float> prop_GeographicLatitude("GeographicLatitude", "Data", &Lighting::getGeographicLatitude, &Lighting::setGeographicLatitude, Reflection::PropertyDescriptor::STANDARD);
-
-	static Reflection::BoundFuncDesc<Lighting, float(void), 0> prop_GetMoonPhase(&Lighting::getMoonPhase, "GetMoonPhase", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<Lighting, G3D::Vector3(void), 0> prop_GetMoonPosition(&Lighting::getMoonPosition, "GetMoonDirection", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<Lighting, G3D::Vector3(void), 0> prop_GetSunPosition(&Lighting::getSunPosition, "GetSunDirection", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<Lighting, double(void), 0> prop_GetMinutesAfterMidnight(&Lighting::getMinutesAfterMidnight, "GetMinutesAfterMidnight", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<Lighting, void(double), 1> prop_SetMinutesAfterMidnight(&Lighting::setMinutesAfterMidnight, "SetMinutesAfterMidnight", "minutes", Reflection::FunctionDescriptor::AnyCaller);
-
-	Reflection::SignalDesc<Lighting, void(bool)> Lighting::event_LightingChanged("LightingChanged", "skyboxChanged");
-
-	Lighting::Lighting()
-		: Base(),
-		  ambientTop(209/255.0f, 208/255.0f, 217/255.0f),
-		  ambientBottom(122/255.0f, 134/255.0f, 120/255.0f),
-		  hasSky(true),
-		  clearColor(G3D::Color3::white()),
-		  timeOfDay(boost::posix_time::duration_from_string("14:00:00"))
-	{
-		skyParameters.lightColor = G3D::Color3(152/255.0f, 137/255.0f, 102/255.0f);
-		skyParameters.setTime(timeOfDay.total_seconds());
-		setName("Lighting");
-	}
-
-	G3D::Vector3 Lighting::getMoonPosition()
-	{
-		return (skyParameters.physicallyCorrect) ? skyParameters.trueMoonPosition : skyParameters.moonPosition;
-	}
-
-	G3D::Vector3 Lighting::getSunPosition()
-	{
-		return (skyParameters.physicallyCorrect) ? skyParameters.trueSunPosition : skyParameters.sunPosition;
-	}
-
-	void Lighting::replaceSky(Sky* newSky)
-	{
-		while (Sky* currentSky = findFirstChildOfType<Sky>())
-		{
-			currentSky->setParent(NULL);
-		}
-
-		newSky->setParent(this);
-	}
-
-	std::string Lighting::getTimeStr() const
-	{
-		return boost::posix_time::to_simple_string(timeOfDay);
-	}
-
-	void Lighting::setTimeStr(const std::string& value)
-	{
-		setTime(boost::posix_time::duration_from_string(value));
-	}
-
-	void Lighting::setClearColor(G3D::Color4 value)
-	{
-		if (value != clearColor)
-		{
-			clearColor = value;
-
-			raisePropertyChanged(desc_ClearColor);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::setLightColor(G3D::Color3 value)
-	{
-		if (value != skyParameters.lightColor)
-		{
-			skyParameters.lightColor = value;
-
-			raisePropertyChanged(desc_LightColor);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::setAmbientBottom(G3D::Color3 value)
-	{
-		if (value != ambientBottom)
-		{
-			ambientBottom = value;
-
-			raisePropertyChanged(desc_AmbientBottom);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::setAmbientTop(G3D::Color3 value)
-	{
-		if (value != ambientTop)
-		{
-			ambientTop = value;
-
-			raisePropertyChanged(desc_AmbientTop);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::setGeographicLatitude(float value)
-	{
-		if (value != skyParameters.geoLatitude)
-		{
-			skyParameters.geoLatitude = value;
-
-			raisePropertyChanged(prop_GeographicLatitude);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::setTime(const boost::posix_time::time_duration& value)
-	{
-		int totalSeconds = value.total_seconds();
-		totalSeconds -= (totalSeconds / 86400) * 86400;
-
-		if (timeOfDay.total_seconds() != totalSeconds)
-		{
-			timeOfDay = boost::posix_time::seconds(totalSeconds);
-			skyParameters.setTime(timeOfDay.total_seconds());
-
-			raisePropertyChanged(prop_Time);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	double Lighting::getMinutesAfterMidnight()
-	{
-		return timeOfDay.total_milliseconds() / 60000.0;
-	}
-
-	void Lighting::setMinutesAfterMidnight(double value)
-	{
-		setTime(boost::posix_time::seconds(value * 60.0));
-	}
-
-	void Lighting::onChildAdded(Instance* child)
-	{
-		Sky* newSky = dynamic_cast<Sky*>(child);
-
-		if (newSky)
-		{
-			sky = shared_from(newSky);
-
-			fireLightingChanged(true);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::onChildRemoving(Instance* child)
-	{
-		if (sky.get() == child)
-		{
-			sky.reset();
-
-			fireLightingChanged(true);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::onChildChanged(Instance* instance, const PropertyChanged& event)
-	{
-		Instance::onChildChanged(instance, event);
-		if (sky.get() == instance)
-		{
-			fireLightingChanged(true);
-
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	bool Lighting::askAddChild(const Instance* instance) const
-	{
-		return dynamic_cast<const Sky*>(instance) != NULL;
-	}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <memory>
+#include <string>
+#include <typeinfo>
+extern unsigned char g_assertEnabled;
+extern char (__cdecl *g_assertHook)(const char*, const char*, int);
+void __cdecl g_assertFail(unsigned char, const char*);
+#define FILE_ "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Reflection/Reflection.h"
+#define ASSERT_(cond, cs, line, lines) if (g_assertEnabled && !(cond)) { if (!g_assertHook || !g_assertHook(cs, FILE_, line)) g_assertFail(g_assertEnabled, cs " file: " FILE_ " line: " lines); }
+namespace RBX {
+namespace Reflection {
+class ClassDescriptor;
+class PropertyDescriptor {
+public:
+    struct Functionality { int a; int b; int c; };
+    virtual ~PropertyDescriptor();
+};
+template<class PropType>
+class TypedPropertyDescriptor : public PropertyDescriptor {
+public:
+    class GetSet {
+    public:
+        int pad;
+        virtual PropType getValue(const void* object) const = 0;
+    };
+    TypedPropertyDescriptor(ClassDescriptor& classDescriptor, const char* name, const char* category, std::auto_ptr<GetSet> getset, Functionality flags, int security);
+    virtual ~TypedPropertyDescriptor();
+};
+template<class Class, class PropType>
+class PropDescriptor : public TypedPropertyDescriptor<PropType> {
+    typedef typename TypedPropertyDescriptor<PropType>::GetSet GetSet;
+    template<typename GetFunc, typename SetFunc>
+    static std::auto_ptr<GetSet> getset(GetFunc getFunc, SetFunc setFunc);
+public:
+    template<typename GetFunc, typename SetFunc>
+    PropDescriptor(const char* name, const char* category, GetFunc getFunc, SetFunc setFunc, PropertyDescriptor::Functionality flags, int security)
+        : TypedPropertyDescriptor<PropType>(Class::classDescriptor(), name, category, getset(getFunc, setFunc), flags, security)
+    {
+        ASSERT_(Class::classType()==typeid(Class), "Class::classType()==typeid(Class)", 0xae, "174")
+    }
+    virtual ~PropDescriptor();
+};
 }
+class B1 { public: int x; };
+class B2 { public: int y; };
+class Lighting : public B1, public B2 {
+public:
+    static const std::type_info& classType() { return typeid(Lighting); }
+    static Reflection::ClassDescriptor& classDescriptor();
+    std::string get() const;
+    void set(std::string);
+};
+}
+template RBX::Reflection::PropDescriptor<RBX::Lighting, std::string>::PropDescriptor(const char*, const char*, std::string (RBX::Lighting::*)() const, void (RBX::Lighting::*)(std::string), RBX::Reflection::PropertyDescriptor::Functionality, int);

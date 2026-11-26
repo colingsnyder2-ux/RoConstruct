@@ -1,83 +1,94 @@
-// from server: 25% by colin
-// roc-lang: cpp
+// from server: 100% by Xemicl
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/DebrisService.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/DebrisService.h"
-#include "v8datamodel/TimerService.h"
-#include "util/standardout.h"
-
-static RBX::Reflection::BoundFuncDesc<RBX::DebrisService, void(boost::shared_ptr<RBX::Instance>, double), 2> func_AddItem(&RBX::DebrisService::addItem, "AddItem", "item", "lifetime", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::PropDescriptor<RBX::DebrisService, int> prop_MaxItems("MaxItems", "Data", &RBX::DebrisService::getMaxItems, &RBX::DebrisService::setMaxItems, RBX::Reflection::PropertyDescriptor::STANDARD);
-
-static void cleanup(boost::weak_ptr<RBX::Instance> item)
-{
-	try
-	{
-		boost::shared_ptr<RBX::Instance> i = item.lock();
-		if (i)
-			i->setParent(NULL);
-	}
-	catch (std::exception& e)
-	{
-		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
-	}
+#include <intrin.h>
+#include <new>
+#include <typeinfo>
+#include <string>
+#include <exception>
+namespace RBX { class Animation; }
+namespace boost {
+namespace detail {
+class counted_base {
+public:
+    virtual ~counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy() = 0;
+    long use_count_;
+    long weak_count_;
+    void add_ref() { _InterlockedIncrement(&use_count_); }
+    void weak_release() {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
+};
 }
-
-namespace RBX
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::counted_base* pn;
+    shared_ptr(const shared_ptr& r) : px(r.px), pn(r.pn) {
+        if (pn) pn->add_ref();
+    }
+    ~shared_ptr() {
+        if (pn) pn->release();
+    }
+};
+template<int I> struct arg { };
+namespace _bi {
+template<class T> class value { public: T t_; };
+template<class A1, class A2, class A3> class list3 {
+public:
+    A3 a3_;
+};
+template<class R, class F, class L> class bind_t {
+public:
+    F f_;
+    L l_;
+    bind_t(const bind_t& o) : f_(o.f_), l_(o.l_) {}
+};
+}
+}
+typedef boost::_bi::bind_t<void,
+    void (*)(std::string*, std::exception*, boost::shared_ptr<RBX::Animation>),
+    boost::_bi::list3<boost::arg<1>, boost::arg<2>, boost::_bi::value<boost::shared_ptr<RBX::Animation> > > > Functor;
+namespace boost { namespace _mfi { template<class T0,class T1,class T2,class T3> class mf2 {}; } }
+namespace RBX { namespace JavaScript { class MarshalledFunction {}; } }
+namespace RBX { namespace Reflection { struct Tuple {}; } }
+namespace boost { template<class T0> class function {}; }
+namespace RBX { namespace Lua { class IAsyncResult {}; } }
+union function_buffer {
+    void* obj_ptr;
+    struct {
+        const std::type_info* type;
+        bool const_qualified;
+        bool volatile_qualified;
+    } type;
+    char data[12];
+};
+void manage(const function_buffer& in, function_buffer& out, int op)
 {
-	char* sDebrisService = "Debris";
-
-	DebrisService::DebrisService()
-		: Base("Debris"),
-		  maxItems(300),
-		  timer(NULL)
-	{
-	}
-
-	void DebrisService::setMaxItems(int value)
-	{
-		if (value != maxItems)
-		{
-			if (value < 0)
-				throw std::runtime_error("DebrisService MaxItems must be greater than 0");
-
-			maxItems = value;
-			raisePropertyChanged(prop_MaxItems);
-			DebrisService::cleanup();
-		}
-	}
-
-	void DebrisService::addItem(boost::shared_ptr<Instance> item, double lifetime)
-	{
-		if (timer)
-			timer->delay(boost::bind(&::cleanup, item), lifetime);
-
-		queue.push(item);
-		DebrisService::cleanup();
-	}
-
-	void DebrisService::cleanup()
-	{
-		while ((int)queue.size() > maxItems)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-	}
-
-	void DebrisService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		while ((int)queue.size() > 0)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		timer = ServiceProvider::create<TimerService>(newProvider);
-	}
+    if (op == 0 || op == 1) {
+        const Functor* f = reinterpret_cast<const Functor*>(in.data);
+        new (reinterpret_cast<void*>(out.data)) Functor(*f);
+        if (op == 1)
+            reinterpret_cast<Functor*>(const_cast<char*>(in.data))->~Functor();
+    } else if (op == 2) {
+        reinterpret_cast<Functor*>(out.data)->~Functor();
+    } else if (op == 3) {
+        if (*out.type.type == typeid(class boost::_bi::bind_t<void,class boost::_mfi::mf2<void,class RBX::JavaScript::MarshalledFunction,class boost::shared_ptr<struct RBX::Reflection::Tuple const >,class boost::function<void __cdecl(class RBX::Lua::IAsyncResult *)> >,class boost::_bi::list3<class boost::_bi::value<class boost::shared_ptr<class RBX::JavaScript::MarshalledFunction> >,struct boost::arg<1>,struct boost::arg<2> > >))
+            out.obj_ptr = const_cast<char*>(in.data);
+        else
+            out.obj_ptr = 0;
+    } else {
+        out.type.type = &typeid(class boost::_bi::bind_t<void,class boost::_mfi::mf2<void,class RBX::JavaScript::MarshalledFunction,class boost::shared_ptr<struct RBX::Reflection::Tuple const >,class boost::function<void __cdecl(class RBX::Lua::IAsyncResult *)> >,class boost::_bi::list3<class boost::_bi::value<class boost::shared_ptr<class RBX::JavaScript::MarshalledFunction> >,struct boost::arg<1>,struct boost::arg<2> > >);
+        out.type.const_qualified = false;
+        out.type.volatile_qualified = false;
+    }
 }

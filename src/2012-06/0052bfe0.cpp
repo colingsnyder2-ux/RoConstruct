@@ -1,83 +1,30 @@
-// from server: 45% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/DebrisService.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/DebrisService.h"
-#include "v8datamodel/TimerService.h"
-#include "util/standardout.h"
-
-static RBX::Reflection::BoundFuncDesc<RBX::DebrisService, void(boost::shared_ptr<RBX::Instance>, double), 2> func_AddItem(&RBX::DebrisService::addItem, "AddItem", "item", "lifetime", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::PropDescriptor<RBX::DebrisService, int> prop_MaxItems("MaxItems", "Data", &RBX::DebrisService::getMaxItems, &RBX::DebrisService::setMaxItems, RBX::Reflection::PropertyDescriptor::STANDARD);
-
-static void cleanup(boost::weak_ptr<RBX::Instance> item)
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <typeinfo>
+#include <string>
+#include <vector>
+#include <map>
+namespace RBX { class Instance {}; namespace Reflection { class Variant {}; struct Tuple {}; class DescribedBase {}; class PropertyDescriptor {}; } }
+namespace boost { template<class T> class shared_ptr {}; template<class S> class function {}; }
+namespace boost { template<class E> __declspec(noreturn) void throw_exception(const E& e); }
+namespace rbx {
+class bad_placement_any_cast : public std::bad_cast {
+public:
+    virtual const char* what() const throw();
+};
+struct fxn_ptr_table { const std::type_info* type; };
+class placement_any {
+public:
+    const std::type_info& type() const { return table ? *table->type : typeid(void); }
+    fxn_ptr_table* table;
+    char storage[16];
+};
+template<class T> T& placement_any_cast(placement_any& operand)
 {
-	try
-	{
-		boost::shared_ptr<RBX::Instance> i = item.lock();
-		if (i)
-			i->setParent(NULL);
-	}
-	catch (std::exception& e)
-	{
-		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
-	}
+    if (&operand.type() != &typeid(T) && operand.type() != typeid(T))
+        boost::throw_exception(bad_placement_any_cast());
+    return *reinterpret_cast<T*>(operand.storage);
 }
-
-namespace RBX
-{
-	char* sDebrisService = "Debris";
-
-	DebrisService::DebrisService()
-		: Base("Debris"),
-		  maxItems(300),
-		  timer(NULL)
-	{
-	}
-
-	void DebrisService::setMaxItems(int value)
-	{
-		if (value != maxItems)
-		{
-			if (value < 0)
-				throw std::runtime_error("DebrisService MaxItems must be greater than 0");
-
-			maxItems = value;
-			raisePropertyChanged(prop_MaxItems);
-			DebrisService::cleanup();
-		}
-	}
-
-	void DebrisService::addItem(boost::shared_ptr<Instance> item, double lifetime)
-	{
-		if (timer)
-			timer->delay(boost::bind(&::cleanup, item), lifetime);
-
-		queue.push(item);
-		DebrisService::cleanup();
-	}
-
-	void DebrisService::cleanup()
-	{
-		while ((int)queue.size() > maxItems)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-	}
-
-	void DebrisService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		while ((int)queue.size() > 0)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		timer = ServiceProvider::create<TimerService>(newProvider);
-	}
+template boost::shared_ptr<RBX::Reflection::DescribedBase>& placement_any_cast<boost::shared_ptr<RBX::Reflection::DescribedBase>>(placement_any&);
 }

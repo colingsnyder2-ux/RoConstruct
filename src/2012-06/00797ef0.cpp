@@ -1,46 +1,98 @@
-// from server: 94% by tajop
-
-union fbuf_00797ef0 {
-    void* obj;
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+namespace boost {
+namespace noncopyable_ {
+class noncopyable {
+protected:
+    noncopyable() {}
+    ~noncopyable() {}
+private:
+    noncopyable(const noncopyable&);
+    const noncopyable& operator=(const noncopyable&);
+};
+}
+typedef noncopyable_::noncopyable noncopyable;
+namespace detail { namespace function {
+union function_buffer {
+    void* obj_ptr;
     double align;
     char data[16];
 };
-struct fvtbl_00797ef0 {
-    void (*manager)(const fbuf_00797ef0& in, fbuf_00797ef0& out, int op);
+struct vtable_base {
+    void (*manager)(const function_buffer& in, function_buffer& out, int op);
 };
-struct function_00797ef0 {
-    fvtbl_00797ef0* vtable;
-    fbuf_00797ef0 functor;
-    function_00797ef0(const function_00797ef0& f) : vtable(0)
+} }
+template<typename Signature> class function;
+template<typename R, typename T0>
+class function<R(T0)> {
+public:
+    detail::function::vtable_base* vtable;
+    detail::function::function_buffer functor;
+    function(const function& f) : vtable(0)
     {
         if (f.vtable) {
             vtable = f.vtable;
             f.vtable->manager(f.functor, functor, 0);
         }
     }
-    ~function_00797ef0();
+    ~function();
 };
-struct slotbase_00797ef0 {
-    virtual void a();
-    int x;
-    slotbase_00797ef0() {}
+}
+namespace RBX { class Humanoid { public: enum Status { A }; }; }
+namespace rbx {
+template<class T, class Count = int, int a = 0, int b = 0>
+class intrusive_ptr_target {
 };
-struct conn0_00797ef0 {
-    virtual ~conn0_00797ef0();
-    int n;
-    conn0_00797ef0() : n(0) {}
+template<class T>
+class intrusive_ptr {
+    T* p;
+public:
+    intrusive_ptr() : p(0) {}
+    ~intrusive_ptr();
 };
-struct conn_00797ef0 : conn0_00797ef0 {
-    void* sig;
-    conn_00797ef0(void* s) : sig(s) {}
-    virtual ~conn_00797ef0();
+template<int N, typename Signature>
+class icallable {
+public:
+    virtual void call(RBX::Humanoid::Status) = 0;
 };
-struct callable_00797ef0 : slotbase_00797ef0, conn_00797ef0 {
-    function_00797ef0 func;
-    callable_00797ef0(const function_00797ef0& f, void* s);
-    virtual void a();
+template<class Base, class F, int N, typename Signature>
+class callable : public Base {
+    F func;
+public:
+    template<class A>
+    callable(const F& f, A a);
+    virtual void call(RBX::Humanoid::Status);
 };
-callable_00797ef0::callable_00797ef0(const function_00797ef0& f, void* s)
-    : conn_00797ef0(s), func(f)
+namespace signals {
+class connection {
+public:
+    class islot : boost::noncopyable, public rbx::intrusive_ptr_target<islot> {
+    public:
+        virtual ~islot();
+        virtual void disconnect() = 0;
+        virtual bool connected() const = 0;
+    };
+};
+template<typename Signature>
+class signal {
+public:
+    class slot : public connection::islot, public rbx::icallable<1, Signature> {
+    public:
+        rbx::intrusive_ptr<slot> next;
+        signal* sig;
+        slot(signal* s) : sig(s) {}
+        virtual void disconnect();
+        virtual bool connected() const;
+    };
+};
+}
+template<class Base, class F, int N, typename Signature>
+template<class A>
+callable<Base, F, N, Signature>::callable(const F& f, A a)
+    : Base(a), func(f)
 {
 }
+}
+typedef void Sig(RBX::Humanoid::Status);
+template rbx::callable<rbx::signals::signal<Sig>::slot, boost::function<Sig>, 1, Sig>::callable(const boost::function<Sig>&, rbx::signals::signal<Sig>*);

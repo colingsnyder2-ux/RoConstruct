@@ -1,22 +1,29 @@
-// from server: 48% by tester
-extern "C" void* __cdecl sub_98211a(unsigned int size);
-extern "C" void __fastcall sub_8aa140(void* self, void* unused, void* arg);
-
-struct WeldTool {
-    char pad[0x20];
-    void* field20;
-    void* construct();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+namespace RBX {
+class Workspace;
+class INamed { public: virtual void named(); };
+class IAdornable { public: virtual void adorn(); };
+class MouseCommand : public INamed, public IAdornable {
+public:
+    MouseCommand(Workspace* workspace);
+    char pad[0x60 - 8];
 };
-
-void* WeldTool::construct()
+class WeldTool : public MouseCommand {
+public:
+    WeldTool(Workspace* workspace) : MouseCommand(workspace) {}
+    virtual void named();
+    virtual void adorn();
+};
+class ToolVerb {
+public:
+    char pad[0x20];
+    Workspace* workspace;
+    MouseCommand* create();
+};
+MouseCommand* ToolVerb::create()
 {
-    void* mem = sub_98211a(0x60);
-    void* result = 0;
-    if (mem != 0) {
-        sub_8aa140(mem, 0, field20);
-        *(void**)mem = (void*)0xbdf25c;
-        *(void**)((char*)mem + 4) = (void*)0xbdf230;
-        result = mem;
-    }
-    return result;
+    return new WeldTool(workspace);
+}
 }

@@ -1,16 +1,6 @@
-// from server: 84% by atomic.potato
-
-
-
-struct EdgeStage
-{
-    void f(void *);
-void func_007bbcc0(void *);
-void func_00954e10(void *);
-};
-
-void EdgeStage::f(void *p)
-{
-    func_007bbcc0(p);
-    func_00954e10(p);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+void __cdecl a(void*);
+struct E { void f(void*); void b(void*); };
+void E::f(void* p) { a(p); b(p); }

@@ -1,31 +1,56 @@
-// from server: 28% by atomic.potato
-extern "C" void* __cdecl sub_982114(void*);
-extern "C" void* __cdecl sub_98211a(unsigned int);
-extern "C" void* __cdecl sub_531430(int, int);
-extern "C" void __cdecl sub_972290(unsigned char, const char*);
-extern "C" void __cdecl sub_40ccf0(void*, void*);
-extern "C" void* __cdecl sub_7e8a30(void*, int, int, int, int, int);
-
-struct VGuiTextButton {
-    void* FactoryProduct(int, int, int, int, int, int, int, int, int, int);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <memory>
+#include <string>
+#include <typeinfo>
+extern unsigned char g_assertEnabled;
+extern char (__cdecl *g_assertHook)(const char*, const char*, int);
+void __cdecl g_assertFail(unsigned char, const char*);
+#define FILE_ "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Reflection/Reflection.h"
+#define ASSERT_(cond, cs, line, lines) if (g_assertEnabled && !(cond)) { if (!g_assertHook || !g_assertHook(cs, FILE_, line)) g_assertFail(g_assertEnabled, cs " file: " FILE_ " line: " lines); }
+namespace RBX {
+namespace Reflection {
+class ClassDescriptor;
+class PropertyDescriptor {
+public:
+    struct Functionality { int a; int b; int c; };
+    virtual ~PropertyDescriptor();
 };
-
-void* VGuiTextButton::FactoryProduct(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10)
-{
-    void* p = sub_7e8a30(&a1, a2, a3, a4, a5, a6);
-    void* q = *(void**)p;
-    *(void**)p = 0;
-    void* r = sub_531430(a7, a8);
-    sub_40ccf0(this, r);
-    sub_982114((void*)a10);
-    *(void**)this = (void*)0xbc2cf8;
-    if (*(unsigned char*)0xe580b3 != 0) {
-        if (*(unsigned char*)0xe580b3 != 0) {
-            if (*(unsigned char*)0xe580b3 != 0) {
-                if (*(unsigned char*)0xe580b3 != 0) {
-                }
-            }
-        }
+template<class PropType>
+class TypedPropertyDescriptor : public PropertyDescriptor {
+public:
+    class GetSet {
+    public:
+        int pad;
+        virtual PropType getValue(const void* object) const = 0;
+    };
+    TypedPropertyDescriptor(ClassDescriptor& classDescriptor, const char* name, const char* category, std::auto_ptr<GetSet> getset, Functionality flags, int security);
+    virtual ~TypedPropertyDescriptor();
+};
+template<class Class, class PropType>
+class PropDescriptor : public TypedPropertyDescriptor<PropType> {
+    typedef typename TypedPropertyDescriptor<PropType>::GetSet GetSet;
+    template<typename GetFunc, typename SetFunc>
+    static std::auto_ptr<GetSet> getset(GetFunc getFunc, SetFunc setFunc);
+public:
+    template<typename GetFunc, typename SetFunc>
+    PropDescriptor(const char* name, const char* category, GetFunc getFunc, SetFunc setFunc, PropertyDescriptor::Functionality flags, int security)
+        : TypedPropertyDescriptor<PropType>(Class::classDescriptor(), name, category, getset(getFunc, setFunc), flags, security)
+    {
+        ASSERT_(Class::classType()==typeid(Class), "Class::classType()==typeid(Class)", 0xae, "174")
     }
-    return this;
+    virtual ~PropDescriptor();
+};
 }
+class B1 { public: int x; };
+class B2 { public: int y; };
+class GuiButton : public B1, public B2 {
+public:
+    static const std::type_info& classType() { return typeid(GuiButton); }
+    static Reflection::ClassDescriptor& classDescriptor();
+    std::string get() const;
+    void set(std::string);
+};
+}
+template RBX::Reflection::PropDescriptor<RBX::GuiButton, std::string>::PropDescriptor(const char*, const char*, std::string (RBX::GuiButton::*)() const, void (RBX::GuiButton::*)(std::string), RBX::Reflection::PropertyDescriptor::Functionality, int);

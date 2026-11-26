@@ -1,34 +1,24 @@
-// from server: 56% by Intel
-struct VCRenderSettingsItem {
-    struct FactoryProduct {
-        int vftable;
-        int field4;
-        int field8;
-        int fieldC;
-    };
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 30729
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <memory>
 
-    static FactoryProduct* __cdecl Create(int a1, int a2, int a3, int a4);
+struct GetSetBase {
+    virtual void get() const = 0;
 };
 
-void* __cdecl operator new(unsigned int);
-void __cdecl operator delete(void*);
+// operator new(0x10): vptr + a scalar (object/getter) + an 8-byte pair copied by reference.
+struct Pair { int b, c; };
+struct GetSetImpl : GetSetBase {
+    int a;
+    Pair bc;
+    GetSetImpl(int a_, const Pair& p) : a(a_), bc(p) {}
+    virtual void get() const;
+};
 
-VCRenderSettingsItem::FactoryProduct* __cdecl VCRenderSettingsItem::Create(int a1, int a2, int a3, int a4) {
-    FactoryProduct* obj = 0;
-    void* mem = operator new(0x10);
-    if (mem) {
-        obj = static_cast<FactoryProduct*>(mem);
-        obj->vftable = 0x00B57CA0;
-        obj->field4 = a1;
-        obj->field8 = a2;
-        obj->fieldC = a3;
-    }
-
-    int* outPtr = reinterpret_cast<int*>(a4);
-    *outPtr = reinterpret_cast<int>(obj);
-
-    void* guardMem = operator new(0);
-    operator delete(guardMem);
-
-    return obj;
+std::auto_ptr<GetSetBase> makeGetSet(int a, Pair bc)
+{
+    return std::auto_ptr<GetSetBase>(new GetSetImpl(a, bc));
 }

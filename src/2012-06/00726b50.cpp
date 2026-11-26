@@ -1,162 +1,33 @@
-// from server: 0% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-render AggregatingSceneManager.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "RenderLib/AggregatingSceneManager.h"
-
-namespace RBX
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Iter {
+    void* cur;
+    Iter() : cur(0) {}
+    ~Iter();
+};
+struct E { int x; };
+struct HC {
+    bool next(Iter* it);
+    void handle(E* e);
+    void process(void* arg);
+};
+extern unsigned char g_flag;
+extern void __cdecl assertFail(int, const char*, int);
+extern void __cdecl visit(void* item, void* arg);
+extern const char g_msg[];
+void HC::process(void* arg)
 {
-	namespace Render
-	{
-		AggregatingSceneManager::AggregatingSceneManager(RenderScene* renderScene)
-			: SceneManager(renderScene)
-		{
-		}
-
-		AggregatingSceneManager::~AggregatingSceneManager() {}
-
-		void AggregatingSceneManager::addModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			addToScene(chunk);
-		}
-
-		void AggregatingSceneManager::removeModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			invalidSleepingModels.erase(chunk);
-			invalidMovingModels.erase(chunk);
-
-			G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-			if (aggregate.notNull())
-				deconstructAggregate(aggregate);
-
-			removeFromScene(chunk);
-			dequeueSleepingChunk(chunk);
-		}
-
-		void AggregatingSceneManager::setSleeping(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool sleeping)
-		{
-			if (sleeping)
-			{
-				bool erased = invalidMovingModels.erase(chunk) == 1;
-
-				if (erased)
-					invalidSleepingModels.insert(chunk);
-
-				queueSleepingChunk(chunk);
-			}
-			else
-			{
-				bool erased = invalidSleepingModels.erase(chunk) == 1;
-
-				if (erased)
-					invalidMovingModels.insert(chunk);
-
-				G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-				if (aggregate.notNull())
-					deconstructAggregate(aggregate);
-
-				dequeueSleepingChunk(chunk);
-			}
-		}
-
-		void AggregatingSceneManager::invalidateModel(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool isSleeping)
-		{
-			if (isSleeping)
-				invalidSleepingModels.insert(chunk);
-			else
-				invalidMovingModels.insert(chunk);
-		}
-
-		void AggregatingSceneManager::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				if (iter->second->dequeueSleepingChunk(chunk))
-					break;
-			}
-		}
-
-		void AggregatingSceneManager::clear()
-		{
-			invalidSleepingModels.clear();
-			invalidMovingModels.clear();
-
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				iter->second->clear();
-			}
-
-			clearScene();
-		}
-
-		bool AggregatingSceneManager::Bucket::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::vector<G3D::ReferenceCountedPointer<Chunk>>::iterator found = std::find(queue.begin(), queue.end(), chunk);
-
-			if (found != queue.end())
-			{
-				queue.erase(found);
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-
-		void AggregatingSceneManager::queueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			G3D::ReferenceCountedPointer<Bucket> queue;
-
-			{
-				BucketKey key(chunk);
-
-				std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.find(key);
-
-				if (iter == buckets.end())
-				{
-					queue = new Bucket;
-					buckets[key] = queue;
-				}
-				else
-				{
-					queue = iter->second;
-				}
-			}
-
-			queue->addToQueue(chunk);
-		}
-
-		bool AggregatingSceneManager::BucketKey::operator<(const AggregatingSceneManager::BucketKey& that) const
-		{
-			if (this->material < that.material)
-				return true;
-			if (this->material > that.material)
-				return false;
-
-			if (this->castsShadows < that.castsShadows)
-				return true;
-			if (this->castsShadows > that.castsShadows)
-				return false;
-
-			if (this->polygonOffset < that.polygonOffset)
-				return true;
-			if (this->polygonOffset > that.polygonOffset)
-				return false;
-
-			if (this->cullable < that.cullable)
-				return true;
-			else
-				return false;
-		}
-	}
+    Iter it;
+    if (g_flag)
+        assertFail(g_flag, g_msg, 0);
+    for (;;) {
+        try {
+            while (next(&it))
+                visit(it.cur, arg);
+            break;
+        } catch (E& e) {
+            handle(&e);
+        }
+    }
 }

@@ -1,14 +1,6 @@
-// from server: 79% by atomic.potato
-struct PingItem
-{
-    PingItem *operator()(int);
-};
-
-extern "C" void __stdcall sub_5775a0(PingItem *);
-
-PingItem *PingItem::operator()(int value)
-{
-    if (value & 1)
-        sub_5775a0(this - 1);
-    return this;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Q { void h(void*); };
+struct S { S* f(int fl); };
+S* S::f(int fl) { if (fl & 1) { int* b = (int*)this - 1; ((Q*)*b)->h(b); } return this; }

@@ -1,31 +1,26 @@
-// from server: 78% by atomic.potato
-struct VManualWeld {
-    void* vtable;
-    void construct();
-    void* sub_5748e0();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" void __cdecl sub_972290(unsigned char, const char*);
+struct Sink { void run(); };
+Sink* __stdcall sub_4019d0(void**);
+struct Creator {
+    virtual ~Creator();
+    virtual void f1();
+    virtual void f2();
+    void* base();
+
 };
-
-extern "C" void __stdcall sub_972290(unsigned char, const char*);
-extern "C" void* __cdecl sub_4019d0(void*);
-extern "C" void __cdecl sub_4a11d0(void*);
-
 extern unsigned char byte_E580B3;
-extern int dword_E246A8;
-extern int (__stdcall *dword_E5809C)(unsigned int, const char*, const char*);
+extern int dword_E1E0B8;
+extern char (__cdecl *dword_E5809C)(const char*, const char*, int);
 
-void VManualWeld::construct()
+Creator::~Creator()
 {
-    vtable = (void*)0xB76E84;
-    if (byte_E580B3 != 0 && dword_E246A8 != 0x29A) {
-        if (dword_E5809C != 0) {
-            if (dword_E5809C(0xE2, "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util\\Object.h", "wasConstructed()")) {
-                goto skip;
-            }
-        }
-        sub_972290(byte_E580B3, "wasConstructed() file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util\\Object.h line: 226");
+    if (byte_E580B3 != 0 && dword_E1E0B8 != 0x29a) {
+        if (dword_E5809C == 0 || !dword_E5809C("wasConstructed()", "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h", 0xe2))
+            sub_972290(byte_E580B3, "wasConstructed() file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h line: 226");
     }
-skip:
-    void* p = sub_5748e0();
-    void* q = sub_4019d0(&p);
-    sub_4a11d0(q);
+    void* p = base();
+    sub_4019d0(&p)->run();
 }

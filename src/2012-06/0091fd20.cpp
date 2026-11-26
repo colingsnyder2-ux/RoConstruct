@@ -1,15 +1,6 @@
-// from server: 38% by atomic.potato
-extern "C" void __cdecl CallTarget(float);
-
-struct RotatePJoint
-{
-    int fieldD0;
-    float fieldD4;
-    void f();
-};
-
-void RotatePJoint::f()
-{
-    if (fieldD0)
-        CallTarget(fieldD4);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct P { void m(float); };
+struct S { char pad[0xd0]; P* p; float v; void f(); };
+void S::f() { if (p) p->m(v); }

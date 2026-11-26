@@ -1,22 +1,29 @@
-// from server: 36% by tester
-struct SurfaceTool {
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+namespace RBX {
+class Workspace;
+class INamed { public: virtual void named(); };
+class IAdornable { public: virtual void adorn(); };
+class MouseCommand : public INamed, public IAdornable {
+public:
+    MouseCommand(Workspace* workspace);
+    char pad[0x60 - 8];
+};
+class WeldTool : public MouseCommand {
+public:
+    WeldTool(Workspace* workspace) : MouseCommand(workspace) {}
+    virtual void named();
+    virtual void adorn();
+};
+class ToolVerb {
+public:
     char pad[0x20];
-    void* workspace;
+    Workspace* workspace;
+    MouseCommand* create();
 };
-
-struct StudsTool : SurfaceTool {
-    StudsTool(void* workspace);
-};
-
-extern "C" void* __cdecl sub_98211a(unsigned int size);
-extern "C" void __cdecl sub_8aa140(void* self, void* workspace);
-
-StudsTool::StudsTool(void* workspace)
+MouseCommand* ToolVerb::create()
 {
-    void* mem = sub_98211a(0x60);
-    if (mem != 0) {
-        sub_8aa140(mem, this->workspace);
-        *(void**)mem = (void*)0xbdf314;
-        *(void**)((char*)mem + 4) = (void*)0xbdf2e8;
-    }
+    return new WeldTool(workspace);
+}
 }

@@ -1,47 +1,30 @@
-// from server: 66% by atomic.potato
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 struct Node {
     Node* left;
-    Node* right;
     Node* parent;
-    char color;
-    char pad[3];
+    Node* right;
+    char pad[17];
+    char isnil;
 };
-
-struct S {
-    Node* root;
-    void f();
+struct TreeIterator {
+    Node* ptr;
+    void dec();
 };
-
-void S::f()
-{
-    Node* n = root;
-    if (n->color != 0) {
-        root = n->right;
-        return;
+void TreeIterator::dec() {
+    if (ptr->isnil) {
+        ptr = ptr->right;
+    } else if (!ptr->left->isnil) {
+        Node* p = ptr->left;
+        while (!p->right->isnil)
+            p = p->right;
+        ptr = p;
+    } else {
+        Node* p;
+        while (!(p = ptr->parent)->isnil && ptr == p->left)
+            ptr = p;
+        if (!ptr->isnil)
+            ptr = p;
     }
-    Node* p = n->left;
-    if (p->color == 0) {
-        Node* q = p->right;
-        if (q->color == 0) {
-            do {
-                p = q;
-                q = p->right;
-            } while (q->color == 0);
-        }
-        root = p;
-        return;
-    }
-    Node* q = n->right;
-    if (q->color == 0) {
-        Node* r = root;
-        while (r == q->left) {
-            root = q;
-            q = q->right;
-            if (q->color != 0)
-                break;
-        }
-    }
-    Node* r = root;
-    if (r->color == 0)
-        root = q;
 }

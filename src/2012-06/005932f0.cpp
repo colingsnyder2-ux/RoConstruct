@@ -1,162 +1,93 @@
-// from server: 30% by colin
-// roc-lang: cpp
+// from server: 100% by Xemicl
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/RunStateOwner.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
-#include "util/Timer.h"
-#include "util/standardout.h"
-#include "v8datamodel/DataModel.h"
-#include <boost/thread/xtime.hpp>
-
-namespace RBX
+#include <intrin.h>
+#include <new>
+#include <typeinfo>
+#include <string>
+#include <exception>
+namespace RBX { class Animation; }
+namespace boost {
+namespace detail {
+class counted_base {
+public:
+    virtual ~counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy() = 0;
+    long use_count_;
+    long weak_count_;
+    void add_ref() { _InterlockedIncrement(&use_count_); }
+    void weak_release() {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
+};
+}
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::counted_base* pn;
+    shared_ptr(const shared_ptr& r) : px(r.px), pn(r.pn) {
+        if (pn) pn->add_ref();
+    }
+    ~shared_ptr() {
+        if (pn) pn->release();
+    }
+};
+template<int I> struct arg { };
+namespace _bi {
+template<class T> class value { public: T t_; };
+template<class A1, class A2, class A3> class list3 {
+public:
+    A3 a3_;
+};
+template<class R, class F, class L> class bind_t {
+public:
+    F f_;
+    L l_;
+    bind_t(const bind_t& o) : f_(o.f_), l_(o.l_) {}
+};
+}
+}
+typedef boost::_bi::bind_t<void,
+    void (*)(std::string*, std::exception*, boost::shared_ptr<RBX::Animation>),
+    boost::_bi::list3<boost::arg<1>, boost::arg<2>, boost::_bi::value<boost::shared_ptr<RBX::Animation> > > > Functor;
+namespace RBX { namespace Network { enum FilterResult { FilterResult_e0 }; } }
+namespace boost { template<class T0> class function {}; }
+namespace RBX { namespace Reflection { struct Tuple {}; } }
+namespace RBX { class Instance {}; }
+union function_buffer {
+    void* obj_ptr;
+    struct {
+        const std::type_info* type;
+        bool const_qualified;
+        bool volatile_qualified;
+    } type;
+    char data[12];
+};
+void manage(const function_buffer& in, function_buffer& out, int op)
 {
-	const char* const sRunService = "RunService";
-
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> runFunction(&RunService::run, "Run", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> pauseFunction(&RunService::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> resetFunction(&RunService::reset, "Reset", Reflection::FunctionDescriptor::NeedTrustedCaller);
-
-	static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "interval");
-	Reflection::SignalDesc<RunService, void(float, float)> RunService::event_Stepped("Stepped", "time", "step");
-
-	RunService::RunService()
-		: framePeriod(1.0f/30.0f),
-		  runState(RS_NORMAL),
-		  invalidRunViewCount(0),
-		  stopRequested(false),
-		  runDisabled(false)
-	{
-		setName("Run Service");
-	}
-
-	RunService::~RunService()
-	{
-		RBXASSERT(views.empty());
-	}
-
-	void RunService::endRunThread(bool join)
-	{
-		stopRequested = true;
-		stateChangedCondition.notify_all();
-
-		if (join)
-			runThread->join();
-	}
-
-	void RunService::onAncestorChanged(const AncestorChanged& event)
-	{
-		if (!getParent())
-		{
-			stopRequested = true;
-			stateChangedCondition.notify_all();
-		}
-	}
-
-	void RunService::setRunState(RunState newState)
-	{
-		RunTransition transition(runState, newState);
-		runState = newState;
-
-		Notifier<RunService, RunState>::raise(newState);
-		Notifier<RunService, RunTransition>::raise(transition);
-	}
-
-	void RunService::raiseStepped(float time, float step)
-	{
-		Notifier<RunService, Stepped>::raise(Stepped(time, step));
-		event_Stepped.fire(this, time, step);
-	}
-
-	void RunService::raiseHeartbeat(float time, float step)
-	{
-		Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-		event_Heartbeat.fire(this, step);
-	}
-
-	void RunService::invalidateRunViews()
-	{
-		boost::mutex::scoped_lock lock(viewMutex);
-
-		if (invalidRunViewCount == 0)
-		{
-			invalidRunViewCount = (int)views.size();
-			if (invalidRunViewCount > 0)
-			{
-				for (std::map<IRunView*, bool>::iterator iter = views.begin(); iter != views.end(); iter++)
-				{
-					iter->first->InvalidateRunView();
-					iter->second = false;
-				}
-				runViewsDoneCondition.notify_all();
-			}
-		}
-	}
-
-	void RunService::start()
-	{
-		RBXASSERT(!runThread);
-
-		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
-		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc")));
-	}
-
-	void RunService::runProc(boost::shared_ptr<DataModel> dataModel)
-	{
-		double lastTime = getRealTime();
-		while (true)
-		{
-			double deltaTime = lastTime - getRealTime();
-
-			{
-				boost::mutex::scoped_lock lock(viewMutex);
-				for (std::map<IRunView*, bool>::iterator it = views.begin(); it != views.end(); it++)
-					it->first->AdjustThrottle(deltaTime);
-			}
-
-			double clampedDeltaTime = G3D::max(0.0, deltaTime);
-			boost::xtime stateChangedTimeout;
-			boost::xtime_get(&stateChangedTimeout, boost::TIME_UTC);
-			stateChangedTimeout.nsec += (boost::xtime::xtime_nsec_t)(clampedDeltaTime * 1e9);
-
-			bool stateChanged;
-			{
-				boost::mutex::scoped_lock lock(runMutex);
-				stateChanged = stateChangedCondition.timed_wait(lock, stateChangedTimeout);
-			}
-
-			if (!stateChanged)
-			{
-				boost::xtime runViewsDoneTimeout;
-				boost::xtime_get(&runViewsDoneTimeout, boost::TIME_UTC);
-				runViewsDoneTimeout.sec += 1;
-
-				boost::mutex::scoped_lock lock(runMutex);
-				if (invalidRunViewCount != 0)
-					runViewsDoneCondition.timed_wait(lock, runViewsDoneTimeout);
-			}
-
-			if (deltaTime <= 0.0)
-				lastTime = getRealTime();
-
-			{
-				DataModel::Lock lock(dataModel);
-
-				if (!stopRequested)
-				{
-					RBXASSERT(getParent() == dataModel.get());
-					dataModel->step(framePeriod);
-				}
-				else
-				{
-					StandardOut::singleton()->print(MESSAGE_INFO, "runProc ending");
-					return;
-				}
-			}
-
-			lastTime += framePeriod;
-		}
-	}
+    if (op == 0 || op == 1) {
+        const Functor* f = reinterpret_cast<const Functor*>(in.data);
+        new (reinterpret_cast<void*>(out.data)) Functor(*f);
+        if (op == 1)
+            reinterpret_cast<Functor*>(const_cast<char*>(in.data))->~Functor();
+    } else if (op == 2) {
+        reinterpret_cast<Functor*>(out.data)->~Functor();
+    } else if (op == 3) {
+        if (*out.type.type == typeid(class boost::_bi::bind_t<enum RBX::Network::FilterResult,enum RBX::Network::FilterResult (__cdecl*)(class boost::shared_ptr<class boost::function<class boost::shared_ptr<struct RBX::Reflection::Tuple> __cdecl(class boost::shared_ptr<struct RBX::Reflection::Tuple const >)> >,class boost::shared_ptr<class RBX::Instance>,class boost::shared_ptr<class RBX::Instance>),class boost::_bi::list3<class boost::_bi::value<class boost::shared_ptr<class boost::function<class boost::shared_ptr<struct RBX::Reflection::Tuple> __cdecl(class boost::shared_ptr<struct RBX::Reflection::Tuple const >)> > >,struct boost::arg<1>,struct boost::arg<2> > >))
+            out.obj_ptr = const_cast<char*>(in.data);
+        else
+            out.obj_ptr = 0;
+    } else {
+        out.type.type = &typeid(class boost::_bi::bind_t<enum RBX::Network::FilterResult,enum RBX::Network::FilterResult (__cdecl*)(class boost::shared_ptr<class boost::function<class boost::shared_ptr<struct RBX::Reflection::Tuple> __cdecl(class boost::shared_ptr<struct RBX::Reflection::Tuple const >)> >,class boost::shared_ptr<class RBX::Instance>,class boost::shared_ptr<class RBX::Instance>),class boost::_bi::list3<class boost::_bi::value<class boost::shared_ptr<class boost::function<class boost::shared_ptr<struct RBX::Reflection::Tuple> __cdecl(class boost::shared_ptr<struct RBX::Reflection::Tuple const >)> > >,struct boost::arg<1>,struct boost::arg<2> > >);
+        out.type.const_qualified = false;
+        out.type.volatile_qualified = false;
+    }
 }

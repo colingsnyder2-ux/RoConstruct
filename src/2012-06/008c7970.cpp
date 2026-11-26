@@ -1,21 +1,24 @@
-// from server: 40% by Intel
-struct BoundFuncDesc
-{
-    int construct(void* a1, void* a2, void* a3, void* a4, void* a5, void* a6);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+int sub_6c11a0();
+struct Base {
+    char pad[0x18];
+    int m1c;
+    char pad2[0x10];
+    Base(int a, int b, int c, int d);
+    virtual ~Base();
 };
-
-extern "C" int __stdcall sub_8C73A0(void* thisptr, void* a1, void* a2, void* a3, void* a4);
-extern "C" int __cdecl sub_6C1520();
-
-int BoundFuncDesc::construct(void* a1, void* a2, void* a3, void* a4, void* a5, void* a6)
+struct Replicator : Base {
+    int m30;
+    int m34;
+    Replicator(int a1, int a2, int a3, int a4, int a5, int a6);
+    virtual ~Replicator();
+};
+Replicator::Replicator(int a1, int a2, int a3, int a4, int a5, int a6)
+    : Base(a3, a4, a5, a6)
 {
-    int v1 = sub_8C73A0(this, a1, a2, a3, a4);
-    int v2 = sub_6C1520();
-
-    *(int*)this = 0xBE66F8;
-    *(int*)((char*)this + 0x30) = (int)a5;
-    *(int*)((char*)this + 0x34) = (int)a6;
-    *(int*)((char*)this + 0x1C) = v2;
-
-    return (int)this;
+    m30 = a1;
+    m34 = a2;
+    m1c = sub_6c11a0();
 }

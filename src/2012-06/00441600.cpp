@@ -1,78 +1,58 @@
-// from server: 46% by Intel
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement, _InterlockedDecrement)
 
-extern "C" void __cdecl sub_441580(int*);
-extern "C" void __cdecl sub_972290(const char*, int);
-
-struct RefCounted
-{
-    int vptr;
-    int refCount;
+struct sp_counted_base {
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy() = 0;
+    long use_count_;
+    long weak_count_;
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            if (_InterlockedDecrement(&weak_count_) == 0) destroy();
+        }
+    }
+    void add_ref() { _InterlockedIncrement(&use_count_); }
 };
 
-struct Creator
-{
-    void __cdecl f(void* outPtr, int arg);
+struct shared_count {
+    sp_counted_base* pi;
+    shared_count() : pi(0) {}
+    shared_count(const shared_count& r) : pi(r.pi) { if (pi) pi->add_ref(); }
+    ~shared_count() { if (pi) pi->release(); }
 };
 
-void Creator::f(void* outPtr, int arg)
+struct Base1 { int pad; };
+struct Other { char a[0x18]; };
+struct Derived : Other, Base1 { int x; };
+struct Creator : Derived {};
+
+struct sp_Derived {
+    Derived* px;
+    shared_count pn;
+};
+struct sp_Base {
+    Base1* px;
+    shared_count pn;
+    sp_Base(const sp_Derived& r) : px(r.px), pn(r.pn) {}
+};
+
+extern "C" void __cdecl sub_972290(unsigned char, const char*);
+sp_Derived __cdecl sub_4141e0();
+extern unsigned char byte_E580B3;
+extern int dword_E1653C;
+extern char (__cdecl *dword_E5809C)(const char*, const char*, int);
+
+sp_Base __stdcall sub_4148C0()
 {
-    int sehCookie = 0;
-    if (*(unsigned char*)0xE580B3 != 0)
-    {
-        if (*(int*)0xE188B0 != 0x29A)
-        {
-            int (__cdecl* callback)(const char*, const char*, int) = (int (__cdecl*)(const char*, const char*, int))*(int*)0xE5809C;
-            if (callback != 0)
-            {
-                if (callback("C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h", "wasConstructed()", 0xCA) != 0)
-                {
-                    goto LABEL_RETURN;
-                }
-            }
-            sub_972290("wasConstructed() file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h line: 202", *(unsigned char*)0xE580B3);
-        }
+    if (byte_E580B3 != 0 && dword_E1653C != 0x29a) {
+        if (dword_E5809C == 0 || !dword_E5809C("wasConstructed()", "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h", 0xca))
+            sub_972290(byte_E580B3, "wasConstructed() file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h line: 202");
     }
-
-LABEL_RETURN:
-    int localPtr[2];
-    sub_441580(localPtr);
-    RefCounted* obj = (RefCounted*)localPtr[0];
-    int* result = (int*)outPtr;
-    int ptrVal = 0;
-    if (obj != 0)
-    {
-        ptrVal = (int)((char*)obj + 0x18);
-    }
-    *result = ptrVal;
-    int ref = localPtr[1];
-    result[1] = ref;
-    if (ref != 0)
-    {
-        if (_InterlockedExchangeAdd((volatile long*)(ref + 4), 1) != 0)
-        {
-        }
-    }
-
-    int esi = arg;
-    int guard = 0;
-    int state = 1;
-    if (esi != 0)
-    {
-        long old = _InterlockedExchangeAdd((volatile long*)(esi + 4), -1);
-        if (old == 1)
-        {
-            int vtable = *(int*)esi;
-            void (__thiscall* dtor)(int) = (void (__thiscall*)(int))*(int*)(vtable + 4);
-            dtor(esi);
-            long old2 = _InterlockedExchangeAdd((volatile long*)(esi + 8), -1);
-            if (old2 == 1)
-            {
-                int vtable2 = *(int*)esi;
-                void (__thiscall* deleter)(int) = (void (__thiscall*)(int))*(int*)(vtable2 + 8);
-                deleter(esi);
-            }
-        }
-    }
+    return sp_Base(sub_4141e0());
 }

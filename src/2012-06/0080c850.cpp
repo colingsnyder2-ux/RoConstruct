@@ -1,16 +1,18 @@
-// from server: 37% by atomic.potato
-extern "C" void __cdecl sub_414da0(float, int);
-
-struct S_func_0080c850 {
-    char pad0[548];
-    float m_value;
-    void f(float);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /arch:SSE2 /fp:fast
+struct Descriptor { int x; };
+extern Descriptor desc_size;
+struct TextBox {
+    char pad[0x224];
+    float fontSize;
+    void raiseChanged(const Descriptor& d);
+    void setFontSize(float v);
 };
-
-void S_func_0080c850::f(float value)
+void TextBox::setFontSize(float v)
 {
-    if (m_value != value) {
-        m_value = value;
-        sub_414da0(value, 0xE4FCD4);
+    if (fontSize != v) {
+        fontSize = v;
+        raiseChanged(desc_size);
     }
 }

@@ -1,22 +1,31 @@
-// from server: 43% by Intel
-// roc-repair: genuine WinNT.h definitions (no SDK shipped)
-typedef unsigned long DWORD;
-struct OgreVertexStreamer {
-    void set();
+// from server: 100% by Xemicl
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Node {
+    Node* left;
+    Node* parent;
+    Node* right;
+    char pad[0x5d];
+    char isnil;
 };
-
-void OgreVertexStreamer::set() {
-    if (*(char*)(*(DWORD*)this + 0x69)) {
-        DWORD* p = *(DWORD**)this;
-        while (*(char*)(p[2] + 0x69)) {
-            p = (DWORD*)p[2];
-        }
-        *(DWORD*)this = (DWORD)p;
+struct TreeIterator {
+    Node* ptr;
+    void dec();
+};
+void TreeIterator::dec() {
+    if (ptr->isnil) {
+        ptr = ptr->right;
+    } else if (!ptr->left->isnil) {
+        Node* p = ptr->left;
+        while (!p->right->isnil)
+            p = p->right;
+        ptr = p;
     } else {
-        DWORD* p = *(DWORD**)this;
-        while (!*(char*)(p[2] + 0x69)) {
-            p = (DWORD*)p[2];
-        }
-        *(DWORD*)this = (DWORD)p;
+        Node* p;
+        while (!(p = ptr->parent)->isnil && ptr == p->left)
+            ptr = p;
+        if (!ptr->isnil)
+            ptr = p;
     }
 }

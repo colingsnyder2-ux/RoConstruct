@@ -1,22 +1,26 @@
-// from server: 38% by Intel
-struct TypeInfo {
-    int vftable;
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <typeinfo>
+namespace RBX { namespace CRenderSettings { enum FrameRateManagerMode { FrameRateManagerMode_e0 }; } }
+namespace boost { template<class E> __declspec(noreturn) void throw_exception(const E& e); }
+namespace rbx {
+class bad_placement_any_cast : public std::bad_cast {
+public:
+    virtual const char* what() const throw();
 };
-
-extern "C" int __stdcall type_info_equal(TypeInfo* a, TypeInfo* b);
-extern "C" void __stdcall construct_bad_cast(const char* msg);
-extern "C" void __stdcall throw_exception(void* exception);
-
-int __cdecl sub_4671B0(int* esi) {
-    TypeInfo* vftable_ptr = (TypeInfo*)esi[0];
-    TypeInfo* type_info = vftable_ptr ? vftable_ptr : (TypeInfo*)0xD60AC8;
-
-    if (type_info->vftable != 0xD6BA68) {
-        TypeInfo* obj_type = vftable_ptr ? vftable_ptr : (TypeInfo*)0xD60AC8;
-        if (type_info_equal(obj_type, (TypeInfo*)0xD6BA68)) {
-            construct_bad_cast(".?AV?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@");
-            throw_exception((void*)0xB44120);
-        }
-    }
-    return esi[1];
+struct fxn_ptr_table { const std::type_info* type; };
+class placement_any {
+public:
+    const std::type_info& type() const { return table ? *table->type : typeid(void); }
+    fxn_ptr_table* table;
+    char storage[16];
+};
+template<class T> T& placement_any_cast(placement_any& operand)
+{
+    if (&operand.type() != &typeid(T) && operand.type() != typeid(T))
+        boost::throw_exception(bad_placement_any_cast());
+    return *reinterpret_cast<T*>(operand.storage);
+}
+template ::RBX::CRenderSettings::FrameRateManagerMode& placement_any_cast<::RBX::CRenderSettings::FrameRateManagerMode>(placement_any&);
 }

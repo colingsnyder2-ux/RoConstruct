@@ -1,17 +1,9 @@
-// from server: 83% by atomic.potato
-struct ExceptionAsyncResult
-{
-    int unused;
-    int field4;
-    void f();
-};
-
-extern "C" void __cdecl sub_446190(void *, int);
-extern "C" void __cdecl sub_983144(void *, const char *);
-
-void ExceptionAsyncResult::f()
-{
-    char buffer[44];
-    sub_446190(buffer, field4);
-    sub_983144(buffer, "d$(h");
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Ex { char b[44]; Ex(int); };
+struct TI { int a, b, c, d; };
+extern TI ti;
+__declspec(noreturn) void __stdcall thr(void*, const TI*);
+struct R { int u; int f4; void f(); };
+void R::f() { Ex e(f4); thr(&e, &ti); }

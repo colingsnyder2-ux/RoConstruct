@@ -1,116 +1,98 @@
-// from server: 65% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+namespace boost {
+namespace noncopyable_ {
+class noncopyable {
+protected:
+    noncopyable() {}
+    ~noncopyable() {}
+private:
+    noncopyable(const noncopyable&);
+    const noncopyable& operator=(const noncopyable&);
+};
 }
-
-void initMoo()
-{
-	moo2();
+typedef noncopyable_::noncopyable noncopyable;
+namespace detail { namespace function {
+union function_buffer {
+    void* obj_ptr;
+    double align;
+    char data[16];
+};
+struct vtable_base {
+    void (*manager)(const function_buffer& in, function_buffer& out, int op);
+};
+} }
+template<typename Signature> class function;
+template<typename R, typename T0>
+class function<R(T0)> {
+public:
+    detail::function::vtable_base* vtable;
+    detail::function::function_buffer functor;
+    function(const function& f) : vtable(0)
+    {
+        if (f.vtable) {
+            vtable = f.vtable;
+            f.vtable->manager(f.functor, functor, 0);
+        }
+    }
+    ~function();
+};
 }
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	Name::NamMap::~NamMap()
-	{
-		for (std::map<std::string, Name*>::iterator iter = this->begin(); iter != this->end(); iter++)
-		{
-			delete iter->second;
-		}
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+namespace RBX { class Humanoid { public: enum Status { A }; }; }
+namespace rbx {
+template<class T, class Count = int, int a = 0, int b = 0>
+class intrusive_ptr_target {
+};
+template<class T>
+class intrusive_ptr {
+    T* p;
+public:
+    intrusive_ptr() : p(0) {}
+    ~intrusive_ptr();
+};
+template<int N, typename Signature>
+class icallable {
+public:
+    virtual void call(RBX::Humanoid::Status) = 0;
+};
+template<class Base, class F, int N, typename Signature>
+class callable : public Base {
+    F func;
+public:
+    template<class A>
+    callable(const F& f, A a);
+    virtual void call(RBX::Humanoid::Status);
+};
+namespace signals {
+class connection {
+public:
+    class islot : boost::noncopyable, public rbx::intrusive_ptr_target<islot> {
+    public:
+        virtual ~islot();
+        virtual void disconnect() = 0;
+        virtual bool connected() const = 0;
+    };
+};
+template<typename Signature>
+class signal {
+public:
+    class slot : public connection::islot, public rbx::icallable<1, Signature> {
+    public:
+        rbx::intrusive_ptr<slot> next;
+        signal* sig;
+        slot(signal* s) : sig(s) {}
+        virtual void disconnect();
+        virtual bool connected() const;
+    };
+};
 }
+template<class Base, class F, int N, typename Signature>
+template<class A>
+callable<Base, F, N, Signature>::callable(const F& f, A a)
+    : Base(a), func(f)
+{
+}
+}
+typedef void Sig(RBX::Humanoid::Status);
+template rbx::callable<rbx::signals::signal<Sig>::slot, boost::function<Sig>, 1, Sig>::callable(const boost::function<Sig>&, rbx::signals::signal<Sig>*);

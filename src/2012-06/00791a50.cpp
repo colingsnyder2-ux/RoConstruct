@@ -1,42 +1,56 @@
-// from server: 39% by atomic.potato
-struct VMeshIdPropDesc {
-    void* vtable;
-    char pad[0x24];
-    void init(void* a, void* b, void* c, void* d, void* e, void* f, void* g, void* h, void* i, void* j);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <memory>
+#include <string>
+#include <typeinfo>
+extern unsigned char g_assertEnabled;
+extern char (__cdecl *g_assertHook)(const char*, const char*, int);
+void __cdecl g_assertFail(unsigned char, const char*);
+#define FILE_ "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Reflection/Reflection.h"
+#define ASSERT_(cond, cs, line, lines) if (g_assertEnabled && !(cond)) { if (!g_assertHook || !g_assertHook(cs, FILE_, line)) g_assertFail(g_assertEnabled, cs " file: " FILE_ " line: " lines); }
+namespace RBX {
+namespace Reflection {
+class ClassDescriptor;
+class PropertyDescriptor {
+public:
+    struct Functionality { int a; int b; int c; };
+    virtual ~PropertyDescriptor();
 };
-
-extern "C" void* __cdecl sub_982114(void*);
-extern "C" void* __cdecl sub_5cf230(void*, void*);
-extern "C" void __cdecl sub_972290(unsigned char, void*);
-extern "C" void* __cdecl sub_791520(void*, void*, void*, void*, void*, void*, void*);
-extern "C" void __cdecl sub_70c470(void*, void*);
-extern "C" int __cdecl sub_b229ec(void*);
-
-extern unsigned char byte_E580B3;
-extern void* dword_E5809C;
-
-void VMeshIdPropDesc::init(void* a, void* b, void* c, void* d, void* e, void* f, void* g, void* h, void* i, void* j)
-{
-    void* tmp[3];
-    void* r;
-    void* p;
-    void* q;
-
-    r = sub_791520(&tmp, a, b, c, d, e, f);
-    p = *(void**)r;
-    *(void**)r = 0;
-    tmp[0] = p;
-    q = sub_5cf230(g, h);
-    sub_70c470(this, q);
-    sub_982114(i);
-    this->vtable = (void*)0xbb2440;
-    if (byte_E580B3 != 0) {
-        if (sub_b229ec((void*)0xdc1ef8) == 0) {
-            if (dword_E5809C != 0) {
-                if (((int (__cdecl*)(int, void*, void*))dword_E5809C)(0xae, (void*)0xb58618, (void*)0xb44978) != 0)
-                    return;
-            }
-            sub_972290(byte_E580B3, (void*)0xb58680);
-        }
+template<class PropType>
+class TypedPropertyDescriptor : public PropertyDescriptor {
+public:
+    class GetSet {
+    public:
+        int pad;
+        virtual PropType getValue(const void* object) const = 0;
+    };
+    TypedPropertyDescriptor(ClassDescriptor& classDescriptor, const char* name, const char* category, std::auto_ptr<GetSet> getset, Functionality flags, int security);
+    virtual ~TypedPropertyDescriptor();
+};
+template<class Class, class PropType>
+class PropDescriptor : public TypedPropertyDescriptor<PropType> {
+    typedef typename TypedPropertyDescriptor<PropType>::GetSet GetSet;
+    template<typename GetFunc, typename SetFunc>
+    static std::auto_ptr<GetSet> getset(GetFunc getFunc, SetFunc setFunc);
+public:
+    template<typename GetFunc, typename SetFunc>
+    PropDescriptor(const char* name, const char* category, GetFunc getFunc, SetFunc setFunc, PropertyDescriptor::Functionality flags, int security)
+        : TypedPropertyDescriptor<PropType>(Class::classDescriptor(), name, category, getset(getFunc, setFunc), flags, security)
+    {
+        ASSERT_(Class::classType()==typeid(Class), "Class::classType()==typeid(Class)", 0xae, "174")
     }
+    virtual ~PropDescriptor();
+};
 }
+class B1 { public: int x; };
+class B2 { public: int y; };
+class FileMesh : public B1, public B2 {
+public:
+    static const std::type_info& classType() { return typeid(FileMesh); }
+    static Reflection::ClassDescriptor& classDescriptor();
+    std::string get() const;
+    void set(std::string);
+};
+}
+template RBX::Reflection::PropDescriptor<RBX::FileMesh, std::string>::PropDescriptor(const char*, const char*, std::string (RBX::FileMesh::*)() const, void (RBX::FileMesh::*)(std::string), RBX::Reflection::PropertyDescriptor::Functionality, int);

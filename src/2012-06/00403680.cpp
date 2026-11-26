@@ -1,112 +1,40 @@
-// from server: 36% by atomic.potato
-struct Value { int x; };
-
-extern "C" int (__thiscall *sub_004015a0)(int, int);
-extern "C" Value* __stdcall sub_004019d0();
-extern "C" Value& __stdcall sub_004025c0();
-extern "C" void* __stdcall sub_00457100();
-extern "C" int* __stdcall sub_00466420();
-extern "C" void* __stdcall sub_0067f480();
-extern "C" void __stdcall sub_00972290(int, int);
-
-extern char g_00b42f90;
-extern char g_00b42fa8;
-extern char g_00b43010;
-extern char g_00b43080;
-extern char g_00b4311c;
-extern char g_00b43160;
-extern char g_00b431d0;
-extern char g_00b431e8;
-extern char g_00b43284;
-extern char g_00b43510;
-extern int g_00b908dc;
-extern int g_00e16400;
-extern char g_00e16410;
-extern int g_00e5809c;
-extern char g_00e580b3;
-
-struct S {
-    int f();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#define _SECURE_SCL 0
+#define _HAS_ITERATOR_DEBUGGING 0
+#include <map>
+struct Name;
+extern unsigned char g_assertEnabled;
+extern char (__cdecl *g_assertHook)(const char*, const char*, int);
+void __cdecl g_assertFail(unsigned char, const char*);
+extern void* const g_initPtr;
+const Name& initDirect();
+const Name& instance();
+void __cdecl callOnce(int* flag, void (*fn)());
+extern int g_onceFlag;
+void onceFn();
+#define FILE_ "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h"
+#define ASSERT_(cond, cs, line, lines) if (g_assertEnabled && !(cond)) { if (!g_assertHook || !g_assertHook(cs, FILE_, line)) g_assertFail(g_assertEnabled, cs " file: " FILE_ " line: " lines); }
+struct CreatorBase;
+struct Class {
+    typedef std::map<const Name*, CreatorBase*> Creators;
+    static Creators& getCreators();
 };
-
-int S::f()
+inline const Name& className() { if (g_initPtr == 0) return initDirect(); callOnce(&g_onceFlag, &onceFn); return instance(); }
+struct CreatorBase {
+    static int magic;
+    static bool wasConstructed() { return magic == 0x29a; }
+    CreatorBase();
+    virtual ~CreatorBase();
+};
+CreatorBase::CreatorBase()
 {
-    int local8;
-    int localc;
-    Value* pi;
-    int* pi2;
-    int i;
+    const Name& name = className();
+    ASSERT_(Class::getCreators().find(&name)==Class::getCreators().end(), "Class::getCreators().find(&name)==Class::getCreators().end()", 0xd7, "215")
+    ASSERT_(!wasConstructed(), "!wasConstructed()", 0xd8, "216")
+    Class::getCreators()[&name] = this;
+    magic = 0x29a;
+    ASSERT_(Class::getCreators().find(&name)!=Class::getCreators().end(), "Class::getCreators().find(&name)!=Class::getCreators().end()", 0xdd, "221")
+    ASSERT_(wasConstructed(), "wasConstructed()", 0xde, "222")}
 
-    *(int*)this = (int)&g_00b43510;
-
-    if (g_00b908dc == 0) {
-        sub_0067f480();
-    } else {
-        sub_004015a0(0x402720, (int)&g_00e16410);
-        sub_004025c0();
-    }
-
-    pi = &sub_004025c0();
-
-    if (g_00e580b3 != 0) {
-        localc = (int)pi;
-        pi2 = (int*)sub_004019d0();
-        i = pi2[1];
-        sub_004019d0();
-        if (*sub_00466420() != i) {
-            if (g_00e5809c != 0) {
-                if (!((char (__stdcall*)(int, int, int))g_00e5809c)(0xd7, (int)&g_00b42fa8, (int)&g_00b43284)) {
-                    sub_00972290((int)&g_00b431e8, (int)g_00e580b3);
-                }
-            } else {
-                sub_00972290((int)&g_00b431e8, (int)g_00e580b3);
-            }
-        }
-        if (g_00e580b3 != 0) {
-            if (g_00e16400 == 0x29a) {
-                if (g_00e5809c != 0) {
-                    if (!((char (__stdcall*)(int, int, int))g_00e5809c)(0xd8, (int)&g_00b42fa8, (int)&g_00b431d0)) {
-                        sub_00972290((int)&g_00b43160, (int)g_00e580b3);
-                    }
-                } else {
-                    sub_00972290((int)&g_00b43160, (int)g_00e580b3);
-                }
-            }
-        }
-    }
-
-    local8 = (int)pi;
-    sub_004019d0();
-    *(int*)sub_00457100() = (int)this;
-
-    g_00e16400 = 0x29a;
-
-    if (g_00e580b3 != 0) {
-        localc = (int)pi;
-        pi2 = (int*)sub_004019d0();
-        i = pi2[1];
-        sub_004019d0();
-        if (*sub_00466420() == i) {
-            if (g_00e5809c != 0) {
-                if (!((char (__stdcall*)(int, int, int))g_00e5809c)(0xdd, (int)&g_00b42fa8, (int)&g_00b4311c)) {
-                    sub_00972290((int)&g_00b43080, (int)g_00e580b3);
-                }
-            } else {
-                sub_00972290((int)&g_00b43080, (int)g_00e580b3);
-            }
-        }
-        if (g_00e580b3 != 0) {
-            if (g_00e16400 != 0x29a) {
-                if (g_00e5809c != 0) {
-                    if (!((char (__stdcall*)(int, int, int))g_00e5809c)(0xde, (int)&g_00b42fa8, (int)&g_00b42f90)) {
-                        sub_00972290((int)&g_00b43010, (int)g_00e580b3);
-                    }
-                } else {
-                    sub_00972290((int)&g_00b43010, (int)g_00e580b3);
-                }
-            }
-        }
-    }
-
-    return (int)this;
-}

@@ -1,32 +1,26 @@
-// from server: 49% by atomic.potato
-struct VBodyPosition {
-    void* vtable;
-    void construct();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" void __cdecl sub_972290(unsigned char, const char*);
+struct Sink { void run(); };
+Sink* __stdcall sub_4019d0(void**);
+struct Creator {
+    virtual ~Creator();
+    virtual void f1();
+    virtual void f2();
+    void* base();
+
 };
+extern unsigned char byte_E580B3;
+extern int dword_E1E0B8;
+extern char (__cdecl *dword_E5809C)(const char*, const char*, int);
 
-extern "C" {
-    extern unsigned char byte_E580B3;
-    extern int dword_E3796C;
-    extern int (__cdecl *dword_E5809C)(int, int, int);
-    extern void __cdecl sub_972290(int, int);
-    extern void* __cdecl sub_4019D0(void*);
-    extern void __cdecl sub_4A11D0(void*);
-    extern void* __cdecl sub_7687D0();
-}
-
-void VBodyPosition::construct()
+Creator::~Creator()
 {
-    this->vtable = (void*)0xBAFCA8;
-    if (byte_E580B3 != 0 && dword_E3796C != 0x29A) {
-        if (dword_E5809C != 0) {
-            if (dword_E5809C(0xE2, 0xB42FA8, 0xB42F90) != 0) {
-                goto done;
-            }
-        }
-        sub_972290(byte_E580B3, 0xB43368);
+    if (byte_E580B3 != 0 && dword_E1E0B8 != 0x29a) {
+        if (dword_E5809C == 0 || !dword_E5809C("wasConstructed()", "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h", 0xe2))
+            sub_972290(byte_E580B3, "wasConstructed() file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\Util/Object.h line: 226");
     }
-done:
-    void* p = sub_7687D0();
-    void* q = sub_4019D0(&p);
-    sub_4A11D0(q);
+    void* p = base();
+    sub_4019d0(&p)->run();
 }

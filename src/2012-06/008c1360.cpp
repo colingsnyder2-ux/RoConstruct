@@ -1,14 +1,6 @@
-// from server: 75% by atomic.potato
-extern "C" void sub_684660(void *, int);
-extern "C" void sub_675c40(void *);
-
-struct S_func_008c1360 {
-    char pad0[132];
-    void f(int);
-};
-
-void S_func_008c1360::f(int value)
-{
-    sub_684660(this, value);
-    sub_675c40((char *)this + 132);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Sub { void m(); };
+struct S { char p[0x84]; Sub s; void a(int); void f(int v); };
+void S::f(int v) { a(v); s.m(); }

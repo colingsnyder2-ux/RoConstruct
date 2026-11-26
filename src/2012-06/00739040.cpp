@@ -1,17 +1,18 @@
-// from server: 46% by atomic.potato
-struct GuiTextButton_00739040
-{
-    char pad0[0x354];
-    float value;
-    void f(float);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /arch:SSE2 /fp:fast
+struct Descriptor { int x; };
+extern Descriptor desc_size;
+struct TextBox {
+    char pad[0x354];
+    float fontSize;
+    void raiseChanged(const Descriptor& d);
+    void setFontSize(float v);
 };
-
-extern "C" void __stdcall Function_00414da0(unsigned int);
-
-void GuiTextButton_00739040::f(float value0)
+void TextBox::setFontSize(float v)
 {
-    if (value0 <= value)
-        return;
-    value = value0;
-    Function_00414da0(0xE34684);
+    if (fontSize != v) {
+        fontSize = v;
+        raiseChanged(desc_size);
+    }
 }

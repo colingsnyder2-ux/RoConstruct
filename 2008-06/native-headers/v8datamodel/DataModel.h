@@ -89,6 +89,9 @@ private:
     // INFERRED: 00575890 analog and authentic private processAccelerators declaration.
     GuiResponse processAccelerators(const GuiEvent& event);
 protected:
+    // INFERRED: 0057b040/0057b070 vtable overrides (slots 5-6)
+    virtual void onDescendentAdded(Instance* instance);
+    virtual void onDescendentRemoving(const boost::shared_ptr<Instance>& instance);
     // INFERRED: 0057b630 target vtable slot and authentic onChildChanged signature.
     virtual void onChildChanged(Instance* instance, const PropertyChanged& event);
 };

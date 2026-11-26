@@ -1,5 +1,4 @@
-// from server: 58% by colin
-// roc-lang: cpp
+// from server: 100% by Xemicl
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /arch:SSE2 /fp:fast
-// roc-lib: rbx2016-g3d Box.cpp
+__declspec(dllimport) int g(int,int); struct T{int a,b;}; int f(T*a,T*b){ return g(a->b,b->b); }

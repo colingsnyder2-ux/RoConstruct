@@ -1,411 +1,156 @@
-// from server: 22% by colin
-// roc-lang: cpp
+// from server: 100% by Xemicl
 // roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-9.0 atlmfc/src/mfc/filetxt.cpp
-
-// Candidate translation unit (score above; library headers required).
-// This is a part of the Microsoft Foundation Classes C++ library.
-// Copyright (C) Microsoft Corporation
-// All rights reserved.
-//
-// This source code is only intended as a supplement to the
-// Microsoft Foundation Classes Reference and related
-// electronic documentation provided with the library.
-// See these sources for detailed information regarding the
-// Microsoft Foundation Classes product.
-
-#include "stdafx.h"
-#include <errno.h>
-#include <io.h>
-#include <fcntl.h>
-#include "sal.h"
-
-
-
-#define new DEBUG_NEW
-
-////////////////////////////////////////////////////////////////////////////
-// CStdioFile implementation
-
-CStdioFile::CStdioFile()
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <limits>
+void __cdecl callOnce(int* flag, void (*fn)());
+extern int g_onceFlag;
+void onceFn();
+namespace boost {
+namespace date_time {
+enum special_values { not_a_date_time, neg_infin, pos_infin, min_date_time, max_date_time, not_special, NumSpecialValues };
+template<typename int_type_>
+class int_adapter {
+public:
+    typedef int_type_ int_type;
+    int_adapter(int_type v) : value_(v) {}
+    static const int_adapter pos_infinity() { return (::std::numeric_limits<int_type>::max)(); }
+    static const int_adapter neg_infinity() { return (::std::numeric_limits<int_type>::min)(); }
+    static const int_adapter not_a_number() { return (::std::numeric_limits<int_type>::max)() - 1; }
+    static int_adapter max() { return (::std::numeric_limits<int_type>::max)() - 2; }
+    static int_adapter min() { return (::std::numeric_limits<int_type>::min)() + 1; }
+    static int_adapter from_special(special_values sv)
+    {
+        switch (sv) {
+        case not_a_date_time: return not_a_number();
+        case neg_infin: return neg_infinity();
+        case pos_infin: return pos_infinity();
+        case max_date_time: return (max)();
+        case min_date_time: return (min)();
+        default: return not_a_number();
+        }
+    }
+    int_type as_number() const { return value_; }
+private:
+    int_type value_;
+};
+}
+namespace gregorian {
+class date {
+public:
+    typedef date_time::int_adapter<unsigned int> date_rep_type;
+    date(int y, int m, int d);
+    explicit date(date_rep_type days) : days_(days.as_number()) {}
+    date(date_time::special_values sv) : days_(date_rep_type::from_special(sv).as_number())
+    {
+        if (sv == date_time::min_date_time) { *this = date(1400, 1, 1); }
+        if (sv == date_time::max_date_time) { *this = date(9999, 12, 31); }
+    }
+    unsigned int days_;
+};
+}
+namespace posix_time {
+class time_duration {
+public:
+    typedef date_time::int_adapter<__int64> impl_type;
+    time_duration(int h, int m, int s, int f);
+    time_duration(date_time::special_values sv) : ticks_(impl_type::from_special(sv)) {}
+    impl_type ticks_;
+};
+struct counted_time_rep {
+    __declspec(noinline) counted_time_rep(const gregorian::date& d, const time_duration& time_of_day) : time_count_(1) { if (d.days_ == 0xffffffffu || time_of_day.ticks_.as_number() > 100) time_count_ = time_of_day.ticks_.as_number() + d.days_; else time_count_ = d.days_ * 86400000000LL + time_of_day.ticks_.as_number(); }
+    date_time::int_adapter<__int64> time_count_;
+};
+struct counted_time_system {
+    typedef counted_time_rep time_rep_type;
+    static time_rep_type get_time_rep(date_time::special_values sv)
+    {
+        switch (sv) {
+        case date_time::not_a_date_time:
+        default:
+            return time_rep_type(gregorian::date(date_time::not_a_date_time), time_duration(date_time::not_a_date_time));
+        case date_time::pos_infin:
+            return time_rep_type(gregorian::date(date_time::pos_infin), time_duration(date_time::pos_infin));
+        case date_time::neg_infin:
+            return time_rep_type(gregorian::date(date_time::neg_infin), time_duration(date_time::neg_infin));
+        case date_time::max_date_time: {
+            time_duration td = time_duration(24, 0, 0, 0);
+            return time_rep_type(gregorian::date(date_time::max_date_time), td);
+        }
+        case date_time::min_date_time:
+            return time_rep_type(gregorian::date(date_time::min_date_time), time_duration(0, 0, 0, 0));
+        }
+    }
+};
+template<class T, class time_system>
+class base_time {
+public:
+    base_time(date_time::special_values sv) : time_(time_system::get_time_rep(sv)) {}
+protected:
+    typename time_system::time_rep_type time_;
+};
+class ptime : public base_time<ptime, counted_time_system> {
+public:
+    ptime(date_time::special_values sv) : base_time<ptime, counted_time_system>(sv) {}
+};
+}
+typedef posix_time::ptime system_time;
+namespace detail {
+inline system_time get_system_time_sentinel() { return system_time(date_time::pos_infin); }
+struct basic_timed_mutex {
+    long active_count;
+    void* event;
+    bool timed_lock(const system_time& wait_until);
+    void lock() { timed_lock(get_system_time_sentinel()); }
+};
+}
+class mutex : public detail::basic_timed_mutex {
+public:
+    mutex() { active_count = 0; event = 0; }
+    ~mutex();
+};
+template<typename Mutex>
+class unique_lock {
+    Mutex* m;
+    bool is_locked;
+public:
+    explicit unique_lock(Mutex& m_) : m(&m_) { lock(); }
+    void lock() { m->lock(); is_locked = true; }
+    ~unique_lock();
+};
+}
+template<class T> struct IPtr {
+    T* p;
+    IPtr() : p(0) {}
+    ~IPtr();
+    IPtr& operator=(const IPtr& o);
+    T* get() const { return p; }
+    T* operator->() const { return p; }
+    operator bool() const { return p != 0; }
+};
+struct Signal;
+struct Slot { void* vt; int x; void* vt2; IPtr<Slot> next; Signal* sig; };
+struct Signal {
+    IPtr<Slot> head;
+    static boost::mutex& mutex() { callOnce(&g_onceFlag, &onceFn); static boost::mutex m; return m; }
+    void disconnectAll();
+};
+void Signal::disconnectAll()
 {
-	m_pStream = NULL;
+    while (head) {
+        IPtr<Slot> s;
+        {
+            boost::unique_lock<boost::mutex> lock(mutex());
+            int n = 10;
+            s = head;
+            while (Slot* p = s.get()) {
+                p->sig = 0;
+                if (n-- == 0) break;
+                s = p->next;
+            }
+        }
+        head = s;
+    }
 }
 
-CStdioFile::CStdioFile(FILE* pOpenStream)
-{
-	ASSERT(pOpenStream != NULL);
-	
-	if (pOpenStream == NULL)
-	{
-		AfxThrowInvalidArgException();
-	}
-	
-	m_pStream = pOpenStream;
-	m_hFile = (HANDLE) _get_osfhandle(_fileno(pOpenStream));
-	ASSERT(!m_bCloseOnDelete);
-}
 
-CStdioFile::CStdioFile(LPCTSTR lpszFileName, UINT nOpenFlags)
-{
-	ASSERT(lpszFileName != NULL);
-	ASSERT(AfxIsValidString(lpszFileName));
 
-	if (lpszFileName == NULL)
-	{
-		AfxThrowInvalidArgException();
-	}
-
-	CFileException e;
-	if (!Open(lpszFileName, nOpenFlags, &e))
-		AfxThrowFileException(e.m_cause, e.m_lOsError, e.m_strFileName);
-}
-
-CStdioFile::~CStdioFile()
-{
-	AFX_BEGIN_DESTRUCTOR
-
-	ASSERT_VALID(this);
-
-	if (m_pStream != NULL && m_bCloseOnDelete)
-		Close();
-
-	AFX_END_DESTRUCTOR
-}
-
-BOOL CStdioFile::Open(LPCTSTR lpszFileName, UINT nOpenFlags,
-	CFileException* pException)
-{
-	ASSERT(pException == NULL || AfxIsValidAddress(pException, sizeof(CFileException)));
-	ASSERT(lpszFileName != NULL);
-	ASSERT(AfxIsValidString(lpszFileName));
-
-	if (lpszFileName == NULL)
-	{
-		return FALSE;
-	}
-
-	m_pStream = NULL;
-	if (!CFile::Open(lpszFileName, (nOpenFlags & ~typeText), pException))
-		return FALSE;
-
-	ASSERT(m_hFile != hFileNull);
-	ASSERT(m_bCloseOnDelete);
-
-	char szMode[4]; // C-runtime open string
-	int nMode = 0;
-
-	// determine read/write mode depending on CFile mode
-	if (nOpenFlags & modeCreate)
-	{
-		if (nOpenFlags & modeNoTruncate)
-			szMode[nMode++] = 'a';
-		else
-			szMode[nMode++] = 'w';
-	}
-	else if (nOpenFlags & modeWrite)
-		szMode[nMode++] = 'a';
-	else
-		szMode[nMode++] = 'r';
-
-	// add '+' if necessary (when read/write modes mismatched)
-	if (szMode[0] == 'r' && (nOpenFlags & modeReadWrite) ||
-		szMode[0] != 'r' && !(nOpenFlags & modeWrite))
-	{
-		// current szMode mismatched, need to add '+' to fix
-		szMode[nMode++] = '+';
-	}
-
-	// will be inverted if not necessary
-	int nFlags = _O_RDONLY|_O_TEXT;
-	if (nOpenFlags & (modeWrite|modeReadWrite))
-		nFlags ^= _O_RDONLY;
-
-	if (nOpenFlags & typeBinary)
-		szMode[nMode++] = 'b', nFlags ^= _O_TEXT;
-	else
-		szMode[nMode++] = 't';
-	szMode[nMode++] = '\0';
-
-	// open a C-runtime low-level file handle
-	int nHandle = _open_osfhandle((UINT_PTR) m_hFile, nFlags);
-
-	// open a C-runtime stream from that handle
-	if (nHandle != -1)
-		m_pStream = _fdopen(nHandle, szMode);
-
-	if (m_pStream == NULL)
-	{
-		// an error somewhere along the way...
-		if (pException != NULL)
-		{
-			pException->m_lOsError = _doserrno;
-			pException->m_cause = CFileException::OsErrorToException(_doserrno);
-		}
-
-		CFile::Abort(); // close m_hFile
-		return FALSE;
-	}
-
-	return TRUE;
-}
-
-UINT CStdioFile::Read(void* lpBuf, UINT nCount)
-{
-	ASSERT_VALID(this);
-	ASSERT(m_pStream != NULL);
-
-	if (nCount == 0)
-		return 0;   // avoid Win32 "null-read"
-
-	ASSERT(AfxIsValidAddress(lpBuf, nCount));
-
-	if (lpBuf == NULL)
-	{
-		AfxThrowInvalidArgException();
-	}
-
-	UINT nRead = 0;
-
-	if ((nRead = (UINT)fread(lpBuf, sizeof(BYTE), nCount, m_pStream)) == 0 && !feof(m_pStream))
-		AfxThrowFileException(CFileException::genericException, _doserrno, m_strFileName);
-	if (ferror(m_pStream))
-	{
-		Afx_clearerr_s(m_pStream);
-		AfxThrowFileException(CFileException::genericException, _doserrno, m_strFileName);
-	}
-	return nRead;
-}
-
-void CStdioFile::Write(const void* lpBuf, UINT nCount)
-{
-	ASSERT_VALID(this);
-	ASSERT(m_pStream != NULL);
-	ASSERT(AfxIsValidAddress(lpBuf, nCount, FALSE));
-
-	if (lpBuf == NULL)
-	{
-		AfxThrowInvalidArgException();
-	}
-
-	if (fwrite(lpBuf, sizeof(BYTE), nCount, m_pStream) != nCount)
-		AfxThrowFileException(CFileException::genericException, _doserrno, m_strFileName);
-}
-
-void CStdioFile::WriteString(LPCTSTR lpsz)
-{
-	ASSERT(lpsz != NULL);
-	ASSERT(m_pStream != NULL);
-	
-	if (lpsz == NULL)
-	{
-		AfxThrowInvalidArgException();
-	}
-
-	if (_fputts(lpsz, m_pStream) == _TEOF)
-		AfxThrowFileException(CFileException::diskFull, _doserrno, m_strFileName);
-}
-
-LPTSTR CStdioFile::ReadString(_Out_z_cap_(nMax) LPTSTR lpsz, _In_ UINT nMax)
-{
-	ASSERT(lpsz != NULL);
-	ASSERT(AfxIsValidAddress(lpsz, nMax));
-	ASSERT(m_pStream != NULL);
-
-	if (lpsz == NULL)
-	{
-		AfxThrowInvalidArgException();
-	}
-
-	LPTSTR lpszResult = _fgetts(lpsz, nMax, m_pStream);
-	if (lpszResult == NULL && !feof(m_pStream))
-	{
-		Afx_clearerr_s(m_pStream);
-		AfxThrowFileException(CFileException::genericException, _doserrno, m_strFileName);
-	}
-	return lpszResult;
-}
-
-BOOL CStdioFile::ReadString(CString& rString)
-{
-	ASSERT_VALID(this);
-
-	rString = _T("");    // empty string without deallocating
-	const int nMaxSize = 128;
-	LPTSTR lpsz = rString.GetBuffer(nMaxSize);
-	LPTSTR lpszResult;
-	int nLen = 0;
-	for (;;)
-	{
-		lpszResult = _fgetts(lpsz, nMaxSize+1, m_pStream);
-		rString.ReleaseBuffer();
-
-		// handle error/eof case
-		if (lpszResult == NULL && !feof(m_pStream))
-		{
-			Afx_clearerr_s(m_pStream);
-			AfxThrowFileException(CFileException::genericException, _doserrno,
-				m_strFileName);
-		}
-
-		// if string is read completely or EOF
-		if (lpszResult == NULL ||
-			(nLen = (int)lstrlen(lpsz)) < nMaxSize ||
-			lpsz[nLen-1] == '\n')
-			break;
-
-		nLen = rString.GetLength();
-		lpsz = rString.GetBuffer(nMaxSize + nLen) + nLen;
-	}
-
-	// remove '\n' from end of string if present
-	lpsz = rString.GetBuffer(0);
-	nLen = rString.GetLength();
-	if (nLen != 0 && lpsz[nLen-1] == '\n')
-		rString.GetBufferSetLength(nLen-1);
-
-	return nLen != 0;
-}
-
-ULONGLONG CStdioFile::Seek(LONGLONG lOff, UINT nFrom)
-{
-	ASSERT_VALID(this);
-	ASSERT(nFrom == begin || nFrom == end || nFrom == current);
-	ASSERT(m_pStream != NULL);
-
-   LONG lOff32;
-
-   if ((lOff < LONG_MIN) || (lOff > LONG_MAX))
-   {
-	  AfxThrowFileException(CFileException::badSeek, -1, m_strFileName);
-   }
-
-   lOff32 = (LONG)lOff;
-	if (fseek(m_pStream, lOff32, nFrom) != 0)
-		AfxThrowFileException(CFileException::badSeek, _doserrno,
-			m_strFileName);
-
-	long pos = ftell(m_pStream);
-	return pos;
-}
-
-ULONGLONG CStdioFile::GetLength() const
-{
-   ASSERT_VALID(this);
-
-   LONG nCurrent;
-   LONG nLength;
-   LONG nResult;
-
-   nCurrent = ftell(m_pStream);
-   if (nCurrent == -1)
-	  AfxThrowFileException(CFileException::invalidFile, _doserrno,
-		 m_strFileName);
-
-   nResult = fseek(m_pStream, 0, SEEK_END);
-   if (nResult != 0)
-	  AfxThrowFileException(CFileException::badSeek, _doserrno,
-		 m_strFileName);
-
-   nLength = ftell(m_pStream);
-   if (nLength == -1)
-	  AfxThrowFileException(CFileException::invalidFile, _doserrno,
-		 m_strFileName);
-   nResult = fseek(m_pStream, nCurrent, SEEK_SET);
-   if (nResult != 0)
-	  AfxThrowFileException(CFileException::badSeek, _doserrno,
-		 m_strFileName);
-
-   return nLength;
-}
-
-ULONGLONG CStdioFile::GetPosition() const
-{
-	ASSERT_VALID(this);
-	ASSERT(m_pStream != NULL);
-
-	long pos = ftell(m_pStream);
-	if (pos == -1)
-		AfxThrowFileException(CFileException::invalidFile, _doserrno,
-			m_strFileName);
-	return pos;
-}
-
-void CStdioFile::Flush()
-{
-	ASSERT_VALID(this);
-
-	if (m_pStream != NULL && fflush(m_pStream) != 0)
-		AfxThrowFileException(CFileException::diskFull, _doserrno,
-			m_strFileName);
-}
-
-void CStdioFile::Close()
-{
-	ASSERT_VALID(this);
-	ASSERT(m_pStream != NULL);
-
-	int nErr = 0;
-
-	if (m_pStream != NULL)
-		nErr = fclose(m_pStream);
-
-	m_hFile = hFileNull;
-	m_bCloseOnDelete = FALSE;
-	m_pStream = NULL;
-
-	if (nErr != 0)
-		AfxThrowFileException(CFileException::diskFull, _doserrno,
-			m_strFileName);
-}
-
-void CStdioFile::Abort()
-{
-	ASSERT_VALID(this);
-
-	if (m_pStream != NULL && m_bCloseOnDelete)
-		fclose(m_pStream);  // close but ignore errors
-	m_hFile = hFileNull;
-	m_pStream = NULL;
-	m_bCloseOnDelete = FALSE;
-}
-
-CFile* CStdioFile::Duplicate() const
-{
-	ASSERT_VALID(this);
-	ASSERT(m_pStream != NULL);
-
-	AfxThrowNotSupportedException();
-}
-
-void CStdioFile::LockRange(ULONGLONG /* dwPos */, ULONGLONG /* dwCount */)
-{
-	ASSERT_VALID(this);
-	ASSERT(m_pStream != NULL);
-
-	AfxThrowNotSupportedException();
-}
-
-void CStdioFile::UnlockRange(ULONGLONG /* dwPos */, ULONGLONG /* dwCount */)
-{
-	ASSERT_VALID(this);
-	ASSERT(m_pStream != NULL);
-
-	AfxThrowNotSupportedException();
-}
-
-#ifdef _DEBUG
-void CStdioFile::Dump(CDumpContext& dc) const
-{
-	CFile::Dump(dc);
-
-	dc << "m_pStream = " << (void*)m_pStream;
-	dc << "\n";
-}
-#endif
-
-
-IMPLEMENT_DYNAMIC(CStdioFile, CFile)
-
-/////////////////////////////////////////////////////////////////////////////

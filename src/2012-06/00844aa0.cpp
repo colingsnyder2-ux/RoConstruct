@@ -1,38 +1,43 @@
-// from server: 76% by atomic.potato
-extern "C" int __stdcall sub_832ED0(int, int);
-extern "C" int __stdcall sub_6A2240(int, int);
-extern "C" int __stdcall sub_832130(int, int);
-extern "C" int __stdcall sub_832200(int, int, int);
-extern "C" int __stdcall sub_832550(int, int);
-extern "C" int __stdcall sub_832460(int, int, int);
-extern "C" int __stdcall sub_831B00(int, int);
-
-struct S {
-    void f(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int);
-};
-
-void S::f(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8,
-          int a9, int a10, int a11, int a12, int a13, int a14, int a15, int a16)
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct L;
+typedef int (__cdecl *CFunc)(L*);
+extern int g_value;
+extern const char g_name1[];
+extern const char g_name2[];
+extern const char g_name3[];
+extern const char g_name4[];
+extern const char g_name5[];
+extern int __cdecl rawSet(L*, int);
+extern void __cdecl checkStack(L*, int);
+extern void __cdecl pushString(L*, const char*);
+extern void __cdecl pushCClosure(L*, CFunc, int);
+extern void __cdecl setField(L*, int);
+extern void __cdecl pushBool(L*, int, int);
+extern void __cdecl setTop(L*, int);
+extern int __cdecl fn3(L*);
+extern int __cdecl fn4(L*);
+extern int __cdecl fn5(L*);
+void __cdecl f(L* s, CFunc a, CFunc b)
 {
-    int* g = (int*)0x00de13e8;
-    int v = *g;
-    sub_832ED0(v, a1);
-    sub_6A2240(a1, -1);
-    sub_832130(a1, 0x00b94214);
-    sub_832200(a1, a4, 0);
-    sub_832550(a1, -3);
-    sub_832130(a1, 0x00b94208);
-    sub_832200(a1, a8, 0);
-    sub_832550(a1, -3);
-    sub_832130(a1, 0x00bd1b68);
-    sub_832200(a1, 0x00844210, 0);
-    sub_832550(a1, -3);
-    sub_832130(a1, 0x00bd1b60);
-    sub_832200(a1, 0x00844250, 0);
-    sub_832550(a1, -3);
-    sub_832130(a1, 0x00bd1b54);
-    sub_832200(a1, 0x00844230, 0);
-    sub_832550(a1, -3);
-    sub_832460(a1, -1, 1);
-    sub_831B00(a1, -2);
+    rawSet(s, g_value);
+    checkStack(s, -1);
+    pushString(s, g_name1);
+    pushCClosure(s, a, 0);
+    setField(s, -3);
+    pushString(s, g_name2);
+    pushCClosure(s, b, 0);
+    setField(s, -3);
+    pushString(s, g_name3);
+    pushCClosure(s, fn3, 0);
+    setField(s, -3);
+    pushString(s, g_name4);
+    pushCClosure(s, fn4, 0);
+    setField(s, -3);
+    pushString(s, g_name5);
+    pushCClosure(s, fn5, 0);
+    setField(s, -3);
+    pushBool(s, -1, 1);
+    setTop(s, -2);
 }

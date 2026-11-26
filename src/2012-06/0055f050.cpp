@@ -1,45 +1,30 @@
-// from server: 34% by Intel
-struct TypeInfo {
-    int vftable;
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <typeinfo>
+#include <string>
+#include <vector>
+#include <map>
+namespace RBX { class Instance {}; namespace Reflection { class Variant {}; struct Tuple {}; class DescribedBase {}; class PropertyDescriptor {}; } }
+namespace boost { template<class T> class shared_ptr {}; template<class S> class function {}; }
+namespace boost { template<class E> __declspec(noreturn) void throw_exception(const E& e); }
+namespace rbx {
+class bad_placement_any_cast : public std::bad_cast {
+public:
+    virtual const char* what() const throw();
 };
-
-extern "C" int __stdcall type_info_equal(const TypeInfo*, const TypeInfo*);
-
-struct String {
-    char _pad[28];
+struct fxn_ptr_table { const std::type_info* type; };
+class placement_any {
+public:
+    const std::type_info& type() const { return table ? *table->type : typeid(void); }
+    fxn_ptr_table* table;
+    char storage[16];
 };
-
-extern "C" void __stdcall string_ctor(String*, const char*);
-
-extern "C" void __cdecl raise_exception(void*);
-
-struct EventDesc {
-    TypeInfo* type;
-
-    void func_0055f050(int arg);
-};
-
-void EventDesc::func_0055f050(int arg)
+template<class T> T& placement_any_cast(placement_any& operand)
 {
-    TypeInfo* eax = this->type;
-    TypeInfo* ecx;
-
-    if (eax)
-        ecx = reinterpret_cast<TypeInfo*>(eax->vftable);
-    else
-        ecx = reinterpret_cast<TypeInfo*>(0x00D60AC8);
-
-    if (ecx != reinterpret_cast<TypeInfo*>(0x00D881C0)) {
-        TypeInfo* eax2;
-        if (eax)
-            eax2 = reinterpret_cast<TypeInfo*>(eax->vftable);
-        else
-            eax2 = reinterpret_cast<TypeInfo*>(0x00D60AC8);
-
-        type_info_equal(eax2, reinterpret_cast<TypeInfo*>(0x00D881C0));
-    }
-
-    String str;
-    string_ctor(&str, "bad cast");
-    raise_exception(&str);
+    if (&operand.type() != &typeid(T) && operand.type() != typeid(T))
+        boost::throw_exception(bad_placement_any_cast());
+    return *reinterpret_cast<T*>(operand.storage);
+}
+template boost::shared_ptr<const std::map<std::string, RBX::Reflection::Variant> >& placement_any_cast<boost::shared_ptr<const std::map<std::string, RBX::Reflection::Variant> >>(placement_any&);
 }
