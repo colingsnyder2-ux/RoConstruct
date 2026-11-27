@@ -1,15 +1,5 @@
-// from server: 67% by atomic.potato
-struct S
-{
-    void f(int a, int b);
-};
-
-void S::f(int a, int b)
-{
-    *(int*)((char*)this + 0x0c) = 0;
-    *(int*)((char*)this + 0x10) = 0;
-    *(int*)((char*)this + 0x14) = a;
-    *(double*)((char*)this + 0x18) = 0.0;
-    *(int*)this = 0x00b76090;
-    *(int*)((char*)this + 0x20) = b;
-}
+// from server: 86% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct PBI { virtual void v(); int p4, c, d, e; double t; int f; PBI(int a, int b); };
+PBI::PBI(int a, int b) : c(0), d(0), e(a), t(0.0), f(b) {}

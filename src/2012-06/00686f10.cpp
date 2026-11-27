@@ -1,17 +1,20 @@
-// from server: 85% by atomic.potato
-extern "C" int __cdecl sub_983448(int, int, int, int, int);
-extern "C" void __cdecl sub_7f4fa0(int);
-
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD /GR
+namespace RBX {
+class Instance { public: virtual ~Instance(); };
+class ICharacterSubject { public: virtual ~ICharacterSubject(); bool g(); };
+}
 struct S
 {
-    int padding[83];
-    int field_14c;
-    void f();
+    char padding[0x14c];
+    RBX::Instance *subject;
+    bool f();
 };
-
-void S::f()
+bool S::f()
 {
-    int value = sub_983448(field_14c, 0, 0xd601e8, 0xd9a458, 0);
-    if (value)
-        sub_7f4fa0(value);
+    RBX::Instance *i = subject;
+    if (RBX::ICharacterSubject *c = dynamic_cast<RBX::ICharacterSubject *>(i))
+        return c->g();
+    return false;
 }

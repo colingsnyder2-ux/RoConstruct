@@ -1,26 +1,9 @@
-// from server: 67% by atomic.potato
-struct Inner {
-    virtual float f(int);
-};
-
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Inner { virtual void v0(); virtual void v1(); virtual float get(int); };
+struct Var { void reset(); int pad; int type; float f; };
 struct Outer {
-    char pad[0x28];
-    Inner* inner;
-    void func(float, int);
-};
-
-struct Result {
-    char pad[0x10];
-    int field4;
-    float field8;
-};
-
-extern "C" void __fastcall sub_6f1960(Result*);
-
-void Outer::func(float a, int b) {
-    float r = inner->f(b);
-    Result* p = (Result*)((char*)this + 0x10);
-    sub_6f1960(p);
-    p->field8 = r;
-    p->field4 = 7;
-}
+    char pad[0x28]; Inner* inner;
+    void f(int q, char* d);
+};void Outer::f(int q, char* d){ float r = inner->get(q); Var* v = (Var*)(d + 0x10); v->reset(); v->f = r; v->type = 7; }

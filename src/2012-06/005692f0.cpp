@@ -1,21 +1,7 @@
-// from server: 68% by atomic.potato
-extern "C" void __cdecl G1_func_00568a30(void *);
-extern "C" void __cdecl G2_func_00982114(void *);
-
-struct S
-{
-    int f();
-    unsigned char pad[4];
-    void *p;
-};
-
-int S::f()
-{
-    if (p != 0)
-    {
-        if (pad[5] != 0)
-            G1_func_00568a30((char *)p + 0x18);
-        G2_func_00982114(p);
-    }
-    return 0;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct In { void cleanup(); };
+struct N { char pad[0x18]; In in; };
+struct H { int a; N* p; char c; bool own; void f(); };
+void H::f() { if (p) { if (own) p->in.cleanup(); delete p; } }

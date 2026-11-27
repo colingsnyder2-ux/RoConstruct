@@ -1,9 +1,13 @@
-// from server: 85% by atomic.potato
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 struct S_func_0081cf60
 {
     struct Node
     {
+        virtual void f0();
         virtual int f();
+        int x;
         Node* next;
         char pad[40];
         int value;

@@ -1,20 +1,17 @@
-// from server: 84% by atomic.potato
-extern "C" void __cdecl sub_005ca000(const char*, unsigned char, unsigned int,
-                                      unsigned int, unsigned int, int);
-
-extern unsigned char byte_00e31aae;
-
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+void __cdecl logf(int level, const char *fmt, ...);
+extern unsigned char g_level;
+struct Buf { char pad0[0x2c]; unsigned int size3D; char pad1[0x50]; unsigned int size3DTexture; };
+struct Dev { char pad[0x4c]; Buf *buf; };
 struct S {
+    char pad[0x10];
+    Dev *dev;
     void f();
-    void* member_10;
 };
-
 void S::f()
 {
-    if (byte_00e31aae)
-    {
-        unsigned int* p = *(unsigned int**)((char*)member_10 + 0x4c);
-        sub_005ca000("Post-Submit. Size of buffers, 3D: %u, 3DTexture: %u",
-                     byte_00e31aae, p[0x2c / 4], p[0x80 / 4], 0, 0);
-    }
+    if (g_level)
+        logf(g_level, "Post-Submit. Size of buffers, 3D: %u, 3DTexture: %u", dev->buf->size3D, dev->buf->size3DTexture, 0);
 }

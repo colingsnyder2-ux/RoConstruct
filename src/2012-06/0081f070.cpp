@@ -1,34 +1,24 @@
-// from server: 85% by atomic.potato
-struct S_func_0081f070 {
-    char pad0[8];
-    char m_field8;
-
-    void f(void* a, void* b);
-};
-
-extern "C" void __stdcall sub_0081ee90(S_func_0081f070* a, void* b);
-
-void S_func_0081f070::f(void* a, void* b)
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct P
 {
-    char* p1 = (char*)a;
-    char* p2 = (char*)b;
-    if (p1[0x115] == 0) {
-        unsigned char al = (unsigned char)p1[0x94];
-        unsigned char cl = al;
-        cl = (unsigned char)(cl + 1);
-        cl = (unsigned char)(cl ^ al);
-        cl = (unsigned char)(cl & 0xf);
-        cl = (unsigned char)(cl ^ al);
-        p1[0x94] = (char)cl;
-    }
-    if (p2[0x115] == 0) {
-        unsigned char al = (unsigned char)p2[0x94];
-        unsigned char cl = al;
-        cl = (unsigned char)(cl + 1);
-        cl = (unsigned char)(cl ^ al);
-        cl = (unsigned char)(cl & 0xf);
-        cl = (unsigned char)(cl ^ al);
-        p2[0x94] = (char)cl;
-    }
-    sub_0081ee90((S_func_0081f070*)((char*)this + 8), b);
+    char pad0[0x94];
+    unsigned char n : 4;
+    unsigned char m : 4;
+    char pad1[0x80];
+    bool locked;
+};
+struct Inner { void g(P *, P *); };
+struct S
+{
+    char pad0[8];
+    Inner inner;
+    void f(P *a, P *b);
+};
+void S::f(P *a, P *b)
+{
+    if (!a->locked) a->n++;
+    if (!b->locked) b->n++;
+    inner.g(a, b);
 }

@@ -1,19 +1,22 @@
-// from server: 84% by Intel
-struct VModelInstance {
-    void FactoryProduct();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD /GR
+struct IHasLocation { virtual void loc(); };
+struct I0 { virtual void a(); };
+struct I1 { virtual void b(); };
+struct I2 { virtual void c(); };
+struct I3 { virtual void d(); };
+struct IHasPrimaryPart { virtual void e(); };
+struct L0 : I0, I1 { int pad[4]; };
+struct L2 : I3 { char pad[0x60]; };
+struct Inst : L0, I2, L2 { };
+struct PV : Inst, IHasPrimaryPart, virtual IHasLocation
+{
+    int m[4];
+    ~PV();
 };
-
-extern "C" void __stdcall sub_7B6250();
-
-void VModelInstance::FactoryProduct() {
-    int* vtable = reinterpret_cast<int*>(this);
-    int* base = reinterpret_cast<int*>(this + 0x84);
-    int value = base[1];
-    vtable[0] = 0x00B8FFB4;
-    vtable[1] = 0x00B8FFAC;
-    vtable[6] = 0x00B8FFA0;
-    vtable[7] = 0x00B8FF94;
-    reinterpret_cast<int*>(this + 0x80)[0] = 0x00B8FF8C;
-    reinterpret_cast<int*>(base + value + 0x84)[0] = 0x00B8FF84;
-    sub_7B6250();
-}
+struct FP : PV
+{
+    ~FP();
+};
+FP::~FP() { }

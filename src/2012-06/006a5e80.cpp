@@ -1,25 +1,7 @@
-// from server: 67% by atomic.potato
-extern "C" void __cdecl sub_51D740(int);
-extern "C" void __cdecl sub_982114(int);
-
-struct S
-{
-    int f();
-    int unused;
-    int value;
-    char reserved[1];
-    char flag;
-};
-
-int S::f()
-{
-    if (value != 0)
-    {
-        if (flag != 0)
-            sub_51D740(value);
-
-        sub_982114(value);
-    }
-
-    return value;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Y { void go(); };
+extern void __cdecl fr(void*);
+struct N { char pad[4]; Y* p; char pad2; bool b; void f(); };
+void N::f() { if (p) { if (b) p->go(); fr(p); } }

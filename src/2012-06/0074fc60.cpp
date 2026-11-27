@@ -1,14 +1,7 @@
-// from server: 67% by atomic.potato
-extern "C" void __stdcall sub_74F980(void *, void *, int);
-
-struct S
-{
-    int f(void *);
-};
-
-int S::f(void *arg)
-{
-    void *p = *(void **)((char *)this + 0x9c);
-    sub_74F980(p, arg, 0);
-    return (int)arg;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct A { int x; };
+struct M { A* go(A*); };
+struct X { char pad[0x9c]; M* m; A* f(A* a); };
+A* X::f(A* a) { volatile int z = 0; m->go(a); return a; }

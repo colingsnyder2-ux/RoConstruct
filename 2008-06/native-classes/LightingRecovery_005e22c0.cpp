@@ -15,9 +15,9 @@ namespace RBX
 {
 	// INFERRED: descriptor names and the "Appearance" category follow the donor Lighting pattern; the binary's
 	// initializer strings for ColorShift_Top / ColorShift_Bottom are not recorded in the evidence yet.
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ColorShiftTop("ColorShift_Top", "Appearance", &Lighting::getColorShiftTop, &Lighting::setColorShiftTop, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ColorShiftBottom("ColorShift_Bottom", "Appearance", &Lighting::getColorShiftBottom, &Lighting::setColorShiftBottom, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_Ambient("Ambient", "Appearance", &Lighting::getAmbient, &Lighting::setAmbient, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ColorShiftTop("ColorShift_Top", "Appearance", &Lighting::getColorShiftTop, &Lighting::setColorShiftTop, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ColorShiftBottom("ColorShift_Bottom", "Appearance", &Lighting::getColorShiftBottom, &Lighting::setColorShiftBottom, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::PropDescriptor<Lighting, G3D::Color3> desc_Ambient("Ambient", "Appearance", &Lighting::getAmbient, &Lighting::setAmbient, Reflection::PropertyDescriptor::STANDARD);
 
 	// 005e22c0: Color3 by value (ret 0xc); compares r, g, b with +0x270, stores, raises desc 0097a900, fires
 	// event_LightingChanged(false), then ServiceProvider::find<RunService> and invalidateRunViews 00555350.

@@ -32,7 +32,7 @@ namespace RBX
 	static Reflection::BoundFuncDesc<Workspace, void(), 0> func_zoomToExtents(&Workspace::zoomToExtents, "ZoomToExtents", Reflection::FunctionDescriptor::AnyCaller);
 
 	// ctor 005a3be0 (app-unit5a0's range; support body here, not counted)
-	static Reflection::RefPropDescriptor<Workspace, Camera> currentCameraProxyProp("CurrentCamera", "Data", &Workspace::getCamera, &Workspace::setCamera, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::RefPropDescriptor<Workspace, Camera> currentCameraProxyProp("CurrentCamera", "Data", &Workspace::getCamera, &Workspace::setCamera, Reflection::PropertyDescriptor::STANDARD);
 
 	// @005a5200 ?setCamera@Workspace@RBX@@QAEXPAVCamera@2@@Z
 	void Workspace::setCamera(Camera* value)

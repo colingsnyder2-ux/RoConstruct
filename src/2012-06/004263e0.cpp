@@ -1,10 +1,15 @@
-// from server: 85% by atomic.potato
-extern "C" unsigned int __cdecl G1_func_009823d2();
-extern "C" int __stdcall PostMessageA(void *, unsigned int, unsigned int, long);
-
-void __stdcall func_004263e0(int value)
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct HWND__;
+extern "C" __declspec(dllimport) int __stdcall PostMessageA(HWND__ *, unsigned int, unsigned int, long);
+struct CWnd { char pad[0x20]; HWND__ *m_hWnd; };
+struct CWinApp { char pad[0x20]; CWnd *m_pMainWnd; };
+struct State { int x; CWinApp *app; };
+State *__stdcall AfxGetModuleState();
+void __stdcall func(int value)
 {
-    unsigned int eax = G1_func_009823d2();
+    CWinApp *app = AfxGetModuleState()->app;
     if (value == 0)
-        PostMessageA(*(void **)(*(unsigned int *)(eax + 4) + 0x20), 0x111, 0x8124, 0);
+        PostMessageA(app->m_pMainWnd->m_hWnd, 0x111, 0x8124, 0);
 }

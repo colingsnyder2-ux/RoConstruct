@@ -1,22 +1,32 @@
-// from server: 84% by atomic.potato
-struct RBX_DS_CVideoStream {
-    int f(int a1);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct GUID { unsigned long a; unsigned short b, c; unsigned char d[8]; };
+extern "C" const GUID IID_IMemInputPin;
+struct IPin
+{
+    virtual long __stdcall QueryInterface(const GUID &, void **);
+    virtual unsigned long __stdcall AddRef();
+    virtual unsigned long __stdcall Release();
+    virtual long __stdcall v3(); virtual long __stdcall v4(); virtual long __stdcall v5();
+    virtual long __stdcall v6(); virtual long __stdcall v7(); virtual long __stdcall v8();
+    virtual long __stdcall QueryDirection(int *);
 };
-
-int RBX_DS_CVideoStream::f(int a1) {
-    int* vtable = *(int**)a1;
-    int (*func1)(int, int*) = (int (*)(int, int*))(vtable[9]);
-    int result;
-    func1(a1, &result);
-
-    if (result == *(int*)((char*)this + 0x1c)) {
+struct CVideoStream {
+    char pad0[0x1c];
+    int m_dir;
+    char pad1[0x7c];
+    void *m_pInputPin;
+    long CheckConnect(IPin *pPin);
+};
+long CVideoStream::CheckConnect(IPin *pPin)
+{
+    int dir;
+    pPin->QueryDirection(&dir);
+    if (dir == m_dir)
         return 0x80040208;
-    }
-
-    int (*func2)(int, int, int) = (int (*)(int, int, int))(*(int**)*(int**)a1);
-    int ret = func2(a1, 0xB64360, (int)((char*)this + 0x9C));
-
-    int ecx = ret >= 0 ? 1 : 0;
-    ecx--;
-    return ret & ecx;
+    long hr = pPin->QueryInterface(IID_IMemInputPin, &m_pInputPin);
+    if (hr < 0)
+        return hr;
+    return 0;
 }

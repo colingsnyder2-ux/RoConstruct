@@ -1,21 +1,25 @@
-// from server: 84% by atomic.potato
-extern "C" int __cdecl sub_983448(int, int, int, int, int);
-
-struct RBX_AnchorTool {
-    char pad[0x30];
-    int field_30;
-    void sub_945E40(int);
-};
-
-void RBX_AnchorTool::sub_945E40(int a)
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD /GR
+namespace RBX {
+class Instance { public: virtual ~Instance(); };
+class IAdornable
 {
-    int v = field_30;
-    if (v != 0) {
-        int r = sub_983448(v, 0, 0xd601e8, 0xd8866c, 0);
-        if (r != 0) {
-            int* p = (int*)r;
-            int (*fn)(void*, int) = (int (*)(void*, int))p[8];
-            fn((void*)r, a);
-        }
-    }
+public:
+    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
+    virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7();
+    virtual void render(void *, int);
+};
+}
+struct AnchorTool
+{
+    char pad[0x30];
+    RBX::Instance *part;
+    void f(void *adorn);
+};
+void AnchorTool::f(void *adorn)
+{
+    if (part)
+        if (RBX::IAdornable *a = dynamic_cast<RBX::IAdornable *>(part))
+            a->render(adorn, 0);
 }

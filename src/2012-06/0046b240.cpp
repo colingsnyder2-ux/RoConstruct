@@ -1,19 +1,13 @@
-// from server: 67% by atomic.potato
-struct CRenderSettingsItem
-{
-    char pad[196];
-    int value;
-    int SetValue(int);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Sig { void notify(void* p); };
+static int g;
+struct CRenderSettingsItem {
+    char pad[0xc4]; int value; char pad2[0x144-0xc8]; Sig sig;
+    void SetValue(int v);
 };
-
-extern "C" void UpdateSetting(int*, int);
-
-int CRenderSettingsItem::SetValue(int v)
+void CRenderSettingsItem::SetValue(int v)
 {
-    if (value == v)
-        return 0;
-
-    value = v;
-    UpdateSetting((int*)this + 81, 0xE19A1C);
-    return 0;
+    if (v != value) { value = v; sig.notify(&g); }
 }

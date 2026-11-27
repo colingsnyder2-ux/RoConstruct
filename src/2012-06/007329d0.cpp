@@ -1,22 +1,16 @@
-// from server: 67% by atomic.potato
-struct S
-{
-    unsigned char pad0[0x20];
-    void* p20;
-    unsigned char pad1[0x0c];
-    unsigned char flag30;
-    unsigned char pad2[0x23];
-    void* pffffff54;
-    void f(void*, void*);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Outer { virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7(); virtual void v8(); virtual void v9(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void h(void* a, int b); };
+struct S {
+    char pad[0x20]; char buf[0x10]; char flag;
+    void f(int);
 };
-
-void S::f(void* a, void* b)
+void S::f(int)
 {
-    if (flag30 != 0)
-    {
-        typedef void (__thiscall *M)(S*, void*, void*);
-        M m = (M)*(void**)((char*)pffffff54 + 0x5c);
-        m((S*)((char*)this - 0xac), (char*)this + 0x20, 0);
-        flag30 = 0;
+    if (flag) {
+        Outer* o = (Outer*)((char*)this - 0xac);
+        o->h(buf, 0);
+        flag = 0;
     }
 }

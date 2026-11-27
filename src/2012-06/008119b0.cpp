@@ -1,12 +1,14 @@
-// from server: 84% by atomic.potato
-struct Motor6D
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Params { float a[3]; float b[3]; float c; float d; };
+struct Owner { void g(Params *, float *, float, float); };
+struct Inner
 {
-    void f(float *value);
+    void f(Params *p);
 };
-
-extern "C" void __stdcall G1_func_0091db40(float *, float *, float, float);
-
-void Motor6D::f(float *value)
+void Inner::f(Params *p)
 {
-    G1_func_0091db40(value, value + 3, value[6], value[7]);
+    Owner *o = ((Owner **)this)[-1];
+    o->g(p, p->b, p->c, p->d);
 }

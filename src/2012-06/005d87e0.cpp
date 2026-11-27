@@ -1,23 +1,7 @@
-// from server: 69% by atomic.potato
-struct Vec3 {
-    float x;
-    float y;
-    float z;
-};
-
-extern "C" bool __cdecl sub_880f30(const Vec3* p);
-
-bool __stdcall sub_005d87e0(float x, float y, float z, Vec3* out)
-{
-    Vec3 v;
-    v.x = x;
-    v.y = y;
-    v.z = z;
-    if (sub_880f30(&v)) {
-        return false;
-    }
-    if (out) {
-        *out = v;
-    }
-    return true;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct V { int x, y, z; };
+bool chk(V*);
+struct W { bool f(V v, V* out); };
+bool W::f(V v, V* out) { V t = v; if (!chk(&t)) { if (out) *out = t; return true; } return false; }

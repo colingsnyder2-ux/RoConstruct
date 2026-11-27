@@ -30,12 +30,12 @@ namespace RBX
 	// 0097a91c, dynamic initializer 007f69d0 (??__Eprop_Time@RBX@@YAXXZ: a namespace-scope static, as in the donor
 	// Lighting.cpp): PropDescriptor<Lighting, std::string> ctor 005e1170, "TimeOfDay" 0083df58 / "Data" 00822490,
 	// getter getTimeStr 005e0be0, setter setTimeStr 005e2730, flags 5 (STANDARD).
-	static Reflection::PropDescriptor<Lighting, std::string> prop_Time("TimeOfDay", "Data", &Lighting::getTimeStr, &Lighting::setTimeStr, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::PropDescriptor<Lighting, std::string> prop_Time("TimeOfDay", "Data", &Lighting::getTimeStr, &Lighting::setTimeStr, Reflection::PropertyDescriptor::STANDARD);
 
 	// 0097aa58, dynamic initializer 007f6b40: PropDescriptor<Lighting, G3D::Color3> ctor 005e12d0, "ShadowColor"
 	// 0083dfe4 / "Appearance" 008329ac, getter 005df4a0, setter 005e2540, flags 5 (STANDARD).
 	// INFERRED: the object name (desc_ShadowColor) follows the donor desc_ClearColor pattern; the binary records none.
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ShadowColor("ShadowColor", "Appearance", &Lighting::getShadowColor3, &Lighting::setClearColor3, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ShadowColor("ShadowColor", "Appearance", &Lighting::getShadowColor3, &Lighting::setClearColor3, Reflection::PropertyDescriptor::STANDARD);
 
 	Lighting::Lighting()
 		: ambientTop(209/255.0f, 208/255.0f, 217/255.0f),
@@ -91,14 +91,10 @@ namespace RBX
 		}
 	}
 
-#ifdef NATIVE_LIGHTING_BRIGHTNESS_PENDING
 	// 005e2420 (103 B, float by value, ret 4): compares with brightness +0x288 (fucom, test ah 0x44), stores, raises the
 	// Brightness descriptor 0097a980, fires event_LightingChanged(false), then RunService::invalidateRunViews 00555350.
-	// Measured IDENTICAL (relocs masked) with a scratch Lighting2008.h that declares
-	//   float getBrightness() const { return brightness; }  void setBrightness(float value);
-	// BLOCKED: v8datamodel/Lighting2008.h (not owned by this batch) declares neither; header proposal in the batch
-	// result. INFERRED: descriptor object name and "Appearance" category follow desc_ShadowColor above.
-	static Reflection::PropDescriptor<Lighting, float> desc_Brightness("Brightness", "Appearance", &Lighting::getBrightness, &Lighting::setBrightness, Reflection::PropertyDescriptor::STANDARD);
+	// INFERRED: descriptor object name and "Appearance" category follow desc_ShadowColor above.
+	Reflection::PropDescriptor<Lighting, float> desc_Brightness("Brightness", "Appearance", &Lighting::getBrightness, &Lighting::setBrightness, Reflection::PropertyDescriptor::STANDARD);
 
 	// 005e2420
 	void Lighting::setBrightness(float value)
@@ -114,7 +110,6 @@ namespace RBX
 				runService->invalidateRunViews();
 		}
 	}
-#endif // NATIVE_LIGHTING_BRIGHTNESS_PENDING
 
 	// 005e2570: total_seconds() (__alldiv by 1000000), modulo 86400, compared with timeOfDay.total_seconds(); stores
 	// seconds(totalSeconds) as ticks (__allmul 006a16d0) at +0x268, skyParameters.setTime 007b59b0, raises prop_Time
@@ -161,7 +156,7 @@ namespace RBX
 	// 0097a9f8, dynamic initializer 007f6a10 (??__Eprop_GeographicLatitude@RBX@@YAXXZ, a namespace-scope static as
 	// prop_Time): PropDescriptor<Lighting, float> ctor, "GeographicLatitude" 0083df64 / "Data" 00822490, getter 005df490,
 	// setter 005e2670, flags 5 (STANDARD).
-	static Reflection::PropDescriptor<Lighting, float> prop_GeographicLatitude("GeographicLatitude", "Data", &Lighting::getGeographicLatitude, &Lighting::setGeographicLatitude, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::PropDescriptor<Lighting, float> prop_GeographicLatitude("GeographicLatitude", "Data", &Lighting::getGeographicLatitude, &Lighting::setGeographicLatitude, Reflection::PropertyDescriptor::STANDARD);
 
 	// 005df490 (registry placeholder func_005df490): skyParameters.geoLatitude (+0x130 + 0xf4).
 	float Lighting::getGeographicLatitude() const

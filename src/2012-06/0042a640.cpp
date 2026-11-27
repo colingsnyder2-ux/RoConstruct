@@ -1,25 +1,6 @@
-// from server: 69% by atomic.potato
-struct CXTTreeCtrl {
-    char pad[0x38];
-    void* field_38;
-    char pad2[0xa0 - 0x3c];
-    void* field_a0;
-    int sub_42A640();
-};
-
-extern "C" CXTTreeCtrl* __stdcall sub_983448(void*, void*, void*, void*, void*);
-
-int CXTTreeCtrl::sub_42A640()
-{
-    if (field_a0 == 0) {
-        CXTTreeCtrl* r = sub_983448(field_38, 0, (void*)0xd601e8, (void*)0xd630e8, 0);
-        if (r != 0) {
-            CXTTreeCtrl* r2 = sub_983448(field_38, 0, (void*)0xd601e8, (void*)0xd630e8, 0);
-            if (r2->sub_42A640() != 0) {
-                return 1;
-            }
-        }
-        return 0;
-    }
-    return 0;
-}
+// from server: 85% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct W { virtual ~W(); };
+struct T : W { char pad[0x34]; W* w38; char pad2[0x64]; void* a0; void* f(); };
+void* T::f() { if (a0) return a0; if (dynamic_cast<T*>(w38) && dynamic_cast<T*>(w38)->f()) return (void*)1; return 0; }

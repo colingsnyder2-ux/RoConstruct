@@ -1,28 +1,13 @@
-// from server: 68% by Intel
+// from server: 93% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)
-
-extern "C" void __stdcall string_copy_ctor(void*, const void*);
-
-struct VPlayer {
-    void* field0;
-    char pad1[0x1c];
-    void* field20;
-    void* field24;
-    void* field28;
-    void construct(void* a, void* src);
-};
-
-void VPlayer::construct(void* a, void* src) {
-    field0 = a;
-    string_copy_ctor((char*)this + 4, (char*)src + 4);
-    field20 = *(void**)((char*)src + 0x20);
-    if (field20) {
-        _InterlockedExchangeAdd((volatile long*)((char*)field20 + 8), 1);
-    }
-    field24 = *(void**)((char*)src + 0x24);
-    field28 = *(void**)((char*)src + 0x28);
-    if (field28) {
-        _InterlockedExchangeAdd((volatile long*)((char*)field28 + 8), 1);
-    }
-}
+struct Rc { int a, b; long cnt; };
+struct String { char d[0x1c]; __declspec(dllimport) String(const String&); };
+struct Inner { String s; int x; Rc* r1; int y; Rc* r2;
+  __forceinline Inner(const Inner& o) : s(o.s) {
+    x = o.x; r1 = o.r1; if (r1) _InterlockedExchangeAdd(&r1->cnt, 1);
+    y = o.y; r2 = o.r2; if (r2) _InterlockedExchangeAdd(&r2->cnt, 1); } };
+struct Outer { int a; Inner in; Outer(int a_, const Inner& i); };
+Outer::Outer(int a_, const Inner& i) : a(a_), in(i) {}

@@ -1,20 +1,10 @@
-// from server: 84% by atomic.potato
-typedef unsigned int DWORD;
-
-struct S {
-    DWORD vtable;
-    DWORD pad[9];
-    DWORD descriptor;
-
-    int f(int a, int b);
-};
-
-extern "C" int __stdcall sub_733010(int *);
-
-int S::f(int a, int b)
-{
-    DWORD *p = (DWORD *)descriptor;
-    DWORD *q = (DWORD *)(*p + 12);
-    int value = sub_733010(&b);
-    return ((int (__thiscall *)(DWORD *, int, int))(*(DWORD *)q))(p, a, value);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct V { int g(V *const &); };
+struct Desc;
+typedef int (__thiscall *SetFn)(Desc *, int, int);
+struct Vtbl { void *s0, *s1, *s2; SetFn set; };
+struct Desc { Vtbl *vt; };
+struct S { char pad[0x28]; Desc *desc; int f(int a, V *b); };
+int S::f(int a, V *b){ Desc *p = desc; SetFn *fn = &p->vt->set; int value = b->g(b); return (*fn)(p, a, value); }

@@ -1,14 +1,14 @@
-// from server: 85% by atomic.potato
-extern double g_00B5CD78;
-extern "C" void __stdcall G_00977D20(double, void *, void *);
-
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern const double kZero;
+void __stdcall G(void *, void *, double);
 struct S
 {
     void *f(void *, void *);
 };
-
 void *S::f(void *a, void *b)
 {
-    G_00977D20(g_00B5CD78, b, a);
-    return b;
+    G(a, b, kZero);
+    return a;
 }
