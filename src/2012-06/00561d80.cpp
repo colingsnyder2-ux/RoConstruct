@@ -1,18 +1,20 @@
-// from server: 91% by Intel
-extern "C" void __stdcall sub_561950(void*, void*, void*);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Entry { char pad[28]; };
+extern Entry g_pool[8];
+extern unsigned char g_counter;
 
-struct VHintFactoryProductCreator
+struct Creator
 {
-    void* create(void* a1, void* a2);
+    void build(void* a1, Entry* e, void* a2);
+    Entry* create(void* a1, void* a2);
 };
 
-void* VHintFactoryProductCreator::create(void* a1, void* a2)
+Entry* Creator::create(void* a1, void* a2)
 {
-    static unsigned char counter;
-    unsigned char index = counter++;
-    unsigned int masked = index & 7;
-    unsigned int offset = masked * 7;
-    void* pool_entry = (void*)(0xE24240 + offset * 4);
-    sub_561950(pool_entry, a1, a2);
-    return pool_entry;
+    unsigned char index = g_counter++;
+    Entry* e = &g_pool[index & 7];
+    build(a1, e, a2);
+    return e;
 }

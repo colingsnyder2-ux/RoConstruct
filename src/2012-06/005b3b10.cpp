@@ -1,30 +1,25 @@
-// from server: 75% by atomic.potato
-struct Node {
-    Node* next;
-    char pad[0x14];
-};
-
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct CS { char d[0x18]; };
+extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(CS*);
+extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(CS*);
+struct Node { Node* next; };
+struct Pool { CS cs; Node* freeList; };
+Pool* getPool();
 struct Sender {
-    char pad0[4];
-    Node* field4;
+    int pad;
+    Node* node;
+    void cleanup();
     void f();
 };
-
-extern "C" void __stdcall EnterCriticalSection(void*);
-extern "C" void __stdcall LeaveCriticalSection(void*);
-extern void* g_cs1;
-extern void* g_cs2;
-
-void sub_5b3750();
-void* sub_5b2b20();
-
 void Sender::f() {
-    sub_5b3750();
-    Node* b = field4;
-    void* p = sub_5b2b20();
-    EnterCriticalSection(&g_cs1);
-    b->next = *(Node**)((char*)p + 0x18);
-    *(void**)((char*)p + 0x18) = b;
-    LeaveCriticalSection(&g_cs2);
-    field4 = 0;
+    cleanup();
+    Node* n = node;
+    Pool* p = getPool();
+    EnterCriticalSection(&p->cs);
+    n->next = p->freeList;
+    p->freeList = n;
+    LeaveCriticalSection(&p->cs);
+    node = 0;
 }

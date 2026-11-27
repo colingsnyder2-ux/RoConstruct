@@ -1,14 +1,5 @@
-// from server: 77% by atomic.potato
-struct S
-{
-    int f(int);
-};
-
-int S::f(int value)
-{
-    int bits;
-    if (value < 0 || value > 2)
-        return ((*(volatile int*)this) & 0) != 0;
-    bits = *(volatile int*)this;
-    return (bits & (1 << value)) != 0;
-}
+// from server: 93% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct B { int bits; bool f(int i); };
+bool B::f(int i) { unsigned m = (i >= 0 && i <= 2) ? (1u << i) : 0u; return (bits & m) != 0; }

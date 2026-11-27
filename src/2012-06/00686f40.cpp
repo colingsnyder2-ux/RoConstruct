@@ -1,15 +1,24 @@
-// from server: 91% by atomic.potato
-struct S
-{
-    int f();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD /GR
+namespace RBX {
+class Instance { public: virtual ~Instance(); };
+class ICharacterSubject {
+public:
+    virtual ~ICharacterSubject();
+    char pad[0x30];
+    int state;
 };
-
-extern "C" void* __cdecl G_00983448(void*, void*, void*, void*, void*);
-
-int S::f()
+struct Camera {
+    char pad[0x14c];
+    Instance* subject;
+    Instance* getSubject() const { return subject; }
+    bool f() const;
+};
+bool Camera::f() const
 {
-    void* p = G_00983448(*((void**)((char*)this + 0x14c)), 0, (void*)0xD601E8, (void*)0xD9A458, 0);
-    if (p)
-        return *((int*)((char*)p + 0x34)) == 1;
-    return 0;
+    if (ICharacterSubject* p = dynamic_cast<ICharacterSubject*>(getSubject()))
+        return p->state == 1;
+    return false;
+}
 }

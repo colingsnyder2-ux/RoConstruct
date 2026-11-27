@@ -1,17 +1,18 @@
-// from server: 74% by atomic.potato
-extern "C" void __stdcall UpdateRenderSettings(void*, unsigned int);
-
-struct CRenderSettingsItem
-{
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Desc { int a, b; };
+Desc g_desc;
+struct Sig { void raise(const Desc*); };
+struct S {
+    char pad[255];
     unsigned char value;
-    void Update(unsigned char value);
+    char pad2[0x144 - 255 - sizeof(unsigned char)];
+    Sig sig;
+    void f(unsigned char v);
 };
-
-void CRenderSettingsItem::Update(unsigned char value)
-{
-    if (value == *(unsigned char*)((char*)this + 0xff))
-        return;
-
-    *(unsigned char*)((char*)this + 0xff) = value;
-    UpdateRenderSettings((char*)this + 0x144, 0xe19adc);
+void S::f(unsigned char v) {
+    if (v == value) return;
+    value = v;
+    sig.raise(&g_desc);
 }

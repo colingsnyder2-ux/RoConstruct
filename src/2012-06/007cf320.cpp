@@ -1,18 +1,14 @@
-// from server: 74% by atomic.potato
-struct S
-{
-    unsigned char f(void *p);
-    unsigned char **v0;
-    int v1;
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct VB { int a; unsigned char c; };
+struct Pre { char p[0x1c]; };
+struct Bs { int q; };
+struct Mid { char p[0x64]; };
+struct Obj : Pre, Bs, Mid, virtual VB { };
+struct Prop {
+    char pad[8];
+    unsigned char Obj::* m;
+    unsigned char get(Bs* b);
 };
-
-unsigned char S::f(void *p)
-{
-    unsigned char *q;
-    if (p)
-        q = (unsigned char *)p - 0x1c;
-    else
-        q = 0;
-    q = (unsigned char *)((*(unsigned char ***)((char *)q + 0x84))[(unsigned int)v1] + (int)v0);
-    return q[(unsigned int)p + 0x84];
-}
+unsigned char Prop::get(Bs* b) { return static_cast<Obj*>(b)->*m; }

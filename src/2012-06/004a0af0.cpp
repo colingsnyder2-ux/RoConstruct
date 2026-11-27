@@ -1,18 +1,17 @@
-// from server: 70% by atomic.potato
-struct CScriptEditor {
-    char pad[0x54];
-    CScriptEditor* field_54;
-    void func_004a0af0(int, int, int);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Q { char pad[0x54]; int v; };
+struct P { char pad[0x54]; Q* q; };
+struct Base { void g(int a, int b, int c); };
+struct Q;
+void helper(int, Q*);
+struct CScriptEditor : Base {
+    char pad[0x54 - 1];
+    P* p;
+    void f(int a, int b, int c);
 };
-
-extern "C" void __stdcall func_004029f0(int, CScriptEditor*);
-extern "C" void __stdcall func_0049e320(int, int, int);
-
-void CScriptEditor::func_004a0af0(int a, int b, int c)
-{
-    func_0049e320(a, b, c);
-    if (a) {
-        CScriptEditor* p = field_54;
-        func_004029f0(1, p->field_54);
-    }
+void CScriptEditor::f(int a, int b, int c) {
+    Base::g(a, b, c);
+    if (a) helper(1, p->q);
 }

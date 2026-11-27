@@ -1,11 +1,8 @@
-// from server: 91% by tajop
-struct string {
-    int d[7];
-    string(const string&);
-    ~string();
-};
-string operator+(const string&, const char*);
-string operator+(const string&, const string&);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <string>
+using std::string;
 
 struct Descriptor {
     bool isA(const Descriptor*) const;

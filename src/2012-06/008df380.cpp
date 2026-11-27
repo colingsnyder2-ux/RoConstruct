@@ -1,30 +1,24 @@
-// from server: 90% by atomic.potato
-struct S_008df380
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Sig { void fire(); };
+
+struct EventDesc
 {
-    char pad0[48];
-    int m_base;
-    int m_index;
-    int f(int p);
+    void f(void *);
 };
 
-struct S_008de0e0
+void EventDesc::f(void *p)
 {
-    char pad0[132];
-};
-
-void Call_008de0e0(S_008de0e0 *);
-
-int S_008df380::f(int p)
-{
-    int x;
-    if (p)
-        x = p - 28;
+    char *v = (char *)p;
+    if (v)
+        v -= 0x1c;
     else
-        x = 0;
-    S_008de0e0 *v = (S_008de0e0 *)x;
-    int y = *(int *)((char *)v + 132);
-    y = *(int *)((char *)y + m_index);
-    y += m_base;
-    Call_008de0e0((S_008de0e0 *)(y + x + 132));
-    return 0;
+        v = 0;
+
+    int x = *(int *)(v + 0x84);
+    x = *(int *)(x + *(int *)((char *)this + 0x34));
+    x += *(int *)((char *)this + 0x30);
+
+    ((Sig*)(v + x + 0x84))->fire();
 }

@@ -1,17 +1,8 @@
-// from server: 72% by atomic.potato
-extern "C" void Call973130(void*, void*);
-
-struct S
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct E { int v; void init(int a); };
+void fill(E* first, E* last, int a)
 {
-};
-
-void __cdecl f(void* first, void* last)
-{
-    char* p = (char*)first;
-    char* end = (char*)last;
-    while (p != end)
-    {
-        Call973130(p, 0);
-        p += 4;
-    }
+    for (; first != last; ++first) first->init(a);
 }

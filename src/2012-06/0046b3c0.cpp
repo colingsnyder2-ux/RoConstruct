@@ -1,18 +1,7 @@
-// from server: 72% by atomic.potato
-extern "C" void __fastcall UpdateSettings(void *, int);
-
-struct CRenderSettingsItem
-{
-    unsigned char pad[228];
-    unsigned char value;
-    void update(unsigned char value);
-};
-
-void CRenderSettingsItem::update(unsigned char value)
-{
-    if (value != this->value)
-    {
-        this->value = value;
-        UpdateSettings((char *)this + 324, 0xe1979c);
-    }
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Sub { void notify(const void* d); };
+static int g;
+struct S { char pad[0xe4]; char v; char pad2[0x144-0xe5]; Sub sub; void set(char x); };
+void S::set(char x) { if (x != v) { v = x; sub.notify(&g); } }

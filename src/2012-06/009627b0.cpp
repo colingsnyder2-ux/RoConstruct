@@ -1,28 +1,4 @@
-// from server: 75% by atomic.potato
-extern "C" void __stdcall Call917430(void *);
-
-struct VTable8
-{
-    void *pad0;
-    void *pad1;
-    void (__thiscall *call8)(void *);
-};
-
-struct VTable4
-{
-    void *pad0;
-    void (__thiscall *call4)(void *);
-};
-
-struct SimulateStage
-{
-    VTable8 *vtable;
-    void f(void *);
-};
-
-void __thiscall SimulateStage::f(void *arg)
-{
-    Call917430(arg);
-    this->vtable->call8(this);
-    ((VTable4 *)*(void **)arg)->call4(arg);
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Stage; struct Item { void setStage(Stage*); virtual void v0(); virtual void v1(int); }; struct Stage { virtual void a(); virtual void b(); virtual int c(); void f(Item* it); }; void Stage::f(Item* it) { it->setStage(this); it->v1(c()); }

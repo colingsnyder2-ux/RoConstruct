@@ -1,11 +1,7 @@
-// from server: 86% by atomic.potato
-struct S
-{
-    void f(int, float, float);
-    void g(int, float, float);
-};
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 
-void S::f(int a, float b, float c)
-{
-    g(a, b, c);
-}
+struct T { int x; void g(int a, float b, float c); };
+struct S { char pad[0x10]; T t; void f(int a, float b, float c); };
+void S::f(int a, float b, float c) { t.g(a, b, c); }

@@ -1,17 +1,15 @@
-// from server: 75% by atomic.potato
-extern "C" int fn_007b9450(void*);
-extern "C" void fn_0082e370(void*, void*);
-
-struct BallBlockContact
-{
-    int field24;
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Arg { int type(); };
+struct Target { void handle(Arg*); };
+struct BallBlockContact {
+    char pad[0x24];
+    Target* target;
     int field28;
-    void f(void*);
+    void f(Arg* a);
 };
-
-void BallBlockContact::f(void* arg)
-{
-    if (fn_007b9450(arg) == 10)
-        field28 = 0;
-    fn_0082e370((void*)field24, arg);
+void BallBlockContact::f(Arg* a) {
+    if (a->type() == 10) field28 = 0;
+    target->handle(a);
 }

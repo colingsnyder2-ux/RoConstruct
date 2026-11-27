@@ -1,19 +1,7 @@
-// from server: 72% by atomic.potato
-extern "C" void __cdecl Function_00982114(void*);
-extern "C" void __cdecl Function_00b2263c();
-
-struct S
-{
-    void f();
-};
-
-void S::f()
-{
-    void* p = *(void**)((char*)this + 4);
-    if (p != 0)
-    {
-        if (*(unsigned char*)((char*)this + 9) != 0)
-            Function_00b2263c();
-        Function_00982114(p);
-    }
-}
+// from server: 88% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" __declspec(dllimport) void imp();
+void cf(void*);
+void cg(int*);
+struct S { int a; void* volatile p; char pad; char c; void f(); }; void S::f(){ if (p) { if (c) imp(); cf(p); } }

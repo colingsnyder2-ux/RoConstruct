@@ -1,22 +1,21 @@
-// from server: 88% by atomic.potato
-extern "C" void sub_004c83e0(void *, void *);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 
+struct Signal { void fire(); };
+struct VBase { int x; };
+struct A { char pad[0x1c]; };
+struct I { int i; };
+struct Mid : A, I { char pad2[0x84 - 0x20]; };
+struct D : Mid, virtual VBase { Signal sig; };
 struct EventDesc
 {
-    void *filler0[12];
-    int base;
-    int index;
-    void f(void *);
+    char pad[0x30];
+    Signal D::* member;
+    void f(I* arg);
 };
-
-void EventDesc::f(void *arg)
+void EventDesc::f(I* arg)
 {
-    char *p = (char *)arg;
-    if (p)
-        p -= 28;
-    else
-        p = 0;
-
-    int value = *(int *)(*(int *)(p + 132) + index) + base;
-    sub_004c83e0(this, p + value + 132);
+    D* d = static_cast<D*>(arg);
+    (d->*member).fire();
 }

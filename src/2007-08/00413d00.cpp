@@ -160,7 +160,7 @@ static size_t pushArgs(lua_State* L, const Arguments& arguments)
         }
         else
         {
-            // Ã‚Â¯\_(Ã£Æ’â€ž)_/Ã‚Â¯
+            // Ãƒâ€šÃ‚Â¯\_(ÃƒÂ£Ã†â€™Ã¢â‚¬Å¾)_/Ãƒâ€šÃ‚Â¯
             // maybe they meant to print it? lol
             argType.name();
         }

@@ -1,12 +1,6 @@
-// from server: 48% by atomic.potato
-struct seg_00890000 {
-    char pad0[20];
-    int m_flags;
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 
-    int f();
-};
-
-int seg_00890000::f()
-{
-    return (m_flags & 0x300) != 0;
-}
+struct S { char pad[0x14]; int fl; int f(); };
+int S::f(){ return (fl & 0x100) || (fl & 0x200); }

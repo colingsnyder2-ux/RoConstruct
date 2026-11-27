@@ -1,15 +1,13 @@
-// from server: 90% by atomic.potato
-struct S_func_00794730 {
-    int pad[108];
-    int m_1b0;
-    int m_1b4;
-    int m_1b8;
-    void f(int* out);
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Vector3 { float x, y, z; };
+struct Owner {
+    char pad0[0x1b0];
+    Vector3 value;
+    Vector3 get() const;
 };
-
-void S_func_00794730::f(int* out)
+Vector3 Owner::get() const
 {
-    out[0] = m_1b0;
-    out[1] = m_1b4;
-    out[2] = m_1b8;
+    return value;
 }

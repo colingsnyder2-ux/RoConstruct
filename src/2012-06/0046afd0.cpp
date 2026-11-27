@@ -1,17 +1,7 @@
-// from server: 72% by atomic.potato
-struct S
-{
-    int f(int value);
-};
-
-extern "C" void __stdcall G1_func_00414500(S* object, int value);
-
-int S::f(int value)
-{
-    if (value != *(int*)((char*)this + 0x94))
-    {
-        *(int*)((char*)this + 0x94) = value;
-        G1_func_00414500((S*)((char*)this + 0x144), 0x00e198ec);
-    }
-    return 0;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Sub { void notify(const void* d); };
+static int g;
+struct S { char pad[0x94]; int v; char pad2[0x144-0x98]; Sub sub; void set(int x); };
+void S::set(int x) { if (x != v) { v = x; sub.notify(&g); } }

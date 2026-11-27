@@ -1,5 +1,8 @@
-// from server: 93% by atomic.potato
-struct S
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct __declspec(dllimport) OgreNode { void removeAllChildren(); };
+struct S : OgreNode
 {
     struct Node
     {
@@ -7,15 +10,12 @@ struct S
         char pad[0x20];
         void *value;
     };
-
     char pad[0x10];
     Node *nodes;
     void remove(void *);
+    void removeAll();
 };
-
-extern "C" void OgreNodeRemoveAllChildren();
-
-void S::remove(void *value)
+void S::removeAll()
 {
     Node *head = nodes;
     Node *p = head->next;
@@ -24,5 +24,5 @@ void S::remove(void *value)
         remove(p->value);
         p = p->next;
     }
-    OgreNodeRemoveAllChildren();
+    removeAllChildren();
 }

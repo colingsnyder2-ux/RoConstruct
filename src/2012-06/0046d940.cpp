@@ -1,22 +1,7 @@
-// from server: 77% by Intel
-struct CRobloxApp {
-    int field_20;
-    int field_110;
-    int field_111;
-    int method_46d940();
-};
-
-extern "C" void __stdcall sub_982d80();
-
-int CRobloxApp::method_46d940() {
-    int eax = this->field_20;
-    if (!eax) {
-        sub_982d80();
-    }
-    if (!*(char*)(eax + 0x110)) {
-        if (!*(char*)(eax + 0x111)) {
-            sub_982d80();
-        }
-    }
-    return 0;
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+void x();
+struct P { char pad[0x110]; bool a; bool b; };
+struct C { char pad[0x20]; P* p; void f(); };
+void C::f() { if (p == 0) { x(); return; } if (!p->a && !p->b) x(); }

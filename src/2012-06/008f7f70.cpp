@@ -1,16 +1,9 @@
-// from server: 72% by tester
-struct EventDesc {
-    char pad[8];
-    void* obj;
-    void* vtbl;
-    void __cdecl invoke(float a, float b, float c, float d);
-};
-
-void EventDesc::invoke(float a, float b, float c, float d)
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Ev { virtual void fire(float a, float b, float c, float d); };
+struct H { char pad[8]; Ev* e0; int x; int n; };
+void f(H* s, float a, float b, float c, float d)
 {
-    if (obj != 0) {
-        void** v = (void**)obj;
-        void (*fn)(void*, float, float, float, float) = (void (*)(void*, float, float, float, float))v[0];
-        fn(obj, d, c, b, a);
-    }
+    if (s->n) { Ev* e = (Ev*)((char*)s + 8); e->fire(a, b, c, d); }
 }

@@ -1,30 +1,21 @@
-// from server: 95% by atomic.potato
-typedef unsigned char BYTE;
-
-struct VTable
-{
-    void (__thiscall *f)(void *, void *, BYTE *);
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Sink {
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void notify(void* object, unsigned char* value);
 };
-
-struct Global
-{
-    VTable *vtable;
-};
-
-extern Global *g_global;
-
-struct BodyMover
-{
+extern Sink* g_sink;
+struct BodyMover {
     void f();
 };
-
 void BodyMover::f()
 {
-    BYTE value = 0;
-    void *object = 0;
-
+    unsigned char value = 0;
+    void* object = 0;
     if (this != 0)
-        object = (char *)this + 0x1c;
-
-    g_global->vtable->f(g_global, object, &value);
+        object = (char*)this + 0x1c;
+    g_sink->notify(object, &value);
 }

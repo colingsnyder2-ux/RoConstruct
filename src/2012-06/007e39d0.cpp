@@ -1,0 +1,4 @@
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+int g(int,int); bool f(int a){ return (bool)g(a,0); }

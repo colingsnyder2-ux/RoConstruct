@@ -1,16 +1,5 @@
-// from server: 77% by tester
-struct CXTSplitterWnd {
-    static float* GetSomething();
-};
-
-float* CXTSplitterWnd::GetSomething() {
-    static int initialized = 0;
-    static float values[3];
-    if (!(initialized & 1)) {
-        initialized |= 1;
-        values[0] = *(float*)0xb4c440;
-        values[1] = *(float*)0xb5abe8;
-        values[2] = *(float*)0xb4c440;
-    }
-    return values;
-}
+// from server: 100% by Xemicl
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /arch:SSE
+struct V3 { float x, y, z; V3(float a, float b, float c) : x(a), y(b), z(c) {} };
+const V3* f() { static V3 v(1.0f, 0.1f, 1.0f); return &v; }

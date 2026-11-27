@@ -1,16 +1,20 @@
-// from server: 88% by atomic.potato
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+
+struct Stream;
+struct Guid { int v; };
+void writeType(Stream* s, int t);
+void writeFlag(Stream* s, int f);
+void writeGuid(Stream* s, Guid* g);
 struct PingItem {
     char pad[0x20];
-    bool method(int);
+    Guid id;
+    bool write(Stream* s);
 };
-
-extern "C" void __stdcall sub_5aaf90(int, int);
-extern "C" void __stdcall sub_56b920(int, int);
-extern "C" void __stdcall sub_56c250(int, void*);
-
-bool PingItem::method(int a) {
-    sub_5aaf90(a, 5);
-    sub_56b920(a, 0);
-    sub_56c250(a, this + 0x20);
+bool PingItem::write(Stream* s) {
+    writeType(s, 5);
+    writeFlag(s, 0);
+    writeGuid(s, &id);
     return true;
 }

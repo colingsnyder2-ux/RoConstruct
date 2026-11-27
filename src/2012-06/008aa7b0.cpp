@@ -1,19 +1,15 @@
-// from server: 92% by Intel
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /GR
+namespace RBX {
+class PVInstance { public: virtual void v(); };
+class PartInstance : public PVInstance { public: char pad[0x194]; int f198; };
 struct ConstraintSurfacePair {
-    int vtable;
-    char pad4[0x3C];
-    int field40;
-
-    void func(int a1);
+    int vtable; char pad4[0x3C]; int field40;
+    void func(PVInstance* a1);
 };
-
-extern "C" int __stdcall sub_983448(int a1, int a2, int a3, int a4, int a5, int a6);
-
-void ConstraintSurfacePair::func(int a1) {
-    int result = sub_983448(a1, 0, 0xD9AC9C, 0xD94C60, 0, 0);
-    if (result) {
-        this->field40 = *(int*)(result + 0x198);
-    } else {
-        this->field40 = 0;
-    }
+void ConstraintSurfacePair::func(PVInstance* a1) {
+    PartInstance* d = dynamic_cast<PartInstance*>(a1);
+    if (d) field40 = d->f198; else field40 = 0;
+}
 }

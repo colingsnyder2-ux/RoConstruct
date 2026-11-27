@@ -1,13 +1,4 @@
-// from server: 73% by atomic.potato
-extern "C" void __stdcall sub_6df6c0(int, int, int, int, int, int);
-
-struct S {
-    int f(int, int, int);
-};
-
-int S::f(int a, int b, int c)
-{
-    char tmp = 0;
-    sub_6df6c0(a, b, c, *(int*)&tmp, c, b);
-    return b * 100 + a;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct T{char c; char p[3];}; void g(int,int,int,void*,int,T); struct S{ int f(int a,int b,int c); }; int S::f(int a,int b,volatile int c){ T t; t.c=0; g(a,b,c,this,c,t); return b*100+a; }

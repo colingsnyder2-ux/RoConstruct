@@ -1,20 +1,12 @@
-// from server: 75% by Intel
-extern "C" int __stdcall func_00970a00(int arg)
-{
-    int v = arg - 70;
-    if (v > 13)
-        return 0;
-
-    static const unsigned char jumpTable[14] = {
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
-    };
-
-    switch (jumpTable[v])
-    {
-    case 0: return 0x20;
-    case 1: return 0x18;
-    case 2: return 0x10;
-    case 3: return 0x0F;
-    default: return 0;
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+int f(int fmt) {
+    switch (fmt) {
+    case 70: case 80: return 0x20;
+    case 71: case 82: return 0x18;
+    case 73: return 0x10;
+    case 75: case 77: case 79: case 83: return 0xf;
     }
+    return 0;
 }

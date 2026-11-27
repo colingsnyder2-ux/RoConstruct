@@ -1,39 +1,8 @@
-// from server: 77% by Intel
-struct SYSTEMTIME {
-    short wYear;
-    short wMonth;
-    short wDayOfWeek;
-    short wDay;
-    short wHour;
-    short wMinute;
-    short wSecond;
-    short wMilliseconds;
-};
-
-struct FILETIME {
-    unsigned long dwLowDateTime;
-    unsigned long dwHighDateTime;
-};
-
-extern "C" int __stdcall FileTimeToSystemTime(const FILETIME*, SYSTEMTIME*);
-extern "C" int __stdcall SystemTimeToTzSpecificLocalTime(void*, const SYSTEMTIME*, SYSTEMTIME*);
-
-struct CPropGrid {
-    char pad[12];
-    void* field_C;
-    void* field_10;
-    bool UpdateItemsJob();
-};
-
-bool CPropGrid::UpdateItemsJob()
-{
-    void* pC = field_C;
-    if (pC != 0 && field_10 == 0)
-        return false;
-
-    SYSTEMTIME st1;
-    SYSTEMTIME st2;
-    FileTimeToSystemTime(static_cast<const FILETIME*>(pC), &st1);
-    SystemTimeToTzSpecificLocalTime(0, &st1, &st2);
-    return true;
-}
+// from server: 83% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct R { int a, b, c, d; };
+__declspec(dllimport) int __stdcall A(const void*, R*);
+__declspec(dllimport) int __stdcall B(void*, R*, int);
+struct J { char pad[0xc]; int x; int y; bool f(int e, ...); };
+bool J::f(int e, ...) { if (x == 0 && y == 0) return false; R r; A(&x, &r); B(0, &r, e); return true; }

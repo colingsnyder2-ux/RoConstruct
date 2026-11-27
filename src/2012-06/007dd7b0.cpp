@@ -1,20 +1,7 @@
-// from server: 75% by atomic.potato
-extern "C" bool __cdecl compare_strings(const char* const&, const char&);
-
-struct EventDesc
-{
-    int match(const char* a, const char* b);
-};
-
-int EventDesc::match(const char* a, const char* b)
-{
-    const char* p = *reinterpret_cast<const char* const*>(a);
-    while (p)
-    {
-        if (compare_strings(*reinterpret_cast<const char* const*>(b),
-                            *(p - 0x20)))
-            break;
-        p = *reinterpret_cast<const char* const*>(p);
-    }
-    return reinterpret_cast<int>(p);
-}
+// from server: 96% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <string>
+struct Link { Link* next; };
+struct Entry { std::string key; int pad; Link link; };
+Link* __stdcall find(Link** head, const std::string& key) { Link* p = *head; while (p && !(key == ((Entry*)((char*)p - 0x20))->key)) p = p->next; return p; }

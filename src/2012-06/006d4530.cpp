@@ -1,16 +1,6 @@
-// from server: 69% by atomic.potato
-extern "C" void sub_679290(void *);
-
-extern "C" double g_value;
-
-struct S
-{
-    int f();
-};
-
-int S::f()
-{
-    char *p = reinterpret_cast<char *>(this) + 8;
-    sub_679290(p);
-    return static_cast<int>(*reinterpret_cast<float *>(p + 0x808) * g_value);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct B { void init(); char pad[0x808]; volatile int v; };
+struct S { char pad[8]; B b; double f(); };
+double S::f(){ B* p = &b; p->init(); return p->v * (1.0/2048); }

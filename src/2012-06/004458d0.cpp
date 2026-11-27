@@ -1,19 +1,5 @@
-// from server: 31% by Intel
-typedef int DWORD;
-
-extern "C" void __stdcall func_0445790(DWORD arg);
-
-struct D {
-    char padding1[260];
-    unsigned char flag;
-    int f();
-};
-
-int D::f() {
-    DWORD val = 0;
-    if (this->flag == 0) {
-        val = 1;
-    }
-    func_0445790(val);
-    return 0;
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct D { char pad[0x104]; bool flag; void g(bool); void f(); };
+void D::f(){ g(!flag); }

@@ -1,18 +1,18 @@
-// from server: 74% by atomic.potato
-struct CIDEBrowserView {
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Sub {
+    char d[4];
+    __declspec(dllimport) int A(const char*);
+    __declspec(dllimport) int B(int, int, int, int, int);
+};
+struct V {
     char pad[0x2b0];
-    char field_2b0[4];
+    Sub s;
+    void T(int);
     void invoke();
 };
-
-extern "C" void* __stdcall sub_b2479c(void*, const char*);
-extern "C" void* __stdcall sub_b24798(void*, int, int, int, int, int);
-extern "C" void __cdecl sub_9823f6(void*, void*);
-
-void CIDEBrowserView::invoke() {
-    void* p = sub_b2479c(field_2b0, "RBXAuthenticationNegotiation:");
-    if (p) {
-        void* q = sub_b24798(field_2b0, 0, 0, 0, 0, 0);
-        sub_9823f6(this, q);
-    }
+void V::invoke() {
+    if (s.A(""))
+        T(s.B(0, 0, 0, 0, 0));
 }

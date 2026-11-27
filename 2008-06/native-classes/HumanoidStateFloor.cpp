@@ -116,7 +116,7 @@ static inline bool donorIsDescendentOf(const Instance* instance, const Instance*
 bool HumanoidState::climbableInFront(Adorn* adorn)
 {
 	const G3D::CoordinateFrame& torso = humanoid->getTorsoBody()->getCoordinateFrame();
-	GeometryService* geometryService = ServiceProvider::find<GeometryService>(humanoid);
+	GeometryService* geometryService = ServiceProvider::create<GeometryService>(humanoid);
 	G3D::Vector3 center = torso.translation + torso.lookVector() * 2.0f * 0.5f;
 	Extents extents(center - G3D::Vector3(1.0f, 2.7f, 1.0f), center + G3D::Vector3(1.0f, 0.0f, 1.0f));
 	array14.fastClear();
@@ -212,7 +212,7 @@ bool HumanoidState::findClimbable(Adorn* adorn)
 
 	const G3D::CoordinateFrame& torsoFrame = torsoBody->getCoordinateFrame();
 	G3D::Vector3 look = torsoFrame.lookVector();
-	GeometryService* geometryService = ServiceProvider::find<GeometryService>(humanoid);
+	GeometryService* geometryService = ServiceProvider::create<GeometryService>(humanoid);
 	float bottom = 0.0f;
 	float span = 0.0f;
 	bool first = true;

@@ -1,45 +1,22 @@
-// from server: 72% by Intel
-struct NodeVisitor {
-    short level;
-    int field_4;
-    int field_8;
-    int field_C;
-    int field_10;
-    int field_14;
-};
-
-struct SpatialHash {
-    int getSpatialNodeLevel();
-};
-
-extern "C" int __stdcall sub_972290(const char*, int);
-extern "C" int __stdcall sub_50C4B0(SpatialHash*);
-
-int __stdcall sub_50C8C0(NodeVisitor* node, int a2, SpatialHash* p, int a4, int a5) {
-    static int flag = 0;
-    static int global_ptr = 0;
-    static const char* str1 = (const char*)0xB6C338;
-    static const char* str2 = (const char*)0xB6C360;
-    static const char* str3 = (const char*)0xB6C2A0;
-
-    if (flag) {
-        int level = sub_50C4B0(p);
-        if (node->level != level) {
-            if (global_ptr) {
-                if (sub_972290(str1, 0xC5)) {
-                    goto LABEL_RETURN;
-                }
-            }
-            sub_972290(str3, flag);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern unsigned char g_flag;
+extern char (__cdecl *g_handler)(const char*, const char*, int);
+void __cdecl failAssert(unsigned char, const char*);
+struct V3 { int x, y, z; };
+struct Sub { int level(); };
+struct Hash { char pad[0x1e0]; Sub sub; };
+struct Node { short level; int a; V3 v; Hash* owner; };
+void __stdcall f(Node* node, Hash* p, const V3* v, int a)
+{
+    if (g_flag) {
+        if (node->level != p->sub.level()) {
+            if (!g_handler || !g_handler("node->level == p->getSpatialNodeLevel()", "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\Include\\v8World/SpatialHashMultiRes.inl", 0xc5))
+                failAssert(g_flag, "node->level == p->getSpatialNodeLevel() file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\Include\\v8World/SpatialHashMultiRes.inl line: 197");
         }
     }
-
-LABEL_RETURN:
-    node->field_14 = a4;
-    int* src = (int*)a5;
-    node->field_8 = src[0];
-    node->field_C = src[1];
-    node->field_10 = src[2];
-    node->field_4 = a2;
-    return 0;
+    node->owner = p;
+    node->v = *v;
+    node->a = a;
 }

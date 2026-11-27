@@ -1,33 +1,19 @@
-// from server: 73% by Intel
-struct S {
-    char pad_0[172];
-    int field_68;
-    char pad_6C[68];
-    int field_AC;
-
-    int f(int arg);
-};
-
-extern "C" int __stdcall sub_972290(int, int);
-extern "C" int __stdcall sub_E5809C(int, int, int);
-
-int S::f(int arg)
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern unsigned char g_flag;
+extern char (__cdecl *g_handler)(const char*, const char*, int);
+void __cdecl failAssert(unsigned char, const char*);
+struct Iface { virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(int a); };
+struct S { char pad[0x28]; bool inStep; char pad2[0x68 - 0x29]; int count; char pad3[0xac - 0x6c]; Iface* target; void f(int a); };
+void S::f(int a)
 {
-    if (*(char*)0xE580B3 != 0) {
-        if (*(char*)((char*)this + 0x28) != 0) {
-            int (__stdcall *func)(int, int, int) = *(int (__stdcall **)(int, int, int))0xE5809C;
-            if (func) {
-                if (func(0x290, 0xBC9340, 0xBA3894)) {
-                    goto LABEL_CALL;
-                }
-            }
-            sub_972290(0xBC9530, *(unsigned char*)0xE580B3);
+    if (g_flag) {
+        if (inStep) {
+            if (!g_handler || !g_handler("!inStepCode", "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\V8World\\World.cpp", 0x290))
+                failAssert(g_flag, "!inStepCode file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\V8World\\World.cpp line: 656");
         }
     }
-LABEL_CALL:
-    int vtable = *(int*)(*(int*)((char*)this + 0xAC));
-    int (__stdcall *method)(int, int) = *(int (__stdcall **)(int, int))(vtable + 0xC);
-    method(*(int*)((char*)this + 0xAC), arg);
-    ++field_68;
-    return 0;
+    target->v3(a);
+    ++count;
 }

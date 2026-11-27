@@ -1,76 +1,39 @@
-// from server: 93% by colin
-// roc-lang: cpp
+// from server: 100% by Xemicl
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/TimerService.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/TimerService.h"
-#include "util/standardout.h"
-
-namespace RBX
-{
-	char* sTimerService = "Timer";
-
-	TimerService::TimerService() {}
-
-	void TimerService::delay(boost::function0<void> func, double seconds)
-	{
-		Item item;
-		item.time = G3D::System::getLocalTime() + seconds;
-		item.func = func;
-
-		std::list<Item>::iterator pos = items.end();
-
-		std::list<Item>::reverse_iterator iter = items.rbegin();
-		std::list<Item>::reverse_iterator end = items.rend();
-
-		for (; iter != end; iter++)
-		{
-			if (iter->time > item.time)
-				pos = iter.base();
-			else
-				break;
-		}
-
-		items.insert(pos, item);
-	}
-
-	void TimerService::onEvent(const RunService* source, Heartbeat event)
-	{
-		G3D::RealTime time = G3D::System::getLocalTime();
-
-		while (items.size() > 0)
-		{
-			Item& item = items.front();
-
-			if (time >= item.time)
-			{
-				try
-				{
-					item.func();
-				}
-				catch (std::exception& e)
-				{
-					StandardOut::singleton()->print(MESSAGE_WARNING, e);
-				}
-
-				items.pop_front();
-			}
-			else
-			{
-				break;
-			}
-		}
-	}
-
-	void TimerService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Notifier<RunService, Heartbeat>::disconnect(runService, this);
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-		runService = shared_from(ServiceProvider::create<RunService>(newProvider));
-
-		Notifier<RunService,Heartbeat>::connect(runService, this);
-	}
+// roc-flags: /O2 /GS- /EHsc /MD /D_SECURE_SCL=0
+#include <list>
+namespace boost { namespace detail { namespace function {
+union function_buffer { void* obj_ptr; char data[16]; };
+enum functor_manager_operation_type { clone_functor_tag, move_functor_tag, destroy_functor_tag };
+struct vtable_base {
+    void (*manager)(const function_buffer& in_buffer, function_buffer& out_buffer, functor_manager_operation_type op);
+};
+} }
+class function_base {
+public:
+    detail::function::vtable_base* vtable;
+    int pad;
+    mutable detail::function::function_buffer functor;
+};
+struct vtable0 { detail::function::vtable_base base; void* invoker;
+    void clear(detail::function::function_buffer& functor) const { if (base.manager) base.manager(functor, functor, detail::function::destroy_functor_tag); } };
+class function0 : public function_base {
+public:
+    vtable0* get_vtable() const { return reinterpret_cast<vtable0*>(vtable); }
+    ~function0() { clear(); }
+    void clear() {
+        if (vtable) {
+            get_vtable()->clear(functor);
+            vtable = 0;
+        }
+    }
+};
 }
+namespace RBX { class TimerService { public:
+    class Item { public: double time; boost::function0 func; };
+    std::list<Item> items;
+    void f();
+}; 
+void TimerService::f() { items.clear(); }
+}
+

@@ -1,12 +1,5 @@
-// from server: 71% by atomic.potato
-struct S
-{
-    void f(unsigned short* out, const unsigned short* value);
-};
-
-void __declspec(nothrow) __thiscall S::f(unsigned short* out, const unsigned short* value)
-{
-    out[0] = (unsigned short)(value[0] + *(unsigned short*)((char*)this));
-    out[1] = (unsigned short)(value[1] + *(unsigned short*)((char*)this + 2));
-    out[2] = (unsigned short)(value[2] + *(unsigned short*)((char*)this + 4));
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct V3s { unsigned short x, y, z; V3s add(const V3s& o) const; };
+V3s V3s::add(const V3s& o) const { V3s r; r.x = o.x + x; r.y = o.y + y; r.z = o.z + z; return r; }

@@ -1,15 +1,7 @@
-// from server: 69% by atomic.potato
-extern "C" void __stdcall sub_963c10(int*, int*);
-
-struct S
-{
-    int f(int);
-};
-
-int S::f(int a)
-{
-    int x;
-    int y;
-    sub_963c10(&x, &y);
-    return x != *(int*)((char*)this + 0xa8);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct It { int* node; It(){} };
+struct Cont { int pad; int* end; It find(const int& k); };
+struct S { char pad[0xa4]; Cont c; bool has(int k); };
+bool S::has(int k) { return c.find(k).node != c.end; }

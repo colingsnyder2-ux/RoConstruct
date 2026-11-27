@@ -1,12 +1,7 @@
-// from server: 73% by atomic.potato
-struct S
-{
-    void f(float, float, float);
-};
-
-extern "C" void __stdcall sub_0091e680(float, float, float, int);
-
-void S::f(float a, float b, float c)
-{
-    sub_0091e680(c, b, a, *(int *)((char *)this - 4));
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Base { void g(float,float,float); };
+struct Q { char pad[0x14]; float x,y,z; };
+struct S { void f(const Q* q); };
+void S::f(const Q* q) { (*(Base**)((char*)this - 4))->g(q->x, q->y, q->z); }

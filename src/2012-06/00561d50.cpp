@@ -1,9 +1,6 @@
-// from server: 75% by atomic.potato
-extern "C" int __cdecl function_00561a60(int);
-
-extern "C" int __stdcall function_00561d50(unsigned char value)
-{
-    if (value == 4)
-        return function_00561a60(*(int *)0x00d88950);
-    return function_00561a60(*(int *)0x00d8894c);
-}
+// from server: 94% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+int __stdcall inner(int, int);
+int gA, gB;
+int __stdcall f(unsigned char v) { if (v == 4) { return inner(gA, 0); } else { return inner(gB, 0); } }

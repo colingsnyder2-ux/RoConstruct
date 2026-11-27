@@ -1,21 +1,13 @@
-// from server: 70% by atomic.potato
-extern "C" void __cdecl sub_40d380(void *);
-
-struct S {
-    int v0;
-    int v1;
-    int v2;
-    int v3;
-    int v4;
-    int f(void *);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct E0 { virtual ~E0(); char pad[8]; };
+struct E1 { virtual ~E1(); char pad[0x10]; };
+struct T : E0, E1 { T(const T&); virtual ~T(); };
+struct CloneBase { virtual ~CloneBase(); virtual void clone() const = 0; };
+struct C : T, CloneBase {
+    C(const T& o);
+    virtual ~C();
+    virtual void clone() const;
 };
-
-int S::f(void *p)
-{
-    sub_40d380(p);
-    v4 = 0x00b43c34;
-    v0 = 0x00b44320;
-    v3 = 0x00b44318;
-    v4 = 0x00b44308;
-    return (int)this;
-}
+C::C(const T& o) : T(o) {}

@@ -1,15 +1,6 @@
-// from server: 38% by Intel
-struct Flag {
-    Flag();
-};
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD /arch:SSE
 
-Flag::Flag() {
-    char* thisPtr = reinterpret_cast<char*>(this);
-    thisPtr[0] = 1;
-    float zero = 0.0f;
-    *reinterpret_cast<float*>(thisPtr + 4) = zero;
-    *reinterpret_cast<float*>(thisPtr + 8) = zero;
-    *reinterpret_cast<float*>(thisPtr + 12) = zero;
-    *reinterpret_cast<int*>(thisPtr + 16) = 0;
-    *reinterpret_cast<int*>(thisPtr + 20) = 0;
-}
+struct Flag { bool b; float x,y,z; int p,q; Flag(); };
+Flag::Flag() : p(0), q(0) { b=true; x=0.0f; y=0.0f; z=0.0f; }

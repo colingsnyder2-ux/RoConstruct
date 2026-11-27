@@ -1,23 +1,6 @@
-// from server: 78% by atomic.potato
-extern "C" int __cdecl function_00981ffa(int, int);
-
-struct S
-{
-    int f();
-    int padding_88[34];
-    int member_88;
-    int padding_bc[12];
-    int member_bc;
-};
-
-int S::f()
-{
-    if (member_88 == 0)
-    {
-        return member_bc > member_88;
-    }
-
-    unsigned char value = 3;
-    function_00981ffa(member_88, (int)&value);
-    return value;
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+int __stdcall chk(const void*, bool*);
+struct C { char pad[0x88]; const void* p; char pad2[0x30]; int n; bool f(); };
+bool C::f() { if (!p) return n > 0; bool b; return chk(p, &b) == 0x24 ? false : b; }

@@ -1,27 +1,17 @@
-// from server: 92% by atomic.potato
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
-
-struct Base {
-    char pad[0x4c];
-    void* field_4c;
-    volatile long* field_50;
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement)
+inline void* operator new(unsigned int, void* p) { return p; }
+struct counted { void* vt; long use; void add_ref_copy() { _InterlockedIncrement(&use); } };
+struct sp {
+    void* px; counted* pn;
+    sp(const sp& o) : px(o.px), pn(o.pn) { if (pn != 0) pn->add_ref_copy(); }
 };
-
+struct Base { Base(const Base&); virtual void v(); char pad[0x48]; };
 struct Derived : Base {
-    Derived(Base* other);
+    sp m;
+    virtual void v();
 };
-
-extern "C" void __cdecl sub_47aed0(Base* other);
-
-Derived::Derived(Base* other)
-{
-    sub_47aed0(other);
-    *(void**)this = (void*)0xb5c60c;
-    field_4c = other->field_4c;
-    field_50 = other->field_50;
-    if (field_50 != 0)
-    {
-        _InterlockedExchangeAdd(field_50 + 1, 1);
-    }
-}
+Derived* make(void* p, const Derived& o) { return new (p) Derived(o); }

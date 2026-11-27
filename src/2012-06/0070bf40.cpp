@@ -1,14 +1,6 @@
-// from server: 77% by atomic.potato
-extern "C" int __fastcall sub_0080A440(void *, void *);
-extern "C" void __fastcall sub_00684840(void *, void *);
-
-struct S
-{
-    void f(void *);
-};
-
-void S::f(void *arg)
-{
-    if (!sub_0080A440(this, arg))
-        sub_00684840(this, arg);
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+bool h(int);
+struct C { void other(int); void f(int a); };
+void C::f(int a) { if (!h(a)) other(a); }

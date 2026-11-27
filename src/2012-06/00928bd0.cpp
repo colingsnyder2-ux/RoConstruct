@@ -1,14 +1,12 @@
-// from server: 71% by atomic.potato
-struct MovingAssemblyStage {
-    void set(int a, int b);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct S {
+    int pad;
+    int a; char b; char c; int d; int e; int f; int g;
+    S* set(int x, int y);
 };
-
-void MovingAssemblyStage::set(int a, int b) {
-    *reinterpret_cast<int*>(reinterpret_cast<char*>(this) + 4) = 0;
-    *reinterpret_cast<unsigned char*>(reinterpret_cast<char*>(this) + 8) = 0;
-    *reinterpret_cast<int*>(reinterpret_cast<char*>(this) + 12) = a;
-    *reinterpret_cast<unsigned char*>(reinterpret_cast<char*>(this) + 9) = 3;
-    *reinterpret_cast<int*>(reinterpret_cast<char*>(this) + 16) = b;
-    *reinterpret_cast<int*>(reinterpret_cast<char*>(this) + 20) = -1;
-    *reinterpret_cast<int*>(reinterpret_cast<char*>(this) + 24) = -1;
+S* S::set(int x, int y) {
+    a = 0; b = 0; d = x; c = 3; e = y; f = -1; g = -1;
+    return this;
 }

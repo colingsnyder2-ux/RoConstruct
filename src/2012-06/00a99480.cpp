@@ -1,15 +1,6 @@
-// from server: 28% by atomic.potato
-struct S
-{
-    int f();
-    void *vtable;
-    void *field10;
-};
-
-int S::f()
-{
-    typedef int (__thiscall *Fn)(void *);
-    void *p = *(void **)((char *)this + 0x10);
-    void *q = *(void **)p;
-    return ((Fn)*(void **)((char *)q + 0x7c))(p);
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
+struct I { virtual void d0(){} virtual void d1(){} virtual void d2(){} virtual void d3(){} virtual void d4(){} virtual void d5(){} virtual void d6(){} virtual void d7(){} virtual void d8(){} virtual void d9(){} virtual void d10(){} virtual void d11(){} virtual void d12(){} virtual void d13(){} virtual void d14(){} virtual void d15(){} virtual void d16(){} virtual void d17(){} virtual void d18(){} virtual void d19(){} virtual void d20(){} virtual void d21(){} virtual void d22(){} virtual void d23(){} virtual void d24(){} virtual void d25(){} virtual void d26(){} virtual void d27(){} virtual void d28(){} virtual void d29(){} virtual void d30(){} virtual int v(); };
+struct S { char pad[0x10]; I* p; int f(); };
+int S::f(){ return p->v(); }

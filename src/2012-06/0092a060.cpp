@@ -1,11 +1,6 @@
-// from server: 29% by atomic.potato
-struct EdgeEdgePair
-{
-    int f();
-};
-
-int EdgeEdgePair::f()
-{
-    return (reinterpret_cast<int *>(this)[2] -
-            reinterpret_cast<int *>(this)[1]) / 20;
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
+struct E { int a[5]; };
+struct V { int pad; E* first; E* last; int f(); };
+int V::f(){ return (int)(last - first); }

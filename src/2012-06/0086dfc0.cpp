@@ -1,15 +1,6 @@
-// from server: 76% by atomic.potato
-extern "C" int __stdcall sub_004be3e0(void*);
-
-struct GeometryService {
-    int padding[33];
-    void* field_84;
-    void set(void* value);
-};
-
-void GeometryService::set(void* value)
-{
-    field_84 = 0;
-    if (value != 0)
-        field_84 = (void*)sub_004be3e0(value);
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct O { int* conv(); };
+struct C { char pad[0x84]; int* p; void f(int a, O* b); };
+void C::f(int a, O* b) { p = 0; if (b) p = b->conv(); }

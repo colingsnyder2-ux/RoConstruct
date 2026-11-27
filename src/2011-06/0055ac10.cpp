@@ -1,392 +1,1466 @@
 // from server: 100% by auto
-// roc 2011-06 0055ac10  unit: seg_00550000  size: 1467 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 0055ac10
-//
-// 0055ac10  81eca0000000         sub esp, 0xa0
-// 0055ac16  56                   push esi
-// 0055ac17  8bb424a8000000       mov esi, dword ptr [esp + 0xa8]
-// 0055ac1e  85f6                 test esi, esi
-// 0055ac20  0f849d050000         je 0x55b1c3
-// 0055ac26  55                   push ebp
-// 0055ac27  8bac24b0000000       mov ebp, dword ptr [esp + 0xb0]
-// 0055ac2e  85ed                 test ebp, ebp
-// 0055ac30  0f848c050000         je 0x55b1c2
-// 0055ac36  8a862c010000         mov al, byte ptr [esi + 0x12c]
-// 0055ac3c  53                   push ebx
-// 0055ac3d  57                   push edi
-// 0055ac3e  3c08                 cmp al, 8
-// 0055ac40  7367                 jae 0x55aca9
-// 0055ac42  0fb6d8               movzx ebx, al
-// 0055ac45  bf08000000           mov edi, 8
-// 0055ac4a  2bfb                 sub edi, ebx
-// 0055ac4c  57                   push edi
-// 0055ac4d  8d442b20             lea eax, [ebx + ebp + 0x20]
-// 0055ac51  50                   push eax
-// 0055ac52  56                   push esi
-// 0055ac53  e818630000           call 0x560f70
-// 0055ac58  57                   push edi
-// 0055ac59  83c520               add ebp, 0x20
-// 0055ac5c  53                   push ebx
-// 0055ac5d  55                   push ebp
-// 0055ac5e  c6862c01000008       mov byte ptr [esi + 0x12c], 8
-// 0055ac65  e8565affff           call 0x5506c0
-// 0055ac6a  83c418               add esp, 0x18
-// 0055ac6d  85c0                 test eax, eax
-// 0055ac6f  742c                 je 0x55ac9d
-// 0055ac71  83fb04               cmp ebx, 4
-// 0055ac74  7319                 jae 0x55ac8f
-// 0055ac76  83c7fc               add edi, -4
-// 0055ac79  57                   push edi
-// 0055ac7a  53                   push ebx
-// 0055ac7b  55                   push ebp
-// 0055ac7c  e83f5affff           call 0x5506c0
-// 0055ac81  83c40c               add esp, 0xc
-// 0055ac84  85c0                 test eax, eax
-// 0055ac86  7407                 je 0x55ac8f
-// 0055ac88  68c426a800           push 0xa826c4
-// 0055ac8d  eb05                 jmp 0x55ac94
-// 0055ac8f  689c26a800           push 0xa8269c
-// 0055ac94  56                   push esi
-// 0055ac95  e896660000           call 0x561330
-// 0055ac9a  83c408               add esp, 8
-// 0055ac9d  83fb03               cmp ebx, 3
-// 0055aca0  7307                 jae 0x55aca9
-// 0055aca2  814e6800100000       or dword ptr [esi + 0x68], 0x1000
-// 0055aca9  b373                 mov bl, 0x73
-// 0055acab  eb03                 jmp 0x55acb0
-// 0055acad  8d4900               lea ecx, [ecx]
-// 0055acb0  c68424a000000049     mov byte ptr [esp + 0xa0], 0x49
-// 0055acb8  c68424a100000048     mov byte ptr [esp + 0xa1], 0x48
-// 0055acc0  c68424a200000044     mov byte ptr [esp + 0xa2], 0x44
-// 0055acc8  c68424a300000052     mov byte ptr [esp + 0xa3], 0x52
-// 0055acd0  c644246049           mov byte ptr [esp + 0x60], 0x49
-// 0055acd5  c644246144           mov byte ptr [esp + 0x61], 0x44
-// 0055acda  c644246241           mov byte ptr [esp + 0x62], 0x41
-// 0055acdf  c644246354           mov byte ptr [esp + 0x63], 0x54
-// 0055ace4  c644243049           mov byte ptr [esp + 0x30], 0x49
-// 0055ace9  c644243145           mov byte ptr [esp + 0x31], 0x45
-// 0055acee  c64424324e           mov byte ptr [esp + 0x32], 0x4e
-// 0055acf3  c644243344           mov byte ptr [esp + 0x33], 0x44
-// 0055acf8  c644241050           mov byte ptr [esp + 0x10], 0x50
-// 0055acfd  c64424114c           mov byte ptr [esp + 0x11], 0x4c
-// 0055ad02  c644241254           mov byte ptr [esp + 0x12], 0x54
-// 0055ad07  c644241345           mov byte ptr [esp + 0x13], 0x45
-// 0055ad0c  c644247062           mov byte ptr [esp + 0x70], 0x62
-// 0055ad11  c64424714b           mov byte ptr [esp + 0x71], 0x4b
-// 0055ad16  c644247247           mov byte ptr [esp + 0x72], 0x47
-// 0055ad1b  c644247344           mov byte ptr [esp + 0x73], 0x44
-// 0055ad20  c644244063           mov byte ptr [esp + 0x40], 0x63
-// 0055ad25  c644244148           mov byte ptr [esp + 0x41], 0x48
-// 0055ad2a  c644244252           mov byte ptr [esp + 0x42], 0x52
-// 0055ad2f  c64424434d           mov byte ptr [esp + 0x43], 0x4d
-// 0055ad34  c684249000000067     mov byte ptr [esp + 0x90], 0x67
-// 0055ad3c  c684249100000041     mov byte ptr [esp + 0x91], 0x41
-// 0055ad44  c68424920000004d     mov byte ptr [esp + 0x92], 0x4d
-// 0055ad4c  c684249300000041     mov byte ptr [esp + 0x93], 0x41
-// 0055ad54  c644245068           mov byte ptr [esp + 0x50], 0x68
-// 0055ad59  c644245149           mov byte ptr [esp + 0x51], 0x49
-// 0055ad5e  c644245253           mov byte ptr [esp + 0x52], 0x53
-// 0055ad63  c644245354           mov byte ptr [esp + 0x53], 0x54
-// 0055ad68  c644245869           mov byte ptr [esp + 0x58], 0x69
-// 0055ad6d  c644245943           mov byte ptr [esp + 0x59], 0x43
-// 0055ad72  c644245a43           mov byte ptr [esp + 0x5a], 0x43
-// 0055ad77  c644245b50           mov byte ptr [esp + 0x5b], 0x50
-// 0055ad7c  c68424800000006f     mov byte ptr [esp + 0x80], 0x6f
-// 0055ad84  c684248100000046     mov byte ptr [esp + 0x81], 0x46
-// 0055ad8c  c684248200000046     mov byte ptr [esp + 0x82], 0x46
-// 0055ad94  889c2483000000       mov byte ptr [esp + 0x83], bl
-// 0055ad9b  c644241870           mov byte ptr [esp + 0x18], 0x70
-// 0055ada0  c644241943           mov byte ptr [esp + 0x19], 0x43
-// 0055ada5  c644241a41           mov byte ptr [esp + 0x1a], 0x41
-// 0055adaa  c644241b4c           mov byte ptr [esp + 0x1b], 0x4c
-// 0055adaf  c644242870           mov byte ptr [esp + 0x28], 0x70
-// 0055adb4  c644242948           mov byte ptr [esp + 0x29], 0x48
-// 0055adb9  c644242a59           mov byte ptr [esp + 0x2a], 0x59
-// 0055adbe  885c242b             mov byte ptr [esp + 0x2b], bl
-// 0055adc2  885c2438             mov byte ptr [esp + 0x38], bl
-// 0055adc6  c644243942           mov byte ptr [esp + 0x39], 0x42
-// 0055adcb  c644243a49           mov byte ptr [esp + 0x3a], 0x49
-// 0055add0  c644243b54           mov byte ptr [esp + 0x3b], 0x54
-// 0055add5  885c2420             mov byte ptr [esp + 0x20], bl
-// 0055add9  c644242143           mov byte ptr [esp + 0x21], 0x43
-// 0055adde  c644242241           mov byte ptr [esp + 0x22], 0x41
-// 0055ade3  c64424234c           mov byte ptr [esp + 0x23], 0x4c
-// 0055ade8  885c2468             mov byte ptr [esp + 0x68], bl
-// 0055adec  c644246950           mov byte ptr [esp + 0x69], 0x50
-// 0055adf1  c644246a4c           mov byte ptr [esp + 0x6a], 0x4c
-// 0055adf6  c644246b54           mov byte ptr [esp + 0x6b], 0x54
-// 0055adfb  885c2448             mov byte ptr [esp + 0x48], bl
-// 0055adff  c644244952           mov byte ptr [esp + 0x49], 0x52
-// 0055ae04  c644244a47           mov byte ptr [esp + 0x4a], 0x47
-// 0055ae09  c644244b42           mov byte ptr [esp + 0x4b], 0x42
-// 0055ae0e  c644247874           mov byte ptr [esp + 0x78], 0x74
-// 0055ae13  c644247945           mov byte ptr [esp + 0x79], 0x45
-// 0055ae18  c644247a58           mov byte ptr [esp + 0x7a], 0x58
-// 0055ae1d  c644247b74           mov byte ptr [esp + 0x7b], 0x74
-// 0055ae22  c684248800000074     mov byte ptr [esp + 0x88], 0x74
-// 0055ae2a  c684248900000049     mov byte ptr [esp + 0x89], 0x49
-// 0055ae32  c684248a0000004d     mov byte ptr [esp + 0x8a], 0x4d
-// 0055ae3a  c684248b00000045     mov byte ptr [esp + 0x8b], 0x45
-// 0055ae42  c684249800000074     mov byte ptr [esp + 0x98], 0x74
-// 0055ae4a  c684249900000052     mov byte ptr [esp + 0x99], 0x52
-// 0055ae52  c684249a0000004e     mov byte ptr [esp + 0x9a], 0x4e
-// 0055ae5a  c684249b00000053     mov byte ptr [esp + 0x9b], 0x53
-// 0055ae62  c68424a80000007a     mov byte ptr [esp + 0xa8], 0x7a
-// 0055ae6a  c68424a900000054     mov byte ptr [esp + 0xa9], 0x54
-// 0055ae72  c68424aa00000058     mov byte ptr [esp + 0xaa], 0x58
-// 0055ae7a  c68424ab00000074     mov byte ptr [esp + 0xab], 0x74
-// 0055ae82  56                   push esi
-// 0055ae83  e828490100           call 0x56f7b0
-// 0055ae88  8b6c2464             mov ebp, dword ptr [esp + 0x64]
-// 0055ae8c  8d8e1c010000         lea ecx, [esi + 0x11c]
-// 0055ae92  83c404               add esp, 4
-// 0055ae95  8bf8                 mov edi, eax
-// 0055ae97  3929                 cmp dword ptr [ecx], ebp
-// 0055ae99  750f                 jne 0x55aeaa
-// 0055ae9b  8b4668               mov eax, dword ptr [esi + 0x68]
-// 0055ae9e  a808                 test al, 8
-// 0055aea0  7408                 je 0x55aeaa
-// 0055aea2  0d00200000           or eax, 0x2000
-// 0055aea7  894668               mov dword ptr [esi + 0x68], eax
-// 0055aeaa  8b01                 mov eax, dword ptr [ecx]
-// 0055aeac  3b8424a0000000       cmp eax, dword ptr [esp + 0xa0]
-// 0055aeb3  7517                 jne 0x55aecc
-// 0055aeb5  8b8c24b8000000       mov ecx, dword ptr [esp + 0xb8]
-// 0055aebc  57                   push edi
-// 0055aebd  51                   push ecx
-// 0055aebe  56                   push esi
-// 0055aebf  e84c4a0100           call 0x56f910
-// 0055aec4  83c40c               add esp, 0xc
-// 0055aec7  e9e4fdffff           jmp 0x55acb0
-// 0055aecc  3b442430             cmp eax, dword ptr [esp + 0x30]
-// 0055aed0  7517                 jne 0x55aee9
-// 0055aed2  8b9424b8000000       mov edx, dword ptr [esp + 0xb8]
-// 0055aed9  57                   push edi
-// 0055aeda  52                   push edx
-// 0055aedb  56                   push esi
-// 0055aedc  e88f4d0100           call 0x56fc70
-// 0055aee1  83c40c               add esp, 0xc
-// 0055aee4  e9c7fdffff           jmp 0x55acb0
-// 0055aee9  51                   push ecx
-// 0055aeea  56                   push esi
-// 0055aeeb  e8d05dffff           call 0x550cc0
-// 0055aef0  83c408               add esp, 8
-// 0055aef3  85c0                 test eax, eax
-// 0055aef5  745f                 je 0x55af56
-// 0055aef7  39ae1c010000         cmp dword ptr [esi + 0x11c], ebp
-// 0055aefd  7504                 jne 0x55af03
-// 0055aeff  834e6804             or dword ptr [esi + 0x68], 4
-// 0055af03  8b8424b8000000       mov eax, dword ptr [esp + 0xb8]
-// 0055af0a  57                   push edi
-// 0055af0b  50                   push eax
-// 0055af0c  56                   push esi
-// 0055af0d  e84e6d0100           call 0x571c60
-// 0055af12  8b861c010000         mov eax, dword ptr [esi + 0x11c]
-// 0055af18  83c40c               add esp, 0xc
-// 0055af1b  3b442410             cmp eax, dword ptr [esp + 0x10]
-// 0055af1f  7509                 jne 0x55af2a
-// 0055af21  834e6802             or dword ptr [esi + 0x68], 2
-// 0055af25  e986fdffff           jmp 0x55acb0
-// 0055af2a  3bc5                 cmp eax, ebp
-// 0055af2c  0f857efdffff         jne 0x55acb0
-// 0055af32  8b4668               mov eax, dword ptr [esi + 0x68]
-// 0055af35  a801                 test al, 1
-// 0055af37  0f852a020000         jne 0x55b167
-// 0055af3d  688026a800           push 0xa82680
-// 0055af42  56                   push esi
-// 0055af43  e8e8630000           call 0x561330
-// 0055af48  83c408               add esp, 8
-// 0055af4b  5f                   pop edi
-// 0055af4c  5b                   pop ebx
-// 0055af4d  5d                   pop ebp
-// 0055af4e  5e                   pop esi
-// 0055af4f  81c4a0000000         add esp, 0xa0
-// 0055af55  c3                   ret 
-// 0055af56  8b861c010000         mov eax, dword ptr [esi + 0x11c]
-// 0055af5c  3b442410             cmp eax, dword ptr [esp + 0x10]
-// 0055af60  7517                 jne 0x55af79
-// 0055af62  8b8c24b8000000       mov ecx, dword ptr [esp + 0xb8]
-// 0055af69  57                   push edi
-// 0055af6a  51                   push ecx
-// 0055af6b  56                   push esi
-// 0055af6c  e85f4b0100           call 0x56fad0
-// 0055af71  83c40c               add esp, 0xc
-// 0055af74  e937fdffff           jmp 0x55acb0
-// 0055af79  3bc5                 cmp eax, ebp
-// 0055af7b  0f840c020000         je 0x55b18d
-// 0055af81  57                   push edi
-// 0055af82  3b442474             cmp eax, dword ptr [esp + 0x74]
-// 0055af86  7516                 jne 0x55af9e
-// 0055af88  8b9424bc000000       mov edx, dword ptr [esp + 0xbc]
-// 0055af8f  52                   push edx
-// 0055af90  56                   push esi
-// 0055af91  e89a5d0100           call 0x570d30
-// 0055af96  83c40c               add esp, 0xc
-// 0055af99  e912fdffff           jmp 0x55acb0
-// 0055af9e  3b442444             cmp eax, dword ptr [esp + 0x44]
-// 0055afa2  7516                 jne 0x55afba
-// 0055afa4  8b8424bc000000       mov eax, dword ptr [esp + 0xbc]
-// 0055afab  50                   push eax
-// 0055afac  56                   push esi
-// 0055afad  e81e500100           call 0x56ffd0
-// 0055afb2  83c40c               add esp, 0xc
-// 0055afb5  e9f6fcffff           jmp 0x55acb0
-// 0055afba  3b842494000000       cmp eax, dword ptr [esp + 0x94]
-// 0055afc1  7516                 jne 0x55afd9
-// 0055afc3  8b8c24bc000000       mov ecx, dword ptr [esp + 0xbc]
-// 0055afca  51                   push ecx
-// 0055afcb  56                   push esi
-// 0055afcc  e8ef4c0100           call 0x56fcc0
-// 0055afd1  83c40c               add esp, 0xc
-// 0055afd4  e9d7fcffff           jmp 0x55acb0
-// 0055afd9  3b442454             cmp eax, dword ptr [esp + 0x54]
-// 0055afdd  7516                 jne 0x55aff5
-// 0055afdf  8b9424bc000000       mov edx, dword ptr [esp + 0xbc]
-// 0055afe6  52                   push edx
-// 0055afe7  56                   push esi
-// 0055afe8  e8635f0100           call 0x570f50
-// 0055afed  83c40c               add esp, 0xc
-// 0055aff0  e9bbfcffff           jmp 0x55acb0
-// 0055aff5  3b842484000000       cmp eax, dword ptr [esp + 0x84]
-// 0055affc  7516                 jne 0x55b014
-// 0055affe  8b8424bc000000       mov eax, dword ptr [esp + 0xbc]
-// 0055b005  50                   push eax
-// 0055b006  56                   push esi
-// 0055b007  e8e4610100           call 0x5711f0
-// 0055b00c  83c40c               add esp, 0xc
-// 0055b00f  e99cfcffff           jmp 0x55acb0
-// 0055b014  3b44241c             cmp eax, dword ptr [esp + 0x1c]
-// 0055b018  7516                 jne 0x55b030
-// 0055b01a  8b8c24bc000000       mov ecx, dword ptr [esp + 0xbc]
-// 0055b021  51                   push ecx
-// 0055b022  56                   push esi
-// 0055b023  e8e8620100           call 0x571310
-// 0055b028  83c40c               add esp, 0xc
-// 0055b02b  e980fcffff           jmp 0x55acb0
-// 0055b030  3b442424             cmp eax, dword ptr [esp + 0x24]
-// 0055b034  7516                 jne 0x55b04c
-// 0055b036  8b9424bc000000       mov edx, dword ptr [esp + 0xbc]
-// 0055b03d  52                   push edx
-// 0055b03e  56                   push esi
-// 0055b03f  e8cc650100           call 0x571610
-// 0055b044  83c40c               add esp, 0xc
-// 0055b047  e964fcffff           jmp 0x55acb0
-// 0055b04c  3b44242c             cmp eax, dword ptr [esp + 0x2c]
-// 0055b050  7516                 jne 0x55b068
-// 0055b052  8b8424bc000000       mov eax, dword ptr [esp + 0xbc]
-// 0055b059  50                   push eax
-// 0055b05a  56                   push esi
-// 0055b05b  e870600100           call 0x5710d0
-// 0055b060  83c40c               add esp, 0xc
-// 0055b063  e948fcffff           jmp 0x55acb0
-// 0055b068  3b44243c             cmp eax, dword ptr [esp + 0x3c]
-// 0055b06c  7516                 jne 0x55b084
-// 0055b06e  8b8c24bc000000       mov ecx, dword ptr [esp + 0xbc]
-// 0055b075  51                   push ecx
-// 0055b076  56                   push esi
-// 0055b077  e8d44d0100           call 0x56fe50
-// 0055b07c  83c40c               add esp, 0xc
-// 0055b07f  e92cfcffff           jmp 0x55acb0
-// 0055b084  3b44244c             cmp eax, dword ptr [esp + 0x4c]
-// 0055b088  7516                 jne 0x55b0a0
-// 0055b08a  8b9424bc000000       mov edx, dword ptr [esp + 0xbc]
-// 0055b091  52                   push edx
-// 0055b092  56                   push esi
-// 0055b093  e878530100           call 0x570410
-// 0055b098  83c40c               add esp, 0xc
-// 0055b09b  e910fcffff           jmp 0x55acb0
-// 0055b0a0  3b44245c             cmp eax, dword ptr [esp + 0x5c]
-// 0055b0a4  7516                 jne 0x55b0bc
-// 0055b0a6  8b8424bc000000       mov eax, dword ptr [esp + 0xbc]
-// 0055b0ad  50                   push eax
-// 0055b0ae  56                   push esi
-// 0055b0af  e86c550100           call 0x570620
-// 0055b0b4  83c40c               add esp, 0xc
-// 0055b0b7  e9f4fbffff           jmp 0x55acb0
-// 0055b0bc  3b44246c             cmp eax, dword ptr [esp + 0x6c]
-// 0055b0c0  7516                 jne 0x55b0d8
-// 0055b0c2  8b8c24bc000000       mov ecx, dword ptr [esp + 0xbc]
-// 0055b0c9  51                   push ecx
-// 0055b0ca  56                   push esi
-// 0055b0cb  e850570100           call 0x570820
-// 0055b0d0  83c40c               add esp, 0xc
-// 0055b0d3  e9d8fbffff           jmp 0x55acb0
-// 0055b0d8  3b44247c             cmp eax, dword ptr [esp + 0x7c]
-// 0055b0dc  7516                 jne 0x55b0f4
-// 0055b0de  8b9424bc000000       mov edx, dword ptr [esp + 0xbc]
-// 0055b0e5  52                   push edx
-// 0055b0e6  56                   push esi
-// 0055b0e7  e844680100           call 0x571930
-// 0055b0ec  83c40c               add esp, 0xc
-// 0055b0ef  e9bcfbffff           jmp 0x55acb0
-// 0055b0f4  3b84248c000000       cmp eax, dword ptr [esp + 0x8c]
-// 0055b0fb  7516                 jne 0x55b113
-// 0055b0fd  8b8424bc000000       mov eax, dword ptr [esp + 0xbc]
-// 0055b104  50                   push eax
-// 0055b105  56                   push esi
-// 0055b106  e815670100           call 0x571820
-// 0055b10b  83c40c               add esp, 0xc
-// 0055b10e  e99dfbffff           jmp 0x55acb0
-// 0055b113  3b84249c000000       cmp eax, dword ptr [esp + 0x9c]
-// 0055b11a  7516                 jne 0x55b132
-// 0055b11c  8b8c24bc000000       mov ecx, dword ptr [esp + 0xbc]
-// 0055b123  51                   push ecx
-// 0055b124  56                   push esi
-// 0055b125  e896590100           call 0x570ac0
-// 0055b12a  83c40c               add esp, 0xc
-// 0055b12d  e97efbffff           jmp 0x55acb0
-// 0055b132  3b8424ac000000       cmp eax, dword ptr [esp + 0xac]
-// 0055b139  7516                 jne 0x55b151
-// 0055b13b  8b9424bc000000       mov edx, dword ptr [esp + 0xbc]
-// 0055b142  52                   push edx
-// 0055b143  56                   push esi
-// 0055b144  e857690100           call 0x571aa0
-// 0055b149  83c40c               add esp, 0xc
-// 0055b14c  e95ffbffff           jmp 0x55acb0
-// 0055b151  8b8424bc000000       mov eax, dword ptr [esp + 0xbc]
-// 0055b158  50                   push eax
-// 0055b159  56                   push esi
-// 0055b15a  e8016b0100           call 0x571c60
-// 0055b15f  83c40c               add esp, 0xc
-// 0055b162  e949fbffff           jmp 0x55acb0
-// 0055b167  80be2601000003       cmp byte ptr [esi + 0x126], 3
-// 0055b16e  7550                 jne 0x55b1c0
-// 0055b170  a802                 test al, 2
-// 0055b172  754c                 jne 0x55b1c0
-// 0055b174  686426a800           push 0xa82664
-// 0055b179  56                   push esi
-// 0055b17a  e8b1610000           call 0x561330
-// 0055b17f  83c408               add esp, 8
-// 0055b182  5f                   pop edi
-// 0055b183  5b                   pop ebx
-// 0055b184  5d                   pop ebp
-// 0055b185  5e                   pop esi
-// 0055b186  81c4a0000000         add esp, 0xa0
-// 0055b18c  c3                   ret 
-// 0055b18d  8b4668               mov eax, dword ptr [esi + 0x68]
-// 0055b190  a801                 test al, 1
-// 0055b192  7507                 jne 0x55b19b
-// 0055b194  688026a800           push 0xa82680
-// 0055b199  eb12                 jmp 0x55b1ad
-// 0055b19b  80be2601000003       cmp byte ptr [esi + 0x126], 3
-// 0055b1a2  7512                 jne 0x55b1b6
-// 0055b1a4  a802                 test al, 2
-// 0055b1a6  750e                 jne 0x55b1b6
-// 0055b1a8  686426a800           push 0xa82664
-// 0055b1ad  56                   push esi
-// 0055b1ae  e87d610000           call 0x561330
-// 0055b1b3  83c408               add esp, 8
-// 0055b1b6  834e6804             or dword ptr [esi + 0x68], 4
-// 0055b1ba  89be0c010000         mov dword ptr [esi + 0x10c], edi
-// 0055b1c0  5f                   pop edi
-// 0055b1c1  5b                   pop ebx
-// 0055b1c2  5d                   pop ebp
-// 0055b1c3  5e                   pop esi
-// 0055b1c4  81c4a0000000         add esp, 0xa0
-// 0055b1ca  c3                   ret 
-// library libpng-1.2.32/pngread.c (function _png_read_info)
-
 // roc-lang: c
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /MD
 // roc-lib: libpng-1.2.32 pngread.c
+
+// Candidate translation unit (score above; library headers required).
+
+/* pngread.c - read a PNG file
+ *
+ * Last changed in libpng 1.2.30 [August 15, 2008]
+ * For conditions of distribution and use, see copyright notice in png.h
+ * Copyright (c) 1998-2008 Glenn Randers-Pehrson
+ * (Version 0.96 Copyright (c) 1996, 1997 Andreas Dilger)
+ * (Version 0.88 Copyright (c) 1995, 1996 Guy Eric Schalnat, Group 42, Inc.)
+ *
+ * This file contains routines that an application calls directly to
+ * read a PNG file or stream.
+ */
+
+#define PNG_INTERNAL
+#include "png.h"
+#if defined(PNG_READ_SUPPORTED)
+
+/* Create a PNG structure for reading, and allocate any memory needed. */
+png_structp PNGAPI
+png_create_read_struct(png_const_charp user_png_ver, png_voidp error_ptr,
+   png_error_ptr error_fn, png_error_ptr warn_fn)
+{
+
+#ifdef PNG_USER_MEM_SUPPORTED
+   return (png_create_read_struct_2(user_png_ver, error_ptr, error_fn,
+      warn_fn, png_voidp_NULL, png_malloc_ptr_NULL, png_free_ptr_NULL));
+}
+
+/* Alternate create PNG structure for reading, and allocate any memory needed. */
+png_structp PNGAPI
+png_create_read_struct_2(png_const_charp user_png_ver, png_voidp error_ptr,
+   png_error_ptr error_fn, png_error_ptr warn_fn, png_voidp mem_ptr,
+   png_malloc_ptr malloc_fn, png_free_ptr free_fn)
+{
+#endif /* PNG_USER_MEM_SUPPORTED */
+
+#ifdef PNG_SETJMP_SUPPORTED
+   volatile
+#endif
+   png_structp png_ptr;
+
+#ifdef PNG_SETJMP_SUPPORTED
+#ifdef USE_FAR_KEYWORD
+   jmp_buf jmpbuf;
+#endif
+#endif
+
+   int i;
+
+   png_debug(1, "in png_create_read_struct\n");
+#ifdef PNG_USER_MEM_SUPPORTED
+   png_ptr = (png_structp)png_create_struct_2(PNG_STRUCT_PNG,
+      (png_malloc_ptr)malloc_fn, (png_voidp)mem_ptr);
+#else
+   png_ptr = (png_structp)png_create_struct(PNG_STRUCT_PNG);
+#endif
+   if (png_ptr == NULL)
+      return (NULL);
+
+   /* added at libpng-1.2.6 */
+#ifdef PNG_SET_USER_LIMITS_SUPPORTED
+   png_ptr->user_width_max=PNG_USER_WIDTH_MAX;
+   png_ptr->user_height_max=PNG_USER_HEIGHT_MAX;
+#endif
+
+#ifdef PNG_SETJMP_SUPPORTED
+#ifdef USE_FAR_KEYWORD
+   if (setjmp(jmpbuf))
+#else
+   if (setjmp(png_ptr->jmpbuf))
+#endif
+   {
+      png_free(png_ptr, png_ptr->zbuf);
+      png_ptr->zbuf = NULL;
+#ifdef PNG_USER_MEM_SUPPORTED
+      png_destroy_struct_2((png_voidp)png_ptr,
+         (png_free_ptr)free_fn, (png_voidp)mem_ptr);
+#else
+      png_destroy_struct((png_voidp)png_ptr);
+#endif
+      return (NULL);
+   }
+#ifdef USE_FAR_KEYWORD
+   png_memcpy(png_ptr->jmpbuf, jmpbuf, png_sizeof(jmp_buf));
+#endif
+#endif
+
+#ifdef PNG_USER_MEM_SUPPORTED
+   png_set_mem_fn(png_ptr, mem_ptr, malloc_fn, free_fn);
+#endif
+
+   png_set_error_fn(png_ptr, error_ptr, error_fn, warn_fn);
+
+   if (user_png_ver)
+   {
+     i = 0;
+     do
+     {
+       if (user_png_ver[i] != png_libpng_ver[i])
+          png_ptr->flags |= PNG_FLAG_LIBRARY_MISMATCH;
+     } while (png_libpng_ver[i++]);
+   }
+   else
+        png_ptr->flags |= PNG_FLAG_LIBRARY_MISMATCH;
+   
+
+   if (png_ptr->flags & PNG_FLAG_LIBRARY_MISMATCH)
+   {
+     /* Libpng 0.90 and later are binary incompatible with libpng 0.89, so
+      * we must recompile any applications that use any older library version.
+      * For versions after libpng 1.0, we will be compatible, so we need
+      * only check the first digit.
+      */
+     if (user_png_ver == NULL || user_png_ver[0] != png_libpng_ver[0] ||
+         (user_png_ver[0] == '1' && user_png_ver[2] != png_libpng_ver[2]) ||
+         (user_png_ver[0] == '0' && user_png_ver[2] < '9'))
+     {
+#if !defined(PNG_NO_STDIO) && !defined(_WIN32_WCE)
+        char msg[80];
+        if (user_png_ver)
+        {
+          png_snprintf(msg, 80,
+             "Application was compiled with png.h from libpng-%.20s",
+             user_png_ver);
+          png_warning(png_ptr, msg);
+        }
+        png_snprintf(msg, 80,
+             "Application  is  running with png.c from libpng-%.20s",
+           png_libpng_ver);
+        png_warning(png_ptr, msg);
+#endif
+#ifdef PNG_ERROR_NUMBERS_SUPPORTED
+        png_ptr->flags = 0;
+#endif
+        png_error(png_ptr,
+           "Incompatible libpng version in application and library");
+     }
+   }
+
+   /* initialize zbuf - compression buffer */
+   png_ptr->zbuf_size = PNG_ZBUF_SIZE;
+   png_ptr->zbuf = (png_bytep)png_malloc(png_ptr,
+     (png_uint_32)png_ptr->zbuf_size);
+   png_ptr->zstream.zalloc = png_zalloc;
+   png_ptr->zstream.zfree = png_zfree;
+   png_ptr->zstream.opaque = (voidpf)png_ptr;
+
+   switch (inflateInit(&png_ptr->zstream))
+   {
+     case Z_OK: /* Do nothing */ break;
+     case Z_MEM_ERROR:
+     case Z_STREAM_ERROR: png_error(png_ptr, "zlib memory error"); break;
+     case Z_VERSION_ERROR: png_error(png_ptr, "zlib version error"); break;
+     default: png_error(png_ptr, "Unknown zlib error");
+   }
+
+   png_ptr->zstream.next_out = png_ptr->zbuf;
+   png_ptr->zstream.avail_out = (uInt)png_ptr->zbuf_size;
+
+   png_set_read_fn(png_ptr, png_voidp_NULL, png_rw_ptr_NULL);
+
+#ifdef PNG_SETJMP_SUPPORTED
+/* Applications that neglect to set up their own setjmp() and then encounter
+   a png_error() will longjmp here.  Since the jmpbuf is then meaningless we
+   abort instead of returning. */
+#ifdef USE_FAR_KEYWORD
+   if (setjmp(jmpbuf))
+      PNG_ABORT();
+   png_memcpy(png_ptr->jmpbuf, jmpbuf, png_sizeof(jmp_buf));
+#else
+   if (setjmp(png_ptr->jmpbuf))
+      PNG_ABORT();
+#endif
+#endif
+   return (png_ptr);
+}
+
+#if defined(PNG_1_0_X) || defined(PNG_1_2_X)
+/* Initialize PNG structure for reading, and allocate any memory needed.
+   This interface is deprecated in favour of the png_create_read_struct(),
+   and it will disappear as of libpng-1.3.0. */
+#undef png_read_init
+void PNGAPI
+png_read_init(png_structp png_ptr)
+{
+   /* We only come here via pre-1.0.7-compiled applications */
+   png_read_init_2(png_ptr, "1.0.6 or earlier", 0, 0);
+}
+
+void PNGAPI
+png_read_init_2(png_structp png_ptr, png_const_charp user_png_ver,
+   png_size_t png_struct_size, png_size_t png_info_size)
+{
+   /* We only come here via pre-1.0.12-compiled applications */
+   if (png_ptr == NULL) return;
+#if !defined(PNG_NO_STDIO) && !defined(_WIN32_WCE)
+   if (png_sizeof(png_struct) > png_struct_size ||
+      png_sizeof(png_info) > png_info_size)
+   {
+      char msg[80];
+      png_ptr->warning_fn = NULL;
+      if (user_png_ver)
+      {
+        png_snprintf(msg, 80,
+           "Application was compiled with png.h from libpng-%.20s",
+           user_png_ver);
+        png_warning(png_ptr, msg);
+      }
+      png_snprintf(msg, 80,
+         "Application  is  running with png.c from libpng-%.20s",
+         png_libpng_ver);
+      png_warning(png_ptr, msg);
+   }
+#endif
+   if (png_sizeof(png_struct) > png_struct_size)
+     {
+       png_ptr->error_fn = NULL;
+#ifdef PNG_ERROR_NUMBERS_SUPPORTED
+       png_ptr->flags = 0;
+#endif
+       png_error(png_ptr,
+       "The png struct allocated by the application for reading is too small.");
+     }
+   if (png_sizeof(png_info) > png_info_size)
+     {
+       png_ptr->error_fn = NULL;
+#ifdef PNG_ERROR_NUMBERS_SUPPORTED
+       png_ptr->flags = 0;
+#endif
+       png_error(png_ptr,
+         "The info struct allocated by application for reading is too small.");
+     }
+   png_read_init_3(&png_ptr, user_png_ver, png_struct_size);
+}
+#endif /* PNG_1_0_X || PNG_1_2_X */
+
+void PNGAPI
+png_read_init_3(png_structpp ptr_ptr, png_const_charp user_png_ver,
+   png_size_t png_struct_size)
+{
+#ifdef PNG_SETJMP_SUPPORTED
+   jmp_buf tmp_jmp;  /* to save current jump buffer */
+#endif
+
+   int i = 0;
+
+   png_structp png_ptr=*ptr_ptr;
+
+   if (png_ptr == NULL) return;
+
+   do
+   {
+     if (user_png_ver[i] != png_libpng_ver[i])
+     {
+#ifdef PNG_LEGACY_SUPPORTED
+       png_ptr->flags |= PNG_FLAG_LIBRARY_MISMATCH;
+#else
+       png_ptr->warning_fn = NULL;
+       png_warning(png_ptr,
+        "Application uses deprecated png_read_init() and should be recompiled.");
+       break;
+#endif
+     }
+   } while (png_libpng_ver[i++]);
+
+   png_debug(1, "in png_read_init_3\n");
+
+#ifdef PNG_SETJMP_SUPPORTED
+   /* save jump buffer and error functions */
+   png_memcpy(tmp_jmp, png_ptr->jmpbuf, png_sizeof(jmp_buf));
+#endif
+
+   if (png_sizeof(png_struct) > png_struct_size)
+   {
+      png_destroy_struct(png_ptr);
+      *ptr_ptr = (png_structp)png_create_struct(PNG_STRUCT_PNG);
+      png_ptr = *ptr_ptr;
+   }
+
+   /* reset all variables to 0 */
+   png_memset(png_ptr, 0, png_sizeof(png_struct));
+
+#ifdef PNG_SETJMP_SUPPORTED
+   /* restore jump buffer */
+   png_memcpy(png_ptr->jmpbuf, tmp_jmp, png_sizeof(jmp_buf));
+#endif
+
+   /* added at libpng-1.2.6 */
+#ifdef PNG_SET_USER_LIMITS_SUPPORTED
+   png_ptr->user_width_max=PNG_USER_WIDTH_MAX;
+   png_ptr->user_height_max=PNG_USER_HEIGHT_MAX;
+#endif
+
+   /* initialize zbuf - compression buffer */
+   png_ptr->zbuf_size = PNG_ZBUF_SIZE;
+   png_ptr->zbuf = (png_bytep)png_malloc(png_ptr,
+     (png_uint_32)png_ptr->zbuf_size);
+   png_ptr->zstream.zalloc = png_zalloc;
+   png_ptr->zstream.zfree = png_zfree;
+   png_ptr->zstream.opaque = (voidpf)png_ptr;
+
+   switch (inflateInit(&png_ptr->zstream))
+   {
+     case Z_OK: /* Do nothing */ break;
+     case Z_MEM_ERROR:
+     case Z_STREAM_ERROR: png_error(png_ptr, "zlib memory"); break;
+     case Z_VERSION_ERROR: png_error(png_ptr, "zlib version"); break;
+     default: png_error(png_ptr, "Unknown zlib error");
+   }
+
+   png_ptr->zstream.next_out = png_ptr->zbuf;
+   png_ptr->zstream.avail_out = (uInt)png_ptr->zbuf_size;
+
+   png_set_read_fn(png_ptr, png_voidp_NULL, png_rw_ptr_NULL);
+}
+
+#ifndef PNG_NO_SEQUENTIAL_READ_SUPPORTED
+/* Read the information before the actual image data.  This has been
+ * changed in v0.90 to allow reading a file that already has the magic
+ * bytes read from the stream.  You can tell libpng how many bytes have
+ * been read from the beginning of the stream (up to the maximum of 8)
+ * via png_set_sig_bytes(), and we will only check the remaining bytes
+ * here.  The application can then have access to the signature bytes we
+ * read if it is determined that this isn't a valid PNG file.
+ */
+void PNGAPI
+png_read_info(png_structp png_ptr, png_infop info_ptr)
+{
+   if (png_ptr == NULL || info_ptr == NULL) return;
+   png_debug(1, "in png_read_info\n");
+   /* If we haven't checked all of the PNG signature bytes, do so now. */
+   if (png_ptr->sig_bytes < 8)
+   {
+      png_size_t num_checked = png_ptr->sig_bytes,
+                 num_to_check = 8 - num_checked;
+
+      png_read_data(png_ptr, &(info_ptr->signature[num_checked]), num_to_check);
+      png_ptr->sig_bytes = 8;
+
+      if (png_sig_cmp(info_ptr->signature, num_checked, num_to_check))
+      {
+         if (num_checked < 4 &&
+             png_sig_cmp(info_ptr->signature, num_checked, num_to_check - 4))
+            png_error(png_ptr, "Not a PNG file");
+         else
+            png_error(png_ptr, "PNG file corrupted by ASCII conversion");
+      }
+      if (num_checked < 3)
+         png_ptr->mode |= PNG_HAVE_PNG_SIGNATURE;
+   }
+
+   for (;;)
+   {
+#ifdef PNG_USE_LOCAL_ARRAYS
+      PNG_CONST PNG_IHDR;
+      PNG_CONST PNG_IDAT;
+      PNG_CONST PNG_IEND;
+      PNG_CONST PNG_PLTE;
+#if defined(PNG_READ_bKGD_SUPPORTED)
+      PNG_CONST PNG_bKGD;
+#endif
+#if defined(PNG_READ_cHRM_SUPPORTED)
+      PNG_CONST PNG_cHRM;
+#endif
+#if defined(PNG_READ_gAMA_SUPPORTED)
+      PNG_CONST PNG_gAMA;
+#endif
+#if defined(PNG_READ_hIST_SUPPORTED)
+      PNG_CONST PNG_hIST;
+#endif
+#if defined(PNG_READ_iCCP_SUPPORTED)
+      PNG_CONST PNG_iCCP;
+#endif
+#if defined(PNG_READ_iTXt_SUPPORTED)
+      PNG_CONST PNG_iTXt;
+#endif
+#if defined(PNG_READ_oFFs_SUPPORTED)
+      PNG_CONST PNG_oFFs;
+#endif
+#if defined(PNG_READ_pCAL_SUPPORTED)
+      PNG_CONST PNG_pCAL;
+#endif
+#if defined(PNG_READ_pHYs_SUPPORTED)
+      PNG_CONST PNG_pHYs;
+#endif
+#if defined(PNG_READ_sBIT_SUPPORTED)
+      PNG_CONST PNG_sBIT;
+#endif
+#if defined(PNG_READ_sCAL_SUPPORTED)
+      PNG_CONST PNG_sCAL;
+#endif
+#if defined(PNG_READ_sPLT_SUPPORTED)
+      PNG_CONST PNG_sPLT;
+#endif
+#if defined(PNG_READ_sRGB_SUPPORTED)
+      PNG_CONST PNG_sRGB;
+#endif
+#if defined(PNG_READ_tEXt_SUPPORTED)
+      PNG_CONST PNG_tEXt;
+#endif
+#if defined(PNG_READ_tIME_SUPPORTED)
+      PNG_CONST PNG_tIME;
+#endif
+#if defined(PNG_READ_tRNS_SUPPORTED)
+      PNG_CONST PNG_tRNS;
+#endif
+#if defined(PNG_READ_zTXt_SUPPORTED)
+      PNG_CONST PNG_zTXt;
+#endif
+#endif /* PNG_USE_LOCAL_ARRAYS */
+      png_uint_32 length = png_read_chunk_header(png_ptr);
+      PNG_CONST png_bytep chunk_name = png_ptr->chunk_name;
+
+      /* This should be a binary subdivision search or a hash for
+       * matching the chunk name rather than a linear search.
+       */
+      if (!png_memcmp(chunk_name, png_IDAT, 4))
+        if (png_ptr->mode & PNG_AFTER_IDAT)
+          png_ptr->mode |= PNG_HAVE_CHUNK_AFTER_IDAT;
+
+      if (!png_memcmp(chunk_name, png_IHDR, 4))
+         png_handle_IHDR(png_ptr, info_ptr, length);
+      else if (!png_memcmp(chunk_name, png_IEND, 4))
+         png_handle_IEND(png_ptr, info_ptr, length);
+#ifdef PNG_HANDLE_AS_UNKNOWN_SUPPORTED
+      else if (png_handle_as_unknown(png_ptr, chunk_name))
+      {
+         if (!png_memcmp(chunk_name, png_IDAT, 4))
+            png_ptr->mode |= PNG_HAVE_IDAT;
+         png_handle_unknown(png_ptr, info_ptr, length);
+         if (!png_memcmp(chunk_name, png_PLTE, 4))
+            png_ptr->mode |= PNG_HAVE_PLTE;
+         else if (!png_memcmp(chunk_name, png_IDAT, 4))
+         {
+            if (!(png_ptr->mode & PNG_HAVE_IHDR))
+               png_error(png_ptr, "Missing IHDR before IDAT");
+            else if (png_ptr->color_type == PNG_COLOR_TYPE_PALETTE &&
+                     !(png_ptr->mode & PNG_HAVE_PLTE))
+               png_error(png_ptr, "Missing PLTE before IDAT");
+            break;
+         }
+      }
+#endif
+      else if (!png_memcmp(chunk_name, png_PLTE, 4))
+         png_handle_PLTE(png_ptr, info_ptr, length);
+      else if (!png_memcmp(chunk_name, png_IDAT, 4))
+      {
+         if (!(png_ptr->mode & PNG_HAVE_IHDR))
+            png_error(png_ptr, "Missing IHDR before IDAT");
+         else if (png_ptr->color_type == PNG_COLOR_TYPE_PALETTE &&
+                  !(png_ptr->mode & PNG_HAVE_PLTE))
+            png_error(png_ptr, "Missing PLTE before IDAT");
+
+         png_ptr->idat_size = length;
+         png_ptr->mode |= PNG_HAVE_IDAT;
+         break;
+      }
+#if defined(PNG_READ_bKGD_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_bKGD, 4))
+         png_handle_bKGD(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_cHRM_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_cHRM, 4))
+         png_handle_cHRM(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_gAMA_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_gAMA, 4))
+         png_handle_gAMA(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_hIST_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_hIST, 4))
+         png_handle_hIST(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_oFFs_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_oFFs, 4))
+         png_handle_oFFs(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_pCAL_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_pCAL, 4))
+         png_handle_pCAL(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_sCAL_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_sCAL, 4))
+         png_handle_sCAL(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_pHYs_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_pHYs, 4))
+         png_handle_pHYs(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_sBIT_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_sBIT, 4))
+         png_handle_sBIT(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_sRGB_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_sRGB, 4))
+         png_handle_sRGB(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_iCCP_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_iCCP, 4))
+         png_handle_iCCP(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_sPLT_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_sPLT, 4))
+         png_handle_sPLT(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_tEXt_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_tEXt, 4))
+         png_handle_tEXt(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_tIME_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_tIME, 4))
+         png_handle_tIME(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_tRNS_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_tRNS, 4))
+         png_handle_tRNS(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_zTXt_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_zTXt, 4))
+         png_handle_zTXt(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_iTXt_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_iTXt, 4))
+         png_handle_iTXt(png_ptr, info_ptr, length);
+#endif
+      else
+         png_handle_unknown(png_ptr, info_ptr, length);
+   }
+}
+#endif /* PNG_NO_SEQUENTIAL_READ_SUPPORTED */
+
+/* optional call to update the users info_ptr structure */
+void PNGAPI
+png_read_update_info(png_structp png_ptr, png_infop info_ptr)
+{
+   png_debug(1, "in png_read_update_info\n");
+   if (png_ptr == NULL) return;
+   if (!(png_ptr->flags & PNG_FLAG_ROW_INIT))
+      png_read_start_row(png_ptr);
+   else
+      png_warning(png_ptr,
+      "Ignoring extra png_read_update_info() call; row buffer not reallocated");
+   png_read_transform_info(png_ptr, info_ptr);
+}
+
+#ifndef PNG_NO_SEQUENTIAL_READ_SUPPORTED
+/* Initialize palette, background, etc, after transformations
+ * are set, but before any reading takes place.  This allows
+ * the user to obtain a gamma-corrected palette, for example.
+ * If the user doesn't call this, we will do it ourselves.
+ */
+void PNGAPI
+png_start_read_image(png_structp png_ptr)
+{
+   png_debug(1, "in png_start_read_image\n");
+   if (png_ptr == NULL) return;
+   if (!(png_ptr->flags & PNG_FLAG_ROW_INIT))
+      png_read_start_row(png_ptr);
+}
+#endif /* PNG_NO_SEQUENTIAL_READ_SUPPORTED */
+
+#ifndef PNG_NO_SEQUENTIAL_READ_SUPPORTED
+void PNGAPI
+png_read_row(png_structp png_ptr, png_bytep row, png_bytep dsp_row)
+{
+#ifdef PNG_USE_LOCAL_ARRAYS
+   PNG_CONST PNG_IDAT;
+   PNG_CONST int png_pass_dsp_mask[7] = {0xff, 0x0f, 0xff, 0x33, 0xff, 0x55,
+      0xff};
+   PNG_CONST int png_pass_mask[7] = {0x80, 0x08, 0x88, 0x22, 0xaa, 0x55, 0xff};
+#endif
+   int ret;
+   if (png_ptr == NULL) return;
+   png_debug2(1, "in png_read_row (row %lu, pass %d)\n",
+      png_ptr->row_number, png_ptr->pass);
+   if (!(png_ptr->flags & PNG_FLAG_ROW_INIT))
+      png_read_start_row(png_ptr);
+   if (png_ptr->row_number == 0 && png_ptr->pass == 0)
+   {
+   /* check for transforms that have been set but were defined out */
+#if defined(PNG_WRITE_INVERT_SUPPORTED) && !defined(PNG_READ_INVERT_SUPPORTED)
+   if (png_ptr->transformations & PNG_INVERT_MONO)
+      png_warning(png_ptr, "PNG_READ_INVERT_SUPPORTED is not defined.");
+#endif
+#if defined(PNG_WRITE_FILLER_SUPPORTED) && !defined(PNG_READ_FILLER_SUPPORTED)
+   if (png_ptr->transformations & PNG_FILLER)
+      png_warning(png_ptr, "PNG_READ_FILLER_SUPPORTED is not defined.");
+#endif
+#if defined(PNG_WRITE_PACKSWAP_SUPPORTED) && !defined(PNG_READ_PACKSWAP_SUPPORTED)
+   if (png_ptr->transformations & PNG_PACKSWAP)
+      png_warning(png_ptr, "PNG_READ_PACKSWAP_SUPPORTED is not defined.");
+#endif
+#if defined(PNG_WRITE_PACK_SUPPORTED) && !defined(PNG_READ_PACK_SUPPORTED)
+   if (png_ptr->transformations & PNG_PACK)
+      png_warning(png_ptr, "PNG_READ_PACK_SUPPORTED is not defined.");
+#endif
+#if defined(PNG_WRITE_SHIFT_SUPPORTED) && !defined(PNG_READ_SHIFT_SUPPORTED)
+   if (png_ptr->transformations & PNG_SHIFT)
+      png_warning(png_ptr, "PNG_READ_SHIFT_SUPPORTED is not defined.");
+#endif
+#if defined(PNG_WRITE_BGR_SUPPORTED) && !defined(PNG_READ_BGR_SUPPORTED)
+   if (png_ptr->transformations & PNG_BGR)
+      png_warning(png_ptr, "PNG_READ_BGR_SUPPORTED is not defined.");
+#endif
+#if defined(PNG_WRITE_SWAP_SUPPORTED) && !defined(PNG_READ_SWAP_SUPPORTED)
+   if (png_ptr->transformations & PNG_SWAP_BYTES)
+      png_warning(png_ptr, "PNG_READ_SWAP_SUPPORTED is not defined.");
+#endif
+   }
+
+#if defined(PNG_READ_INTERLACING_SUPPORTED)
+   /* if interlaced and we do not need a new row, combine row and return */
+   if (png_ptr->interlaced && (png_ptr->transformations & PNG_INTERLACE))
+   {
+      switch (png_ptr->pass)
+      {
+         case 0:
+            if (png_ptr->row_number & 0x07)
+            {
+               if (dsp_row != NULL)
+                  png_combine_row(png_ptr, dsp_row,
+                     png_pass_dsp_mask[png_ptr->pass]);
+               png_read_finish_row(png_ptr);
+               return;
+            }
+            break;
+         case 1:
+            if ((png_ptr->row_number & 0x07) || png_ptr->width < 5)
+            {
+               if (dsp_row != NULL)
+                  png_combine_row(png_ptr, dsp_row,
+                     png_pass_dsp_mask[png_ptr->pass]);
+               png_read_finish_row(png_ptr);
+               return;
+            }
+            break;
+         case 2:
+            if ((png_ptr->row_number & 0x07) != 4)
+            {
+               if (dsp_row != NULL && (png_ptr->row_number & 4))
+                  png_combine_row(png_ptr, dsp_row,
+                     png_pass_dsp_mask[png_ptr->pass]);
+               png_read_finish_row(png_ptr);
+               return;
+            }
+            break;
+         case 3:
+            if ((png_ptr->row_number & 3) || png_ptr->width < 3)
+            {
+               if (dsp_row != NULL)
+                  png_combine_row(png_ptr, dsp_row,
+                     png_pass_dsp_mask[png_ptr->pass]);
+               png_read_finish_row(png_ptr);
+               return;
+            }
+            break;
+         case 4:
+            if ((png_ptr->row_number & 3) != 2)
+            {
+               if (dsp_row != NULL && (png_ptr->row_number & 2))
+                  png_combine_row(png_ptr, dsp_row,
+                     png_pass_dsp_mask[png_ptr->pass]);
+               png_read_finish_row(png_ptr);
+               return;
+            }
+            break;
+         case 5:
+            if ((png_ptr->row_number & 1) || png_ptr->width < 2)
+            {
+               if (dsp_row != NULL)
+                  png_combine_row(png_ptr, dsp_row,
+                     png_pass_dsp_mask[png_ptr->pass]);
+               png_read_finish_row(png_ptr);
+               return;
+            }
+            break;
+         case 6:
+            if (!(png_ptr->row_number & 1))
+            {
+               png_read_finish_row(png_ptr);
+               return;
+            }
+            break;
+      }
+   }
+#endif
+
+   if (!(png_ptr->mode & PNG_HAVE_IDAT))
+      png_error(png_ptr, "Invalid attempt to read row data");
+
+   png_ptr->zstream.next_out = png_ptr->row_buf;
+   png_ptr->zstream.avail_out = (uInt)png_ptr->irowbytes;
+   do
+   {
+      if (!(png_ptr->zstream.avail_in))
+      {
+         while (!png_ptr->idat_size)
+         {
+            png_crc_finish(png_ptr, 0);
+
+            png_ptr->idat_size = png_read_chunk_header(png_ptr);
+            if (png_memcmp(png_ptr->chunk_name, png_IDAT, 4))
+               png_error(png_ptr, "Not enough image data");
+         }
+         png_ptr->zstream.avail_in = (uInt)png_ptr->zbuf_size;
+         png_ptr->zstream.next_in = png_ptr->zbuf;
+         if (png_ptr->zbuf_size > png_ptr->idat_size)
+            png_ptr->zstream.avail_in = (uInt)png_ptr->idat_size;
+         png_crc_read(png_ptr, png_ptr->zbuf,
+            (png_size_t)png_ptr->zstream.avail_in);
+         png_ptr->idat_size -= png_ptr->zstream.avail_in;
+      }
+      ret = inflate(&png_ptr->zstream, Z_PARTIAL_FLUSH);
+      if (ret == Z_STREAM_END)
+      {
+         if (png_ptr->zstream.avail_out || png_ptr->zstream.avail_in ||
+            png_ptr->idat_size)
+            png_error(png_ptr, "Extra compressed data");
+         png_ptr->mode |= PNG_AFTER_IDAT;
+         png_ptr->flags |= PNG_FLAG_ZLIB_FINISHED;
+         break;
+      }
+      if (ret != Z_OK)
+         png_error(png_ptr, png_ptr->zstream.msg ? png_ptr->zstream.msg :
+                   "Decompression error");
+
+   } while (png_ptr->zstream.avail_out);
+
+   png_ptr->row_info.color_type = png_ptr->color_type;
+   png_ptr->row_info.width = png_ptr->iwidth;
+   png_ptr->row_info.channels = png_ptr->channels;
+   png_ptr->row_info.bit_depth = png_ptr->bit_depth;
+   png_ptr->row_info.pixel_depth = png_ptr->pixel_depth;
+   png_ptr->row_info.rowbytes = PNG_ROWBYTES(png_ptr->row_info.pixel_depth,
+       png_ptr->row_info.width);
+
+   if (png_ptr->row_buf[0])
+   png_read_filter_row(png_ptr, &(png_ptr->row_info),
+      png_ptr->row_buf + 1, png_ptr->prev_row + 1,
+      (int)(png_ptr->row_buf[0]));
+
+   png_memcpy_check(png_ptr, png_ptr->prev_row, png_ptr->row_buf,
+      png_ptr->rowbytes + 1);
+
+#if defined(PNG_MNG_FEATURES_SUPPORTED)
+   if ((png_ptr->mng_features_permitted & PNG_FLAG_MNG_FILTER_64) &&
+      (png_ptr->filter_type == PNG_INTRAPIXEL_DIFFERENCING))
+   {
+      /* Intrapixel differencing */
+      png_do_read_intrapixel(&(png_ptr->row_info), png_ptr->row_buf + 1);
+   }
+#endif
+
+
+   if (png_ptr->transformations || (png_ptr->flags&PNG_FLAG_STRIP_ALPHA))
+      png_do_read_transformations(png_ptr);
+
+#if defined(PNG_READ_INTERLACING_SUPPORTED)
+   /* blow up interlaced rows to full size */
+   if (png_ptr->interlaced &&
+      (png_ptr->transformations & PNG_INTERLACE))
+   {
+      if (png_ptr->pass < 6)
+/*       old interface (pre-1.0.9):
+         png_do_read_interlace(&(png_ptr->row_info),
+            png_ptr->row_buf + 1, png_ptr->pass, png_ptr->transformations);
+ */
+         png_do_read_interlace(png_ptr);
+
+      if (dsp_row != NULL)
+         png_combine_row(png_ptr, dsp_row,
+            png_pass_dsp_mask[png_ptr->pass]);
+      if (row != NULL)
+         png_combine_row(png_ptr, row,
+            png_pass_mask[png_ptr->pass]);
+   }
+   else
+#endif
+   {
+      if (row != NULL)
+         png_combine_row(png_ptr, row, 0xff);
+      if (dsp_row != NULL)
+         png_combine_row(png_ptr, dsp_row, 0xff);
+   }
+   png_read_finish_row(png_ptr);
+
+   if (png_ptr->read_row_fn != NULL)
+      (*(png_ptr->read_row_fn))(png_ptr, png_ptr->row_number, png_ptr->pass);
+}
+#endif /* PNG_NO_SEQUENTIAL_READ_SUPPORTED */
+
+#ifndef PNG_NO_SEQUENTIAL_READ_SUPPORTED
+/* Read one or more rows of image data.  If the image is interlaced,
+ * and png_set_interlace_handling() has been called, the rows need to
+ * contain the contents of the rows from the previous pass.  If the
+ * image has alpha or transparency, and png_handle_alpha()[*] has been
+ * called, the rows contents must be initialized to the contents of the
+ * screen.
+ *
+ * "row" holds the actual image, and pixels are placed in it
+ * as they arrive.  If the image is displayed after each pass, it will
+ * appear to "sparkle" in.  "display_row" can be used to display a
+ * "chunky" progressive image, with finer detail added as it becomes
+ * available.  If you do not want this "chunky" display, you may pass
+ * NULL for display_row.  If you do not want the sparkle display, and
+ * you have not called png_handle_alpha(), you may pass NULL for rows.
+ * If you have called png_handle_alpha(), and the image has either an
+ * alpha channel or a transparency chunk, you must provide a buffer for
+ * rows.  In this case, you do not have to provide a display_row buffer
+ * also, but you may.  If the image is not interlaced, or if you have
+ * not called png_set_interlace_handling(), the display_row buffer will
+ * be ignored, so pass NULL to it.
+ *
+ * [*] png_handle_alpha() does not exist yet, as of this version of libpng
+ */
+
+void PNGAPI
+png_read_rows(png_structp png_ptr, png_bytepp row,
+   png_bytepp display_row, png_uint_32 num_rows)
+{
+   png_uint_32 i;
+   png_bytepp rp;
+   png_bytepp dp;
+
+   png_debug(1, "in png_read_rows\n");
+   if (png_ptr == NULL) return;
+   rp = row;
+   dp = display_row;
+   if (rp != NULL && dp != NULL)
+      for (i = 0; i < num_rows; i++)
+      {
+         png_bytep rptr = *rp++;
+         png_bytep dptr = *dp++;
+
+         png_read_row(png_ptr, rptr, dptr);
+      }
+   else if (rp != NULL)
+      for (i = 0; i < num_rows; i++)
+      {
+         png_bytep rptr = *rp;
+         png_read_row(png_ptr, rptr, png_bytep_NULL);
+         rp++;
+      }
+   else if (dp != NULL)
+      for (i = 0; i < num_rows; i++)
+      {
+         png_bytep dptr = *dp;
+         png_read_row(png_ptr, png_bytep_NULL, dptr);
+         dp++;
+      }
+}
+#endif /* PNG_NO_SEQUENTIAL_READ_SUPPORTED */
+
+#ifndef PNG_NO_SEQUENTIAL_READ_SUPPORTED
+/* Read the entire image.  If the image has an alpha channel or a tRNS
+ * chunk, and you have called png_handle_alpha()[*], you will need to
+ * initialize the image to the current image that PNG will be overlaying.
+ * We set the num_rows again here, in case it was incorrectly set in
+ * png_read_start_row() by a call to png_read_update_info() or
+ * png_start_read_image() if png_set_interlace_handling() wasn't called
+ * prior to either of these functions like it should have been.  You can
+ * only call this function once.  If you desire to have an image for
+ * each pass of a interlaced image, use png_read_rows() instead.
+ *
+ * [*] png_handle_alpha() does not exist yet, as of this version of libpng
+ */
+void PNGAPI
+png_read_image(png_structp png_ptr, png_bytepp image)
+{
+   png_uint_32 i, image_height;
+   int pass, j;
+   png_bytepp rp;
+
+   png_debug(1, "in png_read_image\n");
+   if (png_ptr == NULL) return;
+
+#ifdef PNG_READ_INTERLACING_SUPPORTED
+   pass = png_set_interlace_handling(png_ptr);
+#else
+   if (png_ptr->interlaced)
+      png_error(png_ptr,
+        "Cannot read interlaced image -- interlace handler disabled.");
+   pass = 1;
+#endif
+
+
+   image_height=png_ptr->height;
+   png_ptr->num_rows = image_height; /* Make sure this is set correctly */
+
+   for (j = 0; j < pass; j++)
+   {
+      rp = image;
+      for (i = 0; i < image_height; i++)
+      {
+         png_read_row(png_ptr, *rp, png_bytep_NULL);
+         rp++;
+      }
+   }
+}
+#endif /* PNG_NO_SEQUENTIAL_READ_SUPPORTED */
+
+#ifndef PNG_NO_SEQUENTIAL_READ_SUPPORTED
+/* Read the end of the PNG file.  Will not read past the end of the
+ * file, will verify the end is accurate, and will read any comments
+ * or time information at the end of the file, if info is not NULL.
+ */
+void PNGAPI
+png_read_end(png_structp png_ptr, png_infop info_ptr)
+{
+   png_debug(1, "in png_read_end\n");
+   if (png_ptr == NULL) return;
+   png_crc_finish(png_ptr, 0); /* Finish off CRC from last IDAT chunk */
+
+   do
+   {
+#ifdef PNG_USE_LOCAL_ARRAYS
+      PNG_CONST PNG_IHDR;
+      PNG_CONST PNG_IDAT;
+      PNG_CONST PNG_IEND;
+      PNG_CONST PNG_PLTE;
+#if defined(PNG_READ_bKGD_SUPPORTED)
+      PNG_CONST PNG_bKGD;
+#endif
+#if defined(PNG_READ_cHRM_SUPPORTED)
+      PNG_CONST PNG_cHRM;
+#endif
+#if defined(PNG_READ_gAMA_SUPPORTED)
+      PNG_CONST PNG_gAMA;
+#endif
+#if defined(PNG_READ_hIST_SUPPORTED)
+      PNG_CONST PNG_hIST;
+#endif
+#if defined(PNG_READ_iCCP_SUPPORTED)
+      PNG_CONST PNG_iCCP;
+#endif
+#if defined(PNG_READ_iTXt_SUPPORTED)
+      PNG_CONST PNG_iTXt;
+#endif
+#if defined(PNG_READ_oFFs_SUPPORTED)
+      PNG_CONST PNG_oFFs;
+#endif
+#if defined(PNG_READ_pCAL_SUPPORTED)
+      PNG_CONST PNG_pCAL;
+#endif
+#if defined(PNG_READ_pHYs_SUPPORTED)
+      PNG_CONST PNG_pHYs;
+#endif
+#if defined(PNG_READ_sBIT_SUPPORTED)
+      PNG_CONST PNG_sBIT;
+#endif
+#if defined(PNG_READ_sCAL_SUPPORTED)
+      PNG_CONST PNG_sCAL;
+#endif
+#if defined(PNG_READ_sPLT_SUPPORTED)
+      PNG_CONST PNG_sPLT;
+#endif
+#if defined(PNG_READ_sRGB_SUPPORTED)
+      PNG_CONST PNG_sRGB;
+#endif
+#if defined(PNG_READ_tEXt_SUPPORTED)
+      PNG_CONST PNG_tEXt;
+#endif
+#if defined(PNG_READ_tIME_SUPPORTED)
+      PNG_CONST PNG_tIME;
+#endif
+#if defined(PNG_READ_tRNS_SUPPORTED)
+      PNG_CONST PNG_tRNS;
+#endif
+#if defined(PNG_READ_zTXt_SUPPORTED)
+      PNG_CONST PNG_zTXt;
+#endif
+#endif /* PNG_USE_LOCAL_ARRAYS */
+      png_uint_32 length = png_read_chunk_header(png_ptr);
+      PNG_CONST png_bytep chunk_name = png_ptr->chunk_name;
+
+      if (!png_memcmp(chunk_name, png_IHDR, 4))
+         png_handle_IHDR(png_ptr, info_ptr, length);
+      else if (!png_memcmp(chunk_name, png_IEND, 4))
+         png_handle_IEND(png_ptr, info_ptr, length);
+#ifdef PNG_HANDLE_AS_UNKNOWN_SUPPORTED
+      else if (png_handle_as_unknown(png_ptr, chunk_name))
+      {
+         if (!png_memcmp(chunk_name, png_IDAT, 4))
+         {
+            if ((length > 0) || (png_ptr->mode & PNG_HAVE_CHUNK_AFTER_IDAT))
+               png_error(png_ptr, "Too many IDAT's found");
+         }
+         png_handle_unknown(png_ptr, info_ptr, length);
+         if (!png_memcmp(chunk_name, png_PLTE, 4))
+            png_ptr->mode |= PNG_HAVE_PLTE;
+      }
+#endif
+      else if (!png_memcmp(chunk_name, png_IDAT, 4))
+      {
+         /* Zero length IDATs are legal after the last IDAT has been
+          * read, but not after other chunks have been read.
+          */
+         if ((length > 0) || (png_ptr->mode & PNG_HAVE_CHUNK_AFTER_IDAT))
+            png_error(png_ptr, "Too many IDAT's found");
+         png_crc_finish(png_ptr, length);
+      }
+      else if (!png_memcmp(chunk_name, png_PLTE, 4))
+         png_handle_PLTE(png_ptr, info_ptr, length);
+#if defined(PNG_READ_bKGD_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_bKGD, 4))
+         png_handle_bKGD(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_cHRM_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_cHRM, 4))
+         png_handle_cHRM(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_gAMA_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_gAMA, 4))
+         png_handle_gAMA(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_hIST_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_hIST, 4))
+         png_handle_hIST(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_oFFs_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_oFFs, 4))
+         png_handle_oFFs(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_pCAL_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_pCAL, 4))
+         png_handle_pCAL(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_sCAL_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_sCAL, 4))
+         png_handle_sCAL(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_pHYs_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_pHYs, 4))
+         png_handle_pHYs(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_sBIT_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_sBIT, 4))
+         png_handle_sBIT(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_sRGB_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_sRGB, 4))
+         png_handle_sRGB(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_iCCP_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_iCCP, 4))
+         png_handle_iCCP(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_sPLT_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_sPLT, 4))
+         png_handle_sPLT(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_tEXt_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_tEXt, 4))
+         png_handle_tEXt(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_tIME_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_tIME, 4))
+         png_handle_tIME(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_tRNS_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_tRNS, 4))
+         png_handle_tRNS(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_zTXt_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_zTXt, 4))
+         png_handle_zTXt(png_ptr, info_ptr, length);
+#endif
+#if defined(PNG_READ_iTXt_SUPPORTED)
+      else if (!png_memcmp(chunk_name, png_iTXt, 4))
+         png_handle_iTXt(png_ptr, info_ptr, length);
+#endif
+      else
+         png_handle_unknown(png_ptr, info_ptr, length);
+   } while (!(png_ptr->mode & PNG_HAVE_IEND));
+}
+#endif /* PNG_NO_SEQUENTIAL_READ_SUPPORTED */
+
+/* free all memory used by the read */
+void PNGAPI
+png_destroy_read_struct(png_structpp png_ptr_ptr, png_infopp info_ptr_ptr,
+   png_infopp end_info_ptr_ptr)
+{
+   png_structp png_ptr = NULL;
+   png_infop info_ptr = NULL, end_info_ptr = NULL;
+#ifdef PNG_USER_MEM_SUPPORTED
+   png_free_ptr free_fn = NULL;
+   png_voidp mem_ptr = NULL;
+#endif
+
+   png_debug(1, "in png_destroy_read_struct\n");
+   if (png_ptr_ptr != NULL)
+      png_ptr = *png_ptr_ptr;
+   if (png_ptr == NULL)
+      return;
+
+#ifdef PNG_USER_MEM_SUPPORTED
+   free_fn = png_ptr->free_fn;
+   mem_ptr = png_ptr->mem_ptr;
+#endif
+
+   if (info_ptr_ptr != NULL)
+      info_ptr = *info_ptr_ptr;
+
+   if (end_info_ptr_ptr != NULL)
+      end_info_ptr = *end_info_ptr_ptr;
+
+   png_read_destroy(png_ptr, info_ptr, end_info_ptr);
+
+   if (info_ptr != NULL)
+   {
+#if defined(PNG_TEXT_SUPPORTED)
+      png_free_data(png_ptr, info_ptr, PNG_FREE_TEXT, -1);
+#endif
+
+#ifdef PNG_USER_MEM_SUPPORTED
+      png_destroy_struct_2((png_voidp)info_ptr, (png_free_ptr)free_fn,
+          (png_voidp)mem_ptr);
+#else
+      png_destroy_struct((png_voidp)info_ptr);
+#endif
+      *info_ptr_ptr = NULL;
+   }
+
+   if (end_info_ptr != NULL)
+   {
+#if defined(PNG_READ_TEXT_SUPPORTED)
+      png_free_data(png_ptr, end_info_ptr, PNG_FREE_TEXT, -1);
+#endif
+#ifdef PNG_USER_MEM_SUPPORTED
+      png_destroy_struct_2((png_voidp)end_info_ptr, (png_free_ptr)free_fn,
+         (png_voidp)mem_ptr);
+#else
+      png_destroy_struct((png_voidp)end_info_ptr);
+#endif
+      *end_info_ptr_ptr = NULL;
+   }
+
+   if (png_ptr != NULL)
+   {
+#ifdef PNG_USER_MEM_SUPPORTED
+      png_destroy_struct_2((png_voidp)png_ptr, (png_free_ptr)free_fn,
+          (png_voidp)mem_ptr);
+#else
+      png_destroy_struct((png_voidp)png_ptr);
+#endif
+      *png_ptr_ptr = NULL;
+   }
+}
+
+/* free all memory used by the read (old method) */
+void /* PRIVATE */
+png_read_destroy(png_structp png_ptr, png_infop info_ptr, png_infop end_info_ptr)
+{
+#ifdef PNG_SETJMP_SUPPORTED
+   jmp_buf tmp_jmp;
+#endif
+   png_error_ptr error_fn;
+   png_error_ptr warning_fn;
+   png_voidp error_ptr;
+#ifdef PNG_USER_MEM_SUPPORTED
+   png_free_ptr free_fn;
+#endif
+
+   png_debug(1, "in png_read_destroy\n");
+   if (info_ptr != NULL)
+      png_info_destroy(png_ptr, info_ptr);
+
+   if (end_info_ptr != NULL)
+      png_info_destroy(png_ptr, end_info_ptr);
+
+   png_free(png_ptr, png_ptr->zbuf);
+   png_free(png_ptr, png_ptr->big_row_buf);
+   png_free(png_ptr, png_ptr->prev_row);
+   png_free(png_ptr, png_ptr->chunkdata);
+#if defined(PNG_READ_DITHER_SUPPORTED)
+   png_free(png_ptr, png_ptr->palette_lookup);
+   png_free(png_ptr, png_ptr->dither_index);
+#endif
+#if defined(PNG_READ_GAMMA_SUPPORTED)
+   png_free(png_ptr, png_ptr->gamma_table);
+#endif
+#if defined(PNG_READ_BACKGROUND_SUPPORTED)
+   png_free(png_ptr, png_ptr->gamma_from_1);
+   png_free(png_ptr, png_ptr->gamma_to_1);
+#endif
+#ifdef PNG_FREE_ME_SUPPORTED
+   if (png_ptr->free_me & PNG_FREE_PLTE)
+      png_zfree(png_ptr, png_ptr->palette);
+   png_ptr->free_me &= ~PNG_FREE_PLTE;
+#else
+   if (png_ptr->flags & PNG_FLAG_FREE_PLTE)
+      png_zfree(png_ptr, png_ptr->palette);
+   png_ptr->flags &= ~PNG_FLAG_FREE_PLTE;
+#endif
+#if defined(PNG_tRNS_SUPPORTED) || \
+    defined(PNG_READ_EXPAND_SUPPORTED) || defined(PNG_READ_BACKGROUND_SUPPORTED)
+#ifdef PNG_FREE_ME_SUPPORTED
+   if (png_ptr->free_me & PNG_FREE_TRNS)
+      png_free(png_ptr, png_ptr->trans);
+   png_ptr->free_me &= ~PNG_FREE_TRNS;
+#else
+   if (png_ptr->flags & PNG_FLAG_FREE_TRNS)
+      png_free(png_ptr, png_ptr->trans);
+   png_ptr->flags &= ~PNG_FLAG_FREE_TRNS;
+#endif
+#endif
+#if defined(PNG_READ_hIST_SUPPORTED)
+#ifdef PNG_FREE_ME_SUPPORTED
+   if (png_ptr->free_me & PNG_FREE_HIST)
+      png_free(png_ptr, png_ptr->hist);
+   png_ptr->free_me &= ~PNG_FREE_HIST;
+#else
+   if (png_ptr->flags & PNG_FLAG_FREE_HIST)
+      png_free(png_ptr, png_ptr->hist);
+   png_ptr->flags &= ~PNG_FLAG_FREE_HIST;
+#endif
+#endif
+#if defined(PNG_READ_GAMMA_SUPPORTED)
+   if (png_ptr->gamma_16_table != NULL)
+   {
+      int i;
+      int istop = (1 << (8 - png_ptr->gamma_shift));
+      for (i = 0; i < istop; i++)
+      {
+         png_free(png_ptr, png_ptr->gamma_16_table[i]);
+      }
+   png_free(png_ptr, png_ptr->gamma_16_table);
+   }
+#if defined(PNG_READ_BACKGROUND_SUPPORTED)
+   if (png_ptr->gamma_16_from_1 != NULL)
+   {
+      int i;
+      int istop = (1 << (8 - png_ptr->gamma_shift));
+      for (i = 0; i < istop; i++)
+      {
+         png_free(png_ptr, png_ptr->gamma_16_from_1[i]);
+      }
+   png_free(png_ptr, png_ptr->gamma_16_from_1);
+   }
+   if (png_ptr->gamma_16_to_1 != NULL)
+   {
+      int i;
+      int istop = (1 << (8 - png_ptr->gamma_shift));
+      for (i = 0; i < istop; i++)
+      {
+         png_free(png_ptr, png_ptr->gamma_16_to_1[i]);
+      }
+   png_free(png_ptr, png_ptr->gamma_16_to_1);
+   }
+#endif
+#endif
+#if defined(PNG_TIME_RFC1123_SUPPORTED)
+   png_free(png_ptr, png_ptr->time_buffer);
+#endif
+
+   inflateEnd(&png_ptr->zstream);
+#ifdef PNG_PROGRESSIVE_READ_SUPPORTED
+   png_free(png_ptr, png_ptr->save_buffer);
+#endif
+
+#ifdef PNG_PROGRESSIVE_READ_SUPPORTED
+#ifdef PNG_TEXT_SUPPORTED
+   png_free(png_ptr, png_ptr->current_text);
+#endif /* PNG_TEXT_SUPPORTED */
+#endif /* PNG_PROGRESSIVE_READ_SUPPORTED */
+
+   /* Save the important info out of the png_struct, in case it is
+    * being used again.
+    */
+#ifdef PNG_SETJMP_SUPPORTED
+   png_memcpy(tmp_jmp, png_ptr->jmpbuf, png_sizeof(jmp_buf));
+#endif
+
+   error_fn = png_ptr->error_fn;
+   warning_fn = png_ptr->warning_fn;
+   error_ptr = png_ptr->error_ptr;
+#ifdef PNG_USER_MEM_SUPPORTED
+   free_fn = png_ptr->free_fn;
+#endif
+
+   png_memset(png_ptr, 0, png_sizeof(png_struct));
+
+   png_ptr->error_fn = error_fn;
+   png_ptr->warning_fn = warning_fn;
+   png_ptr->error_ptr = error_ptr;
+#ifdef PNG_USER_MEM_SUPPORTED
+   png_ptr->free_fn = free_fn;
+#endif
+
+#ifdef PNG_SETJMP_SUPPORTED
+   png_memcpy(png_ptr->jmpbuf, tmp_jmp, png_sizeof(jmp_buf));
+#endif
+
+}
+
+void PNGAPI
+png_set_read_status_fn(png_structp png_ptr, png_read_status_ptr read_row_fn)
+{
+   if (png_ptr == NULL) return;
+   png_ptr->read_row_fn = read_row_fn;
+}
+
+
+#ifndef PNG_NO_SEQUENTIAL_READ_SUPPORTED
+#if defined(PNG_INFO_IMAGE_SUPPORTED)
+void PNGAPI
+png_read_png(png_structp png_ptr, png_infop info_ptr,
+                           int transforms,
+                           voidp params)
+{
+   int row;
+
+   if (png_ptr == NULL) return;
+#if defined(PNG_READ_INVERT_ALPHA_SUPPORTED)
+   /* invert the alpha channel from opacity to transparency
+    */
+   if (transforms & PNG_TRANSFORM_INVERT_ALPHA)
+       png_set_invert_alpha(png_ptr);
+#endif
+
+   /* png_read_info() gives us all of the information from the
+    * PNG file before the first IDAT (image data chunk).
+    */
+   png_read_info(png_ptr, info_ptr);
+   if (info_ptr->height > PNG_UINT_32_MAX/png_sizeof(png_bytep))
+      png_error(png_ptr, "Image is too high to process with png_read_png()");
+
+   /* -------------- image transformations start here ------------------- */
+
+#if defined(PNG_READ_16_TO_8_SUPPORTED)
+   /* tell libpng to strip 16 bit/color files down to 8 bits per color
+    */
+   if (transforms & PNG_TRANSFORM_STRIP_16)
+       png_set_strip_16(png_ptr);
+#endif
+
+#if defined(PNG_READ_STRIP_ALPHA_SUPPORTED)
+   /* Strip alpha bytes from the input data without combining with
+    * the background (not recommended).
+    */
+   if (transforms & PNG_TRANSFORM_STRIP_ALPHA)
+       png_set_strip_alpha(png_ptr);
+#endif
+
+#if defined(PNG_READ_PACK_SUPPORTED) && !defined(PNG_READ_EXPAND_SUPPORTED)
+   /* Extract multiple pixels with bit depths of 1, 2, or 4 from a single
+    * byte into separate bytes (useful for paletted and grayscale images).
+    */
+   if (transforms & PNG_TRANSFORM_PACKING)
+       png_set_packing(png_ptr);
+#endif
+
+#if defined(PNG_READ_PACKSWAP_SUPPORTED)
+   /* Change the order of packed pixels to least significant bit first
+    * (not useful if you are using png_set_packing).
+    */
+   if (transforms & PNG_TRANSFORM_PACKSWAP)
+       png_set_packswap(png_ptr);
+#endif
+
+#if defined(PNG_READ_EXPAND_SUPPORTED)
+   /* Expand paletted colors into true RGB triplets
+    * Expand grayscale images to full 8 bits from 1, 2, or 4 bits/pixel
+    * Expand paletted or RGB images with transparency to full alpha
+    * channels so the data will be available as RGBA quartets.
+    */
+   if (transforms & PNG_TRANSFORM_EXPAND)
+       if ((png_ptr->bit_depth < 8) ||
+           (png_ptr->color_type == PNG_COLOR_TYPE_PALETTE) ||
+           (png_get_valid(png_ptr, info_ptr, PNG_INFO_tRNS)))
+         png_set_expand(png_ptr);
+#endif
+
+   /* We don't handle background color or gamma transformation or dithering.
+    */
+
+#if defined(PNG_READ_INVERT_SUPPORTED)
+   /* invert monochrome files to have 0 as white and 1 as black
+    */
+   if (transforms & PNG_TRANSFORM_INVERT_MONO)
+       png_set_invert_mono(png_ptr);
+#endif
+
+#if defined(PNG_READ_SHIFT_SUPPORTED)
+   /* If you want to shift the pixel values from the range [0,255] or
+    * [0,65535] to the original [0,7] or [0,31], or whatever range the
+    * colors were originally in:
+    */
+   if ((transforms & PNG_TRANSFORM_SHIFT)
+       && png_get_valid(png_ptr, info_ptr, PNG_INFO_sBIT))
+   {
+      png_color_8p sig_bit;
+
+      png_get_sBIT(png_ptr, info_ptr, &sig_bit);
+      png_set_shift(png_ptr, sig_bit);
+   }
+#endif
+
+#if defined(PNG_READ_BGR_SUPPORTED)
+   /* flip the RGB pixels to BGR (or RGBA to BGRA)
+    */
+   if (transforms & PNG_TRANSFORM_BGR)
+       png_set_bgr(png_ptr);
+#endif
+
+#if defined(PNG_READ_SWAP_ALPHA_SUPPORTED)
+   /* swap the RGBA or GA data to ARGB or AG (or BGRA to ABGR)
+    */
+   if (transforms & PNG_TRANSFORM_SWAP_ALPHA)
+       png_set_swap_alpha(png_ptr);
+#endif
+
+#if defined(PNG_READ_SWAP_SUPPORTED)
+   /* swap bytes of 16 bit files to least significant byte first
+    */
+   if (transforms & PNG_TRANSFORM_SWAP_ENDIAN)
+       png_set_swap(png_ptr);
+#endif
+
+   /* We don't handle adding filler bytes */
+
+   /* Optional call to gamma correct and add the background to the palette
+    * and update info structure.  REQUIRED if you are expecting libpng to
+    * update the palette for you (i.e., you selected such a transform above).
+    */
+   png_read_update_info(png_ptr, info_ptr);
+
+   /* -------------- image transformations end here ------------------- */
+
+#ifdef PNG_FREE_ME_SUPPORTED
+   png_free_data(png_ptr, info_ptr, PNG_FREE_ROWS, 0);
+#endif
+   if (info_ptr->row_pointers == NULL)
+   {
+      info_ptr->row_pointers = (png_bytepp)png_malloc(png_ptr,
+         info_ptr->height * png_sizeof(png_bytep));
+#ifdef PNG_FREE_ME_SUPPORTED
+      info_ptr->free_me |= PNG_FREE_ROWS;
+#endif
+      for (row = 0; row < (int)info_ptr->height; row++)
+      {
+         info_ptr->row_pointers[row] = (png_bytep)png_malloc(png_ptr,
+            png_get_rowbytes(png_ptr, info_ptr));
+      }
+   }
+
+   png_read_image(png_ptr, info_ptr->row_pointers);
+   info_ptr->valid |= PNG_INFO_IDAT;
+
+   /* read rest of file, and get additional chunks in info_ptr - REQUIRED */
+   png_read_end(png_ptr, info_ptr);
+
+   transforms = transforms; /* quiet compiler warnings */
+   params = params;
+
+}
+#endif /* PNG_INFO_IMAGE_SUPPORTED */
+#endif /* PNG_NO_SEQUENTIAL_READ_SUPPORTED */
+#endif /* PNG_READ_SUPPORTED */

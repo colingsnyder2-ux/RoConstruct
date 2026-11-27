@@ -1,24 +1,6 @@
-// from server: 76% by atomic.potato
-struct CVideoStreamFilter {
-    char pad[0x18];
-    void* field_18;
-    int field_20;
-    int field_24;
-    int method(int* arg);
-};
-
-int CVideoStreamFilter::method(int* arg)
-{
-    if (field_18 == 0)
-        return 0x80040213;
-    void* p = field_18;
-    int* vtbl = *(int**)p;
-    typedef int (__stdcall *Fn)(void*, int*);
-    Fn fn = (Fn)vtbl[3];
-    int hr = fn(p, arg);
-    if (hr < 0)
-        return hr;
-    arg[0] -= field_20;
-    arg[1] -= field_24;
-    return 0;
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct I { virtual long __stdcall q0(); virtual long __stdcall q1(); virtual long __stdcall q2(); virtual long __stdcall m3(__int64* a); };
+struct C { char pad[0x18]; I* p; int pad2; __int64 off; long f(__int64* a); };
+long C::f(__int64* a) { if (!p) return 0x80040213; long r = p->m3(a); if (r >= 0) { *a -= off; return 0; } return r; }

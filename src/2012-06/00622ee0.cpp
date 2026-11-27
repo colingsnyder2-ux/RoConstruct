@@ -1,14 +1,5 @@
-// from server: 74% by atomic.potato
-extern "C" double __cdecl modf(double, double *);
-
-struct WedgeBuilder
-{
-    float f();
-};
-
-float WedgeBuilder::f()
-{
-    double integerPart;
-    modf((double)0.0f, &integerPart);
-    return (float)integerPart;
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /MD
+extern "C" __declspec(dllimport) double __cdecl modf(double, double*);
+double f(float x, float* ip) { double i; double fr = modf(x, &i); *ip = (float)i; return fr; }

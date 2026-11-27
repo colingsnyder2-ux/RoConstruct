@@ -1,11 +1,6 @@
-// from server: 24% by tester
-struct P_func_0057b950 { void g(); };
-struct S_func_0057b950 {
-    char pad[6724];
-    P_func_0057b950* m_p;
-    void f();
-};
-void S_func_0057b950::f()
-{
-    m_p->g();
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+void* g1(void*);
+void g2(void*, void*);
+void f(char* a, void* b) { a = *(char**)g1(a + 4); g2(b, &a); }

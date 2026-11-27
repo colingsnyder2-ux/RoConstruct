@@ -1,17 +1,18 @@
-// from server: 75% by atomic.potato
-struct S
-{
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Desc { int a, b; };
+Desc g_desc;
+struct Sig { void raise(const Desc*); };
+struct S {
+    char pad[0x9c];
     int value;
-    void update(int);
+    char pad2[0x144 - 0xa0];
+    Sig sig;
+    void f(int v);
 };
-
-extern void G1_func_00414500(int, int);
-
-void S::update(int value)
-{
-    if (value != *(int *)((char *)this + 0x9c))
-    {
-        *(int *)((char *)this + 0x9c) = value;
-        G1_func_00414500(value, *(int *)((char *)this + 0x144));
-    }
+void S::f(int v) {
+    if (v == value) return;
+    value = v;
+    sig.raise(&g_desc);
 }

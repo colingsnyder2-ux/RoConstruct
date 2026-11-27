@@ -1,22 +1,5 @@
-// from server: 77% by tester
-struct S {
-    void f(float* out);
-};
-
-extern float g_val;
-extern float g_a;
-extern float g_b;
-extern float g_c;
-extern unsigned int g_init;
-
-void S::f(float* out) {
-    if (!(g_init & 1)) {
-        g_init |= 1;
-        g_a = g_val;
-        g_b = g_val;
-        g_c = g_val;
-    }
-    out[0] = g_a;
-    out[1] = g_b;
-    out[2] = g_c;
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /arch:SSE
+struct V3 { float x, y, z; V3(float a) : x(a), y(a), z(a) {} };
+V3 f() { static V3 v(-10000.0f); return v; }

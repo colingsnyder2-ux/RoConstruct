@@ -1,19 +1,9 @@
-// from server: 69% by atomic.potato
-extern "C" int __cdecl FactoryProductTarget();
-
-struct S
-{
-    int Get();
-};
-
-extern "C" unsigned char g_flag;
-extern "C" int g_value;
-
-int S::Get()
-{
-    if (g_flag)
-        return (int)&g_value;
-
-    int *p = *(int **)((char *)this + 0x84);
-    return FactoryProductTarget();
-}
+// from server: 92% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct B0 { char pad[0x84]; };
+struct VB { int x; int get(); };
+struct D : B0, virtual VB { int f(); };
+extern bool g_flag;
+extern int g_obj[4];
+int D::f(){ if (g_flag) return (int)g_obj; return get(); }

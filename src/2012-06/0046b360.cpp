@@ -1,21 +1,7 @@
-// from server: 69% by atomic.potato
-extern "C" void ApplySetting(void *, unsigned long);
-
-struct CRenderSettingsItem
-{
-    unsigned char value;
-    unsigned char padding[223];
-    unsigned char field_e0;
-    unsigned char padding2[99];
-
-    void update(unsigned char value);
-};
-
-void CRenderSettingsItem::update(unsigned char value)
-{
-    if (field_e0 != value)
-    {
-        field_e0 = value;
-        ApplySetting((char *)this + 0x144, 0xE19C7C);
-    }
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Sig { void notify(void* p); };
+static int g[4];
+struct S { char pad[224]; bool value; char pad2[324-224-sizeof(bool)]; Sig sig; void set(bool); };
+void S::set(bool v){ if (v != value) { value = v; sig.notify(&g); } }

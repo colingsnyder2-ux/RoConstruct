@@ -1,15 +1,13 @@
-// from server: 90% by atomic.potato
-struct S_FlagStand_008cc2a0 {
-    char pad0[348];
-    int m_x;
-    int m_y;
-    int m_z;
-    void f(int *out);
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Vector3 { float x, y, z; };
+struct Owner {
+    char pad0[0x15c];
+    Vector3 value;
+    Vector3 get() const;
 };
-
-void S_FlagStand_008cc2a0::f(int *out)
+Vector3 Owner::get() const
 {
-    out[0] = m_x;
-    out[1] = m_y;
-    out[2] = m_z;
+    return value;
 }

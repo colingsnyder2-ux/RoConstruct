@@ -1,16 +1,7 @@
-// from server: 94% by atomic.potato
-extern "C" void __cdecl free(void*);
-
-struct S {
-    void f(int* p);
-};
-
-void S::f(int* p) {
-    *p = 0;
-    if (p[2]) {
-        free((void*)p[2]);
-    }
-    p[2] = 0;
-    p[3] = 0;
-    p[4] = 0;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD /D_SECURE_SCL=0
+#include <vector>
+struct X { int a; std::vector<int> v; ~X() { a = 0; } };
+struct S { void destroy(X* p); };
+void S::destroy(X* p) { p->~X(); }

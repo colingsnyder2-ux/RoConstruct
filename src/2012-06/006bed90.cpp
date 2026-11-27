@@ -1,17 +1,6 @@
-// from server: 46% by atomic.potato
-struct S
-{
-    int f(int);
-};
-
-int S::f(int arg)
-{
-    struct V
-    {
-        int (**table)(V *, int);
-    };
-
-    V *p = *(V **)((char *)this + 0x10);
-    int value = *(int *)((char *)this + 0x18);
-    return p->table[4](p, value);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct I { virtual void d0(); virtual void d1(); virtual void d2(); virtual void d3(); virtual int v(int,int); };
+struct S { char pad[0x10]; I* i; int pad2; int a; int f(int b); };
+int S::f(int b){ return i->v(a,b); }

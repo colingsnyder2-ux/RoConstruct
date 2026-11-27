@@ -1,5 +1,7 @@
-// from server: 91% by atomic.potato
-extern "C" void sub_005366e0(void *);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Sig { void fire(); };
 
 struct EventDesc
 {
@@ -18,5 +20,5 @@ void EventDesc::f(void *p)
     x = *(int *)(x + *(int *)((char *)this + 0x34));
     x += *(int *)((char *)this + 0x30);
 
-    sub_005366e0(v + x + 0x84);
+    ((Sig*)(v + x + 0x84))->fire();
 }

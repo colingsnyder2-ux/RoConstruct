@@ -1,7 +1,8 @@
+// from server: 100% by Xemicl
 // from server: 76% by colin
 // roc-lang: c
 // roc-cl: 21022
-// roc-flags: /O2 /GS- /MD
+// roc-flags: /O2 /GS- /MD /arch:SSE2
 // roc-lib: lua-5.1.4 lparser.c
 
 // Candidate translation unit (score above; library headers required).

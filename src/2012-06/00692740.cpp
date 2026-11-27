@@ -1,16 +1,21 @@
-// from server: 90% by atomic.potato
-extern "C" int __cdecl sub_981ff4(unsigned char*, int);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" int __stdcall sub_981ff4(int, unsigned char*);
 
 struct BoundFuncDesc {
+    char pad[0x88];
+    int handle;
+    char pad2[0xbc - 0x8c];
+    int other;
     unsigned char f();
 };
 
 unsigned char BoundFuncDesc::f() {
-    int value = *reinterpret_cast<int*>(reinterpret_cast<unsigned char*>(this) + 0x88);
-    if (value == 0)
-        return *reinterpret_cast<int*>(reinterpret_cast<unsigned char*>(this) + 0xbc) == value;
+    if (handle == 0)
+        return other == 0;
     unsigned char result;
-    if (sub_981ff4(&result, value) == 0x24)
+    if (sub_981ff4(handle, &result) == 0x24)
         result = 1;
     return result;
 }

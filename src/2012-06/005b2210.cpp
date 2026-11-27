@@ -1,16 +1,9 @@
-// from server: 69% by colin
-struct S {
-    char pad[0x24];
-    int f(int);
-};
-
-extern "C" void sub_5b1c80(void*, int);
-
-int S::f(int a) {
-    sub_5b1c80(this, a);
-    *(int*)((char*)this + 0x20) = 0xb43c34;
-    *(int*)((char*)this) = 0xb7e604;
-    *(int*)((char*)this + 0xc) = 0xb7e5fc;
-    *(int*)((char*)this + 0x20) = 0xb7e5ec;
-    return (int)this;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct A { virtual void f(); int data[2]; };
+struct E { virtual void g(); int data[4]; };
+struct inj : A, E { inj(inj const& x); };
+struct cb { virtual void clone() const; };
+struct impl : inj, cb { impl(impl const& x); virtual void clone() const; };
+impl::impl(impl const& x) : inj(x), cb() {}

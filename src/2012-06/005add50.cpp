@@ -1,19 +1,8 @@
-// from server: 56% by atomic.potato
-struct S
-{
-};
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+struct N { N *next; };
+struct D { char pad[0x70]; N n; };
 
-int * __cdecl f(int *p)
-{
-    int *q;
-    if (p)
-        q = (int *)((char *)p + 0x70);
-    else
-        q = 0;
-    int *r = (int *)q[0];
-    int *a = r;
-    while ((int *)a[0] != q)
-        a = (int *)a[0];
-    r[0] = (int)a;
-    return r;
-}
+static N* prev(N *x){ N *y = x->next; while (y->next != x) y = y->next; return y; }
+void unlink(D *p){ N *x = p ? &p->n : 0; N *nx = x->next; prev(x)->next = nx; }

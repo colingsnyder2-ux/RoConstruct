@@ -1,29 +1,20 @@
-// from server: 91% by Intel
-extern "C" void __cdecl sub_972290(const char*, int);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" void __cdecl sub_972290(unsigned char, const char*);
+extern unsigned char byte_E580B3;
+extern char (__cdecl *dword_E5809C)(const char*, const char*, int);
 
-unsigned char g_flag_e580b3;
-int (*g_callback_e5809c)(int, const char*, const char*);
-
-struct AsyncHttpCache {
-    char pad[4];
-    int field_4;
-    void checkAndLog();
+struct IMoving {
+    void* vt;
+    void* iMovingManager;
+    void check();
 };
 
-void AsyncHttpCache::checkAndLog()
+void IMoving::check()
 {
-    if (!g_flag_e580b3)
-        return;
-
-    if (field_4 == 0)
-        return;
-
-    if (g_callback_e5809c) {
-        int result = g_callback_e5809c(0x21, (const char*)0xBABACAC, (const char*)0xBABACC0);
-        if (result != 0)
-            return;
+    if (byte_E580B3 != 0 && iMovingManager != 0) {
+        if (dword_E5809C == 0 || !dword_E5809C("!iMovingManager", "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\V8World/IMoving.h", 33))
+            sub_972290(byte_E580B3, "!iMovingManager file: C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\V8World/IMoving.h line: 33");
     }
-
-    int flagValue = g_flag_e580b3;
-    sub_972290((const char*)0xBABC38, flagValue);
 }

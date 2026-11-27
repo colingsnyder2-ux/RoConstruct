@@ -1,47 +1,8 @@
-// from server: 75% by atomic.potato
-struct S
-{
-    struct V
-    {
-        float x;
-        float y;
-        float z;
-        float w;
-        float a;
-        float b;
-        float c;
-        float d;
-        float e;
-        float f;
-        float g;
-        float h;
-        float i;
-        float j;
-        float k;
-        float l;
-        float m;
-        float n;
-        float o;
-        float p;
-        float q;
-        float r;
-        float s;
-        float t;
-        float u;
-        float v;
-        float q24;
-        float q28;
-        float q2c;
-    };
-
-    V value;
-    void f(const V& v);
-};
-
-void S::f(const V& v)
-{
-    value = v;
-    value.q24 = v.q24;
-    value.q28 = v.q28;
-    value.q2c = v.q2c;
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Matrix3 { float m[3][3]; };
+struct Vector3 { float x, y, z; Vector3& operator=(const Vector3& o) { x = o.x; y = o.y; z = o.z; return *this; } };
+struct CF { Matrix3 r; Vector3 t; };
+struct S { char pad[0xa0]; CF cf; void set(const CF& c); };
+void S::set(const CF& c) { cf = c; }

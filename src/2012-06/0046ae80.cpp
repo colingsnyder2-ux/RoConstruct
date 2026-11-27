@@ -1,18 +1,17 @@
-// from server: 75% by atomic.potato
-extern "C" void G1_func_00414500(void*);
-
-struct S
-{
-    void f(int);
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Desc { int a, b; };
+Desc g_desc;
+struct Sig { void raise(const Desc*); };
+int g_value;
+struct S {
+    char pad[0x144];
+    Sig sig;
+    void f(int v);
 };
-
-int g_00d96870;
-
-void S::f(int value)
-{
-    if (value == g_00d96870)
-        return;
-
-    g_00d96870 = value;
-    G1_func_00414500((char*)this + 0x144);
+void S::f(int v) {
+    if (v == g_value) return;
+    g_value = v;
+    sig.raise(&g_desc);
 }

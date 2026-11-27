@@ -1,14 +1,12 @@
-// from server: 74% by atomic.potato
-struct S
-{
-    int value;
-    void get(int* out, int* offset);
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Pre { char p[0x1c]; };
+struct Bs { int q; };
+struct Obj : Pre, Bs { int a; int b; };
+struct Prop {
+ char pad[8];
+ int Obj::* m;
+ void get(int* out, Bs* b);
 };
-
-void S::get(int* out, int* offset)
-{
-    if (offset != 0)
-        *out = *(int*)((char*)offset + value - 0x1c);
-    else
-        *out = *(int*)value;
-}
+void Prop::get(int* out, Bs* b) { *out = static_cast<Obj*>(b)->*m; }

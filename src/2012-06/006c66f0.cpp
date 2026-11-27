@@ -1,20 +1,16 @@
-// from server: 68% by atomic.potato
-extern "C" int __stdcall DeleteFileA(const char *);
-
-struct S
-{
-    unsigned char pad[200];
-    unsigned int size;
-    const char *path;
-
-    void f();
+// from server: 79% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Str {
+    union { char buf[16]; char* ptr; } u;
+    unsigned size; unsigned cap;
+    const char* c_str() const { return cap >= 16 ? u.ptr : u.buf; }
 };
-
-void S::f()
-{
-    pad[0xc8] = 1;
-    if (size < 0x10)
-        DeleteFileA(path + 0xb0);
-    else
-        DeleteFileA(path);
-}
+__declspec(dllimport) int __stdcall imp(const char*);
+struct S {
+    char pad[0xb0];
+    Str name;
+    volatile bool flag;
+    int f();
+};
+int S::f() { flag = true; if (name.cap >= 16) return imp(name.u.ptr); return imp(name.u.buf); }

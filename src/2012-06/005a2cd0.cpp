@@ -1,14 +1,6 @@
-// from server: 78% by atomic.potato
-extern "C" int __stdcall CloseHandle(int);
-
-struct S
-{
-    void f();
-};
-
-void S::f()
-{
-    CloseHandle(*(int *)((char *)this + 0x14));
-    CloseHandle(**(int **)((char *)this + 0x0c));
-    CloseHandle(**(int **)((char *)this + 0x10));
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+__declspec(dllimport) int __stdcall CloseHandle(void*);
+struct C { char p[0xc]; void** a; void** b; void* h; void f(); };
+void C::f() { CloseHandle(h); CloseHandle(*a); CloseHandle(*b); }

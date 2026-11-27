@@ -1,18 +1,13 @@
-// from server: 75% by atomic.potato
-struct BoundPropGetSet
-{
-    float* values;
-
-    void __thiscall get(float* out, float* source);
+// from server: 81% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Vec3 { float x, y, z; };
+struct Pre { char p[0x1c]; };
+struct Bs { int q; };
+struct Obj : Pre, Bs { };
+struct Prop {
+ char pad[8];
+ int offset;
+ void get(Vec3* out, Bs* b);
 };
-
-void __thiscall BoundPropGetSet::get(float* out, float* source)
-{
-    float* p = source ? source - 7 : 0;
-    float* base = values + (p ? 0 : 0);
-    if (p)
-        base = values + (p - source);
-    out[0] = base[0];
-    out[1] = base[1];
-    out[2] = base[2];
-}
+void Prop::get(Vec3* out, Bs* b) { Obj* o = static_cast<Obj*>(b); out->x = ((Vec3*)(offset + (char*)o))->x; out->y = ((Vec3*)(offset + (char*)o))->y; out->z = ((Vec3*)(offset + (char*)o))->z; }

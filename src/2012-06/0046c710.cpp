@@ -1,11 +1,9 @@
-// from server: 91% by atomic.potato
-extern "C" int* __cdecl GetMainFrame();
-extern "C" void __cdecl CallTarget(int, const char*, const char*, int, int);
-
-void Function()
-{
-    int* p = GetMainFrame();
-    p = (int*)p[1];
-    p = (int*)((char*)p + 0x20);
-    CallTarget(*p, "WVS3", ".?AVCWnd@@", 0, 0);
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /GR
+class CWnd { public: virtual void v(); };
+class CMainFrame : public CWnd { };
+struct App { char pad[0x20]; CWnd* wnd; };
+struct State { int a; App* app; };
+State* GetState();
+CMainFrame* Function() { CWnd* w = GetState()->app->wnd; return dynamic_cast<CMainFrame*>(w); }

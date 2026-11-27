@@ -1,16 +1,10 @@
-// from server: 70% by atomic.potato
-extern "C" bool __fastcall sub_751850(void *);
-
-struct S
-{
-    void *field_84;
-    bool f();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Other { void m(int); bool b() const; };
+extern bool gFlag;
+struct S {
+    char pad[0x84];
+    int* vb;    bool g();
 };
-
-bool S::f()
-{
-    extern unsigned char g_00e31abe;
-    if (g_00e31abe)
-        return true;
-    return sub_751850((char *)field_84 + *(unsigned int *)field_84 + 0x84);
-}
+bool S::g() { if (gFlag) return true; return ((Other*)((char*)this + 0x84 + *vb))->b(); }

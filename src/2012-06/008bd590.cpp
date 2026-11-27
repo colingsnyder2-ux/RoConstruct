@@ -1,15 +1,13 @@
-// from server: 91% by tajop
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 struct Node;
-
 struct Container {
-    int pad0;
-    int pad4;
-    int pad8;
+    int pad0, pad4, pad8;
     Node* head;
     Node* forward(Node* node, int n);
     Node* backward(Node* node, int n);
 };
-
 struct Iterator {
     Container* container;
     Node* node;
@@ -17,7 +15,6 @@ struct Iterator {
     Iterator& operator+=(int n);
     Iterator operator+(int n) const;
 };
-
 Iterator Iterator::operator+(int n) const {
     Container* c = container;
     Node* p = node;
@@ -27,7 +24,6 @@ Iterator Iterator::operator+(int n) const {
         tmp.node = p;
         if (p == c->head) {
             p = 0;
-            return Iterator(c, p);
         }
     } else if (n < 0) {
         int m = -n;
@@ -35,7 +31,6 @@ Iterator Iterator::operator+(int n) const {
             if (!p)
                 p = c->head;
             p = c->backward(p, m);
-            return Iterator(c, p);
         } else if (m < 0) {
             tmp += -m;
             p = tmp.node;

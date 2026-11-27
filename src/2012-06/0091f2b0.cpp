@@ -1,17 +1,13 @@
-// from server: 92% by atomic.potato
-struct UnlockedPartByLocalCharacter
-{
-    UnlockedPartByLocalCharacter& f(int);
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct A0 { virtual void a0(); char pad[0x18]; };
+struct A1 { virtual void a1(); };
+struct A : A0, A1 { A(); };
+struct C : A {
+    C(int arg);
+    void init(int arg);
+    virtual void a0();
+    virtual void a1();
 };
-
-extern "C" void __stdcall sub_8f22f0(UnlockedPartByLocalCharacter*);
-extern "C" void __stdcall sub_91f250(UnlockedPartByLocalCharacter*, int);
-
-UnlockedPartByLocalCharacter& UnlockedPartByLocalCharacter::f(int arg)
-{
-    sub_8f22f0(this);
-    *(int*)this = 0xbf6644;
-    *(int*)((char*)this + 0x1c) = 0xbf6628;
-    sub_91f250(this, arg);
-    return *this;
-}
+C::C(int arg) { init(arg); }

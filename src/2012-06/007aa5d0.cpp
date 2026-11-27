@@ -1,22 +1,4 @@
-// from server: 80% by Intel
-struct Vector3 {
-    int x, y, z;
-};
-
-struct KeyframeSequence {
-    Vector3 getValue(int* out) const;
-};
-
-Vector3 KeyframeSequence::getValue(int* out) const {
-    const char* base = reinterpret_cast<const char*>(this);
-    const Vector3* src;
-    if (base[0xD4] != 0) {
-        src = reinterpret_cast<const Vector3*>(base + 0xD8);
-    } else {
-        src = reinterpret_cast<const Vector3*>(base + 0xE4);
-    }
-    out[0] = src->x;
-    out[1] = src->y;
-    out[2] = src->z;
-    return *src;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct V3{float x,y,z;}; struct K{char p[0xd4]; bool f; char p2[0x3]; V3 a; V3 b; V3 get() const;}; V3 K::get() const { return f ? a : b; }

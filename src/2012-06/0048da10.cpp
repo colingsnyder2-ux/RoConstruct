@@ -1,26 +1,7 @@
-// from server: 69% by Intel
-struct IUnknown {
-    virtual void QueryInterface() = 0;
-    virtual unsigned long AddRef() = 0;
-    virtual unsigned long Release() = 0;
-};
-
-struct SomeClass {
-    IUnknown* field_8;
-    long method(int* outPtr);
-};
-
-long SomeClass::method(int* outPtr) {
-    if (!outPtr) {
-        return 0x80004003;
-    }
-
-    IUnknown* pUnk = field_8;
-    *outPtr = reinterpret_cast<int>(pUnk);
-
-    if (pUnk) {
-        pUnk->AddRef();
-    }
-
-    return 0;
-}
+// from server: 91% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct IU { virtual long __stdcall Q(); virtual unsigned long __stdcall AddRef(); };
+struct Obj { int a; int b; IU* p; long __stdcall f(IU** out); };
+long __stdcall g(Obj* o, IU** out);
+long __stdcall Obj::f(IU** out){ if (!out) return 0x80004003L; *out = p; IU* q = p; if (q) q->AddRef(); return 0; }

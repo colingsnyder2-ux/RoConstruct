@@ -1,17 +1,15 @@
-// from server: 94% by atomic.potato
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Desc { bool isA(const void*) const; };
+const void* classDescriptor();
+struct Obj { char pad[0x14]; Desc* d; };
 struct CSettingsPropGrid {
-    bool sub_460400(int, void*);
-    void* sub_4125d0();
-
-    void sub_4a6020(int a, void* b);
+    bool sub_460400(int, Obj*);
+    void sub_4a6020(int a, Obj* b);
 };
-
-extern "C" bool __stdcall sub_6c80f0(void*, void*);
-
-void CSettingsPropGrid::sub_4a6020(int a, void* b) {
-    void* p = sub_4125d0();
-    void* q = *(void**)((char*)b + 0x14);
-    if (sub_6c80f0(q, p)) {
+void CSettingsPropGrid::sub_4a6020(int a, Obj* b) {
+    if (b->d->isA(classDescriptor())) {
         sub_460400(a, b);
     }
 }

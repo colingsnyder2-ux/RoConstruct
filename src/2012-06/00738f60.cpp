@@ -1,17 +1,7 @@
-// from server: 68% by atomic.potato
-struct S_func_00738f60 {
-    char pad0[0x364];
-    int m_field364;
-    void f(int);
-};
-
-extern "C" void __stdcall sub_00414da0(void*);
-
-void S_func_00738f60::f(int a)
-{
-    if (m_field364 != a) {
-        m_field364 = a;
-        sub_00414da0((void*)0xe34514);
-        sub_00414da0((void*)0xe346b4);
-    }
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct B { void notify(void*); };
+static int g1, g2;
+struct D : B { char pad[868 - 1]; int v; void set(int); };
+void D::set(int a) { if (v != a) { v = a; notify(&g1); notify(&g2); } }

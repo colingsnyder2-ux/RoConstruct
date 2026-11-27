@@ -1,20 +1,19 @@
-// from server: 97% by atomic.potato
-extern "C" void __cdecl Call983270(int, int, int, int);
-extern "C" void __cdecl Call9823ba(int);
-
-struct TextureContentProvider
-{
-    int value;
-    void f();
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+namespace RBX {
+struct Element {
+    void* px;
+    void* pn;
+    ~Element();
 };
-
-void TextureContentProvider::f()
+struct ElementArray {
+    Element* px;
+    ~ElementArray();
+};
+ElementArray::~ElementArray()
 {
-    int value = this->value;
-    if (value != 0)
-    {
-        int base = *reinterpret_cast<int *>(value - 4);
-        Call983270(value, 8, base, 0x6dde00);
-        Call9823ba(value - 4);
-    }
+    delete[] px;
+}
 }

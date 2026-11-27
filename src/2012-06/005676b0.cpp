@@ -1,5 +1,8 @@
-// from server: 90% by atomic.potato
-extern "C" void __cdecl ImportedFunction(void*, const char*, unsigned int);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+
+extern "C" __declspec(dllimport) void __cdecl ImportedFunction(void*, const char*, unsigned int);
 
 struct S
 {

@@ -1,31 +1,20 @@
-// from server: 70% by tester
-struct GuidData {
-    unsigned char bytes[2];
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+bool swapNeeded();
+struct BS {
+    unsigned bits; int pad[2]; unsigned char* buf;
+    void reserve(int n);
+    void write16(const unsigned char* p);
 };
-
-struct GuidItem {
-    unsigned int bits;
-    int pad1;
-    int pad2;
-    unsigned char* buffer;
-    void append(const GuidData& data);
-};
-
-extern void __stdcall sub_00567970(int);
-extern bool __stdcall sub_00567e60();
-
-void GuidItem::append(const GuidData& data)
-{
-    sub_00567970(0x10);
-    bool flag = sub_00567e60();
-    unsigned int idx = bits >> 3;
-    unsigned char* dst = buffer + idx;
-    if (flag) {
-        dst[0] = data.bytes[1];
-        dst[1] = data.bytes[0];
+void BS::write16(const unsigned char* p) {
+    reserve(16);
+    if (swapNeeded()) {
+        buf[bits >> 3] = p[1];
+        buf[(bits >> 3) + 1] = p[0];
     } else {
-        dst[0] = data.bytes[0];
-        dst[1] = data.bytes[1];
+        buf[bits >> 3] = p[0];
+        buf[(bits >> 3) + 1] = p[1];
     }
-    bits += 0x10;
+    bits += 16;
 }

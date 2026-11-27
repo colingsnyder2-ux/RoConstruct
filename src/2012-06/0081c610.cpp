@@ -1,28 +1,13 @@
-// from server: 87% by atomic.potato
-struct S_0081c610
-{
-    struct VTable
-    {
-        int (__thiscall *f)(void*);
-    };
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 
-    struct Node
-    {
-        VTable* vtable;
-        int pad;
-        Node* next;
-    };
-
-    char pad[172];
-    Node* node;
-
-    Node* f();
-};
-
-S_0081c610::Node* S_0081c610::f()
+struct Node { virtual void v0(); virtual int type(); int pad; Node* next; };
+struct S { char pad[172]; Node* node; Node* f(); };
+Node* S::f()
 {
     Node* p = node;
-    while (p->vtable->f(p) != 7)
+    while (p->type() != 7)
         p = p->next;
     return p;
 }

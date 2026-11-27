@@ -1,26 +1,6 @@
-// from server: 79% by atomic.potato
-struct WedgeBuilder {
-    char pad0[4];
-    int* begin;
-    int* end;
-    int* cap;
-    void push_back(int* value);
-};
-
-void WedgeBuilder::push_back(int* value) {
-    int* first = begin;
-    int count;
-    if (first == 0)
-        count = 0;
-    else
-        count = (cap - first) >> 2;
-    int* last = end;
-    int used = (last - first) >> 2;
-    if (used < count) {
-        *last = *value;
-        end = last + 1;
-        return;
-    }
-    extern void __stdcall grow(int*, int, int*);
-    grow(last, 1, value);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD /D_SECURE_SCL=0
+#include <vector>
+struct WedgeBuilder { int pad; std::vector<int> v; void add(const int& x); };
+void WedgeBuilder::add(const int& x) { v.push_back(x); }

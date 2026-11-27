@@ -1,20 +1,24 @@
-// from server: 86% by atomic.potato
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+
 struct S {
-    char pad[0xbc];
+    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
+    virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7();
+    virtual void v8(); virtual void v9(); virtual void v10(); virtual void v11();
+    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
+    virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
+    virtual void v20(); virtual void v21(); virtual void v22();
+    char pad[0xb8];
     char flag;
     void f(int);
+    void base(int);
 };
-
-extern "C" void __stdcall sub_684660(int);
-extern "C" char __cdecl sub_5400a0(void*, int);
-
+bool check(S*, int);
 void S::f(int a) {
-    sub_684660(a);
-    if (this->flag == 0) {
-        if (sub_5400a0(this, 0)) {
-            void** vt = *(void***)this;
-            void (__stdcall *fn)(void*) = (void (__stdcall *)(void*))vt[0x58 / 4];
-            fn(this);
-        }
+    base(a);
+    if (!flag) {
+        if (check(this, 0))
+            v22();
     }
 }

@@ -1,74 +1,352 @@
 // from server: 100% by auto
-// roc 2012-06 0064e1b0  unit: seg_00640000  size: 173 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 0064e1b0
-//
-// 0064e1b0  83ec10               sub esp, 0x10
-// 0064e1b3  55                   push ebp
-// 0064e1b4  8b6c2418             mov ebp, dword ptr [esp + 0x18]
-// 0064e1b8  56                   push esi
-// 0064e1b9  8b742420             mov esi, dword ptr [esp + 0x20]
-// 0064e1bd  85ed                 test ebp, ebp
-// 0064e1bf  0f8487000000         je 0x64e24c
-// 0064e1c5  8b556c               mov edx, dword ptr [ebp + 0x6c]
-// 0064e1c8  f7c200000c00         test edx, 0xc0000
-// 0064e1ce  746e                 je 0x64e23e
-// 0064e1d0  803e23               cmp byte ptr [esi], 0x23
-// 0064e1d3  7553                 jne 0x64e228
-// 0064e1d5  b801000000           mov eax, 1
-// 0064e1da  b120                 mov cl, 0x20
-// 0064e1dc  8d642400             lea esp, [esp]
-// 0064e1e0  380c30               cmp byte ptr [eax + esi], cl
-// 0064e1e3  7411                 je 0x64e1f6
-// 0064e1e5  384c3001             cmp byte ptr [eax + esi + 1], cl
-// 0064e1e9  740a                 je 0x64e1f5
-// 0064e1eb  83c002               add eax, 2
-// 0064e1ee  83f80f               cmp eax, 0xf
-// 0064e1f1  7ced                 jl 0x64e1e0
-// 0064e1f3  eb01                 jmp 0x64e1f6
-// 0064e1f5  40                   inc eax
-// 0064e1f6  f7c200000800         test edx, 0x80000
-// 0064e1fc  7426                 je 0x64e224
-// 0064e1fe  57                   push edi
-// 0064e1ff  8d78ff               lea edi, [eax - 1]
-// 0064e202  33c9                 xor ecx, ecx
-// 0064e204  85ff                 test edi, edi
-// 0064e206  7e14                 jle 0x64e21c
-// 0064e208  8d4601               lea eax, [esi + 1]
-// 0064e20b  57                   push edi
-// 0064e20c  50                   push eax
-// 0064e20d  8d442414             lea eax, [esp + 0x14]
-// 0064e211  50                   push eax
-// 0064e212  e845543300           call 0x98365c
-// 0064e217  83c40c               add esp, 0xc
-// 0064e21a  8bcf                 mov ecx, edi
-// 0064e21c  c6440c0b00           mov byte ptr [esp + ecx + 0xb], 0
-// 0064e221  5f                   pop edi
-// 0064e222  eb16                 jmp 0x64e23a
-// 0064e224  03f0                 add esi, eax
-// 0064e226  eb16                 jmp 0x64e23e
-// 0064e228  f7c200000800         test edx, 0x80000
-// 0064e22e  740e                 je 0x64e23e
-// 0064e230  c644240830           mov byte ptr [esp + 8], 0x30
-// 0064e235  c644240900           mov byte ptr [esp + 9], 0
-// 0064e23a  8d742408             lea esi, [esp + 8]
-// 0064e23e  8b4540               mov eax, dword ptr [ebp + 0x40]
-// 0064e241  85c0                 test eax, eax
-// 0064e243  7407                 je 0x64e24c
-// 0064e245  56                   push esi
-// 0064e246  55                   push ebp
-// 0064e247  ffd0                 call eax
-// 0064e249  83c408               add esp, 8
-// 0064e24c  55                   push ebp
-// 0064e24d  8bc6                 mov eax, esi
-// 0064e24f  e8ecfcffff           call 0x64df40
-// 0064e254  83c404               add esp, 4
-// 0064e257  5e                   pop esi
-// 0064e258  5d                   pop ebp
-// 0064e259  83c410               add esp, 0x10
-// 0064e25c  c3                   ret 
-// library libpng-1.2.32/pngerror.c (function _png_error)
-
 // roc-lang: c
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /MD
 // roc-lib: libpng-1.2.32 pngerror.c
+
+// Candidate translation unit (score above; library headers required).
+
+/* pngerror.c - stub functions for i/o and memory allocation
+ *
+ * Last changed in libpng 1.2.30 [August 15, 2008]
+ * For conditions of distribution and use, see copyright notice in png.h
+ * Copyright (c) 1998-2008 Glenn Randers-Pehrson
+ * (Version 0.96 Copyright (c) 1996, 1997 Andreas Dilger)
+ * (Version 0.88 Copyright (c) 1995, 1996 Guy Eric Schalnat, Group 42, Inc.)
+ *
+ * This file provides a location for all error handling.  Users who
+ * need special error handling are expected to write replacement functions
+ * and use png_set_error_fn() to use those functions.  See the instructions
+ * at each function.
+ */
+
+#define PNG_INTERNAL
+#include "png.h"
+#if defined(PNG_READ_SUPPORTED) || defined(PNG_WRITE_SUPPORTED)
+
+static void /* PRIVATE */
+png_default_error PNGARG((png_structp png_ptr,
+  png_const_charp error_message));
+#ifndef PNG_NO_WARNINGS
+static void /* PRIVATE */
+png_default_warning PNGARG((png_structp png_ptr,
+  png_const_charp warning_message));
+#endif /* PNG_NO_WARNINGS */
+
+/* This function is called whenever there is a fatal error.  This function
+ * should not be changed.  If there is a need to handle errors differently,
+ * you should supply a replacement error function and use png_set_error_fn()
+ * to replace the error function at run-time.
+ */
+#ifndef PNG_NO_ERROR_TEXT
+void PNGAPI
+png_error(png_structp png_ptr, png_const_charp error_message)
+{
+#ifdef PNG_ERROR_NUMBERS_SUPPORTED
+   char msg[16];
+   if (png_ptr != NULL)
+   {
+     if (png_ptr->flags&
+       (PNG_FLAG_STRIP_ERROR_NUMBERS|PNG_FLAG_STRIP_ERROR_TEXT))
+     {
+       if (*error_message == '#')
+       {
+         /* Strip "#nnnn " from beginning of error message. */
+           int offset;
+           for (offset = 1; offset<15; offset++)
+              if (error_message[offset] == ' ')
+                  break;
+           if (png_ptr->flags&PNG_FLAG_STRIP_ERROR_TEXT)
+           {
+              int i;
+              for (i = 0; i < offset - 1; i++)
+                 msg[i] = error_message[i + 1];
+              msg[i - 1] = '\0';
+              error_message = msg;
+           }
+           else
+              error_message += offset;
+       }
+       else
+       {
+           if (png_ptr->flags&PNG_FLAG_STRIP_ERROR_TEXT)
+           {
+              msg[0] = '0';
+              msg[1] = '\0';
+              error_message = msg;
+           }
+       }
+     }
+   }
+#endif
+   if (png_ptr != NULL && png_ptr->error_fn != NULL)
+      (*(png_ptr->error_fn))(png_ptr, error_message);
+
+   /* If the custom handler doesn't exist, or if it returns,
+      use the default handler, which will not return. */
+   png_default_error(png_ptr, error_message);
+}
+#else
+void PNGAPI
+png_err(png_structp png_ptr)
+{
+   if (png_ptr != NULL && png_ptr->error_fn != NULL)
+      (*(png_ptr->error_fn))(png_ptr, '\0');
+
+   /* If the custom handler doesn't exist, or if it returns,
+      use the default handler, which will not return. */
+   png_default_error(png_ptr, '\0');
+}
+#endif /* PNG_NO_ERROR_TEXT */
+
+#ifndef PNG_NO_WARNINGS
+/* This function is called whenever there is a non-fatal error.  This function
+ * should not be changed.  If there is a need to handle warnings differently,
+ * you should supply a replacement warning function and use
+ * png_set_error_fn() to replace the warning function at run-time.
+ */
+void PNGAPI
+png_warning(png_structp png_ptr, png_const_charp warning_message)
+{
+   int offset = 0;
+   if (png_ptr != NULL)
+   {
+#ifdef PNG_ERROR_NUMBERS_SUPPORTED
+   if (png_ptr->flags&
+     (PNG_FLAG_STRIP_ERROR_NUMBERS|PNG_FLAG_STRIP_ERROR_TEXT))
+#endif
+     {
+       if (*warning_message == '#')
+       {
+           for (offset = 1; offset < 15; offset++)
+              if (warning_message[offset] == ' ')
+                  break;
+       }
+     }
+     if (png_ptr != NULL && png_ptr->warning_fn != NULL)
+        (*(png_ptr->warning_fn))(png_ptr, warning_message + offset);
+   }
+   else
+      png_default_warning(png_ptr, warning_message + offset);
+}
+#endif /* PNG_NO_WARNINGS */
+
+
+/* These utilities are used internally to build an error message that relates
+ * to the current chunk.  The chunk name comes from png_ptr->chunk_name,
+ * this is used to prefix the message.  The message is limited in length
+ * to 63 bytes, the name characters are output as hex digits wrapped in []
+ * if the character is invalid.
+ */
+#define isnonalpha(c) ((c) < 65 || (c) > 122 || ((c) > 90 && (c) < 97))
+static PNG_CONST char png_digit[16] = {
+   '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+   'A', 'B', 'C', 'D', 'E', 'F'
+};
+
+#define PNG_MAX_ERROR_TEXT 64
+
+#if !defined(PNG_NO_WARNINGS) || !defined(PNG_NO_ERROR_TEXT)
+static void /* PRIVATE */
+png_format_buffer(png_structp png_ptr, png_charp buffer, png_const_charp
+   error_message)
+{
+   int iout = 0, iin = 0;
+
+   while (iin < 4)
+   {
+      int c = png_ptr->chunk_name[iin++];
+      if (isnonalpha(c))
+      {
+         buffer[iout++] = '[';
+         buffer[iout++] = png_digit[(c & 0xf0) >> 4];
+         buffer[iout++] = png_digit[c & 0x0f];
+         buffer[iout++] = ']';
+      }
+      else
+      {
+         buffer[iout++] = (png_byte)c;
+      }
+   }
+
+   if (error_message == NULL)
+      buffer[iout] = '\0';
+   else
+   {
+      buffer[iout++] = ':';
+      buffer[iout++] = ' ';
+      png_memcpy(buffer + iout, error_message, PNG_MAX_ERROR_TEXT);
+      buffer[iout + PNG_MAX_ERROR_TEXT - 1] = '\0';
+   }
+}
+
+#ifdef PNG_READ_SUPPORTED
+void PNGAPI
+png_chunk_error(png_structp png_ptr, png_const_charp error_message)
+{
+   char msg[18+PNG_MAX_ERROR_TEXT];
+   if (png_ptr == NULL)
+     png_error(png_ptr, error_message);
+   else
+   {
+     png_format_buffer(png_ptr, msg, error_message);
+     png_error(png_ptr, msg);
+   }
+}
+#endif /* PNG_READ_SUPPORTED */
+#endif /* !defined(PNG_NO_WARNINGS) || !defined(PNG_NO_ERROR_TEXT) */
+
+#ifndef PNG_NO_WARNINGS
+void PNGAPI
+png_chunk_warning(png_structp png_ptr, png_const_charp warning_message)
+{
+   char msg[18+PNG_MAX_ERROR_TEXT];
+   if (png_ptr == NULL)
+     png_warning(png_ptr, warning_message);
+   else
+   {
+     png_format_buffer(png_ptr, msg, warning_message);
+     png_warning(png_ptr, msg);
+   }
+}
+#endif /* PNG_NO_WARNINGS */
+
+
+/* This is the default error handling function.  Note that replacements for
+ * this function MUST NOT RETURN, or the program will likely crash.  This
+ * function is used by default, or if the program supplies NULL for the
+ * error function pointer in png_set_error_fn().
+ */
+static void /* PRIVATE */
+png_default_error(png_structp png_ptr, png_const_charp error_message)
+{
+#ifndef PNG_NO_CONSOLE_IO
+#ifdef PNG_ERROR_NUMBERS_SUPPORTED
+   if (*error_message == '#')
+   {
+     /* Strip "#nnnn " from beginning of warning message. */
+     int offset;
+     char error_number[16];
+     for (offset = 0; offset<15; offset++)
+     {
+         error_number[offset] = error_message[offset + 1];
+         if (error_message[offset] == ' ')
+             break;
+     }
+     if ((offset > 1) && (offset < 15))
+     {
+       error_number[offset - 1] = '\0';
+       fprintf(stderr, "libpng error no. %s: %s\n", error_number,
+          error_message + offset + 1);
+     }
+     else
+       fprintf(stderr, "libpng error: %s, offset=%d\n", error_message, offset);
+   }
+   else
+#endif
+   fprintf(stderr, "libpng error: %s\n", error_message);
+#endif
+
+#ifdef PNG_SETJMP_SUPPORTED
+   if (png_ptr)
+   {
+#  ifdef USE_FAR_KEYWORD
+   {
+      jmp_buf jmpbuf;
+      png_memcpy(jmpbuf, png_ptr->jmpbuf, png_sizeof(jmp_buf));
+      longjmp(jmpbuf, 1);
+   }
+#  else
+   longjmp(png_ptr->jmpbuf, 1);
+#  endif
+   }
+#else
+   PNG_ABORT();
+#endif
+#ifdef PNG_NO_CONSOLE_IO
+   error_message = error_message; /* make compiler happy */
+#endif
+}
+
+#ifndef PNG_NO_WARNINGS
+/* This function is called when there is a warning, but the library thinks
+ * it can continue anyway.  Replacement functions don't have to do anything
+ * here if you don't want them to.  In the default configuration, png_ptr is
+ * not used, but it is passed in case it may be useful.
+ */
+static void /* PRIVATE */
+png_default_warning(png_structp png_ptr, png_const_charp warning_message)
+{
+#ifndef PNG_NO_CONSOLE_IO
+#  ifdef PNG_ERROR_NUMBERS_SUPPORTED
+   if (*warning_message == '#')
+   {
+     int offset;
+     char warning_number[16];
+     for (offset = 0; offset < 15; offset++)
+     {
+        warning_number[offset] = warning_message[offset + 1];
+        if (warning_message[offset] == ' ')
+            break;
+     }
+     if ((offset > 1) && (offset < 15))
+     {
+       warning_number[offset + 1] = '\0';
+       fprintf(stderr, "libpng warning no. %s: %s\n", warning_number,
+          warning_message + offset);
+     }
+     else
+       fprintf(stderr, "libpng warning: %s\n", warning_message);
+   }
+   else
+#  endif
+     fprintf(stderr, "libpng warning: %s\n", warning_message);
+#else
+   warning_message = warning_message; /* make compiler happy */
+#endif
+   png_ptr = png_ptr; /* make compiler happy */
+}
+#endif /* PNG_NO_WARNINGS */
+
+/* This function is called when the application wants to use another method
+ * of handling errors and warnings.  Note that the error function MUST NOT
+ * return to the calling routine or serious problems will occur.  The return
+ * method used in the default routine calls longjmp(png_ptr->jmpbuf, 1)
+ */
+void PNGAPI
+png_set_error_fn(png_structp png_ptr, png_voidp error_ptr,
+   png_error_ptr error_fn, png_error_ptr warning_fn)
+{
+   if (png_ptr == NULL)
+      return;
+   png_ptr->error_ptr = error_ptr;
+   png_ptr->error_fn = error_fn;
+   png_ptr->warning_fn = warning_fn;
+}
+
+
+/* This function returns a pointer to the error_ptr associated with the user
+ * functions.  The application should free any memory associated with this
+ * pointer before png_write_destroy and png_read_destroy are called.
+ */
+png_voidp PNGAPI
+png_get_error_ptr(png_structp png_ptr)
+{
+   if (png_ptr == NULL)
+      return NULL;
+   return ((png_voidp)png_ptr->error_ptr);
+}
+
+
+#ifdef PNG_ERROR_NUMBERS_SUPPORTED
+void PNGAPI
+png_set_strip_error_numbers(png_structp png_ptr, png_uint_32 strip_mode)
+{
+   if (png_ptr != NULL)
+   {
+     png_ptr->flags &=
+       ((~(PNG_FLAG_STRIP_ERROR_NUMBERS|PNG_FLAG_STRIP_ERROR_TEXT))&strip_mode);
+   }
+}
+#endif
+#endif /* PNG_READ_SUPPORTED || PNG_WRITE_SUPPORTED */

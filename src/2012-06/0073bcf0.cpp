@@ -1,18 +1,7 @@
-// from server: 75% by atomic.potato
-struct X_0073bcf0 {
-    char pad_0[0xac];
-    int f_ac;
-    int f_b0;
-    int get(int* a, int* b);
-    int run(int arg);
-};
-
-int X_0073bcf0::run(int arg) {
-    int a;
-    int b;
-    get(&a, &b);
-    if (a != f_b0) {
-        return *(int*)(a + 0x28);
-    }
-    return 0;
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /D_SECURE_SCL=0
+#include <map>
+struct V { char pad[0x18]; int x; char pad2[4]; };
+struct S { char pad[0xac]; std::map<unsigned, V> m; int f(unsigned key); };
+int S::f(unsigned key) { std::map<unsigned, V>::iterator it = m.find(key); return it != m.end() ? it->second.x : 0; }

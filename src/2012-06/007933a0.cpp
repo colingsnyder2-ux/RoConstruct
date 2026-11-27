@@ -1,16 +1,19 @@
-// from server: 97% by intel
-struct S_func_007933d0
-{
-    char pad[140];
-    void* m_data;
-    int f(unsigned int index);
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /D_SECURE_SCL=0
+#include <vector>
+namespace RBX { namespace Profiling {
+class Profiler {
+    char pad[0x8c];
+    std::vector<int>* buckets;
+public:
+    int getBucket(unsigned int index);
 };
-
-int S_func_007933d0::f(unsigned int index)
+int Profiler::getBucket(unsigned int index)
 {
-    char* p = (char*)m_data;
-    int count = (*(int*)(p + 8) - *(int*)(p + 4)) >> 2;
-    if (index >= (unsigned int)count)
+    if (index >= buckets->size())
         return -1;
-    return ((int*)*(void**)(p + 16))[index];
+    return (*buckets)[index];
 }
+} }

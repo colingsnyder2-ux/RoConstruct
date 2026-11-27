@@ -1,7 +1,8 @@
-// from server: 88% by atomic.potato
-extern "C" int __cdecl sub_00983448(void *, void *, const char *, int);
-
-int __stdcall TestService(void *value)
-{
-    return sub_00983448(value, (void *)0x00d601e8, (const char *)0x00d6a11c, 0) == 0;
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /GR
+namespace RBX {
+class Instance { public: virtual void v(); };
+class Script { public: virtual void w(); };
 }
+bool __stdcall Function007d48f0(RBX::Instance* value) { return dynamic_cast<RBX::Script*>(value) == 0; }

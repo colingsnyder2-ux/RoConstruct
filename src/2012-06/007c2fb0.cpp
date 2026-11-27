@@ -1,20 +1,14 @@
-// from server: 71% by atomic.potato
-extern "C" float __fastcall sub_7506d0(void*);
-
-struct S
-{
-    unsigned char pad[132];
-    void* value;
-    float f();
+// from server: 78% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD /arch:SSE /fp:fast
+struct Other { float get() const; };
+extern bool gFlag;
+struct S {
+    char pad[0x84];
+    int* vb;
+    float get() const;
 };
-
-float S::f()
-{
-    extern unsigned char flag;
-    if (!flag)
-    {
-        volatile float result = 0.0f;
-        return result;
-    }
-    return sub_7506d0((void*)((char*)value + *(unsigned int*)value + 132));
+float S::get() const {
+    if (gFlag) { volatile float z = 0.0f; return z; }
+    return ((Other*)((char*)this + 0x84 + *vb))->get();
 }

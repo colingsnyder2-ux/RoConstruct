@@ -1,16 +1,6 @@
-// from server: 77% by atomic.potato
-extern "C" void __cdecl sub_0058e7a0(void*, double*);
-
-struct S
-{
-    double f();
-};
-
-double S::f()
-{
-    double value;
-    sub_0058e7a0((char*)this + 0x120, &value);
-    if (value > 0.0)
-        return 1.0 / value;
-    return 0.0;
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /arch:SSE
+struct S { double* g(double*); };
+struct C { char pad[0x120]; S s; double f(); };
+double C::f() { double t; double v = *s.g(&t); return v > 0.0 ? 1.0 / v : 0.0; }

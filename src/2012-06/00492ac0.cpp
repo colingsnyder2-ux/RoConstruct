@@ -1,19 +1,20 @@
-// from server: 87% by atomic.potato
-extern "C" void __cdecl CallToggle(int, const char *, int);
-extern "C" void CallView(void *);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 
-extern unsigned char g_toggleViewMode;
-extern const char g_toggleViewModeName[];
-
+namespace FLog { extern unsigned char ToggleViewMode; }
+namespace RBX { void FastLog(unsigned char, const char*, const void*); }
+struct View { void toggle(); };
 struct ToggleViewMode
 {
-    void Toggle();
-    void *field0c;
+    char pad[0xc];
+    View *view;
+    void Toggle(int);
 };
-
-void ToggleViewMode::Toggle()
+extern const char g_name[];
+void ToggleViewMode::Toggle(int)
 {
-    if (g_toggleViewMode)
-        CallToggle((int)g_toggleViewMode, g_toggleViewModeName, 0);
-    CallView(field0c);
+    if (FLog::ToggleViewMode)
+        RBX::FastLog(FLog::ToggleViewMode, g_name, 0);
+    view->toggle();
 }

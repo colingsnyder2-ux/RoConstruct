@@ -1,18 +1,17 @@
-// from server: 91% by atomic.potato
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Inner {
+    char pad[0x10];
+    Inner& operator=(const Inner&);
+};
 struct Row {
     int a;
     int b;
-    char pad[0x10];
+    Inner c;
 };
-
-extern "C" void __fastcall sub_5a9430(void* dst, void* src);
-
 void copy_rows(Row* dst, Row* end, Row* src)
 {
-    while (dst != end) {
-        dst->a = src->a;
-        dst->b = src->b;
-        sub_5a9430((char*)dst + 8, (char*)src + 8);
-        dst = (Row*)((char*)dst + 0x18);
-    }
+    for (; dst != end; ++dst)
+        *dst = *src;
 }

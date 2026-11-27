@@ -1,19 +1,7 @@
-// from server: 71% by atomic.potato
-typedef struct _CRITICAL_SECTION CRITICAL_SECTION;
-
-extern "C" void __stdcall EnterCriticalSection(CRITICAL_SECTION *);
-extern "C" void __stdcall LeaveCriticalSection(CRITICAL_SECTION *);
-
-struct S
-{
-    int f(int, int);
-};
-
-int S::f(int unused, int value)
-{
-    CRITICAL_SECTION *section = *(CRITICAL_SECTION **)((char *)this + 0x10);
-    EnterCriticalSection(section);
-    *(int *)((char *)this + 0x1c) = value;
-    LeaveCriticalSection(section);
-    return 0;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void*);
+extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void*);
+struct S { char pad[0x10]; void* cs; char pad2[8]; int v; };
+int __stdcall f(S* s, int value) { void* c = s->cs; EnterCriticalSection(c); s->v = value; LeaveCriticalSection(c); return 0; }

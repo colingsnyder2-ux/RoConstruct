@@ -1,19 +1,13 @@
-// from server: 70% by atomic.potato
-extern "C" int __cdecl Target(int);
-
-struct S
-{
-    int f();
-    int* value;
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct R { int x; };
+struct Other { const R& h() const; };
+extern bool gFlag;
+extern R gDefault;
+struct S {
+    char pad[0x84];
+    int* vb;
+    const R& g();
 };
-
-int S::f()
-{
-    extern unsigned char g_flag;
-    extern int g_value;
-
-    if (g_flag)
-        return g_value;
-
-    return Target(value[0] + reinterpret_cast<int>(this) + 132);
-}
+const R& S::g() { if (gFlag) return gDefault; return ((Other*)((char*)this + 0x84 + *vb))->h(); }

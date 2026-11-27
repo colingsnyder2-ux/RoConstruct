@@ -1,14 +1,5 @@
-// from server: 71% by atomic.potato
-extern "C" void __cdecl G1_func_009779e0(double, void *);
-
-struct S
-{
-    void *func(void *, void *);
-};
-
-void *S::func(void *a, void *b)
-{
-    double value;
-    G1_func_009779e0(value, b);
-    return b;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+void __stdcall g(void*, void*, double);
+void* __stdcall f(void* a, void* b) { g(a, b, 2.0); return a; }

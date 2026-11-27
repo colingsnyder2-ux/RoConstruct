@@ -1,47 +1,35 @@
-// from server: 88% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8world/RigidJoint.cpp
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 
-// Candidate translation unit (score above; library headers required).
-#include "v8world/RigidJoint.h"
-#include "v8world/Primitive.h"
-#include "util/Math.h"
-
-namespace RBX
+namespace G3D {
+struct Matrix3 { float m[3][3]; };
+struct Vector3 { float x, y, z; };
+class CoordinateFrame {
+public:
+    Matrix3 rotation; Vector3 translation;
+    CoordinateFrame inverse() const;
+    CoordinateFrame operator*(const CoordinateFrame& o) const;
+};
+}
+namespace RBX {
+class Primitive;
+namespace Math { void orthonormalizeIfNecessary(G3D::Matrix3& m); }
+class RigidJoint {
+public:
+    char pad0[0xc];
+    Primitive* prim0;
+    char pad1[0x24];
+    G3D::CoordinateFrame jointCoord0;
+    G3D::CoordinateFrame jointCoord1;
+    G3D::CoordinateFrame getChildInParent(Primitive* parent, Primitive* child);
+};
+G3D::CoordinateFrame RigidJoint::getChildInParent(Primitive* parent, Primitive* child)
 {
-	// TODO: check which of these belong to the header
-
-	bool RigidJoint::isAligned()
-	{
-		G3D::CoordinateFrame c0World = getPrimitive(0)->getCoordinateFrame() * jointCoord0;
-		G3D::CoordinateFrame c1World = getPrimitive(1)->getCoordinateFrame() * jointCoord1;
-		return Math::fuzzyEq(c0World, c1World, 0.00001f, 0.00001f);
-	}
-
-	G3D::CoordinateFrame RigidJoint::align(Primitive* pMove, Primitive* pStay)
-	{
-		const G3D::CoordinateFrame& c0 = getJointCoord(pMove == getPrimitive(0) ? 0 : 1);
-		const G3D::CoordinateFrame& c1 = getJointCoord(pStay == getPrimitive(0) ? 0 : 1);
-
-		G3D::CoordinateFrame jointWorld = pStay->getCoordinateFrame() * c1;
-		return jointWorld * c0.inverse();
-	}
-
-	G3D::CoordinateFrame RigidJoint::getChildInParent(Primitive* parent, Primitive* child)
-	{
-		const G3D::CoordinateFrame& c0 = getJointCoord(parent == getPrimitive(0) ? 0 : 1);
-		const G3D::CoordinateFrame& c1 = getJointCoord(child == getPrimitive(0) ? 0 : 1);
-
-		return c0 * c1.inverse();
-	}
-
-	void RigidJoint::faceIdToCoords(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1, G3D::CoordinateFrame& c0, G3D::CoordinateFrame& c1)
-	{
-		c0 = p0->getFaceCoordInObject(nId0);
-
-		G3D::CoordinateFrame worldC = p0->getCoordinateFrame() * c0;
-		c1 = p1->getCoordinateFrame().toObjectSpace(worldC);
-	}
+    const G3D::CoordinateFrame& p = (parent == prim0) ? jointCoord0 : jointCoord1;
+    const G3D::CoordinateFrame& c = (child == prim0) ? jointCoord0 : jointCoord1;
+    G3D::CoordinateFrame answer = p * c.inverse();
+    Math::orthonormalizeIfNecessary(answer.rotation);
+    return answer;
+}
 }

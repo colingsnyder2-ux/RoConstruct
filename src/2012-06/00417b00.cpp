@@ -1,17 +1,9 @@
-// from server: 69% by atomic.potato
-struct S
-{
-    void* f(void*);
-};
-
-extern "C" void* sub_417510(S*, void*);
-
-void* S::f(void* p)
-{
-    sub_417510(this, p);
-    *(void**)((char*)this + 0x20) = (void*)0x00B43C34;
-    *(void**)((char*)this + 0x00) = (void*)0x00B46560;
-    *(void**)((char*)this + 0x0C) = (void*)0x00B46558;
-    *(void**)((char*)this + 0x20) = (void*)0x00B46548;
-    return this;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct A { virtual void f(); int data[2]; };
+struct E { virtual void g(); int data[4]; };
+struct inj : A, E { inj(inj const& x); };
+struct cb { virtual void clone() const; };
+struct impl : inj, cb { impl(impl const& x); virtual void clone() const; };
+impl::impl(impl const& x) : inj(x), cb() {}

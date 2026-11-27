@@ -1,16 +1,15 @@
-// from server: 71% by atomic.potato
-struct CRenderSettingsItem
-{
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Notifier { void fire(const void* what); };
+struct CRenderSettingsItem {
+    char pad[0xa4];
     int value;
-    void setValue(int);
+    char pad2[0x144-0xa8];
+    Notifier changed;
+    void setValue(int v);
 };
-
-void CRenderSettingsItem::setValue(int value)
-{
-    if (value == *(int*)((char*)this + 0xa4))
-        return;
-
-    *(int*)((char*)this + 0xa4) = value;
-    *(int*)0xe19860 = value;
-    *(int*)((char*)this + 0x144) = 0;
+extern int gItem;
+void CRenderSettingsItem::setValue(int v) {
+    if (v != value) { value = v; changed.fire(&gItem); }
 }

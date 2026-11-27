@@ -1,7 +1,7 @@
-// from server: 98% by colin
+// from server: 100% by Xemicl
 // roc-lang: c
 // roc-cl: 21022
-// roc-flags: /O2 /GS- /MD
+// roc-flags: /O2 /GS- /MD /arch:SSE
 // roc-lib: zlib-1.2.3 deflate.c
 
 // Candidate translation unit (score above; library headers required).

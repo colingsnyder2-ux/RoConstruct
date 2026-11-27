@@ -1,42 +1,18 @@
-// from server: 70% by Intel
-
-
-
-
+// from server: 89% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Node { unsigned short a; int b; int v0, v1, v2; int z0, z1, z2; };
+Node* allocNode();
 struct BallBallContact {
-    void* vfptr;
-    void* next;
-    void* pool;
-
-    void* __stdcall Create(void* a1, void* a2, void* a3);
+    Node* head;
+    void add(const unsigned short* a, const int* b, const int* v);
 };
-
-extern "C" void* __stdcall AllocateFromPool(void* pool);
-
-void* __stdcall BallBallContact::Create(void* a1, void* a2, void* a3) {
-    BallBallContact* thisPtr = this;
-    void* eax = thisPtr->vfptr;
-    if (eax) {
-        void* edx = *reinterpret_cast<void**>(eax);
-        thisPtr->vfptr = edx;
-    } else {
-        eax = AllocateFromPool(thisPtr->pool);
-    }
-    if (!eax) {
-        return 0;
-    }
-    void* ecx = *reinterpret_cast<void**>(a2);
-    unsigned short dx = *reinterpret_cast<unsigned short*>(a1);
-    *reinterpret_cast<void**>(reinterpret_cast<char*>(eax) + 4) = ecx;
-    void* edx = *reinterpret_cast<void**>(a3);
-    *reinterpret_cast<unsigned short*>(eax) = dx;
-    *reinterpret_cast<void**>(reinterpret_cast<char*>(eax) + 8) = edx;
-    edx = *reinterpret_cast<void**>(reinterpret_cast<char*>(a3) + 4);
-    *reinterpret_cast<void**>(reinterpret_cast<char*>(eax) + 12) = edx;
-    ecx = *reinterpret_cast<void**>(reinterpret_cast<char*>(a3) + 8);
-    *reinterpret_cast<void**>(reinterpret_cast<char*>(eax) + 16) = ecx;
-    *reinterpret_cast<int*>(reinterpret_cast<char*>(eax) + 20) = 0;
-    *reinterpret_cast<int*>(reinterpret_cast<char*>(eax) + 24) = 0;
-    *reinterpret_cast<int*>(reinterpret_cast<char*>(eax) + 28) = 0;
-    return eax;
+void BallBallContact::add(const unsigned short* a, const int* b, const int* v) {
+    Node* n = head;
+    if (n) head = *(Node**)n; else n = allocNode();
+    if (!n) return;
+    n->b = *b;
+    n->a = *a;
+    n->v0 = v[0]; n->v1 = v[1]; n->v2 = v[2];
+    n->z0 = 0; n->z1 = 0; n->z2 = 0;
 }

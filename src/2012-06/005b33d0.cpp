@@ -1,18 +1,20 @@
-// from server: 90% by atomic.potato
-extern "C" void __stdcall sub_8766f(void *);
-extern "C" void __cdecl sub_982114(void *);
-
-struct S {
-    int value;
-    int state;
-
-    void __stdcall f();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+void __cdecl operator delete(void*);
+struct Inner {
+    int a;
+    void* data;
+    void clear();
 };
-
-void __stdcall S::f()
+struct Outer {
+    int x;
+    Inner inner;
+};
+void __stdcall f(Outer* o)
 {
-    S *q = (S *)((char *)this + 4);
-    sub_8766f(q);
-    sub_982114((void *)q->state);
-    q->state = 0;
+    Inner* q = &o->inner;
+    q->clear();
+    operator delete(q->data);
+    q->data = 0;
 }

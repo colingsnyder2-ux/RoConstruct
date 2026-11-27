@@ -1,23 +1,25 @@
-// from server: 91% by atomic.potato
-struct CSourceStream {
-    int* field0;
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct GUID_ { unsigned long a; unsigned short b, c; unsigned char d[8]; };
+struct IUnknown_ {
+    virtual long __stdcall QueryInterface(const GUID_&, void**) = 0;
+    virtual unsigned long __stdcall AddRef() = 0;
+    virtual unsigned long __stdcall Release() = 0;
 };
+extern "C" const GUID_ IID_Thing;
+int __cdecl IsEqualGuid_(const GUID_& a, const GUID_& b);
 
-extern "C" int __cdecl sub_41FCF0(void* a1, void* a2);
-
-int __stdcall sub_4B9210(int arg1, int arg2, int* arg3) {
-    if (!arg3) {
+long __stdcall GetInterface(IUnknown_* pUnk, const GUID_& riid, void** ppv) {
+    if (!ppv) {
         return 0x80004003;
     }
-
-    int result = sub_41FCF0((void*)arg2, (void*)0xC0CD08);
-    if (result) {
-        *arg3 = arg1;
-        int* vtable = *(int**)arg1;
-        ((void(__thiscall*)(int*))vtable[1])((int*)arg1);
+    if (IsEqualGuid_(riid, IID_Thing)) {
+        *ppv = pUnk;
+        pUnk->AddRef();
         return 0;
     } else {
-        *arg3 = 0;
+        *ppv = 0;
         return 0x80004002;
     }
 }

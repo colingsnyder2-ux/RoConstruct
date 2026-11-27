@@ -1,23 +1,14 @@
-// from server: 97% by tajop
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <exception>
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)
 extern "C" long __cdecl _InterlockedIncrement(volatile long*);
 extern "C" long __cdecl _InterlockedDecrement(volatile long*);
 #pragma intrinsic(_InterlockedIncrement)
 #pragma intrinsic(_InterlockedDecrement)
-
-namespace std {
-class exception {
-public:
-    exception();
-    exception(const exception&);
-    virtual ~exception();
-    virtual const char* what() const;
-private:
-    const char* _m_what;
-    int _m_doFree;
-};
-}
 
 struct lua_State;
 

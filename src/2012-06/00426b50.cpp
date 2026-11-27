@@ -1,18 +1,8 @@
-// from server: 70% by atomic.potato
-extern "C" void sub_9828D6(void *, void *);
-
-struct XOleCommandTarget
-{
-    int vtable;
-    int field_EC;
-    int field_F0;
-    XOleCommandTarget(void *);
-};
-
-XOleCommandTarget::XOleCommandTarget(void *arg)
-{
-    sub_9828D6(this, arg);
-    vtable = 0x00B4D954;
-    field_EC = 0x00B4D8EC;
-    field_F0 = 0x00B4D938;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Base { virtual void f(); char pad[0xe8]; Base(void* p); };
+struct __declspec(novtable) I1 { virtual void a(); };
+struct __declspec(novtable) I2 { virtual void b(); };
+struct D : Base, I1, I2 { D(void* p); virtual void f(); virtual void a(); virtual void b(); };
+D::D(void* p) : Base(p) {}

@@ -1,4 +1,8 @@
-// from server: 95% by tajop
+// from server: 100% by Xemicl
+// roc 2012-06 006e1d40  unit: RBX::VDataModel::?$RefPropDescriptor  size: 196 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 006e1d40
+//
+
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)
 extern "C" long __cdecl _InterlockedDecrement(volatile long*);
@@ -53,22 +57,17 @@ struct Descriptor {
 };
 
 const void* classDescriptor();
-
-struct S {
-    char pad0[0x28];
-    Descriptor* desc;
+struct First { char a[4]; };
+struct Base { char pad0[0x24]; Descriptor* desc;
+template<class T> T* cast() { Descriptor* d = desc; return d->isA(classDescriptor()) ? static_cast<T*>(this) : 0; }
+};
+struct S : First, Base {
     char pad1[0x10];
     Holder children;
-    S* self() {
-        Descriptor* d = desc;
-        if (d->isA(classDescriptor())) return this;
-        return 0;
-    }
     int count();
 };
-
 int S::count() {
-    int n = self() != 0 ? 1 : 0;
+    int n = cast<S>() != 0 ? 1 : 0;
     if (children.px) {
         ChildRef r = children.read();
         Child* e = r.px->last;

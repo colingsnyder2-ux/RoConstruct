@@ -1,22 +1,9 @@
-// from server: 76% by atomic.potato
-extern "C" void* __cdecl sub_983448(void*, void*, void*, int, int);
-extern "C" void* __cdecl sub_47d2a0(void*);
-extern "C" void* __cdecl sub_6fb630(void*);
-
-extern "C" char g_d6e21c[];
-extern "C" char g_d6e310[];
-
-struct S {
-    void* f(int);
-};
-
-void* S::f(int)
-{
-    void* p = sub_983448(this, g_d6e21c, g_d6e310, 0, 0);
-    if (p == 0)
-        return 0;
-    void* q = sub_47d2a0(p);
-    if (q == 0)
-        return 0;
-    return sub_6fb630(q);
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct U { int g(int); };
+class CDocument { public: virtual void dv(); };
+class CRobloxDoc : public CDocument { public: U* get(); };
+template<class D, class B> class VerbBinder { public: virtual void v(); int f(int a); };
+template<class D, class B> int VerbBinder<D, B>::f(int a) { D* t = dynamic_cast<D*>(this); if (!t) return 0; U* u = t->get(); if (!u) return 0; return u->g(a); }
+template class VerbBinder<CRobloxDoc, CDocument>;

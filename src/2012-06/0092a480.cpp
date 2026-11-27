@@ -1,35 +1,37 @@
-// from server: 98% by atomic.potato
-struct S {
-    char pad0[4];
-    int field4;
-    char pad8[0x60];
-    int field68;
-    char pad6c[0x18];
-    int field84;
-    void f();
-};
-
-extern unsigned char g_e580b3;
-extern int g_e5809c;
-extern int g_bb32c8;
-extern int g_bb32b0;
-extern int g_bb3238;
-
-extern "C" int __cdecl sub_972290(int a, int b);
-
-void S::f() {
-    int v = 0xb839a4;
-    field84 = v;
-    field68 = v;
-    if (g_e580b3 != 0) {
-        if (field4 != -1) {
-            char (*fp)(int, int, int) = (char (*)(int, int, int))g_e5809c;
-            if (fp != 0) {
-                if (fp(0x16, (int)&g_bb32c8, (int)&g_bb32b0) != 0) {
-                    return;
-                }
-            }
-            sub_972290(g_e580b3, (int)&g_bb3238);
-        }
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+namespace FLog { extern unsigned char Asserts; }
+namespace RBX {
+typedef bool (*AssertionHook)(const char* expr, const char* file, int line);
+extern AssertionHook assertionHook;
+void FastLog(unsigned int level, const char* message);
+}
+#define RBX_STR2(x) #x
+#define RBX_STR(x) RBX_STR2(x)
+#define RBXASSERT(expr, FILE_, LINE_) \
+    do { if (FLog::Asserts && !(expr)) { \
+        if (!RBX::assertionHook || !RBX::assertionHook(#expr, FILE_, LINE_)) \
+            RBX::FastLog(FLog::Asserts, #expr " file: " FILE_ " line: " RBX_STR(LINE_)); \
+    } } while (0)
+namespace RBX {
+class KernelIndex {
+    int kernelIndex;
+public:
+    bool indexInKernel() const { return kernelIndex != -1; }
+    ~KernelIndex() {
+        RBXASSERT(!indexInKernel(), "C:\\TeamCity\\buildAgent\\work\\8348b47e373515f7\\Client\\App\\include\\V8Kernel/KernelIndex.h", 22);
     }
+};
+class ContactParams { public: virtual ~ContactParams() {} char pad[0x18]; };
+class PairBase { public: int first; };
+class EdgeEdgePair : public PairBase, public KernelIndex {
+public:
+    char pad8[0x60];
+    ContactParams a;
+    ContactParams b;
+    ~EdgeEdgePair();
+};
+EdgeEdgePair::~EdgeEdgePair() {}
 }

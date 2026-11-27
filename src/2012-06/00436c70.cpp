@@ -1,38 +1,23 @@
-// from server: 71% by Intel
-struct CWrapperView;
-
-extern "C" void __stdcall sub_4789b0(void* ecx, void* edx);
-
-void __stdcall sub_436C70(CWrapperView* esi)
-{
-    void* eax = *reinterpret_cast<void**>(reinterpret_cast<char*>(esi) + 0x14);
-    if (eax)
-    {
-        void* ecx = *reinterpret_cast<void**>(reinterpret_cast<char*>(eax) + 0xFC);
-        int edx = *reinterpret_cast<int*>(reinterpret_cast<char*>(esi) + 8);
-        if (edx >= 0)
-        {
-            int limit = *reinterpret_cast<int*>(reinterpret_cast<char*>(ecx) + 0x2C);
-            if (edx < limit)
-            {
-                void** array = *reinterpret_cast<void***>(reinterpret_cast<char*>(ecx) + 0x28);
-                eax = array[edx];
-            }
-            else
-            {
-                eax = 0;
-            }
-        }
-        else
-        {
-            eax = 0;
-        }
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Obj { void attach(int g); };
+struct Vec { char pad[0x28]; Obj** data; int size; };
+struct Parent { char pad[0xfc]; Vec* vec; };
+struct CWrapperView {
+    virtual ~CWrapperView();
+    int pad;
+    int index;
+    char pad2[0x14-0xc];
+    Parent* parent;
+};
+extern int gGlobal;
+void __stdcall f(CWrapperView* v) {
+    if (v->parent) {
+        Vec* vec = v->parent->vec;
+        int i = v->index;
+        Obj* o = (i >= 0 && i < vec->size) ? vec->data[i] : 0;
+        o->attach(gGlobal);
     }
-
-    void* global = *reinterpret_cast<void**>(0xDB4930);
-    sub_4789b0(eax, global);
-
-    void** vtable = *reinterpret_cast<void***>(esi);
-    void (*func)(CWrapperView*, int) = reinterpret_cast<void (*)(CWrapperView*, int)>(vtable[1]);
-    func(esi, 1);
+    delete v;
 }

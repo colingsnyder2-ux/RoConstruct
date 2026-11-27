@@ -1,19 +1,25 @@
-// from server: 89% by atomic.potato
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+
+struct Elem { int v[8]; };
+struct Vec
+{
+    int al;
+    Elem* first;
+    Elem* last;
+    Elem* end;
+    unsigned size() const { return last - first; }
+    void resize(unsigned n);
+};
 struct S
 {
-    int value;
-    int count;
-    int capacity;
-    int data;
-    int f(int);
+    char pad[0x44];
+    Vec vec;
+    unsigned f(int);
 };
-
-int S::f(int x)
+unsigned S::f(int x)
 {
-    int n = (((int*)((char*)this + 0x48))[1] -
-             ((int*)((char*)this + 0x48))[0]) >> 5;
-    n += x;
-    S* p = (S*)((char*)this + 0x44);
-    p->f(n);
-    return (p->capacity - p->count) >> 5;
+    vec.resize(vec.size() + x);
+    return vec.size();
 }

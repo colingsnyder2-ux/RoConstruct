@@ -1,19 +1,21 @@
-// from server: 96% by atomic.potato
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Time {
+    int lo;
+    int hi;
+    Time();
+    static Time now();
+};
 struct VCEvent {
     char pad0[0x9c];
     int field_9c;
     char pad1[0x10];
-    int field_b0;
-    int field_b4;
-    int* sub_9756f0(int* out);
+    Time stamp;
     void func();
 };
-
 void VCEvent::func()
 {
-    int tmp[2];
     field_9c = 1;
-    int* p = sub_9756f0(tmp);
-    field_b0 = p[0];
-    field_b4 = p[1];
+    stamp = Time::now();
 }

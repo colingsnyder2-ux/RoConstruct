@@ -1,15 +1,11 @@
-// from server: 89% by Intel
-struct VAnimationTrack_EventDesc
-{
-    void __cdecl func_008f7fb0(float arg1, float arg2);
-};
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 
-void VAnimationTrack_EventDesc::func_008f7fb0(float arg1, float arg2)
+struct Slot { virtual void call(float, float); int a; };
+struct Obj { char pad[8]; Slot slot; int connected; };
+void fire(Obj* obj, float a, float b)
 {
-    if (*reinterpret_cast<int*>(reinterpret_cast<char*>(this) + 0x10) != 0)
-    {
-        int* vtable = *reinterpret_cast<int**>(reinterpret_cast<char*>(this) + 8);
-        void (__thiscall *func)(int*, float, float) = reinterpret_cast<void (__thiscall*)(int*, float, float)>(vtable[0]);
-        func(vtable, arg1, arg2);
-    }
+    if (obj->connected != 0)
+        obj->slot.call(a, b);
 }

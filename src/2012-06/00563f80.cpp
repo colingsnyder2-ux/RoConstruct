@@ -1,22 +1,20 @@
-// from server: 91% by atomic.potato
-struct S_00563f80 {
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct R { int a; char b; R& operator=(const R& o) { a = o.a; b = o.b; return *this; } };
+struct Base9 { char pad[9]; };
+struct Target { void get(R* out, int arg); };
+#pragma pack(push,1)
+struct Obj : Target { char pad[8]; Base9 b; };
+#pragma pack(pop)
+struct S {
     char pad_0[8];
-    void* f_8;
-    void method(int a, int b);
+    Base9* f_8;
+    void method(R* out, int b);
 };
-
-extern "C" void __fastcall sub_00563770(void* out, void* self, int arg);
-
-void S_00563f80::method(int a, int b) {
-    void* p = f_8;
-    void* self;
-    if (p) {
-        self = (char*)p - 9;
-    } else {
-        self = 0;
-    }
-    char buf[8];
-    sub_00563770(buf, self, b);
-    *(int*)a = *(int*)buf;
-    *(char*)((char*)a + 4) = buf[4];
+void S::method(R* out, int b) {
+    Obj* self = f_8 ? (Obj*)((char*)f_8 - 9) : 0;
+    R tmp;
+    self->get(&tmp, b);
+    *out = tmp;
 }

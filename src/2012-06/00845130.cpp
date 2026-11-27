@@ -1,17 +1,17 @@
-// from server: 97% by atomic.potato
-extern "C" void* __cdecl sub_833810(void*, int, void*);
-extern "C" void __cdecl sub_428540(int);
-
-struct S
+// from server: 100% by Xemicl
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct lua_State;
+extern "C" void* luaL_checkudata(lua_State* L, int ud, const char* tname);
+namespace RBX { namespace Lua {
+extern const char* slotWrapperTypeName;
+void releaseSlot(char* p);
+int collectSlotWrapper(lua_State* L)
 {
-    int __cdecl f(void*);
-};
-
-int __cdecl S::f(void* a)
-{
-    void* p = sub_833810(a, 1, *(void**)0x00de1408);
-    int v = *(int*)p;
-    if (v)
-        sub_428540(v + 5);
+    char** p = (char**)luaL_checkudata(L, 1, slotWrapperTypeName);
+    if (*p)
+        releaseSlot(*p + 5);
     return 0;
 }
+} }

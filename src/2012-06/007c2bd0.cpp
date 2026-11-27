@@ -1,19 +1,10 @@
-// from server: 70% by atomic.potato
-typedef unsigned char byte;
-
-extern byte g_00e31abe;
-
-struct S
-{
-    void f(void *);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Other { void m(int); bool b() const; };
+extern bool gFlag;
+struct S {
+    char pad[0x84];
+    int* vb;    void f(int a);
 };
-
-void S::f(void *arg)
-{
-    if (g_00e31abe)
-        return;
-
-    void *p = *(void **)((char *)this + 0x84);
-    void *q = (char *)p + *(unsigned long *)p + (unsigned long)this + 0x84;
-    ((void (__thiscall *)(void *, void *))0x684900)(q, arg);
-}
+void S::f(int a) { if (!gFlag) ((Other*)((char*)this + 0x84 + *vb))->m(a); }

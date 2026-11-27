@@ -1,16 +1,19 @@
-// from server: 89% by atomic.potato
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Q { char pad[0x108]; int value; };
+struct R { char pad[0x198]; Q* q; };
 struct S
 {
+    char pad[0x224];
+    int member;
+    R* Helper(int, int*);
     int Get();
 };
-
-extern "C" int __stdcall Helper(S* p, int, int*);
-
 int S::Get()
 {
-    int* p = reinterpret_cast<int*>(reinterpret_cast<char*>(this) + 0x224);
-    int* result = reinterpret_cast<int*>(Helper(this, 0, p));
-    if (result != 0)
-        return *reinterpret_cast<int*>(*reinterpret_cast<int**>(reinterpret_cast<char*>(result) + 0x198) + 0x108);
+    R* r = Helper(0, &member);
+    if (r)
+        return r->q->value;
     return 0;
 }

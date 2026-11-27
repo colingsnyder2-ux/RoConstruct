@@ -1,18 +1,7 @@
-// from server: 69% by atomic.potato
-struct AbortVerb
-{
-    int padding0[3];
-    int f();
-};
-
-extern "C" int Call4701F0(void *);
-extern "C" void Call4B0300(void *);
-
-int AbortVerb::f()
-{
-    void *p = *(void **)((char *)this + 0x0c);
-    void *q = *(void **)((char *)p + 0xbc);
-    if (Call4701F0(q))
-        Call4B0300(*(void **)((char *)*(void **)((char *)this + 0x0c) + 0xbc));
-    return 0;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct W { bool f1(); void f2(); };
+struct X { char pad[0xbc]; W* w; };
+struct Y { char pad[0xc]; X* x; void run(int); };
+void Y::run(int){ if (x->w->f1()) x->w->f2(); }

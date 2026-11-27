@@ -1,19 +1,19 @@
-// from server: 86% by atomic.potato
-struct CVideoStream
-{
-    int Method(int, int);
-};
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 
-int CVideoStream::Method(int unused, int value)
+struct Outer {
+    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
+    virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7();
+    virtual long v8(void* p);
+};
+struct Iface { int x; };
+long __stdcall Method(Iface* self, void* value)
 {
     if (value == 0)
-        return (int)0x80004003;
-
-    CVideoStream *object = (CVideoStream *)((char *)this - 0x0c);
-    int result = object->Method(unused, value);
-
-    if (result < 0)
-        result = 1;
-
-    return result;
+        return (long)0x80004003;
+    long hr = ((Outer*)((char*)self - 0xc))->v8(value);
+    if (hr < 0)
+        hr = 1;
+    return hr;
 }

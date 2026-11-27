@@ -1,22 +1,12 @@
-// from server: 75% by atomic.potato
-struct UDimItem {
-    char pad0[0x20];
-    char pad20[0xec];
-    int field_10c;
-    char pad110[0x18];
-    int field_128;
-    int field_12c;
-    void* init(int a, int b);
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct B1 { B1(int, int); virtual void f0(); char pad[0x1c]; };
+struct __declspec(novtable) I { virtual void i0() = 0; char pad[0xe8]; };
+struct __declspec(novtable) J { virtual void j0() = 0; char pad[0x18]; };
+struct D : B1, I, J {
+    int a; int b;
+    D(int x, int y) : B1(x, y) { b = 0; a = 0; }
+    virtual void f0(); virtual void i0(); virtual void j0();
 };
-
-void* UDimItem::init(int a, int b) {
-    void (*fn)(UDimItem*, int, int) = (void (*)(UDimItem*, int, int))0x459c80;
-    fn(this, a, b);
-    field_12c = 0;
-    field_128 = 0;
-    *(int*)this = 0xb55eac;
-    *(int*)((char*)this + 0x20) = 0xb55e4c;
-    field_10c = 0xb55e44;
-
-    return this;
-}
+D g(1,2);

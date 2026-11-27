@@ -1,31 +1,19 @@
-// from server: 75% by atomic.potato
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
-
-struct RefObject
-{
-    void* vtable;
-    volatile long references;
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <vector>
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedDecrement)
+struct counted {
+    virtual ~counted();
+    virtual void dispose() = 0;
+    virtual void destroy() = 0;
+    long use; long weak;
+    void weak_release() { if (_InterlockedDecrement(&weak) == 0) destroy(); }
 };
-
-struct ChatService
-{
+struct WP {
+    void* px; counted* pi;
+    ~WP() { if (pi) pi->weak_release(); }
 };
-
-void __cdecl f(RefObject* first, RefObject* last)
-{
-    while (first != last)
-    {
-        RefObject* object = first->references ? *(RefObject**)((char*)first + 4) : 0;
-        if (object)
-        {
-            if (_InterlockedExchangeAdd(&object->references, -1) == 1)
-            {
-                typedef void (__thiscall *Destroy)(RefObject*);
-                Destroy destroy = (Destroy)(*(void**)((char*)object->vtable + 8));
-                destroy(object);
-            }
-        }
-        first = (RefObject*)((char*)first + 0x18);
-    }
-}
+struct E { WP w; int pad[4]; };
+template class std::vector<E>;

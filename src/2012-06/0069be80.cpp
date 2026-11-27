@@ -1,26 +1,12 @@
-// from server: 52% by atomic.potato
-struct Inner {
-    void* p0;
-    void* p4;
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#define _SECURE_SCL 0
+#define _HAS_ITERATOR_DEBUGGING 0
+#include <map>
+struct Flag {
+    int tag;
+    std::map<int, int> m;
+    ~Flag();
 };
-
-struct Outer {
-    char pad0[4];
-    Inner inner;
-    void* p8;
-    void clear();
-};
-
-extern "C" void __stdcall sub_425320(void*, void*, void*);
-extern "C" void __stdcall sub_982114(void*);
-
-void Outer::clear()
-{
-    void* a = this->p8;
-    void* b = *(void**)a;
-    void* tmp;
-    sub_425320(&tmp, b, a);
-    sub_982114(this->inner.p4);
-    this->inner.p4 = 0;
-    this->p8 = 0;
-}
+Flag::~Flag() {}

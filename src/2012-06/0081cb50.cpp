@@ -1,24 +1,20 @@
-// from server: 74% by atomic.potato
-struct S
-{
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Node {
+    virtual void v0();
+    virtual int kind();
+    int pad;
+    Node* next;
     int f();
-    char pad[0xac];
-    struct T
-    {
-        struct V
-        {
-            int (__thiscall *g)(T *);
-        };
-        V *v;
-        T *next;
-    };
-    T *value;
 };
-
-int S::f()
-{
-    T *p = value;
-    while (p->v->g(p) != 5)
-        p = p->next;
-    return p->v->g(p);
+struct S {
+    char pad[0xac];
+    Node* head;
+    int run();
+};
+int S::run() {
+    Node* o = head;
+    while (o->kind() != 5) o = o->next;
+    return o->f();
 }

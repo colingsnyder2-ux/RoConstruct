@@ -1,25 +1,6 @@
-// from server: 77% by Intel
-struct ChangeHistoryService {
-    char pad0[0xA1];
-    char enabled;
-    char pad1[3];
-    char pad2[0xC];
-    void method_7022c0();
-    void method_701730();
-    void method_972e20();
-    void func(char);
-};
-
-void ChangeHistoryService::func(char arg) {
-    if (arg != enabled) {
-        enabled = arg;
-        if (arg) {
-            method_7022c0();
-        } else {
-            method_701730();
-            method_972e20();
-            method_972e20();
-            method_972e20();
-        }
-    }
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct M { char p[4]; void clear(); };
+struct C { char pad[0xa1]; bool flag; char pad2[2]; M m1; M m2; M m3; void a(); void b(); void set(bool v); };
+void C::set(bool v) { if (v != flag) { flag = v; if (v) { a(); } else { b(); m1.clear(); m2.clear(); m3.clear(); } } }

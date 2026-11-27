@@ -1,17 +1,7 @@
-// from server: 56% by atomic.potato
-struct StringStream
-{
-};
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 
-extern "C" void stringstream_str(StringStream *, void *);
-
-struct S_func_004ca4b0
-{
-    S_func_004ca4b0 *f(StringStream *);
-};
-
-S_func_004ca4b0 *S_func_004ca4b0::f(StringStream *p)
-{
-    stringstream_str(p, 0);
-    return (S_func_004ca4b0 *)p;
-}
+struct B { __declspec(dllimport) void g(void*); };
+struct A { int pad; B b; void* f(void* p); };
+void* A::f(void* p){ volatile int z=0; b.g(p); return p; }

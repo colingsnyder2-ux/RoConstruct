@@ -10,15 +10,15 @@ namespace RBX {
 const Reflection::PropDescriptor<PartInstance, G3D::CoordinateFrame> PartInstance::prop_CFrame(
     "CFrame", "Data", &PartInstance::getCoordinateFrame, &PartInstance::setCoordinateFrame,
     Reflection::PropertyDescriptor::STANDARD);
-static Reflection::PropDescriptor<PartInstance, G3D::Vector3> prop_PositionUi(
+Reflection::PropDescriptor<PartInstance, G3D::Vector3> prop_PositionUi(
     "Position", "Data", &PartInstance::getTranslationUi, &PartInstance::setTranslationUi,
     Reflection::PropertyDescriptor::UI);
 // 007f43f0 / 007f4450 (static init, 0x97632c / 0x976310): openrbx PartInstance.cpp prop_Velocity / prop_RotVelocity,
 // flags 5 (STANDARD default), category "Data" 0x822490, getters 00599850 / 00599870.
-static Reflection::PropDescriptor<PartInstance, G3D::Vector3> prop_Velocity(
+Reflection::PropDescriptor<PartInstance, G3D::Vector3> prop_Velocity(
     "Velocity", "Data", &PartInstance::getLinearVelocity, &PartInstance::setLinearVelocity,
     Reflection::PropertyDescriptor::STANDARD);
-static Reflection::PropDescriptor<PartInstance, G3D::Vector3> prop_RotVelocity(
+Reflection::PropDescriptor<PartInstance, G3D::Vector3> prop_RotVelocity(
     "RotVelocity", "Data", &PartInstance::getRotationalVelocity, &PartInstance::setRotationalVelocity,
     Reflection::PropertyDescriptor::STANDARD);
 

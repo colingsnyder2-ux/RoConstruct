@@ -1,13 +1,4 @@
-// from server: 73% by atomic.potato
-struct S
-{
-};
-
-extern "C" void __cdecl G1_func_0047e6d0(void *, void *, void *);
-
-void * __cdecl f(void *p)
-{
-    void *q = 0;
-    G1_func_0047e6d0(p, p, &q);
-    return p;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct S2{ void g(void*, void**); }; void* f(void* a, S2* b, void* c){ volatile int z=0; b->g(a,&c); return a; }

@@ -1,27 +1,15 @@
-// from server: 87% by atomic.potato
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD /D_SECURE_SCL=0
+#include <string>
+#include <vector>
+struct E { std::string s; int i; };
+struct V : std::vector<E> { void tidy() { _Tidy(); } };
 struct Part {
-    char pad0[4];
-    void* begin;
-    void* end;
-    void* cap;
+    V v;
     void clear();
 };
-
-extern "C" void __stdcall sub_982114(void*);
-extern "C" void __cdecl sub_b2263c(void*);
-
 void Part::clear()
 {
-    if (begin) {
-        char* p = (char*)begin;
-        char* e = (char*)end;
-        while (p != e) {
-            sub_b2263c(p);
-            p += 0x20;
-        }
-        sub_982114(begin);
-    }
-    begin = 0;
-    end = 0;
-    cap = 0;
+    v.tidy();
 }

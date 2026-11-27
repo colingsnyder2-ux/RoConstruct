@@ -1,21 +1,7 @@
-// from server: 34% by atomic.potato
-struct S
-{
-    void *field0;
-    void *field1;
-    void *head;
-    void f();
-};
-
-extern "C" void __cdecl Function(void *);
-
-void S::f()
-{
-    void *p = head;
-    while (p != 0)
-    {
-        void *next = *((void **)p + 1);
-        Function(p);
-        p = next;
-    }
-}
+// from server: 44% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O1 /GS- /EHsc /MD
+struct N { int a; N* next; };
+void __cdecl del(N*);
+struct S { int a,b; N* head; void f(); };
+void S::f(){ N* p = head; while (p) { N* n = p->next; del(p); p = n; } }

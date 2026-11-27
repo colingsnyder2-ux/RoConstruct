@@ -1,19 +1,9 @@
-// from server: 90% by tajop
-namespace std {
-struct string;
-bool operator!=(const char*, const string&);
-class exception {
-public:
-    exception();
-    exception(const exception&);
-    virtual ~exception();
-private:
-    const char* w;
-    int f;
-};
-}
-extern "C" char* strncpy(char*, const char*, unsigned int);
-void operator delete[](void*) throw();
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <string>
+#include <exception>
+#include <string.h>
 const char* skip(const char*, bool);
 struct ScopedChars {
     char* p;

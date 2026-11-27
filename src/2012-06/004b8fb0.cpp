@@ -1,20 +1,22 @@
-// from server: 91% by Intel
-extern "C" int __stdcall WaitForSingleObject(int handle, int milliseconds);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" __declspec(dllimport) unsigned long __stdcall WaitForSingleObject(void* handle, unsigned long milliseconds);
 
 struct CSourceStream {
-    int field_4;
-    int field_C;
-    int Wait(int milliseconds);
+    int field_0;
+    void* m_hEvent;
+    int field_8;
+    int m_dwParam;
+    int Check(int* pParam);
 };
 
-int CSourceStream::Wait(int milliseconds) {
-    int handle = this->field_4;
-    int result = WaitForSingleObject(handle, 0);
-    if (result != 0) {
+int CSourceStream::Check(int* pParam) {
+    if (WaitForSingleObject(m_hEvent, 0) != 0) {
         return 0;
     }
-    if (milliseconds != 0) {
-        *reinterpret_cast<int*>(milliseconds) = this->field_C;
+    if (pParam) {
+        *pParam = m_dwParam;
     }
     return 1;
 }

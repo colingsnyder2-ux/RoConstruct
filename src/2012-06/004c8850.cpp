@@ -1,22 +1,4 @@
-// from server: 62% by atomic.potato
-struct S_func_004c8850
-{
-    char pad[4];
-    unsigned short m_a;
-    unsigned short m_b;
-    unsigned char m_c;
-    char pad2[3];
-
-    int f();
-};
-
-extern "C" void func_004c43a0(void*);
-
-int S_func_004c8850::f()
-{
-    m_b = 0;
-    m_a = 0;
-    m_c = 0;
-    func_004c43a0((char*)this + 12);
-    return (int)this;
-}
+// from server: 90% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct M{M();}; struct S{int pp; short a; short b; char c; char p[3]; M m; S(); }; S::S():m(),a(0),b(0),c(0){}

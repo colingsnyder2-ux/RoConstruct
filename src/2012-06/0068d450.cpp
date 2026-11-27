@@ -1,10 +1,6 @@
-// from server: 72% by Intel
-struct ModelInstance {
-    void func(void* p);
-};
-
-void __thiscall ModelInstance::func(void* p) {
-    ((void(__thiscall*)(void*, void*))0x6847d0)(this, p);
-    ((void(__thiscall*)(void*))0x675c40)((char*)this + 0x90);
-    *(int*)((char*)this + 0xC4) = 0;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Sub { void reset(); };
+struct MI { char pad[0x90]; Sub s; char pad2[0xc4-0x91]; int z; void f(void* p); void base(void* p); };
+void MI::f(void* p) { base(p); z = 0; s.reset(); }

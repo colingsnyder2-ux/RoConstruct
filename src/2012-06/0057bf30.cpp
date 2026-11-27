@@ -1,9 +1,6 @@
-// from server: 73% by atomic.potato
-extern "C" int __cdecl func_0057a050(int);
-extern "C" void __cdecl func_0056c980(int, int, int);
-
-void func_0057bf30(int a, int b, int c, int d)
-{
-    int value = func_0057a050(a + 4);
-    func_0056c980(c, b, *(int*)value);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+void* g1(void*);
+void g2(void*, void*);
+void f(char* a, void* b) { a = *(char**)g1(a + 4); g2(b, &a); }

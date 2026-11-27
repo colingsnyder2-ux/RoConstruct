@@ -1,28 +1,12 @@
-// from server: 64% by atomic.potato
-struct Inner {
-    void* pad0;
-    void* pad4;
-    void* pad8;
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#define _SECURE_SCL 0
+#define _HAS_ITERATOR_DEBUGGING 0
+#include <map>
+struct Flag {
+    int tag;
+    std::map<int, int> m;
+    ~Flag();
 };
-
-struct Outer {
-    char pad0[4];
-    Inner* field4;
-    Inner* field8;
-    void clear();
-};
-
-extern "C" void __stdcall sub_5467D0(void*, void*, void*);
-extern "C" void __stdcall sub_982114(void*);
-
-void Outer::clear()
-{
-    Inner* p = field8;
-    void* a = *(void**)p;
-    void* b = p;
-    void* tmp;
-    sub_5467D0(field4, a, &tmp);
-    sub_982114(field4->pad4);
-    field4->pad4 = 0;
-    field4->pad8 = 0;
-}
+Flag::~Flag() {}

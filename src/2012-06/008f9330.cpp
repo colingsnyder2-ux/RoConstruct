@@ -1,13 +1,7 @@
-// from server: 87% by atomic.potato
-extern "C" void call_008f92c0(
-    void* object, float a, float b, float c);
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
 
-struct S
-{
-    void f(float a, float b, float c);
-};
-
-void S::f(float a, float b, float c)
-{
-    call_008f92c0((char*)this + 0x10, c, b, a);
-}
+struct T { int x; void g(float a, float b, float c); };
+struct S { char pad[0x10]; T t; void f(float a, float b, float c); };
+void S::f(float a, float b, float c) { t.g(a, b, c); }

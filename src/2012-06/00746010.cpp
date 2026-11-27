@@ -1,15 +1,4 @@
-// from server: 73% by atomic.potato
-struct S
-{
-    float value;
-    unsigned short key;
-    void f(float* out);
-};
-
-unsigned int g_mask;
-
-void S::f(float* out)
-{
-    out[0] = *(float*)(((unsigned int*)&value)[0] ^ g_mask);
-    ((unsigned short*)out)[2] = (unsigned short)(-(short)key);
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD /arch:SSE
+struct S{float x; short s; S f() const; }; S S::f() const { S r; r.x=-x; r.s=-s; return r; }

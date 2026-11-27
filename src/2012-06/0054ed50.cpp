@@ -1,18 +1,8 @@
-// from server: 77% by atomic.potato
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
-
-struct S
-{
-};
-
-void __cdecl f(void* source, void* destination)
-{
-    if (destination)
-    {
-        *(long*)destination = *(long*)source;
-        *(long*)((char*)destination + 4) = *(long*)((char*)source + 4);
-        if (*(long*)((char*)source + 4))
-            _InterlockedExchangeAdd((volatile long*)((char*)source + 8), 1);
-    }
-}
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <new>
+#include <intrin.h>
+struct CB { virtual void a(); long use; long weak; };
+struct SP { int* px; CB* pn; SP(const SP& o) : px(o.px), pn(o.pn) { if (pn) _InterlockedIncrement(&pn->use); } };
+void f(const SP* src, SP* dst) { if (dst) new (dst) SP(*src); }

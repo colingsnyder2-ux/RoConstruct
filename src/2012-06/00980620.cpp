@@ -1,7 +1,8 @@
+// from server: 100% by Xemicl
 // from server: 72% by colin
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /arch:SSE
 // roc-lib: rbxgs-appdraw Draw.cpp
 
 // Candidate translation unit (score above; library headers required).

@@ -1,35 +1,45 @@
-// from server: 45% by Intel
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
-
-struct RefCounted {
-    int vptr;
-    long refCount;
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement, _InterlockedDecrement)
+namespace boost {
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy();
+    void weak_release() { if (_InterlockedDecrement(&weak_count_) == 0) destroy(); }
+private:
+    long use_count_;
+    long weak_count_;
 };
-
-struct InterpolatingPhysicsReceiver {
-    char pad[0x224];
-    RefCounted* field_224;
-    void ReleaseRef();
-    void BaseDestructor();
+class weak_count {
+    sp_counted_base* pi_;
+public:
+    weak_count() : pi_(0) {}
+    ~weak_count() { if (pi_ != 0) pi_->weak_release(); }
 };
-
-void InterpolatingPhysicsReceiver::ReleaseRef() {
-    RefCounted* ref = this->field_224;
-    if (ref) {
-        volatile long* counter = &ref->refCount;
-        long old = _InterlockedExchangeAdd(counter, -1);
-        if (old == 1) {
-            int* vtable = *reinterpret_cast<int**>(ref);
-            void (__thiscall *dtor)(RefCounted*) = reinterpret_cast<void (__thiscall *)(RefCounted*)>(vtable[2]);
-            dtor(ref);
-        }
-    }
 }
-
-void InterpolatingPhysicsReceiver::BaseDestructor() {
-    this->ReleaseRef();
-    typedef void (__thiscall *Fn)(InterpolatingPhysicsReceiver*);
-    static Fn baseDtor = reinterpret_cast<Fn>(0x570ad0);
-    baseDtor(this);
+template <class T>
+class weak_ptr {
+    T* px;
+    detail::weak_count pn;
+};
+}
+struct Target;
+struct Base
+{
+    char pad[0x220];
+    ~Base();
+};
+struct Derived : Base
+{
+    boost::weak_ptr<Target> ref;
+    ~Derived();
+};
+Derived::~Derived()
+{
 }

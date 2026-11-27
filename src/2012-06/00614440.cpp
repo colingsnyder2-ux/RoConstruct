@@ -1,12 +1,5 @@
-// from server: 75% by atomic.potato
-struct QuadVolumeBuilder
-{
-    int f(int a, float* b);
-};
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /arch:SSE /fp:fast
+int __stdcall f(int a, float* b) { return (a == 0 && b[1] > b[0]) ? 1 : 0; }
 
-int QuadVolumeBuilder::f(int a, float* b)
-{
-    if (a == 0 && b[1] > b[0])
-        return 1;
-    return 0;
-}

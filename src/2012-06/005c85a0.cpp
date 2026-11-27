@@ -1,18 +1,4 @@
-// from server: 68% by atomic.potato
-struct S
-{
-};
-
-int __cdecl f(unsigned int a, unsigned int b)
-{
-    unsigned int d;
-
-    if (b == a)
-        return 0;
-
-    d = (b - a) & 0x00ffffffU;
-    if (d >= 0x007fffffU)
-        return 0;
-
-    return 1;
-}
+// from server: 100% by Xemicl
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /EHsc /MD
+int f(unsigned a, unsigned b) { if (b != a) { unsigned d = (b - a) & 0xffffff; if (d < 0x7fffff) return 1; } return 0; }

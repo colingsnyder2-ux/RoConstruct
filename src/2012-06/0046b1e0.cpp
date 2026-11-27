@@ -1,18 +1,18 @@
-// from server: 74% by atomic.potato
-extern "C" void __stdcall SetValue(void *, unsigned int);
-
-struct CRenderSettingsItem
-{
-    unsigned char padding[0xC0];
+// from server: 100% by Xemicl
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Desc { int a, b; };
+Desc g_desc;
+struct Sig { void raise(const Desc*); };
+struct S {
+    char pad[192];
     unsigned int value;
-    void Set(unsigned int);
+    char pad2[0x144 - 192 - sizeof(unsigned int)];
+    Sig sig;
+    void f(unsigned int v);
 };
-
-void CRenderSettingsItem::Set(unsigned int value)
-{
-    if (value != this->value)
-    {
-        this->value = value;
-        SetValue((char *)this + 0x144, 0xE199E8);
-    }
+void S::f(unsigned int v) {
+    if (v == value) return;
+    value = v;
+    sig.raise(&g_desc);
 }
