@@ -1,0 +1,517 @@
+{
+ "client": "2008-06",
+ "sources": {
+  "00401910": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkspaceFactoryTrial.cpp",
+   "line": 1
+  },
+  "00402730": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkspaceFactoryTrial.cpp",
+   "line": 1
+  },
+  "00415b00": {
+   "path": "workspace/rebuild/2008-06/tests/NativeSafeArrayMismatch.cpp",
+   "line": 1
+  },
+  "00416370": {
+   "path": "workspace/rebuild/2008-06/tests/NativeValueVariantMismatch.cpp",
+   "line": 1
+  },
+  "004165e0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeSafeArrayMismatch.cpp",
+   "line": 1
+  },
+  "00416900": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentFactoryTrial.cpp",
+   "line": 1
+  },
+  "00416920": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentFactoryTrial.cpp",
+   "line": 1
+  },
+  "00416950": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentFactoryTrial.cpp",
+   "line": 1
+  },
+  "0041dd60": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 254
+  },
+  "0041e4d0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 1
+  },
+  "0041e550": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 1
+  },
+  "0041e650": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 256
+  },
+  "0041e670": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 259
+  },
+  "0041ef90": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 262
+  },
+  "0041f280": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 271
+  },
+  "00427c20": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkspaceStatusTrial.cpp",
+   "line": 1
+  },
+  "004290b0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeAtlErrorCoreTrial.cpp",
+   "line": 1
+  },
+  "00429330": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkspaceErrorTrial.cpp",
+   "line": 1
+  },
+  "0042e570": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042e5e0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042e610": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042ed00": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042ee90": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042eec0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042eef0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042ef10": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042f9d0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042fb80": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042fbb0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "00430160": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "004302b0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "00430360": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "00430440": {
+   "path": "workspace/rebuild/2008-06/tests/NativeFramePaneOwner.cpp",
+   "line": 4
+  },
+  "00430b40": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "004314c0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "00431b40": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "00431bf0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "00431c40": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "00431ce0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0044f730": {
+   "path": "workspace/rebuild/2008-06/tests/NativeExitCommand.cpp",
+   "line": 1
+  },
+  "0044fe00": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentUrlTrial.cpp",
+   "line": 1
+  },
+  "00450370": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkspaceFactoryTrial.cpp",
+   "line": 1
+  },
+  "00451590": {
+   "path": "workspace/rebuild/2008-06/tests/NativeBinderLayout.cpp",
+   "line": 1
+  },
+  "00451b60": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 1
+  },
+  "00452b40": {
+   "path": "workspace/rebuild/2008-06/tests/NativeVisitServiceTrial.cpp",
+   "line": 1
+  },
+  "00453c30": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentExecuteTrial.cpp",
+   "line": 17
+  },
+  "00454c90": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentLDrawTrial.cpp",
+   "line": 11
+  },
+  "0046ac90": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentFactoryTrial.cpp",
+   "line": 1
+  },
+  "0046bd70": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkspaceWriteTrial.cpp",
+   "line": 14
+  },
+  "0046bfd0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkspaceWriteTrial.cpp",
+   "line": 39
+  },
+  "0046eb40": {
+   "path": "workspace/rebuild/2008-06/tests/NativeLDrawPartShapeTrial.cpp",
+   "line": 1
+  },
+  "0046ecf0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeLDrawPartColorTrial.cpp",
+   "line": 1
+  },
+  "0046ed40": {
+   "path": "workspace/rebuild/2008-06/tests/NativeLDrawPartTransformTrial.cpp",
+   "line": 1
+  },
+  "0046ef70": {
+   "path": "workspace/rebuild/2008-06/tests/NativeLDrawPartParentTrial.cpp",
+   "line": 1
+  },
+  "0046f000": {
+   "path": "workspace/rebuild/2008-06/tests/NativeLDrawPartWriteTrial.cpp",
+   "line": 1
+  },
+  "0046f200": {
+   "path": "workspace/rebuild/2008-06/tests/NativeLDrawParseTrial.cpp",
+   "line": 1
+  },
+  "0046f6b0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeLDrawWriteTrial.cpp",
+   "line": 1
+  },
+  "0046f9f0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeLDrawCompareTrial.cpp",
+   "line": 1
+  },
+  "00499d60": {
+   "path": "workspace/rebuild/2008-06/tests/NativeGuidRegistryConstructorTrial.cpp",
+   "line": 1
+  },
+  "004b3a50": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorldServiceFactoriesTrial.cpp",
+   "line": 1
+  },
+  "004cd7e0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorldServiceFactoriesTrial.cpp",
+   "line": 1
+  },
+  "0055fdc0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentFindTrial.cpp",
+   "line": 1
+  },
+  "00560460": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentFindTrial.cpp",
+   "line": 1
+  },
+  "00561980": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentLoadTrial.cpp",
+   "line": 1
+  },
+  "00561f20": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentGetTrial.cpp",
+   "line": 1
+  },
+  "005620f0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentProviderWorkerTrial.cpp",
+   "line": 1
+  },
+  "00569bf0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeHttpTrustTrial.cpp",
+   "line": 1
+  },
+  "0056a160": {
+   "path": "workspace/rebuild/2008-06/tests/NativeHttpTrustTrial.cpp",
+   "line": 1
+  },
+  "0056a2e0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeHttpTrustTrial.cpp",
+   "line": 21
+  },
+  "0057d520": {
+   "path": "workspace/rebuild/2008-06/tests/NativeRotateAxisTrial.cpp",
+   "line": 5
+  },
+  "0057d570": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 94
+  },
+  "0057d590": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 98
+  },
+  "0057d5b0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 102
+  },
+  "0057d5d0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 106
+  },
+  "0057d5f0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 74
+  },
+  "0057d620": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 78
+  },
+  "0057dc60": {
+   "path": "workspace/rebuild/2008-06/tests/NativeTiltAxisMismatch.cpp",
+   "line": 7
+  },
+  "005819a0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 42
+  },
+  "005819d0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 46
+  },
+  "00581a20": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 50
+  },
+  "00581a70": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 54
+  },
+  "00581ac0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 58
+  },
+  "00581b10": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 62
+  },
+  "00581b60": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 66
+  },
+  "00581bc0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 70
+  },
+  "00581d80": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 1
+  },
+  "00582300": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 86
+  },
+  "00584790": {
+   "path": "workspace/rebuild/2008-06/tests/NativeModelLifetimeTrial.cpp",
+   "line": 16
+  },
+  "005a7ea0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeCacheDirectoryTrial.cpp",
+   "line": 1
+  },
+  "005c6090": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 1
+  },
+  "005c6240": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6270": {
+   "path": "workspace/rebuild/2008-06/tests/NativeArrowFactoryTrial.cpp",
+   "line": 1
+  },
+  "005c63a0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolMethodsTrial.cpp",
+   "line": 4
+  },
+  "005c6420": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c64e0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6580": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c66d0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6840": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6990": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6ae0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6c30": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6d80": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6e40": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6f00": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolVerbActionTrial.cpp",
+   "line": 1
+  },
+  "005c6f40": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c7030": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c7120": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c71e0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c72b0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c7380": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c74d0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c75e0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c7680": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c7720": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c77c0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c7ea0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeStandardVerbsConstructorTrial.cpp",
+   "line": 1
+  },
+  "0063ec60": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolMethodsTrial.cpp",
+   "line": 5
+  },
+  "0063ed20": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolMethodsTrial.cpp",
+   "line": 23
+  },
+  "0063ed80": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolDragTrial.cpp",
+   "line": 5
+  },
+  "0063ee20": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolMoveTrial.cpp",
+   "line": 11
+  },
+  "0063f040": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolFindTrial.cpp",
+   "line": 9
+  },
+  "0063f2d0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolRenderTrial.cpp",
+   "line": 11
+  },
+  "0063f470": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolRenderTrial.cpp",
+   "line": 21
+  },
+  "0063f630": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolMethodsTrial.cpp",
+   "line": 8
+  },
+  "0063f670": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolMethodsTrial.cpp",
+   "line": 13
+  },
+  "006776a0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolRenderTrial.cpp",
+   "line": 16
+  },
+  "00677b20": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolRenderTrial.cpp",
+   "line": 26
+  },
+  "0080ead0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentFactoryTrial.cpp",
+   "line": 1
+  }
+ }
+}
