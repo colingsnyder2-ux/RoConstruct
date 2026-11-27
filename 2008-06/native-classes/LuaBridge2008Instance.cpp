@@ -215,7 +215,16 @@ static void pushLuaValue(ConstProperty p, lua_State* L)
     EnumPropertyDescriptor* enumDesc = dynamic_cast<EnumPropertyDescriptor*>(&descriptor);
     if (enumDesc)
     {
-        lua_pushinteger(L, enumDesc->getEnumValue(p.getInstance()));
+        int val = enumDesc->getEnumValue(p.getInstance());
+        for (std::vector<const EnumDescriptor::Item*>::const_iterator it = enumDesc->enumDescriptor.begin(); it != enumDesc->enumDescriptor.end(); ++it)
+        {
+            if ((*it)->value == val)
+            {
+                EnumItem::push(L, *it);
+                return;
+            }
+        }
+        lua_pushinteger(L, val);
         return;
     }
 

@@ -67,10 +67,10 @@ namespace RBX
 		"Friction", category_Part, &PartInstance::getFriction, &PartInstance::setFriction, Reflection::PropertyDescriptor::STANDARD);
 	// 009760e8: file-local UI "formFactor" descriptor (initializer 007f49f0: getter 00598bd0, setter setFormFactorUi
 	// 0059dfa0, "formFactor" 008331b0, UI; donor prop_formFactorUi).
-	Reflection::PropDescriptor<PartInstance, PartInstance::FormFactor> prop_formFactorUi(
+	Reflection::EnumPropDescriptor<PartInstance, PartInstance::FormFactor> prop_formFactorUi(
 		"formFactor", category_Part, &PartInstance::getFormFactor, &PartInstance::setFormFactorUi, Reflection::PropertyDescriptor::UI);
 	// 009762ec: file-local "FormFactor" descriptor (initializer 007f4a50, setter 0059df70, getter 00598bd0, STREAMING).
-	Reflection::PropDescriptor<PartInstance, PartInstance::FormFactor> prop_formFactor(
+	Reflection::EnumPropDescriptor<PartInstance, PartInstance::FormFactor> prop_formFactor(
 		"FormFactor", category_Part, &PartInstance::getFormFactor, &PartInstance::setFormFactorXml, Reflection::PropertyDescriptor::STREAMING);
 	// 00975f90: file-local "Elasticity" descriptor (initializer 007f4ab0, setter 0059e0f0).
 	Reflection::PropDescriptor<PartInstance, float> prop_Elasticity(
