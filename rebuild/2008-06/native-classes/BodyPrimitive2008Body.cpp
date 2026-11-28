@@ -25,7 +25,7 @@ namespace RBX
 		  simBody(NULL),
 		  canThrottle(true),
 		  link(NULL),
-		  moment(G3D::Matrix3::zero()),
+		  moment(G3D::Matrix3::identity()),   // 00614a1b calls 00513e20 Matrix3::identity (fld1 diagonal), not zero 00513dc0
 		  mass(0.0f),
 		  stateIndex(getNextStateIndex())
 	{
