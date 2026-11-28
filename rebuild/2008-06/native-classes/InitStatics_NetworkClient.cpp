@@ -24,3 +24,7 @@ namespace RBX {
 	}
 }
 static RBX::Reflection::BoundFuncDesc<RBX::Network::Client, void(int), 1> f_disconnect(&RBX::Network::Client::disconnect, "Disconnect", "blockDuration", 3000, RBX::Reflection::FunctionDescriptor::AnyCaller);   // 00970cb0
+
+// 00970c48 Client::event_ConnectionAccepted (dynamic initializer 007f1bd0: "ConnectionAccepted" 00823244,
+// "peer" 00823258, "replicator" 00823260; SignalDesc ctor 004a0020; atexit 007fbb70).
+RBX::Reflection::SignalDesc<RBX::Network::Client, void(std::string, boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::event_ConnectionAccepted("ConnectionAccepted", "peer", "replicator");

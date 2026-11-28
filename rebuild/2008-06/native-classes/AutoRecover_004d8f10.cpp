@@ -1,46 +1,45 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+extern "C" char g_00826c0c[];   // INFERRED: unnamed global at 0x00826c0c in the original
+#include "G3D/System.h"
 
-namespace G3D {
-class System {
-public:
-    static void free(void* p);
-    static void alignedFree(void* p);
-};
-}
+// INFERRED: the original sets ecx only and pushes nothing, so the callee is declared
+// with the object pointer alone. A dummy edx argument would add an extra "xor edx, edx".
+extern "C" int __fastcall fn_004d7e30(void* self);
 
-// INFERRED: the 4-arg declaration in the prompt does not match the call site (no pushes),
-// so this is declared with no stack args; the symbol is C-linkage so the name is the same.
-extern "C" int __fastcall fn_004d7e30(void* self, int unusedEdx);
-
-// INFERRED: unknown global at 0x826c0c, used as a vtable for the node sub-object.
-extern "C" char g_00826c0c[];
-
-// INFERRED: G3D::Table-like hash container: +4 size, +8 bucket array, +0xc bucket count.
-// Nodes have a sub-object at +8 (vtable g_00826c0c) and a next pointer at +0x18.
-struct HashTableLike {
-    int   pad0;
-    int   count;
-    void** buckets;
-    int   numBuckets;
+// INFERRED: file-local types; layout from disassembly offsets
+struct Local_004d8f10Payload {
+    void* vtable;
+    unsigned char data[12];
 };
 
-extern "C" void __fastcall fn_004d8f10(HashTableLike* self, int unusedEdx)
+struct Local_004d8f10Node {
+    unsigned char data[8];
+    Local_004d8f10Payload value;
+    Local_004d8f10Node* next;
+};
+
+struct Local_004d8f10Table {
+    unsigned int field0;
+    int size;
+    Local_004d8f10Node** buckets;
+    int bucketCount;
+};
+
+extern "C" void __fastcall fn_004d8f10(Local_004d8f10Table* self, int unusedEdx)
 {
-    for (int i = 0; i < self->numBuckets; ++i) {
-        char* node = (char*)self->buckets[i];
-        if (node) {
-            do {
-                char* next = *(char**)(node + 0x18);
-                void* sub = node + 8;
-                *(void**)sub = (void*)g_00826c0c;
-                fn_004d7e30(sub, 0);
-                G3D::System::free(node);
-                node = next;
-            } while (node);
+    for (int i = 0; i < self->bucketCount; ++i) {
+        Local_004d8f10Node* node = self->buckets[i];
+        while (node) {
+            Local_004d8f10Node* next = node->next;
+            // INFERRED: vtable pointer constant ((int)&g_00826c0c) from the original
+            node->value.vtable = (void*)((int)&g_00826c0c);
+            fn_004d7e30(&node->value);
+            G3D::System::free(node);
+            node = next;
         }
     }
     G3D::System::alignedFree(self->buckets);
     self->buckets = 0;
-    self->numBuckets = 0;
-    self->count = 0;
+    self->bucketCount = 0;
+    self->size = 0;
 }

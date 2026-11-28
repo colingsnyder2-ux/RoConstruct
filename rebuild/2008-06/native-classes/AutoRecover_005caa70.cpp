@@ -1,47 +1,24 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-// INFERRED: no class headers were available, so this file builds a minimal
-// stand-in class layout. The 0x14-byte adjustor thunk is not written by hand.
-// The compiler should emit it (sub ecx,14h / jmp <vector deleting dtor>) when it
-// builds the vftable of the secondary base at +0x14.
-// The explicit instantiation below instantiates every member, including the
-// constructor. That should make the compiler emit the vftables and their thunks.
-// Not compiled or compared against the original bytes.
+#include "util/Object.h"
+#include "v8tree/Instance.h"
 
 namespace RBX {
 
-// INFERRED: Instance is 20 bytes (vptr + 16 bytes of data), so the next base starts at +0x14.
-class Instance {
-public:
-    Instance() {}
-    virtual ~Instance() {}
-    int pad[4];
-};
+// INFERRED: the target is the compiler-generated thunk
+// FactoryProduct<ControllerService,Instance,&sControllerService>::
+// `vector deleting destructor'`adjustor{20}'.
+// It does `sub ecx,14h` and jumps to the primary vector deleting destructor.
+// INFERRED: the include paths and the forward declaration below are guesses,
+// because the real ControllerService header was not shown.
+// INFERRED: the compiler reported that the template's name parameter is a
+// plain `const char*`, so the argument is passed as a char array that decays
+// to a pointer, not as the address of a char* variable.
 
 class ControllerService;
+extern char sControllerService[];
 
-// INFERRED: the template argument sControllerService is a global `char*` (mangled 3PADA).
-extern char* sControllerService;
-char* sControllerService = 0;
-
-// INFERRED: secondary base at +0x14 with a virtual destructor. Its vtable slot gets the
-// adjustor{20} thunk to FactoryProduct's vector deleting destructor.
-class DtorBase {
-public:
-    DtorBase() {}
-protected:
-    virtual ~DtorBase() {}
-    int pad2;
-};
-
-template<class T, class Base, char*& name>
-class FactoryProduct : public Base, public DtorBase {
-public:
-    FactoryProduct() {}
-protected:
-    virtual ~FactoryProduct() {}
-};
-
+// Explicit instantiation emits the vftable and the adjustor{20} thunk.
 template class FactoryProduct<ControllerService, Instance, sControllerService>;
 
 }

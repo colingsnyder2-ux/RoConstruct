@@ -1,4 +1,4 @@
-// native-flags: /O2 /GS- /EHsc /MD /D_AFXDLL /D_XTP_STATICLINK /D_DLL /I{headers}/../../../tools/libs/xtp-11.2.2/Source /I{headers}/../../../tools/libs/mfc-9.0/atlmfc/include
+// native-flags: /O2 /GS /EHsc /MD /D_AFXDLL /D_XTP_STATICLINK /D_DLL /I{headers}/../../../tools/libs/xtp-11.2.2/Source /I{headers}/../../../tools/libs/mfc-9.0/atlmfc/include
 // 2008-06 native Minedxtp1122sharedmfcroccodexpendingvisiblereadonly28fdcf6581cac7d7 (inactive): mined exact source xtp-11.2.2-shared-mfc roc_codex_pending_visible_readonly_28fdcf6581cac7d7.cpp, verbatim.
 #ifndef _CPPUNWIND
 #define _CPPUNWIND 1

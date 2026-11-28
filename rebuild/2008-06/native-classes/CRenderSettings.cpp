@@ -55,7 +55,8 @@ static PropDescriptor<CRenderSettings, float> prop_maxMeshDetail("maxMeshDetail"
 // RTTI of the getset at 00815ca4: GetSetImpl<int getter, int setter> of PropDescriptor<CRenderSettings, float>.
 static PropDescriptor<CRenderSettings, float> prop_aggregateSize("_AggregateSize", "Performance", &CRenderSettings::getAggregateSize, &CRenderSettings::setAggregateSize, PropertyDescriptor::STANDARD);
 static EnumPropDescriptor<CRenderSettings, CRenderSettings::AASamples> prop_aaSamples("AASamples", "Qaulity", &CRenderSettings::getAASamples, &CRenderSettings::setAASamples, PropertyDescriptor::STANDARD);
-static BoundProp<bool, 1> prop_delaySwapBuffer("delaySwapBuffer", "Performance", &CRenderSettings::delaySwapBuffer, PropertyDescriptor::STANDARD);
+// Non-static so converted CRobloxWnd draw (0045e910.obj) binds to the initialized descriptor.
+BoundProp<bool, 1> prop_delaySwapBuffer("delaySwapBuffer", "Performance", &CRenderSettings::delaySwapBuffer, PropertyDescriptor::STANDARD);
 static BoundProp<std::string, 1> prop_profileName("profileName", "Qaulity", &CRenderSettings::profileName, PropertyDescriptor::STREAMING);
 
 // Default full-screen size by video memory, constructed in place in the constructor below.

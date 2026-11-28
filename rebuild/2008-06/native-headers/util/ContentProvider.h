@@ -1,84 +1,35 @@
 #pragma once
-#include "util/Name.h"
+#include "util/ContentId.h"
+#include "util/ContentRequest.h" // INFERRED: 2008 ContentProvider stores std::list<ContentRequest> (NativeContentProvider.h, sizeof 0x19c)
 #include "util/boost.hpp"
+#include "v8tree/Instance.h"     // INFERRED: 2008 ContentProvider inherits DescribedNonCreatable<ContentProvider, Instance, sContentProvider>
 #include <string>
+#include <list>
+#include <map>
+#include <vector>
 #include <boost/date_time.hpp>
 #include <boost/scoped_ptr.hpp>
 
 namespace RBX
 {
-	class ContentId;
-	bool operator!=(const ContentId&, const ContentId&);
-	bool operator==(const ContentId&, const ContentId&);
-	bool operator<(const ContentId&, const ContentId&);
-
-	class ContentId
-	{
-	private:
-		std::string id;
-		const Name* mimeTypePtr;
-
-	public:
-		ContentId()
-			: id(), 
-			  mimeTypePtr(&Name::getNullName())
-		{
-		}
-		ContentId(const std::string& id)
-			: id(id),
-			  mimeTypePtr(&Name::getNullName())
-		{
-		}
-		ContentId(const char* id)
-			: id(id),
-			  mimeTypePtr(&Name::getNullName())
-		{
-		}
-		ContentId(const std::string& id, const Name& mimeType)
-			: id(id),
-			  mimeTypePtr(&mimeType)
-		{
-		}
-
-	public:
-		const Name& mimeType() const
-		{
-			return *mimeTypePtr;
-		}
-		const char* c_str() const
-		{
-			return id.c_str();
-		}
-		const std::string& toString() const
-		{
-			return id;
-		}
-		bool isNull() const
-		{
-			return id.empty();
-		}
-		bool isFile() const
-		{
-			return id.substr(0, 7) == "file://";
-		}
-		bool isAsset() const
-		{
-			return id.substr(0, 11) == "rbxasset://";
-		}
-		bool isHttp() const
-		{
-			return id.substr(0, 4) == "http";
-		}
-
-	public:
-		static ContentId fromUrl(const std::string&);
-		static ContentId fromFile(const std::string&);
-		static ContentId fromAssets(const std::string& filePath);
-		static ContentId fromAssets(const char* filePath); // 2008 overload used by RBX::Sky::Sky (0055bd80)		static ContentId fromMD5Hash(const std::string&);
-	};
-
 	class Instance;
-	class ContentProvider : private boost::noncopyable
+	extern char sContentProvider[];
+
+#ifndef RBX_CONTENT_REQUEST_DEFINED
+#define RBX_CONTENT_REQUEST_DEFINED
+	struct ContentRequest // INFERRED: 0x38 bytes (NativeContentProvider.h, 00562530)
+	{
+		ContentId id;
+		std::vector<RequestCallback> callbacks;
+		bool operator==(const ContentId& other) const { return id.toString() == other.toString(); }
+		ContentRequest(const ContentRequest&);
+		ContentRequest();
+		~ContentRequest();
+	};
+#endif
+
+	// INFERRED: 2008 ContentProvider is an Instance service (sizeof 0x19c; NativeContentProvider.h offset asserts)
+	class ContentProvider : public DescribedNonCreatable<ContentProvider, Instance, sContentProvider>
 	{
 	private:
 		enum HttpRequestType
@@ -106,17 +57,16 @@ namespace RBX
 		};
 
 	private:
-		boost::mutex requestSync;
-		std::list<ContentId> requestQueue;
-		std::list<FailedUrl> failedUrls;
-		boost::mutex contentCacheMutex;
-		std::map<ContentId, CachedContent> contentCache;
-		std::string assetFolderPath;
-		boost::scoped_ptr<worker_thread> requestProcessor;
+		boost::mutex requestSync;                          // +0x130
+		std::list<ContentRequest> requestQueue;            // +0x138 (INFERRED: ContentRequest, NativeContentProvider.h)
+		std::list<FailedUrl> failedUrls;                   // +0x154
+		boost::mutex contentCacheMutex;                    // +0x170
+		std::map<ContentId, CachedContent> contentCache;   // +0x178
+		boost::scoped_ptr<worker_thread> requestProcessor; // +0x198 (INFERRED: no assetFolderPath member in 2008)
 	  
 	private:
 		ContentProvider();
-		~ContentProvider();
+		virtual ~ContentProvider();
 
 	public:
 		static ContentId registerContent(std::istream& content, const Name& mimeType);

@@ -1,29 +1,4 @@
 #pragma once
-#include "v8datamodel/GlobalSettings.h"
-
-namespace RBX
-{
-	extern char sNetworkSettings[];
-
-	class NetworkSettings : public GlobalSettingsItem<NetworkSettings, sNetworkSettings>
-	{
-	public:
-		bool clientPhysics;
-		float clientPhysicsSpeed;
-		float clientPhysicsLifetime;
-		bool printPhysicsErrors;
-		bool printInstances;
-		bool printProperties;
-		bool printPacketBuffer;
-		bool logPackets;
-		int maxDataModelSendBuffer;
-		float dataPacketSize;
-		float sendRate;
-		int maxSendBPS;
-		int minExtraPing;
-		int extraPingVariance;
-
-	public:
-		NetworkSettings();
-	};
-}
+// INFERRED: the 2008 layout lives in Network/NetworkSettings.h (size 0x160: create<NetworkSettings> 0049e810 allocates 0x160,
+// ctor 004aabc0 stores fields +0x130..+0x15c). The donor-field text previously here was 4 bytes short (0x15c).
+#include "Network/NetworkSettings.h"

@@ -1,23 +1,12 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: no Name header excerpt was provided, so the class is declared minimally here.
-// INFERRED: the body is a bare tail jump to 0x45b160, which is probably the shared doDeclare
-// thunk. It takes no arguments, so the call has no parameters.
-namespace RBX {
-    extern char* sControllerService;
-}
-
-extern "C" void fn_0045b160(void);
+#include "util/Name.h"
 
 namespace RBX {
-    class Name {
-    public:
-        template<char*& name>
-        static void callDoDeclare();
-    };
 
-    template<>
-    void Name::callDoDeclare<sControllerService>()
-    {
-        fn_0045b160();
-    }
+// INFERRED: the mangled type PADA with a $1 template argument matches an unsized char array (MSVC encodes arrays as PAD), so the template argument is the array decaying to a pointer.
+extern char sControllerService[];
+
+// INFERRED: callDoDeclare tail-jumps to the shared declare routine at 0x45b160, so an explicit instantiation reproduces it.
+template void Name::callDoDeclare<sControllerService>();
+
 }

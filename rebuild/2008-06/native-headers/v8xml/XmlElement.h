@@ -4,7 +4,7 @@
 #include "util/Name.h"
 #include "util/Handle.h"
 #include "util/Utilities.h"
-#include "util/ContentProvider.h"
+#include "util/ContentId.h" // Split from util/ContentProvider.h to avoid Instance.h <-> XmlElement.h cycle
 
 extern const RBX::Name& value_IDREF_null;
 extern const RBX::Name& value_IDREF_nil;

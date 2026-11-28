@@ -1,45 +1,44 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-#include <new>
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+#pragma optimize("y", off)
 
-// INFERRED: operator-new-like allocator (cdecl, takes a size); the listed 9-arg
-// signature is reduced to the single pushed argument seen at the call site.
-extern "C" void* fn_006a0920(int size);
+void* __cdecl operator new(unsigned int);
 
-namespace RBX {
-    class Instance;
-    template <class T> struct Creatable {
-        struct Deleter {
-            void operator()(Instance* p);
-        };
-    };
+// INFERRED: control block vtable at 0x819854, from `mov [eax], 0x819854`
+extern void* g_00819854[];
+
+// INFERRED: file-local types; real names unknown
+struct Local_0045b790_Deleter {
+    void operator()(void*) const;
+};
+
+struct Local_0045b790_Control {
+    void** vtable;
+    int strong;
+    int weak;
+    void* object;
+    Local_0045b790_Deleter deleter;
+
+    Local_0045b790_Control(void*, const Local_0045b790_Deleter&);
+};
+
+inline Local_0045b790_Control::Local_0045b790_Control(void* p, const Local_0045b790_Deleter& d)
+    : strong(1), weak(1), deleter(d)
+{
+    vtable = g_00819854;
+    object = p;
 }
 
-// INFERRED: boost-style shared_ptr control block (vtable, use_count, weak_count, px, deleter)
-struct SpCountedImpl {
-    virtual void dispose() {}
-    virtual void destroy() {}
-    int use_count;
-    int weak_count;
-    RBX::Instance* px;
-    RBX::Creatable<RBX::Instance>::Deleter del; // left uninitialised (empty functor)
-
-    explicit SpCountedImpl(RBX::Instance* p) : use_count(1), weak_count(1), px(p) {}
+struct Local_0045b790_Holder {
+    Local_0045b790_Control* control;
 };
 
-// INFERRED: shared_count-like holder: ctor(Instance* p, Deleter d)
-struct SharedCountHolder {
-    SpCountedImpl* pi;
-};
-
-extern "C" SharedCountHolder* __fastcall fn_0045b790(SharedCountHolder* self, int unusedEdx,
-                                                      RBX::Instance* p,
-                                                      RBX::Creatable<RBX::Instance>::Deleter d)
+extern "C" Local_0045b790_Holder* __fastcall fn_0045b790(Local_0045b790_Holder* self, int unusedEdx, void* p, Local_0045b790_Deleter d)
 {
-    self->pi = 0;
+    self->control = 0;
     try {
-        void* mem = fn_006a0920(0x14);
-        self->pi = new (mem) SpCountedImpl(p);
-    } catch (...) {
+        self->control = new Local_0045b790_Control(p, d);
+    }
+    catch (...) {
         d(p);
         throw;
     }

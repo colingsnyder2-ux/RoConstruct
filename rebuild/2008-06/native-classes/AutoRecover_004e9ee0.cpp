@@ -1,30 +1,31 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: layout from disassembly only: vtable at +0, 8-byte payload at +8.
-struct Obj004e9ee0 {
-    void* vtbl;
+extern "C" char g_00826eb0[];   // INFERRED: unnamed global at 0x00826eb0 in the original
+#include <string>
+
+// INFERRED: the callee takes the std::string by const reference plus the output
+// pointer; the disassembly pushes one stack arg (&local) with the string
+// reference carried in the stack slot as the 3rd argument.
+struct Local_004e9ee0 {
+    int vtbl;
     int pad;
-    int v[2];
+    int val[2];
 };
 
-// INFERRED: unknown global at the vtable address stored into the object.
-extern "C" char g_00826eb0;
+extern "C" bool __cdecl fn_0060a2f0(int* out);
 
-// INFERRED: StringConverter<CoordinateFrame>::convertToValue; one stack arg, caller cleans.
-extern "C" bool __cdecl fn_0060a2f0(void* out);
-
-extern "C" Obj004e9ee0* __fastcall fn_004e9ee0(Obj004e9ee0* self, int unusedEdx, int a1, int a2, int a3)
+extern "C" Local_004e9ee0* __fastcall fn_004e9ee0(Local_004e9ee0* self, int unusedEdx, int a, int b, int c)
 {
-    int tmp[2];
-    tmp[0] = a1;
-    tmp[1] = a3;
+    int local[2];
+    local[0] = a;
+    local[1] = b;
     self->vtbl = 0;
-    if (!fn_0060a2f0(tmp)) {
-        int* p = self->v;
+    if (!fn_0060a2f0(local)) {
+        int* p = (int*)((char*)self + 8);
         if (p) {
-            p[0] = tmp[0];
-            p[1] = tmp[1];
+            p[0] = local[0];
+            p[1] = local[1];
         }
-        self->vtbl = &g_00826eb0;
+        self->vtbl = ((int)&g_00826eb0);
         return self;
     }
     self->vtbl = 0;

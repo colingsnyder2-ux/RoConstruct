@@ -1,37 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: no class headers were visible, so everything is declared locally.
-// This is a best-effort reconstruction, not a byte-exact match.
-
-#include <windows.h>
-#include <new>
-
-namespace G3D {
-    struct Vector3;
-    class System {
-    public:
-        static void* alignedMalloc(unsigned size, unsigned alignment);
-        static void  memset(void* p, unsigned char v, unsigned n);
-    };
-}
-
-namespace boost {
-    void call_once(void (*f)(), long& flag);
-}
-
-namespace RBX {
-    class GuidRegistryMutex {
-    public:
-        void lock();
-        void unlock();
-    };
-    namespace ViewNew {
-        class CylinderAlongXMesh {
-        public:
-            enum RenderSurfaceTypes { DummySurface = 0 };
-            CylinderAlongXMesh(const G3D::Vector3& v, RenderSurfaceTypes t);
-        };
-    }
-}
+// INFERRED: best-effort reconstruction, not compiled or diffed. Table layout is a guess from the disassembly.
 
 extern "C" int __fastcall fn_004e96f0(void* self, int unusedEdx, int a1, int a2);
 extern "C" int __fastcall fn_004d7e30(void* self, int unusedEdx);
@@ -40,91 +8,64 @@ extern "C" int __fastcall fn_004e7630(void* self, int unusedEdx, int a1, int a2)
 extern "C" int __fastcall fn_004e5d30(void* self, int unusedEdx, int a1);
 extern "C" int fn_006a0920(int a1);
 extern "C" int fn_004ed2c0(void);
+extern "C" void fn_00557330(void (*f)(), long* flag);
+extern "C" void __fastcall fn_00563090(void* mutex, int unusedEdx);
+extern "C" void __fastcall fn_005630e0(void* mutex, int unusedEdx);
+extern "C" void __fastcall fn_004fd6b0(void* self, int unusedEdx, int vec, int type);
+extern "C" void fn_004d9810(void);
 
-// INFERRED: file-local globals/helpers standing in for the original addresses
-static long g_onceFlag;
-static void initRegistry() {}
-
-struct MeshNode {            // hash chain node
-    unsigned key0;
-    unsigned key1;
-    char     value[0x10];   // value starts at +8
-    MeshNode* next;         // +0x18
+// INFERRED: local stand-ins for the registry table and its hash nodes
+struct Local_004eef30Node {
+    unsigned key;
+    unsigned key2;
+    char value[0x10];
+    Local_004eef30Node* next;
 };
 
-struct MeshRegistry {
-    char pad0[8];
-    MeshNode** buckets;      // +8
-    unsigned   bucketCount;  // +0xc
-    RBX::GuidRegistryMutex mutex; // +0x10
-    char pad1[0x4c];
-    int insertCount;         // +0x5c
+struct Local_004eef30Table {
+    char pad[8];
+    Local_004eef30Node** buckets;
+    unsigned numBuckets;
+    char mutex[0x4c];
+    int counter;
 };
 
-static MeshRegistry* g_registry;   // INFERRED: global at 0x97272c
+extern Local_004eef30Table* g_0097272c;
+extern long g_00972744;
 
-static MeshNode* findNode(MeshRegistry* r, unsigned key)
+extern "C" void* fn_004eef30(int vec, unsigned type)
 {
-    MeshNode* n = r->buckets[key % r->bucketCount];
-    while (n) {
-        if (n->key0 == key && n->key1 == key)
-            return n;
-        n = n->next;
-    }
-    return 0;
-}
+    fn_00557330(fn_004d9810, &g_00972744);
+    Local_004eef30Table* t = g_0097272c;
+    fn_00563090(t->mutex, 0);
 
-extern "C" void* fn_004eef30(const G3D::Vector3* vec, unsigned surfaceType)
-{
-    boost::call_once(initRegistry, g_onceFlag);
-    MeshRegistry* reg = g_registry;
-    reg->mutex.lock();
-
-    void* result = 0;
-
-    MeshNode* node = findNode(reg, surfaceType);
-    if (!node) {
-        // INFERRED: build a temporary 10-bucket table and insert it into the registry
-        void* tmp = G3D::System::alignedMalloc(0x28, 0x10);
-        G3D::System::memset(tmp, 0, 0x28);
-        fn_004e96f0(reg, 0, (int)&surfaceType, (int)&tmp);
-        fn_004d7e30(&tmp, 0);
-        node = findNode(reg, surfaceType);
+    Local_004eef30Node* n = t->buckets[type % t->numBuckets];
+    for (; n; n = n->next)
+        if (n->key == type && n->key2 == type)
+            break;
+    if (!n) {
+        fn_004e96f0(t, 0, 0, 0);
+        n = t->buckets[type % t->numBuckets];
+        for (; n; n = n->next)
+            if (n->key == type && n->key2 == type)
+                break;
     }
 
-    void* table = node->value;
-    if (!fn_004e5cd0(table, 0, (int)vec)) {
-        int dummy = 0;
-        fn_004e7630(table, 0, (int)vec, (int)&dummy);
-    }
+    if (!fn_004e5cd0(n->value, 0, vec))
+        fn_004e7630(n->value, 0, vec, 0);
 
-    int* slot = (int*)fn_004e5d30(table, 0, (int)vec);
-    result = (void*)*slot;
+    void** slot = (void**)fn_004e5d30(n->value, 0, vec);
+    void* result = *slot;
     if (!result) {
         void* mem = (void*)fn_006a0920(0x8c);
-        RBX::ViewNew::CylinderAlongXMesh* mesh = 0;
-        if (mem)
-            mesh = new (mem) RBX::ViewNew::CylinderAlongXMesh(
-                *vec, (RBX::ViewNew::CylinderAlongXMesh::RenderSurfaceTypes)surfaceType);
-        // INFERRED: ReferenceCountedPointer::setPointer
-        *slot = (int)mesh;
-        result = mesh;
-
-        if (++reg->insertCount % 100 == 0) {
-            // INFERRED: hold a reference across the purge call
-            int* held = (int*)*slot;
-            if (held)
-                InterlockedIncrement((LONG*)(held + 1));
-            fn_004ed2c0();
-            if (held && InterlockedDecrement((LONG*)(held + 1)) == 0) {
-                // INFERRED: zeroWeakPointers then virtual deleting destructor
-                typedef void (__thiscall *Dtor)(void*, int);
-                void** vt = *(void***)held;
-                ((Dtor)vt[0])(held, 1);
-            }
+        if (mem) {
+            fn_004fd6b0(mem, 0, vec, (int)type);
+            result = mem;
         }
+        *slot = result;
+        if (++t->counter % 100 == 0)
+            fn_004ed2c0();
     }
-
-    reg->mutex.unlock();
+    fn_005630e0(t->mutex, 0);
     return result;
 }

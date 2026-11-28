@@ -13,6 +13,8 @@
 
 namespace RBX {
 extern char sContentProvider[];
+#ifndef RBX_CONTENT_REQUEST_DEFINED
+#define RBX_CONTENT_REQUEST_DEFINED
 struct ContentRequest {
     ContentId id;
     std::vector<RequestCallback> callbacks;
@@ -24,6 +26,7 @@ public:
 public:
 	~ContentRequest(void);   // INFERRED: ??1ContentRequest@RBX@@QAE@XZ (header gap, header_gap_fill.py)
 };
+#endif
 class ContentProvider : public DescribedNonCreatable<ContentProvider, Instance, sContentProvider> {
 public:
     struct FailedUrl {

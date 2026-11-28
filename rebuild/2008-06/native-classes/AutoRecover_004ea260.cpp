@@ -1,39 +1,27 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-
-// INFERRED: layout of the object and of the two-dword local are guesses from the disassembly.
-struct Pair8 {
-    int a;
-    int b;
+extern "C" char g_00826f64[];   // INFERRED: unnamed global at 0x00826f64 in the original
+struct Local_004ea260 {
+    int f(int a, int b, int c);
 };
 
-struct Result8 {
-    const void* tag;  // [esi+0]
-    int pad;          // [esi+4]
-    Pair8 value;      // [esi+8]
-};
+// INFERRED: convertToValue(const std::string&, CoordinateFrame&) analog; first stack arg is passed through a local 2-dword block
+extern "C" bool __cdecl fn_0060a2f0(int* p);
 
-// INFERRED: unknown global whose address is stored at [self] (was constant 0x826f64).
-extern "C" char g_00826f64[];
-
-// StringConverter<CoordinateFrame>::convertToValue; the single stack arg is cleaned up by the caller.
-// INFERRED: the signature and return type are guesses.
-extern "C" bool fn_0060a2f0(Pair8* p);
-
-extern "C" Result8* __fastcall fn_004ea260(Result8* self, int unusedEdx, int arg1, int arg2, int arg3)
+extern "C" int __fastcall fn_004ea260(Local_004ea260* self, int unusedEdx, int a, int b, int c)
 {
-    Pair8 local;
-    local.a = arg1;
-    local.b = arg2;
-    self->tag = 0;
-    if (!fn_0060a2f0(&local)) {
-        Pair8* dst = &self->value;
-        if (dst) {
-            dst->a = local.a;
-            dst->b = local.b;
+    int local[2];
+    local[0] = a;
+    local[1] = b;
+    *(int*)self = 0;
+    if (!fn_0060a2f0(local)) {
+        int* p = (int*)((char*)self + 8);
+        if (p) {
+            p[0] = local[0];
+            p[1] = local[1];
         }
-        self->tag = g_00826f64;
-        return self;
+        *(int*)self = ((int)&g_00826f64);
+        return (int)self;
     }
-    self->tag = 0;
-    return self;
+    *(int*)self = 0;
+    return (int)self;
 }

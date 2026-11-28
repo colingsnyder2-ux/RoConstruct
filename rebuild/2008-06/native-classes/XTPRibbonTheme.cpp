@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob1 /GS- /EHsc /MD /D_AFXDLL /D_DLL /D_LIB /D_XTP_STATICLINK /I{headers}/../../../work/native-client/xtp-shadow /I{headers}/../../../tools/libs/xtp-11.2.2/Source /FICommon/XTPDLLExports.h /FIXTToolkitPro.h /I{headers}/../../../tools/libs/xtp-11.2.2/Source/Ribbon
+// native-flags: /O2 /Ob1 /GS /EHsc /MD /D_AFXDLL /D_DLL /D_LIB /D_XTP_STATICLINK /I{headers}/../../../work/native-client/xtp-shadow /I{headers}/../../../tools/libs/xtp-11.2.2/Source /FICommon/XTPDLLExports.h /FIXTToolkitPro.h /I{headers}/../../../tools/libs/xtp-11.2.2/Source/Ribbon
 // 2008-06 native XTPXTPRibbonTheme (inactive): upstream tools/libs/xtp-11.2.2/Source/Ribbon/XTPRibbonTheme.cpp, verbatim.
 // XTPRibbonTheme.cpp: implementation of the CXTPRibbonTheme class.
 //

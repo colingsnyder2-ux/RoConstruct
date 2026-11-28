@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /U_RELEASEASSERT
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /fp:fast /U_RELEASEASSERT
 // /U_RELEASEASSERT: the recipe's _RELEASEASSERT keeps RBXASSERT live, but the 2008 exe has no assert code in these bodies.
 // Donor-derived Camera TU (rbxgs v8datamodel/Camera.cpp) built against the native Camera.h with the 2008 VS2008 compiler;
 // every function below that is byte-exact is verified by check_native_class.py range=005c0000-005d4000. The class-name
@@ -12,10 +12,10 @@ namespace RBX
 {
 	char sCamera[] = "Camera";
 
-	static Reflection::EnumPropDescriptor<Camera, Camera::CameraType> desc_cameraType("CameraType", "Camera", &Camera::getCameraType, &Camera::setCameraType, Reflection::PropertyDescriptor::STANDARD); 
-	static Reflection::PropDescriptor<Camera, G3D::CoordinateFrame> desc_CoordFrame("CoordinateFrame", "Data", &Camera::getCameraCoordinateFrame, &Camera::setCameraCoordinateFrameNoLerp, Reflection::PropertyDescriptor::STREAMING);
-	static Reflection::PropDescriptor<Camera, G3D::CoordinateFrame> desc_Focus("Focus", "Data", &Camera::getCameraFocus, &Camera::setCameraFocus, Reflection::PropertyDescriptor::STREAMING);
-	static Reflection::RefPropDescriptor<Camera, Instance> cameraSubjectProp("CameraSubject", "Camera", &Camera::getCameraSubjectInstance, &Camera::setCameraSubject, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::EnumPropDescriptor<Camera, Camera::CameraType> desc_cameraType("CameraType", "Camera", &Camera::getCameraType, &Camera::setCameraType, Reflection::PropertyDescriptor::STANDARD); 
+	Reflection::PropDescriptor<Camera, G3D::CoordinateFrame> desc_CoordFrame("CoordinateFrame", "Data", &Camera::getCameraCoordinateFrame, &Camera::setCameraCoordinateFrameNoLerp, Reflection::PropertyDescriptor::STREAMING);
+	Reflection::PropDescriptor<Camera, G3D::CoordinateFrame> desc_Focus("Focus", "Data", &Camera::getCameraFocus, &Camera::setCameraFocus, Reflection::PropertyDescriptor::STREAMING);
+	Reflection::RefPropDescriptor<Camera, Instance> cameraSubjectProp("CameraSubject", "Camera", &Camera::getCameraSubjectInstance, &Camera::setCameraSubject, Reflection::PropertyDescriptor::STANDARD);
 	
 	Reflection::EnumDesc<Camera::CameraType>::EnumDesc()
 		: EnumDescriptor("CameraType", typeid(Camera::CameraType))
@@ -36,8 +36,10 @@ namespace RBX
 		  cameraExternallyAdjusted(false)
 	{
 		setName("Camera");
-		gCamera.setNearPlaneZ(1.25);
-		gCamera.setFarPlaneZ(5000);
+		// plane Z values are negative (G3D stores -z): the original ctor 005cd9a0 stores +1.25 / +5000 in nearPlane/farPlane;
+		// positive arguments made Ogre's Frustum::setNearClipDistance(-1.25) throw on the first render
+		gCamera.setNearPlaneZ(-1.25);
+		gCamera.setFarPlaneZ(-5000);
 		gCamera.setFieldOfView(G3D::toRadians(60));
 
 		G3D::CoordinateFrame cameraCoord(G3D::Vector3(0, 5, 5));

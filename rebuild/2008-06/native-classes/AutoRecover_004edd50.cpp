@@ -1,97 +1,72 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: this is a cache lookup (find-or-create a PBBMesh keyed by Vector3 + NormalId) in a global registry map guarded by a mutex.
-// INFERRED: the target takes (const Vector3*, NormalId) and returns a PBBMesh*. All names and layouts below are guesses from the disassembly.
-
-#include <stddef.h>
-#include <new>
-
-namespace G3D { class Vector3; }
-
-namespace boost {
-    void call_once(void (*)(), long&);
+#include <crtdefs.h>
+#include <stdlib.h>
+// INFERRED: no native header for the mesh cache, so locals use Local_ types and fn_ externs.
+extern "C" {
+void __cdecl fn_00557330(void (*init)(), long* flag);                 // boost::call_once
+void __fastcall fn_00563090(void* mutex, int unusedEdx);              // GuidRegistryMutex::lock
+void __fastcall fn_005630e0(void* mutex, int unusedEdx);              // GuidRegistryMutex::unlock
+int __fastcall fn_004e8690(void* self, int unusedEdx, int a1, int a2);
+void* __fastcall fn_006a0920(void* self, int unusedEdx, int a1);
+int __fastcall fn_004ea140(void* self, int unusedEdx, int a1);
+void* __fastcall fn_004f49d0(void* self, int unusedEdx, const float* v, int normalId); // PBBMesh ctor
+void __fastcall fn_00598fa0(void* self, int unusedEdx, void* p);      // setPointer
+void fn_004d9750();
+extern long g_0097273c;
+extern char* g_00972724;
 }
 
-namespace RBX {
-    class GuidRegistryMutex {
-    public:
-        void lock();
-        void unlock();
-    };
-    namespace ViewNew {
-        class PBBMesh {
-        public:
-            PBBMesh(const G3D::Vector3& v, int normalId);
-        };
-    }
-}
+struct Local_004edd50Key {
+    float x, y, z;
+    int normalId;
+};
 
-// INFERRED: unknown globals and callees, declared with the fn_ naming convention.
-extern "C" void fn_004d9750(void);
-extern long g_once_flag_0097273c;
-extern char* g_registry_00972724;
+// INFERRED: debug-checked std::map iterator (container, node), as the _invalid_parameter_noinfo calls show.
+struct Local_004edd50Iter {
+    char* cont;
+    char* node;
+};
 
-extern "C" int __fastcall fn_004e8690(void* self, int unusedEdx, int a1, int a2);
-extern "C" int __fastcall fn_004ea140(void* self, int unusedEdx, int a1);
-// The caller pops its own stack argument and ecx is not set, so this is a plain cdecl allocator.
-extern "C" void* fn_006a0920(size_t size);
-// ReferenceCountedPointer<...>::setPointer, thiscall
-extern "C" void __fastcall fn_00598fa0(void* self, int unusedEdx, void* p);
+// INFERRED: scoped lock with a locked flag at +4 (stack slot next to the mutex pointer).
+struct Local_004edd50Lock {
+    void* m;
+    bool locked;
+    __forceinline explicit Local_004edd50Lock(void* mm) : m(mm) { fn_00563090(m, 0); locked = true; }
+    __forceinline ~Local_004edd50Lock() { fn_005630e0(m, 0); }
+};
 
-namespace {
-    struct MeshKey {
-        float x, y, z;
-        int normalId;
-    };
-    struct MapNode {
-        char pad[0x1c];
-        void* value;
-    };
-    struct MapIter {
-        void* container;
-        MapNode* node;
-    };
-    struct MapHead {
-        void* proxy;     // [+0x00]
-        char pad[0x14];
-        MapNode* head;   // [+0x18]
-    };
-    struct LockGuard {
-        RBX::GuidRegistryMutex* m;
-        explicit LockGuard(RBX::GuidRegistryMutex* mm) : m(mm) { m->lock(); }
-        ~LockGuard() { m->unlock(); }
-    };
-}
-
-extern "C" void* fn_004edd50(const float* v, int normalId)
+extern "C" void* __cdecl fn_004edd50(const float* v, int normalId)
 {
-    boost::call_once(fn_004d9750, g_once_flag_0097273c);
+    fn_00557330(fn_004d9750, &g_0097273c);
+    char* inst = g_00972724;
+    Local_004edd50Lock lock(inst + 0x10);
 
-    char* reg = g_registry_00972724;
-    LockGuard guard((RBX::GuidRegistryMutex*)(reg + 0x10));
-
-    MeshKey key;
+    char* map = inst + 0x1c;
+    Local_004edd50Key key;
     key.x = v[0];
     key.y = v[1];
     key.z = v[2];
     key.normalId = normalId;
 
-    MapHead* map = (MapHead*)(reg + 0x1c);
-    MapIter it;
+    Local_004edd50Iter it;
     fn_004e8690(map, 0, (int)&it, (int)&key);
-
-    if (it.node != map->head) {
-        return it.node->value;
+    char* endNode = *(char**)(map + 0x18);
+    char* endCont = *(char**)map;
+    if (it.cont == 0 || it.cont != endCont)
+        _invalid_parameter_noinfo();
+    if (it.node == endNode) {
+        void* mem = fn_006a0920(0, 0, 0x8c);
+        void* mesh = mem ? fn_004f49d0(mem, 0, v, normalId) : 0;
+        int slot = fn_004ea140(map, 0, (int)&key);
+        fn_00598fa0((void*)slot, 0, mesh);
+        return mesh;
     }
-
-    RBX::ViewNew::PBBMesh* mesh;
-    void* mem = fn_006a0920(0x8c);
-    if (mem) {
-        mesh = new (mem) RBX::ViewNew::PBBMesh(*(const G3D::Vector3*)v, normalId);
-    } else {
-        mesh = 0;
-    }
-
-    int slot = fn_004ea140(map, 0, (int)&key);
-    fn_00598fa0((void*)slot, 0, mesh);
-    return mesh;
+    char* c = it.cont;
+    if (c == 0)
+        _invalid_parameter_noinfo();
+    else
+        c = *(char**)c;
+    if (it.node == *(char**)(c + 0x18))
+        _invalid_parameter_noinfo();
+    return *(void**)(it.node + 0x1c);
 }

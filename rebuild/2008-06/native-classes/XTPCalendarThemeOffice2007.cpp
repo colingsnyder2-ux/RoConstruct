@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob1 /GS- /EHsc /MD /D_AFXDLL /D_DLL /D_LIB /D_XTP_STATICLINK /I{headers}/../../../work/native-client/xtp-shadow /I{headers}/../../../tools/libs/xtp-11.2.2/Source /FICommon/XTPDLLExports.h /FIXTToolkitPro.h /I{headers}/../../../tools/libs/xtp-11.2.2/Source/Calendar
+// native-flags: /O2 /Ob1 /GS /EHsc /MD /D_AFXDLL /D_DLL /D_LIB /D_XTP_STATICLINK /I{headers}/../../../work/native-client/xtp-shadow /I{headers}/../../../tools/libs/xtp-11.2.2/Source /FICommon/XTPDLLExports.h /FIXTToolkitPro.h /I{headers}/../../../tools/libs/xtp-11.2.2/Source/Calendar
 // 2008-06 native XTPXTPCalendarThemeOffice2007 (inactive): upstream tools/libs/xtp-11.2.2/Source/Calendar/XTPCalendarThemeOffice2007.cpp, verbatim.
 // XTPCalendarThemeOffice2007.cpp : implementation file
 //

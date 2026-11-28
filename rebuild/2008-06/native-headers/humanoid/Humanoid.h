@@ -17,12 +17,23 @@ namespace RBX
 	class Accoutrement;
 	class Controller;
 
+#ifndef RBX_IMODELMODIFIER_DEFINED
+#define RBX_IMODELMODIFIER_DEFINED
+	// INFERRED: +0x1a0 base of Humanoid (RTTI 0083d47c, Humanoid2008.h, Clothing.h)
+	class __declspec(novtable) IModelModifier
+	{
+	public:
+		virtual ~IModelModifier() {}
+	};
+#endif
+
 	extern char sHumanoid[];
 	class Humanoid : public DescribedCreatable<Humanoid, Instance, sHumanoid>,
 					 public Connector,
 					 public IControllable,
 					 public IRenderable,
 					 public ICharacterSubject,
+					 public IModelModifier, // INFERRED: +0x1a0 vptr (RTTI 0083d47c, sizeof(Humanoid)==0x22c)
 					 public Listener<RunService, Stepped>
 	{
 	private:
@@ -74,6 +85,7 @@ namespace RBX
 		bool imDead : 1;
 		bool hadHeadJoint : 1;
 		bool sit : 1;
+		bool strafe : 1; // INFERRED: +0x1e8 bit 4 (005d7540/005dc230, Humanoid2008.h)
 		mutable boost::shared_ptr<PartInstance> head;
 		mutable boost::shared_ptr<PartInstance> torso;
 		mutable boost::shared_ptr<PartInstance> leftLeg;

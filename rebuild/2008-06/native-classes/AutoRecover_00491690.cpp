@@ -1,59 +1,58 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
-// INFERRED: layout/names follow the server-verified analog; globals use g_<address> names.
-struct TypeInfo
+// INFERRED: the two MSVCR90 imports are called through function-pointer slots
+// (0x802878 = type_info::operator==, 0x802864 = std::bad_cast ctor), as in the analog.
+extern void (__thiscall *construct_bad_cast)(void *, const char *);
+extern bool (__thiscall *type_info_equal)(const void *, const void *);
+
+// INFERRED: the constants in the disassembly are relocated data addresses, so they are
+// declared as extern symbols instead of literal integers.
+// 0x929614: type_info of the empty any placeholder
+extern "C" char g_00929614[];
+// 0x92bef8: type_info of the requested type
+extern "C" char g_00937010[];
+// 0x80ba2c: vtable of bad_any_cast
+extern "C" char g_0080ba2c[];
+
+// boost::throw_exception<boost::bad_any_cast>(const bad_any_cast&) at 0x0040a3f0
+extern "C" __declspec(noreturn) void __cdecl fn_0040a3f0(const void *);
+
+struct Holder
 {
-    unsigned long data;
+    virtual ~Holder();
+    virtual const void *type() const;
 };
 
-extern "C" TypeInfo g_00929614;   // empty type (typeid(void))
-extern "C" TypeInfo g_00937010;   // expected held type
-extern "C" bool (__thiscall *g_00802878)(const TypeInfo *, const TypeInfo &);  // type_info::operator== import
-extern "C" void (__thiscall *g_00802864)(void *, const char *);                // std::bad_cast ctor import
-
+// INFERRED: stands in for boost::bad_any_cast (derived from std::bad_cast)
 struct BadCast
 {
-    unsigned long vtable;
-    unsigned long message;
-    unsigned long owned;
-
-    BadCast(const char *);
+    unsigned long storage[3];
+    BadCast();
     ~BadCast();
 };
 
-__forceinline BadCast::BadCast(const char *text)
+inline BadCast::BadCast()
 {
-    g_00802864(this, text);
-    vtable = 0x0080BA2CUL;
+    construct_bad_cast(this, "bad cast");
+    storage[0] = reinterpret_cast<unsigned long>(g_0080ba2c);
 }
 
-// boost::throw_exception<boost::bad_any_cast>
-extern "C" __declspec(noreturn) void __cdecl fn_0040a3f0(const void *);
-
-struct Placeholder
+extern "C" void *__cdecl fn_00491690(Holder **operand)
 {
-    virtual ~Placeholder();
-    virtual const TypeInfo &type() const;
-};
-
-struct Any
-{
-    Placeholder *content;
-};
-
-extern "C" void *__cdecl fn_00491690(Any *value)
-{
-    if (value)
+    if (operand)
     {
-        const TypeInfo &type =
-            value->content ? value->content->type() : g_00929614;
-        if (g_00802878(&type, g_00937010))
+        const void *type = *operand
+            ? (*operand)->type()
+            : static_cast<const void *>(g_00929614);
+
+        if (type_info_equal(type, static_cast<const void *>(g_00937010)))
         {
-            void *result = reinterpret_cast<char *>(value->content) + 4;
+            void *result = reinterpret_cast<char *>(*operand) + 4;
             if (result)
                 return result;
         }
     }
 
-    fn_0040a3f0(&BadCast("bad cast"));
+    BadCast error;
+    fn_0040a3f0(&error);
 }

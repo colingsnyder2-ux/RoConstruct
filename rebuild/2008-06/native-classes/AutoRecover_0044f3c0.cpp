@@ -1,23 +1,19 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: minimal local declarations; no class header was found for ServiceProvider.
+// INFERRED: v8tree/ServiceProvider.h and v8datamodel/ServiceProvider.h are both missing,
+// so ServiceProvider is reached through DataModel.h, which should pull it in.
+#include "v8datamodel/DataModel.h"
+
 namespace RBX {
 
+// RunService is only used as a template argument, so a forward declaration is enough.
 class RunService;
 
-class ServiceProvider {
-public:
-    static unsigned int newIndex();
-    template<class T>
-    static unsigned int doGetClassIndex();
-};
-
-template<class T>
-unsigned int ServiceProvider::doGetClassIndex()
+// INFERRED: explicit specialization of the static member template, with a function-local static caching newIndex()
+template<>
+unsigned int ServiceProvider::doGetClassIndex<RunService>()
 {
-    static unsigned int index = newIndex();
+    static unsigned int index = ServiceProvider::newIndex();
     return index;
 }
-
-template unsigned int ServiceProvider::doGetClassIndex<RunService>();
 
 }

@@ -20,7 +20,7 @@ struct Argument {
 // StringConverter<CoordinateFrame>::convertToValue (cdecl, returns bool)
 extern "C" bool __cdecl fn_0060a2f0(void*);
 // ContentProvider::CachedContent::~CachedContent (thiscall, ecx = &arg)
-extern "C" void __fastcall fn_00422c60(Argument* self, int unusedEdx);
+extern "C" void __fastcall fn_00422c60(Argument* self);
 
 // INFERRED: unknown global at 0x00821ca0 (likely a vtable / type tag); only its address is stored
 extern "C" void* g_00821ca0;
@@ -60,10 +60,10 @@ extern "C" S* __fastcall fn_00492ea0(S* self, int unusedEdx, unsigned long first
     if (!fn_0060a2f0(&first)) {
         new (&self->payload) Payload(first, arg);
         self->tag = &g_00821ca0;
-        fn_00422c60(&arg, 0);
+        fn_00422c60(&arg);
         return self;
     }
     self->tag = 0;
-    fn_00422c60(&arg, 0);
+    fn_00422c60(&arg);
     return self;
 }

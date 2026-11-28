@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 
 // INFERRED: the two MSVCR90 imports are called through function-pointer slots
 // (0x802878 = type_info::operator==, 0x802864 = std::bad_cast ctor), as in the analog.

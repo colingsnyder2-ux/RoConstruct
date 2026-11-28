@@ -1,106 +1,111 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-#include <string>
-#include <windows.h>
-#include <GL/gl.h>
+// native-flags: /O2 /GS- /EHsc /MD /fp:fast /I{libs}/g3d-6.09/source/include /I{libs}/g3d-6.09/source/boost/include /I{libs}/SDL-1.2.11/include
+// native-profile: vendor
+#include "GLG3D/glcalls.h"
+#include "GLG3D/Texture.h"
+#include "GLG3D/GLCaps.h"
 
-extern "C" int fn_00471060(int a1);
-extern "C" int fn_004729d0(void);
+extern "C" bool fn_00471060(const std::string&) throw(...);
+extern "C" bool fn_004729d0(void) throw(...);
 
-// INFERRED: layout from member accesses in 0x472f10
-struct TexParams {
-    int filter;      // 1..6
-    int wrap;        // 0 clamp, 1 repeat, 2 border
-    int shadowMode;  // +8
-    float aniso;     // +0xc
-    char useMipHint; // +0x10
-    int borderA;     // +0x14
-    int borderB;     // +0x18
-};
-
-// INFERRED: capability flags at 0x96ee7f..0x96ee87
-extern bool g_96ee7f, g_96ee80, g_96ee81, g_96ee87;
-
-// INFERRED: esi holds the GL target at entry (register arg); modeled as 'target'
-extern "C" void fn_00472f10(TexParams* p)
+extern "C" {
+static __declspec(noinline) void fn_00472f10(
+    GLenum target,
+    const G3D::Texture::Settings& settings) throw(...)
 {
-    GLenum target = 0; // INFERRED: caller-provided esi
-    GLenum wrap = 0;
-    bool genMip = g_96ee81;
+    using namespace G3D;
 
-    switch (p->wrap) {
-    case 0:
-        wrap = 0x2900 + (g_96ee7f ? 0x582f : 0);
-        break;
-    case 1:
-        wrap = 0x2901;
-        break;
-    case 2: {
-        wrap = 0x2900 + (g_96ee80 ? 0x582d : 0);
-        float border[4] = { 0, 0, 0, 0 };
-        glTexParameterfv(target, 0x1004, border);
-        break;
-    }
-    }
-    glTexParameteri(target, 0x2802, wrap);
-    glTexParameteri(target, 0x2803, wrap);
-    if (genMip)
-        glTexParameteri(target, 0x8072, wrap);
+    bool supports3D = GLCaps::supports_GL_EXT_texture_3D();
+    GLenum mode = GL_NONE;
 
-    bool lod;
-    {
-        std::string s("GL_EXT_texture_lod");
-        lod = fn_00471060((int)&s) != 0;
-    }
-    if (lod) {
-        glTexParameteri(target, 0x813b, p->borderA);
-        glTexParameteri(target, 0x813a, p->borderB);
-    }
+    switch (settings.wrapMode) {
+    case Texture::TILE:
+        mode = GL_REPEAT;
+        break;
 
-    switch (p->filter) {
-    case 1:
-        glTexParameteri(target, 0x2800, 0x2601);
-        glTexParameteri(target, 0x2801, 0x2703);
-        if (fn_004729d0())
-            glTexParameteri(target, 0x8191, 1);
+    case Texture::CLAMP:
+        if (GLCaps::supports_GL_EXT_texture_edge_clamp())
+            mode = GL_CLAMP_TO_EDGE;
+        else
+            mode = GL_CLAMP;
         break;
-    case 2:
-        glTexParameteri(target, 0x2800, 0x2601);
-        glTexParameteri(target, 0x2801, 0x2701);
-        if (fn_004729d0() && p->useMipHint)
-            glTexParameteri(target, 0x8191, 1);
-        break;
-    case 3:
-        glTexParameteri(target, 0x2800, 0x2600);
-        glTexParameteri(target, 0x2801, 0x2700);
-        if (fn_004729d0() && p->useMipHint)
-            glTexParameteri(target, 0x8191, 1);
-        break;
-    case 4:
-        glTexParameteri(target, 0x2800, 0x2601);
-        glTexParameteri(target, 0x2801, 0x2601);
-        break;
-    case 5:
-        glTexParameteri(target, 0x2800, 0x2600);
-        glTexParameteri(target, 0x2801, 0x2600);
-        break;
-    }
 
-    static bool haveAniso;
-    static bool init;
-    if (!init) {
-        init = true;
-        std::string s("GL_EXT_texture_filter_anisotropic");
-        haveAniso = fn_00471060((int)&s) != 0;
-    }
-    if (haveAniso)
-        glTexParameterf(target, 0x84fe, p->aniso);
-
-    if (g_96ee87) {
-        if (p->shadowMode == 0) {
-            glTexParameteri(target, 0x884c, 0);
-            return;
+    case Texture::TRANSPARENT_BORDER:
+        if (GLCaps::supports_GL_ARB_texture_border_clamp())
+            mode = GL_CLAMP_TO_BORDER_ARB;
+        else
+            mode = GL_CLAMP;
+        {
+            Color4 black(0, 0, 0, 0);
+            glTexParameterfv(target, GL_TEXTURE_BORDER_COLOR, black);
         }
-        glTexParameteri(target, 0x884c, 0x884e);
-        glTexParameteri(target, 0x884d, 0x203 + ((p->shadowMode - 1) ? 3 : 0));
+        break;
     }
+    glTexParameteri(target, GL_TEXTURE_WRAP_S, mode);
+    glTexParameteri(target, GL_TEXTURE_WRAP_T, mode);
+    if (supports3D) {
+        glTexParameteri(target, GL_TEXTURE_WRAP_R, mode);
+    }
+
+    if (fn_00471060("GL_EXT_texture_lod")) {
+        glTexParameteri(target, GL_TEXTURE_MAX_LOD_SGIS, settings.maxMipMap);
+        glTexParameteri(target, GL_TEXTURE_MIN_LOD_SGIS, settings.minMipMap);
+    }
+
+    switch (settings.interpolateMode) {
+    case Texture::TRILINEAR_MIPMAP:
+        glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        if (fn_004729d0()) {
+            glTexParameteri(target, GL_GENERATE_MIPMAP_SGIS, GL_TRUE);
+        }
+        break;
+
+    case Texture::BILINEAR_MIPMAP:
+        glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+        if (fn_004729d0() && settings.autoMipMap) {
+            glTexParameteri(target, GL_GENERATE_MIPMAP_SGIS, GL_TRUE);
+        }
+        break;
+
+    case Texture::NEAREST_MIPMAP:
+        glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+        if (fn_004729d0() && settings.autoMipMap) {
+            glTexParameteri(target, GL_GENERATE_MIPMAP_SGIS, GL_TRUE);
+        }
+        break;
+
+    case Texture::BILINEAR_NO_MIPMAP:
+        glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        break;
+
+    case Texture::NO_INTERPOLATION:
+    case Texture::NEAREST_NO_MIPMAP:
+        glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        break;
+    }
+
+    static const bool anisotropic = fn_00471060("GL_EXT_texture_filter_anisotropic");
+    if (anisotropic) {
+        glTexParameterf(target, GL_TEXTURE_MAX_ANISOTROPY_EXT, settings.maxAnisotropy);
+    }
+
+    if (GLCaps::supports_GL_ARB_shadow()) {
+        if (settings.depthReadMode == Texture::DEPTH_NORMAL) {
+            glTexParameteri(target, GL_TEXTURE_COMPARE_MODE_ARB, GL_NONE);
+        } else {
+            glTexParameteri(target, GL_TEXTURE_COMPARE_MODE_ARB, GL_COMPARE_R_TO_TEXTURE_ARB);
+            glTexParameteri(target, GL_TEXTURE_COMPARE_FUNC_ARB,
+                (settings.depthReadMode == Texture::DEPTH_LEQUAL) ? GL_LEQUAL : GL_GEQUAL);
+        }
+    }
+}
+}
+
+// INFERRED: thin caller anchors the static helper's register-passed target (esi) in this TU.
+void _anchor_caller(GLenum target, const G3D::Texture::Settings& settings) {
+    fn_00472f10(target, settings);
 }

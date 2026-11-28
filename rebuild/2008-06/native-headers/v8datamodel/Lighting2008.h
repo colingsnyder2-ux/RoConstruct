@@ -116,6 +116,8 @@ namespace RBX
 		void setColorShiftBottom(G3D::Color3 value);
 		G3D::Color3 getColorShiftTop() const { return colorShiftTop; }
 		G3D::Color3 getColorShiftBottom() const { return colorShiftBottom; }
+		float getBrightness() const { return brightness; }
+		void setBrightness(float value);                // 005e2420
 
 		G3D::Vector3 getMoonPosition();                 // 005df4d0
 		G3D::Vector3 getSunPosition();                  // 005df500

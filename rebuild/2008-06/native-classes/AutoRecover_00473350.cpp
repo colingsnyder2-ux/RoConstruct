@@ -1,21 +1,6 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS /arch:SSE2 /fp:fast /I{headers}/g3d-image-2008
 #include <string>
-
-namespace G3D {
-
-class GImage {
-public:
-    class Error {
-    public:
-        std::string reason;
-        std::string filename;
-        // INFERRED: the frame layout puts the Error object at 0x58 bytes, so it is padded.
-        char        pad_[0x20];
-        Error(const std::string& reason, const std::string& filename);
-    };
-};
-
-} // namespace G3D
+#include "G3D/GImage.h"
 
 // INFERRED: vendor G3D::Texture::splitFilenameAtWildCard (static), emitted under the fixed name.
 extern "C" void fn_00473350(

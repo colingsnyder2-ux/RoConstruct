@@ -15,7 +15,13 @@ struct FnSelf005d9db0 {
     FnBase005d9db0* obj;
 };
 
-extern "C" int __fastcall fn_005d8540(void* self, int unusedEdx, int a1, int a2);
+// INFERRED: 8-byte bound callback passed by value (matches boost::bind(&collectAllDescendantCharacterPrims, _1, boost::ref(primitives))).
+struct Local_005d9db0_Bind {
+    void (*fn)();
+    int arg;
+};
+
+extern "C" int __fastcall fn_005d8540(void* self, Local_005d9db0_Bind cb);
 extern "C" void fn_005d9d10();
 
 extern "C" void __fastcall fn_005d9db0(FnSelf005d9db0* self, int unusedEdx, int arg)
@@ -23,9 +29,8 @@ extern "C" void __fastcall fn_005d9db0(FnSelf005d9db0* self, int unusedEdx, int 
     if (self) {
         FnDerived005d9db0* d = dynamic_cast<FnDerived005d9db0*>(self->obj);
         if (d) {
-            // INFERRED: edx holds arg at the call in the original; pass it as the dummy.
-            int fp = (int)(void*)&fn_005d9d10;
-            fn_005d8540(d, arg, fp, arg);
+            Local_005d9db0_Bind cb = { &fn_005d9d10, arg };
+            fn_005d8540(d, cb);
         }
     }
 }

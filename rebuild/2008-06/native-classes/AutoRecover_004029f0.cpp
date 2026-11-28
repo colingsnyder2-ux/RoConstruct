@@ -1,26 +1,20 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+#include "util/Name.h"
 
-// INFERRED: 0x00401a00 is the unnamed shared callee; the target is a bare tail-call thunk to it.
+// INFERRED: the callee at 0x00401a00 is unnamed, so it is declared with the fn_ convention.
+// The target is a tail jump to it, which is probably the inlined doDeclare body.
 extern "C" void fn_00401a00();
 
 namespace RBX {
 
+// INFERRED: sRunService is declared as `extern char* sRunService`, matching the mangled template argument.
 extern char* sRunService;
 
-// INFERRED: util/Name.h has no callDoDeclare declaration (C2244), so this file declares a minimal
-// Name with only the private static template; the template arg is the address of a char* (mangled $1...3PADA).
-class Name {
-private:
-    template<char** N>
-    static void callDoDeclare();
-};
-
-template<char** N>
-void Name::callDoDeclare()
+// INFERRED: Name::callDoDeclare is assumed to be declared in the header as a private static template member.
+template<>
+void Name::callDoDeclare<&sRunService>()
 {
     fn_00401a00();
 }
-
-template void Name::callDoDeclare<&sRunService>();
 
 }

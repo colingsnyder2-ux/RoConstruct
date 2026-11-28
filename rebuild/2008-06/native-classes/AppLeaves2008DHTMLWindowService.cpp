@@ -27,6 +27,7 @@ namespace RBX
 static std::map<DWORD, Marshaller*> marshallers;   // 0096cec4 (initializer 007eef40, atexit 007fa640)
 static boost::recursive_mutex marshallersLock;     // 0096cee4 (initializer 007eef70, atexit 007fa610)
 
+// 0041b6f0 (locks 0096cee4, GetCurrentThreadId, marshallers.find 00451600 on 0096cec4)
 Marshaller* acquireMarshaller()
 {
 	boost::recursive_mutex::scoped_lock lock(marshallersLock);

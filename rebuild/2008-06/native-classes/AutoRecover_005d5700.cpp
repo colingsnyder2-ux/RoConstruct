@@ -9,6 +9,6 @@ namespace RBX
 	// a temporary std::string("Clothing") is passed to Instance::setName (0x55af90).
 	Clothing::Clothing()
 	{
-		setName(std::string("Clothing"));
+		setName("Clothing");
 	}
 }

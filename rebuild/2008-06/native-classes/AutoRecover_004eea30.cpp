@@ -1,124 +1,89 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: argument roles, the registry layout and the node layout are guesses from the disassembly only.
+// INFERRED: best-effort reconstruction, not compiled or diffed. Locals, lock guard and temp type are guesses from the disassembly.
 #include <windows.h>
 
 namespace boost { void call_once(void (*f)(), long& flag); }
-namespace RBX {
-class GuidRegistryMutex {
-public:
-    void lock();
-    void unlock();
-};
+
+extern "C" {
+int __fastcall fn_004e9550(void* self, int unusedEdx, int a1, int a2);
+int __fastcall fn_004d7e30(void* self, int unusedEdx);
+int __fastcall fn_004e5cd0(void* self, int unusedEdx, int a1);
+int __fastcall fn_004e7630(void* self, int unusedEdx, int a1, int a2);
+int __fastcall fn_004e5d30(void* self, int unusedEdx, int a1);
+int fn_006a0920(int a1);
+int __fastcall fn_004fcfb0(void* self, int unusedEdx, int a1, int a2);
+int fn_004ece90(void);
+void __fastcall fn_00563090(void* self, int unusedEdx);
+void __fastcall fn_005630e0(void* self, int unusedEdx);
+void fn_004d97b0(void);
+void* fn_00508580(unsigned size, unsigned align);
+void fn_00508a30(void* p, unsigned char v, unsigned n);
+extern long g_00972740;
 }
-namespace G3D {
-namespace System {
-void* alignedMalloc(size_t bytes, size_t alignment);
-void memset(void* dst, unsigned char v, size_t n);
-}
-class ReferenceCountedObject {
-public:
-    void ReferenceCountedObject_zeroWeakPointers();
-};
-}
 
-extern "C" void fn_004d97b0();
-extern "C" long g_00972740;
-extern "C" char* g_00972728;
-// INFERRED: vtable of the temporary container object (was hardcoded 0x826bfc)
-extern "C" char g_00826bfc[];
-extern "C" int __fastcall fn_004e9550(void* self, int unusedEdx, int a1, int a2);
-extern "C" int __fastcall fn_004d7e30(void* self, int unusedEdx);
-extern "C" int __fastcall fn_004e5cd0(void* self, int unusedEdx, int a1);
-extern "C" int __fastcall fn_004e7630(void* self, int unusedEdx, int a1, int a2);
-extern "C" int __fastcall fn_004e5d30(void* self, int unusedEdx, int a1);
-extern "C" int fn_006a0920(int a1);
-extern "C" int __fastcall fn_004fcfb0(void* self, int unusedEdx, int a1, int a2);
-extern "C" int fn_004ece90(void);
-extern "C" void __fastcall fn_00598fa0(void* self, int unusedEdx, void* p);
-
-struct RegNode {
-    unsigned key0;
-    unsigned key1;
-    int payload[4];
-    RegNode* next;
+struct Local_004eea30_Node {
+    unsigned key;
+    unsigned key2;
+    int value[4];
+    Local_004eea30_Node* next;
 };
 
-// INFERRED: temporary container constructed when no node exists for the key
-struct TmpObj {
-    void* vtbl;
-    int size;
-    void* data;
-    int pad;
+struct Local_004eea30_Registry {
+    int pad0[2];
+    Local_004eea30_Node** buckets;
+    unsigned bucketCount;
+    char mutex[0x4c];
+    int insertCount;
 };
 
-static RegNode* findNode(char* reg, unsigned key)
+extern Local_004eea30_Registry* g_00972728;
+
+struct Local_004eea30_Lock {
+    void* m;
+    explicit Local_004eea30_Lock(void* mm) : m(mm) { fn_00563090(m, 0); }
+    ~Local_004eea30_Lock() { fn_005630e0(m, 0); }
+};
+
+static Local_004eea30_Node* Local_004eea30_find(Local_004eea30_Registry* r, unsigned k)
 {
-    unsigned buckets = *(unsigned*)(reg + 0xc);
-    RegNode** table = *(RegNode***)(reg + 8);
-    RegNode* n = table[key % buckets];
+    Local_004eea30_Node* n = r->buckets[k % r->bucketCount];
     while (n) {
-        if (n->key0 == key && n->key1 == key)
-            return n;
+        if (n->key == k && n->key2 == k)
+            break;
         n = n->next;
     }
-    return 0;
+    return n;
 }
 
-extern "C" int* fn_004eea30(int arg1, unsigned arg2)
+extern "C" int fn_004eea30(unsigned guid)
 {
     boost::call_once(fn_004d97b0, g_00972740);
-    char* reg = g_00972728;
-    RBX::GuidRegistryMutex* mtx = (RBX::GuidRegistryMutex*)(reg + 0x10);
-    mtx->lock();
+    Local_004eea30_Registry* r = g_00972728;
+    Local_004eea30_Lock lock(r->mutex);
 
-    int* result = 0;
-    RegNode* node = findNode(reg, arg2);
-    if (!node) {
-        TmpObj tmp;
-        tmp.vtbl = (void*)g_00826bfc;
+    int result = 0;
+    if (!Local_004eea30_find(r, guid)) {
+        struct Tmp { int vt; int size; int data; } tmp;
         tmp.size = 10;
-        tmp.pad = 0;
-        tmp.data = G3D::System::alignedMalloc(0x28, 0x10);
-        G3D::System::memset(tmp.data, 0, 0x28);
-        int keyCopy[2];
-        keyCopy[0] = (int)arg2;
-        fn_004e9550(reg, 0, (int)keyCopy, (int)&tmp);
-        tmp.vtbl = (void*)g_00826bfc;
+        tmp.data = (int)fn_00508580(0x28, 0x10);
+        fn_00508a30((void*)tmp.data, 0, 0x28);
+        fn_004e9550(r, 0, (int)&guid, (int)&tmp);
         fn_004d7e30(&tmp, 0);
     }
-    node = findNode(reg, arg2);
-    void* entry = (char*)node + 8;
-
-    if (!(char)fn_004e5cd0(entry, 0, arg1)) {
-        int tmp2[4];
-        // INFERRED: array constructed/destructed around the insert call
-        fn_004e7630(entry, 0, arg1, (int)tmp2);
+    Local_004eea30_Node* n = Local_004eea30_find(r, guid);
+    if (!fn_004e5cd0(&n->value, 0, guid)) {
+        fn_004e7630(&n->value, 0, guid, 0);
     }
-    int* slot = (int*)fn_004e5d30(entry, 0, arg1);
-    result = (int*)*slot;
+    int* slot = (int*)fn_004e5d30(&n->value, 0, guid);
+    result = *slot;
     if (!result) {
-        void* mem = (void*)fn_006a0920(0x8c);
-        void* obj = 0;
-        if (mem)
-            obj = (void*)fn_004fcfb0(mem, 0, arg1, (int)arg2);
-        result = (int*)obj;
-        fn_00598fa0(slot, 0, obj);
-        int cnt = ++*(int*)(reg + 0x5c);
-        if (cnt % 100 == 0) {
-            G3D::ReferenceCountedObject* p = (G3D::ReferenceCountedObject*)*slot;
-            if (p)
-                InterlockedIncrement((LONG*)((char*)p + 4));
+        int obj = fn_006a0920(0x8c);
+        if (obj)
+            obj = fn_004fcfb0((void*)obj, 0, guid, guid);
+        result = obj;
+        *slot = obj;
+        if (++r->insertCount % 100 == 0)
             fn_004ece90();
-            if (p) {
-                if (InterlockedDecrement((LONG*)((char*)p + 4)) == 0) {
-                    p->ReferenceCountedObject_zeroWeakPointers();
-                    typedef void (__thiscall *DtorFn)(void*, int);
-                    void** vt = *(void***)p;
-                    ((DtorFn)vt[0])(p, 1);
-                }
-            }
-        }
     }
-    mtx->unlock();
     return result;
 }

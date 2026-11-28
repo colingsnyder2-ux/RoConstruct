@@ -1,25 +1,31 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-struct Vec2 { int a, b; };
-struct Holder { void* state; int pad; Vec2 value; };
+extern "C" char g_00826df8[];   // INFERRED: unnamed global at 0x00826df8 in the original
 
-// INFERRED: vtable-like global at 0x826df8 stored into state
-extern "C" char g_00826df8[];
+// INFERRED: layout of the target object; only the first dword (vtable-like tag) and the pair at +8 are touched.
+struct Local_004dba40 {
+    int tag;
+    int pad;
+    int v[2];
+};
 
-// INFERRED: StringConverter<CoordinateFrame>::convertToValue, cdecl, one stack arg
-extern "C" char fn_0060a2f0(Vec2* out);
+// INFERRED: real callee is RBX::StringConverter<G3D::CoordinateFrame>::convertToValue; one stack arg per the disassembly.
+extern "C" bool __cdecl fn_0060a2f0(int* p);
 
-extern "C" Holder* __fastcall fn_004dba40(Holder* self, int unusedEdx, int a1, int a2, int a3)
+extern "C" Local_004dba40* __fastcall fn_004dba40(Local_004dba40* self, int unusedEdx, int a, int b, int c)
 {
-    Vec2 v;
-    v.a = a1;
-    v.b = a2;
-    self->state = 0;
-    if (!fn_0060a2f0(&v)) {
-        Vec2* p = &self->value;
-        if (p) *p = v;
-        self->state = g_00826df8;
+    int local[2];
+    local[0] = a;
+    local[1] = b;
+    *(int*)self = 0;
+    if (!fn_0060a2f0(local)) {
+        int* p = (int*)((char*)self + 8);
+        if (p) {
+            p[0] = local[0];
+            p[1] = local[1];
+        }
+        *(int*)self = ((int)&g_00826df8);
         return self;
     }
-    self->state = 0;
+    *(int*)self = 0;
     return self;
 }

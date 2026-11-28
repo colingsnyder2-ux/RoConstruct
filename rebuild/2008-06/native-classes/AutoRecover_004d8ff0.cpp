@@ -1,37 +1,39 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: G3D-style array of bucket-chain heads; node = {pad[8], sub-object at +8 (vtable), ..., next at +0x18}.
-namespace G3D { struct System { static void free(void* p); static void alignedFree(void* p); }; }
+extern "C" char g_00826c1c[];   // INFERRED: unnamed global at 0x00826c1c in the original
+#include "G3D/System.h"
 
-extern "C" char vt_00826c1c[]; // INFERRED: vtable at 0x826c1c
-extern "C" int __fastcall fn_004d7e30(void* self, int unusedEdx);
+// INFERRED: callee only receives ecx; the original never sets edx before this call
+extern "C" int __fastcall fn_004d7e30(void* self);
 
-struct ChainNode {
-    int pad0[2];
-    void* vptr;      // +8
-    int pad1[3];
-    ChainNode* next; // +0x18
+// INFERRED: layout from the disassembly; the node/table types are local helpers
+struct Local_004d8ff0Node {
+    unsigned char pad[8];
+    void* vtable;            // +8, payload start
+    unsigned char data[12];
+    Local_004d8ff0Node* next; // +0x18
 };
 
-struct ChainTable {
-    int field4;
-    ChainNode** data; // +8
-    int size;         // +0xc
+struct Local_004d8ff0Table {
+    unsigned int field0;
+    int size;
+    Local_004d8ff0Node** buckets;
+    int bucketCount;
 };
 
-extern "C" void __fastcall fn_004d8ff0(ChainTable* self, int unusedEdx)
+extern "C" void __fastcall fn_004d8ff0(Local_004d8ff0Table* self, int unusedEdx)
 {
-    for (int i = 0; i < self->size; ++i) {
-        ChainNode* n = self->data[i];
-        while (n) {
-            ChainNode* next = n->next;
-            n->vptr = vt_00826c1c;
-            fn_004d7e30(&n->vptr, 0);
-            G3D::System::free(n);
-            n = next;
+    for (int i = 0; i < self->bucketCount; ++i) {
+        Local_004d8ff0Node* node = self->buckets[i];
+        while (node) {
+            Local_004d8ff0Node* next = node->next;
+            node->vtable = (void*)((int)&g_00826c1c);
+            fn_004d7e30(&node->vtable);
+            G3D::System::free(node);
+            node = next;
         }
     }
-    G3D::System::alignedFree(self->data);
-    self->data = 0;
+    G3D::System::alignedFree(self->buckets);
+    self->buckets = 0;
+    self->bucketCount = 0;
     self->size = 0;
-    self->field4 = 0;
 }

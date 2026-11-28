@@ -1,15 +1,33 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 #include <new>
 
-// INFERRED: the disassembly pushes no stack args for this call, so it is declared with none.
-extern "C" int __fastcall fn_0053f160(void* self, int unusedEdx);
+// INFERRED: the original unit was compiled without optimization (ebp frame,
+// "this" spilled to [ebp-4]), so optimization is turned off for this code.
+#pragma optimize("", off)
 
-// INFERRED: this is a scalar deleting destructor: run the destructor body, then delete if (flags & 1).
-extern "C" void* __fastcall fn_00540300(void* self, int unusedEdx, unsigned int flags)
+namespace RBX {
+namespace RenderNew {
+// INFERRED: minimal class declaration; the real header was not provided.
+// The destructor is only declared, not defined, so the compiler emits a
+// call to ??1TextureProxy@RenderNew@RBX@@UAE@XZ (0x7ae3b0) from the
+// compiler-generated deleting destructor (the target function).
+class TextureProxy {
+public:
+    TextureProxy() {}
+    virtual ~TextureProxy();
+};
+}
+}
+
+namespace {
+// INFERRED: file-local helper that odr-uses the inline constructor, forcing the
+// compiler to emit TextureProxy's vtable and with it the compiler-generated
+// __thiscall deleting destructor (this function). Not a definition of the target.
+RBX::RenderNew::TextureProxy* emitTextureProxyVtable(void* mem)
 {
-    fn_0053f160(self, 0);
-    if (flags & 1) {
-        ::operator delete(self);
-    }
-    return self;
+    return new (mem) RBX::RenderNew::TextureProxy();
+}
+
+// Keep the helper referenced so it (and the vtable) is not discarded.
+RBX::RenderNew::TextureProxy* (* volatile s_keepTextureProxyVtable)(void*) = &emitTextureProxyVtable;
 }

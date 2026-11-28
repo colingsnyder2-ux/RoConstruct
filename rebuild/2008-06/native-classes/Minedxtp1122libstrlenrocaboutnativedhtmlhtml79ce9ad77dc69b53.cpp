@@ -1,4 +1,4 @@
-// native-flags: /O2 /GS- /EHsc /MD /D_AFXDLL /D_XTP_STATICLINK /D_DLL /D_LIB /I{headers}/../../../tools/libs/xtp-11.2.2/Source /I{headers}/../../../tools/libs/mfc-9.0/atlmfc/include /FICommon/XTPDLLExports.h /FIXTToolkitPro.h
+// native-flags: /O2 /GS /EHsc /MD /D_AFXDLL /D_XTP_STATICLINK /D_DLL /D_LIB /I{headers}/../../../tools/libs/xtp-11.2.2/Source /I{headers}/../../../tools/libs/mfc-9.0/atlmfc/include /FICommon/XTPDLLExports.h /FIXTToolkitPro.h
 // 2008-06 native Minedxtp1122libstrlenrocaboutnativedhtmlhtml79ce9ad77dc69b53 (inactive): mined exact source xtp-11.2.2-lib-strlen roc_about_native_dhtml_html_79ce9ad77dc69b53.cpp, verbatim.
 #include <XTToolkitPro.h>
 #include <afxdhtml.h>

@@ -17,10 +17,10 @@ namespace RBX
 	// The unit's three descriptors, in donor order (dynamic initializers not recorded here).
 	// 0097b9b8: initializer 007f79c0 passes "CoordinateFrame" 00832b2c, "Data" 00822490, no getter, setter 00609150,
 	// functionality 0 (LEGACY) to the PropDescriptor constructor 00609410.
-	static Reflection::PropDescriptor<PVInstance, G3D::CoordinateFrame> desc_CoordFrame("CoordinateFrame", "Data", NULL, &PVInstance::setPVGridOffsetLegacy, Reflection::PropertyDescriptor::LEGACY);
+	Reflection::PropDescriptor<PVInstance, G3D::CoordinateFrame> desc_CoordFrame("CoordinateFrame", "Data", NULL, &PVInstance::setPVGridOffsetLegacy, Reflection::PropertyDescriptor::LEGACY);
 	// 0097b9d4: the descriptor setShowControllerFlag 00609a00 raises; its getter 00608950 is emitted for it. Initializer
 	// 007f7a00 passes "ControllerFlagShown" 0084296c, "Appearance" 008329ac, getter 00608950, setter 00609a00, 5 (STANDARD).
-	static Reflection::PropDescriptor<PVInstance, bool> prop_ControllerFlagShown("ControllerFlagShown", "Appearance", &PVInstance::getShowControllerFlag, &PVInstance::setShowControllerFlag, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::PropDescriptor<PVInstance, bool> prop_ControllerFlagShown("ControllerFlagShown", "Appearance", &PVInstance::getShowControllerFlag, &PVInstance::setShowControllerFlag, Reflection::PropertyDescriptor::STANDARD);
 
 	// 0097b994 (setControllerType 006099e5)
 	const Reflection::EnumPropDescriptor<PVInstance, Controller::ControllerType> PVInstance::prop_ControllerType("Controller", "Behavior", &PVInstance::getControllerType, &PVInstance::setControllerType, Reflection::PropertyDescriptor::STANDARD);

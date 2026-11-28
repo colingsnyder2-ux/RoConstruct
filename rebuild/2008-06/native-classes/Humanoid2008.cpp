@@ -69,7 +69,7 @@ namespace RBX
 
 	// TakeDamage 007f67b0 and MoveTo 007f67f0 push security 0 (NeedTrustedCaller).
 	static Reflection::BoundFuncDesc<Humanoid, void(float), 1> func_TakeDamage(&Humanoid::takeDamage, "TakeDamage", "amount", Reflection::FunctionDescriptor::NeedTrustedCaller); // 0097a288
-	static Reflection::BoundFuncDesc<Humanoid, void(G3D::Vector3, boost::shared_ptr<Instance>), 2> func_MoveTo(&Humanoid::moveTo2, "MoveTo", "location", "part", Reflection::FunctionDescriptor::NeedTrustedCaller); // 0097a408
+	Reflection::BoundFuncDesc<Humanoid, void(G3D::Vector3, boost::shared_ptr<Instance>), 2> func_MoveTo(&Humanoid::moveTo2, "MoveTo", "location", "part", Reflection::FunctionDescriptor::NeedTrustedCaller); // 0097a408
 
 	Humanoid::Humanoid()
 		: health(100.0f),

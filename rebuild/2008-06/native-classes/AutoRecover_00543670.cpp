@@ -1,84 +1,98 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// INFERRED: std::set<int>::erase(iterator) (_Tree::erase) with inlined RB-tree rebalance.
-// Node accessors, named by role: 54c630=_Left 54c640=_Parent 541da0=_Right
-// 541d90=_Isnil 543630=_Color 5423f0=_Root 5508e0=_Lmost 54cec0=_Rmost
-// 545510=_Min 5454d0=_Max 544070=_Rrotate 550900=_Lrotate
+// native-flags: /O2 /Ob2 /Oy /GS- /EHs /MD /D_AFXDLL /DNDEBUG /D_MBCS
 #include <string>
-#include <exception>
+#include <stdexcept>
 
-extern "C" int fn_00541d90(int a1);
+// INFERRED: this is the checked std::set<int>::erase(iterator) tree-removal
+// routine (VC9 _Tree::erase), with one proxy dword and one node dword per
+// iterator.
+
+struct Local_00543670Iter {
+    int proxy;
+    int node;
+};
+
+struct Local_00543670Tree {
+    char pad[0xc];
+    char alloc[0x10];   // allocator subobject at +0xc
+    unsigned size;      // +0x1c
+};
+
+extern "C" int __fastcall fn_0054bf70(void* self, int unusedEdx);          // iterator::_Mynode
+extern "C" int __fastcall fn_005428f0(void* self, int unusedEdx);          // iterator::operator++
+extern "C" int fn_00541d90(int a1);                                        // _Isnil
+extern "C" int fn_00541da0(int a1);                                        // _Right
+extern "C" int fn_0054c630(int a1);                                        // _Left
+extern "C" int fn_0054c640(int a1);                                        // _Parent
+extern "C" int fn_00543630(int a1);                                        // _Color
+extern "C" int fn_00545510(int a1);                                        // _Min
+extern "C" int fn_005454d0(int a1);                                        // _Max
 extern "C" int __fastcall fn_004024a0(void* self, int unusedEdx, int a1);
-extern "C" int fn_0054c630(int arg);
-extern "C" char *fn_00541da0(char* self);
-extern "C" char *fn_0054c640(char* self);
-extern "C" int __fastcall fn_005423f0(void* self, int unusedEdx);
-extern "C" int fn_00545510(int a1);
-extern "C" int __fastcall fn_0054cec0(void* self, int unusedEdx);
-extern "C" int fn_005454d0(int a1);
-extern "C" char *fn_00543630(char* base);
-extern "C" int __fastcall fn_00544070(void* self, int unusedEdx, int a1);
-extern "C" int __fastcall fn_005442d0(void* self, int unusedEdx, int a1);
-extern "C" int __fastcall fn_00543610(void* self, int unusedEdx, int node, int n);
-extern "C" int __fastcall fn_005508e0(void* self, int unusedEdx);
-extern "C" int __fastcall fn_00550900(void* self, int unusedEdx, int node);
-extern "C" int __fastcall fn_00544730(void* self, int unusedEdx, int ret, int ptr, int proxy);
-extern "C" int __fastcall fn_0054bf70(void* self, int unusedEdx);
-extern "C" int __fastcall fn_005428f0(void* self, int unusedEdx);
-extern "C" void __cdecl fn_004019e0(char& a, char& b);
-
-struct TreeIter { int ptr; int proxy; };
-struct TreeBase { int pad[3]; char alloc[4]; int pad2[3]; unsigned size; };
+extern "C" int __fastcall fn_005423f0(void* self, int unusedEdx);          // _Root
+extern "C" int __fastcall fn_005508e0(void* self, int unusedEdx);          // _Lmost
+extern "C" int __fastcall fn_0054cec0(void* self, int unusedEdx);          // _Rmost
+extern "C" int __fastcall fn_00550900(void* self, int unusedEdx, int a1);  // _Lrotate
+extern "C" int __fastcall fn_00544070(void* self, int unusedEdx, int a1);  // _Rrotate
+extern "C" int __fastcall fn_005442d0(void* self, int unusedEdx, int a1);  // destroy
+extern "C" int __fastcall fn_00543610(void* self, int unusedEdx, int a1, int a2); // deallocate
+extern "C" int __fastcall fn_00544730(void* self, int unusedEdx, int a1, int a2, int a3); // _Make_iter
+extern "C" void* __fastcall fn_00543670(Local_00543670Tree* self, int unusedEdx, int retSlot, int proxy, int node);
 
 #define ISNIL(n)   (*(char*)fn_00541d90(n))
-#define LEFT(n)    (*(int*)fn_0054c630(0, 0, n))
-#define PARENT(n)  (*(int*)fn_0054c640(0, 0, n))
-#define RIGHT(n)   (*(int*)fn_00541da0(0, 0, n))
-#define COLOR(n)   (*(char*)fn_00543630(0, 0, n))
+#define RIGHT(n)   (*(int*)fn_00541da0(n))
+#define LEFT(n)    (*(int*)fn_0054c630(n))
+#define PARENT(n)  (*(int*)fn_0054c640(n))
+#define COLOR(n)   (*(char*)fn_00543630(n))
 
-extern "C" int __fastcall fn_00543670(TreeBase* self, int unusedEdx, int retPtr, int itPtr, int itProxy)
+extern "C" void* __fastcall fn_00543670(Local_00543670Tree* self, int unusedEdx, int retSlot, int proxy, int node)
 {
-    TreeIter* it = (TreeIter*)&retPtr + 1; // INFERRED: iterator passed by value after the return slot
-    if (ISNIL(fn_0054bf70(it, 0))) {
-        std::string msg("invalid map/set<T> iterator");
-        throw std::exception(msg.c_str());
-    }
-    int erased = fn_0054bf70(it, 0);
-    fn_005428f0(it, 0); // ++iterator
+    Local_00543670Iter where;
+    where.proxy = proxy;
+    where.node = node;
+
+    if (ISNIL(fn_0054bf70(&where, 0)))
+        throw std::out_of_range(std::string("invalid map/set<T> iterator"));
+
+    int erased = fn_0054bf70(&where, 0);
+    fn_005428f0(&where, 0);
+
     int pnode = erased;
     int fixnode;
-    int fixparent;
-    if (ISNIL(LEFT(pnode))) {
+    int fixnodeparent;
+
+    if (ISNIL(LEFT(pnode)))
         fixnode = RIGHT(pnode);
-    } else if (ISNIL(RIGHT(pnode))) {
+    else if (ISNIL(RIGHT(pnode)))
         fixnode = LEFT(pnode);
-    } else {
-        pnode = fn_0054bf70(it, 0);
+    else {
+        pnode = fn_0054bf70(&where, 0);
         fixnode = RIGHT(pnode);
     }
+
     if (pnode == erased) {
-        fixparent = PARENT(erased);
+        fixnodeparent = PARENT(erased);
         if (!ISNIL(fixnode))
-            PARENT(fixnode) = fixparent;
+            PARENT(fixnode) = fixnodeparent;
         if (*(int*)fn_005423f0(self, 0) == erased)
             *(int*)fn_005423f0(self, 0) = fixnode;
-        else if (LEFT(fixparent) == erased)
-            LEFT(fixparent) = fixnode;
+        else if (LEFT(fixnodeparent) == erased)
+            LEFT(fixnodeparent) = fixnode;
         else
-            RIGHT(fixparent) = fixnode;
+            RIGHT(fixnodeparent) = fixnode;
+
         if (*(int*)fn_005508e0(self, 0) == erased)
-            *(int*)fn_005508e0(self, 0) = ISNIL(fixnode) ? fixparent : fn_00545510(fixnode);
+            *(int*)fn_005508e0(self, 0) = ISNIL(fixnode) ? fixnodeparent : fn_00545510(fixnode);
         if (*(int*)fn_0054cec0(self, 0) == erased)
-            *(int*)fn_0054cec0(self, 0) = ISNIL(fixnode) ? fixparent : fn_005454d0(fixnode);
+            *(int*)fn_0054cec0(self, 0) = ISNIL(fixnode) ? fixnodeparent : fn_005454d0(fixnode);
     } else {
         PARENT(LEFT(erased)) = pnode;
         LEFT(pnode) = LEFT(erased);
-        if (pnode == RIGHT(erased)) {
-            fixparent = pnode;
-        } else {
-            fixparent = PARENT(pnode);
+        if (pnode == RIGHT(erased))
+            fixnodeparent = pnode;
+        else {
+            fixnodeparent = PARENT(pnode);
             if (!ISNIL(fixnode))
-                PARENT(fixnode) = fixparent;
-            LEFT(fixparent) = fixnode;
+                PARENT(fixnode) = fixnodeparent;
+            LEFT(fixnodeparent) = fixnode;
             RIGHT(pnode) = RIGHT(erased);
             PARENT(RIGHT(erased)) = pnode;
         }
@@ -89,69 +103,76 @@ extern "C" int __fastcall fn_00543670(TreeBase* self, int unusedEdx, int retPtr,
         else
             RIGHT(PARENT(erased)) = pnode;
         PARENT(pnode) = PARENT(erased);
-        fn_004019e0(COLOR(pnode), COLOR(erased));
+        char t = COLOR(pnode);
+        COLOR(pnode) = COLOR(erased);
+        COLOR(erased) = t;
     }
+
     if (COLOR(erased) == 1) {
-        for (; *(int*)fn_005423f0(self, 0) != fixnode && COLOR(fixnode) == 1; fixparent = PARENT(fixnode)) {
-            if (fixnode == LEFT(fixparent)) {
-                pnode = RIGHT(fixparent);
+        for (; fixnode != *(int*)fn_005423f0(self, 0) && COLOR(fixnode) == 1;
+             fixnodeparent = PARENT(fixnode)) {
+            if (fixnode == LEFT(fixnodeparent)) {
+                pnode = RIGHT(fixnodeparent);
                 if (COLOR(pnode) == 0) {
                     COLOR(pnode) = 1;
-                    COLOR(fixparent) = 0;
-                    fn_00550900(self, 0, fixparent);
-                    pnode = RIGHT(fixparent);
+                    COLOR(fixnodeparent) = 0;
+                    fn_00550900(self, 0, fixnodeparent);
+                    pnode = RIGHT(fixnodeparent);
                 }
-                if (ISNIL(pnode)) {
-                    fixnode = fixparent;
-                } else if (COLOR(LEFT(pnode)) == 1 && COLOR(RIGHT(pnode)) == 1) {
+                if (ISNIL(pnode))
+                    fixnode = fixnodeparent;
+                else if (COLOR(LEFT(pnode)) == 1 && COLOR(RIGHT(pnode)) == 1) {
                     COLOR(pnode) = 0;
-                    fixnode = fixparent;
+                    fixnode = fixnodeparent;
                 } else {
                     if (COLOR(RIGHT(pnode)) == 1) {
                         COLOR(LEFT(pnode)) = 1;
                         COLOR(pnode) = 0;
                         fn_00544070(self, 0, pnode);
-                        pnode = RIGHT(fixparent);
+                        pnode = RIGHT(fixnodeparent);
                     }
-                    COLOR(pnode) = COLOR(fixparent);
-                    COLOR(fixparent) = 1;
+                    COLOR(pnode) = COLOR(fixnodeparent);
+                    COLOR(fixnodeparent) = 1;
                     COLOR(RIGHT(pnode)) = 1;
-                    fn_00550900(self, 0, fixparent);
+                    fn_00550900(self, 0, fixnodeparent);
                     break;
                 }
             } else {
-                pnode = LEFT(fixparent);
+                pnode = LEFT(fixnodeparent);
                 if (COLOR(pnode) == 0) {
                     COLOR(pnode) = 1;
-                    COLOR(fixparent) = 0;
-                    fn_00544070(self, 0, fixparent);
-                    pnode = LEFT(fixparent);
+                    COLOR(fixnodeparent) = 0;
+                    fn_00544070(self, 0, fixnodeparent);
+                    pnode = LEFT(fixnodeparent);
                 }
-                if (ISNIL(pnode)) {
-                    fixnode = fixparent;
-                } else if (COLOR(RIGHT(pnode)) == 1 && COLOR(LEFT(pnode)) == 1) {
+                if (ISNIL(pnode))
+                    fixnode = fixnodeparent;
+                else if (COLOR(RIGHT(pnode)) == 1 && COLOR(LEFT(pnode)) == 1) {
                     COLOR(pnode) = 0;
-                    fixnode = fixparent;
+                    fixnode = fixnodeparent;
                 } else {
                     if (COLOR(LEFT(pnode)) == 1) {
                         COLOR(RIGHT(pnode)) = 1;
                         COLOR(pnode) = 0;
                         fn_00550900(self, 0, pnode);
-                        pnode = LEFT(fixparent);
+                        pnode = LEFT(fixnodeparent);
                     }
-                    COLOR(pnode) = COLOR(fixparent);
-                    COLOR(fixparent) = 1;
+                    COLOR(pnode) = COLOR(fixnodeparent);
+                    COLOR(fixnodeparent) = 1;
                     COLOR(LEFT(pnode)) = 1;
-                    fn_00544070(self, 0, fixparent);
+                    fn_00544070(self, 0, fixnodeparent);
                     break;
                 }
             }
         }
         COLOR(fixnode) = 1;
     }
+
     fn_005442d0(self->alloc, 0, erased);
     fn_00543610(self->alloc, 0, erased, 1);
     if (self->size > 0)
         --self->size;
-    return fn_00544730(self, 0, retPtr, itPtr, itProxy);
+
+    fn_00544730(self, 0, retSlot, where.proxy, where.node);
+    return (void*)retSlot;
 }

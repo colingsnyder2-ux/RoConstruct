@@ -2,7 +2,7 @@
 // INFERRED: sub_00449440 (placeholder name for 00449440 from the identity tier; body byte-proved against the native headers by the placeholder lane)
 #include "util/Name.h"
 
-int nativeStartupMode;
+extern int nativeStartupMode; // defined in NativeAppStartupState.cpp (odrdiff: duplicate definition)
 
 int __fastcall sub_00449440(const char* source)
 {

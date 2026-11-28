@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob1 /GS- /EHsc /MD /D_AFXDLL /D_DLL /D_LIB /D_XTP_STATICLINK /I{headers}/../../../work/native-client/xtp-shadow /I{headers}/../../../tools/libs/xtp-11.2.2/Source /FICommon/XTPDLLExports.h /FIXTToolkitPro.h /I{headers}/../../../tools/libs/xtp-11.2.2/Source/Common
+// native-flags: /O2 /Ob1 /GS /EHsc /MD /D_AFXDLL /D_DLL /D_LIB /D_XTP_STATICLINK /I{headers}/../../../work/native-client/xtp-shadow /I{headers}/../../../tools/libs/xtp-11.2.2/Source /FICommon/XTPDLLExports.h /FIXTToolkitPro.h /I{headers}/../../../tools/libs/xtp-11.2.2/Source/Common
 // 2008-06 native XTPXTPOffice2007Image (inactive): upstream tools/libs/xtp-11.2.2/Source/Common/XTPOffice2007Image.cpp, verbatim.
 // XTPOffice2007Image.cpp: implementation of the CXTPOffice2007Image class.
 //

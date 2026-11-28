@@ -136,6 +136,12 @@ def compiler_flags(source, override=None):
     if re.search(r'^// native-profile: vendor\s*$', source.read_text(encoding='utf-8-sig'), re.M):
         return flags  # vendor wrappers: only the pinned native-flags, no rbxgs defines/includes/native-headers
     flags = ['/DBOOST_ALL_NO_LIB'] + ['/D' + v for v in recipe['defines'].split()] + flags
+    # The original exe is MFC-integrated ATL (AtlThrowImpl 00401000 throws via AfxThrowOleException/AfxThrowMemoryException).
+    # atlbase.h included before afx*.h would otherwise inline ATL's plain RaiseException copy; /EH only: _AFX forbids _ATL_NO_EXCEPTIONS.
+    # Opt-out: sources built on ATL's own CString/path classes (MFC's afx.h remaps them) or defining the MFC AtlThrowImpl themselves.
+    if any(f.upper().startswith('/EH') for f in flags) and not re.search(
+            r'ATL::CString|atlpath\.h|atlstr\.h|AtlThrowImpl\s*\([^;)]*\)\s*\{', source.read_text(encoding='utf-8-sig')):
+        flags = ['/FIafx.h'] + flags
     flags += ['/I' + headers, '/I' + str(ROOT / 'tools/libs/mfc-9.0-rtm/atlmfc/include')]
     flags += ['/I' + str((libs.LIBS / v).resolve()) for v in recipe['include'] if v != 'WINSDK']
     return flags + ['/D_XTP_STATICLINK', '/D_XTPLIB_NOAUTOLINK', '/I' + str(ROOT / 'tools/libs/xtp-11.2.2/Source')]
