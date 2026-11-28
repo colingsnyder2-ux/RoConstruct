@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /U_RELEASEASSERT
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /U_RELEASEASSERT
 // 2008-06 native EnumDesc<T>::EnumDesc() for the seven enums the donor-free link found without a definition (the boot
 // probe work/donorfree-route/make_stubs.py + boot.py hit them first): CRenderSettings AASamples 00447060, GraphicsMode
 // 004471e0, FrameRateManagerMode 00447380, AntialiasingMode 00447500, BevelMode 00447680, ShadowMode 00447800, and

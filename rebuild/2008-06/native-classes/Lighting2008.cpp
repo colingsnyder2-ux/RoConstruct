@@ -151,6 +151,18 @@ namespace RBX
 		setTime(boost::posix_time::seconds(value * 60.0));
 	}
 
+	// 005e0610 (registry placeholder; "GetMinutesAfterMidnight" BoundFuncDesc<Lighting, double(), 0> 0097aa90, initializer
+	// 007f6ae0, ctor 005e1780): timeOfDay (+0x268/+0x26c) total_milliseconds (__alldiv by 1000), fild, fmul by
+	// 1/60000.0 (0083dc60; /fp:fast). Lighting2008.h does not declare the getter yet (header proposal):
+	//   double getMinutesAfterMidnight() const;   // 005e0610
+	// Not compiled or measured until LIGHTING_HEADER_DECLARES_MINUTES_GETTER is defined (or the guard is dropped).
+#ifdef LIGHTING_HEADER_DECLARES_MINUTES_GETTER
+	double Lighting::getMinutesAfterMidnight() const
+	{
+		return timeOfDay.total_milliseconds() / 60000.0;
+	}
+#endif
+
 
 	// getGeographicLatitude / setGeographicLatitude are declared in native-headers/v8datamodel/Lighting2008.h since batch 46.
 	// 0097a9f8, dynamic initializer 007f6a10 (??__Eprop_GeographicLatitude@RBX@@YAXXZ, a namespace-scope static as
