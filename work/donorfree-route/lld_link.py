@@ -161,6 +161,7 @@ def apply_mfc_static(out):
         _c = json.loads(_cf.read_text())
     except Exception:
         _c = {}
+    _c0 = json.dumps(_c, sort_keys=True)
     for i, l in enumerate(out):
         p = l.strip('"')
         if not p.lower().endswith('.lib') or 'mfc90' in p.lower() or not Path(p).exists() or str(P) in p:
@@ -183,7 +184,8 @@ def apply_mfc_static(out):
         q.write_bytes(b)
         out[i] = '"%s"' % q
         _c[p] = [key, str(q)]
-    _cf.write_text(json.dumps(_c))
+    if json.dumps(_c, sort_keys=True) != _c0 or not _cf.exists():   # unchanged decisions: no rewrite
+        _cf.write_text(json.dumps(_c))
     return out
 
 
@@ -279,15 +281,50 @@ def _preresolve_aliases(out):
                     blank.setdefault(i, set()).add(k_)
             else:
                 first[k_] = v_
+    # OPT-IN (LLD_REUSE_BLANKS=1 or QT_REUSE_COPIES=1): a blanked copy (pre<i>_*) is reused when the source stamp, the
+    # key set and this script's code are what they were when it was written AND the copy's bytes still hash to what
+    # was written (keyed by the copy's path); its mtime is refreshed. Default: rewritten every run, as before.
+    _reuse = os.environ.get('LLD_REUSE_BLANKS') == '1' or os.environ.get('QT_REUSE_COPIES') == '1'
+    import hashlib as _hlb
+    _bcf = P / '_blank_cache.json'
+    _bc = {}
+    if _reuse:
+        try:
+            _bc = json.loads(_bcf.read_text())
+        except Exception:
+            _bc = {}
+        try:
+            _codev = _hlb.md5(Path(__file__).read_bytes()).hexdigest()
+        except Exception:
+            _codev = '?'
+    _bcd, _bre = False, 0
     for i, ks in blank.items():
         p = out[i].strip('"')
+        q = P / ('pre%d_%s' % (i, Path(p).name))
+        if _reuse:
+            st = os.stat(p)
+            want = [os.path.normcase(p), st.st_mtime_ns, st.st_size, sorted(ks), _codev]
+            e = _bc.get(str(q))
+            try:
+                if e and e[0] == want and _hlb.md5(q.read_bytes()).hexdigest() == e[1]:
+                    os.utime(q, None)
+                    out[i] = '"%s"' % q; _bre += 1
+                    continue
+            except OSError:
+                pass
         b = Path(p).read_bytes()
         for k_ in ks:
             b = re.sub(rb'/alternatename:' + re.escape(k_.encode('latin-1')) + rb'=[^\s"]+', lambda mm: b' ' * len(mm.group(0)), b, flags=re.I)
-        q = P / ('pre%d_%s' % (i, Path(p).name))
         q.write_bytes(b)
+        if _reuse:
+            _bc[str(q)] = [want, _hlb.md5(b).hexdigest()]; _bcd = True
         out[i] = '"%s"' % q
-    print('alias conflicts pre-resolved: %d keys blanked in %d objects' % (sum(map(len, blank.values())), len(blank)))
+    if _bcd:
+        try:
+            _bcf.write_text(json.dumps(_bc))
+        except OSError:
+            pass
+    print('alias conflicts pre-resolved: %d keys blanked in %d objects (%d copies reused)' % (sum(map(len, blank.values())), len(blank), _bre))
     return out
 
 
@@ -297,15 +334,48 @@ try:
 except Exception as _e:
     print('alias pre-resolution skipped:', _e)
 print('[lld_link] alias pre-resolution %.1fs' % (time.time() - _tp), flush=True)
+# OPT-IN (QT_SHARD_LIBS=1): the converted objects' contiguous runs go to lld as order-preserving /WHOLEARCHIVE .lib
+# shards (shard_libs.py: same load order, every member loaded). The response file other tools read keeps the loose
+# list; lld runs on <rsp>.sharded.rsp and the map's shard owners are rewritten to the member names. Any failure falls
+# back to the loose response file.
+_SHARD = os.environ.get('QT_SHARD_LIBS') == '1' and not DISCOVER
+
+
+def _run_lld(rsp_):
+    run_ = rsp_
+    if _SHARD:
+        try:
+            import shard_libs as _shl
+            _ts = time.time()
+            run_, _sst = _shl.write_sharded_rsp(Path(rsp_).read_text().splitlines(), Path(rsp_).with_name(Path(rsp_).stem + '.sharded.rsp'),
+                                                 H / ('linkexp/shards' + _TAG))
+            print('[lld_link] shards %.1fs: %s' % (time.time() - _ts, _sst), flush=True)
+        except Exception as _e:
+            print('[lld_link] sharding skipped (loose link):', _e, flush=True)
+            run_ = rsp_
+    _tl = time.time()
+    r_ = subprocess.run([LLD, '@' + str(run_)], capture_output=True, text=True, env=ENV, errors='replace')
+    print('[lld_link] lld-link %.1fs (exit %d)' % (time.time() - _tl, r_.returncode), flush=True)
+    if _SHARD and run_ != rsp_:
+        _mp_ = next((l[6:-1] for l in Path(rsp_).read_text().splitlines() if l.startswith('"/MAP:')), None)
+        if _mp_ and Path(_mp_).exists():
+            try:
+                import shard_libs as _shl
+                _shl.unshard_map(_mp_)
+            except Exception as _e:
+                print('[lld_link] map owner rewrite failed:', _e, flush=True)
+    return r_
+
+
 for rnd in range(40):
     rsp.write_text('\n'.join(out) + '\n')
-    r = subprocess.run([LLD, '@' + str(rsp)], capture_output=True, text=True, env=ENV, errors='replace')
+    r = _run_lld(rsp)
     log = r.stdout + r.stderr
     for _w in range(5):   # output/map briefly locked (a reader or a scanner): wait and retry instead of losing the link
         if 'permission denied' not in log:
             break
         time.sleep(3)
-        r = subprocess.run([LLD, '@' + str(rsp)], capture_output=True, text=True, env=ENV, errors='replace')
+        r = _run_lld(rsp)
         log = r.stdout + r.stderr
     mr = re.search(r'error: (.+?) was replaced', log)
     if mr and not re.search(r'/alternatename: conflicts', log):
@@ -351,7 +421,7 @@ if not DISCOVER and _mapl0 and Path(_mapl0).exists() and not os.environ.get('ROC
         _fx['mfc_static'] = sorted(set(_fx['mfc_static']) | set(_won)); FIX.write_text(json.dumps(_fx))
         out = apply_mfc_static(out)
         rsp.write_text('\n'.join(out) + '\n')
-        r = subprocess.run([LLD, '@' + str(rsp)], capture_output=True, text=True, env=ENV, errors='replace')
+        r = _run_lld(rsp)
         log = r.stdout + r.stderr
         Path(os.environ.get('LLD_LOG') or (H / 'link/lld.log')).write_text(log)
         print('mfc90 imports restored over %d static MFC copies' % len(_won))

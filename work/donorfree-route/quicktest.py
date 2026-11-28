@@ -23,9 +23,84 @@ _oprint = _bi.print
 
 def print(*a, **k):   # every quicktest line carries its elapsed time: which step is slow is visible in each log
     _oprint('[%5.0fs]' % (_tt.time() - _QT_START), *a, **k)
+_PHASES = []   # (label, seconds since start): written to linkexp/qt_timing.json at the end (compare runs)
+
+
 def _tm(label):
+    _PHASES.append((label, round(_tt.time() - _t0[0], 1)))
     if os.environ.get('QT_TIMING', '1') == '1':
         print('  [qt %6.1fs] %s' % (_tt.time() - _t0[0], label), flush=True)
+
+
+_MAPROWS = {}
+
+
+def _map_rows(path):
+    """whitespace-split rows of a link map, parsed once per file version (path, mtime_ns, size): the previous map
+    (~10^5 lines) was read and split six times before the link and twice after it. Same rows as
+    `[l.split() for l in Path(path).read_text(errors='replace').splitlines()]`; callers must not modify them."""
+    st = os.stat(path)
+    k = (os.path.normcase(str(path)), st.st_mtime_ns, st.st_size)
+    r = _MAPROWS.get(k)
+    if r is None or os.environ.get('QT_NO_MAPCACHE'):
+        r = [l.split() for l in Path(path).read_text(errors='replace').splitlines()]
+        for k_ in [k_ for k_ in _MAPROWS if k_[0] == k[0]]:
+            del _MAPROWS[k_]   # an older version of the same file
+        _MAPROWS[k] = r
+    return r
+
+
+# OPT-IN copy reuse (QT_REUSE_COPIES=1): the prefer_converted (pc_), natinit (ni_) and base-stubs copies are rewritten on
+# every run by default, as before. With reuse, a copy is kept when its inputs AND the code that writes it (this file +
+# roc/rebuild.py) are unchanged and the copy's bytes still hash to what this source produced; a reused copy gets its
+# mtime refreshed, so mtime-gated later passes (dllexstrip's dx_ copies, callfix chains) rebuild as they did when the copy
+# was rewritten. See LINK_SPEED.md.
+_REUSE = os.environ.get('QT_REUSE_COPIES') == '1'
+_CODEV = []
+
+
+def _codev():
+    """digest of the code that produces the patched copies (this script, roc/rebuild.py)"""
+    if not _CODEV:
+        import hashlib as _hlc
+        h_ = _hlc.md5()
+        for f_ in (Path(__file__), H.parents[1] / 'roc/rebuild.py'):
+            try:
+                h_.update(Path(f_).read_bytes())
+            except OSError:
+                h_.update(str(f_).encode('utf-8', 'replace'))
+        _CODEV.append(h_.hexdigest())
+    return _CODEV[0]
+
+
+def _fmd5(path):
+    import hashlib as _hlc
+    return _hlc.md5(Path(path).read_bytes()).hexdigest()
+
+
+def _reuse_copy(q, digest):
+    """True when copy q still holds exactly the bytes recorded for this source; its mtime is then refreshed"""
+    try:
+        if digest and _fmd5(q) == digest:
+            os.utime(q, None)
+            return True
+    except OSError:
+        pass
+    return False
+
+
+_OPE = []
+
+
+def _orig_pe():
+    """[pefile.PE, memory-mapped image] of the original client, parsed once (fast_load + import directory): the alias
+    and stub passes parsed it four times. Read-only: callers must not modify either."""
+    if not _OPE or os.environ.get('QT_NO_MAPCACHE'):
+        import pefile as _pfx
+        o_ = _pfx.PE(str(H.parents[1] / 'clients/2008-06/Roblox.exe'), fast_load=True)
+        o_.parse_data_directories(directories=[_pfx.DIRECTORY_ENTRY['IMAGE_DIRECTORY_ENTRY_IMPORT']])
+        _OPE[:] = [o_, o_.get_memory_mapped_image()]
+    return _OPE
 rsp = (H / 'link/donorfree.rsp').read_text().splitlines()
 conv = [r['object'] for r in json.load(open(H / 'renamed/results.json'))]
 conv_set = {os.path.normcase(os.path.abspath(o)) for o in conv}
@@ -185,6 +260,15 @@ from roc import rebuild as _rb
 # rgmain.dll exports the real one): the DLL's import wins -> strip those definitions from a cached copy of the draft
 sys.path.insert(0, str(H))
 import defined_now as _dn0   # noqa: E402  (lib_symbols; module run refreshes renamed/defined.json too)
+# alias generators that read nothing this script writes before the alias rebuild (their inputs: link/stubs.json,
+# renamed/defined.json -- current from here on --, rename.json, the registry, the PREVIOUS linkexp/qt.map, native
+# headers; outputs: their own aliases_*.txt, read only by the alias rebuild after they are waited for): started now so
+# they run during the strip passes instead of after them. createinst.py stays below: it rewrites linkexp/createinst.obj,
+# which the passes in between read. QT_NO_EARLY_PREPROCS=1: start all five at the old place.
+_PRE_ALL = ('qualname_alias.py', 'draft_imports.py', 'rtclass.py', 'stubalias.py', 'createinst.py')
+_PRE_EARLY = () if os.environ.get('QT_NO_EARLY_PREPROCS') else ('qualname_alias.py', 'draft_imports.py', 'rtclass.py', 'stubalias.py')
+_pre_procs = [subprocess.Popen([sys.executable, str(H / _sc)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, creationflags=0x08000000)
+              for _sc in _PRE_EARLY]
 _exp = set()
 for _l in out:
     _p = _l.strip().strip('"')
@@ -197,8 +281,13 @@ _ds.mkdir(exist_ok=True)
 # ... and drafts must not define what a REAL native object defines, nor members of a real native class (a draft's fake
 # RBX::JointsService with invented Primary/SecondaryBase: its inline ctor built JointsService without its primary vtable)
 import pickle as _pk1, hashlib as _hl
-from shardcache import ShardCache as _SC1
-_xc1 = _SC1(H / 'link/obj_ext_cache.pkl')
+from shardcache import ShardCache as _SC1, ShardView as _SV1
+# obj_ext_cache (~2 GB, every native object ever linked): a read-through view unpickles only the shards whose entries
+# changed since a sidecar copy of the keys this script looks up was taken; get() returns exactly ShardCache.get()
+# (see shardcache.ShardView). QT_NO_SIDECAR=1: the old full load.
+_t_xc1 = _tt.time()
+_xc1 = _SC1(H / 'link/obj_ext_cache.pkl') if os.environ.get('QT_NO_SIDECAR') else _SV1(H / 'link/obj_ext_cache.pkl', QP('linkexp/qt_obj_ext_side.pkl'))
+print('obj_ext_cache opened in %.1f s (%s)' % (_tt.time() - _t_xc1, getattr(_xc1, 'stats', 'full load')))
 _real = set()
 for _l in out:
     _p = _l.strip().strip('"')
@@ -322,17 +411,37 @@ try:
     if _pcs:
         _pcr = re.compile(b'|'.join(re.escape(n_.encode('latin-1')) for n_ in sorted(_pcs)))
         _npc = 0
+        # QT_REUSE_COPIES=1 (opt-in): per-object outcome cached in draft_defs_cache by (mtime_ns, size, listed-symbol
+        # digest, code version); a stripped copy is reused only while its bytes hash to what this source produced
+        _pck = _hl.md5('\n'.join(sorted(_pcs)).encode('latin-1')).hexdigest() + (_codev() if _REUSE else '')
         for i, l in enumerate(out):
             _p = l.strip().strip('"')
             if not _p.lower().endswith('.obj') or ('renamed' in _p and Path(_p).parent.name == 'obj') or not os.path.exists(_p):
                 continue
+            _q = _ds / ('pc_' + re.sub(r'\W', '_', _p[-60:]) + '.obj')
+            if _REUSE:
+                _stp = os.stat(_p)
+                _pkey = (_stp.st_mtime_ns, _stp.st_size, _pck)
+                _pce = _dcc.get(('pc', _p))
+                if _pce and _pce[0] == _pkey:
+                    if not _pce[1]:
+                        continue   # no listed symbol defined here
+                    if _reuse_copy(_q, _pce[2]):
+                        out[i] = '"%s"' % _q; _npc += 1
+                        continue
             _b = Path(_p).read_bytes()
             if not _pcr.search(_b):
+                if _REUSE:
+                    _dcc[('pc', _p)] = (_pkey, None, None); _ddirty = True
                 continue
             _dd = {n_ for n_, d_ in _rb.coff_externals(_b).items() if d_} & _pcs
             if _dd:
-                _q = _ds / ('pc_' + re.sub(r'\W', '_', _p[-60:]) + '.obj')
-                _q.write_bytes(bytes(_rb.strip_symbols(_b, drop=_dd))); out[i] = '"%s"' % _q; _npc += 1
+                _qb = bytes(_rb.strip_symbols(_b, drop=_dd))
+                _q.write_bytes(_qb); out[i] = '"%s"' % _q; _npc += 1
+                if _REUSE:
+                    _dcc[('pc', _p)] = (_pkey, True, _hl.md5(_qb).hexdigest()); _ddirty = True
+            elif _REUSE:
+                _dcc[('pc', _p)] = (_pkey, None, None); _ddirty = True
         # the converted object defines func_<addr> (rename.json symbol -> address): alias the stripped name to it
         _pca = {}
         for _ad, _x in json.load(open(H / 'renamed/rename.json')).items():
@@ -406,10 +515,12 @@ if _ddirty:   # the DLL-copy scan adds its own cache entries
     _pk1.dump(_dcc, open(_dcf, 'wb'), protocol=4)
 # aliases: rebuild from the CURRENT alias files (the old rsp lacks aliases added since, e.g. DLL!name import labels)
 out = [l for l in out if not l.lower().startswith(('"/alternatename:', '/alternatename:', '"/include:__imp_', '/include:__imp_'))]
-_pre_procs = [subprocess.Popen([sys.executable, str(H / _sc)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, creationflags=0x08000000)
-              for _sc in ('qualname_alias.py', 'draft_imports.py', 'rtclass.py', 'stubalias.py', 'createinst.py')]
+_tm('strip passes (vt_orig / prefer_converted / DLL copies)')
+_pre_procs += [subprocess.Popen([sys.executable, str(H / _sc)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, creationflags=0x08000000)
+               for _sc in _PRE_ALL if _sc not in _PRE_EARLY]
 for _pp_ in _pre_procs:
     _pp_.wait()
+_tm('alias generator scripts (qualname_alias, draft_imports, rtclass, stubalias, createinst)')
 # binding audits (audits_all.py): normally already run in the background right after the previous link on that map
 _t0w = _tt.time()
 _stamp = H / 'auto/audits_stamp.json'
@@ -461,8 +572,7 @@ for _an in ('aliases_override.txt', 'aliases.txt', 'aliases_auto.txt', 'aliases_
                             _gimp = _g1imp
                         except NameError:
                             import pefile as _pf5, struct as _st5
-                            _o5 = _pf5.PE(str(H.parents[1] / 'clients/2008-06/Roblox.exe'), fast_load=True)
-                            _o5.parse_data_directories(directories=[_pf5.DIRECTORY_ENTRY['IMAGE_DIRECTORY_ENTRY_IMPORT']])
+                            _o5 = _orig_pe()[0]
                             _om5 = json.load(open(H / 'renamed/ordinals.json')).get('mfc90.dll', {})
                             _ia5 = {}
                             for _d5 in _o5.DIRECTORY_ENTRY_IMPORT:
@@ -470,7 +580,7 @@ for _an in ('aliases_override.txt', 'aliases.txt', 'aliases_auto.txt', 'aliases_
                                     _n5 = _i5.name.decode() if _i5.name else (_om5.get(str(_i5.ordinal)) if _d5.dll.decode().lower() == 'mfc90.dll' else None)
                                     if _n5 and _n5.startswith('?'):
                                         _ia5[_i5.address] = _n5
-                            _gimp = _g1imp = (_o5.get_memory_mapped_image(), _ia5, _st5)
+                            _gimp = _g1imp = (_orig_pe()[1], _ia5, _st5)
                         _im5, _ia5, _st5 = _gimp
                         _o_ = int(_tg0, 16) - 0x400000
                         _imp = _ia5.get(_st5.unpack_from('<I', _im5, _o_ + 2)[0]) if _im5[_o_:_o_ + 2] == b'\xff\x25' else None
@@ -506,8 +616,7 @@ try:
 except NameError:
     _pdef = _prev_defs = set()
     if (H / 'linkexp/qt.map').exists():
-        for _l in open(H / 'linkexp/qt.map', errors='replace'):
-            _p = _l.split()
+        for _p in _map_rows(H / 'linkexp/qt.map'):
             if len(_p) >= 4 and ':' in _p[0] and 'stubs' not in _p[-1]:
                 _pdef.add(_p[1])
 _alt = {}
@@ -572,10 +681,11 @@ for i, l in enumerate(out):
     p = l.strip().strip('"')
     if os.path.basename(p).lower() == 'stubs.obj' and os.path.exists(p):
         _b = Path(p).read_bytes()
+        _bx = _rb.coff_externals(_b)   # parsed once: the six passes below each re-parsed the ~22k-symbol table
         _q = QP('linkexp/qt_base_stubs.obj')
         # extern "C" placeholder spellings the base stubs define as zero data (_g_00826be0, _dat_X, _func_X): the real
         # placeholder (original bytes, relocated pointers) instead
-        _ph = {n: (('dat_' + n[3:]) if n.startswith('_g_') else ('func_' + n[4:]) if n.startswith('_fn_') else n[1:]) for n, d in _rb.coff_externals(_b).items()
+        _ph = {n: (('dat_' + n[3:]) if n.startswith('_g_') else ('func_' + n[4:]) if n.startswith('_fn_') else n[1:]) for n, d in _bx.items()
                if d and re.match(r'^_(?:dat|func|g|fn)_[0-9a-f]{8}$', n)}
         out += ['"/alternatename:%s=%s"' % kv for kv in _ph.items()]
         _tlib = H / 'linkexp/tmplinst.lib'   # names tmplinst.lib instantiates: the library, not a stub
@@ -598,9 +708,7 @@ for i, l in enumerate(out):
         _bth = {}
         try:
             import pefile as _pf6, struct as _st6
-            _o6 = _pf6.PE(str(H.parents[1] / 'clients/2008-06/Roblox.exe'), fast_load=True)
-            _o6.parse_data_directories(directories=[_pf6.DIRECTORY_ENTRY['IMAGE_DIRECTORY_ENTRY_IMPORT']])
-            _oi6 = _o6.get_memory_mapped_image()
+            _o6, _oi6 = _orig_pe()
             _iat6 = {i_.address: (d_.dll.decode().lower(), i_.name.decode()) for d_ in _o6.DIRECTORY_ENTRY_IMPORT for i_ in d_.imports if i_.name}
             try:   # mfc90 ordinal imports too (see _iat7)
                 _om6 = json.load(open(H / 'renamed/ordinals.json')).get('mfc90.dll', {})
@@ -608,7 +716,7 @@ for i, l in enumerate(out):
                 _om6 = {}
             _iat6.update({i_.address: ('mfc90.dll', _om6[str(i_.ordinal)]) for d_ in _o6.DIRECTORY_ENTRY_IMPORT for i_ in d_.imports
                           if not i_.name and d_.dll.decode().lower() == 'mfc90.dll' and str(i_.ordinal) in _om6})
-            for n_, d_ in _rb.coff_externals(_b).items():
+            for n_, d_ in _bx.items():
                 m6 = re.match(r'^func_([0-9a-f]{8})$', n_) if d_ else None
                 if not m6:
                     continue
@@ -627,14 +735,14 @@ for i, l in enumerate(out):
         # the base stubs' dat_ copies predate data_relocs' pointers into OTHER data: CRobloxApp's message map
         # dat_00816c50 kept lpEntries = 0 -> mfc90 called a NULL handler for WM_COMMAND. Drop them: the stub pass
         # rebuilds each with original bytes + current relocations (_data_item)
-        _bdat = {n_ for n_, d_ in _rb.coff_externals(_b).items() if d_ and re.match(r'^dat_[0-9a-f]{8}$', n_)}
+        _bdat = {n_ for n_, d_ in _bx.items() if d_ and re.match(r'^dat_[0-9a-f]{8}$', n_)}
         print('base-stub dat_ copies rebuilt by the stub pass: %d' % len(_bdat))
         # named function stubs whose callee-pop bytes changed since the base was built (by-value class sizes learned
         # by valsizes.py: CMainFrame/DxUserInput::onEvent(Heartbeat) popped 8 of 12 -> RunService thread corrupted)
         try:
             import make_stubs as _ms8
             _old8 = json.load(open(H / 'link/undname_cache.json'))
-            _bret = {n_ for n_, d_ in _rb.coff_externals(_b).items() if d_ and n_.startswith('?') and n_ in _old8
+            _bret = {n_ for n_, d_ in _bx.items() if d_ and n_.startswith('?') and n_ in _old8
                      and _old8[n_] is not None and _ms8.signature_ret_bytes(n_) not in (None, _old8[n_])}
         except Exception as _e8:
             _bret = set(); print('base-stub ret check skipped:', _e8)
@@ -643,14 +751,33 @@ for i, l in enumerate(out):
         try:   # base stubs the original-binary truth corrects: wrong pop size, or glue the stub pass can rebuild
             import glue as _gl9
             _sro9 = json.load(open(H / 'auto/stubret_override.json')) if (H / 'auto/stubret_override.json').exists() else {}
-            _bg = {n_ for n_, d_ in _rb.coff_externals(_b).items() if d_ and ((n_ in _sro9 and not os.environ.get('QT_NO_SRO')) or (n_.startswith(('func_', '?')) and not os.environ.get('QT_NO_GLUE') and _gl9.item(n_)))}
+            _bg = {n_ for n_, d_ in _bx.items() if d_ and ((n_ in _sro9 and not os.environ.get('QT_NO_SRO')) or (n_.startswith(('func_', '?')) and not os.environ.get('QT_NO_GLUE') and _gl9.item(n_)))}
             print('base stubs rebuilt for pop size / glue: %d' % len(_bg))
             _bdat |= _bg
         except Exception as _e9:
             print('base glue check skipped:', _e9)
-        _bmm = set() if os.environ.get('QT_NO_MSGMAPFIX') else {n_ for n_, d_ in _rb.coff_externals(_b).items() if d_ and n_.startswith('?messageMap@?1??GetThisMessageMap@')}   # MFC message maps: qt_stubs rebuilds them from the original bytes (relocated base map + entries); zero here broke Explorer/Toolbox routing
-        _q.write_bytes(bytes(_rb.strip_symbols(_b, drop=_lhs | set(_ph) | _tls | set(_bth) | _bdat | _bmm)))
+        _bmm = set() if os.environ.get('QT_NO_MSGMAPFIX') else {n_ for n_, d_ in _bx.items() if d_ and n_.startswith('?messageMap@?1??GetThisMessageMap@')}   # MFC message maps: qt_stubs rebuilds them from the original bytes (relocated base map + entries); zero here broke Explorer/Toolbox routing
+        _bdrop = _lhs | set(_ph) | _tls | set(_bth) | _bdat | _bmm
+        if not _REUSE:
+            _q.write_bytes(bytes(_rb.strip_symbols(_b, drop=_bdrop)))
+        else:   # QT_REUSE_COPIES=1: rewrite only when stubs.obj, the drop set or the code changed (stamp next to the copy)
+            _bsk = [os.path.normcase(p), os.stat(p).st_mtime_ns, len(_b), _hl.md5('\n'.join(sorted(_bdrop)).encode('latin-1', 'replace')).hexdigest(), _codev()]
+            _bsf = Path(str(_q) + '.stamp.json')
+            try:
+                _bso = json.loads(_bsf.read_text())
+                _bok = _bso[0] == _bsk and _reuse_copy(_q, _bso[1])
+            except (OSError, ValueError, TypeError, IndexError, KeyError):
+                _bok = False
+            if not _bok:
+                _qb = bytes(_rb.strip_symbols(_b, drop=_bdrop))
+                _q.write_bytes(_qb)
+                try:
+                    _bsf.write_text(json.dumps([_bsk, _hl.md5(_qb).hexdigest()]))
+                except OSError:
+                    pass
+            print('base stubs copy %s' % ('reused (inputs unchanged)' if _bok else 'rewritten'))
         out[i] = '"%s"' % _q
+_tm('alias rebuild + base stubs copy')
 # call-identity repair (callaudit.py, last link): converted objects whose analog callee NAME binds real code of another
 # function get that symbol renamed to func_<original target> in a patched copy (func_00792440 called boost's
 # basic_regex::compare instead of the thunk 0078e6e0 -> CXTButton::SetColorFace crashed)
@@ -949,6 +1076,17 @@ try:
         _nkeys = [k.encode() for k in _nip]
         _nip_set = set(_nip)   # set intersection / one regex instead of a per-key scan of every object (16 s)
         _nkre = re.compile(b'|'.join(re.escape(k_) for k_ in sorted(_nkeys, key=len, reverse=True)))
+        # QT_REUSE_COPIES=1 (opt-in): outcome per object cached by (mtime_ns, size, plan digest, code version); a rebound
+        # copy is reused only while its bytes hash to what THIS source produced (ni_<basename> is shared by every
+        # candidate.obj: a copy another source overwrote fails the hash and is rebuilt)
+        _scf = QP('linkexp/qt_scan_cache.pkl')
+        try:
+            _scc = _pk1.load(open(_scf, 'rb')) if _REUSE else {}
+        except Exception:
+            _scc = {}
+        _scdirty = False
+        _nipk = _hl.md5(json.dumps(_nip, sort_keys=True).encode('latin-1', 'replace')).hexdigest() + (_codev() if _REUSE else '')
+        _nreuse = 0
         for i, l in enumerate(out):
             _p = l.strip().strip('"')
             if not _p.lower().endswith('.obj') or not os.path.exists(_p):
@@ -956,8 +1094,20 @@ try:
             _v = _xc1.get(_p)
             if _v and _nip_set.isdisjoint(_v[2]):
                 continue
+            if _REUSE:
+                _sts = os.stat(_p)
+                _skey = (_sts.st_mtime_ns, _sts.st_size, _nipk)
+                _sce = _scc.get(('ni', _p))
+                if _sce and _sce[0] == _skey:
+                    if _sce[1] is None:
+                        continue   # no placeholder of the plan referenced here
+                    if _reuse_copy(_sce[1], _sce[2]):
+                        out[i] = '"%s"' % _sce[1]; _nni += 1; _nreuse += 1
+                        continue
             _d = bytearray(Path(_p).read_bytes())
             if _v is None and not _nkre.search(_d):
+                if _REUSE:
+                    _scc[('ni', _p)] = (_skey, None, None); _scdirty = True
                 continue
             _, _nsec, _, _sp, _ns, _opt, _ = struct.unpack_from('<HHIIIHH', _d, 0)
             _st = _sp + _ns * 18; _tail = bytearray(_d[_st + 4:]); _k = 0; _hit = {}; _canon = {}
@@ -976,6 +1126,8 @@ try:
                         _hit[_k] = (_canon[_S], _off)
                 _k += 1 + _na
             if not _hit:
+                if _REUSE:
+                    _scc[('ni', _p)] = (_skey, None, None); _scdirty = True
                 continue
             for _sx in range(_nsec):
                 _sh = 20 + _opt + 40 * _sx
@@ -991,9 +1143,24 @@ try:
                             _w = _raw_ptr + _ro; struct.pack_into('<I', _d, _w, (struct.unpack_from('<I', _d, _w)[0] + _off) & 0xffffffff)
             _d = _d[:_st] + struct.pack('<I', 4 + len(_tail)) + _tail
             _q = _nid / ('ni_' + Path(_p).name); _q.write_bytes(bytes(_d)); out[i] = '"%s"' % _q; _nni += 1
-        print('natinit: %d objects rebound dat_ placeholders to native globals (+member offset)' % _nni)
+            if _REUSE:
+                _scc[('ni', _p)] = (_skey, str(_q), _hl.md5(bytes(_d)).hexdigest()); _scdirty = True
+        if _scdirty and _REUSE:
+            try:
+                _pk1.dump(_scc, open(str(_scf) + '.tmp', 'wb'), protocol=4)
+                os.replace(str(_scf) + '.tmp', _scf)
+            except OSError:
+                pass
+        print('natinit: %d objects rebound dat_ placeholders to native globals (+member offset), %d copies reused' % (_nni, _nreuse))
 except Exception as _eni:
     print('natinit skipped:', _eni)
+if hasattr(_xc1, 'pending') and _xc1.pending():   # last use of obj_ext_cache: keep the sidecar of the entries looked up (read-only otherwise)
+    try:
+        _xc1.save()
+    except OSError as _exs:
+        print('obj_ext_cache sidecar not saved:', _exs)
+    print('obj_ext_cache view: %s' % _xc1.stats)
+_tm('object patch passes (callfix .. natinit)')
 # relocsplit.py: converted objects that addressed an unnamed original global as NEAREST SYMBOL + addend
 # (0x973f48 = propArchivable+0xd4) read the wrong native object: retarget each such relocation to the item it lands in
 try:
@@ -1036,6 +1203,7 @@ try:
         print('spellunify: %d objects unified to the 3PADA instantiation (%d variant names)' % (_nsu, len(_sur)))
 except Exception as _esu:
     print('spellunify skipped:', _esu)
+_tm('relocsplit / dllexstrip / spellunify')
 # luaunify.py: ONE Lua runtime (the original's C-named one): strip the C++-mangled Lua copy, alias its names to C
 try:
     if os.environ.get('QT_LUAUNIFY'):   # off by default: stripping the C++ Lua pulled a third copy from the Lua archive
@@ -1190,7 +1358,7 @@ def _chain(lines_, through=frozenset()):
 
 
 qr = QP('linkexp/qt.rsp')
-_tm('aliases + base stubs + chain prep')
+_tm('luarbx + dtorfix final + chain prep')
 # previous run's stubs in the first link (copies, stripped of names an /alternatename now covers): usually no relink
 _prev = []
 _aliased = {l_[len('"/alternatename:'):].split('=', 1)[0] for l_ in out if l_.lower().startswith('"/alternatename:')}
@@ -1242,8 +1410,13 @@ def _predict_new_und():
         return None
     objs_ = [l[1:-1] for l in out if l.startswith('"') and l.lower().endswith('.obj"')]
     _cf = QP('linkexp/qt_ext_cache.pkl')
-    from shardcache import ShardCache as _SC7
-    _c = _SC7(_cf)   # sharded: a changed object rewrites one shard, not 2 GB
+    from shardcache import ShardCache as _SC7, ShardView as _SV7
+    # sharded: a changed object rewrites one shard, not 2 GB. Read-through view (shardcache.ShardView): when the
+    # converted-object aggregate below hits, only the native objects' entries are needed, served from a sidecar of
+    # them instead of unpickling all 64 shards. Exact: an entry is used only while its main shard file is unchanged.
+    _t7 = _tt.time()
+    _c = _SC7(_cf) if os.environ.get('QT_NO_SIDECAR') else _SV7(_cf, QP('linkexp/qt_ext_side.pkl'),
+                                                               sidecar_keep=lambda k_: not k_.lower().startswith(_ren_dir))
     und_, def_, dirty = set(), set(), False
     _ren_dir = str((H / 'renamed/obj').resolve()).lower() + os.sep
     _ren_objs = [p for p in objs_ if p.lower().startswith(_ren_dir)]
@@ -1287,13 +1460,16 @@ def _predict_new_und():
             v = _c[p] = ((st.st_mtime_ns, st.st_size), frozenset(n for n, d in e.items() if d), frozenset(n for n, d in e.items() if not d))
             dirty = True
         def_ |= v[1]; und_ |= v[2]
-    if dirty:
-        _c.save()
+    if dirty or (hasattr(_c, 'pending') and _c.pending()):   # a ShardView also writes its sidecar when it changed
+        try:
+            _c.save()
+        except OSError as _ecs:
+            print('qt_ext_cache not saved:', _ecs)
+    print('qt_ext_cache: %.1f s (%s)' % (_tt.time() - _t7, getattr(_c, 'stats', 'full load')))
     global _pred_defs
     _pred_defs = def_   # every name an object now defines (COMDAT included): sticky stubs must not shadow them
     known = set(_pu) | _aliased | def_
-    for l_ in _map.read_text(errors='replace').splitlines():
-        p_ = l_.split()
+    for p_ in _map_rows(_map):
         if len(p_) >= 4 and ':' in p_[0] and (':' in p_[-1] or not p_[-1].lower().endswith('.obj')):
             known.add(p_[1])   # owner 'lib:member' (CRT, MFC/Win32 DLL imports) or the linker itself (___ImageBase)
     import defined_now as _dn2
@@ -1369,8 +1545,7 @@ if und:   # names the reused stubs.obj does not cover (new objects): stub them l
             if _l.lower().endswith('.lib"') and os.path.exists(_l[1:-1]):
                 _libc |= _dn5.lib_symbols(Path(_l[1:-1]))
         if (QP('linkexp/qt.map')).exists():
-            for _ml in (QP('linkexp/qt.map')).read_text(errors='replace').splitlines():
-                _mp = _ml.split()
+            for _mp in _map_rows(QP('linkexp/qt.map')):
                 if len(_mp) >= 4 and ':' in _mp[0] and ':' in _mp[-1]:
                     _libc.add(_mp[1])
         _libc = {d for d in _libc if not d.startswith(('func_', 'dat_', '_func_', '_dat_', '_g_', '_fn_', '@fn_'))}
@@ -1482,8 +1657,7 @@ if und:   # names the reused stubs.obj does not cover (new objects): stub them l
     # alias to that definition instead of an original-bytes copy
     _own11 = {}
     try:
-        for _l11 in QP('linkexp/qt.map').read_text(errors='replace').splitlines():
-            _p11 = _l11.split()
+        for _p11 in _map_rows(QP('linkexp/qt.map')):
             if len(_p11) >= 4 and ':' in _p11[0] and 'stubs' not in _p11[-1]:
                 _own11.setdefault(_p11[1], _p11[-1])
         _rg11 = _rg
@@ -1563,9 +1737,7 @@ if und:   # names the reused stubs.obj does not cover (new objects): stub them l
     # that popped no arguments, shifting RbxSky's stack (a float read as the object pointer, crash in attachObject)
     try:
         import pefile as _pf7, struct
-        _o7 = _pf7.PE(str(H.parents[1] / 'clients/2008-06/Roblox.exe'), fast_load=True)
-        _o7.parse_data_directories(directories=[_pf7.DIRECTORY_ENTRY['IMAGE_DIRECTORY_ENTRY_IMPORT']])
-        _oi7 = _o7.get_memory_mapped_image()
+        _o7, _oi7 = _orig_pe()
         _iat7 = {i.address: (d.dll.decode().lower(), i.name.decode()) for d in _o7.DIRECTORY_ENTRY_IMPORT for i in d.imports if i.name}
         # mfc90 imports by ORDINAL (006a10c4 = jmp [mfc90 #3819] = CHtmlView::GetThisClass): decorated name via the
         # ordinal map, so a func_<thunk> / G1 alias reaches the real export instead of nothing (jumped into zeros)
@@ -1605,7 +1777,7 @@ if und:   # names the reused stubs.obj does not cover (new objects): stub them l
         try:
             _o9img
         except NameError:
-            _o9img = _pf9.PE(str(H.parents[1] / 'clients/2008-06/Roblox.exe'), fast_load=True).get_memory_mapped_image()
+            _o9img = _orig_pe()[1]
         for i_ in _cs9.Cs(_cs9.CS_ARCH_X86, _cs9.CS_MODE_32).disasm(bytes(_o9img[va - 0x400000:va - 0x400000 + 0x80]), va):
             if i_.mnemonic == 'call' and i_.op_str.startswith('0x'):
                 c_ = re.match(r'^\?\?0(\w+)@RBX@@QAE@XZ$', (rg.get('%08x' % int(i_.op_str, 16)) or {}).get('name') or '')
@@ -1639,8 +1811,7 @@ if und:   # names the reused stubs.obj does not cover (new objects): stub them l
                     _ra9.setdefault(_k9, set()).add(_w9)
         _lk9 = {re.search(r'([0-9a-f]{8})\.obj$', o).group(1) for o in conv}
         _real9 = set()   # names a non-stub object owned in the previous map
-        for _l9 in QP('linkexp/qt.map').read_text(errors='replace').splitlines():
-            _p9 = _l9.split()
+        for _p9 in _map_rows(QP('linkexp/qt.map')):
             if len(_p9) >= 4 and ':' in _p9[0] and 'stubs' not in _p9[-1]:
                 _real9.add(_p9[1])
         _sa, _xtra9 = {}, []
@@ -1686,8 +1857,7 @@ if und:   # names the reused stubs.obj does not cover (new objects): stub them l
                 k_, _, v_ = l_[len('"/alternatename:'):].rstrip('"').partition('=')
                 _am.setdefault(k_, v_)
         _real = set()
-        for l_ in (QP('linkexp/qt.map')).read_text(errors='replace').splitlines():
-            p_ = l_.split()
+        for p_ in _map_rows(QP('linkexp/qt.map')):
             if len(p_) >= 4 and ':' in p_[0] and 'stubs' not in p_[-1]:
                 _real.add(p_[1])
 
@@ -1771,11 +1941,13 @@ if und:   # names the reused stubs.obj does not cover (new objects): stub them l
 if not (QP('linkexp/qt.exe')).exists():
     print(log[-1500:]); sys.exit(1)
 t = (QP('linkexp/qt.map')).read_text(errors='replace')
-(QP('linkexp/qt.map')).write_text(re.sub(r'(?<=\s)0{8}([0-9a-f]{8})(?=\s)', r'\1', t))
+# lld_link.py already rewrote lld's 16-digit addresses: rewrite (another full write of the map) only if any are left
+if os.environ.get('QT_NO_MAPCACHE') or re.search(r'(?<=\s)0{8}([0-9a-f]{8})(?=\s)', t):
+    (QP('linkexp/qt.map')).write_text(re.sub(r'(?<=\s)0{8}([0-9a-f]{8})(?=\s)', r'\1', t))
+del t
 try:   # draftstrip safety net (see _dskeep): stripped names the map shows only as stubs or not at all
     _own = {}
-    for _l9 in QP('linkexp/qt.map').read_text(errors='replace').splitlines():
-        _p9 = _l9.split()
+    for _p9 in _map_rows(QP('linkexp/qt.map')):
         if len(_p9) >= 4 and ':' in _p9[0] and _p9[0] != '0000:00000000':
             _own.setdefault(_p9[1], set()).add('stubs' in _p9[-1])
     _lost = {n_ for n_ in _dstripped if not n_.startswith(('??_R', '??_7', '??_C')) and _own.get(n_) == {True}}   # bound to a stub only (absent = unreferenced or DLL-exported: draftstrip was right)
@@ -1787,8 +1959,8 @@ except Exception as _eds:
 import xcudedup   # repeated .CRT$XCU initializers (duplicate objects) ran twice: MFC class-list cycle -> badClass
 _xz = xcudedup.dedup(str(QP('linkexp/qt.exe')), str(QP('linkexp/qt.map')))
 print('xcudedup: %d repeated initializer(s) zeroed' % len(_xz))
-_z0 = [l_.split()[1] for l_ in QP('linkexp/qt.map').read_text(errors='replace').splitlines()
-       if len(l_.split()) >= 4 and l_.split()[0] == '0000:00000000' and l_.split()[-1] == '<absolute>' and re.match(r'^(?:func_|dat_|\?|_)', l_.split()[1]) and not l_.split()[1].startswith(('__', '_tls', '___'))]
+_z0 = [r_[1] for r_ in _map_rows(QP('linkexp/qt.map'))
+       if len(r_) >= 4 and r_[0] == '0000:00000000' and r_[-1] == '<absolute>' and re.match(r'^(?:func_|dat_|\?|_)', r_[1]) and not r_[1].startswith(('__', '_tls', '___'))]
 print('ZERO-ADDRESS names (an alias to a missing symbol resolves to 0): %d %s' % (len(_z0), _z0[:6]))
 _zf = H / 'auto/alias_zero.json'   # grow-only: their aliases are skipped next link (stub instead of address 0)
 _zf.write_text(json.dumps(sorted(set(json.loads(_zf.read_text()) if _zf.exists() else []) | set(_z0))))
@@ -1798,6 +1970,10 @@ if QP('linkexp/qt.exe').stat().st_mtime < _QT_START:   # lld errored and wrote n
 subprocess.run(['taskkill', '/F', '/IM', 'RobloxQT.exe'], capture_output=True)   # a leftover test instance locked the copy
 shutil.copy(QP('linkexp/qt.exe'), QP('run/RobloxQT.exe'))
 _tm('second/third link + copy')
+try:   # per-phase seconds of this run (cumulative): compare runs / settings without reading the log
+    QP('linkexp/qt_timing.json').write_text(json.dumps({'total_s': round(_tt.time() - _QT_START, 1), 'phases': _PHASES}, indent=1))
+except OSError:
+    pass
 if secs == '0':
     # acceptance gate + audits for the NEXT link, both in the background (29 s + audits off the critical path):
     # linkgate's report lands in auto/linkgate.log
