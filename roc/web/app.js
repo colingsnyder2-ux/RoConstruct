@@ -12,7 +12,7 @@ let agentHistoryLog = null;
 const restartedWorkers = new Set();
 let agentAutoConfig = {cli:"claude",model:"",goal:"",workers:2,jobs:24,minutes:120,batch_size:4,batch_minutes:30,max_size:512,individual:false};
 let cpu = null, cpuCluster = "", cpuLoaded = 0, cpuLoading = false, serverSetupOpen = initialPage === "cpu";
-const isWorker = job => ["worker","agent_worker","native_llm"].includes(job.kind) || !!job.args?.includes("--automatic");
+const isWorker = job => ["worker","agent_worker","native_llm","boot_recover"].includes(job.kind) || !!job.args?.includes("--automatic");
 const active = job => ["running", "paused", "stopping"].includes(job.status);
 const liveKeys = new Set(["native_agent_submit","native_agent_minutes","native_agent_checks","native_agent_tasks","native_excluded_classes","workers","model","rounds","max_size","max_tokens","strategy","order","thinking","reasoning_effort","use_revng","use_remill","min_score","max_score","diverse_candidates","guided_mutations","near_repair","max_cloud_requests","max_cloud_tokens","max_cloud_cost","native_batch_files","native_compile_workers","native_context","native_generation","native_compile_batch"]);
 const nullable = new Set(["min_score","max_score","max_cloud_requests","max_cloud_tokens","max_cloud_cost","reasoning_effort","unit_name","family_id"]);
@@ -32,7 +32,7 @@ async function restartWorker(job) {
   } catch(error) {
     if(error.message!=="Job is not running")throw error;
     // Older dashboard backends have start support but no restart control.
-    if(!job.config || !["worker","agent_worker","native_llm"].includes(job.kind))throw error;
+    if(!job.config || !["worker","agent_worker","native_llm","boot_recover"].includes(job.kind))throw error;
     const result=await api("start",job.kind==="worker" ? {kind:"worker",config:{...job.config}} : {kind:job.kind,...job.config});
     if(workerRun===job.id)workerRun=result.id;
     jobs.push({...job,id:result.id,status:"queued",started:null,ended:null,slots:{}});

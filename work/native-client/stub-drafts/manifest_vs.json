@@ -1,0 +1,1 @@
+{"compiler_build": 21022, "compiler_variant": "default", "jobs": [{"source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubVisit_005d8540.cpp", "checks": [{"addr": "005d8540", "symbol": "??$visitDescendents@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAX@Z"}], "ranges": [], "layouts": []}]}

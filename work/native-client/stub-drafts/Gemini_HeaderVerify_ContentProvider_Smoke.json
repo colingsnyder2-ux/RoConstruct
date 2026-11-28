@@ -1,0 +1,36 @@
+{
+  "compiler_build": 21022,
+  "compiler_variant": "default",
+  "jobs": [
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_HeaderVerify_ContentProvider.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentProvider.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit418_2008Content.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit57C_2008Script.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppLeftovers.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    }
+  ]
+}

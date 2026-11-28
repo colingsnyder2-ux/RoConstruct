@@ -1,0 +1,1 @@
+{"compiler_build": 21022, "compiler_variant": "default", "jobs": [{"source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubLive_00573570.cpp", "checks": [{"addr": "00573570", "symbol": "?init@UnifiedWidget@RBX@@AAEXXZ"}], "ranges": [], "layouts": []}]}

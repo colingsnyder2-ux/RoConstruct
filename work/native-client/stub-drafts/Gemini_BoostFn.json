@@ -1,0 +1,492 @@
+{
+  "compiler_build": 21022,
+  "compiler_variant": "default",
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_000.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_001.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_002.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_003.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_004.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_005.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_006.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_007.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_009.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_010.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_011.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_012.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_013.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_014.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_015.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_016.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_017.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_018.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_019.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_020.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_021.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_022.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_023.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_024.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_025.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_026.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_027.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_028.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_029.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_030.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_031.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_032.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_033.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_034.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_035.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_036.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_037.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_038.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_039.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_040.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_041.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_042.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_043.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_044.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_045.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_046.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_047.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_048.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_049.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_050.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_051.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_052.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_053.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_054.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_055.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_056.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_057.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_058.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_059.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_060.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_061.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_062.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_063.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_064.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_065.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_066.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_067.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_068.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_069.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_070.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_071.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_072.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_073.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_074.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_075.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_076.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_077.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_078.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_079.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_BoostFn_080.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    }
+  ]
+}

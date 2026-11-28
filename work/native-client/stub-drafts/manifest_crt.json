@@ -1,0 +1,1 @@
+{"compiler_build": 21022, "compiler_variant": "rtm", "jobs": [{"source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubCrt_006a1f8a.cpp", "checks": [{"addr": "006a1f8a", "symbol": "??2@YAPAXIABUnothrow_t@std@@@Z"}], "ranges": [], "layouts": []}]}

@@ -1,0 +1,1 @@
+{"compiler_build": 21022, "compiler_variant": "default", "jobs": [{"source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ScriptContextRecovery_005aefa0.cpp", "checks": [{"addr": "005aefa0", "symbol": "?openState@ScriptContext@RBX@@"}], "ranges": [], "layouts": []}]}
