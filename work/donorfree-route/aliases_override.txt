@@ -832,3 +832,4 @@ func_00584b10=?g@Rq_00584b10@@QAEPAXXZ
 # Codex 11-27 (was only in codex_*_variant.py): original direct-import thunks; the ret stubs shifted the stack in Sound stats update -> stats/report view paint crash (resize)
 func_0069fc5a=_FMOD_Memory_GetStats
 func_0078c560=_GetSysColor@4
+func_005ed5c0=?doSingleton@?$EnumDesc@W4SurfaceType@RBX@@@Reflection@RBX@@CAAAV123@XZ

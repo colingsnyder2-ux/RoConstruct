@@ -26,6 +26,23 @@ This file covers the current state, how to rebuild and test, every tool, the kno
 >
 > Also read: `RULEBOOK.md` (bug-class workflow), `FEATURE_LADDER.md` (tiers), `codex_recovery_evidence.md`.
 
+
+## Follow-up: map, rendering and R7 fixes
+
+A later build restores the serialized Part size descriptor name (`size`), unifies the SurfaceType enum singleton, corrects cylinder/explosion storage bindings, and restores original switch-table relocation targets in eight functions. The latter covers Part surface/shape mapping, keyboard controllers and geometry. `switchfix.py` uses the original client and the committed `auto/switch_table_audit.json`; it changes COFF relocation targets, not executable instructions.
+
+After pulling, rebuild the modified native descriptor before relinking:
+
+```powershell
+cd work\donorfree-route
+python bindsrc.py ..\native-client\stub-drafts\StubLive_DescStatics.cpp
+python quicktest.py
+```
+
+The rebuilt client passed `python auto/map_properties_test.py run/RobloxQT.exe` (9 checks), `python auto/full_features_regression.py run/RobloxQT.exe` (R7: 10 passes), `auto/map_size_test.py`, `auto/switch_table_test.py`, `auto/renderer_storage_test.py`, and `auto/surface_enum_binding_test.py`. A large user map exercised 7,472 size setter calls, including its expected non-default dimensions. `auto/explosion_texture_test.py` observed explosion rendering and opening `explosion.png` on both clients; visual parity remains unverified. The full feature scorecard has not been rerun, so the earlier 129/146 number is historical.
+
+`auto/collision_alias_audit.py` flags candidate wrong data bindings in raw converted objects; later link passes can already repair them, so verify the final linked image before changing any candidate. Outstanding work includes visual verification of studs and explosions, keyboard shortcuts, script error/close behavior, called stubs, broader testing and the TTD/IFEO cleanup below.
+
 ---
 
 ## 1. Current state

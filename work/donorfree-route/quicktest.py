@@ -671,6 +671,10 @@ try:
             _cfp.setdefault(_o, {}).update(_m)
     except (OSError, ValueError):
         pass
+    # Pilots for colliding data names already baked into converted objects.
+    # These targets have separately constructed native storage; see collision_alias_audit.py.
+    for _o, _m in json.loads((H / 'auto/collision_pilot.json').read_text(encoding='utf-8-sig')).items():
+        _cfp.setdefault(_o, {}).update(_m)
     # + converted objects' private writable statics -> dat_<original address> (datafix.py; cached per rename.json):
     # SafeChat::singleton read its own _localScope while the converted init wrote dat_0097d944
     _dfc = H / 'auto/datafix_plan.json'
@@ -884,6 +888,20 @@ try:
         print('collidefix: %d converted objects with colliding data names renamed to dat_<original>' % _ncl)
 except Exception as _ecl:
     print('collidefix skipped:', _ecl)
+# Restore audited switch case ordering by changing COFF label relocations.
+import switchfix as _swf
+_swplan = _swf.plan()
+_swn = 0
+for _i, _l in enumerate(out):
+    _m = re.search(r'(?:^|[_\\/])([0-9a-f]{8})\.obj"?$', _l, re.I)
+    if _m and _m.group(1) in _swplan:
+        _a = _m.group(1)
+        _swp = _swf.patch(_l.strip().strip('"'), H / ('linkexp/switchfix/' + _a + '.obj'), _a, _swplan[_a])
+        out[_i] = '"%s"' % _swp
+        _swn += 1
+if _swn != len(_swplan):
+    raise RuntimeError('switchfix expected %d objects, found %d' % (len(_swplan), _swn))
+print('switchfix: %d converted objects' % _swn)
 # dtorfix.py: registry ??1T names on the WRONG body (RTTI-proven, auto/dtoraudit.json): references -> Dtf_<true address>
 try:
     if not os.environ.get('QT_NO_DTORFIX') and (H / 'auto/dtoraudit.json').exists():

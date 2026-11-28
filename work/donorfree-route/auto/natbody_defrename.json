@@ -4596,5 +4596,8 @@
 },
 "su_ruct_work_donorfree_route_renamed_obj_0063c870_obj_563d1e9e.obj": {
 "func_0063c870": "__rocmis_func_0063c870"
+},
+"005ed5c0.obj": {
+"func_005ed5c0": "__roc_old_005ed5c0"
 }
 }
