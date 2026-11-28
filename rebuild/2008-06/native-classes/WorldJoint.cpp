@@ -38,17 +38,9 @@ namespace RBX
 	{
 	}
 
-	// 006454a0 (registry placeholder func_006454a0, 10 B `mov eax, [esp+4]; mov [ecx+0x20], eax; ret 4`): the
-	// jointOwner (+0x20) setter. Callers: JointInstance constructor path 005e393b (setJointOwner(this), IJointOwner
-	// base at +0x140) and ~JointInstance 005e2eac (setJointOwner(NULL)); it sits between ~Joint 00645490 and
-	// canBuildJoint 006454b0 in the Joint unit. native-headers/v8world/Joints2008.h does not declare it yet
-	// (header proposal: `void setJointOwner(IJointOwner* value);` next to jointOwner's public accessors).
-#ifdef NATIVE_JOINTS_HEADER_DECLARES_SET_JOINT_OWNER
-	void Joint::setJointOwner(IJointOwner* value)
-	{
-		jointOwner = value;
-	}
-#endif
+	// 006454a0 Joint::setJointOwner: defined in JointSetJointOwner.cpp (batch 54, exact) on the v8world/Joint.h
+	// declaration its callers use; native-headers/v8world/Joints2008.h does not declare it yet (header proposal:
+	// `void setJointOwner(IJointOwner* value);` next to jointOwner's public accessors).
 
 	// Built through the opt-in kernel-stages IStage (native-flags) and the 2008 IPipelined::getWorld inline of
 	// IPipelined2008.h (KERNEL_STAGE 7), with the World declaration of v8world/World2008.h. Earlier trial (lf13): with

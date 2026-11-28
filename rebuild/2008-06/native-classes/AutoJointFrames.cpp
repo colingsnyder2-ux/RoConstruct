@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native RBX::AutoJoint C0 / C1 setters (inactive): setC0 005e4490 and setC1 005e44c0. Flags: the sibling
 // AutoJoint.cpp (setPart0 / setPart1). Donor bodies: tools/rbxgs v8datamodel/JointInstance.cpp AutoJoint::setC0/setC1.
 // Both call Joint::setJointCoord 00645750 on the joint at +0x150 (JointInstance::joint) and then
@@ -25,6 +25,27 @@ namespace RBX
 
 	// 005e44c0
 	void AutoJoint::setC1(const G3D::CoordinateFrame& value)
+	{
+		joint->setJointCoord(1, value);
+		raisePropertyChanged(prop_C1);
+	}
+
+	// The same two bodies under their 2008 owner (batch 54): JointInstance.h declares setC0 / setC1 on JointInstance
+	// (GetSetImpl RTTI of vtables 0083e280 / 0083e294 names `void (JointInstance::*)(const CoordinateFrame&)`), and
+	// Tool::setGrip 005ffb70 / IEquipable::buildWeld 00628fd0 call 005e44c0 directly on a Weld (native callers
+	// ToolEvents.cpp, ScriptApp2008Equipable.cpp, AppUnit5B0_2008Accoutrement.cpp reference
+	// ?setC1@JointInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z). The registry still names 005e4490 / 005e44c0 after the
+	// donor AutoJoint, so the AutoJoint copies above stay for their callers (Humanoid2008Parts.cpp); one original body each.
+
+	// 005e4490
+	void JointInstance::setC0(const G3D::CoordinateFrame& value)
+	{
+		joint->setJointCoord(0, value);
+		raisePropertyChanged(prop_C0);
+	}
+
+	// 005e44c0
+	void JointInstance::setC1(const G3D::CoordinateFrame& value)
 	{
 		joint->setJointCoord(1, value);
 		raisePropertyChanged(prop_C1);

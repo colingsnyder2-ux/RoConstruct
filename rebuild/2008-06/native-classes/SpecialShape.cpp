@@ -27,24 +27,9 @@ namespace RBX
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
 
-#ifdef SPECIALSHAPE_HEADER_DECLARES_GETALPHA
-	// 0059eca0 (registry placeholder func_0059eca0): donor custommesh.cpp getAlpha, the first body of the unit (just
-	// before the FactoryProduct<SpecialShape> destructor 0059ece0). Parent +0x104, dynamic_cast to PartInstance
-	// (??_R0 0092dd50), then PartInstance::alpha() = 1 - (1 - transparency +0x1e8) * alphaModifier +0x328 (the
-	// part-embedded PartInstance layout). Guarded: native-headers/v8datamodel/SpecialShape.h does not yet declare
-	// `const float getAlpha() const;` (header proposal). Measured byte-identical with that declaration (batch 50 mx06).
-	const float SpecialShape::getAlpha() const
-	{
-		Instance* parent = getParent();
-		if (!parent)
-			return 0.0f;
-
-		if (PartInstance* part = dynamic_cast<PartInstance*>(parent))
-			return part->alpha();
-
-		return 0.0f;
-	}
-#endif
+	// 0059eca0 SpecialShape::getAlpha: defined in SpecialShapeGetAlpha.cpp (batch 54), on the v8datamodel/custommesh.h
+	// declaration its caller ViewNewPartMaterial.cpp uses; native-headers/v8datamodel/SpecialShape.h does not declare
+	// `const float getAlpha() const;` yet (header proposal). Measured IDENTICAL there.
 
 	Reflection::EnumDesc<SpecialShape::MeshType>::EnumDesc()   // 0059f630
 		: EnumDescriptor("MeshType", typeid(SpecialShape::MeshType))

@@ -9,6 +9,7 @@
 #include "AppDraw/DrawAdorn.h"
 #include "Network/Players.h"   // findLocalCharacter 0049aca0 (getLocalHumanoidFromContext 005d9bb0)
 #include <G3D/g3dmath.h>
+#include <boost/bind.hpp>          // getPrimitives 005d9db0
 #include "v8datamodel/PartInstance.h"   // getIntendedMovementVector(bool) 005d9a50: getCoordinateFrame 00598cb0
 #include "v8datamodel/Workspace.h"      // native (read only): getWorldIfInWorkspace 005a3390, findWorkspace 005a3380
 #include "v8datamodel/Camera.h"         // native (read only): getCameraSubject 005cc420, setCameraSubject 005cde10
@@ -105,6 +106,20 @@ namespace RBX
 		}
 
 		return NULL;
+	}
+
+	// boost::bind target of tellCameraNear / getIgnorePrims / getPrimitives, defined in HumanoidCamera.cpp (005d9d10).
+	void collectAllDescendantCharacterPrims(boost::shared_ptr<Instance> descendent, std::vector<Primitive*>& primitives);
+
+	// 005d9db0 (thiscall, `ret 4`; registry placeholder func_005d9db0; only caller HumanoidState::onFloorStep 006444f0):
+	// getCharacterFromHumanoid 005d7670 inlined (this NULL test, dynamic_cast of parent +0x104 Instance 0092907c ->
+	// ModelInstance 00932a40), then visitDescendents 005d8540 with boost::bind(&collectAllDescendantCharacterPrims
+	// 005d9d10, _1, boost::ref(primitives)). Donor tools/rbxgs Humanoid.cpp tellCameraNear / getIgnorePrims shape (the
+	// donor declares getPrimitives without a body).
+	void Humanoid::getPrimitives(std::vector<Primitive*>& primitives)
+	{
+		if (ModelInstance* character = getCharacterFromHumanoid(this))
+			character->visitDescendents(boost::bind(&collectAllDescendantCharacterPrims, _1, boost::ref(primitives)));
 	}
 
 	// 005d76d0 (127 bytes): std::string("Torso") from 00832a1c, getParent (+0x104)->findFirstChildByName 00557950, then
