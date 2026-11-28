@@ -142,18 +142,23 @@ namespace RBX
 
 	template Network::Client* ServiceProvider::find<Network::Client>() const;   // 0049fc50
 
+	// INFERRED: the ServiceProvider Closing event, defined exactly as the unit-local class in DataModelClose.cpp
+	// (an empty class: RTTI .?AV?$Listener@VServiceProvider@RBX@@VClosing@2@@RBX@@ names it a class; 0049f130
+	// receives it by value and never reads it, ret 8 = source pointer + the one-byte event slot).
+	class Closing
+	{
+	};
+
 	namespace Network
 	{
 
-#ifdef NATIVE_NETWORK_CLIENT_PENDING
-		// 0049f130 (Listener<ServiceProvider, Closing> slot 0, entered through the +0x144 subobject). Needs a complete
-		// RBX::Closing (only forward-declared in the native v8tree/Service.h): header-owner proposal, verified by the
-		// recorder against a generated Service.h copy under rebuild/2008-06/out/ (not counted).
+		// 0049f130 (Listener<ServiceProvider, Closing> slot 0, entered through the +0x144 subobject; inlines
+		// disconnect 0049f0f0 with 3000). The complete RBX::Closing follows the unit-local definition in
+		// DataModelClose.cpp (the native v8tree/Service.h only forward-declares it), defined above.
 		void Client::onEvent(const ServiceProvider* source, Closing event)
 		{
 			disconnect(3000);
 		}
-#endif
 	}
 }
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source

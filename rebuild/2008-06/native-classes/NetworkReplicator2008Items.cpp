@@ -19,6 +19,7 @@
 #include "util/scopedassign.h"
 #include "v8datamodel/Camera.h" // wantReplicate 004aaf90
 #include <stdexcept>
+#include <boost/bind.hpp> // disconnectReplicationData 004afd00 (visitChildren instance 004ae690)
 
 namespace RBX
 {
@@ -216,6 +217,27 @@ namespace RBX
 		{
 			bool removed = pendingNewInstances.erase(instance) != 0;
 			return removed;
+		}
+
+		// 004afd00 (donor Replicator::disconnectReplicationData; thiscall, shared_ptr by value, ret 8). Identity: the
+		// containerConnections (+0x2c38) find 004adfd0, the recursive visitChildren instance 004ae690 over a
+		// bind(&Replicator::disconnectReplicationData, this, _1) (the bound pointer is 004afd00 itself), both
+		// connection disconnects 00595230 on node +0x18 / +0x28, the removeOnClose test with setParent(NULL) 0055a8f0
+		// and the map erase 004aed00; callers onParentChanged 004b01e0 and the delete reader 004b0800.
+		bool Replicator::disconnectReplicationData(boost::shared_ptr<Instance> instance)
+		{
+			if (!instance)
+				return false;
+
+			std::map<const Instance*, ReplicationData>::iterator iter = containerConnections.find(instance.get());
+			if (iter == containerConnections.end())
+				return false;
+
+			instance->visitChildren(boost::bind(&Replicator::disconnectReplicationData, this, _1));
+
+			closeReplicationItem(*iter);   // inlined 004ab850 (one checked dereference after the visit)
+			containerConnections.erase(iter);
+			return true;
 		}
 
 		// 004b01e0 (donor Replicator::onParentChanged; identity: the parent lookup in the +0x2c38 map (find

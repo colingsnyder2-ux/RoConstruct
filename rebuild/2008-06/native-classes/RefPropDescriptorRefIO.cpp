@@ -48,6 +48,11 @@ namespace RBX
 			reinterpret_cast<Local_RefIO_Element*>(element)->setValue(Local_RefIO_Handle(getset->getValue(instance)));
 		}
 
+		// 00491760: RefPropDescriptor<Instance, Instance>::writeValue (registry
+		// ?writeValue@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBEXPBVDescribedBase@23@PAVXmlElement@3@@Z),
+		// emitted by member explicit instantiation as RefPropDescriptorAssignIDREF.cpp does for assignIDREF.
+		template void RefPropDescriptor<Instance, Instance>::writeValue(const DescribedBase*, XmlElement*) const;
+
 	}
 }
 
