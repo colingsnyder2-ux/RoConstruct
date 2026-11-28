@@ -1,0 +1,200 @@
+{
+ "00432f60.obj": [
+  [
+   659,
+   0,
+   "??_7XTP_REPORTRECORDITEM_ARGS@@6B@",
+   "__roc_abs_zero",
+   0
+  ]
+ ],
+ "00444c50.obj": [
+  [
+   5130,
+   11,
+   "??_7?$FactoryProduct@VVelocityMotor@RBX@@VJointInstance@2@$1?sVelocityMotor@2@3QBDB@RBX@@6B@",
+   "__roc_abs_zero",
+   0
+  ]
+ ],
+ "004aa8a0.obj": [
+  [
+   6,
+   21,
+   "__TI1?AUException@@",
+   "__TI2?AVruntime_error@std@@",
+   0
+  ]
+ ],
+ "005410b0.obj": [
+  [
+   382,
+   0,
+   "??_7RenderableListener@RenderQueue@Ogre@@6B@",
+   "__roc_abs_zero",
+   0
+  ]
+ ],
+ "0061aac0.obj": [
+  [
+   6,
+   8,
+   "__TI1?AUError@@",
+   "__TI2?AVruntime_error@std@@",
+   0
+  ]
+ ],
+ "0056cae0.obj": [
+  [
+   1287,
+   3,
+   "??_R0?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@8",
+   "??_R0?AV?$shared_ptr@VInstance@RBX@@@boost@@@8",
+   0
+  ]
+ ],
+ "0056cb50.obj": [
+  [
+   1287,
+   3,
+   "??_R0?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@8",
+   "??_R0?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@8",
+   0
+  ]
+ ],
+ "0056cd80.obj": [
+  [
+   1230,
+   3,
+   "??_R0?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@8",
+   "??_R0?AVContentId@RBX@@@8",
+   0
+  ]
+ ],
+ "0056cdf0.obj": [
+  [
+   1287,
+   3,
+   "??_R0?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@8",
+   "??_R0?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@8",
+   0
+  ]
+ ],
+ "0056ce60.obj": [
+  [
+   1287,
+   3,
+   "??_R0?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@8",
+   "??_R0?AVVector3@G3D@@@8",
+   0
+  ]
+ ],
+ "0056cf40.obj": [
+  [
+   1287,
+   3,
+   "??_R0?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@8",
+   "??_R0?AVColor3@G3D@@@8",
+   0
+  ]
+ ],
+ "0056cfb0.obj": [
+  [
+   1287,
+   3,
+   "??_R0?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@8",
+   "??_R0?AV?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@@8",
+   0
+  ]
+ ],
+ "0066fc80.obj": [
+  [
+   139,
+   2,
+   "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+   "__imp_??0MeshPtr@Ogre@@QAE@ABV01@@Z",
+   0
+  ]
+ ],
+ "0066fc30.obj": [
+  [
+   127,
+   1,
+   "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+   "__imp_??1MeshPtr@Ogre@@UAE@XZ",
+   0
+  ]
+ ],
+ "0066fce0.obj": [
+  [
+   187,
+   2,
+   "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+   "__imp_??0MeshPtr@Ogre@@QAE@ABV01@@Z",
+   0
+  ]
+ ],
+ "004d91f0.obj": [
+  [
+   220,
+   5,
+   "func_004d8680",
+   "func_004f0fc0",
+   0
+  ]
+ ],
+ "004d92a0.obj": [
+  [
+   228,
+   5,
+   "func_004d8680",
+   "func_004f0fc0",
+   0
+  ]
+ ],
+ "004d9350.obj": [
+  [
+   220,
+   5,
+   "func_004d8680",
+   "func_004f0fc0",
+   0
+  ]
+ ],
+ "004d9400.obj": [
+  [
+   228,
+   5,
+   "func_004d8680",
+   "func_004f0fc0",
+   0
+  ]
+ ],
+ "004d94b0.obj": [
+  [
+   228,
+   5,
+   "func_004d8680",
+   "func_004f0fc0",
+   0
+  ]
+ ],
+ "004d9560.obj": [
+  [
+   228,
+   5,
+   "func_004d8680",
+   "func_004f0fc0",
+   0
+  ]
+ ],
+ "00434500.obj": [
+  [
+   3,
+   1,
+   "_S_vftable",
+   "dat_00812bc4",
+   0
+  ]
+ ]
+}

@@ -1,0 +1,1 @@
+{"compiler_build": 50727, "compiler_variant": "rtm", "jobs": [{"source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubZ_007a7c40.c", "checks": [{"addr": "007a7c40", "symbol": "_deflateInit2_@32"}], "ranges": [], "layouts": []}]}

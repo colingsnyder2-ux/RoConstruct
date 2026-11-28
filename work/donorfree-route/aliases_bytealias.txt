@@ -1,0 +1,17 @@
+func_00401a70=??_E?$CComObject@VCWorkspace@@@ATL@@WBM@AEPAXI@Z
+func_00420800=??1Settings@GWindow@G3D@@QAE@XZ
+func_00420980=?SetCaption@CXTPReportGroupRow@@QAEXPBD@Z
+func_0043d0d0=??1?$bind_t@XV?$mf2@XV?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@PAVInstance@RBX@@ABVSoundId@Soundscape@3@@_mfi@boost@@V?$list3@V?$value@PAV?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@@_bi@boost@@V?$bind_t@PAVInstance@RBX@@V?$cmf0@PAVInstance@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list1@V?$arg@$00@boost@@@_bi@5@@23@V?$value@VSoundId@Soundscape@RBX@@@23@@_bi@3@@_bi@boost@@QAE@XZ
+func_00457f20=??_ECRobloxView@@WHI@AEPAXI@Z
+func_00474a50=?alphaOnlyVersion@Texture@G3D@@QBE?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@XZ
+func_0050f2e0=?encode@GImage@G3D@@QBEXW4Format@12@AAVBinaryOutput@2@@Z
+func_005a7770=??1VistaAPIs@RBX@@QAE@XZ
+func_005d3370=??_EPartInstance@RBX@@$4PPPPPPPM@DPM@AEPAXI@Z
+func_005ea860=??_EWorld@RBX@@WEA@AEPAXI@Z
+func_0062bbe0=??_EPartInstance@RBX@@$4PPPPPPPM@DPM@AEPAXI@Z
+func_0062cba0=??_EFlagStand@RBX@@$4PPPPPPPM@EBE@AEPAXI@Z
+func_0063d380=??_EPartInstance@RBX@@$4PPPPPPPM@DPM@AEPAXI@Z
+func_006662f0=?isZero@Vector3@G3D@@QBE_NXZ
+func_006ddb90=??1CXTTreeBase@@MAE@XZ
+func_0075d4f0=?DeletePane@CXTPDockingPaneSplitterContainer@@MAEXXZ
+func_0075d8c0=?IsScrollBarEnabled@CXTPScrollBar@@MBEHXZ

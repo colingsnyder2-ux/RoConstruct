@@ -1,0 +1,145 @@
+"""python fastcensus.py [EXE] [--ids auto/crashcont_ids.json] [--cap 3]: fast command census. One client runs the
+commands back to back (PostMessage WM_COMMAND, then a SENT WM_NULL returns as soon as the command finished; a modal
+dialog hits the cap and is closed). When the client dies or its window goes away, the command just posted is
+recorded as the killer, the client is relaunched (File->New again) and the run continues with the next command.
+No crash rewinding: every CRASH is real. Writes auto/codex_census_capture.json {killers:[{id,label,exit}], tested, secs}."""
+import ctypes, ctypes.wintypes as w, json, os, subprocess, sys, time
+from pathlib import Path
+import psutil
+H = Path(__file__).parent
+sys.path.insert(0, str(H))
+args = sys.argv[1:]
+exe = os.path.abspath(next((a for a in args if a.lower().endswith('.exe')), str(H / 'run/RobloxQT.exe')))
+ids = json.load(open(args[args.index('--ids') + 1] if '--ids' in args else H / 'auto/crashcont_ids.json'))
+ids = [(r['id'], r.get('label', '')) if isinstance(r, dict) else (r, '') for r in ids]
+cap = float(args[args.index('--cap') + 1]) if '--cap' in args else 3.0
+u = ctypes.WinDLL('user32'); k = ctypes.WinDLL('kernel32'); P = ctypes.WINFUNCTYPE(w.BOOL, w.HWND, w.LPARAM)
+children = {}
+
+
+def remember_children(p):
+    try:
+        for child in psutil.Process(p.pid).children(recursive=True):
+            children[child.pid] = child.create_time()
+    except psutil.Error:
+        pass
+
+
+def close_children():
+    for pid, created in children.items():
+        try:
+            child = psutil.Process(pid)
+            if child.create_time() == created:
+                child.terminate()
+        except psutil.Error:
+            pass
+
+
+def wins(pid, cls_prefix):
+    out = []
+    def cb(h, _):
+        p_ = w.DWORD(); u.GetWindowThreadProcessId(h, ctypes.byref(p_)); c = ctypes.create_unicode_buffer(64); u.GetClassNameW(h, c, 64)
+        if p_.value == pid and u.IsWindowVisible(h) and c.value.startswith(cls_prefix):
+            out.append(h)
+        return True
+    u.EnumWindows(P(cb), 0)
+    return out
+
+
+def launch():
+    p = subprocess.Popen([exe], cwd=os.path.dirname(exe))
+    capture(p)
+    t = time.time()
+    while not wins(p.pid, 'Afx:') and time.time() - t < 30 and p.poll() is None:
+        time.sleep(0.3)
+    time.sleep(1.5)
+    h = wins(p.pid, 'Afx:')
+    if not h:
+        return p, None
+    u.PostMessageW(h[0], 0x111, 0xE100, 0)   # File->New
+    r = w.DWORD(); u.SendMessageTimeoutW(h[0], 0, 0, 0, 2, 15000, ctypes.byref(r)); time.sleep(1.5)
+    return p, (wins(p.pid, 'Afx:') or [None])[0]
+
+
+import frida
+sessions = []
+exceptions = []
+
+def capture(p):
+    session = frida.attach(p.pid)
+    script = session.create_script("""
+const started = Date.now();
+Process.setExceptionHandler(function(e) {
+    if (e.type === 'access-violation' || (e.type === 'system' && Date.now() - started > 12000)) {
+        let module = Process.findModuleByAddress(e.address);
+        let record = {type:e.type, address:e.address.toString(), memory:e.memory,
+                      module:module ? module.name : null,
+                      moduleOffset:module ? e.address.sub(module.base).toString() : null,
+                      eip:e.context.eip.toString(), esp:e.context.esp.toString(),
+                      eax:e.context.eax.toString(), ecx:e.context.ecx.toString(),
+                      edx:e.context.edx.toString(), esi:e.context.esi.toString()};
+        try {
+            record.exceptionCode = e.context.esp.readU32().toString(16);
+            if (record.exceptionCode === 'e06d7363') {
+                let info = e.context.esp.add(28).readPointer();
+                let types = info.add(12).readPointer();
+                let type = types.add(4).readPointer().add(4).readPointer();
+                record.cppType = type.add(8).readCString();
+            }
+        } catch (_) {}
+        try {record.stack = Thread.backtrace(e.context, Backtracer.ACCURATE).map(x => DebugSymbol.fromAddress(x).toString());} catch (_) {}
+        send(record);
+    }
+    return false;
+});
+""")
+    def on_message(message, data):
+        payload = message.get('payload') if isinstance(message, dict) else None
+        if payload is not None:
+            exceptions.append(payload)
+        print('exception', message, flush=True)
+    script.on('message', on_message)
+    script.load()
+    sessions.append((session, script))
+
+import ieclean
+t0 = time.time(); ieclean.clean()
+killers, tested, relaunch = [], 0, 0
+p, h = launch()
+i = 0
+while i < len(ids):
+    if h is None or p.poll() is not None:
+        killers.append({'id': '%#x' % ids[i][0], 'label': 'File->New / startup before ' + ids[i][1], 'exit': '%#x' % ((p.returncode or 0) & 0xffffffff)})
+        break
+    cid, lab = ids[i]
+    print('command %d %#x %s at %.2fs' % (i, cid, lab, time.time() - t0), flush=True)
+    u.PostMessageW(h, 0x111, cid, 0)
+    r = w.DWORD()
+    ok = u.SendMessageTimeoutW(h, 0, 0, 0, 2, int(cap * 1000), ctypes.byref(r))
+    for d in wins(p.pid, '#32770'):
+        u.PostMessageW(d, 0x0010, 0, 0)
+    tested += 1
+    time.sleep(0.05)
+    remember_children(p)
+    if p.poll() is not None or not wins(p.pid, 'Afx:'):
+        time.sleep(0.5)
+        code = p.poll()
+        killers.append({'id': '%#x' % cid, 'label': lab, 'exit': ('%#x' % (code & 0xffffffff)) if code is not None else 'window closed'})
+        try:
+            p.kill()
+        except Exception:
+            pass
+        relaunch += 1
+        p, h = launch()
+    i += 1
+try:
+    remember_children(p)
+    p.kill()
+except Exception:
+    pass
+close_children()
+ieclean.clean(t0)
+(H / 'auto/codex_census_capture.json').write_text(json.dumps({'tested': tested, 'secs': round(time.time() - t0), 'relaunches': relaunch, 'killers': killers, 'exceptions': exceptions}, indent=0))
+print('fastcensus: %d commands in %.0fs, %d relaunches, killers %d' % (tested, time.time() - t0, relaunch, len(killers)))
+for kk in killers:
+    print('  %-7s %-50s %s' % (kk['id'], kk['label'][:50], kk['exit']))

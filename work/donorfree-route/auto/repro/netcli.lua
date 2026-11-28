@@ -1,0 +1,1 @@
+local nc = game:GetService("NetworkClient"); local p = nc:PlayerConnect(1, "127.0.0.1", 53641); p.Name = "NetPlayer"; game:GetService("RunService"):run()

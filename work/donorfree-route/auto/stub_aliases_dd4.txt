@@ -1,0 +1,8 @@
+# func_<addr> -> thiscall member in work/native-client/stub-drafts/StubDD4_<addr>.cpp (exact)
+func_00541260=?del@Z_00541260@@QAEPAXI@Z
+func_00546170=?del@Z_00546170@@QAEPAXI@Z
+func_005461a0=?del@Z_005461a0@@QAEPAXI@Z
+func_00546ff0=?del@Z_00546ff0@@QAEPAXI@Z
+func_0054c4b0=?del@Z_0054c4b0@@QAEPAXI@Z
+func_005515b0=?del@Z_005515b0@@QAEPAXI@Z
+func_00552780=?del@Z_00552780@@QAEPAXI@Z

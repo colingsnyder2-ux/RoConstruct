@@ -1,0 +1,10 @@
+STUB ??$singleton@UTuple@Reflection@RBX@@@Type@Reflection@RBX@@SAABV012@XZ <- 004b5435 ??0?$BoundFuncDesc@VChangeHistoryService@RBX@@$$A6A?AUTuple@Reflection@2@XZ$0A@@R
+STUB ??$singleton@W4FormFactor@PartInstance@RBX@@@Type@Reflection@RBX@@SAABV012@XZ <- 005a8f24 ??0?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@IAE@
+STUB ??$singleton@VSurface@RBX@@@Type@Reflection@RBX@@SAABV012@XZ <- 00736621 ??__Edesc_LegacyTop@RBX@@YAXXZ+11
+STUB ?SetThreadName@RBX@@YAXKPBD@Z <- 005bd20f ?set_thread_name@RBX@@YAXPBD@Z+8f
+STUB ?PreventSetUnhandledExceptionFilter@@YAHXZ <- 0040ec50 ?startCrashReporter@MainLogManager@@QAEXXZ+f0
+STUB ??0NativeClassRegistration@@QAE@XZ <- 0049d83f ?InitInstance@CRobloxApp@@UAEHXZ+30f
+STUB ?nativeSetVersion@@YAXPBD@Z <- 0049d85f ?InitInstance@CRobloxApp@@UAEHXZ+32f
+STUB ?initializeSettings@CRobloxApp@@QAEXXZ <- 0049d873 ?InitInstance@CRobloxApp@@UAEHXZ+343
+STUB ?nativeInitializeCallbacks@@YAXXZ <- 0049d878 ?InitInstance@CRobloxApp@@UAEHXZ+348
+STUB ?nativeStartupContext@@YAPAXXZ <- 0049d87d ?InitInstance@CRobloxApp@@UAEHXZ+34d

@@ -1,0 +1,72 @@
+{
+ "?sModel@RBX@@3PADA": {
+  "10": [
+   "e-check-runs\\20261124-015202-c0ad3e45\\unit-112\\candidate.obj",
+   "-check-runs\\20261124-015202-c0ad3e45\\unit-2113\\candidate.obj"
+  ],
+  "47": [
+   "-check-runs\\20261124-015202-c0ad3e45\\unit-1653\\candidate.obj"
+  ],
+  "4": [
+   "e-check-runs\\20261124-015202-c0ad3e45\\unit-285\\candidate.obj"
+  ]
+ },
+ "?nativeStartupMode@@3HA": {
+  "4": [
+   "-check-runs\\20261124-015202-c0ad3e45\\unit-1174\\candidate.obj"
+  ],
+  "8": [
+   "-check-runs\\20261124-015202-c0ad3e45\\unit-1640\\candidate.obj"
+  ]
+ },
+ "?sDecal@RBX@@3PADA": {
+  "20": [
+   "e-check-runs\\20261124-015202-c0ad3e45\\unit-119\\candidate.obj"
+  ],
+  "10": [
+   "e-check-runs\\20261124-015202-c0ad3e45\\unit-806\\candidate.obj"
+  ]
+ },
+ "?sTexture@RBX@@3PADA": {
+  "20": [
+   "e-check-runs\\20261124-015202-c0ad3e45\\unit-119\\candidate.obj"
+  ],
+  "31": [
+   "-check-runs\\20261124-015202-c0ad3e45\\unit-1642\\candidate.obj"
+  ]
+ },
+ "?sWorkspace@RBX@@3PADA": {
+  "47": [
+   "-check-runs\\20261124-015202-c0ad3e45\\unit-1653\\candidate.obj"
+  ],
+  "4": [
+   "e-check-runs\\20261124-015202-c0ad3e45\\unit-290\\candidate.obj",
+   "e-check-runs\\20261124-015202-c0ad3e45\\unit-293\\candidate.obj"
+  ]
+ },
+ "?sPlayers@Network@RBX@@3PADA": {
+  "32": [
+   "-check-runs\\20261124-015202-c0ad3e45\\unit-1666\\candidate.obj"
+  ],
+  "12": [
+   "-check-runs\\20261124-015202-c0ad3e45\\unit-1781\\candidate.obj"
+  ]
+ },
+ "?sStatsItem@Stats@RBX@@3PADA": {
+  "49": [
+   "-check-runs\\20261124-015202-c0ad3e45\\unit-2008\\candidate.obj"
+  ],
+  "22": [
+   "-check-runs\\20261124-015202-c0ad3e45\\unit-2043\\candidate.obj",
+   "-check-runs\\20261124-015202-c0ad3e45\\unit-2119\\candidate.obj"
+  ]
+ },
+ "?sControllerService@RBX@@3PADA": {
+  "22": [
+   "-check-runs\\20261124-015202-c0ad3e45\\unit-2404\\candidate.obj"
+  ],
+  "4": [
+   "e-check-runs\\20261124-015202-c0ad3e45\\unit-325\\candidate.obj"
+  ]
+ }
+}

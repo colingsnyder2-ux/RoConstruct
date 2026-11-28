@@ -1,0 +1,1 @@
+{"compiler_build": 21022, "compiler_variant": "default", "jobs": [{"source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LuaBridge2008Instance.cpp", "checks": [{"addr": "0061c2c0", "symbol": "?on_index@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHABV?$shared_ptr@VDescribedBase"}], "ranges": [], "layouts": []}]}

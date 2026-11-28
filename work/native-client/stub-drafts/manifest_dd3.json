@@ -1,0 +1,248 @@
+{
+ "compiler_build": 21022,
+ "compiler_variant": "default",
+ "jobs": [
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_00541260.cpp",
+   "checks": [
+    {
+     "addr": "00541260",
+     "symbol": "@fn_00541260@12"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_00546170.cpp",
+   "checks": [
+    {
+     "addr": "00546170",
+     "symbol": "@fn_00546170@12"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_005461a0.cpp",
+   "checks": [
+    {
+     "addr": "005461a0",
+     "symbol": "@fn_005461a0@12"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_00546ff0.cpp",
+   "checks": [
+    {
+     "addr": "00546ff0",
+     "symbol": "@fn_00546ff0@12"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_005515b0.cpp",
+   "checks": [
+    {
+     "addr": "005515b0",
+     "symbol": "@fn_005515b0@12"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_00552780.cpp",
+   "checks": [
+    {
+     "addr": "00552780",
+     "symbol": "@fn_00552780@12"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_0063d570.cpp",
+   "checks": [
+    {
+     "addr": "0063d570",
+     "symbol": "@fn_0063d570@4"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_0063d5b0.cpp",
+   "checks": [
+    {
+     "addr": "0063d5b0",
+     "symbol": "@fn_0063d5b0@4"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_0063d5f0.cpp",
+   "checks": [
+    {
+     "addr": "0063d5f0",
+     "symbol": "@fn_0063d5f0@4"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_0063d610.cpp",
+   "checks": [
+    {
+     "addr": "0063d610",
+     "symbol": "@fn_0063d610@4"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_0063d700.cpp",
+   "checks": [
+    {
+     "addr": "0063d700",
+     "symbol": "@fn_0063d700@4"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_0054c4b0.cpp",
+   "checks": [
+    {
+     "addr": "0054c4b0",
+     "symbol": "@fn_0054c4b0@12"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_005d36b0.cpp",
+   "checks": [
+    {
+     "addr": "005d36b0",
+     "symbol": "@fn_005d36b0@4"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_005d36d0.cpp",
+   "checks": [
+    {
+     "addr": "005d36d0",
+     "symbol": "@fn_005d36d0@4"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_005d3710.cpp",
+   "checks": [
+    {
+     "addr": "005d3710",
+     "symbol": "@fn_005d3710@4"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_005d3720.cpp",
+   "checks": [
+    {
+     "addr": "005d3720",
+     "symbol": "@fn_005d3720@4"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_005d37a0.cpp",
+   "checks": [
+    {
+     "addr": "005d37a0",
+     "symbol": "@fn_005d37a0@4"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_0062cb70.cpp",
+   "checks": [
+    {
+     "addr": "0062cb70",
+     "symbol": "@fn_0062cb70@4"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_0062cb90.cpp",
+   "checks": [
+    {
+     "addr": "0062cb90",
+     "symbol": "@fn_0062cb90@4"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_0062cba0.cpp",
+   "checks": [
+    {
+     "addr": "0062cba0",
+     "symbol": "@fn_0062cba0@4"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_0062cbd0.cpp",
+   "checks": [
+    {
+     "addr": "0062cbd0",
+     "symbol": "@fn_0062cbd0@4"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  },
+  {
+   "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubDD3_0062ccc0.cpp",
+   "checks": [
+    {
+     "addr": "0062ccc0",
+     "symbol": "@fn_0062ccc0@4"
+    }
+   ],
+   "ranges": [],
+   "layouts": []
+  }
+ ]
+}

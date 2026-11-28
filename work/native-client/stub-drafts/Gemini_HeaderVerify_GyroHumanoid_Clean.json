@@ -1,0 +1,174 @@
+{
+  "compiler_build": 21022,
+  "compiler_variant": "default",
+  "jobs": [
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_HeaderVerify_GyroHumanoid.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DonorCtx_006329e0.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Accoutrement.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5A0_2008Workspace.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5B0_2008Accoutrement.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit610_2008NullTool.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\BodyColors.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Clothing.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CreatableSharedCount2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\FactoryProductCreators2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Filters.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HumanoidLocalHead.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HumanoidStateFloor.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_005feed0.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_006195b0.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_00643eb0.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LaserTool.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\MouseCommand.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\MouseCommandDistance.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NativeClassRegistration2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NewNullTool.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RefPropDescriptorBatchB2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RefPropDescriptorTemplates2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Seat.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ShootToolShoot.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SpawnLocationTouched.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Tool.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ToolEvents.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    }
+  ]
+}

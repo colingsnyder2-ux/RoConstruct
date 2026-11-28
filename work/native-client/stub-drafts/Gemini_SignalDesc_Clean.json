@@ -1,0 +1,60 @@
+{
+  "compiler_build": 21022,
+  "compiler_variant": "default",
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SignalDesc_007.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SignalDesc_008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SignalDesc_009.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SignalDesc_010.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SignalDesc_011.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SignalDesc_012.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SignalDesc_013.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SignalDesc_014.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SignalDesc_015.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    }
+  ]
+}

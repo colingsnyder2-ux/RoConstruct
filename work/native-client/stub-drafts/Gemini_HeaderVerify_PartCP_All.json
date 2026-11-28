@@ -1,0 +1,1566 @@
+{
+  "compiler_build": 21022,
+  "compiler_variant": "default",
+  "jobs": [
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_HeaderVerify_PartCP.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Accoutrement.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AnchorTool.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppLeftovers.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit418_2008Content.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit418_2008Creators.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit454_2008WndServices.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit558_2008Instance.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit55CContentTemplates.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit564_2008GenericConvert.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit564_2008Type.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit564_2008ValueConvert.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit57C_2008ModelInstance.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit57C_2008Script.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit588_2008RootInstance.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit58CXmlSerializer.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit598PartInstance.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5A0_2008Workspace.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5B0_2008Accoutrement.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5E8_2008FaceInstance.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5ECSurfaces.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5F0_2008Surface.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5F8WinHttp.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5F8WinInet.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit609_2008Dragger.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit610_2008NullTool.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit614BoxSelect.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit628Explosion.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit658SafeChat.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit660_2008PartDragTool.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit66CRunDragger.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ArrowToolBase.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AutoRecover_00559170.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AutoRecover_005b0f90.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AutoRecover_005b2670.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AutoRecover_005dc2f0.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AutoRecover_00618a40.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AutoRecover_00630570.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\BodyColors.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\BodyGyro.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\BodyMovers.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\BoundFuncDescCallTemplates2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\BoundFuncDescPartInstanceVoid.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\BoundFuncDescRecovery_00559cb0.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\BoundFuncDescTemplates2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CAppGetID.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ClassStaticsPart2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ClickDetector.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CloneProp_0041e220.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Clothing.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CollectDragParts.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContactUnit2008PVInstance.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentIdAssets.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentIdAssetsPath.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentIdCompare.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentProvider.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentProviderAssetFolder2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentProviderCacheSupport.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentProviderCreateContext.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentProviderGetContent.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentProviderGetFile.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentProviderLoad.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentProviderLoadContent.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentProviderRegisterFile.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentProviderServiceCreate.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentProviderServiceFind.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentProviderSub00562670.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentProviderSub00562730.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentProviderUrl.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentProviderWorkerBinding.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ContentRequestLifetime.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CreatableSharedCount2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CreatableSharedCount2008Content.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CRobloxWndFinishAttach.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CScriptEditor.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CWorkspace.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CWorkspaceExecScript.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CWorkspaceSave.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DataModelGetObjectsFunctions.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DataModelRecovery_00579c10.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DebugSettings.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DirectPhysicsReceiverPacket.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DocumentExecute.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DocumentLoadFile.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DonorCtx_006329e0.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DragPrimitiveBounds.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DragTool.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DragUtilitiesAlive.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DragUtilitiesExtents.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DragUtilitiesJoin.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DragUtilitiesMoveAndClean.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DragUtilitiesSetDragging.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\FaceInstanceLifetime.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\FactoryProductCreators2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Feature.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\FeatureRecovery.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Filters.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Flag.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\FlagClone.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\FlagStand.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\FlatTool.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ForceField.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\FunctorInst_0048e470.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\FunctorInst_00493210.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\GeometryService.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\GuiContentProviderState.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HttpWinHttp.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HttpWinInet.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Humanoid2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Humanoid2008Parts.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HumanoidCamera.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HumanoidRecovery_005db680.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HumanoidState.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HumanoidStateFloor.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HumanoidStates2.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HumanoidStates3.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HumanoidStateStep.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HumanoidStateTransition.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ICameraOwner.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ImageContentRegistration.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_0041ea40.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_00561490.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_005624b0.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_00562530.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_00585310.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_005a1910.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_005a1950.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_005a2330.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_005d4640.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_005eecc0.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_005feed0.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_0060ec60.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_0060ecd0.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_00616320.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Inferred_00643eb0.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InitializeSettings2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InitStatics_PartInstance.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InsertDecalAction.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceAnchorChildren.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceReadChildren.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceReadProperty.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceSerialization.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InterpolatingPhysicsReceiverRecovery_004b6290.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\MD5HasherLegacyHash.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\MegaDragger.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\MegaDraggerMoves.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\MeshIdStringConverter.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ModelInstanceExtents.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ModelSetFrontTool.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ModelTool.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ModelToolActions.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Mouse.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\MouseCommand.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\MouseCommandDistance.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\MouseGetDecal.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\MouseGetSurface.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NativeClassRegistration2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NetworkPhysicsSenders2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NetworkPlayersAbuseReporter.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NetworkReplicator2008Items.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NetworkReplicator2008StatsItem.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NewNullTool.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NotifierRaiseTemplatesB2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\OgreAuto_RBX_MouseCommand.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartInstanceCoordinate.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartInstanceGetSurface.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartInstanceLifetime.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartInstanceLocked.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartInstanceLockedInPlace.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartInstanceProperties.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartInstanceResize.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartInstanceTouchThisStep.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartOutfitChanged2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PhysicsSenderPartItemUpdate.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PhysicsSenderRecovery_004cce00.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PhysicsSenderWriteSnapshot.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PhysicsService.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PlayerCharacter.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PolymorphicCastTemplates2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RefPropDescriptorRefIO.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RefPropDescriptorTemplates2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ResizeToolDrag.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ResizeToolFind.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ResizeToolRender.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Rocket.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RocketControl.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RocketToolProjectile.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RoundRobinSendPhysicsData.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RunStateCommands.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ScriptApp2008Equipable.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ScriptFileLoad.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Seat.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SelectionVerbStates.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SerializerRoot.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SerializerV2Isolation.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SerializerV2Load.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ServiceProviderStaticFind2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ShootToolShoot.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Sky.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SlingshotToolProjectile.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SoundChannel.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Sparkles.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SpecialShape.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SurfaceEnumPropDescriptor_setIndexValue.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SurfaceFlat.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SurfacePropDescriptor.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SurfaceProperties.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SurfaceReadValue.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SurfaceToolSiblings.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SurfaceVisitors.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TmplInst_0041ea40.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TmplInst_0048f030.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TmplInst_004992e0.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TmplInst_00561490.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TmplInst_005c10c0.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TmplInst_005c3100.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Tool.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ToolEvents.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ToolMouseCommand.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ToolVerbChecked.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ToolVerbFactories.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TPD_cframe.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TPD_double.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TPD_ids.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TPDReadValueTextVector.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TwinInst_0059d130.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TwinInst_0059d390.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TwinInst_005a9c70.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TwinInst_005d8740.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TwinInst_005d88d0.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TypedPropertyContentIdLeftovers.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TypedPropertyContentIdRead.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TypedPropertyContentIdWritersB2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TypedPropertyScalarMembers.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TypedPropertySpecializations2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TypedPropertyStringMembersB2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\TypeSingletonsBoot2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ValueConverter.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ValueGetContentId_005863e0.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPart.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPartChunk.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPartChunkRecovery2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPartConstructor2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPartMaterial.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPartSurfaceUpdate2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPartUpdateMesh.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewSurfaceMaterial2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewRbxGfxDescendant2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewRbxGfxSkybox2008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\WorkspaceExecUrl.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\WorkspaceInsertUrl.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\WorkspaceSelectAll.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\WorkspaceWrite.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\WorkspaceXmlWriter.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\XmlElement.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\XmlElementIsolate.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\XmlElementValues.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\XmlNameValuePair.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "c:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\XmlNameValuePairValueType.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    }
+  ]
+}

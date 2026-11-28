@@ -1,0 +1,75 @@
+{
+ "005d7990.obj": {
+  "_clearerr_s": "?findLocalCharacter@Players@Network@RBX@@SAPAVModelInstance@3@PBVInstance@3@@Z"
+ },
+ "004b3760.obj": {
+  "??1Lock@@QAE@XZ": "func_00407160"
+ },
+ "00568760.obj": {
+  "??1Lock@@QAE@XZ": "func_00407160"
+ },
+ "0043b930.obj": {
+  "??1Lock@@QAE@XZ": "func_005773c0"
+ },
+ "0045d280.obj": {
+  "?create@Win32Window@G3D@@SAPAV12@ABVSettings@GWindow@2@PAUHWND__@@@Z": "?create@Win32Window@G3D@@SAPAV12@ABVSettings@GWindow@2@PAUHDC__@@@Z"
+ },
+ "0045e910.obj": {
+  "dat_0096d510": "?prop_delaySwapBuffer@@3V?$BoundProp@_N$00@Reflection@RBX@@A+0x18"
+ },
+ "005a9260.obj": {
+  "_lua_rawget": "?lua_gettable@@YAXPAUlua_State@@H@Z"
+ },
+ "005a92d0.obj": {
+  "_lua_rawget": "?lua_gettable@@YAXPAUlua_State@@H@Z"
+ },
+ "005aeaf0.obj": {
+  "?lua_pushboolean@@YAXPAUlua_State@@H@Z": "func_00612410",
+  "_lua_pushboolean": "func_00612410"
+ },
+ "0059aa40.obj": {
+  "?event_OutfitChanged@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXXZ@Reflection@2@A": "?event_Touched@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A"
+ },
+ "0059d7f0.obj": {
+  "?event_OutfitChanged@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXXZ@Reflection@2@A": "?event_Touched@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A"
+ },
+ "005fec80.obj": {
+  "?event_OutfitChanged@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXXZ@Reflection@2@A": "?event_Touched@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A"
+ },
+ "00619970.obj": {
+  "?event_OutfitChanged@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXXZ@Reflection@2@A": "?event_Touched@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A"
+ },
+ "0062cf40.obj": {
+  "?event_OutfitChanged@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXXZ@Reflection@2@A": "?event_Touched@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A"
+ },
+ "0063d0d0.obj": {
+  "?event_OutfitChanged@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXXZ@Reflection@2@A": "?event_Touched@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A"
+ },
+ "0058c620.obj": {
+  "?event_descendentRemoving@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A": "?event_descendentAdded@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A"
+ },
+ "004b52b0.obj": {
+  "?event_propertyChanged@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXPBVPropertyDescriptor@Reflection@2@@Z@Reflection@2@A": "?event_childAdded@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A"
+ },
+ "00610a60.obj": {
+  "?toObjectSpace@CoordinateFrame@G3D@@QBE?AVBox@2@ABV32@@Z": "?toObjectSpace@CoordinateFrame@G3D@@QBE?AV12@ABV12@@Z"
+ },
+ "0060f1d0.obj": {
+  "?toObjectSpace@CoordinateFrame@G3D@@QBE?AVBox@2@ABV32@@Z": "?toObjectSpace@CoordinateFrame@G3D@@QBE?AV12@ABV12@@Z"
+ },
+ "0061de60.obj": {
+  "?toObjectSpace@CoordinateFrame@G3D@@QBE?AVBox@2@ABV32@@Z": "?toObjectSpace@CoordinateFrame@G3D@@QBE?AV12@ABV12@@Z"
+ },
+ "0063c8a0.obj": {
+  "?toObjectSpace@CoordinateFrame@G3D@@QBE?AVBox@2@ABV32@@Z": "?toObjectSpace@CoordinateFrame@G3D@@QBE?AV12@ABV12@@Z"
+ },
+ "00645980.obj": {
+  "?toObjectSpace@CoordinateFrame@G3D@@QBE?AVBox@2@ABV32@@Z": "?toObjectSpace@CoordinateFrame@G3D@@QBE?AV12@ABV12@@Z"
+ },
+ "00646f60.obj": {
+  "?toObjectSpace@CoordinateFrame@G3D@@QBE?AVBox@2@ABV32@@Z": "?toObjectSpace@CoordinateFrame@G3D@@QBE?AV12@ABV12@@Z"
+ },
+ "005bc6c0.obj": {
+  "_prepare@8": "_FMOD_Channel_GetUserData"
+ }
+}

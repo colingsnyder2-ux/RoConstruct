@@ -1,0 +1,1 @@
+{"compiler_build": 21022, "compiler_variant": "default", "jobs": [{"source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\StubCreate_00639880.cpp", "checks": [{"addr": "00639880", "symbol": "??$create@VStringValue@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VStringValue@RBX@@@boost@@XZ"}], "ranges": [], "layouts": []}]}

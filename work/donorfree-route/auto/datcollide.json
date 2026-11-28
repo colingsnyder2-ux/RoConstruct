@@ -1,0 +1,75 @@
+{
+"0x125f8c4": {
+"orig": [
+"0096effc",
+"00970b88",
+"0097da5c",
+"0097dabc",
+"0097dac8"
+],
+"names": [
+"?dummyString@RenderDevice@G3D@@0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A"
+]
+},
+"0x125f910": {
+"orig": [
+"0096f048",
+"0096f798"
+],
+"names": [
+"??_B?3??resize@?$Array@M@G3D@@QAEXH_N@Z@53"
+]
+},
+"0x1264cb0": {
+"orig": [
+"0097a668",
+"0097a88c"
+],
+"names": [
+"?event_LightingChanged@Lighting@RBX@@2V?$SignalDesc@VLighting@RBX@@$$A6AX_N@Z@Reflection@2@A"
+]
+},
+"0x12650e8": {
+"orig": [
+"0097d218",
+"0097d24c",
+"0097d29c",
+"0097d2ec",
+"0097d330",
+"0097d428",
+"0097d45c",
+"0097d490",
+"0097d4c4"
+],
+"names": [
+"?desc_Value@ObjectValue@RBX@@2V?$RefPropDescriptor@VObjectValue@RBX@@VInstance@2@@Reflection@2@A"
+]
+},
+"0x12680a8": {
+"orig": [
+"00976164",
+"009761d4"
+],
+"names": [
+"?event_OutfitChanged@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXXZ@Reflection@2@A"
+]
+},
+"0x126e6e0": {
+"orig": [
+"0097c6e8",
+"0097c720"
+],
+"names": [
+"?prop_force@BodyThrust@RBX@@2V?$BoundProp@VVector3@G3D@@$00@Reflection@2@A"
+]
+},
+"0x126fc48": {
+"orig": [
+"0097bf20",
+"0097bf80"
+],
+"names": [
+"?event_MouseClick@ClickDetector@RBX@@2V?$SignalDesc@VClickDetector@RBX@@$$A6AXXZ@Reflection@2@A"
+]
+}
+}

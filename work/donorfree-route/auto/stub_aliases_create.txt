@@ -1,0 +1,12 @@
+func_00639880=??$create@V?$Value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$1?sStringValue@RBX@@3PADA@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$Value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$1?sStringValue@RBX@@3PADA@RBX@@@boost@@XZ
+func_007a7c40=_deflateInit2_@32
+func_005aefa0=?openState@ScriptContext@RBX@@AAEXXZ
+func_005b8880=?updateAmbientReverb@SoundService@Soundscape@RBX@@AAEXXZ
+func_004b6ab0=?deserializeValue@Replicator@Network@RBX@@AAEXAAVBitStream@RakNet@@AAVProperty@Reflection@3@@Z
+func_004b6890=?serializeValue@Replicator@Network@RBX@@AAEXABVConstProperty@Reflection@3@_NAAVBitStream@RakNet@@@Z
+func_00621920=?luaD_rawrunprotected@@YAHPAUlua_State@@P6AX0PAX@Z1@Z
+func_005d8540=??$visitDescendents@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAX@ZV?$list2@V?$arg@$00@boost@@V?$value@PAX@_bi@2@@_bi@2@@_bi@boost@@@Instance@RBX@@QBEXV?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@PAX@ZV?$list2@V?$arg@$00@boost@@V?$value@PAX@_bi@2@@_bi@2@@_bi@boost@@@Z
+func_0061c2c0=?on_index@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHABV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PBDPAUlua_State@@@Z
+func_005946e0=??_G?$holder@VFunctionRef@Lua@RBX@@@any@boost@@UAEPAXI@Z
+func_005acfa0=??_G?$holder@V?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@@any@boost@@UAEPAXI@Z
+func_006a1f8a=??2@YAPAXIABUnothrow_t@std@@@Z

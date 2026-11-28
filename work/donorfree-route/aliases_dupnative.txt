@@ -1,0 +1,11 @@
+func_00506b80=?getToneMap@EffectSettings@Render@RBX@@SAPAVToneMap@G3D@@XZ
+func_00507d20=?alignedFree@System@G3D@@SAXPAX@Z
+func_00508530=?malloc@System@G3D@@SAPAXI@Z
+func_00514a60=?white@Color3@G3D@@SAABV12@XZ
+func_0056c520=?dictionary@Name@RBX@@CAAAV?$map@HPAVName@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVName@RBX@@@std@@@4@@std@@XZ
+func_00573290=?translucentBackdrop@GuiItem@RBX@@SAABVColor4@G3D@@XZ
+func_00595de0=?wake@worker_thread@RBX@@QAEXXZ
+func_00596d50=?init_foo@boost_detail@RBX@@YAXXZ
+func_00599190=?white@Color3@G3D@@SAABV12@XZ
+func_005ffa10=?onAncestorChanged@Tool@RBX@@EAEXABUAncestorChanged@2@@Z
+func_007afc60=?getToneMap@EffectSettings@Render@RBX@@SAPAVToneMap@G3D@@XZ

@@ -1,0 +1,1 @@
+{"compiler_build": 21022, "compiler_variant": "default", "jobs": [{"source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NetworkReplicator2008StatsItem.cpp", "checks": [{"addr": "004b6890", "symbol": "?serializeValue@Replicator@Network@RBX@@"}], "ranges": [], "layouts": []}]}

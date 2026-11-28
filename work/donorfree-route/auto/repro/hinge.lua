@@ -1,0 +1,1 @@
+local p=Instance.new("Part") p.Anchored=true p.Position=Vector3.new(0,5,0) p.TopSurface=Enum.SurfaceType.Hinge p.Parent=workspace wait(3) local v=Instance.new("StringValue") v.Name="SURVIVED" v.Parent=workspace

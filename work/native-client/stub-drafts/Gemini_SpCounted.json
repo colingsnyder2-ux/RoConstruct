@@ -1,0 +1,90 @@
+{
+  "compiler_build": 21022,
+  "compiler_variant": "default",
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SpCounted_000.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SpCounted_001.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SpCounted_002.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SpCounted_003.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SpCounted_004.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SpCounted_005.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SpCounted_006.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SpCounted_007.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SpCounted_008.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SpCounted_009.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SpCounted_010.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SpCounted_011.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SpCounted_012.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-client\\stub-drafts\\Gemini_SpCounted_013.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+{
+"ca_00565bf0.obj": {
+"?showAnchoredParts@PartInstance@RBX@@2_NA": "dat_00975f8c"
+},
+"ca_00565c80.obj": {
+"?showAnchoredParts@PartInstance@RBX@@2_NA": "dat_009753d9"
+},
+"ca_00565cb0.obj": {
+"?showAnchoredParts@PartInstance@RBX@@2_NA": "dat_00976899"
+},
+"ca_00565ce0.obj": {
+"?showAnchoredParts@PartInstance@RBX@@2_NA": "dat_00974e61"
+},
+"ca_00565d70.obj": {
+"?showAnchoredParts@PartInstance@RBX@@2_NA": "dat_00974ac0"
+},
+"0062d9e0.obj": {
+"?n@?1???$doDeclare@$1?sIntValue@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0097c0b4"
+},
+"00612fb0.obj": {
+"__ehhandler$?lookup@@YA_NABUGuid@@PAI@Z": "dat_008886d8",
+"__ehhandler$?get@Variant@@QBE?AUValue@@XZ": "dat_008886d8"
+},
+"00563a50.obj": {
+"__ehhandler$?realloc@?$Array@VRenderSurface@Render@RBX@@@G3D@@AAEXH@Z": "dat_0088c481"
+},
+"0044a2c0.obj": {
+"__ehhandler$??0S@@QAE@XZ": "dat_0088828b",
+"__ehhandler$??1S@@QAE@XZ": "dat_0088828b"
+},
+"0044a2e0.obj": {
+"__ehhandler$??0S@@QAE@XZ": "dat_0088828b",
+"__ehhandler$??1S@@QAE@XZ": "dat_0088828b"
+},
+"0044a300.obj": {
+"__ehhandler$??0S@@QAE@XZ": "dat_0088828b",
+"__ehhandler$??1S@@QAE@XZ": "dat_0088828b"
+},
+"00461c10.obj": {
+"__ehhandler$??1S@@QAE@XZ": "dat_0088818b"
+},
+"005b5cb0.obj": {
+"__ehhandler$?makeObject@@YA?AUResult@@XZ": "dat_0088988b",
+"__ehhandler$??1EventData@@UAE@XZ": "dat_0088988b",
+"__ehhandler$??0Item@@QAE@PAPAXI@Z": "dat_0088988b"
+},
+"ca_0059aa40.obj": {
+"?event_OutfitChanged@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXXZ@Reflection@2@A": "dat_00976164"
+},
+"ca_0059d7f0.obj": {
+"?event_OutfitChanged@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXXZ@Reflection@2@A": "dat_00976164"
+},
+"ca_0059e3a0.obj": {
+"?event_OutfitChanged@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXXZ@Reflection@2@A": "dat_009761d4"
+},
+"0068c950.obj": {
+"__ehhandler$??$singleton@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "dat_008a48be",
+"__ehhandler$??$doDeclare@$1?sFallingDown@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "dat_008a3c8e",
+"__ehhandler$??$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "dat_008a40be"
+},
+"00406180.obj": {
+"??_B?1???$doDeclare@$1?sItem@Metadata@Reflection@RBX@@3PADA@Name@RBX@@CAABV01@XZ@51": "dat_0096dc84"
+},
+"004061e0.obj": {
+"??_B?1???$doDeclare@$1?sItem@Metadata@Reflection@RBX@@3PADA@Name@RBX@@CAABV01@XZ@51": "dat_0096dc84"
+},
+"00408090.obj": {
+"??_B?1???$doDeclare@$1?sItem@Metadata@Reflection@RBX@@3PADA@Name@RBX@@CAABV01@XZ@51": "dat_0096dc84"
+},
+"00600500.obj": {
+"??_B?1???$doDeclare@$1?sTool@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "dat_0097b86c",
+"?flag@?1???$declare@$1?sTool@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "dat_0097b870"
+},
+"0068c550.obj": {
+"__ehhandler$??0Material@@QAE@PAX@Z": "dat_008b8281"
+},
+"0068e7c0.obj": {
+"__ehhandler$?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "dat_008bbc8e",
+"__ehhandler$?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ": "dat_008bbc8e",
+"__ehhandler$??$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "dat_008bdc9e"
+},
+"ca_00448ed0.obj": {
+"?assertAction@Debugable@RBX@@2W4AssertAction@12@A": "dat_00930668"
+},
+"00496870.obj": {
+"?type@?1???$singleton@PAVModelInstance@RBX@@@RefType@Reflection@RBX@@SAABV123@XZ@4V123@A": "dat_00970274"
+},
+"ca_00565d40.obj": {
+"?assertAction@Debugable@RBX@@2W4AssertAction@12@A": "dat_0097ac54"
+},
+"00583f40.obj": {
+"?type@?1???$singleton@PAVModelInstance@RBX@@@RefType@Reflection@RBX@@SAABV123@XZ@4V123@A": "dat_00975588"
+},
+"0060a260.obj": {
+"?type@?1???$singleton@PAVModelInstance@RBX@@@RefType@Reflection@RBX@@SAABV123@XZ@4V123@A": "dat_0097b9f8"
+},
+"00406770.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096c2e4"
+},
+"00409a30.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096c344"
+},
+"00409b10.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096c354"
+},
+"00409b80.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096c35c"
+},
+"00409bf0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096c364"
+},
+"00409c60.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096c36c"
+},
+"00413730.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096cc08"
+},
+"00416f90.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096cef0"
+},
+"0041df00.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096d09c"
+},
+"0042ced0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096d11c"
+},
+"0045b240.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096de78"
+},
+"00489d10.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096fb00"
+},
+"00489d80.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096fb08"
+},
+"00489df0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096fb10"
+},
+"00489e60.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096fb18"
+},
+"00489ed0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096fb20"
+},
+"0048a020.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096fb38"
+},
+"0048a090.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0096fb40"
+},
+"004961d0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0097025c"
+},
+"00496240.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00970264"
+},
+"004a16f0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00970d00"
+},
+"004ab0f0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00971418"
+},
+"004ab160.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00971420"
+},
+"004ab1d0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00971428"
+},
+"004ab240.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00971430"
+},
+"004ab2b0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00971438"
+},
+"004ab320.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00971440"
+},
+"004ab390.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00971448"
+},
+"004ab400.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00971450"
+},
+"004b95d0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00971804"
+},
+"004d72b0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0097270c"
+},
+"00568580.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00974a78"
+},
+"00568df0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00974a84"
+},
+"005754e0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_009751e4"
+},
+"00575550.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_009751ec"
+},
+"0057d670.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00975390"
+},
+"0057d6e0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00975398"
+},
+"0059aa40.obj": {
+"?event_OutfitChanged@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXXZ@Reflection@2@A": "dat_00976164"
+},
+"0059d7f0.obj": {
+"?event_OutfitChanged@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXXZ@Reflection@2@A": "dat_00976164"
+},
+"0059e3a0.obj": {
+"?event_OutfitChanged@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXXZ@Reflection@2@A": "dat_009761d4"
+},
+"005a0fb0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00976a6c"
+},
+"005bf8e0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0097777c"
+},
+"005bf950.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_00977784"
+},
+"005bfdb0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_009777d4"
+},
+"005bfe90.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_009777e4"
+},
+"005c9b20.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_009797cc"
+},
+"005e2840.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0097aad0"
+},
+"005fd620.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0097b5d4"
+},
+"006161d0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0097beec"
+},
+"00643410.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0097d5c8"
+},
+"00643480.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0097d5d0"
+},
+"00666c50.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0097d994"
+},
+"006332d0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0097cb28"
+},
+"006333b0.obj": {
+"?n@?1???$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "dat_0097cb38"
+}
+}

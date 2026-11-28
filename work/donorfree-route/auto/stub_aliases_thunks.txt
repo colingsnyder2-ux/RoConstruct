@@ -1,0 +1,7 @@
+# stub=symbol of exact thunk drafts in work/native-client/stub-drafts/StubTh_*.cpp
+func_00420900=?f@Th_00420900@@QAEAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@PBD@Z
+func_00420910=?f@Th_00420910@@QAEAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@PBD@Z
+func_006d0e90=?f@Th_006d0e90@@QAEAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@PBD@Z
+func_006e9360=?f@Th_006e9360@@QAEXXZ
+func_00657c00=?f@Th_00657c00@@QAEXXZ
+# func_0078c560 is _fn_0078c560@4 (placeholder alias handled by quicktest)
