@@ -1,0 +1,290 @@
+{
+"dat_00976b7c": [
+"?propScriptsDisabled@ScriptContext@RBX@@2V?$BoundProp@_N$00@Reflection@2@A",
+0
+],
+"dat_00977178": [
+"?prop_dopplerscale@SoundService@Soundscape@RBX@@2V?$BoundProp@M$00@Reflection@3@A",
+0
+],
+"dat_0097d58c": [
+"?prop_Enabled@Sparkles@RBX@@2V?$BoundProp@_N$00@Reflection@2@A",
+0
+],
+"dat_0096d380": [
+"_prop_frameRateManager",
+0
+],
+"dat_0096d3c8": [
+"_prop_shadow",
+0
+],
+"dat_0096d3ec": [
+"_prop_antialiasing",
+0
+],
+"dat_0096d42c": [
+"_prop_fullscreenSize",
+0
+],
+"dat_0096d4b8": [
+"_prop_aggregateSize",
+0
+],
+"dat_0096d514": [
+"_prop_profileName",
+0
+],
+"dat_0096dd30": [
+"?colors@CRobloxControlColorSelector@@0V?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@A",
+12
+],
+"dat_0096dd34": [
+"?colors@CRobloxControlColorSelector@@0V?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@A",
+16
+],
+"dat_0096fd68": [
+"_prop_teamColor",
+0
+],
+"dat_0096fe70": [
+"_prop_Character",
+0
+],
+"dat_0096fe90": [
+"_prop_characterAppearance",
+0
+],
+"dat_0096fec8": [
+"_prop_neutral",
+0
+],
+"dat_00974aac": [
+"?mutex@GlobalSettings@RBX@@2Vrecursive_mutex@boost@@A",
+12
+],
+"dat_0097578c": [
+"_helloWorld",
+0
+],
+"dat_00976804": [
+"_desc_textureId",
+0
+],
+"dat_00976820": [
+"_desc_meshId",
+0
+],
+"dat_00976858": [
+"_desc_meshType",
+0
+],
+"dat_0097be9c": [
+"_prop_MaxVelocity",
+0
+],
+"dat_0097d3c4": [
+"?defaultValue@?$Value@VCoordinateFrame@G3D@@$1?sCFrameValue@RBX@@3PADA@RBX@@0VCoordinateFrame@G3D@@B",
+36
+],
+"dat_0097d3c8": [
+"?defaultValue@?$Value@VCoordinateFrame@G3D@@$1?sCFrameValue@RBX@@3PADA@RBX@@0VCoordinateFrame@G3D@@B",
+40
+],
+"dat_0097d3cc": [
+"?defaultValue@?$Value@VCoordinateFrame@G3D@@$1?sCFrameValue@RBX@@3PADA@RBX@@0VCoordinateFrame@G3D@@B",
+44
+],
+"dat_0097d4fc": [
+"_prop_MaxItems",
+0
+],
+"dat_00974ab4": [
+"?mutex@GlobalSettings@RBX@@2Vrecursive_mutex@boost@@A",
+20
+],
+"dat_00974ac4": [
+"?mutex@GlobalSettings@RBX@@2Vrecursive_mutex@boost@@A",
+36
+],
+"dat_0080b370": [
+"?s_schemes@?1??GetSchemes@CUrl@ATL@@AAEPBU_schemeinfo@23@XZ@4QBU423@B",
+24
+],
+"dat_0096f048": [
+"?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+4
+],
+"dat_0096f04c": [
+"?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+8
+],
+"dat_009739e4": [
+"?d@?1??dictionary@Name@RBX@@CAAAV?$map@HPAVName@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVName@RBX@@@std@@@4@@std@@XZ@4V45@A",
+0
+],
+"dat_00973a2c": [
+"?nullNameFlag@?1??getNullName@Name@RBX@@SAABV23@XZ@4JA",
+0
+],
+"dat_00973a30": [
+"?nullNameFlag@?1??getNullName@Name@RBX@@SAABV23@XZ@4JA",
+4
+],
+"dat_00974be4": [
+"?type@?1???$singleton@VContentId@RBX@@@Type@Reflection@RBX@@SAABV123@XZ@4V123@A",
+0
+],
+"dat_0097abc8": [
+"?s@?1??empty@SurfaceData@RBX@@SAABV23@XZ@4V23@A",
+4
+],
+"dat_0097abcc": [
+"?s@?1??empty@SurfaceData@RBX@@SAABV23@XZ@4V23@A",
+8
+],
+"dat_0096d35c": [
+"_prop_graphicsMode",
+0
+],
+"dat_00973a04": [
+"?$S2@?1??dictionary@Name@RBX@@CAAAV?$map@HPAVName@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVName@RBX@@@std@@@4@@std@@XZ@4IA",
+0
+],
+"dat_0096c3a0": [
+"?root@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV234@XZ@4V234@A",
+0
+],
+"dat_0096c460": [
+"??_B?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@51",
+0
+],
+"dat_00973bb8": [
+"?event_Stepped@RunService@RBX@@2V?$SignalDesc@VRunService@RBX@@$$A6AXMM@Z@Reflection@2@A",
+0
+],
+"dat_009760a8": [
+"?prop_shapeXml@PartInstance@RBX@@2V?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@2@B",
+0
+],
+"dat_00974ce0": [
+"?func_GetService@ServiceProvider@RBX@@0V?$BoundFuncDesc@VServiceProvider@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@2@A",
+0
+],
+"dat_00974d28": [
+"?func_service@ServiceProvider@RBX@@0V?$BoundFuncDesc@VServiceProvider@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@2@A",
+0
+],
+"dat_008187b8": [
+"?messageMap@?1??GetThisMessageMap@CRobloxReportView@@KGPBUAFX_MSGMAP@@XZ@4U3@B",
+8
+],
+"dat_00974e40": [
+"?c@?1??translucentBackdrop@GuiItem@RBX@@SAABVColor4@G3D@@XZ@4V45@B",
+0
+],
+"dat_00974e50": [
+"?$S3@?1??translucentBackdrop@GuiItem@RBX@@SAABVColor4@G3D@@XZ@4IA",
+0
+],
+"dat_0095a898": [
+"?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA",
+0
+],
+"dat_00974b6c": [
+"?type@?1???$singleton@V?$shared_ptr@VInstance@RBX@@@boost@@@Type@Reflection@RBX@@SAABV123@XZ@4V123@A",
+0
+],
+"dat_00974b7c": [
+"?$S3@?1???$singleton@V?$shared_ptr@VInstance@RBX@@@boost@@@Type@Reflection@RBX@@SAABV123@XZ@4IA",
+0
+],
+"dat_00974b94": [
+"?type@?1???$singleton@H@Type@Reflection@RBX@@SAABV123@XZ@4V123@A",
+0
+],
+"dat_00974ba4": [
+"?$S5@?1???$singleton@H@Type@Reflection@RBX@@SAABV123@XZ@4IA",
+0
+],
+"dat_00974ba8": [
+"?type@?1???$singleton@_N@Type@Reflection@RBX@@SAABV123@XZ@4V123@A",
+0
+],
+"dat_00974bb8": [
+"?$S6@?1???$singleton@_N@Type@Reflection@RBX@@SAABV123@XZ@4IA",
+0
+],
+"dat_00974bbc": [
+"?type@?1???$singleton@M@Type@Reflection@RBX@@SAABV123@XZ@4V123@A",
+0
+],
+"dat_00974bcc": [
+"?$S7@?1???$singleton@M@Type@Reflection@RBX@@SAABV123@XZ@4IA",
+0
+],
+"dat_00974bd0": [
+"?type@?1???$singleton@N@Type@Reflection@RBX@@SAABV123@XZ@4V123@A",
+0
+],
+"dat_00974be0": [
+"?$S8@?1???$singleton@N@Type@Reflection@RBX@@SAABV123@XZ@4IA",
+0
+],
+"dat_00974bf8": [
+"?type@?1???$singleton@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Type@Reflection@RBX@@SAABV123@XZ@4V123@A",
+0
+],
+"dat_00974c08": [
+"?$S10@?1???$singleton@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Type@Reflection@RBX@@SAABV123@XZ@4IA",
+0
+],
+"dat_00974c0c": [
+"?type@?1???$singleton@VVector3@G3D@@@Type@Reflection@RBX@@SAABV123@XZ@4V123@A",
+0
+],
+"dat_00974c1c": [
+"?$S11@?1???$singleton@VVector3@G3D@@@Type@Reflection@RBX@@SAABV123@XZ@4IA",
+0
+],
+"dat_00974c34": [
+"?type@?1???$singleton@VColor3@G3D@@@Type@Reflection@RBX@@SAABV123@XZ@4V123@A",
+0
+],
+"dat_00974c44": [
+"?$S13@?1???$singleton@VColor3@G3D@@@Type@Reflection@RBX@@SAABV123@XZ@4IA",
+0
+],
+"dat_00976b94": [
+"?propScriptsDisabled@ScriptContext@RBX@@2V?$BoundProp@_N$00@Reflection@2@A",
+24
+],
+"dat_0096d52c": [
+"_prop_profileName",
+24
+],
+"dat_0096fcec": [
+"?prop_SuperSafeChat@Player@Network@RBX@@2V?$BoundProp@_N$00@Reflection@3@A",
+24
+],
+"dat_0096fefc": [
+"?prop_Under13@Player@Network@RBX@@2V?$BoundProp@_N$00@Reflection@3@A",
+24
+],
+"dat_0097c008": [
+"?propPosition@Explosion@RBX@@2V?$BoundProp@VVector3@G3D@@$00@Reflection@2@A",
+24
+],
+"dat_0097c024": [
+"?propBlastPressure@Explosion@RBX@@2V?$BoundProp@M$00@Reflection@2@A",
+24
+],
+"dat_0097d39c": [
+"?desc_Value@?$Value@H$1?sIntValue@RBX@@3PADA@RBX@@2V?$BoundProp@H$00@Reflection@2@A",
+24
+],
+"dat_0096fc84": [
+"_prop_userId",
+0
+]
+}

@@ -11,7 +11,7 @@ namespace RBX {
 	const Reflection::EnumPropDescriptor<PartInstance, Part::PartType> PartInstance::prop_shapeXml("shape", category_Part_ds, &PartInstance::getPartType, &PartInstance::setPartTypeXml, Reflection::PropertyDescriptor::STREAMING);
 	const Reflection::PropDescriptor<PartInstance, bool> PartInstance::prop_CanCollide("CanCollide", "Behavior", &PartInstance::getCanCollide, &PartInstance::setCanCollide, Reflection::PropertyDescriptor::STANDARD);
 	const Reflection::PropDescriptor<PartInstance, bool> PartInstance::prop_Anchored("Anchored", "Behavior", &PartInstance::getAnchored, &PartInstance::setAnchored, Reflection::PropertyDescriptor::STANDARD);
-	const Reflection::PropDescriptor<PartInstance, G3D::Vector3> PartInstance::prop_Size("Size", category_Part_ds, &PartInstance::getPartSizeXml, &PartInstance::setPartSizeXml, Reflection::PropertyDescriptor::STREAMING);
+	const Reflection::PropDescriptor<PartInstance, G3D::Vector3> PartInstance::prop_Size("size", category_Part_ds, &PartInstance::getPartSizeXml, &PartInstance::setPartSizeXml, Reflection::PropertyDescriptor::STREAMING);
 	Reflection::SignalDesc<PartInstance, void(boost::shared_ptr<Instance>)> PartInstance::event_Touched("Touched", "part");
 	Reflection::SignalDesc<RunService, void(float, float)> RunService::event_Stepped("Stepped", "time", "step");
 	// Instance events (definitions as in AutoRecover_007f2b10 / 007f2b30 / 007f2bb0, which the link excludes as

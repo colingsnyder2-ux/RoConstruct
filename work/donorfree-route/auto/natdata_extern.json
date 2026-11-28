@@ -1,0 +1,725 @@
+{
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_20261124-015202-c0ad3e45_unit-1012_candidate.obj": [
+"?plus1mod3@?1???0Quat@G3D@@QAE@ABVMatrix3@2@@Z@4QBHB"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_112358_78517cce_unit_001_candidate_obj_f4c1402b.obj": [
+"??_B?3??resize@?$Array@TSDL_Event@@@G3D@@QAEXH_N@Z@53",
+"??_R0?AV?$Set@H@G3D@@@8",
+"??_R0?AV?$Table@H_N@G3D@@@8",
+"??_R0?AVWin32Window@G3D@@@8",
+"?g3dWindowClassName@?1??G3DWndClass@G3D@@YAPBDXZ@4PBDB",
+"?init@?1??createShareWindow@Win32Window@G3D@@CAXVSettings@GWindow@3@@Z@4_NA",
+"?minSize@?3??resize@?$Array@TSDL_Event@@@G3D@@QAEXH_N@Z@4HB",
+"_IID_IDirectInput8A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_135638_96b13132_unit_329_candidate_obj_2a591adf.obj": [
+"?$S1@?1??XTPShadowsManager@@YAPAVCXTPShadowsManager@@XZ@4IA",
+"??_7CShadowWnd@CXTPShadowsManager@@6BCWnd@@@",
+"??_7CShadowWnd@CXTPShadowsManager@@6BCXTPHookManagerHookAble@@@",
+"??_R0?AV?$CList@PAVCShadowWnd@CXTPShadowsManager@@PAV12@@@@8",
+"??_R0?AVCShadowList@CXTPShadowsManager@@@8",
+"??_R0?AVCShadowWnd@CXTPShadowsManager@@@8",
+"?s_managerInstance@?1??XTPShadowsManager@@YAPAVCXTPShadowsManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_135638_96b13132_unit_330_candidate_obj_589cf72c.obj": [
+"??_R0?AV?$CArray@PAUHKL__@@AAPAU1@@@@8",
+"??_R0?AV?$CArray@UtagACCEL@@AAU1@@@@8",
+"??_R0?AV?$CMap@IIV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@V12@@@@8",
+"??_R0?AVCKeyHelper@CXTPShortcutManager@@@8",
+"??_R0?AVCXTPShortcutManager@@@8",
+"?virtKeys@?1???0CKeyNameText@CXTPShortcutManager@@QAE@XZ@4QBU<unnamed-type-virtKeys>@?1???012@QAE@XZ@B"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_ns_20261126_031956_e5379b48_unit_013_candidate_obj_29f99c0a.obj": [
+"?luaO_nilobject_@@3Ulua_TValue@@B"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_135638_96b13132_unit_005_candidate_obj_32717369.obj": [
+"__sehtable$?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261124_084717_522c6d8e_unit_010_candidate_obj_4ece6213.obj": [
+"__TI4?AUbad_day_of_month@gregorian@boost@@",
+"_timedOutScripts"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_s_20261124_015202_c0ad3e45_unit_1026_candidate_obj_affd989c.obj": [
+"?$S1@?1??defaults@Settings@Texture@G3D@@SAABV234@XZ@4IA",
+"??_R0?AVTexture@G3D@@@8",
+"?__alwaysAssertIgnoreAlways__@?2??newGLTextureID@Texture@G3D@@SAIXZ@4_NA",
+"?_sizeOfAllTexturesInMemory@Texture@G3D@@0IA",
+"?param@?1??defaults@Settings@Texture@G3D@@SAABV234@XZ@4V234@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261124_015202_c0ad3e45_unit_102_candidate_obj_9866bbcd.obj": [
+"?$S9@?1???$singleton@VContentId@RBX@@@Type@Reflection@RBX@@SAABV123@XZ@4IA",
+"??_R0?AVType@Reflection@RBX@@@8"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261127_000421_cbaa8602_unit_001_candidate_obj_36185066.obj": [
+"?$S2@?1??zero@Extents@RBX@@SAABV23@XZ@4IA",
+"??_R0?AV?$Described@VModelInstance@RBX@@$1?sModel@2@3PADAV?$FactoryProduct@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PADA@2@@Reflection@RBX@@@8",
+"??_R0?AV?$DescribedCreatable@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PADA@RBX@@@8",
+"??_R0?AV?$FactoryProduct@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PADA@RBX@@@8",
+"??_R0?AV?$GetSetImpl@P8ModelInstance@RBX@@BEPAVPartInstance@2@XZP812@AEXPAV32@@Z@?$PropDescriptor@VModelInstance@RBX@@PAVPartInstance@2@@Reflection@RBX@@@8",
+"??_R0?AV?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@@8",
+"??_R0?AVGetSet@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@@8",
+"??_R0?AVIPrimaryPart@RBX@@@8",
+"??_R0?AVISelectable3d@RBX@@@8",
+"??_R0?AVPVInstance@RBX@@@8",
+"?e@?1??zero@Extents@RBX@@SAABV23@XZ@4V23@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_s_20261124_015202_c0ad3e45_unit_1528_candidate_obj_1c4f5851.obj": [
+"?className@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$0A@@Lua@RBX@@1PBDB",
+"?className@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@1PBDB",
+"?className@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@1PBDB",
+"_allEnumDescriptors"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_135638_96b13132_unit_210_candidate_obj_87f8dbfc.obj": [
+"?$S1@?1???0CXTPReportRecordItem@@QAE@XZ@4IA",
+"??_R0?AUXTP_REPORTRECORDITEM_ARGS@@@8",
+"??_R0?AUXTP_REPORTRECORDITEM_METRICS@@@8",
+"??_R0?AV?$CArray@PAVCXTPReportInplaceButton@@PAV1@@@@8",
+"??_R0?AV?$CArray@PAVCXTPReportRecordItemConstraint@@PAV1@@@@8",
+"??_R0?AV?$CXTPHeapObjectT@VCCmdTarget@@VCXTPReportDataAllocator@@@@@8",
+"??_R0?AVCRgn@@@8",
+"??_R0?AVCXTPReportInplaceButtons@@@8",
+"??_R0?AVCXTPReportRecordItem@@@8",
+"??_R0?AVCXTPReportRecordItemConstraints@@@8",
+"??_R0?AVCXTPReportRecordItemEditOptions@@@8",
+"?g_strFormatStringDef@?1???0CXTPReportRecordItem@@QAE@XZ@4V?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@B"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_135638_96b13132_unit_213_candidate_obj_bc4b2da2.obj": [
+"?$S1@?1??XTShadowsManager@@YAPAVCXTShadowsManager@@XZ@4IA",
+"??_R0?AV?$CList@PAVCXTShadowWnd@@PAV1@@@@8",
+"??_R0?AVCShadowList@CXTShadowsManager@@@8",
+"??_R0?AVCXTShadowHook@@@8",
+"??_R0?AVCXTShadowWnd@@@8",
+"??_R0?AVCXTWndHook@@@8",
+"?instance@?1??XTShadowsManager@@YAPAVCXTShadowsManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_135638_96b13132_unit_241_candidate_obj_1a6efee0.obj": [
+"?$S1@?1??Instance@CXTPColorManager@@CAAAV2@XZ@4IA",
+"??_R0?AVCXTPColorManager@@@8",
+"??_R0?AVCXTPPaintManagerColor@@@8",
+"??_R0?AVCXTPPaintManagerColorGradient@@@8",
+"?instance@?1??Instance@CXTPColorManager@@CAAAV2@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_135638_96b13132_unit_247_candidate_obj_51f77580.obj": [
+"?$S1@?1??GetRichEditContext@CXTPEdit@@IAEAAVCRichEditContext@2@XZ@4IA",
+"??_R0?AVCXTPControlComboBox@@@8",
+"??_R0?AVCXTPControlComboBoxAutoCompleteWnd@@@8",
+"??_R0?AVCXTPControlComboBoxEditCtrl@@@8",
+"??_R0?AVCXTPControlComboBoxList@@@8",
+"??_R0?AVCXTPControlComboBoxPopupBar@@@8",
+"??_R0?AVCXTPControlPopup@@@8",
+"??_R0?AVCXTPEdit@@@8",
+"??_R0?AVCXTPPopupBar@@@8",
+"?s_RichContext@?1??GetRichEditContext@CXTPEdit@@IAEAAVCRichEditContext@2@XZ@4V32@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_135638_96b13132_unit_282_candidate_obj_6e7d4b4b.obj": [
+"?$S1@?1??XTPHookManager@@YAPAVCXTPHookManager@@XZ@4IA",
+"??_R0?AV?$CArray@PAVCXTPHookManagerHookAble@@PAV1@@@@8",
+"??_R0?AV?$CList@PAVCXTPHookManagerHookAble@@PAV1@@@@8",
+"??_R0?AV?$CMap@PAUHWND__@@PAU1@PAXPAX@@@8",
+"??_R0?AVCHookSink@CXTPHookManager@@@8",
+"??_R0?AVCXTPKeyboardManager@@@8",
+"?_xtpKeyboardThreadState@CXTPKeyboardManager@@1V?$CThreadLocal@VCXTPKeyboardManager@@@@A",
+"?s_managerInstance@?1??XTPHookManager@@YAPAVCXTPHookManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_135638_96b13132_unit_284_candidate_obj_8a8efbb1.obj": [
+"?$S1@?1??XTPImageManager@@YAPAVCXTPImageManager@@XZ@4IA",
+"??_R0?AV?$CArray@PAUXTP_IMAGERESOURCE_INFO@@PAU1@@@@8",
+"??_R0?AV?$CArray@PAVCXTPImageManagerImageList@@PAV1@@@@8",
+"??_R0?AV?$CMap@IIPAVCXTPImageManagerIcon@@PAV1@@@@8",
+"??_R0?AV?$CMap@IIPAVCXTPImageManagerIconSet@@PAV1@@@@8",
+"??_R0?AV?$CMap@KKPAVCXTPImageManagerResource@@PAV1@@@@8",
+"??_R0?AVCBitmapDC@CXTPImageManagerResource@@@8",
+"??_R0?AVCDC@@@8",
+"??_R0?AVCXTPImageManager@@@8",
+"??_R0?AVCXTPImageManagerIcon@@@8",
+"??_R0?AVCXTPImageManagerIconSet@@@8",
+"?s_managerInstance@?1??XTPImageManager@@YAPAVCXTPImageManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_135638_96b13132_unit_286_candidate_obj_0fed554c.obj": [
+"??_R0?AV?$CArray@PAUHWND__@@PAU1@@@@8",
+"??_R0?AVCTrackArray@CXTPMouseManager@@@8",
+"??_R0?AVCTrustedArray@CXTPMouseManager@@@8",
+"??_R0?AVCXTPMouseManager@@@8",
+"?_xtpMouseThreadState@CXTPMouseManager@@0V?$CThreadLocal@VCXTPMouseManager@@@@A",
+"_ptMouse"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_135638_96b13132_unit_289_candidate_obj_bf2a14f3.obj": [
+"?$S1@?1??XTPOffice2007Images@@YAPAVCXTPOffice2007Images@@XZ@4IA",
+"??_R0?AVCXTPOffice2007Image@@@8",
+"?images@?1??XTPOffice2007Images@@YAPAVCXTPOffice2007Images@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_135638_96b13132_unit_313_candidate_obj_57718176.obj": [
+"?$S1@?1???0CXTPReportRecordItemNumber@@QAE@N@Z@4IA",
+"?$S2@?1???0CXTPReportRecordItemDateTime@@QAE@VCOleDateTime@ATL@@@Z@4IA",
+"??_R0?AVCXTPReportRecordItemDateTime@@@8",
+"??_R0?AVCXTPReportRecordItemNumber@@@8",
+"??_R0?AVCXTPReportRecordItemPreview@@@8",
+"??_R0?AVCXTPReportRecordItemText@@@8",
+"??_R0?AVCXTPReportRecordItemVariant@@@8",
+"?cstrDateFormatDefault@?1???0CXTPReportRecordItemDateTime@@QAE@VCOleDateTime@ATL@@@Z@4V?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@3@B",
+"?cstrNumberFormatDefault@?1???0CXTPReportRecordItemNumber@@QAE@N@Z@4V?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@B"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_135638_96b13132_unit_350_candidate_obj_ede6d2d7.obj": [
+"?$S1@?4??GetSharedData@CXTPWinThemeWrapper@@ABEAAVCSharedData@2@XZ@4IA",
+"?$S2@?1??GetSharedData@CXTPWinDwmWrapper@@ABEAAVCSharedData@2@XZ@4IA",
+"??_R0?AVCXTPWinThemeWrapper@@@8",
+"?sData@?1??GetSharedData@CXTPWinDwmWrapper@@ABEAAVCSharedData@2@XZ@4V32@A",
+"?sDataSystem@?4??GetSharedData@CXTPWinThemeWrapper@@ABEAAVCSharedData@2@XZ@4V32@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_121844_be87eb00_unit_015_candidate_obj_6bdf8e92.obj": [
+"?__alwaysAssertIgnoreAlways__@?6??setVARAreaFromVAR@RenderDevice@G3D@@AAEXABVVAR@3@@Z@4_NA",
+"?m_current@GWindow@G3D@@0PBV12@B",
+"?spec@?4??setSpecularCoefficient@RenderDevice@G3D@@QAEXABVColor3@3@@Z@4PAMA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_20261124-015202-c0ad3e45_unit-1022_candidate.obj": [
+"?__alwaysAssertIgnoreAlways__@?2??tick@Stopwatch@G3D@@QAEXXZ@4_NA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_20261124-015202-c0ad3e45_unit-1035_candidate.obj": [
+"?$S1@?1??zero@Vector2@G3D@@SAABV23@XZ@4IA",
+"?$S4@?1??inf@Vector2@G3D@@SAABV23@XZ@4IA",
+"?v@?1??inf@Vector2@G3D@@SAABV23@XZ@4V23@A",
+"?v@?1??zero@Vector2@G3D@@SAABV23@XZ@4V23@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_20261124-015202-c0ad3e45_unit-1135_candidate.obj": [
+"?$S1@?4??getLocalCachePath@RBX@@YA?AV?$CPathT@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@ATL@@_N@Z@4IA",
+"?cached@?6??getLocalCachePath@RBX@@YA?AV?$CPathT@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@ATL@@_N@Z@4V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_20261124-015202-c0ad3e45_unit-164_candidate.obj": [
+"?$S1@?1??maxMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4IA",
+"?$S2@?1??minMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4IA",
+"?force@?1??maxMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4V45@A",
+"?force@?1??minMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4V45@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_20261124-015202-c0ad3e45_unit-1659_candidate.obj": [
+"?peerToPeerMode@NetworkID@@2_NA",
+"?str@?1??ToString@SystemAddress@@QBEPAD_N@Z@4PADA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_20261124-015202-c0ad3e45_unit-1835_candidate.obj": [
+"?$S1@?4??GetTimeNS@RakNet@@YA_JXZ@4IA",
+"?lastQueryVal@?4??GetTimeNS@RakNet@@YA_JXZ@4_JA",
+"?lastTickCountVal@?4??GetTimeNS@RakNet@@YA_JXZ@4IA",
+"_initialized",
+"_processAffinityMask",
+"_queryCount",
+"_systemAffinityMask",
+"_threadHandle",
+"_yo"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_20261124-015202-c0ad3e45_unit-1836_candidate.obj": [
+"?ipList@?1??GetLocalIP@RakPeer@@UAEPBDI@Z@4PAY0BA@DA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_20261125-135638-96b13132_unit-332_candidate.obj": [
+"?$S1@?1??XTPSoundManager@@YAPAVCXTPSoundManager@@XZ@4IA",
+"?s_managerInstance@?1??XTPSoundManager@@YAPAVCXTPSoundManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_112810_49c936a1_unit_006_candidate_obj_3a8779fb.obj": [
+"?$S2@?1??dictionary@Name@RBX@@CAAAV?$map@HPAVName@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVName@RBX@@@std@@@4@@std@@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_20261125-105236-21154f79_unit-000_candidate.obj": [
+"_worldBodyFlag"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_20261124-015202-c0ad3e45_unit-959_candidate.obj": [
+"?$S10@?1??gray@Color3@G3D@@SAABV23@XZ@4IA",
+"?$S3@?1??blue@Color3@G3D@@SAABV23@XZ@4IA",
+"?$S4@?1??purple@Color3@G3D@@SAABV23@XZ@4IA",
+"?$S6@?1??yellow@Color3@G3D@@SAABV23@XZ@4IA",
+"?$S8@?1??orange@Color3@G3D@@SAABV23@XZ@4IA",
+"?c@?1??blue@Color3@G3D@@SAABV23@XZ@4V23@A",
+"?c@?1??gray@Color3@G3D@@SAABV23@XZ@4V23@A",
+"?c@?1??orange@Color3@G3D@@SAABV23@XZ@4V23@A",
+"?c@?1??purple@Color3@G3D@@SAABV23@XZ@4V23@A",
+"?c@?1??yellow@Color3@G3D@@SAABV23@XZ@4V23@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_20261124-015202-c0ad3e45_unit-961_candidate.obj": [
+"?$S1@?1??zero@Color4@G3D@@SAABV23@XZ@4IA",
+"?c@?1??zero@Color4@G3D@@SAABV23@XZ@4V23@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_20261124-015202-c0ad3e45_unit-999_candidate.obj": [
+"?$S1@?1??zero@Matrix3@G3D@@SAABV23@XZ@4IA",
+"?$S2@?1??identity@Matrix3@G3D@@SAABV23@XZ@4IA",
+"?m@?1??identity@Matrix3@G3D@@SAABV23@XZ@4V23@A",
+"?m@?1??zero@Matrix3@G3D@@SAABV23@XZ@4V23@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261127_000421_cbaa8602_unit_001_candidate_obj_36185066.obj": [
+"?e@?1??zero@Extents@RBX@@SAABV23@XZ@4V23@A",
+"?$S2@?1??zero@Extents@RBX@@SAABV23@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_s_20261124_015202_c0ad3e45_unit_1072_candidate_obj_385199a7.obj": [
+"?$S3@?1??translucentBackdrop@GuiItem@RBX@@SAABVColor4@G3D@@XZ@4IA",
+"??_R0?AVGuiItem@RBX@@@8",
+"??_R0?AVGuiTarget@RBX@@@8",
+"?c@?1??translucentBackdrop@GuiItem@RBX@@SAABVColor4@G3D@@XZ@4V45@B"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_135638_96b13132_unit_247_candidate_obj_13aa777b.obj": [
+"?$S1@?1??GetRichEditContext@CXTPEdit@@IAEAAVCRichEditContext@2@XZ@4IA",
+"??_R0?AVCXTPControlComboBox@@@8",
+"??_R0?AVCXTPControlComboBoxAutoCompleteWnd@@@8",
+"??_R0?AVCXTPControlComboBoxEditCtrl@@@8",
+"??_R0?AVCXTPControlComboBoxList@@@8",
+"??_R0?AVCXTPControlComboBoxPopupBar@@@8",
+"??_R0?AVCXTPControlPopup@@@8",
+"??_R0?AVCXTPEdit@@@8",
+"??_R0?AVCXTPPopupBar@@@8",
+"?s_RichContext@?1??GetRichEditContext@CXTPEdit@@IAEAAVCRichEditContext@2@XZ@4V32@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_135638_96b13132_unit_329_candidate_obj_de25cd44.obj": [
+"?$S1@?1??XTPShadowsManager@@YAPAVCXTPShadowsManager@@XZ@4IA",
+"??_R0?AV?$CList@PAVCShadowWnd@CXTPShadowsManager@@PAV12@@@@8",
+"??_R0?AVCShadowList@CXTPShadowsManager@@@8",
+"??_R0?AVCShadowWnd@CXTPShadowsManager@@@8",
+"?s_managerInstance@?1??XTPShadowsManager@@YAPAVCXTPShadowsManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261124-015202-c0ad3e45\\unit-164\\candidate.obj": [
+"?force@?1??maxMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4V45@A",
+"?$S1@?1??maxMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4IA",
+"?force@?1??minMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4V45@A",
+"?$S2@?1??minMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261124-015202-c0ad3e45\\unit-1690\\candidate.obj": [
+"?$S1@?1??maxMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4IA",
+"?$S2@?1??minMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_135638_96b13132_unit_247_candidate_obj_51f77580.obj": [
+"?s_RichContext@?1??GetRichEditContext@CXTPEdit@@IAEAAVCRichEditContext@2@XZ@4V32@A",
+"?$S1@?1??GetRichEditContext@CXTPEdit@@IAEAAVCRichEditContext@2@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_135638_96b13132_unit_329_candidate_obj_2a591adf.obj": [
+"?s_managerInstance@?1??XTPShadowsManager@@YAPAVCXTPShadowsManager@@XZ@4V2@A",
+"?$S1@?1??XTPShadowsManager@@YAPAVCXTPShadowsManager@@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\ns_20261126_031956_e5379b48_unit_013_candidate_obj_29f99c0a.obj": [
+"?log_2@?1??luaO_log2@@YAHI@Z@4QBEB"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_ns_20261126_031956_e5379b48_unit_013_candidate_obj_3a1832e1.obj": [
+"?luaO_nilobject_@@3Ulua_TValue@@B"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\ns_20261126_031956_e5379b48_unit_013_candidate_obj_3a1832e1.obj": [
+"?log_2@?1??luaO_log2@@YAHI@Z@4QBEB"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261124-015202-c0ad3e45\\unit-1551\\candidate.obj": [
+"?log_2@?1??luaO_log2@@YAHI@Z@4QBEB"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261124-015202-c0ad3e45\\unit-1836\\candidate.obj": [
+"?ipList@?1??GetLocalIP@RakPeer@@UAEPBDI@Z@4PAY0BA@DA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_120403_33529394_unit_000_candidate_obj_a7c360a8.obj": [
+"??_R0?AV?$GetSetImpl@P8CRenderSettings@@BEHXZP81@AEXH@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@@8",
+"??_R0?AV?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@@8",
+"??_R0?AV?$PropDescriptor@VCRenderSettings@@VVector2int16@G3D@@@Reflection@RBX@@@8",
+"_prop_graphicsMode"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_135638_96b13132_unit_330_candidate_obj_589cf72c.obj": [
+"?virtKeys@?1???0CKeyNameText@CXTPShortcutManager@@QAE@XZ@4QBU<unnamed-type-virtKeys>@?1???012@QAE@XZ@B"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_135638_96b13132_unit_005_candidate_obj_32717369.obj": [
+"__sehtable$?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_135638_96b13132_unit_210_candidate_obj_87f8dbfc.obj": [
+"?g_strFormatStringDef@?1???0CXTPReportRecordItem@@QAE@XZ@4V?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@B",
+"?$S1@?1???0CXTPReportRecordItem@@QAE@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_135638_96b13132_unit_213_candidate_obj_bc4b2da2.obj": [
+"?instance@?1??XTShadowsManager@@YAPAVCXTShadowsManager@@XZ@4V2@A",
+"?$S1@?1??XTShadowsManager@@YAPAVCXTShadowsManager@@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_135638_96b13132_unit_241_candidate_obj_1a6efee0.obj": [
+"?instance@?1??Instance@CXTPColorManager@@CAAAV2@XZ@4V2@A",
+"?$S1@?1??Instance@CXTPColorManager@@CAAAV2@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_135638_96b13132_unit_247_candidate_obj_13aa777b.obj": [
+"?s_RichContext@?1??GetRichEditContext@CXTPEdit@@IAEAAVCRichEditContext@2@XZ@4V32@A",
+"?$S1@?1??GetRichEditContext@CXTPEdit@@IAEAAVCRichEditContext@2@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_135638_96b13132_unit_282_candidate_obj_6e7d4b4b.obj": [
+"?s_managerInstance@?1??XTPHookManager@@YAPAVCXTPHookManager@@XZ@4V2@A",
+"?$S1@?1??XTPHookManager@@YAPAVCXTPHookManager@@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_135638_96b13132_unit_284_candidate_obj_8a8efbb1.obj": [
+"?s_managerInstance@?1??XTPImageManager@@YAPAVCXTPImageManager@@XZ@4V2@A",
+"?$S1@?1??XTPImageManager@@YAPAVCXTPImageManager@@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_135638_96b13132_unit_286_candidate_obj_0fed554c.obj": [
+"_ptMouse"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_135638_96b13132_unit_289_candidate_obj_bf2a14f3.obj": [
+"?images@?1??XTPOffice2007Images@@YAPAVCXTPOffice2007Images@@XZ@4V2@A",
+"?$S1@?1??XTPOffice2007Images@@YAPAVCXTPOffice2007Images@@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_135638_96b13132_unit_313_candidate_obj_57718176.obj": [
+"?cstrNumberFormatDefault@?1???0CXTPReportRecordItemNumber@@QAE@N@Z@4V?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@B",
+"?$S1@?1???0CXTPReportRecordItemNumber@@QAE@N@Z@4IA",
+"?cstrDateFormatDefault@?1???0CXTPReportRecordItemDateTime@@QAE@VCOleDateTime@ATL@@@Z@4V?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@3@B",
+"?$S2@?1???0CXTPReportRecordItemDateTime@@QAE@VCOleDateTime@ATL@@@Z@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_135638_96b13132_unit_329_candidate_obj_de25cd44.obj": [
+"?s_managerInstance@?1??XTPShadowsManager@@YAPAVCXTPShadowsManager@@XZ@4V2@A",
+"?$S1@?1??XTPShadowsManager@@YAPAVCXTPShadowsManager@@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261125-135638-96b13132\\unit-332\\candidate.obj": [
+"?s_managerInstance@?1??XTPSoundManager@@YAPAVCXTPSoundManager@@XZ@4V2@A",
+"?$S1@?1??XTPSoundManager@@YAPAVCXTPSoundManager@@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_135638_96b13132_unit_350_candidate_obj_ede6d2d7.obj": [
+"?sDataSystem@?4??GetSharedData@CXTPWinThemeWrapper@@ABEAAVCSharedData@2@XZ@4V32@A",
+"?$S1@?4??GetSharedData@CXTPWinThemeWrapper@@ABEAAVCSharedData@2@XZ@4IA",
+"?sData@?1??GetSharedData@CXTPWinDwmWrapper@@ABEAAVCSharedData@2@XZ@4V32@A",
+"?$S2@?1??GetSharedData@CXTPWinDwmWrapper@@ABEAAVCSharedData@2@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_113252_ba6cdb81_unit_100_candidate_obj_589cf72c.obj": [
+"??_R0?AV?$CArray@PAUHKL__@@AAPAU1@@@@8",
+"??_R0?AV?$CArray@UtagACCEL@@AAU1@@@@8",
+"??_R0?AV?$CMap@IIV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@V12@@@@8",
+"??_R0?AVCKeyHelper@CXTPShortcutManager@@@8",
+"??_R0?AVCXTPShortcutManager@@@8",
+"?virtKeys@?1???0CKeyNameText@CXTPShortcutManager@@QAE@XZ@4QBU<unnamed-type-virtKeys>@?1???012@QAE@XZ@B"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261124_015202_c0ad3e45_unit_042_candidate_obj_32717369.obj": [
+"__sehtable$?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_111523_e19c3e0c_unit_004_candidate_obj_87f8dbfc.obj": [
+"?$S1@?1???0CXTPReportRecordItem@@QAE@XZ@4IA",
+"??_R0?AUXTP_REPORTRECORDITEM_ARGS@@@8",
+"??_R0?AUXTP_REPORTRECORDITEM_METRICS@@@8",
+"??_R0?AV?$CArray@PAVCXTPReportInplaceButton@@PAV1@@@@8",
+"??_R0?AV?$CArray@PAVCXTPReportRecordItemConstraint@@PAV1@@@@8",
+"??_R0?AV?$CXTPHeapObjectT@VCCmdTarget@@VCXTPReportDataAllocator@@@@@8",
+"??_R0?AVCRgn@@@8",
+"??_R0?AVCXTPReportInplaceButtons@@@8",
+"??_R0?AVCXTPReportRecordItem@@@8",
+"??_R0?AVCXTPReportRecordItemConstraints@@@8",
+"??_R0?AVCXTPReportRecordItemEditOptions@@@8",
+"?g_strFormatStringDef@?1???0CXTPReportRecordItem@@QAE@XZ@4V?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@B"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_111523_e19c3e0c_unit_007_candidate_obj_bc4b2da2.obj": [
+"?$S1@?1??XTShadowsManager@@YAPAVCXTShadowsManager@@XZ@4IA",
+"??_R0?AV?$CList@PAVCXTShadowWnd@@PAV1@@@@8",
+"??_R0?AVCShadowList@CXTShadowsManager@@@8",
+"??_R0?AVCXTShadowHook@@@8",
+"??_R0?AVCXTShadowWnd@@@8",
+"??_R0?AVCXTWndHook@@@8",
+"?instance@?1??XTShadowsManager@@YAPAVCXTShadowsManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_105718_3abab509_unit_000_candidate_obj_1a6efee0.obj": [
+"?$S1@?1??Instance@CXTPColorManager@@CAAAV2@XZ@4IA",
+"??_R0?AVCXTPColorManager@@@8",
+"??_R0?AVCXTPPaintManagerColor@@@8",
+"??_R0?AVCXTPPaintManagerColorGradient@@@8",
+"?instance@?1??Instance@CXTPColorManager@@CAAAV2@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_113252_ba6cdb81_unit_018_candidate_obj_13aa777b.obj": [
+"??_R0?AVCXTPEdit@@@8",
+"??_R0?AVCXTPControlComboBoxAutoCompleteWnd@@@8",
+"??_R0?AVCXTPControlComboBox@@@8",
+"??_R0?AVCXTPControlPopup@@@8",
+"??_R0?AVCXTPControlComboBoxEditCtrl@@@8",
+"??_R0?AVCXTPControlComboBoxPopupBar@@@8",
+"??_R0?AVCXTPPopupBar@@@8",
+"??_R0?AVCXTPControlComboBoxList@@@8",
+"?s_RichContext@?1??GetRichEditContext@CXTPEdit@@IAEAAVCRichEditContext@2@XZ@4V32@A",
+"?$S1@?1??GetRichEditContext@CXTPEdit@@IAEAAVCRichEditContext@2@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_113252_ba6cdb81_unit_052_candidate_obj_6e7d4b4b.obj": [
+"?$S1@?1??XTPHookManager@@YAPAVCXTPHookManager@@XZ@4IA",
+"??_R0?AV?$CArray@PAVCXTPHookManagerHookAble@@PAV1@@@@8",
+"??_R0?AV?$CList@PAVCXTPHookManagerHookAble@@PAV1@@@@8",
+"??_R0?AV?$CMap@PAUHWND__@@PAU1@PAXPAX@@@8",
+"??_R0?AVCHookSink@CXTPHookManager@@@8",
+"??_R0?AVCXTPKeyboardManager@@@8",
+"?_xtpKeyboardThreadState@CXTPKeyboardManager@@1V?$CThreadLocal@VCXTPKeyboardManager@@@@A",
+"?s_managerInstance@?1??XTPHookManager@@YAPAVCXTPHookManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_105846_80947e53_unit_001_candidate_obj_8a8efbb1.obj": [
+"?$S1@?1??XTPImageManager@@YAPAVCXTPImageManager@@XZ@4IA",
+"??_R0?AV?$CArray@PAUXTP_IMAGERESOURCE_INFO@@PAU1@@@@8",
+"??_R0?AV?$CArray@PAVCXTPImageManagerImageList@@PAV1@@@@8",
+"??_R0?AV?$CMap@IIPAVCXTPImageManagerIcon@@PAV1@@@@8",
+"??_R0?AV?$CMap@IIPAVCXTPImageManagerIconSet@@PAV1@@@@8",
+"??_R0?AV?$CMap@KKPAVCXTPImageManagerResource@@PAV1@@@@8",
+"??_R0?AVCBitmapDC@CXTPImageManagerResource@@@8",
+"??_R0?AVCDC@@@8",
+"??_R0?AVCXTPImageManager@@@8",
+"??_R0?AVCXTPImageManagerIcon@@@8",
+"??_R0?AVCXTPImageManagerIconSet@@@8",
+"?s_managerInstance@?1??XTPImageManager@@YAPAVCXTPImageManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_113252_ba6cdb81_unit_056_candidate_obj_0fed554c.obj": [
+"??_R0?AV?$CArray@PAUHWND__@@PAU1@@@@8",
+"??_R0?AVCTrackArray@CXTPMouseManager@@@8",
+"??_R0?AVCTrustedArray@CXTPMouseManager@@@8",
+"??_R0?AVCXTPMouseManager@@@8",
+"?_xtpMouseThreadState@CXTPMouseManager@@0V?$CThreadLocal@VCXTPMouseManager@@@@A",
+"_ptMouse"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_113252_ba6cdb81_unit_059_candidate_obj_bf2a14f3.obj": [
+"??_R0?AVCXTPOffice2007Image@@@8",
+"?images@?1??XTPOffice2007Images@@YAPAVCXTPOffice2007Images@@XZ@4V2@A",
+"?$S1@?1??XTPOffice2007Images@@YAPAVCXTPOffice2007Images@@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_113252_ba6cdb81_unit_083_candidate_obj_57718176.obj": [
+"?$S1@?1???0CXTPReportRecordItemNumber@@QAE@N@Z@4IA",
+"?$S2@?1???0CXTPReportRecordItemDateTime@@QAE@VCOleDateTime@ATL@@@Z@4IA",
+"??_R0?AVCXTPReportRecordItemDateTime@@@8",
+"??_R0?AVCXTPReportRecordItemNumber@@@8",
+"??_R0?AVCXTPReportRecordItemPreview@@@8",
+"??_R0?AVCXTPReportRecordItemText@@@8",
+"??_R0?AVCXTPReportRecordItemVariant@@@8",
+"?cstrDateFormatDefault@?1???0CXTPReportRecordItemDateTime@@QAE@VCOleDateTime@ATL@@@Z@4V?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@3@B",
+"?cstrNumberFormatDefault@?1???0CXTPReportRecordItemNumber@@QAE@N@Z@4V?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@B"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_113252_ba6cdb81_unit_099_candidate_obj_de25cd44.obj": [
+"??_R0?AVCShadowWnd@CXTPShadowsManager@@@8",
+"??_R0?AV?$CList@PAVCShadowWnd@CXTPShadowsManager@@PAV12@@@@8",
+"??_R0?AVCShadowList@CXTPShadowsManager@@@8",
+"?s_managerInstance@?1??XTPShadowsManager@@YAPAVCXTPShadowsManager@@XZ@4V2@A",
+"?$S1@?1??XTPShadowsManager@@YAPAVCXTPShadowsManager@@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261125_113252_ba6cdb81_unit_120_candidate_obj_ede6d2d7.obj": [
+"?$S1@?4??GetSharedData@CXTPWinThemeWrapper@@ABEAAVCSharedData@2@XZ@4IA",
+"?$S2@?1??GetSharedData@CXTPWinDwmWrapper@@ABEAAVCSharedData@2@XZ@4IA",
+"??_R0?AVCXTPWinThemeWrapper@@@8",
+"?sData@?1??GetSharedData@CXTPWinDwmWrapper@@ABEAAVCSharedData@2@XZ@4V32@A",
+"?sDataSystem@?4??GetSharedData@CXTPWinThemeWrapper@@ABEAAVCSharedData@2@XZ@4V32@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_20261125-113252-ba6cdb81_unit-102_candidate.obj": [
+"?$S1@?1??XTPSoundManager@@YAPAVCXTPSoundManager@@XZ@4IA",
+"?s_managerInstance@?1??XTPSoundManager@@YAPAVCXTPSoundManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_113252_ba6cdb81_unit_100_candidate_obj_589cf72c.obj": [
+"?virtKeys@?1???0CKeyNameText@CXTPShortcutManager@@QAE@XZ@4QBU<unnamed-type-virtKeys>@?1???012@QAE@XZ@B"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_121844_be87eb00_unit_015_candidate_obj_6bdf8e92.obj": [
+"?__alwaysAssertIgnoreAlways__@?6??setVARAreaFromVAR@RenderDevice@G3D@@AAEXABVVAR@3@@Z@4_NA",
+"?spec@?4??setSpecularCoefficient@RenderDevice@G3D@@QAEXABVColor3@3@@Z@4PAMA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_112358_78517cce_unit_001_candidate_obj_f4c1402b.obj": [
+"?g3dWindowClassName@?1??G3DWndClass@G3D@@YAPBDXZ@4PBDB",
+"?init@?1??createShareWindow@Win32Window@G3D@@CAXVSettings@GWindow@3@@Z@4_NA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_111523_e19c3e0c_unit_004_candidate_obj_87f8dbfc.obj": [
+"?$S1@?1???0CXTPReportRecordItem@@QAE@XZ@4IA",
+"?g_strFormatStringDef@?1???0CXTPReportRecordItem@@QAE@XZ@4V?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@B"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_111523_e19c3e0c_unit_007_candidate_obj_bc4b2da2.obj": [
+"?$S1@?1??XTShadowsManager@@YAPAVCXTShadowsManager@@XZ@4IA",
+"?instance@?1??XTShadowsManager@@YAPAVCXTShadowsManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_105718_3abab509_unit_000_candidate_obj_1a6efee0.obj": [
+"?$S1@?1??Instance@CXTPColorManager@@CAAAV2@XZ@4IA",
+"?instance@?1??Instance@CXTPColorManager@@CAAAV2@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_113252_ba6cdb81_unit_018_candidate_obj_13aa777b.obj": [
+"?$S1@?1??GetRichEditContext@CXTPEdit@@IAEAAVCRichEditContext@2@XZ@4IA",
+"?s_RichContext@?1??GetRichEditContext@CXTPEdit@@IAEAAVCRichEditContext@2@XZ@4V32@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_113252_ba6cdb81_unit_052_candidate_obj_6e7d4b4b.obj": [
+"?$S1@?1??XTPHookManager@@YAPAVCXTPHookManager@@XZ@4IA",
+"?s_managerInstance@?1??XTPHookManager@@YAPAVCXTPHookManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_105846_80947e53_unit_001_candidate_obj_8a8efbb1.obj": [
+"?$S1@?1??XTPImageManager@@YAPAVCXTPImageManager@@XZ@4IA",
+"?s_managerInstance@?1??XTPImageManager@@YAPAVCXTPImageManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_113252_ba6cdb81_unit_056_candidate_obj_0fed554c.obj": [
+"_ptMouse"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_113252_ba6cdb81_unit_059_candidate_obj_bf2a14f3.obj": [
+"?$S1@?1??XTPOffice2007Images@@YAPAVCXTPOffice2007Images@@XZ@4IA",
+"?images@?1??XTPOffice2007Images@@YAPAVCXTPOffice2007Images@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_113252_ba6cdb81_unit_083_candidate_obj_57718176.obj": [
+"?$S2@?1???0CXTPReportRecordItemDateTime@@QAE@VCOleDateTime@ATL@@@Z@4IA",
+"?cstrDateFormatDefault@?1???0CXTPReportRecordItemDateTime@@QAE@VCOleDateTime@ATL@@@Z@4V?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@3@B"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_113252_ba6cdb81_unit_099_candidate_obj_de25cd44.obj": [
+"?$S1@?1??XTPShadowsManager@@YAPAVCXTPShadowsManager@@XZ@4IA",
+"?s_managerInstance@?1??XTPShadowsManager@@YAPAVCXTPShadowsManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261125-113252-ba6cdb81\\unit-102\\candidate.obj": [
+"?s_managerInstance@?1??XTPSoundManager@@YAPAVCXTPSoundManager@@XZ@4V2@A",
+"?$S1@?1??XTPSoundManager@@YAPAVCXTPSoundManager@@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_113252_ba6cdb81_unit_120_candidate_obj_ede6d2d7.obj": [
+"?$S1@?4??GetSharedData@CXTPWinThemeWrapper@@ABEAAVCSharedData@2@XZ@4IA",
+"?$S2@?1??GetSharedData@CXTPWinDwmWrapper@@ABEAAVCSharedData@2@XZ@4IA",
+"?sData@?1??GetSharedData@CXTPWinDwmWrapper@@ABEAAVCSharedData@2@XZ@4V32@A",
+"?sDataSystem@?4??GetSharedData@CXTPWinThemeWrapper@@ABEAAVCSharedData@2@XZ@4V32@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_112810_49c936a1_unit_006_candidate_obj_3a8779fb.obj": [
+"?$S2@?1??dictionary@Name@RBX@@CAAAV?$map@HPAVName@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVName@RBX@@@std@@@4@@std@@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261125-105236-21154f79\\unit-000\\candidate.obj": [
+"_worldBodyFlag"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261125_120403_33529394_unit_000_candidate_obj_a7c360a8.obj": [
+"_prop_graphicsMode"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_s_20261124_015202_c0ad3e45_unit_1042_candidate_obj_f4c1402b.obj": [
+"??_B?3??resize@?$Array@TSDL_Event@@@G3D@@QAEXH_N@Z@53",
+"??_R0?AV?$Set@H@G3D@@@8",
+"??_R0?AV?$Table@H_N@G3D@@@8",
+"??_R0?AVWin32Window@G3D@@@8",
+"?g3dWindowClassName@?1??G3DWndClass@G3D@@YAPBDXZ@4PBDB",
+"?init@?1??createShareWindow@Win32Window@G3D@@CAXVSettings@GWindow@3@@Z@4_NA",
+"?minSize@?3??resize@?$Array@TSDL_Event@@@G3D@@QAEXH_N@Z@4HB",
+"_IID_IDirectInput8A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_s_20261124_015202_c0ad3e45_unit_2130_candidate_obj_bc4b2da2.obj": [
+"?$S1@?1??XTShadowsManager@@YAPAVCXTShadowsManager@@XZ@4IA",
+"??_R0?AV?$CList@PAVCXTShadowWnd@@PAV1@@@@8",
+"??_R0?AVCShadowList@CXTShadowsManager@@@8",
+"??_R0?AVCXTShadowHook@@@8",
+"??_R0?AVCXTShadowWnd@@@8",
+"??_R0?AVCXTWndHook@@@8",
+"?instance@?1??XTShadowsManager@@YAPAVCXTShadowsManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_s_20261124_015202_c0ad3e45_unit_2566_candidate_obj_6e7d4b4b.obj": [
+"?$S1@?1??XTPHookManager@@YAPAVCXTPHookManager@@XZ@4IA",
+"??_R0?AV?$CArray@PAVCXTPHookManagerHookAble@@PAV1@@@@8",
+"??_R0?AV?$CList@PAVCXTPHookManagerHookAble@@PAV1@@@@8",
+"??_R0?AV?$CMap@PAUHWND__@@PAU1@PAXPAX@@@8",
+"??_R0?AVCHookSink@CXTPHookManager@@@8",
+"??_R0?AVCXTPKeyboardManager@@@8",
+"?s_managerInstance@?1??XTPHookManager@@YAPAVCXTPHookManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_s_20261124_015202_c0ad3e45_unit_2570_candidate_obj_0fed554c.obj": [
+"??_R0?AV?$CArray@PAUHWND__@@PAU1@@@@8",
+"??_R0?AVCTrackArray@CXTPMouseManager@@@8",
+"??_R0?AVCTrustedArray@CXTPMouseManager@@@8",
+"??_R0?AVCXTPMouseManager@@@8",
+"?_xtpMouseThreadState@CXTPMouseManager@@0V?$CThreadLocal@VCXTPMouseManager@@@@A",
+"_ptMouse"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_s_20261124_015202_c0ad3e45_unit_2634_candidate_obj_ede6d2d7.obj": [
+"?$S2@?1??GetSharedData@CXTPWinDwmWrapper@@ABEAAVCSharedData@2@XZ@4IA",
+"??_R0?AVCXTPWinThemeWrapper@@@8",
+"?sData@?1??GetSharedData@CXTPWinDwmWrapper@@ABEAAVCSharedData@2@XZ@4V32@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_ns_20261124_015202_c0ad3e45_unit_558_candidate_obj_a7c360a8.obj": [
+"??_R0?AV?$GetSetImpl@P8CRenderSettings@@BEHXZP81@AEXH@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@@8",
+"??_R0?AV?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@@8",
+"??_R0?AV?$PropDescriptor@VCRenderSettings@@VVector2int16@G3D@@@Reflection@RBX@@@8",
+"_prop_graphicsMode"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_s_20261124_015202_c0ad3e45_unit_1015_candidate_obj_6bdf8e92.obj": [
+"?__alwaysAssertIgnoreAlways__@?6??setVARAreaFromVAR@RenderDevice@G3D@@AAEXABVVAR@3@@Z@4_NA",
+"?m_current@GWindow@G3D@@0PBV12@B",
+"?spec@?4??setSpecularCoefficient@RenderDevice@G3D@@QAEXABVColor3@3@@Z@4PAMA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_vto_s_20261124_015202_c0ad3e45_unit_2677_candidate_obj_3a8779fb.obj": [
+"?$S2@?1??dictionary@Name@RBX@@CAAAV?$map@HPAVName@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVName@RBX@@@std@@@4@@std@@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_20261124-015202-c0ad3e45_unit-2616_candidate.obj": [
+"?$S1@?1??XTPSoundManager@@YAPAVCXTPSoundManager@@XZ@4IA",
+"?s_managerInstance@?1??XTPSoundManager@@YAPAVCXTPSoundManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\natext\\nx_20261124-015202-c0ad3e45_unit-434_candidate.obj": [
+"_worldBodyFlag"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261124-015202-c0ad3e45\\unit-1012\\candidate.obj": [
+"?plus1mod3@?1???0Quat@G3D@@QAE@ABVMatrix3@2@@Z@4QBHB"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261124-015202-c0ad3e45\\unit-1022\\candidate.obj": [
+"?__alwaysAssertIgnoreAlways__@?2??tick@Stopwatch@G3D@@QAEXXZ@4_NA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261124-015202-c0ad3e45\\unit-1035\\candidate.obj": [
+"?$S1@?1??zero@Vector2@G3D@@SAABV23@XZ@4IA",
+"?$S4@?1??inf@Vector2@G3D@@SAABV23@XZ@4IA",
+"?v@?1??inf@Vector2@G3D@@SAABV23@XZ@4V23@A",
+"?v@?1??zero@Vector2@G3D@@SAABV23@XZ@4V23@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261124-015202-c0ad3e45\\unit-1135\\candidate.obj": [
+"?$S1@?4??getLocalCachePath@RBX@@YA?AV?$CPathT@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@ATL@@_N@Z@4IA",
+"?cached@?6??getLocalCachePath@RBX@@YA?AV?$CPathT@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@ATL@@_N@Z@4V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261124-015202-c0ad3e45\\unit-1659\\candidate.obj": [
+"?str@?1??ToString@SystemAddress@@QBEPAD_N@Z@4PADA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261124-015202-c0ad3e45\\unit-1835\\candidate.obj": [
+"?$S1@?4??GetTimeNS@RakNet@@YA_JXZ@4IA",
+"?lastQueryVal@?4??GetTimeNS@RakNet@@YA_JXZ@4_JA",
+"?lastTickCountVal@?4??GetTimeNS@RakNet@@YA_JXZ@4IA",
+"_initialized",
+"_processAffinityMask",
+"_queryCount",
+"_systemAffinityMask",
+"_threadHandle",
+"_yo"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261124-015202-c0ad3e45\\unit-2616\\candidate.obj": [
+"?$S1@?1??XTPSoundManager@@YAPAVCXTPSoundManager@@XZ@4IA",
+"?s_managerInstance@?1??XTPSoundManager@@YAPAVCXTPSoundManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261124-015202-c0ad3e45\\unit-434\\candidate.obj": [
+"_worldBodyFlag"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261124-015202-c0ad3e45\\unit-959\\candidate.obj": [
+"?$S3@?1??blue@Color3@G3D@@SAABV23@XZ@4IA",
+"?$S4@?1??purple@Color3@G3D@@SAABV23@XZ@4IA",
+"?$S6@?1??yellow@Color3@G3D@@SAABV23@XZ@4IA",
+"?$S8@?1??orange@Color3@G3D@@SAABV23@XZ@4IA",
+"?c@?1??blue@Color3@G3D@@SAABV23@XZ@4V23@A",
+"?c@?1??orange@Color3@G3D@@SAABV23@XZ@4V23@A",
+"?c@?1??purple@Color3@G3D@@SAABV23@XZ@4V23@A",
+"?c@?1??yellow@Color3@G3D@@SAABV23@XZ@4V23@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261124-015202-c0ad3e45\\unit-961\\candidate.obj": [
+"?$S1@?1??zero@Color4@G3D@@SAABV23@XZ@4IA",
+"?c@?1??zero@Color4@G3D@@SAABV23@XZ@4V23@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261124-015202-c0ad3e45\\unit-999\\candidate.obj": [
+"?$S1@?1??zero@Matrix3@G3D@@SAABV23@XZ@4IA",
+"?$S2@?1??identity@Matrix3@G3D@@SAABV23@XZ@4IA",
+"?m@?1??identity@Matrix3@G3D@@SAABV23@XZ@4V23@A",
+"?m@?1??zero@Matrix3@G3D@@SAABV23@XZ@4V23@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261124_015202_c0ad3e45_unit_042_candidate_obj_32717369.obj": [
+"__sehtable$?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_s_20261124_015202_c0ad3e45_unit_1015_candidate_obj_6bdf8e92.obj": [
+"?__alwaysAssertIgnoreAlways__@?6??setVARAreaFromVAR@RenderDevice@G3D@@AAEXABVVAR@3@@Z@4_NA",
+"?spec@?4??setSpecularCoefficient@RenderDevice@G3D@@QAEXABVColor3@3@@Z@4PAMA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_s_20261124_015202_c0ad3e45_unit_1026_candidate_obj_affd989c.obj": [
+"?$S1@?1??defaults@Settings@Texture@G3D@@SAABV234@XZ@4IA",
+"?__alwaysAssertIgnoreAlways__@?2??newGLTextureID@Texture@G3D@@SAIXZ@4_NA",
+"?param@?1??defaults@Settings@Texture@G3D@@SAABV234@XZ@4V234@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261124_015202_c0ad3e45_unit_102_candidate_obj_9866bbcd.obj": [
+"?$S9@?1???$singleton@VContentId@RBX@@@Type@Reflection@RBX@@SAABV123@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_s_20261124_015202_c0ad3e45_unit_1042_candidate_obj_f4c1402b.obj": [
+"?g3dWindowClassName@?1??G3DWndClass@G3D@@YAPBDXZ@4PBDB",
+"?init@?1??createShareWindow@Win32Window@G3D@@CAXVSettings@GWindow@3@@Z@4_NA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_s_20261124_015202_c0ad3e45_unit_1072_candidate_obj_385199a7.obj": [
+"?$S3@?1??translucentBackdrop@GuiItem@RBX@@SAABVColor4@G3D@@XZ@4IA",
+"?c@?1??translucentBackdrop@GuiItem@RBX@@SAABVColor4@G3D@@XZ@4V45@B"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_s_20261124_015202_c0ad3e45_unit_2130_candidate_obj_bc4b2da2.obj": [
+"?$S1@?1??XTShadowsManager@@YAPAVCXTShadowsManager@@XZ@4IA",
+"?instance@?1??XTShadowsManager@@YAPAVCXTShadowsManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_s_20261124_015202_c0ad3e45_unit_2566_candidate_obj_6e7d4b4b.obj": [
+"?$S1@?1??XTPHookManager@@YAPAVCXTPHookManager@@XZ@4IA",
+"?s_managerInstance@?1??XTPHookManager@@YAPAVCXTPHookManager@@XZ@4V2@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_s_20261124_015202_c0ad3e45_unit_2570_candidate_obj_0fed554c.obj": [
+"_ptMouse"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_s_20261124_015202_c0ad3e45_unit_2634_candidate_obj_ede6d2d7.obj": [
+"?$S2@?1??GetSharedData@CXTPWinDwmWrapper@@ABEAAVCSharedData@2@XZ@4IA",
+"?sData@?1??GetSharedData@CXTPWinDwmWrapper@@ABEAAVCSharedData@2@XZ@4V32@A"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_s_20261124_015202_c0ad3e45_unit_2677_candidate_obj_3a8779fb.obj": [
+"?$S2@?1??dictionary@Name@RBX@@CAAAV?$map@HPAVName@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVName@RBX@@@std@@@4@@std@@XZ@4IA"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261124_015202_c0ad3e45_unit_558_candidate_obj_a7c360a8.obj": [
+"_prop_graphicsMode"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_ns_20261124_084717_522c6d8e_unit_010_candidate_obj_4ece6213.obj": [
+"_timedOutScripts"
+],
+"C:\\Users\\colin\\RoConstruct\\work\\donorfree-route\\linkexp\\draftstrip\\vto_s_20261124_015202_c0ad3e45_unit_1528_candidate_obj_1c4f5851.obj": [
+"_allEnumDescriptors"
+]
+}

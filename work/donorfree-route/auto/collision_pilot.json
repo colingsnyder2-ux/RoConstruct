@@ -1,0 +1,8 @@
+﻿{
+  "006726a0.obj": {
+    "?dummyString@RenderDevice@G3D@@0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A": "?rocAdornCylinderMesh@@3VMeshPtr@Ogre@@A"
+  },
+  "00675360.obj": {
+    "?dummyString@RenderDevice@G3D@@0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A": "?rocExplosionMaterial@@3VMaterialPtr@Ogre@@A"
+  }
+}

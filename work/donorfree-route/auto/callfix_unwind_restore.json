@@ -1,0 +1,407 @@
+{
+ "005a5200.obj": {
+  "??1Pair@@QAE@XZ": "func_00600660"
+ },
+ "0041eea0.obj": {
+  "??1Pair@@QAE@XZ": "func_00600660"
+ },
+ "0042dfd0.obj": {
+  "??1Pair@@QAE@XZ": "func_00600660"
+ },
+ "00453000.obj": {
+  "??1Pair@@QAE@XZ": "func_00600660"
+ },
+ "004531e0.obj": {
+  "??1Pair@@QAE@XZ": "func_00600660"
+ },
+ "00458610.obj": {
+  "??1Pair@@QAE@XZ": "func_00600660"
+ },
+ "0045de20.obj": {
+  "??1Pair@@QAE@XZ": "func_00600660"
+ },
+ "00492020.obj": {
+  "??1Pair@@QAE@XZ": "func_00600660"
+ },
+ "004b3870.obj": {
+  "??1Pair@@QAE@XZ": "func_00600660"
+ },
+ "004b3960.obj": {
+  "??1Pair@@QAE@XZ": "func_00600660"
+ },
+ "004b3a50.obj": {
+  "??1Pair@@QAE@XZ": "func_00600660"
+ },
+ "004b3b40.obj": {
+  "??1Pair@@QAE@XZ": "func_00600660"
+ },
+ "00578930.obj": {
+  "??1Pair@@QAE@XZ": "func_00600660"
+ },
+ "005805d0.obj": {
+  "??1Pair@@QAE@XZ": "func_00600660"
+ },
+ "005806c0.obj": {
+  "??1Pair@@QAE@XZ": "func_00600660"
+ },
+ "00412710.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "004352a0.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "004530f0.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "004cd7e0.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "005726f0.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "005d6340.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "006173f0.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "00619360.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "0063e180.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "0063f7b0.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "0066dc80.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "004202b0.obj": {
+  "??1?$shared_ptr@UMetadataManager@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "004232a0.obj": {
+  "??1Result@@QAE@XZ": "func_00600660"
+ },
+ "00423510.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660",
+  "??1FlagGuard@@QAE@XZ": "func_004207c0"
+ },
+ "00425320.obj": {
+  "??1?$shared_ptr@UModel@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "00426780.obj": {
+  "??1Guard@@QAE@XZ": "func_00407160"
+ },
+ "004353e0.obj": {
+  "??1?$shared_ptr@UService@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "00435680.obj": {
+  "??1?$shared_ptr@UService@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "00439cd0.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "004423f0.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "004a17f0.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "004e73b0.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "00557640.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "0058ba70.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "005a2290.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "005a2330.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "005b1190.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "006404c0.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "00439d70.obj": {
+  "??1scoped_lock@recursive_mutex@boost@@QAE@XZ": "func_00407160",
+  "??1?$set@PAUItem@CPropGrid@@U?$less@PAUItem@CPropGrid@@@std@@V?$allocator@PAUItem@CPropGrid@@@4@@std@@QAE@XZ": "func_0064b320"
+ },
+ "0043b930.obj": {
+  "??1Lock@@QAE@XZ": "func_005773c0"
+ },
+ "0044a9c0.obj": {
+  "??1Holder@@QAE@XZ": "func_00600660"
+ },
+ "00450a70.obj": {
+  "??1?$shared_ptr@VGame@RBX@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "00450c00.obj": {
+  "??1?$shared_ptr@VGame@RBX@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "0045f7b0.obj": {
+  "??1?$shared_ptr@VRenderStatsItem@CRobloxWnd@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "00466eb0.obj": {
+  "??1?$shared_ptr@UService@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "00467d50.obj": {
+  "??1?$shared_ptr@VGame@RBX@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "0048af10.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "00492360.obj": {
+  "??1?$shared_ptr@UReceiver@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "004925c0.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "004967c0.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "00496910.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "00496cf0.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "00578b80.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "0057e140.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "005fc230.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "005fc330.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "005fca40.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "005fd220.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "0062aad0.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "0049bba0.obj": {
+  "??1LockGuard@@QAE@XZ": "func_00407160"
+ },
+ "004a4100.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "004b0800.obj": {
+  "??1?$shared_ptr@VInstance@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "004b0f70.obj": {
+  "??1?$shared_ptr@UItem@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "004b3760.obj": {
+  "??1Lock@@QAE@XZ": "func_00407160"
+ },
+ "004b5700.obj": {
+  "??1?$shared_ptr@VMarker@RBX@@@@QAE@XZ": "func_00600660"
+ },
+ "004b82d0.obj": {
+  "??1?$shared_ptr@UConnection@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "004b8490.obj": {
+  "??1?$shared_ptr@ULog@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "004cce00.obj": {
+  "??1PhysicsNativeKeyValue@@QAE@XZ": "func_00600660"
+ },
+ "004cd920.obj": {
+  "??1PhysicsNativeKeyValue@@QAE@XZ": "func_00600660"
+ },
+ "00568760.obj": {
+  "??1Lock@@QAE@XZ": "func_00407160",
+  "??1?$auto_ptr@UProduct@@@std@@QAE@XZ": "func_00443570"
+ },
+ "0057d940.obj": {
+  "??1?$shared_ptr@VInstance@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "005910a0.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "005a2420.obj": {
+  "??1?$shared_ptr@URange@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "005a24d0.obj": {
+  "??1?$shared_ptr@URange@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "005ae280.obj": {
+  "??1?$Shared@UNode@ThreadRef@@@@QAE@XZ": "func_00600660",
+  "??1?$set@PAUScript@@U?$less@PAUScript@@@std@@V?$allocator@PAUScript@@@3@@std@@QAE@XZ": "func_0064b320"
+ },
+ "005baa70.obj": {
+  "??1?$shared_ptr@UT@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "005bc6f0.obj": {
+  "??1SharedAsset@@QAE@XZ": "func_00600660"
+ },
+ "005d73a0.obj": {
+  "??1?$shared_ptr@URun@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "005d8a10.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "005d8e10.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "005d8b10.obj": {
+  "??1Pair@@QAE@XZ": "func_00600660"
+ },
+ "005d8c10.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "005d8d10.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "005d8f10.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "005db040.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "005e8f70.obj": {
+  "??1Temporary@@QAE@XZ": "func_00600660"
+ },
+ "005fe030.obj": {
+  "??1?$shared_ptr@UArgument@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "0060ca00.obj": {
+  "??1SharedHole@@QAE@XZ": "func_00600660"
+ },
+ "0060f0a0.obj": {
+  "??1?$shared_ptr@UPart@@@boost@@QAE@XZ": "func_00600660"
+ },
+ "00665e20.obj": {
+  "??1Shared@@QAE@XZ": "func_00600660"
+ },
+ "0066daf0.obj": {
+  "??1?$shared_ptr@UPart@@@boost@@QAE@XZ": "func_00600660",
+  "??1?$Array@PAUPrimitive@@@G3D@@QAE@XZ": "func_006433e0"
+ },
+ "0067bcc0.obj": {
+  "??1scoped_lock@mutex@boost@@QAE@XZ": "func_00407160"
+ },
+ "004108b0.obj": {
+  "??1Lock@@QAE@XZ": "??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+ },
+ "00415ff0.obj": {
+  "??1BadCast@@QAE@XZ": "func_0040a360"
+ },
+ "00445a80.obj": {
+  "??1BadCast@@QAE@XZ": "func_0040a360"
+ },
+ "005ab1b0.obj": {
+  "??1BadCast@@QAE@XZ": "func_0040a360"
+ },
+ "005b8000.obj": {
+  "??1BadCast@@QAE@XZ": "func_0040a360"
+ },
+ "005edaf0.obj": {
+  "??1BadCast@@QAE@XZ": "func_0040a360"
+ },
+ "00416080.obj": {
+  "??1BadAnyCast@@UAE@XZ": "func_0040a360"
+ },
+ "00416260.obj": {
+  "??1BadAnyCast@@QAE@XZ": "func_0040a360"
+ },
+ "00563f60.obj": {
+  "??1BadAnyCast@@QAE@XZ": "func_0040a360"
+ },
+ "00586140.obj": {
+  "??1BadAnyCast@@QAE@XZ": "func_0040a360"
+ },
+ "004230f0.obj": {
+  "??1FlagGuard@@QAE@XZ": "func_004207c0"
+ },
+ "004318b0.obj": {
+  "??1?$ScopedAssign@_N@@QAE@XZ": "func_004207c0"
+ },
+ "004364b0.obj": {
+  "??1Variant@@QAE@XZ": "func_006fc7f0"
+ },
+ "0045bc80.obj": {
+  "??1MutexScope@@QAE@XZ": "func_0045afe0"
+ },
+ "0045e3f0.obj": {
+  "??1StopwatchScope@RBX@@QAE@XZ": "func_0045afe0"
+ },
+ "0045e6c0.obj": {
+  "??1FlagGuard@@QAE@XZ": "func_004207c0"
+ },
+ "0046d590.obj": {
+  "??1?$map@HPAVColor@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVColor@LDraw2Lua@RBX@@@std@@@5@@std@@QAE@XZ": "func_0059f470",
+  "??1?$map@V?$bstr@D@@PAVColor@LDraw2Lua@RBX@@U?$less@V?$bstr@D@@@std@@V?$allocator@U?$pair@$$CBV?$bstr@D@@PAVColor@LDraw2Lua@RBX@@@std@@@6@@std@@QAE@XZ": "func_0046d580"
+ },
+ "004ef930.obj": {
+  "??1InlineMeshRef@RBX@@QAE@XZ": "func_00502a70"
+ },
+ "00502d30.obj": {
+  "??1?$ReferenceCountedPointer@UControl@@@@QAE@XZ": "func_00502a70"
+ },
+ "007aa770.obj": {
+  "??1?$ReferenceCountedPointer@UControl@@@@QAE@XZ": "func_00502a70"
+ },
+ "007aa8b0.obj": {
+  "??1?$ReferenceCountedPointer@UControl@@@@QAE@XZ": "func_00502a70"
+ },
+ "005033e0.obj": {
+  "??1Vertex@@QAE@XZ": "func_00502a70"
+ },
+ "0056f7e0.obj": {
+  "??1Guid@@QAE@XZ": "func_0068b7e0"
+ },
+ "0057a6c0.obj": {
+  "??1Buffer@@QAE@XZ": "func_006433e0"
+ },
+ "00586960.obj": {
+  "??1Guid@@QAE@XZ": "func_0068b7e0"
+ },
+ "00588780.obj": {
+  "??1RestoreFlag@@QAE@XZ": "func_004207c0"
+ },
+ "0058a130.obj": {
+  "??1RestoreFlag@@QAE@XZ": "func_004207c0"
+ },
+ "0058bba0.obj": {
+  "??1?$pair@$$CBIUValue@@@std@@QAE@XZ": "func_005897d0"
+ },
+ "0059d4d0.obj": {
+  "??1NativeStringScope@RBX@@QAE@XZ": "func_0068b7e0"
+ },
+ "005b6f70.obj": {
+  "??1?$basic_string@DU?$char_traits@D@std@@U?$allocator@D@2@@std@@QAE@XZ": "func_0068b7e0"
+ },
+ "005d5510.obj": {
+  "??1Guid@@QAE@XZ": "func_0068b7e0"
+ },
+ "005ed770.obj": {
+  "??1bad_any_cast@@QAE@XZ": "func_0040a360"
+ },
+ "006010e0.obj": {
+  "??1Scope@@QAE@XZ": "func_0068b7e0"
+ },
+ "0062b700.obj": {
+  "??1Array@@QAE@XZ": "func_006433e0"
+ },
+ "00678310.obj": {
+  "??1FontRef@@QAE@XZ": "func_00502a70"
+ },
+ "006832b0.obj": {
+  "??1?$list@UBatch@@V?$allocator@UBatch@@@std@@@std@@QAE@XZ": "func_00429420"
+ }
+}

@@ -1,0 +1,18 @@
+{
+"vto_ns_20261124_015202_c0ad3e45_unit_024_candidate_obj_43d40fe3.obj": {
+"??4?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@QAEABV01@ABV01@@Z": "func_004d7560"
+},
+"vto_ns_20261125_121911_dd428f61_unit_001_candidate_obj_43d40fe3.obj": {
+"??4?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@QAEABV01@ABV01@@Z": "func_004d7560"
+},
+"vto_ns_20261124_015202_c0ad3e45_unit_094_candidate_obj_43d40fe3.obj": {
+"?max_size@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QBEIXZ": "func_004dc560",
+"?allocate@?$allocator@VVector3@G3D@@@std@@QAEPAVVector3@G3D@@I@Z": "func_004dc570",
+"?_Destroy@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@IAEXPAVVector3@G3D@@0@Z": "func_00458e90",
+"?max_size@?$vector@GV?$allocator@G@std@@@std@@QBEIXZ": "func_004dc400",
+"?allocate@?$allocator@G@std@@QAEPAGI@Z": "func_004dc540"
+},
+"vto_ns_20261125_110945_d6ed5dd6_unit_004_candidate_obj_da5dd9ce.obj": {
+"?isNanInfDenormVector3@Math@RBX@@SA_NABVVector3@G3D@@@Z": "func_005dd8b0"
+}
+}

@@ -1,0 +1,9 @@
+func_00409620=??$create@VSelection@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VSelection@RBX@@@boost@@XZ
+func_0048f220=??$create@VSpawnerService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VSpawnerService@RBX@@@boost@@XZ
+func_0048f700=??$create@VClothing@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VClothing@RBX@@@boost@@XZ
+func_0048ff70=??$create@VBodyColors@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VBodyColors@RBX@@@boost@@XZ
+func_004941d0=??$create@VPants@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VPants@RBX@@@boost@@XZ
+func_00494250=??$create@VShirt@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VShirt@RBX@@@boost@@XZ
+func_005c0b60=??$create@VClickDetector@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VClickDetector@RBX@@@boost@@XZ
+func_005c12b0=??$create@VFlagStandService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VFlagStandService@RBX@@@boost@@XZ
+func_005c2150=??$create@VBodyPosition@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VBodyPosition@RBX@@@boost@@XZ

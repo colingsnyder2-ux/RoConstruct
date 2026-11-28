@@ -1,0 +1,11 @@
+# stub name = symbol defined by the byte-identical renamed object
+func_00403610=?StrFromMap@CRegObject@ATL@@QAEPB_WPAD@Z
+@fn_004b4640@4=??0Peer@Network@RBX@@IAE@XZ
+func_0063b5c0=?cleanup@@YAXV?$weak_ptr@VInstance@RBX@@@boost@@@Z
+func_006426f0=?silentGetTextureProxyBase@RBX@@YA?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@PAVAdorn@1@ABVContentId@1@@Z
+func_007a64f0=_deflate@8
+func_007a6380=_IsNetworkAlive@4
+func_005b6ed0=?clamp@Vector3@G3D@@QBE?AV12@MM@Z
+func_005e2490=?setAmbient@Lighting@RBX@@QAEXVColor3@G3D@@@Z
+func_0061f900=??_G?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@UAEPAXI@Z
+func_0061fac0=??_G?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@UAEPAXI@Z

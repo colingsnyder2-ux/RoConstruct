@@ -1,0 +1,2 @@
+?parse@TextXmlParser@@UAE?AV?$auto_ptr@VXmlElement@@@std@@XZ=func_0058f6c0
+?setCanCollide@Primitive@RBX@@QAEX_N@Z=func_005e75b0

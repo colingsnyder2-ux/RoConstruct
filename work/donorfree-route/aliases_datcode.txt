@@ -1,0 +1,3 @@
+dat_007fbd10=func_007fbd10
+dat_007fd160=func_007fd160
+dat_007fd350=func_007fd350

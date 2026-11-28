@@ -1,0 +1,5 @@
+func_004a4d10=??$create@VHint@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VHint@RBX@@@boost@@XZ
+func_004a4d20=??$create@VHint@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VHint@RBX@@@boost@@XZ
+func_00569060=??$create@VGlobalSettings@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ
+func_00639900=??$create@V?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@@boost@@XZ
+func_00639a00=??$create@V?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@@boost@@XZ
